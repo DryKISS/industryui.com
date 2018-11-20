@@ -1,0 +1,199 @@
+{
+  "data": [
+    {
+      "type": "matches",
+      "id": "0",
+      "attributes": {
+        "home_team_name": "Swansea City",
+        "away_team_name": "Stoke City",
+        "competition_code": "pl",
+        "in_play": false,
+        "finished": false,
+        "home_score": 0,
+        "away_score": 0,
+        "start": "2018-02-24T14:00:00+00:00",
+        "finish": null,
+        "last_update": null,
+        "period": "PreMatch",
+        "match_time": null,
+        "group_name": null,
+        "round_type": null,
+        "round_number": null,
+        "gameweek": 1,
+        "real_gameweek": 1,
+        "home_players": [],
+        "away_players": []
+      },
+      "relationships": {
+        "home_team": {
+          "data": {
+            "type": "teams",
+            "id": "16"
+          }
+        },
+        "away_team": {
+          "data": {
+            "type": "teams",
+            "id": "14"
+          }
+        }
+      }
+    },
+    {
+      "type": "matches",
+      "id": "1",
+      "attributes": {
+        "home_team_name": "Swansea City",
+        "away_team_name": "Stoke City",
+        "competition_code": "pl",
+        "in_play": false,
+        "finished": false,
+        "home_score": 0,
+        "away_score": 0,
+        "start": "2018-02-24T14:00:00+00:00",
+        "finish": null,
+        "last_update": null,
+        "period": "PreMatch",
+        "match_time": null,
+        "group_name": null,
+        "round_type": null,
+        "round_number": null,
+        "gameweek": 1,
+        "real_gameweek": 1,
+        "home_players": [],
+        "away_players": []
+      },
+      "relationships": {
+        "home_team": {
+          "data": {
+            "type": "teams",
+            "id": "16"
+          }
+        },
+        "away_team": {
+          "data": {
+            "type": "teams",
+            "id": "14"
+          }
+        }
+      }
+    },
+    {
+      "type": "matches",
+      "id": "2",
+      "attributes": {
+        "home_team_name": "Liverpool",
+        "away_team_name": "Manchester United",
+        "competition_code": "pl",
+        "in_play": false,
+        "finished": false,
+        "home_score": 0,
+        "away_score": 0,
+        "start": "2018-02-25T14:00:00+00:00",
+        "finish": null,
+        "last_update": null,
+        "period": "PreMatch",
+        "match_time": null,
+        "group_name": null,
+        "round_type": null,
+        "round_number": null,
+        "gameweek": 1,
+        "real_gameweek": 1,
+        "home_players": [],
+        "away_players": []
+      },
+      "relationships": {
+        "home_team": {
+          "data": {
+            "type": "teams",
+            "id": "16"
+          }
+        },
+        "away_team": {
+          "data": {
+            "type": "teams",
+            "id": "14"
+          }
+        }
+      }
+    },
+    {
+      "type": "matches",
+      "id": "3",
+      "attributes": {
+        "home_team_name": "Liverpool",
+        "away_team_name": "Manchester United",
+        "competition_code": "pl",
+        "in_play": false,
+        "finished": false,
+        "home_score": 0,
+        "away_score": 0,
+        "start": "2018-03-03T14:00:00+00:00",
+        "finish": null,
+        "last_update": null,
+        "period": "PreMatch",
+        "match_time": null,
+        "group_name": null,
+        "round_type": null,
+        "round_number": null,
+        "gameweek": 2,
+        "real_gameweek": 2,
+        "home_players": [],
+        "away_players": []
+      },
+      "relationships": {
+        "home_team": {
+          "data": {
+            "type": "teams",
+            "id": "16"
+          }
+        },
+        "away_team": {
+          "data": {
+            "type": "teams",
+            "id": "14"
+          }
+        }
+      }
+    },
+    {
+      "type": "matches",
+      "id": "4",
+      "attributes": {
+        "home_team_name": "Liverpool",
+        "away_team_name": "Manchester United",
+        "competition_code": "pl",
+        "in_play": false,
+        "finished": false,
+        "home_score": 0,
+        "away_score": 0,
+        "start": "2018-03-03T14:00:00+00:00",
+        "finish": null,
+        "last_update": null,
+        "period": "PreMatch",
+        "match_time": null,
+        "group_name": null,
+        "round_type": null,
+        "round_number": null,
+        "gameweek": 2,
+        "real_gameweek": 2,
+        "home_players": [],
+        "away_players": []
+      },
+      "relationships": {
+        "home_team": {
+          "data": {
+            "type": "teams",
+            "id": "16"
+          }
+        },
+        "away_team": {
+          "data": {
+            "type": "teams",
+            "id": "14"
+          }
+        }
+      }
+    }
+  ]
+}

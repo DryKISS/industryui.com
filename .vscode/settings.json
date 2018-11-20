@@ -1,0 +1,5 @@
+{
+  "standard.options": {
+    "parser": "babel-eslint"
+  }
+}

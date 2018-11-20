@@ -1,0 +1,4 @@
+/**
+ * Templates
+ */
+export * from './article'

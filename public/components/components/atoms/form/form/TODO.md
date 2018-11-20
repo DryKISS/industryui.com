@@ -1,0 +1,3 @@
+# Todo
+
+- [ ] Add constructor pattern

@@ -1,0 +1,15 @@
+{
+  "env": {
+    "production": {
+      "presets": ["env", "react"]
+    },
+    "development": {
+      "presets": ["env", "react"],
+      "plugins": [
+        "styled-jsx/babel",
+        "transform-class-properties",
+        "transform-object-rest-spread"
+      ]
+    }
+  }
+}
