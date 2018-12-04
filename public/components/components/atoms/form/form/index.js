@@ -4,7 +4,6 @@
 
 // React
 import React, { Component, Fragment } from 'react'
-import cx from 'classnames'
 import { func } from 'prop-types'
 
 // Style
@@ -118,15 +117,15 @@ export const Form = withTheme(
     render () {
       // const props = [...this.props]
       const { children, className } = this.props
-      const { isValidated } = this.state
+      // const { isValidated } = this.state
 
-      // Add 'Form-validated' class to the forms classes to support its styling
-      const classes = cx(
-        {
-          'Form-validated': isValidated
-        },
-        className
-      )
+      // // Add 'Form-validated' class to the forms classes to support its styling
+      // const classes = cx(
+      //   {
+      //     'Form-validated': isValidated
+      //   },
+      //   className
+      // )
 
       // The form will have a reference in the component and a submit handler
       // set to the component's handleSubmit
@@ -136,7 +135,7 @@ export const Form = withTheme(
           <GlobalStyle />
 
           <StyledForm
-            className={classes}
+            className={className}
             noValidate
             ref={form => (this.formEl = form)}
             onSubmit={this.handleSubmit}

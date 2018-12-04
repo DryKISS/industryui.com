@@ -2,7 +2,6 @@
  * Molecules
  */
 export * from './breadcrumb'
-export * from './callOut'
 export * from './card'
 export * from './copyright'
 export * from './datePicker'

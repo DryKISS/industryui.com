@@ -7,6 +7,6 @@
 
 ## Links
 
-- https://medium.com/@efreyreg/create-react-component-libraries-with-storybook-and-styled-jsx-8999f423f06b
+- https://jsramblings.com/2017/10/29/migrating-to-styled-components-cheatsheet.html
 - https://smooth-ui.smooth-code.com/
 - https://designmodo.com/startup/app/

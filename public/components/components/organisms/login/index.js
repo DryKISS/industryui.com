@@ -93,9 +93,10 @@ export const Login = withTheme(
 
           { this.renderForgotPassword() }
 
-          <Button context='primary' type='submit'>Log in</Button>
+          <Button content='Log in' context='primary' size='lg' type='submit' />
 
-          {/* Sign up */}
+          <p />
+
           <Link to='/sign-up'>
             <a>Sign up</a>
           </Link>

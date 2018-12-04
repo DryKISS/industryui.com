@@ -14,12 +14,21 @@ import styled, { withTheme } from 'styled-components'
 
 export const Textarea = withTheme(
   class Textarea extends Component {
+    constructor (props) {
+      super(props)
+
+      this.state = {
+        charCount: props.maxLength
+      }
+    }
+
     static propTypes = {
       autoFocus: bool,
       disabled: bool,
       handleChange: func.isRequired,
-      label: string,
       id: string,
+      label: string,
+      maxLength: number,
       placeholder: string,
       readOnly: bool,
       required: bool,
@@ -33,19 +42,30 @@ export const Textarea = withTheme(
       rows: 5
     }
 
+    componentDidMount = () => {
+      this.setState({ charCount: this.props.value.length })
+    }
+
+    _wordCount = (e) => {
+      this.setState({ charCount: e.target.value.length })
+    }
+
     render () {
       const {
         autoFocus,
         disabled,
         handleChange,
-        label,
         id,
+        label,
+        maxLength,
         placeholder,
         readOnly,
         required,
         rows,
         value
       } = this.props
+
+      const { charCount } = this.state
 
       return (
         <Label id={id} text={label}>
@@ -56,14 +76,20 @@ export const Textarea = withTheme(
             className='Form-control Textarea'
             disabled={disabled}
             id={id}
-            onChange={handleChange}
-            placeholder={placeholder}
+            maxLength={maxLength}
             name={id}
+            onChange={(e) => {
+              handleChange(e)
+              this._wordCount(e)
+            }}
+            placeholder={placeholder}
             readOnly={readOnly}
             required={required}
             rows={rows}
             value={value}
           />
+
+          {charCount} / {maxLength}
 
           <div className='Form-feedback' />
 
@@ -77,22 +103,20 @@ export const Textarea = withTheme(
 const StyledTextarea = styled.textarea`
   background-clip: padding-box;
   background-color: #fff;
-  border: 1px solid #c4cacf;
+  border: 1px solid ${props => props.theme.COLOUR.light};
   border-radius: .25rem;
-  /* color: #9da7af; */
+  color: ${props => props.theme.COLOUR.dark};
   display: block;
   font-size: 1rem;
   line-height: 1.5;
-  padding: .375rem .75rem;
+  padding: .5rem;
   overflow: auto;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   width: 100%;
 
   &:focus {
-    color: #9da7af;
     border-color: #80bdff;
-    outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+    outline: 0;
   }
 
   &:valid~.Form-feedback {
@@ -107,29 +131,3 @@ const StyledTextarea = styled.textarea`
     border-color: #dc3545;
   }
 `
-
-//   .Textarea-large {
-//     border-radius: .3rem;
-//     font-size: 1.25rem;
-//     height: calc(2.875rem + 2px);
-//     padding: .5rem 1rem;
-//   }
-
-//   .Textarea-small {
-//     font-size: .875rem;
-//     border-radius: .2rem;
-//     height: calc(1.8125rem + 2px);
-//     padding: .25rem .5rem;
-//   }
-
-//   .sr-only {
-//     border: 0;
-//     clip: rect(0, 0, 0, 0);
-//     height: 1px;
-//     padding: 0;
-//     position: absolute;
-//     overflow: hidden;
-//     white-space: nowrap;
-//     width: 1px;
-//   }
-//   `

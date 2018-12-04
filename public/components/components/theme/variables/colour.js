@@ -1,6 +1,8 @@
 /**
  * Colour
  *
+ * @see https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
+ *
  * @todo Change this name to COLOUR
  */
 export const COLOUR = {
@@ -10,18 +12,38 @@ export const COLOUR = {
   dark: '#3a4e5f',
   light: '#F6F8F9',
 
-  primary: '#04D4CD',
-  secondary: '#333',
-  accent: '#e8095e',
-  alert: '#f9bd22',
-  error: '#e60811',
-  info: '#2ab4f3',
-  success: '#00b43c',
+  primary: '#007bff',
+  secondary: '#6c757d',
+  success: '#28a745',
+  info: '#17a2b8',
+  warning: '#ffc107',
+  danger: '#dc3545',
 
   transparent: 'transparent'
 }
 
-// // Quickly modify global styling by enabling or disabling optional features.
+// 'dark',
+// 'light',
+// 'primary',
+// 'secondary',
+// 'success',
+// 'info',
+// 'warning',
+// 'danger'
+
+// Bootstrap
+// Primary link
+// Secondary link
+// Success link
+// Danger link
+// Warning link
+// Info link
+// Light link
+// Dark link
+// Muted link
+// White link
+
+// Quickly modify global styling by enabling or disabling optional features.
 
 // $enable-caret:                                true !default;
 // $enable-rounded:                              true !default;

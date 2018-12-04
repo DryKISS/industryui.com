@@ -11,9 +11,14 @@ Navbar utilises the HTML5 nav tag with classes to define style and positioning
 
 ## Links
 
-- Tailwise: https://zpl.io/V4vpORJ
-- Bootstrap: https://getbootstrap.com/docs/4.1/components/navbar/
-- Semantic: https://react.semantic-ui.com/collections/menu
+- [Tailwise](https://zpl.io/V4vpORJ)
+- [Bootstrap](https://getbootstrap.com/docs/4.1/components/navbar/)
+- [Semantic](https://react.semantic-ui.com/collections/menu)
+
+## Props
+
+- brand:
+- links:
 
 ## Usage
 

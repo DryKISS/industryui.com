@@ -9,9 +9,6 @@ import { func, string } from 'prop-types'
 // UI
 import { Button, Input, Select } from '../../'
 
-// Style
-import styles from './styles'
-
 // Debug Data
 import { ADDRESSES } from './__mock__/addresses'
 
@@ -261,7 +258,6 @@ export const GetAddress = withTheme(
       return (
         <p className='GetAddress-error'>
           The postcode was not found
-          <style jsx>{styles}</style>
         </p>
       )
     }
@@ -298,3 +294,13 @@ export const GetAddress = withTheme(
     }
   }
 )
+
+// export default css`
+//   .GetAddress {
+//     font: inherit;
+//   }
+
+//   .GetAddress-error {
+//     color: #e60811;
+//   }
+//   `

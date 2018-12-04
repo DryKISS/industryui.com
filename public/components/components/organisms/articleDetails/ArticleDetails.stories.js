@@ -1,13 +1,17 @@
 /**
  * Article details
  */
+
+// React
 import React from 'react'
 
+// Storybook
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { withReadme } from 'storybook-readme'
 
-import ArticleDetails from './'
+// UI
+import ArticleDetails from '../../'
 import Readme from './README.md'
 
 storiesOf('Organisms/ArticleDetails', module)

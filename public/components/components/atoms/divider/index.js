@@ -39,9 +39,3 @@ const StyledDivider = styled.div`
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 `
-
-// hr {
-//   box-sizing: content-box;
-//   height: 0;
-//   overflow: visible;
-// }

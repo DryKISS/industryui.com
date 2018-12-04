@@ -11,12 +11,12 @@ import { string } from 'prop-types'
 // Style
 import { withTheme } from 'styled-components'
 
-const styleDefault = {
-  // position: 'relative',
-  width: '100%',
-  height: '500px'
-  // overflow: 'hidden'
-}
+// const styleDefault = {
+//   // position: 'relative',
+//   width: '100%',
+//   height: '500px'
+//   // overflow: 'hidden'
+// }
 
 export const Typeform = withTheme(
   class Typeform extends Component {
@@ -45,16 +45,27 @@ export const Typeform = withTheme(
 
     componentDidMount () {
       const typeformEmbed = require('@typeform/embed')
-      const { url, hideHeaders, hideFooter, opacity, buttonText, mode, autoOpen, autoClose, onSubmit } = this.props
+
+      const {
+        autoClose,
+        autoOpen,
+        buttonText,
+        hideFooter,
+        hideHeaders,
+        mode,
+        onSubmit,
+        opacity,
+        url
+      } = this.props
 
       const options = {
+        autoClose,
+        autoOpen,
         hideHeaders,
         hideFooter,
         opacity,
         buttonText,
         mode,
-        autoOpen,
-        autoClose,
         onSubmit
       }
 
@@ -65,10 +76,10 @@ export const Typeform = withTheme(
     }
 
     render () {
-      const style = Object.assign({}, styleDefault, this.props.style)
+      // const style = Object.assign({}, this.props.style)
 
       return (
-        <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} style={style} />
+        <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} />
       )
     }
   }

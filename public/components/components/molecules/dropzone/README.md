@@ -2,4 +2,4 @@
 
 ## Links
 
-- https://github.com/react-dropzone/react-dropzone
+- [React Dropzone](https://github.com/react-dropzone/react-dropzone)

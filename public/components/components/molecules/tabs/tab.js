@@ -1,7 +1,5 @@
 /**
  * Tab
- *
- * @todo Sort out the Active style so its more DRY
  */
 
 // React

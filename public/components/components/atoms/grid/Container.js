@@ -1,14 +1,13 @@
 /**
  * Container
  */
-import React, { Component, Fragment } from 'react'
-import cx from 'classnames'
+
+// React
+import React, { Component } from 'react'
 import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 
-import styles from './Container.styles'
-
 // Style
-import { withTheme } from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 
 export const Container = withTheme(
   class Container extends Component {
@@ -24,32 +23,45 @@ export const Container = withTheme(
 
     static defaultProps = {
       fluid: false,
-      style: {},
-      component: 'div'
+      style: {}
     };
 
     render () {
       const { children, className, fluid, style } = this.props
 
-      const classes = cx(
-        'Container',
-        { 'Container-fluid': fluid },
-        className
-      )
-
       return (
-        <Fragment>
-
-          <div
-            className={classes}
-            children={children}
-            style={style}
-          />
-
-          <style jsx>{styles}</style>
-
-        </Fragment>
+        <StyledGrid
+          className={className}
+          children={children}
+          fluid={fluid}
+          style={style}
+        />
       )
     }
   }
 )
+
+const StyledGrid = styled.div`
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: ${props => props.theme.GRID.gutterWidth / 2}px;
+  padding-right: ${props => props.theme.GRID.gutterWidth / 2}px;
+  position: relative;
+  width: ${props => props.fluid ? '100%' : 'initial'};
+
+  /* Medium */
+  @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
+    max-width: ${props => props.theme.GRID.containerWidths.md[0]}px;
+  }
+
+  /* Large */
+  @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
+    max-width: ${props => props.theme.GRID.containerWidths.lg[0]}px;
+  }
+
+  /* Extra large */
+  @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
+    max-width: ${props => props.theme.GRID.containerWidths.xl[0]}px;
+  }
+`

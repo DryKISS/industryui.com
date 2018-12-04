@@ -6,11 +6,16 @@
 import React, { Component } from 'react'
 import { bool, object } from 'prop-types'
 
+// Next
+import getConfig from 'next/config'
+
 // UI
 import { Button, Link } from '../../../'
 
 // Style
 import styled, { withTheme } from 'styled-components'
+
+const { TYPE } = getConfig().publicRuntimeConfig
 
 export const Links = withTheme(
   class Links extends Component {
@@ -27,7 +32,11 @@ export const Links = withTheme(
       )
     }
 
-    renderLink = (id, name, to) => {
+    renderLink = (active, id, name, to) => {
+      if (TYPE && (!active || active !== TYPE)) {
+        return
+      }
+
       return (
         <Link to={to} passHref>
           <StyledLink id={id}>{name}</StyledLink>
@@ -49,28 +58,24 @@ export const Links = withTheme(
       return (
         <StyledCollapse visible={visible}>
 
-          {
-            Object.entries(links).map(([direction, link]) =>
+          {Object.entries(links).map(([direction, link]) =>
 
-              <StyledList direction={direction} key={direction}>
+            <StyledList direction={direction} key={direction}>
 
-                {
-                  link.map(({ id, name, to, type }) =>
+              {link.map(({ active, id, name, to, type }) =>
 
-                    <StyledListItem key={id}>
+                <StyledListItem key={id}>
 
-                      { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
-                      { (!type || type === 'link') && this.renderLink(id, name, to) }
+                  { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
+                  { (!type || type === 'link') && this.renderLink(active, id, name, to) }
 
-                    </StyledListItem>
+                </StyledListItem>
 
-                  )
-                }
+              )}
 
-              </StyledList>
+            </StyledList>
 
-            )
-          }
+          )}
 
         </StyledCollapse>
       )

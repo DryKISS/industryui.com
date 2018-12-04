@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { array, string } from 'prop-types'
 
 // UI
-import { Container, Link } from '../../'
+import { Container, Link, Row } from '../../'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -25,13 +25,11 @@ export const Copyright = withTheme(
       return (
         <StyledNav>
 
-          {
-            links.map(({ name, to }, index) =>
-              <Link to={to} key={index} passHref>
-                <StyledLink>{name}</StyledLink>
-              </Link>
-            )
-          }
+          {links.map(({ name, to }, index) =>
+            <Link to={to} key={index} passHref>
+              <StyledLink>{name}</StyledLink>
+            </Link>
+          )}
 
         </StyledNav>
       )
@@ -46,11 +44,15 @@ export const Copyright = withTheme(
 
           <Container>
 
-            <StyledBrand>
-              ©{year} {brand}
-            </StyledBrand>
+            <Row>
 
-            {links && this.renderLinks()}
+              <StyledBrand>
+              ©{year} {brand}
+              </StyledBrand>
+
+              {links && this.renderLinks()}
+
+            </Row>
 
           </Container>
 

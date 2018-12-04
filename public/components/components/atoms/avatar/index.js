@@ -5,7 +5,6 @@
 // React
 import React, { Component } from 'react'
 import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types'
-import cx from 'classnames'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -25,17 +24,24 @@ export const Avatar = withTheme(
     }
 
     render () {
-      const { children, content, dark, handleClick, medium, style } = this.props
-
-      const classes = cx(
-        {
-          'Avatar-dark': dark,
-          'Avatar-medium': medium
-        }
-      )
+      const {
+        children,
+        className,
+        content,
+        dark,
+        handleClick,
+        medium,
+        style
+      } = this.props
 
       return (
-        <StyledAvatar className={classes} onClick={handleClick} style={style}>
+        <StyledAvatar
+          className={className}
+          dark={dark}
+          medium={medium}
+          onClick={handleClick}
+          style={style}
+        >
           {children || content}
         </StyledAvatar>
       )
@@ -55,20 +61,19 @@ const StyledAvatar = styled.div`
   min-width: 56px;
 `
 
-//   .Avatar-medium {
-//     font-size: 14px;
-//     height: 2rem;
-//     min-width: 2rem;
-//     width: 2rem;
-//   }
+// .Avatar-medium {
+//   font-size: 14px;
+//   height: 2rem;
+//   min-width: 2rem;
+//   width: 2rem;
+// }
 
-//   .Avatar-dark {
-//     background-color: #3a4e5f;
-//     color: #ecf0f3;
-//   }
+// .Avatar-dark {
+//   background-color: #3a4e5f;
+//   color: #ecf0f3;
+// }
 
-//   .Avatar-dark:hover {
-//     background-color: #0679d8;
-//     color: #ecf0f3;
-//   }
-//   `
+// .Avatar-dark:hover {
+//   background-color: #0679d8;
+//   color: #ecf0f3;
+// }

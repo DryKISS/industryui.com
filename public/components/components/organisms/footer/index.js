@@ -47,17 +47,15 @@ export const Footer = withTheme(
       return (
         <List unstyled>
 
-          {
-            links.map(({ name, to }, index) => (
-              <List.Item key={index}>
+          {links.map(({ name, to }, index) => (
+            <List.Item key={index}>
 
-                <Link to={to} passHref>
-                  <StyledLink>{name}</StyledLink>
-                </Link>
+              <Link to={to} passHref>
+                <StyledLink>{name}</StyledLink>
+              </Link>
 
-              </List.Item>
-            ))
-          }
+            </List.Item>
+          ))}
 
         </List>
       )
@@ -92,6 +90,7 @@ const StyledFooter = styled.div`
   color: ${props => props.theme.COLOUR.dark};
   font-size: .875rem;
   line-height: 1.25rem;
+  margin-top: 2rem;
   padding: 3rem 0;
 `
 

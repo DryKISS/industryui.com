@@ -49,7 +49,6 @@ export const ForgotDetailsReset = withTheme(
             value={password}
           />
 
-          {/* Button */}
           <Button secondary type='submit'>Submit</Button>
 
           <Link to='/sign-in'>
@@ -61,11 +60,6 @@ export const ForgotDetailsReset = withTheme(
     }
   }
 )
-
-// /**
-//  * Forgot Details Reset
-//  */
-// import css from 'styled-jsx/css'
 
 // export default css`
 //   .ForgotDetailsReset-link {

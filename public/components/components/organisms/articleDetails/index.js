@@ -1,25 +1,25 @@
 /**
  * Article Details
+ *
+ * @todo move this into the Article folder
  */
 
 // React
-import React, { Component, Fragment } from 'react'
-import { array, string } from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { Component } from 'react'
+import { any, array, string } from 'prop-types'
 
 // UI
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Author, Date, Divider, List, ReadTime, Tags } from '../../'
 
 // Style
-import styles from './styles'
-
-// Style
-import { withTheme } from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 
 export const ArticleDetails = withTheme(
   class ArticleDetails extends Component {
     static propTypes = {
       author: string.isRequired,
+      date: any,
       tags: array
     }
 
@@ -31,80 +31,86 @@ export const ArticleDetails = withTheme(
       const { author, tags } = this.props
 
       return (
-        <Fragment>
+        <StyledArticleDetails>
 
-          {/* Article detail */}
-          <div className='ArticleDetails'>
+          <Divider />
 
-            {/* Divider */}
-            <Divider />
+          <List inline unstyled>
 
-            {/* List */}
-            <List inline unstyled>
+            {/* Date / Time */}
+            <List.Item>
+              <StyledIcon icon='calendar-alt' />
+              <Date date={'2018-03-14'} />
+            </List.Item>
 
-              {/* Date / Time */}
-              <List.Item>
-                <span className='ArticleDetails-icon'>
-                  <FontAwesomeIcon icon='calendar-alt' />
-                </span>
-                <Date date='2018-03-14' />
-              </List.Item>
+            {/* Author */}
+            <List.Item>
+              <StyledIcon icon='user' />
+              <Author author={author} />
+            </List.Item>
 
-              {/* Author */}
-              <List.Item>
-                <span className='ArticleDetails-icon'>
-                  <FontAwesomeIcon icon='user' />
-                </span>
-                <Author author={author} />
-              </List.Item>
+            {/* Read time */}
+            <List.Item>
+              <StyledIcon icon='clock' />
+              <ReadTime time={2} />
+            </List.Item>
 
-              {/* Read time */}
-              <List.Item>
-                <span className='ArticleDetails-icon'>
-                  <FontAwesomeIcon icon='clock' />
-                </span>
-                <ReadTime time={2} />
-              </List.Item>
+          </List>
 
-            </List>
+          <Tags tags={tags} />
 
-            {/* Tags */}
-            <Tags tags={tags} />
+          <Divider />
 
-            {/* Divider */}
-            <Divider />
+          <StyledShare>
 
-            {/* Social */}
-            <div className='ArticleDetails-share'>
+            <StyledShareText>Share this article</StyledShareText>
 
-              <span className='ArticleDetails-shareText'>Share this article</span>
+            {/* Facebook */}
+            <StyledShareLink href='javascript:;'>
+              <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+            </StyledShareLink>
 
-              {/* Facebook */}
-              <a className='ArticleDetails-shareIcon' href='javascript:;'>
-                <FontAwesomeIcon icon={['fab', 'facebook-square']} />
-              </a>
+            {/* Twitter */}
+            <StyledShareLink href='javascript:'>
+              <FontAwesomeIcon icon={['fab', 'twitter-square']} />
+            </StyledShareLink>
 
-              {/* Twitter */}
-              <a className='ArticleDetails-shareIcon' href='javascript:'>
-                <FontAwesomeIcon icon={['fab', 'twitter-square']} />
-              </a>
+            {/* Pinterest */}
+            <StyledShareLink href='javascript:;'>
+              <FontAwesomeIcon icon={['fab', 'pinterest-square']} />
+            </StyledShareLink>
 
-              {/* Pinterest */}
-              <a className='ArticleDetails-shareIcon' href='javascript:;'>
-                <FontAwesomeIcon icon={['fab', 'pinterest-square']} />
-              </a>
+          </StyledShare>
 
-            </div>
+          <Divider />
 
-            {/* Divider */}
-            <Divider />
-
-          </div>
-
-          <style jsx>{styles}</style>
-
-        </Fragment>
+        </StyledArticleDetails>
       )
     }
   }
 )
+
+const StyledArticleDetails = styled.div`
+  font-size: .875rem;
+`
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  margin-right: .5rem;
+`
+
+const StyledShare = styled.div`
+  align-items: center;
+  display: flex;
+`
+
+const StyledShareText = styled.span`
+  margin-right: 2rem;
+`
+
+const StyledShareLink = styled.a`
+  color: #00ccbc;
+  font-size: 2rem;
+  line-height: 1rem;
+  margin-right: .5rem;
+  text-decoration: none;
+`

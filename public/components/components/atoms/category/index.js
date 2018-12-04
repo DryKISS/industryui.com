@@ -6,6 +6,9 @@
 import React, { Component } from 'react'
 import { string } from 'prop-types'
 
+// UI
+import { Link } from '../../'
+
 // Style
 import styled, { withTheme } from 'styled-components'
 
@@ -22,7 +25,15 @@ export const Category = withTheme(
 
       return (
         <StyledCategory>
-          <a className='Category-link' href={path}>{categoryFormatted}</a>
+
+          <Link to={path} passHref>
+
+            <StyledA>
+              {categoryFormatted}
+            </StyledA>
+
+          </Link>
+
         </StyledCategory>
       )
     }
@@ -31,24 +42,12 @@ export const Category = withTheme(
 
 // Style
 const StyledCategory = styled.div`
-  // font-family: adellesans-bold;
-  font-size: .75rem;
+  font-size: 12px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
 `
 
-//   .Category-link {
-//     color: #00ccbc;
-//     text-transform: uppercase;
-//   }
-//   `
-
-// //   &__category {
-// //     font-family: adellesans-bold;
-// //     font-size: 12px;
-// //     margin-bottom: 5px;
-// //     position: relative;
-// //     z-index: 2;
-
-// //     a {
-// //       color: $brand-primary;
-// //     }
-// //   }
+const StyledA = styled.a`
+  color: ${props => props.theme.COLOUR.primary};
+`

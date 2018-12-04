@@ -3,12 +3,8 @@
  */
 
 // React
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { number } from 'prop-types'
-import cx from 'classnames'
-
-// Style
-import styles from './styles'
 
 // Style
 import { withTheme } from 'styled-components'
@@ -25,23 +21,24 @@ export const Rating = withTheme(
     }
 
     render = () => {
-      const { item, size } = this.props
+      const { className, item, size } = this.props
 
       let rating = []
 
       // Outer loop to create parent
       for (let i = 0; i < size; i++) {
-        const classes = cx(
-          { 'Rating-active': i + 1 <= item },
-          'Rating-item'
-        )
+        // const classes = cx(
+        //   { 'Rating-active': i + 1 <= item },
+        //   'Rating-item'
+        // )
 
         // Create the parent and add the children
         rating.push(
-          <Fragment key={i}>
-            <div className={classes} />
-            <style jsx>{styles}</style>
-          </Fragment>
+          <div
+            className={className}
+            item={item}
+            key={i}
+          />
         )
       }
 
@@ -49,3 +46,18 @@ export const Rating = withTheme(
     }
   }
 )
+
+// export default css`
+//   .Rating-item {
+//     background-color: #cdd2d6;
+//     border-radius: .5rem;
+//     display: inline-block;
+//     height: 2rem;
+//     margin-right: .5rem;
+//     width: 10px;
+//   }
+
+//   .Rating-active {
+//     background-color: #04D4DC;
+//   }
+//   `

@@ -95,8 +95,8 @@ const StyledInput = styled.input`
   font-size: 1rem;
   height: 3rem;
   line-height: 1.5;
-  padding: .375rem .75rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  padding: .5rem 1rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   width: 100%;
 
   &:focus {

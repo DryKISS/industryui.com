@@ -77,7 +77,7 @@ const StyledNav = styled.nav`
     flex-flow: row nowrap;
     height: ${props => props.theme.NAVBAR.height};
     justify-content: flex-start;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     padding: 0 3rem;
   }
 `

@@ -20,9 +20,9 @@ export const Date = withTheme(
 
       return (
         <time
-          pubdate='pubdate'
-          itemProp='datePublished'
           dateTime={date}
+          itemProp='datePublished'
+          pubdate='pubdate'
         >
           {date}
         </time>
@@ -35,4 +35,5 @@ export const Date = withTheme(
 //   <span className='fa fa-calendar' />
 //   <time>date | date : "dd MMMM y"</time>
 //  </li>
+//
 // <span className='fa fa-calendar' />

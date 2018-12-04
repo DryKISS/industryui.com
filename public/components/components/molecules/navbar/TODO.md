@@ -12,7 +12,7 @@
 - [ ] Component can have left and right positiions
 - [ ] Header is the bit to the right like bootstrap
 - [ ] Allow the fixed position to be changeable
-- [ ] Move data to __mocks__ for tests and stories
+- [ ] Move mock data to __mocks__ for tests and stories
 
 ## Done
 

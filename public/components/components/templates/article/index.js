@@ -1,21 +1,19 @@
 /**
  * Article
+ * Template to showcase a Blog article.
+ *
+ * Article and category data is passed in
  */
 
 // React
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { object, string } from 'prop-types'
 
 // UI
-import {
-  ArticleDetails, Breadcrumb, Category, Heading, Image
-} from '../../'
-
-// Styles
-import styles from './styles'
+import { ArticleDetails, Breadcrumb, Category, Heading, Image } from '../../'
 
 // Style
-import { withTheme } from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 
 export const Article = withTheme(
   class Article extends Component {
@@ -44,70 +42,44 @@ export const Article = withTheme(
       const { article, category } = this.props
 
       return (
-        <Fragment>
+        <StyledArticle
+          itemProp='blogPost'
+          itemScope
+          itemType='http://schema.org/BlogPosting'
+          role='article'
+        >
 
-          {/* // {role === 'article' &&
-          //   <article
-          //     itemprop='blogPost'
-          //     itemscope=''
-          //     itemtype='http://schema.org/BlogPosting'
-          //     role='article'
-          //   >
-          // }
+          <header>
 
-          // {role === 'article' &&
-          //   </article>
-          // }
-          */}
-
-          {/* Article */}
-          <article
-            className='Article'
-            itemScope
-            itemType='http://schema.org/BlogPosting'
-            role='article'
-          >
-
-            {/* Header */}
-            <header>
-
-              {/* Image - Hero */}
-              {this.frontMatter('image') &&
-                <Image
-                  alt={this.frontMatter('heading')}
-                  src={this.frontMatter('image')}
-                />
-              }
-
-              {/* Breadcrumb */}
-              <Breadcrumb
-                category={category}
-                page={this.frontMatter('heading')}
-                path='javasript:;'
+            {this.frontMatter('image') &&
+              <StyledImage
+                alt={this.frontMatter('heading')}
+                slant
+                src={this.frontMatter('image')}
               />
+            }
 
-              {/* Category */}
-              <Category category={category} path='javasript:;' />
-
-              {/* Heading */}
-              <Heading heading={this.frontMatter('heading')} />
-
-              {/* Article Details */}
-              <ArticleDetails
-                author={this.frontMatter('author')}
-                tags={this.frontMatter('tags')}
-              />
-
-            </header>
-
-            {/* Article content */}
-            <div
-              className='Article-content'
-              dangerouslySetInnerHTML={this.content()}
-              itemProp='text'
+            <Breadcrumb
+              category={category}
+              page={this.frontMatter('heading')}
+              path='javasript:;'
             />
 
-            {/* <footer>
+            <Category category={category} path='javasript:;' />
+
+            <Heading content={this.frontMatter('heading')} />
+
+            <ArticleDetails
+              author={this.frontMatter('author')}
+              tags={this.frontMatter('tags')}
+            />
+
+          </header>
+
+          <div dangerouslySetInnerHTML={this.content()} itemProp='text' />
+
+          {/*
+            <footer>
               <% if locals[:pager] %>
                 <% prevPage = article.article_previous || false %>
                 <% nextPage = article.article_next || false %>
@@ -116,14 +88,170 @@ export const Article = withTheme(
                   nextPage: nextPage
                 } %>
               <% end %>
-            </footer> */}
+            </footer>
+          */}
 
-          </article>
-
-          <style jsx>{styles}</style>
-
-        </Fragment>
+        </StyledArticle>
       )
     }
   }
 )
+
+const StyledArticle = styled.article`
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+
+  .article--instagram {
+    display: grid;
+    justify-items: center;
+  }
+`
+
+const StyledImage = styled(Image)`
+  position: relative;
+`
+
+// li:before {
+//   color: #000 !important;
+// }
+
+// li.active,
+// a {
+//   color: red;
+// }
+
+// a:hover {
+//   color: red;
+// }
+
+// .image__img {
+//   width: 100%;
+// }
+
+// // Headings
+// //------------------------------------------------------------------------//
+// h1 {
+// line-height: 44px;
+// margin: 20px 0;
+// }
+
+// h2 {
+// line-height: 27px;
+// margin: 20px 0;
+// }
+
+// h3 {
+// line-height: 22px;
+// margin: 20px 0;
+// }
+
+// // Image
+// //------------------------------------------------------------------------//
+// .img-responsive {
+// margin-bottom: 15px;
+// }
+
+// // Links
+// //------------------------------------------------------------------------//
+// a {
+// color: $brand-primary;
+
+// &:hover {
+// color: #bdbaba;
+// }
+// }
+
+// // Paragraph
+// //------------------------------------------------------------------------//
+// p {
+// margin-bottom: 20px;
+// }
+
+// // UL
+// //------------------------------------------------------------------------//
+// ul {
+// list-style: none;
+// margin-bottom: 20px;
+// padding-left: 25px;
+
+// li {
+// &::before {
+// color: $brand-primary;
+// content: '\002022';
+// display: inline-block;
+// width: 14px;
+// }
+// }
+// }
+
+// // Table
+// //------------------------------------------------------------------------//
+// .table {
+// tr {
+// td {
+// border-top: 0;
+// padding: 0;
+// }
+// }
+
+// p {
+// margin: 0;
+// }
+// }
+// }
+
+// // Instagram
+// //--------------------------------------------------------------------------//
+// &--instagram {
+// display: grid;
+// justify-items: center;
+// }
+
+// // Media queries - Mobile Landscape
+// //--------------------------------------------------------------------------//
+// @media only screen and (orientation: portrait) and (min-width: 320px) and (max-width: 767px) {
+// // Image
+// //------------------------------------------------------------------------//
+// &__image {
+// margin: 0 -15px;
+
+// // Background slant
+// //----------------------------------------------------------------------//
+// &:after {
+// height: 40px;
+// }
+// }
+// }
+
+// // Media queries - Mobile
+// //--------------------------------------------------------------------------//
+// @media only screen and (min-width: 320px) and (max-width: 767px) {
+// margin-bottom: 30px;
+// margin-top: 171px;
+// position: initial;
+
+// // Image
+// //------------------------------------------------------------------------//
+// &__image {
+// margin: 0 -15px;
+// }
+
+// &.newsroom {
+// margin-top: 0;
+// }
+
+// // Embed
+// //------------------------------------------------------------------------//
+// .embed-responsive {
+// margin-left: -15px;
+// margin-right: -15px;
+// }
+
+// // Breadcrumb
+// //------------------------------------------------------------------------//
+// &__breadcrumb {
+// margin-left: -15px;
+// margin-right: -15px;
+// }
+// }

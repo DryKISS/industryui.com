@@ -6,7 +6,7 @@
 
 // React
 import React, { Component } from 'react'
-import { bool, number, objectOf, oneOfType, string } from 'prop-types'
+import { any, bool, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -15,6 +15,7 @@ export const Image = withTheme(
   class Image extends Component {
     static propTypes = {
       alt: string.isRequired,
+      className: any,
       imageClasses: string,
       figureClasses: string,
       radius: bool,
@@ -32,11 +33,19 @@ export const Image = withTheme(
     }
 
     render () {
-      const { alt, figureClasses, imageClasses, slant, src, style } = this.props
+      const {
+        alt,
+        cover,
+        className,
+        imageClasses,
+        slant,
+        src,
+        style
+      } = this.props
 
       return (
         <StyledFigure
-          className={figureClasses}
+          className={className}
           itemProp='image'
           itemScope=''
           itemType='http://schema.org/ImageObject'
@@ -47,6 +56,7 @@ export const Image = withTheme(
           <StyledImg
             alt={alt}
             className={imageClasses}
+            cover={cover}
             itemProp='contentUrl'
             src={src}
           />
@@ -80,12 +90,19 @@ const StyledFigure = styled.figure`
   `}
 `
 
+const coverStyles = `
+  height: 150px;
+  width: 100%;
+  object-fit: fill;
+`
+
 const StyledImg = styled.img`
   /* border-style: none; */
   /* display: block; */
   /* height: auto; */
   /* max-width: 100%; */
-  border-radius: .5rem .5rem 0 0;
+  /* border-radius: .5rem .5rem 0 0; */
+  ${props => props.cover ? coverStyles : ''}
   vertical-align: middle;
   width: 100%;
 `

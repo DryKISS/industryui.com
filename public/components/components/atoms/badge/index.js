@@ -21,7 +21,6 @@ export const Badge = withTheme(
 
       return (
         <StyledBadge
-          className='Badge Badge-secondary'
           itemProp='keywords'
           href={to}
         >
@@ -34,6 +33,8 @@ export const Badge = withTheme(
 
 // Style
 const StyledBadge = styled.a`
+  background-color: #e4e3e3;
+  color: #3e3e3e;
   border-radius: 0;
   display: inline-block;
   font-size: 90%;
@@ -43,14 +44,8 @@ const StyledBadge = styled.a`
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
+
+  &:empty {
+    display: none;
+  }
 `
-
-//   .Badge-secondary {
-//     background-color: #e4e3e3;
-//     color: #3e3e3e;
-//   }
-
-//   .Badge:empty {
-//     display: none;
-//   }
-//   `

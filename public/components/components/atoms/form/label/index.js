@@ -1,10 +1,11 @@
 /**
  * Label
+ * Provides the form element labels
  */
 
 // React
 import React, { Component } from 'react'
-import { array, string } from 'prop-types'
+import { node, string } from 'prop-types'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -12,7 +13,7 @@ import styled, { withTheme } from 'styled-components'
 export const Label = withTheme(
   class Label extends Component {
     static propTypes = {
-      children: array.isRequired,
+      children: node.isRequired,
       id: string,
       text: string
     }

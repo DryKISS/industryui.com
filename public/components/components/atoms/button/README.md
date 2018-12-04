@@ -2,5 +2,5 @@
 
 ## Links
 
-- https://jsramblings.com/2017/10/29/migrating-to-styled-components-cheatsheet.html
-- https://www.w3schools.com/tags/tag_button.asp
+- Bootstrap: https://getbootstrap.com/docs/4.1/components/buttons/
+- HTML: https://www.w3schools.com/tags/tag_button.asp

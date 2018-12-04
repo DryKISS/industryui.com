@@ -3,13 +3,14 @@
  * Provides a list of the accepted
  */
 export const CONTEXT = {
+
   DARK: 'dark',
   LIGHT: 'light',
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
-  ACCENT: 'accent',
-  ALERT: 'alert',
-  ERROR: 'error',
+  SUCCESS: 'success',
   INFO: 'info',
-  SUCCESS: 'success'
+  WARNING: 'warning',
+  DANGER: 'danger'
+
 }

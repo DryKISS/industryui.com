@@ -24,17 +24,13 @@ export const PageHeading = withTheme(
       const { divider, heading, strapline } = this.props
 
       return (
-        <StyledHeader>
+        <StyledHeader divider={divider}>
 
           <StyledHeading content={heading} context='primary' pageHeading />
 
-          {
-            strapline && <StyledStrapline>{strapline}</StyledStrapline>
-          }
+          {strapline && <StyledStrapline>{strapline}</StyledStrapline>}
 
-          {
-            divider && <Divider size='lg' />
-          }
+          {divider && <Divider size='md' />}
 
         </StyledHeader>
       )
@@ -44,7 +40,7 @@ export const PageHeading = withTheme(
 
 // Style
 const StyledHeader = styled.header`
-  margin-bottom: 2rem;
+  margin-bottom: ${props => !props.divider && '2rem'};
 `
 
 const StyledHeading = styled(Heading)`

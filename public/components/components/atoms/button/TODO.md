@@ -1,9 +1,12 @@
 # Todo
 
-- [ ] Need to add the context and size from the constants
-- [ ] Can just pass ...this.props to the component
+- [ ] Need to add the context, type and size from the constants
 - [ ] Context should be a constants and oneOf
 - [ ] Size should be a constants and a oneOf
-- [ ] Allow the Theme to be passed in and utilised
 - [ ] Check out the dynamic classes inline
-- [ ] Allow the content to be set by children or content
+
+## Done
+
+- [X] Can just pass ...this.props to the component
+- [X] Allow the content to be set by children or content
+- [X] Allow the Theme to be passed in and utilised

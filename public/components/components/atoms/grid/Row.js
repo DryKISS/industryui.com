@@ -3,15 +3,11 @@
  */
 
 // React
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { node, number, objectOf, oneOfType, string } from 'prop-types'
-import cx from 'classnames'
 
 // Style
-import styles from './Row.styles'
-
-// Style
-import { withTheme } from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 
 export const Row = withTheme(
   class Row extends Component {
@@ -27,24 +23,40 @@ export const Row = withTheme(
     render () {
       const { children, className, style } = this.props
 
-      const classes = cx(
-        'Row',
-        className
-      )
-
       return (
-        <Fragment>
-
-          <div
-            className={classes}
-            children={children}
-            style={style}
-          />
-
-          <style jsx>{styles}</style>
-
-        </Fragment>
+        <StyledRow
+          className={className}
+          children={children}
+          style={style}
+        />
       )
     }
   }
 )
+
+const StyledRow = styled.div`
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  margin-left: -${props => props.theme.GRID.gutterWidth / 2}px;
+  margin-right: -${props => props.theme.GRID.gutterWidth / 2}px;
+
+  /* Medium */
+  @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
+    margin-left: -${props => props.theme.GRID.containerWidths.md[1] / 2}px;
+    margin-right: -${props => props.theme.GRID.containerWidths.md[1] / 2}px;
+  }
+
+  /* Large */
+  @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
+    margin-left: -${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
+    margin-right: -${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
+  }
+
+  /* Extra large */
+  @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
+    margin-left: -${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
+    margin-right: -${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
+  }
+`
