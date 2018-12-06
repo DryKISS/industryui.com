@@ -4,11 +4,10 @@
 
 // React
 import React from 'react'
-// import { MemoryRouter } from 'react-router-dom'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs, text, select } from '@storybook/addon-knobs'
+import { withKnobs } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
 import { withReadme } from 'storybook-readme'
 
@@ -16,43 +15,20 @@ import { withReadme } from 'storybook-readme'
 import { Navbar } from '../../'
 import Readme from './README.md'
 
-// Story
-const stories = storiesOf('Molecules/Navbar', module)
+// Data
+import { NAVIGATION } from './__mocks__/links'
+import SVG from './__resources__/tailwise-logo.svg'
 
-// Decorators
-stories.addDecorator(withKnobs)
-stories.addDecorator(withReadme(Readme))
+storiesOf('Molecules/Navbar', module)
 
-const items = [
-  { name: 'About us', path: '/about/' },
-  { name: 'Journal', path: '/journal/' },
-  { name: 'Information', path: '/info/' },
-  { name: 'Contact', path: '/contact/' }
-]
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
 
-const activeLinks = {
-  '': 'None',
-  '/about/': 'About us',
-  '/journal/': 'Journal',
-  '/info/': 'Information',
-  '/contact/': 'Contact'
-}
-
-// Default
-stories.add('Default',
-  withInfo(`
-    ~~~js
-    <Navbar />
-    ~~~
-  `)(() =>
-    // <MemoryRouter>
-    <Navbar
-      color='red'
-      fixed={null}
-      items={items}
-      pathname={select('Active Link', activeLinks, null)}
-      title={text('Title', 'Umbrella Ltd')}
-    />
-    // </MemoryRouter>
+  .add('Default',
+    withInfo()(() =>
+      <Navbar
+        brand={SVG}
+        links={NAVIGATION}
+      />
+    )
   )
-)
