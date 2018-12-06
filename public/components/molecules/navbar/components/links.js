@@ -6,16 +6,11 @@
 import React, { Component } from 'react'
 import { bool, object, string } from 'prop-types'
 
-// Next
-// import getConfig from 'next/config'
-
 // UI
 import { Button, Link } from '../../../'
 
 // Style
 import styled, { withTheme } from 'styled-components'
-
-// const { TYPE } = getConfig().publicRuntimeConfig
 
 export const Links = withTheme(
   class Links extends Component {
@@ -68,10 +63,8 @@ export const Links = withTheme(
               {link.map(({ active, id, name, to, type }) =>
 
                 <StyledListItem key={id}>
-
                   { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
                   { (!type || type === 'link') && this.renderLink(active, id, name, to) }
-
                 </StyledListItem>
 
               )}

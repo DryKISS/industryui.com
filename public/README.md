@@ -5,7 +5,7 @@ Component library built for NextJS
 ## Usage
 
 - NPM link this into the desired project
-- Do not npm install as tree shaking in the NextJS project will compact the required components better
+- Do not `npm install` as tree shaking in the NextJS project will compact the required components better
 
 ## Links
 

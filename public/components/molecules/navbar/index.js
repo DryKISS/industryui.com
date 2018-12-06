@@ -24,7 +24,8 @@ export const Navbar = withTheme(
 
     static propTypes = {
       brand: string,
-      links: object
+      links: object,
+      type: string
     }
 
     static defaultProps = {
@@ -37,7 +38,7 @@ export const Navbar = withTheme(
     }
 
     render () {
-      const { brand, links } = this.props
+      const { brand, links, type } = this.props
       const { visible } = this.state
 
       return (
@@ -49,7 +50,7 @@ export const Navbar = withTheme(
 
             <Toggler handleMenuClick={this.handleMenuClick} visible={visible} />
 
-            {links && <Links links={links} visible={visible} />}
+            {links && <Links links={links} type={type} visible={visible} />}
 
           </StyledNav>
 
