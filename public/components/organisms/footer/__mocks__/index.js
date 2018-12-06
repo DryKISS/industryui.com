@@ -1,0 +1,4 @@
+/**
+ * Mocks
+ */
+export * from './footer'
