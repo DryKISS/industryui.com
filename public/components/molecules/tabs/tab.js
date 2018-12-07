@@ -45,6 +45,7 @@ const StyledTab = styled.ol`
   background-color: ${props => props.active && 'white'};
   border: ${props => props.active && 'solid #ccc'};
   border-width: ${props => props.active && '1px 1px 0 1px'};
+  cursor: pointer;
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
