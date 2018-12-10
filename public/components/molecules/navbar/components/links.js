@@ -17,27 +17,20 @@ export const Links = withTheme(
     static propTypes = {
       links: object.isRequired,
       visible: bool,
-      type: string
     }
 
     renderButton = (id, name, to, type) => {
       return (
-        <Link to={to}>
-          <Button id={id} {...type}>{name}</Button>
+        <Link to={to} type={type}>
+          <Button id={id} type={type.as}>{name}</Button>
         </Link>
       )
     }
 
-    renderLink = (active, id, name, to) => {
-      const { type } = this.props
-
-      if (type && (!active || active !== type)) {
-        return
-      }
-
+    renderLink = (active, id, name, to, type) => {
       return (
-        <Link to={to} passHref>
-          <StyledLink id={id}>{name}</StyledLink>
+        <Link to={to} passHref type={type} >
+          <StyledLink id={id} context={type.context} >{name}</StyledLink>
         </Link>
       )
     }
@@ -56,15 +49,15 @@ export const Links = withTheme(
       return (
         <StyledCollapse visible={visible}>
 
-          {Object.entries(links).map(([direction, link]) =>
+          {Object.entries(links).map(([direction, links]) =>
 
             <StyledList direction={direction} key={direction}>
 
-              {link.map(({ active, id, name, to, type }) =>
+              {links.map(({ active, id, name, to, type }) =>
 
                 <StyledListItem key={id}>
-                  { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
-                  { (!type || type === 'link') && this.renderLink(active, id, name, to) }
+                  { ( type.as === 'button') && this.renderButton(id, name, to, type) }
+                  { ( type.as === 'link') && this.renderLink(active, id, name, to, type) }
                 </StyledListItem>
 
               )}
@@ -96,7 +89,7 @@ const StyledCollapse = styled.div`
 `
 
 const StyledList = styled.ul`
-  background-color: #04D4DC;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -112,11 +105,12 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  margin: auto .75rem;
+  margin: 1.1em .75rem;
+  
 `
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.NAVBAR.colourActive};
+  color: ${props => props.theme.NAVBAR.contextColour[props.context]};
   display: block;
   font-weight: bold;
   line-height: 1.5;
@@ -132,3 +126,8 @@ const StyledLink = styled.a`
     /* padding: 0 .75rem; */
   }
 `
+
+
+
+
+

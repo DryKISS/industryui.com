@@ -7,13 +7,21 @@ export const NAVIGATION = {
     {
       id: 'navHowWorks',
       name: 'How It Works',
-      to: '/how-it-works'
+      to: '/how-it-works',
+      type: {
+        as: 'link',
+        context: 'default'
+      }
     },
 
     {
       id: 'navDogBreeds',
       name: 'Dog Breeds',
-      to: '/dogs/breeds'
+      to: '/dogs/breeds',
+      type: {
+        as: 'link',
+        context: 'default'
+      }
     }
   ],
 
@@ -21,7 +29,11 @@ export const NAVIGATION = {
     {
       id: 'navLogIn',
       name: 'Log in',
-      to: '/sign-in'
+      to: '/sign-in',
+      type: {
+        as: 'link',
+        context: 'default'
+      }
     },
 
     {
@@ -29,10 +41,8 @@ export const NAVIGATION = {
       name: 'Find a Puppy',
       to: '/dogs/litters',
       type: {
-        as: 'button',
-        context: 'danger',
-        outline: true,
-        size: 'lg'
+        as: 'link',
+        context: 'danger'
       }
     },
 
@@ -41,9 +51,8 @@ export const NAVIGATION = {
       name: 'Breeder Sign Up',
       to: '/sign-up/breeder',
       type: {
-        as: 'button',
-        context: 'danger',
-        size: 'lg'
+        as: 'link',
+        context: 'danger'
       }
     }
   ]

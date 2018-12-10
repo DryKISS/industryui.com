@@ -11,6 +11,11 @@ export const NAVBAR = {
   colourActive: COLOUR.dark,
   colourHover: COLOUR.dark,
 
+  contextColour: {
+    'default': '#778794',
+    'danger': '#EB2C75'
+  },
+
   height: '6rem'
 
 }
