@@ -23,7 +23,7 @@ export const COLOUR = {
   grayish: '#778794',     //gray
   magentish: '#EB2C75',     //magenta
   cyanish: '#04D4CD',     //cyan                             
-                               
+
   transparent: 'transparent'
 }
 

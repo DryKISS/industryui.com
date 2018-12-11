@@ -31,7 +31,11 @@ export const Links = withTheme(
 
               {links.map(({ active, id, name, to, type }) =>
 
-                <StyledListItem key={id}><Link to={to} passHref type={type} ><StyledLink id={id} type={type}>{name}</StyledLink></Link></StyledListItem>
+                <StyledListItem key={id}>
+                  <Link to={to} passHref type={type} >
+                    <StyledLink id={id} type={type}>{name}</StyledLink>
+                  </Link>
+                </StyledListItem>
 
               )}
 
@@ -82,13 +86,11 @@ const StyledListItem = styled.li`
   font-size: 16px;
   font-family: sans-serif;
   border-bottom: #F0F2F5 1.5px solid;
-  
 `
 
 const StyledLink = styled.a`
-  
   display: block;
-  
+
   /* padding: 1rem 0; */
   text-decoration: none;
 
@@ -109,7 +111,7 @@ const StyledLink = styled.a`
       border-radius: 30px;
     `}
   }
-  
+
   @media (max-width: 768px) {
     font-weight: bold;
     line-height: 1.5; 
@@ -122,7 +124,6 @@ const StyledLink = styled.a`
       color: ${props.theme.NAVBAR['menuColor2']};
     `}
   }
-  
 `
 
 
