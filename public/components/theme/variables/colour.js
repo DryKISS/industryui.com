@@ -4,7 +4,7 @@
  * @see https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
  *
  * @todo Change this name to COLOUR
- */ 
+ */
 export const COLOUR = {
   white: '#fff',
   black: '#000',
@@ -22,7 +22,7 @@ export const COLOUR = {
   // menu colors cyan & magenta
   grayish: '#778794',     //gray
   magentish: '#EB2C75',     //magenta
-  cyanish: '#04D4CD',     //cyan                             
+  cyanish: '#04D4CD',     //cyan
 
   transparent: 'transparent'
 }
