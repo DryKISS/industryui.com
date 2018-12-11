@@ -31,12 +31,7 @@ export const Links = withTheme(
 
               {links.map(({ active, id, name, to, type }) =>
 
-                <StyledListItem key={id}>
-                  <Link to={to} passHref type={type} >
-                    <StyledLink id={id} button={ type.as === 'button' }
-                                context={type.context}>{name}</StyledLink>
-                  </Link>
-                </StyledListItem>
+                <StyledListItem key={id}><Link to={to} passHref type={type} ><StyledLink id={id} type={type}>{name}</StyledLink></Link></StyledListItem>
 
               )}
 
@@ -91,7 +86,7 @@ const StyledListItem = styled.li`
 `
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.NAVBAR.contextColour[props.context]};
+  
   display: block;
   
   /* padding: 1rem 0; */
@@ -105,11 +100,11 @@ const StyledLink = styled.a`
     line-height: 1.5;
     /* padding: 0 .75rem; */
     font-size: 13px;
-  
-    ${props => props.button && `
-      background-color: ${props.theme.NAVBAR.contextColour.menuColor3};
-      color: white; 
 
+    color: ${props => props.theme.NAVBAR[props.type.color]};
+    background-color: ${props => props.theme.NAVBAR[props.type.backgroundColor]}; 
+
+    ${props => props.type.as === 'button' && `
       padding: 7px 15px 7px 15px;
       border-radius: 30px;
     `}
@@ -118,6 +113,14 @@ const StyledLink = styled.a`
   @media (max-width: 768px) {
     font-weight: bold;
     line-height: 1.5; 
+
+    background-color: ${props => props.theme.NAVBAR['white']};
+
+    color: ${props => props.theme.NAVBAR['menuColor1']};
+
+    ${props => props.type.as === 'button' && `
+      color: ${props.theme.NAVBAR['menuColor2']};
+    `}
   }
   
 `

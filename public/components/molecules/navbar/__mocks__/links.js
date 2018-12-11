@@ -10,7 +10,8 @@ export const NAVIGATION = {
       to: '/how-it-works',
       type: {
         as: 'link',
-        context: 'menuColor1'
+        color: 'menuColor1',
+        backgroundColor: 'white'
       }
     },
     {
@@ -19,7 +20,8 @@ export const NAVIGATION = {
       to: '/dogs/breeds',
       type: {
         as: 'link',
-        context: 'menuColor1'
+        color: 'menuColor1',
+        backgroundColor: 'white'
       }
     },
     {
@@ -28,7 +30,8 @@ export const NAVIGATION = {
       to: '/dogs/breeders',
       type: {
         as: 'link',
-        context: 'menuColor1'
+        color: 'menuColor1',
+        backgroundColor: 'white'
       }
     }
   ],
@@ -40,7 +43,8 @@ export const NAVIGATION = {
       to: '/dogs/litters',
       type: {
         as: 'button',
-        context: 'menuText2'
+        color: 'white',
+        backgroundColor: 'menuColor3'
       }
     },
     {
@@ -49,7 +53,8 @@ export const NAVIGATION = {
       to: '/sign-up/breeder',
       type: {
         as: 'button',
-        context: 'menuColor2'
+        color: 'white',
+        backgroundColor: 'menuColor2'
       }
     },
     {
@@ -58,7 +63,8 @@ export const NAVIGATION = {
       to: '/sign-in',
       type: {
         as: 'link',
-        context: 'menuColor1'
+        color: 'menuColor1',
+        backgroundColor: 'white'
       }
     }
   ]

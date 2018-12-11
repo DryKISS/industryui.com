@@ -11,11 +11,10 @@ export const NAVBAR = {
   colourActive: COLOUR.dark,
   colourHover: COLOUR.dark,
 
-  contextColour: {    // !! make flat
-    'menuColor1': COLOUR.menuColor1,
-    'menuColor2': COLOUR.menuColor2,
-    'menuColor3': COLOUR.menuColor3
-  },
+  menuColor1: COLOUR.grayish,
+  menuColor2: COLOUR.magentish,
+  menuColor3: COLOUR.cyanish,
+  white: COLOUR.white,
 
   height: '6rem'
 
