@@ -32,7 +32,7 @@ export const Links = withTheme(
               {links.map(({ active, id, name, to, type }) =>
 
                 <StyledListItem key={id}>
-                  <Link to={to} passHref type={type} >
+                  <Link to={to} passHref>
                     <StyledLink id={id} type={type}>{name}</StyledLink>
                   </Link>
                 </StyledListItem>

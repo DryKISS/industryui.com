@@ -20,7 +20,7 @@ export const Link = withTheme(
         object,
         string
       ]),
-      type: object
+      type: string
     }
 
     render () {
