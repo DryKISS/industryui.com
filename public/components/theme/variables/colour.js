@@ -22,7 +22,8 @@ export const COLOUR = {
   // menu colors cyan & magenta
   menuColor1: '#778794',     //gray
   menuColor2: '#EB2C75',     //magenta
-
+  menuColor3: '#04D4CD',     //cyan                             
+                               
   transparent: 'transparent'
 }
 

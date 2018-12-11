@@ -105,13 +105,13 @@ const StyledLink = styled.a`
     line-height: 1.5;
     /* padding: 0 .75rem; */
     font-size: 13px;
-
+  
     ${props => props.button && `
-      background-color: ${props.theme.NAVBAR.contextColour.menuColor2};
+      background-color: ${props.theme.NAVBAR.contextColour.menuColor3};
       color: white; 
 
+      padding: 7px 15px 7px 15px;
       border-radius: 30px;
-      padding: 7px;
     `}
   }
   

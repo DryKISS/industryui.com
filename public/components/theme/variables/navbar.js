@@ -13,7 +13,8 @@ export const NAVBAR = {
 
   contextColour: {    // !! make flat
     'menuColor1': COLOUR.menuColor1,
-    'menuColor2': COLOUR.menuColor2
+    'menuColor2': COLOUR.menuColor2,
+    'menuColor3': COLOUR.menuColor3
   },
 
   height: '6rem'
