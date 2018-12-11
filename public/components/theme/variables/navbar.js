@@ -11,9 +11,9 @@ export const NAVBAR = {
   colourActive: COLOUR.dark,
   colourHover: COLOUR.dark,
 
-  contextColour: {
-    'default': '#778794',
-    'danger': '#EB2C75'
+  contextColour: {    // !! make flat
+    'menuColor1': COLOUR.menuColor1,
+    'menuColor2': COLOUR.menuColor2
   },
 
   height: '6rem'

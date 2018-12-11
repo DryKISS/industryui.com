@@ -19,30 +19,6 @@ export const Links = withTheme(
       visible: bool,
     }
 
-    renderButton = (id, name, to, type) => {
-      return (
-        <Link to={to} type={type}>
-          <Button id={id} type={type.as}>{name}</Button>
-        </Link>
-      )
-    }
-
-    renderLink = (active, id, name, to, type) => {
-      return (
-        <Link to={to} passHref type={type} >
-          <StyledLink id={id} context={type.context} >{name}</StyledLink>
-        </Link>
-      )
-    }
-
-    renderLinks = () => {
-
-    }
-
-    renderGroup = () => {
-
-    }
-
     render () {
       const { links, visible } = this.props
 
@@ -56,8 +32,10 @@ export const Links = withTheme(
               {links.map(({ active, id, name, to, type }) =>
 
                 <StyledListItem key={id}>
-                  { ( type.as === 'button') && this.renderButton(id, name, to, type) }
-                  { ( type.as === 'link') && this.renderLink(active, id, name, to, type) }
+                  <Link to={to} passHref type={type} >
+                    <StyledLink id={id} button={ type.as === 'button' }
+                                context={type.context}>{name}</StyledLink>
+                  </Link>
                 </StyledListItem>
 
               )}
@@ -105,15 +83,17 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  margin: 1.1em .75rem;
+  padding: 1.1em .75rem;
+  font-size: 16px;
+  font-family: sans-serif;
+  border-bottom: #F0F2F5 1.5px solid;
   
 `
 
 const StyledLink = styled.a`
   color: ${props => props.theme.NAVBAR.contextColour[props.context]};
   display: block;
-  font-weight: bold;
-  line-height: 1.5;
+  
   /* padding: 1rem 0; */
   text-decoration: none;
 
@@ -124,7 +104,22 @@ const StyledLink = styled.a`
   @media (min-width: 768px) {
     line-height: 1.5;
     /* padding: 0 .75rem; */
+    font-size: 13px;
+
+    ${props => props.button && `
+      background-color: ${props.theme.NAVBAR.contextColour.menuColor2};
+      color: white; 
+
+      border-radius: 30px;
+      padding: 7px;
+    `}
   }
+  
+  @media (max-width: 768px) {
+    font-weight: bold;
+    line-height: 1.5; 
+  }
+  
 `
 
 
