@@ -22,8 +22,16 @@ export const Links = withTheme(
 
     renderButton = (id, name, to, type) => {
       return (
-        <Link to={to}>
-          <Button id={id} {...type}>{name}</Button>
+        <Link to={to} passHref>
+          <StyledButton
+            id={id}
+            context={type.context}
+            outline={type.outline}
+            size={type.size}
+            type={type.as}
+          >
+            {name}
+          </StyledButton>
         </Link>
       )
     }
@@ -64,7 +72,7 @@ export const Links = withTheme(
 
                 <StyledListItem key={id}>
                   { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
-                  { (!type || type === 'link') && this.renderLink(active, id, name, to) }
+                  { (!type || type.as === 'link') && this.renderLink(active, id, name, to) }
                 </StyledListItem>
 
               )}
@@ -79,6 +87,7 @@ export const Links = withTheme(
   }
 )
 
+// Style
 const StyledCollapse = styled.div`
   align-items: center;
   border-top: 2px solid white;
@@ -96,7 +105,7 @@ const StyledCollapse = styled.div`
 `
 
 const StyledList = styled.ul`
-  background-color: #04D4DC;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -112,23 +121,47 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
+  border-top: #F0F2F5 1px solid;
   margin: auto .75rem;
+  padding: 1.1em .75rem;
+
+  @media (min-width: 768px) {
+    border: none;
+    padding: initial;
+  }
 `
 
 const StyledLink = styled.a`
   color: ${props => props.theme.NAVBAR.colourActive};
   display: block;
+  font-family: ${props => props.theme.TYPOGRAPHY.font};
   font-weight: bold;
   line-height: 1.5;
-  /* padding: 1rem 0; */
   text-decoration: none;
 
   &:hover {
-    color: ${props => props.theme.NAVBAR.colourActive};
+    color: ${props => props.theme.NAVBAR.colourHover};
   }
 
   @media (min-width: 768px) {
     line-height: 1.5;
-    /* padding: 0 .75rem; */
+  }
+`
+
+const StyledButton = styled(Button)`
+  @media (max-width: 768px) {
+    background: none;
+    border: none;
+    color: ${props => props.theme.COLOUR.danger};
+    cursor: pointer;
+    font-family: ${props => props.theme.TYPOGRAPHY.font};
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+
+    &:hover {
+      background: none;
+      color: ${props => props.theme.NAVBAR.colourHover};
+    }
   }
 `

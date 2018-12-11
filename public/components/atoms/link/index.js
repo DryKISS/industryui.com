@@ -50,7 +50,3 @@ export const Link = withTheme(
     }
   }
 )
-
-// a {
-//   background-color: transparent;
-// }

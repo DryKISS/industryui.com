@@ -9,7 +9,7 @@ export const NAVBAR = {
   background: COLOUR.white,
 
   colourActive: COLOUR.dark,
-  colourHover: COLOUR.dark,
+  colourHover: '#aaa',
 
   height: '6rem'
 
