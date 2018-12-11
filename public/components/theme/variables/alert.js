@@ -1,7 +1,7 @@
-
-// // Alerts
-// //
-// // Define alert colors, border radius, and padding.
+/**
+ * Alerts
+ * Define alert colors, border radius, and padding.
+ */
 
 // $alert-padding-y:                   .75rem !default;
 // $alert-padding-x:                   1.25rem !default;

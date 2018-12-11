@@ -4,7 +4,7 @@
 
 // React
 import React, { Component } from 'react'
-import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
+import { any, bool, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -12,7 +12,7 @@ import styled, { withTheme } from 'styled-components'
 export const Column = withTheme(
   class Column extends Component {
     static propTypes = {
-      children: node.isRequired,
+      children: any.isRequired,
       className: string,
       debug: bool,
       fluid: string,

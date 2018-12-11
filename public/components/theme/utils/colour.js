@@ -4,11 +4,14 @@
 export const COLOUR = ({ context, outline, theme }) => {
   return `color: ${
     (outline && theme.COLOUR[context]) ||
-    (context === 'light' && theme.COLOUR['dark']) ||
+    (context === 'light' && theme.COLOUR.dark) ||
     (context && theme.COLOUR[context])
   };`
 }
 
+/**
+ * Useful for hover effects to give a percentage difference
+ */
 export const SHADE_COLOUR = (color, percent) => {
   var R = parseInt(color.substring(1, 3), 16)
   var G = parseInt(color.substring(3, 5), 16)

@@ -37,9 +37,8 @@ const StyledLi = styled.li`
   }
 `
 
-//   @media (min-width: ${configuration.breakpoints.sm}px) {
-//     .List-itemInline:not(:last-child) {
-//       margin-right: 3rem;
-//     }
+// @media (min-width: ${configuration.breakpoints.sm}px) {
+//   .List-itemInline:not(:last-child) {
+//     margin-right: 3rem;
 //   }
-//   `
+// }

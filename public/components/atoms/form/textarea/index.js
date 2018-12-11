@@ -47,14 +47,16 @@ export const Textarea = withTheme(
     }
 
     _wordCount = (e) => {
+      const { handleChange } = this.props
+      handleChange(e)
       this.setState({ charCount: e.target.value.length })
+      console.log(e.target)
     }
 
     render () {
       const {
         autoFocus,
         disabled,
-        handleChange,
         id,
         label,
         maxLength,
@@ -78,10 +80,7 @@ export const Textarea = withTheme(
             id={id}
             maxLength={maxLength}
             name={id}
-            onChange={(e) => {
-              handleChange(e)
-              this._wordCount(e)
-            }}
+            onChange={this._wordCount}
             placeholder={placeholder}
             readOnly={readOnly}
             required={required}

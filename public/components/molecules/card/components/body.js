@@ -6,6 +6,9 @@
 import React, { PureComponent } from 'react'
 import { node, string } from 'prop-types'
 
+// UI
+import { COLOUR } from '../../../'
+
 // Style
 import styled, { withTheme } from 'styled-components'
 
@@ -13,25 +16,24 @@ export const CardBody = withTheme(
   class CardBody extends PureComponent {
     static propTypes = {
       children: node,
+      context: string,
       title: string
     }
 
     render () {
-      const { title, children } = this.props
+      const { title, children, context } = this.props
 
       return (
         <StyledBody>
 
-          {
-            title &&
-              <StyledWrapper>
-                <StyledTitle className='Card-title'>{title}</StyledTitle>
-              </StyledWrapper>
+          {title &&
+            <StyledWrapper>
+              <StyledTitle className='Card-title'>{title}</StyledTitle>
+            </StyledWrapper>
           }
 
-          {
-            children &&
-              <StyledContent>{children}</StyledContent>
+          {children &&
+            <StyledContent context={context}>{children}</StyledContent>
           }
 
         </StyledBody>
@@ -51,7 +53,7 @@ const StyledWrapper = styled.div`
 `
 
 const StyledTitle = styled.h1`
-  color: #3a4e5f;
+  /* ${props => COLOUR(props)} */
   font-size: 1.5rem;
   font-weight: 600;
   margin: 24px auto 16px auto;
@@ -60,7 +62,7 @@ const StyledTitle = styled.h1`
 `
 
 const StyledContent = styled.div`
-  color: #6b7a87;
+  /* ${props => COLOUR(props)} */
   padding: 1rem;
 `
 

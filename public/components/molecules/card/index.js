@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { bool, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Image, Link } from '../../'
+import { SHADE_COLOUR, Image, Link } from '../../'
 import { CONTEXT } from '../../theme'
 import { CardBody, CardFooter } from './components'
 
@@ -35,10 +35,10 @@ export const Card = withTheme(
     }
 
     static defaultProps = {
+      context: 'primary',
       role: 'article'
     }
 
-    // Linked
     linked = () => {
       const { to } = this.props
 
@@ -51,9 +51,16 @@ export const Card = withTheme(
       )
     }
 
-    // Card
     card = () => {
-      const { alt, children, footer, image, title } = this.props
+      const {
+        alt,
+        children,
+        className,
+        context,
+        footer,
+        image,
+        title
+      } = this.props
 
       // const classes = cx(
       //   {
@@ -64,30 +71,26 @@ export const Card = withTheme(
       // )
 
       return (
-        <StyledCard>
+        <StyledCard
+          className={className}
+          context={context}
+        >
 
           {/* Header */}
           {/* { header && this.header() } */}
 
           {/* Image */}
           { image &&
-            <Image
-              alt={alt}
-              radius
-              src={image}
-            />
+            <Image alt={alt} radius src={image} />
           }
 
           {/* Body */}
-          {
-            (title || children) &&
-              <CardBody title={title} children={children} />
+          {(title || children) &&
+            <CardBody children={children} context={context} title={title} />
           }
 
           {/* Footer */}
-          {
-            footer && <CardFooter footer={footer} />
-          }
+          {footer && <CardFooter footer={footer} />}
 
         </StyledCard>
       )
@@ -108,6 +111,7 @@ export const Card = withTheme(
 // Style
 const StyledCard = styled.div`
   background-clip: border-box;
+  background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], 20)}
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .5rem;
   display: flex;

@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] Add Search and country dropdown to the Navigation bar
 - [ ] Change font - should be in global though
 - [ ] Background colour is now white
 - [ ] Need to be able to put a button into this

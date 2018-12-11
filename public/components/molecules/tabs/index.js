@@ -4,7 +4,7 @@
 
 // React
 import React, { Component, Fragment } from 'react'
-import { array } from 'prop-types'
+import { array, string } from 'prop-types'
 
 // UI
 import { Tab } from './tab'
@@ -23,7 +23,8 @@ export const Tabs = withTheme(
     }
 
     static propTypes = {
-      children: array.isRequired
+      children: array.isRequired,
+      className: string
     }
 
     onClickTabItem = (tab) => {
@@ -34,7 +35,8 @@ export const Tabs = withTheme(
       const {
         onClickTabItem,
         props: {
-          children
+          children,
+          className
         },
         state: {
           activeTab
@@ -44,7 +46,7 @@ export const Tabs = withTheme(
       return (
         <Fragment>
 
-          <StyledTabs>
+          <StyledTabs className={className} >
 
             {children.map((child) => {
               const { label } = child.props
@@ -75,5 +77,6 @@ export const Tabs = withTheme(
 // Style
 const StyledTabs = styled.ol`
   border-bottom: 1px solid #ccc;
+  margin: 0;
   padding-left: 0;
 `
