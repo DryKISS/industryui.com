@@ -20,7 +20,7 @@ export const Footer = withTheme(
     }
 
     _render (obj) {
-      return obj()    // !!()
+      return obj()    // NOTE: added rendering fragment (see also __mocks__/footer.js)
     }
 
     convertItemColumnsToColumnProps = (columns) => (

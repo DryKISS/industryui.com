@@ -5,8 +5,8 @@ export const FOOTER = (column) => ([
 
   {
     columns: { md: 12, lg: 6 },
-    formatter: column,  // !!()
-    /*style: {
+    formatter: column,  // early rendering by "column()" not works with story. See also Footer._render
+    /*style: {          // works ok but need to finish style tuning
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
