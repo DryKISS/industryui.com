@@ -30,9 +30,9 @@ export const Footer = withTheme(
     renderColumns = () => {
       const { columns } = this.props
 
-      return columns.map(({ columns, formatter, header, links, text }, index) => (
+      return columns.map(({ columns, formatter, header, links, text, style }, index) => (
 
-        <Column {...this.convertItemColumnsToColumnProps(columns)} key={index}>
+        <Column style={style} {...this.convertItemColumnsToColumnProps(columns)} key={index}>
           {formatter && this._render(formatter)} 
 
           {header && <StyledTitle>{header}</StyledTitle>}

@@ -5,7 +5,13 @@ export const FOOTER = (column) => ([
 
   {
     columns: { md: 12, lg: 6 },
-    formatter: column  // !!()
+    formatter: column,  // !!()
+    /*style: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+
+    } */
   },
 
   {
