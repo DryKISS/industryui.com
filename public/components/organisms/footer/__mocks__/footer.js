@@ -4,7 +4,7 @@
 export const FOOTER = (column) => ([
 
   {
-    columns: 6,
+    columns: { md: 6, lg: 12 },
     formatter: column  // !!()
   },
 

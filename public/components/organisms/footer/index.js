@@ -23,13 +23,16 @@ export const Footer = withTheme(
       return obj()    // !!()
     }
 
+    convertItemColumnsToColumnProps = (columns) => (
+      Number.isInteger(columns) ? {md: columns} : columns
+    )
+
     renderColumns = () => {
       const { columns } = this.props
 
       return columns.map(({ columns, formatter, header, links, text }, index) => (
 
-        <Column md={columns} key={index}>
-
+        <Column {...this.convertItemColumnsToColumnProps(columns)} key={index}>
           {formatter && this._render(formatter)} 
 
           {header && <StyledTitle>{header}</StyledTitle>}
