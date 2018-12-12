@@ -74,7 +74,7 @@ const StyledFigure = styled.figure`
 
   ${({ slant }) => slant && `
     &:after {
-      background: #fff;
+      background-color: #fff;
       bottom: 0;
       content: '';
       display: block;
