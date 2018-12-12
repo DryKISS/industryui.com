@@ -1,41 +1,82 @@
-export const ROWS = [
+/**
+ * Footer
+ */
+export const FOOTER = (column) => ([
+
   {
-    header: 'Header 1',
+    columns: 6,
+    formatter: column  // !!()
+  },
+
+  {
+    columns: 2,
+    header: 'Tailwise',
     links: [
       {
-        name: 'Link 1',
-        to: '/link1'
+        id: 'footerHowItWorks',
+        name: 'How it Works',
+        to: '/how-it-works'
       },
       {
-        name: 'Link 2',
-        to: '/link2'
+        id: 'footerBlog',
+        name: 'Blog',
+        to: '/pet-tails'
+      },
+      {
+        id: 'footerContact',
+        name: 'Contact',
+        to: '/contact'
       }
     ]
   },
+
   {
-    header: 'Header 2',
+    columns: 2,
+    header: 'Discover',
     links: [
       {
-        name: 'Link 3',
-        to: '/link3'
+        id: 'footerBreederSignUp',
+        name: 'Breeder Sign Up',
+        to: '/sign-up/breeder'
       },
       {
-        name: 'Link 4',
-        to: '/link4'
+        id: 'footerLitter',
+        name: 'Puppies for sale',
+        to: '/dogs/litters'
+      },
+      {
+        id: 'footerDogBreeds',
+        name: 'Dog breeds',
+        to: '/dogs/breeds'
       }
     ]
   },
+
   {
-    header: 'Header 3',
+    columns: 2,
+    header: 'Top dog breeds',
     links: [
       {
-        name: 'Link 5',
-        to: '/link5'
+        id: 'footerCockapoo',
+        name: 'Cockapoo',
+        to: '/dogs/breeds/cockapoo'
       },
       {
-        name: 'Link 6',
-        to: '/link6'
+        id: 'footerLabrador',
+        name: 'Labrador retriever',
+        to: '/dogs/breeds/labrador-retriever'
+      },
+      {
+        id: 'footerCocker',
+        name: 'Cocker spaniel',
+        to: '/dogs/breeds/cocker-spaniel'
+      },
+      {
+        id: 'footerCollie',
+        name: 'Border collie',
+        to: '/dogs/breeds/border-collie'
       }
     ]
   }
-]
+
+])

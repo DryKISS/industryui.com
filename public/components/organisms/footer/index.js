@@ -20,7 +20,7 @@ export const Footer = withTheme(
     }
 
     _render (obj) {
-      return obj
+      return obj()    // !!()
     }
 
     renderColumns = () => {
@@ -30,7 +30,7 @@ export const Footer = withTheme(
 
         <Column md={columns} key={index}>
 
-          {formatter && this._render(formatter)}
+          {formatter && this._render(formatter)} 
 
           {header && <StyledTitle>{header}</StyledTitle>}
 
