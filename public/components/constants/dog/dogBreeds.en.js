@@ -606,8 +606,8 @@ module.exports.DOG_BREEDS = [
     value: `labrador-retriever`
   },
   {
-    text: `Labradoodles`,
-    value: `labradoodles`
+    text: `Labradoodle`,
+    value: `labradoodle`
   },
   {
     text: `Laekenois Belgian Shepherd Dog`,

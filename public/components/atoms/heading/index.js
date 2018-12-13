@@ -50,13 +50,12 @@ export const Heading = withTheme(
 )
 
 // Style
-const StyledComponent = styled.div`
-  /* background-position: center;
-  background-size: cover; */
+// Remove margin apart from bottom at 2rem
+const StyledComponent = styled.span`
   ${props => COLOUR(props)}
   font-size: ${props => props.as === 'h1' ? '2.25rem' : '2rem'};
   line-height: 1.22;
-  margin: 0;
+  margin: 0 0 2rem 0;
   position: relative;
   z-index: 2;
 `
