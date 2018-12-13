@@ -8,7 +8,7 @@ import React from 'react'
 // Storybook
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
-import { withKnobs } from '@storybook/addon-knobs/react'
+import { withKnobs, select } from '@storybook/addon-knobs/react'
 import { withReadme } from 'storybook-readme'
 
 // UI
@@ -24,14 +24,14 @@ storiesOf('Atoms/Form/Radio', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
 
-  .add('Default',
-    withInfo()(() =>
-      <Radio data={RADIO_GENDER()} />
-    )
-  )
+  .add('Default', withInfo()(() =>
+    <React.Fragment>
+      <Radio data={RADIO_GENDER(select('Checked', { no: 'no', male: 'male', female: 'female' }, 'no'))}/>
+      {}
+    </React.Fragment>
+  ))
 
-  .add('Stacked',
-    withInfo()(() =>
-      <Radio stacked data={RADIO_GENDER()} />
-    )
-  )
+  .add('Stacked', withInfo()(() =>
+    <Radio stacked data={RADIO_GENDER(select('Checked', { no: 'no', male: 'male', female: 'female' }, 'no'))} />
+  ))
+
