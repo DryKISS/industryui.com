@@ -21,7 +21,7 @@ export const Footer = withTheme(
           columns: shape({
             md: PropTypes.number,
             lg: PropTypes.number,
-            xl: PropTypes.number,
+            xl: PropTypes.number
           }),
           formatter: PropTypes.func,
           style: PropTypes.object,
@@ -30,7 +30,7 @@ export const Footer = withTheme(
             shape({
               id: PropTypes.string,
               name: PropTypes.string,
-              to: PropTypes.string,
+              to: PropTypes.string
             })
           )
         })
@@ -38,7 +38,7 @@ export const Footer = withTheme(
     }
 
     _render (obj) {
-      return obj()    // NOTE: added rendering fragment (see also __mocks__/footer.js)
+      return obj() // NOTE: added rendering fragment (see also __mocks__/footer.js)
     }
 
     renderColumns = () => {
@@ -47,7 +47,7 @@ export const Footer = withTheme(
       return columns.map(({ columns, formatter, header, links, text, style }, index) => (
 
         <Column style={style} {...columns} key={index}>
-          {formatter && this._render(formatter)} 
+          {formatter && this._render(formatter)}
 
           {header && <StyledTitle>{header}</StyledTitle>}
 
