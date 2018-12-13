@@ -42,10 +42,11 @@ export const List = withTheme(
     }
 
     render () {
-      const { inline, style, unstyled } = this.props
+      const { className, inline, style, unstyled } = this.props
 
       return (
         <StyledList
+          className={className}
           inline={inline}
           role='list'
           style={style}
@@ -58,6 +59,7 @@ export const List = withTheme(
   }
 )
 
+// Style
 const inlineStyles = `
   align-items: center;
   display: inline-flex;
@@ -68,7 +70,6 @@ const unstyledStyles = `
   padding-left: 0;
 `
 
-// Style
 const StyledList = styled.ul`
   ${props => props.inline ? inlineStyles : ''}
   ${props => props.unstyled ? unstyledStyles : ''}
