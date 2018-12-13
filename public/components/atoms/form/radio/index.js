@@ -28,7 +28,7 @@ export const Radio = withTheme(
 
       return data.map(({ disabled, id, isChecked, label, required, value }, index) => {
         return (
-          <StyledLabel key={index}>
+          <StyledLabel key={index} stacked={stacked}>
 
             <StyledInput
               checked={isChecked}
@@ -69,10 +69,10 @@ export const Radio = withTheme(
 
 // Style
 const StyledLabel = styled.label`
-  ${props => props.statcked && 'display: block;'}
+  ${props => props.stacked && 'display: block;'}
   padding-left: 1.25rem;
-  ${props => props.statcked ? 'margin: .5rem 0;' : 'margin-right: 1.25rem;'}
-  ${props => props.statcked && 'padding-left: 1.25rem;'}
+  ${props => props.stacked ? 'margin: .5rem 0;' : 'margin-right: 1.25rem;'}
+  ${props => props.stacked && 'padding-left: 1.25rem;'}
   position: relative;
 `
 

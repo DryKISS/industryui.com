@@ -15,16 +15,23 @@ import { withReadme } from 'storybook-readme'
 import { Radio } from '../../'
 import Readme from './README.md'
 
+// Data
+import { RADIO_GENDER } from './__mocks__'
+
 // Story
-const stories = storiesOf('Atoms/Form/Radio', module)
+storiesOf('Atoms/Form/Radio', module)
 
-// Decorators
-stories.addDecorator(withKnobs)
-stories.addDecorator(withReadme(Readme))
+  .addDecorator(withKnobs)
+  .addDecorator(withReadme(Readme))
 
-// Default
-stories.add('Default',
-  withInfo()(() =>
-    <Radio />
+  .add('Default',
+    withInfo()(() =>
+      <Radio data={RADIO_GENDER()} />
+    )
   )
-)
+
+  .add('Stacked',
+    withInfo()(() =>
+      <Radio stacked data={RADIO_GENDER()} />
+    )
+  )

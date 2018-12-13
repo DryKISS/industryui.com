@@ -15,8 +15,9 @@ import { Footer } from '../../'
 import { List } from '../../'
 import { Image } from '../../'
 import Readme from './README.md'
+
 // Data
-import { FOOTER } from './__mocks__'
+import { FOOTER, ONE_COLUMN } from './__mocks__'
 
 import logo from './__resources__/tailwise-icon.svg'
 
@@ -43,6 +44,16 @@ storiesOf('Organisms/Footer', module)
       description='{t.Footer.DESCRIPTION}'
       info='{t.Footer.INFO}'
       columns={FOOTER(renderColumn)}
+      termsAndContitions='{t.Footer.TERMS_AND_CONDITIONS}'
+    />
+  )))
+
+  .add('12 Column', withInfo()(() => (
+    <Footer
+      copyright='{t.Footer.COPYRIGHT}'
+      description='{t.Footer.DESCRIPTION}'
+      info='{t.Footer.INFO}'
+      columns={ONE_COLUMN}
       termsAndContitions='{t.Footer.TERMS_AND_CONDITIONS}'
     />
   )))
