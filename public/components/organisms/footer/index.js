@@ -17,22 +17,19 @@ export const Footer = withTheme(
   class Footer extends Component {
     static propTypes = {
       columns: array.isRequired
+      
     }
 
     _render (obj) {
       return obj()    // NOTE: added rendering fragment (see also __mocks__/footer.js)
     }
 
-    convertItemColumnsToColumnProps = (columns) => (
-      Number.isInteger(columns) ? {md: columns} : columns
-    )
-
     renderColumns = () => {
       const { columns } = this.props
 
       return columns.map(({ columns, formatter, header, links, text, style }, index) => (
 
-        <Column style={style} {...this.convertItemColumnsToColumnProps(columns)} key={index}>
+        <Column style={style} {...columns} key={index}>
           {formatter && this._render(formatter)} 
 
           {header && <StyledTitle>{header}</StyledTitle>}
