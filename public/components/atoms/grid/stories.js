@@ -65,25 +65,25 @@ storiesOf('Atoms/Grid', module)
   .add('With column sizes & offsets', withInfo()(() =>
     <Container>
       <Row>
-        <Column md={4} style={colStyle}>
+        <StyledColumn md={4}>
           {`md=4`}
-        </Column>
-        <Column style={colStyle} md={4} offset={{ md: 4 }} style={colStyle} >
+        </StyledColumn>
+        <StyledColumn style={colStyle} md={4} offset={{ md: 4 }}  >
           {`md=4 offset={md:4}`}
-        </Column>
+        </StyledColumn>
       </Row>
       <Row>
-        <Column md={3} offset={{ md: 3 }} style={colStyle} >
+        <StyledColumn md={3} offset={{ md: 3 }} >
           {`md=3 offset={md:3}`}
-        </Column>
-        <Column md={3} offset={{ md: 3 }} style={colStyle} >
+        </StyledColumn>
+        <StyledColumn md={3} offset={{ md: 3 }} >
           {`md=3 offset={md:3}`}
-        </Column>
+        </StyledColumn>
       </Row>
       <Row>
-        <Column md={6} offset={{ md: 3 }} style={colStyle} >
+        <StyledColumn md={6} offset={{ md: 3 }} >
           {`md=6 offset={md:3}`}
-        </Column>
+        </StyledColumn>
       </Row>
     </Container>
   ))
