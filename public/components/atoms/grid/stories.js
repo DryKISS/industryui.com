@@ -16,8 +16,6 @@ import Readme from './README.md'
 
 import { StyledColumn, colStyle } from './__mocks__'
 
-import styled from 'styled-components'
-
 storiesOf('Atoms/Grid', module)
 
   .addDecorator(withReadme(Readme))
@@ -89,4 +87,3 @@ storiesOf('Atoms/Grid', module)
       </Row>
     </Container>
   ))
-
