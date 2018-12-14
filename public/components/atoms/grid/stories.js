@@ -14,7 +14,7 @@ import { withReadme } from 'storybook-readme'
 import { Container, Row, Column } from '../../'
 import Readme from './README.md'
 
-import { COLUMNS } from './__mocks__'
+//import { COLUMNS } from './__mocks__'
 
 storiesOf('Atoms/Grid', module)
 
@@ -26,37 +26,36 @@ storiesOf('Atoms/Grid', module)
     )
   )
 
-  .add('Columns sizes & offsets',
-       withInfo()(() => {
-         const style = {
-           border: '1px gray solid',
-         }
-         
-         return (
-           <Container>
-             <Row>
-               <Column md={4} style={style}>
-                 {`md={4}`}
-               </Column>
-               <Column style={style} md={4} offset={{ md: 4 }} style={style} >
-                 {`md={4} offset={{md:4}}`}
-               </Column>
-             </Row>
-             <Row>
-               <Column md={3} offset={{ md: 3 }} style={style} >
-                 {`md={3} offset={{md:3}} `}
-               </Column>
-               <Column md={3} offset={{ md: 3 }} style={style} >
-                 {`md={3} offset={{md:3}}`}
-               </Column>
-             </Row>
-             <Row>
-               <Column md={6} offset={{ md: 3 }} style={style} >
-                 {`md={6} offset={{md:3}}`}
-               </Column>
-             </Row>
-           </Container>
-         )
-       }
+  .add('Columns sizes & offsets', withInfo()(() => {
+    const style = {
+      border: '1px gray solid'
+    }
+
+    return (
+      <Container>
+        <Row>
+          <Column md={4} style={style}>
+            {`md={4}`}
+          </Column>
+          <Column style={style} md={4} offset={{ md: 4 }} style={style} >
+            {`md={4} offset={{md:4}}`}
+          </Column>
+        </Row>
+        <Row>
+          <Column md={3} offset={{ md: 3 }} style={style} >
+            {`md={3} offset={{md:3}} `}
+          </Column>
+          <Column md={3} offset={{ md: 3 }} style={style} >
+            {`md={3} offset={{md:3}}`}
+          </Column>
+        </Row>
+        <Row>
+          <Column md={6} offset={{ md: 3 }} style={style} >
+            {`md={6} offset={{md:3}}`}
+          </Column>
+        </Row>
+      </Container>
     )
+  }
+  )
   )
