@@ -79,8 +79,8 @@ const StyledColumn = styled.div`
     padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offset.md)}%);
     padding-right:  ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
   
-    flex: 0 0 ${props => 100 / (12 / (props.md + props.offset.md ))}%;
-    max-width: calc(${props => 100 / (12 / props.md )}% + ${props => (100 / 12 * props.offset.md)}%);
+    flex: 0 0 ${props => 100 / (12 / (props.md + props.offset.md )) }%;
+    max-width: ${props => 100 / (12 / (props.md + props.offset.md)) }% ;
   }
 
   /* LG Large devices (desktops, 992px and up) */
