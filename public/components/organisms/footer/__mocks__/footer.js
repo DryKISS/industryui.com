@@ -5,7 +5,7 @@ export const FOOTER = (column) => ([
 
   {
     size: { md: 8, lg: 6 },
-    offset: { md: 4 },
+    offset: { md: 4, lg: -0.001 },  // TODO: think about simple but bool-truth solution
     formatter: column
   },
 
