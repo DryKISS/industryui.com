@@ -4,12 +4,13 @@
 export const FOOTER = (column) => ([
 
   {
-    size: { md: 12, lg: 6 },
+    size: { md: 8, lg: 6 },
+    offset: { md: 4, lg: 3 },
     formatter: column
   },
 
   {
-    size: { sm: 6, md: 4, lg: 2 },
+    size: { md: 4, lg: 2 },
     header: 'Tailwise',
     links: [
       {
