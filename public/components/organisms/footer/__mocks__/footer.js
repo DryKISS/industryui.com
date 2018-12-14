@@ -5,10 +5,9 @@ export const FOOTER = (column) => ([
 
   {
     size: { md: 8, lg: 6 },
-    offset: { md: 4, lg: -0.001 },  // TODO: think about simple but bool-truth solution
+    offset: { md: 4, lg: 0 },
     formatter: column
   },
-
   {
     size: { md: 4, lg: 2 },
     header: 'Tailwise',

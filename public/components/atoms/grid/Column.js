@@ -42,25 +42,23 @@ export const Column = withTheme(
     }
 
     render () {
-      const { children, className, lg, md, style, xl, offset } = this.props
+      const { children, className,  style} = this.props
+
+      let { md, lg, xl, offset } = this.props
+      md = (md || md === 0 ? md : 0)
+      lg = (lg || lg === 0 ? lg : md)
+      xl = (xl || xl === 0 ? xl : lg)
+
+      offset.md = (offset.md || offset.md === 0 ? offset.md : 0)
+      offset.lg = (offset.lg || offset.lg === 0 ? offset.lg : offset.md)
+      offset.xl = (offset.xl || offset.xl === 0 ? offset.xl : offset.lg)
 
       return (
         <StyledColumn
           className={className}
           children={children}
-
-          size={{
-            md: md,
-            lg: lg || md,
-            xl: xl || lg || md
-          }}
-
-          offset={{
-            md: offset.md || 0,
-            lg: offset.lg || offset.md || 0,
-            xl: offset.xl || offset.lg || offset.md || 0
-          }}
-
+          size={{ md, lg, xl }}
+          offset={offset}
           style={style}
         />
       )
