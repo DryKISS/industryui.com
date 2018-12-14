@@ -58,8 +58,8 @@ export const Column = withTheme(
 
           offset={{
             md: offset.md || 0,
-            lg: offset.lg || 0,
-            xl: offset.xl || 0
+            lg: offset.lg || offset.md || 0,
+            xl: offset.xl || offset.lg || offset.md || 0
           }}
 
           style={style}
@@ -77,6 +77,7 @@ const StyledColumn = styled.div`
   padding-left: ${props => props.theme.GRID.gutterWidth / 2}px;
   padding-right: ${props => props.theme.GRID.gutterWidth / 2}px;
   width: 100%;
+  margin-left: unset;
 
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
