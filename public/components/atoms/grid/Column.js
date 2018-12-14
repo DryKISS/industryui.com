@@ -86,29 +86,29 @@ const StyledColumn = styled.div`
     padding-left: ${props => props.theme.GRID.containerWidths.md[1] / 2 }px;
     padding-right:  ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / props.size.md) }%;
-    max-width: ${props => 100 / (12 / props.size.md) }% ;
+    flex: 0 0 ${ ({ size }) => 100 / (12 / size.md) }%;
+    max-width: ${ ({ size }) => 100 / (12 / size.md) }% ;
   }
 
   /* LG Large devices (desktops, 992px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
-    margin-left: ${props => (100 / 12 * props.offset.lg)}%;
+    margin-left: ${ ({ offset }) => (100 / 12 * offset.lg)}%;
 
     padding-left: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
     padding-right: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / props.size.lg) }%;
-    max-width: ${props => 100 / (12 / props.size.lg) }%
+    flex: 0 0 ${ ({ size }) => 100 / (12 / size.lg) }%;
+    max-width: ${ ({ size }) => 100 / (12 / size.lg) }%
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
-    margin-left: ${props => (100 / 12 * props.offset.xl)}%;
+    margin-left: ${ ({ offset }) => (100 / 12 * offset.xl)}%;
 
     padding-left: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px ;
     padding-right: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / props.size.xl )}%;
-    max-width: ${props => 100 / (12 / props.size.xl)}%
+    flex: 0 0 ${ ({ size }) => 100 / (12 / size.xl )}%;
+    max-width: ${ ({ size }) => 100 / (12 / size.xl)}%
   }
 `
