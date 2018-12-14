@@ -14,9 +14,9 @@ import { withReadme } from 'storybook-readme'
 import { Container, Row, Column } from '../../'
 import Readme from './README.md'
 
-//import { COLUMNS } from './__mocks__'
+import { StyledColumn, colStyle } from './__mocks__'
 
-const colStyle = { border: '1px gray solid' }
+import styled from 'styled-components'
 
 storiesOf('Atoms/Grid', module)
 
@@ -51,6 +51,19 @@ storiesOf('Atoms/Grid', module)
     </Container>
   ))
 
+  .add('Size depending on screen width', withInfo()(() =>
+    <Container>
+      <Row>
+        <StyledColumn md={3} lg={6} lx={9} >
+          I love wide screen
+        </StyledColumn>
+        <StyledColumn md={9} lg={6} xl={3} >
+          I love narrow screen
+        </StyledColumn>
+      </Row>
+    </Container>
+  ))
+
   .add('With column sizes & offsets', withInfo()(() =>
     <Container>
       <Row>
@@ -76,3 +89,4 @@ storiesOf('Atoms/Grid', module)
       </Row>
     </Container>
   ))
+
