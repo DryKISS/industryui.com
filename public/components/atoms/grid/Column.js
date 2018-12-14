@@ -44,7 +44,6 @@ export const Column = withTheme(
     render () {
       const { children, className, lg, md, style, xl, offset } = this.props
 
-      console.log('o2', offset)
       return (
         <StyledColumn
           className={className}
