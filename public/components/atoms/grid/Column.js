@@ -36,11 +36,7 @@ export const Column = withTheme(
       md: null,
       lg: null,
       xl: null,
-      offset: {
-        md: 0,
-        lg: 0,
-        xl: 0
-      },
+      offset: {},
       style: {},
       debug: false
     }
@@ -61,9 +57,9 @@ export const Column = withTheme(
           }}
 
           offset={{
-            md: offset.md,
-            lg: offset.lg || offset.md,
-            xl: offset.xl || offset.lg || offset.md
+            md: offset.md || 0,
+            lg: offset.lg || 0,
+            xl: offset.xl || 0
           }}
         
           style={style}
@@ -85,28 +81,28 @@ const StyledColumn = styled.div`
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
 
-    padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offset.md)}%);
+    padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offset.md)}% );
     padding-right:  ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.size.md + props.offset.md )) }%;
+    flex: 0 0 ${props => 100 / (12 / (props.size.md + props.offset.md)) }%;
     max-width: ${props => 100 / (12 / (props.size.md + props.offset.md)) }% ;
   }
 
   /* LG Large devices (desktops, 992px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
+    padding-left: calc( ${props => props.theme.GRID.containerWidths.lg[1] / 2}px + ${props => (100 / 12 * props.offset.lg)}% );
     padding-right: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.size.lg))}%;
-    max-width: ${props => 100 / (12 / (props.size.lg))}%
+    flex: 0 0 ${props => 100 / (12 / (props.size.lg + props.offset.lg))}%;
+    max-width: ${props => 100 / (12 / (props.size.lg + props.offset.lg))}%
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
+    padding-left: calc( ${props => props.theme.GRID.containerWidths.xl[1] / 2}px + ${props => (100 / 12 * props.offset.xl)}% );
     padding-right: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.size.xl))}%;
-    max-width: ${props => 100 / (12 / (props.size.xl))}%
+    flex: 0 0 ${props => 100 / (12 / (props.size.xl + props.offset.xl))}%;
+    max-width: ${props => 100 / (12 / (props.size.xl + props.offset.xl))}%
   }
 `
