@@ -32,10 +32,6 @@ export const Column = withTheme(
     }
 
     static defaultProps = {
-      xs: null,
-      md: null,
-      lg: null,
-      xl: null,
       offset: {},
       style: {},
       debug: false
@@ -45,13 +41,13 @@ export const Column = withTheme(
       const { children, className,  style} = this.props
 
       let { md, lg, xl, offset } = this.props
-      md = (md || md === 0 ? md : 0)
-      lg = (lg || lg === 0 ? lg : md)
-      xl = (xl || xl === 0 ? xl : lg)
+      md = md !== undefined ? md : 0
+      lg = lg !== undefined ? lg : md
+      xl = xl !== undefined ? xl : lg
 
-      offset.md = (offset.md || offset.md === 0 ? offset.md : 0)
-      offset.lg = (offset.lg || offset.lg === 0 ? offset.lg : offset.md)
-      offset.xl = (offset.xl || offset.xl === 0 ? offset.xl : offset.lg)
+      offset.md = (offset.md != undefined ? offset.md : 0)
+      offset.lg = (offset.lg != undefined ? offset.lg : offset.md)
+      offset.xl = (offset.xl != undefined ? offset.xl : offset.lg)
 
       return (
         <StyledColumn
