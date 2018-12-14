@@ -54,13 +54,17 @@ export const Column = withTheme(
           className={className}
           children={children}
 
-          mdSize={md}
-          lgSize={lg || md}
-          xlSize={xl || lg || md}
+          size={{
+            md: md,
+            lg: lg || md,
+            xl: xl || lg || md
+          }}
 
-          offsetMd={offset.md}
-          offsetLg={offset.lg || offset.md}
-          offsetXl={offset.xl || offset.lg || offset.md}
+          offset={{
+            md: offset.md,
+            lg: offset.lg || offset.md,
+            xl: offset.xl || offset.lg || offset.md
+          }}
         
           style={style}
         />
@@ -81,11 +85,11 @@ const StyledColumn = styled.div`
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
 
-    padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offsetMd)}%);
+    padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offset.md)}%);
     padding-right:  ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.mdSize + props.offsetMd )) }%;
-    max-width: ${props => 100 / (12 / (props.mdSize + props.offsetMd)) }% ;
+    flex: 0 0 ${props => 100 / (12 / (props.size.md + props.offset.md )) }%;
+    max-width: ${props => 100 / (12 / (props.size.md + props.offset.md)) }% ;
   }
 
   /* LG Large devices (desktops, 992px and up) */
@@ -93,8 +97,8 @@ const StyledColumn = styled.div`
     padding-left: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
     padding-right: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.lgSize))}%;
-    max-width: ${props => 100 / (12 / (props.lgSize))}%
+    flex: 0 0 ${props => 100 / (12 / (props.size.lg))}%;
+    max-width: ${props => 100 / (12 / (props.size.lg))}%
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
@@ -102,7 +106,7 @@ const StyledColumn = styled.div`
     padding-left: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
     padding-right: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.xlSize))}%;
-    max-width: ${props => 100 / (12 / (props.xlSize))}%
+    flex: 0 0 ${props => 100 / (12 / (props.size.xl))}%;
+    max-width: ${props => 100 / (12 / (props.size.xl))}%
   }
 `
