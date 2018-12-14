@@ -58,7 +58,10 @@ export const Column = withTheme(
           lgSize={lg || md}
           xlSize={xl || lg || md}
 
-          offset={offset}
+          offsetMd={offset.md}
+          offsetLg={offset.lg || offset.md}
+          offsetXl={offset.xl || offset.lg || offset.md}
+        
           style={style}
         />
       )
@@ -78,11 +81,11 @@ const StyledColumn = styled.div`
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
 
-    padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offset.md)}%);
+    padding-left: calc(${props => props.theme.GRID.containerWidths.md[1] / 2 }px + ${props => (100 / 12 * props.offsetMd)}%);
     padding-right:  ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.mdSize + props.offset.md )) }%;
-    max-width: ${props => 100 / (12 / (props.mdSize + props.offset.md)) }% ;
+    flex: 0 0 ${props => 100 / (12 / (props.mdSize + props.offsetMd )) }%;
+    max-width: ${props => 100 / (12 / (props.mdSize + props.offsetMd)) }% ;
   }
 
   /* LG Large devices (desktops, 992px and up) */
