@@ -2,21 +2,24 @@
  * Grid
  */
 const breakpoints = {
-  sm: 0,
+  xs: 0,
+  sm: 576,
   md: 768,
-  lg: 1024,
-  xl: 1224
+  lg: 992,
+  xl: 1200
 }
 
+//
 const containerWidths = {
-  md: [704, 32, 32],
-  lg: [960, 24, 32],
-  xl: [1144, 32, 40]
+  sm: 540,
+  md: 720,
+  lg: 960,
+  xl: 1140
 }
 
-const gutterWidth = 24
-const marginWidth = 24
 const gridColumns = 12
+const gutterWidth = 30
+
 const defaultScreenClass = 'lg'
 
 const space = [
@@ -37,7 +40,6 @@ export const GRID = {
   defaultScreenClass,
   gutterWidth,
   gridColumns,
-  marginWidth,
   radius,
   space
 }
