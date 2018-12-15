@@ -20,6 +20,7 @@ export const Heading = withTheme(
       children: node,
       className: any,
       content: string,
+      context: string,
       style: objectOf(oneOfType([
         number,
         string
@@ -27,7 +28,8 @@ export const Heading = withTheme(
     }
 
     static defaultProps = {
-      as: 'h1'
+      as: 'h1',
+      context: 'dark'
     }
 
     render () {

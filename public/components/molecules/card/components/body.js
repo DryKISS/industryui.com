@@ -45,7 +45,7 @@ export const CardBody = withTheme(
 // Style
 const StyledBody = styled.div`
   flex: 1 1 auto;
-  text-align: left;
+  /* text-align: left; */
 `
 
 const StyledWrapper = styled.div`

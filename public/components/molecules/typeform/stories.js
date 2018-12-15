@@ -11,7 +11,7 @@ import { withInfo } from '@storybook/addon-info'
 import { withReadme } from 'storybook-readme'
 
 // UI
-import Typeform from '../../'
+import { Typeform } from '../../'
 import Readme from './README.md'
 
 storiesOf('Molecules/Typeform', module)

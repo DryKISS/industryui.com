@@ -46,10 +46,10 @@ export const Hero = withTheme(
     }
 
     render () {
-      const { alt, className, image, title } = this.props
+      const { alt, background, className, image, title } = this.props
 
       return (
-        <StyledHero className={className}>
+        <StyledHero background={background} className={className}>
 
           <Container>
 
@@ -71,8 +71,9 @@ const StyledHero = styled.header`
   background-color: #fff;
   background-image: ${props => props.background ? `url(${props.background})` : 'none'};
   background-position: center;
-  background-size: cover;
+  background-size: 20%;
   border-bottom: 4px solid #ecf0f3;
+  margin-top: -2rem;
 `
 
 const StyledColumn = styled(Column)`

@@ -1,23 +1,19 @@
 /**
  * React Select
- * Utilises the select component p
+ * Utilises the select component
  *
  * @see https://github.com/JedWatson/react-select
  */
 
 // React
 import React, { Component } from 'react'
-import Select from 'react-select'
 import { array, func, string } from 'prop-types'
 
 // UI
+import Select from 'react-select'
 import { Label } from '../../'
 
-// Style
-import { withTheme } from 'styled-components'
-
-export const SelectReact = withTheme(
-  class SelectReact extends Component {
+export class SelectReact extends Component {
     static propTypes = {
       defaultValue: array,
       handleChange: func.isRequired,
@@ -30,6 +26,7 @@ export const SelectReact = withTheme(
 
     render () {
       const {
+        className,
         defaultValue,
         handleChange,
         id,
@@ -43,6 +40,7 @@ export const SelectReact = withTheme(
         <Label id={id} text={label}>
 
           <Select
+            className={className}
             defaultValue={defaultValue}
             isMulti
             name={id}
@@ -56,8 +54,7 @@ export const SelectReact = withTheme(
         </Label>
       )
     }
-  }
-)
+}
 
 const styles = {
   container: (base, state) => {
