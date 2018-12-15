@@ -18,7 +18,7 @@ export const Footer = withTheme(
     static propTypes = {
       columns: arrayOf(
         shape({
-          columns: shape({
+          size: shape({
             md: PropTypes.number,
             lg: PropTypes.number,
             xl: PropTypes.number
@@ -44,9 +44,9 @@ export const Footer = withTheme(
     renderColumns = () => {
       const { columns } = this.props
 
-      return columns.map(({ columns, formatter, header, links, text, style }, index) => (
+      return columns.map(({ size, offset, formatter, header, links, text, style }, index) => (
 
-        <Column style={style} {...columns} key={index}>
+        <Column style={style} {...size} offset={offset} key={index}>
           {formatter && this._render(formatter)}
 
           {header && <StyledTitle>{header}</StyledTitle>}

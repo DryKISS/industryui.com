@@ -20,6 +20,6 @@ storiesOf('Atoms/Form/Textarea', module)
 
   .add('Default',
     withInfo()(() =>
-      <Textarea />
+      <Textarea value="this is text area" />
     )
   )

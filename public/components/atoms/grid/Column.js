@@ -4,7 +4,7 @@
 
 // React
 import React, { Component } from 'react'
-import { any, bool, number, objectOf, oneOfType, string } from 'prop-types'
+import { any, bool, number, objectOf, oneOfType, string, shape } from 'prop-types'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -23,34 +23,45 @@ export const Column = withTheme(
         string
       ])),
       xl: number,
-      xs: number
+      xs: number,
+      offset: shape({
+        md: number,
+        lg: number,
+        xl: number
+      }),
     }
 
     static defaultProps = {
-      xs: null,
-      md: null,
-      lg: null,
-      xl: null,
+      offset: {},
       style: {},
       debug: false
     }
 
     render () {
-      const { children, className, lg, md, style, xl } = this.props
+      const { children, className,  style} = this.props
+
+      let { md, lg, xl, offset } = this.props
+      md = md !== undefined ? md : 0
+      lg = lg !== undefined ? lg : md
+      xl = xl !== undefined ? xl : lg
+
+      offset.md = (offset.md != undefined ? offset.md : 0)
+      offset.lg = (offset.lg != undefined ? offset.lg : offset.md)
+      offset.xl = (offset.xl != undefined ? offset.xl : offset.lg)
 
       return (
         <StyledColumn
           className={className}
           children={children}
-          lg={lg}
-          md={md}
+          size={{ md, lg, xl }}
+          offset={offset}
           style={style}
-          xl={xl}
         />
       )
     }
   }
 )
+
 
 const StyledColumn = styled.div`
   box-sizing: border-box;
@@ -59,31 +70,38 @@ const StyledColumn = styled.div`
   padding-left: ${props => props.theme.GRID.gutterWidth / 2}px;
   padding-right: ${props => props.theme.GRID.gutterWidth / 2}px;
   width: 100%;
+  margin-left: unset;
 
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
-    padding-right: ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
+    margin-left: ${props => (100 / 12 * props.offset.md)}%;
 
-    flex: 0 0 ${props => 100 / (12 / props.md)}%;
-    max-width: ${props => 100 / (12 / props.md)}%
+    padding-left: ${props => props.theme.GRID.containerWidths.md[1] / 2 }px;
+    padding-right:  ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
+
+    flex: 0 0 ${ ({ size }) => 100 / (12 / size.md) }%;
+    max-width: ${ ({ size }) => 100 / (12 / size.md) }% ;
   }
 
   /* LG Large devices (desktops, 992px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
+    margin-left: ${ ({ offset }) => (100 / 12 * offset.lg)}%;
+
     padding-left: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
     padding-right: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.lg || props.md))}%;
-    max-width: ${props => 100 / (12 / (props.lg || props.md))}%
+    flex: 0 0 ${ ({ size }) => 100 / (12 / size.lg) }%;
+    max-width: ${ ({ size }) => 100 / (12 / size.lg) }%
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
   @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
+    margin-left: ${ ({ offset }) => (100 / 12 * offset.xl)}%;
+
+    padding-left: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px ;
     padding-right: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
 
-    flex: 0 0 ${props => 100 / (12 / (props.xl || props.lg || props.md))}%;
-    max-width: ${props => 100 / (12 / (props.xl || props.lg || props.md))}%
+    flex: 0 0 ${ ({ size }) => 100 / (12 / size.xl )}%;
+    max-width: ${ ({ size }) => 100 / (12 / size.xl)}%
   }
 `
