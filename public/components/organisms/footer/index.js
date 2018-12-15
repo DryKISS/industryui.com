@@ -5,7 +5,7 @@
 
 // React
 import React, { Component } from 'react'
-import PropTypes, { arrayOf, shape } from 'prop-types'
+import { arrayOf, func, number, object, shape, string } from 'prop-types'
 
 // UI
 import { Column, Container, Link, List, Row } from '../../'
@@ -18,21 +18,28 @@ export const Footer = withTheme(
     static propTypes = {
       columns: arrayOf(
         shape({
-          size: shape({
-            md: PropTypes.number,
-            lg: PropTypes.number,
-            xl: PropTypes.number
-          }),
-          formatter: PropTypes.func,
-          style: PropTypes.object,
-          header: PropTypes.string,
-          links: PropTypes.arrayOf(
+          header: string,
+          formatter: func,
+          links: arrayOf(
             shape({
-              id: PropTypes.string,
-              name: PropTypes.string,
-              to: PropTypes.string
+              id: string,
+              name: string,
+              to: string
             })
-          )
+          ),
+          offset: shape({
+            sm: number,
+            md: number,
+            lg: number,
+            xl: number
+          }),
+          size: shape({
+            sm: number,
+            md: number,
+            lg: number,
+            xl: number
+          }),
+          style: object
         })
       ).isRequired
     }
@@ -54,7 +61,6 @@ export const Footer = withTheme(
           {links && this.renderLinks(links)}
 
           {text && this.renderText(text)}
-
         </Column>
 
       ))

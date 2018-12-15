@@ -36,7 +36,6 @@ export const Progress = withTheme(
   }
 )
 
-// export default css`
 //   .Progress {
 //     background-color: #e9ecef;
 //     border-radius: .25rem;
@@ -58,4 +57,3 @@ export const Progress = withTheme(
 //     transition: width .6s ease;
 //     white-space: nowrap;
 //   }
-//   `

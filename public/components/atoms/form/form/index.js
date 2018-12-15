@@ -172,7 +172,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-// export default css`
 //   .Form-validated .Form-control:valid~.Form-feedback) {
 //     display: none;
 //   }

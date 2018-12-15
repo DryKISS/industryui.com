@@ -39,7 +39,7 @@ export const Column = withTheme(
     }
 
     render () {
-      const { children, className, style } = this.props
+      const { children, className, style, theme } = this.props
 
       let { sm, md, lg, xl, offset } = this.props
       sm = sm !== undefined ? sm : 0
@@ -72,33 +72,35 @@ const StyledColumn = styled.div`
   padding-left: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   padding-right: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   width: 100%;
+  /* flex-basis: 0;
+  flex-grow: 1; */
   margin-left: unset;
 
-  /* SM Medium devices (tablets, 768px and up) */
-  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.sm}px) {
-    flex: 0 0 ${({ size }) => 100 / (12 / size.sm)}%;
-    margin-left: ${({ off }) => (100 / 12 * off.sm)}%;
-    max-width: ${({ size }) => 100 / (12 / size.sm)}% ;
+  /* SM Medium devices (tablets, 576px and up) */
+  @media (min-width: 0) {
+    flex: 0 0 ${({ size }) => size.sm ? 100 / (12 / size.sm) : 100}%;
+    margin-left: ${({ off }) => off.sm ? (100 / 12) * off.sm : 0}%;
+    max-width: ${({ size }) => size.sm ? 100 / (12 / size.sm) : 100}%;
   }
 
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
     flex: 0 0 ${({ size }) => 100 / (12 / size.md)}%;
     margin-left: ${({ off }) => (100 / 12 * off.md)}%;
-    max-width: ${({ size }) => 100 / (12 / size.md)}% ;
+    max-width: ${({ size }) => 100 / (12 / size.md)}%;
   }
 
   /* LG Large devices (desktops, 992px and up) */
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
     flex: 0 0 ${({ size }) => 100 / (12 / size.lg)}%;
     margin-left: ${({ off }) => (100 / 12 * off.lg)}%;
-    max-width: ${({ size }) => 100 / (12 / size.lg)}%
+    max-width: ${({ size }) => 100 / (12 / size.lg)}%;
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
     flex: 0 0 ${({ size }) => 100 / (12 / size.xl)}%;
     margin-left: ${({ off }) => (100 / 12 * off.xl)}%;
-    max-width: ${({ size }) => 100 / (12 / size.xl)}%
+    max-width: ${({ size }) => 100 / (12 / size.xl)}%;
   }
 `

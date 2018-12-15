@@ -20,7 +20,7 @@ const containerWidths = {
 const gridColumns = 12
 const gutterWidth = 30
 
-const defaultScreenClass = 'lg'
+const defaultScreenClass = 'sm'
 
 const space = [
   0,
