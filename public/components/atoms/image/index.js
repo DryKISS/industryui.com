@@ -68,26 +68,27 @@ export const Image = withTheme(
 )
 
 // Style
+const slantStyles = `
+  &:after {
+    background-color: #fff;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 25%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewy(6deg);
+    transform-origin: 0 100%;
+    width: 100%;
+    z-index: 1;
+  }
+`
+
 const StyledFigure = styled.figure`
   border: 0;
   margin: 0;
-
-  ${({ slant }) => slant && `
-    &:after {
-      background-color: #fff;
-      bottom: 0;
-      content: '';
-      display: block;
-      height: 25%;
-      left: 0;
-      position: absolute;
-      right: 0;
-      transform: skewy(6deg);
-      transform-origin: 0 100%;
-      width: 100%;
-      z-index: 1;
-    }
-  `}
+  ${props => props.slant && slantStyles}
 `
 
 const coverStyles = `
@@ -97,12 +98,7 @@ const coverStyles = `
 `
 
 const StyledImg = styled.img`
-  /* border-style: none; */
-  /* display: block; */
-  /* height: auto; */
-  /* max-width: 100%; */
-  /* border-radius: .5rem .5rem 0 0; */
-  ${props => props.cover ? coverStyles : ''}
+  ${props => props.cover && coverStyles}
   vertical-align: middle;
   width: 100%;
 `

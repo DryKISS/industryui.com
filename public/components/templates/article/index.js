@@ -30,7 +30,7 @@ export const Article = withTheme(
       const { article: { frontmatter } } = this.props
 
       if (matter === 'tags') {
-        return frontmatter[matter].split(',').map((item) => (
+        return frontmatter[matter].map((item) => (
           { content: item.replace(/[[\]]/g, '').trim(), to: 'javascript:;' }
         ))
       }
@@ -129,8 +129,6 @@ const StyledImage = styled(Image)`
 //   width: 100%;
 // }
 
-// // Headings
-// //------------------------------------------------------------------------//
 // h1 {
 // line-height: 44px;
 // margin: 20px 0;
@@ -146,14 +144,10 @@ const StyledImage = styled(Image)`
 // margin: 20px 0;
 // }
 
-// // Image
-// //------------------------------------------------------------------------//
 // .img-responsive {
 // margin-bottom: 15px;
 // }
 
-// // Links
-// //------------------------------------------------------------------------//
 // a {
 // color: $brand-primary;
 
@@ -162,14 +156,10 @@ const StyledImage = styled(Image)`
 // }
 // }
 
-// // Paragraph
-// //------------------------------------------------------------------------//
 // p {
 // margin-bottom: 20px;
 // }
 
-// // UL
-// //------------------------------------------------------------------------//
 // ul {
 // list-style: none;
 // margin-bottom: 20px;
@@ -185,8 +175,6 @@ const StyledImage = styled(Image)`
 // }
 // }
 
-// // Table
-// //------------------------------------------------------------------------//
 // .table {
 // tr {
 // td {
@@ -201,8 +189,6 @@ const StyledImage = styled(Image)`
 // }
 // }
 
-// // Instagram
-// //--------------------------------------------------------------------------//
 // &--instagram {
 // display: grid;
 // justify-items: center;
@@ -231,8 +217,6 @@ const StyledImage = styled(Image)`
 // margin-top: 171px;
 // position: initial;
 
-// // Image
-// //------------------------------------------------------------------------//
 // &__image {
 // margin: 0 -15px;
 // }
@@ -241,15 +225,11 @@ const StyledImage = styled(Image)`
 // margin-top: 0;
 // }
 
-// // Embed
-// //------------------------------------------------------------------------//
 // .embed-responsive {
 // margin-left: -15px;
 // margin-right: -15px;
 // }
 
-// // Breadcrumb
-// //------------------------------------------------------------------------//
 // &__breadcrumb {
 // margin-left: -15px;
 // margin-right: -15px;

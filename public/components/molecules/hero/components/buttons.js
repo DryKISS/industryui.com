@@ -21,9 +21,13 @@ export const HeroButtons = withTheme(
     render () {
       const { buttons } = this.props
 
-      return buttons.map(({ content, to }, index) => (
+      return buttons.map(({ content, context, to }, index) => (
         <Link to={to} key={index}>
-          <StyledButton context='primary' size='lg'>{content}</StyledButton>
+          <StyledButton
+            content={content}
+            context={context}
+            size='lg'
+          />
         </Link>
       ))
     }

@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { number } from 'prop-types'
 
 // Style
-import { withTheme } from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 
 export const Rating = withTheme(
   class Rating extends Component {
@@ -17,24 +17,17 @@ export const Rating = withTheme(
     }
 
     static defaultProps = {
-      size: 10
+      size: 5
     }
 
     render = () => {
       const { className, item, size } = this.props
-
       let rating = []
 
-      // Outer loop to create parent
       for (let i = 0; i < size; i++) {
-        // const classes = cx(
-        //   { 'Rating-active': i + 1 <= item },
-        //   'Rating-item'
-        // )
-
-        // Create the parent and add the children
         rating.push(
-          <div
+          <StyledRating
+            active={i + 1 <= item}
             className={className}
             item={item}
             key={i}
@@ -47,17 +40,12 @@ export const Rating = withTheme(
   }
 )
 
-// export default css`
-//   .Rating-item {
-//     background-color: #cdd2d6;
-//     border-radius: .5rem;
-//     display: inline-block;
-//     height: 2rem;
-//     margin-right: .5rem;
-//     width: 10px;
-//   }
-
-//   .Rating-active {
-//     background-color: #04D4DC;
-//   }
-//   `
+// Style
+const StyledRating = styled.div`
+  background-color: ${props => props.active ? props.theme.COLOUR.secondary : props.theme.COLOUR.light};
+  border-radius: .5rem;
+  display: inline-block;
+  height: 15px;
+  margin-right: .25rem;
+  width: 15px;
+`

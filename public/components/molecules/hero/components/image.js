@@ -40,8 +40,8 @@ export const HeroImage = withTheme(
 
 // Style
 const StyledColumn = styled(Column)`
-  display: flex;
   align-self: flex-end;
+  display: flex;
 `
 
 const StyledImageContainer = styled.div`
@@ -50,5 +50,7 @@ const StyledImageContainer = styled.div`
 `
 
 const StyledImage = styled(Image)`
-  width: 75%;
+  filter: drop-shadow(0px -3px 6px #aaa);
+  margin-bottom: -20px;
+  width: 85%;
 `
