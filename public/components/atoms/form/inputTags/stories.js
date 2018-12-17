@@ -20,6 +20,9 @@ storiesOf('Atoms/Form/InputTags', module)
 
   .add('Default',
     withInfo()(() =>
-      <InputTags />
+      <React.Fragment>
+        (not implemented yet)
+        <InputTags />
+      </React.Fragment>
     )
   )

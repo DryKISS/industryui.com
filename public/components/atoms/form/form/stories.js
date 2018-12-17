@@ -11,7 +11,7 @@ import { withInfo } from '@storybook/addon-info'
 import { withReadme } from 'storybook-readme'
 
 // UI
-import { Form, Button } from '../../'
+import { Form, Button, Input } from '../../'
 import Readme from './README.md'
 
 storiesOf('Atoms/Form/Form', module)
@@ -20,9 +20,14 @@ storiesOf('Atoms/Form/Form', module)
 
   .add('Default',
     withInfo()(() =>
-      <Form /* submit={this.handleSubmit} */>
+      <Form>
 
-        <input name="name1" />
+        <Input
+          label='Email'
+          id='email'
+          placeholder='Enter email address'
+          type='email'
+        />
 
         <Button secondary type='submit'>Send reset link</Button>
 

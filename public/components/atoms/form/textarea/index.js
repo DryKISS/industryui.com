@@ -39,6 +39,7 @@ export const Textarea = withTheme(
     static defaultProps = {
       autoFocus: false,
       required: true,
+      value: "",
       rows: 5
     }
 
