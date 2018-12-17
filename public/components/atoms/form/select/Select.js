@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { array, arrayOf, bool, func, number, oneOfType, string } from 'prop-types'
 
 // UI
-import { Label } from '../'
+import { Label } from '../../'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -84,13 +84,9 @@ export const Select = withTheme(
             value={value}
           >
 
-            {
-              range && range.length > 0 && this.renderRange()
-            }
+            {range && range.length > 0 && this.renderRange()}
 
-            {
-              data && this.renderOptions()
-            }
+            {data && this.renderOptions()}
 
           </StyledSelect>
 

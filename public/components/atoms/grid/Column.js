@@ -4,7 +4,7 @@
 
 // React
 import React, { Component } from 'react'
-import { any, bool, number, objectOf, oneOfType, string } from 'prop-types'
+import { any, bool, number, objectOf, oneOfType, string, shape } from 'prop-types'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -18,34 +18,47 @@ export const Column = withTheme(
       fluid: string,
       md: number,
       lg: number,
+      offset: shape({
+        sm: number,
+        md: number,
+        lg: number,
+        xl: number
+      }),
+      sm: number,
       style: objectOf(oneOfType([
         number,
         string
       ])),
-      xl: number,
-      xs: number
+      xl: number
     }
 
     static defaultProps = {
-      xs: null,
-      md: null,
-      lg: null,
-      xl: null,
+      offset: {},
       style: {},
       debug: false
     }
 
     render () {
-      const { children, className, lg, md, style, xl } = this.props
+      const { children, className, style, theme } = this.props
+
+      let { sm, md, lg, xl, offset } = this.props
+      sm = sm !== undefined ? sm : 0
+      md = md !== undefined ? md : sm
+      lg = lg !== undefined ? lg : md
+      xl = xl !== undefined ? xl : lg
+
+      offset.sm = (offset.sm !== undefined ? offset.sm : 0)
+      offset.md = (offset.md !== undefined ? offset.md : offset.sm)
+      offset.lg = (offset.lg !== undefined ? offset.lg : offset.md)
+      offset.xl = (offset.xl !== undefined ? offset.xl : offset.lg)
 
       return (
         <StyledColumn
           className={className}
           children={children}
-          lg={lg}
-          md={md}
+          size={{ sm, md, lg, xl }}
+          off={offset}
           style={style}
-          xl={xl}
         />
       )
     }
@@ -56,34 +69,38 @@ const StyledColumn = styled.div`
   box-sizing: border-box;
   min-height: 1px;
   position: relative;
-  padding-left: ${props => props.theme.GRID.gutterWidth / 2}px;
-  padding-right: ${props => props.theme.GRID.gutterWidth / 2}px;
+  padding-left: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
+  padding-right: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   width: 100%;
+  /* flex-basis: 0;
+  flex-grow: 1; */
+  margin-left: unset;
+
+  /* SM Medium devices (tablets, 576px and up) */
+  @media (min-width: 0) {
+    flex: 0 0 ${({ size }) => size.sm ? 100 / (12 / size.sm) : 100}%;
+    margin-left: ${({ off }) => off.sm ? (100 / 12) * off.sm : 0}%;
+    max-width: ${({ size }) => size.sm ? 100 / (12 / size.sm) : 100}%;
+  }
 
   /* MD Medium devices (tablets, 768px and up) */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
-    padding-right: ${props => props.theme.GRID.containerWidths.md[1] / 2}px;
-
-    flex: 0 0 ${props => 100 / (12 / props.md)}%;
-    max-width: ${props => 100 / (12 / props.md)}%
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
+    flex: 0 0 ${({ size }) => 100 / (12 / size.md)}%;
+    margin-left: ${({ off }) => (100 / 12 * off.md)}%;
+    max-width: ${({ size }) => 100 / (12 / size.md)}%;
   }
 
   /* LG Large devices (desktops, 992px and up) */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
-    padding-right: ${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
-
-    flex: 0 0 ${props => 100 / (12 / (props.lg || props.md))}%;
-    max-width: ${props => 100 / (12 / (props.lg || props.md))}%
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
+    flex: 0 0 ${({ size }) => 100 / (12 / size.lg)}%;
+    margin-left: ${({ off }) => (100 / 12 * off.lg)}%;
+    max-width: ${({ size }) => 100 / (12 / size.lg)}%;
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
-    padding-left: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
-    padding-right: ${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
-
-    flex: 0 0 ${props => 100 / (12 / (props.xl || props.lg || props.md))}%;
-    max-width: ${props => 100 / (12 / (props.xl || props.lg || props.md))}%
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
+    flex: 0 0 ${({ size }) => 100 / (12 / size.xl)}%;
+    margin-left: ${({ off }) => (100 / 12 * off.xl)}%;
+    max-width: ${({ size }) => 100 / (12 / size.xl)}%;
   }
 `

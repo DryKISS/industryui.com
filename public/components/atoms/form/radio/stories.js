@@ -25,7 +25,7 @@ storiesOf('Atoms/Form/Radio', module)
   .addDecorator(withReadme(Readme))
 
   .add('Default', withInfo()(() =>
-    <Radio data={RADIO_GENDER(select('Checked', { no: 'no', male: 'male', female: 'female' }, 'no'))}/>
+    <Radio data={RADIO_GENDER(select('Checked', { no: 'no', male: 'male', female: 'female' }, 'no'))} />
   ))
 
   .add('Stacked', withInfo()(() =>

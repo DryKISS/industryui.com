@@ -20,7 +20,7 @@ storiesOf('Atoms/Form/Textarea', module)
 
   .add('Default', withInfo()(() =>
     <Label text="Enter the message below">
-      <Textarea />
+      <Textarea value="this is text area" />
     </Label>
     )
   )

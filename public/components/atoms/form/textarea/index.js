@@ -51,7 +51,6 @@ export const Textarea = withTheme(
       const { handleChange } = this.props
       handleChange(e)
       this.setState({ charCount: e.target.value.length })
-      console.log(e.target)
     }
 
     render () {

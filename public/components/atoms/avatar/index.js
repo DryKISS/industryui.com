@@ -77,9 +77,9 @@ const StyledAvatar = styled.div`
   border-radius: 50%;
   color: #3a4e5f;
   display: flex;
-  /* height: 56px; */
+  height: 56px;
   justify-content: center;
-  /* min-width: 56px; */
+  min-width: 56px;
 `
 
 // .Avatar-medium {

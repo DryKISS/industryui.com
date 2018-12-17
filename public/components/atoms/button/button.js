@@ -78,7 +78,7 @@ const StyledButton = styled.button`
   display: ${props => props.centre || props.block ? 'block' : 'inline-block'};
   font-family: ${props => props.theme.font};
   font-size: ${props => props.size === 'lg' ? '1.25rem' : '1rem'};
-  line-height: 1;
+  line-height: 1.5;
   margin: ${props => props.centre ? 'auto' : 0};
   outline: none;
   overflow: visible;

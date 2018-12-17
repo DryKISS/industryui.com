@@ -3,7 +3,7 @@
  * Provides a list of the accepted
  */
 export const CONTEXT = {
-
+  WHITE: 'white',
   DARK: 'dark',
   LIGHT: 'light',
   PRIMARY: 'primary',
@@ -12,5 +12,4 @@ export const CONTEXT = {
   INFO: 'info',
   WARNING: 'warning',
   DANGER: 'danger'
-
 }
