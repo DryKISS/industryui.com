@@ -44,7 +44,7 @@ storiesOf('Molecules/Carousel', module)
         <div>
           <Image src="http://placehold.it/350x300/FF0033/DDEEFF?text=6" alt="" />
         </div>
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', border: 'dotted' }}> 
           7. this is div
         </div>
         <div>
