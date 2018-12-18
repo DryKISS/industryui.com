@@ -20,12 +20,36 @@ import "slick-carousel/slick/slick-theme.css"
 
 import { loadjs, canUseDOM } from './domutil'
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
+const getSlickParams = (windowWidth) => {
+  let slickParams = {
+    infinite: true,
+    /* centerMode: true, */
+    dots: false,
+    slidesToScroll: 1,
+    /* appendArrows: Selector, htmlString, Array, Element, jQuery  */
+    /* appendDots: Selector, htmlString, Array, Element, jQuery  */
+  }
+
+  // TODO: check https://stackoverflow.com/a/38755312/1948511 width-handling solution
+  if (windowWidth < 450) {
+    slickParams = {
+      ...slickParams,
+      arrows: false,             
+      slidesToShow: 1.1,
+      initialSlide: 1,  // +1 initial slide hack for narrow screen x
+    }
+  } else {
+    slickParams = {
+      ...slickParams,
+      arrows: true,
+      prevArrow: '#slider-prev-button',
+      nextArrow: '#slider-next-button',
+
+      /* centerMode: true, */
+      slidesToShow: 1.667,  // magic number to display one slide at center and two BIG beside 
+    }
+  }
+  return slickParams
 }
 
 export const Carousel = withTheme(
@@ -34,34 +58,12 @@ export const Carousel = withTheme(
     }
 
     initCarousel () {
-      let slickParams = {
-        infinite: true,
-        ZZcenterMode: true,
-        dots: false,
-        slidesToScroll: 1,
-        /* appendArrows: Selector, htmlString, Array, Element, jQuery  */
-        /* appendDots: Selector, htmlString, Array, Element, jQuery  */
-      }
+      $(".slider").slick(getSlickParams(window.innerWidth))
+    }
 
-      if (window.innerWidth < 450) {
-        slickParams = {
-          ...slickParams,
-          arrows: false,             
-          //slidesToShow: 1.1,
-        }
-      } else {
-        slickParams = {
-          ...slickParams,
-          arrows: true,
-          prevArrow: '#slider-prev-button',
-          nextArrow: '#slider-next-button',
-          slidesToShow: 1.667,
-        }
-      }
-      
-      //console.log('>>>>>>>>>>>>>>', $(".carousel"), $(".carousel").slick)
-      console.log('>>>>', window.innerWidth)
-      $(".slider").slick(slickParams)
+    handleWindowResize = () => {
+      $('.slider').slick('unslick')
+      this.initCarousel(getSlickParams(window.innerWidth))
     }
     
     componentDidMount () {
@@ -74,7 +76,16 @@ export const Carousel = withTheme(
       ).then( () => {
         this.initCarousel()
       })
+
+      window.addEventListener("resize", this.handleWindowResize);
         
+    }
+
+    componentWillUnmount () {
+      if (!canUseDOM) return;
+
+      window.removeEventListener("resize", this.handleWindowResize);
+      $('.slider').slick('unslick')
     }
     
     render () {
@@ -123,6 +134,10 @@ const CarouselStyled = styled.section`
 `
 
 const CarouselButton = styled.div`      
+  @media only screen and (max-width: 450px) {
+    display: none;
+  }
+
   position: absolute;
   z-index: 10;
 

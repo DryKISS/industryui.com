@@ -1,3 +1,3 @@
 # Copyright
 
-Full width element that contains the copyright notice and legal links.
+Carousel for images or something else
