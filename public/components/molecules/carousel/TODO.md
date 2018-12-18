@@ -1,5 +1,6 @@
 # Todo
 
+- [ ] extract links to prev/next buttons to "prevId" and "nextId" attributes
 - [ ] extract options externally
 - [ ] ??use unique ids and classnames for internal items
 - [ ] use http://holderjs.com/ instead of placehold.it
