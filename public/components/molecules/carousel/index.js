@@ -78,7 +78,6 @@ export const Carousel = withTheme(
       })
 
       window.addEventListener("resize", this.handleWindowResize);
-        
     }
 
     componentWillUnmount () {
@@ -89,38 +88,12 @@ export const Carousel = withTheme(
     }
     
     render () {
-      const { brand, links } = this.props
-      const year = new Date().getFullYear()
-
       return (
         <CarouselStyled className="carousel">
           <CarouselButton type="prev" id="slider-prev-button">&lt;</CarouselButton>
           <CarouselButton type="next" id="slider-next-button">&gt;</CarouselButton>
           <section className="slider">
-            <div>
-              <Image src="http://placehold.it/350x300/0000FF/808080?text=1" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/FFFF00/000000?text=2" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/EE1111?text=3" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/DDEEFF/AAAAAA?text=4" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/00EE33/AAAAAA?text=5" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/AA00CC/DDEEFF?text=6" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/00EE33/DDEEFF?text=7" />
-            </div>
-            <div>
-              <Image src="http://placehold.it/350x300/CC1133/DDEEFF?text=8" />
-            </div>
+            { this.props.children }
           </section>
         </CarouselStyled>
       )
@@ -147,6 +120,4 @@ const CarouselButton = styled.div`
   ${ ({ type }) => type === 'prev' ? 'left: 12%' : 'right: 12%' }
 `  
 
-const Image = styled.img`
-  width: 100%;
-`
+

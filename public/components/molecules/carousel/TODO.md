@@ -1,5 +1,7 @@
 # Todo
 
+- [ ] extract options externally
+- [ ] ??use unique ids and classnames for internal items
 - [ ] use http://holderjs.com/ instead of placehold.it
 - [ ] load jquery & slick.js beautiful way without <body>-<script> attaching
 - [ ] keep & set current slide on resize (keep slide number in state)
