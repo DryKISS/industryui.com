@@ -114,7 +114,7 @@ const CarouselButton = styled.div`
   position: absolute;
   z-index: 10;
 
-  font: 24px bold;
+  font: 48px bold;
   top: calc(50% - 0.5em);
   
   ${ ({ type }) => type === 'prev' ? 'left: 12%' : 'right: 12%' }
