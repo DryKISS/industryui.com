@@ -4,10 +4,11 @@
 
 // React
 import React, { Component } from 'react'
-import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
+import { bool, node, number, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { ListItem } from './components'
+import { Item } from './components'
+export const ListItem = Item;
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -20,10 +21,7 @@ export const List = withTheme(
       children: node.isRequired,
       className: string,
       inline: bool,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ])),
+      style: object,
       unstyled: bool
     }
 
@@ -58,6 +56,7 @@ export const List = withTheme(
     }
   }
 )
+
 
 // Style
 const inlineStyles = `

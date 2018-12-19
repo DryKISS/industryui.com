@@ -7,8 +7,8 @@ import { bool, node } from 'prop-types'
 // Style
 import styled, { withTheme } from 'styled-components'
 
-export const ListItem = withTheme(
-  class ListItem extends Component {
+export const Item = withTheme(
+  class Item extends Component {
     static propTypes = {
       children: node.isRequired,
       inline: bool
