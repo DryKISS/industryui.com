@@ -44,7 +44,7 @@ export const Carousel = withTheme(
         slickParams = {
           ...slickParams,
           arrows: false,             
-          slidesToShow: 1.1,
+          slidesToShow: 1.06,
           initialSlide: this.state.currentSlide || 1,  // 1 - to fix bug of displaying last slide
         }
       } else {

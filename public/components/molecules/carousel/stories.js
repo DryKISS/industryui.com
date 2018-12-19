@@ -24,17 +24,6 @@ import dog3 from './__mocks__/images/dog3.jpg'
 import dog4 from './__mocks__/images/dog4.jpg'
 import dog5 from './__mocks__/images/dog5.jpg'
 
-const getTextLabel = (text) =>
-  <span style={{
-    position: 'absolute',
-    textShadow: '2px 2px #000000',
-    color: 'white',
-    fontSize: '24px',
-    padding: '1em'
-  }}>
-    { text }
-  </span>
-
 storiesOf('Molecules/Carousel', module)
 
   .addDecorator(withKnobs)
@@ -44,26 +33,26 @@ storiesOf('Molecules/Carousel', module)
     withInfo()(() =>
       <Carousel style={{ height: '300px' }}>
         <div>
-          { getTextLabel('objectFit: contain') }
+          <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
           <Image src={ dog2 } alt="" style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
         </div>
         <div>
-          { getTextLabel('objectFit: cover') }
-          <Image src={ dog1 } alt="" style={{ border: 'dotted lightgray'  }} />
+          <TextLabel>objectFit: cover</TextLabel>
+          <Image src={ dog1 } alt="" style={{ border: 'dotted lightgray' }} />
         </div>
         <div>
-          { getTextLabel('objectFit: none') }
+          <TextLabel>objectFit: none</TextLabel>
           <Image src={ dog3 } alt="" style={{ objectFit: 'none' }} />
         </div>
         <div style={{ width: '100%', height: '300px' }}>
           this is text div
         </div>
         <div>
-          { getTextLabel('objectFit: cover') }
+          <TextLabel>objectFit: cover</TextLabel>
           <Image src={ dog4 } alt="" />
         </div>
         <div>
-          { getTextLabel('objectFit: cover') }
+          <TextLabel>objectFit: cover</TextLabel>
           <Image src={ dog5 } alt="" />
         </div>
 
@@ -75,4 +64,12 @@ const Image = styled.img`
   width: 100%;
   height: 300px;
   object-fit: cover;  /* or 'contain' to show all image */
+`
+
+const TextLabel = styled.span`
+  position: absolute;
+  text-shadow: 2px 2px #000000;
+  color: white;
+  font-size: 24px;
+  padding: 2em;
 `
