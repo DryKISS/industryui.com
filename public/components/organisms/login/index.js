@@ -85,28 +85,34 @@ export class Login extends Component {
           handleChange={handleChange}
         />
 
-        <Button
-          content='Log in'
-          context='primary'
-          disabled={isInvalid}
-          size='lg'
-          type='submit'
-        />
+        <div className='text-right'>
+          <Button
+            align='right'
+            content='Log in'
+            context='primary'
+            disabled={isInvalid}
+            size='lg'
+            type='submit'
+          />
 
-        <p />
+          <p />
 
-        {/* Forgot password */}
-        {forgotPassword &&
-          <Link to={pathForgot}>
-            <a>Forgot Password</a>
+          {/* Forgot password */}
+          {forgotPassword &&
+            <Link to={pathForgot}>
+              <a>Forgot Password</a>
+            </Link>
+          }
+
+          {' '}|{' '}
+
+          <Link to={pathSignUp}>
+            <a>Sign up</a>
           </Link>
-        }
 
-        {' '}|{' '}
+          <p />
 
-        <Link to={pathSignUp}>
-          <a>Sign up</a>
-        </Link>
+        </div>
 
       </Form>
     )

@@ -8,7 +8,7 @@ import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'pr
 
 // UI
 import { BACKGROUND, COLOUR, SHADE_COLOUR } from '../../'
-import { CONTEXT } from '../../theme'
+import { CONTEXT, SIZE } from '../../theme'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -26,19 +26,9 @@ export const Button = withTheme(
       onClick: func,
       outline: bool,
       shadow: bool,
-      size: oneOf([
-        'sm',
-        'lg'
-      ]),
-      style: objectOf(oneOfType([
-        number,
-        string
-      ])),
-      type: oneOf([
-        'button',
-        'reset',
-        'submit'
-      ])
+      size: oneOf(Object.values(SIZE)),
+      style: objectOf(oneOfType([number, string])),
+      type: oneOf(['button', 'reset', 'submit'])
     }
 
     static defaultProps = {
@@ -64,28 +54,28 @@ const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
   ${props => props.outline ? COLOUR(props) : `color: ${props.theme.COLOUR.white}`}
   border: 1px solid ${props => props.theme.COLOUR[props.context]};
-  border-radius: ${props => props.size === 'lg' ? '.25rem' : '.25rem'};
+  border-radius: .5rem;
   ${props => props.shadow && `box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);`}
   cursor: ${props => props.disabled ? 'initial' : 'pointer'};
   display: ${props => props.centre || props.block ? 'block' : 'inline-block'};
-  font-family: ${props => props.theme.font};
-  font-size: ${props => props.size === 'lg' ? '1.25rem' : '1rem'};
+  font-family: ${({ theme }) => theme.font};
+  font-size: ${({ size }) => size === 'lg' ? '1.25rem' : '1rem'};
   line-height: 1.5;
-  margin: ${props => props.centre ? 'auto' : 0};
+  margin: ${({ centre }) => centre ? 'auto' : 0};
   opacity: ${({ disabled }) => disabled && 0.5};
   outline: none;
   overflow: visible;
-  padding: ${props => (props.size === 'lg' && '.5rem 1rem') || (props.size === 'sm' && '.25rem .5rem')};
-  text-align: center;
+  padding: ${({ size }) => (size === 'lg' && '.5rem 1rem') || (size === 'sm' && '.25rem .5rem')};
   text-decoration: none;
   text-transform: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: ${props => props.block ? '100%' : 'initial'};
+  width: ${({ block }) => block ? '100%' : 'initial'};
 
+  /* If two buttons are next to each other */
   & + & {
-    margin-top: ${props => props.block ? '1rem' : 'initial'};
+    margin-top: ${({ block }) => block ? '1rem' : 'initial'};
   }
 
   &:hover {
@@ -93,37 +83,3 @@ const StyledButton = styled.button`
     border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)}
   }
 `
-
-// Large
-// padding: .5rem 1rem;
-// font-size: 1.25rem;
-// line-height: 1.5;
-// border-radius: .3rem;
-
-// Small
-// padding: .25rem .5rem;
-// font-size: .875rem;
-// line-height: 1.5;
-// border-radius: .2rem;
-
-// button,
-// [type="button"],
-// [type="reset"],
-// [type="submit"] {
-//   -webkit-appearance: button;
-// }
-
-// button::-moz-focus-inner,
-// [type="button"]::-moz-focus-inner,
-// [type="reset"]::-moz-focus-inner,
-// [type="submit"]::-moz-focus-inner {
-//   border-style: none;
-//   padding: 0;
-// }
-
-// button:-moz-focusring,
-// [type="button"]:-moz-focusring,
-// [type="reset"]:-moz-focusring,
-// [type="submit"]:-moz-focusring {
-//   outline: 1px dotted ButtonText;
-// }
