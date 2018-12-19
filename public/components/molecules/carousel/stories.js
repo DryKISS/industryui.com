@@ -29,16 +29,16 @@ storiesOf('Molecules/Carousel', module)
   .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
 
-  .add('Primary',
+  .add('Detailed',
     withInfo()(() =>
       <Carousel style={{ height: '300px' }}>
         <div>
           <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-          <Image src={ dog2 } alt="" style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
+          <Image src={ dog1 } alt="" style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
         </div>
         <div>
           <TextLabel>objectFit: cover</TextLabel>
-          <Image src={ dog1 } alt="" style={{ border: 'dotted lightgray' }} />
+          <Image src={ dog2 } alt="" style={{ border: 'dotted lightgray' }} />
         </div>
         <div>
           <TextLabel>objectFit: none</TextLabel>
@@ -56,6 +56,30 @@ storiesOf('Molecules/Carousel', module)
           <Image src={ dog5 } alt="" />
         </div>
 
+      </Carousel>
+    )
+  )
+
+  .add('One slide',
+    withInfo()(() =>
+      <Carousel style={{ height: '300px' }}>
+        <div>
+          <Image src={ dog1 } alt="" />
+        </div>
+
+      </Carousel>
+    )
+  )
+
+  .add('Two slides',
+    withInfo()(() =>
+      <Carousel style={{ height: '300px' }}>
+        <div>
+          <Image src={ dog1 } alt="" />
+        </div>
+        <div>
+          <Image src={ dog2 } alt="" />
+        </div>
       </Carousel>
     )
   )

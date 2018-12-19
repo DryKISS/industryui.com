@@ -1,10 +1,12 @@
 # Todo
 - [ ] load jquery & slick.js beautiful way without <body>-<script> attaching
-  Problem to resolve: resolve hacky timeout (see componentDidMount -> setTimeout)
+Problem to resolve: resolve hacky timeout (see componentDidMount -> setTimeout)
+- [ ] fix: when page FIRST LOADED from narrow screen then prev image is shown
+   Possible reason: currentSlide, slideCount states are updated too late (before loading)
 
 # Delayed
 - [ ] http://holderjs.com/ instead of placehold.it
-   holder.js isn't fit because unsupport setting images sizes by css with % 
+   holder.js isn't fit because unsupport setting images sizes by icss with % 
 - [ ] extract options externally
      (no reason for now) 
 - [ ]  extract links to prev/next buttons to "prevId" and "nextId" attributes

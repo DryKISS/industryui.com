@@ -24,13 +24,16 @@ import { loadjs } from './domutil'
 export const Carousel = withTheme(
   class Carousel extends Component {
     state = {
-      currentSlide: 0,
+      currentSlide: null,
+      slideCount: null,
     }
 
     static propTypes = {
     }
 
     getSlickParams() {
+      //console.log('GSP')
+      const { slideCount, currentSlide } = this.state
       let slickParams = {
         infinite: true,
         /* centerMode: true, */
@@ -40,32 +43,52 @@ export const Carousel = withTheme(
 
       // TODO: check https://stackoverflow.com/a/38755312/1948511 width-handling solution
       if (window.innerWidth < 450) {
+                       
+        //const initialSlide = this.state.slideCount
+        console.log('>>', this.state.currentSlide, this.state.slideCount)
         slickParams = {
           ...slickParams,
           arrows: false,             
-          slidesToShow: 1.06,
-          initialSlide: this.state.currentSlide || 1,  // 1 - to fix bug of displaying last slide
+          slidesToShow: 1.06, //this.state.slideCount == 1 ? 1 : 1.06, // fix: wide>narrow resize with 1 slide
         }
+
+        if (slideCount) {
+          slickParams.initialSlide = (currentSlide + 1) % slideCount
+        }
+
       } else {
         slickParams = {
           ...slickParams,
           arrows: true,
           prevArrow: '#slider-prev-button',
           nextArrow: '#slider-next-button',
-          initialSlide: this.state.currentSlide || 0, 
           slidesToShow: 1.667,  // magic number to display one slide at center and two BIG beside 
+        }
+        if (currentSlide) {
+          slickParams.initialSlide = currentSlide
         }
       }
       return slickParams
     }
 
     initCarousel () {
-      jQuery(".slider").slick(this.getSlickParams())
+      // update count of slides  by recipy https://stackoverflow.com/a/25847520/1948511 
+      jQuery(".slider").on('init reInit beforeChange', (event, slick) => {
+        //console.log('IRA')
+        this.setState({ slideCount: slick.slideCount })
+      }
+      )
+
       jQuery(".slider").on('afterChange', this.handleSlideChanged)
+
+      jQuery(".slider").slick(this.getSlickParams())
     }
 
-    handleSlideChanged = (event, slick, currentSlide) => {
-      this.setState({ currentSlide })
+    handleSlideChanged = (event, slick, currentSlide, nextSlide) => {
+      //console.log('HSC')
+      this.setState({
+        currentSlide: currentSlide
+      })
     }
 
     handleWindowResize = () => {
@@ -91,7 +114,7 @@ export const Carousel = withTheme(
       setTimeout( () => {
         this.initCarousel()
         window.addEventListener("resize", this.handleWindowResize)
-      }, 500)  
+      }, 700)  
 
     }
 
