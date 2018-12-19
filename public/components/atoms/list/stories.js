@@ -32,7 +32,7 @@ storiesOf('Atoms/List', module)
     <List
       unstyled={boolean('Unstyled', false)}
       inline={boolean('inline', false)}
-      style={object('Style', { listStyleType: 'lower-greek' })}
+      style={object('Style', { color: 'blue', listStyleType: 'lower-greek' })}
     >
       <ListItem>Item1</ListItem>
       <ListItem>Item2</ListItem>

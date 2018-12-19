@@ -27,7 +27,7 @@ export const Item = withTheme(
         </StyledLi>
       )
     }
-  }
+  }, 
 )
 
 // Style
