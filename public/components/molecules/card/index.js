@@ -55,6 +55,7 @@ export const Card = withTheme(
     card = () => {
       const {
         alt,
+        bordered,
         children,
         className,
         context,
@@ -63,16 +64,9 @@ export const Card = withTheme(
         title
       } = this.props
 
-      // const classes = cx(
-      //   {
-      //     'Card-bordered': bordered,
-      //     'Card-hasHeader': header,
-      //     'Card-horizontal': horizontal
-      //   }
-      // )
-
       return (
         <StyledCard
+          bordered={bordered}
           className={className}
           context={context}
         >
@@ -81,7 +75,7 @@ export const Card = withTheme(
           {/* { header && this.header() } */}
 
           {/* Image */}
-          { image &&
+          {image &&
             <StyledImage imageClasses='rounded' alt={alt} radius src={image} />
           }
 
@@ -91,7 +85,7 @@ export const Card = withTheme(
           }
 
           {/* Footer */}
-          {footer && <CardFooter footer={footer} />}
+          {footer && <CardFooter context={context} footer={footer} />}
 
         </StyledCard>
       )
@@ -112,9 +106,10 @@ export const Card = withTheme(
 // Style
 const StyledCard = styled.div`
   background-clip: border-box;
-  background-color: ${props => props.theme.COLOUR[props.context]}
-  border: 1px solid rgba(0, 0, 0, .125);
+  background-color: ${({ context, theme }) => theme.COLOUR[context]}
+  /* border: 1px solid rgba(0, 0, 0, .125); */
   border-radius: .5rem;
+  color: ${({ context, theme }) => (context === 'light') ? theme.COLOUR.dark : theme.COLOUR.white}}
   display: flex;
   flex-direction: column;
   font-size: inherit;

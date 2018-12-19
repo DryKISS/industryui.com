@@ -50,14 +50,6 @@ export const Links = withTheme(
       )
     }
 
-    renderLinks = () => {
-
-    }
-
-    renderGroup = () => {
-
-    }
-
     render () {
       const { links, visible } = this.props
 

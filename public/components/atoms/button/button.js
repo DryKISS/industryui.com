@@ -8,6 +8,7 @@ import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'pr
 
 // UI
 import { BACKGROUND, COLOUR, SHADE_COLOUR } from '../../'
+import { CONTEXT } from '../../theme'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -20,16 +21,7 @@ export const Button = withTheme(
       children: node,
       className: string,
       content: node,
-      context: oneOf([
-        'dark',
-        'light',
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger'
-      ]),
+      context: oneOf(Object.values(CONTEXT)),
       disabled: bool,
       onClick: func,
       outline: bool,
@@ -50,8 +42,8 @@ export const Button = withTheme(
     }
 
     static defaultProps = {
-      disabled: false,
       context: 'primary',
+      disabled: false,
       type: 'button'
     }
 
@@ -80,6 +72,7 @@ const StyledButton = styled.button`
   font-size: ${props => props.size === 'lg' ? '1.25rem' : '1rem'};
   line-height: 1.5;
   margin: ${props => props.centre ? 'auto' : 0};
+  opacity: ${({ disabled }) => disabled && 0.5};
   outline: none;
   overflow: visible;
   padding: ${props => (props.size === 'lg' && '.5rem 1rem') || (props.size === 'sm' && '.25rem .5rem')};

@@ -4,10 +4,11 @@
 
 // React
 import React, { PureComponent } from 'react'
-import { node, string } from 'prop-types'
+import { node, oneOf, string } from 'prop-types'
 
 // UI
 import { COLOUR } from '../../../'
+import { CONTEXT } from '../../../theme'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -16,8 +17,12 @@ export const CardBody = withTheme(
   class CardBody extends PureComponent {
     static propTypes = {
       children: node,
-      context: string,
+      context: oneOf(Object.values(CONTEXT)),
       title: string
+    }
+
+    static defaultProps = {
+      context: 'primary'
     }
 
     render () {

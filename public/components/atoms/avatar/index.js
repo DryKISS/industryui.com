@@ -16,6 +16,7 @@ import {
 
 // UI
 import { BACKGROUND } from '../../'
+import { CONTEXT } from '../../theme'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -25,16 +26,7 @@ export const Avatar = withTheme(
     static propTypes = {
       children: any,
       content: any,
-      context: oneOf([
-        'dark',
-        'light',
-        'primary',
-        'secondary',
-        'success',
-        'info',
-        'warning',
-        'danger'
-      ]),
+      context: oneOf(Object.values(CONTEXT)),
       handleClick: func,
       style: objectOf(oneOfType([
         number,

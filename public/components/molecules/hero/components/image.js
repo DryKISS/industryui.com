@@ -50,7 +50,7 @@ const StyledImageContainer = styled.div`
 `
 
 const StyledImage = styled(Image)`
-  filter: drop-shadow(0px -3px 6px #aaa);
+  filter: drop-shadow(0px 0px 8px #ccc);
   margin-bottom: -20px;
   width: 85%;
 `

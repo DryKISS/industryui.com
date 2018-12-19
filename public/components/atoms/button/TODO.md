@@ -8,6 +8,7 @@
 
 ## Done
 
+- [ ] Add disabled prop and style
 - [X] Can just pass ...this.props to the component
 - [X] Allow the content to be set by children or content
 - [X] Allow the Theme to be passed in and utilised
