@@ -18,6 +18,23 @@ import styled from 'styled-components'
 import { Carousel } from '../../'
 import Readme from './README.md'
 
+import dog1 from './__mocks__/images/dog1.jpg'
+import dog2 from './__mocks__/images/dog2.jpg'
+import dog3 from './__mocks__/images/dog3.jpg'
+import dog4 from './__mocks__/images/dog4.jpg'
+import dog5 from './__mocks__/images/dog5.jpg'
+
+const getTextLabel = (text) =>
+  <span style={{
+    position: 'absolute',
+    textShadow: '2px 2px #000000',
+    color: 'white',
+    fontSize: '24px',
+    padding: '1em'
+  }}>
+    { text }
+  </span>
+
 storiesOf('Molecules/Carousel', module)
 
   .addDecorator(withKnobs)
@@ -25,30 +42,29 @@ storiesOf('Molecules/Carousel', module)
 
   .add('Primary',
     withInfo()(() =>
-      <Carousel>
+      <Carousel style={{ height: '300px' }}>
         <div>
-          <Image src="http://placehold.it/350x300/0000FF/808080?text=1" alt="" />
+          { getTextLabel('objectFit: contain') }
+          <Image src={ dog2 } alt="" style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
         </div>
         <div>
-          <Image src="http://placehold.it/350x300/FFFF00/000000?text=2" alt=""/>
+          { getTextLabel('objectFit: cover') }
+          <Image src={ dog1 } alt="" style={{ border: 'dotted lightgray'  }} />
         </div>
         <div>
-          <Image src="http://placehold.it/350x300/DDEEFF/000000?text=3" alt="" />
+          { getTextLabel('objectFit: none') }
+          <Image src={ dog3 } alt="" style={{ objectFit: 'none' }} />
+        </div>
+        <div style={{ width: '100%', height: '300px' }}>
+          this is text div
         </div>
         <div>
-          <Image src="http://placehold.it/350x300/EE1111?text=4" alt=""/>
+          { getTextLabel('objectFit: cover') }
+          <Image src={ dog4 } alt="" />
         </div>
         <div>
-          <img src="http://placehold.it/350x300/AA00CC/DDEEFF?text=5+no+width" alt="" />
-        </div>
-        <div>
-          <Image src="http://placehold.it/350x300/FF0033/DDEEFF?text=6" alt="" />
-        </div>
-        <div style={{ width: '100%', border: 'dotted' }}> 
-          7. this is div
-        </div>
-        <div>
-          <Image src="http://placehold.it/350x300/CC1133/DDEEFF?text=8" alt="" />
+          { getTextLabel('objectFit: cover') }
+          <Image src={ dog5 } alt="" />
         </div>
 
       </Carousel>
@@ -57,4 +73,6 @@ storiesOf('Molecules/Carousel', module)
 
 const Image = styled.img`
   width: 100%;
+  height: 300px;
+  object-fit: cover;  /* or 'contain' to show all image */
 `

@@ -20,50 +20,60 @@ import "slick-carousel/slick/slick-theme.css"
 
 import { loadjs, canUseDOM } from './domutil'
 
-const getSlickParams = (windowWidth) => {
-  let slickParams = {
-    infinite: true,
-    /* centerMode: true, */
-    dots: false,
-    slidesToScroll: 1,
-    /* appendArrows: Selector, htmlString, Array, Element, jQuery  */
-    /* appendDots: Selector, htmlString, Array, Element, jQuery  */
-  }
-
-  // TODO: check https://stackoverflow.com/a/38755312/1948511 width-handling solution
-  if (windowWidth < 450) {
-    slickParams = {
-      ...slickParams,
-      arrows: false,             
-      slidesToShow: 1.1,
-      initialSlide: 1,  // +1 initial slide hack for narrow screen x
-    }
-  } else {
-    slickParams = {
-      ...slickParams,
-      arrows: true,
-      prevArrow: '#slider-prev-button',
-      nextArrow: '#slider-next-button',
-
-      /* centerMode: true, */
-      slidesToShow: 1.667,  // magic number to display one slide at center and two BIG beside 
-    }
-  }
-  return slickParams
-}
-
 export const Carousel = withTheme(
   class Carousel extends Component {
+    state = {
+      currentSlide: 0,
+    }
+
     static propTypes = {
     }
 
+    getSlickParams() {
+      let slickParams = {
+        infinite: true,
+        /* centerMode: true, */
+        dots: false,
+        slidesToScroll: 1,
+        /* appendArrows: Selector, htmlString, Array, Element, jQuery  */
+        /* appendDots: Selector, htmlString, Array, Element, jQuery  */
+      }
+
+      // TODO: check https://stackoverflow.com/a/38755312/1948511 width-handling solution
+      if (window.innerWidth < 450) {
+        slickParams = {
+          ...slickParams,
+          arrows: false,             
+          slidesToShow: 1.1,
+          initialSlide: this.state.currentSlide || 1,  // 1 - to fix bug of displaying last slide
+        }
+      } else {
+        slickParams = {
+          ...slickParams,
+          arrows: true,
+          prevArrow: '#slider-prev-button',
+          nextArrow: '#slider-next-button',
+          initialSlide: this.state.currentSlide || 0, 
+
+          /* centerMode: true, */
+          slidesToShow: 1.667,  // magic number to display one slide at center and two BIG beside 
+        }
+      }
+      return slickParams
+    }
+
     initCarousel () {
-      $(".slider").slick(getSlickParams(window.innerWidth))
+      $(".slider").slick(this.getSlickParams())
+      $(".slider").on('afterChange', this.handleSlideChanged)
+    }
+
+    handleSlideChanged = (event, slick, currentSlide) => {
+      this.setState({ currentSlide })
     }
 
     handleWindowResize = () => {
       $('.slider').slick('unslick')
-      this.initCarousel(getSlickParams(window.innerWidth))
+      this.initCarousel()
     }
     
     componentDidMount () {
