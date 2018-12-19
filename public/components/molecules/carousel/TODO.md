@@ -1,5 +1,6 @@
 # Todo
 - [ ] load jquery & slick.js beautiful way without <body>-<script> attaching
+  Problem to resolve: resolve hacky timeout (see componentDidMount -> setTimeout)
 
 # Delayed
 - [ ] http://holderjs.com/ instead of placehold.it
@@ -13,10 +14,12 @@ Possible ways:
    2) use internal control + external component passed via props
    Would work but not very elegant
    3) use internal button but with external styling
+
+   see also: slick.js appendArrows param
  
 freezing until real requirements
 
-- [ ] use unique ids and classnames for internal items
+- [ ] use unique ids and classnames for internal itemss
 - [ ] (long) Rewrite without jquery. Possible alternatives: 
    Note: slick.js cannot work without jquery
    
