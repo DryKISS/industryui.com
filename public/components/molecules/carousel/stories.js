@@ -31,7 +31,7 @@ storiesOf('Molecules/Carousel', module)
 
   .add('Detailed',
     withInfo()(() =>
-      <Carousel style={{ height: '300px' }}>
+      <Carousel>
         <div>
           <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
           <Image src={ dog1 } alt="" style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
@@ -62,7 +62,7 @@ storiesOf('Molecules/Carousel', module)
 
   .add('One slide',
     withInfo()(() =>
-      <Carousel style={{ height: '300px' }}>
+      <Carousel>
         <div>
           <Image src={ dog1 } alt="" />
         </div>
@@ -73,7 +73,7 @@ storiesOf('Molecules/Carousel', module)
 
   .add('Two slides',
     withInfo()(() =>
-      <Carousel style={{ height: '300px' }}>
+      <Carousel>
         <div>
           <Image src={ dog1 } alt="" />
         </div>
