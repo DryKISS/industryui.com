@@ -1,13 +1,24 @@
 # Todo
-
-- [ ] extract links to prev/next buttons to "prevId" and "nextId" attributes
-- [ ] extract options externally
-- [ ] ??use unique ids and classnames for internal items
-- [ ] use http://holderjs.com/ instead of placehold.it
 - [ ] load jquery & slick.js beautiful way without <body>-<script> attaching
-- [ ] keep & set current slide on resize (keep slide number in state)
 
-- [ ] Rewrite without jquery. Possible alternatives: 
+# Delayed
+- [ ] http://holderjs.com/ instead of placehold.it
+   holder.js isn't fit because unsupport setting images sizes by css with % 
+- [ ] extract options externally
+     (no reason for now) 
+- [ ]  extract links to prev/next buttons to "prevId" and "nextId" attributes
+not certian which solution would better and if any is really required.
+Possible ways:
+   1) use external tags by ID. Cons: need place that tags manually with considering carousel resizing.
+   2) use internal control + external component passed via props
+   Would work but not very elegant
+   3) use internal button but with external styling
+ 
+freezing until real requirements
+
+- [ ] use unique ids and classnames for internal items
+- [ ] (long) Rewrite without jquery. Possible alternatives: 
+   Note: slick.js cannot work without jquery
    
    non-react:
    https://github.com/pawelgrzybek/siema
@@ -21,9 +32,8 @@
    https://github.com/leandrowd/react-responsive-carousel
    http://leandrowd.github.io/react-responsive-carousel/
    
-- 
-  // TODO: check https://stackoverflow.com/a/38755312/1948511 
+   see also: https://stackoverflow.com/a/38755312/1948511 
 
 
-## Done
-
+# Done
+- [v] keep & set current slide on resize (keep slide number in state)
