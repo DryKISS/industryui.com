@@ -9,18 +9,35 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { withReadme } from 'storybook-readme'
+import { withKnobs, boolean, object, text } from '@storybook/addon-knobs/react'
 
-import List from '../../'
+import { List, ListItem } from '../../'
 import Readme from './README.md'
 
 storiesOf('Atoms/List', module)
 
+  .addDecorator(withKnobs)
   .addDecorator(withReadme(Readme))
 
-  .add('Default',
-    withInfo()(() =>
-      <List inline unstyled>
-        <List.Item>ITEM</List.Item>
-      </List>
-    )
+  .add('default', withInfo()(() =>
+    <List>
+      <ListItem>Item1</ListItem>
+      <ListItem>Item2</ListItem>
+      <ListItem>Item3</ListItem>
+    </List>
   )
+  )
+
+  .add('knobbed', withInfo()(() =>
+    <List
+      unstyled={boolean('Unstyled', false)}
+      inline={boolean('inline', false)}
+      style={object('Style', { color: 'blue', listStyleType: 'lower-greek' })}
+    >
+      <ListItem>Item1</ListItem>
+      <ListItem>Item2</ListItem>
+      <ListItem>Item3</ListItem>
+    </List>
+  )
+  )
+
