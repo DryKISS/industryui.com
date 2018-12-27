@@ -107,9 +107,9 @@ export const Card = withTheme(
 const StyledCard = styled.div`
   background-clip: border-box;
   background-color: ${({ context, theme }) => theme.COLOUR[context]}
-  /* border: 1px solid rgba(0, 0, 0, .125); */
+  border: ${({ bordered }) => bordered && '1px solid rgba(0, 0, 0, .125)'};
   border-radius: .5rem;
-  color: ${({ context, theme }) => (context === 'light') ? theme.COLOUR.dark : theme.COLOUR.white}}
+  color: ${({ context, theme }) => (context === 'light' || context === 'white') ? theme.COLOUR.dark : theme.COLOUR.white}}
   display: flex;
   flex-direction: column;
   font-size: inherit;
