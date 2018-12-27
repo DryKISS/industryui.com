@@ -20,6 +20,6 @@ storiesOf('Atoms/Form/Input', module)
 
   .add('Default',
     withInfo()(() =>
-      <Input />
+      <Input label="Email" placeholder="Enter your email" />
     )
   )
