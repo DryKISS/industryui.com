@@ -34,26 +34,26 @@ storiesOf('Molecules/Carousel', module)
       <Carousel>
         <div>
           <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-          <Image src={ dog1 } alt="" style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
+          <Image src={dog1} alt='' style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
         </div>
         <div>
           <TextLabel>objectFit: cover</TextLabel>
-          <Image src={ dog2 } alt="" style={{ border: 'dotted lightgray' }} />
+          <Image src={dog2} alt='' style={{ border: 'dotted lightgray' }} />
         </div>
         <div>
           <TextLabel>objectFit: none</TextLabel>
-          <Image src={ dog3 } alt="" style={{ objectFit: 'none' }} />
+          <Image src={dog3} alt='' style={{ objectFit: 'none' }} />
         </div>
         <div style={{ width: '100%', height: '300px' }}>
           this is text div
         </div>
         <div>
           <TextLabel>objectFit: cover</TextLabel>
-          <Image src={ dog4 } alt="" />
+          <Image src={dog4} alt='' />
         </div>
         <div>
           <TextLabel>objectFit: cover</TextLabel>
-          <Image src={ dog5 } alt="" />
+          <Image src={dog5} alt='' />
         </div>
 
       </Carousel>
@@ -64,7 +64,7 @@ storiesOf('Molecules/Carousel', module)
     withInfo()(() =>
       <Carousel>
         <div>
-          <Image src={ dog1 } alt="" />
+          <Image src={dog1} alt='' />
         </div>
 
       </Carousel>
@@ -75,10 +75,10 @@ storiesOf('Molecules/Carousel', module)
     withInfo()(() =>
       <Carousel>
         <div>
-          <Image src={ dog1 } alt="" />
+          <Image src={dog1} alt='' />
         </div>
         <div>
-          <Image src={ dog2 } alt="" />
+          <Image src={dog2} alt='' />
         </div>
       </Carousel>
     )

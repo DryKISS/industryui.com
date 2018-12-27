@@ -39,7 +39,7 @@ export const Column = withTheme(
     }
 
     render () {
-      const { children, className, style, theme } = this.props
+      const { children, className, style } = this.props
 
       let { sm, md, lg, xl, offset } = this.props
       sm = sm !== undefined ? sm : 0
