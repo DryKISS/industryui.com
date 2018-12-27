@@ -4,12 +4,12 @@
 export const FOOTER = (column) => ([
 
   {
-    columns: { md: 12, lg: 6 },
+    size: { md: 8, lg: 6 },
+    offset: { md: 4, lg: 0 },
     formatter: column
   },
-
   {
-    columns: { sm: 6, md: 4, lg: 2 },
+    size: { md: 4, lg: 2 },
     header: 'Tailwise',
     links: [
       {
@@ -31,7 +31,7 @@ export const FOOTER = (column) => ([
   },
 
   {
-    columns: { md: 4, lg: 2 },
+    size: { md: 4, lg: 2 },
     header: 'Discover',
     links: [
       {
@@ -53,7 +53,7 @@ export const FOOTER = (column) => ([
   },
 
   {
-    columns: { md: 4, lg: 2 },
+    size: { md: 4, lg: 2 },
     header: 'Top dog breeds',
     links: [
       {

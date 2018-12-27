@@ -48,20 +48,25 @@ const StyledGrid = styled.div`
   padding-left: ${props => props.theme.GRID.gutterWidth / 2}px;
   padding-right: ${props => props.theme.GRID.gutterWidth / 2}px;
   position: relative;
-  width: ${props => props.fluid ? '100%' : 'initial'};
+  width: ${({ fluid }) => fluid ? '100%' : 'initial'};
+
+  /* Small */
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.sm}px) {
+    max-width: ${({ theme }) => theme.GRID.containerWidths.sm}px;
+  }
 
   /* Medium */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
-    max-width: ${props => props.theme.GRID.containerWidths.md[0]}px;
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
+    max-width: ${({ theme }) => theme.GRID.containerWidths.md}px;
   }
 
   /* Large */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
-    max-width: ${props => props.theme.GRID.containerWidths.lg[0]}px;
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
+    max-width: ${({ theme }) => theme.GRID.containerWidths.lg}px;
   }
 
   /* Extra large */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
-    max-width: ${props => props.theme.GRID.containerWidths.xl[0]}px;
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
+    max-width: ${({ theme }) => theme.GRID.containerWidths.xl}px;
   }
 `

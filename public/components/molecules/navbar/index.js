@@ -4,7 +4,7 @@
 
 // React
 import React, { Component, Fragment } from 'react'
-import { object, string } from 'prop-types'
+import { any, object, string } from 'prop-types'
 
 // UI
 import { Brand, Links, Toggler } from './components'
@@ -23,6 +23,7 @@ export const Navbar = withTheme(
     }
 
     static propTypes = {
+      authUser: any,
       brand: string,
       links: object,
       type: string
@@ -38,13 +39,15 @@ export const Navbar = withTheme(
     }
 
     render () {
-      const { brand, links, type } = this.props
+      const { authUser, brand, links, type } = this.props
       const { visible } = this.state
 
       return (
         <Fragment>
 
           <StyledNav>
+
+            <div>Authed: {authUser && authUser.email}</div>
 
             {brand && <Brand brand={brand} />}
 

@@ -1,12 +1,13 @@
 /**
  * Card footer
- *
- * @todo Make the H2 a Heading
  */
 
 // React
 import React, { PureComponent } from 'react'
-import { string } from 'prop-types'
+import { oneOf, string } from 'prop-types'
+
+// UI
+import { CONTEXT } from '../../../theme'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -14,14 +15,19 @@ import styled, { withTheme } from 'styled-components'
 export const CardFooter = withTheme(
   class CardFooter extends PureComponent {
     static propTypes = {
+      context: oneOf(Object.values(CONTEXT)),
       footer: string
     }
 
+    static defaultProps = {
+      context: 'primary'
+    }
+
     render () {
-      const { footer } = this.props
+      const { context, footer } = this.props
 
       return (
-        <StyledFooter>
+        <StyledFooter context={context}>
           <StyledTitle>{footer}</StyledTitle>
         </StyledFooter>
       )
@@ -31,9 +37,7 @@ export const CardFooter = withTheme(
 
 // Style
 const StyledFooter = styled.div`
-  background-color: rgba(0, 0, 0, .03);
-  border-top: 1px solid rgba(0, 0, 0, .125);
-  color: #212529;
+  /* border-top: 1px solid rgba(0, 0, 0, .125); */
   padding: .75rem;
   text-align: center;
 `

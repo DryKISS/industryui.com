@@ -15,94 +15,106 @@ import {
   Link
 } from '../../'
 
-// Style
-import { withTheme } from 'styled-components'
+export class Login extends Component {
+  static propTypes = {
+    email: string.isRequired,
+    forgotPassword: bool,
+    handleChange: func.isRequired,
+    handleSubmit: func.isRequired,
+    password: string.isRequired,
+    pathForgot: string,
+    pathSignUp: string,
+    remember: string.isRequired
+  }
 
-export const Login = withTheme(
-  class Login extends Component {
-    static propTypes = {
-      email: string.isRequired,
-      forgotPassword: bool,
-      handleChange: func.isRequired,
-      handleSubmit: func.isRequired,
-      password: string.isRequired,
-      remember: string.isRequired
-    }
+  static defaultProps = {
+    forgotPassword: true,
+    pathForgot: '/forgot-details',
+    pathSignUp: '/sign-up'
+  }
 
-    static defaultProps = {
-      forgotPassword: false
-    }
+  render () {
+    const {
+      email,
+      forgotPassword,
+      handleChange,
+      handleSubmit,
+      password,
+      pathForgot,
+      pathSignUp,
+      remember
+    } = this.props
 
-    renderForgotPassword = () => {
-      const { forgotPassword } = this.props
+    const isInvalid = password === '' || email === ''
 
-      return (
-        forgotPassword &&
-          <Link to='/forgot-details'>
-            <a>Forgot Password</a>
-          </Link>
-      )
-    }
+    const CHECKBOX_REMEMBER = [
+      {
+        id: 'remember',
+        label: 'Remember me',
+        isChecked: remember
+      }
+    ]
 
-    render () {
-      const {
-        email,
-        handleChange,
-        handleSubmit,
-        password,
-        remember
-      } = this.props
+    return (
+      <Form submit={handleSubmit}>
 
-      const CHECKBOX_REMEMBER = [
-        {
-          id: 'remember',
-          label: 'Remember me',
-          isChecked: remember
-        }
-      ]
+        {/* Email */}
+        <Input
+          autoFocus
+          handleChange={handleChange}
+          id='email'
+          label='Email address'
+          placeholder='Email Address'
+          type='email'
+          value={email}
+        />
 
-      return (
-        <Form submit={handleSubmit}>
+        {/* Password */}
+        <Input
+          handleChange={handleChange}
+          id='password'
+          label='Password'
+          placeholder='Password'
+          type='password'
+          value={password}
+        />
 
-          {/* Email */}
-          <Input
-            autoFocus
-            handleChange={handleChange}
-            id='email'
-            label='Email address'
-            placeholder='Email Address'
-            type='email'
-            value={email}
+        {/* Remember me */}
+        <Checkbox
+          data={CHECKBOX_REMEMBER}
+          handleChange={handleChange}
+        />
+
+        <div className='text-right'>
+          <Button
+            align='right'
+            content='Log in'
+            context='primary'
+            disabled={isInvalid}
+            size='lg'
+            type='submit'
           />
-
-          {/* Password */}
-          <Input
-            handleChange={handleChange}
-            id='password'
-            label='Password'
-            placeholder='Password'
-            type='password'
-            value={password}
-          />
-
-          {/* Remember me */}
-          <Checkbox
-            data={CHECKBOX_REMEMBER}
-            handleChange={handleChange}
-          />
-
-          { this.renderForgotPassword() }
-
-          <Button content='Log in' context='primary' size='lg' type='submit' />
 
           <p />
 
-          <Link to='/sign-up'>
+          {/* Forgot password */}
+          {forgotPassword &&
+            <Link to={pathForgot}>
+              <a>Forgot Password</a>
+            </Link>
+          }
+
+          {' '}|{' '}
+
+          <Link to={pathSignUp}>
             <a>Sign up</a>
           </Link>
 
-        </Form>
-      )
-    }
+          <p />
+
+        </div>
+
+      </Form>
+    )
   }
-)
+}

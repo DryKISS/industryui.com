@@ -36,27 +36,7 @@ export const Row = withTheme(
 
 const StyledRow = styled.div`
   display: flex;
-  flex-grow: 0;
-  flex-shrink: 0;
   flex-wrap: wrap;
   margin-left: -${props => props.theme.GRID.gutterWidth / 2}px;
   margin-right: -${props => props.theme.GRID.gutterWidth / 2}px;
-
-  /* Medium */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.md}px) {
-    margin-left: -${props => props.theme.GRID.containerWidths.md[1] / 2}px;
-    margin-right: -${props => props.theme.GRID.containerWidths.md[1] / 2}px;
-  }
-
-  /* Large */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.lg}px) {
-    margin-left: -${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
-    margin-right: -${props => props.theme.GRID.containerWidths.lg[1] / 2}px;
-  }
-
-  /* Extra large */
-  @media (min-width: ${props => props.theme.GRID.breakpoints.xl}px) {
-    margin-left: -${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
-    margin-right: -${props => props.theme.GRID.containerWidths.xl[1] / 2}px;
-  }
 `

@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { array, string } from 'prop-types'
 
 // UI
-import { Container, Link, Row } from '../../'
+import { Column, Container, Link, Row } from '../../'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -47,7 +47,7 @@ export const Copyright = withTheme(
             <Row>
 
               <StyledBrand>
-              ©{year} {brand}
+                ©{year} {brand}
               </StyledBrand>
 
               {links && this.renderLinks()}
@@ -64,9 +64,9 @@ export const Copyright = withTheme(
 
 // Style
 const StyledCopyright = styled.section`
-  background-color: ${props => props.theme.COLOUR.light};
+  background-color: ${({ theme }) => theme.COLOUR.light};
   bottom: 0;
-  color: ${props => props.theme.COLOUR.dark};
+  color: ${({ theme }) => theme.COLOUR.dark};
   font-size: .875rem;
   height: 4rem;
   line-height: 4rem;
@@ -84,7 +84,7 @@ const StyledNav = styled.nav`
 `
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.COLOUR.dark};
+  color: ${({ theme }) => theme.COLOUR.dark};
   margin: 0 1rem 0 0;
   text-decoration: none;
 

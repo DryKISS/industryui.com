@@ -19,6 +19,10 @@
 
 - [ ] Allows tags to be nicely rendered
 
+## Footer
+
+- [ ] Make the H2 a Heading
+
 ## Done
 
 - [X] Ability to remove the drop shadow - user bordered

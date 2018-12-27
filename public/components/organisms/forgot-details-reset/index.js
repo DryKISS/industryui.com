@@ -61,9 +61,7 @@ export const ForgotDetailsReset = withTheme(
   }
 )
 
-// export default css`
 //   .ForgotDetailsReset-link {
 //     display: block;
 //     margin: 1rem 0;
 //   }
-//   `

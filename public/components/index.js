@@ -9,3 +9,6 @@ export * from './organisms'
 export * from './pages'
 export * from './templates'
 export * from './theme'
+
+// Services
+export * from '../services'

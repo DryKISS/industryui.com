@@ -295,7 +295,6 @@ export const GetAddress = withTheme(
   }
 )
 
-// export default css`
 //   .GetAddress {
 //     font: inherit;
 //   }
@@ -303,4 +302,3 @@ export const GetAddress = withTheme(
 //   .GetAddress-error {
 //     color: #e60811;
 //   }
-//   `

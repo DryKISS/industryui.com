@@ -5,10 +5,11 @@
 
 // React
 import React, { Component } from 'react'
-import { any, objectOf, oneOfType, node, number, string } from 'prop-types'
+import { any, objectOf, oneOf, oneOfType, node, number, string } from 'prop-types'
 
 // UI
 import { COLOUR } from '../../'
+import { CONTEXT } from '../../theme'
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -20,7 +21,7 @@ export const Heading = withTheme(
       children: node,
       className: any,
       content: string,
-      context: string,
+      context: oneOf(Object.values(CONTEXT)),
       style: objectOf(oneOfType([
         number,
         string
