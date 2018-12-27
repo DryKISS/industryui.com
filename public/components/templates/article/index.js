@@ -18,16 +18,16 @@ import styled, { withTheme } from 'styled-components'
 export const Article = withTheme(
   class Article extends Component {
     static propTypes = {
-      article: object.isRequired,
+      //article: object.isRequired,
       category: string
     }
 
     content = () => ({
-      __html: this.props.article.data
+      __html: this.props.data
     })
 
     frontMatter = (matter) => {
-      const { article: { frontmatter } } = this.props
+      const { frontmatter } = this.props
 
       if (matter === 'tags') {
         return frontmatter[matter].map((item) => (
@@ -39,8 +39,9 @@ export const Article = withTheme(
     }
 
     render () {
-      const { article, category } = this.props
+      const { category } = this.props
 
+      console.log('fmi', this.frontMatter('image'))
       return (
         <StyledArticle
           itemProp='blogPost'
