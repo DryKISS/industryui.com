@@ -35,9 +35,12 @@
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "0.1.0-11",
     "@typeform/embed": "^0.5.12",
+    "jquery": "^3.3.1",
     "next": "latest",
     "react-dropzone": "latest",
-    "react-select": "latest"
+    "react-select": "latest",
+    "react-slick": "^0.23.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
