@@ -47,7 +47,7 @@ export const Navbar = withTheme(
 
           <StyledNav>
 
-            <div>Authed: {authUser && authUser.email}</div>
+            {/* <div>Authed: {authUser && authUser.email}</div> */}
 
             {brand && <Brand brand={brand} />}
 

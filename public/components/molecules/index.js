@@ -3,6 +3,7 @@
  */
 export * from './breadcrumb'
 export * from './card'
+export * from './carousel'
 export * from './copyright'
 export * from './datePicker'
 export * from './dropzone'
