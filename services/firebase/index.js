@@ -3,7 +3,9 @@
  */
 export * from './firebaseAuth'
 export * from './firebaseAuthContext'
-export * from './firebaseAuthProvider'
 export * from './firebaseContext'
+export * from './firebaseInit'
 export * from './firebaseProvider'
-export * from './firebaseService'
+
+export * from './withAuthentication'
+export * from './withAuthorisation'

@@ -3,7 +3,7 @@
   "author": "Ian Warner <ian.warner@drykiss.com>",
   "version": "0.0.1",
   "description": "React components library",
-  "main": "components/index.js",
+  "main": "./index.js",
   "license": "MIT",
   "repository": "git@github.com:drykiss/industry-ui.git",
   "scripts": {
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.1.0",
     "@babel/plugin-proposal-class-properties": "7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0",
     "@babel/preset-env": "7.0.0",

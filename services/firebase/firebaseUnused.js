@@ -44,44 +44,6 @@ export class FirebaseAuth extends Component {
     this.stopAuthListener()
   }
 
-  handleSignIn = provider => {
-    const { auth } = this.context.firebase
-
-    switch (provider) {
-      // the auth listener will handle the success cases
-      case 'google':
-        return auth()
-          .signInWithPopup(new auth.GoogleAuthProvider())
-          .catch(error => {
-            // eslint-disable-next-line no-console
-            console.error(error)
-            // TODO: notify the user of the error
-            return error
-          })
-
-      case 'anonymous':
-        return auth()
-          .signInAnonymously()
-          .catch(error => {
-            // eslint-disable-next-line no-console
-            console.error(error)
-            // TODO: notify the user of the error
-            return error
-          })
-
-      default:
-        const reason = 'Invalid provider passed to signIn method'
-        // eslint-disable-next-line no-console
-        console.error(reason)
-        return Promise.reject(reason)
-    }
-  }
-
-  handleSignOut = () => {
-    const { auth } = this.context.firebase
-    return auth().signOut()
-  }
-
   signIn (user) {
     const { uid, isAnonymous } = user
 

@@ -100,5 +100,5 @@ const coverStyles = `
 const StyledImg = styled.img`
   ${props => props.cover && coverStyles}
   vertical-align: middle;
-  /* width: 100%; */
+  width: 100%;
 `

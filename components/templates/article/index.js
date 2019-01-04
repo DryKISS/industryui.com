@@ -18,16 +18,16 @@ import styled, { withTheme } from 'styled-components'
 export const Article = withTheme(
   class Article extends Component {
     static propTypes = {
-      //article: object.isRequired,
+      article: object.isRequired,
       category: string
     }
 
     content = () => ({
-      __html: this.props.data
+      __html: this.props.article.data
     })
 
     frontMatter = (matter) => {
-      const { frontmatter } = this.props
+      const { frontmatter } = this.props.article
 
       if (matter === 'tags') {
         return frontmatter[matter].map((item) => (
@@ -41,7 +41,6 @@ export const Article = withTheme(
     render () {
       const { category } = this.props
 
-      console.log('fmi', this.frontMatter('image'))
       return (
         <StyledArticle
           itemProp='blogPost'
@@ -196,7 +195,6 @@ const StyledImage = styled(Image)`
 // }
 
 // // Media queries - Mobile Landscape
-// //--------------------------------------------------------------------------//
 // @media only screen and (orientation: portrait) and (min-width: 320px) and (max-width: 767px) {
 // // Image
 // //------------------------------------------------------------------------//
@@ -204,7 +202,6 @@ const StyledImage = styled(Image)`
 // margin: 0 -15px;
 
 // // Background slant
-// //----------------------------------------------------------------------//
 // &:after {
 // height: 40px;
 // }
@@ -212,7 +209,6 @@ const StyledImage = styled(Image)`
 // }
 
 // // Media queries - Mobile
-// //--------------------------------------------------------------------------//
 // @media only screen and (min-width: 320px) and (max-width: 767px) {
 // margin-bottom: 30px;
 // margin-top: 171px;

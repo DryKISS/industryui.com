@@ -60,11 +60,12 @@ export const Links = withTheme(
 
             <StyledList direction={direction} key={direction}>
 
-              {link.map(({ active, id, name, to, type }) =>
+              {link.map(({ active, Component, id, name, to, type }) =>
 
                 <StyledListItem key={id}>
+                  { Component && <Component /> }
                   { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
-                  { (!type || type.as === 'link') && this.renderLink(active, id, name, to) }
+                  { (!Component && (!type || type.as === 'link')) && this.renderLink(active, id, name, to) }
                 </StyledListItem>
 
               )}
