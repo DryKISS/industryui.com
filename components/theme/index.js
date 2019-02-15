@@ -8,5 +8,5 @@
  * @todo Look to create a default for the fonts and base style
  */
 export * from './constants'
-export * from './variables'
 export * from './utils'
+export * from './variables'

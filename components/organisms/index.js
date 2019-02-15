@@ -2,8 +2,12 @@
  * Organisms
  */
 export * from './articleDetails'
+export * from './emailChange'
+export * from './emailChange/hooks/hook'
 export * from './footer'
-export * from './forgot-details'
-export * from './forgot-details-reset'
+export * from './forgotDetails'
+export * from './forgotDetailsReset'
 export * from './login'
+export * from './passwordChange'
+export * from './passwordChange/hooks/hook'
 export * from './register'

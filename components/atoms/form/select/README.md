@@ -22,7 +22,7 @@ The data passed into the select must be of the form:
 
 ```html
 <Select
-  handleChange={this.handleChange}
+  change={change}
   id='addresses'
   label='Select your address'
   data={postcodeAddresses}

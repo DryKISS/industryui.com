@@ -6,6 +6,4 @@ export * from './firebaseAuthContext'
 export * from './firebaseContext'
 export * from './firebaseInit'
 export * from './firebaseProvider'
-
-export * from './withAuthentication'
-export * from './withAuthorisation'
+export * from './session'

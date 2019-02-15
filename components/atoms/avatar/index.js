@@ -72,6 +72,7 @@ const StyledAvatar = styled.div`
   height: 56px;
   justify-content: center;
   min-width: 56px;
+  width: 56px;
 `
 
 // .Avatar-medium {

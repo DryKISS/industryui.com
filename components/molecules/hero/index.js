@@ -3,7 +3,6 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { any, array, number, objectOf, oneOfType, string } from 'prop-types'
 
 // UI
@@ -11,68 +10,75 @@ import { Container, Column, Heading, Row } from '../../'
 import { HeroButtons, HeroImage } from './components'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Hero = withTheme(
-  class Hero extends Component {
-    static propTypes = {
-      alt: string,
-      className: any,
-      background: string,
-      buttons: array,
-      image: string,
-      strapline: string,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ])),
-      title: string.isRequired
-    }
-
-    static defaultProps = {
-      style: {}
-    }
-
-    renderLeft = () => {
-      const { buttons, strapline, title } = this.props
-
-      return (
-        <StyledColumn md={6}>
-          { title && <StyledTitle as='h1' children={title} /> }
-          { strapline && <StyledStrapline as='h2' children={strapline} /> }
-          { buttons && <HeroButtons buttons={buttons} /> }
-        </StyledColumn>
-      )
-    }
-
-    render () {
-      const { alt, background, className, image, title } = this.props
-
-      return (
-        <StyledHero background={background} className={className}>
-
-          <Container>
-
-            <Row>
-              { title && this.renderLeft() }
-              { image && <HeroImage alt={alt} image={image} /> }
-            </Row>
-
-          </Container>
-
-        </StyledHero>
-      )
-    }
+export const Hero = ({
+  alt,
+  align,
+  background,
+  buttons,
+  className,
+  image,
+  message,
+  strapline,
+  title,
+  width
+}) => {
+  const renderLeft = () => {
+    return (
+      <StyledColumn md={6}>
+        { title && <StyledTitle as='h1' children={title} /> }
+        { strapline && <StyledStrapline as='h2' children={strapline} /> }
+        { buttons && <HeroButtons buttons={buttons} /> }
+        { message && <p children={message} /> }
+      </StyledColumn>
+    )
   }
-)
 
-// Style
+  return (
+    <StyledHero background={background} className={className}>
+
+      <Container>
+
+        <Row>
+
+          { title && renderLeft() }
+          { image && <HeroImage alt={alt} align={align} image={image} width={width} /> }
+
+        </Row>
+
+      </Container>
+
+    </StyledHero>
+  )
+}
+
+Hero.propTypes = {
+  alt: string,
+  align: string,
+  className: any,
+  background: string,
+  buttons: array,
+  image: string,
+  strapline: string,
+  style: objectOf(oneOfType([
+    number,
+    string
+  ])),
+  title: string.isRequired,
+  width: number
+}
+
+Hero.defaultProps = {
+  align: 'flex-end',
+  style: {}
+}
+
 const StyledHero = styled.header`
   background-color: #fff;
-  background-image: ${props => props.background ? `url(${props.background})` : 'none'};
+  background-image: ${({ background }) => background ? `url(${background})` : 'none'};
   background-position: center;
   background-size: 20%;
-  border-bottom: 4px solid #ecf0f3;
   margin-top: -2rem;
 `
 
@@ -92,8 +98,8 @@ const StyledTitle = styled(Heading)`
   margin-bottom: 2rem;
 
   @media (min-width: 768px) {
-    font-size: 5rem;
-    line-height: 5rem;
+    font-size: 3rem;
+    line-height: 3.25rem;
   }
 `
 

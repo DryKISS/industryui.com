@@ -1,4 +1,4 @@
-export const ADDRESSES = {
+export const ADDRESS_DATA = {
   latitude: 51.41832,
   longitude: -0.173543,
   addresses: [

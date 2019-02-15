@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   // photoURL: '',
 }
 
-export class FirebaseAuth extends Component {
+export class FirebaseAuthOld extends Component {
   static propTypes = {
     children: func.isRequired
   };

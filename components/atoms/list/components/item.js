@@ -27,13 +27,13 @@ export const Item = withTheme(
         </StyledLi>
       )
     }
-  }, 
+  },
 )
 
 // Style
 const StyledLi = styled.li`
   &:not(:last-child) {
-    margin-right: 3rem;
+    /* margin-right: 3rem; */
   }
 `
 

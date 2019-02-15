@@ -4,7 +4,6 @@
 
 // React
 import React from 'react'
-// import { MemoryRouter } from 'react-router-dom'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
@@ -26,8 +25,6 @@ stories.addDecorator(withReadme(Readme))
 // Default
 stories.add('Default',
   withInfo(``)(() =>
-    // <MemoryRouter>
     <Register />
-    // </MemoryRouter>
   )
 )

@@ -19,6 +19,7 @@ export const Card = withTheme(
     static propTypes = {
       alt: string,
       bordered: bool,
+      center: bool,
       children: node,
       className: any,
       context: oneOf(Object.values(CONTEXT)),
@@ -32,6 +33,8 @@ export const Card = withTheme(
       horizontal: bool,
       image: string,
       role: string,
+      shadow: bool,
+      style: object,
       title: string
     }
 
@@ -56,11 +59,14 @@ export const Card = withTheme(
       const {
         alt,
         bordered,
+        center,
         children,
         className,
         context,
         footer,
         image,
+        shadow,
+        style,
         title
       } = this.props
 
@@ -69,6 +75,8 @@ export const Card = withTheme(
           bordered={bordered}
           className={className}
           context={context}
+          shadow={shadow}
+          style={style}
         >
 
           {/* Header */}
@@ -81,7 +89,12 @@ export const Card = withTheme(
 
           {/* Body */}
           {(title || children) &&
-            <CardBody children={children} context={context} title={title} />
+            <CardBody
+              center={center}
+              children={children}
+              context={context}
+              title={title}
+            />
           }
 
           {/* Footer */}
@@ -109,6 +122,7 @@ const StyledCard = styled.div`
   background-color: ${({ context, theme }) => theme.COLOUR[context]}
   border: ${({ bordered }) => bordered && '1px solid rgba(0, 0, 0, .125)'};
   border-radius: .5rem;
+  box-shadow: ${({ shadow }) => shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
   color: ${({ context, theme }) => (context === 'light' || context === 'white') ? theme.COLOUR.dark : theme.COLOUR.white}}
   display: flex;
   flex-direction: column;
@@ -123,6 +137,7 @@ const StyledImage = styled(Image)`
   .rounded {
     border-radius: .5rem .5rem 0 0;
     border-style: none;
+    max-height: 10rem;
   }
 `
 
@@ -140,11 +155,6 @@ const StyledLink = styled.a`
 
 // .Card-horizontal {
 //   height: 286px;
-// }
-
-// .Card-bordered {
-//   border-radius: .5rem;
-//   box-shadow: 0px 7px 26px -1px rgba(0, 0, 0, 0.2);
 // }
 
 // .Card-horizontal .Card-body {

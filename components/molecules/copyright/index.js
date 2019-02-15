@@ -3,66 +3,55 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { array, string } from 'prop-types'
 
 // UI
-import { Column, Container, Link, Row } from '../../'
+import { Container, Link, Row } from '../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Copyright = withTheme(
-  class Copyright extends Component {
-    static propTypes = {
-      brand: string.isRequired,
-      links: array.isRequired
-    }
+const Copyright = ({ brand, links }) => {
+  const renderLinks = () => {
+    return (
+      <StyledNav>
 
-    renderLinks = () => {
-      const { links } = this.props
+        {links.map(({ name, to }, index) =>
+          <Link to={to} key={index} passHref>
+            <StyledLink>{name}</StyledLink>
+          </Link>
+        )}
 
-      return (
-        <StyledNav>
-
-          {links.map(({ name, to }, index) =>
-            <Link to={to} key={index} passHref>
-              <StyledLink>{name}</StyledLink>
-            </Link>
-          )}
-
-        </StyledNav>
-      )
-    }
-
-    render () {
-      const { brand, links } = this.props
-      const year = new Date().getFullYear()
-
-      return (
-        <StyledCopyright>
-
-          <Container>
-
-            <Row>
-
-              <StyledBrand>
-                ©{year} {brand}
-              </StyledBrand>
-
-              {links && this.renderLinks()}
-
-            </Row>
-
-          </Container>
-
-        </StyledCopyright>
-      )
-    }
+      </StyledNav>
+    )
   }
-)
 
-// Style
+  const year = new Date().getFullYear()
+
+  return (
+    <StyledCopyright>
+
+      <Container>
+
+        <Row>
+
+          <StyledBrand>©{year} {brand}</StyledBrand>
+
+          {links && renderLinks()}
+
+        </Row>
+
+      </Container>
+
+    </StyledCopyright>
+  )
+}
+
+Copyright.propTypes = {
+  brand: string.isRequired,
+  links: array.isRequired
+}
+
 const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COLOUR.light};
   bottom: 0;
@@ -93,3 +82,5 @@ const StyledLink = styled.a`
     text-decoration: underline;
   }
 `
+
+export { Copyright }

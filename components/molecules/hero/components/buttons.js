@@ -3,38 +3,30 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { array } from 'prop-types'
 
 // UI
 import { Button, Link } from '../../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const HeroButtons = withTheme(
-  class HeroButtons extends Component {
-    static propTypes = {
-      buttons: array
-    }
+export const HeroButtons = ({ buttons }) => {
+  return buttons.map(({ content, context, to }, index) => (
+    <Link to={to} key={index}>
+      <StyledButton
+        content={content}
+        context={context}
+        size='lg'
+      />
+    </Link>
+  ))
+}
 
-    render () {
-      const { buttons } = this.props
+HeroButtons.propTypes = {
+  buttons: array
+}
 
-      return buttons.map(({ content, context, to }, index) => (
-        <Link to={to} key={index}>
-          <StyledButton
-            content={content}
-            context={context}
-            size='lg'
-          />
-        </Link>
-      ))
-    }
-  }
-)
-
-// Style
 const StyledButton = styled(Button)`
   margin-right: 1rem;
 `

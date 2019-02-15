@@ -5,7 +5,6 @@
  */
 
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
 import renderer from 'react-test-renderer'
 
 // Component
@@ -21,9 +20,7 @@ describe(`Link Render`, () => {
   it('Default', () => {
     const component = renderer
       .create(
-        <MemoryRouter>
-          <Link to='/'>Home</Link>
-        </MemoryRouter>
+        <Link to='/'>Home</Link>
       )
 
     let tree = component.toJSON()
@@ -34,9 +31,7 @@ describe(`Link Render`, () => {
   it('Mailto', () => {
     const component = renderer
       .create(
-        <MemoryRouter>
-          <Link to='support@fantasybet.com' type='mailto'>Support</Link>
-        </MemoryRouter>
+        <Link to='support@fantasybet.com' type='mailto'>Support</Link>
       )
 
     expect(component.toJSON()).toMatchSnapshot()
@@ -46,9 +41,7 @@ describe(`Link Render`, () => {
   it('External HTTPS', () => {
     const component = renderer
       .create(
-        <MemoryRouter>
-          <Link to='https://fantasybet.com'>External HTTPS</Link>
-        </MemoryRouter>
+        <Link to='https://fantasybet.com'>External HTTPS</Link>
       )
 
     expect(component.toJSON()).toMatchSnapshot()
@@ -58,9 +51,7 @@ describe(`Link Render`, () => {
   it('External HTTP', () => {
     const component = renderer
       .create(
-        <MemoryRouter>
-          <Link to='http://fantasybet.com'>External HTTP</Link>
-        </MemoryRouter>
+        <Link to='http://fantasybet.com'>External HTTP</Link>
       )
 
     expect(component.toJSON()).toMatchSnapshot()

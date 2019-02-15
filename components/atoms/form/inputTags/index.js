@@ -3,97 +3,80 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { arrayOf, bool, func, number, oneOfType, string } from 'prop-types'
 
 // UI
 import { Label } from '../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const InputTags = withTheme(
-  class InputTags extends Component {
-    constructor (props) {
-      super(props)
+export const InputTags = ({
+  autoCapitalize,
+  autoComplete,
+  autoCorrect,
+  autoFocus,
+  change,
+  label,
+  id,
+  placeholder,
+  required,
+  type,
+  value
+}) => {
+  return (
+    <Label id={id} text={label}>
 
-      this.state = {
-        tagsInputValue: '',
-        tags: []
-      }
-    }
+      <StyledInput
+        autoCapitalize={autoCapitalize}
+        autoComplete={autoComplete}
+        autoCorrect={autoCorrect}
+        autoFocus={autoFocus}
+        aria-describedby={id}
+        className='Form-control'
+        id={id}
+        onChange={change}
+        placeholder={placeholder}
+        name={id}
+        required={required}
+        type={type}
+        value={value}
+      />
 
-    static propTypes = {
-      autoCapitalize: oneOfType([ bool, string ]),
-      autoComplete: oneOfType([ bool, string ]),
-      autoCorrect: oneOfType([ bool, string ]),
-      autoFocus: bool,
-      handleChange: func.isRequired,
-      label: string,
-      id: string,
-      placeholder: string,
-      required: bool,
-      type: string,
-      value: oneOfType([
-        string,
-        number,
-        bool,
-        arrayOf(oneOfType([string, number, bool]))
-      ])
-    }
+      <div className='Form-feedback' />
 
-    static defaultProps = {
-      autoCapitalize: 'off',
-      autoComplete: 'off',
-      autoCorrect: 'off',
-      autoFocus: false,
-      required: true,
-      type: 'text'
-    }
+    </Label>
+  )
+}
 
-    render () {
-      const {
-        autoCapitalize,
-        autoComplete,
-        autoCorrect,
-        autoFocus,
-        handleChange,
-        label,
-        id,
-        placeholder,
-        required,
-        type,
-        value
-      } = this.props
+InputTags.propTypes = {
+  autoCapitalize: oneOfType([ bool, string ]),
+  autoComplete: oneOfType([ bool, string ]),
+  autoCorrect: oneOfType([ bool, string ]),
+  autoFocus: bool,
+  change: func.isRequired,
+  label: string,
+  id: string,
+  placeholder: string,
+  required: bool,
+  type: string,
+  value: oneOfType([
+    string,
+    number,
+    bool,
+    arrayOf(oneOfType([string, number, bool]))
+  ])
+}
 
-      return (
-        <Label id={id} text={label}>
+InputTags.defaultProps = {
+  autoCapitalize: 'off',
+  autoComplete: 'off',
+  autoCorrect: 'off',
+  autoFocus: false,
+  required: true,
+  type: 'text'
+}
 
-          <StyledInput
-            autoCapitalize={autoCapitalize}
-            autoComplete={autoComplete}
-            autoCorrect={autoCorrect}
-            autoFocus={autoFocus}
-            aria-describedby={id}
-            className='Form-control'
-            id={id}
-            onChange={handleChange}
-            placeholder={placeholder}
-            name={id}
-            required={required}
-            type={type}
-            value={value}
-          />
-
-          <div className='Form-feedback' />
-
-        </Label>
-      )
-    }
-  }
-)
-
-// Style
 const StyledInput = styled.input`
   background-clip: padding-box;
   background-color: #fff;

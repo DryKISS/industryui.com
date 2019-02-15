@@ -3,102 +3,83 @@
  */
 
 // React
-import React, { Component } from 'react'
+import { useEffect, useState } from 'react'
 import { bool, func, number, string } from 'prop-types'
 
 // UI
 import { Label } from '../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Textarea = withTheme(
-  class Textarea extends Component {
-    constructor (props) {
-      super(props)
+export const Textarea = ({
+  autoFocus,
+  change,
+  disabled,
+  id,
+  label,
+  maxLength,
+  placeholder,
+  readOnly,
+  required,
+  rows,
+  value
+}) => {
+  const [counter, setCounter] = useState(maxLength)
 
-      this.state = {
-        charCount: props.maxLength
-      }
-    }
+  useEffect(() => {
+    setCounter(value.length)
+  })
 
-    static propTypes = {
-      autoFocus: bool,
-      disabled: bool,
-      handleChange: func.isRequired,
-      id: string,
-      label: string,
-      maxLength: number,
-      placeholder: string,
-      readOnly: bool,
-      required: bool,
-      rows: number,
-      value: string
-    }
-
-    static defaultProps = {
-      autoFocus: false,
-      required: true,
-      value: "",
-      rows: 5
-    }
-
-    componentDidMount = () => {
-      this.setState({ charCount: this.props.value.length })
-    }
-
-    _wordCount = (e) => {
-      const { handleChange } = this.props
-      handleChange(e)
-      this.setState({ charCount: e.target.value.length })
-    }
-
-    render () {
-      const {
-        autoFocus,
-        disabled,
-        id,
-        label,
-        maxLength,
-        placeholder,
-        readOnly,
-        required,
-        rows,
-        value
-      } = this.props
-
-      const { charCount } = this.state
-
-      return (
-        <Label id={id} text={label}>
-
-          <StyledTextarea
-            autoFocus={autoFocus}
-            aria-describedby={id}
-            className='Form-control Textarea'
-            disabled={disabled}
-            id={id}
-            maxLength={maxLength}
-            name={id}
-            onChange={this._wordCount}
-            placeholder={placeholder}
-            readOnly={readOnly}
-            required={required}
-            rows={rows}
-            value={value}
-          />
-
-          {charCount} / {maxLength}
-
-          <div className='Form-feedback' />
-
-        </Label>
-      )
-    }
+  const _wordCount = (e) => {
+    change(e)
+    setCounter(e.target.value.length)
   }
-)
 
-// Style
+  return (
+    <Label id={id} text={label}>
+      <StyledTextarea
+        autoFocus={autoFocus}
+        aria-describedby={id}
+        className='Form-control Textarea'
+        disabled={disabled}
+        id={id}
+        maxLength={maxLength}
+        name={id}
+        onChange={_wordCount}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        required={required}
+        rows={rows}
+        value={value}
+      />
+      {counter} / {maxLength}
+      <div className='Form-feedback' />
+    </Label>
+  )
+}
+
+Textarea.propTypes = {
+  autoFocus: bool,
+  change: func.isRequired,
+  disabled: bool,
+  id: string,
+  label: string,
+  maxLength: number,
+  placeholder: string,
+  readOnly: bool,
+  required: bool,
+  rows: number,
+  value: string
+}
+
+Textarea.defaultProps = {
+  autoFocus: false,
+  required: true,
+  value: '',
+  rows: 5
+}
+
 const StyledTextarea = styled.textarea`
   background-clip: padding-box;
   background-color: #fff;

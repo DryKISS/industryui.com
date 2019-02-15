@@ -4,11 +4,10 @@
 
 // React
 import React, { Component } from 'react'
-import { bool, node, number, object, oneOfType, string } from 'prop-types'
+import { bool, node, object, string } from 'prop-types'
 
 // UI
 import { Item } from './components'
-export const ListItem = Item;
 
 // Style
 import styled, { withTheme } from 'styled-components'
@@ -57,6 +56,7 @@ export const List = withTheme(
   }
 )
 
+export const ListItem = Item
 
 // Style
 const inlineStyles = `

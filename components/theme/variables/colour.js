@@ -2,22 +2,20 @@
  * Colour
  *
  * @see https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
- *
- * @todo Change this name to COLOUR
  */
 export const COLOUR = {
   white: '#fff',
   black: '#000',
 
-  dark: '#3a4e5f',
-  light: '#F6F8F9',
+  dark: '#5c6f7f',
+  light: '#ecf0f3',
 
-  primary: '#007bff',
-  secondary: '#6c757d',
-  success: '#28a745',
-  info: '#17a2b8',
-  warning: '#ffc107',
-  danger: '#dc3545',
+  primary: '#04d4cd',
+  secondary: '#0679d8',
+  success: '#00b43c',
+  info: '#2ab4f3',
+  warning: '#e60811',
+  danger: '#e8095e',
 
   transparent: 'transparent'
 }

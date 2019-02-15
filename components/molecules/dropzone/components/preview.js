@@ -1,46 +1,36 @@
 /**
  * Dropzone - Preview
  * Shows the uploaded image preview
- *
- * @todo Need to set style directly on the img tag of Image - split from Figure
  */
 
 // React
-import React, { Component } from 'react'
 import { any, func } from 'prop-types'
 
 // UI
 import { Close, Image } from '../../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const DropzonePreview = withTheme(
-  class DropzonePreview extends Component {
-    static propTypes = {
-      file: any,
-      handleRemove: func,
-      index: any
-    }
+const DropzonePreview = ({ file, handleRemove, index }) => {
+  return (
+    <StyledPreview>
 
-    render () {
-      const { file, handleRemove, index } = this.props
+      <StyledHeader>
+        <Close handleClose={handleRemove(index)} />
+      </StyledHeader>
 
-      return (
-        // onClick={this.handlePreview}
-        <StyledPreview>
+      <Image alt={`Upload ${index}`} src={file.preview} />
 
-          <StyledHeader>
-            <Close handleClose={handleRemove(index)} />
-          </StyledHeader>
+    </StyledPreview>
+  )
+}
 
-          <StyledImage alt={`Upload ${index}`} src={file.preview} />
-
-        </StyledPreview>
-      )
-    }
-  }
-)
+DropzonePreview.propTypes = {
+  file: any,
+  handleRemove: func,
+  index: any
+}
 
 const StyledPreview = styled.div`
   border: 1px solid #000;
@@ -50,11 +40,6 @@ const StyledPreview = styled.div`
   object-fit: cover;
 `
 
-const StyledImage = styled(Image)`
-  /* height: auto;
-  max-width: 100%; */
-`
-
 const StyledHeader = styled.div`
   align-items: flex-start;
   border-bottom: 1px solid #000;
@@ -62,3 +47,5 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   padding: 1rem;
 `
+
+export { DropzonePreview }

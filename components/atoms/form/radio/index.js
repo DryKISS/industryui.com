@@ -3,71 +3,54 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { array, bool, func, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Radio = withTheme(
-  class Radio extends Component {
-    static propTypes = {
-      data: array.isRequired,
-      handleChange: func.isRequired,
-      legend: string,
-      stacked: bool
-    }
-
-    static defaultProps = {
-      legend: '',
-      stacked: false
-    }
-
-    renderRadio = () => {
-      const { data, handleChange, stacked } = this.props
-
-      return data.map(({ disabled, id, isChecked, label, required, value }, index) => {
-        return (
-          <StyledLabel key={index} stacked={stacked}>
-
-            <StyledInput
-              checked={isChecked}
-              disabled={disabled}
-              id={id}
-              name={id}
-              onChange={handleChange}
-              required={required}
-              stacked={stacked}
-              type='radio'
-              value={value}
-            />
-
-            {label}
-
-          </StyledLabel>
-        )
-      })
-    }
-
-    render () {
-      const { legend } = this.props
-
+export const Radio = ({ change, data, legend, stacked }) => {
+  const renderRadio = () => {
+    return data.map(({ disabled, id, isChecked, label, required, value }, index) => {
       return (
-        <fieldset>
-
-          <legend>{legend}</legend>
-
-          {this.renderRadio()}
-
-          <div className='Form-feedback' />
-
-        </fieldset>
+        <StyledLabel key={index} stacked={stacked}>
+          <StyledInput
+            checked={isChecked}
+            disabled={disabled}
+            id={id}
+            name={id}
+            onChange={change}
+            required={required}
+            stacked={stacked}
+            type='radio'
+            value={value}
+          />
+          {label}
+        </StyledLabel>
       )
-    }
+    })
   }
-)
 
-// Style
+  return (
+    <fieldset>
+      <legend>{legend}</legend>
+      {renderRadio()}
+      <div className='Form-feedback' />
+    </fieldset>
+  )
+}
+
+Radio.propTypes = {
+  change: func.isRequired,
+  data: array.isRequired,
+  legend: string,
+  stacked: bool
+}
+
+Radio.defaultProps = {
+  legend: '',
+  stacked: false
+}
+
 const StyledLabel = styled.label`
   ${props => props.stacked && 'display: block;'}
   padding-left: 1.25rem;

@@ -9,7 +9,7 @@ export const DOG_COAT_TYPES = [
   },
   {
     text: 'Short',
-    value: 'shirt'
+    value: 'short'
   },
   {
     text: 'Long',

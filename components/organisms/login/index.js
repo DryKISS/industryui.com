@@ -3,118 +3,105 @@
  */
 
 // React
-import React, { Component } from 'react'
-import { bool, func, string } from 'prop-types'
+import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Link
-} from '../../'
+import { Button, Checkbox, Form, Input, Link } from '../../'
 
-export class Login extends Component {
-  static propTypes = {
-    email: string.isRequired,
-    forgotPassword: bool,
-    handleChange: func.isRequired,
-    handleSubmit: func.isRequired,
-    password: string.isRequired,
-    pathForgot: string,
-    pathSignUp: string,
-    remember: string.isRequired
-  }
+export const Login = ({
+  change,
+  email,
+  forgotPassword,
+  password,
+  pathForgot,
+  pathSignUp,
+  remember,
+  submit
+}) => {
+  const isInvalid = password === '' || email === ''
 
-  static defaultProps = {
-    forgotPassword: true,
-    pathForgot: '/forgot-details',
-    pathSignUp: '/sign-up'
-  }
+  const CHECKBOX_REMEMBER = [
+    {
+      id: 'remember',
+      label: 'Remember me',
+      isChecked: remember
+    }
+  ]
 
-  render () {
-    const {
-      email,
-      forgotPassword,
-      handleChange,
-      handleSubmit,
-      password,
-      pathForgot,
-      pathSignUp,
-      remember
-    } = this.props
+  return (
+    <Form submit={submit}>
 
-    const isInvalid = password === '' || email === ''
+      <Input
+        autoFocus
+        change={change}
+        id='email'
+        label='Email address'
+        placeholder='Email Address'
+        type='email'
+        value={email}
+      />
 
-    const CHECKBOX_REMEMBER = [
-      {
-        id: 'remember',
-        label: 'Remember me',
-        isChecked: remember
-      }
-    ]
+      <Input
+        change={change}
+        id='password'
+        label='Password'
+        placeholder='Password'
+        type='password'
+        value={password}
+      />
 
-    return (
-      <Form submit={handleSubmit}>
+      <Checkbox
+        data={CHECKBOX_REMEMBER}
+        change={change}
+      />
 
-        {/* Email */}
-        <Input
-          autoFocus
-          handleChange={handleChange}
-          id='email'
-          label='Email address'
-          placeholder='Email Address'
-          type='email'
-          value={email}
+      <div className='text-right'>
+        <Button
+          align='right'
+          content='Log in'
+          context='primary'
+          disabled={isInvalid}
+          size='lg'
+          type='submit'
         />
 
-        {/* Password */}
-        <Input
-          handleChange={handleChange}
-          id='password'
-          label='Password'
-          placeholder='Password'
-          type='password'
-          value={password}
-        />
+        <p />
 
-        {/* Remember me */}
-        <Checkbox
-          data={CHECKBOX_REMEMBER}
-          handleChange={handleChange}
-        />
-
-        <div className='text-right'>
-          <Button
-            align='right'
-            content='Log in'
-            context='primary'
-            disabled={isInvalid}
-            size='lg'
-            type='submit'
-          />
-
-          <p />
-
-          {/* Forgot password */}
-          {forgotPassword &&
-            <Link to={pathForgot}>
-              <a>Forgot Password</a>
-            </Link>
-          }
-
-          {' '}|{' '}
-
-          <Link to={pathSignUp}>
-            <a>Sign up</a>
+        {forgotPassword &&
+          <Link to={pathForgot}>
+            <a>Forgot Password?</a>
           </Link>
+        }
 
-          <p />
+        {pathSignUp &&
+          <>
+            {' '}|{' '}
+            <Link to={pathSignUp}>
+              <a>Sign up</a>
+            </Link>
+          </>
+        }
 
-        </div>
+        <p />
 
-      </Form>
-    )
-  }
+      </div>
+
+    </Form>
+  )
+}
+
+Login.propTypes = {
+  change: func.isRequired,
+  email: string.isRequired,
+  forgotPassword: bool,
+  password: string.isRequired,
+  pathForgot: string,
+  pathSignUp: oneOfType([object, string]),
+  remember: string.isRequired,
+  submit: func.isRequired
+}
+
+Login.defaultProps = {
+  forgotPassword: true,
+  pathForgot: '/forgot-details'
 }

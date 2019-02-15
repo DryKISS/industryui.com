@@ -3,197 +3,158 @@
  */
 
 // React
-import React, { Component, Fragment } from 'react'
+import { any, bool, func, string } from 'prop-types'
 
 // UI
 import {
   Button,
   Checkbox,
+  Column,
   DatePicker,
   Form,
   Input,
-  Link
+  Link,
+  Row
 } from '../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Register = withTheme(
-  class Register extends Component {
-    constructor (props) {
-      super(props)
+export const Register = ({
+  birthday,
+  change,
+  dayBirthday,
+  email,
+  monthBirthday,
+  marketing,
+  nameFirst,
+  nameLast,
+  password,
+  submit,
+  terms,
+  yearBirthday
+}) => {
+  const renderBirthday = () => (
+    <>
+      <DatePicker
+        change={change}
+        day={dayBirthday}
+        id='Birthday'
+        label='Birthdate'
+        month={monthBirthday}
+        year={yearBirthday}
+      />
+      To sign up, you must be 18 or older. Other users will not see this.
+    </>
+  )
 
-      this.state = {
-        dayBirthday: '',
-        email: '',
-        firstName: '',
-        lastName: '',
-        marketing: '',
-        monthBirthday: '',
-        password: '',
-        submittedEmail: '',
-        submittedPassword: '',
-        terms: '',
-        yearBirthday: ''
-      }
+  // const isInvalid = password === '' || email === ''
+  const isInvalid = false
+
+  const CHECKBOX_TERMS = [
+    {
+      id: 'terms',
+      label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.',
+      required: true,
+      isChecked: terms
+    },
+    {
+      id: 'marketing',
+      label: 'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.',
+      isChecked: marketing
     }
+  ]
 
-    // Handle change
-    handleChange = (event) => {
-      const target = event.target
-      const value = target.type === 'checkbox' ? target.checked : target.value
-      const name = target.id
+  return (
+    <Form submit={submit}>
 
-      this.setState({
-        [name]: value
-      })
+      <Row>
 
-      console.log('handleChange:', target, name, value)
-    }
-
-    // Handle Submit
-    handleSubmit = (event) => {
-      event.preventDefault()
-
-      const { email, password } = this.state
-
-      this.setState({
-        submittedEmail: email,
-        submittedPassword: password
-      })
-    }
-
-    renderBirthday = () => {
-      const {
-        dayBirthday,
-        monthBirthday,
-        yearBirthday
-      } = this.state
-
-      return (
-        <Fragment>
-          To sign up, you must be 18 or older. Other people won’t see your birthday.
-
-          <DatePicker
-            day={dayBirthday}
-            handleChange={this.handleChange}
-            id='Birthday'
-            month={monthBirthday}
-            year={yearBirthday}
+        <Column md={6}>
+          <Input
+            label='First name'
+            id='nameFirst'
+            change={change}
+            value={nameFirst}
           />
+        </Column>
 
-        </Fragment>
-      )
-    }
+        <Column md={6}>
+          <Input
+            label='Last name'
+            id='nameLast'
+            change={change}
+            value={nameLast}
+          />
+        </Column>
 
-    render () {
-      const {
-        birthday,
-        email,
-        firstName,
-        lastName,
-        marketing,
-        password,
-        terms
-      } = this.state
+      </Row>
 
-      const CHECKBOX_TERMS = [
-        {
-          id: 'terms',
-          label: 'I can confirm I have read and accepted the terms of service and privacy policy',
-          required: true,
-          isChecked: terms
-        },
-        {
-          id: 'marketing',
-          label: 'I want to receive updates via email from Tailwise',
-          required: true,
-          isChecked: marketing
-        }
-      ]
+      <Input
+        label='Email'
+        id='email'
+        change={change}
+        type='email'
+        value={email}
+      />
 
-      return (
-        <Fragment>
+      <Input
+        label='Password'
+        id='password'
+        change={change}
+        type='password'
+        value={password}
+      />
 
-          <Form submit={this.handleSubmit}>
+      {birthday && renderBirthday()}
 
-            {/* First name */}
-            <Input
-              label='First name'
-              id='firstName'
-              handleChange={this.handleChange}
-              placeholder='First name'
-              value={firstName}
-            />
+      <Checkbox
+        data={CHECKBOX_TERMS}
+        change={change}
+        stacked
+      />
 
-            {/* Last name */}
-            <Input
-              label='Last name'
-              id='lastName'
-              handleChange={this.handleChange}
-              placeholder='Last name'
-              value={lastName}
-            />
+      <Button
+        align='right'
+        content='Sign up'
+        context='primary'
+        disabled={isInvalid}
+        size='lg'
+        type='submit'
+      />
 
-            {/* Email */}
-            <Input
-              label='Email address'
-              id='email'
-              handleChange={this.handleChange}
-              placeholder='Email Address'
-              type='email'
-              value={email}
-            />
+      <StyledLink>
+        Already have an account?{' '}
+        <Link to='/sign-in'>
+          <a>Sign in</a>
+        </Link>
+      </StyledLink>
 
-            {/* Password */}
-            <Input
-              label='Password'
-              id='password'
-              handleChange={this.handleChange}
-              placeholder='Password'
-              type='password'
-              value={password}
-            />
+    </Form>
+  )
+}
 
-            {/* Validation - should be hidden */}
-            {/* <br />Your password isn’t strong enough. Try making it longer or adding symbols, like !, #, or %.
-            <br />Password strength: weak
-            <br />Cannot contain your name or email address
-            <br />At least 8 characters
-            <br />Contains a number or symbol */}
+Register.propTypes = {
+  birthday: bool,
+  change: func.isRequired,
+  email: string.isRequired,
+  dayBirthday: any,
+  marketing: bool.isRequired,
+  monthBirthday: any,
+  nameFirst: string.isRequired,
+  nameLast: string.isRequired,
+  password: string.isRequired,
+  pathLogin: string,
+  submit: func.isRequired,
+  terms: bool.isRequired,
+  yearBirthday: any
+}
 
-            {birthday && this.renderBirthday()}
+Register.defaultProps = {
+  birthday: false,
+  pathLogin: '/sign-in'
+}
 
-            {/* Terms and Marketing */}
-            <Checkbox
-              data={CHECKBOX_TERMS}
-              handleChange={this.handleChange}
-              stacked
-            />
-
-            {/* Button */}
-            <Button secondary type='submit'>Sign up</Button>
-
-            {/* Forgot details link */}
-            <StyledLink>
-
-              Already have an account?{' '}
-
-              <Link to='/sign-in'>
-                <a>Sign in</a>
-              </Link>
-
-            </StyledLink>
-
-          </Form>
-
-        </Fragment>
-      )
-    }
-  }
-)
-
-// Style
 const StyledLink = styled.div`
   display: block;
   margin: 1rem 0;

@@ -4,12 +4,18 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 export class FirebaseAuth {
   constructor () {
     // Firebase APIs
-    this.store = app.firestore
     this.auth = app.auth
+    this.store = app.firestore
+    this.storage = app.storage
+
+    // Helpers
+    // this.fieldValue = this.store().FieldValue
+    // this.emailAuthProvider = this.auth().EmailAuthProvider
 
     // Social oAuth Providers
     this.googleProvider = new app.auth.GoogleAuthProvider()
@@ -22,12 +28,29 @@ export class FirebaseAuth {
     return this.auth().currentUser.sendEmailVerification()
   }
 
+  // @see https://firebase.google.com/docs/reference/js/firebase.auth.Auth#applyActionCode
+  handleApplyActionCode = (code) => {
+    return this.auth().applyActionCode(code)
+  }
+
   handlePasswordReset = (email) => {
     return this.auth().sendPasswordResetEmail(email)
   }
 
+  handleVerifyPasswordResetCode = (code) => {
+    return this.auth().verifyPasswordResetCode(code)
+  }
+
+  handleConfirmPasswordReset = (code, password) => {
+    return this.auth().confirmPasswordReset(code, password)
+  }
+
   handlePasswordUpdate = (password) => {
     return this.auth().currentUser.updatePassword(password)
+  }
+
+  handleEmailUpdate = (email) => {
+    return this.auth().currentUser.updateEmail(email)
   }
 
   // @see https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword
@@ -60,7 +83,7 @@ export class FirebaseAuth {
       // Return error on no provider
       default:
         const reason = 'Invalid provider passed to signIn method'
-        console.error(reason)
+        console.error('handleSignIn', reason)
         return Promise.reject(reason)
     }
   }
@@ -70,44 +93,43 @@ export class FirebaseAuth {
   }
 
   handleAuthListener = (next, fallback) =>
-    this.auth().onAuthStateChanged(authUser => {
+    this.auth().onAuthStateChanged((authUser) => {
       if (authUser) {
-        authUser = {
-          uid: authUser.uid
-        }
+        this.user(authUser.uid)
+          .get()
+          .then((snapshot) => {
+            const dbUser = snapshot.data()
 
-        console.log('handleAuthListener:', authUser)
+            // Default empty roles
+            if (!dbUser.roles) {
+              dbUser.roles = []
+            }
 
-        return authUser
+            // merge auth and db user
+            authUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              emailVerified: authUser.emailVerified,
+              ...dbUser
+            }
 
-        // this.user(authUser.uid)
-        //   .once('value')
-        //   .then(snapshot => {
-        //     const dbUser = snapshot.val()
+            // console.log('handleAuthListener: Authed:', authUser, dbUser)
 
-        //     // default empty roles
-        //     if (!dbUser.roles) {
-        //       dbUser.roles = []
-        //     }
-
-        //     // merge auth and db user
-        //     authUser = {
-        //       uid: authUser.uid,
-        //       email: authUser.email,
-        //       emailVerified: authUser.emailVerified,
-        //       providerData: authUser.providerData,
-        //       ...dbUser
-        //     }
-
-        //     next(authUser)
-        //   })
+            next(authUser)
+          })
       } else {
-        console.log('Not Authed', authUser)
+        // console.log('handleAuthListener: Not Authed:', authUser)
         fallback()
       }
     })
 
   // User API
-  // user = uid => this.store().ref(`users/${uid}`)
-  user = uid => {}
+  user = (uid) => {
+    return this.store().doc(`users/${uid}`)
+  }
+
+  users = () => {
+    const data = this.store().collection('users')
+    return data
+  }
 }

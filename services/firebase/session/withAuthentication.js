@@ -3,7 +3,7 @@
  */
 import React from 'react'
 
-import { AuthUserContext, withFirebase } from './'
+import { AuthUserContext, withFirebase } from '../'
 
 const FirebaseWithAuthentication = (Component) => {
   class WithAuthentication extends React.Component {
@@ -21,7 +21,8 @@ const FirebaseWithAuthentication = (Component) => {
 
     componentDidMount () {
       const { firebase } = this.props
-      console.log('FirebaseWithAuthentication', firebase, this.state)
+      // console.log('FirebaseWithAuthentication', firebase, this.state)
+
       // Get user from localstorage if exists
       // const user = JSON.parse(window.localStorage.getItem('authUser'))
       // this.setState({ user })
@@ -30,12 +31,12 @@ const FirebaseWithAuthentication = (Component) => {
         authUser => {
           // window.localStorage.setItem('authUser', JSON.stringify(authUser))
           this.setState({ authUser })
-          console.log('FirebaseWithAuthentication: Authed', this.state)
+          // console.log('FirebaseWithAuthentication: Authed', this.state)
         },
         () => {
           // window.localStorage.removeItem('authUser')
           this.setState({ authUser: null })
-          console.log('FirebaseWithAuthentication: Null', this.state)
+          // console.log('FirebaseWithAuthentication: Null', this.state)
         }
       )
     }

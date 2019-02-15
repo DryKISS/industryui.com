@@ -4,6 +4,7 @@
 export * from './checkbox'
 export * from './form'
 export * from './input'
+export * from './inputGroup'
 export * from './inputTags'
 export * from './label'
 export * from './radio'

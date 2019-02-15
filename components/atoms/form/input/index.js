@@ -3,88 +3,87 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { arrayOf, bool, func, number, oneOfType, string } from 'prop-types'
 
 // UI
 import { Label } from '../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Input = withTheme(
-  class Input extends Component {
-    static propTypes = {
-      autoCapitalize: oneOfType([ bool, string ]),
-      autoComplete: oneOfType([ bool, string ]),
-      autoCorrect: oneOfType([ bool, string ]),
-      autoFocus: bool,
-      handleChange: func.isRequired,
-      label: string,
-      id: string,
-      placeholder: string,
-      required: bool,
-      type: string,
-      value: oneOfType([
-        string,
-        number,
-        bool,
-        arrayOf(oneOfType([string, number, bool]))
-      ])
-    }
+export const Input = ({
+  accept,
+  autoCapitalize,
+  autoComplete,
+  autoCorrect,
+  autoFocus,
+  change,
+  label,
+  id,
+  placeholder,
+  readOnly,
+  required,
+  type,
+  value
+}) => {
+  return (
+    <Label text={label}>
 
-    static defaultProps = {
-      autoCapitalize: 'off',
-      autoComplete: 'off',
-      autoCorrect: 'off',
-      autoFocus: false,
-      required: true,
-      type: 'text'
-    }
+      <StyledInput
+        accept={accept}
+        autoCapitalize={autoCapitalize}
+        autoComplete={autoComplete}
+        autoCorrect={autoCorrect}
+        autoFocus={autoFocus}
+        aria-describedby={id}
+        className='Form-control'
+        id={id}
+        onChange={change}
+        placeholder={placeholder}
+        name={id}
+        readOnly={readOnly}
+        required={required}
+        type={type}
+        value={value}
+      />
 
-    render () {
-      const {
-        autoCapitalize,
-        autoComplete,
-        autoCorrect,
-        autoFocus,
-        handleChange,
-        label,
-        id,
-        placeholder,
-        required,
-        type,
-        value
-      } = this.props
+      <div className='Form-feedback' />
 
-      return (
-        <Label id={id} text={label}>
+    </Label>
+  )
+}
 
-          <StyledInput
-            autoCapitalize={autoCapitalize}
-            autoComplete={autoComplete}
-            autoCorrect={autoCorrect}
-            autoFocus={autoFocus}
-            aria-describedby={id}
-            className='Form-control'
-            id={id}
-            onChange={handleChange}
-            placeholder={placeholder}
-            name={id}
-            required={required}
-            type={type}
-            value={value}
-          />
+Input.propTypes = {
+  accept: string,
+  autoCapitalize: oneOfType([ bool, string ]),
+  autoComplete: oneOfType([ bool, string ]),
+  autoCorrect: oneOfType([ bool, string ]),
+  autoFocus: bool,
+  change: func.isRequired,
+  label: string,
+  id: string,
+  placeholder: string,
+  readOnly: bool,
+  required: bool,
+  type: string,
+  value: oneOfType([
+    string,
+    number,
+    bool,
+    arrayOf(oneOfType([string, number, bool]))
+  ])
+}
 
-          <div className='Form-feedback' />
+Input.defaultProps = {
+  autoCapitalize: 'off',
+  autoComplete: 'off',
+  autoCorrect: 'off',
+  autoFocus: false,
+  required: true,
+  readOnly: false,
+  type: 'text'
+}
 
-        </Label>
-      )
-    }
-  }
-)
-
-// Style
 const StyledInput = styled.input`
   background-clip: padding-box;
   background-color: #fff;
@@ -110,28 +109,3 @@ const StyledInput = styled.input`
     color: red;
   }
 `
-
-// .Input-large {
-//   border-radius: .3rem;
-//   font-size: 1.25rem;
-//   height: calc(2.875rem + 2px);
-//   padding: .5rem 1rem;
-// }
-
-// .Input-small {
-//   font-size: .875rem;
-//   border-radius: .2rem;
-//   height: calc(1.8125rem + 2px);
-//   padding: .25rem .5rem;
-// }
-
-// .sr-only {
-//   border: 0;
-//   clip: rect(0, 0, 0, 0);
-//   height: 1px;
-//   padding: 0;
-//   position: absolute;
-//   overflow: hidden;
-//   white-space: nowrap;
-//   width: 1px;
-// }

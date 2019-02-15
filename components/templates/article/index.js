@@ -29,6 +29,10 @@ export const Article = withTheme(
     frontMatter = (matter) => {
       const { frontmatter } = this.props.article
 
+      if (matter === 'image') {
+        return `/static/blog/${frontmatter.slug}/hero.jpg`
+      }
+
       if (matter === 'tags') {
         return frontmatter[matter].map((item) => (
           { content: item.replace(/[[\]]/g, '').trim(), to: 'javascript:;' }

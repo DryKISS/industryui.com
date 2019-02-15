@@ -4,38 +4,26 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { node, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Label = withTheme(
-  class Label extends Component {
-    static propTypes = {
-      children: node.isRequired,
-      id: string,
-      text: string
-    }
+export const Label = ({ children, id, text }) => {
+  return (
+    <StyledLabel htmlFor={id}>
+      <StyledLabelText text={text}>{text}</StyledLabelText>
+      {children}
+    </StyledLabel>
+  )
+}
 
-    render () {
-      const {
-        children,
-        id,
-        text
-      } = this.props
+Label.propTypes = {
+  children: node.isRequired,
+  id: string,
+  text: string
+}
 
-      return (
-        <StyledLabel htmlFor={id}>
-          <StyledLabelText text={text}>{text}</StyledLabelText>
-          {children}
-        </StyledLabel>
-      )
-    }
-  }
-)
-
-// Style
 const StyledLabel = styled.label`
   display: block;
   margin-bottom: 1rem;

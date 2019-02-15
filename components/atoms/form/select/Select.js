@@ -3,102 +3,86 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { array, arrayOf, bool, func, number, oneOfType, string } from 'prop-types'
 
 // UI
 import { Label } from '../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Select = withTheme(
-  class Select extends Component {
-    static propTypes = {
-      data: array,
-      handleChange: func.isRequired,
-      label: string,
-      id: string,
-      placeholder: string,
-      range: array,
-      required: bool,
-      value: oneOfType([
-        string,
-        number,
-        bool,
-        arrayOf(oneOfType([string, number, bool]))
-      ])
+export const Select = ({
+  change,
+  data,
+  disabled,
+  label,
+  id,
+  placeholder,
+  range,
+  required,
+  value
+}) => {
+  const renderRange = () => {
+    let options = [<option disabled value={''} key={`initial0`}>{placeholder}</option>]
+
+    for (let i = range[1]; i <= range[0]; i++) {
+      options.push(<option disabled={disabled} key={`range${i}`} value={i}>{i}</option>)
     }
 
-    static defaultProps = {
-      range: [],
-      required: true
-    }
-
-    renderRange = () => {
-      const { disabled, placeholder, range } = this.props
-
-      let options = [<option disabled value={''} key={`initial0`}>{placeholder}</option>]
-
-      for (let i = range[1]; i <= range[0]; i++) {
-        options.push(<option disabled={disabled} key={`range${i}`} value={i}>{i}</option>)
-      }
-
-      return options
-    }
-
-    renderOptions = () => {
-      const { data } = this.props
-
-      return data.map(({ disabled, text, value }, index) =>
-        <option
-          disabled={disabled}
-          key={`option${index}`}
-          value={value}
-        >
-          {text}
-        </option>
-      )
-    }
-
-    render () {
-      const {
-        data,
-        handleChange,
-        label,
-        id,
-        range,
-        required,
-        value
-      } = this.props
-
-      return (
-        <Label id={id} text={label}>
-
-          <StyledSelect
-            className='Form-control'
-            id={id}
-            name={id}
-            onChange={handleChange}
-            required={required}
-            value={value}
-          >
-
-            {range && range.length > 0 && this.renderRange()}
-
-            {data && this.renderOptions()}
-
-          </StyledSelect>
-
-          <div className='Form-feedback' />
-
-        </Label>
-      )
-    }
+    return options
   }
-)
 
-// Style
+  const renderOptions = () => {
+    return data.map(({ disabled, text, value }, index) =>
+      <option
+        disabled={disabled}
+        key={`option${index}`}
+        value={value}
+      >
+        {text}
+      </option>
+    )
+  }
+
+  return (
+    <Label id={id} text={label}>
+      <StyledSelect
+        className='Form-control'
+        id={id}
+        name={id}
+        onChange={change}
+        required={required}
+        value={value}
+      >
+        {range && range.length > 0 && renderRange()}
+        {data && renderOptions()}
+      </StyledSelect>
+      <div className='Form-feedback' />
+    </Label>
+  )
+}
+
+Select.propTypes = {
+  change: func.isRequired,
+  data: array,
+  label: string,
+  id: string,
+  placeholder: string,
+  range: array,
+  required: bool,
+  value: oneOfType([
+    string,
+    number,
+    bool,
+    arrayOf(oneOfType([string, number, bool]))
+  ])
+}
+
+Select.applydefaultProps = {
+  range: [],
+  required: true
+}
+
 const StyledSelect = styled.select`
   background-clip: padding-box;
   background-color: #fff;

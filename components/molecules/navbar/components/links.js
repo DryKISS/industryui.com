@@ -36,7 +36,7 @@ export const Links = withTheme(
       )
     }
 
-    renderLink = (active, id, name, to) => {
+    renderLink = (active, id, name, onClick, to) => {
       const { type } = this.props
 
       if (type && (!active || active !== type)) {
@@ -45,7 +45,7 @@ export const Links = withTheme(
 
       return (
         <Link to={to} passHref>
-          <StyledLink id={id}>{name}</StyledLink>
+          <StyledLink id={id} onClick={onClick}>{name}</StyledLink>
         </Link>
       )
     }
@@ -60,12 +60,12 @@ export const Links = withTheme(
 
             <StyledList direction={direction} key={direction}>
 
-              {link.map(({ active, Component, id, name, to, type }) =>
+              {link.map(({ active, Component, id, name, onClick, to, type }) =>
 
                 <StyledListItem key={id}>
                   { Component && <Component /> }
                   { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
-                  { (!Component && (!type || type.as === 'link')) && this.renderLink(active, id, name, to) }
+                  { (!Component && (!type || type.as === 'link')) && this.renderLink(active, id, name, onClick, to) }
                 </StyledListItem>
 
               )}

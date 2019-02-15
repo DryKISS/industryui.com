@@ -4,44 +4,37 @@
  */
 
 // React
-import React, { Component } from 'react'
-import { string } from 'prop-types'
+import { number, string } from 'prop-types'
 
 // UI
 import { Column, Image } from '../../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const HeroImage = withTheme(
-  class HeroImage extends Component {
-    static propTypes = {
-      alt: string,
-      image: string
-    }
+export const HeroImage = ({ alt, align, image, width }) => {
+  return (
+    <StyledColumn align={align} md={6}>
 
-    render () {
-      const { alt, image } = this.props
+      <StyledImageContainer>
 
-      return (
-        <StyledColumn md={6}>
+        <StyledImage alt={alt} src={image} width={width} />
 
-          <StyledImageContainer>
+      </StyledImageContainer>
 
-            <StyledImage alt={alt} src={image} />
+    </StyledColumn>
+  )
+}
 
-          </StyledImageContainer>
-
-        </StyledColumn>
-      )
-    }
-  }
-)
+HeroImage.propTypes = {
+  alt: string,
+  image: string,
+  width: number
+}
 
 // Style
 const StyledColumn = styled(Column)`
-  align-self: flex-end;
-  display: flex;
+  align-self: ${({ align }) => align || 'flex-end'};
 `
 
 const StyledImageContainer = styled.div`
@@ -52,5 +45,5 @@ const StyledImageContainer = styled.div`
 const StyledImage = styled(Image)`
   /* filter: drop-shadow(0px 0px 8px #ccc); */
   /* margin-bottom: -20px; */
-  width: 85%;
+  width: ${({ width }) => width ? `${width}%` : '85%'};
 `

@@ -4,7 +4,7 @@
 
 // React
 import React, { PureComponent } from 'react'
-import { node, oneOf, string } from 'prop-types'
+import { bool, node, oneOf, string } from 'prop-types'
 
 // UI
 import { COLOUR } from '../../../'
@@ -16,6 +16,7 @@ import styled, { withTheme } from 'styled-components'
 export const CardBody = withTheme(
   class CardBody extends PureComponent {
     static propTypes = {
+      center: bool,
       children: node,
       context: oneOf(Object.values(CONTEXT)),
       title: string
@@ -26,10 +27,10 @@ export const CardBody = withTheme(
     }
 
     render () {
-      const { title, children, context } = this.props
+      const { center, children, context, title } = this.props
 
       return (
-        <StyledBody>
+        <StyledBody center={center}>
 
           {title &&
             <StyledWrapper>
@@ -49,8 +50,12 @@ export const CardBody = withTheme(
 
 // Style
 const StyledBody = styled.div`
-  flex: 1 1 auto;
-  /* text-align: left; */
+  ${({ center }) => center && `
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+  `}
 `
 
 const StyledWrapper = styled.div`
@@ -71,10 +76,10 @@ const StyledContent = styled.div`
   padding: 1rem;
 `
 
-//   .Card-titleElipsis {
-//     display: inline-block;
-//     flex: 1;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     white-space: nowrap;
-//   }
+// .Card-titleElipsis {
+//   display: inline-block;
+//   flex: 1;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }

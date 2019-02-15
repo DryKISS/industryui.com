@@ -41,12 +41,13 @@ export const Webcam = withTheme(
     static defaultProps = {
       audio: false,
       className: '',
-      height: 480,
+      height: 463.5,
       onUserMedia: () => {},
       onUserMediaError: () => {},
       screenshotFormat: 'image/webp',
       screenshotQuality: 0.8,
-      width: 640
+      style: { borderRadius: '.5rem .5rem 0 0' },
+      width: 824
     }
 
     static mountedInstances = []

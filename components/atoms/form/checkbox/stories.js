@@ -39,7 +39,7 @@ stories.add('Default',
     <Checkbox
       data={CHECKBOXS}
       legend='Finally, which of the following do you pledge to do for your new dog?'
-      handleChange={action('button-click')}
+      change={action('button-click')}
     />
   )
 )

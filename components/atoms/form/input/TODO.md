@@ -1,5 +1,6 @@
 # Todo
 
+- [ ] Add the ability to focus this through Ref
 - [ ] Check the allowed attributes from Input and Global attributes
 - [ ] Add the size options from a Global constant
 - [ ] Placeholder colour needs to be lighter and actual text darker

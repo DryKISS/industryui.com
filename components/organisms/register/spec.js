@@ -4,7 +4,6 @@
 
 // React
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
 import renderer from 'react-test-renderer'
 
 // UI
@@ -20,9 +19,7 @@ describe(`Login Render`, () => {
   it('Default', () => {
     const component = renderer
       .create(
-        <MemoryRouter>
-          <Register />
-        </MemoryRouter>
+        <Register />
       )
 
     expect(component.toJSON()).toMatchSnapshot()

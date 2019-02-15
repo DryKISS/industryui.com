@@ -4,107 +4,88 @@
  */
 
 // React
-import React, { Component } from 'react'
-import { arrayOf, func, number, object, shape, string } from 'prop-types'
+import { arrayOf, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // UI
 import { Column, Container, Link, List, Row } from '../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Footer = withTheme(
-  class Footer extends Component {
-    static propTypes = {
-      columns: arrayOf(
-        shape({
-          header: string,
-          formatter: func,
-          links: arrayOf(
-            shape({
-              id: string,
-              name: string,
-              to: string
-            })
-          ),
-          offset: shape({
-            sm: number,
-            md: number,
-            lg: number,
-            xl: number
-          }),
-          size: shape({
-            sm: number,
-            md: number,
-            lg: number,
-            xl: number
-          }),
-          style: object
-        })
-      ).isRequired
-    }
-
-    _render (obj) {
-      return obj() // NOTE: added rendering fragment (see also __mocks__/footer.js)
-    }
-
-    renderColumns = () => {
-      const { columns } = this.props
-
-      return columns.map(({ size, offset, formatter, header, links, text, style }, index) => (
-
-        <Column style={style} {...size} offset={offset} key={index}>
-          {formatter && this._render(formatter)}
-
-          {header && <StyledTitle>{header}</StyledTitle>}
-
-          {links && this.renderLinks(links)}
-
-          {text && this.renderText(text)}
-        </Column>
-
-      ))
-    }
-
-    renderLinks = (links) => {
-      return (
-        <List unstyled>
-
-          {links.map(({ name, to }, index) => (
-            <List.Item key={index}>
-
-              <Link to={to} passHref>
-                <StyledLink>{name}</StyledLink>
-              </Link>
-
-            </List.Item>
-          ))}
-
-        </List>
-      )
-    }
-
-    renderText = (text) => (
-      <div dangerouslySetInnerHTML={{ __html: text }} />
-    )
-
-    render () {
-      return (
-        <StyledFooter>
-
-          <Container>
-
-            <Row>
-              {this.renderColumns()}
-            </Row>
-
-          </Container>
-
-        </StyledFooter>
-      )
-    }
+export const Footer = ({ columns }) => {
+  const _render = (obj) => {
+    return obj() // NOTE: added rendering fragment (see also __mocks__/footer.js)
   }
-)
+
+  const renderColumns = () => {
+    return columns.map(({ size, offset, formatter, header, links, text, style }, index) => (
+      <Column style={style} {...size} offset={offset} key={index}>
+        {formatter && _render(formatter)}
+        {header && <StyledTitle>{header}</StyledTitle>}
+        {links && renderLinks(links)}
+        {text && renderText(text)}
+      </Column>
+    ))
+  }
+
+  const renderLinks = (links) => {
+    return (
+      <List unstyled>
+        {links.map(({ name, to }, index) => (
+          <List.Item key={index}>
+            <Link to={to} passHref>
+              <StyledLink>{name}</StyledLink>
+            </Link>
+          </List.Item>
+        ))}
+      </List>
+    )
+  }
+
+  const renderText = (text) => (
+    <div dangerouslySetInnerHTML={{ __html: text }} />
+  )
+
+  return (
+    <StyledFooter>
+      <Container>
+        <Row>{renderColumns()}</Row>
+      </Container>
+    </StyledFooter>
+  )
+}
+
+Footer.propTypes = {
+  columns: arrayOf(
+    shape({
+      header: string,
+      formatter: func,
+      links: arrayOf(
+        shape({
+          id: string,
+          name: string,
+          to: oneOfType([
+            object,
+            string
+          ])
+        })
+      ),
+      offset: shape({
+        sm: number,
+        md: number,
+        lg: number,
+        xl: number
+      }),
+      size: shape({
+        sm: number,
+        md: number,
+        lg: number,
+        xl: number
+      }),
+      style: object
+    })
+  ).isRequired
+}
 
 // Footer
 const StyledFooter = styled.div`

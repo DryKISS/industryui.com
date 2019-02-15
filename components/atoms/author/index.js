@@ -3,29 +3,19 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { string } from 'prop-types'
 
-// Style
-import { withTheme } from 'styled-components'
+export const Author = ({ author }) => {
+  return (
+    <a href='javascript:;'>
+      {author}
+    </a>
+  )
+}
 
-export const Author = withTheme(
-  class Author extends Component {
-    static propTypes = {
-      author: string.isRequired
-    }
-
-    render () {
-      const { author } = this.props
-
-      return (
-        <a href='javascript:;'>
-          {author}
-        </a>
-      )
-    }
-  }
-)
+Author.propTypes = {
+  author: string.isRequired
+}
 
 // <li>
 //   <span className='fa fa-user' />

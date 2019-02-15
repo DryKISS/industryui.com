@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 import { FirebaseContext, FirebaseInit } from './'
 
-class FirebaseProvider extends Component {
+export class FirebaseProvider extends Component {
   constructor (props) {
     super(props)
 
@@ -21,5 +21,3 @@ class FirebaseProvider extends Component {
     )
   }
 }
-
-export { FirebaseProvider }
