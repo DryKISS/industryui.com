@@ -16,8 +16,8 @@ export const ForgotDetails = ({ email, change, pathLogIn, submit }) => {
     <Form submit={submit}>
 
       <Input
-        id='email'
         change={change}
+        id='email'
         label='Email address'
         type='email'
         value={email}

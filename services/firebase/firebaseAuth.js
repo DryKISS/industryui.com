@@ -1,10 +1,10 @@
 /**
  * Firebase Auth
  */
-import app from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
-import 'firebase/storage'
+import app from '@firebase/app'
+import '@firebase/auth'
+import '@firebase/firestore'
+import '@firebase/storage'
 
 export class FirebaseAuth {
   constructor () {
@@ -83,7 +83,6 @@ export class FirebaseAuth {
       // Return error on no provider
       default:
         const reason = 'Invalid provider passed to signIn method'
-        console.error('handleSignIn', reason)
         return Promise.reject(reason)
     }
   }
@@ -113,12 +112,9 @@ export class FirebaseAuth {
               ...dbUser
             }
 
-            // console.log('handleAuthListener: Authed:', authUser, dbUser)
-
             next(authUser)
           })
       } else {
-        // console.log('handleAuthListener: Not Authed:', authUser)
         fallback()
       }
     })

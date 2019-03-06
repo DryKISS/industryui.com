@@ -6,9 +6,9 @@
  * U - Update
  * D - Delete
  */
-import app from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/storage'
+import app from '@firebase/app'
+import '@firebase/firestore'
+import '@firebase/storage'
 
 export class FirebaseStorage {
   constructor () {
@@ -26,8 +26,6 @@ export class FirebaseStorage {
   //  * @param {String} options.name - Name of the file
   //  */
   // create = (path, files, dbPath, options) => {
-  //   console.log(path, files, dbPath, options)
-
   //   if (this.store()) {
   //     throw new Error('Firebase storage is required to upload files')
   //   }

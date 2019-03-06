@@ -111,8 +111,6 @@ export class Dropzone extends Component {
 
   files = () => {
     const { accepted } = this.props
-
-    console.log('Accepted', accepted)
     // data.map((element) => (
     //   element.profile = false
     // ))

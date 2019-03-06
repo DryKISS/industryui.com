@@ -3,7 +3,6 @@
  */
 
 // React
-import React, { Component } from 'react'
 import {
   any,
   func,
@@ -19,50 +18,43 @@ import { BACKGROUND } from '../../'
 import { CONTEXT } from '../../theme'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Avatar = withTheme(
-  class Avatar extends Component {
-    static propTypes = {
-      children: any,
-      content: any,
-      context: oneOf(Object.values(CONTEXT)),
-      handleClick: func,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ]))
-    }
+export const Avatar = ({
+  children,
+  className,
+  click,
+  content,
+  context,
+  style
+}) => {
+  return (
+    <StyledAvatar
+      className={className}
+      context={context}
+      onClick={click}
+      style={style}
+    >
+      {children || content}
+    </StyledAvatar>
+  )
+}
 
-    static defaultProps = {
-      context: 'primary'
-    }
+Avatar.propTypes = {
+  children: any,
+  click: func,
+  content: any,
+  context: oneOf(Object.values(CONTEXT)),
+  style: objectOf(oneOfType([
+    number,
+    string
+  ]))
+}
 
-    render () {
-      const {
-        children,
-        className,
-        content,
-        context,
-        handleClick,
-        style
-      } = this.props
+Avatar.defaultProps = {
+  context: 'primary'
+}
 
-      return (
-        <StyledAvatar
-          className={className}
-          context={context}
-          onClick={handleClick}
-          style={style}
-        >
-          {children || content}
-        </StyledAvatar>
-      )
-    }
-  }
-)
-
-// Style
 const StyledAvatar = styled.div`
   align-items: center;
   ${props => BACKGROUND(props)}

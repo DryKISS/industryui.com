@@ -16,8 +16,6 @@ const PapaParse = require('papaparse/papaparse.min.js')
 
 export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
   const change = (e) => {
-    console.log('change', e.target.files[0].name)
-
     let reader = new window.FileReader()
     const filename = e.target.files[0].name
 

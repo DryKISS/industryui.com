@@ -12,17 +12,14 @@ export const MetaHead = ({ meta, brand }) => {
   return (
     <Head>
 
-      {/* Core */}
       <title>{meta.title} | {brand}</title>
       <meta name='description' content={meta.description} key='description' />
       <meta rel='canonical' href={meta.canonical} key='canonical' />
 
-      {/* Facebook */}
       <meta property='og:title' content={meta.title} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:url' content={meta.canonical} />
 
-      {/* Twitter */}
       <meta name='twitter:url' content={meta.canonical} />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />

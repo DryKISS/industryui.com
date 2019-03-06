@@ -21,24 +21,24 @@ export const PasswordChange = ({
     <Form submit={submit}>
 
       <Input
-        id='passwordOld'
         change={change}
+        id='passwordOld'
         label='Old password'
         type='password'
         value={passwordOld}
       />
 
       <Input
-        id='password'
         change={change}
+        id='password'
         label='New password'
         type='password'
         value={password}
       />
 
       <Input
-        id='passwordConfirm'
         change={change}
+        id='passwordConfirm'
         label='Confirm password'
         type='password'
         value={passwordConfirm}

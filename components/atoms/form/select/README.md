@@ -25,7 +25,7 @@ The data passed into the select must be of the form:
   change={change}
   id='addresses'
   label='Select your address'
-  data={postcodeAddresses}
+  options={postcodeAddresses}
   value={addresses}
 />
 ```

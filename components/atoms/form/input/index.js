@@ -17,6 +17,7 @@ export const Input = ({
   autoComplete,
   autoCorrect,
   autoFocus,
+  data,
   change,
   label,
   id,
@@ -45,6 +46,7 @@ export const Input = ({
         required={required}
         type={type}
         value={value}
+        {...data}
       />
 
       <div className='Form-feedback' />

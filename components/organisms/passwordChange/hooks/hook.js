@@ -16,7 +16,6 @@ export const usePasswordChange = (firebase) => {
   const [password, setPassword] = useState(INITIAL_STATE)
 
   const passwordSubmit = (e) => {
-    console.log(password)
     firebase.Auth
       .handlePasswordUpdate(password.password)
       .then(() => {

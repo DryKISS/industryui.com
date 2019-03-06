@@ -3,7 +3,7 @@
  */
 
 // React
-import { array, arrayOf, bool, func, number, oneOfType, string } from 'prop-types'
+import { array, arrayOf, bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // UI
 import { Label } from '../../'
@@ -17,6 +17,7 @@ export const Select = ({
   disabled,
   label,
   id,
+  options,
   placeholder,
   range,
   required,
@@ -33,14 +34,13 @@ export const Select = ({
   }
 
   const renderOptions = () => {
-    return data.map(({ disabled, text, value }, index) =>
+    return options.map(({ disabled, text, value }, index) =>
       <option
+        children={text}
         disabled={disabled}
         key={`option${index}`}
         value={value}
-      >
-        {text}
-      </option>
+      />
     )
   }
 
@@ -53,9 +53,10 @@ export const Select = ({
         onChange={change}
         required={required}
         value={value}
+        {...data}
       >
         {range && range.length > 0 && renderRange()}
-        {data && renderOptions()}
+        {options && renderOptions()}
       </StyledSelect>
       <div className='Form-feedback' />
     </Label>
@@ -64,9 +65,10 @@ export const Select = ({
 
 Select.propTypes = {
   change: func.isRequired,
-  data: array,
+  data: object,
   label: string,
   id: string,
+  options: array,
   placeholder: string,
   range: array,
   required: bool,

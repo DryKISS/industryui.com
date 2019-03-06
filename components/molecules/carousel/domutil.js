@@ -5,7 +5,6 @@ let _loadedCss = []
 
 export function loadjs (src, params = { async: false }) {
   if (_loadedJs.includes(src)) {
-    console.debug(src, 'already loaded')
     return Promise.resolve()
   }
 
@@ -21,7 +20,6 @@ export function loadjs (src, params = { async: false }) {
 
 export function loadcss (href, params = {}) {
   if (_loadedCss.includes(href)) {
-    console.debug(href, 'already loaded')
     return Promise.resolve()
   }
 

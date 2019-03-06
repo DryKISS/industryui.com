@@ -23,7 +23,7 @@ storiesOf('Atoms/Form/Label', module)
       <Label text="Select your gender">
         <Select
           id='gender'
-          data={[
+          options={[
             { text: 'Male', value: 'male', disabled: false },
             { text: 'Female', value: 'female', disabled: false },
             { text: 'Unknown (disabled)', value: 'unknown', disabled: true }

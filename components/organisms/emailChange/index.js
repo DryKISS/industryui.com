@@ -15,9 +15,9 @@ export const EmailChange = ({ change, email, submit }) => {
     <Form submit={submit}>
 
       <Input
-        label='Email'
-        id='email'
         change={change}
+        id='email'
+        label='Email'
         type='email'
         value={email}
       />

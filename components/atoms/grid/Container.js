@@ -3,43 +3,36 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Container = withTheme(
-  class Container extends Component {
-    static propTypes = {
-      children: node.isRequired,
-      className: string,
-      fluid: bool,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ]))
-    }
+export const Container = ({ children, className, fluid, style }) => {
+  return (
+    <StyledGrid
+      className={className}
+      children={children}
+      fluid={fluid}
+      style={style}
+    />
+  )
+}
 
-    static defaultProps = {
-      fluid: false,
-      style: {}
-    };
+Container.propTypes = {
+  children: node.isRequired,
+  className: string,
+  fluid: bool,
+  style: objectOf(oneOfType([
+    number,
+    string
+  ]))
+}
 
-    render () {
-      const { children, className, fluid, style } = this.props
-
-      return (
-        <StyledGrid
-          className={className}
-          children={children}
-          fluid={fluid}
-          style={style}
-        />
-      )
-    }
-  }
-)
+Container.defaultProps = {
+  fluid: false,
+  style: {}
+}
 
 const StyledGrid = styled.div`
   box-sizing: border-box;

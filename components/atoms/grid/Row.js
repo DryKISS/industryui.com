@@ -3,36 +3,29 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { node, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Row = withTheme(
-  class Row extends Component {
-    static propTypes = {
-      children: node.isRequired,
-      className: string,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ]))
-    }
+export const Row = ({ children, className, style }) => {
+  return (
+    <StyledRow
+      className={className}
+      children={children}
+      style={style}
+    />
+  )
+}
 
-    render () {
-      const { children, className, style } = this.props
-
-      return (
-        <StyledRow
-          className={className}
-          children={children}
-          style={style}
-        />
-      )
-    }
-  }
-)
+Row.propTypes = {
+  children: node.isRequired,
+  className: string,
+  style: objectOf(oneOfType([
+    number,
+    string
+  ]))
+}
 
 const StyledRow = styled.div`
   display: flex;

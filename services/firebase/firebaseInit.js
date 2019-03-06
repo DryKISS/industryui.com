@@ -1,7 +1,7 @@
 /**
  * Firebase Initiliase
  */
-import app from 'firebase/app'
+import app from '@firebase/app'
 
 import { FirebaseAuth } from './'
 

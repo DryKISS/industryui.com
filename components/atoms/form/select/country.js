@@ -14,10 +14,10 @@ import { COUNTRY } from '../../../constants'
 export const SelectCountry = ({ change, label, id, value }) => {
   return (
     <Select
-      data={COUNTRY}
       change={change}
       id={id}
       label={label}
+      options={COUNTRY}
       value={value}
     />
   )

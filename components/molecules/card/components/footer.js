@@ -3,41 +3,37 @@
  */
 
 // React
-import React, { PureComponent } from 'react'
 import { oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../../../theme'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const CardFooter = withTheme(
-  class CardFooter extends PureComponent {
-    static propTypes = {
-      context: oneOf(Object.values(CONTEXT)),
-      footer: string
-    }
+export const CardFooter = ({ context, footer }) => {
+  return (
+    <StyledFooter context={context}>
+      <StyledTitle>{footer}</StyledTitle>
+    </StyledFooter>
+  )
+}
 
-    static defaultProps = {
-      context: 'primary'
-    }
+CardFooter.propTypes = {
+  context: oneOf(Object.values(CONTEXT)),
+  footer: string
+}
 
-    render () {
-      const { context, footer } = this.props
+CardFooter.defaultProps = {
+  context: 'primary'
+}
 
-      return (
-        <StyledFooter context={context}>
-          <StyledTitle>{footer}</StyledTitle>
-        </StyledFooter>
-      )
-    }
-  }
-)
-
-// Style
 const StyledFooter = styled.div`
-  /* border-top: 1px solid rgba(0, 0, 0, .125); */
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, .125);
+  display: flex;
+  justify-content: center;
+  min-height: 4.5rem;
   padding: .75rem;
   text-align: center;
 `

@@ -14,10 +14,10 @@ import { DOG_BREEDS } from '../../../constants'
 export const SelectBreed = ({ change, label, id, value }) => {
   return (
     <Select
-      data={DOG_BREEDS}
       change={change}
       id={id}
       label={label}
+      options={DOG_BREEDS}
       required
       value={value}
     />

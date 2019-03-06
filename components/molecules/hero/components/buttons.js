@@ -14,11 +14,7 @@ import styled from 'styled-components'
 export const HeroButtons = ({ buttons }) => {
   return buttons.map(({ content, context, to }, index) => (
     <Link to={to} key={index}>
-      <StyledButton
-        content={content}
-        context={context}
-        size='lg'
-      />
+      <StyledButton content={content} context={context} size='lg' />
     </Link>
   ))
 }

@@ -6,7 +6,6 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { object, string } from 'prop-types'
 
 // UI
@@ -15,91 +14,85 @@ import { ArticleDetails, Breadcrumb, Category, Heading, Image } from '../../'
 // Style
 import styled, { withTheme } from 'styled-components'
 
-export const Article = withTheme(
-  class Article extends Component {
-    static propTypes = {
-      article: object.isRequired,
-      category: string
+export const Article = ({ article, category }) => {
+  const content = () => ({
+    __html: article.data
+  })
+
+  const frontMatter = (matter) => {
+    const { frontmatter } = article
+
+    if (matter === 'image') {
+      return `/static/blog/${frontmatter.slug}/hero.jpg`
     }
 
-    content = () => ({
-      __html: this.props.article.data
-    })
-
-    frontMatter = (matter) => {
-      const { frontmatter } = this.props.article
-
-      if (matter === 'image') {
-        return `/static/blog/${frontmatter.slug}/hero.jpg`
-      }
-
-      if (matter === 'tags') {
-        return frontmatter[matter].map((item) => (
-          { content: item.replace(/[[\]]/g, '').trim(), to: 'javascript:;' }
-        ))
-      }
-
-      return frontmatter[matter]
+    if (matter === 'tags') {
+      return frontmatter[matter].map((item) => (
+        { content: item.replace(/[[\]]/g, '').trim(), to: 'javascript:;' }
+      ))
     }
 
-    render () {
-      const { category } = this.props
-
-      return (
-        <StyledArticle
-          itemProp='blogPost'
-          itemScope
-          itemType='http://schema.org/BlogPosting'
-          role='article'
-        >
-
-          <header>
-
-            {this.frontMatter('image') &&
-              <StyledImage
-                alt={this.frontMatter('heading')}
-                slant
-                src={this.frontMatter('image')}
-              />
-            }
-
-            <Breadcrumb
-              category={category}
-              page={this.frontMatter('heading')}
-              path='javasript:;'
-            />
-
-            <Category category={category} path='javasript:;' />
-
-            <Heading content={this.frontMatter('heading')} />
-
-            <ArticleDetails
-              author={this.frontMatter('author')}
-              tags={this.frontMatter('tags')}
-            />
-
-          </header>
-
-          <div dangerouslySetInnerHTML={this.content()} itemProp='text' />
-
-          {/*
-            <footer>
-              <% if locals[:pager] %>
-                <% prevPage = article.article_previous || false %>
-                <% nextPage = article.article_next || false %>
-                <%= partial 'partials/molecule/pager.erb', locals: {
-                  prevPage: prevPage,
-                  nextPage: nextPage
-                } %>
-              <% end %>
-            </footer>
-          */}
-
-        </StyledArticle>
-      )
-    }
+    return frontmatter[matter]
   }
-)
+
+  return (
+    <StyledArticle
+      itemProp='blogPost'
+      itemScope
+      itemType='http://schema.org/BlogPosting'
+      role='article'
+    >
+
+      <header>
+
+        {frontMatter('image') &&
+          <StyledImage
+            alt={frontMatter('heading')}
+            slant
+            src={frontMatter('image')}
+          />
+        }
+
+        <Breadcrumb
+          category={category}
+          page={frontMatter('heading')}
+          path='javasript:;'
+        />
+
+        <Category category={category} path='javasript:;' />
+
+        <Heading content={frontMatter('heading')} />
+
+        <ArticleDetails
+          author={frontMatter('author')}
+          tags={frontMatter('tags')}
+        />
+
+      </header>
+
+      <div dangerouslySetInnerHTML={content()} itemProp='text' />
+
+      {/*
+        <footer>
+          <% if locals[:pager] %>
+            <% prevPage = article.article_previous || false %>
+            <% nextPage = article.article_next || false %>
+            <%= partial 'partials/molecule/pager.erb', locals: {
+              prevPage: prevPage,
+              nextPage: nextPage
+            } %>
+          <% end %>
+        </footer>
+      */}
+
+    </StyledArticle>
+  )
+}
+
+Article.propTypes = {
+  article: object.isRequired,
+  category: string
+}
 
 const StyledArticle = styled.article`
   max-width: 750px;
@@ -115,6 +108,7 @@ const StyledArticle = styled.article`
 const StyledImage = styled(Image)`
   position: relative;
 `
+
 
 // li:before {
 //   color: #000 !important;

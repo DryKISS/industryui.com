@@ -21,7 +21,6 @@ const FirebaseWithAuthentication = (Component) => {
 
     componentDidMount () {
       const { firebase } = this.props
-      // console.log('FirebaseWithAuthentication', firebase, this.state)
 
       // Get user from localstorage if exists
       // const user = JSON.parse(window.localStorage.getItem('authUser'))
@@ -31,12 +30,10 @@ const FirebaseWithAuthentication = (Component) => {
         authUser => {
           // window.localStorage.setItem('authUser', JSON.stringify(authUser))
           this.setState({ authUser })
-          // console.log('FirebaseWithAuthentication: Authed', this.state)
         },
         () => {
           // window.localStorage.removeItem('authUser')
           this.setState({ authUser: null })
-          // console.log('FirebaseWithAuthentication: Null', this.state)
         }
       )
     }

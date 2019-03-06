@@ -3,7 +3,7 @@
  */
 
 // React
-import { any, bool, func, number, string } from 'prop-types'
+import { any, bool, func, number, object, string } from 'prop-types'
 
 // UI
 import { Column, Row, Select } from '../../'
@@ -16,8 +16,10 @@ import styled from 'styled-components'
 
 export const DatePicker = ({
   change,
+  data,
   day,
   id,
+  index,
   label,
   month,
   required,
@@ -25,10 +27,6 @@ export const DatePicker = ({
   yearEnd,
   yearStart
 }) => {
-  const StyledLabelText = styled.div`
-    margin-bottom: .5rem;
-  `
-
   const years = () => {
     const years = [{ disabled: true, text: 'Select year', value: '' }]
 
@@ -38,11 +36,12 @@ export const DatePicker = ({
 
     return (
       <Select
-        data={years}
         change={change}
         id={`year${id}`}
+        options={years}
         required={required}
         value={year}
+        data={{ 'data-index': index, 'data-name': 'year' }}
       />
     )
   }
@@ -56,22 +55,24 @@ export const DatePicker = ({
         {day !== false &&
           <Column md={4}>
             <Select
-              data={DAYS}
               change={change}
               id={`day${id}`}
+              options={DAYS}
               required={required}
               value={day}
+              data={{ 'data-index': index, 'data-name': 'day' }}
             />
           </Column>
         }
 
         <Column md={4}>
           <Select
-            data={MONTHS}
             change={change}
             id={`month${id}`}
+            options={MONTHS}
             required={required}
             value={month}
+            data={{ 'data-index': index, 'data-name': 'month' }}
           />
         </Column>
 
@@ -82,8 +83,13 @@ export const DatePicker = ({
   )
 }
 
+const StyledLabelText = styled.div`
+  margin-bottom: .5rem;
+`
+
 DatePicker.propTypes = {
   change: func.isRequired,
+  data: object,
   day: any,
   id: string,
   label: string,

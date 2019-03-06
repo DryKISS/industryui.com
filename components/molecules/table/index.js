@@ -23,10 +23,6 @@ export const Table = ({ className, columns, rowClick, rows }) => {
     )
   }
 
-  /**
-   * Render Rows
-   * Also check to see if columns have a formatter for the defined row
-   */
   const renderRows = () => {
     return (
       rows.map((row, index) =>
@@ -44,8 +40,8 @@ export const Table = ({ className, columns, rowClick, rows }) => {
             return (
               <StyledTd key={index}>
                 {(columns && columns.length > 0) && columns[index].formatter
-                  ? columns[index].formatter(value)
-                  : value.__html ? <span dangerouslySetInnerHTML={value} /> : value
+                  ? columns[index].formatter(row)
+                  : value && value.__html ? <span dangerouslySetInnerHTML={value} /> : value
                 }
               </StyledTd>
             )
@@ -55,38 +51,6 @@ export const Table = ({ className, columns, rowClick, rows }) => {
       )
     )
   }
-
-  const StyledTable = styled.table`
-  background-color: transparent;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-  width: 100%;
-`
-
-  const StyledTr = styled.tr`
-    cursor: ${props => props.pointer ? 'pointer' : 'initial'}
-    :nth-child(odd) {
-      background-color: #eee;
-    }
-
-    :hover {
-      background-color: #ddd;
-    }
-  `
-
-  const StyledTh = styled.th`
-    border-bottom: 2px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
-    padding: .75rem;
-    text-align: inherit;
-    vertical-align: bottom;
-  `
-
-  const StyledTd = styled.td`
-    border-top: 1px solid #dee2e6;
-    padding: .75rem;
-    vertical-align: top;
-  `
 
   return (
     <StyledTable className={className}>
@@ -107,3 +71,36 @@ Table.defaultProps = {
   className: 'Table',
   rowClick: () => {}
 }
+
+const StyledTable = styled.table`
+  background-color: transparent;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  width: 100%;
+`
+
+const StyledTr = styled.tr`
+  cursor: ${props => props.pointer ? 'pointer' : 'initial'}
+  :nth-child(odd) {
+    background-color: #eee;
+  }
+
+  :hover {
+    background-color: #ddd;
+  }
+`
+
+const StyledTh = styled.th`
+  border-bottom: 2px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  padding: .75rem;
+  text-align: center;
+  vertical-align: bottom;
+`
+
+const StyledTd = styled.td`
+  border-top: 1px solid #dee2e6;
+  padding: .75rem;
+  text-align: center;
+  vertical-align: top;
+`

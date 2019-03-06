@@ -34,8 +34,6 @@ export const Carousel = withTheme(
       // TODO: check https://stackoverflow.com/a/38755312/1948511 width-handling solution
       if (window.innerWidth < 450) {
         // const initialSlide = this.state.slideCount
-        console.log('>>', this.state.currentSlide, this.state.slideCount)
-
         slickParams = {
           ...slickParams,
           arrows: false,

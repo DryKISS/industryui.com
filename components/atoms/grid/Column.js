@@ -3,67 +3,59 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { any, bool, number, objectOf, oneOfType, string, shape } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Column = withTheme(
-  class Column extends Component {
-    static propTypes = {
-      children: any.isRequired,
-      className: string,
-      debug: bool,
-      fluid: string,
-      md: number,
-      lg: number,
-      offset: shape({
-        sm: number,
-        md: number,
-        lg: number,
-        xl: number
-      }),
-      sm: number,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ])),
-      xl: number
-    }
+export const Column = ({ children, className, style, sm, md, lg, xl, offset }) => {
+  sm = sm !== undefined ? sm : 0
+  md = md !== undefined ? md : sm
+  lg = lg !== undefined ? lg : md
+  xl = xl !== undefined ? xl : lg
 
-    static defaultProps = {
-      offset: {},
-      style: {},
-      debug: false
-    }
+  offset.sm = (offset.sm !== undefined ? offset.sm : 0)
+  offset.md = (offset.md !== undefined ? offset.md : offset.sm)
+  offset.lg = (offset.lg !== undefined ? offset.lg : offset.md)
+  offset.xl = (offset.xl !== undefined ? offset.xl : offset.lg)
 
-    render () {
-      const { children, className, style } = this.props
+  return (
+    <StyledColumn
+      className={className}
+      children={children}
+      size={{ sm, md, lg, xl }}
+      off={offset}
+      style={style}
+    />
+  )
+}
 
-      let { sm, md, lg, xl, offset } = this.props
-      sm = sm !== undefined ? sm : 0
-      md = md !== undefined ? md : sm
-      lg = lg !== undefined ? lg : md
-      xl = xl !== undefined ? xl : lg
+Column.propTypes = {
+  children: any.isRequired,
+  className: string,
+  debug: bool,
+  fluid: string,
+  md: number,
+  lg: number,
+  offset: shape({
+    sm: number,
+    md: number,
+    lg: number,
+    xl: number
+  }),
+  sm: number,
+  style: objectOf(oneOfType([
+    number,
+    string
+  ])),
+  xl: number
+}
 
-      offset.sm = (offset.sm !== undefined ? offset.sm : 0)
-      offset.md = (offset.md !== undefined ? offset.md : offset.sm)
-      offset.lg = (offset.lg !== undefined ? offset.lg : offset.md)
-      offset.xl = (offset.xl !== undefined ? offset.xl : offset.lg)
-
-      return (
-        <StyledColumn
-          className={className}
-          children={children}
-          size={{ sm, md, lg, xl }}
-          off={offset}
-          style={style}
-        />
-      )
-    }
-  }
-)
+Column.defaultProps = {
+  offset: {},
+  style: {},
+  debug: false
+}
 
 const StyledColumn = styled.div`
   box-sizing: border-box;

@@ -32,7 +32,6 @@ HeroImage.propTypes = {
   width: number
 }
 
-// Style
 const StyledColumn = styled(Column)`
   align-self: ${({ align }) => align || 'flex-end'};
 `
@@ -43,7 +42,5 @@ const StyledImageContainer = styled.div`
 `
 
 const StyledImage = styled(Image)`
-  /* filter: drop-shadow(0px 0px 8px #ccc); */
-  /* margin-bottom: -20px; */
   width: ${({ width }) => width ? `${width}%` : '85%'};
 `

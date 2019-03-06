@@ -46,7 +46,6 @@ export class Form extends Component {
 
         if (elem.type !== 'checkbox' && elem.parentNode.parentNode.nodeName.toLowerCase() === 'fieldset') {
           errorLabel = elem.parentNode.parentNode.querySelector('.Form-feedback')
-          console.log('Here', elem.type, errorLabel)
         }
 
         // errorLabel placed next to an element is the container we want to use

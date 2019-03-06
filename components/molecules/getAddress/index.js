@@ -12,11 +12,16 @@ import { Button, Input, Select } from '../../'
 // Debug Data
 import { ADDRESS_DATA } from './__mock__/addresses'
 
-export const GetAddress = forwardRef(({ address, apiKey, error, change, handleFindAddress, handlePopulateAddress }, ref) => {
+export const GetAddress = forwardRef(({
+  apiKey,
+  error,
+  change,
+  form,
+  handleFindAddress,
+  handlePopulateAddress
+}, ref) => {
   const [loading, setLoading] = useState(false)
   const [addresses, setAddresses] = useState({ data: [] })
-
-  const url = 'https://api.getaddress.io/find/'
 
   useImperativeHandle(ref, () => ({
     removeWhitespace: (postcode) => {
@@ -29,32 +34,30 @@ export const GetAddress = forwardRef(({ address, apiKey, error, change, handleFi
       return found
     },
 
-    getAddress: (postcode) => {
+    getAddress: async (postcode) => {
       setLoading(true)
 
-      const API_URL = `${url}/${postcode}?api-key=${apiKey}`
-
-      // const addresses = ADDRESS_DATA.addresses
       let data = addresses.data
       data = ADDRESS_DATA.addresses
-
       setAddresses({ ...addresses, data: [...data] })
 
-      // Fetch
-      // window.fetch(API_URL)
+      // const API_URL = `https://api.getaddress.io/find//${postcode}?api-key=${apiKey}`
+      // const addresses = ADDRESS_DATA.addresses
+
+      // // Fetch
+      // await window.fetch(API_URL)
 
       //   .then((response) => {
       //     if (!response.ok) {
-      //       console.log('error', response)
-      //       setError({ error: false })
+      //       // setError({ error: false })
       //     }
 
       //     return response.json()
       //   })
 
       //   .then((data) => {
-      //     console.log('Success', data)
-      //     setAddresses({ postcodeAddresses: [...data.addresses] })
+      //     setAddresses({ ...addresses, data: [...data] })
+      //     // setAddresses({ postcodeAddresses: [...data.addresses] })
       //   })
     }
   }))
@@ -64,7 +67,7 @@ export const GetAddress = forwardRef(({ address, apiKey, error, change, handleFi
       change={change}
       id='postcode'
       label={`What is your postcode?`}
-      value={address.postcode}
+      value={form.postcode}
     />
   )
 
@@ -76,36 +79,6 @@ export const GetAddress = forwardRef(({ address, apiKey, error, change, handleFi
       size='lg'
     />
   )
-
-  const addressDetails = () => {
-    if (address.line1) {
-      const changedInputs = [
-        { label: 'Address line 1', id: 'line1' },
-        { label: 'Address line 2', id: 'line2' },
-        { label: 'Address line 3', id: 'line3', required: false },
-        { label: 'City / Town', id: 'town' },
-        { label: 'County', id: 'county', required: false },
-        { label: 'Postcode', id: 'postcode' },
-        { label: 'Country', id: 'country' }
-      ]
-
-      return changedInputs.map(({ label, id, required }) => {
-        return (
-          <span key={id}>
-            <Input
-              label={label}
-              id={id}
-              change={change}
-              required={required}
-              value={address[id]}
-            />
-          </span>
-        )
-      })
-    } else {
-      return <span />
-    }
-  }
 
   const postcodeAddresses = () => {
     if (loading) {
@@ -123,13 +96,43 @@ export const GetAddress = forwardRef(({ address, apiKey, error, change, handleFi
               change={handlePopulateAddress}
               id='addresses'
               label='Select your address'
-              data={reduced}
+              options={reduced}
             />
           </>
         )
       } else {
         return <div>No addresses Found</div>
       }
+    }
+  }
+
+  const addressDetails = () => {
+    if (form.line1) {
+      const changedInputs = [
+        { label: 'Address line 1', id: 'line1' },
+        { label: 'Address line 2', id: 'line2', required: false },
+        { label: 'Address line 3', id: 'line3', required: false },
+        { label: 'City / Town', id: 'town' },
+        { label: 'County', id: 'county', required: false },
+        { label: 'Postcode', id: 'postcode' },
+        { label: 'Country', id: 'country' }
+      ]
+
+      return changedInputs.map(({ label, id, required }) => {
+        return (
+          <span key={id}>
+            <Input
+              label={label}
+              id={id}
+              change={change}
+              required={required}
+              value={form[id]}
+            />
+          </span>
+        )
+      })
+    } else {
+      return <span />
     }
   }
 

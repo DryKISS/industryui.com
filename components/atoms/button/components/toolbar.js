@@ -1,5 +1,5 @@
 /**
- * Toolbar
+ * Button Toolbar
  * Combine sets of button groups into button toolbars for more complex
  * components. Use utility classes as needed to space out groups, buttons, and
  * more.
@@ -8,47 +8,40 @@
  */
 
 // React
-import React, { Component } from 'react'
-import { node } from 'prop-types'
+import { node, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const ButtonToolbar = withTheme(
-  class ButtonToolbar extends Component {
-    static propTypes = {
-      children: node.isRequired
-    }
+export const ButtonToolbar = ({ align, children }) => {
+  return (
+    <StyledToolbar
+      align={align}
+      aria-label='Toolbar with button groups'
+      role='toolbar'
+    >
 
-    render () {
-      const { children } = this.props
+      <StyledGroup role='group' aria-label='First group'>
+        {children}
+      </StyledGroup>
 
-      return (
-        <StyledToolbar
-          role='toolbar'
-          aria-label='Toolbar with button groups'
-        >
+    </StyledToolbar>
+  )
+}
 
-          <StyledGroup
-            role='group'
-            aria-label='First group'
-          >
+ButtonToolbar.propTypes = {
+  align: string,
+  children: node.isRequired
+}
 
-            {children}
+ButtonToolbar.defaultProps = {
+  align: 'center'
+}
 
-          </StyledGroup>
-
-        </StyledToolbar>
-      )
-    }
-  }
-)
-
-// Style
 const StyledToolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: ${({ align }) => align};
 `
 
 const StyledGroup = styled.div`
@@ -59,7 +52,7 @@ const StyledGroup = styled.div`
   & > button:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border-right: 1px solid ${props => props.theme.COLOUR.light};
+    border-right: 1px solid ${({ theme }) => theme.COLOUR.light};
   }
 
   & > button:not(:first-child) {

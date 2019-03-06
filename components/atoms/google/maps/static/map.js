@@ -91,7 +91,6 @@ export const GoogleMapsStatic = withTheme(
 
       if (circle) {
         const enc = encodeCircle(circle.latitude, circle.longitude, circle.radius)
-        // console.log('renderPath', encodeCircle(circle.latitude, circle.longitude, circle.radius), circle)
         urlParts.push(this.urlBuilder('', this.locationBuilder(`${enc}`), ''))
       }
 

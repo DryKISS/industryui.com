@@ -22,17 +22,14 @@ const FirebaseWithAuthorization = (condition) => (Component) => {
 
     componentDidMount () {
       const { firebase } = this.props
-      // console.log('FirebaseWithAuthorization:', firebase)
 
       this.listener = firebase.Auth.handleAuthListener(
         authUser => {
           if (!condition(authUser)) {
-            // console.log('FirebaseWithAuthorization: Error')
             Router.push('/sign-in')
           }
         },
         () => {
-          // console.log('FirebaseWithAuthorization: Fallback')
           Router.push('/sign-in')
         }
       )

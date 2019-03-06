@@ -14,8 +14,6 @@ const canUseDOM = !!(
 export const IntercomAPI = (...args) => {
   if (canUseDOM && window.Intercom) {
     window.Intercom.apply(null, args)
-  } else {
-    console.warn('Intercom not initialized yet')
   }
 }
 
