@@ -7,7 +7,7 @@
 import { arrayOf, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { Column, Container, Link, List, Row } from '../../'
+import { Column, Container, Link, List, ListItem, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -32,11 +32,11 @@ export const Footer = ({ columns }) => {
     return (
       <List unstyled>
         {links.map(({ name, to }, index) => (
-          <List.Item key={index}>
+          <ListItem key={index}>
             <Link to={to} passHref>
               <StyledLink>{name}</StyledLink>
             </Link>
-          </List.Item>
+          </ListItem>
         ))}
       </List>
     )

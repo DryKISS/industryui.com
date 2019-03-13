@@ -11,9 +11,7 @@ import { withInfo } from '@storybook/addon-info'
 import { withReadme } from 'storybook-readme'
 
 // UI
-import { Footer } from '../../'
-import { List } from '../../'
-import { Image } from '../../'
+import { Footer, Image, List, ListItem } from '../../'
 import Readme from './README.md'
 
 // Data
@@ -28,9 +26,9 @@ const renderColumn = () => (
     </div>
 
     <List unstyled>
-      <List.Item>Dog's best friend</List.Item>
-      <List.Item>hello@tailwise.com</List.Item>
-      <List.Item>0330 043 5301</List.Item>
+      <ListItem>Dog's best friend</ListItem>
+      <ListItem>hello@tailwise.com</ListItem>
+      <ListItem>0330 043 5301</ListItem>
     </List>
   </React.Fragment>
 )

@@ -7,7 +7,7 @@ import { any, array, string } from 'prop-types'
 
 // UI
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Author, Date, Divider, List, ReadTime, Tags } from '../../'
+import { Author, Date, Divider, List, ListItem, ReadTime, Tags } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -21,22 +21,22 @@ export const ArticleDetails = ({ author, tags }) => {
       <List inline unstyled>
 
         {/* Date / Time */}
-        <List.Item>
+        <ListItem>
           <StyledIcon icon='calendar-alt' />
           <Date date={'2018-03-14'} />
-        </List.Item>
+        </ListItem>
 
         {/* Author */}
-        <List.Item>
+        <ListItem>
           <StyledIcon icon='user' />
           <Author author={author} />
-        </List.Item>
+        </ListItem>
 
         {/* Read time */}
-        <List.Item>
+        <ListItem>
           <StyledIcon icon='clock' />
           <ReadTime time={2} />
-        </List.Item>
+        </ListItem>
 
       </List>
 

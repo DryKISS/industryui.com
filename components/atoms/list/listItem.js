@@ -6,7 +6,7 @@ import { bool, node } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Item = ({ children, inline }) => {
+export const ListItem = ({ children, inline }) => {
   return (
     <StyledLi inline={inline}>
       {children}
@@ -26,12 +26,11 @@ const StyledLi = styled.li`
 //   }
 // }
 
-Item.propTypes = {
+ListItem.propTypes = {
   children: node.isRequired,
   inline: bool
 }
 
-Item.defaultProps = {
+ListItem.defaultProps = {
   inline: false
 }
-
