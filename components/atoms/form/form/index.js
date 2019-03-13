@@ -132,7 +132,6 @@ export class Form extends Component {
   }
 }
 
-// Style
 const StyledForm = styled.form`
   font-size: 1rem;
 `

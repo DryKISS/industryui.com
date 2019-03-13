@@ -1,36 +1,19 @@
 /**
  * List Item
  */
-import React, { Component } from 'react'
 import { bool, node } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Item = withTheme(
-  class Item extends Component {
-    static propTypes = {
-      children: node.isRequired,
-      inline: bool
-    }
+export const Item = ({ children, inline }) => {
+  return (
+    <StyledLi inline={inline}>
+      {children}
+    </StyledLi>
+  )
+}
 
-    static defaultProps = {
-      inline: false
-    }
-
-    render () {
-      const { children, inline } = this.props
-
-      return (
-        <StyledLi inline={inline}>
-          {children}
-        </StyledLi>
-      )
-    }
-  },
-)
-
-// Style
 const StyledLi = styled.li`
   &:not(:last-child) {
     /* margin-right: 3rem; */
@@ -42,3 +25,13 @@ const StyledLi = styled.li`
 //     margin-right: 3rem;
 //   }
 // }
+
+Item.propTypes = {
+  children: node.isRequired,
+  inline: bool
+}
+
+Item.defaultProps = {
+  inline: false
+}
+

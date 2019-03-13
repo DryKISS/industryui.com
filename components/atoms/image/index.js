@@ -5,69 +5,44 @@
  */
 
 // React
-import React, { Component } from 'react'
-import { any, bool, number, objectOf, oneOfType, string } from 'prop-types'
+import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Image = withTheme(
-  class Image extends Component {
-    static propTypes = {
-      alt: string.isRequired,
-      className: any,
-      imageClasses: string,
-      figureClasses: string,
-      radius: bool,
-      slant: bool,
-      src: string.isRequired,
-      style: objectOf(oneOfType([
-        number,
-        string
-      ]))
-    }
+export const Image = ({
+  alt,
+  className,
+  click,
+  cover,
+  imageClasses,
+  slant,
+  src,
+  style
+}) => {
+  return (
+    <StyledFigure
+      className={className}
+      itemProp='image'
+      itemScope=''
+      itemType='http://schema.org/ImageObject'
+      slant={slant}
+      style={style}
+    >
 
-    static defaultProps = {
-      radius: false,
-      slant: false
-    }
+      <StyledImg
+        alt={alt}
+        className={imageClasses}
+        cover={cover}
+        itemProp='contentUrl'
+        onClick={click}
+        src={src}
+      />
 
-    render () {
-      const {
-        alt,
-        cover,
-        className,
-        imageClasses,
-        slant,
-        src,
-        style
-      } = this.props
+    </StyledFigure>
+  )
+}
 
-      return (
-        <StyledFigure
-          className={className}
-          itemProp='image'
-          itemScope=''
-          itemType='http://schema.org/ImageObject'
-          slant={slant}
-          style={style}
-        >
-
-          <StyledImg
-            alt={alt}
-            className={imageClasses}
-            cover={cover}
-            itemProp='contentUrl'
-            src={src}
-          />
-
-        </StyledFigure>
-      )
-    }
-  }
-)
-
-// Style
 const slantStyles = `
   &:after {
     background-color: #fff;
@@ -102,3 +77,21 @@ const StyledImg = styled.img`
   vertical-align: middle;
   width: 100%;
 `
+
+Image.propTypes = {
+  alt: string.isRequired,
+  className: any,
+  click: func,
+  cover: bool,
+  imageClasses: string,
+  slant: bool,
+  src: string.isRequired,
+  style: objectOf(oneOfType([
+    number,
+    string
+  ]))
+}
+
+Image.defaultProps = {
+  slant: false
+}

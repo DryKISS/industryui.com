@@ -3,32 +3,17 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { oneOf } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Divider = withTheme(
-  class Divider extends Component {
-    static propTypes = {
-      size: oneOf([
-        'md',
-        'lg'
-      ])
-    }
+export const Divider = ({ size }) => {
+  return (
+    <StyledDivider size={size} />
+  )
+}
 
-    render () {
-      const { size } = this.props
-
-      return (
-        <StyledDivider size={size} />
-      )
-    }
-  }
-)
-
-// Style
 const StyledDivider = styled.div`
   border-top: 1px solid rgba(34, 36, 38, .1);
   border-bottom: 1px solid;
@@ -39,3 +24,10 @@ const StyledDivider = styled.div`
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 `
+
+Divider.propTypes = {
+  size: oneOf([
+    'md',
+    'lg'
+  ])
+}

@@ -3,42 +3,31 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { string } from 'prop-types'
 
 // UI
 import { Link } from '../../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Brand = withTheme(
-  class Brand extends Component {
-    static propTypes = {
-      brand: string
-    }
+export const Brand = ({ brand }) => {
+  return (
+    <Link to='/' passHref>
 
-    render () {
-      const { brand } = this.props
+      <StyledBrand id='navLogo'>
 
-      return (
-        <Link to='/' passHref>
+        <StyledBrandLogo
+          alt='Logo'
+          draggable='false'
+          src={brand}
+        />
 
-          <StyledBrand id='navLogo'>
+      </StyledBrand>
 
-            <StyledBrandLogo
-              alt='Logo'
-              draggable='false'
-              src={brand}
-            />
-
-          </StyledBrand>
-
-        </Link>
-      )
-    }
-  }
-)
+    </Link>
+  )
+}
 
 const StyledBrand = styled.a`
   display: inline-block;
@@ -53,3 +42,7 @@ const StyledBrandLogo = styled.img`
     max-width: 14.5rem;
   }
 `
+
+Brand.propTypes = {
+  brand: string
+}

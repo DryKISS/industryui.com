@@ -3,51 +3,35 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { func, string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Tab = withTheme(
-  class Tab extends Component {
-    static propTypes = {
-      activeTab: string.isRequired,
-      label: string.isRequired,
-      onClick: func.isRequired
-    }
-
-    onClick = () => {
-      const { label, onClick } = this.props
-      onClick(label)
-    }
-
-    render () {
-      const {
-        onClick,
-        props: {
-          activeTab,
-          label
-        }
-      } = this
-
-      return (
-        <StyledTab active={activeTab === label} onClick={onClick}>
-          {label}
-        </StyledTab>
-      )
-    }
+export const Tab = ({ activeTab, label, onClick }) => {
+  const click = () => {
+    onClick(label)
   }
-)
 
-// Style
+  return (
+    <StyledTab active={activeTab === label} onClick={click}>
+      {label}
+    </StyledTab>
+  )
+}
+
 const StyledTab = styled.ol`
-  background-color: ${props => props.active && 'white'};
-  border: ${props => props.active && 'solid #ccc'};
-  border-width: ${props => props.active && '1px 1px 0 1px'};
+  background-color: ${props => props.active ? props.theme.COLOUR.success : props.theme.COLOUR.light};
+  border: ${props => props.active && `2px solid ${props.theme.COLOUR.success}`};
+  color: ${props => props.active ? props.theme.COLOUR.white : props.theme.COLOUR.dark};
   cursor: pointer;
   display: inline-block;
   list-style: none;
-  margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
 `
+
+Tab.propTypes = {
+  activeTab: string.isRequired,
+  label: string.isRequired,
+  onClick: func.isRequired
+}

@@ -4,7 +4,6 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { any, objectOf, oneOf, oneOfType, node, number, string } from 'prop-types'
 
 // UI
@@ -12,48 +11,23 @@ import { COLOUR } from '../../'
 import { CONTEXT } from '../../theme'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Heading = withTheme(
-  class Heading extends Component {
-    static propTypes = {
-      as: string,
-      children: node,
-      className: any,
-      content: string,
-      context: oneOf(Object.values(CONTEXT)),
-      style: objectOf(oneOfType([
-        number,
-        string
-      ]))
-    }
+export const Heading = ({ as, children, className, content, context, style }) => {
+  return (
+    <StyledComponent
+      as={as}
+      className={className}
+      context={context}
+      itemProp='name headline'
+      rel='bookmark'
+      style={style}
+    >
+      { children || content }
+    </StyledComponent>
+  )
+}
 
-    static defaultProps = {
-      as: 'h1',
-      context: 'dark'
-    }
-
-    render () {
-      const { as, children, className, content, context, style } = this.props
-
-      return (
-        <StyledComponent
-          as={as}
-          className={className}
-          context={context}
-          itemProp='name headline'
-          rel='bookmark'
-          style={style}
-        >
-          { children || content }
-        </StyledComponent>
-      )
-    }
-  }
-)
-
-// Style
-// Remove margin apart from bottom at 2rem
 const StyledComponent = styled.span`
   ${props => COLOUR(props)}
   font-size: ${props => props.as === 'h1' ? '2.25rem' : '2rem'};
@@ -62,3 +36,20 @@ const StyledComponent = styled.span`
   position: relative;
   z-index: 2;
 `
+
+Heading.propTypes = {
+  as: string,
+  children: node,
+  className: any,
+  content: string,
+  context: oneOf(Object.values(CONTEXT)),
+  style: objectOf(oneOfType([
+    number,
+    string
+  ]))
+}
+
+Heading.defaultProps = {
+  as: 'h1',
+  context: 'dark'
+}

@@ -3,7 +3,6 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { bool, string } from 'prop-types'
 
 // UI
@@ -12,36 +11,20 @@ import { Divider, Heading } from '../../'
 // Style
 import styled from 'styled-components'
 
-export class PageHeading extends Component {
-  static propTypes = {
-    center: bool,
-    divider: bool,
-    heading: string.isRequired,
-    strapline: string
-  }
+export const PageHeading = ({ center, divider, heading, strapline }) => {
+  return (
+    <StyledHeader center={center} divider={divider}>
 
-  render () {
-    const { center, divider, heading, strapline } = this.props
+      <StyledHeading content={heading} context='primary' pageHeading />
 
-    return (
-      <StyledHeader center={center} divider={divider}>
+      {strapline && <StyledStrapline>{strapline}</StyledStrapline> }
 
-        <StyledHeading content={heading} context='primary' pageHeading />
+      {divider && <Divider size='md' /> }
 
-        {strapline &&
-          <StyledStrapline>{strapline}</StyledStrapline>
-        }
-
-        {divider &&
-          <Divider size='md' />
-        }
-
-      </StyledHeader>
-    )
-  }
+    </StyledHeader>
+  )
 }
 
-// Style
 const StyledHeader = styled.header`
   margin-bottom: ${({ divider }) => !divider && '2rem'};
   text-align: ${({ center }) => center && 'center'};
@@ -54,3 +37,10 @@ const StyledHeading = styled(Heading)`
 const StyledStrapline = styled.div`
   max-width: 50%;
 `
+
+PageHeading.propTypes = {
+  center: bool,
+  divider: bool,
+  heading: string.isRequired,
+  strapline: string
+}

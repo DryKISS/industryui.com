@@ -87,7 +87,6 @@ export const Pagination = withTheme(
   }
 )
 
-// Style
 const StyledPagination = styled.nav`
 `
 

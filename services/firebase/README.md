@@ -55,9 +55,10 @@ To test the Firestore triggers
 
 @see https://github.com/dalenguyen/firestore-import-export
 
-- node import.js ../seed/users.json date=createdAt,dateOfBirth
+- node import.js ../seed/dogBreeds.json
 - node import.js ../seed/dogs.json date=createdAt,dateOfBirth
 - node import.js ../seed/payouts.json date=createdAt
+- node import.js ../seed/users.json date=createdAt,dateOfBirth
 
 #### Export
 

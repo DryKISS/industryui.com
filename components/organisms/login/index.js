@@ -36,7 +36,6 @@ export const Login = ({
         change={change}
         id='email'
         label='Email address'
-        placeholder='Email Address'
         type='email'
         value={email}
       />
@@ -45,7 +44,6 @@ export const Login = ({
         change={change}
         id='password'
         label='Password'
-        placeholder='Password'
         type='password'
         value={password}
       />

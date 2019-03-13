@@ -3,43 +3,35 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Blockquote = withTheme(
-  class Blockquote extends Component {
-    static propTypes = {
-      footer: string,
-      text: string.isRequired
-    }
+export const Blockquote = ({ footer, text }) => {
+  return (
+    <StyledBlockquote>
 
-    render () {
-      const { footer, text } = this.props
+      <p className='Blockquote-text'>{text}</p>
 
-      return (
-        <StyledBlockquote>
+      {footer &&
+        <footer className='Blockquote-footer'>{footer}</footer>
+      }
 
-          <p className='Blockquote-text'>{text}</p>
+    </StyledBlockquote>
+  )
+}
 
-          {footer &&
-            <footer className='Blockquote-footer'>{footer}</footer>
-          }
-
-        </StyledBlockquote>
-      )
-    }
-  }
-)
-
-// Style
 const StyledBlockquote = styled.a`
   margin: 0 0 1rem;
   margin-bottom: 1rem;
   font-size: 1.25rem;
 `
+
+Blockquote.propTypes = {
+  footer: string,
+  text: string.isRequired
+}
 
 // .Blockquote-footer {
 //   display: block;

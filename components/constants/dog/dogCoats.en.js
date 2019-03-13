@@ -1,5 +1,5 @@
 /**
- * Dog
+ * Dog Coats
  */
 export const DOG_COAT_TYPES = [
   {
@@ -50,25 +50,5 @@ export const DOG_COAT_TYPES = [
   {
     text: 'Other (Not Listed)',
     value: 'other'
-  }
-]
-
-export const DOG_COLOUR = [
-  {
-    disabled: true,
-    text: 'Select colour',
-    value: ''
-  },
-  {
-    text: 'Black',
-    value: 'black'
-  },
-  {
-    text: 'Brown',
-    value: 'brown'
-  },
-  {
-    text: 'Chocolate',
-    value: 'chocolate'
   }
 ]

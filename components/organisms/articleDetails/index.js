@@ -3,7 +3,6 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { any, array, string } from 'prop-types'
 
 // UI
@@ -11,82 +10,66 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Author, Date, Divider, List, ReadTime, Tags } from '../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const ArticleDetails = withTheme(
-  class ArticleDetails extends Component {
-    static propTypes = {
-      author: string.isRequired,
-      date: any,
-      tags: array
-    }
+export const ArticleDetails = ({ author, tags }) => {
+  return (
+    <StyledArticleDetails>
 
-    static defaultProps = {
-      tags: []
-    }
+      <Divider />
 
-    render () {
-      const { author, tags } = this.props
+      <List inline unstyled>
 
-      return (
-        <StyledArticleDetails>
+        {/* Date / Time */}
+        <List.Item>
+          <StyledIcon icon='calendar-alt' />
+          <Date date={'2018-03-14'} />
+        </List.Item>
 
-          <Divider />
+        {/* Author */}
+        <List.Item>
+          <StyledIcon icon='user' />
+          <Author author={author} />
+        </List.Item>
 
-          <List inline unstyled>
+        {/* Read time */}
+        <List.Item>
+          <StyledIcon icon='clock' />
+          <ReadTime time={2} />
+        </List.Item>
 
-            {/* Date / Time */}
-            <List.Item>
-              <StyledIcon icon='calendar-alt' />
-              <Date date={'2018-03-14'} />
-            </List.Item>
+      </List>
 
-            {/* Author */}
-            <List.Item>
-              <StyledIcon icon='user' />
-              <Author author={author} />
-            </List.Item>
+      <Tags tags={tags} />
 
-            {/* Read time */}
-            <List.Item>
-              <StyledIcon icon='clock' />
-              <ReadTime time={2} />
-            </List.Item>
+      <Divider />
 
-          </List>
+      <StyledShare>
 
-          <Tags tags={tags} />
+        <StyledShareText>Share this article</StyledShareText>
 
-          <Divider />
+        {/* Facebook */}
+        <StyledShareLink href='javascript:;'>
+          <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+        </StyledShareLink>
 
-          <StyledShare>
+        {/* Twitter */}
+        <StyledShareLink href='javascript:'>
+          <FontAwesomeIcon icon={['fab', 'twitter-square']} />
+        </StyledShareLink>
 
-            <StyledShareText>Share this article</StyledShareText>
+        {/* Pinterest */}
+        <StyledShareLink href='javascript:;'>
+          <FontAwesomeIcon icon={['fab', 'pinterest-square']} />
+        </StyledShareLink>
 
-            {/* Facebook */}
-            <StyledShareLink href='javascript:;'>
-              <FontAwesomeIcon icon={['fab', 'facebook-square']} />
-            </StyledShareLink>
+      </StyledShare>
 
-            {/* Twitter */}
-            <StyledShareLink href='javascript:'>
-              <FontAwesomeIcon icon={['fab', 'twitter-square']} />
-            </StyledShareLink>
+      <Divider />
 
-            {/* Pinterest */}
-            <StyledShareLink href='javascript:;'>
-              <FontAwesomeIcon icon={['fab', 'pinterest-square']} />
-            </StyledShareLink>
-
-          </StyledShare>
-
-          <Divider />
-
-        </StyledArticleDetails>
-      )
-    }
-  }
-)
+    </StyledArticleDetails>
+  )
+}
 
 const StyledArticleDetails = styled.div`
   font-size: .875rem;
@@ -112,3 +95,13 @@ const StyledShareLink = styled.a`
   margin-right: .5rem;
   text-decoration: none;
 `
+
+ArticleDetails.propTypes = {
+  author: string.isRequired,
+  date: any,
+  tags: array
+}
+
+ArticleDetails.defaultProps = {
+  tags: []
+}

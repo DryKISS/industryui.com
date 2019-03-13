@@ -3,44 +3,28 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { number } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Rating = withTheme(
-  class Rating extends Component {
-    static propTypes = {
-      item: number.isRequired,
-      size: number
-    }
+export const Rating = ({ className, item, size }) => {
+  let rating = []
 
-    static defaultProps = {
-      size: 5
-    }
-
-    render = () => {
-      const { className, item, size } = this.props
-      let rating = []
-
-      for (let i = 0; i < size; i++) {
-        rating.push(
-          <StyledRating
-            active={i + 1 <= item}
-            className={className}
-            item={item}
-            key={i}
-          />
-        )
-      }
-
-      return rating
-    }
+  for (let i = 0; i < size; i++) {
+    rating.push(
+      <StyledRating
+        active={i + 1 <= item}
+        className={className}
+        item={item}
+        key={i}
+      />
+    )
   }
-)
 
-// Style
+  return rating
+}
+
 const StyledRating = styled.div`
   background-color: ${props => props.active ? props.theme.COLOUR.secondary : props.theme.COLOUR.light};
   border-radius: .5rem;
@@ -49,3 +33,12 @@ const StyledRating = styled.div`
   margin-right: .25rem;
   width: 15px;
 `
+
+Rating.propTypes = {
+  item: number.isRequired,
+  size: number
+}
+
+Rating.defaultProps = {
+  size: 5
+}

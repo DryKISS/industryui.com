@@ -3,33 +3,23 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { string } from 'prop-types'
 
-// Style
-import { withTheme } from 'styled-components'
+export const Date = ({ date }) => {
+  return (
+    <time
+      dateTime={date}
+      itemProp='datePublished'
+      pubdate='pubdate'
+    >
+      {date}
+    </time>
+  )
+}
 
-export const Date = withTheme(
-  class Date extends Component {
-    static propTypes = {
-      date: string.isRequired
-    }
-
-    render () {
-      const { date } = this.props
-
-      return (
-        <time
-          dateTime={date}
-          itemProp='datePublished'
-          pubdate='pubdate'
-        >
-          {date}
-        </time>
-      )
-    }
-  }
-)
+Date.propTypes = {
+  date: string.isRequired
+}
 
 // export function formatDate(dateString) {
 //   const utcString = new Date(dateString).toUTCString()

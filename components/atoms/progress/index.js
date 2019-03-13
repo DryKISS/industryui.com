@@ -3,38 +3,28 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { number } from 'prop-types'
 
-// Style
-import { withTheme } from 'styled-components'
+export const Progress = ({ width }) => {
+  return (
+    <div className='Progress'>
 
-export const Progress = withTheme(
-  class Progress extends Component {
-    static propTypes = {
-      width: number
-    }
+      <div
+        aria-valuenow='width'
+        aria-valuemin='0'
+        aria-valuemax='100'
+        className='Progress-bar'
+        role='progressbar'
+        style={{ width: `${width}%` }}
+      />
 
-    render () {
-      const { width } = this.props
+    </div>
+  )
+}
 
-      return (
-        <div className='Progress'>
-
-          <div
-            aria-valuenow='width'
-            aria-valuemin='0'
-            aria-valuemax='100'
-            className='Progress-bar'
-            role='progressbar'
-            style={{ width: `${width}%` }}
-          />
-
-        </div>
-      )
-    }
-  }
-)
+Progress.propTypes = {
+  width: number
+}
 
 //   .Progress {
 //     background-color: #e9ecef;

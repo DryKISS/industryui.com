@@ -3,29 +3,17 @@
  */
 
 // React
-import React, { PureComponent } from 'react'
 import { string } from 'prop-types'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const CardHeader = withTheme(
-  class CardHeader extends PureComponent {
-    static propTypes = {
-      header: string
-    }
+export const CardHeader = ({ header }) => {
+  return (
+    <StyledHeader>{header}</StyledHeader>
+  )
+}
 
-    render () {
-      const { header } = this.props
-
-      return (
-        <StyledHeader>{header}</StyledHeader>
-      )
-    }
-  }
-)
-
-// Style
 const StyledHeader = styled.div`
   background-color: #04D4DC;
   border-radius: .5rem .5rem 0 0;
@@ -33,3 +21,7 @@ const StyledHeader = styled.div`
   padding: .5rem 2px;
   text-align: center;
 `
+
+CardHeader.propTypes = {
+  header: string
+}

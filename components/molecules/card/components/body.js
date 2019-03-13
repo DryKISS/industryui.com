@@ -3,7 +3,6 @@
  */
 
 // React
-import React, { PureComponent } from 'react'
 import { bool, node, oneOf, string } from 'prop-types'
 
 // UI
@@ -11,44 +10,26 @@ import { COLOUR } from '../../../'
 import { CONTEXT } from '../../../theme'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const CardBody = withTheme(
-  class CardBody extends PureComponent {
-    static propTypes = {
-      center: bool,
-      children: node,
-      context: oneOf(Object.values(CONTEXT)),
-      title: string
-    }
+export const CardBody = ({ center, children, context, title }) => {
+  return (
+    <StyledBody center={center}>
 
-    static defaultProps = {
-      context: 'primary'
-    }
+      {title &&
+        <StyledWrapper>
+          <StyledTitle className='Card-title'>{title}</StyledTitle>
+        </StyledWrapper>
+      }
 
-    render () {
-      const { center, children, context, title } = this.props
+      {children &&
+        <StyledContent context={context}>{children}</StyledContent>
+      }
 
-      return (
-        <StyledBody center={center}>
+    </StyledBody>
+  )
+}
 
-          {title &&
-            <StyledWrapper>
-              <StyledTitle className='Card-title'>{title}</StyledTitle>
-            </StyledWrapper>
-          }
-
-          {children &&
-            <StyledContent context={context}>{children}</StyledContent>
-          }
-
-        </StyledBody>
-      )
-    }
-  }
-)
-
-// Style
 const StyledBody = styled.div`
   ${({ center }) => center && `
     align-items: center;
@@ -83,3 +64,14 @@ const StyledContent = styled.div`
 //   text-overflow: ellipsis;
 //   white-space: nowrap;
 // }
+
+CardBody.propTypes = {
+  center: bool,
+  children: node,
+  context: oneOf(Object.values(CONTEXT)),
+  title: string
+}
+
+CardBody.defaultProps = {
+  context: 'primary'
+}

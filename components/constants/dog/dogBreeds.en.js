@@ -4,8 +4,6 @@
  * @see https://drive.google.com/drive/u/1/folders/1R_IbNZgpVQ8ra_Z1auFr5uNqr2fZOnW4
  * @see https://docs.google.com/spreadsheets/d/1dlOsnjNIwdchq5jXe78g-HIQBhar_3Mal2qZkd7UWW4/edit#gid=46861474
  * @see https://github.com/jfairbank/programming-elm.com/blob/master/dog-breeds.json
- *
- * @todo Set an active tag on this for select and on site
  */
 module.exports.DOG_BREEDS = [
   {

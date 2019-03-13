@@ -3,34 +3,22 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { func } from 'prop-types'
 
 // UI
 import { Button } from '../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Close = withTheme(
-  class Close extends Component {
-    static propTypes = {
-      handleClose: func.isRequired
-    }
+export const Close = ({ handleClose }) => {
+  return (
+    <StyledButton onClick={handleClose}>
+      <span aria-hidden='true'>×</span>
+    </StyledButton>
+  )
+}
 
-    render () {
-      const { handleClose } = this.props
-
-      return (
-        <StyledButton onClick={handleClose}>
-          <span aria-hidden='true'>×</span>
-        </StyledButton>
-      )
-    }
-  }
-)
-
-// Style
 const StyledButton = styled(Button)`
   background-color: transparent;
   border: 0;
@@ -41,7 +29,6 @@ const StyledButton = styled(Button)`
   font-weight: 700;
   line-height: 1;
   opacity: .5;
-  /* padding: 1rem; */
   text-shadow: 0 1px 0 #fff;
   margin: -1rem -1rem -1rem auto;
 
@@ -52,3 +39,7 @@ const StyledButton = styled(Button)`
     text-decoration: none;
   }
 `
+
+Close.propTypes = {
+  handleClose: func.isRequired
+}

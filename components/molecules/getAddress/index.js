@@ -10,7 +10,7 @@ import { func, string } from 'prop-types'
 import { Button, Input, Select } from '../../'
 
 // Debug Data
-import { ADDRESS_DATA } from './__mock__/addresses'
+// import { ADDRESS_DATA } from './__mock__/addresses'
 
 export const GetAddress = forwardRef(({
   apiKey,
@@ -18,7 +18,8 @@ export const GetAddress = forwardRef(({
   change,
   form,
   handleFindAddress,
-  handlePopulateAddress
+  handlePopulateAddress,
+  selectAddress
 }, ref) => {
   const [loading, setLoading] = useState(false)
   const [addresses, setAddresses] = useState({ data: [] })
@@ -34,31 +35,27 @@ export const GetAddress = forwardRef(({
       return found
     },
 
-    getAddress: async (postcode) => {
+    getAddress: (postcode) => {
       setLoading(true)
+      // let data = addresses.data
+      // data = ADDRESS_DATA.addresses
+      // setAddresses({ ...addresses, data: [...data] })
 
-      let data = addresses.data
-      data = ADDRESS_DATA.addresses
-      setAddresses({ ...addresses, data: [...data] })
-
-      // const API_URL = `https://api.getaddress.io/find//${postcode}?api-key=${apiKey}`
-      // const addresses = ADDRESS_DATA.addresses
-
-      // // Fetch
-      // await window.fetch(API_URL)
-
-      //   .then((response) => {
-      //     if (!response.ok) {
-      //       // setError({ error: false })
-      //     }
-
-      //     return response.json()
-      //   })
-
-      //   .then((data) => {
-      //     setAddresses({ ...addresses, data: [...data] })
-      //     // setAddresses({ postcodeAddresses: [...data.addresses] })
-      //   })
+      // Fetch
+      window
+        .fetch(`https://api.getaddress.io/find//${postcode}?api-key=${apiKey}`)
+        .then((response) => {
+          if (!response.ok) {
+            return false
+          }
+          return response.json()
+        })
+        .then((data) => {
+          setAddresses({ ...addresses, data: data.addresses })
+        })
+        .catch((error) => {
+          console.log('Error', error)
+        })
     }
   }))
 
@@ -89,6 +86,8 @@ export const GetAddress = forwardRef(({
           return acc
         }, [])
 
+        reduced.unshift({ disabled: true, text: 'Select address', value: '' })
+
         return (
           <>
             <p />
@@ -97,11 +96,10 @@ export const GetAddress = forwardRef(({
               id='addresses'
               label='Select your address'
               options={reduced}
+              value={selectAddress}
             />
           </>
         )
-      } else {
-        return <div>No addresses Found</div>
       }
     }
   }

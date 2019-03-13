@@ -1,5 +1,8 @@
 /**
  * Dog
  */
-export * from './dog.en'
+
 export * from './dogBreeds.en'
+export * from './dogCoats.en'
+export * from './dogColour.en'
+export * from './dogGroup.en'

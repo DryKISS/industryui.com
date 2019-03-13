@@ -3,84 +3,68 @@
  */
 
 // React
-import React, { Component } from 'react'
 import { bool, object, string } from 'prop-types'
 
 // UI
 import { Button, Link } from '../../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Links = withTheme(
-  class Links extends Component {
-    static propTypes = {
-      links: object.isRequired,
-      visible: bool,
-      type: string
+export const Links = ({ links, type, visible }) => {
+  const renderButton = (id, name, to, type) => {
+    return (
+      <Link to={to} passHref>
+        <StyledButton
+          id={id}
+          context={type.context}
+          outline={type.outline}
+          size={type.size}
+          type={type.as}
+        >
+          {name}
+        </StyledButton>
+      </Link>
+    )
+  }
+
+  const renderLink = (active, id, name, onClick, to) => {
+    if (type && (!active || active !== type)) {
+      return
     }
 
-    renderButton = (id, name, to, type) => {
-      return (
-        <Link to={to} passHref>
-          <StyledButton
-            id={id}
-            context={type.context}
-            outline={type.outline}
-            size={type.size}
-            type={type.as}
-          >
-            {name}
-          </StyledButton>
-        </Link>
-      )
-    }
+    return (
+      <Link to={to} passHref>
+        <StyledLink id={id} onClick={onClick}>{name}</StyledLink>
+      </Link>
+    )
+  }
 
-    renderLink = (active, id, name, onClick, to) => {
-      const { type } = this.props
+  return (
+    <StyledCollapse visible={visible}>
 
-      if (type && (!active || active !== type)) {
-        return
-      }
+      {Object.entries(links).map(([direction, link]) =>
 
-      return (
-        <Link to={to} passHref>
-          <StyledLink id={id} onClick={onClick}>{name}</StyledLink>
-        </Link>
-      )
-    }
+        <StyledList direction={direction} key={direction}>
 
-    render () {
-      const { links, visible } = this.props
+          {link.map(({ active, Component, id, name, onClick, to, type }) =>
 
-      return (
-        <StyledCollapse visible={visible}>
-
-          {Object.entries(links).map(([direction, link]) =>
-
-            <StyledList direction={direction} key={direction}>
-
-              {link.map(({ active, Component, id, name, onClick, to, type }) =>
-
-                <StyledListItem key={id}>
-                  { Component && <Component /> }
-                  { (type && type.as === 'button') && this.renderButton(id, name, to, type) }
-                  { (!Component && (!type || type.as === 'link')) && this.renderLink(active, id, name, onClick, to) }
-                </StyledListItem>
-
-              )}
-
-            </StyledList>
+            <StyledListItem key={id}>
+              { Component && <Component /> }
+              { (type && type.as === 'button') && renderButton(id, name, to, type) }
+              { (!Component && (!type || type.as === 'link')) && renderLink(active, id, name, onClick, to) }
+            </StyledListItem>
 
           )}
 
-        </StyledCollapse>
-      )
-    }
-  }
-)
+        </StyledList>
 
-// Style
+      )}
+
+    </StyledCollapse>
+  )
+}
+
 const StyledCollapse = styled.div`
   align-items: center;
   border-top: 2px solid white;
@@ -158,3 +142,9 @@ const StyledButton = styled(Button)`
     }
   }
 `
+
+Links.propTypes = {
+  links: object.isRequired,
+  visible: bool,
+  type: string
+}
