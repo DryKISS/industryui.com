@@ -26,8 +26,8 @@
 ## Login
 
 - firebase list
-- firebase login
 - firebase logout
+- firebase login
 
 ## Test
 
@@ -47,7 +47,11 @@ To test the HTTPs APIs
 
 To test the Firestore triggers
 
-- firebase functions:shell
+- firebase functions:config:get > .runtimeconfig.json
+
+- firebase functions:shell -p 8080
+- firebase serve --only functions
+
 - firebase database:profile
 - firebase firestore:indexes --pretty
 
@@ -109,4 +113,4 @@ Create a project
 ## Export Auth Accounts
 
 - firebase auth:export --format json ./authExport.json
-firebase-functions@2.1.0 requires a peer of firebase-admin@~6.0.0 but none is installed. You must install peer dependencies yourself.
+- firebase-functions@2.1.0 requires a peer of firebase-admin@~6.0.0 but none is installed. You must install peer dependencies yourself.

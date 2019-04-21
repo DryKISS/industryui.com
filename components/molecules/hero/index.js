@@ -27,8 +27,8 @@ export const Hero = ({
   const renderLeft = () => {
     return (
       <StyledColumn md={6}>
-        { title && <StyledTitle as='h1' children={title} /> }
-        { strapline && <StyledStrapline as='h2' children={strapline} /> }
+        { title && <StyledTitle tag='h1' content={title} /> }
+        { strapline && <StyledStrapline tag='h2' content={strapline} /> }
         { buttons && <HeroButtons buttons={buttons} /> }
         { message && <p children={message} /> }
       </StyledColumn>
@@ -37,18 +37,12 @@ export const Hero = ({
 
   return (
     <StyledHero background={background} className={className}>
-
       <Container>
-
         <Row>
-
           { title && renderLeft() }
           { image && <HeroImage alt={alt} align={align} image={image} width={width} /> }
-
         </Row>
-
       </Container>
-
     </StyledHero>
   )
 }
@@ -60,7 +54,7 @@ Hero.propTypes = {
   background: string,
   buttons: array,
   image: string,
-  strapline: string,
+  // strapline: string,
   style: objectOf(oneOfType([
     number,
     string
@@ -93,9 +87,7 @@ const StyledColumn = styled(Column)`
 `
 
 const StyledTitle = styled(Heading)`
-  font-size: 2.25rem;
   line-height: 2.75rem;
-  margin-bottom: 2rem;
 
   @media (min-width: 768px) {
     font-size: 3rem;

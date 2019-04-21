@@ -4,7 +4,7 @@
  */
 
 // React
-import { any, objectOf, oneOf, oneOfType, node, number, string } from 'prop-types'
+import { any, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
 import { COLOUR } from '../../'
@@ -13,17 +13,17 @@ import { CONTEXT } from '../../theme'
 // Style
 import styled from 'styled-components'
 
-export const Heading = ({ as, children, className, content, context, style }) => {
+export const Heading = ({ className, content, context, style, tag }) => {
   return (
     <StyledComponent
-      as={as}
+      as={tag}
       className={className}
       context={context}
       itemProp='name headline'
       rel='bookmark'
       style={style}
     >
-      { children || content }
+      {content && content.__html ? <span dangerouslySetInnerHTML={content} /> : content}
     </StyledComponent>
   )
 }
@@ -38,18 +38,20 @@ const StyledComponent = styled.span`
 `
 
 Heading.propTypes = {
-  as: string,
-  children: node,
   className: any,
-  content: string,
+  content: oneOfType([
+    string,
+    object
+  ]),
   context: oneOf(Object.values(CONTEXT)),
   style: objectOf(oneOfType([
     number,
     string
-  ]))
+  ])),
+  tag: string
 }
 
 Heading.defaultProps = {
-  as: 'h1',
-  context: 'dark'
+  context: 'dark',
+  tag: 'h1'
 }

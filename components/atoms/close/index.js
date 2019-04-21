@@ -6,15 +6,16 @@
 import { func } from 'prop-types'
 
 // UI
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '../'
 
 // Style
 import styled from 'styled-components'
 
-export const Close = ({ handleClose }) => {
+export const Close = ({ click }) => {
   return (
-    <StyledButton onClick={handleClose}>
-      <span aria-hidden='true'>×</span>
+    <StyledButton onClick={click}>
+      <FontAwesomeIcon aria-hidden='true' icon={['far', 'times-circle']} />
     </StyledButton>
   )
 }
@@ -22,24 +23,25 @@ export const Close = ({ handleClose }) => {
 const StyledButton = styled(Button)`
   background-color: transparent;
   border: 0;
-  color: #000;
+  color: #e8095e;
   cursor: pointer;
   float: right;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  opacity: .5;
+  opacity: .6;
   text-shadow: 0 1px 0 #fff;
   margin: -1rem -1rem -1rem auto;
+  z-index: 10000;
 
   &:hover {
     background-color: transparent;
     color: #000;
-    opacity: .75;
+    opacity: .8;
     text-decoration: none;
   }
 `
 
 Close.propTypes = {
-  handleClose: func.isRequired
+  click: func.isRequired
 }

@@ -19,14 +19,17 @@ export const Login = ({
   submit
 }) => {
   const isInvalid = password === '' || email === ''
+  let CHECKBOX_REMEMBER = null
 
-  const CHECKBOX_REMEMBER = [
-    {
-      id: 'remember',
-      label: 'Remember me',
-      isChecked: remember
-    }
-  ]
+  if (remember) {
+    CHECKBOX_REMEMBER = [
+      {
+        id: 'remember',
+        label: 'Remember me',
+        isChecked: remember
+      }
+    ]
+  }
 
   return (
     <Form submit={submit}>
@@ -48,10 +51,12 @@ export const Login = ({
         value={password}
       />
 
-      <Checkbox
-        data={CHECKBOX_REMEMBER}
-        change={change}
-      />
+      {remember &&
+        <Checkbox
+          data={CHECKBOX_REMEMBER}
+          change={change}
+        />
+      }
 
       <div className='text-right'>
         <Button
@@ -95,7 +100,7 @@ Login.propTypes = {
   password: string.isRequired,
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
-  remember: string.isRequired,
+  remember: string,
   submit: func.isRequired
 }
 

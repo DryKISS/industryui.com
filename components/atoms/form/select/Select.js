@@ -80,7 +80,7 @@ Select.propTypes = {
   ])
 }
 
-Select.applydefaultProps = {
+Select.defaultProps = {
   range: [],
   required: true
 }
@@ -100,9 +100,9 @@ const StyledSelect = styled.select`
   width: 100%;
 
   &:focus {
-    color: #9da7af;
     border-color: #80bdff;
-    outline: 0;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    color: #9da7af;
+    outline: 0;
   }
 `

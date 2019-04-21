@@ -23,9 +23,9 @@ storiesOf('Atoms/Heading', module)
   .add('Default',
     withInfo()(() =>
       <Heading
-        as='h1'
         content={text('Text', 'Default H1 Heading')}
         pageHeading={boolean('Page Heading', false)}
+        tag='h1'
       />
     )
   )
@@ -33,9 +33,9 @@ storiesOf('Atoms/Heading', module)
   .add('Page Heading H2',
     withInfo()(() =>
       <Heading
-        as='h2'
         content={text('Text', 'Page Heading Text')}
         pageHeading={boolean('Page Heading', true)}
+        tag='h2'
       />
     )
   )

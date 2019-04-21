@@ -13,11 +13,10 @@ import { ListItem } from '../../'
 import styled from 'styled-components'
 
 export const List = ({ children, className, inline, style, unstyled }) => {
-  const renderListItems = () => {
-    return React.Children.map(children, (child) => {
-      return <ListItem inline={inline} {...child.props} />
-    })
-  }
+  const renderListItems = () =>
+    React.Children.map(children, (child, index) =>
+      <ListItem key={index} {...child.props} />
+    )
 
   return (
     <StyledList

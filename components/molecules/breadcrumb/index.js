@@ -35,7 +35,7 @@ export const Breadcrumb = ({ category, path, page }) => {
             itemScope='itemscope'
             itemType='http://schema.org/Thing'
           >
-            <FontAwesomeIcon icon='home' />
+            <FontAwesomeIcon icon={['far', 'home-heart']} />
           </a>
 
           <meta itemProp='position' content='1' />

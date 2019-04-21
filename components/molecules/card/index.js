@@ -5,8 +5,11 @@
 // React
 import { any, bool, node, object, oneOf, oneOfType, string } from 'prop-types'
 
+// Fontawesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 // UI
-import { Image, Link } from '../../'
+import { Close, Image, Link } from '../../'
 import { CONTEXT } from '../../theme'
 import { CardBody, CardFooter } from './components'
 
@@ -19,8 +22,11 @@ export const Card = ({
   center,
   children,
   className,
+  close,
   context,
   footer,
+  footerContext,
+  icon,
   image,
   shadow,
   style,
@@ -46,11 +52,14 @@ export const Card = ({
         shadow={shadow}
         style={style}
       >
-
-        {/* { header && header() } */}
+        {close && <Close click={close} /> }
 
         {image &&
           <StyledImage imageClasses='rounded' alt={alt} radius src={image} />
+        }
+
+        {icon &&
+          <StyledIcon icon={['far', icon]} size='4x' />
         }
 
         {(title || children) &&
@@ -62,7 +71,7 @@ export const Card = ({
           />
         }
 
-        {footer && <CardFooter context={context} footer={footer} />}
+        {footer && <CardFooter context={footerContext} footer={footer} />}
 
       </StyledCard>
     )
@@ -90,6 +99,7 @@ Card.propTypes = {
     string
   ]),
   horizontal: bool,
+  icon: string,
   image: string,
   role: string,
   shadow: bool,
@@ -123,6 +133,10 @@ const StyledImage = styled(Image)`
     border-radius: .5rem .5rem 0 0;
     border-style: none;
   }
+`
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  margin: 1rem auto;
 `
 
 const StyledLink = styled.a`

@@ -6,7 +6,7 @@
  */
 
 // React
-import { object, string } from 'prop-types'
+import { array, string } from 'prop-types'
 
 // UI
 import { ArticleDetails, Breadcrumb, Category, Heading, Image } from '../../'
@@ -14,18 +14,8 @@ import { ArticleDetails, Breadcrumb, Category, Heading, Image } from '../../'
 // Style
 import styled, { withTheme } from 'styled-components'
 
-export const Article = ({ article, category }) => {
-  const content = () => ({
-    __html: article.data
-  })
-
+export const Article = ({ article, category, frontmatter }) => {
   const frontMatter = (matter) => {
-    const { frontmatter } = article
-
-    if (matter === 'image') {
-      return `/static/blog/${frontmatter.slug}/hero.jpg`
-    }
-
     if (matter === 'tags') {
       return frontmatter[matter].map((item) => (
         { content: item.replace(/[[\]]/g, '').trim(), to: 'javascript:;' }
@@ -45,32 +35,32 @@ export const Article = ({ article, category }) => {
 
       <header>
 
-        {frontMatter('image') &&
+        {frontmatter.image &&
           <StyledImage
-            alt={frontMatter('heading')}
+            alt={frontmatter.heading}
             slant
-            src={frontMatter('image')}
+            src={`/static/blog/${frontmatter.slug}/hero.jpg`}
           />
         }
 
         <Breadcrumb
           category={category}
-          page={frontMatter('heading')}
+          page={frontmatter.heading}
           path='javasript:;'
         />
 
         <Category category={category} path='javasript:;' />
 
-        <Heading content={frontMatter('heading')} />
+        <Heading content={frontmatter.heading} />
 
         <ArticleDetails
-          author={frontMatter('author')}
+          author={frontmatter.author}
           tags={frontMatter('tags')}
         />
 
       </header>
 
-      <div dangerouslySetInnerHTML={content()} itemProp='text' />
+      {article}
 
       {/*
         <footer>
@@ -90,7 +80,7 @@ export const Article = ({ article, category }) => {
 }
 
 Article.propTypes = {
-  article: object.isRequired,
+  article: array.isRequired,
   category: string
 }
 
@@ -108,7 +98,6 @@ const StyledArticle = styled.article`
 const StyledImage = styled(Image)`
   position: relative;
 `
-
 
 // li:before {
 //   color: #000 !important;

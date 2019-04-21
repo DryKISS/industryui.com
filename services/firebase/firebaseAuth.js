@@ -97,6 +97,8 @@ export class FirebaseAuth {
         this.user(authUser.uid)
           .get()
           .then((snapshot) => {
+            console.log('handleAuthListener: Query')
+
             const dbUser = snapshot.data()
 
             // Default empty roles
@@ -122,10 +124,5 @@ export class FirebaseAuth {
   // User API
   user = (uid) => {
     return this.store().doc(`users/${uid}`)
-  }
-
-  users = () => {
-    const data = this.store().collection('users')
-    return data
   }
 }

@@ -22,19 +22,19 @@ export const ArticleDetails = ({ author, tags }) => {
 
         {/* Date / Time */}
         <ListItem>
-          <StyledIcon icon='calendar-alt' />
+          <StyledIcon fixedWidth icon={['far', 'calendar-alt']} />
           <Date date={'2018-03-14'} />
         </ListItem>
 
         {/* Author */}
         <ListItem>
-          <StyledIcon icon='user' />
+          <StyledIcon fixedWidth icon={['far', 'user']} />
           <Author author={author} />
         </ListItem>
 
         {/* Read time */}
         <ListItem>
-          <StyledIcon icon='clock' />
+          <StyledIcon fixedWidth icon={['far', 'stopwatch']} />
           <ReadTime time={2} />
         </ListItem>
 
@@ -76,7 +76,7 @@ const StyledArticleDetails = styled.div`
 `
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  margin-right: .5rem;
+  margin: 0 .5rem;
 `
 
 const StyledShare = styled.div`
