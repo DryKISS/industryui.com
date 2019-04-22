@@ -22,7 +22,6 @@ const StyledDivider = styled.div`
   line-height: 1;
   margin: ${props => (props.size === 'lg' && '2rem 0') || (props.size === 'md' && '1rem 0')};
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
 `
 
 Divider.propTypes = {

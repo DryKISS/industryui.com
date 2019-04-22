@@ -8,3 +8,16 @@
 - [ ] Need to be able to colour the dividers
 
 ## Done
+
+
+// .Breadcrumb--active {
+//   color: #6c757d;
+// }
+
+// .Breadcrumb-link {
+//   color: #fff;
+// }
+
+// .Breadcrumb-link:hover {
+//   color: #00ccbc;
+// }

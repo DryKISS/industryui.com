@@ -102,18 +102,6 @@ const StyledLi = styled.li`
   }
 `
 
-// .Breadcrumb--active {
-//   color: #6c757d;
-// }
-
-// .Breadcrumb-link {
-//   color: #fff;
-// }
-
-// .Breadcrumb-link:hover {
-//   color: #00ccbc;
-// }
-
 Breadcrumb.propTypes = {
   category: string.isRequired,
   page: string.isRequired,

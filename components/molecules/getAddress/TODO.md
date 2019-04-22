@@ -2,7 +2,7 @@
 
 ## General
 
-- [ ] Move this to the service folder
+- [ ] Move this to the service folder - Remove HTML elements
 - [ ] Allow the user to manually add there address
 - [ ] Maybe the populate address should be a seperate component
 - [ ] Complete a hook for the parent component
