@@ -9,7 +9,7 @@ import { func, string } from 'prop-types'
 import { Select } from '../'
 
 // Data
-import { DOG_BREEDS } from '../../../constants'
+import { DOG_BREED } from '../../../constants'
 
 export const SelectBreed = ({ change, label, id, value }) => {
   return (
@@ -17,7 +17,7 @@ export const SelectBreed = ({ change, label, id, value }) => {
       change={change}
       id={id}
       label={label}
-      options={DOG_BREEDS}
+      options={DOG_BREED}
       required
       value={value}
     />

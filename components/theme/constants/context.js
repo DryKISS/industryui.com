@@ -1,6 +1,6 @@
 /**
  * Context
- * Provides a list of the accepted
+ * Provides a list of the accepted colours
  */
 export const CONTEXT = {
   WHITE: 'white',
@@ -11,5 +11,8 @@ export const CONTEXT = {
   SUCCESS: 'success',
   INFO: 'info',
   WARNING: 'warning',
-  DANGER: 'danger'
+  DANGER: 'danger',
+  HELP: 'help',
+  MALE: 'male',
+  FEMALE: 'female'
 }

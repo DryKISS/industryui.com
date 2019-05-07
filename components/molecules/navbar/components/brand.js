@@ -7,6 +7,7 @@ import { string } from 'prop-types'
 
 // UI
 import { Link } from '../../../'
+import { MEDIA_QUERY } from '../../../../utils'
 
 // Style
 import styled from 'styled-components'
@@ -38,9 +39,9 @@ const StyledBrandLogo = styled.img`
   max-width: 9rem;
   vertical-align: middle;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     max-width: 14.5rem;
-  }
+  `}
 `
 
 Brand.propTypes = {

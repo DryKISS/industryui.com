@@ -13,8 +13,9 @@ import { Column, Container, Link, List, ListItem, Row } from '../../'
 import styled from 'styled-components'
 
 export const Footer = ({ columns }) => {
+  // NOTE: added rendering fragment (see also __mocks__/footer.js)
   const _render = (obj) => {
-    return obj() // NOTE: added rendering fragment (see also __mocks__/footer.js)
+    return obj()
   }
 
   const renderColumns = () => {
@@ -87,7 +88,6 @@ Footer.propTypes = {
   ).isRequired
 }
 
-// Footer
 const StyledFooter = styled.div`
   background: ${props => props.theme.FOOTER.background};
   border-top: ${props => `4px solid ${props.theme.COLOUR.light}`};
@@ -97,7 +97,6 @@ const StyledFooter = styled.div`
   padding: 3rem 0;
 `
 
-// Heading
 const StyledTitle = styled.h2`
   color: ${props => props.theme.COLOUR.primary};
   font-size: 1rem;
@@ -105,7 +104,6 @@ const StyledTitle = styled.h2`
   margin-top: 0;
 `
 
-// Link
 const StyledLink = styled.a`
   color: ${props => props.theme.COLOUR.dark};
   text-decoration: none;
@@ -114,23 +112,3 @@ const StyledLink = styled.a`
     text-decoration: underline;
   }
 `
-
-// .Footer-hashtag {
-//   font-size: 1rem;
-// }
-
-// .Footer-socialIcon {
-//   background: #04D4DC;
-//   border-radius: 50%;
-//   color: white;
-//   display: inline-block;
-//   height: 2rem;
-//   padding: 5px;
-//   text-align: center;
-//   vertical-align: middle;
-//   width: 2rem;
-// }
-
-// .Footer-socialIcons a:not(.Footer-socialNoMargin) {
-//   margin-right: 5px;
-// }

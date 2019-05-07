@@ -12,19 +12,12 @@ import { Column, Image } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const HeroImage = ({ alt, align, image, width }) => {
-  return (
-    <StyledColumn align={align} md={6}>
-
-      <StyledImageContainer>
-
-        <StyledImage alt={alt} src={image} width={width} />
-
-      </StyledImageContainer>
-
-    </StyledColumn>
-  )
-}
+export const HeroImage = ({ alt, align, image, width }) =>
+  <StyledColumn align={align} md={6}>
+    <StyledImageContainer>
+      <StyledImage alt={alt} src={image} width={width} />
+    </StyledImageContainer>
+  </StyledColumn>
 
 HeroImage.propTypes = {
   alt: string,
@@ -43,4 +36,5 @@ const StyledImageContainer = styled.div`
 
 const StyledImage = styled(Image)`
   width: ${({ width }) => width ? `${width}%` : '85%'};
+  height: ${({ height }) => height ? `${height}%` : '85%'};
 `

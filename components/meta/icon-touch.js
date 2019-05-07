@@ -14,6 +14,3 @@
 <meta name='msapplication-TileColor' content='#222222' />
 
 <link rel="icon" href="images/touch/chrome-touch-icon-192x192.png" sizes="192x192">
-
-
-{/* <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' /></link> */}

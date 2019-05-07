@@ -11,7 +11,7 @@ import { Container, Link, Row } from '../../'
 // Style
 import styled from 'styled-components'
 
-const Copyright = ({ brand, links }) => {
+export const Copyright = ({ brand, links }) => {
   const renderLinks = () => {
     return (
       <StyledNav>
@@ -82,5 +82,3 @@ const StyledLink = styled.a`
     text-decoration: underline;
   }
 `
-
-export { Copyright }

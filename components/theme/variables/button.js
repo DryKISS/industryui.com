@@ -1,5 +1,7 @@
-// // Buttons
-// //
+/**
+ * Button
+ */
+
 // // For each of Bootstrap's buttons, define text, background, and border color.
 
 // $btn-padding-y:               $input-btn-padding-y !default;

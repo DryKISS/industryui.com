@@ -6,8 +6,16 @@
 import { any, array, string } from 'prop-types'
 
 // UI
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Author, Date, Divider, List, ListItem, ReadTime, Tags } from '../../'
+import {
+  Author,
+  Date,
+  Divider,
+  Icon,
+  List,
+  ListItem,
+  ReadTime,
+  Tags
+} from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -22,19 +30,19 @@ export const ArticleDetails = ({ author, tags }) => {
 
         {/* Date / Time */}
         <ListItem>
-          <StyledIcon fixedWidth icon={['far', 'calendar-alt']} />
+          <StyledIcon icon='calendar-alt' />
           <Date date={'2018-03-14'} />
         </ListItem>
 
         {/* Author */}
         <ListItem>
-          <StyledIcon fixedWidth icon={['far', 'user']} />
+          <StyledIcon icon='user' />
           <Author author={author} />
         </ListItem>
 
         {/* Read time */}
         <ListItem>
-          <StyledIcon fixedWidth icon={['far', 'stopwatch']} />
+          <StyledIcon icon='stopwatch' />
           <ReadTime time={2} />
         </ListItem>
 
@@ -50,17 +58,17 @@ export const ArticleDetails = ({ author, tags }) => {
 
         {/* Facebook */}
         <StyledShareLink href='javascript:;'>
-          <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+          <Icon icon='facebook-square' prefix='fab' />
         </StyledShareLink>
 
         {/* Twitter */}
         <StyledShareLink href='javascript:'>
-          <FontAwesomeIcon icon={['fab', 'twitter-square']} />
+          <Icon icon='twitter-square' prefix='fab' />
         </StyledShareLink>
 
         {/* Pinterest */}
         <StyledShareLink href='javascript:;'>
-          <FontAwesomeIcon icon={['fab', 'pinterest-square']} />
+          <Icon icon='pinterest-square' prefix='fab' />
         </StyledShareLink>
 
       </StyledShare>
@@ -75,7 +83,7 @@ const StyledArticleDetails = styled.div`
   font-size: .875rem;
 `
 
-const StyledIcon = styled(FontAwesomeIcon)`
+const StyledIcon = styled(Icon)`
   margin: 0 .5rem;
 `
 

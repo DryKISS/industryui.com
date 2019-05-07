@@ -1,7 +1,8 @@
+/**
+ * Breadcrumbs
+ */
 
-// // Breadcrumbs
-
-// $breadcrumb-padding-y:              .75rem !default;
+ // $breadcrumb-padding-y:              .75rem !default;
 // $breadcrumb-padding-x:              1rem !default;
 // $breadcrumb-item-padding:           .5rem !default;
 

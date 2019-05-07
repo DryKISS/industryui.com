@@ -1,5 +1,6 @@
-
-// // Badges
+/**
+ * Badges
+ */
 
 // $badge-font-size:                   75% !default;
 // $badge-font-weight:                 $font-weight-bold !default;

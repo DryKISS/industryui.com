@@ -1,6 +1,6 @@
 /**
  * Context
- * Provides a list of the accepted
+ * Provides a list of the accepted sizes
  */
 export const SIZE = {
   xs: 'xs',

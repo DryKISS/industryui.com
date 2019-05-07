@@ -3,11 +3,12 @@
  */
 
 // React
-import { any, array, number, objectOf, oneOfType, string } from 'prop-types'
+import { any, array, number, object, objectOf, oneOfType, string } from 'prop-types'
 
 // UI
 import { Container, Column, Heading, Row } from '../../'
 import { HeroButtons, HeroImage } from './components'
+import { MEDIA_QUERY } from '../../../utils'
 
 // Style
 import styled from 'styled-components'
@@ -54,7 +55,7 @@ Hero.propTypes = {
   background: string,
   buttons: array,
   image: string,
-  // strapline: string,
+  strapline: oneOfType([object, string]),
   style: objectOf(oneOfType([
     number,
     string
@@ -73,26 +74,26 @@ const StyledHero = styled.header`
   background-image: ${({ background }) => background ? `url(${background})` : 'none'};
   background-position: center;
   background-size: 20%;
-  margin-top: -2rem;
+  padding: 1rem 0 0;
 `
 
 const StyledColumn = styled(Column)`
   margin: 0 auto;
   text-align: center;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     margin-bottom: 3rem;
     text-align: initial;
-  }
+  `}
 `
 
 const StyledTitle = styled(Heading)`
   line-height: 2.75rem;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     font-size: 3rem;
     line-height: 3.25rem;
-  }
+  `}
 `
 
 const StyledStrapline = styled(Heading)`

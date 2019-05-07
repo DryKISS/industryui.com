@@ -5,6 +5,9 @@
 // React
 import { bool, func } from 'prop-types'
 
+// UI
+import { MEDIA_QUERY } from '../../../../utils'
+
 // Style
 import styled from 'styled-components'
 
@@ -53,9 +56,9 @@ const StyledToggler = styled.a`
   font-size: 18px;
   padding: 20px 15px;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     display: none;
-  }
+  `}
 `
 
 const StyledIconMenu = styled.svg`

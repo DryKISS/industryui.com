@@ -1,12 +1,8 @@
 /**
  * Table
  */
-export const TABLE = {
-}
 
-// // Tables
-// //
-// // Customizes the `.table` component with basic values, each used across all table variations.
+// Customizes the `.table` component with basic values, each used across all table variations.
 
 // $table-cell-padding:          .75rem !default;
 // $table-cell-padding-sm:       .3rem !default;

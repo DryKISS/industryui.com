@@ -1,4 +1,6 @@
-// // Carousel
+/**
+ * Carousel
+ */
 
 // $carousel-control-color:             $white !default;
 // $carousel-control-width:             15% !default;

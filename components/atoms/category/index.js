@@ -37,7 +37,7 @@ const StyledCategory = styled.div`
 `
 
 const StyledA = styled.a`
-  color: ${props => props.theme.COLOUR.primary};
+  color: ${({ theme }) => theme.COLOUR.primary};
 `
 
 Category.propTypes = {

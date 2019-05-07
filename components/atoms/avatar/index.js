@@ -45,10 +45,7 @@ Avatar.propTypes = {
   click: func,
   content: any,
   context: oneOf(Object.values(CONTEXT)),
-  style: objectOf(oneOfType([
-    number,
-    string
-  ]))
+  style: objectOf(oneOfType([number, string]))
 }
 
 Avatar.defaultProps = {

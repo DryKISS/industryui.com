@@ -63,7 +63,7 @@ export const GetAddress = forwardRef(({
     <Input
       change={change}
       id='postcode'
-      label={`What is your postcode?`}
+      label={`Postcode`}
       value={form.postcode}
     />
   )

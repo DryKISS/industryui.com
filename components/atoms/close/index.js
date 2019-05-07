@@ -6,8 +6,7 @@
 import { func } from 'prop-types'
 
 // UI
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Button } from '../'
+import { Button, Icon } from '../'
 
 // Style
 import styled from 'styled-components'
@@ -15,7 +14,7 @@ import styled from 'styled-components'
 export const Close = ({ click }) => {
   return (
     <StyledButton onClick={click}>
-      <FontAwesomeIcon aria-hidden='true' icon={['far', 'times-circle']} />
+      <Icon aria-hidden='true' context='danger' icon='times-circle' />
     </StyledButton>
   )
 }

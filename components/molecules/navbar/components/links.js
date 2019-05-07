@@ -7,6 +7,7 @@ import { bool, object, string } from 'prop-types'
 
 // UI
 import { Button, Link } from '../../../'
+import { MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../../utils'
 
 // Style
 import styled from 'styled-components'
@@ -73,12 +74,12 @@ const StyledCollapse = styled.div`
   flex-basis: 100%;
   flex-grow: 1;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     align-items: center;
     border: none;
     display: flex;
     flex-basis: auto;
-  }
+  `}
 `
 
 const StyledList = styled.ul`
@@ -90,11 +91,11 @@ const StyledList = styled.ul`
   padding: 0;
   text-align: center;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     background-color: initial;
     flex-direction: row;
     margin: ${props => props.direction === 'left' ? 'auto 0' : 'auto 0 auto auto'};
-  }
+  `}
 `
 
 const StyledListItem = styled.li`
@@ -102,10 +103,10 @@ const StyledListItem = styled.li`
   margin: auto .75rem;
   padding: 1.1em .75rem;
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     border: none;
     padding: initial;
-  }
+  `}
 `
 
 const StyledLink = styled.a`
@@ -120,13 +121,13 @@ const StyledLink = styled.a`
     color: ${props => props.theme.NAVBAR.colourHover};
   }
 
-  @media (min-width: 768px) {
+  ${MEDIA_QUERY.desktop`
     line-height: 1.5;
-  }
+  `}
 `
 
 const StyledButton = styled(Button)`
-  @media (max-width: 768px) {
+  ${MEDIA_QUERY_MAX.desktop`
     background: none;
     border: none;
     color: ${props => props.theme.COLOUR.danger};
@@ -140,7 +141,7 @@ const StyledButton = styled(Button)`
       background: none;
       color: ${props => props.theme.NAVBAR.colourHover};
     }
-  }
+  `}
 `
 
 Links.propTypes = {

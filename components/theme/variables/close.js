@@ -1,4 +1,6 @@
-// // Close
+/**
+ * Close
+ */
 
 // $close-font-size:                   $font-size-base * 1.5 !default;
 // $close-font-weight:                 $font-weight-bold !default;

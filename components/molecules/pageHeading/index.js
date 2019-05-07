@@ -3,23 +3,55 @@
  */
 
 // React
-import { bool, string } from 'prop-types'
+import { bool, oneOf, string } from 'prop-types'
 
 // UI
-import { Divider, Heading } from '../../'
+import { Divider, Heading, Icon } from '../../'
+import { MEDIA_QUERY } from '../../../utils'
+import { CONTEXT } from '../../theme'
 
 // Style
 import styled from 'styled-components'
 
-export const PageHeading = ({ center, divider, heading, strapline }) => {
+export const PageHeading = ({
+  center,
+  context,
+  divider,
+  heading,
+  help,
+  strapline
+}) => {
   return (
     <StyledHeader center={center} divider={divider}>
 
+      {help &&
+        <StyledHelp>
+          <Icon context='help' icon='info-circle' size='2x' />
+
+          <div>
+            <a
+              id='openIntercom'
+              href='mailto:tailwise-8ca42ca9afe1.intercom-mail.com'
+            >
+              Message
+            </a>
+            {' '}
+            or<br />
+            Call on 0330 043 5301
+          </div>
+
+        </StyledHelp>
+      }
+
       <StyledHeading content={heading} context='primary' pageHeading />
 
-      {strapline && <StyledStrapline>{strapline}</StyledStrapline> }
+      {strapline &&
+        <StyledStrapline>{strapline}</StyledStrapline>
+      }
 
-      {divider && <Divider size='md' /> }
+      {divider &&
+        <Divider size='md' />
+      }
 
     </StyledHeader>
   )
@@ -35,12 +67,27 @@ const StyledHeading = styled(Heading)`
 `
 
 const StyledStrapline = styled.div`
-  max-width: 50%;
+  ${MEDIA_QUERY.desktop`max-width: 50%;`}
+`
+
+const StyledHelp = styled.div`
+  float: right;
+  margin: .5rem;
+  text-align: center;
 `
 
 PageHeading.propTypes = {
   center: bool,
+  context: oneOf(Object.values(CONTEXT)),
   divider: bool,
   heading: string.isRequired,
   strapline: string
+}
+
+PageHeading.defaultProps = {
+  center: false,
+  context: 'primary',
+  divider: true,
+  help: false,
+  strapline: ''
 }

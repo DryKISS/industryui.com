@@ -2,7 +2,9 @@
  * Dog
  */
 
-export * from './dogBreeds.en'
-export * from './dogCoats.en'
-export * from './dogColour.en'
-export * from './dogGroup.en'
+export * from './breed'
+export * from './coat'
+export * from './colour'
+export * from './group'
+export * from './ownership'
+export * from './purpose'

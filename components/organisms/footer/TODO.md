@@ -18,3 +18,24 @@
 - [X] Move the style out of the component
 - [X] Should move the copyright out of this component in the future
 - [X] Move the data to the main app
+
+// .Footer-hashtag {
+//   font-size: 1rem;
+// }
+
+// .Footer-socialIcon {
+//   background: #04D4DC;
+//   border-radius: 50%;
+//   color: white;
+//   display: inline-block;
+//   height: 2rem;
+//   padding: 5px;
+//   text-align: center;
+//   vertical-align: middle;
+//   width: 2rem;
+// }
+
+// .Footer-socialIcons a:not(.Footer-socialNoMargin) {
+//   margin-right: 5px;
+// }
+

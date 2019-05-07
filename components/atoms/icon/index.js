@@ -1,0 +1,4 @@
+/**
+ * Icon
+ */
+export * from './icon'

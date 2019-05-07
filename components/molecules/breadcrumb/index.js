@@ -7,7 +7,7 @@
 import { string } from 'prop-types'
 
 // Fontawesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -35,7 +35,7 @@ export const Breadcrumb = ({ category, path, page }) => {
             itemScope='itemscope'
             itemType='http://schema.org/Thing'
           >
-            <FontAwesomeIcon icon={['far', 'home-heart']} />
+            <Icon icon='home-heart' />
           </a>
 
           <meta itemProp='position' content='1' />

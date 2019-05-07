@@ -1,7 +1,6 @@
 /**
  * Navbar
  */
-
 import { COLOUR } from './colour'
 
 export const NAVBAR = {

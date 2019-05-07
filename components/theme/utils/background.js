@@ -8,10 +8,3 @@ export const BACKGROUND = ({ context, outline, theme }) => {
     theme.COLOUR.dark
   };`
 }
-
-// background-color: ${props =>
-//   (props.primary && '$primary')
-//   || (props.danger && '$danger')
-//   || ((props.inverted || props.link) && '#fff')
-//   || (props.disabled && '$brand-grey')
-// };

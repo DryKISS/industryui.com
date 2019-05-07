@@ -17,39 +17,10 @@ export const COLOUR = {
   warning: '#e60811',
   danger: '#e8095e',
 
+  help: '#ffde03',
+
+  male: '#8ECEFD',
+  female: '#F88B9D',
+
   transparent: 'transparent'
 }
-
-// 'dark',
-// 'light',
-// 'primary',
-// 'secondary',
-// 'success',
-// 'info',
-// 'warning',
-// 'danger'
-
-// Bootstrap
-// Primary link
-// Secondary link
-// Success link
-// Danger link
-// Warning link
-// Info link
-// Light link
-// Dark link
-// Muted link
-// White link
-
-// Quickly modify global styling by enabling or disabling optional features.
-
-// $enable-caret:                                true !default;
-// $enable-rounded:                              true !default;
-// $enable-shadows:                              false !default;
-// $enable-gradients:                            false !default;
-// $enable-transitions:                          true !default;
-// $enable-prefers-reduced-motion-media-query:   true !default;
-// $enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
-// $enable-grid-classes:                         true !default;
-// $enable-print-styles:                         true !default;
-// $enable-validation-icons:                     true !default;

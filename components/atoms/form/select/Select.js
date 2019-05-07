@@ -3,6 +3,7 @@
  */
 
 // React
+import { forwardRef } from 'react'
 import { array, arrayOf, bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // UI
@@ -11,7 +12,7 @@ import { Label } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Select = ({
+export const Select = forwardRef(({
   change,
   data,
   disabled,
@@ -22,7 +23,7 @@ export const Select = ({
   range,
   required,
   value
-}) => {
+}, ref) => {
   const renderRange = () => {
     let options = [<option disabled value={''} key={`initial0`}>{placeholder}</option>]
 
@@ -46,22 +47,26 @@ export const Select = ({
 
   return (
     <Label id={id} text={label}>
+
       <StyledSelect
         className='Form-control'
         id={id}
         name={id}
         onChange={change}
         required={required}
+        ref={ref}
         value={value}
         {...data}
       >
         {range && range.length > 0 && renderRange()}
         {options && renderOptions()}
       </StyledSelect>
+
       <div className='Form-feedback' />
+
     </Label>
   )
-}
+})
 
 Select.propTypes = {
   change: func.isRequired,

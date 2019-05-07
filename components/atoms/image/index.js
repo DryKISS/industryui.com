@@ -1,7 +1,5 @@
 /**
  * Image
- *
- * @see https://getbootstrap.com/docs/4.1/content/images/
  */
 
 // React
@@ -10,72 +8,37 @@ import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types
 // Style
 import styled from 'styled-components'
 
-export const Image = ({
-  alt,
-  className,
-  click,
-  cover,
-  imageClasses,
-  slant,
-  src,
-  style
-}) => {
-  return (
-    <StyledFigure
-      className={className}
-      itemProp='image'
-      itemScope=''
-      itemType='http://schema.org/ImageObject'
-      slant={slant}
-      style={style}
-    >
-
-      <StyledImg
-        alt={alt}
-        className={imageClasses}
-        cover={cover}
-        itemProp='contentUrl'
-        onClick={click}
-        src={src}
-      />
-
-    </StyledFigure>
-  )
-}
-
-const slantStyles = `
-  &:after {
-    background-color: #fff;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 25%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    transform: skewy(6deg);
-    transform-origin: 0 100%;
-    width: 100%;
-    z-index: 1;
-  }
-`
-
-const StyledFigure = styled.figure`
-  border: 0;
-  margin: 0;
-  ${props => props.slant && slantStyles}
-`
-
-const coverStyles = `
-  height: 150px;
-  width: 100%;
-  object-fit: fill;
-`
+export const Image = ({ ...props }) =>
+  <StyledImg itemProp='contentUrl' {...props} />
 
 const StyledImg = styled.img`
-  ${props => props.cover && coverStyles}
-  vertical-align: middle;
-  width: 100%;
+  ${({ cover }) => cover && `
+    height: 150px;
+    object-fit: fill;
+    width: 100%;
+  `}
+
+  ${({ fluid }) => fluid && `
+    height: auto;
+    max-width: 100%;
+  `}
+
+  ${({ rounded }) => rounded && `
+    border-radius: .25rem;
+  `}
+
+  ${({ roundedCircle }) => roundedCircle && `
+    border-radius: 50%;
+  `}
+
+  ${({ thumbnail, theme }) => thumbnail && `
+    background-color: ${theme.COLOUR.light};
+    border: 1px solid ${theme.COLOUR.dark};
+    border-radius: .25rem;
+    height: auto;
+    max-width: 100%;
+    padding: .65rem;
+  `}
 `
 
 Image.propTypes = {
@@ -83,15 +46,17 @@ Image.propTypes = {
   className: any,
   click: func,
   cover: bool,
-  imageClasses: string,
-  slant: bool,
+  fluid: bool,
+  rounded: bool,
+  roundedCircle: bool,
   src: string.isRequired,
-  style: objectOf(oneOfType([
-    number,
-    string
-  ]))
+  style: objectOf(oneOfType([number, string])),
+  thumbnail: bool
 }
 
 Image.defaultProps = {
-  slant: false
+  fluid: true,
+  rounded: false,
+  roundedCircle: false,
+  thumbnail: false
 }

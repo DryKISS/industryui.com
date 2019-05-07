@@ -8,6 +8,7 @@ import { any, object, string } from 'prop-types'
 
 // UI
 import { Brand, Links, Toggler } from './components'
+import { MEDIA_QUERY } from '../../../utils'
 
 // Style
 import styled from 'styled-components'
@@ -30,13 +31,13 @@ export const Navbar = ({ brand, links, type }) => {
     position: relative;
     z-index: 200;
 
-    @media (min-width: 768px) {
+    ${MEDIA_QUERY.desktop`
       flex-flow: row nowrap;
       height: ${props => props.theme.NAVBAR.height};
       justify-content: flex-start;
       margin-bottom: 2rem;
       padding: 0 3rem;
-    }
+    `}
   `
 
   const StyledOverlay = styled.div`
