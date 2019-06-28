@@ -54,7 +54,11 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
 
   return (
     <StyledTable className={className}>
-      <thead><tr>{columns && renderColumns()}</tr></thead>
+      <thead>
+        <tr>
+          {columns && renderColumns()}
+        </tr>
+      </thead>
       <tbody>{renderRows()}</tbody>
     </StyledTable>
   )

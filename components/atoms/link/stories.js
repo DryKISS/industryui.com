@@ -15,14 +15,11 @@ import { withReadme } from 'storybook-readme'
 import { Link } from '../../'
 import Readme from './README.md'
 
-// Story
 const stories = storiesOf('Atoms/Link', module)
 
-// Decorators
 stories.addDecorator(withKnobs)
 stories.addDecorator(withReadme(Readme))
 
-// Default
 stories.add('Default',
   withInfo(``)(() =>
     <Link to='/'>Home</Link>

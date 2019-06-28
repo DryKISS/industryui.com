@@ -17,6 +17,7 @@ export const Hero = ({
   alt,
   align,
   background,
+  backgroundSize,
   buttons,
   className,
   image,
@@ -37,13 +38,25 @@ export const Hero = ({
   }
 
   return (
-    <StyledHero background={background} className={className}>
+    <StyledHero
+      background={background}
+      backgroundSize={backgroundSize}
+      className={className}
+    >
       <Container>
+
         <Row>
+
           { title && renderLeft() }
-          { image && <HeroImage alt={alt} align={align} image={image} width={width} /> }
+
+          { image &&
+            <HeroImage alt={alt} align={align} image={image} width={width} />
+          }
+
         </Row>
+
       </Container>
+
     </StyledHero>
   )
 }
@@ -53,6 +66,7 @@ Hero.propTypes = {
   align: string,
   className: any,
   background: string,
+  backgroundSize: string,
   buttons: array,
   image: string,
   strapline: oneOfType([object, string]),
@@ -66,6 +80,7 @@ Hero.propTypes = {
 
 Hero.defaultProps = {
   align: 'flex-end',
+  backgroundSize: 'cover',
   style: {}
 }
 
@@ -73,12 +88,12 @@ const StyledHero = styled.header`
   background-color: #fff;
   background-image: ${({ background }) => background ? `url(${background})` : 'none'};
   background-position: center;
-  background-size: 20%;
-  padding: 1rem 0 0;
+  background-size: ${({ backgroundSize }) => backgroundSize};
+  padding: 2rem 0 0;
 `
 
 const StyledColumn = styled(Column)`
-  margin: 0 auto;
+  /* margin: 0 auto; */
   text-align: center;
 
   ${MEDIA_QUERY.desktop`

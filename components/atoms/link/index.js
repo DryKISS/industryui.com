@@ -26,3 +26,13 @@ Link.propTypes = {
   ]),
   type: string
 }
+
+// a {
+//   background-color: transparent;
+//   color: #0679d8;
+//   text-decoration: none;
+
+//   &:hover {
+//     color: #e8095e;
+//   }
+// }

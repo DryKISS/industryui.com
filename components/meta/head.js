@@ -8,30 +8,30 @@ import { object, string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaHead = ({ brand, meta, url }) =>
-  <Head>
+export const MetaHead = ({ brand, meta }) => {
+  const { canonical = '', description, title } = meta
 
-    <title>{meta.title} | {brand}</title>
+  return (
+    <Head>
 
-    <meta name='description' content={meta.description} key='description' />
-    <meta rel='canonical' href={`${url}/${meta.canonical}`} key='canonical' />
+      <title>{title} | {brand}</title>
 
-    <meta property='og:title' content={meta.title} />
-    <meta property='og:description' content={meta.description} />
-    <meta property='og:url' content={meta.canonical} />
+      <meta name='description' content={description} key='description' />
+      <meta rel='canonical' href={canonical} key='canonical' />
 
-    <meta name='twitter:url' content={meta.canonical} />
-    <meta name='twitter:title' content={meta.title} />
-    <meta name='twitter:description' content={meta.description} />
+      <meta property='og:title' content={title} />
+      <meta property='og:description' content={description} />
+      <meta property='og:url' content={canonical} />
 
-  </Head>
+      <meta name='twitter:url' content={canonical} />
+      <meta name='twitter:title' content={title} />
+      <meta name='twitter:description' content={description} />
+
+    </Head>
+  )
+}
 
 MetaHead.propTypes = {
   brand: string.isRequired,
-  meta: object.isRequired,
-  url: string.isRequired
-}
-
-MetaHead.defaultProps = {
-  url: 'https://www.tailwise.com'
+  meta: object.isRequired
 }

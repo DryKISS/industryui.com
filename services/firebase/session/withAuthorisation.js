@@ -43,7 +43,7 @@ const FirebaseWithAuthorization = (condition) => (Component) => {
       return (
         <AuthUserContext.Consumer>
           {authUser =>
-            condition(authUser) ? <Component authUser={authUser} role={authUser.roles[0]} uid={authUser.uid} {...this.props} /> : null
+            condition(authUser) ? <Component authUser={authUser} role={authUser.roles[0]} uid={authUser.uid} {...this.props} /> : ''
           }
         </AuthUserContext.Consumer>
       )

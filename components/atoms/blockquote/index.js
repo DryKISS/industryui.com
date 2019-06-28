@@ -12,20 +12,34 @@ export const Blockquote = ({ footer, text }) => {
   return (
     <StyledBlockquote>
 
-      <p className='Blockquote-text'>{text}</p>
+      <StyledText>{text}</StyledText>
 
       {footer &&
-        <footer className='Blockquote-footer'>{footer}</footer>
+        <StyledFooter>{footer}</StyledFooter>
       }
 
     </StyledBlockquote>
   )
 }
 
-const StyledBlockquote = styled.a`
-  margin: 0 0 1rem;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+const StyledBlockquote = styled.blockquote`
+  border-left: 5px solid rgba(240, 0, 0, .5);
+  margin: 1rem 0;
+  padding: 10px 20px;
+`
+
+const StyledText = styled.p`
+  color: #000;
+  font-size: 2rem;
+  margin: 0;
+`
+
+const StyledFooter = styled.footer`
+  font-size: 1rem;
+
+  &::before {
+    content: '\\2014 \\A0';
+  }
 `
 
 Blockquote.propTypes = {
