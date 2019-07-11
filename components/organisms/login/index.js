@@ -6,12 +6,25 @@
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Button, Checkbox, Form, Input, Link } from '../../'
+import {
+  Card,
+  CardBody,
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Link,
+  PageHeading
+} from '../../'
+
+// Style
+import styled from 'styled-components'
 
 export const Login = ({
   change,
   email,
   forgotPassword,
+  heading,
   password,
   pathForgot,
   pathSignUp,
@@ -32,71 +45,87 @@ export const Login = ({
   }
 
   return (
-    <Form submit={submit}>
+    <StyledContainer>
+      <Card bordered shadow>
+        <CardBody>
 
-      <Input
-        autoFocus
-        change={change}
-        id='email'
-        label='Email address'
-        type='email'
-        value={email}
-      />
+          <PageHeading center heading={heading} divider={false} />
 
-      <Input
-        change={change}
-        id='password'
-        label='Password'
-        type='password'
-        value={password}
-      />
+          <Form submit={submit}>
 
-      {remember &&
-        <Checkbox
-          data={CHECKBOX_REMEMBER}
-          change={change}
-        />
+            <Input
+              autoFocus
+              change={change}
+              id='email'
+              label='Email'
+              type='email'
+              value={email}
+            />
+
+            <Input
+              change={change}
+              id='password'
+              label='Password'
+              type='password'
+              value={password}
+            />
+
+            {remember &&
+              <Checkbox
+                change={change}
+                data={CHECKBOX_REMEMBER}
+              />
+            }
+
+            <div className='text-right'>
+              <Button
+                align='right'
+                content='Log in'
+                context='primary'
+                disabled={isInvalid}
+                size='lg'
+                type='submit'
+              />
+
+              <p />
+
+              {forgotPassword &&
+                <Link to={pathForgot}>
+                  <a>Don't know your password?</a>
+                </Link>
+              }
+            </div>
+
+          </Form>
+
+        </CardBody>
+      </Card>
+
+      {pathSignUp &&
+        <>
+          <br />
+          <p className='text-center'>
+            Don't have an account?{' '}
+            <Link to={pathSignUp}>
+              <a>Apply now!</a>
+            </Link>
+          </p>
+        </>
       }
 
-      <div className='text-right'>
-        <Button
-          align='right'
-          content='Log in'
-          context='primary'
-          disabled={isInvalid}
-          size='lg'
-          type='submit'
-        />
-
-        <p />
-
-        {forgotPassword &&
-          <Link to={pathForgot}>
-            <a>Forgot Password?</a>
-          </Link>
-        }
-
-        {pathSignUp &&
-          <>
-            {' '}|{' '}
-            <Link to={pathSignUp}>
-              <a>Sign up</a>
-            </Link>
-          </>
-        }
-
-        <p />
-
-      </div>
-
-    </Form>
+    </StyledContainer>
   )
 }
+
+const StyledContainer = styled.div`
+  margin: 3rem 0;
+`
 
 Login.propTypes = {
   change: func.isRequired,
   email: string.isRequired,
   forgotPassword: bool,
+  heading: string,
   password: string.isRequired,
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
@@ -106,5 +135,6 @@ Login.propTypes = {
 
 Login.defaultProps = {
   forgotPassword: true,
+  heading: 'Log In',
   pathForgot: '/forgot-details'
 }

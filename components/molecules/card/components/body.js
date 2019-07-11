@@ -6,15 +6,14 @@
 import { bool, node, oneOf, string } from 'prop-types'
 
 // UI
-import { COLOUR } from '../../../'
-import { CONTEXT } from '../../../theme'
+import { COLOUR, CONTEXT } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const CardBody = ({ center, children, context, title }) => {
+export const CardBody = ({ center, children, className, context, title }) => {
   return (
-    <StyledBody center={center}>
+    <StyledBody className={className} center={center}>
 
       {title &&
         <StyledWrapper>

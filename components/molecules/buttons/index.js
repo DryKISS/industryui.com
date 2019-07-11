@@ -7,7 +7,7 @@
 import { bool, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Button, Divider, Link } from 'industry-ui'
+import { Button, Divider, Link } from '../../../'
 
 export const Buttons = ({
   back,

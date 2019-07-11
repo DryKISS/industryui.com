@@ -6,8 +6,7 @@
 import { any, bool, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Close, Icon, Link } from '../../../'
-import { CONTEXT } from '../../../theme'
+import { Close, CONTEXT, Icon, Link } from '../../../'
 import { CardBody, CardFooter, CardHeader, CardImage } from './'
 
 // Style
@@ -119,7 +118,7 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   font-size: inherit;
-  margin: .5rem 0;
+  margin: 0;
   min-width: 0;
   position: relative;
   word-wrap: break-word;

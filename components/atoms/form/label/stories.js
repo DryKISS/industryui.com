@@ -19,7 +19,7 @@ storiesOf('Atoms/Form/Label', module)
   .addDecorator(withReadme(Readme))
 
   .add('Default', withInfo()(() =>
-    <React.Fragment>
+    <>
       <Label text="Select your gender">
         <Select
           id='gender'
@@ -31,6 +31,6 @@ storiesOf('Atoms/Form/Label', module)
         />
 
       </Label>
-    </React.Fragment>
+    </>
   )
   )

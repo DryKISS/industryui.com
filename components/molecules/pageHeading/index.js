@@ -3,12 +3,10 @@
  */
 
 // React
-import { bool, oneOf, string } from 'prop-types'
+import { any, bool, oneOf, string } from 'prop-types'
 
 // UI
-import { Divider, Heading, Icon } from '../../'
-import { MEDIA_QUERY } from '../../../utils'
-import { CONTEXT } from '../../theme'
+import { CONTEXT, Divider, Heading, Icon, MEDIA_QUERY } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -59,6 +57,7 @@ export const PageHeading = ({
 
 const StyledHeader = styled.header`
   margin-bottom: ${({ divider }) => !divider && '2rem'};
+  margin-top: 2rem;
   text-align: ${({ center }) => center && 'center'};
 `
 
@@ -80,7 +79,7 @@ PageHeading.propTypes = {
   center: bool,
   context: oneOf(Object.values(CONTEXT)),
   divider: bool,
-  heading: string.isRequired,
+  heading: any.isRequired,
   strapline: string
 }
 

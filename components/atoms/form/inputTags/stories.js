@@ -2,9 +2,6 @@
  * Input Tags
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
@@ -20,9 +17,9 @@ storiesOf('Atoms/Form/InputTags', module)
 
   .add('Default',
     withInfo()(() =>
-      <React.Fragment>
+      <>
         (not implemented yet)
         <InputTags />
-      </React.Fragment>
+      </>
     )
   )

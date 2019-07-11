@@ -7,8 +7,6 @@
 import { Link } from '../../../'
 
 export const TableLink = ({ link, path, query, row }) => {
-  console.log(link, path, query, row)
-
   return (
     <Link to={
       {

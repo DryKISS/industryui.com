@@ -6,7 +6,7 @@
 import { oneOf, string } from 'prop-types'
 
 // UI
-import { SIZE } from '../../theme'
+import { SIZE } from '../../'
 
 // Style
 import styled from 'styled-components'

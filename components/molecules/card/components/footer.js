@@ -6,7 +6,7 @@
 import { oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../theme'
+import { CONTEXT } from '../../../'
 
 // Style
 import styled from 'styled-components'

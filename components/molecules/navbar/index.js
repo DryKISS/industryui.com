@@ -8,7 +8,7 @@ import { any, object, string } from 'prop-types'
 
 // UI
 import { Brand, Links, Toggler } from './components'
-import { MEDIA_QUERY } from '../../../utils'
+import { MEDIA_QUERY } from '../../'
 
 // Style
 import styled from 'styled-components'

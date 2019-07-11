@@ -6,8 +6,7 @@
 import { objectOf, number, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, SHADE_COLOUR } from '../../'
-import { CONTEXT } from '../../theme'
+import { BACKGROUND, CONTEXT, SHADE_COLOUR } from '../../'
 
 // Style
 import styled from 'styled-components'

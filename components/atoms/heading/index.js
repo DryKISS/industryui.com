@@ -7,8 +7,7 @@
 import { any, bool, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
-import { COLOUR } from '../../../'
-import { CONTEXT } from '../../theme'
+import { COLOUR, CONTEXT } from '../../'
 
 // Style
 import styled from 'styled-components'

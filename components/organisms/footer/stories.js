@@ -20,7 +20,7 @@ import { FOOTER, ONE_COLUMN } from './__mocks__'
 import logo from './__resources__/tailwise-icon.svg'
 
 const renderColumn = () => (
-  <React.Fragment>
+  <>
     <div style={{ width: '32px' }}>
       <Image alt='Tailwise' src={logo} />
     </div>
@@ -30,7 +30,7 @@ const renderColumn = () => (
       <ListItem>hello@tailwise.com</ListItem>
       <ListItem>0330 043 5301</ListItem>
     </List>
-  </React.Fragment>
+  </>
 )
 
 storiesOf('Organisms/Footer', module)

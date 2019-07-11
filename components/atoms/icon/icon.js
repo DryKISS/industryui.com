@@ -9,8 +9,7 @@ import { any, bool, number, objectOf, oneOf, oneOfType, string } from 'prop-type
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // UI
-import { COLOUR } from '../../'
-import { CONTEXT } from '../../theme'
+import { COLOUR, CONTEXT } from '../../'
 
 // Style
 import styled from 'styled-components'

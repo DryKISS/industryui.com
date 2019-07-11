@@ -14,8 +14,7 @@ import {
 } from 'prop-types'
 
 // UI
-import { BACKGROUND } from '../../'
-import { CONTEXT } from '../../theme'
+import { BACKGROUND, CONTEXT } from '../../'
 
 // Style
 import styled from 'styled-components'

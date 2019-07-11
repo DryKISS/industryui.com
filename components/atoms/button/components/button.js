@@ -6,8 +6,7 @@
 import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, COLOUR, SHADE_COLOUR } from '../../../'
-import { CONTEXT, SIZE } from '../../../theme'
+import { BACKGROUND, COLOUR, CONTEXT, SHADE_COLOUR, SIZE } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -44,7 +43,8 @@ Button.defaultProps = {
 
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
-  ${props => props.outline ? COLOUR(props) : `color: ${props.theme.COLOUR.white}`}
+  /* ${props => COLOUR(props)} */
+  color: #fff;
   border: 1px solid ${props => props.theme.COLOUR[props.context]};
   border-radius: .5rem;
   ${props => props.shadow && `box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);`}

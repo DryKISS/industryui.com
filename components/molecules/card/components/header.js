@@ -7,7 +7,7 @@ import { oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { CONTEXT } from '../../../theme'
+import { CONTEXT } from '../../../'
 
 export const CardHeader = ({ content, context }) => {
   return (

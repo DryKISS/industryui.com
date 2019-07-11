@@ -6,8 +6,7 @@
 import { string } from 'prop-types'
 
 // UI
-import { Link } from '../../../'
-import { MEDIA_QUERY } from '../../../../utils'
+import { Link, MEDIA_QUERY } from '../../../'
 
 // Style
 import styled from 'styled-components'

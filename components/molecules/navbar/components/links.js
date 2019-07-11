@@ -6,8 +6,8 @@
 import { bool, object, string } from 'prop-types'
 
 // UI
-import { Button, Link } from '../../../'
-import { MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../../utils'
+import { Button, Link, MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../'
+// import {  } from '../../../../utils'
 
 // Style
 import styled from 'styled-components'

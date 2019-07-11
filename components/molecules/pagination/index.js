@@ -195,7 +195,7 @@ const StyledPagination = styled.nav`
 //     const pages = this.fetchPageNumbers();
 
 //     return (
-//       <Fragment>
+//       <>
 //         <nav aria-label="Countries Pagination">
 //           <ul className="pagination">
 //             {pages.map((page, index) => {
@@ -248,7 +248,7 @@ const StyledPagination = styled.nav`
 //             })}
 //           </ul>
 //         </nav>
-//       </Fragment>
+//       </>
 //     );
 //   }
 // }

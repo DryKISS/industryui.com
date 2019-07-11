@@ -10,7 +10,7 @@ export const COLOUR = {
   dark: '#5c6f7f',
   light: '#ecf0f3',
 
-  primary: '#04d4cd',
+  primary: '#00ccbc',
   secondary: '#0679d8',
   success: '#00b43c',
   info: '#2ab4f3',

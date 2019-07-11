@@ -6,7 +6,7 @@
 import { bool, func } from 'prop-types'
 
 // UI
-import { MEDIA_QUERY } from '../../../../utils'
+import { MEDIA_QUERY } from '../../../'
 
 // Style
 import styled from 'styled-components'

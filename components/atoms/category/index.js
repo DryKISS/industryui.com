@@ -11,13 +11,13 @@ import { Link } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Category = ({ category, path }) => {
+export const Category = ({ category, className, to }) => {
   const categoryFormatted = category.toUpperCase().replace('-', ' ')
 
   return (
-    <StyledCategory>
+    <StyledCategory className={className}>
 
-      <Link to={path} passHref>
+      <Link to={to} passHref>
 
         <StyledA>
           {categoryFormatted}
@@ -42,5 +42,5 @@ const StyledA = styled.a`
 
 Category.propTypes = {
   category: string.isRequired,
-  path: string.isRequired
+  to: string.isRequired
 }

@@ -6,9 +6,8 @@
 import { any, array, number, object, objectOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Container, Column, Heading, Row } from '../../'
+import { Container, Column, Heading, MEDIA_QUERY, Row } from '../../'
 import { HeroButtons, HeroImage } from './components'
-import { MEDIA_QUERY } from '../../../utils'
 
 // Style
 import styled from 'styled-components'

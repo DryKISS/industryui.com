@@ -5,4 +5,3 @@
  */
 export * from './background'
 export * from './colour'
-export * from './truncate'
