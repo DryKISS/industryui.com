@@ -1,5 +1,5 @@
 /**
- * Post Hero
+ * Blog - Hero
  * Gets the latest Hero article(s)
  *
  * Select Hero
@@ -10,12 +10,12 @@
  */
 
 // React
-import { any, number } from 'prop-types'
+import { any, number, object } from 'prop-types'
 
 // UI
 import { BlogCard, Column, Row } from '../../'
 
-export const BlogHero = ({ articles, number }) => {
+export const BlogHero = ({ articles, config, number }) => {
   const _find = () => {
     return articles.find((article) =>
       article.hero === true
@@ -27,7 +27,7 @@ export const BlogHero = ({ articles, number }) => {
 
     return (
       <Column md={12 / number}>
-        <BlogCard article={article} type='hero' />
+        <BlogCard article={article} config={config} type='hero' />
       </Column>
     )
   }
@@ -40,7 +40,8 @@ export const BlogHero = ({ articles, number }) => {
 }
 
 BlogHero.propTypes = {
-  articles: any,
+  articles: any.isRequired,
+  config: object.isRequired,
   number: number
 }
 

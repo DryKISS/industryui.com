@@ -1,12 +1,12 @@
 /**
- * Card body
+ * Card - Body
  */
 
 // React
 import { bool, node, oneOf, string } from 'prop-types'
 
 // UI
-import { COLOUR, CONTEXT } from '../../../'
+import { CONTEXT } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -44,7 +44,6 @@ const StyledWrapper = styled.div`
 `
 
 const StyledTitle = styled.h1`
-  /* ${props => COLOUR(props)} */
   font-size: 1.5rem;
   font-weight: 600;
   margin: 24px auto 16px auto;
@@ -53,21 +52,13 @@ const StyledTitle = styled.h1`
 `
 
 const StyledContent = styled.div`
-  /* ${props => COLOUR(props)} */
   padding: 1rem;
 `
-
-// .Card-titleElipsis {
-//   display: inline-block;
-//   flex: 1;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-//   white-space: nowrap;
-// }
 
 CardBody.propTypes = {
   center: bool,
   children: node,
+  className: string,
   context: oneOf(Object.values(CONTEXT)),
   title: string
 }

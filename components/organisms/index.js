@@ -1,7 +1,6 @@
 /**
  * Organisms
  */
-export * from './articleDetails'
 export * from './emailChange'
 export * from './emailChange/hooks/hook'
 export * from './footer'

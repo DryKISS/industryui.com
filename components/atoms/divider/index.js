@@ -11,8 +11,8 @@ import { SIZE } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Divider = ({ content, size }) =>
-  <StyledDivider content={content} size={size}>
+export const Divider = ({ content, size, style }) =>
+  <StyledDivider content={content} size={size} style={style}>
     {content && content}
   </StyledDivider>
 

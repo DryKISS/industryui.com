@@ -38,7 +38,6 @@ const StyledComponent = styled.span`
   line-height: 1.22;
   margin: ${({ noMargin }) => noMargin ? 0 : '0 0 2rem 0'};
   position: relative;
-  /* z-index: 2; */
 `
 
 Heading.propTypes = {

@@ -1,22 +1,22 @@
 /**
- * Blog List
+ * Blog - List
  */
 
 // React
 import { Fragment } from 'react'
+import { object, string } from 'prop-types'
 
 // UI
-import { Badge, Link, Truncate } from '../../../'
+import { Badge, Link, slugify, Truncate } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const BlogList = ({ list }) => {
+export const BlogList = ({ author, config, list }) => {
   return (
     <StyledDl>
       {
-        list.map(({ badge, name, to }, index) => (
-
+        list.map(({ badge, category = '', name, to }, index) => (
           <Fragment key={index}>
 
             <StyledDt>
@@ -24,13 +24,25 @@ export const BlogList = ({ list }) => {
             </StyledDt>
 
             <StyledDd>
-              <Link to={to} passHref>
-                <StyledA target='_blank'>{name}</StyledA>
+              <Link
+                to={{
+                  as: `${config.path}/${category && slugify(category) + '/'}${slugify(to)}`,
+                  href: {
+                    pathname: author ? `${config.path}/author` : `${config.path}/article`,
+                    query: {
+                      articleSlug: slugify(to),
+                      author: slugify(to),
+                      category: category && slugify(category)
+                    }
+                  }
+                }}
+                passHref
+              >
+                <StyledA>{name}</StyledA>
               </Link>
             </StyledDd>
 
           </Fragment>
-
         ))
       }
     </StyledDl>
@@ -66,3 +78,9 @@ const StyledDd = styled.dd`
 const StyledA = styled.a`
   ${props => Truncate('100px')}
 `
+
+BlogList.propTypes = {
+  author: string,
+  config: object.isRequired,
+  list: object.isRequired
+}

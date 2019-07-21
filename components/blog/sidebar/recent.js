@@ -1,5 +1,5 @@
 /**
- * Blog Recent
+ * Blog - Recent
  * Creates a module to showcase five of the most recent blog articles.
  *
  * Select
@@ -9,13 +9,13 @@
 
 // React
 import { useEffect, useState } from 'react'
-import { array, number } from 'prop-types'
+import { array, number, object } from 'prop-types'
 
 // UI
 import { formatIntDateShort } from '../../'
 import { BlogList, BlogSection } from './components'
 
-export const BlogRecent = ({ articles, total }) => {
+export const BlogRecent = ({ articles, config, total }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -33,6 +33,7 @@ export const BlogRecent = ({ articles, total }) => {
       .slice(0, total)
       .map((opt) => ({
         badge: formatIntDateShort(new Date(opt.date)),
+        category: opt.category,
         name: opt.heading,
         to: opt.slug
       }))
@@ -40,15 +41,14 @@ export const BlogRecent = ({ articles, total }) => {
 
   return (
     <BlogSection heading='Recent'>
-
-      <BlogList list={list} />
-
+      <BlogList config={config} list={list} />
     </BlogSection>
   )
 }
 
 BlogRecent.propTypes = {
   articles: array.isRequired,
+  config: object.isRequired,
   total: number
 }
 

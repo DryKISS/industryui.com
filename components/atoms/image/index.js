@@ -8,8 +8,19 @@ import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types
 // Style
 import styled from 'styled-components'
 
-export const Image = ({ ...props }) =>
-  <StyledImg itemProp='contentUrl' {...props} />
+export const Image = ({ ...props }) => {
+  const addDefaultSrc = (ev) => {
+    ev.target.src = '/static/placeholder/placeholder.svg'
+  }
+
+  return (
+    <StyledImg
+      itemProp='contentUrl'
+      onError={addDefaultSrc}
+      {...props}
+    />
+  )
+}
 
 const StyledImg = styled.img`
   ${({ cover }) => cover && `

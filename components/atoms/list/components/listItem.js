@@ -11,10 +11,10 @@ import { Icon } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const ListItem = ({ children, group, icon }) =>
-  <StyledItem group={group}>
+export const ListItem = ({ children, className, group, icon, style }) =>
+  <StyledItem className={className} group={group} style={style}>
     { icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' /> }
-    <span style={{}}>{ children }</span>
+    { children }
   </StyledItem>
 
 const groupStyles = `
@@ -24,7 +24,6 @@ const groupStyles = `
 `
 
 const StyledItem = styled.li`
-  /* display: block; */
   position: relative;
   ${({ group }) => group && groupStyles}
 `

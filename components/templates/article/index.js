@@ -6,25 +6,21 @@
  */
 
 // React
-import { array, string } from 'prop-types'
+import { object } from 'prop-types'
 
 // UI
-import { ArticleDetails, Breadcrumb, Category, Heading, Image } from '../../'
+import {
+  BlogCategory,
+  BlogDetails,
+  Breadcrumb,
+  Heading,
+  Image
+} from '../../'
 
 // Style
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
-export const Article = ({ article, category, frontmatter }) => {
-  const frontMatter = (matter) => {
-    if (matter === 'tags') {
-      return frontmatter[matter].map((item) => (
-        { content: item.replace(/[[\]]/g, '').trim(), to: 'javascript:;' }
-      ))
-    }
-
-    return frontmatter[matter]
-  }
-
+export const Article = ({ article, config, facebook }) => {
   return (
     <StyledArticle
       itemProp='blogPost'
@@ -32,35 +28,31 @@ export const Article = ({ article, category, frontmatter }) => {
       itemType='http://schema.org/BlogPosting'
       role='article'
     >
-
       <header>
-
-        {frontmatter.image &&
-          <StyledImage
-            alt={frontmatter.heading}
-            slant
-            src={`/static/blog/${frontmatter.slug}/hero.jpg`}
-          />
-        }
+        <StyledImage
+          alt={article.heading}
+          slant
+          src={`/static/blog/${article.slug}/hero.jpg`}
+        />
 
         <Breadcrumb
-          category={category}
-          page={frontmatter.heading}
-          path='javasript:;'
+          category={article.category}
+          page={article.title}
+          path={article.category}
         />
 
-        <Category category={category} path='javasript:;' />
+        <BlogCategory config={config} to={article.category} />
 
-        <Heading content={frontmatter.heading} />
+        <StyledHeading content={article.heading} />
 
-        <ArticleDetails
-          author={frontmatter.author}
-          tags={frontMatter('tags')}
-        />
-
+        <BlogDetails article={article} config={config} facebook={facebook} />
       </header>
 
-      {article}
+      <span
+        dangerouslySetInnerHTML={{
+          __html: article.data
+        }}
+      />
 
       {/*
         <footer>
@@ -79,11 +71,6 @@ export const Article = ({ article, category, frontmatter }) => {
   )
 }
 
-Article.propTypes = {
-  article: array.isRequired,
-  category: string
-}
-
 const StyledArticle = styled.article`
   max-width: 750px;
   margin: 0 auto;
@@ -98,6 +85,16 @@ const StyledArticle = styled.article`
 const StyledImage = styled(Image)`
   position: relative;
 `
+
+const StyledHeading = styled(Heading)`
+  margin-bottom: 1rem;
+`
+
+Article.propTypes = {
+  article: object.isRequired,
+  config: object.isRequired,
+  facebook: object
+}
 
 // li:before {
 //   color: #000 !important;

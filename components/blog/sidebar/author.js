@@ -1,17 +1,17 @@
 /**
- * Blog Author
+ * Blog - Author
  * List the 5 Authors who have written the most
  */
 
 // React
 import { useEffect, useState } from 'react'
-import { array, number } from 'prop-types'
+import { array, number, object } from 'prop-types'
 
 // UI
 import { slugify } from '../../'
 import { BlogList, BlogSection } from './components'
 
-export const BlogAuthor = ({ articles, total }) => {
+export const BlogAuthor = ({ articles, config, total }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const BlogAuthor = ({ articles, total }) => {
         return {
           badge: k,
           name: counts[k],
-          to: `/${slugify(k)}.html`
+          to: `${slugify(k)}`
         }
       })
 
@@ -55,15 +55,14 @@ export const BlogAuthor = ({ articles, total }) => {
 
   return (
     <BlogSection heading='Author'>
-
-      <BlogList list={list} />
-
+      <BlogList config={config} author list={list} />
     </BlogSection>
   )
 }
 
 BlogAuthor.propTypes = {
   articles: array.isRequired,
+  config: object.isRequired,
   total: number
 }
 

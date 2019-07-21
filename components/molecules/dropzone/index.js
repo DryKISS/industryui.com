@@ -120,7 +120,7 @@ export class Dropzone extends Component {
 const StyledContainer = styled.div`
   background-color: ${({ disabled, theme }) => disabled ? theme.COLOUR.danger : theme.COLOUR.light};
   border-color: ${({ isDragReject }) => isDragReject && '#c66'};
-  border-radius: 5px;
+  border-radius: .25rem;
   border-style: ${({ isDragReject, isDragActive }) => isDragReject || isDragActive ? 'solid' : 'dashed'};
   border-width: 2px;
   cursor: pointer;

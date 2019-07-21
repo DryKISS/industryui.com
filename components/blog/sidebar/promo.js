@@ -1,5 +1,5 @@
 /**
- * Blog Promo
+ * Blog - Promo
  */
 
 // React
@@ -12,9 +12,7 @@ import { BlogSection } from './components'
 export const BlogPromo = ({ src, to }) => {
   return (
     <BlogSection heading='Promo'>
-
       <Image alt='Image' src={src} />
-
     </BlogSection>
   )
 }

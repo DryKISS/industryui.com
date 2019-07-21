@@ -1,5 +1,5 @@
 /**
- * Blog Section
+ * Blog - Section
  * Creates a module in the sidebar
  */
 
@@ -12,30 +12,36 @@ import { Divider, Heading } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const BlogSection = ({ children, heading }) => {
-  return (
-    <StyledSection>
+export const BlogSection = ({ children, heading }) =>
+  <StyledSection>
 
-      <Heading
-        content={heading}
-        context='primary'
-        noMargin tag='h2'
-      />
+    {heading &&
+      <>
+        <StyledHeading
+          content={heading}
+          context='primary'
+          noMargin
+          tag='h3'
+        />
 
-      <Divider size='sm' />
+        <Divider size='sm' />
+      </>
+    }
 
-      {children}
+    {children}
 
-    </StyledSection>
-  )
-}
-
-BlogSection.propTypes = {
-  children: node.isRequired,
-  heading: string.isRequired
-}
+  </StyledSection>
 
 const StyledSection = styled.dl`
   margin-top: 0;
   margin-bottom: 1rem;
 `
+
+const StyledHeading = styled(Heading)`
+  font-size: 1.25rem
+`
+
+BlogSection.propTypes = {
+  children: node.isRequired,
+  heading: string
+}

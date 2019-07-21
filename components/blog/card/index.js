@@ -1,17 +1,20 @@
 /**
- * Card
- * Provides a card that details the blog post, usually used on the home page
+ * Blog - Card
+ * Provides a card that details the blog post
  */
 
 // React
-import { any, string } from 'prop-types'
+import { any, object, string } from 'prop-types'
 
 // UI
 import {
+  BlogCategory,
+  BlogTags,
   Button,
   Card,
   CardBody,
-  Category,
+  CardImage,
+  Divider,
   Heading,
   Link,
   slugify
@@ -20,8 +23,22 @@ import {
 // Style
 import styled from 'styled-components'
 
-export const BlogCard = ({ article, type }) => {
-  const { category, excerpt, heading, slug } = article
+export const BlogCard = ({ article, config, type }) => {
+  const { author, category, excerpt, heading, slug } = article
+
+  const articleSlug = slugify(article.slug)
+  const categorySlug = slugify(category)
+
+  const articleLink = {
+    as: `${config.path}/${categorySlug}/${articleSlug}`,
+    href: {
+      pathname: `${config.path}/article`,
+      query: {
+        articleSlug: articleSlug,
+        category: categorySlug
+      }
+    }
+  }
 
   return (
     <article
@@ -30,64 +47,94 @@ export const BlogCard = ({ article, type }) => {
       itemScope
       itemType='http://schema.org/BlogPosting'
     >
-      <Card
-        alt={heading}
-        bordered
-        image={`/static/blog/${slug}/hero.jpg`}
-        shadow
-        // to={{
-        //   as: `/blog/${slug}`,
-        //   href: {
-        //     pathname: '/blog/article',
-        //     query: { slug: slug }
-        //   }
-        // }}
-      >
+      <Card shadow>
+        <Link to={articleLink}>
+          <a>
+            <CardImage
+              alt={heading}
+              src={`/static/blog/${slug}/hero.jpg`}
+            />
+          </a>
+        </Link>
+
         <StyledCardBody type={type}>
 
-          {console.log(type)}
+          {type === 'normal' &&
+            <BlogCategory config={config} to={category} type={type} />
+          }
 
-          <StyledCategory
-            category={category}
-            to={`/blog/${slugify(category)}`}
-          />
+          <StyledContent type={type}>
 
-          <StyledContent>
+            <Link to={articleLink}>
+              <a><StyledHeading content={heading} tag='h1' type={type} /></a>
+            </Link>
 
-            <StyledTitle content={heading} tag='h1' />
-            <p itemProp='description'>{excerpt}</p>
+            { type === 'normal' &&
+              <p itemProp='description'>{excerpt}</p>
+            }
 
           </StyledContent>
 
-          <StyledButton
-            content='Read more'
-            context='white'
-            size='lg'
-          />
+          { type === 'normal' &&
+            <>
+              {article.tags &&
+                <TagsContainer>
+                  <BlogTags tags={article.tags} />
+                </TagsContainer>
+              }
+
+              <Divider size='md' style={{ marginTop: '.5rem' }} />
+
+              <BlogCategory author to={author} config={config} type={type} />
+
+              <p style={{ fontSize: '14px', margin: '0' }}>
+                {article.readtime}min read time.
+              </p>
+            </>
+          }
+
+          <Link to={articleLink}>
+            <StyledButton
+              content='Read more'
+              context={type === 'normal' ? 'primary' : 'white'}
+              size={type === 'normal' ? 'sm' : 'lg'}
+              position={type}
+            />
+          </Link>
 
         </StyledCardBody>
 
       </Card>
-
     </article>
   )
 }
 
+const TagsContainer = styled.div`
+  height: 28px;
+  margin-top: 5px;
+  overflow: hidden;
+`
+
 const StyledButton = styled(Button)`
-  bottom: 25px;
+  bottom: 20px;
   position: absolute;
   right: 15px;
   z-index: 2;
+
+  ${({ position }) => position === 'hero' && `
+    bottom: 25px;
+  `}
 `
 
 const StyledCardBody = styled(CardBody)`
-  background-color: ${({ theme }) => theme.COLOUR.primary};
-  min-height: 80px;
+  min-height: 303px;
   position: relative;
 
-  ${({ type }) => type === 'hero' && `
+  ${({ theme, type }) => type === 'hero' && `
+    background-color: ${theme.COLOUR.primary};
+    min-height: 80px;
     &:after {
-      background: ${({ theme }) => theme.COLOUR.primary};
+      background: ${theme.COLOUR.primary};
       content: '';
       display: block;
       height: 80px;
@@ -102,30 +149,46 @@ const StyledCardBody = styled(CardBody)`
   `}
 `
 
-const StyledCategory = styled(Category)`
-  a {
-    color: #fff;
-  }
-`
-
 const StyledContent = styled.div`
-  height: 119px;
+  height: 128px;
+  margin-bottom: 1rem;
   overflow: hidden;
+
+  ${({ type }) => type === 'hero' && `
+    height: 122px;
+    margin-bottom: 0;
+  `}
 `
 
-const StyledTitle = styled(Heading)`
-  color: #fff;
-  font-size: 34px;
-  line-height: 38px;
-  max-height: 115px;
+const StyledHeading = styled(Heading)`
+  color: #000;
+  font-size: 20px;
+  line-height: 22px;
+  margin-bottom: 0;
   max-width: 500px;
   overflow: hidden;
   position: relative;
   z-index: 2;
+
+  &:hover {
+    color: #00ccbc;
+  }
+
+  ${({ type }) => type === 'hero' && `
+    color: #fff;
+    font-size: 34px;
+    line-height: 38px;
+    max-height: 115px;
+
+    &:hover {
+      color: #f2f1f1;
+    }
+  `}
 `
 
 BlogCard.propTypes = {
   article: any.isRequired,
+  config: object.isRequired,
   type: string
 }
 

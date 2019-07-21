@@ -7,7 +7,7 @@
 import { string } from 'prop-types'
 
 // Fontawesome
-import { Icon } from '../../'
+import { Icon, Link, slugify } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -29,14 +29,15 @@ export const Breadcrumb = ({ category, path, page }) => {
           itemScope=''
           itemType='http://schema.org/ListItem'
         >
-          <a
-            href='javascript:;'
-            itemProp='item'
-            itemScope='itemscope'
-            itemType='http://schema.org/Thing'
-          >
-            <Icon icon='home-heart' />
-          </a>
+          <Link to='/' passHref>
+            <StyledA
+              itemProp='item'
+              itemScope='itemscope'
+              itemType='http://schema.org/Thing'
+            >
+              <Icon icon='home-heart' />
+            </StyledA>
+          </Link>
 
           <meta itemProp='position' content='1' />
         </StyledLi>
@@ -47,14 +48,25 @@ export const Breadcrumb = ({ category, path, page }) => {
           itemScope=''
           itemType='http://schema.org/ListItem'
         >
-          <a
-            href={path}
-            itemProp='item'
-            itemScope='itemscope'
-            itemType='http://schema.org/Thing'
+          <Link
+            to={{
+              as: `/blog/${slugify(path)}`,
+              href: {
+                pathname: '/blog/category',
+                query: {
+                  category: slugify(path)
+                }
+              }
+            }} passHref
           >
-            {categoryFormatted}
-          </a>
+            <StyledA
+              itemProp='item'
+              itemScope='itemscope'
+              itemType='http://schema.org/Thing'
+            >
+              {categoryFormatted}
+            </StyledA>
+          </Link>
 
           <meta itemProp='position' content='2' />
         </StyledLi>
@@ -76,9 +88,17 @@ export const Breadcrumb = ({ category, path, page }) => {
   )
 }
 
+const StyledA = styled.a`
+  color: #fff;
+
+  &:hover {
+    color: #00ccbc;
+  }
+`
+
 const StyledOl = styled.ol`
   background-color: rgba(62, 62, 62, 0.5);
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px #aaa solid;
   border-radius: 0;
   color: #fff;
   display: flex;

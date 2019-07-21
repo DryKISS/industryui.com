@@ -1,5 +1,5 @@
 /**
- * Blog Archive
+ * Blog - Archive
  * Lists the years and total number of blogs in that year
  *
  * - Group the articles by the year they were written
@@ -8,13 +8,13 @@
 
 // React
 import { useEffect, useState } from 'react'
-import { array, number } from 'prop-types'
+import { array, number, object } from 'prop-types'
 
 // UI
 import { formatIntDateYear } from '../../'
 import { BlogList, BlogSection } from './components'
 
-export const BlogArchive = ({ articles, total }) => {
+export const BlogArchive = ({ articles, config, total }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const BlogArchive = ({ articles, total }) => {
         return {
           badge: k,
           name: counts[k],
-          to: `/archive/${k}.html`
+          to: `archive/${k}`
         }
       })
       .reverse()
@@ -56,15 +56,14 @@ export const BlogArchive = ({ articles, total }) => {
 
   return (
     <BlogSection heading='Archive'>
-
-      <BlogList list={list} />
-
+      <BlogList config={config} list={list} />
     </BlogSection>
   )
 }
 
 BlogArchive.propTypes = {
   articles: array.isRequired,
+  config: object.isRequired,
   total: number
 }
 

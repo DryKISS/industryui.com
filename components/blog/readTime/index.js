@@ -1,18 +1,18 @@
 /**
- * Read Time
+ * Blog - Read Time
  */
 
 // React
 import { number } from 'prop-types'
 
-export const ReadTime = ({ time }) => {
+export const BlogReadTime = ({ time }) => {
   return (
-    <>
+    <span>
       Read time: {time} min(s)
-    </>
+    </span>
   )
 }
 
-ReadTime.propTypes = {
+BlogReadTime.propTypes = {
   time: number.isRequired
 }

@@ -1,5 +1,5 @@
 /**
- * Blog Tag Cloud
+ * Blog - Tag Cloud
  * List the 20 most prominent tags from all the articles.
  *
  * - Collate all the tags from all the articles
@@ -23,7 +23,6 @@ export const BlogTagCloud = ({ articles, total }) => {
   const [cloud, setCloud] = useState([])
 
   useEffect(() => {
-    // console.log(_find())
     setCloud(_find())
   }, [])
 
@@ -53,7 +52,6 @@ export const BlogTagCloud = ({ articles, total }) => {
     // newO[key] = list[key]
 
     // return countBy(tagArray)
-    // console.log(tagsSorted)
 
     // .filter((article) => {
     //   return (article.category !== 'terms' && article.homepage !== false)

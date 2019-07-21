@@ -8,11 +8,13 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Badge = ({ content, to }) => {
+export const Badge = ({ className, content, style, to }) => {
   return (
     <StyledBadge
+      className={className}
       itemProp='keywords'
       href={to}
+      style={style}
     >
       {content}
     </StyledBadge>
@@ -31,6 +33,11 @@ const StyledBadge = styled.a`
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
+
+  &:hover {
+    background-color: #CAC7C7;
+    color: #000;
+  }
 
   &:empty {
     display: none;

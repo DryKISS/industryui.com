@@ -1,29 +1,23 @@
 /**
- * Blog Social
+ * Blog - Social
  */
 
 // React
-import { bool } from 'prop-types'
+import { bool, object } from 'prop-types'
 
 // UI
+import { FacebookPagePlugin } from '../../'
 import { BlogSection } from './components'
 
 export const BlogSocial = ({ facebook, instagram, twitter }) => {
-  const url = 'https//www.facebook.com/drykissltd'
-  const appId = '285418984933747'
-
   return (
     <>
       {facebook &&
         <BlogSection heading='Facebook'>
-          <iframe
-            src={`https://www.facebook.com/plugins/page.php?href=${url}&height=200&width=339&small_header=true&appId=${appId}`}
-            width='339'
-            height='auto'
-            style={{ border: 'none', overflow: 'hidden' }}
-            scrolling='no'
-            frameBorder='0'
-            allow='encrypted-media'
+          <FacebookPagePlugin
+            appId={facebook.appId}
+            to={facebook.appPath}
+            width={349}
           />
         </BlogSection>
       }
@@ -49,13 +43,12 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
 }
 
 BlogSocial.propTypes = {
-  facebook: bool,
+  facebook: object,
   instagram: bool,
   twitter: bool
 }
 
 BlogSocial.defaultProps = {
-  facebook: true,
   instagram: true,
   twitter: false
 }

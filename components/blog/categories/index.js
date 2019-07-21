@@ -1,23 +1,29 @@
 /**
- * Post Categories
+ * Blog - Categories
  * Displays two article cards from each category.
- * Only shows if homepage is not false
- * Sorted and filtered by date.
+ *
+ * - Only shows if homepage is not false
+ * - Sorted and filtered by date.
  */
 
 // React
 import { Fragment } from 'react'
-import { any } from 'prop-types'
+import { any, object } from 'prop-types'
 
 // UI
 import {
   BlogCard,
   Column,
   Heading,
-  Row
+  Link,
+  Row,
+  slugify
 } from '../../'
 
-export const BlogCategories = ({ articles }) => {
+// Style
+import styled from 'styled-components'
+
+export const BlogCategories = ({ articles, config }) => {
   const _uniqueCategories = () => {
     const uniqueCategories = [...new Set(
       articles.map(article => article.category)
@@ -47,15 +53,27 @@ export const BlogCategories = ({ articles }) => {
       {_find().map((articles, index) => (
         <Fragment key={index}>
 
-          <div className='text-center' style={{ marginTop: '2rem' }}>
-            <Heading content={articles[0].category} tag='h3' />
-          </div>
+          <Link
+            to={{
+              as: `${config.path}/${slugify(articles[0].category)}`,
+              href: {
+                pathname: `${config.path}/category`,
+                query: {
+                  category: slugify(articles[0].category)
+                }
+              }
+            }}
+          >
+            <a>
+              <StyledHeading content={articles[0].category} tag='h2' />
+            </a>
+          </Link>
 
           <Row>
 
             {articles.map((article, index) => (
               <Column key={index} md={6}>
-                <BlogCard article={article} />
+                <BlogCard article={article} config={config} />
               </Column>
             ))}
 
@@ -68,6 +86,17 @@ export const BlogCategories = ({ articles }) => {
   )
 }
 
+const StyledHeading = styled(Heading)`
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+
+  &:hover {
+    color: #00ccbc;
+  }
+`
+
 BlogCategories.propTypes = {
-  articles: any
+  articles: any.isRequired,
+  config: object.isRequired
 }

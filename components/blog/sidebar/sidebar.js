@@ -1,15 +1,16 @@
 /**
- * Blog Sidebar
+ * Blog - Sidebar
  * Showcases the Find Food, Social, Recent, Tags and Archive
  * The News room replaces the Find food with a search
  */
 
 // React
-import { array } from 'prop-types'
+import { array, bool, object } from 'prop-types'
 
 import {
   BlogArchive,
   BlogAuthor,
+  BlogFindFood,
   BlogMedia,
   BlogPromo,
   BlogRecent,
@@ -20,27 +21,33 @@ import {
 // Style
 import styled from 'styled-components'
 
-export const BlogSidebar = ({ articles, media, promo }) => {
+export const BlogSidebar = ({ articles, config, facebook, findFood, media, promo, tags }) => {
   return (
     <StyledAside>
 
-      {media &&
-        <BlogMedia />
+      {findFood &&
+        <BlogFindFood />
       }
 
-      <BlogSocial />
+      {media &&
+        <BlogMedia media={media} />
+      }
+
+      <BlogSocial facebook={facebook} />
 
       {promo &&
         <BlogPromo src={promo.src} to={promo.to} />
       }
 
-      <BlogRecent articles={articles} />
+      <BlogRecent articles={articles} config={config} />
 
-      <BlogTagCloud articles={articles} />
+      {tags &&
+        <BlogTagCloud articles={articles} />
+      }
 
-      <BlogArchive articles={articles} />
+      <BlogArchive articles={articles} config={config} />
 
-      <BlogAuthor articles={articles} />
+      <BlogAuthor articles={articles} config={config} />
 
     </StyledAside>
   )
@@ -53,10 +60,15 @@ const StyledAside = styled.aside`
 `
 
 BlogSidebar.propTypes = {
-  articles: array.isRequired
+  articles: array.isRequired,
+  config: object.isRequired,
+  facebook: object,
+  findFood: bool,
+  media: array,
+  promo: array,
+  tags: array
 }
 
 BlogSidebar.defaultProps = {
-  media: true,
-  promo: true
+  findFood: false
 }

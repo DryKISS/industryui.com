@@ -29,6 +29,7 @@ export const Register = ({
   marketing,
   nameFirst,
   nameLast,
+  pathLogin,
   password,
   submit,
   terms,
@@ -125,7 +126,7 @@ export const Register = ({
 
       <StyledLink>
         Already have an account?{' '}
-        <Link to='/sign-in'>
+        <Link to={pathLogin}>
           <a>Sign in</a>
         </Link>
       </StyledLink>
@@ -133,6 +134,11 @@ export const Register = ({
     </Form>
   )
 }
+
+const StyledLink = styled.div`
+  display: block;
+  margin: 1rem 0;
+`
 
 Register.propTypes = {
   birthday: bool,
@@ -152,10 +158,5 @@ Register.propTypes = {
 
 Register.defaultProps = {
   birthday: false,
-  pathLogin: '/sign-in'
+  pathLogin: '/account/sign-in'
 }
-
-const StyledLink = styled.div`
-  display: block;
-  margin: 1rem 0;
-`

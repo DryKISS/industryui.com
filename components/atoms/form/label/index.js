@@ -9,10 +9,10 @@ import { node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Label = ({ children, id, text }) => {
+export const Label = ({ children, id, style, text }) => {
   return (
     <StyledLabel htmlFor={id}>
-      <StyledLabelText text={text}>{text}</StyledLabelText>
+      <StyledLabelText className={'Form-label'} text={text}>{text}</StyledLabelText>
       {children}
     </StyledLabel>
   )

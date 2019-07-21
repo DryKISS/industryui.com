@@ -19,34 +19,12 @@ export const Button = (props) => {
   )
 }
 
-Button.propTypes = {
-  block: bool,
-  centre: bool,
-  children: node,
-  className: string,
-  content: node,
-  context: oneOf(Object.values(CONTEXT)),
-  disabled: bool,
-  onClick: func,
-  outline: bool,
-  shadow: bool,
-  size: oneOf(Object.values(SIZE)),
-  style: objectOf(oneOfType([number, string])),
-  type: oneOf(['button', 'reset', 'submit'])
-}
-
-Button.defaultProps = {
-  context: 'primary',
-  disabled: false,
-  type: 'button'
-}
-
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
   /* ${props => COLOUR(props)} */
-  color: #fff;
+  color: ${({ context, theme }) => context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
   border: 1px solid ${props => props.theme.COLOUR[props.context]};
-  border-radius: .5rem;
+  border-radius: .25rem;
   ${props => props.shadow && `box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);`}
   cursor: ${props => props.disabled ? 'initial' : 'pointer'};
   display: ${props => props.centre || props.block ? 'block' : 'inline-block'};
@@ -70,8 +48,35 @@ const StyledButton = styled.button`
     margin-top: ${({ block }) => block ? '1rem' : 'initial'};
   }
 
+  .Form-inputGroup > div > & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
   &:hover {
     background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -10)}
     border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)}
   }
 `
+
+Button.propTypes = {
+  block: bool,
+  centre: bool,
+  children: node,
+  className: string,
+  content: node,
+  context: oneOf(Object.values(CONTEXT)),
+  disabled: bool,
+  onClick: func,
+  outline: bool,
+  shadow: bool,
+  size: oneOf(Object.values(SIZE)),
+  style: objectOf(oneOfType([number, string])),
+  type: oneOf(['button', 'reset', 'submit'])
+}
+
+Button.defaultProps = {
+  context: 'primary',
+  disabled: false,
+  type: 'button'
+}

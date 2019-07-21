@@ -70,29 +70,29 @@ const StyledColumn = styled.div`
 
   /* SM Medium devices (tablets, 576px and up) */
   @media (min-width: 0) {
-    flex: 0 0 ${({ size }) => size.sm ? 100 / (12 / size.sm) : 100}%;
-    margin-left: ${({ off }) => off.sm ? (100 / 12) * off.sm : 0}%;
-    max-width: ${({ size }) => size.sm ? 100 / (12 / size.sm) : 100}%;
+    flex: 0 0 ${({ size }) => size.sm ? (100 / (12 / size.sm)).toFixed(5) : 100}%;
+    margin-left: ${({ off }) => off.sm ? ((100 / 12) * off.sm).toFixed(5) : 0}%;
+    max-width: ${({ size }) => size.sm ? (100 / (12 / size.sm)).toFixed(5) : 100}%;
   }
 
   /* MD Medium devices (tablets, 768px and up) */
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
-    flex: 0 0 ${({ size }) => 100 / (12 / size.md)}%;
-    margin-left: ${({ off }) => (100 / 12 * off.md)}%;
-    max-width: ${({ size }) => 100 / (12 / size.md)}%;
+    flex: 0 0 ${({ size }) => (100 / (12 / size.md)).toFixed(5)}%;
+    margin-left: ${({ off }) => (100 / 12 * off.md).toFixed(5)}%;
+    max-width: ${({ size }) => (100 / (12 / size.md)).toFixed(5)}%;
   }
 
   /* LG Large devices (desktops, 992px and up) */
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
-    flex: 0 0 ${({ size }) => 100 / (12 / size.lg)}%;
-    margin-left: ${({ off }) => (100 / 12 * off.lg)}%;
-    max-width: ${({ size }) => 100 / (12 / size.lg)}%;
+    flex: 0 0 ${({ size }) => (100 / (12 / size.lg)).toFixed(5)}%;
+    margin-left: ${({ off }) => (100 / 12 * off.lg).toFixed(5)}%;
+    max-width: ${({ size }) => (100 / (12 / size.lg)).toFixed(5)}%;
   }
 
   /* XL Extra large devices (large desktops, 1200px and up) */
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
-    flex: 0 0 ${({ size }) => 100 / (12 / size.xl)}%;
-    margin-left: ${({ off }) => (100 / 12 * off.xl)}%;
-    max-width: ${({ size }) => 100 / (12 / size.xl)}%;
+    flex: 0 0 ${({ size }) => (100 / (12 / size.xl)).toFixed(5)}%;
+    margin-left: ${({ off }) => (100 / 12 * off.xl).toFixed(5)}%;
+    max-width: ${({ size }) => (100 / (12 / size.xl)).toFixed(5)}%;
   }
 `

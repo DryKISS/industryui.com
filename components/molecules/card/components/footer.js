@@ -3,7 +3,7 @@
  */
 
 // React
-import { oneOf, string } from 'prop-types'
+import { oneOf, node } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../../../'
@@ -11,23 +11,12 @@ import { CONTEXT } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const CardFooter = ({ context, footer }) => {
+export const CardFooter = ({ children, context }) => {
   return (
     <StyledFooter context={context}>
-      <StyledTitle>
-        <div dangerouslySetInnerHTML={{ __html: footer }} />
-      </StyledTitle>
+      {children}
     </StyledFooter>
   )
-}
-
-CardFooter.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
-  footer: string
-}
-
-CardFooter.defaultProps = {
-  context: 'light'
 }
 
 const StyledFooter = styled.div`
@@ -44,7 +33,11 @@ const StyledFooter = styled.div`
   text-align: center;
 `
 
-const StyledTitle = styled.h2`
-  font-size: 1rem;
-  margin: 0;
-`
+CardFooter.propTypes = {
+  context: oneOf(Object.values(CONTEXT)),
+  children: node
+}
+
+CardFooter.defaultProps = {
+  context: 'light'
+}

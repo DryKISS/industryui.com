@@ -1,0 +1,4 @@
+/**
+ * Validator
+ */
+export * from './postCode'

@@ -6,26 +6,22 @@
 // React
 import { node, oneOf } from 'prop-types'
 
-// UI
-import { InputGroupText } from '../../'
-
 // Style
 import styled from 'styled-components'
 
 export const InputGroupAddon = ({ addonType, children }) => {
-  // Convenience to assist with transition
-  // if (typeof children === 'string') {
   return (
-    <StyledInputGroupAddon addonType={addonType}>
-      <InputGroupText children={children} />
-    </StyledInputGroupAddon>
+    <StyledInputGroupAddon
+      addonType={addonType}
+      children={children}
+    />
   )
-  // }
-
-  // return (
-  //   <StyledInputGroupAddon addonType={addonType} children={children} />
-  // )
 }
+
+const StyledInputGroupAddon = styled.div`
+  display: flex;
+  margin-left: -1px;
+`
 
 InputGroupAddon.propTypes = {
   addonType: oneOf(['prepend', 'append']),
@@ -33,11 +29,6 @@ InputGroupAddon.propTypes = {
 }
 
 InputGroupAddon.defaultProps = {
-  addonType: 'prepend',
+  addonType: 'append',
   size: 'md'
 }
-
-const StyledInputGroupAddon = styled.div`
-  display: flex;
-  margin-right: -1px;
-`
