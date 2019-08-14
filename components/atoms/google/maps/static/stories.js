@@ -22,8 +22,7 @@ storiesOf('Atoms/Google/Static Map', module)
 
   .add('Default',
     withInfo()(() =>
-      // <span>dedede</span>
-      <GoogleMapsStatic size='600x600' apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'>
+      <GoogleMapsStatic size='600x600' apiKey=''>
         <GoogleMapsStaticPath
           color='0xff0000ff'
           weight='5'

@@ -14,7 +14,6 @@ import styled from 'styled-components'
 export const Brand = ({ brand }) => {
   return (
     <Link to='/' passHref>
-
       <StyledBrand id='navLogo'>
 
         <StyledBrandLogo
@@ -24,7 +23,6 @@ export const Brand = ({ brand }) => {
         />
 
       </StyledBrand>
-
     </Link>
   )
 }
@@ -39,7 +37,7 @@ const StyledBrandLogo = styled.img`
   vertical-align: middle;
 
   ${MEDIA_QUERY.desktop`
-    max-width: 14.5rem;
+    max-width: 15rem;
   `}
 `
 

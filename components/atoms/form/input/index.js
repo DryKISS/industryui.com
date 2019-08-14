@@ -48,25 +48,14 @@ export const Input = ({
       {...data}
     />
 
-  const HasLabel = ({ children }) => {
-    return (
-      <Label text={label}>
-        {children}
-        <div className='Form-feedback' />
-      </Label>
-    )
-  }
-
   return (
     <>
-      {label &&
-        <HasLabel>
-          <InputItem />
-        </HasLabel>
-      }
-
-      {!label &&
-        <InputItem />
+      {label ?
+        <Label text={label}>
+          {InputItem()}
+          <div className='Form-feedback' />
+        </Label>
+        : InputItem()
       }
     </>
   )

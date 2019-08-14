@@ -22,7 +22,9 @@ export const Bootstrap = ({
 
       {children}
 
-      <Footer columns={footer} />
+      {footer &&
+        <Footer columns={footer} />
+      }
 
       <Copyright brand={brand} links={copyright} />
     </>

@@ -21,7 +21,6 @@ export const Button = (props) => {
 
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
-  /* ${props => COLOUR(props)} */
   color: ${({ context, theme }) => context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
   border: 1px solid ${props => props.theme.COLOUR[props.context]};
   border-radius: .25rem;
@@ -54,8 +53,8 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -10)}
-    border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)}
+    background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -10)};
+    border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)};
   }
 `
 

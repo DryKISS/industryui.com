@@ -8,7 +8,6 @@ Link component to create the differentiation between internal and external links
 <Link to={to} />
 ```
 
-
 // // Mailto Type
 // type === 'mailto'
 //   ? <a

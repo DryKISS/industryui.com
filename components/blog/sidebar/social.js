@@ -25,7 +25,7 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
       {instagram &&
         <BlogSection heading='Instagram'>
           <iframe
-            src='http://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html'
+            src='https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html'
             scrolling='no'
             style={{ width: '100%', border: '0', overflow: 'hidden' }}
           />
@@ -49,6 +49,6 @@ BlogSocial.propTypes = {
 }
 
 BlogSocial.defaultProps = {
-  instagram: true,
+  instagram: false,
   twitter: false
 }

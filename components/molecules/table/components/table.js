@@ -64,7 +64,7 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
   )
 }
 
-Table.ropTypes = {
+Table.propTypes = {
   classname: string,
   columns: array.isRequired,
   rowClick: func,
@@ -84,7 +84,7 @@ const StyledTable = styled.table`
 `
 
 const StyledTr = styled.tr`
-  cursor: ${({ pointer }) => pointer ? 'pointer' : 'initial'}
+  cursor: ${({ pointer }) => pointer ? 'pointer' : 'initial'};
   :nth-child(odd) {
     background-color: ${({ theme }) => theme.COLOUR.light};
   }
