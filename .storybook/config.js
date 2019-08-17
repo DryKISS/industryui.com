@@ -2,56 +2,58 @@
  * Storybook Configuration
  */
 
- // React
+// React
 import React from 'react'
 
 // Storybook
 import { configure, addDecorator } from '@storybook/react'
-import { setDefaults } from '@storybook/addon-info'
-import { checkA11y } from '@storybook/addon-a11y'
-import { setOptions } from '@storybook/addon-options'
+
+import { withA11y } from '@storybook/addon-a11y'
+import { withInfo } from '@storybook/addon-info'
+import { withOptions } from '@storybook/addon-options'
+import { addReadme } from 'storybook-readme'
+
 import { ThemeWrapper } from './'
+
 // import { configureViewport } from '@storybook/addon-viewport';
 // import Container from './Container'
 
+addDecorator(withInfo({
+  header: true,
+  inline: false,
+  styles: { infoBody: { overflow: 'overlay'} },
+  source: true
+}))
+
 // addDecorator(story => <Container story={story} />)
-addDecorator(checkA11y)
+
+addDecorator(addReadme)
+addDecorator(withA11y)
 addDecorator(story => <ThemeWrapper story={story} />)
 
 // Info addon options
 // @see https://github.com/storybooks/storybook/tree/master/addons/info
 // @see https://github.com/storybooks/storybook/blob/master/addons/info/src/components/Story.js#L19
-setDefaults({
-  header: true,
-  inline: true,
-  styles: { infoBody: { overflow: 'overlay'} },
-  source: true
-})
+withOptions({
+  theme: {
+    brandTitle: 'Industry UI',
+    brandUrl: 'https://industryui.com/'
+  },
 
-setOptions({
-  /**
-   * name to display in the top left corner
-   * @type {String}
-   */
-  name: 'Industry UI',
-
-  /**
-   * URL for name in top left corner to link to
-   * @type {String}
-   */
-  url: 'https://industryui.com/',
+  // The options { goFullScreen, showStoriesPanel, showAddonPanel, addonPanelInRight }
+  // are deprecated -- use  { isFullscreen, showNav, showPanel, panelPosition } instead.
 
   /**
    * show story component as full screen
    * @type {Boolean}
    */
-  goFullScreen: false,
+  isFullscreen: false,
 
   /**
    * display panel that shows a list of stories
    * @type {Boolean}
    */
-  showStoriesPanel: true,
+  showPanel: true,
 
   /**
    * display panel that shows addon configurations

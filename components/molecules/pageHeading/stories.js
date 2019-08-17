@@ -7,19 +7,22 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { PageHeading } from '../../'
+import { PageHeading } from './'
 import Readme from './README.md'
 
 storiesOf('Molecules/PageHeading', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <PageHeading />
-    )
+  .add('Default', () =>
+    <PageHeading
+      heading='Page Heading'
+      strapline='Strapline'
+    />
   )

@@ -5,6 +5,7 @@
 - [ ] Probably should split the Toolbar into its own component folder
 - [ ] Check out the dynamic classes inline
 - [ ] If a button is floated then provide a clearing Div underneath
+- [ ] Stories for Toolbar
 
 ## Done
 

@@ -7,19 +7,19 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Section } from '../../'
+import { Section } from './'
 import Readme from './README.md'
 
 storiesOf('Molecules/Section', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <Section />
-    )
+  .add('Default', () =>
+    <Section />
   )

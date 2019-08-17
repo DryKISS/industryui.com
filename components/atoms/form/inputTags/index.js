@@ -50,9 +50,9 @@ export const InputTags = ({
 }
 
 InputTags.propTypes = {
-  autoCapitalize: oneOfType([ bool, string ]),
-  autoComplete: oneOfType([ bool, string ]),
-  autoCorrect: oneOfType([ bool, string ]),
+  autoCapitalize: oneOfType([bool, string]),
+  autoComplete: oneOfType([bool, string]),
+  autoCorrect: oneOfType([bool, string]),
   autoFocus: bool,
   change: func.isRequired,
   label: string,

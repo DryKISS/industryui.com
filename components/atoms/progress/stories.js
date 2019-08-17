@@ -7,19 +7,19 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import Progress from '../../'
+import { Progress } from './'
 import Readme from './README.md'
 
 storiesOf('Atoms/Progress', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <Progress />
-    )
+  .add('Default', () =>
+    <Progress />
   )

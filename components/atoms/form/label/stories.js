@@ -7,20 +7,22 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Label, Select, Form } from '../../'
+import { Label, Select } from '../../'
 import Readme from './README.md'
 
 storiesOf('Atoms/Form/Label', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default', withInfo()(() =>
+  .add('Default', () =>
     <>
-      <Label text="Select your gender">
+      <Label text='Select your gender'>
         <Select
           id='gender'
           options={[
@@ -29,8 +31,6 @@ storiesOf('Atoms/Form/Label', module)
             { text: 'Unknown (disabled)', value: 'unknown', disabled: true }
           ]}
         />
-
       </Label>
     </>
-  )
   )

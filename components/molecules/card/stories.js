@@ -7,9 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs/react'
-import { withReadme } from 'storybook-readme'
 
 // UI
 import { Button, Card, Column } from '../../'
@@ -23,61 +21,57 @@ storiesOf('Molecules/Card', module)
     <Column md={3}>{story()}</Column>
   ))
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <Card
-        bordered={boolean('Bordered', true)}
-        footer={text('Footer', 'Footer text')}
-        image={vizla}
-        title={text('Title', 'Title of the article')}
-      >
-        {text('Description', 'Description of the card.')}
-      </Card>
-    )
+  .add('Default', () =>
+    <Card
+      bordered={boolean('Bordered', true)}
+      footer={text('Footer', 'Footer text')}
+      image={vizla}
+      title={text('Title', 'Title of the article')}
+    >
+      {text('Description', 'Description of the card.')}
+    </Card>
   )
 
-  .add('Horizontal',
-    withInfo()(() =>
-      <Card
-        bordered={boolean('Bordered', true)}
-        horizontal={boolean('Horizontal', true)}
-        image={seeker}
-        title={text('Title', 'Are you a dog seeker?')}
-      >
-        <p>
-          {text('Description',
-            `The wise man therefore always holds in these matters to this
+  .add('Horizontal', () =>
+    <Card
+      bordered={boolean('Bordered', true)}
+      horizontal={boolean('Horizontal', true)}
+      image={seeker}
+      title={text('Title', 'Are you a dog seeker?')}
+    >
+      <p>
+        {text('Description',
+          `The wise man therefore always holds in these matters to this
                principle of selection: he rejects pleasures to secure other
                greater pleasures, or else he endures.`)}
-        </p>
+      </p>
 
-        <Button className='Card-absoluteBottom' secondary>
-          View available dogs
-        </Button>
+      <Button className='Card-absoluteBottom' secondary>
+        View available dogs
+      </Button>
 
-      </Card>
-    )
+    </Card>
   )
 
-  .add('Breed',
-    withInfo()(() =>
-      <Card
-        bordered={boolean('Bordered', true)}
-        footer='Vizsla'
-        image={vizla}
-      />
-    )
+  .add('Breed', () =>
+    <Card
+      bordered={boolean('Bordered', true)}
+      footer='Vizsla'
+      image={vizla}
+    />
   )
 
-  .add('No Image',
-    withInfo()(() =>
-      <Card
-        bordered={boolean('Bordered', false)}
-        title='No Image'
-      >
-        Content
-      </Card>
-    )
+  .add('No Image', () =>
+    <Card
+      bordered={boolean('Bordered', false)}
+      title='No Image'
+    >
+      Content
+    </Card>
   )

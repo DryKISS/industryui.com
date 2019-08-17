@@ -6,7 +6,7 @@
 import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, COLOUR, CONTEXT, SHADE_COLOUR, SIZE } from '../../../'
+import { BACKGROUND, CONTEXT, SHADE_COLOUR, SIZE } from '../../../'
 
 // Style
 import styled from 'styled-components'

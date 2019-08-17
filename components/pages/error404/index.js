@@ -24,7 +24,6 @@ const Error404 = () => {
 
   return (
     <>
-
       <MetaHead meta={meta} brand={BRAND} />
 
       <Container>
@@ -39,7 +38,6 @@ const Error404 = () => {
         />
 
       </Container>
-
     </>
   )
 }

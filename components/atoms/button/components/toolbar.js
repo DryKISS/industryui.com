@@ -3,8 +3,6 @@
  * Combine sets of button groups into button toolbars for more complex
  * components. Use utility classes as needed to space out groups, buttons, and
  * more.
- *
- * @see https://getbootstrap.com/docs/4.1/components/button-group/#button-toolbar
  */
 
 // React

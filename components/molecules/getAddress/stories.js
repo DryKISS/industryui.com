@@ -7,19 +7,19 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { GetAddress } from '../../'
+import { GetAddress } from './'
 import Readme from './README.md'
 
 storiesOf('Molecules/Get Address', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <GetAddress />
-    )
+  .add('Default', () =>
+    <GetAddress />
   )

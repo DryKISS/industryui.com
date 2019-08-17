@@ -8,20 +8,10 @@ import React from 'react'
 // Storybook
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { withInfo } from '@storybook/addon-info'
-import { withKnobs } from '@storybook/addon-knobs/react'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Checkbox } from '../../'
+import { Checkbox } from './'
 import Readme from './README.md'
-
-// Story
-const stories = storiesOf('Atoms/Form/Checkbox', module)
-
-// Decorators
-stories.addDecorator(withKnobs)
-stories.addDecorator(withReadme(Readme))
 
 const CHECKBOXS = [
   {
@@ -33,16 +23,22 @@ const CHECKBOXS = [
   }
 ]
 
+storiesOf('Atoms/Form/Checkbox', module)
+
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
+
 // Default
-stories.add('Default',
-  withInfo()(() =>
+  .add('Default', () =>
     <Checkbox
       data={CHECKBOXS}
       legend='Finally, which of the following do you pledge to do for your new dog?'
       change={action('button-click')}
     />
   )
-)
 
 // onClick={action('button-click')}
 // checked={boolean('Checked', null)}

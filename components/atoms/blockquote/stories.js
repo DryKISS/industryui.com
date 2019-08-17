@@ -7,21 +7,19 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withKnobs } from '@storybook/addon-knobs/react'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Blockquote } from '../../'
+import { Blockquote } from './'
 import Readme from './README.md'
 
 storiesOf('Atoms/Blockquote', module)
 
-  .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Primary',
-    withInfo()(() =>
-      <Blockquote />
-    )
+  .add('Primary', () =>
+    <Blockquote footer='Footer Text' text='Title Text' />
   )

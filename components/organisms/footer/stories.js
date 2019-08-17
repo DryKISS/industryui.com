@@ -7,8 +7,6 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
 import { Footer, Image, List, ListItem } from '../../'
@@ -34,9 +32,14 @@ const renderColumn = () => (
 )
 
 storiesOf('Organisms/Footer', module)
-  .addDecorator(withReadme(Readme))
 
-  .add('Default', withInfo()(() => (
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
+
+  .add('Default', () => (
     <Footer
       copyright='{t.Footer.COPYRIGHT}'
       description='{t.Footer.DESCRIPTION}'
@@ -44,9 +47,9 @@ storiesOf('Organisms/Footer', module)
       columns={FOOTER(renderColumn)}
       termsAndContitions='{t.Footer.TERMS_AND_CONDITIONS}'
     />
-  )))
+  ))
 
-  .add('12 Column', withInfo()(() => (
+  .add('12 Column', () => (
     <Footer
       copyright='{t.Footer.COPYRIGHT}'
       description='{t.Footer.DESCRIPTION}'
@@ -54,4 +57,4 @@ storiesOf('Organisms/Footer', module)
       columns={ONE_COLUMN}
       termsAndContitions='{t.Footer.TERMS_AND_CONDITIONS}'
     />
-  )))
+  ))

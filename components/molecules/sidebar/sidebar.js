@@ -13,7 +13,7 @@ import {
   Icon,
   Link,
   List
-} from '../../'
+} from '../../../'
 
 export const Sidebar = ({ data, profile }) => {
   const link = (icon, name, to) =>
@@ -21,7 +21,10 @@ export const Sidebar = ({ data, profile }) => {
       {icon
         ? icon === 'dog-leashed'
           ? <Icon icon='dog-leashed' />
-          : <Icon icon='check-circle' context={profile && profile[icon] === true ? 'primary' : 'light'} />
+          : <Icon
+            icon='check-circle'
+            context={profile && profile[icon] === true ? 'primary' : 'light'}
+          />
         : ''
       }
 
@@ -32,7 +35,7 @@ export const Sidebar = ({ data, profile }) => {
           {name}
         </a>
       </Link>
-  </>
+    </>
 
   return (
     <Card bordered context='white'>

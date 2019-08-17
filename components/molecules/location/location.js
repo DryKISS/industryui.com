@@ -4,7 +4,7 @@
  */
 
 // UI
-import { Card, CardBody } from 'industry-ui'
+import { Card, CardBody } from '../../'
 
 export const Location = ({ apiKey, location }) => {
   const url = 'https://maps.googleapis.com/maps/api/staticmap'

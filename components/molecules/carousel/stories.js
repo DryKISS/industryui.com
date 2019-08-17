@@ -7,9 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
 import { withKnobs } from '@storybook/addon-knobs/react'
-import { withReadme } from 'storybook-readme'
 
 // Style
 import styled from 'styled-components'
@@ -27,61 +25,59 @@ import dog5 from './__mocks__/images/dog5.jpg'
 storiesOf('Molecules/Carousel', module)
 
   .addDecorator(withKnobs)
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Detailed',
-    withInfo()(() =>
-      <Carousel>
-        <div>
-          <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-          <Image src={dog1} alt='' style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
-        </div>
-        <div>
-          <TextLabel>objectFit: cover</TextLabel>
-          <Image src={dog2} alt='' style={{ border: 'dotted lightgray' }} />
-        </div>
-        <div>
-          <TextLabel>objectFit: none</TextLabel>
-          <Image src={dog3} alt='' style={{ objectFit: 'none' }} />
-        </div>
-        <div style={{ width: '100%', height: '300px' }}>
+  .add('Detailed', () =>
+    <Carousel>
+      <div>
+        <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
+        <Image src={dog1} alt='' style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
+      </div>
+      <div>
+        <TextLabel>objectFit: cover</TextLabel>
+        <Image src={dog2} alt='' style={{ border: 'dotted lightgray' }} />
+      </div>
+      <div>
+        <TextLabel>objectFit: none</TextLabel>
+        <Image src={dog3} alt='' style={{ objectFit: 'none' }} />
+      </div>
+      <div style={{ width: '100%', height: '300px' }}>
           this is text div
-        </div>
-        <div>
-          <TextLabel>objectFit: cover</TextLabel>
-          <Image src={dog4} alt='' />
-        </div>
-        <div>
-          <TextLabel>objectFit: cover</TextLabel>
-          <Image src={dog5} alt='' />
-        </div>
+      </div>
+      <div>
+        <TextLabel>objectFit: cover</TextLabel>
+        <Image src={dog4} alt='' />
+      </div>
+      <div>
+        <TextLabel>objectFit: cover</TextLabel>
+        <Image src={dog5} alt='' />
+      </div>
 
-      </Carousel>
-    )
+    </Carousel>
   )
 
-  .add('One slide',
-    withInfo()(() =>
-      <Carousel>
-        <div>
-          <Image src={dog1} alt='' />
-        </div>
+  .add('One slide', () =>
+    <Carousel>
+      <div>
+        <Image src={dog1} alt='' />
+      </div>
 
-      </Carousel>
-    )
+    </Carousel>
   )
 
-  .add('Two slides',
-    withInfo()(() =>
-      <Carousel>
-        <div>
-          <Image src={dog1} alt='' />
-        </div>
-        <div>
-          <Image src={dog2} alt='' />
-        </div>
-      </Carousel>
-    )
+  .add('Two slides', () =>
+    <Carousel>
+      <div>
+        <Image src={dog1} alt='' />
+      </div>
+      <div>
+        <Image src={dog2} alt='' />
+      </div>
+    </Carousel>
   )
 
 const Image = styled.img`

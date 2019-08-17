@@ -3,7 +3,7 @@
  */
 
 // UI
-import { DogName, Table } from '../../../../'
+import { DogName, Table } from '../../../'
 import { Actions } from './actions'
 import { Columns } from './columns'
 

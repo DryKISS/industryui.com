@@ -7,21 +7,19 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withKnobs } from '@storybook/addon-knobs'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Link } from '../../'
+import { Link } from './'
 import Readme from './README.md'
 
-const stories = storiesOf('Atoms/Link', module)
+storiesOf('Atoms/Link', module)
 
-stories.addDecorator(withKnobs)
-stories.addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-stories.add('Default',
-  withInfo(``)(() =>
+  .add('Default', () =>
     <Link to='/'>Home</Link>
   )
-)

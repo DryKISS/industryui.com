@@ -1,5 +1,7 @@
 # TODO
 
+## General
+
 - [ ] Add Search and country dropdown to the Navigation bar
 - [ ] Sort out the colours for the Themes - default and tailwise.
 - [ ] Last child of the links should not have right margin
@@ -8,16 +10,21 @@
 - [ ] Introduce the il8n into this component, pull from yaml
 - [ ] Header is the bit to the right like bootstrap
 
+## Mobile
+
+- [ ] Click is not closing the mobile menu
+
 ## Properties
 
 - [ ] Allow the fixed position to be changeable
 
 ## Testing
 
-- [ ] Move mock data to __mocks__ for tests and stories
+- [ ] Change logo for Story to DryKISS
 
 ## Done
 
+- [X] Move mock data to __mocks__ for tests and stories
 - [X] Change font - should be in global though
 - [X] Background colour is now white
 - [X] Need to be able to put a button into this

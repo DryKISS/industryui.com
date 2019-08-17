@@ -7,8 +7,6 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
 import { Textarea, Label } from '../../'
@@ -16,11 +14,14 @@ import Readme from './README.md'
 
 storiesOf('Atoms/Form/Textarea', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default', withInfo()(() =>
-    <Label text="Enter the message below">
-      <Textarea value="this is text area" />
+  .add('Default', () =>
+    <Label text='Enter the message below'>
+      <Textarea value='this is text area' />
     </Label>
-    )
   )

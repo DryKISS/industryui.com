@@ -7,18 +7,20 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Select } from '../../'
+import { Select } from './'
 import Readme from './README.md'
 
 storiesOf('Atoms/Form/Select', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default', withInfo()(() =>
+  .add('Default', () =>
     <Select
       id='color'
       data={[
@@ -28,5 +30,4 @@ storiesOf('Atoms/Form/Select', module)
         { text: 'Olive (disabled)', value: 'olive', disabled: true }
       ]}
     />
-  )
   )

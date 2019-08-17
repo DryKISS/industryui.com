@@ -1,22 +1,22 @@
 /**
- * Password Change
+ * Email Change
  */
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { PasswordChnage } from '../../'
+import { EmailChange } from './'
 import Readme from './README.md'
 
-storiesOf('Organisms/Password Chnage', module)
+storiesOf('Organisms/Email Change', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <PasswordChnage />
-    )
+  .add('Default', () =>
+    <EmailChange />
   )

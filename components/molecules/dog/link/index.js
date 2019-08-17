@@ -6,7 +6,7 @@
 import { string } from 'prop-types'
 
 // UI
-import { Link } from '../../../../'
+import { Link } from '../../../'
 
 export const DogLink = ({ name }) => {
   const slugify = (breed) => {

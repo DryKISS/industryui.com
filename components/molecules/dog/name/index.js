@@ -6,7 +6,7 @@
 import { array, object, oneOfType } from 'prop-types'
 
 // UI
-import { Icon } from '../../../../'
+import { Icon } from '../../../'
 
 export const DogName = ({ row: { gender, name } }) =>
   <>

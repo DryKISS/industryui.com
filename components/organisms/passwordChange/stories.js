@@ -4,19 +4,19 @@
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { PasswordChnage } from '../../'
+import { PasswordChange } from './'
 import Readme from './README.md'
 
-storiesOf('Organisms/Password Chnage', module)
+storiesOf('Organisms/Password Change', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <PasswordChnage />
-    )
+  .add('Default', () =>
+    <PasswordChange />
   )

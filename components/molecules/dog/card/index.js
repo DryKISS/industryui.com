@@ -7,7 +7,7 @@
  */
 
 // React
-import { number, string } from 'prop-types'
+import { bool, number, string } from 'prop-types'
 
 // UI
 import {
@@ -16,7 +16,7 @@ import {
   DogName,
   formatPrice,
   slugify
-} from '../../../../'
+} from '../../../'
 
 export const DogCard = ({
   breed,
@@ -67,10 +67,12 @@ export const DogCard = ({
 
 DogCard.propTypes = {
   breed: string.isRequired,
+  breedName: string,
   breeder: string.isRequired,
   dogId: string.isRequired,
   gender: string.isRequired,
   image: string.isRequired,
   name: string.isRequired,
-  price: number.isRequired
+  price: number.isRequired,
+  sell: bool
 }

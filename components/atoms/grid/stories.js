@@ -7,20 +7,22 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Container, Row, Column } from '../../'
+import { Container, Row, Column } from './'
 import Readme from './README.md'
 
 import { StyledColumn, colStyle } from './__mocks__'
 
 storiesOf('Atoms/Grid', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default', withInfo()(() =>
+  .add('Default', () =>
     <Container>
       <Row>
         <Column>
@@ -47,9 +49,9 @@ storiesOf('Atoms/Grid', module)
         </Column>
       </Row>
     </Container>
-  ))
+  )
 
-  .add('Size depending on screen width', withInfo()(() =>
+  .add('Size depending on screen width', () =>
     <Container>
       <Row>
         <StyledColumn md={3} lg={6} lx={9}>
@@ -60,9 +62,9 @@ storiesOf('Atoms/Grid', module)
         </StyledColumn>
       </Row>
     </Container>
-  ))
+  )
 
-  .add('With column sizes & offsets', withInfo()(() =>
+  .add('With column sizes & offsets', () =>
     <Container>
       <Row>
         <StyledColumn md={4}>
@@ -86,4 +88,4 @@ storiesOf('Atoms/Grid', module)
         </StyledColumn>
       </Row>
     </Container>
-  ))
+  )

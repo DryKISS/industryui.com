@@ -1,4 +1,4 @@
-# Table
+# Dog - Table
 
 Creates a simple datagrid
 

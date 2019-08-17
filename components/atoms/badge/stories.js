@@ -7,19 +7,19 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info'
-import { withReadme } from 'storybook-readme'
 
 // UI
-import { Badge } from '../../'
+import { Badge } from './'
 import Readme from './README.md'
 
 storiesOf('Atoms/Badge', module)
 
-  .addDecorator(withReadme(Readme))
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
 
-  .add('Default',
-    withInfo()(() =>
-      <Badge content='Ian Warner' />
-    )
+  .add('Default', () =>
+    <Badge content='Ian Warner' />
   )
