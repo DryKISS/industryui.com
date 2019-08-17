@@ -21,5 +21,9 @@ storiesOf('Molecules/Date Picker', module)
   })
 
   .add('Default', () =>
-      <DatePicker />
+    <DatePicker
+      change={() => {}}
+      month={''}
+      year={''}
+    />
   )

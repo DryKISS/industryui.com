@@ -21,5 +21,9 @@ storiesOf('Atoms/Form/Input', module)
   })
 
   .add('Default', () =>
-    <Input label='Email' placeholder='Enter your email' />
+    <Input
+      change={() => {}}
+      label='Email'
+      placeholder='Enter your email'
+    />
   )

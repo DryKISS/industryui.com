@@ -60,7 +60,6 @@ export const DogCard = ({
           </div>
         }
       </CardBody>
-
     </Card>
   )
 }

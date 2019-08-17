@@ -64,18 +64,6 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
   )
 }
 
-Table.propTypes = {
-  classname: string,
-  columns: array.isRequired,
-  rowClick: func,
-  rows: array.isRequired
-}
-
-Table.defaultProps = {
-  className: 'Table',
-  rowClick: () => {}
-}
-
 const StyledTable = styled.table`
   background-color: ${({ theme }) => theme.COLOUR.transparent};
   border-collapse: collapse;
@@ -108,3 +96,15 @@ const StyledTd = styled.td`
   text-align: ${({ center }) => center && 'center'};
   vertical-align: top;
 `
+
+Table.propTypes = {
+  classname: string,
+  columns: array.isRequired,
+  rowClick: func,
+  rows: array.isRequired
+}
+
+Table.defaultProps = {
+  className: 'Table',
+  rowClick: () => {}
+}

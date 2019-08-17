@@ -12,7 +12,6 @@ import { storiesOf } from '@storybook/react'
 import { DogLink } from './'
 import Readme from './README.md'
 
-// Story
 storiesOf('Molecules/Dog/Link', module)
 
   .addParameters({

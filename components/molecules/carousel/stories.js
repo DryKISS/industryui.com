@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs } from '@storybook/addon-knobs/react'
+import { withKnobs } from '@storybook/addon-knobs'
 
 // Style
 import styled from 'styled-components'

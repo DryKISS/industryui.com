@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs, select } from '@storybook/addon-knobs/react'
+import { withKnobs, select } from '@storybook/addon-knobs'
 
 // UI
 import { Radio } from './'
@@ -16,7 +16,6 @@ import Readme from './README.md'
 // Data
 import { RADIO_GENDER } from './__mocks__'
 
-// Story
 storiesOf('Atoms/Form/Radio', module)
 
   .addDecorator(withKnobs)
@@ -28,6 +27,7 @@ storiesOf('Atoms/Form/Radio', module)
 
   .add('Default', () =>
     <Radio
+      change={() => {}}
       data={RADIO_GENDER(select('Checked', {
         no: 'no',
         male: 'male',
@@ -39,10 +39,13 @@ storiesOf('Atoms/Form/Radio', module)
 
   .add('Stacked', () =>
     <Radio
-      stacked
+      change={() => {}}
+
       data={RADIO_GENDER(select('Checked', {
         no: 'no',
         male: 'male',
         female: 'female'
-      }, 'no'))} />
+      }, 'no'))}
+      stacked
+    />
   )

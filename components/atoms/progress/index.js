@@ -7,7 +7,7 @@ import { number } from 'prop-types'
 
 export const Progress = ({ width }) => {
   return (
-    <div className='Progress'>
+    <div>
 
       <div
         aria-valuenow='width'

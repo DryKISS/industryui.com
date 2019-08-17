@@ -7,11 +7,18 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs, boolean, text } from '@storybook/addon-knobs/react'
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
 
 // Assets
 import { Button } from './'
 import Readme from './README.md'
+
+const options = {
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg'
+}
 
 storiesOf('Atoms/Button', module)
 
@@ -27,7 +34,7 @@ storiesOf('Atoms/Button', module)
       context='primary'
       outline={boolean('Outline', false)}
       shadow={boolean('Shadow', true)}
-      size={boolean('lg', false)}
+      size={select('Size', options, 'md', 'Other')}
     >
       {text('Button text', 'Button text')}
     </Button>
@@ -37,7 +44,6 @@ storiesOf('Atoms/Button', module)
     <Button
       centre={boolean('Centre', true)}
       context='secondary'
-      large={boolean('Large', false)}
       outline={boolean('Outline', false)}
     >
       {text('Button text', 'Button text')}
@@ -48,7 +54,6 @@ storiesOf('Atoms/Button', module)
     <Button
       centre={boolean('Centre', true)}
       context='info'
-      large={boolean('Large', false)}
       outline={boolean('Outline', true)}
     >
       {text('Button text', 'Button text')}
@@ -59,7 +64,6 @@ storiesOf('Atoms/Button', module)
     <Button
       centre={boolean('Centre', true)}
       context='primary'
-      large={boolean('Large', true)}
       outline={boolean('Outline', false)}
     >
       {text('Button text', 'Button text')}

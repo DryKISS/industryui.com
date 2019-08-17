@@ -1,14 +1,21 @@
-export const COPYRIGHT = [
+/**
+ * Copyright
+ */
+export const Copyright = [
+
   {
-    name: 'Link 1',
-    to: '/link 1'
+    name: 'Terms and conditions',
+    to: '/policies/terms-conditions'
   },
+
   {
-    name: 'Link 2',
-    to: '/link2'
+    name: 'Privacy policy',
+    to: '/policies/privacy-policy'
   },
+
   {
-    name: 'Link 3',
-    to: '/link3'
+    name: 'Site map',
+    to: '/policies/site-map'
   }
+
 ]

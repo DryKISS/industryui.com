@@ -12,16 +12,18 @@ import { storiesOf } from '@storybook/react'
 import { TableDogs } from './'
 import Readme from './README.md'
 
-const columns = [
+const Rows = [
   {
-    text: 'Column1'
-  },
-  {
-    text: 'Column2'
+    name: 'Dog',
+    breedName: 'Cockapoo',
+    price: 1000,
+    applications: 0,
+    approved: 'Yes',
+    dogId: 100,
+    gender: 'male'
   }
 ]
 
-// Story
 storiesOf('Molecules/Dog/Table', module)
 
   .addParameters({
@@ -31,5 +33,5 @@ storiesOf('Molecules/Dog/Table', module)
   })
 
   .add('Default', () =>
-    <TableDogs columns={columns} />
+    <TableDogs dogs={Rows} path='/' />
   )

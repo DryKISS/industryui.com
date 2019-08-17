@@ -3,7 +3,7 @@
  */
 
 // React
-import { array, string } from 'prop-types'
+import { object, string } from 'prop-types'
 
 // React Tooltip
 import ReactTooltip from 'react-tooltip'
@@ -44,5 +44,5 @@ export const Actions = ({ path, row }) => {
 
 Actions.propTypes = {
   path: string.isRequired,
-  row: array.isRequired
+  row: object.isRequired
 }

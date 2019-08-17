@@ -13,9 +13,16 @@ import { Copyright } from './'
 import Readme from './README.md'
 
 // Data
-import { COPYRIGHT } from './__mocks__'
+import { Copyright as Data } from './__mocks__'
+
+const Decorator = storyFn =>
+  <div style={{ bottom: '-4rem', position: 'relative' }}>
+    {storyFn()}
+  </div>
 
 storiesOf('Molecules/Copyright', module)
+
+  .addDecorator(Decorator)
 
   .addParameters({
     readme: {
@@ -26,6 +33,6 @@ storiesOf('Molecules/Copyright', module)
   .add('Default', () =>
     <Copyright
       brand='Compnay Name'
-      links={COPYRIGHT}
+      links={Data}
     />
   )

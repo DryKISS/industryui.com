@@ -11,8 +11,8 @@ import { storiesOf } from '@storybook/react'
 // Component
 import { DogCard } from './'
 import Readme from './README.md'
+import vizla from './__resources__/vizla.jpg'
 
-// Story
 storiesOf('Molecules/Dog/Card', module)
 
   .addParameters({
@@ -28,7 +28,7 @@ storiesOf('Molecules/Dog/Card', module)
       breedName='Cockapoo'
       dogId='id'
       gender='male'
-      // image='/image.png'
+      image={vizla}
       name='DogName'
       price={1000}
     />

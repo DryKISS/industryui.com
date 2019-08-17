@@ -3,6 +3,8 @@
  */
 export const Container = ({ story }) => {
   return (
-    <div>{story()}</div>
+    <div style={{ margin: '1rem' }}>
+      {story()}
+    </div>
   )
 }

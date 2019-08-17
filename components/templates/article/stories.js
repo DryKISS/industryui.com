@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs, text, array } from '@storybook/addon-knobs/react'
+import { withKnobs, array, text } from '@storybook/addon-knobs'
 
 import icon from './__resources__/dog-icon.png'
 

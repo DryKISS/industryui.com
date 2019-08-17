@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs, boolean, text } from '@storybook/addon-knobs/react'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 
 // UI
 import { Heading } from './'

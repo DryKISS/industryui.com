@@ -20,6 +20,8 @@ storiesOf('Atoms/Form/InputTags', module)
   .add('Default', () =>
     <>
       (not implemented yet)
-      <InputTags />
+      <InputTags
+        change={() => {}}
+      />
     </>
   )

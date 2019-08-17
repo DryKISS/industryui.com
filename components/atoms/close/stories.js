@@ -12,7 +12,17 @@ import { storiesOf } from '@storybook/react'
 import { Close } from './'
 import Readme from './README.md'
 
+const CenterDecorator = storyFn =>
+  <div style={{
+    float: 'left',
+    margin: '1rem 1rem 1rem .5rem'
+  }}>
+    {storyFn()}
+  </div>
+
 storiesOf('Atoms/Close', module)
+
+  .addDecorator(CenterDecorator)
 
   .addParameters({
     readme: {
@@ -21,5 +31,5 @@ storiesOf('Atoms/Close', module)
   })
 
   .add('Default', () =>
-    <Close />
+    <Close click={() => {}} />
   )

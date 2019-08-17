@@ -21,5 +21,5 @@ storiesOf('Atoms/Progress', module)
   })
 
   .add('Default', () =>
-    <Progress />
+    <Progress width={30} />
   )

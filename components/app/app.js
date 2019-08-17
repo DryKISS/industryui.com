@@ -12,28 +12,28 @@ import Router from 'next/router'
 // UI
 import { GoogleAnalyticsPageView, Theme, ThemeStyle } from '../../'
 
-// // Layout
-// import Layout from 'layout'
+// Layout
+import Layout from 'layout'
 
 // Style
 import { ThemeProvider } from 'styled-components'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
-// Router.events.on('routeChangeComplete', url => GoogleAnalyticsPageView(url, Google.analytics))
+Router.events.on('routeChangeComplete', url => GoogleAnalyticsPageView(url, Google.analytics))
 
 export class MyApp extends App {
-  // static async getInitialProps ({ Component, ctx }) {
-  //   let pageProps = {}
+  static async getInitialProps ({ Component, ctx }) {
+    let pageProps = {}
 
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx)
-  //   }
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
 
-  //   return { pageProps }
-  // }
+    return { pageProps }
+  }
 
   render () {
-    // const { Component, Layout, pageProps } = this.props
+    const { Component, pageProps } = this.props
 
     return (
       <Container>

@@ -21,5 +21,8 @@ storiesOf('Molecules/Alert', module)
   })
 
   .add('Default', () =>
-    <Alert />
+    <Alert
+      content='Alert'
+      context='secondary'
+    />
   )

@@ -13,10 +13,34 @@ import { withInfo } from '@storybook/addon-info'
 import { withOptions } from '@storybook/addon-options'
 import { addReadme } from 'storybook-readme'
 
+// import { configureViewport } from '@storybook/addon-viewport';
+
+import { Container } from './Container'
 import { ThemeWrapper } from './'
 
-// import { configureViewport } from '@storybook/addon-viewport';
-// import Container from './Container'
+// Font Awesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faEdit,
+  faHomeHeart,
+  faImages,
+  faMars,
+  faStethoscope,
+  faTimesCircle,
+  faTrash
+} from '@fortawesome/pro-regular-svg-icons'
+
+
+// Icons
+library.add(
+  faEdit,
+  faHomeHeart,
+  faImages,
+  faMars,
+  faStethoscope,
+  faTimesCircle,
+  faTrash
+)
 
 addDecorator(withInfo({
   header: true,
@@ -25,7 +49,7 @@ addDecorator(withInfo({
   source: true
 }))
 
-// addDecorator(story => <Container story={story} />)
+addDecorator(story => <Container story={story} />)
 
 addDecorator(addReadme)
 addDecorator(withA11y)

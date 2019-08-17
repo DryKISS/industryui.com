@@ -21,5 +21,5 @@ storiesOf('Molecules/Buttons', module)
   })
 
   .add('Default', () =>
-    <Buttons />
+    <Buttons next nextText='Submit' />
   )

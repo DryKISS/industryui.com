@@ -21,5 +21,5 @@ storiesOf('Atoms/Link', module)
   })
 
   .add('Default', () =>
-    <Link to='/'>Home</Link>
+    <Link to='/'><a>Home</a></Link>
   )

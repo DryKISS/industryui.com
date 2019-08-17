@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
-import { withKnobs, boolean, text } from '@storybook/addon-knobs/react'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 
 // UI
 import { Button, Card, Column } from '../../'
@@ -29,6 +29,7 @@ storiesOf('Molecules/Card', module)
 
   .add('Default', () =>
     <Card
+      alt={'Vizla'}
       bordered={boolean('Bordered', true)}
       footer={text('Footer', 'Footer text')}
       image={vizla}
@@ -40,6 +41,7 @@ storiesOf('Molecules/Card', module)
 
   .add('Horizontal', () =>
     <Card
+      alt={'Vizla'}
       bordered={boolean('Bordered', true)}
       horizontal={boolean('Horizontal', true)}
       image={seeker}
@@ -61,6 +63,7 @@ storiesOf('Molecules/Card', module)
 
   .add('Breed', () =>
     <Card
+      alt={'Vizla'}
       bordered={boolean('Bordered', true)}
       footer='Vizsla'
       image={vizla}
