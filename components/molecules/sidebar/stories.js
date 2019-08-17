@@ -13,7 +13,7 @@ import { Sidebar } from './'
 import Readme from './README.md'
 
 // Data
-import { SIDEBAR_CHARITY } from './__mocks__/links'
+import { Sidebar as Data } from './__mocks__/links'
 
 storiesOf('Molecules/Sidebar', module)
 
@@ -24,5 +24,5 @@ storiesOf('Molecules/Sidebar', module)
   })
 
   .add('Default', () =>
-    <Sidebar data={SIDEBAR_CHARITY} />
+    <Sidebar data={Data} />
   )

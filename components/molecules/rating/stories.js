@@ -21,5 +21,5 @@ storiesOf('Molecules/Rating', module)
   })
 
   .add('Default', () =>
-    <Rating />
+    <Rating item={3} />
   )

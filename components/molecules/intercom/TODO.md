@@ -1,7 +1,13 @@
 # Todo
 
-- [ ] Intercom should update based on the logged in user details
+## General
+
+- [ ] Intercom should update based on the logged in user details - seee extract below
 - [ ] Move this to a service folder
+
+## Story
+
+- [ ] This does not function at the moment
 
 //   componentWillReceiveProps(nextProps) {
 //     const {

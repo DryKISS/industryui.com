@@ -1,7 +1,7 @@
 /**
  * Navigation
  */
-export const NAVIGATION = {
+export const Navigation = {
 
   left: [
     {

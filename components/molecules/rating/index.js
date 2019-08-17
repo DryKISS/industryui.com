@@ -3,13 +3,13 @@
  */
 
 // React
-import { number } from 'prop-types'
+import { number, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 export const Rating = ({ className, item, size }) => {
-  let rating = []
+  const rating = []
 
   for (let i = 0; i < size; i++) {
     rating.push(
@@ -35,6 +35,7 @@ const StyledRating = styled.div`
 `
 
 Rating.propTypes = {
+  className: string,
   item: number.isRequired,
   size: number
 }

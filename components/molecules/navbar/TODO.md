@@ -18,7 +18,7 @@
 
 - [ ] Allow the fixed position to be changeable
 
-## Testing
+## Story
 
 - [ ] Change logo for Story to DryKISS
 

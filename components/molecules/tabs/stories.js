@@ -21,5 +21,8 @@ storiesOf('Molecules/Tabs', module)
   })
 
   .add('Default', () =>
-    <Tabs />
+    <Tabs>
+      <span label='Tab 1'>Tab 1</span>
+      <span label='Tab 2'>Tab 2</span>
+    </Tabs>
   )

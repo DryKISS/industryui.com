@@ -21,5 +21,9 @@ storiesOf('Organisms/Forgot Details', module)
   })
 
   .add('Default', () =>
-    <ForgotDetails />
+    <ForgotDetails
+      change={() => {}}
+      email=''
+      submit={() => {}}
+    />
   )

@@ -34,5 +34,7 @@ storiesOf('Templates/Article', module)
         image: icon,
         tags: array('Tags', ['dogs', 'faq'])
       }}
+      config={{}}
+      facebook={{}}
     />
   )

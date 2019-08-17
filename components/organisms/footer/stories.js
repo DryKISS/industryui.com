@@ -19,14 +19,12 @@ import logo from './__resources__/tailwise-icon.svg'
 
 const renderColumn = () => (
   <>
-    <div style={{ width: '32px' }}>
-      <Image alt='Tailwise' src={logo} />
-    </div>
+    <Image alt='Tailwise' src={logo} />
 
     <List unstyled>
-      <ListItem>Dog's best friend</ListItem>
-      <ListItem>hello@tailwise.com</ListItem>
-      <ListItem>0330 043 5301</ListItem>
+      <ListItem>Strapline</ListItem>
+      <ListItem>email@domain.com</ListItem>
+      <ListItem>0201 1234 1234</ListItem>
     </List>
   </>
 )
@@ -40,21 +38,9 @@ storiesOf('Organisms/Footer', module)
   })
 
   .add('Default', () => (
-    <Footer
-      copyright='{t.Footer.COPYRIGHT}'
-      description='{t.Footer.DESCRIPTION}'
-      info='{t.Footer.INFO}'
-      columns={FOOTER(renderColumn)}
-      termsAndContitions='{t.Footer.TERMS_AND_CONDITIONS}'
-    />
+    <Footer columns={FOOTER(renderColumn)} />
   ))
 
   .add('12 Column', () => (
-    <Footer
-      copyright='{t.Footer.COPYRIGHT}'
-      description='{t.Footer.DESCRIPTION}'
-      info='{t.Footer.INFO}'
-      columns={ONE_COLUMN}
-      termsAndContitions='{t.Footer.TERMS_AND_CONDITIONS}'
-    />
+    <Footer columns={ONE_COLUMN} />
   ))

@@ -60,29 +60,6 @@ export const Hero = ({
   )
 }
 
-Hero.propTypes = {
-  alt: string,
-  align: string,
-  className: any,
-  background: string,
-  backgroundSize: string,
-  buttons: array,
-  image: string,
-  strapline: oneOfType([object, string]),
-  style: objectOf(oneOfType([
-    number,
-    string
-  ])),
-  title: string.isRequired,
-  width: number
-}
-
-Hero.defaultProps = {
-  align: 'flex-end',
-  backgroundSize: 'cover',
-  style: {}
-}
-
 const StyledHero = styled.header`
   background-color: #fff;
   background-image: ${({ background }) => background ? `url(${background})` : 'none'};
@@ -116,3 +93,26 @@ const StyledStrapline = styled(Heading)`
   line-height: 1.5rem;
   margin: 0 0 2rem 0;
 `
+
+Hero.propTypes = {
+  alt: string,
+  align: string,
+  className: any,
+  background: string,
+  backgroundSize: string,
+  buttons: array,
+  image: string,
+  strapline: oneOfType([object, string]),
+  style: objectOf(oneOfType([
+    number,
+    string
+  ])),
+  title: string.isRequired,
+  width: number
+}
+
+Hero.defaultProps = {
+  align: 'flex-end',
+  backgroundSize: 'cover',
+  style: {}
+}

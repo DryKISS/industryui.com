@@ -1,7 +1,7 @@
 /**
- * Sidebar - Charity
+ * Sidebar
  */
-export const SIDEBAR_CHARITY = [
+export const Sidebar = [
 
   {
     name: 'Dashboard',

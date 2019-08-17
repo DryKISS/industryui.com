@@ -21,5 +21,14 @@ storiesOf('Organisms/Register', module)
   })
 
   .add('Default', () =>
-    <Register />
+    <Register
+      change={() => {}}
+      email=''
+      marketing
+      nameFirst=''
+      nameLast=''
+      password=''
+      submit={() => {}}
+      terms
+    />
   )

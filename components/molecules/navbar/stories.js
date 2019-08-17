@@ -13,7 +13,7 @@ import { Navbar } from './'
 import Readme from './README.md'
 
 // Data
-import { NAVIGATION } from './__mocks__/links'
+import { Navigation } from './__mocks__/links'
 import SVG from './__resources__/tailwise-logo.svg'
 
 storiesOf('Molecules/Navbar', module)
@@ -27,6 +27,6 @@ storiesOf('Molecules/Navbar', module)
   .add('Default', () =>
     <Navbar
       brand={SVG}
-      links={NAVIGATION}
+      links={Navigation}
     />
   )

@@ -21,5 +21,10 @@ storiesOf('Organisms/Login', module)
   })
 
   .add('Default', () =>
-    <Login />
+    <Login
+      change={() => {}}
+      email=''
+      submit={() => {}}
+      password=''
+    />
   )

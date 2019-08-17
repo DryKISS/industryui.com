@@ -1,5 +1,6 @@
 /**
  * Section
+ * Seperates a landing page module
  */
 
 // React
@@ -29,14 +30,11 @@ export const Section = ({ children, className, heading, row, style }) =>
         />
       }
 
-      {row &&
-        <Row>
+      {row
+        ? <Row>
           {children}
         </Row>
-      }
-
-      {!row &&
-        children
+        : children
       }
 
     </Container>

@@ -21,5 +21,9 @@ storiesOf('Organisms/Forgot Details Reset', module)
   })
 
   .add('Default', () =>
-    <ForgotDetailsReset />
+    <ForgotDetailsReset
+      change={() => {}}
+      email=''
+      submit={() => {}}
+    />
   )

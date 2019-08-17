@@ -21,6 +21,8 @@ import { ThemeWrapper } from './'
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faCheckCircle,
+  faDogLeashed,
   faEdit,
   faHomeHeart,
   faImages,
@@ -33,6 +35,8 @@ import {
 
 // Icons
 library.add(
+  faCheckCircle,
+  faDogLeashed,
   faEdit,
   faHomeHeart,
   faImages,

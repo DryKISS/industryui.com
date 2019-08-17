@@ -18,5 +18,9 @@ storiesOf('Organisms/Email Change', module)
   })
 
   .add('Default', () =>
-    <EmailChange />
+    <EmailChange
+      change={() => {}}
+      email=''
+      submit={() => {}}
+    />
   )

@@ -10,7 +10,7 @@ export const FOOTER = (column) => ([
   },
   {
     size: { md: 4, lg: 2 },
-    header: 'Tailwise',
+    header: 'About',
     links: [
       {
         id: 'footerHowItWorks',
@@ -21,11 +21,6 @@ export const FOOTER = (column) => ([
         id: 'footerBlog',
         name: 'Blog',
         to: '/pet-tails'
-      },
-      {
-        id: 'footerContact',
-        name: 'Contact',
-        to: '/contact'
       }
     ]
   },
@@ -35,46 +30,26 @@ export const FOOTER = (column) => ([
     header: 'Discover',
     links: [
       {
-        id: 'footerBreederSignUp',
-        name: 'Breeder Sign Up',
-        to: '/sign-up/breeder'
+        id: 'footerSignUp',
+        name: 'Sign Up',
+        to: '/sign-up'
       },
       {
-        id: 'footerLitter',
-        name: 'Puppies for sale',
-        to: '/dogs/litters'
-      },
-      {
-        id: 'footerDogBreeds',
-        name: 'Dog breeds',
-        to: '/dogs/breeds'
+        id: 'footerProducts',
+        name: 'Products',
+        to: '/products'
       }
     ]
   },
 
   {
     size: { md: 4, lg: 2 },
-    header: 'Top dog breeds',
+    header: 'Contact',
     links: [
       {
-        id: 'footerCockapoo',
-        name: 'Cockapoo',
-        to: '/dogs/breeds/cockapoo'
-      },
-      {
-        id: 'footerLabrador',
-        name: 'Labrador retriever',
-        to: '/dogs/breeds/labrador-retriever'
-      },
-      {
-        id: 'footerCocker',
-        name: 'Cocker spaniel',
-        to: '/dogs/breeds/cocker-spaniel'
-      },
-      {
-        id: 'footerCollie',
-        name: 'Border collie',
-        to: '/dogs/breeds/border-collie'
+        id: 'footerContact',
+        name: 'Contact',
+        to: '/contact'
       }
     ]
   }

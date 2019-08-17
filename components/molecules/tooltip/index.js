@@ -13,6 +13,3 @@ export const Tooltip = () => {
     <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} />
   )
 }
-
-{ /* <ReactTooltip border globalEventOff='click' event='click' multiline place='top' effect='solid' /> */ }
-{ /* <Icon data-tip={tooltips.profile} icon='info-circle' style={{ cursor: 'pointer' }} />{' '} */ }

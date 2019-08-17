@@ -3,8 +3,8 @@
  */
 export const ONE_COLUMN = [
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -14,8 +14,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -25,8 +25,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -36,8 +36,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -47,8 +47,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -58,8 +58,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -69,8 +69,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -80,8 +80,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -91,8 +91,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -102,8 +102,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -113,8 +113,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',
@@ -124,8 +124,8 @@ export const ONE_COLUMN = [
     ]
   },
   {
-    columns: { md: 1 },
-    header: 'Tailwise',
+    size: { md: 1 },
+    header: 'Heading',
     links: [
       {
         id: 'footerHowItWorks',

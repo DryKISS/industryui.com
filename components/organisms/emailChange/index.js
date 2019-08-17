@@ -1,5 +1,5 @@
 /**
- * Password Change
+ * Email Change
  */
 
 // React

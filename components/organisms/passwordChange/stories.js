@@ -18,5 +18,11 @@ storiesOf('Organisms/Password Change', module)
   })
 
   .add('Default', () =>
-    <PasswordChange />
+    <PasswordChange
+      change={() => {}}
+      password=''
+      passwordConfirm=''
+      passwordOld=''
+      submit={() => {}}
+    />
   )

@@ -21,5 +21,7 @@ storiesOf('Molecules/Pagination', module)
   })
 
   .add('Primary', () =>
-    <Pagination />
+    <Pagination
+      onPageChange={() => {}}
+    />
   )

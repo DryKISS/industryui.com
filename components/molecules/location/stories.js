@@ -21,5 +21,8 @@ storiesOf('Molecules/Location', module)
   })
 
   .add('Default', () =>
-    <Location apiKey={12345} location='Wimbledon' />
+    <Location
+      apiKey={''}
+      location='Wimbledon'
+    />
   )

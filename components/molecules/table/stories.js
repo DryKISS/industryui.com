@@ -30,5 +30,5 @@ storiesOf('Molecules/Table', module)
   })
 
   .add('Default', () =>
-    <Table columns={columns} />
+    <Table columns={columns} rows={[]} />
   )

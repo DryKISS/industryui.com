@@ -1,5 +1,7 @@
 # Todo
 
+## General
+
 - [ ] Style
   - [ ] Links in the article
   - [ ] Instagram positioning
@@ -13,4 +15,11 @@
 - [ ] Split out the footer from this
 - [ ] Split out the header into article component
 - [ ] Need to remove the Javascript:; links and use Link component
-- [ ] Merge the cateogory into the Article object
+
+## Story
+
+- [ ] Need a placeholder for the image of crashes story
+
+## Done
+
+- [X] Merge the cateogory into the Article object

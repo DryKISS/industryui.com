@@ -21,5 +21,9 @@ storiesOf('Molecules/Get Address', module)
   })
 
   .add('Default', () =>
-    <GetAddress />
+    <GetAddress
+      apiKey=''
+      change={() => {}}
+      form={{ postcode: 'SW19 2EZ' }}
+    />
   )

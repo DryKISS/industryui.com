@@ -21,5 +21,7 @@ storiesOf('Molecules/Section', module)
   })
 
   .add('Default', () =>
-    <Section />
+    <Section
+      heading='Section Heading'
+    />
   )

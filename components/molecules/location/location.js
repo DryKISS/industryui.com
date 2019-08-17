@@ -3,6 +3,9 @@
  * Showcases a static map based on a location
  */
 
+// React
+import { string } from 'prop-types'
+
 // UI
 import { Card, CardBody } from '../../'
 
@@ -22,4 +25,9 @@ export const Location = ({ apiKey, location }) => {
       </CardBody>
     </Card>
   )
+}
+
+Location.propTypes = {
+  apiKey: string.isRequired,
+  location: string.isRequired
 }

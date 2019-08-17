@@ -7,10 +7,7 @@ import { forwardRef, useImperativeHandle, useState } from 'react'
 import { func, string } from 'prop-types'
 
 // UI
-import { Button, Input, Select } from '../../'
-
-// Debug Data
-// import { ADDRESS_DATA } from './__mock__/addresses'
+import { Button, Input, Select, validatorPostCode } from '../../'
 
 export const GetAddress = forwardRef(({
   apiKey,
@@ -30,9 +27,7 @@ export const GetAddress = forwardRef(({
     },
 
     validatePostcode: (postcode) => {
-      const regex = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$/
-      const found = regex.test(postcode)
-      return found
+      validatorPostCode(postcode)
     },
 
     getAddress: (postcode) => {
