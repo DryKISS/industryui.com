@@ -1,4 +1,0 @@
-/**
- * Mocks
- */
-export * from './copyright'

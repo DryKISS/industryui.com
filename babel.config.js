@@ -8,25 +8,32 @@ module.exports = function (api) {
   const plugins = [
     [
       'styled-components', {
-        'displayName': true,
-        'ssr': true
+        displayName: true,
+        ssr: true
       }
     ],
     [
       'module-resolver',
       {
-        'root': ['./'],
-        'alias': {
-          'config': './config',
-          'data': './data',
-          'layout': './layouts'
+        root: ['./'],
+        alias: {
+          config: './config',
+          data: './data',
+          layout: './layouts'
         }
       }
     ]
   ]
 
+  const env = {
+    test: {
+      plugins: ['require-context-hook']
+    }
+  }
+
   return {
     presets,
-    plugins
+    plugins,
+    env
   }
 }

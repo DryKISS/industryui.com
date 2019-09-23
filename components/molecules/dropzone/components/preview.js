@@ -7,7 +7,7 @@
 import { any, func } from 'prop-types'
 
 // UI
-import { Close, Image } from '../../../'
+import { Image } from '../../../'
 
 // Style
 import styled from 'styled-components'

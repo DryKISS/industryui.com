@@ -1,7 +1,7 @@
 
 // global list of loaded js and css
-let _loadedJs = []
-let _loadedCss = []
+const _loadedJs = []
+const _loadedCss = []
 
 export function loadjs (src, params = { async: false }) {
   if (_loadedJs.includes(src)) {
@@ -24,7 +24,7 @@ export function loadcss (href, params = {}) {
   }
 
   return new Promise((resolve, reject) => {
-    let link = document.createElement('link')
+    const link = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
     link.href = href

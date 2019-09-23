@@ -54,6 +54,7 @@ const Webcam = withTheme(
     }
 
     static mountedInstances = []
+
     static userMediaRequested = false
 
     componentDidMount () {

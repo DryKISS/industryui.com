@@ -1,8 +1,6 @@
 /**
  * Google Analytics
  */
-import React from 'react'
-import PropTypes from 'prop-types'
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const GoogleAnalyticsPageView = (url, id) => {

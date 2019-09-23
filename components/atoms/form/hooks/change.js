@@ -1,14 +1,13 @@
 /**
- * onChange hook
- * Handle all input changes
- * Allows the pushing in of toggle resets, this could be an array based on one
- * trigger
+ * Form - Hooks - Change
  *
- * Usage
+ * Handle all input changes and allows the pushing in of toggle resets, this
+ * could be an array based on one trigger
+ *
+ * @Usage
  * [{ trigger: 'councilToggle', reset: ['license'] }]
  */
 
-// React
 import { useState } from 'react'
 
 export const useChange = (initialState, reset) => {

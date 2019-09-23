@@ -13,7 +13,7 @@ import { Copyright } from './'
 import Readme from './README.md'
 
 // Data
-import { Copyright as Data } from './__mocks__'
+import { Copyright as Data } from './__mocks__/copyright'
 
 const Decorator = storyFn =>
   <div style={{ bottom: '-4rem', position: 'relative' }}>

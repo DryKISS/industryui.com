@@ -9,20 +9,8 @@ import { func, number, string } from 'prop-types'
 // Style
 import styled, { withTheme } from 'styled-components'
 
-const LEFT_PAGE = 'LEFT'
-const RIGHT_PAGE = 'RIGHT'
-
-const range = (from, to, step = 1) => {
-  let i = from
-  const range = []
-
-  while (i <= to) {
-    range.push(i)
-    i += step
-  }
-
-  return range
-}
+// const LEFT_PAGE = 'LEFT'
+// const RIGHT_PAGE = 'RIGHT'
 
 export const Pagination = withTheme(
   class Pagination extends Component {
@@ -41,6 +29,18 @@ export const Pagination = withTheme(
       this.totalPages = Math.ceil(this.totalRecords / this.pageLimit)
 
       this.state = { currentPage: 1 }
+    }
+
+    range = (from, to, step = 1) => {
+      let i = from
+      const range = []
+
+      while (i <= to) {
+        range.push(i)
+        i += step
+      }
+
+      return range
     }
 
     static propTypes = {
@@ -62,7 +62,7 @@ export const Pagination = withTheme(
     }
 
     render () {
-      const { activePage, text, totalPages } = this.props
+      const { activePage } = this.props
 
       if (!activePage) {
         return null
@@ -87,8 +87,7 @@ export const Pagination = withTheme(
   }
 )
 
-const StyledPagination = styled.nav`
-`
+const StyledPagination = styled.nav``
 
 //   constructor(props) {
 //     super(props);

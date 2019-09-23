@@ -7,8 +7,8 @@ const fs = require('fs')
 const serviceAccount = require('./serviceAccountKey-production.json')
 // const serviceAccount = require('./serviceAccountKey-staging.json')
 
-let collectionName = process.argv[2]
-let subCollection = process.argv[3]
+const collectionName = process.argv[2]
+const subCollection = process.argv[3]
 
 // You should replace databaseURL with your own
 admin.initializeApp({
@@ -17,12 +17,12 @@ admin.initializeApp({
   // databaseURL: 'https://staging-tailwise-com.firebaseio.com'
 })
 
-let db = admin.firestore()
+const db = admin.firestore()
 
-let data = {}
+const data = {}
 data[collectionName] = {}
 
-let results = db.collection(collectionName)
+const results = db.collection(collectionName)
   .get()
   .then(snapshot => {
     snapshot.forEach(doc => {
@@ -47,7 +47,7 @@ results.then(dt => {
 })
 
 async function getSubCollection (dt) {
-  for (let [key, value] of Object.entries([dt[collectionName]][0])) {
+  for (const [key] of Object.entries([dt[collectionName]][0])) {
     if (subCollection !== undefined) {
       data[collectionName][key]['subCollection'] = {}
       await addSubCollection(key, data[collectionName][key]['subCollection'])

@@ -10,16 +10,28 @@
     "check": "npm-check -s -u",
     "dedupe": "yarn-deduplicate yarn.lock",
     "start": "start-storybook -p 9000 --quiet -c .storybook",
-    "test": "jest --coverage",
+    "dev:lint": "standard | snazzy",
+    "dev:lint-fix": "standard --fix --verbose | snazzy",
+    "dev:test": "jest",
+    "dev:update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
     "build-storybook": "build-storybook"
+  },
+  "engines": {
+    "node": "^12.0.0",
+    "npm": "^6.0.0"
   },
   "keywords": [
     "react",
     "component",
     "library"
   ],
+  "storybook-deployer": {
+    "gitUsername": "iwarner",
+    "gitEmail": "ian.warner@drykiss.com",
+    "commitMessage": "Deploy Storybook"
+  },
   "standard": {
     "globals": [
       "__SITE__"
@@ -31,32 +43,32 @@
     "parser": "babel-eslint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-brands-svg-icons": "^5.9.0",
-    "@fortawesome/free-regular-svg-icons": "^5.9.0",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
-    "@fortawesome/pro-regular-svg-icons": "^5.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-brands-svg-icons": "^5.10.2",
+    "@fortawesome/free-regular-svg-icons": "^5.10.2",
+    "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/pro-regular-svg-icons": "^5.10.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/react": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
     "@typeform/embed": "^0.12.1",
-    "firebase": "^6.4.0",
+    "axios": "^0.19.0",
+    "firebase": "^6.6.1",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "next": "^9.0.0",
-    "react-dropzone": "^10.1.5",
+    "next": "^9.0.6",
+    "react-dropzone": "^10.1.9",
     "react-select": "^3.0.4",
-    "react-tooltip": "^3.10.0",
-    "slick-carousel": "^1.8.1",
-    "yarn-deduplicate": "^1.1.1"
+    "react-tooltip": "^3.11.1",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "@babel/node": "^7.5.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.4.5",
-    "@babel/template": "^7.4.4",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@storybook/addon-a11y": "^5.1.9",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
@@ -70,16 +82,28 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-styled-components": "^1.10.1",
+    "eslint": "^6.4.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
+    "markdown-loader-jest": "^0.1.1",
     "npm-check": "^5.9.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "standard": "^13.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.9.0",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1",
     "storybook-readme": "^5.0.5",
     "styled-components": "^4.3.2",
-    "stylelint": "^10.1.0",
-    "stylelint-config-recommended": "^2.2.0",
-    "stylelint-config-styled-components": "^0.1.1"
+    "stylelint": "^11.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "yarn-deduplicate": "^1.1.1"
+  },
+  "peerDependencies": {
+    "styled-components": "^4.*",
+    "react": "^16.*",
+    "react-dom": "^16.*"
   }
 }

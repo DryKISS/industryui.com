@@ -7,7 +7,7 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
  */
 export const formatPrice = (amount, currency = 'GBP') => {
-  let numberFormat = new Intl.NumberFormat(['en-GB'], {
+  const numberFormat = new Intl.NumberFormat(['en-GB'], {
     currency: currency,
     currencyDisplay: 'symbol',
     style: 'currency'

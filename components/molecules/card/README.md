@@ -19,7 +19,7 @@ Provide a flexible container to showcase the content for the correct context.
 With a horizontal display the text and action should all be left aligned within
 the card content, and the image absolutely positioned to the right hand side.
 
-![Horizontal](./__resources__/horizontal.png "Horizontal")
+<!-- ![Horizontal](./__resources__/horizontal.png "Horizontal")
 
 ## Map
 
@@ -31,4 +31,4 @@ the card content, and the image absolutely positioned to the right hand side.
 
 ## Full
 
-![Full](./__resources__/full.png "Full")
+![Full](./__resources__/full.png "Full") -->

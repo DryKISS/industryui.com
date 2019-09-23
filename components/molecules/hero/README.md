@@ -14,9 +14,9 @@ succint call to action.
 - https://getbootstrap.com/docs/4.1/components/navbar/
 
 ## Desktop
-
+<!--
 ![Desktop](./__resources__/hero-desktop.png "Desktop")
 
 ## Mobile
 
-![Mobile](./__resources__/hero-mobile.png "Mobile")
+![Mobile](./__resources__/hero-mobile.png "Mobile") -->

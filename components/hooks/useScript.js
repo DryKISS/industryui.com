@@ -28,7 +28,7 @@ import { useState, useEffect } from 'react'
 // }
 
 // Hook
-let cachedScripts = []
+const cachedScripts = []
 
 export function useScript (src) {
   // Keeping track of script loaded and error state
@@ -50,7 +50,7 @@ export function useScript (src) {
         cachedScripts.push(src)
 
         // Create script
-        let script = document.createElement('script')
+        const script = document.createElement('script')
         script.src = src
         script.async = true
 

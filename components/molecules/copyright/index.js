@@ -49,7 +49,7 @@ export const Copyright = ({ brand, links }) => {
 
 Copyright.propTypes = {
   brand: string.isRequired,
-  links: array.isRequired
+  links: array
 }
 
 const StyledCopyright = styled.section`

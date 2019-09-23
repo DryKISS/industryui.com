@@ -14,18 +14,18 @@ import {
   Article,
   Column,
   Container,
-  MetaHead,
+  // MetaHead,
   Row
 } from '../../'
 
 // import { BlogSidebar } from './components'
 
 export const ArticleLayout = ({ children, frontMatter }) => {
-  const meta = {
-    canonical: `blog/${frontMatter.slug}`,
-    description: frontMatter.description,
-    title: frontMatter.title
-  }
+  // const meta = {
+  //   canonical: `blog/${frontMatter.slug}`,
+  //   description: frontMatter.description,
+  //   title: frontMatter.title
+  // }
 
   return (
     <Container>

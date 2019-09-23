@@ -12,7 +12,7 @@ import { storiesOf } from '@storybook/react'
 import { Container, Row, Column } from './'
 import Readme from './README.md'
 
-import { StyledColumn, colStyle } from './__mocks__'
+import { StyledColumn, colStyle } from './__mocks__/grid'
 
 storiesOf('Atoms/Grid', module)
 

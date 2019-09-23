@@ -3,15 +3,15 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEqual from 'lodash/isEqual'
+// import isEqual from 'lodash/isEqual'
 import cloneDeep from 'lodash/cloneDeep'
 import AbstractWidget from './AbstractWidget'
 
 const TwitterTimeline = () => {
-  const shouldComponentUpdate = (nextProps) => {
-    const changed = (name) => !isEqual(this.props[name], nextProps[name])
-    return changed('dataSource') || changed('options')
-  }
+  // const shouldComponentUpdate = (nextProps) => {
+  //   const changed = (name) => !isEqual(this.props[name], nextProps[name])
+  //   return changed('dataSource') || changed('options')
+  // }
 
   const ready = (tw, element, done) => {
     const { dataSource, options, onLoad } = this.props

@@ -46,7 +46,7 @@ ForgotDetails.propTypes = {
 }
 
 ForgotDetails.defaultProps = {
-  pathLogIn: '/sign-in'
+  pathLogIn: '/account/sign-in'
 }
 
 const StyledLink = styled.a`

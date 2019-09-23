@@ -29,7 +29,7 @@ const StyledItem = styled.li`
 `
 
 const StyledIcon = styled(Icon)`
-  color: ${({ theme }) => theme.COLOUR.secondary}
+  color: ${({ theme }) => theme.COLOUR.secondary};
   float: left;
   margin: .1rem 1rem 0 0;
 `

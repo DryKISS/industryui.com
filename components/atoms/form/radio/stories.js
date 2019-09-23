@@ -14,7 +14,7 @@ import { Radio } from './'
 import Readme from './README.md'
 
 // Data
-import { RADIO_GENDER } from './__mocks__'
+import { RADIO_GENDER } from './__mocks__/radio'
 
 storiesOf('Atoms/Form/Radio', module)
 

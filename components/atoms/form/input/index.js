@@ -50,8 +50,8 @@ export const Input = ({
 
   return (
     <>
-      {label ?
-        <Label text={label}>
+      {label
+        ? <Label text={label}>
           {InputItem()}
           <div className='Form-feedback' />
         </Label>
@@ -98,9 +98,9 @@ const StyledInput = styled.input`
 
 Input.propTypes = {
   accept: string,
-  autoCapitalize: oneOfType([ bool, string ]),
-  autoComplete: oneOfType([ bool, string ]),
-  autoCorrect: oneOfType([ bool, string ]),
+  autoCapitalize: oneOfType([bool, string]),
+  autoComplete: oneOfType([bool, string]),
+  autoCorrect: oneOfType([bool, string]),
   autoFocus: bool,
   change: func.isRequired,
   label: string,

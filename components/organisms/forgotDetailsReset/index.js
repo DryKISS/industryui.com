@@ -5,6 +5,9 @@
 // UI
 import { Button, Form, Input, Link } from '../../'
 
+// Style
+import styled from 'styled-components'
+
 export const ForgotDetailsReset = ({ password }) => {
   const change = (event) => {
     const target = event.target
@@ -31,15 +34,15 @@ export const ForgotDetailsReset = ({ password }) => {
 
       <Button secondary type='submit'>Submit</Button>
 
-      <Link to='/sign-in'>
-        <a className='ForgotDetailsReset-link'>Back to Sign In</a>
+      <Link to='/account/sign-in'>
+        <StyledLink>Back to Log In</StyledLink>
       </Link>
 
     </Form>
   )
 }
 
-// .ForgotDetailsReset-link {
-//   display: block;
-//   margin: 1rem 0;
-// }
+const StyledLink = styled.a`
+  display: block;
+  margin: 1rem 0;
+`

@@ -42,6 +42,8 @@ fs.readFile(fileName, 'utf8', function (err, data) {
     return console.log(err)
   }
 
+  let dataArray = ''
+
   // Turn string from file to an Array
   if (fileName.endsWith('yaml') || fileName.endsWith('yml')) {
     dataArray = YAML.safeLoad(data)
@@ -56,7 +58,7 @@ async function udpateCollection (dataArray) {
   for (const index in dataArray) {
     const collectionName = index
     for (const doc in dataArray[index]) {
-      if (dataArray[index].hasOwnProperty(doc)) {
+      if (dataArray[index].Object.prototype.hasOwnProperty.call(doc)) {
         await startUpdating(collectionName, doc, dataArray[index][doc])
       }
     }
@@ -70,7 +72,7 @@ function startUpdating (collectionName, doc, data) {
   // Enter date value
   if (typeof dateArray !== 'undefined') {
     dateArray.map(date => {
-      if (data.hasOwnProperty(date)) {
+      if (data.Object.prototype.hasOwnProperty.call(date)) {
         data[date] = new Date(data[date]._seconds * 1000)
       } else {
         console.log('Please check your date parameters!!!', dateArray)
@@ -82,7 +84,7 @@ function startUpdating (collectionName, doc, data) {
   // Enter geo value
   if (typeof geoArray !== 'undefined') {
     geoArray.map(geo => {
-      if (data.hasOwnProperty(geo)) {
+      if (data.Object.prototype.hasOwnProperty.call(geo)) {
         data[geo] = new admin.firestore.GeoPoint(data[geo]._latitude, data[geo]._longitude)
       } else {
         console.log('Please check your geo parameters!!!', geoArray)

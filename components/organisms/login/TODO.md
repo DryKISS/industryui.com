@@ -7,6 +7,13 @@
 - [ ] Alert if Caps Lock is on
 - [ ] Show the password icon
 
+## Validation
+
+Currently just checking for blank
+
+- [ ] Validate the password better using standard rules
+- [ ] Validate the email better
+
 ## Properties
 
 - [ ] Allow the button to be a block

@@ -1,7 +1,6 @@
 /**
  * Google Maps Path and Path Group
  */
-import React from 'react'
 import { any, bool, number, oneOfType, string } from 'prop-types'
 
 const propTypes = {

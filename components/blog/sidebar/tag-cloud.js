@@ -49,6 +49,8 @@ export const BlogTagCloud = ({ articles, total }) => {
       //   console.log(key)
       // })
 
+    console.log(tagsSorted)
+
     // newO[key] = list[key]
 
     // return countBy(tagArray)
@@ -78,9 +80,8 @@ export const BlogTagCloud = ({ articles, total }) => {
 
   return (
     <BlogSection heading='Tags'>
-
+      {console.log(cloud, data)}
       {/* {cloud} */}
-
     </BlogSection>
   )
 }

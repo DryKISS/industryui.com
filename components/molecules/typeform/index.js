@@ -8,41 +8,42 @@
 import { string } from 'prop-types'
 
 export const Typeform = () => {
-  componentDidMount = () => {
-    const typeformEmbed = require('@typeform/embed')
+  // componentDidMount = () => {
+  //   const typeformEmbed = require('@typeform/embed')
 
-    const {
-      autoClose,
-      autoOpen,
-      buttonText,
-      hideFooter,
-      hideHeaders,
-      mode,
-      onSubmit,
-      opacity,
-      url
-    } = this.props
+  //   const {
+  //     autoClose,
+  //     autoOpen,
+  //     buttonText,
+  //     hideFooter,
+  //     hideHeaders,
+  //     mode,
+  //     onSubmit,
+  //     opacity,
+  //     url
+  //   } = this.props
 
-    const options = {
-      autoClose,
-      autoOpen,
-      hideHeaders,
-      hideFooter,
-      opacity,
-      buttonText,
-      mode,
-      onSubmit
-    }
+  //   const options = {
+  //     autoClose,
+  //     autoOpen,
+  //     hideHeaders,
+  //     hideFooter,
+  //     opacity,
+  //     buttonText,
+  //     mode,
+  //     onSubmit
+  //   }
 
-    const embedElement = this.typeformElm
+  //   const embedElement = this.typeformElm
 
-    // Load Typeform embed widget
-    typeformEmbed.makeWidget(embedElement, url, options)
-  }
+  //   // Load Typeform embed widget
+  //   typeformEmbed.makeWidget(embedElement, url, options)
+  // }
 
-  return (
-    <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} />
-  )
+  // return (
+  //   <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} />
+  // )
+  return false
 }
 
 Typeform.propTypes = {

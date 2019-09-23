@@ -127,7 +127,7 @@ export const Register = ({
       <StyledLink>
         Already have an account?{' '}
         <Link to={pathLogin}>
-          <a>Sign in</a>
+          <a>Log in</a>
         </Link>
       </StyledLink>
 

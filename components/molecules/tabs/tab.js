@@ -8,9 +8,10 @@ import { func, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Tab = ({ activeTab, label, onClick }) => {
+export const Tab = ({ activeTab, childClick, label, onClick }) => {
   const click = () => {
     onClick(label)
+    childClick()
   }
 
   return (
@@ -32,6 +33,7 @@ const StyledTab = styled.ol`
 
 Tab.propTypes = {
   activeTab: string.isRequired,
+  childClick: func,
   label: string.isRequired,
   onClick: func.isRequired
 }

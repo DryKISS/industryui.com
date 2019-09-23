@@ -3,13 +3,14 @@
  */
 
 // React
-import { string } from 'prop-types'
+// import { string } from 'prop-types'
 
 //
-import ReactTooltip from 'react-tooltip'
+// import ReactTooltip from 'react-tooltip'
 
 export const Tooltip = () => {
-  return (
-    <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} />
-  )
+  return false
+  // return (
+  //   <div className='ReactTypeformEmbed' ref={tf => this.typeformElm = tf} />
+  // )
 }

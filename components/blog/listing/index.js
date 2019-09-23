@@ -23,7 +23,7 @@ import {
 
 export const BlogListing = ({ articles, author, category, tag }) => {
   const _findTag = (articles) => {
-    return _filter(articles, { tags: [ tag ] })
+    return _filter(articles, { tags: [tag] })
   }
 
   const _findArticle = (articles) => {

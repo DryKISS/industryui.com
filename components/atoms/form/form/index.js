@@ -41,7 +41,7 @@ export class Form extends Component {
       for (let i = 0; i < formLength; i++) {
         // the i-th child of the form corresponds to the forms i-th input element
         const elem = formEl[i]
-        let parentNode = elem.parentNode
+        const parentNode = elem.parentNode
         let errorLabel = parentNode.querySelector('.Form-feedback')
 
         if (elem.type !== 'checkbox' && elem.parentNode.parentNode.nodeName.toLowerCase() === 'fieldset') {

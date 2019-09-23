@@ -2,7 +2,7 @@
  * Card
  */
 
- // $card-spacer-y:                     .75rem !default;
+// $card-spacer-y:                     .75rem !default;
 // $card-spacer-x:                     1.25rem !default;
 // $card-border-width:                 $border-width !default;
 // $card-border-radius:                $border-radius !default;

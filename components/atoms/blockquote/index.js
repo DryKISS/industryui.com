@@ -28,9 +28,10 @@ const StyledBlockquote = styled.blockquote`
   padding: 10px 20px;
 `
 
-const StyledText = styled.p`
+const StyledText = styled.h1`
   color: #000;
   font-size: 2rem;
+  font-weight: normal;
   margin: 0;
 `
 

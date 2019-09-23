@@ -6,7 +6,7 @@
 import React, { Component } from 'react'
 
 // Slick
-// import jQuery from 'jquery'
+import jQuery from 'jquery'
 // import 'slick-carousel'
 // import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'

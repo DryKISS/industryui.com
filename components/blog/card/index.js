@@ -31,13 +31,7 @@ export const BlogCard = ({ article, config, type }) => {
 
   const articleLink = {
     as: `${config.path}/${categorySlug}/${articleSlug}`,
-    href: {
-      pathname: `${config.path}/article`,
-      query: {
-        articleSlug: articleSlug,
-        category: categorySlug
-      }
-    }
+    href: `${config.path}/[categoryId]/[articleId]`
   }
 
   return (

@@ -26,25 +26,31 @@ const FirebaseWithAuthorization = (condition) => (Component) => {
       this.listener = firebase.Auth.handleAuthListener(
         authUser => {
           if (!condition(authUser)) {
+            console.log('redirect')
             Router.push('/sign-in')
           }
         },
         () => {
+          console.log('redirect')
           Router.push('/sign-in')
         }
       )
     }
 
     componentWillUnmount () {
+      console.log('Listener')
       this.listener()
     }
 
     render () {
+      console.log('Render')
       return (
         <AuthUserContext.Consumer>
-          {authUser =>
-            condition(authUser) ? <Component authUser={authUser} role={authUser.roles[0]} uid={authUser.uid} {...this.props} /> : ''
-          }
+          {authUser => console.log(condition(), authUser, condition(authUser))}
+          {/* {authUser => condition(authUser)
+            ? <Component authUser={authUser} role={authUser.roles[0]} uid={authUser.uid} {...this.props} />
+            : ''
+          } */}
         </AuthUserContext.Consumer>
       )
     }

@@ -4,7 +4,7 @@
 
 // React
 import { Fragment } from 'react'
-import { object, string } from 'prop-types'
+import { array, bool, object, string } from 'prop-types'
 
 // UI
 import { Badge, Link, slugify, Truncate } from '../../../'
@@ -80,7 +80,11 @@ const StyledA = styled.a`
 `
 
 BlogList.propTypes = {
-  author: string,
+  author: bool,
   config: object.isRequired,
-  list: object.isRequired
+  list: array.isRequired
+}
+
+BlogList.defaultProps = {
+  author: false
 }

@@ -1,26 +1,36 @@
 /**
  * Facebook
  */
-<% url = t(:url) + current_page.url %>
-<% appID = development? ? data.facebook.app.testID : (appID == 'locale') ? t(:'facebook.app.id') : data.facebook.app.id %>
 
-<meta content="<%= configuration('title') %>" property="og:title">
-<meta content="<%= configuration('description') %>" name="description" property="og:description">
-<meta content="<%= t(:url) + configuration('image') %>" property="og:image">
-<meta content="<%= configuration('siteName') %>" property="og:site_name">
-<meta content="<%= configuration('type') %>" property="og:type">
-<meta content="<%= url %>" property="og:url">
-<meta content="<%= t(:'facebook.locale') %>" property="og:locale">
-<meta content="<%= appID %>", property="fb:app_id">
+// React
+import { string } from 'prop-types'
 
-{/* // <!-- Facebook Open Graph data --></meta>
-// <meta property="og:type" content="website">
-// <meta property="og:url" content="https://.app/">
-// <meta property="og:title" content="Get a puppy from a trusted, safe breeder">
-// <meta property="og:image:url" content="http://www..com/img/social.jpg">
-// <meta property="og:image:secure_url" content="https://www..com/img/social.jpg">
-// <meta property="og:description" content="---">
-// <meta property="og:site_name" content="--">
-// <meta property="og:locale" content="en_GB">
-// <meta property="og:image:width" content="1200">
-// <meta property="og:image:height" content="630"> */}
+// Next
+import Head from 'next/head'
+
+export const MetaFacebook = ({ appId, brand, description, image, locale, title, type, url }) => {
+  return (
+    <Head>
+      <meta content={title} property='og:title' />
+      <meta content={description} name='description' property='og:description' />
+      <meta content={`${url}${image}`} property='og:image' />
+
+      {/* <meta property="og:image:secure_url" content="https://www..com/img/social.jpg" />
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630"> */}
+
+      <meta content={brand} property='og:site_name' />
+      <meta content={type} property='og:type' />
+      <meta content={url} property='og:url' />
+      <meta content={locale} property='og:locale' />
+      <meta content={appId} property='fb:app_id' />
+    </Head>
+  )
+}
+
+MetaFacebook.propTypes = {
+  author: string.isRequired,
+  description: string.isRequired,
+  locale: string.isRequired,
+  title: string.isRequired
+}

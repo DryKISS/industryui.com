@@ -4,13 +4,23 @@
 
 // React
 import React from 'react'
+import { any, bool, func, object } from 'prop-types'
+
+// Lodash
+import isObject from 'lodash/isObject'
 
 // Next
-import App, { Container } from 'next/app'
-import Router from 'next/router'
+import App from 'next/app'
 
 // UI
-import { GoogleAnalyticsPageView, Theme, ThemeStyle } from '../../'
+import {
+  AuthProvider,
+  FirebaseProvider,
+  Icons,
+  Theme,
+  ThemeStyle,
+  UserProvider
+} from '../'
 
 // Layout
 import Layout from 'layout'
@@ -19,36 +29,48 @@ import Layout from 'layout'
 import { ThemeProvider } from 'styled-components'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
-Router.events.on('routeChangeComplete', url => GoogleAnalyticsPageView(url, Google.analytics))
-
 export class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
-    let pageProps = {}
+  static propTypes = {
+    authentication: any,
+    Component: func.isRequired,
+    firebase: object,
+    icons: object,
+    pageProps: object,
+    user: bool
+  }
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
+  layout () {
+    const { Component, icons, pageProps, user } = this.props
 
-    return { pageProps }
+    return (
+      <>
+        {icons && <Icons icons={icons} /> }
+        <ThemeStyle />
+
+        {user
+          ? <UserProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </UserProvider>
+          : <Layout>
+              <Component {...pageProps} />
+            </Layout>}
+      </>
+    )
   }
 
   render () {
-    const { Component, pageProps } = this.props
+    const { authentication, firebase } = this.props
 
     return (
-      <Container>
-
-        <ThemeProvider theme={Theme}>
-
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-
-        </ThemeProvider>
-
-        <ThemeStyle />
-
-      </Container>
+      <ThemeProvider theme={Theme}>
+        {isObject(firebase)
+          ? <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>
+          : isObject(authentication)
+            ? <AuthProvider config={authentication}>{this.layout()}</AuthProvider>
+            : this.layout()}
+      </ThemeProvider>
     )
   }
 }

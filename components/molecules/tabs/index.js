@@ -31,6 +31,7 @@ export const Tabs = ({ children, className }) => {
           return (
             <Tab
               activeTab={activeTab}
+              childClick={child.props.onClick}
               key={child.props.label}
               label={child.props.label}
               onClick={onClickTabItem}

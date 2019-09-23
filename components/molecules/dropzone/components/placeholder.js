@@ -4,13 +4,12 @@
  */
 
 // React
-import { any, func } from 'prop-types'
+// import { any, func } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 export const DropzonePlaceholder = ({ file, handleRemove, index }) => {
-
   // const length = accepted.length
 
   // const placeholder = []
