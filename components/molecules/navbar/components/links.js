@@ -6,8 +6,7 @@
 import { bool, object, string } from 'prop-types'
 
 // UI
-import { Button, Link, MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../'
-// import {  } from '../../../../utils'
+import { Button, Icon, Link, MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -25,6 +24,16 @@ export const Links = ({ links, type, visible }) => {
         >
           {name}
         </StyledButton>
+      </Link>
+    )
+  }
+
+  const renderIcon = (to, type) => {
+    return (
+      <Link to={to}>
+        <a>
+          <Icon icon={type.icon} />
+        </a>
       </Link>
     )
   }
@@ -53,6 +62,7 @@ export const Links = ({ links, type, visible }) => {
             <StyledListItem key={id}>
               { Component && <Component /> }
               { (type && type.as === 'button') && renderButton(id, name, to, type) }
+              { (type && type.as === 'icon') && renderIcon(to, type) }
               { (!Component && (!type || type.as === 'link')) && renderLink(active, id, name, onClick, to) }
             </StyledListItem>
 

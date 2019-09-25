@@ -3,7 +3,7 @@
  */
 
 // React
-import { objectOf, number, oneOf, oneOfType, string } from 'prop-types'
+import { object, objectOf, number, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
 import { BACKGROUND, CONTEXT, SHADE_COLOUR } from '../../'
@@ -16,16 +16,6 @@ export const Alert = ({ content, context }) =>
     {content}
   </StyledAlert>
 
-Alert.propTypes = {
-  content: string.isRequired,
-  context: oneOf(Object.values(CONTEXT)),
-  style: objectOf(oneOfType([number, string]))
-}
-
-Alert.defaultProps = {
-  context: 'primary'
-}
-
 const StyledAlert = styled.div`
   ${props => BACKGROUND(props)};
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
@@ -35,3 +25,13 @@ const StyledAlert = styled.div`
   padding: .75rem 1.25rem;
   position: relative;
 `
+
+Alert.propTypes = {
+  content: oneOfType([object, string]).isRequired,
+  context: oneOf(Object.values(CONTEXT)),
+  style: objectOf(oneOfType([number, string]))
+}
+
+Alert.defaultProps = {
+  context: 'primary'
+}

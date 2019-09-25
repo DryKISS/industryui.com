@@ -28,12 +28,33 @@ export const UserProvider = ({ children }) => {
     const bearerToken = localStorage.getItem('bearerToken')
 
     if (bearerToken) {
-      setUser({
-        name: 'Homyze',
-        roles: [
-          'ADMIN'
-        ]
-      })
+
+      if (bearerToken === 'adminAccessToken123456789') {
+        setUser({
+          name: 'Homyze',
+          roles: [
+            'ADMIN'
+          ]
+        })
+      }
+
+      if (bearerToken === 'tenantAccessToken123456789') {
+        setUser({
+          name: 'Tenant',
+          roles: [
+            'TENANT'
+          ]
+        })
+      }
+
+      if (bearerToken === 'customerAccessToken123456789') {
+        setUser({
+          name: 'Customer',
+          roles: [
+            'CUSTOMER'
+          ]
+        })
+      }
 
       setIsLoading(false)
     } else {
@@ -45,19 +66,48 @@ export const UserProvider = ({ children }) => {
   const signIn = (provider, username, password) => {
     console.log('SignIn')
 
-    if (username === 'admin@cleverly.works' && password === 'cleverly123') {
-      localStorage.setItem('bearerToken', 'awesomeAccessToken123456789')
-
-      setAccessToken('awesomeAccessToken123456789')
+    if (username === 'admin@cleverly.works') {
+      localStorage.setItem('bearerToken', 'adminAccessToken123456789')
       setUser({
         name: 'Homyze',
         roles: [
           'ADMIN'
         ]
       })
-
-      Router.push('/dashboard')
     }
+
+    if (username === 'tenant@cleverly.works') {
+      localStorage.setItem('bearerToken', 'tennntAccessToken123456789')
+      setUser({
+        name: 'Tenant',
+        roles: [
+          'TENANT'
+        ]
+      })
+    }
+
+    if (username === 'customer@cleverly.works') {
+      localStorage.setItem('bearerToken', 'customerAccessToken123456789')
+      setUser({
+        name: 'Customer',
+        roles: [
+          'CUSTOMER'
+        ]
+      })
+    }
+
+    if (username === 'supplier@cleverly.works') {
+      localStorage.setItem('bearerToken', 'supplierAccessToken123456789')
+      setUser({
+        name: 'Supplier',
+        roles: [
+          'SUPPLIER'
+        ]
+      })
+    }
+
+    setAccessToken('awesomeAccessToken123456789')
+    Router.push('/dashboard')
   }
 
   const signOut = () => {

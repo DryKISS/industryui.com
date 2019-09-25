@@ -23,8 +23,6 @@ export const useLogin = (firebase = false) => {
   const [change, form, setForm] = useChange(INITIAL_STATE)
   const { signIn } = useContext(UserContext)
 
-  console.log('useLogin', useContext(UserContext))
-
   const submit = (e) => {
     e.preventDefault()
     const { email, password } = form

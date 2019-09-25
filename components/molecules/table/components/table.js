@@ -9,6 +9,11 @@ import { array, func, string } from 'prop-types'
 import styled from 'styled-components'
 
 export const Table = ({ center, className, columns, rowClick, rows }) => {
+  const handleClick = (e) => {
+    const row = e.currentTarget.getAttribute('data-item')
+    rowClick(JSON.parse(row))
+  }
+
   const renderColumns = () => {
     return (
       columns.map(({ formatter, hidden, text }, index) => {
@@ -28,10 +33,10 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
       rows.map((row, index) =>
         <StyledTr
           key={index}
-          onClick={rowClick(row)}
-          pointer={typeof rowClick() === 'function'}
+          data-item={JSON.stringify(row)}
+          onClick={handleClick}
+          pointer={typeof rowClick === 'function'}
         >
-
           {Object.entries(row).map(([key, value], index) => {
             if ((columns && columns.length) && columns[index].hidden) {
               return

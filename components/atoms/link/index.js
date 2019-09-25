@@ -3,7 +3,7 @@
  */
 
 // React
-import { bool, object, oneOfType, string } from 'prop-types'
+import { bool, node, object, oneOfType, string } from 'prop-types'
 
 // Next
 import NextLink from 'next/link'
@@ -30,10 +30,10 @@ export const Link = ({ children, passHref, to }) => {
 }
 
 Link.propTypes = {
+  children: node,
   passHref: bool,
   to: oneOfType([
     object,
     string
-  ]),
-  type: string
+  ])
 }

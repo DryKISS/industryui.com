@@ -4,37 +4,21 @@
  */
 
 // React
-import { useContext } from 'react'
-import { array, node, object, string } from 'prop-types'
+import { array, func, node, string } from 'prop-types'
 
 // UI
-import { Copyright, Footer, Navbar, UserContext } from '../../'
+import { Copyright, Footer } from '../../'
 
 export const Bootstrap = ({
   brand,
-  brandLogo,
   children,
   copyright,
   footer,
-  navigation,
-  navigationAdmin
+  Navigation
 }) => {
-  // const user = null
-  const { user, signOut } = useContext(UserContext) || {}
-
   return (
     <>
-      {user &&
-        <>
-          {user.roles && user.roles[0] === 'ADMIN' &&
-            <Navbar brand={brandLogo} links={navigationAdmin(signOut)}/>}
-
-          {user.roles && user.roles[0] === 'SUPPLIER' &&
-            <Navbar brand={brandLogo} links={navigationSupplier(signOut)} />}
-        </>
-      }
-
-      {!user && <Navbar brand={brandLogo} links={navigation} />}
+      <Navigation />
 
       {children}
 
@@ -51,5 +35,5 @@ Bootstrap.propTypes = {
   children: node.isRequired,
   copyright: array,
   footer: array,
-  navigation: object
+  navigation: func
 }

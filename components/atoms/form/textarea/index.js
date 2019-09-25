@@ -99,15 +99,15 @@ const StyledTextarea = styled.textarea`
     outline: 0;
   }
 
-  &:valid~.Form-feedback {
+  /* &:valid~.Form-feedback {
     display: none;
-  }
+  } */
 
-  &:valid {
+  /* &:valid {
     border-color: green;
-  }
+  } */
 
-  &:invalid {
+  /* &:invalid {
     border-color: #dc3545;
-  }
+  } */
 `

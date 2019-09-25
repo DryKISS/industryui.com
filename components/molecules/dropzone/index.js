@@ -129,7 +129,7 @@ const StyledContainer = styled.div`
   /* align-items: center; */
   /* justify-content: center; */
   margin-bottom: 1rem;
-  height: 50vh;
+  height: 25vh;
   padding: 1rem;
   overflow: auto;
   text-align: center;

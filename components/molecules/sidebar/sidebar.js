@@ -45,14 +45,12 @@ export const Sidebar = ({ data, profile }) => {
 
           {data.map(({ Component, divider, icon, name, to }, index) => (
             <span key={index}>
-
               {divider
                 ? <Divider size='md' />
                 : Component ? <Component />
                   : to ? link(icon, name, to)
                     : name
               }
-
             </span>
           ))}
 
