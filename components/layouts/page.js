@@ -17,15 +17,19 @@ import { node, object, string } from 'prop-types'
 // UI
 import { Container, MetaHead, PageHeading } from '../'
 
-// Data
-import { Brand, Canonical } from 'config'
-
-export const Page = ({ children, heading, meta, strapline }) => {
+export const Page = ({
+  brand,
+  canonical,
+  children,
+  heading,
+  meta,
+  strapline
+}) => {
   return (
     <>
       <MetaHead
-        canonical={Canonical}
-        brand={Brand.name}
+        canonical={canonical}
+        brand={brand.name}
         meta={meta}
       />
 
@@ -39,6 +43,8 @@ export const Page = ({ children, heading, meta, strapline }) => {
 }
 
 Page.propTypes = {
+  brand: string.isRequired,
+  canonical: string.isRequired,
   children: node.isRequired,
   heading: string,
   meta: object.isRequired,

@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { any, bool, func, object } from 'prop-types'
+import { any, bool, func, node, object } from 'prop-types'
 
 // Lodash
 import isObject from 'lodash/isObject'
@@ -22,9 +22,6 @@ import {
   UserProvider
 } from '../'
 
-// Layout
-import Layout from 'layout'
-
 // Style
 import { ThemeProvider } from 'styled-components'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -35,27 +32,30 @@ export class MyApp extends App {
     Component: func.isRequired,
     firebase: object,
     icons: object,
+    Layout: node.isRequired,
     pageProps: object,
     user: bool
   }
 
   layout () {
-    const { Component, icons, pageProps, user } = this.props
+    const { Component, icons, Layout, pageProps, user } = this.props
 
     return (
       <>
-        {icons && <Icons icons={icons} /> }
+        {icons && <Icons icons={icons} />}
         <ThemeStyle />
 
-        {user
-          ? <UserProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </UserProvider>
-          : <Layout>
+        {user &&
+          <UserProvider>
+            <Layout>
               <Component {...pageProps} />
-            </Layout>}
+            </Layout>
+          </UserProvider>}
+
+        {!user &&
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>}
       </>
     )
   }

@@ -47,52 +47,52 @@ import dynamic from 'next/dynamic'
 // import '@fullcalendar/daygrid/main.css'
 // import '@fullcalendar/timegrid/main.css'
 
-// export const Calendar = () => {
-//   const calendarComponentRef = createRef()
+export const Calendar = () => {
+  //   const calendarComponentRef = createRef()
 
-//   const header = {
-//     left: 'prev,next today',
-//     center: 'title',
-//     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-//   }
+  //   const header = {
+  //     left: 'prev,next today',
+  //     center: 'title',
+  //     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+  //   }
 
-//   const footer = {
-//     left: 'prev,next today',
-//     center: 'title',
-//     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-//   }
+  //   const footer = {
+  //     left: 'prev,next today',
+  //     center: 'title',
+  //     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+  //   }
 
-//   const events = [
-//     { title: 'event 1', date: '2019-09-02' },
-//     { title: 'event 2', date: '2019-09-21' }
-//   ]
+  //   const events = [
+  //     { title: 'event 1', date: '2019-09-02' },
+  //     { title: 'event 2', date: '2019-09-21' }
+  //   ]
 
-//   const handleDateClick = (arg) => {
-//     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-//       this.setState({ // add new event data
-//         calendarEvents: this.state.calendarEvents.concat({ // creates a new array
-//           title: 'New Event',
-//           start: arg.date,
-//           allDay: arg.allDay
-//         })
-//       })
-//     }
-//   }
+  //   const handleDateClick = (arg) => {
+  //     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
+  //       this.setState({ // add new event data
+  //         calendarEvents: this.state.calendarEvents.concat({ // creates a new array
+  //           title: 'New Event',
+  //           start: arg.date,
+  //           allDay: arg.allDay
+  //         })
+  //       })
+  //     }
+  //   }
 
-//   return (
-//     <>
-//       <FullCalendarNoSSRWrapper
-//         businessHours
-//         dateClick={handleDateClick}
-//         defaultView='dayGridMonth'
-//         eventColor='#e3336e'
-//         events={events}
-//         footer={footer}
-//         header={header}
-//         nowIndicator
-//         ref={calendarComponentRef}
-//         weekends
-//       />
-//     </>
-//   )
-// }
+  return (
+    <>
+      {/* //       <FullCalendarNoSSRWrapper
+  //         businessHours
+  //         dateClick={handleDateClick}
+  //         defaultView='dayGridMonth'
+  //         eventColor='#e3336e'
+  //         events={events}
+  //         footer={footer}
+  //         header={header}
+  //         nowIndicator
+  //         ref={calendarComponentRef}
+  //         weekends
+  //       /> */}
+    </>
+  )
+}
