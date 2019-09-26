@@ -3,15 +3,16 @@
  */
 
 // React
-import React, { useState, useEffect } from 'react'
-import { array, object, string } from 'prop-types'
+import React, { useState } from 'react'
+import { array, func, string, object  } from 'prop-types'
 
 import styled from 'styled-components'
 
 // UI
 import { Select } from '../../../'
+import { FloorWrapper } from '../../'
 
-export const ImageLocation = ({ properties, className, style }) => {
+export const ImageLocation = ({ properties, change }, props) => {
 
   const [property, setProperty] = useState(null);
 
@@ -30,8 +31,9 @@ export const ImageLocation = ({ properties, className, style }) => {
   }
 
   return (
-    <LocationWrapper className={className} style={style}>
+    <LocationWrapper {...props} >
       <Select label="Property" options={options} change={handlePropertyChange} />
+      {property && <FloorWrapper key={property.id} property={property} change={change} />}
     </LocationWrapper>
   );
 };
@@ -43,7 +45,8 @@ const LocationWrapper = styled.div`
 `
 
 ImageLocation.propTypes = {
-  properties: array.isRequired,
+  change: func.isRequired,
   className: string,
+  properties: array.isRequired,
   style: object
 }

@@ -7,6 +7,7 @@ import React from 'react'
 
 // Storybook
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 
 // UI
 import { ImageLocation } from '../../'
@@ -30,6 +31,6 @@ storiesOf('Molecules/ImageLocation', module)
   })
 
   .add('Default', () => (
-    <ImageLocation properties={Properties}></ImageLocation>
+    <ImageLocation properties={Properties} change={action('position-change')}></ImageLocation>
   ))
 

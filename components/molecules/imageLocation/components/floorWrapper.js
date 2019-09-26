@@ -4,7 +4,7 @@
 
  // React
 import React, { useState } from 'react'
-import { bool, string } from 'prop-types'
+import { func, object } from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { Select } from '../../../'
 import { ImageWrapper } from '../../'
 
-export const FloorWrapper = ({ property }) => {
+export const FloorWrapper = ({ property, change }) => {
   const [floor, setFloor] = useState(null);
 
   const options = [{ text: 'Select floor', value: ''}];
@@ -32,7 +32,7 @@ export const FloorWrapper = ({ property }) => {
   return (
     <StyledFloorWrapper>
       <Select label="Floor" options={options} change={handleFloorChange} />
-      {floor && <ImageWrapper floor={floor} />}
+      {floor && <ImageWrapper property={property} floor={floor} change={change} />}
     </StyledFloorWrapper>
   )
 }
@@ -41,3 +41,7 @@ const StyledFloorWrapper = styled.div`
 
 `
 
+FloorWrapper.propTypes = {
+  change: func.isRequired,
+  property: object.isRequired
+}
