@@ -25,8 +25,7 @@ export const BlogSection = ({ children, heading }) =>
         />
 
         <Divider size='sm' />
-      </>
-    }
+      </>}
 
     {children}
 

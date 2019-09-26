@@ -7,12 +7,6 @@
  *   - Calls API to get the location to redirect too
  * - Google Maps as seen on: https://deliveroo.ie/
  *
- * @todo Get the version from the config file
- * @todo Need to localise this copy
- * @todo Need to make good for mobile - stick to the top hidden-xs hidden-sm visible-md visible-lg
- * @todo Need to change button colour based on beetroot or aubergine - swap
- * @todo Need to set up an API Key for Deliveroo
- *
  * <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
  */
 
@@ -56,14 +50,14 @@ export const BlogFindFood = ({ colour }) => {
     setMsg(false)
 
     if (!validatorPostCode(postCode)) {
-      setMsg(`We couldn't recognise that postcode - check and try again.`)
+      setMsg('We couldn\'t recognise that postcode - check and try again.')
       return
     }
 
     // versionPostCode || versionGoogle
     if (versionPostCode) {
       if (!validatorPostCode(postCode)) {
-        setMsg(`We couldn't recognise that postcode - check and try again.`)
+        setMsg('We couldn\'t recognise that postcode - check and try again.')
         return
       }
 
@@ -95,7 +89,7 @@ export const BlogFindFood = ({ colour }) => {
 
         <StyledForm submit={submit}>
 
-          <Label text={'Your favourite restaurants, delivered.'}>
+          <Label text='Your favourite restaurants, delivered.'>
 
             <InputGroup>
 
@@ -119,8 +113,7 @@ export const BlogFindFood = ({ colour }) => {
               {msg &&
                 <div style={{ color: '#fff' }}>
                   {msg}
-                </div>
-              }
+                </div>}
 
             </InputGroup>
 

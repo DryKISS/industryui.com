@@ -39,18 +39,6 @@ export const Avatar = ({
   )
 }
 
-Avatar.propTypes = {
-  children: any,
-  click: func,
-  content: any,
-  context: oneOf(Object.values(CONTEXT)),
-  style: objectOf(oneOfType([number, string]))
-}
-
-Avatar.defaultProps = {
-  context: 'primary'
-}
-
 const StyledAvatar = styled.div`
   align-items: center;
   ${props => BACKGROUND(props)}
@@ -62,3 +50,15 @@ const StyledAvatar = styled.div`
   min-width: 56px;
   width: 56px;
 `
+
+Avatar.propTypes = {
+  children: any,
+  click: func,
+  content: any,
+  context: oneOf(Object.values(CONTEXT)),
+  style: objectOf(oneOfType([number, string]))
+}
+
+Avatar.defaultProps = {
+  context: 'primary'
+}

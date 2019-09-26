@@ -1,7 +1,5 @@
 /**
  * Gender
- *
- * @todo Should allow for all new gender types
  */
 export const GENDER = [
   {

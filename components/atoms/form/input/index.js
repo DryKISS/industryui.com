@@ -36,7 +36,7 @@ export const Input = ({
       autoCorrect={autoCorrect}
       autoFocus={autoFocus}
       aria-describedby={id}
-      className={`Form-control`}
+      className='Form-control'
       id={id}
       onChange={change}
       placeholder={placeholder}
@@ -54,9 +54,8 @@ export const Input = ({
         ? <Label text={label}>
           {InputItem()}
           <div className='Form-feedback' />
-        </Label>
-        : InputItem()
-      }
+          </Label>
+        : InputItem()}
     </>
   )
 }

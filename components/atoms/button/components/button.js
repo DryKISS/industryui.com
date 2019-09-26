@@ -24,7 +24,7 @@ const StyledButton = styled.button`
   color: ${({ context, theme }) => context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
   border: 1px solid ${props => props.theme.COLOUR[props.context]};
   border-radius: .25rem;
-  ${props => props.shadow && `box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);`}
+  ${props => props.shadow && 'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
   cursor: ${props => props.disabled ? 'initial' : 'pointer'};
   display: ${props => props.centre || props.block ? 'block' : 'inline-block'};
   font-family: ${({ theme }) => theme.font};

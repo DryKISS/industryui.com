@@ -42,7 +42,7 @@ export const DogCard = ({
       to={{
         as: `/breeders/${breederSlug}/dogs/${nameSlug}/${dogId}`,
         href: {
-          pathname: `/breeders/dogs/profile`,
+          pathname: '/breeders/dogs/profile',
           query: {
             breederSlug: breederSlug,
             dogId: dogId,
@@ -57,8 +57,7 @@ export const DogCard = ({
         {sell &&
           <div className='float-right'>
             {formatPrice(price)}
-          </div>
-        }
+          </div>}
       </CardBody>
     </Card>
   )

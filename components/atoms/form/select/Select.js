@@ -25,7 +25,7 @@ export const Select = forwardRef(({
   value
 }, ref) => {
   const renderRange = () => {
-    const options = [<option disabled value={''} key={`initial0`}>{placeholder}</option>]
+    const options = [<option disabled value='' key='initial0'>{placeholder}</option>]
 
     for (let i = range[1]; i <= range[0]; i++) {
       options.push(<option disabled={disabled} key={`range${i}`} value={i}>{i}</option>)

@@ -13,8 +13,8 @@ import styled from 'styled-components'
 
 export const ListItem = ({ children, className, group, icon, style }) =>
   <StyledItem className={className} group={group} style={style}>
-    { icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' /> }
-    { children }
+    {icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' />}
+    {children}
   </StyledItem>
 
 const groupStyles = `

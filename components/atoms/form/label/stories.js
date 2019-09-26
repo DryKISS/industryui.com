@@ -21,5 +21,5 @@ storiesOf('Atoms/Form/Label', module)
   })
 
   .add('Default', () =>
-    <Label children={''} text='Select your gender' />
+    <Label children='' text='Select your gender' />
   )

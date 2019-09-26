@@ -6,4 +6,3 @@ Wraps and styles an address elements
 
 - [W3 Schools](https://www.w3schools.com/tags/tag_address.asp)
 - [Markup Tutorial](https://iandevlin.com/blog/2012/01/html/marking-up-a-postal-address-with-html/)
-

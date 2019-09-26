@@ -8,31 +8,31 @@ export const DOG_GROUP = [
     value: ''
   },
   {
-    text: `Gundogs`,
-    value: `Gundog`
+    text: 'Gundogs',
+    value: 'Gundog'
   },
   {
-    text: `Hounds`,
-    value: `Hound`
+    text: 'Hounds',
+    value: 'Hound'
   },
   {
-    text: `Pastoral`,
-    value: `Pastoral`
+    text: 'Pastoral',
+    value: 'Pastoral'
   },
   {
-    text: `Terriers`,
-    value: `Terrier`
+    text: 'Terriers',
+    value: 'Terrier'
   },
   {
-    text: `Toys`,
-    value: `Toy`
+    text: 'Toys',
+    value: 'Toy'
   },
   {
-    text: `Working`,
-    value: `Working`
+    text: 'Working',
+    value: 'Working'
   },
   {
-    text: `Utility`,
-    value: `Utility`
+    text: 'Utility',
+    value: 'Utility'
   }
 ]

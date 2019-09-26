@@ -7,6 +7,6 @@ export const colStyle = {
 
 export const StyledColumn = (props) => (
   <Column {...props} style={colStyle}>
-    { props.children }
+    {props.children}
   </Column>
 )

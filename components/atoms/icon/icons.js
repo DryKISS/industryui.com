@@ -24,19 +24,18 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 export const Icons = ({ icons }) => {
   useEffect(() => {
-
     // import("@fortawesome/fontawesome-svg-core").then(icons => {
     //   console.log(icons)
     // })
 
     const proIcons = Object
       .keys(ProIcons)
-      .filter(key => key !== 'far' && key !== 'prefix' && icons.proRegular.includes(key) )
+      .filter(key => key !== 'far' && key !== 'prefix' && icons.proRegular.includes(key))
       .map(icon => ProIcons[icon])
 
     const brandIcons = Object
       .keys(BrandIcons)
-      .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key) )
+      .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key))
       .map(icon => BrandIcons[icon])
 
     library.add(...proIcons, ...brandIcons)
