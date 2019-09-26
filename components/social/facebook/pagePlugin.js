@@ -1,8 +1,6 @@
 /**
  * Social - Facebook - Page Plugin
  *
- * @see https://developers.facebook.com/docs/plugins/page-plugin
- *
  * - height: Min. is 70
  * - tabs: Tabs to render i.e. [timeline, events, messages]
  * - width: Min. is 180 & Max. is 500
@@ -35,8 +33,7 @@ export const FacebookPagePlugin = ({
           src={`https://www.facebook.com/plugins/page.php?href=${to}&tabs=${tabs}&width=${width}&height=${height}&small_header=${smallHeader}&adapt_container_width=${adaptContainerWidth}&hide_cover=${hideCover}&show_facepile=${showFacepile}&appId=${appId}`}
           style={{ border: 'none', overflow: 'hidden' }}
           width={width}
-        />
-      }
+        />}
 
       {!iFrame &&
         <div
@@ -59,8 +56,7 @@ export const FacebookPagePlugin = ({
               Mai Tai Dating
             </a>
           </blockquote>
-        </div>
-      }
+        </div>}
     </>
   )
 }

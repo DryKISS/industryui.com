@@ -17,9 +17,7 @@ module.exports = function (api) {
       {
         root: ['./'],
         alias: {
-          config: './config',
-          data: './data',
-          layout: './layouts'
+          config: './config'
         }
       }
     ]

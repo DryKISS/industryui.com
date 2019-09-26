@@ -1,11 +1,5 @@
 /**
  * Format date
- *
- * Formats a firebase saved timestamp to a locale string
- *
- * @todo Rename this to Firebase data
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
  */
 export const formatDate = (date) => {
   return new Date(date.seconds * 1000).toLocaleDateString()

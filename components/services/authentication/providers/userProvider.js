@@ -25,10 +25,9 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     console.log('UserProvider: useEffect')
-    const bearerToken = localStorage.getItem('bearerToken')
+    const bearerToken = window.localStorage.getItem('bearerToken')
 
     if (bearerToken) {
-
       if (bearerToken === 'adminAccessToken123456789') {
         setUser({
           name: 'Homyze',
@@ -67,7 +66,7 @@ export const UserProvider = ({ children }) => {
     console.log('SignIn')
 
     if (username === 'admin@cleverly.works') {
-      localStorage.setItem('bearerToken', 'adminAccessToken123456789')
+      window.localStorage.setItem('bearerToken', 'adminAccessToken123456789')
       setUser({
         name: 'Homyze',
         roles: [
@@ -77,7 +76,7 @@ export const UserProvider = ({ children }) => {
     }
 
     if (username === 'tenant@cleverly.works') {
-      localStorage.setItem('bearerToken', 'tennntAccessToken123456789')
+      window.localStorage.setItem('bearerToken', 'tennntAccessToken123456789')
       setUser({
         name: 'Tenant',
         roles: [
@@ -87,7 +86,7 @@ export const UserProvider = ({ children }) => {
     }
 
     if (username === 'customer@cleverly.works') {
-      localStorage.setItem('bearerToken', 'customerAccessToken123456789')
+      window.localStorage.setItem('bearerToken', 'customerAccessToken123456789')
       setUser({
         name: 'Customer',
         roles: [
@@ -97,7 +96,7 @@ export const UserProvider = ({ children }) => {
     }
 
     if (username === 'supplier@cleverly.works') {
-      localStorage.setItem('bearerToken', 'supplierAccessToken123456789')
+      window.localStorage.setItem('bearerToken', 'supplierAccessToken123456789')
       setUser({
         name: 'Supplier',
         roles: [
@@ -111,7 +110,7 @@ export const UserProvider = ({ children }) => {
   }
 
   const signOut = () => {
-    localStorage.removeItem('bearerToken')
+    window.localStorage.removeItem('bearerToken')
 
     setAccessToken(null)
     setUser(null)
