@@ -2,8 +2,6 @@
 
 Register
 
-## Links
-
 ## Usage
 
 ```html

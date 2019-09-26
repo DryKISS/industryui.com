@@ -46,8 +46,7 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
               <StyledTd center={center} key={index}>
                 {(columns && columns.length > 0) && columns[index].formatter
                   ? columns[index].formatter(row)
-                  : value && value.__html ? <span dangerouslySetInnerHTML={value} /> : value
-                }
+                  : value && value.__html ? <span dangerouslySetInnerHTML={value} /> : value}
               </StyledTd>
             )
           })}

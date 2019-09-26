@@ -28,10 +28,10 @@ export const Hero = ({
   const renderLeft = () => {
     return (
       <StyledColumn md={6}>
-        { title && <StyledTitle tag='h1' content={title} /> }
-        { strapline && <StyledStrapline tag='h2' content={strapline} /> }
-        { buttons && <HeroButtons buttons={buttons} /> }
-        { message && <p children={message} /> }
+        {title && <StyledTitle tag='h1' content={title} />}
+        {strapline && <StyledStrapline tag='h2' content={strapline} />}
+        {buttons && <HeroButtons buttons={buttons} />}
+        {message && <p children={message} />}
       </StyledColumn>
     )
   }
@@ -46,11 +46,10 @@ export const Hero = ({
 
         <Row>
 
-          { title && renderLeft() }
+          {title && renderLeft()}
 
-          { image &&
-            <HeroImage alt={alt} align={align} image={image} width={width} />
-          }
+          {image &&
+            <HeroImage alt={alt} align={align} image={image} width={width} />}
 
         </Row>
 

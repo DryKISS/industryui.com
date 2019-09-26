@@ -105,7 +105,7 @@ export const Carousel = withTheme(
           <CarouselButton type='prev' id='slider-prev-button'>&lt;</CarouselButton>
           <CarouselButton type='next' id='slider-next-button'>&gt;</CarouselButton>
           <section className='slider'>
-            { this.props.children }
+            {this.props.children}
           </section>
         </CarouselStyled>
       )

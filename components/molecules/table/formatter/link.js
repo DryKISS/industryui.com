@@ -8,13 +8,13 @@ import { Link } from '../../../'
 
 export const TableLink = ({ link, path, query, row }) => {
   return (
-    <Link to={
-      {
-        href: {
-          pathname: path,
-          query: query
-        }
-      }}>
+    <Link to={{
+      href: {
+        pathname: path,
+        query: query
+      }
+    }}
+    >
       <a>{link}</a>
     </Link>
   )

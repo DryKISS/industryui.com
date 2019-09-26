@@ -51,12 +51,12 @@ storiesOf('Molecules/Hero', module)
       alt='Tailwise Jack Russell Dog'
       buttons={Buttons}
       image={Jack}
-      message={'Message'}
+      message='Message'
       strapline={`
         Tailwise takes the hassle out of matching verified breeders with future
         dog owners, in their search to find the perfect pup. That means no
         puppy farms anywhere in the United Kingdom.
       `}
-      title={`The perfect puppy starts with a responsible breeder`}
+      title='The perfect puppy starts with a responsible breeder'
     />
   )

@@ -1,5 +1,5 @@
 /**
- * Location
+ * Error404
  */
 
 // React
@@ -8,11 +8,11 @@ import React from 'react'
 // Storybook
 import { storiesOf } from '@storybook/react'
 
-// Hero
-import { Location } from './'
-import Readme from './README.md'
+// UI
+import { Error404 } from '../'
+import Readme from '../README.md'
 
-storiesOf('Molecules/Location', module)
+storiesOf('Pages/Error404', module)
 
   .addParameters({
     readme: {
@@ -21,8 +21,5 @@ storiesOf('Molecules/Location', module)
   })
 
   .add('Default', () =>
-    <Location
-      apiKey=''
-      location='Wimbledon'
-    />
+    <Error404 />
   )

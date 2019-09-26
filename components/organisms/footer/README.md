@@ -7,7 +7,3 @@ This is the footer of the application
 ```html
 <Footer />
 ```
-
-## Links
-
-## Design

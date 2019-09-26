@@ -60,10 +60,10 @@ export const Links = ({ links, type, visible }) => {
           {link.map(({ active, Component, id, name, onClick, to, type }) =>
 
             <StyledListItem key={id}>
-              { Component && <Component /> }
-              { (type && type.as === 'button') && renderButton(id, name, to, type) }
-              { (type && type.as === 'icon') && renderIcon(to, type) }
-              { (!Component && (!type || type.as === 'link')) && renderLink(active, id, name, onClick, to) }
+              {Component && <Component />}
+              {(type && type.as === 'button') && renderButton(id, name, to, type)}
+              {(type && type.as === 'icon') && renderIcon(to, type)}
+              {(!Component && (!type || type.as === 'link')) && renderLink(active, id, name, onClick, to)}
             </StyledListItem>
 
           )}

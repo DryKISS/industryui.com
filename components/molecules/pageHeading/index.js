@@ -38,18 +38,15 @@ export const PageHeading = ({
             Call on 0330 043 5301
           </div>
 
-        </StyledHelp>
-      }
+        </StyledHelp>}
 
       <StyledHeading content={heading} context='primary' pageHeading />
 
       {strapline &&
-        <StyledStrapline>{strapline}</StyledStrapline>
-      }
+        <StyledStrapline>{strapline}</StyledStrapline>}
 
       {divider &&
-        <Divider size='md' />
-      }
+        <Divider size='md' />}
 
     </StyledHeader>
   )

@@ -22,11 +22,9 @@ export const Sidebar = ({ data, profile }) => {
         ? icon === 'dog-leashed'
           ? <Icon icon='dog-leashed' />
           : <Icon
-            icon='check-circle'
-            context={profile && profile[icon] === true ? 'primary' : 'light'}
+            icon='check-circle' context={profile && profile[icon] === true ? 'primary' : 'light'}
           />
-        : ''
-      }
+        : ''}
 
       {' '}
 
@@ -49,8 +47,7 @@ export const Sidebar = ({ data, profile }) => {
                 ? <Divider size='md' />
                 : Component ? <Component />
                   : to ? link(icon, name, to)
-                    : name
-              }
+                    : name}
             </span>
           ))}
 

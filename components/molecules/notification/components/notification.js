@@ -3,7 +3,6 @@
  */
 
 // React
-import { useState } from 'react'
 import { object } from 'prop-types'
 
 // UI

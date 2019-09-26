@@ -36,7 +36,7 @@ export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
   return (
     <Input
       accept='.csv, text/csv'
-      id={`inputId`}
+      id='inputId'
       label='CSV Upload'
       change={change}
       type='file'

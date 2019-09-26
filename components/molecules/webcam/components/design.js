@@ -7,12 +7,13 @@ import { Icon, Webcam } from '../../../'
 
 export const Design = ({ handleReset, handleScreenshot, refProp, screenshot, videoConstraints }) =>
   <>
-    <div className='text-center' style={{
-      background: '#000',
-      border: '1px solid #C8D1D8',
-      borderRadius: '.5rem .5rem 0 0',
-      marginBottom: '-8px'
-    }}
+    <div
+      className='text-center' style={{
+        background: '#000',
+        border: '1px solid #C8D1D8',
+        borderRadius: '.5rem .5rem 0 0',
+        marginBottom: '-8px'
+      }}
     >
 
       {!screenshot &&
@@ -20,12 +21,10 @@ export const Design = ({ handleReset, handleScreenshot, refProp, screenshot, vid
           ref={refProp}
           screenshotFormat='image/jpeg'
           videoConstraints={videoConstraints}
-        />
-      }
+        />}
 
       {screenshot &&
-        <img alt='user photo' src={screenshot} style={{ borderRadius: '.5rem .5rem 0 0' }} />
-      }
+        <img alt='user photo' src={screenshot} style={{ borderRadius: '.5rem .5rem 0 0' }} />}
 
     </div>
 
@@ -37,19 +36,20 @@ export const Design = ({ handleReset, handleScreenshot, refProp, screenshot, vid
     }}
     >
 
-      <div onClick={screenshot ? handleReset : handleScreenshot} style={{
-        background: `${!screenshot ? '#04d4cd' : '#e60811'}`,
-        border: '2px solid #FFF',
-        borderRadius: '50%',
-        bottom: '50%',
-        cursor: 'pointer',
-        height: '50px',
-        left: '50%',
-        lineHeight: '50px',
-        position: 'absolute',
-        textAlign: 'center',
-        width: '50px'
-      }}
+      <div
+        onClick={screenshot ? handleReset : handleScreenshot} style={{
+          background: `${!screenshot ? '#04d4cd' : '#e60811'}`,
+          border: '2px solid #FFF',
+          borderRadius: '50%',
+          bottom: '50%',
+          cursor: 'pointer',
+          height: '50px',
+          left: '50%',
+          lineHeight: '50px',
+          position: 'absolute',
+          textAlign: 'center',
+          width: '50px'
+        }}
       >
         <Icon color='white' icon='camera' style={{ fontSize: '1.5rem' }} />
       </div>

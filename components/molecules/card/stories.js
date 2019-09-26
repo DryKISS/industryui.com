@@ -29,7 +29,7 @@ storiesOf('Molecules/Card', module)
 
   .add('Default', () =>
     <Card
-      alt={'Vizla'}
+      alt='Vizla'
       bordered={boolean('Bordered', true)}
       footer={text('Footer', 'Footer text')}
       image={vizla}
@@ -41,7 +41,7 @@ storiesOf('Molecules/Card', module)
 
   .add('Horizontal', () =>
     <Card
-      alt={'Vizla'}
+      alt='Vizla'
       bordered={boolean('Bordered', true)}
       horizontal={boolean('Horizontal', true)}
       image={seeker}
@@ -63,7 +63,7 @@ storiesOf('Molecules/Card', module)
 
   .add('Breed', () =>
     <Card
-      alt={'Vizla'}
+      alt='Vizla'
       bordered={boolean('Bordered', true)}
       footer='Vizsla'
       image={vizla}
