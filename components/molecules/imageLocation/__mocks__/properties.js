@@ -11,12 +11,12 @@ export const Properties = [
       {
         id: 1,
         name: "Ground Floor",
-        image: "ground-floor.png"
+        image: "/static/media/ground-floor.e15d4aa1.png"
       },
       {
         id: 2,
         name: "First Floor",
-        image: "first-floor.png"
+        image: "/static/media/first-floor.0361b1ac.png"
       }
     ]
   },
@@ -29,31 +29,31 @@ export const Properties = [
       {
         id: 1,
         name: "Ground Floor",
-        image: "ground-floor.png"
+        image: "/static/media/ground-floor.e15d4aa1.png"
       },
 
       {
         id: 2,
         name: "First Floor",
-        image: "first-floor.png"
+        image: "/static/media/first-floor.0361b1ac.png"
       },
 
       {
         id: 3,
         name: "Second Floor",
-        image: "second-floor.png"
+        image: "/static/media/second-floor.69f937cb.png"
       },
 
       {
         id: 4,
         name: "Third Floor",
-        image: "third-floor.png"
+        image: "/static/media/third-floor.b0d19213.png"
       },
 
       {
         id: 5,
         name: "Fourth Floor",
-        image: "fourth-floor.png"
+        image: "/static/media/fourth-floor.42dabae3.png"
       }
     ]
 
