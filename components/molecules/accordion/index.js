@@ -1,0 +1,5 @@
+/**
+ * Accordion
+ */
+
+export * from './components'
