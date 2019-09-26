@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { any, bool, func, node, object } from 'prop-types'
+import { any, bool, func, object } from 'prop-types'
 
 // Lodash
 import isObject from 'lodash/isObject'
@@ -32,7 +32,7 @@ export class MyApp extends App {
     Component: func.isRequired,
     firebase: object,
     icons: object,
-    Layout: node.isRequired,
+    Layout: any,
     pageProps: object,
     user: bool
   }
