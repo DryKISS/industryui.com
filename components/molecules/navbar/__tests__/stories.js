@@ -14,7 +14,7 @@ import Readme from '../README.md'
 
 // Data
 import { Navigation } from '../__mocks__/navigation'
-import SVG from '../__resources__/tailwise-logo.svg'
+import SVG from '../__resources__/drykiss.svg'
 
 storiesOf('Molecules/Navbar', module)
 
