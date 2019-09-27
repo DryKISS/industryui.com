@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { Image } from '../../../'
 import { Dot } from '../../'
 
-export const ImageWrapper = ({ property, floor, change }) => {
+export const ImageWrapper = ({ change, item }) => {
 
   const [position, setPosition] = useState(null);
 
@@ -29,26 +29,23 @@ export const ImageWrapper = ({ property, floor, change }) => {
     setPosition(coordinates);
 
     change({
-      property: {
-        id: property.id,
-        name: property.name
-      },
-      floor: {
-        id: floor.id,
-        name: floor.name
-      },
+      item,
       position: coordinates
     })
   }
 
   useEffect(() => {
     setPosition(null);
-  }, [floor])
+  }, [item])
 
   return (
     <StyledImageWrapper onClick={handleImageClick}>
-      <Image alt={floor.name} src={floor.image} />
-      <Dot key={floor.id} position={position} />
+      { item.image &&
+        <>
+          <Image alt={item.text} src={item.image} />
+          <Dot key={item.id} position={position} />
+        </>
+      }
     </StyledImageWrapper>
   )
 }
@@ -64,5 +61,5 @@ const StyledImageWrapper = styled.div`
 
 ImageWrapper.propTypes = {
   change: func.isRequired,
-  floor: object.isRequired
+  item: object.isRequired
 }
