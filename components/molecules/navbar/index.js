@@ -28,7 +28,7 @@ export const Navbar = ({ brand, links, type }) => {
 
         <Toggler handleMenuClick={handleMenuClick} visible={visible} />
 
-        {links && <Links links={links} type={type} visible={visible} />}
+        {links && <Links links={links} closeMenu={handleMenuClick} type={type} visible={visible} />}
 
       </StyledNav>
 

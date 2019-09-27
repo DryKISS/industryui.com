@@ -11,13 +11,14 @@ import { Button, Icon, Link, MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const Links = ({ links, type, visible }) => {
+export const Links = ({ closeMenu, links, type, visible }) => {
   const renderButton = (id, name, to, type) => {
     return (
       <Link to={to} passHref>
         <StyledButton
           id={id}
           context={type.context}
+          onClick={closeMenu}
           outline={type.outline}
           size={type.size}
           type={type.as}
@@ -31,7 +32,7 @@ export const Links = ({ links, type, visible }) => {
   const renderIcon = (to, type) => {
     return (
       <Link to={to}>
-        <a>
+        <a onClick={closeMenu}>
           <Icon icon={type.icon} />
         </a>
       </Link>
@@ -39,13 +40,19 @@ export const Links = ({ links, type, visible }) => {
   }
 
   const renderLink = (active, id, name, onClick, to) => {
+
+    const handleClick = () => {
+      closeMenu();
+      onClick && onClick();
+    }
+
     if (type && (!active || active !== type)) {
       return
     }
 
     return (
       <Link to={to} passHref>
-        <StyledLink id={id} onClick={onClick}>{name}</StyledLink>
+        <StyledLink id={id} onClick={handleClick}>{name}</StyledLink>
       </Link>
     )
   }
