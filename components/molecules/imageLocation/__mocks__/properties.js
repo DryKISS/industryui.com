@@ -2,59 +2,64 @@
  * Properties
  */
 
-export const Properties = [
+export const Properties =  [
 
   {
-    id: 1,
-    name: "10 Downing street",
-    floors: [
+    value: 1,
+    text: "10 Downing street",
+    options: [
+
       {
-        id: 1,
-        name: "Ground Floor",
+        value: 1,
+        text: "Ground Floor",
         image: "/static/media/ground-floor.e15d4aa1.png"
       },
+
       {
-        id: 2,
-        name: "First Floor",
+        value: 2,
+        text: "First Floor",
         image: "/static/media/first-floor.0361b1ac.png"
       }
+
     ]
+
   },
 
   {
-    id: 2,
-    name: "23 Acacia Road",
-    floors: [
+    value: 2,
+    text: "23 Acacia Road",
+    options: [
 
       {
-        id: 1,
-        name: "Ground Floor",
+        value: 1,
+        text: "Ground Floor",
         image: "/static/media/ground-floor.e15d4aa1.png"
       },
 
       {
-        id: 2,
-        name: "First Floor",
+        value: 2,
+        text: "First Floor",
         image: "/static/media/first-floor.0361b1ac.png"
       },
 
       {
-        id: 3,
-        name: "Second Floor",
+        value: 3,
+        text: "Second Floor",
         image: "/static/media/second-floor.69f937cb.png"
       },
 
       {
-        id: 4,
-        name: "Third Floor",
+        value: 4,
+        text: "Third Floor",
         image: "/static/media/third-floor.b0d19213.png"
       },
 
       {
-        id: 5,
-        name: "Fourth Floor",
+        value: 5,
+        text: "Fourth Floor",
         image: "/static/media/fourth-floor.42dabae3.png"
       }
+
     ]
 
   },
