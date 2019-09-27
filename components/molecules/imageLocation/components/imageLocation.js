@@ -42,6 +42,7 @@ const LocationWrapper = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   padding: 20px;
+  overflow-x: auto;
 `
 
 ImageLocation.propTypes = {

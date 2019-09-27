@@ -56,6 +56,10 @@ export const ImageWrapper = ({ property, floor, change }) => {
 const StyledImageWrapper = styled.div`
   display: inline-block;
   position: relative;
+
+  img {
+    max-width: none;
+  }
 `
 
 ImageWrapper.propTypes = {
