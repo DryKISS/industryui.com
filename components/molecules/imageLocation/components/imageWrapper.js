@@ -9,6 +9,7 @@ import { func, object } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
+import { Image } from '../../../'
 import { Dot } from '../../'
 
 export const ImageWrapper = ({ property, floor, change }) => {
@@ -46,7 +47,7 @@ export const ImageWrapper = ({ property, floor, change }) => {
 
   return (
     <StyledImageWrapper onClick={handleImageClick}>
-      <img src={floor.image} />
+      <Image alt={floor.name} src={floor.image} />
       <Dot key={floor.id} position={position} />
     </StyledImageWrapper>
   )
