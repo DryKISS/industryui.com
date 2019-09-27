@@ -19,8 +19,7 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
             to={facebook.appPath}
             width={349}
           />
-        </BlogSection>
-      }
+        </BlogSection>}
 
       {instagram &&
         <BlogSection heading='Instagram'>
@@ -29,15 +28,13 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
             scrolling='no'
             style={{ width: '100%', border: '0', overflow: 'hidden' }}
           />
-        </BlogSection>
-      }
+        </BlogSection>}
 
       {twitter &&
         <BlogSection heading='Twitter'>
           {/* <a className='twitter-timeline' data-lang='en' data-theme='light' href='https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw'>National Park Tweets - Curated tweets by TwitterDev</a>
           <script async src='https://platform.twitter.com/widgets.js' charSet='utf-8' /> */}
-        </BlogSection>
-      }
+        </BlogSection>}
     </>
   )
 }

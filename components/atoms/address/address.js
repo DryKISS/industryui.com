@@ -22,18 +22,15 @@ export const Address = ({
     <div>{line1}</div>
 
     {line2 &&
-      <div>{line2}</div>
-    }
+      <div>{line2}</div>}
 
     {line3 &&
-      <div>{line3}</div>
-    }
+      <div>{line3}</div>}
 
     <div>{town}</div>
 
     {county &&
-      <div>{county}</div>
-    }
+      <div>{county}</div>}
 
     <div>{postcode}</div>
 

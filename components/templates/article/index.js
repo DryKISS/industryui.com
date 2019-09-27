@@ -1,8 +1,6 @@
 /**
  * Article
- * Template to showcase a Blog article.
- *
- * Article and category data is passed in
+ * Template to showcase a Blog article
  */
 
 // React
@@ -32,7 +30,7 @@ export const Article = ({ article, config, facebook }) => {
         <StyledImage
           alt={article.heading}
           slant
-          src={`/static/blog/${article.slug}/hero.jpg`}
+          src={article.image || `/static/blog/${article.slug}/hero.jpg`}
         />
 
         <Breadcrumb

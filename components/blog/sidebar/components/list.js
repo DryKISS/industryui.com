@@ -4,7 +4,7 @@
 
 // React
 import { Fragment } from 'react'
-import { array, bool, object, string } from 'prop-types'
+import { array, bool, object } from 'prop-types'
 
 // UI
 import { Badge, Link, slugify, Truncate } from '../../../'

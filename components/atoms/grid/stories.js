@@ -32,7 +32,7 @@ storiesOf('Atoms/Grid', module)
           12
         </Column>
       </Row>
-      <Row >
+      <Row>
         <Column>
           21
         </Column>
@@ -68,23 +68,23 @@ storiesOf('Atoms/Grid', module)
     <Container>
       <Row>
         <StyledColumn md={4}>
-          {`md=4`}
+          {'md=4'}
         </StyledColumn>
         <StyledColumn style={colStyle} md={4} offset={{ md: 4 }}>
-          {`md=4 offset={md:4}`}
+          {'md=4 offset={md:4}'}
         </StyledColumn>
       </Row>
       <Row>
         <StyledColumn md={3} offset={{ md: 3 }}>
-          {`md=3 offset={md:3}`}
+          {'md=3 offset={md:3}'}
         </StyledColumn>
         <StyledColumn md={3} offset={{ md: 3 }}>
-          {`md=3 offset={md:3}`}
+          {'md=3 offset={md:3}'}
         </StyledColumn>
       </Row>
       <Row>
         <StyledColumn md={6} offset={{ md: 3 }}>
-          {`md=6 offset={md:3}`}
+          {'md=6 offset={md:3}'}
         </StyledColumn>
       </Row>
     </Container>

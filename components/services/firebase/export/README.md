@@ -1,8 +1,3 @@
-# Todo
-
-- [ ] Move this to scripts
-- [ ] Use the NPM package: https://github.com/dalenguyen/firestore-backup-restore
-
 # Firestore Import Export
 
 #### Seeding

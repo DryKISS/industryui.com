@@ -26,24 +26,20 @@ export const BlogSidebar = ({ articles, config, facebook, findFood, media, promo
     <StyledAside>
 
       {findFood &&
-        <BlogFindFood />
-      }
+        <BlogFindFood />}
 
       {media &&
-        <BlogMedia media={media} />
-      }
+        <BlogMedia media={media} />}
 
       <BlogSocial facebook={facebook} />
 
       {promo &&
-        <BlogPromo src={promo.src} to={promo.to} />
-      }
+        <BlogPromo src={promo.src} to={promo.to} />}
 
       <BlogRecent articles={articles} config={config} />
 
       {tags &&
-        <BlogTagCloud articles={articles} />
-      }
+        <BlogTagCloud articles={articles} />}
 
       <BlogArchive articles={articles} config={config} />
 

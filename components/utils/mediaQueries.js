@@ -8,12 +8,6 @@
  *   ${MEDIA_QUERY.tablet`padding: 0 10px;`}
  *   ${MEDIA_QUERY.phone`padding: 0 5px;`}
  * `
- *
- * @see https://www.styled-components.com/docs/advanced#media-templates
- * @see https://github.com/mg901/styled-breakpoints
- *
- * @todo Bring in the sizes from the Theme
- * @todo Copy the flow of styled breakpoints
  */
 import { css } from 'styled-components'
 

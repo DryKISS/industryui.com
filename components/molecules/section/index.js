@@ -27,15 +27,11 @@ export const Section = ({ children, className, heading, row, style }) =>
           content={heading}
           context='primary'
           tag='h2'
-        />
-      }
+        />}
 
       {row
-        ? <Row>
-          {children}
-        </Row>
-        : children
-      }
+        ? <Row>{children}</Row>
+        : children}
 
     </Container>
 

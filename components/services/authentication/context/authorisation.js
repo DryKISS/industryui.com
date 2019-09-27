@@ -62,7 +62,7 @@ const AuthWithAuthorisation = (condition) => (MyComponent) => {
     //     Router.push('/sign-in')
     //   }
     // )
-  // }
+    // }
 
     render () {
       console.log('AuthWithAuthorisation: Accesstoken:', this.context.accessToken)

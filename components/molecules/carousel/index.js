@@ -31,7 +31,6 @@ export const Carousel = withTheme(
         slidesToScroll: 1
       }
 
-      // TODO: check https://stackoverflow.com/a/38755312/1948511 width-handling solution
       if (window.innerWidth < 450) {
         // const initialSlide = this.state.slideCount
         slickParams = {
@@ -85,7 +84,7 @@ export const Carousel = withTheme(
 
       window.jQuery = jQuery
 
-      // Works with timeout only somewhy TODO: check on built code
+      // Works with timeout only somewhy
       setTimeout(() => {
         this.initCarousel()
         window.addEventListener('resize', this.handleWindowResize)
@@ -105,7 +104,7 @@ export const Carousel = withTheme(
           <CarouselButton type='prev' id='slider-prev-button'>&lt;</CarouselButton>
           <CarouselButton type='next' id='slider-next-button'>&gt;</CarouselButton>
           <section className='slider'>
-            { this.props.children }
+            {this.props.children}
           </section>
         </CarouselStyled>
       )

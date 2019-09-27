@@ -23,7 +23,8 @@ export const DogLink = ({ name }) => {
         pathname: '/dogs/breeds/profile',
         query: { dogSlug: slug }
       }
-    }}>
+    }}
+    >
       <a>{name}</a>
     </Link>
   )

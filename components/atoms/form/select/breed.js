@@ -1,7 +1,5 @@
 /**
  * Breed
- *
- * @todo Move to Dog folder
  */
 
 // React

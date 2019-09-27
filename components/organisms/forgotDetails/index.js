@@ -38,6 +38,11 @@ export const ForgotDetails = ({ email, change, pathLogIn, submit }) => {
   )
 }
 
+const StyledLink = styled.a`
+  display: block;
+  margin: 1rem 0;
+`
+
 ForgotDetails.propTypes = {
   change: func.isRequired,
   email: string.isRequired,
@@ -48,8 +53,3 @@ ForgotDetails.propTypes = {
 ForgotDetails.defaultProps = {
   pathLogIn: '/account/sign-in'
 }
-
-const StyledLink = styled.a`
-  display: block;
-  margin: 1rem 0;
-`

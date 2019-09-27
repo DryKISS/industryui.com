@@ -16,7 +16,8 @@ const CenterDecorator = storyFn =>
   <div style={{
     float: 'left',
     margin: '1rem 1rem 1rem .5rem'
-  }}>
+  }}
+  >
     {storyFn()}
   </div>
 

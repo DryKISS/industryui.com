@@ -15,17 +15,17 @@ export const Link = ({ children, passHref, to }) => {
   const obj = (typeof to === 'object') ? to : { href: to }
 
   return (
-    !validatorUri(to) ?
-      <NextLink {...obj} passHref={passHref}>
+    !validatorUri(to)
+      ? <NextLink {...obj} passHref={passHref}>
         {children}
       </NextLink>
-    : <a
+      : <a
         className={children.type.componentStyle && `${children.type.componentStyle.componentId} ${children.type.componentStyle.lastClassName}`}
         href={to}
         {...children.props}
       >
         {children.props.children}
-      </a>
+        </a>
   )
 }
 

@@ -1,18 +1,15 @@
 /**
  * Hubsport - Form
- *
- * @see https://developers.hubspot.com/docs/methods/forms/advanced_form_options
  */
 import React from 'react'
 
-//         {/* <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
-//         <script>
-//           hbspt.forms.create({
-//           portalId: "6190637",
-//           formId: "3a36aae9-8343-45f6-9268-15acd39190fe"
-//         });
-//         </script>
-//  */}
+// {/* <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
+// <script>
+// hbspt.forms.create({
+// portalId: "6190637",
+// formId: "3a36aae9-8343-45f6-9268-15acd39190fe"
+// });
+// </script> */}
 
 // const globalId = 0
 

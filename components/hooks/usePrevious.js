@@ -1,5 +1,5 @@
 /**
- * Use Keypress
+ * Use Previous
  * Allows us os save the previous state variable, good for counters or loops
  */
 import { useEffect, useRef } from 'react'
@@ -11,5 +11,3 @@ export const usePrevious = (value) => {
   })
   return ref.current
 }
-
-//

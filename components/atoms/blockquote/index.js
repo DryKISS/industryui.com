@@ -15,8 +15,7 @@ export const Blockquote = ({ footer, text }) => {
       <StyledText>{text}</StyledText>
 
       {footer &&
-        <StyledFooter>{footer}</StyledFooter>
-      }
+        <StyledFooter>{footer}</StyledFooter>}
 
     </StyledBlockquote>
   )

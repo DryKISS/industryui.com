@@ -1,7 +1,5 @@
 /**
  * Country
- *
- * @todo Need to set an Order for what should come top
  */
 export const COUNTRY = [
   {
