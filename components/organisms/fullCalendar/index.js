@@ -7,92 +7,60 @@
  */
 
 // React
-import React, { createRef } from 'react'
+import React, { createRef, useState } from 'react'
 
 // Next
 import dynamic from 'next/dynamic'
 
-// Full Calendar
-// const FullCalendar = dynamic(() => import('@fullcalendar/react'), { ssr: false })
-// const dayGridPlugin = dynamic(() => import('@fullcalendar/daygrid'), { ssr: false })
-// const timeGridPlugin = dynamic(() => import('@fullcalendar/timegrid'), { ssr: false })
-// const interactionPlugin = dynamic(() => import('@fullcalendar/interaction'), { ssr: false })
+const CalendarWrapper = dynamic(
+  () => import('./calendarWrapper'),
+  {
+    ssr: false,
+  }
+)
 
-// const FullCalendarNoSSRWrapper = (props) => {
-//   return (
-//     <>
-//       {console.log(props)}
-//       {/* <FullCalendar {...props} /> */}
-//     </>
-//   )
-// }
+export const Calendar = (props) => {
+    const [events, setEvents] = useState(props.events || [])
 
-// const FullCalendarNoSSRWrapper = dynamic({
-//   modules: () => ({
-//     calendar: import('@fullcalendar/react'),
-//     dayGridPlugin: import('@fullcalendar/daygrid'),
-//     timeGridPlugin: import('@fullcalendar/timegrid'),
-//     interactionPlugin: import('@fullcalendar/interaction')
-//   }),
-//   render: (props, { calendar: FullCalendar, ...plugins }) => (
-//     <>
-//       <Cal {...props} plugins={Object.values(plugins)} />
-//     </>
-//   ),
-//   ssr: false,
-//   loading: () => <>HERE</>
-// })
+    const calendarComponentRef = createRef()
 
-// import '@fullcalendar/core/main.css'
-// import '@fullcalendar/daygrid/main.css'
-// import '@fullcalendar/timegrid/main.css'
+    const header = {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    }
 
-export const Calendar = () => {
-  //   const calendarComponentRef = createRef()
+    const footer = {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    }
 
-  //   const header = {
-  //     left: 'prev,next today',
-  //     center: 'title',
-  //     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-  //   }
-
-  //   const footer = {
-  //     left: 'prev,next today',
-  //     center: 'title',
-  //     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-  //   }
-
-  //   const events = [
-  //     { title: 'event 1', date: '2019-09-02' },
-  //     { title: 'event 2', date: '2019-09-21' }
-  //   ]
-
-  //   const handleDateClick = (arg) => {
-  //     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-  //       this.setState({ // add new event data
-  //         calendarEvents: this.state.calendarEvents.concat({ // creates a new array
-  //           title: 'New Event',
-  //           start: arg.date,
-  //           allDay: arg.allDay
-  //         })
-  //       })
-  //     }
-  //   }
+    const handleDateClick = (arg) => {
+      if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
+        let event = {
+          title: 'New Event',
+          start: arg.date,
+          allDay: arg.allDay
+        }
+        setEvents([...events, event]);
+      }
+    }
 
   return (
-    <>
-      {/* //       <FullCalendarNoSSRWrapper
-  //         businessHours
-  //         dateClick={handleDateClick}
-  //         defaultView='dayGridMonth'
-  //         eventColor='#e3336e'
-  //         events={events}
-  //         footer={footer}
-  //         header={header}
-  //         nowIndicator
-  //         ref={calendarComponentRef}
-  //         weekends
-  //       /> */}
-    </>
+
+    <CalendarWrapper
+      businessHours
+      dateClick={handleDateClick}
+      eventColor='#e3336e'
+      footer={footer}
+      header={header}
+      nowIndicator
+      ref={calendarComponentRef}
+      weekends
+      {...props}
+      events={events}
+    />
+
   )
 }
