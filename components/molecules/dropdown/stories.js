@@ -9,7 +9,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 // UI
-import { Dropdown } from '../../'
+import { Dropdown, DropdownMenu, DropdownItem } from '../../'
 import Readme from './README.md'
 
 // Data
@@ -28,5 +28,15 @@ storiesOf('Molecules/Dropdown', module)
   )
 
   .add('Right aligned', () =>
-    <Dropdown items={Items} title='Dropdown' position='right' />
+    <Dropdown items={Items} title='Right aligned' position='right' />
+  )
+
+  .add('With children', () =>
+    <Dropdown title='With children'>
+      <DropdownMenu>
+        <DropdownItem>Example item 1</DropdownItem>
+        <DropdownItem>Example item 2</DropdownItem>
+        <DropdownItem>Example item 3</DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   )
