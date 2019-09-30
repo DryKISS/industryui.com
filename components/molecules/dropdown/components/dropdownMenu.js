@@ -4,7 +4,7 @@
 
 import React from 'react'
 
-import { array, node } from 'prop-types'
+import { array, node, string } from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -37,5 +37,6 @@ const StyledDropdownMenu = styled.div`
 
 DropdownMenu.propTypes = {
   children: node,
-  items: array
+  items: array,
+  position: string
 }
