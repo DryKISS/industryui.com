@@ -53,13 +53,13 @@ export const Calendar = (props) => {
       businessHours
       dateClick={handleDateClick}
       eventColor='#e3336e'
-      events={events}
       footer={footer}
       header={header}
       nowIndicator
       ref={calendarComponentRef}
       weekends
       {...props}
+      events={events}
     />
 
   )
