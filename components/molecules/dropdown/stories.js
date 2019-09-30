@@ -26,3 +26,7 @@ storiesOf('Molecules/Dropdown', module)
   .add('Default', () =>
     <Dropdown items={Items} title='Dropdown' />
   )
+
+  .add('Right aligned', () =>
+    <Dropdown items={Items} title='Dropdown' position='right' />
+  )
