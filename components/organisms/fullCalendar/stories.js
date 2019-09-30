@@ -9,6 +9,9 @@ import { storiesOf } from '@storybook/react'
 import { Calendar } from './'
 import Readme from './README.md'
 
+// Data
+import { Events } from './__mocks__/events'
+
 storiesOf('Organisms/Full Calendar', module)
 
   .addParameters({
@@ -19,4 +22,8 @@ storiesOf('Organisms/Full Calendar', module)
 
   .add('Default', () =>
     <Calendar />
+  )
+
+  .add('With Events', () =>
+    <Calendar events={Events} />
   )
