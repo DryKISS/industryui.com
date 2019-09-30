@@ -18,7 +18,7 @@ export const Links = ({ closeMenu, links, type, visible }) => {
         <StyledButton
           id={id}
           context={type.context}
-          onClick={closeMenu}
+          onClick={visible && closeMenu}
           outline={type.outline}
           size={type.size}
           type={type.as}
@@ -32,7 +32,7 @@ export const Links = ({ closeMenu, links, type, visible }) => {
   const renderIcon = (to, type) => {
     return (
       <Link to={to}>
-        <a onClick={closeMenu}>
+        <a onClick={visible && closeMenu}>
           <Icon icon={type.icon} />
         </a>
       </Link>
@@ -42,7 +42,7 @@ export const Links = ({ closeMenu, links, type, visible }) => {
   const renderLink = (active, id, name, onClick, to) => {
 
     const handleClick = () => {
-      closeMenu();
+      visible && closeMenu();
       onClick && onClick();
     }
 
