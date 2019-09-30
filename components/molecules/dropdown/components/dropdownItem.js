@@ -17,7 +17,8 @@ export const DropdownItem = ({ item }) => {
 };
 
 const StyledDropdownItem = styled.div`
-
+  padding: .25rem 1.5rem;
+  white-space: nowrap;
 `
 
 DropdownItem.propTypes = {

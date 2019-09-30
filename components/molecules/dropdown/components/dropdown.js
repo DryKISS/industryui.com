@@ -23,7 +23,7 @@ export const Dropdown = ({ children, className, items, style, title }) => {
 };
 
 const StyledDropdown = styled.div`
-
+  position: relative;
 `
 
 Dropdown.propTypes = {
