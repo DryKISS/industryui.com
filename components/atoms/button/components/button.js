@@ -3,6 +3,7 @@
  */
 
 // React
+import { forwardRef } from 'react'
 import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
@@ -11,13 +12,13 @@ import { BACKGROUND, CONTEXT, SHADE_COLOUR, SIZE } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const Button = (props) => {
+export const Button = forwardRef((props, ref) => {
   return (
-    <StyledButton {...props} role='button'>
+    <StyledButton {...props} ref={ref} role='button'>
       {props.children || props.content}
     </StyledButton>
   )
-}
+})
 
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
