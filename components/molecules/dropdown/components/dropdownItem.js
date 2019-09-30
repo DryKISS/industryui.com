@@ -4,14 +4,14 @@
 
 import React from 'react'
 
-import { object } from 'prop-types'
+import { object, node } from 'prop-types'
 
 import styled from 'styled-components'
 
-export const DropdownItem = ({ item }) => {
+export const DropdownItem = ({ children, item }) => {
   return (
     <StyledDropdownItem>
-      {item.title}
+      {children || item.title}
     </StyledDropdownItem>
   );
 };
@@ -22,5 +22,6 @@ const StyledDropdownItem = styled.div`
 `
 
 DropdownItem.propTypes = {
+  children: node,
   item: object
 }
