@@ -69,6 +69,10 @@ const StyledOverlay = styled.div`
   transition-duration: 0.2s;
   width: 100%;
   z-index: 99;
+
+  ${MEDIA_QUERY.desktop`
+    display: none;
+  `}
 `
 
 Navbar.propTypes = {
