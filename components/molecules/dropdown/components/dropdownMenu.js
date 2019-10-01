@@ -14,7 +14,7 @@ export const DropdownMenu = ({ children, items, position }) => {
   return (
     <StyledDropdownMenu position={position}>
       {children || items.map(item => {
-        return <DropdownItem key={item.title} item={item} />
+        return <DropdownItem key={item.id} item={item} />
       })}
     </StyledDropdownMenu>
   );
