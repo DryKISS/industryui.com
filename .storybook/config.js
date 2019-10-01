@@ -18,6 +18,7 @@ import { ThemeWrapper } from './'
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faCaretDown,
   faCheckCircle,
   faChevronDown,
   faChevronUp,
@@ -28,11 +29,13 @@ import {
   faMars,
   faStethoscope,
   faTimesCircle,
-  faTrash
+  faTrash,
+  faUser
 } from '@fortawesome/pro-regular-svg-icons'
 
 // Icons
 library.add(
+  faCaretDown,
   faCheckCircle,
   faChevronDown,
   faChevronUp,
@@ -43,7 +46,8 @@ library.add(
   faMars,
   faStethoscope,
   faTimesCircle,
-  faTrash
+  faTrash,
+  faUser
 )
 
 addDecorator(withInfo({
