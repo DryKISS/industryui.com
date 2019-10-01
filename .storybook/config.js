@@ -18,6 +18,7 @@ import { ThemeWrapper } from './'
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faBell,
   faCaretDown,
   faCheckCircle,
   faChevronDown,
@@ -35,6 +36,7 @@ import {
 
 // Icons
 library.add(
+  faBell,
   faCaretDown,
   faCheckCircle,
   faChevronDown,

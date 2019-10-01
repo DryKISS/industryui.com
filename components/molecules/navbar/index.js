@@ -7,13 +7,13 @@ import { useState } from 'react'
 import { any, object, string } from 'prop-types'
 
 // UI
-import { Brand, Links, Toggler } from './components'
+import { Brand, Links, Notifications, Toggler, User } from './components'
 import { MEDIA_QUERY } from '../../'
 
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({ brand, links, type }) => {
+export const Navbar = ({ brand, links, type, notifications, user }) => {
   const [visible, setVisible] = useState(false)
 
   const handleMenuClick = () => {
@@ -29,6 +29,10 @@ export const Navbar = ({ brand, links, type }) => {
         <Toggler handleMenuClick={handleMenuClick} visible={visible} />
 
         {links && <Links links={links} closeMenu={handleMenuClick} type={type} visible={visible} />}
+
+        {notifications && <Notifications {...notifications} />}
+
+        {user && <User {...user} />}
 
       </StyledNav>
 
