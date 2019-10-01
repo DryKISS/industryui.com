@@ -19,6 +19,7 @@ export const DropdownMenu = ({ closeDropdown, items, position }) => {
 };
 
 const StyledDropdownMenu = styled.div`
+  background: #fff;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
   margin-top: 1px;
