@@ -4,18 +4,16 @@
 
 import React from 'react'
 
-import { array, node, string } from 'prop-types'
+import { array, string } from 'prop-types'
 
 import styled from 'styled-components'
 
 import { DropdownItem } from '../../'
 
-export const DropdownMenu = ({ children, items, position }) => {
+export const DropdownMenu = ({ closeDropdown, items, position }) => {
   return (
     <StyledDropdownMenu position={position}>
-      {children || items.map(item => {
-        return <DropdownItem key={item.id} item={item} />
-      })}
+      {items.map(item => <DropdownItem key={item.id} closeDropdown={closeDropdown} item={item} />)}
     </StyledDropdownMenu>
   );
 };
@@ -36,7 +34,6 @@ const StyledDropdownMenu = styled.div`
 `
 
 DropdownMenu.propTypes = {
-  children: node,
-  items: array,
+  items: array.isRequired,
   position: string
 }

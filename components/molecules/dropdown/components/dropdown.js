@@ -20,7 +20,7 @@ export const Dropdown = ({ children, items, position, caret }) => {
         {children}
         {caret && <Icon aria-hidden="true" context="info" icon='caret-down' />}
       </StyledToggle>
-      {open && <DropdownMenu items={items} position={position} />}
+      {open && <DropdownMenu closeDropdown={() => setOpen(false)} items={items} position={position} />}
     </StyledDropdown>
   );
 };
