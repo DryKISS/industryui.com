@@ -9,7 +9,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 // UI
-import { Dropdown, DropdownMenu, DropdownItem } from '../../'
+import { Dropdown } from '../../'
+import { Avatar, Button, Icon  } from '../../../'
 import Readme from './README.md'
 
 // Data
@@ -24,19 +25,25 @@ storiesOf('Molecules/Dropdown', module)
   })
 
   .add('Default', () =>
-    <Dropdown items={Items} title='Dropdown' />
+    <Dropdown items={Items} caret>Dropdown</Dropdown>
   )
 
   .add('Right aligned', () =>
-    <Dropdown items={Items} title='Right aligned' position='right' />
+    <Dropdown items={Items} position='right' caret>Dropdown</Dropdown>
   )
 
-  .add('With children', () =>
-    <Dropdown title='With children'>
-      <DropdownMenu>
-        <DropdownItem>Example item 1</DropdownItem>
-        <DropdownItem>Example item 2</DropdownItem>
-        <DropdownItem>Example item 3</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+  .add('Button', () =>
+    <Dropdown items={Items}><Button>Dropdown</Button></Dropdown>
+  )
+
+  .add('Icon', () =>
+    <Dropdown items={Items} caret><Icon aria-hidden="true" context="info" icon='user' /></Dropdown>
+  )
+
+  .add('Icon Button', () =>
+    <Dropdown items={Items} caret><Button context='dark'><Icon aria-hidden="true" context="info" icon='user' /></Button></Dropdown>
+  )
+
+  .add('Avatar', () =>
+    <Dropdown items={Items}><Avatar>KH</Avatar></Dropdown>
   )
