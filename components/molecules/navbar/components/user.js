@@ -23,7 +23,9 @@ export const User = ({ items, name }) => {
 
 const StyledUser = styled.div`
   display: inline-block;
+  margin: auto .75rem;
   position: relative;
+  user-select: none;
 `
 
 User.propTypes = {

@@ -37,6 +37,7 @@ export const Notifications = ({ count, link }) => {
 
 const StyledNotifications = styled.div`
   display: inline-block;
+  margin: auto 1rem auto .75rem;
   position: relative;
 `
 
