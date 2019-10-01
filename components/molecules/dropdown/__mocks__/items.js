@@ -5,15 +5,26 @@
 export const Items =  [
 
   {
-    title: "Settings"
+    id: 'settings',
+    name: 'Settings',
+    to: '/settings'
   },
 
   {
-    title: "Profile"
+    id: 'profile',
+    name: 'Profile',
+    to: '/profile'
   },
 
   {
-    title: "Logout"
+    id: 'logout-divider',
+    divider: true
+  },
+
+  {
+    id: 'logout',
+    name: 'Logout',
+    to: '/logout'
   }
 
 ]
