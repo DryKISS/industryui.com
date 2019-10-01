@@ -29,7 +29,8 @@ import {
   faMars,
   faStethoscope,
   faTimesCircle,
-  faTrash
+  faTrash,
+  faUser
 } from '@fortawesome/pro-regular-svg-icons'
 
 // Icons
@@ -45,7 +46,8 @@ library.add(
   faMars,
   faStethoscope,
   faTimesCircle,
-  faTrash
+  faTrash,
+  faUser
 )
 
 addDecorator(withInfo({
