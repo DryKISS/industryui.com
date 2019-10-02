@@ -51,8 +51,13 @@ const StyledDropdown = styled.div`
 `
 
 const StyledToggle = styled.div`
-  display: inline-block;
+  color: ${props => props.theme.NAVBAR.colourActive};
   cursor: pointer;
+  display: inline-block;
+  font-family: ${props => props.theme.TYPOGRAPHY.font};
+  font-weight: bold;
+  line-height: 1.5;
+  text-decoration: none;
 `
 
 Dropdown.propTypes = {
