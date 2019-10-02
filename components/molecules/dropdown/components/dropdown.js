@@ -2,7 +2,7 @@
  * Dropdown
  */
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { array, bool, node, string } from 'prop-types'
 
@@ -13,9 +13,29 @@ import { Icon } from '../../../'
 
 export const Dropdown = ({ children, items, position, caret }) => {
   const [open, setOpen] = useState(false)
+  const node = useRef();
+
+  const handleClickAway = event => {
+    if (node.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (open) {
+      document.addEventListener("mousedown", handleClickAway);
+    } else {
+      document.removeEventListener("mousedown", handleClickAway);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickAway);
+    };
+  }, [open]);
 
   return (
-    <StyledDropdown>
+    <StyledDropdown ref={node}>
       <StyledToggle onClick={() => setOpen(!open)}>
         {children}
         {caret && <Icon aria-hidden="true" context="info" icon='caret-down' />}
