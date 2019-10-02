@@ -3,7 +3,7 @@
  */
 
 // React
-import { integer, object } from 'prop-types'
+import { number, object } from 'prop-types'
 
 // UI
 import { Link, Icon } from '../../../'
@@ -58,6 +58,6 @@ const StyledCount = styled.div`
 `
 
 Notifications.propTypes = {
-  count: integer,
+  count: number,
   link: object
 }
