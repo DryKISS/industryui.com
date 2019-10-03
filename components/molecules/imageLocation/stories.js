@@ -27,20 +27,20 @@ import thirdFloor from './__resources__/images/third-floor.png'
 import fourthFloor from './__resources__/images/fourth-floor.png'
 
 const PropertySelect = ({ properties, change }) => {
-  const [property, setProperty] = useState(null);
+  const [property, setProperty] = useState(null)
 
   const handlePropertyChange = (event) => {
-    const selected = properties.find(p => p.value == event.target.value) || null;
-    setProperty(selected);
+    const selected = properties.find(p => p.value == event.target.value) || null
+    setProperty(selected)
   }
 
   return (
     <StyledPropertySelect>
-      <Select label='Property' options={[{ text: 'Select property', value: ''}, ...properties]} change={handlePropertyChange} />
+      <Select label='Property' options={[{ text: 'Select property', value: '' }, ...properties]} change={handlePropertyChange} />
       {property && <ImageLocation key={property.value} label='Floor' options={property.options} change={change} />}
     </StyledPropertySelect>
-  );
-};
+  )
+}
 
 const StyledPropertySelect = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -62,6 +62,3 @@ storiesOf('Molecules/ImageLocation', module)
   .add('Multiple properties', () => (
     <PropertySelect properties={Properties} change={action('position-change')} />
   ))
-
-
-

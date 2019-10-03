@@ -2,14 +2,13 @@
  * Image Location
  */
 
- // React
+// React
 import React from 'react'
 import { object } from 'prop-types'
 
 import styled from 'styled-components'
 
 export const Dot = ({ position }) => {
-
   return (
     <StyledDot position={position} />
   )

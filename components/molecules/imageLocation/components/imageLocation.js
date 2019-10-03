@@ -13,19 +13,19 @@ import { Select } from '../../../'
 import { ImageWrapper } from '../../'
 
 export const ImageLocation = ({ change, label, options }, props) => {
-  const [item, setItem] = useState(null);
+  const [item, setItem] = useState(null)
 
   const handleItemChange = (event) => {
-    const selected = options.find(o => o.value == event.target.value) || null;
-    setItem(selected);
+    const selected = options.find(o => o.value === event.target.value) || null
+    setItem(selected)
   }
 
   return (
     <StyledImageLocation {...props}>
       <Select
-      change={handleItemChange}
-      label={label}
-      options={[{ text: `Select ${label}`, value: ''}, ...options]}
+        change={handleItemChange}
+        label={label}
+        options={[{ text: `Select ${label}`, value: '' }, ...options]}
       />
       {item && <ImageWrapper item={item} change={change} />}
     </StyledImageLocation>
