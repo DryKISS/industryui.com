@@ -21,7 +21,7 @@ const StyledContentWrapper = styled.div`
   margin: 0 auto;
   max-width: 1800px;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px 30px;
 `
 
 ContentWrapper.propTypes = {
