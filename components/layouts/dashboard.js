@@ -10,7 +10,7 @@ import { bool, node, object, string } from 'prop-types'
 import { Alert, ContentWrapper, FluidContainer, MetaHead, PageHeading, SidebarWrapper } from '../'
 
 // Config
-import { Brand, Canonical } from 'config'
+import { Brand, Canonical, Sidebar } from 'config'
 
 
 export const Dashboard = ({
@@ -19,7 +19,6 @@ export const Dashboard = ({
   heading,
   isLoading,
   meta,
-  Sidebar,
   strapline,
   success
 }) => {
