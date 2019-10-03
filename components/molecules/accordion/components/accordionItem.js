@@ -16,7 +16,7 @@ export const AccordionItem = ({ open: initial, title, children, className }) => 
   return (
     <StyledAccordionItem className={className}>
       <Header className={open ? 'opened' : 'closed'} onClick={() => setOpen(!open)}>
-        {title} <HeaderIcon aria-hidden="true" context="info" icon={open ? 'chevron-up' : 'chevron-down'} />
+        {title} <HeaderIcon aria-hidden='true' context='info' icon={open ? 'chevron-up' : 'chevron-down'} />
       </Header>
       {open && <Content>{children}</Content>}
     </StyledAccordionItem>

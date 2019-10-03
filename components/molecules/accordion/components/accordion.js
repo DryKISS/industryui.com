@@ -13,8 +13,8 @@ export const Accordion = ({ children, className, style }) => {
     <StyledAccordion className={className} style={style}>
       {children}
     </StyledAccordion>
-  );
-};
+  )
+}
 
 const StyledAccordion = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.125);
