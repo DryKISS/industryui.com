@@ -58,7 +58,6 @@ export const Footer = ({ columns }) => {
 
 const StyledFooter = styled.div`
   background: ${props => props.theme.FOOTER.background};
-  border-top: ${props => `4px solid ${props.theme.COLOUR.light}`};
   color: ${props => props.theme.FOOTER.colour};
   font-size: .875rem;
   line-height: 1.25rem;
