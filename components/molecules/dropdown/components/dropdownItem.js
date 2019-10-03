@@ -39,6 +39,12 @@ const StyledDropdownItem = styled.div`
   padding: .25rem 1.5rem;
   white-space: nowrap;
 
+  &:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+  }
+
   ${({ divider }) => divider && `
     padding: 0;
   `}
@@ -59,7 +65,7 @@ const StyledLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: ${props => props.theme.NAVBAR.colourHover};
+    color: inherit;
   }
 `
 
