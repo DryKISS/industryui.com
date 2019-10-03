@@ -54,7 +54,6 @@ export const PageHeading = ({
 
 const StyledHeader = styled.header`
   margin-bottom: ${({ divider }) => !divider && '2rem'};
-  margin-top: 2rem;
   text-align: ${({ center }) => center && 'center'};
 `
 
