@@ -4,19 +4,19 @@
 
 import React, { useState } from 'react'
 
-import { bool, string } from 'prop-types'
+import { bool, oneOf, string } from 'prop-types'
 
-import { Icon } from '../../../'
+import { CONTEXT, Icon } from '../../../'
 
 import styled from 'styled-components'
 
-export const AccordionItem = ({ open: initial, title, children, className }) => {
+export const AccordionItem = ({ open: initial, title, children, className, context }) => {
   const [open, setOpen] = useState(initial)
 
   return (
     <StyledAccordionItem className={className}>
-      <Header className={open ? 'opened' : 'closed'} onClick={() => setOpen(!open)}>
-        {title} <HeaderIcon aria-hidden="true" context="info" icon={open ? 'chevron-up' : 'chevron-down'} />
+      <Header className={open ? 'opened' : 'closed'} onClick={() => setOpen(!open)} context={context || 'dark'}>
+        {title} <HeaderIcon aria-hidden='true' context='info' icon={open ? 'chevron-up' : 'chevron-down'} />
       </Header>
       {open && <Content>{children}</Content>}
     </StyledAccordionItem>
@@ -30,9 +30,9 @@ const StyledAccordionItem = styled.div`
 `
 
 const Header = styled.header`
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  color: #333;
+  background-color: ${({ context, theme }) => theme.COLOUR[context]};
+  color: ${({ context, theme }) => context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
+  border-bottom: 1px solid ${props => props.theme.COLOUR[props.context]};
   cursor: pointer;
   font-size: 1rem;
   padding: 0.75rem 1.25rem;
@@ -49,10 +49,12 @@ const Content = styled.div`
 AccordionItem.propTypes = {
   children: string.isRequired,
   className: string,
+  context: oneOf(Object.values(CONTEXT)),
   open: bool,
   title: string.isRequired
 }
 
 AccordionItem.default = {
-  open: 'false'
+  context: 'dark',
+  open: false
 }
