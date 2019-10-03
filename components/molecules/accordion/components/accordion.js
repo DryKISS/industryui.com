@@ -4,14 +4,24 @@
 
 import React from 'react'
 
-import { node, object, string } from 'prop-types'
+import { array, node, object, string } from 'prop-types'
 
 import styled from 'styled-components'
 
-export const Accordion = ({ children, className, style }) => {
+import { AccordionItem } from '../../'
+
+const renderItem = ({ body, context, open, title }) => {
+  return (
+    <AccordionItem key={title} context={context} open={open} title={title}>
+      {body}
+    </AccordionItem>
+  )
+}
+
+export const Accordion = ({ children, className, data, style }) => {
   return (
     <StyledAccordion className={className} style={style}>
-      {children}
+      {children || data.map(item => renderItem(item))}
     </StyledAccordion>
   )
 }
@@ -22,7 +32,8 @@ const StyledAccordion = styled.div`
 `
 
 Accordion.propTypes = {
-  children: node.isRequired,
+  children: node,
   className: string,
+  data: array,
   style: object
 }
