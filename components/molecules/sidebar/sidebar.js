@@ -36,7 +36,7 @@ export const Sidebar = ({ data, profile }) => {
     </>
 
   return (
-    <Card bordered context='white'>
+    <Card context='transparent'>
       <CardBody>
 
         <List unstyled>
