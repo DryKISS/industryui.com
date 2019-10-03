@@ -14,5 +14,6 @@ export const CONTEXT = {
   DANGER: 'danger',
   HELP: 'help',
   MALE: 'male',
-  FEMALE: 'female'
+  FEMALE: 'female',
+  TRANSPARENT: 'transparent'
 }
