@@ -22,7 +22,6 @@ export const FluidContainer = ({ children, className, style }) => {
 const StyledFluidContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
 
   ${MEDIA_QUERY.tablet`
     flex-direction: row;
