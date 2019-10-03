@@ -54,5 +54,5 @@ AccordionItem.propTypes = {
 }
 
 AccordionItem.default = {
-  open: 'false'
+  open: false
 }
