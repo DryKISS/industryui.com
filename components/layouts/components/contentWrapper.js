@@ -19,7 +19,6 @@ export const ContentWrapper = ({ children, className, style }) => {
 const StyledContentWrapper = styled.div`
   flex: 1 1 100%;
   padding: 20px;
-  max-width: 90%;
 `
 
 ContentWrapper.propTypes = {
