@@ -121,6 +121,10 @@ export const UserProvider = ({ children }) => {
     setAccessToken(null)
     setUser(null)
 
+    const notification = JSON.parse(window.localStorage.getItem('issue'))
+    notification.active = true
+    window.localStorage.setItem('issue', JSON.stringify(notification))
+
     Router.push('/account/sign-in')
   }
 
