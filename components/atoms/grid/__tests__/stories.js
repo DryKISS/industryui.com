@@ -14,6 +14,10 @@ import Readme from '../README.md'
 
 import { StyledColumn } from '../__mocks__/grid'
 
+const debug = {
+  border: '1px solid black'
+}
+
 storiesOf('Atoms/Grid', module)
 
   .addParameters({
@@ -23,15 +27,56 @@ storiesOf('Atoms/Grid', module)
   })
 
   .add('Container', () =>
-    <Container style={{ border: '1px solid black' }}>
-      Container
-    </Container>
+    <Container style={debug}>Container</Container>
   )
 
   .add('Container Fluid', () =>
-    <Container fluid style={{ border: '1px solid black' }}>
-      Container
-    </Container>
+    <Container fluid style={debug}>Container</Container>
+  )
+
+  .add('Row', () =>
+    <Row style={debug}>Row</Row>
+  )
+
+  .add('Row Justified', () =>
+    <>
+      <Row justify='end'>
+        <StyledColumn md={3}>md={3}</StyledColumn>
+        <StyledColumn md={3}>md={3}</StyledColumn>
+      </Row>
+      <Row justify='start'>
+        <StyledColumn md={3}>md={3}</StyledColumn>
+        <StyledColumn md={3}>md={3}</StyledColumn>
+      </Row>
+    </>
+  )
+
+  .add('Row Align', () => {
+    const style = { backgroundColor: 'rgba(255,0,0,.1)', minHeight: '10rem' }
+
+    return (
+      <>
+        <Row align='start' style={style}>
+          <StyledColumn md={3}>md={3} Align Start</StyledColumn>
+          <StyledColumn md={3}>md={3} Align Start</StyledColumn>
+        </Row>
+        <br />
+        <Row align='end' style={style}>
+          <StyledColumn md={3}>md={3} Align End</StyledColumn>
+          <StyledColumn md={3}>md={3} Align End</StyledColumn>
+        </Row>
+      </>
+    )
+  })
+
+  .add('Row Wrap', () =>
+    <>
+      <Row noWrap>
+        <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
+        <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
+        <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
+      </Row>
+    </>
   )
 
   .add('Default', () =>
@@ -54,12 +99,8 @@ storiesOf('Atoms/Grid', module)
   .add('Scaled columns', () =>
     <Container>
       <Row>
-        <StyledColumn md={3} lg={6} xl={9}>
-          I love wide screen
-        </StyledColumn>
-        <StyledColumn md={9} lg={6} xl={3}>
-          I love narrow screen
-        </StyledColumn>
+        <StyledColumn md={3} lg={6} xl={9}>Wide screen</StyledColumn>
+        <StyledColumn md={9} lg={6} xl={3}>Narrow screen</StyledColumn>
       </Row>
     </Container>
   )
@@ -67,25 +108,15 @@ storiesOf('Atoms/Grid', module)
   .add('Offsets', () =>
     <Container>
       <Row>
-        <StyledColumn md={4}>
-          {'md=4'}
-        </StyledColumn>
-        <StyledColumn md={4} offset={{ md: 4 }}>
-          {'md=4 offset={md:4}'}
-        </StyledColumn>
+        <StyledColumn md={4}>md=4</StyledColumn>
+        <StyledColumn md={4} offset={{ md: 4 }}>offset: 4</StyledColumn>
       </Row>
       <Row>
-        <StyledColumn md={3} offset={{ md: 3 }}>
-          {'md=3 offset={md:3}'}
-        </StyledColumn>
-        <StyledColumn md={3} offset={{ md: 3 }}>
-          {'md=3 offset={md:3}'}
-        </StyledColumn>
+        <StyledColumn md={3} offset={{ md: 3 }}>offset: 3</StyledColumn>
+        <StyledColumn md={3} offset={{ md: 3 }}>offset: 3</StyledColumn>
       </Row>
       <Row>
-        <StyledColumn md={6} offset={{ md: 3 }}>
-          {'md=6 offset={md:3}'}
-        </StyledColumn>
+        <StyledColumn md={6} offset={{ md: 3 }}>offset: 3</StyledColumn>
       </Row>
     </Container>
   )

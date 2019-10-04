@@ -3,6 +3,9 @@
 The grid is a flexible layout tool, allowing a website to respond to device
 constraints.
 
+Creates a container for the Grid based layout. This container can be fluid or
+fixed based on the UI breakpoints.
+
 ## Links
 
 - [Wix Storybook](https://github.com/wix/wix-style-react/tree/master/src/Grid)

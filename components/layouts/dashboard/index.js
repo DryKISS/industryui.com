@@ -7,11 +7,11 @@
 import { bool, node, object, string } from 'prop-types'
 
 // UI
-import { Alert, ContentWrapper, FluidContainer, MetaHead, PageHeading, SidebarWrapper } from '../'
+import { Alert, MetaHead, PageHeading } from '../../'
+import { ContentWrapper, FluidContainer, SidebarWrapper } from './components'
 
 // Config
 import { Brand, Canonical, Sidebar } from 'config'
-
 
 export const Dashboard = ({
   children,
@@ -24,18 +24,12 @@ export const Dashboard = ({
 }) => {
   return !isLoading && (
     <>
-      <MetaHead
-        canonical={Canonical}
-        brand={Brand.name}
-        meta={meta}
-      />
+      <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
 
       <FluidContainer>
 
         <SidebarWrapper>
-
           <Sidebar />
-
         </SidebarWrapper>
 
         <ContentWrapper>
@@ -43,18 +37,17 @@ export const Dashboard = ({
           {heading &&
             <PageHeading heading={heading} strapline={strapline} />}
 
-            {children}
+          {children}
 
-            {success &&
-              <Alert content='Details Saved. Please continue with the next section.' context='success' />}
+          {success &&
+            <Alert content='Details Saved. Please continue with the next section.' context='success' />}
 
-            {error &&
-              <Alert content={`Error: ${error.message}`} context='warning' />}
+          {error &&
+            <Alert content={`Error: ${error.message}`} context='warning' />}
 
         </ContentWrapper>
 
       </FluidContainer>
-
     </>
   )
 }

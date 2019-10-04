@@ -1,6 +1,10 @@
 /**
  * Config
  */
+
+// UI
+import { Sidebar as SidebarUI } from '../components'
+
 export const Brand = {
   logo: '/static/logo/cleverly.svg',
   name: 'IndustryUI'
@@ -27,7 +31,33 @@ export const Icons = {
   ]
 }
 
-export const Sidebar = ''
+const data = [
+  {
+    name: 'Dashboard',
+    to: '/dashboard'
+  },
+
+  {
+    name: 'Issues',
+    to: '/dashboard/issues'
+  },
+
+  {
+    name: 'Calendar',
+    to: '/dashboard/calendar'
+  },
+
+  {
+    divider: true
+  },
+
+  {
+    name: 'Messages',
+    to: '/dashboard/messages'
+  }
+]
+
+export const Sidebar = () => <SidebarUI data={data} />
 
 export const Config = {
   Brand,

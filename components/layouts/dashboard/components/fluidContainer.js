@@ -9,14 +9,14 @@ import { node, object, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { MEDIA_QUERY } from '../../'
+import { MEDIA_QUERY } from '../../../'
 
 export const FluidContainer = ({ children, className, style }) => {
   return (
     <StyledFluidContainer className={className} style={style}>
       {children}
     </StyledFluidContainer>
-  );
+  )
 };
 
 const StyledFluidContainer = styled.div`
