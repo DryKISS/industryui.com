@@ -10,9 +10,9 @@ import styled from 'styled-components'
 
 import { AccordionItem } from '../../'
 
-const renderItem = ({ body, context, open, title }) => {
+const renderItem = ({ body, context, open, title }, index) => {
   return (
-    <AccordionItem key={title} context={context} open={open} title={title}>
+    <AccordionItem key={index} context={context} open={open} title={title}>
       {body}
     </AccordionItem>
   )
@@ -21,7 +21,7 @@ const renderItem = ({ body, context, open, title }) => {
 export const Accordion = ({ children, className, data, style }) => {
   return (
     <StyledAccordion className={className} style={style}>
-      {children || data.map(item => renderItem(item))}
+      {children || data.map((item, index) => renderItem(item, index))}
     </StyledAccordion>
   )
 }
