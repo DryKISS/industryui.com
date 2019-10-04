@@ -21,7 +21,7 @@ storiesOf('Atoms/List', module)
     }
   })
 
-  .add('default', () =>
+  .add('Default', () =>
     <List>
       <ListItem>Item1</ListItem>
       <ListItem>Item2</ListItem>
@@ -29,9 +29,27 @@ storiesOf('Atoms/List', module)
     </List>
   )
 
-  .add('knobbed', () =>
+  .add('Group', () =>
+    <List group unstyled>
+      <ListItem>Item1</ListItem>
+      <ListItem>Item2</ListItem>
+      <ListItem>Item3</ListItem>
+    </List>
+  )
+
+  .add('Flush', () =>
+    <List flush group unstyled>
+      <ListItem>Item1</ListItem>
+      <ListItem>Item2</ListItem>
+      <ListItem>Item3</ListItem>
+    </List>
+  )
+
+  .add('Knobbed', () =>
     <List
-      unstyled={boolean('Unstyled', false)}
+      flush={boolean('flush', false)}
+      group={boolean('group', false)}
+      unstyled={boolean('unstyled', false)}
       inline={boolean('inline', false)}
       style={object('Style', { color: 'blue', listStyleType: 'lower-greek' })}
     >
