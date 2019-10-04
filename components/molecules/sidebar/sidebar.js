@@ -3,62 +3,55 @@
  */
 
 // React
-import { array, object } from 'prop-types'
+import { array, oneOf } from 'prop-types'
 
 // UI
 import {
-  Card,
-  CardBody,
   Divider,
   Icon,
   Link,
   List
 } from '../../../'
 
-export const Sidebar = ({ data, profile }) => {
-  const link = (icon, name, to) =>
-    <>
-      {icon
-        ? icon === 'dog-leashed'
-          ? <Icon icon='dog-leashed' />
-          : <Icon
-            icon='check-circle' context={profile && profile[icon] === true ? 'primary' : 'light'}
-          />
-        : ''}
+import styled from 'styled-components'
 
-      {' '}
-
-      <Link to={to}>
-        <a className='Footer-link'>
-          {name}
-        </a>
+export const Sidebar = ({ context, data }) => {
+  const link = (icon, name, to) => {
+    return (
+      <Link to={to} passHref>
+        <StyledLink context={context}>
+          {icon && <Icon icon={icon} />} {name}
+        </StyledLink>
       </Link>
-    </>
+    )
+  }
 
   return (
-    <Card context='transparent'>
-      <CardBody>
+    <List group>
 
-        <List unstyled>
+      {data.map(({ Component, divider, icon, name, to }, index) => (
+        <span key={index}>
+          {divider
+            ? <Divider colour='#e8e8e8' size='sm' />
+            : Component ? <Component />
+              : to ? link(icon, name, to)
+                : name}
+        </span>
+      ))}
 
-          {data.map(({ Component, divider, icon, name, to }, index) => (
-            <span key={index}>
-              {divider
-                ? <Divider size='md' />
-                : Component ? <Component />
-                  : to ? link(icon, name, to)
-                    : name}
-            </span>
-          ))}
-
-        </List>
-
-      </CardBody>
-    </Card>
+    </List>
   )
 }
 
+const StyledLink = styled.a`
+  color: ${({ context }) => context === 'light' ? '#5c6f7f' : '#b8beca'};
+  display: block;
+  &:hover {
+    color: ${({ context }) => context === 'light' ? '#6b7a87' : '#fff'};
+  }
+`
+
 Sidebar.propTypes = {
-  data: array.isRequired,
-  profile: object
+  context: oneOf(['dark', 'light']),
+  data: array.isRequired
 }
