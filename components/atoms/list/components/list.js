@@ -13,6 +13,7 @@ import { ListItem } from '../../'
 import styled from 'styled-components'
 
 export const List = ({
+  border,
   children,
   className,
   flush,
@@ -23,11 +24,12 @@ export const List = ({
 }) => {
   const renderListItems = () =>
     React.Children.map(children, (child, index) =>
-      <ListItem key={index} group={group} {...child.props} />
+      <ListItem key={index} border={border} flush={flush} group={group} {...child.props} />
     )
 
   return (
     <StyledList
+      border={border}
       className={className}
       flush={flush}
       group={group}
@@ -58,13 +60,15 @@ const unstyledStyles = `
 const StyledList = styled.ul`
   ${({ group }) => group ? groupStyles : ''}
   ${({ inline }) => inline ? inlineStyles : ''}
-  ${({ unstyled }) => unstyled ? unstyledStyles : ''}
+  ${({ unstyled, border, group, flush }) => unstyled || border || flush || group ? unstyledStyles : ''}
 `
 
 List.propTypes = {
+  border: bool,
   children: node.isRequired,
   className: string,
   inline: bool,
+  flush: bool,
   group: bool,
   style: object,
   unstyled: bool
