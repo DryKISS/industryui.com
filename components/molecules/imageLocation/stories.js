@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 
@@ -12,7 +12,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI
-import { Select } from '../../../'
+import { Select, useChange } from '../../../'
 import { ImageLocation } from '../../'
 import Readme from './README.md'
 
@@ -26,18 +26,34 @@ import secondFloor from './__resources__/images/second-floor.png'
 import thirdFloor from './__resources__/images/third-floor.png'
 import fourthFloor from './__resources__/images/fourth-floor.png'
 
-const PropertySelect = ({ properties, change }) => {
-  const [property, setProperty] = useState(null)
-
-  const handlePropertyChange = (event) => {
-    const selected = properties.find(p => p.value == event.target.value) || null
-    setProperty(selected)
+const PropertySelect = ({ locationChange, properties }) => {
+  const INITIAL_STATE = {
+    property: 2,
+    floor: 2
   }
+
+  const [change, form] = useChange(INITIAL_STATE)
+  const { floor, property } = form
 
   return (
     <StyledPropertySelect>
-      <Select label='Property' options={[{ text: 'Select property', value: '' }, ...properties]} change={handlePropertyChange} />
-      {property && <ImageLocation key={property.value} label='Floor' options={property.options} change={change} />}
+      <Select
+        change={change}
+        id='property'
+        label='Property'
+        options={[{ text: 'Select property', value: '' }, ...properties]}
+        value={property}
+      />
+      {property &&
+        <ImageLocation
+          change={change}
+          locationChange={locationChange}
+          id='floor'
+          key={property}
+          label='Floor'
+          options={properties[property - 1].options}
+          initial={floor}
+        />}
     </StyledPropertySelect>
   )
 }
@@ -56,9 +72,13 @@ storiesOf('Molecules/ImageLocation', module)
   })
 
   .add('Default', () => (
-    <ImageLocation options={Properties[1].options} label='Option' change={action('position-change')} />
+    <ImageLocation label='Option' locationChange={action('change')} options={Properties[1].options} />
+  ))
+
+  .add('Preselected', () => (
+    <ImageLocation initial={1} label='Option' locationChange={action('change')} options={Properties[1].options} />
   ))
 
   .add('Multiple properties', () => (
-    <PropertySelect properties={Properties} change={action('position-change')} />
+    <PropertySelect locationChange={action('change')} properties={Properties} />
   ))
