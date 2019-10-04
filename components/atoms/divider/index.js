@@ -28,7 +28,6 @@ const StyledDivider = styled.div`
   user-select: none;
 
   ${({ content, theme }) => content && `
-
     :after {
       background-position: left 1em top 50%;
     }

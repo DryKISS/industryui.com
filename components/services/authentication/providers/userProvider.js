@@ -65,7 +65,7 @@ export const UserProvider = ({ children }) => {
 
       setIsLoading(false)
     } else {
-      Router.push('/account/sign-in')
+      // Router.push('/account/sign-in')
       setIsLoading(false)
     }
   }, [])

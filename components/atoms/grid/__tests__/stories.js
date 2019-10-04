@@ -9,10 +9,10 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 // UI
-import { Container, Row, Column } from './'
-import Readme from './README.md'
+import { Container, Row } from '../'
+import Readme from '../README.md'
 
-import { StyledColumn, colStyle } from './__mocks__/grid'
+import { StyledColumn } from '../__mocks__/grid'
 
 storiesOf('Atoms/Grid', module)
 
@@ -22,39 +22,39 @@ storiesOf('Atoms/Grid', module)
     }
   })
 
+  .add('Container', () =>
+    <Container style={{ border: '1px solid black' }}>
+      Container
+    </Container>
+  )
+
+  .add('Container Fluid', () =>
+    <Container fluid style={{ border: '1px solid black' }}>
+      Container
+    </Container>
+  )
+
   .add('Default', () =>
     <Container>
       <Row>
-        <Column>
-          11
-        </Column>
-        <Column>
-          12
-        </Column>
+        <StyledColumn>11</StyledColumn>
+        <StyledColumn>12</StyledColumn>
       </Row>
       <Row>
-        <Column>
-          21
-        </Column>
-        <Column>
-          22
-        </Column>
-        <Column>
-          23
-        </Column>
+        <StyledColumn>21</StyledColumn>
+        <StyledColumn>22</StyledColumn>
+        <StyledColumn>23</StyledColumn>
       </Row>
       <Row>
-        <Column>
-          31
-        </Column>
+        <StyledColumn>31</StyledColumn>
       </Row>
     </Container>
   )
 
-  .add('Size depending on screen width', () =>
+  .add('Scaled columns', () =>
     <Container>
       <Row>
-        <StyledColumn md={3} lg={6} lx={9}>
+        <StyledColumn md={3} lg={6} xl={9}>
           I love wide screen
         </StyledColumn>
         <StyledColumn md={9} lg={6} xl={3}>
@@ -64,13 +64,13 @@ storiesOf('Atoms/Grid', module)
     </Container>
   )
 
-  .add('With column sizes & offsets', () =>
+  .add('Offsets', () =>
     <Container>
       <Row>
         <StyledColumn md={4}>
           {'md=4'}
         </StyledColumn>
-        <StyledColumn style={colStyle} md={4} offset={{ md: 4 }}>
+        <StyledColumn md={4} offset={{ md: 4 }}>
           {'md=4 offset={md:4}'}
         </StyledColumn>
       </Row>
