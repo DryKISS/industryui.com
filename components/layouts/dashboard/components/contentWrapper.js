@@ -13,8 +13,8 @@ export const ContentWrapper = ({ children, className, style }) => {
     <StyledContentWrapper className={className} style={style}>
       {children}
     </StyledContentWrapper>
-  );
-};
+  )
+}
 
 const StyledContentWrapper = styled.div`
   flex: 1 1 100%;

@@ -17,7 +17,7 @@ export const FluidContainer = ({ children, className, style }) => {
       {children}
     </StyledFluidContainer>
   )
-};
+}
 
 const StyledFluidContainer = styled.div`
   display: flex;

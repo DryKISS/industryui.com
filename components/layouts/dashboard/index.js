@@ -7,8 +7,8 @@
 import { bool, node, object, string } from 'prop-types'
 
 // UI
-import { Alert, MetaHead, PageHeading } from '../../'
-import { ContentWrapper, FluidContainer, SidebarWrapper } from './components'
+import { Alert, Column, Container, MetaHead, PageHeading, Row } from '../../'
+import { ContentWrapper, SidebarWrapper } from './components'
 
 // Config
 import { Brand, Canonical, Sidebar } from 'config'
@@ -26,28 +26,28 @@ export const Dashboard = ({
     <>
       <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
 
-      <FluidContainer>
+      <Container fluid>
+        <Row>
 
-        <SidebarWrapper>
-          <Sidebar />
-        </SidebarWrapper>
+          <Column md={3}>
+            <Sidebar />
+          </Column>
 
-        <ContentWrapper>
+          <Column md={9}>
+            {heading &&
+              <PageHeading heading={heading} strapline={strapline} />}
 
-          {heading &&
-            <PageHeading heading={heading} strapline={strapline} />}
+            {children}
 
-          {children}
+            {success &&
+              <Alert content='Details Saved. Please continue with the next section.' context='success' />}
 
-          {success &&
-            <Alert content='Details Saved. Please continue with the next section.' context='success' />}
+            {error &&
+              <Alert content={`Error: ${error.message}`} context='warning' />}
+          </Column>
 
-          {error &&
-            <Alert content={`Error: ${error.message}`} context='warning' />}
-
-        </ContentWrapper>
-
-      </FluidContainer>
+        </Row>
+      </Container>
     </>
   )
 }
