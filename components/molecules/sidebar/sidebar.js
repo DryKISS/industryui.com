@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { array, oneOf } from 'prop-types'
 
 // UI
@@ -30,13 +31,13 @@ export const Sidebar = ({ context, data }) => {
     <List group>
 
       {data.map(({ Component, divider, icon, name, to }, index) => (
-        <span key={index}>
+        <React.Fragment key={index}>
           {divider
             ? <Divider colour='#e8e8e8' size='sm' />
             : Component ? <Component />
               : to ? link(icon, name, to)
                 : name}
-        </span>
+        </React.Fragment>
       ))}
 
     </List>
