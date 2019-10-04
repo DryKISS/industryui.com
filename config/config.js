@@ -27,9 +27,12 @@ export const Icons = {
   ]
 }
 
+export const Sidebar = ''
+
 export const Config = {
   Brand,
   Canonical,
   Google,
-  Icons
+  Icons,
+  Sidebar
 }
