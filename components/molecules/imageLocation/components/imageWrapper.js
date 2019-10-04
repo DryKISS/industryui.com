@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { func, object } from 'prop-types'
 
 import styled from 'styled-components'
@@ -12,9 +12,7 @@ import styled from 'styled-components'
 import { Image } from '../../../'
 import { Dot } from '../../'
 
-export const ImageWrapper = ({ change, item }) => {
-  const [position, setPosition] = useState(null)
-
+export const ImageWrapper = ({ coordinates, item, setCoordinates }) => {
   const handleImageClick = (event) => {
     const rect = event.target.getBoundingClientRect()
     const offsetX = event.clientX - rect.left
@@ -25,24 +23,15 @@ export const ImageWrapper = ({ change, item }) => {
       y: offsetY
     }
 
-    setPosition(coordinates)
-
-    change({
-      item,
-      position: coordinates
-    })
+    setCoordinates(coordinates)
   }
-
-  useEffect(() => {
-    setPosition(null)
-  }, [item])
 
   return (
     <StyledImageWrapper onClick={handleImageClick}>
       {item.image &&
         <>
           <Image alt={item.text} src={item.image} />
-          <Dot key={item.id} position={position} />
+          <Dot key={item.id} coordinates={coordinates} />
         </>}
     </StyledImageWrapper>
   )
@@ -58,6 +47,7 @@ const StyledImageWrapper = styled.div`
 `
 
 ImageWrapper.propTypes = {
-  change: func.isRequired,
-  item: object.isRequired
+  coordinates: object,
+  item: object.isRequired,
+  setCoordinates: func.isRequired
 }
