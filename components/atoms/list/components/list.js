@@ -23,7 +23,7 @@ export const List = ({
 }) => {
   const renderListItems = () =>
     React.Children.map(children, (child, index) =>
-      <ListItem key={index} group={group} {...child.props} />
+      <ListItem key={index} flush={flush} group={group} {...child.props} />
     )
 
   return (
