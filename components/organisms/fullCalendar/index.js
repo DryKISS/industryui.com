@@ -15,40 +15,39 @@ import dynamic from 'next/dynamic'
 const CalendarWrapper = dynamic(
   () => import('./calendarWrapper'),
   {
-    ssr: false,
+    ssr: false
   }
 )
 
 export const Calendar = (props) => {
-    const [events, setEvents] = useState(props.events || [])
+  const [events, setEvents] = useState(props.events || [])
 
-    const calendarComponentRef = createRef()
+  const calendarComponentRef = createRef()
 
-    const header = {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-    }
+  const header = {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+  }
 
-    const footer = {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-    }
+  const footer = {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+  }
 
-    const handleDateClick = (arg) => {
-      if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-        let event = {
-          title: 'New Event',
-          start: arg.date,
-          allDay: arg.allDay
-        }
-        setEvents([...events, event]);
+  const handleDateClick = (arg) => {
+    if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
+      const event = {
+        title: 'New Event',
+        start: arg.date,
+        allDay: arg.allDay
       }
+      setEvents([...events, event])
     }
+  }
 
   return (
-
     <CalendarWrapper
       businessHours
       dateClick={handleDateClick}
@@ -61,6 +60,5 @@ export const Calendar = (props) => {
       {...props}
       events={events}
     />
-
   )
 }
