@@ -23,6 +23,12 @@ storiesOf('Molecules/Sidebar', module)
     }
   })
 
-  .add('Default', () =>
-    <Sidebar data={Data} />
+  .add('Light', () =>
+    <Sidebar data={Data} context='light' />
+  )
+
+  .add('Dark', () =>
+    <div style={{ background: '#001529' }}>
+      <Sidebar data={Data} context='dark' />
+    </div>
   )

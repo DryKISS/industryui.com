@@ -11,13 +11,13 @@ import { SIZE } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Divider = ({ content, size, style }) =>
-  <StyledDivider content={content} size={size} style={style}>
+export const Divider = ({ colour, content, size, style }) =>
+  <StyledDivider colour={colour} content={content} size={size} style={style}>
     {content && content}
   </StyledDivider>
 
 const StyledDivider = styled.div`
-  border-top: 2px solid ${({ theme }) => theme.COLOUR.light};
+  border-top: 2px solid ${({ theme, colour }) => colour || theme.COLOUR.light};
   height: ${({ content }) => content ? 'auto' : '0'};
   margin: ${props =>
     (props.size === 'lg' && '2rem 0') ||

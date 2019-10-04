@@ -13,25 +13,21 @@ export const Sidebar = [
   },
 
   {
-    icon: 'profile',
     name: 'Profile',
     to: '/dashboard/profile'
   },
 
   {
-    icon: 'address',
     name: 'Address',
     to: '/dashboard/address'
   },
 
   {
-    icon: 'vet',
     name: 'Vet',
     to: '/dashboard/vet'
   },
 
   {
-    icon: 'payout',
     name: 'Payout',
     to: '/dashboard/payout'
   },
