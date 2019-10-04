@@ -30,12 +30,6 @@ export const Calendar = (props) => {
     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
   }
 
-  const footer = {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-  }
-
   const handleDateClick = (arg) => {
     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
       const event = {
@@ -52,7 +46,6 @@ export const Calendar = (props) => {
       businessHours
       dateClick={handleDateClick}
       eventColor='#e3336e'
-      footer={footer}
       header={header}
       nowIndicator
       ref={calendarComponentRef}
