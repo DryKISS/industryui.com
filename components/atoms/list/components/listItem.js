@@ -11,11 +11,15 @@ import { Icon } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const ListItem = ({ children, className, flush, group, icon, style }) =>
-  <StyledItem className={className} flush={flush} group={group} style={style}>
+export const ListItem = ({ border, children, className, flush, group, icon, style }) =>
+  <StyledItem border={border} className={className} flush={flush} group={group} style={style}>
     {icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' />}
     {children}
   </StyledItem>
+
+const borderStyles = `
+  border: 1px solid rgba(0, 0, 0, .125);
+`
 
 const flushStyles = `
   border-right: 0;
@@ -32,14 +36,14 @@ const flushStyles = `
 `
 
 const groupStyles = `
-  border: 1px solid rgba(0, 0, 0, .125);
   margin-bottom: -1px;
   padding: .75rem 1.25rem;
 `
 
 const StyledItem = styled.li`
   position: relative;
-  ${({ group }) => group && groupStyles}
+  ${({ border, group, flush }) => (border || group || flush) && groupStyles}
+  ${({ border, flush }) => (border || flush) && borderStyles}
   ${({ flush }) => flush && flushStyles}
 `
 
@@ -50,7 +54,9 @@ const StyledIcon = styled(Icon)`
 `
 
 ListItem.propTypes = {
+  border: bool,
   children: node.isRequired,
+  flush: bool,
   group: bool,
   icon: string
 }

@@ -30,7 +30,15 @@ storiesOf('Atoms/List', module)
   )
 
   .add('Group', () =>
-    <List group unstyled>
+    <List group>
+      <ListItem>Item1</ListItem>
+      <ListItem>Item2</ListItem>
+      <ListItem>Item3</ListItem>
+    </List>
+  )
+
+  .add('Border', () =>
+    <List border>
       <ListItem>Item1</ListItem>
       <ListItem>Item2</ListItem>
       <ListItem>Item3</ListItem>
@@ -38,7 +46,7 @@ storiesOf('Atoms/List', module)
   )
 
   .add('Flush', () =>
-    <List flush group unstyled>
+    <List flush>
       <ListItem>Item1</ListItem>
       <ListItem>Item2</ListItem>
       <ListItem>Item3</ListItem>
@@ -47,6 +55,7 @@ storiesOf('Atoms/List', module)
 
   .add('Knobbed', () =>
     <List
+      border={boolean('border', false)}
       flush={boolean('flush', false)}
       group={boolean('group', false)}
       unstyled={boolean('unstyled', false)}
