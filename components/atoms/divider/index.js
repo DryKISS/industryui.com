@@ -3,37 +3,36 @@
  */
 
 // React
-import { oneOf, string } from 'prop-types'
+import { any, oneOf, string } from 'prop-types'
 
 // UI
 import { SIZE } from '../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Divider = ({ colour, content, size, style }) =>
-  <StyledDivider colour={colour} content={content} size={size} style={style}>
+export const Divider = ({ className, content, size, style }) =>
+  <StyledDivider className={className} content={content} size={size} style={style}>
     {content && content}
   </StyledDivider>
 
 const StyledDivider = styled.div`
-  border-top: 2px solid ${({ theme, colour }) => colour || theme.COLOUR.light};
+  border-top: 2px solid ${({ theme }) => theme.COLOUR.light};
   height: ${({ content }) => content ? 'auto' : '0'};
   margin: ${props =>
     (props.size === 'lg' && '2rem 0') ||
     (props.size === 'md' && '1rem 0') ||
     '.5rem 0'
-};
+  };
   overflow: hidden;
   user-select: none;
 
-  ${({ content, theme }) => content && `
+  ${({ content, theme }) => content && css`
     :after {
       background-position: left 1em top 50%;
     }
 
     :before {
-
       background-position: right 1em top 50%;
     }
 
@@ -50,6 +49,7 @@ const StyledDivider = styled.div`
 `
 
 Divider.propTypes = {
+  className: any,
   content: string,
   size: oneOf(Object.values(SIZE))
 }

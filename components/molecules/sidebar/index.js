@@ -1,4 +1,4 @@
 /**
  * Sidebar
  */
-export * from './sidebar'
+export * from './components'

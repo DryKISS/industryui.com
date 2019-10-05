@@ -41,6 +41,11 @@ const StyledRow = styled.div`
     margin-right: -${theme.GRID.gutterWidth / 2}px;
   `}
 
+  ${({ noGutter, theme }) => noGutter && css`
+    margin-left: -${theme.GRID.gutterWidth}px;
+    margin-right: -${theme.GRID.gutterWidth}px;
+  `}
+
   ${({ align }) => css`
     align-items: ${
       (align === 'start' && 'flex-start') ||

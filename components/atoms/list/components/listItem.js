@@ -9,19 +9,33 @@ import { bool, node, string } from 'prop-types'
 import { Icon } from '../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ListItem = ({ border, children, className, flush, group, icon, style }) =>
-  <StyledItem border={border} className={className} flush={flush} group={group} style={style}>
+export const ListItem = ({
+  border,
+  children,
+  className,
+  flush,
+  group,
+  icon,
+  style
+}) =>
+  <StyledItem
+    border={border}
+    className={className}
+    flush={flush}
+    group={group}
+    style={style}
+  >
     {icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' />}
     {children}
   </StyledItem>
 
-const borderStyles = `
+const borderStyles = css`
   border: 1px solid rgba(0, 0, 0, .125);
 `
 
-const flushStyles = `
+const flushStyles = css`
   border-right: 0;
   border-left: 0;
   border-radius: 0;
@@ -35,7 +49,7 @@ const flushStyles = `
   }
 `
 
-const groupStyles = `
+const groupStyles = css`
   margin-bottom: -1px;
   padding: .75rem 1.25rem;
 `

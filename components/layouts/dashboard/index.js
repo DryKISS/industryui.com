@@ -8,7 +8,6 @@ import { bool, node, object, string } from 'prop-types'
 
 // UI
 import { Alert, Column, Container, MetaHead, PageHeading, Row } from '../../'
-import { ContentWrapper, SidebarWrapper } from './components'
 
 // Config
 import { Brand, Canonical, Sidebar } from 'config'
@@ -27,13 +26,13 @@ export const Dashboard = ({
       <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
 
       <Container fluid>
-        <Row>
+        <Row noGutter>
 
-          <Column md={3}>
+          <Column md={2}>
             <Sidebar />
           </Column>
 
-          <Column md={9}>
+          <Column md={10}>
             {heading &&
               <PageHeading heading={heading} strapline={strapline} />}
 
