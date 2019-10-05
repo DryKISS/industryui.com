@@ -6,7 +6,7 @@
 import { bool, node, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../'
+import { Icon } from '../../../atoms/icon/icon'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -18,6 +18,7 @@ export const ListItem = ({
   flush,
   group,
   icon,
+  prefix,
   style
 }) =>
   <StyledItem
@@ -27,7 +28,7 @@ export const ListItem = ({
     group={group}
     style={style}
   >
-    {icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' />}
+    {icon && <StyledIcon aria-hidden='true' icon={icon} prefix={prefix} size='2x' />}
     {children}
   </StyledItem>
 
@@ -72,5 +73,6 @@ ListItem.propTypes = {
   children: node.isRequired,
   flush: bool,
   group: bool,
-  icon: string
+  icon: string,
+  prefix: string
 }

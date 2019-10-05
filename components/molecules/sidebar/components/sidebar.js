@@ -11,39 +11,50 @@ import { Divider } from '../../../atoms/divider/index'
 import { ListItem } from '../../../atoms/list/components/listItem'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Sidebar = ({ context, data }) => {
+export const Sidebar = ({ data }) => {
   const link = (icon, name, to) => {
+    const iconArray = Array.isArray(icon)
+
     return (
       <Link to={to} passHref>
-        <StyledLink context={context}>
-          {icon && <Icon icon={icon[1] || icon} prefix={icon[0] || null} />} {name}
+        <StyledLink>
+          {icon &&
+            <Icon
+              icon={icon ? iconArray ? icon[1] : icon : null}
+              prefix={icon && iconArray && icon[0]}
+            />}
+          {name}
         </StyledLink>
       </Link>
     )
   }
 
   return (
-    <StyledAside context={context}>
+    <StyledAside>
       <List group>
-        {data.map(({ Component, divider, icon, name, to }, index) => (
-          <StyledLi key={index}>
-            {divider
-              ? <StyledDivider size='sm' />
-              : Component ? <Component />
-                : to ? link(icon, name, to)
-                  : name}
-          </StyledLi>
-        ))}
+
+        {data.map(({ Component, divider, icon, name, to }, index) => {
+          return (
+            <StyledLi key={index}>
+              {divider
+                ? <StyledDivider size='sm' />
+                : Component ? <Component />
+                  : to ? link(icon, name, to)
+                    : name}
+            </StyledLi>
+          )
+        })}
+
       </List>
     </StyledAside>
   )
 }
 
 const StyledAside = styled.aside`
-  background-color: ${({ context }) => context === 'dark' ? '#001529' : 'initial'};
-  border-right: 1px solid #eef1f4;
+  background-color: ${({ theme }) => theme.SIDEBAR.background};
+  border-right: 1px solid ${({ theme }) => theme.SIDEBAR.highlight};
   box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, .75);
   height: 100%;
   padding: 1rem 0;
@@ -63,26 +74,23 @@ const StyledLi = styled(ListItem)`
   }
 
   &:hover {
-    background-color: ${({ context }) => context === 'light' ? 'rgba(0, 0, 0, 0.75)' : 'rgba(0, 0, 0, 0.75)'};
-    border-right: 2px solid #00ccbc;
+    ${({ theme }) => css`
+      background-color: ${theme.SIDEBAR.linkHover};
+      border-right: 2px solid ${theme.SIDEBAR.highlight};
 
-    a {
-      color: #00ccbc;
-    }
+      a {
+        color: ${theme.SIDEBAR.highlight};
+      }
+    `}
   }
 `
 
 const StyledLink = styled.a`
-  color: ${({ context }) => context === 'light' ? '#5c6f7f' : '#b8beca'};
+  color: ${({ theme }) => theme.SIDEBAR.linkColour};
   display: block;
   padding: 1rem 1.5rem;
 `
 
 Sidebar.propTypes = {
-  context: oneOf(['dark', 'light']),
   data: array.isRequired
-}
-
-Sidebar.defaultProps = {
-  context: 'dark'
 }

@@ -26,7 +26,3 @@ storiesOf('Molecules/Sidebar', module)
   .add('Default', () =>
     <Sidebar data={Data} />
   )
-
-  .add('Light', () =>
-    <Sidebar context='light' data={Data} />
-  )

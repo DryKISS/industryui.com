@@ -12,7 +12,12 @@ import { SIZE } from '../../'
 import styled, { css } from 'styled-components'
 
 export const Divider = ({ className, content, size, style }) =>
-  <StyledDivider className={className} content={content} size={size} style={style}>
+  <StyledDivider
+    className={className}
+    content={content}
+    size={size}
+    style={style}
+  >
     {content && content}
   </StyledDivider>
 
