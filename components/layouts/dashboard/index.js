@@ -26,7 +26,7 @@ export const Dashboard = ({
       <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
 
       <Container fluid>
-        <Row noGutter>
+        <Row noGutter style={{ marginRight: '.2rem' }}>
 
           <Column md={2}>
             <Sidebar />
