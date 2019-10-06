@@ -18,6 +18,7 @@ export const Dashboard = ({
   heading,
   isLoading,
   meta,
+  noData,
   strapline,
   success
 }) => {
@@ -54,8 +55,15 @@ export const Dashboard = ({
 Dashboard.propTypes = {
   children: node.isRequired,
   error: object,
-  heading: string,
+  heading: string.isRequired,
+  isLoading: bool.isRequired,
   meta: object.isRequired,
+  noData: bool,
   strapline: string,
   success: bool
+}
+
+Dashboard.defaultProps = {
+  isLoading: true,
+  noData: false
 }
