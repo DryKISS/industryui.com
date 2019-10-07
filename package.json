@@ -47,6 +47,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.10.2",
     "@fortawesome/free-regular-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/pro-duotone-svg-icons": "^5.11.2",
     "@fortawesome/pro-regular-svg-icons": "^5.10.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@fullcalendar/core": "^4.3.1",
@@ -102,8 +103,8 @@
     "yarn-deduplicate": "^1.1.1"
   },
   "peerDependencies": {
-    "styled-components": "^4.*",
     "react": "^16.*",
-    "react-dom": "^16.*"
+    "react-dom": "^16.*",
+    "styled-components": "^4.*"
   }
 }
