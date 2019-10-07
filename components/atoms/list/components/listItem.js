@@ -6,22 +6,37 @@
 import { bool, node, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../'
+import { Icon } from '../../../atoms/icon/icon'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ListItem = ({ border, children, className, flush, group, icon, style }) =>
-  <StyledItem border={border} className={className} flush={flush} group={group} style={style}>
-    {icon && <StyledIcon aria-hidden='true' icon={icon} size='2x' />}
+export const ListItem = ({
+  border,
+  children,
+  className,
+  flush,
+  group,
+  icon,
+  prefix,
+  style
+}) =>
+  <StyledItem
+    border={border}
+    className={className}
+    flush={flush}
+    group={group}
+    style={style}
+  >
+    {icon && <StyledIcon aria-hidden='true' icon={icon} prefix={prefix} size='2x' />}
     {children}
   </StyledItem>
 
-const borderStyles = `
+const borderStyles = css`
   border: 1px solid rgba(0, 0, 0, .125);
 `
 
-const flushStyles = `
+const flushStyles = css`
   border-right: 0;
   border-left: 0;
   border-radius: 0;
@@ -35,7 +50,7 @@ const flushStyles = `
   }
 `
 
-const groupStyles = `
+const groupStyles = css`
   margin-bottom: -1px;
   padding: .75rem 1.25rem;
 `
@@ -58,5 +73,6 @@ ListItem.propTypes = {
   children: node.isRequired,
   flush: bool,
   group: bool,
-  icon: string
+  icon: string,
+  prefix: string
 }

@@ -18,6 +18,7 @@
 
 import { useEffect } from 'react'
 
+import * as ProDuo from '@fortawesome/pro-duotone-svg-icons'
 import * as ProIcons from '@fortawesome/pro-regular-svg-icons'
 import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -27,6 +28,11 @@ export const Icons = ({ icons }) => {
     // import("@fortawesome/fontawesome-svg-core").then(icons => {
     //   console.log(icons)
     // })
+
+    const proDuo = Object
+      .keys(ProDuo)
+      .filter(key => key !== 'fad' && key !== 'prefix' && icons.proDuotone.includes(key))
+      .map(icon => ProDuo[icon])
 
     const proIcons = Object
       .keys(ProIcons)
@@ -38,7 +44,7 @@ export const Icons = ({ icons }) => {
       .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key))
       .map(icon => BrandIcons[icon])
 
-    library.add(...proIcons, ...brandIcons)
+    library.add(...proDuo, ...proIcons, ...brandIcons)
   }, [])
 
   return <></>

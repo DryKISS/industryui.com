@@ -21,10 +21,10 @@ export const Column = ({ children, className, style, sm, md, lg, xl, offset }) =
 
   return (
     <StyledColumn
-      className={className}
       children={children}
-      size={{ sm, md, lg, xl }}
+      className={className}
       off={offset}
+      size={{ sm, md, lg, xl }}
       style={style}
     />
   )

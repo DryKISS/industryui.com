@@ -31,7 +31,3 @@ storiesOf('Atoms/Divider', module)
   .add('Large', () =>
     <Divider size='lg' />
   )
-
-  .add('Custom Colour', () =>
-    <Divider colour='red' size='lg' />
-  )

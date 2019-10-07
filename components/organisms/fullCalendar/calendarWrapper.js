@@ -7,11 +7,13 @@ import '@fullcalendar/daygrid/main.css'
 import '@fullcalendar/timegrid/main.css'
 
 const CalendarWrapper = (props) => {
-
   return (
-    <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} {...props} />
+    <FullCalendar
+      defaultView={props.defaultView}
+      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+      {...props}
+    />
   )
-
 }
 
 export default CalendarWrapper

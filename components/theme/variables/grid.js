@@ -1,6 +1,7 @@
 /**
- * Grid
+ * Theme - Variables - Grid
  */
+
 const breakpoints = {
   xs: 0,
   sm: 576,
@@ -11,7 +12,7 @@ const breakpoints = {
 
 const containerWidths = {
   sm: 540,
-  md: 720,
+  md: 750,
   lg: 960,
   xl: 1170
 }

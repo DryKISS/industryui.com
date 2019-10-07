@@ -6,11 +6,8 @@
 import React from 'react'
 import { bool, node, object, string } from 'prop-types'
 
-// UI
-import { ListItem } from '../../'
-
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const List = ({
   border,
@@ -23,9 +20,11 @@ export const List = ({
   unstyled
 }) => {
   const renderListItems = () =>
-    React.Children.map(children, (child, index) =>
-      <ListItem key={index} border={border} flush={flush} group={group} {...child.props} />
-    )
+    React.Children.map(children, (child) => React.cloneElement(child, {
+      border: border,
+      flush: flush,
+      group: group
+    }))
 
   return (
     <StyledList
@@ -43,16 +42,16 @@ export const List = ({
   )
 }
 
-const groupStyles = `
+const groupStyles = css`
   margin: -1px;
 `
 
-const inlineStyles = `
+const inlineStyles = css`
   align-items: center;
   display: inline-flex;
 `
 
-const unstyledStyles = `
+const unstyledStyles = css`
   list-style: none;
   padding-left: 0;
 `
@@ -60,7 +59,8 @@ const unstyledStyles = `
 const StyledList = styled.ul`
   ${({ group }) => group ? groupStyles : ''}
   ${({ inline }) => inline ? inlineStyles : ''}
-  ${({ unstyled, border, group, flush }) => unstyled || border || flush || group ? unstyledStyles : ''}
+  ${({ unstyled, border, group, flush }) =>
+  unstyled || border || flush || group ? unstyledStyles : ''}
 `
 
 List.propTypes = {

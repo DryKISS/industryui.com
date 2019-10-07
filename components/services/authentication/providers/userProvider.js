@@ -65,7 +65,7 @@ export const UserProvider = ({ children }) => {
 
       setIsLoading(false)
     } else {
-      Router.push('/account/sign-in')
+      // Router.push('/account/sign-in')
       setIsLoading(false)
     }
   }, [])
@@ -122,8 +122,11 @@ export const UserProvider = ({ children }) => {
     setUser(null)
 
     const notification = JSON.parse(window.localStorage.getItem('issue'))
-    notification.active = true
-    window.localStorage.setItem('issue', JSON.stringify(notification))
+
+    if (notification) {
+      notification.active = true
+      window.localStorage.setItem('issue', JSON.stringify(notification))
+    }
 
     Router.push('/account/sign-in')
   }
