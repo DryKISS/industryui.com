@@ -13,7 +13,7 @@ import { Sidebar } from '../'
 import Readme from '../README.md'
 
 // Data
-import { Sidebar as Data } from './__mocks__/links'
+import { Sidebar as Data } from '../__mocks__/links'
 
 storiesOf('Molecules/Sidebar', module)
 
