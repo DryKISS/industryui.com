@@ -3,7 +3,7 @@
  */
 
 // React
-import { any, bool, oneOf, string } from 'prop-types'
+import { any, bool, element, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT, Divider, Heading, Icon, MEDIA_QUERY } from '../../'
@@ -13,66 +13,63 @@ import styled from 'styled-components'
 
 export const PageHeading = ({
   center,
+  children,
   context,
   divider,
   heading,
-  help,
   strapline
 }) => {
   return (
-    <StyledHeader center={center} divider={divider}>
+    <StyledPageHeader center={center} divider={divider}>
 
-      {help &&
-        <StyledHelp>
-          <Icon context='help' icon='info-circle' size='2x' />
+      <StyledLeft>
+        <StyledHeading content={heading} context='primary' pageHeading />
+        {strapline && <div>{strapline}</div>}
+      </StyledLeft>
 
-          <div>
-            <a
-              id='openIntercom'
-              href='mailto:tailwise-8ca42ca9afe1.intercom-mail.com'
-            >
-              Message
-            </a>
-            {' '}
-            or<br />
-            Call on 0330 043 5301
-          </div>
+      {children && <StyledRight>{children}</StyledRight>}
 
-        </StyledHelp>}
+      {divider && <StyledDivider size='md' />}
 
-      <StyledHeading content={heading} context='primary' pageHeading />
-
-      {strapline &&
-        <StyledStrapline>{strapline}</StyledStrapline>}
-
-      {divider &&
-        <Divider size='md' />}
-
-    </StyledHeader>
+    </StyledPageHeader>
   )
 }
 
-const StyledHeader = styled.header`
+const StyledPageHeader = styled.header`
+  display: flex;
   margin-bottom: ${({ divider }) => !divider && '2rem'};
+  margin-top: 1rem;
   text-align: ${({ center }) => center && 'center'};
+  flex-flow: row wrap;
+`
+
+const StyledLeft = styled.span`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+`
+
+const StyledRight = styled.span`
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
 `
 
 const StyledHeading = styled(Heading)`
+  display: flex;
   margin-bottom: .5rem;
+  width: 100%;
 `
 
-const StyledStrapline = styled.div`
-  ${MEDIA_QUERY.desktop`max-width: 50%;`}
-`
-
-const StyledHelp = styled.div`
-  float: right;
-  margin: .5rem;
-  text-align: center;
+const StyledDivider = styled(Divider)`
+  width: 100%;
 `
 
 PageHeading.propTypes = {
   center: bool,
+  children: element,
   context: oneOf(Object.values(CONTEXT)),
   divider: bool,
   heading: any.isRequired,

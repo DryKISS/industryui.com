@@ -15,11 +15,10 @@ import { Brand, Canonical, Sidebar } from 'config'
 export const Dashboard = ({
   children,
   error,
-  heading,
   isLoading,
   meta,
   noData,
-  strapline,
+  pageHeading,
   success
 }) => {
   return !isLoading && (
@@ -34,8 +33,8 @@ export const Dashboard = ({
           </Column>
 
           <Column md={10}>
-            {heading &&
-              <PageHeading heading={heading} strapline={strapline} />}
+            {pageHeading &&
+              <PageHeading {...pageHeading} />}
 
             {children}
 
@@ -55,11 +54,10 @@ export const Dashboard = ({
 Dashboard.propTypes = {
   children: node.isRequired,
   error: object,
-  heading: string.isRequired,
   isLoading: bool.isRequired,
   meta: object.isRequired,
   noData: bool,
-  strapline: string,
+  pageHeading: object.isRequired,
   success: bool
 }
 
