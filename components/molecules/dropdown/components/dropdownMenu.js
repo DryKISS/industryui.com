@@ -15,8 +15,8 @@ export const DropdownMenu = ({ closeDropdown, items, position }) => {
     <StyledDropdownMenu position={position}>
       {items.map(item => <DropdownItem key={item.id} closeDropdown={closeDropdown} item={item} />)}
     </StyledDropdownMenu>
-  );
-};
+  )
+}
 
 const StyledDropdownMenu = styled.div`
   background: #fff;

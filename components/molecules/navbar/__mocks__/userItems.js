@@ -2,7 +2,7 @@
  * User Items
  */
 
-export const UserItems =  [
+export const UserItems = [
 
   {
     id: 'settings',

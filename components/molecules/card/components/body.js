@@ -18,12 +18,10 @@ export const CardBody = ({ center, children, className, context, title }) => {
       {title &&
         <StyledWrapper>
           <StyledTitle className='Card-title'>{title}</StyledTitle>
-        </StyledWrapper>
-      }
+        </StyledWrapper>}
 
       {children &&
-        <StyledContent context={context}>{children}</StyledContent>
-      }
+        <StyledContent context={context}>{children}</StyledContent>}
 
     </StyledBody>
   )

@@ -11,11 +11,10 @@ import styled from 'styled-components'
 // UI
 import { Link } from '../../../'
 
-const renderLink = ({id, name, onClick, to}, closeDropdown) => {
-
+const renderLink = ({ id, name, onClick, to }, closeDropdown) => {
   const handleClick = () => {
-    closeDropdown();
-    onClick && onClick();
+    closeDropdown()
+    onClick && onClick()
   }
 
   return (
@@ -32,8 +31,8 @@ export const DropdownItem = ({ closeDropdown, item }) => {
         item.divider ? <StyledDivider /> : renderLink(item, closeDropdown)
       }
     </StyledDropdownItem>
-  );
-};
+  )
+}
 
 const StyledDropdownItem = styled.div`
   padding: .25rem 1.5rem;

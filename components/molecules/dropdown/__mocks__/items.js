@@ -2,7 +2,7 @@
  * Items
  */
 
-export const Items =  [
+export const Items = [
 
   {
     id: 'settings',

@@ -10,7 +10,7 @@ import { storiesOf } from '@storybook/react'
 
 // UI
 import { Dropdown } from '../../'
-import { Avatar, Button, Icon  } from '../../../'
+import { Avatar, Button, Icon } from '../../../'
 import Readme from './README.md'
 
 // Data
@@ -37,11 +37,11 @@ storiesOf('Molecules/Dropdown', module)
   )
 
   .add('Icon', () =>
-    <Dropdown items={Items} caret><Icon aria-hidden="true" context="info" icon='user' /></Dropdown>
+    <Dropdown items={Items} caret><Icon aria-hidden='true' context='info' icon='user' /></Dropdown>
   )
 
   .add('Icon Button', () =>
-    <Dropdown items={Items} caret><Button context='dark'><Icon aria-hidden="true" context="info" icon='user' /></Button></Dropdown>
+    <Dropdown items={Items} caret><Button context='dark'><Icon aria-hidden='true' context='info' icon='user' /></Button></Dropdown>
   )
 
   .add('Avatar', () =>

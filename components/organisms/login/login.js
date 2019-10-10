@@ -76,8 +76,7 @@ export const Login = ({
               <Checkbox
                 change={change}
                 data={CHECKBOX_REMEMBER}
-              />
-            }
+              />}
 
             <div className='text-right'>
               <Button
@@ -94,8 +93,7 @@ export const Login = ({
               {forgotPassword &&
                 <Link to={pathForgot}>
                   <a>Don't know your password?</a>
-                </Link>
-              }
+                </Link>}
             </div>
 
           </Form>
@@ -112,8 +110,7 @@ export const Login = ({
               <a>Apply now!</a>
             </Link>
           </p>
-        </>
-      }
+        </>}
 
     </StyledContainer>
   )

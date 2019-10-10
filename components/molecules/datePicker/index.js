@@ -62,8 +62,7 @@ export const DatePicker = ({
               value={day}
               data={{ 'data-index': index, 'data-name': 'day' }}
             />
-          </Column>
-        }
+          </Column>}
 
         <Column md={4}>
           <Select

@@ -53,8 +53,7 @@ const withEmailVerification = Component => {
               </div>
             ) : (
               <Component {...this.props} />
-            )
-          }
+            )}
         </AuthUserContext.Consumer>
       )
     }

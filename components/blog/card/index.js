@@ -54,8 +54,7 @@ export const BlogCard = ({ article, config, type }) => {
         <StyledCardBody type={type}>
 
           {type === 'normal' &&
-            <BlogCategory config={config} to={category} type={type} />
-          }
+            <BlogCategory config={config} to={category} type={type} />}
 
           <StyledContent type={type}>
 
@@ -63,19 +62,17 @@ export const BlogCard = ({ article, config, type }) => {
               <a><StyledHeading content={heading} tag='h1' type={type} /></a>
             </Link>
 
-            { type === 'normal' &&
-              <p itemProp='description'>{excerpt}</p>
-            }
+            {type === 'normal' &&
+              <p itemProp='description'>{excerpt}</p>}
 
           </StyledContent>
 
-          { type === 'normal' &&
+          {type === 'normal' &&
             <>
               {article.tags &&
                 <TagsContainer>
                   <BlogTags tags={article.tags} />
-                </TagsContainer>
-              }
+                </TagsContainer>}
 
               <Divider size='md' style={{ marginTop: '.5rem' }} />
 
@@ -84,8 +81,7 @@ export const BlogCard = ({ article, config, type }) => {
               <p style={{ fontSize: '14px', margin: '0' }}>
                 {article.readtime}min read time.
               </p>
-            </>
-          }
+            </>}
 
           <Link to={articleLink}>
             <StyledButton

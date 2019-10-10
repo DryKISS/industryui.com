@@ -50,8 +50,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
       </List>
 
       {article.tags &&
-        <BlogTags tags={article.tags} />
-      }
+        <BlogTags tags={article.tags} />}
 
       <Divider />
 
