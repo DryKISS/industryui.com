@@ -29,8 +29,11 @@ storiesOf('Layouts/Dashboard', module)
   .add('Default', () =>
     <Dashboard
       error={{ message: 'Error 404' }}
-      heading='Default'
+      isLoading={false}
       meta={meta}
+      pageHeading={{
+        heading: 'Default'
+      }}
       success
     >
       Dashboard Layout

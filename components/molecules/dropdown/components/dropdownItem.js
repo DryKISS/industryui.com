@@ -27,9 +27,7 @@ const renderLink = ({ id, name, onClick, to }, closeDropdown) => {
 export const DropdownItem = ({ closeDropdown, item }) => {
   return (
     <StyledDropdownItem divider={item.divider}>
-      {
-        item.divider ? <StyledDivider /> : renderLink(item, closeDropdown)
-      }
+      {item.divider ? <StyledDivider /> : renderLink(item, closeDropdown)}
     </StyledDropdownItem>
   )
 }

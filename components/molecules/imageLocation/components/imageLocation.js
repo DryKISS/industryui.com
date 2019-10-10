@@ -24,7 +24,7 @@ export const ImageLocation = ({ initial, label, locationChange, options }) => {
   const { option } = form
 
   useEffect(() => {
-    const selected = options.find(o => o.value == option) || null
+    const selected = options.find(o => o.value === option) || null
     setItem(selected)
     setCoordinates(null)
   }, [option])

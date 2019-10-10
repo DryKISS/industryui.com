@@ -29,8 +29,8 @@ const StyledDropdownMenu = styled.div`
   top: 100%;
 
   ${({ position }) => position && `
-    left: ${position == 'right' ? 'auto' : '0'};
-    right: ${position == 'right' ? '0' : 'auto'};
+    left: ${position === 'right' ? 'auto' : '0'};
+    right: ${position === 'right' ? '0' : 'auto'};
   `}
 `
 

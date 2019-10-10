@@ -99,7 +99,7 @@ export class Form extends Component {
    * It stops the default form submission process and proceeds with custom
    * validation.
    */
-  submit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
 
     const { submit } = this.props
@@ -124,7 +124,7 @@ export class Form extends Component {
         className={className}
         noValidate
         ref={form => (this.formEl = form)}
-        onSubmit={this.submit}
+        onSubmit={this.handleSubmit}
       >
         {children}
       </StyledForm>

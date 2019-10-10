@@ -8,8 +8,7 @@ import { array, bool, node, string } from 'prop-types'
 
 import styled from 'styled-components'
 
-import { DropdownMenu } from '../../'
-import { Icon } from '../../../'
+import { DropdownMenu, Icon } from '../../../'
 
 export const Dropdown = ({ children, items, position, caret }) => {
   const [open, setOpen] = useState(false)

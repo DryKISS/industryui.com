@@ -28,7 +28,7 @@ export const BlogAuthor = ({ articles, config, total }) => {
       .reduce((p, c) => {
         const author = c.author
 
-        if (!p.hasOwnProperty(author)) {
+        if (!Object.prototype.hasOwnProperty.call(p, author)) {
           p[author] = 0
         }
 

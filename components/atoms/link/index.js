@@ -16,16 +16,8 @@ export const Link = ({ children, passHref, to }) => {
 
   return (
     !validatorUri(to)
-      ? <NextLink {...obj} passHref={passHref}>
-        {children}
-        </NextLink>
-      : <a
-        className={children.type.componentStyle && `${children.type.componentStyle.componentId} ${children.type.componentStyle.lastClassName}`}
-        href={to}
-        {...children.props}
-        >
-        {children.props.children}
-      </a>
+      ? <NextLink {...obj} passHref={passHref}>{children}</NextLink>
+      : <a className={children.type.componentStyle && `${children.type.componentStyle.componentId} ${children.type.componentStyle.lastClassName}`} href={to} {...children.props}>{children.props.children}</a>
   )
 }
 

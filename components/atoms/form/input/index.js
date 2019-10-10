@@ -51,10 +51,7 @@ export const Input = ({
   return (
     <>
       {label
-        ? <Label text={label}>
-          {InputItem()}
-          <div className='Form-feedback' />
-          </Label>
+        ? <Label text={label}>{InputItem()}<div className='Form-feedback' /></Label>
         : InputItem()}
     </>
   )

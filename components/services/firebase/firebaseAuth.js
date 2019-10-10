@@ -82,8 +82,7 @@ export class FirebaseAuth {
 
       // Return error on no provider
       default:
-        const reason = 'Invalid provider passed to signIn method'
-        return Promise.reject(reason)
+        return 'Invalid provider passed to signIn method'
     }
   }
 

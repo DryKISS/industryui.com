@@ -4,7 +4,7 @@
  */
 
 // React
-import { bool, node, object, string } from 'prop-types'
+import { bool, node, object } from 'prop-types'
 
 // UI
 import { Alert, Column, Container, MetaHead, PageHeading, Row } from '../../'

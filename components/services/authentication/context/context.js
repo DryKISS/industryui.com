@@ -13,9 +13,6 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 // Next
 import Router from 'next/router'
 
-// Axios
-import axios from 'axios'
-
 // UI
 import { useLocalStorage } from '../../../'
 
@@ -91,26 +88,9 @@ export const AuthProvider = ({ children }) => {
       case 'email':
         return signInWithEmailAndPassword(email, password)
 
-      // Google oAuth
-      case 'google':
-        return signInWithPopup(this.googleProvider)
-
-      // Facebook oAuth
-      case 'facebook':
-        return signInWithPopup(this.facebookProvider)
-
-      // Twitter oAuth
-      case 'twitter':
-        return signInWithPopup(this.twitterProvider)
-
-      // Guest
-      case 'anonymous':
-        return signInAnonymously()
-
       // Return error on no provider
       default:
-        const reason = 'Invalid provider passed to signIn method'
-        return Promise.reject(reason)
+        return 'Invalid provider passed to signIn method'
     }
   }
 
