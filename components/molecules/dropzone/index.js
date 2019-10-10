@@ -88,9 +88,9 @@ export class Dropzone extends Component {
 
                 <input {...getInputProps()} />
 
-                { accepted.length > 0 && this.previewList() }
+                {accepted.length > 0 && this.previewList()}
 
-                { accepted.length <= 0 &&
+                {accepted.length <= 0 &&
                   <Column md={12}>
 
                     <Heading tag='h2'>
@@ -102,8 +102,7 @@ export class Dropzone extends Component {
 
                     <Button content='Select files' size='lg' />
 
-                  </Column>
-                }
+                  </Column>}
 
               </Row>
 

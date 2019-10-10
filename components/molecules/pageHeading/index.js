@@ -6,7 +6,7 @@
 import { any, bool, element, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, Divider, Heading, Icon, MEDIA_QUERY } from '../../'
+import { CONTEXT, Divider, Heading } from '../../'
 
 // Style
 import styled from 'styled-components'

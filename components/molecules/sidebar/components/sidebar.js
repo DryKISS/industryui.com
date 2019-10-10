@@ -3,7 +3,7 @@
  */
 
 // React
-import { array, oneOf } from 'prop-types'
+import { array } from 'prop-types'
 
 // UI
 import { Icon, Link, List } from '../../../'

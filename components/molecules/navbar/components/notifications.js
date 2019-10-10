@@ -12,13 +12,12 @@ import { Link, Icon } from '../../../'
 import styled from 'styled-components'
 
 export const Notifications = ({ count, link }) => {
-
   if (link && link.to) {
     return (
       <Link to={link.to} passHref>
         <a>
           <StyledNotifications>
-            { count && <StyledCount>{count}</StyledCount>}
+            {count && <StyledCount>{count}</StyledCount>}
             <Icon icon='bell' />
           </StyledNotifications>
         </a>
@@ -27,12 +26,11 @@ export const Notifications = ({ count, link }) => {
   } else {
     return (
       <StyledNotifications>
-        { count && <StyledCount>{count}</StyledCount>}
+        {count && <StyledCount>{count}</StyledCount>}
         <Icon icon='bell' />
       </StyledNotifications>
     )
   }
-
 }
 
 const StyledNotifications = styled.div`

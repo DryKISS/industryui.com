@@ -12,13 +12,11 @@ import { Dropdown, Icon } from '../../../'
 import styled from 'styled-components'
 
 export const User = ({ items, name }) => {
-
   return (
     <StyledUser>
-      <Dropdown items={items} position='right' caret><Icon aria-hidden="true" context="info" icon='user' /> {name}</Dropdown>
+      <Dropdown items={items} position='right' caret><Icon aria-hidden='true' context='info' icon='user' /> {name}</Dropdown>
     </StyledUser>
   )
-
 }
 
 const StyledUser = styled.div`

@@ -20,7 +20,6 @@ const FirebaseWithAuthentication = (Component) => {
     }
 
     componentDidMount () {
-      console.log('With Authentication')
       const { firebase } = this.props
 
       this.listener = firebase.Auth.handleAuthListener(

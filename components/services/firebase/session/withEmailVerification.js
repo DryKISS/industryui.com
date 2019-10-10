@@ -17,7 +17,7 @@ const withEmailVerification = Component => {
       this.state = { isSent: false }
     }
 
-    onSendEmailVerification = () => {
+    handleOnSendEmailVerification = () => {
       this.props.firebase
         .doSendEmailVerification()
         .then(() => this.setState({ isSent: true }))
@@ -45,7 +45,7 @@ const withEmailVerification = Component => {
 
                 <button
                   type='button'
-                  onClick={this.onSendEmailVerification}
+                  onClick={this.handleOnSendEmailVerification}
                   disabled={this.state.isSent}
                 >
                   Send confirmation E-Mail
@@ -53,8 +53,7 @@ const withEmailVerification = Component => {
               </div>
             ) : (
               <Component {...this.props} />
-            )
-          }
+            )}
         </AuthUserContext.Consumer>
       )
     }

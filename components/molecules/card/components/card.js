@@ -52,13 +52,13 @@ export const Card = ({
         shadow={shadow}
         style={style}
       >
-        {close && <Close click={close} /> }
+        {close && <Close click={close} />}
 
-        {image && <CardImage alt={alt} src={image} /> }
+        {image && <CardImage alt={alt} src={image} />}
 
-        {header && <CardHeader content={header} context={footerContext} /> }
+        {header && <CardHeader content={header} context={footerContext} />}
 
-        {icon && <StyledIcon icon={icon} size='4x' /> }
+        {icon && <StyledIcon icon={icon} size='4x' />}
 
         {(title || body) &&
           <CardBody
@@ -66,8 +66,7 @@ export const Card = ({
             children={body}
             context={context}
             title={title}
-          />
-        }
+          />}
 
         {children}
 

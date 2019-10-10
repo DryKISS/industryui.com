@@ -25,16 +25,14 @@ export const Buttons = ({
       {back &&
         <Link to={pathBack}>
           <Button context='secondary' size='lg'>{backText}</Button>
-        </Link>
-      }
+        </Link>}
 
       {next &&
         <div className='float-right'>
           {pathNext &&
             <Link to={pathNext}>
               <Button context='primary' size='lg'>{nextText}</Button>
-            </Link>
-          }
+            </Link>}
 
           {!pathNext &&
             <Button
@@ -44,10 +42,8 @@ export const Buttons = ({
               type='submit'
             >
               {nextText}
-            </Button>
-          }
-        </div>
-      }
+            </Button>}
+        </div>}
 
       <div style={{ clear: 'both', marginBottom: '1rem' }} />
     </>

@@ -82,8 +82,7 @@ export class FirebaseAuth {
 
       // Return error on no provider
       default:
-        const reason = 'Invalid provider passed to signIn method'
-        return Promise.reject(reason)
+        return 'Invalid provider passed to signIn method'
     }
   }
 
@@ -97,8 +96,6 @@ export class FirebaseAuth {
         this.user(authUser.uid)
           .get()
           .then((snapshot) => {
-            console.log('handleAuthListener: Query')
-
             const dbUser = snapshot.data()
 
             // Default empty roles

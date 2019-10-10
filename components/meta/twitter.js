@@ -20,7 +20,7 @@ export const MetaTwitter = ({ account, description, image, title, url }) => {
       <meta content={url} property='twitter:domain' />
 
       {/* <meta name="twitter:url" content="https://.app/">
-      <meta name="twitter:image:alt" content="Happy beagle puppy with its new owner"> */ } */}
+      <meta name="twitter:image:alt" content="Happy beagle puppy with its new owner"> */} */}
 
     </Head>
   )

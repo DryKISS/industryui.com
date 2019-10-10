@@ -7,7 +7,7 @@
  */
 
 // React
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Next
 import Router from 'next/router'
@@ -16,7 +16,7 @@ import Router from 'next/router'
 // import axios from 'axios'
 
 // UI
-import { UserContext, useLogin, useLocalStorage } from '../../../'
+import { UserContext } from '../../../'
 
 export const UserProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null)
@@ -143,6 +143,7 @@ export const UserProvider = ({ children }) => {
     !isLoading &&
       <UserContext.Provider
         value={{
+          accessToken: accessToken,
           user: user,
           authorise: authorise,
           signIn: signIn,

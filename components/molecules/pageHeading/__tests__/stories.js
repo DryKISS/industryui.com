@@ -9,8 +9,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 // UI
-import { PageHeading } from './'
-import Readme from './README.md'
+import { PageHeading } from '../'
+import Readme from '../README.md'
 
 storiesOf('Molecules/PageHeading', module)
 
@@ -21,8 +21,5 @@ storiesOf('Molecules/PageHeading', module)
   })
 
   .add('Default', () =>
-    <PageHeading
-      heading='Page Heading'
-      strapline='Strapline'
-    />
+    <PageHeading heading='Page Heading' strapline='Strapline' />
   )

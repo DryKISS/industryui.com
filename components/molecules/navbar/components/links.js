@@ -40,10 +40,9 @@ export const Links = ({ closeMenu, links, type, visible }) => {
   }
 
   const renderLink = (active, id, name, onClick, to) => {
-
     const handleClick = () => {
-      visible && closeMenu();
-      onClick && onClick();
+      visible && closeMenu()
+      onClick && onClick()
     }
 
     if (type && (!active || active !== type)) {

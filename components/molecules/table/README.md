@@ -1,9 +1,9 @@
 # Table
 
-Creates a simple datagrid
+Creates a simple table
 
 ## Links
 
-- https://getbootstrap.com/docs/4.1/content/tables/
-- https://react.semantic-ui.com/collections/table/
-- https://github.com/KyleAMathews/react-simple-table
+- [Bootstrap Table](https://getbootstrap.com/docs/4.3/content/tables/)
+- [Semantic UI](https://react.semantic-ui.com/collections/table/)
+- [React Simple Table](http://kyleamathews.github.io/react-simple-table/)

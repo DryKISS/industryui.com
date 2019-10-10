@@ -28,21 +28,30 @@ export const Icons = ({ icons }) => {
     // import("@fortawesome/fontawesome-svg-core").then(icons => {
     //   console.log(icons)
     // })
+    let proDuo = []
+    let proIcons = []
+    let brandIcons = []
 
-    const proDuo = Object
-      .keys(ProDuo)
-      .filter(key => key !== 'fad' && key !== 'prefix' && icons.proDuotone.includes(key))
-      .map(icon => ProDuo[icon])
+    if (icons && icons.proDuotone) {
+      proDuo = Object
+        .keys(ProDuo)
+        .filter(key => key !== 'fad' && key !== 'prefix' && icons.proDuotone.includes(key))
+        .map(icon => ProDuo[icon])
+    }
 
-    const proIcons = Object
-      .keys(ProIcons)
-      .filter(key => key !== 'far' && key !== 'prefix' && icons.proRegular.includes(key))
-      .map(icon => ProIcons[icon])
+    if (icons && icons.proRegular) {
+      proIcons = Object
+        .keys(ProIcons)
+        .filter(key => key !== 'far' && key !== 'prefix' && icons.proRegular.includes(key))
+        .map(icon => ProIcons[icon])
+    }
 
-    const brandIcons = Object
-      .keys(BrandIcons)
-      .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key))
-      .map(icon => BrandIcons[icon])
+    if (icons && icons.brands) {
+      brandIcons = Object
+        .keys(BrandIcons)
+        .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key))
+        .map(icon => BrandIcons[icon])
+    }
 
     library.add(...proDuo, ...proIcons, ...brandIcons)
   }, [])

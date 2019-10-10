@@ -12,19 +12,19 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI
-import { Select, useChange } from '../../../'
-import { ImageLocation } from '../../'
-import Readme from './README.md'
+import { ImageLocation, Select, useChange } from '../../../'
+import Readme from '../README.md'
 
 // Data
-import { Properties } from './__mocks__/properties'
+import { Properties } from '../__mocks__/properties'
 
-// Note: Images are imported here to make sure they are included in the bundle, but they are loaded using /static/media/ urls within property data
-import groundFloor from './__resources__/images/ground-floor.png'
-import firstFloor from './__resources__/images/first-floor.png'
-import secondFloor from './__resources__/images/second-floor.png'
-import thirdFloor from './__resources__/images/third-floor.png'
-import fourthFloor from './__resources__/images/fourth-floor.png'
+// Note: Images are imported here to make sure they are included in the bundle,
+// but they are loaded using /static/media/ urls within property data
+import '../__resources__/images/ground-floor.png'
+import '../__resources__/images/first-floor.png'
+import '../__resources__/images/second-floor.png'
+import '../__resources__/images/third-floor.png'
+import '../__resources__/images/fourth-floor.png'
 
 const PropertySelect = ({ locationChange, properties }) => {
   const INITIAL_STATE = {
@@ -72,13 +72,25 @@ storiesOf('Molecules/ImageLocation', module)
   })
 
   .add('Default', () => (
-    <ImageLocation label='Option' locationChange={action('change')} options={Properties[1].options} />
+    <ImageLocation
+      label='Option'
+      locationChange={action('change')}
+      options={Properties[1].options}
+    />
   ))
 
   .add('Preselected', () => (
-    <ImageLocation initial={1} label='Option' locationChange={action('change')} options={Properties[1].options} />
+    <ImageLocation
+      initial={1}
+      label='Option'
+      locationChange={action('change')}
+      options={Properties[1].options}
+    />
   ))
 
   .add('Multiple properties', () => (
-    <PropertySelect locationChange={action('change')} properties={Properties} />
+    <PropertySelect
+      locationChange={action('change')}
+      properties={Properties}
+    />
   ))

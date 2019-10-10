@@ -11,11 +11,10 @@ import styled from 'styled-components'
 // UI
 import { Link } from '../../../'
 
-const renderLink = ({id, name, onClick, to}, closeDropdown) => {
-
+const renderLink = ({ id, name, onClick, to }, closeDropdown) => {
   const handleClick = () => {
-    closeDropdown();
-    onClick && onClick();
+    closeDropdown()
+    onClick && onClick()
   }
 
   return (
@@ -28,12 +27,10 @@ const renderLink = ({id, name, onClick, to}, closeDropdown) => {
 export const DropdownItem = ({ closeDropdown, item }) => {
   return (
     <StyledDropdownItem divider={item.divider}>
-      {
-        item.divider ? <StyledDivider /> : renderLink(item, closeDropdown)
-      }
+      {item.divider ? <StyledDivider /> : renderLink(item, closeDropdown)}
     </StyledDropdownItem>
-  );
-};
+  )
+}
 
 const StyledDropdownItem = styled.div`
   padding: .25rem 1.5rem;

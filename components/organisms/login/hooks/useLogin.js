@@ -9,7 +9,7 @@ import { useContext, useState } from 'react'
 import Router from 'next/router'
 
 // UI
-import { useAuth, useChange, UserContext } from '../../../'
+import { useChange, UserContext } from '../../../'
 
 export const useLogin = (firebase = false) => {
   const INITIAL_STATE = {
@@ -39,18 +39,7 @@ export const useLogin = (firebase = false) => {
           setError(error)
         })
     } else {
-      console.log('Login Submit')
-
       signIn('email', email, password)
-
-      // handleLogin('email', email, password)
-      //   .then(() => {
-      //     setForm(INITIAL_STATE)
-      //     Router.push('/dashboard')
-      //   })
-      //   .catch((error) => {
-      //     setError(error)
-      //   })
     }
   }
 

@@ -31,7 +31,7 @@ export const BlogArchive = ({ articles, config, total }) => {
       .reduce((p, c) => {
         const year = formatIntDateYear(new Date(c.date))
 
-        if (!p.hasOwnProperty(year)) {
+        if (!Object.prototype.hasOwnProperty.call(p, year)) {
           p[year] = 0
         }
 
