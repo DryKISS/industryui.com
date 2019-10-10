@@ -18,14 +18,14 @@ export const Link = ({ children, passHref, to }) => {
     !validatorUri(to)
       ? <NextLink {...obj} passHref={passHref}>
         {children}
-      </NextLink>
+        </NextLink>
       : <a
         className={children.type.componentStyle && `${children.type.componentStyle.componentId} ${children.type.componentStyle.lastClassName}`}
         href={to}
         {...children.props}
-      >
+        >
         {children.props.children}
-        </a>
+      </a>
   )
 }
 

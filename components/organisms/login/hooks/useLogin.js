@@ -39,8 +39,6 @@ export const useLogin = (firebase = false) => {
           setError(error)
         })
     } else {
-      console.log('Login Submit')
-
       signIn('email', email, password)
 
       // handleLogin('email', email, password)

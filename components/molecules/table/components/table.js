@@ -3,12 +3,25 @@
  */
 
 // React
-import { array, func, string } from 'prop-types'
+import { array, bool, func, string } from 'prop-types'
+
+// UI
+import { BACKGROUND } from '../../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Table = ({ center, className, columns, rowClick, rows }) => {
+export const Table = ({
+  align,
+  caption,
+  className,
+  columns,
+  hover,
+  responsive,
+  rowClick,
+  rows,
+  striped
+}) => {
   const handleClick = (e) => {
     const row = e.currentTarget.getAttribute('data-item')
     rowClick(JSON.parse(row))
@@ -16,48 +29,61 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
 
   const renderColumns = () => {
     return (
-      columns.map(({ formatter, hidden, text }, index) => {
+      columns.map(({ hidden, text }, index) => {
         if (hidden) {
           return
         }
 
         return (
-          <StyledTh center={center} key={index}>{text}</StyledTh>
+          <StyledTh align={align} key={index}>{text}</StyledTh>
         )
       })
     )
   }
 
   const renderRows = () => {
+    const clickable = typeof rowClick === 'function'
+
     return (
-      rows.map((row, index) =>
-        <StyledTr
-          key={index}
-          data-item={JSON.stringify(row)}
-          onClick={handleClick}
-          pointer={typeof rowClick === 'function'}
-        >
-          {Object.entries(row).map(([key, value], index) => {
-            if ((columns && columns.length) && columns[index].hidden) {
-              return
-            }
+      rows.map((row, index) => {
+        const context = row.context
+        delete row.context
 
-            return (
-              <StyledTd center={center} key={index}>
-                {(columns && columns.length > 0) && columns[index].formatter
-                  ? columns[index].formatter(row)
-                  : value && value.__html ? <span dangerouslySetInnerHTML={value} /> : value}
-              </StyledTd>
-            )
-          })}
+        return (
+          <StyledTr
+            context={context}
+            key={index}
+            data-item={JSON.stringify(row)}
+            hover={hover}
+            onClick={clickable ? handleClick : null}
+            pointer={clickable}
+            striped={striped}
+          >
+            {Object.entries(row).map(([key, value], index) => {
+              const length = columns.length
+              const column = columns[index]
 
-        </StyledTr>
-      )
+              if ((length && column.hidden)) {
+                return
+              }
+
+              return (
+                <StyledTd align={align} key={index}>
+                  {length > 0 && column.formatter
+                    ? column.formatter({ row }, column.formatterData)
+                    : value && value.__html ? <span dangerouslySetInnerHTML={value} /> : value}
+                </StyledTd>
+              )
+            })}
+          </StyledTr>
+        )
+      })
     )
   }
 
-  return (
+  const renderTable = () =>
     <StyledTable className={className}>
+      {caption && <StyledCaption>{caption}</StyledCaption>}
       <thead>
         <tr>
           {columns && renderColumns()}
@@ -65,8 +91,24 @@ export const Table = ({ center, className, columns, rowClick, rows }) => {
       </thead>
       <tbody>{renderRows()}</tbody>
     </StyledTable>
+
+  return (
+    <>
+      {responsive &&
+        <StyledResponsive>
+          {renderTable()}
+        </StyledResponsive>}
+
+      {!responsive && renderTable()}
+    </>
   )
 }
+
+const StyledResponsive = styled.div`
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+`
 
 const StyledTable = styled.table`
   background-color: ${({ theme }) => theme.COLOUR.transparent};
@@ -77,38 +119,60 @@ const StyledTable = styled.table`
 
 const StyledTr = styled.tr`
   cursor: ${({ pointer }) => pointer ? 'pointer' : 'initial'};
-  :nth-child(odd) {
-    background-color: ${({ theme }) => theme.COLOUR.light};
-  }
 
-  :hover {
-    background-color: #eee;
-  }
+  ${({ context, striped, theme }) => !context && striped && css`
+    :nth-child(odd) {
+      background-color: ${theme.COLOUR.light};
+    }
+  `}
+
+  ${(props) => props.context && BACKGROUND(props)}
+  ${(props) => props.context && css`color: white;`}
+
+  ${({ hover }) => hover && css`
+    :hover {
+      background-color: #eee;
+    }
+  `}
 `
 
 const StyledTh = styled.th`
   border-bottom: 2px solid ${({ theme }) => theme.COLOUR.dark};
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: .75rem;
-  text-align: ${({ center }) => center ? 'center' : 'left'};
-  vertical-align: bottom;
+  text-align: ${({ align }) => align ? 'center' : 'left'};
 `
 
 const StyledTd = styled.td`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: .75rem;
-  text-align: ${({ center }) => center && 'center'};
-  vertical-align: top;
+  text-align: ${({ align }) => align && 'center'};
+`
+
+const StyledCaption = styled.caption`
+  caption-side: bottom;
+  color: #6c757d;
+  padding: .75rem 0;
+  text-align: left;
 `
 
 Table.propTypes = {
+  align: bool,
+  caption: string,
   classname: string,
-  columns: array.isRequired,
+  columns: array,
+  hover: bool,
+  responsive: bool,
   rowClick: func,
-  rows: array.isRequired
+  rows: array.isRequired,
+  striped: bool
 }
 
 Table.defaultProps = {
+  align: false,
+  columns: [],
   className: 'Table',
-  rowClick: () => {}
+  hover: true,
+  responsive: true,
+  striped: true
 }

@@ -6,16 +6,10 @@
 // UI
 import { Link } from '../../../'
 
-export const TableLink = ({ link, path, query, row }) => {
+export const TableLink = ({ row }, data) => {
   return (
-    <Link to={{
-      href: {
-        pathname: path,
-        query: query
-      }
-    }}
-    >
-      <a>{link}</a>
+    <Link to={row[data.to]}>
+      <a>{row[data.cell]}</a>
     </Link>
   )
 }

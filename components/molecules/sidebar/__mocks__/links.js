@@ -14,17 +14,8 @@ export const Sidebar = [
     to: '/dashboard/profile'
   },
   {
-    icon: ['fad', 'calendar-alt'],
     name: 'Calendar',
     to: '/dashboard/calendar'
-  },
-  {
-    divider: true
-  },
-  {
-    icon: 'dog-leashed',
-    name: 'Dogs',
-    to: '/dashboard/dogs'
   },
   {
     divider: true
@@ -34,6 +25,7 @@ export const Sidebar = [
     to: '/dashboard/messages'
   },
   {
+    icon: ['far', 'bell'],
     name: 'Notifications',
     to: '/dashboard/notifications'
   }

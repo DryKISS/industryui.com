@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (accessToken) {
-      console.info('AuthProvider: useEffect', accessToken)
       window.localStorage.setItem('bearerToken', accessToken)
       getUser()
     }
@@ -67,8 +66,6 @@ export const AuthProvider = ({ children }) => {
   // }
 
   const getUser = () => {
-    console.info('AuthProvider: getUser')
-
     if (accessToken === 'awesomeAccessToken123456789') {
       const user = {
         name: 'Ian',
@@ -82,8 +79,6 @@ export const AuthProvider = ({ children }) => {
   }
 
   const signInWithEmailAndPassword = async (email, password) => {
-    console.info('AuthProvider: signInWithEmailAndPassword:', email, password)
-
     window.localStorage.setItem('bearerToken', 'awesomeAccessToken123456789')
     setAccessToken('awesomeAccessToken123456789')
 
@@ -120,8 +115,6 @@ export const AuthProvider = ({ children }) => {
   }
 
   const handleLogout = () => {
-    console.info('AuthProvider: handleLogout')
-
     window.localStorage.removeItem('bearerToken')
     setAccessToken(null)
     setUser(null)
@@ -135,7 +128,8 @@ export const AuthProvider = ({ children }) => {
       handleLogout,
       setAccessToken,
       user
-    }}>
+    }}
+    >
       {children}
     </AuthContext.Provider>
   )

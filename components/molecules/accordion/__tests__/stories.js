@@ -6,12 +6,9 @@ import React from 'react'
 
 import { storiesOf } from '@storybook/react'
 
-import { Accordion, AccordionItem } from '../../'
-
-import Readme from './README.md'
-
-// Data
-import { Data } from './__mocks__/data'
+import { Accordion, AccordionItem } from '../../../'
+import Readme from '../README.md'
+import { Data } from '../__mocks__/data'
 
 storiesOf('Molecules/Accordion', module)
   .addParameters({
