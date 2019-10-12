@@ -1,4 +1,0 @@
-/**
- * Pages
- */
-export * from './domains'
