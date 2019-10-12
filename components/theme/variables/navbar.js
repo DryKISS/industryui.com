@@ -4,14 +4,10 @@
 import { COLOUR } from './colour'
 
 export const NAVBAR = {
-
   background: COLOUR.white,
-
   colourActive: COLOUR.dark,
   colourHover: '#aaa',
-
   height: '6rem'
-
 }
 
 // Navbar
@@ -56,14 +52,6 @@ export const NAVBAR = {
 // $nav-link-padding-y:                .5rem !default;
 // $nav-link-padding-x:                1rem !default;
 // $nav-link-disabled-color:           $gray-600 !default;
-
-// $nav-tabs-border-color:             $gray-300 !default;
-// $nav-tabs-border-width:             $border-width !default;
-// $nav-tabs-border-radius:            $border-radius !default;
-// $nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color !default;
-// $nav-tabs-link-active-color:        $gray-700 !default;
-// $nav-tabs-link-active-bg:           $body-bg !default;
-// $nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
 
 // $nav-pills-border-radius:           $border-radius !default;
 // $nav-pills-link-active-color:       $component-active-color !default;
