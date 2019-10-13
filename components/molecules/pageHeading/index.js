@@ -6,7 +6,8 @@
 import { any, bool, element, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, Divider, Heading } from '../../'
+import { CONTEXT, Heading } from '../../'
+import { Divider } from '../../atoms/divider'
 
 // Style
 import styled from 'styled-components'

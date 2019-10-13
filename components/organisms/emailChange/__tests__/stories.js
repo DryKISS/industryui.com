@@ -14,7 +14,6 @@ import { EmailChange, useChange } from '../../../'
 import Readme from '../README.md'
 
 storiesOf('Organisms/Email Change', module)
-
   .addParameters({
     readme: {
       sidebar: Readme

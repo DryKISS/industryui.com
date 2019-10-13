@@ -6,7 +6,8 @@
 import { func } from 'prop-types'
 
 // UI
-import { Button, Icon } from '../'
+import { Icon } from '../'
+import { Button } from '../../atoms/button'
 
 // Style
 import styled from 'styled-components'

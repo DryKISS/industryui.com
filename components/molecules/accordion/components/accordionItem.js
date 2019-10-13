@@ -2,12 +2,15 @@
  * Accordion Item
  */
 
+// React
 import React, { useState } from 'react'
-
 import { bool, oneOf, string } from 'prop-types'
 
-import { CONTEXT, Icon } from '../../../'
+// UI
+import { CONTEXT } from '../../../'
+import { Icon } from '../../../atoms/icon'
 
+// Styled
 import styled from 'styled-components'
 
 export const AccordionItem = ({ open: initial, title, children, className, context }) => {

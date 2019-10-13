@@ -6,7 +6,7 @@
 import { bool, node, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../../atoms/icon/icon'
+import { Icon } from '../../icon'
 
 // Style
 import styled, { css } from 'styled-components'
