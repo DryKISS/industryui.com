@@ -9,11 +9,11 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, array, text } from '@storybook/addon-knobs'
 
-import icon from './__resources__/dog-icon.png'
+import icon from '../__resources__/dog-icon.png'
 
 // UI
-import { Article } from './'
-import Readme from './README.md'
+import { Article } from '../'
+import Readme from '../README.md'
 
 storiesOf('Templates/Article', module)
   .addDecorator(withKnobs)

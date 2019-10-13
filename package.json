@@ -9,14 +9,16 @@
   "scripts": {
     "check": "npm-check -s -u",
     "dedupe": "yarn-deduplicate yarn.lock",
+    "serve": "npx http-server storybook-static",
     "start": "start-storybook -s ./static -p 9000 --quiet -c .storybook",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix --verbose | snazzy",
-    "dev:test": "jest",
-    "dev:update-snapshots": "jest --updateSnapshot",
+    "test": "jest",
+    "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -s .storybook/static",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "engines": {
     "node": "^12.0.0",
@@ -49,7 +51,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/pro-duotone-svg-icons": "^5.11.2",
     "@fortawesome/pro-regular-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
+    "@fortawesome/react-fontawesome": "^0.1.6",
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/interaction": "^4.3.0",
@@ -57,7 +59,8 @@
     "@fullcalendar/timegrid": "^4.3.0",
     "@typeform/embed": "^0.13.1",
     "axios": "^0.19.0",
-    "firebase": "^7.1.0",
+    "eslint": "^6.5.1",
+    "firebase": "^7.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "^9.1.1",
@@ -66,8 +69,11 @@
     "react-tooltip": "^3.11.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-classes": "^7.5.5",
+    "@babel/preset-react": "^7.6.3",
     "@storybook/addon-a11y": "^5.2.3",
     "@storybook/addon-actions": "^5.2.3",
     "@storybook/addon-info": "^5.2.3",
@@ -94,7 +100,7 @@
     "standard": "^14.3.1",
     "storybook-readme": "^5.0.8",
     "styled-components": "^4.4.0",
-    "stylelint": "^11.0.0",
+    "stylelint": "^11.1.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "yarn-deduplicate": "^1.1.1"

@@ -12,8 +12,7 @@ import { withA11y } from '@storybook/addon-a11y'
 import { withInfo } from '@storybook/addon-info'
 import { addReadme } from 'storybook-readme'
 
-import { Container } from './Container'
-import { ThemeWrapper } from './'
+import { Container } from './container'
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -31,7 +30,8 @@ import {
   faStethoscope,
   faTimesCircle,
   faTrash,
-  faUser
+  faUser,
+  faVenus
 } from '@fortawesome/pro-regular-svg-icons'
 
 // Icons
@@ -49,7 +49,8 @@ library.add(
   faStethoscope,
   faTimesCircle,
   faTrash,
-  faUser
+  faUser,
+  faVenus
 )
 
 addDecorator(withInfo({
@@ -59,10 +60,8 @@ addDecorator(withInfo({
   source: true
 }))
 
-addDecorator(story => <Container story={story} />)
-
+addDecorator((story) => <Container story={story} />)
 addDecorator(withA11y)
-addDecorator(story => <ThemeWrapper story={story} />)
 
 addParameters({
   options: {

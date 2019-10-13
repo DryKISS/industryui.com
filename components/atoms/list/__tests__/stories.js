@@ -9,8 +9,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, boolean, object } from '@storybook/addon-knobs'
 
-import { List, ListItem } from '../../'
-import Readme from './README.md'
+import { List, ListItem } from '../../../'
+import Readme from '../README.md'
 
 storiesOf('Atoms/List', module)
 
