@@ -5,6 +5,8 @@ our components used throughout our NextJS projects.
 
 It enables us to rapidly prototype any type of site at any scale.
 
+![](https://github.com/actions/hello-world/workflows/.github/workflows/main.yml/badge.svg)
+
 ## Install
 
 - $ yarn install
