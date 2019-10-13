@@ -9,7 +9,7 @@
   "scripts": {
     "check": "npm-check -s -u",
     "dedupe": "yarn-deduplicate yarn.lock",
-    "start": "start-storybook -p 9000 --quiet -c .storybook",
+    "start": "start-storybook -s ./static -p 9000 --quiet -c .storybook",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix --verbose | snazzy",
     "dev:test": "jest",
