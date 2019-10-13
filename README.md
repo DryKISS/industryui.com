@@ -5,7 +5,7 @@ our components used throughout our NextJS projects.
 
 It enables us to rapidly prototype any type of site at any scale.
 
-![](https://github.com/DryKISS/industryui.com/workflows/.github/workflows/lint.yml/badge.svg)
+![](https://github.com/DryKISS/industryui.com/workflows/Lint%20IndustryUI/badge.svg)
 
 ## Install
 
