@@ -1,0 +1,3 @@
+# Close
+
+Generic close Icon

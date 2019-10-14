@@ -1,0 +1,30 @@
+name: Lint IndustryUI
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Lint
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        version: ${{ matrix.node_version }}
+
+    - name: Install
+      run: |
+        npm install
+
+    - name: Lint
+      run: |
+        npm run lint
+
+    - name: Build
+      run: |
+        npm run build-storybook

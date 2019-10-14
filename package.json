@@ -1,0 +1,120 @@
+{
+  "name": "industry-ui",
+  "author": "Ian Warner <ian.warner@drykiss.com>",
+  "version": "0.0.1",
+  "description": "React components library",
+  "main": "./index.js",
+  "license": "MIT",
+  "repository": "git@github.com:drykiss/industry-ui.git",
+  "scripts": {
+    "check": "npm-check -s -u",
+    "dedupe": "yarn-deduplicate yarn.lock",
+    "serve": "npx http-server storybook-static",
+    "start": "start-storybook -s ./static -p 9000 --quiet -c .storybook",
+    "lint": "standard | snazzy",
+    "lint-fix": "standard --fix --verbose | snazzy",
+    "test": "jest",
+    "update-snapshots": "jest --updateSnapshot",
+    "clean-dist": "rm -rf ./dist",
+    "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
+    "build-storybook": "build-storybook --quiet -s .storybook/static",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "engines": {
+    "node": "^12.0.0",
+    "npm": "^6.0.0"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "library"
+  ],
+  "storybook-deployer": {
+    "gitUsername": "iwarner",
+    "gitEmail": "ian.warner@drykiss.com",
+    "commitMessage": "Deploy Storybook"
+  },
+  "standard": {
+    "globals": [
+      "__SITE__"
+    ],
+    "ignore": [
+      "node_modules/**",
+      "*.bundle*.js"
+    ],
+    "parser": "babel-eslint"
+  },
+  "eslint": {
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/pro-duotone-svg-icons": "^5.11.2",
+    "@fortawesome/pro-regular-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.6",
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/react": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
+    "@typeform/embed": "^0.13.1",
+    "axios": "^0.19.0",
+    "eslint": "^6.5.1",
+    "firebase": "^7.2.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "next": "^9.1.1",
+    "react-dropzone": "^10.1.10",
+    "react-select": "^3.0.8",
+    "react-tooltip": "^3.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-classes": "^7.5.5",
+    "@babel/preset-react": "^7.6.3",
+    "@storybook/addon-a11y": "^5.2.3",
+    "@storybook/addon-actions": "^5.2.3",
+    "@storybook/addon-info": "^5.2.3",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/addon-notes": "^5.2.3",
+    "@storybook/addon-options": "^5.2.3",
+    "@storybook/addon-storyshots": "^5.2.3",
+    "@storybook/react": "^5.2.3",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-require-context-hook": "^1.0.0",
+    "babel-plugin-styled-components": "^1.10.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "markdown-loader-jest": "^0.1.1",
+    "npm-check": "^5.9.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-test-renderer": "^16.10.2",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1",
+    "storybook-readme": "^5.0.8",
+    "styled-components": "^4.4.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "yarn-deduplicate": "^1.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.*",
+    "react-dom": "^16.*",
+    "styled-components": "^4.*"
+  }
+}

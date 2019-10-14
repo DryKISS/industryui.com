@@ -1,0 +1,4 @@
+/**
+ * Tabs
+ */
+export * from './components'
