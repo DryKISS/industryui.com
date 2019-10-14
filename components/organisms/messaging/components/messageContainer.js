@@ -4,7 +4,7 @@
  */
 
 // React
-import { array } from 'prop-types'
+import { array, object, string } from 'prop-types'
 
 // UI
 import { Background, MessageList } from './'
@@ -12,9 +12,9 @@ import { Background, MessageList } from './'
 // Style
 import styled from 'styled-components'
 
-export const MessageContainer = ({ messages }) => {
+export const MessageContainer = ({ className, messages, style }) => {
   return (
-    <StyledContainer>
+    <StyledContainer className={className} style={style}>
       <Background />
       <MessageList messages={messages} />
     </StyledContainer>
@@ -32,5 +32,7 @@ const StyledContainer = styled.div`
 `
 
 MessageContainer.propTypes = {
-  messages: array.isRequired
+  className: string,
+  messages: array.isRequired,
+  style: object
 }
