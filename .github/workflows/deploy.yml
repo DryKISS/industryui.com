@@ -1,0 +1,27 @@
+name: Deploy IndustryUI
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      if: github.event.pull_request.merged == true
+      uses: actions/checkout@v1
+
+    - name: Install
+      if: github.event.pull_request.merged == true
+      run: |
+        npm install
+
+    - name: Build
+      if: github.event.pull_request.merged == true
+      run: |
+        npm run deploy-storybook
