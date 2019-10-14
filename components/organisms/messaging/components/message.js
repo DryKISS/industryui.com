@@ -3,7 +3,7 @@
  */
 
 // React
-import { string, number } from 'prop-types'
+import { string } from 'prop-types'
 
 // UI
 import { Card, Column, Icon, Image, Row } from '../../../'

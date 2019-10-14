@@ -17,7 +17,7 @@
     "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
-    "build-storybook": "build-storybook -s .storybook/static",
+    "build-storybook": "build-storybook --quiet -s .storybook/static",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "engines": {
@@ -43,6 +43,13 @@
       "*.bundle*.js"
     ],
     "parser": "babel-eslint"
+  },
+  "eslint": {
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
