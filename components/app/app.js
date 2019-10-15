@@ -38,13 +38,10 @@ export class MyApp extends App {
   }
 
   layout () {
-    const { Component, icons, Layout, pageProps, user } = this.props
+    const { Component, Layout, pageProps, user } = this.props
 
     return (
       <>
-        {icons && <Icons icons={icons} />}
-        <ThemeStyle />
-
         {user &&
           <UserProvider>
             <Layout>
@@ -61,10 +58,13 @@ export class MyApp extends App {
   }
 
   render () {
-    const { authentication, firebase } = this.props
+    const { authentication, firebase, icons } = this.props
 
     return (
       <ThemeProvider theme={Theme}>
+        {icons && <Icons icons={icons} />}
+        <ThemeStyle />
+
         {isObject(firebase)
           ? <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>
           : isObject(authentication)

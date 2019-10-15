@@ -9,16 +9,16 @@ import { bool, object, string } from 'prop-types'
 import { Button, Icon, Link, MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Links = ({ closeMenu, links, type, visible }) => {
+export const Links = ({ brand, closeMenu, context, links, type, visible }) => {
   const renderButton = (id, name, to, type) => {
     return (
       <Link to={to} passHref>
         <StyledButton
           id={id}
           context={type.context}
-          onClick={visible && closeMenu}
+          onClick={visible ? closeMenu : () => {}}
           outline={type.outline}
           size={type.size}
           type={type.as}
@@ -51,7 +51,13 @@ export const Links = ({ closeMenu, links, type, visible }) => {
 
     return (
       <Link to={to} passHref>
-        <StyledLink id={id} onClick={handleClick}>{name}</StyledLink>
+        <StyledLink
+          context={context}
+          id={id}
+          onClick={handleClick}
+        >
+          {name}
+        </StyledLink>
       </Link>
     )
   }
@@ -60,22 +66,18 @@ export const Links = ({ closeMenu, links, type, visible }) => {
     <StyledCollapse visible={visible}>
 
       {Object.entries(links).map(([direction, link]) =>
-
         <StyledList direction={direction} key={direction}>
 
           {link.map(({ active, Component, id, name, onClick, to, type }) =>
-
-            <StyledListItem key={id}>
+            <StyledListItem brand={brand} key={id}>
               {Component && <Component />}
               {(type && type.as === 'button') && renderButton(id, name, to, type)}
               {(type && type.as === 'icon') && renderIcon(to, type)}
               {(!Component && (!type || type.as === 'link')) && renderLink(active, id, name, onClick, to)}
             </StyledListItem>
-
           )}
 
         </StyledList>
-
       )}
 
     </StyledCollapse>
@@ -84,8 +86,8 @@ export const Links = ({ closeMenu, links, type, visible }) => {
 
 const StyledCollapse = styled.div`
   align-items: center;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  /* border-top: 2px solid white; */
+  /* border-bottom: 2px solid white; */
   display: ${props => props.visible ? 'block' : 'none'};
   flex-basis: 100%;
   flex-grow: 1;
@@ -99,7 +101,7 @@ const StyledCollapse = styled.div`
 `
 
 const StyledList = styled.ul`
-  background-color: #fff;
+  /* background-color: #fff; */
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -116,17 +118,23 @@ const StyledList = styled.ul`
 
 const StyledListItem = styled.li`
   border-top: #F0F2F5 1px solid;
-  margin: auto .75rem;
   padding: 1.1em .75rem;
 
   ${MEDIA_QUERY.desktop`
     border: none;
+    margin: auto .75rem;
     padding: initial;
+  `}
+
+  ${props => !props.brand && css`
+    &:first-child{
+      margin-left: 0;
+    }
   `}
 `
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.NAVBAR.colourActive};
+  color: ${props => props.context ? 'white' : props.theme.NAVBAR.colourActive};
   display: block;
   font-family: ${props => props.theme.TYPOGRAPHY.font};
   font-weight: bold;
@@ -161,6 +169,7 @@ const StyledButton = styled(Button)`
 `
 
 Links.propTypes = {
+  brand: string,
   links: object.isRequired,
   visible: bool,
   type: string

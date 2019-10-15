@@ -55,7 +55,6 @@ export const AuthProvider = ({ children }) => {
   //     })
 
   //   } catch (error) {
-  //     console.error(error.response.data);
   //     this.setState({
   //       error: true
   //     })

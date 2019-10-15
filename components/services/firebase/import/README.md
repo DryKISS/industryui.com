@@ -19,7 +19,7 @@ A script that help to export and import in Cloud Firestore
 
 # Requirements
 
-Get **serviceAccount** JSON file from *Project Setting > SERVICE ACCOUNTS* in Firebase Console
+Get **serviceAccount** JSON file from *Project Setting > SERVICE ACCOUNTS* in Firebase
 
 Change the *databaseURL* when initializeApp with your own
 

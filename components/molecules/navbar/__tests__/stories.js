@@ -13,10 +13,9 @@ import { Navbar } from '../'
 import Readme from '../README.md'
 
 // Data
-import { Navigation } from '../__mocks__/navigation'
-import { Dashboard } from '../__mocks__/dashboard'
-import { UserItems } from '../__mocks__/userItems'
-import SVG from '../__resources__/drykiss.svg'
+import { Buttons, Dashboard, Default, Left, UserItems } from '../__mocks__'
+
+import { Brand } from 'config'
 
 storiesOf('Molecules/Navbar', module)
 
@@ -27,15 +26,32 @@ storiesOf('Molecules/Navbar', module)
   })
 
   .add('Default', () =>
-    <Navbar
-      brand={SVG}
-      links={Navigation}
-    />
+    <Navbar brand={Brand.logo} links={Default} />
+  )
+
+  .add('Buttons', () =>
+    <Navbar brand={Brand.logo} links={Buttons} />
+  )
+
+  .add('Contained', () =>
+    <Navbar brand={Brand.logo} container links={Default} />
+  )
+
+  .add('Left', () =>
+    <Navbar brand={Brand.logo} links={Left} />
+  )
+
+  .add('No Brand', () =>
+    <Navbar links={Default} />
+  )
+
+  .add('No Brand Left', () =>
+    <Navbar links={Left} />
   )
 
   .add('Dashboard', () =>
     <Navbar
-      brand={SVG}
+      brand={Brand.logo}
       links={Dashboard}
       notifications={{
         link: {
@@ -44,7 +60,7 @@ storiesOf('Molecules/Navbar', module)
         count: 9
       }}
       user={{
-        name: 'Tenant',
+        name: 'User',
         items: UserItems
       }}
     />

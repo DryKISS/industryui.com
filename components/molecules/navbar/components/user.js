@@ -14,7 +14,14 @@ import styled from 'styled-components'
 export const User = ({ items, name }) => {
   return (
     <StyledUser>
-      <Dropdown items={items} position='right' caret><Icon aria-hidden='true' context='info' icon='user' /> {name}</Dropdown>
+      <Dropdown
+        caret
+        items={items}
+        position='right'
+      >
+        <Icon aria-hidden='true' context='info' icon='user' />
+        {name}
+      </Dropdown>
     </StyledUser>
   )
 }

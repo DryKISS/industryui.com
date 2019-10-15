@@ -6,7 +6,7 @@
 import { Sidebar as SidebarUI } from '../components'
 
 export const Brand = {
-  logo: '/static/logo/cleverly.svg',
+  logo: '/drykiss.svg',
   name: 'IndustryUI'
 }
 

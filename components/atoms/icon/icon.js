@@ -19,11 +19,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // UI
 import { CONTEXT } from '../../'
 
-export const Icon = ({ icon, prefix, ...props }) =>
-  <FontAwesomeIcon
-    icon={[prefix, icon]}
-    {...props}
-  />
+export const Icon = ({ icon, prefix, ...props }) => {
+  return (
+    <FontAwesomeIcon
+      icon={[prefix, icon]}
+      {...props}
+    />
+  )
+}
 
 Icon.propTypes = {
   className: any,

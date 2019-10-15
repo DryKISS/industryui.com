@@ -13,9 +13,6 @@ import Readme from './README.md'
 import { Events } from './__mocks__/events'
 
 const handleEventClick = ({ event }) => {
-  console.log('Event', event)
-  console.log(`Clicked: ${event.title} - ${event.extendedProps.description}`)
-  // update event title
   event.setProp('title', event.title + ' - ' + 'updated')
 }
 

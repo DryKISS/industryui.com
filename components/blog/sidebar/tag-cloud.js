@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import { array, number } from 'prop-types'
 
 // Lodash
-import countBy from 'lodash/countBy'
+// import countBy from 'lodash/countBy'
 
 // UI
 import { slugify } from '../../'
@@ -39,17 +39,15 @@ export const BlogTagCloud = ({ articles, total }) => {
       }
     })
 
-    const tagsCounted = countBy(tagArray)
+    // const tagsCounted = countBy(tagArray)
 
     // Sort
-    const tagsSorted = Object
-      .entries(tagsCounted)
-      .sort((a, b) => { return tagsCounted[b] - tagsCounted[a] })
-      // .map(key => {
-      //   console.log(key)
-      // })
-
-    console.log(tagsSorted)
+    // const tagsSorted = Object
+    //   .entries(tagsCounted)
+    //   .sort((a, b) => { return tagsCounted[b] - tagsCounted[a] })
+    //   // .map(key => {
+    //   //   console.log(key)
+    //   // })
 
     // newO[key] = list[key]
 
@@ -68,20 +66,19 @@ export const BlogTagCloud = ({ articles, total }) => {
     // }))
   }
 
-  const data = [
-    { value: 'JavaScript', count: 38 },
-    { value: 'React', count: 30 },
-    { value: 'Nodejs', count: 28 },
-    { value: 'Express.js', count: 25 },
-    { value: 'HTML5', count: 33 },
-    { value: 'MongoDB', count: 18 },
-    { value: 'CSS3', count: 20 }
-  ]
+  // const data = [
+  //   { value: 'JavaScript', count: 38 },
+  //   { value: 'React', count: 30 },
+  //   { value: 'Nodejs', count: 28 },
+  //   { value: 'Express.js', count: 25 },
+  //   { value: 'HTML5', count: 33 },
+  //   { value: 'MongoDB', count: 18 },
+  //   { value: 'CSS3', count: 20 }
+  // ]
 
   return (
     <BlogSection heading='Tags'>
-      {console.log(cloud, data)}
-      {/* {cloud} */}
+      {cloud}
     </BlogSection>
   )
 }

@@ -5,7 +5,7 @@
  * dynamic import of these. Commented out stuff below:
  *
  * Read this stack post that offered the below - need to check the bundle to see
- * if all the icons are brough back - console log shows all are imported back
+ * if all the icons are brough back - log shows all are imported back
  * @see https://stackoverflow.com/questions/52625741/react-fontawesome-importing-all-icons
  *
  * Ok so filtered out what I need and the UseEffect works nice so not refiltered
@@ -25,9 +25,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 export const Icons = ({ icons }) => {
   useEffect(() => {
-    // import("@fortawesome/fontawesome-svg-core").then(icons => {
-    //   console.log(icons)
-    // })
     let proDuo = []
     let proIcons = []
     let brandIcons = []
@@ -67,7 +64,6 @@ export const Icons = ({ icons }) => {
 //   import('@fortawesome/pro-regular-svg-icons')
 //   .then(module => {
 //     const { faBadgeCheck, faBlog, faFileUser } = module
-//     // console.log('HERE', module, library)
 //     // Icons
 //     library.add(
 //       faBadgeCheck,
@@ -84,9 +80,6 @@ export const Icons = ({ icons }) => {
 // dynamic(import('@fortawesome/pro-regular-svg-icons')
 //   .then(module => {
 //     const { faBadgeCheck, faBlog, faFileUser } = module
-
-//     console.log('HERE', faBadgeCheck, faBlog)
-
 //     // Icons
 //     library.add(
 //       faBadgeCheck,
@@ -95,7 +88,6 @@ export const Icons = ({ icons }) => {
 //     )
 //   })
 //   .catch((error) => {
-//     console.log(error)
 //   })
 // )
 
@@ -103,9 +95,6 @@ export const Icons = ({ icons }) => {
 //   dynamic(import('@fortawesome/pro-regular-svg-icons')
 //     .then(module => {
 //       const { faBadgeCheck, faBlog, faFileUser } = module
-
-//       console.log('HERE', faBadgeCheck, faBlog)
-
 //       // Icons
 //       library.add(
 //         faBadgeCheck,
@@ -114,7 +103,6 @@ export const Icons = ({ icons }) => {
 //       )
 //     })
 //     .catch((error) => {
-//       console.log(error)
 //     })
 //   )
 
@@ -133,7 +121,6 @@ export const Icons = ({ icons }) => {
 // } from '@fortawesome/free-brands-svg-icons'
 
 // export const Icons = ({ icons }) => {
-//   console.log(icons)
 //   // Icons
 //   // library.add(
 //   //   faBadgeCheck

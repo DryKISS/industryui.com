@@ -1,51 +1,73 @@
 /**
  * Navigation
  */
-export const Navigation = {
+export const Default = {
+  right: [
+    {
+      id: 'navHome',
+      name: 'Home',
+      to: '/'
+    },
+    {
+      id: 'navNav1',
+      name: 'Nav1',
+      to: '/nav1'
+    }
+  ]
+}
 
+export const Left = {
   left: [
     {
-      id: 'navHowWorks',
-      name: 'How It Works',
-      to: '/how-it-works'
+      id: 'navHome',
+      name: 'Home',
+      to: '/'
     },
-
     {
-      id: 'navDogBreeds',
-      name: 'Dog Breeds',
-      to: '/dogs/breeds'
+      id: 'navNav1',
+      name: 'Nav1',
+      to: '/nav1'
+    }
+  ]
+}
+
+export const Buttons = {
+  left: [
+    {
+      id: 'navHome',
+      name: 'Home',
+      to: '/'
+    },
+    {
+      id: 'navNav1',
+      name: 'Nav1',
+      to: '/nav1'
     }
   ],
-
   right: [
     {
       id: 'navLogIn',
       name: 'Log in',
       to: '/sign-in'
     },
-
     {
-      id: 'navLitters',
-      name: 'Find a Puppy',
-      to: '/dogs/litters',
+      id: 'navButtonLarge',
+      name: 'Button Large',
+      to: '/',
       type: {
         as: 'button',
-        context: 'danger',
-        outline: true,
         size: 'lg'
       }
     },
-
     {
-      id: 'navBreederSignUp',
-      name: 'Breeder Sign Up',
-      to: '/sign-up/breeder',
+      id: 'navButtonSmall',
+      name: 'Button Small',
+      to: '/',
       type: {
         as: 'button',
-        context: 'danger',
-        size: 'lg'
+        context: 'secondary',
+        size: 'sm'
       }
     }
   ]
-
 }

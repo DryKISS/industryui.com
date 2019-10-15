@@ -31,7 +31,6 @@ export const Bootstrap = ({
 
 Bootstrap.propTypes = {
   brand: string,
-  brandLogo: string,
   children: node.isRequired,
   copyright: array,
   footer: array,
