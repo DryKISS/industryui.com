@@ -10,7 +10,7 @@ import { apiConfig } from 'config'
 
 const http = axios.create(apiConfig)
 
-export const api = {
+export const Api = {
 
   init: () => {
     // Mock requests
@@ -19,12 +19,12 @@ export const api = {
   },
 
   get: async(url) => {
-    init()
+    Api.init()
     return http.get(url)
   },
 
   post: async(url, data) => {
-    init()
+    Api.init()
     return http.post(url, data)
   }
 
