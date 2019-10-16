@@ -22,6 +22,8 @@ import {
   UserProvider
 } from '../'
 
+import { jwtConfig } from 'config'
+
 // Style
 import { ThemeProvider } from 'styled-components'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -43,7 +45,7 @@ export class MyApp extends App {
     return (
       <>
         {user &&
-          <UserProvider>
+          <UserProvider jwtConfig={jwtConfig}>
             <Layout>
               <Component {...pageProps} />
             </Layout>

@@ -5,6 +5,9 @@
 // UI
 import { Sidebar as SidebarUI } from '../components'
 
+export const apiConfig = {}
+export const jwtConfig = {}
+
 export const Brand = {
   logo: '/drykiss.svg',
   name: 'IndustryUI'
@@ -60,9 +63,11 @@ const data = [
 export const Sidebar = () => <SidebarUI data={data} />
 
 export const Config = {
+  apiConfig,
   Brand,
   Canonical,
   Google,
   Icons,
+  jwtConfig,
   Sidebar
 }
