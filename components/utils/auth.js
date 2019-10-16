@@ -14,7 +14,7 @@ export const validatePassword = (user, password) => {
 }
 
 export const generateToken = (data, config) => {
-  return jwt.sign(data, config.secret, { expiresIn: '14d' });
+  return jwt.sign(data, config.secret, { expiresIn: '14d' })
 }
 
 export const validateToken = (token, config) => {

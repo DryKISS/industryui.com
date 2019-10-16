@@ -24,13 +24,12 @@ export const UserProvider = ({ children, jwtConfig }) => {
     const bearerToken = window.localStorage.getItem('bearerToken')
 
     if (bearerToken) {
-
       try {
         const tokenData = validateToken(bearerToken, jwtConfig)
         if (tokenData.user) {
           setUser(tokenData.user)
         }
-      } catch(e) {
+      } catch (e) {
         // Invalid token
         window.localStorage.removeItem('bearerToken')
         setAccessToken(null)
@@ -44,7 +43,6 @@ export const UserProvider = ({ children, jwtConfig }) => {
   }, [])
 
   const signIn = async (provider, username, password) => {
-
     const { data: { user, token } } = await Api.post('auth', { username, password })
 
     if (user && token) {
@@ -53,7 +51,6 @@ export const UserProvider = ({ children, jwtConfig }) => {
       setAccessToken(token)
       Router.push('/dashboard')
     }
-
   }
 
   const signOut = () => {

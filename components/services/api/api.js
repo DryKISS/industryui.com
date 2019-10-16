@@ -18,12 +18,12 @@ export const Api = {
     mocker.apply(http)
   },
 
-  get: async(url) => {
+  get: async (url) => {
     Api.init()
     return http.get(url)
   },
 
-  post: async(url, data) => {
+  post: async (url, data) => {
     Api.init()
     return http.post(url, data)
   }
