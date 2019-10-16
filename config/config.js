@@ -6,6 +6,7 @@
 import { Sidebar as SidebarUI } from '../components'
 
 export const apiConfig = {}
+export const jwtConfig = {}
 
 export const Brand = {
   logo: '/drykiss.svg',
@@ -67,5 +68,6 @@ export const Config = {
   Canonical,
   Google,
   Icons,
+  jwtConfig,
   Sidebar
 }
