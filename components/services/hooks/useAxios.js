@@ -12,21 +12,14 @@ import { useState, useEffect } from 'react'
 // Axios
 import axios from 'axios'
 
+// UI
+import { apiConfig } from 'config'
+
 export const useAxios = (url, initialValue) => {
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 
   useEffect(() => {
-    const config = {
-      baseURL: 'https://api.drykiss.com/',
-      timeout: 0,
-      headers: {
-        'Cache-Control': 'no-cache',
-        'Content-Type': 'application/json',
-        'X-API-VERSION': '1.0'
-      }
-    }
-
-    const http = axios.create(config)
+    const http = axios.create(apiConfig)
 
     // Mock requests
     const mocker = require('api/client.mock')
