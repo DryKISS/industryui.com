@@ -12,13 +12,10 @@ import React, { useEffect, useState } from 'react'
 // Next
 import Router from 'next/router'
 
-// Axios
-// import axios from 'axios'
-
 // UI
-import { UserContext } from '../../../'
+import { Api, UserContext, validateToken } from '../../../'
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({ children, jwtConfig }) => {
   const [accessToken, setAccessToken] = useState(null)
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -27,92 +24,36 @@ export const UserProvider = ({ children }) => {
     const bearerToken = window.localStorage.getItem('bearerToken')
 
     if (bearerToken) {
-      if (bearerToken === 'adminAccessToken123456789') {
-        setUser({
-          name: 'Homyze',
-          roles: [
-            'ADMIN'
-          ]
-        })
-      }
 
-      if (bearerToken === 'tenantAccessToken123456789') {
-        setUser({
-          name: 'Tenant',
-          roles: [
-            'TENANT'
-          ]
-        })
-      }
-
-      if (bearerToken === 'customerAccessToken123456789') {
-        setUser({
-          name: 'Customer',
-          roles: [
-            'CUSTOMER'
-          ]
-        })
-      }
-
-      if (bearerToken === 'supplierAccessToken123456789') {
-        setUser({
-          name: 'Supplier',
-          roles: [
-            'SUPPLIER'
-          ]
-        })
+      try {
+        const tokenData = validateToken(bearerToken, jwtConfig)
+        if (tokenData.user) {
+          setUser(tokenData.user)
+        }
+      } catch(e) {
+        // Invalid token
+        window.localStorage.removeItem('bearerToken')
+        setAccessToken(null)
+        setUser(null)
       }
 
       setIsLoading(false)
     } else {
-      // Router.push('/account/sign-in')
       setIsLoading(false)
     }
   }, [])
 
-  const signIn = (provider, username, password) => {
-    if (username === 'admin@cleverly.works') {
-      window.localStorage.setItem('bearerToken', 'adminAccessToken123456789')
-      setUser({
-        name: 'Homyze',
-        roles: [
-          'ADMIN'
-        ]
-      })
+  const signIn = async (provider, username, password) => {
+
+    const { data: { user, token } } = await Api.post('auth', { username, password })
+
+    if (user && token) {
+      setUser(user)
+      window.localStorage.setItem('bearerToken', token)
+      setAccessToken(token)
+      Router.push('/dashboard')
     }
 
-    if (username === 'tenant@cleverly.works') {
-      window.localStorage.setItem('bearerToken', 'tenantAccessToken123456789')
-      setUser({
-        name: 'Tenant',
-        roles: [
-          'TENANT'
-        ]
-      })
-    }
-
-    if (username === 'customer@cleverly.works') {
-      window.localStorage.setItem('bearerToken', 'customerAccessToken123456789')
-      setUser({
-        name: 'Customer',
-        roles: [
-          'CUSTOMER'
-        ]
-      })
-    }
-
-    if (username === 'supplier@cleverly.works') {
-      window.localStorage.setItem('bearerToken', 'supplierAccessToken123456789')
-      setUser({
-        name: 'Supplier',
-        roles: [
-          'SUPPLIER'
-        ]
-      })
-    }
-
-    setAccessToken('awesomeAccessToken123456789')
-    Router.push('/dashboard')
   }
 
   const signOut = () => {
