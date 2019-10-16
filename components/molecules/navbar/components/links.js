@@ -11,7 +11,7 @@ import { Button, Icon, Link, MEDIA_QUERY, MEDIA_QUERY_MAX } from '../../../'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Links = ({ brand, closeMenu, context, links, type, visible }) => {
+export const Links = ({ brand, closeMenu, links, type, visible }) => {
   const renderButton = (id, name, to, type) => {
     return (
       <Link to={to} passHref>
@@ -51,11 +51,7 @@ export const Links = ({ brand, closeMenu, context, links, type, visible }) => {
 
     return (
       <Link to={to} passHref>
-        <StyledLink
-          context={context}
-          id={id}
-          onClick={handleClick}
-        >
+        <StyledLink id={id} onClick={handleClick}>
           {name}
         </StyledLink>
       </Link>
@@ -101,7 +97,7 @@ const StyledCollapse = styled.div`
 `
 
 const StyledList = styled.ul`
-  /* background-color: #fff; */
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   list-style: none;

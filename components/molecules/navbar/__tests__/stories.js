@@ -12,10 +12,20 @@ import { storiesOf } from '@storybook/react'
 import { Navbar } from '../'
 import Readme from '../README.md'
 
+// Style
+import { ThemeProvider } from 'styled-components'
+
 // Data
 import { Buttons, Dashboard, Default, Left, UserItems } from '../__mocks__'
 
 import { Brand } from 'config'
+
+const NAVBAR = {
+  background: '#000',
+  colourActive: '#fff',
+  colourHover: '#aaa',
+  height: '6rem'
+}
 
 storiesOf('Molecules/Navbar', module)
 
@@ -31,6 +41,12 @@ storiesOf('Molecules/Navbar', module)
 
   .add('Buttons', () =>
     <Navbar brand={Brand.logo} links={Buttons} />
+  )
+
+  .add('Themed', () =>
+    <ThemeProvider theme={{ NAVBAR }}>
+      <Navbar brand={Brand.logo} container links={Default} />
+    </ThemeProvider>
   )
 
   .add('Contained', () =>

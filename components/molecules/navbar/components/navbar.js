@@ -8,7 +8,6 @@ import {
   bool,
   object,
   objectOf,
-  oneOf,
   oneOfType,
   number,
   string
@@ -16,7 +15,7 @@ import {
 
 // UI
 import { Brand, Links, Notifications, Toggler, User } from './'
-import { BACKGROUND, Container, CONTEXT, MEDIA_QUERY } from '../../../'
+import { Container, MEDIA_QUERY } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -24,7 +23,6 @@ import styled from 'styled-components'
 export const Navbar = ({
   brand,
   container,
-  context,
   links,
   type,
   notifications,
@@ -56,7 +54,6 @@ export const Navbar = ({
           <Links
             brand={brand}
             closeMenu={handleMenuClick}
-            context={context}
             links={links}
             type={type}
             visible={visible}
@@ -71,7 +68,7 @@ export const Navbar = ({
 
   return (
     <>
-      <StyledNav context={context} style={style}>
+      <StyledNav style={style}>
         {container ? <Contained /> : <Widgets />}
       </StyledNav>
 
@@ -82,7 +79,7 @@ export const Navbar = ({
 
 const StyledNav = styled.nav`
   align-items: center;
-  ${props => props.context ? BACKGROUND(props) : `background-color: ${props.theme.NAVBAR.background}`};
+  background-color: ${props => props.theme.NAVBAR.background};
   border-bottom: 1px solid #eef1f4;
   display: flex;
   flex-wrap: wrap;
@@ -129,10 +126,9 @@ const StyledOverlay = styled.div`
 Navbar.propTypes = {
   brand: string,
   container: bool,
-  context: oneOf(Object.values(CONTEXT)),
   links: object,
-  notifications: bool,
-  user: bool,
+  notifications: object,
+  user: object,
   style: objectOf(oneOfType([number, string])),
   type: string
 }

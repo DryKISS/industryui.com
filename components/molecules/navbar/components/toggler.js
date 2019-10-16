@@ -59,21 +59,18 @@ const StyledToggler = styled.a`
 `
 
 const StyledIconMenu = styled.svg`
-  color: #fff;
   display: inline-block;
   vertical-align: -2px;
   width: .9rem;
 `
 
 const StyledIconClose = styled.svg`
-  color: #fff;
   display: inline-block;
   vertical-align: -2.5px;
   width: .7em;
 `
 
 const StyledText = styled.span`
-  color: #fff;
   margin-left: .25rem;
 `
 
