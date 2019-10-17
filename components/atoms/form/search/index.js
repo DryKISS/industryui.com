@@ -7,7 +7,7 @@
 import { func, string } from 'prop-types'
 
 // UI
-import { Form, Input, } from '../'
+import { Form, Input } from '../'
 import { Button, useChange } from '../../../'
 
 // Style
@@ -54,6 +54,5 @@ Search.propTypes = {
   label: string,
   onSearch: func.isRequired,
   placeholder: string,
-  value: string,
+  value: string
 }
-
