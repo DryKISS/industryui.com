@@ -18,9 +18,9 @@ export const Api = {
     mocker.apply(http)
   },
 
-  get: async (url) => {
+  get: async (url, params) => {
     Api.init()
-    return http.get(url)
+    return http.get(url, { params })
   },
 
   post: async (url, data) => {
