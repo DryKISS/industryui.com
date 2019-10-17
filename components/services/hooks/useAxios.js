@@ -15,7 +15,7 @@ import axios from 'axios'
 // UI
 import { apiConfig } from 'config'
 
-export const useAxios = (url, initialValue) => {
+export const useAxios = (url, params, initialValue) => {
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const useAxios = (url, initialValue) => {
     mocker.apply(http)
 
     const fetchData = async () => {
-      const response = await http.get(url)
+      const response = await http.get(url, { params })
 
       if (response.status === 200) {
         setData({ ...response.data, isLoading: false })
