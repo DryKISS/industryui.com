@@ -1,7 +1,5 @@
 /**
- * Colour
- *
- * @see https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
+ * Theme - Variables - Colour
  */
 export const COLOUR = {
   white: '#fff',

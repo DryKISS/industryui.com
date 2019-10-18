@@ -14,7 +14,6 @@ import App from 'next/app'
 
 // UI
 import {
-  AuthProvider,
   FirebaseProvider,
   Icons,
   Theme,
@@ -30,48 +29,57 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export class MyApp extends App {
   static propTypes = {
-    authentication: any,
     Component: func.isRequired,
     firebase: object,
     icons: object,
-    Layout: any,
+    Layout: any.isRequired,
     pageProps: object,
+    theme: object,
     user: bool
   }
 
-  layout () {
-    const { Component, Layout, pageProps, user } = this.props
+  elements () {
+    const { firebase, icons, user } = this.props
+    const fire = isObject(firebase)
 
     return (
       <>
+        {icons && <Icons icons={icons} />}
+        <ThemeStyle />
+
+        {fire &&
+          <FirebaseProvider config={firebase}>
+            {this.layout()}
+          </FirebaseProvider>}
+
         {user &&
           <UserProvider jwtConfig={jwtConfig}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            {this.layout()}
           </UserProvider>}
 
-        {!user &&
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>}
+        {!user && !fire && this.layout()}
       </>
     )
   }
 
+  layout () {
+    const { Component, Layout, pageProps } = this.props
+
+    return (
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    )
+  }
+
   render () {
-    const { authentication, firebase, icons } = this.props
+    const { theme } = this.props
 
     return (
       <ThemeProvider theme={Theme}>
-        {icons && <Icons icons={icons} />}
-        <ThemeStyle />
-
-        {isObject(firebase)
-          ? <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>
-          : isObject(authentication)
-            ? <AuthProvider config={authentication}>{this.layout()}</AuthProvider>
-            : this.layout()}
+        {theme
+          ? <ThemeProvider theme={theme}>{this.elements()}</ThemeProvider>
+          : this.elements()}
       </ThemeProvider>
     )
   }

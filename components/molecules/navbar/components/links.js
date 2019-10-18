@@ -82,8 +82,6 @@ export const Links = ({ brand, closeMenu, links, type, visible }) => {
 
 const StyledCollapse = styled.div`
   align-items: center;
-  /* border-top: 2px solid white; */
-  /* border-bottom: 2px solid white; */
   display: ${props => props.visible ? 'block' : 'none'};
   flex-basis: 100%;
   flex-grow: 1;
@@ -97,7 +95,7 @@ const StyledCollapse = styled.div`
 `
 
 const StyledList = styled.ul`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.NAVBAR.background};
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -130,7 +128,7 @@ const StyledListItem = styled.li`
 `
 
 const StyledLink = styled.a`
-  color: ${props => props.context ? 'white' : props.theme.NAVBAR.colourActive};
+  color: ${props => props.theme.NAVBAR.colourActive};
   display: block;
   font-family: ${props => props.theme.TYPOGRAPHY.font};
   font-weight: bold;

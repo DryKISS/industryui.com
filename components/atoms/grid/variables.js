@@ -1,7 +1,6 @@
 /**
  * Theme - Variables - Grid
  */
-
 const breakpoints = {
   xs: 0,
   sm: 576,

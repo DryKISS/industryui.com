@@ -21,10 +21,10 @@ export const CardFooter = ({ children, context }) => {
 
 const StyledFooter = styled.div`
   align-items: center;
-  background-color: ${({ context, theme }) => theme.COLOUR[context]}
+  background-color: ${({ context, theme }) => theme.COLOUR[context]};
   border-top: 1px solid rgba(0, 0, 0, .125);
   border-radius: 0 0 .25rem .25rem;
-  color: ${({ context, theme }) => (context === 'light' || context === 'white') ? theme.COLOUR.dark : theme.COLOUR.white}}
+  color: ${({ context, theme }) => (context === 'light' || context === 'white') ? theme.COLOUR.dark : theme.COLOUR.white};
   display: flex;
   justify-content: center;
   margin-top: auto;

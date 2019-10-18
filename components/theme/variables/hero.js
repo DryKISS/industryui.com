@@ -1,4 +1,0 @@
-// // Jumbotron
-
-// $jumbotron-padding:                 2rem !default;
-// $jumbotron-bg:                      $gray-200 !default;

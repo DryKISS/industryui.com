@@ -17,6 +17,7 @@ import { Container } from './container'
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faBars,
   faBell,
   faCaretDown,
   faCheckCircle,
@@ -28,6 +29,7 @@ import {
   faImages,
   faMars,
   faStethoscope,
+  faTimes,
   faTimesCircle,
   faTrash,
   faUser,
@@ -36,6 +38,7 @@ import {
 
 // Icons
 library.add(
+  faBars,
   faBell,
   faCaretDown,
   faCheckCircle,
@@ -47,6 +50,7 @@ library.add(
   faImages,
   faMars,
   faStethoscope,
+  faTimes,
   faTimesCircle,
   faTrash,
   faUser,

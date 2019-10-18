@@ -1,4 +1,4 @@
 /**
  * Address
  */
-export * from './address'
+export * from './components'

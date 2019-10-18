@@ -16,115 +16,42 @@
  * @see https://fontawesome.com
  */
 
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
-import * as ProDuo from '@fortawesome/pro-duotone-svg-icons'
-import * as ProIcons from '@fortawesome/pro-regular-svg-icons'
-import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-export const Icons = ({ icons }) => {
-  useEffect(() => {
-    let proDuo = []
-    let proIcons = []
-    let brandIcons = []
-
-    if (icons && icons.proDuotone) {
-      proDuo = Object
-        .keys(ProDuo)
-        .filter(key => key !== 'fad' && key !== 'prefix' && icons.proDuotone.includes(key))
-        .map(icon => ProDuo[icon])
-    }
-
-    if (icons && icons.proRegular) {
-      proIcons = Object
-        .keys(ProIcons)
-        .filter(key => key !== 'far' && key !== 'prefix' && icons.proRegular.includes(key))
-        .map(icon => ProIcons[icon])
-    }
-
-    if (icons && icons.brands) {
-      brandIcons = Object
-        .keys(BrandIcons)
-        .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key))
-        .map(icon => BrandIcons[icon])
-    }
-
-    library.add(...proDuo, ...proIcons, ...brandIcons)
-  }, [])
-
-  return <></>
-}
-
-// // Next
-// import dynamic from 'next/dynamic'
+// import * as ProDuo from '@fortawesome/pro-duotone-svg-icons'
+// import * as ProIcons from '@fortawesome/pro-regular-svg-icons'
+// import * as BrandIcons from '@fortawesome/free-brands-svg-icons'
 // import { library } from '@fortawesome/fontawesome-svg-core'
 
-// const FullIcons = dynamic(() => (
-//   import('@fortawesome/pro-regular-svg-icons')
-//   .then(module => {
-//     const { faBadgeCheck, faBlog, faFileUser } = module
-//     // Icons
-//     library.add(
-//       faBadgeCheck,
-//       faBlog,
-//       faFileUser
-//     )
-//   })
-// ))
-
 // export const Icons = ({ icons }) => {
-//   return <FullIcons icons={icons} />
-// }
+//   useEffect(() => {
+//     let proDuo = []
+//     let proIcons = []
+//     let brandIcons = []
 
-// dynamic(import('@fortawesome/pro-regular-svg-icons')
-//   .then(module => {
-//     const { faBadgeCheck, faBlog, faFileUser } = module
-//     // Icons
-//     library.add(
-//       faBadgeCheck,
-//       faBlog,
-//       faFileUser
-//     )
-//   })
-//   .catch((error) => {
-//   })
-// )
+//     if (icons && icons.proDuotone) {
+//       proDuo = Object
+//         .keys(ProDuo)
+//         .filter(key => key !== 'fad' && key !== 'prefix' && icons.proDuotone.includes(key))
+//         .map(icon => ProDuo[icon])
+//     }
 
-// export const Icons = () => {
-//   dynamic(import('@fortawesome/pro-regular-svg-icons')
-//     .then(module => {
-//       const { faBadgeCheck, faBlog, faFileUser } = module
-//       // Icons
-//       library.add(
-//         faBadgeCheck,
-//         faBlog,
-//         faFileUser
-//       )
-//     })
-//     .catch((error) => {
-//     })
-//   )
+//     if (icons && icons.proRegular) {
+//       proIcons = Object
+//         .keys(ProIcons)
+//         .filter(key => key !== 'far' && key !== 'prefix' && icons.proRegular.includes(key))
+//         .map(icon => ProIcons[icon])
+//     }
 
-//   return ''
-// }
+//     if (icons && icons.brands) {
+//       brandIcons = Object
+//         .keys(BrandIcons)
+//         .filter(key => key !== 'fab' && key !== 'prefix' && icons.brands.includes(key))
+//         .map(icon => BrandIcons[icon])
+//     }
 
-// import {
-//   faBadgeCheck,
-//   faBlog,
-//   faFileUser
-// } from '@fortawesome/pro-regular-svg-icons'
+//     library.add(...proDuo, ...proIcons, ...brandIcons)
+//   }, [])
 
-// import {
-//   faGithub,
-//   faLinkedin
-// } from '@fortawesome/free-brands-svg-icons'
-
-// export const Icons = ({ icons }) => {
-//   // Icons
-//   // library.add(
-//   //   faBadgeCheck
-//   // )
-
-//   return null
+//   return <></>
 // }

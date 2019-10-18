@@ -1,7 +1,7 @@
 /**
- * Navbar
+ * Theme - Variables - Tabs
  */
-import { COLOUR } from './colour'
+import { COLOUR } from '../../theme/variables/colour'
 
 export const TABS = {
   activeColour: COLOUR.dark,
