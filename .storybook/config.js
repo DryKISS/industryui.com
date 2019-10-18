@@ -80,10 +80,11 @@ addDecorator(addReadme)
  * Load stories
  * @see https://storybook.js.org/basics/writing-stories/#loading-stories-dynamically
  */
-const req = require.context('../components', true, /stories\.js$/)
+// const req = require.context('../components', true, /stories\.js$/)
 
-function loadStories() {
-  req.keys().forEach((filename) => req(filename))
-}
+// function loadStories() {
+//   req.keys().forEach((filename) => req(filename))
+// }
 
-configure(loadStories, module)
+// configure(loadStories, module)
+configure(require.context('../components', true, /stories\.js$/), module);
