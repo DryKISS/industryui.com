@@ -15,13 +15,7 @@ export const Brand = ({ brand }) => {
   return (
     <Link to='/' passHref>
       <StyledBrand id='navLogo'>
-
-        <StyledBrandLogo
-          alt='Logo'
-          draggable='false'
-          src={brand}
-        />
-
+        <StyledBrandLogo alt='Logo' draggable='false' src={brand} />
       </StyledBrand>
     </Link>
   )

@@ -9,7 +9,7 @@ export const apiConfig = {}
 export const jwtConfig = {}
 
 export const Brand = {
-  logo: '/drykiss.svg',
+  logo: 'drykiss.svg',
   name: 'IndustryUI'
 }
 
@@ -25,6 +25,7 @@ export const Google = {
 
 export const Icons = {
   proRegular: [
+    'faBars',
     'faBell',
     'faCheckCircle'
   ],
