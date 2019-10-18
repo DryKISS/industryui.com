@@ -24,44 +24,33 @@ export const Google = {
 }
 
 export const Icons = {
-  proRegular: [
-    'faBars',
-    'faBell',
-    'faCheckCircle'
-  ],
-  brands: [
-    'faGithub',
-    'faLinkedin'
-  ]
+  proRegular: ['faBars'],
+  brands: ['faGithub']
 }
 
-const data = [
+const sidebarData = [
   {
     name: 'Dashboard',
     to: '/dashboard'
   },
-
   {
     name: 'Issues',
     to: '/dashboard/issues'
   },
-
   {
     name: 'Calendar',
     to: '/dashboard/calendar'
   },
-
   {
     divider: true
   },
-
   {
     name: 'Messages',
     to: '/dashboard/messages'
   }
 ]
 
-export const Sidebar = () => <SidebarUI data={data} />
+export const Sidebar = () => <SidebarUI data={sidebarData} />
 
 export const Config = {
   apiConfig,
