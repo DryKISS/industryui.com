@@ -1,13 +1,16 @@
 /**
- * Theme
+ * Theme - Variables
  */
+// Core
 import { COLOUR } from './colour'
-import { FOOTER } from './footer'
-import { GRID } from './grid'
-import { NAVBAR } from './navbar'
-import { SIDEBAR } from './sidebar'
-import { TABS } from './tabs'
 import { TYPOGRAPHY } from './typography'
+
+// Components
+import { FOOTER } from '../../organisms/footer/variables'
+import { GRID } from '../../atoms/grid/variables'
+import { NAVBAR } from '../../molecules/navbar/variables'
+import { SIDEBAR } from '../../molecules/sidebar/variables'
+import { TABS } from '../../molecules/tabs/variables'
 
 export const Theme = {
   COLOUR,
