@@ -14,7 +14,6 @@ import App from 'next/app'
 
 // UI
 import {
-  AuthProvider,
   FirebaseProvider,
   Icons,
   Theme,
@@ -78,12 +77,9 @@ export class MyApp extends App {
 
     return (
       <ThemeProvider theme={Theme}>
-        {theme ?
-          <ThemeProvider theme={theme}>
-            {this.elements()}
-          </ThemeProvider>
-          : this.elements()
-        }
+        {theme
+          ? <ThemeProvider theme={theme}>{this.elements()}</ThemeProvider>
+          : this.elements()}
       </ThemeProvider>
     )
   }
