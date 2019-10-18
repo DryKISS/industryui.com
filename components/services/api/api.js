@@ -11,9 +11,7 @@ import { apiConfig } from 'config'
 const http = axios.create(apiConfig)
 
 export const Api = {
-
   init: () => {
-    // Mock requests
     const mocker = require('api/client.mock')
     mocker.apply(http)
   },
@@ -27,5 +25,4 @@ export const Api = {
     Api.init()
     return http.post(url, data)
   }
-
 }
