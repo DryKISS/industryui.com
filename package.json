@@ -1,11 +1,32 @@
 {
   "name": "industry-ui",
-  "author": "Ian Warner <ian.warner@drykiss.com>",
-  "version": "0.0.1",
-  "description": "React components library",
+  "description": "DryKISS React components library for NextJS",
+  "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
+  "contributors": [
+    "DryKISS, Ltd."
+  ],
+  "homepage": "https://industryui.com",
+  "version": "0.1.3",
+  "version_short": "0.1",
+  "keywords": [
+    "react",
+    "nextjs",
+    "components",
+    "library",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework"
+  ],
   "main": "./index.js",
   "license": "MIT",
-  "repository": "git@github.com:drykiss/industry-ui.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DryKISS/industryui.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DryKISS/industryui.com/issues"
+  },
   "scripts": {
     "check": "npm-check -s -u",
     "dedupe": "yarn-deduplicate yarn.lock",
@@ -22,14 +43,8 @@
     "migrate": "./node_modules/.bin/jscodeshift -t ./node_modules/@storybook/codemod/dist/transforms/storiesof-to-csf.js . --ignore-pattern \"node_modules|dist\""
   },
   "engines": {
-    "node": "^12.0.0",
-    "npm": "^6.0.0"
+    "node": ">=10.0.0"
   },
-  "keywords": [
-    "react",
-    "component",
-    "library"
-  ],
   "storybook-deployer": {
     "gitUsername": "iwarner",
     "gitEmail": "ian.warner@drykiss.com",
