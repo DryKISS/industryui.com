@@ -5,53 +5,69 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
-import { Avatar, Button, Dropdown, Icon } from '../../../'
+import { Avatar, Button, Dropdown, Icon } from 'components'
 import Readme from '../README.md'
 
 // Data
 import { Items } from '../__mocks__/items'
 
-storiesOf('Molecules/Dropdown', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Dropdown',
+  component: Dropdown,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Dropdown items={Items} caret>Dropdown</Dropdown>
-  )
+export const defaultStory = () => (
+  <Dropdown items={Items} caret>
+    Dropdown
+  </Dropdown>
+)
 
-  .add('Right aligned', () =>
-    <Dropdown items={Items} position='right' caret>Dropdown</Dropdown>
-  )
+defaultStory.story = {
+  name: 'Default'
+}
 
-  .add('Button', () =>
-    <Dropdown items={Items}><Button>Dropdown</Button></Dropdown>
-  )
+export const rightAligned = () => (
+  <Dropdown items={Items} position='right' caret>
+    Dropdown
+  </Dropdown>
+)
 
-  .add('Icon', () =>
-    <Dropdown items={Items} caret>
+rightAligned.story = {
+  name: 'Right aligned'
+}
+
+export const button = () => (
+  <Dropdown items={Items}>
+    <Button>Dropdown</Button>
+  </Dropdown>
+)
+
+export const iconStory = () => (
+  <Dropdown items={Items} caret>
+    <Icon aria-hidden='true' context='info' icon='user' />
+  </Dropdown>
+)
+
+iconStory.story = {
+  name: 'Icon'
+}
+
+export const iconButton = () => (
+  <Dropdown items={Items} caret>
+    <Button context='dark'>
       <Icon aria-hidden='true' context='info' icon='user' />
-    </Dropdown>
-  )
+    </Button>
+  </Dropdown>
+)
 
-  .add('Icon Button', () =>
-    <Dropdown
-      items={Items}
-      caret
-    >
-      <Button context='dark'>
-        <Icon aria-hidden='true' context='info' icon='user' />
-      </Button>
-    </Dropdown>
-  )
-
-  .add('Avatar', () =>
-    <Dropdown items={Items}><Avatar>KH</Avatar></Dropdown>
-  )
+export const avatar = () => (
+  <Dropdown items={Items}>
+    <Avatar>KH</Avatar>
+  </Dropdown>
+)
