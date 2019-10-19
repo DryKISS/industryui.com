@@ -18,3 +18,14 @@ It enables us to rapidly prototype any type of site at any scale.
 ## Link
 
 - $ yarn link
+
+## Creators
+
+**Ian Warner**
+
+- <https://ianwarner.com>
+- <https://github.com/iwarner>
+
+## Copyright and license
+
+Code and documentation copyright 2013-2019 the [IndustryUI Authors](https://github.com/DryKISS/industryui.com/graphs/contributors) and [DryKISS, Ltd.](https://industryui.com) Code released under the [MIT License](https://github.com/DryKISS/industryui.com/blob/master/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
