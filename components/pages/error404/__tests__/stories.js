@@ -5,21 +5,22 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Error404 } from '../'
 import Readme from '../README.md'
 
-storiesOf('Pages/Error404', module)
-
-  .addParameters({
+export default {
+  title: 'Pages/Error404',
+  component: Error404,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Error404 />
-  )
+export const defaultStory = () => <Error404 />
+
+defaultStory.story = {
+  name: 'Default'
+}
