@@ -63,7 +63,7 @@ export const rowAlign = () => {
       </Row>
     </>
   )
-};
+}
 
 export const rowWrap = () => (
   <>

@@ -28,7 +28,7 @@ export const defaultStory = () => {
       label='Enter the message below'
     />
   )
-};
+}
 
 defaultStory.story = {
   name: 'Default'
@@ -51,7 +51,7 @@ export const disabledStory = () => {
       </Button>
     </>
   )
-};
+}
 
 disabledStory.story = {
   name: 'Disabled'
@@ -67,7 +67,7 @@ export const withCharactersCount = () => {
       label='Enter the message below'
     />
   )
-};
+}
 
 withCharactersCount.story = {
   name: 'With characters count'
@@ -96,7 +96,7 @@ export const withMaxLength = () => {
       />
     </>
   )
-};
+}
 
 withMaxLength.story = {
   name: 'With maxLength'
@@ -129,7 +129,7 @@ export const rowsAndColsProps = () => {
       />
     </>
   )
-};
+}
 
 rowsAndColsProps.story = {
   name: 'rows and cols props'
@@ -152,4 +152,4 @@ export const direction = () => {
       </Button>
     </>
   )
-};
+}

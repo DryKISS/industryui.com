@@ -7,7 +7,7 @@ import { Events } from '../__mocks__/events'
 
 const handleEventClick = ({ event }) => {
   event.setProp('title', event.title + ' - ' + 'updated')
-};
+}
 
 export default {
   title: 'Organisms/Full Calendar',

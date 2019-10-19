@@ -55,7 +55,7 @@ const PropertySelect = ({ locationChange, properties }) => {
       )}
     </StyledPropertySelect>
   )
-};
+}
 
 const StyledPropertySelect = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.125);
