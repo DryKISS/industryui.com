@@ -5,13 +5,10 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // Hero
-import { Hero } from './'
-import Readme from './README.md'
-import Jack from './__resources__/hero-jack-russell.jpg'
+import { Hero } from '../'
+import Readme from '../README.md'
+import Jack from '../__resources__/hero-jack-russell.jpg'
 
 const Buttons = [
   {
@@ -38,25 +35,31 @@ const Buttons = [
   }
 ]
 
-storiesOf('Molecules/Hero', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Hero',
+  component: Hero,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Hero
-      alt='Tailwise Jack Russell Dog'
-      buttons={Buttons}
-      image={Jack}
-      message='Message'
-      strapline={`
+export const defaultStory = () => (
+  <Hero
+    alt='Tailwise Jack Russell Dog'
+    buttons={Buttons}
+    image={Jack}
+    message='Message'
+    strapline={`
         Tailwise takes the hassle out of matching verified breeders with future
         dog owners, in their search to find the perfect pup. That means no
         puppy farms anywhere in the United Kingdom.
       `}
-      title='The perfect puppy starts with a responsible breeder'
-    />
-  )
+    title='The perfect puppy starts with a responsible breeder'
+  />
+)
+
+defaultStory.story = {
+  name: 'Default'
+}
