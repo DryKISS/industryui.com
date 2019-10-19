@@ -5,9 +5,6 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // Component
 import { Table } from '../'
 import Readme from '../README.md'
@@ -23,62 +20,66 @@ import {
 const data = rows.data
 const dataContext = rowsContext.data
 
-storiesOf('Molecules/Table', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Table',
+  component: Table,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
+export const defaultStory = () => <Table columns={columns} rows={data} />
+
+defaultStory.story = {
+  name: 'Default'
+}
+
+export const captionStory = () => (
+  <Table caption='Captioned Tabled' columns={columns} rows={data} />
+)
+
+captionStory.story = {
+  name: 'Caption'
+}
+
+export const context = () => <Table columns={columns} rows={dataContext} />
+
+export const responsiveStory = () => (
+  <div style={{ width: '250px' }}>
     <Table columns={columns} rows={data} />
-  )
+  </div>
+)
 
-  .add('Caption', () =>
-    <Table caption='Captioned Tabled' columns={columns} rows={data} />
-  )
+responsiveStory.story = {
+  name: 'Responsive'
+}
 
-  .add('Context', () =>
-    <Table columns={columns} rows={dataContext} />
-  )
+export const notResponsive = () => (
+  <div style={{ width: '100px' }}>
+    <Table columns={columns} responsive={false} rows={data} />
+  </div>
+)
 
-  .add('Responsive', () =>
-    <div style={{ width: '250px' }}>
-      <Table columns={columns} rows={data} />
-    </div>
-  )
+export const notStriped = () => <Table columns={columns} rows={data} striped={false} />
 
-  .add('Not Responsive', () =>
-    <div style={{ width: '100px' }}>
-      <Table columns={columns} responsive={false} rows={data} />
-    </div>
-  )
+export const notHover = () => <Table columns={columns} hover={false} rows={data} />
 
-  .add('Not Striped', () =>
-    <Table columns={columns} rows={data} striped={false} />
-  )
+export const noColumns = () => <Table rows={data} />
 
-  .add('Not Hover', () =>
-    <Table columns={columns} hover={false} rows={data} />
-  )
+export const rowClickStory = () => <Table columns={columns} rowClick={rowClick} rows={data} />
 
-  .add('No Columns', () =>
-    <Table rows={data} />
-  )
+rowClickStory.story = {
+  name: 'Row Click'
+}
 
-  .add('Row Click', () =>
-    <Table columns={columns} rowClick={rowClick} rows={data} />
-  )
+export const alignStory = () => <Table align columns={columns} rows={data} />
 
-  .add('Align', () =>
-    <Table align columns={columns} rows={data} />
-  )
+alignStory.story = {
+  name: 'Align'
+}
 
-  .add('Formatter', () =>
-    <Table columns={columnsFormatter} rows={data} />
-  )
+export const formatter = () => <Table columns={columnsFormatter} rows={data} />
 
-  .add('Actions', () =>
-    <Table columns={columnsActions} rows={data} />
-  )
+export const actions = () => <Table columns={columnsActions} rows={data} />
