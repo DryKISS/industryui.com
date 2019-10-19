@@ -5,9 +5,6 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Navbar } from '../'
 import Readme from '../README.md'
@@ -27,57 +24,51 @@ const NAVBAR = {
   height: '6rem'
 }
 
-storiesOf('Molecules/Navbar', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Navbar',
+  component: Navbar,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Navbar brand={Brand.logo} links={Default} />
-  )
+export const defaultStory = () => <Navbar brand={Brand.logo} links={Default} />
 
-  .add('Buttons', () =>
-    <Navbar brand={Brand.logo} links={Buttons} />
-  )
+defaultStory.story = {
+  name: 'Default'
+}
 
-  .add('Themed', () =>
-    <ThemeProvider theme={{ NAVBAR }}>
-      <Navbar brand={Brand.logo} container links={Default} />
-    </ThemeProvider>
-  )
+export const buttons = () => <Navbar brand={Brand.logo} links={Buttons} />
 
-  .add('Contained', () =>
+export const themed = () => (
+  <ThemeProvider theme={{ NAVBAR }}>
     <Navbar brand={Brand.logo} container links={Default} />
-  )
+  </ThemeProvider>
+)
 
-  .add('Left', () =>
-    <Navbar brand={Brand.logo} links={Left} />
-  )
+export const contained = () => <Navbar brand={Brand.logo} container links={Default} />
 
-  .add('No Brand', () =>
-    <Navbar links={Default} />
-  )
+export const left = () => <Navbar brand={Brand.logo} links={Left} />
 
-  .add('No Brand Left', () =>
-    <Navbar links={Left} />
-  )
+export const noBrand = () => <Navbar links={Default} />
 
-  .add('Dashboard', () =>
-    <Navbar
-      brand={Brand.logo}
-      links={Dashboard}
-      notifications={{
-        link: {
-          to: '/dashboard/messages'
-        },
-        count: 9
-      }}
-      user={{
-        name: 'User',
-        items: UserItems
-      }}
-    />
-  )
+export const noBrandLeft = () => <Navbar links={Left} />
+
+export const dashboard = () => (
+  <Navbar
+    brand={Brand.logo}
+    links={Dashboard}
+    notifications={{
+      link: {
+        to: '/dashboard/messages'
+      },
+      count: 9
+    }}
+    user={{
+      name: 'User',
+      items: UserItems
+    }}
+  />
+)
