@@ -5,9 +5,6 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Sidebar } from '../'
 import Readme from '../README.md'
@@ -15,14 +12,18 @@ import Readme from '../README.md'
 // Data
 import { Sidebar as Data } from '../__mocks__/links'
 
-storiesOf('Molecules/Sidebar', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Sidebar',
+  component: Sidebar,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Sidebar data={Data} />
-  )
+export const defaultStory = () => <Sidebar data={Data} />
+
+defaultStory.story = {
+  name: 'Default'
+}
