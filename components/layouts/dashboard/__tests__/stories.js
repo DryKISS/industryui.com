@@ -5,9 +5,6 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Dashboard } from '../'
 import Readme from '../README.md'
@@ -18,24 +15,30 @@ const meta = {
   title: 'Dashboard'
 }
 
-storiesOf('Layouts/Dashboard', module)
-
-  .addParameters({
+export default {
+  title: 'Layouts/Dashboard',
+  component: Dashboard,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Dashboard
-      error={{ message: 'Error 404' }}
-      isLoading={false}
-      meta={meta}
-      pageHeading={{
-        heading: 'Default'
-      }}
-      success
-    >
-      Dashboard Layout
-    </Dashboard>
-  )
+export const defaultStory = () => (
+  <Dashboard
+    error={{ message: 'Error 404' }}
+    isLoading={false}
+    meta={meta}
+    pageHeading={{
+      heading: 'Default'
+    }}
+    success
+  >
+    Dashboard Layout
+  </Dashboard>
+)
+
+defaultStory.story = {
+  name: 'Default'
+}

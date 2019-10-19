@@ -5,25 +5,18 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Pagination } from '../'
 import Readme from '../README.md'
 
-storiesOf('Molecules/Pagination', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Pagination',
+  component: Pagination,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Primary', () =>
-    <Pagination
-      activePage={2}
-      onPageChange={() => {}}
-      totalPages={4}
-    />
-  )
+export const primary = () => <Pagination activePage={2} onPageChange={() => {}} totalPages={4} />

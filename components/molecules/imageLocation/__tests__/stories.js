@@ -7,8 +7,6 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 // UI
@@ -44,7 +42,7 @@ const PropertySelect = ({ locationChange, properties }) => {
         options={[{ text: 'Select property', value: '' }, ...properties]}
         value={property}
       />
-      {property &&
+      {property && (
         <ImageLocation
           change={change}
           locationChange={locationChange}
@@ -53,7 +51,8 @@ const PropertySelect = ({ locationChange, properties }) => {
           label='Floor'
           options={properties[property - 1].options}
           initial={floor}
-        />}
+        />
+      )}
     </StyledPropertySelect>
   )
 }
@@ -64,33 +63,37 @@ const StyledPropertySelect = styled.div`
   padding: 20px;
 `
 
-storiesOf('Molecules/ImageLocation', module)
-  .addParameters({
+export default {
+  title: 'Molecules/ImageLocation',
+  component: ImageLocation,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () => (
-    <ImageLocation
-      label='Option'
-      locationChange={action('change')}
-      options={Properties[1].options}
-    />
-  ))
+export const defaultStory = () => (
+  <ImageLocation label='Option' locationChange={action('change')} options={Properties[1].options} />
+)
 
-  .add('Preselected', () => (
-    <ImageLocation
-      initial={1}
-      label='Option'
-      locationChange={action('change')}
-      options={Properties[1].options}
-    />
-  ))
+defaultStory.story = {
+  name: 'Default'
+}
 
-  .add('Multiple properties', () => (
-    <PropertySelect
-      locationChange={action('change')}
-      properties={Properties}
-    />
-  ))
+export const preselected = () => (
+  <ImageLocation
+    initial={1}
+    label='Option'
+    locationChange={action('change')}
+    options={Properties[1].options}
+  />
+)
+
+export const multipleProperties = () => (
+  <PropertySelect locationChange={action('change')} properties={Properties} />
+)
+
+multipleProperties.story = {
+  name: 'Multiple properties'
+}

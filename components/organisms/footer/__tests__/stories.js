@@ -5,11 +5,8 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
-import { Footer, Image, List, ListItem } from '../../../'
+import { Footer, Image, List, ListItem } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -28,18 +25,20 @@ const renderColumn = () => (
   </>
 )
 
-storiesOf('Organisms/Footer', module)
-
-  .addParameters({
+export default {
+  title: 'Organisms/Footer',
+  component: Footer,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () => (
-    <Footer columns={FOOTER(renderColumn)} />
-  ))
+export const defaultStory = () => <Footer columns={FOOTER(renderColumn)} />
 
-  .add('12 Column', () => (
-    <Footer columns={ONE_COLUMN} />
-  ))
+defaultStory.story = {
+  name: 'Default'
+}
+
+export const _12Column = () => <Footer columns={ONE_COLUMN} />

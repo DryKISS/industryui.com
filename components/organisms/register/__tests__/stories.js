@@ -5,30 +5,33 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Register } from '../'
 import Readme from '../README.md'
 
-storiesOf('Organisms/Register', module)
-
-  .addParameters({
+export default {
+  title: 'Organisms/Register',
+  component: Register,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Register
-      change={() => {}}
-      email=''
-      marketing
-      nameFirst=''
-      nameLast=''
-      password=''
-      submit={() => {}}
-      terms
-    />
-  )
+export const defaultStory = () => (
+  <Register
+    change={() => {}}
+    email=''
+    marketing
+    nameFirst=''
+    nameLast=''
+    password=''
+    submit={() => {}}
+    terms
+  />
+)
+
+defaultStory.story = {
+  name: 'Default'
+}

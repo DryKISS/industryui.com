@@ -5,30 +5,47 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Link } from '../'
 import { Button } from '../../'
 import Readme from '../README.md'
 
-storiesOf('Atoms/Link', module)
-
-  .addParameters({
+export default {
+  title: 'Atoms/Link',
+  component: Link,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Link to='/'><a>Home</a></Link>
-  )
+export const defaultStory = () => (
+  <Link to='/'>
+    <a>Home</a>
+  </Link>
+)
 
-  .add('Button', () =>
-    <Link to='/'><button>Home</button></Link>
-  )
+defaultStory.story = {
+  name: 'Default'
+}
 
-  .add('Button component', () =>
-    <Link to='/'><Button>Home</Button></Link>
-  )
+export const buttonStory = () => (
+  <Link to='/'>
+    <button>Home</button>
+  </Link>
+)
+
+buttonStory.story = {
+  name: 'Button'
+}
+
+export const buttonComponent = () => (
+  <Link to='/'>
+    <Button>Home</Button>
+  </Link>
+)
+
+buttonComponent.story = {
+  name: 'Button component'
+}

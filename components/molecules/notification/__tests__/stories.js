@@ -5,21 +5,22 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Notification } from '../'
 import Readme from '../README.md'
 
-storiesOf('Molecules/Notification', module)
-
-  .addParameters({
+export default {
+  title: 'Molecules/Notification',
+  componnet: Notification,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Notification />
-  )
+export const defaultStory = () => <Notification />
+
+defaultStory.story = {
+  name: 'Default'
+}
