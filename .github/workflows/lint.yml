@@ -2,20 +2,31 @@ name: Lint IndustryUI
 
 on: [push, pull_request]
 
+env:
+  CI: true
+
 jobs:
   lint:
     name: Lint
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [10, 12]
+
     steps:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Use Node.js ${{ matrix.node_version }}
+    - name: Use Node.js ${{ matrix.node }}
       uses: actions/setup-node@v1
       with:
-        version: ${{ matrix.node_version }}
+        node-version: ${{ matrix.node }}
+
+    - run: node --version
+    - run: npm --version
 
     - name: Install
       run: |
