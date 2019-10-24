@@ -24,5 +24,15 @@ export const Api = {
   post: async (url, data) => {
     Api.init()
     return http.post(url, data)
+  },
+
+  put: async (url, data) => {
+    Api.init()
+    return http.put(url, data)
+  },
+
+  delete: async (url) => {
+    Api.init()
+    return http.delete(url)
   }
 }
