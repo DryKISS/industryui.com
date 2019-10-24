@@ -15,7 +15,7 @@
 import { node, object, string } from 'prop-types'
 
 // UI
-import { Container, MetaHead, PageHeading } from '../'
+import { Container, MetaHead, PageHeading } from 'components'
 
 // Config
 import { Brand, Canonical } from 'config'
