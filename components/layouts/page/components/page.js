@@ -12,7 +12,7 @@
  */
 
 // React
-import { node, object, string } from 'prop-types'
+import { node, object, string, bool } from 'prop-types'
 
 // UI
 import { Container, MetaHead, PageHeading } from 'components'
@@ -24,7 +24,8 @@ export const Page = ({
   children,
   heading,
   meta,
-  strapline
+  strapline,
+  fluidContainer
 }) => {
   return (
     <>
@@ -34,7 +35,7 @@ export const Page = ({
         meta={meta}
       />
 
-      <Container>
+      <Container fluid={fluidContainer}>
         {heading &&
           <PageHeading heading={heading} strapline={strapline} />}
         {children}
@@ -47,5 +48,10 @@ Page.propTypes = {
   children: node.isRequired,
   heading: string,
   meta: object.isRequired,
-  strapline: string
+  strapline: string,
+  fluidContainer: bool
+}
+
+Page.defaultProps = {
+  fluidContainer: false
 }
