@@ -4,7 +4,7 @@
 
 // React
 import { string, oneOf, object } from 'prop-types'
-import { CONTEXT, Icon } from 'components'
+import { CONTEXT, Icon } from '../../../'
 
 // Style
 import styled from 'styled-components'
