@@ -53,5 +53,5 @@ Badge.propTypes = {
   content: string.isRequired,
   to: string,
   context: oneOf(Object.values(CONTEXT)),
-  icon: object
+  icon: string
 }
