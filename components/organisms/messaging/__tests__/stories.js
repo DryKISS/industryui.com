@@ -15,7 +15,6 @@ import { messages } from '../__mocks__/messages'
 
 export default {
   title: 'Organisms/Messaging',
-  component: MessageContainer,
   parameters: {
     readme: {
       sidebar: Readme
