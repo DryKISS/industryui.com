@@ -23,7 +23,14 @@ export const Search = ({ label, onSearch, placeholder, value, type }) => {
   return (
     <Form submit={() => onSearch(query)}>
       <StyledSearch>
-        <Input change={change} id='query' placeholder={placeholder} required={false} type={type} value={query} />
+        <Input
+          change={change}
+          id='query'
+          placeholder={placeholder}
+          required={false}
+          type={type}
+          value={query}
+        />
         <Button
           content={label || 'Search'}
           context='dark'
