@@ -4,11 +4,7 @@
  */
 
 // React
-import { useState } from 'react'
-
-// Emoji
-import { Emoji, Picker } from 'emoji-mart'
-import 'emoji-mart/css/emoji-mart.css'
+import React from 'react'
 
 // UI
 import {
@@ -19,8 +15,9 @@ import {
   Form,
   Image,
   Textarea,
-  Row
-} from '../../../../'
+  Row,
+  EmojiMart
+} from 'components'
 
 // Style
 import styled from 'styled-components'
@@ -34,29 +31,8 @@ export const MessageSend = ({
   messageSubmit,
   pictureChange
 }) => {
-  const [emoji, setEmoji] = useState(false)
-
-  const showEmojis = (em, e) => {
-    e.preventDefault()
-    setEmoji(!emoji)
-  }
-
-  const pickEmoji = (emoji, e) => {
-    e.preventDefault()
-
-    const data = {
-      target: {
-        value: message + emoji.native
-      }
-    }
-
-    messageChange(data)
-    setEmoji(false)
-  }
-
   return (
     <Row>
-
       <Column md={2}>
         {!picture &&
           <StyledContainer />}
@@ -67,11 +43,8 @@ export const MessageSend = ({
             <Image alt='Picture' src={picture} style={{ border: '1px solid #000' }} />
           </div>}
       </Column>
-
       <Column md={10}>
-
         <Form submit={messageSubmit}>
-
           <Textarea
             change={messageChange}
             id='message'
@@ -79,47 +52,27 @@ export const MessageSend = ({
             rows={2}
             value={message}
           />
-
           <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-            <Emoji onClick={showEmojis} emoji={{ id: 'smiley', skin: 1 }} size={32} />
+            <EmojiMart onSelect={emoji => messageChange(message + emoji)} />
           </div>
-
           <div className='float-right'>
-
             <ButtonToolbar>
-
               <Button
                 content='Reset'
                 context='danger'
                 size='lg'
                 onClick={messageReset}
               />
-
               <Button
                 content='Send'
                 context='primary'
                 size='lg'
                 type='submit'
               />
-
             </ButtonToolbar>
-
           </div>
-
         </Form>
-
       </Column>
-
-      {emoji &&
-        <Picker
-          emoji='point_up_2'
-          include={['foods', 'people', 'recent', 'nature']}
-          onClick={pickEmoji}
-          set='google'
-          sheetSize={32}
-          title='Pick your emoji...'
-        />}
-
     </Row>
   )
 }
