@@ -1,4 +1,3 @@
-
 // global list of loaded js and css
 const _loadedJs = []
 const _loadedCss = []

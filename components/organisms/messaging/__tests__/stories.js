@@ -6,7 +6,12 @@
 import React from 'react'
 
 // UI
-import { MessageContainer } from '../'
+import {
+  MessageBackground,
+  MessageContainer,
+  MessageSend
+} from '../components'
+
 import Readme from '../README.md'
 
 // Data
@@ -14,7 +19,6 @@ import { messages } from '../__mocks__/messages'
 
 export default {
   title: 'Organisms/Messaging',
-  component: MessageContainer,
   parameters: {
     readme: {
       sidebar: Readme
@@ -22,8 +26,11 @@ export default {
   }
 }
 
-export const defaultStory = () => <MessageContainer messages={messages} />
+export const Main = () =>
+  <MessageContainer messages={messages} />
 
-defaultStory.story = {
-  name: 'Default'
-}
+export const Send = () =>
+  <MessageSend />
+
+export const Background = () =>
+  <MessageBackground />

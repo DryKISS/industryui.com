@@ -87,7 +87,7 @@ twoSlides.story = {
 const Image = styled.img`
   width: 100%;
   height: 300px;
-  object-fit: cover; /* or 'contain' to show all image */
+  object-fit: cover;
 `
 
 const TextLabel = styled.span`

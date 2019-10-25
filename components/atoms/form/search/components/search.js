@@ -7,7 +7,7 @@
 import { func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, useChange, Form, Input } from 'components'
+import { Button, useChange, Form, Input } from '../../../../'
 
 // Style
 import styled from 'styled-components'

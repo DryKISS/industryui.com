@@ -14,7 +14,7 @@ import {
 } from 'prop-types'
 
 // UI
-import { CONTEXT } from 'components'
+import { CONTEXT } from '../../../'
 
 // Style
 import styled from 'styled-components'
