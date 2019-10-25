@@ -7,7 +7,7 @@
 import { array, object, string } from 'prop-types'
 
 // UI
-import { Background, MessageList } from './'
+import { MessageBackground, MessageList, MessageSend } from './'
 
 // Style
 import styled from 'styled-components'
@@ -15,8 +15,9 @@ import styled from 'styled-components'
 export const MessageContainer = ({ className, messages, style }) => {
   return (
     <StyledContainer className={className} style={style}>
-      <Background />
+      <MessageBackground />
       <MessageList messages={messages} />
+      <MessageSend />
     </StyledContainer>
   )
 }

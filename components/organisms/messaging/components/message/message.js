@@ -6,8 +6,8 @@
 import { string } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Row } from '../../../'
-import { Tail } from './'
+import { Card, Column, Icon, Image, Row } from '../../../../'
+import { Tail } from '../'
 
 // Style
 import styled from 'styled-components'
