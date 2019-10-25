@@ -16,6 +16,10 @@ import axios from 'axios'
 import { apiConfig } from 'config'
 
 export const useAxios = (url, params, initialValue) => {
+  if (!url) {
+    return { data: {isLoading: false } }
+  }
+
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 
   useEffect(() => {
