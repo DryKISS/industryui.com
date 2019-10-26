@@ -12,10 +12,15 @@ import { MessageBackground, MessageList, MessageSend } from './'
 // Style
 import styled from 'styled-components'
 
-export const MessageContainer = ({ className, messages, style }) => {
+export const MessageContainer = ({
+  background,
+  className,
+  messages,
+  style
+}) => {
   return (
     <StyledContainer className={className} style={style}>
-      <MessageBackground />
+      <MessageBackground background={background} />
       <MessageList messages={messages} />
       <MessageSend />
     </StyledContainer>
@@ -33,6 +38,7 @@ const StyledContainer = styled.div`
 `
 
 MessageContainer.propTypes = {
+  background: string,
   className: string,
   messages: array.isRequired,
   style: object

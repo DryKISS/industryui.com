@@ -6,11 +6,7 @@
 import React from 'react'
 
 // UI
-import {
-  MessageBackground,
-  MessageContainer,
-  MessageSend
-} from '../components'
+import { MessageContainer } from '../components'
 
 import Readme from '../README.md'
 
@@ -27,10 +23,7 @@ export default {
 }
 
 export const Main = () =>
-  <MessageContainer messages={messages} />
-
-export const Send = () =>
-  <MessageSend />
-
-export const Background = () =>
-  <MessageBackground />
+  <MessageContainer
+    background='messaging/background.png'
+    messages={messages}
+  />
