@@ -9,7 +9,7 @@ import { CONTEXT, Icon } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const Badge = ({ className, content, style, to, context, icon }) => {
+export const Badge = ({ className, content, style, to, context, icon, iconPrefix }) => {
   return (
     <StyledBadge
       className={className}
@@ -18,7 +18,7 @@ export const Badge = ({ className, content, style, to, context, icon }) => {
       style={style}
       context={context}
     >
-      {icon && <Icon icon={icon} style={{ marginRight: '5px' }} />}
+      {icon && <Icon icon={icon} prefix={iconPrefix} style={{ marginRight: '5px' }} />}
       {content}
     </StyledBadge>
   )
@@ -53,5 +53,6 @@ Badge.propTypes = {
   content: string.isRequired,
   to: string,
   context: oneOf(Object.values(CONTEXT)),
-  icon: object
+  icon: string,
+  iconPrefix: string
 }
