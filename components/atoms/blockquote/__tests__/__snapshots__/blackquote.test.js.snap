@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<blockquote
+  className="sc-bdVaJa gHCQWW"
+>
+  <h1
+    className="sc-bwzfXH dCGfRT"
+  >
+    Title Text
+  </h1>
+  <footer
+    className="sc-htpNat jcpPcu"
+  >
+    Footer Text
+  </footer>
+</blockquote>
+`;
