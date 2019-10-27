@@ -6,8 +6,8 @@
 import { object, string } from 'prop-types'
 
 // UI
-import { Row } from '../../../'
-import { Message } from './'
+import { Row } from 'components'
+import { Message } from '../../'
 
 export const MessageIn = ({ message, prevType }) => {
   return (

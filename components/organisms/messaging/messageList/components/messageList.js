@@ -6,7 +6,7 @@
 import { array } from 'prop-types'
 
 // UI
-import { MessageIn, MessageOut } from './'
+import { MessageIn, MessageOut } from '../../'
 
 export const MessageList = ({ messages }) => {
   let prevType = ''

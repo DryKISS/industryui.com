@@ -7,7 +7,7 @@
 import { array, object, string } from 'prop-types'
 
 // UI
-import { MessageBackground, MessageList, MessageSend } from './'
+import { MessageBackground, MessageList, MessageSend } from 'components'
 
 // Style
 import styled from 'styled-components'

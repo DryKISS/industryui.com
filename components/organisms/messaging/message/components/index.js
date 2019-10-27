@@ -1,4 +1,1 @@
-/**
- * Message
- */
 export * from './message'

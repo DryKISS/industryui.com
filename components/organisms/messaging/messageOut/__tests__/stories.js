@@ -1,17 +1,17 @@
 /**
- * Messaging
+ * Messaging/MessageOut
  */
 
 // React
 import React from 'react'
 
 // UI
-import { Message } from '../'
+import { Message } from '../..'
 
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Messaging/Message',
+  title: 'Organisms/Messaging/MessageOut',
   component: Message,
   parameters: {
     readme: {
@@ -20,18 +20,14 @@ export default {
   }
 }
 
-export const MessageIn = () =>
-  <Message
-    content='Test Message'
-    prevType='out'
-    time='12:00'
-    type='in'
-  />
-
-export const MessageOut = () =>
+export const defaultStory = () =>
   <Message
     content='Test Message'
     prevType='out'
     statusText='Delivered'
     time='12:00'
   />
+
+defaultStory.story = {
+  name: 'Default'
+}
