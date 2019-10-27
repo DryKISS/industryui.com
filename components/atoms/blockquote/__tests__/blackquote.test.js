@@ -1,10 +1,9 @@
-import React from 'react'
-import { Blockquote } from './stories'
+import { defaultStory } from './stories'
 import renderer from 'react-test-renderer'
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<Blockquote footer='Footer Text' text='Title Text' />)
+    .create(defaultStory())
     .toJSON()
   expect(tree).toMatchSnapshot()
 })

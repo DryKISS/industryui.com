@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { string, oneOf, object } from 'prop-types'
 import { CONTEXT, Icon } from '../../../'
 

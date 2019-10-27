@@ -5,21 +5,22 @@
 // React
 import React from 'react'
 
-// Storybook
-import { storiesOf } from '@storybook/react'
-
 // UI
 import { Badge } from '../'
 import Readme from '../README.md'
 
-storiesOf('Atoms/Badge', module)
-
-  .addParameters({
+export default {
+  title: 'Atoms/Badge',
+  component: Badge,
+  parameters: {
     readme: {
       sidebar: Readme
     }
-  })
+  }
+}
 
-  .add('Default', () =>
-    <Badge content='Ian Warner' />
-  )
+export const defaultStory = () => <Badge content='Ian Warner' />
+
+defaultStory.story = {
+  name: 'Default'
+}
