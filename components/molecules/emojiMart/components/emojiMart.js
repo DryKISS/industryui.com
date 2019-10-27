@@ -5,7 +5,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 
-import { bool, string } from 'prop-types'
+import { bool, string, func } from 'prop-types'
 
 import { Emoji, Picker } from 'emoji-mart'
 import 'emoji-mart/css/emoji-mart.css'
@@ -69,7 +69,8 @@ export const EmojiMart = ({ closeOnClickOut, placeholderEmoji, onSelect }) => {
 
 EmojiMart.propTypes = {
   closeOnClickOut: bool,
-  placeholderEmoji: string
+  placeholderEmoji: string,
+  onSelect: func
 }
 
 EmojiMart.defaultProps = {
