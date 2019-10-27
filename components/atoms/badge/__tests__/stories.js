@@ -24,3 +24,6 @@ export const defaultStory = () => <Badge content='Ian Warner' />
 defaultStory.story = {
   name: 'Default'
 }
+
+export const Link = () => <Badge content='Link' to='/example' />
+export const Icon = () => <Badge content='User' icon='user' />

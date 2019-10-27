@@ -56,16 +56,10 @@
     ],
     "ignore": [
       "node_modules/**",
-      "*.bundle*.js"
+      "*.bundle*.js",
+      "**/__tests__/*.test.js"
     ],
     "parser": "babel-eslint"
-  },
-  "eslint": {
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    }
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
