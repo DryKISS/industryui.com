@@ -17,7 +17,7 @@ import {
   Textarea,
   Row,
   EmojiMart
-} from 'components'
+} from '../../../..'
 
 // Style
 import styled from 'styled-components'

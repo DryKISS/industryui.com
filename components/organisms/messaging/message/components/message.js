@@ -6,7 +6,7 @@
 import { string } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Row } from 'components'
+import { Card, Column, Icon, Image, Row } from '../../../../'
 import { Tail } from '../../'
 
 // Style
