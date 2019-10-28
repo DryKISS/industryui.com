@@ -26,7 +26,7 @@ export const TableActions = ({ row: { id } }, data) => {
           const iconArray = Array.isArray(icon)
 
           return (
-            <Link key={index} to={`${to}/${id}`}>
+            <Link key={index} to={`${to}?id=${id}`}>
               <Button data-tip={tooltip} context={context} size='sm'>
                 <Icon
                   icon={icon ? iconArray ? icon[1] : icon : null}
