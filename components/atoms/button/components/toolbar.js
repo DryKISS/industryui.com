@@ -47,6 +47,21 @@ const StyledGroup = styled.div`
   position: relative;
   vertical-align: middle;
 
+  a:hover {
+    color: white;
+  }
+
+  & > a:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid ${({ theme }) => theme.COLOUR.light};
+  }
+
+  & > a:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
   & > button:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
