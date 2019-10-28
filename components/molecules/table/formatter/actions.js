@@ -12,7 +12,7 @@ import Router from 'next/router'
 import ReactTooltip from 'react-tooltip'
 
 // UI
-import { Button, ButtonToolbar, Icon, Link } from '../../../'
+import { Button, ButtonToolbar, Icon } from '../../../'
 
 export const TableActions = ({ row: { id } }, data) => {
   const handleClick = path => e => {

@@ -58,7 +58,7 @@ export const notHover = () =>
 export const noColumns = () =>
   <Table rows={data} />
 
-export const rowClick = () =>
+export const rowClickStory = () =>
   <Table columns={columns} rowClick={rowClick} rows={data} />
 
 export const align = () =>

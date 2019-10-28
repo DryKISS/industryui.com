@@ -73,7 +73,6 @@ export const columnsActions = [
       content: 'Edit',
       context: 'primary',
       icon: ['fad', 'edit'],
-      icon: 'edit',
       to: '/manage',
       tooltip: 'Edit'
     }, {
