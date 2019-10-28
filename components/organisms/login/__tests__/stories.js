@@ -19,9 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
-  <Login change={() => {}} email='' submit={() => {}} password='' />
-)
+export const defaultStory = () => <Login change={() => {}} email='' submit={() => {}} password='' />
 
 defaultStory.story = {
   name: 'Default'

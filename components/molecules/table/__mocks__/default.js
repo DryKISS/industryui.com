@@ -26,9 +26,7 @@ export const columns = [
   }
 ]
 
-const renderImage = ({ row }) => (
-  <Image alt='Logo' style={{ width: '50%' }} src={row.logo} />
-)
+const renderImage = ({ row }) => <Image alt='Logo' style={{ width: '50%' }} src={row.logo} />
 
 export const columnsFormatter = [
   {
@@ -69,19 +67,22 @@ export const columnsActions = [
   },
   {
     formatter: TableActions,
-    formatterData: [{
-      content: 'Edit',
-      context: 'primary',
-      icon: ['fad', 'edit'],
-      to: '/manage',
-      tooltip: 'Edit'
-    }, {
-      content: 'Delete',
-      context: 'danger',
-      icon: 'trash',
-      to: '/delete',
-      tooltip: 'Delete'
-    }],
+    formatterData: [
+      {
+        content: 'Edit',
+        context: 'primary',
+        icon: ['fad', 'edit'],
+        to: '/manage',
+        tooltip: 'Edit'
+      },
+      {
+        content: 'Delete',
+        context: 'danger',
+        icon: 'trash',
+        to: '/delete',
+        tooltip: 'Delete'
+      }
+    ],
     text: 'Actions'
   }
 ]
@@ -124,17 +125,20 @@ export const rowsContext = {
       id: '10001',
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com'
-    }, {
+    },
+    {
       context: 'success',
       id: '10001',
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com'
-    }, {
+    },
+    {
       context: 'warning',
       id: '10001',
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com'
-    }, {
+    },
+    {
       context: 'danger',
       id: '10001',
       company: 'DryKISS Ltd',
@@ -143,9 +147,6 @@ export const rowsContext = {
   ]
 }
 
-export const rowClick = (row) => {
-  Router.push(
-    '/shortcodes/[addressId]',
-    '/shortcodes/1'
-  )
+export const rowClick = row => {
+  Router.push('/shortcodes/[addressId]', '/shortcodes/1')
 }

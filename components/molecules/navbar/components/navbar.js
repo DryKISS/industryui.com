@@ -4,14 +4,7 @@
 
 // React
 import { useState } from 'react'
-import {
-  bool,
-  object,
-  objectOf,
-  oneOfType,
-  number,
-  string
-} from 'prop-types'
+import { bool, object, objectOf, oneOfType, number, string } from 'prop-types'
 
 // UI
 import { Brand, Links, Notifications, Toggler, User } from './'
@@ -20,15 +13,7 @@ import { Container, MEDIA_QUERY } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({
-  brand,
-  container,
-  links,
-  type,
-  notifications,
-  user,
-  style
-}) => {
+export const Navbar = ({ brand, container, links, type, notifications, user, style }) => {
   const [visible, setVisible] = useState(false)
 
   const handleMenuClick = () => {
@@ -50,14 +35,15 @@ export const Navbar = ({
 
         <Toggler handleMenuClick={handleMenuClick} visible={visible} />
 
-        {links &&
+        {links && (
           <Links
             brand={brand}
             closeMenu={handleMenuClick}
             links={links}
             type={type}
             visible={visible}
-          />}
+          />
+        )}
 
         {notifications && <Notifications {...notifications} />}
 
@@ -68,9 +54,7 @@ export const Navbar = ({
 
   return (
     <>
-      <StyledNav style={style}>
-        {container ? <Contained /> : <Widgets />}
-      </StyledNav>
+      <StyledNav style={style}>{container ? <Contained /> : <Widgets />}</StyledNav>
 
       <StyledOverlay hidden={!visible} />
     </>
@@ -105,7 +89,7 @@ const StyledContainer = styled(Container)`
 `
 
 const StyledOverlay = styled.div`
-  background-color: rgba(255, 255, 255, .85);
+  background-color: rgba(255, 255, 255, 0.85);
   bottom: 0;
   cursor: pointer;
   height: 100%;

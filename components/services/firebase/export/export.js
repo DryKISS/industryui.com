@@ -22,7 +22,8 @@ const db = admin.firestore()
 const data = {}
 data[collectionName] = {}
 
-const results = db.collection(collectionName)
+const results = db
+  .collection(collectionName)
   .get()
   .then(snapshot => {
     snapshot.forEach(doc => {
@@ -57,7 +58,10 @@ async function getSubCollection (dt) {
 
 function addSubCollection (key, subData) {
   return new Promise(resolve => {
-    db.collection(collectionName).doc(key).collection(subCollection).get()
+    db.collection(collectionName)
+      .doc(key)
+      .collection(subCollection)
+      .get()
       .then(snapshot => {
         snapshot.forEach(subDoc => {
           subData[subDoc.id] = subDoc.data()

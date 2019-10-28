@@ -14,21 +14,21 @@ import styled from 'styled-components'
 export const CardBody = ({ center, children, className, context, title }) => {
   return (
     <StyledBody className={className} center={center}>
-
-      {title &&
+      {title && (
         <StyledWrapper>
           <StyledTitle className='Card-title'>{title}</StyledTitle>
-        </StyledWrapper>}
+        </StyledWrapper>
+      )}
 
-      {children &&
-        <StyledContent context={context}>{children}</StyledContent>}
-
+      {children && <StyledContent context={context}>{children}</StyledContent>}
     </StyledBody>
   )
 }
 
 const StyledBody = styled.div`
-  ${({ center }) => center && `
+  ${({ center }) =>
+    center &&
+    `
     align-items: center;
     display: flex;
     justify-content: center;

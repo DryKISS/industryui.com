@@ -5,7 +5,7 @@
 // React
 import { useState } from 'react'
 
-export const usePasswordChange = (firebase) => {
+export const usePasswordChange = firebase => {
   const INITIAL_STATE = {
     password: '',
     passwordConfirm: '',
@@ -15,20 +15,19 @@ export const usePasswordChange = (firebase) => {
   const [passwordError, setError] = useState(null)
   const [password, setPassword] = useState(INITIAL_STATE)
 
-  const passwordSubmit = (e) => {
-    firebase.Auth
-      .handlePasswordUpdate(password.password)
+  const passwordSubmit = e => {
+    firebase.Auth.handlePasswordUpdate(password.password)
       .then(() => {
         setPassword({ ...INITIAL_STATE })
       })
-      .catch((error) => {
+      .catch(error => {
         setError(error)
       })
 
     e.preventDefault()
   }
 
-  const passwordChange = (e) => {
+  const passwordChange = e => {
     const { id, value } = e.target
     setPassword({ ...password, [id]: value })
   }

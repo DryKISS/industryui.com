@@ -15,36 +15,32 @@ import styled from 'styled-components'
 export const BlogList = ({ author, config, list }) => {
   return (
     <StyledDl>
-      {
-        list.map(({ badge, category = '', name, to }, index) => (
-          <Fragment key={index}>
+      {list.map(({ badge, category = '', name, to }, index) => (
+        <Fragment key={index}>
+          <StyledDt>
+            <Badge content={badge} />
+          </StyledDt>
 
-            <StyledDt>
-              <Badge content={badge} />
-            </StyledDt>
-
-            <StyledDd>
-              <Link
-                to={{
-                  as: `${config.path}/${category && slugify(category) + '/'}${slugify(to)}`,
-                  href: {
-                    pathname: author ? `${config.path}/author` : `${config.path}/article`,
-                    query: {
-                      articleSlug: slugify(to),
-                      author: slugify(to),
-                      category: category && slugify(category)
-                    }
+          <StyledDd>
+            <Link
+              to={{
+                as: `${config.path}/${category && slugify(category) + '/'}${slugify(to)}`,
+                href: {
+                  pathname: author ? `${config.path}/author` : `${config.path}/article`,
+                  query: {
+                    articleSlug: slugify(to),
+                    author: slugify(to),
+                    category: category && slugify(category)
                   }
-                }}
-                passHref
-              >
-                <StyledA>{name}</StyledA>
-              </Link>
-            </StyledDd>
-
-          </Fragment>
-        ))
-      }
+                }
+              }}
+              passHref
+            >
+              <StyledA>{name}</StyledA>
+            </Link>
+          </StyledDd>
+        </Fragment>
+      ))}
     </StyledDl>
   )
 }
@@ -67,7 +63,7 @@ const StyledDt = styled.dt`
 const StyledDd = styled.dd`
   flex: 0 0 75%;
   max-width: 75%;
-  padding-top: .2rem;
+  padding-top: 0.2rem;
   position: relative;
   margin-left: 0;
   min-height: 1px;

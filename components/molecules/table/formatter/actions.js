@@ -24,12 +24,7 @@ export const TableActions = ({ row: { id } }, data) => {
 
   return (
     <>
-      <ReactTooltip
-        effect='solid'
-        event='mouseover'
-        globalEventOff='click'
-        multiline
-      />
+      <ReactTooltip effect='solid' event='mouseover' globalEventOff='click' multiline />
 
       <ButtonToolbar align='flex-start' style={{ zIndex: '100000000' }}>
         {data.map(({ content, context, icon, to, tooltip }, index) => {
@@ -45,14 +40,13 @@ export const TableActions = ({ row: { id } }, data) => {
               size='sm'
             >
               <Icon
-                icon={icon ? iconArray ? icon[1] : icon : null}
+                icon={icon ? (iconArray ? icon[1] : icon) : null}
                 prefix={icon && iconArray && icon[0]}
                 style={{ pointerEvents: 'none' }}
               />
             </Button>
           )
-        }
-        )}
+        })}
       </ButtonToolbar>
     </>
   )

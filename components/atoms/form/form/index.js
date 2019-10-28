@@ -44,7 +44,10 @@ export class Form extends Component {
         const parentNode = elem.parentNode
         let errorLabel = parentNode.querySelector('.Form-feedback')
 
-        if (elem.type !== 'checkbox' && elem.parentNode.parentNode.nodeName.toLowerCase() === 'fieldset') {
+        if (
+          elem.type !== 'checkbox' &&
+          elem.parentNode.parentNode.nodeName.toLowerCase() === 'fieldset'
+        ) {
           errorLabel = elem.parentNode.parentNode.querySelector('.Form-feedback')
         }
 
@@ -54,7 +57,11 @@ export class Form extends Component {
 
         // A form element contains also any buttuns contained in the form. There
         // is no need to validate a button, so, we'll skip that nodes.
-        if (errorLabel && elem.nodeName.toLowerCase() !== 'button' && elem.nodeName.toLowerCase() !== 'fieldset') {
+        if (
+          errorLabel &&
+          elem.nodeName.toLowerCase() !== 'button' &&
+          elem.nodeName.toLowerCase() !== 'fieldset'
+        ) {
           // Each note in html5 form has a validity property. It contains the
           // validation state of that element. The elem.validity.valid property
           // indicates whether the element qualifies its validation rules or no.
@@ -99,7 +106,7 @@ export class Form extends Component {
    * It stops the default form submission process and proceeds with custom
    * validation.
    */
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault()
 
     const { submit } = this.props

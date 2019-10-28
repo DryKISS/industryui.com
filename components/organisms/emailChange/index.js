@@ -13,30 +13,13 @@ export const EmailChange = ({ change, email, submit }) => {
 
   return (
     <Form submit={submit}>
-
-      <Input
-        change={change}
-        id='email'
-        label='Email'
-        type='email'
-        value={email}
-      />
+      <Input change={change} id='email' label='Email' type='email' value={email} />
 
       <div className='text-right'>
-        <Button
-          content='Submit'
-          context='secondary'
-          disabled={isInvalid}
-          size='lg'
-          type='submit'
-        />
+        <Button content='Submit' context='secondary' disabled={isInvalid} size='lg' type='submit' />
       </div>
 
-      <p>
-        We will send you a re-validation email after this. Please also check
-        your spam folder.
-      </p>
-
+      <p>We will send you a re-validation email after this. Please also check your spam folder.</p>
     </Form>
   )
 }

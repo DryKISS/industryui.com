@@ -39,7 +39,7 @@ export const GoogleMapsStatic = ({
     return null
   }
 
-  const locationBuilder = (location) => {
+  const locationBuilder = location => {
     const urlParts = []
 
     if (Array.isArray(location)) {
@@ -148,19 +148,19 @@ export const GoogleMapsStatic = ({
       <Component {...componentProps} src={`${mainUrlParts}&${childrenUrlParts}`} />
     </>
 
-  // <Async
-  //   promise={urlParts}
-  //   then={URL => {
-  //     if (onGenerate) {
-  //       onGenerate(URL)
-  //     }
+    // <Async
+    //   promise={urlParts}
+    //   then={URL => {
+    //     if (onGenerate) {
+    //       onGenerate(URL)
+    //     }
 
-  //     return <Component {...componentProps} src={URL} />
-  //   }}
-  //   catch={err => (
-  //     console.error(err), <span>Image generation failed.</span>
-  //   )}
-  // />
+    //     return <Component {...componentProps} src={URL} />
+    //   }}
+    //   catch={err => (
+    //     console.error(err), <span>Image generation failed.</span>
+    //   )}
+    // />
   )
 }
 
@@ -170,14 +170,7 @@ GoogleMapsStatic.propTypes = {
   center: string,
   channel: string,
   client: string,
-  format: oneOf([
-    'png',
-    'png8',
-    'png32',
-    'gif',
-    'jpg',
-    'jpg-baseline'
-  ]),
+  format: oneOf(['png', 'png8', 'png32', 'gif', 'jpg', 'jpg-baseline']),
   language: string,
   maptype: oneOf(['roadmap', 'satellite', 'terrain', 'hybrid']),
   onGenerate: func,

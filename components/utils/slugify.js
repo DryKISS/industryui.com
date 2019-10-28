@@ -1,7 +1,7 @@
 /**
  * Slugify a string
  */
-export const slugify = (string) => {
+export const slugify = string => {
   const slug = string
     .toLowerCase()
     .replace(/['&]/g, '')

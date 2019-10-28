@@ -60,29 +60,27 @@ export const Links = ({ brand, closeMenu, links, type, visible }) => {
 
   return (
     <StyledCollapse visible={visible}>
-
-      {Object.entries(links).map(([direction, link]) =>
+      {Object.entries(links).map(([direction, link]) => (
         <StyledList direction={direction} key={direction}>
-
-          {link.map(({ active, Component, id, name, onClick, to, type }) =>
+          {link.map(({ active, Component, id, name, onClick, to, type }) => (
             <StyledListItem brand={brand} key={id}>
               {Component && <Component />}
-              {(type && type.as === 'button') && renderButton(id, name, to, type)}
-              {(type && type.as === 'icon') && renderIcon(to, type)}
-              {(!Component && (!type || type.as === 'link')) && renderLink(active, id, name, onClick, to)}
+              {type && type.as === 'button' && renderButton(id, name, to, type)}
+              {type && type.as === 'icon' && renderIcon(to, type)}
+              {!Component &&
+                (!type || type.as === 'link') &&
+                renderLink(active, id, name, onClick, to)}
             </StyledListItem>
-          )}
-
+          ))}
         </StyledList>
-      )}
-
+      ))}
     </StyledCollapse>
   )
 }
 
 const StyledCollapse = styled.div`
   align-items: center;
-  display: ${props => props.visible ? 'block' : 'none'};
+  display: ${props => (props.visible ? 'block' : 'none')};
   flex-basis: 100%;
   flex-grow: 1;
 
@@ -106,13 +104,13 @@ const StyledList = styled.ul`
   ${MEDIA_QUERY.desktop`
     background-color: initial;
     flex-direction: row;
-    margin: ${props => props.direction === 'left' ? 'auto 0' : 'auto 0 auto auto'};
+    margin: ${props => (props.direction === 'left' ? 'auto 0' : 'auto 0 auto auto')};
   `}
 `
 
 const StyledListItem = styled.li`
-  border-top: #F0F2F5 1px solid;
-  padding: 1.1em .75rem;
+  border-top: #f0f2f5 1px solid;
+  padding: 1.1em 0.75rem;
 
   ${MEDIA_QUERY.desktop`
     border: none;
@@ -120,11 +118,13 @@ const StyledListItem = styled.li`
     padding: initial;
   `}
 
-  ${props => !props.brand && css`
-    &:first-child{
-      margin-left: 0;
-    }
-  `}
+  ${props =>
+    !props.brand &&
+    css`
+      &:first-child {
+        margin-left: 0;
+      }
+    `}
 `
 
 const StyledLink = styled.a`

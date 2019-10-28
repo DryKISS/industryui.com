@@ -41,13 +41,9 @@ export class MyApp extends App {
         {icons && <Icons icons={icons} />}
         <ThemeStyle />
 
-        {fire && (
-          <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>
-        )}
+        {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
-        {user && (
-          <UserProvider jwtConfig={jwtConfig}>{this.layout()}</UserProvider>
-        )}
+        {user && <UserProvider jwtConfig={jwtConfig}>{this.layout()}</UserProvider>}
 
         {!user && !fire && this.layout()}
       </>
@@ -69,11 +65,7 @@ export class MyApp extends App {
 
     return (
       <ThemeProvider theme={Theme}>
-        {theme ? (
-          <ThemeProvider theme={theme}>{this.elements()}</ThemeProvider>
-        ) : (
-          this.elements()
-        )}
+        {theme ? <ThemeProvider theme={theme}>{this.elements()}</ThemeProvider> : this.elements()}
       </ThemeProvider>
     )
   }

@@ -101,11 +101,13 @@ export const Carousel = withTheme(
     render () {
       return (
         <CarouselStyled className='carousel'>
-          <CarouselButton type='prev' id='slider-prev-button'>&lt;</CarouselButton>
-          <CarouselButton type='next' id='slider-next-button'>&gt;</CarouselButton>
-          <section className='slider'>
-            {this.props.children}
-          </section>
+          <CarouselButton type='prev' id='slider-prev-button'>
+            &lt;
+          </CarouselButton>
+          <CarouselButton type='next' id='slider-next-button'>
+            &gt;
+          </CarouselButton>
+          <section className='slider'>{this.props.children}</section>
         </CarouselStyled>
       )
     }
@@ -124,7 +126,7 @@ const CarouselButton = styled.div`
   text-shadow: 2px 2px black;
   z-index: 10;
 
-  ${({ type }) => type === 'prev' ? 'left: 12%' : 'right: 12%'}
+  ${({ type }) => (type === 'prev' ? 'left: 12%' : 'right: 12%')}
 
   @media only screen and (max-width: 450px) {
     display: none;

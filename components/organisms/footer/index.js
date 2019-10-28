@@ -14,7 +14,7 @@ import styled from 'styled-components'
 
 export const Footer = ({ columns }) => {
   // NOTE: added rendering fragment (see also __mocks__/footer.js)
-  const _render = (obj) => {
+  const _render = obj => {
     return obj()
   }
 
@@ -29,7 +29,7 @@ export const Footer = ({ columns }) => {
     ))
   }
 
-  const renderLinks = (links) => {
+  const renderLinks = links => {
     return (
       <List unstyled>
         {links.map(({ name, to }, index) => (
@@ -43,9 +43,7 @@ export const Footer = ({ columns }) => {
     )
   }
 
-  const renderText = (text) => (
-    <div dangerouslySetInnerHTML={{ __html: text }} />
-  )
+  const renderText = text => <div dangerouslySetInnerHTML={{ __html: text }} />
 
   return (
     <StyledFooter>
@@ -59,7 +57,7 @@ export const Footer = ({ columns }) => {
 const StyledFooter = styled.div`
   background: ${props => props.theme.FOOTER.background};
   color: ${props => props.theme.FOOTER.colour};
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 3rem 0;
 `
@@ -67,7 +65,7 @@ const StyledFooter = styled.div`
 const StyledTitle = styled.h2`
   color: ${props => props.theme.COLOUR.primary};
   font-size: 1rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   margin-top: 0;
 `
 
@@ -89,10 +87,7 @@ Footer.propTypes = {
         shape({
           id: string,
           name: string,
-          to: oneOfType([
-            object,
-            string
-          ])
+          to: oneOfType([object, string])
         })
       ),
       offset: shape({

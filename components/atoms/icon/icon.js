@@ -3,15 +3,7 @@
  */
 
 // React
-import {
-  any,
-  bool,
-  number,
-  objectOf,
-  oneOf,
-  oneOfType,
-  string
-} from 'prop-types'
+import { any, bool, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,12 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CONTEXT } from '../../'
 
 export const Icon = ({ icon, prefix, ...props }) => {
-  return (
-    <FontAwesomeIcon
-      icon={[prefix, icon]}
-      {...props}
-    />
-  )
+  return <FontAwesomeIcon icon={[prefix, icon]} {...props} />
 }
 
 Icon.propTypes = {

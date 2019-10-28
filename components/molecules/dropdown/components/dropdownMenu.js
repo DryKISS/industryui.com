@@ -13,22 +13,26 @@ import { DropdownItem } from '../../'
 export const DropdownMenu = ({ closeDropdown, items, position }) => {
   return (
     <StyledDropdownMenu position={position}>
-      {items.map(item => <DropdownItem key={item.id} closeDropdown={closeDropdown} item={item} />)}
+      {items.map(item => (
+        <DropdownItem key={item.id} closeDropdown={closeDropdown} item={item} />
+      ))}
     </StyledDropdownMenu>
   )
 }
 
 const StyledDropdownMenu = styled.div`
   background: #fff;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
   margin-top: 1px;
   min-width: 8rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   position: absolute;
   top: 100%;
 
-  ${({ position }) => position && `
+  ${({ position }) =>
+    position &&
+    `
     left: ${position === 'right' ? 'auto' : '0'};
     right: ${position === 'right' ? '0' : 'auto'};
   `}

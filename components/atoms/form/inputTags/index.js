@@ -26,7 +26,6 @@ export const InputTags = ({
 }) => {
   return (
     <Label id={id} text={label}>
-
       <StyledInput
         autoCapitalize={autoCapitalize}
         autoComplete={autoComplete}
@@ -44,7 +43,6 @@ export const InputTags = ({
       />
 
       <div className='Form-feedback' />
-
     </Label>
   )
 }
@@ -60,12 +58,7 @@ InputTags.propTypes = {
   placeholder: string,
   required: bool,
   type: string,
-  value: oneOfType([
-    string,
-    number,
-    bool,
-    arrayOf(oneOfType([string, number, bool]))
-  ])
+  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
 
 InputTags.defaultProps = {
@@ -81,20 +74,20 @@ const StyledInput = styled.input`
   background-clip: padding-box;
   background-color: #fff;
   border: 1px solid #c4cacf;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: #9da7af;
   display: block;
   font-size: 1rem;
   height: 3rem;
   line-height: 1.5;
-  padding: .375rem .75rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  padding: 0.375rem 0.75rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
   &:focus {
     color: #9da7af;
     border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
 `

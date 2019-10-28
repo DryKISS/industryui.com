@@ -11,14 +11,7 @@ import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 export const Container = ({ children, className, fluid, style }) => {
-  return (
-    <StyledGrid
-      children={children}
-      className={className}
-      fluid={fluid}
-      style={style}
-    />
-  )
+  return <StyledGrid children={children} className={className} fluid={fluid} style={style} />
 }
 
 const StyledGrid = styled.div`
@@ -33,23 +26,25 @@ const StyledGrid = styled.div`
     padding-right: ${theme.GRID.gutterWidth / 2}px;
   `}
 
-  ${({ fluid }) => !fluid && css`
-    @media (min-width: ${({ theme }) => theme.GRID.breakpoints.sm}px) {
-      max-width: ${({ theme }) => theme.GRID.containerWidths.sm}px;
-    }
+  ${({ fluid }) =>
+    !fluid &&
+    css`
+      @media (min-width: ${({ theme }) => theme.GRID.breakpoints.sm}px) {
+        max-width: ${({ theme }) => theme.GRID.containerWidths.sm}px;
+      }
 
-    @media (min-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
-      max-width: ${({ theme }) => theme.GRID.containerWidths.md}px;
-    }
+      @media (min-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
+        max-width: ${({ theme }) => theme.GRID.containerWidths.md}px;
+      }
 
-    @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
-      max-width: ${({ theme }) => theme.GRID.containerWidths.lg}px;
-    }
+      @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
+        max-width: ${({ theme }) => theme.GRID.containerWidths.lg}px;
+      }
 
-    @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
-      max-width: ${({ theme }) => theme.GRID.containerWidths.xl}px;
-    }
-  `}
+      @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
+        max-width: ${({ theme }) => theme.GRID.containerWidths.xl}px;
+      }
+    `}
 `
 
 Container.propTypes = {

@@ -2,7 +2,6 @@
  * Copyright
  */
 export const Copyright = [
-
   {
     name: 'Terms and conditions',
     to: '/policies/terms-conditions'
@@ -17,5 +16,4 @@ export const Copyright = [
     name: 'Site map',
     to: '/policies/site-map'
   }
-
 ]

@@ -12,14 +12,11 @@ import React, { createRef, useState } from 'react'
 // Next
 import dynamic from 'next/dynamic'
 
-const CalendarWrapper = dynamic(
-  () => import('./calendarWrapper'),
-  {
-    ssr: false
-  }
-)
+const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
+  ssr: false
+})
 
-export const Calendar = (props) => {
+export const Calendar = props => {
   const [events, setEvents] = useState(props.events || [])
 
   const calendarComponentRef = createRef()
@@ -30,7 +27,7 @@ export const Calendar = (props) => {
     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
   }
 
-  const handleDateClick = (arg) => {
+  const handleDateClick = arg => {
     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
       const event = {
         title: 'New Event',

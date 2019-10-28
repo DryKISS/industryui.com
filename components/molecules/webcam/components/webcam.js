@@ -28,11 +28,7 @@ const Webcam = withTheme(
       onUserMediaError: func,
       height: oneOfType([number, string]),
       width: oneOfType([number, string]),
-      screenshotFormat: oneOf([
-        'image/webp',
-        'image/png',
-        'image/jpeg'
-      ]),
+      screenshotFormat: oneOf(['image/webp', 'image/png', 'image/jpeg']),
       style: object,
       className: string,
       screenshotQuality: number,
@@ -73,10 +69,8 @@ const Webcam = withTheme(
       const { audioConstraints, videoConstraints } = this.props
 
       if (
-        JSON.stringify(nextProps.audioConstraints) !==
-          JSON.stringify(audioConstraints) ||
-        JSON.stringify(nextProps.videoConstraints) !==
-          JSON.stringify(videoConstraints)
+        JSON.stringify(nextProps.audioConstraints) !== JSON.stringify(audioConstraints) ||
+        JSON.stringify(nextProps.videoConstraints) !== JSON.stringify(videoConstraints)
       ) {
         this.requestUserMedia()
       }
@@ -121,9 +115,7 @@ const Webcam = withTheme(
 
       const canvas = this.getCanvas()
 
-      return (
-        canvas && canvas.toDataURL(screenshotFormat, screenshotQuality)
-      )
+      return canvas && canvas.toDataURL(screenshotFormat, screenshotQuality)
     }
 
     getCanvas () {
@@ -174,15 +166,11 @@ const Webcam = withTheme(
 
         navigator.mediaDevices
           .getUserMedia(constraints)
-          .then((stream) => {
-            Webcam.mountedInstances.forEach(() =>
-              this.handleUserMedia(null, stream)
-            )
+          .then(stream => {
+            Webcam.mountedInstances.forEach(() => this.handleUserMedia(null, stream))
           })
-          .catch((e) => {
-            Webcam.mountedInstances.forEach(() =>
-              this.handleUserMedia(e)
-            )
+          .catch(e => {
+            Webcam.mountedInstances.forEach(() => this.handleUserMedia(e))
           })
       }
 
@@ -191,7 +179,7 @@ const Webcam = withTheme(
       } else {
         const optionalSource = id => ({ optional: [{ sourceId: id }] })
 
-        const constraintToSourceId = (constraint) => {
+        const constraintToSourceId = constraint => {
           const deviceId = (constraint || {}).deviceId
 
           if (typeof deviceId === 'string') {
@@ -205,11 +193,11 @@ const Webcam = withTheme(
           return null
         }
 
-        window.MediaStreamTrack.getSources((sources) => {
+        window.MediaStreamTrack.getSources(sources => {
           let audioSource = null
           let videoSource = null
 
-          sources.forEach((source) => {
+          sources.forEach(source => {
             if (source.kind === 'audio') {
               audioSource = source.id
             } else if (source.kind === 'video') {
@@ -227,10 +215,7 @@ const Webcam = withTheme(
             videoSource = videoSourceId
           }
 
-          sourceSelected(
-            optionalSource(audioSource),
-            optionalSource(videoSource)
-          )
+          sourceSelected(optionalSource(audioSource), optionalSource(videoSource))
         })
       }
 
@@ -275,7 +260,7 @@ const Webcam = withTheme(
           className={className}
           playsInline
           style={style}
-          ref={(ref) => {
+          ref={ref => {
             this.video = ref
           }}
         />

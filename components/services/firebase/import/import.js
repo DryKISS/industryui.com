@@ -95,7 +95,8 @@ function startUpdating (collectionName, doc, data) {
 
   if (parameterValid) {
     return new Promise(resolve => {
-      db.collection(collectionName).doc(doc)
+      db.collection(collectionName)
+        .doc(doc)
         .set(data)
         .then(() => {
           console.log(`${doc} is imported successfully to firestore!`)

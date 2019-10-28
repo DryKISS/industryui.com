@@ -54,12 +54,7 @@
     }
   },
   "prettier": {
-    "bracketSpacing": true,
-    "jsxSingleQuote": true,
-    "parser": "babel",
-    "printWidth": 100,
-    "semi": false,
-    "singleQuote": true
+    "printWidth": 100
   },
   "standard": {
     "globals": [

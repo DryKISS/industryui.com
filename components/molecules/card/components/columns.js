@@ -10,11 +10,7 @@ import { node } from 'prop-types'
 import styled from 'styled-components'
 
 export const CardColumns = ({ childern }) => {
-  return (
-    <StyledColumns>
-      {childern}
-    </StyledColumns>
-  )
+  return <StyledColumns>{childern}</StyledColumns>
 }
 
 const StyledColumns = styled.div`

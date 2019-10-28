@@ -36,13 +36,15 @@ export const messages = [
     statusText: 'delivered',
     time: '11:59',
     type: 'in'
-  }, {
+  },
+  {
     content: 'Incoming message 2',
     pictureId: null,
     statusText: 'delivered',
     time: '11:59',
     type: 'in'
-  }, {
+  },
+  {
     content: 'Incoming message 3',
     pictureId: null,
     statusText: 'delivered',

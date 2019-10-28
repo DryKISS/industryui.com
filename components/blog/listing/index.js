@@ -14,29 +14,19 @@ import { any, string } from 'prop-types'
 import _filter from 'lodash/filter'
 
 // UI
-import {
-  BlogCard,
-  Column,
-  Row,
-  slugify
-} from '../../'
+import { BlogCard, Column, Row, slugify } from '../../'
 
 export const BlogListing = ({ articles, author, category, tag }) => {
-  const _findTag = (articles) => {
+  const _findTag = articles => {
     return _filter(articles, { tags: [tag] })
   }
 
-  const _findArticle = (articles) => {
-    return articles.filter((article) => {
+  const _findArticle = articles => {
+    return articles.filter(article => {
       return (
-        slugify(
-          category
-            ? article.category
-            : article.author
-        ) === (
-          category || author
-        ) &&
-          article.homepage !== false && article.published
+        slugify(category ? article.category : article.author) === (category || author) &&
+        article.homepage !== false &&
+        article.published
       )
     })
   }

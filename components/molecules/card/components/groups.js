@@ -10,11 +10,7 @@ import { node } from 'prop-types'
 import styled from 'styled-components'
 
 export const CardGroups = ({ childern }) => {
-  return (
-    <StyledGroups>
-      {childern}
-    </StyledGroups>
-  )
+  return <StyledGroups>{childern}</StyledGroups>
 }
 
 const StyledGroups = styled.div`

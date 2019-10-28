@@ -29,25 +29,17 @@ export const ArticleLayout = ({ children, frontMatter }) => {
 
   return (
     <Container>
-
       {/* <MetaHead meta={meta} brand={BRAND} /> */}
 
       <Row>
-
         <Column md={12}>
-          <Article
-            article={children}
-            category={frontMatter.category}
-            frontmatter={frontMatter}
-          />
+          <Article article={children} category={frontMatter.category} frontmatter={frontMatter} />
         </Column>
 
         {/* <Column md={4}>
           <BlogSidebar />
         </Column> */}
-
       </Row>
-
     </Container>
   )
 }

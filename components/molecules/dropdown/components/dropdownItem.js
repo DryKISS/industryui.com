@@ -19,7 +19,9 @@ const renderLink = ({ id, name, onClick, to }, closeDropdown) => {
 
   return (
     <Link to={to} passHref>
-      <StyledLink id={id} onClick={handleClick}>{name}</StyledLink>
+      <StyledLink id={id} onClick={handleClick}>
+        {name}
+      </StyledLink>
     </Link>
   )
 }
@@ -33,7 +35,7 @@ export const DropdownItem = ({ closeDropdown, item }) => {
 }
 
 const StyledDropdownItem = styled.div`
-  padding: .25rem 1.5rem;
+  padding: 0.25rem 1.5rem;
   white-space: nowrap;
 
   &:hover {
@@ -42,14 +44,16 @@ const StyledDropdownItem = styled.div`
     background-color: #f8f9fa;
   }
 
-  ${({ divider }) => divider && `
+  ${({ divider }) =>
+    divider &&
+    `
     padding: 0;
   `}
 `
 
 const StyledDivider = styled.div`
   height: 0;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   overflow: hidden;
   border-top: 1px solid #e9ecef;
 `

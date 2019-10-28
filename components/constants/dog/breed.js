@@ -176,7 +176,7 @@ module.exports.DOG_BREED = [
     value: 'bracco-italiano'
   },
   {
-    text: 'Braque d\'auvergne',
+    text: "Braque d'auvergne",
     value: 'braque-dauvergne'
   },
   {
@@ -268,7 +268,7 @@ module.exports.DOG_BREED = [
     value: 'chug'
   },
   {
-    text: 'Cirneco dell\'etna',
+    text: "Cirneco dell'etna",
     value: 'cirneco-delletna'
   },
   {

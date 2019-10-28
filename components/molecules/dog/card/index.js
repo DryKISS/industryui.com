@@ -10,25 +10,9 @@
 import { bool, number, string } from 'prop-types'
 
 // UI
-import {
-  Card,
-  CardBody,
-  DogName,
-  formatPrice,
-  slugify
-} from '../../../'
+import { Card, CardBody, DogName, formatPrice, slugify } from '../../../'
 
-export const DogCard = ({
-  breed,
-  breedName,
-  breeder,
-  dogId,
-  gender,
-  image,
-  name,
-  price,
-  sell
-}) => {
+export const DogCard = ({ breed, breedName, breeder, dogId, gender, image, name, price, sell }) => {
   const breederSlug = slugify(breeder)
   const nameSlug = slugify(name)
 
@@ -54,10 +38,7 @@ export const DogCard = ({
       <CardBody>
         <DogName row={{ gender: gender, name: name }} />
 
-        {sell &&
-          <div className='float-right'>
-            {formatPrice(price)}
-          </div>}
+        {sell && <div className='float-right'>{formatPrice(price)}</div>}
       </CardBody>
     </Card>
   )

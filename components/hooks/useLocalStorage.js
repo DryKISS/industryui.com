@@ -5,7 +5,7 @@
 import { useState } from 'react'
 
 export const useLocalStorage = (key, initialValue) => {
-  const parse = (item) => {
+  const parse = item => {
     let a = item
 
     try {
@@ -24,9 +24,7 @@ export const useLocalStorage = (key, initialValue) => {
       console.info('useLocalStorage: Item', parse(item))
 
       // Parse stored json or if none return initialValue
-      return item
-        ? parse(item)
-        : initialValue
+      return item ? parse(item) : initialValue
     } catch (error) {
       // If error also return initialValue
       console.error('useLocalStorage Error:', error)

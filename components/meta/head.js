@@ -13,7 +13,9 @@ export const MetaHead = ({ canonical, brand, meta }) => {
 
   return (
     <Head>
-      <title>{title} | {brand}</title>
+      <title>
+        {title} | {brand}
+      </title>
 
       <meta name='description' content={description} key='description' />
       <meta rel='canonical' href={canonical + path} key='canonical' />

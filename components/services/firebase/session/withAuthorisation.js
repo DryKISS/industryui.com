@@ -14,10 +14,12 @@ import Router from 'next/router'
 // Firebase
 import { AuthUserContext, withFirebase } from '../'
 
-const FirebaseWithAuthorization = (condition) => (Component) => {
+const FirebaseWithAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     static getInitialProps (ctx) {
-      if (Component.getInitialProps) { return Component.getInitialProps(ctx) }
+      if (Component.getInitialProps) {
+        return Component.getInitialProps(ctx)
+      }
     }
 
     componentDidMount () {
@@ -42,9 +44,18 @@ const FirebaseWithAuthorization = (condition) => (Component) => {
     render () {
       return (
         <AuthUserContext.Consumer>
-          {authUser => condition(authUser)
-            ? <Component authUser={authUser} role={authUser.roles[0]} uid={authUser.uid} {...this.props} />
-            : ''}
+          {authUser =>
+            condition(authUser) ? (
+              <Component
+                authUser={authUser}
+                role={authUser.roles[0]}
+                uid={authUser.uid}
+                {...this.props}
+              />
+            ) : (
+              ''
+            )
+          }
         </AuthUserContext.Consumer>
       )
     }

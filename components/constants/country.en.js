@@ -225,7 +225,7 @@ export const COUNTRY = [
   },
   {
     value: 'CI',
-    text: 'Côte d\'Ivoire'
+    text: "Côte d'Ivoire"
   },
   {
     value: 'HR',
@@ -477,7 +477,7 @@ export const COUNTRY = [
   },
   {
     value: 'KP',
-    text: 'Korea, Democratic People\'s Republic of'
+    text: "Korea, Democratic People's Republic of"
   },
   {
     value: 'KR',
@@ -493,7 +493,7 @@ export const COUNTRY = [
   },
   {
     value: 'LA',
-    text: 'Lao People\'s Democratic Republic'
+    text: "Lao People's Democratic Republic"
   },
   {
     value: 'LV',

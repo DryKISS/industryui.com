@@ -12,20 +12,28 @@ import NextLink from 'next/link'
 import { validatorUri } from '../../'
 
 export const Link = ({ children, passHref, to }) => {
-  const obj = (typeof to === 'object') ? to : { href: to }
+  const obj = typeof to === 'object' ? to : { href: to }
 
-  return (
-    !validatorUri(to)
-      ? <NextLink {...obj} passHref={passHref}>{children}</NextLink>
-      : <a className={children.type.componentStyle && `${children.type.componentStyle.componentId} ${children.type.componentStyle.lastClassName}`} href={to} {...children.props}>{children.props.children}</a>
+  return !validatorUri(to) ? (
+    <NextLink {...obj} passHref={passHref}>
+      {children}
+    </NextLink>
+  ) : (
+    <a
+      className={
+        children.type.componentStyle &&
+        `${children.type.componentStyle.componentId} ${children.type.componentStyle.lastClassName}`
+      }
+      href={to}
+      {...children.props}
+    >
+      {children.props.children}
+    </a>
   )
 }
 
 Link.propTypes = {
   children: node,
   passHref: bool,
-  to: oneOfType([
-    object,
-    string
-  ])
+  to: oneOfType([object, string])
 }

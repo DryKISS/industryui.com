@@ -13,30 +13,9 @@ const font = fonts.sans
 const fontFamilies = fonts
 const monospace = '"SF Mono", "Roboto Mono", Menlo, monospace'
 
-const fontSizes = [
-  12,
-  14,
-  16,
-  20,
-  24,
-  32,
-  48,
-  64,
-  72,
-  96
-]
+const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 72, 96]
 
-const weights = [
-  100,
-  200,
-  300,
-  400,
-  500,
-  600,
-  700,
-  800,
-  900
-]
+const weights = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 
 export const TYPOGRAPHY = {
   fontSizeBase,

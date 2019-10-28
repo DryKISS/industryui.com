@@ -7,8 +7,9 @@ import React, { useEffect } from 'react'
 import { string } from 'prop-types'
 
 const canUseDOM = !!(
-  (typeof window !== 'undefined' &&
-  window.document && window.document.createElement)
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
 )
 
 export const IntercomAPI = (...args) => {
@@ -24,12 +25,12 @@ export const Intercom = React.memo(({ appID }) => {
     }
 
     if (!window.Intercom) {
-      ((w, d, id, s, x) => {
+      ;((w, d, id, s, x) => {
         function i () {
           i.c(arguments)
         }
         i.q = []
-        i.c = (args) => {
+        i.c = args => {
           i.q.push(args)
         }
         w.Intercom = i

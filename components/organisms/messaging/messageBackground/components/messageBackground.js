@@ -9,9 +9,7 @@ import { string } from 'prop-types'
 import styled from 'styled-components'
 
 export const MessageBackground = ({ path }) => {
-  return (
-    <StyledBackground path={path} />
-  )
+  return <StyledBackground path={path} />
 }
 
 const StyledBackground = styled.div`
@@ -20,7 +18,7 @@ const StyledBackground = styled.div`
   top: 0;
   height: 100%;
   width: 100%;
-  opacity: .06;
+  opacity: 0.06;
 `
 
 MessageBackground.propTypes = {

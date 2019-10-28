@@ -5,24 +5,23 @@
 // React
 import { useState } from 'react'
 
-export const useEmailChange = (firebase) => {
+export const useEmailChange = firebase => {
   const [emailError, setError] = useState(null)
   const [email, setEmail] = useState('')
 
-  const emailSubmit = (e) => {
-    firebase.Auth
-      .handleEmailUpdate(email)
+  const emailSubmit = e => {
+    firebase.Auth.handleEmailUpdate(email)
       .then(() => {
         setEmail('')
       })
-      .catch((error) => {
+      .catch(error => {
         setError(error)
       })
 
     e.preventDefault()
   }
 
-  const emailChange = (e) => {
+  const emailChange = e => {
     const { value } = e.target
     setEmail(value)
   }

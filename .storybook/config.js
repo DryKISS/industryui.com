@@ -18,10 +18,7 @@ import { Container } from './container'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Font awesome
-import {
-  faEdit,
-  faTrash
-} from '@fortawesome/pro-duotone-svg-icons'
+import { faEdit, faTrash } from '@fortawesome/pro-duotone-svg-icons'
 
 import {
   faBars,
@@ -62,14 +59,16 @@ library.add(
   faVenus
 )
 
-addDecorator(withInfo({
-  header: true,
-  inline: false,
-  styles: { infoBody: { overflow: 'overlay'} },
-  source: true
-}))
+addDecorator(
+  withInfo({
+    header: true,
+    inline: false,
+    styles: { infoBody: { overflow: 'overlay' } },
+    source: true
+  })
+)
 
-addDecorator((story) => <Container story={story} />)
+addDecorator(story => <Container story={story} />)
 addDecorator(withA11y)
 
 addParameters({
@@ -96,4 +95,4 @@ addDecorator(addReadme)
 // }
 
 // configure(loadStories, module)
-configure(require.context('../components', true, /stories\.js$/), module);
+configure(require.context('../components', true, /stories\.js$/), module)

@@ -6,7 +6,7 @@ import '@fullcalendar/core/main.css'
 import '@fullcalendar/daygrid/main.css'
 import '@fullcalendar/timegrid/main.css'
 
-const CalendarWrapper = (props) => {
+const CalendarWrapper = props => {
   return (
     <FullCalendar
       defaultView={props.defaultView}

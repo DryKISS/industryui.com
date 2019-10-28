@@ -11,17 +11,18 @@ import { MessageIn, MessageOut } from '../../'
 export const MessageList = ({ messages }) => {
   let prevType = ''
 
-  return (
-    messages.map((message, index) => {
-      const msg = message.type === 'in'
-        ? <MessageIn message={message} key={index} prevType={prevType} />
-        : <MessageOut message={message} key={index} prevType={prevType} />
+  return messages.map((message, index) => {
+    const msg =
+      message.type === 'in' ? (
+        <MessageIn message={message} key={index} prevType={prevType} />
+      ) : (
+        <MessageOut message={message} key={index} prevType={prevType} />
+      )
 
-      prevType = message.type
+    prevType = message.type
 
-      return msg
-    })
-  )
+    return msg
+  })
 }
 
 MessageList.propTypes = {

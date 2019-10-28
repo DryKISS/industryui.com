@@ -111,12 +111,7 @@ Input.propTypes = {
   readOnly: bool,
   required: bool,
   type: string,
-  value: oneOfType([
-    string,
-    number,
-    bool,
-    arrayOf(oneOfType([string, number, bool]))
-  ])
+  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
 
 Input.defaultProps = {

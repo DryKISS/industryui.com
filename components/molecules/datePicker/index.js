@@ -51,8 +51,7 @@ export const DatePicker = ({
       <StyledLabelText>{label}</StyledLabelText>
 
       <Row>
-
-        {day !== false &&
+        {day !== false && (
           <Column md={4}>
             <Select
               change={change}
@@ -62,7 +61,8 @@ export const DatePicker = ({
               value={day}
               data={{ 'data-index': index, 'data-name': 'day' }}
             />
-          </Column>}
+          </Column>
+        )}
 
         <Column md={4}>
           <Select
@@ -76,14 +76,13 @@ export const DatePicker = ({
         </Column>
 
         <Column md={4}>{years()}</Column>
-
       </Row>
     </>
   )
 }
 
 const StyledLabelText = styled.div`
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 `
 
 DatePicker.propTypes = {
