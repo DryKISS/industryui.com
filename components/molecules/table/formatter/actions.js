@@ -22,12 +22,21 @@ export const TableActions = ({ row: { id } }, data) => {
       />
 
       <ButtonToolbar align='flex-start'>
-        {data.map(({ content, context, icon, to, tooltip }, index) =>
-          <Link key={index} to={`${to}/${id}`}>
-            <Button data-tip={tooltip} context={context} size='sm'>
-              <Icon icon={icon} style={{ pointerEvents: 'none' }} />
-            </Button>
-          </Link>
+        {data.map(({ content, context, icon, to, tooltip }, index) => {
+          const iconArray = Array.isArray(icon)
+
+          return (
+            <Link key={index} to={`${to}/${id}`}>
+              <Button data-tip={tooltip} context={context} size='sm'>
+                <Icon
+                  icon={icon ? iconArray ? icon[1] : icon : null}
+                  prefix={icon && iconArray && icon[0]}
+                  style={{ pointerEvents: 'none' }}
+                />
+              </Button>
+            </Link>
+          )
+        }
         )}
       </ButtonToolbar>
     </>
