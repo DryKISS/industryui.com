@@ -147,20 +147,6 @@ export const GoogleMapsStatic = ({
     <>
       <Component {...componentProps} src={`${mainUrlParts}&${childrenUrlParts}`} />
     </>
-
-    // <Async
-    //   promise={urlParts}
-    //   then={URL => {
-    //     if (onGenerate) {
-    //       onGenerate(URL)
-    //     }
-
-    //     return <Component {...componentProps} src={URL} />
-    //   }}
-    //   catch={err => (
-    //     console.error(err), <span>Image generation failed.</span>
-    //   )}
-    // />
   )
 }
 

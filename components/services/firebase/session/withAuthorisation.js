@@ -54,8 +54,7 @@ const FirebaseWithAuthorization = condition => Component => {
               />
             ) : (
               ''
-            )
-          }
+            )}
         </AuthUserContext.Consumer>
       )
     }
