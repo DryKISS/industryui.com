@@ -23,6 +23,7 @@ export const Table = ({
   striped
 }) => {
   const handleClick = (e) => {
+    e.preventDefault()
     const row = e.currentTarget.getAttribute('data-item')
     rowClick(JSON.parse(row))
   }

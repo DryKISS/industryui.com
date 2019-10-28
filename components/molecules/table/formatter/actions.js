@@ -5,6 +5,9 @@
 // React
 import { object } from 'prop-types'
 
+// Next
+import Router from 'next/router'
+
 // React Tooltip
 import ReactTooltip from 'react-tooltip'
 
@@ -12,6 +15,13 @@ import ReactTooltip from 'react-tooltip'
 import { Button, ButtonToolbar, Icon, Link } from '../../../'
 
 export const TableActions = ({ row: { id } }, data) => {
+  const handleClick = path => e => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    Router.push(path)
+  }
+
   return (
     <>
       <ReactTooltip
@@ -21,20 +31,25 @@ export const TableActions = ({ row: { id } }, data) => {
         multiline
       />
 
-      <ButtonToolbar align='flex-start'>
+      <ButtonToolbar align='flex-start' style={{ zIndex: '100000000' }}>
         {data.map(({ content, context, icon, to, tooltip }, index) => {
           const iconArray = Array.isArray(icon)
 
           return (
-            <Link key={index} to={`${to}?id=${id}`} passHref>
-              <Button as='a' data-tip={tooltip} context={context} size='sm'>
-                <Icon
-                  icon={icon ? iconArray ? icon[1] : icon : null}
-                  prefix={icon && iconArray && icon[0]}
-                  style={{ pointerEvents: 'none' }}
-                />
-              </Button>
-            </Link>
+            <Button
+              as='a'
+              data-tip={tooltip}
+              context={context}
+              key={index}
+              onClick={handleClick(`${to}?id=${id}`)}
+              size='sm'
+            >
+              <Icon
+                icon={icon ? iconArray ? icon[1] : icon : null}
+                prefix={icon && iconArray && icon[0]}
+                style={{ pointerEvents: 'none' }}
+              />
+            </Button>
           )
         }
         )}
