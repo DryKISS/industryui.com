@@ -34,6 +34,7 @@
     "start": "start-storybook -s .storybook/static -p 9000 --quiet -c .storybook",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix --verbose | snazzy",
+    "stylelint": "./**/*.js",
     "prettier": "prettier-standard './**/*.js'",
     "test": "jest",
     "update-snapshots": "jest --updateSnapshot",
@@ -70,6 +71,16 @@
     "gitUsername": "iwarner",
     "gitEmail": "ian.warner@drykiss.com",
     "commitMessage": "Deploy Storybook"
+  },
+  "stylelint": {
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier",
+      "stylelint-config-styled-components"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
@@ -134,8 +145,10 @@
     "storybook-readme": "^5.0.8",
     "styled-components": "^4.4.0",
     "stylelint": "^11.1.1",
-    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-standard": "^19.0.0",
     "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.8.0",
     "yarn-deduplicate": "^1.1.1"
   },
   "peerDependencies": {

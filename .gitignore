@@ -37,7 +37,6 @@ bower_components
 
 # IDE
 *.sublime-*
-.vscode
 
 # Cordova
 hooks
