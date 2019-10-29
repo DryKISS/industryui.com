@@ -83,7 +83,7 @@ export const ThemeStyle = createGlobalStyle`
 
   /* Headings */
   ${({ theme }) => {
-    let style = ``
+    let style = ''
     Object.keys(theme.HEADINGS).forEach(el => {
       style += `
         ${el} {
