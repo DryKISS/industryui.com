@@ -12,15 +12,24 @@ import { Tab } from './tab'
 // Style
 import styled from 'styled-components'
 
-export const Tabs = ({ children, className }) => {
+export const Tabs = ({ children, className, onChange }) => {
   if (!Array.isArray(children)) {
     children = React.Children.toArray(children)
   }
 
-  const [activeTab, setActiveTab] = useState(children[0].props.label)
+  let active = children[0].props.label
+
+  children.map(child => {
+    if (child.props.active === true) {
+      active = child.props.label
+    }
+  })
+
+  const [activeTab, setActiveTab] = useState(active)
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
+    onChange && onChange(tab)
   }
 
   return (
