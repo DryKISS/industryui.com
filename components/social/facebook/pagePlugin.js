@@ -24,7 +24,7 @@ export const FacebookPagePlugin = ({
 }) => {
   return (
     <>
-      {iFrame &&
+      {iFrame && (
         <iframe
           allow='encrypted-media'
           frameBorder='0'
@@ -33,9 +33,10 @@ export const FacebookPagePlugin = ({
           src={`https://www.facebook.com/plugins/page.php?href=${to}&tabs=${tabs}&width=${width}&height=${height}&small_header=${smallHeader}&adapt_container_width=${adaptContainerWidth}&hide_cover=${hideCover}&show_facepile=${showFacepile}&appId=${appId}`}
           style={{ border: 'none', overflow: 'hidden' }}
           width={width}
-        />}
+        />
+      )}
 
-      {!iFrame &&
+      {!iFrame && (
         <div
           className='fb-page'
           data-adapt-container-width='true'
@@ -52,11 +53,10 @@ export const FacebookPagePlugin = ({
             cite='https://www.facebook.com/maitaidating/'
             className='fb-xfbml-parse-ignore'
           >
-            <a href={to}>
-              Mai Tai Dating
-            </a>
+            <a href={to}>Mai Tai Dating</a>
           </blockquote>
-        </div>}
+        </div>
+      )}
     </>
   )
 }

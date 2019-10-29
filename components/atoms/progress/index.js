@@ -8,7 +8,6 @@ import { number } from 'prop-types'
 export const Progress = ({ width }) => {
   return (
     <div>
-
       <div
         aria-valuenow='width'
         aria-valuemin='0'
@@ -17,7 +16,6 @@ export const Progress = ({ width }) => {
         role='progressbar'
         style={{ width: `${width}%` }}
       />
-
     </div>
   )
 }

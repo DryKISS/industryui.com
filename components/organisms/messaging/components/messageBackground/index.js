@@ -1,4 +1,0 @@
-/**
- * Message
- */
-export * from './messageBackground'

@@ -9,12 +9,9 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const InputGroup = ({ children, size }) =>
-  <StyledInputGroup
-    className='Form-inputGroup'
-    children={children}
-    size={size}
-  />
+export const InputGroup = ({ children, size }) => (
+  <StyledInputGroup className='Form-inputGroup' children={children} size={size} />
+)
 
 const StyledInputGroup = styled.div`
   align-items: stretch;

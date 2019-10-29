@@ -9,9 +9,7 @@ import { object } from 'prop-types'
 import styled from 'styled-components'
 
 export const Dot = ({ coordinates }) => {
-  return (
-    <StyledDot coordinates={coordinates} />
-  )
+  return <StyledDot coordinates={coordinates} />
 }
 
 const StyledDot = styled.div`
@@ -22,7 +20,9 @@ const StyledDot = styled.div`
   position: absolute;
   width: 10px;
 
-  ${({ coordinates }) => coordinates && `
+  ${({ coordinates }) =>
+    coordinates &&
+    `
     display: block;
     left: ${coordinates.x}px;
     top: ${coordinates.y}px;

@@ -28,15 +28,13 @@ export const Notifications = ({ count, link }) => {
       </Link>
     )
   } else {
-    return (
-      <Notification />
-    )
+    return <Notification />
   }
 }
 
 const StyledNotifications = styled.div`
   display: inline-block;
-  margin: auto 1rem auto .75rem;
+  margin: auto 1rem auto 0.75rem;
   position: relative;
 `
 

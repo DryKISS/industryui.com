@@ -103,7 +103,6 @@ export const HubspotForm = () => {
 
   return (
     <div>
-
       <div
         // ref={el => this.el = el}
         id={`reactHubspotForm${this.id}`}
@@ -111,7 +110,6 @@ export const HubspotForm = () => {
       />
 
       {!this.state.loaded && this.props.loading}
-
     </div>
   )
 }

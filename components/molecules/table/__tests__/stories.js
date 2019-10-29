@@ -30,31 +30,17 @@ export default {
   }
 }
 
-export const defaultStory = () => <Table columns={columns} rows={data} />
+export const main = () => <Table columns={columns} rows={data} />
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const captionStory = () => (
-  <Table caption='Captioned Tabled' columns={columns} rows={data} />
-)
-
-captionStory.story = {
-  name: 'Caption'
-}
+export const caption = () => <Table caption='Captioned Tabled' columns={columns} rows={data} />
 
 export const context = () => <Table columns={columns} rows={dataContext} />
 
-export const responsiveStory = () => (
+export const responsive = () => (
   <div style={{ width: '250px' }}>
     <Table columns={columns} rows={data} />
   </div>
 )
-
-responsiveStory.story = {
-  name: 'Responsive'
-}
 
 export const notResponsive = () => (
   <div style={{ width: '100px' }}>
@@ -70,15 +56,7 @@ export const noColumns = () => <Table rows={data} />
 
 export const rowClickStory = () => <Table columns={columns} rowClick={rowClick} rows={data} />
 
-rowClickStory.story = {
-  name: 'Row Click'
-}
-
-export const alignStory = () => <Table align columns={columns} rows={data} />
-
-alignStory.story = {
-  name: 'Align'
-}
+export const align = () => <Table align columns={columns} rows={data} />
 
 export const formatter = () => <Table columns={columnsFormatter} rows={data} />
 

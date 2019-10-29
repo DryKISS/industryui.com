@@ -43,17 +43,11 @@ export class Dropzone extends Component {
   previewList = () => {
     const { accepted, handleRemove } = this.props
 
-    return (
-      accepted.map((file, index) =>
-        <Column key={index} md={2} style={{ marginBottom: '20px' }}>
-          <DropzonePreview
-            file={file}
-            handleRemove={handleRemove}
-            index={index}
-          />
-        </Column>
-      )
-    )
+    return accepted.map((file, index) => (
+      <Column key={index} md={2} style={{ marginBottom: '20px' }}>
+        <DropzonePreview file={file} handleRemove={handleRemove} index={index} />
+      </Column>
+    ))
   }
 
   render () {
@@ -75,7 +69,6 @@ export class Dropzone extends Component {
           acceptedFiles,
           rejectedFiles
         }) => (
-
           <StyledContainer
             disabled={disabled}
             isDragActive={isDragActive}
@@ -83,16 +76,13 @@ export class Dropzone extends Component {
             {...getRootProps()}
           >
             <Container>
-
               <Row>
-
                 <input {...getInputProps()} />
 
                 {accepted.length > 0 && this.previewList()}
 
-                {accepted.length <= 0 &&
+                {accepted.length <= 0 && (
                   <Column md={12}>
-
                     <Heading tag='h2'>
                       Drag &amp; Drop images here
                       <br />
@@ -101,26 +91,24 @@ export class Dropzone extends Component {
                     </Heading>
 
                     <Button content='Select files' size='lg' />
-
-                  </Column>}
-
+                  </Column>
+                )}
               </Row>
-
             </Container>
-
           </StyledContainer>
         )}
-
       </ReactDropzone>
     )
   }
 }
 
 const StyledContainer = styled.div`
-  background-color: ${({ disabled, theme }) => disabled ? theme.COLOUR.danger : theme.COLOUR.light};
+  background-color: ${({ disabled, theme }) =>
+    disabled ? theme.COLOUR.danger : theme.COLOUR.light};
   border-color: ${({ isDragReject }) => isDragReject && '#c66'};
-  border-radius: .25rem;
-  border-style: ${({ isDragReject, isDragActive }) => isDragReject || isDragActive ? 'solid' : 'dashed'};
+  border-radius: 0.25rem;
+  border-style: ${({ isDragReject, isDragActive }) =>
+    isDragReject || isDragActive ? 'solid' : 'dashed'};
   border-width: 2px;
   cursor: pointer;
   /* display: flex; */

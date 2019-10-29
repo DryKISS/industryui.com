@@ -35,53 +35,42 @@ export const BlogCard = ({ article, config, type }) => {
   }
 
   return (
-    <article
-      role='article'
-      itemProp='blogPost'
-      itemScope
-      itemType='http://schema.org/BlogPosting'
-    >
+    <article role='article' itemProp='blogPost' itemScope itemType='http://schema.org/BlogPosting'>
       <Card shadow>
         <Link to={articleLink}>
           <a>
-            <CardImage
-              alt={heading}
-              src={`/static/blog/${slug}/hero.jpg`}
-            />
+            <CardImage alt={heading} src={`/static/blog/${slug}/hero.jpg`} />
           </a>
         </Link>
 
         <StyledCardBody type={type}>
-
-          {type === 'normal' &&
-            <BlogCategory config={config} to={category} type={type} />}
+          {type === 'normal' && <BlogCategory config={config} to={category} type={type} />}
 
           <StyledContent type={type}>
-
             <Link to={articleLink}>
-              <a><StyledHeading content={heading} tag='h1' type={type} /></a>
+              <a>
+                <StyledHeading content={heading} tag='h1' type={type} />
+              </a>
             </Link>
 
-            {type === 'normal' &&
-              <p itemProp='description'>{excerpt}</p>}
-
+            {type === 'normal' && <p itemProp='description'>{excerpt}</p>}
           </StyledContent>
 
-          {type === 'normal' &&
+          {type === 'normal' && (
             <>
-              {article.tags &&
+              {article.tags && (
                 <TagsContainer>
                   <BlogTags tags={article.tags} />
-                </TagsContainer>}
+                </TagsContainer>
+              )}
 
               <Divider size='md' style={{ marginTop: '.5rem' }} />
 
               <BlogCategory author to={author} config={config} type={type} />
 
-              <p style={{ fontSize: '14px', margin: '0' }}>
-                {article.readtime}min read time.
-              </p>
-            </>}
+              <p style={{ fontSize: '14px', margin: '0' }}>{article.readtime}min read time.</p>
+            </>
+          )}
 
           <Link to={articleLink}>
             <StyledButton
@@ -91,9 +80,7 @@ export const BlogCard = ({ article, config, type }) => {
               position={type}
             />
           </Link>
-
         </StyledCardBody>
-
       </Card>
     </article>
   )
@@ -111,7 +98,9 @@ const StyledButton = styled(Button)`
   right: 15px;
   z-index: 2;
 
-  ${({ position }) => position === 'hero' && `
+  ${({ position }) =>
+    position === 'hero' &&
+    `
     bottom: 25px;
   `}
 `
@@ -120,7 +109,9 @@ const StyledCardBody = styled(CardBody)`
   min-height: 303px;
   position: relative;
 
-  ${({ theme, type }) => type === 'hero' && `
+  ${({ theme, type }) =>
+    type === 'hero' &&
+    `
     background-color: ${theme.COLOUR.primary};
     min-height: 80px;
     &:after {
@@ -144,7 +135,9 @@ const StyledContent = styled.div`
   margin-bottom: 1rem;
   overflow: hidden;
 
-  ${({ type }) => type === 'hero' && `
+  ${({ type }) =>
+    type === 'hero' &&
+    `
     height: 122px;
     margin-bottom: 0;
   `}
@@ -164,7 +157,9 @@ const StyledHeading = styled(Heading)`
     color: #00ccbc;
   }
 
-  ${({ type }) => type === 'hero' && `
+  ${({ type }) =>
+    type === 'hero' &&
+    `
     color: #fff;
     font-size: 34px;
     line-height: 38px;

@@ -43,7 +43,9 @@ export const UserProvider = ({ children, jwtConfig }) => {
   }, [])
 
   const signIn = async (provider, username, password) => {
-    const { data: { user, token } } = await Api.post('auth', { username, password })
+    const {
+      data: { user, token }
+    } = await Api.post('auth', { username, password })
 
     if (user && token) {
       setUser(user)
@@ -69,7 +71,7 @@ export const UserProvider = ({ children, jwtConfig }) => {
     Router.push('/account/sign-in')
   }
 
-  const authorise = (condition) => {
+  const authorise = condition => {
     if (!condition(user)) {
       Router.push('/account/sign-in')
       return false
@@ -78,7 +80,7 @@ export const UserProvider = ({ children, jwtConfig }) => {
   }
 
   return (
-    !isLoading &&
+    !isLoading && (
       <UserContext.Provider
         value={{
           accessToken: accessToken,
@@ -90,5 +92,6 @@ export const UserProvider = ({ children, jwtConfig }) => {
       >
         {children}
       </UserContext.Provider>
+    )
   )
 }

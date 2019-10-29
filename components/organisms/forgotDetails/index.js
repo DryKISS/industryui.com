@@ -14,26 +14,13 @@ import styled from 'styled-components'
 export const ForgotDetails = ({ email, change, pathLogIn, submit }) => {
   return (
     <Form submit={submit}>
+      <Input change={change} id='email' label='Email address' type='email' value={email} />
 
-      <Input
-        change={change}
-        id='email'
-        label='Email address'
-        type='email'
-        value={email}
-      />
-
-      <Button
-        content='Send reset link'
-        context='secondary'
-        size='lg'
-        type='submit'
-      />
+      <Button content='Send reset link' context='secondary' size='lg' type='submit' />
 
       <Link to={pathLogIn} passHref>
         <StyledLink>Back to Log In</StyledLink>
       </Link>
-
     </Form>
   )
 }

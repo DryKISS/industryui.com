@@ -9,21 +9,25 @@ import { string } from 'prop-types'
 import { Link } from '../../../'
 
 export const DogLink = ({ name }) => {
-  const slugify = (breed) => {
-    const slug = breed.toLowerCase().replace(/ /g, '-').replace(/'/, '')
+  const slugify = breed => {
+    const slug = breed
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/'/, '')
     return slug
   }
 
   const slug = slugify(name)
 
   return (
-    <Link to={{
-      as: `/dogs/breeds/${slug}`,
-      href: {
-        pathname: '/dogs/breeds/profile',
-        query: { dogSlug: slug }
-      }
-    }}
+    <Link
+      to={{
+        as: `/dogs/breeds/${slug}`,
+        href: {
+          pathname: '/dogs/breeds/profile',
+          query: { dogSlug: slug }
+        }
+      }}
     >
       <a>{name}</a>
     </Link>

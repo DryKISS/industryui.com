@@ -13,7 +13,7 @@ import { Image } from '../../../'
 import { Dot } from '../../'
 
 export const ImageWrapper = ({ coordinates, item, setCoordinates }) => {
-  const handleImageClick = (event) => {
+  const handleImageClick = event => {
     const rect = event.target.getBoundingClientRect()
     const offsetX = event.clientX - rect.left
     const offsetY = event.clientY - rect.top
@@ -28,11 +28,12 @@ export const ImageWrapper = ({ coordinates, item, setCoordinates }) => {
 
   return (
     <StyledImageWrapper onClick={handleImageClick}>
-      {item.image &&
+      {item.image && (
         <>
           <Image alt={item.text} src={item.image} />
           <Dot key={item.id} coordinates={coordinates} />
-        </>}
+        </>
+      )}
     </StyledImageWrapper>
   )
 }

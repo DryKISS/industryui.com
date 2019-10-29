@@ -13,16 +13,10 @@ import styled from 'styled-components'
 
 export const ButtonToolbar = ({ align, children }) => {
   return (
-    <StyledToolbar
-      align={align}
-      aria-label='Toolbar with button groups'
-      role='toolbar'
-    >
-
+    <StyledToolbar align={align} aria-label='Toolbar with button groups' role='toolbar'>
       <StyledGroup role='group' aria-label='First group'>
         {children}
       </StyledGroup>
-
     </StyledToolbar>
   )
 }
@@ -47,13 +41,19 @@ const StyledGroup = styled.div`
   position: relative;
   vertical-align: middle;
 
-  & > button:not(:last-child) {
+  a:hover {
+    color: white;
+  }
+
+  & > a:not(:last-child),
+  button:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: 1px solid ${({ theme }) => theme.COLOUR.light};
   }
 
-  & > button:not(:first-child) {
+  & > a:not(:first-child),
+  button:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }

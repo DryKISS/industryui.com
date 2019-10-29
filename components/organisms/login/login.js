@@ -8,16 +8,7 @@
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import {
-  Card,
-  CardBody,
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Link,
-  PageHeading
-} from '../../'
+import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -50,19 +41,10 @@ export const Login = ({
     <StyledContainer>
       <Card bordered shadow>
         <CardBody>
-
           <PageHeading center heading={heading} divider={false} />
 
           <Form submit={submit}>
-
-            <Input
-              autoFocus
-              change={change}
-              id='email'
-              label='Email'
-              type='email'
-              value={email}
-            />
+            <Input autoFocus change={change} id='email' label='Email' type='email' value={email} />
 
             <Input
               change={change}
@@ -72,11 +54,7 @@ export const Login = ({
               value={password}
             />
 
-            {remember &&
-              <Checkbox
-                change={change}
-                data={CHECKBOX_REMEMBER}
-              />}
+            {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />}
 
             <div className='text-right'>
               <Button
@@ -90,18 +68,17 @@ export const Login = ({
 
               <p />
 
-              {forgotPassword &&
+              {forgotPassword && (
                 <Link to={pathForgot}>
                   <a>Don't know your password?</a>
-                </Link>}
+                </Link>
+              )}
             </div>
-
           </Form>
-
         </CardBody>
       </Card>
 
-      {pathSignUp &&
+      {pathSignUp && (
         <>
           <br />
           <p className='text-center'>
@@ -110,8 +87,8 @@ export const Login = ({
               <a>Apply now!</a>
             </Link>
           </p>
-        </>}
-
+        </>
+      )}
     </StyledContainer>
   )
 }

@@ -9,11 +9,7 @@ import { any, object } from 'prop-types'
 import { FirebaseProvider } from '../'
 
 export const Firebase = ({ firebase, layout }) => {
-  return (
-    <FirebaseProvider config={firebase}>
-      {layout()}
-    </FirebaseProvider>
-  )
+  return <FirebaseProvider config={firebase}>{layout()}</FirebaseProvider>
 }
 
 Firebase.propTypes = {

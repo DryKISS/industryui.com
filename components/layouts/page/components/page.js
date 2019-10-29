@@ -15,29 +15,18 @@
 import { node, object, string, bool } from 'prop-types'
 
 // UI
-import { Container, MetaHead, PageHeading } from 'components'
+import { Container, MetaHead, PageHeading } from '../../../'
 
 // Config
 import { Brand, Canonical } from 'config'
 
-export const Page = ({
-  children,
-  heading,
-  meta,
-  strapline,
-  fluidContainer
-}) => {
+export const Page = ({ children, heading, meta, strapline, fluidContainer }) => {
   return (
     <>
-      <MetaHead
-        canonical={Canonical}
-        brand={Brand.name}
-        meta={meta}
-      />
+      <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
 
       <Container fluid={fluidContainer}>
-        {heading &&
-          <PageHeading heading={heading} strapline={strapline} />}
+        {heading && <PageHeading heading={heading} strapline={strapline} />}
         {children}
       </Container>
     </>

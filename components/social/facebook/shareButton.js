@@ -5,17 +5,10 @@
 // React
 import { bool, number, oneOf, string } from 'prop-types'
 
-export const FacebookShareButton = ({
-  appId,
-  hashTag,
-  iFrame,
-  layout,
-  size,
-  to
-}) => {
+export const FacebookShareButton = ({ appId, hashTag, iFrame, layout, size, to }) => {
   return (
     <>
-      {iFrame &&
+      {iFrame && (
         <iframe
           allow='encrypted-media'
           frameBorder='0'
@@ -24,9 +17,10 @@ export const FacebookShareButton = ({
           src={`https://www.facebook.com/plugins/share_button.php?href=${to}&layout=${layout}&size=${size}&appId=${appId}&width=104&height=30`}
           style={{ border: 'none', overflow: 'hidden' }}
           width='104'
-        />}
+        />
+      )}
 
-      {!iFrame &&
+      {!iFrame && (
         <div
           className='fb-share-button'
           data-hashtag={hashTag}
@@ -42,7 +36,8 @@ export const FacebookShareButton = ({
           >
             {' '}
           </a>
-        </div>}
+        </div>
+      )}
     </>
   )
 }

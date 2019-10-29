@@ -12,24 +12,19 @@ import { Divider, Heading } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const BlogSection = ({ children, heading }) =>
+export const BlogSection = ({ children, heading }) => (
   <StyledSection>
-
-    {heading &&
+    {heading && (
       <>
-        <StyledHeading
-          content={heading}
-          context='primary'
-          noMargin
-          tag='h3'
-        />
+        <StyledHeading content={heading} context='primary' noMargin tag='h3' />
 
         <Divider size='sm' />
-      </>}
+      </>
+    )}
 
     {children}
-
   </StyledSection>
+)
 
 const StyledSection = styled.dl`
   margin-top: 0;
@@ -37,7 +32,7 @@ const StyledSection = styled.dl`
 `
 
 const StyledHeading = styled(Heading)`
-  font-size: 1.25rem
+  font-size: 1.25rem;
 `
 
 BlogSection.propTypes = {

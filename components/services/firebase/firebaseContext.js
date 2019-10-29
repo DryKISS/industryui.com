@@ -5,10 +5,12 @@ import React from 'react'
 
 const FirebaseContext = React.createContext(null)
 
-const withFirebase = (Page) => {
+const withFirebase = Page => {
   return class extends React.Component {
     static getInitialProps (ctx) {
-      if (Page.getInitialProps) { return Page.getInitialProps(ctx) }
+      if (Page.getInitialProps) {
+        return Page.getInitialProps(ctx)
+      }
     }
 
     render () {

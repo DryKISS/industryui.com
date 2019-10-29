@@ -76,11 +76,7 @@ export const BlogTagCloud = ({ articles, total }) => {
   //   { value: 'CSS3', count: 20 }
   // ]
 
-  return (
-    <BlogSection heading='Tags'>
-      {cloud}
-    </BlogSection>
-  )
+  return <BlogSection heading='Tags'>{cloud}</BlogSection>
 }
 
 BlogTagCloud.propTypes = {

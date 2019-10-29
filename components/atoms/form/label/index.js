@@ -12,7 +12,9 @@ import styled from 'styled-components'
 export const Label = ({ children, id, style, text }) => {
   return (
     <StyledLabel htmlFor={id}>
-      <StyledLabelText className='Form-label' text={text}>{text}</StyledLabelText>
+      <StyledLabelText className='Form-label' text={text}>
+        {text}
+      </StyledLabelText>
       {children}
     </StyledLabel>
   )
@@ -30,6 +32,6 @@ const StyledLabel = styled.label`
 `
 
 const StyledLabelText = styled.div`
-  display: ${props => props.text && props.text.length > 0 ? 'block' : 'none'};
-  margin-bottom: .5rem;
+  display: ${props => (props.text && props.text.length > 0 ? 'block' : 'none')};
+  margin-bottom: 0.5rem;
 `

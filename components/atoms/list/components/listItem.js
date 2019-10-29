@@ -11,29 +11,15 @@ import { Icon } from '../../icon'
 // Style
 import styled, { css } from 'styled-components'
 
-export const ListItem = ({
-  border,
-  children,
-  className,
-  flush,
-  group,
-  icon,
-  prefix,
-  style
-}) =>
-  <StyledItem
-    border={border}
-    className={className}
-    flush={flush}
-    group={group}
-    style={style}
-  >
+export const ListItem = ({ border, children, className, flush, group, icon, prefix, style }) => (
+  <StyledItem border={border} className={className} flush={flush} group={group} style={style}>
     {icon && <StyledIcon aria-hidden='true' icon={icon} prefix={prefix} size='2x' />}
     {children}
   </StyledItem>
+)
 
 const borderStyles = css`
-  border: 1px solid rgba(0, 0, 0, .125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
 `
 
 const flushStyles = css`
@@ -52,7 +38,7 @@ const flushStyles = css`
 
 const groupStyles = css`
   margin-bottom: -1px;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
 `
 
 const StyledItem = styled.li`
@@ -65,7 +51,7 @@ const StyledItem = styled.li`
 const StyledIcon = styled(Icon)`
   color: ${({ theme }) => theme.COLOUR.secondary};
   float: left;
-  margin: .1rem 1rem 0 0;
+  margin: 0.1rem 1rem 0 0;
 `
 
 ListItem.propTypes = {

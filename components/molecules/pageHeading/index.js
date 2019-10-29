@@ -12,17 +12,9 @@ import { Divider } from '../../atoms/divider'
 // Style
 import styled from 'styled-components'
 
-export const PageHeading = ({
-  center,
-  children,
-  context,
-  divider,
-  heading,
-  strapline
-}) => {
+export const PageHeading = ({ center, children, context, divider, heading, strapline }) => {
   return (
     <StyledPageHeader center={center} divider={divider}>
-
       <StyledLeft>
         <StyledHeading content={heading} context='primary' pageHeading />
         {strapline && <div>{strapline}</div>}
@@ -31,7 +23,6 @@ export const PageHeading = ({
       {children && <StyledRight>{children}</StyledRight>}
 
       {divider && <StyledDivider size='md' />}
-
     </StyledPageHeader>
   )
 }
@@ -60,7 +51,7 @@ const StyledRight = styled.span`
 
 const StyledHeading = styled(Heading)`
   display: flex;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   width: 100%;
 `
 

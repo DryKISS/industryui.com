@@ -28,7 +28,7 @@ export const Input = ({
   type,
   value
 }) => {
-  const InputItem = () =>
+  const InputItem = () => (
     <StyledInput
       accept={accept}
       autoCapitalize={autoCapitalize}
@@ -47,12 +47,18 @@ export const Input = ({
       value={value}
       {...data}
     />
+  )
 
   return (
     <>
-      {label
-        ? <Label text={label}>{InputItem()}<div className='Form-feedback' /></Label>
-        : InputItem()}
+      {label ? (
+        <Label text={label}>
+          {InputItem()}
+          <div className='Form-feedback' />
+        </Label>
+      ) : (
+        InputItem()
+      )}
     </>
   )
 }
@@ -61,14 +67,14 @@ const StyledInput = styled.input`
   background-clip: padding-box;
   background-color: #fff;
   border: 1px solid #c4cacf;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: #9da7af;
   display: block;
   font-size: 1rem;
   height: 3rem;
   line-height: 1.5;
-  padding: .5rem 1rem;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  padding: 0.5rem 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
   .Form-inputGroup > & {
@@ -84,7 +90,7 @@ const StyledInput = styled.input`
     color: #9da7af;
     border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
 
   &:invalid {
@@ -105,12 +111,7 @@ Input.propTypes = {
   readOnly: bool,
   required: bool,
   type: string,
-  value: oneOfType([
-    string,
-    number,
-    bool,
-    arrayOf(oneOfType([string, number, bool]))
-  ])
+  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
 
 Input.defaultProps = {

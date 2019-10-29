@@ -10,12 +10,7 @@ import { node, oneOf } from 'prop-types'
 import styled from 'styled-components'
 
 export const InputGroupAddon = ({ addonType, children }) => {
-  return (
-    <StyledInputGroupAddon
-      addonType={addonType}
-      children={children}
-    />
-  )
+  return <StyledInputGroupAddon addonType={addonType} children={children} />
 }
 
 const StyledInputGroupAddon = styled.div`

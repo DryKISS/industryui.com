@@ -11,9 +11,8 @@ import { Link, slugify } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const BlogCategory = ({ author, config, context, className, style, to }) =>
+export const BlogCategory = ({ author, config, context, className, style, to }) => (
   <StyledCategory className={className} style={style}>
-
     <Link
       to={{
         as: `${config.path}/${slugify(to)}`,
@@ -27,14 +26,10 @@ export const BlogCategory = ({ author, config, context, className, style, to }) 
       }}
       passHref
     >
-
-      <StyledA context={context}>
-        {to.toUpperCase().replace('-', ' ')}
-      </StyledA>
-
+      <StyledA context={context}>{to.toUpperCase().replace('-', ' ')}</StyledA>
     </Link>
-
   </StyledCategory>
+)
 
 const StyledCategory = styled.div`
   display: inline;

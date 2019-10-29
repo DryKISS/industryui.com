@@ -18,8 +18,13 @@ export const AccordionItem = ({ open: initial, title, children, className, conte
 
   return (
     <StyledAccordionItem className={className}>
-      <Header className={open ? 'opened' : 'closed'} onClick={() => setOpen(!open)} context={context || 'dark'}>
-        {title} <HeaderIcon aria-hidden='true' context='info' icon={open ? 'chevron-up' : 'chevron-down'} />
+      <Header
+        className={open ? 'opened' : 'closed'}
+        onClick={() => setOpen(!open)}
+        context={context || 'dark'}
+      >
+        {title}{' '}
+        <HeaderIcon aria-hidden='true' context='info' icon={open ? 'chevron-up' : 'chevron-down'} />
       </Header>
       {open && <Content>{children}</Content>}
     </StyledAccordionItem>
@@ -34,7 +39,8 @@ const StyledAccordionItem = styled.div`
 
 const Header = styled.header`
   background-color: ${({ context, theme }) => theme.COLOUR[context]};
-  color: ${({ context, theme }) => context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
+  color: ${({ context, theme }) =>
+    context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
   border-bottom: 1px solid ${props => props.theme.COLOUR[props.context]};
   cursor: pointer;
   font-size: 1rem;

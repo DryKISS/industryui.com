@@ -8,18 +8,11 @@ import { func, string } from 'prop-types'
 // UI
 import { Button, Form, Input } from '../../'
 
-export const PasswordChange = ({
-  change,
-  password,
-  passwordConfirm,
-  passwordOld,
-  submit
-}) => {
+export const PasswordChange = ({ change, password, passwordConfirm, passwordOld, submit }) => {
   const isInvalid = password !== passwordConfirm || password === ''
 
   return (
     <Form submit={submit}>
-
       <Input
         change={change}
         id='passwordOld'
@@ -28,13 +21,7 @@ export const PasswordChange = ({
         value={passwordOld}
       />
 
-      <Input
-        change={change}
-        id='password'
-        label='New password'
-        type='password'
-        value={password}
-      />
+      <Input change={change} id='password' label='New password' type='password' value={password} />
 
       <Input
         change={change}
@@ -45,15 +32,8 @@ export const PasswordChange = ({
       />
 
       <div className='text-right'>
-        <Button
-          content='Submit'
-          context='secondary'
-          disabled={isInvalid}
-          size='lg'
-          type='submit'
-        />
+        <Button content='Submit' context='secondary' disabled={isInvalid} size='lg' type='submit' />
       </div>
-
     </Form>
   )
 }

@@ -32,14 +32,14 @@ const StyledBadge = styled.a`
   display: inline-block;
   font-size: 90%;
   line-height: 1;
-  margin: 0 .5em .5em 0;
-  padding: .5em;
+  margin: 0 0.5em 0.5em 0;
+  padding: 0.5em;
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
   &:hover {
     background-color: ${props => props.theme.COLOUR.dark};
-    color: ${props => props.theme.COLOUR.light};;
+    color: ${props => props.theme.COLOUR.light};
   }
   &:empty {
     display: none;

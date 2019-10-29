@@ -42,7 +42,9 @@ export const ImageLocation = ({ initial, label, locationChange, options }) => {
         options={[{ text: `Select ${label}`, value: '' }, ...options]}
         value={option}
       />
-      {item && <ImageWrapper coordinates={coordinates} item={item} setCoordinates={setCoordinates} />}
+      {item && (
+        <ImageWrapper coordinates={coordinates} item={item} setCoordinates={setCoordinates} />
+      )}
     </StyledImageLocation>
   )
 }

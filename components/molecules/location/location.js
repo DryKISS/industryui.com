@@ -20,9 +20,7 @@ export const Location = ({ apiKey, location }) => {
       image={`${url}?center=${location}+uk&zoom=15&size=400x200&maptype=roadmap&key=${apiKey}`}
       shadow
     >
-      <CardBody>
-        {location}
-      </CardBody>
+      <CardBody>{location}</CardBody>
     </Card>
   )
 }

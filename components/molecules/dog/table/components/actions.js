@@ -14,12 +14,20 @@ import { Button, ButtonToolbar, Icon, Link } from '../../../../'
 export const Actions = ({ path, row }) => {
   const { dogId, uId } = row
 
-  const action = (action, context, icon, route, tooltip) =>
-    <Link to={{ href: { pathname: `${path}/${route}`, query: uId ? { dogId: dogId, uId: uId } : { dogId: dogId } } }}>
+  const action = (action, context, icon, route, tooltip) => (
+    <Link
+      to={{
+        href: {
+          pathname: `${path}/${route}`,
+          query: uId ? { dogId: dogId, uId: uId } : { dogId: dogId }
+        }
+      }}
+    >
       <Button data-tip={tooltip} context={context} size='sm' title={action}>
         <Icon context='white' icon={icon} style={{ pointerEvents: 'none' }} />
       </Button>
     </Link>
+  )
 
   return (
     <>

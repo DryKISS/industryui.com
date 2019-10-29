@@ -1,7 +1,7 @@
 /**
  * Footer
  */
-export const FOOTER = (column) => ([
+export const FOOTER = column => [
   {
     size: { md: 8, lg: 6 },
     offset: { md: 4, lg: 0 },
@@ -52,4 +52,4 @@ export const FOOTER = (column) => ([
       }
     ]
   }
-])
+]

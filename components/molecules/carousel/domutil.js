@@ -11,7 +11,10 @@ export function loadjs (src, params = { async: false }) {
     const script = document.createElement('script')
     script.src = src
     if (params.async) script.async = 1
-    script.onload = () => { _loadedJs.push(src); resolve() }
+    script.onload = () => {
+      _loadedJs.push(src)
+      resolve()
+    }
     script.onerror = reject
     document.body.appendChild(script)
   })
@@ -27,7 +30,10 @@ export function loadcss (href, params = {}) {
     link.rel = 'stylesheet'
     link.type = 'text/css'
     link.href = href
-    link.onload = () => { _loadedCss.push(href); resolve() }
+    link.onload = () => {
+      _loadedCss.push(href)
+      resolve()
+    }
     link.onerror = reject
     // ? link.media = 'all'
     document.head.appendChild(link)
@@ -35,4 +41,8 @@ export function loadcss (href, params = {}) {
 }
 
 // https://stackoverflow.com/a/32598826/1948511
-export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement)
+export const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+)

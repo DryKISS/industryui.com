@@ -22,16 +22,19 @@ export const Button = forwardRef((props, ref) => {
 
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
-  color: ${({ context, theme }) => context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
+  color: ${({ context, theme }) =>
+    context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
   border: 1px solid ${props => props.theme.COLOUR[props.context]};
   border-radius: .25rem;
-  ${props => props.shadow && 'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
-  cursor: ${props => props.disabled ? 'initial' : 'pointer'};
-  display: ${props => props.centre || props.block ? 'block' : 'inline-block'};
+  ${props =>
+    props.shadow &&
+    'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
+  cursor: ${props => (props.disabled ? 'initial' : 'pointer')};
+  display: ${props => (props.centre || props.block ? 'block' : 'inline-block')};
   font-family: ${({ theme }) => theme.font};
-  font-size: ${({ size }) => size === 'lg' ? '1.25rem' : '1rem'};
+  font-size: ${({ size }) => (size === 'lg' ? '1.25rem' : '1rem')};
   line-height: 1.5;
-  margin: ${({ centre }) => centre ? 'auto' : 0};
+  margin: ${({ centre }) => (centre ? 'auto' : 0)};
   opacity: ${({ disabled }) => disabled && 0.5};
   outline: none;
   overflow: visible;
@@ -41,11 +44,11 @@ const StyledButton = styled.button`
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: ${({ block }) => block ? '100%' : 'initial'};
+  width: ${({ block }) => (block ? '100%' : 'initial')};
 
   /* If two buttons are next to each other */
   & + & {
-    margin-top: ${({ block }) => block ? '1rem' : 'initial'};
+    margin-top: ${({ block }) => (block ? '1rem' : 'initial')};
   }
 
   .Form-inputGroup > div > & {

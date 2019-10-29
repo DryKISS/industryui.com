@@ -8,23 +8,21 @@ import { useState } from 'react'
 // UI
 import { useChange } from '../../../'
 
-export const useForgotDetails = (firebase) => {
+export const useForgotDetails = firebase => {
   const INITIAL_STATE = { email: '' }
   const [change, form, setForm] = useChange(INITIAL_STATE)
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
 
-  const submit = (e) => {
+  const submit = e => {
     e.preventDefault()
 
-    firebase
-      .Auth
-      .handlePasswordReset(form.email)
+    firebase.Auth.handlePasswordReset(form.email)
       .then(() => {
         setForm(INITIAL_STATE)
         setSuccess(true)
       })
-      .catch((error) => {
+      .catch(error => {
         setError(error)
       })
   }

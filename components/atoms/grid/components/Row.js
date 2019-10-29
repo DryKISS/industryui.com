@@ -8,15 +8,7 @@ import { node, number, objectOf, oneOf, oneOfType, string, bool } from 'prop-typ
 // Style
 import styled, { css } from 'styled-components'
 
-export const Row = ({
-  align,
-  children,
-  className,
-  justify,
-  noGutter,
-  noWrap,
-  style
-}) => {
+export const Row = ({ align, children, className, justify, noGutter, noWrap, style }) => {
   return (
     <StyledRow
       align={align}
@@ -34,38 +26,36 @@ const StyledRow = styled.div`
   display: flex;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-wrap: ${({ noWrap }) => noWrap ? 'nowrap' : 'wrap'};
+  flex-wrap: ${({ noWrap }) => (noWrap ? 'nowrap' : 'wrap')};
 
   ${({ theme }) => css`
     margin-left: -${theme.GRID.gutterWidth / 2}px;
     margin-right: -${theme.GRID.gutterWidth / 2}px;
   `}
 
-  ${({ noGutter, theme }) => noGutter && css`
-    margin-left: -${theme.GRID.gutterWidth}px;
-    margin-right: -${theme.GRID.gutterWidth}px;
-  `}
+  ${({ noGutter, theme }) =>
+    noGutter &&
+    css`
+      margin-left: -${theme.GRID.gutterWidth}px;
+      margin-right: -${theme.GRID.gutterWidth}px;
+    `}
 
   ${({ align }) => css`
-    align-items: ${
-      (align === 'start' && 'flex-start') ||
+    align-items: ${(align === 'start' && 'flex-start') ||
       (align === 'end' && 'flex-end') ||
       (align === 'center' && 'center') ||
       (align === 'stretch' && 'stretch') ||
-      (align === 'baseline' && 'baseline')
-    };
+      (align === 'baseline' && 'baseline')};
   `}
 
   ${({ justify }) => css`
-    justify-content: ${
-      (justify === 'start' && 'flex-start') ||
+    justify-content: ${(justify === 'start' && 'flex-start') ||
       (justify === 'end' && 'flex-end') ||
       (justify === 'between' && 'space-between') ||
       (justify === 'around' && 'space-around') ||
       (justify === 'center' && 'center') ||
       (justify === 'initial' && 'initial') ||
-      (justify === 'inherit' && 'inherit')
-    };
+      (justify === 'inherit' && 'inherit')};
   `}
 `
 
@@ -74,15 +64,7 @@ Row.propTypes = {
   children: node.isRequired,
   className: string,
   gutterWidth: number,
-  justify: oneOf([
-    'start',
-    'center',
-    'end',
-    'between',
-    'around',
-    'initial',
-    'inherit'
-  ]),
+  justify: oneOf(['start', 'center', 'end', 'between', 'around', 'initial', 'inherit']),
   noGutter: bool,
   noWrap: bool,
   style: objectOf(oneOfType([number, string]))
