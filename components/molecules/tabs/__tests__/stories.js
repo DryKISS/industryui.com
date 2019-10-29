@@ -43,3 +43,17 @@ export const disabledStory = () => (
 disabledStory.story = {
   name: 'Disabled'
 }
+
+export const activeStory = () => (
+  <Tabs>
+    <div label='Tab 1'>Tab 1 Content</div>
+    <div active label='Tab 2'>
+      Tab 2 Content
+    </div>
+    <div label='Tab 3'>Tab 3 Content</div>
+  </Tabs>
+)
+
+activeStory.story = {
+  name: 'Active'
+}

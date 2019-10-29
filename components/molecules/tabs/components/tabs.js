@@ -17,7 +17,15 @@ export const Tabs = ({ children, className }) => {
     children = React.Children.toArray(children)
   }
 
-  const [activeTab, setActiveTab] = useState(children[0].props.label)
+  let active = children[0].props.label
+
+  children.map(child => {
+    if (child.props.active === true) {
+      active = child.props.label
+    }
+  })
+
+  const [activeTab, setActiveTab] = useState(active)
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
