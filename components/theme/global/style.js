@@ -75,11 +75,26 @@ export const ThemeStyle = createGlobalStyle`
 
   body {
     color: #6b7a87;
-    font-family: "Montserrat", sans-serif;
+    font-family: ${props => props.theme.TYPOGRAPHY.font};
     margin: 0;
     position: relative;
     padding-bottom: 4rem;
   }
+
+  /* Headings */
+  ${({ theme }) => {
+    let style = ``
+    Object.keys(theme.HEADINGS).forEach(el => {
+      style += `
+        ${el} {
+          ${theme.HEADINGS[el].font ? `font-family: ${theme.HEADINGS[el].font};` : ''}
+          ${theme.HEADINGS[el].uppercase === true ? 'text-transform: uppercase;' : ''}
+          ${theme.HEADINGS[el].weight ? `font-weight: ${theme.HEADINGS[el].weight};` : ''}
+        }
+      `
+    })
+    return style
+  }}
 
   hr {
     box-sizing: content-box;

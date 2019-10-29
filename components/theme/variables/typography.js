@@ -6,12 +6,13 @@ const fontSizeLg = '($fontSizeBase * 1.25);'
 const fontSizeSm = '($fontSizeBase * .875);'
 
 const fonts = {
-  sans: 'sans-serif'
+  monospace: '"SF Mono", "Roboto Mono", Menlo, monospace',
+  sans: '"Archivo", "Montserrat", sans-serif'
 }
 
 const font = fonts.sans
+const monospace = fonts.monospace
 const fontFamilies = fonts
-const monospace = '"SF Mono", "Roboto Mono", Menlo, monospace'
 
 const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 72, 96]
 
