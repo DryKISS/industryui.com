@@ -5,6 +5,8 @@
 // React
 import React from 'react'
 
+import { action } from '@storybook/addon-actions'
+
 // UI
 import { Tabs } from '../'
 import Readme from '../README.md'
@@ -20,7 +22,7 @@ export default {
 }
 
 export const defaultStory = () => (
-  <Tabs>
+  <Tabs onChange={action('change')}>
     <div label='Tab 1'>Tab 1 Content</div>
     <div label='Tab 2'>Tab 2 Content</div>
   </Tabs>
@@ -31,7 +33,7 @@ defaultStory.story = {
 }
 
 export const disabledStory = () => (
-  <Tabs>
+  <Tabs onChange={action('change')}>
     <div label='Tab 1'>Tab 1 Content</div>
     <div label='Tab 2'>Tab 2 Content</div>
     <div disabled label='Tab 3 Disabled'>
@@ -45,7 +47,7 @@ disabledStory.story = {
 }
 
 export const activeStory = () => (
-  <Tabs>
+  <Tabs onChange={action('change')}>
     <div label='Tab 1'>Tab 1 Content</div>
     <div active label='Tab 2'>
       Tab 2 Content

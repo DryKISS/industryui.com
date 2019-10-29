@@ -12,7 +12,7 @@ import { Tab } from './tab'
 // Style
 import styled from 'styled-components'
 
-export const Tabs = ({ children, className }) => {
+export const Tabs = ({ children, className, onChange }) => {
   if (!Array.isArray(children)) {
     children = React.Children.toArray(children)
   }
@@ -29,6 +29,7 @@ export const Tabs = ({ children, className }) => {
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
+    onChange && onChange(tab)
   }
 
   return (
