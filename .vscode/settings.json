@@ -1,0 +1,44 @@
+{
+  // CSS
+  "css.validate": false,
+  // Editor
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    100
+  ],
+  "editor.tabSize": 2,
+  // Files
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  // Javascript
+  "javascript.validate.enable": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "numso.prettier-standard-vscode"
+  },
+  // LESS
+  "less.validate": false,
+  // Prettier
+  "prettier.semi": false,
+  "prettier.printWidth": 100,
+  // SCSS
+  "scss.validate": false,
+  // Standard
+  "standard.enable": true,
+  "standard.autoFixOnSave": true,
+  "standard.options": {
+    "globals": [
+      "cy",
+      "it",
+      "test",
+      "expect",
+      "describe"
+    ],
+    "ignore": [
+      "node_modules/**"
+    ],
+    "parser": "babel-eslint"
+  },
+  "standard.usePackageJson": true,
+  // Typescript
+  "typescript.validate.enable": false
+}

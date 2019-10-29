@@ -19,7 +19,6 @@ export const CardDecks = ({ children }) => {
 const StyledDecks = styled.div`
   display: flex;
   flex-direction: column;
-
   ${MEDIA_QUERY.desktop`
     flex-flow: row wrap;
     margin-left: -15px;

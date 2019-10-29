@@ -39,7 +39,6 @@ const StyledToggler = styled.a`
   cursor: pointer;
   font-size: 18px;
   padding: 20px 15px;
-
   ${MEDIA_QUERY.desktop`
     display: none;
   `}

@@ -63,11 +63,10 @@ const StyledDt = styled.dt`
 const StyledDd = styled.dd`
   flex: 0 0 75%;
   max-width: 75%;
-  padding-top: 0.2rem;
   position: relative;
   margin-left: 0;
   min-height: 1px;
-  padding: 0 1rem;
+  padding: 0.2rem 1rem 0 1rem;
   width: 100%;
 `
 

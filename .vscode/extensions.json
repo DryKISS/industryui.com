@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "eriklynd.json-tools",
+    "attilabuti.vscode-mjml",
+    "numso.prettier-standard-vscode",
+    "shinnn.stylelint",
+    "chenxsan.vscode-standardjs",
+    "jpoissonnier.vscode-styled-components",
+    "CoenraadS.bracket-pair-colorizer"
+  ]
+}

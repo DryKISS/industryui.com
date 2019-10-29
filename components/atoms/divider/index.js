@@ -24,7 +24,6 @@ const StyledDivider = styled.div`
     (props.size === 'lg' && '2rem 0') || (props.size === 'md' && '1rem 0') || '.5rem 0'};
   overflow: hidden;
   user-select: none;
-
   ${({ content, theme }) =>
     content &&
     css`

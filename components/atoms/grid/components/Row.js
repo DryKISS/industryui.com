@@ -27,7 +27,6 @@ const StyledRow = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
   flex-wrap: ${({ noWrap }) => (noWrap ? 'nowrap' : 'wrap')};
-
   ${({ theme }) => css`
     margin-left: -${theme.GRID.gutterWidth / 2}px;
     margin-right: -${theme.GRID.gutterWidth / 2}px;

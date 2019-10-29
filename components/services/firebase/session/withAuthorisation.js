@@ -41,20 +41,14 @@ const FirebaseWithAuthorization = condition => Component => {
       this.listener()
     }
 
+    authed = authUser => (
+      <Component authUser={authUser} role={authUser.roles[0]} uid={authUser.uid} {...this.props} />
+    )
+
     render () {
       return (
         <AuthUserContext.Consumer>
-          {authUser =>
-            condition(authUser) ? (
-              <Component
-                authUser={authUser}
-                role={authUser.roles[0]}
-                uid={authUser.uid}
-                {...this.props}
-              />
-            ) : (
-              ''
-            )}
+          {authUser => (condition(authUser) ? this.authed(authUser) : '')}
         </AuthUserContext.Consumer>
       )
     }

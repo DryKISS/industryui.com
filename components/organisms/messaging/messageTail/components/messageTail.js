@@ -22,7 +22,7 @@ const StyledTail = styled.span`
   background-size: contain;
   ${props => (props.type === 'in' ? 'left: -12px' : 'right: -12px')};
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 12px;
   height: 19px;
 `

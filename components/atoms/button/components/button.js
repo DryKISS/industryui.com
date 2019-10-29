@@ -51,14 +51,14 @@ const StyledButton = styled.button`
     margin-top: ${({ block }) => (block ? '1rem' : 'initial')};
   }
 
-  .Form-inputGroup > div > & {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
   &:hover {
     background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -10)};
     border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)};
+  }
+
+  .Form-inputGroup > div > & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 `
 

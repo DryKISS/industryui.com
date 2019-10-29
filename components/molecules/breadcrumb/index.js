@@ -91,7 +91,7 @@ const StyledOl = styled.ol`
 `
 
 const StyledLi = styled.li`
-  &:not(:first-child):before {
+  &:not(:first-child)::before {
     color: #ccc;
     content: '/';
     display: inline-block;

@@ -21,18 +21,15 @@ const DropzonePreview = ({ file, handleRemove, index }) => {
   )
 }
 
+const StyledPreview = styled.div`
+  border: 1px solid #000;
+  z-index: 1;
+`
+
 DropzonePreview.propTypes = {
   file: any,
   handleRemove: func,
   index: any
 }
-
-const StyledPreview = styled.div`
-  border: 1px solid #000;
-  /* height: 200px; */
-  /* overflow: hidden; */
-  z-index: 1;
-  /* object-fit: cover; */
-`
 
 export { DropzonePreview }

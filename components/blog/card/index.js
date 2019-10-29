@@ -97,7 +97,6 @@ const StyledButton = styled(Button)`
   position: absolute;
   right: 15px;
   z-index: 2;
-
   ${({ position }) =>
     position === 'hero' &&
     `
@@ -108,7 +107,6 @@ const StyledButton = styled(Button)`
 const StyledCardBody = styled(CardBody)`
   min-height: 303px;
   position: relative;
-
   ${({ theme, type }) =>
     type === 'hero' &&
     `
@@ -134,7 +132,6 @@ const StyledContent = styled.div`
   height: 128px;
   margin-bottom: 1rem;
   overflow: hidden;
-
   ${({ type }) =>
     type === 'hero' &&
     `

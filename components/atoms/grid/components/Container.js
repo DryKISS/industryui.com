@@ -20,7 +20,6 @@ const StyledGrid = styled.div`
   margin-right: auto;
   position: relative;
   width: ${({ fluid }) => fluid && '100%'};
-
   ${({ theme }) => css`
     padding-left: ${theme.GRID.gutterWidth / 2}px;
     padding-right: ${theme.GRID.gutterWidth / 2}px;

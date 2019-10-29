@@ -118,7 +118,6 @@ const StyledTable = styled.table`
 
 const StyledTr = styled.tr`
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
-
   ${({ context, striped, theme }) =>
     !context &&
     striped &&

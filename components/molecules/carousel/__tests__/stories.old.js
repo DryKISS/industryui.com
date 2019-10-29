@@ -92,7 +92,7 @@ const Image = styled.img`
 
 const TextLabel = styled.span`
   position: absolute;
-  text-shadow: 2px 2px #000000;
+  text-shadow: 2px 2px #000;
   color: white;
   font-size: 24px;
   padding: 2em;
