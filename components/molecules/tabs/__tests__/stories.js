@@ -21,18 +21,14 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Tabs onChange={action('change')}>
     <div label='Tab 1'>Tab 1 Content</div>
     <div label='Tab 2'>Tab 2 Content</div>
   </Tabs>
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const disabledStory = () => (
+export const disabled = () => (
   <Tabs onChange={action('change')}>
     <div label='Tab 1'>Tab 1 Content</div>
     <div label='Tab 2'>Tab 2 Content</div>
@@ -42,11 +38,7 @@ export const disabledStory = () => (
   </Tabs>
 )
 
-disabledStory.story = {
-  name: 'Disabled'
-}
-
-export const activeStory = () => (
+export const active = () => (
   <Tabs onChange={action('change')}>
     <div label='Tab 1'>Tab 1 Content</div>
     <div active label='Tab 2'>
@@ -55,7 +47,3 @@ export const activeStory = () => (
     <div label='Tab 3'>Tab 3 Content</div>
   </Tabs>
 )
-
-activeStory.story = {
-  name: 'Active'
-}
