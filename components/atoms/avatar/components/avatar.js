@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { any, func, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI

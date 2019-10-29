@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { string, oneOf, object } from 'prop-types'
 import { CONTEXT, Icon } from '../../../'
 
@@ -36,12 +37,10 @@ const StyledBadge = styled.a`
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
-
   &:hover {
     background-color: ${props => props.theme.COLOUR.dark};
     color: ${props => props.theme.COLOUR.light};
   }
-
   &:empty {
     display: none;
   }

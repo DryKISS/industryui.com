@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<address
+  className="sc-bdVaJa iJGcvD"
+>
+  <div>
+    24 Accacia Road
+  </div>
+  <div>
+    Grandhouse
+  </div>
+  <div>
+    Bermondsey
+  </div>
+  <div>
+    London
+  </div>
+  <div>
+    Sussex
+  </div>
+  <div>
+    W1 2N
+  </div>
+  <div>
+    United Kingdom
+  </div>
+</address>
+`;
