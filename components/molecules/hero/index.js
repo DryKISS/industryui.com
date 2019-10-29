@@ -58,9 +58,7 @@ const StyledHero = styled.header`
 `
 
 const StyledColumn = styled(Column)`
-  /* margin: 0 auto; */
   text-align: center;
-
   ${MEDIA_QUERY.desktop`
     // margin-bottom: 3rem;
     text-align: initial;
@@ -69,7 +67,6 @@ const StyledColumn = styled(Column)`
 
 const StyledTitle = styled(Heading)`
   line-height: 2.75rem;
-
   ${MEDIA_QUERY.desktop`
     font-size: 3rem;
     line-height: 3.25rem;

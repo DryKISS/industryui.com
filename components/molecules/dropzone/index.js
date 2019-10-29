@@ -111,10 +111,6 @@ const StyledContainer = styled.div`
     isDragReject || isDragActive ? 'solid' : 'dashed'};
   border-width: 2px;
   cursor: pointer;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
   margin-bottom: 1rem;
   height: 25vh;
   padding: 1rem;

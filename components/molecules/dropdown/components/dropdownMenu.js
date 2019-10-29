@@ -29,7 +29,6 @@ const StyledDropdownMenu = styled.div`
   padding: 0.5rem 0;
   position: absolute;
   top: 100%;
-
   ${({ position }) =>
     position &&
     `

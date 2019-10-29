@@ -61,8 +61,6 @@ const StyledColumn = styled.div`
   padding-left: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   padding-right: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   width: 100%;
-  /* flex-basis: 0;
-  flex-grow: 1; */
   margin-left: unset;
 
   /* SM Medium devices (tablets, 576px and up) */

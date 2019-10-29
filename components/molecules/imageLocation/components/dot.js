@@ -19,7 +19,6 @@ const StyledDot = styled.div`
   height: 10px;
   position: absolute;
   width: 10px;
-
   ${({ coordinates }) =>
     coordinates &&
     `

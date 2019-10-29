@@ -69,7 +69,7 @@ export const ThemeStyle = createGlobalStyle`
     line-height: 1.5;
   }
 
-  *, *:before, *:after {
+  *, *::before, *::after {
     box-sizing: inherit;
   }
 

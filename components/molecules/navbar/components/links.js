@@ -83,7 +83,6 @@ const StyledCollapse = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
   flex-basis: 100%;
   flex-grow: 1;
-
   ${MEDIA_QUERY.desktop`
     align-items: center;
     border: none;
@@ -100,7 +99,6 @@ const StyledList = styled.ul`
   margin: 0;
   padding: 0;
   text-align: center;
-
   ${MEDIA_QUERY.desktop`
     background-color: initial;
     flex-direction: row;
@@ -111,7 +109,6 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   border-top: #f0f2f5 1px solid;
   padding: 1.1em 0.75rem;
-
   ${MEDIA_QUERY.desktop`
     border: none;
     margin: auto .75rem;

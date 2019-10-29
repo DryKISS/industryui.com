@@ -125,8 +125,7 @@ const CarouselButton = styled.div`
   top: calc(50% - 0.5em);
   text-shadow: 2px 2px black;
   z-index: 10;
-
-  ${({ type }) => (type === 'prev' ? 'left: 12%' : 'right: 12%')}
+  ${({ type }) => (type === 'prev' ? 'left: 12%' : 'right: 12%')};
 
   @media only screen and (max-width: 450px) {
     display: none;

@@ -29,7 +29,6 @@ const StyledBrand = styled.a`
 const StyledBrandLogo = styled.img`
   max-width: 9rem;
   vertical-align: middle;
-
   ${MEDIA_QUERY.desktop`
     max-width: 15rem;
   `}

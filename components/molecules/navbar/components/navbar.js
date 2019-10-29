@@ -71,7 +71,6 @@ const StyledNav = styled.nav`
   padding: 0;
   position: relative;
   z-index: 200;
-
   ${MEDIA_QUERY.desktop`
     flex-flow: row nowrap;
     height: ${props => props.theme.NAVBAR.height};
@@ -101,7 +100,6 @@ const StyledOverlay = styled.div`
   transition-duration: 0.2s;
   width: 100%;
   z-index: 99;
-
   ${MEDIA_QUERY.desktop`
     display: none;
   `}

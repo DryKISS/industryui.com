@@ -89,7 +89,6 @@ const StyledCard = styled.div`
   position: relative;
   word-wrap: break-word;
   margin-bottom: 1rem;
-
   ${({ deck }) =>
     deck &&
     MEDIA_QUERY.desktop`
