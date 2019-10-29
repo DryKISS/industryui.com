@@ -18,13 +18,13 @@ const INITIAL_STATE = {
 export class FirebaseAuthOld extends Component {
   static propTypes = {
     children: func.isRequired
-  };
+  }
 
   static contextTypes = {
     firebase: object
-  };
+  }
 
-  state = INITIAL_STATE;
+  state = INITIAL_STATE
 
   componentDidMount () {
     const { auth } = this.context.firebase

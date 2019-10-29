@@ -9,22 +9,15 @@ import { bool, node, object, string } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const List = ({
-  border,
-  children,
-  className,
-  flush,
-  inline,
-  group,
-  style,
-  unstyled
-}) => {
+export const List = ({ border, children, className, flush, inline, group, style, unstyled }) => {
   const renderListItems = () =>
-    React.Children.map(children, (child) => React.cloneElement(child, {
-      border: border,
-      flush: flush,
-      group: group
-    }))
+    React.Children.map(children, child =>
+      React.cloneElement(child, {
+        border: border,
+        flush: flush,
+        group: group
+      })
+    )
 
   return (
     <StyledList
@@ -57,10 +50,10 @@ const unstyledStyles = css`
 `
 
 const StyledList = styled.ul`
-  ${({ group }) => group ? groupStyles : ''}
-  ${({ inline }) => inline ? inlineStyles : ''}
+  ${({ group }) => (group ? groupStyles : '')}
+  ${({ inline }) => (inline ? inlineStyles : '')}
   ${({ unstyled, border, group, flush }) =>
-  unstyled || border || flush || group ? unstyledStyles : ''}
+    unstyled || border || flush || group ? unstyledStyles : ''}
 `
 
 List.propTypes = {

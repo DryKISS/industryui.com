@@ -20,13 +20,9 @@ export default {
   }
 }
 
-export const defaultStory = () =>
-  <Message
-    content='Test Message'
-    prevType='out'
-    statusText='Delivered'
-    time='12:00'
-  />
+export const defaultStory = () => (
+  <Message content='Test Message' prevType='out' statusText='Delivered' time='12:00' />
+)
 
 defaultStory.story = {
   name: 'Default'

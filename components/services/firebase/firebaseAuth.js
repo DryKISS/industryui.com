@@ -29,15 +29,15 @@ export class FirebaseAuth {
   }
 
   // @see https://firebase.google.com/docs/reference/js/firebase.auth.Auth#applyActionCode
-  handleApplyActionCode = (code) => {
+  handleApplyActionCode = code => {
     return this.auth().applyActionCode(code)
   }
 
-  handlePasswordReset = (email) => {
+  handlePasswordReset = email => {
     return this.auth().sendPasswordResetEmail(email)
   }
 
-  handleVerifyPasswordResetCode = (code) => {
+  handleVerifyPasswordResetCode = code => {
     return this.auth().verifyPasswordResetCode(code)
   }
 
@@ -45,11 +45,11 @@ export class FirebaseAuth {
     return this.auth().confirmPasswordReset(code, password)
   }
 
-  handlePasswordUpdate = (password) => {
+  handlePasswordUpdate = password => {
     return this.auth().currentUser.updatePassword(password)
   }
 
-  handleEmailUpdate = (email) => {
+  handleEmailUpdate = email => {
     return this.auth().currentUser.updateEmail(email)
   }
 
@@ -91,11 +91,11 @@ export class FirebaseAuth {
   }
 
   handleAuthListener = (next, fallback) =>
-    this.auth().onAuthStateChanged((authUser) => {
+    this.auth().onAuthStateChanged(authUser => {
       if (authUser) {
         this.user(authUser.uid)
           .get()
-          .then((snapshot) => {
+          .then(snapshot => {
             const dbUser = snapshot.data()
 
             // Default empty roles
@@ -119,7 +119,7 @@ export class FirebaseAuth {
     })
 
   // User API
-  user = (uid) => {
+  user = uid => {
     return this.store().doc(`users/${uid}`)
   }
 }

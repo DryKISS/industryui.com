@@ -11,18 +11,15 @@ import styled from 'styled-components'
 export const Blockquote = ({ footer, text }) => {
   return (
     <StyledBlockquote>
-
       <StyledText>{text}</StyledText>
 
-      {footer &&
-        <StyledFooter>{footer}</StyledFooter>}
-
+      {footer && <StyledFooter>{footer}</StyledFooter>}
     </StyledBlockquote>
   )
 }
 
 const StyledBlockquote = styled.blockquote`
-  border-left: 5px solid rgba(240, 0, 0, .5);
+  border-left: 5px solid rgba(240, 0, 0, 0.5);
   margin: 1rem 0;
   padding: 10px 20px;
 `

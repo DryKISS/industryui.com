@@ -7,11 +7,7 @@ import { string } from 'prop-types'
 
 export const Date = ({ date }) => {
   return (
-    <time
-      dateTime={date}
-      itemProp='datePublished'
-      pubdate='pubdate'
-    >
+    <time dateTime={date} itemProp='datePublished' pubdate='pubdate'>
       {date}
     </time>
   )

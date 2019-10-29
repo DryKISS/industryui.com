@@ -17,24 +17,11 @@ export const Breadcrumb = ({ category, path, page }) => {
 
   return (
     <nav aria-label='breadcrumb'>
-
-      <StyledOl
-        itemScope=''
-        itemType='http://schema.org/BreadcrumbList'
-      >
-
+      <StyledOl itemScope='' itemType='http://schema.org/BreadcrumbList'>
         {/* Home link - always static and routes to / */}
-        <StyledLi
-          itemProp='itemListElement'
-          itemScope=''
-          itemType='http://schema.org/ListItem'
-        >
+        <StyledLi itemProp='itemListElement' itemScope='' itemType='http://schema.org/ListItem'>
           <Link to='/' passHref>
-            <StyledA
-              itemProp='item'
-              itemScope='itemscope'
-              itemType='http://schema.org/Thing'
-            >
+            <StyledA itemProp='item' itemScope='itemscope' itemType='http://schema.org/Thing'>
               <Icon icon='home-heart' />
             </StyledA>
           </Link>
@@ -43,11 +30,7 @@ export const Breadcrumb = ({ category, path, page }) => {
         </StyledLi>
 
         {/* Category link - Need name and path */}
-        <StyledLi
-          itemProp='itemListElement'
-          itemScope=''
-          itemType='http://schema.org/ListItem'
-        >
+        <StyledLi itemProp='itemListElement' itemScope='' itemType='http://schema.org/ListItem'>
           <Link
             to={{
               as: `/blog/${slugify(path)}`,
@@ -57,13 +40,10 @@ export const Breadcrumb = ({ category, path, page }) => {
                   category: slugify(path)
                 }
               }
-            }} passHref
+            }}
+            passHref
           >
-            <StyledA
-              itemProp='item'
-              itemScope='itemscope'
-              itemType='http://schema.org/Thing'
-            >
+            <StyledA itemProp='item' itemScope='itemscope' itemType='http://schema.org/Thing'>
               {categoryFormatted}
             </StyledA>
           </Link>
@@ -81,9 +61,7 @@ export const Breadcrumb = ({ category, path, page }) => {
           <span itemProp='name'>{page}</span>
           <meta itemProp='position' content='3' />
         </StyledLi>
-
       </StyledOl>
-
     </nav>
   )
 }
@@ -105,7 +83,7 @@ const StyledOl = styled.ol`
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   position: absolute;
   top: 0;
   width: 100%;
@@ -117,8 +95,8 @@ const StyledLi = styled.li`
     color: #ccc;
     content: '/';
     display: inline-block;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 `
 

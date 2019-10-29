@@ -5,10 +5,12 @@ import React from 'react'
 
 import { AuthUserContext, withFirebase } from '../'
 
-const FirebaseWithAuthentication = (Component) => {
+const FirebaseWithAuthentication = Component => {
   class WithAuthentication extends React.Component {
     static getInitialProps (ctx) {
-      if (Component.getInitialProps) { return Component.getInitialProps(ctx) }
+      if (Component.getInitialProps) {
+        return Component.getInitialProps(ctx)
+      }
     }
 
     constructor (props) {

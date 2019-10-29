@@ -24,27 +24,21 @@ import styled from 'styled-components'
 export const BlogSidebar = ({ articles, config, facebook, findFood, media, promo, tags }) => {
   return (
     <StyledAside>
+      {findFood && <BlogFindFood />}
 
-      {findFood &&
-        <BlogFindFood />}
-
-      {media &&
-        <BlogMedia media={media} />}
+      {media && <BlogMedia media={media} />}
 
       <BlogSocial facebook={facebook} />
 
-      {promo &&
-        <BlogPromo src={promo.src} to={promo.to} />}
+      {promo && <BlogPromo src={promo.src} to={promo.to} />}
 
       <BlogRecent articles={articles} config={config} />
 
-      {tags &&
-        <BlogTagCloud articles={articles} />}
+      {tags && <BlogTagCloud articles={articles} />}
 
       <BlogArchive articles={articles} config={config} />
 
       <BlogAuthor articles={articles} config={config} />
-
     </StyledAside>
   )
 }

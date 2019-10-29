@@ -8,7 +8,9 @@ import { string } from 'prop-types'
 export const Core = ({ author, canonical, description, title }) => {
   return (
     <>
-      <title className='next-head'>{title} - {author}</title>
+      <title className='next-head'>
+        {title} - {author}
+      </title>
       <meta name='description' content={description} key='description' />
       <meta name='author' content={author} key='author' />
       <meta rel='canonical' href={canonical} key='canonical' />

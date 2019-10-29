@@ -9,41 +9,36 @@ import { bool, object, oneOfType, string } from 'prop-types'
 // UI
 import { Button, Divider, Link } from '../../../'
 
-export const Buttons = ({
-  back,
-  backText,
-  next,
-  nextDisabled,
-  nextText,
-  pathBack,
-  pathNext
-}) => {
+export const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
   return (
     <>
       <Divider size='lg' />
 
-      {back &&
+      {back && (
         <Link to={pathBack}>
-          <Button context='secondary' size='lg'>{backText}</Button>
-        </Link>}
+          <Button context='secondary' size='lg'>
+            {backText}
+          </Button>
+        </Link>
+      )}
 
-      {next &&
+      {next && (
         <div className='float-right'>
-          {pathNext &&
+          {pathNext && (
             <Link to={pathNext}>
-              <Button context='primary' size='lg'>{nextText}</Button>
-            </Link>}
+              <Button context='primary' size='lg'>
+                {nextText}
+              </Button>
+            </Link>
+          )}
 
-          {!pathNext &&
-            <Button
-              context='primary'
-              disabled={nextDisabled}
-              size='lg'
-              type='submit'
-            >
+          {!pathNext && (
+            <Button context='primary' disabled={nextDisabled} size='lg' type='submit'>
               {nextText}
-            </Button>}
-        </div>}
+            </Button>
+          )}
+        </div>
+      )}
 
       <div style={{ clear: 'both', marginBottom: '1rem' }} />
     </>

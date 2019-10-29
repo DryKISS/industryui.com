@@ -6,16 +6,7 @@
 import { any, bool, func, string } from 'prop-types'
 
 // UI
-import {
-  Button,
-  Checkbox,
-  Column,
-  DatePicker,
-  Form,
-  Input,
-  Link,
-  Row
-} from '../../'
+import { Button, Checkbox, Column, DatePicker, Form, Input, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -61,59 +52,31 @@ export const Register = ({
     },
     {
       id: 'marketing',
-      label: 'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.',
+      label:
+        'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.',
       isChecked: marketing
     }
   ]
 
   return (
     <Form submit={submit}>
-
       <Row>
-
         <Column md={6}>
-          <Input
-            label='First name'
-            id='nameFirst'
-            change={change}
-            value={nameFirst}
-          />
+          <Input label='First name' id='nameFirst' change={change} value={nameFirst} />
         </Column>
 
         <Column md={6}>
-          <Input
-            label='Last name'
-            id='nameLast'
-            change={change}
-            value={nameLast}
-          />
+          <Input label='Last name' id='nameLast' change={change} value={nameLast} />
         </Column>
-
       </Row>
 
-      <Input
-        label='Email'
-        id='email'
-        change={change}
-        type='email'
-        value={email}
-      />
+      <Input label='Email' id='email' change={change} type='email' value={email} />
 
-      <Input
-        label='Password'
-        id='password'
-        change={change}
-        type='password'
-        value={password}
-      />
+      <Input label='Password' id='password' change={change} type='password' value={password} />
 
       {birthday && renderBirthday()}
 
-      <Checkbox
-        data={CHECKBOX_TERMS}
-        change={change}
-        stacked
-      />
+      <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
 
       <Button
         align='right'
@@ -130,7 +93,6 @@ export const Register = ({
           <a>Log in</a>
         </Link>
       </StyledLink>
-
     </Form>
   )
 }

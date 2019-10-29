@@ -46,35 +46,36 @@ export const BlogFindFood = ({ colour }) => {
   const url = 'https://chat.drykiss.com/api/httpsDeliverooRestaurants'
   const domain = 'deliveroo.co.uk'
 
-  const submit = (e) => {
+  const submit = e => {
     setMsg(false)
 
     if (!validatorPostCode(postCode)) {
-      setMsg('We couldn\'t recognise that postcode - check and try again.')
+      setMsg("We couldn't recognise that postcode - check and try again.")
       return
     }
 
     // versionPostCode || versionGoogle
     if (versionPostCode) {
       if (!validatorPostCode(postCode)) {
-        setMsg('We couldn\'t recognise that postcode - check and try again.')
+        setMsg("We couldn't recognise that postcode - check and try again.")
         return
       }
 
       // Fetch restaurant service
-      window.fetch(`${url}/${domain}/${postCode}`)
-        .then((response) => {
+      window
+        .fetch(`${url}/${domain}/${postCode}`)
+        .then(response => {
           if (!response.ok) {
             throw Error(response.statusText)
           }
 
           return response.json()
         })
-        .then((data) => {
+        .then(data => {
           console.log('Success', data)
           window.open(`https://${domain}${data.url}`, '_self')
         })
-        .catch((error) => {
+        .catch(error => {
           console.log('Error', error)
           setMsg('We don’t deliver there yet')
         })
@@ -86,13 +87,9 @@ export const BlogFindFood = ({ colour }) => {
   return (
     <BlogSection>
       <StyledContainer colour={colour}>
-
         <StyledForm submit={submit}>
-
           <Label text='Your favourite restaurants, delivered.'>
-
             <InputGroup>
-
               <Input
                 change={change}
                 id='postCode'
@@ -110,31 +107,23 @@ export const BlogFindFood = ({ colour }) => {
 
               <div className='Form-feedback' style={{ color: '#fff' }} />
 
-              {msg &&
-                <div style={{ color: '#fff' }}>
-                  {msg}
-                </div>}
-
+              {msg && <div style={{ color: '#fff' }}>{msg}</div>}
             </InputGroup>
-
           </Label>
-
         </StyledForm>
 
         <Link to={`http://${domain}`} passHref>
           <StyledA target='_blank'>
-            Deliveroo{' '}
-            <Icon icon='external-link' />
+            Deliveroo <Icon icon='external-link' />
           </StyledA>
         </Link>
-
       </StyledContainer>
     </BlogSection>
   )
 }
 
 const StyledContainer = styled.div`
-  background-color: ${props => props.colour === 'beetroot' ? '#e2004f' : '#4e0064'};
+  background-color: ${props => (props.colour === 'beetroot' ? '#e2004f' : '#4e0064')};
   color: #fff;
   line-height: 22px;
   margin: 0 -10px;
@@ -152,10 +141,11 @@ const StyledForm = styled(Form)`
 const StyledA = styled.a`
   color: #fff;
   display: block;
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-align: right;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #bdbaba;
   }
 `

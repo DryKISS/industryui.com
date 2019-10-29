@@ -34,41 +34,25 @@ export const MessageSend = ({
   return (
     <Row>
       <Column md={2}>
-        {!picture &&
-          <StyledContainer />}
+        {!picture && <StyledContainer />}
 
-        {picture &&
+        {picture && (
           <div>
             <Close click={() => {}} />
             <Image alt='Picture' src={picture} style={{ border: '1px solid #000' }} />
-          </div>}
+          </div>
+        )}
       </Column>
       <Column md={10}>
         <Form submit={messageSubmit}>
-          <Textarea
-            change={messageChange}
-            id='message'
-            maxLength={320}
-            rows={2}
-            value={message}
-          />
+          <Textarea change={messageChange} id='message' maxLength={320} rows={2} value={message} />
           <div style={{ display: 'inline-block', verticalAlign: 'middle' }}>
             <EmojiMart onSelect={emoji => messageChange(message + emoji)} />
           </div>
           <div className='float-right'>
             <ButtonToolbar>
-              <Button
-                content='Reset'
-                context='danger'
-                size='lg'
-                onClick={messageReset}
-              />
-              <Button
-                content='Send'
-                context='primary'
-                size='lg'
-                type='submit'
-              />
+              <Button content='Reset' context='danger' size='lg' onClick={messageReset} />
+              <Button content='Send' context='primary' size='lg' type='submit' />
             </ButtonToolbar>
           </div>
         </Form>

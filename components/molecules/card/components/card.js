@@ -35,9 +35,7 @@ export const Card = ({
   const linked = () => {
     return (
       <Link to={to} passHref>
-        <StyledLink>
-          {card()}
-        </StyledLink>
+        <StyledLink>{card()}</StyledLink>
       </Link>
     )
   }
@@ -60,18 +58,13 @@ export const Card = ({
 
         {icon && <StyledIcon icon={icon} size='4x' />}
 
-        {(title || body) &&
-          <CardBody
-            center={center}
-            children={body}
-            context={context}
-            title={title}
-          />}
+        {(title || body) && (
+          <CardBody center={center} children={body} context={context} title={title} />
+        )}
 
         {children}
 
         {footer && <CardFooter children={footer} context={footerContext} />}
-
       </StyledCard>
     )
   }
@@ -83,9 +76,11 @@ const StyledCard = styled.div`
   background-clip: border-box;
   background-color: ${({ context, theme }) => theme.COLOUR[context]};
   border: ${({ bordered }) => bordered && '1px solid rgba(0, 0, 0, .125)'};
-  border-radius: .25rem;
-  box-shadow: ${({ shadow }) => shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
-  color: ${({ context, theme }) => (context === 'light' || context === 'white') ? theme.COLOUR.dark : theme.COLOUR.white};
+  border-radius: 0.25rem;
+  box-shadow: ${({ shadow }) =>
+    shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
+  color: ${({ context, theme }) =>
+    context === 'light' || context === 'white' ? theme.COLOUR.dark : theme.COLOUR.white};
   display: flex;
   flex-direction: column;
   font-size: inherit;
@@ -95,7 +90,9 @@ const StyledCard = styled.div`
   word-wrap: break-word;
   margin-bottom: 1rem;
 
-  ${({ deck }) => deck && MEDIA_QUERY.desktop`
+  ${({ deck }) =>
+    deck &&
+    MEDIA_QUERY.desktop`
     display: flex;
     flex: 1 0 calc(100%/3 - 30px);
     flex-direction: column;
@@ -124,10 +121,7 @@ Card.propTypes = {
   footer: string,
   fullHeight: bool,
   header: string,
-  to: oneOfType([
-    object,
-    string
-  ]),
+  to: oneOfType([object, string]),
   horizontal: bool,
   icon: string,
   image: string,

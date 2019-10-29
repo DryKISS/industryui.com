@@ -37,31 +37,21 @@ export const Hero = ({
   }
 
   return (
-    <StyledHero
-      background={background}
-      backgroundSize={backgroundSize}
-      className={className}
-    >
+    <StyledHero background={background} backgroundSize={backgroundSize} className={className}>
       <Container>
-
         <Row>
-
           {title && renderLeft()}
 
-          {image &&
-            <HeroImage alt={alt} align={align} image={image} width={width} />}
-
+          {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
         </Row>
-
       </Container>
-
     </StyledHero>
   )
 }
 
 const StyledHero = styled.header`
   background-color: #fff;
-  background-image: ${({ background }) => background ? `url(${background})` : 'none'};
+  background-image: ${({ background }) => (background ? `url(${background})` : 'none')};
   background-position: center;
   background-size: ${({ backgroundSize }) => backgroundSize};
   padding: 2rem 0 0;
@@ -102,10 +92,7 @@ Hero.propTypes = {
   buttons: array,
   image: string,
   strapline: oneOfType([object, string]),
-  style: objectOf(oneOfType([
-    number,
-    string
-  ])),
+  style: objectOf(oneOfType([number, string])),
   title: string.isRequired,
   width: number
 }

@@ -12,12 +12,7 @@ import { MessageBackground, MessageList, MessageSend } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const MessageContainer = ({
-  background,
-  className,
-  messages,
-  style
-}) => {
+export const MessageContainer = ({ background, className, messages, style }) => {
   return (
     <StyledContainer className={className} style={style}>
       <MessageBackground background={background} />

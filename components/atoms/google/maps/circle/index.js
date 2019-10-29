@@ -35,15 +35,24 @@ function GMapCircle (lat, lng, rad, detail = 8) {
 
   const _lat = (lat * pi) / 180
   const _lng = (lng * pi) / 180
-  const d = (rad / 1000) / r
+  const d = rad / 1000 / r
 
   let i = 0
 
   for (i = 0; i <= 360; i += detail) {
-    const brng = i * pi / 180
+    const brng = (i * pi) / 180
 
-    let pLat = Math.asin(Math.sin(_lat) * Math.cos(d) + Math.cos(_lat) * Math.sin(d) * Math.cos(brng))
-    const pLng = ((_lng + Math.atan2(Math.sin(brng) * Math.sin(d) * Math.cos(_lat), Math.cos(d) - Math.sin(_lat) * Math.sin(pLat))) * 180) / pi
+    let pLat = Math.asin(
+      Math.sin(_lat) * Math.cos(d) + Math.cos(_lat) * Math.sin(d) * Math.cos(brng)
+    )
+    const pLng =
+      ((_lng +
+        Math.atan2(
+          Math.sin(brng) * Math.sin(d) * Math.cos(_lat),
+          Math.cos(d) - Math.sin(_lat) * Math.sin(pLat)
+        )) *
+        180) /
+      pi
     pLat = (pLat * 180) / pi
 
     staticMapSrc += locationBuilder(pLat + ',' + pLng)

@@ -20,11 +20,12 @@ export const Sidebar = ({ data }) => {
     return (
       <Link to={to} passHref>
         <StyledLink>
-          {icon &&
+          {icon && (
             <Icon
-              icon={icon ? iconArray ? icon[1] : icon : null}
+              icon={icon ? (iconArray ? icon[1] : icon) : null}
               prefix={icon && iconArray && icon[0]}
-            />}
+            />
+          )}
           {name}
         </StyledLink>
       </Link>
@@ -34,19 +35,21 @@ export const Sidebar = ({ data }) => {
   return (
     <StyledAside>
       <List group>
-
         {data.map(({ Component, divider, icon, name, to }, index) => {
           return (
             <StyledLi key={index}>
-              {divider
-                ? <StyledDivider size='sm' />
-                : Component ? <Component />
-                  : to ? link(icon, name, to)
-                    : name}
+              {divider ? (
+                <StyledDivider size='sm' />
+              ) : Component ? (
+                <Component />
+              ) : to ? (
+                link(icon, name, to)
+              ) : (
+                name
+              )}
             </StyledLi>
           )
         })}
-
       </List>
     </StyledAside>
   )
@@ -55,14 +58,14 @@ export const Sidebar = ({ data }) => {
 const StyledAside = styled.aside`
   background-color: ${({ theme }) => theme.SIDEBAR.background};
   border-right: 1px solid ${({ theme }) => theme.SIDEBAR.highlight};
-  box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, .75);
+  box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, 0.75);
   height: 100%;
   padding: 1rem 0;
 `
 
 const StyledDivider = styled(Divider)`
   border-top-width: 1px;
-  opacity: .2;
+  opacity: 0.2;
 `
 
 const StyledLi = styled(ListItem)`
@@ -70,7 +73,7 @@ const StyledLi = styled(ListItem)`
   padding: 0;
 
   svg {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 
   &:hover {

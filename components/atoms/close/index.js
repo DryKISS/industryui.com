@@ -29,7 +29,7 @@ const StyledButton = styled(Button)`
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  opacity: .6;
+  opacity: 0.6;
   text-shadow: 0 1px 0 #fff;
   margin: -1rem -1rem -1rem auto;
   z-index: 10000;
@@ -37,7 +37,7 @@ const StyledButton = styled(Button)`
   &:hover {
     background-color: transparent;
     color: #000;
-    opacity: .8;
+    opacity: 0.8;
     text-decoration: none;
   }
 `

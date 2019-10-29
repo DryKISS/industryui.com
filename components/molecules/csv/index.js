@@ -15,11 +15,11 @@ import { Input } from '../../'
 const PapaParse = require('papaparse/papaparse.min.js')
 
 export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
-  const change = (e) => {
+  const change = e => {
     const reader = new window.FileReader()
     const filename = e.target.files[0].name
 
-    reader.onload = (event) => {
+    reader.onload = event => {
       const csvData = PapaParse.parse(
         event.target.result,
         Object.assign(parserOptions, {
@@ -34,13 +34,7 @@ export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
   }
 
   return (
-    <Input
-      accept='.csv, text/csv'
-      id='inputId'
-      label='CSV Upload'
-      change={change}
-      type='file'
-    />
+    <Input accept='.csv, text/csv' id='inputId' label='CSV Upload' change={change} type='file' />
   )
 }
 

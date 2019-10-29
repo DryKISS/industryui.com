@@ -9,13 +9,7 @@ import { array, func, node, string } from 'prop-types'
 // UI
 import { Copyright, Footer } from '../../'
 
-export const Bootstrap = ({
-  brand,
-  children,
-  copyright,
-  footer,
-  Navigation
-}) => {
+export const Bootstrap = ({ brand, children, copyright, footer, Navigation }) => {
   return (
     <>
       <Navigation />

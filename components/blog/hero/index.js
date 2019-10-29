@@ -17,9 +17,7 @@ import { BlogCard, Column, Row } from '../../'
 
 export const BlogHero = ({ articles, config, number }) => {
   const _find = () => {
-    return articles.find((article) =>
-      article.hero === true
-    )
+    return articles.find(article => article.hero === true)
   }
 
   const renderHero = () => {
@@ -32,11 +30,7 @@ export const BlogHero = ({ articles, config, number }) => {
     )
   }
 
-  return (
-    <Row>
-      {renderHero()}
-    </Row>
-  )
+  return <Row>{renderHero()}</Row>
 }
 
 BlogHero.propTypes = {

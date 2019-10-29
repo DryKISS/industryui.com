@@ -12,16 +12,7 @@ import { Select } from '../'
 import { DOG_BREED } from '../../../constants'
 
 export const SelectBreed = ({ change, label, id, value }) => {
-  return (
-    <Select
-      change={change}
-      id={id}
-      label={label}
-      options={DOG_BREED}
-      required
-      value={value}
-    />
-  )
+  return <Select change={change} id={id} label={label} options={DOG_BREED} required value={value} />
 }
 
 SelectBreed.propTypes = {

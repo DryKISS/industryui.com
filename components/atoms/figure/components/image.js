@@ -11,12 +11,9 @@ import { Image } from '../../image'
 // Style
 import styled from 'styled-components'
 
-export const FigureImage = ({ className, style, ...props }) =>
-  <StyledImage
-    className={className}
-    style={style}
-    {...props}
-  />
+export const FigureImage = ({ className, style, ...props }) => (
+  <StyledImage className={className} style={style} {...props} />
+)
 
 const StyledImage = styled(Image)`
   display: block;

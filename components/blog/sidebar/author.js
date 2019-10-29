@@ -21,8 +21,8 @@ export const BlogAuthor = ({ articles, config, total }) => {
   const _find = () => {
     const counts = articles
 
-      .filter((article) => {
-        return (article.category !== 'terms' && article.homepage !== false)
+      .filter(article => {
+        return article.category !== 'terms' && article.homepage !== false
       })
 
       .reduce((p, c) => {
@@ -37,10 +37,9 @@ export const BlogAuthor = ({ articles, config, total }) => {
         return p
       }, {})
 
-    const countsMapped = Object
-      .keys(counts)
+    const countsMapped = Object.keys(counts)
       .filter((article, v) => {
-        return (article !== 'undefined')
+        return article !== 'undefined'
       })
       .map(k => {
         return {

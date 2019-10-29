@@ -18,30 +18,24 @@ const sizes = {
   phone: 576
 }
 
-export const MEDIA_QUERY =
-  Object
-    .keys(sizes)
-    .reduce((accumulator, label) => {
-      const emSize = sizes[label] / 16
+export const MEDIA_QUERY = Object.keys(sizes).reduce((accumulator, label) => {
+  const emSize = sizes[label] / 16
 
-      accumulator[label] = (...args) => css`
-        @media (min-width: ${emSize}em) {
-          ${css(...args)};
-        }
-      `
-      return accumulator
-    }, {})
+  accumulator[label] = (...args) => css`
+    @media (min-width: ${emSize}em) {
+      ${css(...args)};
+    }
+  `
+  return accumulator
+}, {})
 
-export const MEDIA_QUERY_MAX =
-  Object
-    .keys(sizes)
-    .reduce((accumulator, label) => {
-      const emSize = sizes[label] / 16
+export const MEDIA_QUERY_MAX = Object.keys(sizes).reduce((accumulator, label) => {
+  const emSize = sizes[label] / 16
 
-      accumulator[label] = (...args) => css`
-      @media (max-width: ${emSize}em) {
-        ${css(...args)};
-      }
-    `
-      return accumulator
-    }, {})
+  accumulator[label] = (...args) => css`
+    @media (max-width: ${emSize}em) {
+      ${css(...args)};
+    }
+  `
+  return accumulator
+}, {})

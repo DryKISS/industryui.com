@@ -36,7 +36,9 @@ export const SelectReact = ({
     },
 
     multiValueLabel: (base, state) => {
-      return state.data.isFixed ? { ...base, fontWeight: 'bold', color: 'white', paddingRight: 6 } : base
+      return state.data.isFixed
+        ? { ...base, fontWeight: 'bold', color: 'white', paddingRight: 6 }
+        : base
     },
 
     multiValueRemove: (base, state) => {

@@ -15,13 +15,11 @@ export const Copyright = ({ brand, links }) => {
   const renderLinks = () => {
     return (
       <StyledNav>
-
-        {links.map(({ name, to }, index) =>
+        {links.map(({ name, to }, index) => (
           <Link to={to} key={index} passHref>
             <StyledLink>{name}</StyledLink>
           </Link>
-        )}
-
+        ))}
       </StyledNav>
     )
   }
@@ -30,19 +28,15 @@ export const Copyright = ({ brand, links }) => {
 
   return (
     <StyledCopyright>
-
       <Container>
-
         <Row>
-
-          <StyledBrand>©{year} {brand}</StyledBrand>
+          <StyledBrand>
+            ©{year} {brand}
+          </StyledBrand>
 
           {links && renderLinks()}
-
         </Row>
-
       </Container>
-
     </StyledCopyright>
   )
 }
@@ -56,7 +50,7 @@ const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COLOUR.light};
   bottom: 0;
   color: ${({ theme }) => theme.COLOUR.dark};
-  font-size: .875rem;
+  font-size: 0.875rem;
   height: 4rem;
   line-height: 4rem;
   position: absolute;

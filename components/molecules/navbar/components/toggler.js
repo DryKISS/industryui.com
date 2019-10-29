@@ -18,26 +18,19 @@ export const Toggler = ({ handleMenuClick, visible }) => {
       aria-label='Toggle navigation'
       onClick={handleMenuClick}
     >
-      {!visible &&
-        <StyledIconMenu
-          aria-hidden='true'
-          role='img'
-          viewBox='0 0 448 512'
-        >
+      {!visible && (
+        <StyledIconMenu aria-hidden='true' role='img' viewBox='0 0 448 512'>
           <Icon icon='bars' />
-        </StyledIconMenu>}
+        </StyledIconMenu>
+      )}
 
-      {visible &&
-        <StyledIconClose
-          aria-hidden='true'
-          role='img'
-          viewBox='0 0 352 512'
-        >
+      {visible && (
+        <StyledIconClose aria-hidden='true' role='img' viewBox='0 0 352 512'>
           <Icon icon='times' size='lg' />
-        </StyledIconClose>}
+        </StyledIconClose>
+      )}
 
       <StyledText>Menu</StyledText>
-
     </StyledToggler>
   )
 }
@@ -55,17 +48,17 @@ const StyledToggler = styled.a`
 const StyledIconMenu = styled.svg`
   display: inline-block;
   vertical-align: -2px;
-  width: .9rem;
+  width: 0.9rem;
 `
 
 const StyledIconClose = styled.svg`
   display: inline-block;
   vertical-align: -2.5px;
-  width: .7em;
+  width: 0.7em;
 `
 
 const StyledText = styled.span`
-  margin-left: .25rem;
+  margin-left: 0.25rem;
 `
 
 Toggler.propTypes = {

@@ -26,15 +26,18 @@ console.log('- Robots.txt saved!')
 const pages = getPages()
 const today = formatDateStandard(new Date())
 
-const sitemapXml =
-`<?xml version="1.0" encoding="UTF-8"?>
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${Object.keys(pages).map((path) => {
-    return `<url>
+  ${Object.keys(pages)
+    .map(path => {
+      return `<url>
     <loc>${Canonical}${path}</loc>
-    <lastmod>${pages[path].lastModified ? formatDateStandard(new Date(pages[path].lastModified)) : today}</lastmod>
+    <lastmod>${
+      pages[path].lastModified ? formatDateStandard(new Date(pages[path].lastModified)) : today
+    }</lastmod>
   </url>\n  `
-  }).join('')}
+    })
+    .join('')}
 </urlset>`
 
 fs.writeFileSync(`${directory}/sitemap.xml`, sitemapXml)

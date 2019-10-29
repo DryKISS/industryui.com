@@ -14,11 +14,7 @@ import styled from 'styled-components'
 
 export const CardImage = ({ alt, header, src }) => {
   return (
-    <StyledImage
-      alt={alt}
-      imageClasses='rounded'
-      src={src}
-    >
+    <StyledImage alt={alt} imageClasses='rounded' src={src}>
       {header}
     </StyledImage>
   )
@@ -28,7 +24,7 @@ const StyledImage = styled(Image)`
   display: block;
 
   .rounded {
-    border-radius: .25rem .25rem 0 0;
+    border-radius: 0.25rem 0.25rem 0 0;
     border-style: none;
   }
 `

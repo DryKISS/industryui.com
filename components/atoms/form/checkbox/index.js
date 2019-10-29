@@ -13,7 +13,6 @@ export const Checkbox = ({ change, data, legend, stacked }) => {
     return data.map(({ disabled, id, isChecked, label, required }, index) => {
       return (
         <StyledLabel key={index} stacked={stacked}>
-
           <StyledCheckbox
             checked={isChecked}
             className='Form-control'
@@ -28,7 +27,6 @@ export const Checkbox = ({ change, data, legend, stacked }) => {
           {label}
 
           <div className='Form-feedback' />
-
         </StyledLabel>
       )
     })
@@ -60,13 +58,13 @@ const stackedStyles = `
 `
 
 const StyledLabel = styled.label`
-  ${props => props.stacked ? stackedStyles : ''}
+  ${props => (props.stacked ? stackedStyles : '')}
   position: relative;
   padding-left: 1.25rem;
 `
 
 const StyledCheckbox = styled.input`
   position: absolute;
-  margin-top: .05rem;
+  margin-top: 0.05rem;
   margin-left: -1.25rem;
 `

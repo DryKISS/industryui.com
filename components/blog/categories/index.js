@@ -11,23 +11,14 @@ import { Fragment } from 'react'
 import { any, object } from 'prop-types'
 
 // UI
-import {
-  BlogCard,
-  Column,
-  Heading,
-  Link,
-  Row,
-  slugify
-} from '../../'
+import { BlogCard, Column, Heading, Link, Row, slugify } from '../../'
 
 // Style
 import styled from 'styled-components'
 
 export const BlogCategories = ({ articles, config }) => {
   const _uniqueCategories = () => {
-    const uniqueCategories = [...new Set(
-      articles.map(article => article.category)
-    )]
+    const uniqueCategories = [...new Set(articles.map(article => article.category))]
 
     return uniqueCategories
   }
@@ -35,10 +26,10 @@ export const BlogCategories = ({ articles, config }) => {
   const _find = () => {
     const categories = _uniqueCategories()
 
-    return categories.map((category) => {
+    return categories.map(category => {
       return articles
-        .filter((article) => {
-          return (article.category === category && article.homepage !== false)
+        .filter(article => {
+          return article.category === category && article.homepage !== false
         })
         .sort((a, b) => {
           return new Date(b.date) - new Date(a.date)
@@ -49,10 +40,8 @@ export const BlogCategories = ({ articles, config }) => {
 
   return (
     <section>
-
       {_find().map((articles, index) => (
         <Fragment key={index}>
-
           <Link
             to={{
               as: `${config.path}/${slugify(articles[0].category)}`,
@@ -70,18 +59,14 @@ export const BlogCategories = ({ articles, config }) => {
           </Link>
 
           <Row>
-
             {articles.map((article, index) => (
               <Column key={index} md={6}>
                 <BlogCard article={article} config={config} />
               </Column>
             ))}
-
           </Row>
-
         </Fragment>
       ))}
-
     </section>
   )
 }

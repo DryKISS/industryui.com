@@ -14,10 +14,6 @@ export class FirebaseProvider extends Component {
   render () {
     const { children } = this.props
 
-    return (
-      <FirebaseContext.Provider value={FirebaseInit}>
-        {children}
-      </FirebaseContext.Provider>
-    )
+    return <FirebaseContext.Provider value={FirebaseInit}>{children}</FirebaseContext.Provider>
   }
 }

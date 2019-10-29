@@ -24,11 +24,9 @@ import styled from 'styled-components'
 export const BlogDetails = ({ article, config, facebook }) => {
   return (
     <StyledArticleDetails>
-
       <Divider />
 
       <List inline unstyled style={{ marginTop: '.25rem' }}>
-
         {/* Date / Time */}
         <span style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='calendar-alt' />
@@ -46,16 +44,13 @@ export const BlogDetails = ({ article, config, facebook }) => {
           <StyledIcon context='dark' icon='stopwatch' />
           <BlogReadTime time={2} />
         </span>
-
       </List>
 
-      {article.tags &&
-        <BlogTags tags={article.tags} />}
+      {article.tags && <BlogTags tags={article.tags} />}
 
       <Divider />
 
       <StyledShare>
-
         <StyledShareText>Share this article</StyledShareText>
 
         <FacebookShareButton
@@ -74,21 +69,19 @@ export const BlogDetails = ({ article, config, facebook }) => {
         {/* <StyledShareLink href='javascript:;'>
           <Icon icon='pinterest-square' prefix='fab' />
         </StyledShareLink> */}
-
       </StyledShare>
 
       <Divider />
-
     </StyledArticleDetails>
   )
 }
 
 const StyledArticleDetails = styled.div`
-  font-size: .875rem;
+  font-size: 0.875rem;
 `
 
 const StyledIcon = styled(Icon)`
-  margin-right: .25rem;
+  margin-right: 0.25rem;
 `
 
 const StyledShare = styled.div`

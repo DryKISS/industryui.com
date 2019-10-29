@@ -54,13 +54,13 @@ Radio.defaultProps = {
 const StyledLabel = styled.label`
   ${props => props.stacked && 'display: block;'}
   padding-left: 1.25rem;
-  ${props => props.stacked ? 'margin: .5rem 0;' : 'margin-right: 1.25rem;'}
+  ${props => (props.stacked ? 'margin: .5rem 0;' : 'margin-right: 1.25rem;')}
   ${props => props.stacked && 'padding-left: 1.25rem;'}
   position: relative;
 `
 
 const StyledInput = styled.input`
-  margin-top: .05rem;
+  margin-top: 0.05rem;
   margin-left: -1.25rem;
   position: absolute;
 `

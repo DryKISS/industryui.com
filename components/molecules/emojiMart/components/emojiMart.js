@@ -53,7 +53,7 @@ export const EmojiMart = ({ closeOnClickOut, placeholderEmoji, onSelect }) => {
   return (
     <div>
       <StyledEmoji onClick={showEmojis} emoji={{ id: placeholderEmoji, skin: 1 }} size={32} />
-      {open &&
+      {open && (
         <Picker
           emoji='point_up_2'
           include={['foods', 'people', 'recent', 'nature']}
@@ -62,7 +62,8 @@ export const EmojiMart = ({ closeOnClickOut, placeholderEmoji, onSelect }) => {
           sheetSize={32}
           title='Pick your emoji...'
           ref={node}
-        />}
+        />
+      )}
     </div>
   )
 }

@@ -33,11 +33,7 @@ export const BlogTags = ({ className, style, tags }) => {
     })
   }
 
-  return (
-    <div>
-      {tagMap()}
-    </div>
-  )
+  return <div>{tagMap()}</div>
 }
 
 BlogTags.propTypes = {

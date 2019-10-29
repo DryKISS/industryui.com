@@ -1,7 +1,7 @@
 /**
  * Truncate
  */
-export const Truncate = (width) => {
+export const Truncate = width => {
   return `
     display: inline-block;
     line-height: initial;

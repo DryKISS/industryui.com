@@ -13,11 +13,7 @@ import { MEDIA_QUERY } from '../../../'
 import styled from 'styled-components'
 
 export const CardDecks = ({ children }) => {
-  return (
-    <StyledDecks>
-      {children}
-    </StyledDecks>
-  )
+  return <StyledDecks>{children}</StyledDecks>
 }
 
 const StyledDecks = styled.div`

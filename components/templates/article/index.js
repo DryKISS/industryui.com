@@ -7,13 +7,7 @@
 import { object } from 'prop-types'
 
 // UI
-import {
-  BlogCategory,
-  BlogDetails,
-  Breadcrumb,
-  Heading,
-  Image
-} from '../../'
+import { BlogCategory, BlogDetails, Breadcrumb, Heading, Image } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -33,11 +27,7 @@ export const Article = ({ article, config, facebook }) => {
           src={article.image || `/static/blog/${article.slug}/hero.jpg`}
         />
 
-        <Breadcrumb
-          category={article.category}
-          page={article.title}
-          path={article.category}
-        />
+        <Breadcrumb category={article.category} page={article.title} path={article.category} />
 
         <BlogCategory config={config} to={article.category} />
 
@@ -64,7 +54,6 @@ export const Article = ({ article, config, facebook }) => {
           <% end %>
         </footer>
       */}
-
     </StyledArticle>
   )
 }
