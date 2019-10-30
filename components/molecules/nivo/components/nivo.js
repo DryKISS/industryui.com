@@ -8,7 +8,7 @@ import { string } from 'prop-types'
 
 // Nivo
 import { Bar } from '@nivo/bar'
-import { generateCountriesData, sets } from '@nivo/generators'
+import { generateCountriesData } from '@nivo/generators'
 
 export const BarChart = ({
   colors,
@@ -20,31 +20,31 @@ export const BarChart = ({
   layout,
   tickValues
 }) => {
-  const theme = {
-    axis: {
-      ticks: {
-        line: {
-          stroke: '#e9ecee',
-          strokeWidth: 0
-        },
-        text: {
-          fill: '#919eab',
-          fontFamily: 'Nunito'
-        }
-      }
-    },
-    grid: {
-      line: {
-        stroke: '#e9ecee',
-        strokeWidth: 0.5
-      }
-    },
-    legends: {
-      text: {
-        fontFamily: 'Nunito'
-      }
-    }
-  }
+  // const theme = {
+  //   axis: {
+  //     ticks: {
+  //       line: {
+  //         stroke: '#e9ecee',
+  //         strokeWidth: 0
+  //       },
+  //       text: {
+  //         fill: '#919eab',
+  //         fontFamily: 'Nunito'
+  //       }
+  //     }
+  //   },
+  //   grid: {
+  //     line: {
+  //       stroke: '#e9ecee',
+  //       strokeWidth: 0.5
+  //     }
+  //   },
+  //   legends: {
+  //     text: {
+  //       fontFamily: 'Nunito'
+  //     }
+  //   }
+  // }
 
   const keys = ['donut']
   const commonProps = {

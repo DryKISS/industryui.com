@@ -1,1 +1,1 @@
-require('babel-plugin-require-context-hook/register')();
+require('babel-plugin-require-context-hook/register')()
