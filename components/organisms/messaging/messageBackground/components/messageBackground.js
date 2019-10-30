@@ -26,5 +26,5 @@ MessageBackground.propTypes = {
 }
 
 MessageBackground.defaultProps = {
-  path: 'https://web.whatsapp.com/img/8a055527b27b887521a9f084497d8879.png'
+  path: '/messaging/background.png'
 }
