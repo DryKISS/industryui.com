@@ -3,6 +3,7 @@
  */
 // Core
 import { COLOUR } from './colour'
+import { HEADINGS } from './headings'
 import { TYPOGRAPHY } from './typography'
 
 // Components
@@ -17,6 +18,7 @@ export const Theme = {
   COLOUR,
   FOOTER,
   GRID,
+  HEADINGS,
   AVATAR,
   NAVBAR,
   SIDEBAR,
