@@ -18,7 +18,7 @@ const StyledBackground = styled.div`
   top: 0;
   height: 100%;
   width: 100%;
-  opacity: 0.06;
+  /* opacity: 0.6; */
 `
 
 MessageBackground.propTypes = {

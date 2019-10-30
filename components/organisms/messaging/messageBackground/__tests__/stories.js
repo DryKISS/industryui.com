@@ -20,8 +20,14 @@ export default {
   }
 }
 
-export const defaultStory = () => <MessageBackground />
+export const main = () => (
+  <div style={{ height: '500px' }}>
+    <MessageBackground />
+  </div>
+)
 
-defaultStory.story = {
-  name: 'Default'
-}
+export const path = () => (
+  <div style={{ height: '500px' }}>
+    <MessageBackground path='/messaging/background.png' />
+  </div>
+)
