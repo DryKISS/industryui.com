@@ -4,11 +4,10 @@
 
 // React
 import React from 'react'
-import { string } from 'prop-types'
+import { array, string } from 'prop-types'
 
 // Nivo
-import { Bar } from '@nivo/bar'
-import { generateCountriesData } from '@nivo/generators'
+import { ResponsiveBar } from '@nivo/bar'
 
 export const BarChart = ({
   colors,
@@ -17,50 +16,64 @@ export const BarChart = ({
   data,
   groupMode,
   index,
+  keys,
   layout,
   tickValues
 }) => {
-  // const theme = {
-  //   axis: {
-  //     ticks: {
-  //       line: {
-  //         stroke: '#e9ecee',
-  //         strokeWidth: 0
-  //       },
-  //       text: {
-  //         fill: '#919eab',
-  //         fontFamily: 'Nunito'
-  //       }
-  //     }
-  //   },
-  //   grid: {
-  //     line: {
-  //       stroke: '#e9ecee',
-  //       strokeWidth: 0.5
-  //     }
-  //   },
-  //   legends: {
-  //     text: {
-  //       fontFamily: 'Nunito'
-  //     }
-  //   }
-  // }
-
-  const keys = ['donut']
   const commonProps = {
-    width: 900,
-    height: 500,
-    margin: { top: 60, right: 80, bottom: 60, left: 80 },
-    data: generateCountriesData(keys, { size: 7 }),
-    indexBy: 'country',
-    keys,
-    padding: 0.2,
+    axisBottom: {
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: 'Jobs',
+      legendPosition: 'middle',
+      legendOffset: 32
+    },
+    axisLeft: {
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: 'Total',
+      legendPosition: 'middle',
+      legendOffset: -40
+    },
+    colors: { scheme: 'nivo' },
+    data: data,
+    height: 423,
+    indexBy: 'date',
+    keys: keys,
     labelTextColor: 'inherit:darker(1.4)',
     labelSkipWidth: 16,
-    labelSkipHeight: 16
+    labelSkipHeight: 16,
+    legends: [
+      {
+        dataFrom: 'keys',
+        anchor: 'bottom-right',
+        direction: 'column',
+        justify: false,
+        translateX: 120,
+        translateY: 0,
+        itemsSpacing: 2,
+        itemWidth: 100,
+        itemHeight: 20,
+        itemDirection: 'left-to-right',
+        itemOpacity: 0.85,
+        symbolSize: 20,
+        effects: [
+          {
+            on: 'hover',
+            style: {
+              itemOpacity: 1
+            }
+          }
+        ]
+      }
+    ],
+    margin: { top: 0, right: 130, bottom: 50, left: 50 },
+    padding: 0.2
   }
 
-  return <Bar {...commonProps} />
+  return <ResponsiveBar {...commonProps} />
 
   // return (
   //   <ResponsiveBar
@@ -103,8 +116,7 @@ export const BarChart = ({
   //     enableLabel={false}
   //     motionStiffness={90}
   //     motionDamping={15}
-  //     theme={theme}
-  //     tooltip={customTooltip || null}
+
   //     // legends={[
   //     //   {
   //     //     dataFrom: "keys",
@@ -136,6 +148,7 @@ export const BarChart = ({
 }
 
 BarChart.propTypes = {
+  data: array.isRequired,
   groupMode: string,
   index: string,
   layout: string
