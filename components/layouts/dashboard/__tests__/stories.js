@@ -1,5 +1,5 @@
 /**
- * Avatar
+ * Dashboard
  */
 
 // React
@@ -25,7 +25,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Dashboard
     error={{ message: 'Error 404' }}
     isLoading={false}
@@ -38,7 +38,3 @@ export const defaultStory = () => (
     Dashboard Layout
   </Dashboard>
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

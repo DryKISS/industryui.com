@@ -61,6 +61,15 @@ const StyledAside = styled.aside`
   box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, 0.75);
   height: 100%;
   padding: 1rem 0;
+
+  position: fixed;
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+  min-width: 16.66667%;
+  width: 16.66667%;
+  min-height: 100%;
+  background: #161537;
+  overflow: hidden;
 `
 
 const StyledDivider = styled(Divider)`
