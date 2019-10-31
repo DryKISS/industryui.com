@@ -5,11 +5,12 @@
 // React
 import React from 'react'
 
+// Storybook
+import { number, withKnobs } from '@storybook/addon-knobs'
+
 // UI
 import { Avatar } from '../'
 import Readme from '../README.md'
-
-import { number, withKnobs } from '@storybook/addon-knobs'
 
 export default {
   title: 'Atoms/Avatar',
@@ -22,8 +23,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Avatar content='Avatar' size={number('Size', 60)} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Avatar content='Avatar' size={number('Size', 60)} />

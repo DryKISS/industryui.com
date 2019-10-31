@@ -31,7 +31,7 @@
     "check": "npm-check -s -u",
     "dedupe": "yarn-deduplicate yarn.lock",
     "serve": "npx http-server storybook-static",
-    "start": "start-storybook -s .storybook/static -p 9000 --quiet -c .storybook",
+    "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix --verbose | snazzy",
     "stylelint": "stylelint './**/*.js'",
@@ -40,8 +40,8 @@
     "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
-    "build-storybook": "build-storybook --quiet -s .storybook/static",
-    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook --quiet -s ./.storybook/static",
+    "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
     "migrate": "./node_modules/.bin/jscodeshift -t ./node_modules/@storybook/codemod/dist/transforms/storiesof-to-csf.js . --ignore-pattern \"node_modules|dist\""
   },
   "engines": {
@@ -97,6 +97,8 @@
     "@fullcalendar/interaction": "^4.3.0",
     "@fullcalendar/react": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
+    "@nivo/bar": "^0.59.2",
+    "@nivo/generators": "^0.59.0",
     "@typeform/embed": "^0.14.1",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
