@@ -3,20 +3,20 @@
  */
 
 // React
-import React from 'react';
+import React from 'react'
 
 // Style
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // UI
-import { Carousel, CarouselSlide, PRCarousel, PRCarouselSlide } from '../';
-import Readme from '../README.md';
+import { Carousel, CarouselSlide, PRCarousel, PRCarouselSlide } from '../'
+import Readme from '../README.md'
 
-import dog1 from '../__mocks__/images/dog1.jpg';
-import dog2 from '../__mocks__/images/dog2.jpg';
-import dog3 from '../__mocks__/images/dog3.jpg';
-import dog4 from '../__mocks__/images/dog4.jpg';
-import dog5 from '../__mocks__/images/dog5.jpg';
+import dog1 from '../__mocks__/images/dog1.jpg'
+import dog2 from '../__mocks__/images/dog2.jpg'
+import dog3 from '../__mocks__/images/dog3.jpg'
+import dog4 from '../__mocks__/images/dog4.jpg'
+import dog5 from '../__mocks__/images/dog5.jpg'
 
 export default {
   title: 'Molecules/Carousel',
