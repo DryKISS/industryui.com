@@ -9,9 +9,6 @@ import React from 'react'
 import { Navbar, SidebarLayout } from '../../../'
 import Readme from '../README.md'
 
-// Config
-import { Brand } from 'config'
-
 export default {
   title: 'Layouts/Sidebar',
   component: SidebarLayout,
