@@ -48,13 +48,15 @@ Copyright.propTypes = {
 
 const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COLOUR.light};
-  bottom: 0;
   color: ${({ theme }) => theme.COLOUR.dark};
   font-size: 0.875rem;
   height: 4rem;
   line-height: 4rem;
-  position: absolute;
   width: 100%;
+
+  /* position: absolute; */
+
+  /* bottom: 0; */
 `
 
 const StyledBrand = styled.div`

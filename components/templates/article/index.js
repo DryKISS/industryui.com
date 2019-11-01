@@ -29,11 +29,11 @@ export const Article = ({ article, config, facebook }) => {
 
         <Breadcrumb category={article.category} page={article.title} path={article.category} />
 
-        <BlogCategory config={config} to={article.category} />
+        {config && <BlogCategory config={config} to={article.category} />}
 
         <StyledHeading content={article.heading} />
 
-        <BlogDetails article={article} config={config} facebook={facebook} />
+        {facebook && <BlogDetails article={article} config={config} facebook={facebook} />}
       </header>
 
       <span

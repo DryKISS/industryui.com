@@ -78,7 +78,6 @@ export const ThemeStyle = createGlobalStyle`
     font-family: ${props => props.theme.TYPOGRAPHY.font};
     margin: 0;
     position: relative;
-    padding-bottom: 4rem;
   }
 
   /* Headings */

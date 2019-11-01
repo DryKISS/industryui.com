@@ -30,6 +30,7 @@ export const Icons = {
 
 const sidebarData = [
   {
+    icon: ['fad', 'tachometer-alt-average'],
     name: 'Dashboard',
     to: '/dashboard'
   },
@@ -50,7 +51,7 @@ const sidebarData = [
   }
 ]
 
-export const Sidebar = () => <SidebarUI data={sidebarData} />
+export const Sidebar = () => <SidebarUI brand='/drykiss.svg' data={sidebarData} />
 
 export const Config = {
   apiConfig,
