@@ -12,7 +12,7 @@ import { Image } from '../../../'
 // Style
 import styled from 'styled-components'
 
-const DropzonePreview = ({ file, handleRemove, index }) => {
+export const DropzonePreview = ({ file, handleRemove, index }) => {
   return (
     <StyledPreview>
       {/* <Close click={handleRemove(index)} /> */}
@@ -31,5 +31,3 @@ DropzonePreview.propTypes = {
   handleRemove: func,
   index: any
 }
-
-export { DropzonePreview }

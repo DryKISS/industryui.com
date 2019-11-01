@@ -19,8 +19,20 @@ export default {
   }
 }
 
-export const defaultStory = () => <Dropzone />
+export const main = () => (
+  <div style={{ margin: '1rem' }}>
+    <Dropzone />
+  </div>
+)
 
-defaultStory.story = {
-  name: 'Default'
-}
+export const allFiles = () => (
+  <div style={{ margin: '1rem' }}>
+    <Dropzone accept='' />
+  </div>
+)
+
+export const disabled = () => (
+  <div style={{ margin: '1rem' }}>
+    <Dropzone disabled />
+  </div>
+)
