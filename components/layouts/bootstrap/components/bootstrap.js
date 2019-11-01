@@ -7,12 +7,12 @@
 import { array, func, node, string } from 'prop-types'
 
 // UI
-import { Copyright, Footer } from '../../'
+import { Copyright, Footer } from '../../../'
 
-export const Bootstrap = ({ brand, children, copyright, footer, Navigation }) => {
+export const Bootstrap = ({ brand, children, copyright, footer, navigation }) => {
   return (
     <>
-      <Navigation />
+      {navigation()}
 
       {children}
 
