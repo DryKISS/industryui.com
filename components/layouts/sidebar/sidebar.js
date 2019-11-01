@@ -13,12 +13,12 @@ import { Sidebar } from 'config'
 export const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
   return (
     <Container fluid>
-      <Row noGutter>
+      <Row>
         <Column md={2}>
           <Sidebar />
         </Column>
 
-        <Column md={10}>
+        <Column md={10} style={{ padding: 0 }}>
           <Bootstrap brand={brand} copyright={copyright} footer={footer} Navigation={Navigation}>
             {children}
           </Bootstrap>

@@ -3,17 +3,17 @@
  */
 
 // React
-import { array } from 'prop-types'
+import { array, string } from 'prop-types'
 
 // UI
-import { Icon, Link, List } from '../../../'
+import { Image, Icon, Link, List } from '../../../'
 import { Divider } from '../../../atoms/divider'
 import { ListItem } from '../../../atoms/list/components/listItem'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Sidebar = ({ data }) => {
+export const Sidebar = ({ brand, data }) => {
   const link = (icon, name, to) => {
     const iconArray = Array.isArray(icon)
 
@@ -34,6 +34,10 @@ export const Sidebar = ({ data }) => {
 
   return (
     <StyledAside>
+      <StyledBrand>
+        <Image alt='Logo' src={brand} />
+      </StyledBrand>
+
       <List group>
         {data.map(({ Component, divider, icon, name, to }, index) => {
           return (
@@ -59,17 +63,19 @@ const StyledAside = styled.aside`
   background-color: ${({ theme }) => theme.SIDEBAR.background};
   border-right: 1px solid ${({ theme }) => theme.SIDEBAR.highlight};
   box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, 0.75);
-  height: 100%;
-  padding: 1rem 0;
-
-  position: fixed;
-  flex: 0 0 16.66667%;
-  max-width: 16.66667%;
-  min-width: 16.66667%;
-  width: 16.66667%;
-  min-height: 100%;
-  background: #161537;
+  height: 100vh;
+  left: 0;
   overflow: hidden;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  width: 16.66667%;
+`
+
+const StyledBrand = styled.div`
+  display: block;
+  padding: 0 3rem;
+  line-height: 2;
 `
 
 const StyledDivider = styled(Divider)`
@@ -104,5 +110,6 @@ const StyledLink = styled.a`
 `
 
 Sidebar.propTypes = {
+  brand: string,
   data: array.isRequired
 }

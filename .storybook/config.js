@@ -18,7 +18,7 @@ import { Container } from './container'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Font awesome
-import { faEdit, faTrash } from '@fortawesome/pro-duotone-svg-icons'
+import { faEdit, faTachometerAltAverage, faTrash } from '@fortawesome/pro-duotone-svg-icons'
 
 import {
   faBars,
@@ -52,6 +52,7 @@ library.add(
   faImages,
   faMars,
   faStethoscope,
+  faTachometerAltAverage,
   faTimes,
   faTimesCircle,
   faTrash,

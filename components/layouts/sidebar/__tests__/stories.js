@@ -73,7 +73,7 @@ const Navigation = () => {
     ]
   }
 
-  return <Navbar brand={Brand.logo} links={Default} />
+  return <Navbar links={Default} />
 }
 
 export const main = () => (
