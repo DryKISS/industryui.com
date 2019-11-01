@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.c0 {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  height: 400px;
+  min-height: 400px;
+  margin: 0;
+}
+
+.c1 {
+  color: #000;
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+}
+
+.c5 {
+  color: #000;
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+}
+
+.c2 {
+  height: 100%;
+  width: 100%;
+}
+
+.c4 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c3 {
+  position: absolute;
+  text-shadow: 2px 2px #000;
+  color: white;
+  font-size: 24px;
+  padding: 2em;
+}
+
+<div
+  className="c0"
+  height="400px"
+  width="100%"
+>
+  <div
+    className="c1"
+    direction="left"
+    onClick={[Function]}
+  >
+    ◀
+  </div>
+  <div
+    className="c2"
+  >
+    <span
+      className="c3"
+      style={
+        Object {
+          "objectFit": "contain",
+        }
+      }
+    >
+      objectFit: contain
+    </span>
+    <img
+      alt=""
+      className="c4"
+      src="test-file-stub"
+      style={
+        Object {
+          "border": "dotted lightgray",
+          "objectFit": "contain",
+        }
+      }
+    />
+  </div>
+  <div
+    className="c5"
+    direction="right"
+    onClick={[Function]}
+  >
+    ▶
+  </div>
+</div>
+`;
