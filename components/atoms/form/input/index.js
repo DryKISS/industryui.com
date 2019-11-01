@@ -4,7 +4,7 @@
  */
 
 // React
-import { arrayOf, bool, func, number, oneOfType, string } from 'prop-types'
+import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-types'
 
 // UI
 import { Label } from '../'
@@ -25,6 +25,7 @@ export const Input = ({
   placeholder,
   readOnly,
   required,
+  style,
   type,
   value
 }) => {
@@ -43,6 +44,7 @@ export const Input = ({
       name={id}
       readOnly={readOnly}
       required={required}
+      style={style}
       type={type}
       value={value}
       {...data}
@@ -110,6 +112,7 @@ Input.propTypes = {
   placeholder: string,
   readOnly: bool,
   required: bool,
+  style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
