@@ -110,7 +110,6 @@
     "moment": "^2.24.0",
     "next": "^9.1.1",
     "pure-react-carousel": "^1.23.2",
-    "react-dropzone": "10.1.9",
     "react-select": "^3.0.8",
     "react-tooltip": "^3.11.1"
   },

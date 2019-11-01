@@ -1,2 +1,2 @@
-export * from './carousel'
-export * from './prc'
+export * from './carousel';
+export * from './prc';
