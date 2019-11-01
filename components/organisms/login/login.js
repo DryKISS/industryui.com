@@ -5,6 +5,7 @@
  */
 
 // React
+import React, { useState } from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
@@ -14,6 +15,7 @@ import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading } from
 import styled from 'styled-components'
 
 export const Login = ({
+  blockSubmitButton,
   change,
   email,
   forgotPassword,
@@ -22,8 +24,14 @@ export const Login = ({
   pathForgot,
   pathSignUp,
   remember,
-  submit
+  showLabel,
+  showPassword,
+  showPlaceholder,
+  submit,
+  submitLoading,
+  submitResult
 }) => {
+  const [showPass, setShowPass] = useState(false)
   const isInvalid = password === '' || email === ''
   let CHECKBOX_REMEMBER = null
 
@@ -44,24 +52,44 @@ export const Login = ({
           <PageHeading center heading={heading} divider={false} />
 
           <Form submit={submit}>
-            <Input autoFocus change={change} id='email' label='Email' type='email' value={email} />
+            <Input
+              autoFocus
+              change={change}
+              id='email'
+              label={showLabel ? 'Email' : ''}
+              type='email'
+              value={email}
+              placeholder={showPlaceholder ? 'Email' : ''}
+              style={{ marginBottom: !showLabel && '1rem' }}
+            />
 
             <Input
               change={change}
               id='password'
-              label='Password'
-              type='password'
+              label={showLabel ? 'Password' : ''}
+              type={showPass ? 'text' : 'password'}
               value={password}
+              placeholder={showPlaceholder ? 'Password' : ''}
+              style={{ marginBottom: !showLabel && '1rem' }}
             />
+
+            {showPassword && (
+              <p onClick={() => setShowPass(prev => !prev)}>
+                {showPass ? 'Hide Password' : 'Show Password'}
+              </p>
+            )}
+
+            {submitResult && <p>{submitResult}</p>}
 
             {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />}
 
             <div className='text-right'>
               <Button
                 align='right'
+                block={blockSubmitButton}
                 content='Log in'
                 context='primary'
-                disabled={isInvalid}
+                disabled={isInvalid || submitLoading}
                 size='lg'
                 type='submit'
               />
@@ -98,6 +126,7 @@ const StyledContainer = styled.div`
 `
 
 Login.propTypes = {
+  blockSubmitButton: bool,
   change: func.isRequired,
   email: string.isRequired,
   forgotPassword: bool,
@@ -106,11 +135,20 @@ Login.propTypes = {
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
   remember: string,
-  submit: func.isRequired
+  showLabel: bool,
+  showPassword: bool,
+  showPlaceholder: bool,
+  submit: func.isRequired,
+  submitLoading: bool,
+  submitResult: string
 }
 
 Login.defaultProps = {
+  blockSubmitButton: false,
   forgotPassword: true,
   heading: 'Log In',
-  pathForgot: '/account/forgot-details'
+  pathForgot: '/account/forgot-details',
+  showLabel: true,
+  showPassword: false,
+  showPlaceholder: false
 }
