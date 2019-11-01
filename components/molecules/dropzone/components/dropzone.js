@@ -11,14 +11,14 @@ import { bool, string } from 'prop-types'
 import { useDropzone } from 'react-dropzone'
 
 // UI
-import { Button, Container, Column, Heading, Row } from '../../../'
+// import { Button, Container, Column, Heading, Row } from '../../../'
 import { Accept } from './accept'
-import { DropzonePreview } from './'
+// import { DropzonePreview } from './'
 
 // Style
 import styled from 'styled-components'
 
-export const Dropzone = ({ accept, disabled }) => {
+export const Dropzone = ({ accept, disabled, handleDrop }) => {
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
     console.log('Dropped')
