@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading } from '../../'
+import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -79,7 +79,9 @@ export const Login = ({
               </p>
             )}
 
-            {submitResult && <p>{submitResult}</p>}
+            {submitResult.message && (
+              <Alert content={submitResult.message} context={submitResult.type} />
+            )}
 
             {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />}
 
@@ -140,7 +142,7 @@ Login.propTypes = {
   showPlaceholder: bool,
   submit: func.isRequired,
   submitLoading: bool,
-  submitResult: string
+  submitResult: object
 }
 
 Login.defaultProps = {
@@ -150,5 +152,9 @@ Login.defaultProps = {
   pathForgot: '/account/forgot-details',
   showLabel: true,
   showPassword: false,
-  showPlaceholder: false
+  showPlaceholder: false,
+  submitResult: {
+    type: '',
+    message: ''
+  }
 }

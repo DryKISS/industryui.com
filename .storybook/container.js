@@ -11,7 +11,7 @@ import { Theme, ThemeStyle } from '../'
 export const Container = ({ story }) => {
   return (
     <ThemeProvider theme={Theme}>
-      <div style={{ margin: '1rem' }}>{story()}</div>
+      <div>{story()}</div>
       <ThemeStyle />
     </ThemeProvider>
   )

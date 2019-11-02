@@ -16,6 +16,8 @@ import { renderColumn } from '../../../organisms/footer/__tests__/stories'
 // Navbar
 import { Navbar } from '../../../'
 import { Default } from '../../../molecules/navbar/__mocks__'
+
+// Config
 import { Brand } from 'config'
 
 export default {
