@@ -3,24 +3,26 @@
  */
 
 // React
-import React from 'react'
+import React from "react";
 
 // Storybook
-import { addDecorator, addParameters, configure } from '@storybook/react'
+import { addDecorator, addParameters, configure } from "@storybook/react";
 
-import { withA11y } from '@storybook/addon-a11y'
-import { withInfo } from '@storybook/addon-info'
-import { addReadme } from 'storybook-readme'
+import { withA11y } from "@storybook/addon-a11y";
+import { withInfo } from "@storybook/addon-info";
+import { addReadme } from "storybook-readme";
 
-import { Container } from './container'
+import { Container } from "./container";
 
 // Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 // Font awesome
-import { faEdit, faTachometerAltAverage, faTrash } from '@fortawesome/pro-duotone-svg-icons'
+import { faEdit, faTachometerAltAverage, faTrash } from "@fortawesome/pro-duotone-svg-icons";
 
 import {
+  faArrowLeft,
+  faArrowRight,
   faBars,
   faBell,
   faCaretDown,
@@ -36,10 +38,12 @@ import {
   faTimesCircle,
   faUser,
   faVenus
-} from '@fortawesome/pro-regular-svg-icons'
+} from "@fortawesome/pro-regular-svg-icons";
 
 // Icons
 library.add(
+  faArrowLeft,
+  faArrowRight,
   faBars,
   faBell,
   faCaretDown,
@@ -58,32 +62,32 @@ library.add(
   faTrash,
   faUser,
   faVenus
-)
+);
 
 addDecorator(
   withInfo({
     header: true,
     inline: false,
-    styles: { infoBody: { overflow: 'overlay' } },
+    styles: { infoBody: { overflow: "overlay" } },
     source: true
   })
-)
+);
 
-addDecorator(story => <Container story={story} />)
-addDecorator(withA11y)
+addDecorator(story => <Container story={story} />);
+addDecorator(withA11y);
 
 addParameters({
   options: {
     showPanel: true,
-    panelPosition: 'right'
+    panelPosition: "right"
   },
   readme: {
-    codeTheme: 'github',
+    codeTheme: "github",
     excludePropTables: []
   }
-})
+});
 
-addDecorator(addReadme)
+addDecorator(addReadme);
 
 /**
  * Load stories
@@ -96,4 +100,4 @@ addDecorator(addReadme)
 // }
 
 // configure(loadStories, module)
-configure(require.context('../components', true, /stories\.js$/), module)
+configure(require.context("../components", true, /stories\.js$/), module);

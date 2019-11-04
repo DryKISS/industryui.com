@@ -11,12 +11,7 @@ import styled from 'styled-components'
 // UI
 import { Carousel, CarouselSlide, PRCarousel, PRCarouselSlide } from '../'
 import Readme from '../README.md'
-
-import dog1 from '../__mocks__/images/dog1.jpg'
-import dog2 from '../__mocks__/images/dog2.jpg'
-import dog3 from '../__mocks__/images/dog3.jpg'
-import dog4 from '../__mocks__/images/dog4.jpg'
-import dog5 from '../__mocks__/images/dog5.jpg'
+import Img from '../../../utils/react-holder'
 
 export default {
   title: 'Molecules/Carousel',
@@ -28,28 +23,34 @@ export default {
   }
 }
 
+const width = 750
+const height = 422
+const renderImage = () => (
+  <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
+)
+
 export const defaultStory = () => (
-  <Carousel>
+  <Carousel width={width} height={height}>
     <CarouselSlide>
       <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-      <Image src={dog1} alt='' style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
+      {renderImage()}
     </CarouselSlide>
     <CarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
-      <Image src={dog2} alt='' style={{ border: 'dotted lightgray' }} />
+      {renderImage()}
     </CarouselSlide>
     <CarouselSlide>
       <TextLabel>objectFit: none</TextLabel>
-      <Image src={dog3} alt='' style={{ objectFit: 'none' }} />
+      {renderImage()}
     </CarouselSlide>
     <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
     <CarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
-      <Image src={dog4} alt='' />
+      {renderImage()}
     </CarouselSlide>
     <CarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
-      <Image src={dog5} alt='' />
+      {renderImage()}
     </CarouselSlide>
   </Carousel>
 )
@@ -61,33 +62,27 @@ export const usePureReactCarousel = () => (
   <PRCarousel width={600} height={300}>
     <PRCarouselSlide>
       <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-      <Image src={dog1} alt='' style={{ objectFit: 'contain', border: 'dotted lightgray' }} />
+      {renderImage()}
     </PRCarouselSlide>
     <PRCarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
-      <Image src={dog2} alt='' style={{ border: 'dotted lightgray' }} />
+      {renderImage()}
     </PRCarouselSlide>
     <PRCarouselSlide>
       <TextLabel>objectFit: none</TextLabel>
-      <Image src={dog3} alt='' style={{ objectFit: 'none' }} />
+      {renderImage()}
     </PRCarouselSlide>
     <PRCarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</PRCarouselSlide>
     <PRCarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
-      <Image src={dog4} alt='' />
+      {renderImage()}
     </PRCarouselSlide>
     <PRCarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
-      <Image src={dog5} alt='' />
+      {renderImage()}
     </PRCarouselSlide>
   </PRCarousel>
 )
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
 
 const TextLabel = styled.span`
   position: absolute;
