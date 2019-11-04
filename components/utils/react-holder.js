@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import { string, bool, object } from 'prop-types';
+import React, { useEffect, useRef } from 'react'
+import ReactDOM from 'react-dom'
+import { string, bool, object } from 'prop-types'
 // import Holder from 'holderjs'
 
 const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
@@ -26,7 +26,7 @@ const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
       bgnodes: null,
       stylenodes: null
     })
-  };
+  }
 
   if (usePlaceholder) {
     const src = `holder.js/${width}x${height}`

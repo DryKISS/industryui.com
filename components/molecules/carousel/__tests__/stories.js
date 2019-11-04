@@ -3,36 +3,36 @@
  */
 
 // React
-import React from "react";
+import React from 'react'
 
 // Style
-import styled from "styled-components";
+import styled from 'styled-components'
 
 // UI
-import { Carousel, CarouselSlide, PRCarousel, PRCarouselSlide } from "../";
-import Readme from "../README.md";
-import Img from "../../../utils/react-holder";
+import { Carousel, CarouselSlide, PRCarousel, PRCarouselSlide } from '../'
+import Readme from '../README.md'
+import Img from '../../../utils/react-holder'
 
 export default {
-  title: "Molecules/Carousel",
+  title: 'Molecules/Carousel',
   component: Carousel,
   parameters: {
     readme: {
       sidebar: Readme
     }
   }
-};
+}
 
-const width = 750;
-const height = 422;
+const width = 750
+const height = 422
 const renderImage = () => (
-  <Img src="./img/test1.jpg" width={width} height={height} usePlaceholder />
-);
+  <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
+)
 
 export const defaultStory = () => (
   <Carousel width={width} height={height}>
     <CarouselSlide>
-      <TextLabel style={{ objectFit: "contain" }}>objectFit: contain</TextLabel>
+      <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
       {renderImage()}
     </CarouselSlide>
     <CarouselSlide>
@@ -43,7 +43,7 @@ export const defaultStory = () => (
       <TextLabel>objectFit: none</TextLabel>
       {renderImage()}
     </CarouselSlide>
-    <CarouselSlide style={{ width: "100%", height: "300px" }}>this is text div</CarouselSlide>
+    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
     <CarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
       {renderImage()}
@@ -53,15 +53,15 @@ export const defaultStory = () => (
       {renderImage()}
     </CarouselSlide>
   </Carousel>
-);
+)
 defaultStory.story = {
-  name: "Default"
-};
+  name: 'Default'
+}
 
 export const usePureReactCarousel = () => (
   <PRCarousel width={600} height={300}>
     <PRCarouselSlide>
-      <TextLabel style={{ objectFit: "contain" }}>objectFit: contain</TextLabel>
+      <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
       {renderImage()}
     </PRCarouselSlide>
     <PRCarouselSlide>
@@ -72,7 +72,7 @@ export const usePureReactCarousel = () => (
       <TextLabel>objectFit: none</TextLabel>
       {renderImage()}
     </PRCarouselSlide>
-    <PRCarouselSlide style={{ width: "100%", height: "300px" }}>this is text div</PRCarouselSlide>
+    <PRCarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</PRCarouselSlide>
     <PRCarouselSlide>
       <TextLabel>objectFit: cover</TextLabel>
       {renderImage()}
@@ -82,13 +82,7 @@ export const usePureReactCarousel = () => (
       {renderImage()}
     </PRCarouselSlide>
   </PRCarousel>
-);
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+)
 
 const TextLabel = styled.span`
   position: absolute;
@@ -96,4 +90,4 @@ const TextLabel = styled.span`
   color: white;
   font-size: 24px;
   padding: 2em;
-`;
+`

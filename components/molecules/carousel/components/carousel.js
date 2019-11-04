@@ -3,12 +3,12 @@
  */
 
 // React
-import React, { useState } from 'react';
-import { oneOfType, number, array, string, bool } from 'prop-types';
+import React, { useState } from 'react'
+import { oneOfType, number, array, string, bool } from 'prop-types'
 
 // styled-components
-import styled from 'styled-components';
-import { Icon } from '../../../';
+import styled from 'styled-components'
+import { Icon } from '../../../'
 
 const Wrapper = styled.div`
   position: relative;
@@ -43,14 +43,14 @@ export const Carousel = ({ children, width, height, fullWidth }) => {
     const shouldResetIndex = currentImageIndex === 0
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
     setCurrentImageIndex(index)
-  };
+  }
 
   const nextSlide = () => {
     const lastIndex = children.length - 1
     const shouldResetIndex = currentImageIndex === lastIndex
     const index = shouldResetIndex ? 0 : currentImageIndex + 1
     setCurrentImageIndex(index)
-  };
+  }
 
   return (
     <Wrapper width={width} height={height} fullWidth={fullWidth}>
@@ -59,7 +59,7 @@ export const Carousel = ({ children, width, height, fullWidth }) => {
       <Arrow direction='right' clickFunction={nextSlide} icon='arrow-right' />
     </Wrapper>
   )
-};
+}
 
 Carousel.propTypes = {
   children: array,
@@ -81,7 +81,7 @@ const Arrow = ({ direction, clickFunction, icon }) => (
 
 export const CarouselSlide = ({ children }) => {
   return <StyledSlide>{children}</StyledSlide>
-};
+}
 
 CarouselSlide.propTypes = {
   children: oneOfType([string, array])
