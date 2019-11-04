@@ -22,6 +22,7 @@ export const Dropzone = ({ accept, disabled, handleDrop }) => {
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
     console.log('Dropped')
+    handleDrop && handleDrop(acceptedFiles)
   }, [])
 
   const {
