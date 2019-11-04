@@ -13,7 +13,7 @@ import Readme from '../README.md'
 import { FOOTER, ONE_COLUMN } from '../__mocks__'
 import logo from '../__resources__/tailwise-icon.svg'
 
-const renderColumn = () => (
+export const renderColumn = () => (
   <>
     <Image alt='Tailwise' src={logo} />
 
