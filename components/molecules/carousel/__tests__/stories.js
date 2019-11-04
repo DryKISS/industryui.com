@@ -25,9 +25,7 @@ export default {
 
 const width = 750
 const height = 422
-const renderImage = () => (
-  <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
-)
+const renderImage = () => <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
 
 export const defaultStory = () => (
   <Carousel width={width} height={height}>
