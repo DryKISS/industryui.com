@@ -3,28 +3,31 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { oneOfType, string, array } from 'prop-types'
+import React, { useState } from 'react';
+import { oneOfType, number, array, string, bool } from 'prop-types';
 
 // styled-components
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Icon } from '../../../';
 
 const Wrapper = styled.div`
   position: relative;
-  width: ${({ width }) => width};
-  min-width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  min-height: ${({ height }) => height};
+  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : `${width}px`)};
+  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : `${width}px`)};
+  height: ${({ height }) => `${height}px`};
+  min-height: ${({ height }) => `${height}px`};
   margin: 0;
 `
 
-const StyledArrow = styled.div`
+const StyledArrow = styled(Icon)`
   color: #000;
   cursor: pointer;
-  font-size: 2rem;
   position: absolute;
   top: 50%;
   ${({ direction }) => (direction === 'left' ? 'left: 1rem;' : 'right: 1rem;')}
+  && {
+    font-size: 2rem;
+  }
 `
 
 const StyledSlide = styled.div`
@@ -32,7 +35,7 @@ const StyledSlide = styled.div`
   width: 100%;
 `
 
-export const Carousel = ({ children, width, height }) => {
+export const Carousel = ({ children, width, height, fullWidth }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const previousSlide = () => {
@@ -40,45 +43,45 @@ export const Carousel = ({ children, width, height }) => {
     const shouldResetIndex = currentImageIndex === 0
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
     setCurrentImageIndex(index)
-  }
+  };
 
   const nextSlide = () => {
     const lastIndex = children.length - 1
     const shouldResetIndex = currentImageIndex === lastIndex
     const index = shouldResetIndex ? 0 : currentImageIndex + 1
     setCurrentImageIndex(index)
-  }
+  };
 
   return (
-    <Wrapper width={width} height={height}>
-      <Arrow direction='left' clickFunction={previousSlide} glyph='&#9664;' />
+    <Wrapper width={width} height={height} fullWidth={fullWidth}>
+      <Arrow direction='left' clickFunction={previousSlide} icon='arrow-left' />
       {children[currentImageIndex]}
-      <Arrow direction='right' clickFunction={nextSlide} glyph='&#9654;' />
+      <Arrow direction='right' clickFunction={nextSlide} icon='arrow-right' />
     </Wrapper>
   )
-}
+};
 
 Carousel.propTypes = {
   children: array,
-  width: string,
-  height: string
+  width: number,
+  height: number,
+  fullWidth: bool
 }
 
 Carousel.defaultProps = {
   children: [],
-  width: '100%',
-  height: '400px'
+  width: 700,
+  height: 400,
+  fullWidth: false
 }
 
-const Arrow = ({ direction, clickFunction, glyph }) => (
-  <StyledArrow direction={direction} onClick={clickFunction}>
-    {glyph}
-  </StyledArrow>
+const Arrow = ({ direction, clickFunction, icon }) => (
+  <StyledArrow icon={icon} onClick={clickFunction} direction={direction} />
 )
 
 export const CarouselSlide = ({ children }) => {
   return <StyledSlide>{children}</StyledSlide>
-}
+};
 
 CarouselSlide.propTypes = {
   children: oneOfType([string, array])
