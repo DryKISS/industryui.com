@@ -33,7 +33,7 @@ export default {
 export const defaultStory = () => (
   <Bootstrap
     footer={FOOTER(renderColumn)}
-    navigation={() => <Navbar brand={Brand.logo} links={Default} />}
+    Navigation={() => <Navbar brand={Brand.logo} links={Default} />}
     brand={Brand.name}
   >
     <p>Bootstrap</p>
