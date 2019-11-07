@@ -5,14 +5,14 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { bool, func, object, oneOfType, string } from 'prop-types'
+import React, { useState } from 'react';
+import { bool, func, object, oneOfType, string } from 'prop-types';
 
 // UI
-import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../'
+import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../';
 
 // Style
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Login = ({
   blockSubmitButton,
@@ -32,7 +32,7 @@ export const Login = ({
   submitResult
 }) => {
   const [showPass, setShowPass] = useState(false)
-  const isInvalid = password === '' || email === ''
+  const isInvalid = password === '' || email === '';
   let CHECKBOX_REMEMBER = null
 
   if (remember) {
@@ -74,9 +74,9 @@ export const Login = ({
             />
 
             {showPassword && (
-              <p onClick={() => setShowPass(prev => !prev)}>
-                {showPass ? 'Hide Password' : 'Show Password'}
-              </p>
+              <ShowPassword onClick={() => setShowPass(prev => !prev)}>
+                <a>{showPass ? 'Hide Password' : 'Show Password'}</a>
+              </ShowPassword>
             )}
 
             {submitResult.message && (
@@ -96,12 +96,12 @@ export const Login = ({
                 type='submit'
               />
 
-              <p />
-
               {forgotPassword && (
-                <Link to={pathForgot}>
-                  <a>Don't know your password?</a>
-                </Link>
+                <ForgotPasswordWrapper>
+                  <Link style={{ textAlign: 'center' }} to={pathForgot}>
+                    Forgot password?
+                  </Link>
+                </ForgotPasswordWrapper>
               )}
             </div>
           </Form>
@@ -121,10 +121,22 @@ export const Login = ({
       )}
     </StyledContainer>
   )
-}
+};
 
 const StyledContainer = styled.div`
   margin: 3rem 0;
+`
+
+const ShowPassword = styled.div`
+  cursor: pointer;
+  text-align: right;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+`
+
+const ForgotPasswordWrapper = styled.div`
+  margin-top: 1rem;
+  text-align: center;
 `
 
 Login.propTypes = {
