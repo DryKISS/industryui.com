@@ -9,6 +9,6 @@ Textarea component
 
 ## Usage
 
-```html
-<Textarea text="This is a button" />
+```javascript
+<Textarea text='This is a button' />
 ```

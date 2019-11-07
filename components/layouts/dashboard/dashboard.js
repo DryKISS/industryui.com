@@ -7,10 +7,7 @@
 import { bool, node, object } from 'prop-types'
 
 // UI
-import { Alert, MetaHead, Page, PageHeading } from '../../'
-
-// Config
-import { Brand, Canonical } from 'config'
+import { Alert, Page } from '../../'
 
 export const Dashboard = ({ children, error, isLoading, meta, noData, pageHeading, success }) => {
   return (

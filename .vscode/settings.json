@@ -3,12 +3,9 @@
   "css.validate": false,
   // Editor
   "editor.formatOnSave": true,
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "editor.tabSize": 2,
   // Files
-  "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   // Javascript
   "javascript.validate.enable": false,
@@ -26,16 +23,8 @@
   "standard.enable": true,
   "standard.autoFixOnSave": true,
   "standard.options": {
-    "globals": [
-      "cy",
-      "it",
-      "test",
-      "expect",
-      "describe"
-    ],
-    "ignore": [
-      "node_modules/**"
-    ],
+    "globals": ["cy", "it", "test", "expect", "describe"],
+    "ignore": ["node_modules/**"],
     "parser": "babel-eslint"
   },
   "standard.usePackageJson": true,

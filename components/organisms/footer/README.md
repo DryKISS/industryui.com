@@ -4,6 +4,6 @@ This is the footer of the application
 
 ## Usage
 
-```html
+```javascript
 <Footer />
 ```

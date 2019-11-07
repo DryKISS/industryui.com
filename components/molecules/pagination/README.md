@@ -16,10 +16,6 @@ Create a pageable tool for users to navigate to any additional data
 
 ## Usage
 
-```html
-<Pagination
-  activePage={1}
-  onPageChange={() => onPageChange()}
-  totalPages={10}
-/>
+```javascript
+<Pagination activePage={1} onPageChange={() => onPageChange()} totalPages={10} />
 ```

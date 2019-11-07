@@ -20,12 +20,12 @@ The data passed into the select must be of the form:
 
 ## Usage
 
-```html
+```javascript
 <Select
-  change={change}
+  change='{change}'
   id='addresses'
   label='Select your address'
-  options={postcodeAddresses}
-  value={addresses}
+  options='{postcodeAddresses}'
+  value='{addresses}'
 />
 ```
