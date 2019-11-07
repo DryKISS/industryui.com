@@ -28,23 +28,16 @@ const Wrapper = styled.div`
 `
 
 export const Single = () => {
-  const [change, form] = useChange({ select: OPTIONS[0] })
+  const [change] = useChange({ select: {} })
   return (
     <Wrapper>
-      <ReactSelect
-        label='React Select'
-        options={OPTIONS}
-        isClearable
-        id='select'
-        change={change}
-        selectedOption={form.select}
-      />
+      <ReactSelect label='React Select' options={OPTIONS} isClearable id='select' change={change} />
     </Wrapper>
   )
 }
 
 export const Multi = () => {
-  const [change, form] = useChange({ select: [] })
+  const [change] = useChange({ select: [] })
   return (
     <Wrapper>
       <ReactSelect
@@ -54,7 +47,22 @@ export const Multi = () => {
         isClearable
         id='select'
         change={change}
-        selectedOption={form.select}
+      />
+    </Wrapper>
+  )
+}
+
+export const withDefaultValue = () => {
+  const [change] = useChange({ select: {} })
+  return (
+    <Wrapper>
+      <ReactSelect
+        label='React Select'
+        options={OPTIONS}
+        isClearable
+        id='select'
+        change={change}
+        defaultValue={OPTIONS[0]}
       />
     </Wrapper>
   )

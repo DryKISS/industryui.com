@@ -74,7 +74,7 @@ export const ReactSelect = ({
         id,
         type: 'select',
         value: option,
-        label: option.label
+        label: option ? option.label : ''
       }
     })
   }
@@ -99,10 +99,10 @@ export const ReactSelect = ({
 
 ReactSelect.propTypes = {
   change: func.isRequired,
-  defaultValue: array,
+  defaultValue: oneOfType([array, object]),
   id: string,
   label: string,
   options: array.isRequired,
   placeholder: string,
-  selectedOption: oneOfType([array, object]).isRequired
+  selectedOption: oneOfType([array, object])
 }
