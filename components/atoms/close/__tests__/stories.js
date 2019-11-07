@@ -5,6 +5,8 @@
 // React
 import React from 'react'
 
+import { action } from '@storybook/addon-actions'
+
 // UI
 import { Close } from '../'
 import Readme from '../README.md'
@@ -31,8 +33,8 @@ export default {
   }
 }
 
-export const defaultStory = () => <Close click={() => {}} />
+export const main = () => <Close click={action('clicked')} />
 
-defaultStory.story = {
-  name: 'Default'
-}
+export const customIcon = () => <Close click={action('clicked')} icon='trash' iconPrefix='fad' />
+
+export const customContext = () => <Close click={action('clicked')} context='primary' />
