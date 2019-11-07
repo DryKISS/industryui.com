@@ -5,14 +5,14 @@
  */
 
 // React
-import React, { useState } from 'react';
-import { bool, func, object, oneOfType, string } from 'prop-types';
+import React, { useState } from 'react'
+import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../';
+import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../'
 
 // Style
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Login = ({
   blockSubmitButton,
@@ -32,7 +32,7 @@ export const Login = ({
   submitResult
 }) => {
   const [showPass, setShowPass] = useState(false)
-  const isInvalid = password === '' || email === '';
+  const isInvalid = password === '' || email === ''
   let CHECKBOX_REMEMBER = null
 
   if (remember) {
@@ -121,7 +121,7 @@ export const Login = ({
       )}
     </StyledContainer>
   )
-};
+}
 
 const StyledContainer = styled.div`
   margin: 3rem 0;
