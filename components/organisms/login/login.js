@@ -98,9 +98,7 @@ export const Login = ({
 
               {forgotPassword && (
                 <ForgotPasswordWrapper>
-                  <Link style={{ textAlign: 'center' }} to={pathForgot}>
-                    Forgot password?
-                  </Link>
+                  <Link to={pathForgot}>Forgot password?</Link>
                 </ForgotPasswordWrapper>
               )}
             </div>
