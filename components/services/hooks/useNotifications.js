@@ -21,7 +21,7 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
       const response = await Api.get(url, params)
 
       if (response.status === 200) {
-        setData({ ...response.data, isLoading: false })
+        setData(response.data)
       }
     }
 
