@@ -7,20 +7,13 @@
 import { bool, node, object } from 'prop-types'
 
 // UI
-import { Alert, MetaHead, PageHeading } from '../../'
-
-// Config
-import { Brand, Canonical } from 'config'
+import { Alert, Page } from '../../'
 
 export const Dashboard = ({ children, error, isLoading, meta, noData, pageHeading, success }) => {
   return (
     !isLoading && (
       <>
-        <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
-
-        {pageHeading && <PageHeading {...pageHeading} />}
-
-        {children}
+        <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
 
         {success && (
           <Alert
@@ -38,14 +31,15 @@ export const Dashboard = ({ children, error, isLoading, meta, noData, pageHeadin
 Dashboard.propTypes = {
   children: node.isRequired,
   error: object,
+  fluid: bool,
   isLoading: bool.isRequired,
   meta: object.isRequired,
-  noData: bool,
+
   pageHeading: object.isRequired,
   success: bool
 }
 
 Dashboard.defaultProps = {
-  isLoading: true,
-  noData: false
+  fluid: false,
+  isLoading: true
 }

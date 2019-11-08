@@ -17,25 +17,25 @@ jobs:
         node: [10, 12]
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
 
-    - name: Use Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node }}
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
 
-    - run: node --version
-    - run: npm --version
+      - run: node --version
+      - run: npm --version
 
-    - name: Install
-      run: |
-        npm install
+      - name: Install
+        run: |
+          npm install
 
-    - name: Lint
-      run: |
-        npm run lint
+      - name: Lint
+        run: |
+          npm run lint
 
-    - name: Build
-      run: |
-        npm run build-storybook
+      - name: Build
+        run: |
+          npm run build-storybook

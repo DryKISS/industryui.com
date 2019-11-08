@@ -10,17 +10,17 @@
 
 # Functions
 
-* @see https://codeburst.io/organizing-your-firebase-cloud-functions-67dc17b3b0da
-* @see https://github.com/firebase/functions-samples/issues/170
-* @see https://github.com/TarikHuber/react-most-wanted
+- @see https://codeburst.io/organizing-your-firebase-cloud-functions-67dc17b3b0da
+- @see https://github.com/firebase/functions-samples/issues/170
+- @see https://github.com/TarikHuber/react-most-wanted
 
-* functions:log [options]                    read logs from deployed functions
-* functions:shell [options]                  launch full Node shell with emulated functions
-* functions:config:clone [options]           clone environment config from another project
-* functions:config:get [path]                fetch environment config stored at the given path
-* functions:config:set [values...]           set environment config with key=value syntax
-* functions:config:unset [keys...]           unset environment config at the specified path(s)
-* functions:delete [options] [filters...]    delete one or more Cloud Functions by name or group name.
+- functions:log [options] read logs from deployed functions
+- functions:shell [options] launch full Node shell with emulated functions
+- functions:config:clone [options] clone environment config from another project
+- functions:config:get [path] fetch environment config stored at the given path
+- functions:config:set [values...] set environment config with key=value syntax
+- functions:config:unset [keys...] unset environment config at the specified path(s)
+- functions:delete [options][filters...] delete one or more Cloud Functions by name or group name.
 
 ## Login
 
@@ -80,6 +80,7 @@ To test the Firestore triggers
 - firebase use staging-tailwise-com
 
 Create a project
+
 - firebase use --add
 
 ### Get
@@ -103,7 +104,7 @@ Create a project
 - firebase deploy -m "Updated HTTPs" --only functions:httpsFonixSmsIn
 
 --only <targets> only deploy to specified, comma-separated targets (e.g. "hosting,storage").
-      For functions, can specify filters with colons to scope function deploys to only those functions (e.g. "--only functions:func1,functions:func2"). When filtering based on export groups (the exported module object keys), use dots to specify group names (e.g. "--only functions:group1.subgroup1,functions:group2)"
+For functions, can specify filters with colons to scope function deploys to only those functions (e.g. "--only functions:func1,functions:func2"). When filtering based on export groups (the exported module object keys), use dots to specify group names (e.g. "--only functions:group1.subgroup1,functions:group2)"
 
 ## Hosting
 

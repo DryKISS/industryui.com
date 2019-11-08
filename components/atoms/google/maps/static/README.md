@@ -19,7 +19,7 @@ Create the digital signature
 
 ## Pricing
 
-All maps APIs from Google now cost. A credit of $200 is available
+All maps APIs from Google now cost. A credit of \$200 is available
 
 - 0–100,000
 - 0.002 USD per each

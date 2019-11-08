@@ -79,7 +79,7 @@ const StyledHeading = styled(Heading)`
 
 Article.propTypes = {
   article: object.isRequired,
-  config: object.isRequired,
+  config: object,
   facebook: object
 }
 

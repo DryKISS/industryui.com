@@ -13,6 +13,6 @@ Input component
 
 ## Usage
 
-```html
-<Input text="This is a button" />
+```javascript
+<Input text='This is a button' />
 ```

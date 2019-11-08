@@ -23,15 +23,21 @@ export const ImageLocation = ({ initial, label, locationChange, options }) => {
   const [change, form] = useChange(INITIAL_STATE)
   const { option } = form
 
-  useEffect(() => {
-    const selected = options.find(o => o.value === parseInt(option)) || null
-    setItem(selected)
-    setCoordinates(null)
-  }, [option])
+  useEffect(
+    () => {
+      const selected = options.find(o => o.value === parseInt(option)) || null
+      setItem(selected)
+      setCoordinates(null)
+    },
+    [option]
+  )
 
-  useEffect(() => {
-    locationChange && item && locationChange({ coordinates, item })
-  }, [coordinates])
+  useEffect(
+    () => {
+      locationChange && item && locationChange({ coordinates, item })
+    },
+    [coordinates]
+  )
 
   return (
     <StyledImageLocation>

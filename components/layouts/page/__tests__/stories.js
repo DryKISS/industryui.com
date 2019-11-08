@@ -19,8 +19,14 @@ export default {
   }
 }
 
-export const defaultStory = () => (
-  <Page heading='Example page' meta={{ title: 'Example Page' }} strapline='Test Subtitle'>
+export const main = () => (
+  <Page
+    meta={{ title: 'Example Page' }}
+    pageHeading={{
+      heading: 'Example page',
+      strapline: 'Test Subtitle'
+    }}
+  >
     <p>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
       been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
@@ -33,16 +39,14 @@ export const defaultStory = () => (
   </Page>
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const fluidContainer = () => (
+export const fluid = () => (
   <Page
-    heading='Fluid Container page'
+    fluid
     meta={{ title: 'Example Page' }}
-    strapline='Test Subtitle'
-    fluidContainer
+    pageHeading={{
+      heading: 'Fluid Container page',
+      strapline: 'Test Subtitle'
+    }}
   >
     <p>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has

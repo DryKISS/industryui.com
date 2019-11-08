@@ -1,6 +1,6 @@
 # Reporting Security Issues
 
-The DryKISS team and community take security issues in seriously. We  appreciate
+The DryKISS team and community take security issues in seriously. We appreciate
 your efforts to responsibly disclose your findings, and will make every effort
 to acknowledge your contributions.
 

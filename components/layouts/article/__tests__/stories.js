@@ -19,9 +19,6 @@ export default {
   }
 }
 
-/**
- * Blog
- */
 const article = {
   author: 'Ian Warner',
   category: 'Development',
@@ -31,6 +28,7 @@ const article = {
   excerpt: 'Static Site development',
   heading: 'Static Site development',
   hero: true,
+  image: 'placeholder.svg',
   published: true,
   readtime: 2,
   slug: 'static-site-development',

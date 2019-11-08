@@ -15,13 +15,13 @@
 
 A script that help to export and import in Cloud Firestore
 
-** Update: you can try the NPM package for [backup and restore from Firestore](https://github.com/dalenguyen/firestore-backup-restore) now.
+\*\* Update: you can try the NPM package for [backup and restore from Firestore](https://github.com/dalenguyen/firestore-backup-restore) now.
 
 # Requirements
 
-Get **serviceAccount** JSON file from *Project Setting > SERVICE ACCOUNTS* in Firebase
+Get **serviceAccount** JSON file from _Project Setting > SERVICE ACCOUNTS_ in Firebase
 
-Change the *databaseURL* when initializeApp with your own
+Change the _databaseURL_ when initializeApp with your own
 
 # Setting Up
 
@@ -55,37 +55,37 @@ node import.js import-to-firestore.json date=date geo=Location
 
 If you have date type in your JSON, please add to your command line
 
-Sample from __import-to-firestore.json__. "test" will be the collection name. The date type will have _seconds and _nanoseconds in it.
+Sample from **import-to-firestore.json**. "test" will be the collection name. The date type will have \_seconds and \_nanoseconds in it.
 
-```
+```json
 {
-  "test" : {
-    "first-key" : {
-      "email"   : "dungnq@itbox4vn.com",
-      "website" : "dalenguyen.me",
-      "custom"  : {
-        "firstName" : "Dale",
-        "lastName"  : "Nguyen"
+  "test": {
+    "first-key": {
+      "email": "dungnq@itbox4vn.com",
+      "website": "dalenguyen.me",
+      "custom": {
+        "firstName": "Dale",
+        "lastName": "Nguyen"
       },
       "date": {
-        "_seconds":1534046400,
-        "_nanoseconds":0
+        "_seconds": 1534046400,
+        "_nanoseconds": 0
       },
       "Location": {
         "_latitude": 49.290683,
         "_longitude": -123.133956
       }
     },
-    "second-key" : {
-      "email"   : "test@dalenguyen.me",
-      "website" : "google.com",
-      "custom"  : {
-        "firstName" : "Harry",
-        "lastName"  : "Potter"
+    "second-key": {
+      "email": "test@dalenguyen.me",
+      "website": "google.com",
+      "custom": {
+        "firstName": "Harry",
+        "lastName": "Potter"
       },
       "date": {
-        "_seconds":1534262435,
-        "_nanoseconds":0
+        "_seconds": 1534262435,
+        "_nanoseconds": 0
       },
       "Location": {
         "_latitude": 49.290683,
