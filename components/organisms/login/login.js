@@ -74,9 +74,9 @@ export const Login = ({
             />
 
             {showPassword && (
-              <p onClick={() => setShowPass(prev => !prev)}>
-                {showPass ? 'Hide Password' : 'Show Password'}
-              </p>
+              <ShowPassword onClick={() => setShowPass(prev => !prev)}>
+                <a>{showPass ? 'Hide Password' : 'Show Password'}</a>
+              </ShowPassword>
             )}
 
             {submitResult.message && (
@@ -96,12 +96,10 @@ export const Login = ({
                 type='submit'
               />
 
-              <p />
-
               {forgotPassword && (
-                <Link to={pathForgot}>
-                  <a>Don't know your password?</a>
-                </Link>
+                <ForgotPasswordWrapper>
+                  <Link to={pathForgot}>Forgot password?</Link>
+                </ForgotPasswordWrapper>
               )}
             </div>
           </Form>
@@ -125,6 +123,18 @@ export const Login = ({
 
 const StyledContainer = styled.div`
   margin: 3rem 0;
+`
+
+const ShowPassword = styled.div`
+  cursor: pointer;
+  text-align: right;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+`
+
+const ForgotPasswordWrapper = styled.div`
+  margin-top: 1rem;
+  text-align: center;
 `
 
 Login.propTypes = {
