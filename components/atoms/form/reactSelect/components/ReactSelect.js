@@ -6,21 +6,23 @@
  */
 
 // React
-import { array, func, string } from 'prop-types'
+import { array, func, string, oneOfType, object } from 'prop-types'
 
 // UI
 import Select from 'react-select'
 import { Label } from '../../'
 
-export const SelectReact = ({
+export const ReactSelect = ({
   change,
   className,
   defaultValue,
   id,
+  isMulti,
   label,
   options,
   placeholder,
-  selectedOption
+  selectedOption,
+  ...props
 }) => {
   const styles = {
     container: (base, state) => {
@@ -28,7 +30,26 @@ export const SelectReact = ({
     },
 
     control: (base, state) => {
-      return { ...base, padding: '.315rem .75rem' }
+      return {
+        ...base,
+        padding: '.315rem .75rem',
+        backgroundColor: '#fff',
+        border: '1px solid #c4cacf',
+        borderRadius: '0.25rem',
+        color: '#9da7af',
+        fontSize: '1rem',
+        height: '3rem',
+        lineHeight: 1.5
+      }
+    },
+
+    menu: (base, state) => {
+      return {
+        ...base,
+        borderColor: '#80bdff',
+        boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
+        color: '#9da7af'
+      }
     },
 
     multiValue: (base, state) => {
@@ -46,29 +67,42 @@ export const SelectReact = ({
     }
   }
 
+  const handleChange = option => {
+    change({
+      target: {
+        checked: false,
+        id,
+        type: 'select',
+        value: option,
+        label: option ? option.label : ''
+      }
+    })
+  }
+
   return (
     <Label id={id} text={label}>
       <Select
         className={className}
         defaultValue={defaultValue}
-        isMulti
+        isMulti={isMulti}
         name={id}
-        onChange={change}
+        onChange={handleChange}
         options={options}
         placeholder={placeholder}
         styles={styles}
         value={selectedOption}
+        {...props}
       />
     </Label>
   )
 }
 
-SelectReact.propTypes = {
+ReactSelect.propTypes = {
   change: func.isRequired,
-  defaultValue: array,
+  defaultValue: oneOfType([array, object]),
   id: string,
   label: string,
   options: array.isRequired,
   placeholder: string,
-  selectedOption: array.isRequired
+  selectedOption: oneOfType([array, object])
 }
