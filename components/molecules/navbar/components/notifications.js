@@ -14,7 +14,7 @@ import styled from 'styled-components'
 export const Notifications = ({ count, link }) => {
   const Notification = () => (
     <StyledNotifications>
-      {count && <StyledCount>{count}</StyledCount>}
+      {!!count && <StyledCount>{count}</StyledCount>}
       <Icon icon='bell' />
     </StyledNotifications>
   )
