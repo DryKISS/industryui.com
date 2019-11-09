@@ -4,42 +4,38 @@
  */
 
 // React
-import { bool, node, object } from 'prop-types'
+import { bool, node, object } from "prop-types";
 
 // UI
 import { Alert, Page } from '../../'
 
-export const Dashboard = ({ children, error, isLoading, meta, noData, pageHeading, success }) => {
+export const Dashboard = ({ children, resultAlert, isLoading, meta, noData, pageHeading }) => {
   return (
     !isLoading && (
       <>
         <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
 
-        {success && (
-          <Alert
-            content='Details Saved. Please continue with the next section.'
-            context='success'
-          />
+        {resultAlert.message && (
+          <Alert content={resultAlert.message} context={resultAlert.context} />
         )}
-
-        {error && <Alert content={`Error: ${error.message}`} context='warning' />}
       </>
     )
-  )
-}
+  );
+};
 
 Dashboard.propTypes = {
   children: node.isRequired,
-  error: object,
-  fluid: bool,
   isLoading: bool.isRequired,
   meta: object.isRequired,
-
   pageHeading: object.isRequired,
-  success: bool
-}
+  resultAlert: object
+};
 
 Dashboard.defaultProps = {
-  fluid: false,
-  isLoading: true
-}
+  isLoading: true,
+  noData: false,
+  resultAlert: {
+    context: "success",
+    message: ""
+  }
+};
