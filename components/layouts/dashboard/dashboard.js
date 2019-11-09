@@ -4,7 +4,7 @@
  */
 
 // React
-import { bool, node, object } from "prop-types";
+import { bool, node, object } from 'prop-types'
 
 // UI
 import { Alert, Page } from '../../'
@@ -20,8 +20,8 @@ export const Dashboard = ({ children, resultAlert, isLoading, meta, noData, page
         )}
       </>
     )
-  );
-};
+  )
+}
 
 Dashboard.propTypes = {
   children: node.isRequired,
@@ -29,13 +29,13 @@ Dashboard.propTypes = {
   meta: object.isRequired,
   pageHeading: object.isRequired,
   resultAlert: object
-};
+}
 
 Dashboard.defaultProps = {
   isLoading: true,
   noData: false,
   resultAlert: {
-    context: "success",
-    message: ""
+    context: 'success',
+    message: ''
   }
-};
+}
