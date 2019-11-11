@@ -4,7 +4,7 @@
 
 import React from 'react'
 
-import { object, node } from 'prop-types'
+import { func, object, node } from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -19,7 +19,7 @@ const renderLink = ({ id, name, onClick, to }, closeDropdown) => {
 
   return (
     <Link to={to} passHref>
-      <StyledLink id={id} onClick={handleClick}>
+      <StyledLink className='dropdown--link' id={id} onClick={handleClick}>
         {name}
       </StyledLink>
     </Link>
@@ -35,42 +35,32 @@ export const DropdownItem = ({ closeDropdown, item }) => {
 }
 
 const StyledDropdownItem = styled.div`
-  padding: 0.25rem 1.5rem;
+  line-height: 1.5;
   white-space: nowrap;
-
-  &:hover {
-    color: #16181b;
-    text-decoration: none;
-    background-color: #f8f9fa;
-  }
-
-  ${({ divider }) =>
-    divider &&
-    `
-    padding: 0;
-  `}
+  ${({ divider }) => divider && 'padding: 0;'}
 `
 
 const StyledDivider = styled.div`
+  border-top: 1px solid #33475b;
   height: 0;
-  margin: 0.5rem 0;
+  margin: 1rem;
   overflow: hidden;
-  border-top: 1px solid #e9ecef;
 `
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.NAVBAR.colourActive};
+  color: ${({ theme }) => theme.NAVBAR.colourActive};
   display: block;
-  font-family: ${props => props.theme.TYPOGRAPHY.font};
-  line-height: 1.5;
+  padding: 0.25rem 1.5rem;
   text-decoration: none;
 
   &:hover {
+    background-color: #f8f9fa;
     color: inherit;
   }
 `
 
 DropdownItem.propTypes = {
   children: node,
+  closeDropdown: func,
   item: object
 }

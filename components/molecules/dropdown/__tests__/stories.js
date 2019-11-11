@@ -22,44 +22,28 @@ export default {
   }
 }
 
-export const defaultStory = () => (
-  <Dropdown items={Items} caret>
-    Dropdown
-  </Dropdown>
-)
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Dropdown items={Items}>Dropdown</Dropdown>
 
 export const rightAligned = () => (
-  <Dropdown items={Items} position='right' caret>
+  <Dropdown items={Items} position='right'>
     Dropdown
   </Dropdown>
 )
 
-rightAligned.story = {
-  name: 'Right aligned'
-}
-
 export const button = () => (
-  <Dropdown items={Items}>
+  <Dropdown caret={false} items={Items}>
     <Button>Dropdown</Button>
   </Dropdown>
 )
 
-export const iconStory = () => (
-  <Dropdown items={Items} caret>
+export const icon = () => (
+  <Dropdown items={Items}>
     <Icon aria-hidden='true' context='info' icon='user' />
   </Dropdown>
 )
 
-iconStory.story = {
-  name: 'Icon'
-}
-
 export const iconButton = () => (
-  <Dropdown items={Items} caret>
+  <Dropdown caret={false} items={Items}>
     <Button context='dark'>
       <Icon aria-hidden='true' context='info' icon='user' />
     </Button>
@@ -67,7 +51,7 @@ export const iconButton = () => (
 )
 
 export const avatar = () => (
-  <Dropdown items={Items}>
+  <Dropdown caret={false} items={Items}>
     <Avatar>KH</Avatar>
   </Dropdown>
 )
