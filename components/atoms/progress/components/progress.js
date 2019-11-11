@@ -1,14 +1,23 @@
+/**
+ * Progress
+ */
+
+// React
 import { string } from 'prop-types'
+
+// UI
+import { COLOUR } from '../../../'
+
+// Styled
 import styled from 'styled-components'
-import { COLOUR } from '../../../theme/variables/colour'
 
 export const Progress = styled.div`
-  display: flex;
-  height: ${({ height }) => height};
-  overflow: hidden; /* force rounded corners by cropping it */
-  font-size: ${({ fontSize }) => fontSize};
   background-color: ${({ bgColor }) => bgColor};
   border-radius: ${({ borderRadius }) => borderRadius};
+  display: flex;
+  font-size: ${({ fontSize }) => fontSize};
+  height: ${({ height }) => height};
+  overflow: hidden;
 `
 
 Progress.propTypes = {

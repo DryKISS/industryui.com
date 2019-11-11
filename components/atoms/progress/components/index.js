@@ -1,2 +1,6 @@
-export { Progress } from './Progress'
-export { ProgressBarDiv } from './ProgressBar'
+/**
+ * Components
+ */
+export { Progress } from './progress'
+export { ProgressBar } from './progressBar'
+export { ProgressBarDiv } from './progressBarDiv'
