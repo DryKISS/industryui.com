@@ -29,7 +29,7 @@ ProgressBar.propTypes = {
   now: number,
   role: string,
   striped: bool,
-  transition: string,
+  transition: string
 }
 
 ProgressBar.defaultProps = {
@@ -54,7 +54,7 @@ ProgressBar.defaultProps = {
   now: 0,
   role: 'progressbar',
   striped: false,
-  transition: 'width .6s ease',
+  transition: 'width .6s ease'
 }
 
 export { Progress, ProgressBar }

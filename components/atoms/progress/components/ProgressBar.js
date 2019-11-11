@@ -1,6 +1,6 @@
-import { number, string, bool } from 'prop-types';
-import styled, { css, keyframes } from 'styled-components';
-import { BACKGROUND } from '../../../';
+import { number, string, bool } from 'prop-types'
+import styled, { css, keyframes } from 'styled-components'
+import { BACKGROUND } from '../../../'
 
 const ProgressBarStripesAnimation = keyframes`
   0% {
@@ -9,7 +9,7 @@ const ProgressBarStripesAnimation = keyframes`
   100% {
     background-position: 0 0;
   }
-`;
+`
 
 export const ProgressBarDiv = styled.div`
   animation: ${({ animated }) =>
@@ -31,7 +31,7 @@ export const ProgressBarDiv = styled.div`
   white-space: nowrap;
   ${props => BACKGROUND(props)}
   transition: ${({ transition }) => transition};
-`;
+`
 
 ProgressBarDiv.propTypes = {
   animated: bool,
@@ -41,5 +41,5 @@ ProgressBarDiv.propTypes = {
   color: string,
   now: number,
   striped: bool,
-  transition: string,
-};
+  transition: string
+}

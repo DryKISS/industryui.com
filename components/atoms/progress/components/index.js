@@ -1,2 +1,2 @@
-export { Progress } from './Progress';
-export { ProgressBarDiv } from './ProgressBar';
+export { Progress } from './Progress'
+export { ProgressBarDiv } from './ProgressBar'
