@@ -1,6 +1,6 @@
-import { string } from 'prop-types'
-import styled from 'styled-components'
-import { COLOUR } from '../../theme/variables/colour'
+import { string } from 'prop-types';
+import styled from 'styled-components';
+import { COLOUR } from '../../../theme/variables/colour';
 
 export const Progress = styled.div`
   display: flex;
@@ -9,24 +9,18 @@ export const Progress = styled.div`
   font-size: ${({ fontSize }) => fontSize};
   background-color: ${({ bgColor }) => bgColor};
   border-radius: ${({ borderRadius }) => borderRadius};
-`
+`;
 
 Progress.propTypes = {
-  height: string,
-  fontSize: string,
   bgColor: string,
-  borderRadius: string
-}
+  borderRadius: string,
+  fontSize: string,
+  height: string,
+};
 
 Progress.defaultProps = {
-  height: '1rem',
-  fontSize: 1 * 0.75 + 'rem',
   bgColor: COLOUR.light,
-  borderRadius: '.25rem'
-}
-
-// export const Progress = (props) => {
-//   <ProgressDiv {...props}>
-//     {props.children}
-//   </ProgressDiv>
-// }
+  borderRadius: '.25rem',
+  fontSize: 1 * 0.75 + 'rem',
+  height: '1rem',
+};

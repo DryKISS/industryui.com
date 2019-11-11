@@ -2,9 +2,9 @@
  * Progress
  */
 import React from 'react'
-import { number, string, bool } from 'prop-types'
-import { Progress } from './Progress'
-import { ProgressBarDiv } from './ProgressBar'
+import { number, string, bool, oneOf } from 'prop-types'
+import { Progress, ProgressBarDiv } from './components'
+import { CONTEXT } from '../../'
 
 const ProgressBar = props => {
   return (
@@ -18,42 +18,43 @@ const ProgressBar = props => {
 }
 
 ProgressBar.propTypes = {
-  now: number,
-  color: string,
-  bgColor: string,
-  transition: string,
-  role: string,
-  ariaValueMin: number,
+  animated: bool,
   ariaValueMax: number,
-  striped: bool,
-  bgSize: string,
+  ariaValueMin: number,
+  bgColor: string,
   bgImage: string,
-  animated: bool
+  bgSize: string,
+  color: string,
+  context: oneOf(Object.values(CONTEXT)),
+  now: number,
+  role: string,
+  striped: bool,
+  transition: string,
 }
 
 ProgressBar.defaultProps = {
-  now: 0,
-  color: 'white',
-  bgColor: '#2D9CDB',
-  transition: 'width .6s ease',
-  role: 'progressbar',
-  ariaValueMin: 0,
+  animated: false,
   ariaValueMax: 100,
-  striped: false,
-  bgSize: '1rem 1rem',
+  ariaValueMin: 0,
+  bgColor: '#2D9CDB',
   bgImage: `
-    linear-gradient(
-      45deg,
-      rgba(255,255,255,.15) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255,255,255,.15) 50%,
-      rgba(255,255,255,.15) 75%,
-      transparent 75%,
-      transparent
+  linear-gradient(
+    45deg,
+    rgba(255,255,255,.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255,255,255,.15) 50%,
+    rgba(255,255,255,.15) 75%,
+    transparent 75%,
+    transparent
     )
-  `,
-  animated: false
+    `,
+  bgSize: '1rem 1rem',
+  context: 'primary',
+  now: 0,
+  role: 'progressbar',
+  striped: false,
+  transition: 'width .6s ease',
 }
 
 export { Progress, ProgressBar }
