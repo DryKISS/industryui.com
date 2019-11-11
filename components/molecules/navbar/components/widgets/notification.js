@@ -26,7 +26,7 @@ export const NavNotification = ({ closeMenu, to, type, visible }) => {
 
   const Notification = () => (
     <StyledNotifications>
-      {type && type.count && <StyledCount>{type.count}</StyledCount>}
+      {type && !!type.count && <StyledCount>{type.count}</StyledCount>}
       <Icon icon='bell' />
     </StyledNotifications>
   )
