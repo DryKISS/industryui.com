@@ -7,11 +7,15 @@ import React from 'react'
 
 // Storybook
 import { addDecorator, addParameters, configure } from '@storybook/react'
-
 import { withA11y } from '@storybook/addon-a11y'
 import { withInfo } from '@storybook/addon-info'
 import { addReadme } from 'storybook-readme'
+import { action } from '@storybook/addon-actions'
 
+// Next
+import Router from 'next/router'
+
+// UI
 import { Container } from './container'
 
 // Font Awesome
@@ -70,6 +74,19 @@ library.add(
   faVenus
 )
 
+const actionWithPromise = () => {
+  action('clicked link')()
+  return new Promise((_, reject) => reject())
+}
+
+const mockedRouter = {
+  push: actionWithPromise,
+  replace: actionWithPromise,
+  prefetch: () => {}
+}
+
+Router.router = mockedRouter
+
 addDecorator(
   withInfo({
     header: true,
@@ -99,11 +116,4 @@ addDecorator(addReadme)
  * Load stories
  * @see https://storybook.js.org/basics/writing-stories/#loading-stories-dynamically
  */
-// const req = require.context('../components', true, /stories\.js$/)
-
-// function loadStories() {
-//   req.keys().forEach((filename) => req(filename))
-// }
-
-// configure(loadStories, module)
 configure(require.context('../components', true, /stories\.js$/), module)

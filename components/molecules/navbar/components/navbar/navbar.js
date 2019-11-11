@@ -1,5 +1,5 @@
 /**
- * Navbar
+ * Navbar - Navbar
  */
 
 // React
@@ -7,54 +7,44 @@ import React, { useState } from 'react'
 import { bool, object, objectOf, oneOfType, number, string } from 'prop-types'
 
 // UI
-import { Brand, Links, Notifications, Toggler, User } from './'
-import { Container, MEDIA_QUERY } from '../../../'
+import { Brand, Contained, Toggler, Widgets } from '../internal'
+import { MEDIA_QUERY } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({ brand, container, links, type, notifications, user, style }) => {
+export const Navbar = ({ brand, contained, type, style, widgets }) => {
   const [visible, setVisible] = useState(false)
 
-  const handleMenuClick = () => {
+  const handleClick = () => {
     setVisible(!visible)
   }
 
-  const Contained = () => {
-    return (
-      <StyledContainer>
-        <Widgets />
-      </StyledContainer>
-    )
-  }
-
-  const Widgets = () => {
+  const Content = () => {
     return (
       <>
         {brand && <Brand brand={brand} />}
 
-        <Toggler handleMenuClick={handleMenuClick} visible={visible} />
+        <Toggler handleMenuClick={handleClick} visible={visible} />
 
-        {links && (
-          <Links
+        {widgets && (
+          <Widgets
             brand={brand}
-            closeMenu={handleMenuClick}
-            links={links}
+            closeMenu={handleClick}
             type={type}
             visible={visible}
+            widgets={widgets}
           />
         )}
-
-        {notifications && <Notifications {...notifications} />}
-
-        {user && <User {...user} />}
       </>
     )
   }
 
   return (
     <>
-      <StyledNav style={style}>{container ? <Contained /> : <Widgets />}</StyledNav>
+      <StyledNav style={style}>
+        {contained ? <Contained content={Content} /> : <Content />}
+      </StyledNav>
 
       <StyledOverlay hidden={!visible} />
     </>
@@ -62,9 +52,8 @@ export const Navbar = ({ brand, container, links, type, notifications, user, sty
 }
 
 const StyledNav = styled.nav`
-  align-items: center;
-  background-color: ${props => props.theme.NAVBAR.background};
-  border-bottom: 1px solid #eef1f4;
+  background-color: ${({ theme }) => theme.NAVBAR.background};
+  border-top: 0.25rem solid ${({ theme }) => theme.COLOUR.primary};
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -73,18 +62,10 @@ const StyledNav = styled.nav`
   z-index: 200;
   ${MEDIA_QUERY.desktop`
     flex-flow: row nowrap;
-    height: ${props => props.theme.NAVBAR.height};
+    height: ${({ theme }) => theme.NAVBAR.height};
     justify-content: flex-start;
     padding: 0 3rem;
   `}
-`
-
-const StyledContainer = styled(Container)`
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
 `
 
 const StyledOverlay = styled.div`
@@ -107,7 +88,7 @@ const StyledOverlay = styled.div`
 
 Navbar.propTypes = {
   brand: string,
-  container: bool,
+  contained: bool,
   links: object,
   notifications: object,
   user: object,

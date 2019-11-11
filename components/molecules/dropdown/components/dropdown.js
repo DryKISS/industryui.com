@@ -2,15 +2,17 @@
  * Dropdown
  */
 
+// React
 import React, { useEffect, useRef, useState } from 'react'
-
 import { array, bool, node, string } from 'prop-types'
 
-import styled from 'styled-components'
-
+// UI
 import { DropdownMenu, Icon } from '../../../'
 
-export const Dropdown = ({ children, items, position, caret }) => {
+// Style
+import styled from 'styled-components'
+
+export const Dropdown = ({ caret, className, children, items, position }) => {
   const [open, setOpen] = useState(false)
   const node = useRef()
 
@@ -18,6 +20,7 @@ export const Dropdown = ({ children, items, position, caret }) => {
     if (node.current.contains(event.target)) {
       return
     }
+
     setOpen(false)
   }
 
@@ -34,11 +37,12 @@ export const Dropdown = ({ children, items, position, caret }) => {
   }, [open])
 
   return (
-    <StyledDropdown ref={node}>
-      <StyledToggle onClick={() => setOpen(!open)}>
+    <StyledDropdown className={className} ref={node}>
+      <StyledToggle className='dropdown--toggle' onClick={() => setOpen(!open)}>
         {children}
-        {caret && <Icon aria-hidden='true' context='info' icon='caret-down' />}
+        {caret && <Icon aria-hidden='true' context='info' icon='chevron-down' />}
       </StyledToggle>
+
       {open && (
         <DropdownMenu closeDropdown={() => setOpen(false)} items={items} position={position} />
       )}
@@ -55,8 +59,6 @@ const StyledToggle = styled.div`
   color: ${props => props.theme.NAVBAR.colourActive};
   cursor: pointer;
   display: inline-block;
-  font-family: ${props => props.theme.TYPOGRAPHY.font};
-  font-weight: bold;
   line-height: 1.5;
   text-decoration: none;
 `
@@ -64,6 +66,12 @@ const StyledToggle = styled.div`
 Dropdown.propTypes = {
   caret: bool,
   children: node.isRequired,
+  className: string,
   items: array.isRequired,
   position: string
+}
+
+Dropdown.defaultProps = {
+  caret: true,
+  position: 'left'
 }

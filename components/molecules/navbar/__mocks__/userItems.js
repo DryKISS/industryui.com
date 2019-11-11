@@ -1,5 +1,5 @@
 /**
- * User Items
+ * Navbar - Mocks - User Items
  */
 
 export const UserItems = [
