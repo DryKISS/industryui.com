@@ -13,7 +13,7 @@ import { AlertContent, AlertHeader } from './'
 // Style
 import styled from 'styled-components'
 
-export const Alert = ({ className, close, content, context, header, icon, iconPrefix }) => {
+export const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
   const [visible, setVisible] = useState(true)
 
   const handleClose = () => {
@@ -23,7 +23,7 @@ export const Alert = ({ className, close, content, context, header, icon, iconPr
 
   return (
     visible && (
-      <StyledAlert className={className} context={context}>
+      <StyledAlert className={className} context={context} style={style}>
         {close && (
           <StyledClose click={handleClose} context={header ? 'white' : 'dark'} icon='times' />
         )}
