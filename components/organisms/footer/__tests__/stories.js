@@ -35,10 +35,6 @@ export default {
   }
 }
 
-export const defaultStory = () => <Footer columns={FOOTER(renderColumn)} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Footer columns={FOOTER(renderColumn)} />
 
 export const _12Column = () => <Footer columns={ONE_COLUMN} />

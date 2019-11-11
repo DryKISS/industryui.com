@@ -20,32 +20,20 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Link to='/'>
     <a>Home</a>
   </Link>
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const buttonStory = () => (
+export const button = () => (
   <Link to='/'>
     <button>Home</button>
   </Link>
 )
 
-buttonStory.story = {
-  name: 'Button'
-}
-
-export const buttonComponent = () => (
+export const component = () => (
   <Link to='/'>
     <Button>Home</Button>
   </Link>
 )
-
-buttonComponent.story = {
-  name: 'Button component'
-}

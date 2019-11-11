@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Typeform tags={[]} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Typeform tags={[]} />

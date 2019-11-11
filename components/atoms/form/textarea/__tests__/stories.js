@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => {
+export const main = () => {
   const [value, setValue] = useState('This is text area')
   return (
     <Textarea
@@ -30,11 +30,7 @@ export const defaultStory = () => {
   )
 }
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const disabledStory = () => {
+export const disabled = () => {
   const [value, setValue] = useState('Sample text ...')
   const [disabled, setDisabled] = useState(true)
   return (
@@ -53,11 +49,7 @@ export const disabledStory = () => {
   )
 }
 
-disabledStory.story = {
-  name: 'Disabled'
-}
-
-export const withCharactersCount = () => {
+export const charactersCount = () => {
   const [value, setValue] = useState('Sample text ...')
   return (
     <Textarea
@@ -69,11 +61,7 @@ export const withCharactersCount = () => {
   )
 }
 
-withCharactersCount.story = {
-  name: 'With characters count'
-}
-
-export const withMaxLength = () => {
+export const maxLength = () => {
   const [value, setValue] = useState('Sample text ...')
   const [maxLength, setMaxLength] = useState(25)
   return (
@@ -96,10 +84,6 @@ export const withMaxLength = () => {
       />
     </>
   )
-}
-
-withMaxLength.story = {
-  name: 'With maxLength'
 }
 
 export const rowsAndColsProps = () => {
@@ -129,10 +113,6 @@ export const rowsAndColsProps = () => {
       />
     </>
   )
-}
-
-rowsAndColsProps.story = {
-  name: 'rows and cols props'
 }
 
 export const direction = () => {

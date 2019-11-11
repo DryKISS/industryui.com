@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Location apiKey='' location='Wimbledon' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Location apiKey='' location='Wimbledon' />

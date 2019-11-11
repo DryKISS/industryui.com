@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Error404 />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Error404 />

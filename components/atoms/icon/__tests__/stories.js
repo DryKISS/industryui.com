@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Icon icon='times-circle' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Icon icon='times-circle' />

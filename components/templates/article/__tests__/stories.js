@@ -24,7 +24,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Article
     article={{
       author: text('Author', 'Jonh Smith'),
@@ -39,7 +39,3 @@ export const defaultStory = () => (
     facebook={{}}
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

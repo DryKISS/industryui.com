@@ -27,8 +27,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Copyright brand='Compnay Name' links={Data} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Copyright brand='Compnay Name' links={Data} />

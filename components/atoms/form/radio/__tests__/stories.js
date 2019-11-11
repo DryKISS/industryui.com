@@ -25,7 +25,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Radio
     change={() => {}}
     data={RADIO_GENDER(
@@ -42,11 +42,7 @@ export const defaultStory = () => (
   />
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const stackedStory = () => (
+export const stacked = () => (
   <Radio
     change={() => {}}
     data={RADIO_GENDER(
@@ -63,7 +59,3 @@ export const stackedStory = () => (
     stacked
   />
 )
-
-stackedStory.story = {
-  name: 'Stacked'
-}

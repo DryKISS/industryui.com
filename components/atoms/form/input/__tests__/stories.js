@@ -19,10 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => (
-  <Input change={() => {}} label='Email' placeholder='Enter your email' />
-)
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Input change={() => {}} label='Email' placeholder='Enter your email' />

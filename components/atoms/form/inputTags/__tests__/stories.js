@@ -12,13 +12,9 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <>
     (not implemented yet)
     <InputTags change={() => {}} />
   </>
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

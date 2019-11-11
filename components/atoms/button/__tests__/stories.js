@@ -29,7 +29,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Button
     context='primary'
     outline={boolean('Outline', false)}
@@ -39,10 +39,6 @@ export const defaultStory = () => (
     {text('Button text', 'Button text')}
   </Button>
 )
-
-defaultStory.story = {
-  name: 'Default'
-}
 
 export const secondary = () => (
   <Button centre={boolean('Centre', true)} context='secondary' outline={boolean('Outline', false)}>
