@@ -20,6 +20,10 @@ export const mergeLocalData = (array, key) => {
   return array
 }
 
+export const findByKey = (array, key, value) => {
+  return array.find(a => a[key] === value)
+}
+
 export const filterByKey = (array, key, value) => {
   return array.filter(a => a[key] === value)
 }

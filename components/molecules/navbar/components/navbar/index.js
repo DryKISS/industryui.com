@@ -1,4 +1,4 @@
 /**
- * Navbar - Components
+ * Navbar - Navbar
  */
 export * from './navbar'

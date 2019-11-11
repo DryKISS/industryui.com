@@ -1,12 +1,13 @@
 /**
- * Navbar brand
+ * Navbar - Brand
+ * Adds the client logo if required to the left of the Navbar
  */
 
 // React
 import { string } from 'prop-types'
 
 // UI
-import { Link, MEDIA_QUERY } from '../../../'
+import { Link, MEDIA_QUERY } from '../../../../'
 
 // Style
 import styled from 'styled-components'
