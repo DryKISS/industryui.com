@@ -8,11 +8,7 @@
 
 ```javascript
 <Progress>
-  <ProgressBar
-    striped={true}
-    animated={true}
-    now={45}
-  >
+  <ProgressBar striped={true} animated={true} now={45}>
     45%
   </ProgressBar>
 </Progress>
