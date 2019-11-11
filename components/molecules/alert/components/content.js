@@ -3,7 +3,7 @@
  */
 
 // React
-import { string } from 'prop-types'
+import { object, oneOfType, string } from 'prop-types'
 
 // UI
 import { Icon } from '../../../'
@@ -23,7 +23,7 @@ const StyledAlertContent = styled.div`
 `
 
 AlertContent.propTypes = {
-  content: string.isRequired,
+  content: oneOfType([object, string]).isRequired,
   icon: string,
   iconPrefix: string
 }

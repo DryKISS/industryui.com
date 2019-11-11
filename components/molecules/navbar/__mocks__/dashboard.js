@@ -1,5 +1,5 @@
 /**
- * Dashboard
+ * Navbar - Mocks - Dashboard
  */
 export const Dashboard = {
   right: [

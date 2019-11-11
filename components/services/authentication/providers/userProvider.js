@@ -13,12 +13,16 @@ import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 
 // UI
-import { Api, UserContext, validateToken } from '../../../'
+import { Api, useNotifications, UserContext, validateToken } from '../../../'
 
 export const UserProvider = ({ children, jwtConfig }) => {
   const [accessToken, setAccessToken] = useState(null)
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+
+  const {
+    data: { messages }
+  } = useNotifications('messages', { active: true }, 60)
 
   useEffect(() => {
     const bearerToken = window.localStorage.getItem('bearerToken')
@@ -61,13 +65,6 @@ export const UserProvider = ({ children, jwtConfig }) => {
     setAccessToken(null)
     setUser(null)
 
-    const notification = JSON.parse(window.localStorage.getItem('issue'))
-
-    if (notification) {
-      notification.active = true
-      window.localStorage.setItem('issue', JSON.stringify(notification))
-    }
-
     Router.push('/account/sign-in')
   }
 
@@ -85,6 +82,7 @@ export const UserProvider = ({ children, jwtConfig }) => {
         value={{
           accessToken: accessToken,
           user: user,
+          notifications: messages,
           authorise: authorise,
           signIn: signIn,
           signOut: signOut

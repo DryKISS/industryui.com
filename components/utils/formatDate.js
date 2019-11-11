@@ -1,6 +1,8 @@
 /**
  * Format date
  */
+import moment from 'moment'
+
 export const formatDate = date => {
   return new Date(date.seconds * 1000).toLocaleDateString()
 }
@@ -56,4 +58,8 @@ export const formatDateStandard = date => {
   if (day.length < 2) day = '0' + day
 
   return [year, month, day].join('-')
+}
+
+export const formatRelativeTime = date => {
+  return moment(date).fromNow()
 }
