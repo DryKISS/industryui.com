@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <GoogleMapsStatic size='600x600' apiKey=''>
     <GoogleMapsStaticPath
       color='0xff0000ff'
@@ -33,7 +33,3 @@ export const defaultStory = () => (
     />
   </GoogleMapsStatic>
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

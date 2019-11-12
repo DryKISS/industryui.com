@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <ForgotDetails change={() => {}} email='' submit={() => {}} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <ForgotDetails change={() => {}} email='' submit={() => {}} />

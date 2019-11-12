@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Breadcrumb category='Ian Warner' page='Home' path='/' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Breadcrumb category='Ian Warner' page='Home' path='/' />

@@ -19,12 +19,6 @@ export default {
   }
 }
 
-export const defaultStory = () => <Divider />
-
-defaultStory.story = {
-  name: 'Default'
-}
-
+export const main = () => <Divider />
 export const medium = () => <Divider size='md' />
-
 export const large = () => <Divider size='lg' />

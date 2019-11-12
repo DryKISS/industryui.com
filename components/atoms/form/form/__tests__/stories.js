@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Form submit={() => {}}>
     <Input
       change={() => {}}
@@ -33,7 +33,3 @@ export const defaultStory = () => (
     </Button>
   </Form>
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

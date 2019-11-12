@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Label children='' text='Select your gender' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Label children='' text='Select your gender' />

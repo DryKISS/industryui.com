@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <EmojiMart />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <EmojiMart />

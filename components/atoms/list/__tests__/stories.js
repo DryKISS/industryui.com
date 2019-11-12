@@ -20,7 +20,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <List>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
@@ -28,11 +28,7 @@ export const defaultStory = () => (
   </List>
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const groupStory = () => (
+export const group = () => (
   <List group>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
@@ -40,11 +36,7 @@ export const groupStory = () => (
   </List>
 )
 
-groupStory.story = {
-  name: 'Group'
-}
-
-export const borderStory = () => (
+export const border = () => (
   <List border>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
@@ -52,21 +44,13 @@ export const borderStory = () => (
   </List>
 )
 
-borderStory.story = {
-  name: 'Border'
-}
-
-export const flushStory = () => (
+export const flush = () => (
   <List flush>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
     <ListItem>Item3</ListItem>
   </List>
 )
-
-flushStory.story = {
-  name: 'Flush'
-}
 
 export const knobbed = () => (
   <List

@@ -22,17 +22,13 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Heading
     content={text('Text', 'Default H1 Heading')}
     pageHeading={boolean('Page Heading', false)}
     tag='h1'
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}
 
 export const pageHeadingH2 = () => (
   <Heading
@@ -41,7 +37,3 @@ export const pageHeadingH2 = () => (
     tag='h2'
   />
 )
-
-pageHeadingH2.story = {
-  name: 'Page Heading H2'
-}

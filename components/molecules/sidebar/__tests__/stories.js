@@ -22,8 +22,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Sidebar data={Data} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Sidebar data={Data} />

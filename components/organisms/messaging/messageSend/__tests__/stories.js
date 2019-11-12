@@ -20,8 +20,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <MessageSend />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <MessageSend />

@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Register
     change={() => {}}
     email=''
@@ -31,7 +31,3 @@ export const defaultStory = () => (
     terms
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

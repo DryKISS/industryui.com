@@ -17,7 +17,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Accordion>
     <AccordionItem title='Item 1'>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
@@ -48,9 +48,5 @@ export const defaultStory = () => (
     </AccordionItem>
   </Accordion>
 )
-
-defaultStory.story = {
-  name: 'Default'
-}
 
 export const open = () => <Accordion data={Data} />

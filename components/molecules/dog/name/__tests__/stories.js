@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <DogName row={{ gender: 'male', name: 'DogName' }} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <DogName row={{ gender: 'male', name: 'DogName' }} />

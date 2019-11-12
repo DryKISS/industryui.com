@@ -20,7 +20,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <DogCard
     breed='Cockapoo'
     breeder='Breeder'
@@ -32,7 +32,3 @@ export const defaultStory = () => (
     price={1000}
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

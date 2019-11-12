@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Rating item={3} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Rating item={3} />

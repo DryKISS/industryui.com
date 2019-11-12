@@ -19,10 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => (
-  <Image alt='Ian Warner' src='http://via.placeholder.com/350x150' />
-)
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Image alt='Ian Warner' src='http://via.placeholder.com/350x150' />

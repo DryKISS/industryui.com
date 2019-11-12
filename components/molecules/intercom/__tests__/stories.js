@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Intercom appID='12345' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Intercom appID='12345' />

@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Blockquote footer='Footer Text' text='Title Text' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Blockquote footer='Footer Text' text='Title Text' />

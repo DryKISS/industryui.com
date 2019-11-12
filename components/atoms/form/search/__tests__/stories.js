@@ -21,28 +21,10 @@ export default {
   }
 }
 
-export const defaultStory = () => <Search onSearch={action('query')} />
+export const main = () => <Search onSearch={action('query')} />
 
-defaultStory.story = {
-  name: 'Default'
-}
+export const placeholder = () => <Search placeholder='Company name' onSearch={action('query')} />
 
-export const withPlaceholder = () => (
-  <Search placeholder='Company name' onSearch={action('query')} />
-)
+export const defaultValue = () => <Search value='XYZ' onSearch={action('query')} />
 
-withPlaceholder.story = {
-  name: 'With placeholder'
-}
-
-export const withDefaultValue = () => <Search value='XYZ' onSearch={action('query')} />
-
-withDefaultValue.story = {
-  name: 'With default value'
-}
-
-export const withCustomLabel = () => <Search label='Go' onSearch={action('query')} />
-
-withCustomLabel.story = {
-  name: 'With custom label'
-}
+export const customLabel = () => <Search label='Go' onSearch={action('query')} />

@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Select
     id='color'
     data={[
@@ -30,7 +30,3 @@ export const defaultStory = () => (
     ]}
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}
