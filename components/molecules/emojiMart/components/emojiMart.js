@@ -23,19 +23,16 @@ export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, ope
     }
   }
 
-  useEffect(
-    () => {
-      if (open && closeOnClickOut) {
-        document.addEventListener('mousedown', handleClickAway)
-      } else {
-        document.removeEventListener('mousedown', handleClickAway)
-      }
-      return () => {
-        document.removeEventListener('mousedown', handleClickAway)
-      }
-    },
-    [open]
-  )
+  useEffect(() => {
+    if (open && closeOnClickOut) {
+      document.addEventListener('mousedown', handleClickAway)
+    } else {
+      document.removeEventListener('mousedown', handleClickAway)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickAway)
+    }
+  }, [open])
 
   const handlePickEmoji = (emoji, e) => {
     e.preventDefault()

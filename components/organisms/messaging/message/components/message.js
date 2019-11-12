@@ -96,14 +96,15 @@ export const Message = ({
   )
 }
 
+// /* ${props =>
+//     props.type === 'in' ? 'border-top-left-radius: 0' : 'border-top-right-radius: 0'}; */
+// /* box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.2); */
+
 const StyledCard = styled(Card)`
   background-color: ${({ type }) => (type === 'in' ? '#fff' : '#F7F7F7')};
   border-radius: 1rem;
-  /* ${props =>
-    props.type === 'in' ? 'border-top-left-radius: 0' : 'border-top-right-radius: 0'}; */
-  /* box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.2); */
   margin-bottom: 0.5rem;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
 `
 
 const StyledContent = styled.div`
