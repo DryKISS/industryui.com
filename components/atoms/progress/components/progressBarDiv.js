@@ -28,8 +28,18 @@ export const ProgressBarDiv = styled.div`
           ${ProgressBarStripesAnimation} 1s linear infinite
         `
       : 'none 0 ease 0 1 normal none running'};
-  background-image: ${({ striped, bgImage }) => (striped ? bgImage : 'none')};
-  background-size: ${({ striped, bgSize }) => (striped ? bgSize : 'auto')};
+  background-image: ${({
+    striped,
+    theme: {
+      PROGRESSBAR: { bgImage }
+    }
+  }) => (striped ? bgImage : 'none')};
+  background-size: ${({
+    striped,
+    theme: {
+      PROGRESSBAR: { bgSize }
+    }
+  }) => (striped ? bgSize : 'auto')};
   color: ${({ color, context, theme }) =>
     color || (context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white)};
   display: flex;
@@ -37,17 +47,19 @@ export const ProgressBarDiv = styled.div`
   justify-content: center;
   overflow: hidden;
   text-align: center;
-  transition: ${({ transition }) => transition};
+  transition: ${({
+    theme: {
+      PROGRESSBAR: { transition }
+    }
+  }) => transition};
   white-space: nowrap;
   width: ${({ now }) => now + '%'};
 `
 
 ProgressBarDiv.propTypes = {
   animated: bool,
-  bgColor: string,
   bgImage: string,
   bgSize: string,
-  color: string,
   now: number,
   striped: bool,
   transition: string

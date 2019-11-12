@@ -7,7 +7,7 @@
 ## Usage
 
 ```javascript
-<Progress>
+<Progress size={'md'}>
   <ProgressBar striped={true} animated={true} now={45}>
     45%
   </ProgressBar>
