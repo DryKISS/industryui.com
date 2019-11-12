@@ -9,7 +9,8 @@
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-transform-classes",
     [
-      "styled-components", {
+      "styled-components",
+      {
         "displayName": true,
         "ssr": true
       }
@@ -22,7 +23,9 @@
         ],
         "alias": {
           "api": "./api",
-          "config": "./config"
+          "config": "./config",
+          "root": "./",
+          "storybook": "./.storybook"
         }
       }
     ]

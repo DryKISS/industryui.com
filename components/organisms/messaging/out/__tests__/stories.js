@@ -1,5 +1,5 @@
 /**
- * Messaging/MessageOut
+ * Messaging/Out
  */
 
 // React
@@ -11,7 +11,7 @@ import { Message } from '../..'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Messaging/MessageOut',
+  title: 'Organisms/Messaging/Out',
   component: Message,
   parameters: {
     readme: {

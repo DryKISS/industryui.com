@@ -1,5 +1,5 @@
 /**
- * Message Out
+ * Messaging/Out
  */
 
 // React

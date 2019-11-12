@@ -24,7 +24,7 @@ const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
   color: ${({ context, theme }) =>
     context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
-  border: 1px solid ${props => props.theme.COLOUR[props.context]};
+  border: 2px solid ${props => props.theme.COLOUR[props.context]};
   border-radius: .25rem;
   ${props =>
     props.shadow &&
@@ -33,12 +33,12 @@ const StyledButton = styled.button`
   display: ${props => (props.centre || props.block ? 'block' : 'inline-block')};
   font-family: ${({ theme }) => theme.font};
   font-size: ${({ size }) => (size === 'lg' ? '1.25rem' : '1rem')};
-  line-height: 1.5;
+  line-height: .75rem;
   margin: ${({ centre }) => (centre ? 'auto' : 0)};
   opacity: ${({ disabled }) => disabled && 0.5};
   outline: none;
   overflow: visible;
-  padding: ${({ size }) => (size === 'lg' && '.5rem 1rem') || (size === 'sm' && '.25rem .5rem')};
+  padding: .5rem 1rem;
   text-decoration: none;
   text-transform: none;
   user-select: none;

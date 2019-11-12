@@ -1,5 +1,5 @@
 /**
- * emojiMart
+ * EmojiMart
  */
 
 // React
@@ -19,4 +19,4 @@ export default {
   }
 }
 
-export const main = () => <EmojiMart />
+export const main = () => <EmojiMart open />

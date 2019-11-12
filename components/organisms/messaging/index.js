@@ -2,10 +2,11 @@
  * Messaging
  */
 export * from './message'
-export * from './messageBackground'
-export * from './messageContainer'
-export * from './messageIn'
-export * from './messageList'
-export * from './messageOut'
-export * from './messageSend'
-export * from './messageTail'
+export * from './background'
+export * from './container'
+export * from './in'
+export * from './list'
+export * from './out'
+export * from './search'
+export * from './send'
+export * from './tail'
