@@ -73,13 +73,9 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <ImageLocation label='Option' locationChange={action('change')} options={Properties[1].options} />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}
 
 export const preselected = () => (
   <ImageLocation
@@ -93,7 +89,3 @@ export const preselected = () => (
 export const multipleProperties = () => (
   <PropertySelect locationChange={action('change')} properties={Properties} />
 )
-
-multipleProperties.story = {
-  name: 'Multiple properties'
-}

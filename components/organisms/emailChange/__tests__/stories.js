@@ -21,13 +21,9 @@ export default {
   }
 }
 
-export const defaultStory = () =>
+export const main = () =>
   createElement(() => {
     const [change, form] = useChange({ email: '' })
 
     return <EmailChange change={change} email={form.email} submit={action('Submit')} />
   })
-
-defaultStory.story = {
-  name: 'Default'
-}

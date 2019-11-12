@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Buttons next nextText='Submit' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Buttons next nextText='Submit' />

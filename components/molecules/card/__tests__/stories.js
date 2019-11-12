@@ -24,7 +24,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Card
     alt='Vizla'
     bordered={boolean('Bordered', true)}
@@ -36,11 +36,7 @@ export const defaultStory = () => (
   </Card>
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
-export const horizontalStory = () => (
+export const horizontal = () => (
   <Card
     alt='Vizla'
     bordered={boolean('Bordered', true)}
@@ -62,10 +58,6 @@ export const horizontalStory = () => (
     </Button>
   </Card>
 )
-
-horizontalStory.story = {
-  name: 'Horizontal'
-}
 
 export const breed = () => (
   <Card alt='Vizla' bordered={boolean('Bordered', true)} footer='Vizsla' image={vizla} />

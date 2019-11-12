@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <DatePicker change={() => {}} month='' year='' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <DatePicker change={() => {}} month='' year='' />

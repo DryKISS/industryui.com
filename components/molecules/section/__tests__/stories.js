@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Section heading='Section Heading' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Section heading='Section Heading' />

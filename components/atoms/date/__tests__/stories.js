@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Date date='19th Sept 1974' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Date date='19th Sept 1974' />

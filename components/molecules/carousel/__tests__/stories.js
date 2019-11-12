@@ -27,7 +27,7 @@ const width = 750
 const height = 422
 const renderImage = () => <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
 
-export const defaultStory = () => (
+export const main = () => (
   <Carousel width={width} height={height}>
     <CarouselSlide>
       <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
@@ -52,9 +52,6 @@ export const defaultStory = () => (
     </CarouselSlide>
   </Carousel>
 )
-defaultStory.story = {
-  name: 'Default'
-}
 
 export const usePureReactCarousel = () => (
   <PRCarousel width={600} height={300}>

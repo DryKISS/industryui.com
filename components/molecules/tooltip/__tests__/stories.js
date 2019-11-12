@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Tooltip />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Tooltip />

@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Progress width={30} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Progress width={30} />

@@ -23,13 +23,9 @@ export default {
   }
 }
 
-export const defaultStory = () => {
+export const main = () => {
   const [change, form] = useChange({ email: '', password: '' })
   return <Login change={change} email={form.email} submit={() => {}} password={form.password} />
-}
-
-defaultStory.story = {
-  name: 'Default'
 }
 
 export const withShowAndHidePassword = () => {

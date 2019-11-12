@@ -23,8 +23,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <MessageList messages={messages} />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <MessageList messages={messages} />

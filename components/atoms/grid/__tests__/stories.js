@@ -75,7 +75,7 @@ export const rowWrap = () => (
   </>
 )
 
-export const defaultStory = () => (
+export const main = () => (
   <Container>
     <Row>
       <StyledColumn>11</StyledColumn>
@@ -92,10 +92,6 @@ export const defaultStory = () => (
   </Container>
 )
 
-defaultStory.story = {
-  name: 'Default'
-}
-
 export const scaledColumns = () => (
   <Container>
     <Row>
@@ -108,10 +104,6 @@ export const scaledColumns = () => (
     </Row>
   </Container>
 )
-
-scaledColumns.story = {
-  name: 'Scaled columns'
-}
 
 export const offsets = () => (
   <Container>

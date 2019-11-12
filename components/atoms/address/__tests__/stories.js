@@ -19,7 +19,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Address
     county='Sussex'
     country='United Kingdom'
@@ -30,7 +30,3 @@ export const defaultStory = () => (
     town='London'
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

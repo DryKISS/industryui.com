@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <DogLink name='DogName' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <DogLink name='DogName' />

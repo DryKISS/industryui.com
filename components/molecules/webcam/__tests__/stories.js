@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <Webcam />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <Webcam />

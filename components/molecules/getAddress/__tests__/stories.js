@@ -19,10 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => (
-  <GetAddress apiKey='' change={() => {}} form={{ postcode: 'SW19 2EZ' }} />
-)
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <GetAddress apiKey='' change={() => {}} form={{ postcode: 'SW19 2EZ' }} />

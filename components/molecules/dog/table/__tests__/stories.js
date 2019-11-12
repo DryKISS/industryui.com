@@ -31,8 +31,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <TableDogs dogs={Rows} path='/' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <TableDogs dogs={Rows} path='/' />

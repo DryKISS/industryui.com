@@ -45,7 +45,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <Hero
     alt='Tailwise Jack Russell Dog'
     buttons={Buttons}
@@ -59,7 +59,3 @@ export const defaultStory = () => (
     title='The perfect puppy starts with a responsible breeder'
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

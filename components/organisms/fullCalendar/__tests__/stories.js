@@ -19,16 +19,8 @@ export default {
   }
 }
 
-export const defaultStory = () => <Calendar />
+export const main = () => <Calendar />
 
-defaultStory.story = {
-  name: 'Default'
-}
+export const events = () => <Calendar events={Events} />
 
-export const withEvents = () => <Calendar events={Events} />
-
-export const eventClickStory = () => <Calendar eventClick={handleEventClick} events={Events} />
-
-eventClickStory.story = {
-  name: 'Event Click'
-}
+export const eventClick = () => <Calendar eventClick={handleEventClick} events={Events} />

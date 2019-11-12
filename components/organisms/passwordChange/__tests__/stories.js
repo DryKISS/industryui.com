@@ -12,7 +12,7 @@ export default {
   }
 }
 
-export const defaultStory = () => (
+export const main = () => (
   <PasswordChange
     change={() => {}}
     password=''
@@ -21,7 +21,3 @@ export const defaultStory = () => (
     submit={() => {}}
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

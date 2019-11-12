@@ -19,8 +19,4 @@ export default {
   }
 }
 
-export const defaultStory = () => <PageHeading heading='Page Heading' strapline='Strapline' />
-
-defaultStory.story = {
-  name: 'Default'
-}
+export const main = () => <PageHeading heading='Page Heading' strapline='Strapline' />
