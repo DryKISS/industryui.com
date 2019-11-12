@@ -69,7 +69,7 @@ const StyledListItem = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 .75rem;
+    padding: 0 .25rem;
   `}
 
   &:hover {
