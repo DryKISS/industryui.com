@@ -1,7 +1,8 @@
 /**
  * Truncate
+ * Truncate the text to a single line
  */
-export const Truncate = width => {
+export const Truncate = () => {
   return `
     display: inline-block;
     line-height: initial;
@@ -11,6 +12,5 @@ export const Truncate = width => {
     word-break: break-all;
     word-wrap: break-word;
     text-overflow: ellipsis;
-    // color: #000;
   `
 }
