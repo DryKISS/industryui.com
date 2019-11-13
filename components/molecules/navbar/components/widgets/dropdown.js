@@ -12,22 +12,21 @@ import { Dropdown } from '../../../dropdown'
 // Style
 import styled from 'styled-components'
 
-export const NavDropdown = ({ name, type }) => {
+export const NavDropdown = ({ icon, name, position, prefix, type }) => {
   return (
-    <StyledUser>
-      <StyledDropdown items={type.items}>
-        <Icon aria-hidden='true' context='info' icon='user' />
+    <StyledContainer>
+      <StyledDropdown items={type.items} position={position}>
+        {icon && <Icon aria-hidden='true' context='info' icon={icon} prefix='fad' />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
-    </StyledUser>
+    </StyledContainer>
   )
 }
 
-const StyledUser = styled.div`
+const StyledContainer = styled.div`
   align-items: center;
   display: flex;
   flex: 1;
-  padding: 1rem 0.75rem;
   position: relative;
   user-select: none;
   width: 100%;
@@ -38,7 +37,18 @@ const StyledDropdown = styled(Dropdown)`
   position: initial;
 
   .dropdown--toggle {
-    &:hover {
+    line-height: 60px;
+    padding: 0 0.5rem;
+
+    &:hover .dropdown--caret {
+      color: ${({ theme }) => theme.COLOUR.primary};
+    }
+  }
+
+  .dropdown--active {
+    background-color: rgb(37, 51, 66);
+
+    .dropdown--caret {
       color: ${({ theme }) => theme.COLOUR.primary};
     }
   }
@@ -47,14 +57,13 @@ const StyledDropdown = styled(Dropdown)`
     background-color: rgb(37, 51, 66);
     border: initial;
     border-radius: 0;
-    left: -0.75rem;
     min-width: 11rem;
     top: 3.7rem;
   }
 
   .dropdown--link {
     color: #fff;
-    padding: 0.5rem;
+    padding: 0.75rem;
     text-shadow: 0 0 1px transparent;
     vertical-align: baseline;
 
@@ -69,6 +78,13 @@ const StyledContent = styled.span`
 `
 
 NavDropdown.propTypes = {
+  icon: string,
   name: string.isRequired,
+  position: string,
+  prefix: string,
   type: object.isRequired
+}
+
+NavDropdown.defaultProps = {
+  position: 'left'
 }
