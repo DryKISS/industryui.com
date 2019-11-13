@@ -1,3 +1,4 @@
+// React
 import React from 'react'
 import { func, oneOf } from 'prop-types'
 import { ResponsiveBar, BarPropTypes, BarDefaultProps } from '@nivo/bar'
@@ -19,9 +20,9 @@ export const BarComponent = ({ theme, ...props }) => {
     minValue = BarDefaultProps.minValue,
     maxValue = BarDefaultProps.maxValue,
     colorBy = BarDefaultProps.colorBy,
-    enableGridX,
-    enableGridY,
-    isInteractive,
+    enableGridX = BARCHART.enableGridX,
+    enableGridY = BARCHART.enableGridY,
+    isInteractive = BARCHART.isInteractive,
     context
   } = props
 
@@ -35,8 +36,8 @@ export const BarComponent = ({ theme, ...props }) => {
       minValue={minValue}
       maxValue={maxValue}
       colorBy={colorBy}
-      enableGridX={enableGridX || BARCHART.enableGridX}
-      enableGridY={enableGridY || BARCHART.enableGridY}
+      enableGridX={enableGridX}
+      enableGridY={enableGridY}
       data={data}
       colors={BARCHART.colors[context]}
       margin={BARCHART.margin}
@@ -47,7 +48,7 @@ export const BarComponent = ({ theme, ...props }) => {
       borderColor={BARCHART.borderColor}
       enableLabel={BARCHART.enableLabel}
       labelSkipHeight={BARCHART.labelSkipHeight}
-      isInteractive={isInteractive || BARCHART.isInteractive}
+      isInteractive={isInteractive}
       animate={BARCHART.animate}
     />
   )
