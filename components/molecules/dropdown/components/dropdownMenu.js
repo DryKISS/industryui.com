@@ -11,8 +11,6 @@ import styled from 'styled-components'
 import { DropdownItem } from '../../'
 
 export const DropdownMenu = ({ closeDropdown, items, position }) => {
-  console.log(position)
-
   return (
     <StyledDropdownMenu className='dropdown--menu' position={position}>
       {items.map(item => (
