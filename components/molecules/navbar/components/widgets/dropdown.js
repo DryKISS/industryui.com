@@ -36,19 +36,19 @@ const StyledDropdown = styled(Dropdown)`
   flex: 1;
   position: initial;
 
+  .dropdown--active {
+    background-color: rgb(37, 51, 66);
+
+    .dropdown--caret {
+      color: ${({ theme }) => theme.COLOUR.primary};
+    }
+  }
+
   .dropdown--toggle {
     line-height: 60px;
     padding: 0 0.5rem;
 
     &:hover .dropdown--caret {
-      color: ${({ theme }) => theme.COLOUR.primary};
-    }
-  }
-
-  .dropdown--active {
-    background-color: rgb(37, 51, 66);
-
-    .dropdown--caret {
       color: ${({ theme }) => theme.COLOUR.primary};
     }
   }
