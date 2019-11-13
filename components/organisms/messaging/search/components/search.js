@@ -15,7 +15,7 @@ export const MessagingSearch = () => {
   return (
     <>
       <StyledContainer>
-        <StyledSearch />
+        <StyledSearch onSearch={() => {}} />
       </StyledContainer>
     </>
   )
@@ -29,7 +29,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledSearch = styled(Search)`
-  width: 33%;
+  width: 75%;
 `
 
 MessagingSearch.propTypes = {}
