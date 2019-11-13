@@ -43,7 +43,7 @@ const StyledDropdownItem = styled.div`
 const StyledDivider = styled.div`
   border-top: 1px solid #33475b;
   height: 0;
-  margin: 1rem;
+  margin: 0.5rem;
   overflow: hidden;
 `
 

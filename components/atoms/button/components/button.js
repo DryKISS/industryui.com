@@ -44,7 +44,6 @@ const StyledButton = styled.button`
   vertical-align: middle;
   white-space: nowrap;
   width: ${({ block }) => (block ? '100%' : 'initial')};
-
   ${({ disabled }) =>
     disabled &&
     css`
