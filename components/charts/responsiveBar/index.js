@@ -1,13 +1,12 @@
 // React
 import React from 'react'
-import { func, oneOf } from 'prop-types'
+import { func, oneOf, bool } from 'prop-types'
 import { ResponsiveBar, BarPropTypes, BarDefaultProps } from '@nivo/bar'
+// Source: https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
+import { colorSchemes } from '@nivo/colors'
 import { withTheme } from 'styled-components'
 
-// UI
-import { CONTEXT } from '../../../'
-
-export const BarComponent = ({ theme, ...props }) => {
+const BarComponent = ({ theme, ...props }) => {
   const { BARCHART } = theme
 
   const {
@@ -23,7 +22,8 @@ export const BarComponent = ({ theme, ...props }) => {
     enableGridX = BARCHART.enableGridX,
     enableGridY = BARCHART.enableGridY,
     isInteractive = BARCHART.isInteractive,
-    context
+    colorScheme,
+    showLegend
   } = props
 
   return (
@@ -39,8 +39,9 @@ export const BarComponent = ({ theme, ...props }) => {
       enableGridX={enableGridX}
       enableGridY={enableGridY}
       data={data}
-      colors={BARCHART.colors[context]}
-      margin={BARCHART.margin}
+      // TODO: Write color schemes according to the context value
+      colors={{ scheme: colorScheme }}
+      margin={BARCHART.margin.call(props)}
       padding={BARCHART.padding}
       axisBottom={BARCHART.axisBottom.call(props)}
       axisLeft={BARCHART.axisLeft.call(props)}
@@ -48,6 +49,7 @@ export const BarComponent = ({ theme, ...props }) => {
       borderColor={BARCHART.borderColor}
       enableLabel={BARCHART.enableLabel}
       labelSkipHeight={BARCHART.labelSkipHeight}
+      legends={showLegend ? BARCHART.legends : []}
       isInteractive={isInteractive}
       animate={BARCHART.animate}
     />
@@ -67,12 +69,15 @@ BarPropTypes.getColor = func
 BarPropTypes.getBorderColor = func
 BarPropTypes.getTooltipLabel = func
 
-BarComponent.propTypes = Object.assign(BarPropTypes, {
-  context: oneOf(Object.values(CONTEXT))
+BarComponent.propTypes = Object.assign({}, BarPropTypes, {
+  // TODO: maybe write more custom schemes :)
+  colorScheme: oneOf(Object.keys(colorSchemes)),
+  showLegend: bool
 })
 
-BarComponent.defaultProps = Object.assign(BarDefaultProps, {
-  context: 'primary'
+BarComponent.defaultProps = Object.assign({}, BarDefaultProps, {
+  colorScheme: 'nivo',
+  showLegend: false
 })
 
-export const Bar = withTheme(BarComponent)
+export const BarChart = withTheme(BarComponent)

@@ -11,6 +11,7 @@ export * from './meta'
 
 // Components
 export * from './atoms'
+export * from './charts'
 export * from './molecules'
 export * from './organisms'
 export * from './layouts'

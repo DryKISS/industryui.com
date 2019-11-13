@@ -4,13 +4,17 @@
 
 import { COLOUR } from '../../theme/variables/colour'
 
+const legendTranslateX = 110
+
 export const BARCHART = {
   colors: COLOUR,
-  margin: {
-    top: 50,
-    right: 60,
-    bottom: 50,
-    left: 60
+  margin: function () {
+    return {
+      top: 50,
+      right: this.showLegend ? 125 : 125 - legendTranslateX, // boolean passed as prop
+      bottom: 50,
+      left: 80
+    }
   },
   padding: 0.2,
   borderWidth: 1,
@@ -28,7 +32,7 @@ export const BARCHART = {
       tickRotation: -1,
       legend: this.bottomLegend, // string passed as prop
       legendPosition: 'middle',
-      legendOffset: 33
+      legendOffset: 36
     }
   },
   axisLeft: function () {
@@ -38,7 +42,31 @@ export const BARCHART = {
       tickRotation: 0,
       legend: this.leftLegend, // string passed as prop
       legendPosition: 'middle',
-      legendOffset: -55
+      legendOffset: -60
     }
-  }
+  },
+  legends: [
+    {
+      dataFrom: 'keys',
+      anchor: 'bottom-right',
+      direction: 'column',
+      justify: false,
+      translateX: legendTranslateX,
+      translateY: 0,
+      itemsSpacing: 2,
+      itemWidth: 100,
+      itemHeight: 20,
+      itemDirection: 'left-to-right',
+      itemOpacity: 0.85,
+      symbolSize: 20,
+      effects: [
+        {
+          on: 'hover',
+          style: {
+            itemOpacity: 1
+          }
+        }
+      ]
+    }
+  ]
 }
