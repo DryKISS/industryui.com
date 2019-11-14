@@ -1,4 +1,4 @@
 /**
- * Messaging/Message
+ * Messaging/Send
  */
 export * from './components'

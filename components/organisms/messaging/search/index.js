@@ -1,4 +1,4 @@
 /**
- * Messaging/Message
+ * Messaging/Search
  */
 export * from './components'
