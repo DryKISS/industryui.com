@@ -61,6 +61,7 @@ export const UserProvider = ({ children, jwtConfig }) => {
 
   const signOut = () => {
     window.localStorage.removeItem('bearerToken')
+    window.localStorage.removeItem('active-notifications')
 
     setAccessToken(null)
     setUser(null)
