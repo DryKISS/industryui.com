@@ -47,7 +47,7 @@ const StyledNotifications = styled.div`
   width: 100%;
 
   &:hover {
-    color: ${({ theme }) => theme.COLOUR.primary};
+    color: ${({ theme }) => theme.NAVBAR.colourActive};
   }
 `
 
