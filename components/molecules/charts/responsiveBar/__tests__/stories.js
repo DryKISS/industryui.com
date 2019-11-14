@@ -28,7 +28,7 @@ const centerDecorator = storyFn => (
 
 export default {
   title: 'Molecules/Charts/Bar',
-  decorators: [withKnobs, centerDecorator],
+  decorators: [centerDecorator, withKnobs],
   component: BarChart,
   parameters: {
     readme: {
