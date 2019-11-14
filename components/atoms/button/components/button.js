@@ -52,11 +52,18 @@ const StyledButton = styled.button`
     `}
 
   ${({ size }) =>
-    size === 'lg' &&
+    size === 'sm' &&
     css`
-      font-size: 1.25rem;
-      padding: 1rem;
+      font-size: 0.75rem;
+      padding: 0.5rem;
     `}
+
+    ${({ size }) =>
+    size === 'lg' &&
+      css`
+        font-size: 1.25rem;
+        padding: 1rem;
+      `}
 
   /* If two buttons are next to each other */
   & + & {
@@ -66,6 +73,7 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -10)};
     border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)};
+    color: #fff;
   }
 
   .Form-inputGroup > div > & {

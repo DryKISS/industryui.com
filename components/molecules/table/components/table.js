@@ -104,6 +104,7 @@ export const Table = ({
 }
 
 const StyledResponsive = styled.div`
+  background-color: #fff;
   display: block;
   width: 100%;
   overflow-x: auto;
@@ -112,7 +113,7 @@ const StyledResponsive = styled.div`
 const StyledTable = styled.table`
   background-color: ${({ theme }) => theme.COLOUR.transparent};
   border-collapse: collapse;
-  margin-bottom: 1rem;
+  font-size: ${({ theme }) => theme.TABLE.fontSize};
   width: 100%;
 `
 
@@ -146,20 +147,20 @@ const StyledTr = styled.tr`
 const StyledTh = styled.th`
   border-bottom: 2px solid ${({ theme }) => theme.COLOUR.dark};
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  padding: 0.75rem;
+  padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => (align ? 'center' : 'left')};
 `
 
 const StyledTd = styled.td`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  padding: 0.75rem;
+  padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => align && 'center'};
 `
 
 const StyledCaption = styled.caption`
   caption-side: bottom;
   color: #6c757d;
-  padding: 0.75rem 0;
+  padding: ${({ theme }) => theme.TABLE.padding} 0;
   text-align: left;
 `
 
