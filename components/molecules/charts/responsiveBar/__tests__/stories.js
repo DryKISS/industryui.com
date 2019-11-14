@@ -14,7 +14,7 @@ import { colorSchemes } from '@nivo/colors'
 import { BarChart } from '../'
 import Readme from '../README.md'
 
-const centerDecorator = (storyFn) => (
+const centerDecorator = storyFn => (
   <div
     style={{
       width: '50%',
