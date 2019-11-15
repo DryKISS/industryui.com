@@ -6,13 +6,13 @@ import { COLOUR } from '../../../theme/variables/colour'
 
 export const PIECHART = {
   animate: true,
-  borderColor: { from: 'color', modifiers: [ [ 'darker', 0.2 ] ] },
+  borderColor: { from: 'color', modifiers: [['darker', 0.2]] },
   borderWidth: 1,
   cornerRadius: 3,
   padAngle: 0.7,
   innerRadius: 0.5,
   startAngle: -180,
-  margin: function() {
+  margin: function () {
     return {
       top: 30,
       right: 80,

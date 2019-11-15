@@ -1,24 +1,27 @@
-import { func, oneOf, bool } from 'prop-types'
+import { oneOf, bool } from 'prop-types'
 import { ResponsivePie, PiePropTypes, PieDefaultProps } from '@nivo/pie'
 import { withTheme } from 'styled-components'
 import { colorSchemes } from '@nivo/colors'
 
-export const PieChart = withTheme(({ theme, ...props}) => {
-  const { PIECHART, PIECHART: {
-    animate,
-    borderColor,
-    borderWidth,
-    startAngle,
-    margin,
-    radialLabelsSkipAngle,
-    radialLabelsTextColor,
-    radialLabelsLinkColor,
-    slicesLabelsSkipAngle,
-    slicesLabelsTextColor,
-    legends,
-    motionStiffness,
-    motionDamping,
-  } } = theme
+export const PieChart = withTheme(({ theme, ...props }) => {
+  const {
+    PIECHART,
+    PIECHART: {
+      animate,
+      borderColor,
+      borderWidth,
+      startAngle,
+      margin,
+      radialLabelsSkipAngle,
+      radialLabelsTextColor,
+      radialLabelsLinkColor,
+      slicesLabelsSkipAngle,
+      slicesLabelsTextColor,
+      legends,
+      motionStiffness,
+      motionDamping
+    }
+  } = theme
 
   const {
     colorScheme,
@@ -40,33 +43,33 @@ export const PieChart = withTheme(({ theme, ...props}) => {
 
   return (
     <ResponsivePie
-        data={data}
-        margin={margin.call(props)}
-        startAngle={startAngle}
-        innerRadius={innerRadius}
-        padAngle={padAngle}
-        cornerRadius={cornerRadius}
-        colors={{ scheme: colorScheme }}
-        borderWidth={borderWidth}
-        borderColor={borderColor}
-        enableSlicesLabels={enableSlicesLabels}
-        enableRadialLabels={enableRadialLabels}
-        isInteractive={isInteractive}
-        radialLabelsSkipAngle={radialLabelsSkipAngle}
-        radialLabelsTextXOffset={radialLabelsTextXOffset}
-        radialLabelsTextColor={radialLabelsTextColor}
-        radialLabelsLinkOffset={radialLabelsLinkOffset}
-        radialLabelsLinkDiagonalLength={radialLabelsLinkDiagonalLength}
-        radialLabelsLinkHorizontalLength={radialLabelsLinkHorizontalLength}
-        radialLabelsLinkStrokeWidth={radialLabelsLinkStrokeWidth}
-        radialLabelsLinkColor={radialLabelsLinkColor}
-        slicesLabelsSkipAngle={slicesLabelsSkipAngle}
-        slicesLabelsTextColor={slicesLabelsTextColor}
-        sortByValue={sortByValue}
-        animate={animate}
-        motionStiffness={motionStiffness}
-        motionDamping={motionDamping}
-        legends={showLegend ? legends : []}
+      data={data}
+      margin={margin.call(props)}
+      startAngle={startAngle}
+      innerRadius={innerRadius}
+      padAngle={padAngle}
+      cornerRadius={cornerRadius}
+      colors={{ scheme: colorScheme }}
+      borderWidth={borderWidth}
+      borderColor={borderColor}
+      enableSlicesLabels={enableSlicesLabels}
+      enableRadialLabels={enableRadialLabels}
+      isInteractive={isInteractive}
+      radialLabelsSkipAngle={radialLabelsSkipAngle}
+      radialLabelsTextXOffset={radialLabelsTextXOffset}
+      radialLabelsTextColor={radialLabelsTextColor}
+      radialLabelsLinkOffset={radialLabelsLinkOffset}
+      radialLabelsLinkDiagonalLength={radialLabelsLinkDiagonalLength}
+      radialLabelsLinkHorizontalLength={radialLabelsLinkHorizontalLength}
+      radialLabelsLinkStrokeWidth={radialLabelsLinkStrokeWidth}
+      radialLabelsLinkColor={radialLabelsLinkColor}
+      slicesLabelsSkipAngle={slicesLabelsSkipAngle}
+      slicesLabelsTextColor={slicesLabelsTextColor}
+      sortByValue={sortByValue}
+      animate={animate}
+      motionStiffness={motionStiffness}
+      motionDamping={motionDamping}
+      legends={showLegend ? legends : []}
     />
   )
 })
