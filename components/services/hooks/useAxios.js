@@ -22,23 +22,32 @@ export const useAxios = (url, params, initialValue) => {
 
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 
-  useEffect(() => {
-    const http = axios.create(apiConfig)
+  useEffect(
+    () => {
+      const bearerToken = window.localStorage.getItem('bearerToken')
 
-    // Mock requests
-    const mocker = require('api/client.mock')
-    mocker.apply(http)
-
-    const fetchData = async () => {
-      const response = await http.get(url, { params })
-
-      if (response.status === 200) {
-        setData({ ...response.data, isLoading: false })
+      if (bearerToken) {
+        apiConfig.headers.Authorization = 'Bearer ' + bearerToken
       }
-    }
 
-    fetchData()
-  }, [url])
+      const http = axios.create(apiConfig)
+
+      // Mock requests
+      const mocker = require('api/client.mock')
+      mocker.apply(http)
+
+      const fetchData = async () => {
+        const response = await http.get(url, { params })
+
+        if (response.status === 200) {
+          setData({ ...response.data, isLoading: false })
+        }
+      }
+
+      fetchData()
+    },
+    [url]
+  )
 
   return { data }
 }
