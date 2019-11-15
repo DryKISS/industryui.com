@@ -27,7 +27,7 @@ Dashboard.propTypes = {
   children: node.isRequired,
   isLoading: bool.isRequired,
   meta: object.isRequired,
-  pageHeading: object.isRequired,
+  pageHeading: object,
   resultAlert: object
 }
 

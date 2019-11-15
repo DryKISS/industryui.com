@@ -18,7 +18,6 @@ export const MessagingContainer = ({ background, className, messages, style }) =
       <MessagingSearch />
 
       <StyledContainer className={className} style={style}>
-        {/* <MessageBackground background={background} /> */}
         <MessageList messages={messages} />
       </StyledContainer>
 
@@ -37,6 +36,7 @@ const StyledContainer = styled.div`
   background-color: rgba(117, 204, 207, 0.4);
   overflow-x: hidden;
   overflow-y: scroll;
+  max-height: calc(100vh - 260px);
   padding: 1rem;
   position: relative;
 `

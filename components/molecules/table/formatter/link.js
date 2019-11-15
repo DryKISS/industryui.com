@@ -1,5 +1,5 @@
 /**
- * Link
+ * Table - Formatter - Link
  * Standard cell link
  */
 
@@ -7,8 +7,6 @@
 import { Link } from '../../../'
 
 export const TableLink = ({ row }, data) => {
-  console.log(row)
-
   return (
     <Link to={row[data.to]}>
       <a>{row[data.cell]}</a>

@@ -1,5 +1,5 @@
 /**
- * Table - Actions
+ * Table - Formatter - Actions
  */
 
 // React
@@ -18,7 +18,6 @@ export const TableActions = ({ row: { id } }, data) => {
   const handleClick = path => e => {
     e.preventDefault()
     e.stopPropagation()
-
     Router.push(path)
   }
 
