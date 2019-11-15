@@ -7,6 +7,7 @@ import { TYPOGRAPHY } from './typography'
 
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
+import { PIECHART } from '../../molecules/charts/pieChart/variables'
 import { BARCHART } from '../../molecules/charts/responsiveBar/variables'
 import { FOOTER } from '../../organisms/footer/variables'
 import { GRID } from '../../atoms/grid/variables'
@@ -25,6 +26,7 @@ export const Theme = {
   HEADINGS,
   AVATAR,
   NAVBAR,
+  PIECHART,
   PROGRESS,
   PROGRESSBAR,
   SIDEBAR,
