@@ -24,20 +24,17 @@ export const Dropdown = ({ caret, className, children, items, position }) => {
     setOpen(false)
   }
 
-  useEffect(
-    () => {
-      if (open) {
-        document.addEventListener('mousedown', handleClickAway)
-      } else {
-        document.removeEventListener('mousedown', handleClickAway)
-      }
+  useEffect(() => {
+    if (open) {
+      document.addEventListener('mousedown', handleClickAway)
+    } else {
+      document.removeEventListener('mousedown', handleClickAway)
+    }
 
-      return () => {
-        document.removeEventListener('mousedown', handleClickAway)
-      }
-    },
-    [open]
-  )
+    return () => {
+      document.removeEventListener('mousedown', handleClickAway)
+    }
+  }, [open])
 
   return (
     <StyledDropdown className={className} ref={node}>

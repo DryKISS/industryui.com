@@ -69,15 +69,17 @@ BarPropTypes.getColor = func
 BarPropTypes.getBorderColor = func
 BarPropTypes.getTooltipLabel = func
 
-BarComponent.propTypes = Object.assign({}, BarPropTypes, {
+export const BarChart = withTheme(BarComponent)
+// override 'withTheme(BarComponent)'
+BarChart.displayName = 'BarChart'
+
+BarChart.propTypes = Object.assign({}, BarPropTypes, {
   // TODO: maybe write more custom schemes :)
   colorScheme: oneOf(Object.keys(colorSchemes)),
   showLegend: bool
 })
 
-BarComponent.defaultProps = Object.assign({}, BarDefaultProps, {
-  colorScheme: 'nivo',
+BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
+  // colorScheme: 'nivo',
   showLegend: false
 })
-
-export const BarChart = withTheme(BarComponent)

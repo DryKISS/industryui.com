@@ -14,9 +14,21 @@ import { colorSchemes } from '@nivo/colors'
 import { BarChart } from '../'
 import Readme from '../README.md'
 
+const centerDecorator = storyFn => (
+  <div
+    style={{
+      width: '50%',
+      height: '500px',
+      margin: '0 auto'
+    }}
+  >
+    {storyFn()}
+  </div>
+)
+
 export default {
-  title: 'Charts/Bar',
-  decorators: [withKnobs],
+  title: 'Molecules/Charts/Bar',
+  decorators: [centerDecorator, withKnobs],
   component: BarChart,
   parameters: {
     readme: {
@@ -62,32 +74,24 @@ export const main = () => {
   const showLegend = boolean('showLegend', true)
 
   return (
-    <div
-      style={{
-        width: '50%',
-        height: '500px',
-        margin: '0 auto'
-      }}
-    >
-      <BarChart
-        bottomLegend={bottomLegendText}
-        colorScheme={colorSchemeSelect}
-        colorBy={colorBySelect}
-        data={testData}
-        enableGridX={enableGridXSelect}
-        enableGridY={enableGridYSelect}
-        groupMode={groupModeSelect}
-        indexBy={keyToIndexBy}
-        isInteractive={isInteractiveSelect}
-        keys={keys}
-        layout={layoutSelect}
-        leftLegend={leftLegendText}
-        minValue={minValueNumber}
-        maxValue={maxValueNumber}
-        reverse={reverseSelect}
-        showLegend={showLegend}
-      />
-    </div>
+    <BarChart
+      bottomLegend={bottomLegendText}
+      colorScheme={colorSchemeSelect}
+      colorBy={colorBySelect}
+      data={testData}
+      enableGridX={enableGridXSelect}
+      enableGridY={enableGridYSelect}
+      groupMode={groupModeSelect}
+      indexBy={keyToIndexBy}
+      isInteractive={isInteractiveSelect}
+      keys={keys}
+      layout={layoutSelect}
+      leftLegend={leftLegendText}
+      minValue={minValueNumber}
+      maxValue={maxValueNumber}
+      reverse={reverseSelect}
+      showLegend={showLegend}
+    />
   )
 }
 
@@ -132,32 +136,24 @@ export const StackedBarDouble = () => {
   const showLegend = boolean('showLegend', true)
 
   return (
-    <div
-      style={{
-        width: '50%',
-        height: '500px',
-        margin: '0 auto'
-      }}
-    >
-      <BarChart
-        bottomLegend={bottomLegendText}
-        colorScheme={colorSchemeSelect}
-        colorBy={colorBySelect}
-        data={testData2}
-        enableGridX={enableGridXSelect}
-        enableGridY={enableGridYSelect}
-        groupMode={groupModeSelect}
-        indexBy={keyToIndexBy2}
-        isInteractive={isInteractiveSelect}
-        keys={keys2}
-        layout={layoutSelect}
-        leftLegend={leftLegendText}
-        minValue={minValueNumber}
-        maxValue={maxValueNumber}
-        reverse={reverseSelect}
-        showLegend={showLegend}
-      />
-    </div>
+    <BarChart
+      bottomLegend={bottomLegendText}
+      colorScheme={colorSchemeSelect}
+      colorBy={colorBySelect}
+      data={testData2}
+      enableGridX={enableGridXSelect}
+      enableGridY={enableGridYSelect}
+      groupMode={groupModeSelect}
+      indexBy={keyToIndexBy2}
+      isInteractive={isInteractiveSelect}
+      keys={keys2}
+      layout={layoutSelect}
+      leftLegend={leftLegendText}
+      minValue={minValueNumber}
+      maxValue={maxValueNumber}
+      reverse={reverseSelect}
+      showLegend={showLegend}
+    />
   )
 }
 
@@ -206,31 +202,23 @@ export const StackedBarTriple = () => {
   const showLegend = boolean('showLegend', true)
 
   return (
-    <div
-      style={{
-        width: '60%',
-        height: '500px',
-        margin: '0 auto'
-      }}
-    >
-      <BarChart
-        bottomLegend={bottomLegendText}
-        colorScheme={colorSchemeSelect}
-        colorBy={colorBySelect}
-        data={testData3}
-        enableGridX={enableGridXSelect}
-        enableGridY={enableGridYSelect}
-        groupMode={groupModeSelect}
-        indexBy={keyToIndexBy3}
-        isInteractive={isInteractiveSelect}
-        keys={keys3}
-        layout={layoutSelect}
-        leftLegend={leftLegendText}
-        minValue={minValueNumber}
-        maxValue={maxValueNumber}
-        reverse={reverseSelect}
-        showLegend={showLegend}
-      />
-    </div>
+    <BarChart
+      bottomLegend={bottomLegendText}
+      colorScheme={colorSchemeSelect}
+      colorBy={colorBySelect}
+      data={testData3}
+      enableGridX={enableGridXSelect}
+      enableGridY={enableGridYSelect}
+      groupMode={groupModeSelect}
+      indexBy={keyToIndexBy3}
+      isInteractive={isInteractiveSelect}
+      keys={keys3}
+      layout={layoutSelect}
+      leftLegend={leftLegendText}
+      minValue={minValueNumber}
+      maxValue={maxValueNumber}
+      reverse={reverseSelect}
+      showLegend={showLegend}
+    />
   )
 }
