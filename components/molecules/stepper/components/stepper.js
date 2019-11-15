@@ -25,7 +25,7 @@ const StyledStepper = styled.ul`
   display: inline-block;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 20px;
 `
 
 Stepper.propTypes = {

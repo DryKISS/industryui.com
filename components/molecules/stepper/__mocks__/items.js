@@ -5,7 +5,8 @@ export const Items = [
   {
     id: 1,
     label: 'Job raised',
-    date: '10 Nov 2019 11:40'
+    date: '10 Nov 2019 11:40',
+    showDate: true
   },
   {
     id: 2,

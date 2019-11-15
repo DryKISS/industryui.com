@@ -14,6 +14,7 @@ import { HEADINGS } from '../../atoms/heading/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
 import { PROGRESS, PROGRESSBAR } from '../../atoms/progress/variables'
 import { SIDEBAR } from '../../molecules/sidebar/variables'
+import { STEPPER } from '../../molecules/stepper/variables'
 import { TABLE } from '../../molecules/table/variables'
 import { TABS } from '../../molecules/tabs/variables'
 
@@ -28,6 +29,7 @@ export const Theme = {
   PROGRESS,
   PROGRESSBAR,
   SIDEBAR,
+  STEPPER,
   TABLE,
   TABS,
   TYPOGRAPHY
