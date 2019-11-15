@@ -84,11 +84,3 @@ export const Events = [
       .format()
   }
 ]
-
-
-export const AvailableViews = [
-  'dayGridMonth','dayGridWeek','dayGridDay','dayGrid',
-  'timeGridWeek','timeGridDay','timeGrid',
-  //'listYear','listMonth','listWeek','listDay','list',
-  //'timelineYear', 'timelineMonth', 'timelineWeek', 'timelineDay', 'timeline'
-]
