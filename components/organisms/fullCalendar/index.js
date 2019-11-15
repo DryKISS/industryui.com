@@ -7,15 +7,12 @@
  */
 
 // React
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 
-// Next
-import dynamic from 'next/dynamic'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { withTheme } from 'styled-components'
 import '@fullcalendar/core/main.css'
 import '@fullcalendar/daygrid/main.css'
 import '@fullcalendar/timegrid/main.css'
@@ -29,11 +26,7 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
   return (
     <FullCalendar
       defaultView={props.defaultView}
-      plugins={[
-        dayGridPlugin,
-        timeGridPlugin,
-        interactionPlugin
-      ]}
+      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       eventColor={props.defaultEventColor || COLOUR.primary}
       header={CALENDAR.header}
       events={props.events}

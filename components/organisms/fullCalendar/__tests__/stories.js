@@ -7,7 +7,7 @@ import Readme from '../README.md'
 // Data
 import { Events, AvailableViews } from '../__mocks__/events'
 
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { COLOUR } from '../../../theme/variables/colour'
 
 export default {
@@ -24,13 +24,13 @@ export default {
 export const main = () => {
   // KNOBS
   const businessHoursSelect = select('businessHours', {
-    'false': false,
+    false: false,
     MondayToFriday: true,
     MondayToThursday: {
       // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [ 1, 2, 3, 4 ], // Monday - Thursday
+      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
       startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00', // an end time (6pm in this example)
+      endTime: '18:00' // an end time (6pm in this example)
     }
   })
   const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
@@ -60,13 +60,13 @@ export const main = () => {
 export const events = () => {
   // KNOBS
   const businessHoursSelect = select('businessHours', {
-    'false': false,
+    false: false,
     MondayToFriday: true,
     MondayToThursday: {
       // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [ 1, 2, 3, 4 ], // Monday - Thursday
+      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
       startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00', // an end time (6pm in this example)
+      endTime: '18:00' // an end time (6pm in this example)
     }
   })
   const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
@@ -97,13 +97,13 @@ export const events = () => {
 export const eventsWithEventAdditionOnClick = () => {
   // KNOBS
   const businessHoursSelect = select('businessHours', {
-    'false': false,
+    false: false,
     MondayToFriday: true,
     MondayToThursday: {
       // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [ 1, 2, 3, 4 ], // Monday - Thursday
+      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
       startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00', // an end time (6pm in this example)
+      endTime: '18:00' // an end time (6pm in this example)
     }
   })
   const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
@@ -147,13 +147,13 @@ export const eventsWithEventAdditionOnClick = () => {
 export const eventClick = () => {
   // KNOBS
   const businessHoursSelect = select('businessHours', {
-    'false': false,
+    false: false,
     MondayToFriday: true,
     MondayToThursday: {
       // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [ 1, 2, 3, 4 ], // Monday - Thursday
+      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
       startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00', // an end time (6pm in this example)
+      endTime: '18:00' // an end time (6pm in this example)
     }
   })
   const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
@@ -167,7 +167,6 @@ export const eventClick = () => {
     calendarRef.current.componentWillUnmount()
     calendarRef.current.componentDidMount()
   }, [defaultView])
-
 
   const handleEventClick = ({ event }) => {
     event.setProp('title', event.title + ' - ' + 'updated')
