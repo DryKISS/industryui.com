@@ -23,8 +23,8 @@ export default {
   }
 }
 
-const width = 750
-const height = 422
+const width = '750px'
+const height = '422px'
 const renderImage = () => <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
 
 export const main = () => (
@@ -54,7 +54,7 @@ export const main = () => (
 )
 
 export const usePureReactCarousel = () => (
-  <PRCarousel width={600} height={300}>
+  <PRCarousel width='600px' height='300px'>
     <PRCarouselSlide>
       <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
       {renderImage()}
@@ -80,9 +80,9 @@ export const usePureReactCarousel = () => (
 )
 
 const TextLabel = styled.span`
-  position: absolute;
-  text-shadow: 2px 2px #000;
   color: white;
   font-size: 24px;
   padding: 2em;
+  position: absolute;
+  text-shadow: 2px 2px #000;
 `

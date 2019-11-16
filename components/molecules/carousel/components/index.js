@@ -1,2 +1,5 @@
+/**
+ * Carousel - Components
+ */
 export * from './carousel'
-export * from './prc'
+// export * from './prc'
