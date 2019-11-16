@@ -2,7 +2,7 @@
  * BarChart - Variables
  */
 
-import { COLOUR } from '../../theme/variables/colour'
+import { COLOUR } from '../../../theme/variables/colour'
 
 const legendTranslateX = 110
 

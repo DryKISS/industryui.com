@@ -7,13 +7,14 @@ import { TYPOGRAPHY } from './typography'
 
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
-import { BARCHART } from '../../charts/responsiveBar/variables'
+import { BARCHART } from '../../molecules/charts/responsiveBar/variables'
 import { FOOTER } from '../../organisms/footer/variables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
 import { PROGRESS, PROGRESSBAR } from '../../atoms/progress/variables'
 import { SIDEBAR } from '../../molecules/sidebar/variables'
+import { STEPPER } from '../../molecules/stepper/variables'
 import { TABLE } from '../../molecules/table/variables'
 import { TABS } from '../../molecules/tabs/variables'
 
@@ -28,6 +29,7 @@ export const Theme = {
   PROGRESS,
   PROGRESSBAR,
   SIDEBAR,
+  STEPPER,
   TABLE,
   TABS,
   TYPOGRAPHY
