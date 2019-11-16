@@ -7,7 +7,7 @@ import { TYPOGRAPHY } from './typography'
 
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
-import { BARCHART } from '../../charts/responsiveBar/variables'
+import { BARCHART } from '../../molecules/charts/responsiveBar/variables'
 import { FOOTER } from '../../organisms/footer/variables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'

@@ -32,6 +32,7 @@ const testData = [
 const BarComponent = ({ testData }) => (
   <Bar
     data={testData} // mandatory
+    colorScheme={'nivo'} // string. Default 'nivo'
     bottomLegend={'Products'} // ?string. Default undefined
     context={'primary'} // ?string<...CONTEXT> Default 'primary'
     colorBy={'id'} // ?string<'id' | 'index'>. Default 'id'
@@ -40,7 +41,7 @@ const BarComponent = ({ testData }) => (
     groupMode={'stacked'} // ?string<'stacked' | 'grouped'>. Default 'stacked'
     indexBy={'profit'} // ?string. Default: 'id'
     isInteractive={false} // ?boolean
-    keys={keys}
+    keys={keys} // Array<string>
     layout={'vertical'} // ?string<'horizontal' | 'vertical'>. Default 'vertical'
     leftLegend={'Profit'} // ?string. Default: undefined
     minValue={0} // ?number. Default: 'auto'
