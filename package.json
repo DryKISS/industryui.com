@@ -100,6 +100,7 @@
     "@nivo/bar": "^0.59.2",
     "@nivo/colors": "0.59.0",
     "@nivo/generators": "^0.59.0",
+    "@nivo/line": "0.59.3",
     "@nivo/pie": "0.59.1",
     "@typeform/embed": "^0.15.0",
     "axios": "^0.19.0",
