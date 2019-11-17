@@ -2,6 +2,8 @@
  * Theme - Variables - Colour
  */
 export const COLOUR = {
+  drykiss_lightBlue: '#00E1DA',
+  drykiss_darkPink: '#FF0063',
   white: '#fff',
   black: '#000',
 
