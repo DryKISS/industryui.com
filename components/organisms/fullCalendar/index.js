@@ -7,48 +7,31 @@
  */
 
 // React
-import React, { createRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 
-// Next
-import dynamic from 'next/dynamic'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import '@fullcalendar/core/main.css'
+import '@fullcalendar/daygrid/main.css'
+import '@fullcalendar/timegrid/main.css'
 
-const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
-  ssr: false
-})
+// UI
+import { Theme } from '../../../'
 
-export const Calendar = props => {
-  const [events, setEvents] = useState(props.events || [])
-
-  const calendarComponentRef = createRef()
-
-  const header = {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-  }
-
-  const handleDateClick = arg => {
-    if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-      const event = {
-        title: 'New Event',
-        start: arg.date,
-        allDay: arg.allDay
-      }
-      setEvents([...events, event])
-    }
-  }
+export const Calendar = forwardRef(({ ...props }, ref) => {
+  const { CALENDAR, COLOUR } = Theme
 
   return (
-    <CalendarWrapper
-      businessHours
-      dateClick={handleDateClick}
-      eventColor='#e3336e'
-      header={header}
-      nowIndicator
-      ref={calendarComponentRef}
-      weekends
+    <FullCalendar
+      defaultView={props.defaultView}
+      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+      eventColor={props.defaultEventColor || COLOUR.primary}
+      header={CALENDAR.header}
+      events={props.events}
+      ref={ref}
       {...props}
-      events={events}
     />
   )
-}
+})
