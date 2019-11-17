@@ -14,6 +14,7 @@ import { FOOTER } from '../../organisms/footer/variables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
+import { PIECHART } from '../../molecules/charts/pieChart/variables'
 import { PROGRESS, PROGRESSBAR } from '../../atoms/progress/variables'
 import { SIDEBAR } from '../../molecules/sidebar/variables'
 import { STEPPER } from '../../molecules/stepper/variables'
@@ -29,6 +30,7 @@ export const Theme = {
   GRID,
   HEADINGS,
   NAVBAR,
+  PIECHART,
   PROGRESS,
   PROGRESSBAR,
   SIDEBAR,
