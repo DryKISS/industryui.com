@@ -15,6 +15,7 @@ import styled from 'styled-components'
 export const Textarea = ({
   autoFocus,
   change,
+  className,
   cols,
   dir,
   disabled,
@@ -42,12 +43,12 @@ export const Textarea = ({
     setCounter(e.target.value.length)
   }
 
-  return (
-    <Label id={id} text={label}>
+  const InputItem = () => (
+    <>
       <StyledTextarea
         autoFocus={autoFocus}
         aria-describedby={id}
-        className='Form-control Textarea'
+        className={`${className} Form-control Textarea`}
         cols={cols}
         dir={dir}
         disabled={disabled}
@@ -64,16 +65,64 @@ export const Textarea = ({
         value={value}
         wrap={wrap}
       />
+
       {showCharsCount && (
         <CharCountSection>
           {counter}
           {maxLength && ` / ${maxLength}`}
         </CharCountSection>
       )}
-      <div className='Form-feedback' />
-    </Label>
+    </>
+  )
+
+  return (
+    <>
+      {label ? (
+        <Label text={label}>
+          {InputItem()}
+          <div className='Form-feedback' />
+        </Label>
+      ) : (
+        InputItem()
+      )}
+    </>
   )
 }
+
+const StyledTextarea = styled.textarea`
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid ${props => props.theme.COLOUR.light};
+  border-radius: 0.25rem;
+  color: ${props => props.theme.COLOUR.dark};
+  display: block;
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0.5rem;
+  overflow: auto;
+  width: 100%;
+
+  &:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: 0;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #c0c0c0;
+  }
+  :-ms-input-placeholder {
+    color: #c0c0c0;
+  }
+  :-moz-placeholder {
+    color: #c0c0c0;
+    opacity: 1;
+  }
+`
+
+const CharCountSection = styled.p`
+  float: right;
+`
 
 Textarea.propTypes = {
   autoFocus: bool,
@@ -102,39 +151,3 @@ Textarea.defaultProps = {
   showCharsCount: false,
   value: ''
 }
-
-const StyledTextarea = styled.textarea`
-  background-clip: padding-box;
-  background-color: #fff;
-  border: 1px solid ${props => props.theme.COLOUR.light};
-  border-radius: 0.25rem;
-  color: ${props => props.theme.COLOUR.dark};
-  display: block;
-  font-size: 1rem;
-  line-height: 1.5;
-  padding: 0.5rem;
-  overflow: auto;
-  width: 100%;
-
-  &:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    outline: 0;
-  }
-
-  /* &:valid~.Form-feedback {
-    display: none;
-  } */
-
-  /* &:valid {
-    border-color: green;
-  } */
-
-  /* &:invalid {
-    border-color: #dc3545;
-  } */
-`
-
-const CharCountSection = styled.p`
-  float: right;
-`

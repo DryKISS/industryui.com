@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 1.5rem;
+  overflow: hidden;
+  font-size: 0.75rem;
+  background-color: #ecf0f3;
+  border-radius: .25rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #2D9CDB;
+  -webkit-transition: width .6s ease;
+  transition: width .6s ease;
+  background-size: auto;
+  background-image: none;
+  -webkit-animation: none 0 ease 0 1 normal none running;
+  animation: none 0 ease 0 1 normal none running;
+}
+
+<div
+  className="c0"
+  fontSize="0.75rem"
+  height="1.5rem"
+>
+  <div
+    aria-valuemax={100}
+    aria-valuemin={0}
+    aria-valuenow={30}
+    className="c1"
+    color="white"
+    role="progressbar"
+  >
+    30
+    %
+  </div>
+</div>
+`;

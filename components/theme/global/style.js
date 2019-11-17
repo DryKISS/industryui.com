@@ -87,6 +87,7 @@ export const ThemeStyle = createGlobalStyle`
       style += `
         ${el} {
           ${theme.HEADINGS[el].font ? `font-family: ${theme.HEADINGS[el].font};` : ''}
+          ${theme.HEADINGS[el].fontSize ? `font-size: ${theme.HEADINGS[el].fontSize};` : ''}
           ${theme.HEADINGS[el].uppercase === true ? 'text-transform: uppercase;' : ''}
           ${theme.HEADINGS[el].weight ? `font-weight: ${theme.HEADINGS[el].weight};` : ''}
         }

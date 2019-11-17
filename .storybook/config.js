@@ -23,7 +23,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Font awesome
 import {
+  faBell,
+  faCommentDots,
   faEdit,
+  faEnvelope,
   faExclamationTriangle,
   faTachometerAltAverage,
   faTrash
@@ -33,8 +36,8 @@ import {
   faArrowLeft,
   faArrowRight,
   faBars,
-  faBell,
   faCaretDown,
+  faCheck,
   faCheckCircle,
   faChevronDown,
   faChevronUp,
@@ -42,6 +45,8 @@ import {
   faHomeHeart,
   faImages,
   faMars,
+  faPaperclip,
+  faSmile,
   faStethoscope,
   faTimes,
   faTimesCircle,
@@ -56,15 +61,20 @@ library.add(
   faBars,
   faBell,
   faCaretDown,
+  faCheck,
   faCheckCircle,
   faChevronDown,
   faChevronUp,
+  faCommentDots,
   faDogLeashed,
   faEdit,
+  faEnvelope,
   faExclamationTriangle,
   faHomeHeart,
   faImages,
   faMars,
+  faPaperclip,
+  faSmile,
   faStethoscope,
   faTachometerAltAverage,
   faTimes,
@@ -90,9 +100,9 @@ Router.router = mockedRouter
 addDecorator(
   withInfo({
     header: true,
-    inline: false,
+    inline: true,
     styles: { infoBody: { overflow: 'overlay' } },
-    source: true
+    source: false
   })
 )
 

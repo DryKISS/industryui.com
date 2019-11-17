@@ -39,7 +39,7 @@ const StyledLink = styled.a`
   padding: 1rem 0.75rem;
 
   &:hover {
-    color: ${({ theme }) => theme.COLOUR.primary};
+    color: ${({ theme }) => theme.NAVBAR.colourActive};
   }
 `
 

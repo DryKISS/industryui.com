@@ -1,4 +1,0 @@
-/**
- * Nivo
- */
-export * from './components'

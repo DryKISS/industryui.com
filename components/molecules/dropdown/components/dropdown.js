@@ -38,9 +38,15 @@ export const Dropdown = ({ caret, className, children, items, position }) => {
 
   return (
     <StyledDropdown className={className} ref={node}>
-      <StyledToggle className='dropdown--toggle' onClick={() => setOpen(!open)}>
+      <StyledToggle
+        className={`${open ? 'dropdown--active' : ''} dropdown--toggle`}
+        onClick={() => setOpen(!open)}
+      >
         {children}
-        {caret && <Icon aria-hidden='true' context='info' icon='chevron-down' />}
+
+        {caret && (
+          <Icon className='dropdown--caret' aria-hidden='true' context='info' icon='chevron-down' />
+        )}
       </StyledToggle>
 
       {open && (
@@ -56,7 +62,7 @@ const StyledDropdown = styled.div`
 `
 
 const StyledToggle = styled.div`
-  color: ${props => props.theme.NAVBAR.colourActive};
+  color: ${({ theme }) => theme.NAVBAR.colourActive};
   cursor: pointer;
   display: inline-block;
   line-height: 1.5;

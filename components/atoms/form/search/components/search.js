@@ -12,7 +12,7 @@ import { Button, useChange, Form, Input } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const Search = ({ label, onSearch, placeholder, value, type }) => {
+export const Search = ({ className, label, onSearch, placeholder, value, type }) => {
   const INITIAL_STATE = {
     query: value || ''
   }
@@ -21,7 +21,7 @@ export const Search = ({ label, onSearch, placeholder, value, type }) => {
   const { query } = form
 
   return (
-    <Form submit={() => onSearch(query)}>
+    <Form className={className} submit={() => onSearch(query)}>
       <StyledSearch>
         <Input
           change={change}
@@ -52,6 +52,7 @@ const StyledSearch = styled.div`
 `
 
 Search.propTypes = {
+  className: string,
   label: string,
   onSearch: func.isRequired,
   placeholder: string,
