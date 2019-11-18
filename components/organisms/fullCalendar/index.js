@@ -17,7 +17,6 @@ const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
   ssr: false
 })
 
-
 export const Calendar = forwardRef(({ ...props }, ref) => {
   const { CALENDAR, COLOUR } = Theme
 
