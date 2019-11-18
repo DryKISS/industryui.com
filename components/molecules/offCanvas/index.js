@@ -3,7 +3,7 @@ import React from 'react'
 import { createPortal } from 'react-dom'
 import { string, bool, func, any } from 'prop-types'
 import styled from 'styled-components'
-import { CloseIcon } from './icons'
+import { Close } from '../../'
 
 const OffCanvasDiv = styled.div`
   box-shadow: ${({ show }) => (show ? '-5px 5px 22px -15px rgba(0,0,0,0.75)' : 'none')};
@@ -23,7 +23,7 @@ const OffCanvasHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   color: #fff;
-  padding: 15px 15px 10px 30px;
+  padding: 15px 15px 15px 30px;
   font-weight: 700;
   letter-spacing: 0.5px;
   background-color: ${({ theme: { COLOUR } }) => COLOUR.primary};
@@ -34,7 +34,7 @@ const OffCanvasComponent = ({ width, headerText, children, show, toggleShow }) =
     <OffCanvasDiv show={show} width={width}>
       <OffCanvasHeader>
         {headerText}
-        <CloseIcon onClick={e => toggleShow(false)} />
+        <Close context='white' click={e => toggleShow(false)} />
       </OffCanvasHeader>
       {children}
     </OffCanvasDiv>
