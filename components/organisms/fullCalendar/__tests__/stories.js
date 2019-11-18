@@ -41,8 +41,10 @@ export const main = () => {
   const calendarRef = useRef(null)
 
   useEffect(() => {
-    calendarRef.current.componentWillUnmount()
-    calendarRef.current.componentDidMount()
+    if (calendarRef.current) {
+      calendarRef.current.componentWillUnmount()
+      calendarRef.current.componentDidMount()
+    }
   }, [defaultView])
 
   return (
@@ -77,8 +79,10 @@ export const events = () => {
   const calendarRef = useRef(null)
 
   useEffect(() => {
-    calendarRef.current.componentWillUnmount()
-    calendarRef.current.componentDidMount()
+    if (calendarRef.current) {
+      calendarRef.current.componentWillUnmount()
+      calendarRef.current.componentDidMount()
+    }
   }, [defaultView])
 
   return (
@@ -114,8 +118,10 @@ export const eventsWithEventAdditionOnClick = () => {
   const calendarRef = useRef(null)
 
   useEffect(() => {
-    calendarRef.current.componentWillUnmount()
-    calendarRef.current.componentDidMount()
+    if (calendarRef.current) {
+      calendarRef.current.componentWillUnmount()
+      calendarRef.current.componentDidMount()
+    }
   }, [defaultView])
 
   const [events, setEvents] = useState(Events || [])
@@ -164,8 +170,10 @@ export const eventClick = () => {
   const calendarRef = useRef(null)
 
   useEffect(() => {
-    calendarRef.current.componentWillUnmount()
-    calendarRef.current.componentDidMount()
+    if (calendarRef.current) {
+      calendarRef.current.componentWillUnmount()
+      calendarRef.current.componentDidMount()
+    }
   }, [defaultView])
 
   const handleEventClick = ({ event }) => {
