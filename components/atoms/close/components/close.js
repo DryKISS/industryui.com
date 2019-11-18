@@ -30,6 +30,7 @@ const StyledButton = styled(Button)`
   font-weight: 700;
   line-height: 1;
   opacity: 0.6;
+  padding: 0 0.25rem;
   text-shadow: 0 1px 0 #fff;
   margin: -1rem -1rem -1rem auto;
   z-index: 10000;
