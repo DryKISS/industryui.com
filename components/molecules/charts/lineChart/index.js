@@ -1,4 +1,4 @@
-import { oneOf, bool } from 'prop-types'
+import { oneOf, bool, string } from 'prop-types'
 import { ResponsiveLine, LinePropTypes, LineDefaultProps } from '@nivo/line'
 import { withTheme } from 'styled-components'
 import { colorSchemes } from '@nivo/colors'
@@ -41,6 +41,7 @@ export const LineChart = withTheme(({ theme, ...props }) => {
     pointSize = LINECHART.pointSize,
     showLegend
   } = props
+
   return (
     <ResponsiveLine
       areaOpacity={areaOpacity}
@@ -59,8 +60,8 @@ export const LineChart = withTheme(({ theme, ...props }) => {
       yScale={yScale.call(props)}
       axisTop={axisTop}
       axisRight={axisRight}
-      axisBottom={axisBottom}
-      axisLeft={axisLeft}
+      axisBottom={axisBottom.call(props)}
+      axisLeft={axisLeft.call(props)}
       colors={{ scheme: colorScheme }}
       pointSize={pointSize}
       pointColor={pointColor}
@@ -79,6 +80,8 @@ LineChart.displayName = 'LineChart'
 
 LineChart.propTypes = Object.assign({}, LinePropTypes, {
   // TODO: maybe write more custom schemes :)
+  bottomLegend: string,
+  leftLegend: string,
   colorScheme: oneOf(Object.keys(colorSchemes)),
   showLegend: bool
 })
