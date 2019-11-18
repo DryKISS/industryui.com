@@ -8,30 +8,25 @@
 
 // React
 import React, { forwardRef } from 'react'
-
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import '@fullcalendar/core/main.css'
-import '@fullcalendar/daygrid/main.css'
-import '@fullcalendar/timegrid/main.css'
+import dynamic from 'next/dynamic'
 
 // UI
 import { Theme } from '../../../'
+
+const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
+  ssr: false
+})
 
 export const Calendar = forwardRef(({ ...props }, ref) => {
   const { CALENDAR, COLOUR } = Theme
 
   return (
-    <FullCalendar
-      defaultView={props.defaultView}
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+    <CalendarWrapper
+      {...props}
       eventColor={props.defaultEventColor || COLOUR.primary}
       header={CALENDAR.header}
       events={props.events}
-      ref={ref}
-      {...props}
+      forwardedRef={ref}
     />
   )
 })
