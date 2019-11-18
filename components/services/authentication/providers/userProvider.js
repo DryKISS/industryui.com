@@ -21,8 +21,9 @@ export const UserProvider = ({ children, jwtConfig }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   const {
-    data: { messages }
-  } = useNotifications('messages', { active: true }, 60)
+    data: { notifications },
+    fetchNotifications
+  } = useNotifications('messages', { active: true }, 25)
 
   useEffect(() => {
     const bearerToken = window.localStorage.getItem('bearerToken')
@@ -81,12 +82,13 @@ export const UserProvider = ({ children, jwtConfig }) => {
     !isLoading && (
       <UserContext.Provider
         value={{
-          accessToken: accessToken,
-          user: user,
-          notifications: messages,
-          authorise: authorise,
-          signIn: signIn,
-          signOut: signOut
+          accessToken,
+          authorise,
+          fetchNotifications,
+          notifications,
+          signIn,
+          signOut,
+          user
         }}
       >
         {children}
