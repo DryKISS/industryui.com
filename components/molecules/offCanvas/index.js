@@ -7,7 +7,7 @@ import { Close } from '../../'
 
 const OffCanvasDiv = styled.div`
   box-shadow: ${({ show }) => (show ? '-5px 5px 22px -15px rgba(0,0,0,0.75)' : 'none')};
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: ${({ width }) => width};
