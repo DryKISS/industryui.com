@@ -23,9 +23,7 @@ import styled from 'styled-components'
 export const MessagingSend = ({ handleChange, handleSelect, handleSubmit, maxLength, message }) => {
   const [open, setOpen] = useState(false)
 
-  const handleAttach = () => {
-    console.log('handleAttach')
-  }
+  const handleAttach = () => {}
 
   const handleOpenPicker = () => {
     setOpen(false)

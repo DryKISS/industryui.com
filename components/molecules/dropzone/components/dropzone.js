@@ -20,8 +20,6 @@ import styled from 'styled-components'
 
 export const Dropzone = ({ accept, disabled, handleDrop }) => {
   const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
-    console.log('Dropped')
     handleDrop && handleDrop(acceptedFiles)
   }, [])
 
@@ -50,8 +48,6 @@ export const Dropzone = ({ accept, disabled, handleDrop }) => {
       {file.path} - {file.size} bytes
     </li>
   ))
-
-  console.log('Dropzone', isDragActive, isDragAccept, isDragReject, accept, disabled)
 
   return (
     <>

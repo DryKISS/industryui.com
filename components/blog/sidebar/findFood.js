@@ -72,15 +72,13 @@ export const BlogFindFood = ({ colour }) => {
           return response.json()
         })
         .then(data => {
-          console.log('Success', data)
           window.open(`https://${domain}${data.url}`, '_self')
         })
         .catch(error => {
-          console.log('Error', error)
           setMsg('We don’t deliver there yet')
         })
     } else {
-      console.log('GOOGLE')
+      console.error('GOOGLE')
     }
   }
 

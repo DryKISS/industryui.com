@@ -58,9 +58,7 @@ Typeform.defaultProps = {
   popup: false,
   hideHeaders: false,
   hideFooter: false,
-  onSubmit: () => {
-    console.log('All done')
-  },
+  onSubmit: () => {},
 
   // Widget options
   opacity: 100,

@@ -20,7 +20,6 @@ Sitemap: ${Canonical}/sitemap.xml
 Disallow:`
 
 fs.writeFileSync(`${directory}/robots.txt`, robotsTxt)
-console.log('- Robots.txt saved!')
 
 // Sitemap
 const pages = getPages()
@@ -33,12 +32,11 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
       return `<url>
     <loc>${Canonical}${path}</loc>
     <lastmod>${
-      pages[path].lastModified ? formatDateStandard(new Date(pages[path].lastModified)) : today
-    }</lastmod>
+  pages[path].lastModified ? formatDateStandard(new Date(pages[path].lastModified)) : today
+}</lastmod>
   </url>\n  `
     })
     .join('')}
 </urlset>`
 
 fs.writeFileSync(`${directory}/sitemap.xml`, sitemapXml)
-console.log('- Sitemap.xml saved!\n')

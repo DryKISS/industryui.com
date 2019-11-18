@@ -39,7 +39,7 @@ const db = admin.firestore()
 
 fs.readFile(fileName, 'utf8', function (err, data) {
   if (err) {
-    return console.log(err)
+    return console.error(err)
   }
 
   let dataArray = ''
@@ -75,7 +75,6 @@ function startUpdating (collectionName, doc, data) {
       if (data.Object.prototype.hasOwnProperty.call(date)) {
         data[date] = new Date(data[date]._seconds * 1000)
       } else {
-        console.log('Please check your date parameters!!!', dateArray)
         parameterValid = false
       }
     })
@@ -87,7 +86,6 @@ function startUpdating (collectionName, doc, data) {
       if (data.Object.prototype.hasOwnProperty.call(geo)) {
         data[geo] = new admin.firestore.GeoPoint(data[geo]._latitude, data[geo]._longitude)
       } else {
-        console.log('Please check your geo parameters!!!', geoArray)
         parameterValid = false
       }
     })
@@ -99,14 +97,13 @@ function startUpdating (collectionName, doc, data) {
         .doc(doc)
         .set(data)
         .then(() => {
-          console.log(`${doc} is imported successfully to firestore!`)
           resolve('Data wrote!')
         })
         .catch(error => {
-          console.log(error)
+          console.error(error)
         })
     })
   } else {
-    console.log(`${doc} is not imported to firestore. Please check your parameters!`)
+    console.error(`${doc} is not imported to firestore. Please check your parameters!`)
   }
 }

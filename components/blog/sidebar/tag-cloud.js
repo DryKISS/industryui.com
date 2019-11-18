@@ -46,7 +46,7 @@ export const BlogTagCloud = ({ articles, total }) => {
     //   .entries(tagsCounted)
     //   .sort((a, b) => { return tagsCounted[b] - tagsCounted[a] })
     //   // .map(key => {
-    //   //   console.log(key)
+    //   //   key
     //   // })
 
     // newO[key] = list[key]
