@@ -59,7 +59,7 @@ const StyledButton = styled.button`
     `}
 
     ${({ size }) =>
-    size === 'lg' &&
+      size === 'lg' &&
       css`
         font-size: 1.25rem;
         padding: 1rem;

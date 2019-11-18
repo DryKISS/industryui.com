@@ -32,7 +32,7 @@ export class FirebaseStorage {
 
   //   // Loop through the uploaded files
   //   files.map((file) => (
-  //     console.log(file)
+  //     file
   //   ))
 
   //   // files.map((file) => uploadFile(dispatch, firebase, { file, ...other }))

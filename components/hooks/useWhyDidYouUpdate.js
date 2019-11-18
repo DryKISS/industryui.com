@@ -24,9 +24,9 @@ export function useWhyDidYouUpdate (name, props) {
         }
       })
 
-      // If changesObj not empty then output to console
+      // If changesObj not empty then output
       if (Object.keys(changesObj).length) {
-        console.log('[why-did-you-update]', name, changesObj)
+        console.error('[why-did-you-update]', name, changesObj)
       }
     }
 

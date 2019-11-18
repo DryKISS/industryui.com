@@ -32,7 +32,7 @@ const results = db
     return data
   })
   .catch(error => {
-    console.log(error)
+    console.error(error)
   })
 
 results.then(dt => {
@@ -40,8 +40,9 @@ results.then(dt => {
     // Write collection to JSON file
     fs.writeFile('../seed/data.json', JSON.stringify(data), function (err) {
       if (err) {
-        return console.log(err)
+        return console.error(err)
       }
+
       console.log('The file was saved!')
     })
   })

@@ -45,7 +45,7 @@ export const GetAddress = forwardRef(
             setAddresses({ ...addresses, data: data.addresses })
           })
           .catch(error => {
-            console.log('Error', error)
+            console.error('Error', error)
           })
       }
     }))

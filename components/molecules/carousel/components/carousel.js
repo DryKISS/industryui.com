@@ -4,35 +4,18 @@
 
 // React
 import React, { useState } from 'react'
-import { oneOfType, number, array, string, bool } from 'prop-types'
+import { array, bool, node, string } from 'prop-types'
 
-// styled-components
+// Style
 import styled from 'styled-components'
 import { Icon } from '../../../'
 
 const Wrapper = styled.div`
-  position: relative;
-  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : `${width}px`)};
-  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : `${width}px`)};
   height: ${({ height }) => `${height}px`};
   min-height: ${({ height }) => `${height}px`};
   margin: 0;
-`
-
-const StyledArrow = styled(Icon)`
-  color: #000;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  ${({ direction }) => (direction === 'left' ? 'left: 1rem;' : 'right: 1rem;')}
-  && {
-    font-size: 2rem;
-  }
-`
-
-const StyledSlide = styled.div`
-  height: 100%;
-  width: 100%;
+  position: relative;
+  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : `${width}px`)};
 `
 
 export const Carousel = ({ children, width, height, fullWidth }) => {
@@ -63,26 +46,42 @@ export const Carousel = ({ children, width, height, fullWidth }) => {
 
 Carousel.propTypes = {
   children: array,
-  width: number,
-  height: number,
-  fullWidth: bool
+  fullWidth: bool,
+  height: string,
+  width: string
 }
 
 Carousel.defaultProps = {
   children: [],
-  width: 700,
+  fullWidth: false,
   height: 400,
-  fullWidth: false
+  width: 700
 }
 
 const Arrow = ({ direction, clickFunction, icon }) => (
   <StyledArrow icon={icon} onClick={clickFunction} direction={direction} />
 )
 
+const StyledArrow = styled(Icon)`
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  ${({ direction }) => (direction === 'left' ? 'left: 1rem;' : 'right: 1rem;')}
+  && {
+    font-size: 2rem;
+  }
+`
+
 export const CarouselSlide = ({ children }) => {
   return <StyledSlide>{children}</StyledSlide>
 }
 
+const StyledSlide = styled.div`
+  height: 100%;
+  width: 100%;
+`
+
 CarouselSlide.propTypes = {
-  children: oneOfType([string, array])
+  children: node
 }
