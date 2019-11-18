@@ -3,10 +3,10 @@
  */
 
 // React
-import { any, bool, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
+import { string } from 'prop-types'
 
 // UI
-import { Icon, CONTEXT } from '../../'
+import { Icon } from '../../'
 
 export const IconStacked = ({ icon, prefix }) => {
   return (

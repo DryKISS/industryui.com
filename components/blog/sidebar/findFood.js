@@ -75,7 +75,7 @@ export const BlogFindFood = ({ colour }) => {
           window.open(`https://${domain}${data.url}`, '_self')
         })
         .catch(error => {
-          setMsg('We don’t deliver there yet')
+          setMsg(`We don’t deliver there yet: ${error.message}`)
         })
     } else {
       console.error('GOOGLE')

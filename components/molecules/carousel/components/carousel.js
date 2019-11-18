@@ -4,7 +4,7 @@
 
 // React
 import React, { useState } from 'react'
-import { array, bool, node, oneOfType, string } from 'prop-types'
+import { array, bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
