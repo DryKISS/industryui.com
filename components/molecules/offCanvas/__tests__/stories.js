@@ -1,12 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 
 // UI
 import { OffCanvas } from '../'
 import Readme from '../README.md'
 
-
-import { boolean, select, withKnobs, text } from '@storybook/addon-knobs'
-import { COLOUR } from '../../../theme/variables/colour'
+import { withKnobs, text } from '@storybook/addon-knobs'
 
 export default {
   title: 'Molecules/OffCanvas',
@@ -26,12 +24,13 @@ export const main = () => {
   return (
     <>
       <label htmlFor='offCanvas'>Show/Hide OffCanvas </label>
-      <input onChange={(e) => toggleCheck(!isChecked)} id='offCanvas' type='checkbox' checked={isChecked} />
-      <OffCanvas
-        headerText={textKnob}
-        show={isChecked}
-        toggleShow={toggleCheck}
-      >
+      <input
+        onChange={e => toggleCheck(!isChecked)}
+        id='offCanvas'
+        type='checkbox'
+        checked={isChecked}
+      />
+      <OffCanvas headerText={textKnob} show={isChecked} toggleShow={toggleCheck}>
         Components go here
       </OffCanvas>
     </>
