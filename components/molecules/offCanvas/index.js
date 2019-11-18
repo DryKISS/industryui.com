@@ -1,5 +1,5 @@
 // React
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { string, bool, func, any } from 'prop-types'
 import styled from 'styled-components'
@@ -42,7 +42,15 @@ const OffCanvasComponent = ({ width, headerText, children, show, toggleShow }) =
 }
 
 export const OffCanvas = props => {
-  return createPortal(<OffCanvasComponent {...props} />, props.container)
+  const [mounted, setMounted] = useState(false)
+  let container = document.body
+
+  useEffect(() => {
+    container = props.container || container
+    setMounted(true)
+  }, [])
+
+  return mounted ? createPortal(<OffCanvasComponent {...props} />, container) : null
 }
 
 OffCanvas.propTypes = {
@@ -54,6 +62,5 @@ OffCanvas.propTypes = {
 }
 
 OffCanvas.defaultProps = {
-  width: '400px',
-  container: document.body
+  width: '400px'
 }
