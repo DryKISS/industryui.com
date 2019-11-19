@@ -1,6 +1,6 @@
 // React
 import React from 'react'
-import { func, oneOf, bool } from 'prop-types'
+import { func, oneOf, bool, string } from 'prop-types'
 import { ResponsiveBar, BarPropTypes, BarDefaultProps } from '@nivo/bar'
 // Source: https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
 import { colorSchemes } from '@nivo/colors'
@@ -75,6 +75,8 @@ BarChart.displayName = 'BarChart'
 
 BarChart.propTypes = Object.assign({}, BarPropTypes, {
   // TODO: maybe write more custom schemes :)
+  bottomLegend: string,
+  leftLegend: string,
   colorScheme: oneOf(Object.keys(colorSchemes)),
   showLegend: bool
 })

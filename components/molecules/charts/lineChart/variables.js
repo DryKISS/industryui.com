@@ -5,23 +5,27 @@
 import { COLOUR } from '../../../theme/variables/colour'
 
 export const LINECHART = {
-  axisBottom: {
-    orient: 'bottom',
-    tickSize: 5,
-    tickPadding: 5,
-    tickRotation: 0,
-    legend: 'transportation',
-    legendOffset: 36,
-    legendPosition: 'middle'
+  axisBottom: function () {
+    return {
+      orient: 'bottom',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: this.bottomLegend, // string passed as prop
+      legendOffset: 36,
+      legendPosition: 'middle'
+    }
   },
-  axisLeft: {
-    orient: 'left',
-    tickSize: 5,
-    tickPadding: 5,
-    tickRotation: 0,
-    legend: 'count',
-    legendOffset: -40,
-    legendPosition: 'middle'
+  axisLeft: function () {
+    return {
+      orient: 'left',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: this.leftLegend, // string passed as prop
+      legendOffset: -40,
+      legendPosition: 'middle'
+    }
   },
   axisTop: null,
   axisRight: null,
