@@ -4,6 +4,7 @@
 
 // React
 import React from 'react'
+import { func } from 'prop-types'
 
 // UI
 import { Search } from '../../../../atoms/form/search'
@@ -11,11 +12,11 @@ import { Search } from '../../../../atoms/form/search'
 // Style
 import styled from 'styled-components'
 
-export const MessagingSearch = () => {
+export const MessagingSearch = ({ onSearch }) => {
   return (
     <>
       <StyledContainer>
-        <StyledSearch onSearch={() => {}} />
+        <StyledSearch onSearch={onSearch} />
       </StyledContainer>
     </>
   )
@@ -32,6 +33,8 @@ const StyledSearch = styled(Search)`
   width: 75%;
 `
 
-MessagingSearch.propTypes = {}
+MessagingSearch.propTypes = {
+  onSearch: func
+}
 
 MessagingSearch.defaultProps = {}

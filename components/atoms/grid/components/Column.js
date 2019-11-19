@@ -8,7 +8,7 @@ import { any, bool, number, objectOf, oneOfType, string, shape } from 'prop-type
 // Style
 import styled from 'styled-components'
 
-export const Column = ({ children, className, style, sm, md, lg, xl, offset }) => {
+export const Column = ({ children, className, columnRef, style, sm, md, lg, xl, offset }) => {
   sm = sm !== undefined ? sm : 0
   md = md !== undefined ? md : sm
   lg = lg !== undefined ? lg : md
@@ -26,6 +26,7 @@ export const Column = ({ children, className, style, sm, md, lg, xl, offset }) =
       off={offset}
       size={{ sm, md, lg, xl }}
       style={style}
+      ref={columnRef}
     />
   )
 }

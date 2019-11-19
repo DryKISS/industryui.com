@@ -11,25 +11,25 @@ import styled from 'styled-components'
 // UI
 import { Link } from '../../../'
 
-const renderLink = ({ id, name, onClick, to }, closeDropdown) => {
-  const handleClick = () => {
-    closeDropdown()
-    onClick && onClick()
-  }
-
-  return (
+const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
+  const item = () => (
+    <StyledLink className='dropdown--link' id={id} onClick={onClick}>
+      {name}
+    </StyledLink>
+  )
+  return to ? (
     <Link to={to} passHref>
-      <StyledLink className='dropdown--link' id={id} onClick={handleClick}>
-        {name}
-      </StyledLink>
+      {item()}
     </Link>
+  ) : (
+    item()
   )
 }
 
-export const DropdownItem = ({ closeDropdown, item }) => {
+export const DropdownItem = ({ closeDropdown, item, onClick }) => {
   return (
     <StyledDropdownItem divider={item.divider}>
-      {item.divider ? <StyledDivider /> : renderLink(item, closeDropdown)}
+      {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
     </StyledDropdownItem>
   )
 }
@@ -48,11 +48,11 @@ const StyledDivider = styled.div`
 `
 
 const StyledLink = styled.a`
-  color: ${({ theme }) => theme.NAVBAR.colourActive};
+  color: ${({ theme }) => theme.COLOUR.primary};
   display: block;
   padding: 0.25rem 1.5rem;
   text-decoration: none;
-
+  cursor: pointer;
   &:hover {
     background-color: #f8f9fa;
     color: inherit;
@@ -62,5 +62,6 @@ const StyledLink = styled.a`
 DropdownItem.propTypes = {
   children: node,
   closeDropdown: func,
-  item: object
+  item: object,
+  onClick: func
 }
