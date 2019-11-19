@@ -11,47 +11,98 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { number, func, string } from 'prop-types'
+import React, { useState, useRef } from 'react'
+import { number, func, array } from 'prop-types'
 
 // UI
-import { Button, EmojiMart, Form, Icon, Textarea } from '../../../../'
+import { Button, EmojiMart, Form, Icon, Textarea, Dropdown } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const MessagingSend = ({ handleChange, handleSelect, handleSubmit, maxLength, message }) => {
+export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
+  const [message, setMessage] = useState('')
   const [open, setOpen] = useState(false)
-
-  const handleAttach = () => {}
+  const [attachments, setAttachments] = useState([])
+  const [audience, setAudience] = useState(audienceItems[0] || '')
+  const fileInputRef = useRef()
 
   const handleOpenPicker = () => {
     setOpen(false)
+  }
+
+  const openFileDialog = () => {
+    fileInputRef.current.click()
+  }
+
+  const handleFilesChange = e => {
+    const { files } = e.target
+    setAttachments(files)
+  }
+
+  const handleEmojiSelect = emoji => {
+    setMessage(prev => prev + emoji)
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const data = {
+      attachments,
+      audience: audience.id,
+      message
+    }
+    onSubmit(data)
+    setMessage('')
   }
 
   return (
     <>
       {open && (
         <StyledPickerContainer>
-          <EmojiMart handleOpenPicker={handleOpenPicker} handleSelect={handleSelect} open={open} />
+          <EmojiMart
+            handleOpenPicker={handleOpenPicker}
+            handleSelect={handleEmojiSelect}
+            open={open}
+          />
         </StyledPickerContainer>
       )}
 
       <StyledContainer>
         <StyledForm submit={handleSubmit}>
+          {audience && (
+            <StyledDropDown
+              items={audienceItems}
+              position='top'
+              onChange={item => setAudience(item)}
+            >
+              {audience.name}
+            </StyledDropDown>
+          )}
           <StyledTextarea
-            change={handleChange}
+            change={e => setMessage(e.target.value)}
             id='message'
             maxLength={maxLength}
             placeholder='Write message'
             rows={1}
             value={message}
           />
-
+          <input
+            ref={fileInputRef}
+            type='file'
+            multiple
+            onChange={handleFilesChange}
+            style={{ display: 'none' }}
+          />
           <StyledElements>
-            <StyledIcon fixedWidth={false} icon='paperclip' onClick={handleAttach} size='2x' />
+            <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
             <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' />
-            <Button content='Send' context='info' size='md' type='submit' />
+            <Button
+              content='Send'
+              context='info'
+              size='md'
+              type='submit'
+              disabled={message.length === 0 && attachments.length === 0}
+            />
           </StyledElements>
         </StyledForm>
       </StyledContainer>
@@ -65,6 +116,7 @@ const StyledContainer = styled.div`
   border-top: 1px solid #c0c0c0;
   color: #c0c0c0;
   padding: 1rem;
+  box-sizing: border-box;
 `
 
 const StyledPickerContainer = styled(StyledContainer)`
@@ -73,6 +125,7 @@ const StyledPickerContainer = styled(StyledContainer)`
 
 const StyledForm = styled(Form)`
   display: flex;
+  position: relative;
   margin: 0;
 `
 
@@ -95,13 +148,25 @@ const StyledIcon = styled(Icon)`
   margin-right: 1rem;
 `
 
+const StyledDropDown = styled(Dropdown)`
+  position: absolute;
+  top: -15px;
+  left: 8px;
+  .dropdown--toggle,
+  svg {
+    color: ${({ theme }) => theme.COLOUR.info};
+    /* font-size: ${({ theme }) => theme.TYPOGRAPHY.fontSizes[0]}px; */
+    font-size: 10px;
+  }
+`
+
 MessagingSend.propTypes = {
-  handleChange: func.isRequired,
-  handleSubmit: func.isRequired,
-  maxLength: number,
-  message: string.isRequired
+  audienceItems: array,
+  onSubmit: func.isRequired,
+  maxLength: number
 }
 
 MessagingSend.defaultProps = {
+  audienceItems: [],
   maxLength: 320
 }

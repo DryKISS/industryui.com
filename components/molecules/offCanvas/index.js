@@ -14,8 +14,9 @@ const OffCanvasDiv = styled.div`
   height: 100vh;
   background-color: #fff;
   transform: ${({ width, show }) => `translateX(${show ? 0 : width})`};
-  transition: 375ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: transform 375ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
   will-change: transform;
+  z-index: 9999
 `
 
 const OffCanvasHeader = styled.div`

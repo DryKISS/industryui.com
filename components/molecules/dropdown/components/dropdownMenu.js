@@ -10,11 +10,20 @@ import styled from 'styled-components'
 
 import { DropdownItem } from '../../'
 
-export const DropdownMenu = ({ closeDropdown, items, position }) => {
+export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) => {
+  const handleClick = item => {
+    onItemClick && onItemClick(item)
+    closeDropdown()
+  }
   return (
     <StyledDropdownMenu className='dropdown--menu' position={position}>
       {items.map(item => (
-        <DropdownItem key={item.id} closeDropdown={closeDropdown} item={item} />
+        <DropdownItem
+          key={item.id}
+          closeDropdown={closeDropdown}
+          item={item}
+          onClick={() => handleClick(item)}
+        />
       ))}
     </StyledDropdownMenu>
   )
@@ -35,11 +44,17 @@ const StyledDropdownMenu = styled.div`
     `
     left: ${position === 'right' ? 'auto' : '0'};
     right: ${position === 'right' ? '0' : 'auto'};
+    ${position === 'top' &&
+      `
+      bottom: 100%;
+      top: unset;
+    `}
   `}
 `
 
 DropdownMenu.propTypes = {
   closeDropdown: func,
   items: array.isRequired,
+  onItemClick: func,
   position: string
 }

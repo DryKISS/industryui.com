@@ -6,6 +6,7 @@
 import React from 'react'
 
 // Storybook
+import { action } from '@storybook/addon-actions'
 import { Decorator } from 'storybook/utils/decorator'
 
 // UI
@@ -28,4 +29,6 @@ export default {
   }
 }
 
-export const main = () => <MessagingContainer messages={messages} />
+export const main = () => (
+  <MessagingContainer messages={messages} onSearch={action('search')} onSubmit={action('submit')} />
+)

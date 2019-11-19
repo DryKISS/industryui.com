@@ -4,7 +4,7 @@
  */
 
 // React
-import { array, object, string } from 'prop-types'
+import { array, object, string, func } from 'prop-types'
 
 // UI
 import { MessageList, MessagingSearch, MessagingSend } from '../../'
@@ -12,22 +12,24 @@ import { MessageList, MessagingSearch, MessagingSend } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const MessagingContainer = ({ background, className, messages, style }) => {
+export const MessagingContainer = ({
+  audienceItems,
+  background,
+  className,
+  messages,
+  onSearch,
+  onSubmit,
+  style
+}) => {
   return (
     <>
-      <MessagingSearch />
+      <MessagingSearch onSearch={onSearch} />
 
       <StyledContainer className={className} style={style}>
         <MessageList messages={messages} />
       </StyledContainer>
 
-      <MessagingSend
-        handleChange={() => {}}
-        handleSelect={() => {}}
-        handleSubmit={() => {}}
-        maxLength={320}
-        message=''
-      />
+      <MessagingSend audienceItems={audienceItems} onSubmit={onSubmit} maxLength={320} />
     </>
   )
 }
@@ -42,8 +44,11 @@ const StyledContainer = styled.div`
 `
 
 MessagingContainer.propTypes = {
+  audienceItems: array,
   background: string,
   className: string,
   messages: array.isRequired,
+  onSearch: func,
+  onSubmit: func,
   style: object
 }

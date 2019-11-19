@@ -4,7 +4,7 @@
 
 // React
 import React, { useEffect, useRef, useState } from 'react'
-import { array, bool, node, string } from 'prop-types'
+import { array, bool, node, string, func } from 'prop-types'
 
 // UI
 import { DropdownMenu, Icon } from '../../../'
@@ -12,7 +12,7 @@ import { DropdownMenu, Icon } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const Dropdown = ({ caret, className, children, items, position }) => {
+export const Dropdown = ({ caret, className, children, items, onChange, position }) => {
   const [open, setOpen] = useState(false)
   const node = useRef()
 
@@ -45,12 +45,22 @@ export const Dropdown = ({ caret, className, children, items, position }) => {
         {children}
 
         {caret && (
-          <Icon className='dropdown--caret' aria-hidden='true' context='info' icon='chevron-down' />
+          <Icon
+            className='dropdown--caret'
+            aria-hidden='true'
+            context='info'
+            icon={position === 'top' ? 'chevron-up' : 'chevron-down'}
+          />
         )}
       </StyledToggle>
 
       {open && (
-        <DropdownMenu closeDropdown={() => setOpen(false)} items={items} position={position} />
+        <DropdownMenu
+          closeDropdown={() => setOpen(false)}
+          items={items}
+          position={position}
+          onItemClick={onChange}
+        />
       )}
     </StyledDropdown>
   )
@@ -74,6 +84,7 @@ Dropdown.propTypes = {
   children: node.isRequired,
   className: string,
   items: array.isRequired,
+  onChange: func,
   position: string
 }
 
