@@ -23,6 +23,12 @@ export const useAxios = (url, params, initialValue) => {
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 
   useEffect(() => {
+    const bearerToken = window.localStorage.getItem('bearerToken')
+
+    if (bearerToken) {
+      apiConfig.headers.Authorization = 'Bearer ' + bearerToken
+    }
+
     const http = axios.create(apiConfig)
 
     // Mock requests

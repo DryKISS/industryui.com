@@ -21,7 +21,7 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
 
     if (res.status === 200 && res.data.messages) {
       window.localStorage.setItem('active-notifications', JSON.stringify(res.data.messages))
-      setData({ messages: res.data.messages })
+      setData({ notifications: res.data.messages })
     }
   }
 
@@ -33,5 +33,5 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
     fetchNotifications()
   }, [])
 
-  return { data }
+  return { data, fetchNotifications }
 }
