@@ -6,7 +6,7 @@
 import { array, bool, func, string } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Radio = ({ change, data, legend, stacked }) => {
   const renderRadio = () => {
@@ -39,6 +39,25 @@ export const Radio = ({ change, data, legend, stacked }) => {
   )
 }
 
+const StyledLabel = styled.label`
+  margin-right: 1.25rem;
+  padding-left: 1.25rem;
+  position: relative;
+  ${({ stacked }) =>
+    stacked &&
+    css`
+      display: block;
+      margin: 0.5rem 0;
+      padding-left: 1.25rem;
+    `}
+`
+
+const StyledInput = styled.input`
+  margin-top: 0.05rem;
+  margin-left: -1.25rem;
+  position: absolute;
+`
+
 Radio.propTypes = {
   change: func.isRequired,
   data: array.isRequired,
@@ -50,17 +69,3 @@ Radio.defaultProps = {
   legend: '',
   stacked: false
 }
-
-const StyledLabel = styled.label`
-  ${props => props.stacked && 'display: block;'}
-  padding-left: 1.25rem;
-  ${props => (props.stacked ? 'margin: .5rem 0;' : 'margin-right: 1.25rem;')}
-  ${props => props.stacked && 'padding-left: 1.25rem;'}
-  position: relative;
-`
-
-const StyledInput = styled.input`
-  margin-top: 0.05rem;
-  margin-left: -1.25rem;
-  position: absolute;
-`
