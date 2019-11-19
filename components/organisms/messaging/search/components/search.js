@@ -3,14 +3,14 @@
  */
 
 // React
-import React from "react"
-import { func } from "prop-types"
+import React from 'react'
+import { func } from 'prop-types'
 
 // UI
-import { Search } from "../../../../atoms/form/search"
+import { Search } from '../../../../atoms/form/search'
 
 // Style
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const MessagingSearch = ({ onSearch }) => {
   return (

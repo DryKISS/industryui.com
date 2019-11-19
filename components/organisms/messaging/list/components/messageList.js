@@ -3,11 +3,11 @@
  */
 
 // React
-import React from "react"
-import { array } from "prop-types"
+import React from 'react'
+import { array } from 'prop-types'
 
 // UI
-import { Message } from "../../"
+import { Message } from '../../'
 
 export const MessageList = ({ messages }) => {
   return messages.map((message, index) => (

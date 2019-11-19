@@ -11,20 +11,20 @@
  */
 
 // React
-import React, { useState, useRef } from "react"
-import { number, func, string, array } from "prop-types"
+import React, { useState, useRef } from 'react'
+import { number, func, array } from 'prop-types'
 
 // UI
-import { Button, EmojiMart, Form, Icon, Textarea, Dropdown, Column, Row } from "../../../../"
+import { Button, EmojiMart, Form, Icon, Textarea, Dropdown } from '../../../../'
 
 // Style
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState('')
   const [open, setOpen] = useState(false)
   const [attachments, setAttachments] = useState([])
-  const [audience, setAudience] = useState(audienceItems[0] || "")
+  const [audience, setAudience] = useState(audienceItems[0] || '')
   const fileInputRef = useRef()
 
   const handleOpenPicker = () => {
@@ -71,7 +71,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
           {audience && (
             <StyledDropDown
               items={audienceItems}
-              position="top"
+              position='top'
               onChange={item => setAudience(item)}
             >
               {audience.name}
@@ -79,23 +79,29 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
           )}
           <StyledTextarea
             change={e => setMessage(e.target.value)}
-            id="message"
+            id='message'
             maxLength={maxLength}
-            placeholder="Write message"
+            placeholder='Write message'
             rows={1}
             value={message}
           />
           <input
             ref={fileInputRef}
-            type="file"
+            type='file'
             multiple
             onChange={handleFilesChange}
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
           />
           <StyledElements>
-            <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="2x" />
-            <StyledIcon fixedWidth={false} icon="smile" onClick={() => setOpen(!open)} size="2x" />
-            <Button content="Send" context="info" size="md" type="submit" disabled={message.length === 0 && attachments.length === 0} />
+            <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
+            <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' />
+            <Button
+              content='Send'
+              context='info'
+              size='md'
+              type='submit'
+              disabled={message.length === 0 && attachments.length === 0}
+            />
           </StyledElements>
         </StyledForm>
       </StyledContainer>

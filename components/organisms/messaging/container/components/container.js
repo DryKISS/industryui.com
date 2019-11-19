@@ -4,13 +4,13 @@
  */
 
 // React
-import { array, object, string, func } from "prop-types"
+import { array, object, string, func } from 'prop-types'
 
 // UI
-import { MessageList, MessagingSearch, MessagingSend } from "../../"
+import { MessageList, MessagingSearch, MessagingSend } from '../../'
 
 // Style
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const MessagingContainer = ({
   audienceItems,

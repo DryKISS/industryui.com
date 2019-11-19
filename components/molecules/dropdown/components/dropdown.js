@@ -45,12 +45,22 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
         {children}
 
         {caret && (
-          <Icon className='dropdown--caret' aria-hidden='true' context='info' icon={position === 'top' ? 'chevron-up' : 'chevron-down'} />
+          <Icon
+            className='dropdown--caret'
+            aria-hidden='true'
+            context='info'
+            icon={position === 'top' ? 'chevron-up' : 'chevron-down'}
+          />
         )}
       </StyledToggle>
 
       {open && (
-        <DropdownMenu closeDropdown={() => setOpen(false)} items={items} position={position} onItemClick={onChange} />
+        <DropdownMenu
+          closeDropdown={() => setOpen(false)}
+          items={items}
+          position={position}
+          onItemClick={onChange}
+        />
       )}
     </StyledDropdown>
   )

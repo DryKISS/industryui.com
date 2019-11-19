@@ -3,15 +3,15 @@
  */
 
 // React
-import React, { useEffect, useRef } from "react"
-import { string, bool } from "prop-types"
+import React, { useEffect, useRef } from 'react'
+import { string, bool } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Row, Truncate } from "../../../../"
+import { Card, Column, Icon, Image, Row, Truncate } from '../../../../'
 // import { Tail } from '../../'
 
 // Style
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const MessageBase = ({
   content,
@@ -32,22 +32,22 @@ export const MessageBase = ({
     if (scrollToMessage) messageRef.current.scrollIntoView()
   }, [])
   const IconSelect = () => {
-    let useIcon = ""
+    let useIcon = ''
 
     switch (icon) {
-      case "comment":
-        useIcon = "comment-dots"
+      case 'comment':
+        useIcon = 'comment-dots'
         break
-      case "notification":
-        useIcon = "bell"
+      case 'notification':
+        useIcon = 'bell'
         break
 
       default:
-        useIcon = "envelope"
+        useIcon = 'envelope'
         break
     }
 
-    return <StyledIcon fixedWidth={false} icon={useIcon} prefix="fad" />
+    return <StyledIcon fixedWidth={false} icon={useIcon} prefix='fad' />
   }
 
   return (
@@ -60,8 +60,8 @@ export const MessageBase = ({
             <IconSelect />
             {to && (
               <>
-                <StyledImage alt="customer" src="/messaging/customer.svg" />
-                <StyledImage alt="supplier" src="/messaging/supplier.svg" />
+                <StyledImage alt='customer' src='/messaging/customer.svg' />
+                <StyledImage alt='supplier' src='/messaging/supplier.svg' />
               </>
             )}
             <StyledTime>{time}</StyledTime>
@@ -75,7 +75,7 @@ export const MessageBase = ({
         <Row>
           {pictureId && (
             <Column sm={2}>
-              <Image alt="Image" src={pictureId} />
+              <Image alt='Image' src={pictureId} />
             </Column>
           )}
 
@@ -86,14 +86,14 @@ export const MessageBase = ({
             {more && (
               <StyledCollapse>
                 See more
-                <Icon icon="chevron-down" />
+                <Icon icon='chevron-down' />
               </StyledCollapse>
             )}
           </Column>
 
           {!type && (
             <Column sm={1}>
-              <Icon color={statusText === "Delivered" ? "green" : "#bbb"} icon="check-circle" />
+              <Icon color={statusText === 'Delivered' ? 'green' : '#bbb'} icon='check-circle' />
             </Column>
           )}
         </Row>
@@ -107,7 +107,7 @@ export const MessageBase = ({
 // /* box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.2); */
 
 const StyledCard = styled(Card)`
-  background-color: ${({ type }) => (type === "in" ? "#fff" : "#F7F7F7")};
+  background-color: ${({ type }) => (type === 'in' ? '#fff' : '#F7F7F7')};
   border-radius: 1rem;
   margin-bottom: 0.5rem;
   padding: 0.75rem 1rem;

@@ -3,10 +3,10 @@
  */
 
 // React
-import { any, bool, number, objectOf, oneOfType, string, shape } from "prop-types"
+import { any, bool, number, objectOf, oneOfType, string, shape } from 'prop-types'
 
 // Style
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Column = ({ children, className, columnRef, style, sm, md, lg, xl, offset }) => {
   sm = sm !== undefined ? sm : 0

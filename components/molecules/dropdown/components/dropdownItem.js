@@ -2,19 +2,18 @@
  * Dropdown
  */
 
-import React from "react"
+import React from 'react'
 
-import { func, object, node } from "prop-types"
+import { func, object, node } from 'prop-types'
 
-import styled from "styled-components"
+import styled from 'styled-components'
 
 // UI
-import { Link } from "../../../"
+import { Link } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
-
   const item = () => (
-    <StyledLink className="dropdown--link" id={id} onClick={onClick}>
+    <StyledLink className='dropdown--link' id={id} onClick={onClick}>
       {name}
     </StyledLink>
   )
@@ -38,7 +37,7 @@ export const DropdownItem = ({ closeDropdown, item, onClick }) => {
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;
-  ${({ divider }) => divider && "padding: 0;"}
+  ${({ divider }) => divider && 'padding: 0;'}
 `
 
 const StyledDivider = styled.div`

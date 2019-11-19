@@ -3,10 +3,10 @@
  */
 
 // React
-import { oneOf } from "prop-types"
+import { oneOf } from 'prop-types'
 
 // Style
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Tail = ({ type }) => {
   return <StyledTail type={type} />
@@ -18,13 +18,13 @@ const StyledTail = styled.span`
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  bottom: ${({ type }) => (type === "in" ? "4px" : "-2px")};
-  ${({ type }) => (type === "in" ? "left: 4px" : "right: 14px")};
+  bottom: ${({ type }) => (type === 'in' ? '4px' : '-2px')};
+  ${({ type }) => (type === 'in' ? 'left: 4px' : 'right: 14px')};
   width: 12px;
   height: 19px;
-  transform: ${({ type }) => (type === "in" ? "rotate(55deg)" : "rotate(-12deg)")};
+  transform: ${({ type }) => (type === 'in' ? 'rotate(55deg)' : 'rotate(-12deg)')};
 `
 
 Tail.propTypes = {
-  type: oneOf(["in", "out"]).isRequired
+  type: oneOf(['in', 'out']).isRequired
 }

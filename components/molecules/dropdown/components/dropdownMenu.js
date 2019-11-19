@@ -18,7 +18,12 @@ export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) =>
   return (
     <StyledDropdownMenu className='dropdown--menu' position={position}>
       {items.map(item => (
-        <DropdownItem key={item.id} closeDropdown={closeDropdown} item={item} onClick={() => handleClick(item)} />
+        <DropdownItem
+          key={item.id}
+          closeDropdown={closeDropdown}
+          item={item}
+          onClick={() => handleClick(item)}
+        />
       ))}
     </StyledDropdownMenu>
   )
@@ -39,7 +44,8 @@ const StyledDropdownMenu = styled.div`
     `
     left: ${position === 'right' ? 'auto' : '0'};
     right: ${position === 'right' ? '0' : 'auto'};
-    ${position === 'top' && `
+    ${position === 'top' &&
+      `
       bottom: 100%;
       top: unset;
     `}
