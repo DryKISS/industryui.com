@@ -12,7 +12,7 @@ import { DropdownItem } from '../../'
 
 export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) => {
   const handleClick = item => {
-    onItemClick(item)
+    onItemClick && onItemClick(item)
     closeDropdown()
   }
   return (
