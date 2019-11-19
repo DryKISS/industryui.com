@@ -95,7 +95,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
           <StyledElements>
             <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="2x" />
             <StyledIcon fixedWidth={false} icon="smile" onClick={() => setOpen(!open)} size="2x" />
-            <Button content="Send" context="info" size="md" type="submit" disabled={message.length === 0 || attachments.length === 0} />
+            <Button content="Send" context="info" size="md" type="submit" disabled={message.length === 0 && attachments.length === 0} />
           </StyledElements>
         </StyledForm>
       </StyledContainer>
