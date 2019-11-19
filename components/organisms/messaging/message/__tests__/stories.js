@@ -1,17 +1,17 @@
 /**
- * Messaging/MessageIn
+ * Messaging/Message
  */
 
 // React
 import React from 'react'
 
 // UI
-import { Message } from '../..'
+import { Message } from '../'
 
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Messaging/MessageIn',
+  title: 'Organisms/Messaging/Message',
   component: Message,
   parameters: {
     readme: {

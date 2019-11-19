@@ -3,26 +3,22 @@
  */
 
 // React
-import { array } from 'prop-types'
+import React from "react"
+import { array } from "prop-types"
 
 // UI
-import { MessageIn, MessageOut } from '../../'
+import { Message } from "../../"
 
 export const MessageList = ({ messages }) => {
-  let prevType = ''
-
-  return messages.map((message, index) => {
-    const msg =
-      message.type === 'in' ? (
-        <MessageIn message={message} key={index} prevType={prevType} />
-      ) : (
-        <MessageOut message={message} key={index} prevType={prevType} />
-      )
-
-    prevType = message.type
-
-    return msg
-  })
+  return messages.map((message, index) => (
+    <Message
+      message={message}
+      key={index}
+      prevType={message.type}
+      scrollToMessage={index + 1 === messages.length}
+      type={message.type}
+    />
+  ))
 }
 
 MessageList.propTypes = {
