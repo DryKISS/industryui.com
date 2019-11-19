@@ -52,6 +52,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
       message
     }
     onSubmit(data)
+    setMessage('')
   }
 
   return (

@@ -21,16 +21,11 @@ const Send = () => {
   const [change, form, setForm] = useChange(INITIAL_STATE)
   const { message } = form
 
-  const handleSubmit = () => {
-    action('Submit')
-    setForm({ INITIAL_STATE })
-  }
-
   return (
     <MessagingSend
       handleChange={change}
       handleSelect={msg => setForm({ message: message + msg })}
-      handleSubmit={handleSubmit}
+      onSubmit={action('Submit')}
       maxLength={320}
       message={message}
     />
