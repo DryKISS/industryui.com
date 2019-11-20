@@ -5,8 +5,7 @@ export const Items = [
   {
     id: 1,
     label: 'Job raised',
-    date: '10 Nov 2019 11:40',
-    showDate: true
+    date: '10 Nov 2019 11:40'
   },
   {
     id: 2,
@@ -41,16 +40,43 @@ export const Items = [
   {
     id: 8,
     label: 'Customer paid',
-    date: null
+    date: null,
+    actions: [
+      {
+        id: 1,
+        content: 'Mark customer paid',
+        context: 'info',
+        handleClick: () => {},
+        type: 'button'
+      }
+    ]
   },
   {
     id: 9,
     label: 'Supplier paid',
-    date: null
+    date: null,
+    actions: [
+      {
+        id: 1,
+        content: 'Mark supplier paid',
+        context: 'info',
+        handleClick: () => {},
+        type: 'button'
+      }
+    ]
   },
   {
     id: 10,
     label: 'Closed',
-    date: null
+    date: null,
+    actions: [
+      {
+        id: 1,
+        content: 'Close job manually',
+        context: 'warning',
+        handleClick: () => {},
+        type: 'button'
+      }
+    ]
   }
 ]
