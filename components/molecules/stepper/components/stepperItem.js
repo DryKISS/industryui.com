@@ -40,7 +40,7 @@ export const StepperItem = ({ item }) => {
 
       {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
 
-      {item.actions && item.actions.length > 0 && (
+      {!item.date && item.actions && item.actions.length > 0 && (
         <StyledContent>{content(item.actions)}</StyledContent>
       )}
 
