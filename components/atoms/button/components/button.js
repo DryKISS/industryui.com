@@ -52,18 +52,25 @@ const StyledButton = styled.button`
     `}
 
   ${({ size }) =>
+    size === 'xs' &&
+    css`
+      font-size: 0.75rem;
+      padding: 0.25rem;
+    `}
+
+  ${({ size }) =>
     size === 'sm' &&
     css`
       font-size: 0.75rem;
       padding: 0.5rem;
     `}
 
-    ${({ size }) =>
-      size === 'lg' &&
-      css`
-        font-size: 1.25rem;
-        padding: 1rem;
-      `}
+  ${({ size }) =>
+    size === 'lg' &&
+    css`
+      font-size: 1.25rem;
+      padding: 1rem;
+    `}
 
   /* If two buttons are next to each other */
   & + & {
