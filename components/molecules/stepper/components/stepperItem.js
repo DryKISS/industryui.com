@@ -7,12 +7,16 @@ import { object } from 'prop-types'
 
 // UI
 import { STEPPER } from '../'
-import { Icon } from '../../../'
+import { Icon, Divider } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
 export const StepperItem = ({ item }) => {
+  const actions = actions => {
+    return ''
+  }
+
   return (
     <StyledStepperItem>
       <StyledIconContainer active={item.date}>
@@ -26,8 +30,16 @@ export const StepperItem = ({ item }) => {
           />
         )}
       </StyledIconContainer>
+
       <StyledLabel active={item.date}>{item.label}</StyledLabel>
-      {item.date && item.showDate && <StyledDate>{item.date}</StyledDate>}
+
+      {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
+
+      {item.actions && item.actions.length > 0 && (
+        <StyledContent>{actions(item.actions)}</StyledContent>
+      )}
+
+      {item.label !== 'Closed' && <Divider style={{ borderTop: '2px solid #f5f5f5' }} />}
     </StyledStepperItem>
   )
 }
@@ -57,14 +69,20 @@ const StyledIconContainer = styled.div`
   width: 23px;
 `
 
+const StyledContent = styled.div`
+  font-size: 0.8rem;
+`
+
 const StyledLabel = styled.span`
+  color: ${({ active }) => (active ? '#000' : '#999')};
+  font-size: 0.9rem;
   font-weight: ${({ active }) => (active ? 600 : 400)};
 `
 
-const StyledDate = styled.span`
-  color: #bbb;
-  font-size: 0.9rem;
-  margin-left: 10px;
+const StyledInfo = styled.span`
+  color: #ccc;
+  font-size: 0.75rem;
+  margin-left: 8px;
 `
 
 StyledStepperItem.propTypes = {
