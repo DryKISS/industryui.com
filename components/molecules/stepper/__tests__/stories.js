@@ -10,7 +10,7 @@ import { Stepper } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { Items } from '../__mocks__/items'
+import { Data } from '../__mocks__/data'
 
 export default {
   title: 'Molecules/Stepper',
@@ -22,4 +22,4 @@ export default {
   }
 }
 
-export const main = () => <Stepper items={Items} />
+export const main = () => <Stepper items={Data.items} timings={Data.timings} />
