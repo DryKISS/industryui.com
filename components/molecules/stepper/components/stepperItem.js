@@ -7,15 +7,20 @@ import { object } from 'prop-types'
 
 // UI
 import { STEPPER } from '../'
-import { Icon, Divider } from '../../../'
+import { Button, Divider, Icon } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
 export const StepperItem = ({ item }) => {
-  const actions = actions => {
-    return ''
-  }
+  const content = actions =>
+    actions.map(({ id, content, context, handleClick, to, type }) => (
+      <li key={id}>
+        {type === 'button' && (
+          <Button onClick={handleClick} content={content} context={context} size='xs' />
+        )}
+      </li>
+    ))
 
   return (
     <StyledStepperItem>
@@ -36,7 +41,7 @@ export const StepperItem = ({ item }) => {
       {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
 
       {item.actions && item.actions.length > 0 && (
-        <StyledContent>{actions(item.actions)}</StyledContent>
+        <StyledContent>{content(item.actions)}</StyledContent>
       )}
 
       {item.label !== 'Closed' && <Divider style={{ borderTop: '2px solid #f5f5f5' }} />}
@@ -69,8 +74,15 @@ const StyledIconContainer = styled.div`
   width: 23px;
 `
 
-const StyledContent = styled.div`
+const StyledContent = styled.ul`
   font-size: 0.8rem;
+  list-style: none;
+  margin: 5px 0 0 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 5px;
+  }
 `
 
 const StyledLabel = styled.span`
