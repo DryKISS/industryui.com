@@ -34,7 +34,7 @@
     "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix --verbose | snazzy",
-    "pretty": "prettier-standard",
+    "pretty": "prettier-standard --staged",
     "stylelint": "stylelint './**/*.js'",
     "test": "yarn run lint-fix && yarn run pretty && yarn run stylelint",
     "update-snapshots": "jest --updateSnapshot",
@@ -56,7 +56,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint-fix && yarn run pretty -- --staged && yarn run stylelint"
+      "pre-commit": "yarn run test"
     }
   },
   "prettier": {
