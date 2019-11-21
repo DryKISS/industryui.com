@@ -47,12 +47,18 @@ export const UserProvider = ({ children, jwtConfig }) => {
     }
   }, [])
 
-  const signIn = async (provider, username, password) => {
-    const {
-      data: { user, token }
-    } = await Api.post('auth', { username, password })
+  const signIn = async (provider, username, password, callback) => {
+    let user, token
+    try {
+      const { data } = await Api.post('auth', { username, password })
+      user = data.user
+      token = data.token
+    } catch (err) {
+      callback(new Error('Email or password is incorrect'))
+    }
 
-    if (user && token) {
+    const isAuthed = user && token
+    if (isAuthed) {
       setUser(user)
       window.localStorage.setItem('bearerToken', token)
       setAccessToken(token)
