@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { withKnobs, text, select } from '@storybook/addon-knobs'
-import styled from 'styled-components'
 
 // UI
 import { OffCanvas } from '../'
@@ -19,20 +18,35 @@ export default {
   }
 }
 
-export const main = () => {
-  const [isChecked, toggleCheck] = useState(true)
-  const contextKnob = select('context', CONTEXT, 'primary')
-  const textKnob = text('headerText', 'Homyze')
+const storyHOC = Component => {
+  return () => {
+    const [isChecked, toggleCheck] = useState(true)
+    const contextKnob = select('context', CONTEXT, 'primary')
+    const textKnob = text('headerText', 'Homyze')
 
+    return (
+      <>
+        <label htmlFor='offCanvas'>Show/Hide OffCanvas </label>
+        <input
+          onChange={e => toggleCheck(!isChecked)}
+          id='offCanvas'
+          type='checkbox'
+          checked={isChecked}
+        />
+        <Component
+          contextKnob={contextKnob}
+          isChecked={isChecked}
+          textKnob={textKnob}
+          toggleCheck={toggleCheck}
+        />
+      </>
+    )
+  }
+}
+
+export const main = storyHOC(({ contextKnob, isChecked, textKnob, toggleCheck }) => {
   return (
     <>
-      <label htmlFor='offCanvas'>Show/Hide OffCanvas </label>
-      <input
-        onChange={e => toggleCheck(!isChecked)}
-        id='offCanvas'
-        type='checkbox'
-        checked={isChecked}
-      />
       <OffCanvas
         context={contextKnob}
         headerText={textKnob}
@@ -43,62 +57,42 @@ export const main = () => {
       </OffCanvas>
     </>
   )
-}
+})
 
-const ContainerDiv = styled.div`
-  padding: 10px;
-`
-
-export const withMailForm = () => {
-  const [isChecked, toggleCheck] = useState(true)
-  const contextKnob = select('context', CONTEXT, 'primary')
-  const textKnob = text('headerText', 'Homyze')
-
+export const withMailForm = storyHOC(({ contextKnob, isChecked, textKnob, toggleCheck }) => {
   return (
     <>
-      <label htmlFor='offCanvas'>Show/Hide OffCanvas </label>
-      <input
-        onChange={e => toggleCheck(!isChecked)}
-        id='offCanvas'
-        type='checkbox'
-        checked={isChecked}
-      />
       <OffCanvas
         context={contextKnob}
         headerText={textKnob}
         show={isChecked}
         toggleShow={toggleCheck}
       >
-        <ContainerDiv>
-          <Form submit={() => {}}>
-            <Input
-              change={() => {}}
-              label='Email'
-              id='email'
-              placeholder='Enter email address'
-              type='email'
-            />
-            <Button secondary type='submit'>
-              Send reset link
-            </Button>
-          </Form>
-          <br />
-          <Progress size='md'>
-            <ProgressBar striped animated now={90}>
-              90%
-            </ProgressBar>
-          </Progress>
-        </ContainerDiv>
+        <Form submit={() => {}}>
+          <Input
+            change={() => {}}
+            label='Email'
+            id='email'
+            placeholder='Enter email address'
+            type='email'
+          />
+          <Button secondary type='submit'>
+            Send reset link
+          </Button>
+        </Form>
+        <br />
+        <Progress size='md'>
+          <ProgressBar striped animated now={90}>
+            90%
+          </ProgressBar>
+        </Progress>
       </OffCanvas>
     </>
   )
-}
+})
 
-export const withDynamicContent = () => {
-  const [isChecked, toggleCheck] = useState(true)
+export const withDynamicContent = storyHOC(({ contextKnob, isChecked, toggleCheck }) => {
   const [previewIndex, changePreview] = useState(1)
-  const contextKnob = select('context', CONTEXT, 'primary')
-
   const previews = {
     1: {
       headerText: 'Homyze First',
@@ -143,13 +137,6 @@ export const withDynamicContent = () => {
 
   return (
     <>
-      <label htmlFor='offCanvas'>Show/Hide OffCanvas </label>
-      <input
-        onChange={e => toggleCheck(!isChecked)}
-        id='offCanvas'
-        type='checkbox'
-        checked={isChecked}
-      />
       <br />
       <Button onClick={e => changePreview(1)}>Preview one</Button>
       <br />
@@ -164,8 +151,8 @@ export const withDynamicContent = () => {
         show={isChecked}
         toggleShow={toggleCheck}
       >
-        <ContainerDiv>{previews[previewIndex].component()}</ContainerDiv>
+        {previews[previewIndex].component()}
       </OffCanvas>
     </>
   )
-}
+})

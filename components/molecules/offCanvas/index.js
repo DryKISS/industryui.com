@@ -2,41 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { any, bool, func, oneOf, string } from 'prop-types'
-import styled from 'styled-components'
 import { Close, CONTEXT } from '../../'
 
-const OffCanvasDiv = styled.div`
-  box-shadow: ${({ show }) => (show ? '-5px 5px 22px -15px rgba(0,0,0,0.75)' : 'none')};
-  border-left: ${({ show }) => (show ? 'none' : '1px solid #cecece')};
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: ${({ width }) => width};
-  height: 100vh;
-  background-color: #fff;
-  transform: ${({ width, show }) => `translateX(${show ? 0 : width})`};
-  transition: transform 375ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  will-change: transform;
-  z-index: 9999;
-`
+// Components
+import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent } from './components'
 
-const OffCanvasHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #fff;
-  padding: 1rem 1rem 1rem 1.8rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  background-color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
-`
-
-const OffCanvasContent = styled.div`
-  position: relative;
-  padding: 0.5rem;
-`
-
-const OffCanvasComponent = ({ context, width, headerText, children, show, toggleShow }) => {
+const OffCanvasComponent = ({ context, children, headerText, show, toggleShow, width }) => {
   return (
     <OffCanvasDiv show={show} width={width}>
       <OffCanvasHeader context={context}>
