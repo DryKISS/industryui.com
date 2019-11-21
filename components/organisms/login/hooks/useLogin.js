@@ -37,7 +37,7 @@ export const useLogin = (firebase = false) => {
           setError(error)
         })
     } else {
-      signIn('email', email, password)
+      signIn('email', email, password, (error) => error && setError(error))
     }
   }
 
