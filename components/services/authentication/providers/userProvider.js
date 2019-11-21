@@ -50,9 +50,7 @@ export const UserProvider = ({ children, jwtConfig }) => {
   const signIn = async (provider, username, password, callback) => {
     let user, token
     try {
-      const {
-        data
-      } = await Api.post('auth', { username, password })
+      const { data } = await Api.post('auth', { username, password })
       user = data.user
       token = data.token
     } catch (err) {
