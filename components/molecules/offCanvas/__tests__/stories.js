@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text, select } from '@storybook/addon-knobs'
 import styled from 'styled-components'
 
 // UI
 import { OffCanvas } from '../'
 import Readme from '../README.md'
 
-import { Button, Input, Form, Progress, ProgressBar } from '../../../'
+import { Button, Input, Form, Progress, ProgressBar, CONTEXT } from '../../../'
 
 export default {
   title: 'Molecules/OffCanvas',
@@ -21,6 +21,7 @@ export default {
 
 export const main = () => {
   const [isChecked, toggleCheck] = useState(true)
+  const contextKnob = select('context', CONTEXT, 'primary')
   const textKnob = text('headerText', 'Homyze')
 
   return (
@@ -32,7 +33,12 @@ export const main = () => {
         type='checkbox'
         checked={isChecked}
       />
-      <OffCanvas headerText={textKnob} show={isChecked} toggleShow={toggleCheck}>
+      <OffCanvas
+        context={contextKnob}
+        headerText={textKnob}
+        show={isChecked}
+        toggleShow={toggleCheck}
+      >
         Components go here
       </OffCanvas>
     </>
@@ -45,6 +51,7 @@ const ContainerDiv = styled.div`
 
 export const withMailForm = () => {
   const [isChecked, toggleCheck] = useState(true)
+  const contextKnob = select('context', CONTEXT, 'primary')
   const textKnob = text('headerText', 'Homyze')
 
   return (
@@ -56,7 +63,12 @@ export const withMailForm = () => {
         type='checkbox'
         checked={isChecked}
       />
-      <OffCanvas headerText={textKnob} show={isChecked} toggleShow={toggleCheck}>
+      <OffCanvas
+        context={contextKnob}
+        headerText={textKnob}
+        show={isChecked}
+        toggleShow={toggleCheck}
+      >
         <ContainerDiv>
           <Form submit={() => {}}>
             <Input
@@ -85,6 +97,7 @@ export const withMailForm = () => {
 export const withDynamicContent = () => {
   const [isChecked, toggleCheck] = useState(true)
   const [previewIndex, changePreview] = useState(1)
+  const contextKnob = select('context', CONTEXT, 'primary')
 
   const previews = {
     1: {
@@ -146,6 +159,7 @@ export const withDynamicContent = () => {
       <br />
       <Button onClick={e => changePreview(3)}>Preview three</Button>
       <OffCanvas
+        context={contextKnob}
         headerText={previews[previewIndex].headerText}
         show={isChecked}
         toggleShow={toggleCheck}
