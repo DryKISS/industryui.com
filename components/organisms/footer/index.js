@@ -4,19 +4,19 @@
  */
 
 // React
-import { arrayOf, func, number, object, oneOfType, shape, string } from 'prop-types'
+import { arrayOf, func, number, object, oneOfType, shape, string } from "prop-types";
 
 // UI
-import { Column, Container, Link, List, ListItem, Row } from '../../'
+import { Column, Container, Link, List, ListItem, Row } from "../../";
 
 // Style
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Footer = ({ columns }) => {
   // NOTE: added rendering fragment (see also __mocks__/footer.js)
   const _render = obj => {
-    return obj()
-  }
+    return obj();
+  };
 
   const renderColumns = () => {
     return columns.map(({ size, offset, formatter, header, links, text, style }, index) => (
@@ -26,8 +26,8 @@ export const Footer = ({ columns }) => {
         {links && renderLinks(links)}
         {text && renderText(text)}
       </Column>
-    ))
-  }
+    ));
+  };
 
   const renderLinks = links => {
     return (
@@ -40,19 +40,19 @@ export const Footer = ({ columns }) => {
           </ListItem>
         ))}
       </List>
-    )
-  }
+    );
+  };
 
-  const renderText = text => <div dangerouslySetInnerHTML={{ __html: text }} />
+  const renderText = text => <div dangerouslySetInnerHTML={{ __html: text }} />;
 
   return (
-    <StyledFooter>
+    <StyledFooter data-test="footer">
       <Container>
         <Row>{renderColumns()}</Row>
       </Container>
     </StyledFooter>
-  )
-}
+  );
+};
 
 const StyledFooter = styled.div`
   background: ${props => props.theme.FOOTER.background};
@@ -60,14 +60,14 @@ const StyledFooter = styled.div`
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 3rem 0;
-`
+`;
 
 const StyledTitle = styled.h2`
   color: ${props => props.theme.COLOUR.primary};
   font-size: 1rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
-`
+`;
 
 const StyledLink = styled.a`
   color: ${props => props.theme.FOOTER.colour};
@@ -76,7 +76,7 @@ const StyledLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
-`
+`;
 
 Footer.propTypes = {
   columns: arrayOf(
@@ -105,4 +105,4 @@ Footer.propTypes = {
       style: object
     })
   ).isRequired
-}
+};
