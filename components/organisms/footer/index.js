@@ -46,7 +46,7 @@ export const Footer = ({ columns }) => {
   const renderText = text => <div dangerouslySetInnerHTML={{ __html: text }} />
 
   return (
-    <StyledFooter>
+    <StyledFooter data-test='footer'>
       <Container>
         <Row>{renderColumns()}</Row>
       </Container>
