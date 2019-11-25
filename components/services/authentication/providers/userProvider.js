@@ -54,7 +54,8 @@ export const UserProvider = ({ children, jwtConfig }) => {
       user = data.user
       token = data.token
     } catch (err) {
-      callback(new Error('Email or password is incorrect'))
+      const { error } = err.response.data
+      callback(new Error(error))
     }
 
     const isAuthed = user && token
