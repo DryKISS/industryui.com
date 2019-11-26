@@ -14,13 +14,16 @@ import styled from 'styled-components'
 
 export const StepperItem = ({ item }) => {
   const content = actions =>
-    actions.map(({ id, content, context, handleClick, to, type }) => (
-      <li key={id}>
-        {type === 'button' && (
-          <Button onClick={handleClick} content={content} context={context} size='xs' />
-        )}
-      </li>
-    ))
+    actions.map(
+      ({ id, active, content, context, handleClick, to, type }) =>
+        active && (
+          <li key={id}>
+            {type === 'button' && (
+              <Button onClick={handleClick} content={content} context={context} size='xs' />
+            )}
+          </li>
+        )
+    )
 
   return (
     <StyledStepperItem>
@@ -40,7 +43,7 @@ export const StepperItem = ({ item }) => {
 
       {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
 
-      {!item.date && item.actions && item.actions.length > 0 && (
+      {item.actions && item.actions.length > 0 && (
         <StyledContent>{content(item.actions)}</StyledContent>
       )}
 
