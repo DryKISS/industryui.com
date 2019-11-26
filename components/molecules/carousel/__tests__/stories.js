@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { Carousel, CarouselSlide, PRCarousel, PRCarouselSlide } from '../'
+import { Carousel, CarouselSlide } from '../'
 import Readme from '../README.md'
 import Img from '../../../utils/react-holder'
 
@@ -53,31 +53,31 @@ export const main = () => (
   </Carousel>
 )
 
-export const usePureReactCarousel = () => (
-  <PRCarousel width='600px' height='300px'>
-    <PRCarouselSlide>
-      <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-      {renderImage()}
-    </PRCarouselSlide>
-    <PRCarouselSlide>
-      <TextLabel>objectFit: cover</TextLabel>
-      {renderImage()}
-    </PRCarouselSlide>
-    <PRCarouselSlide>
-      <TextLabel>objectFit: none</TextLabel>
-      {renderImage()}
-    </PRCarouselSlide>
-    <PRCarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</PRCarouselSlide>
-    <PRCarouselSlide>
-      <TextLabel>objectFit: cover</TextLabel>
-      {renderImage()}
-    </PRCarouselSlide>
-    <PRCarouselSlide>
-      <TextLabel>objectFit: cover</TextLabel>
-      {renderImage()}
-    </PRCarouselSlide>
-  </PRCarousel>
-)
+// export const usePureReactCarousel = () => (
+//   <PRCarousel width='600px' height='300px'>
+//     <PRCarouselSlide>
+//       <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
+//       {renderImage()}
+//     </PRCarouselSlide>
+//     <PRCarouselSlide>
+//       <TextLabel>objectFit: cover</TextLabel>
+//       {renderImage()}
+//     </PRCarouselSlide>
+//     <PRCarouselSlide>
+//       <TextLabel>objectFit: none</TextLabel>
+//       {renderImage()}
+//     </PRCarouselSlide>
+//     <PRCarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</PRCarouselSlide>
+//     <PRCarouselSlide>
+//       <TextLabel>objectFit: cover</TextLabel>
+//       {renderImage()}
+//     </PRCarouselSlide>
+//     <PRCarouselSlide>
+//       <TextLabel>objectFit: cover</TextLabel>
+//       {renderImage()}
+//     </PRCarouselSlide>
+//   </PRCarousel>
+// )
 
 const TextLabel = styled.span`
   color: white;
