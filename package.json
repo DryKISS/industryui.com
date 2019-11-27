@@ -56,7 +56,7 @@
   },
   "lint-staged": {
     "!(*test).js": [
-      "yarn test",
+      "yarn lint-fix && yarn lint",
       "git add"
     ]
   },
