@@ -34,7 +34,7 @@
     "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
     "lint": "standard | snazzy",
     "lint-fix": "standard --fix --verbose | snazzy",
-    "pretty": "prettier-standard --staged",
+    "pretty": "prettier-standard",
     "stylelint": "stylelint './**/*.js'",
     "test": "yarn run lint-fix && yarn run pretty && yarn run stylelint",
     "update-snapshots": "jest --updateSnapshot",
@@ -54,9 +54,15 @@
       }
     }
   },
+  "lint-staged": {
+    "!(*test).js": [
+      "yarn test",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run test"
+      "pre-commit": "lint-staged"
     }
   },
   "prettier": {
@@ -152,6 +158,7 @@
     "jest": "^24.9.0",
     "jest-styled-components": "^6.3.4",
     "jscodeshift": "^0.6.4",
+    "lint-staged": "^10.0.0-beta.4",
     "markdown-loader-jest": "^0.1.1",
     "npm-check": "^5.9.0",
     "prettier-standard": "^15.0.1",
