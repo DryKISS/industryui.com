@@ -4,28 +4,87 @@
  */
 
 // React
-import { string } from 'prop-types'
+import { useState, useEffect } from 'react'
+import { array, number, oneOf, string } from 'prop-types'
 
-// UI
-import { Card, CardBody } from '../../'
+// Services
+import { StaticMap } from '../../'
 
-export const Location = ({ apiKey, location }) => {
-  const url = 'https://maps.googleapis.com/maps/api/staticmap'
+export const Location = ({
+  apiKey,
+  center,
+  channel,
+  client,
+  format,
+  language,
+  location,
+  maptype,
+  markers,
+  paths,
+  region,
+  scale,
+  signature,
+  size,
+  style,
+  visible,
+  zoom
+}) => {
+  const [width, height] = size.split('x')
+  const [mapUrl, setMapUrl] = useState('')
 
-  return (
-    <Card
-      alt={location}
-      bordered
-      context='light'
-      image={`${url}?center=${location}+uk&zoom=15&size=400x200&maptype=roadmap&key=${apiKey}`}
-      shadow
-    >
-      <CardBody>{location}</CardBody>
-    </Card>
-  )
+  // on mount
+  useEffect(() => {
+    const map = new StaticMap({
+      apiKey,
+      center,
+      channel,
+      client,
+      format,
+      language,
+      location,
+      maptype,
+      markers,
+      paths,
+      region,
+      scale,
+      signature,
+      size,
+      style,
+      visible,
+      zoom
+    })
+
+    const mapUrl = map.generateUrl()
+    setMapUrl(mapUrl)
+  }, [])
+
+  return <img width={width} height={height} src={mapUrl} alt='map' />
 }
 
 Location.propTypes = {
   apiKey: string.isRequired,
-  location: string.isRequired
+  center: string,
+  channel: string,
+  client: string,
+  format: oneOf(['png', 'png8', 'png32', 'gif', 'jpg', 'jpg-baseline']),
+  language: string,
+  location: string,
+  maptype: oneOf(['roadmap', 'satellite', 'terrain', 'hybrid']),
+  markers: array,
+  paths: array,
+  region: string,
+  scale: oneOf([1, 2, 4, '1', '2', '4']),
+  signature: string,
+  size: string.isRequired,
+  style: string,
+  visible: string,
+  zoom: number
+}
+
+Location.defaultProps = {
+  format: 'png',
+  maptype: 'roadmap',
+  scale: 1,
+  size: '400x200',
+  zoom: 15
 }
