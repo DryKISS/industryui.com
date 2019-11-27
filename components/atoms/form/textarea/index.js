@@ -28,6 +28,7 @@ export const Textarea = ({
   rows,
   showCharsCount,
   spellCheck,
+  style,
   tabIndex,
   value,
   wrap
@@ -64,6 +65,7 @@ export const Textarea = ({
         tabIndex={tabIndex}
         value={value}
         wrap={wrap}
+        style={style}
       />
 
       {showCharsCount && (
