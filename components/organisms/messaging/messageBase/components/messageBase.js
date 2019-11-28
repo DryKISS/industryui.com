@@ -8,7 +8,6 @@ import { string, bool } from 'prop-types'
 
 // UI
 import { Card, Column, Icon, Image, Row, Truncate } from '../../../../'
-// import { Tail } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -53,8 +52,6 @@ export const MessageBase = ({
   return (
     <Column sm={11} columnRef={messageRef}>
       <StyledCard type={type}>
-        {/* {prevType !== type && <Tail type={type} />} */}
-
         <Row>
           <Column sm={6}>
             <IconSelect />
@@ -101,10 +98,6 @@ export const MessageBase = ({
     </Column>
   )
 }
-
-// /* ${props =>
-//     props.type === 'in' ? 'border-top-left-radius: 0' : 'border-top-right-radius: 0'}; */
-// /* box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.2); */
 
 const StyledCard = styled(Card)`
   background-color: ${({ type }) => (type === 'in' ? '#fff' : '#F7F7F7')};
