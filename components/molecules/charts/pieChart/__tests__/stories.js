@@ -14,6 +14,9 @@ import { colorSchemes } from '@nivo/colors'
 import { PieChart } from '../'
 import Readme from '../README.md'
 
+// Mocks
+import { Data, Data2 } from '../__mocks__/data'
+
 const centerDecorator = storyFn => (
   <div
     style={{
@@ -36,34 +39,6 @@ export default {
     }
   }
 }
-
-const testData = [
-  {
-    id: 'make',
-    label: 'make',
-    value: 154
-  },
-  {
-    id: 'go',
-    label: 'go',
-    value: 318
-  },
-  {
-    id: 'javascript',
-    label: 'javascript',
-    value: 382
-  },
-  {
-    id: 'rust',
-    label: 'rust',
-    value: 461
-  },
-  {
-    id: 'c',
-    label: 'c',
-    value: 242
-  }
-]
 
 export const main = () => {
   const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
@@ -99,7 +74,7 @@ export const main = () => {
 
   return (
     <PieChart
-      data={testData}
+      data={Data}
       colorScheme={colorSchemeSelect}
       cornerRadius={cornerRadiusSelect}
       innerRadius={innerRadius}
@@ -117,34 +92,6 @@ export const main = () => {
     />
   )
 }
-
-const testData2 = [
-  {
-    id: 'Apple',
-    label: 'revenue (millions)',
-    value: 100.4
-  },
-  {
-    id: 'Samsung',
-    label: 'revenue (millions)',
-    value: 50.3
-  },
-  {
-    id: 'Google',
-    label: 'revenue (millions)',
-    value: 300.3
-  },
-  {
-    id: 'Mozzila',
-    label: 'revenue (millions)',
-    value: 75.1
-  },
-  {
-    id: 'Alibaba',
-    label: 'revenue (millions)',
-    value: 99.1
-  }
-]
 
 export const OtherDataPie = () => {
   const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
@@ -180,7 +127,7 @@ export const OtherDataPie = () => {
 
   return (
     <PieChart
-      data={testData2}
+      data={Data2}
       colorScheme={colorSchemeSelect}
       cornerRadius={cornerRadiusSelect}
       innerRadius={innerRadius}

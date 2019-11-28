@@ -82,6 +82,6 @@ BarChart.propTypes = Object.assign({}, BarPropTypes, {
 })
 
 BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
-  // colorScheme: 'nivo',
+  colorScheme: 'nivo',
   showLegend: false
 })
