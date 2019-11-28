@@ -1,16 +1,22 @@
+/**
+ * Off Canvas
+ */
+
+// React
 import { useState } from 'react'
-import { withKnobs, text, select } from '@storybook/addon-knobs'
+
+// Storybook
+import { withKnobs, text } from '@storybook/addon-knobs'
+import { Context, Wrapper } from 'decorators'
 
 // UI
-import { OffCanvas } from '../'
+import { Button, Form, Input, OffCanvas, Progress, ProgressBar } from '../../../'
 import Readme from '../README.md'
-
-import { Button, Input, Form, Progress, ProgressBar, CONTEXT } from '../../../'
 
 export default {
   title: 'Molecules/OffCanvas',
   components: OffCanvas,
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -21,17 +27,17 @@ export default {
 const storyHOC = Component => {
   return () => {
     const [isChecked, toggleCheck] = useState(true)
-    const contextKnob = select('context', CONTEXT, 'primary')
-    const textKnob = text('headerText', 'Homyze')
+    const contextKnob = Context()
+    const textKnob = text('Header', 'Homyze')
 
     return (
       <>
         <label htmlFor='offCanvas'>Show/Hide OffCanvas </label>
         <input
-          onChange={e => toggleCheck(!isChecked)}
-          id='offCanvas'
-          type='checkbox'
           checked={isChecked}
+          id='offCanvas'
+          onChange={e => toggleCheck(!isChecked)}
+          type='checkbox'
         />
         <Component
           contextKnob={contextKnob}
@@ -145,6 +151,7 @@ export const withDynamicContent = storyHOC(({ contextKnob, isChecked, toggleChec
       <br />
       <br />
       <Button onClick={e => changePreview(3)}>Preview three</Button>
+
       <OffCanvas
         context={contextKnob}
         headerText={previews[previewIndex].headerText}

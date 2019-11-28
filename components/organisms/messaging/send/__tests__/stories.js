@@ -7,13 +7,22 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Decorator } from 'storybook/utils/decorator'
+import { Wrapper } from 'decorators'
 
 // UI
 import { MessagingSend, useChange } from 'root'
 import Readme from '../README.md'
 
-const decorator = storyFn => <Decorator story={storyFn} />
+export default {
+  title: 'Organisms/Messaging/Send',
+  component: MessagingSend,
+  decorators: [Wrapper],
+  parameters: {
+    readme: {
+      sidebar: Readme
+    }
+  }
+}
 
 const Send = () => {
   const INITIAL_STATE = { message: '' }
@@ -30,17 +39,6 @@ const Send = () => {
       message={message}
     />
   )
-}
-
-export default {
-  title: 'Organisms/Messaging/Send',
-  component: MessagingSend,
-  decorators: [decorator],
-  parameters: {
-    readme: {
-      sidebar: Readme
-    }
-  }
 }
 
 export const main = () => <Send />

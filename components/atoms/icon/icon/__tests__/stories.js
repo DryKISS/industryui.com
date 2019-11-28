@@ -1,21 +1,21 @@
 /**
- * Avatar
+ * Icon
  */
 
 // React
 import React from 'react'
 
 // Storybook
-import { number, withKnobs } from '@storybook/addon-knobs'
+import { withKnobs } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
-import { Avatar } from '../'
+import { Icon } from 'root'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Avatar',
-  component: Avatar,
+  title: 'Atoms/Icon',
+  component: Icon,
   decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
@@ -24,4 +24,4 @@ export default {
   }
 }
 
-export const main = () => <Avatar content='Avatar' context={Context()} size={number('Size', 60)} />
+export const main = () => <Icon context={Context()} icon='times-circle' />

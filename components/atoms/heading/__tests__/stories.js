@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
-import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+// Storybook
+import { withKnobs, text } from '@storybook/addon-knobs'
+import { Context, Wrapper } from 'decorators'
 
 // UI
 import { Heading } from '../'
@@ -14,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Heading',
   component: Heading,
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -22,18 +24,18 @@ export default {
   }
 }
 
-export const main = () => (
-  <Heading
-    content={text('Text', 'Default H1 Heading')}
-    pageHeading={boolean('Page Heading', false)}
-    tag='h1'
-  />
-)
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    content: text('Button text', 'Heading Text'),
+    context: Context(),
+    ...props
+  }
 
-export const pageHeadingH2 = () => (
-  <Heading
-    content={text('Text', 'Page Heading Text')}
-    pageHeading={boolean('Page Heading', true)}
-    tag='h2'
-  />
-)
+  return <Heading {...defaultProps} />
+}
+
+export const main = () => <BaseComponent tag='h1' />
+
+export const HeadingH2 = () => <BaseComponent tag='h2' />
+
+export const noMargin = () => <BaseComponent noMargin />

@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Address } from '../'
 import Readme from '../README.md'
@@ -12,6 +15,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Address',
   component: Address,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

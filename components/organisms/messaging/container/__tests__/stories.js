@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Decorator } from 'storybook/utils/decorator'
+import { Wrapper } from 'decorators'
 
 // UI
 import { MessagingContainer } from '../'
@@ -16,12 +16,10 @@ import Readme from '../README.md'
 // Data
 import { messages } from '../__mocks__/messages'
 
-const decorator = storyFn => <Decorator story={storyFn} />
-
 export default {
   title: 'Organisms/Messaging/Container',
   component: MessagingContainer,
-  decorators: [decorator],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

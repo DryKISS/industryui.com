@@ -5,27 +5,18 @@
 // React
 import React from 'react'
 
+// Storybook
 import { action } from '@storybook/addon-actions'
+import { Wrapper } from 'decorators'
 
 // UI
 import { Close } from '../'
 import Readme from '../README.md'
 
-const CenterDecorator = storyFn => (
-  <div
-    style={{
-      float: 'left',
-      margin: '1rem 1rem 1rem .5rem'
-    }}
-  >
-    {storyFn()}
-  </div>
-)
-
 export default {
   title: 'Atoms/Close',
   component: Close,
-  decorators: [CenterDecorator],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

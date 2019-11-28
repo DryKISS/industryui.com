@@ -14,7 +14,7 @@ import styled from 'styled-components'
 
 export const Heading = ({ className, content, context, noMargin, style, tag }) => {
   return (
-    <StyledComponent
+    <StyledHeading
       as={tag}
       className={className}
       context={context}
@@ -24,11 +24,11 @@ export const Heading = ({ className, content, context, noMargin, style, tag }) =
       style={style}
     >
       {content && content.__html ? <span dangerouslySetInnerHTML={content} /> : content}
-    </StyledComponent>
+    </StyledHeading>
   )
 }
 
-const StyledComponent = styled.span`
+const StyledHeading = styled.span`
   ${props => COLOUR(props)}
   font-size: ${({ as }) => (as === 'h1' && '2.25rem') || (as === 'h2' && '2rem') || '1.5rem'};
   line-height: 1.22;

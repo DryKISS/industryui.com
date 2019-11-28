@@ -143,7 +143,6 @@
     "@storybook/addon-knobs": "^5.2.6",
     "@storybook/addon-notes": "^5.2.6",
     "@storybook/addon-options": "^5.2.6",
-    "@storybook/addon-storyshots": "^5.2.6",
     "@storybook/codemod": "^5.2.6",
     "@storybook/react": "^5.2.6",
     "@storybook/storybook-deployer": "^2.8.1",

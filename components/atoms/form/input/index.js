@@ -1,6 +1,5 @@
 /**
  * Input
- * A label is not auto configured if for instance we wrap this in an InputGroup
  */
 
 // React
@@ -18,10 +17,10 @@ export const Input = ({
   autoComplete,
   autoCorrect,
   autoFocus,
-  data,
   change,
-  label,
+  data,
   id,
+  label,
   placeholder,
   readOnly,
   required,
@@ -39,9 +38,9 @@ export const Input = ({
       aria-describedby={id}
       className='Form-control'
       id={id}
+      name={id}
       onChange={change}
       placeholder={placeholder}
-      name={id}
       readOnly={readOnly}
       required={required}
       style={style}
@@ -55,11 +54,11 @@ export const Input = ({
     <>
       {label ? (
         <Label text={label}>
-          {InputItem()}
+          <InputItem />
           <div className='Form-feedback' />
         </Label>
       ) : (
-        InputItem()
+        <InputItem />
       )}
     </>
   )
@@ -107,8 +106,8 @@ Input.propTypes = {
   autoCorrect: oneOfType([bool, string]),
   autoFocus: bool,
   change: func.isRequired,
-  label: string,
   id: string,
+  label: string,
   placeholder: string,
   readOnly: bool,
   required: bool,
