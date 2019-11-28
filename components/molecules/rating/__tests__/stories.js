@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Rating } from '../'
 import Readme from '../README.md'
@@ -12,6 +15,7 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Rating',
   component: Rating,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -19,4 +23,4 @@ export default {
   }
 }
 
-export const main = () => <Rating item={3} />
+export const main = () => <Rating item={5} />

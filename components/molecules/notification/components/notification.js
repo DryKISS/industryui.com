@@ -3,7 +3,7 @@
  */
 
 // React
-import { func, object, oneOfType, string, number } from 'prop-types'
+import { func, number, object, oneOfType, string } from 'prop-types'
 
 // UI
 import { Alert, formatRelativeTime, Link } from '../../../'
@@ -11,7 +11,7 @@ import { Alert, formatRelativeTime, Link } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const Notification = ({ close, date, content, link, priority, title }) => {
+export const Notification = ({ close, content, date, link, priority, title }) => {
   const context = priority === 1 ? 'warning' : 'info'
 
   let body = (

@@ -15,4 +15,5 @@ export const Wrapper = story => {
 const StyledWrapper = styled.div`
   background-color: #eee;
   padding: 1rem;
+  position: relative;
 `

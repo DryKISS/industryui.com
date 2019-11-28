@@ -19,8 +19,8 @@ export const Rating = ({ className, item, size }) => {
 }
 
 const StyledRating = styled.div`
-  background-color: ${props =>
-    props.active ? props.theme.COLOUR.secondary : props.theme.COLOUR.light};
+  background-color: ${({ active, theme }) =>
+    active ? theme.COLOUR.secondary : theme.COLOUR.light};
   border-radius: 0.25rem;
   display: inline-block;
   height: 15px;

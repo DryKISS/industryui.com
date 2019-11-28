@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { PageHeading } from '../'
 import Readme from '../README.md'
@@ -12,6 +15,7 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/PageHeading',
   component: PageHeading,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
