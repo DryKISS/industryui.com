@@ -5,7 +5,7 @@
 
 // React
 import { useState, useEffect } from 'react'
-import { array, number, oneOf, string } from 'prop-types'
+import { array, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // Services
 import { StaticMap } from '../../'
@@ -49,7 +49,7 @@ export const Location = ({
       scale,
       signature,
       size,
-      style,
+      // style,
       visible,
       zoom
     })
@@ -58,7 +58,7 @@ export const Location = ({
     setMapUrl(mapUrl)
   }, [])
 
-  return <img width={width} height={height} src={mapUrl} alt='map' />
+  return <img alt='map' height={height} src={mapUrl} style={style} width={width} />
 }
 
 Location.propTypes = {
@@ -76,7 +76,7 @@ Location.propTypes = {
   scale: oneOf([1, 2, 4, '1', '2', '4']),
   signature: string,
   size: string.isRequired,
-  style: string,
+  style: objectOf(oneOfType([number, string])),
   visible: string,
   zoom: number
 }
