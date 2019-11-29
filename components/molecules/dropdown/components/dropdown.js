@@ -24,17 +24,20 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
     setOpen(false)
   }
 
-  useEffect(() => {
-    if (open) {
-      document.addEventListener('mousedown', handleClickAway)
-    } else {
-      document.removeEventListener('mousedown', handleClickAway)
-    }
+  useEffect(
+    () => {
+      if (open) {
+        document.addEventListener('mousedown', handleClickAway)
+      } else {
+        document.removeEventListener('mousedown', handleClickAway)
+      }
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickAway)
-    }
-  }, [open])
+      return () => {
+        document.removeEventListener('mousedown', handleClickAway)
+      }
+    },
+    [open]
+  )
 
   return (
     <StyledDropdown className={className} ref={node}>
@@ -46,9 +49,8 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
 
         {caret && (
           <Icon
-            className='dropdown--caret'
             aria-hidden='true'
-            context='info'
+            className='dropdown--caret'
             icon={position === 'top' ? 'chevron-up' : 'chevron-down'}
           />
         )}

@@ -54,11 +54,11 @@ export const Input = ({
     <>
       {label ? (
         <Label text={label}>
-          <InputItem />
+          {InputItem()}
           <div className='Form-feedback' />
         </Label>
       ) : (
-        <InputItem />
+        InputItem()
       )}
     </>
   )
