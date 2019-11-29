@@ -36,10 +36,14 @@ export const useAxios = (url, params, initialValue) => {
     mocker.apply(http)
 
     const fetchData = async () => {
-      const response = await http.get(url, { params })
-
-      if (response.status === 200) {
-        setData({ ...response.data, isLoading: false })
+      try {
+        const response = await http.get(url, { params })
+        if (response.status === 200) {
+          setData({ ...response.data, isLoading: false })
+        }
+      } catch (e) {
+        const status = e.response ? e.response.status : 404
+        setData({ status, isLoading: false })
       }
     }
 
