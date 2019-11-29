@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { Button, Card, Column } from 'components'
@@ -16,7 +18,7 @@ import seeker from '../__resources__/seeker.png'
 export default {
   title: 'Molecules/Card',
   component: Card,
-  decorators: [story => <Column md={3}>{story()}</Column>, withKnobs],
+  decorators: [story => <Column md={4}>{story()}</Column>, Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme

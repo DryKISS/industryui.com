@@ -16,73 +16,8 @@ import { action } from '@storybook/addon-actions'
 import Router from 'next/router'
 
 // UI
-import { Container } from './container'
-
-// Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-// Font awesome
-import {
-  faBell,
-  faCommentDots,
-  faEdit,
-  faEnvelope,
-  faExclamationTriangle,
-  faTachometerAltAverage,
-  faTrash
-} from '@fortawesome/pro-duotone-svg-icons'
-
-import {
-  faArrowLeft,
-  faArrowRight,
-  faBars,
-  faCaretDown,
-  faCheck,
-  faCheckCircle,
-  faChevronDown,
-  faChevronUp,
-  faDogLeashed,
-  faHomeHeart,
-  faImages,
-  faMars,
-  faPaperclip,
-  faSmile,
-  faStethoscope,
-  faTimes,
-  faTimesCircle,
-  faUser,
-  faVenus
-} from '@fortawesome/pro-regular-svg-icons'
-
-// Icons
-library.add(
-  faArrowLeft,
-  faArrowRight,
-  faBars,
-  faBell,
-  faCaretDown,
-  faCheck,
-  faCheckCircle,
-  faChevronDown,
-  faChevronUp,
-  faCommentDots,
-  faDogLeashed,
-  faEdit,
-  faEnvelope,
-  faExclamationTriangle,
-  faHomeHeart,
-  faImages,
-  faMars,
-  faPaperclip,
-  faSmile,
-  faStethoscope,
-  faTachometerAltAverage,
-  faTimes,
-  faTimesCircle,
-  faTrash,
-  faUser,
-  faVenus
-)
+import { Container } from 'decorators'
+import './decorators/icons'
 
 const actionWithPromise = () => {
   action('clicked link')()
@@ -106,7 +41,7 @@ addDecorator(
   })
 )
 
-addDecorator(story => <Container story={story} />)
+addDecorator(Container)
 addDecorator(withA11y)
 
 addParameters({

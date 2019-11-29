@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Copyright } from '../'
 import Readme from '../README.md'
@@ -12,14 +15,10 @@ import Readme from '../README.md'
 // Data
 import { Copyright as Data } from '../__mocks__/copyright'
 
-const Decorator = storyFn => (
-  <div style={{ bottom: '-4rem', position: 'relative' }}>{storyFn()}</div>
-)
-
 export default {
   title: 'Molecules/Copyright',
   component: Copyright,
-  decorators: [Decorator],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -27,4 +26,4 @@ export default {
   }
 }
 
-export const main = () => <Copyright brand='Compnay Name' links={Data} />
+export const main = () => <Copyright brand='Company Name' links={Data} />

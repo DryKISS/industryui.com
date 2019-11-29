@@ -13,7 +13,6 @@ export const Blockquote = ({ footer, text }) => {
   return (
     <StyledBlockquote>
       <StyledText>{text}</StyledText>
-
       {footer && <StyledFooter>{footer}</StyledFooter>}
     </StyledBlockquote>
   )

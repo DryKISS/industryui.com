@@ -36,5 +36,3 @@ const StyledSearch = styled(Search)`
 MessagingSearch.propTypes = {
   onSearch: func
 }
-
-MessagingSearch.defaultProps = {}

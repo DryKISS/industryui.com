@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { colorSchemes } from '@nivo/colors'
@@ -17,22 +19,21 @@ import Readme from '../README.md'
 // Mocks
 import { Data, Data2 } from '../__mocks__/data'
 
-const centerDecorator = storyFn => (
+const centerDecorator = story => (
   <div
     style={{
-      width: '50%',
-      height: '500px',
+      height: '450px',
       margin: '0 auto'
     }}
   >
-    {storyFn()}
+    {story()}
   </div>
 )
 
 export default {
   title: 'Molecules/Charts/Pie',
-  decorators: [centerDecorator, withKnobs],
   component: PieChart,
+  decorators: [centerDecorator, Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme

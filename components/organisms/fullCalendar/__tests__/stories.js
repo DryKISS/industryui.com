@@ -1,19 +1,25 @@
+/**
+ * Full Caklendar
+ */
+
+// React
 import { useState, useRef, useEffect } from 'react'
 
+// Storybook
+import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
+
 // UI
-import { Calendar } from '../'
+import { COLOUR, Calendar } from '../../../'
 import Readme from '../README.md'
 
 // Data
 import { Events, AvailableViews } from '../__mocks__/events'
 
-import { boolean, select, withKnobs } from '@storybook/addon-knobs'
-import { COLOUR } from '../../../theme/variables/colour'
-
 export default {
   title: 'Organisms/Full Calendar',
   components: Calendar,
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -22,7 +28,6 @@ export default {
 }
 
 export const main = () => {
-  // KNOBS
   const businessHoursSelect = select('businessHours', {
     false: false,
     MondayToFriday: true,
@@ -33,11 +38,12 @@ export const main = () => {
       endTime: '18:00' // an end time (6pm in this example)
     }
   })
+
   const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
-  //
+
   const calendarRef = useRef(null)
 
   useEffect(() => {
@@ -60,7 +66,6 @@ export const main = () => {
 }
 
 export const events = () => {
-  // KNOBS
   const businessHoursSelect = select('businessHours', {
     false: false,
     MondayToFriday: true,
@@ -75,7 +80,7 @@ export const events = () => {
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
-  //
+
   const calendarRef = useRef(null)
 
   useEffect(() => {
@@ -99,7 +104,6 @@ export const events = () => {
 }
 
 export const eventsWithEventAdditionOnClick = () => {
-  // KNOBS
   const businessHoursSelect = select('businessHours', {
     false: false,
     MondayToFriday: true,
@@ -114,7 +118,7 @@ export const eventsWithEventAdditionOnClick = () => {
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
-  //
+
   const calendarRef = useRef(null)
 
   useEffect(() => {
@@ -151,7 +155,6 @@ export const eventsWithEventAdditionOnClick = () => {
 }
 
 export const eventClick = () => {
-  // KNOBS
   const businessHoursSelect = select('businessHours', {
     false: false,
     MondayToFriday: true,
@@ -166,7 +169,7 @@ export const eventClick = () => {
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
-  //
+
   const calendarRef = useRef(null)
 
   useEffect(() => {

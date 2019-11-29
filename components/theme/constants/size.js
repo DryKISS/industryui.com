@@ -3,7 +3,7 @@
  * Provides a list of the accepted sizes
  */
 export const SIZE = {
-  xs: 'xs',
+  XS: 'xs',
   SM: 'sm',
   MD: 'md',
   LG: 'lg',

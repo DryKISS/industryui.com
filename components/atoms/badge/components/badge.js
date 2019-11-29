@@ -5,19 +5,21 @@
 // React
 import React from 'react'
 import { string, oneOf, object } from 'prop-types'
-import { CONTEXT, Icon } from '../../../'
+
+// UI
+import { BACKGROUND, CONTEXT, Icon } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const Badge = ({ className, content, style, to, context, icon, iconPrefix }) => {
+export const Badge = ({ className, content, context, icon, iconPrefix, style, to }) => {
   return (
     <StyledBadge
       className={className}
-      itemProp='keywords'
-      href={to}
-      style={style}
       context={context}
+      href={to}
+      itemProp='keywords'
+      style={style}
     >
       {icon && <Icon icon={icon} prefix={iconPrefix} style={{ marginRight: '5px' }} />}
       {content}
@@ -26,9 +28,9 @@ export const Badge = ({ className, content, style, to, context, icon, iconPrefix
 }
 
 const StyledBadge = styled.a`
-  background-color: ${props => props.theme.COLOUR.dark};
-  color: ${props => props.theme.COLOUR.white};
+  ${props => BACKGROUND(props)}
   border-radius: 0;
+  color: ${props => props.theme.COLOUR.white};
   display: inline-block;
   font-size: 90%;
   line-height: 1;
@@ -37,10 +39,12 @@ const StyledBadge = styled.a`
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
+
   &:hover {
     background-color: ${props => props.theme.COLOUR.dark};
     color: ${props => props.theme.COLOUR.light};
   }
+
   &:empty {
     display: none;
   }
@@ -48,10 +52,14 @@ const StyledBadge = styled.a`
 
 Badge.propTypes = {
   className: string,
-  style: object,
   content: string.isRequired,
-  to: string,
   context: oneOf(Object.values(CONTEXT)),
   icon: string,
-  iconPrefix: string
+  iconPrefix: string,
+  style: object,
+  to: string
+}
+
+Badge.defaultProps = {
+  content: 'primary'
 }

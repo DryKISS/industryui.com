@@ -24,7 +24,11 @@ export const AccordionItem = ({ open: initial, title, children, className, conte
         context={context || 'dark'}
       >
         {title}{' '}
-        <HeaderIcon aria-hidden='true' context='info' icon={open ? 'chevron-up' : 'chevron-down'} />
+        <HeaderIcon
+          aria-hidden='true'
+          context='white'
+          icon={open ? 'chevron-up' : 'chevron-down'}
+        />
       </Header>
       {open && <Content>{children}</Content>}
     </StyledAccordionItem>

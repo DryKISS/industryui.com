@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Link } from '../'
 import { Button } from '../../'
@@ -13,6 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Link',
   component: Link,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -27,12 +31,6 @@ export const main = () => (
 )
 
 export const button = () => (
-  <Link to='/'>
-    <button>Home</button>
-  </Link>
-)
-
-export const component = () => (
   <Link to='/'>
     <Button>Home</Button>
   </Link>

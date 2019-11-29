@@ -46,9 +46,8 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
 
         {caret && (
           <Icon
-            className='dropdown--caret'
             aria-hidden='true'
-            context='info'
+            className='dropdown--caret'
             icon={position === 'top' ? 'chevron-up' : 'chevron-down'}
           />
         )}

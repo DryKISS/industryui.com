@@ -5,14 +5,17 @@
 // React
 import React from 'react'
 
+// Storybook
 import { withKnobs, boolean, object } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
+// UI
 import { List, ListItem } from '../../../'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/List',
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme

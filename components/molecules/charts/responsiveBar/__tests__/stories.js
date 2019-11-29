@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
 import { select, text, withKnobs, number, boolean } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { colorSchemes } from '@nivo/colors'
@@ -27,22 +29,21 @@ import {
   keyToIndexBy3
 } from '../__mocks__/data'
 
-const centerDecorator = storyFn => (
+const centerDecorator = story => (
   <div
     style={{
-      width: '50%',
-      height: '500px',
+      height: '450px',
       margin: '0 auto'
     }}
   >
-    {storyFn()}
+    {story()}
   </div>
 )
 
 export default {
   title: 'Molecules/Charts/Bar',
-  decorators: [centerDecorator, withKnobs],
   component: BarChart,
+  decorators: [centerDecorator, Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme

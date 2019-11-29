@@ -41,11 +41,6 @@ export const Copyright = ({ brand, links }) => {
   )
 }
 
-Copyright.propTypes = {
-  brand: string.isRequired,
-  links: array
-}
-
 const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COLOUR.light};
   color: ${({ theme }) => theme.COLOUR.dark};
@@ -53,10 +48,6 @@ const StyledCopyright = styled.section`
   height: 4rem;
   line-height: 4rem;
   width: 100%;
-
-  /* position: absolute; */
-
-  /* bottom: 0; */
 `
 
 const StyledBrand = styled.div`
@@ -78,3 +69,8 @@ const StyledLink = styled.a`
     text-decoration: underline;
   }
 `
+
+Copyright.propTypes = {
+  brand: string.isRequired,
+  links: array
+}

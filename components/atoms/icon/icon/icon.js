@@ -8,12 +8,19 @@ import { any, bool, number, objectOf, oneOf, oneOfType, string } from 'prop-type
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+// Style
+import styled from 'styled-components'
+
 // UI
-import { CONTEXT } from '../../'
+import { CONTEXT } from '../../../'
 
 export const Icon = ({ icon, prefix, ...props }) => {
-  return <FontAwesomeIcon icon={[prefix, icon]} {...props} />
+  return <StyledIcon icon={[prefix, icon]} {...props} />
 }
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  color: ${({ color, context, theme }) => (context ? theme.COLOUR[context] : color)};
+`
 
 Icon.propTypes = {
   className: any,
@@ -25,7 +32,6 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-  context: 'primary',
   fixedWidth: true,
   prefix: 'far'
 }

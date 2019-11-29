@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Avatar, Button, Dropdown, Icon } from 'components'
 import Readme from '../README.md'
@@ -15,6 +18,7 @@ import { Items } from '../__mocks__/items'
 export default {
   title: 'Molecules/Dropdown',
   component: Dropdown,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

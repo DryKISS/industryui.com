@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Navbar } from '../'
 import Readme from '../README.md'
@@ -28,6 +31,7 @@ const NAVBAR = {
 export default {
   title: 'Molecules/Navbar',
   component: Navbar,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

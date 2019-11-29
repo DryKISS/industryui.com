@@ -5,17 +5,18 @@
 // React
 import React, { useState } from 'react'
 
-// UI
-import { Login } from '../'
-import { useChange } from '../../../'
-import Readme from '../README.md'
-import { requestSimulator } from '../../../utils'
+// Storybook
 import { withKnobs, select } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
+
+// UI
+import { Login, requestSimulator, useChange } from '../../../'
+import Readme from '../README.md'
 
 export default {
   title: 'Organisms/Login',
   component: Login,
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
