@@ -1,4 +1,1 @@
-/**
- * Maps
- */
 export * from './static'

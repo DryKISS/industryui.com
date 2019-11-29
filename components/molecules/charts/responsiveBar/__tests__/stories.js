@@ -16,6 +16,19 @@ import { colorSchemes } from '@nivo/colors'
 import { BarChart } from '../'
 import Readme from '../README.md'
 
+// Mocks
+import {
+  Data,
+  Data2,
+  Data3,
+  keys,
+  keys2,
+  keys3,
+  keyToIndexBy,
+  keyToIndexBy2,
+  keyToIndexBy3
+} from '../__mocks__/data'
+
 const centerDecorator = story => (
   <div
     style={{
@@ -38,27 +51,6 @@ export default {
   }
 }
 
-const testData = [
-  {
-    product: 'IPhone',
-    profit: 160000
-  },
-  {
-    product: 'IPad',
-    profit: 50000
-  },
-  {
-    product: 'Mac',
-    profit: 100000
-  },
-  {
-    product: 'Other Products',
-    profit: 20000
-  }
-]
-const keyToIndexBy = 'product'
-const keys = ['profit']
-
 export const main = () => {
   const bottomLegendText = text('bottomLegend', 'Products')
   const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
@@ -79,7 +71,7 @@ export const main = () => {
       bottomLegend={bottomLegendText}
       colorScheme={colorSchemeSelect}
       colorBy={colorBySelect}
-      data={testData}
+      data={Data}
       enableGridX={enableGridXSelect}
       enableGridY={enableGridYSelect}
       groupMode={groupModeSelect}
@@ -95,31 +87,6 @@ export const main = () => {
     />
   )
 }
-
-const testData2 = [
-  {
-    product: 'IPhone',
-    profit: 160000,
-    sold: 15000
-  },
-  {
-    product: 'IPad',
-    profit: 50000,
-    sold: 4000
-  },
-  {
-    product: 'Mac',
-    profit: 100000,
-    sold: 9000
-  },
-  {
-    product: 'Other Products',
-    profit: 20000,
-    sold: 3500
-  }
-]
-const keyToIndexBy2 = 'product'
-const keys2 = ['profit', 'sold']
 
 export const StackedBarDouble = () => {
   const bottomLegendText = text('bottomLegend', 'Products')
@@ -141,7 +108,7 @@ export const StackedBarDouble = () => {
       bottomLegend={bottomLegendText}
       colorScheme={colorSchemeSelect}
       colorBy={colorBySelect}
-      data={testData2}
+      data={Data2}
       enableGridX={enableGridXSelect}
       enableGridY={enableGridYSelect}
       groupMode={groupModeSelect}
@@ -157,35 +124,6 @@ export const StackedBarDouble = () => {
     />
   )
 }
-
-const testData3 = [
-  {
-    product: 'IPhone',
-    profit: 160000,
-    sold: 15000,
-    loansAndCredits: 16161
-  },
-  {
-    product: 'IPad',
-    profit: 50000,
-    sold: 4000,
-    loansAndCredits: 32454
-  },
-  {
-    product: 'Mac',
-    profit: 100000,
-    sold: 9000,
-    loansAndCredits: 69898
-  },
-  {
-    product: 'Other Products',
-    profit: 20000,
-    sold: 3500,
-    loansAndCredits: 44545
-  }
-]
-const keyToIndexBy3 = 'product'
-const keys3 = ['profit', 'sold', 'loansAndCredits']
 
 export const StackedBarTriple = () => {
   const bottomLegendText = text('bottomLegend', 'Products')
@@ -207,7 +145,7 @@ export const StackedBarTriple = () => {
       bottomLegend={bottomLegendText}
       colorScheme={colorSchemeSelect}
       colorBy={colorBySelect}
-      data={testData3}
+      data={Data3}
       enableGridX={enableGridXSelect}
       enableGridY={enableGridYSelect}
       groupMode={groupModeSelect}
