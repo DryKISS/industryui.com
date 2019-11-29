@@ -42,7 +42,8 @@ export const useAxios = (url, params, initialValue) => {
           setData({ ...response.data, isLoading: false })
         }
       } catch (e) {
-        setData({ status: e.response.status, isLoading: false })
+        const status = e.response ? e.response.status : 404
+        setData({ status, isLoading: false })
       }
     }
 
