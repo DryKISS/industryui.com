@@ -30,9 +30,8 @@ export const Accordion = ({ children, className, data, style, closeOthersOnOpen 
   const handleCurrent = index => {
     setCurrent(prev => {
       let temp = []
-      if (closeOthersOnOpen) {
-        if (prev.includes(index)) temp = []
-        else temp = [index]
+      if (closeOthersOnOpen && !prev.includes(index)) {
+        temp = [index]
       } else {
         if (prev.includes(index)) temp = prev.filter(_ => _ !== index)
         else temp = [...prev, index]
