@@ -3,8 +3,8 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { bool, oneOf, string } from 'prop-types'
+import React from 'react'
+import { bool, oneOf, string, func, number } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../../../'
@@ -13,14 +13,12 @@ import { Icon } from '../../../atoms/icon'
 // Styled
 import styled from 'styled-components'
 
-export const AccordionItem = ({ open: initial, title, children, className, context }) => {
-  const [open, setOpen] = useState(initial)
-
+export const AccordionItem = ({ children, className, context, handleOpen, index, open, title }) => {
   return (
     <StyledAccordionItem className={className}>
       <Header
         className={open ? 'opened' : 'closed'}
-        onClick={() => setOpen(!open)}
+        onClick={() => handleOpen(index)}
         context={context || 'dark'}
       >
         {title}{' '}
@@ -30,7 +28,7 @@ export const AccordionItem = ({ open: initial, title, children, className, conte
           icon={open ? 'chevron-up' : 'chevron-down'}
         />
       </Header>
-      {open && <Content>{children}</Content>}
+      <Content className={open ? 'opened' : 'closed'}>{children}</Content>
     </StyledAccordionItem>
   )
 }
@@ -56,13 +54,22 @@ const HeaderIcon = styled(Icon)`
 `
 
 const Content = styled.div`
-  padding: 1.25rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 500ms ease;
+  box-sizing: border-box;
+  &.opened {
+    max-height: fit-content;
+    padding: 1.25rem;
+  }
 `
 
 AccordionItem.propTypes = {
   children: string.isRequired,
   className: string,
   context: oneOf(Object.values(CONTEXT)),
+  handleOpen: func,
+  index: number,
   open: bool,
   title: string.isRequired
 }
