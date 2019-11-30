@@ -115,6 +115,7 @@
     "@typeform/embed": "^0.15.0",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
+    "date-fns": "^2.8.1",
     "emoji-mart": "^2.11.1",
     "eslint": "^6.6.0",
     "firebase": "^7.3.0",
@@ -124,7 +125,9 @@
     "moment": "^2.24.0",
     "next": "^9.1.3",
     "pure-react-carousel": "^1.23.2",
+    "react-datepicker": "^2.10.1",
     "react-dropzone": "^10.1.10",
+    "react-popper": "^1.3.6",
     "react-select": "^3.0.8",
     "react-tooltip": "^3.11.1"
   },
