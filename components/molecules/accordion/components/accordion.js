@@ -4,7 +4,7 @@
 
 import React, { useState, Children, cloneElement } from 'react'
 
-import { array, node, object, string } from 'prop-types'
+import { array, node, object, string, bool } from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -15,7 +15,7 @@ const renderItem = ({ body, context, title }, index, current, handleCurrent) => 
     <AccordionItem
       key={index}
       context={context}
-      open={index === current}
+      open={current.includes(index)}
       title={title}
       handleOpen={() => handleCurrent(index)}
     >
@@ -24,11 +24,21 @@ const renderItem = ({ body, context, title }, index, current, handleCurrent) => 
   )
 }
 
-export const Accordion = ({ children, className, data, style }) => {
+export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
   const initialOpen = children ? children.findIndex(_ => _.props.open) : data.findIndex(_ => _.open)
-  const [current, setCurrent] = useState(initialOpen > -1 ? initialOpen : -1)
+  const [current, setCurrent] = useState(initialOpen > -1 ? [initialOpen] : [])
   const handleCurrent = index => {
-    setCurrent(prev => (prev === index ? -1 : index))
+    setCurrent(prev => {
+      let temp = []
+      if (closeOthersOnOpen) {
+        if (prev.includes(index)) temp = []
+        else temp = [index]
+      } else {
+        if (prev.includes(index)) temp = prev.filter(_ => _ !== index)
+        else temp = [...prev, index]
+      }
+      return temp
+    })
   }
   return (
     <StyledAccordion className={className} style={style}>
@@ -36,7 +46,7 @@ export const Accordion = ({ children, className, data, style }) => {
         ? Children.map(children, (child, index) => {
             return cloneElement(child, {
               index,
-              open: index === current,
+              open: current.includes(index),
               handleOpen: index => handleCurrent(index)
             })
           })
@@ -53,6 +63,7 @@ const StyledAccordion = styled.div`
 Accordion.propTypes = {
   children: node,
   className: string,
+  closeOthersOnOpen: bool,
   data: array,
   style: object
 }

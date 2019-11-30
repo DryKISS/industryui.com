@@ -56,3 +56,5 @@ export const main = () => (
 )
 
 export const open = () => <Accordion data={Data} />
+
+export const closeOtherAccordsOnOneAccordOpening = () => <Accordion data={Data} closeOthersOnOpen />
