@@ -144,7 +144,7 @@ export const WorkingHours = () => {
   const stringifyArray = arr => arr.map(item => item.toString())
 
   const renderDayContents = (day, date) => {
-    const tooltipText = `No need to pay`
+    const tooltipText = 'No need to pay'
     const isFree = stringifyArray(freeDays).includes(date.toString())
     return isFree ? <span title={tooltipText}>{day}</span> : day
   }
