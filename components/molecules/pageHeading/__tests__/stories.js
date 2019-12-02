@@ -24,3 +24,13 @@ export default {
 }
 
 export const main = () => <PageHeading heading='Page Heading' strapline='Strapline' />
+
+export const withHelp = () => (
+  <PageHeading heading='Page Heading' strapline='Strapline' help helpContent='Help Content' />
+)
+
+export const centered = () => <PageHeading heading='Page Heading' strapline='Strapline' center />
+
+export const withContext = () => (
+  <PageHeading heading='Page Heading' strapline='Strapline' context='warning' />
+)

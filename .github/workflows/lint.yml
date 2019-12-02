@@ -1,6 +1,6 @@
 name: Lint IndustryUI
 
-on: [push, pull_request]
+on: [push]
 
 env:
   CI: true
@@ -34,7 +34,7 @@ jobs:
 
       - name: Lint
         run: |
-          npm run standard
+          npm run test
 
       - name: Build
         run: |

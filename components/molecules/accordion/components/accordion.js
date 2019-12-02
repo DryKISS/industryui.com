@@ -2,26 +2,56 @@
  * Accordion
  */
 
-import React from 'react'
+import React, { useState, Children, cloneElement } from 'react'
 
-import { array, node, object, string } from 'prop-types'
+import { array, node, object, string, bool } from 'prop-types'
 
 import styled from 'styled-components'
 
 import { AccordionItem } from '../../'
 
-const renderItem = ({ body, context, open, title }, index) => {
+const renderItem = ({ body, context, title }, index, current, handleCurrent) => {
   return (
-    <AccordionItem key={index} context={context} open={open} title={title}>
+    <AccordionItem
+      key={index}
+      context={context}
+      open={current.includes(index)}
+      title={title}
+      handleOpen={() => handleCurrent(index)}
+    >
       {body}
     </AccordionItem>
   )
 }
 
-export const Accordion = ({ children, className, data, style }) => {
+export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
+  const initialOpen = children ? children.findIndex(_ => _.props.open) : data.findIndex(_ => _.open)
+  const [current, setCurrent] = useState(initialOpen > -1 ? [initialOpen] : [])
+
+  const handleCurrent = index => {
+    setCurrent(prev => {
+      let temp = []
+      if (closeOthersOnOpen && !prev.includes(index)) {
+        temp = [index]
+      } else {
+        if (prev.includes(index)) temp = prev.filter(_ => _ !== index)
+        else temp = [...prev, index]
+      }
+      return temp
+    })
+  }
+
   return (
     <StyledAccordion className={className} style={style}>
-      {children || data.map((item, index) => renderItem(item, index))}
+      {children
+        ? Children.map(children, (child, index) => {
+            return cloneElement(child, {
+              index,
+              open: current.includes(index),
+              handleOpen: index => handleCurrent(index)
+            })
+          })
+        : data.map((item, index) => renderItem(item, index, current, handleCurrent))}
     </StyledAccordion>
   )
 }
@@ -34,6 +64,7 @@ const StyledAccordion = styled.div`
 Accordion.propTypes = {
   children: node,
   className: string,
+  closeOthersOnOpen: bool,
   data: array,
   style: object
 }

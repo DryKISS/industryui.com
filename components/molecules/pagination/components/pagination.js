@@ -103,16 +103,12 @@ const StyledPagination = styled.nav`
         background-color: ${({ theme }) => theme.COLOUR.primary};
         color: ${({ theme }) => theme.COLOUR.white};
       }
-    }
-    &:first-child {
-      button {
+      :first-child {
         margin-left: 0;
         border-top-left-radius: 0.25rem;
         border-bottom-left-radius: 0.25rem;
       }
-    }
-    &:last-child {
-      button {
+      :last-child {
         border-top-right-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
       }
