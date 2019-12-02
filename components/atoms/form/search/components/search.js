@@ -20,11 +20,19 @@ export const Search = ({ className, label, onSearch, placeholder, value, type })
   const [change, form] = useChange(INITIAL_STATE)
   const { query } = form
 
+  const handleChange = e => {
+    change(e)
+    // reset search on empty value
+    if (e.target.value === '') {
+      onSearch('')
+    }
+  }
+
   return (
     <Form className={className} submit={() => onSearch(query)}>
       <StyledSearch>
         <Input
-          change={change}
+          change={handleChange}
           id='query'
           placeholder={placeholder}
           required={false}
