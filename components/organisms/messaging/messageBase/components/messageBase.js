@@ -30,7 +30,7 @@ export const MessageBase = ({
   const messageRef = useRef(null)
 
   useEffect(() => {
-    if (scrollToMessage) messageRef.current.scrollIntoView()
+    if (scrollToMessage) messageRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }, [])
 
   const IconSelect = () => {
