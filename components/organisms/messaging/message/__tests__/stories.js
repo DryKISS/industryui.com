@@ -12,6 +12,9 @@ import { Wrapper } from 'decorators'
 import { Message } from '../'
 import Readme from '../README.md'
 
+// Data
+import { message } from '../__mocks__/message'
+
 export default {
   title: 'Organisms/Messaging/Message',
   component: Message,
@@ -23,4 +26,4 @@ export default {
   }
 }
 
-export const main = () => <Message content='Test Message' prevType='out' time='12:00' type='in' />
+export const main = () => <Message message={message} prevType='out' time='12:00' type='in' />
