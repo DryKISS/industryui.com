@@ -125,24 +125,24 @@ export class StaticMap {
     const { markers, locationBuilder, location } = this
     const urlParts = markers.length
       ? markers.map(marker => {
-          let markerUrl = 'markers='
-          switch (typeof marker) {
-            case 'string': {
-              markerUrl += locationBuilder(marker)
-              break
-            }
-            case 'object': {
-              const { colour, label, location } = marker
-              const markerColour = colour && `color:${colour}|`
-              const markerLabel = label && `label:${label}|`
-              const markerLocation = location && `${locationBuilder(location)}|`
-              markerUrl += markerColour + markerLabel + markerLocation
-              break
-            }
+        let markerUrl = 'markers='
+        switch (typeof marker) {
+          case 'string': {
+            markerUrl += locationBuilder(marker)
+            break
           }
+          case 'object': {
+            const { colour, label, location } = marker
+            const markerColour = colour && `color:${colour}|`
+            const markerLabel = label && `label:${label}|`
+            const markerLocation = location && `${locationBuilder(location)}|`
+            markerUrl += markerColour + markerLabel + markerLocation
+            break
+          }
+        }
 
-          return markerUrl
-        })
+        return markerUrl
+      })
       : [`markers=${locationBuilder(location)}`]
 
     return urlParts.join('&')
