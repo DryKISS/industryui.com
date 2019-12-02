@@ -7,9 +7,7 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-
-// Style
-import styled from 'styled-components'
+import { Wrapper } from 'decorators'
 
 // UI
 import { ImageLocation, Select, useChange } from '../../../'
@@ -36,7 +34,7 @@ const PropertySelect = ({ locationChange, properties }) => {
   const { floor, property } = form
 
   return (
-    <StyledPropertySelect>
+    <>
       <Select
         change={change}
         id='property'
@@ -44,6 +42,7 @@ const PropertySelect = ({ locationChange, properties }) => {
         options={[{ text: 'Select property', value: '' }, ...properties]}
         value={property}
       />
+
       {property && (
         <ImageLocation
           change={change}
@@ -55,19 +54,14 @@ const PropertySelect = ({ locationChange, properties }) => {
           initial={floor}
         />
       )}
-    </StyledPropertySelect>
+    </>
   )
 }
-
-const StyledPropertySelect = styled.div`
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  padding: 20px;
-`
 
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

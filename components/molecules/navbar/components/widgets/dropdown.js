@@ -16,7 +16,7 @@ export const NavDropdown = ({ icon, name, position, prefix, type }) => {
   return (
     <StyledContainer>
       <StyledDropdown items={type.items} position={position}>
-        {icon && <Icon aria-hidden='true' context='info' icon={icon} prefix='fad' />}
+        {icon && <Icon aria-hidden='true' icon={icon} prefix='fad' />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
     </StyledContainer>

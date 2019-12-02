@@ -5,26 +5,18 @@
 // React
 import React from 'react'
 
+// Storybook
 import { action } from '@storybook/addon-actions'
+import { Wrapper } from 'decorators'
 
 // UI
 import { Alert } from '../'
 import Readme from '../README.md'
 
-const CenterDecorator = storyFn => (
-  <div
-    style={{
-      padding: '1rem'
-    }}
-  >
-    {storyFn()}
-  </div>
-)
-
 export default {
   title: 'Molecules/Alert',
   component: Alert,
-  decorators: [CenterDecorator],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

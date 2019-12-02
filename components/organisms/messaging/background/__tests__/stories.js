@@ -7,15 +7,20 @@ import React from 'react'
 
 // Storybook
 import { select, withKnobs } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { MessageBackground } from '../'
 import Readme from '../README.md'
 
+const Height = story => {
+  return <div style={{ height: '500px' }}>{story()}</div>
+}
+
 export default {
   title: 'Organisms/Messaging/Background',
   component: MessageBackground,
-  decorators: [withKnobs],
+  decorators: [Height, Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -28,16 +33,9 @@ const options = {
   DryKISS: '/messaging/background.png',
   WhatsApp: '/messaging/whatsapp.png'
 }
+
 const defaultValue = '/messaging/background.png'
 
-export const main = () => (
-  <div style={{ height: '500px' }}>
-    <MessageBackground />
-  </div>
-)
+export const main = () => <MessageBackground />
 
-export const path = () => (
-  <div style={{ height: '500px' }}>
-    <MessageBackground path={select('Background', options, defaultValue)} />
-  </div>
-)
+export const path = () => <MessageBackground path={select('Background', options, defaultValue)} />

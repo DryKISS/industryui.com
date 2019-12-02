@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
 import { action } from '@storybook/addon-actions'
+import { Wrapper } from 'decorators'
 
 // UI
 import { Tabs } from '../'
@@ -14,6 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Tabs',
   component: Tabs,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

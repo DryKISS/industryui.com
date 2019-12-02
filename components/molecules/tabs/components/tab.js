@@ -52,7 +52,7 @@ const StyledTab = styled.li`
     disabled &&
     css`
       background-color: ${theme.TABS.disabledColour};
-      cursor: initial;
+      cursor: no-drop;
       &:hover {
         background-color: ${theme.TABS.disabledColour};
       }

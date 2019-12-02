@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // Style
 import styled from 'styled-components'
 
@@ -16,6 +19,7 @@ import Img from '../../../utils/react-holder'
 export default {
   title: 'Molecules/Carousel',
   component: Carousel,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

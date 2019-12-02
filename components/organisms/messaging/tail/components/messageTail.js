@@ -17,12 +17,12 @@ const StyledTail = styled.span`
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  position: absolute;
   bottom: ${({ type }) => (type === 'in' ? '4px' : '-2px')};
+  height: 19px;
+  position: absolute;
+  transform: ${({ type }) => (type === 'in' ? 'rotate(55deg)' : 'rotate(-12deg)')};
   ${({ type }) => (type === 'in' ? 'left: 4px' : 'right: 14px')};
   width: 12px;
-  height: 19px;
-  transform: ${({ type }) => (type === 'in' ? 'rotate(55deg)' : 'rotate(-12deg)')};
 `
 
 Tail.propTypes = {

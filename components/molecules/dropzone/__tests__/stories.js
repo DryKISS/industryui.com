@@ -9,9 +9,13 @@ import React from 'react'
 import { Dropzone } from '../'
 import Readme from '../README.md'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 export default {
   title: 'Molecules/Dropzone',
   component: Dropzone,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -19,20 +23,8 @@ export default {
   }
 }
 
-export const main = () => (
-  <div style={{ margin: '1rem' }}>
-    <Dropzone />
-  </div>
-)
+export const main = () => <Dropzone />
 
-export const allFiles = () => (
-  <div style={{ margin: '1rem' }}>
-    <Dropzone accept='' />
-  </div>
-)
+export const allFiles = () => <Dropzone accept='' />
 
-export const disabled = () => (
-  <div style={{ margin: '1rem' }}>
-    <Dropzone disabled />
-  </div>
-)
+export const disabled = () => <Dropzone disabled />

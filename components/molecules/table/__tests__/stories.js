@@ -5,7 +5,10 @@
 // React
 import React from 'react'
 
-// Component
+// Storybook
+import { Wrapper } from 'decorators'
+
+// UI
 import { Table } from '../'
 import Readme from '../README.md'
 import {
@@ -23,6 +26,7 @@ const dataContext = rowsContext.data
 export default {
   title: 'Molecules/Table',
   component: Table,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { colorSchemes } from '@nivo/colors'
@@ -14,56 +16,30 @@ import { colorSchemes } from '@nivo/colors'
 import { PieChart } from '../'
 import Readme from '../README.md'
 
-const centerDecorator = storyFn => (
+// Mocks
+import { Data, Data2 } from '../__mocks__/data'
+
+const centerDecorator = story => (
   <div
     style={{
-      width: '50%',
-      height: '500px',
+      height: '450px',
       margin: '0 auto'
     }}
   >
-    {storyFn()}
+    {story()}
   </div>
 )
 
 export default {
   title: 'Molecules/Charts/Pie',
-  decorators: [centerDecorator, withKnobs],
   component: PieChart,
+  decorators: [centerDecorator, Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
     }
   }
 }
-
-const testData = [
-  {
-    id: 'make',
-    label: 'make',
-    value: 154
-  },
-  {
-    id: 'go',
-    label: 'go',
-    value: 318
-  },
-  {
-    id: 'javascript',
-    label: 'javascript',
-    value: 382
-  },
-  {
-    id: 'rust',
-    label: 'rust',
-    value: 461
-  },
-  {
-    id: 'c',
-    label: 'c',
-    value: 242
-  }
-]
 
 export const main = () => {
   const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
@@ -99,7 +75,7 @@ export const main = () => {
 
   return (
     <PieChart
-      data={testData}
+      data={Data}
       colorScheme={colorSchemeSelect}
       cornerRadius={cornerRadiusSelect}
       innerRadius={innerRadius}
@@ -117,34 +93,6 @@ export const main = () => {
     />
   )
 }
-
-const testData2 = [
-  {
-    id: 'Apple',
-    label: 'revenue (millions)',
-    value: 100.4
-  },
-  {
-    id: 'Samsung',
-    label: 'revenue (millions)',
-    value: 50.3
-  },
-  {
-    id: 'Google',
-    label: 'revenue (millions)',
-    value: 300.3
-  },
-  {
-    id: 'Mozzila',
-    label: 'revenue (millions)',
-    value: 75.1
-  },
-  {
-    id: 'Alibaba',
-    label: 'revenue (millions)',
-    value: 99.1
-  }
-]
 
 export const OtherDataPie = () => {
   const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
@@ -180,7 +128,7 @@ export const OtherDataPie = () => {
 
   return (
     <PieChart
-      data={testData2}
+      data={Data2}
       colorScheme={colorSchemeSelect}
       cornerRadius={cornerRadiusSelect}
       innerRadius={innerRadius}

@@ -5,7 +5,10 @@
 // React
 import React from 'react'
 
-// Hero
+// Storybook
+import { Wrapper } from 'decorators'
+
+// UI
 import { Hero } from '../'
 import Readme from '../README.md'
 import Jack from '../__resources__/hero-jack-russell.jpg'
@@ -38,6 +41,7 @@ const Buttons = [
 export default {
   title: 'Molecules/Hero',
   component: Hero,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

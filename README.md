@@ -1,7 +1,7 @@
 # DryKISS: IndustryUI
 
-This is [DryKISS's](https://drykiss.com) react design system. It contains all of
-our components used throughout our NextJS projects.
+This is [DryKISS's](https://drykiss.com) react design system. It contains all of our components used
+throughout our NextJS projects.
 
 It enables us to rapidly prototype any type of site at any scale.
 
@@ -16,16 +16,16 @@ $ yarn install
 $ yarn start
 ```
 
-To develop locally we run yarn link at the root of industryUI, and the second
-command in the project where we wish to use it.
+To develop locally we run yarn link at the root of industryUI, and the second command in the project
+where we wish to use it.
 
 ```bash
 $ yarn link
 $ yarn link industry-ui
 ```
 
-Currently we have to remove the node_modules directory from IndustryUI when
-running the parent project to avoid double React loading and hooks issues.
+Currently we have to remove the node_modules directory from IndustryUI when running the parent
+project to avoid double React loading and hooks issues.
 
 ## Creators
 

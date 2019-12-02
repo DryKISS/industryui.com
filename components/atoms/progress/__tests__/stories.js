@@ -6,15 +6,16 @@
 import React from 'react'
 
 // Storybook
-import { boolean, number, select, withKnobs } from '@storybook/addon-knobs'
+import { boolean, number, withKnobs } from '@storybook/addon-knobs'
+import { Context, Size, Wrapper } from 'decorators'
 
 // UI
-import { CONTEXT, SIZE, Progress, ProgressBar } from '../../../'
+import { Progress, ProgressBar } from '../../../'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Progress',
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   component: Progress,
   parameters: {
     readme: {
@@ -23,17 +24,18 @@ export default {
   }
 }
 
+const ProgressGroupId = 'Progress'
 const ProgressBarGroupId = 'ProgressBar'
 const ProgressBarGroupId2 = 'ProgressBar2'
-const ProgressGroupId = 'Progress'
 
 export const main = () => {
   const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
+
   return (
-    <Progress size={select('size', SIZE, 'lg', ProgressGroupId)}>
+    <Progress size={Size(ProgressGroupId)}>
       <ProgressBar
         animated={boolean('animated (striped must be checked)', false, ProgressBarGroupId)}
-        context={select('context', CONTEXT, 'primary', ProgressBarGroupId)}
+        context={Context(ProgressBarGroupId)}
         now={now}
         striped={boolean('striped', false, ProgressBarGroupId)}
       >
@@ -45,11 +47,12 @@ export const main = () => {
 
 export const Striped = () => {
   const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
+
   return (
-    <Progress size={select('size', SIZE, 'lg', ProgressGroupId)}>
+    <Progress size={Size(ProgressGroupId)}>
       <ProgressBar
         animated={boolean('animated (striped must be checked)', false, ProgressBarGroupId)}
-        context={select('context', CONTEXT, 'primary', ProgressBarGroupId)}
+        context={Context(ProgressBarGroupId)}
         now={now}
         striped={boolean('striped', true, ProgressBarGroupId)}
       >
@@ -61,11 +64,12 @@ export const Striped = () => {
 
 export const Animated = () => {
   const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
+
   return (
-    <Progress size={select('size', SIZE, 'lg', ProgressGroupId)}>
+    <Progress size={Size(ProgressGroupId)}>
       <ProgressBar
         animated={boolean('animated (striped must be checked)', true, ProgressBarGroupId)}
-        context={select('context', CONTEXT, 'primary', ProgressBarGroupId)}
+        context={Context(ProgressBarGroupId)}
         now={now}
         striped={boolean('striped', true, ProgressBarGroupId)}
       >
@@ -78,19 +82,21 @@ export const Animated = () => {
 export const MultipleProgressBars = () => {
   const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
   const now2 = number('now (percentage completed)', 30, {}, ProgressBarGroupId2)
+
   return (
-    <Progress size={select('size', SIZE, 'lg', ProgressGroupId)}>
+    <Progress size={Size(ProgressGroupId)}>
       <ProgressBar
         animated={boolean('animated (striped must be checked)', true, ProgressBarGroupId)}
-        context={select('context', CONTEXT, 'primary', ProgressBarGroupId)}
+        context={Context(ProgressBarGroupId)}
         now={now}
         striped={boolean('striped', true, ProgressBarGroupId)}
       >
         {now}%
       </ProgressBar>
+
       <ProgressBar
         animated={boolean('animated (striped must be checked)', false, ProgressBarGroupId)}
-        context={select('context', CONTEXT, 'info', ProgressBarGroupId2)}
+        context={Context(ProgressBarGroupId2)}
         now={now2}
         striped={boolean('striped', true, ProgressBarGroupId)}
       >

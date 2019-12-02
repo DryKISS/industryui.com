@@ -29,10 +29,10 @@ export const PageHeading = ({ center, children, context, divider, heading, strap
 
 const StyledPageHeader = styled.header`
   display: flex;
+  flex-flow: row wrap;
   margin-bottom: ${({ divider }) => !divider && '2rem'};
   margin-top: 1rem;
   text-align: ${({ center }) => center && 'center'};
-  flex-flow: row wrap;
 `
 
 const StyledLeft = styled.span`

@@ -61,7 +61,16 @@ export const Location = ({
     setMapUrl(mapUrl)
   }, [])
 
-  return <Container className={className} width={width} height={height} src={mapUrl} style={style} alt='map' />
+  return (
+    <Container
+      className={className}
+      width={width}
+      height={height}
+      src={mapUrl}
+      style={style}
+      alt='map'
+    />
+  )
 }
 
 Location.propTypes = {

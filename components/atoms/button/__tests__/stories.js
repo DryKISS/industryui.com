@@ -5,22 +5,17 @@
 // React
 import React from 'react'
 
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
+// Storybook
+import { boolean, text, withKnobs } from '@storybook/addon-knobs'
+import { Context, Size, Wrapper } from 'decorators'
 
-// Assets
+// UI
 import { Button } from '../'
 import Readme from '../README.md'
 
-const options = {
-  xs: 'xs',
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg'
-}
-
 export default {
   title: 'Atoms/Button',
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   component: Button,
   parameters: {
     readme: {
@@ -29,31 +24,24 @@ export default {
   }
 }
 
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    centre: boolean('Centre', true),
+    content: text('Button text', 'Button text'),
+    context: Context(),
+    size: Size(),
+    ...props
+  }
+
+  return <Button {...defaultProps} />
+}
+
 export const main = () => (
-  <Button
-    context='primary'
-    outline={boolean('Outline', false)}
-    shadow={boolean('Shadow', true)}
-    size={select('Size', options, 'md', 'Other')}
-  >
-    {text('Button text', 'Button text')}
-  </Button>
+  <BaseComponent outline={boolean('Outline', false)} shadow={boolean('Shadow', true)} />
 )
 
-export const secondary = () => (
-  <Button centre={boolean('Centre', true)} context='secondary' outline={boolean('Outline', false)}>
-    {text('Button text', 'Button text')}
-  </Button>
-)
+export const secondary = () => <BaseComponent outline={boolean('Outline', false)} />
 
-export const outline = () => (
-  <Button centre={boolean('Centre', true)} context='info' outline={boolean('Outline', true)}>
-    {text('Button text', 'Button text')}
-  </Button>
-)
+export const outline = () => <BaseComponent outline={boolean('Outline', true)} />
 
-export const large = () => (
-  <Button centre={boolean('Centre', true)} context='primary' outline={boolean('Outline', false)}>
-    {text('Button text', 'Button text')}
-  </Button>
-)
+export const large = () => <BaseComponent outline={boolean('Outline', false)} />

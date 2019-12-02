@@ -5,10 +5,12 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
 import { Container, Row } from '../'
 import Readme from '../README.md'
-
 import { StyledColumn } from '../__mocks__/grid'
 
 const debug = {
@@ -17,6 +19,7 @@ const debug = {
 
 export default {
   title: 'Atoms/Grid',
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
