@@ -7,7 +7,7 @@
 import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, useChange, Form, Input } from '../../../../'
+import { Button, Form, Input, useChange } from '../../../../'
 import { Close } from '../../../../atoms/close'
 
 // Style
@@ -50,14 +50,22 @@ const StyledSearch = styled.div`
   display: flex;
   position: relative;
 
-  > input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  > button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 
-  > button {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  > input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* Disable browser default search reset icon */
+  > input::-webkit-search-decoration,
+  > input::-webkit-search-cancel-button,
+  > input::-webkit-search-results-button,
+  > input::-webkit-search-results-decoration {
+    display: none;
   }
 `
 
