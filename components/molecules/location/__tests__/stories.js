@@ -5,6 +5,8 @@
 // React
 import React from 'react'
 
+import styled from 'styled-components'
+
 // Hero
 import { Location } from '../'
 import Readme from '../README.md'
@@ -68,6 +70,28 @@ export const westminsterAbbey = () => {
       center={westminsterAbbeyPostCode}
       size={size}
       location={westminsterAbbeyPostCode}
+    />
+  )
+}
+
+const ResponsiveImg = styled.img`
+  @media (max-width: 625px) {
+    width: 100%;
+    height: 100%;
+  }
+`
+
+export const responsiveWesternCentral = () => {
+  const westernCentralPostCode = 'WC2E 9DD'
+  const size = '600x600'
+
+  return (
+    <Location
+      apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
+      center='London'
+      container={ResponsiveImg}
+      size={size}
+      location={westernCentralPostCode}
     />
   )
 }

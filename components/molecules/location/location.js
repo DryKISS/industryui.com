@@ -5,7 +5,7 @@
 
 // React
 import { useState, useEffect } from 'react'
-import { array, number, oneOf, string } from 'prop-types'
+import { array, number, node, object, oneOf, string } from 'prop-types'
 
 // Services
 import { StaticMap } from '../../'
@@ -14,7 +14,9 @@ export const Location = ({
   apiKey,
   center,
   channel,
+  className,
   client,
+  container: Container = 'img',
   format,
   language,
   location,
@@ -26,6 +28,7 @@ export const Location = ({
   signature,
   size,
   style,
+  styleMap,
   visible,
   zoom
 }) => {
@@ -49,7 +52,7 @@ export const Location = ({
       scale,
       signature,
       size,
-      style,
+      style: styleMap,
       visible,
       zoom
     })
@@ -58,14 +61,16 @@ export const Location = ({
     setMapUrl(mapUrl)
   }, [])
 
-  return <img width={width} height={height} src={mapUrl} alt='map' />
+  return <Container className={className} width={width} height={height} src={mapUrl} style={style} alt='map' />
 }
 
 Location.propTypes = {
   apiKey: string.isRequired,
   center: string,
   channel: string,
+  className: string,
   client: string,
+  container: node,
   format: oneOf(['png', 'png8', 'png32', 'gif', 'jpg', 'jpg-baseline']),
   language: string,
   location: string,
@@ -76,7 +81,8 @@ Location.propTypes = {
   scale: oneOf([1, 2, 4, '1', '2', '4']),
   signature: string,
   size: string.isRequired,
-  style: string,
+  style: object,
+  styleMap: string,
   visible: string,
   zoom: number
 }
