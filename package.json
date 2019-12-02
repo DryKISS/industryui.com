@@ -35,7 +35,7 @@
     "standard": "standard | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy",
     "prettier": "prettier-standard --staged --lint",
-    "stylelint": "stylelint './**/*.js'",
+    "stylelint": "stylelint --ignore-pattern node_modules ./**/*.js",
     "test": "yarn run prettier && yarn run stylelint",
     "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
@@ -55,7 +55,7 @@
     }
   },
   "lint-staged": {
-    "!(*test).js": [
+    "**/*.js": [
       "yarn test"
     ]
   },
