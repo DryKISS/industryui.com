@@ -4,41 +4,42 @@
  */
 
 // React
-import { func, string, oneOf } from 'prop-types'
+import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
 import { Button, useChange, Form, Input } from '../../../../'
+import { Close } from '../../../../atoms/close'
 
 // Style
 import styled from 'styled-components'
 
-export const Search = ({ className, label, onSearch, placeholder, value, type }) => {
+export const Search = ({ className, label, onSearch, placeholder, showReset, type, value }) => {
   const INITIAL_STATE = {
     query: value || ''
   }
 
-  const [change, form] = useChange(INITIAL_STATE)
+  const [change, form, setForm] = useChange(INITIAL_STATE)
   const { query } = form
 
-  const handleChange = e => {
-    change(e)
-    // reset search on empty value
-    if (e.target.value === '') {
-      onSearch('')
-    }
+  const handleSearchReset = () => {
+    setForm({
+      query: ''
+    })
+    onSearch && onSearch('')
   }
 
   return (
     <Form className={className} submit={() => onSearch(query)}>
       <StyledSearch>
         <Input
-          change={handleChange}
+          change={change}
           id='query'
           placeholder={placeholder}
           required={false}
           type={type}
           value={query}
         />
+        {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
         <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
       </StyledSearch>
     </Form>
@@ -47,6 +48,7 @@ export const Search = ({ className, label, onSearch, placeholder, value, type })
 
 const StyledSearch = styled.div`
   display: flex;
+  position: relative;
 
   > input {
     border-top-right-radius: 0;
@@ -59,15 +61,23 @@ const StyledSearch = styled.div`
   }
 `
 
+const StyledClose = styled(Close)`
+  position: absolute;
+  right: 118px;
+  top: 28px;
+`
+
 Search.propTypes = {
   className: string,
   label: string,
   onSearch: func.isRequired,
   placeholder: string,
-  value: string,
-  type: oneOf(['search', 'text'])
+  showReset: bool,
+  type: oneOf(['search', 'text']),
+  value: string
 }
 
 Search.defaultProps = {
+  showReset: true,
   type: 'search'
 }
