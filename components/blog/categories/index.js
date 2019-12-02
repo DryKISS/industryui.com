@@ -19,7 +19,6 @@ import styled from 'styled-components'
 export const BlogCategories = ({ articles, config }) => {
   const _uniqueCategories = () => {
     const uniqueCategories = [...new Set(articles.map(article => article.category))]
-
     return uniqueCategories
   }
 

@@ -8,7 +8,7 @@
  */
 
 // React
-import { any, string } from 'prop-types'
+import { any, string, object } from 'prop-types'
 
 // Lodash
 import _filter from 'lodash/filter'
@@ -16,7 +16,7 @@ import _filter from 'lodash/filter'
 // UI
 import { BlogCard, Column, Row, slugify } from '../../'
 
-export const BlogListing = ({ articles, author, category, tag }) => {
+export const BlogListing = ({ articles, author, category, config, tag }) => {
   const _findTag = articles => {
     return _filter(articles, { tags: [tag] })
   }
@@ -45,7 +45,7 @@ export const BlogListing = ({ articles, author, category, tag }) => {
     <Row>
       {_find().map((article, index) => (
         <Column key={index} md={6}>
-          <BlogCard article={article} />
+          <BlogCard article={article} config={config} />
         </Column>
       ))}
     </Row>
@@ -56,5 +56,6 @@ BlogListing.propTypes = {
   articles: any.isRequired,
   author: string,
   category: string,
+  config: object,
   tag: string
 }

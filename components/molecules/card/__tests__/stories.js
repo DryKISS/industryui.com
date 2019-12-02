@@ -10,10 +10,8 @@ import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Card, Column } from 'components'
+import { Button, Card, CardBody, Column } from 'components'
 import Readme from '../README.md'
-import vizla from '../__resources__/vizla.jpg'
-import seeker from '../__resources__/seeker.png'
 
 export default {
   title: 'Molecules/Card',
@@ -26,47 +24,38 @@ export default {
   }
 }
 
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    alt: 'Vizla',
+    bordered: boolean('Bordered', true),
+    footer: text('Footer', 'Footer'),
+    image: '/card/vizla.jpg',
+    title: text('Title', 'Title'),
+    ...props
+  }
+
+  return <Card {...defaultProps} />
+}
+
 export const main = () => (
-  <Card
-    alt='Vizla'
-    bordered={boolean('Bordered', true)}
-    footer={text('Footer', 'Footer text')}
-    image={vizla}
-    title={text('Title', 'Title of the article')}
-  >
-    {text('Description', 'Description of the card.')}
-  </Card>
+  <BaseComponent>
+    <CardBody>{text('Content', 'Content')}</CardBody>
+  </BaseComponent>
 )
 
 export const horizontal = () => (
-  <Card
-    alt='Vizla'
-    bordered={boolean('Bordered', true)}
-    horizontal={boolean('Horizontal', true)}
-    image={seeker}
-    title={text('Title', 'Are you a dog seeker?')}
-  >
-    <p>
-      {text(
-        'Description',
-        `The wise man therefore always holds in these matters to this
-               principle of selection: he rejects pleasures to secure other
-               greater pleasures, or else he endures.`
-      )}
-    </p>
-
-    <Button className='Card-absoluteBottom' secondary>
-      View available dogs
-    </Button>
-  </Card>
-)
-
-export const breed = () => (
-  <Card alt='Vizla' bordered={boolean('Bordered', true)} footer='Vizsla' image={vizla} />
+  <BaseComponent horizontal={boolean('Horizontal', true)} title={text('Title', 'Horizontal')}>
+    <CardBody>
+      <p>{text('Content', 'content')}</p>
+      <Button context='secondary'>Read more</Button>
+    </CardBody>
+  </BaseComponent>
 )
 
 export const noImage = () => (
-  <Card bordered={boolean('Bordered', false)} title='No Image'>
-    Content
-  </Card>
+  <BaseComponent image='' title={text('Title', 'No Image')}>
+    <CardBody>
+      <p>{text('Content', 'content')}</p>
+    </CardBody>
+  </BaseComponent>
 )

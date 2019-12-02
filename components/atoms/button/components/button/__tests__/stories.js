@@ -10,7 +10,7 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { Context, Size, Wrapper } from 'decorators'
 
 // UI
-import { Button } from '../'
+import { Button } from 'root'
 import Readme from '../README.md'
 
 export default {
