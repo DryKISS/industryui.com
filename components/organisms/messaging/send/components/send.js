@@ -116,11 +116,17 @@ const StyledContainer = styled.div`
   border-top: 1px solid #c0c0c0;
   color: #c0c0c0;
   padding: ${({ audience }) => (audience ? '1.5rem 1rem 1rem' : '1rem')};
+  position: relative;
   box-sizing: border-box;
 `
 
 const StyledPickerContainer = styled(StyledContainer)`
+  bottom: 80px;
+  left: 15px;
   padding: 0;
+  position: absolute;
+  right: 15px;
+  z-index: 999;
 `
 
 const StyledForm = styled(Form)`
