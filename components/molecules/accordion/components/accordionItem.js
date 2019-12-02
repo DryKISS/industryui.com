@@ -41,9 +41,9 @@ const StyledAccordionItem = styled.div`
 
 const Header = styled.header`
   background-color: ${({ context, theme }) => theme.COLOUR[context]};
+  border-bottom: 1px solid ${props => props.theme.COLOUR[props.context]};
   color: ${({ context, theme }) =>
     context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
-  border-bottom: 1px solid ${props => props.theme.COLOUR[props.context]};
   cursor: pointer;
   font-size: 1rem;
   padding: 0.75rem 1.25rem;
@@ -54,10 +54,9 @@ const HeaderIcon = styled(Icon)`
 `
 
 const Content = styled.div`
+  box-sizing: border-box;
   max-height: 0;
   overflow: hidden;
-  transition: all 500ms ease;
-  box-sizing: border-box;
   &.opened {
     max-height: fit-content;
     padding: 1.25rem;

@@ -27,6 +27,7 @@ const renderItem = ({ body, context, title }, index, current, handleCurrent) => 
 export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
   const initialOpen = children ? children.findIndex(_ => _.props.open) : data.findIndex(_ => _.open)
   const [current, setCurrent] = useState(initialOpen > -1 ? [initialOpen] : [])
+
   const handleCurrent = index => {
     setCurrent(prev => {
       let temp = []
@@ -39,16 +40,17 @@ export const Accordion = ({ children, className, data, style, closeOthersOnOpen 
       return temp
     })
   }
+
   return (
     <StyledAccordion className={className} style={style}>
       {children
         ? Children.map(children, (child, index) => {
-            return cloneElement(child, {
-              index,
-              open: current.includes(index),
-              handleOpen: index => handleCurrent(index)
-            })
+          return cloneElement(child, {
+            index,
+            open: current.includes(index),
+            handleOpen: index => handleCurrent(index)
           })
+        })
         : data.map((item, index) => renderItem(item, index, current, handleCurrent))}
     </StyledAccordion>
   )
