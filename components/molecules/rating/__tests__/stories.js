@@ -6,6 +6,7 @@
 import React from 'react'
 
 // Storybook
+import { number, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -15,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Rating',
   component: Rating,
-  decorators: [Wrapper],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -23,4 +24,21 @@ export default {
   }
 }
 
-export const main = () => <Rating item={5} />
+export const main = () => (
+  <Rating
+    size={number('Rate', 5, {
+      min: 0,
+      max: 5
+    })}
+  />
+)
+
+export const withContext = () => (
+  <Rating
+    size={number('Rate', 5, {
+      min: 0,
+      max: 5
+    })}
+    context='warning'
+  />
+)

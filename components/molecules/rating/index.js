@@ -8,19 +8,27 @@ import { number, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Rating = ({ className, item, size }) => {
-  const rating = []
+import { BACKGROUND } from '../../'
 
+export const Rating = ({ className, context, item, size }) => {
+  const rating = []
   for (let i = 0; i < size; i++) {
-    rating.push(<StyledRating active={i + 1 <= item} className={className} item={item} key={i} />)
+    rating.push(
+      <StyledRating
+        active={i + 1 <= item}
+        className={className}
+        context={context}
+        item={item}
+        key={i}
+      />
+    )
   }
 
   return rating
 }
 
 const StyledRating = styled.div`
-  background-color: ${({ active, theme: { COLOUR } }) =>
-    active ? COLOUR.secondary : COLOUR.light};
+  ${props => BACKGROUND(props)}
   border-radius: 0.25rem;
   display: inline-block;
   height: 15px;
@@ -30,10 +38,12 @@ const StyledRating = styled.div`
 
 Rating.propTypes = {
   className: string,
+  context: string,
   item: number.isRequired,
   size: number
 }
 
 Rating.defaultProps = {
+  context: 'primary',
   size: 5
 }
