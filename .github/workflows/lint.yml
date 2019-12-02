@@ -34,7 +34,7 @@ jobs:
 
       - name: Lint
         run: |
-          npm run standard
+          npm run test
 
       - name: Build
         run: |
