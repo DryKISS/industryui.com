@@ -10,7 +10,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { COLOUR, Calendar } from '../../../'
+import { Calendar, Theme } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -39,7 +39,7 @@ export const main = () => {
     }
   })
 
-  const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
+  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
@@ -76,7 +76,7 @@ export const events = () => {
       endTime: '18:00' // an end time (6pm in this example)
     }
   })
-  const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
+  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
@@ -114,7 +114,7 @@ export const eventsWithEventAdditionOnClick = () => {
       endTime: '18:00' // an end time (6pm in this example)
     }
   })
-  const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
+  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
@@ -165,7 +165,7 @@ export const eventClick = () => {
       endTime: '18:00' // an end time (6pm in this example)
     }
   })
-  const defaultEventColorSelect = select('defaultEventColor', COLOUR, 'primary')
+  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
   const nowIndicatorBoolean = boolean('nowIndicator', false)
   const weekendsBoolean = boolean('weekends', true)
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')

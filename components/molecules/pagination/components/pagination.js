@@ -104,14 +104,14 @@ const StyledPagination = styled.nav`
         color: ${({ theme }) => theme.COLOUR.white};
       }
     }
-    :first-child {
+    &:first-child {
       button {
         margin-left: 0;
         border-top-left-radius: 0.25rem;
         border-bottom-left-radius: 0.25rem;
       }
     }
-    :last-child {
+    &:last-child {
       button {
         border-top-right-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
