@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { string, bool } from 'prop-types'
 
 // UI
@@ -26,10 +26,13 @@ export const MessageBase = ({
   to,
   type
 }) => {
+  const [seeMore, setSeeMore] = useState(false)
   const messageRef = useRef(null)
+
   useEffect(() => {
     if (scrollToMessage) messageRef.current.scrollIntoView()
   }, [])
+
   const IconSelect = () => {
     let useIcon = ''
 
@@ -78,12 +81,21 @@ export const MessageBase = ({
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
-            <StyledContent>{content}</StyledContent>
+            <StyledContent seeMore={seeMore}>{content}</StyledContent>
 
             {more && (
-              <StyledCollapse>
-                See more
-                <Icon icon='chevron-down' />
+              <StyledCollapse onClick={() => setSeeMore(!seeMore)}>
+                {!seeMore ? (
+                  <>
+                    <span>See more</span>
+                    <Icon icon='chevron-down' />
+                  </>
+                ) : (
+                  <>
+                    <span>Close</span>
+                    <Icon icon='chevron-up' />
+                  </>
+                )}
               </StyledCollapse>
             )}
           </Column>
@@ -108,7 +120,7 @@ const StyledCard = styled(Card)`
 
 const StyledContent = styled.div`
   color: #000;
-  ${props => Truncate()}
+  ${({ seeMore }) => !seeMore && Truncate()}
 `
 
 const StyledReply = styled.div`
@@ -119,6 +131,8 @@ const StyledReply = styled.div`
 
 const StyledCollapse = styled.div`
   color: #faac46;
+  cursor: pointer;
+  display: inline-block;
   font-size: 0.75rem;
   text-transform: uppercase;
 `
