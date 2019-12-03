@@ -1,3 +1,3 @@
-# Date Picker
+# Calendar Date Picker
 
-Provides three selects to pick the day month and year
+Provides select to pick the day month and year
