@@ -10,7 +10,7 @@ import { bool, func, number, string, oneOf } from 'prop-types'
 import { Label } from '../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Textarea = ({
   autoFocus,
@@ -91,16 +91,26 @@ export const Textarea = ({
 
 const StyledTextarea = styled.textarea`
   background-clip: padding-box;
-  background-color: #fff;
+  background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
   border: 1px solid ${props => props.theme.COLOUR.light};
   border-radius: 0.25rem;
   color: ${props => props.theme.COLOUR.dark};
+  cursor: ${({ disabled }) => (disabled ? 'no-drop' : 'auto')};
+  direction: ${({ dir }) => dir};
   display: block;
   font-size: 1rem;
   line-height: 2rem;
   padding: 0.5rem;
   overflow: auto;
   width: 100%;
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      -webkit-user-select: none; /* Safari 3.1+ */
+      -moz-user-select: none; /* Firefox 2+ */
+      -ms-user-select: none; /* IE 10+ */
+      user-select: none; /* Standard syntax */
+    `}
 
   &:focus {
     border-color: #80bdff;
@@ -146,6 +156,7 @@ Textarea.propTypes = {
 
 Textarea.defaultProps = {
   autoFocus: false,
+  dir: 'ltr',
   required: true,
   rows: 5,
   showCharsCount: false,
