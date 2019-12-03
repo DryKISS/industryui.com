@@ -5,7 +5,9 @@
 // React
 import React from 'react'
 
+// Storybook
 import { withKnobs, select } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { Radio } from '../'
@@ -17,7 +19,7 @@ import { RADIO_GENDER } from '../__mocks__/radio'
 export default {
   title: 'Atoms/Form/Radio',
   component: Radio,
-  decorators: [withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -25,10 +27,10 @@ export default {
   }
 }
 
-export const main = () => (
-  <Radio
-    change={() => {}}
-    data={RADIO_GENDER(
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    change: () => {},
+    data: RADIO_GENDER(
       select(
         'Checked',
         {
@@ -38,24 +40,12 @@ export const main = () => (
         },
         'no'
       )
-    )}
-  />
-)
+    ),
+    ...props
+  }
 
-export const stacked = () => (
-  <Radio
-    change={() => {}}
-    data={RADIO_GENDER(
-      select(
-        'Checked',
-        {
-          no: 'no',
-          male: 'male',
-          female: 'female'
-        },
-        'no'
-      )
-    )}
-    stacked
-  />
-)
+  return <Radio {...defaultProps} />
+}
+
+export const main = () => <BaseComponent />
+export const stacked = () => <BaseComponent stacked />

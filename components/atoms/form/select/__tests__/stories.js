@@ -5,13 +5,17 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
-import { Select } from '../'
+import { Select, SelectCountry, SelectDogBreed } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Form/Select',
   component: Select,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -21,8 +25,9 @@ export default {
 
 export const main = () => (
   <Select
+    change={() => {}}
     id='color'
-    data={[
+    options={[
       { text: 'Red', value: 'red', disabled: false },
       { text: 'Green', value: 'green', disabled: false },
       { text: 'Blue', value: 'blue', disabled: false },
@@ -30,3 +35,7 @@ export const main = () => (
     ]}
   />
 )
+
+export const country = () => <SelectCountry change={() => {}} id='country' />
+
+export const dogBreed = () => <SelectDogBreed change={() => {}} id='breed' />

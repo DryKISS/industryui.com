@@ -6,7 +6,7 @@
 import { array, bool, func, string } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Checkbox = ({ change, data, legend, stacked }) => {
   const renderCheckbox = () => {
@@ -40,6 +40,23 @@ export const Checkbox = ({ change, data, legend, stacked }) => {
   )
 }
 
+const stackedStyles = css`
+  display: block;
+  margin: 0.5rem 0;
+`
+
+const StyledLabel = styled.label`
+  ${stacked => stacked && stackedStyles}
+  position: relative;
+  padding-left: 1.25rem;
+`
+
+const StyledCheckbox = styled.input`
+  position: absolute;
+  margin-top: 0.05rem;
+  margin-left: -1.25rem;
+`
+
 Checkbox.propTypes = {
   change: func.isRequired,
   data: array.isRequired,
@@ -51,20 +68,3 @@ Checkbox.defaultProps = {
   legend: '',
   stacked: false
 }
-
-const stackedStyles = `
-  display: block;
-  margin: .5rem 0;
-`
-
-const StyledLabel = styled.label`
-  ${props => (props.stacked ? stackedStyles : '')}
-  position: relative;
-  padding-left: 1.25rem;
-`
-
-const StyledCheckbox = styled.input`
-  position: absolute;
-  margin-top: 0.05rem;
-  margin-left: -1.25rem;
-`

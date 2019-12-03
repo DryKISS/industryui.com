@@ -1,6 +1,5 @@
 /**
  * Search
- *
  */
 
 // React
@@ -12,12 +11,12 @@ import { Button, useChange, Form, Input } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const Search = ({ className, label, onSearch, placeholder, value, type }) => {
-  const INITIAL_STATE = {
+export const Search = ({ className, label, onSearch, placeholder, type, value }) => {
+  const initialState = {
     query: value || ''
   }
 
-  const [change, form] = useChange(INITIAL_STATE)
+  const [change, form] = useChange(initialState)
   const { query } = form
 
   return (
@@ -31,6 +30,7 @@ export const Search = ({ className, label, onSearch, placeholder, value, type })
           type={type}
           value={query}
         />
+
         <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
       </StyledSearch>
     </Form>
@@ -56,8 +56,8 @@ Search.propTypes = {
   label: string,
   onSearch: func.isRequired,
   placeholder: string,
-  value: string,
-  type: oneOf(['search', 'text'])
+  type: oneOf(['search', 'text']),
+  value: string
 }
 
 Search.defaultProps = {

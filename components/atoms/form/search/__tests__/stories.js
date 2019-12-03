@@ -5,15 +5,18 @@
 // React
 import React from 'react'
 
+// Storybook
 import { action } from '@storybook/addon-actions'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Search } from '../'
+import { Search } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Form/Search',
   component: Search,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

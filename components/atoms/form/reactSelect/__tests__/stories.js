@@ -5,29 +5,21 @@
 // React
 import React, { useState } from 'react'
 
-// Styled Components
-import styled from 'styled-components'
-
 // Storybook
 import { boolean, text, withKnobs } from '@storybook/addon-knobs'
+import { Wrapper } from 'decorators'
 
 // UI
 import { Button, Input, Form, ReactSelect, useChange } from 'components/atoms'
 import Readme from '../README.md'
 
+// Data
 import { OPTIONS } from '../__mocks__/options'
-
-const Wrapper = styled.div`
-  width: 400px;
-  margin-left: 40px;
-`
-
-const LayoutDecorator = storyFn => <Wrapper>{storyFn()}</Wrapper>
 
 export default {
   title: 'Atoms/Form/ReactSelect',
   component: ReactSelect,
-  decorators: [LayoutDecorator, withKnobs],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -37,6 +29,7 @@ export default {
 
 const useKnobs = (props = {}) => {
   const { defaultProps } = ReactSelect
+
   const knobs = Object.keys(defaultProps)
     .filter(key => typeof defaultProps[key] === 'string' || typeof defaultProps[key] === 'boolean')
     .reduce((acc, key) => {
@@ -52,6 +45,7 @@ const useKnobs = (props = {}) => {
 export const Single = () => {
   const [change] = useChange({ select: {} })
   const knobs = useKnobs()
+
   return (
     <ReactSelect
       {...knobs}
@@ -67,6 +61,7 @@ export const Single = () => {
 export const Multi = () => {
   const [change] = useChange({ select: [] })
   const knobs = useKnobs({ isMulti: true })
+
   return (
     <ReactSelect
       change={change}
@@ -82,6 +77,7 @@ export const Multi = () => {
 export const withDefaultValue = () => {
   const [change] = useChange({ select: {} })
   const knobs = useKnobs()
+
   return (
     <ReactSelect
       change={change}
@@ -108,6 +104,7 @@ export const insideAForm = () => {
   }) => {
     setName(placeholder + value)
   }
+
   return (
     <Form submit={handleFormSubmit}>
       {name}
