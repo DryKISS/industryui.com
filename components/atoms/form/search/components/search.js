@@ -1,6 +1,5 @@
 /**
  * Search
- *
  */
 
 // React
@@ -39,7 +38,9 @@ export const Search = ({ className, label, onSearch, placeholder, showReset, typ
           type={type}
           value={query}
         />
+
         {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
+
         <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
       </StyledSearch>
     </Form>

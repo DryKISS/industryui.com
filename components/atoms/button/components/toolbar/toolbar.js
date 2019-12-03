@@ -1,8 +1,7 @@
 /**
- * Button Toolbar
- * Combine sets of button groups into button toolbars for more complex
- * components. Use utility classes as needed to space out groups, buttons, and
- * more.
+ * Button - Toolbar
+ * Combine sets of button groups into button toolbars for more complex components. Use utility
+ * classes as needed to space out groups, buttons, and more.
  */
 
 // React
@@ -19,15 +18,6 @@ export const ButtonToolbar = ({ align, children }) => {
       </StyledGroup>
     </StyledToolbar>
   )
-}
-
-ButtonToolbar.propTypes = {
-  align: string,
-  children: node.isRequired
-}
-
-ButtonToolbar.defaultProps = {
-  align: 'center'
 }
 
 const StyledToolbar = styled.div`
@@ -47,9 +37,9 @@ const StyledGroup = styled.div`
 
   & > a:not(:last-child),
   button:not(:last-child) {
-    border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border-right: 1px solid ${({ theme }) => theme.COLOUR.light};
+    border-right: 1px solid ${({ theme: { COLOUR } }) => COLOUR.light};
+    border-top-right-radius: 0;
   }
 
   & > a:not(:first-child),
@@ -58,3 +48,12 @@ const StyledGroup = styled.div`
     border-bottom-left-radius: 0;
   }
 `
+
+ButtonToolbar.propTypes = {
+  align: string,
+  children: node.isRequired
+}
+
+ButtonToolbar.defaultProps = {
+  align: 'center'
+}

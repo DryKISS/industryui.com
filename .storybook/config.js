@@ -36,6 +36,7 @@ addDecorator(
   withInfo({
     header: true,
     inline: true,
+    propTables: false,
     styles: { infoBody: { overflow: 'overlay' } },
     source: false
   })
@@ -45,12 +46,7 @@ addDecorator(Container)
 addDecorator(withA11y)
 
 addParameters({
-  options: {
-    showPanel: true,
-    panelPosition: 'right'
-  },
   readme: {
-    codeTheme: 'github',
     excludePropTables: []
   }
 })

@@ -3,6 +3,7 @@
  */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
+// DuoTone
 import {
   faBell,
   faCommentDots,
@@ -13,13 +14,15 @@ import {
   faTrash
 } from '@fortawesome/pro-duotone-svg-icons'
 
-// Font awesome
+// Free Solid
 import { faCircle, faEnvelope as fasEnvelope } from '@fortawesome/free-solid-svg-icons'
 
+// Pro Regular
 import {
   faArrowLeft,
   faArrowRight,
   faBars,
+  faCalendarAlt,
   faCaretDown,
   faCheck,
   faCheckCircle,
@@ -28,12 +31,14 @@ import {
   faChevronRight,
   faChevronUp,
   faDogLeashed,
+  faExternalLink,
   faHomeHeart,
   faImages,
   faMars,
   faPaperclip,
   faSmile,
   faStethoscope,
+  faStopwatch,
   faTimes,
   faTimesCircle,
   faUser,
@@ -46,6 +51,7 @@ library.add(
   faArrowRight,
   faBars,
   faBell,
+  faCalendarAlt,
   faCaretDown,
   faCheck,
   faCheckCircle,
@@ -55,6 +61,7 @@ library.add(
   faChevronUp,
   faCircle,
   faCommentDots,
+  faExternalLink,
   faDogLeashed,
   faEdit,
   faEnvelope,
@@ -66,6 +73,7 @@ library.add(
   faPaperclip,
   faSmile,
   faStethoscope,
+  faStopwatch,
   faTachometerAltAverage,
   faTimes,
   faTimesCircle,

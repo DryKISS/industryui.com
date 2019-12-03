@@ -5,13 +5,17 @@
 // React
 import React, { useState } from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
-import { Textarea, Input, Button } from 'components/atoms'
+import { Textarea, Input, Button } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Form/Textarea',
-
+  component: [Textarea],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -136,6 +140,7 @@ export const direction = () => {
         label='Enter the message below'
         value={value}
       />
+
       <p>Current Direction: {dir}</p>
 
       <Button onClick={() => setDir(prevDir => (prevDir === 'ltr' ? 'rtl' : 'ltr'))}>

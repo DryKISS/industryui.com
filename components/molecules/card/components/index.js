@@ -1,5 +1,5 @@
 /**
- * Card compoennts
+ * Components
  */
 export * from './body'
 export * from './card'

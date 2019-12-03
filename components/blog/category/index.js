@@ -3,7 +3,7 @@
  */
 
 // React
-import { object, string } from 'prop-types'
+import { any, bool, object, string } from 'prop-types'
 
 // UI
 import { Link, slugify } from '../../'
@@ -11,7 +11,7 @@ import { Link, slugify } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const BlogCategory = ({ author, config, context, className, style, to }) => (
+export const BlogCategory = ({ author, config, className, style, to }) => (
   <StyledCategory className={className} style={style}>
     <Link
       to={{
@@ -26,7 +26,7 @@ export const BlogCategory = ({ author, config, context, className, style, to }) 
       }}
       passHref
     >
-      <StyledA context={context}>{to.toUpperCase().replace('-', ' ')}</StyledA>
+      <StyledA>{to.toUpperCase().replace('-', ' ')}</StyledA>
     </Link>
   </StyledCategory>
 )
@@ -40,10 +40,13 @@ const StyledCategory = styled.div`
 `
 
 const StyledA = styled.a`
-  color: ${({ theme }) => theme.COLOUR.primary};
+  color: ${({ theme: { COLOUR } }) => COLOUR.primary};
 `
 
 BlogCategory.propTypes = {
+  author: bool,
+  className: any,
   config: object.isRequired,
+  style: any,
   to: string.isRequired
 }

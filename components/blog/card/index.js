@@ -1,27 +1,20 @@
 /**
  * Blog - Card
- * Provides a card that details the blog post
+ * Provides a card that details a blog post
  */
 
 // React
 import { any, object, string } from 'prop-types'
 
 // UI
-import {
-  BlogCategory,
-  BlogTags,
-  Button,
-  Card,
-  CardBody,
-  CardImage,
-  Divider,
-  Heading,
-  Link,
-  slugify
-} from '../../'
+import { BlogCategory, BlogTags, Card, CardImage, Divider, Link, slugify } from '../../../'
+
+import { Button } from '../../atoms/button/components/button'
+import { CardBody } from '../../molecules/card/components/body'
+import { Heading } from '../../atoms/heading'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const BlogCard = ({ article, config, type }) => {
   const { author, category, excerpt, heading, slug } = article
@@ -39,7 +32,7 @@ export const BlogCard = ({ article, config, type }) => {
       <Card shadow>
         <Link to={articleLink}>
           <a>
-            <CardImage alt={heading} src={`/static/blog/${slug}/hero.jpg`} />
+            <CardImage alt={heading} src={`/blog/${slug}/hero.jpg`} />
           </a>
         </Link>
 
@@ -68,7 +61,7 @@ export const BlogCard = ({ article, config, type }) => {
 
               <BlogCategory author to={author} config={config} type={type} />
 
-              <p style={{ fontSize: '14px', margin: '0' }}>{article.readtime}min read time.</p>
+              <StyledReadTime>{article.readtime}min read time.</StyledReadTime>
             </>
           )}
 
@@ -87,45 +80,45 @@ export const BlogCard = ({ article, config, type }) => {
 }
 
 const TagsContainer = styled.div`
-  height: 28px;
-  margin-top: 5px;
+  height: 1.75rem;
+  margin-top: 0.25rem;
   overflow: hidden;
 `
 
 const StyledButton = styled(Button)`
-  bottom: 20px;
+  bottom: 1.25rem;
   position: absolute;
-  right: 15px;
+  right: 1rem;
   z-index: 2;
   ${({ position }) =>
     position === 'hero' &&
-    `
-    bottom: 25px;
-  `}
+    css`
+      bottom: 1.25rem;
+    `}
 `
 
 const StyledCardBody = styled(CardBody)`
   min-height: 303px;
   position: relative;
-  ${({ theme, type }) =>
+  ${({ theme: { COLOUR }, type }) =>
     type === 'hero' &&
-    `
-    background-color: ${theme.COLOUR.primary};
-    min-height: 80px;
-    &:after {
-      background: ${theme.COLOUR.primary};
-      content: '';
-      display: block;
-      height: 80px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: -80px;
-      transform: skewy(6deg);
-      transform-origin: 0 100%;
-      z-index: 1;
-    }
-  `}
+    css`
+      background-color: ${COLOUR.primary};
+      min-height: 80px;
+      &:after {
+        background: ${COLOUR.primary};
+        content: '';
+        display: block;
+        height: 120px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: skewy(6deg);
+        transform-origin: 100% 0;
+        z-index: 1;
+      }
+    `}
 `
 
 const StyledContent = styled.div`
@@ -134,16 +127,16 @@ const StyledContent = styled.div`
   overflow: hidden;
   ${({ type }) =>
     type === 'hero' &&
-    `
-    height: 122px;
-    margin-bottom: 0;
-  `}
+    css`
+      height: 122px;
+      margin-bottom: 0;
+    `}
 `
 
 const StyledHeading = styled(Heading)`
   color: #000;
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
   margin-bottom: 0;
   max-width: 500px;
   overflow: hidden;
@@ -156,16 +149,21 @@ const StyledHeading = styled(Heading)`
 
   ${({ type }) =>
     type === 'hero' &&
-    `
-    color: #fff;
-    font-size: 34px;
-    line-height: 38px;
-    max-height: 115px;
+    css`
+      color: #fff;
+      font-size: 2rem;
+      line-height: 2rem;
+      max-height: 115px;
 
-    &:hover {
-      color: #f2f1f1;
-    }
-  `}
+      &:hover {
+        color: #f2f1f1;
+      }
+    `}
+`
+
+const StyledReadTime = styled.p`
+  font-size: 0.75rem;
+  margin: 0;
 `
 
 BlogCard.propTypes = {

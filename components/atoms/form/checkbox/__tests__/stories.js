@@ -7,23 +7,31 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Checkbox } from '../'
+import { Checkbox } from 'components'
 import Readme from '../README.md'
 
 const CHECKBOXS = [
   {
-    id: 'insurance',
-    label: 'I pledge to get insurance for my new dog',
+    id: 'check',
+    label: 'Yes',
     required: true,
-    value: 'Insurance'
+    value: 'check'
+  },
+  {
+    id: 'checked',
+    label: 'No',
+    required: true,
+    value: 'checked'
   }
 ]
 
 export default {
   title: 'Atoms/Form/Checkbox',
   component: Checkbox,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -32,9 +40,5 @@ export default {
 }
 
 export const main = () => (
-  <Checkbox
-    data={CHECKBOXS}
-    legend='Finally, which of the following do you pledge to do for your new dog?'
-    change={action('button-click')}
-  />
+  <Checkbox data={CHECKBOXS} legend='Legend' change={action('button-click')} stacked />
 )

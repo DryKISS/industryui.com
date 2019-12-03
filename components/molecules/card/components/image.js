@@ -1,6 +1,5 @@
 /**
  * Card image
- * @see https://medium.com/@webcore1/react-fallback-for-broken-images-strategy-a8dfa9c1be1e
  */
 
 // React
@@ -14,14 +13,26 @@ import styled from 'styled-components'
 
 export const CardImage = ({ alt, header, src }) => {
   return (
-    <StyledImage alt={alt} imageClasses='rounded' src={src}>
-      {header}
-    </StyledImage>
+    <StyledContainer>
+      <StyledImage alt={alt} fluid={false} imageClasses='rounded' src={src}>
+        {header}
+      </StyledImage>
+    </StyledContainer>
   )
 }
 
+const StyledContainer = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+`
+
 const StyledImage = styled(Image)`
   display: block;
+  height: 203px;
+  object-fit: cover;
+  width: 100%;
 
   .rounded {
     border-radius: 0.25rem 0.25rem 0 0;

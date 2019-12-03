@@ -7,7 +7,7 @@ import { forwardRef } from 'react'
 import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, CONTEXT, SHADE_COLOUR, SIZE } from '../../../'
+import { BACKGROUND, CONTEXT, SHADE_COLOUR, SIZE } from '../../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -22,15 +22,15 @@ export const Button = forwardRef((props, ref) => {
 
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
-  color: ${({ context, theme }) =>
-    context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
-  border: 2px solid ${props => props.theme.COLOUR[props.context]};
+  color: ${({ context, theme: { COLOUR } }) =>
+    context === 'white' ? COLOUR.primary : COLOUR.white};
+  border: 2px solid ${({ context, theme: { COLOUR } }) => COLOUR[context]};
   border-radius: .25rem;
   ${props =>
     props.shadow &&
     'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
   cursor: pointer;
-  display: ${props => (props.centre || props.block ? 'block' : 'inline-block')};
+  display: ${({ block, centre }) => (centre || block ? 'block' : 'inline-block')};
   font-family: ${({ theme }) => theme.font};
   font-size: 1rem;
   line-height: .75rem;
@@ -78,8 +78,8 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -10)};
-    border-color: ${props => SHADE_COLOUR(props.theme.COLOUR[props.context], -12.5)};
+    background-color: ${({ context, theme: { COLOUR } }) => SHADE_COLOUR(COLOUR[context], -10)};
+    border-color: ${({ context, theme: { COLOUR } }) => SHADE_COLOUR(COLOUR[context], -12.5)};
     color: #fff;
   }
 
