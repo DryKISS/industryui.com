@@ -12,6 +12,7 @@ const StyledInput = styled.input`
   border: 1px solid #aeaeae;
   line-height: 1rem;
   padding: 0.375rem 0.625rem 0.3125rem;
+  min-width: 11.875rem; /* 190px */
 
   &:focus {
     outline: none;
