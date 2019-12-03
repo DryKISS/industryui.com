@@ -67,7 +67,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
         </StyledPickerContainer>
       )}
 
-      <StyledContainer>
+      <StyledContainer audience={audience}>
         <StyledForm submit={handleSubmit}>
           {audience && (
             <StyledDropDown
@@ -115,12 +115,18 @@ const StyledContainer = styled.div`
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #c0c0c0;
   color: #c0c0c0;
-  padding: 1rem;
+  padding: ${({ audience }) => (audience ? '1.5rem 1rem 1rem' : '1rem')};
+  position: relative;
   box-sizing: border-box;
 `
 
 const StyledPickerContainer = styled(StyledContainer)`
+  bottom: 80px;
+  left: 15px;
   padding: 0;
+  position: absolute;
+  right: 15px;
+  z-index: 999;
 `
 
 const StyledForm = styled(Form)`
@@ -131,6 +137,7 @@ const StyledForm = styled(Form)`
 
 const StyledTextarea = styled(Textarea)`
   border: none;
+  line-height: 1.5;
   resize: none;
 
   &:focus {
@@ -150,12 +157,18 @@ const StyledIcon = styled(Icon)`
 
 const StyledDropDown = styled(Dropdown)`
   position: absolute;
-  top: -15px;
+  text-transform: uppercase;
+  top: -24px;
   left: 8px;
+
+  .dropdown--link {
+    color: #000;
+    font-size: 10px;
+  }
+
   .dropdown--toggle,
   svg {
     color: ${({ theme }) => theme.COLOUR.info};
-    /* font-size: ${({ theme }) => theme.TYPOGRAPHY.fontSizes[0]}px; */
     font-size: 10px;
   }
 `

@@ -3,21 +3,29 @@
  */
 
 // React
-import { func, string, oneOf } from 'prop-types'
+import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, useChange, Form, Input } from '../../../../'
+import { Button, Form, Input, useChange } from '../../../../'
+import { Close } from '../../../../atoms/close'
 
 // Style
 import styled from 'styled-components'
 
-export const Search = ({ className, label, onSearch, placeholder, type, value }) => {
-  const initialState = {
+export const Search = ({ className, label, onSearch, placeholder, showReset, type, value }) => {
+  const INITIAL_STATE = {
     query: value || ''
   }
 
-  const [change, form] = useChange(initialState)
+  const [change, form, setForm] = useChange(INITIAL_STATE)
   const { query } = form
+
+  const handleSearchReset = () => {
+    setForm({
+      query: ''
+    })
+    onSearch && onSearch('')
+  }
 
   return (
     <Form className={className} submit={() => onSearch(query)}>
@@ -31,6 +39,8 @@ export const Search = ({ className, label, onSearch, placeholder, type, value })
           value={query}
         />
 
+        {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
+
         <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
       </StyledSearch>
     </Form>
@@ -39,16 +49,31 @@ export const Search = ({ className, label, onSearch, placeholder, type, value })
 
 const StyledSearch = styled.div`
   display: flex;
-
-  > input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+  position: relative;
 
   > button {
-    border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
+
+  > input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* Disable browser default search reset icon */
+  > input::-webkit-search-decoration,
+  > input::-webkit-search-cancel-button,
+  > input::-webkit-search-results-button,
+  > input::-webkit-search-results-decoration {
+    display: none;
+  }
+`
+
+const StyledClose = styled(Close)`
+  position: absolute;
+  right: 118px;
+  top: 28px;
 `
 
 Search.propTypes = {
@@ -56,10 +81,12 @@ Search.propTypes = {
   label: string,
   onSearch: func.isRequired,
   placeholder: string,
+  showReset: bool,
   type: oneOf(['search', 'text']),
   value: string
 }
 
 Search.defaultProps = {
+  showReset: true,
   type: 'search'
 }
