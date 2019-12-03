@@ -1,5 +1,5 @@
 /**
- * Location
+ * StaticLocation
  * Showcases a static map based on a location
  */
 
@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react'
 import { array, number, node, object, oneOf, string } from 'prop-types'
 
 // Services
-import { StaticMap } from '../../'
+import { StaticMap } from '../../../'
 
-export const Location = ({
+export const StaticLocation = ({
   apiKey,
   center,
   channel,
@@ -73,7 +73,7 @@ export const Location = ({
   )
 }
 
-Location.propTypes = {
+StaticLocation.propTypes = {
   apiKey: string.isRequired,
   center: string,
   channel: string,
@@ -96,7 +96,7 @@ Location.propTypes = {
   zoom: number
 }
 
-Location.defaultProps = {
+StaticLocation.defaultProps = {
   format: 'png',
   maptype: 'roadmap',
   scale: 1,

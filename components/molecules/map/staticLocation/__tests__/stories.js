@@ -8,12 +8,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Hero
-import { Location } from '../'
+import { StaticLocation } from '../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Location',
-  component: Location,
+  title: 'Molecules/Map/StaticLocation',
+  component: StaticLocation,
   parameters: {
     readme: {
       sidebar: Readme
@@ -36,7 +36,7 @@ export const main = () => {
   ]
 
   return (
-    <Location
+    <StaticLocation
       apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
       center={center}
       size={size}
@@ -51,7 +51,7 @@ export const coventGarden = () => {
   const size = '600x600'
 
   return (
-    <Location
+    <StaticLocation
       apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
       center={coventGardenPostCode}
       size={size}
@@ -65,7 +65,7 @@ export const westminsterAbbey = () => {
   const size = '600x600'
 
   return (
-    <Location
+    <StaticLocation
       apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
       center={westminsterAbbeyPostCode}
       size={size}
@@ -86,7 +86,7 @@ export const responsiveWesternCentral = () => {
   const size = '600x600'
 
   return (
-    <Location
+    <StaticLocation
       apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
       center='London'
       container={ResponsiveImg}

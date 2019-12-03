@@ -9,7 +9,7 @@ import { DynamicLocation, Marker } from '../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/DynamicLocation',
+  title: 'Molecules/Map/DynamicLocation',
   component: DynamicLocation,
   parameters: {
     readme: {
