@@ -6,18 +6,19 @@ import styled from 'styled-components'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const StyledInput = styled.input`
-  font-size: 0.81rem;
+  border: 1px solid #c4cacf;
   border-radius: 0.25rem;
-  box-shadow: inset 0 0.125rem 0.125rem #e9e9e9;
-  border: 1px solid #aeaeae;
-  line-height: 1rem;
-  padding: 0.375rem 0.625rem 0.3125rem;
+  color: #9da7af;
+  font-size: 1rem;
+  line-height: 1.5rem;
   min-width: 11.875rem; /* 190px */
+  padding: 0.5rem 1rem;
 
   &:focus {
-    outline: none;
-    border-color: #aeaeae;
-    box-shadow: inset 0 0.125rem 0.125rem #e9e9e9, 0 0 0.625rem 0 rgba(73, 107, 125, 0.3);
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    color: #9da7af;
+    outline: 0;
   }
 `
 
