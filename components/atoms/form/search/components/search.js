@@ -6,13 +6,25 @@
 import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, Form, Input, useChange } from '../../../../'
+import { Button, Form, Icon, Input, useChange } from '../../../../'
+import { InputGroup, InputGroupAddon } from '../../'
 import { Close } from '../../../../atoms/close'
 
 // Style
 import styled from 'styled-components'
 
-export const Search = ({ className, label, onSearch, placeholder, showReset, type, value }) => {
+export const Search = ({
+  appendSearchButton,
+  appendSearchIcon,
+  className,
+  label,
+  onSearch,
+  placeholder,
+  prependSearchIcon,
+  showReset,
+  type,
+  value
+}) => {
   const INITIAL_STATE = {
     query: value || ''
   }
@@ -39,15 +51,30 @@ export const Search = ({ className, label, onSearch, placeholder, showReset, typ
           value={query}
         />
 
-        {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
+        {prependSearchIcon && (
+          <InputGroupAddon addonType='prepend'>
+            <Icon context='dark' icon='search' size='2x' />
+          </InputGroupAddon>
+        )}
 
-        <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
+        {appendSearchIcon && (
+          <InputGroupAddon addonType='append'>
+            <Icon context='dark' icon='search' size='2x' />
+          </InputGroupAddon>
+        )}
+
+        {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
+        {appendSearchButton && (
+          <InputGroupAddon addonType='append'>
+            <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
+          </InputGroupAddon>
+        )}
       </StyledSearch>
     </Form>
   )
 }
 
-const StyledSearch = styled.div`
+const StyledSearch = styled(InputGroup)`
   display: flex;
   position: relative;
 
@@ -77,10 +104,13 @@ const StyledClose = styled(Close)`
 `
 
 Search.propTypes = {
+  appendSearchButton: bool,
+  appendSearchIcon: bool,
   className: string,
   label: string,
   onSearch: func.isRequired,
   placeholder: string,
+  prependSearchIcon: bool,
   showReset: bool,
   type: oneOf(['search', 'text']),
   value: string

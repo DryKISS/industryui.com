@@ -78,15 +78,6 @@ const StyledInput = styled.input`
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
-  .Form-inputGroup > & {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
-    margin-bottom: 0;
-  }
-
   &:focus {
     color: #9da7af;
     border-color: #80bdff;
@@ -96,6 +87,24 @@ const StyledInput = styled.input`
 
   &:invalid {
     color: red;
+  }
+
+  .Form-inputGroup > & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+  }
+
+  .Form-inputGroup > .prepend ~ & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
   }
 `
 
