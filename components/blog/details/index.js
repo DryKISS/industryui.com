@@ -15,6 +15,7 @@ import {
   FacebookShareButton,
   Icon,
   List,
+  ListItem,
   slugify
 } from '../../'
 
@@ -28,22 +29,22 @@ export const BlogDetails = ({ article, config, facebook }) => {
 
       <List inline unstyled style={{ marginTop: '.25rem' }}>
         {/* Date / Time */}
-        <span style={{ marginRight: '1rem' }}>
+        <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='calendar-alt' />
           <Date date={article.date} />
-        </span>
+        </ListItem>
 
         {/* Author */}
-        <span style={{ marginRight: '1rem' }}>
+        <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='user' />
           <BlogCategory author config={config} to={article.author} />
-        </span>
+        </ListItem>
 
         {/* Read time */}
-        <span style={{ marginRight: '1rem' }}>
+        <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='stopwatch' />
           <BlogReadTime time={2} />
-        </span>
+        </ListItem>
       </List>
 
       {article.tags && <BlogTags tags={article.tags} />}

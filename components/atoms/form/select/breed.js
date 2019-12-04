@@ -11,13 +11,13 @@ import { Select } from '../'
 // Data
 import { DOG_BREED } from '../../../constants'
 
-export const SelectBreed = ({ change, label, id, value }) => {
+export const SelectDogBreed = ({ change, id, label, value }) => {
   return <Select change={change} id={id} label={label} options={DOG_BREED} required value={value} />
 }
 
-SelectBreed.propTypes = {
+SelectDogBreed.propTypes = {
   change: func.isRequired,
-  label: string,
   id: string,
+  label: string,
   value: string
 }

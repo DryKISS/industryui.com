@@ -60,23 +60,6 @@ export const Select = forwardRef(
   }
 )
 
-Select.propTypes = {
-  change: func.isRequired,
-  data: object,
-  label: string,
-  id: string,
-  options: array,
-  placeholder: string,
-  range: array,
-  required: bool,
-  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
-}
-
-Select.defaultProps = {
-  range: [],
-  required: true
-}
-
 const StyledSelect = styled.select`
   background-clip: padding-box;
   background-color: #fff;
@@ -98,3 +81,20 @@ const StyledSelect = styled.select`
     outline: 0;
   }
 `
+
+Select.propTypes = {
+  change: func.isRequired,
+  data: object,
+  id: string,
+  label: string,
+  options: array,
+  placeholder: string,
+  range: array,
+  required: bool,
+  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
+}
+
+Select.defaultProps = {
+  range: [],
+  required: true
+}

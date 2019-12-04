@@ -5,13 +5,17 @@
 // React
 import React from 'react'
 
+// Storybook
+import { Wrapper } from 'decorators'
+
 // UI
-import { Button, Form, Input } from 'components/atoms'
+import { Button, Form, Input } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Form/Form',
   component: Form,
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -28,6 +32,7 @@ export const main = () => (
       placeholder='Enter email address'
       type='email'
     />
+
     <Button secondary type='submit'>
       Send reset link
     </Button>
