@@ -1,12 +1,12 @@
 /**
- * Date Picker
+ * Date Picker - Input
  */
 
 // React
 import { any, bool, func, number, object, string } from 'prop-types'
 
 // UI
-import { Column, Row, Select } from '../..'
+import { Column, Row, Select } from '../../../'
 
 // Data
 import { DAYS, MONTHS } from './constants/dates'
@@ -14,7 +14,7 @@ import { DAYS, MONTHS } from './constants/dates'
 // Style
 import styled from 'styled-components'
 
-export const InputPicker = ({
+export const DatePickerInput = ({
   change,
   data,
   day,
@@ -85,7 +85,7 @@ const StyledLabelText = styled.div`
   margin-bottom: 0.5rem;
 `
 
-InputPicker.propTypes = {
+DatePickerInput.propTypes = {
   change: func.isRequired,
   data: object,
   day: any,
@@ -98,7 +98,7 @@ InputPicker.propTypes = {
   yearStart: number
 }
 
-InputPicker.defaultProps = {
+DatePickerInput.defaultProps = {
   required: true,
   yearEnd: 2019,
   yearStart: 1898

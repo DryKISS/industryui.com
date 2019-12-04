@@ -1,5 +1,5 @@
 /**
- * Calendar Date Picker
+ * Date Picker - Calendar
  */
 
 // React
@@ -16,7 +16,7 @@ import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 
 // UI
-import { DatePicker } from '../'
+import { DatePickerCalendar } from 'components'
 import Readme from '../README.md'
 
 const centerDecorator = story => (
@@ -31,8 +31,8 @@ const centerDecorator = story => (
 )
 
 export default {
-  title: 'Molecules/Date Picker',
-  component: DatePicker,
+  title: 'Molecules/Date Picker/Calendar',
+  component: DatePickerCalendar,
   decorators: [centerDecorator, Wrapper, withKnobs],
   parameters: {
     readme: {
@@ -115,7 +115,9 @@ export const main = () => {
   const [startDate, setStartDate] = useState(new Date())
   const knobs = useKnobs()
 
-  return <DatePicker selected={startDate} onChange={date => setStartDate(date)} {...knobs} />
+  return (
+    <DatePickerCalendar selected={startDate} onChange={date => setStartDate(date)} {...knobs} />
+  )
 }
 
 export const WorkingHours = () => {
@@ -152,7 +154,7 @@ export const WorkingHours = () => {
       Our Schedule: 9:30AM - 6:30PM, Monday - Friday
       <br />
       <br />
-      <DatePicker
+      <DatePickerCalendar
         selected={startDate}
         onChange={date => setStartDate(date)}
         minTime={setHours(setMinutes(new Date(), 30), 9)}
@@ -167,7 +169,7 @@ export const WorkingHours = () => {
         <div>
           <span style={{ color: '#3dcc4a' }}>*50% Discount</span>
         </div>
-      </DatePicker>
+      </DatePickerCalendar>
     </>
   )
 }

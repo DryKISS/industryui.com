@@ -1,3 +1,6 @@
+/**
+ * Date Picker - Input
+ */
 export const MONTHS = [
   {
     disabled: true,

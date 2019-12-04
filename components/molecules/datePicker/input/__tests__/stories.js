@@ -1,5 +1,5 @@
 /**
- * Input Date Picker
+ * Date Picker - Input
  */
 
 // React
@@ -9,12 +9,12 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { InputPicker } from '..'
+import { DatePickerInput } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Input Picker',
-  component: InputPicker,
+  title: 'Molecules/Date Picker/Input',
+  component: DatePickerInput,
   decorators: [Wrapper],
   parameters: {
     readme: {
@@ -23,4 +23,4 @@ export default {
   }
 }
 
-export const main = () => <InputPicker change={() => {}} month='' year='' />
+export const main = () => <DatePickerInput change={() => {}} month='' year='' />
