@@ -30,6 +30,11 @@ export const Search = ({
   const { change, form, clear } = useForm(initialState)
   const { query } = form
 
+  const handleClear = id => {
+    clear(id)
+    onSearch('')
+  }
+
   return (
     <Form className={className} submit={() => onSearch(query)}>
       <StyledSearch>
@@ -41,7 +46,7 @@ export const Search = ({
 
         <Input
           change={change}
-          clear={clear}
+          clear={handleClear}
           id='query'
           placeholder={placeholder}
           required={false}
