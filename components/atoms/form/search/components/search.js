@@ -6,9 +6,8 @@
 import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, Form, Icon, Input, useChange } from '../../../../'
+import { Button, Form, Icon, Input, useForm } from '../../../../'
 import { InputGroup, InputGroupAddon } from '../../'
-import { Close } from '../../../../atoms/close'
 
 // Style
 import styled from 'styled-components'
@@ -21,23 +20,15 @@ export const Search = ({
   onSearch,
   placeholder,
   prependSearchIcon,
-  showReset,
   type,
   value
 }) => {
-  const INITIAL_STATE = {
+  const initialState = {
     query: value || ''
   }
 
-  const [change, form, setForm] = useChange(INITIAL_STATE)
+  const { change, form, clear } = useForm(initialState)
   const { query } = form
-
-  const handleSearchReset = () => {
-    setForm({
-      query: ''
-    })
-    onSearch && onSearch('')
-  }
 
   return (
     <Form className={className} submit={() => onSearch(query)}>
@@ -50,6 +41,7 @@ export const Search = ({
 
         <Input
           change={change}
+          clear={clear}
           id='query'
           placeholder={placeholder}
           required={false}
@@ -62,8 +54,6 @@ export const Search = ({
             <Icon icon='search' />
           </InputGroupAddon>
         )}
-
-        {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
 
         {appendSearchButton && (
           <InputGroupAddon addonType='append'>
@@ -90,14 +80,6 @@ const StyledSearch = styled(InputGroup)`
   }
 `
 
-const StyledClose = styled(Close)`
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 10px;
-  top: 25%;
-`
-
 Search.propTypes = {
   appendSearchButton: bool,
   appendSearchIcon: bool,
@@ -106,7 +88,6 @@ Search.propTypes = {
   onSearch: func.isRequired,
   placeholder: string,
   prependSearchIcon: bool,
-  showReset: bool,
   type: oneOf(['search', 'text']),
   value: string
 }

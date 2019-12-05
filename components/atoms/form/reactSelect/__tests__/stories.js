@@ -10,7 +10,7 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Input, Form, ReactSelect, useChange } from 'components/atoms'
+import { Button, Input, Form, ReactSelect, useChange } from 'components'
 import Readme from '../README.md'
 
 // Data

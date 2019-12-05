@@ -1,8 +1,8 @@
 /**
- * Form - Hooks - Change
+ * Hooks - useForm
  *
- * Handle all input changes and allows the pushing in of toggle resets, this
- * could be an array based on one trigger
+ * Handle all input changes and allows the pushing in of toggle resets, this could be an array based
+ * on one trigger
  *
  * @Usage
  * [{ trigger: 'councilToggle', reset: ['license'] }]
@@ -10,11 +10,16 @@
 
 import { useState } from 'react'
 
-export const useChange = (initialState, reset) => {
+export const useForm = (initialState, reset) => {
   const [form, setForm] = useState(initialState)
+
+  const clear = id => {
+    setForm({ ...form, [id]: '' })
+  }
 
   const change = e => {
     const { checked, id, type, value } = e.target
+
     let doReset = null
     let v = false
 
@@ -31,5 +36,5 @@ export const useChange = (initialState, reset) => {
     setForm({ ...form, [id]: v, ...doReset })
   }
 
-  return [change, form, setForm]
+  return { change, form, setForm, clear }
 }

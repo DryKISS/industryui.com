@@ -24,18 +24,19 @@ export default {
   }
 }
 
-export const main = () => <Search appendSearchButton onSearch={action('query')} />
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    appendSearchButton: true,
+    onSearch: action('query'),
+    ...props
+  }
 
-export const placeholder = () => (
-  <Search appendSearchButton placeholder='Company name' onSearch={action('query')} />
-)
+  return <Search {...defaultProps} />
+}
 
-export const defaultValue = () => (
-  <Search appendSearchButton value='XYZ' onSearch={action('query')} />
-)
-
-export const customLabel = () => <Search appendSearchButton label='Go' onSearch={action('query')} />
-
-export const prependedIcon = () => <Search prependSearchIcon onSearch={action('query')} />
-
-export const appendedIcon = () => <Search appendSearchIcon onSearch={action('query')} />
+export const main = () => <BaseComponent />
+export const placeholder = () => <BaseComponent placeholder='Search...' />
+export const defaultValue = () => <BaseComponent value='XYZ' />
+export const customLabel = () => <BaseComponent label='Go' />
+export const prependedIcon = () => <BaseComponent prependSearchIcon />
+export const appendedIcon = () => <BaseComponent appendSearchButton={false} appendSearchIcon />

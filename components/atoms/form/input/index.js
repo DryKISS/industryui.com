@@ -7,6 +7,7 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 
 // UI
 import { Label } from '../'
+import { Close } from '../../close'
 
 // Style
 import styled from 'styled-components'
@@ -24,30 +25,35 @@ export const Input = ({
   placeholder,
   readOnly,
   required,
+  clear,
   style,
   type,
   value
 }) => {
   const InputItem = () => (
-    <StyledInput
-      accept={accept}
-      autoCapitalize={autoCapitalize}
-      autoComplete={autoComplete}
-      autoCorrect={autoCorrect}
-      autoFocus={autoFocus}
-      aria-describedby={id}
-      className='Form-control'
-      id={id}
-      name={id}
-      onChange={change}
-      placeholder={placeholder}
-      readOnly={readOnly}
-      required={required}
-      style={style}
-      type={type}
-      value={value}
-      {...data}
-    />
+    <div style={{ position: 'relative' }}>
+      <StyledInput
+        accept={accept}
+        autoCapitalize={autoCapitalize}
+        autoComplete={autoComplete}
+        autoCorrect={autoCorrect}
+        autoFocus={autoFocus}
+        aria-describedby={id}
+        className='Form-control'
+        id={id}
+        name={id}
+        onChange={change}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        required={required}
+        style={style}
+        type={type}
+        value={value}
+        {...data}
+      />
+
+      {clear && value !== '' && <StyledClose click={() => clear(id)} context='dark' />}
+    </div>
   )
 
   return (
@@ -114,6 +120,14 @@ export const StyledInput = styled.input`
   }
 `
 
+const StyledClose = styled(Close)`
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 25%;
+`
+
 Input.propTypes = {
   accept: string,
   autoCapitalize: oneOfType([bool, string]),
@@ -121,6 +135,7 @@ Input.propTypes = {
   autoCorrect: oneOfType([bool, string]),
   autoFocus: bool,
   change: func.isRequired,
+  clear: func,
   id: string,
   label: string,
   placeholder: string,
@@ -136,6 +151,7 @@ Input.defaultProps = {
   autoComplete: 'off',
   autoCorrect: 'off',
   autoFocus: false,
+  clear: false,
   required: true,
   readOnly: false,
   type: 'text'
