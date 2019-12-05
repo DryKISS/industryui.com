@@ -91,9 +91,11 @@ const StyledSearch = styled(InputGroup)`
 `
 
 const StyledClose = styled(Close)`
+  margin: 0;
+  padding: 0;
   position: absolute;
-  right: 118px;
-  top: 28px;
+  right: 10px;
+  top: 25%;
 `
 
 Search.propTypes = {
