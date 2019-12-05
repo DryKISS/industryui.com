@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { MessagingSend, useChange } from 'root'
+import { MessagingSend, useForm } from 'root'
 import Readme from '../README.md'
 
 export default {
@@ -27,7 +27,7 @@ export default {
 const Send = () => {
   const INITIAL_STATE = { message: '' }
 
-  const [change, form, setForm] = useChange(INITIAL_STATE)
+  const { change, form, setForm } = useForm(INITIAL_STATE)
   const { message } = form
 
   return (

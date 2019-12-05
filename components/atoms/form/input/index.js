@@ -7,6 +7,7 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 
 // UI
 import { Label } from '../'
+import { Close } from '../../close'
 
 // Style
 import styled from 'styled-components'
@@ -24,30 +25,35 @@ export const Input = ({
   placeholder,
   readOnly,
   required,
+  clear,
   style,
   type,
   value
 }) => {
   const InputItem = () => (
-    <StyledInput
-      accept={accept}
-      autoCapitalize={autoCapitalize}
-      autoComplete={autoComplete}
-      autoCorrect={autoCorrect}
-      autoFocus={autoFocus}
-      aria-describedby={id}
-      className='Form-control'
-      id={id}
-      name={id}
-      onChange={change}
-      placeholder={placeholder}
-      readOnly={readOnly}
-      required={required}
-      style={style}
-      type={type}
-      value={value}
-      {...data}
-    />
+    <div style={{ position: 'relative' }}>
+      <StyledInput
+        accept={accept}
+        autoCapitalize={autoCapitalize}
+        autoComplete={autoComplete}
+        autoCorrect={autoCorrect}
+        autoFocus={autoFocus}
+        aria-describedby={id}
+        className='Form-control'
+        id={id}
+        name={id}
+        onChange={change}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        required={required}
+        style={style}
+        type={type}
+        value={value}
+        {...data}
+      />
+
+      {clear && value !== '' && <StyledClose click={() => clear(id)} context='dark' />}
+    </div>
   )
 
   return (
@@ -78,6 +84,13 @@ export const StyledInput = styled.input`
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
+  &[type='search']::-webkit-search-decoration,
+  &[type='search']::-webkit-search-cancel-button,
+  &[type='search']::-webkit-search-results-button,
+  &[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+
   &:focus {
     color: #9da7af;
     border-color: #80bdff;
@@ -90,22 +103,29 @@ export const StyledInput = styled.input`
   }
 
   .Form-inputGroup > & {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
+    flex: 1 1 0%;
+    min-width: 0;
     margin-bottom: 0;
-  }
+    position: relative;
 
-  .Form-inputGroup > .prepend ~ & {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
-    margin-bottom: 0;
+    :not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    :not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
+`
+
+const StyledClose = styled(Close)`
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 25%;
 `
 
 Input.propTypes = {
@@ -115,6 +135,7 @@ Input.propTypes = {
   autoCorrect: oneOfType([bool, string]),
   autoFocus: bool,
   change: func.isRequired,
+  clear: func,
   id: string,
   label: string,
   placeholder: string,
