@@ -10,17 +10,11 @@ import styled from 'styled-components'
 
 import { BACKGROUND } from '../../'
 
-export const Rating = ({ className, context, item, size }) => {
+export const Rating = ({ className, context, value, size }) => {
   const rating = []
   for (let i = 0; i < size; i++) {
     rating.push(
-      <StyledRating
-        active={i + 1 <= item}
-        className={className}
-        context={context}
-        item={item}
-        key={i}
-      />
+      <StyledRating active={i + 1 <= value} className={className} context={context} key={i} />
     )
   }
 
@@ -34,12 +28,13 @@ const StyledRating = styled.div`
   height: 15px;
   margin-right: 0.25rem;
   width: 15px;
+  ${({ active }) => !active && 'opacity: 0.5;'}
 `
 
 Rating.propTypes = {
   className: string,
   context: string,
-  item: number.isRequired,
+  value: number.isRequired,
   size: number
 }
 
