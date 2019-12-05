@@ -10,7 +10,7 @@ import { withKnobs, select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Login, requestSimulator, useChange } from '../../../'
+import { Login, requestSimulator, useForm } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -25,12 +25,12 @@ export default {
 }
 
 export const main = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   return <Login change={change} email={form.email} submit={() => {}} password={form.password} />
 }
 
 export const withShowAndHidePassword = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   return (
     <Login
       change={change}
@@ -43,7 +43,7 @@ export const withShowAndHidePassword = () => {
 }
 
 export const withBlockSubmitButton = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   return (
     <Login
       change={change}
@@ -67,7 +67,7 @@ export const withPlaceholder = () => (
 )
 
 export const withHttpRequest = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState({
     type: '',

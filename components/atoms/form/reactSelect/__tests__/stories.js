@@ -10,7 +10,7 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Input, Form, ReactSelect, useChange } from 'components'
+import { Button, Input, Form, ReactSelect, useForm } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -43,7 +43,7 @@ const useKnobs = (props = {}) => {
 }
 
 export const Single = () => {
-  const [change] = useChange({ select: {} })
+  const { change } = useForm({ select: {} })
   const knobs = useKnobs()
 
   return (
@@ -59,7 +59,7 @@ export const Single = () => {
 }
 
 export const Multi = () => {
-  const [change] = useChange({ select: [] })
+  const { change } = useForm({ select: [] })
   const knobs = useKnobs({ isMulti: true })
 
   return (
@@ -75,7 +75,7 @@ export const Multi = () => {
 }
 
 export const withDefaultValue = () => {
-  const [change] = useChange({ select: {} })
+  const { change } = useForm({ select: {} })
   const knobs = useKnobs()
 
   return (
@@ -94,7 +94,7 @@ export const withDefaultValue = () => {
 export const insideAForm = () => {
   const placeholder = 'Name submitted: '
   const [name, setName] = useState(placeholder)
-  const [change] = useChange({ select: {} })
+  const { change } = useForm({ select: {} })
   const knobs = useKnobs()
 
   const handleFormSubmit = ({

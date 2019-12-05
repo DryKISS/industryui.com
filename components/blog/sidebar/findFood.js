@@ -24,7 +24,7 @@ import {
   InputGroupAddon,
   Label,
   Link,
-  useChange,
+  useForm,
   validatorPostCode
 } from '../../'
 
@@ -34,12 +34,12 @@ import { BlogSection } from './components'
 import styled from 'styled-components'
 
 export const BlogFindFood = ({ colour }) => {
-  const INITIAL_STATE = {
+  const initialState = {
     postCode: '',
     versionPostCode: false
   }
 
-  const [change, form] = useChange(INITIAL_STATE)
+  const { change, form } = useForm(initialState)
   const [msg, setMsg] = useState(false)
 
   const { postCode, versionPostCode } = form

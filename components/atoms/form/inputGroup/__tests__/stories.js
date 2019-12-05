@@ -10,7 +10,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { Size, Wrapper } from 'decorators'
 
 // UI
-import { Button, Icon, Input, InputGroup, InputGroupAddon, useChange } from 'components'
+import { Button, Icon, Input, InputGroup, InputGroupAddon, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -34,7 +34,7 @@ const BaseComponent = (props = {}) => {
 }
 
 export const prependButton = () => {
-  const [change, { id }] = useChange({ id: '' })
+  const { change, form, clear } = useForm({ id: '' })
 
   return (
     <BaseComponent>
@@ -42,13 +42,13 @@ export const prependButton = () => {
         <Button content='Search' type='submit' />
       </InputGroupAddon>
 
-      <Input change={change} id='id' placeholder='Search...' value={id} />
+      <Input change={change} clear={clear} id='id' placeholder='Search...' value={form.id} />
     </BaseComponent>
   )
 }
 
 export const prependIcon = () => {
-  const [change, { id }] = useChange({ id: '' })
+  const { change, form } = useForm({ id: '' })
 
   return (
     <BaseComponent>
@@ -56,17 +56,17 @@ export const prependIcon = () => {
         <Icon icon='search' />
       </InputGroupAddon>
 
-      <Input change={change} id='id' placeholder='Search...' value={id} />
+      <Input change={change} id='id' placeholder='Search...' value={form.id} />
     </BaseComponent>
   )
 }
 
 export const appendButton = () => {
-  const [change, { id }] = useChange({ id: '' })
+  const { change, form } = useForm({ id: '' })
 
   return (
     <BaseComponent>
-      <Input change={change} id='id' placeholder='Search...' value={id} />
+      <Input change={change} id='id' placeholder='Search...' value={form.id} />
 
       <InputGroupAddon addonType='append'>
         <Button content='Search' type='submit' />
@@ -76,11 +76,11 @@ export const appendButton = () => {
 }
 
 export const appendIcon = () => {
-  const [change, { id }] = useChange({ id: '' })
+  const { change, form } = useForm({ id: '' })
 
   return (
     <BaseComponent>
-      <Input change={change} id='id' placeholder='Search...' value={id} />
+      <Input change={change} id='id' placeholder='Search...' value={form.id} />
 
       <InputGroupAddon addonType='append' text>
         <Icon icon='search' />

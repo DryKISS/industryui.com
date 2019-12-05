@@ -151,7 +151,6 @@ Input.defaultProps = {
   autoComplete: 'off',
   autoCorrect: 'off',
   autoFocus: false,
-  clear: false,
   required: true,
   readOnly: false,
   type: 'text'
