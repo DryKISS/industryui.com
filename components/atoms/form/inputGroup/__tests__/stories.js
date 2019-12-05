@@ -39,7 +39,7 @@ export const main = () => {
   return (
     <BaseComponent>
       <Input change={() => {}} id='id' placeholder='Search...' value={id} />
-      <InputGroupAddon>
+      <InputGroupAddon addonType='append'>
         <Button content='Search' type='submit' />
       </InputGroupAddon>
     </BaseComponent>

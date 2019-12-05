@@ -83,9 +83,14 @@ const StyledButton = styled.button`
     color: #fff;
   }
 
-  .Form-inputGroup > div > & {
+  .Form-inputGroup > .append > & {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  .Form-inputGroup > .prepend > & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 `
 

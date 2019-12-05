@@ -28,7 +28,8 @@ Icon.propTypes = {
   fixedWidth: bool,
   icon: string.isRequired,
   prefix: string,
-  style: objectOf(oneOfType([number, string]))
+  style: objectOf(oneOfType([number, string])),
+  size: oneOf(['xs', 'sm', 'lg', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x'])
 }
 
 Icon.defaultProps = {

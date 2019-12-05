@@ -24,10 +24,18 @@ export default {
   }
 }
 
-export const main = () => <Search onSearch={action('query')} />
+export const main = () => <Search appendSearchButton onSearch={action('query')} />
 
-export const placeholder = () => <Search placeholder='Company name' onSearch={action('query')} />
+export const placeholder = () => (
+  <Search appendSearchButton placeholder='Company name' onSearch={action('query')} />
+)
 
-export const defaultValue = () => <Search value='XYZ' onSearch={action('query')} />
+export const defaultValue = () => (
+  <Search appendSearchButton value='XYZ' onSearch={action('query')} />
+)
 
-export const customLabel = () => <Search label='Go' onSearch={action('query')} />
+export const customLabel = () => <Search appendSearchButton label='Go' onSearch={action('query')} />
+
+export const prependedIcon = () => <Search prependSearchIcon onSearch={action('query')} />
+
+export const appendedIcon = () => <Search appendSearchIcon onSearch={action('query')} />
