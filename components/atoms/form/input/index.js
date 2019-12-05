@@ -64,7 +64,7 @@ export const Input = ({
   )
 }
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   background-clip: padding-box;
   background-color: #fff;
   border: 1px solid #c4cacf;
