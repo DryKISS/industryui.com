@@ -42,6 +42,12 @@ export const Search = ({
   return (
     <Form className={className} submit={() => onSearch(query)}>
       <StyledSearch>
+        {prependSearchIcon && (
+          <InputGroupAddon addonType='prepend' text>
+            <Icon icon='search' />
+          </InputGroupAddon>
+        )}
+
         <Input
           change={change}
           id='query'
@@ -51,19 +57,14 @@ export const Search = ({
           value={query}
         />
 
-        {prependSearchIcon && (
-          <InputGroupAddon addonType='prepend'>
-            <Icon context='dark' icon='search' size='2x' />
-          </InputGroupAddon>
-        )}
-
         {appendSearchIcon && (
-          <InputGroupAddon addonType='append'>
-            <Icon context='dark' icon='search' size='2x' />
+          <InputGroupAddon addonType='append' text>
+            <Icon icon='search' />
           </InputGroupAddon>
         )}
 
         {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
+
         {appendSearchButton && (
           <InputGroupAddon addonType='append'>
             <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
@@ -86,14 +87,6 @@ const StyledSearch = styled(InputGroup)`
   > input {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-  }
-
-  /* Disable browser default search reset icon */
-  > input::-webkit-search-decoration,
-  > input::-webkit-search-cancel-button,
-  > input::-webkit-search-results-button,
-  > input::-webkit-search-results-decoration {
-    display: none;
   }
 `
 

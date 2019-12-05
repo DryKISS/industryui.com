@@ -78,6 +78,13 @@ export const StyledInput = styled.input`
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
+  &[type='search']::-webkit-search-decoration,
+  &[type='search']::-webkit-search-cancel-button,
+  &[type='search']::-webkit-search-results-button,
+  &[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+
   &:focus {
     color: #9da7af;
     border-color: #80bdff;
@@ -90,21 +97,20 @@ export const StyledInput = styled.input`
   }
 
   .Form-inputGroup > & {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
+    flex: 1 1 0%;
+    min-width: 0;
     margin-bottom: 0;
-  }
+    position: relative;
 
-  .Form-inputGroup > .prepend ~ & {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
-    margin-bottom: 0;
+    :not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    :not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 `
 
