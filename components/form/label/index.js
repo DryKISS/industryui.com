@@ -1,6 +1,5 @@
 /**
- * Label
- * Provides the form element labels
+ * Form - Label
  */
 
 // React
@@ -9,12 +8,10 @@ import { node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Label = ({ children, id, text }) => {
+export const FormLabel = ({ children, id, label }) => {
   return (
     <StyledLabel htmlFor={id}>
-      <StyledLabelText className='Form-label' text={text}>
-        {text}
-      </StyledLabelText>
+      <StyledLabelText className='Form-label'>{label}</StyledLabelText>
       {children}
     </StyledLabel>
   )
@@ -26,11 +23,10 @@ const StyledLabel = styled.label`
 `
 
 const StyledLabelText = styled.div`
-  display: ${({ text }) => (text && text.length > 0 ? 'block' : 'none')};
   margin-bottom: 0.5rem;
 `
 
-Label.propTypes = {
+FormLabel.propTypes = {
   children: node.isRequired,
   id: string,
   text: string

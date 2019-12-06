@@ -1,15 +1,28 @@
 /**
  * Login
- * Standard login view allowing for a user to sign into the website through
- * email and password.
+ * Standard login view allowing for a user to sign into the website through email and password.
  */
 
 // React
 import React, { useState } from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
+// useForm
+import useForm from 'react-hook-form'
+
 // UI
-import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../'
+import {
+  Card,
+  CardBody,
+  Button,
+  Checkbox,
+  FormField,
+  FormForm,
+  FormLabel,
+  Link,
+  PageHeading,
+  Alert
+} from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -31,8 +44,9 @@ export const Login = ({
   submitLoading,
   submitResult
 }) => {
+  const { errors, handleSubmit, register } = useForm()
   const [showPass, setShowPass] = useState(false)
-  const isInvalid = password === '' || email === ''
+  // const isInvalid = password === '' || email === ''
   let CHECKBOX_REMEMBER = null
 
   if (remember) {
@@ -45,15 +59,42 @@ export const Login = ({
     ]
   }
 
+  const pattern =
+    '/^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/'
+
   return (
     <StyledContainer>
       <Card bordered shadow>
         <CardBody>
           <PageHeading center heading={heading} divider={false} />
 
-          <Form submit={submit}>
-            <Input
-              autoFocus
+          <FormForm handleSubmit={handleSubmit(submit)}>
+            <FormLabel label='Email'>
+              <FormField
+                autoFocus
+                errors={errors}
+                name='email'
+                placeholder={showPlaceholder ? 'Email' : ''}
+                regExp={pattern}
+                register={register}
+                required='This is required'
+              />
+            </FormLabel>
+
+            <FormLabel label='Password'>
+              <FormField
+                autoFocus
+                errors={errors}
+                name='password'
+                placeholder={showPlaceholder ? 'Password' : ''}
+                regExp={pattern}
+                register={register}
+                required='This is required'
+                type={showPass ? 'text' : 'password'}
+              />
+            </FormLabel>
+
+            {/* <Input
               change={change}
               id='email'
               label={showLabel ? 'Email' : ''}
@@ -71,7 +112,7 @@ export const Login = ({
               value={password}
               placeholder={showPlaceholder ? 'Password' : ''}
               style={{ marginBottom: !showLabel && '1rem' }}
-            />
+            /> */}
 
             {showPassword && (
               <ShowPassword onClick={() => setShowPass(prev => !prev)}>
@@ -91,7 +132,8 @@ export const Login = ({
                 block={blockSubmitButton}
                 content='Log in'
                 context='primary'
-                disabled={isInvalid || submitLoading}
+                // disabled={isInvalid || submitLoading}
+                disabled={submitLoading}
                 size='lg'
                 type='submit'
               />
@@ -104,7 +146,7 @@ export const Login = ({
                 </ForgotPasswordWrapper>
               )}
             </div>
-          </Form>
+          </FormForm>
         </CardBody>
       </Card>
 
