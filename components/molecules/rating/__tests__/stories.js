@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { number, withKnobs } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
+import { Wrapper, Context } from 'decorators'
 
 // UI
 import { Rating } from '../'
@@ -24,21 +24,22 @@ export default {
   }
 }
 
-export const main = () => (
+const valueKnob = (current, max) =>
+  number('Rate', current || 3, {
+    min: 0,
+    max: max || 5
+  })
+
+export const main = () => <Rating value={valueKnob()} />
+
+export const withSize = () => (
   <Rating
-    size={number('Rate', 5, {
+    size={number('Size', 10, {
       min: 0,
-      max: 5
+      max: 50
     })}
+    value={valueKnob(3, 50)}
   />
 )
 
-export const withContext = () => (
-  <Rating
-    size={number('Rate', 5, {
-      min: 0,
-      max: 5
-    })}
-    context='warning'
-  />
-)
+export const withContext = () => <Rating value={valueKnob()} context={Context(null, 'warning')} />
