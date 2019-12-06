@@ -6,9 +6,8 @@
 import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, Form, Icon, Input, useChange } from '../../../../'
+import { Button, Form, Icon, Input, useForm } from '../../../../'
 import { InputGroup, InputGroupAddon } from '../../'
-import { Close } from '../../../../atoms/close'
 
 // Style
 import styled from 'styled-components'
@@ -21,29 +20,33 @@ export const Search = ({
   onSearch,
   placeholder,
   prependSearchIcon,
-  showReset,
   type,
   value
 }) => {
-  const INITIAL_STATE = {
+  const initialState = {
     query: value || ''
   }
 
-  const [change, form, setForm] = useChange(INITIAL_STATE)
+  const { change, form, clear } = useForm(initialState)
   const { query } = form
 
-  const handleSearchReset = () => {
-    setForm({
-      query: ''
-    })
-    onSearch && onSearch('')
+  const handleClear = id => {
+    clear(id)
+    onSearch('')
   }
 
   return (
     <Form className={className} submit={() => onSearch(query)}>
       <StyledSearch>
+        {prependSearchIcon && (
+          <InputGroupAddon addonType='prepend' text>
+            <Icon icon='search' />
+          </InputGroupAddon>
+        )}
+
         <Input
           change={change}
+          clear={handleClear}
           id='query'
           placeholder={placeholder}
           required={false}
@@ -51,19 +54,12 @@ export const Search = ({
           value={query}
         />
 
-        {prependSearchIcon && (
-          <InputGroupAddon addonType='prepend'>
-            <Icon context='dark' icon='search' size='2x' />
-          </InputGroupAddon>
-        )}
-
         {appendSearchIcon && (
-          <InputGroupAddon addonType='append'>
-            <Icon context='dark' icon='search' size='2x' />
+          <InputGroupAddon addonType='append' text>
+            <Icon icon='search' />
           </InputGroupAddon>
         )}
 
-        {showReset && query !== '' && <StyledClose click={handleSearchReset} context='dark' />}
         {appendSearchButton && (
           <InputGroupAddon addonType='append'>
             <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
@@ -87,20 +83,6 @@ const StyledSearch = styled(InputGroup)`
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
-
-  /* Disable browser default search reset icon */
-  > input::-webkit-search-decoration,
-  > input::-webkit-search-cancel-button,
-  > input::-webkit-search-results-button,
-  > input::-webkit-search-results-decoration {
-    display: none;
-  }
-`
-
-const StyledClose = styled(Close)`
-  position: absolute;
-  right: 118px;
-  top: 28px;
 `
 
 Search.propTypes = {
@@ -111,7 +93,6 @@ Search.propTypes = {
   onSearch: func.isRequired,
   placeholder: string,
   prependSearchIcon: bool,
-  showReset: bool,
   type: oneOf(['search', 'text']),
   value: string
 }

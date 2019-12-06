@@ -10,7 +10,7 @@ import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Input } from 'components'
+import { Input, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -24,14 +24,23 @@ export default {
   }
 }
 
-export const main = () => (
-  <Input
-    change={() => {}}
-    id='main'
-    label={text('Label', 'Email')}
-    placeholder={text('Placeholder', 'Enter your email')}
-    readOnly={boolean('Read only', false)}
-  />
-)
+const BaseComponent = (props = {}) => {
+  const { change, form, clear } = useForm({ email: '' })
 
-export const noLabel = () => <Input change={() => {}} placeholder='Enter your email' />
+  const defaultProps = {
+    change: change,
+    id: 'email',
+    label: text('Label', 'Email'),
+    placeholder: text('Placeholder', 'Enter your email'),
+    readOnly: boolean('Read only', false),
+    value: form.email,
+    ...props,
+    clear: props.clear ? clear : null
+  }
+
+  return <Input {...defaultProps} />
+}
+
+export const main = () => <BaseComponent />
+export const noLabel = () => <BaseComponent label='' />
+export const reset = () => <BaseComponent clear />

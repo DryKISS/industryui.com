@@ -2,15 +2,12 @@
  * Email Change
  */
 
-// React
-import { createElement } from 'react'
-
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { EmailChange, useChange } from '../../../'
+import { EmailChange, useForm } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -24,9 +21,8 @@ export default {
   }
 }
 
-export const main = () =>
-  createElement(() => {
-    const [change, form] = useChange({ email: '' })
+export const main = () => {
+  const { change, form } = useForm({ email: '' })
 
-    return <EmailChange change={change} email={form.email} submit={action('Submit')} />
-  })
+  return <EmailChange change={change} email={form.email} submit={action('Submit')} />
+}

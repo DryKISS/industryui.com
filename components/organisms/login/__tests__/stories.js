@@ -10,7 +10,7 @@ import { withKnobs, select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Login, requestSimulator, useChange } from '../../../'
+import { Login, requestSimulator, useForm } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -24,13 +24,41 @@ export default {
   }
 }
 
+const BaseComponent = (props = {}) => {
+  const { change, form } = useForm({ email: '', password: '' })
+
+  const submit = data => {
+    console.log('Submitted', data)
+  }
+
+  const defaultProps = {
+    blockSubmitButton: true,
+    change: change,
+    email: form.email,
+    forgotPassword: true,
+    heading: 'Log In',
+    password: form.password,
+    pathForgot: '/account/forgot-details',
+    pathSignUp: '/account/sign-in',
+    remember: '',
+    showLabel: true,
+    showPassword: true,
+    showPlaceholder: true,
+    submit: submit,
+    submitLoading: true,
+    submitResult: {},
+    ...props
+  }
+
+  return <Login {...defaultProps} />
+}
+
 export const main = () => {
-  const [change, form] = useChange({ email: '', password: '' })
-  return <Login change={change} email={form.email} submit={() => {}} password={form.password} />
+  return <BaseComponent />
 }
 
 export const withShowAndHidePassword = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   return (
     <Login
       change={change}
@@ -43,7 +71,7 @@ export const withShowAndHidePassword = () => {
 }
 
 export const withBlockSubmitButton = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   return (
     <Login
       change={change}
@@ -67,7 +95,7 @@ export const withPlaceholder = () => (
 )
 
 export const withHttpRequest = () => {
-  const [change, form] = useChange({ email: '', password: '' })
+  const { change, form } = useForm({ email: '', password: '' })
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState({
     type: '',

@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { ImageLocation, Select, useChange } from '../../../'
+import { ImageLocation, Select, useForm } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -30,7 +30,7 @@ const PropertySelect = ({ locationChange, properties }) => {
     floor: 2
   }
 
-  const [change, form] = useChange(INITIAL_STATE)
+  const { change, form } = useForm(INITIAL_STATE)
   const { floor, property } = form
 
   return (

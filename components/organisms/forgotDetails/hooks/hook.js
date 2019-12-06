@@ -6,11 +6,11 @@
 import { useState } from 'react'
 
 // UI
-import { useChange } from '../../../'
+import { useForm } from '../../../'
 
 export const useForgotDetails = firebase => {
   const INITIAL_STATE = { email: '' }
-  const [change, form, setForm] = useChange(INITIAL_STATE)
+  const { change, form, setForm } = useForm(INITIAL_STATE)
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
 

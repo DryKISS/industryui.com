@@ -8,4 +8,5 @@ import { select } from '@storybook/addon-knobs'
 // UI
 import { CONTEXT } from '../../'
 
-export const Context = id => select('Context', CONTEXT, 'primary', id)
+export const Context = (id, initialValue) =>
+  select('Context', CONTEXT, initialValue || 'primary', id)

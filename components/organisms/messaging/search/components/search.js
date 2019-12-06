@@ -16,7 +16,7 @@ export const MessagingSearch = ({ onSearch }) => {
   return (
     <>
       <StyledContainer>
-        <StyledSearch onSearch={onSearch} />
+        <StyledSearch appendSearchButton onSearch={onSearch} />
       </StyledContainer>
     </>
   )

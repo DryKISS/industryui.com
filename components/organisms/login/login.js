@@ -44,9 +44,9 @@ export const Login = ({
   submitLoading,
   submitResult
 }) => {
-  const { errors, handleSubmit, register } = useForm()
+  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onBlur' })
   const [showPass, setShowPass] = useState(false)
-  // const isInvalid = password === '' || email === ''
+
   let CHECKBOX_REMEMBER = null
 
   if (remember) {
@@ -59,8 +59,7 @@ export const Login = ({
     ]
   }
 
-  const pattern =
-    '/^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/'
+  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   return (
     <StyledContainer>
@@ -83,36 +82,14 @@ export const Login = ({
 
             <FormLabel label='Password'>
               <FormField
-                autoFocus
                 errors={errors}
                 name='password'
                 placeholder={showPlaceholder ? 'Password' : ''}
-                regExp={pattern}
                 register={register}
                 required='This is required'
                 type={showPass ? 'text' : 'password'}
               />
             </FormLabel>
-
-            {/* <Input
-              change={change}
-              id='email'
-              label={showLabel ? 'Email' : ''}
-              type='email'
-              value={email}
-              placeholder={showPlaceholder ? 'Email' : ''}
-              style={{ marginBottom: !showLabel && '1rem' }}
-            />
-
-            <Input
-              change={change}
-              id='password'
-              label={showLabel ? 'Password' : ''}
-              type={showPass ? 'text' : 'password'}
-              value={password}
-              placeholder={showPlaceholder ? 'Password' : ''}
-              style={{ marginBottom: !showLabel && '1rem' }}
-            /> */}
 
             {showPassword && (
               <ShowPassword onClick={() => setShowPass(prev => !prev)}>
@@ -132,8 +109,7 @@ export const Login = ({
                 block={blockSubmitButton}
                 content='Log in'
                 context='primary'
-                // disabled={isInvalid || submitLoading}
-                disabled={submitLoading}
+                disabled={!formState.isValid}
                 size='lg'
                 type='submit'
               />
@@ -152,7 +128,6 @@ export const Login = ({
 
       {pathSignUp && (
         <>
-          <br />
           <p className='text-center'>
             Don't have an account?{' '}
             <Link to={pathSignUp}>
@@ -171,9 +146,9 @@ const StyledContainer = styled.div`
 
 const ShowPassword = styled.div`
   cursor: pointer;
-  text-align: right;
-  margin-bottom: 1rem;
   font-size: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: right;
 `
 
 const ForgotPasswordWrapper = styled.div`
@@ -207,6 +182,7 @@ Login.defaultProps = {
   showLabel: true,
   showPassword: false,
   showPlaceholder: false,
+  submitLoading: true,
   submitResult: {
     type: '',
     message: ''

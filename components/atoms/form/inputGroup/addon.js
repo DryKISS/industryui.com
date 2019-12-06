@@ -4,31 +4,62 @@
  */
 
 // React
-import { node, oneOf } from 'prop-types'
+import { any, bool, node, oneOf } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const InputGroupAddon = ({ addonType, children }) => {
-  return <StyledInputGroupAddon className={addonType} addonType={addonType} children={children} />
+export const InputGroupAddon = ({ addonType, className, children, text }) => {
+  return <StyledInputGroupAddon className={addonType} children={children} text={text} />
 }
 
 const StyledInputGroupAddon = styled.div`
-  display: flex;
   align-items: center;
-  margin-left: -1px;
+  display: flex;
 
   & > * {
     height: 100%;
   }
+
+  ${({ className, text }) =>
+    text &&
+    css`
+      background-color: #e9ecef;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      color: #495057;
+      display: flex;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 0;
+      padding: 0.375rem 0.75rem;
+      text-align: center;
+      white-space: nowrap;
+
+      ${className === 'prepend' &&
+        css`
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          margin-right: -1px;
+        `}
+
+      ${className === 'append' &&
+        css`
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          margin-left: -1px;
+        `}
+    `}
 `
 
 InputGroupAddon.propTypes = {
   addonType: oneOf(['prepend', 'append']),
-  children: node
+  className: any,
+  children: node,
+  text: bool
 }
 
 InputGroupAddon.defaultProps = {
-  addonType: 'append',
-  size: 'md'
+  addonType: 'append'
 }

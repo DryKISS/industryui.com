@@ -12,8 +12,6 @@ import { FormError } from '../'
 import styled, { css } from 'styled-components'
 
 export const FormField = ({ errors, register, required, ...props }) => {
-  console.log(errors)
-
   return (
     <>
       <StyledInput
@@ -23,7 +21,7 @@ export const FormField = ({ errors, register, required, ...props }) => {
         name={props.id}
         ref={register({
           required: required,
-          ...(props.regExp ? { pattern: new RegExp(props.regExp) } : null),
+          pattern: props.regExp ? new RegExp(props.regExp) : null,
           ...(props.max ? { max: props.max } : null),
           ...(props.min ? { min: props.min } : null),
           ...(props.maxLength ? { maxLength: props.maxLength } : null),
