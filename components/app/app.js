@@ -14,7 +14,6 @@ import App from 'next/app'
 
 // UI
 import { FirebaseProvider, Icons, Theme, ThemeStyle, UserProvider } from '../'
-
 import { jwtConfig } from 'config'
 
 // Style

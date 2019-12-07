@@ -4,24 +4,25 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { bool, func, object, oneOfType, string } from 'prop-types'
+import React, { useContext, useState } from 'react'
+import { bool, object, oneOfType, string } from 'prop-types'
 
 // useForm
 import useForm from 'react-hook-form'
 
 // UI
 import {
+  Alert,
+  Button,
   Card,
   CardBody,
-  Button,
-  Checkbox,
+  // Checkbox,
   FormField,
   FormForm,
   FormLabel,
   Link,
   PageHeading,
-  Alert
+  UserContext
 } from '../../../'
 
 // Style
@@ -29,35 +30,38 @@ import styled from 'styled-components'
 
 export const Login = ({
   blockSubmitButton,
-  change,
-  email,
   forgotPassword,
   heading,
-  password,
   pathForgot,
   pathSignUp,
   remember,
   showLabel,
   showPassword,
   showPlaceholder,
-  submit,
   submitLoading,
   submitResult
 }) => {
   const { errors, formState, handleSubmit, register } = useForm({ mode: 'onBlur' })
   const [showPass, setShowPass] = useState(false)
+  const [error, setError] = useState(false)
+  const { signIn } = useContext(UserContext)
 
-  let CHECKBOX_REMEMBER = null
-
-  if (remember) {
-    CHECKBOX_REMEMBER = [
-      {
-        id: 'remember',
-        label: 'Remember me',
-        isChecked: remember
-      }
-    ]
+  const submit = data => {
+    const { email, password } = data
+    signIn('email', email, password, error => error && setError(error))
   }
+
+  // let CHECKBOX_REMEMBER = null
+
+  // if (remember) {
+  //   CHECKBOX_REMEMBER = [
+  //     {
+  //       id: 'remember',
+  //       label: 'Remember me',
+  //       isChecked: remember
+  //     }
+  //   ]
+  // }
 
   const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -67,10 +71,13 @@ export const Login = ({
         <CardBody>
           <PageHeading center heading={heading} divider={false} />
 
+          {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+
           <FormForm handleSubmit={handleSubmit(submit)}>
             <FormLabel label='Email'>
               <FormField
                 autoFocus
+                defaultValue='admin@cleverly.works'
                 errors={errors}
                 name='email'
                 placeholder={showPlaceholder ? 'Email' : ''}
@@ -82,6 +89,7 @@ export const Login = ({
 
             <FormLabel label='Password'>
               <FormField
+                defaultValue='cleverly123'
                 errors={errors}
                 name='password'
                 placeholder={showPlaceholder ? 'Password' : ''}
@@ -97,11 +105,7 @@ export const Login = ({
               </ShowPassword>
             )}
 
-            {submitResult.message && (
-              <Alert content={submitResult.message} context={submitResult.type} />
-            )}
-
-            {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />}
+            {/* {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />} */}
 
             <div className='text-right'>
               <Button
@@ -158,18 +162,14 @@ const ForgotPasswordWrapper = styled.div`
 
 Login.propTypes = {
   blockSubmitButton: bool,
-  change: func.isRequired,
-  email: string.isRequired,
   forgotPassword: bool,
   heading: string,
-  password: string.isRequired,
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
   remember: string,
   showLabel: bool,
   showPassword: bool,
   showPlaceholder: bool,
-  submit: func.isRequired,
   submitLoading: bool,
   submitResult: object
 }

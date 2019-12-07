@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Theme, ThemeStyle } from 'root'
+import { Theme, ThemeStyle, UserProvider } from 'components'
 
 // Style
 import { ThemeProvider } from 'styled-components'
@@ -11,8 +11,10 @@ import { ThemeProvider } from 'styled-components'
 export const Container = story => {
   return (
     <ThemeProvider theme={Theme}>
-      <div>{story()}</div>
       <ThemeStyle />
+      <UserProvider>
+        <div>{story()}</div>
+      </UserProvider>
     </ThemeProvider>
   )
 }
