@@ -20,6 +20,7 @@ export const Input = ({
   autoFocus,
   change,
   data,
+  disabled,
   id,
   label,
   placeholder,
@@ -40,6 +41,7 @@ export const Input = ({
         autoFocus={autoFocus}
         aria-describedby={id}
         className='Form-control'
+        disabled={disabled}
         id={id}
         name={id}
         onChange={change}
@@ -72,7 +74,8 @@ export const Input = ({
 
 export const StyledInput = styled.input`
   background-clip: padding-box;
-  background-color: #fff;
+  background-color: ${({ theme, disabled }) => (disabled ? theme.COLOUR.light : '#fff')};
+  ${({ disabled }) => disabled && 'cursor: not-allowed;'};
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
   color: #9da7af;
@@ -81,7 +84,8 @@ export const StyledInput = styled.input`
   height: 3rem;
   line-height: 1.5;
   padding: 0.5rem 1rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    background-color 0.15s ease-in-out;
   width: 100%;
 
   &[type='search']::-webkit-search-decoration,
@@ -136,6 +140,7 @@ Input.propTypes = {
   autoFocus: bool,
   change: func.isRequired,
   clear: func,
+  disabled: bool,
   id: string,
   label: string,
   placeholder: string,
@@ -151,6 +156,7 @@ Input.defaultProps = {
   autoComplete: 'off',
   autoCorrect: 'off',
   autoFocus: false,
+  disabled: false,
   required: true,
   readOnly: false,
   type: 'text'

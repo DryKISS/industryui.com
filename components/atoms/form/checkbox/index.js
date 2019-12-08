@@ -49,12 +49,14 @@ const StyledLabel = styled.label`
   ${stacked => stacked && stackedStyles}
   position: relative;
   padding-left: 1.25rem;
+  cursor: pointer;
 `
 
 const StyledCheckbox = styled.input`
   position: absolute;
   margin-top: 0.05rem;
   margin-left: -1.25rem;
+  cursor: pointer;
 `
 
 Checkbox.propTypes = {
