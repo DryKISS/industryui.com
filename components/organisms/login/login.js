@@ -1,49 +1,69 @@
 /**
  * Login
- * Standard login view allowing for a user to sign into the website through
- * email and password.
+ * Standard login view allowing for a user to sign into the website through email and password.
  */
 
 // React
-import React, { useState } from 'react'
-import { bool, func, object, oneOfType, string } from 'prop-types'
+import React, { useContext, useState } from 'react'
+import { bool, object, oneOfType, string } from 'prop-types'
+
+// useForm
+import useForm from 'react-hook-form'
 
 // UI
-import { Card, CardBody, Button, Checkbox, Form, Input, Link, PageHeading, Alert } from '../../'
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  // Checkbox,
+  FormField,
+  FormForm,
+  FormLabel,
+  Link,
+  PageHeading,
+  UserContext
+} from '../../../'
 
 // Style
 import styled from 'styled-components'
 
 export const Login = ({
   blockSubmitButton,
-  change,
-  email,
   forgotPassword,
   heading,
-  password,
   pathForgot,
   pathSignUp,
   remember,
   showLabel,
   showPassword,
   showPlaceholder,
-  submit,
   submitLoading,
   submitResult
 }) => {
+  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onBlur' })
   const [showPass, setShowPass] = useState(false)
-  const isInvalid = password === '' || email === ''
-  let CHECKBOX_REMEMBER = null
+  const [error, setError] = useState(false)
+  const { signIn } = useContext(UserContext)
 
-  if (remember) {
-    CHECKBOX_REMEMBER = [
-      {
-        id: 'remember',
-        label: 'Remember me',
-        isChecked: remember
-      }
-    ]
+  const submit = data => {
+    const { email, password } = data
+    signIn('email', email, password, error => error && setError(error))
   }
+
+  // let CHECKBOX_REMEMBER = null
+
+  // if (remember) {
+  //   CHECKBOX_REMEMBER = [
+  //     {
+  //       id: 'remember',
+  //       label: 'Remember me',
+  //       isChecked: remember
+  //     }
+  //   ]
+  // }
+
+  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   return (
     <StyledContainer>
@@ -51,27 +71,33 @@ export const Login = ({
         <CardBody>
           <PageHeading center heading={heading} divider={false} />
 
-          <Form submit={submit}>
-            <Input
-              autoFocus
-              change={change}
-              id='email'
-              label={showLabel ? 'Email' : ''}
-              type='email'
-              value={email}
-              placeholder={showPlaceholder ? 'Email' : ''}
-              style={{ marginBottom: !showLabel && '1rem' }}
-            />
+          {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-            <Input
-              change={change}
-              id='password'
-              label={showLabel ? 'Password' : ''}
-              type={showPass ? 'text' : 'password'}
-              value={password}
-              placeholder={showPlaceholder ? 'Password' : ''}
-              style={{ marginBottom: !showLabel && '1rem' }}
-            />
+          <FormForm handleSubmit={handleSubmit(submit)}>
+            <FormLabel label='Email'>
+              <FormField
+                autoFocus
+                defaultValue='admin@cleverly.works'
+                errors={errors}
+                name='email'
+                placeholder={showPlaceholder ? 'Email' : ''}
+                regExp={pattern}
+                register={register}
+                required='This is required'
+              />
+            </FormLabel>
+
+            <FormLabel label='Password'>
+              <FormField
+                defaultValue='cleverly123'
+                errors={errors}
+                name='password'
+                placeholder={showPlaceholder ? 'Password' : ''}
+                register={register}
+                required='This is required'
+                type={showPass ? 'text' : 'password'}
+              />
+            </FormLabel>
 
             {showPassword && (
               <ShowPassword onClick={() => setShowPass(prev => !prev)}>
@@ -79,11 +105,7 @@ export const Login = ({
               </ShowPassword>
             )}
 
-            {submitResult.message && (
-              <Alert content={submitResult.message} context={submitResult.type} />
-            )}
-
-            {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />}
+            {/* {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />} */}
 
             <div className='text-right'>
               <Button
@@ -91,7 +113,7 @@ export const Login = ({
                 block={blockSubmitButton}
                 content='Log in'
                 context='primary'
-                disabled={isInvalid || submitLoading}
+                disabled={!formState.isValid}
                 size='lg'
                 type='submit'
               />
@@ -104,13 +126,12 @@ export const Login = ({
                 </ForgotPasswordWrapper>
               )}
             </div>
-          </Form>
+          </FormForm>
         </CardBody>
       </Card>
 
       {pathSignUp && (
         <>
-          <br />
           <p className='text-center'>
             Don't have an account?{' '}
             <Link to={pathSignUp}>
@@ -129,9 +150,9 @@ const StyledContainer = styled.div`
 
 const ShowPassword = styled.div`
   cursor: pointer;
-  text-align: right;
-  margin-bottom: 1rem;
   font-size: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: right;
 `
 
 const ForgotPasswordWrapper = styled.div`
@@ -141,18 +162,14 @@ const ForgotPasswordWrapper = styled.div`
 
 Login.propTypes = {
   blockSubmitButton: bool,
-  change: func.isRequired,
-  email: string.isRequired,
   forgotPassword: bool,
   heading: string,
-  password: string.isRequired,
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
   remember: string,
   showLabel: bool,
   showPassword: bool,
   showPlaceholder: bool,
-  submit: func.isRequired,
   submitLoading: bool,
   submitResult: object
 }
@@ -165,6 +182,7 @@ Login.defaultProps = {
   showLabel: true,
   showPassword: false,
   showPlaceholder: false,
+  submitLoading: true,
   submitResult: {
     type: '',
     message: ''

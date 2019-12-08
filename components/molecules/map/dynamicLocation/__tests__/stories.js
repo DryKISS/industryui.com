@@ -26,8 +26,8 @@ export const main = () => {
     <DynamicLocation
       apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
       defaultCenter={coventGardenCoordinates}
-      zoom={13.5}
       width='400px'
+      zoom={13.5}
     >
       <Marker position={coventGardenCoordinates} />
       <Marker position={westminsterAbbeyCoordinates} />

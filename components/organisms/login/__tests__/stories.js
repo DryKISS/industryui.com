@@ -24,47 +24,37 @@ export default {
   }
 }
 
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    blockSubmitButton: true,
+    forgotPassword: true,
+    heading: 'Log In',
+    pathForgot: '/account/forgot-details',
+    pathSignUp: '/account/sign-in',
+    remember: '',
+    showLabel: true,
+    showPassword: true,
+    showPlaceholder: true,
+    submitLoading: true,
+    ...props
+  }
+
+  return <Login {...defaultProps} />
+}
+
 export const main = () => {
-  const { change, form } = useForm({ email: '', password: '' })
-  return <Login change={change} email={form.email} submit={() => {}} password={form.password} />
+  return <BaseComponent />
 }
 
 export const withShowAndHidePassword = () => {
-  const { change, form } = useForm({ email: '', password: '' })
-  return (
-    <Login
-      change={change}
-      email={form.email}
-      submit={() => {}}
-      password={form.password}
-      showPassword
-    />
-  )
+  return <Login showPassword />
 }
 
 export const withBlockSubmitButton = () => {
-  const { change, form } = useForm({ email: '', password: '' })
-  return (
-    <Login
-      change={change}
-      email={form.email}
-      submit={() => {}}
-      password={form.password}
-      blockSubmitButton
-    />
-  )
+  return <Login blockSubmitButton />
 }
 
-export const withPlaceholder = () => (
-  <Login
-    change={() => {}}
-    email=''
-    submit={() => {}}
-    password=''
-    showLabel={false}
-    showPlaceholder
-  />
-)
+export const withPlaceholder = () => <Login showLabel={false} showPlaceholder />
 
 export const withHttpRequest = () => {
   const { change, form } = useForm({ email: '', password: '' })
@@ -73,11 +63,13 @@ export const withHttpRequest = () => {
     type: '',
     message: ''
   })
+
   const label = 'Response Type'
   const options = ['success', 'failure']
   const defaultValue = 'failure'
   const groupId = 'GROUP-ID1'
   const value = select(label, options, defaultValue, groupId)
+
   const handleSubmit = e => {
     e.preventDefault()
     setLoading(true)
@@ -96,6 +88,7 @@ export const withHttpRequest = () => {
       )
       .finally(() => setLoading(false))
   }
+
   return (
     <Login
       change={change}
