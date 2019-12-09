@@ -78,6 +78,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
               {audience.name}
             </StyledDropDown>
           )}
+
           <StyledTextarea
             change={e => setMessage(e.target.value)}
             id='message'
@@ -86,6 +87,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
             rows={1}
             value={message}
           />
+
           <input
             ref={fileInputRef}
             type='file'
@@ -93,6 +95,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
             onChange={handleFilesChange}
             style={{ display: 'none' }}
           />
+
           <StyledElements>
             <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
             <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' />
@@ -153,6 +156,10 @@ const StyledElements = styled.div`
 const StyledIcon = styled(Icon)`
   cursor: pointer;
   margin-right: 1rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.COLOUR.info};
+  }
 `
 
 const StyledDropDown = styled(Dropdown)`
