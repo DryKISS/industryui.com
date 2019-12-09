@@ -42,8 +42,6 @@ results.then(dt => {
       if (err) {
         return console.error(err)
       }
-
-      console.log('The file was saved!')
     })
   })
 })

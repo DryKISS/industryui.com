@@ -29,7 +29,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const { errors, handleSubmit, register } = useForm()
-  const onSubmit = data => console.log(data)
+  const onSubmit = data => {}
 
   const defaultProps = {
     errors: errors,

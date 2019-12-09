@@ -1,13 +1,5 @@
 /**
  * Messaging/Send
- * Provides a messaging send box, attach, emoji and send button.
- *
- * @features
- * - Dropdown to select audience to send too.
- * - Attach file
- * - Emoji selection
- * - Send button
- * - Write message input
  */
 
 // React
@@ -46,11 +38,13 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+
     const data = {
       attachments,
       audience: audience.id,
       message
     }
+
     onSubmit(data)
     setMessage('')
   }
@@ -99,6 +93,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
           <StyledElements>
             <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
             <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' />
+
             <Button
               content='Send'
               context='info'

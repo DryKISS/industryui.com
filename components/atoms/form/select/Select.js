@@ -38,24 +38,33 @@ export const Select = forwardRef(
       ))
     }
 
-    return (
-      <Label id={id} text={label}>
-        <StyledSelect
-          className='Form-control'
-          id={id}
-          name={id}
-          onChange={change}
-          required={required}
-          ref={ref}
-          value={value}
-          {...data}
-        >
-          {range && range.length > 0 && renderRange()}
-          {options && renderOptions()}
-        </StyledSelect>
+    const SearchItem = () => (
+      <StyledSelect
+        className='Form-control'
+        id={id}
+        name={id}
+        onChange={change}
+        required={required}
+        ref={ref}
+        value={value}
+        {...data}
+      >
+        {range && range.length > 0 && renderRange()}
+        {options && renderOptions()}
+      </StyledSelect>
+    )
 
-        <div className='Form-feedback' />
-      </Label>
+    return (
+      <>
+        {label ? (
+          <Label text={label}>
+            {SearchItem()}
+            <div className='Form-feedback' />
+          </Label>
+        ) : (
+          SearchItem()
+        )}
+      </>
     )
   }
 )

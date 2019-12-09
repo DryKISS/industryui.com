@@ -1,4 +1,4 @@
-# Location
+# Map - Static Location
 
 Provides a Google Static Map card
 

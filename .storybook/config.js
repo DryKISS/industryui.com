@@ -46,6 +46,9 @@ addDecorator(Container)
 addDecorator(withA11y)
 
 addParameters({
+  options: {
+    panelPosition: 'right'
+  },
   readme: {
     excludePropTables: []
   }

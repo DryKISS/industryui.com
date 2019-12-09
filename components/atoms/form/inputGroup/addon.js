@@ -10,7 +10,14 @@ import { any, bool, node, oneOf } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 export const InputGroupAddon = ({ addonType, className, children, text }) => {
-  return <StyledInputGroupAddon className={addonType} children={children} text={text} />
+  return (
+    <StyledInputGroupAddon
+      addonType={addonType}
+      className={addonType}
+      children={children}
+      text={text}
+    />
+  )
 }
 
 const StyledInputGroupAddon = styled.div`
@@ -21,7 +28,7 @@ const StyledInputGroupAddon = styled.div`
     height: 100%;
   }
 
-  ${({ className, text }) =>
+  ${({ text }) =>
     text &&
     css`
       background-color: #e9ecef;
@@ -36,20 +43,30 @@ const StyledInputGroupAddon = styled.div`
       padding: 0.375rem 0.75rem;
       text-align: center;
       white-space: nowrap;
+    `}
 
-      ${className === 'prepend' &&
-        css`
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-          margin-right: -1px;
-        `}
 
-      ${className === 'append' &&
-        css`
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          margin-left: -1px;
-        `}
+
+  ${({ addonType }) =>
+    addonType === 'prepend' &&
+    css`
+      &,
+      button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-right: -1px;
+      }
+    `}
+
+  ${({ addonType }) =>
+    addonType === 'append' &&
+    css`
+      &,
+      button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px;
+      }
     `}
 `
 

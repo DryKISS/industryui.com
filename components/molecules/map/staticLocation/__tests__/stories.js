@@ -1,5 +1,5 @@
 /**
- * Location
+ * Map - Static Location
  */
 
 // React

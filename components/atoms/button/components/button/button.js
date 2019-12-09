@@ -82,16 +82,6 @@ const StyledButton = styled.button`
     border-color: ${({ context, theme: { COLOUR } }) => SHADE_COLOUR(COLOUR[context], -12.5)};
     color: #fff;
   }
-
-  .Form-inputGroup > .append > & {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .Form-inputGroup > .prepend > & {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
 `
 
 Button.propTypes = {
