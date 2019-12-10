@@ -62,11 +62,11 @@ export const prependIcon = () => {
 }
 
 export const appendButton = () => {
-  const { change, form } = useForm({ id: '' })
+  const { change, form, clear } = useForm({ id: '' })
 
   return (
     <BaseComponent>
-      <Input change={change} id='id' placeholder='Search...' value={form.id} />
+      <Input change={change} clear={clear} id='id' placeholder='Search...' value={form.id} />
 
       <InputGroupAddon addonType='append'>
         <Button content='Search' type='submit' />

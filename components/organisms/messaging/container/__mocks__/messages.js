@@ -1,5 +1,12 @@
 /**
  * Messages data
+ *
+ * Audience
+ * All: all
+ * Internal: internal
+ * Customer Only: customer
+ * Supplier Only: supplier
+ * Customer & Supplier: customer-supplier
  */
 export const messages = [
   {
@@ -8,6 +15,7 @@ export const messages = [
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     from: 'Mike <mike@xyz.com>',
+    to: 'internal',
     pictureId: null,
     statusText: 'delivered',
     time: 'Mon 4 Nov 2019 11:59',
@@ -18,6 +26,7 @@ export const messages = [
     content: 'Late arrival.',
     icon: 'notification',
     from: 'System message',
+    to: 'all',
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 13:00',
@@ -27,7 +36,7 @@ export const messages = [
     content: 'Sorry to say our contractor is running slightly late',
     icon: 'comment',
     from: 'Cleverly <support@cleverly.com>',
-    to: 'all',
+    to: 'customer',
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 13:11',
@@ -39,6 +48,7 @@ export const messages = [
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     from: 'Mike <support@cleverly.com>',
+    to: 'internal',
     pictureId: null,
     statusText: 'delivered',
     time: 'Mon 4 Nov 2019 13:13',
@@ -48,6 +58,7 @@ export const messages = [
     content: 'Arrived on site.',
     icon: 'notification',
     from: 'System message',
+    to: 'customer-supplier',
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 13:35',
@@ -59,6 +70,7 @@ export const messages = [
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     from: 'Cleverly <support@cleverly.com>',
+    to: 'customer',
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 13:39',
@@ -68,6 +80,7 @@ export const messages = [
     content: 'Job complete.',
     icon: 'notification',
     from: 'System message',
+    to: 'all',
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 14:25',

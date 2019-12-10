@@ -1,13 +1,5 @@
 /**
  * Messaging/Send
- * Provides a messaging send box, attach, emoji and send button.
- *
- * @features
- * - Dropdown to select audience to send too.
- * - Attach file
- * - Emoji selection
- * - Send button
- * - Write message input
  */
 
 // React
@@ -46,11 +38,13 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+
     const data = {
       attachments,
       audience: audience.id,
       message
     }
+
     onSubmit(data)
     setMessage('')
   }
@@ -78,6 +72,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
               {audience.name}
             </StyledDropDown>
           )}
+
           <StyledTextarea
             change={e => setMessage(e.target.value)}
             id='message'
@@ -86,6 +81,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
             rows={1}
             value={message}
           />
+
           <input
             ref={fileInputRef}
             type='file'
@@ -93,9 +89,11 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
             onChange={handleFilesChange}
             style={{ display: 'none' }}
           />
+
           <StyledElements>
             <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
             <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' />
+
             <Button
               content='Send'
               context='info'
@@ -153,6 +151,10 @@ const StyledElements = styled.div`
 const StyledIcon = styled(Icon)`
   cursor: pointer;
   margin-right: 1rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.COLOUR.info};
+  }
 `
 
 const StyledDropDown = styled(Dropdown)`

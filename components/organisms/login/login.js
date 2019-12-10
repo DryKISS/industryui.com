@@ -77,7 +77,6 @@ export const Login = ({
             <FormLabel label='Email'>
               <FormField
                 autoFocus
-                defaultValue='admin@cleverly.works'
                 errors={errors}
                 name='email'
                 placeholder={showPlaceholder ? 'Email' : ''}
@@ -89,7 +88,6 @@ export const Login = ({
 
             <FormLabel label='Password'>
               <FormField
-                defaultValue='cleverly123'
                 errors={errors}
                 name='password'
                 placeholder={showPlaceholder ? 'Password' : ''}

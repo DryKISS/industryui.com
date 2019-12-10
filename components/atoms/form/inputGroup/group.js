@@ -11,7 +11,7 @@ import { string } from 'prop-types'
 import styled from 'styled-components'
 
 export const InputGroup = ({ children, size }) => {
-  return <StyledInputGroup className='Form-inputGroup' children={children} size={size} />
+  return <StyledInputGroup children={children} size={size} />
 }
 
 const StyledInputGroup = styled.div`
@@ -20,6 +20,23 @@ const StyledInputGroup = styled.div`
   flex-wrap: wrap;
   position: relative;
   width: 100%;
+
+  input {
+    flex: 1 1 0%;
+    min-width: 0;
+    margin-bottom: 0;
+    position: relative;
+
+    :not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    :not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
 `
 
 InputGroup.propTypes = {

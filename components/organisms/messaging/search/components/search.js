@@ -4,28 +4,40 @@
 
 // React
 import React from 'react'
-import { func } from 'prop-types'
+import { func, string } from 'prop-types'
 
 // UI
-import { Search } from '../../../../atoms/form/search'
+import { Column, Search, Select, Row } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const MessagingSearch = ({ onSearch }) => {
+export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
+  const Items = [
+    { text: 'All', value: 'all' },
+    { text: 'Email', value: 'email' },
+    { text: 'Comment', value: 'comment' },
+    { text: 'Notification', value: 'notification' }
+  ]
+
   return (
-    <>
-      <StyledContainer>
-        <StyledSearch appendSearchButton onSearch={onSearch} />
-      </StyledContainer>
-    </>
+    <StyledContainer>
+      <Row>
+        <Column md={6}>
+          <StyledSearch onSearch={onSearch} prependSearchIcon placeholder={placeholder} />
+        </Column>
+
+        <Column md={6}>
+          <StyledSelect change={onFilter} id='messagingFilter' options={Items} />
+        </Column>
+      </Row>
+    </StyledContainer>
   )
 }
 
 const StyledContainer = styled.div`
-  background-color: #75cccf;
+  background-color: #eee;
   border-top: 1px solid #c0c0c0;
-  color: #c0c0c0;
   padding: 1rem;
 `
 
@@ -33,6 +45,19 @@ const StyledSearch = styled(Search)`
   width: 75%;
 `
 
+const StyledSelect = styled(Select)`
+  width: 75%;
+  label {
+    margin: 0;
+  }
+`
+
 MessagingSearch.propTypes = {
-  onSearch: func
+  onFilter: func.isRequired,
+  onSearch: func.isRequired,
+  placeholder: string
+}
+
+MessagingSearch.defaultProps = {
+  placeholder: 'Search...'
 }

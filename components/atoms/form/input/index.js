@@ -19,6 +19,7 @@ export const Input = ({
   autoCorrect,
   autoFocus,
   change,
+  clear,
   data,
   disabled,
   id,
@@ -26,13 +27,12 @@ export const Input = ({
   placeholder,
   readOnly,
   required,
-  clear,
   style,
   type,
   value
 }) => {
   const InputItem = () => (
-    <div style={{ position: 'relative' }}>
+    <>
       <StyledInput
         accept={accept}
         autoCapitalize={autoCapitalize}
@@ -55,7 +55,7 @@ export const Input = ({
       />
 
       {clear && value !== '' && <StyledClose click={() => clear(id)} context='dark' />}
-    </div>
+    </>
   )
 
   return (
@@ -96,31 +96,14 @@ export const StyledInput = styled.input`
   }
 
   &:focus {
-    color: #9da7af;
     border-color: #80bdff;
-    outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    color: #9da7af;
+    outline: 0;
   }
 
   &:invalid {
     color: red;
-  }
-
-  .Form-inputGroup > & {
-    flex: 1 1 0%;
-    min-width: 0;
-    margin-bottom: 0;
-    position: relative;
-
-    :not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-    :not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
   }
 `
 

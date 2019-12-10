@@ -1,5 +1,5 @@
 /**
- * StaticLocation
+ * Map - Static Location
  * Showcases a static map based on a location
  */
 

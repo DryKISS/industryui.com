@@ -1,5 +1,5 @@
 /**
- * Messaging/Message
+ * Messaging/MessageBase
  */
 
 // React
@@ -8,6 +8,8 @@ import { string, bool } from 'prop-types'
 
 // UI
 import { Card, Column, Icon, Image, Row, Truncate } from '../../../../'
+import { MessageIcon } from './icon'
+import { MessageTo } from './to'
 
 // Style
 import styled from 'styled-components'
@@ -33,37 +35,13 @@ export const MessageBase = ({
     if (scrollToMessage) messageRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }, [])
 
-  const IconSelect = () => {
-    let useIcon = ''
-
-    switch (icon) {
-      case 'comment':
-        useIcon = 'comment-dots'
-        break
-      case 'notification':
-        useIcon = 'bell'
-        break
-
-      default:
-        useIcon = 'envelope'
-        break
-    }
-
-    return <StyledIcon fixedWidth={false} icon={useIcon} prefix='fad' />
-  }
-
   return (
     <Column sm={11} columnRef={messageRef}>
       <StyledCard type={type}>
         <Row>
           <Column sm={6}>
-            <IconSelect />
-            {to && (
-              <>
-                <StyledImage alt='customer' src='/messaging/customer.svg' />
-                <StyledImage alt='supplier' src='/messaging/supplier.svg' />
-              </>
-            )}
+            <MessageIcon icon={icon} />
+            <MessageTo to={to} />
             <StyledTime>{time}</StyledTime>
           </Column>
 
@@ -135,17 +113,6 @@ const StyledCollapse = styled.div`
   display: inline-block;
   font-size: 0.75rem;
   text-transform: uppercase;
-`
-
-const StyledIcon = styled(Icon)`
-  color: ${({ theme }) => theme.COLOUR.primary};
-  margin-right: 0.5rem;
-  vertical-align: middle !important;
-`
-
-const StyledImage = styled(Image)`
-  margin-right: 0.5rem;
-  vertical-align: middle !important;
 `
 
 const StyledTime = styled.span`

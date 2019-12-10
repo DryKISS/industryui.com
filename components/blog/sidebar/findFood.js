@@ -77,8 +77,6 @@ export const BlogFindFood = ({ colour }) => {
         .catch(error => {
           setMsg(`We don’t deliver there yet: ${error.message}`)
         })
-    } else {
-      console.error('GOOGLE')
     }
   }
 

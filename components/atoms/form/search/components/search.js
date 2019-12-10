@@ -6,11 +6,7 @@
 import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, Form, Icon, Input, useForm } from '../../../../'
-import { InputGroup, InputGroupAddon } from '../../'
-
-// Style
-import styled from 'styled-components'
+import { Button, Form, Icon, Input, InputGroup, InputGroupAddon, useForm } from '../../../../'
 
 export const Search = ({
   appendSearchButton,
@@ -37,7 +33,7 @@ export const Search = ({
 
   return (
     <Form className={className} submit={() => onSearch(query)}>
-      <StyledSearch>
+      <InputGroup>
         {prependSearchIcon && (
           <InputGroupAddon addonType='prepend' text>
             <Icon icon='search' />
@@ -65,25 +61,10 @@ export const Search = ({
             <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
           </InputGroupAddon>
         )}
-      </StyledSearch>
+      </InputGroup>
     </Form>
   )
 }
-
-const StyledSearch = styled(InputGroup)`
-  display: flex;
-  position: relative;
-
-  > button {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-  }
-
-  > input {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-  }
-`
 
 Search.propTypes = {
   appendSearchButton: bool,
