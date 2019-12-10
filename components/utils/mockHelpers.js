@@ -1,6 +1,7 @@
 /**
  * Mock helpers
  */
+import cloneDeep from 'lodash/cloneDeep'
 
 // merge array with localStorage data
 export const mergeLocalData = (array, key) => {
@@ -17,7 +18,7 @@ export const mergeLocalData = (array, key) => {
       }
     })
   }
-  return array
+  return cloneDeep(array)
 }
 
 export const findByKey = (array, key, value) => {
