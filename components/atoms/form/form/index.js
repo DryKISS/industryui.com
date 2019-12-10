@@ -20,6 +20,24 @@ export class Form extends Component {
     submit: func.isRequired
   }
 
+  static get errorClassName () {
+    return '.Form-feedback'
+  }
+
+  getErrorLabel = elem => {
+    const { errorClassName } = Form
+    const {
+      parentNode,
+      parentNode: { nodeName: parentNodeName },
+      nodeName
+    } = elem
+    // check if element is of type input and if parent's nodeName is label
+    if (nodeName.toLowerCase() === 'input' && parentNodeName.toLowerCase() !== 'label') {
+      return parentNode.parentNode.querySelector(errorClassName)
+    }
+    return parentNode.querySelector(errorClassName)
+  }
+
   /**
    * The main function that validates the form and fills in the error messages.
    *
@@ -41,8 +59,7 @@ export class Form extends Component {
       for (let i = 0; i < formLength; i++) {
         // the i-th child of the form corresponds to the forms i-th input element
         const elem = formEl[i]
-        const parentNode = elem.parentNode
-        let errorLabel = parentNode.querySelector('.Form-feedback')
+        let errorLabel = this.getErrorLabel(elem)
 
         if (
           elem.type !== 'checkbox' &&
