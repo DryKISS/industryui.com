@@ -3,6 +3,7 @@
  */
 export * from './age'
 export * from './auth'
+export * from './camelCase'
 export * from './capitalize'
 export * from './formatDate'
 export * from './formatPrice'
