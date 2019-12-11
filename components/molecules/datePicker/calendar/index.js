@@ -18,22 +18,18 @@ import {
   string
 } from 'prop-types'
 
+// Date Picker
 import ReactDatePicker from 'react-datepicker'
 import { placements } from 'react-popper'
 
-// Style
-import styled from 'styled-components'
-import 'react-datepicker/dist/react-datepicker.css'
-
+// UI
 import { StyledInput } from '../../../'
 
-const StyledInputModified = styled(StyledInput)`
-  font-size: 0.81rem;
-  min-width: 11.875rem; /* 190px */
-`
+// Style
+import 'react-datepicker/dist/react-datepicker.css'
 
 export const DatePickerCalendar = props => {
-  return <ReactDatePicker {...props} customInput={props.customInput || <StyledInputModified />} />
+  return <ReactDatePicker {...props} customInput={props.customInput || <StyledInput />} />
 }
 
 DatePickerCalendar.propTypes = {
@@ -54,7 +50,7 @@ DatePickerCalendar.propTypes = {
   dayClassName: func,
   disabled: bool,
   disabledKeyboardNavigation: bool,
-  dropdownMode: oneOf(['scroll', 'select']).isRequired,
+  dropdownMode: oneOf(['scroll', 'select']),
   endDate: instanceOf(Date),
   excludeDates: array,
   filterDate: func,
@@ -150,4 +146,11 @@ DatePickerCalendar.propTypes = {
   showPopperArrow: bool
 }
 
-DatePickerCalendar.defaultProps = ReactDatePicker.defaultProps
+DatePickerCalendar.defaultProps = {
+  dateFormat: 'd MMM yyyy HH:mm',
+  dropdownMode: 'scroll',
+  isClearable: true,
+  placeholderText: 'Click to select time',
+  showTimeSelect: true,
+  timeIntervals: 30
+}
