@@ -2,18 +2,21 @@
  * Email Change
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { action } from '@storybook/addon-actions'
+import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { EmailChange, useForm } from '../../../'
+import { EmailChange } from '../'
 import Readme from '../README.md'
 
 export default {
   title: 'Organisms/Email Change',
-  components: EmailChange,
-  decorators: [Wrapper],
+  component: EmailChange,
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -21,8 +24,13 @@ export default {
   }
 }
 
-export const main = () => {
-  const { change, form } = useForm({ email: '' })
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    showPlaceholder: boolean('Placeholder', true),
+    ...props
+  }
 
-  return <EmailChange change={change} email={form.email} submit={action('Submit')} />
+  return <EmailChange {...defaultProps} />
 }
+
+export const main = () => <BaseComponent />

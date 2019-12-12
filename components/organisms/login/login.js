@@ -14,8 +14,6 @@ import useForm from 'react-hook-form'
 import {
   Alert,
   Button,
-  Card,
-  CardBody,
   // Checkbox,
   FormField,
   FormForm,
@@ -41,7 +39,7 @@ export const Login = ({
   submitLoading,
   submitResult
 }) => {
-  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onBlur' })
+  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
   const [showPass, setShowPass] = useState(false)
   const [error, setError] = useState(false)
   const { signIn } = useContext(UserContext)
@@ -66,67 +64,63 @@ export const Login = ({
   const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   return (
-    <StyledContainer>
-      <Card bordered shadow>
-        <CardBody>
-          <PageHeading center heading={heading} divider={false} />
+    <>
+      <PageHeading center heading={heading} divider={false} />
 
-          {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-          <FormForm handleSubmit={handleSubmit(submit)}>
-            <FormLabel label='Email'>
-              <FormField
-                autoFocus
-                errors={errors}
-                name='email'
-                placeholder={showPlaceholder ? 'Email' : ''}
-                regExp={pattern}
-                register={register}
-                required='This is required'
-              />
-            </FormLabel>
+      <FormForm handleSubmit={handleSubmit(submit)}>
+        <FormLabel label='Email'>
+          <FormField
+            autoFocus
+            errors={errors}
+            name='email'
+            placeholder={showPlaceholder ? 'Email' : ''}
+            regExp={pattern}
+            register={register}
+            required='This is required'
+          />
+        </FormLabel>
 
-            <FormLabel label='Password'>
-              <FormField
-                errors={errors}
-                name='password'
-                placeholder={showPlaceholder ? 'Password' : ''}
-                register={register}
-                required='This is required'
-                type={showPass ? 'text' : 'password'}
-              />
-            </FormLabel>
+        <FormLabel label='Password'>
+          <FormField
+            errors={errors}
+            name='password'
+            placeholder={showPlaceholder ? 'Password' : ''}
+            register={register}
+            required='This is required'
+            type={showPass ? 'text' : 'password'}
+          />
+        </FormLabel>
 
-            {showPassword && (
-              <ShowPassword onClick={() => setShowPass(prev => !prev)}>
-                <a>{showPass ? 'Hide Password' : 'Show Password'}</a>
-              </ShowPassword>
-            )}
+        {showPassword && (
+          <ShowPassword onClick={() => setShowPass(prev => !prev)}>
+            <a>{showPass ? 'Hide Password' : 'Show Password'}</a>
+          </ShowPassword>
+        )}
 
-            {/* {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />} */}
+        {/* {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />} */}
 
-            <div className='text-right'>
-              <Button
-                align='right'
-                block={blockSubmitButton}
-                content='Log in'
-                context='primary'
-                disabled={!formState.isValid}
-                size='lg'
-                type='submit'
-              />
+        <div className='text-right'>
+          <Button
+            align='right'
+            block={blockSubmitButton}
+            content='Log in'
+            context='primary'
+            disabled={!formState.isValid}
+            size='lg'
+            type='submit'
+          />
 
-              {forgotPassword && (
-                <ForgotPasswordWrapper>
-                  <Link to={pathForgot}>
-                    <a>Forgot password?</a>
-                  </Link>
-                </ForgotPasswordWrapper>
-              )}
-            </div>
-          </FormForm>
-        </CardBody>
-      </Card>
+          {forgotPassword && (
+            <ForgotPasswordWrapper>
+              <Link to={pathForgot}>
+                <a>Forgot password?</a>
+              </Link>
+            </ForgotPasswordWrapper>
+          )}
+        </div>
+      </FormForm>
 
       {pathSignUp && (
         <>
@@ -138,13 +132,9 @@ export const Login = ({
           </p>
         </>
       )}
-    </StyledContainer>
+    </>
   )
 }
-
-const StyledContainer = styled.div`
-  margin: 3rem 0;
-`
 
 const ShowPassword = styled.div`
   cursor: pointer;
