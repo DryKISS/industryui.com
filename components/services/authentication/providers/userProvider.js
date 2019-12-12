@@ -1,6 +1,5 @@
 /**
  * Authentication - Providers - User
- *
  * Provides context, state and hooks into managing a user
  *
  * @see https://reacttricks.com/sharing-global-data-in-next-with-custom-app-and-usecontext-hook/
