@@ -11,7 +11,7 @@ import { FormError } from '../'
 // Style
 import styled, { css } from 'styled-components'
 
-export const FormField = ({ errors, register, required, ...props }) => {
+export const FormField = ({ errors, register, required, validate, ...props }) => {
   return (
     <>
       <StyledInput
@@ -22,6 +22,7 @@ export const FormField = ({ errors, register, required, ...props }) => {
         ref={register({
           required: required,
           pattern: props.regExp ? new RegExp(props.regExp) : null,
+          validate: validate,
           ...(props.max ? { max: props.max } : null),
           ...(props.min ? { min: props.min } : null),
           ...(props.maxLength ? { maxLength: props.maxLength } : null),

@@ -3,25 +3,62 @@
  */
 
 // React
-import { func, string } from 'prop-types'
+import React, { useState } from 'react'
+import { bool, string } from 'prop-types'
+
+// useForm
+import useForm from 'react-hook-form'
 
 // UI
-import { Button, Form, Input, Link } from '../../'
+import { Alert, Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
 
 // Style
 import styled from 'styled-components'
 
-export const ForgotDetails = ({ email, change, pathLogIn, submit }) => {
+export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
+  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
+  const [error] = useState(false)
+
+  const submit = data => {
+    const { email } = data
+    console.log(email)
+  }
+
+  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
   return (
-    <Form submit={submit}>
-      <Input change={change} id='email' label='Email address' type='email' value={email} />
+    <>
+      <PageHeading center heading='Forgot Details' divider={false} />
 
-      <Button content='Send reset link' context='secondary' size='lg' type='submit' />
+      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-      <Link to={pathLogIn} passHref>
-        <StyledLink>Back to Log In</StyledLink>
-      </Link>
-    </Form>
+      <FormForm handleSubmit={handleSubmit(submit)}>
+        <FormLabel label='Email'>
+          <FormField
+            autoFocus
+            errors={errors}
+            name='email'
+            placeholder={showPlaceholder ? 'Email' : ''}
+            regExp={pattern}
+            register={register}
+            required='This is required'
+          />
+        </FormLabel>
+
+        <Button
+          block
+          content='Send reset link'
+          context='primary'
+          disabled={!formState.isValid}
+          size='lg'
+          type='submit'
+        />
+
+        <Link to={pathLogIn} passHref>
+          <StyledLink>Back to Log In</StyledLink>
+        </Link>
+      </FormForm>
+    </>
   )
 }
 
@@ -31,12 +68,11 @@ const StyledLink = styled.a`
 `
 
 ForgotDetails.propTypes = {
-  change: func.isRequired,
-  email: string.isRequired,
   pathLogIn: string,
-  submit: func.isRequired
+  showPlaceholder: bool
 }
 
 ForgotDetails.defaultProps = {
-  pathLogIn: '/account/sign-in'
+  pathLogIn: '/account/sign-in',
+  showPlaceholder: false
 }

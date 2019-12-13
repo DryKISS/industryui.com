@@ -2,7 +2,11 @@
  * Password Change
  */
 
+// React
+import React from 'react'
+
 // Storybook
+import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -12,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Password Change',
   component: PasswordChange,
-  decorators: [Wrapper],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -20,12 +24,13 @@ export default {
   }
 }
 
-export const main = () => (
-  <PasswordChange
-    change={() => {}}
-    password=''
-    passwordConfirm=''
-    passwordOld=''
-    submit={() => {}}
-  />
-)
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    showPlaceholder: boolean('Placeholder', true),
+    ...props
+  }
+
+  return <PasswordChange {...defaultProps} />
+}
+
+export const main = () => <BaseComponent />
