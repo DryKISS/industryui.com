@@ -3,6 +3,7 @@
  */
 export * from './age'
 export * from './auth'
+export * from './averageGeolocation'
 export * from './camelCase'
 export * from './capitalize'
 export * from './formatDate'
