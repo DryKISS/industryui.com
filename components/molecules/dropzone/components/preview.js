@@ -7,7 +7,7 @@
 import { any, func } from 'prop-types'
 
 // UI
-import { Image } from '../../../'
+import { Close, Image } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -15,7 +15,7 @@ import styled from 'styled-components'
 export const DropzonePreview = ({ file, handleRemove, index }) => {
   return (
     <StyledPreview>
-      {/* <Close click={handleRemove(index)} /> */}
+      <Close click={handleRemove} />
       <Image alt={`Upload ${index}`} src={file.preview} />
     </StyledPreview>
   )
@@ -27,7 +27,7 @@ const StyledPreview = styled.div`
 `
 
 DropzonePreview.propTypes = {
-  file: any,
-  handleRemove: func,
-  index: any
+  file: any.isRequired,
+  handleRemove: func.isRequired,
+  index: any.isRequired
 }

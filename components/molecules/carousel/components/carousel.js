@@ -4,7 +4,7 @@
 
 // React
 import React, { useState } from 'react'
-import { array, bool, node, string } from 'prop-types'
+import { array, bool, node, number } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -47,15 +47,13 @@ export const Carousel = ({ children, width, height, fullWidth }) => {
 Carousel.propTypes = {
   children: array,
   fullWidth: bool,
-  height: string,
-  width: string
+  height: number,
+  width: number
 }
 
 Carousel.defaultProps = {
   children: [],
-  fullWidth: false,
-  height: 400,
-  width: 700
+  fullWidth: false
 }
 
 const Arrow = ({ direction, clickFunction, icon }) => (

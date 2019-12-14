@@ -4,7 +4,7 @@
  */
 
 // React
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { bool, string } from 'prop-types'
 
 // React Dropzone
@@ -13,15 +13,21 @@ import { useDropzone } from 'react-dropzone'
 // UI
 // import { Button, Container, Column, Heading, Row } from '../../../'
 import { Accept } from './accept'
-// import { DropzonePreview } from './'
+import { DropzonePreview } from './'
 
 // Style
 import styled from 'styled-components'
 
-export const Dropzone = ({ accept, disabled, handleDrop }) => {
-  const onDrop = useCallback(acceptedFiles => {
-    handleDrop && handleDrop(acceptedFiles)
-  }, [])
+export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
+  const [files, setFiles] = useState([])
+
+  useEffect(
+    () => () => {
+      // Make sure to revoke the data uris to avoid memory leaks
+      files.forEach(file => URL.revokeObjectURL(file.preview))
+    },
+    [files]
+  )
 
   const {
     acceptedFiles,
@@ -34,20 +40,76 @@ export const Dropzone = ({ accept, disabled, handleDrop }) => {
   } = useDropzone({
     accept: accept,
     disabled: disabled,
-    onDrop
+    multiple: multiple,
+    onDrop: acceptedFiles => {
+      const files = acceptedFiles.map(file =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file)
+        })
+      )
+
+      setFiles(files)
+
+      if (onChange) {
+        onChange(files)
+      }
+    }
   })
 
-  const acceptedFilesItems = acceptedFiles.map(file => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ))
+  const thumbsContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 16
+  }
 
-  const rejectedFilesItems = rejectedFiles.map(file => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ))
+  const thumb = {
+    display: 'inline-flex',
+    width: 100,
+    height: 100,
+    boxSizing: 'border-box'
+  }
+
+  const thumbInner = {
+    display: 'flex',
+    minWidth: 0,
+    overflow: 'hidden'
+  }
+
+  const img = {
+    display: 'block',
+    width: 'auto',
+    height: '100%'
+  }
+
+  const removeFile = file => {
+    const newFiles = [...files]
+    newFiles.splice(newFiles.indexOf(file), 1)
+    setFiles(newFiles)
+  }
+
+  const thumbs = () => {
+    return files.map(file => (
+      <DropzonePreview
+        file={file}
+        handleRemove={() => removeFile(file)}
+        index={file.name}
+        key={file.name}
+      />
+    ))
+  }
+
+  // const acceptedFilesItems = acceptedFiles.map(file => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ))
+
+  // const rejectedFilesItems = rejectedFiles.map(file => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ))
 
   return (
     <>
@@ -59,25 +121,27 @@ export const Dropzone = ({ accept, disabled, handleDrop }) => {
         {...getRootProps()}
       >
         <input {...getInputProps()} />
-        {isDragAccept && <p>All files will be accepted</p>}
-        {isDragReject && <p>Some files will be rejected</p>}
+        {isDragAccept && <p>Accepted</p>}
+        {isDragReject && <p>Rejected</p>}
 
         {isDragActive ? (
-          <p>Drop the files here ...</p>
+          <p>Drop here</p>
         ) : (
           <>
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>Drop, or click to select</p>
             {accept && <Accept accept={accept} />}
           </>
         )}
       </StyledContainer>
 
-      <aside>
-        <h4>Accepted files</h4>
+      <aside style={thumbsContainer}>{thumbs()}</aside>
+
+      {/* <aside>
+        <h4>Accepted</h4>
         <ul>{acceptedFilesItems}</ul>
-        <h4>Rejected files</h4>
+        <h4>Rejected</h4>
         <ul>{rejectedFilesItems}</ul>
-      </aside>
+      </aside> */}
     </>
   )
 }
@@ -85,8 +149,8 @@ export const Dropzone = ({ accept, disabled, handleDrop }) => {
 const StyledContainer = styled.div`
   background-color: ${({ disabled, theme }) =>
     disabled ? theme.COLOUR.warning : theme.COLOUR.light};
-  border-color: ${({ dragAccept, dragReject, theme }) =>
-    (dragReject && theme.COLOUR.warning) || (dragAccept && theme.COLOUR.success)};
+  border-color: ${({ dragAccept, dragReject, theme: { COLOUR } }) =>
+    (dragReject && COLOUR.warning) || (dragAccept && COLOUR.success)};
   border-radius: 0.25rem;
   border-style: ${({ dragActive }) => (dragActive ? 'solid' : 'dashed')};
   border-width: 2px;
@@ -103,96 +167,12 @@ const StyledContainer = styled.div`
 
 Dropzone.propTypes = {
   accept: string,
-  disabled: bool
+  disabled: bool,
+  multiple: bool
 }
 
 Dropzone.defaultProps = {
-  accept: 'image/jpeg, image/png',
-  disabled: false
+  accept: 'image/*',
+  disabled: false,
+  multiple: true
 }
-
-//   static propTypes = {
-//     accepted: oneOfType([array, object]),
-//     handleDrop: func,
-//     handleRemove: func,
-//     number: number
-//   }
-
-//   static defaultProps = {
-//     number: 4
-//   }
-
-//   componentWillUnmount () {
-//     this.cleanup()
-//   }
-
-//   cleanup = () => {
-//     // Revoke data uris when done using the previews
-//     const { accepted } = this.props
-
-//     for (const file of accepted) {
-//       URL.revokeObjectURL(file.preview)
-//     }
-//   }
-
-//   previewList = () => {
-//     const { accepted, handleRemove } = this.props
-
-//     return accepted.map((file, index) => (
-//       <Column key={index} md={2} style={{ marginBottom: '20px' }}>
-//         <DropzonePreview file={file} handleRemove={handleRemove} index={index} />
-//       </Column>
-//     ))
-//   }
-
-//   render () {
-//     const { accepted, disabled, handleDrop } = this.props
-
-//     return (
-//       <ReactDropzone
-//         accept='image/jpeg, image/png'
-//         disabled={disabled}
-//         maxSize={5000000}
-//         onDrop={handleDrop}
-//       >
-//         {({
-//           getRootProps,
-//           getInputProps,
-//           isDragActive,
-//           isDragAccept,
-//           isDragReject,
-//           acceptedFiles,
-//           rejectedFiles
-//         }) => (
-//           <StyledContainer
-//             disabled={disabled}
-//             isDragActive={isDragActive}
-//             isDragReject={isDragReject}
-//             {...getRootProps()}
-//           >
-//             <Container>
-//               <Row>
-//                 <input {...getInputProps()} />
-
-//                 {accepted.length > 0 && this.previewList()}
-
-//                 {accepted.length <= 0 && (
-//                   <Column md={12}>
-//                     <Heading tag='h2'>
-//                       Drag &amp; Drop images here
-//                       <br />
-//                       <small>or</small>
-//                       <br />
-//                     </Heading>
-
-//                     <Button content='Select files' size='lg' />
-//                   </Column>
-//                 )}
-//               </Row>
-//             </Container>
-//           </StyledContainer>
-//         )}
-//       </ReactDropzone>
-//     )
-//   }
-// }

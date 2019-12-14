@@ -12,7 +12,7 @@ export const Accept = ({ accept }) => {
 
   return (
     <>
-      <em>(Only {files} images will be accepted)</em>
+      <em>(Only {files} will be accepted)</em>
     </>
   )
 }
