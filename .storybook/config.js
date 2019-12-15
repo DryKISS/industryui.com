@@ -17,7 +17,6 @@ import Router from 'next/router'
 
 // UI
 import { Container } from 'decorators'
-import './decorators/icons'
 
 const actionWithPromise = () => {
   action('clicked link')()
