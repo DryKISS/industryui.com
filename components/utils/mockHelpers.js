@@ -4,11 +4,11 @@
 import cloneDeep from 'lodash/cloneDeep'
 
 // merge array with localStorage data
-export const mergeLocalData = (array, key) => {
+export const mergeLocalData = (array, key, identifier = 'id') => {
   const local = JSON.parse(window.localStorage.getItem(key))
   if (local) {
     local.map(i => {
-      const existing = array.find(o => o.id === parseInt(i.id))
+      const existing = array.find(o => o[identifier] === parseInt(i[identifier]))
       if (existing) {
         Object.keys(i).map(key => {
           existing[key] = i[key]
