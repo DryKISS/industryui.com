@@ -78,6 +78,9 @@ export const CarouselSlide = ({ children }) => {
 const StyledSlide = styled.div`
   height: 100%;
   width: 100%;
+  img {
+    width: 100%;
+  }
 `
 
 CarouselSlide.propTypes = {

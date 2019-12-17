@@ -29,7 +29,7 @@ const StyledImg = styled.img`
     fluid &&
     `
     height: auto;
-    width: 100%;
+    max-width: 100%;
   `}
 
   ${({ rounded }) =>
