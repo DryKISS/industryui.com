@@ -4,7 +4,14 @@
  */
 
 import { array, node, string } from 'prop-types'
-import { GoogleMap, Marker as GoogleMarker, withGoogleMap, withScriptjs } from 'react-google-maps'
+import {
+  GoogleMap,
+  InfoWindow as GoogleInfoWindow,
+  Marker as GoogleMarker,
+  withGoogleMap,
+  withScriptjs
+} from 'react-google-maps'
+import { MarkerClusterer as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
 const DynamicLocationHOC = Component => {
   return props => {
@@ -50,3 +57,9 @@ DynamicLocation.defaultProps = {
 
 export const Marker = GoogleMarker
 Marker.propTypes = GoogleMarker.propTypes
+
+export const MarkerClusterer = GoogleMarkerClusterer
+MarkerClusterer.propTypes = GoogleMarkerClusterer.propTypes
+
+export const InfoWindow = GoogleInfoWindow
+InfoWindow.propTypes = GoogleInfoWindow.propTypes

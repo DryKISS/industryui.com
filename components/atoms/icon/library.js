@@ -34,9 +34,11 @@ import {
   faExternalLink,
   faHomeHeart,
   faImages,
+  faMapMarkerAlt,
   faMars,
   faPaperclip,
   faSearch,
+  faShoppingCart,
   faSmile,
   faStethoscope,
   faStopwatch,
@@ -70,9 +72,11 @@ library.add(
   faExclamationTriangle,
   faHomeHeart,
   faImages,
+  faMapMarkerAlt,
   faMars,
   faPaperclip,
   faSearch,
+  faShoppingCart,
   faSmile,
   faStethoscope,
   faStopwatch,
@@ -83,3 +87,5 @@ library.add(
   faUser,
   faVenus
 )
+
+export { library }
