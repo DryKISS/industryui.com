@@ -13,7 +13,14 @@ import isObject from 'lodash/isObject'
 import App from 'next/app'
 
 // UI
-import { FirebaseProvider, Icons, Theme, ThemeStyle, UserProvider } from '../'
+import {
+  FirebaseProvider,
+  Icons,
+  NotificationsProvider,
+  Theme,
+  ThemeStyle,
+  UserProvider
+} from '../'
 import { jwtConfig } from 'config'
 
 // Style
@@ -42,7 +49,11 @@ export class MyApp extends App {
 
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
-        {user && <UserProvider jwtConfig={jwtConfig}>{this.layout()}</UserProvider>}
+        {user && (
+          <UserProvider jwtConfig={jwtConfig}>
+            <NotificationsProvider user={user}>{this.layout()}</NotificationsProvider>
+          </UserProvider>
+        )}
 
         {!user && !fire && this.layout()}
       </>
