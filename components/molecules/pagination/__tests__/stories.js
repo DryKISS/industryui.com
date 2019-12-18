@@ -6,7 +6,8 @@
 import React from 'react'
 
 // Storybook
-import { Wrapper } from 'decorators'
+import { withKnobs } from '@storybook/addon-knobs'
+import { Context, Size, Wrapper } from 'decorators'
 
 // UI
 import { Pagination } from '../'
@@ -16,7 +17,7 @@ import { Icon } from '../../../atoms'
 export default {
   title: 'Molecules/Pagination',
   component: Pagination,
-  decorators: [Wrapper],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -24,14 +25,24 @@ export default {
   }
 }
 
-export const Main = () => <Pagination currentPage={1} onPageChange={() => {}} pageCount={4} />
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    context: Context(),
+    size: Size(),
+    ...props
+  }
+
+  return <Pagination {...defaultProps} />
+}
+
+export const Main = () => <BaseComponent currentPage={1} onPageChange={() => {}} pageCount={4} />
 
 export const withPrevAndNextButtons = () => (
-  <Pagination currentPage={1} onPageChange={() => {}} pageCount={4} showNextAndPrev />
+  <BaseComponent currentPage={1} onPageChange={() => {}} pageCount={4} showNextAndPrev />
 )
 
 export const withCustomPrevAndNextButtons = () => (
-  <Pagination
+  <BaseComponent
     currentPage={1}
     onPageChange={() => {}}
     pageCount={4}
