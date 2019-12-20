@@ -1,5 +1,6 @@
 /**
  * Storybook Configuration
+ * @see https://storybook.js.org/basics/writing-stories/#loading-stories-dynamically
  */
 
 // React
@@ -17,6 +18,7 @@ import Router from 'next/router'
 
 // UI
 import { Container } from 'decorators'
+import './decorators/icons'
 
 const actionWithPromise = () => {
   action('clicked link')()
@@ -55,8 +57,5 @@ addParameters({
 
 addDecorator(addReadme)
 
-/**
- * Load stories
- * @see https://storybook.js.org/basics/writing-stories/#loading-stories-dynamically
- */
+// Load stories
 configure(require.context('../components', true, /stories\.js$/), module)
