@@ -10,7 +10,7 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // useForm
-import useForm from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 // UI
 import { Button, FormForm, FormField, FormLabel } from '../../../../'

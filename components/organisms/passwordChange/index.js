@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { bool } from 'prop-types'
 
 // useForm
-import useForm from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 // UI
 import { Alert, Button, FormField, FormForm, PageHeading } from '../../'

@@ -58,3 +58,13 @@ export const getManyToManyAssociations = (item, pivot, related, key, foreignKey)
     return related.find(r => r.id === a[foreignKey])
   })
 }
+
+// get first item of an array
+export const getFirst = array => {
+  return array[0]
+}
+
+// get last item of an array
+export const getLast = array => {
+  return array[array.length - 1]
+}
