@@ -99,6 +99,7 @@ FormField.defaultProps = {
   autoComplete: 'off',
   autoFocus: false,
   disabled: false,
+  errors: {},
   required: true,
   readOnly: false,
   type: 'text'

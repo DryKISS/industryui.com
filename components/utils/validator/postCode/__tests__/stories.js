@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { Wrapper } from 'decorators'
 
 // useForm
-import useForm from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 // UI
 import { Button, FormForm, FormField, FormLabel, validatorPostCode } from 'components'
