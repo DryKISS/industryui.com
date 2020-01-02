@@ -87,6 +87,33 @@ export const main = storyHOC(
   }
 )
 
+export const withOverlay = storyHOC(
+  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
+    const opacityKnob = number('Overlay Opacity', 0.3, {
+      range: true,
+      min: 0.1,
+      max: 1,
+      step: 0.1
+    })
+    return (
+      <>
+        <OffCanvas
+          context={contextKnob}
+          headerText={headerText}
+          overlay
+          overlayOpacity={opacityKnob}
+          placement={placement}
+          show={isChecked}
+          toggleShow={toggleCheck}
+          width={width}
+        >
+          Components go here
+        </OffCanvas>
+      </>
+    )
+  }
+)
+
 export const withMailForm = storyHOC(
   ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
     return (
