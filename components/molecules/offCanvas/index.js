@@ -7,9 +7,17 @@ import { Close, CONTEXT } from '../../'
 // Components
 import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent } from './components'
 
-const OffCanvasComponent = ({ context, children, headerText, show, toggleShow, width }) => {
+const OffCanvasComponent = ({
+  context,
+  children,
+  headerText,
+  placement,
+  show,
+  toggleShow,
+  width
+}) => {
   return (
-    <OffCanvasDiv show={show} width={width}>
+    <OffCanvasDiv show={show} width={width} placement={placement}>
       <OffCanvasHeader context={context}>
         {headerText}
         <Close context='white' click={e => toggleShow(false)} />
@@ -35,6 +43,7 @@ OffCanvas.propTypes = {
   context: oneOf(Object.values(CONTEXT)),
   container: any,
   headerText: string.isRequired,
+  placement: oneOf('top', 'right', 'bottom', 'left'),
   show: bool.isRequired,
   toggleShow: func.isRequired,
   width: string
@@ -42,5 +51,6 @@ OffCanvas.propTypes = {
 
 OffCanvas.defaultProps = {
   context: 'primary',
+  placement: 'right',
   width: '30vw'
 }
