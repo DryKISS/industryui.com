@@ -4,6 +4,7 @@
 import moment from 'moment'
 
 export const age = birthDate => {
-  const years = moment().diff(birthDate.seconds * 1000, 'years')
+  if (!birthDate || !(birthDate instanceof Date)) return 0
+  const years = moment().diff(birthDate, 'years')
   return years
 }
