@@ -6,7 +6,7 @@
 import { useState } from 'react'
 
 // Storybook
-import { select, text, withKnobs } from '@storybook/addon-knobs'
+import { select, text, withKnobs, number } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
@@ -29,6 +29,12 @@ const storyHOC = Component => {
     const [isChecked, toggleCheck] = useState(true)
     const contextKnob = Context()
     const textKnob = text('Header', 'Homyze')
+    const widthKnob = number('Width (%)', 25, {
+      range: true,
+      min: 1,
+      max: 100,
+      step: 1
+    })
     const placementKnob = select(
       'Placement',
       {
@@ -52,41 +58,46 @@ const storyHOC = Component => {
         <Component
           contextKnob={contextKnob}
           isChecked={isChecked}
-          textKnob={textKnob}
-          placementKnob={placementKnob}
+          headerText={textKnob}
+          placement={placementKnob}
           toggleCheck={toggleCheck}
+          width={widthKnob + '%'}
         />
       </>
     )
   }
 }
 
-export const main = storyHOC(({ contextKnob, isChecked, placementKnob, textKnob, toggleCheck }) => {
-  return (
-    <>
-      <OffCanvas
-        context={contextKnob}
-        headerText={textKnob}
-        placement={placementKnob}
-        show={isChecked}
-        toggleShow={toggleCheck}
-      >
-        Components go here
-      </OffCanvas>
-    </>
-  )
-})
-
-export const withMailForm = storyHOC(
-  ({ contextKnob, isChecked, placementKnob, textKnob, toggleCheck }) => {
+export const main = storyHOC(
+  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
     return (
       <>
         <OffCanvas
           context={contextKnob}
-          headerText={textKnob}
-          placement={placementKnob}
+          headerText={headerText}
+          placement={placement}
           show={isChecked}
           toggleShow={toggleCheck}
+          width={width}
+        >
+          Components go here
+        </OffCanvas>
+      </>
+    )
+  }
+)
+
+export const withMailForm = storyHOC(
+  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
+    return (
+      <>
+        <OffCanvas
+          context={contextKnob}
+          headerText={headerText}
+          placement={placement}
+          show={isChecked}
+          toggleShow={toggleCheck}
+          width={width}
         >
           <Form submit={() => {}}>
             <Input
@@ -113,7 +124,7 @@ export const withMailForm = storyHOC(
 )
 
 export const withDynamicContent = storyHOC(
-  ({ contextKnob, isChecked, placementKnob, toggleCheck }) => {
+  ({ contextKnob, isChecked, placement, toggleCheck, width }) => {
     const [previewIndex, changePreview] = useState(1)
     const previews = {
       1: {
@@ -171,9 +182,10 @@ export const withDynamicContent = storyHOC(
         <OffCanvas
           context={contextKnob}
           headerText={previews[previewIndex].headerText}
-          placement={placementKnob}
+          placement={placement}
           show={isChecked}
           toggleShow={toggleCheck}
+          width={width}
         >
           {previews[previewIndex].component()}
         </OffCanvas>

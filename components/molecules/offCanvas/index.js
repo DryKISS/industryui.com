@@ -11,13 +11,14 @@ const OffCanvasComponent = ({
   context,
   children,
   headerText,
+  height,
   placement,
   show,
   toggleShow,
   width
 }) => {
   return (
-    <OffCanvasDiv show={show} width={width} placement={placement}>
+    <OffCanvasDiv height={height} placement={placement} show={show} width={width}>
       <OffCanvasHeader context={context}>
         {headerText}
         <Close context='white' click={e => toggleShow(false)} />
