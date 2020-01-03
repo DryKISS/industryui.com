@@ -4,9 +4,8 @@ import { createPortal } from 'react-dom'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 import { CONTEXT } from '../../../'
 
-import { OffCanvasComponent } from '../'
-
 // Components
+import { OffCanvasComponent } from '../'
 
 export const OffCanvas = props => {
   const [mounted, setMounted] = useState(false)
