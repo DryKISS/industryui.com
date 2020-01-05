@@ -9,9 +9,9 @@ import { OffCanvasComponent } from '../'
 
 export const OffCanvas = props => {
   const [mounted, setMounted] = useState(false)
-  let container = ''
+  let container = document.body
   useEffect(() => {
-    container = props.container || document.body
+    container = props.container || container
     if (!props.show) {
       setTimeout(() => {
         setMounted(false)

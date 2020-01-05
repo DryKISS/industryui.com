@@ -51,13 +51,13 @@ export class MyApp extends App {
 
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
-        {user && (
+        {user && offCanvas && (
           <UserProvider jwtConfig={jwtConfig}>
-            <NotificationsProvider user={user}>{this.layout()}</NotificationsProvider>
+            <NotificationsProvider user={user}>
+              <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
+            </NotificationsProvider>
           </UserProvider>
         )}
-
-        {offCanvas && <OffCanvasProvider>{this.layout()}</OffCanvasProvider>}
 
         {!user && !fire && this.layout()}
       </>
