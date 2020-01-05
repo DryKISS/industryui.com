@@ -17,6 +17,7 @@ import {
   FirebaseProvider,
   Icons,
   NotificationsProvider,
+  OffCanvasProvider,
   Theme,
   ThemeStyle,
   UserProvider
@@ -33,13 +34,14 @@ export class MyApp extends App {
     firebase: object,
     icons: object,
     Layout: any.isRequired,
+    offCanvas: bool,
     pageProps: object,
     theme: object,
     user: bool
   }
 
   elements () {
-    const { firebase, icons, user } = this.props
+    const { firebase, icons, offCanvas, user } = this.props
     const fire = isObject(firebase)
 
     return (
@@ -54,6 +56,8 @@ export class MyApp extends App {
             <NotificationsProvider user={user}>{this.layout()}</NotificationsProvider>
           </UserProvider>
         )}
+
+        {offCanvas && <OffCanvasProvider>{this.layout()}</OffCanvasProvider>}
 
         {!user && !fire && this.layout()}
       </>
