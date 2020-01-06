@@ -23,18 +23,23 @@ export const OffCanvasProvider = ({ children }) => {
   const [data, setData] = useState(DATA)
   const handleClose = () => {
     toggleShow(false)
-    setData(DATA)
+    setData(prev => ({
+      ...prev,
+      title: '',
+      content: ''
+    }))
   }
   const handleShow = data => {
-    if (data.content) {
-      setData(prev => ({ ...prev, ...data }))
+    if (data && data.content) {
+      setData(data)
       toggleShow(true)
     } else handleClose()
   }
   return (
     <OffCanvasContext.Provider
       value={{
-        show: handleShow
+        show: handleShow,
+        close: handleClose
       }}
     >
       {children}
@@ -44,8 +49,8 @@ export const OffCanvasProvider = ({ children }) => {
         headerText={data.title}
         overlay
         lockScrollOnOpen
-        width={data.width}
-        placement={data.placement}
+        width={data.width || undefined}
+        placement={data.placement || undefined}
       >
         {data.content}
       </OffCanvas>
