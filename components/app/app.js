@@ -17,6 +17,7 @@ import {
   FirebaseProvider,
   Icons,
   NotificationsProvider,
+  OffCanvasProvider,
   Theme,
   ThemeStyle,
   UserProvider
@@ -33,13 +34,14 @@ export class MyApp extends App {
     firebase: object,
     icons: object,
     Layout: any.isRequired,
+    offCanvas: bool,
     pageProps: object,
     theme: object,
     user: bool
   }
 
   elements () {
-    const { firebase, icons, user } = this.props
+    const { firebase, icons, offCanvas, user } = this.props
     const fire = isObject(firebase)
 
     return (
@@ -49,9 +51,11 @@ export class MyApp extends App {
 
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
-        {user && (
+        {user && offCanvas && (
           <UserProvider jwtConfig={jwtConfig}>
-            <NotificationsProvider user={user}>{this.layout()}</NotificationsProvider>
+            <NotificationsProvider user={user}>
+              <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
+            </NotificationsProvider>
           </UserProvider>
         )}
 
