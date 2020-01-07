@@ -7,6 +7,7 @@ import { FormError } from '../'
 
 export const FieldHOC = ({
   component: Component,
+  children,
   register,
   required,
   validate,
@@ -29,7 +30,9 @@ export const FieldHOC = ({
         ...(props.minLength ? { minLength: props.minLength } : null)
       })}
       {...props}
-    />
+    >
+      {children}
+    </Component>
     <FormError message={errors[props.name] ? errors[props.name].message : ''} />
   </>
 )
