@@ -2,9 +2,6 @@
  * Form - WrappedComponent
  */
 
-// React
-import { bool, oneOfType, string } from 'prop-types'
-
 // UI
 import { FormError } from '../'
 

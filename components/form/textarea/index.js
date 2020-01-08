@@ -3,11 +3,10 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
-import { bool, func, number, string, oneOf } from 'prop-types'
+import { bool, number, string, oneOf } from 'prop-types'
 
 // UI
-import { Label, FieldHOC } from '../'
+import { FieldHOC } from '../'
 
 // Style
 import styled, { css } from 'styled-components'
