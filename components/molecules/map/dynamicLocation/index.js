@@ -48,10 +48,10 @@ DynamicLocation.propTypes = {
 
 DynamicLocation.defaultProps = {
   googleMapURL: 'https://maps.googleapis.com/maps/api/js?',
-  loadingElement: <div style={{ height: `100%` }} />,
+  loadingElement: <div style={{ height: '100%' }} />,
   containerHeight: '400px',
   containerWidth: '100%',
-  mapElement: <div style={{ height: `100%` }} />,
+  mapElement: <div style={{ height: '100%' }} />,
   zoom: 15
 }
 

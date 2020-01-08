@@ -4,7 +4,7 @@
  */
 
 // React
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { bool, string } from 'prop-types'
 
 // React Dropzone
@@ -29,15 +29,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     [files]
   )
 
-  const {
-    acceptedFiles,
-    rejectedFiles,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     accept: accept,
     disabled: disabled,
     multiple: multiple,
@@ -61,25 +53,6 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 16
-  }
-
-  const thumb = {
-    display: 'inline-flex',
-    width: 100,
-    height: 100,
-    boxSizing: 'border-box'
-  }
-
-  const thumbInner = {
-    display: 'flex',
-    minWidth: 0,
-    overflow: 'hidden'
-  }
-
-  const img = {
-    display: 'block',
-    width: 'auto',
-    height: '100%'
   }
 
   const removeFile = file => {
