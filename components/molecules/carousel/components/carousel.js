@@ -4,21 +4,21 @@
 
 // React
 import React, { useState } from 'react'
-import { array, bool, node, number } from 'prop-types'
+import { array, bool, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { Icon } from '../../../'
+import CarouselArrow from './arrow'
 
 const Wrapper = styled.div`
-  height: ${({ height }) => `${height}px`};
-  min-height: ${({ height }) => `${height}px`};
+  height: ${({ height }) => height};
+  min-height: ${({ height }) => height};
   margin: 0;
   position: relative;
-  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : `${width}px`)};
+  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : width)};
 `
 
-export const Carousel = ({ children, width, height, fullWidth }) => {
+export const Carousel = ({ children, fullWidth, height, leftArrowIcon, rightArrowIcon, width }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const previousSlide = () => {
@@ -37,9 +37,9 @@ export const Carousel = ({ children, width, height, fullWidth }) => {
 
   return (
     <Wrapper width={width} height={height} fullWidth={fullWidth}>
-      <Arrow direction='left' clickFunction={previousSlide} icon='arrow-left' />
-      {children[currentImageIndex]}
-      <Arrow direction='right' clickFunction={nextSlide} icon='arrow-right' />
+      <CarouselArrow direction='left' clickFunction={previousSlide} icon={leftArrowIcon} />
+      {children[currentImageIndex] || children}
+      <CarouselArrow direction='right' clickFunction={nextSlide} icon={rightArrowIcon} />
     </Wrapper>
   )
 }
@@ -47,42 +47,15 @@ export const Carousel = ({ children, width, height, fullWidth }) => {
 Carousel.propTypes = {
   children: array,
   fullWidth: bool,
-  height: number,
-  width: number
+  height: string,
+  leftArrowIcon: string,
+  rightArrowIcon: string,
+  width: string
 }
 
 Carousel.defaultProps = {
   children: [],
-  fullWidth: false
-}
-
-const Arrow = ({ direction, clickFunction, icon }) => (
-  <StyledArrow icon={icon} onClick={clickFunction} direction={direction} />
-)
-
-const StyledArrow = styled(Icon)`
-  color: #000;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  ${({ direction }) => (direction === 'left' ? 'left: 1rem;' : 'right: 1rem;')}
-  && {
-    font-size: 2rem;
-  }
-`
-
-export const CarouselSlide = ({ children }) => {
-  return <StyledSlide>{children}</StyledSlide>
-}
-
-const StyledSlide = styled.div`
-  height: 100%;
-  width: 100%;
-  img {
-    width: 100%;
-  }
-`
-
-CarouselSlide.propTypes = {
-  children: node
+  fullWidth: false,
+  leftArrowIcon: 'chevron-left',
+  rightArrowIcon: 'chevron-right'
 }

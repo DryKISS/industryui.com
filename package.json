@@ -124,7 +124,6 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "^9.1.7",
-    "pure-react-carousel": "^1.24.1",
     "react-datepicker": "^2.10.1",
     "react-dropzone": "^10.2.1",
     "react-google-maps": "^9.4.5",
