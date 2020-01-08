@@ -1,6 +1,7 @@
 /**
  * Form
  */
+export * from './controlled'
 export * from './error'
 export * from './field'
 export * from './form'
