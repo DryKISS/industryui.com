@@ -10,7 +10,7 @@ import { func, string } from 'prop-types'
 import styled from 'styled-components'
 import { Icon } from '../../../'
 
-const CarouselArrow = ({ direction, clickFunction, icon }) => (
+export const CarouselArrow = ({ direction, clickFunction, icon }) => (
   <StyledArrow icon={icon} onClick={clickFunction} direction={direction} />
 )
 
@@ -30,4 +30,3 @@ const StyledArrow = styled(Icon)`
     font-size: 2rem;
   }
 `
-export default CarouselArrow

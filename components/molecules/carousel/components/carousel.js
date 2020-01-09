@@ -8,7 +8,7 @@ import { array, bool, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import CarouselArrow from './arrow'
+import { CarouselArrow } from './arrow'
 
 const Wrapper = styled.div`
   height: ${({ height }) => height};
