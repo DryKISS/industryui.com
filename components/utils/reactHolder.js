@@ -39,7 +39,7 @@ export const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
 
   if (usePlaceholder) {
     const src = `holder.js/${width}x${height}`
-    return <img src={src} />
+    return <img src={src} ref={placeholderRef} data-src={src} />
   } else {
     return <img src={src} />
   }

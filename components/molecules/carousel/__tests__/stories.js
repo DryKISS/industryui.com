@@ -12,9 +12,9 @@ import { Wrapper } from 'decorators'
 import styled from 'styled-components'
 
 // UI
-import { Carousel, CarouselSlide } from '../'
+import { Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
 import Readme from '../README.md'
-import Img from '../../../utils/react-holder'
+import vizla from '../__resources__/vizla.jpg'
 
 export default {
   title: 'Molecules/Carousel',
@@ -27,61 +27,41 @@ export default {
   }
 }
 
-const width = '750px'
-const height = '422px'
-const renderImage = () => <Img src='./img/test1.jpg' width={width} height={height} usePlaceholder />
+const renderImage = () => (
+  <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />
+)
 
 export const main = () => (
-  <Carousel width={width} height={height}>
+  <Carousel fullWidth>
     <CarouselSlide>
-      <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
+      <TextLabel>Slide 1</TextLabel>
       {renderImage()}
     </CarouselSlide>
     <CarouselSlide>
-      <TextLabel>objectFit: cover</TextLabel>
-      {renderImage()}
-    </CarouselSlide>
-    <CarouselSlide>
-      <TextLabel>objectFit: none</TextLabel>
+      <TextLabel>Slide 2</TextLabel>
       {renderImage()}
     </CarouselSlide>
     <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
+  </Carousel>
+)
+
+export const withImageComponent = () => (
+  <Carousel fullWidth>
     <CarouselSlide>
-      <TextLabel>objectFit: cover</TextLabel>
-      {renderImage()}
-    </CarouselSlide>
-    <CarouselSlide>
-      <TextLabel>objectFit: cover</TextLabel>
-      {renderImage()}
+      <TextLabel>With Image Component</TextLabel>
+      <Image src={vizla} />
     </CarouselSlide>
   </Carousel>
 )
 
-// export const usePureReactCarousel = () => (
-//   <PRCarousel width='600px' height='300px'>
-//     <PRCarouselSlide>
-//       <TextLabel style={{ objectFit: 'contain' }}>objectFit: contain</TextLabel>
-//       {renderImage()}
-//     </PRCarouselSlide>
-//     <PRCarouselSlide>
-//       <TextLabel>objectFit: cover</TextLabel>
-//       {renderImage()}
-//     </PRCarouselSlide>
-//     <PRCarouselSlide>
-//       <TextLabel>objectFit: none</TextLabel>
-//       {renderImage()}
-//     </PRCarouselSlide>
-//     <PRCarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</PRCarouselSlide>
-//     <PRCarouselSlide>
-//       <TextLabel>objectFit: cover</TextLabel>
-//       {renderImage()}
-//     </PRCarouselSlide>
-//     <PRCarouselSlide>
-//       <TextLabel>objectFit: cover</TextLabel>
-//       {renderImage()}
-//     </PRCarouselSlide>
-//   </PRCarousel>
-// )
+export const withHTMLImageTag = () => (
+  <Carousel fullWidth>
+    <CarouselSlide>
+      <TextLabel>With HTML Image Tag</TextLabel>
+      <img src={vizla} />
+    </CarouselSlide>
+  </Carousel>
+)
 
 const TextLabel = styled.span`
   color: white;
