@@ -13,9 +13,7 @@ import { OffCanvasContext } from '../'
 
 const DATA = {
   title: '',
-  content: '',
-  width: undefined,
-  placement: undefined
+  content: ''
 }
 
 export const OffCanvasProvider = ({ children }) => {
@@ -23,11 +21,6 @@ export const OffCanvasProvider = ({ children }) => {
   const [data, setData] = useState(DATA)
   const handleClose = () => {
     toggleShow(false)
-    setData(prev => ({
-      ...prev,
-      title: '',
-      content: ''
-    }))
   }
   const handleShow = data => {
     if (data && data.content) {
@@ -49,8 +42,8 @@ export const OffCanvasProvider = ({ children }) => {
         headerText={data.title}
         overlay
         lockScrollOnOpen
-        width={data.width || undefined}
-        placement={data.placement || undefined}
+        width={data.width}
+        placement={data.placement}
       >
         {data.content}
       </OffCanvas>
