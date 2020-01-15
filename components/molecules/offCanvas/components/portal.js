@@ -23,10 +23,7 @@ export const OffCanvas = props => {
 
       // Lock body scroll when offCanvas is open
       if (props.lockScrollOnOpen) {
-        document.documentElement.setAttribute(
-          'style',
-          'width: 100%; position: fixed; top: 0px; right: 0; left: 0; overflow: hidden;'
-        )
+        document.documentElement.setAttribute('style', 'overflow: hidden;')
       }
     }
   }, [props.show])

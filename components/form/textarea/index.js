@@ -85,6 +85,16 @@ const StyledTextarea = styled.textarea`
     color: #c0c0c0;
     opacity: 1;
   }
+
+  ${({ errors }) =>
+    errors &&
+    css`
+      background: rgb(251, 236, 242);
+      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      border-image: initial;
+      border-style: solid;
+      border-width: 1px 1px 1px 10px;
+    `}
 `
 
 TextareaField.propTypes = {

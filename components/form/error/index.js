@@ -18,6 +18,7 @@ export const StyledSmall = styled.small`
   font-size: 80%;
   font-weight: 400;
   margin-top: 0.25rem;
+  width: 100%;
 `
 
 FormError.propTypes = {
