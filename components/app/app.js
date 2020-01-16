@@ -9,6 +9,9 @@ import { any, bool, func, object } from 'prop-types'
 // Lodash
 import isObject from 'lodash/isObject'
 
+// Apollo
+import { ApolloProvider } from '@apollo/react-hooks'
+
 // Next
 import App from 'next/app'
 
@@ -30,6 +33,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export class MyApp extends App {
   static propTypes = {
+    apolloClient: object,
     Component: func.isRequired,
     firebase: object,
     icons: object,
@@ -51,15 +55,29 @@ export class MyApp extends App {
 
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
-        {user && offCanvas && (
+        {user && (
           <UserProvider jwtConfig={jwtConfig}>
             <NotificationsProvider user={user}>
-              <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
+              {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
             </NotificationsProvider>
           </UserProvider>
         )}
 
         {!user && !fire && this.layout()}
+      </>
+    )
+  }
+
+  data () {
+    const { apolloClient } = this.props
+
+    return (
+      <>
+        {apolloClient ? (
+          <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
+        ) : (
+          this.elements()
+        )}
       </>
     )
   }
@@ -79,7 +97,7 @@ export class MyApp extends App {
 
     return (
       <ThemeProvider theme={Theme}>
-        {theme ? <ThemeProvider theme={theme}>{this.elements()}</ThemeProvider> : this.elements()}
+        {theme ? <ThemeProvider theme={theme}>{this.data()}</ThemeProvider> : this.data()}
       </ThemeProvider>
     )
   }
