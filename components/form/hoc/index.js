@@ -12,6 +12,7 @@ export const FieldHOC = ({
   required,
   validate,
   errors,
+  showError,
   ...props
 }) => (
   <>
@@ -19,7 +20,7 @@ export const FieldHOC = ({
       aria-label={props.name}
       errors={errors[props.name]}
       key={props.name}
-      name={props.id}
+      name={props.name}
       ref={register({
         required: required,
         pattern: props.regExp ? new RegExp(props.regExp) : null,
@@ -33,10 +34,11 @@ export const FieldHOC = ({
     >
       {children}
     </Component>
-    <FormError message={errors[props.name] ? errors[props.name].message : ''} />
+    {showError && <FormError message={errors[props.name] ? errors[props.name].message : ''} />}
   </>
 )
 
 FieldHOC.defaultProps = {
-  errors: {}
+  errors: {},
+  showError: true
 }

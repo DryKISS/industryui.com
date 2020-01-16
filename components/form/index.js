@@ -1,6 +1,7 @@
 /**
  * Form
  */
+export * from './checkbox'
 export * from './controlled'
 export * from './customField'
 export * from './error'
