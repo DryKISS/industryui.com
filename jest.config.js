@@ -11,6 +11,7 @@ module.exports = {
   testURL: 'http://localhost',
   transform: {
     '^.+\\.md?$': 'markdown-loader-jest',
+    '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '^.+\\.js?$': 'babel-jest'
   },
   transformIgnorePatterns: ['/node_modules/(?!(@babel/runtime)/).*/']
