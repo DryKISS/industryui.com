@@ -3,8 +3,8 @@
  */
 
 // React
-import React, { Fragment } from 'react'
-import { array, bool } from 'prop-types'
+import React from 'react'
+import { array, bool, string } from 'prop-types'
 
 // UI
 import { FieldHOC, FormError } from '../../'
@@ -13,22 +13,22 @@ import { CheckboxComponent } from './component'
 // Style
 import styled from 'styled-components'
 
-export const CheckboxField = ({ data, errors, stacked, ...props }) => {
+export const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <fieldset>
+      {legend && <legend>{legend}</legend>}
       {data.map(({ disabled, label, ...data }) => (
-        <Fragment key={data.value}>
+        <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
           <FieldHOC
             component={CheckboxComponent}
             disabled={disabled}
-            stacked={stacked}
             errors={errors[props.name]}
             showError={false}
             {...data}
             {...props}
           />
-          <StyledLabel htmlFor={data.id}>{label}</StyledLabel>
-        </Fragment>
+          {label}
+        </StyledLabel>
       ))}
       <FormError message={errors[props.name] ? errors[props.name].message : ''} />
     </fieldset>
@@ -36,13 +36,14 @@ export const CheckboxField = ({ data, errors, stacked, ...props }) => {
 }
 
 const StyledLabel = styled.label`
-  display: inline;
-  padding: 0 1.25rem;
+  display: ${({ stacked }) => (stacked ? 'block' : 'inline')};
   cursor: pointer;
+  padding-right: 1rem;
 `
 
 CheckboxField.propTypes = {
   data: array.isRequired,
+  legend: string,
   stacked: bool
 }
 
