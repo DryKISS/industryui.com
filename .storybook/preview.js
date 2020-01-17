@@ -1,13 +1,12 @@
 /**
  * Storybook Configuration
- * @see https://storybook.js.org/basics/writing-stories/#loading-stories-dynamically
  */
 
 // React
 import React from 'react'
 
 // Storybook
-import { addDecorator, addParameters, configure } from '@storybook/react'
+import { addDecorator, addParameters } from '@storybook/react'
 import { withA11y } from '@storybook/addon-a11y'
 import { withInfo } from '@storybook/addon-info'
 import { addReadme } from 'storybook-readme'
@@ -56,6 +55,3 @@ addParameters({
 })
 
 addDecorator(addReadme)
-
-// Load stories
-configure(require.context('../components', true, /stories\.js$/), module)
