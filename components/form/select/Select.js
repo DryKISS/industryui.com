@@ -4,7 +4,7 @@
 
 // React
 import { forwardRef } from 'react'
-import { array, arrayOf, bool, func, number, object, oneOfType, string } from 'prop-types'
+import { array, object, string } from 'prop-types'
 
 // UI
 import { FieldHOC } from '../'
