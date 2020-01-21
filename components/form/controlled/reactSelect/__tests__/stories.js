@@ -91,10 +91,10 @@ export const withDefaultValue = () => {
   )
 }
 
-export const insideAForm = () => {
+export const insideAFormRequired = () => {
   const placeholder = 'Name submitted: '
   const [name, setName] = useState(placeholder)
-  const { change } = useForm({ select: {} })
+  const { change, form } = useForm({ select: {} })
   const knobs = useKnobs()
 
   const handleFormSubmit = ({
@@ -113,11 +113,43 @@ export const insideAForm = () => {
       <Input change={() => {}} label='Name' id='name' placeholder='Enter Your Name' type='text' />
       <ReactSelect
         change={change}
-        defaultValue={OPTIONS[0]}
         id='select'
         isClearable
         label='React Select'
         options={OPTIONS}
+        required
+        selectedOption={form.select}
+        {...knobs}
+      />
+      <Button secondary type='submit'>
+        Submit
+      </Button>
+    </Form>
+  )
+}
+
+export const async = () => {
+  const { change, form } = useForm({ asyncSelect: {} })
+  const knobs = useKnobs()
+
+  const loadOptions = (inputValue, callback) => {
+    setTimeout(() => {
+      callback(OPTIONS.filter(o => o.value.includes(inputValue)))
+    }, 1000)
+  }
+
+  return (
+    <Form submit={() => {}}>
+      <ReactSelect
+        async
+        change={change}
+        defaultOptions
+        id='asyncSelect'
+        isClearable
+        label='Async React Select'
+        loadOptions={loadOptions}
+        required
+        selectedOption={form.asyncSelect}
         {...knobs}
       />
       <Button secondary type='submit'>
