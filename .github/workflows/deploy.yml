@@ -8,6 +8,7 @@ on:
 
 env:
   CI: true
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   deploy:
