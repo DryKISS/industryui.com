@@ -42,7 +42,7 @@
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
-    "deploy-storybook-ci": "storybook-to-ghpages --ci -t=GITHUB_TOKEN",
+    "deploy-storybook-ci": "storybook-to-ghpages -- --ci --host-token-env-variable=GITHUB_TOKEN",
     "migrate": "./node_modules/.bin/jscodeshift -t ./node_modules/@storybook/codemod/dist/transforms/storiesof-to-csf.js . --ignore-pattern \"node_modules|dist\""
   },
   "engines": {
