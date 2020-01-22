@@ -1,11 +1,11 @@
 name: Deploy IndustryUI
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - master
 
