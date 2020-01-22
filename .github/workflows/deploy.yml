@@ -31,4 +31,4 @@ jobs:
       - name: Deploy
         if: github.event.pull_request.merged == true
         run: |
-          npm run deploy-storybook
+          npm run deploy-storybook-ci
