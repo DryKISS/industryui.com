@@ -5,9 +5,6 @@ on:
     types: [closed]
     branches:
       - master
-  push:
-    branches:
-      - master
 
 env:
   CI: true
