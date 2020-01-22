@@ -26,4 +26,9 @@ jobs:
       - name: Build
         if: github.event.pull_request.merged == true
         run: |
+          npm run build-storybook
+
+      - name: Deploy
+        if: github.event.pull_request.merged == true
+        run: |
           npm run deploy-storybook
