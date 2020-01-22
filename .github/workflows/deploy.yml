@@ -26,5 +26,7 @@ jobs:
 
       - name: Build and Deploy
         if: github.event.pull_request.merged == true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           npm run deploy-storybook-ci
