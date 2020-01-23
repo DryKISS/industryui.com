@@ -4,11 +4,10 @@
 
 // React
 import React from 'react'
-import { any, func, number, string, bool, oneOfType, node, oneOf } from 'prop-types'
 import styled from 'styled-components'
 
-import { CONTEXT, SIZE } from '../../../'
-import { PaginationItem } from '../'
+import { PaginationItem } from '.'
+import { PaginationPropTypes } from './propTypes'
 
 export const Pagination = ({
   children,
@@ -68,17 +67,7 @@ export const Pagination = ({
   )
 }
 
-Pagination.propTypes = {
-  children: any,
-  context: oneOf(Object.values(CONTEXT)),
-  currentPage: number,
-  nextLabel: oneOfType([string, node]),
-  onPageChange: func.isRequired,
-  pageCount: number,
-  prevLabel: oneOfType([string, node]),
-  showNextAndPrev: bool,
-  size: oneOf(Object.values(SIZE))
-}
+Pagination.propTypes = PaginationPropTypes
 
 Pagination.defaultProps = {
   currentPage: 1,

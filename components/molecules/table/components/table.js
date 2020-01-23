@@ -3,10 +3,13 @@
  */
 
 // React
-import { array, bool, func, string } from 'prop-types'
+import React, { useState } from 'react'
+import { array, bool, func, number, shape, string } from 'prop-types'
 
 // UI
-import { BACKGROUND } from '../../../'
+import { BACKGROUND, Pagination } from '../../../'
+
+import { PaginationPropTypes } from '../../pagination/components/propTypes'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -17,11 +20,14 @@ export const Table = ({
   className,
   columns,
   hover,
+  pagination,
+  paginationProps: { perPage, ...otherPaginationProps },
   responsive,
   rowClick,
   rows,
   striped
 }) => {
+  const [currentPage, setCurrentPage] = useState(1)
   const handleClick = e => {
     e.preventDefault()
     const row = e.currentTarget.getAttribute('data-item')
@@ -45,7 +51,9 @@ export const Table = ({
   const renderRows = () => {
     const clickable = typeof rowClick === 'function'
 
-    return rows.map((row, index) => {
+    const temp = pagination ? rows.slice((currentPage - 1) * perPage, currentPage * perPage) : rows
+
+    return temp.map((row, index) => {
       const context = row.context
       delete row.context
 
@@ -99,6 +107,19 @@ export const Table = ({
       {responsive && <StyledResponsive>{renderTable()}</StyledResponsive>}
 
       {!responsive && renderTable()}
+
+      {pagination && rows.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          onPageChange={page => setCurrentPage(page)}
+          pageCount={Math.ceil(rows.length / perPage)}
+          size='sm'
+          style={{
+            marginTop: '10px'
+          }}
+          {...otherPaginationProps}
+        />
+      )}
     </>
   )
 }
@@ -170,6 +191,8 @@ Table.propTypes = {
   classname: string,
   columns: array,
   hover: bool,
+  pagination: bool,
+  paginationProps: shape({ perPage: number, ...PaginationPropTypes }),
   responsive: bool,
   rowClick: func,
   rows: array.isRequired,
@@ -181,6 +204,10 @@ Table.defaultProps = {
   columns: [],
   className: 'Table',
   hover: true,
+  pagination: false,
+  paginationProps: {
+    perPage: 10
+  },
   responsive: true,
   striped: true
 }

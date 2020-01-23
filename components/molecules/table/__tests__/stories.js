@@ -65,3 +65,5 @@ export const align = () => <Table align columns={columns} rows={data} />
 export const formatter = () => <Table columns={columnsFormatter} rows={data} />
 
 export const actions = () => <Table columns={columnsActions} rows={data} />
+
+export const withPagination = () => <Table columns={columnsActions} rows={data} pagination />
