@@ -22,7 +22,7 @@ export const HiddenInput = ({ value, selectRef, required }) => (
 )
 
 HiddenInput.propTypes = {
-  value: object,
+  value: bool,
   required: bool,
   selectRef: object
 }
