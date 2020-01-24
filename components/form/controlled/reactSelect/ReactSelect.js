@@ -51,9 +51,9 @@ export const ReactSelect = ({
   }
 
   const value =
-    selectedOption && selectedOption.value
+    (selectedOption && selectedOption.value) || (props.isMulti && selectedOption.length > 0)
       ? selectedOption
-      : defaultValue && defaultValue.value
+      : (defaultValue && defaultValue.value) || (props.isMulti && defaultValue.length > 0)
       ? defaultValue
       : undefined
 
@@ -74,7 +74,7 @@ export const ReactSelect = ({
     <Label id={id} text={label}>
       <Component name={id} onChange={handleChange} ref={selectRef} value={value} {...props} />
       {/* A hidden input for validation and required prop */}
-      <HiddenInput selectRef={selectRef} required={required} value={value} />
+      <HiddenInput selectRef={selectRef} required={required} value={!!value} />
     </Label>
   )
 }

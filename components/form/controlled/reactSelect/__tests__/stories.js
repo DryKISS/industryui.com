@@ -43,7 +43,7 @@ const useKnobs = (props = {}) => {
 }
 
 export const Single = () => {
-  const { change } = useForm({ select: {} })
+  const { change, form } = useForm({ select: {} })
   const knobs = useKnobs()
 
   return (
@@ -54,28 +54,36 @@ export const Single = () => {
       isClearable
       label='React Select'
       options={OPTIONS}
+      selectedOption={form.select}
     />
   )
 }
 
 export const Multi = () => {
-  const { change } = useForm({ select: [] })
+  const { change, form } = useForm({ select: [] })
   const knobs = useKnobs({ isMulti: true })
 
   return (
-    <ReactSelect
-      change={change}
-      id='select'
-      isClearable
-      label='React Select'
-      options={OPTIONS}
-      {...knobs}
-    />
+    <Form submit={() => {}}>
+      <ReactSelect
+        change={change}
+        id='select'
+        isClearable
+        label='React Select'
+        options={OPTIONS}
+        required
+        selectedOption={form.select}
+        {...knobs}
+      />
+      <Button secondary type='submit'>
+        Submit
+      </Button>
+    </Form>
   )
 }
 
 export const withDefaultValue = () => {
-  const { change } = useForm({ select: {} })
+  const { change, form } = useForm({ select: {} })
   const knobs = useKnobs()
 
   return (
@@ -86,6 +94,7 @@ export const withDefaultValue = () => {
       isClearable
       label='React Select'
       options={OPTIONS}
+      selectedOption={form.select}
       {...knobs}
     />
   )
