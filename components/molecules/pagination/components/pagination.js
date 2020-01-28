@@ -13,6 +13,7 @@ export const Pagination = ({
   children,
   context,
   currentPage,
+  hideWhenOnlyOnePage,
   nextLabel,
   onPageChange,
   pageCount,
@@ -60,6 +61,7 @@ export const Pagination = ({
       )}
     </>
   )
+  if (hideWhenOnlyOnePage && pageCount < 2) return null
   return (
     <StyledPagination aria-label='Pagination' {...props}>
       {children || renderContent()}
@@ -71,7 +73,9 @@ Pagination.propTypes = PaginationPropTypes
 
 Pagination.defaultProps = {
   currentPage: 1,
+  hideWhenOnlyOnePage: true,
   nextLabel: 'Next',
+  onPageChange: () => {},
   pageCount: 1,
   prevLabel: 'Previous'
 }
