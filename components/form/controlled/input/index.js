@@ -66,7 +66,10 @@ export const Input = ({
           <div className='Form-feedback' />
         </Label>
       ) : (
-        InputItem()
+        <>
+          {InputItem()}
+          <div className='Form-feedback' />
+        </>
       )}
     </>
   )
