@@ -85,7 +85,10 @@ export const Textarea = ({
           <div className='Form-feedback' />
         </Label>
       ) : (
-        InputItem()
+        <>
+          {InputItem()}
+          <div className='Form-feedback' />
+        </>
       )}
     </>
   )
