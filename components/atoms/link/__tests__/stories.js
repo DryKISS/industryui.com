@@ -9,8 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Link } from '../'
-import { Button } from '../../'
+import { Button, Link } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -25,13 +24,13 @@ export default {
 }
 
 export const main = () => (
-  <Link to='/'>
-    <a>Home</a>
+  <Link to='/' passHref>
+    Home
   </Link>
 )
 
 export const button = () => (
-  <Link to='/'>
+  <Link to='/' passHref>
     <Button>Home</Button>
   </Link>
 )

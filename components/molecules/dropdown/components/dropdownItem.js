@@ -18,7 +18,7 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
     </StyledLink>
   )
   return to ? (
-    <Link to={to} passHref>
+    <Link border={false} passHref to={to}>
       {item()}
     </Link>
   ) : (
@@ -47,12 +47,10 @@ const StyledDivider = styled.div`
   overflow: hidden;
 `
 
-const StyledLink = styled.a`
+const StyledLink = styled.span`
   color: ${({ theme }) => theme.COLOUR.primary};
   display: block;
   padding: 0.25rem 1.5rem;
-  text-decoration: none;
-  cursor: pointer;
   &:hover {
     background-color: #f8f9fa;
     color: inherit;

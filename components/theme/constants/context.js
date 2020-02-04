@@ -4,6 +4,7 @@
  */
 export const CONTEXT = {
   WHITE: 'white',
+  BLACK: 'black',
   DARK: 'dark',
   LIGHT: 'light',
   PRIMARY: 'primary',

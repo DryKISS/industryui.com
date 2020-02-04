@@ -59,7 +59,7 @@ const StyledNav = styled.nav`
   display: inline;
 `
 
-const StyledLink = styled.a`
+const StyledLink = styled.span`
   color: ${({ theme }) => theme.COLOUR.dark};
   margin: 0 1rem 0 0;
   text-decoration: none;

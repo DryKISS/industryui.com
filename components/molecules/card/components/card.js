@@ -36,7 +36,7 @@ export const Card = ({
   const linked = () => {
     return (
       <Link to={to} passHref>
-        <StyledLink>{card()}</StyledLink>
+        {card()}
       </Link>
     )
   }
@@ -103,10 +103,6 @@ const StyledCard = styled.div`
 
 const StyledIcon = styled(Icon)`
   margin: 1rem auto;
-`
-
-const StyledLink = styled.a`
-  text-decoration: none;
 `
 
 Card.propTypes = {

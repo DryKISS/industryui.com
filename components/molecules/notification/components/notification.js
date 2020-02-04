@@ -23,8 +23,8 @@ export const Notification = ({ close, content, date, link, priority, title }) =>
 
   if (link) {
     body = (
-      <Link to={{ href: link }}>
-        <a onClick={() => close()}>{body}</a>
+      <Link to={{ href: link }} onClick={() => close()}>
+        {body}
       </Link>
     )
   }

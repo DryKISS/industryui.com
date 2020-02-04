@@ -17,10 +17,8 @@ export const NavNotification = ({ closeMenu, to, type, visible }) => {
   }
 
   const link = () => (
-    <Link to={to} passHref>
-      <a onClick={handleClick}>
-        <Notification />
-      </a>
+    <Link border={false} onClick={handleClick} passHref to={to}>
+      <Notification />
     </Link>
   )
 

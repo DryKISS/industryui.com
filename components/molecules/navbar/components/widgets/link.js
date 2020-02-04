@@ -22,15 +22,13 @@ export const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visibl
   }
 
   return (
-    <Link to={to} passHref>
-      <StyledLink id={id} onClick={handleClick}>
-        {name}
-      </StyledLink>
+    <Link border={false} onClick={handleClick} passHref to={to}>
+      <StyledLink id={id}>{name}</StyledLink>
     </Link>
   )
 }
 
-const StyledLink = styled.a`
+const StyledLink = styled.span`
   align-items: center;
   color: ${({ theme }) => theme.NAVBAR.colourActive};
   display: flex;

@@ -4,7 +4,7 @@
 export const ONE_COLUMN = [
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '1',
     links: [
       {
         id: 'footerHowItWorks',
@@ -15,7 +15,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '2',
     links: [
       {
         id: 'footerHowItWorks',
@@ -26,7 +26,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '3',
     links: [
       {
         id: 'footerHowItWorks',
@@ -37,7 +37,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '4',
     links: [
       {
         id: 'footerHowItWorks',
@@ -48,7 +48,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '5',
     links: [
       {
         id: 'footerHowItWorks',
@@ -59,7 +59,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '6',
     links: [
       {
         id: 'footerHowItWorks',
@@ -70,7 +70,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '7',
     links: [
       {
         id: 'footerHowItWorks',
@@ -81,7 +81,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '8',
     links: [
       {
         id: 'footerHowItWorks',
@@ -92,7 +92,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '9',
     links: [
       {
         id: 'footerHowItWorks',
@@ -103,7 +103,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '10',
     links: [
       {
         id: 'footerHowItWorks',
@@ -114,7 +114,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '11',
     links: [
       {
         id: 'footerHowItWorks',
@@ -125,7 +125,7 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: 'Heading',
+    header: '12',
     links: [
       {
         id: 'footerHowItWorks',

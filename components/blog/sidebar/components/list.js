@@ -70,7 +70,7 @@ const StyledDd = styled.dd`
   width: 100%;
 `
 
-const StyledA = styled.a`
+const StyledA = styled.span`
   ${props => Truncate('100px')}
 `
 

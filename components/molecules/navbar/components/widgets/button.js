@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 export const NavButton = ({ closeMenu, id, name, to, type, visible }) => {
   return (
-    <Link to={to} passHref>
+    <Link border={false} passHref to={to}>
       <StyledButton
         id={id}
         context={type.context}

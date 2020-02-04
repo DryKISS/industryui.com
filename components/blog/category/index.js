@@ -26,7 +26,7 @@ export const BlogCategory = ({ author, config, className, style, to }) => (
       }}
       passHref
     >
-      <StyledA>{to.toUpperCase().replace('-', ' ')}</StyledA>
+      {to.toUpperCase().replace('-', ' ')}
     </Link>
   </StyledCategory>
 )
@@ -37,10 +37,6 @@ const StyledCategory = styled.div`
   margin-bottom: 5px;
   position: relative;
   z-index: 2;
-`
-
-const StyledA = styled.a`
-  color: ${({ theme: { COLOUR } }) => COLOUR.primary};
 `
 
 BlogCategory.propTypes = {

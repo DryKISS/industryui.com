@@ -11,14 +11,14 @@ export const COLOUR = {
   dark: '#5c6f7f',
   light: '#ecf0f3',
 
-  primary: '#75CCCF',
+  primary: '#0047ff',
   secondary: '#0679d8',
-  success: '#00b43c',
-  info: '#f99c23',
-  warning: '#e60811',
-  danger: '#e8095e',
+  success: '#36c53a',
+  info: '#94947e',
+  warning: '#de7f28',
+  danger: '#d45151',
 
-  help: '#ffde03',
+  help: '#ffcb44',
 
   male: '#8ECEFD',
   female: '#F88B9D',

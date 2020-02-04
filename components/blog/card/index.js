@@ -31,9 +31,7 @@ export const BlogCard = ({ article, config, type }) => {
     <article role='article' itemProp='blogPost' itemScope itemType='http://schema.org/BlogPosting'>
       <Card shadow>
         <Link to={articleLink}>
-          <a>
-            <CardImage alt={heading} src={`/blog/${slug}/hero.jpg`} />
-          </a>
+          <CardImage alt={heading} src={`/static/blog/${slug}/hero.jpg`} />
         </Link>
 
         <StyledCardBody type={type}>
@@ -41,9 +39,7 @@ export const BlogCard = ({ article, config, type }) => {
 
           <StyledContent type={type}>
             <Link to={articleLink}>
-              <a>
-                <StyledHeading content={heading} tag='h1' type={type} />
-              </a>
+              <StyledHeading content={heading} tag='h1' type={type} />
             </Link>
 
             {type === 'normal' && <p itemProp='description'>{excerpt}</p>}

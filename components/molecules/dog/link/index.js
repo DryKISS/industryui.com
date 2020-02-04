@@ -29,7 +29,7 @@ export const DogLink = ({ name }) => {
         }
       }}
     >
-      <a>{name}</a>
+      {name}
     </Link>
   )
 }

@@ -23,7 +23,6 @@ export const FOOTER = column => [
       }
     ]
   },
-
   {
     size: { md: 4, lg: 2 },
     header: 'Discover',
@@ -40,7 +39,6 @@ export const FOOTER = column => [
       }
     ]
   },
-
   {
     size: { md: 4, lg: 2 },
     header: 'Contact',

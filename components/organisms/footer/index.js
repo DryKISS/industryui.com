@@ -1,52 +1,54 @@
 /**
  * Footer
- * Showcases columns of links or HTML
  */
 
 // React
 import { arrayOf, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { Column, Container, Link, List, ListItem, Row } from '../../'
+import { Column, Container, Heading, Link, List, ListItem, Row } from '../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Footer = ({ columns }) => {
-  // NOTE: added rendering fragment (see also __mocks__/footer.js)
-  const _render = obj => {
-    return obj()
-  }
-
   const renderColumns = () => {
-    return columns.map(({ size, offset, formatter, header, links, text, style }, index) => (
-      <Column style={style} {...size} offset={offset} key={index}>
-        {formatter && _render(formatter)}
-        {header && <StyledTitle>{header}</StyledTitle>}
-        {links && renderLinks(links)}
-        {text && renderText(text)}
+    return columns.map((column, index) => (
+      <Column key={index} offset={column.offset} {...column.size}>
+        {Object.entries(column).map(([key, value], index) => {
+          switch (key) {
+            case 'header':
+              return <Heading content={value} key={index} tag='h6' />
+            case 'formatter':
+              return value(index)
+            case 'links':
+              return renderLinks(value, index)
+            case 'text':
+              return renderText(value, index)
+          }
+        })}
       </Column>
     ))
   }
 
-  const renderLinks = links => {
+  const renderLinks = (links, index) => {
     return (
-      <List unstyled>
+      <List key={index} unstyled>
         {links.map(({ name, to }, index) => (
-          <ListItem key={index}>
+          <StyledList key={index}>
             <Link to={to} passHref>
-              <StyledLink>{name}</StyledLink>
+              {name}
             </Link>
-          </ListItem>
+          </StyledList>
         ))}
       </List>
     )
   }
 
-  const renderText = text => <div dangerouslySetInnerHTML={{ __html: text }} />
+  const renderText = (text, index) => <div key={index} dangerouslySetInnerHTML={{ __html: text }} />
 
   return (
-    <StyledFooter data-test='footer'>
+    <StyledFooter data-cy='footer'>
       <Container>
         <Row>{renderColumns()}</Row>
       </Container>
@@ -55,27 +57,16 @@ export const Footer = ({ columns }) => {
 }
 
 const StyledFooter = styled.div`
-  background: ${props => props.theme.FOOTER.background};
-  color: ${props => props.theme.FOOTER.colour};
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  padding: 3rem 0;
+  ${({ theme: { FOOTER } }) => css`
+    background: ${FOOTER.background};
+    color: ${FOOTER.colour};
+  `}
+
+  padding: 1rem 0;
 `
 
-const StyledTitle = styled.h2`
-  color: ${props => props.theme.COLOUR.primary};
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  margin-top: 0;
-`
-
-const StyledLink = styled.a`
-  color: ${props => props.theme.FOOTER.colour};
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+const StyledList = styled(ListItem)`
+  margin-bottom: 1.25rem;
 `
 
 Footer.propTypes = {
