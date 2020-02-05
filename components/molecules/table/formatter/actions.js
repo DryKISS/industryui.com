@@ -14,7 +14,7 @@ import ReactTooltip from 'react-tooltip'
 // UI
 import { Button, ButtonToolbar, Icon } from '../../../'
 
-export const TableActions = ({ row: { id } }, data) => {
+export const TableActions = ({ row }, data) => {
   const handleClick = path => e => {
     e.preventDefault()
     e.stopPropagation()
@@ -26,16 +26,15 @@ export const TableActions = ({ row: { id } }, data) => {
       <ReactTooltip effect='solid' event='mouseover' globalEventOff='click' multiline />
 
       <ButtonToolbar align='flex-start' style={{ zIndex: '100000000' }}>
-        {data.map(({ content, context, icon, to, tooltip }, index) => {
+        {data.map(({ content, context, icon, onClick, to, tooltip }, index) => {
           const iconArray = Array.isArray(icon)
-
           return (
             <Button
               as='a'
               data-tip={tooltip}
               context={context}
               key={index}
-              onClick={handleClick(`${to}?id=${id}`)}
+              onClick={onClick ? () => onClick(row) : handleClick(`${to}?id=${row.id}`)}
               size='sm'
             >
               <Icon

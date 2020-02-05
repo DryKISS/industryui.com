@@ -39,12 +39,17 @@ export const ReactSelect = ({
   const selectRef = useRef()
 
   const handleChange = option => {
+    let value = option
+    if (!option) {
+      if (props.isMulti) value = []
+      else value = {}
+    }
     change({
       target: {
         checked: false,
         id,
         type: 'select',
-        value: option,
+        value,
         label: option ? option.label : ''
       }
     })
