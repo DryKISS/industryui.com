@@ -57,12 +57,13 @@ export const Footer = ({ columns }) => {
 }
 
 const StyledFooter = styled.div`
+  border-top: 2px solid ${({ theme }) => theme.COLOUR.primary};
   ${({ theme: { FOOTER } }) => css`
     background: ${FOOTER.background};
     color: ${FOOTER.colour};
   `}
 
-  padding: 1rem 0;
+  padding-top: 1rem;
 `
 
 const StyledList = styled(ListItem)`

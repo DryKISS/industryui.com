@@ -6,68 +6,65 @@
 import { array, string } from 'prop-types'
 
 // UI
-import { Container, Link, Row } from '../../'
+import { Column, Container, Divider, Icon, Image, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
 
 export const Copyright = ({ brand, links }) => {
   const renderLinks = () => {
-    return (
-      <StyledNav>
-        {links.map(({ name, to }, index) => (
-          <Link to={to} key={index} passHref>
-            <StyledLink>{name}</StyledLink>
-          </Link>
-        ))}
-      </StyledNav>
-    )
+    return links.map(({ name, to }, index) => (
+      <Link key={index} passHref to={to}>
+        <StyledLink>{name}</StyledLink>
+      </Link>
+    ))
   }
 
   const year = new Date().getFullYear()
 
   return (
-    <StyledCopyright data-test='copyright'>
-      <Container>
-        <Row>
-          <StyledBrand>
-            ©{year} {brand}
-          </StyledBrand>
+    <>
+      <Divider size='md' />
 
-          {links && renderLinks()}
-        </Row>
-      </Container>
-    </StyledCopyright>
+      <StyledCopyright data-cy='copyright'>
+        <StyledContainer>
+          <Row>
+            <Column md={3}>
+              <StyledBrand>
+                <Image alt='Logo' src='/iui.svg' />
+                <Icon context='primary' icon='copyright' prefix='fad' />
+                {year} — {brand}
+              </StyledBrand>
+            </Column>
+
+            <Column md={9}>{links && renderLinks()}</Column>
+          </Row>
+        </StyledContainer>
+      </StyledCopyright>
+    </>
   )
 }
 
 const StyledCopyright = styled.section`
-  background-color: ${({ theme }) => theme.COLOUR.light};
-  color: ${({ theme }) => theme.COLOUR.dark};
+  background-color: ${({ theme }) => theme.COPYRIGHT.background};
+  color: ${({ theme }) => theme.COPYRIGHT.colour};
   font-size: 0.875rem;
-  height: 4rem;
-  line-height: 4rem;
-  width: 100%;
+  font-weight: 700;
+`
+
+const StyledContainer = styled(Container)`
+  /* align-items: center;
+  display: flex; */
+  height: 3.5rem;
 `
 
 const StyledBrand = styled.div`
-  display: inline;
-  margin: 0 1rem 0 0;
-`
-
-const StyledNav = styled.nav`
-  display: inline;
+  /* display: inline;
+  margin: 0 1rem 0 0; */
 `
 
 const StyledLink = styled.span`
-  color: ${({ theme }) => theme.COLOUR.dark};
-  margin: 0 1rem 0 0;
-  text-decoration: none;
-
-  &:hover {
-    color: #6b7a87;
-    text-decoration: underline;
-  }
+  margin-right: 1.5rem;
 `
 
 Copyright.propTypes = {

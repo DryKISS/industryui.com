@@ -10,6 +10,7 @@ import { TYPOGRAPHY } from './typography'
 import { AVATAR } from '../../atoms/avatar/variables'
 import { BARCHART } from '../../molecules/charts/responsiveBar/variables'
 import { CALENDAR } from '../../organisms/fullCalendar/variables'
+import { COPYRIGHT } from '../../molecules/copyright/variables'
 import { FOOTER } from '../../organisms/footer/variables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
@@ -28,6 +29,7 @@ export const Theme = {
   BARCHART,
   CALENDAR,
   COLOUR,
+  COPYRIGHT,
   FOOTER,
   GRID,
   HEADINGS,

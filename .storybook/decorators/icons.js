@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faBell,
   faCommentDots,
+  faCopyright,
   faEdit,
   faEnvelope,
   faExclamationTriangle,
@@ -64,6 +65,7 @@ library.add(
   faChevronUp,
   faCircle,
   faCommentDots,
+  faCopyright,
   faExternalLink,
   faDogLeashed,
   faEdit,
