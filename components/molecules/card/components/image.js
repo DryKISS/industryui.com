@@ -30,7 +30,6 @@ const StyledContainer = styled.div`
 
 const StyledImage = styled(Image)`
   display: block;
-  height: 203px;
   object-fit: cover;
   width: 100%;
 

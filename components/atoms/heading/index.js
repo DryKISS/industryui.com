@@ -10,7 +10,7 @@ import { any, bool, object, objectOf, oneOf, oneOfType, number, string } from 'p
 import { COLOUR, CONTEXT } from '../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Heading = ({ className, content, context, noMargin, style, tag }) => {
   return (
@@ -30,10 +30,14 @@ export const Heading = ({ className, content, context, noMargin, style, tag }) =
 
 const StyledHeading = styled.span`
   ${props => COLOUR(props)}
-  font-size: ${({ as }) => (as === 'h1' && '2.25rem') || (as === 'h2' && '2rem') || '1.5rem'};
-  line-height: 1.22;
-  margin: ${({ noMargin }) => (noMargin ? 0 : '0 0 2rem 0')};
   position: relative;
+  ${({ as, noMargin, theme }) => css`
+    font-family: ${theme.HEADINGS[as].fontFamily};
+    font-size: ${theme.HEADINGS[as].fontSize};
+    line-height: ${theme.HEADINGS[as].lineHeight};
+    text-transform: ${theme.HEADINGS[as].textTransform};
+    margin: ${noMargin ? 0 : '0 0 1.25rem 0'};
+  `}
 `
 
 Heading.propTypes = {
@@ -46,6 +50,6 @@ Heading.propTypes = {
 }
 
 Heading.defaultProps = {
-  context: 'dark',
+  context: 'black',
   tag: 'h1'
 }

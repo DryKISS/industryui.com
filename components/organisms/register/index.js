@@ -88,10 +88,7 @@ export const Register = ({
       />
 
       <StyledLink>
-        Already have an account?{' '}
-        <Link to={pathLogin}>
-          <a>Log in</a>
-        </Link>
+        Already have an account? <Link to={pathLogin}>Log in</Link>
       </StyledLink>
     </Form>
   )

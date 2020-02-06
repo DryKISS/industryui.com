@@ -5,19 +5,19 @@ const breakpoints = {
   xs: 0,
   sm: 576,
   md: 768,
-  lg: 992,
+  lg: 1024,
   xl: 1200
 }
 
 const containerWidths = {
-  sm: 540,
-  md: 750,
-  lg: 960,
-  xl: 1170
+  sm: 576,
+  md: 768,
+  lg: 1008,
+  xl: 1152
 }
 
 const gridColumns = 12
-const gutterWidth = 30
+const gutterWidth = 32
 
 const defaultScreenClass = 'sm'
 

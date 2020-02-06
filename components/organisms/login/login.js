@@ -114,9 +114,7 @@ export const Login = ({
 
           {forgotPassword && (
             <ForgotPasswordWrapper>
-              <Link to={pathForgot}>
-                <a>Forgot password?</a>
-              </Link>
+              <Link to={pathForgot}>Forgot password?</Link>
             </ForgotPasswordWrapper>
           )}
         </div>
@@ -125,10 +123,7 @@ export const Login = ({
       {pathSignUp && (
         <>
           <p className='text-center'>
-            Don't have an account?{' '}
-            <Link to={pathSignUp}>
-              <a>Apply now!</a>
-            </Link>
+            Don't have an account? <Link to={pathSignUp}>Apply now!</Link>
           </p>
         </>
       )}

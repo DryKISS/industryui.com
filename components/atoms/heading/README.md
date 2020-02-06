@@ -5,5 +5,5 @@ Can also be used to define a page heading.
 
 ## Links
 
-- https://getbootstrap.com/docs/4.1/content/typography/#customizing-headings
-- https://react.semantic-ui.com/elements/header/
+- [Bootstrap](https://getbootstrap.com/docs/4.4/content/typography/#customizing-headings)
+- [Semamtic UI](https://react.semantic-ui.com/elements/header/)

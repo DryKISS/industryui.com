@@ -62,7 +62,7 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
   )
 }
 
-const StyledLink = styled.a`
+const StyledLink = styled.span`
   display: block;
   margin: 1rem 0;
 `

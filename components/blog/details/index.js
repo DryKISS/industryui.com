@@ -43,7 +43,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
         {/* Read time */}
         <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='stopwatch' />
-          <BlogReadTime time={2} />
+          <BlogReadTime time={article.readtime} />
         </ListItem>
       </List>
 

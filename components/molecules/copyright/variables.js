@@ -1,9 +1,9 @@
 /**
- * Theme - Variables - Footer
+ * Theme - Variables - Copyright
  */
 import { COLOUR } from '../../theme/variables/colour'
 
-export const FOOTER = {
+export const COPYRIGHT = {
   background: COLOUR.white,
   colour: COLOUR.black
 }

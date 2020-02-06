@@ -25,7 +25,7 @@ const StyledAvatar = styled.div`
   background: ${({ context, theme }) =>
     context ? theme.COLOUR[context] : theme.AVATAR.background};
   border-radius: 50%;
-  color: ${props => props.theme.AVATAR.colour};
+  color: ${({ theme }) => theme.AVATAR.colour};
   display: flex;
   justify-content: center;
   ${({ size }) => css`
