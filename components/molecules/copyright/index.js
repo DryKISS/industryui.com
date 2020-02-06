@@ -6,7 +6,7 @@
 import { array, string } from 'prop-types'
 
 // UI
-import { Column, Container, Divider, Icon, Image, Link, Row } from '../../'
+import { Column, Container, Divider, Icon, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -31,7 +31,7 @@ export const Copyright = ({ brand, links }) => {
           <Row>
             <Column md={3}>
               <StyledBrand>
-                <Image alt='Logo' src='/iui.svg' />
+                {/* <Image alt='Logo' src='/iui.svg' /> */}
                 <Icon context='primary' icon='copyright' prefix='fad' />
                 {year} — {brand}
               </StyledBrand>

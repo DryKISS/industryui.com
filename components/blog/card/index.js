@@ -96,6 +96,7 @@ const StyledButton = styled(Button)`
 const StyledCardBody = styled(CardBody)`
   min-height: 303px;
   position: relative;
+  z-index: 0;
   ${({ theme: { COLOUR }, type }) =>
     type === 'hero' &&
     css`
@@ -112,7 +113,7 @@ const StyledCardBody = styled(CardBody)`
         top: 0;
         transform: skewy(6deg);
         transform-origin: 100% 0;
-        z-index: 1;
+        z-index: -1;
       }
     `}
 `

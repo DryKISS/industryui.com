@@ -24,7 +24,9 @@ export const Link = ({ border, children, onClick, passHref, target, to }) => {
       </StyledLink>
     </NextLink>
   ) : (
-    <StyledLink href={to}>{children}</StyledLink>
+    <StyledLink border={border} href={to}>
+      {children}
+    </StyledLink>
   )
 }
 
@@ -32,6 +34,7 @@ const StyledLink = styled.a`
   background-color: transparent;
   border-bottom: ${({ border, theme }) => (border ? `2px solid ${theme.LINK.underline}` : '')};
   color: ${({ theme }) => theme.LINK.colour};
+  cursor: pointer;
   display: ${({ border }) => (border ? 'inline-block' : 'block')};
   text-decoration: none;
 
