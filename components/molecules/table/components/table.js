@@ -75,6 +75,8 @@ export const Table = ({
               return
             }
 
+            const renderValue = typeof value === 'function' ? value() : value
+
             return (
               <StyledTd align={align} key={index}>
                 {length > 0 && column.formatter ? (
@@ -82,7 +84,7 @@ export const Table = ({
                 ) : value && value.__html ? (
                   <span dangerouslySetInnerHTML={value} />
                 ) : (
-                  value
+                  renderValue
                 )}
               </StyledTd>
             )
