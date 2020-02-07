@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { Select, useForm } from '../../../'
 import { ImageWrapper } from '../../'
 
-export const ImageLocation = ({ initial, label, locationChange, options }) => {
+export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, options }) => {
   const INITIAL_STATE = {
     option: initial
   }
@@ -26,11 +26,12 @@ export const ImageLocation = ({ initial, label, locationChange, options }) => {
   useEffect(() => {
     const selected = options.find(o => o.value === parseInt(option)) || null
     setItem(selected)
+    itemChange && itemChange(selected)
     setCoordinates(null)
   }, [option])
 
   useEffect(() => {
-    locationChange && item && locationChange({ coordinates, item })
+    coordinatesChange && item && coordinatesChange({ coordinates, item })
   }, [coordinates])
 
   return (
@@ -56,7 +57,8 @@ const StyledImageLocation = styled.div`
 
 ImageLocation.propTypes = {
   className: string,
-  locationChange: func,
+  coordinatesChange: func,
+  itemChange: func,
   options: array.isRequired,
   style: object
 }

@@ -10,6 +10,7 @@ export const OffCanvasDiv = styled.div`
   will-change: transform;
   z-index: 9999;
   overflow-y: auto;
+  overflow-x: hidden;
 
   /* Top Placement */
   ${({ placement }) =>
