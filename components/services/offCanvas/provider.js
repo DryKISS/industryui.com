@@ -55,9 +55,9 @@ export const OffCanvasProvider = ({ children }) => {
     >
       {children}
       <OffCanvas
-        show={visibilityManager.length}
+        show={!!visibilityManager.length}
         toggleShow={handleClose}
-        headerText={data && data.title}
+        headerText={(data && data.title) || ''}
         overlay
         lockScrollOnOpen
         width={options && options.width}
