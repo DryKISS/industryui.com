@@ -12,7 +12,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { FormForm, FormLabel, SelectField } from '../../'
+import { Button, FormForm, FormLabel, SelectField } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -43,6 +43,7 @@ const BaseComponent = (props = {}) => {
       <FormLabel label='Select'>
         <SelectField {...defaultProps} required='This is required' />
       </FormLabel>
+      <Button content='Submit' type='submit' />
     </FormForm>
   )
 }
@@ -50,6 +51,7 @@ const BaseComponent = (props = {}) => {
 export const main = () => (
   <BaseComponent
     options={[
+      { text: 'Please choose', value: '', disabled: false },
       { text: 'Red', value: 'red', disabled: false },
       { text: 'Green', value: 'green', disabled: false },
       { text: 'Blue', value: 'blue', disabled: false },

@@ -38,6 +38,7 @@ export const TextareaField = ({
       placeholder={placeholder}
       readOnly={readOnly}
       rows={rows}
+      showError={false}
       spellcheck={spellCheck}
       tabIndex={tabIndex}
       wrap={wrap}
