@@ -5,9 +5,6 @@
 // React
 import { arrayOf, bool, number, oneOfType, string, object } from 'prop-types'
 
-// UI
-import { FormError } from '../'
-
 // Style
 import styled, { css } from 'styled-components'
 
@@ -30,8 +27,6 @@ export const FormField = ({ errors, register, required, validate, ...props }) =>
         })}
         {...props}
       />
-
-      <FormError message={errors[props.name] ? errors[props.name].message : ''} />
     </>
   )
 }
