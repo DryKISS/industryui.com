@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { array, bool, func, number, shape, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, Pagination } from '../../../'
+import { BACKGROUND, historyPush, Icon, Pagination } from '../../../'
 
 import { PaginationPropTypes } from '../../pagination/components/propTypes'
 
@@ -21,28 +21,60 @@ export const Table = ({
   columns,
   hover,
   pagination,
-  paginationProps: { perPage, ...otherPaginationProps },
+  paginationProps: {
+    changeUrlOnChange = false,
+    initialPage = 1,
+    perPage = 10,
+    ...otherPaginationProps
+  },
   responsive,
   rowClick,
   rows,
+  sort,
+  setSort,
   striped
 }) => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(initialPage)
   const handleClick = e => {
     e.preventDefault()
     const row = e.currentTarget.getAttribute('data-item')
     rowClick(JSON.parse(row))
   }
 
+  const handlePagination = page => {
+    historyPush(`?page=${page}`)
+    setCurrentPage(page)
+  }
+
   const renderColumns = () => {
-    return columns.map(({ hidden, text }, index) => {
+    return columns.map(({ hidden, sortable, text }, index) => {
       if (hidden) {
         return
       }
 
+      const hasSort = sort.item === text
+
+      const handleSort = () => {
+        if (sortable) {
+          if (hasSort && sort.order === 'DSC')
+            setSort({
+              item: '',
+              order: ''
+            })
+          else
+            setSort({
+              item: text,
+              order: hasSort ? 'DSC' : 'ASC'
+            })
+        }
+      }
+
       return (
-        <StyledTh align={align} key={index}>
+        <StyledTh align={align} key={index} onClick={handleSort} sortable={sortable}>
           {text}
+          {sortable && hasSort && (
+            <Icon icon={sort.order === 'ASC' ? 'caret-up' : 'caret-down'} prefix='fas' />
+          )}
         </StyledTh>
       )
     })
@@ -113,7 +145,7 @@ export const Table = ({
       {pagination && rows.length > 0 && (
         <Pagination
           currentPage={currentPage}
-          onPageChange={page => setCurrentPage(page)}
+          onPageChange={handlePagination}
           pageCount={Math.ceil(rows.length / perPage)}
           size='sm'
           style={{
@@ -172,6 +204,7 @@ const StyledTh = styled.th`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => (align ? 'center' : 'left')};
+  ${({ sortable }) => sortable && 'cursor: pointer'};
 `
 
 const StyledTd = styled.td`
@@ -194,10 +227,19 @@ Table.propTypes = {
   columns: array,
   hover: bool,
   pagination: bool,
-  paginationProps: shape({ perPage: number, ...PaginationPropTypes }),
+  paginationProps: shape({
+    changeUrlOnChange: bool,
+    initialPage: number,
+    perPage: number,
+    ...PaginationPropTypes
+  }),
   responsive: bool,
   rowClick: func,
   rows: array.isRequired,
+  sort: shape({
+    item: string,
+    order: string
+  }),
   striped: bool
 }
 
@@ -207,9 +249,10 @@ Table.defaultProps = {
   className: 'Table',
   hover: true,
   pagination: false,
-  paginationProps: {
-    perPage: 10
-  },
   responsive: true,
+  sort: {
+    item: '',
+    order: ''
+  },
   striped: true
 }
