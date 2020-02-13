@@ -42,7 +42,7 @@ export const Table = ({
   }
 
   const handlePagination = page => {
-    historyPush(`?page=${page}`)
+    if (changeUrlOnChange) historyPush(`?page=${page}`)
     setCurrentPage(page)
   }
 
@@ -249,6 +249,7 @@ Table.defaultProps = {
   className: 'Table',
   hover: true,
   pagination: false,
+  paginationProps: {},
   responsive: true,
   sort: {
     item: '',
