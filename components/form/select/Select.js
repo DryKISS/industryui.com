@@ -10,7 +10,7 @@ import { array, object, string } from 'prop-types'
 import { FieldHOC } from '../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const SelectField = forwardRef(
   ({ data, disabled, options, placeholder, range, ...props }, ref) => {
@@ -39,7 +39,14 @@ export const SelectField = forwardRef(
     }
 
     return (
-      <FieldHOC component={StyledSelect} className='Form-control' ref={ref} {...data} {...props}>
+      <FieldHOC
+        component={StyledSelect}
+        className='Form-control'
+        ref={ref}
+        showError={false}
+        {...data}
+        {...props}
+      >
         {range && range.length > 0 && renderRange()}
         {options && renderOptions()}
       </FieldHOC>
@@ -67,6 +74,16 @@ const StyledSelect = styled.select`
     color: #9da7af;
     outline: 0;
   }
+
+  ${({ errors }) =>
+    errors &&
+    css`
+      background: rgb(251, 236, 242);
+      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      border-image: initial;
+      border-style: solid;
+      border-width: 1px 1px 1px 10px;
+    `}
 `
 
 SelectField.propTypes = {
