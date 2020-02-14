@@ -35,7 +35,7 @@ export const Card = ({
 }) => {
   const linked = () => {
     return (
-      <Link to={to} passHref>
+      <Link border={false} passHref to={to}>
         {card()}
       </Link>
     )
