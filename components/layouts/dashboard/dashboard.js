@@ -7,19 +7,17 @@
 import { bool, node, object } from 'prop-types'
 
 // UI
-import { Alert, Page } from '../../'
+import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 
 export const Dashboard = ({ children, resultAlert, isLoading, meta, noData, pageHeading }) => {
   return (
-    !isLoading && (
-      <>
-        <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
+    <>
+      {isLoading && <PageLoading indicator={<LdsSpinner />} />}
 
-        {resultAlert.message && (
-          <Alert content={resultAlert.message} context={resultAlert.context} />
-        )}
-      </>
-    )
+      <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
+
+      {resultAlert.message && <Alert content={resultAlert.message} context={resultAlert.context} />}
+    </>
   )
 }
 
