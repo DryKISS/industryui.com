@@ -1,5 +1,5 @@
 /**
- * Page Heading
+ * Page Loading
  */
 
 // React
