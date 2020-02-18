@@ -1,11 +1,10 @@
 import React from 'react'
-import { number } from 'prop-types'
+import { number, string } from 'prop-types'
 import styled from 'styled-components'
 
 const SPINNER = Array(12).fill('')
 
 const LdsSpinnerWrapper = styled.div`
-  color: official;
   display: inline-block;
   position: relative;
   width: ${({ size }) => size}px;
@@ -22,7 +21,7 @@ const LdsSpinnerWrapper = styled.div`
       width: ${({ size }) => size / 10 - 2}px;
       height: ${({ size }) => size / 4 - 2}px;
       border-radius: ${({ size }) => size / 4}%;
-      background: #fff;
+      background: ${({ color }) => color};
     }
   }
 
@@ -59,9 +58,11 @@ export const LdsSpinner = props => {
 }
 
 LdsSpinner.propTypes = {
-  size: number
+  size: number,
+  color: string
 }
 
 LdsSpinner.defaultProps = {
-  size: 80
+  size: 80,
+  color: '#fff'
 }
