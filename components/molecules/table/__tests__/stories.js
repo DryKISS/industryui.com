@@ -67,3 +67,5 @@ export const formatter = () => <Table columns={columnsFormatter} rows={data} />
 export const actions = () => <Table columns={columnsActions} rows={data} />
 
 export const withPagination = () => <Table columns={columnsActions} rows={data} pagination />
+
+export const loading = () => <Table columns={columns} rows={data} loading />
