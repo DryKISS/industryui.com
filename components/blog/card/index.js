@@ -32,7 +32,7 @@ export const BlogCard = ({ article, config, type }) => {
       <Card shadow>
         <Link to={articleLink}>
           <a>
-            <CardImage alt={heading} src={`/blog/${slug}/hero.jpg`} />
+            <CardImage alt={heading} src={`/static/blog/${slug}/hero.jpg`} />
           </a>
         </Link>
 
