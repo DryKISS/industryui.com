@@ -17,6 +17,7 @@ import App from 'next/app'
 
 // UI
 import {
+  AuthorizationProvider,
   FirebaseProvider,
   Icons,
   NotificationsProvider,
@@ -56,9 +57,11 @@ export class MyApp extends App {
 
         {user && (
           <UserProvider>
-            <NotificationsProvider user={user}>
-              {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
-            </NotificationsProvider>
+            <AuthorizationProvider>
+              <NotificationsProvider>
+                {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
+              </NotificationsProvider>
+            </AuthorizationProvider>
           </UserProvider>
         )}
 
