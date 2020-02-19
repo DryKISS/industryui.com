@@ -25,7 +25,6 @@ import {
   ThemeStyle,
   UserProvider
 } from '../'
-import { jwtConfig } from 'config'
 
 // Style
 import { ThemeProvider } from 'styled-components'
@@ -56,7 +55,7 @@ export class MyApp extends App {
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
         {user && (
-          <UserProvider jwtConfig={jwtConfig}>
+          <UserProvider>
             <NotificationsProvider user={user}>
               {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
             </NotificationsProvider>
