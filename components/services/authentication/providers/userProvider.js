@@ -11,10 +11,16 @@ import React, { useEffect, useState } from 'react'
 // Next
 import Router from 'next/router'
 
-// UI
-import { Api, UserContext, validateToken } from '../../../'
+// Axios
+import axios from 'axios'
 
-export const UserProvider = ({ children, jwtConfig }) => {
+// UI
+import { decodeToken, UserContext, validateToken } from '../../../'
+
+// Config
+import { apiConfig, jwtConfig } from 'config'
+
+export const UserProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null)
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -44,9 +50,10 @@ export const UserProvider = ({ children, jwtConfig }) => {
   const signIn = async (provider, username, password, callback) => {
     let user, token
     try {
-      const { data } = await Api.post('auth', { username, password })
-      user = data.user
+      const { data } = await axios.post(`${apiConfig.authURL}/login`, { email: username, password })
       token = data.token
+      const tokenData = decodeToken(token)
+      user = tokenData.user
     } catch (err) {
       const { error } = err.response.data
       callback(new Error(error))
@@ -71,6 +78,7 @@ export const UserProvider = ({ children, jwtConfig }) => {
     Router.push('/account/sign-in')
   }
 
+  // TODO - remove after converting all pages to new user roles
   const authorise = condition => {
     if (!condition(user)) {
       Router.push('/account/sign-in')
