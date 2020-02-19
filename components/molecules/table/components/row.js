@@ -27,10 +27,10 @@ const StyledTr = styled.tr`
       }
     `}
 
-  ${props => props.context && BACKGROUND(props)}
   ${props =>
     props.context &&
     css`
+      ${BACKGROUND(props)}
       color: white;
     `}
 

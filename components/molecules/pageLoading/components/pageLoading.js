@@ -21,17 +21,17 @@ PageLoading.defaultProps = {
 }
 
 const StyledLoading = styled.div`
-  position: ${({ position }) => position};
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  align-items: center;
   background-color: ${({ backgroundColor }) => backgroundColor};
-  opacity: ${({ opacity }) => opacity};
   color: #fff;
   display: flex;
-  align-items: center;
+  height: 100%;
   justify-content: center;
+  left: 0;
+  opacity: ${({ opacity }) => opacity};
+  position: ${({ position }) => position};
+  right: 0;
+  top: 0;
+  width: 100%;
   z-index: 99;
 `

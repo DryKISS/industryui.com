@@ -144,7 +144,7 @@ export const Table = ({
         <tr>{columns && renderColumns()}</tr>
       </thead>
       <tbody>
-        {noData ? (
+        {noData && !loading && !rows.length ? (
           <TableRow>
             <TableData align='center' colSpan={tableSpan}>
               No data available
@@ -241,6 +241,7 @@ Table.defaultProps = {
   columns: [],
   className: 'Table',
   hover: true,
+  noData: true,
   pagination: false,
   paginationProps: {},
   responsive: true,
