@@ -1,5 +1,5 @@
 import React from 'react'
-import { any } from 'prop-types'
+import { any, number, string } from 'prop-types'
 import styled from 'styled-components'
 
 export const PageLoading = ({ children, indicator, ...props }) => {
@@ -7,21 +7,31 @@ export const PageLoading = ({ children, indicator, ...props }) => {
 }
 
 PageLoading.propTypes = {
+  backgroundColor: string,
   children: any,
-  indicator: any
+  indicator: any,
+  opacity: number,
+  position: string
+}
+
+PageLoading.defaultProps = {
+  backgroundColor: '#000',
+  opacity: 0.5,
+  position: 'fixed'
 }
 
 const StyledLoading = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  background-color: ${({ backgroundColor }) => backgroundColor};
   color: #fff;
   display: flex;
-  align-items: center;
+  height: 100%;
   justify-content: center;
+  left: 0;
+  opacity: ${({ opacity }) => opacity};
+  position: ${({ position }) => position};
+  right: 0;
+  top: 0;
+  width: 100%;
   z-index: 99;
 `
