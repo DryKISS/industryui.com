@@ -67,3 +67,9 @@ export const formatter = () => <Table columns={columnsFormatter} rows={data} />
 export const actions = () => <Table columns={columnsActions} rows={data} />
 
 export const withPagination = () => <Table columns={columnsActions} rows={data} pagination />
+
+export const loading = () => <Table columns={columns} rows={data} loading />
+
+export const loadingWithoutData = () => <Table columns={columns} rows={[]} loading />
+
+export const showNoData = () => <Table columns={columns} rows={[]} />
