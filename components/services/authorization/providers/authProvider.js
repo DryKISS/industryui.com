@@ -46,12 +46,14 @@ export const AuthorizationProvider = ({ children }) => {
     }
   }, [router.pathname])
 
-  const hasAccess = (rule, options = null) => {
-    if (options) {
+  const hasAccess = (rule, options = {}) => {
+    if (typeof permissions[rule] === 'boolean') {
+      return permissions[rule]
+    } else if (typeof permissions[rule] === 'function') {
       options.userId = user && user.id ? user.id : null
       return permissions[rule](options)
     } else {
-      return permissions[rule]
+      return false
     }
   }
 
