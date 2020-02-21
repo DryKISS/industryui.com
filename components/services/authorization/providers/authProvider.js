@@ -46,17 +46,18 @@ export const AuthorizationProvider = ({ children }) => {
     }
   }, [router.pathname])
 
-  const hasAccess = rule => {
-    if (permissions.includes(rule)) {
-      return true
+  const hasAccess = (rule, options = null) => {
+    if (options) {
+      options.userId = user && user.id ? user.id : null
+      return permissions[rule](options)
+    } else {
+      return permissions[rule]
     }
-    return false
   }
 
-  const hasRole = (type, role) => {
-    const account = user.account || user.accounts[0]
-    if (account.type === 'type' && account.role === 'role') {
-      return true
+  const hasRole = role => {
+    if (user && user.role) {
+      return Array.isArray(role) ? role.includes(user.role) : user.role === role
     }
     return false
   }
