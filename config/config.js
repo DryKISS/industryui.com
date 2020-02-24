@@ -8,6 +8,9 @@ import { Sidebar as SidebarUI } from '../components'
 export const apiConfig = {}
 export const jwtConfig = {}
 
+export const AccessPages = {}
+export const AccessRules = {}
+
 export const Brand = {
   logo: 'drykiss.svg',
   name: 'IndustryUI'
