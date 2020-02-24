@@ -9,7 +9,7 @@ import { bool, node, object } from 'prop-types'
 // UI
 import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 
-export const Dashboard = ({ children, resultAlert, isLoading, meta, noData, pageHeading }) => {
+export const Dashboard = ({ children, resultAlert, isLoading, meta, pageHeading }) => {
   return (
     <>
       {isLoading && <PageLoading indicator={<LdsSpinner />} />}
@@ -31,7 +31,6 @@ Dashboard.propTypes = {
 
 Dashboard.defaultProps = {
   isLoading: true,
-  noData: false,
   resultAlert: {
     context: 'success',
     message: ''
