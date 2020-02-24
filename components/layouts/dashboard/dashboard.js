@@ -10,10 +10,10 @@ import { bool, node, object } from 'prop-types'
 import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 
 export const Dashboard = ({ children, resultAlert, isLoading, meta, pageHeading }) => {
-  return (
+  return isLoading ? (
+    <PageLoading backgroundColor='#fff' indicator={<LdsSpinner color='#333' />} opacity={1} />
+  ) : (
     <>
-      {isLoading && <PageLoading indicator={<LdsSpinner />} />}
-
       <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
 
       {resultAlert.message && <Alert content={resultAlert.message} context={resultAlert.context} />}
