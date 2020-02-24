@@ -57,24 +57,24 @@ export const Table = ({
   }
 
   const renderColumns = () => {
-    return columns.map(({ hidden, sortable, text }, index) => {
+    return columns.map(({ hidden, sortable, sortName = '', text }, index) => {
       if (hidden) {
         return
       }
 
-      const hasSort = sort.item === text
+      const hasSort = sort.item === sortName
 
       const handleSort = () => {
         if (sortable) {
-          if (hasSort && sort.order === 'DSC') {
+          if (hasSort && sort.order === 'desc') {
             setSort({
               item: '',
               order: ''
             })
           } else {
             setSort({
-              item: text,
-              order: hasSort ? 'DSC' : 'ASC'
+              item: sortName,
+              order: hasSort ? 'desc' : 'asc'
             })
           }
         }
@@ -84,7 +84,7 @@ export const Table = ({
         <TableHead align={align} key={index} onClick={handleSort} sortable={sortable}>
           {text}
           {sortable && hasSort && (
-            <Icon icon={sort.order === 'ASC' ? 'caret-up' : 'caret-down'} prefix='fas' />
+            <Icon icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'} prefix='fas' />
           )}
         </TableHead>
       )
