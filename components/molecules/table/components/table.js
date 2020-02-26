@@ -26,6 +26,7 @@ export const Table = ({
   caption,
   className,
   columns,
+  fullHeight,
   hover,
   loading,
   noData,
@@ -159,7 +160,7 @@ export const Table = ({
 
   return (
     <>
-      <StyledWrapper isLoading={loading}>
+      <StyledWrapper fullHeight={fullHeight} isLoading={loading}>
         <TableLoading colsLength={tableSpan} show={loading} />
 
         {responsive ? <StyledResponsive>{renderTable()}</StyledResponsive> : renderTable()}
@@ -183,7 +184,7 @@ export const Table = ({
 
 const StyledWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%'};
   position: relative;
   ${({ isLoading }) =>
     isLoading &&
@@ -218,7 +219,9 @@ Table.propTypes = {
   caption: string,
   classname: string,
   columns: array,
+  fullHeight: bool,
   hover: bool,
+  loading: bool,
   pagination: bool,
   paginationProps: shape({
     changeUrlOnChange: bool,
@@ -240,7 +243,9 @@ Table.defaultProps = {
   align: false,
   columns: [],
   className: 'Table',
+  fullHeight: false,
   hover: true,
+  loading: undefined,
   noData: true,
   pagination: false,
   paginationProps: {},
