@@ -209,9 +209,9 @@ export const chained = () => {
             <p>
               Submitted and valid
               <br />
-              Customer: {data.customers.value} - {data.customers.label}
+              Customer: {data.customer.value} - {data.customer.label}
               <br />
-              User: {data.users.value} - {data.users.label}
+              User: {data.user.value} - {data.user.label}
             </p>
           </>
         )}
@@ -334,9 +334,9 @@ export const chainedNoDefault = () => {
             <p>
               Submitted and valid
               <br />
-              Customer: {data.customers.value} - {data.customers.label}
+              Customer: {data.customer.value} - {data.customer.label}
               <br />
-              User: {data.users.value} - {data.users.label}
+              User: {data.user.value} - {data.user.label}
             </p>
           </>
         )}
