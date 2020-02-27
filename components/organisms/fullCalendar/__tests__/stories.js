@@ -109,6 +109,24 @@ export const fetchEvents = () => {
   return <BaseComponent events={fetchEvents} />
 }
 
+export const fetchEventsWithPopover = () => {
+  const { tippy } = useTippy()
+
+  const fetchEvents = (info, success) => {
+    setTimeout(() => {
+      success(Events)
+    }, 1000)
+  }
+
+  const handleRender = info => {
+    tippy(info.el, {
+      content: info.event.extendedProps.description
+    })
+  }
+
+  return <BaseComponent events={fetchEvents} eventRender={handleRender} />
+}
+
 export const fetchEventsWithLoadingIndicator = () => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
