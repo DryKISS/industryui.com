@@ -10,7 +10,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Calendar, Theme } from '../../../'
+import { Calendar, Theme, useTippy } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -27,21 +27,7 @@ export default {
   }
 }
 
-export const main = () => {
-  const businessHoursSelect = select('businessHours', {
-    false: false,
-    MondayToFriday: true,
-    MondayToThursday: {
-      // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
-      startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00' // an end time (6pm in this example)
-    }
-  })
-
-  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
-  const nowIndicatorBoolean = boolean('nowIndicator', false)
-  const weekendsBoolean = boolean('weekends', true)
+const BaseComponent = (props = {}) => {
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
 
   const calendarRef = useRef(null)
@@ -53,81 +39,32 @@ export const main = () => {
     }
   }, [defaultView])
 
-  return (
-    <Calendar
-      businessHours={businessHoursSelect}
-      defaultEventColor={defaultEventColorSelect}
-      nowIndicator={nowIndicatorBoolean}
-      weekends={weekendsBoolean}
-      defaultView={defaultView}
-      ref={calendarRef}
-    />
-  )
+  const defaultProps = {
+    businessHoursSelect: select('businessHours', {
+      false: false,
+      MondayToFriday: true,
+      MondayToThursday: {
+        // days of week. an array of zero-based day of week integers (0=Sunday)
+        daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
+        startTime: '10:00', // a start time (10am in this example)
+        endTime: '18:00' // an end time (6pm in this example)
+      }
+    }),
+    defaultEventColorSelect: select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary'),
+    nowIndicatorBoolean: boolean('nowIndicator', false),
+    weekendsBoolean: boolean('weekends', true),
+    defaultView,
+    ...props
+  }
+
+  return <Calendar ref={calendarRef} {...defaultProps} />
 }
 
-export const events = () => {
-  const businessHoursSelect = select('businessHours', {
-    false: false,
-    MondayToFriday: true,
-    MondayToThursday: {
-      // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
-      startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00' // an end time (6pm in this example)
-    }
-  })
-  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
-  const nowIndicatorBoolean = boolean('nowIndicator', false)
-  const weekendsBoolean = boolean('weekends', true)
-  const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
+export const main = () => <BaseComponent />
 
-  const calendarRef = useRef(null)
-
-  useEffect(() => {
-    if (calendarRef.current) {
-      calendarRef.current.componentWillUnmount()
-      calendarRef.current.componentDidMount()
-    }
-  }, [defaultView])
-
-  return (
-    <Calendar
-      events={Events}
-      businessHours={businessHoursSelect}
-      defaultEventColor={defaultEventColorSelect}
-      nowIndicator={nowIndicatorBoolean}
-      weekends={weekendsBoolean}
-      defaultView={defaultView}
-      ref={calendarRef}
-    />
-  )
-}
+export const events = () => <BaseComponent events={Events} />
 
 export const eventsWithEventAdditionOnClick = () => {
-  const businessHoursSelect = select('businessHours', {
-    false: false,
-    MondayToFriday: true,
-    MondayToThursday: {
-      // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
-      startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00' // an end time (6pm in this example)
-    }
-  })
-  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
-  const nowIndicatorBoolean = boolean('nowIndicator', false)
-  const weekendsBoolean = boolean('weekends', true)
-  const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
-
-  const calendarRef = useRef(null)
-
-  useEffect(() => {
-    if (calendarRef.current) {
-      calendarRef.current.componentWillUnmount()
-      calendarRef.current.componentDidMount()
-    }
-  }, [defaultView])
-
   const [events, setEvents] = useState(Events || [])
   const handleDateClick = arg => {
     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
@@ -140,59 +77,62 @@ export const eventsWithEventAdditionOnClick = () => {
     }
   }
 
-  return (
-    <Calendar
-      events={events}
-      dateClick={handleDateClick}
-      businessHours={businessHoursSelect}
-      defaultEventColor={defaultEventColorSelect}
-      nowIndicator={nowIndicatorBoolean}
-      weekends={weekendsBoolean}
-      defaultView={defaultView}
-      ref={calendarRef}
-    />
-  )
+  return <BaseComponent events={events} dateClick={handleDateClick} />
 }
 
 export const eventClick = () => {
-  const businessHoursSelect = select('businessHours', {
-    false: false,
-    MondayToFriday: true,
-    MondayToThursday: {
-      // days of week. an array of zero-based day of week integers (0=Sunday)
-      daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
-      startTime: '10:00', // a start time (10am in this example)
-      endTime: '18:00' // an end time (6pm in this example)
-    }
-  })
-  const defaultEventColorSelect = select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary')
-  const nowIndicatorBoolean = boolean('nowIndicator', false)
-  const weekendsBoolean = boolean('weekends', true)
-  const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
-
-  const calendarRef = useRef(null)
-
-  useEffect(() => {
-    if (calendarRef.current) {
-      calendarRef.current.componentWillUnmount()
-      calendarRef.current.componentDidMount()
-    }
-  }, [defaultView])
-
   const handleEventClick = ({ event }) => {
     event.setProp('title', event.title + ' - ' + 'updated')
   }
 
-  return (
-    <Calendar
-      eventClick={handleEventClick}
-      events={Events}
-      businessHours={businessHoursSelect}
-      defaultEventColor={defaultEventColorSelect}
-      nowIndicator={nowIndicatorBoolean}
-      weekends={weekendsBoolean}
-      defaultView={defaultView}
-      ref={calendarRef}
-    />
-  )
+  return <BaseComponent eventClick={handleEventClick} events={Events} />
+}
+
+export const eventsWithPopover = () => {
+  const { tippy } = useTippy()
+  const handleRender = info => {
+    tippy(info.el, {
+      content: info.event.extendedProps.description
+    })
+  }
+
+  return <BaseComponent events={Events} eventRender={handleRender} />
+}
+
+export const fetchEvents = () => {
+  const fetchEvents = (info, success) => {
+    setTimeout(() => {
+      success(Events)
+    }, 1000)
+  }
+
+  return <BaseComponent events={fetchEvents} />
+}
+
+export const fetchEventsWithPopover = () => {
+  const { tippy } = useTippy()
+
+  const fetchEvents = (info, success) => {
+    setTimeout(() => {
+      success(Events)
+    }, 1000)
+  }
+
+  const handleRender = info => {
+    tippy(info.el, {
+      content: info.event.extendedProps.description
+    })
+  }
+
+  return <BaseComponent events={fetchEvents} eventRender={handleRender} />
+}
+
+export const fetchEventsWithLoadingIndicator = () => {
+  const fetchEvents = (info, success) => {
+    setTimeout(() => {
+      success(Events)
+    }, 1000)
+  }
+
+  return <BaseComponent events={fetchEvents} hasLoading />
 }
