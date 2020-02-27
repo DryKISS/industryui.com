@@ -10,7 +10,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Calendar, Theme } from '../../../'
+import { Calendar, Theme, useTippy } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -88,7 +88,28 @@ export const eventClick = () => {
   return <BaseComponent eventClick={handleEventClick} events={Events} />
 }
 
-export const eventsWithLoadingIndicator = () => {
+export const eventsWithPopover = () => {
+  const { tippy } = useTippy()
+  const handleRender = info => {
+    tippy(info.el, {
+      content: info.event.extendedProps.description
+    })
+  }
+
+  return <BaseComponent events={Events} eventRender={handleRender} />
+}
+
+export const fetchEvents = () => {
+  const fetchEvents = (info, success) => {
+    setTimeout(() => {
+      success(Events)
+    }, 1000)
+  }
+
+  return <BaseComponent events={fetchEvents} />
+}
+
+export const fetchEventsWithLoadingIndicator = () => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
