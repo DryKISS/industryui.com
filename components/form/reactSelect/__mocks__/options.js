@@ -1,4 +1,7 @@
-export const OPTIONS = [
+/**
+ * React Select
+ */
+export const Options = [
   { value: 'ocean', label: 'Ocean' },
   { value: 'blue', label: 'Blue', isDisabled: true },
   { value: 'purple', label: 'Purple' },
