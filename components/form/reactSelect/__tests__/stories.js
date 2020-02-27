@@ -1,9 +1,9 @@
 /**
- * ReactSelect
+ * React Select
  */
 
 // React
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Storybook
 import { boolean, text, withKnobs } from '@storybook/addon-knobs'
@@ -13,11 +13,11 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, FormLabel, ReactSelectField } from '../../../'
+import { Button, FormForm, FormLabel, ReactSelectField, usePrevious } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { OPTIONS } from '../__mocks__/options'
+import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__'
 
 export default {
   title: 'Form/ReactSelect',
@@ -55,7 +55,7 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     isClearable: true,
     name: 'reactSelect',
-    options: OPTIONS,
+    options: Options,
     required: 'This is required',
     ...knobs,
     ...props
@@ -66,6 +66,9 @@ const BaseComponent = (props = {}) => {
       <FormLabel label='React Select'>
         <ReactSelectField {...defaultProps} />
       </FormLabel>
+
+      {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
+
       <Button content='Submit' secondary type='submit' />
     </FormForm>
   )
@@ -81,15 +84,265 @@ export const Multi = () => {
 }
 
 export const withDefaultValue = () => {
-  return <BaseComponent defaultValue={OPTIONS[0]} />
+  return <BaseComponent defaultValue={Options[0]} />
 }
 
 export const async = () => {
   const loadOptions = (inputValue, callback) => {
     setTimeout(() => {
-      callback(OPTIONS.filter(o => o.value.includes(inputValue)))
-    }, 1000)
+      callback(Options.filter(o => o.value.includes(inputValue)))
+    }, 2000)
   }
 
   return <BaseComponent async defaultOptions name='asyncSelect' loadOptions={loadOptions} />
+}
+
+export const chained = () => {
+  const { control, errors, handleSubmit, setValue, watch } = useForm()
+
+  // GraphQL happens before this and sets the defaults
+  const watchCustomer = watch('customer', Customers[0])
+  const watchUser = watch('user', UsersAvison[0])
+
+  const [data, setData] = useState()
+
+  const [users, setUsers] = useState(UsersAvison)
+  const [user] = useState(UsersAvison[0])
+
+  const prevCustomer = usePrevious(watchCustomer)
+  const prevUser = usePrevious(watchUser)
+
+  const CustomerOptions = inputValue =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        console.log('Firing Customers')
+        resolve(Customers)
+      }, 1000)
+    })
+
+  const UserOptions = inputValue =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        console.log('Firing Users')
+        resolve(users)
+      }, 2000)
+    })
+
+  useEffect(() => {
+    if (watchCustomer !== prevCustomer) {
+      console.log('Changed Customer', prevCustomer, watchCustomer)
+      console.log('Changed User', prevUser, watchUser)
+
+      if (watchCustomer === null) {
+        console.log('reset')
+        setUsers(null)
+      } else if (watchCustomer.value === '2') {
+        console.log('Avison')
+        setUsers(UsersAvison)
+      } else {
+        console.log('Housing')
+        setUsers(UsersHousing)
+      }
+
+      setValue('user', null)
+    }
+  }, [watchCustomer])
+
+  const knobs = useKnobs()
+
+  const onSubmit = data => {
+    console.log(data)
+    setData(data)
+  }
+
+  const defaultProps = {
+    async: true,
+    cacheOptions: false,
+    control,
+    defaultOptions: true,
+    errors: errors,
+    isClearable: true,
+    required: 'This is required',
+    ...knobs
+  }
+
+  return (
+    <>
+      <p>
+        Initially load the async react select with a promise. we use the defaultValue prop to load
+        any options already submitted. This should be part of the original GraphQL query. It must be
+        in the form {'{'} value: '2', label: 'Avison Young' {'}'}
+      </p>
+
+      <p>
+        Customers will never lose their options, but can change or remove the default value, they
+        will return the account ID to get the Users/
+        <br />
+        Default Customer, Click X on customer it should unload default and options
+        <br />
+        It does not matter if the user changes their option
+      </p>
+
+      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+        <FormLabel label='Customers'>
+          <ReactSelectField
+            defaultValue={Customers[0]}
+            loadOptions={CustomerOptions}
+            name='customer'
+            {...defaultProps}
+          />
+        </FormLabel>
+
+        <FormLabel label='Users'>
+          <ReactSelectField
+            defaultValue={user}
+            loadOptions={UserOptions}
+            name='user'
+            {...defaultProps}
+          />
+        </FormLabel>
+
+        {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
+
+        {data && (
+          <>
+            <p>
+              Submitted and valid
+              <br />
+              Customer: {data.customers.value} - {data.customers.label}
+              <br />
+              User: {data.users.value} - {data.users.label}
+            </p>
+          </>
+        )}
+
+        <Button content='Submit' secondary type='submit' />
+      </FormForm>
+    </>
+  )
+}
+
+export const chainedNoDefault = () => {
+  const { control, errors, handleSubmit, setValue, watch } = useForm()
+
+  // GraphQL happens before this and sets the defaults
+  const watchCustomer = watch('customer', null)
+  const watchUser = watch('user', null)
+
+  const [data, setData] = useState()
+
+  const [users, setUsers] = useState(UsersAvison)
+  const [user] = useState(null)
+
+  const prevCustomer = usePrevious(watchCustomer)
+  const prevUser = usePrevious(watchUser)
+
+  const CustomerOptions = inputValue =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        console.log('Firing Customers')
+        resolve(Customers)
+      }, 1000)
+    })
+
+  const UserOptions = inputValue =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        console.log('Firing Users')
+        resolve(users)
+      }, 2000)
+    })
+
+  useEffect(() => {
+    if (watchCustomer !== prevCustomer) {
+      console.log('Changed Customer', prevCustomer, watchCustomer)
+      console.log('Changed User', prevUser, watchUser)
+
+      if (watchCustomer === null) {
+        console.log('reset')
+        setUsers(null)
+      } else if (watchCustomer.value === '2') {
+        console.log('Avison')
+        setUsers(UsersAvison)
+      } else {
+        console.log('Housing')
+        setUsers(UsersHousing)
+      }
+
+      setValue('user', null)
+    }
+  }, [watchCustomer])
+
+  const knobs = useKnobs()
+
+  const onSubmit = data => {
+    console.log(data)
+    setData(data)
+  }
+
+  const defaultProps = {
+    async: true,
+    cacheOptions: false,
+    control,
+    defaultOptions: true,
+    errors: errors,
+    isClearable: true,
+    required: 'This is required',
+    ...knobs
+  }
+
+  return (
+    <>
+      <p>
+        Initially load the async react select with a promise. we use the defaultValue prop to load
+        any options already submitted. This should be part of the original GraphQL query. It must be
+        in the form {'{'} value: '2', label: 'Avison Young' {'}'}
+      </p>
+
+      <p>
+        Customers will never lose their options, but can change or remove the default value, they
+        will return the account ID to get the Users/
+        <br />
+        Default Customer, Click X on customer it should unload default and options
+        <br />
+        It does not matter if the user changes their option
+      </p>
+
+      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+        <FormLabel label='Customers'>
+          <ReactSelectField
+            defaultValue={null}
+            loadOptions={CustomerOptions}
+            name='customer'
+            {...defaultProps}
+          />
+        </FormLabel>
+
+        <FormLabel label='Users'>
+          <ReactSelectField
+            defaultValue={user}
+            loadOptions={UserOptions}
+            name='user'
+            {...defaultProps}
+          />
+        </FormLabel>
+
+        {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
+
+        {data && (
+          <>
+            <p>
+              Submitted and valid
+              <br />
+              Customer: {data.customers.value} - {data.customers.label}
+              <br />
+              User: {data.users.value} - {data.users.label}
+            </p>
+          </>
+        )}
+
+        <Button content='Submit' secondary type='submit' />
+      </FormForm>
+    </>
+  )
 }
