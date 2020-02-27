@@ -134,7 +134,8 @@
     "react-hook-form-input": "^1.1.10",
     "react-popper": "^1.3.7",
     "react-select": "^3.0.8",
-    "react-tooltip": "^4.0.3"
+    "react-tooltip": "^4.0.3",
+    "tippy.js": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
