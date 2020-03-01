@@ -4,7 +4,7 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { array, func, string, object } from 'prop-types'
+import { array, bool, func, string, object } from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { Select, useForm } from '../../../'
 import { ImageWrapper } from '../../'
 
-export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, options }) => {
+export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, options, show }) => {
   const INITIAL_STATE = {
     option: initial
   }
@@ -35,7 +35,7 @@ export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, o
   }, [coordinates])
 
   return (
-    <StyledImageLocation>
+    <StyledImageLocation show={show}>
       <Select
         change={change}
         id='option'
@@ -53,6 +53,7 @@ export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, o
 
 const StyledImageLocation = styled.div`
   overflow-x: auto;
+  display: ${({ show }) => (show ? 'block' : 'none')};
 `
 
 ImageLocation.propTypes = {
@@ -60,5 +61,10 @@ ImageLocation.propTypes = {
   coordinatesChange: func,
   itemChange: func,
   options: array.isRequired,
-  style: object
+  style: object,
+  show: bool
+}
+
+ImageLocation.defaultProps = {
+  show: true
 }
