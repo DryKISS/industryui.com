@@ -37,7 +37,7 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
       <CalendarWrapper
         {...props}
         eventColor={props.defaultEventColor || COLOUR.primary}
-        header={CALENDAR.header}
+        header={props.header || CALENDAR.header}
         events={props.events}
         forwardedRef={ref}
         loading={setLoading}
