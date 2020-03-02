@@ -55,7 +55,7 @@ export const ReactSelectField = ({
         defaultValue={defaultValue}
         name={name}
         onChange={([selected]) => {
-          return { value: selected }
+          return selected
         }}
         rules={{ required }}
       />

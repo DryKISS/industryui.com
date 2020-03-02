@@ -130,7 +130,7 @@
     "react-datepicker": "^2.10.1",
     "react-dropzone": "^10.2.1",
     "react-google-maps": "^9.4.5",
-    "react-hook-form": "^4.8.1",
+    "react-hook-form": "4.10.1",
     "react-hook-form-input": "^1.1.10",
     "react-popper": "^1.3.7",
     "react-select": "^3.0.8",
