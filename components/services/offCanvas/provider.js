@@ -55,14 +55,15 @@ export const OffCanvasProvider = ({ children }) => {
     >
       {children}
       <OffCanvas
+        context={data && data.context}
+        headerText={(data && data.title) || ''}
+        lockScrollOnOpen
+        overlay
+        placement={options && options.placement}
         show={!!visibilityManager.length}
         toggleShow={handleClose}
-        headerText={(data && data.title) || ''}
-        overlay
-        lockScrollOnOpen
-        width={options && options.width}
-        placement={options && options.placement}
         transitionDuration={DURATION}
+        width={options && options.width}
       >
         {dataManager.map((d, i) => (
           <StyledWrapper key={i} show={i + 1 === dataManager.length}>
