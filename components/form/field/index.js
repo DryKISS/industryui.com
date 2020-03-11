@@ -64,8 +64,8 @@ const StyledInput = styled.input`
     opacity: 1;
   }
 
-  ${({ errors }) =>
-    errors &&
+  ${({ errors, error }) =>
+    (errors || error) &&
     css`
       background: rgb(251, 236, 242);
       border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);

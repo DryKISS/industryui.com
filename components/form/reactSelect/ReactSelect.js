@@ -26,6 +26,7 @@ export const ReactSelectField = ({
   control,
   defaultOptions,
   defaultValue,
+  error,
   errors,
   loadOptions,
   required,
@@ -48,7 +49,7 @@ export const ReactSelectField = ({
     )
   })
   return (
-    <Wrapper error={errors[name]}>
+    <Wrapper error={error || errors[name]}>
       <Controller
         as={<Component options={options} selectedOption={selectedOption} {...props} />}
         control={control}

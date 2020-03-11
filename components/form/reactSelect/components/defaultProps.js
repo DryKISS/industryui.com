@@ -5,6 +5,8 @@ export const reactSelectDefaultProps = defaultStyles => ({
   components: {},
   controlShouldRenderValue: true,
   defaultValue: undefined,
+  error: '',
+  errors: {},
   escapeClearsValue: false,
   isDisabled: false,
   isLoading: false,
