@@ -131,6 +131,10 @@ const StyledForm = styled(Form)`
   display: flex;
   position: relative;
   margin: 0;
+
+  .Form-feedback {
+    width: inherit;
+  }
 `
 
 const StyledTextarea = styled(Textarea)`
