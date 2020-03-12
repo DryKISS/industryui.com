@@ -23,6 +23,7 @@ export const DropzonePreview = ({ file, handleRemove, index }) => {
 
 const StyledPreview = styled.div`
   border: 1px solid #000;
+  margin-bottom: 1.5rem;
   z-index: 1;
 `
 
