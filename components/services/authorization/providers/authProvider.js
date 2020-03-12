@@ -16,7 +16,7 @@ import { AccessPages, AccessRules } from 'config'
 
 export const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
-  const [setIsAuthorized] = useState(false)
+  const [isAuthorised, setIsAuthorized] = useState(false)
   const { user } = useContext(UserContext)
   const router = useRouter()
 
