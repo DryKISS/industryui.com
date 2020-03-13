@@ -16,7 +16,6 @@ import { AccessPages, AccessRules } from 'config'
 
 export const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
-  const [isAuthorised, setIsAuthorized] = useState(false)
   const { user } = useContext(UserContext)
   const router = useRouter()
 
@@ -27,7 +26,6 @@ export const AuthorizationProvider = ({ children }) => {
     if (router.pathname !== '/403') {
       if (!AccessPages[router.pathname]) {
         // Allow access to non-protected page
-        setIsAuthorized(true)
         setIsLoading(false)
       } else if (
         user &&
@@ -35,7 +33,6 @@ export const AuthorizationProvider = ({ children }) => {
         AccessPages[router.pathname].includes(user.role)
       ) {
         // Allow access to protected page when role is assigned
-        setIsAuthorized(true)
         setIsLoading(false)
       } else {
         // Not authorized, redirect to /403 page
