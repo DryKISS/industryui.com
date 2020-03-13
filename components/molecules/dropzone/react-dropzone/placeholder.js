@@ -2,26 +2,7 @@
  * Dropzone - Placeholder
  * Shows the uploaded image preview
  */
-
-// React
-// import { any, func } from 'prop-types'
-
-// Style
-// import styled from 'styled-components'
-
 export const DropzonePlaceholder = ({ file, handleRemove, index }) => {
-  // const length = accepted.length
-
-  // const placeholder = []
-
-  // for (let i = length; i < 6; i++) {
-  //   placeholder.push(
-  //     <Column key={i} lg={4} style={{ marginBottom: '1rem' }}>
-  //       {this.placeholder()}
-  //     </Column>
-  //   )
-  // }
-
   return (
     <div className='Dropzone-placeholder'>
       <svg width='33%' viewBox='0 0 512 512' fill='#ecf0f3'>
@@ -30,10 +11,3 @@ export const DropzonePlaceholder = ({ file, handleRemove, index }) => {
     </div>
   )
 }
-
-// .Dropzone-placeholder {
-//   border: 1px solid #ecf0f3;
-//   display: flex;
-//   justify-content: center;
-//   margin: auto;
-// }

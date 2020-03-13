@@ -15,7 +15,6 @@ export const Dashboard = ({ children, resultAlert, isLoading, meta, pageHeading 
   ) : (
     <>
       <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
-
       {resultAlert.message && <Alert content={resultAlert.message} context={resultAlert.context} />}
     </>
   )

@@ -28,13 +28,14 @@ export const TableActions = ({ row }, data) => {
       <ButtonToolbar align='flex-start' style={{ zIndex: '100000000' }}>
         {data.map(({ content, context, icon, onClick, to, tooltip }, index) => {
           const iconArray = Array.isArray(icon)
+
           return (
             <Button
               as='a'
               data-tip={tooltip}
               context={context}
               key={index}
-              onClick={onClick ? () => onClick(row) : handleClick(`${to}?id=${row.id}`)}
+              onClick={onClick ? e => onClick(e, row) : handleClick(`${to}?id=${row.id}`)}
               size='sm'
             >
               <Icon

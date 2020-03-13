@@ -1,6 +1,8 @@
 /**
  * Dropzone - Accept
  * Text to explain what is acceptable to upload
+ *
+ * @see https://github.com/react-dropzone/react-dropzone/tree/master/examples/accept
  */
 
 // React
@@ -10,11 +12,7 @@ import { string } from 'prop-types'
 export const Accept = ({ accept }) => {
   const files = accept.replace(/,/g, ' and ')
 
-  return (
-    <>
-      <em>(Only {files} will be accepted)</em>
-    </>
-  )
+  return <em>(Only {files} will be accepted)</em>
 }
 
 Accept.propTypes = {

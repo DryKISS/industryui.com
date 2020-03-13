@@ -30,7 +30,7 @@ export const Link = ({ border, children, onClick, passHref, target, to }) => {
   )
 }
 
-const StyledLink = styled.a`
+export const StyledLink = styled.a`
   background-color: transparent;
   border-bottom: ${({ border, theme }) => (border ? `2px solid ${theme.LINK.underline}` : '')};
   color: ${({ theme }) => theme.LINK.colour};

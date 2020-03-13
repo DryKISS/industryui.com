@@ -11,9 +11,9 @@ import { bool, string } from 'prop-types'
 import { useDropzone } from 'react-dropzone'
 
 // UI
-// import { Button, Container, Column, Heading, Row } from '../../../'
+import { Column, Row } from '../../../'
 import { Accept } from './accept'
-import { DropzonePreview } from './'
+import { DropzonePreview } from './preview'
 
 // Style
 import styled from 'styled-components'
@@ -34,26 +34,19 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     disabled: disabled,
     multiple: multiple,
     onDrop: acceptedFiles => {
-      const files = acceptedFiles.map(file =>
+      const accepted = acceptedFiles.map(file =>
         Object.assign(file, {
           preview: URL.createObjectURL(file)
         })
       )
 
-      setFiles(files)
+      setFiles(accepted)
 
       if (onChange) {
-        onChange(files)
+        onChange(accepted)
       }
     }
   })
-
-  const thumbsContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 16
-  }
 
   const removeFile = file => {
     const newFiles = [...files]
@@ -62,27 +55,22 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
   }
 
   const thumbs = () => {
-    return files.map(file => (
-      <DropzonePreview
-        file={file}
-        handleRemove={() => removeFile(file)}
-        index={file.name}
-        key={file.name}
-      />
-    ))
+    return (
+      <StyledContainer fluid>
+        <Row>
+          {files.map(file => (
+            <Column md={3} key={file.name}>
+              <DropzonePreview
+                file={file}
+                handleRemove={() => removeFile(file)}
+                index={file.name}
+              />
+            </Column>
+          ))}
+        </Row>
+      </StyledContainer>
+    )
   }
-
-  // const acceptedFilesItems = acceptedFiles.map(file => (
-  //   <li key={file.path}>
-  //     {file.path} - {file.size} bytes
-  //   </li>
-  // ))
-
-  // const rejectedFilesItems = rejectedFiles.map(file => (
-  //   <li key={file.path}>
-  //     {file.path} - {file.size} bytes
-  //   </li>
-  // ))
 
   return (
     <>
@@ -94,6 +82,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
         {...getRootProps()}
       >
         <input {...getInputProps()} />
+
         {isDragAccept && <p>Accepted</p>}
         {isDragReject && <p>Rejected</p>}
 
@@ -103,18 +92,12 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
           <>
             <p>Drop, or click to select</p>
             {accept && <Accept accept={accept} />}
+            {multiple ? <p>Accepts multiple files</p> : <p>Single file only</p>}
           </>
         )}
       </StyledContainer>
 
-      <aside style={thumbsContainer}>{thumbs()}</aside>
-
-      {/* <aside>
-        <h4>Accepted</h4>
-        <ul>{acceptedFilesItems}</ul>
-        <h4>Rejected</h4>
-        <ul>{rejectedFilesItems}</ul>
-      </aside> */}
+      {files.length > 0 && thumbs()}
     </>
   )
 }

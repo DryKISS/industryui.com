@@ -17,6 +17,7 @@ export const RadioField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <legend>{legend}</legend>}
+
       {data.map(({ disabled, label, ...data }) => (
         <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
           <FieldHOC
@@ -48,10 +49,10 @@ const StyledFieldset = styled.fieldset`
 `
 
 const StyledLabel = styled.label`
+  cursor: pointer;
   margin-right: 1.25rem;
   padding-left: 1.25rem;
   position: relative;
-  cursor: pointer;
   ${({ stacked }) =>
     stacked &&
     css`
@@ -64,10 +65,12 @@ const StyledLabel = styled.label`
 RadioField.propTypes = {
   data: array.isRequired,
   legend: string,
+  required: bool,
   stacked: bool
 }
 
 RadioField.defaultProps = {
   data: [],
+  required: true,
   stacked: false
 }
