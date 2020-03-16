@@ -25,15 +25,18 @@ export default {
   }
 }
 
+const Test = () => {
+  return <>HERE</>
+}
+
 export const main = () => (
   <Dashboard
-    error={{ message: 'Error 404' }}
-    isLoading={false}
     meta={meta}
     pageHeading={{
       heading: 'Default'
     }}
-    success
+    resultAlert={{ message: 'Success' }}
+    View={<Test />}
   >
     Dashboard Layout
   </Dashboard>

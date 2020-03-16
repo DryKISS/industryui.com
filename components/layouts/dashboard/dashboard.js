@@ -10,7 +10,7 @@ import { node, object, shape, string } from 'prop-types'
 // UI
 import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 
-export const Dashboard = ({ children, resultAlert, meta, pageHeading, View, viewProps }) => {
+export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
   const { context, message } = resultAlert
 
   return (
