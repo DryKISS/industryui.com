@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Page } from '../'
+import { Page } from 'components'
 import Readme from '../README.md'
 
 export default {

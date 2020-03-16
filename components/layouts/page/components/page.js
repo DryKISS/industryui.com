@@ -29,6 +29,7 @@ export const Page = ({ children, fluid, meta, pageHeading }) => {
 }
 
 const StyledPage = styled.div`
+  background-color: rgb(245, 248, 250);
   padding: 30px 0;
 
   @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
@@ -38,9 +39,9 @@ const StyledPage = styled.div`
 
 Page.propTypes = {
   children: node.isRequired,
+  fluid: bool,
   meta: object.isRequired,
-  pageHeading: object,
-  fluid: bool
+  pageHeading: object
 }
 
 Page.defaultProps = {

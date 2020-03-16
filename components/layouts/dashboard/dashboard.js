@@ -4,32 +4,42 @@
  */
 
 // React
-import { bool, node, object } from 'prop-types'
+import React, { Suspense } from 'react'
+import { node, object, shape, string } from 'prop-types'
 
 // UI
 import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 
-export const Dashboard = ({ children, resultAlert, isLoading, meta, pageHeading }) => {
-  return isLoading ? (
-    <PageLoading backgroundColor='#fff' indicator={<LdsSpinner color='#333' />} opacity={1} />
-  ) : (
+export const Dashboard = ({ children, resultAlert, meta, pageHeading, View, viewProps }) => {
+  const { context, message } = resultAlert
+
+  return (
     <>
-      <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
-      {resultAlert.message && <Alert content={resultAlert.message} context={resultAlert.context} />}
+      <Suspense
+        fallback={
+          <PageLoading backgroundColor='#fff' indicator={<LdsSpinner color='#333' />} opacity={1} />
+        }
+      >
+        <>
+          <Page children={View || children} fluid meta={meta} pageHeading={pageHeading} />
+          {message && <Alert content={message} context={context} />}
+        </>
+      </Suspense>
     </>
   )
 }
 
 Dashboard.propTypes = {
   children: node.isRequired,
-  isLoading: bool.isRequired,
   meta: object.isRequired,
   pageHeading: object,
-  resultAlert: object
+  resultAlert: shape({
+    context: string,
+    message: string
+  })
 }
 
 Dashboard.defaultProps = {
-  isLoading: true,
   resultAlert: {
     context: 'success',
     message: ''

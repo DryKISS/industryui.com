@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Dashboard } from '../'
+import { Dashboard } from 'components'
 import Readme from '../README.md'
 
 const meta = {
