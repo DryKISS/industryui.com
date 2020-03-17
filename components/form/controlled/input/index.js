@@ -83,8 +83,8 @@ export const StyledInput = styled.input`
   border-radius: 0.25rem;
   color: #9da7af;
   display: block;
-  font-size: 1rem;
   height: 3rem;
+  font-size: 1rem;
   line-height: 1.5;
   padding: 0.5rem 1rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,

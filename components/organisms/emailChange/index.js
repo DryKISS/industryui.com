@@ -38,7 +38,6 @@ export const EmailChange = ({ showPlaceholder }) => {
             placeholder={showPlaceholder ? 'Email' : ''}
             regExp={pattern}
             register={register}
-            required='This is required'
           />
         </FormLabel>
 

@@ -26,6 +26,7 @@ const StyledButton = styled.button`
     context === 'white' ? COLOUR.primary : COLOUR.white};
   border: 2px solid ${({ context, theme: { COLOUR } }) => COLOUR[context]};
   border-radius: .25rem;
+  box-sizing: border-box;
   ${props =>
     props.shadow &&
     'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}

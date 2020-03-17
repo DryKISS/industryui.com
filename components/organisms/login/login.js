@@ -78,7 +78,6 @@ export const Login = ({
             placeholder={showPlaceholder ? 'Email' : ''}
             regExp={pattern}
             register={register}
-            required='This is required'
           />
         </FormLabel>
 
@@ -88,7 +87,6 @@ export const Login = ({
             name='password'
             placeholder={showPlaceholder ? 'Password' : ''}
             register={register}
-            required='This is required'
             type={showPass ? 'text' : 'password'}
           />
         </FormLabel>

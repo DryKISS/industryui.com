@@ -37,7 +37,6 @@ export const ForgotDetailsReset = ({ pathLogIn, showPlaceholder }) => {
             name='password'
             placeholder={showPlaceholder ? 'Password' : ''}
             register={register}
-            required='This is required'
             type='password'
           />
         </FormLabel>

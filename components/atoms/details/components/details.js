@@ -8,30 +8,39 @@ import { bool, node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Details = ({ children, open, summary }) => {
+export const Details = ({ children, open, style, summary }) => {
   return (
     <StyledDetails open={open}>
       <StyledSummary>{summary}</StyledSummary>
-      {children}
+      <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
   )
 }
 
 const StyledDetails = styled.details`
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
-  padding-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #eee;
+  box-shadow: rgba(45, 62, 80, 0.12) 0px 1px 5px 0px;
 `
 
 const StyledSummary = styled.summary`
   cursor: pointer;
-  font-size: 1rem;
-  padding-top: 0.5rem;
   outline: none;
+  padding: 1rem;
+`
+
+const StyledBody = styled.summary`
+  font-size: 1rem;
+  padding: 1rem;
 `
 
 Details.propTypes = {
-  children: node,
+  children: node.isRequired,
   open: bool,
-  summary: string
+  // style: node,
+  summary: string.isRequired
+}
+
+Details.defaultProps = {
+  open: false
 }

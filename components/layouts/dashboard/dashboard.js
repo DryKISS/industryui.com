@@ -1,6 +1,5 @@
 /**
  * Layout - Dashboard
- *
  */
 
 // React
@@ -13,6 +12,14 @@ import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
   const { context, message } = resultAlert
 
+  const defaultMeta = {
+    description: 'Admin',
+    path: '/',
+    title: 'Admin'
+  }
+
+  const mergedMeta = { ...defaultMeta, ...meta }
+
   return (
     <>
       <Suspense
@@ -21,7 +28,7 @@ export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) =>
         }
       >
         <>
-          <Page children={View || children} fluid meta={meta} pageHeading={pageHeading} />
+          <Page children={View || children} fluid meta={mergedMeta} pageHeading={pageHeading} />
           {message && <Alert content={message} context={context} />}
         </>
       </Suspense>
@@ -30,8 +37,12 @@ export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) =>
 }
 
 Dashboard.propTypes = {
-  children: node.isRequired,
-  meta: object.isRequired,
+  children: node,
+  meta: shape({
+    description: string,
+    path: string,
+    title: string
+  }),
   pageHeading: object,
   resultAlert: shape({
     context: string,

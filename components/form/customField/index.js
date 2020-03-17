@@ -22,6 +22,7 @@ export const CustomField = ({ as, errors, name, register, setValue, ...props }) 
         setValue={setValue}
         {...props}
       />
+
       <FormError message={errors[name] ? errors[name].message : ''} />
     </>
   )

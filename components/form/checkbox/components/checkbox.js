@@ -50,14 +50,12 @@ const StyledFieldset = styled.fieldset`
 const StyledLabel = styled.label`
   cursor: pointer;
   margin-right: 1.25rem;
-  padding-left: 1.25rem;
   position: relative;
   ${({ stacked }) =>
     stacked &&
     css`
       display: block;
       margin: 0.5rem 0;
-      padding-left: 1.25rem;
     `}
 `
 

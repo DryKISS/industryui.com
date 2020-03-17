@@ -16,7 +16,7 @@ import styled, { css } from 'styled-components'
 export const RadioField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
-      {legend && <legend>{legend}</legend>}
+      {legend && <StyledLegend error={errors[props.name]}>{legend}</StyledLegend>}
 
       {data.map(({ disabled, label, ...data }) => (
         <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
@@ -45,20 +45,27 @@ const StyledFieldset = styled.fieldset`
       border-image: initial;
       border-style: solid;
       border-width: 1px 1px 1px 10px;
+      padding: 0.5rem;
+    `}
+`
+
+const StyledLegend = styled.legend`
+  ${({ error }) =>
+    error &&
+    css`
+      padding: 0 0.5rem;
     `}
 `
 
 const StyledLabel = styled.label`
   cursor: pointer;
   margin-right: 1.25rem;
-  padding-left: 1.25rem;
   position: relative;
   ${({ stacked }) =>
     stacked &&
     css`
       display: block;
       margin: 0.5rem 0;
-      padding-left: 1.25rem;
     `}
 `
 

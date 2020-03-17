@@ -52,6 +52,7 @@ const StyledTextarea = styled.textarea`
   background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
   border: 1px solid ${props => props.theme.COLOUR.light};
   border-radius: 0.25rem;
+  box-sizing: border-box;
   color: ${props => props.theme.COLOUR.dark};
   cursor: ${({ disabled }) => (disabled ? 'no-drop' : 'auto')};
   direction: ${({ dir }) => dir};
