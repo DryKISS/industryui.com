@@ -4,7 +4,7 @@
 
 // React
 import { forwardRef } from 'react'
-import { array, object, string } from 'prop-types'
+import { array, bool, object, string } from 'prop-types'
 
 // UI
 import { FieldHOC } from '../'
@@ -13,7 +13,7 @@ import { FieldHOC } from '../'
 import styled, { css } from 'styled-components'
 
 export const SelectField = forwardRef(
-  ({ data, disabled, options, placeholder, range, ...props }, ref) => {
+  ({ data, disabled, options, placeholder, range, required, ...props }, ref) => {
     const renderRange = () => {
       const options = [
         <option disabled value='' key='initial0'>
@@ -43,6 +43,7 @@ export const SelectField = forwardRef(
         component={StyledSelect}
         className='Form-control'
         ref={ref}
+        required={required}
         showError={false}
         {...data}
         {...props}
@@ -89,11 +90,15 @@ const StyledSelect = styled.select`
 
 SelectField.propTypes = {
   data: object,
+  disabled: bool,
   options: array,
   placeholder: string,
-  range: array
+  range: array,
+  required: bool
 }
 
 SelectField.defaultProps = {
-  range: []
+  disabled: false,
+  range: [],
+  required: true
 }
