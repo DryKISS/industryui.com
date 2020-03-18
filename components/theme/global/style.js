@@ -70,7 +70,7 @@ export const ThemeStyle = createGlobalStyle`
   }
 
   *, *::before, *::after {
-    box-sizing: inherit;
+    box-sizing: border-box;
   }
 
   body {

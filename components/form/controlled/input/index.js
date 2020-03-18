@@ -81,6 +81,7 @@ export const StyledInput = styled.input`
   ${({ disabled }) => disabled && 'cursor: not-allowed;'};
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   color: #9da7af;
   display: block;
   height: 3rem;

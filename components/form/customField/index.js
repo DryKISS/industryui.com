@@ -1,9 +1,11 @@
 /**
  * Custom Input
+ *
+ * @see https://github.com/react-hook-form/react-hook-form-input
  */
 
 // React
-import { any, func, string, object } from 'prop-types'
+import { any, func, string, object, oneOf } from 'prop-types'
 
 // Form
 import { RHFInput } from 'react-hook-form-input'
@@ -11,15 +13,16 @@ import { RHFInput } from 'react-hook-form-input'
 // UI
 import { FormError } from '../'
 
-export const CustomField = ({ as, errors, name, register, setValue, ...props }) => {
+export const CustomField = ({ as, errors, name, mode, register, setValue, ...props }) => {
   return (
     <>
       <RHFInput
         as={as}
-        errors={errors}
+        mode={mode}
         name={name}
         register={register}
         setValue={setValue}
+        rules={{ required: true }}
         {...props}
       />
 
@@ -29,11 +32,14 @@ export const CustomField = ({ as, errors, name, register, setValue, ...props }) 
 }
 
 CustomField.propTypes = {
-  as: any,
-  errors: object,
-  name: string,
-  register: func,
-  setValue: func
+  as: any, // Select from react-select
+  errors: object, // onSubmit	Mode option for triggering validation
+  mode: oneOf(['onBlur', 'onChange', 'onSubmit']),
+  name: string, // Unique name to register the custom input
+  register: func, // (optional when using FormContext) React Hook Form register function
+  setValue: func // (optional when using FormContext) React Hook Form setValue function
 }
 
-CustomField.defaultProps = {}
+CustomField.defaultProps = {
+  mode: 'onChange'
+}
