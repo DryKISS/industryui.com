@@ -41,7 +41,7 @@ const BaseComponent = (props = {}) => {
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Select'>
-        <SelectField {...defaultProps} required='This is required' />
+        <SelectField {...defaultProps} />
       </FormLabel>
       <Button content='Submit' type='submit' />
     </FormForm>

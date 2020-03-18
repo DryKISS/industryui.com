@@ -81,10 +81,11 @@ export const StyledInput = styled.input`
   ${({ disabled }) => disabled && 'cursor: not-allowed;'};
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   color: #9da7af;
   display: block;
-  font-size: 1rem;
   height: 3rem;
+  font-size: 1rem;
   line-height: 1.5;
   padding: 0.5rem 1rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,

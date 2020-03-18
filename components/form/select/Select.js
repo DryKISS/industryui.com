@@ -59,6 +59,7 @@ const StyledSelect = styled.select`
   background-color: #fff;
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   color: #9da7af;
   display: block;
   font-size: 1rem;

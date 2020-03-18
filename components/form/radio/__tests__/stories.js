@@ -45,7 +45,7 @@ const BaseComponent = (props = {}) => {
 
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
-      <RadioField {...defaultProps} data={RADIO_GENDER()} required='This is required' />
+      <RadioField {...defaultProps} data={RADIO_GENDER()} />
       <Button content='Submit' type='submit' />
     </FormForm>
   )

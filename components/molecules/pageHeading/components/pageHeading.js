@@ -42,7 +42,6 @@ const StyledPageHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${({ divider }) => !divider && '2rem'};
-  margin-top: 1rem;
   text-align: ${({ center }) => center && 'center'};
 `
 

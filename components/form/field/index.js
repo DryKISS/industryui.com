@@ -36,6 +36,7 @@ const StyledInput = styled.input`
   background-color: #fff;
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   color: ${({ theme }) => theme.COLOUR.dark};
   display: block;
   font-size: 1rem;
