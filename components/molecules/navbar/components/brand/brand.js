@@ -15,7 +15,7 @@ import styled from 'styled-components'
 export const Brand = ({ brand }) => {
   return (
     <Link border={false} to='/' passHref>
-      <StyledImage alt='Logo' draggable='false' src={brand} />
+      <StyledImage alt='Logo' draggable='false' src={brand} data-cy='navBrand' />
     </Link>
   )
 }
