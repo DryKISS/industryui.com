@@ -1,4 +1,4 @@
 /**
  * Close
  */
-export * from './components'
+export * from './close'

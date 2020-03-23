@@ -61,7 +61,7 @@ const StyledSelect = styled.select`
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
   box-sizing: border-box;
-  color: #9da7af;
+  color: ${({ theme }) => theme.COLOUR.dark};
   display: block;
   font-size: 1rem;
   height: 3rem;
@@ -73,7 +73,7 @@ const StyledSelect = styled.select`
   &:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    color: #9da7af;
+    color: ${({ theme }) => theme.COLOUR.dark};
     outline: 0;
   }
 

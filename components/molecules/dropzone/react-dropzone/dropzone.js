@@ -40,6 +40,8 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
         })
       )
 
+      console.log(accepted)
+
       setFiles(accepted)
 
       if (onChange) {

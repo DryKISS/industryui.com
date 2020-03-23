@@ -141,9 +141,11 @@ export const Table = ({
   const renderTable = () => (
     <StyledTable className={className}>
       {caption && <StyledCaption>{caption}</StyledCaption>}
+
       <thead>
         <tr>{columns && renderColumns()}</tr>
       </thead>
+
       <tbody>
         {noData && !loading && !rows.length ? (
           <TableRow>

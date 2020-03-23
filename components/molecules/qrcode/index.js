@@ -1,4 +1,4 @@
 /**
- * Page Loadubg
+ * Accordion
  */
 export * from './components'

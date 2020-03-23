@@ -7,7 +7,7 @@ import React from 'react'
 import { any, func, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { CONTEXT } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -25,9 +25,12 @@ const StyledAvatar = styled.div`
   background: ${({ context, theme }) =>
     context ? theme.COLOUR[context] : theme.AVATAR.background};
   border-radius: 50%;
+  box-sizing: border-box;
   color: ${({ theme }) => theme.AVATAR.colour};
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
   ${({ size }) => css`
     font-size: ${size / 4}px;
     height: ${size}px;
@@ -47,5 +50,5 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
   context: 'primary',
-  size: 60
+  size: 72
 }

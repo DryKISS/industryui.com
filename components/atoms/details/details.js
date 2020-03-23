@@ -20,10 +20,11 @@ export const Details = ({ children, open, style, summary }) => {
 const StyledDetails = styled.details`
   background-color: #fff;
   border: 1px solid #eee;
-  box-shadow: rgba(45, 62, 80, 0.12) 0px 1px 5px 0px;
+  box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
 `
 
 const StyledSummary = styled.summary`
+  font-weight: bold;
   cursor: pointer;
   outline: none;
   padding: 1rem;
@@ -31,13 +32,12 @@ const StyledSummary = styled.summary`
 
 const StyledBody = styled.summary`
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
 `
 
 Details.propTypes = {
   children: node.isRequired,
   open: bool,
-  // style: node,
   summary: string.isRequired
 }
 

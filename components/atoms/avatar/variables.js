@@ -1,5 +1,5 @@
 /**
- * Theme - Variables - Avatar
+ * Avatar - Variables
  */
 import { COLOUR } from '../../theme/variables/colour'
 

@@ -1,16 +1,26 @@
-import styled from 'styled-components'
+/**
+ * OffCanvas - Header
+ */
+
+// React
 import { oneOf } from 'prop-types'
+
+// UI
 import { CONTEXT } from '../../../'
 
+// Style
+import styled from 'styled-components'
+
 export const OffCanvasHeader = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* background-color: ${({ context, theme: { COLOUR } }) => COLOUR[context]}; */
+  background-color: #00bda5;
+  background-image: linear-gradient(-303deg, #00a4bd, #00afb2 56%, #00bda5);
   color: ${({ theme: { COLOUR } }) => COLOUR.white};
-  padding: 1rem 1rem 1rem 1.8rem;
-  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
   letter-spacing: 0.5px;
-  background-color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
+  padding: 1rem;
 `
 
 OffCanvasHeader.propTypes = {

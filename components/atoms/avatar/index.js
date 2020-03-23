@@ -1,1 +1,4 @@
-export * from './components'
+/**
+ * Avatar
+ */
+export * from './avatar'

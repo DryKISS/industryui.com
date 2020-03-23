@@ -12,7 +12,11 @@ import Router from 'next/router'
 import ReactTooltip from 'react-tooltip'
 
 // UI
-import { Button, ButtonToolbar, Icon } from '../../../'
+import { ButtonToolbar, Icon } from '../../../'
+import { Button } from '../../../atoms/button/components/button/button'
+
+// Style
+import styled from 'styled-components'
 
 export const TableActions = ({ row }, data) => {
   const handleClick = path => e => {
@@ -30,8 +34,8 @@ export const TableActions = ({ row }, data) => {
           const iconArray = Array.isArray(icon)
 
           return (
-            <Button
-              as='a'
+            <StyledButton
+              forwardedAs='a'
               data-tip={tooltip}
               context={context}
               key={index}
@@ -43,13 +47,18 @@ export const TableActions = ({ row }, data) => {
                 prefix={icon && iconArray && icon[0]}
                 style={{ pointerEvents: 'none' }}
               />
-            </Button>
+            </StyledButton>
           )
         })}
       </ButtonToolbar>
     </>
   )
 }
+
+const StyledButton = styled(Button)`
+  font-size: 16px;
+  padding: 0.3rem;
+`
 
 TableActions.propTypes = {
   row: object.isRequired

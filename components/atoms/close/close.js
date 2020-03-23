@@ -3,11 +3,11 @@
  */
 
 // React
-import { func, oneOf, string } from 'prop-types'
+import { any, func, oneOf, string } from 'prop-types'
 
 // UI
-import { Button } from '../../../atoms/button'
-import { CONTEXT, Icon } from '../../../'
+import { Button } from '../../atoms/button'
+import { CONTEXT, Icon } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -29,8 +29,7 @@ const StyledButton = styled(Button)`
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  opacity: 0.6;
-  padding: 0 0.25rem;
+  opacity: 0.8;
   text-shadow: 0 1px 0 #fff;
   margin: -1rem -1rem -1rem auto;
   z-index: 10000;
@@ -44,6 +43,7 @@ const StyledButton = styled(Button)`
 `
 
 Close.propTypes = {
+  className: any,
   click: func.isRequired,
   context: oneOf(Object.values(CONTEXT)),
   icon: string,
@@ -52,5 +52,6 @@ Close.propTypes = {
 
 Close.defaultProps = {
   context: 'danger',
-  icon: 'times-circle'
+  icon: 'times-circle',
+  iconPrefix: 'far'
 }

@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { PageLoading, LdsSpinner } from '../'
+import { PageLoading, LdsSpinner } from 'components'
 
 export default {
   title: 'Molecules/PageLoading',

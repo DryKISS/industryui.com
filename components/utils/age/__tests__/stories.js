@@ -27,6 +27,7 @@ export const main = () => {
   return (
     <>
       <p>Age: {age(date)}</p>
+
       <DatePickerCalendar
         dateFormat='d MMM yyyy'
         selected={date}

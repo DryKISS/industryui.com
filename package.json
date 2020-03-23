@@ -2,9 +2,7 @@
   "name": "industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
   "main": "./index.js",
   "license": "MIT",
@@ -56,9 +54,7 @@
     }
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn test"
-    ]
+    "**/*.js": ["yarn test"]
   },
   "husky": {
     "hooks": {
@@ -70,14 +66,8 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": [
-      "__SITE__"
-    ],
-    "ignore": [
-      "node_modules/**",
-      "*.bundle*.js",
-      "**/__tests__/*.test.js"
-    ],
+    "globals": ["__SITE__"],
+    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
   },
   "storybook-deployer": {
@@ -86,9 +76,7 @@
     "commitMessage": "Deploy Storybook"
   },
   "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
+    "processors": ["stylelint-processor-styled-components"],
     "extends": [
       "stylelint-config-standard",
       "stylelint-config-prettier",
@@ -132,7 +120,6 @@
     "react-dropzone-uploader": "^2.11.0",
     "react-google-maps": "^9.4.5",
     "react-hook-form": "4.10.1",
-    "react-hook-form-input": "^1.1.10",
     "react-popper": "^1.3.7",
     "react-select": "^3.0.8",
     "react-tooltip": "^4.0.3",

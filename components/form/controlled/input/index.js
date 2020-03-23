@@ -75,7 +75,9 @@ export const Input = ({
   )
 }
 
-export const StyledInput = styled.input`
+const StyledInput = styled.input.attrs(props => ({
+  autoComplete: 'off'
+}))`
   background-clip: padding-box;
   background-color: ${({ theme, disabled }) => (disabled ? theme.COLOUR.light : '#fff')};
   ${({ disabled }) => disabled && 'cursor: not-allowed;'};
