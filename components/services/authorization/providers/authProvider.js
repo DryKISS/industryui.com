@@ -57,7 +57,6 @@ export const AuthorizationProvider = ({ children }) => {
   const checkRole = role => {
     // check
     const [type, subtype] = role.split('_')
-    console.log('test', type, subtype)
 
     if (subtype) {
       switch (subtype) {
