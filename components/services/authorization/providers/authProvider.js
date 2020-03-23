@@ -54,9 +54,36 @@ export const AuthorizationProvider = ({ children }) => {
     }
   }
 
+  const checkRole = role => {
+    // check
+    const [type, subtype] = role.split('_')
+
+    if (subtype) {
+      switch (subtype) {
+        case 'owner':
+          return user.role === type + '_owner'
+          break
+        case 'manager':
+          return user.role === type + '_owner' || user.role === type + '_manager'
+          break
+        case 'user':
+          return user.role.startsWith(type)
+          break
+        default:
+          return false
+      }
+    } else {
+      return user.role.startsWith(type)
+    }
+  }
+
   const hasRole = role => {
     if (user && user.role) {
-      return Array.isArray(role) ? role.includes(user.role) : user.role === role
+      if (Array.isArray(role)) {
+        return role.some(checkRole)
+      } else {
+        return checkRole(role)
+      }
     }
     return false
   }
