@@ -16,10 +16,7 @@ export const PasswordChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({ mode: 'onChange' })
   const [error] = useState(false)
 
-  const submit = data => {
-    const { email } = data
-    console.log(email)
-  }
+  const submit = data => {}
 
   return (
     <>

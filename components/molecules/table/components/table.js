@@ -46,6 +46,7 @@ export const Table = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(initialPage)
   const tableSpan = columns.filter(c => !c.hidden).length
+
   const handleClick = e => {
     e.preventDefault()
     const row = e.currentTarget.getAttribute('data-item')

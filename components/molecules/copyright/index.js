@@ -22,8 +22,6 @@ export const Copyright = ({ brand, links }) => {
 
   const year = new Date().getFullYear()
 
-  console.log(links)
-
   return (
     <StyledCopyright data-cy='copyright'>
       <StyledContainer>

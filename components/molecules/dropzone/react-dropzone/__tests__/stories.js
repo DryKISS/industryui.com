@@ -25,7 +25,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const onChange = change => {
-    console.log('Changed', change)
+    console.info('Changed', change)
   }
 
   const defaultProps = {
