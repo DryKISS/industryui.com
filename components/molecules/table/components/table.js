@@ -46,6 +46,7 @@ export const Table = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(initialPage)
   const tableSpan = columns.filter(c => !c.hidden).length
+
   const handleClick = e => {
     e.preventDefault()
     const row = e.currentTarget.getAttribute('data-item')
@@ -141,9 +142,11 @@ export const Table = ({
   const renderTable = () => (
     <StyledTable className={className}>
       {caption && <StyledCaption>{caption}</StyledCaption>}
+
       <thead>
         <tr>{columns && renderColumns()}</tr>
       </thead>
+
       <tbody>
         {noData && !loading && !rows.length ? (
           <TableRow>

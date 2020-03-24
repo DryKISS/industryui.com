@@ -6,7 +6,7 @@
 import { array, string } from 'prop-types'
 
 // UI
-import { Column, Container, Divider, Icon, Link, Row } from '../../'
+import { Column, Container, Icon, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -23,44 +23,41 @@ export const Copyright = ({ brand, links }) => {
   const year = new Date().getFullYear()
 
   return (
-    <>
-      <Divider size='md' />
+    <StyledCopyright data-cy='copyright'>
+      <StyledContainer>
+        <Row>
+          <Column md={links.length > 0 ? 3 : 12}>
+            <StyledBrand>
+              <StyledIcon context='primary' icon='copyright' prefix='fad' />
+              {year} — {brand}
+            </StyledBrand>
+          </Column>
 
-      <StyledCopyright data-cy='copyright'>
-        <StyledContainer>
-          <Row>
-            <Column md={3}>
-              <StyledBrand>
-                {/* <Image alt='Logo' src='/iui.svg' /> */}
-                <Icon context='primary' icon='copyright' prefix='fad' />
-                {year} — {brand}
-              </StyledBrand>
-            </Column>
-
-            <Column md={9}>{links && renderLinks()}</Column>
-          </Row>
-        </StyledContainer>
-      </StyledCopyright>
-    </>
+          {links.length > 0 && <Column md={9}>{renderLinks()}</Column>}
+        </Row>
+      </StyledContainer>
+    </StyledCopyright>
   )
 }
 
 const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COPYRIGHT.background};
   color: ${({ theme }) => theme.COPYRIGHT.colour};
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.75rem;
 `
 
 const StyledContainer = styled(Container)`
-  /* align-items: center;
-  display: flex; */
   height: 3.5rem;
 `
 
 const StyledBrand = styled.div`
-  /* display: inline;
-  margin: 0 1rem 0 0; */
+  display: flex;
+  justify-content: center;
+`
+
+const StyledIcon = styled(Icon)`
+  margin: auto 0;
+  padding-right: 0.25rem;
 `
 
 const StyledLink = styled.span`

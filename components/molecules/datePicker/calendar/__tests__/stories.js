@@ -1,5 +1,5 @@
 /**
- * Date Picker - Calendar
+ * DatePicker - Calendar - Story
  */
 
 // React
@@ -152,8 +152,6 @@ export const WorkingHours = () => {
   return (
     <>
       Our Schedule: 9:30AM - 6:30PM, Monday - Friday
-      <br />
-      <br />
       <DatePickerCalendar
         selected={startDate}
         onChange={date => setStartDate(date)}

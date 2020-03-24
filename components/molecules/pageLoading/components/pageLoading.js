@@ -1,23 +1,16 @@
+/**
+ * Page Loading
+ */
+
+// React
 import React from 'react'
 import { any, number, string } from 'prop-types'
+
+// Style
 import styled from 'styled-components'
 
 export const PageLoading = ({ children, indicator, ...props }) => {
   return <StyledLoading {...props}>{indicator || children}</StyledLoading>
-}
-
-PageLoading.propTypes = {
-  backgroundColor: string,
-  children: any,
-  indicator: any,
-  opacity: number,
-  position: string
-}
-
-PageLoading.defaultProps = {
-  backgroundColor: '#000',
-  opacity: 0.5,
-  position: 'fixed'
 }
 
 const StyledLoading = styled.div`
@@ -35,3 +28,17 @@ const StyledLoading = styled.div`
   width: 100%;
   z-index: 99;
 `
+
+PageLoading.propTypes = {
+  backgroundColor: string,
+  children: any,
+  indicator: any,
+  opacity: number,
+  position: string
+}
+
+PageLoading.defaultProps = {
+  backgroundColor: '#fff',
+  opacity: 1,
+  position: 'fixed'
+}

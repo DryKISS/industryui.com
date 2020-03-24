@@ -22,11 +22,7 @@ export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) =>
 
   return (
     <>
-      <Suspense
-        fallback={
-          <PageLoading backgroundColor='#fff' indicator={<LdsSpinner color='#333' />} opacity={1} />
-        }
-      >
+      <Suspense fallback={<PageLoading indicator={<LdsSpinner />} />}>
         <>
           <Page children={View || children} fluid meta={mergedMeta} pageHeading={pageHeading} />
           {message && <Alert content={message} context={context} />}

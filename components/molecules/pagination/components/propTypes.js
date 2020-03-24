@@ -1,3 +1,6 @@
+/**
+ * Pagination - PropTypes
+ */
 import { any, func, number, string, bool, oneOfType, node, oneOf } from 'prop-types'
 import { CONTEXT, SIZE } from '../../../'
 

@@ -10,7 +10,7 @@ import { number, withKnobs } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
-import { Avatar } from '../'
+import { Avatar } from 'components'
 import Readme from '../README.md'
 
 export default {

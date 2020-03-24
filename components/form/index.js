@@ -3,7 +3,6 @@
  */
 export * from './checkbox'
 export * from './controlled'
-export * from './customField'
 export * from './error'
 export * from './field'
 export * from './form'

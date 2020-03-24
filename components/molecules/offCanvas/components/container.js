@@ -1,16 +1,23 @@
+/**
+ * OffCanvas - Content
+ */
+
+// React
 import { bool, string } from 'prop-types'
+
+// Style
 import styled, { css } from 'styled-components'
 
 export const OffCanvasDiv = styled.div`
-  box-shadow: ${({ show }) => (show ? '-5px 5px 22px -15px rgba(0,0,0,0.75)' : 'none')};
-  border-left: ${({ show }) => (show ? 'none' : '1px solid #cecece')};
-  position: fixed;
   background-color: #fff;
+  border-left: ${({ show }) => (show ? 'none' : '1px solid #cecece')};
+  box-shadow: ${({ show }) => (show ? '-5px 5px 22px -15px rgba(0,0,0,0.75)' : 'none')};
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
   transition: transform ${({ duration }) => duration}ms ease-in-out;
   will-change: transform;
   z-index: 9999;
-  overflow-y: auto;
-  overflow-x: hidden;
 
   /* Top Placement */
   ${({ placement }) =>

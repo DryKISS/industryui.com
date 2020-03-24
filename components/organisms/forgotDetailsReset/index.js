@@ -19,10 +19,7 @@ export const ForgotDetailsReset = ({ pathLogIn, showPlaceholder }) => {
   const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
   const [error] = useState(false)
 
-  const submit = data => {
-    const { password } = data
-    console.log(password)
-  }
+  const submit = data => {}
 
   return (
     <>

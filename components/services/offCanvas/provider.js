@@ -20,12 +20,14 @@ const DURATION = 300
 export const OffCanvasProvider = ({ children }) => {
   const [dataManager, setDataManager] = useState([])
   const [visibilityManager, setVisibilityManager] = useState([])
+
   const handleClose = () => {
     setVisibilityManager(prev => {
       prev.pop()
       return [...prev]
     })
-    // prevent data to disappear suddenly on close
+
+    // Prevent data to disappear suddenly on close
     setTimeout(
       () => {
         setDataManager(prev => {
@@ -36,16 +38,20 @@ export const OffCanvasProvider = ({ children }) => {
       dataManager.length === 1 ? DURATION : 0
     )
   }
+
   const handleShow = data => {
     if (data && data.content) {
       setVisibilityManager(prev => [...prev, true])
       setDataManager(prev => [...prev, data])
     } else handleClose()
   }
+
   // Get width and placement from first item
   const options = getFirst(dataManager)
+
   // Get title and content from last item
   const data = getLast(dataManager)
+
   return (
     <OffCanvasContext.Provider
       value={{
@@ -54,6 +60,7 @@ export const OffCanvasProvider = ({ children }) => {
       }}
     >
       {children}
+
       <OffCanvas
         context={data && data.context}
         headerText={(data && data.title) || ''}

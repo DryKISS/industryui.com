@@ -1,8 +1,16 @@
+/**
+ * Pagination - Item
+ */
+
+// React
 import React from 'react'
 import { bool, any, func, string } from 'prop-types'
-import styled from 'styled-components'
 
-import { Button, FONTSIZE } from '../../..'
+// UI
+import { Button, FONTSIZE } from '../../../'
+
+// Style
+import styled from 'styled-components'
 
 export const PaginationItem = ({ active, context, disabled, label, onClick, size, ...props }) => {
   return (
@@ -19,19 +27,6 @@ export const PaginationItem = ({ active, context, disabled, label, onClick, size
       </StyledButton>
     </StyledLi>
   )
-}
-
-PaginationItem.propTypes = {
-  context: string,
-  disabled: bool,
-  label: any,
-  onClick: func,
-  size: string
-}
-
-PaginationItem.defaultProps = {
-  context: 'primary',
-  size: 'md'
 }
 
 const StyledLi = styled.li`
@@ -67,3 +62,16 @@ const StyledButton = styled(Button)`
     border: 1px solid ${({ theme }) => theme.COLOUR.light};
   }
 `
+
+PaginationItem.propTypes = {
+  context: string,
+  disabled: bool,
+  label: any,
+  onClick: func,
+  size: string
+}
+
+PaginationItem.defaultProps = {
+  context: 'secondary',
+  size: 'md'
+}

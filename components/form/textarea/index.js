@@ -50,7 +50,7 @@ export const TextareaField = ({
 const StyledTextarea = styled.textarea`
   background-clip: padding-box;
   background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
-  border: 1px solid ${props => props.theme.COLOUR.light};
+  border: 1px solid #c4cacf;
   border-radius: 0.25rem;
   box-sizing: border-box;
   color: ${props => props.theme.COLOUR.dark};

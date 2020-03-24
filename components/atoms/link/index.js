@@ -14,17 +14,17 @@ import { validatorUri } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Link = ({ border, children, onClick, passHref, target, to }) => {
+export const Link = ({ border, children, className, onClick, passHref, target, to }) => {
   const obj = typeof to === 'object' ? to : { href: to }
 
   return !validatorUri(to) ? (
     <NextLink {...obj} passHref={passHref}>
-      <StyledLink border={border} onClick={onClick} target={target}>
+      <StyledLink border={border} className={className} onClick={onClick} target={target}>
         {children}
       </StyledLink>
     </NextLink>
   ) : (
-    <StyledLink border={border} href={to}>
+    <StyledLink border={border} className={className} href={to}>
       {children}
     </StyledLink>
   )

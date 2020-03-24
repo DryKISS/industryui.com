@@ -6,7 +6,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { PaginationItem } from '.'
+import { PaginationItem } from './'
 import { PaginationPropTypes } from './propTypes'
 
 export const Pagination = ({
@@ -27,6 +27,7 @@ export const Pagination = ({
     else if (type === 'next') onPageChange(currentPage + 1)
     else onPageChange(type)
   }
+
   const renderContent = () => (
     <>
       {showNextAndPrev && (
@@ -38,6 +39,7 @@ export const Pagination = ({
           size={size}
         />
       )}
+
       {Array(pageCount)
         .fill(0)
         .map((p, i) => (
@@ -50,6 +52,7 @@ export const Pagination = ({
             size={size}
           />
         ))}
+
       {showNextAndPrev && (
         <PaginationItem
           context={context}
@@ -61,13 +64,24 @@ export const Pagination = ({
       )}
     </>
   )
-  if (hideWhenOnlyOnePage && pageCount < 2) return null
+
+  if (hideWhenOnlyOnePage && pageCount < 2) {
+    return null
+  }
+
   return (
     <StyledPagination aria-label='Pagination' {...props}>
       {children || renderContent()}
     </StyledPagination>
   )
 }
+
+const StyledPagination = styled.ul`
+  padding-left: 0;
+  list-style: none;
+  width: fit-content;
+  margin: 0 auto;
+`
 
 Pagination.propTypes = PaginationPropTypes
 
@@ -79,10 +93,3 @@ Pagination.defaultProps = {
   pageCount: 1,
   prevLabel: 'Previous'
 }
-
-const StyledPagination = styled.ul`
-  padding-left: 0;
-  list-style: none;
-  width: fit-content;
-  margin: 0 auto;
-`
