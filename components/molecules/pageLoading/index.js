@@ -1,4 +1,4 @@
 /**
- * Page Loadubg
+ * Page Loading
  */
 export * from './components'

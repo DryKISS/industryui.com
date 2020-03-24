@@ -1,12 +1,12 @@
 /**
- * Page Loadubg
+ * Page Loading
  */
 
 // React
 import React from 'react'
 import { number, string } from 'prop-types'
 
-// Sryle
+// Style
 import styled from 'styled-components'
 
 const SPINNER = Array(12).fill('')
