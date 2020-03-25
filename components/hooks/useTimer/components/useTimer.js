@@ -5,16 +5,16 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment'
 
-export function useTimer ({ autoStart = true, initialTime } = {}) {
-  const getInitialTime = () => {
+export function useTimer ({ autoStart = true, startTime, endTime } = {}) {
+  const getTime = () => {
     let diff = 0
-    if (typeof initialTime === 'string') {
-      diff = new Date().getTime() - new Date(initialTime).getTime()
+    if (typeof startTime === 'string') {
+      diff = new Date().getTime(endTime) - new Date(startTime).getTime()
     }
     return diff > -1 ? diff : 0
   }
 
-  const [time, setTime] = useState(getInitialTime())
+  const [time, setTime] = useState(getTime())
   const [timer, setTimer] = useState(null)
 
   const start = () => {
