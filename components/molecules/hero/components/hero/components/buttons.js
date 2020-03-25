@@ -6,7 +6,7 @@
 import { array } from 'prop-types'
 
 // UI
-import { Button, Link } from '../../../'
+import { Button, Link } from '../../../../../'
 
 // Style
 import styled from 'styled-components'

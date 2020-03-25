@@ -1,4 +1,1 @@
-/**
- * Components
- */
 export * from './hero'

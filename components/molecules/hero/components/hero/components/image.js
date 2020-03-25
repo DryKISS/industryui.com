@@ -7,7 +7,7 @@
 import { number, string } from 'prop-types'
 
 // UI
-import { Column, Image } from '../../../'
+import { Column, Image } from '../../../../../'
 
 // Style
 import styled from 'styled-components'

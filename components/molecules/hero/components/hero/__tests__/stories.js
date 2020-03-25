@@ -10,8 +10,8 @@ import { Wrapper } from 'decorators'
 
 // UI
 import { Hero } from '../'
-import Readme from '../README.md'
-import Jack from '../__resources__/hero-jack-russell.jpg'
+import Readme from '../../../README.md'
+import Jack from '../../../__resources__/hero-jack-russell.jpg'
 
 const Buttons = [
   {
