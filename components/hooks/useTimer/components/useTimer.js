@@ -5,7 +5,9 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment'
 
-export function useTimer ({ autoStart = true, startTime, endTime } = {}) {
+import { useInterval } from '../../../'
+
+export function useTimer ({ autoStart = true, interval = 1000, startTime, endTime } = {}) {
   const getTime = () => {
     let diff = 0
     if (typeof startTime === 'string') {
@@ -17,18 +19,15 @@ export function useTimer ({ autoStart = true, startTime, endTime } = {}) {
   const [time, setTime] = useState(getTime())
   const [timer, setTimer] = useState(null)
 
+  useInterval(() => {
+    setTime(prev => prev + interval)
+  }, timer)
+
   const start = () => {
-    if (!timer) {
-      setTimer(
-        setInterval(() => {
-          setTime(prev => prev + 1000)
-        }, 1000)
-      )
-    }
+    if (!timer) setTimer(interval)
   }
 
   const stop = () => {
-    clearInterval(timer)
     setTimer(null)
   }
 
