@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { bool, func, object, node, string } from 'prop-types'
+import { bool, func, object, oneOfType, node, string } from 'prop-types'
 
 import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
 
@@ -15,11 +15,12 @@ export const CurrencyInput = ({
   name,
   register,
   required,
+  show,
   style,
   vat
 }) => {
   return (
-    <FormLabel label={label}>
+    <FormLabel show={show} label={label}>
       <InputGroup>
         <InputGroupAddon addonType='prepend' text>
           {currencySymbol}
@@ -46,12 +47,13 @@ export const CurrencyInput = ({
 }
 
 CurrencyInput.propTypes = {
-  currencySymbol: string,
+  currencySymbol: oneOfType([object, string]),
   errors: object.isRequired,
   label: string.isRequired,
   name: string.isRequired,
   register: func.isRequired,
   required: bool,
+  show: bool,
   style: node,
   vat: bool
 }
@@ -59,5 +61,6 @@ CurrencyInput.propTypes = {
 CurrencyInput.defaultProps = {
   currencySymbol: '£',
   required: true,
+  show: true,
   vat: false
 }

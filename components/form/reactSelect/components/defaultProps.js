@@ -1,4 +1,5 @@
 export const reactSelectDefaultProps = defaultStyles => ({
+  autoload: false,
   backspaceRemovesValue: true,
   closeMenuOnSelect: true,
   closeMenuOnScroll: false,

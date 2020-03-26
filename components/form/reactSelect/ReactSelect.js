@@ -48,6 +48,7 @@ export const ReactSelectField = ({
       <Select ref={ref} {...data} />
     )
   })
+
   return (
     <Wrapper error={error || errors[name]}>
       <Controller
@@ -65,7 +66,6 @@ export const ReactSelectField = ({
 }
 
 ReactSelectField.propTypes = reactSelectPropTypes
-
 ReactSelectField.defaultProps = reactSelectDefaultProps(defaultStyles)
 
 const Wrapper = styled.div`
