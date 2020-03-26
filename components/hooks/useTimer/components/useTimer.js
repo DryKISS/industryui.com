@@ -10,8 +10,9 @@ import { useInterval } from '../../../'
 export function useTimer ({ autoStart = true, interval = 1000, startTime, endTime } = {}) {
   const getTime = () => {
     let diff = 0
+    const now = endTime ? new Date(endTime) : new Date()
     if (typeof startTime === 'string') {
-      diff = new Date().getTime(endTime) - new Date(startTime).getTime()
+      diff = now.getTime() - new Date(startTime).getTime()
     }
     return diff > -1 ? diff : 0
   }

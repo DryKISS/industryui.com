@@ -44,6 +44,10 @@ const BaseComponent = props => {
 
 export const main = () => <BaseComponent />
 
-export const withInitialTime = () => <BaseComponent startTime='2020-03-12T21:20:00' />
+export const withInitialTime = () => <BaseComponent startTime='2020-03-07T12:35:00' />
 
 export const manualStart = () => <BaseComponent autoStart={false} />
+
+export const showDuration = () => (
+  <BaseComponent autoStart={false} startTime='2020-03-07T12:35:00' endTime='2020-03-07T13:40:00' />
+)
