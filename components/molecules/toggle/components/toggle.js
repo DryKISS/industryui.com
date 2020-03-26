@@ -46,7 +46,7 @@ Toggle.propTypes = {
   toggled: bool
 }
 
-Toggle.default = {
+Toggle.defaultProps = {
   context: 'success',
   size: 'md',
   toggled: false
