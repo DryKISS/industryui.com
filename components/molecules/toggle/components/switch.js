@@ -65,7 +65,7 @@ const StyledSwitch = styled.span`
   left: 2px;
   position: absolute;
   top: 2px;
-  transition: 0.2s;
+  transition: left 0.2s, transform 0.2s;
 
   ${({ toggled }) =>
     toggled &&
