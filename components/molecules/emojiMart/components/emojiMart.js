@@ -9,7 +9,6 @@ import { bool, func } from 'prop-types'
 
 // Emoji
 import { Picker } from 'emoji-mart'
-import 'emoji-mart/css/emoji-mart.css'
 import { string } from 'postcss-selector-parser'
 
 export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, open, style }) => {
