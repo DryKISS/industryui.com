@@ -29,7 +29,6 @@ import {
 
 // Style
 import { ThemeProvider } from 'styled-components'
-import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export class MyApp extends App {
   static propTypes = {

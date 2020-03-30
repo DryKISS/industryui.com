@@ -9,7 +9,6 @@ import { bool, string } from 'prop-types'
 
 // React Dropzone
 import Dropzone from 'react-dropzone-uploader'
-import 'react-dropzone-uploader/dist/styles.css'
 
 export const DropzoneUploader = ({ autoUpload, SubmitButtonComponent, url }) => {
   // Specify upload params and url for your files

@@ -3,7 +3,7 @@
  */
 
 // React
-import { any, bool, oneOf, string, element } from 'prop-types'
+import { any, bool, element, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT, Heading } from '../../..'
@@ -37,10 +37,10 @@ export const PageHeading = ({
 }
 
 const StyledPageHeader = styled.header`
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: ${({ divider }) => !divider && '2rem'};
   text-align: ${({ center }) => center && 'center'};
 `
@@ -50,13 +50,13 @@ const StyledLeft = styled.span`
 `
 
 const StyledRight = styled.span`
-  flex: 1;
   display: flex;
+  flex: 1;
   justify-content: flex-end;
 `
 
 const StyledHeading = styled(Heading)`
-  margin-bottom: 0.5rem;
+  margin-bottom: ${({ divider }) => (!divider ? '0' : '0.5rem')};
 `
 
 const StyledDivider = styled(Divider)`

@@ -14,9 +14,6 @@ import { StyledInput } from '../../../'
 // Constants
 import { PROPERTIES } from './constants'
 
-// Style
-import 'react-datepicker/dist/react-datepicker.css'
-
 export const DatePickerCalendar = ({ Controller, control, errors, name, ...props }) => {
   return (
     <Controller

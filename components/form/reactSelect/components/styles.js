@@ -6,14 +6,14 @@ export const defaultStyles = {
   control: (base, state) => {
     return {
       ...base,
-      padding: '.315rem .75rem',
       backgroundColor: '#fff',
       border: '1px solid #c4cacf',
       borderRadius: '0.25rem',
-      color: '#9da7af',
+      color: '#003753',
       fontSize: '1rem',
       height: '3rem',
-      lineHeight: 1.5
+      lineHeight: 1.5,
+      padding: '0'
     }
   },
 
@@ -22,7 +22,7 @@ export const defaultStyles = {
       ...base,
       borderColor: '#80bdff',
       boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
-      color: '#9da7af'
+      color: '#003753'
     }
   },
 
@@ -40,10 +40,16 @@ export const defaultStyles = {
     return state.data.isFixed ? { ...base, display: 'none' } : base
   },
 
+  placeholder: (base, state) => {
+    return {
+      color: '#003753'
+    }
+  },
+
   singleValue: (base, state) => {
     return {
       ...base,
-      color: '#9da7af'
+      color: '#003753'
     }
   }
 }

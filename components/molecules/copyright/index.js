@@ -11,6 +11,8 @@ import { Column, Container, Icon, Link, Row } from '../../'
 // Style
 import styled from 'styled-components'
 
+const year = new Date().getFullYear()
+
 export const Copyright = ({ brand, links }) => {
   const renderLinks = () => {
     return links.map(({ name, to }, index) => (
@@ -19,8 +21,6 @@ export const Copyright = ({ brand, links }) => {
       </Link>
     ))
   }
-
-  const year = new Date().getFullYear()
 
   return (
     <StyledCopyright data-cy='copyright'>
