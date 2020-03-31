@@ -1,1 +1,4 @@
-export * from './components'
+/**
+ * Layout - Page
+ */
+export * from './page'

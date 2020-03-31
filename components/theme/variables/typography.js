@@ -11,6 +11,8 @@ const fonts = {
 }
 
 const font = fonts.sans
+const fontColour = '#6b7a87'
+
 const monospace = fonts.monospace
 const fontFamilies = fonts
 
@@ -21,6 +23,7 @@ export const TYPOGRAPHY = {
   fontSizeLg,
   fontSizeSm,
   font,
+  fontColour,
   fontFamilies,
   fontSizes,
   monospace
