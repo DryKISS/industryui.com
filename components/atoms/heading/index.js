@@ -29,6 +29,7 @@ export const Heading = ({ className, content, context, noMargin, style, tag }) =
 }
 
 const StyledHeading = styled.span`
+  font-weight: normal;
   ${props => COLOUR(props)}
   position: relative;
   ${({ as, noMargin, theme }) => css`

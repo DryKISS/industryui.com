@@ -6,11 +6,11 @@
 // React
 import { bool, node, object, shape, string } from 'prop-types'
 
-// styled-components
+// Style
 import styled from 'styled-components'
 
 // UI
-import { Container, MetaHead, PageHeading } from '../../../'
+import { Container, MEDIA_QUERY, MetaHead, PageHeading } from '../../'
 
 // Config
 import { Brand, Canonical } from 'config'
@@ -29,12 +29,12 @@ export const Page = ({ children, fluid, meta, pageHeading }) => {
 }
 
 const StyledPage = styled.div`
-  background-color: rgb(245, 248, 250);
+  background-color: ${({ theme }) => theme.PAGE.backGroundColour};
   padding: 30px 0;
 
-  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.lg}px) {
+  ${MEDIA_QUERY.desktop`
     padding: 1rem 0.5rem;
-  }
+  `}
 `
 
 Page.propTypes = {
