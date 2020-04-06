@@ -13,24 +13,10 @@ import { Card } from '../../../molecules/card'
 // Style
 import styled from 'styled-components'
 
-export const TextBlock = ({
-  alt,
-  align,
-  content,
-  md,
-  offset,
-  top
-}) => (
-  <Column
-    align={align}
-    md={md}
-    offset={offset}
-
-  >
-    <StyledCard
-      top={top}
-    >
-      <CardBody children='TEST' />
+export const TextBlock = ({ alt, align, children, content, md, offset, top }) => (
+  <Column align={align} md={md} offset={offset}>
+    <StyledCard top={top}>
+      <CardBody children={children} />
     </StyledCard>
   </Column>
 )
@@ -50,5 +36,7 @@ TextBlock.propTypes = {
   content: string,
   md: number,
   offset: objectOf(oneOfType([number, string])),
+  strapline: string,
+  title: string,
   top: string
 }

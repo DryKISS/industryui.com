@@ -11,6 +11,9 @@ import { Wrapper } from 'decorators'
 // UI
 import { Hero } from '../'
 import { TextBlock } from '../components/textBlock'
+import { HeroImage } from '../components/image'
+import { Title } from '../components/title'
+import { Text } from '../components/text'
 import Readme from '../README.md'
 import Jack from '../__resources__/hero-jack-russell.jpg'
 import Puppies from '../__resources__/hero-centered.jpg'
@@ -85,17 +88,22 @@ export const centered = () => (
 export const CleverlyBlock = () => {
   return (
     <>
-      <Hero
-        background={Puppies}
-        backgroundSize='100%'
-        height='100vh'
-      >
-        <TextBlock
-          content='Test'
-          md={4}
-          offset={{ md: 1 }}
-          top='394px'
-        />
+      <Hero background={Puppies} backgroundSize='100%' height='100vh'>
+        <>
+          <TextBlock
+            content='Test'
+            md={4}
+            offset={{ md: 1 }}
+            // strapline={`
+            // Cleverly provides solutions for clients in a number of different sectors.whether you are looking for a single service line or a 'Compliance as a Service' solution, Cleverly can help.
+            // `}
+            top='394px'
+          >
+            <HeroImage alt='icon of text block' align='flex-start' image={Jack} width={50} />
+            <Title children='CUSTOM SOLUTIONS' />
+            <Text children="Cleverly provides solutions for clients in a number of different sectors.whether you are looking for a single service line or a 'Compliance as a Service' solution, Cleverly can help." />
+          </TextBlock>
+        </>
       </Hero>
     </>
   )
