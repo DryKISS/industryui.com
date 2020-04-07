@@ -9,8 +9,12 @@ import { any, number, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const PageLoading = ({ children, indicator, ...props }) => {
-  return <StyledLoading {...props}>{indicator || children}</StyledLoading>
+export const PageLoading = ({ children, dataCy, indicator, ...props }) => {
+  return (
+    <StyledLoading data-cy={dataCy} {...props}>
+      {indicator || children}
+    </StyledLoading>
+  )
 }
 
 const StyledLoading = styled.div`
@@ -32,6 +36,7 @@ const StyledLoading = styled.div`
 PageLoading.propTypes = {
   backgroundColor: string,
   children: any,
+  dataCy: string,
   indicator: any,
   opacity: number,
   position: string
@@ -39,6 +44,7 @@ PageLoading.propTypes = {
 
 PageLoading.defaultProps = {
   backgroundColor: '#fff',
+  dataCy: 'loadingIndicator',
   opacity: 1,
   position: 'fixed'
 }
