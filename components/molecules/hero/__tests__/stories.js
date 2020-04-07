@@ -7,6 +7,7 @@ import React from 'react'
 
 // Storybook
 import { Wrapper } from 'decorators'
+// import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
 
 // UI
 import { Hero } from '../'
@@ -17,6 +18,7 @@ import { Text } from '../components/text'
 import Readme from '../README.md'
 import Jack from '../__resources__/hero-jack-russell.jpg'
 import Puppies from '../__resources__/hero-centered.jpg'
+import Custom from '../__resources__/hero-vector.png'
 
 const Buttons = [
   {
@@ -53,6 +55,10 @@ export default {
     }
   }
 }
+
+// const Hero = (props = {}) => {
+//   const defaultProps = {}
+// }
 
 export const main = () => (
   <Hero
@@ -94,12 +100,9 @@ export const CleverlyBlock = () => {
             content='Test'
             md={4}
             offset={{ md: 1 }}
-            // strapline={`
-            // Cleverly provides solutions for clients in a number of different sectors.whether you are looking for a single service line or a 'Compliance as a Service' solution, Cleverly can help.
-            // `}
             top='394px'
           >
-            <HeroImage alt='icon of text block' align='flex-start' image={Jack} width={50} />
+            <HeroImage alt='icon of text block' image={Custom} width={50} />
             <Title children='CUSTOM SOLUTIONS' />
             <Text children="Cleverly provides solutions for clients in a number of different sectors.whether you are looking for a single service line or a 'Compliance as a Service' solution, Cleverly can help." />
           </TextBlock>

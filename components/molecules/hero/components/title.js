@@ -18,8 +18,9 @@ export const Title = ({ alt, align, children }) => (
 
 const StyledRow = styled(Row)`
   align-self: ${({ align }) => align || 'flex-start'};
+  color: black;
   font-size: 1.5rem;
-  font-weight: normal;
+  font-weight: bolder;
   padding: 10px 20px;
 `
 

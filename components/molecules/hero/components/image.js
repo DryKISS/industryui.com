@@ -32,7 +32,8 @@ const StyledColumn = styled(Column)`
 
 const StyledImageContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  margin: 10px 0px;
 `
 
 const StyledImage = styled(Image)`
