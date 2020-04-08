@@ -4,21 +4,53 @@
 
 // React
 import React from 'react'
-import { any, func, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
+import { any, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../'
+import { CONTEXT, getAcronym } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Avatar = ({ children, className, click, content, context, style, size }) => {
+export const Avatar = ({
+  action,
+  actionClick,
+  actionProps,
+  children,
+  className,
+  click,
+  content,
+  context,
+  style,
+  size
+}) => {
   return (
     <StyledAvatar className={className} context={context} onClick={click} style={style} size={size}>
-      {children || content}
+      {children || getAcronym(content)}
+      {action && (
+        <StyledAction onClick={actionClick} {...actionProps}>
+          {action}
+        </StyledAction>
+      )}
     </StyledAvatar>
   )
 }
+
+const StyledAction = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+`
 
 const StyledAvatar = styled.div`
   align-items: center;
@@ -31,15 +63,26 @@ const StyledAvatar = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  object-fit: cover;
   ${({ size }) => css`
     font-size: ${size / 4}px;
     height: ${size}px;
     min-width: ${size}px;
     width: ${size}px;
   `}
+
+  &:hover {
+    ${StyledAction} {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 `
 
 Avatar.propTypes = {
+  action: node,
+  actionClick: func,
+  actionProps: object,
   children: any,
   click: func,
   content: any,
