@@ -66,7 +66,6 @@ const StyledColumn = styled(Column)`
   margin: 0 auto;
   text-align: center;
   ${MEDIA_QUERY.desktop`
-    // margin-bottom: 3rem;
     text-align: initial;
   `}
 `

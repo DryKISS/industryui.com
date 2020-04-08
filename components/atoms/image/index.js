@@ -9,10 +9,6 @@ import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types
 import styled from 'styled-components'
 
 export const Image = ({ ...props }) => {
-  // const addDefaultSrc = ev => {
-  //   ev.target.src = '/static/placeholder/placeholder.svg'
-  // }
-
   return <StyledImg itemProp='contentUrl' {...props} />
 }
 

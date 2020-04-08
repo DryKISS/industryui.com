@@ -8,6 +8,9 @@
 // React
 import React, { useEffect, useState } from 'react'
 
+// Bcrypt
+import bcrypt from 'bcryptjs'
+
 // Next
 import Router from 'next/router'
 
@@ -78,6 +81,10 @@ export const UserProvider = ({ children }) => {
     Router.push('/account/sign-in')
   }
 
+  const hashPassword = password => {
+    return bcrypt.hashSync(password, 10)
+  }
+
   // TODO - remove after converting all pages to new user roles
   const authorise = condition => {
     if (!condition(user)) {
@@ -93,6 +100,7 @@ export const UserProvider = ({ children }) => {
         value={{
           accessToken,
           authorise,
+          hashPassword,
           signIn,
           signOut,
           user

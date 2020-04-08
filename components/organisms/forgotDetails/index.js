@@ -60,7 +60,7 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
 
 const StyledLink = styled.span`
   display: block;
-  margin: 1rem 0;
+  margin: 1rem 0 0 0;
 `
 
 ForgotDetails.propTypes = {

@@ -74,7 +74,7 @@ export const ThemeStyle = createGlobalStyle`
   }
 
   body {
-    color: #6b7a87;
+    color: ${props => props.theme.TYPOGRAPHY.fontColour};
     font-family: ${props => props.theme.TYPOGRAPHY.font};
     margin: 0;
     position: relative;
