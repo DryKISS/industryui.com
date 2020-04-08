@@ -18,7 +18,7 @@ export const NavButton = ({ closeMenu, id, name, to, type, visible }) => {
         id={id}
         context={type.context}
         content={name}
-        onClick={visible ? closeMenu : () => {}}
+        onClick={visible ? closeMenu : () => { }}
         outline={type.outline}
         size={type.size}
         type={type.as}
