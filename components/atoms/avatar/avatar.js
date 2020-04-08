@@ -6,8 +6,11 @@
 import React from 'react'
 import { any, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
+// Gravatar
+import gravatar from 'gravatar'
+
 // UI
-import { CONTEXT, getAcronym } from '../../'
+import { CONTEXT, getAcronym, Image } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -21,12 +24,15 @@ export const Avatar = ({
   click,
   content,
   context,
+  gmail,
+  src,
   style,
   size
 }) => {
+  const avatarSrc = src || (gmail && gravatar.url(gmail, { d: 'identicon' }))
   return (
     <StyledAvatar className={className} context={context} onClick={click} style={style} size={size}>
-      {children || getAcronym(content)}
+      {children || (avatarSrc && <Image alt='Avatar' src={avatarSrc} />) || getAcronym(content)}
       {action && (
         <StyledAction onClick={actionClick} {...actionProps}>
           {action}
