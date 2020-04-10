@@ -14,7 +14,8 @@ import styled, { css } from 'styled-components'
 export const Footer = ({ columns }) => {
   const renderColumns = () => {
     return columns.map((column, index) => (
-      <Column key={index} offset={column.offset} {...column.size}>
+      <Column key={index} offset={column.offset} style={column.style} {...column.size}>
+        {column.icon && <StyledIcon context='primary' icon={column.icon} prefix={column.prefix} />}
         {Object.entries(column).map(([key, value], index) => {
           switch (key) {
             case 'header':
@@ -34,10 +35,10 @@ export const Footer = ({ columns }) => {
   const renderLinks = ({ items, inline }, index) => {
     return (
       <StyledList key={index} unstyled inline={inline}>
-        {items.map(({ icon, name, to }, index) => (
+        {items.map(({ icon, name, prefix = 'fad', to }, index) => (
           <StyledListItem key={index}>
             <StyledLink to={to} passHref>
-              {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
+              {icon && <StyledIcon context='primary' icon={icon} prefix={prefix} />}
               {name}
             </StyledLink>
           </StyledListItem>
@@ -96,6 +97,7 @@ const StyledIcon = styled(Icon)`
 const StyledText = styled.div`
   ${MEDIA_QUERY.desktop`
     text-align: initial;
+    display: inline-block;
   `}
 `
 
