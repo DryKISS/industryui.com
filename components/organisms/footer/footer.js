@@ -36,10 +36,10 @@ export const Footer = ({ columns }) => {
       <StyledList key={index} unstyled inline={inline}>
         {items.map(({ icon, name, to }, index) => (
           <StyledListItem key={index}>
-            <StyledLink to={to} passHref>
+            <Link to={to} passHref>
               {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
               {name}
-            </StyledLink>
+            </Link>
           </StyledListItem>
         ))}
       </StyledList>
@@ -72,26 +72,17 @@ const StyledFooter = styled.div`
 
 const StyledList = styled(List)`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 2rem;
   ${MEDIA_QUERY.desktop`
     margin-top: 0;
+    justify-content: flex-end;
   `}
 `
 
 const StyledListItem = styled(ListItem)`
   margin-bottom: 1.25rem;
   padding-right: 1rem;
-`
-
-const StyledLink = styled(Link)`
-  border-bottom: 2px solid rgba(117, 204, 207, 0.12);
-  color: ${({ theme }) => theme.FOOTER.linkColour};
-
-  &:hover {
-    border-bottom: ${({ border, theme }) => (border ? `2px solid ${theme.LINK.underline}` : '')};
-    color: ${({ theme }) => theme.FOOTER.linkColour};
-  }
 `
 
 const StyledIcon = styled(Icon)`
