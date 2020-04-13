@@ -7,7 +7,7 @@ import React from 'react'
 import { string, oneOf, object } from 'prop-types'
 
 // UI
-import { BACKGROUND, CONTEXT, Icon } from '../../../'
+import { BACKGROUND, CONTEXT, Icon } from '../../'
 
 // Style
 import styled from 'styled-components'

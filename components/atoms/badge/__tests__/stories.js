@@ -10,7 +10,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
-import { Badge } from '../'
+import { Badge } from 'components'
 import Readme from '../README.md'
 
 export default {
