@@ -12,10 +12,10 @@ import { Column, Image } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const HeroImage = ({ alt, align, image, width }) => (
+export const HeroImage = ({ alt, align, image, md, width }) => (
   <StyledColumn align={align} md={6}>
     <StyledImageContainer>
-      <StyledImage alt={alt} src={image} width={width} />
+      <StyledImage alt={alt} md={md} src={image} width={width} />
     </StyledImageContainer>
   </StyledColumn>
 )
@@ -23,6 +23,7 @@ export const HeroImage = ({ alt, align, image, width }) => (
 HeroImage.propTypes = {
   alt: string,
   image: string,
+  md: number,
   width: number
 }
 
@@ -33,7 +34,7 @@ const StyledColumn = styled(Column)`
 const StyledImageContainer = styled.div`
   display: flex;
   justify-content: start;
-  margin: 10px 0px;
+  margin: 10px 0;
 `
 
 const StyledImage = styled(Image)`

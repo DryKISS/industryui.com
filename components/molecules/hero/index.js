@@ -56,6 +56,7 @@ const StyledHero = styled.header`
   background-color: #fff;
   background-image: ${({ background }) => (background ? `url(${background})` : 'none')};
   background-position: center;
+  background-repeat: no-repeat;
   background-size: ${({ backgroundSize }) => backgroundSize};
   height: ${({ height }) => height};
   padding: 2rem 0 0;

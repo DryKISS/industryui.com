@@ -23,6 +23,7 @@ export const TextBlock = ({ alt, align, children, content, md, offset, top }) =>
 
 const StyledCard = styled(Card)`
   background-color: white;
+  border-radius: 0%;
   opacity: 0.95;
   offset: ${({ offset }) => offset};
   position: absolute;

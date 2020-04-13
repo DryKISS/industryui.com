@@ -21,7 +21,7 @@ const StyledRow = styled(Row)`
   color: black;
   font-size: 1.5rem;
   font-weight: bolder;
-  padding: 10px 20px;
+  padding: 10px 30px;
 `
 
 Title.propTypes = {
