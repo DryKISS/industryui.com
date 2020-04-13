@@ -3,6 +3,7 @@
  */
 
 // React
+import React, { Fragment } from 'react'
 import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // UI
@@ -24,7 +25,7 @@ export const Footer = ({ columns }) => {
             case 'links':
               return renderLinks(value, index)
             case 'text':
-              return renderText(value, index)
+              return renderText(value, column.icon, index)
           }
         })}
       </Column>
@@ -36,18 +37,21 @@ export const Footer = ({ columns }) => {
       <StyledList key={index} unstyled inline={inline}>
         {items.map(({ icon, name, to }, index) => (
           <StyledListItem key={index}>
-            <StyledLink to={to} passHref>
+            <Link to={to} passHref>
               {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
               {name}
-            </StyledLink>
+            </Link>
           </StyledListItem>
         ))}
       </StyledList>
     )
   }
 
-  const renderText = (text, index) => (
-    <StyledText key={index} dangerouslySetInnerHTML={{ __html: text }} />
+  const renderText = (text, icon, index) => (
+    <Fragment key={index}>
+      {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
+      <StyledText dangerouslySetInnerHTML={{ __html: text }} />
+    </Fragment>
   )
 
   return (
@@ -72,10 +76,11 @@ const StyledFooter = styled.div`
 
 const StyledList = styled(List)`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 2rem;
   ${MEDIA_QUERY.desktop`
     margin-top: 0;
+    justify-content: flex-end;
   `}
 `
 
@@ -84,16 +89,11 @@ const StyledListItem = styled(ListItem)`
   padding-right: 1rem;
 `
 
-const StyledLink = styled(Link)`
-  border-bottom: 2px solid rgba(117, 204, 207, 0.12);
-  color: ${({ theme }) => theme.FOOTER.linkColour};
-`
-
 const StyledIcon = styled(Icon)`
   margin: 0 0.5rem 0 0;
 `
 
-const StyledText = styled.div`
+const StyledText = styled.span`
   ${MEDIA_QUERY.desktop`
     text-align: initial;
   `}
