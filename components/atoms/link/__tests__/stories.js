@@ -6,7 +6,9 @@
 import React from 'react'
 
 // Storybook
-import { Wrapper } from 'decorators'
+import { action } from '@storybook/addon-actions'
+import { boolean, text, withKnobs } from '@storybook/addon-knobs'
+import { Context, Wrapper } from 'decorators'
 
 // UI
 import { Button, Divider, Link } from 'components'
@@ -15,7 +17,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Link',
   component: Link,
-  decorators: [Wrapper],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -25,9 +27,14 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    children: 'Home',
-    passHref: true,
-    to: '/',
+    border: boolean('Border', true),
+    children: text('Children', 'Link'),
+    className: '',
+    context: Context(),
+    onClick: action('clicked'),
+    passHref: boolean('PassHref', true),
+    target: text('Target', '_blank'),
+    to: text('To', '/here'),
     ...props
   }
 
@@ -37,16 +44,16 @@ const BaseComponent = (props = {}) => {
 export const main = () => {
   return (
     <>
-      <BaseComponent>Standard</BaseComponent>
+      <BaseComponent />
+      <Divider size='lg' />
+
+      <BaseComponent className='link--hover'>Hover</BaseComponent>
       <Divider />
 
-      <BaseComponent style={{ transitionDelay: '0s', visibility: 'visible' }}>Hover</BaseComponent>
+      <BaseComponent className='link--active'>Active</BaseComponent>
       <Divider />
 
-      <BaseComponent>Active</BaseComponent>
-      <Divider />
-
-      <BaseComponent>Visited</BaseComponent>
+      <BaseComponent className='link--visited'>Visited</BaseComponent>
     </>
   )
 }

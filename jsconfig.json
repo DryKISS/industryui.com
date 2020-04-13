@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "components": [
+        "./components"
+      ]
+    }
+  },
+  "include": [
+    "components/**/*"
+  ]
+}

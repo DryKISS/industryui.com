@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { func, object, objectOf, number, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, Close, CONTEXT, SHADE_COLOUR } from '../../../'
+import { BACKGROUND, Close, CONTEXT, shadeLinearRgb } from '../../../'
 import { AlertContent, AlertHeader } from './'
 
 // Style
@@ -45,7 +45,7 @@ const StyledAlert = styled.div`
   ${props => BACKGROUND(props)};
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
   border-radius: 0.25rem;
-  color: ${({ context, theme }) => SHADE_COLOUR(theme.COLOUR[context], -80)};
+  color: ${({ context, theme }) => shadeLinearRgb(-0.8, theme.COLOUR[context])};
   margin: 1rem 0;
   position: relative;
 `
