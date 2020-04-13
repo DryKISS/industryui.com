@@ -9,7 +9,7 @@ import { bool, func, node, object, oneOfType, string } from 'prop-types'
 import NextLink from 'next/link'
 
 // UI
-import { validatorUri } from '../../'
+import { shadeLinearRgb, validatorUri } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -32,7 +32,8 @@ export const Link = ({ border, children, className, onClick, passHref, target, t
 
 export const StyledLink = styled.a`
   background-color: transparent;
-  border-bottom: ${({ border, theme }) => (border ? `2px solid ${theme.LINK.underline}` : '')};
+  border-bottom: ${({ border, theme }) =>
+    border ? `2px solid ${shadeLinearRgb(0.2, theme.LINK.underline)}` : ''};
   color: ${({ theme }) => theme.LINK.colour};
   cursor: pointer;
   display: ${({ border }) => (border ? 'inline-block' : 'block')};

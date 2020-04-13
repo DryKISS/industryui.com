@@ -1,4 +1,0 @@
-/**
- * Components
- */
-export * from './address'

@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Link } from 'components'
+import { Button, Divider, Link } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -23,14 +23,36 @@ export default {
   }
 }
 
-export const main = () => (
-  <Link to='/' passHref>
-    Home
-  </Link>
-)
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    children: 'Home',
+    passHref: true,
+    to: '/',
+    ...props
+  }
+
+  return <Link {...defaultProps}>{defaultProps.children}</Link>
+}
+
+export const main = () => {
+  return (
+    <>
+      <BaseComponent>Standard</BaseComponent>
+      <Divider />
+
+      <BaseComponent style={{ transitionDelay: '0s', visibility: 'visible' }}>Hover</BaseComponent>
+      <Divider />
+
+      <BaseComponent>Active</BaseComponent>
+      <Divider />
+
+      <BaseComponent>Visited</BaseComponent>
+    </>
+  )
+}
 
 export const button = () => (
-  <Link to='/' passHref>
+  <BaseComponent>
     <Button>Home</Button>
-  </Link>
+  </BaseComponent>
 )

@@ -87,6 +87,11 @@ const StyledListItem = styled(ListItem)`
 const StyledLink = styled(Link)`
   border-bottom: 2px solid rgba(117, 204, 207, 0.12);
   color: ${({ theme }) => theme.FOOTER.linkColour};
+
+  &:hover {
+    border-bottom: ${({ border, theme }) => (border ? `2px solid ${theme.LINK.underline}` : '')};
+    color: ${({ theme }) => theme.FOOTER.linkColour};
+  }
 `
 
 const StyledIcon = styled(Icon)`

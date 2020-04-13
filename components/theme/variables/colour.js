@@ -11,7 +11,7 @@ export const COLOUR = {
   dark: '#5c6f7f',
   light: '#ecf0f3',
 
-  primary: '#0047ff',
+  primary: 'rgb(0, 71, 255)',
   secondary: '#0679d8',
   success: '#36c53a',
   info: '#94947e',
