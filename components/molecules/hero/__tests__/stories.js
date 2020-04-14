@@ -10,12 +10,11 @@ import { Wrapper } from 'decorators'
 // import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
 
 // UI
-import { Hero } from '../'
+import { Heading, Hero, Image } from 'components'
 import { TextBlock } from '../components/textBlock'
-import { HeroImage } from '../components/image'
-import { Title } from '../components/title'
-import { Text } from '../components/text'
+
 import Readme from '../README.md'
+
 import Jack from '../__resources__/hero-jack-russell.jpg'
 import Puppies from '../__resources__/hero-centered.jpg'
 import Custom from '../__resources__/hero-vector.png'
@@ -56,10 +55,6 @@ export default {
   }
 }
 
-// const Hero = (props = {}) => {
-//   const defaultProps = {}
-// }
-
 export const main = () => (
   <Hero
     alt='Tailwise Jack Russell Dog'
@@ -96,15 +91,14 @@ export const CleverlyBlock = () => {
     <>
       <Hero background={Puppies} backgroundSize='100%' height='100vh'>
         <>
-          <TextBlock
-            content='Test'
-            md={4}
-            offset={{ md: 1 }}
-            top='394px'
-          >
-            <HeroImage alt='icon of text block' image={Custom} width={50} />
-            <Title children='CUSTOM SOLUTIONS' />
-            <Text children="Cleverly provides solutions for clients in a number of different sectors.whether you are looking for a single service line or a 'Compliance as a Service' solution, Cleverly can help." />
+          <TextBlock content='Test' md={4} offset={{ md: 1 }} top='394px'>
+            <Image alt='Icon' src={Custom} width='64px' />
+            <Heading content='CUSTOM SOLUTIONS' noMargin tag='h2' />
+            <p>
+              Cleverly provides solutions for clients in a number of different sectors.whether you
+              are looking for a single service line or a 'Compliance as a Service' solution,
+              Cleverly can help.
+            </p>
           </TextBlock>
         </>
       </Hero>

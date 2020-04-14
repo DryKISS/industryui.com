@@ -13,16 +13,20 @@ import styled from 'styled-components'
 
 export const HeroButtons = ({ buttons }) => {
   return buttons.map(({ content, context, to }, index) => (
-    <Link to={to} key={index}>
+    <StyledLink border={false} to={to} key={index}>
       <StyledButton content={content} context={context} size='lg' />
-    </Link>
+    </StyledLink>
   ))
-}
-
-HeroButtons.propTypes = {
-  buttons: array
 }
 
 const StyledButton = styled(Button)`
   margin-right: 1rem;
 `
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+`
+
+HeroButtons.propTypes = {
+  buttons: array
+}

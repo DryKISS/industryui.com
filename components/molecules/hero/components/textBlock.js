@@ -7,35 +7,56 @@
 import { number, string, objectOf, oneOfType } from 'prop-types'
 
 // UI
-import { Column, CardBody } from '../../../'
+import { CardBody, MEDIA_QUERY } from '../../../'
 import { Card } from '../../../molecules/card'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const TextBlock = ({ alt, align, children, content, md, offset, top }) => (
-  <Column align={align} md={md} offset={offset}>
-    <StyledCard top={top}>
-      <CardBody children={children} />
-    </StyledCard>
-  </Column>
+export const TextBlock = ({ children, offset, position }) => (
+  <StyledCard rounded={false} position={position}>
+    <CardBody children={children} />
+  </StyledCard>
 )
+
+const bl = css`
+  left: 6rem;
+  bottom: 0;
+`
+
+const br = css`
+  right: 6rem;
+  bottom: 0;
+`
+
+const tl = css`
+  left: 6rem;
+  top: 0;
+`
+
+const tr = css`
+  right: 6rem;
+  top: 0;
+`
 
 const StyledCard = styled(Card)`
   background-color: white;
+  margin: 0;
   opacity: 0.95;
   offset: ${({ offset }) => offset};
   position: absolute;
-  top: ${({ top }) => top};
-  width: 100%;
+
+  ${MEDIA_QUERY.desktop`
+    width: 30rem;
+  `}
+
+  ${({ position }) =>
+    (position === 'bl' && bl) ||
+    (position === 'br' && br) ||
+    (position === 'tl' && tl) ||
+    (position === 'tr' && tr)}
 `
 
 TextBlock.propTypes = {
-  alt: string,
-  content: string,
-  md: number,
-  offset: objectOf(oneOfType([number, string])),
-  strapline: string,
-  title: string,
-  top: string
+  offset: objectOf(oneOfType([number, string]))
 }

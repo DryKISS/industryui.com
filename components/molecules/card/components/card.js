@@ -77,7 +77,7 @@ const StyledCard = styled.div`
   background-clip: border-box;
   background-color: ${({ context, theme }) => theme.COLOUR[context]};
   border: ${({ bordered }) => bordered && '1px solid rgba(0, 0, 0, .125)'};
-  border-radius: 0.25rem;
+  border-radius: ${({ rounded }) => rounded && '0.25rem)'};
   box-shadow: ${({ shadow }) =>
     shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
   color: ${({ context, theme }) =>
@@ -122,13 +122,17 @@ Card.propTypes = {
   icon: string,
   image: string,
   role: string,
+  rounded: bool,
   shadow: bool,
   style: object,
   title: string
 }
 
 Card.defaultProps = {
+  bordered: false,
   context: 'white',
   footerContext: 'light',
-  role: 'article'
+  role: 'article',
+  rounded: true,
+  shadow: false
 }

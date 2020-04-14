@@ -10,7 +10,7 @@ import { bool, node, object, shape, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Container, MEDIA_QUERY, MetaHead, PageHeading } from '../../'
+import { Container, MetaHead, PageHeading } from '../../'
 
 // Config
 import { Brand, Canonical } from 'config'
@@ -30,11 +30,6 @@ export const Page = ({ children, fluid, meta, pageHeading }) => {
 
 const StyledPage = styled.div`
   background-color: ${({ theme }) => theme.PAGE.backGroundColour};
-  padding: 30px 0;
-
-  ${MEDIA_QUERY.desktop`
-    padding: 1rem 0.5rem;
-  `}
 `
 
 Page.propTypes = {
