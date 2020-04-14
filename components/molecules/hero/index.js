@@ -40,14 +40,22 @@ export const Hero = ({
   }
 
   return (
-    <StyledHero background={background} backgroundSize={backgroundSize} className={className} height={height}>
-      <Container>
-        <Row>
-          {title && renderLeft()}
-          {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
-          {children && children}
-        </Row>
-      </Container>
+    <StyledHero
+      background={background}
+      backgroundSize={backgroundSize}
+      className={className}
+      height={height}
+    >
+      {children && children}
+
+      {!children && (
+        <Container>
+          <Row>
+            {title && renderLeft()}
+            {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
+          </Row>
+        </Container>
+      )}
     </StyledHero>
   )
 }

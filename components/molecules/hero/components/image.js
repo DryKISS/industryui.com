@@ -20,12 +20,6 @@ export const HeroImage = ({ alt, align, image, width }) => (
   </StyledColumn>
 )
 
-HeroImage.propTypes = {
-  alt: string,
-  image: string,
-  width: number
-}
-
 const StyledColumn = styled(Column)`
   align-self: ${({ align }) => align || 'flex-end'};
 `
@@ -33,10 +27,16 @@ const StyledColumn = styled(Column)`
 const StyledImageContainer = styled.div`
   display: flex;
   justify-content: start;
-  margin: 10px 0px;
+  margin: 10px 0;
 `
 
 const StyledImage = styled(Image)`
   width: ${({ width }) => (width ? `${width}%` : '85%')};
   height: ${({ height }) => (height ? `${height}%` : '85%')};
 `
+
+HeroImage.propTypes = {
+  alt: string,
+  image: string,
+  width: number
+}
