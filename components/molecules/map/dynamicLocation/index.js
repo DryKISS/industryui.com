@@ -27,7 +27,7 @@ const DynamicLocationHOC = Component => {
 export const DynamicLocation = DynamicLocationHOC(
   withScriptjs(
     withGoogleMap(props => {
-      return <GoogleMap {...props} />
+      return props.defaultCenter.lat && props.defaultCenter.lng ? <GoogleMap {...props} /> : null
     })
   )
 )
