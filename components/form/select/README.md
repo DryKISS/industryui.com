@@ -4,7 +4,7 @@ Select component
 
 ## Links
 
-- https://react.semantic-ui.com/elements/select
+[Semantic UI](https://react.semantic-ui.com/elements/select)
 
 ## Data
 
@@ -13,19 +13,7 @@ The data passed into the select must be of the form:
 ```js
 {
   disabled: true,
-  text: 'Month',
-  value: ''
+  text: 'January',
+  value: 'january'
 }
-```
-
-## Usage
-
-```javascript
-<Select
-  change='{change}'
-  id='addresses'
-  label='Select your address'
-  options='{postcodeAddresses}'
-  value='{addresses}'
-/>
 ```
