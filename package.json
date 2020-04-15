@@ -39,7 +39,7 @@
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
-    "deploy-storybook-ci": "storybook-to-ghpages -- --ci --host-token-env-variable=GITHUB_TOKEN"
+    "deploy-storybook-ci": "storybook-to-ghpages -- --ci"
   },
   "engines": {
     "node": ">=12"
@@ -67,6 +67,11 @@
     "globals": ["__SITE__"],
     "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
+  },
+  "storybook-deployer": {
+    "gitUsername": "iwarner",
+    "gitEmail": "ian.warner@drykiss.com",
+    "commitMessage": "Deploy Storybook"
   },
   "stylelint": {
     "processors": ["stylelint-processor-styled-components"],
