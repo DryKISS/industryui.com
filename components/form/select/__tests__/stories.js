@@ -45,7 +45,6 @@ const BaseComponent = (props = {}) => {
     name: 'select',
     placeholder: 'Range',
     range: [],
-    required: true,
     register: register,
     showError: true,
     ...props
