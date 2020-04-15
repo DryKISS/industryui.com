@@ -47,7 +47,7 @@ const StyledCard = styled(Card)`
   position: absolute;
 
   ${MEDIA_QUERY.desktop`
-    width: 30rem;
+    width: 25rem;
   `}
 
   ${({ position }) =>
