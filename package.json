@@ -68,11 +68,6 @@
     "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
   },
-  "storybook-deployer": {
-    "gitUsername": "iwarner",
-    "gitEmail": "ian.warner@drykiss.com",
-    "commitMessage": "Deploy Storybook"
-  },
   "stylelint": {
     "processors": ["stylelint-processor-styled-components"],
     "extends": [
