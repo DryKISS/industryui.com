@@ -19,19 +19,21 @@ jobs:
         node: [12]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install Yarn
+      - name: Install Yarn 🔧
         run: |
           npm install -g yarn
 
-      - name: Get yarn cache directory path
+      - name: Get yarn cache directory path 🔧
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
@@ -43,13 +45,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install Modules
+      - name: Install Modules 🔧
         run: |
           yarn install
 
-      - name: Build and Deploy
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Build 🔧
         run: |
           yarn build-storybook
-          yarn deploy-storybook-ci
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: storybook-static
