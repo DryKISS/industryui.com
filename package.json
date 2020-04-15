@@ -37,9 +37,7 @@
     "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
-    "build-storybook": "build-storybook --quiet -s ./.storybook/static",
-    "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
-    "deploy-storybook-ci": "storybook-to-ghpages -- --ci --host-token-env-variable=GITHUB_TOKEN"
+    "build-storybook": "build-storybook --quiet -s ./.storybook/static"
   },
   "engines": {
     "node": ">=12"
@@ -67,11 +65,6 @@
     "globals": ["__SITE__"],
     "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
-  },
-  "storybook-deployer": {
-    "gitUsername": "iwarner",
-    "gitEmail": "ian.warner@drykiss.com",
-    "commitMessage": "Deploy Storybook"
   },
   "stylelint": {
     "processors": ["stylelint-processor-styled-components"],
@@ -140,7 +133,6 @@
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@storybook/storybook-deployer": "^2.8.5",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
