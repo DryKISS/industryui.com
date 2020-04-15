@@ -52,9 +52,7 @@ export const BlogCategories = ({ articles, config }) => {
               }
             }}
           >
-            <a>
-              <StyledHeading content={articles[0].category} tag='h2' />
-            </a>
+            <StyledHeading content={articles[0].category} tag='h2' />
           </Link>
 
           <Row>

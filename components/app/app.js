@@ -17,6 +17,7 @@ import App from 'next/app'
 
 // UI
 import {
+  AuthorizationProvider,
   FirebaseProvider,
   Icons,
   NotificationsProvider,
@@ -25,11 +26,9 @@ import {
   ThemeStyle,
   UserProvider
 } from '../'
-import { jwtConfig } from 'config'
 
 // Style
 import { ThemeProvider } from 'styled-components'
-import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export class MyApp extends App {
   static propTypes = {
@@ -56,10 +55,12 @@ export class MyApp extends App {
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
         {user && (
-          <UserProvider jwtConfig={jwtConfig}>
-            <NotificationsProvider user={user}>
-              {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
-            </NotificationsProvider>
+          <UserProvider>
+            <AuthorizationProvider>
+              <NotificationsProvider>
+                {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
+              </NotificationsProvider>
+            </AuthorizationProvider>
           </UserProvider>
         )}
 

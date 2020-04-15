@@ -4,16 +4,16 @@
 
 // React
 import React from 'react'
-import { any, func, number, string, bool, oneOfType, node, oneOf } from 'prop-types'
 import styled from 'styled-components'
 
-import { CONTEXT, SIZE } from '../../../'
-import { PaginationItem } from '../'
+import { PaginationItem } from './'
+import { PaginationPropTypes } from './propTypes'
 
 export const Pagination = ({
   children,
   context,
   currentPage,
+  hideWhenOnlyOnePage,
   nextLabel,
   onPageChange,
   pageCount,
@@ -27,6 +27,7 @@ export const Pagination = ({
     else if (type === 'next') onPageChange(currentPage + 1)
     else onPageChange(type)
   }
+
   const renderContent = () => (
     <>
       {showNextAndPrev && (
@@ -38,6 +39,7 @@ export const Pagination = ({
           size={size}
         />
       )}
+
       {Array(pageCount)
         .fill(0)
         .map((p, i) => (
@@ -50,6 +52,7 @@ export const Pagination = ({
             size={size}
           />
         ))}
+
       {showNextAndPrev && (
         <PaginationItem
           context={context}
@@ -61,30 +64,16 @@ export const Pagination = ({
       )}
     </>
   )
+
+  if (hideWhenOnlyOnePage && pageCount < 2) {
+    return null
+  }
+
   return (
     <StyledPagination aria-label='Pagination' {...props}>
       {children || renderContent()}
     </StyledPagination>
   )
-}
-
-Pagination.propTypes = {
-  children: any,
-  context: oneOf(Object.values(CONTEXT)),
-  currentPage: number,
-  nextLabel: oneOfType([string, node]),
-  onPageChange: func.isRequired,
-  pageCount: number,
-  prevLabel: oneOfType([string, node]),
-  showNextAndPrev: bool,
-  size: oneOf(Object.values(SIZE))
-}
-
-Pagination.defaultProps = {
-  currentPage: 1,
-  nextLabel: 'Next',
-  pageCount: 1,
-  prevLabel: 'Previous'
 }
 
 const StyledPagination = styled.ul`
@@ -93,3 +82,14 @@ const StyledPagination = styled.ul`
   width: fit-content;
   margin: 0 auto;
 `
+
+Pagination.propTypes = PaginationPropTypes
+
+Pagination.defaultProps = {
+  currentPage: 1,
+  hideWhenOnlyOnePage: true,
+  nextLabel: 'Next',
+  onPageChange: () => {},
+  pageCount: 1,
+  prevLabel: 'Previous'
+}

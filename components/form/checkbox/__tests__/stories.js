@@ -57,7 +57,7 @@ const BaseComponent = (props = {}) => {
 
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
-      <CheckboxField {...defaultProps} data={data} required='This is required' />
+      <CheckboxField {...defaultProps} data={data} />
       <Button content='Submit' type='submit' />
     </FormForm>
   )

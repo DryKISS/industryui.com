@@ -33,4 +33,5 @@ Any custom properties can be added to the event object (e.g. 'description'). The
 
 ## Links
 
-- https://fullcalendar.io/docs/react
+[Full Calendar](https://fullcalendar.io/docs/react)
+[React Big Calendar](http://jquense.github.io/react-big-calendar/examples/index.html)

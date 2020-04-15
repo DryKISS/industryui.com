@@ -1,3 +1,7 @@
+/**
+ * OffCanvas
+ */
+
 // React
 import React, { useState, useEffect } from 'react'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
@@ -21,13 +25,18 @@ export const OffCanvasComponent = ({
   width
 }) => {
   const [initialState, setInitialState] = useState(false)
+
   useEffect(() => {
     if (show) setTimeout(() => setInitialState(true), 1)
     else setInitialState(false)
   }, [show])
+
   const handleOverlayClick = () => {
-    if (closeOnOverlayClick) toggleShow(false)
+    if (closeOnOverlayClick) {
+      toggleShow(false)
+    }
   }
+
   return (
     <>
       {overlay && (
@@ -38,6 +47,7 @@ export const OffCanvasComponent = ({
           show={initialState}
         />
       )}
+
       <OffCanvasDiv
         duration={transitionDuration}
         height={height}
@@ -49,6 +59,7 @@ export const OffCanvasComponent = ({
           {headerText}
           <Close context='white' click={e => toggleShow(false)} />
         </OffCanvasHeader>
+
         <OffCanvasContent>{children}</OffCanvasContent>
       </OffCanvasDiv>
     </>

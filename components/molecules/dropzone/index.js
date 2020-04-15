@@ -1,4 +1,5 @@
 /**
  * Dropzone
  */
-export * from './components'
+export * from './react-dropzone'
+export * from './react-dropzone-uploader'

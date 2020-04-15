@@ -10,10 +10,8 @@ import { Icon, Link } from '../../../../'
 
 export const NavIcon = ({ closeMenu, to, type, visible }) => {
   return (
-    <Link to={to}>
-      <a onClick={visible && closeMenu}>
-        <Icon icon={type.icon} />
-      </a>
+    <Link to={to} onClick={visible && closeMenu}>
+      <Icon icon={type.icon} />
     </Link>
   )
 }

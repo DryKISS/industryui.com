@@ -43,7 +43,7 @@ const BaseComponent = (props = {}) => {
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Description'>
-        <TextareaField {...defaultProps} required='This is required' />
+        <TextareaField {...defaultProps} />
       </FormLabel>
 
       <Button content='Submit' type='submit' />

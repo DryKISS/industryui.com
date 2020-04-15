@@ -10,7 +10,7 @@ import { select, text, withKnobs, number } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, Input, OffCanvas, Progress, ProgressBar } from '../../../'
+import { Button, Form, Input, OffCanvas, Progress, ProgressBar } from 'components'
 import Readme from '../README.md'
 
 export default {

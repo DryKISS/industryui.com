@@ -78,7 +78,6 @@ export const Login = ({
             placeholder={showPlaceholder ? 'Email' : ''}
             regExp={pattern}
             register={register}
-            required='This is required'
           />
         </FormLabel>
 
@@ -88,7 +87,6 @@ export const Login = ({
             name='password'
             placeholder={showPlaceholder ? 'Password' : ''}
             register={register}
-            required='This is required'
             type={showPass ? 'text' : 'password'}
           />
         </FormLabel>
@@ -114,9 +112,7 @@ export const Login = ({
 
           {forgotPassword && (
             <ForgotPasswordWrapper>
-              <Link to={pathForgot}>
-                <a>Forgot password?</a>
-              </Link>
+              <Link to={pathForgot}>Forgot password?</Link>
             </ForgotPasswordWrapper>
           )}
         </div>
@@ -125,10 +121,7 @@ export const Login = ({
       {pathSignUp && (
         <>
           <p className='text-center'>
-            Don't have an account?{' '}
-            <Link to={pathSignUp}>
-              <a>Apply now!</a>
-            </Link>
+            Don't have an account? <Link to={pathSignUp}>Apply now!</Link>
           </p>
         </>
       )}

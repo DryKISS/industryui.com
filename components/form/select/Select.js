@@ -4,16 +4,16 @@
 
 // React
 import { forwardRef } from 'react'
-import { array, object, string } from 'prop-types'
+import { array, bool, object, string } from 'prop-types'
 
 // UI
 import { FieldHOC } from '../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const SelectField = forwardRef(
-  ({ data, disabled, options, placeholder, range, ...props }, ref) => {
+  ({ data, defaultValue, disabled, options, placeholder, range, showError, ...props }, ref) => {
     const renderRange = () => {
       const options = [
         <option disabled value='' key='initial0'>
@@ -23,7 +23,7 @@ export const SelectField = forwardRef(
 
       for (let i = range[1]; i <= range[0]; i++) {
         options.push(
-          <option disabled={disabled} key={`range${i}`} value={i}>
+          <option key={`range${i}`} value={i}>
             {i}
           </option>
         )
@@ -32,14 +32,34 @@ export const SelectField = forwardRef(
       return options
     }
 
-    const renderOptions = () => {
-      return options.map(({ disabled, text, value }, index) => (
-        <option children={text} disabled={disabled} key={`option${index}`} value={value} />
-      ))
+    const renderOptions = items => {
+      if (items) {
+        options = items
+      }
+
+      return options.map(({ disabled, group, items, text, value }) => {
+        if (group) {
+          return (
+            <optgroup key={`option${group}`} label={group}>
+              {renderOptions(items)}
+            </optgroup>
+          )
+        }
+
+        return <option children={text} disabled={disabled} key={`option${value}`} value={value} />
+      })
     }
 
     return (
-      <FieldHOC component={StyledSelect} className='Form-control' ref={ref} {...data} {...props}>
+      <FieldHOC
+        component={StyledSelect}
+        defaultValue={defaultValue}
+        disabled={disabled}
+        ref={ref}
+        showError={showError}
+        {...data}
+        {...props}
+      >
         {range && range.length > 0 && renderRange()}
         {options && renderOptions()}
       </FieldHOC>
@@ -52,7 +72,8 @@ const StyledSelect = styled.select`
   background-color: #fff;
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
-  color: #9da7af;
+  box-sizing: border-box;
+  color: ${({ theme }) => theme.COLOUR.dark};
   display: block;
   font-size: 1rem;
   height: 3rem;
@@ -64,18 +85,34 @@ const StyledSelect = styled.select`
   &:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    color: #9da7af;
+    color: ${({ theme }) => theme.COLOUR.dark};
     outline: 0;
   }
+
+  ${({ errors }) =>
+    errors &&
+    css`
+      background: rgb(251, 236, 242);
+      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      border-image: initial;
+      border-style: solid;
+      border-width: 1px 1px 1px 10px;
+    `}
 `
 
 SelectField.propTypes = {
   data: object,
+  defaultValue: string,
+  disabled: bool,
   options: array,
   placeholder: string,
-  range: array
+  range: array,
+  showError: bool
 }
 
 SelectField.defaultProps = {
-  range: []
+  defaultValue: '',
+  disabled: false,
+  range: [],
+  showError: false
 }

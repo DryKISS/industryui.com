@@ -7,24 +7,25 @@
 import { string } from 'prop-types'
 
 // UI
-import { Link } from '../../../../'
+import { Image, Link } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
 export const Brand = ({ brand }) => {
   return (
-    <Link to='/' passHref>
-      <StyledBrand id='navLogo'>
-        <img alt='Logo' draggable='false' src={brand} />
-      </StyledBrand>
+    <Link border={false} to='/' passHref>
+      <StyledImage alt='Logo' draggable='false' src={brand} data-cy='navBrand' />
     </Link>
   )
 }
 
-const StyledBrand = styled.a`
-  display: flex;
-  padding: 0 0.75rem;
+const StyledImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 3rem;
 `
 
 Brand.propTypes = {

@@ -38,6 +38,7 @@ export const TextareaField = ({
       placeholder={placeholder}
       readOnly={readOnly}
       rows={rows}
+      showError={false}
       spellcheck={spellCheck}
       tabIndex={tabIndex}
       wrap={wrap}
@@ -49,8 +50,9 @@ export const TextareaField = ({
 const StyledTextarea = styled.textarea`
   background-clip: padding-box;
   background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
-  border: 1px solid ${props => props.theme.COLOUR.light};
+  border: 1px solid #c4cacf;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   color: ${props => props.theme.COLOUR.dark};
   cursor: ${({ disabled }) => (disabled ? 'no-drop' : 'auto')};
   direction: ${({ dir }) => dir};
@@ -105,6 +107,7 @@ TextareaField.propTypes = {
   maxLength: number,
   placeholder: string,
   readOnly: bool,
+  required: bool,
   rows: number,
   spellCheck: bool,
   tabIndex: number,
@@ -114,5 +117,6 @@ TextareaField.propTypes = {
 TextareaField.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
+  required: true,
   rows: 5
 }

@@ -31,9 +31,7 @@ export const BlogCard = ({ article, config, type }) => {
     <article role='article' itemProp='blogPost' itemScope itemType='http://schema.org/BlogPosting'>
       <Card shadow>
         <Link to={articleLink}>
-          <a>
-            <CardImage alt={heading} src={`/blog/${slug}/hero.jpg`} />
-          </a>
+          <CardImage alt={heading} src={`/static/blog/${slug}/hero.jpg?v=1.00`} />
         </Link>
 
         <StyledCardBody type={type}>
@@ -41,9 +39,7 @@ export const BlogCard = ({ article, config, type }) => {
 
           <StyledContent type={type}>
             <Link to={articleLink}>
-              <a>
-                <StyledHeading content={heading} tag='h1' type={type} />
-              </a>
+              <StyledHeading content={heading} tag='h1' type={type} />
             </Link>
 
             {type === 'normal' && <p itemProp='description'>{excerpt}</p>}
@@ -100,6 +96,7 @@ const StyledButton = styled(Button)`
 const StyledCardBody = styled(CardBody)`
   min-height: 303px;
   position: relative;
+  z-index: 0;
   ${({ theme: { COLOUR }, type }) =>
     type === 'hero' &&
     css`
@@ -116,7 +113,7 @@ const StyledCardBody = styled(CardBody)`
         top: 0;
         transform: skewy(6deg);
         transform-origin: 100% 0;
-        z-index: 1;
+        z-index: -1;
       }
     `}
 `

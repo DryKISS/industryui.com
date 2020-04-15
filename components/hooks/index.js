@@ -3,3 +3,6 @@
  */
 export * from './useForm'
 export * from './useLocalStorage'
+export * from './usePrevious'
+export * from './useTimer'
+export * from './useTippy'

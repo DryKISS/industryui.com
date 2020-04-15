@@ -18,7 +18,11 @@ export const generateToken = (data, config) => {
 }
 
 export const validateToken = (token, config) => {
-  return jwt.verify(token, config.secret)
+  return jwt.verify(token, config.key, { algorithms: ['RS512'] })
+}
+
+export const decodeToken = token => {
+  return jwt.decode(token)
 }
 
 export const getUserFromToken = (headers, config) => {

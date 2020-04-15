@@ -10,16 +10,13 @@ import { bool } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Button, FormField, FormForm, PageHeading } from '../../'
+import { Alert, Button, FormField, FormForm, FormLabel, PageHeading } from '../../'
 
 export const PasswordChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({ mode: 'onChange' })
   const [error] = useState(false)
 
-  const submit = data => {
-    const { email } = data
-    console.log(email)
-  }
+  const submit = data => {}
 
   return (
     <>
@@ -28,33 +25,36 @@ export const PasswordChange = ({ showPlaceholder }) => {
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
       <FormForm handleSubmit={handleSubmit(submit)}>
-        <FormField
-          errors={errors}
-          name='passwordOld'
-          placeholder={showPlaceholder ? 'Old Password' : ''}
-          register={register}
-          required='This is required'
-          type='password'
-        />
+        <FormLabel label='Old password'>
+          <FormField
+            errors={errors}
+            name='passwordOld'
+            placeholder={showPlaceholder ? 'Old Password' : ''}
+            register={register}
+            type='password'
+          />
+        </FormLabel>
 
-        <FormField
-          errors={errors}
-          name='password'
-          placeholder={showPlaceholder ? 'New Password' : ''}
-          register={register}
-          required='This is required'
-          type='password'
-        />
+        <FormLabel label='New password'>
+          <FormField
+            errors={errors}
+            name='password'
+            placeholder={showPlaceholder ? 'New Password' : ''}
+            register={register}
+            type='password'
+          />
+        </FormLabel>
 
-        <FormField
-          errors={errors}
-          name='passwordConfirm'
-          placeholder={showPlaceholder ? 'Confirm Password' : ''}
-          register={register}
-          required='This is required'
-          type='password'
-          validate={v => v === watch('password')}
-        />
+        <FormLabel label='Confirm password'>
+          <FormField
+            errors={errors}
+            name='passwordConfirm'
+            placeholder={showPlaceholder ? 'Confirm Password' : ''}
+            register={register}
+            type='password'
+            validate={v => v === watch('password')}
+          />
+        </FormLabel>
 
         <Button
           block

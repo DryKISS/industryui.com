@@ -1,5 +1,5 @@
 /**
- * Context
+ * Size
  * Provides a list of the accepted sizes
  */
 export const SIZE = {
@@ -7,5 +7,7 @@ export const SIZE = {
   SM: 'sm',
   MD: 'md',
   LG: 'lg',
-  XL: 'xl'
+  XL: 'xl',
+  XXL: 'xxl',
+  XXXL: 'xxxl'
 }

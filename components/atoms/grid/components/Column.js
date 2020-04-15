@@ -31,38 +31,15 @@ export const Column = ({ children, className, columnRef, style, sm, md, lg, xl, 
   )
 }
 
-Column.propTypes = {
-  children: any.isRequired,
-  className: string,
-  debug: bool,
-  fluid: string,
-  md: number,
-  lg: number,
-  offset: shape({
-    sm: number,
-    md: number,
-    lg: number,
-    xl: number
-  }),
-  sm: number,
-  style: objectOf(oneOfType([number, string])),
-  xl: number
-}
-
-Column.defaultProps = {
-  offset: {},
-  style: {},
-  debug: false
-}
-
 const StyledColumn = styled.div`
   box-sizing: border-box;
+  height: 100%;
+  margin-left: unset;
   min-height: 1px;
   position: relative;
   padding-left: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   padding-right: ${({ theme }) => theme.GRID.gutterWidth / 2}px;
   width: 100%;
-  margin-left: unset;
 
   /* SM Medium devices (tablets, 576px and up) */
   @media (min-width: 0) {
@@ -92,3 +69,27 @@ const StyledColumn = styled.div`
     max-width: ${({ size }) => (100 / (12 / size.xl)).toFixed(5)}%;
   }
 `
+
+Column.propTypes = {
+  children: any.isRequired,
+  className: string,
+  debug: bool,
+  fluid: string,
+  md: number,
+  lg: number,
+  offset: shape({
+    sm: number,
+    md: number,
+    lg: number,
+    xl: number
+  }),
+  sm: number,
+  style: objectOf(oneOfType([number, string])),
+  xl: number
+}
+
+Column.defaultProps = {
+  offset: {},
+  style: {},
+  debug: false
+}

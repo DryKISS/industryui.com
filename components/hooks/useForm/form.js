@@ -21,7 +21,6 @@ export const useForm = (initialState, reset) => {
     const { checked, id, type, value } = e.target
 
     let doReset = null
-    let v = false
 
     if (reset) {
       doReset = reset.find(el => el.trigger === id)
@@ -31,9 +30,7 @@ export const useForm = (initialState, reset) => {
       }
     }
 
-    v = type === 'checkbox' ? checked : value
-
-    setForm({ ...form, [id]: v, ...doReset })
+    setForm({ ...form, [id]: type === 'checkbox' ? checked : value, ...doReset })
   }
 
   return { change, form, setForm, clear }

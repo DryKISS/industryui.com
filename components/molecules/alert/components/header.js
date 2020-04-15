@@ -6,7 +6,7 @@
 import { oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, Icon, SHADE_COLOUR } from '../../../'
+import { CONTEXT, Icon, shadeLinearRgb } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -18,7 +18,7 @@ export const AlertHeader = ({ context, header, icon, iconPrefix }) => (
 )
 
 const StyledHeader = styled.div`
-  background: ${({ context, theme }) => SHADE_COLOUR(theme.COLOUR[context], -40)};
+  background: ${({ context, theme }) => shadeLinearRgb(-0.4, theme.COLOUR[context])};
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   color: #fff;

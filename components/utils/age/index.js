@@ -1,4 +1,4 @@
 /**
  * Age
  */
-export * from './components'
+export * from './age'

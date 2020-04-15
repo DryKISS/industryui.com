@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Bootstrap } from '../'
+import { Bootstrap, Navbar } from 'components'
 import Readme from '../README.md'
 
 // Footer
@@ -14,7 +14,6 @@ import { FOOTER } from '../../../organisms/footer/__mocks__'
 import { renderColumn } from '../../../organisms/footer/__tests__/stories'
 
 // Navbar
-import { Navbar } from '../../../'
 import { Default } from '../../../molecules/navbar/__mocks__'
 
 // Config

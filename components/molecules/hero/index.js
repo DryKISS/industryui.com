@@ -18,10 +18,13 @@ export const Hero = ({
   background,
   backgroundSize,
   buttons,
+  children,
   className,
+  height,
   image,
   message,
   strapline,
+  textblock,
   title,
   width
 }) => {
@@ -37,14 +40,22 @@ export const Hero = ({
   }
 
   return (
-    <StyledHero background={background} backgroundSize={backgroundSize} className={className}>
-      <Container>
-        <Row>
-          {title && renderLeft()}
+    <StyledHero
+      background={background}
+      backgroundSize={backgroundSize}
+      className={className}
+      height={height}
+    >
+      {children && children}
 
-          {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
-        </Row>
-      </Container>
+      {!children && (
+        <Container>
+          <Row>
+            {title && renderLeft()}
+            {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
+          </Row>
+        </Container>
+      )}
     </StyledHero>
   )
 }
@@ -54,13 +65,15 @@ const StyledHero = styled.header`
   background-image: ${({ background }) => (background ? `url(${background})` : 'none')};
   background-position: center;
   background-size: ${({ backgroundSize }) => backgroundSize};
+  height: ${({ height }) => height};
   padding: 2rem 0 0;
+  position: relative;
 `
 
 const StyledColumn = styled(Column)`
+  margin: 0 auto;
   text-align: center;
   ${MEDIA_QUERY.desktop`
-    // margin-bottom: 3rem;
     text-align: initial;
   `}
 `
@@ -87,10 +100,11 @@ Hero.propTypes = {
   background: string,
   backgroundSize: string,
   buttons: array,
+  height: string,
   image: string,
   strapline: oneOfType([object, string]),
   style: objectOf(oneOfType([number, string])),
-  title: string.isRequired,
+  title: string,
   width: number
 }
 

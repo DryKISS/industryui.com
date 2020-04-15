@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faBell,
   faCommentDots,
+  faCopyright,
   faEdit,
   faEnvelope,
   faExclamationTriangle,
@@ -15,7 +16,12 @@ import {
 } from '@fortawesome/pro-duotone-svg-icons'
 
 // Free Solid
-import { faCircle, faEnvelope as fasEnvelope } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCaretDown,
+  faCaretUp,
+  faCircle,
+  faEnvelope as fasEnvelope
+} from '@fortawesome/free-solid-svg-icons'
 
 // Pro Regular
 import {
@@ -23,7 +29,6 @@ import {
   faArrowRight,
   faBars,
   faCalendarAlt,
-  faCaretDown,
   faCheck,
   faCheckCircle,
   faChevronDown,
@@ -56,6 +61,7 @@ library.add(
   faBell,
   faCalendarAlt,
   faCaretDown,
+  faCaretUp,
   faCheck,
   faCheckCircle,
   faChevronDown,
@@ -64,6 +70,7 @@ library.add(
   faChevronUp,
   faCircle,
   faCommentDots,
+  faCopyright,
   faExternalLink,
   faDogLeashed,
   faEdit,

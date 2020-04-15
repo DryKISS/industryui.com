@@ -1,7 +1,5 @@
 /**
  * Button - Toolbar
- * Combine sets of button groups into button toolbars for more complex components. Use utility
- * classes as needed to space out groups, buttons, and more.
  */
 
 // React
@@ -35,17 +33,25 @@ const StyledGroup = styled.div`
     color: white;
   }
 
-  & > a:not(:last-child),
+  a:not(:last-child),
   button:not(:last-child) {
     border-bottom-right-radius: 0;
     border-right: 1px solid ${({ theme: { COLOUR } }) => COLOUR.light};
     border-top-right-radius: 0;
   }
 
-  & > a:not(:first-child),
-  button:not(:first-child) {
+  a:not(:first-child),
+  button:not(:first-child),
+  a:not(:first-child) button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    margin-left: 0;
+  }
+
+  a:not(:last-child) button {
+    border-bottom-right-radius: 0;
+    border-right: 1px solid ${({ theme: { COLOUR } }) => COLOUR.light};
+    border-top-right-radius: 0;
   }
 `
 

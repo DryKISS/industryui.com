@@ -2,26 +2,29 @@
  * Theme - Variables - Colour
  */
 export const COLOUR = {
-  drykiss_lightBlue: '#00E1DA',
-  drykiss_darkPink: '#FF0063',
+  drykiss_lightBlue: 'rgb(0, 225, 218)',
+  drykiss_darkPink: 'rgb(255, 0, 99)',
 
-  white: '#fff',
-  black: '#000',
+  active: 'rgb(204 ,0, 0)',
+  visited: 'rgb(180, 14, 180)',
 
-  dark: '#5c6f7f',
-  light: '#ecf0f3',
+  white: 'rgb(255, 255, 255)',
+  black: 'rgb(0, 0, 0)',
 
-  primary: '#75CCCF',
-  secondary: '#0679d8',
-  success: '#00b43c',
-  info: '#f99c23',
-  warning: '#e60811',
-  danger: '#e8095e',
+  dark: 'rgb(92, 111, 127)',
+  light: 'rgb(236, 240, 243)',
 
-  help: '#ffde03',
+  primary: 'rgb(0, 71, 255)',
+  secondary: 'rgb(6, 121, 216)',
+  success: 'rgb(54, 197, 58)',
+  info: 'rgb(148, 148, 126)',
+  warning: 'rgb(222, 127, 40)',
+  danger: 'rgb(212, 81, 81)',
 
-  male: '#8ECEFD',
-  female: '#F88B9D',
+  help: 'rgb(255, 203, 68)',
+
+  male: 'rgb(142, 206, 253)',
+  female: 'rgb(248, 139, 157)',
 
   transparent: 'transparent'
 }

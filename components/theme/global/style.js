@@ -70,51 +70,19 @@ export const ThemeStyle = createGlobalStyle`
   }
 
   *, *::before, *::after {
-    box-sizing: inherit;
+    box-sizing: border-box;
   }
 
   body {
-    color: #6b7a87;
+    color: ${props => props.theme.TYPOGRAPHY.fontColour};
     font-family: ${props => props.theme.TYPOGRAPHY.font};
     margin: 0;
     position: relative;
   }
 
-  /* Headings */
-  ${({ theme }) => {
-    let style = ''
-    Object.keys(theme.HEADINGS).forEach(el => {
-      style += `
-        ${el} {
-          ${theme.HEADINGS[el].font ? `font-family: ${theme.HEADINGS[el].font};` : ''}
-          ${theme.HEADINGS[el].fontSize ? `font-size: ${theme.HEADINGS[el].fontSize};` : ''}
-          ${theme.HEADINGS[el].uppercase === true ? 'text-transform: uppercase;' : ''}
-          ${theme.HEADINGS[el].weight ? `font-weight: ${theme.HEADINGS[el].weight};` : ''}
-        }
-      `
-    })
-    return style
-  }}
-
-  hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-  }
-
   pre {
     font-family: monospace;
     font-size: 1em;
-  }
-
-  a {
-    background-color: transparent;
-    color: #0679d8;
-    text-decoration: none;
-
-    &:hover {
-      color: #e8095e;
-    }
   }
 
   abbr[title] {

@@ -1,39 +1,52 @@
 /**
  * Layout - Dashboard
- *
  */
 
 // React
-import { bool, node, object } from 'prop-types'
+import React, { Suspense } from 'react'
+import { node, object, shape, string } from 'prop-types'
 
 // UI
-import { Alert, Page } from '../../'
+import { Alert, LdsSpinner, Page, PageLoading } from '../../'
 
-export const Dashboard = ({ children, resultAlert, isLoading, meta, noData, pageHeading }) => {
+export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
+  const { context, message } = resultAlert
+
+  const defaultMeta = {
+    description: 'Admin',
+    path: '/',
+    title: 'Admin'
+  }
+
+  const mergedMeta = { ...defaultMeta, ...meta }
+
   return (
-    !isLoading && (
-      <>
-        <Page children={children} fluid meta={meta} pageHeading={pageHeading} />
-
-        {resultAlert.message && (
-          <Alert content={resultAlert.message} context={resultAlert.context} />
-        )}
-      </>
-    )
+    <>
+      <Suspense fallback={<PageLoading indicator={<LdsSpinner />} />}>
+        <>
+          <Page children={View || children} fluid meta={mergedMeta} pageHeading={pageHeading} />
+          {message && <Alert content={message} context={context} />}
+        </>
+      </Suspense>
+    </>
   )
 }
 
 Dashboard.propTypes = {
-  children: node.isRequired,
-  isLoading: bool.isRequired,
-  meta: object.isRequired,
+  children: node,
+  meta: shape({
+    description: string,
+    path: string,
+    title: string
+  }),
   pageHeading: object,
-  resultAlert: object
+  resultAlert: shape({
+    context: string,
+    message: string
+  })
 }
 
 Dashboard.defaultProps = {
-  isLoading: true,
-  noData: false,
   resultAlert: {
     context: 'success',
     message: ''

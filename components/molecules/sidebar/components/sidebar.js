@@ -103,7 +103,7 @@ const StyledLi = styled(ListItem)`
   }
 `
 
-const StyledLink = styled.a`
+const StyledLink = styled.span`
   color: ${({ theme }) => theme.SIDEBAR.linkColour};
   display: block;
   padding: 1rem 1.5rem;

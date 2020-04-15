@@ -12,9 +12,13 @@ import Router from 'next/router'
 import ReactTooltip from 'react-tooltip'
 
 // UI
-import { Button, ButtonToolbar, Icon } from '../../../'
+import { ButtonToolbar, Icon } from '../../../'
+import { Button } from '../../../atoms/button/components/button/button'
 
-export const TableActions = ({ row: { id } }, data) => {
+// Style
+import styled from 'styled-components'
+
+export const TableActions = ({ row }, data) => {
   const handleClick = path => e => {
     e.preventDefault()
     e.stopPropagation()
@@ -26,16 +30,16 @@ export const TableActions = ({ row: { id } }, data) => {
       <ReactTooltip effect='solid' event='mouseover' globalEventOff='click' multiline />
 
       <ButtonToolbar align='flex-start' style={{ zIndex: '100000000' }}>
-        {data.map(({ content, context, icon, to, tooltip }, index) => {
+        {data.map(({ content, context, icon, onClick, to, tooltip }, index) => {
           const iconArray = Array.isArray(icon)
 
           return (
-            <Button
-              as='a'
+            <StyledButton
+              forwardedAs='a'
               data-tip={tooltip}
               context={context}
               key={index}
-              onClick={handleClick(`${to}?id=${id}`)}
+              onClick={onClick ? e => onClick(e, row) : handleClick(`${to}?id=${row.id}`)}
               size='sm'
             >
               <Icon
@@ -43,13 +47,18 @@ export const TableActions = ({ row: { id } }, data) => {
                 prefix={icon && iconArray && icon[0]}
                 style={{ pointerEvents: 'none' }}
               />
-            </Button>
+            </StyledButton>
           )
         })}
       </ButtonToolbar>
     </>
   )
 }
+
+const StyledButton = styled(Button)`
+  font-size: 16px;
+  padding: 0.3rem;
+`
 
 TableActions.propTypes = {
   row: object.isRequired

@@ -1,4 +1,4 @@
 /**
  * Details
  */
-export * from './components'
+export * from './details'

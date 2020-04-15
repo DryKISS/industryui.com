@@ -4,134 +4,158 @@
 export const ONE_COLUMN = [
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '1',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '2',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '3',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '4',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '5',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '6',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '7',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '8',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '9',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '10',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '11',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   },
   {
     size: { md: 1 },
-    header: 'Heading',
-    links: [
-      {
-        id: 'footerHowItWorks',
-        name: 'How it Works',
-        to: '/how-it-works'
-      }
-    ]
+    header: '12',
+    links: {
+      items: [
+        {
+          id: 'footerHowItWorks',
+          name: 'How it Works',
+          to: '/how-it-works'
+        }
+      ]
+    }
   }
 ]

@@ -108,8 +108,8 @@ export const BlogFindFood = ({ colour }) => {
           </Label>
         </StyledForm>
 
-        <Link to={`http://${domain}`} passHref>
-          <StyledA target='_blank'>
+        <Link to={`https://${domain}`} passHref target='_blank'>
+          <StyledA>
             Deliveroo <Icon icon='external-link' />
           </StyledA>
         </Link>
@@ -134,7 +134,7 @@ const StyledForm = styled(Form)`
   }
 `
 
-const StyledA = styled.a`
+const StyledA = styled.span`
   color: #fff;
   display: block;
   font-size: 0.75rem;
@@ -154,142 +154,128 @@ BlogFindFood.defaultProps = {
   colour: 'beetroot'
 }
 
-//   <%# FIND FOOD - uses AutocompleteController %>
-//   <section data-mapkey="<%= data.google.api %>" class="find-food" ng-controller="AutocompleteController as autocomplete">
+// <%# FIND FOOD - uses AutocompleteController %>
+// <section data-mapkey="<%= data.google.api %>" class="find-food" ng-controller="AutocompleteController as autocomplete">
 
-//       <%# Google autocomplete %>
+//     <%# Google autocomplete %>
+//     <%= partial 'partials/social/google/autocomplete.erb', locals: {
+//       country: t(:'findFood.country'),
+//       button: true} %>
+
+//     <%# Modal body %>
+//     <% body = capture_html do %>
+
+//       <p><%= t(:'findFood.modal.pin') %></p>
+
+//       <%# Google automcomplete %>
 //       <%= partial 'partials/social/google/autocomplete.erb', locals: {
+//         extraClass: 'sr-only',
 //         country: t(:'findFood.country'),
-//         button: true} %>
-
-//       <%# Modal body %>
-//       <% body = capture_html do %>
-
-//         <p><%= t(:'findFood.modal.pin') %></p>
-
-//         <%# Google automcomplete %>
-//         <%= partial 'partials/social/google/autocomplete.erb', locals: {
-//           extraClass: 'sr-only',
-//           country: t(:'findFood.country'),
-//           button: false
-//         } %>
-
-//         <div class="embed-responsive embed-responsive-16by9">
-//           <div class="google-map embed-responsive-item"></div>
-//         </div>
-
-//       <% end %>
-
-//       <%# Modal footer %>
-//       <% footer = capture_html do %>
-
-//         <div class="pull-left">
-//           <%= partial 'partials/atom/button.erb', locals: {
-//             buttonSize: 'lg',
-//             text: :'findFood.modal.cancel',
-//             data: {dismiss: 'modal'}
-//           } %>
-//         </div>
-
-//         <%= partial 'partials/atom/button.erb', locals: {
-//           buttonSize: 'lg',
-//           context: 'primary',
-//           text: :'findFood.modal.confirm',
-//           ng: { click: "autocomplete.modalConfirm('#{t(:'findFood.url')}')" }
-//         } %>
-
-//       <% end %>
-
-//       <%# Map Modal %>
-//       <%= partial 'partials/molecule/modal.erb', locals: {
-//         body: body,
-//         footer: footer,
-//         id: 'placesModal',
-//         title: :'findFood.modal.title'
+//         button: false
 //       } %>
 
-//     </div>
+//       <div class="embed-responsive embed-responsive-16by9">
+//         <div class="google-map embed-responsive-item"></div>
+//       </div>
 
-//   </section>
+//     <% end %>
 
-//   // Affix
-//   //--------------------------------------------------------------------------//
-//   &.affix {
+//     <%# Modal footer %>
+//     <% footer = capture_html do %>
+
+//       <div class="pull-left">
+//         <%= partial 'partials/atom/button.erb', locals: {
+//           buttonSize: 'lg',
+//           text: :'findFood.modal.cancel',
+//           data: {dismiss: 'modal'}
+//         } %>
+//       </div>
+
+//       <%= partial 'partials/atom/button.erb', locals: {
+//         buttonSize: 'lg',
+//         context: 'primary',
+//         text: :'findFood.modal.confirm',
+//         ng: { click: "autocomplete.modalConfirm('#{t(:'findFood.url')}')" }
+//       } %>
+
+//     <% end %>
+
+//     <%# Map Modal %>
+//     <%= partial 'partials/molecule/modal.erb', locals: {
+//       body: body,
+//       footer: footer,
+//       id: 'placesModal',
+//       title: :'findFood.modal.title'
+//     } %>
+
+//   </div>
+
+// </section>
+
+// &.affix {
+//   position: fixed;
+//   top: 60px;
+//   width: 360px;
+// }
+
+// &.affix-bottom {
+//   position: absolute;
+//   width: 360px;
+// }
+
+// .modal-header {
+//   background-color: $brand-primary;
+//   padding: 30px;
+//   text-align: center;
+
+//   h4 {
+//     color: #fff;
+//     font-size: 24px;
+//   }
+
+//   .close {
+//     line-height: 34px;
+//     margin: 0;
+//     opacity: 0.5;
+//   }
+// }
+
+// .modal-body {
+//   color: #000;
+//   padding: 15px 0;
+
+//   p {
+//     color: #575b5b;
+//     text-align: center;
+//   }
+// }
+
+// &__error {
+//   background-color: #b5ea44;
+//   color: #3e3e3e;
+//   font-size: 13px;
+//   line-height: 16px;
+
+//   p {
+//     margin: 0;
+//     padding: 10px 15px;
+//   }
+// }
+
+// @media only screen and (min-width: 320px) and (max-width: 992px) {
+//   &__position {
+//     left: 0;
+//     padding: 15px 25px;
 //     position: fixed;
 //     top: 60px;
-//     width: 360px;
+//     z-index: 1000;
 //   }
 
-//   &.affix-bottom {
-//     position: absolute;
-//     width: 360px;
+//   label {
+//     font-size: 20px;
+//     line-height: 20px;
+//     margin-bottom: 20px;
+//     width: 90%;
 //   }
-
-//   // Modal header
-//   //--------------------------------------------------------------------------//
-//   .modal-header {
-//     background-color: $brand-primary;
-//     padding: 30px;
-//     text-align: center;
-
-//     h4 {
-//       color: #fff;
-//       font-size: 24px;
-//     }
-
-//     .close {
-//       line-height: 34px;
-//       margin: 0;
-//       opacity: 0.5;
-//     }
-//   }
-
-//   // Modal
-//   //--------------------------------------------------------------------------//
-//   .modal-body {
-//     color: #000;
-//     padding: 15px 0;
-
-//     p {
-//       color: #575b5b;
-//       text-align: center;
-//     }
-//   }
-
-//   // Error
-//   //--------------------------------------------------------------------------//
-//   &__error {
-//     background-color: #b5ea44;
-//     color: #3e3e3e;
-//     font-size: 13px;
-//     line-height: 16px;
-
-//     p {
-//       margin: 0;
-//       padding: 10px 15px;
-//     }
-//   }
-
-//   // Media queries - Mobile
-//   //--------------------------------------------------------------------------//
-//   @media only screen and (min-width: 320px) and (max-width: 992px) {
-//     // Label
-//     //------------------------------------------------------------------------//
-//     &__position {
-//       left: 0;
-//       padding: 15px 25px;
-//       position: fixed;
-//       top: 60px;
-//       z-index: 1000;
-//     }
-
-//     // Label
-//     //------------------------------------------------------------------------//
-//     label {
-//       font-size: 20px;
-//       line-height: 20px;
-//       margin-bottom: 20px;
-//       width: 90%;
-//     }
-//   }
+// }
 // }

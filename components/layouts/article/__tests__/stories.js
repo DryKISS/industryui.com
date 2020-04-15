@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { ArticleLayout } from '../'
+import { ArticleLayout } from 'components'
 import Readme from '../README.md'
 
 export default {

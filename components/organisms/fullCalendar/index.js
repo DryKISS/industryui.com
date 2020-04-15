@@ -7,11 +7,14 @@
  */
 
 // React
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 // UI
-import { Theme } from '../../../'
+import { LdsSpinner, PageLoading, Theme } from '../../../'
+
+// Styled Components
+import styled from 'styled-components'
 
 const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
   ssr: false
@@ -19,14 +22,31 @@ const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
 
 export const Calendar = forwardRef(({ ...props }, ref) => {
   const { CALENDAR, COLOUR } = Theme
+  const [loading, setLoading] = useState(false)
 
   return (
-    <CalendarWrapper
-      {...props}
-      eventColor={props.defaultEventColor || COLOUR.primary}
-      header={CALENDAR.header}
-      events={props.events}
-      forwardedRef={ref}
-    />
+    <Wrapper>
+      {props.hasLoading && loading && (
+        <PageLoading
+          backgroundColor='#fff'
+          indicator={<LdsSpinner color='#000' size={50} />}
+          opacity={0.7}
+          position='absolute'
+        />
+      )}
+      <CalendarWrapper
+        {...props}
+        eventColor={props.defaultEventColor || COLOUR.primary}
+        header={props.header || CALENDAR.header}
+        events={props.events}
+        forwardedRef={ref}
+        loading={setLoading}
+      />
+    </Wrapper>
   )
 })
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+`

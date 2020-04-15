@@ -2,9 +2,7 @@
   "name": "industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
   "main": "./index.js",
   "license": "MIT",
@@ -22,14 +20,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:DryKISS/industryui.com.git"
+    "url": "https://github.com/DryKISS/industryui.com.git"
   },
   "bugs": {
     "url": "https://github.com/DryKISS/industryui.com/issues"
   },
   "scripts": {
     "check": "npm-check -s -u",
-    "dedupe": "yarn-deduplicate yarn.lock",
     "serve": "npx http-server storybook-static",
     "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
     "standard": "standard | snazzy",
@@ -42,11 +39,10 @@
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
-    "deploy-storybook-ci": "storybook-to-ghpages -- --ci --host-token-env-variable=GITHUB_TOKEN",
-    "migrate": "./node_modules/.bin/jscodeshift -t ./node_modules/@storybook/codemod/dist/transforms/storiesof-to-csf.js . --ignore-pattern \"node_modules|dist\""
+    "deploy-storybook-ci": "storybook-to-ghpages -- --ci --host-token-env-variable=GITHUB_TOKEN"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   },
   "eslint": {
     "settings": {
@@ -56,9 +52,7 @@
     }
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn test"
-    ]
+    "**/*.js": ["yarn test"]
   },
   "husky": {
     "hooks": {
@@ -70,14 +64,8 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": [
-      "__SITE__"
-    ],
-    "ignore": [
-      "node_modules/**",
-      "*.bundle*.js",
-      "**/__tests__/*.test.js"
-    ],
+    "globals": ["__SITE__"],
+    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
   },
   "storybook-deployer": {
@@ -86,9 +74,7 @@
     "commitMessage": "Deploy Storybook"
   },
   "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
+    "processors": ["stylelint-processor-styled-components"],
     "extends": [
       "stylelint-config-standard",
       "stylelint-config-prettier",
@@ -96,13 +82,13 @@
     ]
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.3",
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-brands-svg-icons": "^5.12.0",
-    "@fortawesome/free-regular-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/pro-duotone-svg-icons": "^5.12.0",
-    "@fortawesome/pro-regular-svg-icons": "^5.12.0",
+    "@apollo/react-hooks": "^3.1.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-regular-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
+    "@fortawesome/pro-regular-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
@@ -110,78 +96,77 @@
     "@fullcalendar/react": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
     "@nivo/bar": "^0.61.1",
-    "@nivo/colors": "0.61.0",
+    "@nivo/colors": "^0.61.0",
     "@nivo/generators": "^0.61.0",
-    "@nivo/line": "0.61.1",
-    "@nivo/pie": "0.61.1",
-    "@typeform/embed": "^0.15.1",
+    "@nivo/line": "^0.61.1",
+    "@nivo/pie": "^0.61.1",
+    "@typeform/embed": "^0.16.0",
     "apollo-boost": "^0.4.7",
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
-    "date-fns": "^2.9.0",
-    "emoji-mart": "^2.11.2",
+    "date-fns": "^2.12.0",
+    "emoji-mart": "^3.0.0",
     "eslint": "^6.8.0",
-    "firebase": "^7.6.1",
-    "holderjs": "^2.9.6",
+    "firebase": "^7.14.0",
+    "gravatar": "^1.8.0",
+    "holderjs": "^2.9.7",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "next": "^9.1.7",
-    "react-datepicker": "^2.10.1",
-    "react-dropzone": "^10.2.1",
+    "next": "^9.3.5",
+    "react-datepicker": "^2.14.1",
+    "react-dropzone": "^10.2.2",
+    "react-dropzone-uploader": "^2.11.0",
     "react-google-maps": "^9.4.5",
-    "react-hook-form": "^4.4.6",
-    "react-hook-form-input": "^1.1.10",
-    "react-popper": "^1.3.7",
-    "react-select": "^3.0.8",
-    "react-tooltip": "^3.11.2"
+    "react-hook-form": "^5.4.2",
+    "react-popper": "^2.2.2",
+    "react-select": "^3.1.0",
+    "react-tooltip": "^4.2.3",
+    "tippy.js": "^6.1.1",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
+    "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-decorators": "^7.7.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
-    "@babel/plugin-transform-classes": "^7.7.4",
-    "@babel/polyfill": "^7.7.0",
-    "@babel/preset-react": "^7.7.4",
-    "@storybook/addon-a11y": "^5.3.5",
-    "@storybook/addon-actions": "^5.3.5",
-    "@storybook/addon-docs": "^5.3.5",
-    "@storybook/addon-info": "^5.3.5",
-    "@storybook/addon-knobs": "^5.3.5",
-    "@storybook/addon-notes": "^5.3.5",
-    "@storybook/addon-options": "^5.3.5",
-    "@storybook/codemod": "^5.3.5",
-    "@storybook/react": "^5.3.5",
-    "@storybook/storybook-deployer": "^2.8.1",
-    "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
-    "babel-loader": "^8.0.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-transform-classes": "^7.9.5",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-a11y": "^5.3.18",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-info": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-notes": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@storybook/storybook-deployer": "^2.8.5",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.3.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-require-context-hook": "^1.0.0",
-    "babel-plugin-styled-components": "^1.10.6",
-    "husky": "^4.0.1",
+    "babel-plugin-styled-components": "^1.10.7",
+    "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0",
-    "jest-styled-components": "^7.0.0",
-    "jscodeshift": "^0.7.0",
-    "lint-staged": "^10.0.0-beta.4",
+    "jest": "^25.3.0",
+    "jest-styled-components": "^7.0.2",
+    "lint-staged": "^10.1.3",
     "markdown-loader-jest": "^0.1.1",
-    "npm-check": "^5.9.0",
-    "prettier-standard": "^16.1.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-test-renderer": "^16.12.0",
+    "npm-check": "^5.9.2",
+    "prettier-standard": "^16.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "snazzy": "^8.0.0",
-    "standard": "^14.3.1",
+    "standard": "^14.3.3",
     "storybook-readme": "^5.0.8",
-    "styled-components": "^5.0.0",
-    "stylelint": "^12.0.1",
+    "styled-components": "^5.1.0",
+    "stylelint": "^13.3.2",
     "stylelint-config-prettier": "^8.0.0",
-    "stylelint-config-standard": "^19.0.0",
+    "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.9.0",
-    "yarn-deduplicate": "^1.1.1"
+    "stylelint-processor-styled-components": "^1.9.0"
   },
   "peerDependencies": {
     "react": "^16.*",

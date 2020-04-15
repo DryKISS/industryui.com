@@ -16,10 +16,7 @@ export const EmailChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
   const [error] = useState(false)
 
-  const submit = data => {
-    const { email } = data
-    console.log(email)
-  }
+  const submit = data => {}
 
   const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -38,7 +35,6 @@ export const EmailChange = ({ showPlaceholder }) => {
             placeholder={showPlaceholder ? 'Email' : ''}
             regExp={pattern}
             register={register}
-            required='This is required'
           />
         </FormLabel>
 

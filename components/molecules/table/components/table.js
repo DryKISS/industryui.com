@@ -3,10 +3,20 @@
  */
 
 // React
-import { array, bool, func, string } from 'prop-types'
+import React, { useState } from 'react'
+import { array, bool, func, number, shape, string } from 'prop-types'
 
 // UI
-import { BACKGROUND } from '../../../'
+import {
+  historyPush,
+  Icon,
+  Pagination,
+  TableData,
+  TableHead,
+  TableLoading,
+  TableRow
+} from '../../../'
+import { PaginationPropTypes } from '../../pagination/components/propTypes'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -16,28 +26,69 @@ export const Table = ({
   caption,
   className,
   columns,
+  fullHeight,
   hover,
+  loading,
+  noData,
+  pagination,
+  paginationProps: {
+    changeUrlOnChange = false,
+    initialPage = 1,
+    perPage = 10,
+    ...otherPaginationProps
+  },
   responsive,
   rowClick,
   rows,
+  sort,
+  setSort,
   striped
 }) => {
+  const [currentPage, setCurrentPage] = useState(initialPage)
+  const tableSpan = columns.filter(c => !c.hidden).length
+
   const handleClick = e => {
     e.preventDefault()
     const row = e.currentTarget.getAttribute('data-item')
     rowClick(JSON.parse(row))
   }
 
+  const handlePagination = page => {
+    if (changeUrlOnChange) historyPush(`?page=${page}`)
+    setCurrentPage(page)
+  }
+
   const renderColumns = () => {
-    return columns.map(({ hidden, text }, index) => {
+    return columns.map(({ hidden, sortable, sortName = '', text }, index) => {
       if (hidden) {
         return
       }
 
+      const hasSort = sort.item === sortName
+
+      const handleSort = () => {
+        if (sortable) {
+          if (hasSort && sort.order === 'desc') {
+            setSort({
+              item: '',
+              order: ''
+            })
+          } else {
+            setSort({
+              item: sortName,
+              order: hasSort ? 'desc' : 'asc'
+            })
+          }
+        }
+      }
+
       return (
-        <StyledTh align={align} key={index}>
+        <TableHead align={align} key={index} onClick={handleSort} sortable={sortable}>
           {text}
-        </StyledTh>
+          {sortable && hasSort && (
+            <Icon icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'} prefix='fas' />
+          )}
+        </TableHead>
       )
     })
   }
@@ -45,12 +96,14 @@ export const Table = ({
   const renderRows = () => {
     const clickable = typeof rowClick === 'function'
 
-    return rows.map((row, index) => {
+    const temp = pagination ? rows.slice((currentPage - 1) * perPage, currentPage * perPage) : rows
+
+    return temp.map((row, index) => {
       const context = row.context
       delete row.context
 
       return (
-        <StyledTr
+        <TableRow
           context={context}
           key={index}
           data-item={JSON.stringify(row)}
@@ -67,19 +120,21 @@ export const Table = ({
               return
             }
 
+            const renderValue = typeof value === 'function' ? value() : value
+
             return (
-              <StyledTd align={align} key={index}>
+              <TableData align={align} key={index}>
                 {length > 0 && column.formatter ? (
                   column.formatter({ row }, column.formatterData)
                 ) : value && value.__html ? (
                   <span dangerouslySetInnerHTML={value} />
                 ) : (
-                  value
+                  renderValue
                 )}
-              </StyledTd>
+              </TableData>
             )
           })}
-        </StyledTr>
+        </TableRow>
       )
     })
   }
@@ -87,21 +142,59 @@ export const Table = ({
   const renderTable = () => (
     <StyledTable className={className}>
       {caption && <StyledCaption>{caption}</StyledCaption>}
+
       <thead>
         <tr>{columns && renderColumns()}</tr>
       </thead>
-      <tbody>{renderRows()}</tbody>
+
+      <tbody>
+        {noData && !loading && !rows.length ? (
+          <TableRow>
+            <TableData align='center' colSpan={tableSpan}>
+              No data available
+            </TableData>
+          </TableRow>
+        ) : (
+          renderRows()
+        )}
+      </tbody>
     </StyledTable>
   )
 
   return (
     <>
-      {responsive && <StyledResponsive>{renderTable()}</StyledResponsive>}
+      <StyledWrapper fullHeight={fullHeight} isLoading={loading}>
+        <TableLoading colsLength={tableSpan} show={loading} />
 
-      {!responsive && renderTable()}
+        {responsive ? <StyledResponsive>{renderTable()}</StyledResponsive> : renderTable()}
+      </StyledWrapper>
+
+      {pagination && rows.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          onPageChange={handlePagination}
+          pageCount={Math.ceil(rows.length / perPage)}
+          size='sm'
+          style={{
+            marginTop: '10px'
+          }}
+          {...otherPaginationProps}
+        />
+      )}
     </>
   )
 }
+
+const StyledWrapper = styled.div`
+  width: 100%;
+  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%'};
+  position: relative;
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      position: relative;
+    `}
+`
 
 const StyledResponsive = styled.div`
   background-color: #fff;
@@ -117,46 +210,6 @@ const StyledTable = styled.table`
   width: 100%;
 `
 
-const StyledTr = styled.tr`
-  cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
-  ${({ context, striped, theme }) =>
-    !context &&
-    striped &&
-    css`
-      :nth-child(odd) {
-        background-color: ${theme.COLOUR.light};
-      }
-    `}
-
-  ${props => props.context && BACKGROUND(props)}
-  ${props =>
-    props.context &&
-    css`
-      color: white;
-    `}
-
-  ${({ hover }) =>
-    hover &&
-    css`
-      :hover {
-        background-color: #eee;
-      }
-    `}
-`
-
-const StyledTh = styled.th`
-  border-bottom: 2px solid ${({ theme }) => theme.COLOUR.dark};
-  border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  padding: ${({ theme }) => theme.TABLE.padding};
-  text-align: ${({ align }) => (align ? 'center' : 'left')};
-`
-
-const StyledTd = styled.td`
-  border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  padding: ${({ theme }) => theme.TABLE.padding};
-  text-align: ${({ align }) => align && 'center'};
-`
-
 const StyledCaption = styled.caption`
   caption-side: bottom;
   color: #6c757d;
@@ -169,10 +222,23 @@ Table.propTypes = {
   caption: string,
   classname: string,
   columns: array,
+  fullHeight: bool,
   hover: bool,
+  loading: bool,
+  pagination: bool,
+  paginationProps: shape({
+    changeUrlOnChange: bool,
+    initialPage: number,
+    perPage: number,
+    ...PaginationPropTypes
+  }),
   responsive: bool,
   rowClick: func,
   rows: array.isRequired,
+  sort: shape({
+    item: string,
+    order: string
+  }),
   striped: bool
 }
 
@@ -180,7 +246,16 @@ Table.defaultProps = {
   align: false,
   columns: [],
   className: 'Table',
+  fullHeight: false,
   hover: true,
+  loading: undefined,
+  noData: true,
+  pagination: false,
+  paginationProps: {},
   responsive: true,
+  sort: {
+    item: '',
+    order: ''
+  },
   striped: true
 }

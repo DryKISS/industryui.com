@@ -47,7 +47,9 @@ const BaseComponent = (props = {}) => {
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Email'>
-        <FormField {...defaultProps} regExp={pattern} required='This is required' />
+        <FormField {...defaultProps} regExp={pattern} />
+      </FormLabel>
+      <FormLabel label='Name'>
         <FormField {...defaultProps} minLength={10} defaultValue='Fred' name='fred' />
       </FormLabel>
 

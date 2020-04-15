@@ -46,6 +46,7 @@ const inlineStyles = css`
 
 const unstyledStyles = css`
   list-style: none;
+  margin: 0;
   padding-left: 0;
 `
 

@@ -66,7 +66,7 @@ export const Breadcrumb = ({ category, path, page }) => {
   )
 }
 
-const StyledA = styled.a`
+const StyledA = styled.span`
   color: #fff;
 
   &:hover {

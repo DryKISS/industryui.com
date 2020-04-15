@@ -6,68 +6,62 @@
 import { array, string } from 'prop-types'
 
 // UI
-import { Container, Link, Row } from '../../'
+import { Column, Container, Icon, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
 
+const year = new Date().getFullYear()
+
 export const Copyright = ({ brand, links }) => {
   const renderLinks = () => {
-    return (
-      <StyledNav>
-        {links.map(({ name, to }, index) => (
-          <Link to={to} key={index} passHref>
-            <StyledLink>{name}</StyledLink>
-          </Link>
-        ))}
-      </StyledNav>
-    )
+    return links.map(({ name, to }, index) => (
+      <Link key={index} passHref to={to}>
+        <StyledLink>{name}</StyledLink>
+      </Link>
+    ))
   }
 
-  const year = new Date().getFullYear()
-
   return (
-    <StyledCopyright data-test='copyright'>
-      <Container>
+    <StyledCopyright data-cy='copyright'>
+      <StyledContainer>
         <Row>
-          <StyledBrand>
-            ©{year} {brand}
-          </StyledBrand>
+          <Column md={links.length > 0 ? 3 : 12}>
+            <StyledBrand>
+              <StyledIcon context='primary' icon='copyright' prefix='fad' />
+              {year} — {brand}
+            </StyledBrand>
+          </Column>
 
-          {links && renderLinks()}
+          {links.length > 0 && <Column md={9}>{renderLinks()}</Column>}
         </Row>
-      </Container>
+      </StyledContainer>
     </StyledCopyright>
   )
 }
 
 const StyledCopyright = styled.section`
-  background-color: ${({ theme }) => theme.COLOUR.light};
-  color: ${({ theme }) => theme.COLOUR.dark};
-  font-size: 0.875rem;
-  height: 4rem;
-  line-height: 4rem;
-  width: 100%;
+  background-color: ${({ theme }) => theme.COPYRIGHT.background};
+  color: ${({ theme }) => theme.COPYRIGHT.colour};
+  font-size: 0.75rem;
+`
+
+const StyledContainer = styled(Container)`
+  height: 3.5rem;
 `
 
 const StyledBrand = styled.div`
-  display: inline;
-  margin: 0 1rem 0 0;
+  display: flex;
+  justify-content: center;
 `
 
-const StyledNav = styled.nav`
-  display: inline;
+const StyledIcon = styled(Icon)`
+  margin: auto 0;
+  padding-right: 0.25rem;
 `
 
-const StyledLink = styled.a`
-  color: ${({ theme }) => theme.COLOUR.dark};
-  margin: 0 1rem 0 0;
-  text-decoration: none;
-
-  &:hover {
-    color: #6b7a87;
-    text-decoration: underline;
-  }
+const StyledLink = styled.span`
+  margin-right: 1.5rem;
 `
 
 Copyright.propTypes = {

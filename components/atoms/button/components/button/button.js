@@ -7,7 +7,7 @@ import { forwardRef } from 'react'
 import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, CONTEXT, SHADE_COLOUR, SIZE } from '../../../../'
+import { BACKGROUND, CONTEXT, shadeLinearRgb, SIZE } from '../../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -26,6 +26,7 @@ const StyledButton = styled.button`
     context === 'white' ? COLOUR.primary : COLOUR.white};
   border: 2px solid ${({ context, theme: { COLOUR } }) => COLOUR[context]};
   border-radius: .25rem;
+  box-sizing: border-box;
   ${props =>
     props.shadow &&
     'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
@@ -78,8 +79,8 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${({ context, theme: { COLOUR } }) => SHADE_COLOUR(COLOUR[context], -10)};
-    border-color: ${({ context, theme: { COLOUR } }) => SHADE_COLOUR(COLOUR[context], -12.5)};
+    background-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.1, COLOUR[context])};
+    border-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.12, COLOUR[context])};
     color: #fff;
   }
 `

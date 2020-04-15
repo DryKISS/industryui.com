@@ -59,7 +59,16 @@ export const MessageBase = ({
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
-            <StyledContent seeMore={seeMore}>{content}</StyledContent>
+            <StyledContent seeMore={seeMore}>
+              {content.split('\n').map((item, key) => {
+                return (
+                  <span key={key}>
+                    {item}
+                    <br />
+                  </span>
+                )
+              })}
+            </StyledContent>
 
             {more && (
               <StyledCollapse onClick={() => setSeeMore(!seeMore)}>

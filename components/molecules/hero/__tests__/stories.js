@@ -7,11 +7,17 @@ import React from 'react'
 
 // Storybook
 import { Wrapper } from 'decorators'
+// import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
 
 // UI
-import { Hero } from '../'
+import { Heading, Hero, Image } from 'components'
+import { TextBlock } from '../components/textBlock'
+
 import Readme from '../README.md'
+
 import Jack from '../__resources__/hero-jack-russell.jpg'
+import Puppies from '../__resources__/hero-centered.jpg'
+import Custom from '../__resources__/hero-vector.png'
 
 const Buttons = [
   {
@@ -63,3 +69,39 @@ export const main = () => (
     title='The perfect puppy starts with a responsible breeder'
   />
 )
+
+export const centered = () => (
+  <Hero
+    alt='Tailwise Jack Russell Dog'
+    buttons={Buttons}
+    background={Puppies}
+    backgroundSize='100%'
+    message='Message'
+    strapline={`
+        Tailwise takes the hassle out of matching verified breeders with future
+        dog owners, in their search to find the perfect pup. That means no
+        puppy farms anywhere in the United Kingdom.
+      `}
+    title='The perfect puppy starts with a responsible breeder'
+  />
+)
+
+export const CleverlyBlock = () => {
+  return (
+    <>
+      <Hero background={Puppies} backgroundSize='100%' height='100vh'>
+        <>
+          <TextBlock content='Test' md={4} offset={{ md: 1 }} top='394px'>
+            <Image alt='Icon' src={Custom} width='64px' />
+            <Heading content='CUSTOM SOLUTIONS' noMargin tag='h2' />
+            <p>
+              Cleverly provides solutions for clients in a number of different sectors.whether you
+              are looking for a single service line or a 'Compliance as a Service' solution,
+              Cleverly can help.
+            </p>
+          </TextBlock>
+        </>
+      </Hero>
+    </>
+  )
+}

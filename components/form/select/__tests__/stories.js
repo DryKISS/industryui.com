@@ -8,12 +8,14 @@ import React from 'react'
 // Storybook
 import { Wrapper } from 'decorators'
 
-// useForm
+// Reach Hook Form
 import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
 
 // UI
-import { FormForm, FormLabel, SelectField } from '../../'
+import { Button, FormForm, FormLabel, SelectField, SelectCountryField } from 'components'
 import Readme from '../README.md'
+import { COLOURS, EXPENSES } from '../__mocks__'
 
 export default {
   title: 'Form/Select',
@@ -27,33 +29,43 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm()
+  const schema = yup.object().shape({
+    select: yup.string().required()
+  })
+
+  const { errors, getValues, handleSubmit, register } = useForm({ validationSchema: schema })
+
   const onSubmit = data => {}
 
   const defaultProps = {
+    data: { name: 'fred' },
+    defaultValue: '',
+    disabled: false,
     errors: errors,
     name: 'select',
-    required: true,
+    placeholder: 'Range',
+    range: [],
     register: register,
+    showError: true,
     ...props
   }
 
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Select'>
-        <SelectField {...defaultProps} required='This is required' />
+        {!props.country && <SelectField {...defaultProps} />}
+        {props.country && <SelectCountryField {...defaultProps} />}
       </FormLabel>
+
+      <Button content='Submit' type='submit' />
+
+      {getValues() && <p>{getValues().select}</p>}
+      {errors.select && errors.select.message}
     </FormForm>
   )
 }
 
-export const main = () => (
-  <BaseComponent
-    options={[
-      { text: 'Red', value: 'red', disabled: false },
-      { text: 'Green', value: 'green', disabled: false },
-      { text: 'Blue', value: 'blue', disabled: false },
-      { text: 'Olive (disabled)', value: 'olive', disabled: true }
-    ]}
-  />
-)
+export const main = () => <BaseComponent options={COLOURS} />
+export const optionGroups = () => <BaseComponent options={EXPENSES} />
+export const country = () => <BaseComponent country />
+export const range = () => <BaseComponent range={[20, 0]} />
