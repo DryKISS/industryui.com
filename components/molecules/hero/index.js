@@ -61,7 +61,6 @@ export const Hero = ({
 }
 
 const StyledHero = styled.header`
-  background-color: #fff;
   background-image: ${({ background }) => (background ? `url(${background})` : 'none')};
   background-position: center;
   background-size: ${({ backgroundSize }) => backgroundSize};
