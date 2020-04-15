@@ -13,7 +13,7 @@ import { FieldHOC } from '../'
 import styled, { css } from 'styled-components'
 
 export const SelectField = forwardRef(
-  ({ data, disabled, options, placeholder, range, required, ...props }, ref) => {
+  ({ data, defaultValue, disabled, options, placeholder, range, showError, ...props }, ref) => {
     const renderRange = () => {
       const options = [
         <option disabled value='' key='initial0'>
@@ -23,7 +23,7 @@ export const SelectField = forwardRef(
 
       for (let i = range[1]; i <= range[0]; i++) {
         options.push(
-          <option disabled={disabled} key={`range${i}`} value={i}>
+          <option key={`range${i}`} value={i}>
             {i}
           </option>
         )
@@ -32,19 +32,31 @@ export const SelectField = forwardRef(
       return options
     }
 
-    const renderOptions = () => {
-      return options.map(({ disabled, text, value }, index) => (
-        <option children={text} disabled={disabled} key={`option${index}`} value={value} />
-      ))
+    const renderOptions = items => {
+      if (items) {
+        options = items
+      }
+
+      return options.map(({ disabled, group, items, text, value }) => {
+        if (group) {
+          return (
+            <optgroup key={`option${group}`} label={group}>
+              {renderOptions(items)}
+            </optgroup>
+          )
+        }
+
+        return <option children={text} disabled={disabled} key={`option${value}`} value={value} />
+      })
     }
 
     return (
       <FieldHOC
         component={StyledSelect}
-        className='Form-control'
+        defaultValue={defaultValue}
+        disabled={disabled}
         ref={ref}
-        required={required}
-        showError={false}
+        showError={showError}
         {...data}
         {...props}
       >
@@ -90,15 +102,17 @@ const StyledSelect = styled.select`
 
 SelectField.propTypes = {
   data: object,
+  defaultValue: string,
   disabled: bool,
   options: array,
   placeholder: string,
   range: array,
-  required: bool
+  showError: bool
 }
 
 SelectField.defaultProps = {
+  defaultValue: '',
   disabled: false,
   range: [],
-  required: true
+  showError: false
 }

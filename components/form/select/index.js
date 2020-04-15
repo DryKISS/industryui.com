@@ -1,6 +1,5 @@
 /**
  * Select
  */
-
-export * from './country'
+export * from './components'
 export * from './Select'
