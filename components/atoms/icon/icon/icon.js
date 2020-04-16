@@ -3,10 +3,11 @@
  */
 
 // React
-import { any, bool, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
+import { any, bool, number, object, array, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
-// Fontawesome
+// FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ICON_SIZE, ICON_PREFIX, ICON_PULL } from '../'
 
 // Style
 import styled from 'styled-components'
@@ -23,13 +24,23 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `
 
 Icon.propTypes = {
+  border: bool,
   className: any,
   context: oneOf(Object.values(CONTEXT)),
+  mask: oneOfType([object, array, string]),
   fixedWidth: bool,
-  icon: string.isRequired,
-  prefix: string,
+  inverse: bool,
+  icon: oneOfType([object, array, string.isRequired]),
+  listItem: bool,
+  prefix: oneOf(Object.values(ICON_PREFIX)),
+  pull: oneOf(Object.values(ICON_PULL)),
+  pulse: bool,
+  size: oneOf(Object.values(ICON_SIZE)),
+  spin: bool,
   style: objectOf(oneOfType([number, string])),
-  size: oneOf(['xs', 'sm', 'lg', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x'])
+  title: string,
+  transform: oneOfType([string, object]),
+  swapOpacity: bool
 }
 
 Icon.defaultProps = {
