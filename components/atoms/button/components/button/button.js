@@ -50,6 +50,7 @@ const StyledButton = styled.button`
     css`
       cursor: initial;
       opacity: 0.5;
+      pointer-events: none;
     `}
 
   ${({ size }) =>
