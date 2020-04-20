@@ -9,7 +9,6 @@ export const FieldHOC = ({
   component: Component,
   children,
   register,
-  required,
   validate,
   errors,
   show,
@@ -23,7 +22,6 @@ export const FieldHOC = ({
       key={props.name}
       name={props.name}
       ref={register({
-        required: required,
         pattern: props.regExp ? new RegExp(props.regExp) : null,
         validate: validate,
         ...(props.max ? { max: props.max } : null),

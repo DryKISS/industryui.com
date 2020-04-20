@@ -9,11 +9,11 @@ import React from 'react'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
+// React Hook Form
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, CheckboxField } from '../../../../'
+import { Button, FormForm, CheckboxField } from 'components'
 import Readme from '../README.md'
 
 const data = [
@@ -50,7 +50,6 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     name: 'checkbox',
     legend: text('Legend', 'Do you like Industry-UI?'),
-    required: true,
     register: register,
     ...props
   }

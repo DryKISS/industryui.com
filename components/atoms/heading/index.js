@@ -4,7 +4,7 @@
  */
 
 // React
-import { any, bool, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
+import { any, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
 import { COLOUR, CONTEXT } from '../../'
@@ -12,13 +12,12 @@ import { COLOUR, CONTEXT } from '../../'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Heading = ({ className, content, context, noMargin, style, tag }) => {
+export const Heading = ({ className, content, context, style, tag }) => {
   return (
     <StyledHeading
       as={tag}
       className={className}
       context={context}
-      noMargin={noMargin}
       itemProp='name headline'
       rel='bookmark'
       style={style}
@@ -32,20 +31,19 @@ const StyledHeading = styled.span`
   font-weight: normal;
   ${props => COLOUR(props)}
   position: relative;
-  ${({ as, noMargin, theme }) => css`
+  ${({ as, theme }) => css`
     font-family: ${theme.HEADINGS[as].fontFamily};
     font-size: ${theme.HEADINGS[as].fontSize};
     line-height: ${theme.HEADINGS[as].lineHeight};
     text-transform: ${theme.HEADINGS[as].textTransform};
-    margin: ${noMargin ? 0 : '0 0 1.25rem 0'};
+    margin: 0;
   `}
 `
 
 Heading.propTypes = {
   className: any,
-  content: oneOfType([string, object]),
+  content: oneOfType([string, object]).isRequired,
   context: oneOf(Object.values(CONTEXT)),
-  noMargin: bool,
   style: objectOf(oneOfType([number, string])),
   tag: string
 }

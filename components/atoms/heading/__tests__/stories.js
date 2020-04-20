@@ -54,5 +54,3 @@ export const main = () => {
 }
 
 export const HeadingH2 = () => <BaseComponent tag='h2' />
-
-export const noMargin = () => <BaseComponent noMargin />

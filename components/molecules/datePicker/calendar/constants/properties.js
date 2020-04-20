@@ -16,7 +16,7 @@ import {
   string
 } from 'prop-types'
 
-import { placements } from 'react-popper'
+import { placements } from '@popperjs/core/lib'
 
 export const PROPERTIES = {
   adjustDateOnChange: bool,

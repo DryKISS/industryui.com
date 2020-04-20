@@ -14,7 +14,6 @@ export const CurrencyInput = ({
   label,
   name,
   register,
-  required,
   show,
   style,
   vat
@@ -29,7 +28,6 @@ export const CurrencyInput = ({
         <FormField
           errors={errors}
           name={name}
-          required={required}
           register={register}
           style={style}
           step='any'
@@ -52,7 +50,6 @@ CurrencyInput.propTypes = {
   label: string.isRequired,
   name: string.isRequired,
   register: func.isRequired,
-  required: bool,
   show: bool,
   style: node,
   vat: bool
@@ -60,7 +57,6 @@ CurrencyInput.propTypes = {
 
 CurrencyInput.defaultProps = {
   currencySymbol: '£',
-  required: true,
   show: true,
   vat: false
 }

@@ -17,6 +17,7 @@ export const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <legend>{legend}</legend>}
+
       {data.map(({ disabled, label, ...data }) => (
         <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
           <FieldHOC
