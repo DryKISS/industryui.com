@@ -5,12 +5,12 @@
 
 // React
 import React from 'react'
-import { array, func, node, string } from 'prop-types'
+import { array, func, node, object, string } from 'prop-types'
 
 // UI
-import { Copyright, Footer } from '../../../'
+import { Copyright, Footer } from '../../'
 
-export const Bootstrap = ({ brand, children, copyright, footer, Navigation }) => {
+export const Bootstrap = ({ brand, children, copyright, footer, icon, Navigation }) => {
   return (
     <>
       <Navigation />
@@ -19,7 +19,7 @@ export const Bootstrap = ({ brand, children, copyright, footer, Navigation }) =>
 
       {footer && <Footer columns={footer} />}
 
-      <Copyright brand={brand} links={copyright} />
+      <Copyright brand={brand} icon={icon} links={copyright} />
     </>
   )
 }
@@ -29,5 +29,6 @@ Bootstrap.propTypes = {
   children: node.isRequired,
   copyright: array,
   footer: array,
+  icon: object,
   navigation: func
 }
