@@ -50,12 +50,8 @@ export function useTimer ({ autoStart = true, interval = 1000, startTime, endTim
         .minutes()
         .toString()
         .padStart(2, '0'),
-      hours: temp
-        .hours()
-        .toString()
-        .padStart(2, '0'),
-      days: parseInt(temp.asDays(), 10),
-      totalHours: temp.asHours().toFixed(2)
+      hours: parseInt(temp.asHours(), 10),
+      exactHours: temp.asHours().toFixed(2)
     }
   }
 
