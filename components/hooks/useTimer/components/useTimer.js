@@ -54,7 +54,8 @@ export function useTimer ({ autoStart = true, interval = 1000, startTime, endTim
         .hours()
         .toString()
         .padStart(2, '0'),
-      days: parseInt(temp.asDays(), 10)
+      days: parseInt(temp.asDays(), 10),
+      totalHours: temp.asHours().toFixed(2)
     }
   }
 
