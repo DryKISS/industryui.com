@@ -14,11 +14,23 @@ import { CONTEXT, shadeLinearRgb, validatorUri } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Link = ({ border, children, className, context, onClick, passHref, target, to }) => {
+export const Link = ({
+  border,
+  children,
+  className,
+  context,
+  onClick,
+  passHref,
+  replace,
+  scroll,
+  shallow,
+  target,
+  to
+}) => {
   const obj = typeof to === 'object' ? to : { href: to }
 
   return !validatorUri(to) ? (
-    <NextLink {...obj} passHref={passHref}>
+    <NextLink {...obj} passHref={passHref} replace={replace} scroll={scroll} shallow={shallow}>
       <StyledLink
         border={border}
         className={className}
@@ -30,7 +42,7 @@ export const Link = ({ border, children, className, context, onClick, passHref, 
       </StyledLink>
     </NextLink>
   ) : (
-    <StyledLink border={border} context={context} className={className} href={to}>
+    <StyledLink border={border} className={className} context={context} href={to} target={target}>
       {children}
     </StyledLink>
   )
@@ -76,10 +88,16 @@ Link.propTypes = {
   context: oneOf(Object.values(CONTEXT)),
   onClick: func,
   passHref: bool,
+  replace: bool,
+  scroll: bool,
+  shallow: bool,
   target: string,
   to: oneOfType([object, string]).isRequired
 }
 
 Link.defaultProps = {
-  border: true
+  border: true,
+  replace: false,
+  scroll: true,
+  shallow: false
 }
