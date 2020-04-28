@@ -1,5 +1,5 @@
 /**
- * Layout - Page
+ * Layout — Page
  * Allows us to specify some rules for how the page will be rendered
  */
 
@@ -29,7 +29,8 @@ export const Page = ({ children, fluid, meta, pageHeading }) => {
 }
 
 const StyledPage = styled.div`
-  background-color: ${({ theme }) => theme.PAGE.backGroundColour};
+  background-color: ${({ theme }) =>
+    theme.PAGE.backGroundColour ? theme.PAGE.backGroundColour : theme.COLOUR.white};
 `
 
 Page.propTypes = {

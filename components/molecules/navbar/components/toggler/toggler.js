@@ -11,8 +11,27 @@ import { Icon, MEDIA_QUERY } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const Toggler = ({ handleMenuClick, visible }) => {
-  return (
+export const Toggler = ({ custom, handleMenuClick, visible }) => {
+  const CustomTogglerIconOpen = () => (
+    <StyledIcon>
+      <div />
+      <div />
+    </StyledIcon>
+  )
+
+  const CustomToggler = () => (
+    <StyledToggler
+      aria-expanded={visible ? 'false' : 'true'}
+      aria-label='Toggle navigation'
+      onClick={handleMenuClick}
+    >
+      {!visible && <CustomTogglerIconOpen />}
+
+      {visible && <CustomTogglerIconOpen />}
+    </StyledToggler>
+  )
+
+  const DefaultToggler = () => (
     <StyledToggler
       aria-expanded={visible ? 'false' : 'true'}
       aria-label='Toggle navigation'
@@ -21,20 +40,49 @@ export const Toggler = ({ handleMenuClick, visible }) => {
       {!visible && <Icon icon='bars' />}
 
       {visible && <Icon icon='times' size='lg' />}
-
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )
+
+  if (custom) {
+    return <CustomToggler />
+  } else {
+    return <DefaultToggler />
+  }
 }
 
-const StyledToggler = styled.a`
-  color: ${({ theme }) => theme.NAVBAR.colourActive};
-  cursor: pointer;
-  font-size: 0.8125rem;
-  padding: 1.25rem 1rem;
+const StyledIcon = styled.div`
+  margin-top: 0.25rem;
+  div {
+    width: 2rem;
+    height: 0.125rem;
+    background: black;
+    margin-bottom: 0.375rem;
+    transition: .3s all linear;
+  }
+  div:nth-child(1) {
+    &:active {
+      transform: rotate(45deg);
+    }
+  }
+  div:nth-child(2) {
+    &:active {
+      transform: rotate(-45deg);
+    }
+  }
+`
 
+const StyledToggler = styled.a`
+  cursor: pointer;
+  color: ${({ theme }) =>
+    theme.NAVBAR.colourToggler ? theme.NAVBAR.colourToggler : theme.NAVBAR.colourActive};
+  font-size: ${({ theme }) =>
+    theme.NAVBAR.fontSizeToggler ? theme.NAVBAR.fontSizeToggler : '0.8125rem'};
+  padding: ${({ theme }) =>
+    theme.NAVBAR.paddingToggler ? theme.NAVBAR.paddingToggler : '1.25rem 0 1.25rem 1rem'};
   &:hover {
-    color: ${({ theme }) => theme.COLOUR.primary};
+    color: ${({ theme }) =>
+      theme.NAVBAR.colourHoverToggler ? theme.NAVBAR.colourHoverToggler : theme.COLOUR.primary};
   }
 
   ${MEDIA_QUERY.desktop`
@@ -45,7 +93,6 @@ const StyledToggler = styled.a`
 const StyledText = styled.span`
   margin-left: 0.25rem;
 `
-
 Toggler.propTypes = {
   handleMenuClick: func.isRequired,
   visible: bool
