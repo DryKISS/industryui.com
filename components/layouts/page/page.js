@@ -31,8 +31,8 @@ export const Page = ({ children, fluid, marginTop, meta, pageHeading }) => {
 const StyledPage = styled.div`
   background-color: ${({ theme }) =>
     theme.PAGE.backGroundColour ? theme.PAGE.backGroundColour : theme.COLOUR.white};
-  margin-top: ${({ marginTop }) =>
-    marginTop === 'true' &&
+  ${({ marginTop }) =>
+    marginTop === true &&
     css`
       margin-top: ${({ theme }) => theme.PAGE.marginTop};
     `};
