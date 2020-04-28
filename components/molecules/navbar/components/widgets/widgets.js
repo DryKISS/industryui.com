@@ -1,5 +1,5 @@
 /**
- * Navbar - Widgets
+ * Navbar — Widgets
  */
 
 // React
@@ -49,14 +49,15 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 }
 
 const StyledList = styled.ul`
-  background-color: ${({ theme }) => theme.NAVBAR.background};
   display: flex;
   flex-direction: column;
-  font-size: 0.8rem;
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: center;
+  font-size: ${({ theme }) => (theme.NAVBAR.fontSizeList ? theme.NAVBAR.fontSizeList : '0.8rem')};
+  background-color: ${({ theme }) =>
+    theme.NAVBAR.backgroundList ? theme.NAVBAR.backgroundList : theme.NAVBAR.background};
   ${MEDIA_QUERY.desktop`
     background-color: initial;
     flex-direction: row;
@@ -67,19 +68,32 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  border-top: #33475b 1px solid;
   position: relative;
+  border-top: ${({ theme }) =>
+    theme.NAVBAR.borderTopListItem ? theme.NAVBAR.borderTopListItem : '#33475b 1px solid'};
+  background-color: ${({ theme }) =>
+    theme.NAVBAR.backgroundListItem ? theme.NAVBAR.backgroundListItem : 'transparent'};
   ${MEDIA_QUERY.desktop`
     border: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: ${({ theme }) =>
+      theme.NAVBAR.justifyContentDesktopListItem
+        ? theme.NAVBAR.justifyContentDesktopListItem
+        : 'center'};
+    margin-bottom: ${({ theme }) =>
+      theme.NAVBAR.marginBottomDesktopListItem
+        ? theme.NAVBAR.marginBottomDesktopListItem
+        : 'inherit'};
   `}
-
   &:hover {
-    background-color: rgb(37, 51, 66);
+    background-color: ${({ theme }) =>
+      theme.NAVBAR.backgroundHoverListItem
+        ? theme.NAVBAR.backgroundHoverListItem
+        : 'rgb(37, 51, 66)'};
+    border-bottom: ${({ theme }) =>
+      theme.NAVBAR.borderBottomHoverListItem ? theme.NAVBAR.borderBottomHoverListItem : 'none'};
   }
-
   ${props =>
     !props.brand &&
     css`
