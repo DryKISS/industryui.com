@@ -7,7 +7,7 @@
 import { bool, node, object, shape, string } from 'prop-types'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
 import { Container, MetaHead, PageHeading } from '../../'
@@ -15,9 +15,9 @@ import { Container, MetaHead, PageHeading } from '../../'
 // Config
 import { Brand, Canonical } from 'config'
 
-export const Page = ({ children, fluid, marginTop, meta, pageHeading }) => {
+export const Page = ({ children, fluid, meta, pageHeading }) => {
   return (
-    <StyledPage marginTop={marginTop}>
+    <StyledPage>
       {meta && <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />}
 
       <Container fluid={fluid}>
@@ -31,17 +31,11 @@ export const Page = ({ children, fluid, marginTop, meta, pageHeading }) => {
 const StyledPage = styled.div`
   background-color: ${({ theme }) =>
     theme.PAGE.backGroundColour ? theme.PAGE.backGroundColour : theme.COLOUR.white};
-  ${({ marginTop }) =>
-    marginTop === true &&
-    css`
-      margin-top: ${({ theme }) => theme.PAGE.marginTop};
-    `};
 `
 
 Page.propTypes = {
   children: node.isRequired,
   fluid: bool,
-  marginTop: bool,
   meta: shape({
     description: string,
     path: string,
@@ -51,6 +45,5 @@ Page.propTypes = {
 }
 
 Page.defaultProps = {
-  fluid: false,
-  marginTop: false
+  fluid: false
 }
