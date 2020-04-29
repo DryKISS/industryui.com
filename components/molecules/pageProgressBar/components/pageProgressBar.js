@@ -56,7 +56,7 @@ PageProgressBar.propTypes = {
 }
 
 PageProgressBar.defaultProps = {
-  context: 'secondary',
+  context: 'info',
   isAnimating: false,
   instanceKey: null
 }
