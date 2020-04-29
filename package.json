@@ -2,7 +2,9 @@
   "name": "industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": ["DryKISS, Ltd."],
+  "contributors": [
+    "DryKISS, Ltd."
+  ],
   "homepage": "https://industryui.com",
   "main": "./index.js",
   "license": "MIT",
@@ -50,7 +52,9 @@
     }
   },
   "lint-staged": {
-    "**/*.js": ["yarn test"]
+    "**/*.js": [
+      "yarn test"
+    ]
   },
   "husky": {
     "hooks": {
@@ -62,12 +66,20 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": ["__SITE__"],
-    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
+    "globals": [
+      "__SITE__"
+    ],
+    "ignore": [
+      "node_modules/**",
+      "*.bundle*.js",
+      "**/__tests__/*.test.js"
+    ],
     "parser": "babel-eslint"
   },
   "stylelint": {
-    "processors": ["stylelint-processor-styled-components"],
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
     "extends": [
       "stylelint-config-standard",
       "stylelint-config-prettier",
@@ -93,6 +105,7 @@
     "@nivo/generators": "^0.61.0",
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",
+    "@tanem/react-nprogress": "^3.0.24",
     "@typeform/embed": "^0.16.0",
     "apollo-boost": "^0.4.7",
     "axios": "^0.19.2",
