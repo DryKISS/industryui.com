@@ -22,6 +22,7 @@ import {
   Icons,
   NotificationsProvider,
   OffCanvasProvider,
+  PageProgressBar,
   Theme,
   ThemeStyle,
   UserProvider
@@ -39,6 +40,7 @@ export class MyApp extends App {
     Layout: any.isRequired,
     offCanvas: bool,
     pageProps: object,
+    pageProgressBar: bool,
     theme: object,
     user: bool
   }
@@ -84,10 +86,11 @@ export class MyApp extends App {
   }
 
   layout () {
-    const { Component, Layout, pageProps } = this.props
+    const { Component, Layout, pageProps, pageProgressBar, router } = this.props
 
     return (
       <Layout>
+        {pageProgressBar && <PageProgressBar router={router} />}
         <Component {...pageProps} />
       </Layout>
     )
