@@ -3,11 +3,18 @@
  */
 
 // React
-import { bool, object, string } from 'prop-types'
+import { bool, func, object, string } from 'prop-types'
 
 // UI
-import { MEDIA_QUERY } from '../../../../'
-import { NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification } from '../internal'
+import {
+  MEDIA_QUERY,
+  NavButton,
+  NavCollapse,
+  NavDropdown,
+  NavIcon,
+  NavLink,
+  NavNotification
+} from '../../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -49,15 +56,14 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 }
 
 const StyledList = styled.ul`
+  background-color: ${({ theme }) => theme.NAVBAR.backgroundList};
   display: flex;
   flex-direction: column;
+  font-size: ${({ theme }) => theme.NAVBAR.fontSizeList};
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: center;
-  font-size: ${({ theme }) => (theme.NAVBAR.fontSizeList ? theme.NAVBAR.fontSizeList : '0.8rem')};
-  background-color: ${({ theme }) =>
-    theme.NAVBAR.backgroundList ? theme.NAVBAR.backgroundList : theme.NAVBAR.background};
   ${MEDIA_QUERY.desktop`
     background-color: initial;
     flex-direction: row;
@@ -69,30 +75,11 @@ const StyledList = styled.ul`
 
 const StyledListItem = styled.li`
   position: relative;
-  border-top: ${({ theme }) =>
-    theme.NAVBAR.borderTopListItem ? theme.NAVBAR.borderTopListItem : '#33475b 1px solid'};
-  background-color: ${({ theme }) =>
-    theme.NAVBAR.backgroundListItem ? theme.NAVBAR.backgroundListItem : 'transparent'};
-  ${MEDIA_QUERY.desktop`
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: ${({ theme }) =>
-      theme.NAVBAR.justifyContentDesktopListItem
-        ? theme.NAVBAR.justifyContentDesktopListItem
-        : 'center'};
-    margin-bottom: ${({ theme }) =>
-      theme.NAVBAR.marginBottomDesktopListItem
-        ? theme.NAVBAR.marginBottomDesktopListItem
-        : 'inherit'};
-  `}
+  border-top: ${({ theme }) => theme.NAVBAR.borderTopListItem};
+  background-color: ${({ theme }) => theme.NAVBAR.backgroundListItem};
   &:hover {
-    background-color: ${({ theme }) =>
-      theme.NAVBAR.backgroundHoverListItem
-        ? theme.NAVBAR.backgroundHoverListItem
-        : 'rgb(37, 51, 66)'};
-    border-bottom: ${({ theme }) =>
-      theme.NAVBAR.borderBottomHoverListItem ? theme.NAVBAR.borderBottomHoverListItem : 'none'};
+    background-color: ${({ theme }) => theme.NAVBAR.backgroundHoverListItem};
+    border-bottom: ${({ theme }) => theme.NAVBAR.borderBottomHoverListItem};
   }
   ${props =>
     !props.brand &&
@@ -101,11 +88,19 @@ const StyledListItem = styled.li`
         margin-left: 0;
       }
     `}
+  ${MEDIA_QUERY.desktop`
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: ${({ theme }) => theme.NAVBAR.justifyContentDesktopListItem};
+    margin-bottom: ${({ theme }) => theme.NAVBAR.marginBottomDesktopListItem};
+  `}
 `
 
 Widgets.propTypes = {
   brand: string,
-  visible: bool,
+  closeMenu: func,
   type: string,
+  visible: bool,
   widgets: object.isRequired
 }

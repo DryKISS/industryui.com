@@ -25,9 +25,7 @@ export const Toggler = ({ custom, handleMenuClick, visible }) => {
       aria-label='Toggle navigation'
       onClick={handleMenuClick}
     >
-      {!visible && <CustomTogglerIconOpen />}
-
-      {visible && <CustomTogglerIconOpen />}
+      {!visible ? <CustomTogglerIconOpen /> : <CustomTogglerIconOpen />}
     </StyledToggler>
   )
 
@@ -37,9 +35,7 @@ export const Toggler = ({ custom, handleMenuClick, visible }) => {
       aria-label='Toggle navigation'
       onClick={handleMenuClick}
     >
-      {!visible && <Icon icon='bars' />}
-
-      {visible && <Icon icon='times' size='lg' />}
+      {!visible ? <Icon icon='bars' /> : <Icon icon='times' size='lg' />}
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )
@@ -58,7 +54,7 @@ const StyledIcon = styled.div`
     height: 0.125rem;
     background: black;
     margin-bottom: 0.375rem;
-    transition: .3s all linear;
+    transition: 0.3s all linear;
   }
   div:nth-child(1) {
     &:active {
@@ -74,17 +70,12 @@ const StyledIcon = styled.div`
 
 const StyledToggler = styled.a`
   cursor: pointer;
-  color: ${({ theme }) =>
-    theme.NAVBAR.colourToggler ? theme.NAVBAR.colourToggler : theme.NAVBAR.colourActive};
-  font-size: ${({ theme }) =>
-    theme.NAVBAR.fontSizeToggler ? theme.NAVBAR.fontSizeToggler : '0.8125rem'};
-  padding: ${({ theme }) =>
-    theme.NAVBAR.paddingToggler ? theme.NAVBAR.paddingToggler : '1.25rem 0 1.25rem 1rem'};
+  color: ${({ theme }) => theme.NAVBAR.colourToggler};
+  font-size: ${({ theme }) => theme.NAVBAR.fontSizeToggler};
+  padding: ${({ theme }) => theme.NAVBAR.paddingToggler};
   &:hover {
-    color: ${({ theme }) =>
-      theme.NAVBAR.colourHoverToggler ? theme.NAVBAR.colourHoverToggler : theme.COLOUR.primary};
+    color: ${({ theme }) => theme.NAVBAR.colourHoverToggler};
   }
-
   ${MEDIA_QUERY.desktop`
     display: none;
   `}
@@ -93,7 +84,14 @@ const StyledToggler = styled.a`
 const StyledText = styled.span`
   margin-left: 0.25rem;
 `
+
 Toggler.propTypes = {
+  custom: bool,
   handleMenuClick: func.isRequired,
   visible: bool
+}
+
+Toggler.defaultProps = {
+  custom: false,
+  visible: true
 }

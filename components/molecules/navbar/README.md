@@ -1,7 +1,7 @@
 # Navbar
 
-Navbar utilises the HTML5 nav tag with classes to define style and positioning.
-By default the Navbar is fluid with a 3rem padding left and right.
+Navbar utilises the HTML5 nav tag with classes to define style and positioning. By default the
+Navbar is fluid with a 3rem padding left and right.
 
 ## Widgets
 
@@ -15,5 +15,5 @@ stories for examples of all of these.
 
 ## Links
 
-- [Bootstrap](https://getbootstrap.com/docs/4.1/components/navbar/)
-- [Semantic](https://react.semantic-ui.com/collections/menu)
+[Bootstrap](https://getbootstrap.com/docs/4.1/components/navbar/)
+[Semantic](https://react.semantic-ui.com/collections/menu)
