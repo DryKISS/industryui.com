@@ -4,7 +4,7 @@
  */
 
 // React
-import { string } from 'prop-types'
+import { bool, string } from 'prop-types'
 
 // UI
 import { Image, Link } from '../../../../'
@@ -20,10 +20,11 @@ export const Brand = ({ brand, animational }) => {
       </StyledDiv>
     </Link>
   )
+
   const SingleImage = () => (
-    <Link border={false} to='/' passHref>
-      <StyledImage alt='Logo' draggable='false' src={brand} data-cy='navBrand' />
-    </Link>
+    <StyledLink border={false} to='/' passHref>
+      <Image alt='Logo' draggable='false' src={brand} data-cy='navBrand' />
+    </StyledLink>
   )
 
   if (animational) {
@@ -32,11 +33,9 @@ export const Brand = ({ brand, animational }) => {
     return <SingleImage />
   }
 }
-const StyledImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+
+const StyledLink = styled(Link)`
+  display: flex;
 `
 
 const BorderAnimation = keyframes`
@@ -49,6 +48,7 @@ const BorderAnimation = keyframes`
     height: 40px;
   }
 `
+
 const StyledDiv = styled.div`
   animation: 0.8s ${BorderAnimation} infinite ease-out;
   animation-direction: alternate;
@@ -57,5 +57,10 @@ const StyledDiv = styled.div`
 `
 
 Brand.propTypes = {
-  brand: string
+  animational: bool,
+  brand: string.isRequired
+}
+
+Brand.defaultProps = {
+  animational: false
 }

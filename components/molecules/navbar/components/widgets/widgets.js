@@ -3,11 +3,18 @@
  */
 
 // React
-import { bool, object, string } from 'prop-types'
+import { bool, func, object, string } from 'prop-types'
 
 // UI
-import { MEDIA_QUERY } from '../../../../'
-import { NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification } from '../internal'
+import {
+  MEDIA_QUERY,
+  NavButton,
+  NavCollapse,
+  NavDropdown,
+  NavIcon,
+  NavLink,
+  NavNotification
+} from '../../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -49,15 +56,16 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 }
 
 const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  font-size: ${({ theme }) => (theme.NAVBAR.fontSizeList ? theme.NAVBAR.fontSizeList : '0.8rem')};
   background-color: ${({ theme }) =>
     theme.NAVBAR.backgroundList ? theme.NAVBAR.backgroundList : theme.NAVBAR.background};
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => (theme.NAVBAR.fontSizeList ? theme.NAVBAR.fontSizeList : '0.8rem')};
+  list-style: none;
+  margin: 0;
+  margin-top: 1px;
+  padding: 0;
+  text-align: center;
   ${MEDIA_QUERY.desktop`
     background-color: initial;
     flex-direction: row;
@@ -105,7 +113,8 @@ const StyledListItem = styled.li`
 
 Widgets.propTypes = {
   brand: string,
-  visible: bool,
+  closeMenu: func,
   type: string,
+  visible: bool,
   widgets: object.isRequired
 }

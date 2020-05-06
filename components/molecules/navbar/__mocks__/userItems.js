@@ -1,17 +1,16 @@
 /**
  * Navbar - Mocks - User Items
  */
-
 export const UserItems = [
   {
     id: 'settings',
     name: 'Settings',
-    to: '/settings'
+    to: '/'
   },
   {
     id: 'profile',
     name: 'Profile',
-    to: '/profile'
+    to: '/'
   },
   {
     divider: true
@@ -19,6 +18,6 @@ export const UserItems = [
   {
     id: 'logout',
     name: 'Logout',
-    to: '/logout'
+    to: '/'
   }
 ]

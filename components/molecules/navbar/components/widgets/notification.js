@@ -1,9 +1,9 @@
 /**
- * Navbar - Notifications
+ * Navbar - Widget - Notifications
  */
 
 // React
-import { number, object } from 'prop-types'
+import { bool, func, object, string } from 'prop-types'
 
 // UI
 import { Link, Icon } from '../../../../'
@@ -65,6 +65,8 @@ const StyledCount = styled.div`
 `
 
 NavNotification.propTypes = {
-  count: number,
-  link: object
+  closeMenu: func,
+  to: string.isRequired,
+  type: object,
+  visible: bool
 }

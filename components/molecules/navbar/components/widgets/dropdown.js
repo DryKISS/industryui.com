@@ -1,5 +1,5 @@
 /**
- * Navbar - User
+ * Navbar - Widgets - Dropdown
  */
 
 // React
@@ -16,7 +16,7 @@ export const NavDropdown = ({ icon, name, position, prefix, type }) => {
   return (
     <StyledContainer>
       <StyledDropdown items={type.items} position={position}>
-        {icon && <Icon aria-hidden='true' icon={icon} prefix='fad' />}
+        {icon && <Icon aria-hidden='true' icon={icon} prefix={prefix} />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
     </StyledContainer>
@@ -86,5 +86,6 @@ NavDropdown.propTypes = {
 }
 
 NavDropdown.defaultProps = {
-  position: 'left'
+  position: 'left',
+  prefix: 'fad'
 }

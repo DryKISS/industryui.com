@@ -7,14 +7,22 @@ import React, { useState } from 'react'
 import { bool, object, objectOf, oneOfType, number, string } from 'prop-types'
 
 // UI
-import { Brand, Contained, Toggler, Widgets } from '../internal'
-import { MEDIA_QUERY } from '../../../../'
+import { Brand, Contained, MEDIA_QUERY, Toggler, Widgets } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({ animational, brand, contained, custom, type, style, widgets }) => {
-  const [visible, setVisible] = useState(false)
+export const Navbar = ({
+  animational,
+  brand,
+  contained,
+  custom,
+  type,
+  style,
+  showMenu,
+  widgets
+}) => {
+  const [visible, setVisible] = useState(showMenu)
 
   const handleClick = () => {
     setVisible(!visible)
@@ -79,37 +87,37 @@ const StyledNav = styled.nav`
 const StyledOverlay = styled.div`
   background: ${({ theme }) =>
     theme.NAVBAR.backgroundOverlay ? theme.NAVBAR.backgroundOverlay : theme.COLOUR.dark};
-  width: ${({ theme }) => (theme.NAVBAR.widthOverlay ? theme.NAVBAR.widthOverlay : '100%')};
+  bottom: 0;
+  cursor: pointer;
   height: ${({ theme }) => (theme.NAVBAR.heightOverlay ? theme.NAVBAR.heightOverlay : '100%')};
   position: ${({ theme }) =>
     theme.NAVBAR.positionOverlay ? theme.NAVBAR.positionOverlay : 'fixed'};
-  top: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
   transition-property: width;
   transition-duration: 0.2s;
+  width: ${({ theme }) => (theme.NAVBAR.widthOverlay ? theme.NAVBAR.widthOverlay : '100%')};
   z-index: 199;
-  cursor: pointer;
   ${MEDIA_QUERY.desktop`
     display: none;
   `}
 `
 
 Navbar.propTypes = {
-  brand: string,
   animational: bool,
-  custom: bool,
+  brand: string,
   contained: bool,
-  links: object,
-  notifications: object,
-  user: object,
+  custom: bool,
+  showMenu: bool,
   style: objectOf(oneOfType([number, string])),
-  type: string
+  type: string,
+  widgets: object
 }
 
 Navbar.defaultProps = {
   animational: false,
-  custom: false,
   brand: '',
-  links: {}
+  contained: false,
+  custom: false,
+  showMenu: false
 }

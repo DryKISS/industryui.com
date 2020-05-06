@@ -1,5 +1,5 @@
 /**
- * Navbar - Widgets
+ * Navbar - Widgets - Button
  */
 
 // React
@@ -18,7 +18,7 @@ export const NavButton = ({ closeMenu, id, name, to, type, visible }) => {
         id={id}
         context={type.context}
         content={name}
-        onClick={visible ? closeMenu : () => { }}
+        onClick={visible ? closeMenu : () => {}}
         outline={type.outline}
         size={type.size}
         type={type.as}
@@ -46,9 +46,13 @@ const StyledButton = styled(Button)`
 
 NavButton.propTypes = {
   closeMenu: func,
-  id: string,
-  name: string,
-  to: string,
-  type: string,
+  id: string.isRequired,
+  name: string.isRequired,
+  to: string.isRequired,
+  type: string.isRequired,
   visible: bool
+}
+
+NavButton.defaultProps = {
+  visible: false
 }

@@ -29,18 +29,17 @@ export const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visibl
 }
 
 const StyledLink = styled.span`
-  display: flex;
-  flex: 1;
   align-items: center;
-  justify-content: center;
-  padding: ${({ theme }) => (theme.NAVBAR.paddingLink ? theme.NAVBAR.paddingLink : '1rem 0.75rem')};
   color: ${({ theme }) =>
     theme.NAVBAR.colourDefault ? theme.NAVBAR.colourDefault : theme.NAVBAR.colourActive};
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: ${({ theme }) => (theme.NAVBAR.paddingLink ? theme.NAVBAR.paddingLink : '1rem 0.75rem')};
   &:hover {
     color: ${({ theme }) =>
       theme.NAVBAR.colourHover ? theme.NAVBAR.colourHover : theme.NAVBAR.colourActive};
   }
-
   ${MEDIA_QUERY.desktop`
     color: ${({ theme }) =>
       theme.NAVBAR.colourDefaultDesktop
@@ -56,10 +55,16 @@ const StyledLink = styled.span`
 `
 
 NavLink.propTypes = {
+  active: string,
   closeMenu: func,
-  id: string,
-  name: string,
-  to: string,
-  type: string,
+  id: string.isRequired,
+  name: string.isRequired,
+  onClick: func,
+  to: string.isRequired,
+  type: string.isRequired,
   visible: bool
+}
+
+NavLink.defaultProps = {
+  visible: false
 }
