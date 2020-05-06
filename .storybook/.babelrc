@@ -26,7 +26,8 @@
           "config": "./config",
           "decorators": "./.storybook/decorators",
           "root": "./",
-          "storybook": "./.storybook"
+          "storybook": "./.storybook",
+          "themes": "./.storybook/themes"
         }
       }
     ]

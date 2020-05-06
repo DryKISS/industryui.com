@@ -56,14 +56,12 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 }
 
 const StyledList = styled.ul`
-  background-color: ${({ theme }) =>
-    theme.NAVBAR.backgroundList ? theme.NAVBAR.backgroundList : theme.NAVBAR.background};
+  background-color: ${({ theme }) => theme.NAVBAR.backgroundList};
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => (theme.NAVBAR.fontSizeList ? theme.NAVBAR.fontSizeList : '0.8rem')};
+  font-size: ${({ theme }) => theme.NAVBAR.fontSizeList};
   list-style: none;
   margin: 0;
-  margin-top: 1px;
   padding: 0;
   text-align: center;
   ${MEDIA_QUERY.desktop`
@@ -77,30 +75,11 @@ const StyledList = styled.ul`
 
 const StyledListItem = styled.li`
   position: relative;
-  border-top: ${({ theme }) =>
-    theme.NAVBAR.borderTopListItem ? theme.NAVBAR.borderTopListItem : '#33475b 1px solid'};
-  background-color: ${({ theme }) =>
-    theme.NAVBAR.backgroundListItem ? theme.NAVBAR.backgroundListItem : 'transparent'};
-  ${MEDIA_QUERY.desktop`
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: ${({ theme }) =>
-      theme.NAVBAR.justifyContentDesktopListItem
-        ? theme.NAVBAR.justifyContentDesktopListItem
-        : 'center'};
-    margin-bottom: ${({ theme }) =>
-      theme.NAVBAR.marginBottomDesktopListItem
-        ? theme.NAVBAR.marginBottomDesktopListItem
-        : 'inherit'};
-  `}
+  border-top: ${({ theme }) => theme.NAVBAR.borderTopListItem};
+  background-color: ${({ theme }) => theme.NAVBAR.backgroundListItem};
   &:hover {
-    background-color: ${({ theme }) =>
-      theme.NAVBAR.backgroundHoverListItem
-        ? theme.NAVBAR.backgroundHoverListItem
-        : 'rgb(37, 51, 66)'};
-    border-bottom: ${({ theme }) =>
-      theme.NAVBAR.borderBottomHoverListItem ? theme.NAVBAR.borderBottomHoverListItem : 'none'};
+    background-color: ${({ theme }) => theme.NAVBAR.backgroundHoverListItem};
+    border-bottom: ${({ theme }) => theme.NAVBAR.borderBottomHoverListItem};
   }
   ${props =>
     !props.brand &&
@@ -109,6 +88,13 @@ const StyledListItem = styled.li`
         margin-left: 0;
       }
     `}
+  ${MEDIA_QUERY.desktop`
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: ${({ theme }) => theme.NAVBAR.justifyContentDesktopListItem};
+    margin-bottom: ${({ theme }) => theme.NAVBAR.marginBottomDesktopListItem};
+  `}
 `
 
 Widgets.propTypes = {

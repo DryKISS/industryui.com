@@ -30,26 +30,18 @@ export const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visibl
 
 const StyledLink = styled.span`
   align-items: center;
-  color: ${({ theme }) =>
-    theme.NAVBAR.colourDefault ? theme.NAVBAR.colourDefault : theme.NAVBAR.colourActive};
+  color: ${({ theme }) => theme.NAVBAR.colourDefault};
   display: flex;
   flex: 1;
   justify-content: center;
-  padding: ${({ theme }) => (theme.NAVBAR.paddingLink ? theme.NAVBAR.paddingLink : '1rem 0.75rem')};
+  padding: ${({ theme }) => theme.NAVBAR.paddingLink};
   &:hover {
-    color: ${({ theme }) =>
-      theme.NAVBAR.colourHover ? theme.NAVBAR.colourHover : theme.NAVBAR.colourActive};
+    color: ${({ theme }) => theme.NAVBAR.colourHover};
   }
   ${MEDIA_QUERY.desktop`
-    color: ${({ theme }) =>
-      theme.NAVBAR.colourDefaultDesktop
-        ? theme.NAVBAR.colourDefaultDesktop
-        : theme.NAVBAR.colourActive};
+    color: ${({ theme }) => theme.NAVBAR.colourDefaultDesktop};
     &:hover {
-      color: ${({ theme }) =>
-        theme.NAVBAR.colourHoverDesktop
-          ? theme.NAVBAR.colourHoverDesktop
-          : theme.NAVBAR.colourActive};
+      color: ${({ theme }) => theme.NAVBAR.colourHoverDesktop};
     }
   `}
 `

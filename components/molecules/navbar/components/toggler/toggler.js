@@ -70,17 +70,12 @@ const StyledIcon = styled.div`
 
 const StyledToggler = styled.a`
   cursor: pointer;
-  color: ${({ theme }) =>
-    theme.NAVBAR.colourToggler ? theme.NAVBAR.colourToggler : theme.NAVBAR.colourActive};
-  font-size: ${({ theme }) =>
-    theme.NAVBAR.fontSizeToggler ? theme.NAVBAR.fontSizeToggler : '0.8125rem'};
-  padding: ${({ theme }) =>
-    theme.NAVBAR.paddingToggler ? theme.NAVBAR.paddingToggler : '1.25rem 0 1.25rem 1rem'};
+  color: ${({ theme }) => theme.NAVBAR.colourToggler};
+  font-size: ${({ theme }) => theme.NAVBAR.fontSizeToggler};
+  padding: ${({ theme }) => theme.NAVBAR.paddingToggler};
   &:hover {
-    color: ${({ theme }) =>
-      theme.NAVBAR.colourHoverToggler ? theme.NAVBAR.colourHoverToggler : theme.COLOUR.primary};
+    color: ${({ theme }) => theme.NAVBAR.colourHoverToggler};
   }
-
   ${MEDIA_QUERY.desktop`
     display: none;
   `}

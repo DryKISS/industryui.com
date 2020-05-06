@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 export const NavButton = ({ closeMenu, id, name, to, type, visible }) => {
   return (
-    <Link border={false} passHref to={to}>
+    <StyledLink border={false} passHref to={to}>
       <StyledButton
         id={id}
         context={type.context}
@@ -23,9 +23,13 @@ export const NavButton = ({ closeMenu, id, name, to, type, visible }) => {
         size={type.size}
         type={type.as}
       />
-    </Link>
+    </StyledLink>
   )
 }
+
+const StyledLink = styled(Link)`
+  padding: 0rem 0.75rem;
+`
 
 const StyledButton = styled(Button)`
   ${MEDIA_QUERY_MAX.desktop`

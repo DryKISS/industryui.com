@@ -6,7 +6,7 @@
 import { object, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../../../'
+import { Icon, MEDIA_QUERY } from '../../../../'
 import { Dropdown } from '../../../dropdown'
 
 // Style
@@ -45,6 +45,7 @@ const StyledDropdown = styled(Dropdown)`
   }
 
   .dropdown--toggle {
+    display: block;
     line-height: 60px;
     padding: 0 0.5rem;
 
@@ -57,8 +58,15 @@ const StyledDropdown = styled(Dropdown)`
     background-color: rgb(37, 51, 66);
     border: initial;
     border-radius: 0;
-    min-width: 11rem;
+    margin: 0;
+    padding: 0;
+    position: initial;
     top: 3.7rem;
+    width: 100%;
+    ${MEDIA_QUERY.desktop`
+      min-width: 11rem;
+      position: absolute;
+    `}
   }
 
   .dropdown--link {
