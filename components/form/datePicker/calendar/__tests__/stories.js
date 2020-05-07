@@ -1,5 +1,5 @@
 /**
- * DatePicker - Calendar - Story
+ * Form - DatePicker - Calendar
  */
 
 // React
@@ -31,7 +31,7 @@ const centerDecorator = story => (
 )
 
 export default {
-  title: 'Molecules/Date Picker/Calendar',
+  title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
   decorators: [centerDecorator, Wrapper, withKnobs],
   parameters: {
