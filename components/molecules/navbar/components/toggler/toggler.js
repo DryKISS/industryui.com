@@ -11,32 +11,71 @@ import { Icon, MEDIA_QUERY } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const Toggler = ({ handleMenuClick, visible }) => {
-  return (
+export const Toggler = ({ custom, handleMenuClick, visible }) => {
+  const CustomTogglerIconOpen = () => (
+    <StyledIcon>
+      <div />
+      <div />
+    </StyledIcon>
+  )
+
+  const CustomToggler = () => (
     <StyledToggler
       aria-expanded={visible ? 'false' : 'true'}
       aria-label='Toggle navigation'
       onClick={handleMenuClick}
     >
-      {!visible && <Icon icon='bars' />}
+      {!visible ? <CustomTogglerIconOpen /> : <CustomTogglerIconOpen />}
+    </StyledToggler>
+  )
 
-      {visible && <Icon icon='times' size='lg' />}
-
+  const DefaultToggler = () => (
+    <StyledToggler
+      aria-expanded={visible ? 'false' : 'true'}
+      aria-label='Toggle navigation'
+      onClick={handleMenuClick}
+    >
+      {!visible ? <Icon icon='bars' /> : <Icon icon='times' size='lg' />}
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )
+
+  if (custom) {
+    return <CustomToggler />
+  } else {
+    return <DefaultToggler />
+  }
 }
 
-const StyledToggler = styled.a`
-  color: ${({ theme }) => theme.NAVBAR.colourActive};
-  cursor: pointer;
-  font-size: 0.8125rem;
-  padding: 1.25rem 1rem;
-
-  &:hover {
-    color: ${({ theme }) => theme.COLOUR.primary};
+const StyledIcon = styled.div`
+  margin-top: 0.25rem;
+  div {
+    width: 2rem;
+    height: 0.125rem;
+    background: black;
+    margin-bottom: 0.375rem;
+    transition: 0.3s all linear;
   }
+  div:nth-child(1) {
+    &:active {
+      transform: rotate(45deg);
+    }
+  }
+  div:nth-child(2) {
+    &:active {
+      transform: rotate(-45deg);
+    }
+  }
+`
 
+const StyledToggler = styled.a`
+  cursor: pointer;
+  color: ${({ theme }) => theme.NAVBAR.colourToggler};
+  font-size: ${({ theme }) => theme.NAVBAR.fontSizeToggler};
+  padding: ${({ theme }) => theme.NAVBAR.paddingToggler};
+  &:hover {
+    color: ${({ theme }) => theme.NAVBAR.colourHoverToggler};
+  }
   ${MEDIA_QUERY.desktop`
     display: none;
   `}
@@ -47,6 +86,12 @@ const StyledText = styled.span`
 `
 
 Toggler.propTypes = {
+  custom: bool,
   handleMenuClick: func.isRequired,
   visible: bool
+}
+
+Toggler.defaultProps = {
+  custom: false,
+  visible: true
 }

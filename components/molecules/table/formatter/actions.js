@@ -30,13 +30,14 @@ export const TableActions = ({ row }, data) => {
       <ReactTooltip effect='solid' event='mouseover' globalEventOff='click' multiline />
 
       <ButtonToolbar align='flex-start' style={{ zIndex: '100000000' }}>
-        {data.map(({ content, context, icon, onClick, to, tooltip }, index) => {
+        {data.map(({ content, context, disabled, icon, onClick, to, tooltip }, index) => {
           const iconArray = Array.isArray(icon)
 
           return (
             <StyledButton
               forwardedAs='a'
               data-tip={tooltip}
+              disabled={disabled}
               context={context}
               key={index}
               onClick={onClick ? e => onClick(e, row) : handleClick(`${to}?id=${row.id}`)}

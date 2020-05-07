@@ -1,5 +1,5 @@
 /**
- * Navbar - Widgets
+ * Navbar - Widgets - Icon
  */
 
 // React
@@ -18,7 +18,11 @@ export const NavIcon = ({ closeMenu, to, type, visible }) => {
 
 NavIcon.propTypes = {
   closeMenu: func,
-  to: string,
-  type: string,
+  to: string.isRequired,
+  type: string.isRequired,
   visible: bool
+}
+
+NavIcon.defaultProps = {
+  visible: false
 }

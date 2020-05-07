@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { bool, func, object, oneOfType, node, string } from 'prop-types'
+import { bool, func, number, object, oneOfType, node, string } from 'prop-types'
 
 import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
 
@@ -12,9 +12,9 @@ export const CurrencyInput = ({
   currencySymbol,
   errors,
   label,
+  min,
   name,
   register,
-  required,
   show,
   style,
   vat
@@ -28,8 +28,8 @@ export const CurrencyInput = ({
 
         <FormField
           errors={errors}
+          min={min}
           name={name}
-          required={required}
           register={register}
           style={style}
           step='any'
@@ -50,9 +50,9 @@ CurrencyInput.propTypes = {
   currencySymbol: oneOfType([object, string]),
   errors: object.isRequired,
   label: string.isRequired,
+  min: number,
   name: string.isRequired,
   register: func.isRequired,
-  required: bool,
   show: bool,
   style: node,
   vat: bool
@@ -60,7 +60,7 @@ CurrencyInput.propTypes = {
 
 CurrencyInput.defaultProps = {
   currencySymbol: '£',
-  required: true,
+  min: 0,
   show: true,
   vat: false
 }

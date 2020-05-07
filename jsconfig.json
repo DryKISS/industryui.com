@@ -6,11 +6,13 @@
     "baseUrl": "./",
     "paths": {
       "components": [
-        "./components"
+        "./components",
+        "themes"
       ]
     }
   },
   "include": [
-    "components/**/*"
+    "components/**/*",
+    ".storybook/themes/**/*"
   ]
 }

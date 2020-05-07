@@ -1,12 +1,12 @@
 /**
- * Navbar - Widgets
+ * Navbar — Widgets — Link
  */
 
 // React
 import { bool, string, func } from 'prop-types'
 
 // UI
-import { Link } from '../../../../'
+import { Link, MEDIA_QUERY } from '../../../../'
 
 // Style
 import styled from 'styled-components'
@@ -30,22 +30,33 @@ export const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visibl
 
 const StyledLink = styled.span`
   align-items: center;
-  color: ${({ theme }) => theme.NAVBAR.colourActive};
+  color: ${({ theme }) => theme.NAVBAR.colourDefault};
   display: flex;
   flex: 1;
   justify-content: center;
-  padding: 1rem 0.75rem;
-
+  padding: ${({ theme }) => theme.NAVBAR.paddingLink};
   &:hover {
-    color: ${({ theme }) => theme.NAVBAR.colourActive};
+    color: ${({ theme }) => theme.NAVBAR.colourHover};
   }
+  ${MEDIA_QUERY.desktop`
+    color: ${({ theme }) => theme.NAVBAR.colourDefaultDesktop};
+    &:hover {
+      color: ${({ theme }) => theme.NAVBAR.colourHoverDesktop};
+    }
+  `}
 `
 
 NavLink.propTypes = {
+  active: string,
   closeMenu: func,
-  id: string,
-  name: string,
-  to: string,
-  type: string,
+  id: string.isRequired,
+  name: string.isRequired,
+  onClick: func,
+  to: string.isRequired,
+  type: string.isRequired,
   visible: bool
+}
+
+NavLink.defaultProps = {
+  visible: false
 }

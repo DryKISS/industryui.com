@@ -3,17 +3,17 @@
  */
 
 // React
-import { array, string } from 'prop-types'
+import { array, oneOf, shape, string } from 'prop-types'
 
 // UI
-import { Column, Container, Icon, Link, Row } from '../../'
+import { Column, Container, CONTEXT, Icon, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
 
 const year = new Date().getFullYear()
 
-export const Copyright = ({ brand, links }) => {
+export const Copyright = ({ brand, icon, links }) => {
   const renderLinks = () => {
     return links.map(({ name, to }, index) => (
       <Link key={index} passHref to={to}>
@@ -28,7 +28,7 @@ export const Copyright = ({ brand, links }) => {
         <Row>
           <Column md={links.length > 0 ? 3 : 12}>
             <StyledBrand>
-              <StyledIcon context='primary' icon='copyright' prefix='fad' />
+              <StyledIcon {...icon} />
               {year} — {brand}
             </StyledBrand>
           </Column>
@@ -66,5 +66,18 @@ const StyledLink = styled.span`
 
 Copyright.propTypes = {
   brand: string.isRequired,
+  icon: shape({
+    context: oneOf(Object.values(CONTEXT)),
+    icon: string,
+    prefix: string
+  }),
   links: array
+}
+
+Copyright.defaultProps = {
+  icon: {
+    context: 'primary',
+    icon: 'copyright',
+    prefix: 'fad'
+  }
 }

@@ -1,5 +1,5 @@
 /**
- * Navbar - Navbar
+ * Navbar — Navbar
  */
 
 // React
@@ -7,14 +7,22 @@ import React, { useState } from 'react'
 import { bool, object, objectOf, oneOfType, number, string } from 'prop-types'
 
 // UI
-import { Brand, Contained, Toggler, Widgets } from '../internal'
-import { MEDIA_QUERY } from '../../../../'
+import { Brand, Contained, MEDIA_QUERY, Toggler, Widgets } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({ brand, contained, type, style, widgets }) => {
-  const [visible, setVisible] = useState(false)
+export const Navbar = ({
+  animational,
+  brand,
+  contained,
+  custom,
+  type,
+  style,
+  showMenu,
+  widgets
+}) => {
+  const [visible, setVisible] = useState(showMenu)
 
   const handleClick = () => {
     setVisible(!visible)
@@ -23,9 +31,9 @@ export const Navbar = ({ brand, contained, type, style, widgets }) => {
   const Content = () => {
     return (
       <>
-        {brand && <Brand brand={brand} />}
+        {brand && <Brand animational={animational} brand={brand} />}
 
-        <Toggler handleMenuClick={handleClick} visible={visible} />
+        <Toggler custom={custom} handleMenuClick={handleClick} visible={visible} />
 
         {widgets && (
           <Widgets
@@ -53,50 +61,56 @@ export const Navbar = ({ brand, contained, type, style, widgets }) => {
 
 const StyledNav = styled.nav`
   background-color: ${({ theme }) => theme.NAVBAR.background};
-  border-top: 0.25rem solid ${({ theme }) => theme.COLOUR.primary};
+  border-top-width: ${({ theme }) => theme.NAVBAR.borderTopWidth};
+  border-top-style: ${({ theme }) => theme.NAVBAR.borderTopStyle};
+  border-top-color: ${({ theme }) => theme.NAVBAR.borderTopColor};
   display: flex;
   flex-wrap: wrap;
+  height: ${({ theme }) => theme.NAVBAR.height};
   justify-content: space-between;
-  padding: 0;
+  padding: ${({ theme }) => theme.NAVBAR.padding};
   position: relative;
   z-index: 200;
+  ${MEDIA_QUERY.tablet`
+    padding: ${({ theme }) => theme.NAVBAR.paddingTablet};
+  `}
   ${MEDIA_QUERY.desktop`
-    flex-flow: row nowrap;
-    height: ${({ theme }) => theme.NAVBAR.height};
-    justify-content: flex-start;
-    padding: 0 3rem;
+    padding: ${({ theme }) => theme.NAVBAR.paddingDesktop};
   `}
 `
 
 const StyledOverlay = styled.div`
-  background-color: rgba(255, 255, 255, 0.85);
+  background: ${({ theme }) => theme.NAVBAR.backgroundOverlay};
   bottom: 0;
   cursor: pointer;
-  height: 100%;
-  position: fixed;
-  left: 0;
+  height: ${({ theme }) => theme.NAVBAR.heightOverlay};
+  position: ${({ theme }) => theme.NAVBAR.positionOverlay};
   right: 0;
   top: 0;
   transition-property: width;
   transition-duration: 0.2s;
-  width: 100%;
-  z-index: 99;
+  width: ${({ theme }) => theme.NAVBAR.widthOverlay};
+  z-index: 199;
   ${MEDIA_QUERY.desktop`
     display: none;
   `}
 `
 
 Navbar.propTypes = {
+  animational: bool,
   brand: string,
   contained: bool,
-  links: object,
-  notifications: object,
-  user: object,
+  custom: bool,
+  showMenu: bool,
   style: objectOf(oneOfType([number, string])),
-  type: string
+  type: string,
+  widgets: object
 }
 
 Navbar.defaultProps = {
+  animational: false,
   brand: '',
-  links: {}
+  contained: false,
+  custom: false,
+  showMenu: false
 }
