@@ -1,5 +1,5 @@
 /**
- * DatePicker - Calendar - Properties
+ * Form - DatePicker - Calendar - Properties
  */
 import {
   array,
@@ -48,7 +48,7 @@ export const PROPERTIES = {
   injectTimes: array,
   inline: bool,
   isClearable: bool,
-  locale: oneOfType([string, shape({ locale: object })]),
+  locale: oneOfType([string, shape({ locale: object })]).isRequired,
   maxDate: instanceOf(Date),
   minDate: instanceOf(Date),
   monthsShown: number,
