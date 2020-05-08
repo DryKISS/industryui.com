@@ -1,39 +1,34 @@
 /**
- * Form - DatePicker - Calendar
+ * Form - DatePicker - Calendar - Stories
  */
 
 // React
-import React, { useState } from 'react'
+import React from 'react'
 
 // Storybook
-import { boolean, number, select, text, withKnobs } from '@storybook/addon-knobs'
+import { withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
 
 // Date utility
 import addDays from 'date-fns/addDays'
 import getDay from 'date-fns/getDay'
 import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
+import enGB from 'date-fns/locale/en-gb'
 
 // UI
-import { DatePickerCalendar } from 'components'
+import { Button, DatePickerCalendar, Divider, FormForm, FormError } from 'components'
 import Readme from '../README.md'
-
-const centerDecorator = story => (
-  <div
-    style={{
-      margin: '0 auto',
-      textAlign: 'center'
-    }}
-  >
-    {story()}
-  </div>
-)
+import { KNOBS } from './knobs'
 
 export default {
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
-  decorators: [centerDecorator, Wrapper, withKnobs],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -41,104 +36,65 @@ export default {
   }
 }
 
-const useKnobs = () => {
-  const groupIdBoolean = 'Booleans'
-  const groupIdNumber = 'Numbers'
-  const groupIdSelect = 'Selects'
-  const groupIdText = 'Texts'
+const BaseComponent = (props = {}) => {
+  const schema = yup.object().shape({
+    expiryAt: yup.string().required()
+  })
 
-  const knobs = {
-    // boolean
-    adjustDateOnChange: boolean('adjustDateOnChange', false, groupIdBoolean),
-    allowSameDay: boolean('allowSameDay', false, groupIdBoolean),
-    autoFocus: boolean('allowSameDay', false, groupIdBoolean),
-    disabled: boolean('disabled', false, groupIdBoolean),
-    disabledKeyboardNavigation: boolean('disabledKeyboardNavigation', false, groupIdBoolean),
-    fixedHeight: boolean('fixedHeight', false, groupIdBoolean),
-    inline: boolean('inline', false, groupIdBoolean),
-    isClearable: boolean('isClearable', false, groupIdBoolean),
-    peekNextMonth: boolean('peekNextMonth', false, groupIdBoolean),
-    preventOpenOnFocus: boolean('preventOpenOnFocus', false, groupIdBoolean),
-    readOnly: boolean('readOnly', false, groupIdBoolean),
-    required: boolean('required', false, groupIdBoolean),
-    scrollableYearDropdown: boolean('scrollableYearDropdown', false, groupIdBoolean),
-    scrollableMonthYearDropdown: boolean('scrollableMonthYearDropdown', false, groupIdBoolean),
-    selectsEnd: boolean('selectsEnd', false, groupIdBoolean),
-    selectsStart: boolean('selectsStart', false, groupIdBoolean),
-    showMonthDropdown: boolean('showMonthDropdown', false, groupIdBoolean),
-    showPreviousMonths: boolean('showPreviousMonths', false, groupIdBoolean),
-    showMonthYearDropdown: boolean('showMonthYearDropdown', false, groupIdBoolean),
-    showWeekNumbers: boolean('showWeekNumbers', false, groupIdBoolean),
-    showYearDropdown: boolean('showYearDropdown', false, groupIdBoolean),
-    strictParsing: boolean('strictParsing', false, groupIdBoolean),
-    forceShowMonthNavigation: boolean('forceShowMonthNavigation', false, groupIdBoolean),
-    showDisabledMonthNavigation: boolean('showDisabledMonthNavigation', false, groupIdBoolean),
-    startOpen: boolean('startOpen', false, groupIdBoolean),
-    useWeekdaysShort: boolean('useWeekdaysShort', false, groupIdBoolean),
-    withPortal: boolean('withPortal', false, groupIdBoolean),
-    shouldCloseOnSelect: boolean('shouldCloseOnSelect', true, groupIdBoolean),
-    showTimeInput: boolean('showTimeInput', false, groupIdBoolean),
-    showMonthYearPicker: boolean('showMonthYearPicker', false, groupIdBoolean),
-    showQuarterYearPicker: boolean('showQuarterYearPicker', false, groupIdBoolean),
-    showTimeSelect: boolean('showTimeSelect', true, groupIdBoolean),
-    showTimeSelectOnly: boolean('showTimeSelectOnly', false, groupIdBoolean),
-    useShortMonthInDropdown: boolean('useShortMonthInDropdown', false, groupIdBoolean),
-    inlineFocusSelectedMonth: boolean('inlineFocusSelectedMonth', false, groupIdBoolean),
-    showPopperArrow: boolean('showPopperArrow', true, groupIdBoolean),
-    // number
-    monthsShown: number('monthsShown', 1, {}, groupIdNumber),
-    tabIndex: number('tabIndex', 1, {}, groupIdNumber),
-    yearDropdownItemNumber: number('yearDropdownItemNumber', 1, {}, groupIdNumber),
-    timeIntervals: number('timeIntervals (showTimeSelect must be true)', 30, {}, groupIdNumber),
-    // select
-    dateFormat: select(
-      'dateFormat',
-      ['MM/dd/yyyy', 'MMMM d, yyyy h:mm aa', 'dd-M-yyyy hh:mm:ss', 'dd MMMM yyyy'],
-      'MMMM d, yyyy h:mm aa',
-      groupIdSelect
-    ),
-    dropdownMode: select('dropdownMode', ['scroll', 'select'], 'scroll', groupIdSelect),
-    // text
-    name: text('name', '', groupIdText),
-    timeCaption: text('timeCaption', 'Time', groupIdText),
-    previousMonthButtonLabel: text('previousMonthButtonLabel', 'Previous Month', groupIdText),
-    nextMonthButtonLabel: text('nextMonthButtonLabel', 'Next Month', groupIdText),
-    previousYearButtonLabel: text('previousYearButtonLabel', 'Previous Year', groupIdText),
-    nextYearButtonLabel: text('nextYearButtonLabel', 'Next Year', groupIdText),
-    timeInputLabel: text('timeInputLabel', 'Time', groupIdText)
+  const { control, errors, getValues, handleSubmit } = useForm({
+    validationSchema: schema
+  })
+
+  const onSubmit = data => {}
+
+  const knobs = KNOBS()
+
+  const defaultProps = {
+    control: control,
+    errors: errors,
+    name: 'expiryAt',
+    locale: enGB,
+    ...knobs,
+    ...props
   }
 
-  return knobs
-}
-
-export const main = () => {
-  const [startDate, setStartDate] = useState(new Date())
-  const knobs = useKnobs()
+  const value = getValues()?.expiryAt?.toString()
 
   return (
-    <DatePickerCalendar selected={startDate} onChange={date => setStartDate(date)} {...knobs} />
+    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <DatePickerCalendar {...defaultProps} />
+
+      <Divider />
+
+      <Button content='Submit' type='submit' />
+
+      <p>{value}</p>
+
+      <FormError message={errors?.expiryAt?.message || ''} />
+    </FormForm>
   )
 }
 
-export const WorkingHours = () => {
-  const [startDate, setStartDate] = useState(null)
-  const knobs = useKnobs()
-  const placeholder = 'Select your appointment...'
+export const main = () => <BaseComponent />
+export const defaultValue = () => <BaseComponent defaultValue={new Date('2017-10-11')} />
+export const time = () => <BaseComponent dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
+
+export const workingHours = () => {
   const isWeekday = date => {
     const day = getDay(date)
     return day !== 0 && day !== 6
   }
 
   const holidays = [
-    new Date(2019, 11, 25), // Christmas
-    addDays(new Date(2019, 11, 25), 1) // Boxing Day
+    new Date(2020, 11, 25), // Christmas
+    addDays(new Date(2020, 11, 25), 1) // Boxing Day
   ]
 
   const freeDays = [
-    new Date(2019, 10, 27),
-    new Date(2019, 11, 24),
-    new Date(2019, 11, 17),
-    new Date(2019, 11, 10)
+    new Date(2020, 10, 27),
+    new Date(2020, 11, 24),
+    new Date(2020, 11, 17),
+    new Date(2020, 11, 10)
   ]
 
   const stringifyArray = arr => arr.map(item => item.toString())
@@ -151,23 +107,26 @@ export const WorkingHours = () => {
 
   return (
     <>
-      Our Schedule: 9:30AM - 6:30PM, Monday - Friday
-      <DatePickerCalendar
-        selected={startDate}
-        onChange={date => setStartDate(date)}
-        minTime={setHours(setMinutes(new Date(), 30), 9)}
-        maxTime={setHours(setMinutes(new Date(), 30), 18)}
+      <p>Our Schedule: 9:30AM - 6:30PM, Monday - Friday</p>
+
+      <BaseComponent
         excludeDates={holidays}
-        highlightDates={freeDays}
-        renderDayContents={renderDayContents}
+        excludeTimes={[
+          setHours(setMinutes(new Date(), 0), 17),
+          setHours(setMinutes(new Date(), 30), 18),
+          setHours(setMinutes(new Date(), 30), 19),
+          setHours(setMinutes(new Date(), 30), 17)
+        ]}
         filterDate={isWeekday}
-        placeholderText={placeholder}
-        {...knobs}
+        highlightDates={freeDays}
+        maxTime={setHours(setMinutes(new Date(), 30), 18)}
+        minTime={setHours(setMinutes(new Date(), 30), 9)}
+        placeholderText='Select your appointment'
+        renderDayContents={renderDayContents}
+        showTimeSelect
       >
-        <div>
-          <span style={{ color: '#3dcc4a' }}>*50% Discount</span>
-        </div>
-      </DatePickerCalendar>
+        <p style={{ color: '#3dcc4a' }}>*50% Discount</p>
+      </BaseComponent>
     </>
   )
 }

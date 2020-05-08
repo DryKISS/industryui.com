@@ -9,7 +9,7 @@ import React from 'react'
 import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// Reach Hook Form
+// React Hook Form
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 

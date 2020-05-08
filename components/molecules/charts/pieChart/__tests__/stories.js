@@ -19,21 +19,10 @@ import Readme from '../README.md'
 // Mocks
 import { Data, Data2 } from '../__mocks__/data'
 
-const centerDecorator = story => (
-  <div
-    style={{
-      height: '450px',
-      margin: '0 auto'
-    }}
-  >
-    {story()}
-  </div>
-)
-
 export default {
   title: 'Molecules/Charts/Pie',
   component: PieChart,
-  decorators: [centerDecorator, Wrapper, withKnobs],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

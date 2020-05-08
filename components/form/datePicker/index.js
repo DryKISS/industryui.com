@@ -1,5 +1,5 @@
 /**
  * Date Picker
  */
-export * from './calendar'
+export * from './calendar/calendar'
 export * from './input/datePickerInput'

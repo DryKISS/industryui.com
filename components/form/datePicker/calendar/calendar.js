@@ -1,9 +1,12 @@
 /**
- * DatePicker - Calendar
+ * Form - DatePicker - Calendar
  */
 
 // React
 import React from 'react'
+
+// React Hook Form
+import { Controller } from 'react-hook-form'
 
 // Date Picker
 import ReactDatePicker from 'react-datepicker'
@@ -14,17 +17,15 @@ import { StyledInput } from '../../../'
 // Constants
 import { PROPERTIES } from './constants'
 
-export const DatePickerCalendar = ({ Controller, control, errors, name, ...props }) => {
+export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...props }) => {
   return (
     <Controller
-      as={<ReactDatePicker {...props} customInput={<StyledInput errors={errors.expiryAt} />} />}
+      as={<ReactDatePicker customInput={<StyledInput errors={errors.expiryAt} />} {...props} />}
       control={control}
+      defaultValue={defaultValue}
       name={name}
       onChange={([selected]) => {
         return selected
-      }}
-      rules={{
-        required: true
       }}
       valueName='selected'
     />
@@ -36,9 +37,8 @@ DatePickerCalendar.propTypes = PROPERTIES
 DatePickerCalendar.defaultProps = {
   autoFocus: false,
   dateFormat: 'd MMM yyyy',
-  dropdownMode: 'select',
+  dropdownMode: 'scroll',
   isClearable: true,
-  locale: 'en-GB',
   minDate: new Date(),
   name: 'expiryAt',
   placeholderText: 'Click to select time',
