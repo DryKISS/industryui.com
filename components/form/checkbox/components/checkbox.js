@@ -14,6 +14,8 @@ import { CheckboxComponent } from './component'
 import styled, { css } from 'styled-components'
 
 export const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
+  console.log(errors, props.name)
+
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <legend>{legend}</legend>}
