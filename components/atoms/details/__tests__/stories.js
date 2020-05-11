@@ -1,5 +1,5 @@
 /**
- * Details
+ * Components - Details - Stories
  */
 
 // React

@@ -1,4 +1,0 @@
-/**
- * Details
- */
-export * from './details'

@@ -20,7 +20,9 @@ export const Details = ({ children, open, style, summary }) => {
 const StyledDetails = styled.details`
   background-color: #fff;
   border: 1px solid #eee;
+  border-bottom: 1px solid rgb(0, 204, 188);
   box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
+  margin-bottom: 0.5rem;
 `
 
 const StyledSummary = styled.summary`

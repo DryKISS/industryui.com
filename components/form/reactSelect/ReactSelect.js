@@ -1,8 +1,5 @@
 /**
  * React Select
- * Utilises the select component
- *
- * @see https://github.com/JedWatson/react-select
  */
 
 // React
@@ -45,8 +42,8 @@ export const ReactSelectField = ({
         {...data}
       />
     ) : (
-      <Select ref={ref} {...data} />
-    )
+        <Select ref={ref} {...data} />
+      )
   })
 
   return (

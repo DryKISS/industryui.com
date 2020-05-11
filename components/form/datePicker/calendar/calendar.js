@@ -20,7 +20,7 @@ import { PROPERTIES } from './constants'
 export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...props }) => {
   return (
     <Controller
-      as={<ReactDatePicker customInput={<StyledInput errors={errors.expiryAt} />} {...props} />}
+      as={<ReactDatePicker customInput={<StyledInput errors={errors[name]} />} {...props} />}
       control={control}
       defaultValue={defaultValue}
       name={name}
