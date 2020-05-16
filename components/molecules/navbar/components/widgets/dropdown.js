@@ -3,7 +3,7 @@
  */
 
 // React
-import { object, string } from 'prop-types'
+import { func, object, string } from 'prop-types'
 
 // UI
 import { Icon, MEDIA_QUERY } from '../../../../'
@@ -12,10 +12,10 @@ import { Dropdown } from '../../../dropdown'
 // Style
 import styled from 'styled-components'
 
-export const NavDropdown = ({ icon, name, position, prefix, type }) => {
+export const NavDropdown = ({ closeMenu, icon, name, position, prefix, type }) => {
   return (
     <StyledContainer>
-      <StyledDropdown items={type.items} position={position}>
+      <StyledDropdown items={type.items} onChange={closeMenu} position={position}>
         {icon && <Icon aria-hidden='true' icon={icon} prefix={prefix} />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
@@ -86,6 +86,7 @@ const StyledContent = styled.span`
 `
 
 NavDropdown.propTypes = {
+  closeMenu: func,
   icon: string,
   name: string.isRequired,
   position: string,

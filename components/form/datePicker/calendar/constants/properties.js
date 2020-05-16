@@ -16,7 +16,7 @@ import {
   string
 } from 'prop-types'
 
-import { Popper } from 'react-popper'
+import { placements } from 'react-popper'
 
 export const PROPERTIES = {
   adjustDateOnChange: bool,
@@ -74,7 +74,7 @@ export const PROPERTIES = {
   popperContainer: func,
   popperClassName: string,
   popperModifiers: object,
-  popperPlacement: oneOfType(Popper.placements),
+  popperPlacement: oneOfType([string, instanceOf(placements)]),
   popperProps: object,
   preventOpenOnFocus: bool,
   readOnly: bool,

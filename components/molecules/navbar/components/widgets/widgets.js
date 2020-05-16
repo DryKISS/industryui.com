@@ -37,7 +37,7 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 
                 {type &&
                   type.as === 'dropdown' &&
-                  NavDropdown({ icon, name, position, prefix, type })}
+                  NavDropdown({ closeMenu, icon, name, position, prefix, type })}
 
                 {type &&
                   type.as === 'notification' &&
