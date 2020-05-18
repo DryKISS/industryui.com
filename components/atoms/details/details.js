@@ -8,9 +8,9 @@ import { bool, node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Details = ({ children, open, style, summary }) => {
+export const Details = ({ children, open, style, summary, ...props }) => {
   return (
-    <StyledDetails open={open}>
+    <StyledDetails open={open} {...props}>
       <StyledSummary>{summary}</StyledSummary>
       <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
@@ -32,7 +32,7 @@ const StyledSummary = styled.summary`
   padding: 1rem;
 `
 
-const StyledBody = styled.summary`
+const StyledBody = styled.div`
   font-size: 1rem;
   padding: 0 1rem 1rem;
 `
