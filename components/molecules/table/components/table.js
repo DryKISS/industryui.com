@@ -102,6 +102,12 @@ export const Table = ({
       const context = row.context
       delete row.context
 
+      if (row.hidden) {
+        return null
+      } else {
+        delete row.hidden
+      }
+
       return (
         <TableRow
           context={context}
