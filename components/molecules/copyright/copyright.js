@@ -3,17 +3,18 @@
  */
 
 // React
-import { array, oneOf, shape, string } from 'prop-types'
+import React from 'react'
+import { array, bool, oneOf, shape, string } from 'prop-types'
 
 // UI
 import { Column, Container, CONTEXT, Icon, Link, Row } from '../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const year = new Date().getFullYear()
 
-export const Copyright = ({ brand, icon, links }) => {
+export const Copyright = ({ brand, fixed, icon, links }) => {
   const renderLinks = () => {
     return links.map(({ name, to }, index) => (
       <Link key={index} passHref to={to}>
@@ -23,7 +24,7 @@ export const Copyright = ({ brand, icon, links }) => {
   }
 
   return (
-    <StyledCopyright data-cy='copyright'>
+    <StyledCopyright fixed={fixed} data-cy='copyright'>
       <StyledContainer>
         <Row>
           <Column md={links.length > 0 ? 3 : 12}>
@@ -44,6 +45,15 @@ const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COPYRIGHT.background};
   color: ${({ theme }) => theme.COPYRIGHT.colour};
   font-size: 0.75rem;
+  ${({ fixed }) =>
+    fixed &&
+    css`
+      bottom: 0;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    `}
 `
 
 const StyledContainer = styled(Container)`
@@ -66,6 +76,7 @@ const StyledLink = styled.span`
 
 Copyright.propTypes = {
   brand: string.isRequired,
+  fixed: bool,
   icon: shape({
     context: oneOf(Object.values(CONTEXT)),
     icon: string,
@@ -75,6 +86,7 @@ Copyright.propTypes = {
 }
 
 Copyright.defaultProps = {
+  fixed: false,
   icon: {
     context: 'primary',
     icon: 'copyright',

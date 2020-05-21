@@ -19,7 +19,7 @@ export const Bootstrap = ({ brand, children, copyright, footer, fixed, icon, Nav
 
       {footer && <Footer columns={footer} fixed={fixed} />}
 
-      <Copyright brand={brand} icon={icon} links={copyright} />
+      {copyright && <Copyright brand={brand} icon={icon} links={copyright} />}
     </>
   )
 }

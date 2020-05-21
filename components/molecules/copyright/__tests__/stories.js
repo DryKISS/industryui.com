@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Copyright } from '../'
+import { Copyright } from 'components'
 import Readme from '../README.md'
 
 // Data

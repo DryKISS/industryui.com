@@ -94,6 +94,7 @@ const StyledFooter = styled.div`
       position: fixed;
       left: 0;
       width: 100%;
+      z-index: 1;
     `}
 `
 
