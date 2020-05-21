@@ -34,6 +34,7 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
           position='absolute'
         />
       )}
+
       <CalendarWrapper
         {...props}
         eventColor={props.defaultEventColor || COLOUR.primary}

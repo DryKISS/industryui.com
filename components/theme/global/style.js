@@ -80,6 +80,10 @@ export const ThemeStyle = createGlobalStyle`
     position: relative;
   }
 
+  .fc-event {
+    cursor: pointer;
+  }
+
   pre {
     font-family: monospace;
     font-size: 1em;
