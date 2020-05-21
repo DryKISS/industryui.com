@@ -1,17 +1,36 @@
 /**
- * Footer
+ * Footer - Mocks - Formatter
  */
-export const FOOTER = column => [
+
+// React
+import React, { Fragment } from 'react'
+
+import { Image, List, ListItem } from 'components'
+
+const renderColumn = index => (
+  <Fragment key={index}>
+    <Image alt='Tailwise' src='/drykiss.svg' />
+
+    <List unstyled>
+      <ListItem>Strapline</ListItem>
+      <ListItem>email@domain.com</ListItem>
+      <ListItem>0201 1234 1234</ListItem>
+    </List>
+  </Fragment>
+)
+
+export const FORMATTER = [
   {
     size: { md: 8, lg: 6 },
     offset: { md: 4, lg: 0 },
-    formatter: column
+    formatter: renderColumn
   },
   {
     size: { md: 4, lg: 2 },
-    header: 'About',
+    header: {
+      content: 'About'
+    },
     links: {
-      inline: false,
       items: [
         {
           id: 'footerHowItWorks',
@@ -28,9 +47,10 @@ export const FOOTER = column => [
   },
   {
     size: { md: 4, lg: 2 },
-    header: 'Discover',
+    header: {
+      content: 'Discover'
+    },
     links: {
-      inline: false,
       items: [
         {
           id: 'footerSignUp',
@@ -47,9 +67,10 @@ export const FOOTER = column => [
   },
   {
     size: { md: 4, lg: 2 },
-    header: 'Contact',
+    header: {
+      content: 'Contact'
+    },
     links: {
-      inline: false,
       items: [
         {
           id: 'footerContact',

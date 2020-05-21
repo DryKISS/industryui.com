@@ -10,8 +10,7 @@ import { Bootstrap, Navbar } from 'components'
 import Readme from '../README.md'
 
 // Footer
-import { FOOTER } from '../../../organisms/footer/__mocks__'
-import { renderColumn } from '../../../organisms/footer/__tests__/stories'
+import { FORMATTER } from '../../../organisms/footer/__mocks__'
 
 // Navbar
 import { Default } from '../../../molecules/navbar/__mocks__'
@@ -31,7 +30,7 @@ export default {
 
 export const main = () => (
   <Bootstrap
-    footer={FOOTER(renderColumn)}
+    footer={FORMATTER}
     Navigation={() => <Navbar brand={Brand.logo} links={Default} />}
     brand={Brand.name}
   >

@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Blockquote } from '../'
+import { Blockquote } from 'components'
 import Readme from '../README.md'
 
 export default {

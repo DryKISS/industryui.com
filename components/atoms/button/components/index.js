@@ -1,5 +1,5 @@
 /**
  * Components
  */
-export * from './button'
-export * from './toolbar'
+export * from './button/button'
+export * from './toolbar/toolbar'

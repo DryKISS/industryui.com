@@ -7,7 +7,7 @@ import { array, string } from 'prop-types'
 
 // UI
 import { Image, Icon, Link, List } from '../../../'
-import { Divider } from '../../../atoms/divider'
+import { Divider } from '../../../atoms/divider/divider'
 import { ListItem } from '../../../atoms/list/components/listItem'
 
 // Style
