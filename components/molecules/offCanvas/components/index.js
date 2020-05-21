@@ -1,5 +1,5 @@
 /**
- * OffCanvas
+ * Molecules - OffCanvas
  */
 export * from './container'
 export * from './content'
