@@ -1,4 +1,0 @@
-/**
- * Footer
- */
-export * from './footer'

@@ -6,7 +6,7 @@
 import { any, number, objectOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Image } from '../../image'
+import { Image } from '../../image/image'
 
 // Style
 import styled from 'styled-components'

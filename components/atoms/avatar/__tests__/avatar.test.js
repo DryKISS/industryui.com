@@ -1,7 +1,3 @@
-/**
- * Address
- */
-
 import { main } from './stories'
 import renderer from 'react-test-renderer'
 

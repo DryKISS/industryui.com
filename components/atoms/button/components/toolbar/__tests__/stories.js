@@ -10,7 +10,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { Align, Size, Wrapper } from 'decorators'
 
 // UI
-import { Button, ButtonToolbar, Icon } from 'root'
+import { Button, ButtonToolbar, Icon } from 'components'
 import Readme from '../README.md'
 
 export default {

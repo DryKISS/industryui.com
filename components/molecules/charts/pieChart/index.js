@@ -26,6 +26,7 @@ export const PieChart = withTheme(({ theme, ...props }) => {
   const {
     colorScheme,
     data,
+    onClick,
     enableRadialLabels,
     enableSlicesLabels,
     innerRadius = PIECHART.innerRadius,
@@ -43,6 +44,8 @@ export const PieChart = withTheme(({ theme, ...props }) => {
 
   return (
     <ResponsivePie
+      animate={animate}
+      onClick={onClick}
       data={data}
       margin={margin.call(props)}
       startAngle={startAngle}
@@ -66,7 +69,6 @@ export const PieChart = withTheme(({ theme, ...props }) => {
       slicesLabelsSkipAngle={slicesLabelsSkipAngle}
       slicesLabelsTextColor={slicesLabelsTextColor}
       sortByValue={sortByValue}
-      animate={animate}
       motionStiffness={motionStiffness}
       motionDamping={motionDamping}
       legends={showLegend ? legends : []}
@@ -77,7 +79,6 @@ export const PieChart = withTheme(({ theme, ...props }) => {
 PieChart.displayName = 'PieChart'
 
 PieChart.propTypes = Object.assign({}, PiePropTypes, {
-  // TODO: maybe write more custom schemes :)
   colorScheme: oneOf(Object.keys(colorSchemes)),
   showLegend: bool
 })

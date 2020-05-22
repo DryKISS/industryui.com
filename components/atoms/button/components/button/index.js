@@ -1,4 +1,0 @@
-/**
- * Button
- */
-export * from './button'

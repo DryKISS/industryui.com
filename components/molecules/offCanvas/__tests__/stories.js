@@ -1,5 +1,5 @@
 /**
- * Off Canvas
+ * Molecules - OffCanvas
  */
 
 // React
