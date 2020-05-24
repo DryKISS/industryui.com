@@ -1,5 +1,5 @@
 /**
- * Notification
+ * Molecules - Notification
  */
 
 // React

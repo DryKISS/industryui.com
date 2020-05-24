@@ -1,5 +1,5 @@
 /**
- * Notification
+ * Molecules - Notification
  */
 
 // React
@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Notification } from '../'
+import { Notification } from 'components'
 import Readme from '../README.md'
 
 export default {
