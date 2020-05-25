@@ -2,4 +2,4 @@
 
 ## Link
 
-https://github.com/teodosii/react-notifications-component
+[React Notifications](https://github.com/teodosii/react-notifications-component)

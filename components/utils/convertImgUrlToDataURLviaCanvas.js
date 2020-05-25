@@ -5,7 +5,9 @@
 export const convertImgUrlToDataURLviaCanvas = url => {
   return new Promise(function (resolve, reject) {
     var img = new Image()
+
     img.crossOrigin = '*'
+
     img.onload = function () {
       var canvas = document.createElement('canvas')
       var ctx = canvas.getContext('2d')
@@ -17,9 +19,11 @@ export const convertImgUrlToDataURLviaCanvas = url => {
       resolve(dataURL)
       canvas = null
     }
+
     img.onerror = function () {
       reject(new Error('Could not load image at ' + url))
     }
+
     img.src = url
   })
 }

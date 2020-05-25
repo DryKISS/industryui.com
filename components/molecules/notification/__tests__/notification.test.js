@@ -1,3 +1,6 @@
+/**
+ * Molecules - Notification
+ */
 import { main } from './stories'
 import renderer from 'react-test-renderer'
 
