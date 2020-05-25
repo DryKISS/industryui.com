@@ -6,7 +6,7 @@
 import { node, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, SIZE, MEDIA_QUERY } from 'industry-ui'
+import { CONTEXT, SIZE, MEDIA_QUERY } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
