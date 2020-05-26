@@ -13,7 +13,10 @@ import { Button, Divider, Icon } from '../../../'
 import styled from 'styled-components'
 
 export const StepperItem = ({ item }) => {
-  const content = actions =>
+  const renderContent = content =>
+    content.map(({ id, active, data }) => active && <li key={id}>{data}</li>)
+
+  const renderActions = actions =>
     actions.map(
       ({ id, active, content, context, handleClick, to, type }) =>
         active && (
@@ -43,8 +46,12 @@ export const StepperItem = ({ item }) => {
 
       {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
 
+      {item.content && item.content.length > 0 && (
+        <StyledContent>{renderContent(item.content)}</StyledContent>
+      )}
+
       {item.actions && item.actions.length > 0 && (
-        <StyledContent>{content(item.actions)}</StyledContent>
+        <StyledContent>{renderActions(item.actions)}</StyledContent>
       )}
 
       {item.label !== 'Closed' && <Divider style={{ borderTop: '2px solid #f5f5f5' }} />}
