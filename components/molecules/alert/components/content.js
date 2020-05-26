@@ -11,9 +11,9 @@ import { Icon } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const AlertContent = ({ content, context, icon, iconPrefix }) => (
+export const AlertContent = ({ content, icon, iconPrefix }) => (
   <StyledAlertContent>
-    {icon && <Icon aria-hidden='true' context={context} icon={icon} prefix={iconPrefix} />}{' '}
+    {icon && <Icon aria-hidden='true' context='help' icon={icon} prefix={iconPrefix} />}
     {content}
   </StyledAlertContent>
 )

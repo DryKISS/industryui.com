@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 export const AlertHeader = ({ context, header, icon, iconPrefix }) => (
   <StyledHeader context={context}>
-    {icon && <Icon aria-hidden='true' context={context} icon={icon} prefix={iconPrefix} />} {header}
+    {icon && <Icon aria-hidden='true' context='help' icon={icon} prefix={iconPrefix} />} {header}
   </StyledHeader>
 )
 

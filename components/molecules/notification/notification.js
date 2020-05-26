@@ -3,17 +3,15 @@
  */
 
 // React
-import { func, number, object, oneOfType, string } from 'prop-types'
+import { func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Alert, formatRelativeTime, Link } from '../../../'
+import { Alert, CONTEXT, formatRelativeTime, Link } from '../../'
 
 // Style
 import styled from 'styled-components'
 
-export const Notification = ({ close, content, date, link, priority, title }) => {
-  const context = priority === 1 ? 'warning' : 'info'
-
+export const Notification = ({ close, content, context, date, icon, link, title }) => {
   let body = (
     <>
       <StyledNotificationBody>{content}</StyledNotificationBody>
@@ -23,7 +21,7 @@ export const Notification = ({ close, content, date, link, priority, title }) =>
 
   if (link) {
     body = (
-      <Link to={{ href: link }} onClick={() => close()}>
+      <Link border={false} to={{ href: link }} onClick={() => close()}>
         {body}
       </Link>
     )
@@ -31,19 +29,14 @@ export const Notification = ({ close, content, date, link, priority, title }) =>
 
   return (
     <StyledNotificationWrapper>
-      <Alert
-        close={close}
-        content={body}
-        context={context}
-        header={title}
-        style={{ border: 0, margin: 0 }}
-      />
+      <Alert close={close} content={body} context={context} header={title} icon={icon} />
     </StyledNotificationWrapper>
   )
 }
 
 const StyledNotificationWrapper = styled.div`
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
   max-width: 100%;
   width: 350px;
 `
@@ -62,10 +55,11 @@ const StyledDate = styled.time`
 `
 
 Notification.propTypes = {
-  close: func,
+  close: func.isRequired,
   content: oneOfType([object, string]).isRequired,
+  context: oneOf(Object.values(CONTEXT)),
   date: string,
+  icon: string,
   link: string,
-  priority: number,
   title: string
 }
