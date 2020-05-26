@@ -50,4 +50,9 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
+  @media (max-width: 700px) {
+    .fc-header-toolbar {
+      flex-direction: column;
+    }
+  }
 `
