@@ -91,5 +91,6 @@ Copyright.defaultProps = {
     context: 'primary',
     icon: 'copyright',
     prefix: 'fad'
-  }
+  },
+  links: []
 }
