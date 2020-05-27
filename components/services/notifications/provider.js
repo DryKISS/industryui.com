@@ -14,7 +14,7 @@ export const NotificationsProvider = ({ children, user }) => {
   const items = useNotifications('messages', { active: true }, 25)
 
   // Debug
-  console.log('NotificationsProvider', items)
+  // console.log('NotificationsProvider', items)
 
   // return (
   //   <NotificationsContext.Provider
