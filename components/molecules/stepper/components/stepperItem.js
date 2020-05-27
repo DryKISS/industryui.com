@@ -14,7 +14,10 @@ import styled from 'styled-components'
 
 export const StepperItem = ({ item }) => {
   const renderContent = content =>
-    content.map(({ id, active, data }) => active && <li key={id}>{data}</li>)
+    content.map(
+      ({ id, active, data }) =>
+        active && <li key={id}>{typeof data === 'function' ? data() : data}</li>
+    )
 
   const renderActions = actions =>
     actions.map(
