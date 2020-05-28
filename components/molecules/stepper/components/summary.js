@@ -1,5 +1,5 @@
 /**
- * Stepper Timings
+ * Stepper Summary
  */
 
 // React
