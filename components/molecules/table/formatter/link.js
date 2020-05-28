@@ -25,7 +25,7 @@ export const TableLink = (path, key, value, account) => ({ row }) => {
   }
 
   return (
-    <StyledLink border onClick={handleClick}>
+    <StyledLink border={false} onClick={handleClick}>
       {row[value]}
     </StyledLink>
   )
