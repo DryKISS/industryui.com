@@ -10,7 +10,7 @@ use with React Hook Form
 In each parent application we will need to register the locale where appropriate
 
 ```javascript
-import enGB from 'date-fns/locale/en-gb'
+import enGB from 'date-fns/locale/en-GB'
 ```
 
 Then pass it inside the locale property

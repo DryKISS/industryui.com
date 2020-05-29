@@ -18,7 +18,7 @@ import addDays from 'date-fns/addDays'
 import getDay from 'date-fns/getDay'
 import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
-import enGB from 'date-fns/locale/en-gb'
+import enGB from 'date-fns/locale/en-GB'
 
 // UI
 import { Button, DatePickerCalendar, Divider, FormForm, FormError } from 'components'
