@@ -24,10 +24,21 @@ export const TableLink = (path, key, value, account) => ({ row }) => {
     Router.push(`${path}?id=${row[key]}`)
   }
 
+  const item = row[value]
+
+  // Debug
+  // console.log(path, key, account, row)
+  // console.log('Value', item)
+
   return (
-    <StyledLink border={false} onClick={handleClick}>
-      {row[value]}
-    </StyledLink>
+    <>
+      {item === '-' && '-'}
+      {item !== '-' && (
+        <StyledLink border={false} onClick={handleClick}>
+          {item}
+        </StyledLink>
+      )}
+    </>
   )
 }
 
