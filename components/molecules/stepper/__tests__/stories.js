@@ -26,4 +26,4 @@ export default {
   }
 }
 
-export const main = () => <Stepper items={Data.items} timings={Data.timings} />
+export const main = () => <Stepper items={Data.items} summary={Data.summary} />
