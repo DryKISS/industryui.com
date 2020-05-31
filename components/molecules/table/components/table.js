@@ -1,5 +1,7 @@
 /**
  * Table
+ *
+ * @todo Remove this Rowclick data-item
  */
 
 // React
