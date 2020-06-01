@@ -17,11 +17,13 @@ import styled from 'styled-components'
 
 export const TableLink = (path, key, value, account) => ({ row }) => {
   const getPath = () => {
+    let url = path
+
     if (account) {
-      path = `${path}/${row.type.toLowerCase()}s/view`
+      url = `${path}/${row.type.toLowerCase()}s/view`
     }
 
-    return `${path}?id=${row[key]}`
+    return `${url}?id=${row[key]}`
   }
 
   const handleClick = e => {
