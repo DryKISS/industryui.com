@@ -45,6 +45,7 @@ const BaseComponent = (props = {}) => {
       <FormLabel label='Description'>
         <TextareaField {...defaultProps} />
       </FormLabel>
+
       <Button content='Submit' type='submit' />
     </FormForm>
   )
