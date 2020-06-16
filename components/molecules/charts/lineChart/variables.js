@@ -1,5 +1,5 @@
 /**
- * LineChart - Variables
+ * Charts - Line - Variables
  */
 
 import { COLOUR } from '../../../theme/variables/colour'

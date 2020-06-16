@@ -1,5 +1,5 @@
 /**
- * Molecules - Charts - Line Chart
+ * Charts - Line
  */
 
 // React
