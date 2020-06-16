@@ -4,6 +4,7 @@
  */
 
 import { array, node, string } from 'prop-types'
+
 import {
   GoogleMap,
   InfoWindow as GoogleInfoWindow,
@@ -11,6 +12,7 @@ import {
   withGoogleMap,
   withScriptjs
 } from 'react-google-maps'
+
 import { MarkerClusterer as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
 const DynamicLocationHOC = Component => {
@@ -20,6 +22,7 @@ const DynamicLocationHOC = Component => {
     const containerElement = props.containerElement || (
       <div style={{ height: props.containerHeight, width: props.containerWidth }} />
     )
+
     return <Component {...props} containerElement={containerElement} googleMapURL={googleMapURL} />
   }
 }
