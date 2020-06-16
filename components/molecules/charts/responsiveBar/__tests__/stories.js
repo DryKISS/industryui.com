@@ -1,5 +1,5 @@
 /**
- * Button
+ * Charts - Bar - responsiveBar - Story
  */
 
 // React
@@ -9,10 +9,10 @@ import React from 'react'
 import { select, text, withKnobs, number, boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// UI
+// Nivo
 import { colorSchemes } from '@nivo/colors'
 
-// Assets
+// UI
 import { BarChart } from '../'
 import Readme from '../README.md'
 
@@ -29,6 +29,9 @@ import {
   keyToIndexBy3
 } from '../__mocks__/data'
 
+// Styled Components
+import styled from 'styled-components'
+
 export default {
   title: 'Molecules/Charts/Bar',
   component: BarChart,
@@ -39,114 +42,44 @@ export default {
     }
   }
 }
-
-export const main = () => {
-  const bottomLegendText = text('bottomLegend', 'Products')
-  const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
-  const colorBySelect = select('colorBy', ['id', 'index'], 'id')
-  const enableGridXSelect = boolean('enableGridX', false)
-  const enableGridYSelect = boolean('enableGridY', true)
-  const groupModeSelect = select('groupMode', ['stacked', 'grouped'], 'stacked')
-  const isInteractiveSelect = boolean('isInteractive (tooltip)', true)
-  const layoutSelect = select('layout', ['horizontal', 'vertical'], 'vertical')
-  const leftLegendText = text('leftLegend', 'Profit')
-  const minValueNumber = number('minValue', 0)
-  const maxValueNumber = number('maxValue', 160000)
-  const reverseSelect = boolean('reverse', false)
-  const showLegend = boolean('showLegend', true)
-
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    bottomLegendText: text('bottomLegend', 'Products'),
+    colorSchemeSelect: select('colorScheme', Object.keys(colorSchemes), 'nivo'),
+    colorBySelect: select('colorBy', ['id', 'index'], 'id'),
+    enableGridXSelect: boolean('enableGridX', false),
+    enableGridYSelect: boolean('enableGridY', true),
+    groupModeSelect: select('groupMode', ['stacked', 'grouped'], 'stacked'),
+    isInteractiveSelect: boolean('isInteractive (tooltip)', true),
+    layoutSelect: select('layout', ['horizontal', 'vertical'], 'vertical'),
+    leftLegendText: text('leftLegend', 'Profit'),
+    minValueNumber: number('minValue', 0),
+    maxValueNumber: number('maxValue', 160000),
+    reverseSelect: boolean('reverse', false),
+    showLegend: boolean('showLegend', true),
+    ...props
+  }
   return (
-    <BarChart
-      bottomLegend={bottomLegendText}
-      colorScheme={colorSchemeSelect}
-      colorBy={colorBySelect}
-      data={Data}
-      enableGridX={enableGridXSelect}
-      enableGridY={enableGridYSelect}
-      groupMode={groupModeSelect}
-      indexBy={keyToIndexBy}
-      isInteractive={isInteractiveSelect}
-      keys={keys}
-      layout={layoutSelect}
-      leftLegend={leftLegendText}
-      minValue={minValueNumber}
-      maxValue={maxValueNumber}
-      reverse={reverseSelect}
-      showLegend={showLegend}
-    />
+    <StyledWrapper>
+      <BarChart {...defaultProps} />
+    </StyledWrapper>
   )
+}
+
+const StyledWrapper = styled.div`
+  text-align: center;
+  height: 500px;
+`
+
+/// storeis
+export const main = () => {
+  return <BaseComponent data={Data} indexBy={keyToIndexBy} keys={keys} />
 }
 
 export const StackedBarDouble = () => {
-  const bottomLegendText = text('bottomLegend', 'Products')
-  const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
-  const colorBySelect = select('colorBy', ['id', 'index'], 'id')
-  const enableGridXSelect = boolean('enableGridX', false)
-  const enableGridYSelect = boolean('enableGridY', true)
-  const groupModeSelect = select('groupMode', ['stacked', 'grouped'], 'stacked')
-  const isInteractiveSelect = boolean('isInteractive (tooltip)', true)
-  const layoutSelect = select('layout', ['horizontal', 'vertical'], 'vertical')
-  const leftLegendText = text('leftLegend', 'USD')
-  const minValueNumber = number('minValue', 0)
-  const maxValueNumber = number('maxValue', 195000)
-  const reverseSelect = boolean('reverse', false)
-  const showLegend = boolean('showLegend', true)
-
-  return (
-    <BarChart
-      bottomLegend={bottomLegendText}
-      colorScheme={colorSchemeSelect}
-      colorBy={colorBySelect}
-      data={Data2}
-      enableGridX={enableGridXSelect}
-      enableGridY={enableGridYSelect}
-      groupMode={groupModeSelect}
-      indexBy={keyToIndexBy2}
-      isInteractive={isInteractiveSelect}
-      keys={keys2}
-      layout={layoutSelect}
-      leftLegend={leftLegendText}
-      minValue={minValueNumber}
-      maxValue={maxValueNumber}
-      reverse={reverseSelect}
-      showLegend={showLegend}
-    />
-  )
+  return <BaseComponent data={Data2} indexBy={keyToIndexBy2} keys={keys2} />
 }
 
 export const StackedBarTriple = () => {
-  const bottomLegendText = text('bottomLegend', 'Products')
-  const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
-  const colorBySelect = select('colorBy', ['id', 'index'], 'id')
-  const enableGridXSelect = boolean('enableGridX', false)
-  const enableGridYSelect = boolean('enableGridY', true)
-  const groupModeSelect = select('groupMode', ['stacked', 'grouped'], 'stacked')
-  const isInteractiveSelect = boolean('isInteractive (tooltip)', true)
-  const layoutSelect = select('layout', ['horizontal', 'vertical'], 'vertical')
-  const leftLegendText = text('leftLegend', 'USD')
-  const minValueNumber = number('minValue', 0)
-  const maxValueNumber = number('maxValue', 295000)
-  const reverseSelect = boolean('reverse', false)
-  const showLegend = boolean('showLegend', true)
-
-  return (
-    <BarChart
-      bottomLegend={bottomLegendText}
-      colorScheme={colorSchemeSelect}
-      colorBy={colorBySelect}
-      data={Data3}
-      enableGridX={enableGridXSelect}
-      enableGridY={enableGridYSelect}
-      groupMode={groupModeSelect}
-      indexBy={keyToIndexBy3}
-      isInteractive={isInteractiveSelect}
-      keys={keys3}
-      layout={layoutSelect}
-      leftLegend={leftLegendText}
-      minValue={minValueNumber}
-      maxValue={maxValueNumber}
-      reverse={reverseSelect}
-      showLegend={showLegend}
-    />
-  )
+  return <BaseComponent data={Data3} indexBy={keyToIndexBy3} keys={keys3} />
 }
