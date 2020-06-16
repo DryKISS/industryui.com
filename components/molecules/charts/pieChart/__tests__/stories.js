@@ -1,8 +1,4 @@
-/**
- * Button
- */
-
-// React
+/// React
 import React from 'react'
 
 // Storybook
