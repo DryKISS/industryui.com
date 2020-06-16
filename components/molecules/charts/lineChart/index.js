@@ -1,7 +1,16 @@
+/**
+ * Charts - Line
+ */
+
+// React
 import { oneOf, bool, string } from 'prop-types'
+
+// Nivo
 import { ResponsiveLine, LinePropTypes, LineDefaultProps } from '@nivo/line'
-import { withTheme } from 'styled-components'
 import { colorSchemes } from '@nivo/colors'
+
+// Style
+import { withTheme } from 'styled-components'
 
 export const LineChart = withTheme(({ theme, ...props }) => {
   const {
@@ -41,6 +50,9 @@ export const LineChart = withTheme(({ theme, ...props }) => {
     pointSize = LINECHART.pointSize,
     showLegend
   } = props
+
+  // Debug
+  // console.log(props)
 
   return (
     <ResponsiveLine

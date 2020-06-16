@@ -1,3 +1,6 @@
+/**
+ * Charts - Line - Mocks - Data
+ */
 export const Data = [
   {
     id: 'japan',

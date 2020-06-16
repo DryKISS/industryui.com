@@ -92,8 +92,8 @@ const StyledSpace = styled.div`
         margin: 1rem;
 
         ${MEDIA_QUERY.desktop`
-        margin: calc(1rem * 2);
-      `}
+          margin: calc(1rem * 2);
+        `}
       `}
 
     ${({ margin }) =>
@@ -102,8 +102,8 @@ const StyledSpace = styled.div`
         margin: 1.5rem;
 
         ${MEDIA_QUERY.desktop`
-        margin: calc(1.5rem * 2);
-      `}
+          margin: calc(1.5rem * 2);
+        `}
       `}
 
     ${({ margin }) =>
@@ -112,8 +112,8 @@ const StyledSpace = styled.div`
         margin: 2rem;
 
         ${MEDIA_QUERY.desktop`
-        margin: calc(2rem * 2);
-      `}
+          margin: calc(2rem * 2);
+        `}
       `}
 
     /* marginBottom */
@@ -123,8 +123,8 @@ const StyledSpace = styled.div`
         margin-bottom: 0.25rem;
 
         ${MEDIA_QUERY.desktop`
-        margin-bottom: calc(0.25rem * 2);
-      `}
+          margin-bottom: calc(0.25rem * 2);
+        `}
       `}
 
     ${({ marginBottom }) =>
@@ -133,8 +133,8 @@ const StyledSpace = styled.div`
         margin-bottom: 0.5rem;
 
         ${MEDIA_QUERY.desktop`
-        margin-bottom: calc(0.5rem * 2);
-      `}
+          margin-bottom: calc(0.5rem * 2);
+        `}
       `}
 
     ${({ marginBottom }) =>
@@ -143,8 +143,8 @@ const StyledSpace = styled.div`
         margin-bottom: 0.75rem;
 
         ${MEDIA_QUERY.desktop`
-        margin-bottom: calc(0.75rem * 2);
-      `}
+          margin-bottom: calc(0.75rem * 2);
+        `}
       `}
 
     ${({ marginBottom }) =>
@@ -153,8 +153,8 @@ const StyledSpace = styled.div`
         margin-bottom: 1rem;
 
         ${MEDIA_QUERY.desktop`
-        margin-bottom: calc(1rem * 2);
-      `}
+          margin-bottom: calc(1rem * 2);
+        `}
       `}
 
     ${({ marginBottom }) =>
@@ -163,8 +163,8 @@ const StyledSpace = styled.div`
         margin-bottom: 1.5rem;
 
         ${MEDIA_QUERY.desktop`
-        margin-bottom: calc(1.5rem * 2);
-      `}
+          margin-bottom: calc(1.5rem * 2);
+        `}
       `}
 
     ${({ marginBottom }) =>
@@ -173,8 +173,8 @@ const StyledSpace = styled.div`
         margin-bottom: 2rem;
 
         ${MEDIA_QUERY.desktop`
-        margin-bottom: calc(2rem * 2);
-      `}
+          margin-bottom: calc(2rem * 2);
+        `}
       `}
 
 `
