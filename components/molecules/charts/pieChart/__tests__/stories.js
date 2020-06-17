@@ -1,5 +1,5 @@
 /**
- * Button
+ * Charts - Pie - Tests - Story
  */
 
 // React
@@ -9,15 +9,18 @@ import React from 'react'
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// UI
+// Nivo
 import { colorSchemes } from '@nivo/colors'
 
-// Assets
+// UI
 import { PieChart } from '../'
 import Readme from '../README.md'
 
 // Mocks
 import { Data, Data2 } from '../__mocks__/data'
+
+// Styled Components
+import styled from 'styled-components'
 
 export default {
   title: 'Molecules/Charts/Pie',
@@ -30,108 +33,65 @@ export default {
   }
 }
 
-export const main = () => {
-  const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
-  const cornerRadiusSelect = select('cornerRadius (px)', [...Array(46).keys()], 3)
-  const enableSlicesLabelsBoolean = boolean('enableSlicesLabels', true)
-  const enableRadialLabelsBoolean = boolean('enableRadialLabels', true)
-  const innerRadius = select('innerRadius', [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], 0.5)
-  const isInteractiveSelect = boolean('isInteractive (tooltip)', true)
-  const padAngle = select('padAngle', [0.4, 0.5, 0.7, 0.8, ...Array(46).keys()], 0.7)
-  const radialLabelsLinkStrokeWidthSelect = select(
-    'radialLabelsLinkStrokeWidth (px)',
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    1
-  )
-  const radialLabelsTextXOffsetSelect = select(
-    'radialLabelsTextXOffset (px)',
-    [...Array(11).keys()],
-    6
-  )
-  const radialLabelsLinkHorizontalLengthSelect = select(
-    'radialLabelsLinkHorizontalLength (px)',
-    [...Array(31).keys()],
-    24
-  )
-  const radialLabelsLinkDiagonalLengthSelect = select(
-    'radialLabelsLinkDiagonalLength',
-    [...Array(37).keys()],
-    18
-  )
-  const radialLabelsLinkOffsetSelect = select('radialLabelsLinkOffset', [...Array(31).keys()], 0)
-  const showLegend = boolean('showLegend', true)
-  const sortByValue = boolean('sortByValue', false)
-
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    colorScheme: select('colorScheme', Object.keys(colorSchemes), props.colorScheme || 'nivo'),
+    cornerRadius: select('cornerRadius (px)', [...Array(46).keys()], props.cornerRadius || 3),
+    enableSlicesLabels: boolean('enableSlicesLabels', props.enableSlicesLabels || true),
+    enableRadialLabels: boolean('enableRadialLabels', props.enableRadialLabels || true),
+    innerRadius: select(
+      'innerRadius',
+      [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+      props.innerRadius || 0.5
+    ),
+    isInteractive: boolean('isInteractive (tooltip)', props.isInteractive || true),
+    padAngle: select('padAngle', [0.4, 0.5, 0.7, 0.8, ...Array(46).keys()], props.padAngle || 0.7),
+    radialLabelsLinkStrokeWidth: select(
+      'radialLabelsLinkStrokeWidth (px)',
+      [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      props.radialLabelsLinkStrokeWidth || 1
+    ),
+    radialLabelsTextXOffset: select(
+      'radialLabelsTextXOffset (px)',
+      [...Array(11).keys()],
+      props.radialLabelsTextXOffset || 6
+    ),
+    radialLabelsLinkHorizontalLength: select(
+      'radialLabelsLinkHorizontalLength (px)',
+      [...Array(31).keys()],
+      props.radialLabelsLinkHorizontalLength || 24
+    ),
+    radialLabelsLinkDiagonalLength: select(
+      'radialLabelsLinkDiagonalLength',
+      [...Array(37).keys()],
+      props.radialLabelsLinkDiagonalLength || 18
+    ),
+    radialLabelsLinkOffset: select(
+      'radialLabelsLinkOffset',
+      [...Array(31).keys()],
+      props.radialLabelsLinkOffset || 0
+    ),
+    showLegend: boolean('showLegend', props.showLegend || true),
+    sortByValue: boolean('sortByValue', props.sortByValue || false),
+    data: Data,
+    ...props
+  }
   return (
-    <PieChart
-      data={Data}
-      colorScheme={colorSchemeSelect}
-      cornerRadius={cornerRadiusSelect}
-      innerRadius={innerRadius}
-      isInteractive={isInteractiveSelect}
-      showLegend={showLegend}
-      enableSlicesLabels={enableSlicesLabelsBoolean}
-      enableRadialLabels={enableRadialLabelsBoolean}
-      padAngle={padAngle}
-      radialLabelsLinkStrokeWidth={radialLabelsLinkStrokeWidthSelect}
-      radialLabelsTextXOffset={radialLabelsTextXOffsetSelect}
-      radialLabelsLinkHorizontalLength={radialLabelsLinkHorizontalLengthSelect}
-      radialLabelsLinkDiagonalLength={radialLabelsLinkDiagonalLengthSelect}
-      radialLabelsLinkOffset={radialLabelsLinkOffsetSelect}
-      sortByValue={sortByValue}
-    />
+    <StyledWrapper>
+      <PieChart {...defaultProps} />
+    </StyledWrapper>
   )
 }
 
-export const OtherDataPie = () => {
-  const colorSchemeSelect = select('colorScheme', Object.keys(colorSchemes), 'nivo')
-  const cornerRadiusSelect = select('cornerRadius (px)', [...Array(46).keys()], 3)
-  const enableSlicesLabelsBoolean = boolean('enableSlicesLabels', true)
-  const enableRadialLabelsBoolean = boolean('enableRadialLabels', true)
-  const innerRadius = select('innerRadius', [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], 0)
-  const isInteractiveSelect = boolean('isInteractive (tooltip)', true)
-  const padAngle = select('padAngle', [0.4, 0.5, 0.7, 0.8, ...Array(46).keys()], 0.2)
-  const radialLabelsLinkStrokeWidthSelect = select(
-    'radialLabelsLinkStrokeWidth (px)',
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    2
-  )
-  const radialLabelsTextXOffsetSelect = select(
-    'radialLabelsTextXOffset (px)',
-    [...Array(11).keys()],
-    6
-  )
-  const radialLabelsLinkHorizontalLengthSelect = select(
-    'radialLabelsLinkHorizontalLength (px)',
-    [...Array(31).keys()],
-    24
-  )
-  const radialLabelsLinkDiagonalLengthSelect = select(
-    'radialLabelsLinkDiagonalLength',
-    [...Array(37).keys()],
-    18
-  )
-  const radialLabelsLinkOffsetSelect = select('radialLabelsLinkOffset', [...Array(31).keys()], 0)
-  const showLegend = boolean('showLegend', true)
-  const sortByValue = boolean('sortByValue', false)
+const StyledWrapper = styled.div`
+  text-align: center;
+  height: 500px;
+`
+/// storeis
+export const main = () => {
+  return <BaseComponent />
+}
 
-  return (
-    <PieChart
-      data={Data2}
-      colorScheme={colorSchemeSelect}
-      cornerRadius={cornerRadiusSelect}
-      innerRadius={innerRadius}
-      isInteractive={isInteractiveSelect}
-      showLegend={showLegend}
-      enableSlicesLabels={enableSlicesLabelsBoolean}
-      enableRadialLabels={enableRadialLabelsBoolean}
-      padAngle={padAngle}
-      radialLabelsLinkStrokeWidth={radialLabelsLinkStrokeWidthSelect}
-      radialLabelsTextXOffset={radialLabelsTextXOffsetSelect}
-      radialLabelsLinkHorizontalLength={radialLabelsLinkHorizontalLengthSelect}
-      radialLabelsLinkDiagonalLength={radialLabelsLinkDiagonalLengthSelect}
-      radialLabelsLinkOffset={radialLabelsLinkOffsetSelect}
-      sortByValue={sortByValue}
-    />
-  )
+export const OtherDataPie = () => {
+  return <BaseComponent data={Data2} />
 }
