@@ -44,19 +44,19 @@ export default {
 }
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    bottomLegendText: text('bottomLegend', 'Products'),
-    colorSchemeSelect: select('colorScheme', Object.keys(colorSchemes), 'nivo'),
-    colorBySelect: select('colorBy', ['id', 'index'], 'id'),
-    enableGridXSelect: boolean('enableGridX', false),
-    enableGridYSelect: boolean('enableGridY', true),
-    groupModeSelect: select('groupMode', ['stacked', 'grouped'], 'stacked'),
-    isInteractiveSelect: boolean('isInteractive (tooltip)', true),
-    layoutSelect: select('layout', ['horizontal', 'vertical'], 'vertical'),
-    leftLegendText: text('leftLegend', 'Profit'),
-    minValueNumber: number('minValue', 0),
-    maxValueNumber: number('maxValue', 160000),
-    reverseSelect: boolean('reverse', false),
-    showLegend: boolean('showLegend', true),
+    bottomLegend: text('bottomLegend', props.bottomLegend || 'Products'),
+    colorScheme: select('colorScheme', Object.keys(colorSchemes), props.colorScheme || 'nivo'),
+    colorBy: select('colorBy', ['id', 'index'], props.colorScheme || 'id'),
+    enableGridX: boolean('enableGridX', props.enableGridX || false),
+    enableGridY: boolean('enableGridY', props.enableGridY || true),
+    groupMode: select('groupMode', ['stacked', 'grouped'], props.groupMode || 'stacked'),
+    isInteractive: boolean('isInteractive (tooltip)', props.isInteractive || true),
+    layout: select('layout', ['horizontal', 'vertical'], props.layout || 'vertical'),
+    leftLegend: text('leftLegend', props.leftLegend || 'Profit'),
+    minValue: number('minValue', props.minValue || 0),
+    maxValue: number('maxValue', props.maxValue || 160000),
+    reverse: boolean('reverse', props.reverse || false),
+    showLegend: boolean('showLegend', props.showLegend || true),
     ...props
   }
   return (
@@ -77,9 +77,9 @@ export const main = () => {
 }
 
 export const StackedBarDouble = () => {
-  return <BaseComponent data={Data2} indexBy={keyToIndexBy2} keys={keys2} />
+  return <BaseComponent data={Data2} indexBy={keyToIndexBy2} keys={keys2} maxValue={195000} />
 }
 
 export const StackedBarTriple = () => {
-  return <BaseComponent data={Data3} indexBy={keyToIndexBy3} keys={keys3} />
+  return <BaseComponent data={Data3} indexBy={keyToIndexBy3} keys={keys3} maxValue={225000} />
 }
