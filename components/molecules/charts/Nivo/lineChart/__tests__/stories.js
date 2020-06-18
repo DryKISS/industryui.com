@@ -18,13 +18,13 @@ import { LineChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
-import { Data } from '../__mocks__/data'
+import { Data, BigData } from '../__mocks__/data'
 
 // Styled Components
 import styled from 'styled-components'
 
 export default {
-  title: 'Molecules/Charts/Line',
+  title: 'Molecules/Charts/Nivo/Line',
   component: LineChart,
   decorators: [withKnobs, Wrapper],
   parameters: {
@@ -37,9 +37,9 @@ export default {
 const BaseComponent = (props = {}) => {
   const defaultProps = {
     areaOpacity: select('areaOpacity', [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], 0.2),
-    bottomLegendText: text('bottomLegend', props.bottomLegendText || 'Vehicles'),
-    colorSchemeSelect: select('colorScheme', Object.keys(colorSchemes), 'nivo'),
-    curveSelect: select('curve (interpolation)', lineCurvePropKeys, props.curveSelect || 'linear'),
+    bottomLegend: text('bottomLegend', props.bottomLegendText || 'Vehicles'),
+    colorScheme: select('colorScheme', Object.keys(colorSchemes), 'nivo'),
+    curve: select('curve (interpolation)', lineCurvePropKeys, props.curveSelect || 'linear'),
     data: Data,
     enableArea: boolean('enableArea', props.enableArea || false),
     enableCrosshair: boolean('enableCrosshair', props.enableCrosshair || true),
@@ -49,11 +49,12 @@ const BaseComponent = (props = {}) => {
     enablePoints: boolean('enablePoints', props.enablePoints || true),
     enableSlices: select('enableSlices', ['x', 'y', false], props.enableSlices || false),
     isInteractive: boolean('isInteractive (tooltip)', props.isInteractive || true),
-    leftLegendText: text('leftLegend', props.leftLegendText || 'Volume'),
-    lineWidthSelect: select('lineWidth', [...Array(21).keys()], props.lineWidthSelect || 2),
+    leftLegend: text('leftLegend', props.leftLegendText || 'Volume'),
+    lineWidth: select('lineWidth', [...Array(21).keys()], props.lineWidthSelect || 2),
     pointSize: select('pointSize', [...Array(21).keys()], props.pointSize || 10),
     showLegend: boolean('showLegend', props.showLegend || true),
     stacked: boolean('stacked', props.stacked || true),
+
     ...props
   }
 
@@ -64,8 +65,9 @@ const BaseComponent = (props = {}) => {
   )
 }
 
+/// stories
 export const main = () => {
-  return <BaseComponent />
+  return <BaseComponent axisBottom={{ tickRotation: 90 }} />
 }
 
 export const area = () => {
@@ -83,7 +85,28 @@ export const area = () => {
   )
 }
 
+export const bigdata = () => {
+  return (
+    <BaseComponent
+      data={BigData}
+      curveSelect='cardinal'
+      enableArea
+      enableCrosshair={false}
+      enableSlices='x'
+      lineWidthSelect={3}
+      pointSize={15}
+      showLegend={false}
+      stacked={false}
+      enablePoints={false}
+      bottomLegend='Date'
+      leftLegend='Temperature'
+      axisBottomDistinct
+      axisLeftSymbol='°C'
+    />
+  )
+}
+
 const StyledWrapper = styled.div`
   text-align: center;
-  height: 500px;
+  height: 300px;
 `

@@ -2,8 +2,11 @@
  * Charts - Line - Variables
  */
 
-import { COLOUR } from '../../../theme/variables/colour'
+import { COLOUR } from '../../../../theme/variables/colour'
 
+// Date fns
+import { shortDate } from '../../../../utils/dateFns/date'
+let lastValue = null
 export const LINECHART = {
   axisBottom: function () {
     return {
@@ -13,7 +16,16 @@ export const LINECHART = {
       tickRotation: 0,
       legend: this.bottomLegend, // string passed as prop
       legendOffset: 36,
-      legendPosition: 'middle'
+      legendPosition: 'middle',
+      format: value => {
+        if (this.axisBottomDistinct) {
+          const formatted = shortDate(value)
+          if (formatted !== lastValue) {
+            lastValue = formatted
+            return formatted
+          }
+        } else return value
+      }
     }
   },
   axisLeft: function () {
@@ -23,8 +35,11 @@ export const LINECHART = {
       tickPadding: 5,
       tickRotation: 0,
       legend: this.leftLegend, // string passed as prop
-      legendOffset: -40,
-      legendPosition: 'middle'
+      legendOffset: -50,
+      legendPosition: 'middle',
+      format: value => {
+        if (value % 1 === 0) return `${value + this.axisLeftSymbol || value}`
+      }
     }
   },
   axisTop: null,
