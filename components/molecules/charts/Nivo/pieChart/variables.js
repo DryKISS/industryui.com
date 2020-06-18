@@ -2,7 +2,7 @@
  * PieChart - Variables
  */
 
-import { COLOUR } from '../../../theme/variables/colour'
+import { COLOUR } from '../../../../theme/variables/colour'
 
 export const PIECHART = {
   animate: true,
