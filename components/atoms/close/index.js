@@ -1,4 +1,0 @@
-/**
- * Close
- */
-export * from './close'

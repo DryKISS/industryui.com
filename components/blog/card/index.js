@@ -9,9 +9,9 @@ import { any, object, string } from 'prop-types'
 // UI
 import { BlogCategory, BlogTags, Card, CardImage, Divider, Link, slugify } from '../../../'
 
-import { Button } from '../../atoms/button/components/button'
+import { Button } from '../../atoms/button/components/button/button'
 import { CardBody } from '../../molecules/card/components/body'
-import { Heading } from '../../atoms/heading'
+import { Heading } from '../../atoms/heading/heading'
 
 // Style
 import styled, { css } from 'styled-components'

@@ -130,17 +130,15 @@ export const chained = () => {
 
   useEffect(() => {
     if (watchCustomer !== prevCustomer) {
-      console.log('Changed Customer', prevCustomer, watchCustomer)
-      console.log('Changed User', prevUser, watchUser)
+      // Debug
+      // console.log('Changed Customer', prevCustomer, watchCustomer)
+      // console.log('Changed User', prevUser, watchUser)
 
       if (watchCustomer === null) {
-        console.log('reset')
         setUsers(null)
       } else if (watchCustomer.value === '2') {
-        console.log('Avison')
         setUsers(UsersAvison)
       } else {
-        console.log('Housing')
         setUsers(UsersHousing)
       }
 

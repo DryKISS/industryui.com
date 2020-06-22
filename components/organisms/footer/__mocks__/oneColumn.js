@@ -1,10 +1,12 @@
 /**
- * Footer
+ * Footer - Mocks - One Column
  */
 export const ONE_COLUMN = [
   {
     size: { md: 1 },
-    header: '1',
+    header: {
+      content: '1'
+    },
     links: {
       items: [
         {
@@ -17,7 +19,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '2',
+    header: {
+      content: '2'
+    },
     links: {
       items: [
         {
@@ -30,7 +34,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '3',
+    header: {
+      content: '3'
+    },
     links: {
       items: [
         {
@@ -43,7 +49,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '4',
+    header: {
+      content: '4'
+    },
     links: {
       items: [
         {
@@ -56,7 +64,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '5',
+    header: {
+      content: '5'
+    },
     links: {
       items: [
         {
@@ -69,7 +79,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '6',
+    header: {
+      content: '6'
+    },
     links: {
       items: [
         {
@@ -82,7 +94,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '7',
+    header: {
+      content: '7'
+    },
     links: {
       items: [
         {
@@ -95,7 +109,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '8',
+    header: {
+      content: '8'
+    },
     links: {
       items: [
         {
@@ -108,7 +124,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '9',
+    header: {
+      content: '9'
+    },
     links: {
       items: [
         {
@@ -121,7 +139,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '10',
+    header: {
+      content: '10'
+    },
     links: {
       items: [
         {
@@ -134,7 +154,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '11',
+    header: {
+      content: '11'
+    },
     links: {
       items: [
         {
@@ -147,7 +169,9 @@ export const ONE_COLUMN = [
   },
   {
     size: { md: 1 },
-    header: '12',
+    header: {
+      content: '12'
+    },
     links: {
       items: [
         {

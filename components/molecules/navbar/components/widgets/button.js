@@ -1,5 +1,5 @@
 /**
- * Navbar - Widgets
+ * Navbar - Widgets - Button
  */
 
 // React
@@ -13,19 +13,23 @@ import styled from 'styled-components'
 
 export const NavButton = ({ closeMenu, id, name, to, type, visible }) => {
   return (
-    <Link border={false} passHref to={to}>
+    <StyledLink border={false} passHref to={to}>
       <StyledButton
         id={id}
         context={type.context}
         content={name}
-        onClick={visible ? closeMenu : () => { }}
+        onClick={visible ? closeMenu : () => {}}
         outline={type.outline}
         size={type.size}
         type={type.as}
       />
-    </Link>
+    </StyledLink>
   )
 }
+
+const StyledLink = styled(Link)`
+  padding: 0rem 0.75rem;
+`
 
 const StyledButton = styled(Button)`
   ${MEDIA_QUERY_MAX.desktop`
@@ -46,9 +50,13 @@ const StyledButton = styled(Button)`
 
 NavButton.propTypes = {
   closeMenu: func,
-  id: string,
-  name: string,
-  to: string,
-  type: string,
+  id: string.isRequired,
+  name: string.isRequired,
+  to: string.isRequired,
+  type: string.isRequired,
   visible: bool
+}
+
+NavButton.defaultProps = {
+  visible: false
 }

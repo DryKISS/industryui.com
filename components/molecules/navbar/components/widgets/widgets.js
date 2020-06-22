@@ -1,13 +1,20 @@
 /**
- * Navbar - Widgets
+ * Navbar — Widgets
  */
 
 // React
-import { bool, object, string } from 'prop-types'
+import { bool, func, object, string } from 'prop-types'
 
 // UI
-import { MEDIA_QUERY } from '../../../../'
-import { NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification } from '../internal'
+import {
+  MEDIA_QUERY,
+  NavButton,
+  NavCollapse,
+  NavDropdown,
+  NavIcon,
+  NavLink,
+  NavNotification
+} from '../../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -30,7 +37,7 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 
                 {type &&
                   type.as === 'dropdown' &&
-                  NavDropdown({ icon, name, position, prefix, type })}
+                  NavDropdown({ closeMenu, icon, name, position, prefix, type })}
 
                 {type &&
                   type.as === 'notification' &&
@@ -49,10 +56,10 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 }
 
 const StyledList = styled.ul`
-  background-color: ${({ theme }) => theme.NAVBAR.background};
+  background-color: ${({ theme }) => theme.NAVBAR.backgroundList};
   display: flex;
   flex-direction: column;
-  font-size: 0.8rem;
+  font-size: ${({ theme }) => theme.NAVBAR.fontSizeList};
   list-style: none;
   margin: 0;
   padding: 0;
@@ -67,19 +74,13 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
-  border-top: #33475b 1px solid;
   position: relative;
-  ${MEDIA_QUERY.desktop`
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  `}
-
+  border-top: ${({ theme }) => theme.NAVBAR.borderTopListItem};
+  background-color: ${({ theme }) => theme.NAVBAR.backgroundListItem};
   &:hover {
-    background-color: rgb(37, 51, 66);
+    background-color: ${({ theme }) => theme.NAVBAR.backgroundHoverListItem};
+    border-bottom: ${({ theme }) => theme.NAVBAR.borderBottomHoverListItem};
   }
-
   ${props =>
     !props.brand &&
     css`
@@ -87,11 +88,19 @@ const StyledListItem = styled.li`
         margin-left: 0;
       }
     `}
+  ${MEDIA_QUERY.desktop`
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: ${({ theme }) => theme.NAVBAR.justifyContentDesktopListItem};
+    margin-bottom: ${({ theme }) => theme.NAVBAR.marginBottomDesktopListItem};
+  `}
 `
 
 Widgets.propTypes = {
   brand: string,
-  visible: bool,
+  closeMenu: func,
   type: string,
+  visible: bool,
   widgets: object.isRequired
 }

@@ -1,17 +1,15 @@
 /**
  * React Select
- * Utilises the select component
- *
- * @see https://github.com/JedWatson/react-select
  */
 
 // React
 import React, { forwardRef } from 'react'
 
+// React Hook Form
+import { Controller } from 'react-hook-form'
+
 // Style
 import styled, { css } from 'styled-components'
-
-import { Controller } from 'react-hook-form'
 
 // React Select
 import Select from 'react-select'
@@ -29,24 +27,26 @@ export const ReactSelectField = ({
   error,
   errors,
   loadOptions,
-  required,
   name,
   options,
+  required,
   selectedOption,
   ...props
 }) => {
   const Component = forwardRef((data, ref) => {
-    return async ? (
-      <AsyncSelect
-        defaultOptions={defaultOptions}
-        loadOptions={loadOptions}
-        cacheOptions={cacheOptions}
-        ref={ref}
-        {...data}
-      />
-    ) : (
-      <Select ref={ref} {...data} />
-    )
+    if (async) {
+      return (
+        <AsyncSelect
+          cacheOptions={cacheOptions}
+          defaultOptions={defaultOptions}
+          loadOptions={loadOptions}
+          ref={ref}
+          {...data}
+        />
+      )
+    } else {
+      return <Select ref={ref} {...data} />
+    }
   })
 
   return (

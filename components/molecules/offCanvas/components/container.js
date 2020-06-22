@@ -1,9 +1,12 @@
 /**
- * OffCanvas - Content
+ * Molecules - OffCanvas - Content
  */
 
 // React
 import { bool, string } from 'prop-types'
+
+// UI
+import { MEDIA_QUERY } from '../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -23,23 +26,26 @@ export const OffCanvasDiv = styled.div`
   ${({ placement }) =>
     placement === 'top' &&
     css`
-      top: 0;
-      right: 0;
-      left: 0;
-      width: 100vw;
       height: ${({ height }) => height || '50%'};
+      left: 0;
+      right: 0;
+      top: 0;
       transform: ${({ width, show }) => `translateY(${show ? 0 : '-100%'})`};
+      width: 100vw;
     `}
 
   /* Right Placement */
   ${({ placement }) =>
     placement === 'right' &&
     css`
-      top: 0;
-      right: 0;
-      width: ${({ width }) => width};
       height: 100vh;
+      right: 0;
+      top: 0;
       transform: ${({ width, show }) => `translateX(${show ? 0 : '100%'})`};
+      width: 90%;
+      ${MEDIA_QUERY.desktop`
+        width: ${({ width }) => width};
+      `}
     `}
 
   /* Bottom Placement */
@@ -47,22 +53,25 @@ export const OffCanvasDiv = styled.div`
     placement === 'bottom' &&
     css`
       bottom: 0;
-      right: 0;
-      left: 0;
-      width: 100vw;
       height: ${({ height }) => height || '50%'};
+      left: 0;
+      right: 0;
       transform: ${({ width, show }) => `translateY(${show ? 0 : '100%'})`};
+      width: 100vw;
     `}
 
   /* Left Placement */
   ${({ placement }) =>
     placement === 'left' &&
     css`
-      top: 0;
-      left: 0;
-      width: ${({ width }) => width};
       height: 100vh;
+      left: 0;
+      top: 0;
       transform: ${({ width, show }) => `translateX(${show ? 0 : '-100%'})`};
+      width: 90%;
+      ${MEDIA_QUERY.desktop`
+        width: ${({ width }) => width};
+      `}
     `}
 `
 

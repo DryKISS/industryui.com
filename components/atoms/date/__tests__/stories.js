@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Date } from '../'
+import { Date } from 'components'
 import Readme from '../README.md'
 
 export default {

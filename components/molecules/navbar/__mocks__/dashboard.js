@@ -6,12 +6,12 @@ export const Dashboard = {
     {
       id: 'navDashboard',
       name: 'Dashboard',
-      to: '/dashboard'
+      to: '/'
     },
     {
       id: 'navIssue',
       name: 'Report Issue',
-      to: '/dashboard/issues/create'
+      to: '/'
     }
   ]
 }

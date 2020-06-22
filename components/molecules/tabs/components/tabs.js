@@ -4,7 +4,10 @@
 
 // React
 import React, { useState } from 'react'
-import { array, object, oneOfType, string } from 'prop-types'
+import { array, bool, object, oneOfType, string } from 'prop-types'
+
+// Next
+import Router, { useRouter } from 'next/router'
 
 // UI
 import { Tab } from './tab'
@@ -12,7 +15,9 @@ import { Tab } from './tab'
 // Style
 import styled from 'styled-components'
 
-export const Tabs = ({ children, className, onChange }) => {
+export const Tabs = ({ children, className, handleChange }) => {
+  const router = useRouter()
+
   if (!Array.isArray(children)) {
     children = React.Children.toArray(children)
   }
@@ -29,7 +34,12 @@ export const Tabs = ({ children, className, onChange }) => {
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
-    onChange && onChange(tab)
+    handleChange && handleTabChange(tab)
+  }
+
+  const handleTabChange = tab => {
+    const href = `${router.pathname}?id=${router.query.id}&tab=${tab}`
+    Router.push(href, href, { shallow: true })
   }
 
   return (
@@ -48,7 +58,10 @@ export const Tabs = ({ children, className, onChange }) => {
       </StyledTabs>
 
       {children.map(child => {
-        if (child.props.label !== activeTab) return undefined
+        if (child.props.label !== activeTab) {
+          return undefined
+        }
+
         return child.props.children
       })}
     </>
@@ -65,5 +78,10 @@ const StyledTabs = styled.ol`
 
 Tabs.propTypes = {
   children: oneOfType([array, object]).isRequired,
-  className: string
+  className: string,
+  handleChange: bool
+}
+
+Tabs.defaultProps = {
+  handleChange: true
 }

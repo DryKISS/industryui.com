@@ -1,4 +1,0 @@
-/**
- * Avatar
- */
-export * from './avatar'

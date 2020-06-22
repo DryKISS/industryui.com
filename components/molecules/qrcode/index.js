@@ -1,4 +1,0 @@
-/**
- * Accordion
- */
-export * from './components'

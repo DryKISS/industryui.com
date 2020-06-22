@@ -12,12 +12,12 @@ export const Default = {
           {
             id: 'settings',
             name: 'Settings',
-            to: '/settings'
+            to: '/'
           },
           {
             id: 'profile',
             name: 'Profile',
-            to: '/profile'
+            to: '/'
           },
           {
             id: 'logout-divider',
@@ -26,7 +26,7 @@ export const Default = {
           {
             id: 'logout',
             name: 'Logout',
-            to: '/logout'
+            to: '/'
           }
         ]
       }
@@ -39,7 +39,7 @@ export const Default = {
     {
       id: 'navNav1',
       name: 'Contact',
-      to: '/contact'
+      to: '/'
     },
     {
       id: 'navButtonSmall',
@@ -53,7 +53,7 @@ export const Default = {
     },
     {
       id: 'navNotification',
-      to: '/notifications',
+      to: '/',
       type: {
         as: 'notification',
         count: 9
@@ -72,7 +72,7 @@ export const Left = {
     {
       id: 'navNav1',
       name: 'Nav1',
-      to: '/nav1'
+      to: '/'
     }
   ]
 }
@@ -87,14 +87,14 @@ export const Buttons = {
     {
       id: 'navNav1',
       name: 'Nav1',
-      to: '/nav1'
+      to: '/'
     }
   ],
   right: [
     {
       id: 'navLogIn',
       name: 'Log in',
-      to: '/sign-in'
+      to: '/'
     },
     {
       id: 'navButtonLarge',

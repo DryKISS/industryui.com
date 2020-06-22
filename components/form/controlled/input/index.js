@@ -7,7 +7,7 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 
 // UI
 import { Label } from '../'
-import { Close } from '../../../atoms/close'
+import { Close } from '../../../atoms/close/close'
 
 // Style
 import styled from 'styled-components'

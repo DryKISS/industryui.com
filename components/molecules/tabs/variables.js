@@ -4,9 +4,9 @@
 import { COLOUR } from '../../theme/variables/colour'
 
 export const TABS = {
-  activeColour: COLOUR.dark,
+  activeColour: COLOUR.white,
   borderColour: '#dee2e6',
-  borderRadius: '.25rem',
+  borderRadius: '.1rem',
   colour: COLOUR.light,
   disabledColour: '#eee',
   hoverColour: '#dee2e6'

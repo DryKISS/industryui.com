@@ -10,7 +10,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { Context, Size, Wrapper } from 'decorators'
 
 // UI
-import { Divider } from '../'
+import { Divider } from 'components'
 import Readme from '../README.md'
 
 export default {

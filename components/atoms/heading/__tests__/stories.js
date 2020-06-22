@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { text, withKnobs } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI

@@ -1,22 +1,22 @@
 /**
- * Navbar - User
+ * Navbar - Widgets - Dropdown
  */
 
 // React
-import { object, string } from 'prop-types'
+import { func, object, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../../../'
+import { Icon, MEDIA_QUERY } from '../../../../'
 import { Dropdown } from '../../../dropdown'
 
 // Style
 import styled from 'styled-components'
 
-export const NavDropdown = ({ icon, name, position, prefix, type }) => {
+export const NavDropdown = ({ closeMenu, icon, name, position, prefix, type }) => {
   return (
     <StyledContainer>
-      <StyledDropdown items={type.items} position={position}>
-        {icon && <Icon aria-hidden='true' icon={icon} prefix='fad' />}
+      <StyledDropdown items={type.items} onChange={closeMenu} position={position}>
+        {icon && <Icon aria-hidden='true' icon={icon} prefix={prefix} />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
     </StyledContainer>
@@ -45,6 +45,7 @@ const StyledDropdown = styled(Dropdown)`
   }
 
   .dropdown--toggle {
+    display: block;
     line-height: 60px;
     padding: 0 0.5rem;
 
@@ -57,8 +58,15 @@ const StyledDropdown = styled(Dropdown)`
     background-color: rgb(37, 51, 66);
     border: initial;
     border-radius: 0;
-    min-width: 11rem;
+    margin: 0;
+    padding: 0;
+    position: initial;
     top: 3.7rem;
+    width: 100%;
+    ${MEDIA_QUERY.desktop`
+      min-width: 11rem;
+      position: absolute;
+    `}
   }
 
   .dropdown--link {
@@ -78,6 +86,7 @@ const StyledContent = styled.span`
 `
 
 NavDropdown.propTypes = {
+  closeMenu: func,
   icon: string,
   name: string.isRequired,
   position: string,
@@ -86,5 +95,6 @@ NavDropdown.propTypes = {
 }
 
 NavDropdown.defaultProps = {
-  position: 'left'
+  position: 'left',
+  prefix: 'fad'
 }

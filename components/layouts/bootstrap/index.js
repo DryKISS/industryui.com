@@ -1,1 +1,4 @@
-export * from './components'
+/**
+ * Layouts - Bootstrap
+ */
+export * from './bootstrap'

@@ -1,14 +1,14 @@
 /**
- * OffCanvas
+ * Molecules - OffCanvas
  */
 
 // React
 import React, { useState, useEffect } from 'react'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 
-// Components
-import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../'
+// UI
 import { Close, CONTEXT } from '../../../'
+import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../'
 
 export const OffCanvasComponent = ({
   closeOnOverlayClick,

@@ -1,4 +1,0 @@
-/**
- * Badge
- */
-export * from './badge'

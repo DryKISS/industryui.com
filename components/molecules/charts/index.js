@@ -1,3 +1,6 @@
-export * from './responsiveBar'
-export * from './lineChart'
-export * from './pieChart'
+/**
+ * Charts
+ */
+export * from './Nivo/responsiveBar'
+export * from './Nivo/lineChart'
+export * from './Nivo/pieChart'

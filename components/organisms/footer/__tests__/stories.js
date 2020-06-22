@@ -3,22 +3,23 @@
  */
 
 // React
-import React, { Fragment } from 'react'
+import React from 'react'
 
 // Storybook
+import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Footer, Image, List, ListItem } from 'components'
+import { Footer } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { Figma, FOOTER, ONE_COLUMN } from '../__mocks__'
+import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__'
 
 export default {
   title: 'Organisms/Footer',
   component: Footer,
-  decorators: [Wrapper],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -28,7 +29,8 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    columns: Figma,
+    columns: DRYKISS,
+    fixed: boolean('Fixed', props.showMonth || false),
     ...props
   }
 
@@ -36,18 +38,9 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = () => <BaseComponent />
-export const footer = () => <BaseComponent columns={FOOTER(renderColumn)} />
 
-export const renderColumn = index => (
-  <Fragment key={index}>
-    <Image alt='Tailwise' src='/drykiss.svg' />
+export const formatter = () => <BaseComponent columns={FORMATTER} />
 
-    <List unstyled>
-      <ListItem>Strapline</ListItem>
-      <ListItem>email@domain.com</ListItem>
-      <ListItem>0201 1234 1234</ListItem>
-    </List>
-  </Fragment>
-)
+export const portal = () => <BaseComponent columns={PORTAL} />
 
-export const _12Column = () => <Footer columns={ONE_COLUMN} />
+export const _12Column = () => <BaseComponent columns={ONE_COLUMN} />

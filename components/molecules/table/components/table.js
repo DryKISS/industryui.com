@@ -1,5 +1,7 @@
 /**
  * Table
+ *
+ * @todo Remove this Rowclick data-item
  */
 
 // React
@@ -101,6 +103,12 @@ export const Table = ({
     return temp.map((row, index) => {
       const context = row.context
       delete row.context
+
+      if (row.hidden) {
+        return null
+      } else {
+        delete row.hidden
+      }
 
       return (
         <TableRow

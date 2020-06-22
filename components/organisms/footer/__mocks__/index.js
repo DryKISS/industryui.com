@@ -1,6 +1,7 @@
 /**
- * Mocks
+ * Footer - Mocks
  */
-export * from './figma'
-export * from './footer'
+export * from './drykiss'
+export * from './formatter'
 export * from './oneColumn'
+export * from './portal'

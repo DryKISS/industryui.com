@@ -10,9 +10,9 @@ import { useInterval } from '../../../'
 export function useTimer ({ autoStart = true, interval = 1000, startTime, endTime } = {}) {
   const getTime = () => {
     let diff = 0
-    const now = endTime ? new Date(endTime) : new Date()
+    const now = endTime ? moment(endTime) : moment()
     if (typeof startTime === 'string') {
-      diff = now.getTime() - new Date(startTime).getTime()
+      diff = now.diff() - moment(startTime).diff()
     }
     return diff > -1 ? diff : 0
   }
@@ -50,11 +50,8 @@ export function useTimer ({ autoStart = true, interval = 1000, startTime, endTim
         .minutes()
         .toString()
         .padStart(2, '0'),
-      hours: temp
-        .hours()
-        .toString()
-        .padStart(2, '0'),
-      days: parseInt(temp.asDays(), 10)
+      hours: parseInt(temp.asHours(), 10),
+      exactHours: temp.asHours().toFixed(2)
     }
   }
 

@@ -1,5 +1,5 @@
 /**
- * Full Caklendar
+ * Full Calendar
  */
 
 // React

@@ -24,18 +24,13 @@ export const Alert = ({ className, close, content, context, header, icon, iconPr
   return (
     visible && (
       <StyledAlert className={className} context={context} style={style}>
-        {close && (
-          <StyledClose click={handleClose} context={header ? 'white' : 'dark'} icon='times' />
-        )}
+        {close && <StyledClose click={handleClose} context='white' header={header} icon='times' />}
+
         {header && (
           <AlertHeader context={context} header={header} icon={icon} iconPrefix={iconPrefix} />
         )}
-        <AlertContent
-          content={content}
-          context={context}
-          icon={header ? null : icon}
-          iconPrefix={iconPrefix}
-        />
+
+        <AlertContent content={content} icon={header ? null : icon} iconPrefix={iconPrefix} />
       </StyledAlert>
     )
   )
@@ -54,7 +49,7 @@ const StyledClose = styled(Close)`
   margin: 0;
   position: absolute;
   right: 0;
-  top: 8px;
+  top: ${({ header }) => (header ? '0' : '4px')};
 `
 
 Alert.propTypes = {

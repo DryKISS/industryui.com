@@ -19,6 +19,14 @@ import Router from 'next/router'
 import { Container } from 'decorators'
 import './decorators/icons'
 
+// CSS
+import '@fullcalendar/core/main.css'
+import '@fullcalendar/daygrid/main.css'
+import '@fullcalendar/timegrid/main.css'
+import 'emoji-mart/css/emoji-mart.css'
+import 'react-datepicker/dist/react-datepicker.css'
+import 'tippy.js/dist/tippy.css'
+
 const actionWithPromise = () => {
   action('clicked link')()
   return new Promise((_, reject) => reject())

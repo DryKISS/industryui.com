@@ -6,6 +6,9 @@
 import { forwardRef } from 'react'
 import { array, bool, object, string } from 'prop-types'
 
+// Lodash
+import _range from 'lodash/range'
+
 // UI
 import { FieldHOC } from '../'
 
@@ -21,13 +24,13 @@ export const SelectField = forwardRef(
         </option>
       ]
 
-      for (let i = range[1]; i <= range[0]; i++) {
+      _range(range[1], range[0]).map(i =>
         options.push(
           <option key={`range${i}`} value={i}>
             {i}
           </option>
         )
-      }
+      )
 
       return options
     }
