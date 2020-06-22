@@ -12,6 +12,7 @@ import { Wrapper } from 'decorators'
 // React Hook Form
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers'
 
 // UI
 import {
@@ -67,7 +68,7 @@ const checkbox = [
 ]
 
 export const all = () => {
-  const { errors, handleSubmit, register } = useForm({ validationSchema: schema })
+  const { errors, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
   const onSubmit = data => {}
 
   console.log(errors)

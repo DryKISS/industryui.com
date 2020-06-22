@@ -12,6 +12,7 @@ import { Wrapper } from 'decorators'
 // React Hook Form
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers'
 
 // UI
 import { Button, DatePickerInput, Divider, FormForm } from 'components'
@@ -37,7 +38,7 @@ const BaseComponent = (props = {}) => {
 
   const { errors, getValues, handleSubmit, register } = useForm({
     defaultValues: { dayPicker: 10 },
-    validationSchema: schema
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = data => {}

@@ -12,6 +12,7 @@ import { Wrapper } from 'decorators'
 // React Hook Form
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers'
 
 // Date utility
 import addDays from 'date-fns/addDays'
@@ -42,7 +43,7 @@ const BaseComponent = (props = {}) => {
   })
 
   const { control, errors, getValues, handleSubmit } = useForm({
-    validationSchema: schema
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = data => {}
@@ -76,7 +77,7 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = () => <BaseComponent />
-export const defaultValue = () => <BaseComponent defaultValue={new Date('2017-10-11')} />
+export const defaultValue = () => <BaseComponent defaultValue={addDays(new Date(), 5)} />
 export const time = () => <BaseComponent dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
 
 export const workingHours = () => {

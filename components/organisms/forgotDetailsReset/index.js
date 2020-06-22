@@ -9,6 +9,7 @@ import { func, string } from 'prop-types'
 
 // React hook form
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers'
 
 // UI
 import { Alert, Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
@@ -19,7 +20,7 @@ import styled from 'styled-components'
 
 export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    validationSchema: ForgotDetailsResetSchema
+    resolver: yupResolver(ForgotDetailsResetSchema)
   })
 
   return (

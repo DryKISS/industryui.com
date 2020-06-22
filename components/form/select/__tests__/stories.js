@@ -11,6 +11,7 @@ import { Wrapper } from 'decorators'
 // Reach Hook Form
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers'
 
 // UI
 import { Button, FormForm, FormLabel, SelectField, SelectCountryField } from 'components'
@@ -33,7 +34,7 @@ const BaseComponent = (props = {}) => {
     select: yup.string().required()
   })
 
-  const { errors, getValues, handleSubmit, register } = useForm({ validationSchema: schema })
+  const { errors, getValues, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = data => {}
 
