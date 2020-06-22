@@ -17,17 +17,20 @@ import { StyledInput } from '../../../'
 // Constants
 import { PROPERTIES } from './constants'
 
-export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...props }) => {
+export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...parentProps }) => {
   return (
     <Controller
-      as={<ReactDatePicker customInput={<StyledInput errors={errors[name]} />} {...props} />}
+      render={props => (
+        <ReactDatePicker
+          customInput={<StyledInput errors={errors[name]} />}
+          selected={props.value}
+          {...props}
+          {...parentProps}
+        />
+      )}
       control={control}
       defaultValue={defaultValue}
       name={name}
-      onChange={([selected]) => {
-        return selected
-      }}
-      valueName='selected'
     />
   )
 }

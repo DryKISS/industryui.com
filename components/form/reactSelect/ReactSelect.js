@@ -31,7 +31,7 @@ export const ReactSelectField = ({
   options,
   required,
   selectedOption,
-  ...props
+  ...parentProps
 }) => {
   const Component = forwardRef((data, ref) => {
     if (async) {
@@ -52,14 +52,12 @@ export const ReactSelectField = ({
   return (
     <Wrapper error={error || errors[name]}>
       <Controller
-        as={<Component options={options} selectedOption={selectedOption} {...props} />}
+        render={props => (
+          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
+        )}
         control={control}
         defaultValue={defaultValue}
         name={name}
-        onChange={([selected]) => {
-          props.onChange && props.onChange(selected)
-          return selected
-        }}
         rules={{ required }}
       />
     </Wrapper>
