@@ -1927,6 +1927,11 @@
     lodash.camelcase "^4.3.0"
     protobufjs "^6.8.6"
 
+"@hookform/resolvers@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-0.0.5.tgz#eddf423734c35b1b02a048528be80a64f67781ab"
+  integrity sha512-EDp4nclPiE4slWS/v9Q/Ad9ETdqC4zLivDOkj+PCvsXc2mpe9YlkXYM4N3iR9cdcSKA34EG1bTq4+5JG8GaYAQ==
+
 "@iarna/toml@2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.3.tgz#f060bf6eaafae4d56a7dac618980838b0696e2ab"
@@ -14333,10 +14338,10 @@ react-helmet-async@^1.0.2:
     react-fast-compare "^2.0.4"
     shallowequal "^1.1.0"
 
-react-hook-form@^5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-5.4.2.tgz#a610f565387191612e3b4286c813949542e84caf"
-  integrity sha512-0okvGDiIboTxgWdLTgqsuNeuJPE9YLNuwS0z+1iNvGCYXcHFsrnryI0RCtcFMClflmFKuA4OtD9xZxSrmdLkbw==
+react-hook-form@6.0.0-rc.5:
+  version "6.0.0-rc.5"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.0.0-rc.5.tgz#f3965f66a3160fa37fcd44a88c54d8d7c65106d0"
+  integrity sha512-u+9po9D2gV6LjzCAdLsIHghG2mpE3+g49HZMWEl222NKqZ50b9g76f0rmw9jkBwRnS3cqxWcrmqlBD6YptPw5g==
 
 react-hotkeys@2.0.0:
   version "2.0.0"
