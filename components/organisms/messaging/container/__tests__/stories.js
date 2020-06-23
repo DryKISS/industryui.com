@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 // Moment
 import moment from 'moment'
@@ -12,7 +12,7 @@ import moment from 'moment'
 import { Wrapper } from 'decorators'
 
 // UI
-import { filterByKey, filterByString, MessagingContainer, useForm } from 'components'
+import { filterByKey, filterByString, MessagingContainer } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -30,22 +30,17 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const initialState = {
-    messagingFilter: 'all'
-  }
+  const [messaging, setMessaging] = useState(messages)
 
-  const [messaging, setMessaging] = useState(null)
-  const { change, form } = useForm(initialState)
-
-  useEffect(() => {
-    setMessaging(messages)
-
-    if (form.messagingFilter !== 'all') {
+  const handleFilter = type => {
+    if (type !== 'all') {
       const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
-      const filter = filterByKey(msgs, 'icon', form.messagingFilter)
+      const filter = filterByKey(msgs, 'icon', type)
       setMessaging(filter)
+    } else {
+      setMessaging(messages)
     }
-  }, [form])
+  }
 
   const handleSearch = query => {
     if (query) {
@@ -93,8 +88,8 @@ const BaseComponent = (props = {}) => {
       { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
     messages: messaging,
-    onFilter: change,
     onSearch: handleSearch,
+    onFilter: handleFilter,
     onSubmit: handleSubmit,
     ...props
   }

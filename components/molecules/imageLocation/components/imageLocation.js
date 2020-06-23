@@ -8,20 +8,24 @@ import { array, bool, func, string, object } from 'prop-types'
 
 import styled from 'styled-components'
 
+// Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Select, useForm } from '../../../'
+import { FormLabel, SelectField } from '../../../'
 import { ImageWrapper } from '../../'
 
 export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, options, show }) => {
-  const INITIAL_STATE = {
-    option: initial
-  }
-
   const [item, setItem] = useState(null)
   const [coordinates, setCoordinates] = useState(null)
 
-  const { change, form } = useForm(INITIAL_STATE)
-  const { option } = form
+  const { register, watch } = useForm({
+    defaultValues: {
+      option: initial
+    }
+  })
+
+  const option = watch('option')
 
   useEffect(() => {
     const selected = options.find(o => o.value === parseInt(option)) || null
@@ -36,13 +40,13 @@ export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, o
 
   return (
     <StyledImageLocation show={show}>
-      <Select
-        change={change}
-        id='option'
-        label={label}
-        options={[{ text: `Select ${label}`, value: '' }, ...options]}
-        value={option}
-      />
+      <FormLabel label={label}>
+        <SelectField
+          register={register}
+          name='option'
+          options={[{ text: `Select ${label}`, value: '' }, ...options]}
+        />
+      </FormLabel>
 
       {item && (
         <ImageWrapper coordinates={coordinates} item={item} setCoordinates={setCoordinates} />

@@ -9,8 +9,11 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
+// Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { ImageLocation, Select, useForm } from '../../../'
+import { FormLabel, ImageLocation, SelectField } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -25,29 +28,31 @@ import '../__resources__/images/third-floor.png'
 import '../__resources__/images/fourth-floor.png'
 
 const PropertySelect = ({ locationChange, properties }) => {
-  const INITIAL_STATE = {
+  const defaultValues = {
     property: 2,
     floor: 2
   }
 
-  const { change, form } = useForm(INITIAL_STATE)
-  const { floor, property } = form
+  const { watch, register } = useForm({
+    defaultValues
+  })
+
+  const floor = watch('floor')
+  const property = watch('property')
 
   return (
     <>
-      <Select
-        change={change}
-        id='property'
-        label='Property'
-        options={[{ text: 'Select property', value: '' }, ...properties]}
-        value={property}
-      />
+      <FormLabel label='Property'>
+        <SelectField
+          register={register}
+          name='property'
+          options={[{ text: 'Select property', value: '' }, ...properties]}
+        />
+      </FormLabel>
 
       {property && (
         <ImageLocation
-          change={change}
           locationChange={locationChange}
-          id='floor'
           key={property}
           label='Floor'
           options={properties[property - 1].options}

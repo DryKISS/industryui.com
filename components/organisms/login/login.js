@@ -35,9 +35,7 @@ export const Login = ({
   remember,
   showLabel,
   showPassword,
-  showPlaceholder,
-  submitLoading,
-  submitResult
+  showPlaceholder
 }) => {
   const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
   const [showPass, setShowPass] = useState(false)
@@ -150,9 +148,7 @@ Login.propTypes = {
   remember: string,
   showLabel: bool,
   showPassword: bool,
-  showPlaceholder: bool,
-  submitLoading: bool,
-  submitResult: object
+  showPlaceholder: bool
 }
 
 Login.defaultProps = {
@@ -162,10 +158,5 @@ Login.defaultProps = {
   pathForgot: '/account/forgot-details',
   showLabel: true,
   showPassword: false,
-  showPlaceholder: false,
-  submitLoading: true,
-  submitResult: {
-    type: '',
-    message: ''
-  }
+  showPlaceholder: false
 }

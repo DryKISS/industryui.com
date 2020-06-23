@@ -3,22 +3,33 @@
  */
 
 // React
-import React from 'react'
+import React, { useEffect } from 'react'
 import { func, string } from 'prop-types'
 
+// Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Column, Search, Select, Row } from '../../../../'
+import { Column, Search, SelectField, Row } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
+const filters = [
+  { text: 'All', value: 'all' },
+  { text: 'Email', value: 'email' },
+  { text: 'Comment', value: 'comment' },
+  { text: 'Notification', value: 'notification' }
+]
+
 export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
-  const Items = [
-    { text: 'All', value: 'all' },
-    { text: 'Email', value: 'email' },
-    { text: 'Comment', value: 'comment' },
-    { text: 'Notification', value: 'notification' }
-  ]
+  const { register, watch } = useForm()
+
+  const messagingFilter = watch('messagingFilter')
+
+  useEffect(() => {
+    onFilter(messagingFilter)
+  }, [messagingFilter])
 
   return (
     <StyledContainer>
@@ -28,7 +39,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
         </Column>
 
         <Column md={6}>
-          <StyledSelect change={onFilter} id='messagingFilter' options={Items} />
+          <StyledSelect register={register} name='messagingFilter' options={filters} />
         </Column>
       </Row>
     </StyledContainer>
@@ -45,7 +56,7 @@ const StyledSearch = styled(Search)`
   width: 75%;
 `
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(SelectField)`
   width: 75%;
   label {
     margin: 0;
