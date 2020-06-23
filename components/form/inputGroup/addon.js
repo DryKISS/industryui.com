@@ -9,12 +9,16 @@ import { any, bool, node, oneOf } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const InputGroupAddon = ({ addonType, className, children, text }) => {
+// Context
+import { CONTEXT } from '../../'
+
+export const InputGroupAddon = ({ addonType, className, children, context, text }) => {
   return (
     <StyledInputGroupAddon
       addonType={addonType}
       className={addonType}
       children={children}
+      context={context}
       text={text}
     />
   )
@@ -31,7 +35,7 @@ const StyledInputGroupAddon = styled.div`
   ${({ text }) =>
     text &&
     css`
-      background-color: #e9ecef;
+      background-color: ${({ context, theme }) => theme.COLOUR[context]};
       border: 1px solid #ced4da;
       border-radius: 0.25rem;
       color: #495057;
@@ -74,9 +78,11 @@ InputGroupAddon.propTypes = {
   addonType: oneOf(['prepend', 'append']),
   className: any,
   children: node,
+  context: oneOf(Object.values(CONTEXT)),
   text: bool
 }
 
 InputGroupAddon.defaultProps = {
-  addonType: 'append'
+  addonType: 'append',
+  context: 'light'
 }

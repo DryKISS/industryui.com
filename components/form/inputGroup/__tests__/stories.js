@@ -9,12 +9,15 @@ import React from 'react'
 import { withKnobs } from '@storybook/addon-knobs'
 import { Size, Wrapper } from 'decorators'
 
+// Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, Icon, Input, InputGroup, InputGroupAddon, useForm } from 'components'
+import { Button, FormField, Icon, InputGroup, InputGroupAddon } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Controlled/InputGroup',
+  title: 'Form/InputGroup',
   component: InputGroup,
   decorators: [Wrapper, withKnobs],
   parameters: {
@@ -33,40 +36,40 @@ const BaseComponent = (props = {}) => {
   return <InputGroup {...defaultProps} />
 }
 
-export const prependButton = () => {
-  const { change, form, clear } = useForm({ id: '' })
+const Input = () => {
+  const { register } = useForm()
 
+  return <FormField name='id' placeholder='Search...' register={register} />
+}
+
+export const prependButton = () => {
   return (
     <BaseComponent>
       <InputGroupAddon addonType='prepend'>
         <Button content='Search' type='submit' />
       </InputGroupAddon>
 
-      <Input change={change} clear={clear} id='id' placeholder='Search...' value={form.id} />
+      <Input />
     </BaseComponent>
   )
 }
 
 export const prependIcon = () => {
-  const { change, form } = useForm({ id: '' })
-
   return (
     <BaseComponent>
       <InputGroupAddon addonType='prepend' text>
         <Icon icon='search' />
       </InputGroupAddon>
 
-      <Input change={change} id='id' placeholder='Search...' value={form.id} />
+      <Input />
     </BaseComponent>
   )
 }
 
 export const appendButton = () => {
-  const { change, form, clear } = useForm({ id: '' })
-
   return (
     <BaseComponent>
-      <Input change={change} clear={clear} id='id' placeholder='Search...' value={form.id} />
+      <Input />
 
       <InputGroupAddon addonType='append'>
         <Button content='Search' type='submit' />
@@ -76,11 +79,9 @@ export const appendButton = () => {
 }
 
 export const appendIcon = () => {
-  const { change, form } = useForm({ id: '' })
-
   return (
     <BaseComponent>
-      <Input change={change} id='id' placeholder='Search...' value={form.id} />
+      <Input />
 
       <InputGroupAddon addonType='append' text>
         <Icon icon='search' />

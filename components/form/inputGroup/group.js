@@ -32,7 +32,7 @@ const StyledInputGroup = styled.div`
       border-bottom-left-radius: 0;
     }
 
-    :not(:last-child) {
+    :first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }

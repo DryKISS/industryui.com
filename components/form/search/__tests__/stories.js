@@ -14,7 +14,7 @@ import { Search } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Controlled/Search',
+  title: 'Form/Search',
   component: Search,
   decorators: [Wrapper],
   parameters: {

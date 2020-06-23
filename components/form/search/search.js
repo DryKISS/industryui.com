@@ -5,8 +5,11 @@
 // React
 import { bool, func, string, oneOf } from 'prop-types'
 
+// Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, Form, Icon, Input, InputGroup, InputGroupAddon, useForm } from '../../../../'
+import { Button, FormForm, FormField, Icon, InputGroup, InputGroupAddon } from '../../'
 
 export const Search = ({
   appendSearchButton,
@@ -19,20 +22,18 @@ export const Search = ({
   type,
   value
 }) => {
-  const initialState = {
-    query: value || ''
-  }
+  const { handleSubmit, register } = useForm({
+    defaultValues: {
+      query: value
+    }
+  })
 
-  const { change, form, clear } = useForm(initialState)
-  const { query } = form
-
-  const handleClear = id => {
-    clear(id)
-    onSearch('')
+  const onSubmit = data => {
+    onSearch(data.query)
   }
 
   return (
-    <Form className={className} submit={() => onSearch(query)}>
+    <FormForm className={className} handleSubmit={handleSubmit(onSubmit)}>
       <InputGroup>
         {prependSearchIcon && (
           <InputGroupAddon addonType='prepend' text>
@@ -40,14 +41,12 @@ export const Search = ({
           </InputGroupAddon>
         )}
 
-        <Input
-          change={change}
-          clear={handleClear}
-          id='query'
+        <FormField
+          register={register}
+          name='query'
           placeholder={placeholder}
           required={false}
           type={type}
-          value={query}
         />
 
         {appendSearchIcon && (
@@ -62,7 +61,7 @@ export const Search = ({
           </InputGroupAddon>
         )}
       </InputGroup>
-    </Form>
+    </FormForm>
   )
 }
 
