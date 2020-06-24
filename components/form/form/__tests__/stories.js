@@ -9,16 +9,12 @@ import React from 'react'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { Controller, useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers'
-
 // UI
 import {
   Button,
   CheckboxField,
   Column,
+  Controller,
   CurrencyInput,
   DatePickerCalendar,
   Divider,
@@ -34,7 +30,10 @@ import {
   SelectField,
   Space,
   Text,
-  TextareaField
+  TextareaField,
+  useForm,
+  yup,
+  yupResolver
 } from 'components'
 
 import Readme from '../README.md'

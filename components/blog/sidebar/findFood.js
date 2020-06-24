@@ -23,7 +23,7 @@ import { yupResolver } from '@hookform/resolvers'
 import {
   Button,
   FormError,
-  FormForm,
+  Form,
   FormField,
   FormLabel,
   Icon,
@@ -121,7 +121,7 @@ const StyledContainer = styled.div`
   padding: 30px 15px 20px;
 `
 
-const StyledForm = styled(FormForm)`
+const StyledForm = styled(Form)`
   .Form-label {
     font-size: 2rem;
     line-height: 2rem;

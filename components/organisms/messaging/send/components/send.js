@@ -10,7 +10,7 @@ import { number, func, array } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, EmojiMart, FormForm, Icon, TextareaField, Dropdown } from '../../../../'
+import { Button, EmojiMart, Form, Icon, TextareaField, Dropdown } from '../../../../'
 
 // Style
 import styled from 'styled-components'
@@ -134,7 +134,7 @@ const StyledPickerContainer = styled(StyledContainer)`
   z-index: 999;
 `
 
-const StyledForm = styled(FormForm)`
+const StyledForm = styled(Form)`
   display: flex;
   position: relative;
   margin: 0;
