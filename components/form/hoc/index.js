@@ -43,6 +43,7 @@ export const FieldHOC = ({
 
 FieldHOC.defaultProps = {
   errors: {},
+  register: () => {},
   show: true,
   showError: true
 }

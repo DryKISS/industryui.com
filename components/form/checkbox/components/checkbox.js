@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { array, bool, string } from 'prop-types'
+import { array, bool, object, string } from 'prop-types'
 
 // UI
 import { FieldHOC } from '../../'
@@ -62,11 +62,13 @@ const StyledLabel = styled.label`
 
 CheckboxField.propTypes = {
   data: array.isRequired,
+  errors: object,
   legend: string,
   stacked: bool
 }
 
 CheckboxField.defaultProps = {
   data: [],
+  errors: {},
   stacked: false
 }

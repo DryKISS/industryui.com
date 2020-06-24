@@ -6,7 +6,17 @@
 import { any, bool, func, string } from 'prop-types'
 
 // UI
-import { Button, Checkbox, Column, DatePicker, Form, Input, Link, Row } from '../../'
+import {
+  Button,
+  CheckboxField,
+  Column,
+  DatePicker,
+  FormForm,
+  FormField,
+  FormLabel,
+  Link,
+  Row
+} from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -47,36 +57,42 @@ export const Register = ({
     {
       id: 'terms',
       label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.',
-      required: true,
-      isChecked: terms
+      required: true
     },
     {
       id: 'marketing',
       label:
-        'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.',
-      isChecked: marketing
+        'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.'
     }
   ]
 
   return (
-    <Form submit={submit}>
+    <FormForm handleSubmit={() => {}}>
       <Row>
         <Column md={6}>
-          <Input label='First name' id='nameFirst' change={change} value={nameFirst} />
+          <FormLabel label='First name'>
+            <FormField name='nameFirst' onChange={change} value={nameFirst} />
+          </FormLabel>
         </Column>
 
         <Column md={6}>
-          <Input label='Last name' id='nameLast' change={change} value={nameLast} />
+          <FormLabel label='Last name'>
+            <FormField name='nameLast' onChange={change} value={nameLast} />
+          </FormLabel>
         </Column>
       </Row>
 
-      <Input label='Email' id='email' change={change} type='email' value={email} />
+      <FormLabel label='Email'>
+        <FormField name='email' onChange={change} type='email' value={email} />
+      </FormLabel>
 
-      <Input label='Password' id='password' change={change} type='password' value={password} />
+      <FormLabel label='Password'>
+        <FormField name='password' onChange={change} type='password' value={password} />
+      </FormLabel>
 
       {birthday && renderBirthday()}
 
-      <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
+      <CheckboxField data={CHECKBOX_TERMS} onChange={change} stacked />
 
       <Button
         align='right'
@@ -90,7 +106,7 @@ export const Register = ({
       <StyledLink>
         Already have an account? <Link to={pathLogin}>Log in</Link>
       </StyledLink>
-    </Form>
+    </FormForm>
   )
 }
 

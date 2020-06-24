@@ -10,7 +10,15 @@ import { select, text, withKnobs, number } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, Input, OffCanvas, Progress, ProgressBar } from 'components'
+import {
+  Button,
+  FormForm,
+  FormField,
+  FormLabel,
+  OffCanvas,
+  Progress,
+  ProgressBar
+} from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -126,18 +134,14 @@ export const withMailForm = storyHOC(
           toggleShow={toggleCheck}
           width={width}
         >
-          <Form submit={() => {}}>
-            <Input
-              change={() => {}}
-              label='Email'
-              id='email'
-              placeholder='Enter email address'
-              type='email'
-            />
+          <FormForm handleSubmit={() => {}}>
+            <FormLabel label='Email'>
+              <FormField name='email' placeholder='Enter email address' type='email' />
+            </FormLabel>
             <Button secondary type='submit'>
               Send reset link
             </Button>
-          </Form>
+          </FormForm>
           <br />
           <Progress size='md'>
             <ProgressBar striped animated now={90}>
@@ -159,18 +163,14 @@ export const withDynamicContent = storyHOC(
         component: function () {
           return (
             <>
-              <Form submit={() => {}}>
-                <Input
-                  change={() => {}}
-                  label='Email'
-                  id='email'
-                  placeholder='Enter email address'
-                  type='email'
-                />
+              <FormForm handleSubmit={() => {}}>
+                <FormLabel label='Email'>
+                  <FormField name='email' placeholder='Enter email address' type='email' />
+                </FormLabel>
                 <Button secondary type='submit'>
                   Send reset link
                 </Button>
-              </Form>
+              </FormForm>
               <br />
               <Progress size='md'>
                 <ProgressBar striped animated now={90}>

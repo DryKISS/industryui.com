@@ -9,7 +9,7 @@
 import { element, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Input } from '../../'
+import { FormField } from '../../'
 
 // Papa parse
 const PapaParse = require('papaparse/papaparse.min.js')
@@ -34,7 +34,13 @@ export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
   }
 
   return (
-    <Input accept='.csv, text/csv' id='inputId' label='CSV Upload' change={change} type='file' />
+    <FormField
+      accept='.csv, text/csv'
+      id='inputId'
+      label='CSV Upload'
+      onChange={change}
+      type='file'
+    />
   )
 }
 

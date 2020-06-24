@@ -3,7 +3,7 @@
  */
 
 // React
-import { arrayOf, bool, number, oneOfType, string, object } from 'prop-types'
+import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -122,6 +122,7 @@ FormField.propTypes = {
   name: string.isRequired,
   placeholder: string,
   readOnly: bool,
+  register: func,
   style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
@@ -133,5 +134,6 @@ FormField.defaultProps = {
   disabled: false,
   errors: {},
   readOnly: false,
+  register: () => {},
   type: 'text'
 }
