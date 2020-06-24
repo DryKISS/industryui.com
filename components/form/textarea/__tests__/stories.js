@@ -13,7 +13,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, TextareaField, FormLabel } from '../../../../'
+import { Button, Form, TextareaField, FormLabel } from '../../../../'
 import Readme from '../README.md'
 
 export default {
@@ -41,13 +41,13 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Description'>
         <TextareaField {...defaultProps} />
       </FormLabel>
 
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

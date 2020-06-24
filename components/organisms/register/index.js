@@ -11,7 +11,7 @@ import {
   CheckboxField,
   Column,
   DatePicker,
-  FormForm,
+  Form,
   FormField,
   FormLabel,
   Link,
@@ -67,7 +67,7 @@ export const Register = ({
   ]
 
   return (
-    <FormForm handleSubmit={() => {}}>
+    <Form handleSubmit={() => {}}>
       <Row>
         <Column md={6}>
           <FormLabel label='First name'>
@@ -106,7 +106,7 @@ export const Register = ({
       <StyledLink>
         Already have an account? <Link to={pathLogin}>Log in</Link>
       </StyledLink>
-    </FormForm>
+    </Form>
   )
 }
 

@@ -10,15 +10,7 @@ import { select, text, withKnobs, number } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
-import {
-  Button,
-  FormForm,
-  FormField,
-  FormLabel,
-  OffCanvas,
-  Progress,
-  ProgressBar
-} from 'components'
+import { Button, Form, FormField, FormLabel, OffCanvas, Progress, ProgressBar } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -134,14 +126,14 @@ export const withMailForm = storyHOC(
           toggleShow={toggleCheck}
           width={width}
         >
-          <FormForm handleSubmit={() => {}}>
+          <Form handleSubmit={() => {}}>
             <FormLabel label='Email'>
               <FormField name='email' placeholder='Enter email address' type='email' />
             </FormLabel>
             <Button secondary type='submit'>
               Send reset link
             </Button>
-          </FormForm>
+          </Form>
           <br />
           <Progress size='md'>
             <ProgressBar striped animated now={90}>
@@ -163,14 +155,14 @@ export const withDynamicContent = storyHOC(
         component: function () {
           return (
             <>
-              <FormForm handleSubmit={() => {}}>
+              <Form handleSubmit={() => {}}>
                 <FormLabel label='Email'>
                   <FormField name='email' placeholder='Enter email address' type='email' />
                 </FormLabel>
                 <Button secondary type='submit'>
                   Send reset link
                 </Button>
-              </FormForm>
+              </Form>
               <br />
               <Progress size='md'>
                 <ProgressBar striped animated now={90}>

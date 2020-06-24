@@ -10,7 +10,7 @@ import { bool } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, PageHeading } from '../../'
+import { Alert, Button, FormField, Form, FormLabel, PageHeading } from '../../'
 
 export const PasswordChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({ mode: 'onChange' })
@@ -24,7 +24,7 @@ export const PasswordChange = ({ showPlaceholder }) => {
 
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Old password'>
           <FormField
             errors={errors}
@@ -64,7 +64,7 @@ export const PasswordChange = ({ showPlaceholder }) => {
           size='lg'
           type='submit'
         />
-      </FormForm>
+      </Form>
     </>
   )
 }

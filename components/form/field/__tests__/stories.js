@@ -13,7 +13,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, FormField, FormLabel } from '../../../../'
+import { Button, Form, FormField, FormLabel } from '../../../../'
 import Readme from '../README.md'
 
 export default {
@@ -45,7 +45,7 @@ const BaseComponent = (props = {}) => {
     '/^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/'
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Email'>
         <FormField {...defaultProps} regExp={pattern} />
       </FormLabel>
@@ -54,7 +54,7 @@ const BaseComponent = (props = {}) => {
       </FormLabel>
 
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

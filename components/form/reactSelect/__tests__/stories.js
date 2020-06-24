@@ -13,7 +13,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, FormLabel, ReactSelectField, usePrevious } from 'components'
+import { Button, Form, FormLabel, ReactSelectField, usePrevious } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -64,7 +64,7 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='React Select'>
         <ReactSelectField {...defaultProps} />
       </FormLabel>
@@ -72,7 +72,7 @@ const BaseComponent = (props = {}) => {
       {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
 
       <Button content='Submit' secondary type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 
@@ -181,7 +181,7 @@ export const chained = () => {
         It does not matter if the user changes their option
       </p>
 
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Customers'>
           <ReactSelectField
             defaultValue={Customers[0]}
@@ -215,7 +215,7 @@ export const chained = () => {
         )}
 
         <Button content='Submit' secondary type='submit' />
-      </FormForm>
+      </Form>
     </>
   )
 }
@@ -306,7 +306,7 @@ export const chainedNoDefault = () => {
         It does not matter if the user changes their option
       </p>
 
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Customers'>
           <ReactSelectField
             defaultValue={null}
@@ -340,7 +340,7 @@ export const chainedNoDefault = () => {
         )}
 
         <Button content='Submit' secondary type='submit' />
-      </FormForm>
+      </Form>
     </>
   )
 }

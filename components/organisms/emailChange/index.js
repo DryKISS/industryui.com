@@ -10,7 +10,7 @@ import { bool } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, PageHeading } from '../../'
+import { Alert, Button, FormField, Form, FormLabel, PageHeading } from '../../'
 
 export const EmailChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
@@ -26,7 +26,7 @@ export const EmailChange = ({ showPlaceholder }) => {
 
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
           <FormField
             autoFocus
@@ -50,7 +50,7 @@ export const EmailChange = ({ showPlaceholder }) => {
         <p>
           We will send you a re-validation email after this. Please also check your spam folder.
         </p>
-      </FormForm>
+      </Form>
     </>
   )
 }

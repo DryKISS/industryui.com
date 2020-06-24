@@ -25,7 +25,7 @@ import {
   Dropzone,
   FormError,
   FormField,
-  FormForm,
+  Form,
   FormLabel,
   Heading,
   RadioField,
@@ -47,7 +47,7 @@ import { COLOURS } from '../../select/__mocks__/colours'
 
 export default {
   title: 'Form',
-  component: FormForm,
+  component: Form,
   decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
@@ -91,7 +91,7 @@ export const all = () => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <Heading content='Inputs' tag='h1' />
 
       <Space />
@@ -197,6 +197,6 @@ export const all = () => {
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend='Gender?' name='radio' />
 
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }

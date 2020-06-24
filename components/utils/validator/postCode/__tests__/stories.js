@@ -12,7 +12,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, FormField, FormLabel, validatorPostCode } from 'components'
+import { Button, Form, FormField, FormLabel, validatorPostCode } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -36,7 +36,7 @@ export const main = () => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <p>A valid UK postcode will look something like `SW192EZ`</p>
 
       <FormLabel label='Post code'>
@@ -47,6 +47,6 @@ export const main = () => {
 
       {valid && <p>valid</p>}
       {!valid && formState.isSubmitted && <p>not valid</p>}
-    </FormForm>
+    </Form>
   )
 }

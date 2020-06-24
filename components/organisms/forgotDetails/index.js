@@ -10,7 +10,7 @@ import { bool, string } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
+import { Alert, Button, FormField, Form, FormLabel, Link, PageHeading } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -29,7 +29,7 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
 
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
           <FormField
             autoFocus
@@ -53,7 +53,7 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
         <Link to={pathLogIn} passHref>
           <StyledLink>Back to Log In</StyledLink>
         </Link>
-      </FormForm>
+      </Form>
     </>
   )
 }

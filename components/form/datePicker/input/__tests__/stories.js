@@ -15,7 +15,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers'
 
 // UI
-import { Button, DatePickerInput, Divider, FormForm } from 'components'
+import { Button, DatePickerInput, Divider, Form } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -59,7 +59,7 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerInput {...defaultProps} />
 
       <Divider />
@@ -79,7 +79,7 @@ const BaseComponent = (props = {}) => {
       {errors.monthPicker && errors.monthPicker.message}
       <br />
       {errors.yearPicker && errors.yearPicker.message}
-    </FormForm>
+    </Form>
   )
 }
 

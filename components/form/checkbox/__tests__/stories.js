@@ -13,7 +13,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, CheckboxField } from 'components'
+import { Button, Form, CheckboxField } from 'components'
 import Readme from '../README.md'
 
 const data = [
@@ -55,10 +55,10 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <CheckboxField {...defaultProps} data={data} />
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

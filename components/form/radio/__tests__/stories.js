@@ -13,7 +13,7 @@ import { Wrapper } from 'decorators'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, RadioField } from '../../../../'
+import { Button, Form, RadioField } from '../../../../'
 import Readme from '../README.md'
 
 // Data
@@ -44,10 +44,10 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <RadioField {...defaultProps} data={RADIO_GENDER()} />
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

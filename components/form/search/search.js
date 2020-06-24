@@ -9,7 +9,7 @@ import { bool, func, string, oneOf } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormForm, FormField, Icon, InputGroup, InputGroupAddon } from '../../'
+import { Button, Form, FormField, Icon, InputGroup, InputGroupAddon } from '../../'
 
 export const Search = ({
   appendSearchButton,
@@ -33,7 +33,7 @@ export const Search = ({
   }
 
   return (
-    <FormForm className={className} handleSubmit={handleSubmit(onSubmit)}>
+    <Form className={className} handleSubmit={handleSubmit(onSubmit)}>
       <InputGroup>
         {prependSearchIcon && (
           <InputGroupAddon addonType='prepend' text>
@@ -61,7 +61,7 @@ export const Search = ({
           </InputGroupAddon>
         )}
       </InputGroup>
-    </FormForm>
+    </Form>
   )
 }
 

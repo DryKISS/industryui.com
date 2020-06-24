@@ -14,7 +14,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers'
 
 // UI
-import { Button, FormForm, FormLabel, SelectField, SelectCountryField } from 'components'
+import { Button, Form, FormLabel, SelectField, SelectCountryField } from 'components'
 import Readme from '../README.md'
 import { COLOURS, EXPENSES } from '../__mocks__'
 
@@ -52,7 +52,7 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Select'>
         {!props.country && <SelectField {...defaultProps} />}
         {props.country && <SelectCountryField {...defaultProps} />}
@@ -62,7 +62,7 @@ const BaseComponent = (props = {}) => {
 
       {getValues() && <p>{getValues().select}</p>}
       {errors.select && errors.select.message}
-    </FormForm>
+    </Form>
   )
 }
 

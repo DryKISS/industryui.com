@@ -16,7 +16,7 @@ import {
   Button,
   // Checkbox,
   FormField,
-  FormForm,
+  Form,
   FormLabel,
   Link,
   PageHeading,
@@ -67,7 +67,7 @@ export const Login = ({
 
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
           <FormField
             autoFocus
@@ -114,7 +114,7 @@ export const Login = ({
             </ForgotPasswordWrapper>
           )}
         </div>
-      </FormForm>
+      </Form>
 
       {pathSignUp && (
         <>

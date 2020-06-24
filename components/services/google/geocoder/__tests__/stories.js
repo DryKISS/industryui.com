@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { GeoCoder } from '../'
-import { Button, Column, FormForm, FormField, FormLabel, Row, useGeoCoder } from '../../../../'
+import { Button, Column, Form, FormField, FormLabel, Row, useGeoCoder } from '../../../../'
 
 export default {
   title: 'Services/Google/GeoCoder',
@@ -61,7 +61,7 @@ export const main = () => {
   return (
     <Row>
       <Column md={8}>
-        <FormForm handleSubmit={handleSubmit(submitForm)}>
+        <Form handleSubmit={handleSubmit(submitForm)}>
           <FormLabel label='Address'>
             <FormField register={register} label='Address' name='address' />
           </FormLabel>
@@ -80,7 +80,7 @@ export const main = () => {
           <Button centre secondary type='submit'>
             Get Coordinates
           </Button>
-        </FormForm>
+        </Form>
       </Column>
       <Column md={4}>
         <br />

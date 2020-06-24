@@ -22,7 +22,7 @@ import setMinutes from 'date-fns/setMinutes'
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { Button, DatePickerCalendar, Divider, FormForm, FormError } from 'components'
+import { Button, DatePickerCalendar, Divider, Form, FormError } from 'components'
 import Readme from '../README.md'
 import { KNOBS } from './knobs'
 
@@ -62,7 +62,7 @@ const BaseComponent = (props = {}) => {
   const value = getValues()?.expiryAt?.toString()
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerCalendar {...defaultProps} />
 
       <Divider />
@@ -72,7 +72,7 @@ const BaseComponent = (props = {}) => {
       <p>{value}</p>
 
       <FormError message={errors?.expiryAt?.message || ''} />
-    </FormForm>
+    </Form>
   )
 }
 
