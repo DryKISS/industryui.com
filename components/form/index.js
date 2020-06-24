@@ -2,7 +2,6 @@
  * Form
  */
 export * from './checkbox'
-export * from './controlled'
 export * from './datePicker'
 export * from './error'
 export * from './field'
