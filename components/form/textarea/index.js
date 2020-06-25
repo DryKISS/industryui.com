@@ -6,7 +6,7 @@
 import { bool, number, string, oneOf } from 'prop-types'
 
 // UI
-import { FieldHOC } from '../'
+import { FieldHOC, shadeLinearRgb } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -50,7 +50,7 @@ export const TextareaField = ({
 const StyledTextarea = styled.textarea`
   background-clip: padding-box;
   background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
-  border: 1px solid #c4cacf;
+  border: 1px solid ${props => props.theme.COLOUR.dark};
   border-radius: 0.25rem;
   box-sizing: border-box;
   color: ${props => props.theme.COLOUR.dark};
@@ -91,11 +91,11 @@ const StyledTextarea = styled.textarea`
   ${({ errors }) =>
     errors &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
+      border-color: ${({ theme }) => theme.COLOUR.danger};
       border-image: initial;
       border-style: solid;
-      border-width: 1px 1px 1px 10px;
+      border-width: 1px 1px 1px 5px;
     `}
 `
 

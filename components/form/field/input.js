@@ -8,6 +8,9 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 // Style
 import styled, { css } from 'styled-components'
 
+// UI
+import { shadeLinearRgb } from '../../'
+
 export const FormField = ({
   disabled,
   errors,
@@ -105,8 +108,8 @@ export const StyledInput = styled.input.attrs(props => ({
   ${({ errors, error }) =>
     (errors || error) &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
+      border-color: ${({ theme }) => theme.COLOUR.danger};
       border-image: initial;
       border-style: solid;
       border-width: 1px 1px 1px 5px;

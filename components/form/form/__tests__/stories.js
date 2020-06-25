@@ -58,6 +58,7 @@ export default {
 const schema = yup.object().shape({
   amount: yup.number().required(),
   checkbox: yup.string().required(),
+  radio: yup.string().required(),
   disabled: yup.string(),
   email: yup.string().required(),
   input: yup.string().required(),

@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { FieldHOC } from '../'
+import { FieldHOC, shadeLinearRgb } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -73,7 +73,7 @@ export const SelectField = forwardRef(
 const StyledSelect = styled.select`
   background-clip: padding-box;
   background-color: #fff;
-  border: 1px solid #c4cacf;
+  border: 1px solid ${({ theme }) => theme.COLOUR.dark};
   border-radius: 0.25rem;
   box-sizing: border-box;
   color: ${({ theme }) => theme.COLOUR.dark};
@@ -95,11 +95,11 @@ const StyledSelect = styled.select`
   ${({ errors }) =>
     errors &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
+      border-color: ${({ theme }) => theme.COLOUR.danger};
       border-image: initial;
       border-style: solid;
-      border-width: 1px 1px 1px 10px;
+      border-width: 1px 1px 1px 5px;
     `}
 `
 

@@ -7,7 +7,7 @@ import React from 'react'
 import { array, bool, object, string } from 'prop-types'
 
 // UI
-import { FieldHOC } from '../../'
+import { FieldHOC, shadeLinearRgb } from '../../../'
 import { CheckboxComponent } from './component'
 
 // Style
@@ -40,12 +40,12 @@ const StyledFieldset = styled.fieldset`
   ${({ error }) =>
     error &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
+      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
+      border-color: ${({ theme }) => theme.COLOUR.danger};
       border-image: initial;
       border-style: solid;
-      border-width: 1px 1px 1px 10px;
-      padding-left: 8px;
+      border-width: 1px 1px 1px 5px;
+      padding: 0.5rem;
     `}
 `
 
