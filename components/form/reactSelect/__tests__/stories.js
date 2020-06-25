@@ -9,11 +9,8 @@ import React, { useEffect, useState } from 'react'
 import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, Form, FormLabel, ReactSelectField, usePrevious } from 'components'
+import { Button, Form, FormLabel, ReactSelectField, useForm, usePrevious } from 'components'
 import Readme from '../README.md'
 
 // Data

@@ -8,13 +8,17 @@ import React from 'react'
 // Storybook
 import { Wrapper } from 'decorators'
 
-// Reach Hook Form
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers'
-
 // UI
-import { Button, Form, FormLabel, SelectField, SelectCountryField } from 'components'
+import {
+  Button,
+  Form,
+  FormLabel,
+  SelectField,
+  SelectCountryField,
+  useForm,
+  yup,
+  yupResolver
+} from 'components'
 import Readme from '../README.md'
 import { COLOURS, EXPENSES } from '../__mocks__'
 

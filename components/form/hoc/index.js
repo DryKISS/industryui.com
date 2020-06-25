@@ -11,6 +11,7 @@ export const FieldHOC = ({
   register,
   validate,
   errors,
+  required,
   show,
   showError,
   ...props
@@ -27,7 +28,8 @@ export const FieldHOC = ({
         ...(props.max ? { max: props.max } : null),
         ...(props.min ? { min: props.min } : null),
         ...(props.maxLength ? { maxLength: props.maxLength } : null),
-        ...(props.minLength ? { minLength: props.minLength } : null)
+        ...(props.minLength ? { minLength: props.minLength } : null),
+        required: required
       })}
       style={{
         display: !show ? 'none' : undefined,

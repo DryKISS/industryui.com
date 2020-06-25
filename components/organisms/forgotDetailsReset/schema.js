@@ -3,7 +3,7 @@
  */
 
 // Yup
-import * as yup from 'yup'
+import { yup } from '../../'
 
 export const ForgotDetailsResetSchema = yup.object().shape({
   password: yup

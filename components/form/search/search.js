@@ -5,11 +5,8 @@
 // React
 import { bool, func, string, oneOf } from 'prop-types'
 
-// Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, Form, FormField, Icon, InputGroup, InputGroupAddon } from '../../'
+import { Button, Form, FormField, Icon, InputGroup, InputGroupAddon, useForm } from '../../'
 
 export const Search = ({
   appendSearchButton,

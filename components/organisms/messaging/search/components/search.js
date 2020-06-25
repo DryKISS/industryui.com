@@ -6,11 +6,8 @@
 import React, { useEffect } from 'react'
 import { func, string } from 'prop-types'
 
-// Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Column, Search, SelectField, Row } from '../../../../'
+import { Column, Search, SelectField, Row, useForm } from '../../../../'
 
 // Style
 import styled from 'styled-components'

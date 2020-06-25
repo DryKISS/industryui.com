@@ -6,11 +6,8 @@
 import React, { useState } from 'react'
 import { bool } from 'prop-types'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Alert, Button, FormField, Form, FormLabel, PageHeading } from '../../'
+import { Alert, Button, FormField, Form, FormLabel, PageHeading, useForm } from '../../'
 
 export const PasswordChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({ mode: 'onChange' })

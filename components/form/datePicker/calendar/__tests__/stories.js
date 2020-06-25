@@ -9,11 +9,6 @@ import React from 'react'
 import { withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers'
-
 // Date utility
 import addDays from 'date-fns/addDays'
 import getDay from 'date-fns/getDay'
@@ -22,7 +17,16 @@ import setMinutes from 'date-fns/setMinutes'
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { Button, DatePickerCalendar, Divider, Form, FormError } from 'components'
+import {
+  Button,
+  DatePickerCalendar,
+  Divider,
+  Form,
+  FormError,
+  useForm,
+  yup,
+  yupResolver
+} from 'components'
 import Readme from '../README.md'
 import { KNOBS } from './knobs'
 

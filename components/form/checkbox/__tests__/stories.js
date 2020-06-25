@@ -9,11 +9,8 @@ import React from 'react'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, Form, CheckboxField } from 'components'
+import { Button, Form, CheckboxField, useForm, yup, yupResolver } from 'components'
 import Readme from '../README.md'
 
 const data = [
@@ -42,8 +39,14 @@ export default {
   }
 }
 
+const schema = yup.object().shape({
+  checkbox: yup.string().required()
+})
+
 const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm()
+  const { errors, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
+  })
   const onSubmit = data => {}
 
   const defaultProps = {

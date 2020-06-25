@@ -5,11 +5,8 @@
 // React
 import React, { useState } from 'react'
 
-// Form
-import { useForm } from 'react-hook-form'
-
 import { GeoCoder } from '../'
-import { Button, Column, Form, FormField, FormLabel, Row, useGeoCoder } from '../../../../'
+import { Button, Column, Form, FormField, FormLabel, Row, useForm, useGeoCoder } from '../../../../'
 
 export default {
   title: 'Services/Google/GeoCoder',

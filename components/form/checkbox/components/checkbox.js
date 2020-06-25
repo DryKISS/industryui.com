@@ -45,6 +45,7 @@ const StyledFieldset = styled.fieldset`
       border-image: initial;
       border-style: solid;
       border-width: 1px 1px 1px 10px;
+      padding-left: 8px;
     `}
 `
 

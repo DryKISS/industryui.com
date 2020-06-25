@@ -8,11 +8,8 @@ import React, { useState } from 'react'
 // Storybook
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, Form, FormField, FormLabel, validatorPostCode } from 'components'
+import { Button, Form, FormField, FormLabel, validatorPostCode, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {

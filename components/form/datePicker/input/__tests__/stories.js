@@ -9,13 +9,8 @@ import React from 'react'
 import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers'
-
 // UI
-import { Button, DatePickerInput, Divider, Form } from 'components'
+import { Button, DatePickerInput, Divider, Form, useForm, yup, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {

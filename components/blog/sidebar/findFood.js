@@ -14,11 +14,6 @@
 import { useState } from 'react'
 import { oneOf } from 'prop-types'
 
-// Form
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers'
-
 // UI
 import {
   Button,
@@ -30,7 +25,10 @@ import {
   InputGroup,
   InputGroupAddon,
   Link,
-  validatorPostCode
+  useForm,
+  validatorPostCode,
+  yup,
+  yupResolver
 } from '../../'
 
 import { BlogSection } from './components'

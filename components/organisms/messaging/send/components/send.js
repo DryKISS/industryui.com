@@ -6,11 +6,8 @@
 import React, { useState, useRef } from 'react'
 import { number, func, array } from 'prop-types'
 
-// Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, EmojiMart, Form, Icon, TextareaField, Dropdown } from '../../../../'
+import { Button, EmojiMart, Form, Icon, TextareaField, Dropdown, useForm } from '../../../../'
 
 // Style
 import styled from 'styled-components'

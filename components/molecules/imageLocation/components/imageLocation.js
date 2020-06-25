@@ -8,11 +8,8 @@ import { array, bool, func, string, object } from 'prop-types'
 
 import styled from 'styled-components'
 
-// Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { FormLabel, SelectField } from '../../../'
+import { FormLabel, SelectField, useForm } from '../../../'
 import { ImageWrapper } from '../../'
 
 export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, options, show }) => {

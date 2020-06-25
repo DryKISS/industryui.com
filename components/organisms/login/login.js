@@ -7,9 +7,6 @@
 import React, { useContext, useState } from 'react'
 import { bool, object, oneOfType, string } from 'prop-types'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
 import {
   Alert,
@@ -20,7 +17,8 @@ import {
   FormLabel,
   Link,
   PageHeading,
-  UserContext
+  UserContext,
+  useForm
 } from '../../../'
 
 // Style

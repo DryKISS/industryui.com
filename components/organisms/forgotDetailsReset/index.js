@@ -7,12 +7,18 @@
 import React from 'react'
 import { func, string } from 'prop-types'
 
-// React hook form
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers'
-
 // UI
-import { Alert, Button, FormField, Form, FormLabel, Link, PageHeading } from '../../'
+import {
+  Alert,
+  Button,
+  FormField,
+  Form,
+  FormLabel,
+  Link,
+  PageHeading,
+  useForm,
+  yupResolver
+} from '../../'
 import { ForgotDetailsResetSchema } from './schema'
 
 // Style

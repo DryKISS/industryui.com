@@ -9,11 +9,8 @@ import React from 'react'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, Form, TextareaField, FormLabel } from '../../../../'
+import { Button, Form, TextareaField, FormLabel, useForm } from '../../../../'
 import Readme from '../README.md'
 
 export default {

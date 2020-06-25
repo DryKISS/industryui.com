@@ -9,11 +9,8 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
-// Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { FormLabel, ImageLocation, SelectField } from '../../../'
+import { FormLabel, ImageLocation, SelectField, useForm } from '../../../'
 import Readme from '../README.md'
 
 // Data
