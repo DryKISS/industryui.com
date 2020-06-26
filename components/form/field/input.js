@@ -9,7 +9,7 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 import styled, { css } from 'styled-components'
 
 // UI
-import { shadeLinearRgb } from '../../'
+import { FieldHOC, ERROR_STYLE } from '../../'
 
 export const FormField = ({
   disabled,
@@ -22,7 +22,8 @@ export const FormField = ({
   ...props
 }) => {
   return (
-    <StyledInput
+    <FieldHOC
+      component={StyledInput}
       aria-label={name}
       disabled={disabled}
       errors={errors[name]}
@@ -30,14 +31,6 @@ export const FormField = ({
       name={name}
       placeholder={placeholder}
       readOnly={readOnly}
-      ref={register({
-        pattern: props.regExp ? new RegExp(props.regExp) : null,
-        validate: validate,
-        ...(props.max ? { max: props.max } : null),
-        ...(props.min ? { min: props.min } : null),
-        ...(props.maxLength ? { maxLength: props.maxLength } : null),
-        ...(props.minLength ? { minLength: props.minLength } : null)
-      })}
       {...props}
     />
   )
@@ -108,11 +101,7 @@ export const StyledInput = styled.input.attrs(props => ({
   ${({ errors, error }) =>
     (errors || error) &&
     css`
-      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
-      border-color: ${({ theme }) => theme.COLOUR.danger};
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 5px;
+      ${props => ERROR_STYLE(props)};
     `}
 `
 

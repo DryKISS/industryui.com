@@ -16,7 +16,7 @@ import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
 
 // UI
-import { shadeLinearRgb } from '../../'
+import { ERROR_STYLE } from '../../'
 
 // Components
 import { defaultStyles, reactSelectDefaultProps, reactSelectPropTypes } from './components'
@@ -72,11 +72,7 @@ const Wrapper = styled.div`
     error &&
     css`
       [class*='control'] {
-        background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
-        border-color: ${({ theme }) => theme.COLOUR.danger};
-        border-image: initial;
-        border-style: solid;
-        border-width: 1px 1px 1px 5px;
+        ${props => ERROR_STYLE(props)};
       }
     `}
 `

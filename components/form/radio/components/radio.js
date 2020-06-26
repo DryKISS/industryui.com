@@ -7,7 +7,7 @@ import React from 'react'
 import { array, bool, string } from 'prop-types'
 
 // UI
-import { FieldHOC, shadeLinearRgb } from '../../../'
+import { FieldHOC, ERROR_STYLE } from '../../../'
 import { RadioComponent } from './component'
 
 // Style
@@ -40,11 +40,7 @@ const StyledFieldset = styled.fieldset`
   ${({ error }) =>
     error &&
     css`
-      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
-      border-color: ${({ theme }) => theme.COLOUR.danger};
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 5px;
+      ${props => ERROR_STYLE(props)};
       padding: 0.5rem;
     `}
 `

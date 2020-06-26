@@ -10,13 +10,27 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { FieldHOC, shadeLinearRgb } from '../../'
+import { FieldHOC, ERROR_STYLE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
 
 export const SelectField = forwardRef(
-  ({ data, defaultValue, disabled, options, placeholder, range, showError, ...props }, ref) => {
+  (
+    {
+      data,
+      defaultValue,
+      disabled,
+      errors,
+      name,
+      options,
+      placeholder,
+      range,
+      showError,
+      ...props
+    },
+    ref
+  ) => {
     const renderRange = () => {
       const options = [
         <option disabled value='' key='initial0'>
@@ -58,6 +72,8 @@ export const SelectField = forwardRef(
         component={StyledSelect}
         defaultValue={defaultValue}
         disabled={disabled}
+        errors={errors[name]}
+        name={name}
         ref={ref}
         showError={showError}
         {...data}
@@ -95,11 +111,7 @@ const StyledSelect = styled.select`
   ${({ errors }) =>
     errors &&
     css`
-      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
-      border-color: ${({ theme }) => theme.COLOUR.danger};
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 5px;
+      ${props => ERROR_STYLE(props)};
     `}
 `
 
@@ -107,6 +119,8 @@ SelectField.propTypes = {
   data: object,
   defaultValue: string,
   disabled: bool,
+  errors: object,
+  name: string,
   options: array,
   placeholder: string,
   range: array,

@@ -3,10 +3,10 @@
  */
 
 // React
-import { bool, number, string, oneOf } from 'prop-types'
+import { bool, number, string, object, oneOf } from 'prop-types'
 
 // UI
-import { FieldHOC, shadeLinearRgb } from '../../'
+import { FieldHOC, ERROR_STYLE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -17,7 +17,9 @@ export const TextareaField = ({
   cols,
   dir,
   disabled,
+  errors,
   maxLength,
+  name,
   placeholder,
   readOnly,
   rows,
@@ -34,6 +36,7 @@ export const TextareaField = ({
       cols={cols}
       dir={dir}
       disabled={disabled}
+      errors={errors[name]}
       maxLength={maxLength}
       placeholder={placeholder}
       readOnly={readOnly}
@@ -91,11 +94,7 @@ const StyledTextarea = styled.textarea`
   ${({ errors }) =>
     errors &&
     css`
-      background: ${({ theme }) => shadeLinearRgb(0.9, theme.COLOUR.danger)};
-      border-color: ${({ theme }) => theme.COLOUR.danger};
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 5px;
+      ${props => ERROR_STYLE(props)};
     `}
 `
 
@@ -104,7 +103,9 @@ TextareaField.propTypes = {
   cols: number,
   dir: oneOf(['ltr', 'rtl']),
   disabled: bool,
+  errors: object,
   maxLength: number,
+  name: string,
   placeholder: string,
   readOnly: bool,
   required: bool,

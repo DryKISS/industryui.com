@@ -63,6 +63,10 @@ const schema = yup.object().shape({
   email: yup.string().required(),
   input: yup.string().required(),
   name: yup.string().required(),
+  reactSelect: yup.string().required(),
+  datepicker: yup.string().required(),
+  textarea: yup.string().required(),
+  select: yup.string().required(),
   readonly: yup.string()
 })
 
@@ -144,7 +148,7 @@ export const all = () => {
               {...defaultProps}
               control={control}
               locale={enGB}
-              name='datePicker'
+              name='datepicker'
             />
           </FormLabel>
         </Column>
@@ -154,7 +158,7 @@ export const all = () => {
             <ReactSelectField
               {...defaultProps}
               control={control}
-              name='reactSelecgt'
+              name='reactSelect'
               options={Options}
             />
           </FormLabel>
@@ -180,7 +184,7 @@ export const all = () => {
       </FormLabel>
 
       <FormLabel label='Textarea'>
-        <TextareaField {...defaultProps} rows={2} name='textArea' />
+        <TextareaField {...defaultProps} rows={2} name='textarea' />
       </FormLabel>
 
       <FormLabel label='Select'>
