@@ -6,7 +6,7 @@
 import { any, bool, func, string } from 'prop-types'
 
 // UI
-import { Button, Checkbox, Column, DatePicker, Form, Input, Link, Row } from '../../'
+import { Button, Checkbox, Column, DatePickerInput, Form, Input, Link, Row } from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -28,7 +28,7 @@ export const Register = ({
 }) => {
   const renderBirthday = () => (
     <>
-      <DatePicker
+      <DatePickerInput
         change={change}
         day={dayBirthday}
         id='Birthday'

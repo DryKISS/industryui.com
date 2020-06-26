@@ -23,7 +23,7 @@ import TagManager from 'react-gtm-module'
 import {
   AuthorizationProvider,
   FirebaseProvider,
-  Icons,
+  // Icons,
   NotificationsProvider,
   OffCanvasProvider,
   PageProgressBar,
@@ -65,12 +65,12 @@ export class MyApp extends App {
   }
 
   elements () {
-    const { firebase, icons, offCanvas, user } = this.props
+    const { firebase, offCanvas, user } = this.props
     const fire = isObject(firebase)
 
     return (
       <>
-        {icons && <Icons icons={icons} />}
+        {/* {icons && <Icons icons={icons} />} */}
         <ThemeStyle />
 
         {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
