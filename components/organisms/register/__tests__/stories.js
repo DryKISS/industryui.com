@@ -25,6 +25,7 @@ export default {
 
 export const main = () => (
   <Register
+    birthday
     change={() => {}}
     email=''
     marketing

@@ -10,12 +10,13 @@ import {
   Button,
   CheckboxField,
   Column,
-  DatePicker,
+  DatePickerInput,
   Form,
   FormField,
   FormLabel,
   Link,
-  Row
+  Row,
+  useForm
 } from '../../'
 
 // Style
@@ -23,7 +24,6 @@ import styled from 'styled-components'
 
 export const Register = ({
   birthday,
-  change,
   dayBirthday,
   email,
   monthBirthday,
@@ -36,17 +36,11 @@ export const Register = ({
   terms,
   yearBirthday
 }) => {
+  const { errors, register } = useForm()
   const renderBirthday = () => (
     <>
-      <DatePicker
-        change={change}
-        day={dayBirthday}
-        id='Birthday'
-        label='Birthdate'
-        month={monthBirthday}
-        year={yearBirthday}
-      />
-      To sign up, you must be 18 or older. Other users will not see this.
+      <DatePickerInput register={register} errors={errors} name='Birthday' label='Birthdate' />
+      <p>To sign up, you must be 18 or older. Other users will not see this.</p>
     </>
   )
 
@@ -71,28 +65,28 @@ export const Register = ({
       <Row>
         <Column md={6}>
           <FormLabel label='First name'>
-            <FormField name='nameFirst' onChange={change} value={nameFirst} />
+            <FormField name='nameFirst' register={register} errors={errors} />
           </FormLabel>
         </Column>
 
         <Column md={6}>
           <FormLabel label='Last name'>
-            <FormField name='nameLast' onChange={change} value={nameLast} />
+            <FormField name='nameLast' register={register} errors={errors} />
           </FormLabel>
         </Column>
       </Row>
 
       <FormLabel label='Email'>
-        <FormField name='email' onChange={change} type='email' value={email} />
+        <FormField name='email' register={register} errors={errors} type='email' />
       </FormLabel>
 
       <FormLabel label='Password'>
-        <FormField name='password' onChange={change} type='password' value={password} />
+        <FormField name='password' register={register} errors={errors} type='password' />
       </FormLabel>
 
       {birthday && renderBirthday()}
 
-      <CheckboxField data={CHECKBOX_TERMS} onChange={change} stacked />
+      <CheckboxField data={CHECKBOX_TERMS} register={register} errors={errors} stacked />
 
       <Button
         align='right'

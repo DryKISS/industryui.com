@@ -97,6 +97,9 @@ DatePickerInput.defaultProps = {
   day: true,
   index: 1,
   month: true,
+  showDay: true,
+  showMonth: true,
+  showYear: true,
   year: true,
   yearEnd: 2020,
   yearStart: 1920
