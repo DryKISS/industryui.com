@@ -6,3 +6,13 @@ export const validatorPostCode = postCode => {
 
   return regExp.test(postCode)
 }
+
+// Return area and district from Post Code
+export const parsePostCode = postCode => {
+  const parsed = postCode.match(/([A-Z]+)([0-9]+).*?[A-Z0-9]{3}/)
+
+  return {
+    area: parsed[1],
+    district: parsed[2]
+  }
+}
