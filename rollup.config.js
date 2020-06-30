@@ -7,7 +7,8 @@ import { terser } from 'rollup-plugin-terser'
 import commonjs from '@rollup/plugin-commonjs'
 import visualizer from 'rollup-plugin-visualizer'
 import nodeResolve from '@rollup/plugin-node-resolve'
-import { name, version, dependencies, peerDependencies } from './package.json'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import { name, version } from './package.json'
 
 const PATHS = {
   INPUT: path.resolve(__dirname, 'index.js'),
@@ -15,7 +16,7 @@ const PATHS = {
 }
 
 const banner = `/*
-* @drykiss/industry-ui v${version}
+* ${name} v${version}
 */`
 
 const globals = {
@@ -29,18 +30,20 @@ function createBaseConfig (callback) {
     input: PATHS.INPUT,
     plugins: [
       nodeResolve(),
+      peerDepsExternal({
+        includeDependencies: true
+      }),
       commonjs({
-        include: 'node_modules/**' // Workaround for: https://github.com/rollup/rollup-plugin-commonjs/issues/247
+        include: /node_modules/
       }),
       postcss(),
       babel({
-        exclude: 'node_modules/**'
+        exclude: /node_modules/
       }),
       json(),
       image(),
       visualizer()
     ],
-    external: Object.keys(Object.assign({}, peerDependencies, dependencies)),
     inlineDynamicImports: true
   }
 
@@ -54,7 +57,7 @@ const CommonJSConfig = createBaseConfig(function (config) {
       name,
       sourcemap: true,
       format: 'cjs',
-      file: path.resolve(PATHS.DIST, `bundle.common.js`)
+      file: path.resolve(PATHS.DIST, 'bundle.common.js')
     }
   })
 })
@@ -66,7 +69,7 @@ const ESModulesConfig = createBaseConfig(function (config) {
       name,
       sourcemap: true,
       format: 'es',
-      file: path.resolve(PATHS.DIST, `bundle.es.js`)
+      file: path.resolve(PATHS.DIST, 'bundle.es.js')
     }
   })
 })
@@ -79,7 +82,7 @@ const UMDConfig = createBaseConfig(function (config) {
       sourcemap: true,
       globals: globals,
       format: 'umd',
-      file: path.resolve(PATHS.DIST, `bundle.umd.js`)
+      file: path.resolve(PATHS.DIST, 'bundle.umd.js')
     }
   })
 })
@@ -94,7 +97,7 @@ const MinifiedUMDConfig = createBaseConfig(function (config) {
       sourcemap: true,
       globals: globals,
       format: 'umd',
-      file: path.resolve(PATHS.DIST, `bundle.umd.min.js`)
+      file: path.resolve(PATHS.DIST, 'bundle.umd.min.js')
     }
   })
 })

@@ -10,7 +10,7 @@ import { apiConfig } from 'config'
 
 export const Api = {
   init: () => {
-    const mocker = require('api/client.mock')
+    const mocker = {}
 
     const bearerToken = window.localStorage.getItem('bearerToken')
 

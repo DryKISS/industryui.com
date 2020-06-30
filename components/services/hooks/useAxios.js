@@ -32,7 +32,7 @@ export const useAxios = (url, params, initialValue) => {
     const http = axios.create(apiConfig)
 
     // Mock requests
-    const mocker = require('api/client.mock')
+    const mocker = {}
     mocker.apply(http)
 
     const fetchData = async () => {
