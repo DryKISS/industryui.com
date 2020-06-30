@@ -49,6 +49,7 @@ export const OffCanvasComponent = ({
       )}
 
       <OffCanvasDiv
+        data-cy='offCanvas'
         duration={transitionDuration}
         height={height}
         placement={placement}
