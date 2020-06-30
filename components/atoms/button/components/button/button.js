@@ -3,7 +3,7 @@
  */
 
 // React
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI

@@ -1,7 +1,7 @@
 /**
  * Dog Breeds
  */
-module.exports.DOG_BREED = [
+export const DOG_BREED = [
   {
     disabled: true,
     text: 'Select breed',

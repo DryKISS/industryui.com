@@ -6,7 +6,7 @@
 import { bool, func, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, Form, Icon, Input, InputGroup, InputGroupAddon, useForm } from '../../../../'
+import { Button, Form, Icon, Input, InputGroup, InputGroupAddon, useForm } from '../../../'
 
 export const Search = ({
   appendSearchButton,
