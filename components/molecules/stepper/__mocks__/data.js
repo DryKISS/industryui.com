@@ -88,6 +88,21 @@ export const Data = {
           type: 'button'
         }
       ]
+    },
+    {
+      id: 11,
+      label: 'Inactive Item',
+      date: null,
+      active: false,
+      actions: [
+        {
+          id: 1,
+          content: 'Close job manually',
+          context: 'warning',
+          handleClick: () => {},
+          type: 'button'
+        }
+      ]
     }
   ],
   summary: [
