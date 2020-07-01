@@ -13,7 +13,7 @@ import { Stepper } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { Data, Data2 } from '../__mocks__/data'
+import { Data } from '../__mocks__/data'
 
 export default {
   title: 'Molecules/Stepper',
@@ -27,4 +27,3 @@ export default {
 }
 
 export const main = () => <Stepper items={Data.items} summary={Data.summary} />
-export const DeActiveItems = () => <Stepper items={Data2.items} summary={Data.summary} />
