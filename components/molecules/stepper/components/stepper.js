@@ -3,7 +3,7 @@
  */
 
 // React
-import { array, func, object, oneOfType, string } from 'prop-types'
+import { array, func, oneOfType, string } from 'prop-types'
 
 // UI
 import { StepperItem, StepperSummary } from './'
@@ -15,9 +15,7 @@ export const Stepper = ({ className, items, summary }) => {
   return (
     <StyledStepper>
       <ul>
-        {items.map(item => (
-          <StepperItem key={item.id} item={item} />
-        ))}
+        {items.map(item => item.active !== false && <StepperItem key={item.id} item={item} />)}
       </ul>
       {summary && <StepperSummary summary={summary} />}
     </StyledStepper>
