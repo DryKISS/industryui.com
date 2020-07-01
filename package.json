@@ -8,7 +8,7 @@
   "homepage": "https://industryui.com",
   "main": "./index.js",
   "license": "MIT",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "version_short": "0.1",
   "keywords": [
     "react",
