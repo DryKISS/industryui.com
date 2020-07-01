@@ -92,6 +92,7 @@ import {
   faEdit,
   faEnvelope,
   faExclamationTriangle,
+  faGraduationCap,
   faTachometerAltAverage
 } from '@fortawesome/pro-duotone-svg-icons'
 
@@ -164,6 +165,7 @@ library.add(
   faEnvelope,
   fasEnvelope,
   faExclamationTriangle,
+  faGraduationCap,
   faHomeHeart,
   faImages,
   faMapMarkerAlt,

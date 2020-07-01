@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Figure } from '../'
+import { Figure } from 'components'
 import Readme from '../README.md'
 
 export default {

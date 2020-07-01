@@ -12,24 +12,51 @@ import Router from 'next/router'
 // UI
 import { StyledLink } from '../../../'
 
+// Style
+import styled from 'styled-components'
+
 export const TableLink = (path, key, value, account) => ({ row }) => {
+  const getPath = () => {
+    let url = path
+
+    if (account) {
+      url = `${path}/${row.type.toLowerCase()}s/view`
+    }
+
+    return `${url}?id=${row[key]}`
+  }
+
   const handleClick = e => {
     e.preventDefault()
     e.stopPropagation()
-
-    if (account) {
-      path = `${path}/${row.type.toLowerCase()}s/view`
-    }
-
-    Router.push(`${path}?id=${row[key]}`)
+    Router.push(getPath())
   }
 
+  const item = row[value]
+
+  // Debug
+  // console.log(path, key, account, row)
+  // console.log('Value', item)
+
   return (
-    <StyledLink border onClick={handleClick}>
-      {row[value]}
-    </StyledLink>
+    <>
+      {item === '-' && '-'}
+      {item !== '-' && (
+        <StyleLink border={false} href={getPath()} onClick={handleClick}>
+          {item}
+        </StyleLink>
+      )}
+    </>
   )
 }
+
+const StyleLink = styled(StyledLink)`
+  &:hover {
+    background: #ddd;
+    margin: -8px;
+    padding: 8px;
+  }
+`
 
 TableLink.propTypes = {
   row: object.isRequired

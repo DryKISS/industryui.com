@@ -1,14 +1,14 @@
 /**
- * OffCanvas
+ * Molecules - OffCanvas
  */
 
 // React
 import React, { useState, useEffect } from 'react'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 
-// Components
-import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../'
+// UI
 import { Close, CONTEXT } from '../../../'
+import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../'
 
 export const OffCanvasComponent = ({
   closeOnOverlayClick,
@@ -49,13 +49,14 @@ export const OffCanvasComponent = ({
       )}
 
       <OffCanvasDiv
+        data-cy='offCanvas'
         duration={transitionDuration}
         height={height}
         placement={placement}
         show={initialState}
         width={width}
       >
-        <OffCanvasHeader context={context}>
+        <OffCanvasHeader context={context} data-cy='offCanvasHeader'>
           {headerText}
           <Close context='white' click={e => toggleShow(false)} />
         </OffCanvasHeader>

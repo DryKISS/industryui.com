@@ -7,36 +7,48 @@ import React, { Fragment } from 'react'
 import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { Column, Container, Heading, Icon, Link, List, ListItem, MEDIA_QUERY, Row } from '../../'
+import { Column, Container, Heading, Icon, Link, List, ListItem, Row } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Footer = ({ columns }) => {
+export const Footer = ({ columns, fixed }) => {
   const renderColumns = () => {
-    return columns.map((column, index) => (
-      <Column key={index} offset={column.offset} {...column.size}>
-        {Object.entries(column).map(([key, value], index) => {
-          switch (key) {
-            case 'header':
-              return <Heading content={value} key={index} tag='h6' />
-            case 'formatter':
-              return value(index)
-            case 'links':
-              return renderLinks(value, index)
-            case 'text':
-              return renderText(value, column.icon, index)
-          }
-        })}
-      </Column>
-    ))
+    return columns.map((column, index) => {
+      return (
+        <Column align={column.align} key={index} offset={column.offset} {...column.size}>
+          {Object.entries(column).map(([key, value], i) => {
+            switch (key) {
+              case 'header':
+                return (
+                  <StyledHeading
+                    align={value.align}
+                    content={value.content}
+                    key={`${value.content}${index}${i}`}
+                    tag='h6'
+                  />
+                )
+
+              case 'formatter':
+                return value(`${index}${i}`)
+
+              case 'links':
+                return renderLinks(value, `${index}${i}`)
+
+              case 'text':
+                return renderText(value, `${index}${i}`)
+            }
+          })}
+        </Column>
+      )
+    })
   }
 
-  const renderLinks = ({ items, inline }, index) => {
+  const renderLinks = ({ align, direction, items }, index) => {
     return (
-      <StyledList key={index} unstyled inline={inline}>
-        {items.map(({ icon, name, to }, index) => (
-          <StyledListItem key={index}>
+      <StyledList align={align} direction={direction} key={`${items[0]}${index}`} unstyled>
+        {items.map(({ icon, id, name, to }) => (
+          <StyledListItem key={id}>
             <Link to={to} passHref>
               {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
               {name}
@@ -47,15 +59,19 @@ export const Footer = ({ columns }) => {
     )
   }
 
-  const renderText = (text, icon, index) => (
+  const renderText = ({ align, items }, index) => (
     <Fragment key={index}>
-      {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
-      <StyledText dangerouslySetInnerHTML={{ __html: text }} />
+      {items.map(({ content, icon }, i) => (
+        <Fragment key={`${index}${i}`}>
+          {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
+          <StyledText align={align} dangerouslySetInnerHTML={{ __html: content }} />
+        </Fragment>
+      ))}
     </Fragment>
   )
 
   return (
-    <StyledFooter data-cy='footer'>
+    <StyledFooter data-cy='footer' fixed={fixed}>
       <Container>
         <Row>{renderColumns()}</Row>
       </Container>
@@ -71,17 +87,26 @@ const StyledFooter = styled.div`
     color: ${FOOTER.colour};
   `}
   padding-top: 2rem;
-  text-align: center;
+  ${({ fixed }) =>
+    fixed &&
+    css`
+      bottom: 0;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    `}
+`
+
+const StyledHeading = styled(Heading)`
+  text-align: ${({ align }) => align};
 `
 
 const StyledList = styled(List)`
   display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  ${MEDIA_QUERY.desktop`
-    margin-top: 0;
-    justify-content: flex-end;
-  `}
+  flex-direction: ${({ direction }) => direction || 'column'};
+  flex-wrap: wrap;
+  justify-content: ${({ align }) => align};
 `
 
 const StyledListItem = styled(ListItem)`
@@ -93,20 +118,21 @@ const StyledIcon = styled(Icon)`
   margin: 0 0.5rem 0 0;
 `
 
-const StyledText = styled.span`
-  ${MEDIA_QUERY.desktop`
-    text-align: initial;
-  `}
+const StyledText = styled.p`
+  margin: 0 0 1rem;
+  text-align: ${({ align }) => align};
 `
 
 Footer.propTypes = {
   columns: arrayOf(
     shape({
-      header: string,
+      header: shape({
+        align: string,
+        content: string
+      }),
       formatter: func,
       links: shape({
         align: string,
-        inline: bool,
         items: arrayOf(
           shape({
             id: string,
@@ -130,5 +156,10 @@ Footer.propTypes = {
       }),
       style: object
     })
-  ).isRequired
+  ).isRequired,
+  fixed: bool
+}
+
+Footer.defaultProps = {
+  fixed: false
 }

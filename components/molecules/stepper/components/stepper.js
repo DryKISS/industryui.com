@@ -3,23 +3,21 @@
  */
 
 // React
-import { array, func, object, oneOfType, string } from 'prop-types'
+import { array, func, oneOfType, string } from 'prop-types'
 
 // UI
-import { StepperItem, StepperTimings } from './'
+import { StepperItem, StepperSummary } from './'
 
 // Style
 import styled from 'styled-components'
 
-export const Stepper = ({ className, items, timings }) => {
+export const Stepper = ({ className, items, summary }) => {
   return (
     <StyledStepper>
       <ul>
-        {items.map(item => (
-          <StepperItem key={item.id} item={item} />
-        ))}
+        {items.map(item => item.active !== false && <StepperItem key={item.id} item={item} />)}
       </ul>
-      {timings && <StepperTimings timings={timings} />}
+      {summary && <StepperSummary summary={summary} />}
     </StyledStepper>
   )
 }
@@ -36,5 +34,5 @@ const StyledStepper = styled.div`
 Stepper.propTypes = {
   className: string,
   items: oneOfType([array, func]).isRequired,
-  timings: object
+  summary: oneOfType([array, func])
 }

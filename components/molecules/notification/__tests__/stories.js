@@ -1,5 +1,5 @@
 /**
- * Notification
+ * Molecules - Notification
  */
 
 // React
@@ -7,16 +7,17 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Wrapper } from 'decorators'
+import { text, withKnobs } from '@storybook/addon-knobs'
+import { Context, Wrapper } from 'decorators'
 
 // UI
-import { Notification } from '../'
+import { Notification } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/Notification',
   component: Notification,
-  decorators: [Wrapper],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -24,34 +25,29 @@ export default {
   }
 }
 
-export const main = () => <Notification content='Info: Everything is ok' date='2019-11-11' />
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    close: action('closed'),
+    content: text('Content', 'Info: Everything is ok'),
+    context: Context(),
+    date: text('Date', '2019-11-11'),
+    icon: text('Icon', 'times-circle'),
+    link: text('Link', '/'),
+    title: text('Title', 'Info'),
+    ...props
+  }
 
-export const withTitle = () => (
-  <Notification
-    close={action('closed')}
-    content='Everything is ok'
-    date='2019-11-10'
-    title='Info'
-  />
-)
+  return <Notification {...defaultProps} />
+}
 
-export const withLink = () => (
-  <Notification
-    close={action('closed')}
-    content='Notification content'
-    date='2019-11-11 12:40:10'
-    link='/messages/1'
-    title='Info'
-  />
-)
+export const main = () => {
+  return (
+    <>
+      <p>Default</p>
+      <BaseComponent />
 
-export const withPriority = () => (
-  <Notification
-    close={action('closed')}
-    content='Attention needed'
-    date='2019-11-11 13:50:30'
-    link='/messages/2'
-    priority={1}
-    title='Urgent'
-  />
-)
+      <p>Minimal</p>
+      <BaseComponent context='danger' date='' icon='' title='' />
+    </>
+  )
+}

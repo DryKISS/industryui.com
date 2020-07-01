@@ -1,7 +1,8 @@
 /**
- * Events
+ * Full Calendar - Events
  */
 
+// Moment
 import moment from 'moment'
 
 export const Events = [
@@ -14,7 +15,6 @@ export const Events = [
     description: 'All day event',
     title: 'Event 1'
   },
-
   {
     color: 'green',
     description: 'Event starting at a specific time',
@@ -25,7 +25,6 @@ export const Events = [
       .format(),
     title: 'Event 2'
   },
-
   {
     borderColor: 'black',
     color: 'grey',
@@ -39,7 +38,6 @@ export const Events = [
       .format('YYYY-MM-DD'),
     title: 'PPM: Boiler Check'
   },
-
   {
     color: 'teal',
     daysOfWeek: [4],
@@ -54,7 +52,6 @@ export const Events = [
     startTime: '10:15',
     title: 'Recurring Event'
   },
-
   {
     className: 'text-right',
     color: 'orange',
@@ -71,7 +68,6 @@ export const Events = [
       .minute(30)
       .format()
   },
-
   {
     color: 'purple',
     description: 'Multi-day event',
@@ -93,6 +89,4 @@ export const AvailableViews = [
   'timeGridWeek',
   'timeGridDay',
   'timeGrid'
-  // 'listYear','listMonth','listWeek','listDay','list',
-  // 'timelineYear', 'timelineMonth', 'timelineWeek', 'timelineDay', 'timeline'
 ]

@@ -8,6 +8,7 @@ import { any, bool, func, object } from 'prop-types'
 
 // Lodash
 import isObject from 'lodash/isObject'
+import merge from 'lodash/merge'
 
 // Apollo
 import { ApolloProvider } from '@apollo/react-hooks'
@@ -43,6 +44,13 @@ export class MyApp extends App {
     pageProgressBar: bool,
     theme: object,
     user: bool
+  }
+
+  static defaultProps = {
+    offCanvas: false,
+    pageProgressBar: false,
+    theme: [],
+    user: false
   }
 
   elements () {
@@ -97,12 +105,6 @@ export class MyApp extends App {
   }
 
   render () {
-    const { theme } = this.props
-
-    return (
-      <ThemeProvider theme={Theme}>
-        {theme ? <ThemeProvider theme={theme}>{this.data()}</ThemeProvider> : this.data()}
-      </ThemeProvider>
-    )
+    return <ThemeProvider theme={merge(Theme, this.props.theme)}>{this.data()}</ThemeProvider>
   }
 }

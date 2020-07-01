@@ -1,10 +1,12 @@
 /**
- * Age calculation from firbase dateTime
+ * Age calculation from dateTime
  */
 import moment from 'moment'
 
 export const age = birthDate => {
-  if (!birthDate || !(birthDate instanceof Date)) return 0
-  const years = moment().diff(birthDate, 'years')
-  return years
+  if (!birthDate || !moment(birthDate).isValid()) {
+    return 0
+  }
+
+  return moment().diff(birthDate, 'years')
 }

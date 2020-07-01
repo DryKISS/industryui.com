@@ -16,7 +16,14 @@ export const Data = {
     {
       id: 3,
       label: 'Accepted',
-      date: '10 Nov 2019 11:55'
+      date: '10 Nov 2019 11:55',
+      content: [
+        {
+          id: 1,
+          active: true,
+          data: 'Accepted by HomeRepairs Ltd'
+        }
+      ]
     },
     {
       id: 4,
@@ -45,8 +52,9 @@ export const Data = {
       actions: [
         {
           id: 1,
+          active: true,
           content: 'Mark customer paid',
-          context: 'info',
+          context: 'secondary',
           handleClick: () => {},
           type: 'button'
         }
@@ -59,8 +67,9 @@ export const Data = {
       actions: [
         {
           id: 1,
+          active: true,
           content: 'Mark supplier paid',
-          context: 'info',
+          context: 'secondary',
           handleClick: () => {},
           type: 'button'
         }
@@ -79,11 +88,35 @@ export const Data = {
           type: 'button'
         }
       ]
+    },
+    {
+      id: 11,
+      label: 'Inactive Item',
+      date: null,
+      active: false,
+      actions: [
+        {
+          id: 1,
+          content: 'Close job manually',
+          context: 'warning',
+          handleClick: () => {},
+          type: 'button'
+        }
+      ]
     }
   ],
-  timings: {
-    start: '11:40',
-    scheduled: '13:00',
-    actual: '12:31'
-  }
+  summary: [
+    {
+      label: 'Start time',
+      value: '11:40'
+    },
+    {
+      label: 'Scheduled end time',
+      value: '13:00'
+    },
+    {
+      label: 'Actual end time',
+      value: '12:31'
+    }
+  ]
 }

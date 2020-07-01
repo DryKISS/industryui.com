@@ -48,16 +48,33 @@ export const formatIntDateYear = (date, code = 'en-GB') => {
   return newDate
 }
 
-export const formatDateStandard = date => {
-  var d = new Date(date)
-  var month = '' + (d.getMonth() + 1)
-  var day = '' + d.getDate()
-  var year = d.getFullYear()
+export const formatTime = date => {
+  const d = new Date(date)
+  let hour = '' + d.getHours()
+  let minute = '' + d.getMinutes()
+
+  if (hour.length < 2) hour = '0' + hour
+  if (minute.length < 2) minute = '0' + minute
+
+  return `${hour}:${minute}`
+}
+
+export const formatDateStandard = (date, showTime = false) => {
+  const d = new Date(date)
+  const year = d.getFullYear()
+  let month = '' + (d.getMonth() + 1)
+  let day = '' + d.getDate()
 
   if (month.length < 2) month = '0' + month
   if (day.length < 2) day = '0' + day
 
-  return [year, month, day].join('-')
+  const formattedDate = [year, month, day].join('-')
+
+  if (showTime) {
+    return formattedDate + ' ' + formatTime(date)
+  } else {
+    return formattedDate
+  }
 }
 
 export const formatRelativeTime = date => {

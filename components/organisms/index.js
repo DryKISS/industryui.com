@@ -2,7 +2,7 @@
  * Organisms
  */
 export * from './emailChange'
-export * from './footer'
+export * from './footer/footer'
 export * from './forgotDetails'
 export * from './forgotDetailsReset'
 export * from './fullCalendar'
