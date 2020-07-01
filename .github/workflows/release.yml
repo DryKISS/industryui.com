@@ -36,10 +36,10 @@ jobs:
         run: |
           yarn install
 
-      - name: Build Step
-        env:
-          CI: ""
-        run: yarn build
+#       - name: Build Step
+#         env:
+#           CI: ""
+#         run: yarn build
 
       - name: Run Semantic Release
         run: npx semantic-release
