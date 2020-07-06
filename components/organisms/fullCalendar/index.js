@@ -7,7 +7,7 @@
  */
 
 // React
-import React, { forwardRef, useState } from 'react'
+import { forwardRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 // UI
@@ -28,7 +28,6 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
     <Wrapper>
       {props.hasLoading && loading && (
         <PageLoading
-          backgroundColor='#fff'
           indicator={<LdsSpinner color='#000' size={50} />}
           opacity={0.7}
           position='absolute'
