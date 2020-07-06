@@ -16,6 +16,9 @@ import { StyledLink } from '../../../'
 import styled from 'styled-components'
 
 export const TableLink = (path, key, value, account) => ({ row }) => {
+  let skipLink = false
+  if (account && ['admin', 'tenant'].includes(row.type.toLowerCase())) skipLink = true
+
   const getPath = () => {
     let url = path
 
@@ -38,7 +41,9 @@ export const TableLink = (path, key, value, account) => ({ row }) => {
   // console.log(path, key, account, row)
   // console.log('Value', item)
 
-  return (
+  return skipLink ? (
+    item
+  ) : (
     <>
       {item === '-' && '-'}
       {item !== '-' && (
