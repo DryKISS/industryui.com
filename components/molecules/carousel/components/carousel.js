@@ -4,21 +4,23 @@
 
 // React
 import React, { useState } from 'react'
-import { array, bool, string } from 'prop-types'
+import { bool, oneOf, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 import { CarouselArrow } from './arrow'
+import { CONTEXT } from '../../../'
 
-const Wrapper = styled.div`
-  height: ${({ height }) => height};
-  min-height: ${({ height }) => height};
-  margin: 0;
-  position: relative;
-  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : width)};
-`
-
-export const Carousel = ({ children, fullWidth, height, leftArrowIcon, rightArrowIcon, width }) => {
+export const Carousel = ({
+  arrowContext,
+  arrowPosition,
+  children,
+  fullWidth,
+  height,
+  leftArrowIcon,
+  rightArrowIcon,
+  width
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const previousSlide = () => {
@@ -35,17 +37,47 @@ export const Carousel = ({ children, fullWidth, height, leftArrowIcon, rightArro
     setCurrentImageIndex(index)
   }
 
+  const showArrows = Array.isArray(children) && children.length > 1
+
   return (
     <Wrapper width={width} height={height} fullWidth={fullWidth}>
-      <CarouselArrow direction='left' clickFunction={previousSlide} icon={leftArrowIcon} />
+      {showArrows && (
+        <CarouselArrow
+          context={arrowContext}
+          clickFunction={previousSlide}
+          direction='left'
+          icon={leftArrowIcon}
+          position={arrowPosition}
+        />
+      )}
+
       {children[currentImageIndex] || children}
-      <CarouselArrow direction='right' clickFunction={nextSlide} icon={rightArrowIcon} />
+
+      {showArrows && (
+        <CarouselArrow
+          context={arrowContext}
+          clickFunction={nextSlide}
+          direction='right'
+          icon={rightArrowIcon}
+          position={arrowPosition}
+        />
+      )}
     </Wrapper>
   )
 }
 
+const Wrapper = styled.div`
+  height: ${({ height }) => height};
+  min-height: ${({ height }) => height};
+  margin: 0;
+  position: relative;
+  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : width)};
+`
+
 Carousel.propTypes = {
-  children: array,
+  arrowContext: oneOf(Object.values(CONTEXT)),
+  arrowPosition: oneOf(['top', 'middle', 'bottom']),
+  children: node.isRequired,
   fullWidth: bool,
   height: string,
   leftArrowIcon: string,
@@ -54,7 +86,8 @@ Carousel.propTypes = {
 }
 
 Carousel.defaultProps = {
-  children: [],
+  arrowContext: CONTEXT.BLACK,
+  arrowPosition: 'middle',
   fullWidth: false,
   leftArrowIcon: 'chevron-left',
   rightArrowIcon: 'chevron-right'
