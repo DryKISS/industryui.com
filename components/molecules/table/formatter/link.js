@@ -15,17 +15,12 @@ import { StyledLink } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const TableLink = (path, key, value, account) => ({ row }) => {
-  let skipLink = false
-  if (account && ['admin', 'tenant'].includes(row.type.toLowerCase())) skipLink = true
+export const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
+  let useLink = false
+  useLink = row[dynamicUrl] || path
 
   const getPath = () => {
-    let url = path
-
-    if (account) {
-      url = `${path}/${row.type.toLowerCase()}s/view`
-    }
-
+    const url = row[dynamicUrl] || path
     return `${url}?id=${row[key]}`
   }
 
@@ -41,9 +36,7 @@ export const TableLink = (path, key, value, account) => ({ row }) => {
   // console.log(path, key, account, row)
   // console.log('Value', item)
 
-  return skipLink ? (
-    item
-  ) : (
+  return useLink ? (
     <>
       {item === '-' && '-'}
       {item !== '-' && (
@@ -52,6 +45,8 @@ export const TableLink = (path, key, value, account) => ({ row }) => {
         </StyleLink>
       )}
     </>
+  ) : (
+    item
   )
 }
 
