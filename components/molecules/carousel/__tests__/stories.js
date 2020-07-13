@@ -31,36 +31,44 @@ const renderImage = () => (
   <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />
 )
 
+const BaseComponent = ({ children }) => {
+  return (
+    <Carousel fullWidth>
+      {children}
+      <CarouselSlide>
+        <TextLabel>Sample Slide</TextLabel>
+        {renderImage()}
+      </CarouselSlide>
+      <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
+    </Carousel>
+  )
+}
+
 export const main = () => (
-  <Carousel fullWidth>
+  <BaseComponent>
     <CarouselSlide>
-      <TextLabel>Slide 1</TextLabel>
+      <TextLabel>Another Slide</TextLabel>
       {renderImage()}
     </CarouselSlide>
-    <CarouselSlide>
-      <TextLabel>Slide 2</TextLabel>
-      {renderImage()}
-    </CarouselSlide>
-    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
-  </Carousel>
+  </BaseComponent>
 )
 
 export const withImageComponent = () => (
-  <Carousel fullWidth>
+  <BaseComponent>
     <CarouselSlide>
       <TextLabel>With Image Component</TextLabel>
       <Image src={vizla} />
     </CarouselSlide>
-  </Carousel>
+  </BaseComponent>
 )
 
 export const withHTMLImageTag = () => (
-  <Carousel fullWidth>
+  <BaseComponent>
     <CarouselSlide>
       <TextLabel>With HTML Image Tag</TextLabel>
       <img src={vizla} />
     </CarouselSlide>
-  </Carousel>
+  </BaseComponent>
 )
 
 const TextLabel = styled.span`
