@@ -9,7 +9,7 @@ import { bool, oneOf, node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 import { CarouselArrow } from './arrow'
-import { CONTEXT } from '../../../'
+import { CONTEXT, Pagination, PaginationPropTypes } from '../../../'
 
 export const Carousel = ({
   arrowContext,
@@ -18,7 +18,9 @@ export const Carousel = ({
   fullWidth,
   height,
   leftArrowIcon,
+  paginationProps,
   rightArrowIcon,
+  showPagination,
   width
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -53,6 +55,17 @@ export const Carousel = ({
 
       {children[currentImageIndex] || children}
 
+      {showArrows && showPagination && (
+        <PaginationWrapper>
+          <Pagination
+            onPageChange={page => setCurrentImageIndex(page - 1)}
+            currentPage={currentImageIndex + 1}
+            pageCount={children.length}
+            {...paginationProps}
+          />
+        </PaginationWrapper>
+      )}
+
       {showArrows && (
         <CarouselArrow
           context={arrowContext}
@@ -74,6 +87,14 @@ const Wrapper = styled.div`
   width: ${({ width, fullWidth }) => (fullWidth ? '100%' : width)};
 `
 
+const PaginationWrapper = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 80px;
+`
+
 Carousel.propTypes = {
   arrowContext: oneOf(Object.values(CONTEXT)),
   arrowPosition: oneOf(['top', 'middle', 'bottom']),
@@ -81,7 +102,9 @@ Carousel.propTypes = {
   fullWidth: bool,
   height: string,
   leftArrowIcon: string,
+  paginationProps: PaginationPropTypes,
   rightArrowIcon: string,
+  showPagination: bool,
   width: string
 }
 
@@ -90,5 +113,6 @@ Carousel.defaultProps = {
   arrowPosition: 'middle',
   fullWidth: false,
   leftArrowIcon: 'chevron-left',
-  rightArrowIcon: 'chevron-right'
+  rightArrowIcon: 'chevron-right',
+  showPagination: false
 }

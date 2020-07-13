@@ -47,7 +47,9 @@ const BaseComponent = props => {
       },
       'middle'
     ),
-    fullWidth: boolean('Full width', true),
+    fullWidth: boolean('Full width', false),
+    height: '300px',
+    width: '900px',
     ...props
   }
   return <Carousel {...defaultProps} />
@@ -58,6 +60,16 @@ export const main = () => (
     <SampleSlide />
 
     <SampleSlide title='Another Slide' />
+  </BaseComponent>
+)
+
+export const withPagination = () => (
+  <BaseComponent showPagination>
+    <SampleSlide />
+
+    <SampleSlide title='Another Slide' />
+
+    <SampleSlide title='Another Third Slide' />
   </BaseComponent>
 )
 
