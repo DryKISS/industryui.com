@@ -6,7 +6,8 @@
 import React from 'react'
 
 // Storybook
-import { Wrapper } from 'decorators'
+import { Context, Wrapper } from 'decorators'
+import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 
 // Style
 import styled from 'styled-components'
@@ -19,7 +20,7 @@ import vizla from 'storybook/static/card/vizla.jpg'
 export default {
   title: 'Molecules/Carousel',
   component: Carousel,
-  decorators: [Wrapper],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -27,29 +28,36 @@ export default {
   }
 }
 
-const renderImage = () => (
-  <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />
+const SampleSlide = ({ title = 'Sample Slide' }) => (
+  <CarouselSlide>
+    <TextLabel>{title}</TextLabel>
+    <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />
+  </CarouselSlide>
 )
 
-const BaseComponent = ({ children }) => {
-  return (
-    <Carousel fullWidth>
-      {children}
-      <CarouselSlide>
-        <TextLabel>Sample Slide</TextLabel>
-        {renderImage()}
-      </CarouselSlide>
-      <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
-    </Carousel>
-  )
+const BaseComponent = props => {
+  const defaultProps = {
+    arrowContext: Context(null, 'black', 'Arrow context'),
+    arrowPosition: select(
+      'Arrow position',
+      {
+        Top: 'top',
+        Middle: 'middle',
+        Bottom: 'bottom'
+      },
+      'middle'
+    ),
+    fullWidth: boolean('Full width', true),
+    ...props
+  }
+  return <Carousel {...defaultProps} />
 }
 
 export const main = () => (
   <BaseComponent>
-    <CarouselSlide>
-      <TextLabel>Another Slide</TextLabel>
-      {renderImage()}
-    </CarouselSlide>
+    <SampleSlide />
+
+    <SampleSlide title='Another Slide' />
   </BaseComponent>
 )
 
@@ -59,6 +67,8 @@ export const withImageComponent = () => (
       <TextLabel>With Image Component</TextLabel>
       <Image src={vizla} />
     </CarouselSlide>
+
+    <SampleSlide />
   </BaseComponent>
 )
 
@@ -68,6 +78,22 @@ export const withHTMLImageTag = () => (
       <TextLabel>With HTML Image Tag</TextLabel>
       <img src={vizla} />
     </CarouselSlide>
+
+    <SampleSlide />
+  </BaseComponent>
+)
+
+export const withJustText = () => (
+  <BaseComponent>
+    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
+
+    <SampleSlide />
+  </BaseComponent>
+)
+
+export const withJustOneItem = () => (
+  <BaseComponent>
+    <SampleSlide />
   </BaseComponent>
 )
 
