@@ -14,7 +14,7 @@ import styled from 'styled-components'
 // UI
 import { Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
 import Readme from '../README.md'
-import vizla from '../__resources__/vizla.jpg'
+import vizla from 'storybook/static/card/vizla.jpg'
 
 export default {
   title: 'Molecules/Carousel',
