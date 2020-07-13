@@ -7,26 +7,48 @@ import React from 'react'
 import { func, string } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Icon } from '../../../'
 
-export const CarouselArrow = ({ direction, clickFunction, icon }) => (
-  <StyledArrow icon={icon} onClick={clickFunction} direction={direction} />
+export const CarouselArrow = ({ clickFunction, context, direction, icon, position }) => (
+  <StyledArrow
+    context={context}
+    direction={direction}
+    icon={icon}
+    onClick={clickFunction}
+    position={position}
+  />
 )
 
-CarouselArrow.propTypes = {
-  direction: string,
-  clickFunction: func,
-  icon: string
-}
-
 const StyledArrow = styled(Icon)`
-  color: #000;
+  color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
   cursor: pointer;
   position: absolute;
   top: 50%;
   ${({ direction }) => (direction === 'left' ? 'left: 1rem;' : 'right: 1rem;')}
+
   && {
     font-size: 2rem;
   }
+
+  ${({ position }) =>
+    position === 'top' &&
+    css`
+      top: 10%;
+    `};
+
+  ${({ position }) =>
+    position === 'bottom' &&
+    css`
+      top: unset;
+      bottom: 10%;
+    `};
 `
+
+CarouselArrow.propTypes = {
+  clickFunction: func.isRequired,
+  context: string.isRequired,
+  direction: string.isRequired,
+  icon: string.isRequired,
+  position: string.isRequired
+}
