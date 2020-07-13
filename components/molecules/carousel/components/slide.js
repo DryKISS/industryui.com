@@ -4,13 +4,17 @@
 
 // React
 import React from 'react'
-import { node } from 'prop-types'
+import { func, node, object } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
-export const CarouselSlide = ({ children, ...props }) => {
-  return <StyledSlide {...props}>{children}</StyledSlide>
+export const CarouselSlide = ({ children, onClick, style }) => {
+  return (
+    <StyledSlide onClick={onClick} style={style}>
+      {children}
+    </StyledSlide>
+  )
 }
 
 const StyledSlide = styled.div`
@@ -23,5 +27,7 @@ const StyledSlide = styled.div`
 `
 
 CarouselSlide.propTypes = {
-  children: node
+  children: node.isRequired,
+  onClick: func,
+  style: object
 }
