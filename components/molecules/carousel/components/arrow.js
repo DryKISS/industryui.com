@@ -44,13 +44,13 @@ const StyledArrow = styled(Icon)`
     position === 'top' &&
     css`
       align-self: flex-start;
-    `};
+    `}
 
   ${({ position }) =>
     position === 'bottom' &&
     css`
       align-self: flex-end;
-    `};
+    `}
 
   && {
     font-size: 2rem;

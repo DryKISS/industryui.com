@@ -141,7 +141,7 @@ const StyledHeading = styled(Heading)`
   z-index: 2;
 
   &:hover {
-    color: #00ccbc;
+    color: ${({ type }) => (type === 'hero' ? '#f2f1f1' : '#00ccbc')};
   }
 
   ${({ type }) =>
@@ -151,10 +151,6 @@ const StyledHeading = styled(Heading)`
       font-size: 2rem;
       line-height: 2rem;
       max-height: 115px;
-
-      &:hover {
-        color: #f2f1f1;
-      }
     `}
 `
 

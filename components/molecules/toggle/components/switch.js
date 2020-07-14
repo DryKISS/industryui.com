@@ -72,7 +72,7 @@ const StyledSwitch = styled.span`
     `
       left: calc(100% - 2px);
       transform: translateX(-100%);
-    `};
+    `}
 
   ${({ size }) =>
     size === 'sm' &&
