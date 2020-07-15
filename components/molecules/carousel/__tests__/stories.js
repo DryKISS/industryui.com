@@ -64,7 +64,7 @@ export const main = () => (
 )
 
 export const withPagination = () => (
-  <BaseComponent showPagination>
+  <BaseComponent showArrows={false} showPagination>
     <SampleSlide />
 
     <SampleSlide title='Another Slide' />

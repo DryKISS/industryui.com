@@ -9,7 +9,7 @@ import { bool, oneOf, node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 import { CarouselArrow } from './arrow'
-import { CONTEXT, Pagination, PaginationPropTypes } from '../../../'
+import { CONTEXT, Icon, Pagination, PaginationPropTypes } from '../../../'
 
 export const Carousel = ({
   arrowContext,
@@ -20,6 +20,7 @@ export const Carousel = ({
   leftArrowIcon,
   paginationProps,
   rightArrowIcon,
+  showArrows,
   showPagination,
   width
 }) => {
@@ -39,11 +40,11 @@ export const Carousel = ({
     setCurrentImageIndex(index)
   }
 
-  const showArrows = Array.isArray(children) && children.length > 1
+  const hasNavigation = Array.isArray(children) && children.length > 1
 
   return (
     <Wrapper width={width} height={height} fullWidth={fullWidth}>
-      {showArrows && (
+      {hasNavigation && showArrows && (
         <CarouselArrow
           context={arrowContext}
           clickFunction={previousSlide}
@@ -55,18 +56,21 @@ export const Carousel = ({
 
       {children[currentImageIndex] || children}
 
-      {showArrows && showPagination && (
+      {hasNavigation && showPagination && (
         <PaginationWrapper>
           <Pagination
             onPageChange={page => setCurrentImageIndex(page - 1)}
             currentPage={currentImageIndex + 1}
             pageCount={children.length}
+            showNextAndPrev
+            prevLabel={<Icon icon='chevron-left' />}
+            nextLabel={<Icon icon='chevron-right' />}
             {...paginationProps}
           />
         </PaginationWrapper>
       )}
 
-      {showArrows && (
+      {hasNavigation && showArrows && (
         <CarouselArrow
           context={arrowContext}
           clickFunction={nextSlide}
@@ -104,6 +108,7 @@ Carousel.propTypes = {
   leftArrowIcon: string,
   paginationProps: PaginationPropTypes,
   rightArrowIcon: string,
+  showArrows: bool,
   showPagination: bool,
   width: string
 }
@@ -114,5 +119,6 @@ Carousel.defaultProps = {
   fullWidth: false,
   leftArrowIcon: 'chevron-left',
   rightArrowIcon: 'chevron-right',
+  showArrows: true,
   showPagination: false
 }
