@@ -66,6 +66,9 @@ export const columnsActions = [
     hidden: true
   },
   {
+    hidden: true
+  },
+  {
     formatter: TableActions,
     formatterData: [
       {
@@ -73,12 +76,13 @@ export const columnsActions = [
         context: 'primary',
         icon: ['fad', 'edit'],
         to: '/manage',
-        tooltip: 'Edit'
+        tooltip: 'Edit',
+        numberOverlay: 'itemCount'
       },
       {
         content: 'Delete',
         context: 'danger',
-        icon: 'trash',
+        icon: ['fad', 'trash'],
         to: '/delete',
         tooltip: 'Delete'
       }
@@ -94,6 +98,7 @@ export const rows = {
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com',
       logo: 'https://drykiss.com/static/logo/drykiss.svg',
+      itemCount: 5,
       actions: ''
     },
     {
