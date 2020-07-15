@@ -141,7 +141,8 @@ const StyledHeading = styled(Heading)`
   z-index: 2;
 
   &:hover {
-    color: ${({ type }) => (type === 'hero' ? '#f2f1f1' : '#00ccbc')};
+    color: ${({ type, theme: { COLOUR } }) =>
+      type === 'hero' ? COLOUR.light : COLOUR.drykiss_lightBlue};
   }
 
   ${({ type }) =>
