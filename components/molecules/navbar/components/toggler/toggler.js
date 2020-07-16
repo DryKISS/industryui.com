@@ -56,16 +56,18 @@ const StyledIcon = styled.div`
     margin-bottom: 0.375rem;
     transition: 0.3s all linear;
   }
-  div:nth-child(1) {
-    &:active {
-      transform: rotate(45deg);
-    }
-  }
+  /* stylelint-disable */
   div:nth-child(2) {
     &:active {
       transform: rotate(-45deg);
     }
   }
+  div:nth-child(1) {
+    &:active {
+      transform: rotate(45deg);
+    }
+  }
+  /* stylelint-enable */
 `
 
 const StyledToggler = styled.a`

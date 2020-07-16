@@ -80,7 +80,7 @@ const StyledInput = styled.input.attrs(props => ({
 }))`
   background-clip: padding-box;
   background-color: ${({ theme, disabled }) => (disabled ? theme.COLOUR.light : '#fff')};
-  ${({ disabled }) => disabled && 'cursor: not-allowed;'};
+  ${({ disabled }) => disabled && 'cursor: not-allowed;'}
   border: 1px solid #c4cacf;
   border-radius: 0.25rem;
   box-sizing: border-box;

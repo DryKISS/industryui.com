@@ -49,9 +49,6 @@ const StyledTab = styled.li`
     !active &&
     css`
       cursor: pointer;
-      &:hover {
-        background-color: ${theme.TABS.hoverColour};
-      }
     `}
 
   ${({ disabled, theme }) =>
@@ -59,10 +56,21 @@ const StyledTab = styled.li`
     css`
       background-color: ${theme.TABS.disabledColour};
       cursor: no-drop;
-      &:hover {
-        background-color: ${theme.TABS.disabledColour};
-      }
     `}
+
+  &:hover {
+    ${({ active, theme }) =>
+      !active &&
+      css`
+        background-color: ${theme.TABS.hoverColour};
+      `}
+
+    ${({ disabled, theme }) =>
+      disabled &&
+      css`
+        background-color: ${theme.TABS.disabledColour};
+      `}
+  }
 
   &:last-of-type {
     border-top-right-radius: ${({ theme }) => theme.TABS.borderRadius};

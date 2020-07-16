@@ -23,6 +23,7 @@ const StyledText = styled.p`
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
+  color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
   ${({ size }) =>
     size === 'xs' &&
     css`
@@ -50,14 +51,12 @@ const StyledText = styled.p`
   ${({ size }) =>
     size === 'xl' &&
     css`
-      color: ${({ context }) => context};
       font-size: 1.5rem;
       line-height: 1.333;
     `}
   ${({ size }) =>
     size === 'xxl' &&
     css`
-      color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
       font-family: 'JetBrains Mono ExtraBold';
       font-size: 1.25rem;
       line-height: 1.25;
@@ -77,7 +76,6 @@ const StyledText = styled.p`
   ${({ size }) =>
     size === 'xxxl' &&
     css`
-      color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
       font-family: 'JetBrains Mono ExtraBold';
       font-size: 2.5rem;
       line-height: 1.25;

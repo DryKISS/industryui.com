@@ -195,7 +195,7 @@ export const Table = ({
 
 const StyledWrapper = styled.div`
   width: 100%;
-  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%'};
+  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%;'}
   position: relative;
   ${({ isLoading }) =>
     isLoading &&

@@ -15,7 +15,7 @@ export const Tail = styled.span`
   bottom: 8px;
   height: 16px;
   position: absolute;
-  ${({ type }) => (type === 'in' ? 'left: 11px' : 'right: 11px')};
+  ${({ type }) => (type === 'in' ? 'left: 11px;' : 'right: 11px;')}
   width: 12px;
 `
 

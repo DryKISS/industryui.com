@@ -45,29 +45,24 @@ const StyledInputGroupAddon = styled.div`
       white-space: nowrap;
     `}
 
-
-
-  ${({ addonType }) =>
-    addonType === 'prepend' &&
-    css`
-      &,
-      button {
+  &,
+  button {
+    ${({ addonType }) =>
+      addonType === 'prepend' &&
+      css`
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         margin-right: -1px;
-      }
-    `}
+      `}
 
-  ${({ addonType }) =>
-    addonType === 'append' &&
-    css`
-      &,
-      button {
+    ${({ addonType }) =>
+      addonType === 'append' &&
+      css`
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         margin-left: -1px;
-      }
-    `}
+      `}
+  }
 `
 
 InputGroupAddon.propTypes = {

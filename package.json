@@ -2,7 +2,9 @@
   "name": "industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": ["DryKISS, Ltd."],
+  "contributors": [
+    "DryKISS, Ltd."
+  ],
   "homepage": "https://industryui.com",
   "main": "./index.js",
   "license": "MIT",
@@ -32,7 +34,7 @@
     "standard": "standard | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy",
     "prettier": "prettier-standard --staged --lint",
-    "stylelint": "stylelint",
+    "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
     "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
@@ -50,7 +52,9 @@
     }
   },
   "lint-staged": {
-    "**/*.js": ["yarn test"]
+    "**/*.js": [
+      "yarn test"
+    ]
   },
   "husky": {
     "hooks": {
@@ -62,17 +66,15 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": ["__SITE__"],
-    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
+    "globals": [
+      "__SITE__"
+    ],
+    "ignore": [
+      "node_modules/**",
+      "*.bundle*.js",
+      "**/__tests__/*.test.js"
+    ],
     "parser": "babel-eslint"
-  },
-  "stylelint": {
-    "processors": ["stylelint-processor-styled-components"],
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-prettier",
-      "stylelint-config-styled-components"
-    ]
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
@@ -83,12 +85,12 @@
     "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
     "@fortawesome/pro-regular-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@fullcalendar/core": "^5.1.0",
-    "@fullcalendar/daygrid": "^5.1.0",
-    "@fullcalendar/interaction": "^5.1.0",
-    "@fullcalendar/list": "^5.1.0",
-    "@fullcalendar/react": "^5.1.0",
-    "@fullcalendar/timegrid": "^5.1.0",
+    "@fullcalendar/core": "4.4.2",
+    "@fullcalendar/daygrid": "4.4.2",
+    "@fullcalendar/interaction": "4.4.2",
+    "@fullcalendar/list": "4.4.2",
+    "@fullcalendar/react": "4.4.2",
+    "@fullcalendar/timegrid": "4.4.2",
     "@nivo/bar": "^0.61.1",
     "@nivo/colors": "^0.61.0",
     "@nivo/generators": "^0.61.0",
@@ -157,11 +159,9 @@
     "standard": "^14.3.3",
     "storybook-readme": "^5.0.8",
     "styled-components": "^5.1.0",
-    "stylelint": "^13.3.2",
-    "stylelint-config-prettier": "^8.0.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.9.0"
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1"
   },
   "peerDependencies": {
     "react": "^16.*",

@@ -32,7 +32,7 @@ const StyledButton = styled.button`
     'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
   cursor: pointer;
   display: ${({ block, centre }) => (centre || block ? 'block' : 'inline-block')};
-  font-family: ${({ theme }) => theme.font};
+  font-family: ${({ theme }) => theme.font};   /* stylelint-disable-line */
   font-size: 1rem;
   line-height: .75rem;
   margin: ${({ centre }) => (centre ? 'auto' : 0)};

@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { PageHeading } from '../'
+import { PageHeading } from '../pageHeading'
 import Readme from '../README.md'
 
 export default {
