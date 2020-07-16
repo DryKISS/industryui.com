@@ -18,9 +18,11 @@ export const CarouselSlide = ({ children, onClick, style }) => {
 }
 
 const StyledSlide = styled.div`
+  position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  user-select: none;
   img {
     width: 100%;
   }

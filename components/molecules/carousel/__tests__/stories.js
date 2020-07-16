@@ -14,6 +14,7 @@ import styled from 'styled-components'
 
 // UI
 import { Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
+import { CarouselSampleSlide } from '../components/sample'
 import Readme from '../README.md'
 import vizla from 'storybook/static/card/vizla.jpg'
 
@@ -29,10 +30,10 @@ export default {
 }
 
 const SampleSlide = ({ title = 'Sample Slide' }) => (
-  <CarouselSlide>
-    <TextLabel>{title}</TextLabel>
-    <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />
-  </CarouselSlide>
+  <CarouselSampleSlide
+    text={title}
+    node={<ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />}
+  />
 )
 
 const BaseComponent = props => {
@@ -61,6 +62,22 @@ export const main = () => (
 
     <SampleSlide title='Another Slide' />
   </BaseComponent>
+)
+
+export const withArray = () => (
+  <BaseComponent
+    slides={[
+      {
+        context: 'light',
+        img: vizla,
+        text: 'Sample text from Array Carousel'
+      },
+      {
+        node: <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />,
+        text: 'Another text from Array Carousel'
+      }
+    ]}
+  />
 )
 
 export const withPagination = () => (
