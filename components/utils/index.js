@@ -1,7 +1,7 @@
 /**
  * Components
  */
-export * from './age'
+export * from './age/age'
 export * from './auth'
 export * from './averageGeolocation'
 export * from './camelCase'

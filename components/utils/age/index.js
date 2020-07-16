@@ -1,4 +1,0 @@
-/**
- * Age
- */
-export * from './age'
