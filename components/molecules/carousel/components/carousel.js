@@ -10,7 +10,8 @@ import { arrayOf, bool, oneOf, node, shape, string } from 'prop-types'
 import styled from 'styled-components'
 import { CarouselArrow } from './arrow'
 import { CarouselSampleSlide } from './sample'
-import { CONTEXT, Icon, Pagination, PaginationPropTypes } from '../../../'
+import { CONTEXT, Icon, Pagination } from '../../../'
+import { PaginationPropTypes } from '../../pagination/components/props'
 
 export const Carousel = ({
   arrowContext,
@@ -69,6 +70,7 @@ export const Carousel = ({
             showNextAndPrev
             prevLabel={<Icon icon='chevron-left' />}
             nextLabel={<Icon icon='chevron-right' />}
+            size='xs'
             {...paginationProps}
           />
         </PaginationWrapper>
@@ -110,7 +112,7 @@ Carousel.propTypes = {
   fullWidth: bool,
   height: string,
   leftArrowIcon: string,
-  paginationProps: PaginationPropTypes,
+  paginationProps: shape(PaginationPropTypes),
   rightArrowIcon: string,
   showArrows: bool,
   showPagination: bool,
