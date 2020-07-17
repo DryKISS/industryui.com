@@ -48,7 +48,7 @@ const StyledButton = styled.button`
   ${({ disabled }) =>
     disabled &&
     css`
-      cursor: initial;
+      cursor: not-allowed;
       opacity: 0.5;
       pointer-events: none;
     `}

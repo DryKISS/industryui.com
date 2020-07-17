@@ -18,7 +18,7 @@ import {
   TableLoading,
   TableRow
 } from '../../../'
-import { PaginationPropTypes } from '../../pagination/components/propTypes'
+import { PaginationPropTypes } from '../../pagination/components/props'
 
 // Style
 import styled, { css } from 'styled-components'

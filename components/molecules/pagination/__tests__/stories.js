@@ -3,10 +3,10 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
+import { number, withKnobs } from '@storybook/addon-knobs'
 import { Context, Size, Wrapper } from 'decorators'
 
 // UI
@@ -25,9 +25,14 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
+const BaseComponent = ({ pageCount, ...props }) => {
+  const [currentPage, setCurrentPage] = useState(1)
   const defaultProps = {
+    breakCount: number('Break count', 5),
     context: Context(),
+    currentPage,
+    onPageChange: setCurrentPage,
+    pageCount: number('Page count', pageCount || 10),
     size: Size(),
     ...props
   }
@@ -35,17 +40,14 @@ const BaseComponent = (props = {}) => {
   return <Pagination {...defaultProps} />
 }
 
-export const Main = () => <BaseComponent currentPage={1} onPageChange={() => {}} pageCount={4} />
+export const Main = () => <BaseComponent />
 
-export const withPrevAndNextButtons = () => (
-  <BaseComponent currentPage={1} onPageChange={() => {}} pageCount={4} showNextAndPrev />
-)
+export const withPrevAndNextButtons = () => <BaseComponent showNextAndPrev />
+
+export const withManyItems = () => <BaseComponent showNextAndPrev pageCount={50} />
 
 export const withCustomPrevAndNextButtons = () => (
   <BaseComponent
-    currentPage={1}
-    onPageChange={() => {}}
-    pageCount={4}
     showNextAndPrev
     prevLabel={<Icon icon='chevron-left' />}
     nextLabel={<Icon icon='chevron-right' />}
