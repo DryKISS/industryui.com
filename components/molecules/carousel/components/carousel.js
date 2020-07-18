@@ -4,14 +4,13 @@
 
 // React
 import React, { useState } from 'react'
-import { arrayOf, bool, oneOf, node, shape, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 import { CarouselArrow } from './arrow'
 import { CarouselSampleSlide } from './sample'
-import { CONTEXT, Icon, Pagination } from '../../../'
-import { PaginationPropTypes } from '../../pagination/components/props'
+import { Icon, Pagination } from '../../../'
+import { CarouselDefaultProps, CarouselPropTypes } from './props'
 
 export const Carousel = ({
   arrowContext,
@@ -21,6 +20,7 @@ export const Carousel = ({
   height,
   leftArrowIcon,
   paginationProps,
+  paginationPosition,
   rightArrowIcon,
   showArrows,
   showPagination,
@@ -44,48 +44,54 @@ export const Carousel = ({
     setCurrentImageIndex(index)
   }
 
+  const renderPagination = () => (
+    <PaginationWrapper>
+      <Pagination
+        onPageChange={page => setCurrentImageIndex(page - 1)}
+        currentPage={currentImageIndex + 1}
+        pageCount={dataSource.length}
+        showNextAndPrev
+        prevLabel={<Icon icon='chevron-left' />}
+        nextLabel={<Icon icon='chevron-right' />}
+        size='xs'
+        {...paginationProps}
+      />
+    </PaginationWrapper>
+  )
+
   const hasNavigation = Array.isArray(dataSource) && dataSource.length > 1
   const current = dataSource[currentImageIndex]
 
   return (
-    <Wrapper width={width} height={height} fullWidth={fullWidth}>
-      {hasNavigation && showArrows && (
-        <CarouselArrow
-          context={arrowContext}
-          clickFunction={previousSlide}
-          direction='left'
-          icon={leftArrowIcon}
-          position={arrowPosition}
-        />
-      )}
-
-      {slides ? <CarouselSampleSlide {...current} /> : current || children}
-
-      {hasNavigation && showPagination && (
-        <PaginationWrapper>
-          <Pagination
-            onPageChange={page => setCurrentImageIndex(page - 1)}
-            currentPage={currentImageIndex + 1}
-            pageCount={dataSource.length}
-            showNextAndPrev
-            prevLabel={<Icon icon='chevron-left' />}
-            nextLabel={<Icon icon='chevron-right' />}
-            size='xs'
-            {...paginationProps}
+    <>
+      <Wrapper width={width} height={height} fullWidth={fullWidth}>
+        {hasNavigation && showArrows && (
+          <CarouselArrow
+            context={arrowContext}
+            clickFunction={previousSlide}
+            direction='left'
+            icon={leftArrowIcon}
+            position={arrowPosition}
           />
-        </PaginationWrapper>
-      )}
+        )}
 
-      {hasNavigation && showArrows && (
-        <CarouselArrow
-          context={arrowContext}
-          clickFunction={nextSlide}
-          direction='right'
-          icon={rightArrowIcon}
-          position={arrowPosition}
-        />
-      )}
-    </Wrapper>
+        {slides ? <CarouselSampleSlide {...current} /> : current || children}
+
+        {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
+
+        {hasNavigation && showArrows && (
+          <CarouselArrow
+            context={arrowContext}
+            clickFunction={nextSlide}
+            direction='right'
+            icon={rightArrowIcon}
+            position={arrowPosition}
+          />
+        )}
+      </Wrapper>
+
+      {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
+    </>
   )
 }
 
@@ -98,41 +104,11 @@ const Wrapper = styled.div`
 `
 
 const PaginationWrapper = styled.div`
-  position: absolute;
-  bottom: 1rem;
+  margin-top: 1rem;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 80px;
 `
 
-Carousel.propTypes = {
-  arrowContext: oneOf(Object.values(CONTEXT)),
-  arrowPosition: oneOf(['top', 'middle', 'bottom']),
-  children: node,
-  fullWidth: bool,
-  height: string,
-  leftArrowIcon: string,
-  paginationProps: shape(PaginationPropTypes),
-  rightArrowIcon: string,
-  showArrows: bool,
-  showPagination: bool,
-  slides: arrayOf(
-    shape({
-      context: string,
-      img: string,
-      node: node,
-      text: string
-    })
-  ),
-  width: string
-}
+Carousel.propTypes = CarouselPropTypes
 
-Carousel.defaultProps = {
-  arrowContext: CONTEXT.BLACK,
-  arrowPosition: 'middle',
-  fullWidth: false,
-  leftArrowIcon: 'chevron-left',
-  rightArrowIcon: 'chevron-right',
-  showArrows: true,
-  showPagination: false
-}
+Carousel.defaultProps = CarouselDefaultProps
