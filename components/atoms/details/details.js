@@ -5,12 +5,19 @@
 // React
 import { bool, node, string } from 'prop-types'
 
+// UI
+import { Button } from '../../atoms'
+
 // Style
 import styled from 'styled-components'
 
 export const Details = ({ children, open, style, summary, ...props }) => {
   return (
     <StyledDetails open={open} {...props}>
+      {props.button && (
+        <StyledButton content='Add New' context='secondary' onClick={props.handleClick} size='sm' />
+      )}
+
       <StyledSummary>{summary}</StyledSummary>
       <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
@@ -23,6 +30,12 @@ const StyledDetails = styled.details`
   border-bottom: 1px solid rgb(0, 204, 188);
   box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
   margin-bottom: 0.5rem;
+`
+
+const StyledButton = styled(Button)`
+  position: absolute;
+  right: 32px;
+  top: 16px;
 `
 
 const StyledSummary = styled.summary`
