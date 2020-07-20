@@ -1,27 +1,17 @@
 {
-  "presets": [
-    "next/babel",
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
+  "presets": ["next/babel", "@babel/preset-env", "@babel/preset-react"],
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "useESModules": true
+      }
+    ],
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-transform-classes",
-    "@babel/plugin-transform-react-jsx",
     [
       "styled-components",
       {
-        "displayName": true,
-        "ssr": true
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": [
-          "./"
-        ],
+        "root": ["./"],
         "alias": {
           "api": "./api",
           "config": "./config",

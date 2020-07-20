@@ -6,11 +6,7 @@
     "DryKISS, Ltd."
   ],
   "homepage": "https://industryui.com",
-  "main": "dist/bundle.common.js",
-  "jsnext:main": "dist/bundle.es.js",
-  "module": "dist/bundle.es.js",
-  "jsdelivr": "dist/bundle.umd.min.js",
-  "unpkg": "dist/bundle.umd.min.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "version": "0.1.3",
   "version_short": "0.1",
