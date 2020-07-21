@@ -14,7 +14,7 @@
 import { useState, useEffect } from 'react'
 
 // Apollo
-import { useSubscription } from '@apollo/react-hooks'
+import { useSubscription } from '@apollo/client'
 import gql from 'graphql-tag'
 
 // UI
