@@ -8,8 +8,11 @@ import React from 'react'
 // Storybook
 import { Context, Wrapper } from 'decorators'
 
+// Styled Components
+import styled from 'styled-components'
+
 // UI
-import { Button, Tooltip } from '../../../'
+import { Button, Text, Tooltip } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -23,10 +26,18 @@ export default {
   }
 }
 
+const SampleTooltip = () => (
+  <StyledWrapper>
+    <Text content='Tooltip' context='white' />
+    <Text content='Note' context='dark' />
+  </StyledWrapper>
+)
+
 const BaseComponent = props => {
   const defaultProps = {
     content: 'Hovered',
-    context: Context()
+    context: Context('tooltip', 'black'),
+    ...props
   }
 
   return (
@@ -39,3 +50,9 @@ const BaseComponent = props => {
 }
 
 export const main = () => <BaseComponent />
+
+export const withJsx = () => <BaseComponent content={<SampleTooltip />} />
+
+const StyledWrapper = styled.div`
+  text-align: center;
+`
