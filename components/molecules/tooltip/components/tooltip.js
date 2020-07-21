@@ -7,7 +7,7 @@ import Tippy from '@tippyjs/react'
 
 // UI
 import { BACKGROUND } from '../../../'
-import { TooltipPropTypes } from './props'
+import { TooltipDefaultProps, TooltipPropTypes } from './props'
 
 export const Tooltip = ({ children, content, context, ...props }) => {
   return (
@@ -18,7 +18,19 @@ export const Tooltip = ({ children, content, context, ...props }) => {
 }
 
 const StyledTippy = styled(Tippy)`
-  ${props => BACKGROUND(props)}
+  && {
+    ${props => BACKGROUND(props)}
+
+    .tippy-content {
+      padding: 8px;
+    }
+
+    .tippy-arrow::before {
+      color: ${({ context, theme }) => theme.COLOUR[context]};
+    }
+  }
 `
 
 Tooltip.propTypes = TooltipPropTypes
+
+Tooltip.defaultProps = TooltipDefaultProps

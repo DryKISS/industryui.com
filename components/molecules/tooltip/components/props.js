@@ -13,5 +13,5 @@ export const TooltipPropTypes = {
 }
 
 export const TooltipDefaultProps = {
-  context: 'primary'
+  context: 'black'
 }
