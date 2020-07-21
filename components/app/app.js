@@ -11,7 +11,7 @@ import isObject from 'lodash/isObject'
 import merge from 'lodash/merge'
 
 // Apollo
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 
 // Next
 import App from 'next/app'
