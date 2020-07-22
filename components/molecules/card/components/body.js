@@ -6,17 +6,17 @@
 import { bool, node, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { CONTEXT, Heading } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const CardBody = ({ center, children, className, context, title }) => {
+export const CardBody = ({ center, children, className, context, title, titleNoWrap }) => {
   return (
     <StyledBody className={className} center={center}>
       {title && (
         <StyledWrapper>
-          <StyledTitle className='Card-title'>{title}</StyledTitle>
+          <StyledTitle content={title} noWrap={titleNoWrap} tag='h2' />
         </StyledWrapper>
       )}
 
@@ -41,9 +41,7 @@ const StyledWrapper = styled.div`
   display: flex;
 `
 
-const StyledTitle = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 600;
+const StyledTitle = styled(Heading)`
   margin: 24px auto 16px auto;
   text-align: center;
   width: 75%;
@@ -58,9 +56,11 @@ CardBody.propTypes = {
   children: node,
   className: string,
   context: oneOf(Object.values(CONTEXT)),
-  title: string
+  title: string,
+  titleNoWrap: bool
 }
 
 CardBody.defaultProps = {
-  context: 'primary'
+  context: 'primary',
+  titleNoWrap: false
 }

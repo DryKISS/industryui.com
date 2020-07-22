@@ -59,3 +59,17 @@ export const noImage = () => (
     </CardBody>
   </BaseComponent>
 )
+
+export const longTitle = () => (
+  <BaseComponent
+    title={text(
+      'Title',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar lectus enim, a porttitor ex tincidunt id. '
+    )}
+    titleNoWrap={boolean('No wrap', true)}
+  >
+    <CardBody>
+      <p>{text('Content', 'content')}</p>
+    </CardBody>
+  </BaseComponent>
+)
