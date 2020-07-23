@@ -18,6 +18,14 @@ export const DraftJs = () => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, style))
   }
 
+  const handleKeyCommand = (command, editorState) => {
+    const newEditorState = RichUtils.handleKeyCommand(editorState, command)
+    if (newEditorState) {
+      setEditorState(newEditorState)
+      return 'handled'
+    }
+    return 'not-handled'
+  }
   // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
   return (
     <>
@@ -26,7 +34,11 @@ export const DraftJs = () => {
       <input type='button' value='S' data-style='STRIKETHROUGH' onMouseDown={toggleInlineStyle} />
       <input type='button' value='U' data-style='UNDERLINE' onMouseDown={toggleInlineStyle} />
 
-      <Editor editorState={editorState} onChange={setEditorState} />
+      <Editor
+        editorState={editorState}
+        handleKeyCommand={handleKeyCommand}
+        onChange={setEditorState}
+      />
     </>
   )
 }
