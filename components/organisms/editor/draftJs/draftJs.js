@@ -13,15 +13,15 @@ export const DraftJs = () => {
 
   const toggleInlineStyle = event => {
     event.preventDefault()
-    const style = event.currentTarget.getAttribute('data-style')
+    const style = event.currentTarget.getAttribute('value')
     console.log('The style ', style)
     setEditorState(RichUtils.toggleInlineStyle(editorState, style))
   }
 
   return (
     <>
-      <input type='button' value='Bold' data-style='BOLD' onMouseDown={toggleInlineStyle} />
-      <input type='button' value='Italic' data-style='ITALIC' onMouseDown={toggleInlineStyle} />
+      <input type='button' value='BOLD' onMouseDown={toggleInlineStyle} />
+      <input type='button' value='ITALIC' onMouseDown={toggleInlineStyle} />
       <Editor editorState={editorState} onChange={setEditorState} />
     </>
   )
