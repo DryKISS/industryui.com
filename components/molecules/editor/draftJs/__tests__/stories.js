@@ -1,13 +1,19 @@
+/**
+ * Draft JS
+ */
+
+// React
 import React from 'react'
+
 // Storybook
 import { Wrapper } from 'decorators'
 import Readme from '../README.md'
 
 // UI
-import { RichEditor } from '../components/richEditor'
+import { DraftJs } from 'components'
 
 export default {
-  title: 'Molecules/RichEditor',
+  title: 'Molecules/DraftJS',
   decorators: [Wrapper],
   parameters: {
     readme: {
@@ -16,4 +22,4 @@ export default {
   }
 }
 
-export const main = () => <RichEditor></RichEditor>
+export const main = () => <DraftJs />
