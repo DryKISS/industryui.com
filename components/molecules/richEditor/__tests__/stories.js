@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react'
 // Storybook
-import { Wrapper } from "decorators";
-import Readme from "../README.md";
+import { Wrapper } from 'decorators'
+import Readme from '../README.md'
 
 // UI
-import { RichEditor } from "../components/richEditor";
+import { RichEditor } from '../components/richEditor'
 
 export default {
-  title: "Molecules/RichEditor",
+  title: 'Molecules/RichEditor',
   decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
     }
   }
-};
+}
 
-export const main = () => <RichEditor></RichEditor>;
+export const main = () => <RichEditor></RichEditor>

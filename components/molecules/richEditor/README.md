@@ -1,4 +1,4 @@
-# Accordion
+# Rich Editor
 
 ## Links
 
