@@ -2,7 +2,7 @@
  * Card - Props
  */
 
-import { any, bool, node, object, oneOf, oneOfType, string } from 'prop-types'
+import { any, bool, func, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../../../'
@@ -15,6 +15,9 @@ export const CardPropTypes = {
   children: node,
   className: any,
   context: oneOf(Object.values(CONTEXT)),
+  ctaFunc: func,
+  ctaLink: string,
+  ctaTitle: string,
   deck: bool,
   footer: string,
   fullHeight: bool,
@@ -26,6 +29,7 @@ export const CardPropTypes = {
   role: string,
   rounded: bool,
   shadow: bool,
+  showCta: bool,
   style: object,
   title: string,
   titleNoWrap: bool

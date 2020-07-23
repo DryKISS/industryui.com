@@ -22,6 +22,9 @@ export const Card = ({
   className,
   close,
   context,
+  ctaFunc,
+  ctaLink,
+  ctaTitle,
   deck,
   footer,
   footerContext,
@@ -30,6 +33,7 @@ export const Card = ({
   image,
   rounded,
   shadow,
+  showCta,
   style,
   title,
   titleNoWrap,
@@ -67,6 +71,10 @@ export const Card = ({
             center={center}
             children={body}
             context={context}
+            ctaFunc={ctaFunc}
+            ctaLink={ctaLink}
+            ctaTitle={ctaTitle}
+            showCta={showCta}
             title={title}
             titleNoWrap={titleNoWrap}
           />

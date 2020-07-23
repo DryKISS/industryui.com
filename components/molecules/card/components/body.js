@@ -3,15 +3,27 @@
  */
 
 // React
-import { bool, node, oneOf, string } from 'prop-types'
+import { bool, func, node, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT, Heading } from '../../../'
+import { CardCTA } from './cta'
 
 // Style
 import styled from 'styled-components'
 
-export const CardBody = ({ center, children, className, context, title, titleNoWrap }) => {
+export const CardBody = ({
+  center,
+  children,
+  className,
+  context,
+  ctaFunc,
+  ctaLink,
+  ctaTitle,
+  showCta,
+  title,
+  titleNoWrap
+}) => {
   return (
     <StyledBody className={className} center={center}>
       {title && (
@@ -20,7 +32,12 @@ export const CardBody = ({ center, children, className, context, title, titleNoW
         </StyledWrapper>
       )}
 
-      {children && <StyledContent context={context}>{children}</StyledContent>}
+      {(children || showCta) && (
+        <StyledContent context={context}>
+          {children}
+          {showCta && <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />}
+        </StyledContent>
+      )}
     </StyledBody>
   )
 }
@@ -56,11 +73,15 @@ CardBody.propTypes = {
   children: node,
   className: string,
   context: oneOf(Object.values(CONTEXT)),
+  ctaFunc: func,
+  ctaLink: string,
+  ctaTitle: string,
+  showCta: bool,
   title: string,
   titleNoWrap: bool
 }
 
 CardBody.defaultProps = {
   context: 'primary',
-  titleNoWrap: false
+  showCta: false
 }
