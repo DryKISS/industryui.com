@@ -13,7 +13,7 @@ import Readme from '../README.md'
 import { DraftJs } from 'components'
 
 export default {
-  title: 'Molecules/DraftJS',
+  title: 'Organisms/Editor',
   decorators: [Wrapper],
   parameters: {
     readme: {
