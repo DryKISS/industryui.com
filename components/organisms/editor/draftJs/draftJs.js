@@ -14,7 +14,7 @@ import { BlockType } from './constants'
 
 // TODO: Check how we name our services/DataType
 
-export const DraftJs = ({ control, defaultValue, errors, name, ...props }) => {
+export const DraftJs = ({ control, defaultValue, name, ...props }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
   const toggleInlineStyle = event => {
