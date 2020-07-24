@@ -25,6 +25,7 @@ yarn-error.log*
 coverage
 cypress/videos
 cypress/screenshots
+.cache
 
 # Composer
 vendor
