@@ -39,7 +39,8 @@
     "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
     "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
-    "build-storybook": "build-storybook --quiet -s ./.storybook/static"
+    "build-storybook": "build-storybook --quiet -s ./.storybook/static",
+    "test:snapshot": "jest"
   },
   "engines": {
     "node": ">=12"
