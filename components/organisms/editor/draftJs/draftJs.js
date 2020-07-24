@@ -7,7 +7,6 @@ import React, { useState } from 'react'
 
 // Draft JS
 import { Editor, EditorState, RichUtils } from 'draft-js'
-import 'draft-js/dist/Draft.css'
 import { BlockType } from './constants'
 
 // TODO: Check how we name our services/DataType
