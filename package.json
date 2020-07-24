@@ -97,6 +97,7 @@
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",
     "@tanem/react-nprogress": "^3.0.24",
+    "@tippyjs/react": "^4.1.0",
     "@typeform/embed": "^0.22.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
@@ -116,10 +117,7 @@
     "react-google-maps": "^9.4.5",
     "react-gtm-module": "^2.0.8",
     "react-hook-form": "^5.4.2",
-    "react-popper": "^2.2.2",
     "react-select": "^3.1.0",
-    "react-tooltip": "^4.2.3",
-    "tippy.js": "^6.1.1",
     "yup": "^0.28.3"
   },
   "devDependencies": {

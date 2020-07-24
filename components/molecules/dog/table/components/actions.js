@@ -5,11 +5,8 @@
 // React
 import { object, string } from 'prop-types'
 
-// React Tooltip
-import ReactTooltip from 'react-tooltip'
-
 // UI
-import { Button, ButtonToolbar, Icon, Link } from '../../../../'
+import { Button, ButtonToolbar, Icon, Link, Tooltip } from '../../../../'
 
 export const Actions = ({ path, row }) => {
   const { dogId, uId } = row
@@ -23,23 +20,16 @@ export const Actions = ({ path, row }) => {
         }
       }}
     >
-      <Button data-tip={tooltip} context={context} size='sm' title={action}>
-        <Icon context='white' icon={icon} style={{ pointerEvents: 'none' }} />
-      </Button>
+      <Tooltip content={tooltip}>
+        <Button data-tip={tooltip} context={context} size='sm' title={action}>
+          <Icon context='white' icon={icon} style={{ pointerEvents: 'none' }} />
+        </Button>
+      </Tooltip>
     </Link>
   )
 
   return (
     <>
-      <ReactTooltip
-        border
-        effect='solid'
-        event='mouseover'
-        globalEventOff='click'
-        multiline
-        place='top'
-      />
-
       <ButtonToolbar className='float-right'>
         {action('Edit', 'primary', 'edit', 'details', 'Edit this dogs profile details')}
         {action('Photos', 'secondary', 'images', 'photos', 'Add or Edit this dogs photos')}
