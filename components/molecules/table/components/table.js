@@ -182,6 +182,7 @@ export const Table = ({
           currentPage={currentPage}
           onPageChange={handlePagination}
           pageCount={Math.ceil(rows.length / perPage)}
+          showNextAndPrev
           size='sm'
           style={{
             marginTop: '10px'
