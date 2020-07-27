@@ -2,6 +2,7 @@
  * Organisms
  */
 export * from './emailChange'
+export * from './editor'
 export * from './footer/footer'
 export * from './forgotDetails'
 export * from './forgotDetailsReset'
