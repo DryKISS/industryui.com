@@ -4,62 +4,75 @@
 
 // React
 import React from 'react'
-import { string, oneOf, object } from 'prop-types'
 
 // UI
-import { BACKGROUND, CONTEXT, Icon } from '../../'
+import { BACKGROUND, FONTSIZE } from '../../'
+import { Icon } from '../icon'
+import { BadgeDefaultProps, BadgePropTypes } from './props'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Badge = ({ className, content, context, icon, iconPrefix, style, to }) => {
+export const Badge = ({
+  children,
+  className,
+  content,
+  context,
+  icon,
+  iconPrefix,
+  size,
+  style,
+  to
+}) => {
   return (
     <StyledBadge
       className={className}
       context={context}
       href={to}
       itemProp='keywords'
+      size={size}
       style={style}
     >
-      {icon && <Icon icon={icon} prefix={iconPrefix} style={{ marginRight: '5px' }} />}
-      {content}
+      {icon && <StyledIcon icon={icon} prefix={iconPrefix} />}
+      {content || children}
     </StyledBadge>
   )
 }
 
 const StyledBadge = styled.a`
   ${props => BACKGROUND(props)}
+  ${props => FONTSIZE(props)}
   border-radius: 0;
   color: ${props => props.theme.COLOUR.white};
   display: inline-block;
-  font-size: 90%;
   line-height: 1;
   margin: 0 0.5em 0.5em 0;
   padding: 0.5em;
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  cursor: default;
 
-  &:hover {
-    background-color: ${props => props.theme.COLOUR.dark};
-    color: ${props => props.theme.COLOUR.light};
-  }
+  ${({ href }) =>
+    href &&
+    css`
+      &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+    `}
 
   &:empty {
     display: none;
   }
 `
 
-Badge.propTypes = {
-  className: string,
-  content: string.isRequired,
-  context: oneOf(Object.values(CONTEXT)),
-  icon: string,
-  iconPrefix: string,
-  style: object,
-  to: string
-}
+const StyledIcon = styled(Icon)`
+  margin-right: 5px;
+`
 
-Badge.defaultProps = {
-  content: 'primary'
-}
+Badge.propTypes = BadgePropTypes
+
+Badge.defaultProps = BadgeDefaultProps
