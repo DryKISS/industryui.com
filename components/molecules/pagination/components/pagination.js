@@ -6,10 +6,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+// Lodash
+import chunk from 'lodash/chunk'
+
 import { PaginationItem } from './'
-import { PaginationPropTypes } from './propTypes'
+import { PaginationPropTypes, PaginationDefaultProps } from './props'
 
 export const Pagination = ({
+  breakCount,
   children,
   context,
   currentPage,
@@ -22,15 +26,34 @@ export const Pagination = ({
   size,
   ...props
 }) => {
+  if (!pageCount) return null
+
   const handleChange = type => {
     if (type === 'prev') onPageChange(currentPage - 1)
     else if (type === 'next') onPageChange(currentPage + 1)
     else onPageChange(type)
   }
 
+  const pagesArray = chunk(
+    Array(pageCount)
+      .fill(0)
+      .map((p, i) => i + 1),
+    breakCount
+  )
+
+  const currentChunkIndex = pagesArray.findIndex(p => p.includes(currentPage))
+  const prevChunk = pagesArray[currentChunkIndex - 1]
+  const currentChunk = pagesArray[currentChunkIndex]
+  const nextChunk = pagesArray[currentChunkIndex + 1]
+  const showPrevDots = currentChunkIndex > 0
+  const showNextDots = pagesArray.length > 1 && currentChunkIndex + 1 < pagesArray.length
+
+  const showPrevButton = showNextAndPrev && pageCount > 5 && currentPage > 1
+  const showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount
+
   const renderContent = () => (
     <>
-      {showNextAndPrev && (
+      {showPrevButton && (
         <PaginationItem
           context={context}
           disabled={currentPage === 1}
@@ -40,20 +63,38 @@ export const Pagination = ({
         />
       )}
 
-      {Array(pageCount)
-        .fill(0)
-        .map((p, i) => (
+      {showPrevDots && (
+        <PaginationItem
+          onClick={() => handleChange(prevChunk[prevChunk.length - 1])}
+          context={context}
+          label='...'
+          size={size}
+        />
+      )}
+
+      {currentChunk.map(p => {
+        return (
           <PaginationItem
-            active={i + 1 === currentPage}
+            active={p === currentPage}
             context={context}
-            key={1 + i}
-            label={1 + i}
-            onClick={() => handleChange(1 + i)}
+            key={`${`page${p}`}`}
+            label={p}
+            onClick={() => handleChange(p)}
             size={size}
           />
-        ))}
+        )
+      })}
 
-      {showNextAndPrev && (
+      {showNextDots && (
+        <PaginationItem
+          onClick={() => handleChange(nextChunk[0])}
+          context={context}
+          label='...'
+          size={size}
+        />
+      )}
+
+      {showNextButton && (
         <PaginationItem
           context={context}
           disabled={currentPage === pageCount}
@@ -85,11 +126,4 @@ const StyledPagination = styled.ul`
 
 Pagination.propTypes = PaginationPropTypes
 
-Pagination.defaultProps = {
-  currentPage: 1,
-  hideWhenOnlyOnePage: true,
-  nextLabel: 'Next',
-  onPageChange: () => {},
-  pageCount: 1,
-  prevLabel: 'Previous'
-}
+Pagination.defaultProps = PaginationDefaultProps

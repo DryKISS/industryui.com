@@ -21,11 +21,17 @@ export const StepperItem = ({ item }) => {
 
   const renderActions = actions =>
     actions.map(
-      ({ id, active, content, context, handleClick, to, type }) =>
+      ({ id, active, content, context, data, handleClick, to, type }) =>
         active && (
           <li key={id}>
             {type === 'button' && (
-              <Button onClick={handleClick} content={content} context={context} size='xs' />
+              <Button
+                onClick={handleClick}
+                content={content}
+                context={context}
+                size='xs'
+                {...data}
+              />
             )}
           </li>
         )

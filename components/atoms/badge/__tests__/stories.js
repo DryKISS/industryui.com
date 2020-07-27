@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
-import { Context, Wrapper } from 'decorators'
+import { text, withKnobs } from '@storybook/addon-knobs'
+import { Context, Size, Wrapper } from 'decorators'
 
 // UI
 import { Badge } from 'components'
@@ -24,6 +24,19 @@ export default {
   }
 }
 
-export const main = () => <Badge content='Ian Warner' context={Context()} />
-export const link = () => <Badge content='Link' context={Context()} to='/example' />
-export const icon = () => <Badge content='User' context={Context()} icon='user' />
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    content: text('Content', 'Badge'),
+    context: Context(),
+    size: Size(),
+    ...props
+  }
+
+  return <Badge {...defaultProps} />
+}
+
+export const main = () => <BaseComponent />
+
+export const link = () => <BaseComponent content='Link' to='/example' />
+
+export const icon = () => <BaseComponent content='User' icon='user' />

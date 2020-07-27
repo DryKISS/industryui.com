@@ -83,5 +83,5 @@ export const OffCanvasProvider = ({ children }) => {
 }
 
 const StyledWrapper = styled.div`
-  ${({ show }) => !show && 'display:none'};
+  ${({ show }) => !show && 'display:none'}
 `

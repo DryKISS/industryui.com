@@ -3,24 +3,41 @@
  */
 
 // React
-import { bool, node, oneOf, string } from 'prop-types'
+import { bool, func, node, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { CONTEXT, Heading } from '../../../'
+import { CardCTA } from './cta'
 
 // Style
 import styled from 'styled-components'
 
-export const CardBody = ({ center, children, className, context, title }) => {
+export const CardBody = ({
+  center,
+  children,
+  className,
+  context,
+  ctaFunc,
+  ctaLink,
+  ctaTitle,
+  showCta,
+  title,
+  titleNoWrap
+}) => {
   return (
     <StyledBody className={className} center={center}>
       {title && (
         <StyledWrapper>
-          <StyledTitle className='Card-title'>{title}</StyledTitle>
+          <StyledTitle content={title} noWrap={titleNoWrap} tag='h2' />
         </StyledWrapper>
       )}
 
-      {children && <StyledContent context={context}>{children}</StyledContent>}
+      {(children || showCta) && (
+        <StyledContent context={context}>
+          {children}
+          {showCta && <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />}
+        </StyledContent>
+      )}
     </StyledBody>
   )
 }
@@ -41,9 +58,7 @@ const StyledWrapper = styled.div`
   display: flex;
 `
 
-const StyledTitle = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 600;
+const StyledTitle = styled(Heading)`
   margin: 24px auto 16px auto;
   text-align: center;
   width: 75%;
@@ -58,9 +73,15 @@ CardBody.propTypes = {
   children: node,
   className: string,
   context: oneOf(Object.values(CONTEXT)),
-  title: string
+  ctaFunc: func,
+  ctaLink: string,
+  ctaTitle: string,
+  showCta: bool,
+  title: string,
+  titleNoWrap: bool
 }
 
 CardBody.defaultProps = {
-  context: 'primary'
+  context: 'primary',
+  showCta: false
 }

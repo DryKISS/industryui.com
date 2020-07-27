@@ -6,20 +6,22 @@
 import React from 'react'
 
 // Storybook
-import { Wrapper } from 'decorators'
+import { Context, Wrapper } from 'decorators'
+import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 
 // Style
 import styled from 'styled-components'
 
 // UI
 import { Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
+import { CarouselSampleSlide } from '../components/sample'
 import Readme from '../README.md'
-import vizla from '../__resources__/vizla.jpg'
+import vizla from 'storybook/static/card/vizla.jpg'
 
 export default {
   title: 'Molecules/Carousel',
   component: Carousel,
-  decorators: [Wrapper],
+  decorators: [Wrapper, withKnobs],
   parameters: {
     readme: {
       sidebar: Readme
@@ -27,40 +29,101 @@ export default {
   }
 }
 
-const renderImage = () => (
-  <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />
+const SampleSlide = ({ title = 'Sample Slide' }) => (
+  <CarouselSampleSlide
+    text={title}
+    node={<ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />}
+  />
 )
 
+const BaseComponent = props => {
+  const defaultProps = {
+    arrowContext: Context(null, 'black', 'Arrow context'),
+    arrowPosition: select(
+      'Arrow position',
+      {
+        Top: 'top',
+        Middle: 'middle',
+        Bottom: 'bottom'
+      },
+      'middle'
+    ),
+    fullWidth: boolean('Full width', false),
+    height: '300px',
+    width: '900px',
+    ...props
+  }
+  return <Carousel {...defaultProps} />
+}
+
 export const main = () => (
-  <Carousel fullWidth>
-    <CarouselSlide>
-      <TextLabel>Slide 1</TextLabel>
-      {renderImage()}
-    </CarouselSlide>
-    <CarouselSlide>
-      <TextLabel>Slide 2</TextLabel>
-      {renderImage()}
-    </CarouselSlide>
-    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
-  </Carousel>
+  <BaseComponent>
+    <SampleSlide />
+
+    <SampleSlide title='Another Slide' />
+  </BaseComponent>
+)
+
+export const withArray = () => (
+  <BaseComponent
+    slides={[
+      {
+        context: 'light',
+        img: vizla,
+        text: 'Sample text from Array Carousel'
+      },
+      {
+        node: <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />,
+        text: 'Another text from Array Carousel'
+      }
+    ]}
+  />
+)
+
+export const withPagination = () => (
+  <BaseComponent showArrows={false} showPagination>
+    <SampleSlide />
+
+    <SampleSlide title='Another Slide' />
+
+    <SampleSlide title='Another Third Slide' />
+  </BaseComponent>
 )
 
 export const withImageComponent = () => (
-  <Carousel fullWidth>
+  <BaseComponent>
     <CarouselSlide>
       <TextLabel>With Image Component</TextLabel>
       <Image src={vizla} />
     </CarouselSlide>
-  </Carousel>
+
+    <SampleSlide />
+  </BaseComponent>
 )
 
 export const withHTMLImageTag = () => (
-  <Carousel fullWidth>
+  <BaseComponent>
     <CarouselSlide>
       <TextLabel>With HTML Image Tag</TextLabel>
       <img src={vizla} />
     </CarouselSlide>
-  </Carousel>
+
+    <SampleSlide />
+  </BaseComponent>
+)
+
+export const withJustText = () => (
+  <BaseComponent>
+    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
+
+    <SampleSlide />
+  </BaseComponent>
+)
+
+export const withJustOneItem = () => (
+  <BaseComponent>
+    <SampleSlide />
+  </BaseComponent>
 )
 
 const TextLabel = styled.span`

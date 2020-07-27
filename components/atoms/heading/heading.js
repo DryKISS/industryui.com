@@ -3,21 +3,21 @@
  * Provides the standard H1-H6 HTML tags
  */
 
-// React
-import { any, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
-
 // UI
-import { COLOUR, CONTEXT } from '../../'
+import { COLOUR } from '../../'
+import { HeadingPropTypes, HeadingDefaultProps } from './props'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Heading = ({ className, content, context, style, tag }) => {
+export const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {
   return (
     <StyledHeading
       as={tag}
       className={className}
       context={context}
+      noMargin={noMargin}
+      noWrap={noWrap}
       itemProp='name headline'
       rel='bookmark'
       style={style}
@@ -38,17 +38,16 @@ const StyledHeading = styled.span`
     text-transform: ${theme.HEADINGS[as].textTransform};
     margin: 0;
   `}
+
+  ${({ noWrap }) =>
+    noWrap &&
+    css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    `}
 `
 
-Heading.propTypes = {
-  className: any,
-  content: oneOfType([string, object]).isRequired,
-  context: oneOf(Object.values(CONTEXT)),
-  style: objectOf(oneOfType([number, string])),
-  tag: string
-}
+Heading.propTypes = HeadingPropTypes
 
-Heading.defaultProps = {
-  context: 'black',
-  tag: 'h1'
-}
+Heading.defaultProps = HeadingDefaultProps

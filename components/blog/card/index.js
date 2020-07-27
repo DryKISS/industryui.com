@@ -141,7 +141,8 @@ const StyledHeading = styled(Heading)`
   z-index: 2;
 
   &:hover {
-    color: #00ccbc;
+    color: ${({ type, theme: { COLOUR } }) =>
+      type === 'hero' ? COLOUR.light : COLOUR.drykiss_lightBlue};
   }
 
   ${({ type }) =>
@@ -151,10 +152,6 @@ const StyledHeading = styled(Heading)`
       font-size: 2rem;
       line-height: 2rem;
       max-height: 115px;
-
-      &:hover {
-        color: #f2f1f1;
-      }
     `}
 `
 

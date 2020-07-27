@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "media-feature-name-no-unknown": null,
+    "font-family-no-missing-generic-family-keyword": [
+      true,
+      {
+        "ignoreFontFamilies": [
+          "JetBrains Mono ExtraBold"
+        ]
+      }
+    ]
+  }
+}

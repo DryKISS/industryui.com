@@ -49,13 +49,14 @@ export const OffCanvasComponent = ({
       )}
 
       <OffCanvasDiv
+        data-cy='offCanvas'
         duration={transitionDuration}
         height={height}
         placement={placement}
         show={initialState}
         width={width}
       >
-        <OffCanvasHeader context={context}>
+        <OffCanvasHeader context={context} data-cy='offCanvasHeader'>
           {headerText}
           <Close context='white' click={e => toggleShow(false)} />
         </OffCanvasHeader>

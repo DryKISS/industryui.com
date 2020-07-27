@@ -48,11 +48,11 @@ export const ThemeStyle = createGlobalStyle`
     display: none;
   }
 
-  ${MEDIA_QUERY.desktop`
-    .d-md-block {
+  .d-md-block {
+    ${MEDIA_QUERY.desktop`
       display: block;
-    }
-  `}
+    `}
+  }
 
   #iubenda_policy .iub_content {
     padding: 0 !important;
@@ -75,7 +75,7 @@ export const ThemeStyle = createGlobalStyle`
 
   body {
     color: ${props => props.theme.TYPOGRAPHY.fontColour};
-    font-family: ${props => props.theme.TYPOGRAPHY.font};
+    font-family: ${props => props.theme.TYPOGRAPHY.font}; /* stylelint-disable-line */
     margin: 0;
     position: relative;
   }

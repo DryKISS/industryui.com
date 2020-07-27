@@ -6,8 +6,9 @@
 import React from 'react'
 
 // Storybook
-import { number, withKnobs } from '@storybook/addon-knobs'
-import { Context, Wrapper } from 'decorators'
+import { action } from '@storybook/addon-actions'
+import { withKnobs } from '@storybook/addon-knobs'
+import { Context, Size, Wrapper } from 'decorators'
 
 // UI
 import { Avatar } from 'components'
@@ -25,25 +26,21 @@ export default {
 }
 
 const BaseComponent = props => (
-  <Avatar content='Avatar' context={Context()} size={number('Size', 60)} {...props} />
+  <Avatar content='Avatar' context={Context()} size={Size()} {...props} />
 )
 
 export const main = () => <BaseComponent />
 
-export const withAction = () => (
-  <BaseComponent action='Edit' actionClick={() => window.alert('Clicked')} />
-)
+export const withAction = () => <BaseComponent action='Edit' actionClick={action('clicked')} />
 
-export const withImage = () => (
-  <BaseComponent src='https://s3.amazonaws.com/uifaces/faces/twitter/grrr_nl/128.jpg' />
-)
+export const withImage = () => <BaseComponent src='https://via.placeholder.com/128' />
 
 export const withGravatar = () => <BaseComponent gmail='test@gmail.com' />
 
 export const withImageAndAction = () => (
   <BaseComponent
     action='Edit'
-    actionClick={() => window.alert('Clicked')}
-    src='https://s3.amazonaws.com/uifaces/faces/twitter/grrr_nl/128.jpg'
+    actionClick={action('clicked')}
+    src='https://via.placeholder.com/128'
   />
 )
