@@ -72,7 +72,7 @@ const Wrapper = styled.div`
     error &&
     css`
       [class*='control'] {
-        ${props => ERROR_STYLE(props)};
+        ${props => ERROR_STYLE(props)}
       }
     `}
 `

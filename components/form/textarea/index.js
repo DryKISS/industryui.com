@@ -91,7 +91,7 @@ const StyledTextarea = styled.textarea`
   ${({ errors }) =>
     errors &&
     css`
-      ${props => ERROR_STYLE(props)};
+      ${props => ERROR_STYLE(props)}
     `}
 `
 

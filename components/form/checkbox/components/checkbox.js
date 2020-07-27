@@ -40,7 +40,7 @@ const StyledFieldset = styled.fieldset`
   ${({ error }) =>
     error &&
     css`
-      ${props => ERROR_STYLE(props)};
+      ${props => ERROR_STYLE(props)}
       padding: 0.5rem;
     `}
 `

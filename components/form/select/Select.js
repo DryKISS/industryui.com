@@ -111,7 +111,7 @@ const StyledSelect = styled.select`
   ${({ errors }) =>
     errors &&
     css`
-      ${props => ERROR_STYLE(props)};
+      ${props => ERROR_STYLE(props)}
     `}
 `
 

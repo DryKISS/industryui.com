@@ -1,5 +1,5 @@
 /**
- * Form - Field
+ * Form - Field - Input
  */
 
 // React
@@ -53,7 +53,7 @@ export const StyledInput = styled.input.attrs(props => ({
   width: 100%;
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: ${({ readOnly }) => (readOnly ? '0 0 0 0.2rem rgba(0, 123, 255, 0.25)' : 'none')};
     outline: 0;
   }
 
@@ -77,31 +77,19 @@ export const StyledInput = styled.input.attrs(props => ({
       cursor: not-allowed;
     `}
 
-
-    ${({ readOnly, theme }) =>
-      readOnly &&
-      css`
-        background-color: transparent;
-        border: solid transparent;
-        border-width: 1px 0;
-        padding: 0.5rem 0;
-
-        &:focus {
-          box-shadow: none;
-          outline: 0;
-        }
-      `}
-
-    /* display: block;
-    width: 100%;
-    padding-top: .375rem;
-    padding-bottom: .375rem;
-     */
+  ${({ readOnly }) =>
+    readOnly &&
+    css`
+      background-color: transparent;
+      border: solid transparent;
+      border-width: 1px 0;
+      padding: 0.5rem 0;
+    `}
 
   ${({ errors, error }) =>
     (errors || error) &&
     css`
-      ${props => ERROR_STYLE(props)};
+      ${props => ERROR_STYLE(props)}
     `}
 `
 
