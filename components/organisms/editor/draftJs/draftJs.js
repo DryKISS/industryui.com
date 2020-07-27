@@ -3,10 +3,10 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // React Hook Form
-import { Controller } from 'react-hook-form'
+// import { Controller } from 'react-hook-form'
 
 // Draft JS
 import { Editor, EditorState, RichUtils } from 'draft-js'
@@ -16,11 +16,16 @@ import { BlockType } from './constants'
 
 export const DraftJs = ({ control, defaultValue, name, ...props }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
+  console.log('the control ', control)
 
+  // defaultValue ? EditorState.createWithContent(defaultValue) : EditorState.createEmpty()
+  useEffect(() => {
+    // value = 'mono'
+    // console.log('editor state ', register, editorState.getCurrentContent().getPlainText('\u0001'))
+  }, [editorState])
   const toggleInlineStyle = event => {
     event.preventDefault()
     const style = event.currentTarget.getAttribute('data-style')
-    console.log('The style ', style)
     setEditorState(RichUtils.toggleInlineStyle(editorState, style))
   }
 
@@ -32,37 +37,25 @@ export const DraftJs = ({ control, defaultValue, name, ...props }) => {
     }
     return 'not-handled'
   }
-
+  const handleOnChange = state => {
+    console.log('state', state.getCurrentContent().getPlainText('\u0001'))
+    setEditorState(state)
+    return state.getCurrentContent().getPlainText('\u0001')
+  }
   // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
   return (
-    <Controller
-      as={
-        <>
-          <input type='button' value='B' data-style='BOLD' onMouseDown={toggleInlineStyle} />
-          <input type='button' value='I' data-style='ITALIC' onMouseDown={toggleInlineStyle} />
-          <input
-            type='button'
-            value='S'
-            data-style='STRIKETHROUGH'
-            onMouseDown={toggleInlineStyle}
-          />
-          <input type='button' value='U' data-style='UNDERLINE' onMouseDown={toggleInlineStyle} />
-          <Editor
-            editorState={editorState}
-            blockStyleFn={myBlockStyleFn}
-            handleKeyCommand={handleKeyCommand}
-            onChange={setEditorState}
-          />
-        </>
-      }
-      control={control}
-      defaultValue={defaultValue}
-      name={name}
-      onChange={([selected]) => {
-        return selected
-      }}
-      valueName='selected'
-    />
+    <>
+      <input type='button' value='B' data-style='BOLD' onMouseDown={toggleInlineStyle} />
+      <input type='button' value='I' data-style='ITALIC' onMouseDown={toggleInlineStyle} />
+      <input type='button' value='S' data-style='STRIKETHROUGH' onMouseDown={toggleInlineStyle} />
+      <input type='button' value='U' data-style='UNDERLINE' onMouseDown={toggleInlineStyle} />
+      <Editor
+        editorState={editorState}
+        blockStyleFn={myBlockStyleFn}
+        handleKeyCommand={handleKeyCommand}
+        onChange={value => handleOnChange(value)}
+      />
+    </>
   )
 }
 
