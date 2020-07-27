@@ -1,21 +1,25 @@
+import path from 'path'
+import resolve from '@rollup/plugin-node-resolve'
 import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
-import nodeResolve from '@rollup/plugin-node-resolve'
+import svg from 'rollup-plugin-svg'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import pkg from './package.json'
 
-export default {
-  input: 'components/index.js',
-  output: {
-    dir: 'dist',
-    format: 'es',
-    sourcemap: true,
-    exports: 'named'
-  },
+const globals = {
+  react: 'React',
+  'react-dom': 'ReactDOM',
+  'styled-components': 'StyledComponents'
+}
+
+const baseConfig = {
+  input: path.resolve(__dirname, 'components', 'index.js'),
   plugins: [
     peerDepsExternal({
       includeDependencies: true
     }),
-    nodeResolve(),
+    resolve(),
+    svg(),
     commonjs({ include: /node_modules/ }),
     babel({
       babelHelpers: 'runtime',
@@ -23,3 +27,25 @@ export default {
     })
   ]
 }
+
+const CommonJS = {
+  ...baseConfig,
+  output: {
+    globals,
+    file: pkg.main,
+    format: 'cjs',
+    sourcemap: true
+  }
+}
+
+const ESModules = {
+  ...baseConfig,
+  output: {
+    globals,
+    file: pkg.module,
+    format: 'es',
+    sourcemap: true
+  }
+}
+
+module.exports = [CommonJS, ESModules]
