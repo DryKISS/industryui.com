@@ -14,11 +14,17 @@ import styled from 'styled-components'
 export const Details = ({ children, open, style, summary, ...props }) => {
   return (
     <StyledDetails open={open} {...props}>
-      {props.button && (
-        <StyledButton content='Add New' context='secondary' onClick={props.handleClick} size='sm' />
-      )}
-
-      <StyledSummary>{summary}</StyledSummary>
+      <StyledSummary>
+        {summary}
+        {props.button && (
+          <StyledButton
+            content={props.button || 'Add New'}
+            context='secondary'
+            onClick={props.handleClick}
+            size='sm'
+          />
+        )}
+      </StyledSummary>
       <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
   )
