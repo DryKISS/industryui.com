@@ -6,23 +6,21 @@
 import React, { useState, useEffect } from 'react'
 
 // React Hook Form
-// import { Controller } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 
 // Draft JS
 import { Editor, EditorState, RichUtils } from 'draft-js'
 import { BlockType } from './constants'
-
 // TODO: Check how we name our services/DataType
 
-export const DraftJs = ({ control, defaultValue, name, ...props }) => {
+export const DraftJs = ({ control, defaultValue, name }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
-  console.log('the control ', control)
 
   // defaultValue ? EditorState.createWithContent(defaultValue) : EditorState.createEmpty()
   useEffect(() => {
-    // value = 'mono'
-    // console.log('editor state ', register, editorState.getCurrentContent().getPlainText('\u0001'))
+    console.log('test')
   }, [editorState])
+
   const toggleInlineStyle = event => {
     event.preventDefault()
     const style = event.currentTarget.getAttribute('data-style')
@@ -40,7 +38,6 @@ export const DraftJs = ({ control, defaultValue, name, ...props }) => {
   const handleOnChange = state => {
     console.log('state', state.getCurrentContent().getPlainText('\u0001'))
     setEditorState(state)
-    return state.getCurrentContent().getPlainText('\u0001')
   }
   // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
   return (
@@ -49,11 +46,19 @@ export const DraftJs = ({ control, defaultValue, name, ...props }) => {
       <input type='button' value='I' data-style='ITALIC' onMouseDown={toggleInlineStyle} />
       <input type='button' value='S' data-style='STRIKETHROUGH' onMouseDown={toggleInlineStyle} />
       <input type='button' value='U' data-style='UNDERLINE' onMouseDown={toggleInlineStyle} />
-      <Editor
-        editorState={editorState}
-        blockStyleFn={myBlockStyleFn}
-        handleKeyCommand={handleKeyCommand}
-        onChange={value => handleOnChange(value)}
+      <Controller
+        name={name}
+        control={control}
+        defaultValue={defaultValue}
+        render={props => (
+          <Editor
+            {...props}
+            editorState={editorState}
+            blockStyleFn={myBlockStyleFn}
+            handleKeyCommand={handleKeyCommand}
+            onChange={handleOnChange}
+          />
+        )}
       />
     </>
   )
