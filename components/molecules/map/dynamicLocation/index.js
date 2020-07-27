@@ -3,6 +3,7 @@
  * Showcases a dynamic map based on a location
  */
 
+import React from 'react'
 import { array, node, string } from 'prop-types'
 
 import {
