@@ -10,7 +10,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  deploy:
+  deploy-storybook:
     runs-on: ubuntu-latest
 
     strategy:
