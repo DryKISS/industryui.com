@@ -12,7 +12,7 @@ import { Controller } from 'react-hook-form'
 import { Editor, EditorState, RichUtils } from 'draft-js'
 import { BlockType } from './constants'
 
-export const DraftJs = ({ control, defaultValue, name, setValue }) => {
+export const DraftJs = ({ control, name, setValue }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
   const toggleInlineStyle = event => {
@@ -45,7 +45,6 @@ export const DraftJs = ({ control, defaultValue, name, setValue }) => {
       <Controller
         name={name}
         control={control}
-        defaultValue={defaultValue}
         render={props => (
           <Editor
             editorState={editorState}
