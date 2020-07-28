@@ -1,3 +1,5 @@
+// Did is the example to apply into the blockTypes, when we implement the whole solutionn
+// We will have it in this format
 export const BlockType = {
   HEADER_ONE: 'header-one',
   HEADER_THREE: 'header-three',
@@ -8,13 +10,3 @@ export const BlockType = {
   FIGURE: 'atomic',
   LI: 'unordered-list-item'
 }
-
-export const COLORS = [
-  { label: 'Red', style: 'red' },
-  { label: 'Orange', style: 'orange' },
-  { label: 'Yellow', style: 'yellow' },
-  { label: 'Green', style: 'green' },
-  { label: 'Blue', style: 'blue' },
-  { label: 'Indigo', style: 'indigo' },
-  { label: 'Violet', style: 'violet' }
-]

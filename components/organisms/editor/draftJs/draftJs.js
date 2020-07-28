@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // React Hook Form
 import { Controller } from 'react-hook-form'
@@ -13,13 +13,8 @@ import { Editor, EditorState, RichUtils } from 'draft-js'
 import { BlockType } from './constants'
 // TODO: Check how we name our services/DataType
 
-export const DraftJs = ({ control, defaultValue, name }) => {
+export const DraftJs = ({ control, defaultValue, name, setValue }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
-
-  // defaultValue ? EditorState.createWithContent(defaultValue) : EditorState.createEmpty()
-  useEffect(() => {
-    console.log('test')
-  }, [editorState])
 
   const toggleInlineStyle = event => {
     event.preventDefault()
@@ -36,8 +31,10 @@ export const DraftJs = ({ control, defaultValue, name }) => {
     return 'not-handled'
   }
   const handleOnChange = state => {
-    console.log('state', state.getCurrentContent().getPlainText('\u0001'))
     setEditorState(state)
+    // This is returning the current plain Value, we will have to see if we will get back the whole
+    // State and then write a parser or how we will manage that
+    setValue(name, state.getCurrentContent().getPlainText('\u0001'))
   }
   // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
   return (
@@ -52,7 +49,6 @@ export const DraftJs = ({ control, defaultValue, name }) => {
         defaultValue={defaultValue}
         render={props => (
           <Editor
-            {...props}
             editorState={editorState}
             blockStyleFn={myBlockStyleFn}
             handleKeyCommand={handleKeyCommand}

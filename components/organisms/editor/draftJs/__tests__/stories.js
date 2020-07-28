@@ -27,13 +27,13 @@ export default {
 const onSubmit = data => console.log(data)
 
 export const main = () => {
-  const { control, handleSubmit } = useForm()
-  const defaultValue = 'test'
+  const { control, handleSubmit, setValue } = useForm()
+  const defaultValue = 'prueba'
   const name = 'draftjs'
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <DraftJs control={control} defaultValue={defaultValue} name={name} />
+      <DraftJs control={control} defaultValue={defaultValue} name={name} setValue={setValue} />
       <Button content='Submit' type='submit' />
     </form>
   )
