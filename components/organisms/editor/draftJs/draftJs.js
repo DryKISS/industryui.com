@@ -29,11 +29,11 @@ export const DraftJs = ({ control, defaultValue, name, setValue }) => {
     }
     return 'not-handled'
   }
-  const handleOnChange = state => {
-    setEditorState(state)
+  const handleOnChange = newEditorState => {
+    setEditorState(newEditorState)
     // This is returning the current plain Value, we will have to see if we will get back the whole
     // State and then write a parser or how we will manage that
-    setValue(name, state.getCurrentContent().getPlainText('\u0001'))
+    setValue(name, newEditorState.getCurrentContent().getPlainText('\u0001'))
   }
   // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
   return (
