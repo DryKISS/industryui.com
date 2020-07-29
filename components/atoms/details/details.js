@@ -16,6 +16,7 @@ export const Details = ({ children, open, style, summary, ...props }) => {
     <StyledDetails open={open} {...props}>
       <StyledSummary>
         {summary}
+
         {props.button && (
           <StyledButton
             content={props.button || 'Add New'}
@@ -25,6 +26,7 @@ export const Details = ({ children, open, style, summary, ...props }) => {
           />
         )}
       </StyledSummary>
+
       <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
   )
@@ -38,17 +40,18 @@ const StyledDetails = styled.details`
   margin-bottom: 0.5rem;
 `
 
-const StyledButton = styled(Button)`
-  position: absolute;
-  right: 32px;
-  top: 16px;
-`
-
 const StyledSummary = styled.summary`
   font-weight: bold;
   cursor: pointer;
   outline: none;
   padding: 1rem;
+  position: relative;
+`
+
+const StyledButton = styled(Button)`
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
 `
 
 const StyledBody = styled.div`
