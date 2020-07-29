@@ -1,14 +1,5 @@
 module.exports = {
-  presets: [
-    'next/babel',
-    [
-      '@babel/env',
-      {
-        modules: false
-      }
-    ],
-    '@babel/react'
-  ],
+  presets: ['@babel/react'],
   plugins: [
     '@babel/plugin-transform-runtime',
     '@babel/plugin-proposal-class-properties',
@@ -35,6 +26,17 @@ module.exports = {
     ]
   ],
   env: {
+    build: {
+      presets: [
+        'next/babel',
+        [
+          '@babel/env',
+          {
+            modules: false
+          }
+        ]
+      ]
+    },
     test: {
       presets: [
         [
@@ -44,8 +46,7 @@ module.exports = {
               node: 'current'
             }
           }
-        ],
-        '@babel/react'
+        ]
       ]
     }
   }

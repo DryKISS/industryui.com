@@ -38,7 +38,7 @@
     "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
     "clean-dist": "rm -rf ./dist",
-    "build": "rollup -c",
+    "build": "NODE_ENV=build rollup -c",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
     "test:snapshot": "jest",
     "test:snapshot:update": "jest --updateSnapshot"
