@@ -22,6 +22,7 @@ import TagManager from 'react-gtm-module'
 // UI
 import {
   AuthorizationProvider,
+  ConfigProvider,
   FirebaseProvider,
   NotificationsProvider,
   OffCanvasProvider,
@@ -38,6 +39,7 @@ export class MyApp extends App {
   static propTypes = {
     apolloClient: object,
     Component: func.isRequired,
+    config: object,
     firebase: object,
     google: object,
     icons: object,
@@ -89,15 +91,17 @@ export class MyApp extends App {
   }
 
   data () {
-    const { apolloClient } = this.props
+    const { apolloClient, config } = this.props
 
     return (
       <>
-        {apolloClient ? (
-          <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
-        ) : (
-          this.elements()
-        )}
+        <ConfigProvider config={config}>
+          {apolloClient ? (
+            <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
+          ) : (
+            this.elements()
+          )}
+        </ConfigProvider>
       </>
     )
   }
