@@ -54,5 +54,5 @@ jobs:
           yarn build
 
       - name: Snapshot Tests 📷
-      run: |
-        yarn test:snapshot
+        run: |
+          yarn test:snapshot
