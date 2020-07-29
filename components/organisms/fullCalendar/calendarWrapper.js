@@ -18,15 +18,17 @@ export const CalendarWrapper = props => {
         listPlugin: import('@fullcalendar/list')
       }),
       render: (props, { calendar: Calendar, ...plugins }) => (
-        <Calendar {...props} plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
+        <Calendar plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
       ),
       ssr: false
     })
+
     setCalendarLoaded(true)
   }, [])
 
   const showCalendar = props => {
     if (!calendarLoaded) return <div>Loading ...</div>
+
     return <FullCalendar {...props} />
   }
 
