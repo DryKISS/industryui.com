@@ -8,7 +8,6 @@
 
 // React
 import { forwardRef, useState } from 'react'
-import dynamic from 'next/dynamic'
 
 // UI
 import { LdsSpinner, PageLoading, Theme } from '../../../'
@@ -16,9 +15,7 @@ import { LdsSpinner, PageLoading, Theme } from '../../../'
 // Styled Components
 import styled from 'styled-components'
 
-const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
-  ssr: false
-})
+import { CalendarWrapper } from './calendarWrapper'
 
 export const Calendar = forwardRef(({ ...props }, ref) => {
   const { CALENDAR, COLOUR } = Theme

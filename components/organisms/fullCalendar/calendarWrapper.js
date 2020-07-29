@@ -1,21 +1,34 @@
 /**
  * Full Calendar - Wrapper
  */
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import listPlugin from '@fullcalendar/list'
+import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+let FullCalendar
 
-const CalendarWrapper = props => {
-  return (
-    <FullCalendar
-      defaultView={props.defaultView}
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
-      ref={props.forwardedRef}
-      {...props}
-    />
-  )
+export const CalendarWrapper = props => {
+  const [calendarLoaded, setCalendarLoaded] = useState(false)
+
+  useEffect(() => {
+    FullCalendar = dynamic({
+      modules: () => ({
+        calendar: import('@fullcalendar/react'),
+        dayGridPlugin: import('@fullcalendar/daygrid'),
+        timeGridPlugin: import('@fullcalendar/timegrid'),
+        interactionPlugin: import('@fullcalendar/interaction'),
+        listPlugin: import('@fullcalendar/list')
+      }),
+      render: (props, { calendar: Calendar, ...plugins }) => (
+        <Calendar {...props} plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
+      ),
+      ssr: false
+    })
+    setCalendarLoaded(true)
+  }, [])
+
+  const showCalendar = props => {
+    if (!calendarLoaded) return <div>Loading ...</div>
+    return <FullCalendar {...props} />
+  }
+
+  return <div>{showCalendar(props)}</div>
 }
-
-export default CalendarWrapper
