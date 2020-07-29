@@ -2,16 +2,16 @@
  * Navbar - Base components
  */
 
+// React
+import React, { useContext } from 'react'
+
 // Storybook
 import { boolean, text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Navbar } from 'components'
+import { ConfigContext, Navbar } from 'components'
 import { Dashboard } from '../__mocks__'
-
-// Config
-import { Brand } from 'config'
 
 export const options = {
   component: Navbar,
@@ -19,6 +19,8 @@ export const options = {
 }
 
 export const BaseComponent = (props = {}) => {
+  const { Brand } = useContext(ConfigContext)
+
   const defaultProps = {
     animational: boolean('Animational', props.animational || false),
     brand: text('Brand', props.brand || Brand.logo),
