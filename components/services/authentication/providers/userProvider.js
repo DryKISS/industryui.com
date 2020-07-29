@@ -6,7 +6,7 @@
  */
 
 // React
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 // Bcrypt
 import bcrypt from 'bcryptjs'
@@ -18,15 +18,14 @@ import Router from 'next/router'
 import axios from 'axios'
 
 // UI
-import { decodeToken, UserContext, validateToken } from '../../../'
-
-// Config
-import { apiConfig, jwtConfig } from 'config'
+import { ConfigContext, decodeToken, UserContext, validateToken } from '../../../'
 
 export const UserProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null)
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+
+  const { apiConfig, jwtConfig } = useContext(ConfigContext)
 
   useEffect(() => {
     const bearerToken = window.localStorage.getItem('bearerToken')

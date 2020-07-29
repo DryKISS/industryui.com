@@ -7,19 +7,20 @@
  */
 
 // React
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 // Axios
 import axios from 'axios'
 
 // UI
-import { apiConfig } from 'config'
+import { ConfigContext } from '..'
 
 export const useAxios = (url, params, initialValue) => {
   if (!url) {
     return { data: { isLoading: false } }
   }
 
+  const { apiConfig } = useContext(ConfigContext)
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 
   useEffect(() => {

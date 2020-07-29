@@ -4,13 +4,15 @@
  */
 
 // React
+import { useContext } from 'react'
 import { array, func, node, string } from 'prop-types'
 
 // UI
-import { Bootstrap, Container, Column, Row } from '../../'
-import { Sidebar } from 'config'
+import { Bootstrap, ConfigContext, Container, Column, Row } from '../../'
 
 export const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
+  const { Sidebar } = useContext(ConfigContext)
+
   return (
     <Container fluid>
       <Row>

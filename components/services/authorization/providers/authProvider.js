@@ -9,15 +9,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import Router, { useRouter } from 'next/router'
 
 // UI
-import { AuthorizationContext, UserContext } from '../../../'
-
-// Config
-import { AccessPages, AccessRules } from 'config'
+import { AuthorizationContext, ConfigContext, UserContext } from '../../../'
 
 export const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const { user } = useContext(UserContext)
   const router = useRouter()
+
+  const { AccessPages, AccessRules } = useContext(ConfigContext)
 
   const permissions = user && user.role ? AccessRules[user.role] : []
 
@@ -62,13 +61,10 @@ export const AuthorizationProvider = ({ children }) => {
       switch (subtype) {
         case 'owner':
           return user.role === type + '_owner'
-          break
         case 'manager':
           return user.role === type + '_owner' || user.role === type + '_manager'
-          break
         case 'user':
           return user.role.startsWith(type)
-          break
         default:
           return false
       }
