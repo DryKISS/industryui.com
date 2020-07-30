@@ -27,6 +27,7 @@ export const FormField = ({
       aria-label={name}
       disabled={disabled}
       errors={errors[name]}
+      register={register}
       key={name}
       name={name}
       placeholder={placeholder}
