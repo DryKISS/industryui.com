@@ -124,7 +124,7 @@ export const Table = ({
             const length = columns.length
             const column = columns[index]
 
-            if (length && column.hidden) {
+            if (!column || (length && column.hidden)) {
               return
             }
 
