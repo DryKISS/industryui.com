@@ -44,9 +44,8 @@ const BaseComponent = (props = {}) => {
 
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='Dropzone'>
-        <DropzoneField {...defaultProps} />
-      </FormLabel>
+      <FormLabel label='Dropzone' />
+      <DropzoneField {...defaultProps} />
 
       {errors.dropzone && <p>{errors.dropzone.message}</p>}
 
