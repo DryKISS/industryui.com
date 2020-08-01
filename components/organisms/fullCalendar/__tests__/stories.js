@@ -10,7 +10,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Calendar, Theme, useTooltip } from '../../../'
+import { Calendar, Theme } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -88,15 +88,8 @@ export const eventClick = () => {
   return <BaseComponent eventClick={handleEventClick} events={Events} />
 }
 
-export const eventsWithPopover = () => {
-  const { tooltip } = useTooltip()
-  const handleRender = info => {
-    tooltip(info.el, {
-      content: info.event.extendedProps.description
-    })
-  }
-
-  return <BaseComponent events={Events} eventRender={handleRender} />
+export const eventsWithTooltip = () => {
+  return <BaseComponent events={Events} showTooltip />
 }
 
 export const fetchEvents = () => {
@@ -109,22 +102,14 @@ export const fetchEvents = () => {
   return <BaseComponent events={fetchEvents} />
 }
 
-export const fetchEventsWithPopover = () => {
-  const { tooltip } = useTooltip()
-
+export const fetchEventsWithTooltip = () => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
     }, 1000)
   }
 
-  const handleRender = info => {
-    tooltip(info.el, {
-      content: info.event.extendedProps.description
-    })
-  }
-
-  return <BaseComponent events={fetchEvents} eventRender={handleRender} />
+  return <BaseComponent events={fetchEvents} showTooltip />
 }
 
 export const fetchEventsWithLoadingIndicator = () => {
