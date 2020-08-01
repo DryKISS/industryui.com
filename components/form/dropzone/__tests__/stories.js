@@ -34,7 +34,7 @@ const BaseComponent = (props = {}) => {
   }
 
   const defaultProps = {
-    accept: '*/image',
+    accept: 'image/*',
     control,
     disabled: boolean('Disabled', false),
     errors: errors,
