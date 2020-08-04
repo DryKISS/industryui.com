@@ -16,7 +16,7 @@ import { Button, Text, Tooltip } from '../../../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Tooltip',
+  title: 'Atoms/Tooltip',
   component: Tooltip,
   decorators: [Wrapper],
   parameters: {
