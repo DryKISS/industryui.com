@@ -11,12 +11,11 @@ import { Button } from '../../atoms'
 // Style
 import styled from 'styled-components'
 
-export const Details = ({ children, open, style, summary, ...props }) => {
+export const Details = ({ children, open, style, summary, Toolbar, ...props }) => {
   return (
     <StyledDetails open={open} {...props}>
       <StyledSummary>
         {summary}
-
         {props.button && (
           <StyledButton
             content={props.button || 'Add New'}
@@ -25,6 +24,7 @@ export const Details = ({ children, open, style, summary, ...props }) => {
             size='sm'
           />
         )}
+        {Toolbar && <Toolbar />}
       </StyledSummary>
 
       <StyledBody style={style}>{children}</StyledBody>
