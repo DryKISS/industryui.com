@@ -106,6 +106,7 @@ export const rows = {
       company: 'Triangle Solutions Ltd',
       url: 'https://triangle-solutions.com',
       logo: 'https://drykiss.com/static/logo/drykiss.svg',
+      itemCount: 3,
       actions: ''
     }
   ]

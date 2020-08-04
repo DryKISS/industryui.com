@@ -15,7 +15,7 @@ import { Toggle } from '../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Toggle',
+  title: 'Atoms/Toggle',
   component: Toggle,
   decorators: [Wrapper],
   parameters: {

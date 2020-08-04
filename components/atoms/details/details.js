@@ -11,7 +11,7 @@ import { Button } from '../../atoms'
 // Style
 import styled from 'styled-components'
 
-export const Details = ({ children, open, style, summary, ...props }) => {
+export const Details = ({ children, open, style, summary, Toolbar, ...props }) => {
   return (
     <StyledDetails open={open} {...props}>
       <StyledSummary>
@@ -24,7 +24,9 @@ export const Details = ({ children, open, style, summary, ...props }) => {
             size='sm'
           />
         )}
+        {Toolbar && <Toolbar />}
       </StyledSummary>
+
       <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
   )
@@ -38,17 +40,18 @@ const StyledDetails = styled.details`
   margin-bottom: 0.5rem;
 `
 
-const StyledButton = styled(Button)`
-  position: absolute;
-  right: 32px;
-  top: 16px;
-`
-
 const StyledSummary = styled.summary`
   font-weight: bold;
   cursor: pointer;
   outline: none;
   padding: 1rem;
+  position: relative;
+`
+
+const StyledButton = styled(Button)`
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
 `
 
 const StyledBody = styled.div`
