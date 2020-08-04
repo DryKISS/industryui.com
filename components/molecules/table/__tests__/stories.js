@@ -15,6 +15,7 @@ import {
   columns,
   columnsActions,
   columnsFormatter,
+  noCols,
   rowClick,
   rows,
   rowsContext
@@ -49,7 +50,7 @@ const BaseComponent = (props = {}) => {
       perPage: number('Per page', props.perPage || 10)
     },
     responsive: boolean('Responsive', props.responsive || true),
-    rows: [
+    rows: props.rows || [
       ...rows.data,
       ...rows.data,
       ...rows.data,
@@ -62,7 +63,7 @@ const BaseComponent = (props = {}) => {
     ...props
   }
 
-  if (!props.columns || props.columns === null) {
+  if (props.columns === false || props.columns === null) {
     delete defaultProps.columns
   }
 
@@ -81,7 +82,7 @@ export const responsive = () => (
 
 export const striped = () => <BaseComponent striped />
 export const Hover = () => <BaseComponent hover />
-export const noColumns = () => <BaseComponent columns={false} />
+export const noColumns = () => <BaseComponent columns={false} rows={noCols} />
 export const rowClickStory = () => <BaseComponent rowClick={rowClick} />
 export const align = () => <BaseComponent align />
 export const formatter = () => <BaseComponent columns={columnsFormatter} />

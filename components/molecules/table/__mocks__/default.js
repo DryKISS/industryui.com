@@ -50,6 +50,21 @@ export const rows = {
   ]
 }
 
+export const noCols = [
+  {
+    key: 'Name',
+    value: 'Micheal Jordan'
+  },
+  {
+    key: 'Name',
+    value: 'Fred Joans'
+  },
+  {
+    key: 'Name',
+    value: 'Peter Good'
+  }
+]
+
 const renderImage = ({ row }) => <Image alt='Logo' style={{ width: '50%' }} src={row.logo} />
 
 export const columnsFormatter = [
