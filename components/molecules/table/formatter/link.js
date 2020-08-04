@@ -32,10 +32,6 @@ export const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
 
   const item = row[value]
 
-  // Debug
-  // console.log(path, key, account, row)
-  // console.log('Value', item)
-
   return useLink ? (
     <>
       {item === '-' && '-'}
