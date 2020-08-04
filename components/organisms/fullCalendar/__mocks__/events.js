@@ -8,6 +8,7 @@ import moment from 'moment'
 export const Events = [
   {
     allDay: true,
+    backgroundColor: 'purple',
     context: 'warning',
     date: moment()
       .date(2)
@@ -16,8 +17,10 @@ export const Events = [
     title: 'Event 1',
     tooltip: 'All day event tooltip'
   },
+
   {
     context: 'secondary',
+    backgroundColor: 'yellow',
     description: 'Event starting at a specific time',
     date: moment()
       .date(7)

@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic'
 
 // UI
 import { LdsSpinner, PageLoading, Theme } from '../../../'
-import { renderEvent } from './event'
+// import { renderEvent } from './event'
 
 // Styled Components
 import styled from 'styled-components'
@@ -36,13 +36,14 @@ export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }
         {...props}
         header={props.header || CALENDAR.header}
         events={props.events}
-        eventRender={info => renderEvent({ ...info, defaultEventColor, showTooltip })}
+        // eventRender={info => renderEvent({ ...info, defaultEventColor, showTooltip })}
         forwardedRef={ref}
         loading={setLoading}
       />
     </Wrapper>
   )
 })
+// We will have to set a default color and we will override with the color into the events
 
 const Wrapper = styled.div`
   position: relative;
@@ -54,7 +55,8 @@ const Wrapper = styled.div`
   }
 
   .fc-event {
-    background-color: transparent;
+    /*With this we are not getting color from the event model*/
+    /* background-color: transparent */
     border: none;
   }
 
