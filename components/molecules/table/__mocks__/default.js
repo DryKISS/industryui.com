@@ -23,8 +23,32 @@ export const columns = [
   },
   {
     hidden: true
+  },
+  {
+    text: 'Actions'
   }
 ]
+
+export const rows = {
+  data: [
+    {
+      id: '10001',
+      company: 'DryKISS Ltd',
+      url: 'https://drykiss.com',
+      logo: 'https://drykiss.com/static/logo/drykiss.svg',
+      itemCount: 5,
+      actions: ''
+    },
+    {
+      id: '10002',
+      company: 'Triangle Solutions Ltd',
+      url: 'https://triangle-solutions.com',
+      logo: 'https://drykiss.com/static/logo/drykiss.svg',
+      itemCount: 3,
+      actions: ''
+    }
+  ]
+}
 
 const renderImage = ({ row }) => <Image alt='Logo' style={{ width: '50%' }} src={row.logo} />
 
@@ -49,6 +73,9 @@ export const columnsFormatter = [
   },
   {
     hidden: true
+  },
+  {
+    text: 'Actions'
   }
 ]
 
@@ -91,64 +118,61 @@ export const columnsActions = [
   }
 ]
 
-export const rows = {
-  data: [
-    {
-      id: '10001',
-      company: 'DryKISS Ltd',
-      url: 'https://drykiss.com',
-      logo: 'https://drykiss.com/static/logo/drykiss.svg',
-      itemCount: 5,
-      actions: ''
-    },
-    {
-      id: '10002',
-      company: 'Triangle Solutions Ltd',
-      url: 'https://triangle-solutions.com',
-      logo: 'https://drykiss.com/static/logo/drykiss.svg',
-      itemCount: 3,
-      actions: ''
-    }
-  ]
-}
-
 export const rowsContext = {
   data: [
     {
       context: 'primary',
       id: '10001',
       company: 'DryKISS Ltd',
-      url: 'https://drykiss.com'
+      url: 'https://drykiss.com',
+      itemCount: 5,
+      logo: '',
+      actions: ''
     },
     {
       context: 'secondary',
       id: '10002',
       company: 'Triangle Solutions Ltd',
-      url: 'https://triangle-solutions.com'
+      url: 'https://triangle-solutions.com',
+      itemCount: 5,
+      logo: '',
+      actions: ''
     },
     {
       context: 'info',
       id: '10001',
       company: 'DryKISS Ltd',
-      url: 'https://drykiss.com'
+      url: 'https://drykiss.com',
+      itemCount: 5,
+      logo: '',
+      actions: ''
     },
     {
       context: 'success',
       id: '10001',
       company: 'DryKISS Ltd',
-      url: 'https://drykiss.com'
+      url: 'https://drykiss.com',
+      itemCount: 5,
+      logo: '',
+      actions: ''
     },
     {
       context: 'warning',
       id: '10001',
       company: 'DryKISS Ltd',
-      url: 'https://drykiss.com'
+      url: 'https://drykiss.com',
+      itemCount: 5,
+      logo: '',
+      actions: ''
     },
     {
       context: 'danger',
       id: '10001',
       company: 'DryKISS Ltd',
-      url: 'https://drykiss.com'
+      url: 'https://drykiss.com',
+      itemCount: 5,
+      logo: '',
+      actions: ''
     }
   ]
 }
