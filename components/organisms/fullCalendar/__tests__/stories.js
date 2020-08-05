@@ -99,7 +99,7 @@ export const customEvents = () => {
       // Override this colors for the event
       backgroundColor: data.backgroundColor,
       borderColor: 'black',
-      textColor: 'white',
+      textColor: data.textColor,
       extendedProps: {
         assetType: 'TV'
       }
@@ -118,8 +118,8 @@ export const customEvents = () => {
         <FormLabel label='Background Color'>
           <SelectField name='backgroundColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
-        <FormLabel label='Event color'>
-          <SelectField name='color' options={colorEvent} {...defaultProps} />
+        <FormLabel label='Text color'>
+          <SelectField name='textColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
         <FormLabel label='Url'>
           <input name='url' ref={register} />
