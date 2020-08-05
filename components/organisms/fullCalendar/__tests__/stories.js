@@ -12,9 +12,11 @@ import { Wrapper } from 'decorators'
 // UI
 import { Calendar, Theme } from '../../../'
 import Readme from '../README.md'
-
+import { useForm } from 'react-hook-form'
+import { OffCanvas, Button, SelectField, FormLabel } from 'components'
 // Data
-import { Events, AvailableViews } from '../__mocks__/events'
+import { Events, AvailableViews, colorEvent } from '../__mocks__/events'
+import { FormForm } from 'index'
 
 export default {
   title: 'Organisms/Full Calendar',
@@ -61,6 +63,97 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = () => <BaseComponent />
+
+export const customEvents = () => {
+  const [events, setEvents] = useState([])
+  const [showOffCanvas, setShowOffCanvas] = useState(false)
+  const { errors, handleSubmit, register } = useForm()
+  const [calendarArg, setCalendarArg] = useState()
+
+  const defaultProps = {
+    // data: { name: 'fred' },
+    // defaultValue: '',
+    disabled: false,
+    errors: errors,
+    register: register,
+    showError: false
+  }
+  const onSubmit = data => {
+    console.log('event added ', data)
+
+    const fullEvent = {
+      id: 'ID',
+      allDay: calendarArg.allDay,
+      start: calendarArg.dateStr,
+      // end: arg.dateStr,
+      title: data.title,
+      // URL visited when this event is clicked by the user. has relation with eventClick
+      // We will have to check if we want to do it for external routes, a function can calculate this
+      url: data.url,
+      // classNames: ['calendarClass', 'calendarClass'],
+      editable: true,
+      // https://fullcalendar.io/docs/eventDisplay   just working in dayGrid
+      display: 'auto',
+      // this is when drag&Drop or sizing boolean/function if false
+      eventOverlap: true,
+      // Override this colors for the event
+      backgroundColor: data.backgroundColor,
+      borderColor: 'black',
+      textColor: 'white',
+      extendedProps: {
+        assetType: 'TV'
+      }
+      // Properties are readOnly, to modify them https://fullcalendar.io/docs/Event-setProp
+    }
+    setEvents([...events, fullEvent])
+    closeOffCanvas()
+  }
+
+  const CustomEventForm = () => {
+    return (
+      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+        <FormLabel label='Title'>
+          <input name='title' ref={register} />
+        </FormLabel>
+        <FormLabel label='Background Color'>
+          <SelectField name='backgroundColor' options={colorEvent} {...defaultProps} />
+        </FormLabel>
+        <FormLabel label='Event color'>
+          <SelectField name='color' options={colorEvent} {...defaultProps} />
+        </FormLabel>
+        <FormLabel label='Url'>
+          <input name='url' ref={register} />
+        </FormLabel>
+        <FormLabel label='eventOverlap'>
+          <input type='checkbox' name='eventOverlap' ref={register} />
+        </FormLabel>
+
+        <Button content='Submit' type='submit' />
+      </FormForm>
+    )
+  }
+
+  const handleDateClick = arg => {
+    console.log(arg)
+    setCalendarArg(arg)
+    setShowOffCanvas(true)
+  }
+
+  const closeOffCanvas = () => {
+    setShowOffCanvas(!showOffCanvas)
+  }
+  // Also check where is the X effect
+  return (
+    <>
+      {showOffCanvas && (
+        <OffCanvas headerText='Add custom event' show={showOffCanvas}>
+          {CustomEventForm()}
+        </OffCanvas>
+      )}
+      <BaseComponent events={events} dateClick={handleDateClick} />
+    </>
+  )
+}
 
 export const events = () => <BaseComponent events={Events} />
 

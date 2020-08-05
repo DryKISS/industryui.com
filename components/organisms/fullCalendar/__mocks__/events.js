@@ -90,3 +90,36 @@ export const AvailableViews = [
   'timeGridDay',
   'timeGrid'
 ]
+
+export const colorEvent = [
+  {
+    disabled: false,
+    text: 'Orange',
+    value: 'orange'
+  },
+  {
+    disabled: false,
+    text: 'red',
+    value: 'red'
+  },
+  {
+    disabled: false,
+    text: 'Purple',
+    value: 'purple'
+  }
+]
+
+export const checkBoxOptions = [
+  {
+    id: 'check',
+    label: 'Yes',
+    required: true,
+    value: 'check'
+  },
+  {
+    id: 'checked',
+    label: 'No',
+    required: true,
+    value: 'checked'
+  }
+]
