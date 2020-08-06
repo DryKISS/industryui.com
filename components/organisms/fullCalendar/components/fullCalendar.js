@@ -36,14 +36,12 @@ export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }
         {...props}
         header={props.header || CALENDAR.header}
         events={props.events}
-        // eventRender={info => renderEvent({ ...info, defaultEventColor, showTooltip })}
         forwardedRef={ref}
         loading={setLoading}
       />
     </Wrapper>
   )
 })
-// We will have to set a default color and we will override with the color into the events
 
 const Wrapper = styled.div`
   position: relative;
