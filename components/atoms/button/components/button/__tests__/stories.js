@@ -39,9 +39,3 @@ const BaseComponent = (props = {}) => {
 export const main = () => (
   <BaseComponent outline={boolean('Outline', false)} shadow={boolean('Shadow', true)} />
 )
-
-export const secondary = () => <BaseComponent outline={boolean('Outline', false)} />
-
-export const outline = () => <BaseComponent outline={boolean('Outline', true)} />
-
-export const large = () => <BaseComponent outline={boolean('Outline', false)} />

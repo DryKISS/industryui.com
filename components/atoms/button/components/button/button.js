@@ -4,10 +4,10 @@
 
 // React
 import { forwardRef } from 'react'
-import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { BACKGROUND, CONTEXT, shadeLinearRgb, SIZE } from '../../../../'
+import { BACKGROUND, DIMENSION, DISPLAY, shadeLinearRgb, SPACER } from '../../../../'
+import { ButtonPropTypes, ButtonDefaultProps } from './props'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -31,20 +31,24 @@ const StyledButton = styled.button`
     props.shadow &&
     'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
   cursor: pointer;
-  display: ${({ block, centre }) => (centre || block ? 'block' : 'inline-block')};
+  display: ${({ block, centre }) => (centre || block ? 'block' : 'inline-flex')};
+  align-items: center;
+  justify-content: center;
   font-family: ${({ theme }) => theme.font};   /* stylelint-disable-line */
-  font-size: 1rem;
-  line-height: .75rem;
+  font-size: 16px;
+  line-height: 100%;
   margin: ${({ centre }) => (centre ? 'auto' : 0)};
   outline: none;
   overflow: visible;
-  padding: .5rem 1rem;
+  padding: ${({ theme }) => theme.SPACING(0, 4)};
   text-decoration: none;
   text-transform: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
   width: ${({ block }) => (block ? '100%' : 'initial')};
+  height: 40px;
+
   ${({ disabled }) =>
     disabled &&
     css`
@@ -56,22 +60,24 @@ const StyledButton = styled.button`
   ${({ size }) =>
     size === 'xs' &&
     css`
-      font-size: 0.75rem;
-      padding: 0.25rem;
+      font-size: 12px;
+      padding: ${({ theme }) => theme.SPACING(0, 2)};
+      height: 24px;
     `}
 
   ${({ size }) =>
     size === 'sm' &&
     css`
-      font-size: 0.75rem;
-      padding: 0.5rem;
+      font-size: 12px;
+      padding: ${({ theme }) => theme.SPACING(0, 3)};
+      height: 32px;
     `}
 
   ${({ size }) =>
     size === 'lg' &&
     css`
-      font-size: 1.25rem;
-      padding: 1rem;
+      padding: ${({ theme }) => theme.SPACING(0, 5)};
+      height: 48px;
     `}
 
   /* If two buttons are next to each other */
@@ -84,26 +90,12 @@ const StyledButton = styled.button`
     border-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.12, COLOUR[context])};
     color: #fff;
   }
+
+  ${theme => DIMENSION(theme)}
+  ${theme => DISPLAY(theme)}
+  ${theme => SPACER(theme)}
 `
 
-Button.propTypes = {
-  block: bool,
-  centre: bool,
-  children: node,
-  className: string,
-  content: node,
-  context: oneOf(Object.values(CONTEXT)),
-  disabled: bool,
-  onClick: func,
-  outline: bool,
-  shadow: bool,
-  size: oneOf(Object.values(SIZE)),
-  style: objectOf(oneOfType([number, string])),
-  type: oneOf(['button', 'reset', 'submit'])
-}
+Button.propTypes = ButtonPropTypes
 
-Button.defaultProps = {
-  context: 'primary',
-  disabled: false,
-  type: 'button'
-}
+Button.defaultProps = ButtonDefaultProps
