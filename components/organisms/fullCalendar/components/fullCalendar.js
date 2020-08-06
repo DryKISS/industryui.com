@@ -9,7 +9,6 @@ import dynamic from 'next/dynamic'
 
 // UI
 import { LdsSpinner, PageLoading, Theme } from '../../../'
-// import { renderEvent } from './event'
 
 // Styled Components
 import styled from 'styled-components'
@@ -53,8 +52,6 @@ const Wrapper = styled.div`
   }
 
   .fc-event {
-    /*With this we are not getting color from the event model*/
-    /* background-color: transparent */
     border: none;
   }
 
