@@ -91,7 +91,35 @@ export const AvailableViews = [
   'timeGrid'
 ]
 
+export const assetType = [
+  {
+    disabled: false,
+    text: 'Tv',
+    value: 'tv'
+  },
+  {
+    disabled: false,
+    text: 'Camera',
+    value: 'camera'
+  },
+  {
+    disabled: false,
+    text: 'Chairs',
+    value: 'chairs'
+  }
+]
+
 export const colorEvent = [
+  {
+    disabled: false,
+    text: 'White',
+    value: 'white'
+  },
+  {
+    disabled: false,
+    text: 'Black',
+    value: 'black'
+  },
   {
     disabled: false,
     text: 'Orange',
@@ -108,7 +136,38 @@ export const colorEvent = [
     value: 'purple'
   }
 ]
-
+export const displayEventOptions = [
+  {
+    disabled: false,
+    text: 'auto',
+    value: 'auto'
+  },
+  {
+    disabled: false,
+    text: 'block',
+    value: 'block'
+  },
+  {
+    disabled: false,
+    text: 'list-item',
+    value: 'list-item'
+  },
+  {
+    disabled: false,
+    text: 'background',
+    value: 'background'
+  },
+  {
+    disabled: false,
+    text: 'inverse-background',
+    value: 'inverse-background'
+  },
+  {
+    disabled: false,
+    text: 'none',
+    value: 'none'
+  }
+]
 export const checkBoxOptions = [
   {
     id: 'check',

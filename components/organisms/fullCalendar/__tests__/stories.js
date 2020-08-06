@@ -15,7 +15,13 @@ import Readme from '../README.md'
 import { useForm } from 'react-hook-form'
 import { OffCanvas, Button, SelectField, FormLabel } from 'components'
 // Data
-import { Events, AvailableViews, colorEvent } from '../__mocks__/events'
+import {
+  Events,
+  AvailableViews,
+  colorEvent,
+  assetType,
+  displayEventOptions
+} from '../__mocks__/events'
 import { FormForm } from 'index'
 
 export default {
@@ -83,27 +89,20 @@ export const customEvents = () => {
 
     const fullEvent = {
       id: 'ID',
-      allDay: calendarArg.allDay,
+      allDay: data.allDay,
       start: calendarArg.dateStr,
-      // end: arg.dateStr,
+      end: calendarArg.dateStr,
       title: data.title,
-      // URL visited when this event is clicked by the user. has relation with eventClick
-      // We will have to check if we want to do it for external routes, a function can calculate this
       url: data.url,
       // classNames: ['calendarClass', 'calendarClass'],
-      editable: true,
-      // https://fullcalendar.io/docs/eventDisplay   just working in dayGrid
-      display: 'auto',
-      // this is when drag&Drop or sizing boolean/function if false
-      eventOverlap: true,
-      // Override this colors for the event
+      editable: data.editable,
+      overlap: data.overlap,
       backgroundColor: data.backgroundColor,
-      borderColor: 'black',
+      borderColor: data.borderColor,
       textColor: data.textColor,
       extendedProps: {
-        assetType: 'TV'
+        assetType: data.assetType
       }
-      // Properties are readOnly, to modify them https://fullcalendar.io/docs/Event-setProp
     }
     setEvents([...events, fullEvent])
     closeOffCanvas()
@@ -115,26 +114,39 @@ export const customEvents = () => {
         <FormLabel label='Title'>
           <input name='title' ref={register} />
         </FormLabel>
+        <FormLabel label='allDay'>
+          <input type='checkbox' name='allDay' ref={register} />
+        </FormLabel>
         <FormLabel label='Background Color'>
           <SelectField name='backgroundColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
         <FormLabel label='Text color'>
           <SelectField name='textColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
+        <FormLabel label='Border Color'>
+          <SelectField name='borderColor' options={colorEvent} {...defaultProps} />
+        </FormLabel>
         <FormLabel label='Url'>
           <input name='url' ref={register} />
         </FormLabel>
-        <FormLabel label='eventOverlap'>
-          <input type='checkbox' name='eventOverlap' ref={register} />
+        <FormLabel label='Display Event Options'>
+          <SelectField name='displayEventOptions' options={displayEventOptions} {...defaultProps} />
         </FormLabel>
-
+        <FormLabel label='overlap'>
+          <input type='checkbox' name='overlap' ref={register} />
+        </FormLabel>
+        <FormLabel label='editable'>
+          <input type='checkbox' name='editable' ref={register} />
+        </FormLabel>
+        <FormLabel label='Asset Type'>
+          <SelectField name='assetType' options={assetType} {...defaultProps} />
+        </FormLabel>
         <Button content='Submit' type='submit' />
       </FormForm>
     )
   }
 
   const handleDateClick = arg => {
-    console.log(arg)
     setCalendarArg(arg)
     setShowOffCanvas(true)
   }
