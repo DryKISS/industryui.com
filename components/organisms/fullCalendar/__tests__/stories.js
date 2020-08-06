@@ -114,7 +114,7 @@ export const customEvents = () => {
           <input name='title' ref={register} />
         </FormLabel>
         <FormLabel label='allDay'>
-          <input type='checkbox' name='allDay' ref={register} />
+          <input type='checkbox' value='checked' name='allDay' ref={register} />
         </FormLabel>
         <FormLabel label='Background Color'>
           <SelectField name='backgroundColor' options={colorEvent} {...defaultProps} />
@@ -134,7 +134,7 @@ export const customEvents = () => {
         <FormLabel label='overlap'>
           <input type='checkbox' name='overlap' ref={register} />
         </FormLabel>
-        <FormLabel label='editable'>
+        <FormLabel label='draggable'>
           <input type='checkbox' name='editable' ref={register} />
         </FormLabel>
         <FormLabel label='Asset Type'>
