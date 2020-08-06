@@ -77,13 +77,12 @@ export const customEvents = () => {
   const [calendarArg, setCalendarArg] = useState()
 
   const defaultProps = {
-    // data: { name: 'fred' },
-    // defaultValue: '',
     disabled: false,
     errors: errors,
     register: register,
     showError: false
   }
+  // Pending add the tooltip
   const onSubmit = data => {
     console.log('event added ', data)
 
@@ -154,7 +153,15 @@ export const customEvents = () => {
   const closeOffCanvas = () => {
     setShowOffCanvas(!showOffCanvas)
   }
-  // Also check where is the X effect
+
+  const handleEventClick = args => {
+    console.log('Show the values saved ', args.event)
+    // I guess to make it work with our OffCanvas when we click on the event we should
+    // use a useState to save the event we are clicking, as default we should the default values
+    // when we click, and when we edit we should the values from the event editable since we
+    // get them from args.event
+    setShowOffCanvas(true)
+  }
   return (
     <>
       {showOffCanvas && (
@@ -162,7 +169,7 @@ export const customEvents = () => {
           {CustomEventForm()}
         </OffCanvas>
       )}
-      <BaseComponent events={events} dateClick={handleDateClick} />
+      <BaseComponent events={events} eventClick={handleEventClick} dateClick={handleDateClick} />
     </>
   )
 }
