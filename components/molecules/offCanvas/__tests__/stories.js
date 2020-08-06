@@ -29,7 +29,7 @@ const storyHOC = Component => {
     const [isChecked, toggleCheck] = useState(true)
     const contextKnob = Context()
     const textKnob = text('Header', 'Homyze')
-    const widthKnob = number('Width (%)', 25, {
+    const widthKnob = number('Width (%)', 30, {
       range: true,
       min: 1,
       max: 100,

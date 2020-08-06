@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 
 // UI
-import { Close, CONTEXT } from '../../../'
+import { CONTEXT } from '../../../'
 import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../'
 
 export const OffCanvasComponent = ({
@@ -56,10 +56,12 @@ export const OffCanvasComponent = ({
         show={initialState}
         width={width}
       >
-        <OffCanvasHeader context={context} data-cy='offCanvasHeader'>
-          {headerText}
-          <Close context='white' click={e => toggleShow(false)} />
-        </OffCanvasHeader>
+        <OffCanvasHeader
+          context={context}
+          data-cy='offCanvasHeader'
+          onClose={e => toggleShow(false)}
+          title={headerText}
+        />
 
         <OffCanvasContent>{children}</OffCanvasContent>
       </OffCanvasDiv>
