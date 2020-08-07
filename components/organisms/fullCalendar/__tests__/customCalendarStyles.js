@@ -41,7 +41,7 @@ export const CustomCalendarStyles = () => {
   const CalendarStyleForm = () => {
     return (
       <FormForm handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label='Title'>
+        <FormLabel label='Height'>
           <FormField
             type='number'
             name='height'
