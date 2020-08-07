@@ -111,11 +111,6 @@ export const CustomEventsStory = () => {
   }
 
   const handleEventClick = args => {
-    console.log('Show the values saved ', args.event)
-    // I guess to make it work with our OffCanvas when we click on the event we should
-    // use a useState to save the event we are clicking, as default we should the default values
-    // when we click, and when we edit we should the values from the event editable since we
-    // get them from args.event
     setShowOffCanvas(true)
   }
   return (

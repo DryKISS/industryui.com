@@ -18,7 +18,6 @@ const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
 })
 
 export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }, ref) => {
-  console.log('props ', props)
   const { CALENDAR } = Theme
   const [loading, setLoading] = useState(false)
 
