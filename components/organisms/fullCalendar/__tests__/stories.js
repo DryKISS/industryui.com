@@ -18,11 +18,12 @@ import {
   AvailableViews,
   colorEvent,
   assetType,
-  displayEventOptions
+  displayEventOptions,
+  checkBoxOptions
 } from '../__mocks__/events'
 
 import { useForm } from 'react-hook-form'
-import { OffCanvas, Button, SelectField, FormLabel, FormField } from 'components'
+import { OffCanvas, Button, SelectField, FormLabel, FormField, CheckboxField } from 'components'
 
 import { FormForm } from 'index'
 
@@ -142,7 +143,8 @@ export const customEvents = () => {
     disabled: false,
     errors: errors,
     register: register,
-    showError: false
+    showError: true,
+    required: false
   }
   // Pending add the tooltip
   const onSubmit = data => {
@@ -150,14 +152,14 @@ export const customEvents = () => {
 
     const fullEvent = {
       id: 'ID',
-      allDay: data.allDay,
+      allDay: !!data.allDay,
       start: calendarArg.dateStr,
       end: calendarArg.dateStr,
       title: data.title,
       url: data.url,
       // classNames: ['calendarClass', 'calendarClass'],
-      editable: data.editable,
-      overlap: data.overlap,
+      editable: !!data.editable,
+      overlap: !!data.overlap,
       backgroundColor: data.backgroundColor,
       borderColor: data.borderColor,
       textColor: data.textColor,
@@ -173,10 +175,16 @@ export const customEvents = () => {
     return (
       <FormForm handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Title'>
-          <FormField name='title' placeholder='Event title' register={register} />
+          <FormField
+            name='title'
+            required
+            errors={errors}
+            placeholder='Event title'
+            register={register}
+          />
         </FormLabel>
-        <FormLabel label='allDay'>
-          <input type='checkbox' value='checked' name='allDay' register={register} />
+        <FormLabel label='All day'>
+          <CheckboxField data={checkBoxOptions} name='all day' {...defaultProps} />
         </FormLabel>
         <FormLabel label='Background Color'>
           <SelectField name='backgroundColor' options={colorEvent} {...defaultProps} />
@@ -188,16 +196,21 @@ export const customEvents = () => {
           <SelectField name='borderColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
         <FormLabel label='Url'>
-          <FormField name='url' placeholder='https://myevent.com' register={register} />
+          <FormField
+            name='url'
+            placeholder='https://myevent.com'
+            register={register}
+            {...defaultProps}
+          />
         </FormLabel>
         <FormLabel label='Display Event Options'>
           <SelectField name='displayEventOptions' options={displayEventOptions} {...defaultProps} />
         </FormLabel>
         <FormLabel label='overlap'>
-          <input type='checkbox' name='overlap' ref={register} />
+          <CheckboxField data={checkBoxOptions} name='overlap' ref={register} {...defaultProps} />
         </FormLabel>
         <FormLabel label='draggable'>
-          <input type='checkbox' name='editable' ref={register} />
+          <CheckboxField data={checkBoxOptions} name='editable' ref={register} {...defaultProps} />
         </FormLabel>
         <FormLabel label='Asset Type'>
           <SelectField name='assetType' options={assetType} {...defaultProps} />
