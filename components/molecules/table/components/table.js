@@ -1,7 +1,5 @@
 /**
  * Table
- *
- * @todo Remove this Rowclick data-item
  */
 
 // React
@@ -124,7 +122,7 @@ export const Table = ({
             const length = columns.length
             const column = columns[index]
 
-            if (!column || (length && column.hidden)) {
+            if (length && column.hidden) {
               return
             }
 
@@ -229,7 +227,7 @@ const StyledCaption = styled.caption`
 Table.propTypes = {
   align: bool,
   caption: string,
-  classname: string,
+  className: string,
   columns: array,
   fullHeight: bool,
   hover: bool,

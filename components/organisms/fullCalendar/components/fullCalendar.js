@@ -52,6 +52,10 @@ const Wrapper = styled.div`
     }
   }
 
+  .fc-event {
+    border: none;
+  }
+
   .fc-day-grid-event {
     padding: 0;
   }

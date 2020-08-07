@@ -2,13 +2,17 @@
  * Table Loading
  */
 
+// React
 import { bool, number } from 'prop-types'
 
 // UI
 import { LdsSpinner, PageLoading } from '../../../'
 
 export const TableLoading = ({ colsLength, show }) => {
-  if (!show) return null
+  if (!show) {
+    return null
+  }
+
   return (
     <PageLoading
       backgroundColor='#fff'
