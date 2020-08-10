@@ -35,6 +35,9 @@ export const MessageBase = ({
     if (scrollToMessage) messageRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }, [])
 
+  console.log('message seemore ', seeMore)
+  console.log('message more ', seeMore)
+
   return (
     <Column sm={11} columnRef={messageRef}>
       <StyledCard type={type}>
@@ -71,17 +74,17 @@ export const MessageBase = ({
                 })}
             </StyledContent>
 
-            {more && (
+            {true && (
               <StyledCollapse onClick={() => setSeeMore(!seeMore)}>
-                {!seeMore ? (
-                  <>
-                    <span>See more</span>
-                    <Icon icon='chevron-down' />
-                  </>
-                ) : (
+                {seeMore ? (
                   <>
                     <span>Close</span>
                     <Icon icon='chevron-up' />
+                  </>
+                ) : (
+                  <>
+                    <span>See more</span>
+                    <Icon icon='chevron-down' />
                   </>
                 )}
               </StyledCollapse>
