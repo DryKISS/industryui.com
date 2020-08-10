@@ -20,7 +20,7 @@ export const messages = [
     statusText: 'delivered',
     time: 'Mon 4 Nov 2019 11:59',
     type: 'in',
-    more: true
+    hasMore: true
   },
   {
     content: 'Late arrival.',

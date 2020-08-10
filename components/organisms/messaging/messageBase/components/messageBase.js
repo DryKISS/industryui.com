@@ -18,7 +18,7 @@ export const MessageBase = ({
   content,
   from,
   icon,
-  more,
+  hasMore,
   pictureId,
   prevType,
   reply,
@@ -36,7 +36,7 @@ export const MessageBase = ({
   }, [])
 
   console.log('message seemore ', seeMore)
-  console.log('message more ', seeMore)
+  console.log('message hasMore ', hasMore)
 
   return (
     <Column sm={11} columnRef={messageRef}>
@@ -74,7 +74,7 @@ export const MessageBase = ({
                 })}
             </StyledContent>
 
-            {true && (
+            {hasMore && (
               <StyledCollapse onClick={() => setSeeMore(!seeMore)}>
                 {seeMore ? (
                   <>
