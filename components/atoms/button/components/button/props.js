@@ -16,6 +16,7 @@ export const ButtonPropTypes = {
   className: string,
   content: node,
   context: oneOf(Object.values(CONTEXT)),
+  dashed: bool,
   disabled: bool,
   onClick: func,
   outline: bool,
@@ -31,5 +32,7 @@ export const ButtonPropTypes = {
 export const ButtonDefaultProps = {
   context: 'primary',
   disabled: false,
+  shadow: false,
+  size: 'md',
   type: 'button'
 }

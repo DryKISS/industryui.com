@@ -6,62 +6,90 @@
 import { forwardRef } from 'react'
 
 // UI
-import { BACKGROUND, DIMENSION, DISPLAY, shadeLinearRgb, SPACER } from '../../../../'
+import { BACKGROUND, DIMENSION, DISPLAY, Icon, shadeLinearRgb, SPACER } from '../../../../'
 import { ButtonPropTypes, ButtonDefaultProps } from './props'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled, { css, useTheme } from 'styled-components'
 
-export const Button = forwardRef((props, ref) => {
+export const Button = forwardRef(({ context, endIcon, startIcon, outline, ...props }, ref) => {
+  const theme = useTheme()
+  const textContext = getTextContext(context, outline, theme)
+
   return (
-    <StyledButton {...props} ref={ref} role='button'>
-      {props.children || props.content}
+    <StyledButton
+      context={context}
+      outline={outline}
+      textContext={textContext}
+      ref={ref}
+      role='button'
+      {...props}
+    >
+      {startIcon && <Icon icon={startIcon} />}
+
+      <StyledContent>{props.children || props.content}</StyledContent>
+
+      {endIcon && <Icon icon={endIcon} />}
     </StyledButton>
   )
 })
 
+const getTextContext = (context, outline, theme) => {
+  if (context === 'white') return 'primary'
+  if (outline) return context
+  return 'white'
+}
+
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
-  color: ${({ context, theme: { COLOUR } }) =>
-    context === 'white' ? COLOUR.primary : COLOUR.white};
-  border: 2px solid ${({ context, theme: { COLOUR } }) => COLOUR[context]};
-  border-radius: .25rem;
+
+  color: ${({ textContext, theme: { COLOUR } }) => COLOUR[textContext]};
+
+  border-radius: 4px;
   box-sizing: border-box;
-  ${props =>
-    props.shadow &&
-    'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
   cursor: pointer;
-  display: ${({ block, centre }) => (centre || block ? 'block' : 'inline-flex')};
+  display: ${({ block, centre }) => (centre || block ? 'flex' : 'inline-flex')};
   align-items: center;
   justify-content: center;
   font-family: ${({ theme }) => theme.font};   /* stylelint-disable-line */
-  font-size: 16px;
-  line-height: 100%;
-  margin: ${({ centre }) => (centre ? 'auto' : 0)};
   outline: none;
   overflow: visible;
-  padding: ${({ theme }) => theme.SPACING(0, 4)};
   text-decoration: none;
   text-transform: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  margin: ${({ centre }) => (centre ? 'auto' : 0)};
+  padding: ${({ theme }) => theme.SPACING(3, 6)};
   width: ${({ block }) => (block ? '100%' : 'initial')};
-  height: 40px;
+  height: 48px;
+  font-size: 14px;
+  line-height: 100%;
+
+  border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
+    outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
+
+  /* Icons */
+  svg:first-child{
+    margin-right: ${({ theme }) => theme.SPACING(2)};
+  }
+  svg:last-child{
+    margin-left: ${({ theme }) => theme.SPACING(2)};
+  }
 
   ${({ disabled }) =>
     disabled &&
     css`
       cursor: not-allowed;
-      opacity: 0.5;
+      opacity: 0.3;
       pointer-events: none;
     `}
 
-  ${({ size }) =>
+  ${({ size, theme }) =>
     size === 'xs' &&
     css`
       font-size: 12px;
-      padding: ${({ theme }) => theme.SPACING(0, 2)};
+      padding: ${theme.SPACING(1, 2)};
       height: 24px;
     `}
 
@@ -69,15 +97,16 @@ const StyledButton = styled.button`
     size === 'sm' &&
     css`
       font-size: 12px;
-      padding: ${({ theme }) => theme.SPACING(0, 3)};
+      padding: ${({ theme }) => theme.SPACING(2, 4)};
       height: 32px;
     `}
 
   ${({ size }) =>
     size === 'lg' &&
     css`
-      padding: ${({ theme }) => theme.SPACING(0, 5)};
-      height: 48px;
+      font-size: 16px;
+      padding: ${({ theme }) => theme.SPACING(4, 8)};
+      height: 56px;
     `}
 
   /* If two buttons are next to each other */
@@ -88,13 +117,21 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.1, COLOUR[context])};
     border-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.12, COLOUR[context])};
-    color: #fff;
+    color: ${({ theme: { COLOUR } }) => COLOUR.white};
   }
+
+  transition: all 0.1s ease-in-out;
+
+  ${props =>
+    props.shadow &&
+    'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
 
   ${theme => DIMENSION(theme)}
   ${theme => DISPLAY(theme)}
   ${theme => SPACER(theme)}
 `
+
+const StyledContent = styled.div``
 
 Button.propTypes = ButtonPropTypes
 
