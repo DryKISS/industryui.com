@@ -18,7 +18,6 @@ export const MessageBase = ({
   content,
   from,
   icon,
-  hasMore,
   pictureId,
   prevType,
   reply,
@@ -26,6 +25,7 @@ export const MessageBase = ({
   statusText,
   time,
   to,
+  more,
   type
 }) => {
   const [seeMore, setSeeMore] = useState(false)
@@ -34,9 +34,6 @@ export const MessageBase = ({
   useEffect(() => {
     if (scrollToMessage) messageRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }, [])
-
-  console.log('message seemore ', seeMore)
-  console.log('message hasMore ', hasMore)
 
   return (
     <Column sm={11} columnRef={messageRef}>
@@ -74,7 +71,7 @@ export const MessageBase = ({
                 })}
             </StyledContent>
 
-            {hasMore && (
+            {more && (
               <StyledCollapse onClick={() => setSeeMore(!seeMore)}>
                 {seeMore ? (
                   <>

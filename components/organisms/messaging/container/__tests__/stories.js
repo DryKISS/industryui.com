@@ -67,7 +67,8 @@ const BaseComponent = (props = {}) => {
       statusText: 'delivered',
       to: audience,
       type: type || 'out',
-      issueId: 1
+      issueId: 1,
+      more: true
     }
 
     msg.id = messaging[messaging.length - 1].id + 1

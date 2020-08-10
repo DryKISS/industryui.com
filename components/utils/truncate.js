@@ -8,6 +8,7 @@ export const Truncate = () => {
     line-height: initial;
     overflow: hidden;
     white-space: nowrap;
+    max-height: 70px;
     width: 100%;
     word-break: break-all;
     word-wrap: break-word;
