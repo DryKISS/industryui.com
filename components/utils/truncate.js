@@ -4,12 +4,14 @@
  */
 export const Truncate = () => {
   return `
-  display: inline-block;
-  line-height: 1.4;
-  max-height: 70px;
-  overflow: hidden;
-  width: 100%;
-  word-wrap: break-word;
-  text-overflow: ellipsis;
+    display: inline-block;
+    line-height: initial;
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 70px;
+    width: 100%;
+    word-break: break-all;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
   `
 }
