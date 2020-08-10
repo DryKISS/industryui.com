@@ -97,9 +97,9 @@ const BaseComponent = (props = {}) => {
     onFilter: change,
     onSearch: handleSearch,
     onSubmit: handleSubmit,
+    maxLength: 1200,
     ...props
   }
-
   return messaging && <MessagingContainer {...defaultProps} />
 }
 

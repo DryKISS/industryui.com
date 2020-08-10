@@ -77,6 +77,18 @@ export const messages = [
     type: 'out'
   },
   {
+    content: 'Yes, I will do it. \n Line 2 \n Next line will be hidden. \n  Here is the line 4',
+    reply: 'Re: 5397 — PPM',
+    icon: 'email',
+    from: 'Mike <mike@xyz.com>',
+    to: 'internal',
+    pictureId: null,
+    statusText: 'delivered',
+    time: 'Mon 4 Nov 2019 13:45',
+    type: 'in',
+    more: true
+  },
+  {
     content: 'Job complete.',
     icon: 'notification',
     from: 'System message',
