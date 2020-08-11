@@ -9,15 +9,13 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
+import { BigCalendar } from 'components'
 import Readme from '../README.md'
-
-import { BigCalendar } from '../components/bigCalendar'
 
 export default {
   title: 'Organisms/Big Calendar',
-  decorators: [Wrapper],
   components: BigCalendar,
-
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

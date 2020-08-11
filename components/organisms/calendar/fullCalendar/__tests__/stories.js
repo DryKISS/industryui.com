@@ -10,8 +10,9 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Calendar, Theme } from '../../../'
+import { Calendar, Theme } from 'components'
 import Readme from '../README.md'
+
 // Data
 import { Events, AvailableViews } from '../__mocks__/events'
 

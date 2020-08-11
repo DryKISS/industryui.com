@@ -1,5 +1,5 @@
 /**
  * Calendar
  */
-export * from './bigCalendar'
+export * from './bigCalendar/bigCalendar'
 export * from './fullCalendar'
