@@ -7,7 +7,6 @@ import React from 'react'
 import { any, bool, func, object } from 'prop-types'
 
 // Lodash
-import isObject from 'lodash/isObject'
 import merge from 'lodash/merge'
 
 // Apollo
@@ -23,7 +22,6 @@ import TagManager from 'react-gtm-module'
 import {
   AuthorizationProvider,
   ConfigProvider,
-  FirebaseProvider,
   NotificationsProvider,
   OffCanvasProvider,
   PageProgressBar,
@@ -40,7 +38,6 @@ export class MyApp extends App {
     apolloClient: object,
     Component: func.isRequired,
     config: object,
-    firebase: object,
     google: object,
     icons: object,
     Layout: any.isRequired,
@@ -66,14 +63,11 @@ export class MyApp extends App {
   }
 
   elements () {
-    const { firebase, offCanvas, user } = this.props
-    const fire = isObject(firebase)
+    const { offCanvas, user } = this.props
 
     return (
       <>
         <ThemeStyle />
-
-        {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
         {user && (
           <UserProvider>
@@ -85,7 +79,7 @@ export class MyApp extends App {
           </UserProvider>
         )}
 
-        {!user && !fire && this.layout()}
+        {!user && this.layout()}
       </>
     )
   }
@@ -121,27 +115,3 @@ export class MyApp extends App {
     return <ThemeProvider theme={merge(Theme, this.props.theme)}>{this.data()}</ThemeProvider>
   }
 }
-
-// import App, { Container } from 'next/app'
-// import React from 'react'
-// import './app.css'
-// import TagManager from 'react-gtm'
-
-// const tagManagerArgs = {
-//   id: 'GTM-XXXXXXX'
-// }
-
-// class MyApp extends App {
-//   componentDidMount () {
-//     TagManager.initialize(tagManagerArgs)
-//   }
-
-//   render () {
-//     const { Component, pageProps } = this.props
-//     return (
-//       <Container>
-//         <Component {...pageProps} />
-//       </Container>
-//     )
-//   }
-// }
