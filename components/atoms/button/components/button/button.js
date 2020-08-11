@@ -81,7 +81,7 @@ const StyledButton = styled.button`
     disabled &&
     css`
       cursor: not-allowed;
-      opacity: 0.3;
+      opacity: 0.2;
       pointer-events: none;
     `}
 
