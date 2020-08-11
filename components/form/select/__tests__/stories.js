@@ -15,7 +15,7 @@ import * as yup from 'yup'
 // UI
 import { Button, FormForm, FormLabel, SelectField, SelectCountryField } from 'components'
 import Readme from '../README.md'
-import { COLOURS, EXPENSES } from '../__mocks__'
+import { COLOURS, EXPENSES } from '../__mocks__/select'
 
 export default {
   title: 'Form/Select',

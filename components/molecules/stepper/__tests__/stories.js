@@ -13,7 +13,7 @@ import { Stepper } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { Data } from '../__mocks__/data'
+import { Data } from '../__mocks__/stepper'
 
 export default {
   title: 'Molecules/Stepper',

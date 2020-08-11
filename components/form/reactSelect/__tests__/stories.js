@@ -17,7 +17,7 @@ import { Button, FormForm, FormLabel, ReactSelectField, usePrevious } from 'comp
 import Readme from '../README.md'
 
 // Data
-import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__'
+import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
 
 export default {
   title: 'Form/ReactSelect',

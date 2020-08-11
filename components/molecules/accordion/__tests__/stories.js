@@ -11,7 +11,7 @@ import { Wrapper } from 'decorators'
 // UI
 import { Accordion, AccordionItem } from '../../../'
 import Readme from '../README.md'
-import { Data } from '../__mocks__/data'
+import { Data } from '../__mocks__/accordion'
 
 export default {
   title: 'Molecules/Accordion',
@@ -34,6 +34,7 @@ export const main = () => (
       Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
       haven't heard of them accusamus labore sustainable VHS.
     </AccordionItem>
+
     <AccordionItem title='Item 2'>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
       squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
@@ -43,6 +44,7 @@ export const main = () => (
       Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
       haven't heard of them accusamus labore sustainable VHS.
     </AccordionItem>
+
     <AccordionItem title='Item 3'>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
       squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa

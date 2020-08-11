@@ -320,6 +320,22 @@ exports[`Storyshots Atoms/Details Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Atoms/DetailsText Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Atoms/Divider Content 1`] = `
 @media (min-width:62em) {
 
@@ -897,6 +913,54 @@ exports[`Storyshots Atoms/Progress Multiple Progress Bars 1`] = `
 `;
 
 exports[`Storyshots Atoms/Progress Striped 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Atoms/Toggle Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Atoms/Tooltip Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Atoms/Tooltip With Jsx 1`] = `
 @media (min-width:62em) {
 
 }
@@ -1729,6 +1793,22 @@ exports[`Storyshots Form/Date Picker/Input Main 1`] = `
 `;
 
 exports[`Storyshots Form/Date Picker/Input Selective 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Dropzone Single 1`] = `
 @media (min-width:62em) {
 
 }
@@ -3696,6 +3776,22 @@ exports[`Storyshots Molecules/Table Formatter 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/Table Hover 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Table Loading 1`] = `
 @media (min-width:62em) {
 
@@ -3760,54 +3856,6 @@ exports[`Storyshots Molecules/Table No Columns 1`] = `
 </div>
 `;
 
-exports[`Storyshots Molecules/Table Not Hover 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Table Not Responsive 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Table Not Striped 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Molecules/Table Responsive 1`] = `
 @media (min-width:62em) {
 
@@ -3841,6 +3889,22 @@ exports[`Storyshots Molecules/Table Row Click Story 1`] = `
 `;
 
 exports[`Storyshots Molecules/Table Show No Data 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Table Striped 1`] = `
 @media (min-width:62em) {
 
 }
@@ -3920,55 +3984,23 @@ exports[`Storyshots Molecules/Tabs Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Molecules/Toggle Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Tooltip Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Tooltip With Jsx 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Molecules/Webcam Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Organisms/Big Calendar Main 1`] = `
 @media (min-width:62em) {
 
 }
@@ -4096,6 +4128,54 @@ exports[`Storyshots Organisms/Forgot Details Reset Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Organisms/Full Calendar Base Component 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Organisms/Full Calendar Custom Calendar 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Organisms/Full Calendar Custom Events 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Organisms/Full Calendar Event Click 1`] = `
 @media (min-width:62em) {
 
@@ -4144,7 +4224,7 @@ exports[`Storyshots Organisms/Full Calendar Events With Event Addition On Click 
 </div>
 `;
 
-exports[`Storyshots Organisms/Full Calendar Events With Popover 1`] = `
+exports[`Storyshots Organisms/Full Calendar Events With Tooltip 1`] = `
 @media (min-width:62em) {
 
 }
@@ -4192,7 +4272,7 @@ exports[`Storyshots Organisms/Full Calendar Fetch Events With Loading Indicator 
 </div>
 `;
 
-exports[`Storyshots Organisms/Full Calendar Fetch Events With Popover 1`] = `
+exports[`Storyshots Organisms/Full Calendar Fetch Events With Tooltip 1`] = `
 @media (min-width:62em) {
 
 }

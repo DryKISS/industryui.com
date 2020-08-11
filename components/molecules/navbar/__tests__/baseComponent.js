@@ -11,7 +11,7 @@ import { Wrapper } from 'decorators'
 
 // UI
 import { ConfigContext, Navbar } from 'components'
-import { Dashboard } from '../__mocks__'
+import { Dashboard } from '../__mocks__/navbar'
 
 export const options = {
   component: Navbar,
