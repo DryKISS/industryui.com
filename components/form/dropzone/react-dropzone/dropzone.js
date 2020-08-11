@@ -16,7 +16,7 @@ import { Accept } from './accept'
 import { DropzonePreview } from './preview'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
   const [files, setFiles] = useState([])
@@ -103,10 +103,9 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
 }
 
 const StyledContainer = styled.div`
-  background-color: ${({ disabled, theme }) =>
-    disabled ? theme.COLOUR.warning : theme.COLOUR.light};
+  background-color: ${({ theme }) => theme.COLOUR.light};
   border-color: ${({ dragAccept, dragReject, theme: { COLOUR } }) =>
-    (dragReject && COLOUR.warning) || (dragAccept && COLOUR.success)};
+    (dragReject && COLOUR.danger) || (dragAccept && COLOUR.success)};
   border-radius: 0.25rem;
   border-style: ${({ dragActive }) => (dragActive ? 'solid' : 'dashed')};
   border-width: 2px;
@@ -119,6 +118,12 @@ const StyledContainer = styled.div`
   text-align: center;
   transition: border 0.24s ease-in-out;
   width: 100%;
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.5;
+      cursor: not-allowed;
+    `}
 `
 
 Dropzone.propTypes = {

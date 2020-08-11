@@ -3,18 +3,21 @@
  */
 
 // React
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 // Storybook
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Calendar, Theme, useTooltip } from '../../../'
+import { Calendar, Theme } from '../../../'
 import Readme from '../README.md'
-
 // Data
 import { Events, AvailableViews } from '../__mocks__/events'
+
+// Stories
+import { CustomCalendarStyles } from './customCalendarStyles'
+import { CustomEventsStory } from './customEventsStory'
 
 export default {
   title: 'Organisms/Full Calendar',
@@ -27,7 +30,7 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
+export const BaseComponent = (props = {}) => {
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
 
   const calendarRef = useRef(null)
@@ -39,7 +42,7 @@ const BaseComponent = (props = {}) => {
     }
   }, [defaultView])
 
-  const defaultProps = {
+  const defaultCalendarProps = {
     businessHoursSelect: select('businessHours', {
       false: false,
       MondayToFriday: true,
@@ -54,15 +57,24 @@ const BaseComponent = (props = {}) => {
     nowIndicatorBoolean: boolean('nowIndicator', false),
     weekendsBoolean: boolean('weekends', true),
     defaultView,
+
     ...props
   }
 
-  return <Calendar ref={calendarRef} {...defaultProps} />
+  return <Calendar ref={calendarRef} {...defaultCalendarProps} />
 }
 
 export const main = () => <BaseComponent />
 
 export const events = () => <BaseComponent events={Events} />
+
+export const CustomCalendar = () => {
+  return <CustomCalendarStyles />
+}
+
+export const CustomEvents = () => {
+  return <CustomEventsStory />
+}
 
 export const eventsWithEventAdditionOnClick = () => {
   const [events, setEvents] = useState(Events || [])
@@ -88,15 +100,8 @@ export const eventClick = () => {
   return <BaseComponent eventClick={handleEventClick} events={Events} />
 }
 
-export const eventsWithPopover = () => {
-  const { tooltip } = useTooltip()
-  const handleRender = info => {
-    tooltip(info.el, {
-      content: info.event.extendedProps.description
-    })
-  }
-
-  return <BaseComponent events={Events} eventRender={handleRender} />
+export const eventsWithTooltip = () => {
+  return <BaseComponent events={Events} showTooltip />
 }
 
 export const fetchEvents = () => {
@@ -109,22 +114,14 @@ export const fetchEvents = () => {
   return <BaseComponent events={fetchEvents} />
 }
 
-export const fetchEventsWithPopover = () => {
-  const { tooltip } = useTooltip()
-
+export const fetchEventsWithTooltip = () => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
     }, 1000)
   }
 
-  const handleRender = info => {
-    tooltip(info.el, {
-      content: info.event.extendedProps.description
-    })
-  }
-
-  return <BaseComponent events={fetchEvents} eventRender={handleRender} />
+  return <BaseComponent events={fetchEvents} showTooltip />
 }
 
 export const fetchEventsWithLoadingIndicator = () => {

@@ -70,14 +70,12 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  const signOut = () => {
+  const signOut = async () => {
     window.localStorage.removeItem('bearerToken')
     window.localStorage.removeItem('active-notifications')
 
     setAccessToken(null)
     setUser(null)
-
-    Router.push('/account/sign-in')
   }
 
   const hashPassword = password => {

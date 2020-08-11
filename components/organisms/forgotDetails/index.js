@@ -3,31 +3,27 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { bool, string } from 'prop-types'
+import React from 'react'
+import { bool, func, string } from 'prop-types'
 
 // useForm
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
+import { Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
+import { ForgotDetailsSchema } from './schema'
 
 // Style
 import styled from 'styled-components'
 
-export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
-  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
-  const [error] = useState(false)
-
-  const submit = data => {}
-
-  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
+  const { errors, handleSubmit, register } = useForm({
+    validationSchema: ForgotDetailsSchema
+  })
 
   return (
     <>
       <PageHeading center heading='Forgot Details' divider={false} />
-
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
       <FormForm handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
@@ -36,19 +32,11 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder }) => {
             errors={errors}
             name='email'
             placeholder={showPlaceholder ? 'Email' : ''}
-            regExp={pattern}
             register={register}
           />
         </FormLabel>
 
-        <Button
-          block
-          content='Send reset link'
-          context='primary'
-          disabled={!formState.isValid}
-          size='lg'
-          type='submit'
-        />
+        <Button block content='Send reset link' size='lg' type='submit' />
 
         <Link to={pathLogIn} passHref>
           <StyledLink>Back to Log In</StyledLink>
@@ -65,7 +53,8 @@ const StyledLink = styled.span`
 
 ForgotDetails.propTypes = {
   pathLogIn: string,
-  showPlaceholder: bool
+  showPlaceholder: bool,
+  submit: func
 }
 
 ForgotDetails.defaultProps = {

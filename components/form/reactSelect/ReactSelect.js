@@ -42,8 +42,8 @@ export const ReactSelectField = ({
         {...data}
       />
     ) : (
-        <Select ref={ref} {...data} />
-      )
+      <Select ref={ref} {...data} />
+    )
   })
 
   return (

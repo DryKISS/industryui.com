@@ -2,31 +2,31 @@
  * Table
  */
 
-// React
-import React from 'react'
-
 // Storybook
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
 import { Table } from '../'
 import Readme from '../README.md'
+
+// Data
 import {
   columns,
   columnsActions,
   columnsFormatter,
+  noCols,
   rowClick,
   rows,
   rowsContext
 } from '../__mocks__/default'
 
-const data = rows.data
 const dataContext = rowsContext.data
 
 export default {
   title: 'Molecules/Table',
   component: Table,
-  decorators: [Wrapper],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -34,42 +34,60 @@ export default {
   }
 }
 
-export const main = () => <Table columns={columns} rows={data} />
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    align: boolean('Align', props.align || false),
+    caption: text('Caption', props.caption || ''),
+    className: text('Class name', props.className || ''),
+    columns: columns,
+    fullHeight: boolean('Full height', props.fullHeight || false),
+    hover: boolean('Hover', props.hover || false),
+    loading: boolean('Loading', props.loading || false),
+    pagination: boolean('Pagination', props.pagination || true),
+    paginationProps: {
+      changeUrlOnChange: boolean('Change URL', props.changeUrlOnChange || false),
+      initialPage: number('Initial page', props.initialPage || 1),
+      perPage: number('Per page', props.perPage || 10)
+    },
+    responsive: boolean('Responsive', props.responsive || true),
+    rows: props.rows || [
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data
+    ],
+    striped: boolean('Striped', props.striped || false),
+    ...props
+  }
 
-export const caption = () => <Table caption='Captioned Tabled' columns={columns} rows={data} />
+  if (props.columns === false || props.columns === null) {
+    delete defaultProps.columns
+  }
 
-export const context = () => <Table columns={columns} rows={dataContext} />
+  return <Table {...defaultProps} />
+}
+
+export const main = () => <BaseComponent />
+export const caption = () => <BaseComponent caption='Captioned Tabled' />
+export const context = () => <BaseComponent rows={dataContext} />
 
 export const responsive = () => (
   <div style={{ width: '250px' }}>
-    <Table columns={columns} rows={data} />
+    <BaseComponent />
   </div>
 )
 
-export const notResponsive = () => (
-  <div style={{ width: '100px' }}>
-    <Table columns={columns} responsive={false} rows={data} />
-  </div>
-)
-
-export const notStriped = () => <Table columns={columns} rows={data} striped={false} />
-
-export const notHover = () => <Table columns={columns} hover={false} rows={data} />
-
-export const noColumns = () => <Table rows={data} />
-
-export const rowClickStory = () => <Table columns={columns} rowClick={rowClick} rows={data} />
-
-export const align = () => <Table align columns={columns} rows={data} />
-
-export const formatter = () => <Table columns={columnsFormatter} rows={data} />
-
-export const actions = () => <Table columns={columnsActions} rows={data} />
-
-export const withPagination = () => <Table columns={columnsActions} rows={data} pagination />
-
-export const loading = () => <Table columns={columns} rows={data} loading />
-
-export const loadingWithoutData = () => <Table columns={columns} rows={[]} loading />
-
-export const showNoData = () => <Table columns={columns} rows={[]} />
+export const striped = () => <BaseComponent striped />
+export const Hover = () => <BaseComponent hover />
+export const noColumns = () => <BaseComponent columns={false} rows={noCols} />
+export const rowClickStory = () => <BaseComponent rowClick={rowClick} />
+export const align = () => <BaseComponent align />
+export const formatter = () => <BaseComponent columns={columnsFormatter} />
+export const actions = () => <BaseComponent columns={columnsActions} />
+export const withPagination = () => <BaseComponent columns={columnsActions} pagination />
+export const loading = () => <BaseComponent loading />
+export const loadingWithoutData = () => <BaseComponent rows={[]} loading />
+export const showNoData = () => <BaseComponent rows={[]} />

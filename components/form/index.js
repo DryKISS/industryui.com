@@ -4,6 +4,7 @@
 export * from './checkbox'
 export * from './controlled'
 export * from './datePicker'
+export * from './dropzone'
 export * from './error'
 export * from './field'
 export * from './form'

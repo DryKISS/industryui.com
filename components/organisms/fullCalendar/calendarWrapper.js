@@ -3,6 +3,7 @@
  */
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
+
 let FullCalendar
 
 export const CalendarWrapper = props => {

@@ -102,7 +102,6 @@ export const chained = () => {
 
   // GraphQL happens before this and sets the defaults
   const watchCustomer = watch('customer', Customers[0])
-  const watchUser = watch('user', UsersAvison[0])
 
   const [data, setData] = useState()
 
@@ -110,7 +109,6 @@ export const chained = () => {
   const [user] = useState(UsersAvison[0])
 
   const prevCustomer = usePrevious(watchCustomer)
-  const prevUser = usePrevious(watchUser)
 
   const CustomerOptions = inputValue =>
     new Promise(resolve => {
@@ -132,7 +130,6 @@ export const chained = () => {
     if (watchCustomer !== prevCustomer) {
       // Debug
       // console.log('Changed Customer', prevCustomer, watchCustomer)
-      // console.log('Changed User', prevUser, watchUser)
 
       if (watchCustomer === null) {
         setUsers(null)
