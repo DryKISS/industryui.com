@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { string, bool } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Row, Truncate } from '../../../../'
+import { Card, Column, Icon, Image, Row, TruncateByMaxHeight } from '../../../../'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
 
@@ -108,7 +108,7 @@ const StyledCard = styled(Card)`
 
 const StyledContent = styled.div`
   color: #000;
-  ${({ seeMore }) => !seeMore && Truncate()}
+  ${({ seeMore }) => !seeMore && TruncateByMaxHeight('70px')}
 `
 
 const StyledReply = styled.div`
