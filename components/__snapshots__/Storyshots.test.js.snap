@@ -4400,22 +4400,6 @@ exports[`Storyshots Organisms/Messaging/Background Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Organisms/Messaging/Background Path 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Organisms/Messaging/Container Main 1`] = `
 @media (min-width:62em) {
 
