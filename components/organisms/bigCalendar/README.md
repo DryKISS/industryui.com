@@ -1,5 +1,5 @@
-# Accordion
+# Big Calendar
 
 ## Links
 
-- [Bootstrap Accordion](https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example)
+[Big Calendar Github](https://github.com/jquense/react-big-calendar)
