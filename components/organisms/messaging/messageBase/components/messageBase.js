@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { string, bool } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Row, Truncate } from '../../../../'
+import { Card, Column, Icon, Image, Row, TruncateByMaxHeight } from '../../../../'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
 
@@ -18,7 +18,6 @@ export const MessageBase = ({
   content,
   from,
   icon,
-  more,
   pictureId,
   prevType,
   reply,
@@ -26,6 +25,7 @@ export const MessageBase = ({
   statusText,
   time,
   to,
+  more,
   type
 }) => {
   const [seeMore, setSeeMore] = useState(false)
@@ -73,15 +73,15 @@ export const MessageBase = ({
 
             {more && (
               <StyledCollapse onClick={() => setSeeMore(!seeMore)}>
-                {!seeMore ? (
-                  <>
-                    <span>See more</span>
-                    <Icon icon='chevron-down' />
-                  </>
-                ) : (
+                {seeMore ? (
                   <>
                     <span>Close</span>
                     <Icon icon='chevron-up' />
+                  </>
+                ) : (
+                  <>
+                    <span>See more</span>
+                    <Icon icon='chevron-down' />
                   </>
                 )}
               </StyledCollapse>
@@ -108,7 +108,7 @@ const StyledCard = styled(Card)`
 
 const StyledContent = styled.div`
   color: #000;
-  ${({ seeMore }) => !seeMore && Truncate()}
+  ${({ seeMore }) => !seeMore && TruncateByMaxHeight('70px')}
 `
 
 const StyledReply = styled.div`
