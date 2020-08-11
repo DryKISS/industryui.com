@@ -31,7 +31,7 @@ export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
 
   return (
     <>
-      <PageHeading center heading='Reset Password' divider={false} />
+      <PageHeading center heading='Set New Password' divider={false} />
 
       {errors?.password?.message && <Alert content={errors.password.message} context='warning' />}
 

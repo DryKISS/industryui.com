@@ -12,9 +12,14 @@ import { Wrapper } from 'decorators'
 // UI
 import { Calendar, Theme } from '../../../'
 import Readme from '../README.md'
-
 // Data
 import { Events, AvailableViews } from '../__mocks__/events'
+
+// Stories
+import { CustomCalendarStyles } from './customCalendarStyles'
+import { CustomEventsStory } from './customEventsStory'
+
+export const main = () => <BaseComponent />
 
 export default {
   title: 'Organisms/Full Calendar',
@@ -27,7 +32,7 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
+export const BaseComponent = (props = {}) => {
   const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
 
   const calendarRef = useRef(null)
@@ -39,7 +44,7 @@ const BaseComponent = (props = {}) => {
     }
   }, [defaultView])
 
-  const defaultProps = {
+  const defaultCalendarProps = {
     businessHoursSelect: select('businessHours', {
       false: false,
       MondayToFriday: true,
@@ -54,16 +59,22 @@ const BaseComponent = (props = {}) => {
     nowIndicatorBoolean: boolean('nowIndicator', false),
     weekendsBoolean: boolean('weekends', true),
     defaultView,
+
     ...props
   }
 
-  return <Calendar ref={calendarRef} {...defaultProps} />
+  return <Calendar ref={calendarRef} {...defaultCalendarProps} />
 }
-
-export const main = () => <BaseComponent />
 
 export const events = () => <BaseComponent events={Events} />
 
+export const CustomCalendar = () => {
+  return <CustomCalendarStyles />
+}
+
+export const CustomEvents = () => {
+  return <CustomEventsStory />
+}
 export const eventsWithEventAdditionOnClick = () => {
   const [events, setEvents] = useState(Events || [])
   const handleDateClick = arg => {

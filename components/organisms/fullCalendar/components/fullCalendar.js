@@ -9,7 +9,6 @@ import dynamic from 'next/dynamic'
 
 // UI
 import { LdsSpinner, PageLoading, Theme } from '../../../'
-import { renderEvent } from './event'
 
 // Styled Components
 import styled from 'styled-components'
@@ -36,7 +35,6 @@ export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }
         {...props}
         header={props.header || CALENDAR.header}
         events={props.events}
-        eventRender={info => renderEvent({ ...info, defaultEventColor, showTooltip })}
         forwardedRef={ref}
         loading={setLoading}
       />
@@ -54,7 +52,6 @@ const Wrapper = styled.div`
   }
 
   .fc-event {
-    background-color: transparent;
     border: none;
   }
 

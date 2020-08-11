@@ -8,6 +8,7 @@ import moment from 'moment'
 export const Events = [
   {
     allDay: true,
+    backgroundColor: 'purple',
     context: 'warning',
     date: moment()
       .date(2)
@@ -16,8 +17,10 @@ export const Events = [
     title: 'Event 1',
     tooltip: 'All day event tooltip'
   },
+
   {
     context: 'secondary',
+    backgroundColor: 'yellow',
     description: 'Event starting at a specific time',
     date: moment()
       .date(7)
@@ -86,4 +89,89 @@ export const AvailableViews = [
   'timeGridWeek',
   'timeGridDay',
   'timeGrid'
+]
+
+export const assetType = [
+  {
+    disabled: false,
+    text: 'Tv',
+    value: 'tv'
+  },
+  {
+    disabled: false,
+    text: 'Camera',
+    value: 'camera'
+  },
+  {
+    disabled: false,
+    text: 'Chairs',
+    value: 'chairs'
+  }
+]
+
+export const colorEvent = [
+  {
+    disabled: false,
+    text: 'White',
+    value: 'white'
+  },
+  {
+    disabled: false,
+    text: 'Black',
+    value: 'black'
+  },
+  {
+    disabled: false,
+    text: 'Orange',
+    value: 'orange'
+  },
+  {
+    disabled: false,
+    text: 'red',
+    value: 'red'
+  },
+  {
+    disabled: false,
+    text: 'Purple',
+    value: 'purple'
+  }
+]
+export const displayEventOptions = [
+  {
+    disabled: false,
+    text: 'auto',
+    value: 'auto'
+  },
+  {
+    disabled: false,
+    text: 'block',
+    value: 'block'
+  },
+  {
+    disabled: false,
+    text: 'list-item',
+    value: 'list-item'
+  },
+  {
+    disabled: false,
+    text: 'background',
+    value: 'background'
+  },
+  {
+    disabled: false,
+    text: 'inverse-background',
+    value: 'inverse-background'
+  },
+  {
+    disabled: false,
+    text: 'none',
+    value: 'none'
+  }
+]
+export const checkBoxOptions = [
+  {
+    id: 'checked',
+    required: false,
+    value: 'true'
+  }
 ]
