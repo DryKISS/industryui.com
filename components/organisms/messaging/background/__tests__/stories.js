@@ -36,6 +36,4 @@ const options = {
 
 const defaultValue = '/messaging/background.png'
 
-export const main = () => <MessageBackground />
-
-export const path = () => <MessageBackground path={select('Background', options, defaultValue)} />
+export const main = () => <MessageBackground path={select('Background', options, defaultValue)} />

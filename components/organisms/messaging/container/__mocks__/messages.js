@@ -20,6 +20,19 @@ export const messages = [
     statusText: 'delivered',
     time: 'Mon 4 Nov 2019 11:59',
     type: 'in',
+    more: false
+  },
+  {
+    content:
+      'Hiya this is a message adding "Read more " where we are expecting a PPM scheduled maintenance check on our LED lightbulbs throughout the third floor of XYZ Company offices today.\n  Would appreciate a timely response on this so we can sort out security. \n Text hidden by See More',
+    reply: 'Re: 5397 — PPM',
+    icon: 'email',
+    from: 'Mike <mike@xyz.com>',
+    to: 'internal',
+    pictureId: null,
+    statusText: 'delivered',
+    time: 'Mon 4 Nov 2019 11:59',
+    type: 'in',
     more: true
   },
   {
