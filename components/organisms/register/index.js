@@ -3,10 +3,22 @@
  */
 
 // React
+import React, { useContext, useState } from 'react'
 import { any, bool, func, string } from 'prop-types'
 
 // UI
-import { Button, Checkbox, Column, DatePickerInput, Form, Input, Link, Row } from '../../'
+import {
+  Alert,
+  Button,
+  Checkbox,
+  Column,
+  DatePickerInput,
+  FormForm,
+  Input,
+  Link,
+  UserContext,
+  Row
+} from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -14,6 +26,7 @@ import styled from 'styled-components'
 export const Register = ({
   birthday,
   change,
+  handleSubmit,
   dayBirthday,
   email,
   monthBirthday,
@@ -22,7 +35,7 @@ export const Register = ({
   nameLast,
   pathLogin,
   password,
-  submit,
+  repeatPassword,
   terms,
   yearBirthday
 }) => {
@@ -41,7 +54,25 @@ export const Register = ({
   )
 
   // const isInvalid = password === '' || email === ''
+  const { register } = useContext(UserContext)
+  const [error, setError] = useState()
   const isInvalid = false
+
+  const handleError = error => {
+    console.log('error en handle ', error, error.message)
+    setError(error)
+  }
+  const submit = e => {
+    // We get the check of password and repeatpassword from backend? or if not we can manage it here too
+    e.preventDefault()
+
+    if (password === repeatPassword) {
+      // We can set it and
+      register(nameFirst, nameLast, email, password, marketing, birthday, handleError)
+    } else {
+      // set the error
+    }
+  }
 
   const CHECKBOX_TERMS = [
     {
@@ -57,9 +88,8 @@ export const Register = ({
       isChecked: marketing
     }
   ]
-
   return (
-    <Form submit={submit}>
+    <FormForm handleSubmit={submit}>
       <Row>
         <Column md={6}>
           <Input label='First name' id='nameFirst' change={change} value={nameFirst} />
@@ -71,8 +101,9 @@ export const Register = ({
       </Row>
 
       <Input label='Email' id='email' change={change} type='email' value={email} />
-
       <Input label='Password' id='password' change={change} type='password' value={password} />
+      <Input label='Repeat password' id='repeatPassword' change={change} value={repeatPassword} />
+      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
       {birthday && renderBirthday()}
 
@@ -82,15 +113,15 @@ export const Register = ({
         align='right'
         content='Sign up'
         context='primary'
-        disabled={isInvalid}
         size='lg'
+        disabled={isInvalid}
         type='submit'
       />
 
       <StyledLink>
         Already have an account? <Link to={pathLogin}>Log in</Link>
       </StyledLink>
-    </Form>
+    </FormForm>
   )
 }
 
@@ -117,5 +148,5 @@ Register.propTypes = {
 
 Register.defaultProps = {
   birthday: false,
-  pathLogin: '/account/sign-in'
+  pathLogin: '/account/login'
 }

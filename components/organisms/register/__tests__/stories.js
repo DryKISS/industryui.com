@@ -10,6 +10,8 @@ import { Wrapper } from 'decorators'
 
 // UI
 import { Register } from '../'
+import { useForm } from 'components'
+
 import Readme from '../README.md'
 
 export default {
@@ -23,15 +25,30 @@ export default {
   }
 }
 
-export const main = () => (
-  <Register
-    change={() => {}}
-    email=''
-    marketing
-    nameFirst=''
-    nameLast=''
-    password=''
-    submit={() => {}}
-    terms
-  />
-)
+const initialState = {
+  email: '',
+  nameFirst: '',
+  nameLast: '',
+  password: '',
+  repeatPassword: '',
+  marketing: false,
+  terms: false
+}
+export const main = () => {
+  const { change, form, handleSubmit } = useForm(initialState)
+
+  return (
+    <Register
+      change={change}
+      nameFirst={form.nameFirst}
+      nameLast={form.nameLast}
+      email={form.email}
+      password={form.password}
+      repeatPassword={form.repeatPassword}
+      marketing={form.marketing}
+      terms={form.terms}
+      pathLogin='/account/login'
+      handleSubmit={handleSubmit}
+    />
+  )
+}
