@@ -102,7 +102,13 @@ export const Register = ({
 
       <Input label='Email' id='email' change={change} type='email' value={email} />
       <Input label='Password' id='password' change={change} type='password' value={password} />
-      <Input label='Repeat password' id='repeatPassword' change={change} value={repeatPassword} />
+      <Input
+        label='Repeat password'
+        id='repeatPassword'
+        change={change}
+        type='password'
+        value={repeatPassword}
+      />
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
       {birthday && renderBirthday()}
