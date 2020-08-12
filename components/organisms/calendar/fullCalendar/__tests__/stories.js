@@ -3,23 +3,22 @@
  */
 
 // React
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 // Storybook
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Calendar, Theme } from '../../../'
+import { Calendar, Theme } from 'components'
 import Readme from '../README.md'
+
 // Data
 import { Events, AvailableViews } from '../__mocks__/events'
 
 // Stories
 import { CustomCalendarStyles } from './customCalendarStyles'
 import { CustomEventsStory } from './customEventsStory'
-
-export const main = () => <BaseComponent />
 
 export default {
   title: 'Organisms/Full Calendar',
@@ -66,6 +65,8 @@ export const BaseComponent = (props = {}) => {
   return <Calendar ref={calendarRef} {...defaultCalendarProps} />
 }
 
+export const main = () => <BaseComponent />
+
 export const events = () => <BaseComponent events={Events} />
 
 export const CustomCalendar = () => {
@@ -75,6 +76,7 @@ export const CustomCalendar = () => {
 export const CustomEvents = () => {
   return <CustomEventsStory />
 }
+
 export const eventsWithEventAdditionOnClick = () => {
   const [events, setEvents] = useState(Events || [])
   const handleDateClick = arg => {

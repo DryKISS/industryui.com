@@ -16,7 +16,7 @@ import Readme from '../README.md'
 import { ThemeProvider } from 'styled-components'
 
 // Data
-import { Default } from '../__mocks__'
+import { Default } from '../__mocks__/navbar'
 
 export default {
   title: 'Molecules/Navbar/Theme',

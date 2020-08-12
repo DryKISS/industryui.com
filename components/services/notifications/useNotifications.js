@@ -10,15 +10,9 @@
  * userId - integer
  */
 
-// React
-import { useState, useEffect } from 'react'
-
 // Apollo
 import { useSubscription } from '@apollo/client'
 import gql from 'graphql-tag'
-
-// UI
-import { Api, useInterval } from '../../../'
 
 export const useNotifications = (url, params = {}, seconds = 60) => {
   // const [data, setData] = useState({ messages: [] })
@@ -41,7 +35,6 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
   `
 
   const {
-    loading,
     data: { items } = {
       items: []
     }

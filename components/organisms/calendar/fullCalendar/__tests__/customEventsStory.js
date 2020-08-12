@@ -113,6 +113,7 @@ export const CustomEventsStory = () => {
   const handleEventClick = args => {
     setShowOffCanvas(true)
   }
+
   return (
     <>
       {showOffCanvas && (

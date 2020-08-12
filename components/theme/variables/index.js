@@ -9,7 +9,7 @@ import { TYPOGRAPHY } from './typography'
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
 import { BARCHART } from '../../molecules/charts/Nivo/responsiveBar/variables'
-import { CALENDAR } from '../../organisms/fullCalendar/variables'
+import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
 import { COPYRIGHT } from '../../molecules/copyright/variables'
 import { FOOTER } from '../../organisms/footer/variables'
 import { GRID } from '../../atoms/grid/variables'

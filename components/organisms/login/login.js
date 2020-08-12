@@ -21,7 +21,7 @@ import {
   Link,
   PageHeading,
   UserContext
-} from '../../../'
+} from '../../'
 
 // Style
 import styled from 'styled-components'

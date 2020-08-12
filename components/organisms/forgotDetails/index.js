@@ -3,21 +3,21 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React from 'react'
 import { bool, func, string } from 'prop-types'
 
 // useForm
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
+import { Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
 import { ForgotDetailsSchema } from './schema'
 
 // Style
 import styled from 'styled-components'
 
 export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
-  const { errors, formState, handleSubmit, register } = useForm({
+  const { errors, handleSubmit, register } = useForm({
     validationSchema: ForgotDetailsSchema
   })
 

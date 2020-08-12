@@ -10,11 +10,9 @@ import { bool, object, string } from 'prop-types'
 import { Controller } from 'react-hook-form'
 
 // UI
-import { Dropzone } from '.'
+import { Dropzone } from './react-dropzone'
 
 export const DropzoneField = ({ control, name, ...props }) => {
-  // const Component = via === 'react-dropzone' ? Dropzone : DropzoneUploader
-
   return <Controller as={Dropzone} control={control} name={name} {...props} />
 }
 
@@ -25,12 +23,10 @@ DropzoneField.propTypes = {
   errors: object,
   multiple: bool,
   name: string
-  // via: string
 }
 
 DropzoneField.defaultProps = {
   disabled: false,
   name: 'dropzone',
-  // via: 'react-dropzone',
   multiple: false
 }

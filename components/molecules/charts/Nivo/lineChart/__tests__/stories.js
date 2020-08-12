@@ -18,7 +18,7 @@ import { LineChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
-import { Data, BigData } from '../__mocks__/data'
+import { Data, BigData } from '../__mocks__/nivoLine'
 
 // Styled Components
 import styled from 'styled-components'

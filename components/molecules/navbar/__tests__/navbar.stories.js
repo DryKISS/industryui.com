@@ -10,7 +10,7 @@ import { BaseComponent, options } from './baseComponent'
 import Readme from '../README.md'
 
 // Data
-import { Default } from '../__mocks__'
+import { Default } from '../__mocks__/navbar'
 
 export default {
   title: 'Molecules/Navbar',

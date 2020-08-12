@@ -27,6 +27,7 @@ import '@fullcalendar/list/main.css'
 import 'emoji-mart/css/emoji-mart.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'tippy.js/dist/tippy.css'
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 const actionWithPromise = () => {
   action('clicked link')()

@@ -36,66 +36,6 @@ import {
   faUserCircle as farUserCircle
 } from '@fortawesome/free-regular-svg-icons'
 
-// Pro Regular
-import {
-  // UI & Knobs
-  faAlicorn as farAlicorn,
-  faTrash as farTrash,
-  faBell as farBell,
-
-  // UI
-  faArrowLeft,
-  faArrowRight,
-  faBars,
-  faCalendarAlt,
-  faCheck,
-  faCheckCircle,
-  faChevronDown,
-  faChevronLeft,
-  faChevronRight,
-  faChevronUp,
-  faDogLeashed,
-  faExternalLink,
-  faHomeHeart,
-  faImages,
-  faMapMarkerAlt,
-  faMars,
-  faPaperclip,
-  faSearch,
-  faShoppingCart,
-  faSmile,
-  faStethoscope,
-  faStopwatch,
-  faTimes,
-  faTimesCircle,
-  faUser,
-  faVenus
-} from '@fortawesome/pro-regular-svg-icons'
-
-// Pro DuoTone
-import {
-  // UI & Knobs
-  faAlicorn as fadAlicorn,
-  faBell as fadBell,
-  faTrash as fadTrash,
-  faSyncAlt as fadSyncAlt,
-  faSpinnerThird as fadSpinnerThird,
-  faTire as fadTire,
-  faSpinner as fadSpinner,
-  faCog as fadCog,
-  faSlash as fadSlash,
-  faCompass as fadCompass,
-  faBullseye as fadBullseye,
-
-  // UI
-  faCommentDots,
-  faEdit,
-  faEnvelope,
-  faExclamationTriangle,
-  faGraduationCap,
-  faTachometerAltAverage
-} from '@fortawesome/pro-duotone-svg-icons'
-
 // Free Brands
 import {
   // UI & Knobs
@@ -126,61 +66,14 @@ library.add(
   fasCloud,
   fasShieldAlt,
 
-  farAlicorn,
-  fadAlicorn,
   fasTrash,
-  farTrash,
-  fadTrash,
   fasBell,
-  farBell,
-  fadBell,
-  fadSyncAlt,
-  fadSpinnerThird,
-  fadTire,
-  fadSpinner,
-  fadCog,
-  fadSlash,
-  fadCompass,
-  fadBullseye,
 
   // UI
-  faArrowLeft,
-  faArrowRight,
-  faBars,
-
-  faCalendarAlt,
   faCaretDown,
   faCaretUp,
-  faCheck,
-  faCheckCircle,
-  faChevronDown,
-  faChevronLeft,
-  faChevronRight,
-  faChevronUp,
   faCircle,
-  faCommentDots,
-  faExternalLink,
-  faDogLeashed,
-  faEdit,
-  faEnvelope,
   fasEnvelope,
-  faExclamationTriangle,
-  faGraduationCap,
-  faHomeHeart,
-  faImages,
-  faMapMarkerAlt,
-  faMars,
-  faPaperclip,
-  faSearch,
-  faShoppingCart,
-  faSmile,
-  faStethoscope,
-  faStopwatch,
-  faTachometerAltAverage,
-  faTimes,
-  faTimesCircle,
-  faUser,
-  faVenus,
 
   // Brands
   fabGit,

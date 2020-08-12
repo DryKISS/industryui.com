@@ -7,7 +7,6 @@ import React from 'react'
 import { any, bool, func, object } from 'prop-types'
 
 // Lodash
-import isObject from 'lodash/isObject'
 import merge from 'lodash/merge'
 
 // Apollo
@@ -22,8 +21,7 @@ import TagManager from 'react-gtm-module'
 // UI
 import {
   AuthorizationProvider,
-  FirebaseProvider,
-  Icons,
+  ConfigProvider,
   NotificationsProvider,
   OffCanvasProvider,
   PageProgressBar,
@@ -39,7 +37,7 @@ export class MyApp extends App {
   static propTypes = {
     apolloClient: object,
     Component: func.isRequired,
-    firebase: object,
+    config: object,
     google: object,
     icons: object,
     Layout: any.isRequired,
@@ -65,15 +63,11 @@ export class MyApp extends App {
   }
 
   elements () {
-    const { firebase, icons, offCanvas, user } = this.props
-    const fire = isObject(firebase)
+    const { offCanvas, user } = this.props
 
     return (
       <>
-        {icons && <Icons icons={icons} />}
         <ThemeStyle />
-
-        {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
         {user && (
           <UserProvider>
@@ -85,21 +79,23 @@ export class MyApp extends App {
           </UserProvider>
         )}
 
-        {!user && !fire && this.layout()}
+        {!user && this.layout()}
       </>
     )
   }
 
   data () {
-    const { apolloClient } = this.props
+    const { apolloClient, config } = this.props
 
     return (
       <>
-        {apolloClient ? (
-          <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
-        ) : (
-          this.elements()
-        )}
+        <ConfigProvider config={config}>
+          {apolloClient ? (
+            <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
+          ) : (
+            this.elements()
+          )}
+        </ConfigProvider>
       </>
     )
   }
@@ -119,27 +115,3 @@ export class MyApp extends App {
     return <ThemeProvider theme={merge(Theme, this.props.theme)}>{this.data()}</ThemeProvider>
   }
 }
-
-// import App, { Container } from 'next/app'
-// import React from 'react'
-// import './app.css'
-// import TagManager from 'react-gtm'
-
-// const tagManagerArgs = {
-//   id: 'GTM-XXXXXXX'
-// }
-
-// class MyApp extends App {
-//   componentDidMount () {
-//     TagManager.initialize(tagManagerArgs)
-//   }
-
-//   render () {
-//     const { Component, pageProps } = this.props
-//     return (
-//       <Container>
-//         <Component {...pageProps} />
-//       </Container>
-//     )
-//   }
-// }
