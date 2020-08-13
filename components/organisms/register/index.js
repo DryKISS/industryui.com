@@ -12,15 +12,12 @@ import {
   Alert,
   Button,
   Checkbox,
-  Column,
   DatePickerInput,
   FormLabel,
   FormField,
   FormForm,
-  Input,
   Link,
-  UserContext,
-  Row
+  UserContext
 } from '../../'
 
 // Style
@@ -60,11 +57,10 @@ export const Register = ({
 
   // const isInvalid = password === '' || email === ''
   const { registerContext } = useContext(UserContext)
-  const { errors, register, handleSubmit } = useForm({ mode: 'onChange' })
+  const { errors, register, formState, handleSubmit } = useForm({ mode: 'onChange' })
 
   const [error, setError] = useState(errorSubmit)
   const [passwordError, setPasswordError] = useState()
-  const isInvalid = false
 
   // TODO: Refactorize this into utils
   const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -78,9 +74,7 @@ export const Register = ({
   const onSubmit = e => {
     // We get the check of password and repeatpassword from backend? or if not we can manage it here too
     setPasswordError()
-    console.log('entra en el submit  ', e)
     if (e.password !== e.repeatPassword) {
-      console.log('el error repeat password', password, repeatPassword)
       setPasswordError(new Error('Password and repeat password are different'))
     } else if (!submit) {
       registerContext(
@@ -93,7 +87,6 @@ export const Register = ({
         error => error && setError(error)
       )
     } else {
-      console.log('en el submit')
       submit()
     }
   }
@@ -115,15 +108,23 @@ export const Register = ({
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
-      <Row>
-        <Column md={6}>
-          <Input label='First name' id='nameFirst' change={change} value={nameFirst} />
-        </Column>
-
-        <Column md={6}>
-          <Input label='Last name' id='nameLast' change={change} value={nameLast} />
-        </Column>
-      </Row>
+      <FormLabel label='First name'>
+        <FormField
+          autoFocus
+          errors={errors}
+          name='nameFirst'
+          placeholder={showPlaceholder ? 'Tommy' : ''}
+          register={register}
+        />
+      </FormLabel>
+      <FormLabel label='Last name'>
+        <FormField
+          errors={errors}
+          name='nameLast'
+          placeholder={showPlaceholder ? 'Ryder' : ''}
+          register={register}
+        />
+      </FormLabel>
       <FormLabel label='Email'>
         <FormField
           autoFocus
@@ -162,7 +163,7 @@ export const Register = ({
         content='Sign up'
         context='primary'
         size='lg'
-        disabled={isInvalid}
+        disabled={!formState.isValid}
         type='submit'
       />
       <StyledLink>
