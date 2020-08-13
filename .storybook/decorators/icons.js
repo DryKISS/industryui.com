@@ -6,18 +6,19 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 // Free Solid
 import {
   // UI & Knobs
+  faBell as fasBell,
+  faCloud as fasCloud,
   faCopy as fasCopy,
   faCopyright as fasCopyright,
-  faImages as fasImages,
-  faSmile as fasSmile,
-  faUserCircle as fasUserCircle,
-  faGraduationCap as fasGraduationCap,
-  faFlag as fasFlag,
   faEllipsisH as fasEllipsisH,
-  faCloud as fasCloud,
+  faFlag as fasFlag,
+  faImages as fasImages,
+  faGraduationCap as fasGraduationCap,
+  faSearch,
   faShieldAlt as fasShieldAlt,
+  faSmile as fasSmile,
   faTrash as fasTrash,
-  faBell as fasBell,
+  faUserCircle as fasUserCircle,
 
   // UI
   faCaretDown,
@@ -64,8 +65,8 @@ library.add(
   fasFlag,
   fasEllipsisH,
   fasCloud,
+  faSearch,
   fasShieldAlt,
-
   fasTrash,
   fasBell,
 
