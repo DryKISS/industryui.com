@@ -4480,6 +4480,22 @@ exports[`Storyshots Organisms/Password Change Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Organisms/Register Error 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Organisms/Register Main 1`] = `
 @media (min-width:62em) {
 
