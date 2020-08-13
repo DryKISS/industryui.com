@@ -2,18 +2,23 @@
  * Components - Text
  */
 
-// React
-import { node, oneOf, string } from 'prop-types'
-
 // UI
-import { CONTEXT, SIZE, MEDIA_QUERY } from '../../'
+import { DISPLAY, SPACER, MEDIA_QUERY } from '../../'
+import { TextPropTypes, TextDefaultProps } from './props'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Text = ({ align, children, className, content, context, stroke, size }) => {
+export const Text = ({ align, children, className, content, context, stroke, size, ...props }) => {
   return (
-    <StyledText align={align} className={className} context={context} stroke={stroke} size={size}>
+    <StyledText
+      align={align}
+      className={className}
+      context={context}
+      stroke={stroke}
+      size={size}
+      {...props}
+    >
       {content || children}
     </StyledText>
   )
@@ -104,17 +109,11 @@ const StyledText = styled.p`
         -webkit-text-stroke: 3px #000;
       `}
     `}
+
+  ${theme => DISPLAY(theme)}
+  ${theme => SPACER(theme)}
 `
 
-Text.protoTypes = {
-  align: string,
-  children: node,
-  content: string,
-  context: oneOf(Object.values(CONTEXT)),
-  size: oneOf(Object.values(SIZE))
-}
+Text.protoTypes = TextPropTypes
 
-Text.defaultProps = {
-  context: 'black',
-  size: 'md'
-}
+Text.defaultProps = TextDefaultProps

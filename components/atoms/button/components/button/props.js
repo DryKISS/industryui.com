@@ -1,4 +1,4 @@
-import { bool, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
+import { bool, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
 import {
@@ -18,9 +18,13 @@ export const ButtonPropTypes = {
   context: oneOf(Object.values(CONTEXT)),
   dashed: bool,
   disabled: bool,
+  endIcon: string,
+  endIconProps: object,
   onClick: func,
   outline: bool,
   shadow: bool,
+  startIcon: string,
+  startIconProps: object,
   size: oneOf(Object.values(SIZE)),
   style: objectOf(oneOfType([number, string])),
   type: oneOf(['button', 'reset', 'submit']),

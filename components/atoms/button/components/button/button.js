@@ -12,27 +12,43 @@ import { ButtonPropTypes, ButtonDefaultProps } from './props'
 // Style
 import styled, { css, useTheme } from 'styled-components'
 
-export const Button = forwardRef(({ context, endIcon, startIcon, outline, ...props }, ref) => {
-  const theme = useTheme()
-  const textContext = getTextContext(context, outline, theme)
+export const Button = forwardRef(
+  (
+    {
+      children,
+      content,
+      context,
+      endIcon,
+      endIconProps,
+      startIcon,
+      startIconProps,
+      outline,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useTheme()
+    const textContext = getTextContext(context, outline, theme)
+    const text = children || content
 
-  return (
-    <StyledButton
-      context={context}
-      outline={outline}
-      textContext={textContext}
-      ref={ref}
-      role='button'
-      {...props}
-    >
-      {startIcon && <Icon icon={startIcon} />}
+    return (
+      <StyledButton
+        context={context}
+        outline={outline}
+        textContext={textContext}
+        ref={ref}
+        role='button'
+        {...props}
+      >
+        {startIcon && <Icon icon={startIcon} {...startIconProps} />}
 
-      <StyledContent>{props.children || props.content}</StyledContent>
+        {text && <StyledContent>{text}</StyledContent>}
 
-      {endIcon && <Icon icon={endIcon} />}
-    </StyledButton>
-  )
-})
+        {endIcon && <Icon icon={endIcon} {...endIconProps} />}
+      </StyledButton>
+    )
+  }
+)
 
 const getTextContext = (context, outline, theme) => {
   if (context === 'white') return 'primary'
@@ -68,14 +84,6 @@ const StyledButton = styled.button`
 
   border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
     outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
-
-  /* Icons */
-  svg:first-child{
-    margin-right: ${({ theme }) => theme.SPACING(2)};
-  }
-  svg:last-child{
-    margin-left: ${({ theme }) => theme.SPACING(2)};
-  }
 
   ${({ disabled }) =>
     disabled &&
@@ -131,7 +139,15 @@ const StyledButton = styled.button`
   ${theme => SPACER(theme)}
 `
 
-const StyledContent = styled.div``
+const StyledContent = styled.div`
+  :not(:first-child) {
+    margin-left: ${({ theme }) => theme.SPACING(2)};
+  }
+
+  :not(:last-child) {
+    margin-right: ${({ theme }) => theme.SPACING(2)};
+  }
+`
 
 Button.propTypes = ButtonPropTypes
 

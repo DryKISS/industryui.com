@@ -86,7 +86,7 @@ OffCanvasComponent.propTypes = {
 
 OffCanvasComponent.defaultProps = {
   closeOnOverlayClick: true,
-  context: 'primary',
+  context: 'secondary',
   overlayOpacity: 0.3,
   placement: 'right',
   transitionDuration: 300,
