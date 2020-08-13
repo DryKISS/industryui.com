@@ -46,10 +46,12 @@ export const Login = ({
   const { signIn } = useContext(UserContext)
 
   const onSubmit = data => {
+    console.log('submit??? ', submit)
     if (!submit) {
       const { email, password } = data
       signIn('email', email, password, error => error && setError(error))
     } else {
+      console.log('here')
       submit()
     }
   }

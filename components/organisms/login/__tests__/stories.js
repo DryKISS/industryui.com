@@ -11,6 +11,8 @@ import { Wrapper } from 'decorators'
 
 // UI
 import { Login, requestSimulator, useForm } from '../../../'
+import { Alert } from 'index'
+
 import Readme from '../README.md'
 
 export default {
@@ -25,6 +27,17 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
+  const [loggedToast, setLoggedToast] = useState(false)
+  const submit = e => {
+    requestSimulator().then(res => {
+      setLoggedToast(true)
+
+      setTimeout(() => {
+        setLoggedToast(false)
+      }, 1500)
+    })
+  }
+
   const defaultProps = {
     blockSubmitButton: true,
     forgotPassword: true,
@@ -36,10 +49,17 @@ const BaseComponent = (props = {}) => {
     showPassword: true,
     showPlaceholder: true,
     submitLoading: true,
+    submit: submit,
     ...props
   }
 
-  return <Login {...defaultProps} />
+  return (
+    <>
+      {loggedToast && <Alert content='logged' context='success' style={{ color: '#fff' }} />}
+
+      <Login {...defaultProps} />
+    </>
+  )
 }
 
 export const main = () => {
@@ -90,7 +110,6 @@ export const withHttpRequest = () => {
       })
       .finally(() => setLoading(false))
   }
-
   return (
     <Login
       change={change}
