@@ -70,22 +70,24 @@ export const withHttpRequest = () => {
   const groupId = 'GROUP-ID1'
   const value = select(label, options, defaultValue, groupId)
 
-  const handleSubmit = e => {
+  const submit = e => {
     e.preventDefault()
     setLoading(true)
     requestSimulator(value)
-      .then(res =>
+      .then(res => {
+        console.log('response', res)
         setResult({
           type: 'success',
-          message: res
+          message: res.message
         })
-      )
-      .catch(e =>
+      })
+      .catch(e => {
+        console.log('error ', e)
         setResult({
           type: 'danger',
           message: e.message
         })
-      )
+      })
       .finally(() => setLoading(false))
   }
 
@@ -93,7 +95,7 @@ export const withHttpRequest = () => {
     <Login
       change={change}
       email={form.email}
-      submit={handleSubmit}
+      submit={submit}
       password={form.password}
       submitResult={result}
       submitLoading={loading}

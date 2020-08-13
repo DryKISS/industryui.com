@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { any, bool, func, string } from 'prop-types'
 
 // UI
@@ -26,7 +26,7 @@ import styled from 'styled-components'
 export const Register = ({
   birthday,
   change,
-  handleSubmit,
+  submit,
   dayBirthday,
   email,
   monthBirthday,
@@ -37,7 +37,8 @@ export const Register = ({
   password,
   repeatPassword,
   terms,
-  yearBirthday
+  yearBirthday,
+  errorSubmit
 }) => {
   const renderBirthday = () => (
     <>
@@ -55,22 +56,36 @@ export const Register = ({
 
   // const isInvalid = password === '' || email === ''
   const { register } = useContext(UserContext)
-  const [error, setError] = useState()
+
+  const [error, setError] = useState(errorSubmit)
+  const [passwordError, setPasswordError] = useState()
   const isInvalid = false
 
-  const handleError = error => {
-    console.log('error en handle ', error, error.message)
-    setError(error)
-  }
-  const submit = e => {
+  useEffect(() => {
+    setError(errorSubmit)
+    return () => {
+      setError()
+    }
+  }, [errorSubmit])
+  const onSubmit = e => {
     // We get the check of password and repeatpassword from backend? or if not we can manage it here too
     e.preventDefault()
-
-    if (password === repeatPassword) {
-      // We can set it and
-      register(nameFirst, nameLast, email, password, marketing, birthday, handleError)
+    setPasswordError()
+    if (password !== repeatPassword) {
+      console.log('el error repeat password')
+      setPasswordError(new Error('Password and repeat password are different'))
+    } else if (!submit) {
+      register(
+        nameFirst,
+        nameLast,
+        email,
+        password,
+        marketing,
+        birthday,
+        error => error && setError(error)
+      )
     } else {
-      // set the error
+      submit()
     }
   }
 
@@ -89,7 +104,8 @@ export const Register = ({
     }
   ]
   return (
-    <FormForm handleSubmit={submit}>
+    <FormForm handleSubmit={onSubmit}>
+      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
       <Row>
         <Column md={6}>
           <Input label='First name' id='nameFirst' change={change} value={nameFirst} />
@@ -109,10 +125,11 @@ export const Register = ({
         type='password'
         value={repeatPassword}
       />
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
       {birthday && renderBirthday()}
-
+      {passwordError && (
+        <Alert content={passwordError.message} context='warning' style={{ color: '#fff' }} />
+      )}
       <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
 
       <Button

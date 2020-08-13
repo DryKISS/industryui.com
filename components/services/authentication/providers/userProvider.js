@@ -69,20 +69,9 @@ export const UserProvider = ({ children }) => {
       Router.push('/dashboard')
     }
   }
-  /* Example for register, I guess we can refactorize this into Auth switch method and receive the params
-  and the type of the event(Register/Login), call the URL with the right params and just continue same way */
-  const register = async (
-    nameFirst,
-    nameLast,
-    email,
-    password,
-    marketing,
-    birthday,
-    handleError
-  ) => {
+  const register = async (nameFirst, nameLast, email, password, marketing, birthday, callback) => {
     let user, token
 
-    console.log('going to try')
     try {
       const { data } = await axios.post(`${apiConfig.authURL}/register`, {
         nameFirst,
@@ -96,7 +85,8 @@ export const UserProvider = ({ children }) => {
       const tokenData = decodeToken(token)
       user = tokenData.user
     } catch (err) {
-      handleError(new Error(err))
+      const { error } = err.response.data
+      callback(new Error(error))
     }
 
     const isAuthed = user && token
