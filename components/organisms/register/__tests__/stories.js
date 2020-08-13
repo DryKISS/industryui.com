@@ -39,6 +39,7 @@ export const main = () => {
   const { change, form } = useForm(initialState)
   const [loggedToast, setLoggedToast] = useState(false)
   const submit = e => {
+    console.log('lo submitido ', e)
     requestSimulator().then(res => {
       setLoggedToast(true)
 

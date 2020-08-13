@@ -5,6 +5,7 @@
 // React
 import React, { useContext, useState, useEffect } from 'react'
 import { any, bool, func, string } from 'prop-types'
+import { useForm } from 'react-hook-form'
 
 // UI
 import {
@@ -13,6 +14,8 @@ import {
   Checkbox,
   Column,
   DatePickerInput,
+  FormLabel,
+  FormField,
   FormForm,
   Input,
   Link,
@@ -29,6 +32,7 @@ export const Register = ({
   submit,
   dayBirthday,
   email,
+  showPlaceholder,
   monthBirthday,
   marketing,
   nameFirst,
@@ -55,11 +59,15 @@ export const Register = ({
   )
 
   // const isInvalid = password === '' || email === ''
-  const { register } = useContext(UserContext)
+  const { registerContext } = useContext(UserContext)
+  const { errors, register, handleSubmit } = useForm({ mode: 'onChange' })
 
   const [error, setError] = useState(errorSubmit)
   const [passwordError, setPasswordError] = useState()
   const isInvalid = false
+
+  // TODO: Refactorize this into utils
+  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   useEffect(() => {
     setError(errorSubmit)
@@ -69,13 +77,13 @@ export const Register = ({
   }, [errorSubmit])
   const onSubmit = e => {
     // We get the check of password and repeatpassword from backend? or if not we can manage it here too
-    e.preventDefault()
     setPasswordError()
-    if (password !== repeatPassword) {
-      console.log('el error repeat password')
+    console.log('entra en el submit  ', e)
+    if (e.password !== e.repeatPassword) {
+      console.log('el error repeat password', password, repeatPassword)
       setPasswordError(new Error('Password and repeat password are different'))
     } else if (!submit) {
-      register(
+      registerContext(
         nameFirst,
         nameLast,
         email,
@@ -85,6 +93,7 @@ export const Register = ({
         error => error && setError(error)
       )
     } else {
+      console.log('en el submit')
       submit()
     }
   }
@@ -104,7 +113,7 @@ export const Register = ({
     }
   ]
   return (
-    <FormForm handleSubmit={onSubmit}>
+    <FormForm handleSubmit={handleSubmit(onSubmit)}>
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
       <Row>
         <Column md={6}>
@@ -115,23 +124,39 @@ export const Register = ({
           <Input label='Last name' id='nameLast' change={change} value={nameLast} />
         </Column>
       </Row>
-
-      <Input label='Email' id='email' change={change} type='email' value={email} />
-      <Input label='Password' id='password' change={change} type='password' value={password} />
-      <Input
-        label='Repeat password'
-        id='repeatPassword'
-        change={change}
-        type='password'
-        value={repeatPassword}
-      />
-
+      <FormLabel label='Email'>
+        <FormField
+          autoFocus
+          errors={errors}
+          name='email'
+          placeholder={showPlaceholder ? 'Email' : ''}
+          regExp={pattern}
+          register={register}
+        />
+      </FormLabel>
+      <FormLabel label='Password'>
+        <FormField
+          errors={errors}
+          name='password'
+          placeholder={showPlaceholder ? 'Password' : ''}
+          register={register}
+          type='password'
+        />
+      </FormLabel>
+      <FormLabel label='Repeat Password'>
+        <FormField
+          errors={errors}
+          name='repeatPassword'
+          placeholder={showPlaceholder ? 'Password' : ''}
+          register={register}
+          type='password'
+        />
+      </FormLabel>
       {birthday && renderBirthday()}
       {passwordError && (
         <Alert content={passwordError.message} context='warning' style={{ color: '#fff' }} />
       )}
       <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
-
       <Button
         align='right'
         content='Sign up'
@@ -140,7 +165,6 @@ export const Register = ({
         disabled={isInvalid}
         type='submit'
       />
-
       <StyledLink>
         Already have an account? <Link to={pathLogin}>Log in</Link>
       </StyledLink>

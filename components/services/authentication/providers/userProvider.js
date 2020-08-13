@@ -69,7 +69,15 @@ export const UserProvider = ({ children }) => {
       Router.push('/dashboard')
     }
   }
-  const register = async (nameFirst, nameLast, email, password, marketing, birthday, callback) => {
+  const registerContext = async (
+    nameFirst,
+    nameLast,
+    email,
+    password,
+    marketing,
+    birthday,
+    callback
+  ) => {
     let user, token
 
     try {
@@ -127,7 +135,7 @@ export const UserProvider = ({ children }) => {
           authorise,
           hashPassword,
           signIn,
-          register,
+          registerContext,
           signOut,
           user
         }}
