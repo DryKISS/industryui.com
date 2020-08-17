@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { bool, func, oneOf } from 'prop-types'
 
 // Style
@@ -14,6 +14,9 @@ import { CONTEXT, Switch } from '../../../'
 
 export const Toggle = ({ context, disabled, onToggle, size, toggled: initial }) => {
   const [toggled, setToggled] = useState(initial)
+  useEffect(() => {
+    setToggled(initial)
+  }, [initial])
 
   const handleToggle = () => {
     onToggle && onToggle(!toggled)

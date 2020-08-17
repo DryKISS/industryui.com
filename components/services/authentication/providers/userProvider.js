@@ -69,6 +69,42 @@ export const UserProvider = ({ children }) => {
       Router.push('/dashboard')
     }
   }
+  const registerContext = async (
+    nameFirst,
+    nameLast,
+    email,
+    password,
+    marketing,
+    birthday,
+    callback
+  ) => {
+    let user, token
+
+    try {
+      const { data } = await axios.post(`${apiConfig.authURL}/register`, {
+        nameFirst,
+        nameLast,
+        email,
+        password,
+        marketing,
+        birthday
+      })
+      token = data.token
+      const tokenData = decodeToken(token)
+      user = tokenData.user
+    } catch (err) {
+      const { error } = err.response.data
+      callback(new Error(error))
+    }
+
+    const isAuthed = user && token
+    if (isAuthed) {
+      setUser(user)
+      window.localStorage.setItem('bearerToken', token)
+      setAccessToken(token)
+      Router.push('/dashboard')
+    }
+  }
 
   const signOut = async () => {
     window.localStorage.removeItem('bearerToken')
@@ -99,6 +135,7 @@ export const UserProvider = ({ children }) => {
           authorise,
           hashPassword,
           signIn,
+          registerContext,
           signOut,
           user
         }}
