@@ -1472,102 +1472,6 @@ exports[`Storyshots Form/Controlled/ReactSelect With Default Value 1`] = `
 </div>
 `;
 
-exports[`Storyshots Form/Controlled/Search Appended Icon 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Search Custom Label 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Search Default Value 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Search Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Search Placeholder 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Search Prepended Icon 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Form/Controlled/Select Country 1`] = `
 @media (min-width:62em) {
 
@@ -2001,6 +1905,86 @@ exports[`Storyshots Form/ReactSelect Single 1`] = `
 `;
 
 exports[`Storyshots Form/ReactSelect With Default Value 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Search Appended Icon 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Search Custom Label 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Search Default Value 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Search Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Search Prepended Icon 1`] = `
 @media (min-width:62em) {
 
 }
