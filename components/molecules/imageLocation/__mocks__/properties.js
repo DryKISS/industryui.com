@@ -32,6 +32,10 @@ export const Properties = [
         value: 2,
         text: 'First Floor',
         image: '/static/media/first-floor.22d20f1f.png'
+        // assets: [
+        //   { value: 1, text: 'Printer', coordinates: { x: 200, y: 200 } },
+        //   { value: 2, text: 'Copy Machine', coordinates: { x: 300, y: 200 } }
+        // ]
       },
       {
         value: 3,
