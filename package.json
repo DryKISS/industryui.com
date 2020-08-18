@@ -2,9 +2,7 @@
   "name": "@drykiss/industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
   "main": "dist/industry-ui.js",
   "module": "dist/industry-ui.es.js",
@@ -54,9 +52,7 @@
     }
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn test"
-    ]
+    "**/*.js": ["yarn test"]
   },
   "husky": {
     "hooks": {
@@ -68,25 +64,9 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": [
-      "__SITE__"
-    ],
-    "ignore": [
-      "node_modules/**",
-      "*.bundle*.js",
-      "**/__tests__/*.test.js"
-    ],
+    "globals": ["__SITE__"],
+    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
-  },
-  "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-prettier",
-      "stylelint-config-styled-components"
-    ]
   },
   "dependencies": {
     "@apollo/client": "^3.0.2",
