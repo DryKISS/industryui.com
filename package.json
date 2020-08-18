@@ -7,8 +7,8 @@
   "main": "dist/industry-ui.js",
   "module": "dist/industry-ui.es.js",
   "license": "MIT",
-  "version": "1.0.0",
-  "version_short": "0.1",
+  "version": "1.1.0",
+  "version_short": "1.1",
   "keywords": [
     "react",
     "nextjs",
@@ -164,6 +164,6 @@
   "peerDependencies": {
     "react": "^16.*",
     "react-dom": "^16.*",
-    "styled-components": "^4.*"
+    "styled-components": "^5.*"
   }
 }
