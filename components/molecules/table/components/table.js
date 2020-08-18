@@ -1,7 +1,5 @@
 /**
  * Table
- *
- * @todo Remove this Rowclick data-item
  */
 
 // React
@@ -18,7 +16,7 @@ import {
   TableLoading,
   TableRow
 } from '../../../'
-import { PaginationPropTypes } from '../../pagination/components/propTypes'
+import { PaginationPropTypes } from '../../pagination/components/props'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -182,6 +180,7 @@ export const Table = ({
           currentPage={currentPage}
           onPageChange={handlePagination}
           pageCount={Math.ceil(rows.length / perPage)}
+          showNextAndPrev
           size='sm'
           style={{
             marginTop: '10px'
@@ -195,7 +194,7 @@ export const Table = ({
 
 const StyledWrapper = styled.div`
   width: 100%;
-  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%'};
+  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%;'}
   position: relative;
   ${({ isLoading }) =>
     isLoading &&
@@ -228,7 +227,7 @@ const StyledCaption = styled.caption`
 Table.propTypes = {
   align: bool,
   caption: string,
-  classname: string,
+  className: string,
   columns: array,
   fullHeight: bool,
   hover: bool,

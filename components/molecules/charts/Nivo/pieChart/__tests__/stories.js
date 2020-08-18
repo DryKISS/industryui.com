@@ -17,7 +17,7 @@ import { PieChart } from '../'
 import Readme from '../README.md'
 
 // Mocks
-import { Data, Data2 } from '../__mocks__/data'
+import { Data, Data2 } from '../__mocks__/nivoPie'
 
 // Styled Components
 import styled from 'styled-components'

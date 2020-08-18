@@ -4,13 +4,13 @@
 
 // React
 import React from 'react'
-import { any, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // Gravatar
 import gravatar from 'gravatar'
 
 // UI
-import { CONTEXT, getAcronym, Image } from '../../'
+import { FONTSIZE, getAcronym, Image, SIZE } from '../../'
+import { AvatarPropTypes, AvatarDefaultProps } from './props'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -56,6 +56,7 @@ const StyledAction = styled.div`
   opacity: 0;
   transition: all 0.1s ease-in-out;
   cursor: pointer;
+  font-size: ${({ theme }) => theme.TYPOGRAPHY.fontSizeBase};
 `
 
 const StyledAvatar = styled.div`
@@ -70,12 +71,19 @@ const StyledAvatar = styled.div`
   position: relative;
   overflow: hidden;
   object-fit: cover;
-  ${({ size }) => css`
-    font-size: ${size / 4}px;
-    height: ${size}px;
-    min-width: ${size}px;
-    width: ${size}px;
-  `}
+
+  ${props => FONTSIZE(props)}
+
+  ${({ size, theme }) => {
+    const sizeIndex = size && Object.values(SIZE).indexOf(size)
+    const dimension = theme.TYPOGRAPHY.fontSizes[sizeIndex] + 48
+
+    return css`
+      height: ${dimension}px;
+      min-width: ${dimension}px;
+      width: ${dimension}px;
+    `
+  }}
 
   &:hover {
     ${StyledAction} {
@@ -85,19 +93,6 @@ const StyledAvatar = styled.div`
   }
 `
 
-Avatar.propTypes = {
-  action: node,
-  actionClick: func,
-  actionProps: object,
-  children: any,
-  click: func,
-  content: any,
-  context: oneOf(Object.values(CONTEXT)),
-  style: objectOf(oneOfType([number, string])),
-  size: number
-}
+Avatar.propTypes = AvatarPropTypes
 
-Avatar.defaultProps = {
-  context: 'primary',
-  size: 72
-}
+Avatar.defaultProps = AvatarDefaultProps

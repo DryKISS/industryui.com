@@ -20,11 +20,13 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+stats.html
 
 # Testing
 coverage
 cypress/videos
 cypress/screenshots
+.cache
 
 # Composer
 vendor

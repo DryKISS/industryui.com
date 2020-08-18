@@ -37,11 +37,10 @@ export const Alert = ({ className, close, content, context, header, icon, iconPr
 }
 
 const StyledAlert = styled.div`
-  ${props => BACKGROUND(props)};
+  ${props => BACKGROUND(props)}
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
   border-radius: 0.25rem;
   color: ${({ context, theme }) => shadeLinearRgb(-0.8, theme.COLOUR[context])};
-  margin: 1rem 0;
   position: relative;
 `
 

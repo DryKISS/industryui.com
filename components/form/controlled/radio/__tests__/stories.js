@@ -10,11 +10,11 @@ import { withKnobs, select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Radio } from '../'
+import { Radio } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { RADIO_GENDER } from '../__mocks__/radio'
+import { RADIO_GENDER } from '../__mocks__/radioControlled'
 
 export default {
   title: 'Form/Controlled/Radio',

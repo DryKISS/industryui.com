@@ -10,7 +10,7 @@ import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Card, CardBody, Column } from 'components'
+import { Card, Column } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -27,6 +27,7 @@ export default {
 const BaseComponent = (props = {}) => {
   const defaultProps = {
     alt: 'Vizla',
+    body: text('Content', 'Content'),
     bordered: boolean('Bordered', true),
     footer: text('Footer', 'Footer'),
     image: '/card/vizla.jpg',
@@ -37,25 +38,18 @@ const BaseComponent = (props = {}) => {
   return <Card {...defaultProps} />
 }
 
-export const main = () => (
-  <BaseComponent>
-    <CardBody>{text('Content', 'Content')}</CardBody>
-  </BaseComponent>
+export const main = () => <BaseComponent />
+
+export const noImage = () => <BaseComponent image='' title={text('Title', 'No Image')} />
+
+export const longTitle = () => (
+  <BaseComponent
+    title={text(
+      'Title',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar lectus enim, a porttitor ex tincidunt id. '
+    )}
+    titleNoWrap={boolean('No wrap', true)}
+  />
 )
 
-export const horizontal = () => (
-  <BaseComponent horizontal={boolean('Horizontal', true)} title={text('Title', 'Horizontal')}>
-    <CardBody>
-      <p>{text('Content', 'content')}</p>
-      <Button context='secondary'>Read more</Button>
-    </CardBody>
-  </BaseComponent>
-)
-
-export const noImage = () => (
-  <BaseComponent image='' title={text('Title', 'No Image')}>
-    <CardBody>
-      <p>{text('Content', 'content')}</p>
-    </CardBody>
-  </BaseComponent>
-)
+export const withCta = () => <BaseComponent showCta={boolean('Show CTA', true)} />

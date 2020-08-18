@@ -1,18 +1,17 @@
 module.exports = {
+  cacheDirectory: '.cache/jest',
+  clearMocks: true,
   moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/.jest/fileMock.js'
+    '.+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$': 'identity-obj-proxy'
   },
-  modulePaths: ['node_modules', 'components', '<rootDir>'],
-  setupFiles: ['<rootDir>/.jest/jest.init.js', '<rootDir>/.jest/register-context.js'],
+  roots: ['<rootDir>/components'],
+  testMatch: ['<rootDir>/components/*.test.js'],
+  setupFiles: ['<rootDir>/.jest/jest.init.js'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setupTestAfterEnv.js'],
-  testMatch: ['**/__tests__/*.test.js'],
-  testURL: 'http://localhost',
   transform: {
     '^.+\\.md?$': 'markdown-loader-jest',
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '^.+\\.js?$': 'babel-jest'
   },
-  transformIgnorePatterns: ['/node_modules/(?!(@babel/runtime)/).*/']
+  transformIgnorePatterns: ['/node_modules/(?!(@babel/runtime)/).*/', '/dist/']
 }

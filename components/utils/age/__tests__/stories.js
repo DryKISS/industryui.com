@@ -45,7 +45,7 @@ export const main = () => {
 
   const onSubmit = data => {}
 
-  const birthDate = getValues()?.birthDate?.toString()
+  const birthDate = getValues()?.birthDate
 
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>

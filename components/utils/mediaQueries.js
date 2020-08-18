@@ -23,7 +23,7 @@ export const MEDIA_QUERY = Object.keys(sizes).reduce((accumulator, label) => {
 
   accumulator[label] = (...args) => css`
     @media (min-width: ${emSize}em) {
-      ${css(...args)};
+      ${css(...args)}
     }
   `
   return accumulator
@@ -34,7 +34,7 @@ export const MEDIA_QUERY_MAX = Object.keys(sizes).reduce((accumulator, label) =>
 
   accumulator[label] = (...args) => css`
     @media (max-width: ${emSize}em) {
-      ${css(...args)};
+      ${css(...args)}
     }
   `
   return accumulator

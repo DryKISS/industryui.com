@@ -7,20 +7,21 @@ import React from 'react'
 import { any, bool, func, object } from 'prop-types'
 
 // Lodash
-import isObject from 'lodash/isObject'
 import merge from 'lodash/merge'
 
 // Apollo
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 
 // Next
 import App from 'next/app'
 
+// Google Tag Manager
+import TagManager from 'react-gtm-module'
+
 // UI
 import {
   AuthorizationProvider,
-  FirebaseProvider,
-  Icons,
+  ConfigProvider,
   NotificationsProvider,
   OffCanvasProvider,
   PageProgressBar,
@@ -36,7 +37,8 @@ export class MyApp extends App {
   static propTypes = {
     apolloClient: object,
     Component: func.isRequired,
-    firebase: object,
+    config: object,
+    google: object,
     icons: object,
     Layout: any.isRequired,
     offCanvas: bool,
@@ -53,16 +55,19 @@ export class MyApp extends App {
     user: false
   }
 
+  componentDidMount () {
+    const { google } = this.props
+    if (google) {
+      TagManager.initialize({ gtmId: google.analytics })
+    }
+  }
+
   elements () {
-    const { firebase, icons, offCanvas, user } = this.props
-    const fire = isObject(firebase)
+    const { offCanvas, user } = this.props
 
     return (
       <>
-        {icons && <Icons icons={icons} />}
         <ThemeStyle />
-
-        {fire && <FirebaseProvider config={firebase}>{this.layout()}</FirebaseProvider>}
 
         {user && (
           <UserProvider>
@@ -74,21 +79,23 @@ export class MyApp extends App {
           </UserProvider>
         )}
 
-        {!user && !fire && this.layout()}
+        {!user && this.layout()}
       </>
     )
   }
 
   data () {
-    const { apolloClient } = this.props
+    const { apolloClient, config } = this.props
 
     return (
       <>
-        {apolloClient ? (
-          <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
-        ) : (
-          this.elements()
-        )}
+        <ConfigProvider config={config}>
+          {apolloClient ? (
+            <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
+          ) : (
+            this.elements()
+          )}
+        </ConfigProvider>
       </>
     )
   }

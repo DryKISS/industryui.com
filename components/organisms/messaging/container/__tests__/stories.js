@@ -16,7 +16,7 @@ import { filterByKey, filterByString, MessagingContainer, useForm } from 'compon
 import Readme from '../README.md'
 
 // Data
-import { messages } from '../__mocks__/messages'
+import { messages } from '../__mocks__/container'
 
 export default {
   title: 'Organisms/Messaging/Container',

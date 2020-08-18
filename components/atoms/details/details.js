@@ -5,13 +5,28 @@
 // React
 import { bool, node, string } from 'prop-types'
 
+// UI
+import { Button } from '../../atoms'
+
 // Style
 import styled from 'styled-components'
 
-export const Details = ({ children, open, style, summary, ...props }) => {
+export const Details = ({ children, open, style, summary, Toolbar, ...props }) => {
   return (
     <StyledDetails open={open} {...props}>
-      <StyledSummary>{summary}</StyledSummary>
+      <StyledSummary>
+        {summary}
+        {props.button && (
+          <StyledButton
+            content={props.button || 'Add New'}
+            context='secondary'
+            onClick={props.handleClick}
+            size='sm'
+          />
+        )}
+        {Toolbar && <Toolbar />}
+      </StyledSummary>
+
       <StyledBody style={style}>{children}</StyledBody>
     </StyledDetails>
   )
@@ -30,6 +45,13 @@ const StyledSummary = styled.summary`
   cursor: pointer;
   outline: none;
   padding: 1rem;
+  position: relative;
+`
+
+const StyledButton = styled(Button)`
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
 `
 
 const StyledBody = styled.div`

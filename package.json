@@ -1,15 +1,14 @@
 {
-  "name": "industry-ui",
+  "name": "@drykiss/industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
-  "main": "./index.js",
+  "main": "dist/industry-ui.js",
+  "module": "dist/industry-ui.es.js",
   "license": "MIT",
-  "version": "0.1.5",
-  "version_short": "0.1",
+  "version": "1.1.0",
+  "version_short": "1.1",
   "keywords": [
     "react",
     "nextjs",
@@ -34,12 +33,13 @@
     "standard": "standard | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy",
     "prettier": "prettier-standard --staged --lint",
-    "stylelint": "stylelint",
+    "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
-    "update-snapshots": "jest --updateSnapshot",
     "clean-dist": "rm -rf ./dist",
-    "build": "npm run clean-dist && NODE_ENV=production `yarn bin`/babel ./src --out-dir ./dist",
-    "build-storybook": "build-storybook --quiet -s ./.storybook/static"
+    "build": "NODE_ENV=build rollup -c",
+    "build-storybook": "build-storybook --quiet -s ./.storybook/static",
+    "test:snapshot": "jest",
+    "test:snapshot:update": "jest --updateSnapshot"
   },
   "engines": {
     "node": ">=12"
@@ -52,9 +52,7 @@
     }
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn test"
-    ]
+    "**/*.js": ["yarn test"]
   },
   "husky": {
     "hooks": {
@@ -66,49 +64,35 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": [
-      "__SITE__"
-    ],
-    "ignore": [
-      "node_modules/**",
-      "*.bundle*.js",
-      "**/__tests__/*.test.js"
-    ],
+    "globals": ["__SITE__"],
+    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
   },
-  "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-prettier",
-      "stylelint-config-styled-components"
-    ]
-  },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.5",
+    "@apollo/client": "^3.0.2",
+    "@firebase/app": "^0.6.9",
+    "@firebase/auth": "^0.14.9",
+    "@firebase/firestore": "^1.16.2",
+    "@firebase/storage": "^0.3.41",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
-    "@fortawesome/pro-regular-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@fullcalendar/core": "^5.1.0",
-    "@fullcalendar/daygrid": "^5.1.0",
-    "@fullcalendar/interaction": "^5.1.0",
-    "@fullcalendar/list": "^5.1.0",
-    "@fullcalendar/react": "^5.1.0",
-    "@fullcalendar/timegrid": "^5.1.0",
+    "@fullcalendar/core": "4.4.2",
+    "@fullcalendar/daygrid": "4.4.2",
+    "@fullcalendar/interaction": "4.4.2",
+    "@fullcalendar/list": "4.4.2",
+    "@fullcalendar/react": "4.4.2",
+    "@fullcalendar/timegrid": "4.4.2",
     "@nivo/bar": "^0.61.1",
     "@nivo/colors": "^0.61.0",
     "@nivo/generators": "^0.61.0",
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",
     "@tanem/react-nprogress": "^3.0.24",
+    "@tippyjs/react": "^4.1.0",
     "@typeform/embed": "^0.22.0",
-    "apollo-boost": "^0.4.7",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "date-fns": "^2.12.0",
@@ -121,62 +105,65 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "^9.3.5",
+    "react-big-calendar": "^0.26.0",
     "react-datepicker": "^3.0.0",
     "react-dropzone": "^10.2.2",
     "react-dropzone-uploader": "^2.11.0",
     "react-google-maps": "^9.4.5",
+    "react-gtm-module": "^2.0.8",
     "react-hook-form": "^5.4.2",
-    "react-popper": "^2.2.2",
     "react-select": "^3.1.0",
-    "react-tooltip": "^4.2.3",
-    "tippy.js": "^6.1.1",
     "yup": "^0.28.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/plugin-proposal-decorators": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
-    "@babel/plugin-transform-classes": "^7.9.5",
+    "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-babel": "^5.0.4",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
+    "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/react": "^5.3.18",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-styled-components": "^1.10.7",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.3.0",
+    "jest": "25.1.0",
     "jest-styled-components": "^7.0.2",
     "lint-staged": "^10.1.3",
     "markdown-loader-jest": "^0.1.1",
     "npm-check": "^5.9.2",
+    "path": "^0.12.7",
     "prettier-standard": "^16.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
+    "rollup": "^2.18.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-terser": "^6.1.0",
     "snazzy": "^8.0.0",
     "standard": "^14.3.3",
     "storybook-readme": "^5.0.8",
     "styled-components": "^5.1.0",
-    "stylelint": "^13.3.2",
-    "stylelint-config-prettier": "^8.0.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.9.0"
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1"
   },
   "peerDependencies": {
     "react": "^16.*",
     "react-dom": "^16.*",
-    "styled-components": "^4.*"
+    "styled-components": "^5.*"
   }
 }

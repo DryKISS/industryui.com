@@ -53,7 +53,7 @@ const StyledButton = styled(Button)`
   background-color: ${({ theme, active, context }) =>
     active ? theme.COLOUR[context] : theme.COLOUR.white};
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
-  ${props => FONTSIZE(props)};
+  ${props => FONTSIZE(props)}
   border-radius: 0;
   &:hover {
     background-color: ${({ active, context, theme }) =>

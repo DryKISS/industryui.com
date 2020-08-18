@@ -14,7 +14,7 @@ import { Footer } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__'
+import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__/footer'
 
 export default {
   title: 'Organisms/Footer',

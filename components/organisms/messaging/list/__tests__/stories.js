@@ -13,7 +13,7 @@ import { MessageList } from '../'
 import Readme from '../README.md'
 
 // Data
-import { messages } from '../__mocks__/messages'
+import { messages } from '../__mocks__/list'
 
 export default {
   title: 'Organisms/Messaging/MessageList',

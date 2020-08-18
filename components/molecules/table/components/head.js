@@ -2,6 +2,7 @@
  * Table Head (th)
  */
 
+// React
 import React from 'react'
 
 // Style
@@ -18,5 +19,5 @@ const StyledTh = styled.th`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => (align ? 'center' : 'left')};
-  ${({ sortable }) => sortable && 'cursor: pointer'};
+  ${({ sortable }) => sortable && 'cursor: pointer'}
 `

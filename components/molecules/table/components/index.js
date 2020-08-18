@@ -1,7 +1,6 @@
 /**
  * Table
  */
-
 export * from './data'
 export * from './head'
 export * from './loading'

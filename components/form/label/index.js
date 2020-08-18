@@ -27,10 +27,10 @@ const StyledLabelText = styled.div`
 `
 
 FormLabel.propTypes = {
-  children: node.isRequired,
+  children: node,
   id: string,
-  show: bool,
-  text: string
+  label: string,
+  show: bool
 }
 
 FormLabel.defaultProps = {

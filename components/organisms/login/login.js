@@ -21,7 +21,7 @@ import {
   Link,
   PageHeading,
   UserContext
-} from '../../../'
+} from '../../'
 
 // Style
 import styled from 'styled-components'
@@ -30,6 +30,7 @@ export const Login = ({
   blockSubmitButton,
   forgotPassword,
   heading,
+  submit,
   pathForgot,
   pathSignUp,
   remember,
@@ -39,14 +40,18 @@ export const Login = ({
   submitLoading,
   submitResult
 }) => {
-  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
+  const { errors, formState, register, handleSubmit } = useForm({ mode: 'onChange' })
   const [showPass, setShowPass] = useState(false)
   const [error, setError] = useState(false)
   const { signIn } = useContext(UserContext)
 
-  const submit = data => {
-    const { email, password } = data
-    signIn('email', email, password, error => error && setError(error))
+  const onSubmit = data => {
+    if (!submit) {
+      const { email, password } = data
+      signIn('email', email, password, error => error && setError(error))
+    } else {
+      submit()
+    }
   }
 
   // let CHECKBOX_REMEMBER = null
@@ -69,7 +74,7 @@ export const Login = ({
 
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <FormForm handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Email'>
           <FormField
             autoFocus
