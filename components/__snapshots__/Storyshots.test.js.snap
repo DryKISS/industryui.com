@@ -4400,7 +4400,7 @@ exports[`Storyshots Organisms/Messaging/Container Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Organisms/Messaging/Message Main 1`] = `
+exports[`Storyshots Organisms/Messaging/List Main 1`] = `
 @media (min-width:62em) {
 
 }
@@ -4416,7 +4416,7 @@ exports[`Storyshots Organisms/Messaging/Message Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Organisms/Messaging/MessageList Main 1`] = `
+exports[`Storyshots Organisms/Messaging/Message Main 1`] = `
 @media (min-width:62em) {
 
 }
