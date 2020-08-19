@@ -7,7 +7,7 @@ import React, { useState, useRef } from 'react'
 import { number, func, array } from 'prop-types'
 
 // UI
-import { Button, EmojiMart, Form, Icon, Textarea, Dropdown } from '../../../../'
+import { Button, EmojiMart, Form, Icon, Textarea, Dropdown } from '../../../'
 
 // Style
 import styled from 'styled-components'

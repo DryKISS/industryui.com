@@ -8,7 +8,7 @@ import { arrayOf, bool, number, oneOfType, string, object } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const FormField = ({ errors, register, required, validate, ...props }) => {
+export const FormField = ({ errors, register, validate, ...props }) => {
   return (
     <>
       <StyledInput
@@ -17,7 +17,6 @@ export const FormField = ({ errors, register, required, validate, ...props }) =>
         key={props.name}
         name={props.id}
         ref={register({
-          required: required,
           pattern: props.regExp ? new RegExp(props.regExp) : null,
           validate: validate,
           ...(props.max ? { max: props.max } : null),
@@ -88,7 +87,6 @@ FormField.propTypes = {
   label: string,
   placeholder: string,
   readOnly: bool,
-  required: oneOfType([bool, string]),
   style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
@@ -99,7 +97,6 @@ FormField.defaultProps = {
   autoFocus: false,
   disabled: false,
   errors: {},
-  required: true,
   readOnly: false,
   type: 'text'
 }

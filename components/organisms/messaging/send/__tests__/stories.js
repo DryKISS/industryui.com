@@ -24,7 +24,7 @@ export default {
   }
 }
 
-const Send = () => {
+const BaseComponent = () => {
   const initialState = { message: '' }
 
   const { change, form, setForm } = useForm(initialState)
@@ -41,4 +41,4 @@ const Send = () => {
   )
 }
 
-export const main = () => <Send />
+export const main = () => <BaseComponent />

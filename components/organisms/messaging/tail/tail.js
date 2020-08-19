@@ -1,5 +1,5 @@
 /**
- * MessageTail
+ * Messaging/Tail
  */
 
 // React

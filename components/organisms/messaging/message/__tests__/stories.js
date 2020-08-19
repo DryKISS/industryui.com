@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Message } from '../'
+import { Message } from 'components'
 import Readme from '../README.md'
 
 // Data
