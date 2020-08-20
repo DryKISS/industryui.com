@@ -3104,6 +3104,22 @@ exports[`Storyshots Molecules/Intercom Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/LanguageSwitcher Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Map/DynamicLocation Main 1`] = `
 @media (min-width:62em) {
 
