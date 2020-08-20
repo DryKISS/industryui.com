@@ -105,8 +105,10 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "^9.3.5",
+    "react": "^16.13.1",
     "react-big-calendar": "^0.26.0",
     "react-datepicker": "^3.0.0",
+    "react-dom": "^16.13.1",
     "react-dropzone": "^10.2.2",
     "react-dropzone-uploader": "^2.11.0",
     "react-google-maps": "^9.4.5",
@@ -126,13 +128,13 @@
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^8.1.0",
-    "@storybook/addon-a11y": "^5.3.18",
-    "@storybook/addon-actions": "^5.3.18",
-    "@storybook/addon-docs": "^5.3.18",
-    "@storybook/addon-info": "^5.3.18",
-    "@storybook/addon-knobs": "^5.3.18",
-    "@storybook/addon-notes": "^5.3.18",
-    "@storybook/addon-storyshots": "^5.3.19",
+    "@storybook/addon-a11y": "^6.0.13",
+    "@storybook/addon-actions": "^6.0.13",
+    "@storybook/addon-docs": "^6.0.13",
+    "@storybook/addon-info": "^5.3.19",
+    "@storybook/addon-knobs": "^6.0.13",
+    "@storybook/addon-notes": "^5.3.19",
+    "@storybook/addon-storyshots": "^6.0.13",
     "@storybook/react": "^5.3.18",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
@@ -160,10 +162,5 @@
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1"
-  },
-  "peerDependencies": {
-    "react": "^16.*",
-    "react-dom": "^16.*",
-    "styled-components": "^5.*"
   }
 }
