@@ -24,6 +24,7 @@ import {
   ConfigProvider,
   NotificationsProvider,
   OffCanvasProvider,
+  LocalizationProvider,
   PageProgressBar,
   Theme,
   ThemeStyle,
@@ -68,6 +69,7 @@ export class MyApp extends App {
     return (
       <>
         <ThemeStyle />
+        <LocalizationProvider.Consumer>{values => console.lo}</LocalizationProvider.Consumer>
 
         {user && (
           <UserProvider>

@@ -14,6 +14,7 @@ import { action } from '@storybook/addon-actions'
 
 // Next
 import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 // UI
 import { Container } from 'decorators'
@@ -35,12 +36,15 @@ const actionWithPromise = () => {
 }
 
 const mockedRouter = {
-  push: actionWithPromise,
-  replace: actionWithPromise,
-  prefetch: () => {}
+  push: () => {},
+  prefetch: () => new Promise((resolve, reject) => {}),
+  asPath: '',
+  pathName: '',
+  query: 'query.com/es'
 }
 
 Router.router = mockedRouter
+//Router.query = 'query.com/en'
 
 addDecorator(
   withInfo({

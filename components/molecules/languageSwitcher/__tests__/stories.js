@@ -3,13 +3,16 @@
  */
 
 // React
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Storybook
 import { Wrapper } from 'decorators'
 
 // UI
 import { LanguageSwitcher } from '../components/languageSwitcher'
+// import TextLanguage from '../components/textLanguage'
+
+import { LocalizationContext } from '../../../services/localization'
 import Readme from '../README.md'
 
 export default {
@@ -23,4 +26,13 @@ export default {
   }
 }
 
-export const main = () => <LanguageSwitcher />
+export const main = () => {
+  const context = useContext(LocalizationContext)
+  console.log('location use context ', context)
+
+  return (
+    <>
+      <LanguageSwitcher />
+    </>
+  )
+}
