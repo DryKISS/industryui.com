@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from 'react'
 import { array, bool, func, string, object } from 'prop-types'
 
+// Style
 import styled from 'styled-components'
 
 // UI
@@ -28,7 +29,7 @@ export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, o
     const selected = options.find(o => o.value === parseInt(option)) || null
     setItem(selected)
     itemChange && itemChange(selected)
-    setCoordinates(null)
+    setCoordinates(coordinates)
   }, [option])
 
   useEffect(() => {

@@ -3,19 +3,20 @@
  */
 
 // React
+import React, { useContext, useState, useEffect } from 'react'
 import { any, bool, func, string } from 'prop-types'
 
 // UI
 import {
+  Alert,
   Button,
-  CheckboxField,
-  Column,
+  Checkbox,
   DatePickerInput,
   Form,
-  FormField,
   FormLabel,
+  FormField,
   Link,
-  Row,
+  UserContext,
   useForm
 } from '../../'
 
@@ -24,28 +25,71 @@ import styled from 'styled-components'
 
 export const Register = ({
   birthday,
+  change,
   dayBirthday,
   email,
+  errorSubmit,
   monthBirthday,
   marketing,
   nameFirst,
   nameLast,
   pathLogin,
   password,
+  repeatPassword,
+  showPlaceholder,
   submit,
   terms,
   yearBirthday
 }) => {
-  const { errors, register } = useForm()
   const renderBirthday = () => (
     <>
-      <DatePickerInput register={register} errors={errors} name='Birthday' label='Birthdate' />
-      <p>To sign up, you must be 18 or older. Other users will not see this.</p>
+      <DatePickerInput
+        change={change}
+        day={dayBirthday}
+        id='Birthday'
+        label='Birthdate'
+        month={monthBirthday}
+        year={yearBirthday}
+      />
+      To sign up, you must be 18 or older. Other users will not see this.
     </>
   )
 
-  // const isInvalid = password === '' || email === ''
-  const isInvalid = false
+  const { registerContext } = useContext(UserContext)
+  const { errors, register, formState, handleSubmit } = useForm({ mode: 'onChange' })
+
+  const [error, setError] = useState(errorSubmit)
+  const [passwordError, setPasswordError] = useState()
+
+  // TODO: Refactorize this into utils
+  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  useEffect(() => {
+    setError(errorSubmit)
+    return () => {
+      setError()
+    }
+  }, [errorSubmit])
+
+  const onSubmit = e => {
+    // We get the check of password and repeatpassword from backend? or if not we can manage it here too
+    setPasswordError()
+    if (e.password !== e.repeatPassword) {
+      setPasswordError(new Error('Password and repeat password are different'))
+    } else if (!submit) {
+      registerContext(
+        nameFirst,
+        nameLast,
+        email,
+        password,
+        marketing,
+        birthday,
+        error => error && setError(error)
+      )
+    } else {
+      submit()
+    }
+  }
 
   const CHECKBOX_TERMS = [
     {
@@ -60,40 +104,74 @@ export const Register = ({
     }
   ]
 
-  return (
-    <Form handleSubmit={() => {}}>
-      <Row>
-        <Column md={6}>
-          <FormLabel label='First name'>
-            <FormField name='nameFirst' register={register} errors={errors} />
-          </FormLabel>
-        </Column>
+  const defaultOptions = {
+    errors: errors,
+    register: register
+  }
 
-        <Column md={6}>
-          <FormLabel label='Last name'>
-            <FormField name='nameLast' register={register} errors={errors} />
-          </FormLabel>
-        </Column>
-      </Row>
+  return (
+    <Form handleSubmit={handleSubmit(onSubmit)}>
+      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+
+      <FormLabel label='First name'>
+        <FormField
+          {...defaultOptions}
+          autoFocus
+          name='nameFirst'
+          placeholder={showPlaceholder ? 'Tommy' : ''}
+        />
+      </FormLabel>
+
+      <FormLabel label='Last name'>
+        <FormField
+          {...defaultOptions}
+          name='nameLast'
+          placeholder={showPlaceholder ? 'Ryder' : ''}
+        />
+      </FormLabel>
 
       <FormLabel label='Email'>
-        <FormField name='email' register={register} errors={errors} type='email' />
+        <FormField
+          {...defaultOptions}
+          autoFocus
+          name='email'
+          placeholder={showPlaceholder ? 'Email' : ''}
+          regExp={pattern}
+        />
       </FormLabel>
 
       <FormLabel label='Password'>
-        <FormField name='password' register={register} errors={errors} type='password' />
+        <FormField
+          {...defaultOptions}
+          name='password'
+          placeholder={showPlaceholder ? 'Password' : ''}
+          type='password'
+        />
+      </FormLabel>
+
+      <FormLabel label='Repeat Password'>
+        <FormField
+          {...defaultOptions}
+          name='repeatPassword'
+          placeholder={showPlaceholder ? 'Password' : ''}
+          type='password'
+        />
       </FormLabel>
 
       {birthday && renderBirthday()}
 
-      <CheckboxField data={CHECKBOX_TERMS} register={register} errors={errors} stacked />
+      {passwordError && (
+        <Alert content={passwordError.message} context='warning' style={{ color: '#fff' }} />
+      )}
+
+      <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
 
       <Button
         align='right'
         content='Sign up'
         context='primary'
-        disabled={isInvalid}
         size='lg'
+        disabled={!formState.isValid}
         type='submit'
       />
 
@@ -127,5 +205,5 @@ Register.propTypes = {
 
 Register.defaultProps = {
   birthday: false,
-  pathLogin: '/account/sign-in'
+  pathLogin: '/account/login'
 }

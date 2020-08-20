@@ -14,7 +14,7 @@ import { Button, Form, FormLabel, ReactSelectField, useForm, usePrevious } from 
 import Readme from '../README.md'
 
 // Data
-import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__'
+import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
 
 export default {
   title: 'Form/ReactSelect',
@@ -129,7 +129,6 @@ export const chained = () => {
     if (watchCustomer !== prevCustomer) {
       // Debug
       // console.log('Changed Customer', prevCustomer, watchCustomer)
-      // console.log('Changed User', prevUser, watchUser)
 
       if (watchCustomer === null) {
         setUsers(null)

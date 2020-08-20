@@ -68,7 +68,7 @@ export const formatDateStandard = (date, showTime = false) => {
   if (month.length < 2) month = '0' + month
   if (day.length < 2) day = '0' + day
 
-  let formattedDate = [year, month, day].join('-')
+  const formattedDate = [year, month, day].join('-')
 
   if (showTime) {
     return formattedDate + ' ' + formatTime(date)

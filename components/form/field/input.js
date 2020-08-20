@@ -23,8 +23,8 @@ export const FormField = ({
 }) => {
   return (
     <FieldHOC
-      component={StyledInput}
       aria-label={name}
+      component={StyledInput}
       disabled={disabled}
       errors={errors[name]}
       register={register}
@@ -99,11 +99,12 @@ FormField.propTypes = {
   autoComplete: oneOfType([bool, string]),
   autoFocus: bool,
   disabled: bool,
+  error: func.isRequired,
   label: string,
   name: string.isRequired,
   placeholder: string,
   readOnly: bool,
-  register: func,
+  register: func.isRequired,
   style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
@@ -113,8 +114,6 @@ FormField.defaultProps = {
   autoComplete: 'off',
   autoFocus: false,
   disabled: false,
-  errors: {},
   readOnly: false,
-  register: () => {},
   type: 'text'
 }

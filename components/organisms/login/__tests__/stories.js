@@ -3,14 +3,14 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
+import { select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Login } from '../../../'
+import { Alert, Login, requestSimulator, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -25,6 +25,17 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
+  const [loggedToast, setLoggedToast] = useState(false)
+  const submit = e => {
+    requestSimulator().then(res => {
+      setLoggedToast(true)
+
+      setTimeout(() => {
+        setLoggedToast(false)
+      }, 1500)
+    })
+  }
+
   const defaultProps = {
     blockSubmitButton: true,
     forgotPassword: true,
@@ -36,10 +47,16 @@ const BaseComponent = (props = {}) => {
     showPassword: true,
     showPlaceholder: true,
     submitLoading: true,
+    submit: submit,
     ...props
   }
 
-  return <Login {...defaultProps} />
+  return (
+    <>
+      {loggedToast && <Alert content='logged' context='success' style={{ color: '#fff' }} />}
+      <Login {...defaultProps} />
+    </>
+  )
 }
 
 export const main = () => {
@@ -55,3 +72,49 @@ export const withBlockSubmitButton = () => {
 }
 
 export const withPlaceholder = () => <Login showLabel={false} showPlaceholder />
+
+export const withHttpRequest = () => {
+  const { change, form } = useForm({ email: '', password: '' })
+  const [loading, setLoading] = useState(false)
+  const [result, setResult] = useState({
+    type: '',
+    message: ''
+  })
+
+  const label = 'Response Type'
+  const options = ['success', 'failure']
+  const defaultValue = 'failure'
+  const groupId = 'GROUP-ID1'
+  const value = select(label, options, defaultValue, groupId)
+
+  const submit = e => {
+    e.preventDefault()
+    setLoading(true)
+    requestSimulator(value)
+      .then(res => {
+        console.log('response', res)
+        setResult({
+          type: 'success',
+          message: res.message
+        })
+      })
+      .catch(e => {
+        console.log('error ', e)
+        setResult({
+          type: 'danger',
+          message: e.message
+        })
+      })
+      .finally(() => setLoading(false))
+  }
+  return (
+    <Login
+      change={change}
+      email={form.email}
+      submit={submit}
+      password={form.password}
+      submitResult={result}
+      submitLoading={loading}
+    />
+  )
+}

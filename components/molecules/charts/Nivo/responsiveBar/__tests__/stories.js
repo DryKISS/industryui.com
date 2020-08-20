@@ -27,7 +27,7 @@ import {
   keyToIndexBy,
   keyToIndexBy2,
   keyToIndexBy3
-} from '../__mocks__/data'
+} from '../__mocks__/nivoResponsive'
 
 // Styled Components
 import styled from 'styled-components'

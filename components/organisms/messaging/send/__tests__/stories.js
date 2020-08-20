@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { MessagingSend } from 'components'
+import { MessagingSend, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -24,8 +24,21 @@ export default {
   }
 }
 
-const Send = () => {
-  return <MessagingSend onSubmit={action('Submit')} maxLength={320} />
+const BaseComponent = () => {
+  const initialState = { message: '' }
+
+  const { change, form, setForm } = useForm(initialState)
+  const { message } = form
+
+  return (
+    <MessagingSend
+      handleChange={change}
+      handleSelect={msg => setForm({ message: message + msg })}
+      onSubmit={action('Submit')}
+      maxLength={320}
+      message={message}
+    />
+  )
 }
 
-export const main = () => <Send />
+export const main = () => <BaseComponent />
