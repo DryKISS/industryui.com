@@ -1,13 +1,12 @@
 /**
- * Messaging - Message
+ * Messaging/Message
  */
 
 // React
 import { object, string } from 'prop-types'
 
 // UI
-import { Row, Column } from '../../../../'
-import { MessageBase, Tail } from '../../'
+import { Column, MessageBase, Row, Tail } from '../../../'
 
 export const Message = ({ message, prevType, type, ...props }) => {
   return (

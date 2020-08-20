@@ -1,13 +1,12 @@
 /**
- * Messaging
- * Sets up a container for a user to view incoming and outgoing communications.
+ * Messaging/Container
  */
 
 // React
 import { array, object, string, func, number } from 'prop-types'
 
 // UI
-import { MessageList, MessagingSearch, MessagingSend } from '../../'
+import { MessageList, MessagingSearch, MessagingSend } from '../../../'
 
 // Style
 import styled from 'styled-components'

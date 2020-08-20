@@ -1,5 +1,5 @@
 /**
- * Messaging - Components - Background
+ * Messaging/Background
  */
 
 // React
@@ -8,17 +8,13 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const MessageBackground = ({ path }) => {
-  return <StyledBackground path={path} />
-}
-
-const StyledBackground = styled.div`
-  background-image: url(${props => props.path});
+export const MessageBackground = styled.div`
+  background-image: url(${({ path }) => path});
+  height: 100%;
+  opacity: 0.6;
   position: absolute;
   top: 0;
-  height: 100%;
   width: 100%;
-  opacity: 0.6;
 `
 
 MessageBackground.propTypes = {

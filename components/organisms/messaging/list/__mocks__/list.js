@@ -1,5 +1,5 @@
 /**
- * Messages data
+ * Messaging/List
  */
 export const messages = [
   {

@@ -1,5 +1,5 @@
 /**
- * Messaging/Message/Icon
+ * Messaging/Base/Icon
  */
 
 // React

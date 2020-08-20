@@ -1,5 +1,5 @@
 /**
- * Messaging/Message/To
+ * Messaging/Base/To
  */
 
 // React
