@@ -14,7 +14,6 @@ import { action } from '@storybook/addon-actions'
 
 // Next
 import Router from 'next/router'
-import { useRouter } from 'next/router'
 
 // UI
 import { Container } from 'decorators'

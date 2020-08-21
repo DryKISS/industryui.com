@@ -29,8 +29,9 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const { control, errors, handleSubmit } = useForm()
+
   const onSubmit = data => {
-    console.log('data: ', data)
+    console.info('data: ', data)
   }
 
   const defaultProps = {

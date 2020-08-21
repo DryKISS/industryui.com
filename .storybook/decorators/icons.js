@@ -3,33 +3,30 @@
  */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-// Free Solid
+// Free Solid / FAS
 import {
-  // UI & Knobs
-  faBell as fasBell,
-  faCloud as fasCloud,
-  faCopy as fasCopy,
-  faCopyright as fasCopyright,
-  faEllipsisH as fasEllipsisH,
-  faFlag as fasFlag,
-  faImages as fasImages,
-  faGraduationCap as fasGraduationCap,
-  faSearch,
-  faShieldAlt as fasShieldAlt,
-  faSmile as fasSmile,
-  faTrash as fasTrash,
-  faUserCircle as fasUserCircle,
-
-  // UI
+  faBell,
   faCaretDown,
   faCaretUp,
   faCircle,
-  faEnvelope as fasEnvelope
+  faCloud,
+  faCopy as fasCopy,
+  faCopyright,
+  faEllipsisH,
+  faEnvelope,
+  faFlag,
+  faImages as fasImages,
+  faGraduationCap,
+  faSearch,
+  faShieldAlt,
+  faSmile as fasSmile,
+  faTrash,
+  faUserCircle as fasUserCircle,
+  faUser
 } from '@fortawesome/free-solid-svg-icons'
 
-// Free Regular
+// Free Regular / FAR
 import {
-  // UI & Knobs
   faCopy as farCopy,
   faCopyright as farCopyright,
   faImages as farImages,
@@ -37,50 +34,40 @@ import {
   faUserCircle as farUserCircle
 } from '@fortawesome/free-regular-svg-icons'
 
-// Free Brands
-import {
-  // UI & Knobs
-  faGit as fabGit,
-  faGithub as fabGithub,
-  faLinkedin as fabLinkedin,
+// Free Brands / FAB
+import { faGit, faGithub, faLinkedin, faCodepen } from '@fortawesome/free-brands-svg-icons'
 
-  // UI
-  faCodepen as fabCodepen
-} from '@fortawesome/free-brands-svg-icons'
-
-// Icons
 library.add(
-  // UI & Knobs
-  fasCopy,
-  farCopy,
-  fasCopyright,
-  farCopyright,
-  fasImages,
-  farImages,
-  fasSmile,
-  farSmile,
-  fasUserCircle,
-  farUserCircle,
-  fasGraduationCap,
-  fasFlag,
-  fasEllipsisH,
-  fasCloud,
-  faSearch,
-  fasShieldAlt,
-  fasTrash,
-  fasBell,
-
-  // UI
+  // Icons
+  faBell,
   faCaretDown,
   faCaretUp,
   faCircle,
-  fasEnvelope,
+  farCopy,
+  fasCopy,
+  faCopyright,
+  faCopyright,
+  faEnvelope,
+  farImages,
+  fasImages,
+  fasSmile,
+  farSmile,
+  farUserCircle,
+  fasUserCircle,
+  faGraduationCap,
+  faFlag,
+  faEllipsisH,
+  faCloud,
+  faSearch,
+  faShieldAlt,
+  faTrash,
+  faUser,
 
   // Brands
-  fabGit,
-  fabCodepen,
-  fabGithub,
-  fabLinkedin
+  faGit,
+  faCodepen,
+  faGithub,
+  faLinkedin
 )
 
 export { library }

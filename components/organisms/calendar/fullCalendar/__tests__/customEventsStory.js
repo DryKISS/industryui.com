@@ -27,10 +27,9 @@ export const CustomEventsStory = () => {
     showError: true,
     required: false
   }
+
   // Pending add the tooltip
   const onSubmit = data => {
-    console.log('event added ', data)
-
     const fullEvent = {
       id: 'ID',
       allDay: !!data.allDay,
@@ -48,6 +47,7 @@ export const CustomEventsStory = () => {
         assetType: data.assetType
       }
     }
+
     setEvents([...events, fullEvent])
     closeOffCanvas()
   }
