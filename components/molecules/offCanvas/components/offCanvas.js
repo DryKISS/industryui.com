@@ -13,7 +13,9 @@ import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } fro
 export const OffCanvasComponent = ({
   closeOnOverlayClick,
   context,
+  variant,
   children,
+  hasAvatar,
   headerText,
   height,
   overlay,
@@ -57,7 +59,9 @@ export const OffCanvasComponent = ({
         width={width}
       >
         <OffCanvasHeader
+          hasAvatar={hasAvatar}
           context={context}
+          variant={variant}
           data-cy='offCanvasHeader'
           onClose={e => toggleShow(false)}
           title={headerText}
@@ -90,5 +94,6 @@ OffCanvasComponent.defaultProps = {
   overlayOpacity: 0.3,
   placement: 'right',
   transitionDuration: 300,
-  width: '30vw'
+  width: '30vw',
+  hasAvatar: false
 }

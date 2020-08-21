@@ -7,9 +7,10 @@ export const COLOUR = {
 
   active: 'rgb(204 ,0, 0)',
   visited: 'rgb(180, 14, 180)',
-
   white: 'rgb(255, 255, 255)',
   black: 'rgb(0, 0, 0)',
+  grey: 'rgb(235, 235, 235)',
+  darkGrey: 'rgb(204, 204, 204)',
 
   dark: 'rgb(92, 111, 127)',
   light: 'rgb(236, 240, 243)',

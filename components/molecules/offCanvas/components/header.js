@@ -10,56 +10,95 @@ import { Button, CONTEXT, Column, Divider, Row, Text } from '../../../'
 
 // Style
 import styled from 'styled-components'
+import { transparentize } from 'polished'
 
-export const OffCanvasHeader = ({ onClose, title, ...props }) => (
-  <StyledHeader {...props}>
-    <Row align='center' justify='between'>
-      <Column md={6}>
-        <StyledTitle content={title} />
-      </Column>
+export const OffCanvasHeader = ({ onClose, title, ...props }) => {
+  return (
+    <StyledHeader {...props}>
+      <Row align='center' justify='between'>
+        <Column md={6}>
+          <StyledTitle {...props} content={title} />
+        </Column>
+        <Column md={6}>
+          <ButtonsContainer>
+            <StyledButton
+              variant={props.variant}
+              context={props.context}
+              content='Submit'
+              size='sm'
+              outline={props.variant !== 'normal'}
+            />
 
-      <Column md={6}>
-        <ButtonsContainer>
-          <Button content='Submit' size='sm' />
+            <Divider flexItem size='sm' vertical />
 
-          <Divider flexItem size='sm' vertical />
-
-          <Button
-            context='light'
-            startIcon='times'
-            startIconProps={{ context: 'dark', size: 'lg' }}
-            size='sm'
-          />
-        </ButtonsContainer>
-      </Column>
-    </Row>
-
-    <Text
-      content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
-      mt={4}
-    />
-  </StyledHeader>
-)
-
+            <StyledButton
+              {...props}
+              context='darkGrey'
+              startIcon='times'
+              startIconProps={{
+                context: props.variant !== 'normal' ? props.context : 'white',
+                size: 'lg'
+              }}
+              size='sm'
+            />
+          </ButtonsContainer>
+        </Column>
+      </Row>
+      <StyledBodyContainer>
+        {props.hasAvatar && <StyledAvatarContainer>Picture</StyledAvatarContainer>}
+        <StyledText
+          {...props}
+          content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+        />
+      </StyledBodyContainer>
+    </StyledHeader>
+  )
+}
 const StyledHeader = styled.div`
-  background-color: #fff;
+  background-color: ${({ context, theme, variant }) =>
+    variant === 'normal' ? '#fff' : transparentize(0.3, theme.COLOUR[context])};
+
   /* background-image: linear-gradient(-303deg, #00a4bd, #00afb2 56%, #00bda5); */
   color: ${({ theme: { COLOUR } }) => COLOUR.black};
   letter-spacing: 0.5px;
-  padding: 32px 24px;
-  border-top: 8px solid ${({ context, theme }) => theme.COLOUR[context]};
+  padding: 32px 24.5px;
+  border-top: 8px solid
+    ${({ context, theme }) => (context !== 'primary' ? theme.COLOUR[context] : 'transparent')};
 
   ${({ shadow }) => shadow && 'box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.11);'}
 `
-
 const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
 `
+const StyledBodyContainer = styled.div`
+  display: flex;
+  flex: 1;
+  margin-top: 22px;
+`
+const StyledAvatarContainer = styled.div`
+  display: flex;
+  flex: 1;
+  margin-right: 24.5px;
+  background-color: ${({ theme: { COLOUR } }) => COLOUR.grey};
+`
 
 export const StyledTitle = styled(Text)`
   font-size: 20px;
+  color: ${({ context, theme: { COLOUR }, variant }) =>
+    variant === 'normal' ? COLOUR.black : COLOUR.white};
+`
+const StyledButton = styled(Button)`
+  background-color: ${({ context, theme: { COLOUR }, variant }) =>
+    variant === 'normal' ? COLOUR[context] : COLOUR.grey};
+  border-style: none;
+`
+
+const StyledText = styled(Text)`
+  color: ${({ context, theme, variant }) =>
+    variant === 'normal' ? theme.COLOUR.black : theme.COLOUR.white};
+  width: '100%';
 `
 
 OffCanvasHeader.propTypes = {

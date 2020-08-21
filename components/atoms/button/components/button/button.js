@@ -53,6 +53,7 @@ export const Button = forwardRef(
 const getTextContext = (context, outline, theme) => {
   if (context === 'white') return 'primary'
   if (outline) return context
+
   return 'white'
 }
 

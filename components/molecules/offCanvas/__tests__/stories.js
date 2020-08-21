@@ -31,7 +31,12 @@ const BaseComponent = props => {
   })
 
   const defaultProps = {
-    context: Context('', 'secondary'),
+    variant: select('Variant', {
+      Normal: 'normal',
+      Extended: 'extended'
+    }),
+    hasAvatar: boolean('Avatar', false),
+    context: Context('', 'primary'),
     headerText: text('Header', 'Homyze'),
     placement: select(
       'Placement',
