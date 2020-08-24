@@ -64,6 +64,10 @@ const storyHOC = Component => {
   return () => {
     const [isChecked, toggleCheck] = useState(true)
     const contextKnob = Context()
+    const variant = select('Variant', {
+      Normal: 'normal',
+      Extended: 'extended'
+    })
     const textKnob = text('Header', 'Homyze')
     const widthKnob = number('Width (%)', 25, {
       range: true,
@@ -71,6 +75,7 @@ const storyHOC = Component => {
       max: 100,
       step: 1
     })
+
     const placementKnob = select(
       'Placement',
       {
@@ -98,6 +103,7 @@ const storyHOC = Component => {
           placement={placementKnob}
           toggleCheck={toggleCheck}
           width={widthKnob + '%'}
+          variant={variant}
         />
       </>
     )
@@ -105,7 +111,7 @@ const storyHOC = Component => {
 }
 
 export const withOverlay = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
+  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width, variant }) => {
     const opacityKnob = number('Overlay Opacity', 0.3, {
       range: true,
       min: 0.1,
@@ -123,6 +129,7 @@ export const withOverlay = storyHOC(
           show={isChecked}
           toggleShow={toggleCheck}
           width={width}
+          variant={variant}
         >
           Components go here
         </OffCanvas>
@@ -132,7 +139,7 @@ export const withOverlay = storyHOC(
 )
 
 export const withMailForm = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
+  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width, variant }) => {
     return (
       <>
         <OffCanvas
@@ -142,6 +149,7 @@ export const withMailForm = storyHOC(
           show={isChecked}
           toggleShow={toggleCheck}
           width={width}
+          variant={variant}
         >
           <Form submit={() => {}}>
             <Input
@@ -168,7 +176,7 @@ export const withMailForm = storyHOC(
 )
 
 export const withDynamicContent = storyHOC(
-  ({ contextKnob, isChecked, placement, toggleCheck, width }) => {
+  ({ contextKnob, isChecked, placement, toggleCheck, width, variant }) => {
     const [previewIndex, changePreview] = useState(1)
     const previews = {
       1: {
@@ -230,6 +238,7 @@ export const withDynamicContent = storyHOC(
           show={isChecked}
           toggleShow={toggleCheck}
           width={width}
+          variant={variant}
         >
           {previews[previewIndex].component()}
         </OffCanvas>
