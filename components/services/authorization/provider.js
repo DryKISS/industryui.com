@@ -9,7 +9,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Router, { useRouter } from 'next/router'
 
 // UI
-import { AuthorizationContext, ConfigContext, UserContext } from '../../../'
+import { AuthorizationContext, ConfigContext, UserContext } from '../../'
 
 export const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)

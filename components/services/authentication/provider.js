@@ -18,7 +18,7 @@ import Router from 'next/router'
 import axios from 'axios'
 
 // UI
-import { ConfigContext, decodeToken, UserContext, validateToken } from '../../../'
+import { ConfigContext, decodeToken, UserContext, validateToken } from '../../'
 
 export const UserProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null)

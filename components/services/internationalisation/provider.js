@@ -9,7 +9,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // UI
-import { ConfigContext, InternationalisationContext, isLocale, useLocalStorage } from '../../../'
+import { ConfigContext, InternationalisationContext, isLocale, useLocalStorage } from '../../'
 
 export const InternationalisationProvider = ({ locale, children }) => {
   const { locales } = useContext(ConfigContext)
