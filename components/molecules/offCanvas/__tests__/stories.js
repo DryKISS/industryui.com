@@ -41,6 +41,7 @@ const BaseComponent = props => {
     hasAvatar: boolean('Avatar', false),
     context: Context('', 'primary'),
     headerText: text('Header', 'Homyze'),
+    headerContent: text('headerContent', 'This is the header content example'),
     placement: select(
       'Placement',
       {
@@ -68,8 +69,9 @@ const storyHOC = Component => {
       Normal: 'normal',
       Extended: 'extended'
     })
+    const headerContent = text('headerContent', 'This is the header content example')
     const textKnob = text('Header', 'Homyze')
-    const widthKnob = number('Width (%)', 25, {
+    const widthKnob = number('Width (%)', 50, {
       range: true,
       min: 1,
       max: 100,
@@ -100,6 +102,7 @@ const storyHOC = Component => {
           contextKnob={contextKnob}
           isChecked={isChecked}
           headerText={textKnob}
+          headerContent={headerContent}
           placement={placementKnob}
           toggleCheck={toggleCheck}
           width={widthKnob + '%'}
@@ -111,7 +114,16 @@ const storyHOC = Component => {
 }
 
 export const withOverlay = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width, variant }) => {
+  ({
+    contextKnob,
+    headerText,
+    isChecked,
+    placement,
+    toggleCheck,
+    width,
+    variant,
+    headerContent
+  }) => {
     const opacityKnob = number('Overlay Opacity', 0.3, {
       range: true,
       min: 0.1,
@@ -123,6 +135,7 @@ export const withOverlay = storyHOC(
         <OffCanvas
           context={contextKnob}
           headerText={headerText}
+          headerContent={headerContent}
           overlay
           overlayOpacity={opacityKnob}
           placement={placement}
@@ -139,7 +152,16 @@ export const withOverlay = storyHOC(
 )
 
 export const withMailForm = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width, variant }) => {
+  ({
+    contextKnob,
+    headerText,
+    isChecked,
+    placement,
+    toggleCheck,
+    width,
+    variant,
+    headerContent
+  }) => {
     return (
       <>
         <OffCanvas
@@ -150,6 +172,7 @@ export const withMailForm = storyHOC(
           toggleShow={toggleCheck}
           width={width}
           variant={variant}
+          headerContent={headerContent}
         >
           <Form submit={() => {}}>
             <Input
@@ -176,7 +199,7 @@ export const withMailForm = storyHOC(
 )
 
 export const withDynamicContent = storyHOC(
-  ({ contextKnob, isChecked, placement, toggleCheck, width, variant }) => {
+  ({ contextKnob, isChecked, placement, toggleCheck, width, variant, headerContent }) => {
     const [previewIndex, changePreview] = useState(1)
     const previews = {
       1: {
@@ -239,6 +262,7 @@ export const withDynamicContent = storyHOC(
           toggleShow={toggleCheck}
           width={width}
           variant={variant}
+          headerContent={headerContent}
         >
           {previews[previewIndex].component()}
         </OffCanvas>
