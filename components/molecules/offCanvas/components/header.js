@@ -6,7 +6,7 @@
 import { oneOf } from 'prop-types'
 
 // UI
-import { Button, CONTEXT, Column, Divider, Row, Text } from '../../../'
+import { Avatar, Button, CONTEXT, Column, Divider, Row, Text } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -45,7 +45,11 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
         </Column>
       </Row>
       <StyledBodyContainer>
-        {props.hasAvatar && <StyledAvatarContainer>Picture</StyledAvatarContainer>}
+        {props.hasAvatar && (
+          <StyledAvatarContainer context={props.context}>
+            <Avatar content='Avatar' context={props.context} size='lg' {...props} />
+          </StyledAvatarContainer>
+        )}
         <StyledText
           {...props}
           content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
@@ -74,14 +78,17 @@ const ButtonsContainer = styled.div`
 `
 const StyledBodyContainer = styled.div`
   display: flex;
-  flex: 1;
   margin-top: 22px;
 `
 const StyledAvatarContainer = styled.div`
   display: flex;
-  flex: 1;
+  min-width: 80px;
+  min-height: 80px;
   margin-right: 24.5px;
-  background-color: ${({ theme: { COLOUR } }) => COLOUR.grey};
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ context, theme }) => transparentize(0.7, theme.COLOUR[context])};
+  border-radius: 4px;
 `
 
 export const StyledTitle = styled(Text)`
@@ -98,7 +105,8 @@ const StyledButton = styled(Button)`
 const StyledText = styled(Text)`
   color: ${({ context, theme, variant }) =>
     variant === 'normal' ? theme.COLOUR.black : theme.COLOUR.white};
-  width: '100%';
+  display: flex;
+  align-items: center;
 `
 
 OffCanvasHeader.propTypes = {

@@ -3,6 +3,7 @@
  * Provides a list of the accepted colours
  */
 export const CONTEXT = {
+  DARKGREY: 'darkGrey',
   WHITE: 'white',
   BLACK: 'black',
   DARK: 'dark',
