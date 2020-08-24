@@ -1,6 +1,6 @@
 /**
- * Components
+ * Dropdown - Components
  */
 export * from './dropdown'
-export * from './dropdownMenu'
-export * from './dropdownItem'
+export * from './menu'
+export * from './item'

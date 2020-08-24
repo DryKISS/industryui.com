@@ -15,7 +15,7 @@ export class GeoCoder {
       if (warn) {
         console.warn(message)
       } else {
-        console.log(message)
+        console.info(message)
       }
     }
   }
@@ -34,11 +34,6 @@ export class GeoCoder {
     )
   }
 
-  /**
-   *
-   * @param {Object}
-   * @returns {Promise}
-   */
   async fromAddress ({ address, city = '' }) {
     if (!address) {
       this.log('Provided address is invalid', true)

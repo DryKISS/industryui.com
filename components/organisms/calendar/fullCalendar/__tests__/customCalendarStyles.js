@@ -28,12 +28,12 @@ export const CustomCalendarStyles = () => {
   }
 
   const onSubmit = data => {
-    console.log('data submitted ', data)
     const newCalendarStyles = {
       height: Number(data.height),
       eventColor: data.eventColor,
       weekends: data.weekends
     }
+
     setCalendarStyles(newCalendarStyles)
     setShowOffCanvas(false)
   }

@@ -15,9 +15,6 @@ export const Tab = ({ activeTab, childClick, context, disabled, label, onClick }
     childClick && childClick()
   }
 
-  // Debug
-  // console.log('Tabs Params', context)
-
   return (
     <StyledTab
       active={activeTab === label}

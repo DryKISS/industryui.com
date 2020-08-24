@@ -18,12 +18,11 @@ export const DropzoneUploader = ({ autoUpload, SubmitButtonComponent, url }) => 
 
   // Called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file)
+    console.info(status, meta, file)
   }
 
   // Receives array of files that are done uploading when submit button is clicked
   const handleSubmit = (files, allFiles) => {
-    console.log(files.map(f => f.meta))
     allFiles.forEach(f => f.remove())
   }
 

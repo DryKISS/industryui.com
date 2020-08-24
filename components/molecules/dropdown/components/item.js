@@ -1,11 +1,12 @@
 /**
- * Dropdown
+ * Dropdown - Item
  */
 
+// React
 import React from 'react'
-
 import { func, object, node } from 'prop-types'
 
+// Style
 import styled from 'styled-components'
 
 // UI
