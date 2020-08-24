@@ -1,7 +1,7 @@
 /**
  * Components
  */
-export * from './api'
+export * from './api/api'
 export * from './authentication'
 export * from './authorization'
 export * from './config'

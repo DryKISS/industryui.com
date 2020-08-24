@@ -22,11 +22,11 @@ export const Container = Story => {
       <ConfigProvider config={Config}>
         <ThemeStyle />
         <UserProvider>
-          <InternationalisationProvider locale='en'>
-            <div>
-              <Story />
-            </div>
-          </InternationalisationProvider>
+          {/* <InternationalisationProvider locale='en'> */}
+          <div>
+            <Story />
+          </div>
+          {/* </InternationalisationProvider> */}
         </UserProvider>
       </ConfigProvider>
     </ThemeProvider>
