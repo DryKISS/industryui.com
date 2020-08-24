@@ -26,7 +26,7 @@ export default {
 
 const BaseComponent = props => {
   const show = boolean('Show', true)
-  const widthKnob = number('Width (%)', 50, {
+  const widthKnob = number('Width (%)', 25, {
     range: true,
     min: 1,
     max: 100,
@@ -71,7 +71,7 @@ const storyHOC = Component => {
     })
     const headerContent = text('headerContent', 'This is the header content example')
     const textKnob = text('Header', 'Homyze')
-    const widthKnob = number('Width (%)', 50, {
+    const widthKnob = number('Width (%)', 25, {
       range: true,
       min: 1,
       max: 100,
