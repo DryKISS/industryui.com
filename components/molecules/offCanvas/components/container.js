@@ -19,7 +19,6 @@ export const OffCanvasDiv = styled.div`
   overflow-y: auto;
   position: fixed;
   transition: transform ${({ duration }) => duration}ms ease-in-out;
-  will-change: transform;
   z-index: 9999;
 
   /* Top Placement */
@@ -41,11 +40,7 @@ export const OffCanvasDiv = styled.div`
       height: 100vh;
       right: 0;
       top: 0;
-      transform: ${({ width, show }) => `translateX(${show ? 0 : '100%'})`};
-      width: 90%;
-      ${MEDIA_QUERY.desktop`
-        width: ${({ width }) => width};
-      `}
+      width: ${({ width }) => width};
     `}
 
   /* Bottom Placement */

@@ -175,6 +175,13 @@ export const withMailForm = storyHOC(
           headerContent={headerContent}
         >
           <Form submit={() => {}}>
+            <Input change={() => {}} label='Name' id='name' placeholder='Alfred' />
+            <Input change={() => {}} label='Surname' id='surname' placeholder='Lavanne' />
+            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
+            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
+            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
+            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
+
             <Input
               change={() => {}}
               label='Email'
@@ -182,8 +189,23 @@ export const withMailForm = storyHOC(
               placeholder='Enter email address'
               type='email'
             />
+            <Input
+              change={() => {}}
+              label='Password'
+              id='password'
+              placeholder='Enter your password'
+              type='password'
+            />
+            <Input
+              change={() => {}}
+              label='Repeat your Password'
+              id='repeatPassword'
+              placeholder='Enter your password'
+              type='password'
+            />
+
             <Button secondary type='submit'>
-              Send reset link
+              Go to next step
             </Button>
           </Form>
           <br />

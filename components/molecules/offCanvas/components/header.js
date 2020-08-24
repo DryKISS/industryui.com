@@ -57,10 +57,14 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
   )
 }
 const StyledHeader = styled.div`
+  position: fixed;
+  display: flex;
+  width: inherit;
+  flex-direction: column;
+  flex: 1;
   background-color: ${({ context, theme, variant }) =>
     variant === 'normal' ? '#fff' : transparentize(0.3, theme.COLOUR[context])};
 
-  /* background-image: linear-gradient(-303deg, #00a4bd, #00afb2 56%, #00bda5); */
   color: ${({ theme: { COLOUR } }) => COLOUR.black};
   letter-spacing: 0.5px;
   padding: 32px 24.5px;
