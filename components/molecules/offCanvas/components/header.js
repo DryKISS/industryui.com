@@ -39,6 +39,7 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
                 context: props.variant !== 'normal' ? props.context : 'white',
                 size: 'lg'
               }}
+              onClick={onClose}
               size='sm'
             />
           </ButtonsContainer>
