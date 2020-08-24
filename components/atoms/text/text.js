@@ -10,7 +10,6 @@ import { TextPropTypes, TextDefaultProps } from './props'
 import styled, { css } from 'styled-components'
 
 export const Text = ({ align, children, className, content, context, stroke, size, ...props }) => {
-  console.log('Text props ', props)
   return (
     <StyledText
       align={align}

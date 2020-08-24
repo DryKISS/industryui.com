@@ -17,6 +17,7 @@ export const OffCanvasComponent = ({
   children,
   hasAvatar,
   headerText,
+  headerContent,
   height,
   overlay,
   overlayOpacity,
@@ -65,6 +66,7 @@ export const OffCanvasComponent = ({
           data-cy='offCanvasHeader'
           onClose={e => toggleShow(false)}
           title={headerText}
+          headerContent={headerContent}
         />
 
         <OffCanvasContent>{children}</OffCanvasContent>

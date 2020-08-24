@@ -51,10 +51,7 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
             <Avatar content='Avatar' context={props.context} size='lg' {...props} />
           </StyledAvatarContainer>
         )}
-        <StyledText
-          {...props}
-          content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
-        />
+        <StyledText {...props} content={props.headerContent} />
       </StyledBodyContainer>
     </StyledHeader>
   )
