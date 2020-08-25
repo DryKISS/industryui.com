@@ -10,7 +10,7 @@ import { Avatar, Button, CONTEXT, Column, Divider, Row, Text } from '../../../'
 
 // Style
 import styled from 'styled-components'
-import { transparentize } from 'polished'
+import { lighten } from 'polished'
 
 export const OffCanvasHeader = ({ onClose, title, ...props }) => {
   return (
@@ -56,6 +56,7 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
     </StyledHeader>
   )
 }
+
 const StyledHeader = styled.div`
   position: fixed;
   display: flex;
@@ -63,13 +64,14 @@ const StyledHeader = styled.div`
   flex-direction: column;
   flex: 1;
   background-color: ${({ context, theme, variant }) =>
-    variant === 'normal' ? '#fff' : transparentize(0.3, theme.COLOUR[context])};
+    variant === 'normal' ? '#fff' : lighten(0.1, theme.COLOUR[context])};
 
   color: ${({ theme: { COLOUR } }) => COLOUR.black};
   letter-spacing: 0.5px;
   padding: 32px 24.5px;
   border-top: 8px solid
-    ${({ context, theme }) => (context !== 'primary' ? theme.COLOUR[context] : 'transparent')};
+    ${({ context, variant, theme }) =>
+      variant === 'normal' && context !== 'primary' ? theme.COLOUR[context] : 'transparent'};
 
   ${({ shadow }) => shadow && 'box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.11);'}
 `
@@ -89,7 +91,7 @@ const StyledAvatarContainer = styled.div`
   margin-right: 24.5px;
   align-items: center;
   justify-content: center;
-  background-color: ${({ context, theme }) => transparentize(0.7, theme.COLOUR[context])};
+  background-color: ${({ context, theme }) => lighten(0.2, theme.COLOUR[context])};
   border-radius: 4px;
 `
 
