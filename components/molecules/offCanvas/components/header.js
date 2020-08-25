@@ -86,8 +86,8 @@ const StyledBodyContainer = styled.div`
 `
 const StyledAvatarContainer = styled.div`
   display: flex;
-  min-width: 80px;
-  min-height: 80px;
+  min-width: 70px;
+  min-height: 70px;
   margin-right: 24.5px;
   align-items: center;
   justify-content: center;
