@@ -29,7 +29,6 @@ export const OffCanvasDiv = styled.div`
       left: 0;
       right: 0;
       top: 0;
-      transform: ${({ width, show }) => `translateY(${show ? 0 : '-100%'})`};
       width: 100vw;
     `}
 
@@ -40,7 +39,10 @@ export const OffCanvasDiv = styled.div`
       height: 100vh;
       right: 0;
       top: 0;
-      width: ${({ width }) => width};
+      width: 90%;
+      ${MEDIA_QUERY.desktop`
+        width: ${({ width }) => width};
+      `}
     `}
 
   /* Bottom Placement */
@@ -51,7 +53,6 @@ export const OffCanvasDiv = styled.div`
       height: ${({ height }) => height || '50%'};
       left: 0;
       right: 0;
-      transform: ${({ width, show }) => `translateY(${show ? 0 : '100%'})`};
       width: 100vw;
     `}
 
@@ -62,7 +63,6 @@ export const OffCanvasDiv = styled.div`
       height: 100vh;
       left: 0;
       top: 0;
-      transform: ${({ width, show }) => `translateX(${show ? 0 : '-100%'})`};
       width: 90%;
       ${MEDIA_QUERY.desktop`
         width: ${({ width }) => width};
