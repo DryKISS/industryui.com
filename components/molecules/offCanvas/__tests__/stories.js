@@ -178,9 +178,9 @@ export const withMailForm = storyHOC(
             <Input change={() => {}} label='Name' id='name' placeholder='Alfred' />
             <Input change={() => {}} label='Surname' id='surname' placeholder='Lavanne' />
             <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
-            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
-            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
-            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
+            <Input change={() => {}} label='Brand' id='brand' placeholder='Red' />
+            <Input change={() => {}} label='Preferences' id='preferences' placeholder='Red' />
+            <Input change={() => {}} label='Suggestions' id='suggestions' placeholder='Red' />
 
             <Input
               change={() => {}}
