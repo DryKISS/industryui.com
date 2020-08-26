@@ -2,9 +2,7 @@
   "name": "@drykiss/industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
   "main": "dist/industry-ui.js",
   "module": "dist/industry-ui.es.js",
@@ -54,9 +52,7 @@
     }
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn test"
-    ]
+    "**/*.js": ["yarn test"]
   },
   "husky": {
     "hooks": {
@@ -68,14 +64,8 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": [
-      "__SITE__"
-    ],
-    "ignore": [
-      "node_modules/**",
-      "*.bundle*.js",
-      "**/__tests__/*.test.js"
-    ],
+    "globals": ["__SITE__"],
+    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
     "parser": "babel-eslint"
   },
   "dependencies": {
@@ -148,7 +138,7 @@
     "babel-plugin-styled-components": "^1.11.1",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "26.4.2",
+    "jest": "^25.0.0",
     "jest-styled-components": "^7.0.3",
     "lint-staged": "^10.2.13",
     "markdown-loader-jest": "^0.1.1",

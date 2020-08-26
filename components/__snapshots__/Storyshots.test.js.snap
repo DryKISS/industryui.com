@@ -160,55 +160,7 @@ exports[`Storyshots Atoms/Blockquote Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Button Large 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Atoms/Button Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Button Outline 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Button Secondary 1`] = `
 @media (min-width:62em) {
 
 }
@@ -336,38 +288,6 @@ exports[`Storyshots Atoms/DetailsText Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Divider Content 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Divider Large 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Atoms/Divider Main 1`] = `
 @media (min-width:62em) {
 
@@ -384,7 +304,7 @@ exports[`Storyshots Atoms/Divider Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Divider Medium 1`] = `
+exports[`Storyshots Atoms/Divider Vertical 1`] = `
 @media (min-width:62em) {
 
 }
@@ -1377,86 +1297,6 @@ exports[`Storyshots Form/Controlled/Radio Main 1`] = `
 `;
 
 exports[`Storyshots Form/Controlled/Radio Stacked 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Async 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Inside A Form Required 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Multi 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Single 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect With Default Value 1`] = `
 @media (min-width:62em) {
 
 }
