@@ -51,9 +51,6 @@ export const LineChart = withTheme(({ theme, ...props }) => {
     showLegend
   } = props
 
-  // Debug
-  // console.log(props)
-
   return (
     <ResponsiveLine
       areaOpacity={areaOpacity}

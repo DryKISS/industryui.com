@@ -95,14 +95,12 @@ export const withHttpRequest = () => {
     setLoading(true)
     requestSimulator(value)
       .then(res => {
-        console.log('response', res)
         setResult({
           type: 'success',
           message: res.message
         })
       })
       .catch(e => {
-        console.log('error ', e)
         setResult({
           type: 'danger',
           message: e.message
@@ -110,6 +108,7 @@ export const withHttpRequest = () => {
       })
       .finally(() => setLoading(false))
   }
+
   return (
     <Login
       change={change}

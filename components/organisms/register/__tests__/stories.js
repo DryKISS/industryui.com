@@ -72,7 +72,7 @@ export const error = () => {
 
   const submit = e => {
     requestSimulator('false').catch(e => {
-      console.log('request false ', e.message)
+      console.error('request false ', e.message)
       setError(e)
     })
   }

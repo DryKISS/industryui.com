@@ -38,7 +38,7 @@ const BaseComponent = (props = {}) => {
   })
 
   const onSubmit = data => {
-    console.log(data)
+    console.info(data)
   }
 
   const value = getValues()?.query?.toString()

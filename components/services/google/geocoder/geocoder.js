@@ -19,7 +19,7 @@ export class GeoCoder {
       if (warn) {
         console.warn(message)
       } else {
-        console.log(message)
+        console.info(message)
       }
     }
   }
