@@ -5,8 +5,8 @@
 // React
 import React, { useState } from 'react'
 
-import { GeoCoder } from '../'
-import { Button, Column, Form, Input, Row, useForm, useGeoCoder } from '../../../../'
+// UI
+import { Button, Column, Form, GeoCoder, Input, Row, useForm, useGeoCoder } from 'components'
 
 export default {
   title: 'Services/Google/GeoCoder',
