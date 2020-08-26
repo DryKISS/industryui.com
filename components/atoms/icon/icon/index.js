@@ -1,4 +1,0 @@
-/**
- * Icon
- */
-export * from './icon'

@@ -27,6 +27,7 @@ export const CustomEventsStory = () => {
     showError: true,
     required: false
   }
+
   // Pending add the tooltip
   const onSubmit = data => {
     const fullEvent = {

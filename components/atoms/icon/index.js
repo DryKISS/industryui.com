@@ -2,5 +2,5 @@
  * Icon
  */
 export * from './constants'
-export * from './icon'
+export * from './icon/icon'
 export * from './stacked'

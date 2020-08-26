@@ -1,4 +1,0 @@
-/**
- * Providers
- */
-export * from './authProvider'

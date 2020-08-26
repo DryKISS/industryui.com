@@ -20,7 +20,6 @@ const DURATION = 300
 export const OffCanvasProvider = ({ children }) => {
   const [dataManager, setDataManager] = useState([])
   const [visibilityManager, setVisibilityManager] = useState([])
-
   const handleClose = () => {
     setVisibilityManager(prev => {
       prev.pop()

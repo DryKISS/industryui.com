@@ -1,13 +1,15 @@
 /**
- * Dropdown
+ * Dropdown - Menu
  */
 
+// React
 import React from 'react'
-
 import { array, func, string } from 'prop-types'
 
+// Style
 import styled from 'styled-components'
 
+// UI
 import { DropdownItem } from '../../'
 
 export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) => {
@@ -15,6 +17,7 @@ export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) =>
     onItemClick && onItemClick(item)
     closeDropdown()
   }
+
   return (
     <StyledDropdownMenu className='dropdown--menu' position={position}>
       {items.map(item => (

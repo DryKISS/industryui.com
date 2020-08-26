@@ -41,11 +41,6 @@ export class GeoCoder {
     )
   }
 
-  /**
-   *
-   * @param {Object}
-   * @returns {Promise}
-   */
   async fromAddress ({ address, city = '' }) {
     if (!address) {
       this.log('Provided address is invalid', true)
