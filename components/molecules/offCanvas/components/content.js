@@ -6,8 +6,8 @@
 import styled from 'styled-components'
 
 export const OffCanvasContent = styled.div`
-  padding: 24px;
-  margin-top: 150px;
   flex: 1;
+  margin-top: 150px;
+  padding: 24px;
   z-index: -1;
 `

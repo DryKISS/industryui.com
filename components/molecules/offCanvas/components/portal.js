@@ -12,6 +12,7 @@ import { CONTEXT, OffCanvasComponent } from '../../../'
 
 export const OffCanvas = props => {
   const [mounted, setMounted] = useState(false)
+
   let container = document.body
 
   useEffect(() => {
@@ -20,7 +21,10 @@ export const OffCanvas = props => {
     if (!props.show) {
       setTimeout(() => {
         setMounted(false)
-        if (props.lockScrollOnOpen) document.documentElement.removeAttribute('style')
+
+        if (props.lockScrollOnOpen) {
+          document.documentElement.removeAttribute('style')
+        }
       }, props.transitionDuration)
     } else {
       setMounted(true)
@@ -36,9 +40,8 @@ export const OffCanvas = props => {
 }
 
 OffCanvas.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
   container: any,
-  variant: string,
+  context: oneOf(Object.values(CONTEXT)),
   closeOnOverlayClick: bool,
   headerText: string.isRequired,
   lockScrollOnOpen: bool,
@@ -48,15 +51,16 @@ OffCanvas.propTypes = {
   show: bool.isRequired,
   toggleShow: func.isRequired,
   transitionDuration: number,
+  variant: string,
   width: string
 }
 
 OffCanvas.defaultProps = {
   closeOnOverlayClick: true,
-  variant: 'normal',
   context: 'primary',
   overlayOpacity: 0.3,
   placement: 'right',
   transitionDuration: 300,
+  variant: 'normal',
   width: '30vw'
 }

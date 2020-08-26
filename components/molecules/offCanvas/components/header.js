@@ -12,21 +12,30 @@ import { Avatar, Button, CONTEXT, Column, Divider, Row, Text } from '../../../'
 import styled from 'styled-components'
 import { lighten } from 'polished'
 
-export const OffCanvasHeader = ({ onClose, title, ...props }) => {
+export const OffCanvasHeader = ({
+  context,
+  hasAvatar,
+  headerContent,
+  onClose,
+  title,
+  variant,
+  ...props
+}) => {
   return (
     <StyledHeader {...props}>
       <Row align='center' justify='between'>
         <Column md={6}>
           <StyledTitle {...props} content={title} />
         </Column>
+
         <Column md={6}>
           <ButtonsContainer>
             <StyledButton
-              variant={props.variant}
-              context={props.context}
+              variant={variant}
+              context={context}
               content='Submit'
               size='sm'
-              outline={props.variant !== 'normal'}
+              outline={variant !== 'normal'}
             />
 
             <Divider flexItem size='sm' vertical />
@@ -36,7 +45,7 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
               context='darkGrey'
               startIcon='times'
               startIconProps={{
-                context: props.variant !== 'normal' ? props.context : 'white',
+                context: variant !== 'normal' ? context : 'white',
                 size: 'lg'
               }}
               onClick={onClose}
@@ -46,12 +55,12 @@ export const OffCanvasHeader = ({ onClose, title, ...props }) => {
         </Column>
       </Row>
       <StyledBodyContainer>
-        {props.hasAvatar && (
-          <StyledAvatarContainer context={props.context}>
-            <Avatar content='Avatar' context={props.context} size='lg' {...props} />
+        {hasAvatar && (
+          <StyledAvatarContainer context={context}>
+            <Avatar content='Avatar' context={context} size='lg' {...props} />
           </StyledAvatarContainer>
         )}
-        <StyledText {...props} content={props.headerContent} />
+        <StyledText {...props} content={headerContent} />
       </StyledBodyContainer>
     </StyledHeader>
   )

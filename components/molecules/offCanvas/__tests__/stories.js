@@ -25,7 +25,6 @@ export default {
 }
 
 const BaseComponent = props => {
-  const show = boolean('Show', true)
   const widthKnob = number('Width (%)', 40, {
     range: true,
     min: 1,
@@ -53,13 +52,13 @@ const BaseComponent = props => {
       'right'
     ),
     width: widthKnob + '%',
-    show
+    show: boolean('Show', true)
   }
 
   return <OffCanvas {...defaultProps} />
 }
 
-export const main = () => <BaseComponent>Components go here</BaseComponent>
+export const main = () => <BaseComponent>Content goes here</BaseComponent>
 
 const storyHOC = Component => {
   return () => {
