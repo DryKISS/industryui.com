@@ -73,14 +73,17 @@ export const main = () => (
   <ImageLocation label='Option' locationChange={action('change')} options={Properties[1].options} />
 )
 
-export const preselected = () => (
-  <ImageLocation
-    initial={1}
-    label='Option'
-    locationChange={action('change')}
-    options={Properties[1].options}
-  />
-)
+export const preselected = () => {
+  return (
+    <ImageLocation
+      initial={1}
+      initialCoordinates={{ x: 200, y: 200 }}
+      label='Option'
+      locationChange={action('change')}
+      options={Properties[1].options}
+    />
+  )
+}
 
 export const multipleProperties = () => (
   <PropertySelect locationChange={action('change')} properties={Properties} />

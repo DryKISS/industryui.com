@@ -14,7 +14,7 @@ import { Button, Input, Form, ReactSelect, useForm } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { OPTIONS } from '../__mocks__/options'
+import { OPTIONS } from '../__mocks__/reactSelectControlled'
 
 export default {
   title: 'Form/Controlled/ReactSelect',

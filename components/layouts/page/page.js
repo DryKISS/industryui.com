@@ -4,18 +4,18 @@
  */
 
 // React
+import { useContext } from 'react'
 import { bool, node, object, shape, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { Container, MetaHead, PageHeading } from '../../'
-
-// Config
-import { Brand, Canonical } from 'config'
+import { ConfigContext, Container, MetaHead, PageHeading } from '../../'
 
 export const Page = ({ children, fluid, meta, pageHeading }) => {
+  const { Brand, Canonical } = useContext(ConfigContext)
+
   return (
     <StyledPage>
       {meta && <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />}

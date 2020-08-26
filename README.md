@@ -29,10 +29,9 @@ project to avoid double React loading and hooks issues.
 
 ## Creators
 
-Ian Warner
+DryKISS
 
-- <https://ianwarner.com>
-- <https://github.com/iwarner>
+> <https://drykiss.com> > <https://github.com/drykiss>
 
 ## Copyright and license
 

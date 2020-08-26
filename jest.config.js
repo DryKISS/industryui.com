@@ -13,5 +13,5 @@ module.exports = {
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '^.+\\.js?$': 'babel-jest'
   },
-  transformIgnorePatterns: ['/node_modules/(?!(@babel/runtime)/).*/']
+  transformIgnorePatterns: ['/node_modules/(?!(@babel/runtime)/).*/', '/dist/']
 }

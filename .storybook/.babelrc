@@ -1,26 +1,11 @@
 {
-  "presets": [
-    "next/babel",
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
+  "presets": ["next/babel", "@babel/preset-env", "@babel/preset-react"],
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-transform-classes",
     [
       "styled-components",
       {
-        "displayName": true,
-        "ssr": true
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": [
-          "./"
-        ],
+        "root": ["./"],
         "alias": {
           "api": "./api",
           "config": "./config",

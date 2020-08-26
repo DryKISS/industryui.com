@@ -1,5 +1,5 @@
 /**
- * Message data
+ * Messaging/Message
  */
 export const message = {
   content: 'Test Message',
