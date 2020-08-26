@@ -10,7 +10,7 @@
 import { useContext } from 'react'
 
 // UI
-import { ConfigContext, InternationalisationContext } from '../../../'
+import { ConfigContext, InternationalisationContext } from '../../'
 
 export const useTranslation = () => {
   const { defaultLocale, Translations } = useContext(ConfigContext)
