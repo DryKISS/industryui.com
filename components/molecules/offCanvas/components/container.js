@@ -14,12 +14,11 @@ import styled, { css } from 'styled-components'
 export const OffCanvasDiv = styled.div`
   background-color: #fff;
   border-left: ${({ show }) => (show ? 'none' : '1px solid #cecece')};
-  box-shadow: ${({ show }) => (show ? '-5px 5px 22px -15px rgba(0,0,0,0.75)' : 'none')};
+  box-shadow: ${({ show }) => (show ? '-5px 0px 38px rgba(0, 0, 0, 0.15)' : 'none')};
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
   transition: transform ${({ duration }) => duration}ms ease-in-out;
-  will-change: transform;
   z-index: 9999;
 
   /* Top Placement */
@@ -30,7 +29,6 @@ export const OffCanvasDiv = styled.div`
       left: 0;
       right: 0;
       top: 0;
-      transform: ${({ width, show }) => `translateY(${show ? 0 : '-100%'})`};
       width: 100vw;
     `}
 
@@ -41,7 +39,6 @@ export const OffCanvasDiv = styled.div`
       height: 100vh;
       right: 0;
       top: 0;
-      transform: ${({ width, show }) => `translateX(${show ? 0 : '100%'})`};
       width: 90%;
       ${MEDIA_QUERY.desktop`
         width: ${({ width }) => width};
@@ -56,7 +53,6 @@ export const OffCanvasDiv = styled.div`
       height: ${({ height }) => height || '50%'};
       left: 0;
       right: 0;
-      transform: ${({ width, show }) => `translateY(${show ? 0 : '100%'})`};
       width: 100vw;
     `}
 
@@ -67,7 +63,6 @@ export const OffCanvasDiv = styled.div`
       height: 100vh;
       left: 0;
       top: 0;
-      transform: ${({ width, show }) => `translateX(${show ? 0 : '-100%'})`};
       width: 90%;
       ${MEDIA_QUERY.desktop`
         width: ${({ width }) => width};

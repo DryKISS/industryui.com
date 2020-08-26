@@ -72,6 +72,7 @@ export const error = () => {
 
   const submit = e => {
     requestSimulator('false').catch(e => {
+      console.error('request false ', e.message)
       setError(e)
     })
   }

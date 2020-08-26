@@ -2,12 +2,14 @@
  * Accordion
  */
 
+// React
 import React, { useState, Children, cloneElement } from 'react'
-
 import { array, node, object, string, bool } from 'prop-types'
 
+// Style
 import styled from 'styled-components'
 
+// UI
 import { AccordionItem } from '../../'
 
 const renderItem = ({ body, context, title }, index, current, handleCurrent) => {
@@ -41,17 +43,27 @@ export const Accordion = ({ children, className, data, style, closeOthersOnOpen 
     })
   }
 
+  const Body = () => {
+    let map = {}
+
+    if (children) {
+      map = Children.map(children, (child, index) => {
+        return cloneElement(child, {
+          index,
+          open: current.includes(index),
+          handleOpen: index => handleCurrent(index)
+        })
+      })
+    } else {
+      map = data.map((item, index) => renderItem(item, index, current, handleCurrent))
+    }
+
+    return map
+  }
+
   return (
     <StyledAccordion className={className} style={style}>
-      {children
-        ? Children.map(children, (child, index) => {
-            return cloneElement(child, {
-              index,
-              open: current.includes(index),
-              handleOpen: index => handleCurrent(index)
-            })
-          })
-        : data.map((item, index) => renderItem(item, index, current, handleCurrent))}
+      <Body />
     </StyledAccordion>
   )
 }

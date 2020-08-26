@@ -26,22 +26,21 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
+    block: boolean('Block', false),
     centre: boolean('Centre', true),
-    content: text('Button text', 'Button text'),
+    content: text('Button text', 'Button'),
     context: Context(),
-    size: Size(),
+    dashed: boolean('Dashed', false),
+    disabled: boolean('Disabled', false),
+    endIcon: text('End icon', 'arrow-left'),
+    outline: boolean('Outline', false),
+    shadow: boolean('Shadow', false),
+    size: Size('', 'md'),
+    startIcon: text('Start icon', 'arrow-right'),
     ...props
   }
 
   return <Button {...defaultProps} />
 }
 
-export const main = () => (
-  <BaseComponent outline={boolean('Outline', false)} shadow={boolean('Shadow', true)} />
-)
-
-export const secondary = () => <BaseComponent outline={boolean('Outline', false)} />
-
-export const outline = () => <BaseComponent outline={boolean('Outline', true)} />
-
-export const large = () => <BaseComponent outline={boolean('Outline', false)} />
+export const main = () => <BaseComponent />

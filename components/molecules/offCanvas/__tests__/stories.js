@@ -1,16 +1,16 @@
 /**
  * Molecules - OffCanvas
  */
-
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Storybook
-import { select, text, withKnobs, number } from '@storybook/addon-knobs'
+import { select, text, withKnobs, number, boolean } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
 import { Button, Form, Input, OffCanvas, Progress, ProgressBar } from 'components'
+
 import Readme from '../README.md'
 
 export default {
@@ -24,17 +24,60 @@ export default {
   }
 }
 
+const BaseComponent = props => {
+  const show = boolean('Show', true)
+  const widthKnob = number('Width (%)', 40, {
+    range: true,
+    min: 1,
+    max: 100,
+    step: 1
+  })
+
+  const defaultProps = {
+    variant: select('Variant', {
+      Normal: 'normal',
+      Extended: 'extended'
+    }),
+    hasAvatar: boolean('Avatar', false),
+    context: Context('', 'primary'),
+    headerText: text('Header', 'Homyze'),
+    headerContent: text('headerContent', 'This is the header content example'),
+    placement: select(
+      'Placement',
+      {
+        Top: 'top',
+        Right: 'right',
+        Bottom: 'bottom',
+        Left: 'left'
+      },
+      'right'
+    ),
+    width: widthKnob + '%',
+    show
+  }
+
+  return <OffCanvas {...defaultProps} />
+}
+
+export const main = () => <BaseComponent>Components go here</BaseComponent>
+
 const storyHOC = Component => {
   return () => {
     const [isChecked, toggleCheck] = useState(true)
     const contextKnob = Context()
+    const variant = select('Variant', {
+      Normal: 'normal',
+      Extended: 'extended'
+    })
+    const headerContent = text('headerContent', 'This is the header content example')
     const textKnob = text('Header', 'Homyze')
-    const widthKnob = number('Width (%)', 25, {
+    const widthKnob = number('Width (%)', 40, {
       range: true,
       min: 1,
       max: 100,
       step: 1
     })
+
     const placementKnob = select(
       'Placement',
       {
@@ -59,36 +102,28 @@ const storyHOC = Component => {
           contextKnob={contextKnob}
           isChecked={isChecked}
           headerText={textKnob}
+          headerContent={headerContent}
           placement={placementKnob}
           toggleCheck={toggleCheck}
           width={widthKnob + '%'}
+          variant={variant}
         />
       </>
     )
   }
 }
 
-export const main = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
-    return (
-      <>
-        <OffCanvas
-          context={contextKnob}
-          headerText={headerText}
-          placement={placement}
-          show={isChecked}
-          toggleShow={toggleCheck}
-          width={width}
-        >
-          Components go here
-        </OffCanvas>
-      </>
-    )
-  }
-)
-
 export const withOverlay = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
+  ({
+    contextKnob,
+    headerText,
+    isChecked,
+    placement,
+    toggleCheck,
+    width,
+    variant,
+    headerContent
+  }) => {
     const opacityKnob = number('Overlay Opacity', 0.3, {
       range: true,
       min: 0.1,
@@ -100,12 +135,14 @@ export const withOverlay = storyHOC(
         <OffCanvas
           context={contextKnob}
           headerText={headerText}
+          headerContent={headerContent}
           overlay
           overlayOpacity={opacityKnob}
           placement={placement}
           show={isChecked}
           toggleShow={toggleCheck}
           width={width}
+          variant={variant}
         >
           Components go here
         </OffCanvas>
@@ -115,7 +152,16 @@ export const withOverlay = storyHOC(
 )
 
 export const withMailForm = storyHOC(
-  ({ contextKnob, headerText, isChecked, placement, toggleCheck, width }) => {
+  ({
+    contextKnob,
+    headerText,
+    isChecked,
+    placement,
+    toggleCheck,
+    width,
+    variant,
+    headerContent
+  }) => {
     return (
       <>
         <OffCanvas
@@ -125,8 +171,17 @@ export const withMailForm = storyHOC(
           show={isChecked}
           toggleShow={toggleCheck}
           width={width}
+          variant={variant}
+          headerContent={headerContent}
         >
           <Form submit={() => {}}>
+            <Input change={() => {}} label='Name' id='name' placeholder='Alfred' />
+            <Input change={() => {}} label='Surname' id='surname' placeholder='Lavanne' />
+            <Input change={() => {}} label='Favourite color' id='color' placeholder='Red' />
+            <Input change={() => {}} label='Brand' id='brand' placeholder='Red' />
+            <Input change={() => {}} label='Preferences' id='preferences' placeholder='Red' />
+            <Input change={() => {}} label='Suggestions' id='suggestions' placeholder='Red' />
+
             <Input
               change={() => {}}
               label='Email'
@@ -134,8 +189,23 @@ export const withMailForm = storyHOC(
               placeholder='Enter email address'
               type='email'
             />
+            <Input
+              change={() => {}}
+              label='Password'
+              id='password'
+              placeholder='Enter your password'
+              type='password'
+            />
+            <Input
+              change={() => {}}
+              label='Repeat your Password'
+              id='repeatPassword'
+              placeholder='Enter your password'
+              type='password'
+            />
+
             <Button secondary type='submit'>
-              Send reset link
+              Go to next step
             </Button>
           </Form>
           <br />
@@ -151,7 +221,7 @@ export const withMailForm = storyHOC(
 )
 
 export const withDynamicContent = storyHOC(
-  ({ contextKnob, isChecked, placement, toggleCheck, width }) => {
+  ({ contextKnob, isChecked, placement, toggleCheck, width, variant, headerContent }) => {
     const [previewIndex, changePreview] = useState(1)
     const previews = {
       1: {
@@ -213,6 +283,8 @@ export const withDynamicContent = storyHOC(
           show={isChecked}
           toggleShow={toggleCheck}
           width={width}
+          variant={variant}
+          headerContent={headerContent}
         >
           {previews[previewIndex].component()}
         </OffCanvas>

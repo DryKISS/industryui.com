@@ -26,7 +26,6 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   const { errors, handleSubmit, register } = useForm({ mode: 'onChange' })
 
   const onSubmit = data => {
-    console.log('data', data)
     onSearch(data.query)
   }
 

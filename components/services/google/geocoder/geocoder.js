@@ -1,4 +1,8 @@
-// axios
+/**
+ * Google - GeoCoder
+ */
+
+// Axios
 import axios from 'axios'
 
 export class GeoCoder {
@@ -24,11 +28,14 @@ export class GeoCoder {
     const response = await axios
       .get(url)
       .catch(() => Promise.reject(new Error('Error fetching data')))
+
     if (response.data.status === 'OK') {
       this.log(response.data)
       return response.data
     }
+
     this.log(`${response.statusText}.\nServer returned status code ${response.statusText}`, true)
+
     return Promise.reject(
       new Error(`${response.statusText}.\nServer returned status code ${response.statusText}`)
     )
@@ -59,6 +66,7 @@ export class GeoCoder {
     const {
       results: [result]
     } = await this.handleUrl(url)
+
     const {
       geometry: {
         location: { lat, lng }

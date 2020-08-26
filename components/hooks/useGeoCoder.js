@@ -1,12 +1,12 @@
 /**
- * useGeoCoder
+ * Hooks  - useGeoCoder
  */
 
 // React
 import { useEffect, useState } from 'react'
 
 // Services
-import { GeoCoder } from '../../'
+import { GeoCoder } from '../'
 
 export const useGeoCoder = ({ address, apiKey, city, language, region }) => {
   const [coordinates, setCoordinates] = useState({ lat: '', lng: '' })
