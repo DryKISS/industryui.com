@@ -1,12 +1,11 @@
 /**
- * Services - Hooks  - useInterval
- *
+ * Hooks  - useInterval
  * Allows running code on specific intervals
  *
  * @see https://overreacted.io/making-setinterval-declarative-with-react-hooks/
- *
  */
 
+// React
 import { useEffect, useRef } from 'react'
 
 export const useInterval = (callback, delay) => {
@@ -22,6 +21,7 @@ export const useInterval = (callback, delay) => {
     function tick () {
       savedCallback.current()
     }
+
     if (delay !== null) {
       const id = setInterval(tick, delay)
       return () => clearInterval(id)

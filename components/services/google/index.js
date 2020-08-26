@@ -1,2 +1,5 @@
-export * from './geocoder'
+/**
+ * Google
+ */
+export * from './geocoder/geocoder'
 export * from './static'
