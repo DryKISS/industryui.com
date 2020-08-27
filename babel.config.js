@@ -1,26 +1,26 @@
 module.exports = {
-  presets: ['@babel/react'],
+  presets: ["@babel/react", "next/babel", "@zeit/next-typescript/babel"],
   plugins: [
-    '@babel/plugin-transform-runtime',
-    '@babel/plugin-proposal-class-properties',
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties",
     [
-      'styled-components',
+      "styled-components",
       {
         displayName: true,
         ssr: true
       }
     ],
     [
-      'module-resolver',
+      "module-resolver",
       {
-        root: ['./'],
+        root: ["./"],
         alias: {
-          api: './api',
-          config: './config',
-          decorators: './.storybook/decorators',
-          root: './',
-          storybook: './.storybook',
-          themes: './.storybook/themes'
+          api: "./api",
+          config: "./config",
+          decorators: "./.storybook/decorators",
+          root: "./",
+          storybook: "./.storybook",
+          themes: "./.storybook/themes"
         }
       }
     ]
@@ -28,9 +28,9 @@ module.exports = {
   env: {
     build: {
       presets: [
-        'next/babel',
+        "next/babel",
         [
-          '@babel/env',
+          "@babel/env",
           {
             modules: false
           }
@@ -40,14 +40,14 @@ module.exports = {
     test: {
       presets: [
         [
-          '@babel/env',
+          "@babel/env",
           {
             targets: {
-              node: 'current'
+              node: "current"
             }
           }
         ]
       ]
     }
   }
-}
+};

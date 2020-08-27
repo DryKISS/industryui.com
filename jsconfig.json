@@ -2,10 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
+
+    "resolveJsonModule": true,
     "paths": {
-      "components": ["./components", "themes"]
+      "components": ["./components", "themes"],
+      "locale": ["./components/locales"]
     }
   },
   "include": ["components/**/*", ".storybook/themes/**/*"]
