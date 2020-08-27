@@ -3,27 +3,24 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 
 // Storybook
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+
+import { translations } from "../../../locales";
+
+import { Wrapper } from "decorators";
+import { useTranslation } from "react-i18next";
 
 // UI
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  Icon,
-  InternationalisationContext,
-  useTranslation
-} from 'components'
+import { Avatar, Button, Dropdown, Icon, InternationalisationContext } from "components";
 
-import Readme from '../README.md'
-import { Items, Language } from '../__mocks__/dropdown'
+import Readme from "../README.md";
+import { Items, Language } from "../__mocks__/dropdown";
 
 export default {
-  title: 'Molecules/Dropdown',
+  title: "Molecules/Dropdown",
   component: Dropdown,
   decorators: [withKnobs, Wrapper],
   parameters: {
@@ -31,71 +28,71 @@ export default {
       sidebar: Readme
     }
   }
-}
+};
 
 const BaseComponent = props => {
-  const { setLocale } = useContext(InternationalisationContext)
+  const { setLocale } = useContext(InternationalisationContext);
 
   const onChange = data => {
-    setLocale({ locale: data.id })
-  }
+    setLocale({ locale: data.id });
+  };
 
   const defaultProps = {
-    caret: boolean('Caret', props.caret || true),
-    children: props.children || text('Children', 'Dropdown'),
+    caret: boolean("Caret", props.caret || true),
+    children: props.children || text("Children", "Dropdown"),
     items: Items,
     onChange: onChange,
     position: select(
-      'Position',
+      "Position",
       {
-        Top: 'top',
-        Bottom: 'bottom'
+        Top: "top",
+        Bottom: "bottom"
       },
-      props.position || 'bottom'
+      props.position || "bottom"
     ),
     ...props
-  }
+  };
 
-  return <Dropdown {...defaultProps} />
-}
+  return <Dropdown {...defaultProps} />;
+};
 
-export const main = () => <BaseComponent />
+export const main = () => <BaseComponent />;
 
 export const language = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <>
-      <BaseComponent children='Change language' items={Language} />
-      <h1>{t('home')}</h1>
+      <BaseComponent children="Change language" items={Language} />
+      <h1>{t(translations.PageNames.Home())}</h1>
     </>
-  )
-}
+  );
+};
 
-export const rightAligned = () => <BaseComponent position='right' />
+export const rightAligned = () => <BaseComponent position="right" />;
 
 export const button = () => (
   <BaseComponent caret={false}>
     <Button>Dropdown</Button>
   </BaseComponent>
-)
+);
 
 export const icon = () => (
   <BaseComponent>
-    <Icon context='info' icon='user' prefix='fas' />
+    <Icon context="info" icon="user" prefix="fas" />
   </BaseComponent>
-)
+);
 
 export const iconButton = () => (
   <BaseComponent caret={false}>
-    <Button context='white'>
-      <Icon context='info' icon='user' prefix='fas' />
+    <Button context="white">
+      <Icon context="info" icon="user" prefix="fas" />
     </Button>
   </BaseComponent>
-)
+);
 
 export const avatar = () => (
   <BaseComponent caret={false}>
     <Avatar>KH</Avatar>
   </BaseComponent>
-)
+);

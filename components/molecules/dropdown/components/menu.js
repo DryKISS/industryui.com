@@ -3,29 +3,30 @@
  */
 
 // React
-import React from 'react'
-import { array, func, string } from 'prop-types'
+import React from "react"
+import { array, func, string } from "prop-types"
 
 // Style
-import styled from 'styled-components'
+import styled from "styled-components"
 
 // UI
-import { DropdownItem } from '../../'
+import { DropdownItem } from "../../"
 
-export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) => {
-  const handleClick = item => {
-    onItemClick && onItemClick(item)
+export const DropdownMenu = ({ closeDropdown, items, onItemClick, position, selectedIndex }) => {
+  const handleClick = (item, index) => {
+    onItemClick && onItemClick(item, index)
     closeDropdown()
   }
 
   return (
-    <StyledDropdownMenu className='dropdown--menu' position={position}>
-      {items.map(item => (
+    <StyledDropdownMenu className="dropdown--menu" position={position}>
+      {items.map((item, index) => (
         <DropdownItem
+          selected={selectedIndex === index}
           key={item.id}
           closeDropdown={closeDropdown}
           item={item}
-          onClick={() => handleClick(item)}
+          onClick={() => handleClick(item, index)}
         />
       ))}
     </StyledDropdownMenu>
@@ -46,13 +47,15 @@ const StyledDropdownMenu = styled.div`
   ${({ position }) =>
     position &&
     `
-    left: ${position === 'right' ? 'auto' : '0'};
-    right: ${position === 'right' ? '0' : 'auto'};
-    ${position === 'top' &&
+    left: ${position === "right" ? "auto" : "0"};
+    right: ${position === "right" ? "0" : "auto"};
+    ${
+      position === "top" &&
       `
       bottom: 100%;
       top: unset;
-    `}
+    `
+    }
   `}
 `
 
@@ -60,5 +63,5 @@ DropdownMenu.propTypes = {
   closeDropdown: func,
   items: array.isRequired,
   onItemClick: func,
-  position: string
+  position: string,
 }

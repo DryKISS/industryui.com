@@ -3,18 +3,18 @@
  */
 
 // React
-import React from 'react'
-import { func, object, node } from 'prop-types'
+import React from "react"
+import { func, object, node } from "prop-types"
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from "styled-components"
 
 // UI
-import { Link } from '../../../'
+import { Link } from "../../../"
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
-    <StyledLink className='dropdown--link' id={id} onClick={onClick}>
+    <StyledLink className="dropdown--link" id={id} onClick={onClick}>
       {name}
     </StyledLink>
   )
@@ -27,9 +27,9 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   )
 }
 
-export const DropdownItem = ({ closeDropdown, item, onClick }) => {
+export const DropdownItem = ({ closeDropdown, item, onClick, selected }) => {
   return (
-    <StyledDropdownItem divider={item.divider}>
+    <StyledDropdownItem divider={item.divider} selected={selected}>
       {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
     </StyledDropdownItem>
   )
@@ -38,7 +38,20 @@ export const DropdownItem = ({ closeDropdown, item, onClick }) => {
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;
-  ${({ divider }) => divider && 'padding: 0;'}
+  ${({ selected, theme }) =>
+    selected &&
+    css`
+      background: ${theme.COLOUR.primary};
+      ${StyledLink} {
+        color: ${theme.COLOUR.secondary};
+        &:hover {
+          background-color: transparent;
+          color: ${theme.COLOUR.secondary};
+        }
+      }
+    `}
+
+  ${({ divider }) => divider && "padding: 0;"}
 `
 
 const StyledDivider = styled.div`
@@ -62,5 +75,5 @@ DropdownItem.propTypes = {
   children: node,
   closeDropdown: func,
   item: object,
-  onClick: func
+  onClick: func,
 }
