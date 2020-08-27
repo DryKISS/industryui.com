@@ -3,15 +3,19 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React, { useState, useCallback } from "react"
 
 // Style
-import styled from 'styled-components'
-import { CarouselArrow } from './arrow'
-import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination } from '../../../'
-import { CarouselDefaultProps, CarouselPropTypes } from './props'
-
+import styled from "styled-components"
+import { CarouselArrow } from "./arrow"
+import { CarouselSampleSlide } from "./sample"
+import { Icon, Pagination } from "../../../"
+import { CarouselDefaultProps, CarouselPropTypes } from "./props"
+import { SIZE } from "index"
+const GoTo = {
+  Next: "next",
+  Previous: "prev",
+}
 export const Carousel = ({
   arrowContext,
   arrowPosition,
@@ -25,35 +29,35 @@ export const Carousel = ({
   showArrows,
   showPagination,
   slides,
-  width
+  width,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const dataSource = slides || children
 
-  const previousSlide = () => {
-    const lastIndex = dataSource.length - 1
-    const shouldResetIndex = currentImageIndex === 0
-    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
-    setCurrentImageIndex(index)
-  }
-
-  const nextSlide = () => {
-    const lastIndex = dataSource.length - 1
-    const shouldResetIndex = currentImageIndex === lastIndex
-    const index = shouldResetIndex ? 0 : currentImageIndex + 1
-    setCurrentImageIndex(index)
-  }
+  const changeSlide = useCallback(
+    (target) => {
+      const lastIndex = dataSource.length - 1
+      let index = currentImageIndex + (target === GoTo.Previous ? -1 : 1)
+      if (index < 0) {
+        index = lastIndex
+      } else if (index > lastIndex) {
+        index = 0
+      }
+      setCurrentImageIndex(index)
+    },
+    [dataSource.length, currentImageIndex]
+  )
 
   const renderPagination = () => (
     <PaginationWrapper>
       <Pagination
-        onPageChange={page => setCurrentImageIndex(page - 1)}
+        onPageChange={(page) => setCurrentImageIndex(page - 1)}
         currentPage={currentImageIndex + 1}
         pageCount={dataSource.length}
         showNextAndPrev
-        prevLabel={<Icon icon='chevron-left' />}
-        nextLabel={<Icon icon='chevron-right' />}
-        size='xs'
+        prevLabel={<Icon icon="chevron-left" />}
+        nextLabel={<Icon icon="chevron-right" />}
+        size={SIZE.XS}
         {...paginationProps}
       />
     </PaginationWrapper>
@@ -68,8 +72,8 @@ export const Carousel = ({
         {hasNavigation && showArrows && (
           <CarouselArrow
             context={arrowContext}
-            clickFunction={previousSlide}
-            direction='left'
+            clickFunction={() => changeSlide(GoTo.Previous)}
+            direction="left"
             icon={leftArrowIcon}
             position={arrowPosition}
           />
@@ -77,20 +81,20 @@ export const Carousel = ({
 
         {slides ? <CarouselSampleSlide {...current} /> : current || children}
 
-        {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
+        {hasNavigation && showPagination && paginationPosition === "inside" && renderPagination()}
 
         {hasNavigation && showArrows && (
           <CarouselArrow
             context={arrowContext}
-            clickFunction={nextSlide}
-            direction='right'
+            clickFunction={() => changeSlide(GoTo.Next)}
+            direction="right"
             icon={rightArrowIcon}
             position={arrowPosition}
           />
         )}
       </Wrapper>
 
-      {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
+      {hasNavigation && showPagination && paginationPosition === "outside" && renderPagination()}
     </>
   )
 }
@@ -100,7 +104,7 @@ const Wrapper = styled.div`
   min-height: ${({ height }) => height};
   margin: 0;
   position: relative;
-  width: ${({ width, fullWidth }) => (fullWidth ? '100%' : width)};
+  width: ${({ width, fullWidth }) => (fullWidth ? "100%" : width)};
 `
 
 const PaginationWrapper = styled.div`
