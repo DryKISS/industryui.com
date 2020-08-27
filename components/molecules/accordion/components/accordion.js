@@ -2,68 +2,66 @@
  * Accordion
  */
 
-// React
-import React, { useState, Children, cloneElement } from 'react'
-import { array, node, object, string, bool } from 'prop-types'
+import React, { useState, Children, cloneElement, useRef, useCallback } from "react"
 
-// Style
-import styled from 'styled-components'
+import { array, node, object, string, bool } from "prop-types"
 
-// UI
-import { AccordionItem } from '../../'
+import styled from "styled-components"
 
-const renderItem = ({ body, context, title }, index, current, handleCurrent) => {
-  return (
-    <AccordionItem
-      key={index}
-      context={context}
-      open={current.includes(index)}
-      title={title}
-      handleOpen={() => handleCurrent(index)}
-    >
-      {body}
-    </AccordionItem>
-  )
-}
+import { AccordionItem } from "../../"
+import { RandomKey } from "components/utils/rand"
 
 export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
-  const initialOpen = children ? children.findIndex(_ => _.props.open) : data.findIndex(_ => _.open)
+  const renderItem = useCallback(
+    ({ body, context, title }, index, current, handleCurrent, elementKey) => {
+      return (
+        <AccordionItem
+          key={elementKey}
+          context={context}
+          open={current.includes(index)}
+          title={title}
+          handleOpen={() => handleCurrent(index)}
+        >
+          {body}
+        </AccordionItem>
+      )
+    },
+    []
+  )
+
+  const initialOpen = children
+    ? children.findIndex((_) => _.props.open)
+    : data.findIndex((_) => _.open)
   const [current, setCurrent] = useState(initialOpen > -1 ? [initialOpen] : [])
 
-  const handleCurrent = index => {
-    setCurrent(prev => {
+  const { current: randomKeys } = useRef((children || data).map((item, index) => RandomKey()))
+
+  const handleCurrent = (index) => {
+    setCurrent((prev) => {
       let temp = []
       if (closeOthersOnOpen && !prev.includes(index)) {
         temp = [index]
       } else {
-        if (prev.includes(index)) temp = prev.filter(_ => _ !== index)
+        if (prev.includes(index)) temp = prev.filter((_) => _ !== index)
         else temp = [...prev, index]
       }
       return temp
     })
   }
 
-  const Body = () => {
-    let map = {}
-
-    if (children) {
-      map = Children.map(children, (child, index) => {
-        return cloneElement(child, {
-          index,
-          open: current.includes(index),
-          handleOpen: index => handleCurrent(index)
-        })
-      })
-    } else {
-      map = data.map((item, index) => renderItem(item, index, current, handleCurrent))
-    }
-
-    return map
-  }
-
   return (
     <StyledAccordion className={className} style={style}>
-      <Body />
+      {children
+        ? Children.map(children, (child, index) => {
+            return cloneElement(child, {
+              index,
+              open: current.includes(index),
+              handleOpen: (index) => handleCurrent(index),
+            })
+          })
+        : data.map((item, index) =>
+            renderItem(item, index, current, handleCurrent, randomKeys[index])
+          )}
     </StyledAccordion>
   )
 }
@@ -78,5 +76,5 @@ Accordion.propTypes = {
   className: string,
   closeOthersOnOpen: bool,
   data: array,
-  style: object
+  style: object,
 }
