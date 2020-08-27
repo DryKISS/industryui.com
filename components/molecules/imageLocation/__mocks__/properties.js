@@ -5,52 +5,17 @@
 export const Properties = [
   {
     value: 1,
-    text: '10 Downing street',
+    name: '10 Downing street',
     options: [
       {
         value: 1,
-        text: 'Ground Floor',
-        image: '/static/media/ground-floor.e5fb167c.png'
+        name: 'Ground Floor',
+        filename: '/static/media/ground-floor.e5fb167c.png'
       },
       {
         value: 2,
-        text: 'First Floor',
-        image: '/static/media/first-floor.22d20f1f.png'
-      }
-    ]
-  },
-  {
-    value: 2,
-    text: '23 Acacia Road',
-    options: [
-      {
-        value: 1,
-        text: 'Ground Floor',
-        image: '/static/media/ground-floor.e5fb167c.png'
-      },
-      {
-        value: 2,
-        text: 'First Floor',
-        image: '/static/media/first-floor.22d20f1f.png'
-        // assets: [
-        //   { value: 1, text: 'Printer', coordinates: { x: 200, y: 200 } },
-        //   { value: 2, text: 'Copy Machine', coordinates: { x: 300, y: 200 } }
-        // ]
-      },
-      {
-        value: 3,
-        text: 'Second Floor',
-        image: '/static/media/second-floor.523f86bc.png'
-      },
-      {
-        value: 4,
-        text: 'Third Floor',
-        image: '/static/media/third-floor.fb1270b1.png'
-      },
-      {
-        value: 5,
-        text: 'Fourth Floor',
-        image: '/static/media/fourth-floor.91e398b1.png'
+        name: 'First Floor',
+        filename: '/static/media/first-floor.22d20f1f.png'
       }
     ]
   }

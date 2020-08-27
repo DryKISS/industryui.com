@@ -9,34 +9,10 @@ import { array, bool, func, string, object } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Select, useForm } from '../../../'
 import { ImageWrapper } from '../../'
 
-export const ImageLocation = ({
-  initial,
-  initialCoordinates,
-  label,
-  coordinatesChange,
-  itemChange,
-  options,
-  show
-}) => {
-  const INITIAL_STATE = {
-    option: initial
-  }
-
-  const [item, setItem] = useState(null)
+export const ImageLocation = ({ initialCoordinates, coordinatesChange, item, show }) => {
   const [coordinates, setCoordinates] = useState(initialCoordinates)
-
-  const { change, form } = useForm(INITIAL_STATE)
-  const { option } = form
-
-  useEffect(() => {
-    const selected = options.find(o => o.value === parseInt(option)) || null
-    setItem(selected)
-    itemChange && itemChange(selected)
-    setCoordinates(coordinates)
-  }, [option])
 
   useEffect(() => {
     coordinatesChange && item && coordinatesChange({ coordinates, item })
@@ -44,14 +20,6 @@ export const ImageLocation = ({
 
   return (
     <StyledImageLocation show={show}>
-      <Select
-        change={change}
-        id='option'
-        label={label}
-        options={[{ text: `Select ${label}`, value: '' }, ...options]}
-        value={option}
-      />
-
       {item && (
         <ImageWrapper coordinates={coordinates} item={item} setCoordinates={setCoordinates} />
       )}
@@ -67,7 +35,7 @@ const StyledImageLocation = styled.div`
 ImageLocation.propTypes = {
   className: string,
   coordinatesChange: func,
-  itemChange: func,
+  item: object,
   options: array.isRequired,
   style: object,
   show: bool

@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { ImageLocation, Select, useForm } from '../../../'
+import { ImageLocation } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -24,40 +24,6 @@ import '../__resources__/images/second-floor.png'
 import '../__resources__/images/third-floor.png'
 import '../__resources__/images/fourth-floor.png'
 
-const PropertySelect = ({ locationChange, properties }) => {
-  const INITIAL_STATE = {
-    property: 2,
-    floor: 2
-  }
-
-  const { change, form } = useForm(INITIAL_STATE)
-  const { floor, property } = form
-
-  return (
-    <>
-      <Select
-        change={change}
-        id='property'
-        label='Property'
-        options={[{ text: 'Select property', value: '' }, ...properties]}
-        value={property}
-      />
-
-      {property && (
-        <ImageLocation
-          change={change}
-          locationChange={locationChange}
-          id='floor'
-          key={property}
-          label='Floor'
-          options={properties[property - 1].options}
-          initial={floor}
-        />
-      )}
-    </>
-  )
-}
-
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
@@ -70,21 +36,11 @@ export default {
 }
 
 export const main = () => (
-  <ImageLocation label='Option' locationChange={action('change')} options={Properties[1].options} />
-)
-
-export const preselected = () => {
-  return (
-    <ImageLocation
-      initial={1}
-      initialCoordinates={{ x: 200, y: 200 }}
-      label='Option'
-      locationChange={action('change')}
-      options={Properties[1].options}
-    />
-  )
-}
-
-export const multipleProperties = () => (
-  <PropertySelect locationChange={action('change')} properties={Properties} />
+  <ImageLocation
+    locationChange={action('change')}
+    coordinatesChange={coordinates => {
+      console.info(coordinates)
+    }}
+    item={Properties[1].options[1]}
+  />
 )

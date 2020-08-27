@@ -28,9 +28,9 @@ export const ImageWrapper = ({ coordinates, item, setCoordinates }) => {
 
   return (
     <StyledImageWrapper onClick={handleImageClick}>
-      {item.image && (
+      {item.filename && (
         <>
-          <Image alt={item.text} src={item.image} />
+          <Image alt={item.name} src={item.filename} />
           <Dot key={item.id} coordinates={coordinates} />
         </>
       )}
