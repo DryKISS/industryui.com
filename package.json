@@ -7,6 +7,7 @@
   ],
   "homepage": "https://industryui.com",
   "main": "dist/industry-ui.js",
+  "types": "dist/index.d.ts",
   "module": "dist/industry-ui.es.js",
   "license": "MIT",
   "version": "1.1.0",
@@ -29,6 +30,7 @@
     "url": "https://github.com/DryKISS/industryui.com/issues"
   },
   "scripts": {
+    "prepublish": "tsc",
     "check": "npm-check -s -u",
     "serve": "npx http-server storybook-static",
     "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
