@@ -37,7 +37,10 @@ export default {
 
 const markerStyles = {
   background: 'green',
-  animation: 'blinker'
+  animation: 'blinker',
+  height: '15px',
+  width: '15px',
+  borderRadius: '50%'
 }
 export const main = () => (
   <ImageLocation

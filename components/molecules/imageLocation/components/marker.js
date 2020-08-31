@@ -24,11 +24,12 @@ const StyledMarker = styled.div`
         `
       : ''};
 
-  border-radius: 50%;
   display: none;
-  height: 10px;
+  height: ${({ styles }) => (styles?.height ? styles.height : '10px')};
+  border-radius: ${({ styles }) => (styles?.borderRadius ? styles.borderRadius : '50%')};
+
+  width: ${({ styles }) => (styles?.width ? styles.width : '10px')};
   position: absolute;
-  width: 10px;
   background-color: ${({ styles }) => (styles?.background ? styles.background : 'red')};
   ${({ coordinates }) =>
     coordinates &&
