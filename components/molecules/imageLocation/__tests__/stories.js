@@ -36,7 +36,8 @@ export default {
 }
 
 const markerStyles = {
-  background: 'green'
+  background: 'green',
+  animation: 'blinker'
 }
 export const main = () => (
   <ImageLocation
