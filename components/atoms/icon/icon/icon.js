@@ -13,6 +13,7 @@ import { DISPLAY, SPACER } from '../../../'
 import { IconPropTypes, IconDefaultProps } from './props'
 
 export const Icon = ({ icon, prefix, ...props }) => {
+  console.log('THE ICON and prefix', icon, prefix)
   return <StyledIcon icon={[prefix, icon]} {...props} />
 }
 

@@ -3,6 +3,21 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "drykiss:components/atoms/icon/icon/icon.Icon (nodejs12.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "",
+        "lambdaHandler": "components/atoms/icon/icon/icon.Icon"
+      },
+      "lambda": {
+        "runtime": "nodejs12.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
       "name": "drykiss:components/molecules/languageSwitcher/components/languageSwitcher.LanguageSwitcher (nodejs12.x)",
       "invokeTarget": {
         "target": "code",

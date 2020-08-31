@@ -35,16 +35,16 @@ export default {
   }
 }
 
-const markerStyles = {
+const markerStylesDefaultProps = {
   background: 'green',
   animation: 'blinker',
-  height: '15px',
-  width: '15px',
+  height: '20px',
+  width: '20px',
   borderRadius: '50%'
 }
 export const main = () => (
   <ImageLocation
-    markerStyles={markerStyles}
+    markerStyles={markerStylesDefaultProps}
     locationChange={action('change')}
     coordinatesChange={coordinates => {
       console.info(coordinates)
@@ -60,7 +60,7 @@ export const withCoordinatesStored = () => {
   }
   return (
     <ImageLocation
-      markerStyles={markerStyles}
+      markerStyles={markerStylesDefaultProps}
       locationChange={action('change')}
       initialCoordinates={initialCoordinates}
       coordinatesChange={coordinates => {
