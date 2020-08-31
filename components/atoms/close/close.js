@@ -53,5 +53,5 @@ Close.propTypes = {
 Close.defaultProps = {
   context: 'danger',
   icon: 'times-circle',
-  iconPrefix: 'far'
+  iconPrefix: 'fas'
 }

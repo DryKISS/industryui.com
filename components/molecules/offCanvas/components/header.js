@@ -6,63 +6,69 @@
 import { oneOf } from 'prop-types'
 
 // UI
-import { Avatar, Button, CONTEXT, Column, Divider, Heading, Row, Text } from '../../../'
+import {
+  Avatar,
+  Button,
+  CONTEXT,
+  Column,
+  Divider,
+  Heading,
+  Icon,
+  Row,
+  Space,
+  Text
+} from '../../../'
 
 // Style
 import styled from 'styled-components'
 import { lighten } from 'polished'
 
-export const OffCanvasHeader = ({
-  context,
-  hasAvatar,
-  headerContent,
-  onClose,
-  title,
-  variant,
-  ...props
-}) => {
+export const OffCanvasHeader = ({ context, hasAvatar, headerContent, onClose, title, variant }) => {
   return (
     <StyledHeader context={context} variant={variant}>
       <Row align='center' justify='between'>
         <Column md={6}>
+          <Icon context={variant === 'extended' ? context : 'white'} icon='expand' prefix='fas' />
           <StyledHeading content={title} context={context} tag='h4' variant={variant} />
         </Column>
 
         <Column md={6}>
-          <ButtonsContainer>
+          <StyledContainer>
             <StyledButton
-              variant={variant}
-              context={context}
               content='Submit'
-              size='sm'
+              context={context}
               outline={variant !== 'normal'}
+              size='sm'
+              variant={variant}
             />
 
             <Divider flexItem size='sm' vertical />
 
             <StyledButton
-              {...props}
               context='darkGrey'
+              onClick={onClose}
+              size='sm'
               startIcon='times'
               startIconProps={{
                 context: variant !== 'normal' ? context : 'white',
                 size: 'lg'
               }}
-              onClick={onClose}
-              size='sm'
+              variant={variant}
             />
-          </ButtonsContainer>
+          </StyledContainer>
         </Column>
       </Row>
+
+      <Space />
 
       <StyledBodyContainer>
         {hasAvatar && (
           <StyledAvatarContainer context={context}>
-            <Avatar content='Avatar' context={context} size='lg' {...props} />
+            <Avatar content='Avatar' context={context} size='lg' />
           </StyledAvatarContainer>
         )}
 
-        <StyledText {...props} content={headerContent} />
+        <StyledText content={headerContent} context={context} size='xs' variant={variant} />
       </StyledBodyContainer>
     </StyledHeader>
   )
@@ -79,8 +85,7 @@ const StyledHeader = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  letter-spacing: 0.5px;
-  padding: 32px 24.5px;
+  padding: 1rem;
   position: fixed;
   width: inherit;
 `
@@ -88,19 +93,24 @@ const StyledHeader = styled.div`
 const StyledHeading = styled(Heading)`
   color: ${({ context, theme: { COLOUR }, variant }) =>
     variant === 'normal' ? COLOUR.black : COLOUR.white};
-  font-size: 20px;
+  display: inline;
   margin: 0;
+  padding-left: 0.25rem;
 `
 
-const ButtonsContainer = styled.div`
+const StyledContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: flex-end;
 `
 
+const StyledButton = styled(Button)`
+  background-color: ${({ context, theme: { COLOUR }, variant }) =>
+    variant === 'normal' ? COLOUR[context] : COLOUR.grey};
+`
+
 const StyledBodyContainer = styled.div`
   display: flex;
-  margin-top: 22px;
 `
 
 const StyledAvatarContainer = styled.div`
@@ -114,17 +124,11 @@ const StyledAvatarContainer = styled.div`
   min-width: 70px;
 `
 
-const StyledButton = styled(Button)`
-  background-color: ${({ context, theme: { COLOUR }, variant }) =>
-    variant === 'normal' ? COLOUR[context] : COLOUR.grey};
-  border-style: none;
-`
-
 const StyledText = styled(Text)`
-  align-items: center;
+  /* align-items: center; */
   color: ${({ context, theme, variant }) =>
     variant === 'normal' ? theme.COLOUR.black : theme.COLOUR.white};
-  display: flex;
+  /* display: flex; */
 `
 
 OffCanvasHeader.propTypes = {

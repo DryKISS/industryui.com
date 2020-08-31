@@ -68,13 +68,13 @@ export const OffCanvasComponent = ({
         width={width}
       >
         <OffCanvasHeader
-          hasAvatar={hasAvatar}
           context={context}
-          variant={variant}
           data-cy='offCanvasHeader'
+          hasAvatar={hasAvatar}
+          headerContent={headerContent}
           onClose={e => toggleShow(false)}
           title={headerText}
-          headerContent={headerContent}
+          variant={variant}
         />
 
         <OffCanvasContent>{children}</OffCanvasContent>
