@@ -14,7 +14,7 @@ import { ImageLocation } from '../../../'
 import Readme from '../README.md'
 
 // Data
-import { Property } from '../__mocks__/properties'
+import { Item } from '../__mocks__/itemFloor'
 
 // Note: Images are imported here to make sure they are included in the bundle,
 // but they are loaded using /static/media/ urls within property data
@@ -35,13 +35,16 @@ export default {
   }
 }
 
+const markerStyles = {
+  background: 'green'
+}
 export const main = () => (
   <ImageLocation
     locationChange={action('change')}
     coordinatesChange={coordinates => {
       console.info(coordinates)
     }}
-    item={Property}
+    item={Item}
   />
 )
 
@@ -52,12 +55,13 @@ export const withCoordinatesStored = () => {
   }
   return (
     <ImageLocation
+      markerStyles={markerStyles}
       locationChange={action('change')}
       initialCoordinates={initialCoordinates}
       coordinatesChange={coordinates => {
         console.info(coordinates)
       }}
-      item={Property}
+      item={Item}
     />
   )
 }

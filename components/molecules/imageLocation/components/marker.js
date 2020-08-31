@@ -5,11 +5,10 @@
 // React
 import React from 'react'
 import { object } from 'prop-types'
-
 import styled, { keyframes } from 'styled-components'
 
-export const Dot = ({ coordinates }) => {
-  return <StyledDot coordinates={coordinates} />
+export const Marker = ({ coordinates }) => {
+  return <StyledMarker coordinates={coordinates} />
 }
 
 const blinker = keyframes`
@@ -17,7 +16,7 @@ const blinker = keyframes`
     opacity: 0;
   }`
 
-const StyledDot = styled.div`
+const StyledMarker = styled.div`
   animation: ${blinker} 1s linear infinite;
   background: red;
   border-radius: 50%;
@@ -34,6 +33,6 @@ const StyledDot = styled.div`
   `}
 `
 
-Dot.propTypes = {
-  position: object
+Marker.propTypes = {
+  coordinates: object
 }
