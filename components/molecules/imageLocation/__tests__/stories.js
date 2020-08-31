@@ -40,6 +40,7 @@ const markerStyles = {
 }
 export const main = () => (
   <ImageLocation
+    markerStyles={markerStyles}
     locationChange={action('change')}
     coordinatesChange={coordinates => {
       console.info(coordinates)

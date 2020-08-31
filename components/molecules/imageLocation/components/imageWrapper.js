@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { Image } from '../../../'
 import { Marker } from '../../'
 
-export const ImageWrapper = ({ coordinates, item, setCoordinates }) => {
+export const ImageWrapper = ({ coordinates, item, setCoordinates, markerStyles }) => {
   const handleImageClick = event => {
     const rect = event.target.getBoundingClientRect()
     const offsetX = event.clientX - rect.left
@@ -31,7 +31,7 @@ export const ImageWrapper = ({ coordinates, item, setCoordinates }) => {
       {item.filename && (
         <>
           <Image alt={item.name} src={item.filename} />
-          <Marker key={item.id} coordinates={coordinates} />
+          <Marker key={item.id} styles={markerStyles} coordinates={coordinates} />
         </>
       )}
     </StyledImageWrapper>

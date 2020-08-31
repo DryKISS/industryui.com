@@ -11,7 +11,13 @@ import styled from 'styled-components'
 // UI
 import { ImageWrapper } from '../../'
 
-export const ImageLocation = ({ initialCoordinates, coordinatesChange, item, show }) => {
+export const ImageLocation = ({
+  initialCoordinates,
+  coordinatesChange,
+  markerStyles,
+  item,
+  show
+}) => {
   const [coordinates, setCoordinates] = useState(initialCoordinates)
 
   useEffect(() => {
@@ -21,7 +27,12 @@ export const ImageLocation = ({ initialCoordinates, coordinatesChange, item, sho
   return (
     <StyledImageLocation show={show}>
       {item && (
-        <ImageWrapper coordinates={coordinates} item={item} setCoordinates={setCoordinates} />
+        <ImageWrapper
+          coordinates={coordinates}
+          markerStyles={markerStyles}
+          item={item}
+          setCoordinates={setCoordinates}
+        />
       )}
     </StyledImageLocation>
   )
@@ -34,6 +45,8 @@ const StyledImageLocation = styled.div`
 
 ImageLocation.propTypes = {
   className: string,
+  initialCoordinates: object,
+  markerStyles: object,
   coordinatesChange: func,
   item: object,
   style: object,

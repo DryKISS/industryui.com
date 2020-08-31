@@ -7,8 +7,8 @@ import React from 'react'
 import { object } from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 
-export const Marker = ({ coordinates }) => {
-  return <StyledMarker coordinates={coordinates} />
+export const Marker = ({ coordinates, styles }) => {
+  return <StyledMarker styles={styles} coordinates={coordinates} />
 }
 
 const blinker = keyframes`
@@ -18,12 +18,14 @@ const blinker = keyframes`
 
 const StyledMarker = styled.div`
   animation: ${blinker} 1s linear infinite;
-  background: red;
+
   border-radius: 50%;
   display: none;
   height: 10px;
   position: absolute;
   width: 10px;
+  background-color: ${({ styles }) => (styles?.background ? styles.background : 'red')};
+
   ${({ coordinates }) =>
     coordinates &&
     `
@@ -34,5 +36,6 @@ const StyledMarker = styled.div`
 `
 
 Marker.propTypes = {
-  coordinates: object
+  coordinates: object,
+  styles: object
 }
