@@ -57,10 +57,10 @@ const StyledMarker = styled.div`
       : ''};
 
   display: none;
-  height: ${({ styles }) => (styles?.height ? styles.height : '10px')};
+  height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
   border-radius: ${({ styles }) => (styles?.borderRadius ? styles.borderRadius : '50%')};
 
-  width: ${({ styles }) => (styles?.width ? styles.width : '10px')};
+  width: ${({ styles }) => (styles?.width ? styles.width : '15px')};
   position: absolute;
   background-color: ${({ styles }) => (styles?.color ? styles.color : 'red')};
   ${({ coordinates }) =>
