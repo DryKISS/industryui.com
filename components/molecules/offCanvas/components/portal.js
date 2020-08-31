@@ -40,9 +40,10 @@ export const OffCanvas = props => {
 }
 
 OffCanvas.propTypes = {
+  closeOnOverlayClick: bool,
   container: any,
   context: oneOf(Object.values(CONTEXT)),
-  closeOnOverlayClick: bool,
+  handleSubmit: func,
   headerText: string.isRequired,
   lockScrollOnOpen: bool,
   overlay: bool,
@@ -58,6 +59,7 @@ OffCanvas.propTypes = {
 OffCanvas.defaultProps = {
   closeOnOverlayClick: true,
   context: 'primary',
+  overlay: true,
   overlayOpacity: 0.3,
   placement: 'right',
   transitionDuration: 300,

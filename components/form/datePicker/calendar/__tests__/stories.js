@@ -11,7 +11,7 @@ import { Wrapper } from 'decorators'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
+import { object, string } from 'yup'
 
 // Date utility
 import addDays from 'date-fns/addDays'
@@ -37,8 +37,8 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const schema = yup.object().shape({
-    expiryAt: yup.string().required()
+  const schema = object().shape({
+    expiryAt: string().required()
   })
 
   const { control, errors, getValues, handleSubmit } = useForm({

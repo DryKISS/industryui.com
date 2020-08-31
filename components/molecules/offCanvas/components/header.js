@@ -9,6 +9,7 @@ import { oneOf } from 'prop-types'
 import {
   Avatar,
   Button,
+  Close,
   CONTEXT,
   Column,
   Divider,
@@ -26,9 +27,9 @@ import { lighten } from 'polished'
 export const OffCanvasHeader = ({ context, hasAvatar, headerContent, onClose, title, variant }) => {
   return (
     <StyledHeader context={context} variant={variant}>
-      <Row align='center' justify='between'>
+      <Row>
         <Column md={6}>
-          <Icon context={variant === 'extended' ? context : 'white'} icon='expand' prefix='fas' />
+          <Icon context={variant === 'extended' ? 'white' : context} icon='expand' prefix='fas' />
           <StyledHeading content={title} context={context} tag='h4' variant={variant} />
         </Column>
 
@@ -37,24 +38,16 @@ export const OffCanvasHeader = ({ context, hasAvatar, headerContent, onClose, ti
             <StyledButton
               content='Submit'
               context={context}
+              form='offCanvasForm'
               outline={variant !== 'normal'}
               size='sm'
               variant={variant}
+              type='submit'
             />
 
             <Divider flexItem size='sm' vertical />
 
-            <StyledButton
-              context='darkGrey'
-              onClick={onClose}
-              size='sm'
-              startIcon='times'
-              startIconProps={{
-                context: variant !== 'normal' ? context : 'white',
-                size: 'lg'
-              }}
-              variant={variant}
-            />
+            <Close click={onClose} context={variant === 'normal' ? context : 'white'} />
           </StyledContainer>
         </Column>
       </Row>

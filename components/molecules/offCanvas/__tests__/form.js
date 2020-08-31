@@ -2,14 +2,36 @@
  * Molecules - OffCanvas - Tests - Form
  */
 
-// UI
-import { Button, FormForm, FormField, FormLabel } from 'components'
+// React Hook Form
+import { useForm } from 'react-hook-form'
+import { object, string } from 'yup'
 
-export const OffCanvasForm = ({ register }) => {
-  const defaultOptions = { register: register }
+// UI
+import { FormForm, FormField, FormLabel } from 'components'
+
+export const OffCanvasForm = ({ onSubmit }) => {
+  const schema = object().shape({
+    name: string().required(),
+    surname: string().required(),
+    color: string().required(),
+    brand: string().required(),
+    preferences: string().required(),
+    suggestions: string().required(),
+    email: string().required(),
+    password: string().required()
+  })
+
+  const { errors, handleSubmit, register } = useForm({
+    validationSchema: schema
+  })
+
+  const defaultOptions = {
+    errors: errors,
+    register: register
+  }
 
   return (
-    <FormForm submit={() => {}}>
+    <FormForm id='offCanvasForm' handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Name'>
         <FormField {...defaultOptions} name='name' placeholder='Alfred' />
       </FormLabel>
@@ -23,15 +45,15 @@ export const OffCanvasForm = ({ register }) => {
       </FormLabel>
 
       <FormLabel label='Brand'>
-        <FormField {...defaultOptions} name='brand' placeholder='Red' />
+        <FormField {...defaultOptions} name='brand' placeholder='Apple' />
       </FormLabel>
 
       <FormLabel label='Preferences'>
-        <FormField {...defaultOptions} name='preferences' placeholder='Red' />
+        <FormField {...defaultOptions} name='preferences' placeholder='Two' />
       </FormLabel>
 
       <FormLabel label='Suggestions'>
-        <FormField {...defaultOptions} name='suggestions' placeholder='Red' />
+        <FormField {...defaultOptions} name='suggestions' placeholder='One' />
       </FormLabel>
 
       <FormLabel label='Email'>
@@ -51,17 +73,6 @@ export const OffCanvasForm = ({ register }) => {
           type='password'
         />
       </FormLabel>
-
-      <FormLabel label='Repeat your Password'>
-        <FormField
-          {...defaultOptions}
-          name='repeatPassword'
-          placeholder='Enter your password'
-          type='password'
-        />
-      </FormLabel>
-
-      <Button content='Go to next step' secondary type='submit' />
     </FormForm>
   )
 }

@@ -23,7 +23,7 @@ export const OffCanvasOverlay = styled.div`
 
 OffCanvasOverlay.propTypes = {
   duration: number,
-  opacity: string,
+  opacity: number,
   show: bool,
   width: string
 }
