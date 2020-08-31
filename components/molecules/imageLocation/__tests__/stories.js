@@ -14,7 +14,7 @@ import { ImageLocation } from '../../../'
 import Readme from '../README.md'
 
 // Data
-import { Properties } from '../__mocks__/properties'
+import { Property } from '../__mocks__/properties'
 
 // Note: Images are imported here to make sure they are included in the bundle,
 // but they are loaded using /static/media/ urls within property data
@@ -41,6 +41,23 @@ export const main = () => (
     coordinatesChange={coordinates => {
       console.info(coordinates)
     }}
-    item={Properties[1].options[1]}
+    item={Property}
   />
 )
+
+export const withCoordinatesStored = () => {
+  const initialCoordinates = {
+    x: 449,
+    y: 454
+  }
+  return (
+    <ImageLocation
+      locationChange={action('change')}
+      initialCoordinates={initialCoordinates}
+      coordinatesChange={coordinates => {
+        console.info(coordinates)
+      }}
+      item={Property}
+    />
+  )
+}

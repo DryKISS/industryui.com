@@ -4,7 +4,7 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { array, bool, func, string, object } from 'prop-types'
+import { bool, func, string, object } from 'prop-types'
 
 import styled from 'styled-components'
 
@@ -36,7 +36,6 @@ ImageLocation.propTypes = {
   className: string,
   coordinatesChange: func,
   item: object,
-  options: array.isRequired,
   style: object,
   show: bool
 }
