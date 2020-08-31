@@ -36,11 +36,15 @@ export default {
 }
 
 const markerStylesDefaultProps = {
-  background: 'green',
+  color: 'green',
   animation: 'blinker',
   height: '20px',
   width: '20px',
-  borderRadius: '50%'
+  borderRadius: '50%',
+  shape: {
+    icon: 'images',
+    prefix: 'fas'
+  }
 }
 export const main = () => (
   <ImageLocation
