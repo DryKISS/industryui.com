@@ -10,7 +10,7 @@ import { Icon } from 'components'
 
 // FontAwesome
 
-export const Marker = ({ coordinates, styles, isShape }) => {
+export const Marker = ({ coordinates, styles }) => {
   return (
     <>
       {styles?.shape ? (
@@ -81,4 +81,15 @@ const StyledMarker = styled.div`
 Marker.propTypes = {
   coordinates: object,
   styles: object
+}
+
+Marker.defaultProps = {
+  styles: {
+    color: 'red',
+    animation: '',
+    height: '20px',
+    width: '20px',
+    borderRadius: '50%',
+    shape: ''
+  }
 }
