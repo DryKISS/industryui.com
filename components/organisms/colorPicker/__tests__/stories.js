@@ -26,9 +26,7 @@ export default {
     }
   }
 }
-
-const type = 'Circle'
-export const main = () => {
+const BaseComponent = ({ type, onChangeComplete, ...props }) => {
   const defaultProps = {
     type: select(
       'Type',
@@ -40,34 +38,24 @@ export const main = () => {
       },
       'sketch'
     ),
-    color: select(
-      'Color',
-      {
-        Red: 'red',
-        Blue: 'blue',
-        Green: 'green',
-        Orange: 'orange'
-      },
-      'red'
-    )
+    ...props
   }
-  const [assetIconColor, setAssetIconColor] = useState(defaultProps.color)
 
+  return <ColorPicker type={type} onChangeComplete={onChangeComplete} {...defaultProps} />
+}
+
+export const main = () => {
+  const [assetIconColor, setAssetIconColor] = useState('green')
   const changeColor = color => {
-    console.log('color', color)
-    setAssetIconColor(color)
+    console.info('color', color)
+    setAssetIconColor(color.hex)
   }
 
   return (
     <div>
       <p>Color Selected </p>
       <StyledBackgroundColor assetIconColor={assetIconColor} />
-
-      <ColorPicker
-        type={type}
-        onChangeComplete={newColor => changeColor(newColor.hex)}
-        {...defaultProps}
-      />
+      <BaseComponent onChangeComplete={changeColor} color={assetIconColor} />
     </div>
   )
 }
