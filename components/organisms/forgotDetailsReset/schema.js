@@ -3,11 +3,10 @@
  */
 
 // Yup
-import * as yup from 'yup'
+import { object, string } from 'yup'
 
-export const ForgotDetailsResetSchema = yup.object().shape({
-  password: yup
-    .string()
+export const ForgotDetailsResetSchema = object().shape({
+  password: string()
     .required('Please Enter a password')
     .min(8, 'Password is too short - should be 8 chars minimum.')
     .matches(

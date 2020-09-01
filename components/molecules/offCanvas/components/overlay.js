@@ -2,6 +2,9 @@
  * Molecules - OffCanvas - Overlay
  */
 
+// React
+import { bool, number, string } from 'prop-types'
+
 // Style
 import styled from 'styled-components'
 
@@ -17,3 +20,15 @@ export const OffCanvasOverlay = styled.div`
   will-change: background-color;
   z-index: 9998;
 `
+
+OffCanvasOverlay.propTypes = {
+  duration: number,
+  opacity: number,
+  show: bool,
+  width: string
+}
+
+OffCanvasOverlay.defaultProps = {
+  duration: 300,
+  opacity: 0.3
+}
