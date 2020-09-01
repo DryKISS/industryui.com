@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 // Storybook
 import { Wrapper } from 'decorators'
-import { select } from '@storybook/addon-knobs'
+import { select, text } from '@storybook/addon-knobs'
 
 // UI
 import { ColorPicker } from 'components'
@@ -26,7 +26,7 @@ export default {
     }
   }
 }
-const BaseComponent = ({ type, onChangeComplete, ...props }) => {
+const BaseComponent = ({ onChangeComplete, ...props }) => {
   const defaultProps = {
     type: select(
       'Type',
@@ -38,10 +38,12 @@ const BaseComponent = ({ type, onChangeComplete, ...props }) => {
       },
       'sketch'
     ),
+    width: text('width', '254px'),
+
     ...props
   }
 
-  return <ColorPicker type={type} onChangeComplete={onChangeComplete} {...defaultProps} />
+  return <ColorPicker onChangeComplete={onChangeComplete} {...defaultProps} />
 }
 
 export const main = () => {

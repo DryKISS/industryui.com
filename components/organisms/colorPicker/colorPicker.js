@@ -25,10 +25,12 @@ export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
 }
 
 ColorPicker.defaultProps = {
-  type: 'sketch'
+  type: 'sketch',
+  width: '254px'
 }
 
 ColorPicker.propTypes = {
   type: string,
-  onChangeComplete: func.isRequired
+  onChangeComplete: func.isRequired,
+  width: string
 }
