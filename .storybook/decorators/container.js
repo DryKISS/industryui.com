@@ -6,6 +6,7 @@
 import {
   ConfigProvider,
   InternationalisationProvider,
+  OffCanvasProvider,
   Theme,
   ThemeStyle,
   UserProvider
@@ -21,9 +22,9 @@ export const Container = Story => {
         <ThemeStyle />
         <UserProvider>
           <InternationalisationProvider locale='en'>
-            <div>
+            <OffCanvasProvider>
               <Story />
-            </div>
+            </OffCanvasProvider>
           </InternationalisationProvider>
         </UserProvider>
       </ConfigProvider>

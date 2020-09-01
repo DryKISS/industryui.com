@@ -10,7 +10,7 @@ import { Wrapper } from 'decorators'
 
 // Reach Hook Form
 import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
+import { object, string } from 'yup'
 
 // UI
 import { Button, FormForm, FormLabel, SelectField, SelectCountryField } from 'components'
@@ -29,8 +29,8 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const schema = yup.object().shape({
-    select: yup.string().required()
+  const schema = object().shape({
+    select: string().required()
   })
 
   const { errors, getValues, handleSubmit, register } = useForm({ validationSchema: schema })

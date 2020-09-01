@@ -11,7 +11,7 @@ import { Wrapper } from 'decorators'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
+import { object, string } from 'yup'
 
 // UI
 import { Button, DatePickerInput, Divider, FormForm } from 'components'
@@ -29,10 +29,10 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const schema = yup.object().shape({
-    dayPicker: yup.string().required(),
-    monthPicker: yup.string().required(),
-    yearPicker: yup.string().required()
+  const schema = object().shape({
+    dayPicker: string().required(),
+    monthPicker: string().required(),
+    yearPicker: string().required()
   })
 
   const { errors, getValues, handleSubmit, register } = useForm({

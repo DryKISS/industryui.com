@@ -4,17 +4,21 @@
 
 // React
 import React, { useState, useEffect } from 'react'
-import { any, bool, func, number, oneOf, string } from 'prop-types'
+import { any, bool, func, node, number, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
-import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../'
+import {
+  CONTEXT,
+  OffCanvasDiv,
+  OffCanvasHeader,
+  OffCanvasContent,
+  OffCanvasOverlay
+} from '../../../'
 
 export const OffCanvasComponent = ({
+  children,
   closeOnOverlayClick,
   context,
-  variant,
-  children,
   hasAvatar,
   headerText,
   headerContent,
@@ -25,13 +29,17 @@ export const OffCanvasComponent = ({
   show,
   toggleShow,
   transitionDuration,
+  variant,
   width
 }) => {
   const [initialState, setInitialState] = useState(false)
 
   useEffect(() => {
-    if (show) setTimeout(() => setInitialState(true), 1)
-    else setInitialState(false)
+    if (show) {
+      setTimeout(() => setInitialState(true), 1)
+    } else {
+      setInitialState(false)
+    }
   }, [show])
 
   const handleOverlayClick = () => {
@@ -60,13 +68,13 @@ export const OffCanvasComponent = ({
         width={width}
       >
         <OffCanvasHeader
-          hasAvatar={hasAvatar}
           context={context}
-          variant={variant}
           data-cy='offCanvasHeader'
+          hasAvatar={hasAvatar}
+          headerContent={headerContent}
           onClose={e => toggleShow(false)}
           title={headerText}
-          headerContent={headerContent}
+          variant={variant}
         />
 
         <OffCanvasContent>{children}</OffCanvasContent>
@@ -76,10 +84,14 @@ export const OffCanvasComponent = ({
 }
 
 OffCanvasComponent.propTypes = {
+  children: node,
+  closeOnOverlayClick: bool,
   context: oneOf(Object.values(CONTEXT)),
   container: any,
-  closeOnOverlayClick: bool,
+  hasAvatar: bool,
   headerText: string.isRequired,
+  headerContent: string,
+  height: string,
   lockScrollOnOpen: bool,
   overlay: bool,
   overlayOpacity: number,
@@ -87,15 +99,17 @@ OffCanvasComponent.propTypes = {
   show: bool.isRequired,
   toggleShow: func.isRequired,
   transitionDuration: number,
+  variant: string,
   width: string
 }
 
 OffCanvasComponent.defaultProps = {
   closeOnOverlayClick: true,
   context: 'secondary',
+  hasAvatar: false,
+  overlay: true,
   overlayOpacity: 0.3,
   placement: 'right',
   transitionDuration: 300,
-  width: '30vw',
-  hasAvatar: false
+  width: '30vw'
 }

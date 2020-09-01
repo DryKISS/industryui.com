@@ -51,8 +51,13 @@ export const Button = forwardRef(
 )
 
 const getTextContext = (context, outline, theme) => {
-  if (context === 'white') return 'primary'
-  if (outline) return context
+  if (context === 'white') {
+    return 'primary'
+  }
+
+  if (outline) {
+    return context
+  }
 
   return 'white'
 }
@@ -68,7 +73,7 @@ const StyledButton = styled.button`
   display: ${({ block, centre }) => (centre || block ? 'flex' : 'inline-flex')};
   align-items: center;
   justify-content: center;
-  font-family: ${({ theme }) => theme.font};   /* stylelint-disable-line */
+  font-family: ${({ theme }) => theme.font}; /* stylelint-disable-line */
   outline: none;
   overflow: visible;
   text-decoration: none;
@@ -151,5 +156,4 @@ const StyledContent = styled.div`
 `
 
 Button.propTypes = ButtonPropTypes
-
 Button.defaultProps = ButtonDefaultProps

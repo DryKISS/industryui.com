@@ -34,6 +34,7 @@
     "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
     "standard": "standard | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy",
+    "prettier-local": "prettier-standard  --lint",
     "prettier": "prettier-standard --staged --lint",
     "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
