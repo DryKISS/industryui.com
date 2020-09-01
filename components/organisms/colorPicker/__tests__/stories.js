@@ -1,5 +1,5 @@
 /**
- * Big Calendar
+ * Color picker
  */
 
 // React
