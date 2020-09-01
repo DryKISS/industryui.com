@@ -18,13 +18,7 @@ import Readme from '../README.md'
 // Data
 import { Item } from '../__mocks__/itemFloor'
 
-// Note: Images are imported here to make sure they are included in the bundle,
-// but they are loaded using /static/media/ urls within property data
 import '../__resources__/images/ground-floor.png'
-import '../__resources__/images/first-floor.png'
-import '../__resources__/images/second-floor.png'
-import '../__resources__/images/third-floor.png'
-import '../__resources__/images/fourth-floor.png'
 
 export default {
   title: 'Molecules/ImageLocation',
@@ -37,8 +31,7 @@ export default {
   }
 }
 
-// TODO: CHeck how to implement here the shape
-export const main = () => {
+const BaseComponent = (props = {}) => {
   const markerStylesDefaultProps = {
     color: select(
       'Color',
@@ -60,15 +53,26 @@ export const main = () => {
     ),
     height: '20px',
     width: '20px',
-    borderRadius: '50%'
-    /* shape: {
-      icon: 'images',
-      prefix: 'fas'
-    } */
+    borderRadius: '50%',
+    shape: select(
+      'Shape',
+      {
+        Yes: {
+          icon: 'images',
+          prefix: 'fas'
+        },
+        No: ''
+      },
+      ''
+    )
   }
+
+  return <ImageLocation markerStyles={markerStylesDefaultProps} {...props} />
+}
+// TODO: CHeck how to implement here the shape
+export const main = () => {
   return (
-    <ImageLocation
-      markerStyles={markerStylesDefaultProps}
+    <BaseComponent
       locationChange={action('change')}
       coordinatesChange={coordinates => {
         console.info(coordinates)

@@ -39,6 +39,12 @@ const StyledIcon = styled(Icon)`
   color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
   position: absolute;
   background-color: white;
+  animation: ${({ styles }) =>
+    styles?.animation === 'blinker'
+      ? css`
+          ${blinker} 1s ease-in-out infinite forwards
+        `
+      : ''};
   ${({ coordinates }) =>
     coordinates &&
     `
