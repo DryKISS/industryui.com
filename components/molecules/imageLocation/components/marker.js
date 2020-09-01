@@ -1,14 +1,16 @@
 /**
- * Image Location
+ * Marker
  */
 
 // React
 import React from 'react'
 import { object } from 'prop-types'
-import styled, { keyframes, css } from 'styled-components'
-import { Icon } from 'components'
 
-// FontAwesome
+// Style
+import styled, { keyframes, css } from 'styled-components'
+
+// UI
+import { Icon } from 'components'
 
 export const Marker = ({ coordinates, styles }) => {
   return (
