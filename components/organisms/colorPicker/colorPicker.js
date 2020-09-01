@@ -4,23 +4,23 @@
 
 // React
 import React from 'react'
-import { string } from 'prop-types'
+import { string, func } from 'prop-types'
 
 // React Color
 import { SketchPicker, CirclePicker, TwitterPicker, GithubPicker } from 'react-color'
 
-export const ColorPicker = ({ type, ...props }) => {
+export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
   switch (type) {
     case 'circle':
-      return <CirclePicker {...props} />
+      return <CirclePicker onChangeComplete={onChangeComplete} {...props} />
     case 'sketch':
-      return <SketchPicker {...props} />
+      return <SketchPicker onChangeComplete={onChangeComplete} {...props} />
     case 'github':
-      return <GithubPicker {...props} />
+      return <GithubPicker onChangeComplete={onChangeComplete} {...props} />
     case 'twitter':
-      return <TwitterPicker {...props} />
+      return <TwitterPicker onChangeComplete={onChangeComplete} {...props} />
     default:
-      return <SketchPicker {...props} />
+      return <SketchPicker onChangeComplete={onChangeComplete} {...props} />
   }
 }
 
@@ -29,5 +29,6 @@ ColorPicker.defaultProps = {
 }
 
 ColorPicker.propTypes = {
-  type: string
+  type: string,
+  onChangeComplete: func.isRequired
 }

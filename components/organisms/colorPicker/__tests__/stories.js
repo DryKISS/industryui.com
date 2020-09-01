@@ -3,7 +3,10 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
+
+// Styled Components
+import styled from 'styled-components'
 
 // Storybook
 import { Wrapper } from 'decorators'
@@ -48,6 +51,30 @@ export const main = () => {
       'red'
     )
   }
+  const [assetIconColor, setAssetIconColor] = useState(defaultProps.color)
 
-  return <ColorPicker type={type} {...defaultProps} />
+  const changeColor = color => {
+    console.log('color', color)
+    setAssetIconColor(color)
+  }
+
+  return (
+    <div>
+      <p>Color Selected </p>
+      <StyledBackgroundColor assetIconColor={assetIconColor} />
+
+      <ColorPicker
+        type={type}
+        onChangeComplete={newColor => changeColor(newColor.hex)}
+        {...defaultProps}
+      />
+    </div>
+  )
 }
+
+const StyledBackgroundColor = styled.div`
+  margin: 20px;
+  height: 20px;
+  width: 20px;
+  background-color: ${({ assetIconColor }) => assetIconColor};
+`
