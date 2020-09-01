@@ -23,12 +23,13 @@ export default {
 
 export const RandomKeysShowCase = () => {
   const elementsLength = 50
-  const keys = Array.from(Array(elementsLength).keys()).map((_, __) => {
+  const arr = Array.from(Array(elementsLength).keys())
+  const keys = arr.map((_, __) => {
     return RandomKey()
   })
   return (
     <ElementsWrapper>
-      {Array.from(Array(elementsLength).keys()).map((_, index) => {
+      {arr.map((_, index) => {
         console.log(keys[index])
         return <p key={keys[index]}>{keys[index]}</p>
       })}
