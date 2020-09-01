@@ -9,9 +9,7 @@ import { DividerPropTypes, DividerDefaultProps } from './props'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Divider = props => <StyledDivider {...props} />
-
-const StyledDivider = styled.hr`
+export const Divider = styled.hr`
   border: none;
   width: 100%;
   height: ${({ thickness }) => thickness}px;
@@ -56,5 +54,4 @@ const StyledDivider = styled.hr`
 `
 
 Divider.propTypes = DividerPropTypes
-
 Divider.defaultProps = DividerDefaultProps

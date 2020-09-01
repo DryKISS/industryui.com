@@ -192,7 +192,7 @@ exports[`Storyshots Atoms/Button/Toolbar Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Close Custom Context 1`] = `
+exports[`Storyshots Atoms/Close Context 1`] = `
 @media (min-width:62em) {
 
 }
@@ -208,7 +208,7 @@ exports[`Storyshots Atoms/Close Custom Context 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Close Custom Icon 1`] = `
+exports[`Storyshots Atoms/Close Custom 1`] = `
 @media (min-width:62em) {
 
 }
@@ -3185,54 +3185,6 @@ exports[`Storyshots Molecules/Notification Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/OffCanvas Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/OffCanvas With Dynamic Content 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/OffCanvas With Mail Form 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/OffCanvas With Overlay 1`] = `
 @media (min-width:62em) {
 
 }

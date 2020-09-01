@@ -1,5 +1,5 @@
 /**
- * Molecules - OffCanvas - Content
+ * Molecules - OffCanvas - Container
  */
 
 // React
@@ -71,6 +71,7 @@ export const OffCanvasDiv = styled.div`
 `
 
 OffCanvasDiv.propTypes = {
+  height: string,
   show: bool,
   width: string
 }

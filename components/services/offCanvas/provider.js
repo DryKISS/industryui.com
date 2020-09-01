@@ -20,6 +20,7 @@ const DURATION = 300
 export const OffCanvasProvider = ({ children }) => {
   const [dataManager, setDataManager] = useState([])
   const [visibilityManager, setVisibilityManager] = useState([])
+
   const handleClose = () => {
     setVisibilityManager(prev => {
       prev.pop()
@@ -42,7 +43,9 @@ export const OffCanvasProvider = ({ children }) => {
     if (data && data.content) {
       setVisibilityManager(prev => [...prev, true])
       setDataManager(prev => [...prev, data])
-    } else handleClose()
+    } else {
+      handleClose()
+    }
   }
 
   // Get width and placement from first item
@@ -50,6 +53,10 @@ export const OffCanvasProvider = ({ children }) => {
 
   // Get title and content from last item
   const data = getLast(dataManager)
+
+  // Debug
+  // console.log('Data', data)
+  // console.log('Options', options)
 
   return (
     <OffCanvasContext.Provider
@@ -61,15 +68,20 @@ export const OffCanvasProvider = ({ children }) => {
       {children}
 
       <OffCanvas
-        context={data && data.context}
-        headerText={(data && data.title) || ''}
+        context={data?.context}
+        handleSubmit={data?.handleSubmit}
+        hasAvatar={data?.hasAvatar}
+        headerContent={data?.headerContent}
+        headerText={data?.title || ''}
         lockScrollOnOpen
         overlay
-        placement={options && options.placement}
+        overlayOpacity={data?.overlayOpacity}
+        placement={options?.placement}
         show={!!visibilityManager.length}
         toggleShow={handleClose}
         transitionDuration={DURATION}
-        width={options && options.width}
+        variant={data?.variant}
+        width={options?.width}
       >
         {dataManager.map((d, i) => (
           <StyledWrapper key={i} show={i + 1 === dataManager.length}>

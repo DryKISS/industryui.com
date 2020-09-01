@@ -9,7 +9,7 @@ import React from 'react'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
+// React Hook Form
 import { useForm } from 'react-hook-form'
 
 // UI
