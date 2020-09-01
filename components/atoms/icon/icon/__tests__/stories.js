@@ -10,9 +10,8 @@ import { boolean, color, object, text, withKnobs } from '@storybook/addon-knobs'
 import { Context, IconPrefix, IconSize, ListIcons, Wrapper } from 'decorators'
 
 // UI
-import { Card, Heading, Icon } from 'root'
+import { blendLinearRgb, Card, Heading, Icon } from 'components'
 import Readme from '../README.md'
-import { blendLinearRgb } from 'components'
 
 // Style
 import styled from 'styled-components'

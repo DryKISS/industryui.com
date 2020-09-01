@@ -1,5 +1,5 @@
 /**
- * Messaging/MessageBackground
+ * Messaging/Background
  */
 
 // React
@@ -10,7 +10,7 @@ import { select, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { MessageBackground } from '../'
+import { MessageBackground } from 'components'
 import Readme from '../README.md'
 
 const Height = story => {

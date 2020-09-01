@@ -7,7 +7,8 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Wrapper } from 'decorators'
+import { Context, Wrapper } from 'decorators'
+import { text, withKnobs } from '@storybook/addon-knobs'
 
 // UI
 import { Close } from 'components'
@@ -16,7 +17,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Close',
   component: Close,
-  decorators: [Wrapper],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -24,8 +25,19 @@ export default {
   }
 }
 
-export const main = () => <Close click={action('clicked')} />
+const BaseComponent = (props = {}) => {
+  const defaultProps = {
+    className: text('Classname', ''),
+    click: action('clicked'),
+    context: Context('', 'dark'),
+    icon: text('Icon', 'times-circle'),
+    iconPrefix: text('Icon prefix', 'fas'),
+    ...props
+  }
 
-export const customIcon = () => <Close click={action('clicked')} icon='trash' iconPrefix='fad' />
+  return <Close {...defaultProps} />
+}
 
-export const customContext = () => <Close click={action('clicked')} context='primary' />
+export const main = () => <BaseComponent />
+export const custom = () => <BaseComponent icon='copy' iconPrefix='far' />
+export const context = () => <BaseComponent context='danger' />

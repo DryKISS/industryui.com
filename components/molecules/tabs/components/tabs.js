@@ -38,6 +38,10 @@ export const Tabs = ({ children, className, handleChange }) => {
   }
 
   const handleTabChange = tab => {
+    // Debug
+    // console.log('Router change ', router)
+    // console.log('Router change2 ', router, router.query.id, router.query)
+
     const href = `${router.pathname}?id=${router.query.id}&tab=${tab}`
     Router.push(href, href, { shallow: true })
   }

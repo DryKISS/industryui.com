@@ -22,6 +22,7 @@ import TagManager from 'react-gtm-module'
 import {
   AuthorizationProvider,
   ConfigProvider,
+  InternationalisationProvider,
   NotificationsProvider,
   OffCanvasProvider,
   PageProgressBar,
@@ -68,13 +69,18 @@ export class MyApp extends App {
     return (
       <>
         <ThemeStyle />
-
         {user && (
           <UserProvider>
             <AuthorizationProvider>
-              <NotificationsProvider>
-                {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
-              </NotificationsProvider>
+              <InternationalisationProvider>
+                <NotificationsProvider>
+                  {offCanvas ? (
+                    <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
+                  ) : (
+                    this.layout()
+                  )}
+                </NotificationsProvider>
+              </InternationalisationProvider>
             </AuthorizationProvider>
           </UserProvider>
         )}

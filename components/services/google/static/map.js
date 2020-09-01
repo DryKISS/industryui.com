@@ -1,7 +1,9 @@
 /**
  * Google Static Map Service Class
  * Description: Generates an url for the static map
- * @param {Array} Obj.paths  // [{ color: '0x003753', geodesic: true, weight: '5', points: ['WC2E 9DD', 'SW1A']}]
+ *
+ * @param {Array} Obj.paths
+ * [{ color: '0x003753', geodesic: true, weight: '5', points: ['WC2E 9DD', 'SW1A']}]
  */
 
 // UI
@@ -123,27 +125,31 @@ export class StaticMap {
 
   renderMarkers () {
     const { markers, locationBuilder, location } = this
-    const urlParts = markers.length
-      ? markers.map(marker => {
-          let markerUrl = 'markers='
-          switch (typeof marker) {
-            case 'string': {
-              markerUrl += locationBuilder(marker)
-              break
-            }
-            case 'object': {
-              const { colour, label, location } = marker
-              const markerColour = colour && `color:${colour}|`
-              const markerLabel = label && `label:${label}|`
-              const markerLocation = location && `${locationBuilder(location)}|`
-              markerUrl += markerColour + markerLabel + markerLocation
-              break
-            }
-          }
+    let urlParts = {}
 
-          return markerUrl
-        })
-      : [`markers=${locationBuilder(location)}`]
+    if (markers.length) {
+      urlParts = markers.map(marker => {
+        let markerUrl = 'markers='
+        switch (typeof marker) {
+          case 'string': {
+            markerUrl += locationBuilder(marker)
+            break
+          }
+          case 'object': {
+            const { colour, label, location } = marker
+            const markerColour = colour && `color:${colour}|`
+            const markerLabel = label && `label:${label}|`
+            const markerLocation = location && `${locationBuilder(location)}|`
+            markerUrl += markerColour + markerLabel + markerLocation
+            break
+          }
+        }
+
+        return markerUrl
+      })
+    } else {
+      urlParts = [`markers=${locationBuilder(location)}`]
+    }
 
     return urlParts.join('&')
   }

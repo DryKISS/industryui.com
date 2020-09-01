@@ -3,22 +3,29 @@
  */
 
 // React
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Storybook
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Avatar, Button, Dropdown, Icon } from 'components'
-import Readme from '../README.md'
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  Icon,
+  InternationalisationContext,
+  useTranslation
+} from 'components'
 
-// Data
-import { Items } from '../__mocks__/items'
+import Readme from '../README.md'
+import { Items, Language } from '../__mocks__/dropdown'
 
 export default {
   title: 'Molecules/Dropdown',
   component: Dropdown,
-  decorators: [Wrapper],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -26,36 +33,69 @@ export default {
   }
 }
 
-export const main = () => <Dropdown items={Items}>Dropdown</Dropdown>
+const BaseComponent = props => {
+  const { setLocale } = useContext(InternationalisationContext)
 
-export const rightAligned = () => (
-  <Dropdown items={Items} position='right'>
-    Dropdown
-  </Dropdown>
-)
+  const onChange = data => {
+    setLocale({ locale: data.id })
+  }
+
+  const defaultProps = {
+    caret: boolean('Caret', props.caret || true),
+    children: props.children || text('Children', 'Dropdown'),
+    items: Items,
+    onChange: onChange,
+    position: select(
+      'Position',
+      {
+        Top: 'top',
+        Bottom: 'bottom'
+      },
+      props.position || 'bottom'
+    ),
+    ...props
+  }
+
+  return <Dropdown {...defaultProps} />
+}
+
+export const main = () => <BaseComponent />
+
+export const language = () => {
+  const { t } = useTranslation()
+
+  return (
+    <>
+      <BaseComponent children='Change language' items={Language} />
+      <h1>{t('home')}</h1>
+    </>
+  )
+}
+
+export const rightAligned = () => <BaseComponent position='right' />
 
 export const button = () => (
-  <Dropdown caret={false} items={Items}>
+  <BaseComponent caret={false}>
     <Button>Dropdown</Button>
-  </Dropdown>
+  </BaseComponent>
 )
 
 export const icon = () => (
-  <Dropdown items={Items}>
-    <Icon aria-hidden='true' context='info' icon='user' />
-  </Dropdown>
+  <BaseComponent>
+    <Icon context='info' icon='user' prefix='fas' />
+  </BaseComponent>
 )
 
 export const iconButton = () => (
-  <Dropdown caret={false} items={Items}>
-    <Button context='dark'>
-      <Icon aria-hidden='true' context='info' icon='user' />
+  <BaseComponent caret={false}>
+    <Button context='white'>
+      <Icon context='info' icon='user' prefix='fas' />
     </Button>
-  </Dropdown>
+  </BaseComponent>
 )
 
 export const avatar = () => (
-  <Dropdown caret={false} items={Items}>
+  <BaseComponent caret={false}>
     <Avatar>KH</Avatar>
-  </Dropdown>
+  </BaseComponent>
 )
