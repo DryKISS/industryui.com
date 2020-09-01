@@ -18,8 +18,6 @@ import Readme from '../README.md'
 // Data
 import { Item } from '../__mocks__/itemFloor'
 
-import '../__resources__/images/ground-floor.png'
-
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
