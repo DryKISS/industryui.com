@@ -13505,7 +13505,7 @@ react-clientside-effect@^1.2.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-react-color@^2.17.0:
+react-color@^2.17.0, react-color@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.18.1.tgz#2cda8cc8e06a9e2c52ad391a30ddad31972472f4"
   integrity sha512-X5XpyJS6ncplZs74ak0JJoqPi+33Nzpv5RYWWxn17bslih+X7OlgmfpmGC1fNvdkK7/SGWYf1JJdn7D2n5gSuQ==
@@ -13781,6 +13781,11 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-render-time@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-render-time/-/react-render-time-0.1.2.tgz#2efef28d5cdd97d4f76f4eb49accb538da72db1a"
+  integrity sha512-Pxmlx1GjA1QverQ1fKk3aK4i7EMmgiMEBL3RbA3jNmFrocTuv8vD6dcdi5enpZWXs2mTjoowuuwIjPfMi1thHQ==
 
 react-select@^3.0.8, react-select@^3.1.0:
   version "3.1.0"
