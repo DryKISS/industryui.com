@@ -2,6 +2,6 @@
  * Image Location
  */
 
-export * from './marker'
+export * from './imageMarker'
 export * from './imageLocation'
 export * from './imageWrapper'

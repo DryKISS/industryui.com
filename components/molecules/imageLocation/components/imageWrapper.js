@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 // UI
 import { Image } from '../../../'
-import { Marker } from '../../'
+import { ImageMarker } from '../../'
 
 export const ImageWrapper = ({ coordinates, item, setCoordinates, markerStyles }) => {
   const handleImageClick = event => {
@@ -31,7 +31,7 @@ export const ImageWrapper = ({ coordinates, item, setCoordinates, markerStyles }
       {item.filename && (
         <>
           <Image alt={item.name} src={item.filename} />
-          <Marker key={item.id} styles={markerStyles} coordinates={coordinates} />
+          <ImageMarker key={item.id} styles={markerStyles} coordinates={coordinates} />
         </>
       )}
     </StyledImageWrapper>

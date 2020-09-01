@@ -12,7 +12,7 @@ import styled, { keyframes, css } from 'styled-components'
 // UI
 import { Icon } from 'components'
 
-export const Marker = ({ coordinates, styles }) => {
+export const ImageMarker = ({ coordinates, styles }) => {
   return (
     <>
       {styles?.shape ? (
@@ -80,12 +80,12 @@ const StyledMarker = styled.div`
   `}
 `
 
-Marker.propTypes = {
+ImageMarker.propTypes = {
   coordinates: object,
   styles: object
 }
 
-Marker.defaultProps = {
+ImageMarker.defaultProps = {
   styles: {
     color: 'red',
     animation: '',
