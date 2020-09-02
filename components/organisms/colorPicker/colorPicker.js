@@ -1,5 +1,5 @@
 /**
- * React Color
+ * Organisms - Color picker
  */
 
 // React
@@ -25,8 +25,8 @@ export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
 }
 
 ColorPicker.defaultProps = {
-  type: 'sketch',
-  width: '254px'
+  type: 'github',
+  width: '214px'
 }
 
 ColorPicker.propTypes = {

@@ -1,5 +1,5 @@
 /**
- * Color picker
+ * Organisms - Color picker
  */
 
 // React
@@ -13,7 +13,7 @@ import { Wrapper } from 'decorators'
 import { select, text } from '@storybook/addon-knobs'
 
 // UI
-import { ColorPicker } from 'components'
+import { ColorPicker, Text } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -26,8 +26,17 @@ export default {
     }
   }
 }
+
 const BaseComponent = ({ onChangeComplete, ...props }) => {
+  const [assetIconColor, setAssetIconColor] = useState('green')
+
+  const changeColor = color => {
+    setAssetIconColor(color.hex)
+  }
+
   const defaultProps = {
+    color: assetIconColor,
+    onChangeComplete: changeColor,
     type: select(
       'Type',
       {
@@ -36,35 +45,26 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
         Github: 'github',
         Twitter: 'twitter'
       },
-      'sketch'
+      'github'
     ),
-    width: text('width', '254px'),
-
+    width: text('width', '214px'),
     ...props
   }
 
-  return <ColorPicker onChangeComplete={onChangeComplete} {...defaultProps} />
-}
-
-export const main = () => {
-  const [assetIconColor, setAssetIconColor] = useState('green')
-  const changeColor = color => {
-    console.info('color', color)
-    setAssetIconColor(color.hex)
-  }
-
   return (
-    <div>
-      <p>Color Selected </p>
+    <>
+      <Text>Color Selected</Text>
       <StyledBackgroundColor assetIconColor={assetIconColor} />
-      <BaseComponent onChangeComplete={changeColor} color={assetIconColor} />
-    </div>
+      <ColorPicker {...defaultProps} />
+    </>
   )
 }
 
+export const main = () => <BaseComponent />
+
 const StyledBackgroundColor = styled.div`
-  margin: 20px;
-  height: 20px;
-  width: 20px;
   background-color: ${({ assetIconColor }) => assetIconColor};
+  height: 20px;
+  margin: 20px;
+  width: 20px;
 `
