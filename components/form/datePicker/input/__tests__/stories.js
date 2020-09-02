@@ -61,7 +61,7 @@ const BaseComponent = (props = {}) => {
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerInput {...defaultProps} />
 
-      <Divider />
+      <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
 

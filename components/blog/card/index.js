@@ -53,7 +53,7 @@ export const BlogCard = ({ article, config, type }) => {
                 </TagsContainer>
               )}
 
-              <Divider size='md' style={{ marginTop: '.5rem' }} />
+              <Divider size='sm' />
 
               <BlogCategory author to={author} config={config} type={type} />
 

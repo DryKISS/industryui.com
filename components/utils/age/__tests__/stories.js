@@ -53,7 +53,7 @@ export const main = () => {
 
       <DatePickerCalendar {...defaultProps} />
 
-      <Divider />
+      <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
     </FormForm>

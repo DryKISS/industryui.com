@@ -12,7 +12,7 @@ import { Button, Divider, Link } from '../../../'
 export const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
   return (
     <>
-      <Divider size='lg' />
+      <Divider size='sm' />
 
       {back && (
         <Link to={pathBack}>
