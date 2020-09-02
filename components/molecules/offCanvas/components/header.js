@@ -81,6 +81,7 @@ const StyledHeader = styled.div`
   padding: 1rem;
   position: fixed;
   width: inherit;
+  z-index: 1;
 `
 
 const StyledHeading = styled(Heading)`

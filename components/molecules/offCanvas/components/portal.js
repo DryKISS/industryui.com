@@ -58,11 +58,11 @@ OffCanvas.propTypes = {
 
 OffCanvas.defaultProps = {
   closeOnOverlayClick: true,
-  context: 'primary',
+  context: 'secondary',
   overlay: true,
   overlayOpacity: 0.3,
   placement: 'right',
   transitionDuration: 300,
-  variant: 'normal',
+  variant: 'extended',
   width: '30vw'
 }

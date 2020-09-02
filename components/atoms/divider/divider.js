@@ -11,9 +11,9 @@ import styled, { css } from 'styled-components'
 
 export const Divider = styled.hr`
   border: none;
-  width: 100%;
   height: ${({ thickness }) => thickness}px;
   flex-shrink: 0;
+  width: 100%;
   ${props => BACKGROUND(props)}
 
   ${({ vertical }) =>
@@ -28,6 +28,7 @@ export const Divider = styled.hr`
       if (vertical) {
         return theme.SPACING(0, 4)
       }
+
       return theme.SPACING(4, 0)
     }
 
@@ -35,12 +36,14 @@ export const Divider = styled.hr`
       if (vertical) {
         return theme.SPACING(0, 12)
       }
+
       return theme.SPACING(12, 0)
     }
 
     if (vertical) {
       return theme.SPACING(0, 8)
     }
+
     return theme.SPACING(8, 0)
   }};
 

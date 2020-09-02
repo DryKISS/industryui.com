@@ -25,7 +25,7 @@ import styled from 'styled-components'
 export const BlogDetails = ({ article, config, facebook }) => {
   return (
     <StyledArticleDetails>
-      <Divider />
+      <Divider size='sm' />
 
       <List inline unstyled style={{ marginTop: '.25rem' }}>
         {/* Date / Time */}
@@ -49,7 +49,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
 
       {article.tags && <BlogTags tags={article.tags} />}
 
-      <Divider />
+      <Divider size='sm' />
 
       <StyledShare>
         <StyledShareText>Share this article</StyledShareText>
@@ -72,7 +72,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
         </StyledShareLink> */}
       </StyledShare>
 
-      <Divider />
+      <Divider size='sm' />
     </StyledArticleDetails>
   )
 }

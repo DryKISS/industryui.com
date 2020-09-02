@@ -26,22 +26,20 @@ export const StepperSummary = ({ className, summary }) => {
 
 const StyledStepperSummary = styled.div`
   display: inline-block;
-
   > ul {
     list-style: none;
-    margin: 10px 0 20px 20px;
+    margin: 0;
     padding: 0;
   }
 `
 
 const StyledLabel = styled.span`
   font-size: 0.85rem;
-  color: #999;
 `
 
 const StyledValue = styled.span`
   font-size: 0.85rem;
-  color: #000;
+  color: ${({ theme }) => theme.COLOUR.black};
 `
 
 StepperSummary.propTypes = {

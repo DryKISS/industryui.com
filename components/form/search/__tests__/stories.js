@@ -66,7 +66,7 @@ const BaseComponent = (props = {}) => {
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
       <Search {...defaultProps} />
 
-      <Divider size='lg' />
+      <Divider size='sm' />
       <Text>Search:</Text>
       <Text>{value}</Text>
 
