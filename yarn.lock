@@ -13782,6 +13782,11 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
+react-render-time@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-render-time/-/react-render-time-0.1.2.tgz#2efef28d5cdd97d4f76f4eb49accb538da72db1a"
+  integrity sha512-Pxmlx1GjA1QverQ1fKk3aK4i7EMmgiMEBL3RbA3jNmFrocTuv8vD6dcdi5enpZWXs2mTjoowuuwIjPfMi1thHQ==
+
 react-select@^3.0.8, react-select@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.1.0.tgz#ab098720b2e9fe275047c993f0d0caf5ded17c27"

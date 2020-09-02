@@ -7,20 +7,20 @@ import React from 'react'
 
 // Storybook
 import { number, withKnobs } from '@storybook/addon-knobs'
-import { Context, Size } from 'decorators'
+import { Context, Size, Wrapper } from 'decorators'
 
-// Storybook
+// Style
 import styled from 'styled-components'
 
 // UI
-import { Divider } from 'components'
+import { Divider, Text } from 'components'
 import Readme from '../README.md'
 import { DividerDefaultProps } from '../props'
 
 export default {
   title: 'Atoms/Divider',
   component: Divider,
-  decorators: [withKnobs],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -38,11 +38,11 @@ const BaseComponent = (props = {}) => {
 
   return (
     <StyledWrapper>
-      <div>Text</div>
+      <Text>Text</Text>
 
       <Divider {...defaultProps} />
 
-      <div>Text</div>
+      <Text>Text</Text>
     </StyledWrapper>
   )
 }
