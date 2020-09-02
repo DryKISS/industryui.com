@@ -2912,23 +2912,7 @@ exports[`Storyshots Molecules/ImageLocation Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Molecules/ImageLocation Multiple Properties 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/ImageLocation Preselected 1`] = `
+exports[`Storyshots Molecules/ImageLocation With Coordinates Stored 1`] = `
 @media (min-width:62em) {
 
 }
@@ -3808,6 +3792,22 @@ exports[`Storyshots Organisms/Big Calendar Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Organisms/Color Picker Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Organisms/Email Change Main 1`] = `
 @media (min-width:62em) {
 
@@ -4385,6 +4385,38 @@ exports[`Storyshots Utils/Colour Linear Blend 1`] = `
 `;
 
 exports[`Storyshots Utils/Colour Linear Shade 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
 @media (min-width:62em) {
 
 }

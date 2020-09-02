@@ -25,11 +25,10 @@ const renderItem = ({ body, context, title }, index, current, handleCurrent) => 
     </AccordionItem>
   )
 }
-
-export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
+// there is no need to redefine and rerender Body on every state change
+const Body = ({ children, data, closeOthersOnOpen }) => {
   const initialOpen = children ? children.findIndex(_ => _.props.open) : data.findIndex(_ => _.open)
   const [current, setCurrent] = useState(initialOpen > -1 ? [initialOpen] : [])
-
   const handleCurrent = index => {
     setCurrent(prev => {
       let temp = []
@@ -42,28 +41,26 @@ export const Accordion = ({ children, className, data, style, closeOthersOnOpen 
       return temp
     })
   }
-
-  const Body = () => {
-    let map = {}
-
-    if (children) {
-      map = Children.map(children, (child, index) => {
-        return cloneElement(child, {
-          index,
-          open: current.includes(index),
-          handleOpen: index => handleCurrent(index)
-        })
+  let map = []
+  if (children) {
+    map = Children.map(children, (child, index) => {
+      return cloneElement(child, {
+        index,
+        key: index,
+        open: current.includes(index),
+        handleOpen: index => handleCurrent(index)
       })
-    } else {
-      map = data.map((item, index) => renderItem(item, index, current, handleCurrent))
-    }
-
-    return map
+    })
+  } else {
+    map = data.map((item, index) => renderItem(item, index, current, handleCurrent, index))
   }
-
+  return map
+}
+export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
+  //  moved the body component  and its dependants outside because StyledAccordion doesn't need to be rendered on every single change of body state
   return (
     <StyledAccordion className={className} style={style}>
-      <Body />
+      <Body children={children} data={data} closeOthersOnOpen={closeOthersOnOpen} />
     </StyledAccordion>
   )
 }
