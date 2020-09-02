@@ -4400,6 +4400,38 @@ exports[`Storyshots Utils/Colour Linear Shade 1`] = `
 </div>
 `;
 
+exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Utils/Slugify Main 1`] = `
 @media (min-width:62em) {
 
