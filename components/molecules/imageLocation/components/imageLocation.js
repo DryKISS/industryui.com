@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from 'react'
 import { bool, func, string, object } from 'prop-types'
 
+// Style
 import styled from 'styled-components'
 
 // UI
@@ -39,18 +40,18 @@ export const ImageLocation = ({
 }
 
 const StyledImageLocation = styled.div`
-  overflow-x: auto;
   display: ${({ show }) => (show ? 'block' : 'none')};
+  overflow-x: auto;
 `
 
 ImageLocation.propTypes = {
   className: string,
-  initialCoordinates: object,
-  markerStyles: object,
   coordinatesChange: func,
+  initialCoordinates: object,
   item: object,
-  style: object,
-  show: bool
+  markerStyles: object,
+  show: bool,
+  style: object
 }
 
 ImageLocation.defaultProps = {

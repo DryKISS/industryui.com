@@ -1,10 +1,10 @@
 /**
- * Item Floor
+ * Molecules - Image Locaiton - Mocks
  */
 import groundFloorImage from 'storybook/static/imageLocation/ground-floor.png'
 
 export const Item = {
-  value: 1,
+  filename: groundFloorImage,
   name: 'Ground Floor',
-  filename: groundFloorImage
+  value: 1
 }

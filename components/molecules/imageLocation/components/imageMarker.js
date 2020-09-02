@@ -7,28 +7,24 @@ import React from 'react'
 import { object } from 'prop-types'
 
 // Style
-import styled, { keyframes, css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 // UI
 import { Icon } from 'components'
 
 export const ImageMarker = ({ coordinates, styles }) => {
-  return (
-    <>
-      {styles?.shape ? (
-        <StyledIcon
-          icon={styles?.shape?.icon}
-          prefix={styles?.shape?.prefix}
-          size='lg'
-          context='primary'
-          pull='left'
-          styles={styles}
-          coordinates={coordinates}
-        />
-      ) : (
-        <StyledMarker styles={styles} coordinates={coordinates} />
-      )}
-    </>
+  return styles?.shape ? (
+    <StyledIcon
+      coordinates={coordinates}
+      context='primary'
+      icon={styles?.shape?.icon}
+      prefix={styles?.shape?.prefix}
+      pull='left'
+      size='lg'
+      styles={styles}
+    />
+  ) : (
+    <StyledMarker coordinates={coordinates} styles={styles} />
   )
 }
 
@@ -63,14 +59,9 @@ const StyledMarker = styled.div`
           ${blinker} 1s ease-in-out infinite forwards
         `
       : ''};
-
-  display: none;
-  height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
-  border-radius: ${({ styles }) => (styles?.borderRadius ? styles.borderRadius : '50%')};
-
-  width: ${({ styles }) => (styles?.width ? styles.width : '15px')};
-  position: absolute;
   background-color: ${({ styles }) => (styles?.color ? styles.color : 'red')};
+  border-radius: ${({ styles }) => (styles?.borderRadius ? styles.borderRadius : '50%')};
+  display: none;
   ${({ coordinates }) =>
     coordinates &&
     `
@@ -78,6 +69,9 @@ const StyledMarker = styled.div`
     left: ${coordinates.x}px;
     top: ${coordinates.y}px;
   `}
+  height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
+  position: absolute;
+  width: ${({ styles }) => (styles?.width ? styles.width : '15px')};
 `
 
 ImageMarker.propTypes = {
@@ -87,11 +81,11 @@ ImageMarker.propTypes = {
 
 ImageMarker.defaultProps = {
   styles: {
-    color: 'red',
     animation: '',
-    height: '20px',
-    width: '20px',
     borderRadius: '50%',
-    shape: ''
+    color: 'red',
+    height: '20px',
+    shape: '',
+    width: '20px'
   }
 }

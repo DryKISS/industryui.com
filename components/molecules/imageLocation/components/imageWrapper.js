@@ -9,10 +9,9 @@ import { func, object } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Image } from '../../../'
-import { ImageMarker } from '../../'
+import { Image, ImageMarker } from '../../../'
 
-export const ImageWrapper = ({ coordinates, item, setCoordinates, markerStyles }) => {
+export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }) => {
   const handleImageClick = event => {
     const rect = event.target.getBoundingClientRect()
     const offsetX = event.clientX - rect.left
@@ -31,7 +30,7 @@ export const ImageWrapper = ({ coordinates, item, setCoordinates, markerStyles }
       {item.filename && (
         <>
           <Image alt={item.name} src={item.filename} />
-          <ImageMarker key={item.id} styles={markerStyles} coordinates={coordinates} />
+          <ImageMarker coordinates={coordinates} key={item.id} styles={markerStyles} />
         </>
       )}
     </StyledImageWrapper>
@@ -41,7 +40,6 @@ export const ImageWrapper = ({ coordinates, item, setCoordinates, markerStyles }
 const StyledImageWrapper = styled.div`
   display: inline-block;
   position: relative;
-
   img {
     max-width: none;
   }
