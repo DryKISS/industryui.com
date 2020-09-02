@@ -1,5 +1,5 @@
 /**
- * Divider - Props
+ * Atoms - Divider - Props
  */
 
 // React

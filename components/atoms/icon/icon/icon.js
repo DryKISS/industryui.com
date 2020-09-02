@@ -23,5 +23,4 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `
 
 Icon.propTypes = IconPropTypes
-
 Icon.defaultProps = IconDefaultProps

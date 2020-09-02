@@ -6,8 +6,7 @@
 import { object } from 'prop-types'
 
 // UI
-import { STEPPER } from '../'
-import { Button, Divider, Icon } from '../../../'
+import { Button, Divider, Icon, STEPPER } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -44,9 +43,9 @@ export const StepperItem = ({ item }) => {
           <Icon
             aria-hidden='true'
             color={STEPPER.colourCheckmark}
-            context='primary'
             fixedWidth={false}
             icon='check'
+            prefix='fas'
           />
         )}
       </StyledIconContainer>
@@ -63,16 +62,15 @@ export const StepperItem = ({ item }) => {
         <StyledContent>{renderActions(item.actions)}</StyledContent>
       )}
 
-      {item.label !== 'Closed' && <Divider style={{ borderTop: '2px solid #f5f5f5' }} />}
+      {item.label !== 'Closed' && <Divider size='sm' />}
     </StyledStepperItem>
   )
 }
 
 const StyledStepperItem = styled.li`
   border-left: 3px solid ${({ theme }) => theme.STEPPER.colour};
-  padding: 0 20px 12px;
+  padding: 0 1rem 1px;
   position: relative;
-
   &:last-child {
     border: 0;
     margin-left: 3px;
@@ -85,35 +83,31 @@ const StyledIconContainer = styled.div`
   border: 3px solid ${({ theme }) => theme.STEPPER.colour};
   border-radius: 50%;
   display: flex;
-  height: 23px;
+  height: 1.5rem;
   justify-content: center;
   left: -13px;
   position: absolute;
   top: 0;
-  width: 23px;
+  width: 1.5rem;
 `
 
 const StyledContent = styled.ul`
   font-size: 0.8rem;
   list-style: none;
-  margin: 5px 0 0 0;
+  margin: 0.5rem;
   padding: 0;
-
   li {
     margin-bottom: 5px;
   }
 `
 
 const StyledLabel = styled.span`
-  color: ${({ active }) => (active ? '#000' : '#999')};
-  font-size: 0.9rem;
-  font-weight: ${({ active }) => (active ? 600 : 400)};
+  color: ${({ active, theme }) => (active ? theme.COLOUR.black : theme.COLOUR.dark)};
+  margin: 0 0.5rem;
 `
 
 const StyledInfo = styled.span`
-  color: #ccc;
   font-size: 0.75rem;
-  margin-left: 8px;
 `
 
 StyledStepperItem.propTypes = {
