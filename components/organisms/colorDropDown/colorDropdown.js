@@ -9,7 +9,7 @@ import { Position } from 'components/theme'
 import { colourList } from 'components/theme/variables/colorList'
 import { Dropdown, elementTypes } from 'index'
 const colours = colourList
-export const ColorDropdown = ({ position, onColorSelect, ...props }) => {
+export const ColorDropdown = ({ position, onColorSelect, children, ...props }) => {
   return (
     <>
       <Dropdown
@@ -18,10 +18,10 @@ export const ColorDropdown = ({ position, onColorSelect, ...props }) => {
         onChange={e => {
           onColorSelect(e)
         }}
-        position={position??Position.Bottom}
+        position={position ?? Position.Bottom}
         elementType={elementTypes.Colour}
       >
-        please select a colour
+        {children}
       </Dropdown>
     </>
   )

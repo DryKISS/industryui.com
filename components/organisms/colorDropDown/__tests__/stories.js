@@ -45,7 +45,7 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
     <>
       <Text>Color Selected</Text>
       <StyledBackgroundColor assetIconColor={assetIconColor} />
-      <ColorDropdown {...defaultProps} />
+      <ColorDropdown {...defaultProps}>please select a colour</ColorDropdown>
     </>
   )
 }
