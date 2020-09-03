@@ -45,6 +45,22 @@ const StyledColourItem = styled.div`
     css`
       background-color: ${colour};
     `}
+  ${({ colour }) => {
+    const size = '7px'
+    return (
+      colour === 'transparent' &&
+      css`
+        background-image: linear-gradient(45deg, #808080 25%, transparent 25%),
+          linear-gradient(-45deg, #808080 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #808080 75%),
+          linear-gradient(-45deg, transparent 75%, #808080 75%);
+        background-size: ${size} ${size};
+        background-position: 0 0, 0 ${size}, ${size} -${size}, -${size} 0px;
+      `
+    )
+  }}
+
+
   &&:hover {
     border: 2px solid white;
   }
@@ -52,7 +68,11 @@ const StyledColourItem = styled.div`
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;
-  ${({ divider }) => divider && 'padding: 0;'}
+  ${({ divider }) =>
+    divider &&
+    css`
+      padding: 0;
+    `}
 `
 
 const StyledDivider = styled.div`
