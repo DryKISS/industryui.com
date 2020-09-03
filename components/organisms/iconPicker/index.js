@@ -4,13 +4,38 @@
 
 // React
 // import React from 'react'
-import { array } from 'prop-types'
+import { array, string, func } from 'prop-types'
 
-export const IconPicker = ({ iconOptions, ...props }) => {
-  return <p>Icon picker</p>
+import { Position } from 'components/theme'
+import { Dropdown } from 'components'
+
+export const IconPicker = ({ iconOptions, handleSelectIcon, position, children, ...props }) => {
+  return (
+    <>
+      <Dropdown
+        {...props}
+        items={iconOptions}
+        onChange={handleSelectIcon}
+        position={position ?? Position.Bottom}
+        elementType='list'
+      >
+        {children}
+      </Dropdown>
+    </>
+  )
 }
 
 IconPicker.defaultProps = {}
+
+IconPicker.propTypes = {
+  position: string,
+  handleSelectIcon: func.isRequired,
+  width: string
+}
+
+IconPicker.defaultProps = {
+  position: Position.Bottom
+}
 
 IconPicker.propTypes = {
   iconOptions: array.isRequired

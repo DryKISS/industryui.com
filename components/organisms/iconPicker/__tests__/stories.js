@@ -12,7 +12,7 @@ import React, { useState } from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { IconPicker, Text } from 'components'
+import { IconPicker, Icon, Text } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -29,19 +29,23 @@ export default {
 const BaseComponent = ({ onChangeComplete, ...props }) => {
   const [iconSelected, setIconSelected] = useState()
 
-  const selectIcon = icon => {
+  const handleSelectIcon = icon => {
     setIconSelected(icon)
     console.log('icon selected ', iconSelected)
   }
-
+  const iconList = [
+    { id: 1, icon1: <Icon context='info' icon='user' prefix='fas' /> },
+    { id: 2, icon2: <Icon context='info' icon='user' prefix='fas' /> },
+    { id: 3, icon3: <Icon context='info' icon='user' prefix='fas' /> }
+  ]
   const defaultProps = {
-    iconOptions: [],
-    selectIcon: selectIcon
+    iconOptions: iconList,
+    selectIcon: handleSelectIcon,
+    children: <Text>Icon picker</Text>
   }
 
   return (
     <>
-      <Text>Icon Selected</Text>
       <IconPicker {...defaultProps} />
     </>
   )
