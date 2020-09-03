@@ -7,10 +7,10 @@ import React from 'react'
 import { func, object, node } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
-import { Link } from '../../../'
+import { Link, elementTypes } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -27,14 +27,28 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   )
 }
 
-export const DropdownItem = ({ closeDropdown, item, onClick }) => {
-  return (
+export const DropdownItem = ({ closeDropdown, item, onClick, elementType }) => {
+  return elementType === elementTypes.List ? (
     <StyledDropdownItem divider={item.divider}>
       {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
     </StyledDropdownItem>
+  ) : elementType === elementTypes.Colour ? (
+    <StyledColourItem colour={item.colour} onClick={() => onClick(item)} />
+  ) : (
+    'invalid element type'
   )
 }
-
+const StyledColourItem = styled.div`
+  width: 25px;
+  height: 25px;
+  ${({ colour }) =>
+    css`
+      background-color: ${colour};
+    `}
+  &&:hover {
+    border: 2px solid white;
+  }
+`
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;

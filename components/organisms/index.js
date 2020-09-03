@@ -3,6 +3,7 @@
  */
 export * from './calendar'
 export * from './colorPicker/colorPicker'
+export * from './colorDropDown/colorDropdown'
 export * from './emailChange'
 export * from './footer/footer'
 export * from './forgotDetails'
