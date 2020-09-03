@@ -3,29 +3,30 @@
  */
 
 // React
+
+import { DropdownMenu, Icon } from '../../../'
 import React, { useEffect, useRef, useState } from 'react'
-import { array, bool, node, string, func, oneOf } from 'prop-types'
+import { array, bool, func, node, oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { DropdownMenu, Icon } from '../../../'
 import { Position } from 'components/theme'
+
 export const elementTypes = {
-  List: 'list',
-  Colour: 'colour'
+  Colour: 'colour',
+  List: 'list'
 }
 export const Dropdown = ({
   caret,
   className,
   children,
+  elementType,
   items,
   onChange,
-  position,
-  elementType
+  position
 }) => {
-  position ??= 'bottom'
   const [open, setOpen] = useState(false)
   const node = useRef()
   const handleClickAway = event => {

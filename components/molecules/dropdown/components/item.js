@@ -10,7 +10,7 @@ import { func, object, node } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Link, elementTypes } from '../../../'
+import { elementTypes, Link } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -27,26 +27,36 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   )
 }
 
-export const DropdownItem = ({ closeDropdown, item, onClick, elementType }) => {
-  return elementType === elementTypes.List ? (
-    <StyledDropdownItem divider={item.divider}>
-      {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
-    </StyledDropdownItem>
-  ) : elementType === elementTypes.Colour ? (
-    <StyledColourItem colour={item.colour} onClick={() => onClick(item)} />
-  ) : (
-    'invalid element type'
-  )
+export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
+  switch (elementType) {
+    case elementTypes.List:
+      return (
+        <StyledDropdownItem divider={item.divider}>
+          {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
+        </StyledDropdownItem>
+      )
+    case elementTypes.Colour:
+      return (
+        <StyledColourItem
+          colour={item.colour}
+          onClick={() => {
+            onClick(item)
+          }}
+        />
+      )
+    default:
+      return 'invalid elementType'
+  }
 }
 const StyledColourItem = styled.div`
-  width: 25px;
-  height: 25px;
+  width: 1.55rem;
+  height: 1.55rem;
   ${({ colour }) =>
     css`
       background-color: ${colour};
     `}
   ${({ colour }) => {
-    const size = '7px'
+    const size = '0.5rem'
     return (
       colour === 'transparent' &&
       css`
@@ -62,7 +72,7 @@ const StyledColourItem = styled.div`
 
 
   &&:hover {
-    border: 2px solid white;
+    border: 0.15rem solid white;
   }
 `
 const StyledDropdownItem = styled.div`
