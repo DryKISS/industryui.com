@@ -4,18 +4,30 @@
 
 // React
 import React, { useEffect, useRef, useState } from 'react'
-import { array, bool, node, string, func } from 'prop-types'
+import { array, bool, node, string, func, oneOf } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
 import { DropdownMenu, Icon } from '../../../'
-
-export const Dropdown = ({ caret, className, children, items, onChange, position }) => {
+import { Position } from 'components/theme'
+export const elementTypes = {
+  List: 'list',
+  Colour: 'colour'
+}
+export const Dropdown = ({
+  caret,
+  className,
+  children,
+  items,
+  onChange,
+  position,
+  elementType
+}) => {
+  position ??= 'bottom'
   const [open, setOpen] = useState(false)
   const node = useRef()
-
   const handleClickAway = event => {
     if (node.current.contains(event.target)) {
       return
@@ -30,7 +42,6 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
     } else {
       document.removeEventListener('mousedown', handleClickAway)
     }
-
     return () => {
       document.removeEventListener('mousedown', handleClickAway)
     }
@@ -48,20 +59,20 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
           <Icon
             aria-hidden='true'
             className='dropdown--caret'
-            icon={position === 'top' ? 'carat-up' : 'caret-down'}
+            icon={position === Position.Top ? 'carat-up' : 'caret-down'}
             prefix='fas'
           />
         )}
+        {items && open && (
+          <DropdownMenu
+            elementType={elementType ?? elementTypes.List}
+            closeDropdown={() => setOpen(false)}
+            items={items}
+            position={position}
+            onItemClick={onChange}
+          />
+        )}
       </StyledToggle>
-
-      {open && (
-        <DropdownMenu
-          closeDropdown={() => setOpen(false)}
-          items={items}
-          position={position}
-          onItemClick={onChange}
-        />
-      )}
     </StyledDropdown>
   )
 }
@@ -85,7 +96,8 @@ Dropdown.propTypes = {
   className: string,
   items: array.isRequired,
   onChange: func,
-  position: string
+  position: string,
+  elementType: oneOf([elementTypes.List, elementTypes.Colour])
 }
 
 Dropdown.defaultProps = {
