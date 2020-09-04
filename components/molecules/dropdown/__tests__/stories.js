@@ -14,14 +14,17 @@ import {
   Avatar,
   Button,
   Dropdown,
+  elementTypes,
   Icon,
   InternationalisationContext,
   useTranslation
 } from 'components'
 
+import styled, { css } from 'styled-components'
+
 import Readme from '../README.md'
 import { Items, Language } from '../__mocks__/dropdown'
-import { ColourDropdown } from '../components/colourDropdown'
+import { colourList } from 'components/theme/variables/colorList'
 
 export default {
   title: 'Molecules/Dropdown',
@@ -97,6 +100,9 @@ export const avatar = () => (
     <Avatar>KH</Avatar>
   </BaseComponent>
 )
+
+const colours = colourList
+
 export const colourPicker = () => {
   const [SelectedColour, setSelectedColour] = useState('green')
 
@@ -104,16 +110,27 @@ export const colourPicker = () => {
     setSelectedColour(colour.colour)
   }
 
-  const defaultProps = {
-    color: SelectedColour,
-    onColorSelect: changeColor,
-    width: text('width', '200px')
-  }
-
   return (
     <>
-      <div style={{ width: '20px', height: '20px', background: SelectedColour }} />
-      <ColourDropdown {...defaultProps}>please select a colour</ColourDropdown>
+      <ColourBox background={SelectedColour} />
+      <BaseComponent
+        items={colours}
+        onChange={e => {
+          changeColor(e)
+        }}
+        elementType={elementTypes.Colour}
+      >
+        please select a colour
+      </BaseComponent>
     </>
   )
 }
+const ColourBox = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  ${({ background }) =>
+    background &&
+    css`
+      background: ${background};
+    `}
+`

@@ -14,7 +14,7 @@ import { DropdownItem } from '../../'
 import { Position } from 'components/theme'
 import { elementTypes } from 'index'
 
-export const DropdownMenu = ({ closeDropdown, items, onItemClick, position, elementType }) => {
+export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, position }) => {
   const handleClick = item => {
     onItemClick && onItemClick(item)
     closeDropdown()
@@ -24,11 +24,11 @@ export const DropdownMenu = ({ closeDropdown, items, onItemClick, position, elem
       <TooltipRectangle position={position} />
       {items.map(item => (
         <DropdownItem
-          key={item.id}
           closeDropdown={closeDropdown}
-          item={item}
-          onClick={() => handleClick(item)}
           elementType={elementType}
+          item={item}
+          key={item.id}
+          onClick={() => handleClick(item)}
         />
       ))}
     </StyledDropdownMenu>
@@ -66,8 +66,8 @@ const StyledDropdownMenu = styled.div`
         border-radius: 4px;
         padding: 5px;
         display: grid;
-        grid-template-columns: repeat(8, 25px);
-        grid-template-rows: repeat(3, 25px);
+        grid-template-columns: repeat(8, 1.5rem);
+        grid-template-rows: repeat(3, 1.5rem);
       `
     )
   }}

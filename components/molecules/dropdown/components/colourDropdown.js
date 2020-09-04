@@ -1,5 +1,5 @@
 /**
- * Organisms - Color picker
+ * Molecules - dropdownColour
  */
 
 // React

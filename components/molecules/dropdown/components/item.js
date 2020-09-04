@@ -49,13 +49,16 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
   }
 }
 const StyledColourItem = styled.div`
-  width: 1.55rem;
-  height: 1.55rem;
-  ${({ colour }) =>
+  height: 1.5rem;
+  width: 1.5rem;
+  ${({ colour, theme }) =>
     css`
       background-color: ${colour};
+      &&:hover {
+        border: 0.15rem solid ${theme.COLOUR.white};
+      }
     `}
-  ${({ colour }) => {
+  ${({ colour, theme }) => {
     const size = '0.5rem'
     return (
       colour === 'transparent' &&
@@ -69,11 +72,6 @@ const StyledColourItem = styled.div`
       `
     )
   }}
-
-
-  &&:hover {
-    border: 0.15rem solid white;
-  }
 `
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
