@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 // Storybook
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
@@ -21,6 +21,7 @@ import {
 
 import Readme from '../README.md'
 import { Items, Language } from '../__mocks__/dropdown'
+import { ColourDropdown } from '../components/colourDropdown'
 
 export default {
   title: 'Molecules/Dropdown',
@@ -35,11 +36,9 @@ export default {
 
 const BaseComponent = props => {
   const { setLocale } = useContext(InternationalisationContext)
-
   const onChange = data => {
     setLocale({ locale: data.id })
   }
-
   const defaultProps = {
     caret: boolean('Caret', props.caret || true),
     children: props.children || text('Children', 'Dropdown'),
@@ -55,7 +54,6 @@ const BaseComponent = props => {
     ),
     ...props
   }
-
   return <Dropdown {...defaultProps} />
 }
 
@@ -99,3 +97,23 @@ export const avatar = () => (
     <Avatar>KH</Avatar>
   </BaseComponent>
 )
+export const colourPicker = () => {
+  const [SelectedColour, setSelectedColour] = useState('green')
+
+  const changeColor = colour => {
+    setSelectedColour(colour.colour)
+  }
+
+  const defaultProps = {
+    color: SelectedColour,
+    onColorSelect: changeColor,
+    width: text('width', '200px')
+  }
+
+  return (
+    <>
+      <div style={{ width: '20px', height: '20px', background: SelectedColour }} />
+      <ColourDropdown {...defaultProps}>please select a colour</ColourDropdown>
+    </>
+  )
+}

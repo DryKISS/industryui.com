@@ -9,29 +9,27 @@ import { Position } from 'components/theme'
 import { colourList } from 'components/theme/variables/colorList'
 import { Dropdown, elementTypes } from 'index'
 const colours = colourList
-export const ColorDropdown = ({ position, onColorSelect, children, ...props }) => {
+export const ColourDropdown = ({ children, onColorSelect, position, ...props }) => {
   return (
-    <>
-      <Dropdown
-        {...props}
-        items={colours}
-        onChange={e => {
-          onColorSelect(e)
-        }}
-        position={position ?? Position.Bottom}
-        elementType={elementTypes.Colour}
-      >
-        {children}
-      </Dropdown>
-    </>
+    <Dropdown
+      {...props}
+      items={colours}
+      onChange={e => {
+        onColorSelect(e)
+      }}
+      position={position ?? Position.Bottom}
+      elementType={elementTypes.Colour}
+    >
+      {children}
+    </Dropdown>
   )
 }
 
-ColorDropdown.defaultProps = {
+ColourDropdown.defaultProps = {
   position: Position.Bottom
 }
 
-ColorDropdown.propTypes = {
+ColourDropdown.propTypes = {
   position: string,
   onColorSelect: func.isRequired,
   width: string
