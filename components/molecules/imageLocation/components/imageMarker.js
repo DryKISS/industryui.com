@@ -32,7 +32,10 @@ const blinker = keyframes`
     50% {
     opacity: 0;
   }`
-
+const transition = css`
+  transition-duration: 0.2s;
+  transition-property: left, top;
+`
 const StyledIcon = styled(Icon)`
   color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
   position: absolute;
@@ -45,11 +48,12 @@ const StyledIcon = styled(Icon)`
       : ''};
   ${({ coordinates }) =>
     coordinates &&
-    `
-    display: block;
-    left: ${coordinates.x}px;
-    top: ${coordinates.y}px;
-  `}
+    css`
+      display: block;
+      left: ${coordinates.x - 10}px;
+      top: ${coordinates.y - 10}px;
+    `}
+  ${transition}
 `
 
 const StyledMarker = styled.div`
@@ -64,14 +68,16 @@ const StyledMarker = styled.div`
   display: none;
   ${({ coordinates }) =>
     coordinates &&
-    `
-    display: block;
-    left: ${coordinates.x}px;
-    top: ${coordinates.y}px;
-  `}
+    css`
+      display: block;
+      left: ${coordinates.x - 10}px;
+      top: ${coordinates.y - 10}px;
+    `}
+
   height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
   position: absolute;
   width: ${({ styles }) => (styles?.width ? styles.width : '15px')};
+  ${transition}
 `
 
 ImageMarker.propTypes = {

@@ -9,7 +9,6 @@ import React from 'react'
 import { object, select, withKnobs } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
-
 // UI
 import { ImageLocation } from 'components'
 import Readme from '../README.md'
@@ -36,8 +35,8 @@ const BaseComponent = (props = {}) => {
     initialCoordinates:
       props.initialCoordinates &&
       object('Initial Coordinates', {
-        x: 449,
-        y: 454
+        x: 42,
+        y: 41
       }),
     item: Item,
     locationChange: action('change')
@@ -64,6 +63,7 @@ const BaseComponent = (props = {}) => {
       'red'
     ),
     height: '20px',
+    width: '20px',
     shape: select(
       'Shape',
       {
@@ -74,8 +74,7 @@ const BaseComponent = (props = {}) => {
         No: ''
       },
       ''
-    ),
-    width: '20px'
+    )
   }
 
   return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
