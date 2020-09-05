@@ -9,7 +9,7 @@ import { func, object } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Image, ImageMarker, ResizeDetector } from '../../../'
+import { Image, ImageMarker } from '../../../'
 
 let imageHeight = 0
 let imageWidth = 0
@@ -19,6 +19,9 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
 
   const handleImageClick = event => {
+    const { current: image } = imageRef
+    imageWidth = image.clientWidth
+    imageHeight = image.clientHeight
     const coordinates = {
       x: (event.nativeEvent.offsetX * 100) / imageWidth,
       y: (event.nativeEvent.offsetY * 100) / imageHeight
@@ -27,27 +30,9 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
     setMarkerCoordinates(co => coordinates)
   }
 
-  const newImageSize = () => {
-    const { current: image } = imageRef
-    imageWidth = image.clientWidth
-    imageHeight = image.clientHeight
-  }
-
   return (
     <StyledImageWrapper>
-      <ResizeDetector
-        onResize={() => {
-          newImageSize()
-        }}
-      />
-      <Image
-        onLoad={newImageSize}
-        ref={imageRef}
-        onClick={handleImageClick}
-        alt={item.name}
-        src={item.filename}
-        fluid
-      />
+      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} src={item.filename} fluid />
       {MarkerCoordinates?.x && (
         <ImageMarker coordinates={MarkerCoordinates} key={item.id} styles={markerStyles} />
       )}
