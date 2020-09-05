@@ -1,32 +1,50 @@
 /**
- * Image Location
+ * Image Location FormElement
  */
 
 // React
 import React from 'react'
 import { func, object } from 'prop-types'
+import { Controller } from 'react-hook-form'
 
 // Style
-// import styled from 'styled-components'
-import { Controller } from 'react-hook-form'
+import styled, { keyframes } from 'styled-components'
+
 // UI
 import { ImageLocation } from './imageLocation'
 import { ImageLocationProps } from './props'
-
-export const ImageLocationFormElement = ({ setValue, control, ...props }) => {
+const elementName = 'imageLocationData'
+export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
+  console.log(errors)
   return (
-    <Controller
-      {...props}
-      as={ImageLocation}
-      control={control}
-      coordinatesChange={imageLocationData => {
-        setValue('imageLocationData', imageLocationData)
-      }}
-      name='imageLocationData'
-      rules={{ required: true }}
-    />
+    <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
+      <Controller
+        {...props}
+        as={ImageLocation}
+        control={control}
+        coordinatesChange={imageLocationData => {
+          setValue('imageLocationData', imageLocationData)
+        }}
+        name={elementName}
+        rules={{ required: true }}
+      />
+    </ControllerWrapper>
   )
 }
+const imageAllert = keyframes`
+  from {
+filter: invert(0);
+  }
+  to {
+filter: invert(1);
+  }
+`
+const ControllerWrapper = styled.div`
+  &.hasError {
+    border: 0.1rem solid red;
+    animation: ${imageAllert} 0.2s linear 2;
+  }
+`
 ImageLocationFormElement.propTypes = {
   ...ImageLocationProps,
   setValue: func.isRequired,

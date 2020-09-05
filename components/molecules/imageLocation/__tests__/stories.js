@@ -91,8 +91,15 @@ export const UsedInForm = () => {
   }
   return (
     <form onSubmit={handleSubmit(data => onFormSubmit(data))}>
-      <ImageLocationFormElement item={Item} control={control} setValue={setValue} />
-      {errors.imageLocationData && <Alert content={errors.imageLocationData.type} />}
+      <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
+      {errors.imageLocationData && (
+        <Alert
+          content={
+            errors.imageLocationData.type &&
+            errors.imageLocationData.type + ' or please select a location'
+          }
+        />
+      )}
       <Button type='submit'>submit form</Button>
     </form>
   )
