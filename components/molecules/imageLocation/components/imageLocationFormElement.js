@@ -15,7 +15,6 @@ import { ImageLocation } from './imageLocation'
 import { ImageLocationProps } from './props'
 const elementName = 'imageLocationData'
 export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
-  console.log(errors)
   return (
     <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
       <Controller
@@ -41,7 +40,7 @@ filter: invert(1);
 `
 const ControllerWrapper = styled.div`
   &.hasError {
-    border: 0.1rem solid red;
+    box-shadow: 0 0 4px red;
     animation: ${imageAllert} 0.2s linear 2;
   }
 `
