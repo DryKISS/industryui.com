@@ -4,13 +4,13 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { bool, func, shape, string, number, object } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
 import { ImageWrapper } from '../../'
+import { ImageLocationProps } from './props'
 
 export const ImageLocation = ({
   coordinatesChange,
@@ -44,22 +44,7 @@ const StyledImageLocation = styled.div`
   overflow-x: auto;
 `
 
-ImageLocation.propTypes = {
-  className: string,
-  coordinatesChange: func,
-  initialCoordinates: shape({
-    x: number,
-    y: number
-  }),
-  item: shape({
-    filename: string,
-    name: string,
-    value: number
-  }),
-  markerStyles: object,
-  show: bool,
-  style: object
-}
+ImageLocation.propTypes = ImageLocationProps
 
 ImageLocation.defaultProps = {
   show: true

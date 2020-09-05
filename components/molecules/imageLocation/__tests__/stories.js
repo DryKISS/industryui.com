@@ -15,7 +15,9 @@ import Readme from '../README.md'
 
 // Data
 import { Item } from '../__mocks__/itemFloor'
-
+import { useForm } from 'react-hook-form'
+import { Button, Alert } from 'index'
+import { ImageLocationFormElement } from '../components/imageLocationFormElement'
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
@@ -82,3 +84,16 @@ const BaseComponent = (props = {}) => {
 
 export const main = () => <BaseComponent />
 export const withCoordinatesStored = () => <BaseComponent initialCoordinates />
+export const UsedInForm = () => {
+  const { handleSubmit, control, setValue, errors } = useForm()
+  const onFormSubmit = data => {
+    console.log(data)
+  }
+  return (
+    <form onSubmit={handleSubmit(data => onFormSubmit(data))}>
+      <ImageLocationFormElement item={Item} control={control} setValue={setValue} />
+      {errors.imageLocationData && <Alert content={errors.imageLocationData.type} />}
+      <Button type='submit'>submit form</Button>
+    </form>
+  )
+}
