@@ -27,4 +27,8 @@ export const ImageLocationFormElement = ({ setValue, control, ...props }) => {
     />
   )
 }
-ImageLocationFormElement.propTypes = { ...ImageLocationProps, setValue: func, control: object }
+ImageLocationFormElement.propTypes = {
+  ...ImageLocationProps,
+  setValue: func.isRequired,
+  control: object.isRequired
+}
