@@ -9,19 +9,14 @@ import { func, object } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Image, ImageMarker } from '../../../'
-import ResizeDetector from './resizeDetector'
+import { Image, ImageMarker, ResizeDetector } from '../../../'
 
 let imageHeight = 0
 let imageWidth = 0
 
-const calculateMarkerPlace = coordinates => {
-  return { x: (coordinates.x * imageWidth) / 100, y: (coordinates.y * imageHeight) / 100 }
-}
-
 export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }) => {
   const containerRef = useRef()
-  const [MarkerCoordinates, setMarkerCoordinates] = useState()
+  const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
 
   const handleImageClick = event => {
     const coordinates = {
@@ -29,16 +24,13 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
       y: (event.nativeEvent.offsetY * 100) / imageHeight
     }
     setCoordinates(coordinates)
-    setMarkerCoordinates(co => calculateMarkerPlace(coordinates))
+    setMarkerCoordinates(co => coordinates)
   }
 
-  const drawMarker = () => {
+  const newImageSize = () => {
     const { current: container } = containerRef
     imageWidth = container.clientWidth
     imageHeight = container.clientHeight
-    if (coordinates) {
-      setMarkerCoordinates(co => calculateMarkerPlace(coordinates))
-    }
   }
 
   return (
@@ -46,12 +38,12 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
       <ResizeDetector
         onResize={() => {
           if (MarkerCoordinates) {
-            drawMarker()
+            newImageSize()
           }
         }}
       />
       <Image
-        onLoad={drawMarker}
+        onLoad={newImageSize}
         ref={containerRef}
         onClick={handleImageClick}
         alt={item.name}

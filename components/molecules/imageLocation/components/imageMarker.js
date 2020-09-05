@@ -36,6 +36,12 @@ const transition = css`
   transition-duration: 0.2s;
   transition-property: left, top;
 `
+const currection = css`
+  margin-left: ${({ styles }) =>
+    '-' + (styles?.width ? Number(styles.width.replace('px', '') / 2) + 'px' : '7px')};
+  margin-top: ${({ styles }) =>
+    '-' + (styles?.height ? Number(styles.height.replace('px', '') / 2) + 'px' : '7px')};
+`
 const StyledIcon = styled(Icon)`
   color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
   position: absolute;
@@ -50,9 +56,10 @@ const StyledIcon = styled(Icon)`
     coordinates &&
     css`
       display: block;
-      left: ${coordinates.x - 10}px;
-      top: ${coordinates.y - 10}px;
+      left: ${coordinates.x}%;
+      top: ${coordinates.y}%;
     `}
+	${currection}
   ${transition}
 `
 
@@ -70,13 +77,14 @@ const StyledMarker = styled.div`
     coordinates &&
     css`
       display: block;
-      left: ${coordinates.x - 10}px;
-      top: ${coordinates.y - 10}px;
+      left: ${coordinates.x}%;
+      top: ${coordinates.y}%;
     `}
 
   height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
   position: absolute;
   width: ${({ styles }) => (styles?.width ? styles.width : '15px')};
+	${currection}
   ${transition}
 `
 
