@@ -15,7 +15,7 @@ let imageHeight = 0
 let imageWidth = 0
 
 export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }) => {
-  const containerRef = useRef()
+  const imageRef = useRef()
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
 
   const handleImageClick = event => {
@@ -28,23 +28,21 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
   }
 
   const newImageSize = () => {
-    const { current: container } = containerRef
-    imageWidth = container.clientWidth
-    imageHeight = container.clientHeight
+    const { current: image } = imageRef
+    imageWidth = image.clientWidth
+    imageHeight = image.clientHeight
   }
 
   return (
     <StyledImageWrapper>
       <ResizeDetector
         onResize={() => {
-          if (MarkerCoordinates) {
-            newImageSize()
-          }
+          newImageSize()
         }}
       />
       <Image
         onLoad={newImageSize}
-        ref={containerRef}
+        ref={imageRef}
         onClick={handleImageClick}
         alt={item.name}
         src={item.filename}
