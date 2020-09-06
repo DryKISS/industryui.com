@@ -6,7 +6,6 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
 import { Size, Wrapper } from 'decorators'
 
 // UI
@@ -16,7 +15,7 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Controlled/InputGroup',
   component: InputGroup,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

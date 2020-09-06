@@ -3,7 +3,7 @@
  */
 
 // Storybook
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // React Hook Form
@@ -17,7 +17,7 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Search',
   component: Search,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

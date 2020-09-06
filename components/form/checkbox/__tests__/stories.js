@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { text, withKnobs } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // React Hook Form
@@ -34,7 +34,7 @@ const data = [
 export default {
   title: 'Form/Checkbox',
   component: CheckboxField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

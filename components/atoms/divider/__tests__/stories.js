@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { number, withKnobs } from '@storybook/addon-knobs'
+import { number } from '@storybook/addon-knobs'
 import { Context, Size } from 'decorators'
 
 // Storybook
@@ -20,7 +20,6 @@ import { DividerDefaultProps } from '../props'
 export default {
   title: 'Atoms/Divider',
   component: Divider,
-  decorators: [withKnobs],
   parameters: {
     readme: {
       sidebar: Readme

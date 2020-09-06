@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { text, withKnobs } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // useForm
@@ -22,7 +22,7 @@ import { RADIO_GENDER } from '../__mocks__/radio'
 export default {
   title: 'Form/Radio',
   component: RadioField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

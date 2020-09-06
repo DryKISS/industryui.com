@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // Nivo
@@ -25,7 +25,7 @@ import styled from 'styled-components'
 export default {
   title: 'Molecules/Charts/Nivo/Pie',
   component: PieChart,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

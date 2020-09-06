@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { boolean, withKnobs } from '@storybook/addon-knobs'
+import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // React Hook Form
@@ -20,7 +20,7 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Date Picker/Input',
   component: DatePickerInput,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

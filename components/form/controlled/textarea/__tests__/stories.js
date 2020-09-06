@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 
 // Storybook
 import { Wrapper } from 'decorators'
-import { boolean, number, select, withKnobs } from '@storybook/addon-knobs'
+import { boolean, number, select } from '@storybook/addon-knobs'
 
 // UI
 import { Textarea, Input, Button } from 'components'
@@ -16,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Controlled/Textarea',
   component: [Textarea],
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

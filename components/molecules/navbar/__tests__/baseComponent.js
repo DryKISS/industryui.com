@@ -6,7 +6,7 @@
 import React, { useContext } from 'react'
 
 // Storybook
-import { boolean, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -15,7 +15,7 @@ import { Dashboard } from '../__mocks__/navbar'
 
 export const options = {
   component: Navbar,
-  decorators: [withKnobs, Wrapper]
+  decorators: [Wrapper]
 }
 
 export const BaseComponent = (props = {}) => {

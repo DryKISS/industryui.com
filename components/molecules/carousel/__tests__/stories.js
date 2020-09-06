@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { Context, Wrapper } from 'decorators'
-import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select } from '@storybook/addon-knobs'
 
 // Style
 import styled from 'styled-components'
@@ -21,7 +21,7 @@ import vizla from 'storybook/static/card/vizla.jpg'
 export default {
   title: 'Molecules/Carousel',
   component: Carousel,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

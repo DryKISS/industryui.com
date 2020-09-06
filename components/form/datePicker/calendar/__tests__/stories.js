@@ -6,7 +6,6 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // React Hook Form
@@ -28,7 +27,7 @@ import { KNOBS } from './knobs'
 export default {
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { boolean, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
@@ -17,7 +17,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Link',
   component: Link,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
