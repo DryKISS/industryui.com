@@ -4,15 +4,12 @@
 
 // React
 
-import { DropdownMenu, Icon } from '../../../'
+import { DropdownMenu, Icon, Position } from '../../../'
 import React, { useEffect, useRef, useState } from 'react'
 import { array, bool, func, node, oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-
-// UI
-import { Position } from 'components/theme'
 
 export const elementTypes = {
   Colour: 'colour',
@@ -95,10 +92,10 @@ Dropdown.propTypes = {
   caret: bool,
   children: node.isRequired,
   className: string,
+  elementType: oneOf([elementTypes.List, elementTypes.Colour]),
   items: array.isRequired,
   onChange: func,
-  position: string,
-  elementType: oneOf([elementTypes.List, elementTypes.Colour])
+  position: string
 }
 
 Dropdown.defaultProps = {

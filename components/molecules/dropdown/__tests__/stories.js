@@ -13,6 +13,7 @@ import { Wrapper } from 'decorators'
 import {
   Avatar,
   Button,
+  colourList,
   Dropdown,
   elementTypes,
   Icon,
@@ -24,7 +25,6 @@ import styled, { css } from 'styled-components'
 
 import Readme from '../README.md'
 import { Items, Language } from '../__mocks__/dropdown'
-import { colourList } from 'components/theme/variables/colorList'
 
 export default {
   title: 'Molecules/Dropdown',

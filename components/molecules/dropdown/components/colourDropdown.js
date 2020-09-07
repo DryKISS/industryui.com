@@ -4,21 +4,24 @@
 
 // React
 import React from 'react'
-import { string, func } from 'prop-types'
-import { Position } from 'components/theme'
-import { colourList } from 'components/theme/variables/colorList'
-import { Dropdown, elementTypes } from 'index'
+import { func, string } from 'prop-types'
+import { elementTypes, Dropdown } from 'index'
+
+// UI
+import { colourList, Position } from '../../../'
+
 const colours = colourList
+
 export const ColourDropdown = ({ children, onColorSelect, position, ...props }) => {
   return (
     <Dropdown
-      {...props}
+      elementType={elementTypes.Colour}
       items={colours}
       onChange={e => {
         onColorSelect(e)
       }}
       position={position ?? Position.Bottom}
-      elementType={elementTypes.Colour}
+      {...props}
     >
       {children}
     </Dropdown>
