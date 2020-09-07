@@ -19,7 +19,7 @@ import {
   Icon,
   InternationalisationContext,
   useTranslation
-} from 'components'
+} from '../../../'
 
 import styled, { css } from 'styled-components'
 

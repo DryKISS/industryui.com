@@ -5,10 +5,9 @@
 // React
 import React from 'react'
 import { func, string } from 'prop-types'
-import { elementTypes, Dropdown } from 'index'
 
 // UI
-import { colourList, Position } from '../../../'
+import { colourList, Position, elementTypes, Dropdown } from '../../../'
 
 const colours = colourList
 
