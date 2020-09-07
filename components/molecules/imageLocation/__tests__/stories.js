@@ -17,7 +17,8 @@ import Readme from '../README.md'
 import { Item } from '../__mocks__/itemFloor'
 import { useForm } from 'react-hook-form'
 import { Button, Alert } from 'index'
-import { ImageLocationFormElement } from '../components/imageLocationFormElement'
+import { ImageLocationFormElement } from '../components'
+
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
