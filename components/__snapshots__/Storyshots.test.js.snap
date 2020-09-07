@@ -512,22 +512,6 @@ exports[`Storyshots Atoms/Heading Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Heading No Margin 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Atoms/Icon Brands 1`] = `
 @media (min-width:62em) {
 
@@ -1072,6 +1056,22 @@ exports[`Storyshots Blog/Tags Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Form All 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Form/Checkbox Main 1`] = `
 @media (min-width:62em) {
 
@@ -1089,358 +1089,6 @@ exports[`Storyshots Form/Checkbox Main 1`] = `
 `;
 
 exports[`Storyshots Form/Checkbox Stacked 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Checkbox Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Checkbox Stacked 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Form Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Input Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Input No Label 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Input Reset 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/InputGroup Append Button 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/InputGroup Append Icon 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/InputGroup Prepend Button 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/InputGroup Prepend Icon 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Label Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Radio Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Radio Stacked 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Select Country 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Select Dog Breed 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Select Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Textarea Characters Count 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Textarea Direction 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Textarea Disabled 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Textarea Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Textarea Max Length 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/Textarea Rows And Cols Props 1`] = `
 @media (min-width:62em) {
 
 }
@@ -1600,7 +1248,55 @@ exports[`Storyshots Form/Field Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Form/Form Main 1`] = `
+exports[`Storyshots Form/InputGroup Append Button 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/InputGroup Append Icon 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/InputGroup Prepend Button 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/InputGroup Prepend Icon 1`] = `
 @media (min-width:62em) {
 
 }
@@ -3793,6 +3489,22 @@ exports[`Storyshots Organisms/Big Calendar Main 1`] = `
 `;
 
 exports[`Storyshots Organisms/Color Picker Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Organisms/Editor Main 1`] = `
 @media (min-width:62em) {
 
 }
