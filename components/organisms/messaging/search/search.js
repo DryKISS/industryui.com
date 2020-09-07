@@ -7,7 +7,7 @@ import React from 'react'
 import { func, string } from 'prop-types'
 
 // UI
-import { Column, Form, Row, Search, Select, useForm } from '../../../'
+import { Column, Form, Row, Search, SelectField, useForm } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -58,7 +58,7 @@ const StyledSearch = styled(Search)`
   width: 75%;
 `
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(SelectField)`
   width: 75%;
   label {
     margin: 0;
