@@ -18,6 +18,7 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
       {name}
     </StyledLink>
   )
+
   return to ? (
     <Link border={false} passHref to={to}>
       {item()}
@@ -35,6 +36,7 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
           {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
         </StyledDropdownItem>
       )
+
     case elementTypes.Colour:
       return (
         <StyledColourItem

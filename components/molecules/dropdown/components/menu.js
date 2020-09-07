@@ -71,8 +71,9 @@ const StyledDropdownMenu = styled.div`
     )
   }}
 `
-const size = '0.875rem'
+
 const dist = '0.625rem'
+const size = '0.875rem'
 const TooltipRectangle = styled.div`
   border-color: transparent transparent rgb(255, 255, 255);
   border-image: initial;

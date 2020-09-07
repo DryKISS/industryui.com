@@ -39,9 +39,11 @@ export default {
 
 const BaseComponent = props => {
   const { setLocale } = useContext(InternationalisationContext)
+
   const onChange = data => {
     setLocale({ locale: data.id })
   }
+
   const defaultProps = {
     caret: boolean('Caret', props.caret || true),
     children: props.children || text('Children', 'Dropdown'),
@@ -57,6 +59,7 @@ const BaseComponent = props => {
     ),
     ...props
   }
+
   return <Dropdown {...defaultProps} />
 }
 
@@ -124,8 +127,8 @@ export const colourPicker = () => {
   )
 }
 const ColourBox = styled.div`
-  width: 1.5rem;
   height: 1.5rem;
+  width: 1.5rem;
   ${({ background }) =>
     background &&
     css`

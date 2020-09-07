@@ -25,7 +25,9 @@ export const Dropdown = ({
   position
 }) => {
   const [open, setOpen] = useState(false)
+
   const node = useRef()
+
   const handleClickAway = event => {
     if (node.current.contains(event.target)) {
       return
@@ -40,6 +42,7 @@ export const Dropdown = ({
     } else {
       document.removeEventListener('mousedown', handleClickAway)
     }
+
     return () => {
       document.removeEventListener('mousedown', handleClickAway)
     }
@@ -63,8 +66,8 @@ export const Dropdown = ({
         )}
         {items && open && (
           <DropdownMenu
-            elementType={elementType ?? elementTypes.List}
             closeDropdown={() => setOpen(false)}
+            elementType={elementType ?? elementTypes.List}
             items={items}
             position={position}
             onItemClick={onChange}
