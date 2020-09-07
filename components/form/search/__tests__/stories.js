@@ -10,7 +10,7 @@ import { Wrapper } from 'decorators'
 import { object, string } from 'yup'
 
 // UI
-import { Divider, FormError, FormForm, Search, Text, useForm, yupResolver } from 'components'
+import { Divider, FormError, Form, Search, Text, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -62,7 +62,7 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <Search {...defaultProps} />
 
       <Divider size='sm' />
@@ -70,7 +70,7 @@ const BaseComponent = (props = {}) => {
       <Text>{value}</Text>
 
       <FormError message={errors?.expiryAt?.message || ''} />
-    </FormForm>
+    </Form>
   )
 }
 

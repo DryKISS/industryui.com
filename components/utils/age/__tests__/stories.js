@@ -12,7 +12,7 @@ import { Wrapper } from 'decorators'
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { age, Button, DatePickerCalendar, Divider, FormForm, Text, useForm } from 'components'
+import { age, Button, DatePickerCalendar, Divider, Form, Text, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -45,7 +45,7 @@ export const main = () => {
   const birthDate = getValues()?.birthDate
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <Text>Age: {age(birthDate)}</Text>
 
       <DatePickerCalendar {...defaultProps} />
@@ -53,6 +53,6 @@ export const main = () => {
       <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }

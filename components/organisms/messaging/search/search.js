@@ -7,7 +7,7 @@ import React from 'react'
 import { func, string } from 'prop-types'
 
 // UI
-import { Column, FormForm, Row, Search, Select, useForm } from '../../../'
+import { Column, Form, Row, Search, Select, useForm } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -28,7 +28,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
 
   return (
     <StyledContainer>
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Column md={6}>
             <StyledSearch
@@ -43,7 +43,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
             <StyledSelect change={onFilter} id='messagingFilter' options={Items} />
           </Column>
         </Row>
-      </FormForm>
+      </Form>
     </StyledContainer>
   )
 }
