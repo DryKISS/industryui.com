@@ -4,20 +4,19 @@
 
 // React
 import React from 'react'
-
+import { object as obj } from 'yup'
 // Storybook
 import { object, select, withKnobs } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 // UI
-import { ImageLocation } from 'components'
+
 import Readme from '../README.md'
 
 // Data
 import { Item } from '../__mocks__/itemFloor'
 import { useForm } from 'react-hook-form'
-import { Button, Alert } from 'index'
-import { ImageLocationFormElement } from '../components'
+import { Alert, Button, ImageLocation, ImageLocationFormElement } from '../../../'
 
 export default {
   title: 'Molecules/ImageLocation',
@@ -88,10 +87,14 @@ export const main = () => <BaseComponent />
 export const withCoordinatesStored = () => <BaseComponent initialCoordinates />
 
 export const UsedInForm = () => {
-  const { handleSubmit, control, setValue, errors } = useForm()
+  const schema = obj().shape({
+    imageLocationData: obj().required()
+  })
+  const { handleSubmit, control, setValue, errors } = useForm({ validationSchema: schema })
   const onFormSubmit = data => {
     console.log(data)
   }
+
   return (
     <form onSubmit={handleSubmit(data => onFormSubmit(data))}>
       <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />

@@ -27,7 +27,6 @@ export const ImageLocationFormElement = ({ control, errors, setValue, ...props }
           setValue('imageLocationData', imageLocationData)
         }}
         name={elementName}
-        rules={{ required: true }}
       />
     </ControllerWrapper>
   )
