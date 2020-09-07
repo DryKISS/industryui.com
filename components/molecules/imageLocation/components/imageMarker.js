@@ -10,7 +10,7 @@ import { object } from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import { Icon } from 'components'
+import { Icon } from '../../../'
 
 export const ImageMarker = ({ coordinates, styles }) => {
   return styles?.shape ? (

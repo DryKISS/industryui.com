@@ -21,13 +21,18 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
 
   const handleImageClick = event => {
     const { current: image } = imageRef
+
     imageWidth = image.clientWidth
+
     imageHeight = image.clientHeight
+
     const coordinates = {
       x: (event.nativeEvent.offsetX * 100) / imageWidth,
       y: (event.nativeEvent.offsetY * 100) / imageHeight
     }
+
     setCoordinates(coordinates)
+
     setMarkerCoordinates(co => coordinates)
   }
 

@@ -11,8 +11,7 @@ import { Controller } from 'react-hook-form'
 import styled, { keyframes } from 'styled-components'
 
 // UI
-import { ImageLocation } from '../../../'
-import { ImageLocationProps } from './props'
+import { ImageLocation, ImageLocationProps } from '../../../'
 
 const elementName = 'imageLocationData'
 
