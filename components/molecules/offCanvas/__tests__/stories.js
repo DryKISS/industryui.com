@@ -37,7 +37,7 @@ const BaseComponent = props => {
     container: text('Container', ''),
     context: Context('', 'primary'),
     hasAvatar: boolean('Avatar', false),
-    headerContent: text('headerContent', 'This is the offcanvas help description'),
+    headerContent: text('headerContent', ''),
     lockScrollOnOpen: boolean('Lock scroll open', false),
     overlay: boolean('Overlay', true),
     overlayOpacity: number('Opacity', 0.3, {
@@ -85,4 +85,4 @@ const BaseComponent = props => {
   return <Button content='Show' onClick={handleClick} />
 }
 
-export const main = () => <BaseComponent>Content goes here</BaseComponent>
+export const main = () => <BaseComponent />
