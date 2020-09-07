@@ -6,13 +6,13 @@
 import React, { useState } from 'react'
 
 // Styled Components
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
 // Storybook
 import { Wrapper } from 'decorators'
 
 // UI
-import { IconPicker, Text, elementTypes } from 'components'
+import { IconPicker, Icon, elementTypes } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -30,34 +30,38 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
   const [iconSelected, setIconSelected] = useState()
 
   const handleSelectIcon = icon => {
+    console.log('icon selected ', icon)
+
     setIconSelected(icon)
-    console.log('icon selected ', iconSelected)
   }
   const iconList = [
-    { id: 1, icon: { prefix: 'fas', iconModel: 'user' } },
-    { id: 2, icon: { prefix: 'fas', iconModel: 'user' } },
-    { id: 3, icon: { prefix: 'fas', iconModel: 'user' } },
-    { id: 4, icon: { prefix: 'fas', iconModel: 'user' } }
+    { id: 1, icon: 'user', prefix: 'fas' },
+    { id: 2, icon: 'user', prefix: 'fas' },
+    { id: 3, icon: 'user', prefix: 'fas' },
+    { id: 4, icon: 'user', prefix: 'fas' }
   ]
   const defaultProps = {
     iconOptions: iconList,
     elementType: elementTypes.Icon,
-    selectIcon: handleSelectIcon,
-    children: <Text>Icon picker</Text>
+    handleSelectIcon: handleSelectIcon
   }
 
   return (
-    <>
+    <Container>
+      {iconSelected && <Icon icon={iconSelected?.icon} prefix={iconSelected?.prefix} />}
       <IconPicker {...defaultProps} />
-    </>
+      <div>Select Icon</div>
+    </Container>
   )
 }
 
 export const main = () => <BaseComponent />
 
-/* TODO: add when we are selecting the iconn
-const StyledIcon = styled(Icon)`
-  /*color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
-  position: absolute;
-  background-color: white;
+/* const StyledIcon = styled(Icon)`
+  background-color: transparent;
 ` */
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 15rem;
+`

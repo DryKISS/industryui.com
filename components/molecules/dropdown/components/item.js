@@ -48,13 +48,8 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
     case elementTypes.Icon:
       return (
         <StyledIconItem>
-          <Button
-            context='white'
-            onClick={e => {
-              console.log('click')
-            }}
-          >
-            <Icon icon={item?.icon.iconModel} prefix={item?.icon.prefix} />
+          <Button context='white' onClick={onClick}>
+            <Icon icon={item?.icon} prefix={item?.prefix} />
           </Button>
         </StyledIconItem>
       )
