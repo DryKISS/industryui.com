@@ -12,7 +12,7 @@ import { colourList, Position } from '../../../'
 
 const colours = colourList
 
-export const ColourDropdown = ({ children, onColorSelect, position, ...props }) => {
+export const DropdownColour = ({ children, onColorSelect, position, ...props }) => {
   return (
     <Dropdown
       elementType={elementTypes.Colour}
@@ -28,11 +28,11 @@ export const ColourDropdown = ({ children, onColorSelect, position, ...props }) 
   )
 }
 
-ColourDropdown.defaultProps = {
+DropdownColour.defaultProps = {
   position: Position.Bottom
 }
 
-ColourDropdown.propTypes = {
+DropdownColour.propTypes = {
   position: string,
   onColorSelect: func.isRequired,
   width: string
