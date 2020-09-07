@@ -10,9 +10,8 @@ import { array, func, oneOf } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { elementTypes } from 'index'
-import { DropdownItem } from '../../'
-import { Position } from '../../../'
+
+import { elementTypes, DropdownItem, Position } from '../../../'
 
 export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, position }) => {
   const handleClick = item => {

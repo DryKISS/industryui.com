@@ -101,8 +101,6 @@ export const avatar = () => (
   </BaseComponent>
 )
 
-const colours = colourList
-
 export const colourPicker = () => {
   const [SelectedColour, setSelectedColour] = useState('green')
 
@@ -114,7 +112,7 @@ export const colourPicker = () => {
     <>
       <ColourBox background={SelectedColour} />
       <BaseComponent
-        items={colours}
+        items={colourList}
         onChange={e => {
           changeColor(e)
         }}
