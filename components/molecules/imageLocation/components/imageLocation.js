@@ -27,7 +27,7 @@ export const ImageLocation = ({
 
   return (
     <StyledImageLocation show={show}>
-      {item && item.filename && (
+      {item?.filename && (
         <ImageWrapper
           coordinates={coordinates}
           markerStyles={markerStyles}

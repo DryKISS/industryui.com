@@ -2912,6 +2912,22 @@ exports[`Storyshots Molecules/ImageLocation Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/ImageLocation Used In Form 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/ImageLocation With Coordinates Stored 1`] = `
 @media (min-width:62em) {
 

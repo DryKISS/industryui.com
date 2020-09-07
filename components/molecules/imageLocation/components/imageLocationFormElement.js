@@ -13,7 +13,9 @@ import styled, { keyframes } from 'styled-components'
 // UI
 import { ImageLocation } from './imageLocation'
 import { ImageLocationProps } from './props'
+
 const elementName = 'imageLocationData'
+
 export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
   return (
     <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
@@ -30,6 +32,7 @@ export const ImageLocationFormElement = ({ control, errors, setValue, ...props }
     </ControllerWrapper>
   )
 }
+
 const imageAllert = keyframes`
   from {
 filter: invert(0);

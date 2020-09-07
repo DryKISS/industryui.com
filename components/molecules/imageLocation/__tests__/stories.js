@@ -83,7 +83,9 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = () => <BaseComponent />
+
 export const withCoordinatesStored = () => <BaseComponent initialCoordinates />
+
 export const UsedInForm = () => {
   const { handleSubmit, control, setValue, errors } = useForm()
   const onFormSubmit = data => {
