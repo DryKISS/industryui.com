@@ -24,7 +24,7 @@ export const ImageLocationFormElement = ({ control, errors, setValue, ...props }
         as={ImageLocation}
         control={control}
         coordinatesChange={imageLocationData => {
-          setValue('imageLocationData', imageLocationData)
+          setValue(elementName, imageLocationData)
         }}
         name={elementName}
       />
