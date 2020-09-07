@@ -10,7 +10,7 @@ import { any, bool, func, string } from 'prop-types'
 import {
   Alert,
   Button,
-  Checkbox,
+  CheckboxField,
   DatePickerInput,
   Form,
   FormLabel,
@@ -164,7 +164,7 @@ export const Register = ({
         <Alert content={passwordError.message} context='warning' style={{ color: '#fff' }} />
       )}
 
-      <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
+      <CheckboxField {...defaultOptions} data={CHECKBOX_TERMS} stacked />
 
       <Button
         align='right'
