@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { func, object } from 'prop-types'
 
 import styled from 'styled-components'
@@ -16,6 +16,7 @@ let imageWidth = 0
 
 export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }) => {
   const imageRef = useRef()
+
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
 
   const handleImageClick = event => {
@@ -32,7 +33,7 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
 
   return (
     <StyledImageWrapper>
-      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} src={item.filename} fluid />
+      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} fluid src={item.filename} />
       {MarkerCoordinates?.x && (
         <ImageMarker coordinates={MarkerCoordinates} key={item.id} styles={markerStyles} />
       )}

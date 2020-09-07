@@ -20,8 +20,8 @@ export const ImageMarker = ({ coordinates, styles }) => {
       icon={styles?.shape?.icon}
       prefix={styles?.shape?.prefix}
       pull='left'
-      size='lg'
       styles={styles}
+      size='lg'
     />
   ) : (
     <StyledMarker coordinates={coordinates} styles={styles} />

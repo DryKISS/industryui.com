@@ -65,7 +65,6 @@ const BaseComponent = (props = {}) => {
       'red'
     ),
     height: '20px',
-    width: '20px',
     shape: select(
       'Shape',
       {
@@ -76,7 +75,8 @@ const BaseComponent = (props = {}) => {
         No: ''
       },
       ''
-    )
+    ),
+    width: '20px'
   }
 
   return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
@@ -90,7 +90,8 @@ export const UsedInForm = () => {
   const schema = obj().shape({
     imageLocationData: obj().required()
   })
-  const { handleSubmit, control, setValue, errors } = useForm({ validationSchema: schema })
+
+  const { control, errors, handleSubmit, setValue } = useForm({ validationSchema: schema })
   const onFormSubmit = data => {
     console.log(data)
   }

@@ -20,13 +20,13 @@ export const ImageLocationFormElement = ({ control, errors, setValue, ...props }
   return (
     <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
       <Controller
-        {...props}
         as={ImageLocation}
         control={control}
         coordinatesChange={imageLocationData => {
           setValue(elementName, imageLocationData)
         }}
         name={elementName}
+        {...props}
       />
     </ControllerWrapper>
   )
