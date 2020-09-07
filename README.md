@@ -5,6 +5,8 @@ throughout our NextJS projects.
 
 It enables us to rapidly prototype any type of site at any scale.
 
+WE are making this available to the wider community to experiment with at this time.
+
 ![](https://github.com/DryKISS/industryui.com/workflows/Lint%20IndustryUI/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)

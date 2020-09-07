@@ -23,15 +23,15 @@ export const Close = ({ className, click, context, icon, iconPrefix }) => {
 const StyledButton = styled(Button)`
   background-color: transparent;
   border: 0;
-  color: ${props => props.theme.COLOUR[props.context]};
+  color: ${({ context, theme }) => theme.COLOUR[context]};
   cursor: pointer;
   float: right;
   font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  opacity: 0.8;
+  height: auto;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
   text-shadow: 0 1px 0 #fff;
-  margin: -1rem -1rem -1rem auto;
   z-index: 10000;
 
   &:hover {
@@ -51,7 +51,7 @@ Close.propTypes = {
 }
 
 Close.defaultProps = {
-  context: 'danger',
+  context: 'dark',
   icon: 'times-circle',
-  iconPrefix: 'far'
+  iconPrefix: 'fas'
 }

@@ -8,14 +8,11 @@ import React from 'react'
 // Storybook
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { age, Button, DatePickerCalendar, Divider, FormForm } from 'components'
+import { age, Button, DatePickerCalendar, Divider, FormForm, Text, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -49,11 +46,11 @@ export const main = () => {
 
   return (
     <FormForm handleSubmit={handleSubmit(onSubmit)}>
-      <p>Age: {age(birthDate)}</p>
+      <Text>Age: {age(birthDate)}</Text>
 
       <DatePickerCalendar {...defaultProps} />
 
-      <Divider />
+      <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
     </FormForm>

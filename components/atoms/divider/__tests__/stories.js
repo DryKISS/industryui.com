@@ -6,17 +6,21 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
+import { number, withKnobs } from '@storybook/addon-knobs'
 import { Context, Size, Wrapper } from 'decorators'
 
+// Style
+import styled from 'styled-components'
+
 // UI
-import { Divider } from 'components'
+import { Divider, Text } from 'components'
 import Readme from '../README.md'
+import { DividerDefaultProps } from '../props'
 
 export default {
   title: 'Atoms/Divider',
   component: Divider,
-  decorators: [Wrapper, withKnobs],
+  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -26,15 +30,29 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    context: Context(),
-    size: Size(),
+    context: Context('', DividerDefaultProps.context),
+    size: Size('', DividerDefaultProps.size),
+    thickness: number('Thickness', DividerDefaultProps.thickness),
     ...props
   }
 
-  return <Divider {...defaultProps} />
+  return (
+    <StyledWrapper>
+      <Text>Text</Text>
+
+      <Divider {...defaultProps} />
+
+      <Text>Text</Text>
+    </StyledWrapper>
+  )
 }
 
 export const main = () => <BaseComponent />
-export const content = () => <BaseComponent content='Text' />
-export const medium = () => <BaseComponent size='md' />
-export const large = () => <BaseComponent size='lg' />
+export const vertical = () => <BaseComponent flexItem vertical />
+
+const StyledWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px;
+`

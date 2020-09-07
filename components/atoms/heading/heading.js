@@ -49,5 +49,4 @@ const StyledHeading = styled.span`
 `
 
 Heading.propTypes = HeadingPropTypes
-
 Heading.defaultProps = HeadingDefaultProps

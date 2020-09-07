@@ -45,13 +45,13 @@ export const main = () => {
   return (
     <>
       <BaseComponent />
-      <Divider size='lg' />
+      <Divider size='sm' />
 
       <BaseComponent className='link--hover'>Hover</BaseComponent>
-      <Divider />
+      <Divider size='sm' />
 
       <BaseComponent className='link--active'>Active</BaseComponent>
-      <Divider />
+      <Divider size='sm' />
 
       <BaseComponent className='link--visited'>Visited</BaseComponent>
     </>

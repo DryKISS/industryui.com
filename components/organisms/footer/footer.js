@@ -62,7 +62,7 @@ export const Footer = ({ columns, fixed }) => {
   const renderText = ({ align, items }, index) => (
     <Fragment key={index}>
       {items?.map(({ content, icon }, i) => (
-        <Fragment key={`${index}${i}`}>
+        <Fragment key={i}>
           {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
           <StyledText align={align} dangerouslySetInnerHTML={{ __html: content }} />
         </Fragment>

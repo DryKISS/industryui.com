@@ -2,53 +2,59 @@
  * Divider
  */
 
-// React
-import { any, oneOf, string } from 'prop-types'
-
 // UI
-import { SIZE } from '../../'
+import { BACKGROUND } from '../../'
+import { DividerPropTypes, DividerDefaultProps } from './props'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Divider = props => (
-  <StyledDivider {...props}>{props.content && props.content}</StyledDivider>
-)
+export const Divider = styled.hr`
+  border: none;
+  height: ${({ thickness }) => thickness}px;
+  flex-shrink: 0;
+  width: 100%;
+  ${props => BACKGROUND(props)}
 
-const StyledDivider = styled.div`
-  border-top: 2px solid
-    ${({ context, theme }) => (context ? theme.COLOUR[context] : theme.COLOUR.light)};
-  height: ${({ content }) => (content ? 'auto' : '0')};
-  margin: ${props =>
-    (props.size === 'lg' && '2rem 0') || (props.size === 'md' && '1rem 0') || '.5rem 0'};
-  overflow: hidden;
-  user-select: none;
-  ${({ content, theme }) =>
-    content &&
+  ${({ vertical }) =>
+    vertical &&
     css`
-      :after {
-        background-position: left 1em top 50%;
-      }
-
-      :before {
-        background-position: right 1em top 50%;
-      }
-
-      :after,
-      :before {
-        border-top: 1px solid ${theme.COLOUR.dark};
-        content: '';
-        display: table-cell;
-        position: relative;
-        top: 50%;
-        width: 50%;
-        background-repeat: no-repeat;
-      }
+      width: ${({ thickness }) => thickness}px;
+      height: 100%;
     `}
+
+  margin: ${({ size, theme, vertical }) => {
+    if (size === 'sm') {
+      if (vertical) {
+        return theme.SPACING(0, 4)
+      }
+
+      return theme.SPACING(4, 0)
+    }
+
+    if (size === 'lg') {
+      if (vertical) {
+        return theme.SPACING(0, 12)
+      }
+
+      return theme.SPACING(12, 0)
+    }
+
+    if (vertical) {
+      return theme.SPACING(0, 8)
+    }
+
+    return theme.SPACING(8, 0)
+  }};
+
+  ${({ flexItem }) =>
+    flexItem &&
+    css`
+      height: auto;
+      align-self: stretch;
+    `}
+
 `
 
-Divider.propTypes = {
-  className: any,
-  content: string,
-  size: oneOf(Object.values(SIZE))
-}
+Divider.propTypes = DividerPropTypes
+Divider.defaultProps = DividerDefaultProps

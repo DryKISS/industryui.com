@@ -2,6 +2,7 @@
  * Organisms
  */
 export * from './calendar'
+export * from './colorPicker/colorPicker'
 export * from './emailChange'
 export * from './editor'
 export * from './footer/footer'

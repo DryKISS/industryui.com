@@ -3,78 +3,67 @@
  */
 
 // React
-import { bool, func, string, oneOf } from 'prop-types'
+import { bool, func, object, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, Form, FormField, Icon, InputGroup, InputGroupAddon, useForm } from '../../'
+import { Button, FormField, Icon, InputGroup, InputGroupAddon } from '../../'
 
 export const Search = ({
   appendSearchButton,
   appendSearchIcon,
-  className,
+  errors,
   label,
-  onSearch,
   placeholder,
   prependSearchIcon,
-  type,
-  value
+  prefix,
+  register,
+  type
 }) => {
-  const { handleSubmit, register } = useForm({
-    defaultValues: {
-      query: value
-    }
-  })
-
-  const onSubmit = data => {
-    onSearch(data.query)
-  }
-
   return (
-    <Form className={className} handleSubmit={handleSubmit(onSubmit)}>
-      <InputGroup>
-        {prependSearchIcon && (
-          <InputGroupAddon addonType='prepend' text>
-            <Icon icon='search' />
-          </InputGroupAddon>
-        )}
+    <InputGroup>
+      {prependSearchIcon && (
+        <InputGroupAddon addonType='prepend' text>
+          <Icon icon='search' prefix={prefix} />
+        </InputGroupAddon>
+      )}
 
-        <FormField
-          register={register}
-          name='query'
-          placeholder={placeholder}
-          required={false}
-          type={type}
-        />
+      <FormField
+        errors={errors}
+        name='query'
+        placeholder={placeholder}
+        register={register}
+        type={type}
+      />
 
-        {appendSearchIcon && (
-          <InputGroupAddon addonType='append' text>
-            <Icon icon='search' />
-          </InputGroupAddon>
-        )}
+      {appendSearchIcon && (
+        <InputGroupAddon addonType='append' text>
+          <Icon icon='search' prefix={prefix} />
+        </InputGroupAddon>
+      )}
 
-        {appendSearchButton && (
-          <InputGroupAddon addonType='append'>
-            <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
-          </InputGroupAddon>
-        )}
-      </InputGroup>
-    </Form>
+      {appendSearchButton && (
+        <InputGroupAddon addonType='append'>
+          <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
+        </InputGroupAddon>
+      )}
+    </InputGroup>
   )
 }
 
 Search.propTypes = {
   appendSearchButton: bool,
   appendSearchIcon: bool,
-  className: string,
+  errors: object.isRequired,
   label: string,
-  onSearch: func.isRequired,
   placeholder: string,
   prependSearchIcon: bool,
-  type: oneOf(['search', 'text']),
-  value: string
+  register: func.isRequired,
+  type: oneOf(['search', 'text'])
 }
 
 Search.defaultProps = {
-  showReset: true,
+  appendSearchButton: false,
+  appendSearchIcon: false,
+  prependSearchIcon: false,
   type: 'search'
 }

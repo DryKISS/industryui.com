@@ -9,11 +9,8 @@ import React from 'react'
 import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, FormForm, FormLabel, DropzoneField } from 'components'
+import { Button, FormForm, FormLabel, DropzoneField, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -29,8 +26,9 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const { control, errors, handleSubmit } = useForm()
+
   const onSubmit = data => {
-    console.log('data: ', data)
+    console.info('data: ', data)
   }
 
   const defaultProps = {

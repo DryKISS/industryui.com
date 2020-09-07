@@ -6,11 +6,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { array, bool, node, string, func } from 'prop-types'
 
-// UI
-import { DropdownMenu, Icon } from '../../../'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import { DropdownMenu, Icon } from '../../../'
 
 export const Dropdown = ({ caret, className, children, items, onChange, position }) => {
   const [open, setOpen] = useState(false)
@@ -48,7 +48,8 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
           <Icon
             aria-hidden='true'
             className='dropdown--caret'
-            icon={position === 'top' ? 'chevron-up' : 'chevron-down'}
+            icon={position === 'top' ? 'carat-up' : 'caret-down'}
+            prefix='fas'
           />
         )}
       </StyledToggle>

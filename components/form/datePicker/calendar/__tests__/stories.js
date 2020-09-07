@@ -9,6 +9,9 @@ import React from 'react'
 import { withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
+// Yup
+import { object, string } from 'yup'
+
 // Date utility
 import addDays from 'date-fns/addDays'
 import getDay from 'date-fns/getDay'
@@ -23,10 +26,11 @@ import {
   Divider,
   Form,
   FormError,
+  Text,
   useForm,
-  yup,
   yupResolver
 } from 'components'
+
 import Readme from '../README.md'
 import { KNOBS } from './knobs'
 
@@ -42,8 +46,8 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const schema = yup.object().shape({
-    expiryAt: yup.string().required()
+  const schema = object().shape({
+    expiryAt: string().required()
   })
 
   const { control, errors, getValues, handleSubmit } = useForm({
@@ -69,11 +73,11 @@ const BaseComponent = (props = {}) => {
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerCalendar {...defaultProps} />
 
-      <Divider />
+      <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
 
-      <p>{value}</p>
+      <Text>{value}</Text>
 
       <FormError message={errors?.expiryAt?.message || ''} />
     </Form>
@@ -90,10 +94,7 @@ export const workingHours = () => {
     return day !== 0 && day !== 6
   }
 
-  const holidays = [
-    new Date(2020, 11, 25), // Christmas
-    addDays(new Date(2020, 11, 25), 1) // Boxing Day
-  ]
+  const holidays = [new Date(2020, 11, 25), addDays(new Date(2020, 11, 25), 1)]
 
   const freeDays = [
     new Date(2020, 10, 27),
@@ -112,7 +113,7 @@ export const workingHours = () => {
 
   return (
     <>
-      <p>Our Schedule: 9:30AM - 6:30PM, Monday - Friday</p>
+      <Text>Our Schedule: 9:30AM - 6:30PM, Monday - Friday</Text>
 
       <BaseComponent
         excludeDates={holidays}
@@ -130,7 +131,7 @@ export const workingHours = () => {
         renderDayContents={renderDayContents}
         showTimeSelect
       >
-        <p style={{ color: '#3dcc4a' }}>*50% Discount</p>
+        <Text>*50% Discount</Text>
       </BaseComponent>
     </>
   )

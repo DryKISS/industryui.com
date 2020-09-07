@@ -3,7 +3,7 @@
  */
 
 // React
-import React from 'react'
+import React, { memo } from 'react'
 import { bool, oneOf, string, func, number } from 'prop-types'
 
 // UI
@@ -13,25 +13,33 @@ import { Icon } from '../../../atoms/icon'
 // Styled
 import styled from 'styled-components'
 
-export const AccordionItem = ({ children, className, context, handleOpen, index, open, title }) => {
-  return (
-    <StyledAccordionItem className={className}>
-      <Header
-        className={open ? 'opened' : 'closed'}
-        onClick={() => handleOpen(index)}
-        context={context || 'dark'}
-      >
-        {title}{' '}
-        <HeaderIcon
-          aria-hidden='true'
-          context='white'
-          icon={open ? 'chevron-up' : 'chevron-down'}
-        />
-      </Header>
-      <Content className={open ? 'opened' : 'closed'}>{children}</Content>
-    </StyledAccordionItem>
-  )
-}
+export const AccordionItem = memo(
+  ({ children, className, context, handleOpen, index, open, title }) => {
+    return (
+      <StyledAccordionItem className={className}>
+        <Header
+          className={open ? 'opened' : 'closed'}
+          onClick={() => handleOpen(index)}
+          context={context || 'dark'}
+        >
+          {title}{' '}
+          <HeaderIcon
+            aria-hidden='true'
+            context='white'
+            icon={open ? 'chevron-up' : 'chevron-down'}
+          />
+        </Header>
+        <Content className={open ? 'opened' : 'closed'}>{children}</Content>
+      </StyledAccordionItem>
+    )
+  },
+  (
+    { open: prevOpenState, context: prevContext },
+    { open: nextOpenState, context: nextContext }
+  ) => {
+    return prevOpenState === nextOpenState && prevContext === nextContext
+  }
+)
 
 const StyledAccordionItem = styled.div`
   &:last-child header.closed {

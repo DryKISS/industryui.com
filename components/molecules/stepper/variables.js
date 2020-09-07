@@ -2,7 +2,10 @@
  * Theme - Variables - Stepper
  */
 
+// UI
+import { COLOUR } from '../../theme/variables/colour'
+
 export const STEPPER = {
-  colour: '#c8ebec',
-  colourCheckmark: '#75cccf'
+  colour: COLOUR.primary,
+  colourCheckmark: COLOUR.success
 }

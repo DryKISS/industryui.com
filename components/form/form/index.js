@@ -1,17 +1,19 @@
 /**
  * Form - Form
- * Validates each field based on HTML5 atttributes, then calls the submit method  of the calling
- * class
  */
 
 // React
-import { node, string } from 'prop-types'
+import { func, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
-export const Form = ({ children, handleSubmit }) => {
-  return <StyledForm onSubmit={handleSubmit}>{children}</StyledForm>
+export const Form = ({ children, handleSubmit, id }) => {
+  return (
+    <StyledForm id={id} onSubmit={handleSubmit}>
+      {children}
+    </StyledForm>
+  )
 }
 
 const StyledForm = styled.form`
@@ -20,6 +22,6 @@ const StyledForm = styled.form`
 
 Form.propTypes = {
   children: node.isRequired,
-  id: string,
-  text: string
+  handleSubmit: func.isRequired,
+  id: string
 }

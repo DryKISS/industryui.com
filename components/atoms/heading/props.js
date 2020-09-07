@@ -2,8 +2,10 @@
  * Heading - Props
  */
 
+// React
 import { any, bool, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
 
+// UI
 import { CONTEXT } from '../../'
 
 export const HeadingPropTypes = {

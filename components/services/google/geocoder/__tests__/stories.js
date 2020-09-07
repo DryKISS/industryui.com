@@ -1,16 +1,36 @@
 /**
- * Location
+ * Google - GeoCoder
  */
 
 // React
 import React, { useState } from 'react'
 
-import { GeoCoder } from '../'
-import { Button, Column, Form, FormField, FormLabel, Row, useForm, useGeoCoder } from '../../../../'
+// Storybook
+import { Wrapper } from 'decorators'
+
+// UI
+import {
+  Button,
+  Column,
+  Form,
+  FormField,
+  FormLabel,
+  GeoCoder,
+  Row,
+  useForm,
+  useGeoCoder
+} from 'components'
+import Readme from '../README.md'
 
 export default {
   title: 'Services/Google/GeoCoder',
-  component: GeoCoder
+  component: GeoCoder,
+  decorators: [Wrapper],
+  parameters: {
+    readme: {
+      sidebar: Readme
+    }
+  }
 }
 
 export const main = () => {
@@ -79,6 +99,7 @@ export const main = () => {
           </Button>
         </Form>
       </Column>
+
       <Column md={4}>
         <br />
         Latitude: {coordinates.lat || lat}

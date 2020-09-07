@@ -6,11 +6,8 @@
 import React from 'react'
 import { func, string } from 'prop-types'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Column, FormForm, Row, Search, Select } from '../../../'
+import { Column, FormForm, Row, Search, Select, useForm } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -26,7 +23,6 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   const { errors, handleSubmit, register } = useForm({ mode: 'onChange' })
 
   const onSubmit = data => {
-    console.log('data', data)
     onSearch(data.query)
   }
 

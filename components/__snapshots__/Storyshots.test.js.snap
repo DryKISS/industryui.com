@@ -160,55 +160,7 @@ exports[`Storyshots Atoms/Blockquote Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Button Large 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Atoms/Button Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Button Outline 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Button Secondary 1`] = `
 @media (min-width:62em) {
 
 }
@@ -240,7 +192,7 @@ exports[`Storyshots Atoms/Button/Toolbar Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Close Custom Context 1`] = `
+exports[`Storyshots Atoms/Close Context 1`] = `
 @media (min-width:62em) {
 
 }
@@ -256,7 +208,7 @@ exports[`Storyshots Atoms/Close Custom Context 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Close Custom Icon 1`] = `
+exports[`Storyshots Atoms/Close Custom 1`] = `
 @media (min-width:62em) {
 
 }
@@ -336,38 +288,6 @@ exports[`Storyshots Atoms/DetailsText Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Divider Content 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Divider Large 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Atoms/Divider Main 1`] = `
 @media (min-width:62em) {
 
@@ -384,7 +304,7 @@ exports[`Storyshots Atoms/Divider Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Divider Medium 1`] = `
+exports[`Storyshots Atoms/Divider Vertical 1`] = `
 @media (min-width:62em) {
 
 }
@@ -1377,86 +1297,6 @@ exports[`Storyshots Form/Controlled/Radio Main 1`] = `
 `;
 
 exports[`Storyshots Form/Controlled/Radio Stacked 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Async 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Inside A Form Required 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Multi 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect Single 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Form/Controlled/ReactSelect With Default Value 1`] = `
 @media (min-width:62em) {
 
 }
@@ -2848,6 +2688,22 @@ exports[`Storyshots Molecules/Dropdown Icon Button 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/Dropdown Language 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Dropdown Main 1`] = `
 @media (min-width:62em) {
 
@@ -3056,23 +2912,7 @@ exports[`Storyshots Molecules/ImageLocation Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Molecules/ImageLocation Multiple Properties 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/ImageLocation Preselected 1`] = `
+exports[`Storyshots Molecules/ImageLocation With Coordinates Stored 1`] = `
 @media (min-width:62em) {
 
 }
@@ -3329,54 +3169,6 @@ exports[`Storyshots Molecules/Notification Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/OffCanvas Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/OffCanvas With Dynamic Content 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/OffCanvas With Mail Form 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/OffCanvas With Overlay 1`] = `
 @media (min-width:62em) {
 
 }
@@ -4000,6 +3792,22 @@ exports[`Storyshots Organisms/Big Calendar Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Organisms/Color Picker Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Organisms/Email Change Main 1`] = `
 @media (min-width:62em) {
 
@@ -4577,6 +4385,38 @@ exports[`Storyshots Utils/Colour Linear Blend 1`] = `
 `;
 
 exports[`Storyshots Utils/Colour Linear Shade 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
 @media (min-width:62em) {
 
 }

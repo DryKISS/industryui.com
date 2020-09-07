@@ -4,10 +4,18 @@
 
 // React
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { OffCanvas, Button, SelectField, FormLabel, FormField, CheckboxField } from 'components'
 
 // UI
+import {
+  OffCanvas,
+  Button,
+  SelectField,
+  FormLabel,
+  FormField,
+  CheckboxField,
+  useForm
+} from 'components'
+
 import { BaseComponent } from './stories'
 import { FormForm } from 'index'
 
@@ -27,10 +35,9 @@ export const CustomEventsStory = () => {
     showError: true,
     required: false
   }
+
   // Pending add the tooltip
   const onSubmit = data => {
-    console.log('event added ', data)
-
     const fullEvent = {
       id: 'ID',
       allDay: !!data.allDay,
@@ -48,6 +55,7 @@ export const CustomEventsStory = () => {
         assetType: data.assetType
       }
     }
+
     setEvents([...events, fullEvent])
     closeOffCanvas()
   }

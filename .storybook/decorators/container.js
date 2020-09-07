@@ -3,7 +3,14 @@
  */
 
 // UI
-import { ConfigProvider, Theme, ThemeStyle, UserProvider } from 'components'
+import {
+  ConfigProvider,
+  InternationalisationProvider,
+  OffCanvasProvider,
+  Theme,
+  ThemeStyle,
+  UserProvider
+} from 'components'
 
 // Style
 import { ThemeProvider } from 'styled-components'
@@ -14,9 +21,11 @@ export const Container = Story => {
       <ConfigProvider>
         <ThemeStyle />
         <UserProvider>
-          <div>
-            <Story />
-          </div>
+          <InternationalisationProvider locale='en'>
+            <OffCanvasProvider>
+              <Story />
+            </OffCanvasProvider>
+          </InternationalisationProvider>
         </UserProvider>
       </ConfigProvider>
     </ThemeProvider>

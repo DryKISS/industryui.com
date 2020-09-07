@@ -4,33 +4,22 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { array, bool, func, string, object } from 'prop-types'
+import { bool, func, string, object } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { FormLabel, SelectField, useForm } from '../../../'
 import { ImageWrapper } from '../../'
 
-export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, options, show }) => {
-  const [item, setItem] = useState(null)
-  const [coordinates, setCoordinates] = useState(null)
-
-  const { register, watch } = useForm({
-    defaultValues: {
-      option: initial
-    }
-  })
-
-  const option = watch('option')
-
-  useEffect(() => {
-    const selected = options.find(o => o.value === parseInt(option)) || null
-    setItem(selected)
-    itemChange && itemChange(selected)
-    setCoordinates(coordinates)
-  }, [option])
+export const ImageLocation = ({
+  initialCoordinates,
+  coordinatesChange,
+  markerStyles,
+  item,
+  show
+}) => {
+  const [coordinates, setCoordinates] = useState(initialCoordinates)
 
   useEffect(() => {
     coordinatesChange && item && coordinatesChange({ coordinates, item })
@@ -38,33 +27,31 @@ export const ImageLocation = ({ initial, label, coordinatesChange, itemChange, o
 
   return (
     <StyledImageLocation show={show}>
-      <FormLabel label={label}>
-        <SelectField
-          register={register}
-          name='option'
-          options={[{ text: `Select ${label}`, value: '' }, ...options]}
-        />
-      </FormLabel>
-
       {item && (
-        <ImageWrapper coordinates={coordinates} item={item} setCoordinates={setCoordinates} />
+        <ImageWrapper
+          coordinates={coordinates}
+          markerStyles={markerStyles}
+          item={item}
+          setCoordinates={setCoordinates}
+        />
       )}
     </StyledImageLocation>
   )
 }
 
 const StyledImageLocation = styled.div`
-  overflow-x: auto;
   display: ${({ show }) => (show ? 'block' : 'none')};
+  overflow-x: auto;
 `
 
 ImageLocation.propTypes = {
   className: string,
   coordinatesChange: func,
-  itemChange: func,
-  options: array.isRequired,
-  style: object,
-  show: bool
+  initialCoordinates: object,
+  item: object,
+  markerStyles: object,
+  show: bool,
+  style: object
 }
 
 ImageLocation.defaultProps = {

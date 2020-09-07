@@ -76,7 +76,7 @@ const StyledAvatar = styled.div`
 
   ${({ size, theme }) => {
     const sizeIndex = size && Object.values(SIZE).indexOf(size)
-    const dimension = theme.TYPOGRAPHY.fontSizes[sizeIndex] + 48
+    const dimension = theme.TYPOGRAPHY.fontSizes[sizeIndex] + 24
 
     return css`
       height: ${dimension}px;

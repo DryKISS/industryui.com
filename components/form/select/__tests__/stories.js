@@ -8,6 +8,9 @@ import React from 'react'
 // Storybook
 import { Wrapper } from 'decorators'
 
+// Yup
+import { object, string } from 'yup'
+
 // UI
 import {
   Button,
@@ -16,9 +19,9 @@ import {
   SelectField,
   SelectCountryField,
   useForm,
-  yup,
   yupResolver
 } from 'components'
+
 import Readme from '../README.md'
 import { COLOURS, EXPENSES } from '../__mocks__/select'
 
@@ -34,8 +37,8 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const schema = yup.object().shape({
-    select: yup.string().required()
+  const schema = object().shape({
+    select: string().required()
   })
 
   const { errors, getValues, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
