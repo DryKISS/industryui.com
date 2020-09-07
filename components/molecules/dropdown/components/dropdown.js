@@ -16,7 +16,8 @@ import { Position } from 'components/theme'
 
 export const elementTypes = {
   Colour: 'colour',
-  List: 'list'
+  List: 'list',
+  Icon: 'icon'
 }
 export const Dropdown = ({
   caret,
@@ -98,7 +99,7 @@ Dropdown.propTypes = {
   items: array.isRequired,
   onChange: func,
   position: string,
-  elementType: oneOf([elementTypes.List, elementTypes.Colour])
+  elementType: oneOf([elementTypes.List, elementTypes.Colour, elementTypes.Icon])
 }
 
 Dropdown.defaultProps = {

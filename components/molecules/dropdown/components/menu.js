@@ -71,6 +71,18 @@ const StyledDropdownMenu = styled.div`
       `
     )
   }}
+  ${({ elementType }) => {
+    return (
+      elementType === elementTypes.Icon &&
+      css`
+        width: 17rem;
+        flex-wrap: wrap;
+        padding: 0.2rem;
+        display: flex;
+        flex-direction: row;
+      `
+    )
+  }}
 `
 const TooltipRectangle = styled.div`
   position: absolute;

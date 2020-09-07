@@ -8,6 +8,7 @@ import { array, string, func } from 'prop-types'
 
 import { Position } from 'components/theme'
 import { Dropdown } from 'components'
+import { elementTypes } from 'index'
 
 export const IconPicker = ({ iconOptions, handleSelectIcon, position, children, ...props }) => {
   return (
@@ -17,7 +18,7 @@ export const IconPicker = ({ iconOptions, handleSelectIcon, position, children, 
         items={iconOptions}
         onChange={handleSelectIcon}
         position={position ?? Position.Bottom}
-        elementType='list'
+        elementType={elementTypes.Icon}
       >
         {children}
       </Dropdown>

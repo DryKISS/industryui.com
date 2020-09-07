@@ -11,6 +11,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import { elementTypes, Link } from '../../../'
+import { Button, Icon } from 'components'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -44,10 +45,28 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
           }}
         />
       )
+    case elementTypes.Icon:
+      return (
+        <StyledIconItem>
+          <Button
+            context='white'
+            onClick={e => {
+              console.log('click')
+            }}
+          >
+            <Icon icon={item?.icon.iconModel} prefix={item?.icon.prefix} />
+          </Button>
+        </StyledIconItem>
+      )
     default:
       return 'invalid elementType'
   }
 }
+const StyledIconItem = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 const StyledColourItem = styled.div`
   width: 1.55rem;
   height: 1.55rem;
