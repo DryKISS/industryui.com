@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs, select } from '@storybook/addon-knobs'
+import { select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -19,7 +19,7 @@ import { RADIO_GENDER } from '../__mocks__/radioControlled'
 export default {
   title: 'Form/Controlled/Radio',
   component: Radio,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
