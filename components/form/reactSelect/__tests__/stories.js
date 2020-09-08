@@ -6,7 +6,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Storybook
-import { boolean, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -19,7 +19,7 @@ import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reac
 export default {
   title: 'Form/ReactSelect',
   component: ReactSelectField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

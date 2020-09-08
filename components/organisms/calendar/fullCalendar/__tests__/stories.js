@@ -6,7 +6,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 // Storybook
-import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -23,7 +23,7 @@ import { CustomEventsStory } from './customEventsStory'
 export default {
   title: 'Organisms/Full Calendar',
   components: Calendar,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

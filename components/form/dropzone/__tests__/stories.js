@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { boolean, withKnobs } from '@storybook/addon-knobs'
+import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -16,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Dropzone',
   component: DropzoneField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

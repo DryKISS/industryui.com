@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { boolean, color, object, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, color, object, text } from '@storybook/addon-knobs'
 import { Context, IconPrefix, IconSize, ListIcons, Wrapper } from 'decorators'
 
 // UI
@@ -19,7 +19,7 @@ import styled from 'styled-components'
 export default {
   title: 'Atoms/Icon',
   component: Icon,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
