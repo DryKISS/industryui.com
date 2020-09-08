@@ -2656,6 +2656,22 @@ exports[`Storyshots Molecules/Dropdown Button 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/Dropdown Colour Picker 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Dropdown Icon 1`] = `
 @media (min-width:62em) {
 
@@ -2673,6 +2689,22 @@ exports[`Storyshots Molecules/Dropdown Icon 1`] = `
 `;
 
 exports[`Storyshots Molecules/Dropdown Icon Button 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Dropdown Icon Picker 1`] = `
 @media (min-width:62em) {
 
 }
@@ -2897,6 +2929,22 @@ exports[`Storyshots Molecules/Hero Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/ImageLocation Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/ImageLocation Used In Form 1`] = `
 @media (min-width:62em) {
 
 }

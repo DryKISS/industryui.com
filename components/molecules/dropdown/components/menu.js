@@ -4,27 +4,29 @@
 
 // React
 import React from 'react'
-import { array, func, string } from 'prop-types'
+import { array, func, oneOf } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
-import { DropdownItem } from '../../'
+import { elementTypes, DropdownItem, Position } from '../../../'
 
-export const DropdownMenu = ({ closeDropdown, items, onItemClick, position }) => {
+export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, position }) => {
   const handleClick = item => {
     onItemClick && onItemClick(item)
     closeDropdown()
   }
 
   return (
-    <StyledDropdownMenu className='dropdown--menu' position={position}>
+    <StyledDropdownMenu elementType={elementType} className='dropdown--menu' position={position}>
+      <TooltipRectangle position={position} />
       {items.map(item => (
         <DropdownItem
-          key={item.id}
           closeDropdown={closeDropdown}
+          elementType={elementType}
           item={item}
+          key={item.id}
           onClick={() => handleClick(item)}
         />
       ))}
@@ -45,20 +47,75 @@ const StyledDropdownMenu = styled.div`
   z-index: 1;
   ${({ position }) =>
     position &&
-    `
-    left: ${position === 'right' ? 'auto' : '0'};
-    right: ${position === 'right' ? '0' : 'auto'};
-    ${position === 'top' &&
-      `
-      bottom: 100%;
-      top: unset;
+    css`
+      left: ${position === Position.Right ? 'auto' : '0'};
+      right: ${position === Position.Right ? '0' : 'auto'};
+      ${position === Position.Top &&
+        css`
+          bottom: 100%;
+          top: unset;
+        `}
     `}
-  `}
+  ${({ elementType }) => {
+    return (
+      (elementType === elementTypes.Colour || elementType === elementTypes.Icon) &&
+      css`
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
+        display: grid;
+        padding: 5px;
+        grid-template-columns: repeat(8, 2rem);
+        grid-template-rows: repeat(3, 2rem);
+      `
+    )
+  }}
+`
+
+const dist = '0.625rem'
+const size = '0.875rem'
+
+const TooltipRectangle = styled.div`
+  border-color: transparent transparent rgb(255, 255, 255);
+  border-image: initial;
+  border-style: solid;
+  border-width: 0.438rem;
+  position: absolute;
+
+  ${({ position }) => {
+    switch (position) {
+      case Position.Bottom:
+        return css`
+          top: -${size};
+          left: ${dist};
+        `
+      case Position.Top:
+        return css`
+          bottom: -${size};
+          left: ${dist};
+          transform: rotateX(180deg);
+        `
+      case Position.Left:
+        return css`
+          display: none; /*remove when initial left position is resolved */
+          bottom: ${size};
+          right: -${size};
+          transform: rotateZ(90deg);
+        `
+      case Position.Right:
+        return css`
+          display: none; /*remove when initial left position is resolved */
+          bottom: ${size};
+          left: -${size};
+          transform: rotateZ(-90deg);
+        `
+      default:
+        break
+    }
+  }}
 `
 
 DropdownMenu.propTypes = {
   closeDropdown: func,
   items: array.isRequired,
   onItemClick: func,
-  position: string
+  position: oneOf([Position.Top, Position.Right, Position.Bottom, Position.Left])
 }

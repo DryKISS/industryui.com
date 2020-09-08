@@ -6,50 +6,48 @@
 import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Image = ({ ...props }) => {
-  return <StyledImg itemProp='contentUrl' {...props} />
-}
-
-const StyledImg = styled.img`
+export const Image = styled.img.attrs(props => ({
+  itemProp: 'contentUrl'
+}))`
   ${({ cover }) =>
     cover &&
-    `
-    height: 150px;
-    object-fit: fill;
-    width: 100%;
-  `}
+    css`
+      height: 150px;
+      object-fit: fill;
+      width: 100%;
+    `}
 
   ${({ fluid }) =>
     fluid &&
-    `
-    height: auto;
-    max-width: 100%;
-  `}
+    css`
+      height: auto;
+      max-width: 100%;
+    `}
 
   ${({ rounded }) =>
     rounded &&
-    `
-    border-radius: .25rem;
-  `}
+    css`
+      border-radius: 0.25rem;
+    `}
 
   ${({ roundedCircle }) =>
     roundedCircle &&
-    `
-    border-radius: 50%;
-  `}
+    css`
+      border-radius: 50%;
+    `}
 
   ${({ thumbnail, theme }) =>
     thumbnail &&
-    `
-    background-color: ${theme.COLOUR.light};
-    border: 1px solid ${theme.COLOUR.dark};
-    border-radius: .25rem;
-    height: auto;
-    max-width: 100%;
-    padding: .65rem;
-  `}
+    css`
+      background-color: ${theme.COLOUR.light};
+      border: 1px solid ${theme.COLOUR.dark};
+      border-radius: 0.25rem;
+      height: auto;
+      max-width: 100%;
+      padding: 0.65rem;
+    `}
 `
 
 Image.propTypes = {
