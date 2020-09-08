@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { text, withKnobs } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -15,6 +15,7 @@ import {
   CheckboxField,
   Column,
   Controller,
+  ControlTypes,
   CurrencyInput,
   DatePickerCalendar,
   Divider,
@@ -47,7 +48,7 @@ import { COLOURS } from '../../select/__mocks__/colours'
 export default {
   title: 'Form',
   component: Form,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -83,9 +84,11 @@ const checkbox = [
   }
 ]
 
-export const all = () => {
+const all = ({ ...args }) => {
   const { control, errors, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
-  const onSubmit = data => {}
+  const onSubmit = data => {
+    console.log(data)
+  }
 
   console.log(errors)
 
@@ -100,10 +103,7 @@ export const all = () => {
 
       <Space />
 
-      <Text>
-        Grid elements can be used to layout a form, we do not need to repeat rows as the columns
-        will wrap.
-      </Text>
+      <Text>{args.formTitle}</Text>
 
       <Space />
 
@@ -203,4 +203,28 @@ export const all = () => {
       <Button content='Submit' type='submit' />
     </Form>
   )
+}
+export const AllInputsTemplate = all.bind({})
+AllInputsTemplate.args = {
+  formTitle:
+    '  Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
+  errorColour: '#ffeeee',
+  size: 'large',
+  datePickerValue: ''
+}
+AllInputsTemplate.argTypes = {
+  errorColour: { control: 'color' },
+  formTitle: {
+    name: 'Form Tilte'
+  },
+  datePickerValue: {
+    name: 'Date Picker Value',
+    control: { type: ControlTypes.Date }
+  },
+  size: { control: { type: ControlTypes.Select, options: ['small', 'medium', 'large'] } },
+  children: {
+    control: {
+      type: null
+    }
+  }
 }
