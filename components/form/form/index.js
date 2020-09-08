@@ -8,9 +8,9 @@ import { func, node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Form = ({ children, handleSubmit, id }) => {
+export const Form = ({ children, handleSubmit, id, style }) => {
   return (
-    <StyledForm id={id} onSubmit={handleSubmit}>
+    <StyledForm style={style} id={id} onSubmit={handleSubmit}>
       {children}
     </StyledForm>
   )

@@ -17,6 +17,7 @@ export const FormField = ({
   name,
   placeholder,
   readOnly,
+  regExp,
   register,
   validate,
   ...props
@@ -42,7 +43,7 @@ export const StyledInput = styled.input.attrs(props => ({
   autoFocus: false
 }))`
   background-clip: padding-box;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.COLOUR.white};
   border: 1px solid ${({ theme }) => theme.COLOUR.dark};
   border-radius: 0.25rem;
   box-sizing: border-box;

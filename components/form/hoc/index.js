@@ -23,12 +23,12 @@ export const FieldHOC = ({
       key={props.name}
       name={props.name}
       ref={register({
-        pattern: props.regExp ? new RegExp(props.regExp) : null,
         validate: validate,
-        ...(props.max ? { max: props.max } : null),
-        ...(props.min ? { min: props.min } : null),
-        ...(props.maxLength ? { maxLength: props.maxLength } : null),
-        ...(props.minLength ? { minLength: props.minLength } : null),
+        ...(props.max && { max: props.max }),
+        ...(props.min && { min: props.min }),
+        ...(props.maxLength && { maxLength: props.maxLength }),
+        ...(props.minLength && { minLength: props.minLength }),
+        ...(props.regExp && { pattern: new RegExp(props.regExp) }),
         required: required
       })}
       style={{

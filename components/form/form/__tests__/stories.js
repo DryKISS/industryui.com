@@ -44,6 +44,7 @@ import enGB from 'date-fns/locale/en-GB'
 import { RADIO_GENDER } from '../../radio/__mocks__/radio'
 import { Options } from '../../reactSelect/__mocks__/options'
 import { COLOURS } from '../../select/__mocks__/colours'
+import { sizeArray } from 'components/theme/constants/sizeArray'
 
 export default {
   title: 'Form',
@@ -86,16 +87,22 @@ const checkbox = [
 
 const all = ({ ...args }) => {
   const { control, errors, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
+
   const onSubmit = data => {
     console.log(data)
   }
 
   console.log(errors)
 
+  const colMd = args.ColumnWidth
+
+  const rowBackground = args.backgroundColour
+
   const defaultProps = {
     errors: errors,
     register: register
   }
+  const ErrElement = message => <FormError message={message} />
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
@@ -107,30 +114,30 @@ const all = ({ ...args }) => {
 
       <Space />
 
-      <Row>
-        <Column md={6}>
+      <Row style={{ background: rowBackground }}>
+        <Column md={colMd}>
           <FormLabel label='Name'>
             <FormField {...defaultProps} name='name' />
-            {errors.name && <FormError message={errors.name.message} />}
+            {errors.name && ErrElement(errors.name.message)}
           </FormLabel>
         </Column>
 
-        <Column md={6}>
+        <Column md={colMd}>
           <FormLabel label='Email'>
             <FormField {...defaultProps} name='email' placeholder='Enter Email' />
             <Text size='sm'>We'll never share your email with anyone else.</Text>
-            {errors.email && <FormError message={errors.email.message} />}
+            {errors.email && ErrElement(errors.email.message)}
           </FormLabel>
         </Column>
 
-        <Column md={6}>
+        <Column md={colMd}>
           <FormLabel label='Disabled'>
             <FormField {...defaultProps} disabled name='disabled' />
-            {errors.disabled && <FormError message={errors.disabled.message} />}
+            {errors.disabled && ErrElement(errors.disabled.message)}
           </FormLabel>
         </Column>
 
-        <Column md={6}>
+        <Column md={colMd}>
           <FormLabel label='Readonly'>
             <FormField
               {...defaultProps}
@@ -138,11 +145,11 @@ const all = ({ ...args }) => {
               name='readonly'
               readOnly
             />
-            {errors.readonly && <FormError message={errors.readonly.message} />}
+            {errors.readonly && ErrElement(errors.readonly.message)}
           </FormLabel>
         </Column>
 
-        <Column md={6}>
+        <Column md={colMd}>
           <FormLabel label='Datepicker'>
             <DatePickerCalendar
               {...defaultProps}
@@ -153,7 +160,7 @@ const all = ({ ...args }) => {
           </FormLabel>
         </Column>
 
-        <Column md={6}>
+        <Column md={colMd}>
           <FormLabel label='React Select'>
             <ReactSelectField
               {...defaultProps}
@@ -207,24 +214,30 @@ const all = ({ ...args }) => {
 export const AllInputsTemplate = all.bind({})
 AllInputsTemplate.args = {
   formTitle:
-    '  Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
-  errorColour: '#ffeeee',
+    'Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
+  backgroundColour: '#F5F5F7',
+  ColumnWidth: 6,
   size: 'large',
   datePickerValue: ''
 }
 AllInputsTemplate.argTypes = {
-  errorColour: { control: 'color' },
-  formTitle: {
-    name: 'Form Tilte'
+  children: {
+    control: {
+      type: null
+    }
   },
   datePickerValue: {
     name: 'Date Picker Value',
     control: { type: ControlTypes.Date }
   },
-  size: { control: { type: ControlTypes.Select, options: ['small', 'medium', 'large'] } },
-  children: {
-    control: {
-      type: null
-    }
-  }
+  backgroundColour: { name: 'Background Colour', control: ControlTypes.Color },
+  formTitle: {
+    name: 'Form Tilte'
+  },
+  ColumnWidth: {
+    name: 'col md',
+    control: { type: ControlTypes.Range, min: 2, max: 12 }
+  },
+
+  size: { control: { type: ControlTypes.Select, options: [...sizeArray] } }
 }

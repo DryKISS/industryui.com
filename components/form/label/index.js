@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 export const FormLabel = ({ children, id, label, show }) => {
   return (
-    <StyledLabel child={children} htmlFor={id} show={show}>
+    <StyledLabel hasChild={children} htmlFor={id} show={show}>
       <StyledLabelText className='Form-label'>{label}</StyledLabelText>
       {children}
     </StyledLabel>
@@ -19,7 +19,7 @@ export const FormLabel = ({ children, id, label, show }) => {
 
 const StyledLabel = styled.label`
   display: ${({ show }) => (show ? 'block' : 'none')};
-  margin-bottom: ${({ child }) => (!child ? '0' : '1rem')};
+  margin-bottom: ${({ hasChild }) => (!hasChild ? '0' : '1rem')};
 `
 
 const StyledLabelText = styled.div`
