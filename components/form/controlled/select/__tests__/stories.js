@@ -9,7 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Select, SelectCountry, SelectDogBreed } from 'components'
+import { SelectCountry, SelectDogBreed, Select } from '../../'
 import Readme from '../README.md'
 
 export default {

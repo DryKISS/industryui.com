@@ -7,7 +7,7 @@ import { forwardRef } from 'react'
 import { array, arrayOf, bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Label } from '../../../'
+import { Label } from '../'
 
 // Style
 import styled from 'styled-components'

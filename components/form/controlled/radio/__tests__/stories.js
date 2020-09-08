@@ -10,7 +10,7 @@ import { select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Radio } from 'components'
+import { Radio } from '../../'
 import Readme from '../README.md'
 
 // Data
