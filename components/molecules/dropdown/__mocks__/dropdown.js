@@ -49,47 +49,47 @@ export const Icons = [
     prefix: 'fas'
   },
   {
-    id: 1,
+    id: 10,
     icon: 'cloud',
     prefix: 'fas'
   },
   {
-    id: 2,
+    id: 11,
     icon: 'envelope',
     prefix: 'fas'
   },
   {
-    id: 3,
+    id: 12,
     icon: 'flag',
     prefix: 'fas'
   },
   {
-    id: 4,
+    id: 13,
     icon: 'user',
     prefix: 'fas'
   },
   {
-    id: 5,
+    id: 14,
     icon: 'cloud',
     prefix: 'fas'
   },
   {
-    id: 6,
+    id: 15,
     icon: 'envelope',
     prefix: 'fas'
   },
   {
-    id: 7,
+    id: 16,
     icon: 'flag',
     prefix: 'fas'
   },
   {
-    id: 8,
+    id: 17,
     icon: 'user',
     prefix: 'fas'
   },
   {
-    id: 9,
+    id: 18,
     icon: 'user',
     prefix: 'fas'
   }
