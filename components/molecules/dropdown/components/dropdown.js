@@ -17,6 +17,7 @@ export const elementTypes = {
   List: 'list',
   Icon: 'icon'
 }
+
 export const Dropdown = ({
   caret,
   className,

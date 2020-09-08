@@ -58,27 +58,13 @@ const StyledDropdownMenu = styled.div`
     `}
   ${({ elementType }) => {
     return (
-      elementType === elementTypes.Colour &&
+      (elementType === elementTypes.Colour || elementType === elementTypes.Icon) &&
       css`
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
         display: grid;
         padding: 5px;
-        grid-template-columns: repeat(8, 1.5rem);
-        grid-template-rows: repeat(3, 1.5rem);
-      `
-    )
-  }}
-  ${({ elementType }) => {
-    return (
-      elementType === elementTypes.Icon &&
-      css`
-        width: 17rem;
-        flex-wrap: wrap;
-        padding: 0.2rem;
-        display: flex;
-        flex-direction: row;
+        grid-template-columns: repeat(8, 2rem);
+        grid-template-rows: repeat(3, 2rem);
       `
     )
   }}

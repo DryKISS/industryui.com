@@ -11,6 +11,7 @@ import { Wrapper } from 'decorators'
 import Readme from '../README.md'
 import styled from 'styled-components'
 import { RandomKey } from '../randomKey'
+
 export default {
   title: 'Utils/RandomKey',
   decorators: [Wrapper],
@@ -27,6 +28,7 @@ export const RandomKeysShowCase = () => {
   const keys = arr.map((_, __) => {
     return RandomKey()
   })
+
   return (
     <ElementsWrapper>
       {arr.map((_, index) => {
@@ -36,6 +38,7 @@ export const RandomKeysShowCase = () => {
     </ElementsWrapper>
   )
 }
+
 const ElementsWrapper = styled.div`
   width: 100%;
   p {

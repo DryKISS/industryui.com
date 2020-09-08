@@ -18,11 +18,12 @@ import {
   elementTypes,
   Icon,
   InternationalisationContext,
+  Space,
   useTranslation
 } from 'components'
 
 import Readme from '../README.md'
-import { Items, Language } from '../__mocks__/dropdown'
+import { Icons, Items, Language } from '../__mocks__/dropdown'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -106,7 +107,7 @@ export const avatar = () => (
 )
 
 export const colourPicker = () => {
-  const [SelectedColour, setSelectedColour] = useState('green')
+  const [selectedColour, setSelectedColour] = useState('green')
 
   const changeColor = colour => {
     setSelectedColour(colour.colour)
@@ -114,7 +115,9 @@ export const colourPicker = () => {
 
   return (
     <>
-      <ColourBox background={SelectedColour} />
+      <ColourBox background={selectedColour} />
+      <Space />
+
       <BaseComponent
         items={colourList}
         onChange={e => {
@@ -122,15 +125,40 @@ export const colourPicker = () => {
         }}
         elementType={elementTypes.Colour}
       >
-        please select a colour
+        Select a colour
+      </BaseComponent>
+    </>
+  )
+}
+
+export const iconPicker = () => {
+  const [selectedIcon, setSelectedIcon] = useState({ icon: 'cloud', prefix: 'fas' })
+
+  const changeIcon = icon => {
+    setSelectedIcon(icon)
+  }
+
+  return (
+    <>
+      <Icon icon={selectedIcon?.icon} prefix={selectedIcon?.prefix} />
+      <Space />
+
+      <BaseComponent
+        items={Icons}
+        onChange={e => {
+          changeIcon(e)
+        }}
+        elementType={elementTypes.Icon}
+      >
+        Select an icon
       </BaseComponent>
     </>
   )
 }
 
 const ColourBox = styled.div`
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1rem;
+  width: 1rem;
   ${({ background }) =>
     background &&
     css`

@@ -10,7 +10,7 @@ import { func, object, node } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Button, elementTypes, Icon, Link } from '../../../'
+import { elementTypes, Icon, Link } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -49,10 +49,8 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
 
     case elementTypes.Icon:
       return (
-        <StyledIconItem>
-          <Button context='white' onClick={onClick}>
-            <Icon icon={item?.icon} prefix={item?.prefix} />
-          </Button>
+        <StyledIconItem onClick={onClick}>
+          <Icon fixedWidth={false} icon={item?.icon} prefix={item?.prefix} />
         </StyledIconItem>
       )
 
@@ -62,18 +60,24 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
 }
 
 const StyledIconItem = styled.div`
-  display: flex;
-  flex-direction: row;
+  border: 1px solid ${({ theme }) => theme.COLOUR.light};
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  width: 2rem;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.COLOUR.dark};
+  }
 `
 
 const StyledColourItem = styled.div`
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2em;
+  width: 2rem;
   ${({ colour, theme }) =>
     css`
       background-color: ${colour};
-      &&:hover {
-        border: 0.15rem solid ${theme.COLOUR.white};
+      &:hover {
+        border: 1px solid ${theme.COLOUR.white};
       }
     `}
   ${({ colour, theme }) => {
