@@ -10,7 +10,8 @@ import { Wrapper } from 'decorators'
 import { boolean, number, select } from '@storybook/addon-knobs'
 
 // UI
-import { Textarea, Input, Button } from 'components'
+import { Button } from 'components'
+import { Textarea, Input } from '../../'
 import Readme from '../README.md'
 
 export default {

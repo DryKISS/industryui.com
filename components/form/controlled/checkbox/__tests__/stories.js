@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Checkbox } from 'components'
+import { Checkbox } from '../../'
 import Readme from '../README.md'
 
 const data = [

@@ -9,7 +9,8 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, Input } from 'components'
+import { Form, Input } from '../../'
+import { Button } from 'components'
 import Readme from '../README.md'
 
 export default {
