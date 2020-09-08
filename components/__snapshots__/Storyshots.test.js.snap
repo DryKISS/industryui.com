@@ -4128,6 +4128,22 @@ exports[`Storyshots Organisms/Full Calendar Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Organisms/Icon Picker Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Organisms/Login Main 1`] = `
 @media (min-width:62em) {
 
