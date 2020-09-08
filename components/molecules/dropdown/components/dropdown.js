@@ -3,8 +3,6 @@
  */
 
 // React
-
-import { DropdownMenu, Icon } from '../../../'
 import React, { useEffect, useRef, useState } from 'react'
 import { array, bool, func, node, oneOf, string } from 'prop-types'
 
@@ -12,7 +10,7 @@ import { array, bool, func, node, oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Position } from 'components/theme'
+import { DropdownMenu, Icon, Position } from '../../../'
 
 export const elementTypes = {
   Colour: 'colour',
@@ -29,7 +27,9 @@ export const Dropdown = ({
   position
 }) => {
   const [open, setOpen] = useState(false)
+
   const node = useRef()
+
   const handleClickAway = event => {
     if (node.current.contains(event.target)) {
       return
@@ -44,6 +44,7 @@ export const Dropdown = ({
     } else {
       document.removeEventListener('mousedown', handleClickAway)
     }
+
     return () => {
       document.removeEventListener('mousedown', handleClickAway)
     }
@@ -65,10 +66,11 @@ export const Dropdown = ({
             prefix='fas'
           />
         )}
+
         {items && open && (
           <DropdownMenu
-            elementType={elementType ?? elementTypes.List}
             closeDropdown={() => setOpen(false)}
+            elementType={elementType ?? elementTypes.List}
             items={items}
             position={position}
             onItemClick={onChange}
@@ -96,10 +98,10 @@ Dropdown.propTypes = {
   caret: bool,
   children: node.isRequired,
   className: string,
+  elementType: oneOf([elementTypes.Colour, elementTypes.Icon, elementTypes.List]),
   items: array.isRequired,
   onChange: func,
-  position: string,
-  elementType: oneOf([elementTypes.List, elementTypes.Colour, elementTypes.Icon])
+  position: string
 }
 
 Dropdown.defaultProps = {

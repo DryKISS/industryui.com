@@ -10,8 +10,7 @@ import { func, object, node } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { elementTypes, Link } from '../../../'
-import { Button, Icon } from 'components'
+import { Button, elementTypes, Icon, Link } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -19,6 +18,7 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
       {name}
     </StyledLink>
   )
+
   return to ? (
     <Link border={false} passHref to={to}>
       {item()}
@@ -36,6 +36,7 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
           {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
         </StyledDropdownItem>
       )
+
     case elementTypes.Colour:
       return (
         <StyledColourItem
@@ -45,6 +46,7 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
           }}
         />
       )
+
     case elementTypes.Icon:
       return (
         <StyledIconItem>
@@ -53,23 +55,28 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
           </Button>
         </StyledIconItem>
       )
+
     default:
       return 'invalid elementType'
   }
 }
+
 const StyledIconItem = styled.div`
   display: flex;
   flex-direction: row;
 `
 
 const StyledColourItem = styled.div`
-  width: 1.55rem;
-  height: 1.55rem;
-  ${({ colour }) =>
+  height: 1.5rem;
+  width: 1.5rem;
+  ${({ colour, theme }) =>
     css`
       background-color: ${colour};
+      &&:hover {
+        border: 0.15rem solid ${theme.COLOUR.white};
+      }
     `}
-  ${({ colour }) => {
+  ${({ colour, theme }) => {
     const size = '0.5rem'
     return (
       colour === 'transparent' &&
@@ -83,12 +90,8 @@ const StyledColourItem = styled.div`
       `
     )
   }}
-
-
-  &&:hover {
-    border: 0.15rem solid white;
-  }
 `
+
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;

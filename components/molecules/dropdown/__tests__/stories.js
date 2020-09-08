@@ -13,7 +13,9 @@ import { Wrapper } from 'decorators'
 import {
   Avatar,
   Button,
+  colourList,
   Dropdown,
+  elementTypes,
   Icon,
   InternationalisationContext,
   useTranslation
@@ -21,7 +23,9 @@ import {
 
 import Readme from '../README.md'
 import { Items, Language } from '../__mocks__/dropdown'
-import { ColourDropdown } from '../components/colourDropdown'
+
+// Style
+import styled, { css } from 'styled-components'
 
 export default {
   title: 'Molecules/Dropdown',
@@ -36,9 +40,11 @@ export default {
 
 const BaseComponent = props => {
   const { setLocale } = useContext(InternationalisationContext)
+
   const onChange = data => {
     setLocale({ locale: data.id })
   }
+
   const defaultProps = {
     caret: boolean('Caret', props.caret || true),
     children: props.children || text('Children', 'Dropdown'),
@@ -54,6 +60,7 @@ const BaseComponent = props => {
     ),
     ...props
   }
+
   return <Dropdown {...defaultProps} />
 }
 
@@ -97,6 +104,7 @@ export const avatar = () => (
     <Avatar>KH</Avatar>
   </BaseComponent>
 )
+
 export const colourPicker = () => {
   const [SelectedColour, setSelectedColour] = useState('green')
 
@@ -104,16 +112,28 @@ export const colourPicker = () => {
     setSelectedColour(colour.colour)
   }
 
-  const defaultProps = {
-    color: SelectedColour,
-    onColorSelect: changeColor,
-    width: text('width', '200px')
-  }
-
   return (
     <>
-      <div style={{ width: '20px', height: '20px', background: SelectedColour }} />
-      <ColourDropdown {...defaultProps}>please select a colour</ColourDropdown>
+      <ColourBox background={SelectedColour} />
+      <BaseComponent
+        items={colourList}
+        onChange={e => {
+          changeColor(e)
+        }}
+        elementType={elementTypes.Colour}
+      >
+        please select a colour
+      </BaseComponent>
     </>
   )
 }
+
+const ColourBox = styled.div`
+  height: 1.5rem;
+  width: 1.5rem;
+  ${({ background }) =>
+    background &&
+    css`
+      background: ${background};
+    `}
+`

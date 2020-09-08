@@ -2656,6 +2656,22 @@ exports[`Storyshots Molecules/Dropdown Button 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/Dropdown Colour Picker 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Dropdown Icon 1`] = `
 @media (min-width:62em) {
 
@@ -3777,22 +3793,6 @@ exports[`Storyshots Molecules/Webcam Main 1`] = `
 `;
 
 exports[`Storyshots Organisms/Big Calendar Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Organisms/Color Dropdown Main 1`] = `
 @media (min-width:62em) {
 
 }
