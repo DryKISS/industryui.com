@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 // Storybook
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
@@ -13,7 +13,9 @@ import { Wrapper } from 'decorators'
 import {
   Avatar,
   Button,
+  colourList,
   Dropdown,
+  elementTypes,
   Icon,
   InternationalisationContext,
   useTranslation
@@ -21,6 +23,9 @@ import {
 
 import Readme from '../README.md'
 import { Items, Language } from '../__mocks__/dropdown'
+
+// Style
+import styled, { css } from 'styled-components'
 
 export default {
   title: 'Molecules/Dropdown',
@@ -99,3 +104,36 @@ export const avatar = () => (
     <Avatar>KH</Avatar>
   </BaseComponent>
 )
+
+export const colourPicker = () => {
+  const [SelectedColour, setSelectedColour] = useState('green')
+
+  const changeColor = colour => {
+    setSelectedColour(colour.colour)
+  }
+
+  return (
+    <>
+      <ColourBox background={SelectedColour} />
+      <BaseComponent
+        items={colourList}
+        onChange={e => {
+          changeColor(e)
+        }}
+        elementType={elementTypes.Colour}
+      >
+        please select a colour
+      </BaseComponent>
+    </>
+  )
+}
+
+const ColourBox = styled.div`
+  height: 1.5rem;
+  width: 1.5rem;
+  ${({ background }) =>
+    background &&
+    css`
+      background: ${background};
+    `}
+`

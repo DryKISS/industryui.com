@@ -7,10 +7,10 @@ import React from 'react'
 import { func, object, node } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
-import { Link } from '../../../'
+import { Button, elementTypes, Icon, Link } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -18,6 +18,7 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
       {name}
     </StyledLink>
   )
+
   return to ? (
     <Link border={false} passHref to={to}>
       {item()}
@@ -27,18 +28,78 @@ const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   )
 }
 
-export const DropdownItem = ({ closeDropdown, item, onClick }) => {
-  return (
-    <StyledDropdownItem divider={item.divider}>
-      {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
-    </StyledDropdownItem>
-  )
+export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
+  switch (elementType) {
+    case elementTypes.List:
+      return (
+        <StyledDropdownItem divider={item.divider}>
+          {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
+        </StyledDropdownItem>
+      )
+
+    case elementTypes.Colour:
+      return (
+        <StyledColourItem
+          colour={item.colour}
+          onClick={() => {
+            onClick(item)
+          }}
+        />
+      )
+
+    case elementTypes.Icon:
+      return (
+        <StyledIconItem>
+          <Button context='white' onClick={onClick}>
+            <Icon icon={item?.icon} prefix={item?.prefix} />
+          </Button>
+        </StyledIconItem>
+      )
+
+    default:
+      return 'invalid elementType'
+  }
 }
+
+const StyledIconItem = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const StyledColourItem = styled.div`
+  height: 1.5rem;
+  width: 1.5rem;
+  ${({ colour, theme }) =>
+    css`
+      background-color: ${colour};
+      &&:hover {
+        border: 0.15rem solid ${theme.COLOUR.white};
+      }
+    `}
+  ${({ colour, theme }) => {
+    const size = '0.5rem'
+    return (
+      colour === 'transparent' &&
+      css`
+        background-image: linear-gradient(45deg, #808080 25%, transparent 25%),
+          linear-gradient(-45deg, #808080 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #808080 75%),
+          linear-gradient(-45deg, transparent 75%, #808080 75%);
+        background-size: ${size} ${size};
+        background-position: 0 0, 0 ${size}, ${size} -${size}, -${size} 0px;
+      `
+    )
+  }}
+`
 
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;
-  ${({ divider }) => divider && 'padding: 0;'}
+  ${({ divider }) =>
+    divider &&
+    css`
+      padding: 0;
+    `}
 `
 
 const StyledDivider = styled.div`

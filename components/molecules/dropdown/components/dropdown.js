@@ -4,16 +4,30 @@
 
 // React
 import React, { useEffect, useRef, useState } from 'react'
-import { array, bool, node, string, func } from 'prop-types'
+import { array, bool, func, node, oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { DropdownMenu, Icon } from '../../../'
+import { DropdownMenu, Icon, Position } from '../../../'
 
-export const Dropdown = ({ caret, className, children, items, onChange, position }) => {
+export const elementTypes = {
+  Colour: 'colour',
+  List: 'list',
+  Icon: 'icon'
+}
+export const Dropdown = ({
+  caret,
+  className,
+  children,
+  elementType,
+  items,
+  onChange,
+  position
+}) => {
   const [open, setOpen] = useState(false)
+
   const node = useRef()
 
   const handleClickAway = event => {
@@ -48,20 +62,21 @@ export const Dropdown = ({ caret, className, children, items, onChange, position
           <Icon
             aria-hidden='true'
             className='dropdown--caret'
-            icon={position === 'top' ? 'carat-up' : 'caret-down'}
+            icon={position === Position.Top ? 'carat-up' : 'caret-down'}
             prefix='fas'
           />
         )}
-      </StyledToggle>
 
-      {open && (
-        <DropdownMenu
-          closeDropdown={() => setOpen(false)}
-          items={items}
-          position={position}
-          onItemClick={onChange}
-        />
-      )}
+        {items && open && (
+          <DropdownMenu
+            closeDropdown={() => setOpen(false)}
+            elementType={elementType ?? elementTypes.List}
+            items={items}
+            position={position}
+            onItemClick={onChange}
+          />
+        )}
+      </StyledToggle>
     </StyledDropdown>
   )
 }
@@ -83,6 +98,7 @@ Dropdown.propTypes = {
   caret: bool,
   children: node.isRequired,
   className: string,
+  elementType: oneOf([elementTypes.Colour, elementTypes.Icon, elementTypes.List]),
   items: array.isRequired,
   onChange: func,
   position: string

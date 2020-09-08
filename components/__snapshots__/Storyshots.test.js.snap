@@ -2656,6 +2656,22 @@ exports[`Storyshots Molecules/Dropdown Button 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/Dropdown Colour Picker 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Dropdown Icon 1`] = `
 @media (min-width:62em) {
 
