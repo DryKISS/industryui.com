@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 // Storybook
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
@@ -13,14 +13,20 @@ import { Wrapper } from 'decorators'
 import {
   Avatar,
   Button,
+  colourList,
   Dropdown,
+  elementTypes,
   Icon,
   InternationalisationContext,
+  Space,
   useTranslation
 } from 'components'
 
 import Readme from '../README.md'
-import { Items, Language } from '../__mocks__/dropdown'
+import { Icons, Items, Language } from '../__mocks__/dropdown'
+
+// Style
+import styled, { css } from 'styled-components'
 
 export default {
   title: 'Molecules/Dropdown',
@@ -99,3 +105,63 @@ export const avatar = () => (
     <Avatar>KH</Avatar>
   </BaseComponent>
 )
+
+export const colourPicker = () => {
+  const [selectedColour, setSelectedColour] = useState('green')
+
+  const changeColor = colour => {
+    setSelectedColour(colour.colour)
+  }
+
+  return (
+    <>
+      <ColourBox background={selectedColour} />
+      <Space />
+
+      <BaseComponent
+        items={colourList}
+        onChange={e => {
+          changeColor(e)
+        }}
+        elementType={elementTypes.Colour}
+      >
+        Select a colour
+      </BaseComponent>
+    </>
+  )
+}
+
+export const iconPicker = () => {
+  const [selectedIcon, setSelectedIcon] = useState({ icon: 'cloud', prefix: 'fas' })
+
+  const changeIcon = icon => {
+    setSelectedIcon(icon)
+  }
+
+  return (
+    <>
+      <Icon icon={selectedIcon?.icon} prefix={selectedIcon?.prefix} />
+      <Space />
+
+      <BaseComponent
+        items={Icons}
+        onChange={e => {
+          changeIcon(e)
+        }}
+        elementType={elementTypes.Icon}
+      >
+        Select an icon
+      </BaseComponent>
+    </>
+  )
+}
+
+const ColourBox = styled.div`
+  height: 1rem;
+  width: 1rem;
+  ${({ background }) =>
+    background &&
+    css`
+      background: ${background};
+    `}
+`

@@ -4,18 +4,19 @@
 
 // React
 import React from 'react'
-
+import { object as obj } from 'yup'
 // Storybook
 import { object, select, withKnobs } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'
-
 // UI
-import { ImageLocation } from 'components'
+
 import Readme from '../README.md'
 
 // Data
 import { Item } from '../__mocks__/itemFloor'
+import { useForm } from 'react-hook-form'
+import { Alert, Button, ImageLocation, ImageLocationFormElement } from '../../../'
 
 export default {
   title: 'Molecules/ImageLocation',
@@ -36,8 +37,8 @@ const BaseComponent = (props = {}) => {
     initialCoordinates:
       props.initialCoordinates &&
       object('Initial Coordinates', {
-        x: 449,
-        y: 454
+        x: 42,
+        y: 41
       }),
     item: Item,
     locationChange: action('change')
@@ -82,4 +83,31 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = () => <BaseComponent />
+
 export const withCoordinatesStored = () => <BaseComponent initialCoordinates />
+
+export const UsedInForm = () => {
+  const schema = obj().shape({
+    imageLocationData: obj().required()
+  })
+
+  const { control, errors, handleSubmit, setValue } = useForm({ validationSchema: schema })
+  const onFormSubmit = data => {
+    console.log(data)
+  }
+
+  return (
+    <form onSubmit={handleSubmit(data => onFormSubmit(data))}>
+      <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
+      {errors.imageLocationData && (
+        <Alert
+          content={
+            errors.imageLocationData.type &&
+            errors.imageLocationData.type + ' or please select a location'
+          }
+        />
+      )}
+      <Button type='submit'>submit form</Button>
+    </form>
+  )
+}

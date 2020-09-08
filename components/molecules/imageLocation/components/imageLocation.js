@@ -4,30 +4,30 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { bool, func, string, object } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
 import { ImageWrapper } from '../../'
+import { ImageLocationProps } from './props'
 
 export const ImageLocation = ({
-  initialCoordinates,
   coordinatesChange,
-  markerStyles,
+  initialCoordinates,
   item,
+  markerStyles,
   show
 }) => {
   const [coordinates, setCoordinates] = useState(initialCoordinates)
 
   useEffect(() => {
-    coordinatesChange && item && coordinatesChange({ coordinates, item })
+    coordinatesChange && item && coordinates && coordinatesChange({ coordinates, item })
   }, [coordinates])
 
   return (
     <StyledImageLocation show={show}>
-      {item && (
+      {item?.filename && (
         <ImageWrapper
           coordinates={coordinates}
           markerStyles={markerStyles}
@@ -44,15 +44,7 @@ const StyledImageLocation = styled.div`
   overflow-x: auto;
 `
 
-ImageLocation.propTypes = {
-  className: string,
-  coordinatesChange: func,
-  initialCoordinates: object,
-  item: object,
-  markerStyles: object,
-  show: bool,
-  style: object
-}
+ImageLocation.propTypes = ImageLocationProps
 
 ImageLocation.defaultProps = {
   show: true

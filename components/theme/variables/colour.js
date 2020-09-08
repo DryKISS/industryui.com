@@ -1,5 +1,5 @@
 /**
- * Theme - Variables - Colour
+ * Theme - Variables - COLOUR
  */
 export const COLOUR = {
   drykiss_lightBlue: 'rgb(0, 225, 218)',

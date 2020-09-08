@@ -10,7 +10,7 @@ import { object } from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import { Icon } from 'components'
+import { Icon } from '../../../'
 
 export const ImageMarker = ({ coordinates, styles }) => {
   return styles?.shape ? (
@@ -20,8 +20,8 @@ export const ImageMarker = ({ coordinates, styles }) => {
       icon={styles?.shape?.icon}
       prefix={styles?.shape?.prefix}
       pull='left'
-      size='lg'
       styles={styles}
+      size='lg'
     />
   ) : (
     <StyledMarker coordinates={coordinates} styles={styles} />
@@ -33,45 +33,44 @@ const blinker = keyframes`
     opacity: 0;
   }`
 
-const StyledIcon = styled(Icon)`
-  color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
-  position: absolute;
-  background-color: white;
+const commonMarkerCss = css`
   animation: ${({ styles }) =>
     styles?.animation === 'blinker'
       ? css`
           ${blinker} 1s ease-in-out infinite forwards
         `
       : ''};
+  margin-left: ${({ styles }) =>
+    '-' + (styles?.width ? Number(styles.width.replace('px', '') / 2) + 'px' : '7px')};
+  margin-top: ${({ styles }) =>
+    '-' + (styles?.height ? Number(styles.height.replace('px', '') / 2) + 'px' : '7px')};
+  pointer-events: none;
+  position: absolute;
+  transition-duration: 0.2s;
+  transition-property: left, top;
+
   ${({ coordinates }) =>
     coordinates &&
-    `
-    display: block;
-    left: ${coordinates.x}px;
-    top: ${coordinates.y}px;
-  `}
+    css`
+      display: block;
+      left: ${coordinates.x}%;
+      top: ${coordinates.y}%;
+    `}
+`
+const StyledIcon = styled(Icon)`
+  background-color: white;
+  color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
+
+  ${commonMarkerCss}
 `
 
 const StyledMarker = styled.div`
-  animation: ${({ styles }) =>
-    styles?.animation === 'blinker'
-      ? css`
-          ${blinker} 1s ease-in-out infinite forwards
-        `
-      : ''};
   background-color: ${({ styles }) => (styles?.color ? styles.color : 'red')};
   border-radius: ${({ styles }) => (styles?.borderRadius ? styles.borderRadius : '50%')};
   display: none;
-  ${({ coordinates }) =>
-    coordinates &&
-    `
-    display: block;
-    left: ${coordinates.x}px;
-    top: ${coordinates.y}px;
-  `}
   height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
-  position: absolute;
   width: ${({ styles }) => (styles?.width ? styles.width : '15px')};
+  ${commonMarkerCss}
 `
 
 ImageMarker.propTypes = {
