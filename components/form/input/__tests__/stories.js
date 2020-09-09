@@ -41,13 +41,17 @@ const InputElement = args => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <Input
-        name='NewInput'
+        decoration={args.decoration}
+        errors={errors}
+        icons={{
+          ...(args.WithStartIcon && { startIcon: <>S</> }),
+          ...(args.WithEndIcon && { endIcon: <>E</> })
+        }}
         label='Label'
+        name='NewInput'
+        register={register}
         placeholder='Placeholder'
         size={args.size}
-        decoration={args.decoration}
-        register={register}
-        errors={errors}
       />
     </Form>
   )
@@ -57,7 +61,9 @@ export const InputTemplate = InputElement.bind({})
 
 InputTemplate.args = {
   size: 'md',
-  decoration: InputDecorationTypes.Default
+  decoration: InputDecorationTypes.Default,
+  WithStartIcon: false,
+  WithEndIcon: false
 }
 InputTemplate.argTypes = {
   size: { name: 'Size', control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } },
@@ -67,5 +73,7 @@ InputTemplate.argTypes = {
       type: ControlTypes.Select,
       options: arrayOfValues(InputDecorationTypes)
     }
-  }
+  },
+  WithStartIcon: { name: 'with Start Icon', control: { type: ControlTypes.Boolean } },
+  WithEndIcon: { name: 'with End Icon', control: { type: ControlTypes.Boolean } }
 }
