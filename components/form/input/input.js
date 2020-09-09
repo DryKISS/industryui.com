@@ -18,9 +18,17 @@ export const InputDecorationTypes = {
   Disabled: 'disabled',
   ReadOnly: 'readOnly'
 }
-
+const colourPlate = {
+  default: COLOUR.grey,
+  error: COLOUR.danger,
+  success: COLOUR.success,
+  warning: COLOUR.warning,
+  disabled: COLOUR.darkGrey,
+  readOnly: COLOUR.grey,
+  dark: COLOUR.darkText
+}
 export const Input = ({
-  icons,
+  adornments,
   label,
   message,
   name,
@@ -32,32 +40,33 @@ export const Input = ({
   ...props
 }) => {
   return (
-    <Wrapper>
+    <Wrapper decoration={decoration}>
       <StyledText content={label} />
       <InputWrapper size={size}>
-        {icons?.startIcon && (
-          <StyledIconWrapper startIcon size={size} decoration={decoration}>
-            {icons.startIcon}
-          </StyledIconWrapper>
+        {adornments?.startAdornment && (
+          <StyledAdornmentWrapper className='adornment startAdornment' startAdornment size={size}>
+            {adornments.startAdornment}
+          </StyledAdornmentWrapper>
         )}
         <StyledInput
-          decoration={decoration}
-          icons={icons}
+          adornments={adornments}
+          className='simpleInput'
           message={message}
           name={name}
           placeholder={placeholder}
           register={register}
           type={type}
           size={size}
+          disabled={props.disabled || decoration === InputDecorationTypes.Disabled}
           {...props}
         />
-        {icons?.endIcon && (
-          <StyledIconWrapper size={size} decoration={decoration}>
-            {icons.endIcon}
-          </StyledIconWrapper>
+        {adornments?.endAdornment && (
+          <StyledAdornmentWrapper className='adornment endAdornment' size={size}>
+            {adornments.endAdornment}
+          </StyledAdornmentWrapper>
         )}
       </InputWrapper>
-      {message && <StyledMessage decoration={decoration}>{message}</StyledMessage>}
+      {message && <StyledMessage className='message'>{message}</StyledMessage>}
     </Wrapper>
   )
 }
@@ -69,98 +78,17 @@ const StyledText = styled(Text)`
   font-size: 0.75rem;
 `
 const StyledMessage = styled(Text)`
-  ${({ decoration }) => {
-    switch (decoration) {
-      case InputDecorationTypes.Error:
-        return css`
-          color: ${COLOUR.danger};
-        `
-      case InputDecorationTypes.Success:
-        return css`
-          color: ${COLOUR.success};
-        `
-      case InputDecorationTypes.Warning:
-        return css`
-          color: ${COLOUR.warning};
-        `
-      case InputDecorationTypes.Disabled:
-        return css`
-          color: ${COLOUR.darkGrey};
-        `
-      case InputDecorationTypes.ReadOnly:
-        return css`
-          color: ${COLOUR.darkGrey};
-        `
-      default:
-        return css`
-          color: ${COLOUR.black};
-        `
-    }
-  }}
-  font-size:0.625rem;
+  font-size: 0.625rem;
   margin-top: 0.5rem;
 `
 
-const decorateIconWrapper = css`
-  ${({ decoration }) => {
-    switch (decoration) {
-      case InputDecorationTypes.Error:
-        return css`
-          background-color: ${COLOUR.danger};
-          border-color: ${COLOUR.danger};
-        `
-      case InputDecorationTypes.Success:
-        return css`
-          background-color: ${COLOUR.success};
-          border-color: ${COLOUR.success};
-        `
-      case InputDecorationTypes.Warning:
-        return css`
-          background-color: ${COLOUR.warning};
-          border-color: ${COLOUR.warning};
-        `
-      case InputDecorationTypes.Disabled:
-        return css`
-          background-color: ${COLOUR.darkGrey};
-          border-color: ${COLOUR.darkGrey};
-        `
-      case InputDecorationTypes.ReadOnly:
-        return css`
-          background-color: ${COLOUR.grey};
-          border-color: ${COLOUR.grey};
-        `
-      default:
-        return css`
-          background-color: ${COLOUR.grey};
-          border-color: ${COLOUR.grey};
-        `
-    }
-  }}
-`
-const StyledIconWrapper = styled.div`
+const StyledAdornmentWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-
-  ${({ size }) => {
-    switch (size) {
-      case SIZE.SM:
-        return css`
-          padding: 0.5rem 1rem;
-        `
-      case SIZE.MD:
-        return css`
-          padding: 0.75rem 1.25rem;
-        `
-      case SIZE.LG:
-        return css`
-          padding: 0.875rem 1.625rem;
-        `
-    }
-  }}
-  border:1px solid;
-  ${({ startIcon }) =>
-    startIcon
+  border: 1px solid;
+  ${({ startAdornment }) =>
+    startAdornment
       ? css`
           border-right: none;
           border-top-left-radius: ${borderRadius};
@@ -171,7 +99,6 @@ const StyledIconWrapper = styled.div`
           border-top-right-radius: ${borderRadius};
           border-bottom-right-radius: ${borderRadius};
         `}
-  ${decorateIconWrapper}
 `
 
 const InputWrapper = styled.div`
@@ -183,22 +110,41 @@ const InputWrapper = styled.div`
       case SIZE.SM:
         return css`
           height: 1.5rem;
+          .adornment {
+            padding: 0.5rem 1rem;
+          }
         `
       case SIZE.MD:
         return css`
           height: 1.875rem;
+          ._,
+          .adornment {
+            padding: 0.75rem 1.25rem;
+          }
         `
       case SIZE.LG:
         return css`
           height: 2.25rem;
+          .__,
+          .adornment {
+            padding: 0.875rem 1.625rem;
+          }
+        `
+      default:
+        return css`
+          height: 1.875rem;
+          .___,
+          .adornment {
+            padding: 0.75rem 1.25rem;
+          }
         `
     }
   }}
 `
-const withIconStartStyles = css`
-  ${({ icons }) => {
+const withAdornmentStartStyles = css`
+  ${({ adornments }) => {
     return (
-      icons?.startIcon &&
+      adornments?.startAdornment &&
       css`
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -206,10 +152,10 @@ const withIconStartStyles = css`
     )
   }}
 `
-const withEndIconStyles = css`
-  ${({ icons }) => {
+const withEndAdornmentStyles = css`
+  ${({ adornments }) => {
     return (
-      icons?.endIcon &&
+      adornments?.endAdornment &&
       css`
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -217,56 +163,41 @@ const withEndIconStyles = css`
     )
   }}
 `
-const decorateInput = css`
-  ${({ decoration }) => {
-    switch (decoration) {
-      case InputDecorationTypes.Error:
-        return css`
-          border-color: ${COLOUR.danger};
-        `
-      case InputDecorationTypes.Success:
-        return css`
-          border-color: ${COLOUR.success};
-        `
-      case InputDecorationTypes.Warning:
-        return css`
-          border-color: ${COLOUR.warning};
-        `
-      case InputDecorationTypes.Disabled:
-        return css`
-          border-color: ${COLOUR.darkGrey};
-        `
-      case InputDecorationTypes.ReadOnly:
-        return css`
-          border-color: ${COLOUR.grey};
-          background-color: ${COLOUR.darkGrey};
-        `
-      default:
-        return css`
-          border-color: ${COLOUR.black};
-        `
-    }
-  }}
-`
-const StyledInput = styled.input.attrs(props => ({
-  disabled: props.disabled || props.decoration === InputDecorationTypes.Disabled
-}))`
+
+const StyledInput = styled.input`
   border: 1px solid;
   border-radius: ${borderRadius};
   font-size: 0.75rem;
   height: 100%;
   width: 100%;
   padding: 0 0.625rem;
-  ${withIconStartStyles}
-  ${withEndIconStyles}
+  ${withAdornmentStartStyles}
+  ${withEndAdornmentStyles}
   outline: none;
-  &:focus {
-    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
-  }
-  ${decorateInput}
 `
 const Wrapper = styled.div`
   width: 100%;
+  ${({ decoration }) => {
+    return css`
+      .message {
+        color: ${decoration !== InputDecorationTypes.Default
+          ? colourPlate[decoration]
+          : colourPlate.dark};
+      }
+      .simpleInput,
+      .adornment {
+        border-color: ${colourPlate[decoration]};
+      }
+      .adornment {
+        background-color: ${colourPlate[decoration]};
+      }
+      .simpleInput {
+        &:focus {
+          border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
+        }
+      }
+    `
+  }}
 `
 
 Input.propTypes = {
@@ -274,9 +205,9 @@ Input.propTypes = {
   label: string,
   name: string.isRequired,
   placeholder: string,
-  icons: shape({
-    startIcon: node,
-    endIcon: node
+  adornments: shape({
+    startAdornment: node,
+    endAdornment: node
   }),
   register: func.isRequired,
   type: oneOf(['number', 'password', 'text'])

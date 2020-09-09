@@ -55,9 +55,9 @@ const InputElement = args => {
           <Input
             decoration={args.decoration}
             errors={errors}
-            icons={{
-              ...(args.WithStartIcon && { startIcon: <>S</> }),
-              ...(args.WithEndIcon && { endIcon: <>E</> })
+            adornments={{
+              ...(args.WithStartAdornment && { startAdornment: <>S</> }),
+              ...(args.WithEndAdornment && { endAdornment: <>E</> })
             }}
             label='Label'
             message={args.messageText}
@@ -77,8 +77,8 @@ export const InputTemplate = InputElement.bind({})
 InputTemplate.args = {
   size: 'md',
   decoration: InputDecorationTypes.Default,
-  WithStartIcon: false,
-  WithEndIcon: false,
+  WithStartAdornment: false,
+  WithEndAdornment: false,
   messageText: ''
 }
 InputTemplate.argTypes = {
@@ -98,6 +98,6 @@ InputTemplate.argTypes = {
       options: arrayOfValues(InputDecorationTypes)
     }
   },
-  WithStartIcon: { name: 'with Start Icon', control: { type: ControlTypes.Boolean } },
-  WithEndIcon: { name: 'with End Icon', control: { type: ControlTypes.Boolean } }
+  WithStartAdornment: { name: 'with Start Adornment', control: { type: ControlTypes.Boolean } },
+  WithEndAdornment: { name: 'with End Adornment', control: { type: ControlTypes.Boolean } }
 }
