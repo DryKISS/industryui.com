@@ -17,7 +17,6 @@ export const RadioField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <StyledLegend error={errors[props.name]}>{legend}</StyledLegend>}
-
       {data.map(({ disabled, label, ...data }) => (
         <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
           <FieldHOC

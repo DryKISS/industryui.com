@@ -10,7 +10,7 @@ import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, FormLabel, DropzoneField, useForm } from 'components'
+import { Button, Form, FormError, FormLabel, DropzoneField, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -45,7 +45,7 @@ const BaseComponent = (props = {}) => {
       <FormLabel label='Dropzone' />
       <DropzoneField {...defaultProps} />
 
-      {errors.dropzone && <p>{errors.dropzone.message}</p>}
+      {errors.dropzone && <FormError message={errors.dropzone.message} />}
 
       <Button content='Submit' secondary type='submit' />
     </Form>

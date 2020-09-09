@@ -1,5 +1,4 @@
-import { SIZE } from '../'
-
+import { SIZE } from './size'
 export const sizeArray = (() => {
   const array = []
   for (const key in SIZE) {

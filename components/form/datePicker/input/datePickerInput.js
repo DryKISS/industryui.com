@@ -6,13 +6,10 @@
 import { bool, func, number, object, string } from 'prop-types'
 
 // UI
-import { Column, Row, SelectField } from '../../../'
+import { Column, Row, SelectField, Space } from '../../../'
 
 // Data
 import { DAYS, MONTHS } from './constants/dates'
-
-// Style
-import styled from 'styled-components'
 
 export const DatePickerInput = ({
   data,
@@ -20,6 +17,7 @@ export const DatePickerInput = ({
   index,
   label,
   name,
+  placeHolder,
   register,
   showDay,
   showMonth,
@@ -34,7 +32,7 @@ export const DatePickerInput = ({
 
   return (
     <>
-      <StyledLabelText>{label}</StyledLabelText>
+      <Space marginBottom='0.5rem'>{label}</Space>
 
       <Row>
         {showDay && (
@@ -54,7 +52,14 @@ export const DatePickerInput = ({
               {...defaultOptions}
               data={{ 'data-index': index, 'data-name': 'month' }}
               name={`month${name}`}
-              options={MONTHS}
+              options={[
+                {
+                  disabled: true,
+                  text: placeHolder ?? 'Select month',
+                  value: ''
+                },
+                ...MONTHS
+              ]}
             />
           </Column>
         )}
@@ -74,10 +79,6 @@ export const DatePickerInput = ({
     </>
   )
 }
-
-const StyledLabelText = styled.div`
-  margin-bottom: 0.5rem;
-`
 
 DatePickerInput.propTypes = {
   data: object,

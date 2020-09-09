@@ -10,7 +10,16 @@ import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, FormLabel, ReactSelectField, useForm, usePrevious } from 'components'
+import {
+  Button,
+  Form,
+  FormError,
+  FormLabel,
+  ReactSelectField,
+  Text,
+  useForm,
+  usePrevious
+} from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -66,7 +75,7 @@ const BaseComponent = (props = {}) => {
         <ReactSelectField {...defaultProps} />
       </FormLabel>
 
-      {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
+      {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 
       <Button content='Submit' secondary type='submit' />
     </Form>
@@ -162,20 +171,20 @@ export const chained = () => {
 
   return (
     <>
-      <p>
+      <Text>
         Initially load the async react select with a promise. we use the defaultValue prop to load
         any options already submitted. This should be part of the original GraphQL query. It must be
         in the form {'{'} value: '2', label: 'Avison Young' {'}'}
-      </p>
+      </Text>
 
-      <p>
+      <Text>
         Customers will never lose their options, but can change or remove the default value, they
         will return the account ID to get the Users/
         <br />
         Default Customer, Click X on customer it should unload default and options
         <br />
         It does not matter if the user changes their option
-      </p>
+      </Text>
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Customers'>
@@ -196,17 +205,17 @@ export const chained = () => {
           />
         </FormLabel>
 
-        {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
+        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 
         {data && (
           <>
-            <p>
+            <Text>
               Submitted and valid
               <br />
               Customer: {data.customer.value} - {data.customer.label}
               <br />
               User: {data.user.value} - {data.user.label}
-            </p>
+            </Text>
           </>
         )}
 
@@ -287,20 +296,20 @@ export const chainedNoDefault = () => {
 
   return (
     <>
-      <p>
+      <Text>
         Initially load the async react select with a promise. we use the defaultValue prop to load
         any options already submitted. This should be part of the original GraphQL query. It must be
         in the form {'{'} value: '2', label: 'Avison Young' {'}'}
-      </p>
+      </Text>
 
-      <p>
+      <Text>
         Customers will never lose their options, but can change or remove the default value, they
         will return the account ID to get the Users/
         <br />
         Default Customer, Click X on customer it should unload default and options
         <br />
         It does not matter if the user changes their option
-      </p>
+      </Text>
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Customers'>
@@ -321,17 +330,17 @@ export const chainedNoDefault = () => {
           />
         </FormLabel>
 
-        {errors.reactSelect && <p>{errors.reactSelect.message}</p>}
+        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 
         {data && (
           <>
-            <p>
+            <Text>
               Submitted and valid
               <br />
               Customer: {data.customer.value} - {data.customer.label}
               <br />
               User: {data.user.value} - {data.user.label}
-            </p>
+            </Text>
           </>
         )}
 

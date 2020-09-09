@@ -17,7 +17,14 @@ import { StyledInput } from '../../../'
 // Constants
 import { PROPERTIES } from './constants'
 
-export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...parentProps }) => {
+export const DatePickerCalendar = ({
+  control,
+  defaultValue,
+  errors,
+  name,
+  placeHolder,
+  ...parentProps
+}) => {
   return (
     <Controller
       render={props => (
@@ -26,6 +33,7 @@ export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...par
           selected={props.value}
           {...props}
           {...parentProps}
+          placeholderText={placeHolder ?? 'Click to select time'}
         />
       )}
       control={control}
@@ -44,7 +52,6 @@ DatePickerCalendar.defaultProps = {
   isClearable: true,
   minDate: new Date(),
   name: 'expiryAt',
-  placeholderText: 'Click to select time',
   shouldCloseOnSelect: true,
   showTimeSelect: false,
   timeIntervals: 30,

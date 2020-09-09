@@ -14,7 +14,6 @@ export const PercentInput = ({ errors, label, name, register, show, symbol }) =>
     <FormLabel show={show} label={label}>
       <InputGroup>
         <FormField errors={errors} name={name} register={register} step='any' type='number' />
-
         <InputGroupAddon addonType='append' text>
           {symbol}
         </InputGroupAddon>

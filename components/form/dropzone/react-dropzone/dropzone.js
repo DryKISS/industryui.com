@@ -11,7 +11,7 @@ import { bool, string } from 'prop-types'
 import { useDropzone } from 'react-dropzone'
 
 // UI
-import { Column, Row } from '../../../'
+import { Column, Row, Text } from '../../../'
 import { Accept } from './accept'
 import { DropzonePreview } from './preview'
 
@@ -83,16 +83,16 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
       >
         <input {...getInputProps()} />
 
-        {isDragAccept && <p>Accepted</p>}
-        {isDragReject && <p>Rejected</p>}
+        {isDragAccept && <Text>Accepted</Text>}
+        {isDragReject && <Text>Rejected</Text>}
 
         {isDragActive ? (
-          <p>Drop here</p>
+          <Text>Drop here</Text>
         ) : (
           <>
-            <p>Drop, or click to select</p>
+            <Text>Drop, or click to select</Text>
             {accept && <Accept accept={accept} />}
-            {multiple ? <p>Accepts multiple files</p> : <p>Single file only</p>}
+            {multiple ? <Text>Accepts multiple files</Text> : <Text>Single file only</Text>}
           </>
         )}
       </StyledContainer>

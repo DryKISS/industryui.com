@@ -29,6 +29,7 @@ import {
   ReactSelectField,
   Row,
   SelectField,
+  sizeArray,
   Space,
   Text,
   TextareaField,
@@ -44,7 +45,6 @@ import enGB from 'date-fns/locale/en-GB'
 import { RADIO_GENDER } from '../../radio/__mocks__/radio'
 import { Options } from '../../reactSelect/__mocks__/options'
 import { COLOURS } from '../../select/__mocks__/colours'
-import { sizeArray } from 'components/theme/constants/sizeArray'
 
 export default {
   title: 'Form',
@@ -110,7 +110,7 @@ const all = ({ ...args }) => {
 
       <Space />
 
-      <Text>{args.formTitle}</Text>
+      <Text size={args.size}>{args.formTitle}</Text>
 
       <Space />
 
@@ -125,7 +125,7 @@ const all = ({ ...args }) => {
         <Column md={colMd}>
           <FormLabel label='Email'>
             <FormField {...defaultProps} name='email' placeholder='Enter Email' />
-            <Text size='sm'>We'll never share your email with anyone else.</Text>
+            <Text size={args.size}>We'll never share your email with anyone else.</Text>
             {errors.email && ErrElement(errors.email.message)}
           </FormLabel>
         </Column>
@@ -217,7 +217,7 @@ AllInputsTemplate.args = {
     'Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
   backgroundColour: '#F5F5F7',
   ColumnWidth: 6,
-  size: 'large',
+  size: 'md',
   datePickerValue: ''
 }
 AllInputsTemplate.argTypes = {
@@ -239,5 +239,5 @@ AllInputsTemplate.argTypes = {
     control: { type: ControlTypes.Range, min: 2, max: 12 }
   },
 
-  size: { control: { type: ControlTypes.Select, options: [...sizeArray] } }
+  size: { control: { type: ControlTypes.Select, options: sizeArray } }
 }

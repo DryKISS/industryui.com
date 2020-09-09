@@ -3,11 +3,6 @@
  */
 export const MONTHS = [
   {
-    disabled: true,
-    text: 'Select month',
-    value: ''
-  },
-  {
     text: 'January',
     value: 1
   },

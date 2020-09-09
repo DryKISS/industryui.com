@@ -15,9 +15,11 @@ import { object, string } from 'yup'
 import {
   Button,
   Form,
+  FormError,
   FormLabel,
   SelectField,
   SelectCountryField,
+  Text,
   useForm,
   yupResolver
 } from 'components'
@@ -67,8 +69,8 @@ const BaseComponent = (props = {}) => {
 
       <Button content='Submit' type='submit' />
 
-      {getValues() && <p>{getValues().select}</p>}
-      {errors.select && errors.select.message}
+      {getValues() && <Text>{getValues().select}</Text>}
+      {errors.select && <FormError message={errors.select.message} />}
     </Form>
   )
 }
