@@ -9,7 +9,17 @@ import { Wrapper } from 'decorators'
 import { object, string } from 'yup'
 
 // UI
-import { arrayOfValues, ControlTypes, Form, Input, SIZE, useForm, yupResolver } from 'components'
+import {
+  arrayOfValues,
+  Column,
+  ControlTypes,
+  Form,
+  Input,
+  Row,
+  SIZE,
+  useForm,
+  yupResolver
+} from 'components'
 import Readme from '../README.md'
 import { InputDecorationTypes } from 'index'
 
@@ -40,19 +50,24 @@ const InputElement = args => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <Input
-        decoration={args.decoration}
-        errors={errors}
-        icons={{
-          ...(args.WithStartIcon && { startIcon: <>S</> }),
-          ...(args.WithEndIcon && { endIcon: <>E</> })
-        }}
-        label='Label'
-        name='NewInput'
-        register={register}
-        placeholder='Placeholder'
-        size={args.size}
-      />
+      <Row>
+        <Column md={6}>
+          <Input
+            decoration={args.decoration}
+            errors={errors}
+            icons={{
+              ...(args.WithStartIcon && { startIcon: <>S</> }),
+              ...(args.WithEndIcon && { endIcon: <>E</> })
+            }}
+            label='Label'
+            message={args.messageText}
+            name='NewInput'
+            register={register}
+            placeholder='Placeholder'
+            size={args.size}
+          />
+        </Column>
+      </Row>
     </Form>
   )
 }
@@ -63,10 +78,19 @@ InputTemplate.args = {
   size: 'md',
   decoration: InputDecorationTypes.Default,
   WithStartIcon: false,
-  WithEndIcon: false
+  WithEndIcon: false,
+  messageText: ''
 }
 InputTemplate.argTypes = {
-  size: { name: 'Size', control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } },
+  size: {
+    name: 'Size',
+    control: {
+      type: ControlTypes.Select,
+      options: arrayOfValues(SIZE).filter(
+        item => item === SIZE.SM || item === SIZE.MD || item === SIZE.LG
+      )
+    }
+  },
   decoration: {
     name: 'Decoration',
     control: {

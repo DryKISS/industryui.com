@@ -8,7 +8,7 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const FormError = ({ message, color }) => {
+export const FormError = ({ message, color, ...props }) => {
   return <StyledSmall color={color}>{message}</StyledSmall>
 }
 

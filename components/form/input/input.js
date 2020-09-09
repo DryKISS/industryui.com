@@ -20,9 +20,9 @@ export const InputDecorationTypes = {
 }
 
 export const Input = ({
-  errors,
   icons,
   label,
+  message,
   name,
   placeholder,
   register,
@@ -42,8 +42,8 @@ export const Input = ({
         )}
         <StyledInput
           decoration={decoration}
-          errors={errors}
           icons={icons}
+          message={message}
           name={name}
           placeholder={placeholder}
           register={register}
@@ -57,6 +57,7 @@ export const Input = ({
           </StyledIconWrapper>
         )}
       </InputWrapper>
+      {message && <StyledMessage decoration={decoration}>{message}</StyledMessage>}
     </Wrapper>
   )
 }
@@ -64,6 +65,40 @@ const borderRadius = '0.25rem'
 
 const StyledText = styled(Text)`
   margin-bottom: 0.5rem;
+  color: ${COLOUR.darkText};
+  font-size: 0.75rem;
+`
+const StyledMessage = styled(Text)`
+  ${({ decoration }) => {
+    switch (decoration) {
+      case InputDecorationTypes.Error:
+        return css`
+          color: ${COLOUR.danger};
+        `
+      case InputDecorationTypes.Success:
+        return css`
+          color: ${COLOUR.success};
+        `
+      case InputDecorationTypes.Warning:
+        return css`
+          color: ${COLOUR.warning};
+        `
+      case InputDecorationTypes.Disabled:
+        return css`
+          color: ${COLOUR.darkGrey};
+        `
+      case InputDecorationTypes.ReadOnly:
+        return css`
+          color: ${COLOUR.darkGrey};
+        `
+      default:
+        return css`
+          color: ${COLOUR.black};
+        `
+    }
+  }}
+  font-size:0.625rem;
+  margin-top: 0.5rem;
 `
 
 const decorateIconWrapper = css`
@@ -204,6 +239,7 @@ const decorateInput = css`
       case InputDecorationTypes.ReadOnly:
         return css`
           border-color: ${COLOUR.grey};
+          background-color: ${COLOUR.darkGrey};
         `
       default:
         return css`
