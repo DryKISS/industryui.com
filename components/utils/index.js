@@ -2,6 +2,7 @@
  * Components
  */
 export * from './age/age'
+export * from './arrayOfValues'
 export * from './auth'
 export * from './averageGeolocation'
 export * from './camelCase'
