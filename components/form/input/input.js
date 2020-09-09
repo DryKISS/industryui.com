@@ -7,7 +7,7 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { SIZE, Text } from 'components'
+import { arrayOfValues, SIZE, Text } from 'components'
 import { COLOUR } from 'components/theme/variables/colour'
 
 export const InputDecorationTypes = {
@@ -27,12 +27,19 @@ const colourPlate = {
   readOnly: COLOUR.grey,
   dark: COLOUR.darkText
 }
+export const InputTypes = {
+  Number: 'number',
+  Text: 'text',
+  Password: 'password'
+}
 export const Input = ({
   adornments,
   label,
   message,
   name,
+  onChange,
   placeholder,
+  regex,
   register,
   size,
   type,
@@ -53,10 +60,11 @@ export const Input = ({
           className='simpleInput'
           message={message}
           name={name}
+          onChange={e => onChange && onChange(e.target.value)}
           placeholder={placeholder}
-          register={register}
-          type={type}
+          ref={register}
           size={size}
+          type={type}
           disabled={props.disabled || decoration === InputDecorationTypes.Disabled}
           {...props}
         />
@@ -204,13 +212,14 @@ Input.propTypes = {
   errors: object.isRequired,
   label: string,
   name: string.isRequired,
+  onChange: func,
   placeholder: string,
   adornments: shape({
     startAdornment: node,
     endAdornment: node
   }),
   register: func.isRequired,
-  type: oneOf(['number', 'password', 'text'])
+  type: oneOf(arrayOfValues(InputTypes))
 }
 
 Input.defaultProps = {

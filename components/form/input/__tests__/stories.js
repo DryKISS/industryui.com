@@ -11,17 +11,20 @@ import { object, string } from 'yup'
 // UI
 import {
   arrayOfValues,
+  Button,
   Column,
   ControlTypes,
   Form,
   Input,
+  InputTypes,
+  InputDecorationTypes,
   Row,
   SIZE,
+  Space,
   useForm,
   yupResolver
 } from 'components'
 import Readme from '../README.md'
-import { InputDecorationTypes } from 'index'
 
 export default {
   title: 'Form/Input',
@@ -36,8 +39,12 @@ export default {
 
 const InputElement = args => {
   console.log(args)
+  const pattern = /^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/
+
   const schema = object().shape({
-    NewInput: string().required()
+    email: string()
+      .required()
+      .matches(pattern)
   })
 
   const { errors, handleSubmit, register } = useForm({
@@ -47,25 +54,27 @@ const InputElement = args => {
   const onSubmit = data => {
     console.info(data)
   }
-
+  console.log(errors)
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <Row>
         <Column md={6}>
           <Input
-            decoration={args.decoration}
-            errors={errors}
+            decoration={errors?.email ? InputDecorationTypes.Error : args.decoration}
             adornments={{
               ...(args.WithStartAdornment && { startAdornment: <>S</> }),
               ...(args.WithEndAdornment && { endAdornment: <>E</> })
             }}
             label='Label'
-            message={args.messageText}
-            name='NewInput'
+            type={args.inputType}
+            message={errors?.email?.type ? errors.email.type : args.messageText}
+            name='email'
             register={register}
             placeholder='Placeholder'
             size={args.size}
           />
+          <Space />
+          <Button type='submit'>submit</Button>
         </Column>
       </Row>
     </Form>
@@ -75,7 +84,8 @@ const InputElement = args => {
 export const InputTemplate = InputElement.bind({})
 
 InputTemplate.args = {
-  size: 'md',
+  size: SIZE.MD,
+  inputType: InputTypes.Text,
   decoration: InputDecorationTypes.Default,
   WithStartAdornment: false,
   WithEndAdornment: false,
@@ -89,6 +99,13 @@ InputTemplate.argTypes = {
       options: arrayOfValues(SIZE).filter(
         item => item === SIZE.SM || item === SIZE.MD || item === SIZE.LG
       )
+    }
+  },
+  inputType: {
+    name: 'Input Type',
+    control: {
+      type: ControlTypes.Select,
+      options: arrayOfValues(InputTypes)
     }
   },
   decoration: {
