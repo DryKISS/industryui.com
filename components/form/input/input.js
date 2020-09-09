@@ -195,6 +195,11 @@ const Wrapper = styled.div`
       .simpleInput,
       .adornment {
         border-color: ${colourPlate[decoration]};
+        ${decoration === InputDecorationTypes.ReadOnly &&
+          css`
+            background: transparent;
+            pointer-events: none;
+          `}
       }
       .adornment {
         background-color: ${colourPlate[decoration]};

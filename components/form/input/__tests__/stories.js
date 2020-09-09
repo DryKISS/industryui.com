@@ -39,12 +39,12 @@ export default {
 
 const InputElement = args => {
   console.log(args)
-  const pattern = /^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/
+  const pattern = /[\w-]+@([\w-]+\.)+[\w-]+/
 
   const schema = object().shape({
     email: string()
-      .required()
-      .matches(pattern)
+      .required('This Field Is Required')
+      .matches(pattern, 'Please Enter valid Field')
   })
 
   const { errors, handleSubmit, register } = useForm({
@@ -67,7 +67,7 @@ const InputElement = args => {
             }}
             label='Label'
             type={args.inputType}
-            message={errors?.email?.type ? errors.email.type : args.messageText}
+            message={errors?.email?.message ? errors.email.message : args.messageText}
             name='email'
             register={register}
             placeholder='Placeholder'
