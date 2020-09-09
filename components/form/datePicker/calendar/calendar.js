@@ -22,7 +22,7 @@ export const DatePickerCalendar = ({
   defaultValue,
   errors,
   name,
-  placeHolder,
+  placeholder,
   ...parentProps
 }) => {
   return (
@@ -33,7 +33,7 @@ export const DatePickerCalendar = ({
           selected={props.value}
           {...props}
           {...parentProps}
-          placeholderText={placeHolder ?? 'Click to select time'}
+          placeholderText={placeholder ?? 'Click to select time'}
         />
       )}
       control={control}
