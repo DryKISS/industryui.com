@@ -102,7 +102,8 @@ const all = ({ ...args }) => {
     errors: errors,
     register: register
   }
-  const ErrElement = message => <FormError message={message} />
+
+  const ErrMessage = message => <FormError message={message} />
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
@@ -118,7 +119,7 @@ const all = ({ ...args }) => {
         <Column md={colMd}>
           <FormLabel label='Name'>
             <FormField {...defaultProps} name='name' />
-            {errors.name && ErrElement(errors.name.message)}
+            {errors.name && ErrMessage(errors.name.message)}
           </FormLabel>
         </Column>
 
@@ -126,14 +127,14 @@ const all = ({ ...args }) => {
           <FormLabel label='Email'>
             <FormField {...defaultProps} name='email' placeholder='Enter Email' />
             <Text size={args.size}>We'll never share your email with anyone else.</Text>
-            {errors.email && ErrElement(errors.email.message)}
+            {errors.email && ErrMessage(errors.email.message)}
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
           <FormLabel label='Disabled'>
             <FormField {...defaultProps} disabled name='disabled' />
-            {errors.disabled && ErrElement(errors.disabled.message)}
+            {errors.disabled && ErrMessage(errors.disabled.message)}
           </FormLabel>
         </Column>
 
@@ -145,7 +146,7 @@ const all = ({ ...args }) => {
               name='readonly'
               readOnly
             />
-            {errors.readonly && ErrElement(errors.readonly.message)}
+            {errors.readonly && ErrMessage(errors.readonly.message)}
           </FormLabel>
         </Column>
 
@@ -211,7 +212,9 @@ const all = ({ ...args }) => {
     </Form>
   )
 }
+
 export const AllInputsTemplate = all.bind({})
+
 AllInputsTemplate.args = {
   formTitle:
     'Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
