@@ -7,11 +7,12 @@ import { bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
+import { Space } from 'components'
 
 export const FormLabel = ({ children, id, label, show }) => {
   return (
     <StyledLabel hasChild={children} htmlFor={id} show={show}>
-      <StyledLabelText className='Form-label'>{label}</StyledLabelText>
+      <Space marginBottom='xs'>{label}</Space>
       {children}
     </StyledLabel>
   )
@@ -20,10 +21,6 @@ export const FormLabel = ({ children, id, label, show }) => {
 const StyledLabel = styled.label`
   display: ${({ show }) => (show ? 'block' : 'none')};
   margin-bottom: ${({ hasChild }) => (!hasChild ? '0' : '1rem')};
-`
-
-const StyledLabelText = styled.div`
-  margin-bottom: 0.5rem;
 `
 
 FormLabel.propTypes = {

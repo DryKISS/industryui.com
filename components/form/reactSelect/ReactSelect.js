@@ -16,7 +16,7 @@ import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
 
 // UI
-import { ERROR_STYLE } from '../../'
+import { ERROR_STYLE, SIZE } from '../../'
 
 // Components
 import { defaultStyles, reactSelectDefaultProps, reactSelectPropTypes } from './components'
@@ -34,6 +34,7 @@ export const ReactSelectField = ({
   options,
   required,
   selectedOption,
+  size,
   ...parentProps
 }) => {
   const Component = forwardRef((data, ref) => {
@@ -53,7 +54,7 @@ export const ReactSelectField = ({
   })
 
   return (
-    <Wrapper error={error || errors[name]}>
+    <Wrapper size={size} error={error || errors[name]}>
       <Controller
         render={props => (
           <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
@@ -68,6 +69,27 @@ export const ReactSelectField = ({
 }
 
 const Wrapper = styled.div`
+  ${({ size }) => {
+    switch (size) {
+      case SIZE.SM:
+        return css`
+          height: 1.5rem;
+        `
+      case SIZE.MD:
+        return css`
+          height: 1.875rem;
+        `
+      case SIZE.LG:
+        return css`
+          height: 2.25rem;
+        `
+      default:
+        return css`
+          height: 2.25rem;
+        `
+    }
+  }}
+
   ${({ error }) =>
     error &&
     css`

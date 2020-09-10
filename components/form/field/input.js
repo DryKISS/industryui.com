@@ -9,7 +9,7 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC, ERROR_STYLE } from '../../'
+import { inputBorderRadius, FieldHOC, ERROR_STYLE, SIZE } from '../../'
 
 export const FormField = ({
   disabled,
@@ -19,6 +19,7 @@ export const FormField = ({
   readOnly,
   regExp,
   register,
+  size,
   validate,
   ...props
 }) => {
@@ -45,18 +46,20 @@ export const StyledInput = styled.input.attrs(props => ({
   background-clip: padding-box;
   background-color: ${({ theme }) => theme.COLOUR.white};
   border: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  border-radius: 0.25rem;
+  border-radius: ${inputBorderRadius};
   box-sizing: border-box;
   color: ${({ theme }) => theme.COLOUR.dark};
   display: block;
-  height: 3rem;
-  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  height: 100%;
+  outline: none;
+  padding: 0 0.625rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
   &:focus {
     box-shadow: ${({ readOnly }) => (readOnly ? '0 0 0 0.2rem rgba(0, 123, 255, 0.25)' : 'none')};
-    outline: 0;
+    border-color: ${({ theme, errors }) => (errors ? theme.COLOUR.error : theme.COLOUR.primary)};
   }
 
   ::-webkit-input-placeholder {
@@ -93,6 +96,26 @@ export const StyledInput = styled.input.attrs(props => ({
     css`
       ${props => ERROR_STYLE(props)}
     `}
+    ${({ size }) => {
+      switch (size) {
+        case SIZE.SM:
+          return css`
+            height: 1.5rem;
+          `
+        case SIZE.MD:
+          return css`
+            height: 1.875rem;
+          `
+        case SIZE.LG:
+          return css`
+            height: 2.25rem;
+          `
+        default:
+          return css`
+            height: 2.25rem;
+          `
+      }
+    }}
 `
 
 FormField.propTypes = {

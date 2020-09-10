@@ -68,8 +68,6 @@ export const Input = ({
   type,
   ...props
 }) => {
-  console.log(errors)
-
   return (
     <Wrapper theme={props.theme} decoration={decoration} readOnly={props.readOnly}>
       {label && (

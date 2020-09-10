@@ -12,13 +12,14 @@ import styled, { css } from 'styled-components'
 // Context
 import { CONTEXT } from '../../'
 
-export const InputGroupAddon = ({ addonType, className, children, context, text }) => {
+export const InputGroupAddon = ({ addonType, className, children, context, error, text }) => {
   return (
     <StyledInputGroupAddon
       addonType={addonType}
       className={addonType}
       children={children}
       context={context}
+      error={error}
       text={text}
     />
   )
@@ -35,14 +36,15 @@ const StyledInputGroupAddon = styled.div`
   ${({ text }) =>
     text &&
     css`
-      background-color: ${({ context, theme }) => theme.COLOUR[context]};
+      background-color: ${({ context, theme, error }) =>
+        error ? theme.COLOUR.error : theme.COLOUR[context]};
       border: 1px solid ${({ theme }) => theme.COLOUR.dark};
       border-radius: 0.25rem;
       color: ${({ theme }) => theme.COLOUR.dark};
       display: flex;
       font-size: 1rem;
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1;
       margin-bottom: 0;
       padding: 0.375rem 0.75rem;
       text-align: center;

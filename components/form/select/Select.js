@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { FieldHOC, ERROR_STYLE } from '../../'
+import { ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -27,6 +27,7 @@ export const SelectField = forwardRef(
       placeholder,
       range,
       showError,
+      size,
       ...props
     },
     ref
@@ -76,6 +77,7 @@ export const SelectField = forwardRef(
         name={name}
         ref={ref}
         showError={showError}
+        size={size}
         {...data}
         {...props}
       >
@@ -95,7 +97,6 @@ const StyledSelect = styled.select`
   color: ${({ theme }) => theme.COLOUR.dark};
   display: block;
   font-size: 1rem;
-  height: 3rem;
   line-height: 1.5;
   padding: 0.375rem 0.75rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -107,7 +108,26 @@ const StyledSelect = styled.select`
     color: ${({ theme }) => theme.COLOUR.dark};
     outline: 0;
   }
-
+  ${({ size }) => {
+    switch (size) {
+      case SIZE.SM:
+        return css`
+          height: 1.5rem;
+        `
+      case SIZE.MD:
+        return css`
+          height: 1.875rem;
+        `
+      case SIZE.LG:
+        return css`
+          height: 2.25rem;
+        `
+      default:
+        return css`
+          height: 2.25rem;
+        `
+    }
+  }}
   ${({ errors }) =>
     errors &&
     css`
