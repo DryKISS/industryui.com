@@ -11,6 +11,7 @@ export const COLOUR = {
   drykiss_darkPink: 'rgb(255, 0, 99)',
   female: 'rgb(248, 139, 157)',
   grey: 'rgb(235, 235, 235)',
+  grey80: 'rgb(204, 204, 204)',
   help: 'rgb(255, 203, 68)',
   info: 'rgb(148, 148, 126)',
   light: 'rgb(236, 240, 243)',

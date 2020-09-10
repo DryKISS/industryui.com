@@ -48,7 +48,7 @@ export const Input = ({
 }) => {
   return (
     <Wrapper decoration={decoration}>
-      <StyledText content={label} />
+      {label && <StyledText content={label} />}
       <InputWrapper size={size}>
         {adornments?.startAdornment && (
           <StyledAdornmentWrapper className='adornment startAdornment' startAdornment size={size}>
@@ -179,6 +179,12 @@ const StyledInput = styled.input`
   height: 100%;
   width: 100%;
   padding: 0 0.625rem;
+
+  ::placeholder {
+    color: ${COLOUR.grey80};
+    opacity: 1;
+  }
+
   ${withAdornmentStartStyles}
   ${withEndAdornmentStyles}
   outline: none;
