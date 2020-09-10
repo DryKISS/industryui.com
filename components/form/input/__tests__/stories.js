@@ -87,15 +87,33 @@ const InputElement = args => {
 export const InputTemplate = InputElement.bind({})
 
 InputTemplate.args = {
-  size: SIZE.MD,
-  inputType: InputTypes.Text,
   decoration: InputDecorationTypes.Default,
+  inputType: InputTypes.Text,
+  messageText: '',
+  size: SIZE.MD,
   WithStartAdornment: false,
-  WithEndAdornment: false,
-  messageText: ''
+  WithEndAdornment: false
 }
 
 InputTemplate.argTypes = {
+  decoration: {
+    name: 'Decoration',
+    control: {
+      type: ControlTypes.Select,
+      options: arrayOfValues(InputDecorationTypes)
+    }
+  },
+
+  inputType: {
+    name: 'Input Type',
+    control: {
+      type: ControlTypes.Select,
+      options: arrayOfValues(InputTypes)
+    }
+  },
+
+  messageText: { name: 'Message Text' },
+
   size: {
     name: 'Size',
     control: {
@@ -105,21 +123,8 @@ InputTemplate.argTypes = {
       )
     }
   },
-  inputType: {
-    name: 'Input Type',
-    control: {
-      type: ControlTypes.Select,
-      options: arrayOfValues(InputTypes)
-    }
-  },
-  decoration: {
-    name: 'Decoration',
-    control: {
-      type: ControlTypes.Select,
-      options: arrayOfValues(InputDecorationTypes)
-    }
-  },
-  messageText: { name: 'Message Text' },
+
   WithStartAdornment: { name: 'with Start Adornment', control: { type: ControlTypes.Boolean } },
+
   WithEndAdornment: { name: 'with End Adornment', control: { type: ControlTypes.Boolean } }
 }
