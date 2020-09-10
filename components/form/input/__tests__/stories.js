@@ -119,6 +119,7 @@ InputTemplate.argTypes = {
       options: arrayOfValues(InputDecorationTypes)
     }
   },
+  messageText: { name: 'Message Text' },
   WithStartAdornment: { name: 'with Start Adornment', control: { type: ControlTypes.Boolean } },
   WithEndAdornment: { name: 'with End Adornment', control: { type: ControlTypes.Boolean } }
 }

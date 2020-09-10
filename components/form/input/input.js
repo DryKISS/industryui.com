@@ -41,7 +41,6 @@ export const Input = ({
   label,
   message,
   name,
-  onChange,
   placeholder,
   regex,
   register,
@@ -65,7 +64,6 @@ export const Input = ({
           className='simpleInput'
           message={message}
           name={name}
-          onChange={e => onChange && onChange(e.target.value)}
           placeholder={placeholder}
           ref={register}
           size={size}
@@ -237,7 +235,7 @@ Input.propTypes = {
     startAdornment: node,
     endAdornment: node
   }),
-  register: func,
+  register: func.isRequired,
   type: oneOf(arrayOfValues(InputTypes))
 }
 
