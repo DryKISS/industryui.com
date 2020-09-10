@@ -71,6 +71,7 @@ const InputElement = args => {
             label='Label'
             type={args.inputType}
             message={errors?.email?.message ? errors.email.message : args.messageText}
+            errors={errors}
             name='email'
             register={register}
             placeholder='Placeholder'

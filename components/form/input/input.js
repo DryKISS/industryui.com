@@ -29,24 +29,40 @@ const colourPlate = {
   readOnly: COLOUR.grey,
   dark: COLOUR.darkText
 }
+const inputThemeColourPlate = {
+  default: 'grey',
+  error: 'error',
+  success: 'formSuccess',
+  warning: 'gold40',
+  disabled: 'darkGrey',
+  darkBorder: 'grey80',
+  readOnly: 'grey',
+  dark: 'darkText'
+}
 
 export const InputTypes = {
   Number: 'number',
   Text: 'text',
   Password: 'password'
 }
-
+const colourProvider = (theme, decoration) => {
+  if (theme?.COLOUR) {
+    return theme.COLOUR[inputThemeColourPlate[decoration]]
+  } else {
+    return colourPlate[decoration]
+  }
+}
 export const Input = ({
   adornments,
+  decoration,
+  errors,
   label,
   message,
   name,
   placeholder,
-  regex,
   register,
   size,
   type,
-  decoration,
   ...props
 }) => {
   return (
@@ -61,7 +77,7 @@ export const Input = ({
 
         <StyledInput
           adornments={adornments}
-          className='simpleInput'
+          className={`simpleInput ${errors[name]?.type}`}
           message={message}
           name={name}
           placeholder={placeholder}
@@ -86,9 +102,9 @@ export const Input = ({
 const borderRadius = '0.25rem'
 
 const StyledLabel = styled(Text)`
-  margin-bottom: 0.5rem;
-  color: ${COLOUR.darkText};
+  color: ${({ theme }) => colourProvider(theme, 'dark')};
   font-size: 0.75rem;
+  margin-bottom: 0.5rem;
 `
 const StyledMessage = styled(Text)`
   font-size: 0.625rem;
@@ -96,16 +112,16 @@ const StyledMessage = styled(Text)`
 `
 
 const StyledAdornmentWrapper = styled.div`
-  height: 100%;
-  display: flex;
   align-items: center;
   border: 1px solid;
+  display: flex;
+  height: 100%;
   ${({ startAdornment }) =>
     startAdornment
       ? css`
+          border-bottom-left-radius: ${borderRadius};
           border-right: none;
           border-top-left-radius: ${borderRadius};
-          border-bottom-left-radius: ${borderRadius};
         `
       : css`
           border-left: none;
@@ -185,8 +201,11 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 0 0.625rem;
   ::placeholder {
-    color: ${COLOUR.grey80};
+    color: ${({ theme }) => colourProvider(theme, 'danger')};
     opacity: 1;
+  }
+  &:focus {
+    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
   }
   ${withAdornmentStartStyles}
   ${withEndAdornmentStyles}
@@ -198,15 +217,22 @@ const Wrapper = styled.div`
   ${({ decoration }) => {
     return css`
       .message {
-        color: ${decoration !== InputDecorationTypes.Default
-          ? colourPlate[decoration]
-          : colourPlate.dark};
+        color: ${({ theme }) =>
+          decoration !== InputDecorationTypes.Default
+            ? colourProvider(theme, decoration)
+            : colourProvider(theme, 'dark')};
+      }
+      .simpleInput {
+        &.required {
+          border-left-width: 0.5rem;
+        }
       }
       .simpleInput,
       .adornment {
-        border-color: ${decoration !== InputDecorationTypes.Default
-          ? colourPlate[decoration]
-          : colourPlate.darkBorder};
+        border-color: ${({ theme }) =>
+          decoration !== InputDecorationTypes.Default
+            ? colourProvider(theme, decoration)
+            : colourProvider(theme, 'dark')};
         ${decoration === InputDecorationTypes.ReadOnly &&
           css`
             background: transparent;
@@ -214,12 +240,7 @@ const Wrapper = styled.div`
           `}
       }
       .adornment {
-        background-color: ${colourPlate[decoration]};
-      }
-      .simpleInput {
-        &:focus {
-          border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
-        }
+        background-color: ${({ theme }) => colourProvider(theme, decoration)};
       }
     `
   }}
