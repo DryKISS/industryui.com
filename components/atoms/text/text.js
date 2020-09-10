@@ -29,12 +29,8 @@ const StyledText = styled.p`
   padding: 0;
   text-align: ${({ align }) => align};
   color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
-  ${({ size }) =>
-    size === 'xs' &&
-    css`
-      font-size: 0.75rem;
-      line-height: 1.333;
-    `}
+
+
   ${({ size }) =>
     size === 'sm' &&
     css`
