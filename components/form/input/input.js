@@ -21,10 +21,11 @@ export const InputDecorationTypes = {
 
 const colourPlate = {
   default: COLOUR.grey,
-  error: COLOUR.danger,
-  success: COLOUR.success,
-  warning: COLOUR.warning,
+  error: COLOUR.error,
+  success: COLOUR.formSuccess,
+  warning: COLOUR.gold40,
   disabled: COLOUR.darkGrey,
+  darkBorder: COLOUR.grey80,
   readOnly: COLOUR.grey,
   dark: COLOUR.darkText
 }
@@ -205,7 +206,9 @@ const Wrapper = styled.div`
       }
       .simpleInput,
       .adornment {
-        border-color: ${colourPlate[decoration]};
+        border-color: ${decoration !== InputDecorationTypes.Default
+          ? colourPlate[decoration]
+          : colourPlate.darkBorder};
         ${decoration === InputDecorationTypes.ReadOnly &&
           css`
             background: transparent;
