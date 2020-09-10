@@ -39,6 +39,7 @@ export default {
 
 const InputElement = args => {
   console.log(args)
+
   const pattern = /[\w-]+@([\w-]+\.)+[\w-]+/
 
   const schema = object().shape({
@@ -54,7 +55,9 @@ const InputElement = args => {
   const onSubmit = data => {
     console.info(data)
   }
+
   console.log(errors)
+
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <Row>
@@ -91,6 +94,7 @@ InputTemplate.args = {
   WithEndAdornment: false,
   messageText: ''
 }
+
 InputTemplate.argTypes = {
   size: {
     name: 'Size',

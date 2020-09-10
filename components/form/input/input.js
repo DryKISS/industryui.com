@@ -18,6 +18,7 @@ export const InputDecorationTypes = {
   Disabled: 'disabled',
   ReadOnly: 'readOnly'
 }
+
 const colourPlate = {
   default: COLOUR.grey,
   error: COLOUR.danger,
@@ -27,11 +28,13 @@ const colourPlate = {
   readOnly: COLOUR.grey,
   dark: COLOUR.darkText
 }
+
 export const InputTypes = {
   Number: 'number',
   Text: 'text',
   Password: 'password'
 }
+
 export const Input = ({
   adornments,
   label,
@@ -48,13 +51,14 @@ export const Input = ({
 }) => {
   return (
     <Wrapper decoration={decoration}>
-      {label && <StyledText content={label} />}
+      {label && <StyledLabel content={label} />}
       <InputWrapper size={size}>
         {adornments?.startAdornment && (
           <StyledAdornmentWrapper className='adornment startAdornment' startAdornment size={size}>
             {adornments.startAdornment}
           </StyledAdornmentWrapper>
         )}
+
         <StyledInput
           adornments={adornments}
           className='simpleInput'
@@ -68,19 +72,21 @@ export const Input = ({
           disabled={props.disabled || decoration === InputDecorationTypes.Disabled}
           {...props}
         />
+
         {adornments?.endAdornment && (
           <StyledAdornmentWrapper className='adornment endAdornment' size={size}>
             {adornments.endAdornment}
           </StyledAdornmentWrapper>
         )}
       </InputWrapper>
+
       {message && <StyledMessage className='message'>{message}</StyledMessage>}
     </Wrapper>
   )
 }
 const borderRadius = '0.25rem'
 
-const StyledText = styled(Text)`
+const StyledLabel = styled(Text)`
   margin-bottom: 0.5rem;
   color: ${COLOUR.darkText};
   font-size: 0.75rem;
@@ -179,16 +185,15 @@ const StyledInput = styled.input`
   height: 100%;
   width: 100%;
   padding: 0 0.625rem;
-
   ::placeholder {
     color: ${COLOUR.grey80};
     opacity: 1;
   }
-
   ${withAdornmentStartStyles}
   ${withEndAdornmentStyles}
   outline: none;
 `
+
 const Wrapper = styled.div`
   width: 100%;
   ${({ decoration }) => {
@@ -220,16 +225,16 @@ const Wrapper = styled.div`
 `
 
 Input.propTypes = {
-  errors: object.isRequired,
+  errors: object,
   label: string,
-  name: string.isRequired,
+  name: string,
   onChange: func,
   placeholder: string,
   adornments: shape({
     startAdornment: node,
     endAdornment: node
   }),
-  register: func.isRequired,
+  register: func,
   type: oneOf(arrayOfValues(InputTypes))
 }
 
