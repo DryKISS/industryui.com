@@ -6,7 +6,7 @@ export const ERROR_STYLE = ({ theme }) => {
     border-color: ${theme.COLOUR.error};
     border-image: initial;
     border-style: solid;
-    border-width: 1px 1px 1px 5px;
+    border-left-width: 0.5rem;
   `
 }
 export const inputBorderRadius = '0.25rem'

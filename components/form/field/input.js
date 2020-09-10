@@ -9,7 +9,7 @@ import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-typ
 import styled, { css } from 'styled-components'
 
 // UI
-import { inputBorderRadius, FieldHOC, ERROR_STYLE, SIZE } from '../../'
+import { inputBorderRadius, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 export const FormField = ({
   disabled,
@@ -34,6 +34,7 @@ export const FormField = ({
       name={name}
       placeholder={placeholder}
       readOnly={readOnly}
+      size={size}
       {...props}
     />
   )
@@ -62,16 +63,9 @@ export const StyledInput = styled.input.attrs(props => ({
     border-color: ${({ theme, errors }) => (errors ? theme.COLOUR.error : theme.COLOUR.primary)};
   }
 
-  ::-webkit-input-placeholder {
-    color: #c0c0c0;
-  }
 
-  :-ms-input-placeholder {
-    color: #c0c0c0;
-  }
-
-  :-moz-placeholder {
-    color: #c0c0c0;
+  ::placeholder {
+    color:${({ theme }) => (theme ? theme.COLOUR.darkText : '#666666')};
     opacity: 1;
   }
 
@@ -129,6 +123,7 @@ FormField.propTypes = {
   placeholder: string,
   readOnly: bool,
   register: func.isRequired,
+  size: string,
   style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])

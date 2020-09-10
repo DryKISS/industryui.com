@@ -100,7 +100,8 @@ const all = ({ ...args }) => {
 
   const defaultProps = {
     errors: errors,
-    register: register
+    register: register,
+    size: args.size
   }
 
   const ErrMessage = message => <FormError message={message} />
@@ -111,22 +112,22 @@ const all = ({ ...args }) => {
 
       <Space />
 
-      <Text size={args.size}>{args.formTitle}</Text>
+      <Text>{args.formTitle}</Text>
 
       <Space />
 
       <Row style={{ background: rowBackground }}>
         <Column md={colMd}>
-          <FormLabel label='Name'>
+          <FormLabel size={args.size} label='Name'>
             <FormField {...defaultProps} name='name' />
             {errors.name && ErrMessage(errors.name.message)}
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label='Email'>
+          <FormLabel size={args.size} label='Email'>
             <FormField {...defaultProps} name='email' placeholder='Enter Email' />
-            <Text size={args.size}>We'll never share your email with anyone else.</Text>
+            <Text>We'll never share your email with anyone else.</Text>
             {errors.email && ErrMessage(errors.email.message)}
           </FormLabel>
         </Column>
