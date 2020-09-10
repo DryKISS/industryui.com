@@ -9,3 +9,4 @@ export const ERROR_STYLE = ({ theme }) => {
     border-width: 1px 1px 1px 5px;
   `
 }
+export const inputBorderRadius = '0.25rem'

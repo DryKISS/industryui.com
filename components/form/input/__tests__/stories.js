@@ -63,7 +63,7 @@ const InputElement = args => {
       <Row>
         <Column md={6}>
           <Input
-            decoration={errors?.email ? InputDecorationTypes.Error : args.decoration}
+            decoration={errors?.email ? InputDecorationTypes.ERROR : args.decoration}
             adornments={{
               ...(args.WithStartAdornment && { startAdornment: <>S</> }),
               ...(args.WithEndAdornment && { endAdornment: <>E</> })
@@ -88,8 +88,8 @@ const InputElement = args => {
 export const InputTemplate = InputElement.bind({})
 
 InputTemplate.args = {
-  decoration: InputDecorationTypes.Default,
-  inputType: InputTypes.Text,
+  decoration: InputDecorationTypes.DEFAULT,
+  inputType: InputTypes.TEXT,
   messageText: '',
   size: SIZE.MD,
   WithStartAdornment: false,

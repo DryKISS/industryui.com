@@ -7,44 +7,46 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { arrayOfValues, SIZE, Space, Text } from 'components'
+import {
+  Adornment,
+  arrayOfValues,
+  InputDecorationTypes,
+  inputBorderRadius,
+  SIZE,
+  Space,
+  Text
+} from 'components'
+
 import { COLOUR } from 'components/theme/variables/colour'
 
-export const InputDecorationTypes = {
-  Default: 'default',
-  Error: 'error',
-  Success: 'success',
-  Warning: 'warning',
-  Disabled: 'disabled',
-  ReadOnly: 'readOnly'
+const colourPlate = {
+  dark: COLOUR.darkText,
+  darkBorder: COLOUR.grey80,
+  default: COLOUR.grey,
+  disabled: COLOUR.darkGrey,
+  error: COLOUR.error,
+  readOnly: COLOUR.grey,
+  success: COLOUR.formSuccess,
+  warning: COLOUR.gold40
 }
 
-const colourPlate = {
-  default: COLOUR.grey,
-  error: COLOUR.error,
-  success: COLOUR.formSuccess,
-  warning: COLOUR.gold40,
-  disabled: COLOUR.darkGrey,
-  darkBorder: COLOUR.grey80,
-  readOnly: COLOUR.grey,
-  dark: COLOUR.darkText
-}
 const inputThemeColourPlate = {
-  default: 'grey',
-  error: 'error',
-  success: 'formSuccess',
-  warning: 'gold40',
-  disabled: 'darkGrey',
+  dark: 'darkText',
   darkBorder: 'grey80',
+  default: 'grey',
+  disabled: 'darkGrey',
+  error: 'error',
   readOnly: 'grey',
-  dark: 'darkText'
+  success: 'formSuccess',
+  warning: 'gold40'
 }
 
 export const InputTypes = {
-  Number: 'number',
-  Text: 'text',
-  Password: 'password'
+  NUMBER: 'number',
+  TEXT: 'text',
+  PASSWORD: 'password'
 }
+
 const colourProvider = (theme, decoration) => {
   if (theme?.COLOUR) {
     return theme.COLOUR[inputThemeColourPlate[decoration]]
@@ -52,6 +54,7 @@ const colourProvider = (theme, decoration) => {
     return colourPlate[decoration]
   }
 }
+
 export const Input = ({
   adornments,
   decoration,
@@ -65,51 +68,46 @@ export const Input = ({
   type,
   ...props
 }) => {
+  console.log(errors)
+
   return (
-    <Wrapper decoration={decoration}>
+    <Wrapper theme={props.theme} decoration={decoration} readOnly={props.readOnly}>
       {label && (
         <>
           <Space marginBottom='xs'>
-            <StyledLabel content={label} />
+            <StyledLabel theme={props.theme} content={label} />
           </Space>
         </>
       )}
-      <InputWrapper size={size}>
-        {adornments?.startAdornment && (
-          <StyledAdornmentWrapper startAdornment size={size}>
-            {adornments.startAdornment}
-          </StyledAdornmentWrapper>
-        )}
+      <Space marginBottom='xs'>
+        <InputWrapper size={size}>
+          {adornments?.startAdornment && (
+            <Adornment startAdornment size={size}>
+              {adornments.startAdornment}
+            </Adornment>
+          )}
 
-        <StyledInput
-          adornments={adornments}
-          required={errors[name]?.type === 'required'}
-          message={message}
-          name={name}
-          placeholder={placeholder}
-          ref={register}
-          size={size}
-          type={type}
-          disabled={props.disabled || decoration === InputDecorationTypes.Disabled}
-          {...props}
-        />
+          <StyledInput
+            adornments={adornments}
+            disabled={props.disabled || decoration === InputDecorationTypes.DISABLED}
+            message={message}
+            name={name}
+            placeholder={placeholder}
+            readOnly={props.readOnly || decoration === InputDecorationTypes.READONLY}
+            ref={register}
+            size={size}
+            type={type}
+            required={errors[name]?.type === 'required'}
+            {...props}
+          />
 
-        {adornments?.endAdornment && (
-          <StyledAdornmentWrapper size={size}>{adornments.endAdornment}</StyledAdornmentWrapper>
-        )}
-      </InputWrapper>
-
-      {message && (
-        <>
-          <Space marginTop='xs'>
-            <StyledMessage>{message}</StyledMessage>
-          </Space>
-        </>
-      )}
+          {adornments?.endAdornment && <Adornment size={size}>{adornments.endAdornment}</Adornment>}
+        </InputWrapper>
+      </Space>
+      {message && <StyledMessage>{message}</StyledMessage>}
     </Wrapper>
   )
 }
-const borderRadius = '0.25rem'
 
 const StyledLabel = styled(Text)`
   color: ${({ theme }) => colourProvider(theme, 'dark')};
@@ -119,35 +117,16 @@ const StyledMessage = styled(Text)`
   font-size: 0.625rem;
 `
 
-const StyledAdornmentWrapper = styled.div`
-  align-items: center;
-  border: 1px solid;
-  display: flex;
-  height: 100%;
-  ${({ startAdornment }) =>
-    startAdornment
-      ? css`
-          border-bottom-left-radius: ${borderRadius};
-          border-right: none;
-          border-top-left-radius: ${borderRadius};
-        `
-      : css`
-          border-left: none;
-          border-top-right-radius: ${borderRadius};
-          border-bottom-right-radius: ${borderRadius};
-        `}
-`
-
 const InputWrapper = styled.div`
-  width: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  width: 100%;
   ${({ size }) => {
     switch (size) {
       case SIZE.SM:
         return css`
           height: 1.5rem;
-          ${StyledAdornmentWrapper} {
+          ${Adornment} {
             padding: 0.5rem 1rem;
           }
         `
@@ -155,7 +134,7 @@ const InputWrapper = styled.div`
         return css`
           height: 1.875rem;
           ._,/* neccessary because commit prehook cant understand switch case in styled component with selector */
-          ${StyledAdornmentWrapper} {
+          ${Adornment} {
             padding: 0.75rem 1.25rem;
           }
         `
@@ -163,7 +142,7 @@ const InputWrapper = styled.div`
         return css`
           height: 2.25rem;
           .__,/* read the upper comment please */
-          ${StyledAdornmentWrapper} {
+          ${Adornment} {
             padding: 0.875rem 1.625rem;
           }
         `
@@ -171,104 +150,103 @@ const InputWrapper = styled.div`
         return css`
           height: 1.875rem;
           .___,/* read the upper comment please */
-          ${StyledAdornmentWrapper} {
+          ${Adornment} {
             padding: 0.75rem 1.25rem;
           }
         `
     }
   }}
 `
-const withAdornmentStartStyles = css`
+const withAdornmentStyles = css`
   ${({ adornments }) => {
     return (
-      adornments?.startAdornment &&
+      adornments &&
       css`
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      `
-    )
-  }}
-`
-const withEndAdornmentStyles = css`
-  ${({ adornments }) => {
-    return (
-      adornments?.endAdornment &&
-      css`
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        ${adornments.startAdornment &&
+          css`
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+          `}
+        ${adornments.endAdornment &&
+          css`
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+          `}
       `
     )
   }}
 `
 
-const StyledInput = styled.input`
+const StyledInput = styled.input.attrs(props => ({
+  'aria-label': props.name,
+  autoComplete: 'off',
+  autoFocus: false
+}))`
   border: 1px solid;
-  border-radius: ${borderRadius};
+  border-left-width: ${({ required }) => required === true && ' 0.5rem'};
+  border-radius: ${inputBorderRadius};
   font-size: 0.75rem;
   height: 100%;
-  width: 100%;
+  outline: none;
   padding: 0 0.625rem;
+  width: 100%;
+
+  &:focus {
+    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
+  }
   ::placeholder {
     color: ${({ theme }) => colourProvider(theme, 'danger')};
     opacity: 1;
   }
-  &:focus {
-    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
-  }
-  ${withAdornmentStartStyles}
-  ${withEndAdornmentStyles}
 
-  border-left-width: ${({ required }) => required === true && ' 0.5rem'};
-
-  outline: none;
+  ${withAdornmentStyles}
 `
 
 const Wrapper = styled.div`
   width: 100%;
-  ${({ decoration }) => {
+
+  ${({ decoration, readOnly, theme }) => {
     return css`
       ${StyledMessage} {
-        color: ${({ theme }) =>
-          decoration !== InputDecorationTypes.Default
-            ? colourProvider(theme, decoration)
-            : colourProvider(theme, 'dark')};
+        color: ${decoration !== InputDecorationTypes.DEFAULT
+          ? colourProvider(theme, decoration)
+          : colourProvider(theme, 'dark')};
       }
 
       ${StyledInput},
-      ${StyledAdornmentWrapper} {
-        border-color: ${({ theme }) =>
-          decoration !== InputDecorationTypes.Default
-            ? colourProvider(theme, decoration)
-            : colourProvider(theme, 'dark')};
-        ${decoration === InputDecorationTypes.ReadOnly &&
-          css`
-            background: transparent;
-            pointer-events: none;
-          `}
+      ${Adornment} {
+        border-color: ${decoration !== InputDecorationTypes.DEFAULT
+          ? colourProvider(theme, decoration)
+          : colourProvider(theme, 'dark')};
+        ${decoration === InputDecorationTypes.READONLY ||
+          (readOnly === true &&
+            css`
+              background: transparent;
+              pointer-events: none;
+            `)}
       }
-      ${StyledAdornmentWrapper} {
-        background-color: ${({ theme }) => colourProvider(theme, decoration)};
+      ${Adornment} {
+        background-color: ${colourProvider(theme, decoration)};
       }
     `
   }}
 `
 
 Input.propTypes = {
-  errors: object,
-  label: string,
-  name: string,
-  onChange: func,
-  placeholder: string,
   adornments: shape({
     startAdornment: node,
     endAdornment: node
   }),
+  errors: object.isRequired,
+  label: string,
+  name: string.isRequired,
+  placeholder: string,
   register: func.isRequired,
   type: oneOf(arrayOfValues(InputTypes))
 }
 
 Input.defaultProps = {
-  type: 'text',
-  size: SIZE.MD,
-  decoration: InputDecorationTypes.Default
+  decoration: 'default',
+  type: InputTypes.TEXT,
+  size: SIZE.MD
 }
