@@ -7,7 +7,7 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { arrayOfValues, SIZE, Text } from 'components'
+import { arrayOfValues, SIZE, Space, Text } from 'components'
 import { COLOUR } from 'components/theme/variables/colour'
 
 export const InputDecorationTypes = {
@@ -67,17 +67,23 @@ export const Input = ({
 }) => {
   return (
     <Wrapper decoration={decoration}>
-      {label && <StyledLabel content={label} />}
+      {label && (
+        <>
+          <Space marginBottom='xs'>
+            <StyledLabel content={label} />
+          </Space>
+        </>
+      )}
       <InputWrapper size={size}>
         {adornments?.startAdornment && (
-          <StyledAdornmentWrapper className='adornment startAdornment' startAdornment size={size}>
+          <StyledAdornmentWrapper startAdornment size={size}>
             {adornments.startAdornment}
           </StyledAdornmentWrapper>
         )}
 
         <StyledInput
           adornments={adornments}
-          className={`simpleInput ${errors[name]?.type}`}
+          required={errors[name]?.type === 'required'}
           message={message}
           name={name}
           placeholder={placeholder}
@@ -89,13 +95,17 @@ export const Input = ({
         />
 
         {adornments?.endAdornment && (
-          <StyledAdornmentWrapper className='adornment endAdornment' size={size}>
-            {adornments.endAdornment}
-          </StyledAdornmentWrapper>
+          <StyledAdornmentWrapper size={size}>{adornments.endAdornment}</StyledAdornmentWrapper>
         )}
       </InputWrapper>
 
-      {message && <StyledMessage className='message'>{message}</StyledMessage>}
+      {message && (
+        <>
+          <Space marginTop='xs'>
+            <StyledMessage>{message}</StyledMessage>
+          </Space>
+        </>
+      )}
     </Wrapper>
   )
 }
@@ -104,11 +114,9 @@ const borderRadius = '0.25rem'
 const StyledLabel = styled(Text)`
   color: ${({ theme }) => colourProvider(theme, 'dark')};
   font-size: 0.75rem;
-  margin-bottom: 0.5rem;
 `
 const StyledMessage = styled(Text)`
   font-size: 0.625rem;
-  margin-top: 0.5rem;
 `
 
 const StyledAdornmentWrapper = styled.div`
@@ -139,31 +147,31 @@ const InputWrapper = styled.div`
       case SIZE.SM:
         return css`
           height: 1.5rem;
-          .adornment {
+          ${StyledAdornmentWrapper} {
             padding: 0.5rem 1rem;
           }
         `
       case SIZE.MD:
         return css`
           height: 1.875rem;
-          ._,
-          .adornment {
+          ._,/* neccessary because commit prehook cant understand switch case in styled component with selector */
+          ${StyledAdornmentWrapper} {
             padding: 0.75rem 1.25rem;
           }
         `
       case SIZE.LG:
         return css`
           height: 2.25rem;
-          .__,
-          .adornment {
+          .__,/* read the upper comment please */
+          ${StyledAdornmentWrapper} {
             padding: 0.875rem 1.625rem;
           }
         `
       default:
         return css`
           height: 1.875rem;
-          .___,
-          .adornment {
+          .___,/* read the upper comment please */
+          ${StyledAdornmentWrapper} {
             padding: 0.75rem 1.25rem;
           }
         `
@@ -209,6 +217,9 @@ const StyledInput = styled.input`
   }
   ${withAdornmentStartStyles}
   ${withEndAdornmentStyles}
+
+  border-left-width: ${({ required }) => required === true && ' 0.5rem'};
+
   outline: none;
 `
 
@@ -216,19 +227,15 @@ const Wrapper = styled.div`
   width: 100%;
   ${({ decoration }) => {
     return css`
-      .message {
+      ${StyledMessage} {
         color: ${({ theme }) =>
           decoration !== InputDecorationTypes.Default
             ? colourProvider(theme, decoration)
             : colourProvider(theme, 'dark')};
       }
-      .simpleInput {
-        &.required {
-          border-left-width: 0.5rem;
-        }
-      }
-      .simpleInput,
-      .adornment {
+
+      ${StyledInput},
+      ${StyledAdornmentWrapper} {
         border-color: ${({ theme }) =>
           decoration !== InputDecorationTypes.Default
             ? colourProvider(theme, decoration)
@@ -239,7 +246,7 @@ const Wrapper = styled.div`
             pointer-events: none;
           `}
       }
-      .adornment {
+      ${StyledAdornmentWrapper} {
         background-color: ${({ theme }) => colourProvider(theme, decoration)};
       }
     `
