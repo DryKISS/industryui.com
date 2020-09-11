@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { ERROR_STYLE, FieldHOC, SIZE } from '../../'
+import { ERROR_STYLE, FieldHOC, inputBorderRadius, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -92,7 +92,7 @@ const StyledSelect = styled.select`
   background-clip: padding-box;
   background-color: #fff;
   border: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  border-radius: 0.25rem;
+  border-radius: ${inputBorderRadius};
   box-sizing: border-box;
   color: ${({ theme }) => theme.COLOUR.dark};
   display: block;

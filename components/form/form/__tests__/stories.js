@@ -118,14 +118,14 @@ const all = ({ ...args }) => {
 
       <Row style={{ background: rowBackground }}>
         <Column md={colMd}>
-          <FormLabel size={args.size} label='Name'>
+          <FormLabel size='md' label='Name'>
             <FormField {...defaultProps} name='name' />
             {errors.name && ErrMessage(errors.name.message)}
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel size={args.size} label='Email'>
+          <FormLabel size='md' label='Email'>
             <FormField {...defaultProps} name='email' placeholder='Enter Email' />
             <Text>We'll never share your email with anyone else.</Text>
             {errors.email && ErrMessage(errors.email.message)}
@@ -243,5 +243,5 @@ AllInputsTemplate.argTypes = {
     control: { type: ControlTypes.Range, min: 2, max: 12 }
   },
 
-  size: { name: 'Title Size', control: { type: ControlTypes.Select, options: sizeArray } }
+  size: { name: 'Input Size', control: { type: ControlTypes.Select, options: sizeArray } }
 }
