@@ -181,7 +181,8 @@ const StyledInput = styled.input.attrs(props => ({
   autoFocus: false
 }))`
   border: 1px solid;
-  border-left-width: ${({ required }) => required === true && ' 0.5rem'};
+  border-left-width: ${({ required, adornments }) =>
+    required === true && !adornments.startAdornment && ' 0.5rem'};
   border-radius: ${inputBorderRadius};
   font-size: 0.75rem;
   height: 100%;

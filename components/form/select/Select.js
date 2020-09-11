@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { ERROR_STYLE, FieldHOC, inputBorderRadius, SIZE } from '../../'
+import { ERROR_STYLE, FieldHOC, inputBorderRadius } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -97,37 +97,17 @@ const StyledSelect = styled.select`
   color: ${({ theme }) => theme.COLOUR.dark};
   display: block;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1;
   padding: 0.375rem 0.75rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
-
+  height: 2.25rem;
   &:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
     color: ${({ theme }) => theme.COLOUR.dark};
     outline: 0;
   }
-  ${({ size }) => {
-    switch (size) {
-      case SIZE.SM:
-        return css`
-          height: 1.5rem;
-        `
-      case SIZE.MD:
-        return css`
-          height: 1.875rem;
-        `
-      case SIZE.LG:
-        return css`
-          height: 2.25rem;
-        `
-      default:
-        return css`
-          height: 2.25rem;
-        `
-    }
-  }}
+
   ${({ errors }) =>
     errors &&
     css`

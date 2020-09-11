@@ -90,6 +90,7 @@ export const StyledInput = styled.input.attrs(props => ({
     css`
       ${props => ERROR_STYLE(props)}
     `}
+
     ${({ size }) => {
       switch (size) {
         case SIZE.SM:
