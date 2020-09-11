@@ -221,7 +221,7 @@ AllInputsTemplate.args = {
     'Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
   backgroundColour: '#F5F5F7',
   ColumnWidth: 6,
-  size: 'md',
+  size: 'lg',
   datePickerValue: ''
 }
 AllInputsTemplate.argTypes = {

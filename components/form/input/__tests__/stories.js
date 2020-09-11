@@ -119,9 +119,7 @@ InputTemplate.argTypes = {
     name: 'Size',
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(SIZE).filter(
-        item => item === SIZE.SM || item === SIZE.MD || item === SIZE.LG
-      )
+      options: [SIZE.SM, SIZE.MD, SIZE.LG]
     }
   },
 

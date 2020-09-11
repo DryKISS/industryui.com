@@ -8,12 +8,12 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const FormError = ({ message, color, ...props }) => {
-  return <StyledSmall color={color}>{message}</StyledSmall>
+export const FormError = ({ message, colour, ...props }) => {
+  return <StyledSmall color={colour}>{message}</StyledSmall>
 }
 
 export const StyledSmall = styled.small`
-  color: ${({ theme, color }) => color ?? theme.COLOUR.error};
+  color: ${({ theme, colour }) => colour ?? theme.COLOUR.error};
   display: block;
   font-size: 80%;
   font-weight: 400;
@@ -22,5 +22,6 @@ export const StyledSmall = styled.small`
 `
 
 FormError.propTypes = {
-  message: string.isRequired
+  message: string.isRequired,
+  colour: string
 }
