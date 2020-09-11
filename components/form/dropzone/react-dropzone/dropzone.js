@@ -121,8 +121,8 @@ const StyledContainer = styled.div`
   ${({ disabled }) =>
     disabled &&
     css`
-      opacity: 0.5;
       cursor: not-allowed;
+      opacity: 0.5;
     `}
 `
 

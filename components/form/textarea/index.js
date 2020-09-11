@@ -86,8 +86,8 @@ const StyledTextarea = styled.textarea`
     disabled &&
     css`
       background: ${theme.COLOUR.light};
-      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
       cursor: not-allowed;
+      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
     `}
 
   ${({ readOnly }) =>
