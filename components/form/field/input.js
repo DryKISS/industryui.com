@@ -59,8 +59,13 @@ export const StyledInput = styled.input.attrs(props => ({
   width: 100%;
 
   &:focus {
-    box-shadow: ${({ readOnly }) => (readOnly ? '0 0 0 0.2rem rgba(0, 123, 255, 0.25)' : 'none')};
-    border-color: ${({ theme, errors }) => (errors ? theme.COLOUR.error : theme.COLOUR.primary)};
+    border-color: ${({ theme, errors, readOnly }) => {
+      if (!readOnly) {
+        return errors ? theme.COLOUR.error : theme.COLOUR.primary
+      } else {
+        return theme ? theme.COLOUR.darkGrey : '#CCCCCC'
+      }
+    }}
   }
 
 
@@ -80,9 +85,9 @@ export const StyledInput = styled.input.attrs(props => ({
     readOnly &&
     css`
       background-color: transparent;
-      border: solid transparent;
-      border-width: 1px 0;
-      padding: 0.5rem 0;
+      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
+      border-width: 1px;
+      padding: 0.5rem;
     `}
 
   ${({ errors, error }) =>

@@ -63,30 +63,40 @@ const StyledTextarea = styled.textarea`
   font-size: 1rem;
   line-height: 2rem;
   padding: 0.5rem;
+  outline:none;
   overflow: auto;
   width: 100%;
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      user-select: none; /* Standard syntax */
-    `}
-
   &:focus {
-    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
-    color: ${({ theme }) => theme.COLOUR.dark};
-    outline: 0;
+    border-color: ${({ theme, errors, readOnly }) => {
+      if (!readOnly) {
+        return errors ? theme.COLOUR.error : theme.COLOUR.primary
+      } else {
+        return theme ? theme.COLOUR.darkGrey : '#CCCCCC'
+      }
+    }}
   }
 
-  ::-webkit-input-placeholder {
-    color: #c0c0c0;
-  }
-  :-ms-input-placeholder {
-    color: #c0c0c0;
-  }
-  :-moz-placeholder {
-    color: #c0c0c0;
+
+  ::placeholder {
+    color:${({ theme }) => (theme ? theme.COLOUR.darkText : '#666666')};
     opacity: 1;
   }
+
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      background: ${theme.COLOUR.light};
+      cursor: not-allowed;
+    `}
+
+  ${({ readOnly }) =>
+    readOnly &&
+    css`
+      background-color: transparent;
+      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
+      border-width: 1px;
+      padding: 0.5rem;
+    `}
 
   ${({ errors }) =>
     errors &&
