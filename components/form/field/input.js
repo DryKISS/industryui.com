@@ -79,6 +79,7 @@ export const StyledInput = styled.input.attrs(props => ({
     css`
       background: ${theme.COLOUR.light};
       cursor: not-allowed;
+      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
     `}
 
   ${({ readOnly }) =>
