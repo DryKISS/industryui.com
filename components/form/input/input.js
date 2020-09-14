@@ -113,6 +113,7 @@ const StyledLabel = styled(Text)`
 `
 const StyledMessage = styled(Text)`
   font-size: 0.625rem;
+  color: ${({ theme, decoration }) => colourProvider(theme, 'disabled')};
 `
 
 const InputWrapper = styled.div`
@@ -207,9 +208,10 @@ const Wrapper = styled.div`
   ${({ decoration, readOnly, theme }) => {
     return css`
       ${StyledMessage} {
-        color: ${decoration !== InputDecorationTypes.DEFAULT
-          ? colourProvider(theme, decoration)
-          : colourProvider(theme, 'dark')};
+        color: ${decoration === InputDecorationTypes.DEFAULT ||
+        decoration === InputDecorationTypes.WARNING
+          ? colourProvider(theme, 'dark')
+          : colourProvider(theme, decoration)};
       }
 
       ${StyledInput},
