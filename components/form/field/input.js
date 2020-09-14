@@ -4,12 +4,12 @@
 
 // React
 import { arrayOf, bool, func, number, oneOf, oneOfType, string, object } from 'prop-types'
-
+import { useState } from 'react'
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
-import { inputBorderRadius, ERROR_STYLE, FieldHOC, SIZE } from '../../'
+import { COMMON_INPUT_STYLE, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 export const FormField = ({
   disabled,
@@ -23,12 +23,21 @@ export const FormField = ({
   validate,
   ...props
 }) => {
+  const [isTyping, setisTyping] = useState(false)
+
   return (
     <FieldHOC
       aria-label={name}
       component={StyledInput}
       disabled={disabled}
+      onKeyDown={e => {
+        setisTyping(true)
+      }}
+      onBlur={() => {
+        setisTyping(false)
+      }}
       errors={errors[name]}
+      isTyping={isTyping}
       register={register}
       key={name}
       name={name}
@@ -44,52 +53,7 @@ export const StyledInput = styled.input.attrs(props => ({
   autoComplete: 'off',
   autoFocus: false
 }))`
-  background-clip: padding-box;
-  background-color: ${({ theme }) => theme.COLOUR.white};
-  border: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  border-radius: ${inputBorderRadius};
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.COLOUR.dark};
-  display: block;
-  font-size: 0.75rem;
-  height: 100%;
-  outline: none;
-  padding: 0 0.625rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  width: 100%;
-
-  &:focus {
-    border-color: ${({ theme, errors, readOnly }) => {
-      if (!readOnly) {
-        return errors ? theme.COLOUR.error : theme.COLOUR.primary
-      } else {
-        return theme ? theme.COLOUR.darkGrey : '#CCCCCC'
-      }
-    }}
-  }
-
-
-  ::placeholder {
-    color:${({ theme }) => (theme ? theme.COLOUR.darkText : '#666666')};
-    opacity: 1;
-  }
-
-  ${({ disabled, theme }) =>
-    disabled &&
-    css`
-      background: ${theme.COLOUR.light};
-      cursor: not-allowed;
-      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
-    `}
-
-  ${({ readOnly }) =>
-    readOnly &&
-    css`
-      background-color: transparent;
-      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
-      border-width: 1px;
-      padding: 0.5rem;
-    `}
+${props => COMMON_INPUT_STYLE(props)}
 
   ${({ errors, error }) =>
     (errors || error) &&
@@ -102,6 +66,7 @@ export const StyledInput = styled.input.attrs(props => ({
         case SIZE.SM:
           return css`
             height: 1.5rem;
+            font-size: 0.625rem;
           `
         case SIZE.MD:
           return css`

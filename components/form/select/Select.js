@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { ERROR_STYLE, FieldHOC, inputBorderRadius } from '../../'
+import { COMMON_INPUT_STYLE, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -89,25 +89,29 @@ export const SelectField = forwardRef(
 )
 
 const StyledSelect = styled.select`
-  background-clip: padding-box;
-  background-color: #fff;
-  border: 1px solid ${({ theme }) => theme.COLOUR.dark};
-  border-radius: ${inputBorderRadius};
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.COLOUR.dark};
-  display: block;
-  font-size: 1rem;
-  line-height: 1;
-  padding: 0.375rem 0.75rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  width: 100%;
-  height: 2.25rem;
-  &:focus {
-    border-color: ${({ theme }) => (theme ? theme.COLOUR.primary : '#245EE5')};
-    color: ${({ theme }) => theme.COLOUR.dark};
-    outline: 0;
-  }
+${props => COMMON_INPUT_STYLE(props)}
 
+  ${({ size }) => {
+    switch (size) {
+      case SIZE.SM:
+        return css`
+          height: 1.5rem;
+          font-size: 0.625rem;
+        `
+      case SIZE.MD:
+        return css`
+          height: 1.875rem;
+        `
+      case SIZE.LG:
+        return css`
+          height: 2.25rem;
+        `
+      default:
+        return css`
+          height: 2.25rem;
+        `
+    }
+  }}
   ${({ errors }) =>
     errors &&
     css`

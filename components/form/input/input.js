@@ -7,15 +7,7 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  Adornment,
-  arrayOfValues,
-  InputDecorationTypes,
-  inputBorderRadius,
-  SIZE,
-  Space,
-  Text
-} from 'components'
+import { Adornment, arrayOfValues, InputDecorationTypes, SIZE, Space, Text } from 'components'
 
 import { COLOUR } from 'components/theme/variables/colour'
 
@@ -184,7 +176,7 @@ const StyledInput = styled.input.attrs(props => ({
   border: 1px solid;
   border-left-width: ${({ required, adornments }) =>
     required === true && !adornments.startAdornment && ' 0.5rem'};
-  border-radius: ${inputBorderRadius};
+  border-radius: 0.25rem;
   font-size: 0.75rem;
   height: 100%;
   outline: none;

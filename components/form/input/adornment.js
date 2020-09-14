@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { inputBorderRadius } from 'components'
 
 export const Adornment = styled.div`
   align-items: center;
@@ -9,13 +8,13 @@ export const Adornment = styled.div`
   ${({ startAdornment }) =>
     startAdornment
       ? css`
-          border-bottom-left-radius: ${inputBorderRadius};
+          border-bottom-left-radius: '0.25rem';
           border-right: none;
-          border-top-left-radius: ${inputBorderRadius};
+          border-top-left-radius: '0.25rem';
         `
       : css`
-          border-bottom-right-radius: ${inputBorderRadius};
+          border-bottom-right-radius: '0.25rem';
           border-left: none;
-          border-top-right-radius: ${inputBorderRadius};
+          border-top-right-radius: '0.25rem';
         `}
 `

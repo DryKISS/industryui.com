@@ -10,9 +10,9 @@ import { any, bool, node, oneOf } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // Context
-import { CONTEXT } from '../../'
+import { CONTEXT, SIZE } from '../../'
 
-export const InputGroupAddon = ({ addonType, className, children, context, error, text }) => {
+export const InputGroupAddon = ({ addonType, className, children, context, error, size, text }) => {
   return (
     <StyledInputGroupAddon
       addonType={addonType}
@@ -20,6 +20,7 @@ export const InputGroupAddon = ({ addonType, className, children, context, error
       children={children}
       context={context}
       error={error}
+      size={size}
       text={text}
     />
   )
@@ -36,18 +37,24 @@ const StyledInputGroupAddon = styled.div`
   ${({ text }) =>
     text &&
     css`
-      background-color: ${({ theme, error }) => (error ? theme.COLOUR.error : theme.COLOUR.grey)};
-      border: 1px solid ${({ theme, error }) => (error ? theme.COLOUR.error : theme.COLOUR.dark)};
+      background-color: ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey)};
+      border: 1px solid ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey80)};
       border-radius: 0.25rem;
-      color: ${({ theme, error }) => (error ? theme.COLOUR.light : theme.COLOUR.dark)};
+      color: ${({ theme, error }) => (error ? theme.COLOUR.light : theme.COLOUR.blackText)};
       display: flex;
-      font-size: 1rem;
+      font-size: 0.75rem;
       font-weight: 400;
       line-height: 1;
       margin-bottom: 0;
       padding: 0.375rem 0.75rem;
       text-align: center;
       white-space: nowrap;
+    `}
+  ${({ size }) =>
+    size === SIZE.SM &&
+    css`
+      font-size: 0.625rem;
+      padding: 0 0.75rem;
     `}
 
   &,

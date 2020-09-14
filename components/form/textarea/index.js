@@ -6,7 +6,7 @@
 import { bool, number, string, object, oneOf } from 'prop-types'
 
 // UI
-import { FieldHOC, ERROR_STYLE } from '../../'
+import { COMMON_INPUT_STYLE, FieldHOC, ERROR_STYLE, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -23,6 +23,7 @@ export const TextareaField = ({
   placeholder,
   readOnly,
   rows,
+  size,
   spellCheck,
   tabIndex,
   wrap,
@@ -42,6 +43,7 @@ export const TextareaField = ({
       readOnly={readOnly}
       rows={rows}
       showError={false}
+      size={size}
       spellcheck={spellCheck}
       tabIndex={tabIndex}
       wrap={wrap}
@@ -51,58 +53,23 @@ export const TextareaField = ({
 }
 
 const StyledTextarea = styled.textarea`
-  background-clip: padding-box;
-  background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
-  border: 1px solid ${props => props.theme.COLOUR.dark};
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  color: ${props => props.theme.COLOUR.dark};
-  cursor: ${({ disabled }) => (disabled ? 'no-drop' : 'auto')};
+  ${props => COMMON_INPUT_STYLE(props)}
+
   direction: ${({ dir }) => dir};
   display: block;
   font-size: 1rem;
   line-height: 2rem;
-  padding: 0.5rem;
-  outline:none;
-  overflow: auto;
-  width: 100%;
-  &:focus {
-    border-color: ${({ theme, errors, readOnly }) => {
-      if (!readOnly) {
-        return errors ? theme.COLOUR.error : theme.COLOUR.primary
-      } else {
-        return theme ? theme.COLOUR.darkGrey : '#CCCCCC'
-      }
-    }}
-  }
-
-
-  ::placeholder {
-    color:${({ theme }) => (theme ? theme.COLOUR.darkText : '#666666')};
-    opacity: 1;
-  }
-
-  ${({ disabled, theme }) =>
-    disabled &&
-    css`
-      background: ${theme.COLOUR.light};
-      cursor: not-allowed;
-      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
-    `}
-
-  ${({ readOnly }) =>
-    readOnly &&
-    css`
-      background-color: transparent;
-      border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
-      border-width: 1px;
-      padding: 0.5rem;
-    `}
 
   ${({ errors }) =>
     errors &&
     css`
       ${props => ERROR_STYLE(props)}
+    `}
+
+  ${({ size }) =>
+    size === SIZE.SM &&
+    css`
+      font-size: 0.625rem;
     `}
 `
 
