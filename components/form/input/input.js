@@ -209,7 +209,8 @@ const Wrapper = styled.div`
     return css`
       ${StyledMessage} {
         color: ${decoration === InputDecorationTypes.DEFAULT ||
-        decoration === InputDecorationTypes.WARNING
+        decoration === InputDecorationTypes.WARNING ||
+        decoration === InputDecorationTypes.READONLY
           ? colourProvider(theme, 'dark')
           : colourProvider(theme, decoration)};
       }
