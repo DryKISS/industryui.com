@@ -3,7 +3,7 @@
  */
 
 // React
-import { arrayOf, bool, func, number, oneOfType, string, object } from 'prop-types'
+import { arrayOf, bool, func, number, oneOf, oneOfType, string, object } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -130,7 +130,7 @@ FormField.propTypes = {
   placeholder: string,
   readOnly: bool,
   register: func.isRequired,
-  size: string,
+  size: oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
   style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
