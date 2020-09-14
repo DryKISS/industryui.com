@@ -29,7 +29,7 @@ import {
   ReactSelectField,
   Row,
   SelectField,
-  sizeArray,
+  SIZE,
   Space,
   Text,
   TextareaField,
@@ -243,5 +243,8 @@ AllInputsTemplate.argTypes = {
     control: { type: ControlTypes.Range, min: 2, max: 12 }
   },
 
-  size: { name: 'Input Size', control: { type: ControlTypes.Select, options: sizeArray } }
+  size: {
+    name: 'Input Size',
+    control: { type: ControlTypes.Select, options: [SIZE.SM, SIZE.MD, SIZE.LG] }
+  }
 }
