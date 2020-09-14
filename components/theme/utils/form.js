@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 export const ERROR_STYLE = ({ theme, isTyping }) => {
-  return `
+  return css`
     border-color: ${theme.COLOUR.danger};
     border-image: initial;
     border-style: solid;
@@ -12,11 +12,11 @@ export const ERROR_STYLE = ({ theme, isTyping }) => {
     ${isTyping === true &&
       css`
         box-shadow: 0px 0px 4px ${theme.COLOUR.fadeRed};
-      `};
+      `}
   `
 }
 export const COMMON_INPUT_STYLE = ({ theme, isTyping, disabled, readOnly, errors }) => {
-  return `
+  return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
     border: 1px solid ${theme.COLOUR.grey80};
@@ -29,7 +29,7 @@ export const COMMON_INPUT_STYLE = ({ theme, isTyping, disabled, readOnly, errors
     ${isTyping === true &&
       css`
         box-shadow: 0px 0px 4px ${theme.COLOUR.fadeBlue};
-      `};
+      `}
 
     outline: none;
     padding: 0 0.625rem;
