@@ -16,7 +16,7 @@ import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
 
 // UI
-import { ERROR_STYLE, SIZE } from '../../'
+import { COMMON_INPUT_STYLES, ERROR_STYLE, SIZE } from '../../'
 
 // Components
 import { defaultStyles, reactSelectDefaultProps, reactSelectPropTypes } from './components'
@@ -69,26 +69,32 @@ export const ReactSelectField = ({
 }
 
 const Wrapper = styled.div`
-  ${({ size }) => {
-    switch (size) {
-      case SIZE.SM:
-        return css`
-          height: 1.5rem;
-        `
-      case SIZE.MD:
-        return css`
-          height: 1.875rem;
-        `
-      case SIZE.LG:
-        return css`
-          height: 2.25rem;
-        `
-      default:
-        return css`
-          height: 2.25rem;
-        `
-    }
-  }}
+  & > div:first-of-type > div:first-of-type {
+    ${props => COMMON_INPUT_STYLES(props)}
+    display:flex;
+    padding: 0;
+    color: ${({ theme }) => theme.COLOUR.blackText};
+    ${({ size }) => {
+      switch (size) {
+        case SIZE.SM:
+          return css`
+            height: 1.5rem;
+          `
+        case SIZE.MD:
+          return css`
+            height: 1.875rem;
+          `
+        case SIZE.LG:
+          return css`
+            height: 2.25rem !important;
+          `
+        default:
+          return css`
+            height: 2.25rem !important;
+          `
+      }
+    }}
+  }
 
   ${({ error }) =>
     error &&

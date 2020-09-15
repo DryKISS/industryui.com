@@ -5,8 +5,7 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
     border-color: ${theme.COLOUR.danger};
     border-image: initial;
     border-style: solid;
-    border-left-width: ${!withAddon && '0.4rem'};
-    border-right-width: 1px;
+    border-left-width: ${!withAddon && '0.25rem'};
     &:hover {
       border-color: ${!isTyping && theme.COLOUR.lightRed};
     }

@@ -23,6 +23,9 @@ export const FormLabel = ({ children, id, label, show, size }) => {
 const StyledLabel = styled.label`
   display: ${({ show }) => (show ? 'block' : 'none')};
   margin-bottom: ${({ hasChild }) => (!hasChild ? '0' : '1rem')};
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
 `
 
 FormLabel.propTypes = {
