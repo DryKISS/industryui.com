@@ -9,6 +9,10 @@ export const ERROR_STYLE = ({ theme, isTyping }) => {
     &:hover {
       border-color: ${!isTyping && theme.COLOUR.lightRed};
     }
+    &:focus {
+      border-color: ${theme.COLOUR.error};
+    }
+
     ${isTyping === true &&
       css`
         box-shadow: 0px 0px 4px ${theme.COLOUR.fadeRed};
@@ -25,7 +29,7 @@ export const COMMON_INPUT_STYLE = ({ theme, isTyping, disabled, readOnly, errors
     color: ${theme.COLOUR.blackText};
     display: block;
     font-size: 0.75rem;
-    height: 100%;
+
     ${isTyping === true &&
       css`
         box-shadow: 0px 0px 4px ${theme.COLOUR.fadeBlue};
