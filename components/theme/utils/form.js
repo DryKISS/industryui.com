@@ -39,7 +39,7 @@ export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Requ
       `}
 
     outline: none;
-    padding: 0 0.625rem;
+    padding: 0 0.725rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     width: 100%;
     &:hover {
