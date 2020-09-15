@@ -127,7 +127,9 @@ const all = ({ ...args }) => {
         <Column md={colMd}>
           <FormLabel size='md' label='Email'>
             <FormField {...defaultProps} name='email' placeholder='Enter Email' />
-            <Text>We'll never share your email with anyone else.</Text>
+            <Text variant='inputMessage' size={SIZE.XS}>
+              We'll never share your email with anyone else.
+            </Text>
             {errors.email && ErrMessage(errors.email.message)}
           </FormLabel>
         </Column>
