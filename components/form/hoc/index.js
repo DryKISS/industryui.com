@@ -7,13 +7,13 @@ import { FormError } from '../'
 
 export const FieldHOC = ({
   component: Component,
+  errors,
   children,
   register,
-  validate,
-  errors,
   required,
   show,
   showError,
+  validate,
   ...props
 }) => (
   <>
@@ -31,6 +31,7 @@ export const FieldHOC = ({
         ...(props.regExp && { pattern: new RegExp(props.regExp) }),
         required: required
       })}
+      required={required}
       style={{
         display: !show ? 'none' : undefined,
         ...props.style

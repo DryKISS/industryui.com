@@ -19,6 +19,7 @@ export const FormField = ({
   readOnly,
   regExp,
   register,
+  required,
   size,
   validate,
   withAddon,
@@ -44,6 +45,7 @@ export const FormField = ({
       name={name}
       placeholder={placeholder}
       readOnly={readOnly}
+      required={required}
       size={size}
       withAddon={withAddon}
       {...props}
