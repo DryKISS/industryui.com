@@ -32,7 +32,7 @@ export const FieldHOC = ({
         ...(props.regExp && { pattern: new RegExp(props.regExp) }),
         required: required
       })}
-      Required={Required}
+      Required={required}
       style={{
         display: !show ? 'none' : undefined,
         ...props.style
