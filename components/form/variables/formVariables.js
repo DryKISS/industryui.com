@@ -1,3 +1,3 @@
 export const FORM_ELEMENTS_STYLES = {
-  borderRadius: '.25rem'
+  inputBorderRadius: '.25rem'
 }
