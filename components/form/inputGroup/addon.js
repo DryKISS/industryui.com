@@ -46,7 +46,7 @@ const StyledInputGroupAddon = styled.div`
       font-weight: 400;
       line-height: 1;
       margin-bottom: 0;
-      padding: 0.375rem 0.75rem;
+      padding: 0.375rem 1.25rem;
       text-align: center;
       white-space: nowrap;
     `}
