@@ -43,6 +43,7 @@ const StyledText = styled.p`
   text-align: ${({ align }) => align};
   color: ${({ colour, context, theme: { COLOUR }, variant }) =>
     variant === 'inputMessage' ? COLOUR.default : colour ? COLOUR[colour] : COLOUR[context]};
+	margin-top:${({ variant }) => variant === 'inputMessage' && '0.25rem'};
   ${({ size }) =>
     size === 'xs' &&
     css`
