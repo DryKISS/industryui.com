@@ -24,7 +24,7 @@ export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Requ
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
     border: 1px solid ${theme.COLOUR.grey80};
-    border-radius: 0.25rem;
+    border-radius: ${theme.FORM_ELEMENTS_STYLES.borderRadius};
     box-sizing: border-box;
     color: ${theme.COLOUR.blackText};
     display: block;
