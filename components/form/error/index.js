@@ -7,9 +7,14 @@ import { string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
+import { SIZE, Space } from 'components'
 
 export const FormError = ({ message, colour, ...props }) => {
-  return <StyledSmall color={colour}>{message}</StyledSmall>
+  return (
+    <Space marginTop={SIZE.XS}>
+      <StyledSmall color={colour}>{message}</StyledSmall>
+    </Space>
+  )
 }
 
 export const StyledSmall = styled.small`
@@ -17,7 +22,6 @@ export const StyledSmall = styled.small`
   display: block;
   font-size: 0.625rem;
   font-weight: 400;
-  margin-top: 0.25rem;
   width: 100%;
 `
 

@@ -4,11 +4,13 @@
 
 // UI
 import { FormError } from '../'
+import { SIZE, Space, Text } from 'components'
 
 export const FieldHOC = ({
   component: Component,
   errors,
   children,
+  helperMessage,
   register,
   required,
   Required,
@@ -41,6 +43,13 @@ export const FieldHOC = ({
     >
       {children}
     </Component>
+    {helperMessage && (
+      <Space marginTop={SIZE.SM} marginBottom={SIZE.XS}>
+        <Text size={SIZE.XS} context='default'>
+          {helperMessage}
+        </Text>
+      </Space>
+    )}
     {showError && <FormError message={errors?.message || ''} />}
   </>
 )

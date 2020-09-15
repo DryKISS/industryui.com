@@ -14,6 +14,7 @@ import { COMMON_INPUT_STYLES, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 export const FormField = ({
   disabled,
   errors,
+  helperMessage,
   name,
   placeholder,
   readOnly,
@@ -31,6 +32,7 @@ export const FormField = ({
       aria-label={name}
       component={StyledInput}
       disabled={disabled}
+      helperMessage={helperMessage}
       onKeyDown={e => {
         setisTyping(true)
       }}
@@ -92,6 +94,7 @@ FormField.propTypes = {
   autoFocus: bool,
   disabled: bool,
   error: func.isRequired,
+  helperMessage: string,
   label: string,
   name: string.isRequired,
   placeholder: string,

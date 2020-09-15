@@ -126,10 +126,12 @@ const all = ({ ...args }) => {
 
         <Column md={colMd}>
           <FormLabel size='md' label='Email'>
-            <FormField {...defaultProps} name='email' placeholder='Enter Email' />
-            <Text variant='inputMessage' size={SIZE.XS}>
-              We'll never share your email with anyone else.
-            </Text>
+            <FormField
+              {...defaultProps}
+              helperMessage={"We'll never share your email with anyone else."}
+              name='email'
+              placeholder='Enter Email'
+            />
             {errors.email && ErrMessage(errors.email.message)}
           </FormLabel>
         </Column>

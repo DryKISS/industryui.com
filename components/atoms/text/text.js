@@ -18,7 +18,6 @@ export const Text = ({
   context,
   stroke,
   size,
-  variant,
   ...props
 }) => {
   return (
@@ -29,7 +28,6 @@ export const Text = ({
       context={context}
       stroke={stroke}
       size={size}
-      variant={variant}
       {...props}
     >
       {content || children}
@@ -41,9 +39,7 @@ const StyledText = styled.p`
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
-  color: ${({ colour, context, theme: { COLOUR }, variant }) =>
-    variant === 'inputMessage' ? COLOUR.default : colour ? COLOUR[colour] : COLOUR[context]};
-	margin-top:${({ variant }) => variant === 'inputMessage' && '0.25rem'};
+  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
   ${({ size }) =>
     size === 'xs' &&
     css`
