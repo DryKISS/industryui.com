@@ -12,7 +12,16 @@ import styled, { css } from 'styled-components'
 // Context
 import { CONTEXT, SIZE } from '../../'
 
-export const InputGroupAddon = ({ addonType, className, children, context, error, size, text }) => {
+export const InputGroupAddon = ({
+  addonType,
+  className,
+  children,
+  context,
+  error,
+  size,
+  text,
+  theme
+}) => {
   return (
     <StyledInputGroupAddon
       addonType={addonType}
@@ -22,6 +31,7 @@ export const InputGroupAddon = ({ addonType, className, children, context, error
       error={error}
       size={size}
       text={text}
+      theme={theme}
     />
   )
 }
@@ -57,6 +67,8 @@ const StyledInputGroupAddon = styled.div`
       font-size: 0.625rem;
       padding: 0 0.75rem;
     `}
+
+
 
   &,
   button {

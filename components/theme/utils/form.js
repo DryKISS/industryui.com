@@ -19,11 +19,12 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
       `}
   `
 }
-export const COMMON_INPUT_STYLES = ({ theme, isTyping, disabled, readOnly, errors }) => {
+export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, theme }) => {
   return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
     border: 1px solid ${theme.COLOUR.grey80};
+
     border-radius: 0.25rem;
     box-sizing: border-box;
     color: ${theme.COLOUR.blackText};
