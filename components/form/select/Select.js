@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { COMMON_INPUT_STYLE, ERROR_STYLE, FieldHOC, SIZE } from '../../'
+import { COMMON_INPUT_STYLES, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -89,7 +89,7 @@ export const SelectField = forwardRef(
 )
 
 const StyledSelect = styled.select`
-${props => COMMON_INPUT_STYLE(props)}
+${props => COMMON_INPUT_STYLES(props)}
 
   ${({ size }) => {
     switch (size) {

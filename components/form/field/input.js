@@ -9,7 +9,7 @@ import { useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { COMMON_INPUT_STYLE, ERROR_STYLE, FieldHOC, SIZE } from '../../'
+import { COMMON_INPUT_STYLES, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 export const FormField = ({
   disabled,
@@ -21,6 +21,7 @@ export const FormField = ({
   register,
   size,
   validate,
+  withAddon,
   ...props
 }) => {
   const [isTyping, setisTyping] = useState(false)
@@ -44,6 +45,7 @@ export const FormField = ({
       placeholder={placeholder}
       readOnly={readOnly}
       size={size}
+      withAddon={withAddon}
       {...props}
     />
   )
@@ -53,7 +55,7 @@ export const StyledInput = styled.input.attrs(props => ({
   autoComplete: 'off',
   autoFocus: false
 }))`
-${props => COMMON_INPUT_STYLE(props)}
+${props => COMMON_INPUT_STYLES(props)}
 
   ${({ errors, error }) =>
     (errors || error) &&

@@ -8,10 +8,10 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const InputGroup = ({ children, size }) => {
-  return <StyledInputGroup children={children} size={size} />
+export const InputGroup = ({ children, error, size, theme }) => {
+  return <StyledInputGroup children={children} error={error} size={size} theme={theme} />
 }
 
 const StyledInputGroup = styled.div`
@@ -37,6 +37,18 @@ const StyledInputGroup = styled.div`
       border-bottom-right-radius: 0;
     }
   }
+  ${({ error, theme }) =>
+    error &&
+    theme &&
+    css`
+      &:hover {
+        .prepend,
+        .append {
+          background: ${theme.COLOUR.lightRed};
+          border-color: ${theme.COLOUR.lightRed};
+        }
+      }
+    `}
 `
 
 InputGroup.propTypes = {

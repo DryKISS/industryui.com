@@ -1,11 +1,11 @@
 import { css } from 'styled-components'
 
-export const ERROR_STYLE = ({ theme, isTyping }) => {
+export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
   return css`
     border-color: ${theme.COLOUR.danger};
     border-image: initial;
     border-style: solid;
-    border-left-width: 0.4rem;
+    border-left-width: ${!withAddon && '0.4rem'};
     &:hover {
       border-color: ${!isTyping && theme.COLOUR.lightRed};
     }
@@ -19,7 +19,7 @@ export const ERROR_STYLE = ({ theme, isTyping }) => {
       `}
   `
 }
-export const COMMON_INPUT_STYLE = ({ theme, isTyping, disabled, readOnly, errors }) => {
+export const COMMON_INPUT_STYLES = ({ theme, isTyping, disabled, readOnly, errors }) => {
   return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};

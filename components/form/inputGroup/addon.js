@@ -38,8 +38,9 @@ const StyledInputGroupAddon = styled.div`
     text &&
     css`
       background-color: ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey)};
-      border: 1px solid ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey80)};
-      border-radius: 0.25rem;
+      border: 1px solid
+        ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.darkGrey)};
+      border-radius: 0.2rem;
       color: ${({ theme, error }) => (error ? theme.COLOUR.light : theme.COLOUR.blackText)};
       display: flex;
       font-size: 0.75rem;

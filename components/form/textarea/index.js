@@ -6,7 +6,7 @@
 import { bool, number, string, object, oneOf } from 'prop-types'
 
 // UI
-import { COMMON_INPUT_STYLE, FieldHOC, ERROR_STYLE, SIZE } from '../../'
+import { COMMON_INPUT_STYLES, FieldHOC, ERROR_STYLE, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -53,7 +53,7 @@ export const TextareaField = ({
 }
 
 const StyledTextarea = styled.textarea`
-  ${props => COMMON_INPUT_STYLE(props)}
+  ${props => COMMON_INPUT_STYLES(props)}
 
   direction: ${({ dir }) => dir};
   display: block;
