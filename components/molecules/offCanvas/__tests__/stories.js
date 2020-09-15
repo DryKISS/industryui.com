@@ -56,6 +56,7 @@ const BaseComponent = props => {
       },
       'right'
     ),
+    submit: boolean('Submit', false),
     title: text('Title', 'Header'),
     transitionDuration: number('Transition duration', 300),
     variant: select(
