@@ -119,7 +119,7 @@ const all = ({ ...args }) => {
       <Row style={{ background: rowBackground }}>
         <Column md={colMd}>
           <FormLabel size='md' label='Name'>
-            <FormField {...defaultProps} required name='name' />
+            <FormField {...defaultProps} Required name='name' />
             {errors.name && ErrMessage(errors.name.message)}
           </FormLabel>
         </Column>

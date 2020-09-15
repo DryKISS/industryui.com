@@ -11,6 +11,7 @@ export const FieldHOC = ({
   children,
   register,
   required,
+  Required,
   show,
   showError,
   validate,
@@ -31,7 +32,7 @@ export const FieldHOC = ({
         ...(props.regExp && { pattern: new RegExp(props.regExp) }),
         required: required
       })}
-      required={required}
+      Required={Required}
       style={{
         display: !show ? 'none' : undefined,
         ...props.style
