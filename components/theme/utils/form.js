@@ -6,6 +6,7 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
     border-image: initial;
     border-style: solid;
     border-left-width: ${!withAddon && '0.4rem'};
+    border-right-width: 1px;
     &:hover {
       border-color: ${!isTyping && theme.COLOUR.lightRed};
     }
@@ -19,18 +20,20 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
       `}
   `
 }
-export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, theme }) => {
+export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Required, theme }) => {
   return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
     border: 1px solid ${theme.COLOUR.grey80};
-
     border-radius: 0.25rem;
     box-sizing: border-box;
     color: ${theme.COLOUR.blackText};
     display: block;
     font-size: 0.75rem;
-
+    ${Required &&
+      css`
+        border-right-width: 0.25rem;
+      `}
     ${isTyping === true &&
       css`
         box-shadow: 0px 0px 4px ${theme.COLOUR.fadeBlue};
