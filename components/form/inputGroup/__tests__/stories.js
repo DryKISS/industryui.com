@@ -33,9 +33,9 @@ const BaseComponent = (props = {}) => {
 }
 
 const Input = () => {
-  const { register } = useForm()
+  const { register, errors } = useForm()
 
-  return <FormField name='id' placeholder='Search...' register={register} />
+  return <FormField errors={errors} name='id' placeholder='Search...' register={register} />
 }
 
 export const prependButton = () => {
