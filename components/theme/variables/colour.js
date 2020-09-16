@@ -1,5 +1,5 @@
 /**
- * Theme - Variables - Colour
+ * Theme - Variables - COLOUR
  */
 export const COLOUR = {
   active: 'rgb(204 ,0, 0)',

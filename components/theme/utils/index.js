@@ -5,6 +5,7 @@
  */
 export * from './background'
 export * from './colour'
+export * from './colourList'
 export * from './dimension'
 export * from './display'
 export * from './fontSize'
