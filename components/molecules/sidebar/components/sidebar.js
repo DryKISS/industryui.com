@@ -4,7 +4,7 @@
 
 // React
 import React, { useState } from 'react'
-import { array, string } from 'prop-types'
+import { array, string, object } from 'prop-types'
 
 // UI
 import { Image, Icon, Link, List } from '../../../'
@@ -27,7 +27,7 @@ export const Sidebar = ({ brand, data, styles }) => {
 
     return (
       <Link to={to} passHref>
-        <StyledLink styles={styles}>
+        <StyledLink styles={styles} isCollapsed={isCollapsed}>
           {icon && (
             <Icon
               icon={icon ? (iconArray ? icon[1] : icon) : null}
@@ -41,7 +41,7 @@ export const Sidebar = ({ brand, data, styles }) => {
   }
 
   return (
-    <StyledAside>
+    <StyledAside isCollapsed={isCollapsed}>
       <StyledBrand>
         <Image alt='Logo' src={brand} />
       </StyledBrand>
@@ -102,6 +102,7 @@ export const Sidebar = ({ brand, data, styles }) => {
 }
 
 const StyledAside = styled.aside`
+  width: ${({ isCollapsed }) => (isCollapsed ? '7em' : '20em')};
   background-color: ${({ theme }) => theme.SIDEBAR.background};
   border-right: 1px solid ${({ theme }) => theme.SIDEBAR.highlight};
   box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, 0.75);
@@ -112,7 +113,6 @@ const StyledAside = styled.aside`
   /* We will have to play later with fixed or the parent */
   position: sticky;
   top: 0;
-  width: 16.66667%;
 `
 
 const StyledBrand = styled.div`
@@ -130,7 +130,6 @@ const StyledDivider = styled(Divider)`
 const StyledLi = styled(ListItem)`
   cursor: pointer;
   padding: 0;
-
   svg {
     margin-right: 0.5rem;
   }
@@ -152,11 +151,13 @@ const StyledLink = styled.span`
     styles?.linkColor ? styles.linkColor : theme.SIDEBAR.linkColour};
   display: block;
   display: flex;
-  justify-content: ${({ styles }) => (styles?.justifyContent ? styles.justifyContent : 'start')};
+  justify-content: ${({ styles, isCollapsed }) =>
+    styles?.justifyContent ? styles.justifyContent : isCollapsed ? 'center' : 'start'};
   padding: 1rem 1.5rem;
 `
 
 Sidebar.propTypes = {
   brand: string,
-  data: array.isRequired
+  data: array.isRequired,
+  styles: object
 }

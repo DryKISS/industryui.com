@@ -45,7 +45,7 @@ const BaseComponent = (props = {}) => {
 export const main = args => {
   console.log('El color ', args.backgroundColor, 'rgba(50, 115, 220, 0.3)')
   return (
-    <div style={{ display: 'flex', flex: 1, width: '1000px' }}>
+    <div style={{ display: 'flex', flex: 1 }}>
       <BaseComponent />
       <div style={{ display: 'flex', flex: 1, backgroundColor: args.backgroundColor }}>
         <p>Content</p>
