@@ -3,13 +3,15 @@
  */
 
 // React
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Storybook
 import { Wrapper } from 'decorators'
 
 // UI
 import { Sidebar } from '../'
+import { ConfigContext } from 'components'
+
 import Readme from '../README.md'
 
 // Data
@@ -30,10 +32,12 @@ export default {
 }
 
 export const main = args => {
+  const { Brand } = useContext(ConfigContext)
+
   console.log('El color ', args.backgroundColor, 'rgba(50, 115, 220, 0.3)')
   return (
     <div style={{ display: 'flex', flex: 1, width: '1000px' }}>
-      <Sidebar data={Data} />
+      <Sidebar data={Data} brand={Brand.logo} />
       <div style={{ display: 'flex', flex: 1, backgroundColor: args.backgroundColor }}>
         <p>Content</p>
       </div>

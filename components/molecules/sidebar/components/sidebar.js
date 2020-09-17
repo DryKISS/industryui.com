@@ -14,6 +14,7 @@ import { ListItem } from '../../../atoms/list/components/listItem'
 import styled, { css } from 'styled-components'
 
 export const Sidebar = ({ brand, data }) => {
+  console.log('logo ', brand)
   const link = (icon, name, to) => {
     const iconArray = Array.isArray(icon)
 
