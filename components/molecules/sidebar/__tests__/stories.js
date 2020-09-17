@@ -29,11 +29,17 @@ export default {
   }
 }
 
-export const main = () => (
-  <div style={{ display: 'flex', flex: 1, width: '1000px' }}>
-    <Sidebar data={Data} />
-    <div style={{ display: 'flex', flex: 1, backgroundColor: 'grey' }}>
-      <p>Content</p>
+export const main = args => {
+  console.log('El color ', args.backgroundColor, 'rgba(50, 115, 220, 0.3)')
+  return (
+    <div style={{ display: 'flex', flex: 1, width: '1000px' }}>
+      <Sidebar data={Data} />
+      <div style={{ display: 'flex', flex: 1, backgroundColor: args.backgroundColor }}>
+        <p>Content</p>
+      </div>
     </div>
-  </div>
-)
+  )
+}
+main.args = {
+  backgroundColor: 'grey'
+}
