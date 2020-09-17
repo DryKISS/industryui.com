@@ -3,6 +3,7 @@
  */
 
 // React
+import React, { useState } from 'react'
 import { array, string } from 'prop-types'
 
 // UI
@@ -14,7 +15,13 @@ import { ListItem } from '../../../atoms/list/components/listItem'
 import styled, { css } from 'styled-components'
 
 export const Sidebar = ({ brand, data, styles }) => {
-  console.log('logo ', brand)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+
+  const handleCollapse = () => {
+    console.log('is collapsed')
+    setIsCollapsed(!isCollapsed)
+  }
+
   const link = (icon, name, to) => {
     const iconArray = Array.isArray(icon)
 
@@ -27,7 +34,7 @@ export const Sidebar = ({ brand, data, styles }) => {
               prefix={icon && iconArray && icon[0]}
             />
           )}
-          {name}
+          {!isCollapsed && <span>{name}</span>}
         </StyledLink>
       </Link>
     )
@@ -38,10 +45,43 @@ export const Sidebar = ({ brand, data, styles }) => {
       <StyledBrand>
         <Image alt='Logo' src={brand} />
       </StyledBrand>
-
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <p
+          style={{
+            color: 'white',
+            backgroundColor: 'grey',
+            paddingLeft: '10px',
+            paddingRight: '10px'
+          }}
+          onClick={handleCollapse}
+        >
+          Coll
+        </p>
+      </div>
+      {/* Will have to refactorize this */}
+      {data.title && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          <p
+            style={{
+              color: 'white'
+            }}
+          >
+            {data.title}
+          </p>
+        </div>
+      )}
       <List group>
-        {data.map(({ Component, divider, icon, name, to }, index) => {
-          console.log('Divider ', divider)
+        {data.items.map(({ Component, divider, icon, name, to }, index) => {
           return (
             <StyledLi key={index}>
               {divider ? (
