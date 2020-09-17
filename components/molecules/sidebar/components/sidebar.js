@@ -13,14 +13,14 @@ import { ListItem } from '../../../atoms/list/components/listItem'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Sidebar = ({ brand, data }) => {
+export const Sidebar = ({ brand, data, styles }) => {
   console.log('logo ', brand)
   const link = (icon, name, to) => {
     const iconArray = Array.isArray(icon)
 
     return (
       <Link to={to} passHref>
-        <StyledLink>
+        <StyledLink styles={styles}>
           {icon && (
             <Icon
               icon={icon ? (iconArray ? icon[1] : icon) : null}
@@ -108,10 +108,11 @@ const StyledLi = styled(ListItem)`
 `
 
 const StyledLink = styled.span`
-  color: ${({ theme }) => theme.SIDEBAR.linkColour};
+  color: ${({ theme, styles }) =>
+    styles?.linkColor ? styles.linkColor : theme.SIDEBAR.linkColour};
   display: block;
   display: flex;
-  justify-content: center;
+  justify-content: ${({ styles }) => (styles?.justifyContent ? styles.justifyContent : 'start')};
   padding: 1rem 1.5rem;
 `
 

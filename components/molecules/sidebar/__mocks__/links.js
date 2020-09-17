@@ -4,22 +4,26 @@
 export const Sidebar = [
   {
     name: 'Dashboard',
-    to: '/dashboard'
+    to: '/dashboard',
+    icon: ['fas', 'cloud']
   },
   {
     name: 'Profile',
-    to: '/dashboard/profile'
+    to: '/dashboard/profile',
+    icon: ['fas', 'cloud']
   },
   {
     name: 'Calendar',
-    to: '/dashboard/calendar'
+    to: '/dashboard/calendar',
+    icon: ['fas', 'cloud']
   },
   {
     name: 'Messages',
-    to: '/dashboard/messages'
+    to: '/dashboard/messages',
+    icon: ['fas', 'cloud']
   },
   {
-    icon: ['far', 'bell'],
+    icon: ['fas', 'cloud'],
     name: 'Notifications',
     to: '/dashboard/notifications'
   }
