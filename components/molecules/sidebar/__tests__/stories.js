@@ -23,7 +23,17 @@ export default {
     readme: {
       sidebar: Readme
     }
+  },
+  argTypes: {
+    backgroundColor: { control: 'color' }
   }
 }
 
-export const main = () => <Sidebar data={Data} />
+export const main = () => (
+  <div style={{ display: 'flex', flex: 1, width: '1000px' }}>
+    <Sidebar data={Data} />
+    <div style={{ display: 'flex', flex: 1, backgroundColor: 'grey' }}>
+      <p>Content</p>
+    </div>
+  </div>
+)

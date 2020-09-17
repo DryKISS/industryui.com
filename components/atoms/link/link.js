@@ -49,6 +49,7 @@ export const Link = ({
 }
 
 export const StyledLink = styled.a`
+  width: 100%;
   background-color: transparent;
   border-bottom: ${({ border, context, theme }) =>
     border && `2px solid ${shadeLinearRgb(0.88, theme.COLOUR[context] || theme.LINK.colour)}`};

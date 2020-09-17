@@ -67,7 +67,8 @@ const StyledAside = styled.aside`
   left: 0;
   overflow: hidden;
   padding: 1rem 0;
-  position: fixed;
+  /* We will have to play later with fixed or the parent */
+  position: sticky;
   top: 0;
   width: 16.66667%;
 `
@@ -106,6 +107,8 @@ const StyledLi = styled(ListItem)`
 const StyledLink = styled.span`
   color: ${({ theme }) => theme.SIDEBAR.linkColour};
   display: block;
+  display: flex;
+  justify-content: center;
   padding: 1rem 1.5rem;
 `
 
