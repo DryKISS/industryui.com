@@ -7,18 +7,12 @@ export const Sidebar = [
     to: '/dashboard'
   },
   {
-    divider: true
-  },
-  {
     name: 'Profile',
     to: '/dashboard/profile'
   },
   {
     name: 'Calendar',
     to: '/dashboard/calendar'
-  },
-  {
-    divider: true
   },
   {
     name: 'Messages',

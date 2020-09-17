@@ -41,6 +41,7 @@ export const Sidebar = ({ brand, data }) => {
 
       <List group>
         {data.map(({ Component, divider, icon, name, to }, index) => {
+          console.log('Divider ', divider)
           return (
             <StyledLi key={index}>
               {divider ? (
@@ -83,6 +84,7 @@ const StyledBrand = styled.div`
 const StyledDivider = styled(Divider)`
   border-top-width: 1px;
   opacity: 0.2;
+  cursor: none;
 `
 
 const StyledLi = styled(ListItem)`

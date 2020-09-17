@@ -31,13 +31,22 @@ export default {
   }
 }
 
-export const main = args => {
+const BaseComponent = (props = {}) => {
   const { Brand } = useContext(ConfigContext)
 
+  const defaultProps = {
+    brand: Brand.logo,
+    data: Data,
+    ...props
+  }
+
+  return <Sidebar {...defaultProps} />
+}
+export const main = args => {
   console.log('El color ', args.backgroundColor, 'rgba(50, 115, 220, 0.3)')
   return (
     <div style={{ display: 'flex', flex: 1, width: '1000px' }}>
-      <Sidebar data={Data} brand={Brand.logo} />
+      <BaseComponent />
       <div style={{ display: 'flex', flex: 1, backgroundColor: args.backgroundColor }}>
         <p>Content</p>
       </div>
