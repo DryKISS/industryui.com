@@ -8,12 +8,22 @@ import React from 'react'
 // Storybook
 import { Wrapper } from 'decorators'
 
-// Reach Hook Form
-import { useForm } from 'react-hook-form'
+// Yup
 import { object, string } from 'yup'
 
 // UI
-import { Button, FormForm, FormLabel, SelectField, SelectCountryField } from 'components'
+import {
+  Button,
+  Form,
+  FormError,
+  FormLabel,
+  SelectField,
+  SelectCountryField,
+  Text,
+  useForm,
+  yupResolver
+} from 'components'
+
 import Readme from '../README.md'
 import { COLOURS, EXPENSES } from '../__mocks__/select'
 
@@ -33,7 +43,7 @@ const BaseComponent = (props = {}) => {
     select: string().required()
   })
 
-  const { errors, getValues, handleSubmit, register } = useForm({ validationSchema: schema })
+  const { errors, getValues, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = data => {}
 
@@ -51,7 +61,7 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Select'>
         {!props.country && <SelectField {...defaultProps} />}
         {props.country && <SelectCountryField {...defaultProps} />}
@@ -59,9 +69,9 @@ const BaseComponent = (props = {}) => {
 
       <Button content='Submit' type='submit' />
 
-      {getValues() && <p>{getValues().select}</p>}
-      {errors.select && errors.select.message}
-    </FormForm>
+      {getValues() && <Text>{getValues().select}</Text>}
+      {errors.select && <FormError message={errors.select.message} />}
+    </Form>
   )
 }
 

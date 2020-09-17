@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { Wrapper } from 'decorators'
-// import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
+// import { text, boolean, number } from '@storybook/addon-knobs'
 
 // UI
 import { Heading, Hero, Image } from 'components'

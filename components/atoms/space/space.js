@@ -173,7 +173,67 @@ const StyledSpace = styled.div`
         margin-bottom: 2rem;
 
         ${MEDIA_QUERY.desktop`
-          margin-bottom: calc(2rem * 2);
+          margin-top: calc(2rem * 2);
+        `}
+      `}
+    /* marginTop */
+    ${({ marginTop }) =>
+      marginTop === 'xs' &&
+      css`
+        margin-top: 0.25rem;
+
+        ${MEDIA_QUERY.desktop`
+          margin-top: calc(0.25rem * 2);
+        `}
+      `}
+
+    ${({ marginTop }) =>
+      marginTop === 'sm' &&
+      css`
+        margin-top: 0.5rem;
+
+        ${MEDIA_QUERY.desktop`
+          margin-top: calc(0.5rem * 2);
+        `}
+      `}
+
+    ${({ marginTop }) =>
+      marginTop === 'md' &&
+      css`
+        margin-top: 0.75rem;
+
+        ${MEDIA_QUERY.desktop`
+          margin-top: calc(0.75rem * 2);
+        `}
+      `}
+
+    ${({ marginTop }) =>
+      marginTop === 'lg' &&
+      css`
+        margin-top: 1rem;
+
+        ${MEDIA_QUERY.desktop`
+          margin-top: calc(1rem * 2);
+        `}
+      `}
+
+    ${({ marginTop }) =>
+      marginTop === 'xl' &&
+      css`
+        margin-top: 1.5rem;
+
+        ${MEDIA_QUERY.desktop`
+          margin-top: calc(1.5rem * 2);
+        `}
+      `}
+
+    ${({ marginTop }) =>
+      marginTop === 'xxl' &&
+      css`
+        margin-top: 2rem;
+
+        ${MEDIA_QUERY.desktop`
+          margin-top: calc(2rem * 2);
         `}
       `}
 

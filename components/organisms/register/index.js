@@ -5,19 +5,19 @@
 // React
 import React, { useContext, useState, useEffect } from 'react'
 import { any, bool, func, string } from 'prop-types'
-import { useForm } from 'react-hook-form'
 
 // UI
 import {
   Alert,
   Button,
-  Checkbox,
+  CheckboxField,
   DatePickerInput,
+  Form,
   FormLabel,
   FormField,
-  FormForm,
   Link,
-  UserContext
+  UserContext,
+  useForm
 } from '../../'
 
 // Style
@@ -26,10 +26,9 @@ import styled from 'styled-components'
 export const Register = ({
   birthday,
   change,
-  submit,
   dayBirthday,
   email,
-  showPlaceholder,
+  errorSubmit,
   monthBirthday,
   marketing,
   nameFirst,
@@ -37,9 +36,10 @@ export const Register = ({
   pathLogin,
   password,
   repeatPassword,
+  showPlaceholder,
+  submit,
   terms,
-  yearBirthday,
-  errorSubmit
+  yearBirthday
 }) => {
   const renderBirthday = () => (
     <>
@@ -55,7 +55,6 @@ export const Register = ({
     </>
   )
 
-  // const isInvalid = password === '' || email === ''
   const { registerContext } = useContext(UserContext)
   const { errors, register, formState, handleSubmit } = useForm({ mode: 'onChange' })
 
@@ -71,6 +70,7 @@ export const Register = ({
       setError()
     }
   }, [errorSubmit])
+
   const onSubmit = e => {
     // We get the check of password and repeatpassword from backend? or if not we can manage it here too
     setPasswordError()
@@ -95,69 +95,77 @@ export const Register = ({
     {
       id: 'terms',
       label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.',
-      required: true,
-      isChecked: terms
+      required: true
     },
     {
       id: 'marketing',
       label:
-        'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.',
-      isChecked: marketing
+        'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.'
     }
   ]
+
+  const defaultOptions = {
+    errors: errors,
+    register: register
+  }
+
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+
       <FormLabel label='First name'>
         <FormField
+          {...defaultOptions}
           autoFocus
-          errors={errors}
           name='nameFirst'
           placeholder={showPlaceholder ? 'Tommy' : ''}
-          register={register}
         />
       </FormLabel>
+
       <FormLabel label='Last name'>
         <FormField
-          errors={errors}
+          {...defaultOptions}
           name='nameLast'
           placeholder={showPlaceholder ? 'Ryder' : ''}
-          register={register}
         />
       </FormLabel>
+
       <FormLabel label='Email'>
         <FormField
+          {...defaultOptions}
           autoFocus
-          errors={errors}
           name='email'
           placeholder={showPlaceholder ? 'Email' : ''}
           regExp={pattern}
-          register={register}
         />
       </FormLabel>
+
       <FormLabel label='Password'>
         <FormField
-          errors={errors}
+          {...defaultOptions}
           name='password'
           placeholder={showPlaceholder ? 'Password' : ''}
-          register={register}
           type='password'
         />
       </FormLabel>
+
       <FormLabel label='Repeat Password'>
         <FormField
-          errors={errors}
+          {...defaultOptions}
           name='repeatPassword'
           placeholder={showPlaceholder ? 'Password' : ''}
-          register={register}
           type='password'
         />
       </FormLabel>
+
       {birthday && renderBirthday()}
+
       {passwordError && (
         <Alert content={passwordError.message} context='warning' style={{ color: '#fff' }} />
       )}
-      <Checkbox data={CHECKBOX_TERMS} change={change} stacked />
+
+      <CheckboxField {...defaultOptions} data={CHECKBOX_TERMS} stacked />
+
       <Button
         align='right'
         content='Sign up'
@@ -166,10 +174,11 @@ export const Register = ({
         disabled={!formState.isValid}
         type='submit'
       />
+
       <StyledLink>
         Already have an account? <Link to={pathLogin}>Log in</Link>
       </StyledLink>
-    </FormForm>
+    </Form>
   )
 }
 

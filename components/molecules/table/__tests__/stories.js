@@ -3,7 +3,7 @@
  */
 
 // Storybook
-import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
+import { boolean, number, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -26,7 +26,7 @@ const dataContext = rowsContext.data
 export default {
   title: 'Molecules/Table',
   component: Table,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

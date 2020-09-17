@@ -5,14 +5,18 @@
 // React
 import React, { forwardRef } from 'react'
 
+// React Hook Form
+import { Controller } from 'react-hook-form'
+
 // Style
 import styled, { css } from 'styled-components'
-
-import { Controller } from 'react-hook-form'
 
 // React Select
 import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
+
+// UI
+import { COMMON_INPUT_STYLES, ERROR_STYLE, SIZE } from '../../'
 
 // Components
 import { defaultStyles, reactSelectDefaultProps, reactSelectPropTypes } from './components'
@@ -26,37 +30,38 @@ export const ReactSelectField = ({
   error,
   errors,
   loadOptions,
-  required,
   name,
   options,
+  required,
   selectedOption,
-  ...props
+  size,
+  ...parentProps
 }) => {
   const Component = forwardRef((data, ref) => {
-    return async ? (
-      <AsyncSelect
-        defaultOptions={defaultOptions}
-        loadOptions={loadOptions}
-        cacheOptions={cacheOptions}
-        ref={ref}
-        {...data}
-      />
-    ) : (
-      <Select ref={ref} {...data} />
-    )
+    if (async) {
+      return (
+        <AsyncSelect
+          cacheOptions={cacheOptions}
+          defaultOptions={defaultOptions}
+          loadOptions={loadOptions}
+          ref={ref}
+          {...data}
+        />
+      )
+    } else {
+      return <Select ref={ref} {...data} />
+    }
   })
 
   return (
-    <Wrapper error={error || errors[name]}>
+    <Wrapper size={size} error={error || errors[name]}>
       <Controller
-        as={<Component options={options} selectedOption={selectedOption} {...props} />}
+        render={props => (
+          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
+        )}
         control={control}
         defaultValue={defaultValue}
         name={name}
-        onChange={([selected]) => {
-          props.onChange && props.onChange(selected)
-          return selected
-        }}
         rules={{ required }}
       />
     </Wrapper>
@@ -64,15 +69,38 @@ export const ReactSelectField = ({
 }
 
 const Wrapper = styled.div`
+  & > div:first-of-type > div:first-of-type {
+    ${props => COMMON_INPUT_STYLES(props)}
+    display:flex;
+    padding: 0;
+    color: ${({ theme }) => theme.COLOUR.blackText};
+    ${({ size }) => {
+      switch (size) {
+        case SIZE.SM:
+          return css`
+            height: 1.5rem;
+          `
+        case SIZE.MD:
+          return css`
+            height: 1.875rem;
+          `
+        case SIZE.LG:
+          return css`
+            height: 2.25rem !important;
+          `
+        default:
+          return css`
+            height: 2.25rem !important;
+          `
+      }
+    }}
+  }
+
   ${({ error }) =>
     error &&
     css`
       [class*='control'] {
-        background: rgb(251, 236, 242);
-        border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
-        border-image: initial;
-        border-style: solid;
-        border-width: 1px 1px 1px 10px;
+        ${props => ERROR_STYLE(props)}
       }
     `}
 `

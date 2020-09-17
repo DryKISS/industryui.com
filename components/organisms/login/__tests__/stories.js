@@ -6,19 +6,17 @@
 import React, { useState } from 'react'
 
 // Storybook
-import { withKnobs, select } from '@storybook/addon-knobs'
+import { select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Login, requestSimulator, useForm } from '../../../'
-import { Alert } from 'index'
-
+import { Alert, Login, requestSimulator, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Organisms/Login',
   component: Login,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -56,7 +54,6 @@ const BaseComponent = (props = {}) => {
   return (
     <>
       {loggedToast && <Alert content='logged' context='success' style={{ color: '#fff' }} />}
-
       <Login {...defaultProps} />
     </>
   )

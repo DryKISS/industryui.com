@@ -6,11 +6,8 @@
 import React from 'react'
 import { func, string } from 'prop-types'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Column, FormForm, Row, Search, Select } from '../../../'
+import { Column, Form, Row, Search, SelectField, useForm } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -31,7 +28,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
 
   return (
     <StyledContainer>
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Column md={6}>
             <StyledSearch
@@ -46,7 +43,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
             <StyledSelect change={onFilter} id='messagingFilter' options={Items} />
           </Column>
         </Row>
-      </FormForm>
+      </Form>
     </StyledContainer>
   )
 }
@@ -61,7 +58,7 @@ const StyledSearch = styled(Search)`
   width: 75%;
 `
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(SelectField)`
   width: 75%;
   label {
     margin: 0;

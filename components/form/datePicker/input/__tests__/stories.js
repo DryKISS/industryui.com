@@ -6,21 +6,20 @@
 import React from 'react'
 
 // Storybook
-import { boolean, withKnobs } from '@storybook/addon-knobs'
+import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Yup
 import { object, string } from 'yup'
 
 // UI
-import { Button, DatePickerInput, Divider, FormForm } from 'components'
+import { Button, DatePickerInput, Divider, Form, Text, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Date Picker/Input',
   component: DatePickerInput,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -37,7 +36,7 @@ const BaseComponent = (props = {}) => {
 
   const { errors, getValues, handleSubmit, register } = useForm({
     defaultValues: { dayPicker: 10 },
-    validationSchema: schema
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = data => {}
@@ -58,27 +57,27 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerInput {...defaultProps} />
 
       <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
 
-      <p>
+      <Text>
         {getValues() && getValues().yearPicker}
         {'-'}
         {getValues() && getValues().monthPicker}
         {'-'}
         {getValues() && getValues().dayPicker}
-      </p>
+      </Text>
 
       {errors.dayPicker && errors.dayPicker.message}
       <br />
       {errors.monthPicker && errors.monthPicker.message}
       <br />
       {errors.yearPicker && errors.yearPicker.message}
-    </FormForm>
+    </Form>
   )
 }
 

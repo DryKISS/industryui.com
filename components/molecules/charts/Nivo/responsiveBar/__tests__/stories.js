@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { select, text, withKnobs, number, boolean } from '@storybook/addon-knobs'
+import { select, text, number, boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // Nivo
@@ -35,7 +35,7 @@ import styled from 'styled-components'
 export default {
   title: 'Molecules/Charts/Nivo/Bar',
   component: BarChart,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

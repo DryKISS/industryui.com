@@ -6,11 +6,9 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Yup
 import { object, string } from 'yup'
 
 // Date utility
@@ -21,14 +19,24 @@ import setMinutes from 'date-fns/setMinutes'
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { Button, DatePickerCalendar, Divider, FormForm, FormError } from 'components'
+import {
+  Button,
+  DatePickerCalendar,
+  Divider,
+  Form,
+  FormError,
+  Text,
+  useForm,
+  yupResolver
+} from 'components'
+
 import Readme from '../README.md'
 import { KNOBS } from './knobs'
 
 export default {
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -42,7 +50,7 @@ const BaseComponent = (props = {}) => {
   })
 
   const { control, errors, getValues, handleSubmit } = useForm({
-    validationSchema: schema
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = data => {}
@@ -61,22 +69,22 @@ const BaseComponent = (props = {}) => {
   const value = getValues()?.expiryAt?.toString()
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerCalendar {...defaultProps} />
 
       <Divider size='sm' />
 
       <Button content='Submit' type='submit' />
 
-      <p>{value}</p>
+      <Text>{value}</Text>
 
       <FormError message={errors?.expiryAt?.message || ''} />
-    </FormForm>
+    </Form>
   )
 }
 
 export const main = () => <BaseComponent />
-export const defaultValue = () => <BaseComponent defaultValue={new Date('2017-10-11')} />
+export const defaultValue = () => <BaseComponent defaultValue={addDays(new Date(), 5)} />
 export const time = () => <BaseComponent dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
 
 export const workingHours = () => {
@@ -85,10 +93,7 @@ export const workingHours = () => {
     return day !== 0 && day !== 6
   }
 
-  const holidays = [
-    new Date(2020, 11, 25), // Christmas
-    addDays(new Date(2020, 11, 25), 1) // Boxing Day
-  ]
+  const holidays = [new Date(2020, 11, 25), addDays(new Date(2020, 11, 25), 1)]
 
   const freeDays = [
     new Date(2020, 10, 27),
@@ -107,7 +112,7 @@ export const workingHours = () => {
 
   return (
     <>
-      <p>Our Schedule: 9:30AM - 6:30PM, Monday - Friday</p>
+      <Text>Our Schedule: 9:30AM - 6:30PM, Monday - Friday</Text>
 
       <BaseComponent
         excludeDates={holidays}
@@ -125,7 +130,7 @@ export const workingHours = () => {
         renderDayContents={renderDayContents}
         showTimeSelect
       >
-        <p style={{ color: '#3dcc4a' }}>*50% Discount</p>
+        <Text>*50% Discount</Text>
       </BaseComponent>
     </>
   )
