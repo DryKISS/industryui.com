@@ -10,11 +10,13 @@ import { array, string, object } from 'prop-types'
 import { Image, Icon, Link, List } from '../../../'
 import { Divider } from '../../../atoms/divider/divider'
 import { ListItem } from '../../../atoms/list/components/listItem'
+import { Avatar } from 'components'
+import { Context, Size } from 'decorators'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Sidebar = ({ brand, data, styles }) => {
+export const Sidebar = ({ brand, data, srcAvatar, styles }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const handleCollapse = () => {
@@ -97,12 +99,24 @@ export const Sidebar = ({ brand, data, styles }) => {
           )
         })}
       </List>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '30px'
+          /* This would be the better approach but it seems in storybook is going out of the "wrapper" */
+          /*  alignItems: 'flex-end',
+          height: '100%' */
+        }}
+      >
+        <Avatar content='Avatar' src={srcAvatar} context={Context()} size={Size()} />
+      </div>
     </StyledAside>
   )
 }
 
 const StyledAside = styled.aside`
-  width: ${({ isCollapsed }) => (isCollapsed ? '7em' : '20em')};
+  width: ${({ isCollapsed }) => (isCollapsed ? '7em' : '12em')};
   background-color: ${({ theme }) => theme.SIDEBAR.background};
   border-right: 1px solid ${({ theme }) => theme.SIDEBAR.highlight};
   box-shadow: 0 0 4rem -1rem rgba(0, 0, 0, 0.75);
@@ -142,6 +156,15 @@ const StyledLi = styled(ListItem)`
       a {
         color: ${theme.SIDEBAR.highlight};
       }
+    `}
+  }
+   {
+    /** Need to set the active  */
+  }
+  &:active {
+    ${({ theme }) => css`
+      background-color: purple;
+      border-right: 2px solid purple;
     `}
   }
 `
