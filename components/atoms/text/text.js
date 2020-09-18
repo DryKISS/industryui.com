@@ -16,6 +16,7 @@ export const Text = ({
   colour,
   content,
   context,
+  ellipsis,
   stroke,
   size,
   ...props
@@ -26,6 +27,7 @@ export const Text = ({
       className={className}
       colour={colour}
       context={context}
+      ellipsis={ellipsis}
       stroke={stroke}
       size={size}
       {...props}
@@ -36,10 +38,18 @@ export const Text = ({
 }
 
 const StyledText = styled.p`
+  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
+  ${({ ellipsis }) =>
+    ellipsis &&
+    css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    `}
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
-  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
+
   ${({ size }) =>
     size === 'xs' &&
     css`
