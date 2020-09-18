@@ -26,6 +26,7 @@ import { SPACING } from '../utils'
 import { STEPPER } from '../../molecules/stepper/variables'
 import { TABLE } from '../../molecules/table/variables'
 import { TABS } from '../../molecules/tabs/variables'
+import { TEXT_STYLE } from '../../atoms/text/variables'
 
 export const Theme = {
   AVATAR,
@@ -49,5 +50,6 @@ export const Theme = {
   STEPPER,
   TABLE,
   TABS,
+  TEXT_STYLE,
   TYPOGRAPHY
 }

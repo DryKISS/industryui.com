@@ -480,6 +480,22 @@ exports[`Storyshots Atoms/Grid Scaled Columns 1`] = `
 </div>
 `;
 
+exports[`Storyshots Atoms/Heading Heading Component 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Atoms/Heading Heading H 2 1`] = `
 @media (min-width:62em) {
 
@@ -817,6 +833,22 @@ exports[`Storyshots Atoms/Progress Multiple Progress Bars 1`] = `
 `;
 
 exports[`Storyshots Atoms/Progress Striped 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Atoms/Text Text 1`] = `
 @media (min-width:62em) {
 
 }
