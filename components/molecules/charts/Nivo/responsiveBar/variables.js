@@ -27,22 +27,28 @@ export const BARCHART = {
   enableGridY: true,
   axisBottom: function () {
     return {
-      tickSize: 10,
-      tickPadding: 10,
-      tickRotation: -1,
-      legend: this.bottomLegend, // string passed as prop
-      legendPosition: 'middle',
-      legendOffset: 36
+      ...{
+        tickSize: 10,
+        tickPadding: 10,
+        tickRotation: -1,
+        legend: this.bottomLegend, // string passed as prop
+        legendPosition: 'middle',
+        legendOffset: 36
+      },
+      ...this.axisBottom
     }
   },
   axisLeft: function () {
     return {
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: this.leftLegend, // string passed as prop
-      legendPosition: 'middle',
-      legendOffset: -60
+      ...{
+        tickSize: 5,
+        tickPadding: 5,
+        tickRotation: 0,
+        legend: this.leftLegend, // string passed as prop
+        legendPosition: 'middle',
+        legendOffset: -60
+      },
+      ...this.axisLeft
     }
   },
   legends: [
