@@ -29,11 +29,11 @@ const main = ({ ...args }) => {
 export const space = main.bind({})
 
 space.args = {
-  margin: SIZE.XL,
-  marginBottom: SIZE.SM,
-  marginLeft: SIZE.SM,
-  marginRight: SIZE.SM,
-  marginTop: SIZE.SM
+  margin: 0,
+  marginBottom: 0,
+  marginLeft: 0,
+  marginRight: 0,
+  marginTop: 0
 }
 const control = { type: ControlTypes.Select, options: [0, ...arrayOfValues(SIZE)] }
 space.argTypes = {

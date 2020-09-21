@@ -8,7 +8,8 @@ const sizes = {
   mdSize: '0.75rem',
   lgSize: '1rem',
   xlSize: '1.5rem',
-  xxlSize: '2rem'
+  xxlSize: '2rem',
+  xxxlSize: '2.5rem'
 }
 
 export const spaceStyler = properties => {
