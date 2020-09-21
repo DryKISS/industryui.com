@@ -21,7 +21,7 @@ export const EmailChange = ({ showPlaceholder }) => {
     <>
       <PageHeading center heading='Email Change' divider={false} />
 
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' />}
 
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>

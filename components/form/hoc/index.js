@@ -12,8 +12,6 @@ export const FieldHOC = ({
   children,
   helperMessage,
   register,
-  required,
-  Required,
   show,
   showError,
   validate,
@@ -31,10 +29,8 @@ export const FieldHOC = ({
         ...(props.min && { min: props.min }),
         ...(props.maxLength && { maxLength: props.maxLength }),
         ...(props.minLength && { minLength: props.minLength }),
-        ...(props.regExp && { pattern: new RegExp(props.regExp) }),
-        required: required
+        ...(props.regExp && { pattern: new RegExp(props.regExp) })
       })}
-      Required={required}
       style={{
         display: !show ? 'none' : undefined,
         ...props.style
@@ -43,6 +39,7 @@ export const FieldHOC = ({
     >
       {children}
     </Component>
+
     {helperMessage && (
       <Space marginTop={SIZE.SM} marginBottom={SIZE.XS}>
         <Text size={SIZE.XS} context='default'>
@@ -50,6 +47,7 @@ export const FieldHOC = ({
         </Text>
       </Space>
     )}
+
     {showError && <FormError message={errors?.message || ''} />}
   </>
 )

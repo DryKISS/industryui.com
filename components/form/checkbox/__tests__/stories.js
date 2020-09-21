@@ -20,13 +20,11 @@ const data = [
   {
     id: 'check',
     label: 'Yes',
-    required: true,
     value: 'check'
   },
   {
     id: 'checked',
     label: 'No',
-    required: true,
     value: 'checked'
   }
 ]

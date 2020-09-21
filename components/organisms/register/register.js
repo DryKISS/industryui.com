@@ -16,6 +16,7 @@ import {
   FormLabel,
   FormField,
   Link,
+  Text,
   UserContext,
   useForm
 } from '../../'
@@ -23,9 +24,22 @@ import {
 // Style
 import styled from 'styled-components'
 
+const CHECKBOX_TERMS = [
+  {
+    id: 'terms',
+    label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
+  },
+  {
+    id: 'marketing',
+    label:
+      'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.'
+  }
+]
+
+const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 export const Register = ({
   birthday,
-  change,
   dayBirthday,
   email,
   errorSubmit,
@@ -44,14 +58,14 @@ export const Register = ({
   const renderBirthday = () => (
     <>
       <DatePickerInput
-        change={change}
         day={dayBirthday}
         id='Birthday'
         label='Birthdate'
         month={monthBirthday}
         year={yearBirthday}
       />
-      To sign up, you must be 18 or older. Other users will not see this.
+
+      <Text>To sign up, you must be 18 or older. Other users will not see this.</Text>
     </>
   )
 
@@ -61,11 +75,9 @@ export const Register = ({
   const [error, setError] = useState(errorSubmit)
   const [passwordError, setPasswordError] = useState()
 
-  // TODO: Refactorize this into utils
-  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
   useEffect(() => {
     setError(errorSubmit)
+
     return () => {
       setError()
     }
@@ -74,6 +86,7 @@ export const Register = ({
   const onSubmit = e => {
     // We get the check of password and repeatpassword from backend? or if not we can manage it here too
     setPasswordError()
+
     if (e.password !== e.repeatPassword) {
       setPasswordError(new Error('Password and repeat password are different'))
     } else if (!submit) {
@@ -91,19 +104,6 @@ export const Register = ({
     }
   }
 
-  const CHECKBOX_TERMS = [
-    {
-      id: 'terms',
-      label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.',
-      required: true
-    },
-    {
-      id: 'marketing',
-      label:
-        'I would like to receive, occasional news and exclusive offers from via email. I can opt out of receiving these at any time in my account settings.'
-    }
-  ]
-
   const defaultOptions = {
     errors: errors,
     register: register
@@ -111,7 +111,7 @@ export const Register = ({
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' />}
 
       <FormLabel label='First name'>
         <FormField
@@ -160,9 +160,7 @@ export const Register = ({
 
       {birthday && renderBirthday()}
 
-      {passwordError && (
-        <Alert content={passwordError.message} context='warning' style={{ color: '#fff' }} />
-      )}
+      {passwordError && <Alert content={passwordError.message} context='warning' />}
 
       <CheckboxField {...defaultOptions} data={CHECKBOX_TERMS} stacked />
 
@@ -170,8 +168,8 @@ export const Register = ({
         align='right'
         content='Sign up'
         context='primary'
-        size='lg'
         disabled={!formState.isValid}
+        size='lg'
         type='submit'
       />
 
@@ -189,17 +187,19 @@ const StyledLink = styled.div`
 
 Register.propTypes = {
   birthday: bool,
-  change: func.isRequired,
-  email: string.isRequired,
   dayBirthday: any,
-  marketing: bool.isRequired,
+  email: string,
+  errorSubmit: bool,
+  marketing: bool,
   monthBirthday: any,
-  nameFirst: string.isRequired,
-  nameLast: string.isRequired,
-  password: string.isRequired,
+  nameFirst: string,
+  nameLast: string,
+  password: string,
   pathLogin: string,
+  repeatPassword: string,
+  showPlaceholder: bool,
   submit: func.isRequired,
-  terms: bool.isRequired,
+  terms: bool,
   yearBirthday: any
 }
 

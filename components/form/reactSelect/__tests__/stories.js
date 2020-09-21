@@ -64,7 +64,6 @@ const BaseComponent = (props = {}) => {
     isClearable: true,
     name: 'reactSelect',
     options: Options,
-    required: 'This is required',
     ...knobs,
     ...props
   }
@@ -165,7 +164,6 @@ export const chained = () => {
     defaultOptions: true,
     errors: errors,
     isClearable: true,
-    required: 'This is required',
     ...knobs
   }
 
@@ -290,7 +288,6 @@ export const chainedNoDefault = () => {
     defaultOptions: true,
     errors: errors,
     isClearable: true,
-    required: 'This is required',
     ...knobs
   }
 

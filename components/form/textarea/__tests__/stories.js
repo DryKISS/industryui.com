@@ -32,7 +32,6 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     name: 'description',
     placeholder: text('Placeholder', 'Description'),
-    required: true,
     register: register,
     ...props
   }
