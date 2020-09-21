@@ -20,8 +20,7 @@ export const CustomCalendarStyles = () => {
     disabled: false,
     errors: errors,
     register: register,
-    showError: true,
-    required: false
+    showError: true
   }
 
   const onSubmit = data => {
@@ -47,9 +46,11 @@ export const CustomCalendarStyles = () => {
             register={register}
           />
         </FormLabel>
+
         <FormLabel label='Default event color'>
           <SelectField name='eventColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
+
         <Button content='Submit' type='submit' />
       </Form>
     )
@@ -58,6 +59,7 @@ export const CustomCalendarStyles = () => {
   return (
     <>
       <button onClick={() => setShowOffCanvas(true)}>Open canvas</button>
+
       {showOffCanvas && (
         <OffCanvas headerText='Add custom event' show={showOffCanvas}>
           {CalendarStyleForm()}
