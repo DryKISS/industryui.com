@@ -36,10 +36,10 @@ export const Text = ({
 }
 
 const StyledText = styled.p`
+  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
-  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
   ${({ size }) =>
     size === 'xs' &&
     css`
@@ -126,5 +126,4 @@ const StyledText = styled.p`
 `
 
 Text.protoTypes = TextPropTypes
-
 Text.defaultProps = TextDefaultProps
