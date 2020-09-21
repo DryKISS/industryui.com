@@ -1,5 +1,5 @@
 /**
- * Progress
+ * Text
  */
 
 // React
@@ -12,9 +12,9 @@ import { Wrapper } from 'decorators'
 import { ALIGN, arrayOfValues, CONTEXT, ControlTypes, SIZE, Text } from '../../../'
 
 export default {
-  title: 'Atoms/Text',
+  component: Text,
   decorators: [Wrapper],
-  component: Text
+  title: 'Atoms/Text'
 }
 
 const main = ({ ...args }) => {
@@ -23,8 +23,8 @@ const main = ({ ...args }) => {
       <Text
         align={args.align}
         context={args.context}
-        stroke={args.stroke}
         ellipsis={args.ellipsis}
+        stroke={args.stroke}
         size={args.size}
       >
         {args.content}
