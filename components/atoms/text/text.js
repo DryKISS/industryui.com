@@ -111,5 +111,4 @@ const StyledText = styled.p`
 `
 
 Text.protoTypes = TextPropTypes
-
 Text.defaultProps = TextDefaultProps
