@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { number, withKnobs } from '@storybook/addon-knobs'
+import { number } from '@storybook/addon-knobs'
 import { Wrapper, Context } from 'decorators'
 
 // UI
@@ -16,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Rating',
   component: Rating,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

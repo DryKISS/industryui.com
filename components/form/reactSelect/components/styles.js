@@ -1,3 +1,5 @@
+import { COLOUR } from '../../../'
+
 export const defaultStyles = {
   container: (base, state) => {
     return { ...base, margin: '0' }
@@ -7,9 +9,9 @@ export const defaultStyles = {
     return {
       ...base,
       backgroundColor: '#fff',
-      border: '1px solid #c4cacf',
+      borderColor: COLOUR.dark,
       borderRadius: '0.25rem',
-      color: '#003753',
+      color: COLOUR.dark,
       fontSize: '1rem',
       height: '3rem',
       lineHeight: 1.5,
@@ -20,9 +22,9 @@ export const defaultStyles = {
   menu: (base, state) => {
     return {
       ...base,
-      borderColor: '#80bdff',
+      borderColor: COLOUR.dark,
       boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
-      color: '#003753'
+      color: COLOUR.dark
     }
   },
 

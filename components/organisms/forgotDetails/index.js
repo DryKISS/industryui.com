@@ -6,11 +6,8 @@
 import React from 'react'
 import { bool, func, string } from 'prop-types'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
+import { Button, Form, FormField, FormLabel, Link, PageHeading, useForm } from '../../'
 import { ForgotDetailsSchema } from './schema'
 
 // Style
@@ -25,7 +22,7 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
     <>
       <PageHeading center heading='Forgot Details' divider={false} />
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
           <FormField
             autoFocus
@@ -41,7 +38,7 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
         <Link to={pathLogIn} passHref>
           <StyledLink>Back to Log In</StyledLink>
         </Link>
-      </FormForm>
+      </Form>
     </>
   )
 }
@@ -54,7 +51,7 @@ const StyledLink = styled.span`
 ForgotDetails.propTypes = {
   pathLogIn: string,
   showPlaceholder: bool,
-  submit: func
+  submit: func.isRequired
 }
 
 ForgotDetails.defaultProps = {

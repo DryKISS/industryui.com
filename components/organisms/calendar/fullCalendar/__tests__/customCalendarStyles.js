@@ -6,12 +6,9 @@
 import { useState } from 'react'
 import moment from 'moment'
 
-import { useForm } from 'react-hook-form'
-import { OffCanvas, Button, FormLabel, FormField, SelectField } from 'components'
-
-import { FormForm } from 'index'
+// UI
+import { OffCanvas, Button, Form, FormLabel, FormField, SelectField, useForm } from 'components'
 import { BaseComponent } from './stories'
-
 import { colorEvent } from '../__mocks__/events'
 
 export const CustomCalendarStyles = () => {
@@ -40,7 +37,7 @@ export const CustomCalendarStyles = () => {
 
   const CalendarStyleForm = () => {
     return (
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Height'>
           <FormField
             type='number'
@@ -54,7 +51,7 @@ export const CustomCalendarStyles = () => {
           <SelectField name='eventColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
         <Button content='Submit' type='submit' />
-      </FormForm>
+      </Form>
     )
   }
 
@@ -66,6 +63,7 @@ export const CustomCalendarStyles = () => {
           {CalendarStyleForm()}
         </OffCanvas>
       )}
+
       <BaseComponent {...calendarStyles} events={Events} />
     </>
   )

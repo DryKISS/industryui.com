@@ -7,7 +7,6 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { withKnobs } from '@storybook/addon-knobs'
 import { Context, Size, Wrapper } from 'decorators'
 
 // UI
@@ -17,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Avatar',
   component: Avatar,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

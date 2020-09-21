@@ -17,17 +17,28 @@ import { StyledInput } from '../../../'
 // Constants
 import { PROPERTIES } from './constants'
 
-export const DatePickerCalendar = ({ control, defaultValue, errors, name, ...props }) => {
+export const DatePickerCalendar = ({
+  control,
+  defaultValue,
+  errors,
+  name,
+  placeholder,
+  ...parentProps
+}) => {
   return (
     <Controller
-      as={<ReactDatePicker customInput={<StyledInput errors={errors[name]} />} {...props} />}
+      render={props => (
+        <ReactDatePicker
+          customInput={<StyledInput errors={errors[name]} />}
+          selected={props.value}
+          {...props}
+          {...parentProps}
+          placeholderText={placeholder ?? 'Click to select time'}
+        />
+      )}
       control={control}
       defaultValue={defaultValue}
       name={name}
-      onChange={([selected]) => {
-        return selected
-      }}
-      valueName='selected'
     />
   )
 }
@@ -41,7 +52,6 @@ DatePickerCalendar.defaultProps = {
   isClearable: true,
   minDate: new Date(),
   name: 'expiryAt',
-  placeholderText: 'Click to select time',
   shouldCloseOnSelect: true,
   showTimeSelect: false,
   timeIntervals: 30,

@@ -12,6 +12,7 @@ import { BARCHART } from '../../molecules/charts/Nivo/responsiveBar/variables'
 import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
 import { COPYRIGHT } from '../../molecules/copyright/variables'
 import { FOOTER } from '../../organisms/footer/variables'
+import { FORM_ELEMENTS_STYLES } from '../../form/variables/formVariables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { LINECHART } from '../../molecules/charts/Nivo/lineChart/variables'
@@ -33,6 +34,7 @@ export const Theme = {
   COLOUR,
   COPYRIGHT,
   FOOTER,
+  FORM_ELEMENTS_STYLES,
   GRID,
   HEADINGS,
   LINECHART,

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -16,7 +16,7 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Card',
   component: Card,
-  decorators: [story => <Column md={4}>{story()}</Column>, Wrapper, withKnobs],
+  decorators: [story => <Column md={4}>{story()}</Column>, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -6,20 +6,17 @@
 import React from 'react'
 
 // Storybook
-import { text, withKnobs } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, FormForm, TextareaField, FormLabel } from '../../../../'
+import { Button, Form, TextareaField, FormLabel, useForm } from '../../../../'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Textarea',
   component: TextareaField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -41,13 +38,13 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Description'>
         <TextareaField {...defaultProps} />
       </FormLabel>
 
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

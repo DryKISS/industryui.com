@@ -17,15 +17,18 @@ import { oneOf } from 'prop-types'
 // UI
 import {
   Button,
+  FormError,
   Form,
+  FormField,
+  FormLabel,
   Icon,
-  Input,
   InputGroup,
   InputGroupAddon,
-  Label,
   Link,
   useForm,
-  validatorPostCode
+  validatorPostCode,
+  yup,
+  yupResolver
 } from '../../'
 
 import { BlogSection } from './components'
@@ -33,64 +36,55 @@ import { BlogSection } from './components'
 // Style
 import styled from 'styled-components'
 
-export const BlogFindFood = ({ colour }) => {
-  const initialState = {
-    postCode: '',
-    versionPostCode: false
-  }
+const schema = yup.object().shape({
+  postCode: yup
+    .string()
+    .required()
+    .test('is-valid', "We couldn't recognise that postcode - check and try again.", value =>
+      validatorPostCode(value)
+    )
+})
 
-  const { change, form } = useForm(initialState)
+export const BlogFindFood = ({ colour }) => {
+  const { errors, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'onSubmit'
+  })
   const [msg, setMsg] = useState(false)
 
-  const { postCode, versionPostCode } = form
   const url = 'https://chat.drykiss.com/api/httpsDeliverooRestaurants'
   const domain = 'deliveroo.co.uk'
 
-  const submit = e => {
-    setMsg(false)
+  const submit = data => {
+    // Fetch restaurant service
+    window
+      .fetch(`${url}/${domain}/${data.postCode}`)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
 
-    if (!validatorPostCode(postCode)) {
-      setMsg("We couldn't recognise that postcode - check and try again.")
-      return
-    }
-
-    // versionPostCode || versionGoogle
-    if (versionPostCode) {
-      if (!validatorPostCode(postCode)) {
-        setMsg("We couldn't recognise that postcode - check and try again.")
-        return
-      }
-
-      // Fetch restaurant service
-      window
-        .fetch(`${url}/${domain}/${postCode}`)
-        .then(response => {
-          if (!response.ok) {
-            throw Error(response.statusText)
-          }
-
-          return response.json()
-        })
-        .then(data => {
-          window.open(`https://${domain}${data.url}`, '_self')
-        })
-        .catch(error => {
-          setMsg(`We don’t deliver there yet: ${error.message}`)
-        })
-    }
+        return response.json()
+      })
+      .then(res => {
+        window.open(`https://${domain}${res.url}`, '_self')
+      })
+      .catch(error => {
+        setMsg(`We don’t deliver there yet: ${error.message}`)
+      })
   }
 
   return (
     <BlogSection>
       <StyledContainer colour={colour}>
-        <StyledForm submit={submit}>
-          <Label text='Your favourite restaurants, delivered.'>
+        <StyledForm handleSubmit={handleSubmit(submit)}>
+          <FormLabel text='Your favourite restaurants, delivered.'>
             <InputGroup>
-              <Input
-                change={change}
-                id='postCode'
+              <FormField
+                errors={errors}
+                register={register}
+                name='postCode'
                 placeholder='Enter your postcode'
-                value={postCode}
               />
 
               <InputGroupAddon>
@@ -101,11 +95,10 @@ export const BlogFindFood = ({ colour }) => {
                 />
               </InputGroupAddon>
 
-              <div className='Form-feedback' style={{ color: '#fff' }} />
-
+              {errors.postCode && <FormError message={errors.postCode.message} />}
               {msg && <div style={{ color: '#fff' }}>{msg}</div>}
             </InputGroup>
-          </Label>
+          </FormLabel>
         </StyledForm>
 
         <Link to={`https://${domain}`} passHref target='_blank'>

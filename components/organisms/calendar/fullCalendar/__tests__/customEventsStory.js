@@ -4,12 +4,20 @@
 
 // React
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { OffCanvas, Button, SelectField, FormLabel, FormField, CheckboxField } from 'components'
 
 // UI
+import {
+  OffCanvas,
+  Button,
+  SelectField,
+  Form,
+  FormLabel,
+  FormField,
+  CheckboxField,
+  useForm
+} from 'components'
+
 import { BaseComponent } from './stories'
-import { FormForm } from 'index'
 
 // Data
 import { colorEvent, assetType, displayEventOptions, checkBoxOptions } from '../__mocks__/events'
@@ -54,7 +62,7 @@ export const CustomEventsStory = () => {
 
   const CustomEventForm = () => {
     return (
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Title'>
           <FormField
             name='title'
@@ -97,7 +105,7 @@ export const CustomEventsStory = () => {
           <SelectField name='assetType' options={assetType} {...defaultProps} />
         </FormLabel>
         <Button content='Submit' type='submit' />
-      </FormForm>
+      </Form>
     )
   }
 

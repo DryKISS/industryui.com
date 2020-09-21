@@ -7,7 +7,7 @@ import { forwardRef, useImperativeHandle, useState } from 'react'
 import { func, string } from 'prop-types'
 
 // UI
-import { Button, Input, Select, validatorPostCode } from '../../'
+import { Button, FormField, FormLabel, SelectField, validatorPostCode } from '../../'
 
 export const GetAddress = forwardRef(
   (
@@ -51,7 +51,9 @@ export const GetAddress = forwardRef(
     }))
 
     const input = () => (
-      <Input change={change} id='postcode' label='Postcode' value={form.postcode} />
+      <FormLabel label='Postcode'>
+        <FormField onChange={change} name='postcode' value={form.postcode} />
+      </FormLabel>
     )
 
     const button = () => (
@@ -72,13 +74,14 @@ export const GetAddress = forwardRef(
           return (
             <>
               <p />
-              <Select
-                change={handlePopulateAddress}
-                id='addresses'
-                label='Select your address'
-                options={reduced}
-                value={selectAddress}
-              />
+              <FormLabel label='Select your address'>
+                <SelectField
+                  onChange={handlePopulateAddress}
+                  name='addresses'
+                  options={reduced}
+                  value={selectAddress}
+                />
+              </FormLabel>
             </>
           )
         }
@@ -100,7 +103,9 @@ export const GetAddress = forwardRef(
         return changedInputs.map(({ label, id, required }) => {
           return (
             <span key={id}>
-              <Input label={label} id={id} change={change} required={required} value={form[id]} />
+              <FormLabel label={label}>
+                <FormField name={id} onChange={change} required={required} value={form[id]} />
+              </FormLabel>
             </span>
           )
         })

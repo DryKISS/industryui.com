@@ -6,7 +6,6 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
 import { Context, Wrapper } from 'decorators'
 
 // UI
@@ -15,7 +14,7 @@ import { PageProgressBar } from 'components'
 export default {
   title: 'Molecules/PageProgressBar',
   component: PageProgressBar,
-  decorators: [Wrapper, withKnobs]
+  decorators: [Wrapper]
 }
 
 const BaseComponent = () => {

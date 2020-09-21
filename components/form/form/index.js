@@ -8,9 +8,9 @@ import { func, node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const FormForm = ({ children, handleSubmit, id }) => {
+export const Form = ({ children, handleSubmit, id, style }) => {
   return (
-    <StyledForm id={id} onSubmit={handleSubmit}>
+    <StyledForm style={style} id={id} onSubmit={handleSubmit}>
       {children}
     </StyledForm>
   )
@@ -20,7 +20,7 @@ const StyledForm = styled.form`
   margin-bottom: 1rem;
 `
 
-FormForm.propTypes = {
+Form.propTypes = {
   children: node.isRequired,
   handleSubmit: func.isRequired,
   id: string

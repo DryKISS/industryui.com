@@ -7,17 +7,24 @@ import React, { useState, useRef } from 'react'
 import { number, func, array } from 'prop-types'
 
 // UI
-import { Button, EmojiMart, Form, Icon, Textarea, Dropdown } from '../../../'
+import { Button, EmojiMart, Form, Icon, TextareaField, Dropdown, useForm } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
 export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
-  const [message, setMessage] = useState('')
+  const { handleSubmit, register, setValue, watch } = useForm({
+    defaultValues: {
+      message: ''
+    }
+  })
+
   const [open, setOpen] = useState(false)
   const [attachments, setAttachments] = useState([])
   const [audience, setAudience] = useState(audienceItems[0] || '')
   const fileInputRef = useRef()
+
+  const message = watch('message')
 
   const handleOpenPicker = () => {
     setOpen(false)
@@ -33,20 +40,18 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
   }
 
   const handleEmojiSelect = emoji => {
-    setMessage(prev => prev + emoji)
+    setValue('message', message + emoji)
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-
+  const submit = form => {
     const data = {
       attachments,
       audience: audience.id,
-      message
+      message: form.message
     }
 
     onSubmit(data)
-    setMessage('')
+    setValue('message', '')
   }
 
   return (
@@ -62,7 +67,7 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
       )}
 
       <StyledContainer audience={audience}>
-        <StyledForm submit={handleSubmit}>
+        <StyledForm handleSubmit={handleSubmit(submit)}>
           {audience && (
             <StyledDropDown
               items={audienceItems}
@@ -74,12 +79,11 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
           )}
 
           <StyledTextarea
-            change={e => setMessage(e.target.value)}
-            id='message'
+            register={register}
+            name='message'
             maxLength={maxLength}
             placeholder='Write message'
             rows={1}
-            value={message}
           />
 
           <input
@@ -137,7 +141,7 @@ const StyledForm = styled(Form)`
   }
 `
 
-const StyledTextarea = styled(Textarea)`
+const StyledTextarea = styled(TextareaField)`
   border: none;
   line-height: 1.5;
   resize: none;

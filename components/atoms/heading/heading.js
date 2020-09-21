@@ -31,12 +31,12 @@ const StyledHeading = styled.span`
   font-weight: normal;
   ${props => COLOUR(props)}
   position: relative;
-  ${({ as, noMargin, theme }) => css`
+  ${({ as, theme }) => css`
     font-family: ${theme.HEADINGS[as].fontFamily};
     font-size: ${theme.HEADINGS[as].fontSize};
     line-height: ${theme.HEADINGS[as].lineHeight};
     text-transform: ${theme.HEADINGS[as].textTransform};
-    margin: ${noMargin ? 0 : '0 0 1.25rem 0'};
+    margin: 0;
   `}
 
   ${({ noWrap }) =>

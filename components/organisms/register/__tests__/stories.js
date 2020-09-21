@@ -9,11 +9,8 @@ import React, { useState } from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Register } from '../'
-import { useForm, requestSimulator } from 'components'
-
+import { Alert, Register, requestSimulator, useForm } from 'components'
 import Readme from '../README.md'
-import { Alert } from 'index'
 
 export default {
   title: 'Organisms/Register',

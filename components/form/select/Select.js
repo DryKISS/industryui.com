@@ -10,13 +10,28 @@ import { array, bool, object, string } from 'prop-types'
 import _range from 'lodash/range'
 
 // UI
-import { FieldHOC } from '../'
+import { COMMON_INPUT_STYLES, ERROR_STYLE, FieldHOC, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
 
 export const SelectField = forwardRef(
-  ({ data, defaultValue, disabled, options, placeholder, range, showError, ...props }, ref) => {
+  (
+    {
+      data,
+      defaultValue,
+      disabled,
+      errors,
+      name,
+      options,
+      placeholder,
+      range,
+      showError,
+      size,
+      ...props
+    },
+    ref
+  ) => {
     const renderRange = () => {
       const options = [
         <option disabled value='' key='initial0'>
@@ -58,8 +73,11 @@ export const SelectField = forwardRef(
         component={StyledSelect}
         defaultValue={defaultValue}
         disabled={disabled}
+        errors={errors[name]}
+        name={name}
         ref={ref}
         showError={showError}
+        size={size}
         {...data}
         {...props}
       >
@@ -71,35 +89,33 @@ export const SelectField = forwardRef(
 )
 
 const StyledSelect = styled.select`
-  background-clip: padding-box;
-  background-color: #fff;
-  border: 1px solid #c4cacf;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.COLOUR.dark};
-  display: block;
-  font-size: 1rem;
-  height: 3rem;
-  line-height: 1.5;
-  padding: 0.375rem 0.75rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  width: 100%;
+${props => COMMON_INPUT_STYLES(props)}
 
-  &:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    color: ${({ theme }) => theme.COLOUR.dark};
-    outline: 0;
-  }
-
+  ${({ size }) => {
+    switch (size) {
+      case SIZE.SM:
+        return css`
+          height: 1.5rem;
+          font-size: 0.625rem;
+        `
+      case SIZE.MD:
+        return css`
+          height: 1.875rem;
+        `
+      case SIZE.LG:
+        return css`
+          height: 2.25rem;
+        `
+      default:
+        return css`
+          height: 2.25rem;
+        `
+    }
+  }}
   ${({ errors }) =>
     errors &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 10px;
+      ${props => ERROR_STYLE(props)}
     `}
 `
 
@@ -107,6 +123,8 @@ SelectField.propTypes = {
   data: object,
   defaultValue: string,
   disabled: bool,
+  errors: object,
+  name: string,
   options: array,
   placeholder: string,
   range: array,

@@ -9,11 +9,22 @@ import { TextPropTypes, TextDefaultProps } from './props'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Text = ({ align, children, className, content, context, stroke, size, ...props }) => {
+export const Text = ({
+  align,
+  children,
+  className,
+  colour,
+  content,
+  context,
+  stroke,
+  size,
+  ...props
+}) => {
   return (
     <StyledText
       align={align}
       className={className}
+      colour={colour}
       context={context}
       stroke={stroke}
       size={size}
@@ -25,12 +36,16 @@ export const Text = ({ align, children, className, content, context, stroke, siz
 }
 
 const StyledText = styled.p`
+  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
-  color: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
-
-
+  ${({ size }) =>
+    size === 'xs' &&
+    css`
+      font-size: 0.75rem;
+      line-height: 1.333;
+    `}
   ${({ size }) =>
     size === 'sm' &&
     css`

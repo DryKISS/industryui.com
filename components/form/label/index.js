@@ -7,11 +7,14 @@ import { bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
+import { Space, Text } from 'components'
 
-export const FormLabel = ({ children, id, label, show }) => {
+export const FormLabel = ({ children, id, label, show, size }) => {
   return (
-    <StyledLabel child={children} htmlFor={id} show={show}>
-      <StyledLabelText className='Form-label'>{label}</StyledLabelText>
+    <StyledLabel hasChild={children} htmlFor={id} show={show}>
+      <Space marginBottom='xs'>
+        <Text size={size ?? 'md'} colour='darkText' content={label} />
+      </Space>
       {children}
     </StyledLabel>
   )
@@ -19,11 +22,10 @@ export const FormLabel = ({ children, id, label, show }) => {
 
 const StyledLabel = styled.label`
   display: ${({ show }) => (show ? 'block' : 'none')};
-  margin-bottom: ${({ child }) => (!child ? '0' : '1rem')};
-`
-
-const StyledLabelText = styled.div`
-  margin-bottom: 0.5rem;
+  margin-bottom: ${({ hasChild }) => (!hasChild ? '0' : '1rem')};
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
 `
 
 FormLabel.propTypes = {
