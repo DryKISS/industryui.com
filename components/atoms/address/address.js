@@ -5,25 +5,33 @@
 // React
 import React from 'react'
 import { string } from 'prop-types'
-
+import { Text, SIZE } from 'components'
 // Style
 import styled from 'styled-components'
 
+const AddressText = props => {
+  return (
+    <Text context='default' size={SIZE.MD}>
+      {props.children}
+    </Text>
+  )
+}
+
 export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
   <StyledAddress>
-    <div>{line1}</div>
+    <AddressText>{line1}</AddressText>
 
-    {line2 && <div>{line2}</div>}
+    {line2 && <AddressText>{line2}</AddressText>}
 
-    {line3 && <div>{line3}</div>}
+    {line3 && <AddressText>{line3}</AddressText>}
 
-    <div>{town}</div>
+    <AddressText>{town}</AddressText>
 
-    {county && <div>{county}</div>}
+    {county && <AddressText>{county}</AddressText>}
 
-    <div>{postcode}</div>
+    <AddressText>{postcode}</AddressText>
 
-    <div>{country}</div>
+    <AddressText>{country}</AddressText>
   </StyledAddress>
 )
 
