@@ -13,7 +13,7 @@ import Readme from '../README.md'
 import { Wrapper } from 'decorators'
 
 export default {
-  title: 'Molecules/Dropzone/Uploader',
+  title: 'Form/Dropzone/Uploader',
   component: DropzoneUploader,
   decorators: [Wrapper],
   parameters: {
