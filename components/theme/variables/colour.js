@@ -8,6 +8,7 @@ export const COLOUR = {
   danger: 'rgb(255, 88, 88)',
   dark: 'rgb(92, 111, 127)',
   darkGrey: 'rgb(204, 204, 204)',
+  darkText: '#666666',
   drykiss_lightBlue: 'rgb(0, 225, 218)',
   drykiss_darkPink: 'rgb(255, 0, 99)',
   error: 'rgb(255, 45, 45)',
@@ -28,7 +29,6 @@ export const COLOUR = {
   success: 'rgb(54, 197, 58)',
   formSuccess: 'rgb(69, 186, 190)',
   transparent: 'transparent',
-  darkText: '#666666',
   visited: 'rgb(180, 14, 180)',
   warning: 'rgb(222, 127, 40)',
   white: 'rgb(255, 255, 255)'

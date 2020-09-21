@@ -36,7 +36,8 @@ export const Text = ({
 }
 
 const StyledText = styled.p`
-  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
+  color: ${({ context, theme: { COLOUR, TEXT_STYLE } }) =>
+    context ? COLOUR[context] : TEXT_STYLE.colour};
 
   margin: 0;
   padding: 0;

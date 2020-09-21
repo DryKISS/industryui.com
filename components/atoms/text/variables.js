@@ -25,5 +25,6 @@ export const TEXT_STYLE = {
     xl: '1.333',
     xxl: '1.25',
     xxxl: '1.25rem'
-  }
+  },
+  colour: 'rgb(102, 102, 102)'
 }

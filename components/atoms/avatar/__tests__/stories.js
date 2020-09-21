@@ -23,10 +23,13 @@ export default {
     }
   }
 }
+const defaultProps = {
+  content: 'Avatar',
+  context: Context(),
+  size: Size()
+}
 
-const BaseComponent = props => (
-  <Avatar content='Avatar' context={Context()} size={Size()} {...props} />
-)
+const BaseComponent = props => <Avatar {...defaultProps} {...props} />
 
 export const main = () => <BaseComponent />
 
