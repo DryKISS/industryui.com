@@ -58,6 +58,7 @@ export const comunicationShowCase = () => {
         padding: '1rem'
       }}
     >
+      <p>components background color is randomly generated to spot new renders</p>
       <div
         style={{
           background: RandomColor(),
