@@ -7,20 +7,25 @@ import { string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
+import { SIZE, Space } from 'components'
 
-export const FormError = ({ message }) => {
-  return <StyledSmall>{message}</StyledSmall>
+export const FormError = ({ message, colour, ...props }) => {
+  return (
+    <Space marginTop={SIZE.XS}>
+      <StyledSmall color={colour}>{message}</StyledSmall>
+    </Space>
+  )
 }
 
 export const StyledSmall = styled.small`
-  color: ${({ theme }) => theme.COLOUR.danger};
+  color: ${({ theme, colour }) => colour ?? theme.COLOUR.error};
   display: block;
-  font-size: 80%;
+  font-size: 0.625rem;
   font-weight: 400;
-  margin-top: 0.25rem;
   width: 100%;
 `
 
 FormError.propTypes = {
-  message: string.isRequired
+  message: string.isRequired,
+  colour: string
 }

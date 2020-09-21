@@ -4,10 +4,10 @@
 
 // React
 import React from 'react'
-import { array, bool, string } from 'prop-types'
+import { array, bool, object, string } from 'prop-types'
 
 // UI
-import { FieldHOC } from '../../'
+import { FieldHOC, ERROR_STYLE } from '../../../'
 import { CheckboxComponent } from './component'
 
 // Style
@@ -17,6 +17,7 @@ export const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <legend>{legend}</legend>}
+
       {data.map(({ disabled, label, ...data }) => (
         <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
           <FieldHOC
@@ -39,11 +40,8 @@ const StyledFieldset = styled.fieldset`
   ${({ error }) =>
     error &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 10px;
+      ${props => ERROR_STYLE(props)}
+      padding: 0.5rem;
     `}
 `
 
@@ -61,11 +59,13 @@ const StyledLabel = styled.label`
 
 CheckboxField.propTypes = {
   data: array.isRequired,
+  errors: object,
   legend: string,
   stacked: bool
 }
 
 CheckboxField.defaultProps = {
   data: [],
+  errors: {},
   stacked: false
 }

@@ -3,21 +3,20 @@
  */
 
 // Storybook
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Yup
 import { object, string } from 'yup'
 
 // UI
-import { Divider, FormError, FormForm, Search, Text } from 'components'
+import { Divider, FormError, Form, Search, Text, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Search',
   component: Search,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -34,7 +33,7 @@ const BaseComponent = (props = {}) => {
     defaultValues: {
       query: props.value
     },
-    validationSchema: schema
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = data => {
@@ -63,7 +62,7 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <Search {...defaultProps} />
 
       <Divider size='sm' />
@@ -71,7 +70,7 @@ const BaseComponent = (props = {}) => {
       <Text>{value}</Text>
 
       <FormError message={errors?.expiryAt?.message || ''} />
-    </FormForm>
+    </Form>
   )
 }
 

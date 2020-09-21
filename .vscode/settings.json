@@ -6,7 +6,15 @@
   "editor.rulers": [100],
   "editor.tabSize": 2,
   // Files
+  "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true
+  },
   // Javascript
   "javascript.validate.enable": false,
   "[javascript]": {
@@ -23,8 +31,18 @@
   "standard.enable": true,
   "standard.autoFixOnSave": true,
   "standard.options": {
-    "globals": ["cy", "it", "test", "expect", "describe"],
-    "ignore": ["node_modules/**"],
+    "globals": [
+      "afterEach",
+      "before",
+      "beforeEach",
+      "cy",
+      "Cypress",
+      "describe",
+      "expect",
+      "it",
+      "localStorage",
+      "test"
+    ],
     "parser": "babel-eslint"
   },
   "standard.usePackageJson": true,

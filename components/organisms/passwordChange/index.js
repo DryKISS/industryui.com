@@ -6,11 +6,8 @@
 import React, { useState } from 'react'
 import { bool } from 'prop-types'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, PageHeading } from '../../'
+import { Alert, Button, FormField, Form, FormLabel, PageHeading, useForm } from '../../'
 
 export const PasswordChange = ({ showPlaceholder }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({ mode: 'onChange' })
@@ -22,9 +19,9 @@ export const PasswordChange = ({ showPlaceholder }) => {
     <>
       <PageHeading center heading='Password Change' divider={false} />
 
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Old password'>
           <FormField
             errors={errors}
@@ -64,7 +61,7 @@ export const PasswordChange = ({ showPlaceholder }) => {
           size='lg'
           type='submit'
         />
-      </FormForm>
+      </Form>
     </>
   )
 }

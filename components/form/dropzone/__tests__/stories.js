@@ -6,20 +6,17 @@
 import React from 'react'
 
 // Storybook
-import { boolean, withKnobs } from '@storybook/addon-knobs'
+import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Button, FormForm, FormLabel, DropzoneField } from 'components'
+import { Button, Form, FormError, FormLabel, DropzoneField, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Dropzone',
   component: DropzoneField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -44,14 +41,14 @@ const BaseComponent = (props = {}) => {
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Dropzone' />
       <DropzoneField {...defaultProps} />
 
-      {errors.dropzone && <p>{errors.dropzone.message}</p>}
+      {errors.dropzone && <FormError message={errors.dropzone.message} />}
 
       <Button content='Submit' secondary type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

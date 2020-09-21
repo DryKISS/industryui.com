@@ -6,19 +6,17 @@
 import React, { useState } from 'react'
 
 // Storybook
-import { withKnobs, select } from '@storybook/addon-knobs'
+import { select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Login, requestSimulator, useForm } from '../../../'
-import { Alert } from 'index'
-
+import { Alert, Login, requestSimulator, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Organisms/Login',
   component: Login,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -28,6 +26,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const [loggedToast, setLoggedToast] = useState(false)
+
   const submit = e => {
     requestSimulator().then(res => {
       setLoggedToast(true)
@@ -55,8 +54,7 @@ const BaseComponent = (props = {}) => {
 
   return (
     <>
-      {loggedToast && <Alert content='logged' context='success' style={{ color: '#fff' }} />}
-
+      {loggedToast && <Alert content='logged' context='success' />}
       <Login {...defaultProps} />
     </>
   )
@@ -78,6 +76,7 @@ export const withPlaceholder = () => <Login showLabel={false} showPlaceholder />
 
 export const withHttpRequest = () => {
   const { change, form } = useForm({ email: '', password: '' })
+
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState({
     type: '',

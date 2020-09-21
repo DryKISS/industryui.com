@@ -9,7 +9,7 @@ export const validatorPostCode = postCode => {
 
 // Return area and district from Post Code
 export const parsePostCode = postCode => {
-  const parsed = postCode?.match(/([A-Z]+)([0-9]+).*?[A-Z0-9]{3}/) || ''
+  const parsed = postCode?.match(/([A-Z]+)([0-9]+).*?[A-Z0-9]{3}/i) || ''
 
   return {
     area: parsed[1],

@@ -6,27 +6,25 @@
 import React from 'react'
 
 // Storybook
-import { text, withKnobs } from '@storybook/addon-knobs'
+import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Yup
+import { object, string } from 'yup'
 
 // UI
-import { Button, FormForm, CheckboxField } from '../../../../'
+import { Button, Form, CheckboxField, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 const data = [
   {
     id: 'check',
     label: 'Yes',
-    required: true,
     value: 'check'
   },
   {
     id: 'checked',
     label: 'No',
-    required: true,
     value: 'checked'
   }
 ]
@@ -34,7 +32,7 @@ const data = [
 export default {
   title: 'Form/Checkbox',
   component: CheckboxField,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -42,24 +40,29 @@ export default {
   }
 }
 
+const schema = object().shape({
+  checkbox: string().required()
+})
+
 const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm()
+  const { errors, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
+  })
   const onSubmit = data => {}
 
   const defaultProps = {
     errors: errors,
     name: 'checkbox',
     legend: text('Legend', 'Do you like Industry-UI?'),
-    required: true,
     register: register,
     ...props
   }
 
   return (
-    <FormForm handleSubmit={handleSubmit(onSubmit)}>
+    <Form handleSubmit={handleSubmit(onSubmit)}>
       <CheckboxField {...defaultProps} data={data} />
       <Button content='Submit' type='submit' />
-    </FormForm>
+    </Form>
   )
 }
 

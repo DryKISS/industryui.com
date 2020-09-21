@@ -3,10 +3,10 @@
  */
 
 // React
-import { bool, number, string, oneOf } from 'prop-types'
+import { bool, number, string, object, oneOf } from 'prop-types'
 
 // UI
-import { FieldHOC } from '../'
+import { COMMON_INPUT_STYLES, FieldHOC, ERROR_STYLE, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -17,10 +17,13 @@ export const TextareaField = ({
   cols,
   dir,
   disabled,
+  errors,
   maxLength,
+  name,
   placeholder,
   readOnly,
   rows,
+  size,
   spellCheck,
   tabIndex,
   wrap,
@@ -34,11 +37,13 @@ export const TextareaField = ({
       cols={cols}
       dir={dir}
       disabled={disabled}
+      errors={errors[name]}
       maxLength={maxLength}
       placeholder={placeholder}
       readOnly={readOnly}
       rows={rows}
       showError={false}
+      size={size}
       spellcheck={spellCheck}
       tabIndex={tabIndex}
       wrap={wrap}
@@ -48,51 +53,23 @@ export const TextareaField = ({
 }
 
 const StyledTextarea = styled.textarea`
-  background-clip: padding-box;
-  background-color: ${({ disabled }) => (disabled ? '#e9ecef' : '#fff')};
-  border: 1px solid #c4cacf;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  color: ${props => props.theme.COLOUR.dark};
-  cursor: ${({ disabled }) => (disabled ? 'no-drop' : 'auto')};
+  ${props => COMMON_INPUT_STYLES(props)}
+
   direction: ${({ dir }) => dir};
   display: block;
   font-size: 1rem;
   line-height: 2rem;
-  padding: 0.5rem;
-  overflow: auto;
-  width: 100%;
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      user-select: none; /* Standard syntax */
-    `}
-
-  &:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    outline: 0;
-  }
-
-  ::-webkit-input-placeholder {
-    color: #c0c0c0;
-  }
-  :-ms-input-placeholder {
-    color: #c0c0c0;
-  }
-  :-moz-placeholder {
-    color: #c0c0c0;
-    opacity: 1;
-  }
 
   ${({ errors }) =>
     errors &&
     css`
-      background: rgb(251, 236, 242);
-      border-color: rgb(191, 22, 80) rgb(191, 22, 80) rgb(191, 22, 80) rgb(236, 89, 144);
-      border-image: initial;
-      border-style: solid;
-      border-width: 1px 1px 1px 10px;
+      ${props => ERROR_STYLE(props)}
+    `}
+
+  ${({ size }) =>
+    size === SIZE.SM &&
+    css`
+      font-size: 0.625rem;
     `}
 `
 
@@ -101,10 +78,11 @@ TextareaField.propTypes = {
   cols: number,
   dir: oneOf(['ltr', 'rtl']),
   disabled: bool,
+  errors: object,
   maxLength: number,
+  name: string,
   placeholder: string,
   readOnly: bool,
-  required: bool,
   rows: number,
   spellCheck: bool,
   tabIndex: number,
@@ -114,6 +92,5 @@ TextareaField.propTypes = {
 TextareaField.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
-  required: true,
   rows: 5
 }

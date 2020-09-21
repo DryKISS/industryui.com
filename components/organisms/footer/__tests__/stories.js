@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { boolean, withKnobs } from '@storybook/addon-knobs'
+import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -19,7 +19,7 @@ import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__/footer'
 export default {
   title: 'Organisms/Footer',
   component: Footer,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

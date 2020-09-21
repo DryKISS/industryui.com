@@ -7,7 +7,7 @@ import { forwardRef, useImperativeHandle, useState } from 'react'
 import { func, string } from 'prop-types'
 
 // UI
-import { Button, Input, Select, validatorPostCode } from '../../'
+import { Button, FormField, FormLabel, SelectField, validatorPostCode } from '../../'
 
 export const GetAddress = forwardRef(
   (
@@ -51,7 +51,9 @@ export const GetAddress = forwardRef(
     }))
 
     const input = () => (
-      <Input change={change} id='postcode' label='Postcode' value={form.postcode} />
+      <FormLabel label='Postcode'>
+        <FormField onChange={change} name='postcode' value={form.postcode} />
+      </FormLabel>
     )
 
     const button = () => (
@@ -72,13 +74,14 @@ export const GetAddress = forwardRef(
           return (
             <>
               <p />
-              <Select
-                change={handlePopulateAddress}
-                id='addresses'
-                label='Select your address'
-                options={reduced}
-                value={selectAddress}
-              />
+              <FormLabel label='Select your address'>
+                <SelectField
+                  onChange={handlePopulateAddress}
+                  name='addresses'
+                  options={reduced}
+                  value={selectAddress}
+                />
+              </FormLabel>
             </>
           )
         }
@@ -89,18 +92,20 @@ export const GetAddress = forwardRef(
       if (form.line1) {
         const changedInputs = [
           { label: 'Address line 1', id: 'line1' },
-          { label: 'Address line 2', id: 'line2', required: false },
-          { label: 'Address line 3', id: 'line3', required: false },
+          { label: 'Address line 2', id: 'line2' },
+          { label: 'Address line 3', id: 'line3' },
           { label: 'City / Town', id: 'town' },
-          { label: 'County', id: 'county', required: false },
+          { label: 'County', id: 'county' },
           { label: 'Postcode', id: 'postcode' },
           { label: 'Country', id: 'country' }
         ]
 
-        return changedInputs.map(({ label, id, required }) => {
+        return changedInputs.map(({ label, id }) => {
           return (
             <span key={id}>
-              <Input label={label} id={id} change={change} required={required} value={form[id]} />
+              <FormLabel label={label}>
+                <FormField name={id} onChange={change} value={form[id]} />
+              </FormLabel>
             </span>
           )
         })

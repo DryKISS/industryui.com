@@ -6,12 +6,12 @@
 import React from 'react'
 
 // Storybook
-import { addDecorator, addParameters } from '@storybook/react'
+import { addParameters } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { addReadme } from 'storybook-readme'
 import { withA11y } from '@storybook/addon-a11y'
 import { withInfo } from '@storybook/addon-info'
-
+import { withKnobs } from '@storybook/addon-knobs'
 // Next
 import Router from 'next/router'
 
@@ -44,20 +44,13 @@ const mockedRouter = {
 
 Router.router = mockedRouter
 
-addDecorator(
-  withInfo({
-    header: true,
-    inline: true,
-    propTables: false,
-    styles: { infoBody: { overflow: 'overlay' } },
-    source: false
-  })
-)
-
-addDecorator(Container)
-addDecorator(withA11y)
-
 addParameters({
+  a11y: {
+    element: '#root',
+    config: {},
+    options: {},
+    manual: true
+  },
   options: {
     panelPosition: 'right'
   },
@@ -66,4 +59,15 @@ addParameters({
   }
 })
 
-addDecorator(addReadme)
+export const decorators = [
+  withInfo({
+    header: true,
+    inline: true,
+    propTables: false,
+    styles: { infoBody: { overflow: 'overlay' } },
+    source: false
+  }),
+  Container,
+  addReadme,
+  withKnobs
+]

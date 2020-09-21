@@ -7,11 +7,18 @@
 import React from 'react'
 import { func, string } from 'prop-types'
 
-// React hook form
-import { useForm } from 'react-hook-form'
-
 // UI
-import { Alert, Button, FormField, FormForm, FormLabel, Link, PageHeading } from '../../'
+import {
+  Alert,
+  Button,
+  FormField,
+  Form,
+  FormLabel,
+  Link,
+  PageHeading,
+  useForm,
+  yupResolver
+} from '../../'
 import { ForgotDetailsResetSchema } from './schema'
 
 // Style
@@ -19,7 +26,7 @@ import styled from 'styled-components'
 
 export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    validationSchema: ForgotDetailsResetSchema
+    resolver: yupResolver(ForgotDetailsResetSchema)
   })
 
   return (
@@ -28,7 +35,7 @@ export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
 
       {errors?.password?.message && <Alert content={errors.password.message} context='warning' />}
 
-      <FormForm handleSubmit={handleSubmit(submit)}>
+      <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Password'>
           <FormField errors={errors} name='password' register={register} type='password' />
         </FormLabel>
@@ -38,7 +45,7 @@ export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
         <Link to={pathLogIn} passHref>
           <StyledLink>Back to Log In</StyledLink>
         </Link>
-      </FormForm>
+      </Form>
     </>
   )
 }

@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 
 // Storybook
-import { number, withKnobs } from '@storybook/addon-knobs'
+import { number } from '@storybook/addon-knobs'
 import { Context, Size, Wrapper } from 'decorators'
 
 // UI
@@ -17,7 +17,7 @@ import { Icon } from '../../../atoms'
 export default {
   title: 'Molecules/Pagination',
   component: Pagination,
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

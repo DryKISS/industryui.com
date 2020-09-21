@@ -6,7 +6,7 @@
 import React, { useContext, useState } from 'react'
 
 // Storybook
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
@@ -31,7 +31,7 @@ import styled, { css } from 'styled-components'
 export default {
   title: 'Molecules/Dropdown',
   component: Dropdown,
-  decorators: [withKnobs, Wrapper],
+  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

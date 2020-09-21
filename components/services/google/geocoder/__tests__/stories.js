@@ -9,7 +9,17 @@ import React, { useState } from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Column, Form, GeoCoder, Input, Row, useForm, useGeoCoder } from 'components'
+import {
+  Button,
+  Column,
+  Form,
+  FormField,
+  FormLabel,
+  GeoCoder,
+  Row,
+  useForm,
+  useGeoCoder
+} from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -33,8 +43,14 @@ export const main = () => {
     language: 'en'
   }
 
-  const { change, form } = useForm(geoState)
-  const { address, city, region, language } = form
+  const { handleSubmit, register, watch } = useForm({
+    defaultValues: geoState
+  })
+
+  const address = watch('address')
+  const city = watch('city')
+  const region = watch('region')
+  const language = watch('language')
 
   const { lat, lng } = useGeoCoder({
     apiKey: 'AIzaSyAemr12bOOt2SLS_RiBh8o1UZhDTkE_SIU',
@@ -44,7 +60,7 @@ export const main = () => {
     language
   })
 
-  const getCoordinates = async () => {
+  const getCoordinates = async ({ address, city, language, region }) => {
     const geo = new GeoCoder({
       apiKey: 'AIzaSyAemr12bOOt2SLS_RiBh8o1UZhDTkE_SIU',
       language,
@@ -55,18 +71,29 @@ export const main = () => {
     setCoordinates(coordinates)
   }
 
-  const submitForm = () => {
-    getCoordinates()
+  const submitForm = data => {
+    getCoordinates(data)
   }
 
   return (
     <Row>
       <Column md={8}>
-        <Form submit={submitForm}>
-          <Input change={change} label='Address' id='address' value={address} />
-          <Input change={change} label='City' id='city' value={city} />
-          <Input change={change} label='Region' id='region' value={region} />
-          <Input change={change} label='Language' id='language' value={language} />
+        <Form handleSubmit={handleSubmit(submitForm)}>
+          <FormLabel label='Address'>
+            <FormField register={register} label='Address' name='address' />
+          </FormLabel>
+
+          <FormLabel label='Address'>
+            <FormField register={register} label='City' name='city' />
+          </FormLabel>
+
+          <FormLabel label='Address'>
+            <FormField register={register} label='Region' name='region' />
+          </FormLabel>
+
+          <FormLabel label='Address'>
+            <FormField register={register} label='Language' name='language' />
+          </FormLabel>
           <Button centre secondary type='submit'>
             Get Coordinates
           </Button>

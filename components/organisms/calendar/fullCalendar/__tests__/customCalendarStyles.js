@@ -6,12 +6,9 @@
 import { useState } from 'react'
 import moment from 'moment'
 
-import { useForm } from 'react-hook-form'
-import { OffCanvas, Button, FormLabel, FormField, SelectField } from 'components'
-
-import { FormForm } from 'index'
+// UI
+import { OffCanvas, Button, Form, FormLabel, FormField, SelectField, useForm } from 'components'
 import { BaseComponent } from './stories'
-
 import { colorEvent } from '../__mocks__/events'
 
 export const CustomCalendarStyles = () => {
@@ -23,8 +20,7 @@ export const CustomCalendarStyles = () => {
     disabled: false,
     errors: errors,
     register: register,
-    showError: true,
-    required: false
+    showError: true
   }
 
   const onSubmit = data => {
@@ -40,7 +36,7 @@ export const CustomCalendarStyles = () => {
 
   const CalendarStyleForm = () => {
     return (
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Height'>
           <FormField
             type='number'
@@ -50,22 +46,26 @@ export const CustomCalendarStyles = () => {
             register={register}
           />
         </FormLabel>
+
         <FormLabel label='Default event color'>
           <SelectField name='eventColor' options={colorEvent} {...defaultProps} />
         </FormLabel>
+
         <Button content='Submit' type='submit' />
-      </FormForm>
+      </Form>
     )
   }
 
   return (
     <>
       <button onClick={() => setShowOffCanvas(true)}>Open canvas</button>
+
       {showOffCanvas && (
         <OffCanvas headerText='Add custom event' show={showOffCanvas}>
           {CalendarStyleForm()}
         </OffCanvas>
       )}
+
       <BaseComponent {...calendarStyles} events={Events} />
     </>
   )

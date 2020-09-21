@@ -7,21 +7,19 @@
 import React, { useContext, useState } from 'react'
 import { bool, object, oneOfType, string } from 'prop-types'
 
-// useForm
-import { useForm } from 'react-hook-form'
-
 // UI
 import {
   Alert,
   Button,
   // Checkbox,
   FormField,
-  FormForm,
+  Form,
   FormLabel,
   Link,
   PageHeading,
-  UserContext
-} from '../../'
+  UserContext,
+  useForm
+} from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -36,9 +34,7 @@ export const Login = ({
   remember,
   showLabel,
   showPassword,
-  showPlaceholder,
-  submitLoading,
-  submitResult
+  showPlaceholder
 }) => {
   const { errors, formState, register, handleSubmit } = useForm({ mode: 'onChange' })
   const [showPass, setShowPass] = useState(false)
@@ -72,9 +68,9 @@ export const Login = ({
     <>
       <PageHeading center heading={heading} divider={false} />
 
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' />}
 
-      <FormForm handleSubmit={handleSubmit(onSubmit)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Email'>
           <FormField
             autoFocus
@@ -121,7 +117,7 @@ export const Login = ({
             </ForgotPasswordWrapper>
           )}
         </div>
-      </FormForm>
+      </Form>
 
       {pathSignUp && (
         <>
@@ -155,9 +151,7 @@ Login.propTypes = {
   remember: string,
   showLabel: bool,
   showPassword: bool,
-  showPlaceholder: bool,
-  submitLoading: bool,
-  submitResult: object
+  showPlaceholder: bool
 }
 
 Login.defaultProps = {
@@ -167,10 +161,5 @@ Login.defaultProps = {
   pathForgot: '/account/forgot-details',
   showLabel: true,
   showPassword: false,
-  showPlaceholder: false,
-  submitLoading: true,
-  submitResult: {
-    type: '',
-    message: ''
-  }
+  showPlaceholder: false
 }

@@ -6,7 +6,6 @@
 import React from 'react'
 
 // Storybook
-import { withKnobs } from '@storybook/addon-knobs'
 import { Align, Size, Wrapper } from 'decorators'
 
 // UI
@@ -15,7 +14,7 @@ import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Button/Toolbar',
-  decorators: [Wrapper, withKnobs],
+  decorators: [Wrapper],
   component: ButtonToolbar,
   parameters: {
     readme: {

@@ -2,12 +2,11 @@
  * Molecules - OffCanvas - Tests - Form
  */
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Yup
 import { object, string } from 'yup'
 
 // UI
-import { FormForm, FormField, FormLabel } from 'components'
+import { Form, FormField, FormLabel, useForm, yupResolver } from 'components'
 
 export const OffCanvasForm = ({ onSubmit }) => {
   const schema = object().shape({
@@ -22,7 +21,7 @@ export const OffCanvasForm = ({ onSubmit }) => {
   })
 
   const { errors, handleSubmit, register } = useForm({
-    validationSchema: schema
+    resolver: yupResolver(schema)
   })
 
   const defaultOptions = {
@@ -31,7 +30,7 @@ export const OffCanvasForm = ({ onSubmit }) => {
   }
 
   return (
-    <FormForm id='offCanvasForm' handleSubmit={handleSubmit(onSubmit)}>
+    <Form id='offCanvasForm' handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Name'>
         <FormField {...defaultOptions} name='name' placeholder='Alfred' />
       </FormLabel>
@@ -73,6 +72,6 @@ export const OffCanvasForm = ({ onSubmit }) => {
           type='password'
         />
       </FormLabel>
-    </FormForm>
+    </Form>
   )
 }

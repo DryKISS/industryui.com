@@ -1,0 +1,4 @@
+/**
+ * Text
+ */
+export * from './text'

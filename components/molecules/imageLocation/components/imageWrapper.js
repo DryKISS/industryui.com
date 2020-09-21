@@ -49,6 +49,10 @@ export const ImageWrapper = ({ coordinates, item, markerStyles, setCoordinates }
 const StyledImageWrapper = styled.div`
   display: inline-block;
   position: relative;
+  width: 100%;
+  ${Image} {
+    width: 100%;
+  }
 `
 
 ImageWrapper.propTypes = {
