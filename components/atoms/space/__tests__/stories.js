@@ -20,9 +20,14 @@ export default {
 
 const main = ({ ...args }) => {
   return (
-    <Space {...args}>
-      <Text>space</Text>
-    </Space>
+    <>
+      <Space {...args}>
+        <Text>text1</Text>
+      </Space>
+      <Space {...args}>
+        <Text>text2</Text>
+      </Space>
+    </>
   )
 }
 

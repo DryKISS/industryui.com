@@ -15,12 +15,12 @@ const sizes = {
 export const spaceStyler = properties => {
   let stl = ''
   let counter = 0
-  properties.forEach((_, index) => {
-    if (properties[index].v) {
+  properties.forEach(property => {
+    if (property.v) {
       counter++
-      stl += `${properties[index].k}: ${sizes[properties[index].v + 'Size']};
+      stl += `${property.k}: ${sizes[property.v + 'Size']};
           ${MEDIA_QUERY.desktop`
-          ${properties[index].k}: calc(${sizes[properties[index].v + 'Size']} * 2);`}`
+          ${property.k}: calc(${sizes[property.v + 'Size']} * 2);`}`
     }
   })
   if (counter === 0) {
