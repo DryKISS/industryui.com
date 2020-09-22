@@ -5,6 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Free Solid / FAS
 import {
+  faBars,
   faBell,
   faCaretDown,
   faCaretUp,
@@ -22,6 +23,7 @@ import {
   faSearch,
   faShieldAlt,
   faSmile as fasSmile,
+  faTimes,
   faTimesCircle,
   faTrash,
   faUserCircle as fasUserCircle,
@@ -31,7 +33,6 @@ import {
 // Free Regular / FAR
 import {
   faCopy as farCopy,
-  faCopyright as farCopyright,
   faImages as farImages,
   faSmile as farSmile,
   faUserCircle as farUserCircle
@@ -42,6 +43,7 @@ import { faGit, faGithub, faLinkedin, faCodepen } from '@fortawesome/free-brands
 
 library.add(
   // Icons
+  faBars,
   faBell,
   faCaretDown,
   faCaretUp,
@@ -49,7 +51,6 @@ library.add(
   faCircle,
   farCopy,
   fasCopy,
-  faCopyright,
   faCopyright,
   faEnvelope,
   faExpand,
@@ -65,6 +66,7 @@ library.add(
   faCloud,
   faSearch,
   faShieldAlt,
+  faTimes,
   faTimesCircle,
   faTrash,
   faUser,

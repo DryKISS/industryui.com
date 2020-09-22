@@ -35,7 +35,7 @@ export const Toggler = ({ custom, handleMenuClick, visible }) => {
       aria-label='Toggle navigation'
       onClick={handleMenuClick}
     >
-      {!visible ? <Icon icon='bars' /> : <Icon icon='times' size='lg' />}
+      {!visible ? <Icon icon='bars' prefix='fas' /> : <Icon icon='times' size='lg' prefix='fas' />}
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )
@@ -56,7 +56,6 @@ const StyledIcon = styled.div`
     margin-bottom: 0.375rem;
     transition: 0.3s all linear;
   }
-  /* stylelint-disable */
   div:nth-child(2) {
     &:active {
       transform: rotate(-45deg);
@@ -67,7 +66,6 @@ const StyledIcon = styled.div`
       transform: rotate(45deg);
     }
   }
-  /* stylelint-enable */
 `
 
 const StyledToggler = styled.a`

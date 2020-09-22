@@ -90,7 +90,7 @@ Copyright.defaultProps = {
   icon: {
     context: 'primary',
     icon: 'copyright',
-    prefix: 'fad'
+    prefix: 'fas'
   },
   links: []
 }
