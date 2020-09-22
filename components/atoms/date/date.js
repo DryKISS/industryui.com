@@ -2,9 +2,6 @@
  * Date
  */
 
-// React
-import { string } from 'prop-types'
-
 export const Date = ({ date }) => {
   return (
     <time dateTime={date} itemProp='datePublished' pubdate='pubdate'>
@@ -14,5 +11,12 @@ export const Date = ({ date }) => {
 }
 
 Date.propTypes = {
-  date: string.isRequired
+  date (props, propName, component) {
+    if (!(propName in props)) {
+      return new Error(`${propName} is required in ${component} component`)
+    }
+    if (!props[propName].match()) {
+      return new Error('please enter date by iso standard format')
+    }
+  }
 }

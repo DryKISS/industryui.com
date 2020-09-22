@@ -7,10 +7,10 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Context, Size, Wrapper } from 'decorators'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Avatar } from 'components'
+import { arrayOfValues, Avatar, CONTEXT, ControlTypes, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -23,26 +23,36 @@ export default {
     }
   }
 }
-const defaultProps = {
-  content: 'Avatar',
-  context: Context(),
-  size: Size()
+
+const BaseComponent = ({ ...args }) => {
+  const defaultProps = {
+    content: 'Avatar'
+  }
+  if (args.withImage) {
+    args.src = 'https://via.placeholder.com/128'
+    delete args.withImage
+  }
+  if (args.withAction) {
+    args.action = 'edit'
+    args.actionClick = () => action('clicked')
+    delete args.withAction
+  }
+  if (args.withGravatar) {
+    args.gmail = 'test@gmail.com'
+    delete args.withGravatar
+  }
+  return <Avatar {...defaultProps} {...args} />
 }
 
-const BaseComponent = props => <Avatar {...defaultProps} {...props} />
-
-export const main = () => <BaseComponent />
-
-export const withAction = () => <BaseComponent action='Edit' actionClick={action('clicked')} />
-
-export const withImage = () => <BaseComponent src='https://via.placeholder.com/128' />
-
-export const withGravatar = () => <BaseComponent gmail='test@gmail.com' />
-
-export const withImageAndAction = () => (
-  <BaseComponent
-    action='Edit'
-    actionClick={action('clicked')}
-    src='https://via.placeholder.com/128'
-  />
-)
+export const avatar = BaseComponent.bind({})
+avatar.args = {
+  withAction: false,
+  withImage: false,
+  withGravatar: false,
+  context: CONTEXT.DARKGREY,
+  size: SIZE.MD
+}
+avatar.argTypes = {
+  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
+  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
+}

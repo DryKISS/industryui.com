@@ -33,7 +33,7 @@ export const Badge = ({
       size={size}
       style={style}
     >
-      {icon && <StyledIcon icon={icon} prefix={iconPrefix} />}
+      {icon && <StyledIcon icon={icon} prefix={iconPrefix ?? 'fas'} />}
       {content || children}
     </StyledBadge>
   )

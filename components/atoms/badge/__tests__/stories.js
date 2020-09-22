@@ -6,11 +6,10 @@
 import React from 'react'
 
 // Storybook
-import { text } from '@storybook/addon-knobs'
-import { Context, Size, Wrapper } from 'decorators'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Badge } from 'components'
+import { arrayOfValues, Badge, CONTEXT, ControlTypes, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -24,19 +23,29 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    content: text('Content', 'Badge'),
-    context: Context(),
-    size: Size(),
-    ...props
+const BaseComponent = ({ ...args }) => {
+  if (args.to) {
+    args.to = '/example'
+  } else {
+    delete args.to
   }
-
-  return <Badge {...defaultProps} />
+  if (args.icon) {
+    args.icon = 'user'
+  } else {
+    delete args.icon
+  }
+  return <Badge {...args} />
 }
 
-export const main = () => <BaseComponent />
-
-export const link = () => <BaseComponent content='Link' to='/example' />
-
-export const icon = () => <BaseComponent content='User' icon='user' />
+export const badge = BaseComponent.bind({})
+badge.args = {
+  content: 'Badge',
+  context: CONTEXT.PRIMARY,
+  size: SIZE.MD,
+  to: false,
+  icon: false
+}
+badge.argTypes = {
+  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
+  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
+}

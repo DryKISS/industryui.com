@@ -31,5 +31,5 @@ export const IconPropTypes = {
 
 export const IconDefaultProps = {
   fixedWidth: true,
-  prefix: 'far'
+  prefix: 'fas'
 }

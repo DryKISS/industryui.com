@@ -18,7 +18,7 @@ export const IconStacked = ({ icon, prefix }) => {
         color='#506e91'
         fixedWidth={false}
         icon={icon}
-        prefix={prefix}
+        prefix={prefix ?? 'fas'}
       />
     </span>
   )
@@ -30,5 +30,5 @@ IconStacked.propTypes = {
 }
 
 IconStacked.defaultProps = {
-  prefix: 'fad'
+  prefix: 'fas'
 }
