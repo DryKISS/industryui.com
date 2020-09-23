@@ -29,6 +29,7 @@ const BaseComponent = ({ ...args }) => {
 }
 
 export const button = BaseComponent.bind({})
+
 button.args = {
   block: false,
   center: false,
@@ -42,6 +43,7 @@ button.args = {
   size: SIZE.MD,
   startIcon: 'user'
 }
+
 button.argTypes = {
   context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
   size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }

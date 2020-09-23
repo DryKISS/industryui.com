@@ -30,6 +30,7 @@ export const Avatar = ({
   size
 }) => {
   const avatarSrc = src || (gmail && gravatar.url(gmail, { d: 'identicon' }))
+
   return (
     <StyledAvatar className={className} context={context} onClick={click} style={style} size={size}>
       {children || (avatarSrc && <Image alt='Avatar' src={avatarSrc} />) || getAcronym(content)}
