@@ -26,6 +26,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const [loggedToast, setLoggedToast] = useState(false)
+
   const submit = e => {
     requestSimulator().then(res => {
       setLoggedToast(true)
@@ -53,7 +54,7 @@ const BaseComponent = (props = {}) => {
 
   return (
     <>
-      {loggedToast && <Alert content='logged' context='success' style={{ color: '#fff' }} />}
+      {loggedToast && <Alert content='logged' context='success' />}
       <Login {...defaultProps} />
     </>
   )
@@ -75,6 +76,7 @@ export const withPlaceholder = () => <Login showLabel={false} showPlaceholder />
 
 export const withHttpRequest = () => {
   const { change, form } = useForm({ email: '', password: '' })
+
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState({
     type: '',

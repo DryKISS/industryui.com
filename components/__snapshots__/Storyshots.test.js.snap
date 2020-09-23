@@ -1088,6 +1088,86 @@ exports[`Storyshots Form/Dropzone Single 1`] = `
 </div>
 `;
 
+exports[`Storyshots Form/Dropzone/Standard Accept All 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Dropzone/Standard Disabled 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Dropzone/Standard Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Dropzone/Standard Multiple False 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form/Dropzone/Uploader Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Form/Error Main 1`] = `
 @media (min-width:62em) {
 
@@ -2337,86 +2417,6 @@ exports[`Storyshots Molecules/Dropdown Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/Dropdown Right Aligned 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Dropzone/Standard Accept All 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Dropzone/Standard Disabled 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Dropzone/Standard Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Dropzone/Standard Multiple False 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Dropzone/Uploader Main 1`] = `
 @media (min-width:62em) {
 
 }

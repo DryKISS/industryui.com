@@ -83,7 +83,6 @@ TextareaField.propTypes = {
   name: string,
   placeholder: string,
   readOnly: bool,
-  required: bool,
   rows: number,
   spellCheck: bool,
   tabIndex: number,
@@ -93,6 +92,5 @@ TextareaField.propTypes = {
 TextareaField.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
-  required: true,
   rows: 5
 }

@@ -77,6 +77,7 @@ export const OffCanvasProvider = ({ children }) => {
         overlay
         overlayOpacity={data?.overlayOpacity}
         placement={options?.placement}
+        submit={data?.submit}
         show={!!visibilityManager.length}
         toggleShow={handleClose}
         transitionDuration={DURATION}

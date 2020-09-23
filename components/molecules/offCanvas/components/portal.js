@@ -50,6 +50,7 @@ OffCanvas.propTypes = {
   overlayOpacity: number,
   placement: oneOf(['top', 'right', 'bottom', 'left']),
   show: bool.isRequired,
+  submit: bool,
   toggleShow: func.isRequired,
   transitionDuration: number,
   variant: string,
@@ -62,6 +63,7 @@ OffCanvas.defaultProps = {
   overlay: true,
   overlayOpacity: 0.3,
   placement: 'right',
+  submit: true,
   transitionDuration: 300,
   variant: 'extended',
   width: '30vw'

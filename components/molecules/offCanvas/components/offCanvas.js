@@ -27,6 +27,7 @@ export const OffCanvasComponent = ({
   overlayOpacity,
   placement,
   show,
+  submit,
   toggleShow,
   transitionDuration,
   variant,
@@ -73,6 +74,7 @@ export const OffCanvasComponent = ({
           hasAvatar={hasAvatar}
           headerContent={headerContent}
           onClose={e => toggleShow(false)}
+          submit={submit}
           title={headerText}
           variant={variant}
         />
@@ -97,6 +99,7 @@ OffCanvasComponent.propTypes = {
   overlayOpacity: number,
   placement: oneOf(['top', 'right', 'bottom', 'left']),
   show: bool.isRequired,
+  submit: bool,
   toggleShow: func.isRequired,
   transitionDuration: number,
   variant: string,
@@ -110,6 +113,7 @@ OffCanvasComponent.defaultProps = {
   overlay: true,
   overlayOpacity: 0.3,
   placement: 'right',
+  submit: true,
   transitionDuration: 300,
   width: '30vw'
 }

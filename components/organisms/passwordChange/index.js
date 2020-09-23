@@ -19,7 +19,7 @@ export const PasswordChange = ({ showPlaceholder }) => {
     <>
       <PageHeading center heading='Password Change' divider={false} />
 
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' />}
 
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Old password'>

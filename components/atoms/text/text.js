@@ -43,8 +43,7 @@ const StyledText = styled.p`
   padding: 0;
   text-align: ${({ align }) => align};
 
-  ${({ size, theme }) =>
-    css`
+  ${({ size, theme }) => css`
       font-size: ${theme.TEXT_STYLE.fontSize[size] ?? '1rem'};
       line-height: ${theme.TEXT_STYLE.lineHeight[size] ?? '1rem'};
       /* stylelint-disable */
@@ -103,5 +102,4 @@ const StyledText = styled.p`
 `
 
 Text.protoTypes = TextPropTypes
-
 Text.defaultProps = TextDefaultProps

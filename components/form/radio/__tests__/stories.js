@@ -35,7 +35,6 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     name: 'radio',
     legend: text('Legend', 'Gender?'),
-    required: 'This is required',
     register: register,
     ...props
   }

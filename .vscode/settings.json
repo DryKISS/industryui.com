@@ -8,6 +8,13 @@
   // Files
   "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true
+  },
   // Javascript
   "javascript.validate.enable": false,
   "[javascript]": {
