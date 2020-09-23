@@ -16,7 +16,7 @@ exports[`Storyshots Atoms/Address Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Avatar Main 1`] = `
+exports[`Storyshots Atoms/Avatar Avatar 1`] = `
 @media (min-width:62em) {
 
 }
@@ -32,103 +32,7 @@ exports[`Storyshots Atoms/Avatar Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Avatar With Action 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Avatar With Gravatar 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Avatar With Image 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Avatar With Image And Action 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Badge Icon 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Badge Link 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Badge Main 1`] = `
+exports[`Storyshots Atoms/Badge Badge 1`] = `
 @media (min-width:62em) {
 
 }
@@ -160,7 +64,7 @@ exports[`Storyshots Atoms/Blockquote Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Button Main 1`] = `
+exports[`Storyshots Atoms/Button Button 1`] = `
 @media (min-width:62em) {
 
 }
@@ -176,7 +80,7 @@ exports[`Storyshots Atoms/Button Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Button/Toolbar Main 1`] = `
+exports[`Storyshots Atoms/Button/Toolbar Button Toolbar 1`] = `
 @media (min-width:62em) {
 
 }
@@ -256,7 +160,7 @@ exports[`Storyshots Atoms/Date Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Details Main 1`] = `
+exports[`Storyshots Atoms/Details Details 1`] = `
 @media (min-width:62em) {
 
 }
@@ -496,38 +400,6 @@ exports[`Storyshots Atoms/Heading Heading Component 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Heading Heading H 2 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Heading Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
 exports[`Storyshots Atoms/Icon Brands 1`] = `
 @media (min-width:62em) {
 
@@ -544,7 +416,7 @@ exports[`Storyshots Atoms/Icon Brands 1`] = `
 </div>
 `;
 
-exports[`Storyshots Atoms/Icon Colors 1`] = `
+exports[`Storyshots Atoms/Icon Icons 1`] = `
 @media (min-width:62em) {
 
 }
@@ -561,54 +433,6 @@ exports[`Storyshots Atoms/Icon Colors 1`] = `
 `;
 
 exports[`Storyshots Atoms/Icon Layers 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Icon Main 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Icon Pulse 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Atoms/Icon Spin 1`] = `
 @media (min-width:62em) {
 
 }
@@ -833,6 +657,22 @@ exports[`Storyshots Atoms/Progress Multiple Progress Bars 1`] = `
 `;
 
 exports[`Storyshots Atoms/Progress Striped 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Atoms/Space Space 1`] = `
 @media (min-width:62em) {
 
 }
@@ -4193,6 +4033,22 @@ exports[`Storyshots Utils/Colour Linear Blend 1`] = `
 `;
 
 exports[`Storyshots Utils/Colour Linear Shade 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/ComunicationService Comunication Show Case 1`] = `
 @media (min-width:62em) {
 
 }
