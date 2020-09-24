@@ -49,13 +49,13 @@ export const Link = ({
 }
 
 export const StyledLink = styled.a`
-  max-width: 100%;
   background-color: transparent;
   border-bottom: ${({ border, context, theme }) =>
     border && `2px solid ${shadeLinearRgb(0.88, theme.COLOUR[context] || theme.LINK.colour)}`};
   color: ${({ context, theme }) => theme.COLOUR[context] || theme.LINK.colour};
-  cursor: pointer;
   display: ${({ border }) => (border ? 'inline-block' : 'block')};
+  cursor: pointer;
+  max-width: 100%;
   outline: none;
   text-decoration: none;
 

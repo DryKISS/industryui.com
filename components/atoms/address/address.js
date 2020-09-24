@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 const AddressText = props => {
   return (
-    <Text context='default' size={SIZE.MD}>
+    <Text context='dark' size={SIZE.MD}>
       {props.children}
     </Text>
   )

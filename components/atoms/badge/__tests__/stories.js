@@ -41,9 +41,9 @@ export const badge = BaseComponent.bind({})
 badge.args = {
   content: 'Badge',
   context: CONTEXT.PRIMARY,
+  icon: false,
   size: SIZE.MD,
-  to: false,
-  icon: false
+  to: false
 }
 badge.argTypes = {
   context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },

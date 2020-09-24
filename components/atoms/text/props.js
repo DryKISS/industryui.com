@@ -1,5 +1,5 @@
 // React
-import { bool, node, oneOf, string } from 'prop-types'
+import { node, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT, DISPLAY_PROP_TYPES, SIZE, SPACER_PROP_TYPES } from '../../'
@@ -9,7 +9,6 @@ export const TextPropTypes = {
   children: node,
   content: string,
   context: oneOf(Object.values(CONTEXT)),
-  ellipsis: bool,
   size: oneOf(Object.values(SIZE)),
   ...DISPLAY_PROP_TYPES,
   ...SPACER_PROP_TYPES
@@ -17,6 +16,5 @@ export const TextPropTypes = {
 
 export const TextDefaultProps = {
   context: 'black',
-  size: 'md',
-  ellipsis: false
+  size: 'md'
 }
