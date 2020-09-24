@@ -3,8 +3,6 @@
  * Sets up a container for all the pages, called on each route change
  */
 
-// React
-import React from 'react'
 import { array, bool, func, node, object, string } from 'prop-types'
 
 // UI

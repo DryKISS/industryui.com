@@ -2,9 +2,6 @@
  * Page
  */
 
-// React
-import React from 'react'
-
 // UI
 import { Page } from 'components'
 import Readme from '../README.md'
