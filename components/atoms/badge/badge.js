@@ -2,9 +2,6 @@
  * Badge
  */
 
-// React
-import React from 'react'
-
 // UI
 import { BACKGROUND, FONTSIZE } from '../../'
 import { Icon } from '../icon'
