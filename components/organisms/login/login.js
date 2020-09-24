@@ -19,7 +19,7 @@ import {
   PageHeading,
   UserContext,
   useForm
-} from '../../../'
+} from '../../'
 
 // Style
 import styled from 'styled-components'
