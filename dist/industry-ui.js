@@ -10,7 +10,6 @@ var r$1 = require('react');
 var cloneDeep = require('lodash/cloneDeep');
 var ReactDOM = require('react-dom');
 var reactResizeDetector = require('react-resize-detector');
-var reactFontawesome = require('@fortawesome/react-fontawesome');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -4298,247 +4297,32 @@ var Theme = {
   TYPOGRAPHY: TYPOGRAPHY
 };
 
-/**
- * Icon — Constants — Prefix
- * Provides a list of the prefixes of FontAwesome Icons
- */
-var ICON_PREFIX = {
-  Solid: 'fas',
-  Regular: 'far',
-  Light: 'fal',
-  Duotone: 'fad',
-  Brands: 'fab'
-};
-
-/**
- * Icon — Constants — Pull
- * Provides a list of the pulls of FontAwesome Icons
- */
-var ICON_PULL = {
-  left: 'left',
-  right: 'right'
-};
-
-/**
- * Icon — Constants — Size
- * Provides a list of the sizes of FontAwesome Icons
- */
-var ICON_SIZE = {
-  ExtraSmall: 'xs',
-  Small: 'sm',
-  Large: 'lg',
-  x2: '2x',
-  x3: '3x',
-  x4: '4x',
-  x5: '5x',
-  x6: '6x',
-  x7: '7x',
-  x8: '8x',
-  x9: '9x',
-  x10: '10x'
-};
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var IconPropTypes = _objectSpread$1(_objectSpread$1({
-  border: propTypes.bool,
-  className: propTypes.any,
-  context: propTypes.oneOf(Object.values(CONTEXT)),
-  mask: propTypes.oneOfType([propTypes.object, propTypes.array, propTypes.string]),
-  fixedWidth: propTypes.bool,
-  inverse: propTypes.bool,
-  icon: propTypes.oneOfType([propTypes.object, propTypes.array, propTypes.string.isRequired]),
-  listItem: propTypes.bool,
-  prefix: propTypes.oneOf(Object.values(ICON_PREFIX)),
-  pull: propTypes.oneOf(Object.values(ICON_PULL)),
-  pulse: propTypes.bool,
-  size: propTypes.oneOf(Object.values(ICON_SIZE)),
-  spin: propTypes.bool,
-  style: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string])),
-  title: propTypes.string,
-  transform: propTypes.oneOfType([propTypes.string, propTypes.object]),
-  swapOpacity: propTypes.bool
-}, DISPLAY_PROP_TYPES), SPACER_PROP_TYPES);
-var IconDefaultProps = {
-  fixedWidth: true,
-  prefix: 'far'
-};
-
 var __jsx$2 = r__default['default'].createElement;
-var Icon = function Icon(_ref) {
-  var icon = _ref.icon,
-      prefix = _ref.prefix,
-      props = _objectWithoutProperties(_ref, ["icon", "prefix"]);
-
-  return __jsx$2(StyledIcon, _extends({
-    icon: [prefix, icon]
-  }, props));
+var Blockquote = function Blockquote(_ref) {
+  var footer = _ref.footer,
+      text = _ref.text;
+  return __jsx$2(StyledBlockquote, null, __jsx$2(StyledText, null, text), footer && __jsx$2(StyledFooter, null, footer));
 };
-var StyledIcon = Ve(reactFontawesome.FontAwesomeIcon).withConfig({
-  displayName: "icon__StyledIcon",
-  componentId: "sc-1fbcyge-0"
-})(["color:", ";", " ", ""], function (_ref2) {
-  var color = _ref2.color,
-      context = _ref2.context,
-      theme = _ref2.theme;
-  return context ? theme.COLOUR[context] : color;
-}, function (theme) {
-  return DISPLAY(theme);
-}, function (theme) {
-  return SPACER(theme);
-});
-Icon.propTypes = IconPropTypes;
-Icon.defaultProps = IconDefaultProps;
-
-var __jsx$3 = r__default['default'].createElement;
-var IconStacked = function IconStacked(_ref) {
-  var icon = _ref.icon,
-      prefix = _ref.prefix;
-  return __jsx$3("span", {
-    className: "fa-stack fa-1x",
-    style: {
-      pointerEvents: 'none'
-    }
-  }, __jsx$3(Icon, {
-    className: "fa-stack-2x",
-    color: "#eaf0f6",
-    fixedWidth: false,
-    icon: "circle",
-    prefix: "fas"
-  }), __jsx$3(Icon, {
-    className: "fa-stack-1x",
-    color: "#506e91",
-    fixedWidth: false,
-    icon: icon,
-    prefix: prefix
-  }));
+var StyledBlockquote = Ve.blockquote.withConfig({
+  displayName: "blockquote__StyledBlockquote",
+  componentId: "sc-1l9ajin-0"
+})(["border-left:5px solid rgba(240,0,0,0.5);margin:1rem 0;padding:10px 20px;"]);
+var StyledText = Ve.h1.withConfig({
+  displayName: "blockquote__StyledText",
+  componentId: "sc-1l9ajin-1"
+})(["color:#000;font-size:2rem;font-weight:normal;margin:0;"]);
+var StyledFooter = Ve.footer.withConfig({
+  displayName: "blockquote__StyledFooter",
+  componentId: "sc-1l9ajin-2"
+})(["font-size:1rem;&::before{content:'\\2014 \\A0';}"]);
+Blockquote.propTypes = {
+  footer: propTypes.string,
+  text: propTypes.string.isRequired
 };
-IconStacked.propTypes = {
-  icon: propTypes.string.isRequired,
-  prefix: propTypes.string
-};
-IconStacked.defaultProps = {
-  prefix: 'fad'
-};
-
-/**
- * Badge - Props
- */
-var BadgePropTypes = {
-  children: propTypes.node,
-  className: propTypes.string,
-  content: propTypes.string.isRequired,
-  context: propTypes.oneOf(Object.values(CONTEXT)),
-  icon: propTypes.string,
-  iconPrefix: propTypes.string,
-  size: propTypes.oneOf(Object.values(SIZE)),
-  style: propTypes.object,
-  to: propTypes.string
-};
-var BadgeDefaultProps = {
-  context: 'primary',
-  size: 'md'
-};
-
-var __jsx$4 = r__default['default'].createElement;
-var Badge = function Badge(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      content = _ref.content,
-      context = _ref.context,
-      icon = _ref.icon,
-      iconPrefix = _ref.iconPrefix,
-      size = _ref.size,
-      style = _ref.style,
-      to = _ref.to;
-  return __jsx$4(StyledBadge, {
-    className: className,
-    context: context,
-    href: to,
-    itemProp: "keywords",
-    size: size,
-    style: style
-  }, icon && __jsx$4(StyledIcon$1, {
-    icon: icon,
-    prefix: iconPrefix
-  }), content || children);
-};
-var StyledBadge = Ve.a.withConfig({
-  displayName: "badge__StyledBadge",
-  componentId: "sc-1yjw714-0"
-})(["", " ", " border-radius:0;color:", ";display:inline-block;line-height:1;margin:0 0.5em 0.5em 0;padding:0.5em;text-align:center;vertical-align:baseline;white-space:nowrap;transition:all 0.1s ease-in-out;text-decoration:none;cursor:default;", " &:empty{display:none;}"], function (props) {
-  return BACKGROUND(props);
-}, function (props) {
-  return FONTSIZE(props);
-}, function (props) {
-  return props.theme.COLOUR.white;
-}, function (_ref2) {
-  var href = _ref2.href;
-  return href && de(["&:hover{opacity:0.7;cursor:pointer;}"]);
-});
-var StyledIcon$1 = Ve(Icon).withConfig({
-  displayName: "badge__StyledIcon",
-  componentId: "sc-1yjw714-1"
-})(["margin-right:5px;"]);
-Badge.propTypes = BadgePropTypes;
-Badge.defaultProps = BadgeDefaultProps;
 
 exports.ALIGN = ALIGN;
 exports.BACKGROUND = BACKGROUND;
-exports.Badge = Badge;
+exports.Blockquote = Blockquote;
 exports.COLOUR = COLOUR;
 exports.COMMON_INPUT_STYLES = COMMON_INPUT_STYLES;
 exports.CONTEXT = CONTEXT;
@@ -4548,11 +4332,6 @@ exports.DISPLAY = DISPLAY;
 exports.DISPLAY_PROP_TYPES = DISPLAY_PROP_TYPES;
 exports.ERROR_STYLE = ERROR_STYLE;
 exports.FONTSIZE = FONTSIZE;
-exports.ICON_PREFIX = ICON_PREFIX;
-exports.ICON_PULL = ICON_PULL;
-exports.ICON_SIZE = ICON_SIZE;
-exports.Icon = Icon;
-exports.IconStacked = IconStacked;
 exports.MEDIA_QUERY = MEDIA_QUERY;
 exports.MEDIA_QUERY_MAX = MEDIA_QUERY_MAX;
 exports.Position = Position;
