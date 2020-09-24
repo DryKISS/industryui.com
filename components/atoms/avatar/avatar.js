@@ -2,9 +2,6 @@
  * Avatar
  */
 
-// React
-import React from 'react'
-
 // Gravatar
 import gravatar from 'gravatar'
 
