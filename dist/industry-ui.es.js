@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef, forwardRef, Children, cloneElement, memo, useImperativeHandle, Component, Fragment as Fragment$1, Suspense as Suspense$1, createContext } from 'react';
+import React, { useContext, useState, useEffect, useRef, memo, forwardRef, Children, cloneElement, useImperativeHandle, Component, Fragment as Fragment$1, Suspense as Suspense$1, createContext } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { isValid, differenceInYears, format as format$2 } from 'date-fns';
@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 import styled, { css, createGlobalStyle, useTheme, keyframes, withTheme, ThemeProvider } from 'styled-components';
 import cloneDeep from 'lodash/cloneDeep';
 import ReactDOM, { createPortal } from 'react-dom';
+import { withResizeDetector } from 'react-resize-detector';
 import Head from 'next/head';
 import gravatar from 'gravatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -4617,6 +4618,32 @@ ReactHolderJs.defaultProps = {
   usePlaceholder: false
 };
 
+var __jsx$1 = React.createElement;
+
+var ResizeDetector = withResizeDetector( /*#__PURE__*/memo(function (_ref) {
+  var height = _ref.height,
+      width = _ref.width,
+      onResize = _ref.onResize;
+  // clearTimeout(timer)
+  // timer = setTimeout(() => {onResize()}, 0)
+  requestAnimationFrame(function () {
+    return onResize({
+      height: height,
+      width: width
+    });
+  });
+  return __jsx$1("div", {
+    style: {
+      width: '100%',
+      height: '100%'
+    }
+  });
+}, function (_ref2, _ref3) {
+  var prevWidth = _ref2.width;
+  var nextWidth = _ref3.width;
+  return prevWidth === nextWidth;
+}));
+
 function requestSimulator() {
   return _requestSimulator.apply(this, arguments);
 }
@@ -5581,7 +5608,7 @@ var Theme = {
   TYPOGRAPHY: TYPOGRAPHY
 };
 
-var __jsx$1 = React.createElement;
+var __jsx$2 = React.createElement;
 var MetaHead = function MetaHead(_ref) {
   var canonical = _ref.canonical,
       brand = _ref.brand,
@@ -5589,30 +5616,30 @@ var MetaHead = function MetaHead(_ref) {
   var description = meta.description,
       path = meta.path,
       title = meta.title;
-  return __jsx$1(Head, null, __jsx$1("title", null, title, " | ", brand), __jsx$1("meta", {
+  return __jsx$2(Head, null, __jsx$2("title", null, title, " | ", brand), __jsx$2("meta", {
     name: "description",
     content: description,
     key: "description"
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     rel: "canonical",
     href: canonical + path,
     key: "canonical"
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     property: "og:title",
     content: title
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     property: "og:description",
     content: description
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     property: "og:url",
     content: canonical + path
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     name: "twitter:url",
     content: canonical + path
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     name: "twitter:title",
     content: title
-  }), __jsx$1("meta", {
+  }), __jsx$2("meta", {
     name: "twitter:description",
     content: description
   }));
@@ -5622,7 +5649,7 @@ MetaHead.propTypes = {
   meta: propTypes.object.isRequired
 };
 
-var __jsx$2 = React.createElement;
+var __jsx$3 = React.createElement;
 var Address = function Address(_ref) {
   var county = _ref.county,
       country = _ref.country,
@@ -5631,7 +5658,7 @@ var Address = function Address(_ref) {
       line3 = _ref.line3,
       postcode = _ref.postcode,
       town = _ref.town;
-  return __jsx$2(StyledAddress, null, __jsx$2("div", null, line1), line2 && __jsx$2("div", null, line2), line3 && __jsx$2("div", null, line3), __jsx$2("div", null, town), county && __jsx$2("div", null, county), __jsx$2("div", null, postcode), __jsx$2("div", null, country));
+  return __jsx$3(StyledAddress, null, __jsx$3("div", null, line1), line2 && __jsx$3("div", null, line2), line3 && __jsx$3("div", null, line3), __jsx$3("div", null, town), county && __jsx$3("div", null, county), __jsx$3("div", null, postcode), __jsx$3("div", null, country));
 };
 var StyledAddress = styled.address.withConfig({
   displayName: "address__StyledAddress",
@@ -5684,7 +5711,7 @@ var AvatarDefaultProps = {
   size: 'lg'
 };
 
-var __jsx$3 = React.createElement;
+var __jsx$4 = React.createElement;
 var Avatar = function Avatar(_ref) {
   var action = _ref.action,
       actionClick = _ref.actionClick,
@@ -5701,16 +5728,16 @@ var Avatar = function Avatar(_ref) {
   var avatarSrc = src || gmail && gravatar.url(gmail, {
     d: 'identicon'
   });
-  return __jsx$3(StyledAvatar, {
+  return __jsx$4(StyledAvatar, {
     className: className,
     context: context,
     onClick: click,
     style: style,
     size: size
-  }, children || avatarSrc && __jsx$3(Image$1, {
+  }, children || avatarSrc && __jsx$4(Image$1, {
     alt: "Avatar",
     src: avatarSrc
-  }) || getAcronym(content), action && __jsx$3(StyledAction, _extends({
+  }) || getAcronym(content), action && __jsx$4(StyledAction, _extends({
     onClick: actionClick
   }, actionProps), action));
 };
@@ -5844,13 +5871,13 @@ var IconDefaultProps = {
   prefix: 'far'
 };
 
-var __jsx$4 = React.createElement;
+var __jsx$5 = React.createElement;
 var Icon = function Icon(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix,
       props = _objectWithoutProperties(_ref, ["icon", "prefix"]);
 
-  return __jsx$4(StyledIcon, _extends({
+  return __jsx$5(StyledIcon, _extends({
     icon: [prefix, icon]
   }, props));
 };
@@ -5870,22 +5897,22 @@ var StyledIcon = styled(FontAwesomeIcon).withConfig({
 Icon.propTypes = IconPropTypes;
 Icon.defaultProps = IconDefaultProps;
 
-var __jsx$5 = React.createElement;
+var __jsx$6 = React.createElement;
 var IconStacked = function IconStacked(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix;
-  return __jsx$5("span", {
+  return __jsx$6("span", {
     className: "fa-stack fa-1x",
     style: {
       pointerEvents: 'none'
     }
-  }, __jsx$5(Icon, {
+  }, __jsx$6(Icon, {
     className: "fa-stack-2x",
     color: "#eaf0f6",
     fixedWidth: false,
     icon: "circle",
     prefix: "fas"
-  }), __jsx$5(Icon, {
+  }), __jsx$6(Icon, {
     className: "fa-stack-1x",
     color: "#506e91",
     fixedWidth: false,
@@ -5920,7 +5947,7 @@ var BadgeDefaultProps = {
   size: 'md'
 };
 
-var __jsx$6 = React.createElement;
+var __jsx$7 = React.createElement;
 var Badge = function Badge(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -5931,14 +5958,14 @@ var Badge = function Badge(_ref) {
       size = _ref.size,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$6(StyledBadge, {
+  return __jsx$7(StyledBadge, {
     className: className,
     context: context,
     href: to,
     itemProp: "keywords",
     size: size,
     style: style
-  }, icon && __jsx$6(StyledIcon$1, {
+  }, icon && __jsx$7(StyledIcon$1, {
     icon: icon,
     prefix: iconPrefix
   }), content || children);
@@ -5963,11 +5990,11 @@ var StyledIcon$1 = styled(Icon).withConfig({
 Badge.propTypes = BadgePropTypes;
 Badge.defaultProps = BadgeDefaultProps;
 
-var __jsx$7 = React.createElement;
+var __jsx$8 = React.createElement;
 var Blockquote = function Blockquote(_ref) {
   var footer = _ref.footer,
       text = _ref.text;
-  return __jsx$7(StyledBlockquote, null, __jsx$7(StyledText, null, text), footer && __jsx$7(StyledFooter, null, footer));
+  return __jsx$8(StyledBlockquote, null, __jsx$8(StyledText, null, text), footer && __jsx$8(StyledFooter, null, footer));
 };
 var StyledBlockquote = styled.blockquote.withConfig({
   displayName: "blockquote__StyledBlockquote",
@@ -6017,7 +6044,7 @@ var ButtonDefaultProps = {
   type: 'button'
 };
 
-var __jsx$8 = React.createElement;
+var __jsx$9 = React.createElement;
 var Button = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var children = _ref.children,
       content = _ref.content,
@@ -6032,15 +6059,15 @@ var Button = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var theme = useTheme();
   var textContext = getTextContext(context, outline);
   var text = children || content;
-  return __jsx$8(StyledButton, _extends({
+  return __jsx$9(StyledButton, _extends({
     context: context,
     outline: outline,
     textContext: textContext,
     ref: ref,
     role: "button"
-  }, props), startIcon && __jsx$8(Icon, _extends({
+  }, props), startIcon && __jsx$9(Icon, _extends({
     icon: startIcon
-  }, startIconProps)), text && __jsx$8(StyledContent, null, text), endIcon && __jsx$8(Icon, _extends({
+  }, startIconProps)), text && __jsx$9(StyledContent, null, text), endIcon && __jsx$9(Icon, _extends({
     icon: endIcon
   }, endIconProps)));
 });
@@ -6143,15 +6170,15 @@ var StyledContent = styled.div.withConfig({
 Button.propTypes = ButtonPropTypes;
 Button.defaultProps = ButtonDefaultProps;
 
-var __jsx$9 = React.createElement;
+var __jsx$a = React.createElement;
 var ButtonToolbar = function ButtonToolbar(_ref) {
   var align = _ref.align,
       children = _ref.children;
-  return __jsx$9(StyledToolbar, {
+  return __jsx$a(StyledToolbar, {
     align: align,
     "aria-label": "Toolbar with button groups",
     role: "toolbar"
-  }, __jsx$9(StyledGroup, {
+  }, __jsx$a(StyledGroup, {
     role: "group",
     "aria-label": "First group"
   }, children));
@@ -6181,18 +6208,18 @@ ButtonToolbar.defaultProps = {
   align: 'center'
 };
 
-var __jsx$a = React.createElement;
+var __jsx$b = React.createElement;
 var Close = function Close(_ref) {
   var className = _ref.className,
       click = _ref.click,
       context = _ref.context,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$a(StyledButton$1, {
+  return __jsx$b(StyledButton$1, {
     className: className,
     context: context,
     onClick: click
-  }, __jsx$a(Icon, {
+  }, __jsx$b(Icon, {
     "aria-hidden": "true",
     context: context,
     icon: icon,
@@ -6220,10 +6247,10 @@ Close.defaultProps = {
   iconPrefix: 'fas'
 };
 
-var __jsx$b = React.createElement;
+var __jsx$c = React.createElement;
 var Date$1 = function Date(_ref) {
   var date = _ref.date;
-  return __jsx$b("time", {
+  return __jsx$c("time", {
     dateTime: date,
     itemProp: "datePublished",
     pubdate: "pubdate"
@@ -6233,7 +6260,7 @@ Date$1.propTypes = {
   date: propTypes.string.isRequired
 };
 
-var __jsx$c = React.createElement;
+var __jsx$d = React.createElement;
 var Details = function Details(_ref) {
   var children = _ref.children,
       open = _ref.open,
@@ -6242,14 +6269,14 @@ var Details = function Details(_ref) {
       Toolbar = _ref.Toolbar,
       props = _objectWithoutProperties(_ref, ["children", "open", "style", "summary", "Toolbar"]);
 
-  return __jsx$c(StyledDetails, _extends({
+  return __jsx$d(StyledDetails, _extends({
     open: open
-  }, props), __jsx$c(StyledSummary, null, summary, props.button && __jsx$c(StyledButton$2, {
+  }, props), __jsx$d(StyledSummary, null, summary, props.button && __jsx$d(StyledButton$2, {
     content: props.button || 'Add New',
     context: "secondary",
     onClick: props.handleClick,
     size: "sm"
-  }), Toolbar && __jsx$c(Toolbar, null)), __jsx$c(StyledBody, {
+  }), Toolbar && __jsx$d(Toolbar, null)), __jsx$d(StyledBody, {
     style: style
   }, children));
 };
@@ -6278,17 +6305,17 @@ Details.defaultProps = {
   open: false
 };
 
-var __jsx$d = React.createElement;
+var __jsx$e = React.createElement;
 var DetailsText = function DetailsText(_ref) {
   var content = _ref.content,
       text = _ref.text;
-  return __jsx$d(React.Fragment, null, __jsx$d(Space, {
+  return __jsx$e(React.Fragment, null, __jsx$e(Space, {
     marginBottom: "sm"
-  }), __jsx$d(Text, {
+  }), __jsx$e(Text, {
     content: content,
     context: "dark",
     size: "sm"
-  }), __jsx$d(Text, null, text));
+  }), __jsx$e(Text, null, text));
 };
 
 /**
@@ -6356,12 +6383,12 @@ var Divider = styled.hr.withConfig({
 Divider.propTypes = DividerPropTypes;
 Divider.defaultProps = DividerDefaultProps;
 
-var __jsx$e = React.createElement;
+var __jsx$f = React.createElement;
 var FigureCaption = function FigureCaption(_ref) {
   var children = _ref.children,
       className = _ref.className,
       style = _ref.style;
-  return __jsx$e(StyledCaption, {
+  return __jsx$f(StyledCaption, {
     children: children,
     className: className,
     style: style
@@ -6429,13 +6456,13 @@ Image$1.defaultProps = {
   thumbnail: false
 };
 
-var __jsx$f = React.createElement;
+var __jsx$g = React.createElement;
 var FigureImage = function FigureImage(_ref) {
   var className = _ref.className,
       style = _ref.style,
       props = _objectWithoutProperties(_ref, ["className", "style"]);
 
-  return __jsx$f(StyledImage, _extends({
+  return __jsx$g(StyledImage, _extends({
     className: className,
     style: style
   }, props));
@@ -6449,14 +6476,14 @@ FigureImage.propTypes = {
   style: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 
-var __jsx$g = React.createElement;
+var __jsx$h = React.createElement;
 
 var Figure = function Figure(_ref) {
   var children = _ref.children,
       className = _ref.className,
       slant = _ref.slant,
       style = _ref.style;
-  return __jsx$g(StyledFigure, {
+  return __jsx$h(StyledFigure, {
     children: children,
     className: className,
     itemProp: "image",
@@ -6508,7 +6535,7 @@ var GoogleEvent = function GoogleEvent(_ref) {
   });
 };
 
-var __jsx$h = React.createElement;
+var __jsx$i = React.createElement;
 var Column = function Column(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -6527,7 +6554,7 @@ var Column = function Column(_ref) {
   offset.md = offset.md !== undefined ? offset.md : offset.sm;
   offset.lg = offset.lg !== undefined ? offset.lg : offset.md;
   offset.xl = offset.xl !== undefined ? offset.xl : offset.lg;
-  return __jsx$h(StyledColumn, {
+  return __jsx$i(StyledColumn, {
     children: children,
     className: className,
     off: offset,
@@ -6619,13 +6646,13 @@ Column.defaultProps = {
   debug: false
 };
 
-var __jsx$i = React.createElement;
+var __jsx$j = React.createElement;
 var Container = function Container(_ref) {
   var children = _ref.children,
       className = _ref.className,
       fluid = _ref.fluid,
       style = _ref.style;
-  return __jsx$i(StyledGrid, {
+  return __jsx$j(StyledGrid, {
     children: children,
     className: className,
     fluid: fluid,
@@ -6680,7 +6707,7 @@ Container.defaultProps = {
   style: {}
 };
 
-var __jsx$j = React.createElement;
+var __jsx$k = React.createElement;
 var Row = function Row(_ref) {
   var align = _ref.align,
       children = _ref.children,
@@ -6689,7 +6716,7 @@ var Row = function Row(_ref) {
       noGutter = _ref.noGutter,
       noWrap = _ref.noWrap,
       style = _ref.style;
-  return __jsx$j(StyledRow, {
+  return __jsx$k(StyledRow, {
     align: align,
     children: children,
     className: className,
@@ -6756,7 +6783,7 @@ var HeadingDefaultProps = {
   tag: 'h1'
 };
 
-var __jsx$k = React.createElement;
+var __jsx$l = React.createElement;
 var Heading = function Heading(_ref) {
   var className = _ref.className,
       content = _ref.content,
@@ -6765,7 +6792,7 @@ var Heading = function Heading(_ref) {
       noWrap = _ref.noWrap,
       style = _ref.style,
       tag = _ref.tag;
-  return __jsx$k(StyledHeading, {
+  return __jsx$l(StyledHeading, {
     as: tag,
     className: className,
     context: context,
@@ -6774,7 +6801,7 @@ var Heading = function Heading(_ref) {
     itemProp: "name headline",
     rel: "bookmark",
     style: style
-  }, content && content.__html ? __jsx$k("span", {
+  }, content && content.__html ? __jsx$l("span", {
     dangerouslySetInnerHTML: content
   }) : content);
 };
@@ -6810,7 +6837,7 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-var __jsx$l = React.createElement;
+var __jsx$m = React.createElement;
 var Link = function Link(_ref) {
   var border = _ref.border,
       children = _ref.children,
@@ -6826,18 +6853,18 @@ var Link = function Link(_ref) {
   var obj = _typeof(to) === 'object' ? to : {
     href: to
   };
-  return !validatorUri(to) ? __jsx$l(NextLink, _extends({}, obj, {
+  return !validatorUri(to) ? __jsx$m(NextLink, _extends({}, obj, {
     passHref: passHref,
     replace: replace,
     scroll: scroll,
     shallow: shallow
-  }), __jsx$l(StyledLink, {
+  }), __jsx$m(StyledLink, {
     border: border,
     className: className,
     context: context,
     onClick: onClick,
     target: target
-  }, children)) : __jsx$l(StyledLink, {
+  }, children)) : __jsx$m(StyledLink, {
     border: border,
     className: className,
     context: context,
@@ -6904,7 +6931,7 @@ Link.defaultProps = {
   shallow: false
 };
 
-var __jsx$m = React.createElement;
+var __jsx$n = React.createElement;
 var List = function List(_ref) {
   var border = _ref.border,
       children = _ref.children,
@@ -6925,7 +6952,7 @@ var List = function List(_ref) {
     });
   };
 
-  return __jsx$m(StyledList, {
+  return __jsx$n(StyledList, {
     border: border,
     className: className,
     flush: flush,
@@ -6972,7 +6999,7 @@ List.defaultProps = {
   unstyled: false
 };
 
-var __jsx$n = React.createElement;
+var __jsx$o = React.createElement;
 var ListItem = function ListItem(_ref) {
   var border = _ref.border,
       children = _ref.children,
@@ -6982,13 +7009,13 @@ var ListItem = function ListItem(_ref) {
       icon = _ref.icon,
       prefix = _ref.prefix,
       style = _ref.style;
-  return __jsx$n(StyledItem, {
+  return __jsx$o(StyledItem, {
     border: border,
     className: className,
     flush: flush,
     group: group,
     style: style
-  }, icon && __jsx$n(StyledIcon$2, {
+  }, icon && __jsx$o(StyledIcon$2, {
     "aria-hidden": "true",
     icon: icon,
     prefix: prefix,
@@ -7059,9 +7086,9 @@ Progress.defaultProps = {
   size: 'md'
 };
 
-var __jsx$o = React.createElement;
+var __jsx$p = React.createElement;
 var ProgressBar = function ProgressBar(props) {
-  return __jsx$o(ProgressBarDiv, _extends({
+  return __jsx$p(ProgressBarDiv, _extends({
     "aria-valuenow": props.now,
     "aria-valuemin": props.ariaValueMin,
     "aria-valuemax": props.ariaValueMax
@@ -7129,7 +7156,7 @@ ProgressBarDiv.propTypes = {
   transition: propTypes.string
 };
 
-var __jsx$p = React.createElement;
+var __jsx$q = React.createElement;
 
 function _templateObject18() {
   var data = _taggedTemplateLiteral(["\n          margin-top: calc(2rem * 2);\n        "]);
@@ -7327,7 +7354,7 @@ var Space = function Space(_ref) {
       paddingRight = _ref.paddingRight,
       paddingBottom = _ref.paddingBottom,
       paddingLeft = _ref.paddingLeft;
-  return __jsx$p(StyledSpace, {
+  return __jsx$q(StyledSpace, {
     margin: margin,
     marginX: marginX,
     marginY: marginY,
@@ -7442,7 +7469,7 @@ var TextDefaultProps = {
   variant: 'normal'
 };
 
-var __jsx$q = React.createElement;
+var __jsx$r = React.createElement;
 
 function _templateObject10$1() {
   var data = _taggedTemplateLiteral(["\n        -webkit-text-stroke: 3px #000;\n      "]);
@@ -7554,7 +7581,7 @@ var Text = function Text(_ref) {
       size = _ref.size,
       props = _objectWithoutProperties(_ref, ["align", "children", "className", "colour", "content", "context", "stroke", "size"]);
 
-  return __jsx$q(StyledText$1, _extends({
+  return __jsx$r(StyledText$1, _extends({
     align: align,
     className: className,
     colour: colour,
@@ -7606,20 +7633,20 @@ var StyledText$1 = styled.p.withConfig({
 Text.protoTypes = TextPropTypes;
 Text.defaultProps = TextDefaultProps;
 
-var __jsx$r = React.createElement;
+var __jsx$s = React.createElement;
 var Switch = function Switch(_ref) {
   var context = _ref.context,
       disabled = _ref.disabled,
       handleToggle = _ref.handleToggle,
       size = _ref.size,
       toggled = _ref.toggled;
-  return __jsx$r(StyledSwitchContainer, {
+  return __jsx$s(StyledSwitchContainer, {
     context: context,
     disabled: disabled,
     onClick: handleToggle,
     size: size,
     toggled: toggled
-  }, __jsx$r(StyledSwitch, {
+  }, __jsx$s(StyledSwitch, {
     size: size,
     toggled: toggled
   }));
@@ -7670,7 +7697,7 @@ Switch.propTypes = {
   toggled: propTypes.bool
 };
 
-var __jsx$s = React.createElement;
+var __jsx$t = React.createElement;
 var Toggle = function Toggle(_ref) {
   var context = _ref.context,
       disabled = _ref.disabled,
@@ -7691,7 +7718,7 @@ var Toggle = function Toggle(_ref) {
     setToggled(!toggled);
   };
 
-  return __jsx$s(StyledToggle, null, __jsx$s(Switch, {
+  return __jsx$t(StyledToggle, null, __jsx$t(Switch, {
     context: context,
     disabled: disabled,
     handleToggle: !disabled && handleToggle,
@@ -7728,14 +7755,14 @@ var TooltipDefaultProps = {
   context: 'black'
 };
 
-var __jsx$t = React.createElement;
+var __jsx$u = React.createElement;
 var Tooltip = function Tooltip(_ref) {
   var children = _ref.children,
       content = _ref.content,
       context = _ref.context,
       props = _objectWithoutProperties(_ref, ["children", "content", "context"]);
 
-  return __jsx$t(StyledTippy, _extends({
+  return __jsx$u(StyledTippy, _extends({
     content: content,
     context: context
   }, props), children);
@@ -11168,12 +11195,12 @@ var useTooltip = function useTooltip() {
   };
 };
 
-var __jsx$u = React.createElement;
+var __jsx$v = React.createElement;
 var CheckboxComponent = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var disabled = _ref.disabled,
       props = _objectWithoutProperties(_ref, ["disabled"]);
 
-  return __jsx$u(StyledCheckbox, _extends({
+  return __jsx$v(StyledCheckbox, _extends({
     className: "Form-control",
     disabled: disabled,
     type: "checkbox",
@@ -11191,7 +11218,7 @@ CheckboxComponent.defaultProps = {
   stacked: false
 };
 
-var __jsx$v = React.createElement;
+var __jsx$w = React.createElement;
 var CheckboxField = function CheckboxField(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -11199,18 +11226,18 @@ var CheckboxField = function CheckboxField(_ref) {
       stacked = _ref.stacked,
       props = _objectWithoutProperties(_ref, ["data", "errors", "legend", "stacked"]);
 
-  return __jsx$v(StyledFieldset, {
+  return __jsx$w(StyledFieldset, {
     error: errors[props.name]
-  }, legend && __jsx$v("legend", null, legend), data.map(function (_ref2) {
+  }, legend && __jsx$w("legend", null, legend), data.map(function (_ref2) {
     var disabled = _ref2.disabled,
         label = _ref2.label,
         data = _objectWithoutProperties(_ref2, ["disabled", "label"]);
 
-    return __jsx$v(StyledLabel, {
+    return __jsx$w(StyledLabel, {
       htmlFor: data.id,
       key: data.id,
       stacked: stacked
-    }, __jsx$v(FieldHOC, _extends({
+    }, __jsx$w(FieldHOC, _extends({
       component: CheckboxComponent,
       disabled: disabled,
       errors: errors[props.name],
@@ -11364,7 +11391,7 @@ var PROPERTIES = {
   showPopperArrow: propTypes.bool
 };
 
-var __jsx$w = React.createElement;
+var __jsx$x = React.createElement;
 var DatePickerCalendar = function DatePickerCalendar(_ref) {
   var control = _ref.control,
       defaultValue = _ref.defaultValue,
@@ -11373,10 +11400,10 @@ var DatePickerCalendar = function DatePickerCalendar(_ref) {
       placeholder = _ref.placeholder,
       parentProps = _objectWithoutProperties(_ref, ["control", "defaultValue", "errors", "name", "placeholder"]);
 
-  return __jsx$w(Controller$1, {
+  return __jsx$x(Controller$1, {
     render: function render(props) {
-      return __jsx$w(ReactDatePicker, _extends({
-        customInput: __jsx$w(StyledInput, {
+      return __jsx$x(ReactDatePicker, _extends({
+        customInput: __jsx$x(StyledInput, {
           errors: errors[name]
         }),
         selected: props.value
@@ -11479,7 +11506,7 @@ for (var d$1 = 1; d$1 <= 31; d$1++) {
 
 var DAYS = days;
 
-var __jsx$x = React.createElement;
+var __jsx$y = React.createElement;
 var DatePickerInput = function DatePickerInput(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -11497,20 +11524,20 @@ var DatePickerInput = function DatePickerInput(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$x(React.Fragment, null, __jsx$x(Space, {
+  return __jsx$y(React.Fragment, null, __jsx$y(Space, {
     marginBottom: "0.5rem"
-  }, label), __jsx$x(Row, null, showDay && __jsx$x(Column, {
+  }, label), __jsx$y(Row, null, showDay && __jsx$y(Column, {
     md: 4
-  }, __jsx$x(SelectField, _extends({}, defaultOptions, {
+  }, __jsx$y(SelectField, _extends({}, defaultOptions, {
     data: {
       'data-index': index,
       'data-name': 'day'
     },
     name: "day".concat(name),
     options: DAYS
-  }))), showMonth && __jsx$x(Column, {
+  }))), showMonth && __jsx$y(Column, {
     md: 4
-  }, __jsx$x(SelectField, _extends({}, defaultOptions, {
+  }, __jsx$y(SelectField, _extends({}, defaultOptions, {
     data: {
       'data-index': index,
       'data-name': 'month'
@@ -11521,9 +11548,9 @@ var DatePickerInput = function DatePickerInput(_ref) {
       text: placeHolder !== null && placeHolder !== void 0 ? placeHolder : 'Select month',
       value: ''
     }].concat(_toConsumableArray(MONTHS))
-  }))), showYear && __jsx$x(Column, {
+  }))), showYear && __jsx$y(Column, {
     md: 4
-  }, __jsx$x(SelectField, _extends({}, defaultOptions, {
+  }, __jsx$y(SelectField, _extends({}, defaultOptions, {
     data: {
       'data-index': index,
       'data-name': 'year'
@@ -11558,11 +11585,11 @@ DatePickerInput.defaultProps = {
   yearStart: 1920
 };
 
-var __jsx$y = React.createElement;
+var __jsx$z = React.createElement;
 var Accept = function Accept(_ref) {
   var accept = _ref.accept;
   var files = accept.replace(/,/g, ' and ');
-  return __jsx$y("em", null, "(Only ", files, " will be accepted)");
+  return __jsx$z("em", null, "(Only ", files, " will be accepted)");
 };
 Accept.propTypes = {
   accept: propTypes.string.isRequired
@@ -11571,14 +11598,14 @@ Accept.defaultProps = {
   accept: 'image/jpeg,image/png'
 };
 
-var __jsx$z = React.createElement;
+var __jsx$A = React.createElement;
 var DropzonePreview = function DropzonePreview(_ref) {
   var file = _ref.file,
       handleRemove = _ref.handleRemove,
       index = _ref.index;
-  return __jsx$z(StyledPreview, null, __jsx$z(Close, {
+  return __jsx$A(StyledPreview, null, __jsx$A(Close, {
     click: handleRemove
-  }), __jsx$z(Image$1, {
+  }), __jsx$A(Image$1, {
     alt: "Upload ".concat(index),
     src: file.preview
   }));
@@ -11593,7 +11620,7 @@ DropzonePreview.propTypes = {
   index: propTypes.any.isRequired
 };
 
-var __jsx$A = React.createElement;
+var __jsx$B = React.createElement;
 var Dropzone = function Dropzone(_ref) {
   var accept = _ref.accept,
       disabled = _ref.disabled,
@@ -11644,13 +11671,13 @@ var Dropzone = function Dropzone(_ref) {
   };
 
   var thumbs = function thumbs() {
-    return __jsx$A(StyledContainer, {
+    return __jsx$B(StyledContainer, {
       fluid: true
-    }, __jsx$A(Row, null, files.map(function (file) {
-      return __jsx$A(Column, {
+    }, __jsx$B(Row, null, files.map(function (file) {
+      return __jsx$B(Column, {
         md: 3,
         key: file.name
-      }, __jsx$A(DropzonePreview, {
+      }, __jsx$B(DropzonePreview, {
         file: file,
         handleRemove: function handleRemove() {
           return removeFile(file);
@@ -11660,14 +11687,14 @@ var Dropzone = function Dropzone(_ref) {
     })));
   };
 
-  return __jsx$A(React.Fragment, null, __jsx$A(StyledContainer, _extends({
+  return __jsx$B(React.Fragment, null, __jsx$B(StyledContainer, _extends({
     dragActive: isDragActive,
     dragAccept: isDragAccept,
     dragReject: isDragReject,
     disabled: disabled
-  }, getRootProps()), __jsx$A("input", getInputProps()), isDragAccept && __jsx$A(Text, null, "Accepted"), isDragReject && __jsx$A(Text, null, "Rejected"), isDragActive ? __jsx$A(Text, null, "Drop here") : __jsx$A(React.Fragment, null, __jsx$A(Text, null, "Drop, or click to select"), accept && __jsx$A(Accept, {
+  }, getRootProps()), __jsx$B("input", getInputProps()), isDragAccept && __jsx$B(Text, null, "Accepted"), isDragReject && __jsx$B(Text, null, "Rejected"), isDragActive ? __jsx$B(Text, null, "Drop here") : __jsx$B(React.Fragment, null, __jsx$B(Text, null, "Drop, or click to select"), accept && __jsx$B(Accept, {
     accept: accept
-  }), multiple ? __jsx$A(Text, null, "Accepts multiple files") : __jsx$A(Text, null, "Single file only"))), files.length > 0 && thumbs());
+  }), multiple ? __jsx$B(Text, null, "Accepts multiple files") : __jsx$B(Text, null, "Single file only"))), files.length > 0 && thumbs());
 };
 var StyledContainer = styled.div.withConfig({
   displayName: "dropzone__StyledContainer",
@@ -11698,7 +11725,7 @@ Dropzone.defaultProps = {
   multiple: true
 };
 
-var __jsx$B = React.createElement;
+var __jsx$C = React.createElement;
 var DropzoneUploader = function DropzoneUploader(_ref) {
   var autoUpload = _ref.autoUpload,
       SubmitButtonComponent = _ref.SubmitButtonComponent,
@@ -11726,7 +11753,7 @@ var DropzoneUploader = function DropzoneUploader(_ref) {
     });
   };
 
-  return __jsx$B(Dropzone$1, {
+  return __jsx$C(Dropzone$1, {
     accept: "image/*,audio/*,video/*",
     autoUpload: autoUpload,
     canRestart: false,
@@ -11747,13 +11774,13 @@ DropzoneUploader.defaultProps = {
   url: 'https://httpbin.org/post'
 };
 
-var __jsx$C = React.createElement;
+var __jsx$D = React.createElement;
 var DropzoneField = function DropzoneField(_ref) {
   var control = _ref.control,
       name = _ref.name,
       props = _objectWithoutProperties(_ref, ["control", "name"]);
 
-  return __jsx$C(Controller$1, _extends({
+  return __jsx$D(Controller$1, _extends({
     as: Dropzone,
     control: control,
     name: name
@@ -11773,15 +11800,15 @@ DropzoneField.defaultProps = {
   multiple: false
 };
 
-var __jsx$D = React.createElement;
+var __jsx$E = React.createElement;
 var FormError = function FormError(_ref) {
   var message = _ref.message,
       colour = _ref.colour,
       props = _objectWithoutProperties(_ref, ["message", "colour"]);
 
-  return __jsx$D(Space, {
+  return __jsx$E(Space, {
     marginTop: SIZE.XS
-  }, __jsx$D(StyledSmall, {
+  }, __jsx$E(StyledSmall, {
     color: colour
   }, message));
 };
@@ -11798,7 +11825,7 @@ FormError.propTypes = {
   colour: propTypes.string
 };
 
-var __jsx$E = React.createElement;
+var __jsx$F = React.createElement;
 var CurrencyInput = function CurrencyInput(_ref) {
   var currencySymbol = _ref.currencySymbol,
       errors = _ref.errors,
@@ -11811,19 +11838,19 @@ var CurrencyInput = function CurrencyInput(_ref) {
       size = _ref.size,
       theme = _ref.theme,
       vat = _ref.vat;
-  return __jsx$E(FormLabel, {
+  return __jsx$F(FormLabel, {
     show: show,
     label: label
-  }, __jsx$E(InputGroup, {
+  }, __jsx$F(InputGroup, {
     theme: theme,
     error: errors[name]
-  }, __jsx$E(InputGroupAddon, {
+  }, __jsx$F(InputGroupAddon, {
     addonType: "prepend",
     error: errors[name],
     text: true,
     theme: theme,
     size: size
-  }, currencySymbol), __jsx$E(FormField, {
+  }, currencySymbol), __jsx$F(FormField, {
     errors: errors,
     min: min,
     name: name,
@@ -11833,7 +11860,7 @@ var CurrencyInput = function CurrencyInput(_ref) {
     withAddon: true,
     step: "any",
     type: "number"
-  }), vat && __jsx$E(InputGroupAddon, {
+  }), vat && __jsx$F(InputGroupAddon, {
     addonType: "append",
     error: errors[name],
     text: true,
@@ -11859,7 +11886,7 @@ CurrencyInput.defaultProps = {
   vat: false
 };
 
-var __jsx$F = React.createElement;
+var __jsx$G = React.createElement;
 var FormField = function FormField(_ref) {
   var disabled = _ref.disabled,
       errors = _ref.errors,
@@ -11878,7 +11905,7 @@ var FormField = function FormField(_ref) {
       isTyping = _useState[0],
       setisTyping = _useState[1];
 
-  return __jsx$F(FieldHOC, _extends({
+  return __jsx$G(FieldHOC, _extends({
     "aria-label": name,
     component: StyledInput,
     disabled: disabled,
@@ -11959,7 +11986,7 @@ FormField.defaultProps = {
   type: 'text'
 };
 
-var __jsx$G = React.createElement;
+var __jsx$H = React.createElement;
 var PercentInput = function PercentInput(_ref) {
   var errors = _ref.errors,
       label = _ref.label,
@@ -11967,16 +11994,16 @@ var PercentInput = function PercentInput(_ref) {
       register = _ref.register,
       show = _ref.show,
       symbol = _ref.symbol;
-  return __jsx$G(FormLabel, {
+  return __jsx$H(FormLabel, {
     show: show,
     label: label
-  }, __jsx$G(InputGroup, null, __jsx$G(FormField, {
+  }, __jsx$H(InputGroup, null, __jsx$H(FormField, {
     errors: errors,
     name: name,
     register: register,
     step: "any",
     type: "number"
-  }), __jsx$G(InputGroupAddon, {
+  }), __jsx$H(InputGroupAddon, {
     addonType: "append",
     text: true
   }, symbol)));
@@ -11994,13 +12021,13 @@ PercentInput.defaultProps = {
   symbol: '%'
 };
 
-var __jsx$H = React.createElement;
+var __jsx$I = React.createElement;
 var Form = function Form(_ref) {
   var children = _ref.children,
       handleSubmit = _ref.handleSubmit,
       id = _ref.id,
       style = _ref.style;
-  return __jsx$H(StyledForm, {
+  return __jsx$I(StyledForm, {
     style: style,
     id: id,
     onSubmit: handleSubmit
@@ -12016,7 +12043,7 @@ Form.propTypes = {
   id: propTypes.string
 };
 
-var __jsx$I = React.createElement;
+var __jsx$J = React.createElement;
 
 function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -12032,7 +12059,7 @@ var FieldHOC = function FieldHOC(_ref) {
       validate = _ref.validate,
       props = _objectWithoutProperties(_ref, ["component", "errors", "children", "helperMessage", "register", "show", "showError", "validate"]);
 
-  return __jsx$I(React.Fragment, null, __jsx$I(Component, _extends({
+  return __jsx$J(React.Fragment, null, __jsx$J(Component, _extends({
     "aria-label": props.name,
     errors: errors === null || errors === void 0 ? void 0 : errors.message,
     key: props.name,
@@ -12053,13 +12080,13 @@ var FieldHOC = function FieldHOC(_ref) {
     style: _objectSpread$5({
       display: !show ? 'none' : undefined
     }, props.style)
-  }, props), children), helperMessage && __jsx$I(Space, {
+  }, props), children), helperMessage && __jsx$J(Space, {
     marginTop: SIZE.SM,
     marginBottom: SIZE.XS
-  }, __jsx$I(Text, {
+  }, __jsx$J(Text, {
     size: SIZE.XS,
     context: "default"
-  }, helperMessage)), showError && __jsx$I(FormError, {
+  }, helperMessage)), showError && __jsx$J(FormError, {
     message: (errors === null || errors === void 0 ? void 0 : errors.message) || ''
   }));
 };
@@ -12070,7 +12097,7 @@ FieldHOC.defaultProps = {
   showError: false
 };
 
-var __jsx$J = React.createElement;
+var __jsx$K = React.createElement;
 var colourPlate = {
   dark: COLOUR$1.darkText,
   darkBorder: COLOUR$1.grey80,
@@ -12120,23 +12147,23 @@ var Input = function Input(_ref) {
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["adornments", "decoration", "errors", "label", "message", "name", "placeholder", "register", "size", "type"]);
 
-  return __jsx$J(Wrapper, {
+  return __jsx$K(Wrapper, {
     theme: props.theme,
     decoration: decoration,
     readOnly: props.readOnly
-  }, label && __jsx$J(React.Fragment, null, __jsx$J(Space, {
+  }, label && __jsx$K(React.Fragment, null, __jsx$K(Space, {
     marginBottom: "xs"
-  }, __jsx$J(StyledLabel$1, {
+  }, __jsx$K(StyledLabel$1, {
     theme: props.theme,
     content: label
-  }))), __jsx$J(Space, {
+  }))), __jsx$K(Space, {
     marginBottom: "xs"
-  }, __jsx$J(InputWrapper, {
+  }, __jsx$K(InputWrapper, {
     size: size
-  }, (adornments === null || adornments === void 0 ? void 0 : adornments.startAdornment) && __jsx$J(Adornment, {
+  }, (adornments === null || adornments === void 0 ? void 0 : adornments.startAdornment) && __jsx$K(Adornment, {
     startAdornment: true,
     size: size
-  }, adornments.startAdornment), __jsx$J(StyledInput$1, _extends({
+  }, adornments.startAdornment), __jsx$K(StyledInput$1, _extends({
     adornments: adornments,
     disabled: props.disabled || decoration === InputDecorationTypes.DISABLED,
     message: message,
@@ -12147,9 +12174,9 @@ var Input = function Input(_ref) {
     size: size,
     type: type,
     required: ((_errors$name = errors[name]) === null || _errors$name === void 0 ? void 0 : _errors$name.type) === 'required'
-  }, props)), (adornments === null || adornments === void 0 ? void 0 : adornments.endAdornment) && __jsx$J(Adornment, {
+  }, props)), (adornments === null || adornments === void 0 ? void 0 : adornments.endAdornment) && __jsx$K(Adornment, {
     size: size
-  }, adornments.endAdornment))), message && __jsx$J(StyledMessage, null, message));
+  }, adornments.endAdornment))), message && __jsx$K(StyledMessage, null, message));
 };
 var StyledLabel$1 = styled(Text).withConfig({
   displayName: "input__StyledLabel",
@@ -12254,7 +12281,7 @@ var InputDecorationTypes = {
   WARNING: 'warning'
 };
 
-var __jsx$K = React.createElement;
+var __jsx$L = React.createElement;
 var InputGroupAddon = function InputGroupAddon(_ref) {
   var addonType = _ref.addonType,
       className = _ref.className,
@@ -12264,7 +12291,7 @@ var InputGroupAddon = function InputGroupAddon(_ref) {
       size = _ref.size,
       text = _ref.text,
       theme = _ref.theme;
-  return __jsx$K(StyledInputGroupAddon, {
+  return __jsx$L(StyledInputGroupAddon, {
     addonType: addonType,
     className: addonType,
     children: children,
@@ -12318,13 +12345,13 @@ InputGroupAddon.defaultProps = {
   context: 'light'
 };
 
-var __jsx$L = React.createElement;
+var __jsx$M = React.createElement;
 var InputGroup = function InputGroup(_ref) {
   var children = _ref.children,
       error = _ref.error,
       size = _ref.size,
       theme = _ref.theme;
-  return __jsx$L(StyledInputGroup, {
+  return __jsx$M(StyledInputGroup, {
     children: children,
     error: error,
     size: size,
@@ -12346,20 +12373,20 @@ InputGroup.defaultProps = {
   size: 'md'
 };
 
-var __jsx$M = React.createElement;
+var __jsx$N = React.createElement;
 var FormLabel = function FormLabel(_ref) {
   var children = _ref.children,
       id = _ref.id,
       label = _ref.label,
       show = _ref.show,
       size = _ref.size;
-  return __jsx$M(StyledLabel$2, {
+  return __jsx$N(StyledLabel$2, {
     hasChild: children,
     htmlFor: id,
     show: show
-  }, __jsx$M(Space, {
+  }, __jsx$N(Space, {
     marginBottom: "xs"
-  }, __jsx$M(Text, {
+  }, __jsx$N(Text, {
     size: size !== null && size !== void 0 ? size : 'md',
     colour: "darkText",
     content: label
@@ -12385,12 +12412,12 @@ FormLabel.defaultProps = {
   show: true
 };
 
-var __jsx$N = React.createElement;
+var __jsx$O = React.createElement;
 var RadioComponent = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var disabled = _ref.disabled,
       props = _objectWithoutProperties(_ref, ["disabled"]);
 
-  return __jsx$N(StyledInput$2, _extends({
+  return __jsx$O(StyledInput$2, _extends({
     className: "Form-control",
     disabled: disabled,
     type: "radio",
@@ -12408,7 +12435,7 @@ RadioComponent.defaultProps = {
   stacked: false
 };
 
-var __jsx$O = React.createElement;
+var __jsx$P = React.createElement;
 var RadioField = function RadioField(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -12416,20 +12443,20 @@ var RadioField = function RadioField(_ref) {
       stacked = _ref.stacked,
       props = _objectWithoutProperties(_ref, ["data", "errors", "legend", "stacked"]);
 
-  return __jsx$O(StyledFieldset$1, {
+  return __jsx$P(StyledFieldset$1, {
     error: errors[props.name]
-  }, legend && __jsx$O(StyledLegend, {
+  }, legend && __jsx$P(StyledLegend, {
     error: errors[props.name]
   }, legend), data.map(function (_ref2) {
     var disabled = _ref2.disabled,
         label = _ref2.label,
         data = _objectWithoutProperties(_ref2, ["disabled", "label"]);
 
-    return __jsx$O(StyledLabel$3, {
+    return __jsx$P(StyledLabel$3, {
       htmlFor: data.id,
       key: data.id,
       stacked: stacked
-    }, __jsx$O(FieldHOC, _extends({
+    }, __jsx$P(FieldHOC, _extends({
       component: RadioComponent,
       disabled: disabled,
       errors: errors[props.name],
@@ -12676,7 +12703,7 @@ var defaultStyles = {
   }
 };
 
-var __jsx$P = React.createElement;
+var __jsx$Q = React.createElement;
 var ReactSelectField = function ReactSelectField(_ref) {
   var async = _ref.async,
       cacheOptions = _ref.cacheOptions,
@@ -12694,24 +12721,24 @@ var ReactSelectField = function ReactSelectField(_ref) {
 
   var Component = /*#__PURE__*/forwardRef(function (data, ref) {
     if (async) {
-      return __jsx$P(AsyncSelect, _extends({
+      return __jsx$Q(AsyncSelect, _extends({
         cacheOptions: cacheOptions,
         defaultOptions: defaultOptions,
         loadOptions: loadOptions,
         ref: ref
       }, data));
     } else {
-      return __jsx$P(Select, _extends({
+      return __jsx$Q(Select, _extends({
         ref: ref
       }, data));
     }
   });
-  return __jsx$P(Wrapper$1, {
+  return __jsx$Q(Wrapper$1, {
     size: size,
     error: error || errors[name]
-  }, __jsx$P(Controller$1, {
+  }, __jsx$Q(Controller$1, {
     render: function render(props) {
-      return __jsx$P(Component, _extends({
+      return __jsx$Q(Component, _extends({
         options: options,
         selectedOption: props.value
       }, props, parentProps));
@@ -12754,7 +12781,7 @@ var Wrapper$1 = styled.div.withConfig({
 ReactSelectField.propTypes = reactSelectPropTypes;
 ReactSelectField.defaultProps = reactSelectDefaultProps(defaultStyles);
 
-var __jsx$Q = React.createElement;
+var __jsx$R = React.createElement;
 var Search = function Search(_ref) {
   var appendSearchButton = _ref.appendSearchButton,
       appendSearchIcon = _ref.appendSearchIcon,
@@ -12765,27 +12792,27 @@ var Search = function Search(_ref) {
       prefix = _ref.prefix,
       register = _ref.register,
       type = _ref.type;
-  return __jsx$Q(InputGroup, null, prependSearchIcon && __jsx$Q(InputGroupAddon, {
+  return __jsx$R(InputGroup, null, prependSearchIcon && __jsx$R(InputGroupAddon, {
     addonType: "prepend",
     text: true
-  }, __jsx$Q(Icon, {
+  }, __jsx$R(Icon, {
     icon: "search",
     prefix: prefix
-  })), __jsx$Q(FormField, {
+  })), __jsx$R(FormField, {
     errors: errors,
     name: "query",
     placeholder: placeholder,
     register: register,
     type: type
-  }), appendSearchIcon && __jsx$Q(InputGroupAddon, {
+  }), appendSearchIcon && __jsx$R(InputGroupAddon, {
     addonType: "append",
     text: true
-  }, __jsx$Q(Icon, {
+  }, __jsx$R(Icon, {
     icon: "search",
     prefix: prefix
-  })), appendSearchButton && __jsx$Q(InputGroupAddon, {
+  })), appendSearchButton && __jsx$R(InputGroupAddon, {
     addonType: "append"
-  }, __jsx$Q(Button, {
+  }, __jsx$R(Button, {
     content: label || 'Search',
     context: "dark",
     size: "lg",
@@ -12809,14 +12836,14 @@ Search.defaultProps = {
   type: 'search'
 };
 
-var __jsx$R = React.createElement;
+var __jsx$S = React.createElement;
 var SelectCountryField = function SelectCountryField(_ref) {
   var errors = _ref.errors,
       name = _ref.name,
       register = _ref.register,
       props = _objectWithoutProperties(_ref, ["errors", "name", "register"]);
 
-  return __jsx$R(SelectField, _extends({
+  return __jsx$S(SelectField, _extends({
     errors: errors,
     name: name,
     options: COUNTRY,
@@ -12829,7 +12856,7 @@ SelectCountryField.propTypes = {
   register: propTypes.func.isRequired
 };
 
-var __jsx$S = React.createElement;
+var __jsx$T = React.createElement;
 var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var data = _ref.data,
       defaultValue = _ref.defaultValue,
@@ -12844,14 +12871,14 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
       props = _objectWithoutProperties(_ref, ["data", "defaultValue", "disabled", "errors", "name", "options", "placeholder", "range", "showError", "size"]);
 
   var renderRange = function renderRange() {
-    var options = [__jsx$S("option", {
+    var options = [__jsx$T("option", {
       disabled: true,
       value: "",
       key: "initial0"
     }, placeholder)];
 
     _range(range[1], range[0]).map(function (i) {
-      return options.push(__jsx$S("option", {
+      return options.push(__jsx$T("option", {
         key: "range".concat(i),
         value: i
       }, i));
@@ -12873,13 +12900,13 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
           value = _ref2.value;
 
       if (group) {
-        return __jsx$S("optgroup", {
+        return __jsx$T("optgroup", {
           key: "option".concat(group),
           label: group
         }, renderOptions(items));
       }
 
-      return __jsx$S("option", {
+      return __jsx$T("option", {
         children: text,
         disabled: disabled,
         key: "option".concat(value),
@@ -12888,7 +12915,7 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     });
   };
 
-  return __jsx$S(FieldHOC, _extends({
+  return __jsx$T(FieldHOC, _extends({
     component: StyledSelect,
     defaultValue: defaultValue,
     disabled: disabled,
@@ -12944,7 +12971,7 @@ SelectField.defaultProps = {
   showError: false
 };
 
-var __jsx$T = React.createElement;
+var __jsx$U = React.createElement;
 var TextareaField = function TextareaField(_ref) {
   var autoFocus = _ref.autoFocus,
       className = _ref.className,
@@ -12963,7 +12990,7 @@ var TextareaField = function TextareaField(_ref) {
       wrap = _ref.wrap,
       props = _objectWithoutProperties(_ref, ["autoFocus", "className", "cols", "dir", "disabled", "errors", "maxLength", "name", "placeholder", "readOnly", "rows", "size", "spellCheck", "tabIndex", "wrap"]);
 
-  return __jsx$T(FieldHOC, _extends({
+  return __jsx$U(FieldHOC, _extends({
     component: StyledTextarea,
     autoFocus: autoFocus,
     className: "".concat(className, " Form-control Textarea"),
@@ -13025,13 +13052,13 @@ var yup = require('yup');
 var _require$1 = require('@hookform/resolvers'),
     yupResolver = _require$1.yupResolver;
 
-var __jsx$U = React.createElement;
+var __jsx$V = React.createElement;
 
 var renderItem = function renderItem(_ref, index, current, handleCurrent) {
   var body = _ref.body,
       context = _ref.context,
       title = _ref.title;
-  return __jsx$U(AccordionItem, {
+  return __jsx$V(AccordionItem, {
     key: index,
     context: context,
     open: current.includes(index),
@@ -13102,10 +13129,10 @@ var Accordion = function Accordion(_ref3) {
       style = _ref3.style,
       closeOthersOnOpen = _ref3.closeOthersOnOpen;
   //  moved the body component  and its dependants outside because StyledAccordion doesn't need to be rendered on every single change of body state
-  return __jsx$U(StyledAccordion, {
+  return __jsx$V(StyledAccordion, {
     className: className,
     style: style
-  }, __jsx$U(Body, {
+  }, __jsx$V(Body, {
     children: children,
     data: data,
     closeOthersOnOpen: closeOthersOnOpen
@@ -13123,7 +13150,7 @@ Accordion.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$V = React.createElement;
+var __jsx$W = React.createElement;
 var AccordionItem = /*#__PURE__*/memo(function (_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -13132,19 +13159,19 @@ var AccordionItem = /*#__PURE__*/memo(function (_ref) {
       index = _ref.index,
       open = _ref.open,
       title = _ref.title;
-  return __jsx$V(StyledAccordionItem, {
+  return __jsx$W(StyledAccordionItem, {
     className: className
-  }, __jsx$V(Header, {
+  }, __jsx$W(Header, {
     className: open ? 'opened' : 'closed',
     onClick: function onClick() {
       return handleOpen(index);
     },
     context: context || 'dark'
-  }, title, ' ', __jsx$V(HeaderIcon, {
+  }, title, ' ', __jsx$W(HeaderIcon, {
     "aria-hidden": "true",
     context: "white",
     icon: open ? 'chevron-up' : 'chevron-down'
-  })), __jsx$V(Content, {
+  })), __jsx$W(Content, {
     className: open ? 'opened' : 'closed'
   }, children));
 }, function (_ref2, _ref3) {
@@ -13194,7 +13221,7 @@ AccordionItem["default"] = {
   open: false
 };
 
-var __jsx$W = React.createElement;
+var __jsx$X = React.createElement;
 var Alert = function Alert(_ref) {
   var className = _ref.className,
       close = _ref.close,
@@ -13214,21 +13241,21 @@ var Alert = function Alert(_ref) {
     close && close();
   };
 
-  return visible && __jsx$W(StyledAlert, {
+  return visible && __jsx$X(StyledAlert, {
     className: className,
     context: context,
     style: style
-  }, close && __jsx$W(StyledClose, {
+  }, close && __jsx$X(StyledClose, {
     click: handleClose,
     context: "white",
     header: header,
     icon: "times"
-  }), header && __jsx$W(AlertHeader, {
+  }), header && __jsx$X(AlertHeader, {
     context: context,
     header: header,
     icon: icon,
     iconPrefix: iconPrefix
-  }), __jsx$W(AlertContent, {
+  }), __jsx$X(AlertContent, {
     content: content,
     icon: header ? null : icon,
     iconPrefix: iconPrefix
@@ -13267,12 +13294,12 @@ Alert.defaultProps = {
   context: 'primary'
 };
 
-var __jsx$X = React.createElement;
+var __jsx$Y = React.createElement;
 var AlertContent = function AlertContent(_ref) {
   var content = _ref.content,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$X(StyledAlertContent, null, icon && __jsx$X(Icon, {
+  return __jsx$Y(StyledAlertContent, null, icon && __jsx$Y(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
@@ -13289,15 +13316,15 @@ AlertContent.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$Y = React.createElement;
+var __jsx$Z = React.createElement;
 var AlertHeader = function AlertHeader(_ref) {
   var context = _ref.context,
       header = _ref.header,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$Y(StyledHeader, {
+  return __jsx$Z(StyledHeader, {
     context: context
-  }, icon && __jsx$Y(Icon, {
+  }, icon && __jsx$Z(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
@@ -13319,38 +13346,38 @@ AlertHeader.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$Z = React.createElement;
+var __jsx$_ = React.createElement;
 var Breadcrumb = function Breadcrumb(_ref) {
   var category = _ref.category,
       path = _ref.path,
       page = _ref.page;
   var categoryFormatted = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-  return __jsx$Z("nav", {
+  return __jsx$_("nav", {
     "aria-label": "breadcrumb"
-  }, __jsx$Z(StyledOl, {
+  }, __jsx$_(StyledOl, {
     itemScope: "",
     itemType: "http://schema.org/BreadcrumbList"
-  }, __jsx$Z(StyledLi, {
+  }, __jsx$_(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$Z(Link, {
+  }, __jsx$_(Link, {
     to: "/",
     passHref: true
-  }, __jsx$Z(StyledA, {
+  }, __jsx$_(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, __jsx$Z(Icon, {
+  }, __jsx$_(Icon, {
     icon: "home-heart"
-  }))), __jsx$Z("meta", {
+  }))), __jsx$_("meta", {
     itemProp: "position",
     content: "1"
-  })), __jsx$Z(StyledLi, {
+  })), __jsx$_(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$Z(Link, {
+  }, __jsx$_(Link, {
     to: {
       as: "/blog/".concat(slugify(path)),
       href: {
@@ -13361,21 +13388,21 @@ var Breadcrumb = function Breadcrumb(_ref) {
       }
     },
     passHref: true
-  }, __jsx$Z(StyledA, {
+  }, __jsx$_(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, categoryFormatted)), __jsx$Z("meta", {
+  }, categoryFormatted)), __jsx$_("meta", {
     itemProp: "position",
     content: "2"
-  })), __jsx$Z(StyledLi, {
+  })), __jsx$_(StyledLi, {
     "aria-current": "page",
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$Z("span", {
+  }, __jsx$_("span", {
     itemProp: "name"
-  }, page), __jsx$Z("meta", {
+  }, page), __jsx$_("meta", {
     itemProp: "position",
     content: "3"
   }))));
@@ -13398,7 +13425,7 @@ Breadcrumb.propTypes = {
   path: propTypes.string.isRequired
 };
 
-var __jsx$_ = React.createElement;
+var __jsx$$ = React.createElement;
 var Buttons = function Buttons(_ref) {
   var back = _ref.back,
       backText = _ref.backText,
@@ -13407,26 +13434,26 @@ var Buttons = function Buttons(_ref) {
       nextText = _ref.nextText,
       pathBack = _ref.pathBack,
       pathNext = _ref.pathNext;
-  return __jsx$_(React.Fragment, null, __jsx$_(Divider, {
+  return __jsx$$(React.Fragment, null, __jsx$$(Divider, {
     size: "sm"
-  }), back && __jsx$_(Link, {
+  }), back && __jsx$$(Link, {
     to: pathBack
-  }, __jsx$_(Button, {
+  }, __jsx$$(Button, {
     context: "secondary",
     size: "lg"
-  }, backText)), next && __jsx$_("div", {
+  }, backText)), next && __jsx$$("div", {
     className: "float-right"
-  }, pathNext && __jsx$_(Link, {
+  }, pathNext && __jsx$$(Link, {
     to: pathNext
-  }, __jsx$_(Button, {
+  }, __jsx$$(Button, {
     context: "primary",
     size: "lg"
-  }, nextText)), !pathNext && __jsx$_(Button, {
+  }, nextText)), !pathNext && __jsx$$(Button, {
     context: "primary",
     disabled: nextDisabled,
     size: "lg",
     type: "submit"
-  }, nextText)), __jsx$_("div", {
+  }, nextText)), __jsx$$("div", {
     style: {
       clear: 'both',
       marginBottom: '1rem'
@@ -13447,24 +13474,24 @@ Buttons.defaultProps = {
   nextText: 'Next'
 };
 
-var __jsx$$ = React.createElement;
+var __jsx$10 = React.createElement;
 var CardCTA = function CardCTA(_ref) {
   var func = _ref.func,
       link = _ref.link,
       title = _ref.title;
 
   var CtaButton = function CtaButton(props) {
-    return __jsx$$(StyledButton$3, _extends({
+    return __jsx$10(StyledButton$3, _extends({
       content: title,
       context: "secondary"
     }, props));
   };
 
-  return link ? __jsx$$(Link, {
+  return link ? __jsx$10(Link, {
     border: false,
     passHref: true,
     to: link
-  }, __jsx$$(CtaButton, null)) : __jsx$$(CtaButton, {
+  }, __jsx$10(CtaButton, null)) : __jsx$10(CtaButton, {
     onClick: func
   });
 };
@@ -13481,7 +13508,7 @@ CardCTA.defaultProps = {
   title: 'Read more'
 };
 
-var __jsx$10 = React.createElement;
+var __jsx$11 = React.createElement;
 var CardBody = function CardBody(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -13493,16 +13520,16 @@ var CardBody = function CardBody(_ref) {
       showCta = _ref.showCta,
       title = _ref.title,
       titleNoWrap = _ref.titleNoWrap;
-  return __jsx$10(StyledBody$1, {
+  return __jsx$11(StyledBody$1, {
     className: className,
     center: center
-  }, title && __jsx$10(StyledWrapper, null, __jsx$10(StyledTitle, {
+  }, title && __jsx$11(StyledWrapper, null, __jsx$11(StyledTitle, {
     content: title,
     noWrap: titleNoWrap,
     tag: "h2"
-  })), (children || showCta) && __jsx$10(StyledContent$1, {
+  })), (children || showCta) && __jsx$11(StyledContent$1, {
     context: context
-  }, children, showCta && __jsx$10(CardCTA, {
+  }, children, showCta && __jsx$11(CardCTA, {
     func: ctaFunc,
     link: ctaLink,
     title: ctaTitle
@@ -13584,7 +13611,7 @@ var CardDefaultProps = {
   titleNoWrap: false
 };
 
-var __jsx$11 = React.createElement;
+var __jsx$12 = React.createElement;
 
 function _templateObject$3() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex: 1 0 calc(100%/3 - 30px);\n    flex-direction: column;\n    margin-right: 15px;\n    margin-left: 15px;\n  "]);
@@ -13622,7 +13649,7 @@ var Card = function Card(_ref) {
       to = _ref.to;
 
   var linked = function linked() {
-    return __jsx$11(Link, {
+    return __jsx$12(Link, {
       border: false,
       passHref: true,
       to: to
@@ -13630,7 +13657,7 @@ var Card = function Card(_ref) {
   };
 
   var card = function card() {
-    return __jsx$11(StyledCard, {
+    return __jsx$12(StyledCard, {
       bordered: bordered,
       className: className,
       context: context,
@@ -13638,18 +13665,18 @@ var Card = function Card(_ref) {
       rounded: rounded,
       shadow: shadow,
       style: style
-    }, close && __jsx$11(Close, {
+    }, close && __jsx$12(Close, {
       click: close
-    }), image && __jsx$11(CardImage, {
+    }), image && __jsx$12(CardImage, {
       alt: alt,
       src: image
-    }), header && __jsx$11(CardHeader, {
+    }), header && __jsx$12(CardHeader, {
       content: header,
       context: footerContext
-    }), icon && __jsx$11(StyledIcon$3, {
+    }), icon && __jsx$12(StyledIcon$3, {
       icon: icon,
       size: "4x"
-    }), (title || body) && __jsx$11(CardBody, {
+    }), (title || body) && __jsx$12(CardBody, {
       center: center,
       children: body,
       context: context,
@@ -13659,7 +13686,7 @@ var Card = function Card(_ref) {
       showCta: showCta,
       title: title,
       titleNoWrap: titleNoWrap
-    }), children, footer && __jsx$11(CardFooter, {
+    }), children, footer && __jsx$12(CardFooter, {
       children: footer,
       context: footerContext
     }));
@@ -13698,7 +13725,7 @@ var StyledIcon$3 = styled(Icon).withConfig({
 Card.propTypes = CardPropTypes;
 Card.defaultProps = CardDefaultProps;
 
-var __jsx$12 = React.createElement;
+var __jsx$13 = React.createElement;
 
 function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n    flex-flow: row wrap;\n    margin-left: -15px;\n    margin-right: -15px;\n  "]);
@@ -13711,7 +13738,7 @@ function _templateObject$4() {
 }
 var CardDecks = function CardDecks(_ref) {
   var children = _ref.children;
-  return __jsx$12(StyledDecks, null, children);
+  return __jsx$13(StyledDecks, null, children);
 };
 var StyledDecks = styled.div.withConfig({
   displayName: "decks__StyledDecks",
@@ -13721,11 +13748,11 @@ CardDecks.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var __jsx$13 = React.createElement;
+var __jsx$14 = React.createElement;
 var CardFooter = function CardFooter(_ref) {
   var children = _ref.children,
       context = _ref.context;
-  return __jsx$13(StyledFooter$1, {
+  return __jsx$14(StyledFooter$1, {
     context: context
   }, children);
 };
@@ -13749,11 +13776,11 @@ CardFooter.defaultProps = {
   context: 'light'
 };
 
-var __jsx$14 = React.createElement;
+var __jsx$15 = React.createElement;
 var CardHeader = function CardHeader(_ref) {
   var content = _ref.content,
       context = _ref.context;
-  return __jsx$14(StyledHeader$1, {
+  return __jsx$15(StyledHeader$1, {
     context: context
   }, content);
 };
@@ -13774,12 +13801,12 @@ CardHeader.propTypes = {
   context: propTypes.oneOf(Object.values(CONTEXT))
 };
 
-var __jsx$15 = React.createElement;
+var __jsx$16 = React.createElement;
 var CardImage = function CardImage(_ref) {
   var alt = _ref.alt,
       header = _ref.header,
       src = _ref.src;
-  return __jsx$15(StyledContainer$1, null, __jsx$15(StyledImage$1, {
+  return __jsx$16(StyledContainer$1, null, __jsx$16(StyledImage$1, {
     alt: alt,
     fluid: false,
     imageClasses: "rounded",
@@ -13799,7 +13826,7 @@ CardImage.propTypes = {
   src: propTypes.string.isRequired
 };
 
-var __jsx$16 = React.createElement;
+var __jsx$17 = React.createElement;
 
 var BarComponent = function BarComponent(_ref) {
   var theme = _ref.theme,
@@ -13831,7 +13858,7 @@ var BarComponent = function BarComponent(_ref) {
       isInteractive = _props$isInteractive === void 0 ? BARCHART.isInteractive : _props$isInteractive,
       colorScheme = props.colorScheme,
       showLegend = props.showLegend;
-  return __jsx$16(ResponsiveBar, {
+  return __jsx$17(ResponsiveBar, {
     indexBy: indexBy,
     keys: keys,
     layout: layout,
@@ -13889,7 +13916,7 @@ BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
   showLegend: false
 });
 
-var __jsx$17 = React.createElement;
+var __jsx$18 = React.createElement;
 var LineChart = withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
@@ -13926,7 +13953,7 @@ var LineChart = withTheme(function (_ref) {
       _props$pointSize = props.pointSize,
       pointSize = _props$pointSize === void 0 ? LINECHART.pointSize : _props$pointSize,
       showLegend = props.showLegend;
-  return __jsx$17(ResponsiveLine, {
+  return __jsx$18(ResponsiveLine, {
     areaOpacity: areaOpacity,
     curve: curve,
     data: data,
@@ -13972,7 +13999,7 @@ LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
   showLegend: false
 });
 
-var __jsx$18 = React.createElement;
+var __jsx$19 = React.createElement;
 var PieChart = withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
@@ -14016,7 +14043,7 @@ var PieChart = withTheme(function (_ref) {
       cornerRadius = _props$cornerRadius === void 0 ? PIECHART.cornerRadius : _props$cornerRadius,
       _props$padAngle = props.padAngle,
       padAngle = _props$padAngle === void 0 ? PIECHART.padAngle : _props$padAngle;
-  return __jsx$18(ResponsivePie, {
+  return __jsx$19(ResponsivePie, {
     animate: animate,
     onClick: onClick,
     data: data,
@@ -14059,17 +14086,17 @@ PieChart.defaultProps = Object.assign({}, PieDefaultProps, {
   showLegend: false
 });
 
-var __jsx$19 = React.createElement;
+var __jsx$1a = React.createElement;
 var CarouselArrow = function CarouselArrow(_ref) {
   var clickFunction = _ref.clickFunction,
       context = _ref.context,
       direction = _ref.direction,
       icon = _ref.icon,
       position = _ref.position;
-  return __jsx$19(StyledContainer$2, {
+  return __jsx$1a(StyledContainer$2, {
     direction: direction,
     onClick: clickFunction
-  }, __jsx$19(StyledArrow, {
+  }, __jsx$1a(StyledArrow, {
     context: context,
     icon: icon,
     position: position
@@ -14110,12 +14137,12 @@ CarouselArrow.propTypes = {
   position: propTypes.string.isRequired
 };
 
-var __jsx$1a = React.createElement;
+var __jsx$1b = React.createElement;
 var CarouselSlide = function CarouselSlide(_ref) {
   var children = _ref.children,
       onClick = _ref.onClick,
       style = _ref.style;
-  return __jsx$1a(StyledSlide, {
+  return __jsx$1b(StyledSlide, {
     onClick: onClick,
     style: style
   }, children);
@@ -14130,18 +14157,18 @@ CarouselSlide.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$1b = React.createElement;
+var __jsx$1c = React.createElement;
 var CarouselSampleSlide = function CarouselSampleSlide(_ref) {
   var context = _ref.context,
       img = _ref.img,
       node = _ref.node,
       text = _ref.text;
   if (!img && !text) return null;
-  return __jsx$1b(CarouselSlide, null, node, text && __jsx$1b(StyledText$2, {
+  return __jsx$1c(CarouselSlide, null, node, text && __jsx$1c(StyledText$2, {
     content: text,
     context: context,
     size: "xl"
-  }), img && __jsx$1b(Image$1, {
+  }), img && __jsx$1c(Image$1, {
     src: img
   }));
 };
@@ -14219,7 +14246,7 @@ var CarouselDefaultProps = {
   showPagination: false
 };
 
-var __jsx$1c = React.createElement;
+var __jsx$1d = React.createElement;
 var Carousel = function Carousel(_ref) {
   var arrowContext = _ref.arrowContext,
       arrowPosition = _ref.arrowPosition,
@@ -14256,17 +14283,17 @@ var Carousel = function Carousel(_ref) {
   };
 
   var renderPagination = function renderPagination() {
-    return __jsx$1c(PaginationWrapper, null, __jsx$1c(Pagination, _extends({
+    return __jsx$1d(PaginationWrapper, null, __jsx$1d(Pagination, _extends({
       onPageChange: function onPageChange(page) {
         return setCurrentImageIndex(page - 1);
       },
       currentPage: currentImageIndex + 1,
       pageCount: dataSource.length,
       showNextAndPrev: true,
-      prevLabel: __jsx$1c(Icon, {
+      prevLabel: __jsx$1d(Icon, {
         icon: "chevron-left"
       }),
-      nextLabel: __jsx$1c(Icon, {
+      nextLabel: __jsx$1d(Icon, {
         icon: "chevron-right"
       }),
       size: "xs"
@@ -14275,17 +14302,17 @@ var Carousel = function Carousel(_ref) {
 
   var hasNavigation = Array.isArray(dataSource) && dataSource.length > 1;
   var current = dataSource[currentImageIndex];
-  return __jsx$1c(React.Fragment, null, __jsx$1c(Wrapper$2, {
+  return __jsx$1d(React.Fragment, null, __jsx$1d(Wrapper$2, {
     width: width,
     height: height,
     fullWidth: fullWidth
-  }, hasNavigation && showArrows && __jsx$1c(CarouselArrow, {
+  }, hasNavigation && showArrows && __jsx$1d(CarouselArrow, {
     context: arrowContext,
     clickFunction: previousSlide,
     direction: "left",
     icon: leftArrowIcon,
     position: arrowPosition
-  }), slides ? __jsx$1c(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1c(CarouselArrow, {
+  }), slides ? __jsx$1d(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1d(CarouselArrow, {
     context: arrowContext,
     clickFunction: nextSlide,
     direction: "right",
@@ -14314,7 +14341,7 @@ var PaginationWrapper = styled.div.withConfig({
 Carousel.propTypes = CarouselPropTypes;
 Carousel.defaultProps = CarouselDefaultProps;
 
-var __jsx$1d = React.createElement;
+var __jsx$1e = React.createElement;
 var year = new Date().getFullYear();
 var Copyright = function Copyright(_ref) {
   var brand = _ref.brand,
@@ -14326,20 +14353,20 @@ var Copyright = function Copyright(_ref) {
     return links.map(function (_ref2, index) {
       var name = _ref2.name,
           to = _ref2.to;
-      return __jsx$1d(Link, {
+      return __jsx$1e(Link, {
         key: index,
         passHref: true,
         to: to
-      }, __jsx$1d(StyledLink$1, null, name));
+      }, __jsx$1e(StyledLink$1, null, name));
     });
   };
 
-  return __jsx$1d(StyledCopyright, {
+  return __jsx$1e(StyledCopyright, {
     fixed: fixed,
     "data-cy": "copyright"
-  }, __jsx$1d(StyledContainer$3, null, __jsx$1d(Row, null, __jsx$1d(Column, {
+  }, __jsx$1e(StyledContainer$3, null, __jsx$1e(Row, null, __jsx$1e(Column, {
     md: links.length > 0 ? 3 : 12
-  }, __jsx$1d(StyledBrand, null, __jsx$1d(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1d(Column, {
+  }, __jsx$1e(StyledBrand, null, __jsx$1e(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1e(Column, {
     md: 9
   }, renderLinks()))));
 };
@@ -14392,7 +14419,7 @@ Copyright.defaultProps = {
   links: []
 };
 
-var __jsx$1e = React.createElement;
+var __jsx$1f = React.createElement;
 var DogCard = function DogCard(_ref) {
   var breed = _ref.breed,
       breedName = _ref.breedName,
@@ -14405,7 +14432,7 @@ var DogCard = function DogCard(_ref) {
       sell = _ref.sell;
   var breederSlug = slugify(breeder);
   var nameSlug = slugify(name);
-  return __jsx$1e(Card, {
+  return __jsx$1f(Card, {
     alt: breed,
     bordered: true,
     context: "light",
@@ -14422,12 +14449,12 @@ var DogCard = function DogCard(_ref) {
         }
       }
     }
-  }, __jsx$1e(CardBody, null, __jsx$1e(DogName, {
+  }, __jsx$1f(CardBody, null, __jsx$1f(DogName, {
     row: {
       gender: gender,
       name: name
     }
-  }), sell && __jsx$1e("div", {
+  }), sell && __jsx$1f("div", {
     className: "float-right"
   }, formatPrice(price))));
 };
@@ -14443,7 +14470,7 @@ DogCard.propTypes = {
   sell: propTypes.bool
 };
 
-var __jsx$1f = React.createElement;
+var __jsx$1g = React.createElement;
 var DogLink = function DogLink(_ref) {
   var name = _ref.name;
 
@@ -14453,7 +14480,7 @@ var DogLink = function DogLink(_ref) {
   };
 
   var slug = slugify(name);
-  return __jsx$1f(Link, {
+  return __jsx$1g(Link, {
     to: {
       as: "/dogs/breeds/".concat(slug),
       href: {
@@ -14469,12 +14496,12 @@ DogLink.propTypes = {
   name: propTypes.string.isRequired
 };
 
-var __jsx$1g = React.createElement;
+var __jsx$1h = React.createElement;
 var DogName = function DogName(_ref) {
   var _ref$row = _ref.row,
       gender = _ref$row.gender,
       name = _ref$row.name;
-  return __jsx$1g(React.Fragment, null, __jsx$1g(Icon, {
+  return __jsx$1h(React.Fragment, null, __jsx$1h(Icon, {
     context: gender,
     icon: gender === 'male' ? 'mars' : 'venus',
     size: "lg",
@@ -14489,7 +14516,7 @@ DogName.propTypes = {
   row: propTypes.oneOfType([propTypes.array, propTypes.object]).isRequired
 };
 
-var __jsx$1h = React.createElement;
+var __jsx$1i = React.createElement;
 var Actions = function Actions(_ref) {
   var path = _ref.path,
       row = _ref.row;
@@ -14497,7 +14524,7 @@ var Actions = function Actions(_ref) {
       uId = row.uId;
 
   var action = function action(_action, context, icon, route, tooltip) {
-    return __jsx$1h(Link, {
+    return __jsx$1i(Link, {
       to: {
         href: {
           pathname: "".concat(path, "/").concat(route),
@@ -14509,14 +14536,14 @@ var Actions = function Actions(_ref) {
           }
         }
       }
-    }, __jsx$1h(Tooltip, {
+    }, __jsx$1i(Tooltip, {
       content: tooltip
-    }, __jsx$1h(Button, {
+    }, __jsx$1i(Button, {
       "data-tip": tooltip,
       context: context,
       size: "sm",
       title: _action
-    }, __jsx$1h(Icon, {
+    }, __jsx$1i(Icon, {
       context: "white",
       icon: icon,
       style: {
@@ -14525,7 +14552,7 @@ var Actions = function Actions(_ref) {
     }))));
   };
 
-  return __jsx$1h(React.Fragment, null, __jsx$1h(ButtonToolbar, {
+  return __jsx$1i(React.Fragment, null, __jsx$1i(ButtonToolbar, {
     className: "float-right"
   }, action('Edit', 'primary', 'edit', 'details', 'Edit this dogs profile details'), action('Photos', 'secondary', 'images', 'photos', 'Add or Edit this dogs photos'), action('Health', 'info', 'stethoscope', 'health', 'Add or Edit this dogs health details'), action('Delete', 'danger', 'trash', 'delete', 'Delete this dog')));
 };
@@ -14559,18 +14586,18 @@ var Columns = function Columns(actions, name) {
   }];
 };
 
-var __jsx$1i = React.createElement;
+var __jsx$1j = React.createElement;
 var TableDogs = function TableDogs(_ref) {
   var dogs = _ref.dogs,
       path = _ref.path;
-  return __jsx$1i(Table, {
+  return __jsx$1j(Table, {
     columns: Columns(function (row) {
-      return __jsx$1i(Actions, {
+      return __jsx$1j(Actions, {
         path: path,
         row: row
       });
     }, function (row) {
-      return __jsx$1i(DogName, {
+      return __jsx$1j(DogName, {
         row: row
       });
     }),
@@ -14578,7 +14605,7 @@ var TableDogs = function TableDogs(_ref) {
   });
 };
 
-var __jsx$1j = React.createElement;
+var __jsx$1k = React.createElement;
 var elementTypes = {
   Colour: 'colour',
   List: 'list',
@@ -14618,20 +14645,20 @@ var Dropdown = function Dropdown(_ref) {
       document.removeEventListener('mousedown', handleClickAway);
     };
   }, [open]);
-  return __jsx$1j(StyledDropdown, {
+  return __jsx$1k(StyledDropdown, {
     className: className,
     ref: node
-  }, __jsx$1j(StyledToggle$1, {
+  }, __jsx$1k(StyledToggle$1, {
     className: "".concat(open ? 'dropdown--active' : '', " dropdown--toggle"),
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }, children, caret && __jsx$1j(Icon, {
+  }, children, caret && __jsx$1k(Icon, {
     "aria-hidden": "true",
     className: "dropdown--caret",
     icon: position === Position.Top ? 'carat-up' : 'caret-down',
     prefix: "fas"
-  }), items && open && __jsx$1j(DropdownMenu, {
+  }), items && open && __jsx$1k(DropdownMenu, {
     closeDropdown: function closeDropdown() {
       return setOpen(false);
     },
@@ -14666,7 +14693,7 @@ Dropdown.defaultProps = {
   position: 'left'
 };
 
-var __jsx$1k = React.createElement;
+var __jsx$1l = React.createElement;
 var DropdownMenu = function DropdownMenu(_ref) {
   var closeDropdown = _ref.closeDropdown,
       elementType = _ref.elementType,
@@ -14679,14 +14706,14 @@ var DropdownMenu = function DropdownMenu(_ref) {
     closeDropdown();
   };
 
-  return __jsx$1k(StyledDropdownMenu, {
+  return __jsx$1l(StyledDropdownMenu, {
     elementType: elementType,
     className: "dropdown--menu",
     position: position
-  }, __jsx$1k(TooltipRectangle, {
+  }, __jsx$1l(TooltipRectangle, {
     position: position
   }), items.map(function (item) {
-    return __jsx$1k(DropdownItem, {
+    return __jsx$1l(DropdownItem, {
       closeDropdown: closeDropdown,
       elementType: elementType,
       item: item,
@@ -14736,7 +14763,7 @@ DropdownMenu.propTypes = {
   position: propTypes.oneOf([Position.Top, Position.Right, Position.Bottom, Position.Left])
 };
 
-var __jsx$1l = React.createElement;
+var __jsx$1m = React.createElement;
 
 var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
   var id = _ref.id,
@@ -14744,14 +14771,14 @@ var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
       to = _ref.to;
 
   var item = function item() {
-    return __jsx$1l(StyledLink$2, {
+    return __jsx$1m(StyledLink$2, {
       className: "dropdown--link",
       id: id,
       onClick: onClick
     }, name);
   };
 
-  return to ? __jsx$1l(Link, {
+  return to ? __jsx$1m(Link, {
     border: false,
     passHref: true,
     to: to
@@ -14766,12 +14793,12 @@ var DropdownItem = function DropdownItem(_ref2) {
 
   switch (elementType) {
     case elementTypes.List:
-      return __jsx$1l(StyledDropdownItem, {
+      return __jsx$1m(StyledDropdownItem, {
         divider: item.divider
-      }, item.divider ? __jsx$1l(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
+      }, item.divider ? __jsx$1m(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
 
     case elementTypes.Colour:
-      return __jsx$1l(StyledColourItem, {
+      return __jsx$1m(StyledColourItem, {
         colour: item.colour,
         onClick: function onClick() {
           _onClick(item);
@@ -14779,9 +14806,9 @@ var DropdownItem = function DropdownItem(_ref2) {
       });
 
     case elementTypes.Icon:
-      return __jsx$1l(StyledIconItem, {
+      return __jsx$1m(StyledIconItem, {
         onClick: _onClick
-      }, __jsx$1l(Icon, {
+      }, __jsx$1m(Icon, {
         fixedWidth: false,
         icon: item === null || item === void 0 ? void 0 : item.icon,
         prefix: item === null || item === void 0 ? void 0 : item.prefix
@@ -18916,7 +18943,7 @@ module.exports = exports.default;
 
 var index = /*@__PURE__*/unwrapExports(dist$1);
 
-var __jsx$1m = React.createElement;
+var __jsx$1n = React.createElement;
 
 function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -18956,7 +18983,7 @@ var EmojiMart = function EmojiMart(_ref) {
     handleOpenPicker(false);
   };
 
-  return open && __jsx$1m(Picker, {
+  return open && __jsx$1n(Picker, {
     emoji: "",
     emojiSize: 16,
     include: ['foods', 'people', 'recent', 'nature'],
@@ -18986,7 +19013,7 @@ EmojiMart.defaultProps = {
   open: false
 };
 
-var __jsx$1n = React.createElement;
+var __jsx$1o = React.createElement;
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19042,9 +19069,9 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   });
 
   var input = function input() {
-    return __jsx$1n(FormLabel, {
+    return __jsx$1o(FormLabel, {
       label: "Postcode"
-    }, __jsx$1n(FormField, {
+    }, __jsx$1o(FormField, {
       onChange: change,
       name: "postcode",
       value: form.postcode
@@ -19052,7 +19079,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   };
 
   var button = function button() {
-    return __jsx$1n(Button, {
+    return __jsx$1o(Button, {
       content: "Find your address",
       context: "primary",
       onClick: handleFindAddress,
@@ -19076,9 +19103,9 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
           text: 'Select address',
           value: ''
         });
-        return __jsx$1n(React.Fragment, null, __jsx$1n("p", null), __jsx$1n(FormLabel, {
+        return __jsx$1o(React.Fragment, null, __jsx$1o("p", null), __jsx$1o(FormLabel, {
           label: "Select your address"
-        }, __jsx$1n(SelectField, {
+        }, __jsx$1o(SelectField, {
           onChange: handlePopulateAddress,
           name: "addresses",
           options: reduced,
@@ -19115,47 +19142,47 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
       return changedInputs.map(function (_ref2) {
         var label = _ref2.label,
             id = _ref2.id;
-        return __jsx$1n("span", {
+        return __jsx$1o("span", {
           key: id
-        }, __jsx$1n(FormLabel, {
+        }, __jsx$1o(FormLabel, {
           label: label
-        }, __jsx$1n(FormField, {
+        }, __jsx$1o(FormField, {
           name: id,
           onChange: change,
           value: form[id]
         })));
       });
     } else {
-      return __jsx$1n("span", null);
+      return __jsx$1o("span", null);
     }
   };
 
   var renderError = function renderError() {
     if (!error) return;
-    return __jsx$1n("p", {
+    return __jsx$1o("p", {
       className: "GetAddress-error"
     }, "The postcode was not found");
   };
 
-  return __jsx$1n(React.Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
+  return __jsx$1o(React.Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
 });
 GetAddress.propTypes = {
   apiKey: propTypes.string.isRequired,
   change: propTypes.func.isRequired
 };
 
-var __jsx$1o = React.createElement;
+var __jsx$1p = React.createElement;
 var HeroButtons = function HeroButtons(_ref) {
   var buttons = _ref.buttons;
   return buttons.map(function (_ref2, index) {
     var content = _ref2.content,
         context = _ref2.context,
         to = _ref2.to;
-    return __jsx$1o(StyledLink$3, {
+    return __jsx$1p(StyledLink$3, {
       border: false,
       to: to,
       key: index
-    }, __jsx$1o(StyledButton$4, {
+    }, __jsx$1p(StyledButton$4, {
       content: content,
       context: context,
       size: "lg"
@@ -19174,16 +19201,16 @@ HeroButtons.propTypes = {
   buttons: propTypes.array
 };
 
-var __jsx$1p = React.createElement;
+var __jsx$1q = React.createElement;
 var HeroImage = function HeroImage(_ref) {
   var alt = _ref.alt,
       align = _ref.align,
       image = _ref.image,
       width = _ref.width;
-  return __jsx$1p(StyledColumn$1, {
+  return __jsx$1q(StyledColumn$1, {
     align: align,
     md: 6
-  }, __jsx$1p(StyledImageContainer, null, __jsx$1p(StyledImage$2, {
+  }, __jsx$1q(StyledImageContainer, null, __jsx$1q(StyledImage$2, {
     alt: alt,
     src: image,
     width: width
@@ -19216,7 +19243,7 @@ HeroImage.propTypes = {
   width: propTypes.number
 };
 
-var __jsx$1q = React.createElement;
+var __jsx$1r = React.createElement;
 
 function _templateObject$5() {
   var data = _taggedTemplateLiteral(["\n    width: 25rem;\n  "]);
@@ -19231,10 +19258,10 @@ var TextBlock = function TextBlock(_ref) {
   var children = _ref.children,
       offset = _ref.offset,
       position = _ref.position;
-  return __jsx$1q(StyledCard$1, {
+  return __jsx$1r(StyledCard$1, {
     rounded: false,
     position: position
-  }, __jsx$1q(CardBody, {
+  }, __jsx$1r(CardBody, {
     children: children
   }));
 };
@@ -19256,7 +19283,7 @@ TextBlock.propTypes = {
   offset: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 
-var __jsx$1r = React.createElement;
+var __jsx$1s = React.createElement;
 
 function _templateObject2$3() {
   var data = _taggedTemplateLiteral(["\n    font-size: 3rem;\n    line-height: 3.25rem;\n  "]);
@@ -19294,27 +19321,27 @@ var Hero = function Hero(_ref) {
       width = _ref.width;
 
   var renderLeft = function renderLeft() {
-    return __jsx$1r(StyledColumn$2, {
+    return __jsx$1s(StyledColumn$2, {
       md: 6
-    }, title && __jsx$1r(StyledTitle$1, {
+    }, title && __jsx$1s(StyledTitle$1, {
       tag: "h1",
       content: title
-    }), strapline && __jsx$1r(StyledStrapline, {
+    }), strapline && __jsx$1s(StyledStrapline, {
       tag: "h2",
       content: strapline
-    }), buttons && __jsx$1r(HeroButtons, {
+    }), buttons && __jsx$1s(HeroButtons, {
       buttons: buttons
-    }), message && __jsx$1r("p", {
+    }), message && __jsx$1s("p", {
       children: message
     }));
   };
 
-  return __jsx$1r(StyledHero, {
+  return __jsx$1s(StyledHero, {
     background: background,
     backgroundSize: backgroundSize,
     className: className,
     height: height
-  }, children && children, !children && __jsx$1r(Container, null, __jsx$1r(Row, null, title && renderLeft(), image && __jsx$1r(HeroImage, {
+  }, children && children, !children && __jsx$1s(Container, null, __jsx$1s(Row, null, title && renderLeft(), image && __jsx$1s(HeroImage, {
     alt: alt,
     align: align,
     image: image,
@@ -19366,13 +19393,13 @@ Hero.defaultProps = {
   style: {}
 };
 
-var __jsx$1s = React.createElement;
+var __jsx$1t = React.createElement;
 var ImageMarker = function ImageMarker(_ref) {
   var _styles$shape, _styles$shape2;
 
   var coordinates = _ref.coordinates,
       styles = _ref.styles;
-  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1s(StyledIcon$5, {
+  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1t(StyledIcon$5, {
     coordinates: coordinates,
     context: "primary",
     icon: styles === null || styles === void 0 ? void 0 : (_styles$shape = styles.shape) === null || _styles$shape === void 0 ? void 0 : _styles$shape.icon,
@@ -19380,7 +19407,7 @@ var ImageMarker = function ImageMarker(_ref) {
     pull: "left",
     styles: styles,
     size: "lg"
-  }) : __jsx$1s(StyledMarker, {
+  }) : __jsx$1t(StyledMarker, {
     coordinates: coordinates,
     styles: styles
   });
@@ -19454,7 +19481,7 @@ var ImageLocationProps = {
   style: propTypes.object
 };
 
-var __jsx$1t = React.createElement;
+var __jsx$1u = React.createElement;
 var ImageLocation = function ImageLocation(_ref) {
   var coordinatesChange = _ref.coordinatesChange,
       initialCoordinates = _ref.initialCoordinates,
@@ -19472,9 +19499,9 @@ var ImageLocation = function ImageLocation(_ref) {
       item: item
     });
   }, [coordinates]);
-  return __jsx$1t(StyledImageLocation, {
+  return __jsx$1u(StyledImageLocation, {
     show: show
-  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1t(ImageWrapper, {
+  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1u(ImageWrapper, {
     coordinates: coordinates,
     markerStyles: markerStyles,
     item: item,
@@ -19493,7 +19520,7 @@ ImageLocation.defaultProps = {
   show: true
 };
 
-var __jsx$1u = React.createElement;
+var __jsx$1v = React.createElement;
 var imageHeight = 0;
 var imageWidth = 0;
 var ImageWrapper = function ImageWrapper(_ref) {
@@ -19521,13 +19548,13 @@ var ImageWrapper = function ImageWrapper(_ref) {
     });
   };
 
-  return __jsx$1u(StyledImageWrapper, null, __jsx$1u(Image$1, {
+  return __jsx$1v(StyledImageWrapper, null, __jsx$1v(Image$1, {
     ref: imageRef,
     onClick: handleImageClick,
     alt: item.name,
     fluid: true,
     src: item.filename
-  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1u(ImageMarker, {
+  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1v(ImageMarker, {
     coordinates: MarkerCoordinates,
     key: item.id,
     styles: markerStyles
@@ -19543,7 +19570,7 @@ ImageWrapper.propTypes = {
   setCoordinates: propTypes.func.isRequired
 };
 
-var __jsx$1v = React.createElement;
+var __jsx$1w = React.createElement;
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19555,9 +19582,9 @@ var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
       setValue = _ref.setValue,
       props = _objectWithoutProperties(_ref, ["control", "errors", "setValue"]);
 
-  return __jsx$1v(ControllerWrapper, {
+  return __jsx$1w(ControllerWrapper, {
     className: "".concat(errors && errors[elementName] && 'hasError')
-  }, __jsx$1v(Controller$1, _extends({
+  }, __jsx$1w(Controller$1, _extends({
     as: ImageLocation,
     control: control,
     coordinatesChange: function coordinatesChange(imageLocationData) {
@@ -19639,7 +19666,7 @@ Intercom.propTypes = {
   appID: propTypes.string.isRequired
 };
 
-var __jsx$1w = React.createElement;
+var __jsx$1x = React.createElement;
 
 function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19650,14 +19677,14 @@ var DynamicLocationHOC = function DynamicLocationHOC(Component) {
     // concat the apiKey
     var googleMapURL = "".concat(props.googleMapURL, "&key=").concat(props.apiKey);
 
-    var containerElement = props.containerElement || __jsx$1w("div", {
+    var containerElement = props.containerElement || __jsx$1x("div", {
       style: {
         height: props.containerHeight,
         width: props.containerWidth
       }
     });
 
-    return __jsx$1w(Component, _extends({}, props, {
+    return __jsx$1x(Component, _extends({}, props, {
       containerElement: containerElement,
       googleMapURL: googleMapURL
     }));
@@ -19665,7 +19692,7 @@ var DynamicLocationHOC = function DynamicLocationHOC(Component) {
 };
 
 var DynamicLocation = DynamicLocationHOC(withScriptjs(withGoogleMap(function (props) {
-  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1w(GoogleMap, props) : null;
+  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1x(GoogleMap, props) : null;
 })));
 DynamicLocation.displayName = 'DynamicLocation';
 DynamicLocation.propTypes = _objectSpread$a({
@@ -19680,14 +19707,14 @@ DynamicLocation.propTypes = _objectSpread$a({
 }, GoogleMap.propTypes);
 DynamicLocation.defaultProps = {
   googleMapURL: 'https://maps.googleapis.com/maps/api/js?',
-  loadingElement: __jsx$1w("div", {
+  loadingElement: __jsx$1x("div", {
     style: {
       height: '100%'
     }
   }),
   containerHeight: '400px',
   containerWidth: '100%',
-  mapElement: __jsx$1w("div", {
+  mapElement: __jsx$1x("div", {
     style: {
       height: '100%'
     }
@@ -19701,7 +19728,7 @@ MarkerClusterer.propTypes = MarkerClusterer$1.propTypes;
 var InfoWindow = InfoWindow$1;
 InfoWindow.propTypes = InfoWindow$1.propTypes;
 
-var __jsx$1x = React.createElement;
+var __jsx$1y = React.createElement;
 var StaticLocation = function StaticLocation(_ref) {
   var apiKey = _ref.apiKey,
       center = _ref.center,
@@ -19758,7 +19785,7 @@ var StaticLocation = function StaticLocation(_ref) {
     var mapUrl = map.generateUrl();
     setMapUrl(mapUrl);
   }, []);
-  return __jsx$1x(Container, {
+  return __jsx$1y(Container, {
     className: className,
     width: width,
     height: height,
@@ -19797,17 +19824,17 @@ StaticLocation.defaultProps = {
   zoom: 15
 };
 
-var __jsx$1y = React.createElement;
+var __jsx$1z = React.createElement;
 var Brand = function Brand(_ref) {
   var brand = _ref.brand,
       animational = _ref.animational;
 
   var ImageInDiv = function ImageInDiv() {
-    return __jsx$1y(Link, {
+    return __jsx$1z(Link, {
       border: false,
       to: "/",
       passHref: true
-    }, __jsx$1y(StyledDiv, null, __jsx$1y(Image$1, {
+    }, __jsx$1z(StyledDiv, null, __jsx$1z(Image$1, {
       alt: "Logo",
       draggable: "false",
       src: brand,
@@ -19816,11 +19843,11 @@ var Brand = function Brand(_ref) {
   };
 
   var SingleImage = function SingleImage() {
-    return __jsx$1y(StyledLink$4, {
+    return __jsx$1z(StyledLink$4, {
       border: false,
       to: "/",
       passHref: true
-    }, __jsx$1y(Image$1, {
+    }, __jsx$1z(Image$1, {
       alt: "Logo",
       draggable: "false",
       src: brand,
@@ -19829,9 +19856,9 @@ var Brand = function Brand(_ref) {
   };
 
   if (animational) {
-    return __jsx$1y(ImageInDiv, null);
+    return __jsx$1z(ImageInDiv, null);
   } else {
-    return __jsx$1y(SingleImage, null);
+    return __jsx$1z(SingleImage, null);
   }
 };
 var StyledLink$4 = styled(Link).withConfig({
@@ -19851,10 +19878,10 @@ Brand.defaultProps = {
   animational: false
 };
 
-var __jsx$1z = React.createElement;
+var __jsx$1A = React.createElement;
 var Contained = function Contained(_ref) {
   var content = _ref.content;
-  return __jsx$1z(StyledContainer$4, null, content());
+  return __jsx$1A(StyledContainer$4, null, content());
 };
 var StyledContainer$4 = styled(Container).withConfig({
   displayName: "contained__StyledContainer",
@@ -19864,7 +19891,7 @@ Contained.propTypes = {
   content: propTypes.node.isRequired
 };
 
-var __jsx$1A = React.createElement;
+var __jsx$1B = React.createElement;
 
 function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -19881,36 +19908,36 @@ var Toggler = function Toggler(_ref) {
       visible = _ref.visible;
 
   var CustomTogglerIconOpen = function CustomTogglerIconOpen() {
-    return __jsx$1A(StyledIcon$6, null, __jsx$1A("div", null), __jsx$1A("div", null));
+    return __jsx$1B(StyledIcon$6, null, __jsx$1B("div", null), __jsx$1B("div", null));
   };
 
   var CustomToggler = function CustomToggler() {
-    return __jsx$1A(StyledToggler, {
+    return __jsx$1B(StyledToggler, {
       "aria-expanded": visible ? 'false' : 'true',
       "aria-label": "Toggle navigation",
       onClick: handleMenuClick
-    }, !visible ? __jsx$1A(CustomTogglerIconOpen, null) : __jsx$1A(CustomTogglerIconOpen, null));
+    }, !visible ? __jsx$1B(CustomTogglerIconOpen, null) : __jsx$1B(CustomTogglerIconOpen, null));
   };
 
   var DefaultToggler = function DefaultToggler() {
-    return __jsx$1A(StyledToggler, {
+    return __jsx$1B(StyledToggler, {
       "aria-expanded": visible ? 'false' : 'true',
       "aria-label": "Toggle navigation",
       onClick: handleMenuClick
-    }, !visible ? __jsx$1A(Icon, {
+    }, !visible ? __jsx$1B(Icon, {
       icon: "bars",
       prefix: "fas"
-    }) : __jsx$1A(Icon, {
+    }) : __jsx$1B(Icon, {
       icon: "times",
       size: "lg",
       prefix: "fas"
-    }), __jsx$1A(StyledText$3, null, "Menu"));
+    }), __jsx$1B(StyledText$3, null, "Menu"));
   };
 
   if (custom) {
-    return __jsx$1A(CustomToggler, null);
+    return __jsx$1B(CustomToggler, null);
   } else {
-    return __jsx$1A(DefaultToggler, null);
+    return __jsx$1B(DefaultToggler, null);
   }
 };
 var StyledIcon$6 = styled.div.withConfig({
@@ -19947,7 +19974,7 @@ Toggler.defaultProps = {
   visible: true
 };
 
-var __jsx$1B = React.createElement;
+var __jsx$1C = React.createElement;
 
 function _templateObject3$2() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -19997,14 +20024,14 @@ var Navbar = function Navbar(_ref) {
   };
 
   var Content = function Content() {
-    return __jsx$1B(React.Fragment, null, brand && __jsx$1B(Brand, {
+    return __jsx$1C(React.Fragment, null, brand && __jsx$1C(Brand, {
       animational: animational,
       brand: brand
-    }), __jsx$1B(Toggler, {
+    }), __jsx$1C(Toggler, {
       custom: custom,
       handleMenuClick: handleClick,
       visible: visible
-    }), widgets && __jsx$1B(Widgets, {
+    }), widgets && __jsx$1C(Widgets, {
       brand: brand,
       closeMenu: handleClick,
       type: type,
@@ -20013,11 +20040,11 @@ var Navbar = function Navbar(_ref) {
     }));
   };
 
-  return __jsx$1B(React.Fragment, null, __jsx$1B(StyledNav, {
+  return __jsx$1C(React.Fragment, null, __jsx$1C(StyledNav, {
     style: style
-  }, contained ? __jsx$1B(Contained, {
+  }, contained ? __jsx$1C(Contained, {
     content: Content
-  }) : __jsx$1B(Content, null)), __jsx$1B(StyledOverlay, {
+  }) : __jsx$1C(Content, null)), __jsx$1C(StyledOverlay, {
     hidden: !visible
   }));
 };
@@ -20083,7 +20110,7 @@ Navbar.defaultProps = {
   showMenu: false
 };
 
-var __jsx$1C = React.createElement;
+var __jsx$1D = React.createElement;
 
 function _templateObject$9() {
   var data = _taggedTemplateLiteral(["\n    background: none;\n    border: none;\n    color: ", ";\n    cursor: pointer;\n    font-size: 0.8125rem;\n    padding: 1rem 0.75rem;\n    width: 100%;\n\n    &:hover {\n      color: ", ";\n      background: none;\n    }\n  "]);
@@ -20101,11 +20128,11 @@ var NavButton = function NavButton(_ref) {
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1C(StyledLink$5, {
+  return __jsx$1D(StyledLink$5, {
     border: false,
     passHref: true,
     to: to
-  }, __jsx$1C(StyledButton$5, {
+  }, __jsx$1D(StyledButton$5, {
     id: id,
     context: type.context,
     content: name,
@@ -20169,7 +20196,7 @@ NavCollapse.propTypes = {
   visible: propTypes.bool.isRequired
 };
 
-var __jsx$1D = React.createElement;
+var __jsx$1E = React.createElement;
 
 function _templateObject$b() {
   var data = _taggedTemplateLiteral(["\n      min-width: 11rem;\n      position: absolute;\n    "]);
@@ -20187,15 +20214,15 @@ var NavDropdown = function NavDropdown(_ref) {
       position = _ref.position,
       prefix = _ref.prefix,
       type = _ref.type;
-  return __jsx$1D(StyledContainer$5, null, __jsx$1D(StyledDropdown$1, {
+  return __jsx$1E(StyledContainer$5, null, __jsx$1E(StyledDropdown$1, {
     items: type.items,
     onChange: closeMenu,
     position: position
-  }, icon && __jsx$1D(Icon, {
+  }, icon && __jsx$1E(Icon, {
     "aria-hidden": "true",
     icon: icon,
     prefix: prefix
-  }), __jsx$1D(StyledContent$2, null, name)));
+  }), __jsx$1E(StyledContent$2, null, name)));
 };
 var StyledContainer$5 = styled.div.withConfig({
   displayName: "dropdown__StyledContainer",
@@ -20228,16 +20255,16 @@ NavDropdown.defaultProps = {
   prefix: 'fad'
 };
 
-var __jsx$1E = React.createElement;
+var __jsx$1F = React.createElement;
 var NavIcon = function NavIcon(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1E(Link, {
+  return __jsx$1F(Link, {
     to: to,
     onClick: visible && closeMenu
-  }, __jsx$1E(Icon, {
+  }, __jsx$1F(Icon, {
     icon: type.icon
   }));
 };
@@ -20251,7 +20278,7 @@ NavIcon.defaultProps = {
   visible: false
 };
 
-var __jsx$1F = React.createElement;
+var __jsx$1G = React.createElement;
 
 function _templateObject$c() {
   var data = _taggedTemplateLiteral(["\n    color: ", ";\n    // &:hover {\n    //   color: ", ";\n    // }\n  "]);
@@ -20281,12 +20308,12 @@ var NavLink = function NavLink(_ref) {
     return;
   }
 
-  return __jsx$1F(Link, {
+  return __jsx$1G(Link, {
     border: false,
     onClick: handleClick,
     passHref: true,
     to: to
-  }, __jsx$1F(StyledLink$6, {
+  }, __jsx$1G(StyledLink$6, {
     id: id
   }, name));
 };
@@ -20320,7 +20347,7 @@ NavLink.defaultProps = {
   visible: false
 };
 
-var __jsx$1G = React.createElement;
+var __jsx$1H = React.createElement;
 var NavNotification = function NavNotification(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
@@ -20332,16 +20359,16 @@ var NavNotification = function NavNotification(_ref) {
   };
 
   var link = function link() {
-    return __jsx$1G(Link, {
+    return __jsx$1H(Link, {
       border: false,
       onClick: handleClick,
       passHref: true,
       to: to
-    }, __jsx$1G(Notification, null));
+    }, __jsx$1H(Notification, null));
   };
 
   var Notification = function Notification() {
-    return __jsx$1G(StyledNotifications, null, type && !!type.count && __jsx$1G(StyledCount, null, type.count), __jsx$1G(Icon, {
+    return __jsx$1H(StyledNotifications, null, type && !!type.count && __jsx$1H(StyledCount, null, type.count), __jsx$1H(Icon, {
       icon: "bell",
       prefix: "fad"
     }));
@@ -20350,7 +20377,7 @@ var NavNotification = function NavNotification(_ref) {
   if (to) {
     return link();
   } else {
-    return __jsx$1G(Notification, null);
+    return __jsx$1H(Notification, null);
   }
 };
 var StyledNotifications = styled.div.withConfig({
@@ -20374,7 +20401,7 @@ NavNotification.propTypes = {
   visible: propTypes.bool
 };
 
-var __jsx$1H = React.createElement;
+var __jsx$1I = React.createElement;
 
 function _templateObject2$5() {
   var data = _taggedTemplateLiteral(["\n    border: none;\n    display: flex;\n    flex-direction: column;\n    justify-content: ", ";\n    margin-bottom: ", ";\n  "]);
@@ -20401,14 +20428,14 @@ var Widgets = function Widgets(_ref) {
       type = _ref.type,
       visible = _ref.visible,
       widgets = _ref.widgets;
-  return __jsx$1H(NavCollapse, {
+  return __jsx$1I(NavCollapse, {
     visible: visible
   }, Object.entries(widgets).map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
         direction = _ref3[0],
         link = _ref3[1];
 
-    return __jsx$1H(StyledList$1, {
+    return __jsx$1I(StyledList$1, {
       direction: direction,
       key: direction
     }, link.map(function (_ref4) {
@@ -20422,10 +20449,10 @@ var Widgets = function Widgets(_ref) {
           prefix = _ref4.prefix,
           to = _ref4.to,
           type = _ref4.type;
-      return __jsx$1H(StyledListItem, {
+      return __jsx$1I(StyledListItem, {
         brand: brand,
         key: id
-      }, Component && __jsx$1H(Component, null), type && type.as === 'button' && NavButton({
+      }, Component && __jsx$1I(Component, null), type && type.as === 'button' && NavButton({
         closeMenu: closeMenu,
         id: id,
         name: name,
@@ -20506,7 +20533,7 @@ Widgets.propTypes = {
   widgets: propTypes.object.isRequired
 };
 
-var __jsx$1I = React.createElement;
+var __jsx$1J = React.createElement;
 var Notification = function Notification(_ref) {
   var close = _ref.close,
       content = _ref.content,
@@ -20516,10 +20543,10 @@ var Notification = function Notification(_ref) {
       link = _ref.link,
       title = _ref.title;
 
-  var body = __jsx$1I(React.Fragment, null, __jsx$1I(StyledNotificationBody, null, content), date && __jsx$1I(StyledDate, null, formatRelativeTime(date)));
+  var body = __jsx$1J(React.Fragment, null, __jsx$1J(StyledNotificationBody, null, content), date && __jsx$1J(StyledDate, null, formatRelativeTime(date)));
 
   if (link) {
-    body = __jsx$1I(Link, {
+    body = __jsx$1J(Link, {
       border: false,
       to: {
         href: link
@@ -20530,7 +20557,7 @@ var Notification = function Notification(_ref) {
     }, body);
   }
 
-  return __jsx$1I(StyledNotificationWrapper, null, __jsx$1I(Alert, {
+  return __jsx$1J(StyledNotificationWrapper, null, __jsx$1J(Alert, {
     close: close,
     content: body,
     context: context,
@@ -21583,7 +21610,7 @@ var curriedLighten = /*#__PURE__*/curry
 /* ::<number | string, string, string> */
 (lighten);
 
-var __jsx$1J = React.createElement;
+var __jsx$1K = React.createElement;
 var OffCanvasHeader = function OffCanvasHeader(_ref) {
   var context = _ref.context,
       hasAvatar = _ref.hasAvatar,
@@ -21592,44 +21619,44 @@ var OffCanvasHeader = function OffCanvasHeader(_ref) {
       submit = _ref.submit,
       title = _ref.title,
       variant = _ref.variant;
-  return __jsx$1J(StyledHeader$2, {
+  return __jsx$1K(StyledHeader$2, {
     context: context,
     variant: variant
-  }, __jsx$1J(Row, {
+  }, __jsx$1K(Row, {
     align: "center"
-  }, __jsx$1J(Column, {
+  }, __jsx$1K(Column, {
     md: 8
-  }, __jsx$1J(Icon, {
+  }, __jsx$1K(Icon, {
     context: variant === 'extended' ? 'white' : context,
     icon: "expand",
     prefix: "fas"
-  }), __jsx$1J(StyledHeading$1, {
+  }), __jsx$1K(StyledHeading$1, {
     content: title,
     context: context,
     tag: "h4",
     variant: variant
-  })), __jsx$1J(Column, {
+  })), __jsx$1K(Column, {
     md: 4
-  }, __jsx$1J(StyledContainer$6, null, submit && __jsx$1J(React.Fragment, null, __jsx$1J(Button, {
+  }, __jsx$1K(StyledContainer$6, null, submit && __jsx$1K(React.Fragment, null, __jsx$1K(Button, {
     content: "Submit",
     context: "primary",
     form: "offCanvasForm",
     size: "sm",
     type: "submit"
-  }), __jsx$1J(Divider, {
+  }), __jsx$1K(Divider, {
     flexItem: true,
     size: "sm",
     vertical: true
-  })), __jsx$1J(Close, {
+  })), __jsx$1K(Close, {
     click: onClose,
     context: variant === 'normal' ? context : 'white'
-  })))), __jsx$1J(StyledBodyContainer, null, hasAvatar && __jsx$1J(StyledAvatarContainer, {
+  })))), __jsx$1K(StyledBodyContainer, null, hasAvatar && __jsx$1K(StyledAvatarContainer, {
     context: context
-  }, __jsx$1J(Avatar, {
+  }, __jsx$1K(Avatar, {
     content: "Avatar",
     context: context,
     size: "lg"
-  })), headerContent && __jsx$1J(StyledText$4, {
+  })), headerContent && __jsx$1K(StyledText$4, {
     content: headerContent,
     context: context,
     size: "xs",
@@ -21730,7 +21757,7 @@ OffCanvasOverlay.defaultProps = {
   opacity: 0.3
 };
 
-var __jsx$1K = React.createElement;
+var __jsx$1L = React.createElement;
 var OffCanvasComponent = function OffCanvasComponent(_ref) {
   var children = _ref.children,
       closeOnOverlayClick = _ref.closeOnOverlayClick,
@@ -21769,19 +21796,19 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     }
   };
 
-  return __jsx$1K(React.Fragment, null, overlay && __jsx$1K(OffCanvasOverlay, {
+  return __jsx$1L(React.Fragment, null, overlay && __jsx$1L(OffCanvasOverlay, {
     duration: transitionDuration,
     onClick: handleOverlayClick,
     opacity: overlayOpacity,
     show: initialState
-  }), __jsx$1K(OffCanvasDiv, {
+  }), __jsx$1L(OffCanvasDiv, {
     "data-cy": "offCanvas",
     duration: transitionDuration,
     height: height,
     placement: placement,
     show: initialState,
     width: width
-  }, __jsx$1K(OffCanvasHeader, {
+  }, __jsx$1L(OffCanvasHeader, {
     context: context,
     "data-cy": "offCanvasHeader",
     hasAvatar: hasAvatar,
@@ -21792,7 +21819,7 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     submit: submit,
     title: headerText,
     variant: variant
-  }), __jsx$1K(OffCanvasContent, null, children)));
+  }), __jsx$1L(OffCanvasContent, null, children)));
 };
 OffCanvasComponent.propTypes = {
   children: propTypes.node,
@@ -21826,7 +21853,7 @@ OffCanvasComponent.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1L = React.createElement;
+var __jsx$1M = React.createElement;
 var OffCanvas = function OffCanvas(props) {
   var _useState = useState(false),
       mounted = _useState[0],
@@ -21852,7 +21879,7 @@ var OffCanvas = function OffCanvas(props) {
       }
     }
   }, [props.show]);
-  return mounted ? /*#__PURE__*/createPortal(__jsx$1L(OffCanvasComponent, props), container) : null;
+  return mounted ? /*#__PURE__*/createPortal(__jsx$1M(OffCanvasComponent, props), container) : null;
 };
 OffCanvas.propTypes = {
   closeOnOverlayClick: propTypes.bool,
@@ -21883,7 +21910,7 @@ OffCanvas.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1M = React.createElement;
+var __jsx$1N = React.createElement;
 var PageHeading = function PageHeading(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -21893,14 +21920,14 @@ var PageHeading = function PageHeading(_ref) {
       help = _ref.help,
       helpContent = _ref.helpContent,
       strapline = _ref.strapline;
-  return __jsx$1M(StyledPageHeader, {
+  return __jsx$1N(StyledPageHeader, {
     center: center,
     divider: divider
-  }, __jsx$1M(StyledLeft, null, __jsx$1M(StyledHeading$2, {
+  }, __jsx$1N(StyledLeft, null, __jsx$1N(StyledHeading$2, {
     content: heading,
     context: context,
     pageHeading: true
-  }), strapline && __jsx$1M("div", null, strapline)), (children || help) && __jsx$1M(StyledRight, null, children || helpContent), divider && __jsx$1M(StyledDivider$1, {
+  }), strapline && __jsx$1N("div", null, strapline)), (children || help) && __jsx$1N(StyledRight, null, children || helpContent), divider && __jsx$1N(StyledDivider$1, {
     size: "md"
   }));
 };
@@ -21952,14 +21979,14 @@ PageHeading.defaultProps = {
   strapline: ''
 };
 
-var __jsx$1N = React.createElement;
+var __jsx$1O = React.createElement;
 var PageLoading = function PageLoading(_ref) {
   var children = _ref.children,
       dataCy = _ref.dataCy,
       indicator = _ref.indicator,
       props = _objectWithoutProperties(_ref, ["children", "dataCy", "indicator"]);
 
-  return __jsx$1N(StyledLoading, _extends({
+  return __jsx$1O(StyledLoading, _extends({
     "data-cy": dataCy
   }, props), indicator || children);
 };
@@ -21991,7 +22018,7 @@ PageLoading.defaultProps = {
   position: 'fixed'
 };
 
-var __jsx$1O = React.createElement;
+var __jsx$1P = React.createElement;
 var SPINNER = Array(12).fill('');
 var LdsSpinnerWrapper = styled.div.withConfig({
   displayName: "ldsSpinner__LdsSpinnerWrapper",
@@ -22035,10 +22062,10 @@ var LdsSpinnerWrapper = styled.div.withConfig({
   return temp;
 });
 var LdsSpinner = function LdsSpinner(props) {
-  return __jsx$1O(LdsSpinnerWrapper, _extends({}, props, {
+  return __jsx$1P(LdsSpinnerWrapper, _extends({}, props, {
     spinner: SPINNER
   }), SPINNER.map(function (s, i) {
-    return __jsx$1O("div", {
+    return __jsx$1P("div", {
       key: 'spin' + i
     });
   }));
@@ -22052,12 +22079,12 @@ LdsSpinner.defaultProps = {
   color: '#333'
 };
 
-var __jsx$1P = React.createElement;
+var __jsx$1Q = React.createElement;
 var Container$1 = function Container(_ref) {
   var children = _ref.children,
       isFinished = _ref.isFinished,
       animationDuration = _ref.animationDuration;
-  return __jsx$1P("div", {
+  return __jsx$1Q("div", {
     style: {
       opacity: isFinished ? 0 : 1,
       pointerEvents: 'none',
@@ -22071,12 +22098,12 @@ Container$1.propTypes = {
   isFinished: propTypes.bool.isRequired
 };
 
-var __jsx$1Q = React.createElement;
+var __jsx$1R = React.createElement;
 var Bar = function Bar(_ref) {
   var animationDuration = _ref.animationDuration,
       context = _ref.context,
       progress = _ref.progress;
-  return __jsx$1Q(StyledBar, {
+  return __jsx$1R(StyledBar, {
     context: context,
     style: {
       marginLeft: "".concat((-1 + progress) * 100, "%"),
@@ -22098,7 +22125,7 @@ var StyledBar = styled.div.withConfig({
   return COLOUR[context];
 });
 
-var __jsx$1R = React.createElement;
+var __jsx$1S = React.createElement;
 var PageProgressBar = function PageProgressBar(_ref) {
   var context = _ref.context,
       isAnimating = _ref.isAnimating,
@@ -22129,17 +22156,17 @@ var PageProgressBar = function PageProgressBar(_ref) {
       router.events.on('routeChangeError', routeChangeEndHandler);
     }
   }, []);
-  return __jsx$1R(NProgress, {
+  return __jsx$1S(NProgress, {
     isAnimating: isRouteChanging || isAnimating,
     key: loadingKey || instanceKey
   }, function (_ref2) {
     var animationDuration = _ref2.animationDuration,
         isFinished = _ref2.isFinished,
         progress = _ref2.progress;
-    return __jsx$1R(Container$1, {
+    return __jsx$1S(Container$1, {
       animationDuration: animationDuration,
       isFinished: isFinished
-    }, __jsx$1R(Bar, {
+    }, __jsx$1S(Bar, {
       animationDuration: animationDuration,
       context: context,
       progress: progress
@@ -22158,7 +22185,7 @@ PageProgressBar.defaultProps = {
   instanceKey: null
 };
 
-var __jsx$1S = React.createElement;
+var __jsx$1T = React.createElement;
 var Pagination = function Pagination(_ref) {
   var breakCount = _ref.breakCount,
       children = _ref.children,
@@ -22194,7 +22221,7 @@ var Pagination = function Pagination(_ref) {
   var showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount;
 
   var renderContent = function renderContent() {
-    return __jsx$1S(React.Fragment, null, showPrevButton && __jsx$1S(PaginationItem, {
+    return __jsx$1T(React.Fragment, null, showPrevButton && __jsx$1T(PaginationItem, {
       context: context,
       disabled: currentPage === 1,
       label: prevLabel,
@@ -22202,7 +22229,7 @@ var Pagination = function Pagination(_ref) {
         return handleChange('prev');
       },
       size: size
-    }), showPrevDots && __jsx$1S(PaginationItem, {
+    }), showPrevDots && __jsx$1T(PaginationItem, {
       onClick: function onClick() {
         return handleChange(prevChunk[prevChunk.length - 1]);
       },
@@ -22210,7 +22237,7 @@ var Pagination = function Pagination(_ref) {
       label: "...",
       size: size
     }), currentChunk.map(function (p) {
-      return __jsx$1S(PaginationItem, {
+      return __jsx$1T(PaginationItem, {
         active: p === currentPage,
         context: context,
         key: "".concat("page".concat(p)),
@@ -22220,14 +22247,14 @@ var Pagination = function Pagination(_ref) {
         },
         size: size
       });
-    }), showNextDots && __jsx$1S(PaginationItem, {
+    }), showNextDots && __jsx$1T(PaginationItem, {
       onClick: function onClick() {
         return handleChange(nextChunk[0]);
       },
       context: context,
       label: "...",
       size: size
-    }), showNextButton && __jsx$1S(PaginationItem, {
+    }), showNextButton && __jsx$1T(PaginationItem, {
       context: context,
       disabled: currentPage === pageCount,
       label: nextLabel,
@@ -22242,7 +22269,7 @@ var Pagination = function Pagination(_ref) {
     return null;
   }
 
-  return __jsx$1S(StyledPagination, _extends({
+  return __jsx$1T(StyledPagination, _extends({
     "aria-label": "Pagination"
   }, props), children || renderContent());
 };
@@ -22253,7 +22280,7 @@ var StyledPagination = styled.ul.withConfig({
 Pagination.propTypes = PaginationPropTypes;
 Pagination.defaultProps = PaginationDefaultProps;
 
-var __jsx$1T = React.createElement;
+var __jsx$1U = React.createElement;
 var PaginationItem = function PaginationItem(_ref) {
   var active = _ref.active,
       context = _ref.context,
@@ -22263,7 +22290,7 @@ var PaginationItem = function PaginationItem(_ref) {
       size = _ref.size,
       props = _objectWithoutProperties(_ref, ["active", "context", "disabled", "label", "onClick", "size"]);
 
-  return __jsx$1T(StyledLi$1, null, __jsx$1T(StyledButton$6, _extends({
+  return __jsx$1U(StyledLi$1, null, __jsx$1U(StyledButton$6, _extends({
     active: active,
     context: context,
     onClick: onClick,
@@ -22325,7 +22352,7 @@ PaginationItem.defaultProps = {
   size: 'md'
 };
 
-var __jsx$1U = React.createElement;
+var __jsx$1V = React.createElement;
 var Rating = function Rating(_ref) {
   var className = _ref.className,
       context = _ref.context,
@@ -22334,7 +22361,7 @@ var Rating = function Rating(_ref) {
   var rating = [];
 
   for (var i = 0; i < size; i++) {
-    rating.push(__jsx$1U(StyledRating, {
+    rating.push(__jsx$1V(StyledRating, {
       active: i + 1 <= value,
       className: className,
       context: context,
@@ -22364,19 +22391,19 @@ Rating.defaultProps = {
   size: 5
 };
 
-var __jsx$1V = React.createElement;
+var __jsx$1W = React.createElement;
 var Section = function Section(_ref) {
   var children = _ref.children,
       className = _ref.className,
       heading = _ref.heading,
       row = _ref.row,
       style = _ref.style;
-  return __jsx$1V(StyleSection, null, __jsx$1V(Container, null, heading && __jsx$1V(Heading, {
+  return __jsx$1W(StyleSection, null, __jsx$1W(Container, null, heading && __jsx$1W(Heading, {
     className: "text-center",
     content: heading,
     context: "primary",
     tag: "h2"
-  }), row ? __jsx$1V(Row, null, children) : children));
+  }), row ? __jsx$1W(Row, null, children) : children));
 };
 var StyleSection = styled.section.withConfig({
   displayName: "section__StyleSection",
@@ -22394,26 +22421,26 @@ Section.defaultProps = {
   row: true
 };
 
-var __jsx$1W = React.createElement;
+var __jsx$1X = React.createElement;
 var Sidebar = function Sidebar(_ref) {
   var brand = _ref.brand,
       data = _ref.data;
 
   var link = function link(icon, name, to) {
     var iconArray = Array.isArray(icon);
-    return __jsx$1W(Link, {
+    return __jsx$1X(Link, {
       to: to,
       passHref: true
-    }, __jsx$1W(StyledLink$7, null, icon && __jsx$1W(Icon, {
+    }, __jsx$1X(StyledLink$7, null, icon && __jsx$1X(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0]
     }), name));
   };
 
-  return __jsx$1W(StyledAside, null, __jsx$1W(StyledBrand$1, null, __jsx$1W(Image$1, {
+  return __jsx$1X(StyledAside, null, __jsx$1X(StyledBrand$1, null, __jsx$1X(Image$1, {
     alt: "Logo",
     src: brand
-  })), __jsx$1W(List, {
+  })), __jsx$1X(List, {
     group: true
   }, data.map(function (_ref2, index) {
     var Component = _ref2.Component,
@@ -22421,11 +22448,11 @@ var Sidebar = function Sidebar(_ref) {
         icon = _ref2.icon,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$1W(StyledLi$2, {
+    return __jsx$1X(StyledLi$2, {
       key: index
-    }, divider ? __jsx$1W(StyledDivider$2, {
+    }, divider ? __jsx$1X(StyledDivider$2, {
       size: "sm"
-    }) : Component ? __jsx$1W(Component, null) : to ? link(icon, name, to) : name);
+    }) : Component ? __jsx$1X(Component, null) : to ? link(icon, name, to) : name);
   })));
 };
 var StyledAside = styled.aside.withConfig({
@@ -22484,17 +22511,17 @@ SimpleTime.propTypes = {
   endTime: propTypes.oneOfType([propTypes.number, propTypes.string])
 };
 
-var __jsx$1X = React.createElement;
+var __jsx$1Y = React.createElement;
 var Stepper = function Stepper(_ref) {
   var className = _ref.className,
       items = _ref.items,
       summary = _ref.summary;
-  return __jsx$1X(StyledStepper, null, __jsx$1X("ul", null, items.map(function (item) {
-    return item.active !== false && __jsx$1X(StepperItem, {
+  return __jsx$1Y(StyledStepper, null, __jsx$1Y("ul", null, items.map(function (item) {
+    return item.active !== false && __jsx$1Y(StepperItem, {
       item: item,
       key: item.id
     });
-  })), summary && __jsx$1X(StepperSummary, {
+  })), summary && __jsx$1Y(StepperSummary, {
     summary: summary
   }));
 };
@@ -22508,7 +22535,7 @@ Stepper.propTypes = {
   summary: propTypes.oneOfType([propTypes.array, propTypes.func])
 };
 
-var __jsx$1Y = React.createElement;
+var __jsx$1Z = React.createElement;
 var StepperItem = function StepperItem(_ref) {
   var item = _ref.item;
 
@@ -22517,7 +22544,7 @@ var StepperItem = function StepperItem(_ref) {
       var id = _ref2.id,
           active = _ref2.active,
           data = _ref2.data;
-      return active && __jsx$1Y("li", {
+      return active && __jsx$1Z("li", {
         key: id
       }, typeof data === 'function' ? data() : data);
     });
@@ -22533,9 +22560,9 @@ var StepperItem = function StepperItem(_ref) {
           handleClick = _ref3.handleClick,
           to = _ref3.to,
           type = _ref3.type;
-      return active && __jsx$1Y("li", {
+      return active && __jsx$1Z("li", {
         key: id
-      }, type === 'button' && __jsx$1Y(Button, _extends({
+      }, type === 'button' && __jsx$1Z(Button, _extends({
         onClick: handleClick,
         content: content,
         context: context,
@@ -22544,17 +22571,17 @@ var StepperItem = function StepperItem(_ref) {
     });
   };
 
-  return __jsx$1Y(StyledStepperItem, null, __jsx$1Y(StyledIconContainer, {
+  return __jsx$1Z(StyledStepperItem, null, __jsx$1Z(StyledIconContainer, {
     active: item.date
-  }, item.date && __jsx$1Y(Icon, {
+  }, item.date && __jsx$1Z(Icon, {
     "aria-hidden": "true",
     color: STEPPER.colourCheckmark,
     fixedWidth: false,
     icon: "check",
     prefix: "fas"
-  })), __jsx$1Y(StyledLabel$4, {
+  })), __jsx$1Z(StyledLabel$4, {
     active: item.date
-  }, item.label), (item.date || item.info) && __jsx$1Y(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$1Y(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$1Y(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$1Y(Divider, {
+  }, item.label), (item.date || item.info) && __jsx$1Z(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$1Z(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$1Z(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$1Z(Divider, {
     size: "sm"
   }));
 };
@@ -22596,7 +22623,7 @@ StyledStepperItem.propTypes = {
   item: propTypes.object
 };
 
-var __jsx$1Z = React.createElement;
+var __jsx$1_ = React.createElement;
 var StepperSummary = function StepperSummary(_ref) {
   var className = _ref.className,
       summary = _ref.summary;
@@ -22605,13 +22632,13 @@ var StepperSummary = function StepperSummary(_ref) {
     return summary.map(function (_ref2, i) {
       var label = _ref2.label,
           value = _ref2.value;
-      return __jsx$1Z("li", {
+      return __jsx$1_("li", {
         key: i
-      }, __jsx$1Z(StyledLabel$5, null, label, " "), __jsx$1Z(StyledValue, null, value));
+      }, __jsx$1_(StyledLabel$5, null, label, " "), __jsx$1_(StyledValue, null, value));
     });
   };
 
-  return __jsx$1Z(StyledStepperSummary, null, __jsx$1Z("ul", null, renderItems(summary)));
+  return __jsx$1_(StyledStepperSummary, null, __jsx$1_("ul", null, renderItems(summary)));
 };
 var StyledStepperSummary = styled.div.withConfig({
   displayName: "summary__StyledStepperSummary",
@@ -22633,9 +22660,9 @@ StepperSummary.propTypes = {
   summary: propTypes.array.isRequired
 };
 
-var __jsx$1_ = React.createElement;
+var __jsx$1$ = React.createElement;
 var TableData = function TableData(props) {
-  return __jsx$1_(StyledTd, props);
+  return __jsx$1$(StyledTd, props);
 };
 TableData.propTypes = {};
 var StyledTd = styled.td.withConfig({
@@ -22652,9 +22679,9 @@ var StyledTd = styled.td.withConfig({
   return align && 'center';
 });
 
-var __jsx$1$ = React.createElement;
+var __jsx$20 = React.createElement;
 var TableHead = function TableHead(props) {
-  return __jsx$1$(StyledTh, props);
+  return __jsx$20(StyledTh, props);
 };
 TableHead.propTypes = {};
 var StyledTh = styled.th.withConfig({
@@ -22677,7 +22704,7 @@ var StyledTh = styled.th.withConfig({
   return sortable && 'cursor: pointer';
 });
 
-var __jsx$20 = React.createElement;
+var __jsx$21 = React.createElement;
 var TableLoading = function TableLoading(_ref) {
   var colsLength = _ref.colsLength,
       show = _ref.show;
@@ -22686,9 +22713,9 @@ var TableLoading = function TableLoading(_ref) {
     return null;
   }
 
-  return __jsx$20(PageLoading, {
+  return __jsx$21(PageLoading, {
     backgroundColor: "#fff",
-    indicator: __jsx$20(LdsSpinner, {
+    indicator: __jsx$21(LdsSpinner, {
       color: "#000",
       size: 50
     }),
@@ -22701,9 +22728,9 @@ TableLoading.propTypes = {
   show: propTypes.bool
 };
 
-var __jsx$21 = React.createElement;
+var __jsx$22 = React.createElement;
 var TableRow = function TableRow(props) {
-  return __jsx$21(StyledTr, props);
+  return __jsx$22(StyledTr, props);
 };
 TableRow.propTypes = {};
 var StyledTr = styled.tr.withConfig({
@@ -22724,7 +22751,7 @@ var StyledTr = styled.tr.withConfig({
   return hover && css([":hover{background-color:#eee;}"]);
 });
 
-var __jsx$22 = React.createElement;
+var __jsx$23 = React.createElement;
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -22803,12 +22830,12 @@ var Table = function Table(_ref) {
         }
       };
 
-      return __jsx$22(TableHead, {
+      return __jsx$23(TableHead, {
         align: align,
         key: index,
         onClick: handleSort,
         sortable: sortable
-      }, text, sortable && hasSort && __jsx$22(Icon, {
+      }, text, sortable && hasSort && __jsx$23(Icon, {
         icon: sort.order === 'asc' ? 'caret-down' : 'caret-up',
         prefix: "fas"
       }));
@@ -22828,7 +22855,7 @@ var Table = function Table(_ref) {
         delete row.hidden;
       }
 
-      return __jsx$22(TableRow, {
+      return __jsx$23(TableRow, {
         context: context,
         key: index,
         "data-item": JSON.stringify(row),
@@ -22849,12 +22876,12 @@ var Table = function Table(_ref) {
         }
 
         var renderValue = typeof value === 'function' ? value() : value;
-        return __jsx$22(TableData, {
+        return __jsx$23(TableData, {
           align: align,
           key: index
         }, length > 0 && column.formatter ? column.formatter({
           row: row
-        }, column.formatterData) : value && value.__html ? __jsx$22("span", {
+        }, column.formatterData) : value && value.__html ? __jsx$23("span", {
           dangerouslySetInnerHTML: value
         }) : renderValue);
       }));
@@ -22862,21 +22889,21 @@ var Table = function Table(_ref) {
   };
 
   var renderTable = function renderTable() {
-    return __jsx$22(StyledTable, {
+    return __jsx$23(StyledTable, {
       className: className
-    }, caption && __jsx$22(StyledCaption$1, null, caption), __jsx$22("thead", null, __jsx$22("tr", null, columns && renderColumns())), __jsx$22("tbody", null, noData && !loading && !rows.length ? __jsx$22(TableRow, null, __jsx$22(TableData, {
+    }, caption && __jsx$23(StyledCaption$1, null, caption), __jsx$23("thead", null, __jsx$23("tr", null, columns && renderColumns())), __jsx$23("tbody", null, noData && !loading && !rows.length ? __jsx$23(TableRow, null, __jsx$23(TableData, {
       align: "center",
       colSpan: tableSpan
     }, "No data available")) : renderRows()));
   };
 
-  return __jsx$22(React.Fragment, null, __jsx$22(StyledWrapper$1, {
+  return __jsx$23(React.Fragment, null, __jsx$23(StyledWrapper$1, {
     fullHeight: fullHeight,
     isLoading: loading
-  }, __jsx$22(TableLoading, {
+  }, __jsx$23(TableLoading, {
     colsLength: tableSpan,
     show: loading
-  }), responsive ? __jsx$22(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$22(Pagination, _extends({
+  }), responsive ? __jsx$23(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$23(Pagination, _extends({
     currentPage: currentPage,
     onPageChange: handlePagination,
     pageCount: Math.ceil(rows.length / perPage),
@@ -22960,7 +22987,7 @@ Table.defaultProps = {
   striped: true
 };
 
-var __jsx$23 = React.createElement;
+var __jsx$24 = React.createElement;
 var TableActions = function TableActions(_ref, data) {
   var row = _ref.row;
 
@@ -22972,7 +22999,7 @@ var TableActions = function TableActions(_ref, data) {
     };
   };
 
-  return __jsx$23(React.Fragment, null, __jsx$23(ButtonToolbar, {
+  return __jsx$24(React.Fragment, null, __jsx$24(ButtonToolbar, {
     align: "flex-start",
     style: {
       zIndex: '100000000'
@@ -22987,10 +23014,10 @@ var TableActions = function TableActions(_ref, data) {
         to = _ref2.to,
         tooltip = _ref2.tooltip;
     var iconArray = Array.isArray(icon);
-    return __jsx$23(Tooltip, {
+    return __jsx$24(Tooltip, {
       content: tooltip,
       key: index
-    }, __jsx$23(StyledButton$7, {
+    }, __jsx$24(StyledButton$7, {
       forwardedAs: "a",
       disabled: disabled,
       context: context,
@@ -22998,13 +23025,13 @@ var TableActions = function TableActions(_ref, data) {
         return onClick(e, row);
       } : handleClick("".concat(to, "?id=").concat(row.id)),
       size: "sm"
-    }, __jsx$23(Icon, {
+    }, __jsx$24(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0],
       style: {
         pointerEvents: 'none'
       }
-    }), row[numberOverlay] > 0 && __jsx$23(StyledNumberOverlay, null, row[numberOverlay])));
+    }), row[numberOverlay] > 0 && __jsx$24(StyledNumberOverlay, null, row[numberOverlay])));
   })));
 };
 var StyledButton$7 = styled(Button).withConfig({
@@ -23019,7 +23046,7 @@ TableActions.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$24 = React.createElement;
+var __jsx$25 = React.createElement;
 var TableLink = function TableLink(path, key, value, dynamicUrl) {
   return function (_ref) {
     var row = _ref.row;
@@ -23038,7 +23065,7 @@ var TableLink = function TableLink(path, key, value, dynamicUrl) {
     };
 
     var item = row[value];
-    return useLink ? __jsx$24(React.Fragment, null, item === '-' && '-', item !== '-' && __jsx$24(StyleLink, {
+    return useLink ? __jsx$25(React.Fragment, null, item === '-' && '-', item !== '-' && __jsx$25(StyleLink, {
       border: false,
       href: getPath(),
       onClick: handleClick
@@ -23053,7 +23080,7 @@ TableLink.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$25 = React.createElement;
+var __jsx$26 = React.createElement;
 var Tab = function Tab(_ref) {
   var activeTab = _ref.activeTab,
       childClick = _ref.childClick,
@@ -23067,7 +23094,7 @@ var Tab = function Tab(_ref) {
     childClick && childClick();
   };
 
-  return __jsx$25(StyledTab, {
+  return __jsx$26(StyledTab, {
     active: activeTab === label,
     context: context,
     disabled: disabled,
@@ -23124,7 +23151,7 @@ Tab.defaultProps = {
   context: false
 };
 
-var __jsx$26 = React.createElement;
+var __jsx$27 = React.createElement;
 var Tabs = function Tabs(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -23161,11 +23188,11 @@ var Tabs = function Tabs(_ref) {
     });
   };
 
-  return __jsx$26(React.Fragment, null, __jsx$26(StyledTabs, {
+  return __jsx$27(React.Fragment, null, __jsx$27(StyledTabs, {
     className: className
   }, children.map(function (_ref2) {
     var props = _ref2.props;
-    return __jsx$26(Tab, _extends({
+    return __jsx$27(Tab, _extends({
       activeTab: activeTab,
       key: props.label,
       onClick: props.disabled ? function () {} : onClickTabItem
@@ -23239,14 +23266,14 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-var __jsx$27 = React.createElement;
+var __jsx$28 = React.createElement;
 var Design = function Design(_ref) {
   var handleReset = _ref.handleReset,
       handleScreenshot = _ref.handleScreenshot,
       refProp = _ref.refProp,
       screenshot = _ref.screenshot,
       videoConstraints = _ref.videoConstraints;
-  return __jsx$27(React.Fragment, null, __jsx$27("div", {
+  return __jsx$28(React.Fragment, null, __jsx$28("div", {
     className: "text-center",
     style: {
       background: '#000',
@@ -23254,24 +23281,24 @@ var Design = function Design(_ref) {
       borderRadius: '.5rem .5rem 0 0',
       marginBottom: '-8px'
     }
-  }, !screenshot && __jsx$27(Webcam, {
+  }, !screenshot && __jsx$28(Webcam, {
     ref: refProp,
     screenshotFormat: "image/jpeg",
     videoConstraints: videoConstraints
-  }), screenshot && __jsx$27("img", {
+  }), screenshot && __jsx$28("img", {
     alt: "user photo",
     src: screenshot,
     style: {
       borderRadius: '.5rem .5rem 0 0'
     }
-  })), __jsx$27("div", {
+  })), __jsx$28("div", {
     style: {
       background: '#C8D1D8',
       borderRadius: '0 0 .5rem .5rem',
       height: '50px',
       position: 'relative'
     }
-  }, __jsx$27("div", {
+  }, __jsx$28("div", {
     onClick: screenshot ? handleReset : handleScreenshot,
     style: {
       background: "".concat(!screenshot ? '#04d4cd' : '#e60811'),
@@ -23286,7 +23313,7 @@ var Design = function Design(_ref) {
       textAlign: 'center',
       width: '50px'
     }
-  }, __jsx$27(Icon, {
+  }, __jsx$28(Icon, {
     color: "white",
     icon: "camera",
     style: {
@@ -23297,7 +23324,7 @@ var Design = function Design(_ref) {
 
 var _class, _temp;
 
-var __jsx$28 = React.createElement;
+var __jsx$29 = React.createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -23542,7 +23569,7 @@ var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
           style = _this$props5.style,
           width = _this$props5.width;
       var src = this.state.src;
-      return __jsx$28("video", {
+      return __jsx$29("video", {
         autoPlay: true,
         width: width,
         height: height,
@@ -23640,7 +23667,7 @@ Webcam.Design = Design;
 //   width: constrainLongType,
 // });
 
-var __jsx$29 = React.createElement;
+var __jsx$2a = React.createElement;
 var events = [{
   start: moment(),
   end: moment().add(1, 'days').toDate(),
@@ -23648,7 +23675,7 @@ var events = [{
 }];
 var BigCalendar = function BigCalendar() {
   var localizer = momentLocalizer(moment);
-  return __jsx$29("div", null, __jsx$29(Calendar$1, {
+  return __jsx$2a("div", null, __jsx$2a(Calendar$1, {
     localizer: localizer,
     defaultDate: new Date(),
     events: events,
@@ -23660,7 +23687,7 @@ var BigCalendar = function BigCalendar() {
   }));
 };
 
-var __jsx$2a = React.createElement;
+var __jsx$2b = React.createElement;
 var FullCalendar;
 var CalendarWrapper = function CalendarWrapper(props) {
   var _useState = useState(false),
@@ -23682,7 +23709,7 @@ var CalendarWrapper = function CalendarWrapper(props) {
         var Calendar = _ref.calendar,
             plugins = _objectWithoutProperties(_ref, ["calendar"]);
 
-        return __jsx$2a(Calendar, _extends({
+        return __jsx$2b(Calendar, _extends({
           plugins: Object.values(plugins),
           ref: props.forwardedRef
         }, props));
@@ -23699,14 +23726,14 @@ var CalendarWrapper = function CalendarWrapper(props) {
   }, []);
 
   var showCalendar = function showCalendar(props) {
-    if (!calendarLoaded) return __jsx$2a("div", null, "Loading ...");
-    return __jsx$2a(FullCalendar, props);
+    if (!calendarLoaded) return __jsx$2b("div", null, "Loading ...");
+    return __jsx$2b(FullCalendar, props);
   };
 
-  return __jsx$2a("div", null, showCalendar(props));
+  return __jsx$2b("div", null, showCalendar(props));
 };
 
-var __jsx$2b = React.createElement;
+var __jsx$2c = React.createElement;
 var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var props = _extends({}, _ref);
 
@@ -23717,14 +23744,14 @@ var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
-  return __jsx$2b(Wrapper$3, null, props.hasLoading && loading && __jsx$2b(PageLoading, {
-    indicator: __jsx$2b(LdsSpinner, {
+  return __jsx$2c(Wrapper$3, null, props.hasLoading && loading && __jsx$2c(PageLoading, {
+    indicator: __jsx$2c(LdsSpinner, {
       color: "#000",
       size: 50
     }),
     opacity: 0.7,
     position: "absolute"
-  }), __jsx$2b(CalendarWrapper, _extends({}, props, {
+  }), __jsx$2c(CalendarWrapper, _extends({}, props, {
     eventColor: props.defaultEventColor || COLOUR.primary,
     header: props.header || CALENDAR.header,
     events: props.events,
@@ -31077,7 +31104,7 @@ exports.default = _Chrome2.default;
 
 var index$1 = /*@__PURE__*/unwrapExports(lib$1);
 
-var __jsx$2c = React.createElement;
+var __jsx$2d = React.createElement;
 var ColorPicker = function ColorPicker(_ref) {
   var type = _ref.type,
       onChangeComplete = _ref.onChangeComplete,
@@ -31085,27 +31112,27 @@ var ColorPicker = function ColorPicker(_ref) {
 
   switch (type) {
     case 'circle':
-      return __jsx$2c(index$1.CirclePicker, _extends({
+      return __jsx$2d(index$1.CirclePicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'sketch':
-      return __jsx$2c(index$1.SketchPicker, _extends({
+      return __jsx$2d(index$1.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'github':
-      return __jsx$2c(index$1.GithubPicker, _extends({
+      return __jsx$2d(index$1.GithubPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'twitter':
-      return __jsx$2c(index$1.TwitterPicker, _extends({
+      return __jsx$2d(index$1.TwitterPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     default:
-      return __jsx$2c(index$1.SketchPicker, _extends({
+      return __jsx$2d(index$1.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
   }
@@ -31120,7 +31147,7 @@ ColorPicker.propTypes = {
   width: propTypes.string
 };
 
-var __jsx$2d = React.createElement;
+var __jsx$2e = React.createElement;
 var EmailChange = function EmailChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -31138,32 +31165,32 @@ var EmailChange = function EmailChange(_ref) {
   var submit = function submit(data) {};
 
   var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return __jsx$2d(React.Fragment, null, __jsx$2d(PageHeading, {
+  return __jsx$2e(React.Fragment, null, __jsx$2e(PageHeading, {
     center: true,
     heading: "Email Change",
     divider: false
-  }), error && __jsx$2d(Alert, {
+  }), error && __jsx$2e(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2d(Form, {
+  }), __jsx$2e(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2d(FormLabel, {
+  }, __jsx$2e(FormLabel, {
     label: "Email"
-  }, __jsx$2d(FormField, {
+  }, __jsx$2e(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2d(Button, {
+  })), __jsx$2e(Button, {
     block: true,
     content: "Submit",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2d("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
+  }), __jsx$2e("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
 };
 EmailChange.propTypes = {
   showPlaceholder: propTypes.bool
@@ -31172,14 +31199,14 @@ EmailChange.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2e = React.createElement;
+var __jsx$2f = React.createElement;
 var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       fixed = _ref.fixed;
 
   var renderColumns = function renderColumns() {
     return columns.map(function (column, index) {
-      return __jsx$2e(Column, _extends({
+      return __jsx$2f(Column, _extends({
         align: column.align,
         key: index,
         offset: column.offset
@@ -31190,7 +31217,7 @@ var Footer = function Footer(_ref) {
 
         switch (key) {
           case 'header':
-            return __jsx$2e(StyledHeading$3, {
+            return __jsx$2f(StyledHeading$3, {
               align: value.align,
               content: value.content,
               key: "".concat(value.content).concat(index).concat(i),
@@ -31214,7 +31241,7 @@ var Footer = function Footer(_ref) {
     var align = _ref4.align,
         direction = _ref4.direction,
         items = _ref4.items;
-    return __jsx$2e(StyledList$2, {
+    return __jsx$2f(StyledList$2, {
       align: align,
       direction: direction,
       key: "".concat(items[0]).concat(index),
@@ -31224,12 +31251,12 @@ var Footer = function Footer(_ref) {
           id = _ref5.id,
           name = _ref5.name,
           to = _ref5.to;
-      return __jsx$2e(StyledListItem$1, {
+      return __jsx$2f(StyledListItem$1, {
         key: id
-      }, __jsx$2e(Link, {
+      }, __jsx$2f(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2e(StyledIcon$7, {
+      }, icon && __jsx$2f(StyledIcon$7, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -31240,18 +31267,18 @@ var Footer = function Footer(_ref) {
   var renderText = function renderText(_ref6, index) {
     var align = _ref6.align,
         items = _ref6.items;
-    return __jsx$2e(Fragment$1, {
+    return __jsx$2f(Fragment$1, {
       key: index
     }, items === null || items === void 0 ? void 0 : items.map(function (_ref7, i) {
       var content = _ref7.content,
           icon = _ref7.icon;
-      return __jsx$2e(Fragment$1, {
+      return __jsx$2f(Fragment$1, {
         key: i
-      }, icon && __jsx$2e(StyledIcon$7, {
+      }, icon && __jsx$2f(StyledIcon$7, {
         context: "primary",
         icon: icon,
         prefix: "fad"
-      }), __jsx$2e(StyledText$5, {
+      }), __jsx$2f(StyledText$5, {
         align: align,
         dangerouslySetInnerHTML: {
           __html: content
@@ -31260,10 +31287,10 @@ var Footer = function Footer(_ref) {
     }));
   };
 
-  return __jsx$2e(StyledFooter$2, {
+  return __jsx$2f(StyledFooter$2, {
     "data-cy": "footer",
     fixed: fixed
-  }, __jsx$2e(Container, null, __jsx$2e(Row, null, renderColumns())));
+  }, __jsx$2f(Container, null, __jsx$2f(Row, null, renderColumns())));
 };
 var StyledFooter$2 = styled.div.withConfig({
   displayName: "footer__StyledFooter",
@@ -31353,7 +31380,7 @@ var ForgotDetailsSchema = object$1().shape({
   email: string$1().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
 });
 
-var __jsx$2f = React.createElement;
+var __jsx$2g = React.createElement;
 var ForgotDetails = function ForgotDetails(_ref) {
   var pathLogIn = _ref.pathLogIn,
       showPlaceholder = _ref.showPlaceholder,
@@ -31366,29 +31393,29 @@ var ForgotDetails = function ForgotDetails(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2f(React.Fragment, null, __jsx$2f(PageHeading, {
+  return __jsx$2g(React.Fragment, null, __jsx$2g(PageHeading, {
     center: true,
     heading: "Forgot Details",
     divider: false
-  }), __jsx$2f(Form, {
+  }), __jsx$2g(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2f(FormLabel, {
+  }, __jsx$2g(FormLabel, {
     label: "Email"
-  }, __jsx$2f(FormField, {
+  }, __jsx$2g(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     register: register
-  })), __jsx$2f(Button, {
+  })), __jsx$2g(Button, {
     block: true,
     content: "Send reset link",
     size: "lg",
     type: "submit"
-  }), __jsx$2f(Link, {
+  }), __jsx$2g(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2f(StyledLink$8, null, "Back to Log In"))));
+  }, __jsx$2g(StyledLink$8, null, "Back to Log In"))));
 };
 var StyledLink$8 = styled.span.withConfig({
   displayName: "forgotDetails__StyledLink",
@@ -31411,7 +31438,7 @@ var ForgotDetailsResetSchema = object$1().shape({
   password: string$1().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
 });
 
-var __jsx$2g = React.createElement;
+var __jsx$2h = React.createElement;
 var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
   var _errors$password;
 
@@ -31425,31 +31452,31 @@ var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2g(React.Fragment, null, __jsx$2g(PageHeading, {
+  return __jsx$2h(React.Fragment, null, __jsx$2h(PageHeading, {
     center: true,
     heading: "Set New Password",
     divider: false
-  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2g(Alert, {
+  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2h(Alert, {
     content: errors.password.message,
     context: "warning"
-  }), __jsx$2g(Form, {
+  }), __jsx$2h(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2g(FormLabel, {
+  }, __jsx$2h(FormLabel, {
     label: "Password"
-  }, __jsx$2g(FormField, {
+  }, __jsx$2h(FormField, {
     errors: errors,
     name: "password",
     register: register,
     type: "password"
-  })), __jsx$2g(Button, {
+  })), __jsx$2h(Button, {
     block: true,
     content: "Submit",
     size: "lg",
     type: "submit"
-  }), __jsx$2g(Link, {
+  }), __jsx$2h(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2g(StyledLink$9, null, "Back to Log In"))));
+  }, __jsx$2h(StyledLink$9, null, "Back to Log In"))));
 };
 var StyledLink$9 = styled.span.withConfig({
   displayName: "forgotDetailsReset__StyledLink",
@@ -31463,7 +31490,7 @@ ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 };
 
-var __jsx$2h = React.createElement;
+var __jsx$2i = React.createElement;
 var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var Login = function Login(_ref) {
   var blockSubmitButton = _ref.blockSubmitButton,
@@ -31518,41 +31545,41 @@ var Login = function Login(_ref) {
   // }
 
 
-  return __jsx$2h(React.Fragment, null, __jsx$2h(PageHeading, {
+  return __jsx$2i(React.Fragment, null, __jsx$2i(PageHeading, {
     center: true,
     heading: heading,
     divider: false
-  }), error && __jsx$2h(Alert, {
+  }), error && __jsx$2i(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2h(Form, {
+  }), __jsx$2i(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2h(FormLabel, {
+  }, __jsx$2i(FormLabel, {
     label: "Email"
-  }, __jsx$2h(FormField, {
+  }, __jsx$2i(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2h(FormLabel, {
+  })), __jsx$2i(FormLabel, {
     label: "Password"
-  }, __jsx$2h(FormField, {
+  }, __jsx$2i(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     register: register,
     type: showPass ? 'text' : 'password'
-  })), showPassword && __jsx$2h(ShowPassword, {
+  })), showPassword && __jsx$2i(ShowPassword, {
     onClick: function onClick() {
       return setShowPass(function (prev) {
         return !prev;
       });
     }
-  }, __jsx$2h("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2h("div", {
+  }, __jsx$2i("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2i("div", {
     className: "text-right"
-  }, __jsx$2h(Button, {
+  }, __jsx$2i(Button, {
     align: "right",
     block: blockSubmitButton,
     content: "Log in",
@@ -31560,11 +31587,11 @@ var Login = function Login(_ref) {
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), forgotPassword && __jsx$2h(ForgotPasswordWrapper, null, __jsx$2h(Link, {
+  }), forgotPassword && __jsx$2i(ForgotPasswordWrapper, null, __jsx$2i(Link, {
     to: pathForgot
-  }, "Forgot password?")))), pathSignUp && __jsx$2h(React.Fragment, null, __jsx$2h("p", {
+  }, "Forgot password?")))), pathSignUp && __jsx$2i(React.Fragment, null, __jsx$2i("p", {
     className: "text-center"
-  }, "Don't have an account? ", __jsx$2h(Link, {
+  }, "Don't have an account? ", __jsx$2i(Link, {
     to: pathSignUp
   }, "Apply now!"))));
 };
@@ -31597,22 +31624,22 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2i = React.createElement;
+var __jsx$2j = React.createElement;
 var Message = function Message(_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  return __jsx$2i(Row, {
+  return __jsx$2j(Row, {
     style: {
       position: 'relative'
     }
-  }, type === 'out' && __jsx$2i(Column, {
+  }, type === 'out' && __jsx$2j(Column, {
     sm: 1
-  }, "\xA0"), __jsx$2i(Tail, {
+  }, "\xA0"), __jsx$2j(Tail, {
     type: type
-  }), __jsx$2i(MessageBase, _extends({
+  }), __jsx$2j(MessageBase, _extends({
     prevType: prevType
   }, message, props)));
 };
@@ -31621,7 +31648,7 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2j = React.createElement;
+var __jsx$2k = React.createElement;
 var MessageIcon = function MessageIcon(_ref) {
   var icon = _ref.icon;
   var useIcon = '';
@@ -31640,7 +31667,7 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2j(StyledIcon$8, {
+  return __jsx$2k(StyledIcon$8, {
     fixedWidth: false,
     icon: useIcon,
     prefix: "fad"
@@ -31657,7 +31684,7 @@ MessageIcon.propTypes = {
   icon: propTypes.string
 };
 
-var __jsx$2k = React.createElement;
+var __jsx$2l = React.createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -31680,7 +31707,7 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2k(StyledImage$3, {
+  return icon && __jsx$2l(StyledImage$3, {
     alt: "audience",
     src: icon
   });
@@ -31693,7 +31720,7 @@ MessageTo.propTypes = {
   to: propTypes.string
 };
 
-var __jsx$2l = React.createElement;
+var __jsx$2m = React.createElement;
 var MessageBase = function MessageBase(_ref) {
   var content = _ref.content,
       from = _ref.from,
@@ -31719,43 +31746,43 @@ var MessageBase = function MessageBase(_ref) {
       behavior: 'smooth'
     });
   }, []);
-  return __jsx$2l(Column, {
+  return __jsx$2m(Column, {
     sm: 11,
     columnRef: messageRef
-  }, __jsx$2l(StyledCard$2, {
+  }, __jsx$2m(StyledCard$2, {
     type: type
-  }, __jsx$2l(Row, null, __jsx$2l(Column, {
+  }, __jsx$2m(Row, null, __jsx$2m(Column, {
     sm: 6
-  }, __jsx$2l(MessageIcon, {
+  }, __jsx$2m(MessageIcon, {
     icon: icon
-  }), __jsx$2l(MessageTo, {
+  }), __jsx$2m(MessageTo, {
     to: to
-  }), __jsx$2l(StyledTime, null, time)), __jsx$2l(Column, {
+  }), __jsx$2m(StyledTime, null, time)), __jsx$2m(Column, {
     sm: 6
-  }, __jsx$2l(StyledFrom, null, from))), __jsx$2l(Row, null, pictureId && __jsx$2l(Column, {
+  }, __jsx$2m(StyledFrom, null, from))), __jsx$2m(Row, null, pictureId && __jsx$2m(Column, {
     sm: 2
-  }, __jsx$2l(Image$1, {
+  }, __jsx$2m(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2l(Column, {
+  })), __jsx$2m(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2l(StyledReply, null, reply), __jsx$2l(StyledContent$4, {
+  }, __jsx$2m(StyledReply, null, reply), __jsx$2m(StyledContent$4, {
     seeMore: seeMore
   }, content && content.split('\n').map(function (item, key) {
-    return __jsx$2l("span", {
+    return __jsx$2m("span", {
       key: key
-    }, item, __jsx$2l("br", null));
-  })), more && __jsx$2l(StyledCollapse, {
+    }, item, __jsx$2m("br", null));
+  })), more && __jsx$2m(StyledCollapse, {
     onClick: function onClick() {
       return setSeeMore(!seeMore);
     }
-  }, seeMore ? __jsx$2l(React.Fragment, null, __jsx$2l("span", null, "Close"), __jsx$2l(Icon, {
+  }, seeMore ? __jsx$2m(React.Fragment, null, __jsx$2m("span", null, "Close"), __jsx$2m(Icon, {
     icon: "chevron-up"
-  })) : __jsx$2l(React.Fragment, null, __jsx$2l("span", null, "See more"), __jsx$2l(Icon, {
+  })) : __jsx$2m(React.Fragment, null, __jsx$2m("span", null, "See more"), __jsx$2m(Icon, {
     icon: "chevron-down"
-  })))), !type && __jsx$2l(Column, {
+  })))), !type && __jsx$2m(Column, {
     sm: 1
-  }, __jsx$2l(Icon, {
+  }, __jsx$2m(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
   })))));
@@ -31819,7 +31846,7 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2m = React.createElement;
+var __jsx$2n = React.createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -31829,15 +31856,15 @@ var MessagingContainer = function MessagingContainer(_ref) {
       onSearch = _ref.onSearch,
       onSubmit = _ref.onSubmit,
       style = _ref.style;
-  return __jsx$2m(React.Fragment, null, __jsx$2m(MessagingSearch, {
+  return __jsx$2n(React.Fragment, null, __jsx$2n(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2m(StyledContainer$7, {
+  }), __jsx$2n(StyledContainer$7, {
     className: className,
     style: style
-  }, __jsx$2m(MessageList, {
+  }, __jsx$2n(MessageList, {
     messages: messages
-  })), __jsx$2m(MessagingSend, {
+  })), __jsx$2n(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: onSubmit,
     maxLength: maxLength
@@ -31858,11 +31885,11 @@ MessagingContainer.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$2n = React.createElement;
+var __jsx$2o = React.createElement;
 var MessageList = function MessageList(_ref) {
   var messages = _ref.messages;
   return messages.map(function (message, index) {
-    return __jsx$2n(Message, {
+    return __jsx$2o(Message, {
       message: message,
       key: index,
       prevType: message.type,
@@ -31875,7 +31902,7 @@ MessageList.propTypes = {
   messages: propTypes.array.isRequired
 };
 
-var __jsx$2o = React.createElement;
+var __jsx$2p = React.createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -31905,18 +31932,18 @@ var MessagingSearch = function MessagingSearch(_ref) {
     onSearch(data.query);
   };
 
-  return __jsx$2o(StyledContainer$8, null, __jsx$2o(Form, {
+  return __jsx$2p(StyledContainer$8, null, __jsx$2p(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2o(Row, null, __jsx$2o(Column, {
+  }, __jsx$2p(Row, null, __jsx$2p(Column, {
     md: 6
-  }, __jsx$2o(StyledSearch, {
+  }, __jsx$2p(StyledSearch, {
     errors: errors,
     prependSearchIcon: true,
     placeholder: placeholder,
     register: register
-  })), __jsx$2o(Column, {
+  })), __jsx$2p(Column, {
     md: 6
-  }, __jsx$2o(StyledSelect$1, {
+  }, __jsx$2p(StyledSelect$1, {
     change: onFilter,
     id: "messagingFilter",
     options: Items
@@ -31943,7 +31970,7 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2p = React.createElement;
+var __jsx$2q = React.createElement;
 var MessagingSend = function MessagingSend(_ref) {
   var audienceItems = _ref.audienceItems,
       onSubmit = _ref.onSubmit,
@@ -32001,27 +32028,27 @@ var MessagingSend = function MessagingSend(_ref) {
     setValue('message', '');
   };
 
-  return __jsx$2p(React.Fragment, null, open && __jsx$2p(StyledPickerContainer, null, __jsx$2p(EmojiMart, {
+  return __jsx$2q(React.Fragment, null, open && __jsx$2q(StyledPickerContainer, null, __jsx$2q(EmojiMart, {
     handleOpenPicker: handleOpenPicker,
     handleSelect: handleEmojiSelect,
     open: open
-  })), __jsx$2p(StyledContainer$9, {
+  })), __jsx$2q(StyledContainer$9, {
     audience: audience
-  }, __jsx$2p(StyledForm$1, {
+  }, __jsx$2q(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, audience && __jsx$2p(StyledDropDown, {
+  }, audience && __jsx$2q(StyledDropDown, {
     items: audienceItems,
     position: "top",
     onChange: function onChange(item) {
       return setAudience(item);
     }
-  }, audience.name), __jsx$2p(StyledTextarea$1, {
+  }, audience.name), __jsx$2q(StyledTextarea$1, {
     register: register,
     name: "message",
     maxLength: maxLength,
     placeholder: "Write message",
     rows: 1
-  }), __jsx$2p("input", {
+  }), __jsx$2q("input", {
     ref: fileInputRef,
     type: "file",
     multiple: true,
@@ -32029,19 +32056,19 @@ var MessagingSend = function MessagingSend(_ref) {
     style: {
       display: 'none'
     }
-  }), __jsx$2p(StyledElements, null, __jsx$2p(StyledIcon$9, {
+  }), __jsx$2q(StyledElements, null, __jsx$2q(StyledIcon$9, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2p(StyledIcon$9, {
+  }), __jsx$2q(StyledIcon$9, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
       return setOpen(!open);
     },
     size: "2x"
-  }), __jsx$2p(Button, {
+  }), __jsx$2q(Button, {
     content: "Send",
     context: "info",
     size: "md",
@@ -32113,7 +32140,7 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var __jsx$2q = React.createElement;
+var __jsx$2r = React.createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -32131,34 +32158,34 @@ var PasswordChange = function PasswordChange(_ref) {
 
   var submit = function submit(data) {};
 
-  return __jsx$2q(React.Fragment, null, __jsx$2q(PageHeading, {
+  return __jsx$2r(React.Fragment, null, __jsx$2r(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2q(Alert, {
+  }), error && __jsx$2r(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2q(Form, {
+  }), __jsx$2r(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2q(FormLabel, {
+  }, __jsx$2r(FormLabel, {
     label: "Old password"
-  }, __jsx$2q(FormField, {
+  }, __jsx$2r(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2q(FormLabel, {
+  })), __jsx$2r(FormLabel, {
     label: "New password"
-  }, __jsx$2q(FormField, {
+  }, __jsx$2r(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2q(FormLabel, {
+  })), __jsx$2r(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2q(FormField, {
+  }, __jsx$2r(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -32167,7 +32194,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2q(Button, {
+  })), __jsx$2r(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -32180,7 +32207,7 @@ PasswordChange.propTypes = {
   showPlaceholder: propTypes.bool
 };
 
-var __jsx$2r = React.createElement;
+var __jsx$2s = React.createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -32207,13 +32234,13 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2r(React.Fragment, null, __jsx$2r(DatePickerInput, {
+    return __jsx$2s(React.Fragment, null, __jsx$2s(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2r(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2s(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
   var _useContext = useContext(UserContext),
@@ -32261,55 +32288,55 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2r(Form, {
+  return __jsx$2s(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2r(Alert, {
+  }, error && __jsx$2s(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2r(FormLabel, {
+  }), __jsx$2s(FormLabel, {
     label: "First name"
-  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2r(FormLabel, {
+  }))), __jsx$2s(FormLabel, {
     label: "Last name"
-  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2r(FormLabel, {
+  }))), __jsx$2s(FormLabel, {
     label: "Email"
-  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2r(FormLabel, {
+  }))), __jsx$2s(FormLabel, {
     label: "Password"
-  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2r(FormLabel, {
+  }))), __jsx$2s(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2r(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2s(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2r(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2s(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2r(Button, {
+  })), __jsx$2s(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2r(StyledLink$a, null, "Already have an account? ", __jsx$2r(Link, {
+  }), __jsx$2s(StyledLink$a, null, "Already have an account? ", __jsx$2s(Link, {
     to: pathLogin
   }, "Log in")));
 };
@@ -32339,7 +32366,7 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2s = React.createElement;
+var __jsx$2t = React.createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -32348,10 +32375,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2s(React.Fragment, null, __jsx$2s(Navigation, null), children, footer && __jsx$2s(Footer, {
+  return __jsx$2t(React.Fragment, null, __jsx$2t(Navigation, null), children, footer && __jsx$2t(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2s(Copyright, {
+  }), copyright && __jsx$2t(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -32370,7 +32397,7 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2t = React.createElement;
+var __jsx$2u = React.createElement;
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -32391,16 +32418,16 @@ var Dashboard = function Dashboard(_ref) {
 
   var mergedMeta = _objectSpread$c(_objectSpread$c({}, defaultMeta), meta);
 
-  return __jsx$2t(React.Fragment, null, __jsx$2t(Suspense$1, {
-    fallback: __jsx$2t(PageLoading, {
-      indicator: __jsx$2t(LdsSpinner, null)
+  return __jsx$2u(React.Fragment, null, __jsx$2u(Suspense$1, {
+    fallback: __jsx$2u(PageLoading, {
+      indicator: __jsx$2u(LdsSpinner, null)
     })
-  }, __jsx$2t(React.Fragment, null, __jsx$2t(Page, {
+  }, __jsx$2u(React.Fragment, null, __jsx$2u(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2t(Alert, {
+  }), message && __jsx$2u(Alert, {
     content: message,
     context: context
   }))));
@@ -32425,7 +32452,7 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2u = React.createElement;
+var __jsx$2v = React.createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
@@ -32436,13 +32463,13 @@ var Page = function Page(_ref) {
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2u(StyledPage, null, meta && __jsx$2u(MetaHead, {
+  return __jsx$2v(StyledPage, null, meta && __jsx$2v(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2u(Container, {
+  }), __jsx$2v(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2u(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$2v(PageHeading, pageHeading), children));
 };
 var StyledPage = styled.div.withConfig({
   displayName: "page__StyledPage",
@@ -32465,7 +32492,7 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$2v = React.createElement;
+var __jsx$2w = React.createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -32478,7 +32505,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$2v(React.Fragment, null, iFrame && __jsx$2v("iframe", {
+  return __jsx$2w(React.Fragment, null, iFrame && __jsx$2w("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -32489,7 +32516,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$2v("div", {
+  }), !iFrame && __jsx$2w("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -32500,10 +32527,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$2v("blockquote", {
+  }, __jsx$2w("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$2v("a", {
+  }, __jsx$2w("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -32532,7 +32559,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$2w = React.createElement;
+var __jsx$2x = React.createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -32540,7 +32567,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$2w(React.Fragment, null, iFrame && __jsx$2w("iframe", {
+  return __jsx$2x(React.Fragment, null, iFrame && __jsx$2x("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -32551,13 +32578,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$2w("div", {
+  }), !iFrame && __jsx$2x("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$2w("a", {
+  }, __jsx$2x("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -32578,7 +32605,7 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$2x = React.createElement;
+var __jsx$2y = React.createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
@@ -32590,7 +32617,7 @@ var Typeform = function Typeform(_ref) {
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$2x("div", {
+  return __jsx$2y("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -32630,34 +32657,34 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$2y = React.createElement;
+var __jsx$2z = React.createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2y(StyledArticle, {
+  return __jsx$2z(StyledArticle, {
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article"
-  }, __jsx$2y("header", null, __jsx$2y(StyledImage$4, {
+  }, __jsx$2z("header", null, __jsx$2z(StyledImage$4, {
     alt: article.heading,
     slant: true,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), __jsx$2y(Breadcrumb, {
+  }), __jsx$2z(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && __jsx$2y(BlogCategory, {
+  }), config && __jsx$2z(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$2y(StyledHeading$4, {
+  }), __jsx$2z(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$2y(BlogDetails, {
+  }), facebook && __jsx$2z(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$2y("span", {
+  })), __jsx$2z("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
@@ -32778,7 +32805,7 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$2z = React.createElement;
+var __jsx$2A = React.createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -32794,46 +32821,46 @@ var BlogCard = function BlogCard(_ref) {
     as: "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$2z("article", {
+  return __jsx$2A("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$2z(Card, {
+  }, __jsx$2A(Card, {
     shadow: true
-  }, __jsx$2z(Link, {
+  }, __jsx$2A(Link, {
     to: articleLink
-  }, __jsx$2z(CardImage, {
+  }, __jsx$2A(CardImage, {
     alt: heading,
     src: "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$2z(StyledCardBody, {
+  })), __jsx$2A(StyledCardBody, {
     type: type
-  }, type === 'normal' && __jsx$2z(BlogCategory, {
+  }, type === 'normal' && __jsx$2A(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$2z(StyledContent$5, {
+  }), __jsx$2A(StyledContent$5, {
     type: type
-  }, __jsx$2z(Link, {
+  }, __jsx$2A(Link, {
     to: articleLink
-  }, __jsx$2z(StyledHeading$5, {
+  }, __jsx$2A(StyledHeading$5, {
     content: heading,
     tag: "h1",
     type: type
-  })), type === 'normal' && __jsx$2z("p", {
+  })), type === 'normal' && __jsx$2A("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$2z(React.Fragment, null, article.tags && __jsx$2z(TagsContainer, null, __jsx$2z(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$2A(React.Fragment, null, article.tags && __jsx$2A(TagsContainer, null, __jsx$2A(BlogTags, {
     tags: article.tags
-  })), __jsx$2z(Divider, {
+  })), __jsx$2A(Divider, {
     size: "sm"
-  }), __jsx$2z(BlogCategory, {
+  }), __jsx$2A(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), __jsx$2z(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2z(Link, {
+  }), __jsx$2A(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2A(Link, {
     to: articleLink
-  }, __jsx$2z(StyledButton$8, {
+  }, __jsx$2A(StyledButton$8, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
@@ -32890,7 +32917,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$2A = React.createElement;
+var __jsx$2B = React.createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -32915,10 +32942,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$2A("section", null, _find().map(function (articles, index) {
-    return __jsx$2A(Fragment$1, {
+  return __jsx$2B("section", null, _find().map(function (articles, index) {
+    return __jsx$2B(Fragment$1, {
       key: index
-    }, __jsx$2A(Link, {
+    }, __jsx$2B(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -32928,14 +32955,14 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$2A(StyledHeading$6, {
+    }, __jsx$2B(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$2A(Row, null, articles.map(function (article, index) {
-      return __jsx$2A(Column, {
+    })), __jsx$2B(Row, null, articles.map(function (article, index) {
+      return __jsx$2B(Column, {
         key: index,
         md: 6
-      }, __jsx$2A(BlogCard, {
+      }, __jsx$2B(BlogCard, {
         article: article,
         config: config
       }));
@@ -32951,17 +32978,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$2B = React.createElement;
+var __jsx$2C = React.createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$2B(StyledCategory, {
+  return __jsx$2C(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$2B(Link, {
+  }, __jsx$2C(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -32987,58 +33014,58 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2C = React.createElement;
+var __jsx$2D = React.createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2C(StyledArticleDetails, null, __jsx$2C(Divider, {
+  return __jsx$2D(StyledArticleDetails, null, __jsx$2D(Divider, {
     size: "sm"
-  }), __jsx$2C(List, {
+  }), __jsx$2D(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$2C(ListItem, {
+  }, __jsx$2D(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2C(StyledIcon$a, {
+  }, __jsx$2D(StyledIcon$a, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$2C(Date$1, {
+  }), __jsx$2D(Date$1, {
     date: article.date
-  })), __jsx$2C(ListItem, {
+  })), __jsx$2D(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2C(StyledIcon$a, {
+  }, __jsx$2D(StyledIcon$a, {
     context: "dark",
     icon: "user"
-  }), __jsx$2C(BlogCategory, {
+  }), __jsx$2D(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$2C(ListItem, {
+  })), __jsx$2D(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2C(StyledIcon$a, {
+  }, __jsx$2D(StyledIcon$a, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$2C(BlogReadTime, {
+  }), __jsx$2D(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$2C(BlogTags, {
+  }))), article.tags && __jsx$2D(BlogTags, {
     tags: article.tags
-  }), __jsx$2C(Divider, {
+  }), __jsx$2D(Divider, {
     size: "sm"
-  }), __jsx$2C(StyledShare, null, __jsx$2C(StyledShareText, null, "Share this article"), __jsx$2C(FacebookShareButton, {
+  }), __jsx$2D(StyledShare, null, __jsx$2D(StyledShareText, null, "Share this article"), __jsx$2D(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$2C(Divider, {
+  })), __jsx$2D(Divider, {
     size: "sm"
   }));
 };
@@ -33071,7 +33098,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$2D = React.createElement;
+var __jsx$2E = React.createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33086,16 +33113,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$2D(Column, {
+    return __jsx$2E(Column, {
       md: 12 / number
-    }, __jsx$2D(BlogCard, {
+    }, __jsx$2E(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$2D(Row, null, renderHero());
+  return __jsx$2E(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -33106,7 +33133,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$2E = React.createElement;
+var __jsx$2F = React.createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -33134,11 +33161,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$2E(Row, null, _find().map(function (article, index) {
-    return __jsx$2E(Column, {
+  return __jsx$2F(Row, null, _find().map(function (article, index) {
+    return __jsx$2F(Column, {
       key: index,
       md: 6
-    }, __jsx$2E(BlogCard, {
+    }, __jsx$2F(BlogCard, {
       article: article,
       config: config
     }));
@@ -33152,31 +33179,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$2F = React.createElement;
+var __jsx$2G = React.createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$2F("span", null, "Read time: ", time, " min(s)");
+  return __jsx$2G("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$2G = React.createElement;
+var __jsx$2H = React.createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$2G(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$2H(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$2G(Fragment$1, {
+    return __jsx$2H(Fragment$1, {
       key: index
-    }, __jsx$2G(StyledDt, null, __jsx$2G(Badge, {
+    }, __jsx$2H(StyledDt, null, __jsx$2H(Badge, {
       content: badge
-    })), __jsx$2G(StyledDd, null, __jsx$2G(Link, {
+    })), __jsx$2H(StyledDd, null, __jsx$2H(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -33189,7 +33216,7 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$2G(StyledA$1, null, name))));
+    }, __jsx$2H(StyledA$1, null, name))));
   }));
 };
 var StyledDl = styled.dl.withConfig({
@@ -33219,16 +33246,16 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$2H = React.createElement;
+var __jsx$2I = React.createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$2H(StyledSection, null, heading && __jsx$2H(React.Fragment, null, __jsx$2H(StyledHeading$7, {
+  return __jsx$2I(StyledSection, null, heading && __jsx$2I(React.Fragment, null, __jsx$2I(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$2H(Divider, {
+  }), __jsx$2I(Divider, {
     size: "sm"
   })), children);
 };
@@ -33245,7 +33272,7 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$2I = React.createElement;
+var __jsx$2J = React.createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33282,9 +33309,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2I(BlogSection, {
+  return __jsx$2J(BlogSection, {
     heading: "Archive"
-  }, __jsx$2I(BlogList, {
+  }, __jsx$2J(BlogList, {
     config: config,
     list: list
   }));
@@ -33298,7 +33325,7 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$2J = React.createElement;
+var __jsx$2K = React.createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33337,9 +33364,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2J(BlogSection, {
+  return __jsx$2K(BlogSection, {
     heading: "Author"
-  }, __jsx$2J(BlogList, {
+  }, __jsx$2K(BlogList, {
     config: config,
     author: true,
     list: list
@@ -33354,7 +33381,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$2K = React.createElement;
+var __jsx$2L = React.createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -33393,35 +33420,35 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$2K(BlogSection, null, __jsx$2K(StyledContainer$a, {
+  return __jsx$2L(BlogSection, null, __jsx$2L(StyledContainer$a, {
     colour: colour
-  }, __jsx$2K(StyledForm$2, {
+  }, __jsx$2L(StyledForm$2, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2K(FormLabel, {
+  }, __jsx$2L(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$2K(InputGroup, null, __jsx$2K(FormField, {
+  }, __jsx$2L(InputGroup, null, __jsx$2L(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$2K(InputGroupAddon, null, __jsx$2K(Button, {
+  }), __jsx$2L(InputGroupAddon, null, __jsx$2L(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$2K(FormError, {
+  })), errors.postCode && __jsx$2L(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$2K("div", {
+  }), msg && __jsx$2L("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$2K(Link, {
+  }, msg)))), __jsx$2L(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$2K(StyledA$2, null, "Deliveroo ", __jsx$2K(Icon, {
+  }, __jsx$2L(StyledA$2, null, "Deliveroo ", __jsx$2L(Icon, {
     icon: "external-link"
   })))));
 };
@@ -33546,13 +33573,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$2L = React.createElement;
+var __jsx$2M = React.createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$2L(BlogSection, {
+  return __jsx$2M(BlogSection, {
     heading: "Media"
-  }, __jsx$2L(BlogList, {
+  }, __jsx$2M(BlogList, {
     config: config,
     list: media
   }));
@@ -33562,13 +33589,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$2M = React.createElement;
+var __jsx$2N = React.createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$2M(BlogSection, {
+  return __jsx$2N(BlogSection, {
     heading: "Promo"
-  }, __jsx$2M(Image$1, {
+  }, __jsx$2N(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -33578,7 +33605,7 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2N = React.createElement;
+var __jsx$2O = React.createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33607,9 +33634,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$2N(BlogSection, {
+  return __jsx$2O(BlogSection, {
     heading: "Recent"
-  }, __jsx$2N(BlogList, {
+  }, __jsx$2O(BlogList, {
     config: config,
     list: list
   }));
@@ -33623,7 +33650,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$2O = React.createElement;
+var __jsx$2P = React.createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33632,22 +33659,22 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$2O(StyledAside$1, null, findFood && __jsx$2O(BlogFindFood, null), media && __jsx$2O(BlogMedia, {
+  return __jsx$2P(StyledAside$1, null, findFood && __jsx$2P(BlogFindFood, null), media && __jsx$2P(BlogMedia, {
     media: media
-  }), __jsx$2O(BlogSocial, {
+  }), __jsx$2P(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$2O(BlogPromo, {
+  }), promo && __jsx$2P(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$2O(BlogRecent, {
+  }), __jsx$2P(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$2O(BlogTagCloud, {
+  }), tags && __jsx$2P(BlogTagCloud, {
     articles: articles
-  }), __jsx$2O(BlogArchive, {
+  }), __jsx$2P(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$2O(BlogAuthor, {
+  }), __jsx$2P(BlogAuthor, {
     articles: articles,
     config: config
   }));
@@ -33669,20 +33696,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$2P = React.createElement;
+var __jsx$2Q = React.createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$2P(React.Fragment, null, facebook && __jsx$2P(BlogSection, {
+  return __jsx$2Q(React.Fragment, null, facebook && __jsx$2Q(BlogSection, {
     heading: "Facebook"
-  }, __jsx$2P(FacebookPagePlugin, {
+  }, __jsx$2Q(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$2P(BlogSection, {
+  })), instagram && __jsx$2Q(BlogSection, {
     heading: "Instagram"
-  }, __jsx$2P("iframe", {
+  }, __jsx$2Q("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -33690,7 +33717,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$2P(BlogSection, {
+  })), twitter && __jsx$2Q(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -33704,7 +33731,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$2Q = React.createElement;
+var __jsx$2R = React.createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -33777,7 +33804,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$2Q(BlogSection, {
+  return __jsx$2R(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -33836,7 +33863,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$2R = React.createElement;
+var __jsx$2S = React.createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -33850,7 +33877,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$2R(Badge, {
+      return __jsx$2S(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -33860,7 +33887,7 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$2R("div", null, tagMap());
+  return __jsx$2S("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
@@ -33990,7 +34017,7 @@ var Api = function Api() {
  */
 var UserContext = /*#__PURE__*/createContext();
 
-var __jsx$2S = React.createElement;
+var __jsx$2T = React.createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
@@ -34181,7 +34208,7 @@ var UserProvider = function UserProvider(_ref) {
     return true;
   };
 
-  return !isLoading && __jsx$2S(UserContext.Provider, {
+  return !isLoading && __jsx$2T(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -34200,7 +34227,7 @@ var UserProvider = function UserProvider(_ref) {
  */
 var AuthorizationContext = /*#__PURE__*/createContext();
 
-var __jsx$2T = React.createElement;
+var __jsx$2U = React.createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
@@ -34287,7 +34314,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$2T(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$2U(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -34300,11 +34327,11 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
  */
 var ConfigContext = /*#__PURE__*/createContext();
 
-var __jsx$2U = React.createElement;
+var __jsx$2V = React.createElement;
 // import { Config } from 'config'
 
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$2U(ConfigContext.Provider, _extends({
+  return __jsx$2V(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -34723,7 +34750,7 @@ var InternationalisationContext = /*#__PURE__*/createContext({
   }
 });
 
-var __jsx$2V = React.createElement;
+var __jsx$2W = React.createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
@@ -34759,7 +34786,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$2V(InternationalisationContext.Provider, {
+  return __jsx$2W(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -34808,7 +34835,7 @@ var getInitialLocale = function getInitialLocale() {
  */
 var NotificationsContext = /*#__PURE__*/createContext();
 
-var __jsx$2W = React.createElement;
+var __jsx$2X = React.createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -34828,7 +34855,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$2W(NotificationsContext.Provider, {
+  return __jsx$2X(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -37859,7 +37886,7 @@ var useNotifications = function useNotifications(url) {
  */
 var OffCanvasContext = /*#__PURE__*/createContext();
 
-var __jsx$2X = React.createElement;
+var __jsx$2Y = React.createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
@@ -37903,12 +37930,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$2X(OffCanvasContext.Provider, {
+  return __jsx$2Y(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$2X(OffCanvas, {
+  }, children, __jsx$2Y(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -37925,7 +37952,7 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$2X(StyledWrapper$2, {
+    return __jsx$2Y(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
@@ -37939,7 +37966,7 @@ var StyledWrapper$2 = styled.div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$2Y = React.createElement;
+var __jsx$2Z = React.createElement;
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -37972,7 +37999,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$2Y(React.Fragment, null, __jsx$2Y(ThemeStyle, null), user && __jsx$2Y(UserProvider, null, __jsx$2Y(AuthorizationProvider, null, __jsx$2Y(InternationalisationProvider, null, __jsx$2Y(NotificationsProvider, null, offCanvas ? __jsx$2Y(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$2Z(React.Fragment, null, __jsx$2Z(ThemeStyle, null), user && __jsx$2Z(UserProvider, null, __jsx$2Z(AuthorizationProvider, null, __jsx$2Z(InternationalisationProvider, null, __jsx$2Z(NotificationsProvider, null, offCanvas ? __jsx$2Z(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -37980,9 +38007,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$2Y(React.Fragment, null, __jsx$2Y(ConfigProvider, {
+      return __jsx$2Z(React.Fragment, null, __jsx$2Z(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$2Y(ApolloProvider, {
+      }, apolloClient ? __jsx$2Z(ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -37995,14 +38022,14 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$2Y(Layout, null, pageProgressBar && __jsx$2Y(PageProgressBar, {
+      return __jsx$2Z(Layout, null, pageProgressBar && __jsx$2Z(PageProgressBar, {
         router: router
-      }), __jsx$2Y(Component, pageProps));
+      }), __jsx$2Z(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$2Y(ThemeProvider, {
+      return __jsx$2Z(ThemeProvider, {
         theme: merge$1(Theme, this.props.theme)
       }, this.data());
     }
@@ -38032,5 +38059,5 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, BarChart, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, ControlTypes, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
+export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, BarChart, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, ControlTypes, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
 //# sourceMappingURL=industry-ui.es.js.map
