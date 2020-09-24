@@ -2,9 +2,6 @@
  * Form - Form
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
