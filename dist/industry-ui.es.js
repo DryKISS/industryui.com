@@ -4,9 +4,8 @@ import jwt from 'jsonwebtoken';
 import moment from 'moment';
 import styled, { css, createGlobalStyle } from 'styled-components';
 import cloneDeep from 'lodash/cloneDeep';
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { withResizeDetector } from 'react-resize-detector';
 
 /**
  * Age calculation from dateTime
@@ -1721,32 +1720,6 @@ ReactHolderJs.defaultProps = {
   },
   usePlaceholder: false
 };
-
-var __jsx$1 = React.createElement;
-
-var ResizeDetector = withResizeDetector( /*#__PURE__*/memo(function (_ref) {
-  var height = _ref.height,
-      width = _ref.width,
-      onResize = _ref.onResize;
-  // clearTimeout(timer)
-  // timer = setTimeout(() => {onResize()}, 0)
-  requestAnimationFrame(function () {
-    return onResize({
-      height: height,
-      width: width
-    });
-  });
-  return __jsx$1("div", {
-    style: {
-      width: '100%',
-      height: '100%'
-    }
-  });
-}, function (_ref2, _ref3) {
-  var prevWidth = _ref2.width;
-  var nextWidth = _ref3.width;
-  return prevWidth === nextWidth;
-}));
 
 var runtime_1 = createCommonjsModule(function (module) {
 /**
@@ -3500,11 +3473,11 @@ var Theme = {
   TYPOGRAPHY: TYPOGRAPHY
 };
 
-var __jsx$2 = React.createElement;
+var __jsx$1 = React.createElement;
 var Blockquote = function Blockquote(_ref) {
   var footer = _ref.footer,
       text = _ref.text;
-  return __jsx$2(StyledBlockquote, null, __jsx$2(StyledText, null, text), footer && __jsx$2(StyledFooter, null, footer));
+  return __jsx$1(StyledBlockquote, null, __jsx$1(StyledText, null, text), footer && __jsx$1(StyledFooter, null, footer));
 };
 var StyledBlockquote = styled.blockquote.withConfig({
   displayName: "blockquote__StyledBlockquote",
@@ -3523,5 +3496,5 @@ Blockquote.propTypes = {
   text: propTypes.string.isRequired
 };
 
-export { ALIGN, BACKGROUND, Blockquote, COLOUR, COMMON_INPUT_STYLES, CONTEXT, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, ERROR_STYLE, FONTSIZE, MEDIA_QUERY, MEDIA_QUERY_MAX, Position, RandomColor, RandomKey, ReactHolderJs, ResizeDetector, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, Theme, ThemeStyle, Truncate, TruncateByMaxHeight, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort };
+export { ALIGN, BACKGROUND, Blockquote, COLOUR, COMMON_INPUT_STYLES, CONTEXT, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, ERROR_STYLE, FONTSIZE, MEDIA_QUERY, MEDIA_QUERY_MAX, Position, RandomColor, RandomKey, ReactHolderJs, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, Theme, ThemeStyle, Truncate, TruncateByMaxHeight, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort };
 //# sourceMappingURL=industry-ui.es.js.map

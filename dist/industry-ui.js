@@ -10,7 +10,6 @@ var styled = require('styled-components');
 var cloneDeep = require('lodash/cloneDeep');
 var React = require('react');
 var ReactDOM = require('react-dom');
-var reactResizeDetector = require('react-resize-detector');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -1735,32 +1734,6 @@ ReactHolderJs.defaultProps = {
   },
   usePlaceholder: false
 };
-
-var __jsx$1 = React__default['default'].createElement;
-
-var ResizeDetector = reactResizeDetector.withResizeDetector( /*#__PURE__*/React.memo(function (_ref) {
-  var height = _ref.height,
-      width = _ref.width,
-      onResize = _ref.onResize;
-  // clearTimeout(timer)
-  // timer = setTimeout(() => {onResize()}, 0)
-  requestAnimationFrame(function () {
-    return onResize({
-      height: height,
-      width: width
-    });
-  });
-  return __jsx$1("div", {
-    style: {
-      width: '100%',
-      height: '100%'
-    }
-  });
-}, function (_ref2, _ref3) {
-  var prevWidth = _ref2.width;
-  var nextWidth = _ref3.width;
-  return prevWidth === nextWidth;
-}));
 
 var runtime_1 = createCommonjsModule(function (module) {
 /**
@@ -3514,11 +3487,11 @@ var Theme = {
   TYPOGRAPHY: TYPOGRAPHY
 };
 
-var __jsx$2 = React__default['default'].createElement;
+var __jsx$1 = React__default['default'].createElement;
 var Blockquote = function Blockquote(_ref) {
   var footer = _ref.footer,
       text = _ref.text;
-  return __jsx$2(StyledBlockquote, null, __jsx$2(StyledText, null, text), footer && __jsx$2(StyledFooter, null, footer));
+  return __jsx$1(StyledBlockquote, null, __jsx$1(StyledText, null, text), footer && __jsx$1(StyledFooter, null, footer));
 };
 var StyledBlockquote = styled__default['default'].blockquote.withConfig({
   displayName: "blockquote__StyledBlockquote",
@@ -3555,7 +3528,6 @@ exports.Position = Position;
 exports.RandomColor = RandomColor;
 exports.RandomKey = RandomKey;
 exports.ReactHolderJs = ReactHolderJs;
-exports.ResizeDetector = ResizeDetector;
 exports.SIZE = SIZE;
 exports.SPACER = SPACER;
 exports.SPACER_FORMULA = SPACER_FORMULA;
