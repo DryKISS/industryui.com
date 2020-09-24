@@ -73,7 +73,6 @@ const StyledText = styled.p`
   ${({ size }) =>
     size === 'xxl' &&
     css`
-      font-family: 'JetBrains Mono ExtraBold';
       font-size: 1.25rem;
       line-height: 1.25;
       ${MEDIA_QUERY.phone`
@@ -92,7 +91,6 @@ const StyledText = styled.p`
   ${({ size }) =>
     size === 'xxxl' &&
     css`
-      font-family: 'JetBrains Mono ExtraBold';
       font-size: 2.5rem;
       line-height: 1.25;
       ${MEDIA_QUERY.phone`
