@@ -3,13 +3,14 @@ import { MEDIA_QUERY } from '../../'
 import { css } from 'styled-components'
 
 const sizes = {
-  xsSize: '0.25rem',
-  smSize: '0.5rem',
-  mdSize: '0.75rem',
-  lgSize: '1rem',
-  xlSize: '1.5rem',
-  xxlSize: '2rem',
-  xxxlSize: '2.5rem'
+  xxsSize: '0.25rem',
+  xsSize: '0.5rem',
+  smSize: '0.75rem',
+  mdSize: '1rem',
+  lgSize: '1.5rem',
+  xlSize: '2rem',
+  xxlSize: '2.5rem',
+  xxxlSize: '3rem'
 }
 
 export const spaceStyler = properties => {
