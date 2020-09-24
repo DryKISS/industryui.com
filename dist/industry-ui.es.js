@@ -41,7 +41,6 @@ import throttle from 'lodash/throttle';
 import debounce$3 from 'lodash/debounce';
 import each from 'lodash/each';
 import isUndefined from 'lodash/isUndefined';
-import { EditorState, Editor, RichUtils } from 'draft-js';
 import { object as object$1, string as string$1 } from 'yup';
 import _filter from 'lodash/filter';
 import { useSubscription, ApolloProvider } from '@apollo/client';
@@ -31173,105 +31172,14 @@ EmailChange.defaultProps = {
   showPlaceholder: false
 };
 
-// Did is the example to apply into the blockTypes, when we implement the whole solutionn
-// We will have it in this format
-var BlockType = {
-  HEADER_ONE: 'header-one',
-  HEADER_THREE: 'header-three',
-  HEADER_FOUR: 'header-four',
-  HEADER_FIVE: 'header-five',
-  HEADER_SIX: 'header-six',
-  BLOCKQUOTE: 'blockquote',
-  FIGURE: 'atomic',
-  LI: 'unordered-list-item'
-};
-
 var __jsx$2e = React.createElement;
-var DraftJs = function DraftJs(_ref) {
-  var control = _ref.control,
-      name = _ref.name,
-      setValue = _ref.setValue;
-
-  var _useState = useState(EditorState.createEmpty()),
-      editorState = _useState[0],
-      setEditorState = _useState[1];
-
-  var toggleInlineStyle = function toggleInlineStyle(event) {
-    event.preventDefault();
-    var style = event.currentTarget.getAttribute('data-style');
-    setEditorState(RichUtils.toggleInlineStyle(editorState, style));
-  };
-
-  var handleKeyCommand = function handleKeyCommand(command, editorState) {
-    var newEditorState = RichUtils.handleKeyCommand(editorState, command);
-
-    if (newEditorState) {
-      setEditorState(newEditorState);
-      return 'handled';
-    }
-
-    return 'not-handled';
-  };
-
-  var handleOnChange = function handleOnChange(newEditorState) {
-    setEditorState(newEditorState); // This is returning the current plain Value, we will have to see if we will get back the whole
-    // State and then write a parser or how we will manage that
-
-    setValue(name, newEditorState.getCurrentContent().getPlainText("\x01"));
-  }; // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
-
-
-  return __jsx$2e(React.Fragment, null, __jsx$2e("input", {
-    type: "button",
-    value: "B",
-    "data-style": "BOLD",
-    onMouseDown: toggleInlineStyle
-  }), __jsx$2e("input", {
-    type: "button",
-    value: "I",
-    "data-style": "ITALIC",
-    onMouseDown: toggleInlineStyle
-  }), __jsx$2e("input", {
-    type: "button",
-    value: "S",
-    "data-style": "STRIKETHROUGH",
-    onMouseDown: toggleInlineStyle
-  }), __jsx$2e("input", {
-    type: "button",
-    value: "U",
-    "data-style": "UNDERLINE",
-    onMouseDown: toggleInlineStyle
-  }), __jsx$2e(Controller$1, {
-    name: name,
-    control: control,
-    render: function render(props) {
-      return __jsx$2e(Editor, {
-        editorState: editorState,
-        blockStyleFn: myBlockStyleFn,
-        handleKeyCommand: handleKeyCommand,
-        onChange: handleOnChange
-      });
-    }
-  }));
-};
-
-function myBlockStyleFn(contentBlock) {
-  var type = contentBlock.getType();
-
-  if (type === BlockType.BLOCKQUOTE) {
-    // TODO: return the right css according to be applied into the whole block
-    return undefined;
-  }
-}
-
-var __jsx$2f = React.createElement;
 var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       fixed = _ref.fixed;
 
   var renderColumns = function renderColumns() {
     return columns.map(function (column, index) {
-      return __jsx$2f(Column, _extends({
+      return __jsx$2e(Column, _extends({
         align: column.align,
         key: index,
         offset: column.offset
@@ -31282,7 +31190,7 @@ var Footer = function Footer(_ref) {
 
         switch (key) {
           case 'header':
-            return __jsx$2f(StyledHeading$3, {
+            return __jsx$2e(StyledHeading$3, {
               align: value.align,
               content: value.content,
               key: "".concat(value.content).concat(index).concat(i),
@@ -31306,7 +31214,7 @@ var Footer = function Footer(_ref) {
     var align = _ref4.align,
         direction = _ref4.direction,
         items = _ref4.items;
-    return __jsx$2f(StyledList$2, {
+    return __jsx$2e(StyledList$2, {
       align: align,
       direction: direction,
       key: "".concat(items[0]).concat(index),
@@ -31316,12 +31224,12 @@ var Footer = function Footer(_ref) {
           id = _ref5.id,
           name = _ref5.name,
           to = _ref5.to;
-      return __jsx$2f(StyledListItem$1, {
+      return __jsx$2e(StyledListItem$1, {
         key: id
-      }, __jsx$2f(Link, {
+      }, __jsx$2e(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2f(StyledIcon$7, {
+      }, icon && __jsx$2e(StyledIcon$7, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -31332,18 +31240,18 @@ var Footer = function Footer(_ref) {
   var renderText = function renderText(_ref6, index) {
     var align = _ref6.align,
         items = _ref6.items;
-    return __jsx$2f(Fragment$1, {
+    return __jsx$2e(Fragment$1, {
       key: index
     }, items === null || items === void 0 ? void 0 : items.map(function (_ref7, i) {
       var content = _ref7.content,
           icon = _ref7.icon;
-      return __jsx$2f(Fragment$1, {
+      return __jsx$2e(Fragment$1, {
         key: i
-      }, icon && __jsx$2f(StyledIcon$7, {
+      }, icon && __jsx$2e(StyledIcon$7, {
         context: "primary",
         icon: icon,
         prefix: "fad"
-      }), __jsx$2f(StyledText$5, {
+      }), __jsx$2e(StyledText$5, {
         align: align,
         dangerouslySetInnerHTML: {
           __html: content
@@ -31352,10 +31260,10 @@ var Footer = function Footer(_ref) {
     }));
   };
 
-  return __jsx$2f(StyledFooter$2, {
+  return __jsx$2e(StyledFooter$2, {
     "data-cy": "footer",
     fixed: fixed
-  }, __jsx$2f(Container, null, __jsx$2f(Row, null, renderColumns())));
+  }, __jsx$2e(Container, null, __jsx$2e(Row, null, renderColumns())));
 };
 var StyledFooter$2 = styled.div.withConfig({
   displayName: "footer__StyledFooter",
@@ -31445,7 +31353,7 @@ var ForgotDetailsSchema = object$1().shape({
   email: string$1().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
 });
 
-var __jsx$2g = React.createElement;
+var __jsx$2f = React.createElement;
 var ForgotDetails = function ForgotDetails(_ref) {
   var pathLogIn = _ref.pathLogIn,
       showPlaceholder = _ref.showPlaceholder,
@@ -31458,29 +31366,29 @@ var ForgotDetails = function ForgotDetails(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2g(React.Fragment, null, __jsx$2g(PageHeading, {
+  return __jsx$2f(React.Fragment, null, __jsx$2f(PageHeading, {
     center: true,
     heading: "Forgot Details",
     divider: false
-  }), __jsx$2g(Form, {
+  }), __jsx$2f(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2g(FormLabel, {
+  }, __jsx$2f(FormLabel, {
     label: "Email"
-  }, __jsx$2g(FormField, {
+  }, __jsx$2f(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     register: register
-  })), __jsx$2g(Button, {
+  })), __jsx$2f(Button, {
     block: true,
     content: "Send reset link",
     size: "lg",
     type: "submit"
-  }), __jsx$2g(Link, {
+  }), __jsx$2f(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2g(StyledLink$8, null, "Back to Log In"))));
+  }, __jsx$2f(StyledLink$8, null, "Back to Log In"))));
 };
 var StyledLink$8 = styled.span.withConfig({
   displayName: "forgotDetails__StyledLink",
@@ -31503,7 +31411,7 @@ var ForgotDetailsResetSchema = object$1().shape({
   password: string$1().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
 });
 
-var __jsx$2h = React.createElement;
+var __jsx$2g = React.createElement;
 var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
   var _errors$password;
 
@@ -31517,31 +31425,31 @@ var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2h(React.Fragment, null, __jsx$2h(PageHeading, {
+  return __jsx$2g(React.Fragment, null, __jsx$2g(PageHeading, {
     center: true,
     heading: "Set New Password",
     divider: false
-  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2h(Alert, {
+  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2g(Alert, {
     content: errors.password.message,
     context: "warning"
-  }), __jsx$2h(Form, {
+  }), __jsx$2g(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2h(FormLabel, {
+  }, __jsx$2g(FormLabel, {
     label: "Password"
-  }, __jsx$2h(FormField, {
+  }, __jsx$2g(FormField, {
     errors: errors,
     name: "password",
     register: register,
     type: "password"
-  })), __jsx$2h(Button, {
+  })), __jsx$2g(Button, {
     block: true,
     content: "Submit",
     size: "lg",
     type: "submit"
-  }), __jsx$2h(Link, {
+  }), __jsx$2g(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2h(StyledLink$9, null, "Back to Log In"))));
+  }, __jsx$2g(StyledLink$9, null, "Back to Log In"))));
 };
 var StyledLink$9 = styled.span.withConfig({
   displayName: "forgotDetailsReset__StyledLink",
@@ -31555,7 +31463,7 @@ ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 };
 
-var __jsx$2i = React.createElement;
+var __jsx$2h = React.createElement;
 var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var Login = function Login(_ref) {
   var blockSubmitButton = _ref.blockSubmitButton,
@@ -31610,41 +31518,41 @@ var Login = function Login(_ref) {
   // }
 
 
-  return __jsx$2i(React.Fragment, null, __jsx$2i(PageHeading, {
+  return __jsx$2h(React.Fragment, null, __jsx$2h(PageHeading, {
     center: true,
     heading: heading,
     divider: false
-  }), error && __jsx$2i(Alert, {
+  }), error && __jsx$2h(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2i(Form, {
+  }), __jsx$2h(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2i(FormLabel, {
+  }, __jsx$2h(FormLabel, {
     label: "Email"
-  }, __jsx$2i(FormField, {
+  }, __jsx$2h(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2i(FormLabel, {
+  })), __jsx$2h(FormLabel, {
     label: "Password"
-  }, __jsx$2i(FormField, {
+  }, __jsx$2h(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     register: register,
     type: showPass ? 'text' : 'password'
-  })), showPassword && __jsx$2i(ShowPassword, {
+  })), showPassword && __jsx$2h(ShowPassword, {
     onClick: function onClick() {
       return setShowPass(function (prev) {
         return !prev;
       });
     }
-  }, __jsx$2i("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2i("div", {
+  }, __jsx$2h("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2h("div", {
     className: "text-right"
-  }, __jsx$2i(Button, {
+  }, __jsx$2h(Button, {
     align: "right",
     block: blockSubmitButton,
     content: "Log in",
@@ -31652,11 +31560,11 @@ var Login = function Login(_ref) {
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), forgotPassword && __jsx$2i(ForgotPasswordWrapper, null, __jsx$2i(Link, {
+  }), forgotPassword && __jsx$2h(ForgotPasswordWrapper, null, __jsx$2h(Link, {
     to: pathForgot
-  }, "Forgot password?")))), pathSignUp && __jsx$2i(React.Fragment, null, __jsx$2i("p", {
+  }, "Forgot password?")))), pathSignUp && __jsx$2h(React.Fragment, null, __jsx$2h("p", {
     className: "text-center"
-  }, "Don't have an account? ", __jsx$2i(Link, {
+  }, "Don't have an account? ", __jsx$2h(Link, {
     to: pathSignUp
   }, "Apply now!"))));
 };
@@ -31689,22 +31597,22 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2j = React.createElement;
+var __jsx$2i = React.createElement;
 var Message = function Message(_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  return __jsx$2j(Row, {
+  return __jsx$2i(Row, {
     style: {
       position: 'relative'
     }
-  }, type === 'out' && __jsx$2j(Column, {
+  }, type === 'out' && __jsx$2i(Column, {
     sm: 1
-  }, "\xA0"), __jsx$2j(Tail, {
+  }, "\xA0"), __jsx$2i(Tail, {
     type: type
-  }), __jsx$2j(MessageBase, _extends({
+  }), __jsx$2i(MessageBase, _extends({
     prevType: prevType
   }, message, props)));
 };
@@ -31713,7 +31621,7 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2k = React.createElement;
+var __jsx$2j = React.createElement;
 var MessageIcon = function MessageIcon(_ref) {
   var icon = _ref.icon;
   var useIcon = '';
@@ -31732,7 +31640,7 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2k(StyledIcon$8, {
+  return __jsx$2j(StyledIcon$8, {
     fixedWidth: false,
     icon: useIcon,
     prefix: "fad"
@@ -31749,7 +31657,7 @@ MessageIcon.propTypes = {
   icon: propTypes.string
 };
 
-var __jsx$2l = React.createElement;
+var __jsx$2k = React.createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -31772,7 +31680,7 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2l(StyledImage$3, {
+  return icon && __jsx$2k(StyledImage$3, {
     alt: "audience",
     src: icon
   });
@@ -31785,7 +31693,7 @@ MessageTo.propTypes = {
   to: propTypes.string
 };
 
-var __jsx$2m = React.createElement;
+var __jsx$2l = React.createElement;
 var MessageBase = function MessageBase(_ref) {
   var content = _ref.content,
       from = _ref.from,
@@ -31811,43 +31719,43 @@ var MessageBase = function MessageBase(_ref) {
       behavior: 'smooth'
     });
   }, []);
-  return __jsx$2m(Column, {
+  return __jsx$2l(Column, {
     sm: 11,
     columnRef: messageRef
-  }, __jsx$2m(StyledCard$2, {
+  }, __jsx$2l(StyledCard$2, {
     type: type
-  }, __jsx$2m(Row, null, __jsx$2m(Column, {
+  }, __jsx$2l(Row, null, __jsx$2l(Column, {
     sm: 6
-  }, __jsx$2m(MessageIcon, {
+  }, __jsx$2l(MessageIcon, {
     icon: icon
-  }), __jsx$2m(MessageTo, {
+  }), __jsx$2l(MessageTo, {
     to: to
-  }), __jsx$2m(StyledTime, null, time)), __jsx$2m(Column, {
+  }), __jsx$2l(StyledTime, null, time)), __jsx$2l(Column, {
     sm: 6
-  }, __jsx$2m(StyledFrom, null, from))), __jsx$2m(Row, null, pictureId && __jsx$2m(Column, {
+  }, __jsx$2l(StyledFrom, null, from))), __jsx$2l(Row, null, pictureId && __jsx$2l(Column, {
     sm: 2
-  }, __jsx$2m(Image$1, {
+  }, __jsx$2l(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2m(Column, {
+  })), __jsx$2l(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2m(StyledReply, null, reply), __jsx$2m(StyledContent$4, {
+  }, __jsx$2l(StyledReply, null, reply), __jsx$2l(StyledContent$4, {
     seeMore: seeMore
   }, content && content.split('\n').map(function (item, key) {
-    return __jsx$2m("span", {
+    return __jsx$2l("span", {
       key: key
-    }, item, __jsx$2m("br", null));
-  })), more && __jsx$2m(StyledCollapse, {
+    }, item, __jsx$2l("br", null));
+  })), more && __jsx$2l(StyledCollapse, {
     onClick: function onClick() {
       return setSeeMore(!seeMore);
     }
-  }, seeMore ? __jsx$2m(React.Fragment, null, __jsx$2m("span", null, "Close"), __jsx$2m(Icon, {
+  }, seeMore ? __jsx$2l(React.Fragment, null, __jsx$2l("span", null, "Close"), __jsx$2l(Icon, {
     icon: "chevron-up"
-  })) : __jsx$2m(React.Fragment, null, __jsx$2m("span", null, "See more"), __jsx$2m(Icon, {
+  })) : __jsx$2l(React.Fragment, null, __jsx$2l("span", null, "See more"), __jsx$2l(Icon, {
     icon: "chevron-down"
-  })))), !type && __jsx$2m(Column, {
+  })))), !type && __jsx$2l(Column, {
     sm: 1
-  }, __jsx$2m(Icon, {
+  }, __jsx$2l(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
   })))));
@@ -31911,7 +31819,7 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2n = React.createElement;
+var __jsx$2m = React.createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -31921,15 +31829,15 @@ var MessagingContainer = function MessagingContainer(_ref) {
       onSearch = _ref.onSearch,
       onSubmit = _ref.onSubmit,
       style = _ref.style;
-  return __jsx$2n(React.Fragment, null, __jsx$2n(MessagingSearch, {
+  return __jsx$2m(React.Fragment, null, __jsx$2m(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2n(StyledContainer$7, {
+  }), __jsx$2m(StyledContainer$7, {
     className: className,
     style: style
-  }, __jsx$2n(MessageList, {
+  }, __jsx$2m(MessageList, {
     messages: messages
-  })), __jsx$2n(MessagingSend, {
+  })), __jsx$2m(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: onSubmit,
     maxLength: maxLength
@@ -31950,11 +31858,11 @@ MessagingContainer.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$2o = React.createElement;
+var __jsx$2n = React.createElement;
 var MessageList = function MessageList(_ref) {
   var messages = _ref.messages;
   return messages.map(function (message, index) {
-    return __jsx$2o(Message, {
+    return __jsx$2n(Message, {
       message: message,
       key: index,
       prevType: message.type,
@@ -31967,7 +31875,7 @@ MessageList.propTypes = {
   messages: propTypes.array.isRequired
 };
 
-var __jsx$2p = React.createElement;
+var __jsx$2o = React.createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -31997,18 +31905,18 @@ var MessagingSearch = function MessagingSearch(_ref) {
     onSearch(data.query);
   };
 
-  return __jsx$2p(StyledContainer$8, null, __jsx$2p(Form, {
+  return __jsx$2o(StyledContainer$8, null, __jsx$2o(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2p(Row, null, __jsx$2p(Column, {
+  }, __jsx$2o(Row, null, __jsx$2o(Column, {
     md: 6
-  }, __jsx$2p(StyledSearch, {
+  }, __jsx$2o(StyledSearch, {
     errors: errors,
     prependSearchIcon: true,
     placeholder: placeholder,
     register: register
-  })), __jsx$2p(Column, {
+  })), __jsx$2o(Column, {
     md: 6
-  }, __jsx$2p(StyledSelect$1, {
+  }, __jsx$2o(StyledSelect$1, {
     change: onFilter,
     id: "messagingFilter",
     options: Items
@@ -32035,7 +31943,7 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2q = React.createElement;
+var __jsx$2p = React.createElement;
 var MessagingSend = function MessagingSend(_ref) {
   var audienceItems = _ref.audienceItems,
       onSubmit = _ref.onSubmit,
@@ -32093,27 +32001,27 @@ var MessagingSend = function MessagingSend(_ref) {
     setValue('message', '');
   };
 
-  return __jsx$2q(React.Fragment, null, open && __jsx$2q(StyledPickerContainer, null, __jsx$2q(EmojiMart, {
+  return __jsx$2p(React.Fragment, null, open && __jsx$2p(StyledPickerContainer, null, __jsx$2p(EmojiMart, {
     handleOpenPicker: handleOpenPicker,
     handleSelect: handleEmojiSelect,
     open: open
-  })), __jsx$2q(StyledContainer$9, {
+  })), __jsx$2p(StyledContainer$9, {
     audience: audience
-  }, __jsx$2q(StyledForm$1, {
+  }, __jsx$2p(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, audience && __jsx$2q(StyledDropDown, {
+  }, audience && __jsx$2p(StyledDropDown, {
     items: audienceItems,
     position: "top",
     onChange: function onChange(item) {
       return setAudience(item);
     }
-  }, audience.name), __jsx$2q(StyledTextarea$1, {
+  }, audience.name), __jsx$2p(StyledTextarea$1, {
     register: register,
     name: "message",
     maxLength: maxLength,
     placeholder: "Write message",
     rows: 1
-  }), __jsx$2q("input", {
+  }), __jsx$2p("input", {
     ref: fileInputRef,
     type: "file",
     multiple: true,
@@ -32121,19 +32029,19 @@ var MessagingSend = function MessagingSend(_ref) {
     style: {
       display: 'none'
     }
-  }), __jsx$2q(StyledElements, null, __jsx$2q(StyledIcon$9, {
+  }), __jsx$2p(StyledElements, null, __jsx$2p(StyledIcon$9, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2q(StyledIcon$9, {
+  }), __jsx$2p(StyledIcon$9, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
       return setOpen(!open);
     },
     size: "2x"
-  }), __jsx$2q(Button, {
+  }), __jsx$2p(Button, {
     content: "Send",
     context: "info",
     size: "md",
@@ -32205,7 +32113,7 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var __jsx$2r = React.createElement;
+var __jsx$2q = React.createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -32223,34 +32131,34 @@ var PasswordChange = function PasswordChange(_ref) {
 
   var submit = function submit(data) {};
 
-  return __jsx$2r(React.Fragment, null, __jsx$2r(PageHeading, {
+  return __jsx$2q(React.Fragment, null, __jsx$2q(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2r(Alert, {
+  }), error && __jsx$2q(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2r(Form, {
+  }), __jsx$2q(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2r(FormLabel, {
+  }, __jsx$2q(FormLabel, {
     label: "Old password"
-  }, __jsx$2r(FormField, {
+  }, __jsx$2q(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2r(FormLabel, {
+  })), __jsx$2q(FormLabel, {
     label: "New password"
-  }, __jsx$2r(FormField, {
+  }, __jsx$2q(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2r(FormLabel, {
+  })), __jsx$2q(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2r(FormField, {
+  }, __jsx$2q(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -32259,7 +32167,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2r(Button, {
+  })), __jsx$2q(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -32272,7 +32180,7 @@ PasswordChange.propTypes = {
   showPlaceholder: propTypes.bool
 };
 
-var __jsx$2s = React.createElement;
+var __jsx$2r = React.createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -32299,13 +32207,13 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2s(React.Fragment, null, __jsx$2s(DatePickerInput, {
+    return __jsx$2r(React.Fragment, null, __jsx$2r(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2s(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2r(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
   var _useContext = useContext(UserContext),
@@ -32353,55 +32261,55 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2s(Form, {
+  return __jsx$2r(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2s(Alert, {
+  }, error && __jsx$2r(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2s(FormLabel, {
+  }), __jsx$2r(FormLabel, {
     label: "First name"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2r(FormLabel, {
     label: "Last name"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2r(FormLabel, {
     label: "Email"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2r(FormLabel, {
     label: "Password"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2r(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2r(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2s(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2r(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2s(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2r(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2s(Button, {
+  })), __jsx$2r(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2s(StyledLink$a, null, "Already have an account? ", __jsx$2s(Link, {
+  }), __jsx$2r(StyledLink$a, null, "Already have an account? ", __jsx$2r(Link, {
     to: pathLogin
   }, "Log in")));
 };
@@ -32431,7 +32339,7 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2t = React.createElement;
+var __jsx$2s = React.createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -32440,10 +32348,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2t(React.Fragment, null, __jsx$2t(Navigation, null), children, footer && __jsx$2t(Footer, {
+  return __jsx$2s(React.Fragment, null, __jsx$2s(Navigation, null), children, footer && __jsx$2s(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2t(Copyright, {
+  }), copyright && __jsx$2s(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -32462,7 +32370,7 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2u = React.createElement;
+var __jsx$2t = React.createElement;
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -32483,16 +32391,16 @@ var Dashboard = function Dashboard(_ref) {
 
   var mergedMeta = _objectSpread$c(_objectSpread$c({}, defaultMeta), meta);
 
-  return __jsx$2u(React.Fragment, null, __jsx$2u(Suspense$1, {
-    fallback: __jsx$2u(PageLoading, {
-      indicator: __jsx$2u(LdsSpinner, null)
+  return __jsx$2t(React.Fragment, null, __jsx$2t(Suspense$1, {
+    fallback: __jsx$2t(PageLoading, {
+      indicator: __jsx$2t(LdsSpinner, null)
     })
-  }, __jsx$2u(React.Fragment, null, __jsx$2u(Page, {
+  }, __jsx$2t(React.Fragment, null, __jsx$2t(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2u(Alert, {
+  }), message && __jsx$2t(Alert, {
     content: message,
     context: context
   }))));
@@ -32517,7 +32425,7 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2v = React.createElement;
+var __jsx$2u = React.createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
@@ -32528,13 +32436,13 @@ var Page = function Page(_ref) {
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2v(StyledPage, null, meta && __jsx$2v(MetaHead, {
+  return __jsx$2u(StyledPage, null, meta && __jsx$2u(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2v(Container, {
+  }), __jsx$2u(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2v(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$2u(PageHeading, pageHeading), children));
 };
 var StyledPage = styled.div.withConfig({
   displayName: "page__StyledPage",
@@ -32557,7 +32465,7 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$2w = React.createElement;
+var __jsx$2v = React.createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -32570,7 +32478,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$2w(React.Fragment, null, iFrame && __jsx$2w("iframe", {
+  return __jsx$2v(React.Fragment, null, iFrame && __jsx$2v("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -32581,7 +32489,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$2w("div", {
+  }), !iFrame && __jsx$2v("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -32592,10 +32500,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$2w("blockquote", {
+  }, __jsx$2v("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$2w("a", {
+  }, __jsx$2v("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -32624,7 +32532,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$2x = React.createElement;
+var __jsx$2w = React.createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -32632,7 +32540,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$2x(React.Fragment, null, iFrame && __jsx$2x("iframe", {
+  return __jsx$2w(React.Fragment, null, iFrame && __jsx$2w("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -32643,13 +32551,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$2x("div", {
+  }), !iFrame && __jsx$2w("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$2x("a", {
+  }, __jsx$2w("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -32670,7 +32578,7 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$2y = React.createElement;
+var __jsx$2x = React.createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
@@ -32682,7 +32590,7 @@ var Typeform = function Typeform(_ref) {
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$2y("div", {
+  return __jsx$2x("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -32722,34 +32630,34 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$2z = React.createElement;
+var __jsx$2y = React.createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2z(StyledArticle, {
+  return __jsx$2y(StyledArticle, {
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article"
-  }, __jsx$2z("header", null, __jsx$2z(StyledImage$4, {
+  }, __jsx$2y("header", null, __jsx$2y(StyledImage$4, {
     alt: article.heading,
     slant: true,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), __jsx$2z(Breadcrumb, {
+  }), __jsx$2y(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && __jsx$2z(BlogCategory, {
+  }), config && __jsx$2y(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$2z(StyledHeading$4, {
+  }), __jsx$2y(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$2z(BlogDetails, {
+  }), facebook && __jsx$2y(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$2z("span", {
+  })), __jsx$2y("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
@@ -32870,7 +32778,7 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$2A = React.createElement;
+var __jsx$2z = React.createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -32886,46 +32794,46 @@ var BlogCard = function BlogCard(_ref) {
     as: "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$2A("article", {
+  return __jsx$2z("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$2A(Card, {
+  }, __jsx$2z(Card, {
     shadow: true
-  }, __jsx$2A(Link, {
+  }, __jsx$2z(Link, {
     to: articleLink
-  }, __jsx$2A(CardImage, {
+  }, __jsx$2z(CardImage, {
     alt: heading,
     src: "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$2A(StyledCardBody, {
+  })), __jsx$2z(StyledCardBody, {
     type: type
-  }, type === 'normal' && __jsx$2A(BlogCategory, {
+  }, type === 'normal' && __jsx$2z(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$2A(StyledContent$5, {
+  }), __jsx$2z(StyledContent$5, {
     type: type
-  }, __jsx$2A(Link, {
+  }, __jsx$2z(Link, {
     to: articleLink
-  }, __jsx$2A(StyledHeading$5, {
+  }, __jsx$2z(StyledHeading$5, {
     content: heading,
     tag: "h1",
     type: type
-  })), type === 'normal' && __jsx$2A("p", {
+  })), type === 'normal' && __jsx$2z("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$2A(React.Fragment, null, article.tags && __jsx$2A(TagsContainer, null, __jsx$2A(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$2z(React.Fragment, null, article.tags && __jsx$2z(TagsContainer, null, __jsx$2z(BlogTags, {
     tags: article.tags
-  })), __jsx$2A(Divider, {
+  })), __jsx$2z(Divider, {
     size: "sm"
-  }), __jsx$2A(BlogCategory, {
+  }), __jsx$2z(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), __jsx$2A(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2A(Link, {
+  }), __jsx$2z(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2z(Link, {
     to: articleLink
-  }, __jsx$2A(StyledButton$8, {
+  }, __jsx$2z(StyledButton$8, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
@@ -32982,7 +32890,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$2B = React.createElement;
+var __jsx$2A = React.createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -33007,10 +32915,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$2B("section", null, _find().map(function (articles, index) {
-    return __jsx$2B(Fragment$1, {
+  return __jsx$2A("section", null, _find().map(function (articles, index) {
+    return __jsx$2A(Fragment$1, {
       key: index
-    }, __jsx$2B(Link, {
+    }, __jsx$2A(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -33020,14 +32928,14 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$2B(StyledHeading$6, {
+    }, __jsx$2A(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$2B(Row, null, articles.map(function (article, index) {
-      return __jsx$2B(Column, {
+    })), __jsx$2A(Row, null, articles.map(function (article, index) {
+      return __jsx$2A(Column, {
         key: index,
         md: 6
-      }, __jsx$2B(BlogCard, {
+      }, __jsx$2A(BlogCard, {
         article: article,
         config: config
       }));
@@ -33043,17 +32951,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$2C = React.createElement;
+var __jsx$2B = React.createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$2C(StyledCategory, {
+  return __jsx$2B(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$2C(Link, {
+  }, __jsx$2B(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -33079,58 +32987,58 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2D = React.createElement;
+var __jsx$2C = React.createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2D(StyledArticleDetails, null, __jsx$2D(Divider, {
+  return __jsx$2C(StyledArticleDetails, null, __jsx$2C(Divider, {
     size: "sm"
-  }), __jsx$2D(List, {
+  }), __jsx$2C(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$2D(ListItem, {
+  }, __jsx$2C(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2D(StyledIcon$a, {
+  }, __jsx$2C(StyledIcon$a, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$2D(Date$1, {
+  }), __jsx$2C(Date$1, {
     date: article.date
-  })), __jsx$2D(ListItem, {
+  })), __jsx$2C(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2D(StyledIcon$a, {
+  }, __jsx$2C(StyledIcon$a, {
     context: "dark",
     icon: "user"
-  }), __jsx$2D(BlogCategory, {
+  }), __jsx$2C(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$2D(ListItem, {
+  })), __jsx$2C(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2D(StyledIcon$a, {
+  }, __jsx$2C(StyledIcon$a, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$2D(BlogReadTime, {
+  }), __jsx$2C(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$2D(BlogTags, {
+  }))), article.tags && __jsx$2C(BlogTags, {
     tags: article.tags
-  }), __jsx$2D(Divider, {
+  }), __jsx$2C(Divider, {
     size: "sm"
-  }), __jsx$2D(StyledShare, null, __jsx$2D(StyledShareText, null, "Share this article"), __jsx$2D(FacebookShareButton, {
+  }), __jsx$2C(StyledShare, null, __jsx$2C(StyledShareText, null, "Share this article"), __jsx$2C(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$2D(Divider, {
+  })), __jsx$2C(Divider, {
     size: "sm"
   }));
 };
@@ -33163,7 +33071,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$2E = React.createElement;
+var __jsx$2D = React.createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33178,16 +33086,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$2E(Column, {
+    return __jsx$2D(Column, {
       md: 12 / number
-    }, __jsx$2E(BlogCard, {
+    }, __jsx$2D(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$2E(Row, null, renderHero());
+  return __jsx$2D(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -33198,7 +33106,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$2F = React.createElement;
+var __jsx$2E = React.createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -33226,11 +33134,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$2F(Row, null, _find().map(function (article, index) {
-    return __jsx$2F(Column, {
+  return __jsx$2E(Row, null, _find().map(function (article, index) {
+    return __jsx$2E(Column, {
       key: index,
       md: 6
-    }, __jsx$2F(BlogCard, {
+    }, __jsx$2E(BlogCard, {
       article: article,
       config: config
     }));
@@ -33244,31 +33152,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$2G = React.createElement;
+var __jsx$2F = React.createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$2G("span", null, "Read time: ", time, " min(s)");
+  return __jsx$2F("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$2H = React.createElement;
+var __jsx$2G = React.createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$2H(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$2G(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$2H(Fragment$1, {
+    return __jsx$2G(Fragment$1, {
       key: index
-    }, __jsx$2H(StyledDt, null, __jsx$2H(Badge, {
+    }, __jsx$2G(StyledDt, null, __jsx$2G(Badge, {
       content: badge
-    })), __jsx$2H(StyledDd, null, __jsx$2H(Link, {
+    })), __jsx$2G(StyledDd, null, __jsx$2G(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -33281,7 +33189,7 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$2H(StyledA$1, null, name))));
+    }, __jsx$2G(StyledA$1, null, name))));
   }));
 };
 var StyledDl = styled.dl.withConfig({
@@ -33311,16 +33219,16 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$2I = React.createElement;
+var __jsx$2H = React.createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$2I(StyledSection, null, heading && __jsx$2I(React.Fragment, null, __jsx$2I(StyledHeading$7, {
+  return __jsx$2H(StyledSection, null, heading && __jsx$2H(React.Fragment, null, __jsx$2H(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$2I(Divider, {
+  }), __jsx$2H(Divider, {
     size: "sm"
   })), children);
 };
@@ -33337,7 +33245,7 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$2J = React.createElement;
+var __jsx$2I = React.createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33374,9 +33282,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2J(BlogSection, {
+  return __jsx$2I(BlogSection, {
     heading: "Archive"
-  }, __jsx$2J(BlogList, {
+  }, __jsx$2I(BlogList, {
     config: config,
     list: list
   }));
@@ -33390,7 +33298,7 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$2K = React.createElement;
+var __jsx$2J = React.createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33429,9 +33337,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2K(BlogSection, {
+  return __jsx$2J(BlogSection, {
     heading: "Author"
-  }, __jsx$2K(BlogList, {
+  }, __jsx$2J(BlogList, {
     config: config,
     author: true,
     list: list
@@ -33446,7 +33354,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$2L = React.createElement;
+var __jsx$2K = React.createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -33485,35 +33393,35 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$2L(BlogSection, null, __jsx$2L(StyledContainer$a, {
+  return __jsx$2K(BlogSection, null, __jsx$2K(StyledContainer$a, {
     colour: colour
-  }, __jsx$2L(StyledForm$2, {
+  }, __jsx$2K(StyledForm$2, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2L(FormLabel, {
+  }, __jsx$2K(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$2L(InputGroup, null, __jsx$2L(FormField, {
+  }, __jsx$2K(InputGroup, null, __jsx$2K(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$2L(InputGroupAddon, null, __jsx$2L(Button, {
+  }), __jsx$2K(InputGroupAddon, null, __jsx$2K(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$2L(FormError, {
+  })), errors.postCode && __jsx$2K(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$2L("div", {
+  }), msg && __jsx$2K("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$2L(Link, {
+  }, msg)))), __jsx$2K(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$2L(StyledA$2, null, "Deliveroo ", __jsx$2L(Icon, {
+  }, __jsx$2K(StyledA$2, null, "Deliveroo ", __jsx$2K(Icon, {
     icon: "external-link"
   })))));
 };
@@ -33638,13 +33546,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$2M = React.createElement;
+var __jsx$2L = React.createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$2M(BlogSection, {
+  return __jsx$2L(BlogSection, {
     heading: "Media"
-  }, __jsx$2M(BlogList, {
+  }, __jsx$2L(BlogList, {
     config: config,
     list: media
   }));
@@ -33654,13 +33562,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$2N = React.createElement;
+var __jsx$2M = React.createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$2N(BlogSection, {
+  return __jsx$2M(BlogSection, {
     heading: "Promo"
-  }, __jsx$2N(Image$1, {
+  }, __jsx$2M(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -33670,7 +33578,7 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2O = React.createElement;
+var __jsx$2N = React.createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33699,9 +33607,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$2O(BlogSection, {
+  return __jsx$2N(BlogSection, {
     heading: "Recent"
-  }, __jsx$2O(BlogList, {
+  }, __jsx$2N(BlogList, {
     config: config,
     list: list
   }));
@@ -33715,7 +33623,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$2P = React.createElement;
+var __jsx$2O = React.createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33724,22 +33632,22 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$2P(StyledAside$1, null, findFood && __jsx$2P(BlogFindFood, null), media && __jsx$2P(BlogMedia, {
+  return __jsx$2O(StyledAside$1, null, findFood && __jsx$2O(BlogFindFood, null), media && __jsx$2O(BlogMedia, {
     media: media
-  }), __jsx$2P(BlogSocial, {
+  }), __jsx$2O(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$2P(BlogPromo, {
+  }), promo && __jsx$2O(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$2P(BlogRecent, {
+  }), __jsx$2O(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$2P(BlogTagCloud, {
+  }), tags && __jsx$2O(BlogTagCloud, {
     articles: articles
-  }), __jsx$2P(BlogArchive, {
+  }), __jsx$2O(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$2P(BlogAuthor, {
+  }), __jsx$2O(BlogAuthor, {
     articles: articles,
     config: config
   }));
@@ -33761,20 +33669,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$2Q = React.createElement;
+var __jsx$2P = React.createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$2Q(React.Fragment, null, facebook && __jsx$2Q(BlogSection, {
+  return __jsx$2P(React.Fragment, null, facebook && __jsx$2P(BlogSection, {
     heading: "Facebook"
-  }, __jsx$2Q(FacebookPagePlugin, {
+  }, __jsx$2P(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$2Q(BlogSection, {
+  })), instagram && __jsx$2P(BlogSection, {
     heading: "Instagram"
-  }, __jsx$2Q("iframe", {
+  }, __jsx$2P("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -33782,7 +33690,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$2Q(BlogSection, {
+  })), twitter && __jsx$2P(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -33796,7 +33704,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$2R = React.createElement;
+var __jsx$2Q = React.createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -33869,7 +33777,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$2R(BlogSection, {
+  return __jsx$2Q(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -33928,7 +33836,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$2S = React.createElement;
+var __jsx$2R = React.createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -33942,7 +33850,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$2S(Badge, {
+      return __jsx$2R(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -33952,7 +33860,7 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$2S("div", null, tagMap());
+  return __jsx$2R("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
@@ -34082,7 +33990,7 @@ var Api = function Api() {
  */
 var UserContext = /*#__PURE__*/createContext();
 
-var __jsx$2T = React.createElement;
+var __jsx$2S = React.createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
@@ -34273,7 +34181,7 @@ var UserProvider = function UserProvider(_ref) {
     return true;
   };
 
-  return !isLoading && __jsx$2T(UserContext.Provider, {
+  return !isLoading && __jsx$2S(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -34292,7 +34200,7 @@ var UserProvider = function UserProvider(_ref) {
  */
 var AuthorizationContext = /*#__PURE__*/createContext();
 
-var __jsx$2U = React.createElement;
+var __jsx$2T = React.createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
@@ -34379,7 +34287,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$2U(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$2T(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -34392,11 +34300,11 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
  */
 var ConfigContext = /*#__PURE__*/createContext();
 
-var __jsx$2V = React.createElement;
+var __jsx$2U = React.createElement;
 // import { Config } from 'config'
 
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$2V(ConfigContext.Provider, _extends({
+  return __jsx$2U(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -34815,7 +34723,7 @@ var InternationalisationContext = /*#__PURE__*/createContext({
   }
 });
 
-var __jsx$2W = React.createElement;
+var __jsx$2V = React.createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
@@ -34851,7 +34759,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$2W(InternationalisationContext.Provider, {
+  return __jsx$2V(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -34900,7 +34808,7 @@ var getInitialLocale = function getInitialLocale() {
  */
 var NotificationsContext = /*#__PURE__*/createContext();
 
-var __jsx$2X = React.createElement;
+var __jsx$2W = React.createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -34920,7 +34828,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$2X(NotificationsContext.Provider, {
+  return __jsx$2W(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -37951,7 +37859,7 @@ var useNotifications = function useNotifications(url) {
  */
 var OffCanvasContext = /*#__PURE__*/createContext();
 
-var __jsx$2Y = React.createElement;
+var __jsx$2X = React.createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
@@ -37995,12 +37903,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$2Y(OffCanvasContext.Provider, {
+  return __jsx$2X(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$2Y(OffCanvas, {
+  }, children, __jsx$2X(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -38017,7 +37925,7 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$2Y(StyledWrapper$2, {
+    return __jsx$2X(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
@@ -38031,7 +37939,7 @@ var StyledWrapper$2 = styled.div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$2Z = React.createElement;
+var __jsx$2Y = React.createElement;
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -38064,7 +37972,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$2Z(React.Fragment, null, __jsx$2Z(ThemeStyle, null), user && __jsx$2Z(UserProvider, null, __jsx$2Z(AuthorizationProvider, null, __jsx$2Z(InternationalisationProvider, null, __jsx$2Z(NotificationsProvider, null, offCanvas ? __jsx$2Z(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$2Y(React.Fragment, null, __jsx$2Y(ThemeStyle, null), user && __jsx$2Y(UserProvider, null, __jsx$2Y(AuthorizationProvider, null, __jsx$2Y(InternationalisationProvider, null, __jsx$2Y(NotificationsProvider, null, offCanvas ? __jsx$2Y(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -38072,9 +37980,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$2Z(React.Fragment, null, __jsx$2Z(ConfigProvider, {
+      return __jsx$2Y(React.Fragment, null, __jsx$2Y(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$2Z(ApolloProvider, {
+      }, apolloClient ? __jsx$2Y(ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -38087,14 +37995,14 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$2Z(Layout, null, pageProgressBar && __jsx$2Z(PageProgressBar, {
+      return __jsx$2Y(Layout, null, pageProgressBar && __jsx$2Y(PageProgressBar, {
         router: router
-      }), __jsx$2Z(Component, pageProps));
+      }), __jsx$2Y(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$2Z(ThemeProvider, {
+      return __jsx$2Y(ThemeProvider, {
         theme: merge$1(Theme, this.props.theme)
       }, this.data());
     }
@@ -38124,5 +38032,5 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, BarChart, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, ControlTypes, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
+export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, BarChart, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, ControlTypes, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
 //# sourceMappingURL=industry-ui.es.js.map

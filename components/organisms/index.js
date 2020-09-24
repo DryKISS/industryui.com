@@ -4,7 +4,7 @@
 export * from './calendar'
 export * from './colorPicker/colorPicker'
 export * from './emailChange/emailChange'
-export * from './editor'
+// export * from './editor'
 export * from './footer/footer'
 export * from './forgotDetails/forgotDetails'
 export * from './forgotDetailsReset/forgotDetailsReset'

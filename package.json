@@ -2,7 +2,9 @@
   "name": "@drykiss/industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": ["DryKISS, Ltd."],
+  "contributors": [
+    "DryKISS, Ltd."
+  ],
   "homepage": "https://industryui.com",
   "main": "dist/industry-ui.js",
   "module": "dist/industry-ui.es.js",
@@ -52,7 +54,9 @@
     }
   },
   "lint-staged": {
-    "**/*.js": ["yarn test"]
+    "**/*.js": [
+      "yarn test"
+    ]
   },
   "husky": {
     "hooks": {
@@ -64,8 +68,14 @@
     "prettier.semi": false
   },
   "standard": {
-    "globals": ["__SITE__"],
-    "ignore": ["node_modules/**", "*.bundle*.js", "**/__tests__/*.test.js"],
+    "globals": [
+      "__SITE__"
+    ],
+    "ignore": [
+      "node_modules/**",
+      "*.bundle*.js",
+      "**/__tests__/*.test.js"
+    ],
     "parser": "babel-eslint"
   },
   "dependencies": {
@@ -85,6 +95,7 @@
     "@fullcalendar/list": "4.4.2",
     "@fullcalendar/react": "4.4.2",
     "@fullcalendar/timegrid": "4.4.2",
+    "@hookform/resolvers": "^0.1.1",
     "@nivo/bar": "^0.61.1",
     "@nivo/colors": "^0.61.0",
     "@nivo/generators": "^0.61.0",
