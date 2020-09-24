@@ -5,16 +5,12 @@
 // React
 import React from 'react'
 import { string } from 'prop-types'
-import { Text, SIZE } from 'components'
+import { Text } from 'components'
 // Style
 import styled from 'styled-components'
 
 const AddressText = props => {
-  return (
-    <Text context='dark' size={SIZE.MD}>
-      {props.children}
-    </Text>
-  )
+  return <Text context='dark'>{props.children}</Text>
 }
 
 export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
