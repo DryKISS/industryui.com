@@ -5,8 +5,5 @@
   ],
   "rules": {
     "media-feature-name-no-unknown": null,
-  },
-  {
-  "ignoreFiles": ["dist/**/*.js"]
   }
 }
