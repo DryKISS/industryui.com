@@ -24,16 +24,9 @@ export default {
 }
 
 const BaseComponent = ({ ...args }) => {
-  if (args.to) {
-    args.to = '/example'
-  } else {
-    delete args.to
-  }
-  if (args.icon) {
-    args.icon = 'user'
-  } else {
-    delete args.icon
-  }
+  args.to = args.to ? '/example' : null
+  args.icon = args.icon ? 'user' : null
+
   return <Badge {...args} />
 }
 
