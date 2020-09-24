@@ -2,9 +2,6 @@
  * Page Loading
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 

@@ -2,9 +2,6 @@
  * OffCanvas - Provider
  */
 
-// React
-import React from 'react'
-
 // Context
 import { ConfigContext } from './'
 

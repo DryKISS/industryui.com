@@ -2,9 +2,6 @@
  * Messaging/List
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 
