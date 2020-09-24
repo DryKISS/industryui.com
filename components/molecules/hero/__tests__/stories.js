@@ -2,9 +2,6 @@
  * Hero
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 // import { text, boolean, number } from '@storybook/addon-knobs'
