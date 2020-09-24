@@ -9,15 +9,7 @@ import React from 'react'
 import { Wrapper } from 'decorators'
 
 // UI
-import {
-  ALIGN,
-  arrayOfValues,
-  arrayOfKeys,
-  TEXT_COLOURS,
-  ControlTypes,
-  SIZE,
-  Text
-} from '../../../'
+import { ALIGN, CONTEXT, ControlTypes, SIZE, Text } from '../../../'
 
 export default {
   component: Text,
@@ -53,8 +45,8 @@ text.args = {
   width: 400
 }
 text.argTypes = {
-  align: { control: { type: ControlTypes.Select, options: arrayOfValues(ALIGN) } },
-  context: { control: { type: ControlTypes.Select, options: arrayOfKeys(TEXT_COLOURS) } },
-  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } },
+  align: { control: { type: ControlTypes.Select, options: Object.values(ALIGN) } },
+  context: { control: { type: ControlTypes.Select, options: Object.values(CONTEXT) } },
+  size: { control: { type: ControlTypes.Select, options: Object.values(SIZE) } },
   width: { name: 'Wrapper Width', control: { type: ControlTypes.Range, min: 50, max: 800 } }
 }
