@@ -2,9 +2,6 @@
  * Form - Field
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
