@@ -1,4 +1,0 @@
-/**
- * Article
- */
-export * from './article'

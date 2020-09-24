@@ -1,5 +1,5 @@
 /**
- * OffCanvas - Provider
+ * Services - Config - Provider
  */
 
 // React
@@ -9,8 +9,8 @@ import React from 'react'
 import { ConfigContext } from './'
 
 // Default Config
-import { Config } from 'config'
+// import { Config } from 'config'
 
 export const ConfigProvider = props => {
-  return <ConfigContext.Provider value={props.config || Config} {...props} />
+  return <ConfigContext.Provider value={props.config} {...props} />
 }

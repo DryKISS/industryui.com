@@ -10,7 +10,7 @@ import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { PasswordChange } from '../'
+import { PasswordChange } from 'components'
 import Readme from '../README.md'
 
 export default {

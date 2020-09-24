@@ -75,7 +75,7 @@ export const ThemeStyle = createGlobalStyle`
 
   body {
     color: ${props => props.theme.TYPOGRAPHY.fontColour};
-    font-family: ${props => props.theme.TYPOGRAPHY.font}; /* stylelint-disable-line */
+    font-family: ${props => props.theme.TYPOGRAPHY.font};
     margin: 0;
     position: relative;
   }

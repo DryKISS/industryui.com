@@ -2,6 +2,9 @@
  * Components
  */
 
+// Services
+export * from './services'
+
 // Particles
 export * from './constants'
 export * from './hooks'
@@ -21,8 +24,5 @@ export * from './templates'
 // Groups
 export * from './blog'
 
-// Services
-export * from './services'
-
 // App
-export * from './app'
+export * from './app/app'

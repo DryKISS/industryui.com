@@ -10,7 +10,7 @@ import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
 
 // UI
-import { ForgotDetails } from '../'
+import { ForgotDetails } from 'components'
 import Readme from '../README.md'
 
 export default {

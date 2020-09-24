@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Storybook
 import { select } from '@storybook/addon-knobs'
@@ -65,14 +65,14 @@ export const main = () => {
 }
 
 export const withShowAndHidePassword = () => {
-  return <Login showPassword />
+  return <BaseComponent showPassword />
 }
 
 export const withBlockSubmitButton = () => {
-  return <Login blockSubmitButton />
+  return <BaseComponent blockSubmitButton />
 }
 
-export const withPlaceholder = () => <Login showLabel={false} showPlaceholder />
+export const withPlaceholder = () => <BaseComponent showLabel={false} showPlaceholder />
 
 export const withHttpRequest = () => {
   const { change, form } = useForm({ email: '', password: '' })

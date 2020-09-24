@@ -73,7 +73,7 @@ const StyledButton = styled.button`
   display: ${({ block, centre }) => (centre || block ? 'flex' : 'inline-flex')};
   align-items: center;
   justify-content: center;
-  font-family: ${({ theme }) => theme.font}; /* stylelint-disable-line */
+  font-family: ${({ theme }) => theme.font};
   outline: none;
   overflow: visible;
   text-decoration: none;
