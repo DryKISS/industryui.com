@@ -2,9 +2,6 @@
  * Carousel
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Context, Wrapper } from 'decorators'
 import { boolean, select } from '@storybook/addon-knobs'

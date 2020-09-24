@@ -2,9 +2,6 @@
  * Charts - Line - Tests - Story
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, select, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'

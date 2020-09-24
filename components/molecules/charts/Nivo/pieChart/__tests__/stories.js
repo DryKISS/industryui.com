@@ -2,9 +2,6 @@
  * Charts - Pie - Tests - Story
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, select } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'

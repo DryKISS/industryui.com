@@ -2,9 +2,6 @@
  * Dog - Link
  */
 
-// React
-import React from 'react'
-
 // Component
 import { DogLink } from '../'
 import Readme from '../README.md'
