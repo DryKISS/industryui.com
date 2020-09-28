@@ -3900,6 +3900,96 @@ exports[`Storyshots Molecules/Carousel With Pagination 1`] = `
 </div>
 `;
 
+exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Axis 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Label 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Tooltip 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Molecules/Charts/Nivo/Bar Main 1`] = `
 .c0 {
   padding: 1rem;
