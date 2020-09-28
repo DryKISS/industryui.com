@@ -6,7 +6,7 @@
 import { Wrapper } from 'decorators'
 
 // UI
-import { arrayOfValues, Badge, CONTEXT, ControlTypes, SIZE } from 'components'
+import { Badge, CONTEXT, ControlTypes, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -32,10 +32,12 @@ badge.args = {
   content: 'Badge',
   context: CONTEXT.PRIMARY,
   icon: false,
+  shape: 'square',
   size: SIZE.MD,
   to: false
 }
 badge.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
-  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
+  context: { control: { type: ControlTypes.Select, options: Object.values(CONTEXT) } },
+  shape: { control: { type: ControlTypes.Select, options: ['square', 'round'] } },
+  size: { control: { type: ControlTypes.Select, options: Object.values(SIZE) } }
 }

@@ -13,6 +13,7 @@ export const BadgePropTypes = {
   context: oneOf(Object.values(CONTEXT)),
   icon: string,
   iconPrefix: string,
+  shape: oneOf(['round', 'square']),
   size: oneOf(Object.values(SIZE)),
   style: object,
   to: string
@@ -20,5 +21,6 @@ export const BadgePropTypes = {
 
 export const BadgeDefaultProps = {
   context: 'primary',
+  shape: 'square',
   size: 'md'
 }

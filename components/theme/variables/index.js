@@ -8,6 +8,7 @@ import { TYPOGRAPHY } from './typography'
 
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
+import { BADGE } from '../../atoms/badge/variables'
 import { BAR } from '../../organisms/bar/variables'
 import { BARCHART } from '../../molecules/charts/Nivo/responsiveBar/variables'
 import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
@@ -31,6 +32,7 @@ import { TEXT_STYLE } from '../../atoms/text/variables'
 
 export const Theme = {
   AVATAR,
+  BADGE,
   BAR,
   BARCHART,
   CALENDAR,
