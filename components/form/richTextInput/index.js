@@ -1,8 +1,7 @@
 import { Controller } from 'react-hook-form'
 import { Editor } from 'draft-js'
 
-export const RichTextInput = ({ editorState, control, name, initialValue, setValue }) => {
-  console.log(editorState)
+export const RichTextInput = ({ control, name, setValue }) => {
   return (
     <Controller
       name={name}
