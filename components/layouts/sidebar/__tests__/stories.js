@@ -2,9 +2,6 @@
  * Sidebar
  */
 
-// React
-import React from 'react'
-
 // UI
 import { Navbar, SidebarLayout } from '../../../'
 import Readme from '../README.md'

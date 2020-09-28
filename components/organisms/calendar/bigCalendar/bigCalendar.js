@@ -2,9 +2,6 @@
  * Big Calendar
  */
 
-// React
-import React from 'react'
-
 // Moment
 import moment from 'moment'
 

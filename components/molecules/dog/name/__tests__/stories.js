@@ -2,9 +2,6 @@
  * Dog - Name
  */
 
-// React
-import React from 'react'
-
 // Component
 import { DogName } from '../'
 import Readme from '../README.md'

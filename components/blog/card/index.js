@@ -39,7 +39,7 @@ export const BlogCard = ({ article, config, type }) => {
 
           <StyledContent type={type}>
             <Link to={articleLink}>
-              <StyledHeading content={heading} tag='h1' type={type} />
+              <StyledHeading content={heading} tag='h1' noWrap type={type} />
             </Link>
 
             {type === 'normal' && <p itemProp='description'>{excerpt}</p>}

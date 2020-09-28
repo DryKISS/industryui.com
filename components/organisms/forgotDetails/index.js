@@ -2,8 +2,6 @@
  * Forgot Details
  */
 
-// React
-import React from 'react'
 import { bool, func, string } from 'prop-types'
 
 // UI

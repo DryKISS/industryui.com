@@ -2,8 +2,6 @@
  * Image Location FormElement
  */
 
-// React
-import React from 'react'
 import { func, object } from 'prop-types'
 import { Controller } from 'react-hook-form'
 

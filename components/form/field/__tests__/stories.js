@@ -2,9 +2,6 @@
  * Form - Field
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
@@ -33,7 +30,6 @@ const BaseComponent = (props = {}) => {
     name: 'email',
     placeholder: text('Placeholder', 'Email...'),
     readOnly: boolean('Read only', false),
-    required: true,
     register: register,
     ...props
   }
@@ -46,6 +42,7 @@ const BaseComponent = (props = {}) => {
       <FormLabel label='Email'>
         <FormField {...defaultProps} regExp={pattern} />
       </FormLabel>
+
       <FormLabel label='Name'>
         <FormField {...defaultProps} minLength={10} defaultValue='Fred' name='fred' />
       </FormLabel>

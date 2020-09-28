@@ -2,9 +2,6 @@
  * Get Address
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 

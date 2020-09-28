@@ -32,7 +32,6 @@ export const ReactSelectField = ({
   loadOptions,
   name,
   options,
-  required,
   selectedOption,
   size,
   ...parentProps
@@ -62,7 +61,6 @@ export const ReactSelectField = ({
         control={control}
         defaultValue={defaultValue}
         name={name}
-        rules={{ required }}
       />
     </Wrapper>
   )

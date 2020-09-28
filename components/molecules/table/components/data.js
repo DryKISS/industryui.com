@@ -2,9 +2,6 @@
  * Table Data (td)
  */
 
-// React
-import React from 'react'
-
 // Style
 import styled from 'styled-components'
 

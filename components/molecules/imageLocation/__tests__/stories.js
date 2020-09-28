@@ -2,8 +2,6 @@
  * Image Location
  */
 
-// React
-import React from 'react'
 import { object as obj } from 'yup'
 // Storybook
 import { object, select, withKnobs } from '@storybook/addon-knobs'

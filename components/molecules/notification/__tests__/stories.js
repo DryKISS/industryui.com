@@ -2,9 +2,6 @@
  * Molecules - Notification
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'

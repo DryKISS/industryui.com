@@ -136,6 +136,7 @@ export const colorEvent = [
     value: 'purple'
   }
 ]
+
 export const displayEventOptions = [
   {
     disabled: false,
@@ -168,10 +169,10 @@ export const displayEventOptions = [
     value: 'none'
   }
 ]
+
 export const checkBoxOptions = [
   {
     id: 'checked',
-    required: false,
     value: 'true'
   }
 ]

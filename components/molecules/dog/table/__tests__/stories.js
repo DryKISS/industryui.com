@@ -2,9 +2,6 @@
  * Table
  */
 
-// React
-import React from 'react'
-
 // Component
 import { TableDogs } from '../'
 import Readme from '../README.md'

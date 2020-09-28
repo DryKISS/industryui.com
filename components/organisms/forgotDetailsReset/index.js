@@ -3,8 +3,6 @@
  * Takes a UUID: 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
  */
 
-// React
-import React from 'react'
 import { func, string } from 'prop-types'
 
 // UI

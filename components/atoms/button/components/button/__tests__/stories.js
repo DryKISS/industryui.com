@@ -2,16 +2,13 @@
  * Button
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { boolean, text } from '@storybook/addon-knobs'
-import { Context, Size, Wrapper } from 'decorators'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Button } from 'components'
+import { Button, CONTEXT, ControlTypes, SIZE } from 'components'
 import Readme from '../README.md'
+import { arrayOfValues } from 'components/utils'
 
 export default {
   title: 'Atoms/Button',
@@ -24,23 +21,27 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    block: boolean('Block', false),
-    centre: boolean('Centre', true),
-    content: text('Button text', 'Button'),
-    context: Context(),
-    dashed: boolean('Dashed', false),
-    disabled: boolean('Disabled', false),
-    endIcon: text('End icon', 'arrow-left'),
-    outline: boolean('Outline', false),
-    shadow: boolean('Shadow', false),
-    size: Size('', 'md'),
-    startIcon: text('Start icon', 'arrow-right'),
-    ...props
-  }
-
-  return <Button {...defaultProps} />
+const BaseComponent = ({ ...args }) => {
+  return <Button {...args} />
 }
 
-export const main = () => <BaseComponent />
+export const button = BaseComponent.bind({})
+
+button.args = {
+  block: false,
+  center: false,
+  content: 'Button text',
+  context: CONTEXT.PRIMARY,
+  dashed: false,
+  disabled: false,
+  endIcon: 'user',
+  outline: false,
+  shadow: false,
+  size: SIZE.MD,
+  startIcon: 'user'
+}
+
+button.argTypes = {
+  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
+  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
+}

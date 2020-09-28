@@ -2,9 +2,6 @@
  * Form - Input - Group
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Size, Wrapper } from 'decorators'
 

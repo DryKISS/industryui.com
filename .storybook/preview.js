@@ -2,9 +2,6 @@
  * Storybook Configuration
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { addParameters } from '@storybook/react'
 import { action } from '@storybook/addon-actions'

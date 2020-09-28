@@ -7,5 +7,5 @@ NoValidate is applied to the Form by default to skip browser validation.
 
 ## Links
 
-- [React Strap](https://github.com/reactstrap/reactstrap/blob/master/src/Form.js)
-- [Tutorial](https://codepen.io/_arpy/pen/xYoyPW)
+[React Strap](https://github.com/reactstrap/reactstrap/blob/master/src/Form.js)
+[Tutorial](https://codepen.io/_arpy/pen/xYoyPW)

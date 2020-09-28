@@ -2,9 +2,6 @@
  * Molecules - Page Progress Bar
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Context, Wrapper } from 'decorators'
 

@@ -2,9 +2,6 @@
  * Form - Radio
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
@@ -35,7 +32,6 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     name: 'radio',
     legend: text('Legend', 'Gender?'),
-    required: 'This is required',
     register: register,
     ...props
   }

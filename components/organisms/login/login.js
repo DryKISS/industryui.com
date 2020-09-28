@@ -68,7 +68,7 @@ export const Login = ({
     <>
       <PageHeading center heading={heading} divider={false} />
 
-      {error && <Alert content={error.message} context='warning' style={{ color: '#fff' }} />}
+      {error && <Alert content={error.message} context='warning' />}
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Email'>

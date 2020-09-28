@@ -2,8 +2,6 @@
  * Dropdown - Menu
  */
 
-// React
-import React from 'react'
 import { array, func, oneOf } from 'prop-types'
 
 // Style

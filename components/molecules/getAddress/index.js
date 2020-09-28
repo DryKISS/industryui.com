@@ -92,19 +92,19 @@ export const GetAddress = forwardRef(
       if (form.line1) {
         const changedInputs = [
           { label: 'Address line 1', id: 'line1' },
-          { label: 'Address line 2', id: 'line2', required: false },
-          { label: 'Address line 3', id: 'line3', required: false },
+          { label: 'Address line 2', id: 'line2' },
+          { label: 'Address line 3', id: 'line3' },
           { label: 'City / Town', id: 'town' },
-          { label: 'County', id: 'county', required: false },
+          { label: 'County', id: 'county' },
           { label: 'Postcode', id: 'postcode' },
           { label: 'Country', id: 'country' }
         ]
 
-        return changedInputs.map(({ label, id, required }) => {
+        return changedInputs.map(({ label, id }) => {
           return (
             <span key={id}>
               <FormLabel label={label}>
-                <FormField name={id} onChange={change} required={required} value={form[id]} />
+                <FormField name={id} onChange={change} value={form[id]} />
               </FormLabel>
             </span>
           )

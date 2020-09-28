@@ -2,12 +2,12 @@
  * Form - Form
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
+
+// Yup
+import { number, object, string } from 'yup'
 
 // UI
 import {
@@ -34,7 +34,6 @@ import {
   Text,
   TextareaField,
   useForm,
-  yup,
   yupResolver
 } from 'components'
 
@@ -57,19 +56,19 @@ export default {
   }
 }
 
-const schema = yup.object().shape({
-  amount: yup.number().required(),
-  checkbox: yup.string().required(),
-  radio: yup.string().required(),
-  disabled: yup.string(),
-  email: yup.string().required(),
-  input: yup.string().required(),
-  name: yup.string().required(),
-  reactSelect: yup.string().required(),
-  datepicker: yup.string().required(),
-  textarea: yup.string().required(),
-  select: yup.string().required(),
-  readonly: yup.string()
+const schema = object().shape({
+  amount: number().required(),
+  checkbox: string().required(),
+  radio: string().required(),
+  disabled: string(),
+  email: string().required(),
+  input: string().required(),
+  name: string().required(),
+  reactSelect: string().required(),
+  datepicker: string().required(),
+  textarea: string().required(),
+  select: string().required(),
+  readonly: string()
 })
 
 const checkbox = [

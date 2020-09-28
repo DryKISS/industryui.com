@@ -2,9 +2,6 @@
  * Form - Field
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
@@ -32,7 +29,6 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     name: 'description',
     placeholder: text('Placeholder', 'Description'),
-    required: true,
     register: register,
     ...props
   }

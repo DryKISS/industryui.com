@@ -2,9 +2,6 @@
  * Messaging/Send
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { Wrapper } from 'decorators'

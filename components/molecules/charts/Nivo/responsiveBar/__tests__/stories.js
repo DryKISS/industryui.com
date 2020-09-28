@@ -2,9 +2,6 @@
  * Charts - Bar - responsiveBar - Story
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { select, text, number, boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'

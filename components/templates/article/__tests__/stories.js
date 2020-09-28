@@ -2,9 +2,6 @@
  * Article
  */
 
-// React
-import React from 'react'
-
 import { array, text } from '@storybook/addon-knobs'
 
 import icon from '../__resources__/dog-icon.png'

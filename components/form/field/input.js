@@ -3,7 +3,7 @@
  */
 
 // React
-import { arrayOf, bool, func, number, oneOf, oneOfType, string, object } from 'prop-types'
+import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 import { useState } from 'react'
 // Style
 import styled, { css } from 'styled-components'
@@ -59,8 +59,8 @@ export const StyledInput = styled.input.attrs(props => ({
 }))`
 ${props => COMMON_INPUT_STYLES(props)}
 
-  ${({ errors, error }) =>
-    (errors || error) &&
+  ${({ errors }) =>
+    errors &&
     css`
       ${props => ERROR_STYLE(props)}
     `}
@@ -93,7 +93,7 @@ FormField.propTypes = {
   autoComplete: oneOfType([bool, string]),
   autoFocus: bool,
   disabled: bool,
-  error: func.isRequired,
+  errors: object.isRequired,
   helperMessage: string,
   label: string,
   name: string.isRequired,

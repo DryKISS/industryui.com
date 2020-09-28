@@ -2,9 +2,6 @@
  * Page Heading
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 
