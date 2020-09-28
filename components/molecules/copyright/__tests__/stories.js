@@ -2,12 +2,6 @@
  * Copyright
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { Copyright } from 'components'
 import Readme from '../README.md'
@@ -18,7 +12,6 @@ import { Copyright as Data } from '../__mocks__/copyright'
 export default {
   title: 'Molecules/Copyright',
   component: Copyright,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

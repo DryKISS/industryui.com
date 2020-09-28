@@ -17,6 +17,7 @@ export * from './organisms'
 export * from './layouts'
 export * from './social'
 export * from './templates'
+export * from './pages'
 
 // Groups
 export * from './blog'

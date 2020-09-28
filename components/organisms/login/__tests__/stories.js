@@ -7,7 +7,6 @@ import { useState } from 'react'
 
 // Storybook
 import { select } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { Alert, Login, requestSimulator, useForm } from 'components'
@@ -16,7 +15,6 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Login',
   component: Login,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

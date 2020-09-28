@@ -2,12 +2,6 @@
  * Form - DatePicker - Calendar - Stories
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // Yup
 import { object, string } from 'yup'
 
@@ -36,7 +30,6 @@ import { KNOBS } from './knobs'
 export default {
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

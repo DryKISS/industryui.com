@@ -2,20 +2,15 @@
  * LIST
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, object } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
-import { List, ListItem } from '../../../'
+import { List, ListItem } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/List',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

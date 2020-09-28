@@ -1,7 +1,11 @@
 /**
  * Full Calendar - Wrapper
  */
+
+// React
 import { useEffect, useState } from 'react'
+
+// Next
 import dynamic from 'next/dynamic'
 
 let FullCalendar

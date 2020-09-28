@@ -2,8 +2,6 @@
  * Pagination - Item
  */
 
-// React
-import React from 'react'
 import { bool, any, func, string } from 'prop-types'
 
 // UI

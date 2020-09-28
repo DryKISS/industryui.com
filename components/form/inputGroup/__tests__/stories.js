@@ -2,20 +2,16 @@
  * Form - Input - Group
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { Size, Wrapper } from 'decorators'
+import { Size } from 'decorators'
 
 // UI
 import { Button, FormField, Icon, InputGroup, InputGroupAddon, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/InputGroup',
   component: InputGroup,
-  decorators: [Wrapper],
+  title: 'Form/InputGroup',
   parameters: {
     readme: {
       sidebar: Readme

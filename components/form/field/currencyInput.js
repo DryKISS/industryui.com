@@ -3,9 +3,9 @@
  */
 
 // React
-import React from 'react'
 import { bool, func, number, object, oneOfType, node, string } from 'prop-types'
 
+// UI
 import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
 
 export const CurrencyInput = ({

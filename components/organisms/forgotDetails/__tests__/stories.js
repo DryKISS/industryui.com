@@ -2,12 +2,8 @@
  * Forgot Details
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { ForgotDetails } from 'components'
@@ -16,7 +12,6 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Forgot Details',
   component: ForgotDetails,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

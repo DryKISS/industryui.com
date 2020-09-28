@@ -1,8 +1,11 @@
 /**
  * Twitter Timeline
  */
+
+// React
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func, object } from 'prop-types'
+
 // import isEqual from 'lodash/isEqual'
 import cloneDeep from 'lodash/cloneDeep'
 import AbstractWidget from './AbstractWidget'
@@ -28,9 +31,9 @@ const TwitterTimeline = () => {
 }
 
 TwitterTimeline.propTypes = {
-  dataSource: PropTypes.object.isRequired,
-  options: PropTypes.object,
-  onLoad: PropTypes.func
+  dataSource: object.isRequired,
+  options: object,
+  onLoad: func
 }
 
 TwitterTimeline.defaultProps = {

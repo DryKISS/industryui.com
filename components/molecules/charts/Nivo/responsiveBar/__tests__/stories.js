@@ -2,18 +2,14 @@
  * Charts - Bar - responsiveBar - Story
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { select, text, number, boolean } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { BarChart } from '../'
+import { BarChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
@@ -35,7 +31,6 @@ import styled from 'styled-components'
 export default {
   title: 'Molecules/Charts/Nivo/Bar',
   component: BarChart,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

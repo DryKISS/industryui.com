@@ -4,7 +4,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { bool, node, object, shape, string } from 'prop-types'
 
 // Style

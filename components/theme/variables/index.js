@@ -8,6 +8,8 @@ import { TYPOGRAPHY } from './typography'
 
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
+import { BADGE } from '../../atoms/badge/variables'
+import { BAR } from '../../organisms/bar/variables'
 import { BARCHART } from '../../molecules/charts/Nivo/responsiveBar/variables'
 import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
 import { COPYRIGHT } from '../../molecules/copyright/variables'
@@ -26,9 +28,12 @@ import { SPACING } from '../utils'
 import { STEPPER } from '../../molecules/stepper/variables'
 import { TABLE } from '../../molecules/table/variables'
 import { TABS } from '../../molecules/tabs/variables'
+import { TEXT_STYLE } from '../../atoms/text/variables'
 
 export const Theme = {
   AVATAR,
+  BADGE,
+  BAR,
   BARCHART,
   CALENDAR,
   COLOUR,
@@ -49,5 +54,6 @@ export const Theme = {
   STEPPER,
   TABLE,
   TABS,
+  TEXT_STYLE,
   TYPOGRAPHY
 }

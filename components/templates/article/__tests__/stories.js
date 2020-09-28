@@ -2,10 +2,7 @@
  * Article
  */
 
-// React
-import React from 'react'
-
-// Stroybook
+// Storybook
 import { array, text } from '@storybook/addon-knobs'
 
 // UI

@@ -2,12 +2,6 @@
  * Select
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // Yup
 import { object, string } from 'yup'
 
@@ -30,7 +24,6 @@ import { COLOURS, EXPENSES } from '../__mocks__/select'
 export default {
   title: 'Form/Select',
   component: SelectField,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

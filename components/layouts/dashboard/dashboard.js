@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import { node, object, shape, string } from 'prop-types'
 
 // UI

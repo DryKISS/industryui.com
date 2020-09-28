@@ -2,8 +2,6 @@
  * Copyright
  */
 
-// React
-import React from 'react'
 import { array, bool, oneOf, shape, string } from 'prop-types'
 
 // UI

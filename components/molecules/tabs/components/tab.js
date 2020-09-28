@@ -2,8 +2,6 @@
  * Tab
  */
 
-// React
-import React from 'react'
 import { bool, func, oneOfType, string } from 'prop-types'
 
 // Style

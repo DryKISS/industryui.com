@@ -4,7 +4,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { array, func, node, string } from 'prop-types'
 
 // UI

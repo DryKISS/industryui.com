@@ -2,8 +2,6 @@
  * Components - Forms - Precent Input
  */
 
-// React
-import React from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI

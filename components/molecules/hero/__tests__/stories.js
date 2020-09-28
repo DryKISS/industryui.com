@@ -2,19 +2,12 @@
  * Hero
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-// import { text, boolean, number } from '@storybook/addon-knobs'
-
 // UI
 import { Heading, Hero, Image } from 'components'
 import { TextBlock } from '../components/textBlock'
-
 import Readme from '../README.md'
 
+// Resources
 import Jack from '../__resources__/hero-jack-russell.jpg'
 import Puppies from '../__resources__/hero-centered.jpg'
 import Custom from '../__resources__/hero-vector.png'
@@ -47,7 +40,6 @@ const Buttons = [
 export default {
   title: 'Molecules/Hero',
   component: Hero,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

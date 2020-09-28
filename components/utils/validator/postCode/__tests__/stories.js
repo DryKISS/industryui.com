@@ -3,10 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
+import { useState } from 'react'
 
 // UI
 import { Button, Form, FormField, FormLabel, validatorPostCode, useForm } from 'components'
@@ -15,7 +12,6 @@ import Readme from '../README.md'
 export default {
   title: 'Utils/Validator/PostCode',
   component: validatorPostCode,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

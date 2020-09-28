@@ -36,45 +36,25 @@ export const Text = ({
 }
 
 const StyledText = styled.p`
-  color: ${({ colour, context, theme: { COLOUR } }) => (colour ? COLOUR[colour] : COLOUR[context])};
+  color: ${({ context, theme: { COLOUR, TEXT_STYLE } }) =>
+    context ? COLOUR[context] : TEXT_STYLE.DEFAULT_COLOUR};
+
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
-  ${({ size }) =>
-    size === 'xs' &&
-    css`
-      font-size: 0.75rem;
-      line-height: 1.333;
-    `}
-  ${({ size }) =>
-    size === 'sm' &&
-    css`
-      font-size: 0.875rem;
-      line-height: 1.429;
-    `}
-  ${({ size }) =>
-    size === 'md' &&
-    css`
-      font-size: 1rem;
-      line-height: 1.5;
-    `}
-  ${({ size }) =>
-    size === 'lg' &&
-    css`
-      font-size: 1.25rem;
-      line-height: 1.4;
-    `}
-  ${({ size }) =>
-    size === 'xl' &&
-    css`
-      font-size: 1.5rem;
-      line-height: 1.333;
-    `}
+
+  ${({ size, theme }) => css`
+    font-size: ${theme.TEXT_STYLE.FONT_SIZE[size] ?? '1rem'};
+    line-height: ${theme.TEXT_STYLE.LINE_HEIGHT[size] ?? '1rem'};
+    /* stylelint-disable */
+    font-family: ${theme.TEXT_STYLE.FONT_FAMILY[size] ??
+      theme.TEXT_STYLE.FONT_FAMILY.default ??
+      'sans-serif'};
+  `}
+
   ${({ size }) =>
     size === 'xxl' &&
     css`
-      font-size: 1.25rem;
-      line-height: 1.25;
       ${MEDIA_QUERY.phone`
         font-size: 2rem;
       `}
@@ -91,8 +71,6 @@ const StyledText = styled.p`
   ${({ size }) =>
     size === 'xxxl' &&
     css`
-      font-size: 2.5rem;
-      line-height: 1.25;
       ${MEDIA_QUERY.phone`
         font-size: 5rem;
       `}

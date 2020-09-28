@@ -2,15 +2,18 @@
  * Icon
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { boolean, color, object, text } from '@storybook/addon-knobs'
-import { Context, IconPrefix, IconSize, ListIcons, Wrapper } from 'decorators'
-
 // UI
-import { blendLinearRgb, Card, Heading, Icon } from 'components'
+import {
+  arrayOfValues,
+  blendLinearRgb,
+  Card,
+  CONTEXT,
+  ControlTypes,
+  Heading,
+  Icon,
+  SIZE
+} from 'components'
+
 import Readme from '../README.md'
 
 // Style
@@ -19,20 +22,24 @@ import styled from 'styled-components'
 export default {
   title: 'Atoms/Icon',
   component: Icon,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
     }
   }
 }
-
-export const main = () => {
-  const StylesObject = object('Style', {
-    color: '',
-    fontSize: ''
-  })
-
+const ListIcons = {
+  Copy: 'copy',
+  Copyright: 'copyright',
+  Images: 'images',
+  Smile: 'smile',
+  UserCircle: 'user-circle'
+}
+const IconPrefix = {
+  Solid: 'fas',
+  Regular: 'far'
+}
+const main = ({ ...args }) => {
   return (
     <div>
       <StyledCard>
@@ -44,21 +51,7 @@ export const main = () => {
           }}
         />
         <StyledBody>
-          <Icon
-            icon={ListIcons()}
-            prefix={IconPrefix()}
-            context={Context()}
-            size={IconSize()}
-            fixedWidth={boolean('Fixed width', false)}
-            spin={boolean('Spin', false)}
-            pulse={boolean('Pulse', false)}
-            border={boolean('Border', false)}
-            transform={text(
-              'Transform',
-              'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
-            )}
-            style={StylesObject}
-          />
+          <Icon {...args} />
           <StyledNote
             style={{
               background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
@@ -264,81 +257,36 @@ export const main = () => {
   )
 }
 
-export const colors = () => (
-  <div>
-    <StyledCard>
-      <StyledHeading
-        content='Result'
-        style={{
-          background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
-        }}
-      />
-      <StyledBody>
-        <Icon icon='images' prefix='fas' size='3x' color={color('Color', '#860EFF')} />
-        <StyledNote
-          style={{
-            background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
-            borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
-          }}
-        >
-          <Icon
-            icon='graduation-cap'
-            prefix='fas'
-            size='sm'
-            fixedWidth
-            context='success'
-            style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem'
-            }}
-          />
-          Context property have priority over color property.
-        </StyledNote>
-      </StyledBody>
-    </StyledCard>
-  </div>
-)
+export const icons = main.bind({})
+icons.args = {
+  border: false,
+  context: CONTEXT.PRIMARY,
+  icon: 'images',
+  fixedWidth: false,
+  prefix: 'fas',
+  pulse: false,
+  size: SIZE.LG,
+  spin: false,
+  style: {
+    color: '',
+    fontSize: ''
+  },
+  transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
+}
 
-export const spin = () => (
-  <div>
-    <StyledCard>
-      <StyledHeading
-        content='Result'
-        style={{
-          background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
-        }}
-      />
-      <StyledBody>
-        <Icon icon='images' prefix='fas' size='3x' spin={boolean('Spin', true)} />
-        <StyledNote
-          style={{
-            background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
-            borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
-          }}
-        >
-          <Icon
-            icon='graduation-cap'
-            prefix='fas'
-            size='sm'
-            fixedWidth
-            context='success'
-            style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem'
-            }}
-          />
-          Add different CSS classes.
-        </StyledNote>
-      </StyledBody>
-    </StyledCard>
-  </div>
-)
+icons.argTypes = {
+  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
+  icon: { control: { type: ControlTypes.Select, options: arrayOfValues(ListIcons) } },
+  prefix: { control: { type: ControlTypes.Select, options: arrayOfValues(IconPrefix) } },
+  size: {
+    control: {
+      type: ControlTypes.Select,
+      options: ['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x']
+    }
+  }
+}
 
-export const pulse = () => (
+const transformIcon = ({ ...args }) => (
   <div>
     <StyledCard>
       <StyledHeading
@@ -349,52 +297,7 @@ export const pulse = () => (
         }}
       />
       <StyledBody>
-        <Icon icon='images' prefix='fas' size='3x' pulse={boolean('Pulse', true)} />
-        <StyledNote
-          style={{
-            background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
-            borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
-          }}
-        >
-          <Icon
-            icon='graduation-cap'
-            prefix='fas'
-            size='sm'
-            fixedWidth
-            context='success'
-            style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem'
-            }}
-          />
-          Add different CSS classes.
-        </StyledNote>
-      </StyledBody>
-    </StyledCard>
-  </div>
-)
-
-export const transform = () => (
-  <div>
-    <StyledCard>
-      <StyledHeading
-        content='Result'
-        style={{
-          background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
-        }}
-      />
-      <StyledBody>
-        <Icon
-          icon='images'
-          prefix='fas'
-          size='3x'
-          transform={text(
-            'Transform',
-            'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
-          )}
-        />
+        <Icon icon='images' prefix='fas' size='3x' transform={args.transform} />
         <StyledNote
           style={{
             background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
@@ -525,6 +428,10 @@ export const transform = () => (
     </StyledCard>
   </div>
 )
+export const transform = transformIcon.bind({})
+transform.args = {
+  transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
+}
 
 export const brands = () => (
   <div>

@@ -1,4 +1,0 @@
-/**
- * Global
- */
-export * from './style'

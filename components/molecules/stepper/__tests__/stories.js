@@ -2,12 +2,6 @@
  * Stepper
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { Stepper } from 'components'
 import Readme from '../README.md'
@@ -18,7 +12,6 @@ import { Data } from '../__mocks__/stepper'
 export default {
   title: 'Molecules/Stepper',
   component: Stepper,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

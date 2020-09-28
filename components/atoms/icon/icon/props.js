@@ -6,14 +6,8 @@
 import { any, bool, number, object, array, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import {
-  CONTEXT,
-  DISPLAY_PROP_TYPES,
-  ICON_PREFIX,
-  ICON_PULL,
-  ICON_SIZE,
-  SPACER_PROP_TYPES
-} from '../../../'
+import { CONTEXT, DISPLAY_PROP_TYPES, SPACER_PROP_TYPES } from '../../../'
+import { ICON_PULL, ICON_PREFIX, ICON_SIZE } from '../constants'
 
 export const IconPropTypes = {
   border: bool,
@@ -39,5 +33,5 @@ export const IconPropTypes = {
 
 export const IconDefaultProps = {
   fixedWidth: true,
-  prefix: 'far'
+  prefix: 'fas'
 }

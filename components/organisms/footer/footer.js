@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // UI

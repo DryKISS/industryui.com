@@ -1,4 +1,11 @@
-import React, { memo } from 'react'
+/**
+ * Resize Detector
+ */
+
+// React
+import { memo } from 'react'
+
+// Util
 import { withResizeDetector } from 'react-resize-detector'
 
 // let timer

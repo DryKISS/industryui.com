@@ -1,9 +1,5 @@
 /**
  * Services - Hooks  - useAxios
- *
- * @todo Dynamic mock ability
- * @todo default headers
- * @todo API url from config or ENV
  */
 
 // React

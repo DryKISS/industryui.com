@@ -11,12 +11,10 @@ export const TextPropTypes = {
   context: oneOf(Object.values(CONTEXT)),
   size: oneOf(Object.values(SIZE)),
   ...DISPLAY_PROP_TYPES,
-  ...SPACER_PROP_TYPES,
-  variant: oneOf(['normal', 'inputMessage'])
+  ...SPACER_PROP_TYPES
 }
 
 export const TextDefaultProps = {
-  context: 'black',
-  size: 'md',
-  variant: 'normal'
+  context: 'dark',
+  size: 'md'
 }

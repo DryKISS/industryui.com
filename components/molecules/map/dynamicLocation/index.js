@@ -3,9 +3,10 @@
  * Showcases a dynamic map based on a location
  */
 
-import React from 'react'
+// React
 import { array, node, string } from 'prop-types'
 
+// React Google Maps
 import {
   GoogleMap,
   InfoWindow as GoogleInfoWindow,

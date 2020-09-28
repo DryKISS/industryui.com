@@ -2,12 +2,8 @@
  * Email Change
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { EmailChange } from 'components'
@@ -16,7 +12,6 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Email Change',
   component: EmailChange,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

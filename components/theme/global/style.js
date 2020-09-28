@@ -75,7 +75,7 @@ export const ThemeStyle = createGlobalStyle`
 
   body {
     color: ${props => props.theme.TYPOGRAPHY.fontColour};
-    font-family: ${props => props.theme.TYPOGRAPHY.font};
+    font-family: ${props => props.theme.TYPOGRAPHY.font}, sans-serif;
     margin: 0;
     position: relative;
   }

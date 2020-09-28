@@ -2,8 +2,6 @@
  * Radio
  */
 
-// React
-import React from 'react'
 import { array, bool, string } from 'prop-types'
 
 // UI

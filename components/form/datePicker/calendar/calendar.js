@@ -2,9 +2,6 @@
  * Form - DatePicker - Calendar
  */
 
-// React
-import React from 'react'
-
 // React Hook Form
 import { Controller } from 'react-hook-form'
 

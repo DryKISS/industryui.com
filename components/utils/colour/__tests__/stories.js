@@ -2,19 +2,12 @@
  * Colour
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { blendLinearRgb, shadeLinearRgb } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Utils/Colour',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

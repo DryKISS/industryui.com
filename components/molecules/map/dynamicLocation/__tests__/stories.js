@@ -2,9 +2,6 @@
  * Location
  */
 
-// React
-import React from 'react'
-
 import { DynamicLocation, Marker } from '../'
 import Readme from '../README.md'
 
