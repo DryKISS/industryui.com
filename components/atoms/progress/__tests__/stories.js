@@ -2,20 +2,16 @@
  * Progress
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean, number } from '@storybook/addon-knobs'
-import { Context, Size, Wrapper } from 'decorators'
+import { Context, Size } from 'decorators'
 
 // UI
-import { Progress, ProgressBar } from '../../../'
+import { Progress, ProgressBar } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Progress',
-  decorators: [Wrapper],
   component: Progress,
   parameters: {
     readme: {

@@ -2,9 +2,6 @@
  * Avatar
  */
 
-// React
-import React from 'react'
-
 // Gravatar
 import gravatar from 'gravatar'
 
@@ -18,45 +15,41 @@ import styled, { css } from 'styled-components'
 export const Avatar = ({
   action,
   actionClick,
-  actionProps,
   children,
   className,
   click,
   content,
   context,
   gmail,
+  size,
   src,
-  style,
-  size
+  style
 }) => {
   const avatarSrc = src || (gmail && gravatar.url(gmail, { d: 'identicon' }))
+
   return (
-    <StyledAvatar className={className} context={context} onClick={click} style={style} size={size}>
+    <StyledAvatar className={className} context={context} onClick={click} size={size} style={style}>
       {children || (avatarSrc && <Image alt='Avatar' src={avatarSrc} />) || getAcronym(content)}
-      {action && (
-        <StyledAction onClick={actionClick} {...actionProps}>
-          {action}
-        </StyledAction>
-      )}
+      {action && <StyledAction onClick={actionClick}>{action}</StyledAction>}
     </StyledAvatar>
   )
 }
 
 const StyledAction = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  padding: 4px;
-  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  text-align: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.1s ease-in-out;
+  color: #fff;
   cursor: pointer;
   font-size: ${({ theme }) => theme.TYPOGRAPHY.fontSizeBase};
+  left: 0;
+  padding: 4px;
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+  visibility: hidden;
+  width: 100%;
 `
 
 const StyledAvatar = styled.div`
@@ -94,5 +87,4 @@ const StyledAvatar = styled.div`
 `
 
 Avatar.propTypes = AvatarPropTypes
-
 Avatar.defaultProps = AvatarDefaultProps

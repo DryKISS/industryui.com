@@ -2,8 +2,6 @@
  * Copyright
  */
 
-// React
-import React from 'react'
 import { array, bool, oneOf, shape, string } from 'prop-types'
 
 // UI
@@ -90,7 +88,7 @@ Copyright.defaultProps = {
   icon: {
     context: 'primary',
     icon: 'copyright',
-    prefix: 'fad'
+    prefix: 'fas'
   },
   links: []
 }

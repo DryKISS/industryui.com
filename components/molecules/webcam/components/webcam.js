@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI

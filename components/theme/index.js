@@ -2,6 +2,6 @@
  * Theme
  */
 export * from './constants'
-export * from './global'
+export * from './global/style'
 export * from './utils'
 export * from './variables'

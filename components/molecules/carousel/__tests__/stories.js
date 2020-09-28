@@ -2,18 +2,15 @@
  * Carousel
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { Context, Wrapper } from 'decorators'
+import { Context } from 'decorators'
 import { boolean, select } from '@storybook/addon-knobs'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
+import { Carousel, CarouselSlide, Image, ReactHolderJs } from 'components'
 import { CarouselSampleSlide } from '../components/sample'
 import Readme from '../README.md'
 import vizla from 'storybook/static/card/vizla.jpg'
@@ -21,7 +18,6 @@ import vizla from 'storybook/static/card/vizla.jpg'
 export default {
   title: 'Molecules/Carousel',
   component: Carousel,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

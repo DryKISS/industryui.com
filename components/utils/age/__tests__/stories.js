@@ -2,12 +2,6 @@
  * Age
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
@@ -17,7 +11,6 @@ import Readme from '../README.md'
 
 export default {
   title: 'Utils/Age',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

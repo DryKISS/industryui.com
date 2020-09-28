@@ -2,8 +2,6 @@
  * Carousel Arrow
  */
 
-// React
-import React from 'react'
 import { func, oneOf, string } from 'prop-types'
 
 // Style

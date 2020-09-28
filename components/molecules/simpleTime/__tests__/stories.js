@@ -2,19 +2,12 @@
  * SimpleTime
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { SimpleTime } from '../'
+import { SimpleTime } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/SimpleTime',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

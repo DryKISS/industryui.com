@@ -2,9 +2,6 @@
  * Form - Search
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // Yup
 import { object, string } from 'yup'
 
@@ -30,7 +27,6 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Input',
   component: Input,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

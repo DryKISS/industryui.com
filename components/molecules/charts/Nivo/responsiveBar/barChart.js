@@ -1,9 +1,17 @@
+/**
+ * Bar chart
+ *
+ * @see https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
+ */
+
 // React
-import React from 'react'
 import { func, oneOf, bool, string } from 'prop-types'
+
+// Nivo
 import { ResponsiveBar, BarPropTypes, BarDefaultProps } from '@nivo/bar'
-// Source: https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
 import { colorSchemes } from '@nivo/colors'
+
+// Style
 import { withTheme } from 'styled-components'
 
 const BarComponent = ({ theme, ...props }) => {
@@ -13,6 +21,7 @@ const BarComponent = ({ theme, ...props }) => {
     data,
     indexBy = BarDefaultProps.indexBy,
     keys = BarDefaultProps.keys,
+    label = BarDefaultProps.label,
     layout = BarDefaultProps.layout,
     groupMode = BarDefaultProps.groupMode,
     reverse = BarDefaultProps.reverse,
@@ -23,13 +32,15 @@ const BarComponent = ({ theme, ...props }) => {
     enableGridY = BARCHART.enableGridY,
     isInteractive = BARCHART.isInteractive,
     colorScheme,
-    showLegend
+    showLegend,
+    tooltip = BarDefaultProps.tooltip
   } = props
 
   return (
     <ResponsiveBar
       indexBy={indexBy}
       keys={keys}
+      label={label}
       layout={layout}
       groupMode={groupMode}
       reverse={reverse}
@@ -52,6 +63,7 @@ const BarComponent = ({ theme, ...props }) => {
       legends={showLegend ? BARCHART.legends : []}
       isInteractive={isInteractive}
       animate={BARCHART.animate}
+      tooltip={tooltip}
     />
   )
 }

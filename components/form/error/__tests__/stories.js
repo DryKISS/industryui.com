@@ -2,20 +2,13 @@
  * Form - Error
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { FormError } from '../../'
+import { FormError } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Error',
   component: FormError,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

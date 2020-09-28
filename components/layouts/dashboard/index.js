@@ -1,4 +1,0 @@
-/**
- * Dashboard
- */
-export * from './dashboard'

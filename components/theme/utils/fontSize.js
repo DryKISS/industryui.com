@@ -1,4 +1,9 @@
-import { SIZE } from '../../../'
+/**
+ * Theme - Font Size
+ */
+
+// Utils
+import { SIZE } from '../../'
 
 export const FONTSIZE = ({ size, theme }) => {
   const fontSize = size && Object.values(SIZE).indexOf(size)

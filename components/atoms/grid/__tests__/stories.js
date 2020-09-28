@@ -2,12 +2,6 @@
  * Grid
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { Container, Row } from '../'
 import Readme from '../README.md'
@@ -19,7 +13,6 @@ const debug = {
 
 export default {
   title: 'Atoms/Grid',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

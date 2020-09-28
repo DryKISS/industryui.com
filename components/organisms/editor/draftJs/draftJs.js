@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // React Hook Form
 import { Controller } from 'react-hook-form'

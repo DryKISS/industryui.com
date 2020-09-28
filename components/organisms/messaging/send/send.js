@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { number, func, array } from 'prop-types'
 
 // UI

@@ -2,12 +2,6 @@
  * useTimer
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { useTimer } from '../'
 import { Button, ButtonToolbar } from '../../..'
@@ -15,7 +9,6 @@ import Readme from '../README.md'
 
 export default {
   title: 'Hooks/Timer',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

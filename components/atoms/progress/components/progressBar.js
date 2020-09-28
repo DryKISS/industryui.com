@@ -3,7 +3,6 @@
  */
 
 // React
-import React from 'react'
 import { number, string, bool, oneOf } from 'prop-types'
 
 // UI

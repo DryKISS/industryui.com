@@ -2,20 +2,13 @@
  * Dropzone
  */
 
-// React
-import React from 'react'
-
 // UI
-import { Dropzone } from '../'
+import { Dropzone } from 'components'
 import Readme from '../README.md'
-
-// Storybook
-import { Wrapper } from 'decorators'
 
 export default {
   title: 'Form/Dropzone/Standard',
   component: Dropzone,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

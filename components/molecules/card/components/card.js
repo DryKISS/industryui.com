@@ -2,9 +2,6 @@
  * Card
  */
 
-// React
-import React from 'react'
-
 // UI
 import { Close, Icon, Link, MEDIA_QUERY } from '../../../'
 import { CardBody, CardFooter, CardHeader, CardImage } from './'

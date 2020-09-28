@@ -2,9 +2,6 @@
  * Dashboard
  */
 
-// React
-import React from 'react'
-
 // UI
 import { Dashboard } from 'components'
 import Readme from '../README.md'

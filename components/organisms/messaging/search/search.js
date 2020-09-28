@@ -2,8 +2,6 @@
  * Messaging/Search
  */
 
-// React
-import React from 'react'
 import { func, string } from 'prop-types'
 
 // UI

@@ -6,10 +6,11 @@
 import { node, oneOf, string } from 'prop-types'
 
 // UI
-import { MEDIA_QUERY, SIZE } from '../../'
+import { SIZE } from '../../'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { spaceStyler } from './style'
 
 export const Space = ({
   children,
@@ -54,189 +55,30 @@ export const Space = ({
 const StyledSpace = styled.div`
   margin: 0;
   padding: 0;
-
-  /* margin */
-  ${({ margin }) =>
-    margin === 'xs' &&
-    css`
-      margin: 0.25rem;
-
-      ${MEDIA_QUERY.desktop`
-        margin: calc(0.25rem * 2);
-      `}
-    `}
-
-  ${({ margin }) =>
-    margin === 'sm' &&
-    css`
-      margin: 0.5rem;
-
-      ${MEDIA_QUERY.desktop`
-        margin: calc(0.5rem * 2);
-      `}
-    `}
-
-  ${({ margin }) =>
-    margin === 'md' &&
-    css`
-      margin: 0.75rem;
-
-      ${MEDIA_QUERY.desktop`
-        margin: calc(0.75rem * 2);
-      `}
-    `}
-
-    ${({ margin }) =>
-      margin === 'lg' &&
-      css`
-        margin: 1rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin: calc(1rem * 2);
-        `}
-      `}
-
-    ${({ margin }) =>
-      margin === 'xl' &&
-      css`
-        margin: 1.5rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin: calc(1.5rem * 2);
-        `}
-      `}
-
-    ${({ margin }) =>
-      margin === 'xxl' &&
-      css`
-        margin: 2rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin: calc(2rem * 2);
-        `}
-      `}
-
-    /* marginBottom */
-    ${({ marginBottom }) =>
-      marginBottom === 'xs' &&
-      css`
-        margin-bottom: 0.25rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-bottom: calc(0.25rem * 2);
-        `}
-      `}
-
-    ${({ marginBottom }) =>
-      marginBottom === 'sm' &&
-      css`
-        margin-bottom: 0.5rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-bottom: calc(0.5rem * 2);
-        `}
-      `}
-
-    ${({ marginBottom }) =>
-      marginBottom === 'md' &&
-      css`
-        margin-bottom: 0.75rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-bottom: calc(0.75rem * 2);
-        `}
-      `}
-
-    ${({ marginBottom }) =>
-      marginBottom === 'lg' &&
-      css`
-        margin-bottom: 1rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-bottom: calc(1rem * 2);
-        `}
-      `}
-
-    ${({ marginBottom }) =>
-      marginBottom === 'xl' &&
-      css`
-        margin-bottom: 1.5rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-bottom: calc(1.5rem * 2);
-        `}
-      `}
-
-    ${({ marginBottom }) =>
-      marginBottom === 'xxl' &&
-      css`
-        margin-bottom: 2rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(2rem * 2);
-        `}
-      `}
-    /* marginTop */
-    ${({ marginTop }) =>
-      marginTop === 'xs' &&
-      css`
-        margin-top: 0.25rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(0.25rem * 2);
-        `}
-      `}
-
-    ${({ marginTop }) =>
-      marginTop === 'sm' &&
-      css`
-        margin-top: 0.5rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(0.5rem * 2);
-        `}
-      `}
-
-    ${({ marginTop }) =>
-      marginTop === 'md' &&
-      css`
-        margin-top: 0.75rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(0.75rem * 2);
-        `}
-      `}
-
-    ${({ marginTop }) =>
-      marginTop === 'lg' &&
-      css`
-        margin-top: 1rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(1rem * 2);
-        `}
-      `}
-
-    ${({ marginTop }) =>
-      marginTop === 'xl' &&
-      css`
-        margin-top: 1.5rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(1.5rem * 2);
-        `}
-      `}
-
-    ${({ marginTop }) =>
-      marginTop === 'xxl' &&
-      css`
-        margin-top: 2rem;
-
-        ${MEDIA_QUERY.desktop`
-          margin-top: calc(2rem * 2);
-        `}
-      `}
-
+  ${({
+    margin,
+    marginBottom,
+    marginTop,
+    marginLeft,
+    marginRight,
+    padding,
+    paddingLeft,
+    paddingRight,
+    paddingTop,
+    paddingBottom
+  }) =>
+    spaceStyler([
+      { k: 'margin', v: margin },
+      { k: 'margin-bottom', v: marginBottom },
+      { k: 'margin-left', v: marginLeft },
+      { k: 'margin-right', v: marginRight },
+      { k: 'margin-top', v: marginTop },
+      { k: 'padding', v: padding },
+      { k: 'padding-bottom', v: paddingBottom },
+      { k: 'padding-left', v: paddingLeft },
+      { k: 'padding-right', v: paddingRight },
+      { k: 'padding-top', v: paddingTop }
+    ])}
 `
 
 Space.protoTypes = {
@@ -256,8 +98,4 @@ Space.protoTypes = {
   paddingRight: oneOf(Object.values(SIZE)),
   paddingBottom: oneOf(Object.values(SIZE)),
   paddingLeft: oneOf(Object.values(SIZE))
-}
-
-Space.defaultProps = {
-  marginBottom: 'md'
 }

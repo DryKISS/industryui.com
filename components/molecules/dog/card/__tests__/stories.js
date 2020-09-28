@@ -2,9 +2,6 @@
  * Dog - Card
  */
 
-// React
-import React from 'react'
-
 // Component
 import { DogCard } from '../'
 import Readme from '../README.md'

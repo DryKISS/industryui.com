@@ -3,13 +3,12 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Styled Components
 import styled from 'styled-components'
 
 // Storybook
-import { Wrapper } from 'decorators'
 import { select, text } from '@storybook/addon-knobs'
 
 // UI
@@ -19,7 +18,6 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Color Picker',
   components: ColorPicker,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

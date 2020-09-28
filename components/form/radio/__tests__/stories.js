@@ -2,15 +2,11 @@
  * Form - Radio
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, RadioField, useForm } from '../../../../'
+import { Button, Form, RadioField, useForm } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -19,7 +15,6 @@ import { RADIO_GENDER } from '../__mocks__/radio'
 export default {
   title: 'Form/Radio',
   component: RadioField,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

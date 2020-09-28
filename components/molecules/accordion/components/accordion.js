@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState, Children, cloneElement } from 'react'
+import { useState, Children, cloneElement } from 'react'
 import { array, node, object, string, bool } from 'prop-types'
 
 // Style

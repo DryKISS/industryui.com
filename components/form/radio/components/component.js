@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { bool } from 'prop-types'
 
 // Style

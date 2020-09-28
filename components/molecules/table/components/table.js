@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { array, bool, func, number, shape, string } from 'prop-types'
 
 // UI
@@ -16,6 +16,7 @@ import {
   TableLoading,
   TableRow
 } from '../../../'
+
 import { PaginationPropTypes } from '../../pagination/components/props'
 
 // Style

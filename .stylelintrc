@@ -5,13 +5,5 @@
   ],
   "rules": {
     "media-feature-name-no-unknown": null,
-    "font-family-no-missing-generic-family-keyword": [
-      true,
-      {
-        "ignoreFontFamilies": [
-          "JetBrains Mono ExtraBold"
-        ]
-      }
-    ]
   }
 }

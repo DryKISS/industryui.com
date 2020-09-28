@@ -2,9 +2,6 @@
  * Navbar - Tests
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { CleverlyTheme, CleverlyAdminTheme, DryKISSTheme } from 'themes'
 

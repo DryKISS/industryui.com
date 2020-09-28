@@ -1,14 +1,12 @@
 /**
  * Blog - Card
- * Provides a card that details a blog post
  */
 
 // React
 import { any, object, string } from 'prop-types'
 
 // UI
-import { BlogCategory, BlogTags, Card, CardImage, Divider, Link, slugify } from '../../../'
-
+import { BlogCategory, BlogTags, Card, CardImage, Divider, Link, slugify } from '../../'
 import { Button } from '../../atoms/button/components/button/button'
 import { CardBody } from '../../molecules/card/components/body'
 import { Heading } from '../../atoms/heading/heading'
@@ -39,7 +37,7 @@ export const BlogCard = ({ article, config, type }) => {
 
           <StyledContent type={type}>
             <Link to={articleLink}>
-              <StyledHeading content={heading} tag='h1' type={type} />
+              <StyledHeading content={heading} tag='h1' noWrap type={type} />
             </Link>
 
             {type === 'normal' && <p itemProp='description'>{excerpt}</p>}

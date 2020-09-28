@@ -2,20 +2,13 @@
  * Page Heading
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { PageHeading } from '../pageHeading'
+import { PageHeading } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/PageHeading',
   component: PageHeading,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

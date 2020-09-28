@@ -3,18 +3,17 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-// Storybook
-import { Wrapper } from 'decorators'
-
+// UI
+import { RandomColor } from 'components'
 import Readme from '../README.md'
-import { RandomColor } from '../randomColor'
+
+// Style
 import styled from 'styled-components'
 
 export default {
   title: 'Utils/RandomColor',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -35,6 +34,7 @@ export const RandomColorCanvas = () => {
     </ColorWrapper>
   )
 }
+
 const ColorWrapper = styled.div`
   width: 100%;
   height: 200px;

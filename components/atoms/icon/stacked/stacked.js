@@ -30,5 +30,5 @@ IconStacked.propTypes = {
 }
 
 IconStacked.defaultProps = {
-  prefix: 'fad'
+  prefix: 'fas'
 }

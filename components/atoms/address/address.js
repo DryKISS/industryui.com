@@ -3,33 +3,28 @@
  */
 
 // React
-import React from 'react'
 import { string } from 'prop-types'
 
-// Style
-import styled from 'styled-components'
+// UI
+import { Text } from 'components'
 
 export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
-  <StyledAddress>
-    <div>{line1}</div>
+  <address>
+    <Text>{line1}</Text>
 
-    {line2 && <div>{line2}</div>}
+    {line2 && <Text>{line2}</Text>}
 
-    {line3 && <div>{line3}</div>}
+    {line3 && <Text>{line3}</Text>}
 
-    <div>{town}</div>
+    <Text>{town}</Text>
 
-    {county && <div>{county}</div>}
+    {county && <Text>{county}</Text>}
 
-    <div>{postcode}</div>
+    <Text>{postcode}</Text>
 
-    <div>{country}</div>
-  </StyledAddress>
+    <Text>{country}</Text>
+  </address>
 )
-
-const StyledAddress = styled.address`
-  margin-bottom: 1rem;
-`
 
 Address.propTypes = {
   county: string,

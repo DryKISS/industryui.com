@@ -38,7 +38,13 @@ const StyledHeading = styled.span`
     text-transform: ${theme.HEADINGS[as].textTransform};
     margin: 0;
   `}
-
+  ${({ ellipsis }) =>
+    ellipsis &&
+    css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    `}
   ${({ noWrap }) =>
     noWrap &&
     css`

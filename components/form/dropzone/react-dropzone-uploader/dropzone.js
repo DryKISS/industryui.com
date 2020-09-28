@@ -4,7 +4,6 @@
  */
 
 // React
-import React from 'react'
 import { bool, string } from 'prop-types'
 
 // React Dropzone
