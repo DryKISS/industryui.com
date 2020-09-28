@@ -4,13 +4,12 @@
 
 // Storybook
 import { select, text, number, boolean } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { BarChart } from '../'
+import { BarChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
@@ -32,7 +31,6 @@ import styled from 'styled-components'
 export default {
   title: 'Molecules/Charts/Nivo/Bar',
   component: BarChart,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -68,7 +66,6 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-/// storeis
 export const main = () => {
   return <BaseComponent data={Data} indexBy={keyToIndexBy} keys={keys} />
 }
@@ -79,4 +76,34 @@ export const StackedBarDouble = () => {
 
 export const StackedBarTriple = () => {
   return <BaseComponent data={Data3} indexBy={keyToIndexBy3} keys={keys3} maxValue={225000} />
+}
+
+export const CustomAxis = () => {
+  return (
+    <BaseComponent
+      axisBottom={{
+        tickRotation: 45,
+        legend: 'Custom Legend'
+      }}
+      axisLeft={{ format: value => `${value}$` }}
+      data={Data}
+      indexBy={keyToIndexBy}
+      keys={keys}
+    />
+  )
+}
+
+export const CustomLabel = () => {
+  return <BaseComponent data={Data} indexBy={keyToIndexBy} label={v => `${v.value}$`} keys={keys} />
+}
+
+export const CustomTooltip = () => {
+  return (
+    <BaseComponent
+      data={Data}
+      indexBy={keyToIndexBy}
+      tooltip={v => `${v.data.product}:${v.data.profit}$`}
+      keys={keys}
+    />
+  )
 }

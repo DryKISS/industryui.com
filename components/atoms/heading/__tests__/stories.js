@@ -2,12 +2,6 @@
  * Heading
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { arrayOfValues, CONTEXT, ControlTypes, Heading } from 'components'
 import Readme from '../README.md'
@@ -15,7 +9,6 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Heading',
   component: Heading,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -25,8 +18,6 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    // content: text('Button text', 'Heading Text'),
-    // context: Context(null, 'black'),
     ...props
   }
 
@@ -57,12 +48,9 @@ export const HeadingComponent = main.bind({})
 HeadingComponent.args = {
   content: 'Est Lorem amet cupidatat exercitation fugiat deserunt.',
   context: 'black',
-  // width: 400,
   noWrap: false
 }
 
 HeadingComponent.argTypes = {
   context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } }
-  // width: { control: { type: ControlTypes.Range, min: 100, max: 700 } }
 }
-// export const HeadingH2 = () => <BaseComponent tag='h2' />

@@ -2,9 +2,6 @@
  * Badge
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { Badge, CONTEXT, ControlTypes, SIZE } from 'components'
 import Readme from '../README.md'
@@ -12,7 +9,6 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Badge',
   component: Badge,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -15,6 +15,6 @@ export const TextPropTypes = {
 }
 
 export const TextDefaultProps = {
-  context: 'black',
+  context: 'dark',
   size: 'md'
 }

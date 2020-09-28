@@ -3,7 +3,9 @@
  *
  * @see https://github.com/imsky/holder#placeholder-options for info on more props and themes
  */
-import React, { useEffect, useRef } from 'react'
+
+// React
+import { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { string, bool, object } from 'prop-types'
 

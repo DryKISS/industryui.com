@@ -1,3 +1,8 @@
+/**
+ * Communication
+ */
+
+// React
 import { useEffect } from 'react'
 import { array, func, instanceOf, string } from 'prop-types'
 import { Subject } from 'rxjs'

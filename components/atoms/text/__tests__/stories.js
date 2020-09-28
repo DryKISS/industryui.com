@@ -2,18 +2,11 @@
  * Text
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { ALIGN, CONTEXT, ControlTypes, SIZE, Text } from '../../../'
+import { ALIGN, CONTEXT, ControlTypes, SIZE, Text } from 'components'
 
 export default {
   component: Text,
-  decorators: [Wrapper],
   title: 'Atoms/Text'
 }
 
@@ -44,6 +37,7 @@ text.args = {
   size: SIZE.SM,
   width: 400
 }
+
 text.argTypes = {
   align: { control: { type: ControlTypes.Select, options: Object.values(ALIGN) } },
   context: { control: { type: ControlTypes.Select, options: Object.values(CONTEXT) } },

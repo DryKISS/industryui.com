@@ -3,11 +3,11 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 // Storybook
 import { select, text, number, boolean } from '@storybook/addon-knobs'
-import { Context, Wrapper } from 'decorators'
+import { Context } from 'decorators'
 
 // UI
 import { Button, OffCanvasContext, useForm } from 'components'
@@ -16,7 +16,6 @@ import { OffCanvasForm } from './form'
 
 export default {
   title: 'Molecules/OffCanvas',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

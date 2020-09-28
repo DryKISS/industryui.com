@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { bool, object, oneOf, string } from 'prop-types'
 
 // React NProgress

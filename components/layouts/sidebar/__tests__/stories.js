@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Navbar, SidebarLayout } from '../../../'
+import { Navbar, SidebarLayout } from 'components'
 import Readme from '../README.md'
 
 export default {

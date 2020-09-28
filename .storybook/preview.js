@@ -6,14 +6,13 @@
 import { addParameters } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { addReadme } from 'storybook-readme'
-import { withA11y } from '@storybook/addon-a11y'
-import { withInfo } from '@storybook/addon-info'
 import { withKnobs } from '@storybook/addon-knobs'
+
 // Next
 import Router from 'next/router'
 
 // UI
-import { Container } from 'decorators'
+import { Container, Wrapper } from 'decorators'
 import './decorators/icons'
 
 // CSS
@@ -42,12 +41,6 @@ const mockedRouter = {
 Router.router = mockedRouter
 
 addParameters({
-  a11y: {
-    element: '#root',
-    config: {},
-    options: {},
-    manual: true
-  },
   options: {
     panelPosition: 'right'
   },
@@ -56,15 +49,4 @@ addParameters({
   }
 })
 
-export const decorators = [
-  withInfo({
-    header: true,
-    inline: true,
-    propTables: false,
-    styles: { infoBody: { overflow: 'overlay' } },
-    source: false
-  }),
-  Container,
-  addReadme,
-  withKnobs
-]
+export const decorators = [Container, addReadme, Wrapper]

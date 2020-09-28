@@ -2,23 +2,16 @@
  * Tooltip
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { Context, Wrapper } from 'decorators'
-
-// Styled Components
-import styled from 'styled-components'
+import { Context } from 'decorators'
 
 // UI
-import { Button, Text, Tooltip } from '../../../'
+import { Button, Text, Tooltip } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Tooltip',
   component: Tooltip,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -27,10 +20,10 @@ export default {
 }
 
 const SampleTooltip = () => (
-  <StyledWrapper>
+  <>
     <Text content='Tooltip' context='white' />
     <Text content='Note' context='dark' />
-  </StyledWrapper>
+  </>
 )
 
 const BaseComponent = props => {
@@ -50,9 +43,4 @@ const BaseComponent = props => {
 }
 
 export const main = () => <BaseComponent />
-
 export const withJsx = () => <BaseComponent content={<SampleTooltip />} />
-
-const StyledWrapper = styled.div`
-  text-align: center;
-`

@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 

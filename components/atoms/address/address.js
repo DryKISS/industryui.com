@@ -3,37 +3,28 @@
  */
 
 // React
-import React from 'react'
 import { string } from 'prop-types'
-import { Text } from 'components'
-// Style
-import styled from 'styled-components'
 
-const AddressText = props => {
-  return <Text context='dark'>{props.children}</Text>
-}
+// UI
+import { Text } from 'components'
 
 export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
-  <StyledAddress>
-    <AddressText>{line1}</AddressText>
+  <address>
+    <Text>{line1}</Text>
 
-    {line2 && <AddressText>{line2}</AddressText>}
+    {line2 && <Text>{line2}</Text>}
 
-    {line3 && <AddressText>{line3}</AddressText>}
+    {line3 && <Text>{line3}</Text>}
 
-    <AddressText>{town}</AddressText>
+    <Text>{town}</Text>
 
-    {county && <AddressText>{county}</AddressText>}
+    {county && <Text>{county}</Text>}
 
-    <AddressText>{postcode}</AddressText>
+    <Text>{postcode}</Text>
 
-    <AddressText>{country}</AddressText>
-  </StyledAddress>
+    <Text>{country}</Text>
+  </address>
 )
-
-const StyledAddress = styled.address`
-  margin-bottom: 1rem;
-`
 
 Address.propTypes = {
   county: string,

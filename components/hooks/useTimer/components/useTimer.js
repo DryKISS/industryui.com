@@ -2,9 +2,13 @@
  * useTimer
  */
 
+// React
 import { useEffect, useState } from 'react'
+
+// Moment
 import moment from 'moment'
 
+// UI
 import { useInterval } from '../../../'
 
 export function useTimer ({ autoStart = true, interval = 1000, startTime, endTime } = {}) {

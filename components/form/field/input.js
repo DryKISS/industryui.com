@@ -3,8 +3,9 @@
  */
 
 // React
-import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 import { useState } from 'react'
+import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
+
 // Style
 import styled, { css } from 'styled-components'
 

@@ -2,17 +2,13 @@
  * Section
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { Section } from '../'
+import { Section } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/Section',
   component: Section,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -4,7 +4,7 @@
 
 // Storybook
 import { number } from '@storybook/addon-knobs'
-import { Wrapper, Context } from 'decorators'
+import { Context } from 'decorators'
 
 // UI
 import { Rating } from '../'
@@ -13,7 +13,6 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Rating',
   component: Rating,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

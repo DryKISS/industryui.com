@@ -2,9 +2,6 @@
  * Divider
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { number } from '@storybook/addon-knobs'
 import { Context, Size } from 'decorators'

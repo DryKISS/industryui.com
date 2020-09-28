@@ -1,19 +1,15 @@
 /**
- * OffCanvas - Provider
+ * Services - OffCanvas - Provider
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Styled Components
 import styled from 'styled-components'
 
 // UI
-import { OffCanvas } from '../../'
-
-// Context
-import { OffCanvasContext } from '../'
-import { getLast, getFirst } from '../../utils'
+import { getLast, getFirst, OffCanvas, OffCanvasContext } from '../../'
 
 const DURATION = 300
 
@@ -53,10 +49,6 @@ export const OffCanvasProvider = ({ children }) => {
 
   // Get title and content from last item
   const data = getLast(dataManager)
-
-  // Debug
-  // console.log('Data', data)
-  // console.log('Options', options)
 
   return (
     <OffCanvasContext.Provider

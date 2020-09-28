@@ -2,12 +2,6 @@
  * Icon
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import {
   arrayOfValues,
@@ -19,6 +13,7 @@ import {
   Icon,
   SIZE
 } from 'components'
+
 import Readme from '../README.md'
 
 // Style
@@ -27,7 +22,6 @@ import styled from 'styled-components'
 export default {
   title: 'Atoms/Icon',
   component: Icon,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

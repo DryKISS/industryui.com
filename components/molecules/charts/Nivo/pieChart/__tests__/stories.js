@@ -4,13 +4,12 @@
 
 // Storybook
 import { boolean, select } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { PieChart } from '../'
+import { PieChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
@@ -22,7 +21,6 @@ import styled from 'styled-components'
 export default {
   title: 'Molecules/Charts/Nivo/Pie',
   component: PieChart,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -73,6 +71,7 @@ const BaseComponent = (props = {}) => {
     data: Data,
     ...props
   }
+
   return (
     <StyledWrapper>
       <PieChart {...defaultProps} />
@@ -84,7 +83,7 @@ const StyledWrapper = styled.div`
   text-align: center;
   height: 500px;
 `
-/// storeis
+
 export const main = () => {
   return <BaseComponent />
 }

@@ -3,19 +3,17 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { ConfigContext, Navbar } from 'components'
 import { Dashboard } from '../__mocks__/navbar'
 
 export const options = {
-  component: Navbar,
-  decorators: [Wrapper]
+  component: Navbar
 }
 
 export const BaseComponent = (props = {}) => {

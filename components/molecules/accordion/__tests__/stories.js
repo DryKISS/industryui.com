@@ -2,17 +2,13 @@
  * Accordion
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { Accordion, AccordionItem } from '../../../'
+import { Accordion, AccordionItem } from 'components'
 import Readme from '../README.md'
 import { Data } from '../__mocks__/accordion'
 
 export default {
   title: 'Molecules/Accordion',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
@@ -55,5 +51,4 @@ export const main = () => (
 )
 
 export const open = () => <Accordion data={Data} />
-
 export const closeOtherAccordsOnOneAccordOpening = () => <Accordion data={Data} closeOthersOnOpen />

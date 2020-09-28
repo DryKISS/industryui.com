@@ -4,16 +4,14 @@
 
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, FormField, FormLabel, useForm } from '../../../../'
+import { Button, Form, FormField, FormLabel, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Field',
   component: FormField,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

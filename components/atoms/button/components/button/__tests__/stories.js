@@ -2,9 +2,6 @@
  * Button
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { Button, CONTEXT, ControlTypes, SIZE } from 'components'
 import Readme from '../README.md'
@@ -12,7 +9,6 @@ import { arrayOfValues } from 'components/utils'
 
 export default {
   title: 'Atoms/Button',
-  decorators: [Wrapper],
   component: Button,
   parameters: {
     readme: {

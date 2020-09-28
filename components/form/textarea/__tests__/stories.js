@@ -4,16 +4,14 @@
 
 // Storybook
 import { text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
-import { Button, Form, TextareaField, FormLabel, useForm } from '../../../../'
+import { Button, Form, TextareaField, FormLabel, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Form/Textarea',
   component: TextareaField,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

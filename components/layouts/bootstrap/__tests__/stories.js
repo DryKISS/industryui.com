@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 // UI
 import { Bootstrap, ConfigContext, Navbar } from 'components'

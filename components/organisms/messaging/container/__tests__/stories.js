@@ -3,13 +3,10 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Moment
 import moment from 'moment'
-
-// Storybook
-import { Wrapper } from 'decorators'
 
 // UI
 import { filterByKey, filterByString, MessagingContainer } from 'components'
@@ -21,7 +18,6 @@ import { messages } from '../__mocks__/container'
 export default {
   title: 'Organisms/Messaging/Container',
   component: MessagingContainer,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -4,7 +4,6 @@
 
 // Storybook
 import { select } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { MessageBackground } from 'components'
@@ -17,7 +16,7 @@ const Height = story => {
 export default {
   title: 'Organisms/Messaging/Background',
   component: MessageBackground,
-  decorators: [Height, Wrapper],
+  decorators: [Height],
   parameters: {
     readme: {
       sidebar: Readme

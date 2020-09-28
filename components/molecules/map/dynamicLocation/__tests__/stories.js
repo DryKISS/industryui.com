@@ -2,7 +2,7 @@
  * Location
  */
 
-import { DynamicLocation, Marker } from '../'
+import { DynamicLocation, Marker } from 'components'
 import Readme from '../README.md'
 
 export default {

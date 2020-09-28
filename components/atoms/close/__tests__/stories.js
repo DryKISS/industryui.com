@@ -4,7 +4,7 @@
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Context, Wrapper } from 'decorators'
+import { Context } from 'decorators'
 import { text } from '@storybook/addon-knobs'
 
 // UI
@@ -14,7 +14,6 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/Close',
   component: Close,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

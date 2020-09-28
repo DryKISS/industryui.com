@@ -4,7 +4,6 @@
 
 // Storybook
 import { text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Yup
 import { number, object, string } from 'yup'
@@ -48,7 +47,6 @@ import { COLOURS } from '../../select/__mocks__/colours'
 export default {
   title: 'Form',
   component: Form,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

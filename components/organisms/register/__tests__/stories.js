@@ -3,10 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
+import { useState } from 'react'
 
 // UI
 import { Alert, Register, requestSimulator } from 'components'
@@ -15,7 +12,6 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Register',
   component: Register,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

@@ -4,16 +4,14 @@
 
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
-import { ForgotDetailsReset } from '../'
+import { ForgotDetailsReset } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Organisms/Forgot Details Reset',
   component: ForgotDetailsReset,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

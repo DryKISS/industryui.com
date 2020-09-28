@@ -1,7 +1,8 @@
 /**
  * Grid
  */
-import React from 'react'
+
+// UI
 import { Column } from '../../../'
 
 export const colStyle = {

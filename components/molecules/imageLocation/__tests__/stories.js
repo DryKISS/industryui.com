@@ -2,24 +2,24 @@
  * Image Location
  */
 
+// Yup
 import { object as obj } from 'yup'
+
 // Storybook
 import { object, select, withKnobs } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import { Wrapper } from 'decorators'
-// UI
 
+// UI
+import { Alert, Button, ImageLocation, ImageLocationFormElement } from 'components'
 import Readme from '../README.md'
 
 // Data
 import { Item } from '../__mocks__/itemFloor'
 import { useForm } from 'react-hook-form'
-import { Alert, Button, ImageLocation, ImageLocationFormElement } from '../../../'
 
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
-  decorators: [withKnobs, Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

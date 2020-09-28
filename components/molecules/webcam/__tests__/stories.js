@@ -2,17 +2,13 @@
  * Webcam
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { Webcam } from '../'
+import { Webcam } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/Webcam',
   component: Webcam,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme

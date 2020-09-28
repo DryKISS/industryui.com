@@ -2,16 +2,12 @@
  * Space
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { arrayOfValues, SIZE, Space, Text } from '../../../'
+import { arrayOfValues, SIZE, Space, Text } from 'components'
 import { ControlTypes } from 'components/constants'
 
 export default {
   title: 'Atoms/Space',
-  decorators: [Wrapper],
   component: Space
 }
 

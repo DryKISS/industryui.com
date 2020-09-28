@@ -3,11 +3,10 @@
  */
 
 // React
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 
 // Storybook
 import { boolean, select, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import {
@@ -31,7 +30,6 @@ import styled, { css } from 'styled-components'
 export default {
   title: 'Molecules/Dropdown',
   component: Dropdown,
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
