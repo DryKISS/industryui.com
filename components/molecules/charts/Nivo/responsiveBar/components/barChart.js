@@ -21,6 +21,7 @@ const BarComponent = ({ theme, ...props }) => {
     data,
     indexBy = BarDefaultProps.indexBy,
     keys = BarDefaultProps.keys,
+    label = BarDefaultProps.label,
     layout = BarDefaultProps.layout,
     groupMode = BarDefaultProps.groupMode,
     reverse = BarDefaultProps.reverse,
@@ -31,13 +32,15 @@ const BarComponent = ({ theme, ...props }) => {
     enableGridY = BARCHART.enableGridY,
     isInteractive = BARCHART.isInteractive,
     colorScheme,
-    showLegend
+    showLegend,
+    tooltip = BarDefaultProps.tooltip
   } = props
 
   return (
     <ResponsiveBar
       indexBy={indexBy}
       keys={keys}
+      label={label}
       layout={layout}
       groupMode={groupMode}
       reverse={reverse}
@@ -60,6 +63,7 @@ const BarComponent = ({ theme, ...props }) => {
       legends={showLegend ? BARCHART.legends : []}
       isInteractive={isInteractive}
       animate={BARCHART.animate}
+      tooltip={tooltip}
     />
   )
 }
