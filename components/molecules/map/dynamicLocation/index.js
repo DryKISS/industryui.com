@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { array, node, string } from 'prop-types'
 
 // React Google Maps

@@ -42,6 +42,7 @@ import throttle from 'lodash/throttle';
 import debounce$3 from 'lodash/debounce';
 import each from 'lodash/each';
 import isUndefined from 'lodash/isUndefined';
+import { EditorState, Editor, RichUtils } from 'draft-js';
 import { object as object$1, string as string$1 } from 'yup';
 import _filter from 'lodash/filter';
 import { useSubscription, ApolloProvider } from '@apollo/client';
@@ -2945,6 +2946,16 @@ var age = function age(birthDate) {
   return differenceInYears(new Date(), birthDate);
 };
 
+var arrayOfKeys = function arrayOfKeys(obj) {
+  var arr = [];
+
+  for (var key in obj) {
+    arr.push(key);
+  }
+
+  return arr;
+};
+
 var arrayOfValues = function arrayOfValues(obj) {
   var arr = [];
 
@@ -4770,6 +4781,8 @@ var viewPort = function viewPort(source) {
 var ALIGN = {
   Start: 'flex-start',
   End: 'flex-end',
+  Left: 'left',
+  Right: 'right',
   Center: 'center',
   'Space Between': 'space-between',
   'Space Around': 'space-around',
@@ -4799,11 +4812,22 @@ var CONTEXT = {
   TRANSPARENT: 'transparent'
 };
 
+var contextArray = function () {
+  var array = [];
+
+  for (var key in CONTEXT) {
+    array.push(CONTEXT[key]);
+  }
+
+  return array;
+}();
+
 /**
  * Size
  * Provides a list of the accepted sizes
  */
 var SIZE = {
+  XXS: 'xxs',
   XS: 'xs',
   SM: 'sm',
   MD: 'md',
@@ -4811,13 +4835,6 @@ var SIZE = {
   XL: 'xl',
   XXL: 'xxl',
   XXXL: 'xxxl'
-};
-
-var Position = {
-  Bottom: 'bottom',
-  Top: 'top',
-  Right: 'right',
-  Left: 'left'
 };
 
 var sizeArray = function () {
@@ -4829,6 +4846,13 @@ var sizeArray = function () {
 
   return array;
 }();
+
+var Position = {
+  Bottom: 'bottom',
+  Top: 'top',
+  Right: 'right',
+  Left: 'left'
+};
 
 function _taggedTemplateLiteral(strings, raw) {
   if (!raw) {
@@ -4853,7 +4877,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  .Form-feedback {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n  }\n\n  .Form-validated .Form-control:valid~.Form-feedback {\n    display: none;\n  }\n\n  .Form-validated .Form-control:invalid {\n    border-color: #dc3545;\n  }\n\n  .text-center {\n    text-align: center;\n  }\n\n  .text-right {\n    text-align: right;\n  }\n\n  .text-white {\n    color: #fff;\n  }\n\n  .float-left {\n    float: left;\n  }\n\n  .float-right {\n    float: right;\n  }\n\n  .d-none {\n    display: none;\n  }\n\n  .d-md-block {\n    ", "\n  }\n\n  #iubenda_policy .iub_content {\n    padding: 0 !important;\n  }\n\n  #iubenda_policy.iubenda_fluid_policy .iub_container {\n    margin: 0 !important;\n  }\n\n  /* Normalise */\n  html {\n    box-sizing: border-box;\n    font-size: 16px;\n    line-height: 1.5;\n  }\n\n  *, *::before, *::after {\n    box-sizing: border-box;\n  }\n\n  body {\n    color: ", ";\n    font-family: ", ";\n    margin: 0;\n    position: relative;\n  }\n\n  .fc-event {\n    cursor: pointer;\n  }\n\n  pre {\n    font-family: monospace;\n    font-size: 1em;\n  }\n\n  abbr[title] {\n    border-bottom: none;\n    text-decoration: underline;\n    text-decoration: underline dotted;\n  }\n\n  b,\n  strong {\n    font-weight: bolder;\n  }\n\n  code,\n  kbd,\n  samp {\n    font-family: monospace;\n    font-size: 1em;\n  }\n\n  small {\n    font-size: 80%;\n  }\n\n  sub,\n  sup {\n    font-size: 75%;\n    line-height: 0;\n    position: relative;\n    vertical-align: baseline;\n  }\n\n  sub {\n    bottom: -0.25em;\n  }\n\n  sup {\n    top: -0.5em;\n  }\n\n  img {\n    border-style: none;\n  }\n\n  input,\n  optgroup,\n  select,\n  textarea {\n    font-family: inherit;\n    font-size: 100%;\n    line-height: 1.15;\n    margin: 0;\n  }\n\n  input {\n    overflow: visible;\n  }\n\n  select {\n    text-transform: none;\n  }\n\n  button::-moz-focus-inner,\n  [type=\"button\"]::-moz-focus-inner,\n  [type=\"reset\"]::-moz-focus-inner,\n  [type=\"submit\"]::-moz-focus-inner {\n    border-style: none;\n    padding: 0;\n  }\n\n  button:-moz-focusring,\n  [type=\"button\"]:-moz-focusring,\n  [type=\"reset\"]:-moz-focusring,\n  [type=\"submit\"]:-moz-focusring {\n    outline: 1px dotted ButtonText;\n  }\n\n  fieldset {\n    border: 0;\n    margin-bottom: 1rem;\n    padding: 0.5rem 0 0;\n  }\n\n  legend {\n    box-sizing: border-box;\n    color: inherit;\n    display: table;\n    max-width: 100%;\n    padding: 0;\n    white-space: normal;\n  }\n\n  progress {\n    vertical-align: baseline;\n  }\n\n  textarea {\n    overflow: auto;\n  }\n\n  [type=\"checkbox\"],\n  [type=\"radio\"] {\n    box-sizing: border-box;\n    padding: 0;\n  }\n\n  [type=\"number\"]::-webkit-inner-spin-button,\n  [type=\"number\"]::-webkit-outer-spin-button {\n    height: auto;\n  }\n\n  [type=\"search\"] {\n    outline-offset: -2px;\n  }\n\n  ::-webkit-file-upload-button {\n    font: inherit;\n  }\n\n  details {\n    display: block;\n  }\n\n  summary {\n    display: list-item;\n  }\n\n  template {\n    display: none;\n  }\n\n  [hidden] {\n    display: none;\n  }\n  "]);
+  var data = _taggedTemplateLiteral(["\n  .Form-feedback {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n  }\n\n  .Form-validated .Form-control:valid~.Form-feedback {\n    display: none;\n  }\n\n  .Form-validated .Form-control:invalid {\n    border-color: #dc3545;\n  }\n\n  .text-center {\n    text-align: center;\n  }\n\n  .text-right {\n    text-align: right;\n  }\n\n  .text-white {\n    color: #fff;\n  }\n\n  .float-left {\n    float: left;\n  }\n\n  .float-right {\n    float: right;\n  }\n\n  .d-none {\n    display: none;\n  }\n\n  .d-md-block {\n    ", "\n  }\n\n  #iubenda_policy .iub_content {\n    padding: 0 !important;\n  }\n\n  #iubenda_policy.iubenda_fluid_policy .iub_container {\n    margin: 0 !important;\n  }\n\n  /* Normalise */\n  html {\n    box-sizing: border-box;\n    font-size: 16px;\n    line-height: 1.5;\n  }\n\n  *, *::before, *::after {\n    box-sizing: border-box;\n  }\n\n  body {\n    color: ", ";\n    font-family: ", ", sans-serif;\n    margin: 0;\n    position: relative;\n  }\n\n  .fc-event {\n    cursor: pointer;\n  }\n\n  pre {\n    font-family: monospace;\n    font-size: 1em;\n  }\n\n  abbr[title] {\n    border-bottom: none;\n    text-decoration: underline;\n    text-decoration: underline dotted;\n  }\n\n  b,\n  strong {\n    font-weight: bolder;\n  }\n\n  code,\n  kbd,\n  samp {\n    font-family: monospace;\n    font-size: 1em;\n  }\n\n  small {\n    font-size: 80%;\n  }\n\n  sub,\n  sup {\n    font-size: 75%;\n    line-height: 0;\n    position: relative;\n    vertical-align: baseline;\n  }\n\n  sub {\n    bottom: -0.25em;\n  }\n\n  sup {\n    top: -0.5em;\n  }\n\n  img {\n    border-style: none;\n  }\n\n  input,\n  optgroup,\n  select,\n  textarea {\n    font-family: inherit;\n    font-size: 100%;\n    line-height: 1.15;\n    margin: 0;\n  }\n\n  input {\n    overflow: visible;\n  }\n\n  select {\n    text-transform: none;\n  }\n\n  button::-moz-focus-inner,\n  [type=\"button\"]::-moz-focus-inner,\n  [type=\"reset\"]::-moz-focus-inner,\n  [type=\"submit\"]::-moz-focus-inner {\n    border-style: none;\n    padding: 0;\n  }\n\n  button:-moz-focusring,\n  [type=\"button\"]:-moz-focusring,\n  [type=\"reset\"]:-moz-focusring,\n  [type=\"submit\"]:-moz-focusring {\n    outline: 1px dotted ButtonText;\n  }\n\n  fieldset {\n    border: 0;\n    margin-bottom: 1rem;\n    padding: 0.5rem 0 0;\n  }\n\n  legend {\n    box-sizing: border-box;\n    color: inherit;\n    display: table;\n    max-width: 100%;\n    padding: 0;\n    white-space: normal;\n  }\n\n  progress {\n    vertical-align: baseline;\n  }\n\n  textarea {\n    overflow: auto;\n  }\n\n  [type=\"checkbox\"],\n  [type=\"radio\"] {\n    box-sizing: border-box;\n    padding: 0;\n  }\n\n  [type=\"number\"]::-webkit-inner-spin-button,\n  [type=\"number\"]::-webkit-outer-spin-button {\n    height: auto;\n  }\n\n  [type=\"search\"] {\n    outline-offset: -2px;\n  }\n\n  ::-webkit-file-upload-button {\n    font: inherit;\n  }\n\n  details {\n    display: block;\n  }\n\n  summary {\n    display: list-item;\n  }\n\n  template {\n    display: none;\n  }\n\n  [hidden] {\n    display: none;\n  }\n  "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -4891,12 +4915,14 @@ var COLOUR = function COLOUR(_ref) {
  * Theme - Variables - COLOUR
  */
 var COLOUR$1 = {
+  accent: 'rgb(102, 171, 255)',
   active: 'rgb(204 ,0, 0)',
   black: 'rgb(0, 0, 0)',
   blackText: 'rgb(102, 102, 102)',
-  danger: 'rgb(255, 88, 88)',
-  dark: 'rgb(92, 111, 127)',
+  danger: 'rgb(255, 51, 51)',
+  dark: 'rgb(63, 81, 90)',
   darkGrey: 'rgb(204, 204, 204)',
+  darkText: '#666666',
   drykiss_lightBlue: 'rgb(0, 225, 218)',
   drykiss_darkPink: 'rgb(255, 0, 99)',
   error: 'rgb(255, 45, 45)',
@@ -4907,19 +4933,18 @@ var COLOUR$1 = {
   grey80: 'rgb(204, 204, 204)',
   gold40: 'rgb(250, 207, 56)',
   help: 'rgb(255, 203, 68)',
-  info: 'rgb(148, 148, 126)',
-  light: 'rgb(236, 240, 243)',
+  info: 'rgb(25, 129, 255)',
+  light: 'rgb(242, 242, 242)',
   lightBlue: 'rgb(173, 195, 245)',
   lightRed: 'rgb(255, 151, 151)',
   male: 'rgb(142, 206, 253)',
-  primary: 'rgb(0, 71, 255)',
+  primary: 'rgb(51, 51, 255)',
   secondary: 'rgb(6, 121, 216)',
-  success: 'rgb(54, 197, 58)',
+  success: 'rgb(89, 217, 143)',
   formSuccess: 'rgb(69, 186, 190)',
   transparent: 'transparent',
-  darkText: '#666666',
   visited: 'rgb(180, 14, 180)',
-  warning: 'rgb(222, 127, 40)',
+  warning: 'rgb(250, 207, 56)',
   white: 'rgb(255, 255, 255)'
 };
 
@@ -5125,6 +5150,50 @@ var TYPOGRAPHY = {
 var AVATAR = {
   background: COLOUR$1.primary,
   colour: COLOUR$1.black
+};
+
+var BADGE = {
+  BORDER_RADIUS: {
+    round: '5rem',
+    square: '0.25rem'
+  },
+  FONT_SIZE: {
+    xxs: '0.625rem',
+    xs: '0.75rem',
+    sm: '0.875rem',
+    md: '1rem',
+    lg: '1.25rem',
+    xl: '1.5rem',
+    xxl: '2rem',
+    xxxl: '3rem'
+  },
+  PADDING: {
+    xxs: '0 0.5rem',
+    xs: '0.125rem 0.5rem',
+    sm: '0.25rem 0.5rem',
+    md: '0.375rem 0.5rem',
+    lg: '0.5rem 0.75rem',
+    xl: '0.625rem 1rem',
+    xxl: '0.75rem 1rem',
+    xxxl: '0.875rem 1.5rem'
+  },
+  SHAPE: {
+    ROUND: 'round',
+    SQUARE: 'square'
+  }
+};
+
+/**
+ * Theme - Variables - Bar
+ */
+var BAR = {
+  background: '#003753',
+  highlight: COLOUR$1.primary,
+  linkColour: COLOUR$1.light,
+  linkHover: 'rgba(0, 0, 0, 0.75)',
+  minSize: '6rem',
+  transitionTiming: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDuration: '0.3s'
 };
 
 /**
@@ -5581,10 +5650,44 @@ var TABS = {
 };
 
 /**
+ * Theme - Variables - Text
+ */
+var TEXT_STYLE = {
+  DEFAULT_COLOUR: 'rgb(102, 102, 102)',
+  FONT_FAMILY: {
+    "default": TYPOGRAPHY.font,
+    xxl: 'JetBrains Mono ExtraBold',
+    xxxl: 'JetBrains Mono ExtraBold'
+  },
+  FONT_SIZE: {
+    xxs: '0.625rem',
+    xs: '0.75rem',
+    sm: '0.875rem',
+    md: '1rem',
+    lg: '1.25rem',
+    xl: '1.5rem',
+    xxl: '2rem',
+    xxxl: '3rem'
+  },
+  LINE_HEIGHT: {
+    xxs: '1rem',
+    xs: '1.125rem',
+    sm: '1.375rem',
+    md: '1.5rem',
+    lg: '1.75rem',
+    xl: '2.25rem',
+    xxl: '3rem',
+    xxxl: '4.5rem'
+  }
+};
+
+/**
  * Theme - Variables
  */
 var Theme = {
   AVATAR: AVATAR,
+  BADGE: BADGE,
+  BAR: BAR,
   BARCHART: BARCHART,
   CALENDAR: CALENDAR,
   COLOUR: COLOUR$1,
@@ -5605,6 +5708,7 @@ var Theme = {
   STEPPER: STEPPER,
   TABLE: TABLE,
   TABS: TABS,
+  TEXT_STYLE: TEXT_STYLE,
   TYPOGRAPHY: TYPOGRAPHY
 };
 
@@ -5658,12 +5762,8 @@ var Address = function Address(_ref) {
       line3 = _ref.line3,
       postcode = _ref.postcode,
       town = _ref.town;
-  return __jsx$3(StyledAddress, null, __jsx$3("div", null, line1), line2 && __jsx$3("div", null, line2), line3 && __jsx$3("div", null, line3), __jsx$3("div", null, town), county && __jsx$3("div", null, county), __jsx$3("div", null, postcode), __jsx$3("div", null, country));
+  return __jsx$3("address", null, __jsx$3(Text, null, line1), line2 && __jsx$3(Text, null, line2), line3 && __jsx$3(Text, null, line3), __jsx$3(Text, null, town), county && __jsx$3(Text, null, county), __jsx$3(Text, null, postcode), __jsx$3(Text, null, country));
 };
-var StyledAddress = styled.address.withConfig({
-  displayName: "address__StyledAddress",
-  componentId: "sc-1cc36lq-0"
-})(["margin-bottom:1rem;"]);
 Address.propTypes = {
   county: propTypes.string,
   country: propTypes.string.isRequired,
@@ -5674,37 +5774,21 @@ Address.propTypes = {
   town: propTypes.string
 };
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
 /**
  * Avatar - Props
  */
 var AvatarPropTypes = {
   action: propTypes.node,
   actionClick: propTypes.func,
-  actionProps: propTypes.object,
   children: propTypes.any,
+  className: propTypes.any,
   click: propTypes.func,
   content: propTypes.any,
   context: propTypes.oneOf(Object.values(CONTEXT)),
-  style: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string])),
-  size: propTypes.oneOf(Object.values(SIZE))
+  gmail: propTypes.string,
+  size: propTypes.oneOf(Object.values(SIZE)),
+  src: propTypes.string,
+  style: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 var AvatarDefaultProps = {
   context: 'primary',
@@ -5715,16 +5799,15 @@ var __jsx$4 = React.createElement;
 var Avatar = function Avatar(_ref) {
   var action = _ref.action,
       actionClick = _ref.actionClick,
-      actionProps = _ref.actionProps,
       children = _ref.children,
       className = _ref.className,
       click = _ref.click,
       content = _ref.content,
       context = _ref.context,
       gmail = _ref.gmail,
+      size = _ref.size,
       src = _ref.src,
-      style = _ref.style,
-      size = _ref.size;
+      style = _ref.style;
   var avatarSrc = src || gmail && gravatar.url(gmail, {
     d: 'identicon'
   });
@@ -5732,19 +5815,19 @@ var Avatar = function Avatar(_ref) {
     className: className,
     context: context,
     onClick: click,
-    style: style,
-    size: size
+    size: size,
+    style: style
   }, children || avatarSrc && __jsx$4(Image$1, {
     alt: "Avatar",
     src: avatarSrc
-  }) || getAcronym(content), action && __jsx$4(StyledAction, _extends({
+  }) || getAcronym(content), action && __jsx$4(StyledAction, {
     onClick: actionClick
-  }, actionProps), action));
+  }, action));
 };
 var StyledAction = styled.div.withConfig({
   displayName: "avatar__StyledAction",
   componentId: "sc-56ekci-0"
-})(["background-color:rgba(0,0,0,0.5);color:#fff;padding:4px;position:absolute;bottom:0;left:0;right:0;width:100%;text-align:center;visibility:hidden;opacity:0;transition:all 0.1s ease-in-out;cursor:pointer;font-size:", ";"], function (_ref2) {
+})(["background-color:rgba(0,0,0,0.5);bottom:0;color:#fff;cursor:pointer;font-size:", ";left:0;padding:4px;position:absolute;opacity:0;right:0;transition:all 0.1s ease-in-out;text-align:center;visibility:hidden;width:100%;"], function (_ref2) {
   var theme = _ref2.theme;
   return theme.TYPOGRAPHY.fontSizeBase;
 });
@@ -5810,6 +5893,24 @@ var ICON_SIZE = {
   x10: '10x'
 };
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -5868,7 +5969,7 @@ var IconPropTypes = _objectSpread$2(_objectSpread$2({
 }, DISPLAY_PROP_TYPES), SPACER_PROP_TYPES);
 var IconDefaultProps = {
   fixedWidth: true,
-  prefix: 'far'
+  prefix: 'fas'
 };
 
 var __jsx$5 = React.createElement;
@@ -5925,7 +6026,7 @@ IconStacked.propTypes = {
   prefix: propTypes.string
 };
 IconStacked.defaultProps = {
-  prefix: 'fad'
+  prefix: 'fas'
 };
 
 /**
@@ -5938,12 +6039,14 @@ var BadgePropTypes = {
   context: propTypes.oneOf(Object.values(CONTEXT)),
   icon: propTypes.string,
   iconPrefix: propTypes.string,
+  shape: propTypes.oneOf(['round', 'square']),
   size: propTypes.oneOf(Object.values(SIZE)),
   style: propTypes.object,
   to: propTypes.string
 };
 var BadgeDefaultProps = {
   context: 'primary',
+  shape: 'square',
   size: 'md'
 };
 
@@ -5955,6 +6058,7 @@ var Badge = function Badge(_ref) {
       context = _ref.context,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix,
+      shape = _ref.shape,
       size = _ref.size,
       style = _ref.style,
       to = _ref.to;
@@ -5963,6 +6067,7 @@ var Badge = function Badge(_ref) {
     context: context,
     href: to,
     itemProp: "keywords",
+    shape: shape,
     size: size,
     style: style
   }, icon && __jsx$7(StyledIcon$1, {
@@ -5973,14 +6078,32 @@ var Badge = function Badge(_ref) {
 var StyledBadge = styled.a.withConfig({
   displayName: "badge__StyledBadge",
   componentId: "sc-1yjw714-0"
-})(["", " ", " border-radius:0;color:", ";display:inline-block;line-height:1;margin:0 0.5em 0.5em 0;padding:0.5em;text-align:center;vertical-align:baseline;white-space:nowrap;transition:all 0.1s ease-in-out;text-decoration:none;cursor:default;", " &:empty{display:none;}"], function (props) {
+})(["", " ", " border:", ";border-radius:", ";color:", ";display:inline-block;line-height:1;margin:0 0.5em 0.5em 0;padding:", ";font-size:", ";text-align:center;vertical-align:baseline;white-space:nowrap;transition:all 0.1s ease-in-out;text-decoration:none;cursor:default;", " &:empty{display:none;}"], function (props) {
   return BACKGROUND(props);
 }, function (props) {
   return FONTSIZE(props);
-}, function (props) {
-  return props.theme.COLOUR.white;
 }, function (_ref2) {
-  var href = _ref2.href;
+  var context = _ref2.context,
+      theme = _ref2.theme;
+  return context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.blackText;
+}, function (_ref3) {
+  var shape = _ref3.shape,
+      theme = _ref3.theme;
+  return theme.BADGE.BORDER_RADIUS[shape];
+}, function (_ref4) {
+  var theme = _ref4.theme,
+      context = _ref4.context;
+  return context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black;
+}, function (_ref5) {
+  var size = _ref5.size,
+      theme = _ref5.theme;
+  return theme.BADGE.PADDING[size];
+}, function (_ref6) {
+  var size = _ref6.size,
+      theme = _ref6.theme;
+  return theme.BADGE.FONT_SIZE[size];
+}, function (_ref7) {
+  var href = _ref7.href;
   return href && css(["&:hover{opacity:0.7;cursor:pointer;}"]);
 });
 var StyledIcon$1 = styled(Icon).withConfig({
@@ -6067,9 +6190,13 @@ var Button = /*#__PURE__*/forwardRef(function (_ref, ref) {
     role: "button"
   }, props), startIcon && __jsx$9(Icon, _extends({
     icon: startIcon
-  }, startIconProps)), text && __jsx$9(StyledContent, null, text), endIcon && __jsx$9(Icon, _extends({
+  }, startIconProps, {
+    prefix: startIconProps === null || startIconProps === void 0 ? void 0 : startIconProps.prefix
+  })), text && __jsx$9(StyledContent, null, text), endIcon && __jsx$9(Icon, _extends({
     icon: endIcon
-  }, endIconProps)));
+  }, endIconProps, {
+    prefix: endIconProps === null || endIconProps === void 0 ? void 0 : endIconProps.prefix
+  })));
 });
 
 var getTextContext = function getTextContext(context, outline, theme) {
@@ -6087,19 +6214,22 @@ var getTextContext = function getTextContext(context, outline, theme) {
 var StyledButton = styled.button.withConfig({
   displayName: "button__StyledButton",
   componentId: "n5qq37-0"
-})(["", " color:", ";border-radius:4px;box-sizing:border-box;cursor:pointer;display:", ";align-items:center;justify-content:center;font-family:", ";outline:none;overflow:visible;text-decoration:none;text-transform:none;user-select:none;vertical-align:middle;white-space:nowrap;margin:", ";padding:", ";width:", ";height:48px;font-size:14px;line-height:100%;border:", ";", " ", " ", " ", " & + &{margin-top:", ";}&:hover{background-color:", ";border-color:", ";color:", ";}transition:all 0.1s ease-in-out;", " ", " ", " ", ""], function (props) {
+})(["", " align-items:center;border:", ";border-radius:4px;box-sizing:border-box;color:", ";cursor:pointer;display:", ";font-size:14px;height:48px;justify-content:center;line-height:100%;outline:none;overflow:visible;text-decoration:none;text-transform:none;user-select:none;vertical-align:middle;white-space:nowrap;margin:", ";padding:", ";width:", ";", " ", " ", " ", " & + &{margin-top:", ";}&:hover{background-color:", ";border-color:", ";color:", ";}transition:all 0.1s ease-in-out;", " ", " ", " ", ""], function (props) {
   return BACKGROUND(props);
 }, function (_ref2) {
-  var textContext = _ref2.textContext,
+  var context = _ref2.context,
+      dashed = _ref2.dashed,
+      outline = _ref2.outline,
       COLOUR = _ref2.theme.COLOUR;
-  return COLOUR[textContext];
+  return outline ? "1px ".concat(dashed ? 'dashed' : 'solid', " ").concat(COLOUR[context]) : 'none';
 }, function (_ref3) {
-  var block = _ref3.block,
-      centre = _ref3.centre;
-  return centre || block ? 'flex' : 'inline-flex';
+  var textContext = _ref3.textContext,
+      COLOUR = _ref3.theme.COLOUR;
+  return COLOUR[textContext];
 }, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.font;
+  var block = _ref4.block,
+      centre = _ref4.centre;
+  return centre || block ? 'flex' : 'inline-flex';
 }, function (_ref5) {
   var centre = _ref5.centre;
   return centre ? 'auto' : 0;
@@ -6110,43 +6240,37 @@ var StyledButton = styled.button.withConfig({
   var block = _ref7.block;
   return block ? '100%' : 'initial';
 }, function (_ref8) {
-  var context = _ref8.context,
-      dashed = _ref8.dashed,
-      outline = _ref8.outline,
-      COLOUR = _ref8.theme.COLOUR;
-  return outline ? "1px ".concat(dashed ? 'dashed' : 'solid', " ").concat(COLOUR[context]) : 'none';
-}, function (_ref9) {
-  var disabled = _ref9.disabled;
+  var disabled = _ref8.disabled;
   return disabled && css(["cursor:not-allowed;opacity:0.2;pointer-events:none;"]);
-}, function (_ref10) {
-  var size = _ref10.size,
-      theme = _ref10.theme;
+}, function (_ref9) {
+  var size = _ref9.size,
+      theme = _ref9.theme;
   return size === 'xs' && css(["font-size:12px;padding:", ";height:24px;"], theme.SPACING(1, 2));
-}, function (_ref11) {
-  var size = _ref11.size;
-  return size === 'sm' && css(["font-size:12px;padding:", ";height:32px;"], function (_ref12) {
-    var theme = _ref12.theme;
+}, function (_ref10) {
+  var size = _ref10.size;
+  return size === 'sm' && css(["font-size:12px;padding:", ";height:32px;"], function (_ref11) {
+    var theme = _ref11.theme;
     return theme.SPACING(2, 4);
   });
-}, function (_ref13) {
-  var size = _ref13.size;
-  return size === 'lg' && css(["font-size:16px;padding:", ";height:56px;"], function (_ref14) {
-    var theme = _ref14.theme;
+}, function (_ref12) {
+  var size = _ref12.size;
+  return size === 'lg' && css(["font-size:16px;padding:", ";height:56px;"], function (_ref13) {
+    var theme = _ref13.theme;
     return theme.SPACING(4, 8);
   });
-}, function (_ref15) {
-  var block = _ref15.block;
+}, function (_ref14) {
+  var block = _ref14.block;
   return block ? '1rem' : 'initial';
+}, function (_ref15) {
+  var context = _ref15.context,
+      COLOUR = _ref15.theme.COLOUR;
+  return shadeLinearRgb(-0.1, COLOUR[context]);
 }, function (_ref16) {
   var context = _ref16.context,
       COLOUR = _ref16.theme.COLOUR;
-  return shadeLinearRgb(-0.1, COLOUR[context]);
-}, function (_ref17) {
-  var context = _ref17.context,
-      COLOUR = _ref17.theme.COLOUR;
   return shadeLinearRgb(-0.12, COLOUR[context]);
-}, function (_ref18) {
-  var COLOUR = _ref18.theme.COLOUR;
+}, function (_ref17) {
+  var COLOUR = _ref17.theme.COLOUR;
   return COLOUR.white;
 }, function (props) {
   return props.shadow && 'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);';
@@ -6160,11 +6284,11 @@ var StyledButton = styled.button.withConfig({
 var StyledContent = styled.div.withConfig({
   displayName: "button__StyledContent",
   componentId: "n5qq37-1"
-})([":not(:first-child){margin-left:", ";}:not(:last-child){margin-right:", ";}"], function (_ref19) {
-  var theme = _ref19.theme;
+})([":not(:first-child){margin-left:", ";}:not(:last-child){margin-right:", ";}"], function (_ref18) {
+  var theme = _ref18.theme;
   return theme.SPACING(2);
-}, function (_ref20) {
-  var theme = _ref20.theme;
+}, function (_ref19) {
+  var theme = _ref19.theme;
   return theme.SPACING(2);
 });
 Button.propTypes = ButtonPropTypes;
@@ -6263,11 +6387,12 @@ Date$1.propTypes = {
 var __jsx$d = React.createElement;
 var Details = function Details(_ref) {
   var children = _ref.children,
+      SummaryActionsComponent = _ref.SummaryActionsComponent,
       open = _ref.open,
       style = _ref.style,
       summary = _ref.summary,
       Toolbar = _ref.Toolbar,
-      props = _objectWithoutProperties(_ref, ["children", "open", "style", "summary", "Toolbar"]);
+      props = _objectWithoutProperties(_ref, ["children", "SummaryActionsComponent", "open", "style", "summary", "Toolbar"]);
 
   return __jsx$d(StyledDetails, _extends({
     open: open
@@ -6276,25 +6401,29 @@ var Details = function Details(_ref) {
     context: "secondary",
     onClick: props.handleClick,
     size: "sm"
-  }), Toolbar && __jsx$d(Toolbar, null)), __jsx$d(StyledBody, {
+  }), SummaryActionsComponent && __jsx$d(ActionsWrapper, null, " ", SummaryActionsComponent), Toolbar && __jsx$d(Toolbar, null)), __jsx$d(StyledBody, {
     style: style
   }, children));
 };
+var ActionsWrapper = styled.div.withConfig({
+  displayName: "details__ActionsWrapper",
+  componentId: "sc-1tw1laa-0"
+})(["width:fit-content;float:right;"]);
 var StyledDetails = styled.details.withConfig({
   displayName: "details__StyledDetails",
-  componentId: "sc-1tw1laa-0"
+  componentId: "sc-1tw1laa-1"
 })(["background-color:#fff;border:1px solid #eee;border-bottom:1px solid rgb(0,204,188);box-shadow:rgba(45,62,80,0.12) 0 1px 5px 0;margin-bottom:0.5rem;"]);
 var StyledSummary = styled.summary.withConfig({
   displayName: "details__StyledSummary",
-  componentId: "sc-1tw1laa-1"
+  componentId: "sc-1tw1laa-2"
 })(["font-weight:bold;cursor:pointer;outline:none;padding:1rem;position:relative;"]);
 var StyledButton$2 = styled(Button).withConfig({
   displayName: "details__StyledButton",
-  componentId: "sc-1tw1laa-2"
-})(["position:absolute;right:1rem;top:0.75rem;"]);
+  componentId: "sc-1tw1laa-3"
+})(["float:right;"]);
 var StyledBody = styled.div.withConfig({
   displayName: "details__StyledBody",
-  componentId: "sc-1tw1laa-3"
+  componentId: "sc-1tw1laa-4"
 })(["font-size:1rem;padding:0 1rem 1rem;"]);
 Details.propTypes = {
   children: propTypes.node.isRequired,
@@ -6808,14 +6937,17 @@ var Heading = function Heading(_ref) {
 var StyledHeading = styled.span.withConfig({
   displayName: "heading__StyledHeading",
   componentId: "sc-5ag1xp-0"
-})(["font-weight:normal;", " position:relative;", " ", ""], function (props) {
+})(["font-weight:normal;", " position:relative;", " ", " ", ""], function (props) {
   return COLOUR(props);
 }, function (_ref2) {
   var as = _ref2.as,
       theme = _ref2.theme;
   return css(["font-family:", ";font-size:", ";line-height:", ";text-transform:", ";margin:0;"], theme.HEADINGS[as].fontFamily, theme.HEADINGS[as].fontSize, theme.HEADINGS[as].lineHeight, theme.HEADINGS[as].textTransform);
 }, function (_ref3) {
-  var noWrap = _ref3.noWrap;
+  var ellipsis = _ref3.ellipsis;
+  return ellipsis && css(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"]);
+}, function (_ref4) {
+  var noWrap = _ref4.noWrap;
   return noWrap && css(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"]);
 });
 Heading.propTypes = HeadingPropTypes;
@@ -6875,7 +7007,7 @@ var Link = function Link(_ref) {
 var StyledLink = styled.a.withConfig({
   displayName: "link__StyledLink",
   componentId: "sc-1k7fazj-0"
-})(["background-color:transparent;border-bottom:", ";color:", ";cursor:pointer;display:", ";outline:none;text-decoration:none;&:hover,&.link--hover{border-bottom:", ";color:", ";}&:active,&.link--active{border-bottom:", ";color:", ";}&:visited,&.link--visited{border-bottom:", ";color:", ";}"], function (_ref2) {
+})(["background-color:transparent;border-bottom:", ";color:", ";display:", ";cursor:pointer;max-width:100%;outline:none;text-decoration:none;&:hover,&.link--hover{border-bottom:", ";color:", ";}&:active,&.link--active{border-bottom:", ";color:", ";}&:visited,&.link--visited{border-bottom:", ";color:", ";}"], function (_ref2) {
   var border = _ref2.border,
       context = _ref2.context,
       theme = _ref2.theme;
@@ -7156,170 +7288,8 @@ ProgressBarDiv.propTypes = {
   transition: propTypes.string
 };
 
-var __jsx$q = React.createElement;
-
-function _templateObject18() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(2rem * 2);\n        "]);
-
-  _templateObject18 = function _templateObject18() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject17() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(1.5rem * 2);\n        "]);
-
-  _templateObject17 = function _templateObject17() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject16() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(1rem * 2);\n        "]);
-
-  _templateObject16 = function _templateObject16() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject15() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(0.75rem * 2);\n        "]);
-
-  _templateObject15 = function _templateObject15() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject14() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(0.5rem * 2);\n        "]);
-
-  _templateObject14 = function _templateObject14() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject13() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(0.25rem * 2);\n        "]);
-
-  _templateObject13 = function _templateObject13() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n          margin-top: calc(2rem * 2);\n        "]);
-
-  _templateObject12 = function _templateObject12() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject11() {
-  var data = _taggedTemplateLiteral(["\n          margin-bottom: calc(1.5rem * 2);\n        "]);
-
-  _templateObject11 = function _templateObject11() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n          margin-bottom: calc(1rem * 2);\n        "]);
-
-  _templateObject10 = function _templateObject10() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n          margin-bottom: calc(0.75rem * 2);\n        "]);
-
-  _templateObject9 = function _templateObject9() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n          margin-bottom: calc(0.5rem * 2);\n        "]);
-
-  _templateObject8 = function _templateObject8() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n          margin-bottom: calc(0.25rem * 2);\n        "]);
-
-  _templateObject7 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n          margin: calc(2rem * 2);\n        "]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n          margin: calc(1.5rem * 2);\n        "]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n          margin: calc(1rem * 2);\n        "]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n        margin: calc(0.75rem * 2);\n      "]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n        margin: calc(0.5rem * 2);\n      "]);
+  var data = _taggedTemplateLiteral(["\n     margin-bottom:  calc(", " * 2);"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -7329,7 +7299,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n        margin: calc(0.25rem * 2);\n      "]);
+  var data = _taggedTemplateLiteral(["\n          ", ": calc(", " * 2);"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -7337,6 +7307,34 @@ function _templateObject$1() {
 
   return data;
 }
+var sizes$1 = {
+  xxsSize: '0.25rem',
+  xsSize: '0.5rem',
+  smSize: '0.75rem',
+  mdSize: '1rem',
+  lgSize: '1.5rem',
+  xlSize: '2rem',
+  xxlSize: '2.5rem',
+  xxxlSize: '3rem'
+};
+var spaceStyler = function spaceStyler(properties) {
+  var stl = '';
+  var counter = 0;
+  properties.forEach(function (property) {
+    if (property.v) {
+      counter++;
+      stl += "".concat(property.k, ": ").concat(sizes$1[property.v + 'Size'], ";\n          ").concat(MEDIA_QUERY.desktop(_templateObject$1(), property.k, sizes$1[property.v + 'Size']));
+    }
+  });
+
+  if (counter === 0) {
+    return css(["margin-bottom:", ";", ""], sizes$1.mdSize, MEDIA_QUERY.desktop(_templateObject2$1(), sizes$1.mdSize));
+  }
+
+  return css(["", ""], stl);
+};
+
+var __jsx$q = React.createElement;
 var Space = function Space(_ref) {
   var children = _ref.children,
       content = _ref.content,
@@ -7374,60 +7372,48 @@ var Space = function Space(_ref) {
 var StyledSpace = styled.div.withConfig({
   displayName: "space__StyledSpace",
   componentId: "sc-1otqdhh-0"
-})(["margin:0;padding:0;", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ""], function (_ref2) {
-  var margin = _ref2.margin;
-  return margin === 'xs' && css(["margin:0.25rem;", ""], MEDIA_QUERY.desktop(_templateObject$1()));
-}, function (_ref3) {
-  var margin = _ref3.margin;
-  return margin === 'sm' && css(["margin:0.5rem;", ""], MEDIA_QUERY.desktop(_templateObject2$1()));
-}, function (_ref4) {
-  var margin = _ref4.margin;
-  return margin === 'md' && css(["margin:0.75rem;", ""], MEDIA_QUERY.desktop(_templateObject3()));
-}, function (_ref5) {
-  var margin = _ref5.margin;
-  return margin === 'lg' && css(["margin:1rem;", ""], MEDIA_QUERY.desktop(_templateObject4()));
-}, function (_ref6) {
-  var margin = _ref6.margin;
-  return margin === 'xl' && css(["margin:1.5rem;", ""], MEDIA_QUERY.desktop(_templateObject5()));
-}, function (_ref7) {
-  var margin = _ref7.margin;
-  return margin === 'xxl' && css(["margin:2rem;", ""], MEDIA_QUERY.desktop(_templateObject6()));
-}, function (_ref8) {
-  var marginBottom = _ref8.marginBottom;
-  return marginBottom === 'xs' && css(["margin-bottom:0.25rem;", ""], MEDIA_QUERY.desktop(_templateObject7()));
-}, function (_ref9) {
-  var marginBottom = _ref9.marginBottom;
-  return marginBottom === 'sm' && css(["margin-bottom:0.5rem;", ""], MEDIA_QUERY.desktop(_templateObject8()));
-}, function (_ref10) {
-  var marginBottom = _ref10.marginBottom;
-  return marginBottom === 'md' && css(["margin-bottom:0.75rem;", ""], MEDIA_QUERY.desktop(_templateObject9()));
-}, function (_ref11) {
-  var marginBottom = _ref11.marginBottom;
-  return marginBottom === 'lg' && css(["margin-bottom:1rem;", ""], MEDIA_QUERY.desktop(_templateObject10()));
-}, function (_ref12) {
-  var marginBottom = _ref12.marginBottom;
-  return marginBottom === 'xl' && css(["margin-bottom:1.5rem;", ""], MEDIA_QUERY.desktop(_templateObject11()));
-}, function (_ref13) {
-  var marginBottom = _ref13.marginBottom;
-  return marginBottom === 'xxl' && css(["margin-bottom:2rem;", ""], MEDIA_QUERY.desktop(_templateObject12()));
-}, function (_ref14) {
-  var marginTop = _ref14.marginTop;
-  return marginTop === 'xs' && css(["margin-top:0.25rem;", ""], MEDIA_QUERY.desktop(_templateObject13()));
-}, function (_ref15) {
-  var marginTop = _ref15.marginTop;
-  return marginTop === 'sm' && css(["margin-top:0.5rem;", ""], MEDIA_QUERY.desktop(_templateObject14()));
-}, function (_ref16) {
-  var marginTop = _ref16.marginTop;
-  return marginTop === 'md' && css(["margin-top:0.75rem;", ""], MEDIA_QUERY.desktop(_templateObject15()));
-}, function (_ref17) {
-  var marginTop = _ref17.marginTop;
-  return marginTop === 'lg' && css(["margin-top:1rem;", ""], MEDIA_QUERY.desktop(_templateObject16()));
-}, function (_ref18) {
-  var marginTop = _ref18.marginTop;
-  return marginTop === 'xl' && css(["margin-top:1.5rem;", ""], MEDIA_QUERY.desktop(_templateObject17()));
-}, function (_ref19) {
-  var marginTop = _ref19.marginTop;
-  return marginTop === 'xxl' && css(["margin-top:2rem;", ""], MEDIA_QUERY.desktop(_templateObject18()));
+})(["margin:0;padding:0;", ""], function (_ref2) {
+  var margin = _ref2.margin,
+      marginBottom = _ref2.marginBottom,
+      marginTop = _ref2.marginTop,
+      marginLeft = _ref2.marginLeft,
+      marginRight = _ref2.marginRight,
+      padding = _ref2.padding,
+      paddingLeft = _ref2.paddingLeft,
+      paddingRight = _ref2.paddingRight,
+      paddingTop = _ref2.paddingTop,
+      paddingBottom = _ref2.paddingBottom;
+  return spaceStyler([{
+    k: 'margin',
+    v: margin
+  }, {
+    k: 'margin-bottom',
+    v: marginBottom
+  }, {
+    k: 'margin-left',
+    v: marginLeft
+  }, {
+    k: 'margin-right',
+    v: marginRight
+  }, {
+    k: 'margin-top',
+    v: marginTop
+  }, {
+    k: 'padding',
+    v: padding
+  }, {
+    k: 'padding-bottom',
+    v: paddingBottom
+  }, {
+    k: 'padding-left',
+    v: paddingLeft
+  }, {
+    k: 'padding-right',
+    v: paddingRight
+  }, {
+    k: 'padding-top',
+    v: paddingTop
+  }]);
 });
 Space.protoTypes = {
   children: propTypes.node,
@@ -7447,104 +7433,98 @@ Space.protoTypes = {
   paddingBottom: propTypes.oneOf(Object.values(SIZE)),
   paddingLeft: propTypes.oneOf(Object.values(SIZE))
 };
-Space.defaultProps = {
-  marginBottom: 'md'
-};
 
 function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var TextPropTypes = _objectSpread$4(_objectSpread$4(_objectSpread$4({
+var TextPropTypes = _objectSpread$4(_objectSpread$4({
   align: propTypes.string,
   children: propTypes.node,
   content: propTypes.string,
   context: propTypes.oneOf(Object.values(CONTEXT)),
   size: propTypes.oneOf(Object.values(SIZE))
-}, DISPLAY_PROP_TYPES), SPACER_PROP_TYPES), {}, {
-  variant: propTypes.oneOf(['normal', 'inputMessage'])
-});
+}, DISPLAY_PROP_TYPES), SPACER_PROP_TYPES);
 var TextDefaultProps = {
-  context: 'black',
-  size: 'md',
-  variant: 'normal'
+  context: 'dark',
+  size: 'md'
 };
 
 var __jsx$r = React.createElement;
 
-function _templateObject10$1() {
+function _templateObject10() {
   var data = _taggedTemplateLiteral(["\n        -webkit-text-stroke: 3px #000;\n      "]);
 
-  _templateObject10$1 = function _templateObject10() {
+  _templateObject10 = function _templateObject10() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject9$1() {
+function _templateObject9() {
   var data = _taggedTemplateLiteral(["\n        -webkit-text-stroke: 2px #000;\n      "]);
 
-  _templateObject9$1 = function _templateObject9() {
+  _templateObject9 = function _templateObject9() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject8$1() {
+function _templateObject8() {
   var data = _taggedTemplateLiteral(["\n        font-size: 8rem;\n      "]);
 
-  _templateObject8$1 = function _templateObject8() {
+  _templateObject8 = function _templateObject8() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject7$1() {
+function _templateObject7() {
   var data = _taggedTemplateLiteral(["\n        font-size: 7rem;\n      "]);
 
-  _templateObject7$1 = function _templateObject7() {
+  _templateObject7 = function _templateObject7() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject6$1() {
+function _templateObject6() {
   var data = _taggedTemplateLiteral(["\n        font-size: 6rem;\n      "]);
 
-  _templateObject6$1 = function _templateObject6() {
+  _templateObject6 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$1() {
+function _templateObject5() {
   var data = _taggedTemplateLiteral(["\n        font-size: 5rem;\n      "]);
 
-  _templateObject5$1 = function _templateObject5() {
+  _templateObject5 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$1() {
+function _templateObject4() {
   var data = _taggedTemplateLiteral(["\n        font-size: 5rem;\n      "]);
 
-  _templateObject4$1 = function _templateObject4() {
+  _templateObject4 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$1() {
+function _templateObject3() {
   var data = _taggedTemplateLiteral(["\n        font-size: 4rem;\n      "]);
 
-  _templateObject3$1 = function _templateObject3() {
+  _templateObject3 = function _templateObject3() {
     return data;
   };
 
@@ -7593,38 +7573,30 @@ var Text = function Text(_ref) {
 var StyledText$1 = styled.p.withConfig({
   displayName: "text__StyledText",
   componentId: "sc-1hmk421-0"
-})(["color:", ";margin:0;padding:0;text-align:", ";", " ", " ", " ", " ", " ", " ", " ", " ", " ", ""], function (_ref2) {
-  var colour = _ref2.colour,
-      context = _ref2.context,
-      COLOUR = _ref2.theme.COLOUR;
-  return colour ? COLOUR[colour] : COLOUR[context];
+})(["color:", ";margin:0;padding:0;text-align:", ";", " ", " ", " ", " ", " ", ""], function (_ref2) {
+  var context = _ref2.context,
+      _ref2$theme = _ref2.theme,
+      COLOUR = _ref2$theme.COLOUR,
+      TEXT_STYLE = _ref2$theme.TEXT_STYLE;
+  return context ? COLOUR[context] : TEXT_STYLE.DEFAULT_COLOUR;
 }, function (_ref3) {
   var align = _ref3.align;
   return align;
 }, function (_ref4) {
-  var size = _ref4.size;
-  return size === 'xs' && css(["font-size:0.75rem;line-height:1.333;"]);
-}, function (_ref5) {
-  var size = _ref5.size;
-  return size === 'sm' && css(["font-size:0.875rem;line-height:1.429;"]);
+  var _theme$TEXT_STYLE$FON, _theme$TEXT_STYLE$LIN, _ref5, _theme$TEXT_STYLE$FON2;
+
+  var size = _ref4.size,
+      theme = _ref4.theme;
+  return css(["font-size:", ";line-height:", ";font-family:", ";"], (_theme$TEXT_STYLE$FON = theme.TEXT_STYLE.FONT_SIZE[size]) !== null && _theme$TEXT_STYLE$FON !== void 0 ? _theme$TEXT_STYLE$FON : '1rem', (_theme$TEXT_STYLE$LIN = theme.TEXT_STYLE.LINE_HEIGHT[size]) !== null && _theme$TEXT_STYLE$LIN !== void 0 ? _theme$TEXT_STYLE$LIN : '1rem', (_ref5 = (_theme$TEXT_STYLE$FON2 = theme.TEXT_STYLE.FONT_FAMILY[size]) !== null && _theme$TEXT_STYLE$FON2 !== void 0 ? _theme$TEXT_STYLE$FON2 : theme.TEXT_STYLE.FONT_FAMILY["default"]) !== null && _ref5 !== void 0 ? _ref5 : 'sans-serif');
 }, function (_ref6) {
   var size = _ref6.size;
-  return size === 'md' && css(["font-size:1rem;line-height:1.5;"]);
+  return size === 'xxl' && css(["", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject$2()), MEDIA_QUERY.tablet(_templateObject2$2()), MEDIA_QUERY.desktop(_templateObject3()), MEDIA_QUERY.giant(_templateObject4()));
 }, function (_ref7) {
   var size = _ref7.size;
-  return size === 'lg' && css(["font-size:1.25rem;line-height:1.4;"]);
+  return size === 'xxxl' && css(["", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject5()), MEDIA_QUERY.tablet(_templateObject6()), MEDIA_QUERY.desktop(_templateObject7()), MEDIA_QUERY.giant(_templateObject8()));
 }, function (_ref8) {
-  var size = _ref8.size;
-  return size === 'xl' && css(["font-size:1.5rem;line-height:1.333;"]);
-}, function (_ref9) {
-  var size = _ref9.size;
-  return size === 'xxl' && css(["font-size:1.25rem;line-height:1.25;", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject$2()), MEDIA_QUERY.tablet(_templateObject2$2()), MEDIA_QUERY.desktop(_templateObject3$1()), MEDIA_QUERY.giant(_templateObject4$1()));
-}, function (_ref10) {
-  var size = _ref10.size;
-  return size === 'xxxl' && css(["font-size:2.5rem;line-height:1.25;", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject5$1()), MEDIA_QUERY.tablet(_templateObject6$1()), MEDIA_QUERY.desktop(_templateObject7$1()), MEDIA_QUERY.giant(_templateObject8$1()));
-}, function (_ref11) {
-  var stroke = _ref11.stroke;
-  return stroke === 'true' && css(["-webkit-text-stroke:1px #000;color:transparent;", " ", ""], MEDIA_QUERY.tablet(_templateObject9$1()), MEDIA_QUERY.desktop(_templateObject10$1()));
+  var stroke = _ref8.stroke;
+  return stroke === 'true' && css(["-webkit-text-stroke:1px #000;color:transparent;", " ", ""], MEDIA_QUERY.tablet(_templateObject9()), MEDIA_QUERY.desktop(_templateObject10()));
 }, function (theme) {
   return DISPLAY(theme);
 }, function (theme) {
@@ -19616,7 +19588,7 @@ var IntercomAPI = function IntercomAPI() {
     window.Intercom.apply(null, args);
   }
 };
-var Intercom = /*#__PURE__*/React.memo(function (_ref) {
+var Intercom = /*#__PURE__*/memo(function (_ref) {
   var appID = _ref.appID;
   useEffect(function () {
     if (!appID || !canUseDOM) {
@@ -19943,7 +19915,7 @@ var Toggler = function Toggler(_ref) {
 var StyledIcon$6 = styled.div.withConfig({
   displayName: "toggler__StyledIcon",
   componentId: "sc-1t70814-0"
-})(["margin-top:0.25rem;div{width:2rem;height:0.125rem;background:black;margin-bottom:0.375rem;transition:0.3s all linear;}div:nth-child(2){&:active{transform:rotate(-45deg);}}div:nth-child(1){&:active{transform:rotate(45deg);}}"]);
+})(["margin-top:0.25rem;div{width:2rem;height:0.125rem;background:black;margin-bottom:0.375rem;transition:0.3s all linear;}div:nth-child(1){&:active{transform:rotate(45deg);}}div:nth-child(2){&:active{transform:rotate(-45deg);}}"]);
 var StyledToggler = styled.a.withConfig({
   displayName: "toggler__StyledToggler",
   componentId: "sc-1t70814-1"
@@ -19976,10 +19948,10 @@ Toggler.defaultProps = {
 
 var __jsx$1C = React.createElement;
 
-function _templateObject3$2() {
+function _templateObject3$1() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
 
-  _templateObject3$2 = function _templateObject3() {
+  _templateObject3$1 = function _templateObject3() {
     return data;
   };
 
@@ -20091,7 +20063,7 @@ var StyledOverlay = styled.div.withConfig({
 }, function (_ref13) {
   var theme = _ref13.theme;
   return theme.NAVBAR.widthOverlay;
-}, MEDIA_QUERY.desktop(_templateObject3$2()));
+}, MEDIA_QUERY.desktop(_templateObject3$1()));
 Navbar.propTypes = {
   animational: propTypes.bool,
   brand: propTypes.string,
@@ -23323,7 +23295,6 @@ var Design = function Design(_ref) {
 };
 
 var _class, _temp;
-
 var __jsx$29 = React.createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
@@ -23668,6 +23639,142 @@ Webcam.Design = Design;
 // });
 
 var __jsx$2a = React.createElement;
+var Bar$1 = function Bar(_ref) {
+  var background = _ref.background,
+      children = _ref.children,
+      flat = _ref.flat,
+      minSize = _ref.minSize,
+      open = _ref.open,
+      placement = _ref.placement,
+      variant = _ref.variant,
+      width = _ref.width,
+      withExposedButton = _ref.withExposedButton;
+
+  var _useState = useState(open !== null && open !== void 0 ? open : true),
+      IsOpen = _useState[0],
+      setIsOpen = _useState[1];
+
+  var toggleOpen = function toggleOpen() {
+    setIsOpen(!IsOpen);
+  };
+
+  return __jsx$2a(React.Fragment, null, __jsx$2a(StyledBarWrapper, {
+    background: background,
+    flat: flat,
+    open: IsOpen,
+    placement: placement,
+    variant: variant,
+    width: width,
+    minSize: minSize
+  }, __jsx$2a(OpenButton, {
+    background: background,
+    flat: flat,
+    exposed: withExposedButton,
+    onClick: toggleOpen,
+    open: IsOpen,
+    placement: placement
+  }, __jsx$2a(Icon, {
+    icon: "user",
+    size: "1x",
+    prefix: "fas"
+  })), children), __jsx$2a(StyledOverlay$1, {
+    onClick: toggleOpen,
+    open: IsOpen,
+    placement: placement,
+    variant: variant,
+    width: width
+  }));
+};
+var OpenButton = styled.div.withConfig({
+  displayName: "bar__OpenButton",
+  componentId: "sc-1az3wwm-0"
+})(["border-radius:0.25rem;cursor:pointer;display:none;z-index:1;position:absolute;svg{transition:transform ", " ease;transform:rotate(0deg);position:absolute;top:1rem;right:0.2rem;}", " ", ""], function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.BAR.transitionDuration;
+}, function (_ref3) {
+  var background = _ref3.background,
+      exposed = _ref3.exposed,
+      flat = _ref3.flat,
+      placement = _ref3.placement;
+  return (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && css(["border-top-", "-radius:0;border-bottom-", "-radius:0;display:", ";width:1.5rem;height:3rem;", ":100%;background-color:", ";box-shadow:", ";"], placement, placement, exposed ? 'block' : 'none', placement, function (_ref4) {
+    var background = _ref4.background,
+        theme = _ref4.theme;
+    return theme ? theme.COLOUR[background] : 'white';
+  }, !flat && (placement === BarConfig.PLACEMENT.LEFT ? '2px 1px 2px 0px rgb(0 0 0 / 13%)' : '-2px 1px 2px 0px rgb(0 0 0 / 13%)'));
+}, function (_ref5) {
+  var open = _ref5.open;
+  return open === true && css(["._,svg{transform:rotate(180deg);}"]);
+});
+var StyledOverlay$1 = styled.div.withConfig({
+  displayName: "bar__StyledOverlay",
+  componentId: "sc-1az3wwm-1"
+})(["transition:", ";", " ", ""], function (_ref6) {
+  var theme = _ref6.theme,
+      placement = _ref6.placement;
+  return css(["opacity ", " ", ",", " ", " ", ";"], theme.BAR.transitionDuration, theme.BAR.transitionTiming, placement, theme.BAR.transitionDuration, theme.BAR.transitionTiming);
+}, function (_ref7) {
+  var placement = _ref7.placement,
+      variant = _ref7.variant,
+      width = _ref7.width;
+  return variant === BarConfig.VARIANT.OVERLAY && (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && css(["width:calc(100% - ", "rem);height:100%;background-color:rgba(0,0,0,0.5);opacity:1;top:0;position:absolute;", ":", "rem;"], width, placement, width);
+}, function (_ref8) {
+  var open = _ref8.open,
+      placement = _ref8.placement;
+  return !open && css(["opacity:0;pointer-events:none;width:100%;", ":0;"], placement);
+});
+var StyledBarWrapper = styled.div.withConfig({
+  displayName: "bar__StyledBarWrapper",
+  componentId: "sc-1az3wwm-2"
+})(["align-items:center;background-color:", ";box-shadow:", ";display:flex;flex-direction:column;height:100%;position:relative;transition-duration:", ";transition-property:left,opacity,right,width;transition-timing-function:", ";", " ", ""], function (_ref9) {
+  var background = _ref9.background,
+      theme = _ref9.theme;
+  return theme ? theme.COLOUR[background] : 'white';
+}, function (_ref10) {
+  var flat = _ref10.flat;
+  return !flat && ' 0px 4px 4px rgba(0, 0, 0, 0.25)';
+}, function (_ref11) {
+  var theme = _ref11.theme;
+  return theme.BAR.transitionDuration;
+}, function (_ref12) {
+  var theme = _ref12.theme;
+  return theme.BAR.transitionTiming;
+}, function (_ref13) {
+  var minSize = _ref13.minSize,
+      open = _ref13.open,
+      placement = _ref13.placement,
+      theme = _ref13.theme,
+      width = _ref13.width;
+  return placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM ? css(["width:100%;height:", ";flex-direction:row;"], minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize) : open ? css(["width:", "rem;"], width) : css(["width:", ";"], minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize);
+}, function (_ref14) {
+  var minSize = _ref14.minSize,
+      open = _ref14.open,
+      placement = _ref14.placement,
+      theme = _ref14.theme,
+      variant = _ref14.variant;
+  return variant === BarConfig.VARIANT.OVERLAY ? css(["position:absolute;opacity:1;", ":0;", " ", " ", ""], placement, (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && css(["top:0;align-items:center;"]), !open && css(["margin-", ":-", ";background-color:transparent;box-shadow:none;"], placement, minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize), (placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM) && css(["left:0;"])) : css(["float:", ";"], placement);
+});
+Bar$1.propTypes = {};
+Bar$1.defaultProps = {
+  width: 10,
+  placement: 'left',
+  variant: 'push',
+  background: 'white'
+};
+
+var BarConfig = {
+  PLACEMENT: {
+    BOTTOM: 'bottom',
+    LEFT: 'left',
+    RIGHT: 'right',
+    TOP: 'top'
+  },
+  VARIANT: {
+    OVERLAY: 'overlay',
+    PUSH: 'push'
+  }
+};
+
+var __jsx$2b = React.createElement;
 var events = [{
   start: moment(),
   end: moment().add(1, 'days').toDate(),
@@ -23675,7 +23782,7 @@ var events = [{
 }];
 var BigCalendar = function BigCalendar() {
   var localizer = momentLocalizer(moment);
-  return __jsx$2a("div", null, __jsx$2a(Calendar$1, {
+  return __jsx$2b("div", null, __jsx$2b(Calendar$1, {
     localizer: localizer,
     defaultDate: new Date(),
     events: events,
@@ -23687,7 +23794,7 @@ var BigCalendar = function BigCalendar() {
   }));
 };
 
-var __jsx$2b = React.createElement;
+var __jsx$2c = React.createElement;
 var FullCalendar;
 var CalendarWrapper = function CalendarWrapper(props) {
   var _useState = useState(false),
@@ -23709,7 +23816,7 @@ var CalendarWrapper = function CalendarWrapper(props) {
         var Calendar = _ref.calendar,
             plugins = _objectWithoutProperties(_ref, ["calendar"]);
 
-        return __jsx$2b(Calendar, _extends({
+        return __jsx$2c(Calendar, _extends({
           plugins: Object.values(plugins),
           ref: props.forwardedRef
         }, props));
@@ -23726,14 +23833,14 @@ var CalendarWrapper = function CalendarWrapper(props) {
   }, []);
 
   var showCalendar = function showCalendar(props) {
-    if (!calendarLoaded) return __jsx$2b("div", null, "Loading ...");
-    return __jsx$2b(FullCalendar, props);
+    if (!calendarLoaded) return __jsx$2c("div", null, "Loading ...");
+    return __jsx$2c(FullCalendar, props);
   };
 
-  return __jsx$2b("div", null, showCalendar(props));
+  return __jsx$2c("div", null, showCalendar(props));
 };
 
-var __jsx$2c = React.createElement;
+var __jsx$2d = React.createElement;
 var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var props = _extends({}, _ref);
 
@@ -23744,14 +23851,14 @@ var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
-  return __jsx$2c(Wrapper$3, null, props.hasLoading && loading && __jsx$2c(PageLoading, {
-    indicator: __jsx$2c(LdsSpinner, {
+  return __jsx$2d(Wrapper$3, null, props.hasLoading && loading && __jsx$2d(PageLoading, {
+    indicator: __jsx$2d(LdsSpinner, {
       color: "#000",
       size: 50
     }),
     opacity: 0.7,
     position: "absolute"
-  }), __jsx$2c(CalendarWrapper, _extends({}, props, {
+  }), __jsx$2d(CalendarWrapper, _extends({}, props, {
     eventColor: props.defaultEventColor || COLOUR.primary,
     header: props.header || CALENDAR.header,
     events: props.events,
@@ -31104,7 +31211,7 @@ exports.default = _Chrome2.default;
 
 var index$1 = /*@__PURE__*/unwrapExports(lib$1);
 
-var __jsx$2d = React.createElement;
+var __jsx$2e = React.createElement;
 var ColorPicker = function ColorPicker(_ref) {
   var type = _ref.type,
       onChangeComplete = _ref.onChangeComplete,
@@ -31112,27 +31219,27 @@ var ColorPicker = function ColorPicker(_ref) {
 
   switch (type) {
     case 'circle':
-      return __jsx$2d(index$1.CirclePicker, _extends({
+      return __jsx$2e(index$1.CirclePicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'sketch':
-      return __jsx$2d(index$1.SketchPicker, _extends({
+      return __jsx$2e(index$1.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'github':
-      return __jsx$2d(index$1.GithubPicker, _extends({
+      return __jsx$2e(index$1.GithubPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'twitter':
-      return __jsx$2d(index$1.TwitterPicker, _extends({
+      return __jsx$2e(index$1.TwitterPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     default:
-      return __jsx$2d(index$1.SketchPicker, _extends({
+      return __jsx$2e(index$1.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
   }
@@ -31147,7 +31254,7 @@ ColorPicker.propTypes = {
   width: propTypes.string
 };
 
-var __jsx$2e = React.createElement;
+var __jsx$2f = React.createElement;
 var EmailChange = function EmailChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -31165,32 +31272,32 @@ var EmailChange = function EmailChange(_ref) {
   var submit = function submit(data) {};
 
   var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return __jsx$2e(React.Fragment, null, __jsx$2e(PageHeading, {
+  return __jsx$2f(React.Fragment, null, __jsx$2f(PageHeading, {
     center: true,
     heading: "Email Change",
     divider: false
-  }), error && __jsx$2e(Alert, {
+  }), error && __jsx$2f(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2e(Form, {
+  }), __jsx$2f(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2e(FormLabel, {
+  }, __jsx$2f(FormLabel, {
     label: "Email"
-  }, __jsx$2e(FormField, {
+  }, __jsx$2f(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2e(Button, {
+  })), __jsx$2f(Button, {
     block: true,
     content: "Submit",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2e("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
+  }), __jsx$2f("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
 };
 EmailChange.propTypes = {
   showPlaceholder: propTypes.bool
@@ -31199,14 +31306,105 @@ EmailChange.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2f = React.createElement;
+// Did is the example to apply into the blockTypes, when we implement the whole solutionn
+// We will have it in this format
+var BlockType = {
+  HEADER_ONE: 'header-one',
+  HEADER_THREE: 'header-three',
+  HEADER_FOUR: 'header-four',
+  HEADER_FIVE: 'header-five',
+  HEADER_SIX: 'header-six',
+  BLOCKQUOTE: 'blockquote',
+  FIGURE: 'atomic',
+  LI: 'unordered-list-item'
+};
+
+var __jsx$2g = React.createElement;
+var DraftJs = function DraftJs(_ref) {
+  var control = _ref.control,
+      name = _ref.name,
+      setValue = _ref.setValue;
+
+  var _useState = useState(EditorState.createEmpty()),
+      editorState = _useState[0],
+      setEditorState = _useState[1];
+
+  var toggleInlineStyle = function toggleInlineStyle(event) {
+    event.preventDefault();
+    var style = event.currentTarget.getAttribute('data-style');
+    setEditorState(RichUtils.toggleInlineStyle(editorState, style));
+  };
+
+  var handleKeyCommand = function handleKeyCommand(command, editorState) {
+    var newEditorState = RichUtils.handleKeyCommand(editorState, command);
+
+    if (newEditorState) {
+      setEditorState(newEditorState);
+      return 'handled';
+    }
+
+    return 'not-handled';
+  };
+
+  var handleOnChange = function handleOnChange(newEditorState) {
+    setEditorState(newEditorState); // This is returning the current plain Value, we will have to see if we will get back the whole
+    // State and then write a parser or how we will manage that
+
+    setValue(name, newEditorState.getCurrentContent().getPlainText("\x01"));
+  }; // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
+
+
+  return __jsx$2g(React.Fragment, null, __jsx$2g("input", {
+    type: "button",
+    value: "B",
+    "data-style": "BOLD",
+    onMouseDown: toggleInlineStyle
+  }), __jsx$2g("input", {
+    type: "button",
+    value: "I",
+    "data-style": "ITALIC",
+    onMouseDown: toggleInlineStyle
+  }), __jsx$2g("input", {
+    type: "button",
+    value: "S",
+    "data-style": "STRIKETHROUGH",
+    onMouseDown: toggleInlineStyle
+  }), __jsx$2g("input", {
+    type: "button",
+    value: "U",
+    "data-style": "UNDERLINE",
+    onMouseDown: toggleInlineStyle
+  }), __jsx$2g(Controller$1, {
+    name: name,
+    control: control,
+    render: function render(props) {
+      return __jsx$2g(Editor, {
+        editorState: editorState,
+        blockStyleFn: myBlockStyleFn,
+        handleKeyCommand: handleKeyCommand,
+        onChange: handleOnChange
+      });
+    }
+  }));
+};
+
+function myBlockStyleFn(contentBlock) {
+  var type = contentBlock.getType();
+
+  if (type === BlockType.BLOCKQUOTE) {
+    // TODO: return the right css according to be applied into the whole block
+    return undefined;
+  }
+}
+
+var __jsx$2h = React.createElement;
 var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       fixed = _ref.fixed;
 
   var renderColumns = function renderColumns() {
     return columns.map(function (column, index) {
-      return __jsx$2f(Column, _extends({
+      return __jsx$2h(Column, _extends({
         align: column.align,
         key: index,
         offset: column.offset
@@ -31217,7 +31415,7 @@ var Footer = function Footer(_ref) {
 
         switch (key) {
           case 'header':
-            return __jsx$2f(StyledHeading$3, {
+            return __jsx$2h(StyledHeading$3, {
               align: value.align,
               content: value.content,
               key: "".concat(value.content).concat(index).concat(i),
@@ -31241,7 +31439,7 @@ var Footer = function Footer(_ref) {
     var align = _ref4.align,
         direction = _ref4.direction,
         items = _ref4.items;
-    return __jsx$2f(StyledList$2, {
+    return __jsx$2h(StyledList$2, {
       align: align,
       direction: direction,
       key: "".concat(items[0]).concat(index),
@@ -31251,12 +31449,12 @@ var Footer = function Footer(_ref) {
           id = _ref5.id,
           name = _ref5.name,
           to = _ref5.to;
-      return __jsx$2f(StyledListItem$1, {
+      return __jsx$2h(StyledListItem$1, {
         key: id
-      }, __jsx$2f(Link, {
+      }, __jsx$2h(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2f(StyledIcon$7, {
+      }, icon && __jsx$2h(StyledIcon$7, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -31267,18 +31465,18 @@ var Footer = function Footer(_ref) {
   var renderText = function renderText(_ref6, index) {
     var align = _ref6.align,
         items = _ref6.items;
-    return __jsx$2f(Fragment$1, {
+    return __jsx$2h(Fragment$1, {
       key: index
     }, items === null || items === void 0 ? void 0 : items.map(function (_ref7, i) {
       var content = _ref7.content,
           icon = _ref7.icon;
-      return __jsx$2f(Fragment$1, {
+      return __jsx$2h(Fragment$1, {
         key: i
-      }, icon && __jsx$2f(StyledIcon$7, {
+      }, icon && __jsx$2h(StyledIcon$7, {
         context: "primary",
         icon: icon,
         prefix: "fad"
-      }), __jsx$2f(StyledText$5, {
+      }), __jsx$2h(StyledText$5, {
         align: align,
         dangerouslySetInnerHTML: {
           __html: content
@@ -31287,10 +31485,10 @@ var Footer = function Footer(_ref) {
     }));
   };
 
-  return __jsx$2f(StyledFooter$2, {
+  return __jsx$2h(StyledFooter$2, {
     "data-cy": "footer",
     fixed: fixed
-  }, __jsx$2f(Container, null, __jsx$2f(Row, null, renderColumns())));
+  }, __jsx$2h(Container, null, __jsx$2h(Row, null, renderColumns())));
 };
 var StyledFooter$2 = styled.div.withConfig({
   displayName: "footer__StyledFooter",
@@ -31380,7 +31578,7 @@ var ForgotDetailsSchema = object$1().shape({
   email: string$1().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
 });
 
-var __jsx$2g = React.createElement;
+var __jsx$2i = React.createElement;
 var ForgotDetails = function ForgotDetails(_ref) {
   var pathLogIn = _ref.pathLogIn,
       showPlaceholder = _ref.showPlaceholder,
@@ -31393,29 +31591,29 @@ var ForgotDetails = function ForgotDetails(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2g(React.Fragment, null, __jsx$2g(PageHeading, {
+  return __jsx$2i(React.Fragment, null, __jsx$2i(PageHeading, {
     center: true,
     heading: "Forgot Details",
     divider: false
-  }), __jsx$2g(Form, {
+  }), __jsx$2i(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2g(FormLabel, {
+  }, __jsx$2i(FormLabel, {
     label: "Email"
-  }, __jsx$2g(FormField, {
+  }, __jsx$2i(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     register: register
-  })), __jsx$2g(Button, {
+  })), __jsx$2i(Button, {
     block: true,
     content: "Send reset link",
     size: "lg",
     type: "submit"
-  }), __jsx$2g(Link, {
+  }), __jsx$2i(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2g(StyledLink$8, null, "Back to Log In"))));
+  }, __jsx$2i(StyledLink$8, null, "Back to Log In"))));
 };
 var StyledLink$8 = styled.span.withConfig({
   displayName: "forgotDetails__StyledLink",
@@ -31438,7 +31636,7 @@ var ForgotDetailsResetSchema = object$1().shape({
   password: string$1().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
 });
 
-var __jsx$2h = React.createElement;
+var __jsx$2j = React.createElement;
 var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
   var _errors$password;
 
@@ -31452,31 +31650,31 @@ var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2h(React.Fragment, null, __jsx$2h(PageHeading, {
+  return __jsx$2j(React.Fragment, null, __jsx$2j(PageHeading, {
     center: true,
     heading: "Set New Password",
     divider: false
-  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2h(Alert, {
+  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2j(Alert, {
     content: errors.password.message,
     context: "warning"
-  }), __jsx$2h(Form, {
+  }), __jsx$2j(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2h(FormLabel, {
+  }, __jsx$2j(FormLabel, {
     label: "Password"
-  }, __jsx$2h(FormField, {
+  }, __jsx$2j(FormField, {
     errors: errors,
     name: "password",
     register: register,
     type: "password"
-  })), __jsx$2h(Button, {
+  })), __jsx$2j(Button, {
     block: true,
     content: "Submit",
     size: "lg",
     type: "submit"
-  }), __jsx$2h(Link, {
+  }), __jsx$2j(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2h(StyledLink$9, null, "Back to Log In"))));
+  }, __jsx$2j(StyledLink$9, null, "Back to Log In"))));
 };
 var StyledLink$9 = styled.span.withConfig({
   displayName: "forgotDetailsReset__StyledLink",
@@ -31490,7 +31688,7 @@ ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 };
 
-var __jsx$2i = React.createElement;
+var __jsx$2k = React.createElement;
 var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var Login = function Login(_ref) {
   var blockSubmitButton = _ref.blockSubmitButton,
@@ -31545,41 +31743,41 @@ var Login = function Login(_ref) {
   // }
 
 
-  return __jsx$2i(React.Fragment, null, __jsx$2i(PageHeading, {
+  return __jsx$2k(React.Fragment, null, __jsx$2k(PageHeading, {
     center: true,
     heading: heading,
     divider: false
-  }), error && __jsx$2i(Alert, {
+  }), error && __jsx$2k(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2i(Form, {
+  }), __jsx$2k(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2i(FormLabel, {
+  }, __jsx$2k(FormLabel, {
     label: "Email"
-  }, __jsx$2i(FormField, {
+  }, __jsx$2k(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2i(FormLabel, {
+  })), __jsx$2k(FormLabel, {
     label: "Password"
-  }, __jsx$2i(FormField, {
+  }, __jsx$2k(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     register: register,
     type: showPass ? 'text' : 'password'
-  })), showPassword && __jsx$2i(ShowPassword, {
+  })), showPassword && __jsx$2k(ShowPassword, {
     onClick: function onClick() {
       return setShowPass(function (prev) {
         return !prev;
       });
     }
-  }, __jsx$2i("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2i("div", {
+  }, __jsx$2k("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2k("div", {
     className: "text-right"
-  }, __jsx$2i(Button, {
+  }, __jsx$2k(Button, {
     align: "right",
     block: blockSubmitButton,
     content: "Log in",
@@ -31587,11 +31785,11 @@ var Login = function Login(_ref) {
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), forgotPassword && __jsx$2i(ForgotPasswordWrapper, null, __jsx$2i(Link, {
+  }), forgotPassword && __jsx$2k(ForgotPasswordWrapper, null, __jsx$2k(Link, {
     to: pathForgot
-  }, "Forgot password?")))), pathSignUp && __jsx$2i(React.Fragment, null, __jsx$2i("p", {
+  }, "Forgot password?")))), pathSignUp && __jsx$2k(React.Fragment, null, __jsx$2k("p", {
     className: "text-center"
-  }, "Don't have an account? ", __jsx$2i(Link, {
+  }, "Don't have an account? ", __jsx$2k(Link, {
     to: pathSignUp
   }, "Apply now!"))));
 };
@@ -31624,22 +31822,22 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2j = React.createElement;
+var __jsx$2l = React.createElement;
 var Message = function Message(_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  return __jsx$2j(Row, {
+  return __jsx$2l(Row, {
     style: {
       position: 'relative'
     }
-  }, type === 'out' && __jsx$2j(Column, {
+  }, type === 'out' && __jsx$2l(Column, {
     sm: 1
-  }, "\xA0"), __jsx$2j(Tail, {
+  }, "\xA0"), __jsx$2l(Tail, {
     type: type
-  }), __jsx$2j(MessageBase, _extends({
+  }), __jsx$2l(MessageBase, _extends({
     prevType: prevType
   }, message, props)));
 };
@@ -31648,7 +31846,7 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2k = React.createElement;
+var __jsx$2m = React.createElement;
 var MessageIcon = function MessageIcon(_ref) {
   var icon = _ref.icon;
   var useIcon = '';
@@ -31667,7 +31865,7 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2k(StyledIcon$8, {
+  return __jsx$2m(StyledIcon$8, {
     fixedWidth: false,
     icon: useIcon,
     prefix: "fad"
@@ -31684,7 +31882,7 @@ MessageIcon.propTypes = {
   icon: propTypes.string
 };
 
-var __jsx$2l = React.createElement;
+var __jsx$2n = React.createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -31707,7 +31905,7 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2l(StyledImage$3, {
+  return icon && __jsx$2n(StyledImage$3, {
     alt: "audience",
     src: icon
   });
@@ -31720,7 +31918,7 @@ MessageTo.propTypes = {
   to: propTypes.string
 };
 
-var __jsx$2m = React.createElement;
+var __jsx$2o = React.createElement;
 var MessageBase = function MessageBase(_ref) {
   var content = _ref.content,
       from = _ref.from,
@@ -31746,43 +31944,43 @@ var MessageBase = function MessageBase(_ref) {
       behavior: 'smooth'
     });
   }, []);
-  return __jsx$2m(Column, {
+  return __jsx$2o(Column, {
     sm: 11,
     columnRef: messageRef
-  }, __jsx$2m(StyledCard$2, {
+  }, __jsx$2o(StyledCard$2, {
     type: type
-  }, __jsx$2m(Row, null, __jsx$2m(Column, {
+  }, __jsx$2o(Row, null, __jsx$2o(Column, {
     sm: 6
-  }, __jsx$2m(MessageIcon, {
+  }, __jsx$2o(MessageIcon, {
     icon: icon
-  }), __jsx$2m(MessageTo, {
+  }), __jsx$2o(MessageTo, {
     to: to
-  }), __jsx$2m(StyledTime, null, time)), __jsx$2m(Column, {
+  }), __jsx$2o(StyledTime, null, time)), __jsx$2o(Column, {
     sm: 6
-  }, __jsx$2m(StyledFrom, null, from))), __jsx$2m(Row, null, pictureId && __jsx$2m(Column, {
+  }, __jsx$2o(StyledFrom, null, from))), __jsx$2o(Row, null, pictureId && __jsx$2o(Column, {
     sm: 2
-  }, __jsx$2m(Image$1, {
+  }, __jsx$2o(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2m(Column, {
+  })), __jsx$2o(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2m(StyledReply, null, reply), __jsx$2m(StyledContent$4, {
+  }, __jsx$2o(StyledReply, null, reply), __jsx$2o(StyledContent$4, {
     seeMore: seeMore
   }, content && content.split('\n').map(function (item, key) {
-    return __jsx$2m("span", {
+    return __jsx$2o("span", {
       key: key
-    }, item, __jsx$2m("br", null));
-  })), more && __jsx$2m(StyledCollapse, {
+    }, item, __jsx$2o("br", null));
+  })), more && __jsx$2o(StyledCollapse, {
     onClick: function onClick() {
       return setSeeMore(!seeMore);
     }
-  }, seeMore ? __jsx$2m(React.Fragment, null, __jsx$2m("span", null, "Close"), __jsx$2m(Icon, {
+  }, seeMore ? __jsx$2o(React.Fragment, null, __jsx$2o("span", null, "Close"), __jsx$2o(Icon, {
     icon: "chevron-up"
-  })) : __jsx$2m(React.Fragment, null, __jsx$2m("span", null, "See more"), __jsx$2m(Icon, {
+  })) : __jsx$2o(React.Fragment, null, __jsx$2o("span", null, "See more"), __jsx$2o(Icon, {
     icon: "chevron-down"
-  })))), !type && __jsx$2m(Column, {
+  })))), !type && __jsx$2o(Column, {
     sm: 1
-  }, __jsx$2m(Icon, {
+  }, __jsx$2o(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
   })))));
@@ -31846,7 +32044,7 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2n = React.createElement;
+var __jsx$2p = React.createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -31856,15 +32054,15 @@ var MessagingContainer = function MessagingContainer(_ref) {
       onSearch = _ref.onSearch,
       onSubmit = _ref.onSubmit,
       style = _ref.style;
-  return __jsx$2n(React.Fragment, null, __jsx$2n(MessagingSearch, {
+  return __jsx$2p(React.Fragment, null, __jsx$2p(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2n(StyledContainer$7, {
+  }), __jsx$2p(StyledContainer$7, {
     className: className,
     style: style
-  }, __jsx$2n(MessageList, {
+  }, __jsx$2p(MessageList, {
     messages: messages
-  })), __jsx$2n(MessagingSend, {
+  })), __jsx$2p(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: onSubmit,
     maxLength: maxLength
@@ -31885,11 +32083,11 @@ MessagingContainer.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$2o = React.createElement;
+var __jsx$2q = React.createElement;
 var MessageList = function MessageList(_ref) {
   var messages = _ref.messages;
   return messages.map(function (message, index) {
-    return __jsx$2o(Message, {
+    return __jsx$2q(Message, {
       message: message,
       key: index,
       prevType: message.type,
@@ -31902,7 +32100,7 @@ MessageList.propTypes = {
   messages: propTypes.array.isRequired
 };
 
-var __jsx$2p = React.createElement;
+var __jsx$2r = React.createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -31932,18 +32130,18 @@ var MessagingSearch = function MessagingSearch(_ref) {
     onSearch(data.query);
   };
 
-  return __jsx$2p(StyledContainer$8, null, __jsx$2p(Form, {
+  return __jsx$2r(StyledContainer$8, null, __jsx$2r(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2p(Row, null, __jsx$2p(Column, {
+  }, __jsx$2r(Row, null, __jsx$2r(Column, {
     md: 6
-  }, __jsx$2p(StyledSearch, {
+  }, __jsx$2r(StyledSearch, {
     errors: errors,
     prependSearchIcon: true,
     placeholder: placeholder,
     register: register
-  })), __jsx$2p(Column, {
+  })), __jsx$2r(Column, {
     md: 6
-  }, __jsx$2p(StyledSelect$1, {
+  }, __jsx$2r(StyledSelect$1, {
     change: onFilter,
     id: "messagingFilter",
     options: Items
@@ -31970,7 +32168,7 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2q = React.createElement;
+var __jsx$2s = React.createElement;
 var MessagingSend = function MessagingSend(_ref) {
   var audienceItems = _ref.audienceItems,
       onSubmit = _ref.onSubmit,
@@ -32028,27 +32226,27 @@ var MessagingSend = function MessagingSend(_ref) {
     setValue('message', '');
   };
 
-  return __jsx$2q(React.Fragment, null, open && __jsx$2q(StyledPickerContainer, null, __jsx$2q(EmojiMart, {
+  return __jsx$2s(React.Fragment, null, open && __jsx$2s(StyledPickerContainer, null, __jsx$2s(EmojiMart, {
     handleOpenPicker: handleOpenPicker,
     handleSelect: handleEmojiSelect,
     open: open
-  })), __jsx$2q(StyledContainer$9, {
+  })), __jsx$2s(StyledContainer$9, {
     audience: audience
-  }, __jsx$2q(StyledForm$1, {
+  }, __jsx$2s(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, audience && __jsx$2q(StyledDropDown, {
+  }, audience && __jsx$2s(StyledDropDown, {
     items: audienceItems,
     position: "top",
     onChange: function onChange(item) {
       return setAudience(item);
     }
-  }, audience.name), __jsx$2q(StyledTextarea$1, {
+  }, audience.name), __jsx$2s(StyledTextarea$1, {
     register: register,
     name: "message",
     maxLength: maxLength,
     placeholder: "Write message",
     rows: 1
-  }), __jsx$2q("input", {
+  }), __jsx$2s("input", {
     ref: fileInputRef,
     type: "file",
     multiple: true,
@@ -32056,19 +32254,19 @@ var MessagingSend = function MessagingSend(_ref) {
     style: {
       display: 'none'
     }
-  }), __jsx$2q(StyledElements, null, __jsx$2q(StyledIcon$9, {
+  }), __jsx$2s(StyledElements, null, __jsx$2s(StyledIcon$9, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2q(StyledIcon$9, {
+  }), __jsx$2s(StyledIcon$9, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
       return setOpen(!open);
     },
     size: "2x"
-  }), __jsx$2q(Button, {
+  }), __jsx$2s(Button, {
     content: "Send",
     context: "info",
     size: "md",
@@ -32140,7 +32338,7 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var __jsx$2r = React.createElement;
+var __jsx$2t = React.createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -32158,34 +32356,34 @@ var PasswordChange = function PasswordChange(_ref) {
 
   var submit = function submit(data) {};
 
-  return __jsx$2r(React.Fragment, null, __jsx$2r(PageHeading, {
+  return __jsx$2t(React.Fragment, null, __jsx$2t(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2r(Alert, {
+  }), error && __jsx$2t(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2r(Form, {
+  }), __jsx$2t(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2r(FormLabel, {
+  }, __jsx$2t(FormLabel, {
     label: "Old password"
-  }, __jsx$2r(FormField, {
+  }, __jsx$2t(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2r(FormLabel, {
+  })), __jsx$2t(FormLabel, {
     label: "New password"
-  }, __jsx$2r(FormField, {
+  }, __jsx$2t(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2r(FormLabel, {
+  })), __jsx$2t(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2r(FormField, {
+  }, __jsx$2t(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -32194,7 +32392,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2r(Button, {
+  })), __jsx$2t(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -32207,7 +32405,7 @@ PasswordChange.propTypes = {
   showPlaceholder: propTypes.bool
 };
 
-var __jsx$2s = React.createElement;
+var __jsx$2u = React.createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -32234,13 +32432,13 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2s(React.Fragment, null, __jsx$2s(DatePickerInput, {
+    return __jsx$2u(React.Fragment, null, __jsx$2u(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2s(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2u(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
   var _useContext = useContext(UserContext),
@@ -32288,55 +32486,55 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2s(Form, {
+  return __jsx$2u(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2s(Alert, {
+  }, error && __jsx$2u(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2s(FormLabel, {
+  }), __jsx$2u(FormLabel, {
     label: "First name"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2u(FormLabel, {
     label: "Last name"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2u(FormLabel, {
     label: "Email"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2u(FormLabel, {
     label: "Password"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2s(FormLabel, {
+  }))), __jsx$2u(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2s(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2s(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2u(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2s(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2u(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2s(Button, {
+  })), __jsx$2u(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2s(StyledLink$a, null, "Already have an account? ", __jsx$2s(Link, {
+  }), __jsx$2u(StyledLink$a, null, "Already have an account? ", __jsx$2u(Link, {
     to: pathLogin
   }, "Log in")));
 };
@@ -32366,7 +32564,24 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2t = React.createElement;
+var __jsx$2v = React.createElement;
+
+var ArticleLayout = function ArticleLayout(_ref) {
+  var children = _ref.children,
+      frontMatter = _ref.frontMatter;
+  // const meta = {
+  //   canonical: `blog/${frontMatter.slug}`,
+  //   description: frontMatter.description,
+  //   title: frontMatter.title
+  // }
+  return __jsx$2v(Container, null, __jsx$2v(Row, null, __jsx$2v(Column, {
+    md: 12
+  }, __jsx$2v(Article, {
+    article: frontMatter
+  }))));
+};
+
+var __jsx$2w = React.createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -32375,10 +32590,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2t(React.Fragment, null, __jsx$2t(Navigation, null), children, footer && __jsx$2t(Footer, {
+  return __jsx$2w(React.Fragment, null, __jsx$2w(Navigation, null), children, footer && __jsx$2w(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2t(Copyright, {
+  }), copyright && __jsx$2w(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -32397,7 +32612,7 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2u = React.createElement;
+var __jsx$2x = React.createElement;
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -32418,16 +32633,16 @@ var Dashboard = function Dashboard(_ref) {
 
   var mergedMeta = _objectSpread$c(_objectSpread$c({}, defaultMeta), meta);
 
-  return __jsx$2u(React.Fragment, null, __jsx$2u(Suspense$1, {
-    fallback: __jsx$2u(PageLoading, {
-      indicator: __jsx$2u(LdsSpinner, null)
+  return __jsx$2x(React.Fragment, null, __jsx$2x(Suspense$1, {
+    fallback: __jsx$2x(PageLoading, {
+      indicator: __jsx$2x(LdsSpinner, null)
     })
-  }, __jsx$2u(React.Fragment, null, __jsx$2u(Page, {
+  }, __jsx$2x(React.Fragment, null, __jsx$2x(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2u(Alert, {
+  }), message && __jsx$2x(Alert, {
     content: message,
     context: context
   }))));
@@ -32452,7 +32667,7 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2v = React.createElement;
+var __jsx$2y = React.createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
@@ -32463,13 +32678,13 @@ var Page = function Page(_ref) {
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2v(StyledPage, null, meta && __jsx$2v(MetaHead, {
+  return __jsx$2y(StyledPage, null, meta && __jsx$2y(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2v(Container, {
+  }), __jsx$2y(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2v(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$2y(PageHeading, pageHeading), children));
 };
 var StyledPage = styled.div.withConfig({
   displayName: "page__StyledPage",
@@ -32492,7 +32707,42 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$2w = React.createElement;
+var __jsx$2z = React.createElement;
+var SidebarLayout = function SidebarLayout(_ref) {
+  var brand = _ref.brand,
+      children = _ref.children,
+      copyright = _ref.copyright,
+      footer = _ref.footer,
+      Navigation = _ref.Navigation;
+
+  var _useContext = useContext(ConfigContext),
+      Sidebar = _useContext.Sidebar;
+
+  return __jsx$2z(Container, {
+    fluid: true
+  }, __jsx$2z(Row, null, __jsx$2z(Column, {
+    md: 2
+  }, __jsx$2z(Sidebar, null)), __jsx$2z(Column, {
+    md: 10,
+    style: {
+      padding: 0
+    }
+  }, __jsx$2z(Bootstrap, {
+    brand: brand,
+    copyright: copyright,
+    footer: footer,
+    Navigation: Navigation
+  }, children))));
+};
+SidebarLayout.propTypes = {
+  brand: propTypes.string,
+  children: propTypes.node.isRequired,
+  copyright: propTypes.array,
+  footer: propTypes.array,
+  navigation: propTypes.func
+};
+
+var __jsx$2A = React.createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -32505,7 +32755,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$2w(React.Fragment, null, iFrame && __jsx$2w("iframe", {
+  return __jsx$2A(React.Fragment, null, iFrame && __jsx$2A("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -32516,7 +32766,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$2w("div", {
+  }), !iFrame && __jsx$2A("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -32527,10 +32777,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$2w("blockquote", {
+  }, __jsx$2A("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$2w("a", {
+  }, __jsx$2A("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -32559,7 +32809,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$2x = React.createElement;
+var __jsx$2B = React.createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -32567,7 +32817,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$2x(React.Fragment, null, iFrame && __jsx$2x("iframe", {
+  return __jsx$2B(React.Fragment, null, iFrame && __jsx$2B("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -32578,13 +32828,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$2x("div", {
+  }), !iFrame && __jsx$2B("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$2x("a", {
+  }, __jsx$2B("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -32605,7 +32855,7 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$2y = React.createElement;
+var __jsx$2C = React.createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
@@ -32617,7 +32867,7 @@ var Typeform = function Typeform(_ref) {
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$2y("div", {
+  return __jsx$2C("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -32657,34 +32907,34 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$2z = React.createElement;
+var __jsx$2D = React.createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2z(StyledArticle, {
+  return __jsx$2D(StyledArticle, {
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article"
-  }, __jsx$2z("header", null, __jsx$2z(StyledImage$4, {
+  }, __jsx$2D("header", null, __jsx$2D(StyledImage$4, {
     alt: article.heading,
     slant: true,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), __jsx$2z(Breadcrumb, {
+  }), __jsx$2D(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && __jsx$2z(BlogCategory, {
+  }), config && __jsx$2D(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$2z(StyledHeading$4, {
+  }), __jsx$2D(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$2z(BlogDetails, {
+  }), facebook && __jsx$2D(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$2z("span", {
+  })), __jsx$2D("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
@@ -32805,7 +33055,20 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$2A = React.createElement;
+var __jsx$2E = React.createElement;
+var Error404 = function Error404() {
+  var meta = {
+    description: "\n      DryKISS is a full service internet and mobile digital production house.\n      Our services span consulting, strategy; planning; development; testing\n      and analytics.\n    ",
+    path: '/404',
+    title: 'DryKISS develops hybrid mobile and responsive websites'
+  };
+  return __jsx$2E(Page, {
+    heading: "404 ERROR PAGE \u2013 NOT FOUND",
+    meta: meta
+  }, __jsx$2E("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
+};
+
+var __jsx$2F = React.createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -32821,46 +33084,47 @@ var BlogCard = function BlogCard(_ref) {
     as: "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$2A("article", {
+  return __jsx$2F("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$2A(Card, {
+  }, __jsx$2F(Card, {
     shadow: true
-  }, __jsx$2A(Link, {
+  }, __jsx$2F(Link, {
     to: articleLink
-  }, __jsx$2A(CardImage, {
+  }, __jsx$2F(CardImage, {
     alt: heading,
     src: "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$2A(StyledCardBody, {
+  })), __jsx$2F(StyledCardBody, {
     type: type
-  }, type === 'normal' && __jsx$2A(BlogCategory, {
+  }, type === 'normal' && __jsx$2F(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$2A(StyledContent$5, {
+  }), __jsx$2F(StyledContent$5, {
     type: type
-  }, __jsx$2A(Link, {
+  }, __jsx$2F(Link, {
     to: articleLink
-  }, __jsx$2A(StyledHeading$5, {
+  }, __jsx$2F(StyledHeading$5, {
     content: heading,
     tag: "h1",
+    noWrap: true,
     type: type
-  })), type === 'normal' && __jsx$2A("p", {
+  })), type === 'normal' && __jsx$2F("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$2A(React.Fragment, null, article.tags && __jsx$2A(TagsContainer, null, __jsx$2A(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$2F(React.Fragment, null, article.tags && __jsx$2F(TagsContainer, null, __jsx$2F(BlogTags, {
     tags: article.tags
-  })), __jsx$2A(Divider, {
+  })), __jsx$2F(Divider, {
     size: "sm"
-  }), __jsx$2A(BlogCategory, {
+  }), __jsx$2F(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), __jsx$2A(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2A(Link, {
+  }), __jsx$2F(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2F(Link, {
     to: articleLink
-  }, __jsx$2A(StyledButton$8, {
+  }, __jsx$2F(StyledButton$8, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
@@ -32917,7 +33181,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$2B = React.createElement;
+var __jsx$2G = React.createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -32942,10 +33206,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$2B("section", null, _find().map(function (articles, index) {
-    return __jsx$2B(Fragment$1, {
+  return __jsx$2G("section", null, _find().map(function (articles, index) {
+    return __jsx$2G(Fragment$1, {
       key: index
-    }, __jsx$2B(Link, {
+    }, __jsx$2G(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -32955,14 +33219,14 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$2B(StyledHeading$6, {
+    }, __jsx$2G(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$2B(Row, null, articles.map(function (article, index) {
-      return __jsx$2B(Column, {
+    })), __jsx$2G(Row, null, articles.map(function (article, index) {
+      return __jsx$2G(Column, {
         key: index,
         md: 6
-      }, __jsx$2B(BlogCard, {
+      }, __jsx$2G(BlogCard, {
         article: article,
         config: config
       }));
@@ -32978,17 +33242,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$2C = React.createElement;
+var __jsx$2H = React.createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$2C(StyledCategory, {
+  return __jsx$2H(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$2C(Link, {
+  }, __jsx$2H(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -33014,58 +33278,58 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2D = React.createElement;
+var __jsx$2I = React.createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2D(StyledArticleDetails, null, __jsx$2D(Divider, {
+  return __jsx$2I(StyledArticleDetails, null, __jsx$2I(Divider, {
     size: "sm"
-  }), __jsx$2D(List, {
+  }), __jsx$2I(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$2D(ListItem, {
+  }, __jsx$2I(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2D(StyledIcon$a, {
+  }, __jsx$2I(StyledIcon$a, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$2D(Date$1, {
+  }), __jsx$2I(Date$1, {
     date: article.date
-  })), __jsx$2D(ListItem, {
+  })), __jsx$2I(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2D(StyledIcon$a, {
+  }, __jsx$2I(StyledIcon$a, {
     context: "dark",
     icon: "user"
-  }), __jsx$2D(BlogCategory, {
+  }), __jsx$2I(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$2D(ListItem, {
+  })), __jsx$2I(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2D(StyledIcon$a, {
+  }, __jsx$2I(StyledIcon$a, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$2D(BlogReadTime, {
+  }), __jsx$2I(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$2D(BlogTags, {
+  }))), article.tags && __jsx$2I(BlogTags, {
     tags: article.tags
-  }), __jsx$2D(Divider, {
+  }), __jsx$2I(Divider, {
     size: "sm"
-  }), __jsx$2D(StyledShare, null, __jsx$2D(StyledShareText, null, "Share this article"), __jsx$2D(FacebookShareButton, {
+  }), __jsx$2I(StyledShare, null, __jsx$2I(StyledShareText, null, "Share this article"), __jsx$2I(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$2D(Divider, {
+  })), __jsx$2I(Divider, {
     size: "sm"
   }));
 };
@@ -33098,7 +33362,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$2E = React.createElement;
+var __jsx$2J = React.createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33113,16 +33377,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$2E(Column, {
+    return __jsx$2J(Column, {
       md: 12 / number
-    }, __jsx$2E(BlogCard, {
+    }, __jsx$2J(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$2E(Row, null, renderHero());
+  return __jsx$2J(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -33133,7 +33397,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$2F = React.createElement;
+var __jsx$2K = React.createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -33161,11 +33425,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$2F(Row, null, _find().map(function (article, index) {
-    return __jsx$2F(Column, {
+  return __jsx$2K(Row, null, _find().map(function (article, index) {
+    return __jsx$2K(Column, {
       key: index,
       md: 6
-    }, __jsx$2F(BlogCard, {
+    }, __jsx$2K(BlogCard, {
       article: article,
       config: config
     }));
@@ -33179,31 +33443,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$2G = React.createElement;
+var __jsx$2L = React.createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$2G("span", null, "Read time: ", time, " min(s)");
+  return __jsx$2L("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$2H = React.createElement;
+var __jsx$2M = React.createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$2H(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$2M(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$2H(Fragment$1, {
+    return __jsx$2M(Fragment$1, {
       key: index
-    }, __jsx$2H(StyledDt, null, __jsx$2H(Badge, {
+    }, __jsx$2M(StyledDt, null, __jsx$2M(Badge, {
       content: badge
-    })), __jsx$2H(StyledDd, null, __jsx$2H(Link, {
+    })), __jsx$2M(StyledDd, null, __jsx$2M(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -33216,7 +33480,7 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$2H(StyledA$1, null, name))));
+    }, __jsx$2M(StyledA$1, null, name))));
   }));
 };
 var StyledDl = styled.dl.withConfig({
@@ -33246,16 +33510,16 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$2I = React.createElement;
+var __jsx$2N = React.createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$2I(StyledSection, null, heading && __jsx$2I(React.Fragment, null, __jsx$2I(StyledHeading$7, {
+  return __jsx$2N(StyledSection, null, heading && __jsx$2N(React.Fragment, null, __jsx$2N(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$2I(Divider, {
+  }), __jsx$2N(Divider, {
     size: "sm"
   })), children);
 };
@@ -33272,7 +33536,7 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$2J = React.createElement;
+var __jsx$2O = React.createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33309,9 +33573,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2J(BlogSection, {
+  return __jsx$2O(BlogSection, {
     heading: "Archive"
-  }, __jsx$2J(BlogList, {
+  }, __jsx$2O(BlogList, {
     config: config,
     list: list
   }));
@@ -33325,7 +33589,7 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$2K = React.createElement;
+var __jsx$2P = React.createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33364,9 +33628,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2K(BlogSection, {
+  return __jsx$2P(BlogSection, {
     heading: "Author"
-  }, __jsx$2K(BlogList, {
+  }, __jsx$2P(BlogList, {
     config: config,
     author: true,
     list: list
@@ -33381,7 +33645,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$2L = React.createElement;
+var __jsx$2Q = React.createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -33420,35 +33684,35 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$2L(BlogSection, null, __jsx$2L(StyledContainer$a, {
+  return __jsx$2Q(BlogSection, null, __jsx$2Q(StyledContainer$a, {
     colour: colour
-  }, __jsx$2L(StyledForm$2, {
+  }, __jsx$2Q(StyledForm$2, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2L(FormLabel, {
+  }, __jsx$2Q(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$2L(InputGroup, null, __jsx$2L(FormField, {
+  }, __jsx$2Q(InputGroup, null, __jsx$2Q(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$2L(InputGroupAddon, null, __jsx$2L(Button, {
+  }), __jsx$2Q(InputGroupAddon, null, __jsx$2Q(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$2L(FormError, {
+  })), errors.postCode && __jsx$2Q(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$2L("div", {
+  }), msg && __jsx$2Q("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$2L(Link, {
+  }, msg)))), __jsx$2Q(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$2L(StyledA$2, null, "Deliveroo ", __jsx$2L(Icon, {
+  }, __jsx$2Q(StyledA$2, null, "Deliveroo ", __jsx$2Q(Icon, {
     icon: "external-link"
   })))));
 };
@@ -33573,13 +33837,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$2M = React.createElement;
+var __jsx$2R = React.createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$2M(BlogSection, {
+  return __jsx$2R(BlogSection, {
     heading: "Media"
-  }, __jsx$2M(BlogList, {
+  }, __jsx$2R(BlogList, {
     config: config,
     list: media
   }));
@@ -33589,13 +33853,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$2N = React.createElement;
+var __jsx$2S = React.createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$2N(BlogSection, {
+  return __jsx$2S(BlogSection, {
     heading: "Promo"
-  }, __jsx$2N(Image$1, {
+  }, __jsx$2S(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -33605,7 +33869,7 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2O = React.createElement;
+var __jsx$2T = React.createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33634,9 +33898,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$2O(BlogSection, {
+  return __jsx$2T(BlogSection, {
     heading: "Recent"
-  }, __jsx$2O(BlogList, {
+  }, __jsx$2T(BlogList, {
     config: config,
     list: list
   }));
@@ -33650,7 +33914,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$2P = React.createElement;
+var __jsx$2U = React.createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33659,22 +33923,22 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$2P(StyledAside$1, null, findFood && __jsx$2P(BlogFindFood, null), media && __jsx$2P(BlogMedia, {
+  return __jsx$2U(StyledAside$1, null, findFood && __jsx$2U(BlogFindFood, null), media && __jsx$2U(BlogMedia, {
     media: media
-  }), __jsx$2P(BlogSocial, {
+  }), __jsx$2U(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$2P(BlogPromo, {
+  }), promo && __jsx$2U(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$2P(BlogRecent, {
+  }), __jsx$2U(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$2P(BlogTagCloud, {
+  }), tags && __jsx$2U(BlogTagCloud, {
     articles: articles
-  }), __jsx$2P(BlogArchive, {
+  }), __jsx$2U(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$2P(BlogAuthor, {
+  }), __jsx$2U(BlogAuthor, {
     articles: articles,
     config: config
   }));
@@ -33696,20 +33960,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$2Q = React.createElement;
+var __jsx$2V = React.createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$2Q(React.Fragment, null, facebook && __jsx$2Q(BlogSection, {
+  return __jsx$2V(React.Fragment, null, facebook && __jsx$2V(BlogSection, {
     heading: "Facebook"
-  }, __jsx$2Q(FacebookPagePlugin, {
+  }, __jsx$2V(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$2Q(BlogSection, {
+  })), instagram && __jsx$2V(BlogSection, {
     heading: "Instagram"
-  }, __jsx$2Q("iframe", {
+  }, __jsx$2V("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -33717,7 +33981,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$2Q(BlogSection, {
+  })), twitter && __jsx$2V(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -33731,7 +33995,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$2R = React.createElement;
+var __jsx$2W = React.createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -33804,7 +34068,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$2R(BlogSection, {
+  return __jsx$2W(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -33863,7 +34127,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$2S = React.createElement;
+var __jsx$2X = React.createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -33877,7 +34141,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$2S(Badge, {
+      return __jsx$2X(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -33887,7 +34151,7 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$2S("div", null, tagMap());
+  return __jsx$2X("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
@@ -34017,7 +34281,7 @@ var Api = function Api() {
  */
 var UserContext = /*#__PURE__*/createContext();
 
-var __jsx$2T = React.createElement;
+var __jsx$2Y = React.createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
@@ -34208,7 +34472,7 @@ var UserProvider = function UserProvider(_ref) {
     return true;
   };
 
-  return !isLoading && __jsx$2T(UserContext.Provider, {
+  return !isLoading && __jsx$2Y(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -34227,7 +34491,7 @@ var UserProvider = function UserProvider(_ref) {
  */
 var AuthorizationContext = /*#__PURE__*/createContext();
 
-var __jsx$2U = React.createElement;
+var __jsx$2Z = React.createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
@@ -34314,7 +34578,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$2U(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$2Z(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -34327,11 +34591,9 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
  */
 var ConfigContext = /*#__PURE__*/createContext();
 
-var __jsx$2V = React.createElement;
-// import { Config } from 'config'
-
+var __jsx$2_ = React.createElement;
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$2V(ConfigContext.Provider, _extends({
+  return __jsx$2_(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -34750,7 +35012,7 @@ var InternationalisationContext = /*#__PURE__*/createContext({
   }
 });
 
-var __jsx$2W = React.createElement;
+var __jsx$2$ = React.createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
@@ -34786,7 +35048,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$2W(InternationalisationContext.Provider, {
+  return __jsx$2$(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -34835,7 +35097,7 @@ var getInitialLocale = function getInitialLocale() {
  */
 var NotificationsContext = /*#__PURE__*/createContext();
 
-var __jsx$2X = React.createElement;
+var __jsx$30 = React.createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -34855,7 +35117,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$2X(NotificationsContext.Provider, {
+  return __jsx$30(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -37886,7 +38148,7 @@ var useNotifications = function useNotifications(url) {
  */
 var OffCanvasContext = /*#__PURE__*/createContext();
 
-var __jsx$2Y = React.createElement;
+var __jsx$31 = React.createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
@@ -37930,12 +38192,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$2Y(OffCanvasContext.Provider, {
+  return __jsx$31(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$2Y(OffCanvas, {
+  }, children, __jsx$31(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -37952,7 +38214,7 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$2Y(StyledWrapper$2, {
+    return __jsx$31(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
@@ -37966,7 +38228,7 @@ var StyledWrapper$2 = styled.div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$2Z = React.createElement;
+var __jsx$32 = React.createElement;
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -37999,7 +38261,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$2Z(React.Fragment, null, __jsx$2Z(ThemeStyle, null), user && __jsx$2Z(UserProvider, null, __jsx$2Z(AuthorizationProvider, null, __jsx$2Z(InternationalisationProvider, null, __jsx$2Z(NotificationsProvider, null, offCanvas ? __jsx$2Z(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$32(React.Fragment, null, __jsx$32(ThemeStyle, null), user && __jsx$32(UserProvider, null, __jsx$32(AuthorizationProvider, null, __jsx$32(InternationalisationProvider, null, __jsx$32(NotificationsProvider, null, offCanvas ? __jsx$32(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -38007,9 +38269,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$2Z(React.Fragment, null, __jsx$2Z(ConfigProvider, {
+      return __jsx$32(React.Fragment, null, __jsx$32(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$2Z(ApolloProvider, {
+      }, apolloClient ? __jsx$32(ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -38022,14 +38284,14 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$2Z(Layout, null, pageProgressBar && __jsx$2Z(PageProgressBar, {
+      return __jsx$32(Layout, null, pageProgressBar && __jsx$32(PageProgressBar, {
         router: router
-      }), __jsx$2Z(Component, pageProps));
+      }), __jsx$32(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$2Z(ThemeProvider, {
+      return __jsx$32(ThemeProvider, {
         theme: merge$1(Theme, this.props.theme)
       }, this.data());
     }
@@ -38059,5 +38321,5 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, BarChart, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, ControlTypes, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
+export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, ControlTypes, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
 //# sourceMappingURL=industry-ui.es.js.map

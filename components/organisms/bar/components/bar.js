@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { BarConfig, Icon, StyledText } from 'components'
+import { BarConfig, Icon } from 'components'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -24,6 +24,7 @@ export const Bar = ({
   const toggleOpen = () => {
     setIsOpen(!IsOpen)
   }
+
   return (
     <>
       <StyledBarWrapper
@@ -45,8 +46,10 @@ export const Bar = ({
         >
           <Icon icon='user' size='1x' prefix='fas' />
         </OpenButton>
+
         {children}
       </StyledBarWrapper>
+
       <StyledOverlay
         onClick={toggleOpen}
         open={IsOpen}
@@ -57,6 +60,7 @@ export const Bar = ({
     </>
   )
 }
+
 const OpenButton = styled.div`
   border-radius: 0.25rem;
   cursor: pointer;
@@ -94,6 +98,7 @@ const OpenButton = styled.div`
       }
     `}
 `
+
 const StyledOverlay = styled.div`
   transition: ${({ theme, placement }) => css`
   opacity ${theme.BAR.transitionDuration} ${theme.BAR.transitionTiming},
@@ -120,16 +125,17 @@ const StyledOverlay = styled.div`
       ${placement}: 0;
     `}
 `
+
 const StyledBarWrapper = styled.div`
   align-items: center;
   background-color: ${({ background, theme }) => (theme ? theme.COLOUR[background] : 'white')};
-  box-shadow:${({ flat }) => !flat && ' 0px 4px 4px rgba(0, 0, 0, 0.25)'};
+  box-shadow: ${({ flat }) => !flat && ' 0px 4px 4px rgba(0, 0, 0, 0.25)'};
   display: flex;
   flex-direction: column;
   height: 100%;
-  position:relative;
+  position: relative;
   transition-duration: ${({ theme }) => theme.BAR.transitionDuration};
-  transition-property: left ,opacity, right, width;
+  transition-property: left, opacity, right, width;
   transition-timing-function: ${({ theme }) => theme.BAR.transitionTiming};
 
   ${({ minSize, open, placement, theme, width }) =>
@@ -172,14 +178,6 @@ const StyledBarWrapper = styled.div`
       : css`
           float: ${placement};
         `}
-  /* ${({ open, placement }) =>
-    !open &&
-    (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
-    css`
-      ${StyledText} {
-        display: none;
-      }
-    `} */
 `
 
 Bar.propTypes = {}
