@@ -2,9 +2,6 @@
  * Draft JS
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 import Readme from '../README.md'

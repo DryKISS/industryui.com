@@ -2,14 +2,11 @@
  * Button - Toolbar
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { Align, Size, Wrapper } from 'decorators'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Button, ButtonToolbar, Icon } from 'components'
+import { ALIGN, arrayOfValues, ControlTypes, Button, ButtonToolbar, Icon, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -23,27 +20,32 @@ export default {
   }
 }
 
-const Children = () => {
+const Children = ({ size }) => {
   return (
     <>
-      <Button as='a' data-tip='Button' context='primary' key={1} onClick={() => {}} size={Size()}>
-        <Icon icon='edit' prefix='fad' style={{ pointerEvents: 'none' }} />
+      <Button as='a' data-tip='Button' context='primary' key={1} onClick={() => {}} size={size}>
+        <Icon icon='user' prefix='fas' style={{ pointerEvents: 'none' }} />
       </Button>
-      <Button as='a' data-tip='Button' context='warning' key={2} onClick={() => {}} size={Size()}>
-        <Icon icon='trash' prefix='fad' style={{ pointerEvents: 'none' }} />
+      <Button as='a' data-tip='Button' context='warning' key={2} onClick={() => {}} size={size}>
+        <Icon icon='trash' prefix='fas' style={{ pointerEvents: 'none' }} />
       </Button>
     </>
   )
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    align: Align(),
-    children: Children(),
-    ...props
-  }
-
-  return <ButtonToolbar {...defaultProps} />
+const BaseComponent = ({ ...args }) => {
+  return (
+    <ButtonToolbar {...args}>
+      <Children size={args.size} />
+    </ButtonToolbar>
+  )
 }
-
-export const main = () => <BaseComponent />
+export const buttonToolbar = BaseComponent.bind({})
+buttonToolbar.args = {
+  align: ALIGN.Start,
+  size: SIZE.MD
+}
+buttonToolbar.argTypes = {
+  align: { control: { type: ControlTypes.Select, options: arrayOfValues(ALIGN) } },
+  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
+}

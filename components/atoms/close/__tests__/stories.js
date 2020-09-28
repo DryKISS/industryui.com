@@ -2,9 +2,6 @@
  * CLose
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { Context, Wrapper } from 'decorators'

@@ -23,4 +23,4 @@ export default {
   }
 }
 
-export const main = () => <Date date='19th Sept 1974' />
+export const main = () => <Date date='24 Feb 2020 08:36' />

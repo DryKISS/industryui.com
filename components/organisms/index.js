@@ -1,6 +1,7 @@
 /**
  * Organisms
  */
+export * from './bar'
 export * from './calendar'
 export * from './colorPicker/colorPicker'
 export * from './emailChange'

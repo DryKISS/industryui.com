@@ -3,6 +3,7 @@
  */
 export * from './align'
 export * from './context'
+export * from './contextArray'
 export * from './size'
-export * from './position'
 export * from './sizeArray'
+export * from './position'

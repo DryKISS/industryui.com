@@ -3,8 +3,6 @@
  * Places the navbar in a container
  */
 
-// React
-import React from 'react'
 import { node } from 'prop-types'
 
 // UI

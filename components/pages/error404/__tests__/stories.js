@@ -2,9 +2,6 @@
  * Error404
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { Wrapper } from 'decorators'
 

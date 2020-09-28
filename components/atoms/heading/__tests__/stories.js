@@ -6,11 +6,10 @@
 import React from 'react'
 
 // Storybook
-import { text } from '@storybook/addon-knobs'
-import { Context, Wrapper } from 'decorators'
+import { Wrapper } from 'decorators'
 
 // UI
-import { Heading } from 'components'
+import { arrayOfValues, CONTEXT, ControlTypes, Heading } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -26,31 +25,44 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    content: text('Button text', 'Heading Text'),
-    context: Context(null, 'black'),
+    // content: text('Button text', 'Heading Text'),
+    // context: Context(null, 'black'),
     ...props
   }
 
   return <Heading {...defaultProps} />
 }
 
-export const main = () => {
+const main = ({ ...args }) => {
+  const HProps = { ...args }
   return (
     <>
       H1
-      <BaseComponent tag='h1' />
+      <BaseComponent tag='h1' {...HProps} />
       H2
-      <BaseComponent tag='h2' />
+      <BaseComponent tag='h2' {...HProps} />
       H3
-      <BaseComponent tag='h3' />
+      <BaseComponent tag='h3' {...HProps} />
       H4
-      <BaseComponent tag='h4' />
+      <BaseComponent tag='h4' {...HProps} />
       H5
-      <BaseComponent tag='h5' />
+      <BaseComponent tag='h5' {...HProps} />
       H6
-      <BaseComponent tag='h6' />
+      <BaseComponent tag='h6' {...HProps} />
     </>
   )
 }
+export const HeadingComponent = main.bind({})
 
-export const HeadingH2 = () => <BaseComponent tag='h2' />
+HeadingComponent.args = {
+  content: 'Est Lorem amet cupidatat exercitation fugiat deserunt.',
+  context: 'black',
+  // width: 400,
+  noWrap: false
+}
+
+HeadingComponent.argTypes = {
+  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } }
+  // width: { control: { type: ControlTypes.Range, min: 100, max: 700 } }
+}
+// export const HeadingH2 = () => <BaseComponent tag='h2' />

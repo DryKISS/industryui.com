@@ -40,11 +40,11 @@ export const Button = forwardRef(
         role='button'
         {...props}
       >
-        {startIcon && <Icon icon={startIcon} {...startIconProps} />}
+        {startIcon && <Icon icon={startIcon} {...startIconProps} prefix={startIconProps?.prefix} />}
 
         {text && <StyledContent>{text}</StyledContent>}
 
-        {endIcon && <Icon icon={endIcon} {...endIconProps} />}
+        {endIcon && <Icon icon={endIcon} {...endIconProps} prefix={endIconProps?.prefix} />}
       </StyledButton>
     )
   }

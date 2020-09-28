@@ -2,9 +2,6 @@
  * Footer
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'

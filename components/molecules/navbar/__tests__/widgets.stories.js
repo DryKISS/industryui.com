@@ -2,9 +2,6 @@
  * Navbar - Widgets
  */
 
-// React
-import React from 'react'
-
 // UI
 import { BaseComponent, options } from './baseComponent'
 import Readme from '../README.md'
