@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { Controller } from 'react-hook-form'
 import { Editor } from 'draft-js'
+import { func, object, string } from 'prop-types'
+
 import styled, { css } from 'styled-components'
 
 import { COMMON_INPUT_STYLES, ERROR_STYLE } from 'components'
@@ -39,3 +41,9 @@ const Wrapper = styled.div`
       ${props => ERROR_STYLE(props)}
     `}
 `
+RichTextInput.propTypes = {
+  control: object.isRequired,
+  errors: object.isRequired,
+  setValue: func.isRequired,
+  name: string.isRequired
+}
