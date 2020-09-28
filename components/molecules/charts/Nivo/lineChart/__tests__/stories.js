@@ -60,7 +60,6 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-/// stories
 export const main = () => {
   return <BaseComponent axisBottom={{ tickRotation: 90 }} />
 }

@@ -9,7 +9,7 @@ import { boolean, select } from '@storybook/addon-knobs'
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { PieChart } from '../'
+import { PieChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
@@ -71,6 +71,7 @@ const BaseComponent = (props = {}) => {
     data: Data,
     ...props
   }
+
   return (
     <StyledWrapper>
       <PieChart {...defaultProps} />
@@ -82,7 +83,7 @@ const StyledWrapper = styled.div`
   text-align: center;
   height: 500px;
 `
-/// storeis
+
 export const main = () => {
   return <BaseComponent />
 }

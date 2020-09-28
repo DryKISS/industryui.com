@@ -66,7 +66,6 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-/// storeis
 export const main = () => {
   return <BaseComponent data={Data} indexBy={keyToIndexBy} keys={keys} />
 }
