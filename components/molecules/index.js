@@ -3,7 +3,7 @@
  */
 export * from './accordion'
 export * from './alert'
-export * from './breadcrumb'
+export * from './breadcrumb/breadcrumb'
 export * from './buttons/buttons'
 export * from './card'
 export * from './charts'

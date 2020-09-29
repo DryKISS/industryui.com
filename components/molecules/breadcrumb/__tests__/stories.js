@@ -16,4 +16,4 @@ export default {
   }
 }
 
-export const main = () => <Breadcrumb category='Ian Warner' page='Home' path='/' />
+export const main = () => <Breadcrumb category='DryKISS' page='Home' path='/' />
