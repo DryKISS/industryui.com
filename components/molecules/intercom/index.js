@@ -1,4 +1,0 @@
-/**
- * Intercom
- */
-export * from './intercom'
