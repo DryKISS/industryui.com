@@ -63,7 +63,7 @@ export const Dropdown = ({
           <Icon
             aria-hidden='true'
             className='dropdown--caret'
-            icon={position === Position.Top ? 'carat-up' : 'caret-down'}
+            icon={position === Position.Top ? 'caret-up' : 'caret-down'}
             prefix='fas'
           />
         )}
