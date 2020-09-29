@@ -39,6 +39,6 @@ export const CleverlyAdmin = () => (
 
 export const Drykiss = () => (
   <ThemeProvider theme={DryKISSTheme}>
-    <BaseComponent custom widgets={Default} />
+    <BaseComponent widgets={Default} />
   </ThemeProvider>
 )

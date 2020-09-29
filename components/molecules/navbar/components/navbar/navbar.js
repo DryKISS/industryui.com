@@ -12,16 +12,7 @@ import { Brand, Contained, MEDIA_QUERY, Toggler, Widgets } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({
-  animational,
-  brand,
-  contained,
-  custom,
-  type,
-  style,
-  showMenu,
-  widgets
-}) => {
+export const Navbar = ({ brand, contained, type, style, showMenu, widgets }) => {
   const [visible, setVisible] = useState(showMenu)
 
   const handleClick = () => {
@@ -31,9 +22,9 @@ export const Navbar = ({
   const Content = () => {
     return (
       <>
-        {brand && <Brand animational={animational} brand={brand} />}
+        {brand && <Brand brand={brand} />}
 
-        <Toggler custom={custom} handleMenuClick={handleClick} visible={visible} />
+        <Toggler handleMenuClick={handleClick} visible={visible} />
 
         {widgets && (
           <Widgets
@@ -97,10 +88,8 @@ const StyledOverlay = styled.div`
 `
 
 Navbar.propTypes = {
-  animational: bool,
   brand: string,
   contained: bool,
-  custom: bool,
   showMenu: bool,
   style: objectOf(oneOfType([number, string])),
   type: string,
@@ -108,9 +97,7 @@ Navbar.propTypes = {
 }
 
 Navbar.defaultProps = {
-  animational: false,
   brand: '',
   contained: false,
-  custom: false,
   showMenu: false
 }
