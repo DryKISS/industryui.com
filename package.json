@@ -33,6 +33,7 @@
     "standard": "standard | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy",
     "prettier": "prettier-standard --staged --lint",
+    "prettier-local": "prettier-standard --lint",
     "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
     "clean-dist": "rm -rf ./dist",
@@ -50,9 +51,6 @@
         "version": "detect"
       }
     }
-  },
-  "lint-staged": {
-    "**/*.js": ["yarn test"]
   },
   "husky": {
     "hooks": {

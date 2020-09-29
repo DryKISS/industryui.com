@@ -2,8 +2,10 @@
  * Tooltip - Props
  */
 
+// React
 import { node, oneOf } from 'prop-types'
 
+// UI
 import { CONTEXT } from '../../../'
 
 export const TooltipPropTypes = {

@@ -4690,14 +4690,11 @@ ReactHolderJs.defaultProps = {
 };
 
 var __jsx$1 = React__default['default'].createElement;
-
 var ResizeDetector = reactResizeDetector.withResizeDetector( /*#__PURE__*/React.memo(function (_ref) {
   var height = _ref.height,
       width = _ref.width,
       onResize = _ref.onResize;
-  // clearTimeout(timer)
-  // timer = setTimeout(() => {onResize()}, 0)
-  requestAnimationFrame(function () {
+  window.requestAnimationFrame(function () {
     return onResize({
       height: height,
       width: width
@@ -19864,56 +19861,24 @@ StaticLocation.defaultProps = {
 
 var __jsx$1z = React__default['default'].createElement;
 var Brand = function Brand(_ref) {
-  var brand = _ref.brand,
-      animational = _ref.animational;
-
-  var ImageInDiv = function ImageInDiv() {
-    return __jsx$1z(Link, {
-      border: false,
-      to: "/",
-      passHref: true
-    }, __jsx$1z(StyledDiv, null, __jsx$1z(Image$1, {
-      alt: "Logo",
-      draggable: "false",
-      src: brand,
-      "data-cy": "navBrand"
-    })));
-  };
-
-  var SingleImage = function SingleImage() {
-    return __jsx$1z(StyledLink$4, {
-      border: false,
-      to: "/",
-      passHref: true
-    }, __jsx$1z(Image$1, {
-      alt: "Logo",
-      draggable: "false",
-      src: brand,
-      "data-cy": "navBrand"
-    }));
-  };
-
-  if (animational) {
-    return __jsx$1z(ImageInDiv, null);
-  } else {
-    return __jsx$1z(SingleImage, null);
-  }
+  var brand = _ref.brand;
+  return __jsx$1z(StyledLink$4, {
+    border: false,
+    to: "/",
+    passHref: true
+  }, __jsx$1z(Image$1, {
+    alt: "Logo",
+    draggable: "false",
+    src: brand,
+    "data-cy": "navBrand"
+  }));
 };
 var StyledLink$4 = styled__default['default'](Link).withConfig({
   displayName: "brand__StyledLink",
   componentId: "senape-0"
 })(["display:flex;"]);
-var BorderAnimation = styled.keyframes(["0%{width:102px;height:40px;}100%{width:120px;height:40px;}"]);
-var StyledDiv = styled__default['default'].div.withConfig({
-  displayName: "brand__StyledDiv",
-  componentId: "senape-1"
-})(["animation:0.8s ", " infinite ease-out;animation-direction:alternate;border:10px solid transparent;border-image:url(/static/border/border10.svg) 10;"], BorderAnimation);
 Brand.propTypes = {
-  animational: propTypes.bool,
   brand: propTypes.string.isRequired
-};
-Brand.defaultProps = {
-  animational: false
 };
 
 var __jsx$1A = React__default['default'].createElement;
@@ -19941,51 +19906,24 @@ function _templateObject$7() {
   return data;
 }
 var Toggler = function Toggler(_ref) {
-  var custom = _ref.custom,
-      handleMenuClick = _ref.handleMenuClick,
+  var handleMenuClick = _ref.handleMenuClick,
       visible = _ref.visible;
-
-  var CustomTogglerIconOpen = function CustomTogglerIconOpen() {
-    return __jsx$1B(StyledIcon$6, null, __jsx$1B("div", null), __jsx$1B("div", null));
-  };
-
-  var CustomToggler = function CustomToggler() {
-    return __jsx$1B(StyledToggler, {
-      "aria-expanded": visible ? 'false' : 'true',
-      "aria-label": "Toggle navigation",
-      onClick: handleMenuClick
-    }, !visible ? __jsx$1B(CustomTogglerIconOpen, null) : __jsx$1B(CustomTogglerIconOpen, null));
-  };
-
-  var DefaultToggler = function DefaultToggler() {
-    return __jsx$1B(StyledToggler, {
-      "aria-expanded": visible ? 'false' : 'true',
-      "aria-label": "Toggle navigation",
-      onClick: handleMenuClick
-    }, !visible ? __jsx$1B(Icon, {
-      icon: "bars",
-      prefix: "fas"
-    }) : __jsx$1B(Icon, {
-      icon: "times",
-      size: "lg",
-      prefix: "fas"
-    }), __jsx$1B(StyledText$3, null, "Menu"));
-  };
-
-  if (custom) {
-    return __jsx$1B(CustomToggler, null);
-  } else {
-    return __jsx$1B(DefaultToggler, null);
-  }
+  return __jsx$1B(StyledToggler, {
+    "aria-expanded": visible ? 'false' : 'true',
+    "aria-label": "Toggle navigation",
+    onClick: handleMenuClick
+  }, !visible ? __jsx$1B(Icon, {
+    icon: "bars",
+    prefix: "fas"
+  }) : __jsx$1B(Icon, {
+    icon: "times",
+    prefix: "fas"
+  }), __jsx$1B(StyledText$3, null, "Menu"));
 };
-var StyledIcon$6 = styled__default['default'].div.withConfig({
-  displayName: "toggler__StyledIcon",
-  componentId: "sc-1t70814-0"
-})(["margin-top:0.25rem;div{width:2rem;height:0.125rem;background:black;margin-bottom:0.375rem;transition:0.3s all linear;}div:nth-child(1){&:active{transform:rotate(45deg);}}div:nth-child(2){&:active{transform:rotate(-45deg);}}"]);
 var StyledToggler = styled__default['default'].a.withConfig({
   displayName: "toggler__StyledToggler",
-  componentId: "sc-1t70814-1"
-})(["cursor:pointer;color:", ";font-size:", ";padding:", ";&:hover{color:", ";}", ""], function (_ref2) {
+  componentId: "sc-1t70814-0"
+})(["color:", ";cursor:pointer;font-size:", ";padding:", ";&:hover{color:", ";}", ""], function (_ref2) {
   var theme = _ref2.theme;
   return theme.NAVBAR.colourToggler;
 }, function (_ref3) {
@@ -20000,15 +19938,13 @@ var StyledToggler = styled__default['default'].a.withConfig({
 }, MEDIA_QUERY.desktop(_templateObject$7()));
 var StyledText$3 = styled__default['default'].span.withConfig({
   displayName: "toggler__StyledText",
-  componentId: "sc-1t70814-2"
+  componentId: "sc-1t70814-1"
 })(["margin-left:0.25rem;"]);
 Toggler.propTypes = {
-  custom: propTypes.bool,
   handleMenuClick: propTypes.func.isRequired,
   visible: propTypes.bool
 };
 Toggler.defaultProps = {
-  custom: false,
   visible: true
 };
 
@@ -20044,10 +19980,8 @@ function _templateObject$8() {
   return data;
 }
 var Navbar = function Navbar(_ref) {
-  var animational = _ref.animational,
-      brand = _ref.brand,
+  var brand = _ref.brand,
       contained = _ref.contained,
-      custom = _ref.custom,
       type = _ref.type,
       style = _ref.style,
       showMenu = _ref.showMenu,
@@ -20063,10 +19997,8 @@ var Navbar = function Navbar(_ref) {
 
   var Content = function Content() {
     return __jsx$1C(React__default['default'].Fragment, null, brand && __jsx$1C(Brand, {
-      animational: animational,
       brand: brand
     }), __jsx$1C(Toggler, {
-      custom: custom,
       handleMenuClick: handleClick,
       visible: visible
     }), widgets && __jsx$1C(Widgets, {
@@ -20131,20 +20063,16 @@ var StyledOverlay = styled__default['default'].div.withConfig({
   return theme.NAVBAR.widthOverlay;
 }, MEDIA_QUERY.desktop(_templateObject3$1()));
 Navbar.propTypes = {
-  animational: propTypes.bool,
   brand: propTypes.string,
   contained: propTypes.bool,
-  custom: propTypes.bool,
   showMenu: propTypes.bool,
   style: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string])),
   type: propTypes.string,
   widgets: propTypes.object
 };
 Navbar.defaultProps = {
-  animational: false,
   brand: '',
   contained: false,
-  custom: false,
   showMenu: false
 };
 
@@ -31520,7 +31448,7 @@ var Footer = function Footer(_ref) {
       }, __jsx$2h(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2h(StyledIcon$7, {
+      }, icon && __jsx$2h(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -31538,7 +31466,7 @@ var Footer = function Footer(_ref) {
           icon = _ref7.icon;
       return __jsx$2h(React.Fragment, {
         key: i
-      }, icon && __jsx$2h(StyledIcon$7, {
+      }, icon && __jsx$2h(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -31590,7 +31518,7 @@ var StyledListItem$1 = styled__default['default'](ListItem).withConfig({
   displayName: "footer__StyledListItem",
   componentId: "sc-5csagl-3"
 })(["margin-bottom:1.25rem;padding-right:1rem;"]);
-var StyledIcon$7 = styled__default['default'](Icon).withConfig({
+var StyledIcon$6 = styled__default['default'](Icon).withConfig({
   displayName: "footer__StyledIcon",
   componentId: "sc-5csagl-4"
 })(["margin:0 0.5rem 0 0;"]);
@@ -31931,13 +31859,13 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2m(StyledIcon$8, {
+  return __jsx$2m(StyledIcon$7, {
     fixedWidth: false,
     icon: useIcon,
     prefix: "fad"
   });
 };
-var StyledIcon$8 = styled__default['default'](Icon).withConfig({
+var StyledIcon$7 = styled__default['default'](Icon).withConfig({
   displayName: "icon__StyledIcon",
   componentId: "hstm32-0"
 })(["color:", ";margin-right:0.5rem;vertical-align:middle !important;"], function (_ref2) {
@@ -32320,12 +32248,12 @@ var MessagingSend = function MessagingSend(_ref) {
     style: {
       display: 'none'
     }
-  }), __jsx$2s(StyledElements, null, __jsx$2s(StyledIcon$9, {
+  }), __jsx$2s(StyledElements, null, __jsx$2s(StyledIcon$8, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2s(StyledIcon$9, {
+  }), __jsx$2s(StyledIcon$8, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
@@ -32363,7 +32291,7 @@ var StyledElements = styled__default['default'].div.withConfig({
   displayName: "send__StyledElements",
   componentId: "sc-18pp565-4"
 })(["align-items:center;display:flex;"]);
-var StyledIcon$9 = styled__default['default'](Icon).withConfig({
+var StyledIcon$8 = styled__default['default'](Icon).withConfig({
   displayName: "send__StyledIcon",
   componentId: "sc-18pp565-5"
 })(["cursor:pointer;margin-right:1rem;&:hover{color:", ";}"], function (_ref3) {
@@ -33361,7 +33289,7 @@ var BlogDetails = function BlogDetails(_ref) {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2I(StyledIcon$a, {
+  }, __jsx$2I(StyledIcon$9, {
     context: "dark",
     icon: "calendar-alt"
   }), __jsx$2I(Date$1, {
@@ -33370,7 +33298,7 @@ var BlogDetails = function BlogDetails(_ref) {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2I(StyledIcon$a, {
+  }, __jsx$2I(StyledIcon$9, {
     context: "dark",
     icon: "user"
   }), __jsx$2I(BlogCategory, {
@@ -33381,7 +33309,7 @@ var BlogDetails = function BlogDetails(_ref) {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2I(StyledIcon$a, {
+  }, __jsx$2I(StyledIcon$9, {
     context: "dark",
     icon: "stopwatch"
   }), __jsx$2I(BlogReadTime, {
@@ -33403,7 +33331,7 @@ var StyledArticleDetails = styled__default['default'].div.withConfig({
   displayName: "details__StyledArticleDetails",
   componentId: "sc-15a4gif-0"
 })(["font-size:0.875rem;"]);
-var StyledIcon$a = styled__default['default'](Icon).withConfig({
+var StyledIcon$9 = styled__default['default'](Icon).withConfig({
   displayName: "details__StyledIcon",
   componentId: "sc-15a4gif-1"
 })(["margin-right:0.25rem;"]);
