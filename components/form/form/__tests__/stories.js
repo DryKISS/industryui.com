@@ -5,7 +5,6 @@
 // Storybook
 import { text } from '@storybook/addon-knobs'
 import { Wrapper } from 'decorators'
-import { EditorState } from 'draft-js'
 // Yup
 import { number, object, string } from 'yup'
 
@@ -66,7 +65,7 @@ const schema = object().shape({
   input: string().required(),
   name: string().required(),
   reactSelect: string().required(),
-  rich: object().required(),
+  rich: string().required(),
   datepicker: string().required(),
   textarea: string().required(),
   select: string().required(),
@@ -85,13 +84,11 @@ const checkbox = [
     value: 'checked'
   }
 ]
+const draftInitialhtml = '<div><p>initial Text <b>bold</b></p></div>'
 
 const all = ({ ...args }) => {
-  const { control, errors, handleSubmit, register, setValue } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      rich: EditorState.createEmpty()
-    }
+  const { control, errors, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = data => {
@@ -219,7 +216,12 @@ const all = ({ ...args }) => {
 
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend='Gender?' name='radio' />
       <FormLabel label='Rich'>
-        <RichTextInput setValue={setValue} errors={errors} control={control} name='rich' />
+        <RichTextInput
+          control={control}
+          errors={errors}
+          initialValue={draftInitialhtml}
+          name='rich'
+        />
       </FormLabel>
       <Button content='Submit' type='submit' />
     </Form>
