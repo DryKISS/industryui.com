@@ -6,7 +6,7 @@
 import { object as obj } from 'yup'
 
 // Storybook
-import { object, select, withKnobs } from '@storybook/addon-knobs'
+import { object, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 // UI
