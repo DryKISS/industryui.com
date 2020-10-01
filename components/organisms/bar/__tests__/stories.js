@@ -2,8 +2,11 @@
  * Bar
  */
 
+// Stroybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import { Bar, BarConfig, CONTEXT, ControlTypes } from 'components'
+import { Bar, BarConfig, CONTEXT } from 'components'
 import Readme from '../README.md'
 
 // Style
@@ -13,8 +16,10 @@ export default {
   title: 'Organisms/Bar',
   component: Bar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

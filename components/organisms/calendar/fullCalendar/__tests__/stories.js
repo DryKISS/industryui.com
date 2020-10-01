@@ -23,8 +23,10 @@ export default {
   title: 'Organisms/Full Calendar',
   components: Calendar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

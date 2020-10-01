@@ -21,8 +21,10 @@ export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

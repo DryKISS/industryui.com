@@ -10,8 +10,10 @@ export default {
   title: 'Layouts/Article',
   component: ArticleLayout,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

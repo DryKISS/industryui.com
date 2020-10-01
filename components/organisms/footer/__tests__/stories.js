@@ -16,8 +16,10 @@ export default {
   title: 'Organisms/Footer',
   component: Footer,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

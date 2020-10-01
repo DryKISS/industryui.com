@@ -19,8 +19,10 @@ export default {
   title: 'Layouts/Bootstrap',
   component: Bootstrap,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

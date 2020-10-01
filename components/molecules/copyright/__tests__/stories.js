@@ -13,8 +13,10 @@ export default {
   title: 'Molecules/Copyright',
   component: Copyright,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

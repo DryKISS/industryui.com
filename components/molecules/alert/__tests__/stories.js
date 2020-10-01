@@ -13,8 +13,10 @@ export default {
   title: 'Molecules/Alert',
   component: Alert,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

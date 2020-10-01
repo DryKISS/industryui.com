@@ -15,8 +15,10 @@ export default {
   title: 'Atoms/Toggle',
   component: Toggle,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

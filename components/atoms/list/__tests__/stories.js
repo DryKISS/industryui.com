@@ -2,9 +2,6 @@
  * LIST
  */
 
-// Storybook
-import { boolean, object } from '@storybook/addon-knobs'
-
 // UI
 import { List, ListItem } from 'components'
 import Readme from '../README.md'
@@ -12,8 +9,10 @@ import Readme from '../README.md'
 export default {
   title: 'Atoms/List',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -51,14 +50,7 @@ export const flush = () => (
 )
 
 export const knobbed = () => (
-  <List
-    border={boolean('border', false)}
-    flush={boolean('flush', false)}
-    group={boolean('group', false)}
-    unstyled={boolean('unstyled', false)}
-    inline={boolean('inline', false)}
-    style={object('Style', { color: 'blue', listStyleType: 'lower-greek' })}
-  >
+  <List>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
     <ListItem>Item3</ListItem>

@@ -13,8 +13,10 @@ export default {
   title: 'Form/Textarea',
   component: TextareaField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

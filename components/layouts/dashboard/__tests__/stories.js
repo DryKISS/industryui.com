@@ -16,8 +16,10 @@ export default {
   title: 'Layouts/Dashboard',
   component: Dashboard,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

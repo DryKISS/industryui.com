@@ -15,8 +15,10 @@ import styled from 'styled-components'
 export default {
   title: 'Utils/RandomColor',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

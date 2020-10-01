@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/PageHeading',
   component: PageHeading,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

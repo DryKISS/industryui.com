@@ -13,8 +13,10 @@ export default {
   title: 'Utils/Validator/PostCode',
   component: validatorPostCode,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

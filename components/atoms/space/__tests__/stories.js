@@ -2,9 +2,11 @@
  * Space
  */
 
+// Stroybook
+import { ControlTypes } from 'decorators'
+
 // UI
 import { arrayOfValues, SIZE, Space, Text } from 'components'
-import { ControlTypes } from 'components/constants'
 
 export default {
   title: 'Atoms/Space',

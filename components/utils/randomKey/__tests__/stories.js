@@ -9,8 +9,10 @@ import { RandomKey } from '../randomKey'
 export default {
   title: 'Utils/RandomKey',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

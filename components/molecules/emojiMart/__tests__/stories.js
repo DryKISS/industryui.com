@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/EmojiMart',
   component: EmojiMart,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

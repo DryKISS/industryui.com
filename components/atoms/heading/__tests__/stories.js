@@ -2,16 +2,21 @@
  * Heading
  */
 
+// Stroybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import { arrayOfValues, CONTEXT, ControlTypes, Heading } from 'components'
+import { arrayOfValues, CONTEXT, Heading } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Heading',
   component: Heading,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

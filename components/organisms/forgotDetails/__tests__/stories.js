@@ -13,8 +13,10 @@ export default {
   title: 'Organisms/Forgot Details',
   component: ForgotDetails,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

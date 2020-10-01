@@ -12,8 +12,10 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Editor',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

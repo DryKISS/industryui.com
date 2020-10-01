@@ -16,8 +16,10 @@ export default {
   title: 'Form/Date Picker/Input',
   component: DatePickerInput,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

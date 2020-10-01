@@ -3,7 +3,6 @@
  */
 
 // Storybook
-import { boolean, number } from '@storybook/addon-knobs'
 import { Context, Size } from 'decorators'
 
 // UI
@@ -14,8 +13,10 @@ export default {
   title: 'Atoms/Progress',
   component: Progress,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -3,8 +3,8 @@
  */
 
 // Storybook
-import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
+// import { action } from '@storybook/addon-actions'
+// import { boolean, text } from '@storybook/addon-knobs'
 import { Context } from 'decorators'
 
 // UI
@@ -15,22 +15,24 @@ export default {
   title: 'Atoms/Link',
   component: Link,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    border: boolean('Border', true),
-    children: text('Children', 'Link'),
-    className: '',
-    context: Context(),
-    onClick: action('clicked'),
-    passHref: boolean('PassHref', true),
-    target: text('Target', '_blank'),
-    to: text('To', '/here'),
+    // border: boolean('Border', true),
+    // children: text('Children', 'Link'),
+    // className: '',
+    // context: Context(),
+    // onClick: action('clicked'),
+    // passHref: boolean('PassHref', true),
+    // target: text('Target', '_blank'),
+    // to: text('To', '/here'),
     ...props
   }
 

@@ -12,8 +12,10 @@ import Readme from '../README.md'
 export default {
   title: 'Utils/Slugify',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Buttons',
   component: Buttons,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

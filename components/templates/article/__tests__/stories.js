@@ -2,9 +2,6 @@
  * Article
  */
 
-// Storybook
-import { array, text } from '@storybook/addon-knobs'
-
 // UI
 import { Article } from 'components'
 import Readme from '../README.md'
@@ -13,8 +10,10 @@ export default {
   title: 'Templates/Article',
   component: Article,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

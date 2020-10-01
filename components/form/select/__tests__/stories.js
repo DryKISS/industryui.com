@@ -25,8 +25,10 @@ export default {
   title: 'Form/Select',
   component: SelectField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

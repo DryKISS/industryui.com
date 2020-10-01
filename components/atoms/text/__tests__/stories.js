@@ -2,8 +2,11 @@
  * Text
  */
 
+// Stroybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import { ALIGN, CONTEXT, ControlTypes, SIZE, Text } from 'components'
+import { ALIGN, CONTEXT, SIZE, Text } from 'components'
 
 export default {
   component: Text,

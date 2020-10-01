@@ -24,8 +24,10 @@ export default {
   title: 'Services/Google/GeoCoder',
   component: GeoCoder,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

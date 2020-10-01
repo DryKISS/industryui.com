@@ -9,8 +9,10 @@ import Readme from '../README.md'
 export default {
   title: 'Utils/Colour',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

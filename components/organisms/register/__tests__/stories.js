@@ -13,8 +13,10 @@ export default {
   title: 'Organisms/Register',
   component: Register,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

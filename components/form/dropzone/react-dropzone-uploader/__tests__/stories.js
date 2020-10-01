@@ -10,8 +10,10 @@ export default {
   title: 'Form/Dropzone/Uploader',
   component: DropzoneUploader,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

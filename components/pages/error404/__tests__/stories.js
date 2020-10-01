@@ -10,8 +10,10 @@ export default {
   title: 'Pages/Error404',
   component: Error404,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -42,13 +42,11 @@ const StyledInputGroupAddon = styled.div`
 
   & > * {
     height: 100%;
-    padding: 0 1.5rem;
   }
 
   ${({ text }) =>
     text &&
     css`
-      transition: background-color 0.15s linear;
       background-color: ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey)};
       border: 1px solid
         ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.darkGrey)};
@@ -61,6 +59,7 @@ const StyledInputGroupAddon = styled.div`
       margin-bottom: 0;
       padding: 0.375rem 1.25rem;
       text-align: center;
+      transition: background-color 0.15s linear;
       white-space: nowrap;
     `}
   ${({ size }) =>
@@ -70,8 +69,6 @@ const StyledInputGroupAddon = styled.div`
       padding: 0 0.75rem;
     `}
 
-
-
   &,
   button {
     ${({ addonType }) =>
@@ -79,6 +76,7 @@ const StyledInputGroupAddon = styled.div`
       css`
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
+        margin-right: -1px;
       `}
 
     ${({ addonType }) =>
@@ -86,6 +84,7 @@ const StyledInputGroupAddon = styled.div`
       css`
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+        margin-left: -1px;
       `}
   }
 `

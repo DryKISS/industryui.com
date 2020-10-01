@@ -31,8 +31,10 @@ export default {
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

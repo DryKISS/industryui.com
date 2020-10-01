@@ -9,8 +9,10 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Navbar',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   },
   ...options

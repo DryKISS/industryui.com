@@ -11,8 +11,10 @@ export default {
   component: Toggler,
   title: 'Molecules/Navbar',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

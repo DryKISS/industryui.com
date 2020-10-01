@@ -17,8 +17,10 @@ import { OffCanvasForm } from './form'
 export default {
   title: 'Molecules/OffCanvas',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

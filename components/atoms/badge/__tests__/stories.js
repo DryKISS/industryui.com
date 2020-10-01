@@ -2,38 +2,46 @@
  * Badge
  */
 
+// Storybook
+import { ControlTypes, ContextControl, SizeControl } from 'decorators'
+
 // UI
-import { Badge, CONTEXT, ControlTypes, SIZE } from 'components'
+import { Badge, CONTEXT, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Badge',
+  args: {
+    content: 'Badge',
+    context: CONTEXT.PRIMARY,
+    icon: false,
+    shape: 'square',
+    size: SIZE.MD,
+    to: false
+  },
+  argTypes: {
+    context: ContextControl(),
+    shape: {
+      control: {
+        type: ControlTypes.Select,
+        options: ['square', 'round']
+      }
+    },
+    size: SizeControl()
+  },
   component: Badge,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Badge'
 }
 
-const BaseComponent = ({ ...args }) => {
+export const main = args => {
   args.to = args.to ? '/example' : null
   args.icon = args.icon ? 'user' : null
 
   return <Badge {...args} />
-}
-
-export const badge = BaseComponent.bind({})
-badge.args = {
-  content: 'Badge',
-  context: CONTEXT.PRIMARY,
-  icon: false,
-  shape: 'square',
-  size: SIZE.MD,
-  to: false
-}
-badge.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: Object.values(CONTEXT) } },
-  shape: { control: { type: ControlTypes.Select, options: ['square', 'round'] } },
-  size: { control: { type: ControlTypes.Select, options: Object.values(SIZE) } }
 }

@@ -13,8 +13,10 @@ export default {
   title: 'Organisms/Messaging/List',
   component: MessageList,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

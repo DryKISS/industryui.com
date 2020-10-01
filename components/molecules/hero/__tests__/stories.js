@@ -41,8 +41,10 @@ export default {
   title: 'Molecules/Hero',
   component: Hero,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

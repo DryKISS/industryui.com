@@ -13,8 +13,10 @@ export default {
   title: 'Organisms/Email Change',
   component: EmailChange,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

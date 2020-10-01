@@ -67,13 +67,13 @@ const StyledButton = styled.button`
   align-items: center;
   border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
     outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
-  border-radius: 4px;
+  border-radius: .25rem;
   box-sizing: border-box;
   color: ${({ textContext, theme: { COLOUR } }) => COLOUR[textContext]};
   cursor: pointer;
   display: ${({ block, centre }) => (centre || block ? 'flex' : 'inline-flex')};
   font-size: 14px;
-  height: 48px;
+  height: 3rem;
   justify-content: center;
   line-height: 100%;
   outline: none;
