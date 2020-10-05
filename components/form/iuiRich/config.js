@@ -57,7 +57,22 @@ export const InlineStyleControls = props => {
     </div>
   )
 }
-
+export const styleMap = {
+  CODE: {
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+    fontSize: 16,
+    padding: 2
+  }
+}
+export const getBlockStyle = block => {
+  switch (block.getType()) {
+    case 'blockquote':
+      return 'RichEditor-blockquote'
+    default:
+      return null
+  }
+}
 const StyleButton = ({ active, label, onToggle, style }) => {
   const handleToggle = e => {
     e.preventDefault()
