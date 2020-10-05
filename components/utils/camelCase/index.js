@@ -3,7 +3,7 @@
  */
 
 // Utils
-import { capitalize } from './'
+import { capitalize } from 'components'
 
 export const camelCase = string => {
   return capitalize(

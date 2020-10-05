@@ -1,7 +1,6 @@
 /**
- * Get average geolocation center
- * @param {Array<Object>} coords
- * coords param example: [{lat: 51.47, lng: -0.0035}, {lat: 52.47, lng: -0.0045}]
+ * average geolocation center
+ * @param {Array<{lat:number,lng:number}>} coords
  */
 
 export const averageGeolocation = coords => {

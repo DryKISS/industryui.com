@@ -1,5 +1,5 @@
 /**
- * Get Acronym of a string - Example: "Java Script Object Notation" -> "JSON"
+ * Get Acronym
  */
 export const getAcronym = string => {
   const matches = string.match(/\b(\w)/g)

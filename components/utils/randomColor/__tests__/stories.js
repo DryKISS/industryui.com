@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { RandomColor } from '../randomColor'
+import { RandomColor } from '..'
 import styled from 'styled-components'
 
 export default {

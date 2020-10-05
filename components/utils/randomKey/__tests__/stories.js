@@ -7,7 +7,7 @@ import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
 import styled from 'styled-components'
-import { RandomKey } from '../randomKey'
+import { RandomKey } from '..'
 
 export default {
   title: 'Utils/RandomKey',
@@ -22,7 +22,7 @@ export default {
 export const RandomKeysShowCase = () => {
   const elementsLength = 50
   const arr = Array.from(Array(elementsLength).keys())
-  const keys = arr.map((_, __) => {
+  const keys = arr.map(() => {
     return RandomKey()
   })
 

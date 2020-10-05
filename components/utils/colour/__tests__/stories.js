@@ -8,8 +8,23 @@ import { Wrapper } from 'decorators'
 // UI
 import { blendLinearRgb, shadeLinearRgb } from 'components'
 import Readme from '../README.md'
+import { ControlTypes } from 'components/constants/controlTypes'
 
 export default {
+  args: {
+    shadeLighter: 0.9,
+    shadeDarker: 0.1
+  },
+  argTypes: {
+    shadeLighter: {
+      name: 'Shade Lighter',
+      control: { type: ControlTypes.Range, min: 0.0, max: 1.0, step: 0.1 }
+    },
+    shadeDarker: {
+      name: 'Shade Darker',
+      control: { type: ControlTypes.Range, min: 0.0, max: 1.0, step: 0.1 }
+    }
+  },
   title: 'Utils/Colour',
   decorators: [Wrapper],
   parameters: {
@@ -41,11 +56,11 @@ const ShadeLinear = ({ children, p }) => {
   return <div style={{ background: shadeLinearRgb(p, 'rgb(117, 204, 207)') }}>{children}</div>
 }
 
-export const LinearShade = () => {
+export const LinearShade = args => {
   return (
     <>
-      <ShadeLinear p={0.2}>Shade Lighter 80%</ShadeLinear>
-      <ShadeLinear p={-0.2}>Shade Darker 20%</ShadeLinear>
+      <ShadeLinear p={args.shadeLighter}>Shade Lighter {args.shadeLighter * 100}%</ShadeLinear>
+      <ShadeLinear p={-args.shadeDarker}>Shade Darker {args.shadeDarker * 100}%</ShadeLinear>
     </>
   )
 }
