@@ -18,6 +18,6 @@ export default {
   }
 }
 
-export const resizeDetector = () => {
+export const IUIRichEditor = () => {
   return <IUIRich />
 }

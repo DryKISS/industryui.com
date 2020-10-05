@@ -1200,6 +1200,22 @@ exports[`Storyshots Form/Field Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Form/IUIRichEditor IUI Rich Editor 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Form/Input Input Template 1`] = `
 @media (min-width:62em) {
 
@@ -4048,6 +4064,54 @@ exports[`Storyshots Utils/Age Main 1`] = `
 </div>
 `;
 
+exports[`Storyshots Utils/AverageGeolocation Average Geolocation 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/CamelCase Camel Case 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/Capitalize Capitalize 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Utils/Colour Linear Blend 1`] = `
 @media (min-width:62em) {
 
@@ -4096,6 +4160,86 @@ exports[`Storyshots Utils/ComunicationService Comunication Show Case 1`] = `
 </div>
 `;
 
+exports[`Storyshots Utils/ConvertImgUrlToDataURLviaCanvas Convert Img Url To Data UR Lvia Canvas 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/Debounce Debounce 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/GetAcronym Get Acronym 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/GetOne Get One 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/GetUrlParameters Get Url Parameter 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
 @media (min-width:62em) {
 
@@ -4128,6 +4272,38 @@ exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
 </div>
 `;
 
+exports[`Storyshots Utils/RequestSimulator Request Simulator 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/ResizeDetetor Resize Detector 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Utils/Slugify Main 1`] = `
 @media (min-width:62em) {
 
@@ -4145,6 +4321,54 @@ exports[`Storyshots Utils/Slugify Main 1`] = `
 `;
 
 exports[`Storyshots Utils/Validator/PostCode Main 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/ViewPort View Port 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/forceUpdate Force Update 1`] = `
+@media (min-width:62em) {
+
+}
+
+<div
+  className="storybook-readme-story"
+>
+  <div
+    style={Object {}}
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Utils/formatPrice Format Price 1`] = `
 @media (min-width:62em) {
 
 }
