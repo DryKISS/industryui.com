@@ -10,24 +10,28 @@ import { Text } from 'components'
 import styled from 'styled-components'
 
 const AddressText = props => {
-  return <Text context='dark'>{props.children}</Text>
+  return (
+    <Text size={props.size} context='black'>
+      {props.children}
+    </Text>
+  )
 }
 
-export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
+export const Address = ({ county, country, line1, line2, line3, postcode, size, town }) => (
   <StyledAddress>
-    <AddressText>{line1}</AddressText>
+    <AddressText size={size}>{line1}</AddressText>
 
-    {line2 && <AddressText>{line2}</AddressText>}
+    {line2 && <AddressText size={size}>{line2}</AddressText>}
 
-    {line3 && <AddressText>{line3}</AddressText>}
+    {line3 && <AddressText size={size}>{line3}</AddressText>}
 
-    <AddressText>{town}</AddressText>
+    <AddressText size={size}>{town}</AddressText>
 
-    {county && <AddressText>{county}</AddressText>}
+    {county && <AddressText size={size}>{county}</AddressText>}
 
-    <AddressText>{postcode}</AddressText>
+    <AddressText size={size}>{postcode}</AddressText>
 
-    <AddressText>{country}</AddressText>
+    <AddressText size={size}>{country}</AddressText>
   </StyledAddress>
 )
 
@@ -43,4 +47,7 @@ Address.propTypes = {
   line3: string,
   postcode: string.isRequired,
   town: string
+}
+Address.defaultProps = {
+  size: 'md'
 }

@@ -7,6 +7,7 @@ import { COLOUR } from './colour'
 import { TYPOGRAPHY } from './typography'
 
 // Components
+import { ADDRESS } from '../../atoms/address/variables'
 import { AVATAR } from '../../atoms/avatar/variables'
 import { BADGE } from '../../atoms/badge/variables'
 import { BAR } from '../../organisms/bar/variables'
@@ -31,6 +32,7 @@ import { TABS } from '../../molecules/tabs/variables'
 import { TEXT_STYLE } from '../../atoms/text/variables'
 
 export const Theme = {
+  ADDRESS,
   AVATAR,
   BADGE,
   BAR,
