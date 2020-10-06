@@ -1,8 +1,10 @@
 /**
  * Address
  */
+
 // React
 import { string } from 'prop-types'
+
 // UI
 import { Text } from 'components'
 
