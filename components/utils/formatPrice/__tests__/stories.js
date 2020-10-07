@@ -9,6 +9,9 @@ import Readme from '../README.md'
 import { Text, formatPrice } from 'components'
 
 export default {
+  args: {
+    price: 123456789
+  },
   title: 'Utils/formatPrice',
   decorators: [Wrapper],
   parameters: {
@@ -18,11 +21,6 @@ export default {
   }
 }
 
-export const FormatPrice = () => {
-  return (
-    <>
-      <Text> original: 123456789 </Text>
-      <Text> formatted: {formatPrice(123456789)} </Text>
-    </>
-  )
+export const FormatPrice = args => {
+  return <Text> formatted: {formatPrice(args.price)} </Text>
 }
