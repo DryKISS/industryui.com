@@ -9,10 +9,28 @@ import { Wrapper } from 'decorators'
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { age, Button, DatePickerCalendar, Divider, Form, Text, useForm } from 'components'
+import {
+  age,
+  Button,
+  ControlTypes,
+  DatePickerCalendar,
+  Divider,
+  Form,
+  Text,
+  useForm
+} from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    birthDate: new Date('2001-09-20')
+  },
+  argTypes: {
+    birthDate: {
+      name: 'Birth Date',
+      control: { type: ControlTypes.Date }
+    }
+  },
   title: 'Utils/Age',
   decorators: [Wrapper],
   parameters: {
@@ -22,12 +40,8 @@ export default {
   }
 }
 
-export const main = () => {
-  const { control, errors, getValues, handleSubmit } = useForm({
-    defaultValues: {
-      birthDate: new Date('2001-09-20')
-    }
-  })
+export const main = args => {
+  const { control, errors, handleSubmit } = useForm()
 
   const defaultProps = {
     control: control,
@@ -39,7 +53,7 @@ export const main = () => {
 
   const onSubmit = data => {}
 
-  const birthDate = getValues()?.birthDate
+  const birthDate = args.birthDate
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
