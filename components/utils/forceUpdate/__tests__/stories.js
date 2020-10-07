@@ -12,8 +12,10 @@ export default {
   title: 'Utils/forceUpdate',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

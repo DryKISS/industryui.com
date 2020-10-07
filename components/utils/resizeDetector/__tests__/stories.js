@@ -15,18 +15,20 @@ export default {
   title: 'Utils/ResizeDetetor',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
 
 export const resizeDetector = () => {
-  const [Dimentions, setDimentions] = useState({ width: 300, height: 400 })
+  const [Dimentions, setDimentions] = useState({ height: 400, width: 300 })
   return (
     <ElementsWrapper>
-      <p>width:{Dimentions.width}px</p>
       <p>height:{Dimentions.height}px</p>
+      <p>width:{Dimentions.width}px</p>
       <ResizeDetector style={{ position: 'absolute' }} onResize={setDimentions} />
       <p>resize the container from corner</p>
     </ElementsWrapper>

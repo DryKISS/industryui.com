@@ -1,5 +1,5 @@
 /**
- * Random Color
+ * Random Key
  */
 
 // Storybook
@@ -13,8 +13,10 @@ export default {
   title: 'Utils/RandomKey',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

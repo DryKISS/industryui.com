@@ -2,18 +2,20 @@
  * viewPort
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { Text, viewPort } from 'components'
+
+// Storybook
+import { Wrapper } from 'decorators'
 
 export default {
   title: 'Utils/ViewPort',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

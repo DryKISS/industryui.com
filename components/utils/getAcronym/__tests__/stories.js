@@ -15,8 +15,10 @@ export default {
   title: 'Utils/GetAcronym',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

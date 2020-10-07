@@ -28,8 +28,10 @@ export default {
   title: 'Utils/Colour',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

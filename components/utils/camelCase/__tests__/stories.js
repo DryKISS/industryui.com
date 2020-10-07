@@ -15,8 +15,10 @@ export default {
   title: 'Utils/CamelCase',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

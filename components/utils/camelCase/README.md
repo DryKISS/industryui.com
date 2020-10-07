@@ -1,1 +1,1 @@
-# CamelCase
+camelCases the string

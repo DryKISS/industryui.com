@@ -14,8 +14,10 @@ export default {
   title: 'Utils/Debounce',
   decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
