@@ -1,6 +1,8 @@
 /**
  * viewPort
  */
+// React
+import { useLayoutEffect, useRef, useState } from 'react'
 
 import Readme from '../README.md'
 import { Text, viewPort } from 'components'
@@ -9,6 +11,9 @@ import { Text, viewPort } from 'components'
 import { Wrapper } from 'decorators'
 
 export default {
+  args: {
+    WindowViewPort: false
+  },
   title: 'Utils/ViewPort',
   decorators: [Wrapper],
   parameters: {
@@ -20,6 +25,17 @@ export default {
   }
 }
 
-export const ViewPort = () => {
-  return <Text>viewport Width: {viewPort()}px</Text>
+export const ViewPort = args => {
+  const ref = useRef(null)
+  const [Width, setWidth] = useState(0)
+  useLayoutEffect(() => {
+    setWidth(viewPort(args.WindowViewPort ? null : ref.current))
+    return () => {}
+  }, [])
+
+  return (
+    <div ref={ref}>
+      <Text>viewport Width: {Width}px</Text>
+    </div>
+  )
 }
