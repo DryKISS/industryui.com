@@ -2,16 +2,12 @@
  * Random Key
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import styled from 'styled-components'
 import { RandomKey } from '..'
 
 export default {
   title: 'Utils/RandomKey',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

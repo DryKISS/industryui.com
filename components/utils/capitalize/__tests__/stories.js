@@ -2,9 +2,6 @@
  * Capitalise
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { capitalize, Text } from 'components'
 
@@ -13,7 +10,6 @@ export default {
     text: 'yellow submarine'
   },
   title: 'Utils/Capitalize',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

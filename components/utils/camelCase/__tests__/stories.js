@@ -2,9 +2,6 @@
  * CamelCase
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { camelCase, Text } from 'components'
 
@@ -13,7 +10,6 @@ export default {
     text: 'Imagine there is no heaven'
   },
   title: 'Utils/CamelCase',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

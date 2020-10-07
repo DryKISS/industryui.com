@@ -2,15 +2,11 @@
  * Get Url Parameter
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { getUrlParameter, Text } from 'components'
 
 export default {
   title: 'Utils/GetUrlParameters',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

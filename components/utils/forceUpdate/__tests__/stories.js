@@ -2,15 +2,11 @@
  * Force Update
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { Button, RandomColor, useForceUpdate } from 'components'
 
 export default {
   title: 'Utils/forceUpdate',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

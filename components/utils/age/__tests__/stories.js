@@ -2,9 +2,6 @@
  * Age
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
@@ -32,7 +29,6 @@ export default {
       control: { type: ControlTypes.Date }
     }
   },
-  decorators: [Wrapper],
   title: 'Utils/Age',
   parameters: {
     docs: {

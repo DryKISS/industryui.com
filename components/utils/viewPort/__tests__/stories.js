@@ -7,15 +7,11 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import Readme from '../README.md'
 import { Text, viewPort } from 'components'
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 export default {
   args: {
     WindowViewPort: false
   },
   title: 'Utils/ViewPort',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

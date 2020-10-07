@@ -4,15 +4,11 @@
 // React
 import { useState } from 'react'
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { Button, debounce, Text } from 'components'
 
 export default {
   title: 'Utils/Debounce',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

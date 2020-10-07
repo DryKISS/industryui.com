@@ -2,9 +2,6 @@
  * getAcronym
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { getAcronym, Text } from 'components'
 
@@ -13,7 +10,6 @@ export default {
     fullText: 'dont repeat yourself, keep it stupid simple'
   },
   title: 'Utils/GetAcronym',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

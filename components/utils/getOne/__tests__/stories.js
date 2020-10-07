@@ -2,15 +2,11 @@
  * getOne
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { getOne, Space, Text } from 'components'
 
 export default {
   title: 'Utils/GetOne',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

@@ -8,12 +8,8 @@ import Readme from '../README.md'
 import { ResizeDetector } from 'components'
 import styled from 'styled-components'
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 export default {
   title: 'Utils/ResizeDetetor',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

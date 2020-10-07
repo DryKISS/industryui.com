@@ -2,9 +2,6 @@
  * Format Price
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { formatPrice, Text } from 'components'
 
@@ -13,7 +10,6 @@ export default {
     price: 123456789
   },
   title: 'Utils/formatPrice',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

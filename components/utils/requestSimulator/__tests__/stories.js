@@ -4,15 +4,11 @@
 // React
 import { useState } from 'react'
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { Button, requestSimulator, Text } from 'components'
 
 export default {
   title: 'Utils/RequestSimulator',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

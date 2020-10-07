@@ -4,16 +4,14 @@
 // React
 import { useEffect, useState } from 'react'
 
-// Storybook
-import { Wrapper } from 'decorators'
 import Readme from '../README.md'
 import { convertImgUrlToDataURLviaCanvas } from 'components'
+
 // Ui
 import styled from 'styled-components'
 
 export default {
   title: 'Utils/ConvertImgUrlToDataURLviaCanvas',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

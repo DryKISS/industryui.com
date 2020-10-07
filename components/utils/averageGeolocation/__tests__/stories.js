@@ -2,9 +2,6 @@
  * Average Geolocation
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 import Readme from '../README.md'
 import { averageGeolocation, Text, Space } from 'components'
 
@@ -24,7 +21,6 @@ export default {
     coordinatesArray: { name: 'Coordinates Array' }
   },
   title: 'Utils/AverageGeolocation',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {

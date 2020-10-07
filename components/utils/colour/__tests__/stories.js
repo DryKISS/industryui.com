@@ -2,9 +2,6 @@
  * Colour
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { blendLinearRgb, ControlTypes, shadeLinearRgb } from 'components'
 
@@ -26,7 +23,6 @@ export default {
     }
   },
   title: 'Utils/Colour',
-  decorators: [Wrapper],
   parameters: {
     docs: {
       description: {
