@@ -1,8 +1,9 @@
 /**
- * Capitalise
+ * Debounce
  */
 // React
 import { useState } from 'react'
+
 // Storybook
 import { Wrapper } from 'decorators'
 

@@ -1,5 +1,5 @@
 /**
- * Random Color
+ * Rwsize Detector
  */
 // React
 import { useState } from 'react'

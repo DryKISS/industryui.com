@@ -1,5 +1,5 @@
 /**
- * getAcronym
+ * viewPort
  */
 
 // Storybook
@@ -19,9 +19,5 @@ export default {
 }
 
 export const ViewPort = () => {
-  return (
-    <>
-      <Text>viewport Width: {viewPort()}px</Text>
-    </>
-  )
+  return <Text>viewport Width: {viewPort()}px</Text>
 }

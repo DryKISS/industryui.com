@@ -1,5 +1,5 @@
 /**
- * getAcronym
+ * convert Img Url To Data URL via Canvas
  */
 // React
 import { useEffect, useState } from 'react'

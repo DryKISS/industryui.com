@@ -1,5 +1,5 @@
 /**
- * Capitalise
+ * Format Price
  */
 
 // Storybook

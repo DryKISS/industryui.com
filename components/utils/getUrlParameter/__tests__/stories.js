@@ -1,5 +1,5 @@
 /**
- * getAcronym
+ * Get Url Parameter
  */
 
 // Storybook
