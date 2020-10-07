@@ -4,12 +4,12 @@
 // React
 import { useState } from 'react'
 
+import Readme from '../README.md'
+import { ResizeDetector } from 'components'
+import styled from 'styled-components'
+
 // Storybook
 import { Wrapper } from 'decorators'
-
-import Readme from '../README.md'
-import styled from 'styled-components'
-import { ResizeDetector } from 'components'
 
 export default {
   title: 'Utils/ResizeDetetor',
