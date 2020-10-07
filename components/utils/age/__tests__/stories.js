@@ -35,8 +35,10 @@ export default {
   decorators: [Wrapper],
   title: 'Utils/Age',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
