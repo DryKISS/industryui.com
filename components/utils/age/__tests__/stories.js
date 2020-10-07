@@ -19,6 +19,7 @@ import {
   Text,
   useForm
 } from 'components'
+
 import Readme from '../README.md'
 
 export default {
@@ -31,8 +32,8 @@ export default {
       control: { type: ControlTypes.Date }
     }
   },
-  title: 'Utils/Age',
   decorators: [Wrapper],
+  title: 'Utils/Age',
   parameters: {
     readme: {
       sidebar: Readme
@@ -46,9 +47,9 @@ export const main = args => {
   const defaultProps = {
     control: control,
     errors: errors,
+    locale: enGB,
     minDate: null,
-    name: 'birthDate',
-    locale: enGB
+    name: 'birthDate'
   }
 
   const onSubmit = data => {}

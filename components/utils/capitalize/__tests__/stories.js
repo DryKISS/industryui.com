@@ -9,6 +9,9 @@ import Readme from '../README.md'
 import { capitalize, Text } from 'components'
 
 export default {
+  args: {
+    text: 'yellow submarine'
+  },
   title: 'Utils/Capitalize',
   decorators: [Wrapper],
   parameters: {
@@ -18,11 +21,11 @@ export default {
   }
 }
 
-export const Capitalize = () => {
+export const Capitalize = args => {
   return (
     <>
-      <Text>original: lorem</Text>
-      <Text>Capitalized: {capitalize('lorem ')} </Text>
+      <Text>original: {args.text}</Text>
+      <Text>Capitalized: {capitalize(args.text)} </Text>
     </>
   )
 }

@@ -6,7 +6,7 @@
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { Text, getUrlParameter } from 'components'
+import { getUrlParameter, Text } from 'components'
 
 export default {
   title: 'Utils/GetUrlParameters',

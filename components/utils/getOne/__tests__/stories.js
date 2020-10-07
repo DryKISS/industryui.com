@@ -6,7 +6,7 @@
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { Text, getOne } from 'components'
+import { getOne, Space, Text } from 'components'
 
 export default {
   title: 'Utils/GetOne',
@@ -28,8 +28,12 @@ export const GetOne = () => {
   ]
   return (
     <>
-      <Text>elements of should have unique id</Text>
-      <Text> array: {JSON.stringify(arr)} </Text>
+      <Space>
+        <Text>elements of the array should have unique id</Text>
+      </Space>
+      <Space>
+        <Text> array: {JSON.stringify(arr)} </Text>
+      </Space>
       <Text> element with id=2: {JSON.stringify(getOne(2, arr))} </Text>
     </>
   )

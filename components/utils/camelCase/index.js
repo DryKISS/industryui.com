@@ -3,12 +3,11 @@
  */
 
 // Utils
-import { capitalize } from 'components'
 
 export const camelCase = string => {
-  return capitalize(
-    string.replace(/([A-Z])/g, match => {
-      return ' ' + match
+  return string
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase()
     })
-  )
+    .replace(/\s+/g, '')
 }

@@ -6,7 +6,7 @@
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { Text, formatPrice } from 'components'
+import { formatPrice, Text } from 'components'
 
 export default {
   args: {

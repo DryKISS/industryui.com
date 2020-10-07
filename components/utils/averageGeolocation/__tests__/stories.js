@@ -6,7 +6,7 @@
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { Text, averageGeolocation } from 'components'
+import { averageGeolocation, Text } from 'components'
 
 export default {
   title: 'Utils/AverageGeolocation',

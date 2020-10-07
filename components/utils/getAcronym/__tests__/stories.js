@@ -6,9 +6,12 @@
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { Text, getAcronym } from 'components'
+import { getAcronym, Text } from 'components'
 
 export default {
+  args: {
+    fullText: 'dont repeat yourself, keep it stupid simple'
+  },
   title: 'Utils/GetAcronym',
   decorators: [Wrapper],
   parameters: {
@@ -18,11 +21,11 @@ export default {
   }
 }
 
-export const GetAcronym = () => {
+export const GetAcronym = args => {
   return (
     <>
-      <Text> original: dont repeat yourself, keep it stupid simple </Text>
-      <Text> Acronym: {getAcronym('dont repeat yourself, keep it stupid simple')} </Text>
+      <Text> Original: {args.fullText} </Text>
+      <Text> Acronym: {getAcronym(args.fullText)} </Text>
     </>
   )
 }

@@ -6,9 +6,12 @@
 import { Wrapper } from 'decorators'
 
 import Readme from '../README.md'
-import { Text, camelCase } from 'components'
+import { camelCase, Text } from 'components'
 
 export default {
+  args: {
+    text: 'Imagine there is no heaven'
+  },
   title: 'Utils/CamelCase',
   decorators: [Wrapper],
   parameters: {
@@ -18,11 +21,11 @@ export default {
   }
 }
 
-export const CamelCase = () => {
+export const CamelCase = args => {
   return (
     <>
-      <Text>original: lorem ipsum is</Text>
-      <Text>camel cased: {camelCase('lorem ipsum is ')} </Text>
+      <Text>original: {args.text}</Text>
+      <Text>camel cased: {camelCase(args.text)} </Text>
     </>
   )
 }

@@ -6,9 +6,9 @@
 import { Wrapper } from 'decorators'
 
 // UI
-import { blendLinearRgb, shadeLinearRgb } from 'components'
+import { blendLinearRgb, ControlTypes, shadeLinearRgb } from 'components'
+
 import Readme from '../README.md'
-import { ControlTypes } from 'components/constants/controlTypes'
 
 export default {
   args: {
