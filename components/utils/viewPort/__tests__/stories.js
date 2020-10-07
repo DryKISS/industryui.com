@@ -35,7 +35,9 @@ export const ViewPort = args => {
 
   return (
     <div ref={ref}>
-      <Text>viewport Width: {Width}px</Text>
+      <Text>
+        {args.WindowViewPort ? 'window' : 'component'} Width: {Width}px
+      </Text>
     </div>
   )
 }
