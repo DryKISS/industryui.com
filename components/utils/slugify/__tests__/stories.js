@@ -5,16 +5,12 @@
 // React
 import React, { useState } from 'react'
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { slugify } from '../../../'
 import Readme from '../README.md'
 
 export default {
   title: 'Utils/Slugify',
-  decorators: [Wrapper],
   parameters: {
     readme: {
       sidebar: Readme
