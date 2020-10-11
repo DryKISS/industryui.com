@@ -2,17 +2,11 @@
  * Icon
  */
 
+// Stroybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import {
-  arrayOfValues,
-  blendLinearRgb,
-  Card,
-  CONTEXT,
-  ControlTypes,
-  Heading,
-  Icon,
-  SIZE
-} from 'components'
+import { arrayOfValues, blendLinearRgb, Card, CONTEXT, Heading, Icon, SIZE } from 'components'
 
 import Readme from '../README.md'
 
@@ -23,8 +17,10 @@ export default {
   title: 'Atoms/Icon',
   component: Icon,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

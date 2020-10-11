@@ -18,8 +18,10 @@ export default {
   title: 'Molecules/Pagination',
   component: Pagination,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

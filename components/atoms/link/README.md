@@ -1,5 +1,3 @@
-# Link
-
 Link component to create the differentiation between internal and external links.
 Currently this uses Next/Link.
 

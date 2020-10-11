@@ -13,8 +13,10 @@ export default {
   component: InputGroup,
   title: 'Form/InputGroup',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -38,7 +40,7 @@ export const prependButton = () => {
   return (
     <BaseComponent>
       <InputGroupAddon addonType='prepend'>
-        <Button content='Search' type='submit' />
+        <Button content='Search' type='submit' size='sm' />
       </InputGroupAddon>
 
       <Input />
@@ -64,7 +66,7 @@ export const appendButton = () => {
       <Input />
 
       <InputGroupAddon addonType='append'>
-        <Button content='Search' type='submit' />
+        <Button content='Search' type='submit' size='sm' />
       </InputGroupAddon>
     </BaseComponent>
   )

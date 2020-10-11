@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Dog/Name',
   component: DogName,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

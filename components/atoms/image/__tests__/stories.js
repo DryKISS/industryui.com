@@ -10,8 +10,10 @@ export default {
   title: 'Atoms/Image',
   component: Image,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

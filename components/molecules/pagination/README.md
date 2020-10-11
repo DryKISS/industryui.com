@@ -1,5 +1,3 @@
-# Pagination
-
 Create a pageable tool for users to navigate to any additional data
 
 ## Props
@@ -11,8 +9,8 @@ Create a pageable tool for users to navigate to any additional data
 
 ## Links
 
-- [Bootstrap](https://getbootstrap.com/docs/4.3/components/pagination/)
-- [Tutorial](https://scotch.io/tutorials/build-custom-pagination-with-react)
+[Bootstrap](https://getbootstrap.com/docs/4.3/components/pagination/)
+[Tutorial](https://scotch.io/tutorials/build-custom-pagination-with-react)
 
 ## Usage
 

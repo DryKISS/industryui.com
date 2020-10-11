@@ -2,16 +2,21 @@
  * Heading
  */
 
+// Storybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import { arrayOfValues, CONTEXT, ControlTypes, Heading } from 'components'
+import { arrayOfValues, CONTEXT, Heading } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Atoms/Heading',
   component: Heading,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -52,5 +57,10 @@ HeadingComponent.args = {
 }
 
 HeadingComponent.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } }
+  context: {
+    control: {
+      options: arrayOfValues(CONTEXT),
+      type: ControlTypes.Select
+    }
+  }
 }

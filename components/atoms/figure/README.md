@@ -1,3 +1,1 @@
-# Figure
-
 Figure

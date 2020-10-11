@@ -13,16 +13,19 @@ import Readme from '../README.md'
 import styled from 'styled-components'
 
 export default {
-  title: 'Utils/RandomColor',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Utils/RandomColor'
 }
 
 export const RandomColorCanvas = () => {
   const [Counter, setCounter] = useState(0)
+
   return (
     <ColorWrapper
       onClick={() => {
@@ -36,9 +39,9 @@ export const RandomColorCanvas = () => {
 }
 
 const ColorWrapper = styled.div`
-  width: 100%;
-  height: 200px;
   display: grid;
-  place-content: center;
   font-size: 2rem;
+  height: 200px;
+  place-content: center;
+  width: 100%;
 `

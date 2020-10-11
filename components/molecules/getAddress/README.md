@@ -1,5 +1,3 @@
-# Get Address
-
 Allows the user to enter a UK postcode and select the address returned by
 https://getaddress.io/
 

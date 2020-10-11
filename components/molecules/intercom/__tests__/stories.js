@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Intercom',
   component: Intercom,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

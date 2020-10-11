@@ -19,8 +19,10 @@ export default {
   title: 'Organisms/Color Picker',
   components: ColorPicker,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

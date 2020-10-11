@@ -23,13 +23,15 @@ import {
 const dataContext = rowsContext.data
 
 export default {
-  title: 'Molecules/Table',
   component: Table,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Molecules/Table'
 }
 
 const BaseComponent = (props = {}) => {

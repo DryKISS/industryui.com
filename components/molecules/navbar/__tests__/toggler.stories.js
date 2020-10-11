@@ -9,10 +9,12 @@ import Readme from '../README.md'
 
 export default {
   component: Toggler,
-  title: 'Molecules/Navbar',
+  title: 'Molecules/Navbar/Toggler',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

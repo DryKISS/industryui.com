@@ -2,18 +2,31 @@
  * Button - Toolbar
  */
 
+// Storybook
+import { AlignControl, SizeControl } from 'decorators'
+
 // UI
-import { ALIGN, arrayOfValues, ControlTypes, Button, ButtonToolbar, Icon, SIZE } from 'components'
+import { ALIGN, Button, ButtonToolbar, Icon, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Button/Toolbar',
+  args: {
+    align: ALIGN.Start,
+    size: SIZE.MD
+  },
+  argTypes: {
+    align: AlignControl(),
+    size: SizeControl()
+  },
   component: ButtonToolbar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Button/Toolbar'
 }
 
 const Children = ({ size }) => {
@@ -30,22 +43,10 @@ const Children = ({ size }) => {
   )
 }
 
-const BaseComponent = ({ ...args }) => {
+export const main = args => {
   return (
     <ButtonToolbar {...args}>
       <Children size={args.size} />
     </ButtonToolbar>
   )
-}
-
-export const buttonToolbar = BaseComponent.bind({})
-
-buttonToolbar.args = {
-  align: ALIGN.Start,
-  size: SIZE.MD
-}
-
-buttonToolbar.argTypes = {
-  align: { control: { type: ControlTypes.Select, options: arrayOfValues(ALIGN) } },
-  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
 }

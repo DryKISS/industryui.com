@@ -10,8 +10,10 @@ export default {
   title: 'Form/Dropzone/Standard',
   component: Dropzone,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

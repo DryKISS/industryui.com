@@ -1,5 +1,3 @@
-# Select
-
 Select component
 
 ## Links

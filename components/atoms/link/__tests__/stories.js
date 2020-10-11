@@ -12,13 +12,15 @@ import { Button, Divider, Link } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Link',
   component: Link,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Link'
 }
 
 const BaseComponent = (props = {}) => {

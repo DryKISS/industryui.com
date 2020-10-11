@@ -9,7 +9,6 @@ import { object, string } from 'yup'
 import {
   Button,
   Form,
-  FormError,
   FormLabel,
   SelectField,
   SelectCountryField,
@@ -25,8 +24,10 @@ export default {
   title: 'Form/Select',
   component: SelectField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -36,7 +37,9 @@ const BaseComponent = (props = {}) => {
     select: string().required()
   })
 
-  const { errors, getValues, handleSubmit, register } = useForm({ resolver: yupResolver(schema) })
+  const { errors, getValues, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
+  })
 
   const onSubmit = data => {}
 
@@ -63,7 +66,6 @@ const BaseComponent = (props = {}) => {
       <Button content='Submit' type='submit' />
 
       {getValues() && <Text>{getValues().select}</Text>}
-      {errors.select && <FormError message={errors.select.message} />}
     </Form>
   )
 }

@@ -10,8 +10,10 @@ export default {
   title: 'Atoms/DetailsText',
   component: DetailsText,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

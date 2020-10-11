@@ -10,8 +10,10 @@ export default {
   title: 'Layouts/Page',
   component: Page,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

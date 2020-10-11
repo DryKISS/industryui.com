@@ -15,8 +15,10 @@ export default {
   title: 'Molecules/Notification',
   component: Notification,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -1,5 +1,3 @@
-# Navbar
-
 Navbar utilises the HTML5 nav tag with classes to define style and positioning. By default the
 Navbar is fluid with a 3rem padding left and right.
 

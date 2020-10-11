@@ -3,8 +3,7 @@
  */
 
 // UI
-import { FormError } from '../'
-import { SIZE, Space, Text } from 'components'
+import { FormError, SIZE, Space, Text } from '../../'
 
 export const FieldHOC = ({
   component: Component,

@@ -18,8 +18,10 @@ import { Default } from '../__mocks__/navbar'
 export default {
   title: 'Molecules/Navbar/Theme',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   },
   ...options

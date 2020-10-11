@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Section',
   component: Section,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

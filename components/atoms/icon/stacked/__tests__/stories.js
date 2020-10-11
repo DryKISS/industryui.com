@@ -10,8 +10,10 @@ export default {
   title: 'Atoms/Icon/Stacked',
   component: IconStacked,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

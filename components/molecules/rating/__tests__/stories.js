@@ -14,8 +14,10 @@ export default {
   title: 'Molecules/Rating',
   component: Rating,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

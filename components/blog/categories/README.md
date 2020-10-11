@@ -1,5 +1,3 @@
-# Blog - Categories
-
 ## Proxy pages
 
 - [ ] From the data set need to build in proxy pages for

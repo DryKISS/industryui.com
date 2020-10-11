@@ -13,8 +13,10 @@ export default {
   title: 'Blog/Categories',
   component: BlogCategories,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

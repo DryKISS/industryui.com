@@ -22,8 +22,10 @@ export default {
   title: 'Molecules/Charts/Nivo/Pie',
   component: PieChart,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
