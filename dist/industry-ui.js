@@ -21,8 +21,12 @@ var reactHookForm = require('react-hook-form');
 var ReactDatePicker = require('react-datepicker');
 var reactDropzone = require('react-dropzone');
 var Dropzone$1 = require('react-dropzone-uploader');
+var draftJs = require('draft-js');
 var Select = require('react-select');
 var AsyncSelect = require('react-select/async');
+var reactDraftWysiwyg = require('react-draft-wysiwyg');
+var draftToHtml = require('draftjs-to-html');
+require('react-draft-wysiwyg/dist/react-draft-wysiwyg.css');
 var _range = require('lodash/range');
 var bar = require('@nivo/bar');
 var colors = require('@nivo/colors');
@@ -37,19 +41,11 @@ var chunk = require('lodash/chunk');
 var Router = require('next/router');
 var reactBigCalendar = require('react-big-calendar');
 var dynamic = require('next/dynamic');
-var isString = require('lodash/isString');
-var forOwn = require('lodash/forOwn');
-var isPlainObject = require('lodash/isPlainObject');
-var map = require('lodash/map');
-var merge$1 = require('lodash/merge');
-var throttle = require('lodash/throttle');
-var debounce$3 = require('lodash/debounce');
-var each = require('lodash/each');
-var isUndefined = require('lodash/isUndefined');
-var draftJs = require('draft-js');
+var reactColor = require('react-color');
 var yup$1 = require('yup');
 var _filter = require('lodash/filter');
 var client = require('@apollo/client');
+var merge$1 = require('lodash/merge');
 var App = require('next/app');
 var TagManager = require('react-gtm-module');
 
@@ -91,40 +87,16 @@ var ReactDatePicker__default = /*#__PURE__*/_interopDefaultLegacy(ReactDatePicke
 var Dropzone__default = /*#__PURE__*/_interopDefaultLegacy(Dropzone$1);
 var Select__default = /*#__PURE__*/_interopDefaultLegacy(Select);
 var AsyncSelect__default = /*#__PURE__*/_interopDefaultLegacy(AsyncSelect);
+var draftToHtml__default = /*#__PURE__*/_interopDefaultLegacy(draftToHtml);
 var _range__default = /*#__PURE__*/_interopDefaultLegacy(_range);
 var util__default = /*#__PURE__*/_interopDefaultLegacy(util$1);
 var chunk__default = /*#__PURE__*/_interopDefaultLegacy(chunk);
 var Router__default = /*#__PURE__*/_interopDefaultLegacy(Router);
 var dynamic__default = /*#__PURE__*/_interopDefaultLegacy(dynamic);
-var isString__default = /*#__PURE__*/_interopDefaultLegacy(isString);
-var forOwn__default = /*#__PURE__*/_interopDefaultLegacy(forOwn);
-var isPlainObject__default = /*#__PURE__*/_interopDefaultLegacy(isPlainObject);
-var map__default = /*#__PURE__*/_interopDefaultLegacy(map);
-var merge__default = /*#__PURE__*/_interopDefaultLegacy(merge$1);
-var throttle__default = /*#__PURE__*/_interopDefaultLegacy(throttle);
-var debounce__default = /*#__PURE__*/_interopDefaultLegacy(debounce$3);
-var each__default = /*#__PURE__*/_interopDefaultLegacy(each);
-var isUndefined__default = /*#__PURE__*/_interopDefaultLegacy(isUndefined);
 var _filter__default = /*#__PURE__*/_interopDefaultLegacy(_filter);
+var merge__default = /*#__PURE__*/_interopDefaultLegacy(merge$1);
 var App__default = /*#__PURE__*/_interopDefaultLegacy(App);
 var TagManager__default = /*#__PURE__*/_interopDefaultLegacy(TagManager);
-
-var ControlTypes = {
-  Array: 'array',
-  Boolean: 'boolean',
-  Color: 'color',
-  Check: 'check',
-  Date: 'date',
-  InlineCheck: 'inline-check',
-  InlineRadio: 'inline-radio',
-  Object: 'object',
-  MultiSelect: 'multi-select',
-  Number: 'number',
-  Radio: 'radio',
-  Range: 'range',
-  Select: 'select',
-  Text: 'text'
-};
 
 /**
  * Country
@@ -2826,9 +2798,6 @@ var useInterval = function useInterval(callback, delay) {
 
 /**
  * Hooks - useForm
- *
- * Imported from react-hook-form package
- *
  */
 var _require = require('react-hook-form'),
     Controller = _require.Controller,
@@ -3016,6 +2985,9 @@ var arrayOfKeys = function arrayOfKeys(obj) {
   return arr;
 };
 
+/**
+ * Array of Values
+ */
 var arrayOfValues = function arrayOfValues(obj) {
   var arr = [];
 
@@ -3075,9 +3047,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /**
- * Get average geolocation center
- * @param {Array<Object>} coords
- * coords param example: [{lat: 51.47, lng: -0.0035}, {lat: 52.47, lng: -0.0045}]
+ * average geolocation center
+ * @param {Array<{lat:number,lng:number}>} coords
  */
 var averageGeolocation = function averageGeolocation(coords) {
   if (coords.length === 1) {
@@ -3122,10 +3093,11 @@ var averageGeolocation = function averageGeolocation(coords) {
 /**
  * Utils - Camel Case
  */
+// Utils
 var camelCase = function camelCase(string) {
-  return capitalize(string.replace(/([A-Z])/g, function (match) {
-    return ' ' + match;
-  }));
+  return string.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+/g, '');
 };
 
 /**
@@ -3279,8 +3251,6 @@ var shortDate = function shortDate(string) {
 
 /**
  * Debounce
- * Returns a function, that, as long as it continues to be invoked, will not be triggered. The
- * function will be called after it stops being called for N milliseconds.
  */
 function debounce(callback, wait) {
   var immediate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -3303,6 +3273,25 @@ function debounce(callback, wait) {
     }
   };
 }
+
+/**
+ * Components - Suppliers - SSIP - Force Update
+ */
+var useForceUpdate = function useForceUpdate() {
+  var _useState = React.useState(1),
+      value = _useState[0],
+      setValue = _useState[1]; // integer state
+
+
+  var forceUpdate = function forceUpdate() {
+    return setValue(function (value) {
+      return ++value;
+    });
+  }; // update the state to force render
+
+
+  return [forceUpdate, value];
+};
 
 /**
  * Format date
@@ -3380,7 +3369,7 @@ var formatRelativeTime = function formatRelativeTime(date) {
 };
 
 /**
- * Format a price (assuming a two-decimal currency like EUR or USD for simplicity).
+ * Format Price
  */
 var formatPrice = function formatPrice(amount) {
   var currency = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GBP';
@@ -3393,7 +3382,7 @@ var formatPrice = function formatPrice(amount) {
 };
 
 /**
- * Get Acronym of a string - Example: "Java Script Object Notation" -> "JSON"
+ * Get Acronym
  */
 var getAcronym = function getAcronym(string) {
   var matches = string.match(/\b(\w)/g);
@@ -3421,6 +3410,7 @@ var getUrlParameter = function getUrlParameter(name) {
   name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
   var results = regex.exec(window.location.search);
+  console.log(window.location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
@@ -4692,26 +4682,31 @@ ReactHolderJs.defaultProps = {
 var __jsx$1 = React__default['default'].createElement;
 var ResizeDetector = reactResizeDetector.withResizeDetector( /*#__PURE__*/React.memo(function (_ref) {
   var height = _ref.height,
-      width = _ref.width,
-      onResize = _ref.onResize;
+      onResize = _ref.onResize,
+      style = _ref.style,
+      width = _ref.width;
   window.requestAnimationFrame(function () {
     return onResize({
       height: height,
       width: width
     });
   });
-  return __jsx$1("div", {
-    style: {
-      width: '100%',
-      height: '100%'
-    }
+  return __jsx$1(ResizeDetectorWrapper, {
+    style: style
   });
 }, function (_ref2, _ref3) {
   var prevWidth = _ref2.width;
   var nextWidth = _ref3.width;
   return prevWidth === nextWidth;
 }));
+var ResizeDetectorWrapper = styled__default['default'].div.withConfig({
+  displayName: "resizeDetector__ResizeDetectorWrapper",
+  componentId: "sc-1agzfum-0"
+})(["height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;"]);
 
+/**
+ * mimics a request to server
+ */
 function requestSimulator() {
   return _requestSimulator.apply(this, arguments);
 }
@@ -4739,6 +4734,9 @@ function _requestSimulator() {
             });
 
           case 4:
+            return _context.abrupt("return", _context.sent);
+
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -4833,7 +4831,7 @@ var viewPort = function viewPort(source) {
 };
 
 /**
- * Theme - Variables - Colour
+ * Theme - Constants - Align
  */
 var ALIGN = {
   Start: 'flex-start',
@@ -4848,8 +4846,7 @@ var ALIGN = {
 };
 
 /**
- * Context
- * Provides a list of the accepted colours
+ * Theme - Constants - Context
  */
 var CONTEXT = {
   DARKGREY: 'darkGrey',
@@ -4869,6 +4866,9 @@ var CONTEXT = {
   TRANSPARENT: 'transparent'
 };
 
+/**
+ * Theme - Constants - Contaxt Arrat
+ */
 var contextArray = function () {
   var array = [];
 
@@ -4880,8 +4880,7 @@ var contextArray = function () {
 }();
 
 /**
- * Size
- * Provides a list of the accepted sizes
+ *  Theme - Constants - Size
  */
 var SIZE = {
   XXS: 'xxs',
@@ -4894,6 +4893,9 @@ var SIZE = {
   XXXL: 'xxxl'
 };
 
+/**
+ * Theme - Constants - Size Array
+ */
 var sizeArray = function () {
   var array = [];
 
@@ -4904,6 +4906,9 @@ var sizeArray = function () {
   return array;
 }();
 
+/**
+ * Theme - Constants - Position
+ */
 var Position = {
   Bottom: 'bottom',
   Top: 'top',
@@ -4934,7 +4939,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  .Form-feedback {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n  }\n\n  .Form-validated .Form-control:valid~.Form-feedback {\n    display: none;\n  }\n\n  .Form-validated .Form-control:invalid {\n    border-color: #dc3545;\n  }\n\n  .text-center {\n    text-align: center;\n  }\n\n  .text-right {\n    text-align: right;\n  }\n\n  .text-white {\n    color: #fff;\n  }\n\n  .float-left {\n    float: left;\n  }\n\n  .float-right {\n    float: right;\n  }\n\n  .d-none {\n    display: none;\n  }\n\n  .d-md-block {\n    ", "\n  }\n\n  #iubenda_policy .iub_content {\n    padding: 0 !important;\n  }\n\n  #iubenda_policy.iubenda_fluid_policy .iub_container {\n    margin: 0 !important;\n  }\n\n  /* Normalise */\n  html {\n    box-sizing: border-box;\n    font-size: 16px;\n    line-height: 1.5;\n  }\n\n  *, *::before, *::after {\n    box-sizing: border-box;\n  }\n\n  body {\n    color: ", ";\n    font-family: ", ", sans-serif;\n    margin: 0;\n    position: relative;\n  }\n\n  .fc-event {\n    cursor: pointer;\n  }\n\n  pre {\n    font-family: monospace;\n    font-size: 1em;\n  }\n\n  abbr[title] {\n    border-bottom: none;\n    text-decoration: underline;\n    text-decoration: underline dotted;\n  }\n\n  b,\n  strong {\n    font-weight: bolder;\n  }\n\n  code,\n  kbd,\n  samp {\n    font-family: monospace;\n    font-size: 1em;\n  }\n\n  small {\n    font-size: 80%;\n  }\n\n  sub,\n  sup {\n    font-size: 75%;\n    line-height: 0;\n    position: relative;\n    vertical-align: baseline;\n  }\n\n  sub {\n    bottom: -0.25em;\n  }\n\n  sup {\n    top: -0.5em;\n  }\n\n  img {\n    border-style: none;\n  }\n\n  input,\n  optgroup,\n  select,\n  textarea {\n    font-family: inherit;\n    font-size: 100%;\n    line-height: 1.15;\n    margin: 0;\n  }\n\n  input {\n    overflow: visible;\n  }\n\n  select {\n    text-transform: none;\n  }\n\n  button::-moz-focus-inner,\n  [type=\"button\"]::-moz-focus-inner,\n  [type=\"reset\"]::-moz-focus-inner,\n  [type=\"submit\"]::-moz-focus-inner {\n    border-style: none;\n    padding: 0;\n  }\n\n  button:-moz-focusring,\n  [type=\"button\"]:-moz-focusring,\n  [type=\"reset\"]:-moz-focusring,\n  [type=\"submit\"]:-moz-focusring {\n    outline: 1px dotted ButtonText;\n  }\n\n  fieldset {\n    border: 0;\n    margin-bottom: 1rem;\n    padding: 0.5rem 0 0;\n  }\n\n  legend {\n    box-sizing: border-box;\n    color: inherit;\n    display: table;\n    max-width: 100%;\n    padding: 0;\n    white-space: normal;\n  }\n\n  progress {\n    vertical-align: baseline;\n  }\n\n  textarea {\n    overflow: auto;\n  }\n\n  [type=\"checkbox\"],\n  [type=\"radio\"] {\n    box-sizing: border-box;\n    padding: 0;\n  }\n\n  [type=\"number\"]::-webkit-inner-spin-button,\n  [type=\"number\"]::-webkit-outer-spin-button {\n    height: auto;\n  }\n\n  [type=\"search\"] {\n    outline-offset: -2px;\n  }\n\n  ::-webkit-file-upload-button {\n    font: inherit;\n  }\n\n  details {\n    display: block;\n  }\n\n  summary {\n    display: list-item;\n  }\n\n  template {\n    display: none;\n  }\n\n  [hidden] {\n    display: none;\n  }\n  "]);
+  var data = _taggedTemplateLiteral(["\n  .text-center {\n    text-align: center;\n  }\n\n  .text-right {\n    text-align: right;\n  }\n\n  .text-white {\n    color: #fff;\n  }\n\n  .float-left {\n    float: left;\n  }\n\n  .float-right {\n    float: right;\n  }\n\n  .d-none {\n    display: none;\n  }\n\n  .d-md-block {\n    ", "\n  }\n\n  #iubenda_policy .iub_content {\n    padding: 0 !important;\n  }\n\n  #iubenda_policy.iubenda_fluid_policy .iub_container {\n    margin: 0 !important;\n  }\n\n  /* Normalise */\n  html {\n    box-sizing: border-box;\n    font-size: 16px;\n    line-height: 1.5;\n  }\n\n  *, *::before, *::after {\n    box-sizing: border-box;\n  }\n\n  body {\n    color: ", ";\n    font-family: ", ", sans-serif;\n    margin: 0;\n    position: relative;\n  }\n\n  .fc-event {\n    cursor: pointer;\n  }\n\n  abbr[title] {\n    border-bottom: none;\n    text-decoration: underline;\n    text-decoration: underline dotted;\n  }\n\n  b,\n  strong {\n    font-weight: bolder;\n  }\n\n  code,\n  kbd,\n  samp {\n    font-size: 1em;\n  }\n\n  small {\n    font-size: 80%;\n  }\n\n  sub,\n  sup {\n    font-size: 75%;\n    line-height: 0;\n    position: relative;\n    vertical-align: baseline;\n  }\n\n  sub {\n    bottom: -0.25em;\n  }\n\n  sup {\n    top: -0.5em;\n  }\n\n  img {\n    border-style: none;\n  }\n\n  input,\n  optgroup,\n  select {\n    font-family: inherit;\n    font-size: 100%;\n    line-height: 1.15;\n    margin: 0;\n  }\n\n  /* textarea {\n    overflow: auto;\n  } */\n\n  input {\n    overflow: visible;\n  }\n\n  select {\n    text-transform: none;\n  }\n\n  button::-moz-focus-inner,\n  [type=\"button\"]::-moz-focus-inner,\n  [type=\"reset\"]::-moz-focus-inner,\n  [type=\"submit\"]::-moz-focus-inner {\n    border-style: none;\n    padding: 0;\n  }\n\n  button:-moz-focusring,\n  [type=\"button\"]:-moz-focusring,\n  [type=\"reset\"]:-moz-focusring,\n  [type=\"submit\"]:-moz-focusring {\n    outline: 1px dotted ButtonText;\n  }\n\n  fieldset {\n    border: 0;\n    margin-bottom: 1rem;\n    padding: 0.5rem 0 0;\n  }\n\n  legend {\n    box-sizing: border-box;\n    color: inherit;\n    display: table;\n    max-width: 100%;\n    padding: 0;\n    white-space: normal;\n  }\n\n  progress {\n    vertical-align: baseline;\n  }\n\n  [type=\"checkbox\"],\n  [type=\"radio\"] {\n    box-sizing: border-box;\n    padding: 0;\n  }\n\n  [type=\"number\"]::-webkit-inner-spin-button,\n  [type=\"number\"]::-webkit-outer-spin-button {\n    height: auto;\n  }\n\n  [type=\"search\"] {\n    outline-offset: -2px;\n  }\n\n  ::-webkit-file-upload-button {\n    font: inherit;\n  }\n\n  details {\n    display: block;\n  }\n\n  summary {\n    display: list-item;\n  }\n\n  template {\n    display: none;\n  }\n\n  [hidden] {\n    display: none;\n  }\n  "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -5075,6 +5080,9 @@ var FONTSIZE = function FONTSIZE(_ref) {
   return "font-size: ".concat(fontSize > -1 ? theme.TYPOGRAPHY.fontSizes[fontSize] + 'px' : theme.TYPOGRAPHY.fontSizeBase, ";");
 };
 
+/**
+ * Theme - Utils - Form Styles
+ */
 var ERROR_STYLE = function ERROR_STYLE(_ref) {
   var theme = _ref.theme,
       isTyping = _ref.isTyping,
@@ -5182,12 +5190,10 @@ var fontSizeBase = '1rem;';
 var fontSizeLg = '($fontSizeBase * 1.25);';
 var fontSizeSm = '($fontSizeBase * .875);';
 var fonts = {
-  monospace: 'monospace',
-  sans: '"Muli", sans-serif'
+  sans: 'sans-serif'
 };
 var font = fonts.sans;
 var fontColour = '#6b7a87';
-var monospace = fonts.monospace;
 var fontFamilies = fonts;
 var fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 72, 96];
 var TYPOGRAPHY = {
@@ -5197,8 +5203,7 @@ var TYPOGRAPHY = {
   font: font,
   fontColour: fontColour,
   fontFamilies: fontFamilies,
-  fontSizes: fontSizes,
-  monospace: monospace
+  fontSizes: fontSizes
 };
 
 /**
@@ -5340,6 +5345,10 @@ var COPYRIGHT = {
   colour: COLOUR$1.black
 };
 
+var DROPDOWN = {
+  BORDER_COLOUR: 'rgb(149, 171, 182)'
+};
+
 /**
  * Footer - Variables
  */
@@ -5348,6 +5357,9 @@ var FOOTER = {
   colour: COLOUR$1.black
 };
 
+/**
+ * Form - Variables
+ */
 var FORM_ELEMENTS_STYLES = {
   inputBorderRadius: '.25rem'
 };
@@ -5641,7 +5653,9 @@ var PIECHART = {
   motionDamping: 15
 };
 
-// UI
+/**
+ * Progress - Variables
+ */
 var PROGRESS = {
   bgColor: COLOUR$1.light,
   borderRadius: '.25rem',
@@ -5749,6 +5763,7 @@ var Theme = {
   CALENDAR: CALENDAR,
   COLOUR: COLOUR$1,
   COPYRIGHT: COPYRIGHT,
+  DROPDOWN: DROPDOWN,
   FOOTER: FOOTER,
   FORM_ELEMENTS_STYLES: FORM_ELEMENTS_STYLES,
   GRID: GRID,
@@ -6271,7 +6286,7 @@ var getTextContext = function getTextContext(context, outline, theme) {
 var StyledButton = styled__default['default'].button.withConfig({
   displayName: "button__StyledButton",
   componentId: "n5qq37-0"
-})(["", " align-items:center;border:", ";border-radius:4px;box-sizing:border-box;color:", ";cursor:pointer;display:", ";font-size:14px;height:48px;justify-content:center;line-height:100%;outline:none;overflow:visible;text-decoration:none;text-transform:none;user-select:none;vertical-align:middle;white-space:nowrap;margin:", ";padding:", ";width:", ";", " ", " ", " ", " & + &{margin-top:", ";}&:hover{background-color:", ";border-color:", ";color:", ";}transition:all 0.1s ease-in-out;", " ", " ", " ", ""], function (props) {
+})(["", " align-items:center;border:", ";border-radius:.25rem;box-sizing:border-box;color:", ";cursor:pointer;display:", ";font-size:14px;height:3rem;justify-content:center;line-height:100%;outline:none;overflow:visible;text-decoration:none;text-transform:none;user-select:none;vertical-align:middle;white-space:nowrap;margin:", ";padding:", ";width:", ";", " ", " ", " ", " & + &{margin-top:", ";}&:hover{background-color:", ";border-color:", ";color:", ";}transition:all 0.1s ease-in-out;", " ", " ", " ", ""], function (props) {
   return BACKGROUND(props);
 }, function (_ref2) {
   var context = _ref2.context,
@@ -6395,7 +6410,7 @@ var Close = function Close(_ref) {
       click = _ref.click,
       context = _ref.context,
       icon = _ref.icon,
-      iconPrefix = _ref.iconPrefix;
+      prefix = _ref.prefix;
   return __jsx$b(StyledButton$1, {
     className: className,
     context: context,
@@ -6404,7 +6419,7 @@ var Close = function Close(_ref) {
     "aria-hidden": "true",
     context: context,
     icon: icon,
-    prefix: iconPrefix
+    prefix: prefix
   }));
 };
 var StyledButton$1 = styled__default['default'](Button).withConfig({
@@ -6420,60 +6435,98 @@ Close.propTypes = {
   click: propTypes.func.isRequired,
   context: propTypes.oneOf(Object.values(CONTEXT)),
   icon: propTypes.string,
-  iconPrefix: propTypes.string
+  prefix: propTypes.string
 };
 Close.defaultProps = {
   context: 'dark',
   icon: 'times-circle',
-  iconPrefix: 'fas'
+  prefix: 'fas'
 };
 
 var __jsx$c = React__default['default'].createElement;
 var Date$1 = function Date(_ref) {
-  var date = _ref.date;
-  return __jsx$c("time", {
+  var date = _ref.date,
+      size = _ref.size;
+  return __jsx$c(StyledTime, {
+    size: size,
     dateTime: date,
     itemProp: "datePublished",
     pubdate: "pubdate"
   }, date);
 };
+var StyledTime = styled__default['default'].time.withConfig({
+  displayName: "date__StyledTime",
+  componentId: "sc-1t9t69m-0"
+})(["", ""], function (_ref2) {
+  var _theme$TEXT_STYLE$FON, _theme$TEXT_STYLE$LIN, _ref3, _theme$TEXT_STYLE$FON2;
+
+  var size = _ref2.size,
+      theme = _ref2.theme;
+  return styled.css(["font-size:", ";line-height:", ";font-family:", ";color:", ";"], (_theme$TEXT_STYLE$FON = theme.TEXT_STYLE.FONT_SIZE[size]) !== null && _theme$TEXT_STYLE$FON !== void 0 ? _theme$TEXT_STYLE$FON : '1rem', (_theme$TEXT_STYLE$LIN = theme.TEXT_STYLE.LINE_HEIGHT[size]) !== null && _theme$TEXT_STYLE$LIN !== void 0 ? _theme$TEXT_STYLE$LIN : '1rem', (_ref3 = (_theme$TEXT_STYLE$FON2 = theme.TEXT_STYLE.FONT_FAMILY[size]) !== null && _theme$TEXT_STYLE$FON2 !== void 0 ? _theme$TEXT_STYLE$FON2 : theme.TEXT_STYLE.FONT_FAMILY["default"]) !== null && _ref3 !== void 0 ? _ref3 : 'sans-serif', theme.COLOUR.black);
+});
 Date$1.propTypes = {
   date: propTypes.string.isRequired
+};
+Date$1.defaultProps = {
+  size: 'md'
+};
+
+/**
+ * Details - Props
+ */
+var DetailsPropTypes = {
+  children: propTypes.node.isRequired,
+  context: propTypes.oneOf(Object.values(CONTEXT)),
+  open: propTypes.bool,
+  summary: propTypes.string.isRequired,
+  SummaryActionsComponent: propTypes.node,
+  style: propTypes.any,
+  Toolbar: propTypes.node
+};
+var DetailsDefaultProps = {
+  context: 'primary',
+  open: false
 };
 
 var __jsx$d = React__default['default'].createElement;
 var Details = function Details(_ref) {
   var children = _ref.children,
-      SummaryActionsComponent = _ref.SummaryActionsComponent,
+      context = _ref.context,
       open = _ref.open,
-      style = _ref.style,
       summary = _ref.summary,
+      SummaryActionsComponent = _ref.SummaryActionsComponent,
+      style = _ref.style,
       Toolbar = _ref.Toolbar,
-      props = _objectWithoutProperties(_ref, ["children", "SummaryActionsComponent", "open", "style", "summary", "Toolbar"]);
+      props = _objectWithoutProperties(_ref, ["children", "context", "open", "summary", "SummaryActionsComponent", "style", "Toolbar"]);
 
-  return __jsx$d(StyledDetails, _extends({
+  return __jsx$d(StyledDetails, {
+    context: context,
     open: open
-  }, props), __jsx$d(StyledSummary, null, summary, props.button && __jsx$d(StyledButton$2, {
+  }, __jsx$d(StyledSummary, null, summary, props.button && __jsx$d(StyledButton$2, {
     content: props.button || 'Add New',
     context: "secondary",
     onClick: props.handleClick,
     size: "sm"
-  }), SummaryActionsComponent && __jsx$d(ActionsWrapper, null, " ", SummaryActionsComponent), Toolbar && __jsx$d(Toolbar, null)), __jsx$d(StyledBody, {
+  }), SummaryActionsComponent && __jsx$d(ActionsWrapper, null, SummaryActionsComponent), Toolbar && __jsx$d(Toolbar, null)), __jsx$d(StyledBody, {
     style: style
   }, children));
 };
 var ActionsWrapper = styled__default['default'].div.withConfig({
   displayName: "details__ActionsWrapper",
   componentId: "sc-1tw1laa-0"
-})(["width:fit-content;float:right;"]);
+})(["float:right;width:fit-content;"]);
 var StyledDetails = styled__default['default'].details.withConfig({
   displayName: "details__StyledDetails",
   componentId: "sc-1tw1laa-1"
-})(["background-color:#fff;border:1px solid #eee;border-bottom:1px solid rgb(0,204,188);box-shadow:rgba(45,62,80,0.12) 0 1px 5px 0;margin-bottom:0.5rem;"]);
+})(["background-color:#fff;border:1px solid #eee;border-bottom:1px solid ", ";box-shadow:rgba(45,62,80,0.12) 0 1px 5px 0;margin-bottom:0.5rem;"], function (_ref2) {
+  var context = _ref2.context,
+      theme = _ref2.theme;
+  return theme.COLOUR[context];
+});
 var StyledSummary = styled__default['default'].summary.withConfig({
   displayName: "details__StyledSummary",
   componentId: "sc-1tw1laa-2"
-})(["font-weight:bold;cursor:pointer;outline:none;padding:1rem;position:relative;"]);
+})(["cursor:pointer;font-weight:bold;outline:none;padding:1rem;position:relative;"]);
 var StyledButton$2 = styled__default['default'](Button).withConfig({
   displayName: "details__StyledButton",
   componentId: "sc-1tw1laa-3"
@@ -6482,14 +6535,8 @@ var StyledBody = styled__default['default'].div.withConfig({
   displayName: "details__StyledBody",
   componentId: "sc-1tw1laa-4"
 })(["font-size:1rem;padding:0 1rem 1rem;"]);
-Details.propTypes = {
-  children: propTypes.node.isRequired,
-  open: propTypes.bool,
-  summary: propTypes.string.isRequired
-};
-Details.defaultProps = {
-  open: false
-};
+Details.propTypes = DetailsPropTypes;
+Details.defaultProps = DetailsDefaultProps;
 
 var __jsx$e = React__default['default'].createElement;
 var DetailsText = function DetailsText(_ref) {
@@ -7305,7 +7352,7 @@ ProgressBar.defaultProps = {
 };
 
 /**
- * Progress Bar Div
+ * Progress - Bar Div
  */
 var ProgressBarStripesAnimation = styled.keyframes(["0%{background-position:1rem 0;}100%{background-position:0 0;}"]);
 var ProgressBarDiv = styled__default['default'].div.withConfig({
@@ -11230,10 +11277,9 @@ var CheckboxComponent = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
       props = _objectWithoutProperties(_ref, ["disabled"]);
 
   return __jsx$v(StyledCheckbox, _extends({
-    className: "Form-control",
     disabled: disabled,
-    type: "checkbox",
-    ref: ref
+    ref: ref,
+    type: "checkbox"
   }, props));
 });
 var StyledCheckbox = styled__default['default'].input.withConfig({
@@ -11843,7 +11889,7 @@ var FormError = function FormError(_ref) {
 };
 var StyledSmall = styled__default['default'].small.withConfig({
   displayName: "error__StyledSmall",
-  componentId: "iamyx7-0"
+  componentId: "qya04k-0"
 })(["color:", ";display:block;font-size:0.625rem;font-weight:400;width:100%;"], function (_ref2) {
   var theme = _ref2.theme,
       colour = _ref2.colour;
@@ -11947,11 +11993,11 @@ var FormField = function FormField(_ref) {
     },
     errors: errors[name],
     isTyping: isTyping,
-    register: register,
     key: name,
     name: name,
     placeholder: placeholder,
     readOnly: readOnly,
+    register: register,
     size: size,
     withAddon: withAddon
   }, props));
@@ -12000,7 +12046,6 @@ FormField.propTypes = {
   placeholder: propTypes.string,
   readOnly: propTypes.bool,
   register: propTypes.func.isRequired,
-  Required: propTypes.bool,
   size: propTypes.oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
   style: propTypes.object,
   type: propTypes.string,
@@ -12011,7 +12056,6 @@ FormField.defaultProps = {
   autoFocus: false,
   disabled: false,
   readOnly: false,
-  Required: false,
   type: 'text'
 };
 
@@ -12053,23 +12097,27 @@ PercentInput.defaultProps = {
 var __jsx$I = React__default['default'].createElement;
 var Form = function Form(_ref) {
   var children = _ref.children,
+      className = _ref.className,
       handleSubmit = _ref.handleSubmit,
       id = _ref.id,
       style = _ref.style;
   return __jsx$I(StyledForm, {
-    style: style,
+    className: className,
     id: id,
-    onSubmit: handleSubmit
+    onSubmit: handleSubmit,
+    style: style
   }, children);
 };
 var StyledForm = styled__default['default'].form.withConfig({
   displayName: "form__StyledForm",
-  componentId: "sc-1xzfw2m-0"
+  componentId: "sc-88j1vz-0"
 })(["margin-bottom:1rem;"]);
 Form.propTypes = {
   children: propTypes.node.isRequired,
+  className: propTypes.any,
   handleSubmit: propTypes.func.isRequired,
-  id: propTypes.string
+  id: propTypes.string,
+  style: propTypes.any
 };
 
 var __jsx$J = React__default['default'].createElement;
@@ -12334,9 +12382,9 @@ var InputGroupAddon = function InputGroupAddon(_ref) {
 var StyledInputGroupAddon = styled__default['default'].div.withConfig({
   displayName: "addon__StyledInputGroupAddon",
   componentId: "sc-143wx32-0"
-})(["align-items:center;display:flex;& > *{height:100%;padding:0 1.5rem;}", " ", " &,button{", " ", "}"], function (_ref2) {
+})(["align-items:center;display:flex;& > *{height:100%;}", " ", " &,button{", " ", "}"], function (_ref2) {
   var text = _ref2.text;
-  return text && styled.css(["transition:background-color 0.15s linear;background-color:", ";border:1px solid ", ";border-radius:", ";color:", ";display:flex;font-size:0.75rem;font-weight:400;line-height:1;margin-bottom:0;padding:0.375rem 1.25rem;text-align:center;white-space:nowrap;"], function (_ref3) {
+  return text && styled.css(["background-color:", ";border:1px solid ", ";border-radius:", ";color:", ";display:flex;font-size:0.75rem;font-weight:400;line-height:1;margin-bottom:0;padding:0.375rem 1.25rem;text-align:center;transition:background-color 0.15s linear;white-space:nowrap;"], function (_ref3) {
     var theme = _ref3.theme,
         error = _ref3.error;
     return error ? theme.COLOUR.danger : theme.COLOUR.grey;
@@ -12357,10 +12405,10 @@ var StyledInputGroupAddon = styled__default['default'].div.withConfig({
   return size === SIZE.SM && styled.css(["font-size:0.625rem;padding:0 0.75rem;"]);
 }, function (_ref8) {
   var addonType = _ref8.addonType;
-  return addonType === 'prepend' && styled.css(["border-top-right-radius:0;border-bottom-right-radius:0;"]);
+  return addonType === 'prepend' && styled.css(["border-top-right-radius:0;border-bottom-right-radius:0;margin-right:-1px;"]);
 }, function (_ref9) {
   var addonType = _ref9.addonType;
-  return addonType === 'append' && styled.css(["border-top-left-radius:0;border-bottom-left-radius:0;"]);
+  return addonType === 'append' && styled.css(["border-top-left-radius:0;border-bottom-left-radius:0;margin-left:-1px;"]);
 });
 InputGroupAddon.propTypes = {
   addonType: propTypes.oneOf(['prepend', 'append']),
@@ -12403,19 +12451,195 @@ InputGroup.defaultProps = {
 };
 
 var __jsx$N = React__default['default'].createElement;
+var BLOCK_TYPES = [{
+  label: 'H1',
+  style: 'header-one'
+}, {
+  label: 'H2',
+  style: 'header-two'
+}, {
+  label: 'H3',
+  style: 'header-three'
+}, {
+  label: 'H4',
+  style: 'header-four'
+}, {
+  label: 'H5',
+  style: 'header-five'
+}, {
+  label: 'H6',
+  style: 'header-six'
+}, {
+  label: 'Blockquote',
+  style: 'blockquote'
+}, {
+  label: 'UL',
+  style: 'unordered-list-item'
+}, {
+  label: 'OL',
+  style: 'ordered-list-item'
+}, {
+  label: 'Code Block',
+  style: 'code-block'
+}];
+var INLINE_STYLES = [{
+  label: 'Bold',
+  style: 'BOLD'
+}, {
+  label: 'Italic',
+  style: 'ITALIC'
+}, {
+  label: 'Underline',
+  style: 'UNDERLINE'
+}];
+var BlockStyleControls = function BlockStyleControls(props) {
+  var editorState = props.editorState;
+  var selection = editorState.getSelection();
+  var blockType = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getType();
+  return __jsx$N("div", {
+    className: "RichEditor-controls"
+  }, BLOCK_TYPES.map(function (type) {
+    return __jsx$N(StyleButton, {
+      key: type.label,
+      active: type.style === blockType,
+      label: type.label,
+      onToggle: props.onToggle,
+      style: type.style
+    });
+  }));
+};
+var InlineStyleControls = function InlineStyleControls(props) {
+  var currentStyle = props.editorState.getCurrentInlineStyle();
+  return __jsx$N("div", {
+    className: "RichEditor-controls"
+  }, INLINE_STYLES.map(function (type) {
+    return __jsx$N(StyleButton, {
+      key: type.label,
+      active: currentStyle.has(type.style),
+      label: type.label,
+      onToggle: props.onToggle,
+      style: type.style
+    });
+  }));
+};
+var styleMap = {
+  CODE: {
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+    fontSize: 16,
+    padding: 2
+  }
+};
+var getBlockStyle = function getBlockStyle(block) {
+  switch (block.getType()) {
+    case 'blockquote':
+      return 'RichEditor-blockquote';
+
+    default:
+      return null;
+  }
+};
+
+var StyleButton = function StyleButton(_ref) {
+  var active = _ref.active,
+      label = _ref.label,
+      onToggle = _ref.onToggle,
+      style = _ref.style;
+
+  var handleToggle = function handleToggle(e) {
+    e.preventDefault();
+    onToggle(style);
+  };
+
+  return __jsx$N(StyledRichButton, {
+    active: active,
+    onMouseDown: handleToggle
+  }, label);
+};
+
+var StyledRichButton = styled__default['default'].span.withConfig({
+  displayName: "config__StyledRichButton",
+  componentId: "sc-18t2mch-0"
+})(["cursor:pointer;margin:0 0.5rem;", ""], function (_ref2) {
+  var active = _ref2.active;
+  return active && styled.css(["color:red;"]);
+});
+
+var __jsx$O = React__default['default'].createElement;
+var IUIRich = function IUIRich() {
+  var _useState = React.useState(draftJs.EditorState.createEmpty()),
+      editorState = _useState[0],
+      seteditorState = _useState[1];
+
+  var ref = React.useRef(null);
+
+  var focus = function focus() {
+    ref.current.focus();
+  };
+
+  var handleChange = function handleChange(EditorState) {
+    return seteditorState(EditorState);
+  };
+
+  var onKeyCommand = function onKeyCommand(command) {
+    var newState = draftJs.RichUtils.handleKeyCommand(editorState, command);
+
+    if (newState) {
+      handleChange(newState);
+      return true;
+    }
+
+    return false;
+  };
+
+  var handleTab = function handleTab(e) {
+    var maxDepth = 4;
+    handleChange(draftJs.RichUtils.onTab(e, editorState, maxDepth));
+  };
+
+  var toggleBlockType = function toggleBlockType(blockType) {
+    handleChange(draftJs.RichUtils.toggleBlockType(editorState, blockType));
+  };
+
+  var toggleInlineStyle = function toggleInlineStyle(inlineStyle) {
+    handleChange(draftJs.RichUtils.toggleInlineStyle(editorState, inlineStyle));
+  };
+
+  return __jsx$O("div", {
+    onClick: focus
+  }, __jsx$O(BlockStyleControls, {
+    editorState: editorState,
+    onToggle: toggleBlockType
+  }), __jsx$O(InlineStyleControls, {
+    editorState: editorState,
+    onToggle: toggleInlineStyle
+  }), __jsx$O(draftJs.Editor, {
+    blockStyleFn: getBlockStyle,
+    customStyleMap: styleMap,
+    editorState: editorState,
+    handleKeyCommand: onKeyCommand,
+    onChange: handleChange,
+    onTab: handleTab,
+    placeholder: "write here...",
+    ref: ref,
+    spellCheck: true
+  }));
+};
+
+var __jsx$P = React__default['default'].createElement;
 var FormLabel = function FormLabel(_ref) {
   var children = _ref.children,
       id = _ref.id,
       label = _ref.label,
       show = _ref.show,
       size = _ref.size;
-  return __jsx$N(StyledLabel$2, {
+  return __jsx$P(StyledLabel$2, {
     hasChild: children,
     htmlFor: id,
     show: show
-  }, __jsx$N(Space, {
+  }, __jsx$P(Space, {
     marginBottom: "xs"
-  }, __jsx$N(Text, {
+  }, __jsx$P(Text, {
     size: size !== null && size !== void 0 ? size : 'md',
     colour: "darkText",
     content: label
@@ -12423,7 +12647,7 @@ var FormLabel = function FormLabel(_ref) {
 };
 var StyledLabel$2 = styled__default['default'].label.withConfig({
   displayName: "label__StyledLabel",
-  componentId: "sc-1im4g6b-0"
+  componentId: "fmiqu3-0"
 })(["display:", ";margin-bottom:", ";.react-datepicker-wrapper{width:100%;}"], function (_ref2) {
   var show = _ref2.show;
   return show ? 'block' : 'none';
@@ -12441,13 +12665,12 @@ FormLabel.defaultProps = {
   show: true
 };
 
-var __jsx$O = React__default['default'].createElement;
+var __jsx$Q = React__default['default'].createElement;
 var RadioComponent = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var disabled = _ref.disabled,
       props = _objectWithoutProperties(_ref, ["disabled"]);
 
-  return __jsx$O(StyledInput$2, _extends({
-    className: "Form-control",
+  return __jsx$Q(StyledInput$2, _extends({
     disabled: disabled,
     type: "radio",
     ref: ref
@@ -12464,7 +12687,7 @@ RadioComponent.defaultProps = {
   stacked: false
 };
 
-var __jsx$P = React__default['default'].createElement;
+var __jsx$R = React__default['default'].createElement;
 var RadioField = function RadioField(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -12472,20 +12695,20 @@ var RadioField = function RadioField(_ref) {
       stacked = _ref.stacked,
       props = _objectWithoutProperties(_ref, ["data", "errors", "legend", "stacked"]);
 
-  return __jsx$P(StyledFieldset$1, {
+  return __jsx$R(StyledFieldset$1, {
     error: errors[props.name]
-  }, legend && __jsx$P(StyledLegend, {
+  }, legend && __jsx$R(StyledLegend, {
     error: errors[props.name]
   }, legend), data.map(function (_ref2) {
     var disabled = _ref2.disabled,
         label = _ref2.label,
         data = _objectWithoutProperties(_ref2, ["disabled", "label"]);
 
-    return __jsx$P(StyledLabel$3, {
+    return __jsx$R(StyledLabel$3, {
       htmlFor: data.id,
       key: data.id,
       stacked: stacked
-    }, __jsx$P(FieldHOC, _extends({
+    }, __jsx$R(FieldHOC, _extends({
       component: RadioComponent,
       disabled: disabled,
       errors: errors[props.name],
@@ -12732,7 +12955,7 @@ var defaultStyles = {
   }
 };
 
-var __jsx$Q = React__default['default'].createElement;
+var __jsx$S = React__default['default'].createElement;
 var ReactSelectField = function ReactSelectField(_ref) {
   var async = _ref.async,
       cacheOptions = _ref.cacheOptions,
@@ -12750,24 +12973,24 @@ var ReactSelectField = function ReactSelectField(_ref) {
 
   var Component = /*#__PURE__*/React.forwardRef(function (data, ref) {
     if (async) {
-      return __jsx$Q(AsyncSelect__default['default'], _extends({
+      return __jsx$S(AsyncSelect__default['default'], _extends({
         cacheOptions: cacheOptions,
         defaultOptions: defaultOptions,
         loadOptions: loadOptions,
         ref: ref
       }, data));
     } else {
-      return __jsx$Q(Select__default['default'], _extends({
+      return __jsx$S(Select__default['default'], _extends({
         ref: ref
       }, data));
     }
   });
-  return __jsx$Q(Wrapper$1, {
+  return __jsx$S(Wrapper$1, {
     size: size,
     error: error || errors[name]
-  }, __jsx$Q(reactHookForm.Controller, {
+  }, __jsx$S(reactHookForm.Controller, {
     render: function render(props) {
-      return __jsx$Q(Component, _extends({
+      return __jsx$S(Component, _extends({
         options: options,
         selectedOption: props.value
       }, props, parentProps));
@@ -12810,7 +13033,66 @@ var Wrapper$1 = styled__default['default'].div.withConfig({
 ReactSelectField.propTypes = reactSelectPropTypes;
 ReactSelectField.defaultProps = reactSelectDefaultProps(defaultStyles);
 
-var __jsx$R = React__default['default'].createElement;
+var __jsx$T = React__default['default'].createElement;
+var RichTextInput = function RichTextInput(_ref) {
+  var _editor$current;
+
+  var control = _ref.control,
+      errors = _ref.errors,
+      initialValue = _ref.initialValue,
+      name = _ref.name;
+  var content = draftJs.EditorState.createWithContent(draftJs.ContentState.createFromBlockArray(draftJs.convertFromHTML(initialValue !== null && initialValue !== void 0 ? initialValue : '')));
+  console.log(content);
+  var editor = React.useRef(null); // const [editorState, setEditorState] = useState(EditorState.createEmpty())
+
+  var _onEditorStateChange = function onEditorStateChange(editorState, onChange) {
+    console.log(editorState);
+    console.log(draftToHtml__default['default'](draftJs.convertToRaw(editorState.getCurrentContent())));
+    onChange(editorState); // onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())))
+    // setEditorState(editorState)
+    // setValue(name, draftToHtml(convertToRaw(editorState.getCurrentContent())))
+  };
+
+  return __jsx$T(Wrapper$2, {
+    errors: errors[name],
+    onClick: (_editor$current = editor.current) === null || _editor$current === void 0 ? void 0 : _editor$current.focus()
+  }, __jsx$T(reactHookForm.Controller, {
+    name: name,
+    control: control,
+    defaultValue: content,
+    render: function render(_ref2) {
+      var value = _ref2.value,
+          onChange = _ref2.onChange;
+      return __jsx$T(reactDraftWysiwyg.Editor, {
+        editorState: value,
+        wrapperClassName: "wrapper-class",
+        editorClassName: "editor-class",
+        onEditorStateChange: function onEditorStateChange(e) {
+          return _onEditorStateChange(e, onChange);
+        }
+      });
+    }
+  }));
+};
+var Wrapper$2 = styled__default['default'].div.withConfig({
+  displayName: "richTextInput__Wrapper",
+  componentId: "vech9m-0"
+})(["", " ", ""], function (props) {
+  return COMMON_INPUT_STYLES(props);
+}, function (_ref3) {
+  var errors = _ref3.errors;
+  return errors && styled.css(["", ""], function (props) {
+    return ERROR_STYLE(props);
+  });
+});
+RichTextInput.propTypes = {
+  control: propTypes.object.isRequired,
+  errors: propTypes.object.isRequired,
+  name: propTypes.string.isRequired,
+  initialValue: propTypes.string
+};
+
+var __jsx$U = React__default['default'].createElement;
 var Search = function Search(_ref) {
   var appendSearchButton = _ref.appendSearchButton,
       appendSearchIcon = _ref.appendSearchIcon,
@@ -12821,30 +13103,32 @@ var Search = function Search(_ref) {
       prefix = _ref.prefix,
       register = _ref.register,
       type = _ref.type;
-  return __jsx$R(InputGroup, null, prependSearchIcon && __jsx$R(InputGroupAddon, {
+  return __jsx$U(InputGroup, null, prependSearchIcon && __jsx$U(InputGroupAddon, {
     addonType: "prepend",
     text: true
-  }, __jsx$R(Icon, {
+  }, __jsx$U(Icon, {
+    size: "md",
     icon: "search",
     prefix: prefix
-  })), __jsx$R(FormField, {
+  })), __jsx$U(FormField, {
     errors: errors,
     name: "query",
     placeholder: placeholder,
     register: register,
     type: type
-  }), appendSearchIcon && __jsx$R(InputGroupAddon, {
+  }), appendSearchIcon && __jsx$U(InputGroupAddon, {
     addonType: "append",
     text: true
-  }, __jsx$R(Icon, {
+  }, __jsx$U(Icon, {
     icon: "search",
+    size: "md",
     prefix: prefix
-  })), appendSearchButton && __jsx$R(InputGroupAddon, {
+  })), appendSearchButton && __jsx$U(InputGroupAddon, {
     addonType: "append"
-  }, __jsx$R(Button, {
+  }, __jsx$U(Button, {
     content: label || 'Search',
     context: "dark",
-    size: "lg",
+    size: "sm",
     type: "submit"
   })));
 };
@@ -12865,14 +13149,14 @@ Search.defaultProps = {
   type: 'search'
 };
 
-var __jsx$S = React__default['default'].createElement;
+var __jsx$V = React__default['default'].createElement;
 var SelectCountryField = function SelectCountryField(_ref) {
   var errors = _ref.errors,
       name = _ref.name,
       register = _ref.register,
       props = _objectWithoutProperties(_ref, ["errors", "name", "register"]);
 
-  return __jsx$S(SelectField, _extends({
+  return __jsx$V(SelectField, _extends({
     errors: errors,
     name: name,
     options: COUNTRY,
@@ -12885,7 +13169,7 @@ SelectCountryField.propTypes = {
   register: propTypes.func.isRequired
 };
 
-var __jsx$T = React__default['default'].createElement;
+var __jsx$W = React__default['default'].createElement;
 var SelectField = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var data = _ref.data,
       defaultValue = _ref.defaultValue,
@@ -12900,14 +13184,14 @@ var SelectField = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
       props = _objectWithoutProperties(_ref, ["data", "defaultValue", "disabled", "errors", "name", "options", "placeholder", "range", "showError", "size"]);
 
   var renderRange = function renderRange() {
-    var options = [__jsx$T("option", {
+    var options = [__jsx$W("option", {
       disabled: true,
       value: "",
       key: "initial0"
     }, placeholder)];
 
     _range__default['default'](range[1], range[0]).map(function (i) {
-      return options.push(__jsx$T("option", {
+      return options.push(__jsx$W("option", {
         key: "range".concat(i),
         value: i
       }, i));
@@ -12929,13 +13213,13 @@ var SelectField = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
           value = _ref2.value;
 
       if (group) {
-        return __jsx$T("optgroup", {
+        return __jsx$W("optgroup", {
           key: "option".concat(group),
           label: group
         }, renderOptions(items));
       }
 
-      return __jsx$T("option", {
+      return __jsx$W("option", {
         children: text,
         disabled: disabled,
         key: "option".concat(value),
@@ -12944,7 +13228,7 @@ var SelectField = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
     });
   };
 
-  return __jsx$T(FieldHOC, _extends({
+  return __jsx$W(FieldHOC, _extends({
     component: StyledSelect,
     defaultValue: defaultValue,
     disabled: disabled,
@@ -13000,7 +13284,7 @@ SelectField.defaultProps = {
   showError: false
 };
 
-var __jsx$U = React__default['default'].createElement;
+var __jsx$X = React__default['default'].createElement;
 var TextareaField = function TextareaField(_ref) {
   var autoFocus = _ref.autoFocus,
       className = _ref.className,
@@ -13012,35 +13296,35 @@ var TextareaField = function TextareaField(_ref) {
       name = _ref.name,
       placeholder = _ref.placeholder,
       readOnly = _ref.readOnly,
+      register = _ref.register,
       rows = _ref.rows,
       size = _ref.size,
       spellCheck = _ref.spellCheck,
       tabIndex = _ref.tabIndex,
-      wrap = _ref.wrap,
-      props = _objectWithoutProperties(_ref, ["autoFocus", "className", "cols", "dir", "disabled", "errors", "maxLength", "name", "placeholder", "readOnly", "rows", "size", "spellCheck", "tabIndex", "wrap"]);
-
-  return __jsx$U(FieldHOC, _extends({
-    component: StyledTextarea,
+      wrap = _ref.wrap;
+  return __jsx$X(FieldHOC, {
     autoFocus: autoFocus,
-    className: "".concat(className, " Form-control Textarea"),
+    className: className,
     cols: cols,
+    component: StyledTextarea,
     dir: dir,
     disabled: disabled,
     errors: errors[name],
     maxLength: maxLength,
+    name: name,
     placeholder: placeholder,
     readOnly: readOnly,
+    register: register,
     rows: rows,
-    showError: false,
     size: size,
     spellcheck: spellCheck,
     tabIndex: tabIndex,
     wrap: wrap
-  }, props));
+  });
 };
 var StyledTextarea = styled__default['default'].textarea.withConfig({
   displayName: "textarea__StyledTextarea",
-  componentId: "sc-1if6n1n-0"
+  componentId: "sc-12e9yj7-0"
 })(["", " direction:", ";display:block;font-size:1rem;line-height:2rem;", " ", ""], function (props) {
   return COMMON_INPUT_STYLES(props);
 }, function (_ref2) {
@@ -13057,15 +13341,18 @@ var StyledTextarea = styled__default['default'].textarea.withConfig({
 });
 TextareaField.propTypes = {
   autoFocus: propTypes.bool,
+  className: propTypes.any,
   cols: propTypes.number,
   dir: propTypes.oneOf(['ltr', 'rtl']),
   disabled: propTypes.bool,
-  errors: propTypes.object,
+  errors: propTypes.object.isRequired,
   maxLength: propTypes.number,
-  name: propTypes.string,
+  name: propTypes.string.isRequired,
   placeholder: propTypes.string,
   readOnly: propTypes.bool,
+  register: propTypes.func.isRequired,
   rows: propTypes.number,
+  size: propTypes.oneOf(Object.values(SIZE)),
   spellCheck: propTypes.bool,
   tabIndex: propTypes.number,
   wrap: propTypes.oneOf(['soft', 'hard'])
@@ -13073,21 +13360,25 @@ TextareaField.propTypes = {
 TextareaField.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
-  rows: 5
+  rows: 5,
+  size: 'md'
 };
 
+/**
+ * Form - Validation
+ */
 var yup = require('yup');
 
 var _require$1 = require('@hookform/resolvers'),
     yupResolver = _require$1.yupResolver;
 
-var __jsx$V = React__default['default'].createElement;
+var __jsx$Y = React__default['default'].createElement;
 
 var renderItem = function renderItem(_ref, index, current, handleCurrent) {
   var body = _ref.body,
       context = _ref.context,
       title = _ref.title;
-  return __jsx$V(AccordionItem, {
+  return __jsx$Y(AccordionItem, {
     key: index,
     context: context,
     open: current.includes(index),
@@ -13158,10 +13449,10 @@ var Accordion = function Accordion(_ref3) {
       style = _ref3.style,
       closeOthersOnOpen = _ref3.closeOthersOnOpen;
   //  moved the body component  and its dependants outside because StyledAccordion doesn't need to be rendered on every single change of body state
-  return __jsx$V(StyledAccordion, {
+  return __jsx$Y(StyledAccordion, {
     className: className,
     style: style
-  }, __jsx$V(Body, {
+  }, __jsx$Y(Body, {
     children: children,
     data: data,
     closeOthersOnOpen: closeOthersOnOpen
@@ -13179,7 +13470,7 @@ Accordion.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$W = React__default['default'].createElement;
+var __jsx$Z = React__default['default'].createElement;
 var AccordionItem = /*#__PURE__*/React.memo(function (_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -13188,19 +13479,19 @@ var AccordionItem = /*#__PURE__*/React.memo(function (_ref) {
       index = _ref.index,
       open = _ref.open,
       title = _ref.title;
-  return __jsx$W(StyledAccordionItem, {
+  return __jsx$Z(StyledAccordionItem, {
     className: className
-  }, __jsx$W(Header, {
+  }, __jsx$Z(Header, {
     className: open ? 'opened' : 'closed',
     onClick: function onClick() {
       return handleOpen(index);
     },
     context: context || 'dark'
-  }, title, ' ', __jsx$W(HeaderIcon, {
+  }, title, ' ', __jsx$Z(HeaderIcon, {
     "aria-hidden": "true",
     context: "white",
     icon: open ? 'chevron-up' : 'chevron-down'
-  })), __jsx$W(Content, {
+  })), __jsx$Z(Content, {
     className: open ? 'opened' : 'closed'
   }, children));
 }, function (_ref2, _ref3) {
@@ -13250,7 +13541,7 @@ AccordionItem["default"] = {
   open: false
 };
 
-var __jsx$X = React__default['default'].createElement;
+var __jsx$_ = React__default['default'].createElement;
 var Alert = function Alert(_ref) {
   var className = _ref.className,
       close = _ref.close,
@@ -13270,21 +13561,21 @@ var Alert = function Alert(_ref) {
     close && close();
   };
 
-  return visible && __jsx$X(StyledAlert, {
+  return visible && __jsx$_(StyledAlert, {
     className: className,
     context: context,
     style: style
-  }, close && __jsx$X(StyledClose, {
+  }, close && __jsx$_(StyledClose, {
     click: handleClose,
     context: "white",
     header: header,
     icon: "times"
-  }), header && __jsx$X(AlertHeader, {
+  }), header && __jsx$_(AlertHeader, {
     context: context,
     header: header,
     icon: icon,
     iconPrefix: iconPrefix
-  }), __jsx$X(AlertContent, {
+  }), __jsx$_(AlertContent, {
     content: content,
     icon: header ? null : icon,
     iconPrefix: iconPrefix
@@ -13323,12 +13614,12 @@ Alert.defaultProps = {
   context: 'primary'
 };
 
-var __jsx$Y = React__default['default'].createElement;
+var __jsx$$ = React__default['default'].createElement;
 var AlertContent = function AlertContent(_ref) {
   var content = _ref.content,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$Y(StyledAlertContent, null, icon && __jsx$Y(Icon, {
+  return __jsx$$(StyledAlertContent, null, icon && __jsx$$(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
@@ -13345,15 +13636,15 @@ AlertContent.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$Z = React__default['default'].createElement;
+var __jsx$10 = React__default['default'].createElement;
 var AlertHeader = function AlertHeader(_ref) {
   var context = _ref.context,
       header = _ref.header,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$Z(StyledHeader, {
+  return __jsx$10(StyledHeader, {
     context: context
-  }, icon && __jsx$Z(Icon, {
+  }, icon && __jsx$10(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
@@ -13375,38 +13666,38 @@ AlertHeader.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$_ = React__default['default'].createElement;
+var __jsx$11 = React__default['default'].createElement;
 var Breadcrumb = function Breadcrumb(_ref) {
   var category = _ref.category,
       path = _ref.path,
       page = _ref.page;
   var categoryFormatted = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-  return __jsx$_("nav", {
+  return __jsx$11("nav", {
     "aria-label": "breadcrumb"
-  }, __jsx$_(StyledOl, {
+  }, __jsx$11(StyledOl, {
     itemScope: "",
     itemType: "http://schema.org/BreadcrumbList"
-  }, __jsx$_(StyledLi, {
+  }, __jsx$11(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$_(Link, {
+  }, __jsx$11(Link, {
     to: "/",
     passHref: true
-  }, __jsx$_(StyledA, {
+  }, __jsx$11(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, __jsx$_(Icon, {
+  }, __jsx$11(Icon, {
     icon: "home-heart"
-  }))), __jsx$_("meta", {
+  }))), __jsx$11("meta", {
     itemProp: "position",
     content: "1"
-  })), __jsx$_(StyledLi, {
+  })), __jsx$11(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$_(Link, {
+  }, __jsx$11(Link, {
     to: {
       as: "/blog/".concat(slugify(path)),
       href: {
@@ -13417,36 +13708,36 @@ var Breadcrumb = function Breadcrumb(_ref) {
       }
     },
     passHref: true
-  }, __jsx$_(StyledA, {
+  }, __jsx$11(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, categoryFormatted)), __jsx$_("meta", {
+  }, categoryFormatted)), __jsx$11("meta", {
     itemProp: "position",
     content: "2"
-  })), __jsx$_(StyledLi, {
+  })), __jsx$11(StyledLi, {
     "aria-current": "page",
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$_("span", {
+  }, __jsx$11("span", {
     itemProp: "name"
-  }, page), __jsx$_("meta", {
+  }, page), __jsx$11("meta", {
     itemProp: "position",
     content: "3"
   }))));
 };
 var StyledA = styled__default['default'].span.withConfig({
   displayName: "breadcrumb__StyledA",
-  componentId: "asbyh2-0"
+  componentId: "sc-1p4h6tg-0"
 })(["color:#fff;&:hover{color:#00ccbc;}"]);
 var StyledOl = styled__default['default'].ol.withConfig({
   displayName: "breadcrumb__StyledOl",
-  componentId: "asbyh2-1"
+  componentId: "sc-1p4h6tg-1"
 })(["background-color:rgba(62,62,62,0.5);border-bottom:1px #aaa solid;border-radius:0;color:#fff;display:flex;flex-wrap:wrap;list-style:none;margin:0;padding:0.75rem 1rem;position:absolute;top:0;width:100%;z-index:1;"]);
 var StyledLi = styled__default['default'].li.withConfig({
   displayName: "breadcrumb__StyledLi",
-  componentId: "asbyh2-2"
+  componentId: "sc-1p4h6tg-2"
 })(["&:not(:first-child)::before{color:#ccc;content:'/';display:inline-block;padding-left:0.5rem;padding-right:0.5rem;}"]);
 Breadcrumb.propTypes = {
   category: propTypes.string.isRequired,
@@ -13454,7 +13745,7 @@ Breadcrumb.propTypes = {
   path: propTypes.string.isRequired
 };
 
-var __jsx$$ = React__default['default'].createElement;
+var __jsx$12 = React__default['default'].createElement;
 var Buttons = function Buttons(_ref) {
   var back = _ref.back,
       backText = _ref.backText,
@@ -13463,26 +13754,26 @@ var Buttons = function Buttons(_ref) {
       nextText = _ref.nextText,
       pathBack = _ref.pathBack,
       pathNext = _ref.pathNext;
-  return __jsx$$(React__default['default'].Fragment, null, __jsx$$(Divider, {
+  return __jsx$12(React__default['default'].Fragment, null, __jsx$12(Divider, {
     size: "sm"
-  }), back && __jsx$$(Link, {
+  }), back && __jsx$12(Link, {
     to: pathBack
-  }, __jsx$$(Button, {
+  }, __jsx$12(Button, {
     context: "secondary",
     size: "lg"
-  }, backText)), next && __jsx$$("div", {
+  }, backText)), next && __jsx$12("div", {
     className: "float-right"
-  }, pathNext && __jsx$$(Link, {
+  }, pathNext && __jsx$12(Link, {
     to: pathNext
-  }, __jsx$$(Button, {
+  }, __jsx$12(Button, {
     context: "primary",
     size: "lg"
-  }, nextText)), !pathNext && __jsx$$(Button, {
+  }, nextText)), !pathNext && __jsx$12(Button, {
     context: "primary",
     disabled: nextDisabled,
     size: "lg",
     type: "submit"
-  }, nextText)), __jsx$$("div", {
+  }, nextText)), __jsx$12("div", {
     style: {
       clear: 'both',
       marginBottom: '1rem'
@@ -13503,24 +13794,24 @@ Buttons.defaultProps = {
   nextText: 'Next'
 };
 
-var __jsx$10 = React__default['default'].createElement;
+var __jsx$13 = React__default['default'].createElement;
 var CardCTA = function CardCTA(_ref) {
   var func = _ref.func,
       link = _ref.link,
       title = _ref.title;
 
   var CtaButton = function CtaButton(props) {
-    return __jsx$10(StyledButton$3, _extends({
+    return __jsx$13(StyledButton$3, _extends({
       content: title,
       context: "secondary"
     }, props));
   };
 
-  return link ? __jsx$10(Link, {
+  return link ? __jsx$13(Link, {
     border: false,
     passHref: true,
     to: link
-  }, __jsx$10(CtaButton, null)) : __jsx$10(CtaButton, {
+  }, __jsx$13(CtaButton, null)) : __jsx$13(CtaButton, {
     onClick: func
   });
 };
@@ -13537,7 +13828,7 @@ CardCTA.defaultProps = {
   title: 'Read more'
 };
 
-var __jsx$11 = React__default['default'].createElement;
+var __jsx$14 = React__default['default'].createElement;
 var CardBody = function CardBody(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -13549,16 +13840,16 @@ var CardBody = function CardBody(_ref) {
       showCta = _ref.showCta,
       title = _ref.title,
       titleNoWrap = _ref.titleNoWrap;
-  return __jsx$11(StyledBody$1, {
+  return __jsx$14(StyledBody$1, {
     className: className,
     center: center
-  }, title && __jsx$11(StyledWrapper, null, __jsx$11(StyledTitle, {
+  }, title && __jsx$14(StyledWrapper, null, __jsx$14(StyledTitle, {
     content: title,
     noWrap: titleNoWrap,
     tag: "h2"
-  })), (children || showCta) && __jsx$11(StyledContent$1, {
+  })), (children || showCta) && __jsx$14(StyledContent$1, {
     context: context
-  }, children, showCta && __jsx$11(CardCTA, {
+  }, children, showCta && __jsx$14(CardCTA, {
     func: ctaFunc,
     link: ctaLink,
     title: ctaTitle
@@ -13640,7 +13931,7 @@ var CardDefaultProps = {
   titleNoWrap: false
 };
 
-var __jsx$12 = React__default['default'].createElement;
+var __jsx$15 = React__default['default'].createElement;
 
 function _templateObject$3() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex: 1 0 calc(100%/3 - 30px);\n    flex-direction: column;\n    margin-right: 15px;\n    margin-left: 15px;\n  "]);
@@ -13678,7 +13969,7 @@ var Card = function Card(_ref) {
       to = _ref.to;
 
   var linked = function linked() {
-    return __jsx$12(Link, {
+    return __jsx$15(Link, {
       border: false,
       passHref: true,
       to: to
@@ -13686,7 +13977,7 @@ var Card = function Card(_ref) {
   };
 
   var card = function card() {
-    return __jsx$12(StyledCard, {
+    return __jsx$15(StyledCard, {
       bordered: bordered,
       className: className,
       context: context,
@@ -13694,18 +13985,18 @@ var Card = function Card(_ref) {
       rounded: rounded,
       shadow: shadow,
       style: style
-    }, close && __jsx$12(Close, {
+    }, close && __jsx$15(Close, {
       click: close
-    }), image && __jsx$12(CardImage, {
+    }), image && __jsx$15(CardImage, {
       alt: alt,
       src: image
-    }), header && __jsx$12(CardHeader, {
+    }), header && __jsx$15(CardHeader, {
       content: header,
       context: footerContext
-    }), icon && __jsx$12(StyledIcon$3, {
+    }), icon && __jsx$15(StyledIcon$3, {
       icon: icon,
       size: "4x"
-    }), (title || body) && __jsx$12(CardBody, {
+    }), (title || body) && __jsx$15(CardBody, {
       center: center,
       children: body,
       context: context,
@@ -13715,7 +14006,7 @@ var Card = function Card(_ref) {
       showCta: showCta,
       title: title,
       titleNoWrap: titleNoWrap
-    }), children, footer && __jsx$12(CardFooter, {
+    }), children, footer && __jsx$15(CardFooter, {
       children: footer,
       context: footerContext
     }));
@@ -13754,7 +14045,7 @@ var StyledIcon$3 = styled__default['default'](Icon).withConfig({
 Card.propTypes = CardPropTypes;
 Card.defaultProps = CardDefaultProps;
 
-var __jsx$13 = React__default['default'].createElement;
+var __jsx$16 = React__default['default'].createElement;
 
 function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n    flex-flow: row wrap;\n    margin-left: -15px;\n    margin-right: -15px;\n  "]);
@@ -13767,7 +14058,7 @@ function _templateObject$4() {
 }
 var CardDecks = function CardDecks(_ref) {
   var children = _ref.children;
-  return __jsx$13(StyledDecks, null, children);
+  return __jsx$16(StyledDecks, null, children);
 };
 var StyledDecks = styled__default['default'].div.withConfig({
   displayName: "decks__StyledDecks",
@@ -13777,11 +14068,11 @@ CardDecks.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var __jsx$14 = React__default['default'].createElement;
+var __jsx$17 = React__default['default'].createElement;
 var CardFooter = function CardFooter(_ref) {
   var children = _ref.children,
       context = _ref.context;
-  return __jsx$14(StyledFooter$1, {
+  return __jsx$17(StyledFooter$1, {
     context: context
   }, children);
 };
@@ -13805,11 +14096,11 @@ CardFooter.defaultProps = {
   context: 'light'
 };
 
-var __jsx$15 = React__default['default'].createElement;
+var __jsx$18 = React__default['default'].createElement;
 var CardHeader = function CardHeader(_ref) {
   var content = _ref.content,
       context = _ref.context;
-  return __jsx$15(StyledHeader$1, {
+  return __jsx$18(StyledHeader$1, {
     context: context
   }, content);
 };
@@ -13830,12 +14121,12 @@ CardHeader.propTypes = {
   context: propTypes.oneOf(Object.values(CONTEXT))
 };
 
-var __jsx$16 = React__default['default'].createElement;
+var __jsx$19 = React__default['default'].createElement;
 var CardImage = function CardImage(_ref) {
   var alt = _ref.alt,
       header = _ref.header,
       src = _ref.src;
-  return __jsx$16(StyledContainer$1, null, __jsx$16(StyledImage$1, {
+  return __jsx$19(StyledContainer$1, null, __jsx$19(StyledImage$1, {
     alt: alt,
     fluid: false,
     imageClasses: "rounded",
@@ -13855,7 +14146,7 @@ CardImage.propTypes = {
   src: propTypes.string.isRequired
 };
 
-var __jsx$17 = React__default['default'].createElement;
+var __jsx$1a = React__default['default'].createElement;
 
 var BarComponent = function BarComponent(_ref) {
   var theme = _ref.theme,
@@ -13891,7 +14182,7 @@ var BarComponent = function BarComponent(_ref) {
       showLegend = props.showLegend,
       _props$tooltip = props.tooltip,
       tooltip = _props$tooltip === void 0 ? bar.BarDefaultProps.tooltip : _props$tooltip;
-  return __jsx$17(bar.ResponsiveBar, {
+  return __jsx$1a(bar.ResponsiveBar, {
     indexBy: indexBy,
     keys: keys,
     label: label,
@@ -13951,7 +14242,7 @@ BarChart.defaultProps = Object.assign({}, bar.BarDefaultProps, {
   showLegend: false
 });
 
-var __jsx$18 = React__default['default'].createElement;
+var __jsx$1b = React__default['default'].createElement;
 var LineChart = styled.withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
@@ -13988,7 +14279,7 @@ var LineChart = styled.withTheme(function (_ref) {
       _props$pointSize = props.pointSize,
       pointSize = _props$pointSize === void 0 ? LINECHART.pointSize : _props$pointSize,
       showLegend = props.showLegend;
-  return __jsx$18(line.ResponsiveLine, {
+  return __jsx$1b(line.ResponsiveLine, {
     areaOpacity: areaOpacity,
     curve: curve,
     data: data,
@@ -14034,7 +14325,7 @@ LineChart.defaultProps = Object.assign({}, line.LineDefaultProps, {
   showLegend: false
 });
 
-var __jsx$19 = React__default['default'].createElement;
+var __jsx$1c = React__default['default'].createElement;
 var PieChart = styled.withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
@@ -14078,7 +14369,7 @@ var PieChart = styled.withTheme(function (_ref) {
       cornerRadius = _props$cornerRadius === void 0 ? PIECHART.cornerRadius : _props$cornerRadius,
       _props$padAngle = props.padAngle,
       padAngle = _props$padAngle === void 0 ? PIECHART.padAngle : _props$padAngle;
-  return __jsx$19(pie.ResponsivePie, {
+  return __jsx$1c(pie.ResponsivePie, {
     animate: animate,
     onClick: onClick,
     data: data,
@@ -14121,17 +14412,17 @@ PieChart.defaultProps = Object.assign({}, pie.PieDefaultProps, {
   showLegend: false
 });
 
-var __jsx$1a = React__default['default'].createElement;
+var __jsx$1d = React__default['default'].createElement;
 var CarouselArrow = function CarouselArrow(_ref) {
   var clickFunction = _ref.clickFunction,
       context = _ref.context,
       direction = _ref.direction,
       icon = _ref.icon,
       position = _ref.position;
-  return __jsx$1a(StyledContainer$2, {
+  return __jsx$1d(StyledContainer$2, {
     direction: direction,
     onClick: clickFunction
-  }, __jsx$1a(StyledArrow, {
+  }, __jsx$1d(StyledArrow, {
     context: context,
     icon: icon,
     position: position
@@ -14172,12 +14463,12 @@ CarouselArrow.propTypes = {
   position: propTypes.string.isRequired
 };
 
-var __jsx$1b = React__default['default'].createElement;
+var __jsx$1e = React__default['default'].createElement;
 var CarouselSlide = function CarouselSlide(_ref) {
   var children = _ref.children,
       onClick = _ref.onClick,
       style = _ref.style;
-  return __jsx$1b(StyledSlide, {
+  return __jsx$1e(StyledSlide, {
     onClick: onClick,
     style: style
   }, children);
@@ -14192,18 +14483,18 @@ CarouselSlide.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$1c = React__default['default'].createElement;
+var __jsx$1f = React__default['default'].createElement;
 var CarouselSampleSlide = function CarouselSampleSlide(_ref) {
   var context = _ref.context,
       img = _ref.img,
       node = _ref.node,
       text = _ref.text;
   if (!img && !text) return null;
-  return __jsx$1c(CarouselSlide, null, node, text && __jsx$1c(StyledText$2, {
+  return __jsx$1f(CarouselSlide, null, node, text && __jsx$1f(StyledText$2, {
     content: text,
     context: context,
     size: "xl"
-  }), img && __jsx$1c(Image$1, {
+  }), img && __jsx$1f(Image$1, {
     src: img
   }));
 };
@@ -14281,7 +14572,7 @@ var CarouselDefaultProps = {
   showPagination: false
 };
 
-var __jsx$1d = React__default['default'].createElement;
+var __jsx$1g = React__default['default'].createElement;
 var Carousel = function Carousel(_ref) {
   var arrowContext = _ref.arrowContext,
       arrowPosition = _ref.arrowPosition,
@@ -14318,17 +14609,17 @@ var Carousel = function Carousel(_ref) {
   };
 
   var renderPagination = function renderPagination() {
-    return __jsx$1d(PaginationWrapper, null, __jsx$1d(Pagination, _extends({
+    return __jsx$1g(PaginationWrapper, null, __jsx$1g(Pagination, _extends({
       onPageChange: function onPageChange(page) {
         return setCurrentImageIndex(page - 1);
       },
       currentPage: currentImageIndex + 1,
       pageCount: dataSource.length,
       showNextAndPrev: true,
-      prevLabel: __jsx$1d(Icon, {
+      prevLabel: __jsx$1g(Icon, {
         icon: "chevron-left"
       }),
-      nextLabel: __jsx$1d(Icon, {
+      nextLabel: __jsx$1g(Icon, {
         icon: "chevron-right"
       }),
       size: "xs"
@@ -14337,17 +14628,17 @@ var Carousel = function Carousel(_ref) {
 
   var hasNavigation = Array.isArray(dataSource) && dataSource.length > 1;
   var current = dataSource[currentImageIndex];
-  return __jsx$1d(React__default['default'].Fragment, null, __jsx$1d(Wrapper$2, {
+  return __jsx$1g(React__default['default'].Fragment, null, __jsx$1g(Wrapper$3, {
     width: width,
     height: height,
     fullWidth: fullWidth
-  }, hasNavigation && showArrows && __jsx$1d(CarouselArrow, {
+  }, hasNavigation && showArrows && __jsx$1g(CarouselArrow, {
     context: arrowContext,
     clickFunction: previousSlide,
     direction: "left",
     icon: leftArrowIcon,
     position: arrowPosition
-  }), slides ? __jsx$1d(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1d(CarouselArrow, {
+  }), slides ? __jsx$1g(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1g(CarouselArrow, {
     context: arrowContext,
     clickFunction: nextSlide,
     direction: "right",
@@ -14355,7 +14646,7 @@ var Carousel = function Carousel(_ref) {
     position: arrowPosition
   })), hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination());
 };
-var Wrapper$2 = styled__default['default'].div.withConfig({
+var Wrapper$3 = styled__default['default'].div.withConfig({
   displayName: "carousel__Wrapper",
   componentId: "sc-1656prh-0"
 })(["height:", ";min-height:", ";margin:0;position:relative;width:", ";"], function (_ref2) {
@@ -14376,7 +14667,7 @@ var PaginationWrapper = styled__default['default'].div.withConfig({
 Carousel.propTypes = CarouselPropTypes;
 Carousel.defaultProps = CarouselDefaultProps;
 
-var __jsx$1e = React__default['default'].createElement;
+var __jsx$1h = React__default['default'].createElement;
 var year = new Date().getFullYear();
 var Copyright = function Copyright(_ref) {
   var brand = _ref.brand,
@@ -14388,20 +14679,20 @@ var Copyright = function Copyright(_ref) {
     return links.map(function (_ref2, index) {
       var name = _ref2.name,
           to = _ref2.to;
-      return __jsx$1e(Link, {
+      return __jsx$1h(Link, {
         key: index,
         passHref: true,
         to: to
-      }, __jsx$1e(StyledLink$1, null, name));
+      }, __jsx$1h(StyledLink$1, null, name));
     });
   };
 
-  return __jsx$1e(StyledCopyright, {
+  return __jsx$1h(StyledCopyright, {
     fixed: fixed,
     "data-cy": "copyright"
-  }, __jsx$1e(StyledContainer$3, null, __jsx$1e(Row, null, __jsx$1e(Column, {
+  }, __jsx$1h(StyledContainer$3, null, __jsx$1h(Row, null, __jsx$1h(Column, {
     md: links.length > 0 ? 3 : 12
-  }, __jsx$1e(StyledBrand, null, __jsx$1e(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1e(Column, {
+  }, __jsx$1h(StyledBrand, null, __jsx$1h(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1h(Column, {
     md: 9
   }, renderLinks()))));
 };
@@ -14454,7 +14745,7 @@ Copyright.defaultProps = {
   links: []
 };
 
-var __jsx$1f = React__default['default'].createElement;
+var __jsx$1i = React__default['default'].createElement;
 var DogCard = function DogCard(_ref) {
   var breed = _ref.breed,
       breedName = _ref.breedName,
@@ -14467,7 +14758,7 @@ var DogCard = function DogCard(_ref) {
       sell = _ref.sell;
   var breederSlug = slugify(breeder);
   var nameSlug = slugify(name);
-  return __jsx$1f(Card, {
+  return __jsx$1i(Card, {
     alt: breed,
     bordered: true,
     context: "light",
@@ -14484,12 +14775,12 @@ var DogCard = function DogCard(_ref) {
         }
       }
     }
-  }, __jsx$1f(CardBody, null, __jsx$1f(DogName, {
+  }, __jsx$1i(CardBody, null, __jsx$1i(DogName, {
     row: {
       gender: gender,
       name: name
     }
-  }), sell && __jsx$1f("div", {
+  }), sell && __jsx$1i("div", {
     className: "float-right"
   }, formatPrice(price))));
 };
@@ -14505,7 +14796,7 @@ DogCard.propTypes = {
   sell: propTypes.bool
 };
 
-var __jsx$1g = React__default['default'].createElement;
+var __jsx$1j = React__default['default'].createElement;
 var DogLink = function DogLink(_ref) {
   var name = _ref.name;
 
@@ -14515,7 +14806,7 @@ var DogLink = function DogLink(_ref) {
   };
 
   var slug = slugify(name);
-  return __jsx$1g(Link, {
+  return __jsx$1j(Link, {
     to: {
       as: "/dogs/breeds/".concat(slug),
       href: {
@@ -14531,12 +14822,12 @@ DogLink.propTypes = {
   name: propTypes.string.isRequired
 };
 
-var __jsx$1h = React__default['default'].createElement;
+var __jsx$1k = React__default['default'].createElement;
 var DogName = function DogName(_ref) {
   var _ref$row = _ref.row,
       gender = _ref$row.gender,
       name = _ref$row.name;
-  return __jsx$1h(React__default['default'].Fragment, null, __jsx$1h(Icon, {
+  return __jsx$1k(React__default['default'].Fragment, null, __jsx$1k(Icon, {
     context: gender,
     icon: gender === 'male' ? 'mars' : 'venus',
     size: "lg",
@@ -14551,7 +14842,7 @@ DogName.propTypes = {
   row: propTypes.oneOfType([propTypes.array, propTypes.object]).isRequired
 };
 
-var __jsx$1i = React__default['default'].createElement;
+var __jsx$1l = React__default['default'].createElement;
 var Actions = function Actions(_ref) {
   var path = _ref.path,
       row = _ref.row;
@@ -14559,7 +14850,7 @@ var Actions = function Actions(_ref) {
       uId = row.uId;
 
   var action = function action(_action, context, icon, route, tooltip) {
-    return __jsx$1i(Link, {
+    return __jsx$1l(Link, {
       to: {
         href: {
           pathname: "".concat(path, "/").concat(route),
@@ -14571,14 +14862,14 @@ var Actions = function Actions(_ref) {
           }
         }
       }
-    }, __jsx$1i(Tooltip, {
+    }, __jsx$1l(Tooltip, {
       content: tooltip
-    }, __jsx$1i(Button, {
+    }, __jsx$1l(Button, {
       "data-tip": tooltip,
       context: context,
       size: "sm",
       title: _action
-    }, __jsx$1i(Icon, {
+    }, __jsx$1l(Icon, {
       context: "white",
       icon: icon,
       style: {
@@ -14587,7 +14878,7 @@ var Actions = function Actions(_ref) {
     }))));
   };
 
-  return __jsx$1i(React__default['default'].Fragment, null, __jsx$1i(ButtonToolbar, {
+  return __jsx$1l(React__default['default'].Fragment, null, __jsx$1l(ButtonToolbar, {
     className: "float-right"
   }, action('Edit', 'primary', 'edit', 'details', 'Edit this dogs profile details'), action('Photos', 'secondary', 'images', 'photos', 'Add or Edit this dogs photos'), action('Health', 'info', 'stethoscope', 'health', 'Add or Edit this dogs health details'), action('Delete', 'danger', 'trash', 'delete', 'Delete this dog')));
 };
@@ -14621,18 +14912,18 @@ var Columns = function Columns(actions, name) {
   }];
 };
 
-var __jsx$1j = React__default['default'].createElement;
+var __jsx$1m = React__default['default'].createElement;
 var TableDogs = function TableDogs(_ref) {
   var dogs = _ref.dogs,
       path = _ref.path;
-  return __jsx$1j(Table, {
+  return __jsx$1m(Table, {
     columns: Columns(function (row) {
-      return __jsx$1j(Actions, {
+      return __jsx$1m(Actions, {
         path: path,
         row: row
       });
     }, function (row) {
-      return __jsx$1j(DogName, {
+      return __jsx$1m(DogName, {
         row: row
       });
     }),
@@ -14640,7 +14931,7 @@ var TableDogs = function TableDogs(_ref) {
   });
 };
 
-var __jsx$1k = React__default['default'].createElement;
+var __jsx$1n = React__default['default'].createElement;
 var elementTypes = {
   Colour: 'colour',
   List: 'list',
@@ -14680,20 +14971,20 @@ var Dropdown = function Dropdown(_ref) {
       document.removeEventListener('mousedown', handleClickAway);
     };
   }, [open]);
-  return __jsx$1k(StyledDropdown, {
+  return __jsx$1n(StyledDropdown, {
     className: className,
     ref: node
-  }, __jsx$1k(StyledToggle$1, {
+  }, __jsx$1n(StyledToggle$1, {
     className: "".concat(open ? 'dropdown--active' : '', " dropdown--toggle"),
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }, children, caret && __jsx$1k(Icon, {
+  }, children, caret && __jsx$1n(Icon, {
     "aria-hidden": "true",
     className: "dropdown--caret",
-    icon: position === Position.Top ? 'carat-up' : 'caret-down',
+    icon: position === Position.Top ? 'caret-up' : 'caret-down',
     prefix: "fas"
-  }), items && open && __jsx$1k(DropdownMenu, {
+  }), items && open && __jsx$1n(DropdownMenu, {
     closeDropdown: function closeDropdown() {
       return setOpen(false);
     },
@@ -14728,7 +15019,7 @@ Dropdown.defaultProps = {
   position: 'left'
 };
 
-var __jsx$1l = React__default['default'].createElement;
+var __jsx$1o = React__default['default'].createElement;
 var DropdownMenu = function DropdownMenu(_ref) {
   var closeDropdown = _ref.closeDropdown,
       elementType = _ref.elementType,
@@ -14741,14 +15032,17 @@ var DropdownMenu = function DropdownMenu(_ref) {
     closeDropdown();
   };
 
-  return __jsx$1l(StyledDropdownMenu, {
+  return __jsx$1o(StyledDropdownMenu, {
     elementType: elementType,
     className: "dropdown--menu",
     position: position
-  }, __jsx$1l(TooltipRectangle, {
+  }, __jsx$1o(TooltipRectangle, {
     position: position
+  }), __jsx$1o(TooltipRectangle, {
+    position: position,
+    border: true
   }), items.map(function (item) {
-    return __jsx$1l(DropdownItem, {
+    return __jsx$1o(DropdownItem, {
       closeDropdown: closeDropdown,
       elementType: elementType,
       item: item,
@@ -14762,11 +15056,14 @@ var DropdownMenu = function DropdownMenu(_ref) {
 var StyledDropdownMenu = styled__default['default'].div.withConfig({
   displayName: "menu__StyledDropdownMenu",
   componentId: "sc-11f1boj-0"
-})(["background:#fff;border:1px solid rgba(0,0,0,0.15);border-radius:0.25rem;left:0;margin-top:1px;min-width:8rem;padding:0.5rem 0;position:absolute;top:100%;z-index:1;", " ", ""], function (_ref2) {
-  var position = _ref2.position;
-  return position && styled.css(["left:", ";right:", ";", ""], position === Position.Right ? 'auto' : '0', position === Position.Right ? '0' : 'auto', position === Position.Top && styled.css(["bottom:100%;top:unset;"]));
+})(["background:#fff;", " border-radius:0.25rem;left:0;margin-top:1px;min-width:8rem;padding:0.5rem 0;position:absolute;top:100%;z-index:1;box-shadow:0px 2px 8px rgba(0,0,0,0.15);", " ", ""], function (_ref2) {
+  var theme = _ref2.theme;
+  return styled.css(["border:1px solid ", ";"], theme.DROPDOWN.BORDER_COLOUR);
 }, function (_ref3) {
-  var elementType = _ref3.elementType;
+  var position = _ref3.position;
+  return position && styled.css(["left:", ";right:", ";", ""], position === Position.Right ? 'auto' : '0', position === Position.Right ? '0' : 'auto', position === Position.Top && styled.css(["bottom:100%;top:unset;"]));
+}, function (_ref4) {
+  var elementType = _ref4.elementType;
   return (elementType === elementTypes.Colour || elementType === elementTypes.Icon) && styled.css(["box-shadow:rgba(0,0,0,0.15) 0px 3px 12px;display:grid;padding:5px;grid-template-columns:repeat(8,2rem);grid-template-rows:repeat(3,2rem);"]);
 });
 var dist = '0.625rem';
@@ -14774,21 +15071,25 @@ var size = '0.875rem';
 var TooltipRectangle = styled__default['default'].div.withConfig({
   displayName: "menu__TooltipRectangle",
   componentId: "sc-11f1boj-1"
-})(["border-color:transparent transparent rgb(255,255,255);border-image:initial;border-style:solid;border-width:0.438rem;position:absolute;", ""], function (_ref4) {
-  var position = _ref4.position;
+})(["", " border-image:initial;border-style:solid;border-width:0.438rem;position:absolute;", ""], function (_ref5) {
+  var border = _ref5.border;
+  return styled.css(["border-color:transparent transparent ", ";"], border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)');
+}, function (_ref6) {
+  var position = _ref6.position,
+      border = _ref6.border;
 
   switch (position) {
     case Position.Bottom:
-      return styled.css(["top:-", ";left:", ";"], size, dist);
+      return styled.css(["top:calc(-", " - ", ");left:", ";"], size, border ? '0px' : '1px', dist);
 
     case Position.Top:
-      return styled.css(["bottom:-", ";left:", ";transform:rotateX(180deg);"], size, dist);
+      return styled.css(["bottom:calc(-", " - ", ");left:", ";transform:rotateX(180deg);"], size, border ? '0px' : '1px', dist);
 
     case Position.Left:
-      return styled.css(["display:none;bottom:", ";right:-", ";transform:rotateZ(90deg);"], size, size);
+      return styled.css(["display:none;bottom:", ";right:calc(-", " - ", ");transform:rotateZ(90deg);"], size, size, border ? '0px' : '1px');
 
     case Position.Right:
-      return styled.css(["display:none;bottom:", ";left:-", ";transform:rotateZ(-90deg);"], size, size);
+      return styled.css(["display:none;bottom:", ";left:calc(-", " - ", ");transform:rotateZ(-90deg);"], size, size, border ? '0px' : '1px');
   }
 });
 DropdownMenu.propTypes = {
@@ -14798,7 +15099,7 @@ DropdownMenu.propTypes = {
   position: propTypes.oneOf([Position.Top, Position.Right, Position.Bottom, Position.Left])
 };
 
-var __jsx$1m = React__default['default'].createElement;
+var __jsx$1p = React__default['default'].createElement;
 
 var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
   var id = _ref.id,
@@ -14806,14 +15107,14 @@ var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
       to = _ref.to;
 
   var item = function item() {
-    return __jsx$1m(StyledLink$2, {
+    return __jsx$1p(StyledLink$2, {
       className: "dropdown--link",
       id: id,
       onClick: onClick
     }, name);
   };
 
-  return to ? __jsx$1m(Link, {
+  return to ? __jsx$1p(Link, {
     border: false,
     passHref: true,
     to: to
@@ -14828,12 +15129,12 @@ var DropdownItem = function DropdownItem(_ref2) {
 
   switch (elementType) {
     case elementTypes.List:
-      return __jsx$1m(StyledDropdownItem, {
+      return __jsx$1p(StyledDropdownItem, {
         divider: item.divider
-      }, item.divider ? __jsx$1m(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
+      }, item.divider ? __jsx$1p(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
 
     case elementTypes.Colour:
-      return __jsx$1m(StyledColourItem, {
+      return __jsx$1p(StyledColourItem, {
         colour: item.colour,
         onClick: function onClick() {
           _onClick(item);
@@ -14841,9 +15142,9 @@ var DropdownItem = function DropdownItem(_ref2) {
       });
 
     case elementTypes.Icon:
-      return __jsx$1m(StyledIconItem, {
+      return __jsx$1p(StyledIconItem, {
         onClick: _onClick
-      }, __jsx$1m(Icon, {
+      }, __jsx$1p(Icon, {
         fixedWidth: false,
         icon: item === null || item === void 0 ? void 0 : item.icon,
         prefix: item === null || item === void 0 ? void 0 : item.prefix
@@ -18978,7 +19279,7 @@ module.exports = exports.default;
 
 var index = /*@__PURE__*/unwrapExports(dist$1);
 
-var __jsx$1n = React__default['default'].createElement;
+var __jsx$1q = React__default['default'].createElement;
 
 function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19018,7 +19319,7 @@ var EmojiMart = function EmojiMart(_ref) {
     handleOpenPicker(false);
   };
 
-  return open && __jsx$1n(emojiMart.Picker, {
+  return open && __jsx$1q(emojiMart.Picker, {
     emoji: "",
     emojiSize: 16,
     include: ['foods', 'people', 'recent', 'nature'],
@@ -19048,7 +19349,7 @@ EmojiMart.defaultProps = {
   open: false
 };
 
-var __jsx$1o = React__default['default'].createElement;
+var __jsx$1r = React__default['default'].createElement;
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19104,9 +19405,9 @@ var GetAddress = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   });
 
   var input = function input() {
-    return __jsx$1o(FormLabel, {
+    return __jsx$1r(FormLabel, {
       label: "Postcode"
-    }, __jsx$1o(FormField, {
+    }, __jsx$1r(FormField, {
       onChange: change,
       name: "postcode",
       value: form.postcode
@@ -19114,7 +19415,7 @@ var GetAddress = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   };
 
   var button = function button() {
-    return __jsx$1o(Button, {
+    return __jsx$1r(Button, {
       content: "Find your address",
       context: "primary",
       onClick: handleFindAddress,
@@ -19138,9 +19439,9 @@ var GetAddress = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
           text: 'Select address',
           value: ''
         });
-        return __jsx$1o(React__default['default'].Fragment, null, __jsx$1o("p", null), __jsx$1o(FormLabel, {
+        return __jsx$1r(React__default['default'].Fragment, null, __jsx$1r("p", null), __jsx$1r(FormLabel, {
           label: "Select your address"
-        }, __jsx$1o(SelectField, {
+        }, __jsx$1r(SelectField, {
           onChange: handlePopulateAddress,
           name: "addresses",
           options: reduced,
@@ -19177,47 +19478,47 @@ var GetAddress = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
       return changedInputs.map(function (_ref2) {
         var label = _ref2.label,
             id = _ref2.id;
-        return __jsx$1o("span", {
+        return __jsx$1r("span", {
           key: id
-        }, __jsx$1o(FormLabel, {
+        }, __jsx$1r(FormLabel, {
           label: label
-        }, __jsx$1o(FormField, {
+        }, __jsx$1r(FormField, {
           name: id,
           onChange: change,
           value: form[id]
         })));
       });
     } else {
-      return __jsx$1o("span", null);
+      return __jsx$1r("span", null);
     }
   };
 
   var renderError = function renderError() {
     if (!error) return;
-    return __jsx$1o("p", {
+    return __jsx$1r("p", {
       className: "GetAddress-error"
     }, "The postcode was not found");
   };
 
-  return __jsx$1o(React__default['default'].Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
+  return __jsx$1r(React__default['default'].Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
 });
 GetAddress.propTypes = {
   apiKey: propTypes.string.isRequired,
   change: propTypes.func.isRequired
 };
 
-var __jsx$1p = React__default['default'].createElement;
+var __jsx$1s = React__default['default'].createElement;
 var HeroButtons = function HeroButtons(_ref) {
   var buttons = _ref.buttons;
   return buttons.map(function (_ref2, index) {
     var content = _ref2.content,
         context = _ref2.context,
         to = _ref2.to;
-    return __jsx$1p(StyledLink$3, {
+    return __jsx$1s(StyledLink$3, {
       border: false,
       to: to,
       key: index
-    }, __jsx$1p(StyledButton$4, {
+    }, __jsx$1s(StyledButton$4, {
       content: content,
       context: context,
       size: "lg"
@@ -19236,16 +19537,16 @@ HeroButtons.propTypes = {
   buttons: propTypes.array
 };
 
-var __jsx$1q = React__default['default'].createElement;
+var __jsx$1t = React__default['default'].createElement;
 var HeroImage = function HeroImage(_ref) {
   var alt = _ref.alt,
       align = _ref.align,
       image = _ref.image,
       width = _ref.width;
-  return __jsx$1q(StyledColumn$1, {
+  return __jsx$1t(StyledColumn$1, {
     align: align,
     md: 6
-  }, __jsx$1q(StyledImageContainer, null, __jsx$1q(StyledImage$2, {
+  }, __jsx$1t(StyledImageContainer, null, __jsx$1t(StyledImage$2, {
     alt: alt,
     src: image,
     width: width
@@ -19278,7 +19579,7 @@ HeroImage.propTypes = {
   width: propTypes.number
 };
 
-var __jsx$1r = React__default['default'].createElement;
+var __jsx$1u = React__default['default'].createElement;
 
 function _templateObject$5() {
   var data = _taggedTemplateLiteral(["\n    width: 25rem;\n  "]);
@@ -19293,10 +19594,10 @@ var TextBlock = function TextBlock(_ref) {
   var children = _ref.children,
       offset = _ref.offset,
       position = _ref.position;
-  return __jsx$1r(StyledCard$1, {
+  return __jsx$1u(StyledCard$1, {
     rounded: false,
     position: position
-  }, __jsx$1r(CardBody, {
+  }, __jsx$1u(CardBody, {
     children: children
   }));
 };
@@ -19318,7 +19619,7 @@ TextBlock.propTypes = {
   offset: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 
-var __jsx$1s = React__default['default'].createElement;
+var __jsx$1v = React__default['default'].createElement;
 
 function _templateObject2$3() {
   var data = _taggedTemplateLiteral(["\n    font-size: 3rem;\n    line-height: 3.25rem;\n  "]);
@@ -19356,27 +19657,27 @@ var Hero = function Hero(_ref) {
       width = _ref.width;
 
   var renderLeft = function renderLeft() {
-    return __jsx$1s(StyledColumn$2, {
+    return __jsx$1v(StyledColumn$2, {
       md: 6
-    }, title && __jsx$1s(StyledTitle$1, {
+    }, title && __jsx$1v(StyledTitle$1, {
       tag: "h1",
       content: title
-    }), strapline && __jsx$1s(StyledStrapline, {
+    }), strapline && __jsx$1v(StyledStrapline, {
       tag: "h2",
       content: strapline
-    }), buttons && __jsx$1s(HeroButtons, {
+    }), buttons && __jsx$1v(HeroButtons, {
       buttons: buttons
-    }), message && __jsx$1s("p", {
+    }), message && __jsx$1v("p", {
       children: message
     }));
   };
 
-  return __jsx$1s(StyledHero, {
+  return __jsx$1v(StyledHero, {
     background: background,
     backgroundSize: backgroundSize,
     className: className,
     height: height
-  }, children && children, !children && __jsx$1s(Container, null, __jsx$1s(Row, null, title && renderLeft(), image && __jsx$1s(HeroImage, {
+  }, children && children, !children && __jsx$1v(Container, null, __jsx$1v(Row, null, title && renderLeft(), image && __jsx$1v(HeroImage, {
     alt: alt,
     align: align,
     image: image,
@@ -19428,13 +19729,13 @@ Hero.defaultProps = {
   style: {}
 };
 
-var __jsx$1t = React__default['default'].createElement;
+var __jsx$1w = React__default['default'].createElement;
 var ImageMarker = function ImageMarker(_ref) {
   var _styles$shape, _styles$shape2;
 
   var coordinates = _ref.coordinates,
       styles = _ref.styles;
-  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1t(StyledIcon$5, {
+  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1w(StyledIcon$5, {
     coordinates: coordinates,
     context: "primary",
     icon: styles === null || styles === void 0 ? void 0 : (_styles$shape = styles.shape) === null || _styles$shape === void 0 ? void 0 : _styles$shape.icon,
@@ -19442,7 +19743,7 @@ var ImageMarker = function ImageMarker(_ref) {
     pull: "left",
     styles: styles,
     size: "lg"
-  }) : __jsx$1t(StyledMarker, {
+  }) : __jsx$1w(StyledMarker, {
     coordinates: coordinates,
     styles: styles
   });
@@ -19516,7 +19817,7 @@ var ImageLocationProps = {
   style: propTypes.object
 };
 
-var __jsx$1u = React__default['default'].createElement;
+var __jsx$1x = React__default['default'].createElement;
 var ImageLocation = function ImageLocation(_ref) {
   var coordinatesChange = _ref.coordinatesChange,
       initialCoordinates = _ref.initialCoordinates,
@@ -19534,9 +19835,9 @@ var ImageLocation = function ImageLocation(_ref) {
       item: item
     });
   }, [coordinates]);
-  return __jsx$1u(StyledImageLocation, {
+  return __jsx$1x(StyledImageLocation, {
     show: show
-  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1u(ImageWrapper, {
+  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1x(ImageWrapper, {
     coordinates: coordinates,
     markerStyles: markerStyles,
     item: item,
@@ -19555,7 +19856,7 @@ ImageLocation.defaultProps = {
   show: true
 };
 
-var __jsx$1v = React__default['default'].createElement;
+var __jsx$1y = React__default['default'].createElement;
 var imageHeight = 0;
 var imageWidth = 0;
 var ImageWrapper = function ImageWrapper(_ref) {
@@ -19583,13 +19884,13 @@ var ImageWrapper = function ImageWrapper(_ref) {
     });
   };
 
-  return __jsx$1v(StyledImageWrapper, null, __jsx$1v(Image$1, {
+  return __jsx$1y(StyledImageWrapper, null, __jsx$1y(Image$1, {
     ref: imageRef,
     onClick: handleImageClick,
     alt: item.name,
     fluid: true,
     src: item.filename
-  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1v(ImageMarker, {
+  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1y(ImageMarker, {
     coordinates: MarkerCoordinates,
     key: item.id,
     styles: markerStyles
@@ -19605,7 +19906,7 @@ ImageWrapper.propTypes = {
   setCoordinates: propTypes.func.isRequired
 };
 
-var __jsx$1w = React__default['default'].createElement;
+var __jsx$1z = React__default['default'].createElement;
 
 function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19617,9 +19918,9 @@ var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
       setValue = _ref.setValue,
       props = _objectWithoutProperties(_ref, ["control", "errors", "setValue"]);
 
-  return __jsx$1w(ControllerWrapper, {
+  return __jsx$1z(ControllerWrapper, {
     className: "".concat(errors && errors[elementName] && 'hasError')
-  }, __jsx$1w(reactHookForm.Controller, _extends({
+  }, __jsx$1z(reactHookForm.Controller, _extends({
     as: ImageLocation,
     control: control,
     coordinatesChange: function coordinatesChange(imageLocationData) {
@@ -19701,7 +20002,7 @@ Intercom.propTypes = {
   appID: propTypes.string.isRequired
 };
 
-var __jsx$1x = React__default['default'].createElement;
+var __jsx$1A = React__default['default'].createElement;
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19712,14 +20013,14 @@ var DynamicLocationHOC = function DynamicLocationHOC(Component) {
     // concat the apiKey
     var googleMapURL = "".concat(props.googleMapURL, "&key=").concat(props.apiKey);
 
-    var containerElement = props.containerElement || __jsx$1x("div", {
+    var containerElement = props.containerElement || __jsx$1A("div", {
       style: {
         height: props.containerHeight,
         width: props.containerWidth
       }
     });
 
-    return __jsx$1x(Component, _extends({}, props, {
+    return __jsx$1A(Component, _extends({}, props, {
       containerElement: containerElement,
       googleMapURL: googleMapURL
     }));
@@ -19727,7 +20028,7 @@ var DynamicLocationHOC = function DynamicLocationHOC(Component) {
 };
 
 var DynamicLocation = DynamicLocationHOC(reactGoogleMaps.withScriptjs(reactGoogleMaps.withGoogleMap(function (props) {
-  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1x(reactGoogleMaps.GoogleMap, props) : null;
+  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1A(reactGoogleMaps.GoogleMap, props) : null;
 })));
 DynamicLocation.displayName = 'DynamicLocation';
 DynamicLocation.propTypes = _objectSpread$b({
@@ -19742,14 +20043,14 @@ DynamicLocation.propTypes = _objectSpread$b({
 }, reactGoogleMaps.GoogleMap.propTypes);
 DynamicLocation.defaultProps = {
   googleMapURL: 'https://maps.googleapis.com/maps/api/js?',
-  loadingElement: __jsx$1x("div", {
+  loadingElement: __jsx$1A("div", {
     style: {
       height: '100%'
     }
   }),
   containerHeight: '400px',
   containerWidth: '100%',
-  mapElement: __jsx$1x("div", {
+  mapElement: __jsx$1A("div", {
     style: {
       height: '100%'
     }
@@ -19763,7 +20064,7 @@ MarkerClusterer.propTypes = MarkerClusterer$1.MarkerClusterer.propTypes;
 var InfoWindow = reactGoogleMaps.InfoWindow;
 InfoWindow.propTypes = reactGoogleMaps.InfoWindow.propTypes;
 
-var __jsx$1y = React__default['default'].createElement;
+var __jsx$1B = React__default['default'].createElement;
 var StaticLocation = function StaticLocation(_ref) {
   var apiKey = _ref.apiKey,
       center = _ref.center,
@@ -19820,7 +20121,7 @@ var StaticLocation = function StaticLocation(_ref) {
     var mapUrl = map.generateUrl();
     setMapUrl(mapUrl);
   }, []);
-  return __jsx$1y(Container, {
+  return __jsx$1B(Container, {
     className: className,
     width: width,
     height: height,
@@ -19859,14 +20160,14 @@ StaticLocation.defaultProps = {
   zoom: 15
 };
 
-var __jsx$1z = React__default['default'].createElement;
+var __jsx$1C = React__default['default'].createElement;
 var Brand = function Brand(_ref) {
   var brand = _ref.brand;
-  return __jsx$1z(StyledLink$4, {
+  return __jsx$1C(StyledLink$4, {
     border: false,
     to: "/",
     passHref: true
-  }, __jsx$1z(Image$1, {
+  }, __jsx$1C(Image$1, {
     alt: "Logo",
     draggable: "false",
     src: brand,
@@ -19881,10 +20182,10 @@ Brand.propTypes = {
   brand: propTypes.string.isRequired
 };
 
-var __jsx$1A = React__default['default'].createElement;
+var __jsx$1D = React__default['default'].createElement;
 var Contained = function Contained(_ref) {
   var content = _ref.content;
-  return __jsx$1A(StyledContainer$4, null, content());
+  return __jsx$1D(StyledContainer$4, null, content());
 };
 var StyledContainer$4 = styled__default['default'](Container).withConfig({
   displayName: "contained__StyledContainer",
@@ -19894,7 +20195,7 @@ Contained.propTypes = {
   content: propTypes.node.isRequired
 };
 
-var __jsx$1B = React__default['default'].createElement;
+var __jsx$1E = React__default['default'].createElement;
 
 function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -19908,17 +20209,17 @@ function _templateObject$7() {
 var Toggler = function Toggler(_ref) {
   var handleMenuClick = _ref.handleMenuClick,
       visible = _ref.visible;
-  return __jsx$1B(StyledToggler, {
+  return __jsx$1E(StyledToggler, {
     "aria-expanded": visible ? 'false' : 'true',
     "aria-label": "Toggle navigation",
     onClick: handleMenuClick
-  }, !visible ? __jsx$1B(Icon, {
+  }, !visible ? __jsx$1E(Icon, {
     icon: "bars",
     prefix: "fas"
-  }) : __jsx$1B(Icon, {
+  }) : __jsx$1E(Icon, {
     icon: "times",
     prefix: "fas"
-  }), __jsx$1B(StyledText$3, null, "Menu"));
+  }), __jsx$1E(StyledText$3, null, "Menu"));
 };
 var StyledToggler = styled__default['default'].a.withConfig({
   displayName: "toggler__StyledToggler",
@@ -19948,7 +20249,7 @@ Toggler.defaultProps = {
   visible: true
 };
 
-var __jsx$1C = React__default['default'].createElement;
+var __jsx$1F = React__default['default'].createElement;
 
 function _templateObject3$1() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -19996,12 +20297,12 @@ var Navbar = function Navbar(_ref) {
   };
 
   var Content = function Content() {
-    return __jsx$1C(React__default['default'].Fragment, null, brand && __jsx$1C(Brand, {
+    return __jsx$1F(React__default['default'].Fragment, null, brand && __jsx$1F(Brand, {
       brand: brand
-    }), __jsx$1C(Toggler, {
+    }), __jsx$1F(Toggler, {
       handleMenuClick: handleClick,
       visible: visible
-    }), widgets && __jsx$1C(Widgets, {
+    }), widgets && __jsx$1F(Widgets, {
       brand: brand,
       closeMenu: handleClick,
       type: type,
@@ -20010,11 +20311,11 @@ var Navbar = function Navbar(_ref) {
     }));
   };
 
-  return __jsx$1C(React__default['default'].Fragment, null, __jsx$1C(StyledNav, {
+  return __jsx$1F(React__default['default'].Fragment, null, __jsx$1F(StyledNav, {
     style: style
-  }, contained ? __jsx$1C(Contained, {
+  }, contained ? __jsx$1F(Contained, {
     content: Content
-  }) : __jsx$1C(Content, null)), __jsx$1C(StyledOverlay, {
+  }) : __jsx$1F(Content, null)), __jsx$1F(StyledOverlay, {
     hidden: !visible
   }));
 };
@@ -20076,7 +20377,7 @@ Navbar.defaultProps = {
   showMenu: false
 };
 
-var __jsx$1D = React__default['default'].createElement;
+var __jsx$1G = React__default['default'].createElement;
 
 function _templateObject$9() {
   var data = _taggedTemplateLiteral(["\n    background: none;\n    border: none;\n    color: ", ";\n    cursor: pointer;\n    font-size: 0.8125rem;\n    padding: 1rem 0.75rem;\n    width: 100%;\n\n    &:hover {\n      color: ", ";\n      background: none;\n    }\n  "]);
@@ -20094,11 +20395,11 @@ var NavButton = function NavButton(_ref) {
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1D(StyledLink$5, {
+  return __jsx$1G(StyledLink$5, {
     border: false,
     passHref: true,
     to: to
-  }, __jsx$1D(StyledButton$5, {
+  }, __jsx$1G(StyledButton$5, {
     id: id,
     context: type.context,
     content: name,
@@ -20162,7 +20463,7 @@ NavCollapse.propTypes = {
   visible: propTypes.bool.isRequired
 };
 
-var __jsx$1E = React__default['default'].createElement;
+var __jsx$1H = React__default['default'].createElement;
 
 function _templateObject$b() {
   var data = _taggedTemplateLiteral(["\n      min-width: 11rem;\n      position: absolute;\n    "]);
@@ -20180,15 +20481,15 @@ var NavDropdown = function NavDropdown(_ref) {
       position = _ref.position,
       prefix = _ref.prefix,
       type = _ref.type;
-  return __jsx$1E(StyledContainer$5, null, __jsx$1E(StyledDropdown$1, {
+  return __jsx$1H(StyledContainer$5, null, __jsx$1H(StyledDropdown$1, {
     items: type.items,
     onChange: closeMenu,
     position: position
-  }, icon && __jsx$1E(Icon, {
+  }, icon && __jsx$1H(Icon, {
     "aria-hidden": "true",
     icon: icon,
     prefix: prefix
-  }), __jsx$1E(StyledContent$2, null, name)));
+  }), __jsx$1H(StyledContent$2, null, name)));
 };
 var StyledContainer$5 = styled__default['default'].div.withConfig({
   displayName: "dropdown__StyledContainer",
@@ -20221,16 +20522,16 @@ NavDropdown.defaultProps = {
   prefix: 'fad'
 };
 
-var __jsx$1F = React__default['default'].createElement;
+var __jsx$1I = React__default['default'].createElement;
 var NavIcon = function NavIcon(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1F(Link, {
+  return __jsx$1I(Link, {
     to: to,
     onClick: visible && closeMenu
-  }, __jsx$1F(Icon, {
+  }, __jsx$1I(Icon, {
     icon: type.icon
   }));
 };
@@ -20244,7 +20545,7 @@ NavIcon.defaultProps = {
   visible: false
 };
 
-var __jsx$1G = React__default['default'].createElement;
+var __jsx$1J = React__default['default'].createElement;
 
 function _templateObject$c() {
   var data = _taggedTemplateLiteral(["\n    color: ", ";\n    // &:hover {\n    //   color: ", ";\n    // }\n  "]);
@@ -20274,12 +20575,12 @@ var NavLink = function NavLink(_ref) {
     return;
   }
 
-  return __jsx$1G(Link, {
+  return __jsx$1J(Link, {
     border: false,
     onClick: handleClick,
     passHref: true,
     to: to
-  }, __jsx$1G(StyledLink$6, {
+  }, __jsx$1J(StyledLink$6, {
     id: id
   }, name));
 };
@@ -20313,7 +20614,7 @@ NavLink.defaultProps = {
   visible: false
 };
 
-var __jsx$1H = React__default['default'].createElement;
+var __jsx$1K = React__default['default'].createElement;
 var NavNotification = function NavNotification(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
@@ -20325,16 +20626,16 @@ var NavNotification = function NavNotification(_ref) {
   };
 
   var link = function link() {
-    return __jsx$1H(Link, {
+    return __jsx$1K(Link, {
       border: false,
       onClick: handleClick,
       passHref: true,
       to: to
-    }, __jsx$1H(Notification, null));
+    }, __jsx$1K(Notification, null));
   };
 
   var Notification = function Notification() {
-    return __jsx$1H(StyledNotifications, null, type && !!type.count && __jsx$1H(StyledCount, null, type.count), __jsx$1H(Icon, {
+    return __jsx$1K(StyledNotifications, null, type && !!type.count && __jsx$1K(StyledCount, null, type.count), __jsx$1K(Icon, {
       icon: "bell",
       prefix: "fad"
     }));
@@ -20343,7 +20644,7 @@ var NavNotification = function NavNotification(_ref) {
   if (to) {
     return link();
   } else {
-    return __jsx$1H(Notification, null);
+    return __jsx$1K(Notification, null);
   }
 };
 var StyledNotifications = styled__default['default'].div.withConfig({
@@ -20367,7 +20668,7 @@ NavNotification.propTypes = {
   visible: propTypes.bool
 };
 
-var __jsx$1I = React__default['default'].createElement;
+var __jsx$1L = React__default['default'].createElement;
 
 function _templateObject2$5() {
   var data = _taggedTemplateLiteral(["\n    border: none;\n    display: flex;\n    flex-direction: column;\n    justify-content: ", ";\n    margin-bottom: ", ";\n  "]);
@@ -20394,14 +20695,14 @@ var Widgets = function Widgets(_ref) {
       type = _ref.type,
       visible = _ref.visible,
       widgets = _ref.widgets;
-  return __jsx$1I(NavCollapse, {
+  return __jsx$1L(NavCollapse, {
     visible: visible
   }, Object.entries(widgets).map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
         direction = _ref3[0],
         link = _ref3[1];
 
-    return __jsx$1I(StyledList$1, {
+    return __jsx$1L(StyledList$1, {
       direction: direction,
       key: direction
     }, link.map(function (_ref4) {
@@ -20415,10 +20716,10 @@ var Widgets = function Widgets(_ref) {
           prefix = _ref4.prefix,
           to = _ref4.to,
           type = _ref4.type;
-      return __jsx$1I(StyledListItem, {
+      return __jsx$1L(StyledListItem, {
         brand: brand,
         key: id
-      }, Component && __jsx$1I(Component, null), type && type.as === 'button' && NavButton({
+      }, Component && __jsx$1L(Component, null), type && type.as === 'button' && NavButton({
         closeMenu: closeMenu,
         id: id,
         name: name,
@@ -20499,7 +20800,7 @@ Widgets.propTypes = {
   widgets: propTypes.object.isRequired
 };
 
-var __jsx$1J = React__default['default'].createElement;
+var __jsx$1M = React__default['default'].createElement;
 var Notification = function Notification(_ref) {
   var close = _ref.close,
       content = _ref.content,
@@ -20509,10 +20810,10 @@ var Notification = function Notification(_ref) {
       link = _ref.link,
       title = _ref.title;
 
-  var body = __jsx$1J(React__default['default'].Fragment, null, __jsx$1J(StyledNotificationBody, null, content), date && __jsx$1J(StyledDate, null, formatRelativeTime(date)));
+  var body = __jsx$1M(React__default['default'].Fragment, null, __jsx$1M(StyledNotificationBody, null, content), date && __jsx$1M(StyledDate, null, formatRelativeTime(date)));
 
   if (link) {
-    body = __jsx$1J(Link, {
+    body = __jsx$1M(Link, {
       border: false,
       to: {
         href: link
@@ -20523,7 +20824,7 @@ var Notification = function Notification(_ref) {
     }, body);
   }
 
-  return __jsx$1J(StyledNotificationWrapper, null, __jsx$1J(Alert, {
+  return __jsx$1M(StyledNotificationWrapper, null, __jsx$1M(Alert, {
     close: close,
     content: body,
     context: context,
@@ -21576,7 +21877,7 @@ var curriedLighten = /*#__PURE__*/curry
 /* ::<number | string, string, string> */
 (lighten);
 
-var __jsx$1K = React__default['default'].createElement;
+var __jsx$1N = React__default['default'].createElement;
 var OffCanvasHeader = function OffCanvasHeader(_ref) {
   var context = _ref.context,
       hasAvatar = _ref.hasAvatar,
@@ -21585,44 +21886,44 @@ var OffCanvasHeader = function OffCanvasHeader(_ref) {
       submit = _ref.submit,
       title = _ref.title,
       variant = _ref.variant;
-  return __jsx$1K(StyledHeader$2, {
+  return __jsx$1N(StyledHeader$2, {
     context: context,
     variant: variant
-  }, __jsx$1K(Row, {
+  }, __jsx$1N(Row, {
     align: "center"
-  }, __jsx$1K(Column, {
+  }, __jsx$1N(Column, {
     md: 8
-  }, __jsx$1K(Icon, {
+  }, __jsx$1N(Icon, {
     context: variant === 'extended' ? 'white' : context,
     icon: "expand",
     prefix: "fas"
-  }), __jsx$1K(StyledHeading$1, {
+  }), __jsx$1N(StyledHeading$1, {
     content: title,
     context: context,
     tag: "h4",
     variant: variant
-  })), __jsx$1K(Column, {
+  })), __jsx$1N(Column, {
     md: 4
-  }, __jsx$1K(StyledContainer$6, null, submit && __jsx$1K(React__default['default'].Fragment, null, __jsx$1K(Button, {
+  }, __jsx$1N(StyledContainer$6, null, submit && __jsx$1N(React__default['default'].Fragment, null, __jsx$1N(Button, {
     content: "Submit",
     context: "primary",
     form: "offCanvasForm",
     size: "sm",
     type: "submit"
-  }), __jsx$1K(Divider, {
+  }), __jsx$1N(Divider, {
     flexItem: true,
     size: "sm",
     vertical: true
-  })), __jsx$1K(Close, {
+  })), __jsx$1N(Close, {
     click: onClose,
     context: variant === 'normal' ? context : 'white'
-  })))), __jsx$1K(StyledBodyContainer, null, hasAvatar && __jsx$1K(StyledAvatarContainer, {
+  })))), __jsx$1N(StyledBodyContainer, null, hasAvatar && __jsx$1N(StyledAvatarContainer, {
     context: context
-  }, __jsx$1K(Avatar, {
+  }, __jsx$1N(Avatar, {
     content: "Avatar",
     context: context,
     size: "lg"
-  })), headerContent && __jsx$1K(StyledText$4, {
+  })), headerContent && __jsx$1N(StyledText$4, {
     content: headerContent,
     context: context,
     size: "xs",
@@ -21723,7 +22024,7 @@ OffCanvasOverlay.defaultProps = {
   opacity: 0.3
 };
 
-var __jsx$1L = React__default['default'].createElement;
+var __jsx$1O = React__default['default'].createElement;
 var OffCanvasComponent = function OffCanvasComponent(_ref) {
   var children = _ref.children,
       closeOnOverlayClick = _ref.closeOnOverlayClick,
@@ -21762,19 +22063,19 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     }
   };
 
-  return __jsx$1L(React__default['default'].Fragment, null, overlay && __jsx$1L(OffCanvasOverlay, {
+  return __jsx$1O(React__default['default'].Fragment, null, overlay && __jsx$1O(OffCanvasOverlay, {
     duration: transitionDuration,
     onClick: handleOverlayClick,
     opacity: overlayOpacity,
     show: initialState
-  }), __jsx$1L(OffCanvasDiv, {
+  }), __jsx$1O(OffCanvasDiv, {
     "data-cy": "offCanvas",
     duration: transitionDuration,
     height: height,
     placement: placement,
     show: initialState,
     width: width
-  }, __jsx$1L(OffCanvasHeader, {
+  }, __jsx$1O(OffCanvasHeader, {
     context: context,
     "data-cy": "offCanvasHeader",
     hasAvatar: hasAvatar,
@@ -21785,7 +22086,7 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     submit: submit,
     title: headerText,
     variant: variant
-  }), __jsx$1L(OffCanvasContent, null, children)));
+  }), __jsx$1O(OffCanvasContent, null, children)));
 };
 OffCanvasComponent.propTypes = {
   children: propTypes.node,
@@ -21819,7 +22120,7 @@ OffCanvasComponent.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1M = React__default['default'].createElement;
+var __jsx$1P = React__default['default'].createElement;
 var OffCanvas = function OffCanvas(props) {
   var _useState = React.useState(false),
       mounted = _useState[0],
@@ -21845,7 +22146,7 @@ var OffCanvas = function OffCanvas(props) {
       }
     }
   }, [props.show]);
-  return mounted ? /*#__PURE__*/ReactDOM.createPortal(__jsx$1M(OffCanvasComponent, props), container) : null;
+  return mounted ? /*#__PURE__*/ReactDOM.createPortal(__jsx$1P(OffCanvasComponent, props), container) : null;
 };
 OffCanvas.propTypes = {
   closeOnOverlayClick: propTypes.bool,
@@ -21876,7 +22177,7 @@ OffCanvas.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1N = React__default['default'].createElement;
+var __jsx$1Q = React__default['default'].createElement;
 var PageHeading = function PageHeading(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -21886,14 +22187,14 @@ var PageHeading = function PageHeading(_ref) {
       help = _ref.help,
       helpContent = _ref.helpContent,
       strapline = _ref.strapline;
-  return __jsx$1N(StyledPageHeader, {
+  return __jsx$1Q(StyledPageHeader, {
     center: center,
     divider: divider
-  }, __jsx$1N(StyledLeft, null, __jsx$1N(StyledHeading$2, {
+  }, __jsx$1Q(StyledLeft, null, __jsx$1Q(StyledHeading$2, {
     content: heading,
     context: context,
     pageHeading: true
-  }), strapline && __jsx$1N("div", null, strapline)), (children || help) && __jsx$1N(StyledRight, null, children || helpContent), divider && __jsx$1N(StyledDivider$1, {
+  }), strapline && __jsx$1Q("div", null, strapline)), (children || help) && __jsx$1Q(StyledRight, null, children || helpContent), divider && __jsx$1Q(StyledDivider$1, {
     size: "md"
   }));
 };
@@ -21945,14 +22246,14 @@ PageHeading.defaultProps = {
   strapline: ''
 };
 
-var __jsx$1O = React__default['default'].createElement;
+var __jsx$1R = React__default['default'].createElement;
 var PageLoading = function PageLoading(_ref) {
   var children = _ref.children,
       dataCy = _ref.dataCy,
       indicator = _ref.indicator,
       props = _objectWithoutProperties(_ref, ["children", "dataCy", "indicator"]);
 
-  return __jsx$1O(StyledLoading, _extends({
+  return __jsx$1R(StyledLoading, _extends({
     "data-cy": dataCy
   }, props), indicator || children);
 };
@@ -21984,7 +22285,7 @@ PageLoading.defaultProps = {
   position: 'fixed'
 };
 
-var __jsx$1P = React__default['default'].createElement;
+var __jsx$1S = React__default['default'].createElement;
 var SPINNER = Array(12).fill('');
 var LdsSpinnerWrapper = styled__default['default'].div.withConfig({
   displayName: "ldsSpinner__LdsSpinnerWrapper",
@@ -22028,10 +22329,10 @@ var LdsSpinnerWrapper = styled__default['default'].div.withConfig({
   return temp;
 });
 var LdsSpinner = function LdsSpinner(props) {
-  return __jsx$1P(LdsSpinnerWrapper, _extends({}, props, {
+  return __jsx$1S(LdsSpinnerWrapper, _extends({}, props, {
     spinner: SPINNER
   }), SPINNER.map(function (s, i) {
-    return __jsx$1P("div", {
+    return __jsx$1S("div", {
       key: 'spin' + i
     });
   }));
@@ -22045,12 +22346,12 @@ LdsSpinner.defaultProps = {
   color: '#333'
 };
 
-var __jsx$1Q = React__default['default'].createElement;
+var __jsx$1T = React__default['default'].createElement;
 var Container$1 = function Container(_ref) {
   var children = _ref.children,
       isFinished = _ref.isFinished,
       animationDuration = _ref.animationDuration;
-  return __jsx$1Q("div", {
+  return __jsx$1T("div", {
     style: {
       opacity: isFinished ? 0 : 1,
       pointerEvents: 'none',
@@ -22064,12 +22365,12 @@ Container$1.propTypes = {
   isFinished: propTypes.bool.isRequired
 };
 
-var __jsx$1R = React__default['default'].createElement;
+var __jsx$1U = React__default['default'].createElement;
 var Bar = function Bar(_ref) {
   var animationDuration = _ref.animationDuration,
       context = _ref.context,
       progress = _ref.progress;
-  return __jsx$1R(StyledBar, {
+  return __jsx$1U(StyledBar, {
     context: context,
     style: {
       marginLeft: "".concat((-1 + progress) * 100, "%"),
@@ -22091,7 +22392,7 @@ var StyledBar = styled__default['default'].div.withConfig({
   return COLOUR[context];
 });
 
-var __jsx$1S = React__default['default'].createElement;
+var __jsx$1V = React__default['default'].createElement;
 var PageProgressBar = function PageProgressBar(_ref) {
   var context = _ref.context,
       isAnimating = _ref.isAnimating,
@@ -22122,17 +22423,17 @@ var PageProgressBar = function PageProgressBar(_ref) {
       router.events.on('routeChangeError', routeChangeEndHandler);
     }
   }, []);
-  return __jsx$1S(reactNprogress.NProgress, {
+  return __jsx$1V(reactNprogress.NProgress, {
     isAnimating: isRouteChanging || isAnimating,
     key: loadingKey || instanceKey
   }, function (_ref2) {
     var animationDuration = _ref2.animationDuration,
         isFinished = _ref2.isFinished,
         progress = _ref2.progress;
-    return __jsx$1S(Container$1, {
+    return __jsx$1V(Container$1, {
       animationDuration: animationDuration,
       isFinished: isFinished
-    }, __jsx$1S(Bar, {
+    }, __jsx$1V(Bar, {
       animationDuration: animationDuration,
       context: context,
       progress: progress
@@ -22151,7 +22452,7 @@ PageProgressBar.defaultProps = {
   instanceKey: null
 };
 
-var __jsx$1T = React__default['default'].createElement;
+var __jsx$1W = React__default['default'].createElement;
 var Pagination = function Pagination(_ref) {
   var breakCount = _ref.breakCount,
       children = _ref.children,
@@ -22187,7 +22488,7 @@ var Pagination = function Pagination(_ref) {
   var showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount;
 
   var renderContent = function renderContent() {
-    return __jsx$1T(React__default['default'].Fragment, null, showPrevButton && __jsx$1T(PaginationItem, {
+    return __jsx$1W(React__default['default'].Fragment, null, showPrevButton && __jsx$1W(PaginationItem, {
       context: context,
       disabled: currentPage === 1,
       label: prevLabel,
@@ -22195,7 +22496,7 @@ var Pagination = function Pagination(_ref) {
         return handleChange('prev');
       },
       size: size
-    }), showPrevDots && __jsx$1T(PaginationItem, {
+    }), showPrevDots && __jsx$1W(PaginationItem, {
       onClick: function onClick() {
         return handleChange(prevChunk[prevChunk.length - 1]);
       },
@@ -22203,7 +22504,7 @@ var Pagination = function Pagination(_ref) {
       label: "...",
       size: size
     }), currentChunk.map(function (p) {
-      return __jsx$1T(PaginationItem, {
+      return __jsx$1W(PaginationItem, {
         active: p === currentPage,
         context: context,
         key: "".concat("page".concat(p)),
@@ -22213,14 +22514,14 @@ var Pagination = function Pagination(_ref) {
         },
         size: size
       });
-    }), showNextDots && __jsx$1T(PaginationItem, {
+    }), showNextDots && __jsx$1W(PaginationItem, {
       onClick: function onClick() {
         return handleChange(nextChunk[0]);
       },
       context: context,
       label: "...",
       size: size
-    }), showNextButton && __jsx$1T(PaginationItem, {
+    }), showNextButton && __jsx$1W(PaginationItem, {
       context: context,
       disabled: currentPage === pageCount,
       label: nextLabel,
@@ -22235,7 +22536,7 @@ var Pagination = function Pagination(_ref) {
     return null;
   }
 
-  return __jsx$1T(StyledPagination, _extends({
+  return __jsx$1W(StyledPagination, _extends({
     "aria-label": "Pagination"
   }, props), children || renderContent());
 };
@@ -22246,7 +22547,7 @@ var StyledPagination = styled__default['default'].ul.withConfig({
 Pagination.propTypes = PaginationPropTypes;
 Pagination.defaultProps = PaginationDefaultProps;
 
-var __jsx$1U = React__default['default'].createElement;
+var __jsx$1X = React__default['default'].createElement;
 var PaginationItem = function PaginationItem(_ref) {
   var active = _ref.active,
       context = _ref.context,
@@ -22256,7 +22557,7 @@ var PaginationItem = function PaginationItem(_ref) {
       size = _ref.size,
       props = _objectWithoutProperties(_ref, ["active", "context", "disabled", "label", "onClick", "size"]);
 
-  return __jsx$1U(StyledLi$1, null, __jsx$1U(StyledButton$6, _extends({
+  return __jsx$1X(StyledLi$1, null, __jsx$1X(StyledButton$6, _extends({
     active: active,
     context: context,
     onClick: onClick,
@@ -22318,7 +22619,7 @@ PaginationItem.defaultProps = {
   size: 'md'
 };
 
-var __jsx$1V = React__default['default'].createElement;
+var __jsx$1Y = React__default['default'].createElement;
 var Rating = function Rating(_ref) {
   var className = _ref.className,
       context = _ref.context,
@@ -22327,7 +22628,7 @@ var Rating = function Rating(_ref) {
   var rating = [];
 
   for (var i = 0; i < size; i++) {
-    rating.push(__jsx$1V(StyledRating, {
+    rating.push(__jsx$1Y(StyledRating, {
       active: i + 1 <= value,
       className: className,
       context: context,
@@ -22357,19 +22658,19 @@ Rating.defaultProps = {
   size: 5
 };
 
-var __jsx$1W = React__default['default'].createElement;
+var __jsx$1Z = React__default['default'].createElement;
 var Section = function Section(_ref) {
   var children = _ref.children,
       className = _ref.className,
       heading = _ref.heading,
       row = _ref.row,
       style = _ref.style;
-  return __jsx$1W(StyleSection, null, __jsx$1W(Container, null, heading && __jsx$1W(Heading, {
+  return __jsx$1Z(StyleSection, null, __jsx$1Z(Container, null, heading && __jsx$1Z(Heading, {
     className: "text-center",
     content: heading,
     context: "primary",
     tag: "h2"
-  }), row ? __jsx$1W(Row, null, children) : children));
+  }), row ? __jsx$1Z(Row, null, children) : children));
 };
 var StyleSection = styled__default['default'].section.withConfig({
   displayName: "section__StyleSection",
@@ -22387,26 +22688,26 @@ Section.defaultProps = {
   row: true
 };
 
-var __jsx$1X = React__default['default'].createElement;
+var __jsx$1_ = React__default['default'].createElement;
 var Sidebar = function Sidebar(_ref) {
   var brand = _ref.brand,
       data = _ref.data;
 
   var link = function link(icon, name, to) {
     var iconArray = Array.isArray(icon);
-    return __jsx$1X(Link, {
+    return __jsx$1_(Link, {
       to: to,
       passHref: true
-    }, __jsx$1X(StyledLink$7, null, icon && __jsx$1X(Icon, {
+    }, __jsx$1_(StyledLink$7, null, icon && __jsx$1_(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0]
     }), name));
   };
 
-  return __jsx$1X(StyledAside, null, __jsx$1X(StyledBrand$1, null, __jsx$1X(Image$1, {
+  return __jsx$1_(StyledAside, null, __jsx$1_(StyledBrand$1, null, __jsx$1_(Image$1, {
     alt: "Logo",
     src: brand
-  })), __jsx$1X(List, {
+  })), __jsx$1_(List, {
     group: true
   }, data.map(function (_ref2, index) {
     var Component = _ref2.Component,
@@ -22414,11 +22715,11 @@ var Sidebar = function Sidebar(_ref) {
         icon = _ref2.icon,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$1X(StyledLi$2, {
+    return __jsx$1_(StyledLi$2, {
       key: index
-    }, divider ? __jsx$1X(StyledDivider$2, {
+    }, divider ? __jsx$1_(StyledDivider$2, {
       size: "sm"
-    }) : Component ? __jsx$1X(Component, null) : to ? link(icon, name, to) : name);
+    }) : Component ? __jsx$1_(Component, null) : to ? link(icon, name, to) : name);
   })));
 };
 var StyledAside = styled__default['default'].aside.withConfig({
@@ -22477,17 +22778,17 @@ SimpleTime.propTypes = {
   endTime: propTypes.oneOfType([propTypes.number, propTypes.string])
 };
 
-var __jsx$1Y = React__default['default'].createElement;
+var __jsx$1$ = React__default['default'].createElement;
 var Stepper = function Stepper(_ref) {
   var className = _ref.className,
       items = _ref.items,
       summary = _ref.summary;
-  return __jsx$1Y(StyledStepper, null, __jsx$1Y("ul", null, items.map(function (item) {
-    return item.active !== false && __jsx$1Y(StepperItem, {
+  return __jsx$1$(StyledStepper, null, __jsx$1$("ul", null, items.map(function (item) {
+    return item.active !== false && __jsx$1$(StepperItem, {
       item: item,
       key: item.id
     });
-  })), summary && __jsx$1Y(StepperSummary, {
+  })), summary && __jsx$1$(StepperSummary, {
     summary: summary
   }));
 };
@@ -22501,7 +22802,7 @@ Stepper.propTypes = {
   summary: propTypes.oneOfType([propTypes.array, propTypes.func])
 };
 
-var __jsx$1Z = React__default['default'].createElement;
+var __jsx$20 = React__default['default'].createElement;
 var StepperItem = function StepperItem(_ref) {
   var item = _ref.item;
 
@@ -22510,7 +22811,7 @@ var StepperItem = function StepperItem(_ref) {
       var id = _ref2.id,
           active = _ref2.active,
           data = _ref2.data;
-      return active && __jsx$1Z("li", {
+      return active && __jsx$20("li", {
         key: id
       }, typeof data === 'function' ? data() : data);
     });
@@ -22526,9 +22827,9 @@ var StepperItem = function StepperItem(_ref) {
           handleClick = _ref3.handleClick,
           to = _ref3.to,
           type = _ref3.type;
-      return active && __jsx$1Z("li", {
+      return active && __jsx$20("li", {
         key: id
-      }, type === 'button' && __jsx$1Z(Button, _extends({
+      }, type === 'button' && __jsx$20(Button, _extends({
         onClick: handleClick,
         content: content,
         context: context,
@@ -22537,17 +22838,17 @@ var StepperItem = function StepperItem(_ref) {
     });
   };
 
-  return __jsx$1Z(StyledStepperItem, null, __jsx$1Z(StyledIconContainer, {
+  return __jsx$20(StyledStepperItem, null, __jsx$20(StyledIconContainer, {
     active: item.date
-  }, item.date && __jsx$1Z(Icon, {
+  }, item.date && __jsx$20(Icon, {
     "aria-hidden": "true",
     color: STEPPER.colourCheckmark,
     fixedWidth: false,
     icon: "check",
     prefix: "fas"
-  })), __jsx$1Z(StyledLabel$4, {
+  })), __jsx$20(StyledLabel$4, {
     active: item.date
-  }, item.label), (item.date || item.info) && __jsx$1Z(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$1Z(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$1Z(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$1Z(Divider, {
+  }, item.label), (item.date || item.info) && __jsx$20(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$20(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$20(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$20(Divider, {
     size: "sm"
   }));
 };
@@ -22589,7 +22890,7 @@ StyledStepperItem.propTypes = {
   item: propTypes.object
 };
 
-var __jsx$1_ = React__default['default'].createElement;
+var __jsx$21 = React__default['default'].createElement;
 var StepperSummary = function StepperSummary(_ref) {
   var className = _ref.className,
       summary = _ref.summary;
@@ -22598,13 +22899,13 @@ var StepperSummary = function StepperSummary(_ref) {
     return summary.map(function (_ref2, i) {
       var label = _ref2.label,
           value = _ref2.value;
-      return __jsx$1_("li", {
+      return __jsx$21("li", {
         key: i
-      }, __jsx$1_(StyledLabel$5, null, label, " "), __jsx$1_(StyledValue, null, value));
+      }, __jsx$21(StyledLabel$5, null, label, " "), __jsx$21(StyledValue, null, value));
     });
   };
 
-  return __jsx$1_(StyledStepperSummary, null, __jsx$1_("ul", null, renderItems(summary)));
+  return __jsx$21(StyledStepperSummary, null, __jsx$21("ul", null, renderItems(summary)));
 };
 var StyledStepperSummary = styled__default['default'].div.withConfig({
   displayName: "summary__StyledStepperSummary",
@@ -22626,9 +22927,9 @@ StepperSummary.propTypes = {
   summary: propTypes.array.isRequired
 };
 
-var __jsx$1$ = React__default['default'].createElement;
+var __jsx$22 = React__default['default'].createElement;
 var TableData = function TableData(props) {
-  return __jsx$1$(StyledTd, props);
+  return __jsx$22(StyledTd, props);
 };
 TableData.propTypes = {};
 var StyledTd = styled__default['default'].td.withConfig({
@@ -22645,9 +22946,9 @@ var StyledTd = styled__default['default'].td.withConfig({
   return align && 'center';
 });
 
-var __jsx$20 = React__default['default'].createElement;
+var __jsx$23 = React__default['default'].createElement;
 var TableHead = function TableHead(props) {
-  return __jsx$20(StyledTh, props);
+  return __jsx$23(StyledTh, props);
 };
 TableHead.propTypes = {};
 var StyledTh = styled__default['default'].th.withConfig({
@@ -22670,7 +22971,7 @@ var StyledTh = styled__default['default'].th.withConfig({
   return sortable && 'cursor: pointer';
 });
 
-var __jsx$21 = React__default['default'].createElement;
+var __jsx$24 = React__default['default'].createElement;
 var TableLoading = function TableLoading(_ref) {
   var colsLength = _ref.colsLength,
       show = _ref.show;
@@ -22679,9 +22980,9 @@ var TableLoading = function TableLoading(_ref) {
     return null;
   }
 
-  return __jsx$21(PageLoading, {
+  return __jsx$24(PageLoading, {
     backgroundColor: "#fff",
-    indicator: __jsx$21(LdsSpinner, {
+    indicator: __jsx$24(LdsSpinner, {
       color: "#000",
       size: 50
     }),
@@ -22694,9 +22995,9 @@ TableLoading.propTypes = {
   show: propTypes.bool
 };
 
-var __jsx$22 = React__default['default'].createElement;
+var __jsx$25 = React__default['default'].createElement;
 var TableRow = function TableRow(props) {
-  return __jsx$22(StyledTr, props);
+  return __jsx$25(StyledTr, props);
 };
 TableRow.propTypes = {};
 var StyledTr = styled__default['default'].tr.withConfig({
@@ -22717,7 +23018,7 @@ var StyledTr = styled__default['default'].tr.withConfig({
   return hover && styled.css([":hover{background-color:#eee;}"]);
 });
 
-var __jsx$23 = React__default['default'].createElement;
+var __jsx$26 = React__default['default'].createElement;
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -22796,12 +23097,12 @@ var Table = function Table(_ref) {
         }
       };
 
-      return __jsx$23(TableHead, {
+      return __jsx$26(TableHead, {
         align: align,
         key: index,
         onClick: handleSort,
         sortable: sortable
-      }, text, sortable && hasSort && __jsx$23(Icon, {
+      }, text, sortable && hasSort && __jsx$26(Icon, {
         icon: sort.order === 'asc' ? 'caret-down' : 'caret-up',
         prefix: "fas"
       }));
@@ -22821,7 +23122,7 @@ var Table = function Table(_ref) {
         delete row.hidden;
       }
 
-      return __jsx$23(TableRow, {
+      return __jsx$26(TableRow, {
         context: context,
         key: index,
         "data-item": JSON.stringify(row),
@@ -22842,12 +23143,12 @@ var Table = function Table(_ref) {
         }
 
         var renderValue = typeof value === 'function' ? value() : value;
-        return __jsx$23(TableData, {
+        return __jsx$26(TableData, {
           align: align,
           key: index
         }, length > 0 && column.formatter ? column.formatter({
           row: row
-        }, column.formatterData) : value && value.__html ? __jsx$23("span", {
+        }, column.formatterData) : value && value.__html ? __jsx$26("span", {
           dangerouslySetInnerHTML: value
         }) : renderValue);
       }));
@@ -22855,21 +23156,21 @@ var Table = function Table(_ref) {
   };
 
   var renderTable = function renderTable() {
-    return __jsx$23(StyledTable, {
+    return __jsx$26(StyledTable, {
       className: className
-    }, caption && __jsx$23(StyledCaption$1, null, caption), __jsx$23("thead", null, __jsx$23("tr", null, columns && renderColumns())), __jsx$23("tbody", null, noData && !loading && !rows.length ? __jsx$23(TableRow, null, __jsx$23(TableData, {
+    }, caption && __jsx$26(StyledCaption$1, null, caption), __jsx$26("thead", null, __jsx$26("tr", null, columns && renderColumns())), __jsx$26("tbody", null, noData && !loading && !rows.length ? __jsx$26(TableRow, null, __jsx$26(TableData, {
       align: "center",
       colSpan: tableSpan
     }, "No data available")) : renderRows()));
   };
 
-  return __jsx$23(React__default['default'].Fragment, null, __jsx$23(StyledWrapper$1, {
+  return __jsx$26(React__default['default'].Fragment, null, __jsx$26(StyledWrapper$1, {
     fullHeight: fullHeight,
     isLoading: loading
-  }, __jsx$23(TableLoading, {
+  }, __jsx$26(TableLoading, {
     colsLength: tableSpan,
     show: loading
-  }), responsive ? __jsx$23(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$23(Pagination, _extends({
+  }), responsive ? __jsx$26(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$26(Pagination, _extends({
     currentPage: currentPage,
     onPageChange: handlePagination,
     pageCount: Math.ceil(rows.length / perPage),
@@ -22953,7 +23254,7 @@ Table.defaultProps = {
   striped: true
 };
 
-var __jsx$24 = React__default['default'].createElement;
+var __jsx$27 = React__default['default'].createElement;
 var TableActions = function TableActions(_ref, data) {
   var row = _ref.row;
 
@@ -22965,7 +23266,7 @@ var TableActions = function TableActions(_ref, data) {
     };
   };
 
-  return __jsx$24(React__default['default'].Fragment, null, __jsx$24(ButtonToolbar, {
+  return __jsx$27(React__default['default'].Fragment, null, __jsx$27(ButtonToolbar, {
     align: "flex-start",
     style: {
       zIndex: '100000000'
@@ -22980,10 +23281,10 @@ var TableActions = function TableActions(_ref, data) {
         to = _ref2.to,
         tooltip = _ref2.tooltip;
     var iconArray = Array.isArray(icon);
-    return __jsx$24(Tooltip, {
+    return __jsx$27(Tooltip, {
       content: tooltip,
       key: index
-    }, __jsx$24(StyledButton$7, {
+    }, __jsx$27(StyledButton$7, {
       forwardedAs: "a",
       disabled: disabled,
       context: context,
@@ -22991,13 +23292,13 @@ var TableActions = function TableActions(_ref, data) {
         return onClick(e, row);
       } : handleClick("".concat(to, "?id=").concat(row.id)),
       size: "sm"
-    }, __jsx$24(Icon, {
+    }, __jsx$27(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0],
       style: {
         pointerEvents: 'none'
       }
-    }), row[numberOverlay] > 0 && __jsx$24(StyledNumberOverlay, null, row[numberOverlay])));
+    }), row[numberOverlay] > 0 && __jsx$27(StyledNumberOverlay, null, row[numberOverlay])));
   })));
 };
 var StyledButton$7 = styled__default['default'](Button).withConfig({
@@ -23012,7 +23313,7 @@ TableActions.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$25 = React__default['default'].createElement;
+var __jsx$28 = React__default['default'].createElement;
 var TableLink = function TableLink(path, key, value, dynamicUrl) {
   return function (_ref) {
     var row = _ref.row;
@@ -23031,7 +23332,7 @@ var TableLink = function TableLink(path, key, value, dynamicUrl) {
     };
 
     var item = row[value];
-    return useLink ? __jsx$25(React__default['default'].Fragment, null, item === '-' && '-', item !== '-' && __jsx$25(StyleLink, {
+    return useLink ? __jsx$28(React__default['default'].Fragment, null, item === '-' && '-', item !== '-' && __jsx$28(StyleLink, {
       border: false,
       href: getPath(),
       onClick: handleClick
@@ -23046,7 +23347,7 @@ TableLink.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$26 = React__default['default'].createElement;
+var __jsx$29 = React__default['default'].createElement;
 var Tab = function Tab(_ref) {
   var activeTab = _ref.activeTab,
       childClick = _ref.childClick,
@@ -23060,7 +23361,7 @@ var Tab = function Tab(_ref) {
     childClick && childClick();
   };
 
-  return __jsx$26(StyledTab, {
+  return __jsx$29(StyledTab, {
     active: activeTab === label,
     context: context,
     disabled: disabled,
@@ -23117,7 +23418,7 @@ Tab.defaultProps = {
   context: false
 };
 
-var __jsx$27 = React__default['default'].createElement;
+var __jsx$2a = React__default['default'].createElement;
 var Tabs = function Tabs(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -23154,11 +23455,11 @@ var Tabs = function Tabs(_ref) {
     });
   };
 
-  return __jsx$27(React__default['default'].Fragment, null, __jsx$27(StyledTabs, {
+  return __jsx$2a(React__default['default'].Fragment, null, __jsx$2a(StyledTabs, {
     className: className
   }, children.map(function (_ref2) {
     var props = _ref2.props;
-    return __jsx$27(Tab, _extends({
+    return __jsx$2a(Tab, _extends({
       activeTab: activeTab,
       key: props.label,
       onClick: props.disabled ? function () {} : onClickTabItem
@@ -23232,14 +23533,14 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-var __jsx$28 = React__default['default'].createElement;
+var __jsx$2b = React__default['default'].createElement;
 var Design = function Design(_ref) {
   var handleReset = _ref.handleReset,
       handleScreenshot = _ref.handleScreenshot,
       refProp = _ref.refProp,
       screenshot = _ref.screenshot,
       videoConstraints = _ref.videoConstraints;
-  return __jsx$28(React__default['default'].Fragment, null, __jsx$28("div", {
+  return __jsx$2b(React__default['default'].Fragment, null, __jsx$2b("div", {
     className: "text-center",
     style: {
       background: '#000',
@@ -23247,24 +23548,24 @@ var Design = function Design(_ref) {
       borderRadius: '.5rem .5rem 0 0',
       marginBottom: '-8px'
     }
-  }, !screenshot && __jsx$28(Webcam, {
+  }, !screenshot && __jsx$2b(Webcam, {
     ref: refProp,
     screenshotFormat: "image/jpeg",
     videoConstraints: videoConstraints
-  }), screenshot && __jsx$28("img", {
+  }), screenshot && __jsx$2b("img", {
     alt: "user photo",
     src: screenshot,
     style: {
       borderRadius: '.5rem .5rem 0 0'
     }
-  })), __jsx$28("div", {
+  })), __jsx$2b("div", {
     style: {
       background: '#C8D1D8',
       borderRadius: '0 0 .5rem .5rem',
       height: '50px',
       position: 'relative'
     }
-  }, __jsx$28("div", {
+  }, __jsx$2b("div", {
     onClick: screenshot ? handleReset : handleScreenshot,
     style: {
       background: "".concat(!screenshot ? '#04d4cd' : '#e60811'),
@@ -23279,7 +23580,7 @@ var Design = function Design(_ref) {
       textAlign: 'center',
       width: '50px'
     }
-  }, __jsx$28(Icon, {
+  }, __jsx$2b(Icon, {
     color: "white",
     icon: "camera",
     style: {
@@ -23289,7 +23590,7 @@ var Design = function Design(_ref) {
 };
 
 var _class, _temp;
-var __jsx$29 = React__default['default'].createElement;
+var __jsx$2c = React__default['default'].createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -23534,7 +23835,7 @@ var Webcam = styled.withTheme((_temp = _class = /*#__PURE__*/function (_Componen
           style = _this$props5.style,
           width = _this$props5.width;
       var src = this.state.src;
-      return __jsx$29("video", {
+      return __jsx$2c("video", {
         autoPlay: true,
         width: width,
         height: height,
@@ -23632,7 +23933,7 @@ Webcam.Design = Design;
 //   width: constrainLongType,
 // });
 
-var __jsx$2a = React__default['default'].createElement;
+var __jsx$2d = React__default['default'].createElement;
 var Bar$1 = function Bar(_ref) {
   var background = _ref.background,
       children = _ref.children,
@@ -23652,7 +23953,7 @@ var Bar$1 = function Bar(_ref) {
     setIsOpen(!IsOpen);
   };
 
-  return __jsx$2a(React__default['default'].Fragment, null, __jsx$2a(StyledBarWrapper, {
+  return __jsx$2d(React__default['default'].Fragment, null, __jsx$2d(StyledBarWrapper, {
     background: background,
     flat: flat,
     open: IsOpen,
@@ -23660,18 +23961,18 @@ var Bar$1 = function Bar(_ref) {
     variant: variant,
     width: width,
     minSize: minSize
-  }, __jsx$2a(OpenButton, {
+  }, __jsx$2d(OpenButton, {
     background: background,
     flat: flat,
     exposed: withExposedButton,
     onClick: toggleOpen,
     open: IsOpen,
     placement: placement
-  }, __jsx$2a(Icon, {
+  }, __jsx$2d(Icon, {
     icon: "user",
     size: "1x",
     prefix: "fas"
-  })), children), __jsx$2a(StyledOverlay$1, {
+  })), children), __jsx$2d(StyledOverlay$1, {
     onClick: toggleOpen,
     open: IsOpen,
     placement: placement,
@@ -23768,7 +24069,7 @@ var BarConfig = {
   }
 };
 
-var __jsx$2b = React__default['default'].createElement;
+var __jsx$2e = React__default['default'].createElement;
 var events = [{
   start: moment__default['default'](),
   end: moment__default['default']().add(1, 'days').toDate(),
@@ -23776,7 +24077,7 @@ var events = [{
 }];
 var BigCalendar = function BigCalendar() {
   var localizer = reactBigCalendar.momentLocalizer(moment__default['default']);
-  return __jsx$2b("div", null, __jsx$2b(reactBigCalendar.Calendar, {
+  return __jsx$2e("div", null, __jsx$2e(reactBigCalendar.Calendar, {
     localizer: localizer,
     defaultDate: new Date(),
     events: events,
@@ -23788,7 +24089,7 @@ var BigCalendar = function BigCalendar() {
   }));
 };
 
-var __jsx$2c = React__default['default'].createElement;
+var __jsx$2f = React__default['default'].createElement;
 var FullCalendar;
 var CalendarWrapper = function CalendarWrapper(props) {
   var _useState = React.useState(false),
@@ -23810,7 +24111,7 @@ var CalendarWrapper = function CalendarWrapper(props) {
         var Calendar = _ref.calendar,
             plugins = _objectWithoutProperties(_ref, ["calendar"]);
 
-        return __jsx$2c(Calendar, _extends({
+        return __jsx$2f(Calendar, _extends({
           plugins: Object.values(plugins),
           ref: props.forwardedRef
         }, props));
@@ -23827,14 +24128,14 @@ var CalendarWrapper = function CalendarWrapper(props) {
   }, []);
 
   var showCalendar = function showCalendar(props) {
-    if (!calendarLoaded) return __jsx$2c("div", null, "Loading ...");
-    return __jsx$2c(FullCalendar, props);
+    if (!calendarLoaded) return __jsx$2f("div", null, "Loading ...");
+    return __jsx$2f(FullCalendar, props);
   };
 
-  return __jsx$2c("div", null, showCalendar(props));
+  return __jsx$2f("div", null, showCalendar(props));
 };
 
-var __jsx$2d = React__default['default'].createElement;
+var __jsx$2g = React__default['default'].createElement;
 var Calendar = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var props = _extends({}, _ref);
 
@@ -23845,14 +24146,14 @@ var Calendar = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
-  return __jsx$2d(Wrapper$3, null, props.hasLoading && loading && __jsx$2d(PageLoading, {
-    indicator: __jsx$2d(LdsSpinner, {
+  return __jsx$2g(Wrapper$4, null, props.hasLoading && loading && __jsx$2g(PageLoading, {
+    indicator: __jsx$2g(LdsSpinner, {
       color: "#000",
       size: 50
     }),
     opacity: 0.7,
     position: "absolute"
-  }), __jsx$2d(CalendarWrapper, _extends({}, props, {
+  }), __jsx$2g(CalendarWrapper, _extends({}, props, {
     eventColor: props.defaultEventColor || COLOUR.primary,
     header: props.header || CALENDAR.header,
     events: props.events,
@@ -23860,7352 +24161,12 @@ var Calendar = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
     loading: setLoading
   })));
 });
-var Wrapper$3 = styled__default['default'].div.withConfig({
+var Wrapper$4 = styled__default['default'].div.withConfig({
   displayName: "fullCalendar__Wrapper",
   componentId: "sc-12sqf83-0"
 })(["position:relative;width:100%;@media (max-width:700px){.fc-header-toolbar{flex-direction:column;}}"]);
 
-var flattenNames_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.flattenNames = undefined;
-
-
-
-var _isString3 = _interopRequireDefault(isString__default['default']);
-
-
-
-var _forOwn3 = _interopRequireDefault(forOwn__default['default']);
-
-
-
-var _isPlainObject3 = _interopRequireDefault(isPlainObject__default['default']);
-
-
-
-var _map3 = _interopRequireDefault(map__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var flattenNames = exports.flattenNames = function flattenNames() {
-  var things = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-  var names = [];
-
-  (0, _map3.default)(things, function (thing) {
-    if (Array.isArray(thing)) {
-      flattenNames(thing).map(function (name) {
-        return names.push(name);
-      });
-    } else if ((0, _isPlainObject3.default)(thing)) {
-      (0, _forOwn3.default)(thing, function (value, key) {
-        value === true && names.push(key);
-        names.push(key + '-' + value);
-      });
-    } else if ((0, _isString3.default)(thing)) {
-      names.push(thing);
-    }
-  });
-
-  return names;
-};
-
-exports.default = flattenNames;
-});
-
-var mergeClasses_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mergeClasses = undefined;
-
-
-
-var _forOwn3 = _interopRequireDefault(forOwn__default['default']);
-
-
-
-var _cloneDeep3 = _interopRequireDefault(cloneDeep__default['default']);
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mergeClasses = exports.mergeClasses = function mergeClasses(classes) {
-  var activeNames = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-  var styles = classes.default && (0, _cloneDeep3.default)(classes.default) || {};
-  activeNames.map(function (name) {
-    var toMerge = classes[name];
-    if (toMerge) {
-      (0, _forOwn3.default)(toMerge, function (value, key) {
-        if (!styles[key]) {
-          styles[key] = {};
-        }
-
-        styles[key] = _extends({}, styles[key], toMerge[key]);
-      });
-    }
-
-    return name;
-  });
-  return styles;
-};
-
-exports.default = mergeClasses;
-});
-
-var autoprefix_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.autoprefix = undefined;
-
-
-
-var _forOwn3 = _interopRequireDefault(forOwn__default['default']);
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var transforms = {
-  borderRadius: function borderRadius(value) {
-    return {
-      msBorderRadius: value,
-      MozBorderRadius: value,
-      OBorderRadius: value,
-      WebkitBorderRadius: value,
-      borderRadius: value
-    };
-  },
-  boxShadow: function boxShadow(value) {
-    return {
-      msBoxShadow: value,
-      MozBoxShadow: value,
-      OBoxShadow: value,
-      WebkitBoxShadow: value,
-      boxShadow: value
-    };
-  },
-  userSelect: function userSelect(value) {
-    return {
-      WebkitTouchCallout: value,
-      KhtmlUserSelect: value,
-      MozUserSelect: value,
-      msUserSelect: value,
-      WebkitUserSelect: value,
-      userSelect: value
-    };
-  },
-
-  flex: function flex(value) {
-    return {
-      WebkitBoxFlex: value,
-      MozBoxFlex: value,
-      WebkitFlex: value,
-      msFlex: value,
-      flex: value
-    };
-  },
-  flexBasis: function flexBasis(value) {
-    return {
-      WebkitFlexBasis: value,
-      flexBasis: value
-    };
-  },
-  justifyContent: function justifyContent(value) {
-    return {
-      WebkitJustifyContent: value,
-      justifyContent: value
-    };
-  },
-
-  transition: function transition(value) {
-    return {
-      msTransition: value,
-      MozTransition: value,
-      OTransition: value,
-      WebkitTransition: value,
-      transition: value
-    };
-  },
-
-  transform: function transform(value) {
-    return {
-      msTransform: value,
-      MozTransform: value,
-      OTransform: value,
-      WebkitTransform: value,
-      transform: value
-    };
-  },
-  absolute: function absolute(value) {
-    var direction = value && value.split(' ');
-    return {
-      position: 'absolute',
-      top: direction && direction[0],
-      right: direction && direction[1],
-      bottom: direction && direction[2],
-      left: direction && direction[3]
-    };
-  },
-  extend: function extend(name, otherElementStyles) {
-    var otherStyle = otherElementStyles[name];
-    if (otherStyle) {
-      return otherStyle;
-    }
-    return {
-      'extend': name
-    };
-  }
-};
-
-var autoprefix = exports.autoprefix = function autoprefix(elements) {
-  var prefixed = {};
-  (0, _forOwn3.default)(elements, function (styles, element) {
-    var expanded = {};
-    (0, _forOwn3.default)(styles, function (value, key) {
-      var transform = transforms[key];
-      if (transform) {
-        expanded = _extends({}, expanded, transform(value));
-      } else {
-        expanded[key] = value;
-      }
-    });
-    prefixed[element] = expanded;
-  });
-  return prefixed;
-};
-
-exports.default = autoprefix;
-});
-
-var hover_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.hover = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var hover = exports.hover = function hover(Component) {
-  var Span = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'span';
-
-  return function (_React$Component) {
-    _inherits(Hover, _React$Component);
-
-    function Hover() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, Hover);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Hover.__proto__ || Object.getPrototypeOf(Hover)).call.apply(_ref, [this].concat(args))), _this), _this.state = { hover: false }, _this.handleMouseOver = function () {
-        return _this.setState({ hover: true });
-      }, _this.handleMouseOut = function () {
-        return _this.setState({ hover: false });
-      }, _this.render = function () {
-        return _react2.default.createElement(
-          Span,
-          { onMouseOver: _this.handleMouseOver, onMouseOut: _this.handleMouseOut },
-          _react2.default.createElement(Component, _extends({}, _this.props, _this.state))
-        );
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    return Hover;
-  }(_react2.default.Component);
-};
-
-exports.default = hover;
-});
-
-var active_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.active = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var active = exports.active = function active(Component) {
-  var Span = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'span';
-
-  return function (_React$Component) {
-    _inherits(Active, _React$Component);
-
-    function Active() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, Active);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Active.__proto__ || Object.getPrototypeOf(Active)).call.apply(_ref, [this].concat(args))), _this), _this.state = { active: false }, _this.handleMouseDown = function () {
-        return _this.setState({ active: true });
-      }, _this.handleMouseUp = function () {
-        return _this.setState({ active: false });
-      }, _this.render = function () {
-        return _react2.default.createElement(
-          Span,
-          { onMouseDown: _this.handleMouseDown, onMouseUp: _this.handleMouseUp },
-          _react2.default.createElement(Component, _extends({}, _this.props, _this.state))
-        );
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    return Active;
-  }(_react2.default.Component);
-};
-
-exports.default = active;
-});
-
-var loop = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var loopable = function loopable(i, length) {
-  var props = {};
-  var setProp = function setProp(name) {
-    var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-
-    props[name] = value;
-  };
-
-  i === 0 && setProp('first-child');
-  i === length - 1 && setProp('last-child');
-  (i === 0 || i % 2 === 0) && setProp('even');
-  Math.abs(i % 2) === 1 && setProp('odd');
-  setProp('nth-child', i);
-
-  return props;
-};
-
-exports.default = loopable;
-});
-
-var lib = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ReactCSS = exports.loop = exports.handleActive = exports.handleHover = exports.hover = undefined;
-
-
-
-var _flattenNames2 = _interopRequireDefault(flattenNames_1);
-
-
-
-var _mergeClasses2 = _interopRequireDefault(mergeClasses_1);
-
-
-
-var _autoprefix2 = _interopRequireDefault(autoprefix_1);
-
-
-
-var _hover3 = _interopRequireDefault(hover_1);
-
-
-
-var _active2 = _interopRequireDefault(active_1);
-
-
-
-var _loop3 = _interopRequireDefault(loop);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.hover = _hover3.default;
-exports.handleHover = _hover3.default;
-exports.handleActive = _active2.default;
-exports.loop = _loop3.default;
-var ReactCSS = exports.ReactCSS = function ReactCSS(classes) {
-  for (var _len = arguments.length, activations = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    activations[_key - 1] = arguments[_key];
-  }
-
-  var activeNames = (0, _flattenNames2.default)(activations);
-  var merged = (0, _mergeClasses2.default)(classes, activeNames);
-  return (0, _autoprefix2.default)(merged);
-};
-
-exports.default = ReactCSS;
-});
-
-var alpha = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var calculateChange = exports.calculateChange = function calculateChange(e, hsl, direction, initialA, container) {
-  var containerWidth = container.clientWidth;
-  var containerHeight = container.clientHeight;
-  var x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
-  var y = typeof e.pageY === 'number' ? e.pageY : e.touches[0].pageY;
-  var left = x - (container.getBoundingClientRect().left + window.pageXOffset);
-  var top = y - (container.getBoundingClientRect().top + window.pageYOffset);
-
-  if (direction === 'vertical') {
-    var a = void 0;
-    if (top < 0) {
-      a = 0;
-    } else if (top > containerHeight) {
-      a = 1;
-    } else {
-      a = Math.round(top * 100 / containerHeight) / 100;
-    }
-
-    if (hsl.a !== a) {
-      return {
-        h: hsl.h,
-        s: hsl.s,
-        l: hsl.l,
-        a: a,
-        source: 'rgb'
-      };
-    }
-  } else {
-    var _a = void 0;
-    if (left < 0) {
-      _a = 0;
-    } else if (left > containerWidth) {
-      _a = 1;
-    } else {
-      _a = Math.round(left * 100 / containerWidth) / 100;
-    }
-
-    if (initialA !== _a) {
-      return {
-        h: hsl.h,
-        s: hsl.s,
-        l: hsl.l,
-        a: _a,
-        source: 'rgb'
-      };
-    }
-  }
-  return null;
-};
-});
-
-var checkboard = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var checkboardCache = {};
-
-var render = exports.render = function render(c1, c2, size, serverCanvas) {
-  if (typeof document === 'undefined' && !serverCanvas) {
-    return null;
-  }
-  var canvas = serverCanvas ? new serverCanvas() : document.createElement('canvas');
-  canvas.width = size * 2;
-  canvas.height = size * 2;
-  var ctx = canvas.getContext('2d');
-  if (!ctx) {
-    return null;
-  } // If no context can be found, return early.
-  ctx.fillStyle = c1;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = c2;
-  ctx.fillRect(0, 0, size, size);
-  ctx.translate(size, size);
-  ctx.fillRect(0, 0, size, size);
-  return canvas.toDataURL();
-};
-
-var get = exports.get = function get(c1, c2, size, serverCanvas) {
-  var key = c1 + '-' + c2 + '-' + size + (serverCanvas ? '-server' : '');
-
-  if (checkboardCache[key]) {
-    return checkboardCache[key];
-  }
-
-  var checkboard = render(c1, c2, size, serverCanvas);
-  checkboardCache[key] = checkboard;
-  return checkboard;
-};
-});
-
-var Checkboard_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Checkboard = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var checkboard$1 = _interopRequireWildcard(checkboard);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Checkboard = exports.Checkboard = function Checkboard(_ref) {
-  var white = _ref.white,
-      grey = _ref.grey,
-      size = _ref.size,
-      renderers = _ref.renderers,
-      borderRadius = _ref.borderRadius,
-      boxShadow = _ref.boxShadow,
-      children = _ref.children;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      grid: {
-        borderRadius: borderRadius,
-        boxShadow: boxShadow,
-        absolute: '0px 0px 0px 0px',
-        background: 'url(' + checkboard$1.get(white, grey, size, renderers.canvas) + ') center left'
-      }
-    }
-  });
-  return (0, React__default['default'].isValidElement)(children) ? _react2.default.cloneElement(children, _extends({}, children.props, { style: _extends({}, children.props.style, styles.grid) })) : _react2.default.createElement('div', { style: styles.grid });
-};
-
-Checkboard.defaultProps = {
-  size: 8,
-  white: 'transparent',
-  grey: 'rgba(0,0,0,.08)',
-  renderers: {}
-};
-
-exports.default = Checkboard;
-});
-
-var Alpha_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Alpha = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var alpha$1 = _interopRequireWildcard(alpha);
-
-
-
-var _Checkboard2 = _interopRequireDefault(Checkboard_1);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Alpha = exports.Alpha = function (_ref) {
-  _inherits(Alpha, _ref);
-
-  function Alpha() {
-    var _ref2;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Alpha);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = Alpha.__proto__ || Object.getPrototypeOf(Alpha)).call.apply(_ref2, [this].concat(args))), _this), _this.handleChange = function (e) {
-      var change = alpha$1.calculateChange(e, _this.props.hsl, _this.props.direction, _this.props.a, _this.container);
-      change && typeof _this.props.onChange === 'function' && _this.props.onChange(change, e);
-    }, _this.handleMouseDown = function (e) {
-      _this.handleChange(e);
-      window.addEventListener('mousemove', _this.handleChange);
-      window.addEventListener('mouseup', _this.handleMouseUp);
-    }, _this.handleMouseUp = function () {
-      _this.unbindEventListeners();
-    }, _this.unbindEventListeners = function () {
-      window.removeEventListener('mousemove', _this.handleChange);
-      window.removeEventListener('mouseup', _this.handleMouseUp);
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Alpha, [{
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unbindEventListeners();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var rgb = this.props.rgb;
-      var styles = (0, _reactcss2.default)({
-        'default': {
-          alpha: {
-            absolute: '0px 0px 0px 0px',
-            borderRadius: this.props.radius
-          },
-          checkboard: {
-            absolute: '0px 0px 0px 0px',
-            overflow: 'hidden',
-            borderRadius: this.props.radius
-          },
-          gradient: {
-            absolute: '0px 0px 0px 0px',
-            background: 'linear-gradient(to right, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ', 0) 0%,\n           rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ', 1) 100%)',
-            boxShadow: this.props.shadow,
-            borderRadius: this.props.radius
-          },
-          container: {
-            position: 'relative',
-            height: '100%',
-            margin: '0 3px'
-          },
-          pointer: {
-            position: 'absolute',
-            left: rgb.a * 100 + '%'
-          },
-          slider: {
-            width: '4px',
-            borderRadius: '1px',
-            height: '8px',
-            boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
-            background: '#fff',
-            marginTop: '1px',
-            transform: 'translateX(-2px)'
-          }
-        },
-        'vertical': {
-          gradient: {
-            background: 'linear-gradient(to bottom, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ', 0) 0%,\n           rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ', 1) 100%)'
-          },
-          pointer: {
-            left: 0,
-            top: rgb.a * 100 + '%'
-          }
-        },
-        'overwrite': _extends({}, this.props.style)
-      }, {
-        vertical: this.props.direction === 'vertical',
-        overwrite: true
-      });
-
-      return _react2.default.createElement(
-        'div',
-        { style: styles.alpha },
-        _react2.default.createElement(
-          'div',
-          { style: styles.checkboard },
-          _react2.default.createElement(_Checkboard2.default, { renderers: this.props.renderers })
-        ),
-        _react2.default.createElement('div', { style: styles.gradient }),
-        _react2.default.createElement(
-          'div',
-          {
-            style: styles.container,
-            ref: function ref(container) {
-              return _this2.container = container;
-            },
-            onMouseDown: this.handleMouseDown,
-            onTouchMove: this.handleChange,
-            onTouchStart: this.handleChange
-          },
-          _react2.default.createElement(
-            'div',
-            { style: styles.pointer },
-            this.props.pointer ? _react2.default.createElement(this.props.pointer, this.props) : _react2.default.createElement('div', { style: styles.slider })
-          )
-        )
-      );
-    }
-  }]);
-
-  return Alpha;
-}(React__default['default'].PureComponent || React__default['default'].Component);
-
-exports.default = Alpha;
-});
-
-var EditableInput_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.EditableInput = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var DEFAULT_ARROW_OFFSET = 1;
-
-var UP_KEY_CODE = 38;
-var DOWN_KEY_CODE = 40;
-var VALID_KEY_CODES = [UP_KEY_CODE, DOWN_KEY_CODE];
-var isValidKeyCode = function isValidKeyCode(keyCode) {
-  return VALID_KEY_CODES.indexOf(keyCode) > -1;
-};
-var getNumberValue = function getNumberValue(value) {
-  return Number(String(value).replace(/%/g, ''));
-};
-
-var EditableInput = exports.EditableInput = function (_ref) {
-  _inherits(EditableInput, _ref);
-
-  function EditableInput(props) {
-    _classCallCheck(this, EditableInput);
-
-    var _this = _possibleConstructorReturn(this, (EditableInput.__proto__ || Object.getPrototypeOf(EditableInput)).call(this));
-
-    _this.handleBlur = function () {
-      if (_this.state.blurValue) {
-        _this.setState({ value: _this.state.blurValue, blurValue: null });
-      }
-    };
-
-    _this.handleChange = function (e) {
-      _this.setUpdatedValue(e.target.value, e);
-    };
-
-    _this.handleKeyDown = function (e) {
-      // In case `e.target.value` is a percentage remove the `%` character
-      // and update accordingly with a percentage
-      // https://github.com/casesandberg/react-color/issues/383
-      var value = getNumberValue(e.target.value);
-      if (!isNaN(value) && isValidKeyCode(e.keyCode)) {
-        var offset = _this.getArrowOffset();
-        var updatedValue = e.keyCode === UP_KEY_CODE ? value + offset : value - offset;
-
-        _this.setUpdatedValue(updatedValue, e);
-      }
-    };
-
-    _this.handleDrag = function (e) {
-      if (_this.props.dragLabel) {
-        var newValue = Math.round(_this.props.value + e.movementX);
-        if (newValue >= 0 && newValue <= _this.props.dragMax) {
-          _this.props.onChange && _this.props.onChange(_this.getValueObjectWithLabel(newValue), e);
-        }
-      }
-    };
-
-    _this.handleMouseDown = function (e) {
-      if (_this.props.dragLabel) {
-        e.preventDefault();
-        _this.handleDrag(e);
-        window.addEventListener('mousemove', _this.handleDrag);
-        window.addEventListener('mouseup', _this.handleMouseUp);
-      }
-    };
-
-    _this.handleMouseUp = function () {
-      _this.unbindEventListeners();
-    };
-
-    _this.unbindEventListeners = function () {
-      window.removeEventListener('mousemove', _this.handleDrag);
-      window.removeEventListener('mouseup', _this.handleMouseUp);
-    };
-
-    _this.state = {
-      value: String(props.value).toUpperCase(),
-      blurValue: String(props.value).toUpperCase()
-    };
-    return _this;
-  }
-
-  _createClass(EditableInput, [{
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps, prevState) {
-      if (this.props.value !== this.state.value && (prevProps.value !== this.props.value || prevState.value !== this.state.value)) {
-        if (this.input === document.activeElement) {
-          this.setState({ blurValue: String(this.props.value).toUpperCase() });
-        } else {
-          this.setState({ value: String(this.props.value).toUpperCase(), blurValue: !this.state.blurValue && String(this.props.value).toUpperCase() });
-        }
-      }
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unbindEventListeners();
-    }
-  }, {
-    key: 'getValueObjectWithLabel',
-    value: function getValueObjectWithLabel(value) {
-      return _defineProperty({}, this.props.label, value);
-    }
-  }, {
-    key: 'getArrowOffset',
-    value: function getArrowOffset() {
-      return this.props.arrowOffset || DEFAULT_ARROW_OFFSET;
-    }
-  }, {
-    key: 'setUpdatedValue',
-    value: function setUpdatedValue(value, e) {
-      var onChangeValue = this.props.label ? this.getValueObjectWithLabel(value) : value;
-      this.props.onChange && this.props.onChange(onChangeValue, e);
-
-      this.setState({ value: value });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var styles = (0, _reactcss2.default)({
-        'default': {
-          wrap: {
-            position: 'relative'
-          }
-        },
-        'user-override': {
-          wrap: this.props.style && this.props.style.wrap ? this.props.style.wrap : {},
-          input: this.props.style && this.props.style.input ? this.props.style.input : {},
-          label: this.props.style && this.props.style.label ? this.props.style.label : {}
-        },
-        'dragLabel-true': {
-          label: {
-            cursor: 'ew-resize'
-          }
-        }
-      }, {
-        'user-override': true
-      }, this.props);
-
-      return _react2.default.createElement(
-        'div',
-        { style: styles.wrap },
-        _react2.default.createElement('input', {
-          style: styles.input,
-          ref: function ref(input) {
-            return _this2.input = input;
-          },
-          value: this.state.value,
-          onKeyDown: this.handleKeyDown,
-          onChange: this.handleChange,
-          onBlur: this.handleBlur,
-          placeholder: this.props.placeholder,
-          spellCheck: 'false'
-        }),
-        this.props.label && !this.props.hideLabel ? _react2.default.createElement(
-          'span',
-          { style: styles.label, onMouseDown: this.handleMouseDown },
-          this.props.label
-        ) : null
-      );
-    }
-  }]);
-
-  return EditableInput;
-}(React__default['default'].PureComponent || React__default['default'].Component);
-
-exports.default = EditableInput;
-});
-
-var hue = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var calculateChange = exports.calculateChange = function calculateChange(e, direction, hsl, container) {
-  var containerWidth = container.clientWidth;
-  var containerHeight = container.clientHeight;
-  var x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
-  var y = typeof e.pageY === 'number' ? e.pageY : e.touches[0].pageY;
-  var left = x - (container.getBoundingClientRect().left + window.pageXOffset);
-  var top = y - (container.getBoundingClientRect().top + window.pageYOffset);
-
-  if (direction === 'vertical') {
-    var h = void 0;
-    if (top < 0) {
-      h = 359;
-    } else if (top > containerHeight) {
-      h = 0;
-    } else {
-      var percent = -(top * 100 / containerHeight) + 100;
-      h = 360 * percent / 100;
-    }
-
-    if (hsl.h !== h) {
-      return {
-        h: h,
-        s: hsl.s,
-        l: hsl.l,
-        a: hsl.a,
-        source: 'hsl'
-      };
-    }
-  } else {
-    var _h = void 0;
-    if (left < 0) {
-      _h = 0;
-    } else if (left > containerWidth) {
-      _h = 359;
-    } else {
-      var _percent = left * 100 / containerWidth;
-      _h = 360 * _percent / 100;
-    }
-
-    if (hsl.h !== _h) {
-      return {
-        h: _h,
-        s: hsl.s,
-        l: hsl.l,
-        a: hsl.a,
-        source: 'hsl'
-      };
-    }
-  }
-  return null;
-};
-});
-
-var Hue_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Hue = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var hue$1 = _interopRequireWildcard(hue);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Hue = exports.Hue = function (_ref) {
-  _inherits(Hue, _ref);
-
-  function Hue() {
-    var _ref2;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Hue);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = Hue.__proto__ || Object.getPrototypeOf(Hue)).call.apply(_ref2, [this].concat(args))), _this), _this.handleChange = function (e) {
-      var change = hue$1.calculateChange(e, _this.props.direction, _this.props.hsl, _this.container);
-      change && typeof _this.props.onChange === 'function' && _this.props.onChange(change, e);
-    }, _this.handleMouseDown = function (e) {
-      _this.handleChange(e);
-      window.addEventListener('mousemove', _this.handleChange);
-      window.addEventListener('mouseup', _this.handleMouseUp);
-    }, _this.handleMouseUp = function () {
-      _this.unbindEventListeners();
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Hue, [{
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unbindEventListeners();
-    }
-  }, {
-    key: 'unbindEventListeners',
-    value: function unbindEventListeners() {
-      window.removeEventListener('mousemove', this.handleChange);
-      window.removeEventListener('mouseup', this.handleMouseUp);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var _props$direction = this.props.direction,
-          direction = _props$direction === undefined ? 'horizontal' : _props$direction;
-
-
-      var styles = (0, _reactcss2.default)({
-        'default': {
-          hue: {
-            absolute: '0px 0px 0px 0px',
-            borderRadius: this.props.radius,
-            boxShadow: this.props.shadow
-          },
-          container: {
-            padding: '0 2px',
-            position: 'relative',
-            height: '100%',
-            borderRadius: this.props.radius
-          },
-          pointer: {
-            position: 'absolute',
-            left: this.props.hsl.h * 100 / 360 + '%'
-          },
-          slider: {
-            marginTop: '1px',
-            width: '4px',
-            borderRadius: '1px',
-            height: '8px',
-            boxShadow: '0 0 2px rgba(0, 0, 0, .6)',
-            background: '#fff',
-            transform: 'translateX(-2px)'
-          }
-        },
-        'vertical': {
-          pointer: {
-            left: '0px',
-            top: -(this.props.hsl.h * 100 / 360) + 100 + '%'
-          }
-        }
-      }, { vertical: direction === 'vertical' });
-
-      return _react2.default.createElement(
-        'div',
-        { style: styles.hue },
-        _react2.default.createElement(
-          'div',
-          {
-            className: 'hue-' + direction,
-            style: styles.container,
-            ref: function ref(container) {
-              return _this2.container = container;
-            },
-            onMouseDown: this.handleMouseDown,
-            onTouchMove: this.handleChange,
-            onTouchStart: this.handleChange
-          },
-          _react2.default.createElement(
-            'style',
-            null,
-            '\n            .hue-horizontal {\n              background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0\n                33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n              background: -webkit-linear-gradient(to right, #f00 0%, #ff0\n                17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n            }\n\n            .hue-vertical {\n              background: linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%,\n                #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n              background: -webkit-linear-gradient(to top, #f00 0%, #ff0 17%,\n                #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);\n            }\n          '
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.pointer },
-            this.props.pointer ? _react2.default.createElement(this.props.pointer, this.props) : _react2.default.createElement('div', { style: styles.slider })
-          )
-        )
-      );
-    }
-  }]);
-
-  return Hue;
-}(React__default['default'].PureComponent || React__default['default'].Component);
-
-exports.default = Hue;
-});
-
-var Raised_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Raised = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Raised = exports.Raised = function Raised(_ref) {
-  var zDepth = _ref.zDepth,
-      radius = _ref.radius,
-      background = _ref.background,
-      children = _ref.children,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      wrap: {
-        position: 'relative',
-        display: 'inline-block'
-      },
-      content: {
-        position: 'relative'
-      },
-      bg: {
-        absolute: '0px 0px 0px 0px',
-        boxShadow: '0 ' + zDepth + 'px ' + zDepth * 4 + 'px rgba(0,0,0,.24)',
-        borderRadius: radius,
-        background: background
-      }
-    },
-    'zDepth-0': {
-      bg: {
-        boxShadow: 'none'
-      }
-    },
-
-    'zDepth-1': {
-      bg: {
-        boxShadow: '0 2px 10px rgba(0,0,0,.12), 0 2px 5px rgba(0,0,0,.16)'
-      }
-    },
-    'zDepth-2': {
-      bg: {
-        boxShadow: '0 6px 20px rgba(0,0,0,.19), 0 8px 17px rgba(0,0,0,.2)'
-      }
-    },
-    'zDepth-3': {
-      bg: {
-        boxShadow: '0 17px 50px rgba(0,0,0,.19), 0 12px 15px rgba(0,0,0,.24)'
-      }
-    },
-    'zDepth-4': {
-      bg: {
-        boxShadow: '0 25px 55px rgba(0,0,0,.21), 0 16px 28px rgba(0,0,0,.22)'
-      }
-    },
-    'zDepth-5': {
-      bg: {
-        boxShadow: '0 40px 77px rgba(0,0,0,.22), 0 27px 24px rgba(0,0,0,.2)'
-      }
-    },
-    'square': {
-      bg: {
-        borderRadius: '0'
-      }
-    },
-    'circle': {
-      bg: {
-        borderRadius: '50%'
-      }
-    }
-  }, passedStyles), { 'zDepth-1': zDepth === 1 });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.wrap },
-    _react2.default.createElement('div', { style: styles.bg }),
-    _react2.default.createElement(
-      'div',
-      { style: styles.content },
-      children
-    )
-  );
-};
-
-Raised.propTypes = {
-  background: _propTypes2.default.string,
-  zDepth: _propTypes2.default.oneOf([0, 1, 2, 3, 4, 5]),
-  radius: _propTypes2.default.number,
-  styles: _propTypes2.default.object
-};
-
-Raised.defaultProps = {
-  background: '#fff',
-  zDepth: 1,
-  radius: 2,
-  styles: {}
-};
-
-exports.default = Raised;
-});
-
-var saturation = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var calculateChange = exports.calculateChange = function calculateChange(e, hsl, container) {
-  var _container$getBoundin = container.getBoundingClientRect(),
-      containerWidth = _container$getBoundin.width,
-      containerHeight = _container$getBoundin.height;
-
-  var x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
-  var y = typeof e.pageY === 'number' ? e.pageY : e.touches[0].pageY;
-  var left = x - (container.getBoundingClientRect().left + window.pageXOffset);
-  var top = y - (container.getBoundingClientRect().top + window.pageYOffset);
-
-  if (left < 0) {
-    left = 0;
-  } else if (left > containerWidth) {
-    left = containerWidth;
-  }
-
-  if (top < 0) {
-    top = 0;
-  } else if (top > containerHeight) {
-    top = containerHeight;
-  }
-
-  var saturation = left / containerWidth;
-  var bright = 1 - top / containerHeight;
-
-  return {
-    h: hsl.h,
-    s: saturation,
-    v: bright,
-    a: hsl.a,
-    source: 'hsv'
-  };
-};
-});
-
-var Saturation_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Saturation = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _throttle2 = _interopRequireDefault(throttle__default['default']);
-
-
-
-var saturation$1 = _interopRequireWildcard(saturation);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Saturation = exports.Saturation = function (_ref) {
-  _inherits(Saturation, _ref);
-
-  function Saturation(props) {
-    _classCallCheck(this, Saturation);
-
-    var _this = _possibleConstructorReturn(this, (Saturation.__proto__ || Object.getPrototypeOf(Saturation)).call(this, props));
-
-    _this.handleChange = function (e) {
-      typeof _this.props.onChange === 'function' && _this.throttle(_this.props.onChange, saturation$1.calculateChange(e, _this.props.hsl, _this.container), e);
-    };
-
-    _this.handleMouseDown = function (e) {
-      _this.handleChange(e);
-      window.addEventListener('mousemove', _this.handleChange);
-      window.addEventListener('mouseup', _this.handleMouseUp);
-    };
-
-    _this.handleMouseUp = function () {
-      _this.unbindEventListeners();
-    };
-
-    _this.throttle = (0, _throttle2.default)(function (fn, data, e) {
-      fn(data, e);
-    }, 50);
-    return _this;
-  }
-
-  _createClass(Saturation, [{
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.throttle.cancel();
-      this.unbindEventListeners();
-    }
-  }, {
-    key: 'unbindEventListeners',
-    value: function unbindEventListeners() {
-      window.removeEventListener('mousemove', this.handleChange);
-      window.removeEventListener('mouseup', this.handleMouseUp);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var _ref2 = this.props.style || {},
-          color = _ref2.color,
-          white = _ref2.white,
-          black = _ref2.black,
-          pointer = _ref2.pointer,
-          circle = _ref2.circle;
-
-      var styles = (0, _reactcss2.default)({
-        'default': {
-          color: {
-            absolute: '0px 0px 0px 0px',
-            background: 'hsl(' + this.props.hsl.h + ',100%, 50%)',
-            borderRadius: this.props.radius
-          },
-          white: {
-            absolute: '0px 0px 0px 0px',
-            borderRadius: this.props.radius
-          },
-          black: {
-            absolute: '0px 0px 0px 0px',
-            boxShadow: this.props.shadow,
-            borderRadius: this.props.radius
-          },
-          pointer: {
-            position: 'absolute',
-            top: -(this.props.hsv.v * 100) + 100 + '%',
-            left: this.props.hsv.s * 100 + '%',
-            cursor: 'default'
-          },
-          circle: {
-            width: '4px',
-            height: '4px',
-            boxShadow: '0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0,0,0,.3),\n            0 0 1px 2px rgba(0,0,0,.4)',
-            borderRadius: '50%',
-            cursor: 'hand',
-            transform: 'translate(-2px, -2px)'
-          }
-        },
-        'custom': {
-          color: color,
-          white: white,
-          black: black,
-          pointer: pointer,
-          circle: circle
-        }
-      }, { 'custom': !!this.props.style });
-
-      return _react2.default.createElement(
-        'div',
-        {
-          style: styles.color,
-          ref: function ref(container) {
-            return _this2.container = container;
-          },
-          onMouseDown: this.handleMouseDown,
-          onTouchMove: this.handleChange,
-          onTouchStart: this.handleChange
-        },
-        _react2.default.createElement(
-          'style',
-          null,
-          '\n          .saturation-white {\n            background: -webkit-linear-gradient(to right, #fff, rgba(255,255,255,0));\n            background: linear-gradient(to right, #fff, rgba(255,255,255,0));\n          }\n          .saturation-black {\n            background: -webkit-linear-gradient(to top, #000, rgba(0,0,0,0));\n            background: linear-gradient(to top, #000, rgba(0,0,0,0));\n          }\n        '
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: styles.white, className: 'saturation-white' },
-          _react2.default.createElement('div', { style: styles.black, className: 'saturation-black' }),
-          _react2.default.createElement(
-            'div',
-            { style: styles.pointer },
-            this.props.pointer ? _react2.default.createElement(this.props.pointer, this.props) : _react2.default.createElement('div', { style: styles.circle })
-          )
-        )
-      );
-    }
-  }]);
-
-  return Saturation;
-}(React__default['default'].PureComponent || React__default['default'].Component);
-
-exports.default = Saturation;
-});
-
-var tinycolor = createCommonjsModule(function (module) {
-// TinyColor v1.4.1
-// https://github.com/bgrins/TinyColor
-// Brian Grinstead, MIT License
-
-(function(Math) {
-
-var trimLeft = /^\s+/,
-    trimRight = /\s+$/,
-    tinyCounter = 0,
-    mathRound = Math.round,
-    mathMin = Math.min,
-    mathMax = Math.max,
-    mathRandom = Math.random;
-
-function tinycolor (color, opts) {
-
-    color = (color) ? color : '';
-    opts = opts || { };
-
-    // If input is already a tinycolor, return itself
-    if (color instanceof tinycolor) {
-       return color;
-    }
-    // If we are called as a function, call using new instead
-    if (!(this instanceof tinycolor)) {
-        return new tinycolor(color, opts);
-    }
-
-    var rgb = inputToRGB(color);
-    this._originalInput = color,
-    this._r = rgb.r,
-    this._g = rgb.g,
-    this._b = rgb.b,
-    this._a = rgb.a,
-    this._roundA = mathRound(100*this._a) / 100,
-    this._format = opts.format || rgb.format;
-    this._gradientType = opts.gradientType;
-
-    // Don't let the range of [0,255] come back in [0,1].
-    // Potentially lose a little bit of precision here, but will fix issues where
-    // .5 gets interpreted as half of the total, instead of half of 1
-    // If it was supposed to be 128, this was already taken care of by `inputToRgb`
-    if (this._r < 1) { this._r = mathRound(this._r); }
-    if (this._g < 1) { this._g = mathRound(this._g); }
-    if (this._b < 1) { this._b = mathRound(this._b); }
-
-    this._ok = rgb.ok;
-    this._tc_id = tinyCounter++;
-}
-
-tinycolor.prototype = {
-    isDark: function() {
-        return this.getBrightness() < 128;
-    },
-    isLight: function() {
-        return !this.isDark();
-    },
-    isValid: function() {
-        return this._ok;
-    },
-    getOriginalInput: function() {
-      return this._originalInput;
-    },
-    getFormat: function() {
-        return this._format;
-    },
-    getAlpha: function() {
-        return this._a;
-    },
-    getBrightness: function() {
-        //http://www.w3.org/TR/AERT#color-contrast
-        var rgb = this.toRgb();
-        return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
-    },
-    getLuminance: function() {
-        //http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
-        var rgb = this.toRgb();
-        var RsRGB, GsRGB, BsRGB, R, G, B;
-        RsRGB = rgb.r/255;
-        GsRGB = rgb.g/255;
-        BsRGB = rgb.b/255;
-
-        if (RsRGB <= 0.03928) {R = RsRGB / 12.92;} else {R = Math.pow(((RsRGB + 0.055) / 1.055), 2.4);}
-        if (GsRGB <= 0.03928) {G = GsRGB / 12.92;} else {G = Math.pow(((GsRGB + 0.055) / 1.055), 2.4);}
-        if (BsRGB <= 0.03928) {B = BsRGB / 12.92;} else {B = Math.pow(((BsRGB + 0.055) / 1.055), 2.4);}
-        return (0.2126 * R) + (0.7152 * G) + (0.0722 * B);
-    },
-    setAlpha: function(value) {
-        this._a = boundAlpha(value);
-        this._roundA = mathRound(100*this._a) / 100;
-        return this;
-    },
-    toHsv: function() {
-        var hsv = rgbToHsv(this._r, this._g, this._b);
-        return { h: hsv.h * 360, s: hsv.s, v: hsv.v, a: this._a };
-    },
-    toHsvString: function() {
-        var hsv = rgbToHsv(this._r, this._g, this._b);
-        var h = mathRound(hsv.h * 360), s = mathRound(hsv.s * 100), v = mathRound(hsv.v * 100);
-        return (this._a == 1) ?
-          "hsv("  + h + ", " + s + "%, " + v + "%)" :
-          "hsva(" + h + ", " + s + "%, " + v + "%, "+ this._roundA + ")";
-    },
-    toHsl: function() {
-        var hsl = rgbToHsl(this._r, this._g, this._b);
-        return { h: hsl.h * 360, s: hsl.s, l: hsl.l, a: this._a };
-    },
-    toHslString: function() {
-        var hsl = rgbToHsl(this._r, this._g, this._b);
-        var h = mathRound(hsl.h * 360), s = mathRound(hsl.s * 100), l = mathRound(hsl.l * 100);
-        return (this._a == 1) ?
-          "hsl("  + h + ", " + s + "%, " + l + "%)" :
-          "hsla(" + h + ", " + s + "%, " + l + "%, "+ this._roundA + ")";
-    },
-    toHex: function(allow3Char) {
-        return rgbToHex(this._r, this._g, this._b, allow3Char);
-    },
-    toHexString: function(allow3Char) {
-        return '#' + this.toHex(allow3Char);
-    },
-    toHex8: function(allow4Char) {
-        return rgbaToHex(this._r, this._g, this._b, this._a, allow4Char);
-    },
-    toHex8String: function(allow4Char) {
-        return '#' + this.toHex8(allow4Char);
-    },
-    toRgb: function() {
-        return { r: mathRound(this._r), g: mathRound(this._g), b: mathRound(this._b), a: this._a };
-    },
-    toRgbString: function() {
-        return (this._a == 1) ?
-          "rgb("  + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ")" :
-          "rgba(" + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ", " + this._roundA + ")";
-    },
-    toPercentageRgb: function() {
-        return { r: mathRound(bound01(this._r, 255) * 100) + "%", g: mathRound(bound01(this._g, 255) * 100) + "%", b: mathRound(bound01(this._b, 255) * 100) + "%", a: this._a };
-    },
-    toPercentageRgbString: function() {
-        return (this._a == 1) ?
-          "rgb("  + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%)" :
-          "rgba(" + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%, " + this._roundA + ")";
-    },
-    toName: function() {
-        if (this._a === 0) {
-            return "transparent";
-        }
-
-        if (this._a < 1) {
-            return false;
-        }
-
-        return hexNames[rgbToHex(this._r, this._g, this._b, true)] || false;
-    },
-    toFilter: function(secondColor) {
-        var hex8String = '#' + rgbaToArgbHex(this._r, this._g, this._b, this._a);
-        var secondHex8String = hex8String;
-        var gradientType = this._gradientType ? "GradientType = 1, " : "";
-
-        if (secondColor) {
-            var s = tinycolor(secondColor);
-            secondHex8String = '#' + rgbaToArgbHex(s._r, s._g, s._b, s._a);
-        }
-
-        return "progid:DXImageTransform.Microsoft.gradient("+gradientType+"startColorstr="+hex8String+",endColorstr="+secondHex8String+")";
-    },
-    toString: function(format) {
-        var formatSet = !!format;
-        format = format || this._format;
-
-        var formattedString = false;
-        var hasAlpha = this._a < 1 && this._a >= 0;
-        var needsAlphaFormat = !formatSet && hasAlpha && (format === "hex" || format === "hex6" || format === "hex3" || format === "hex4" || format === "hex8" || format === "name");
-
-        if (needsAlphaFormat) {
-            // Special case for "transparent", all other non-alpha formats
-            // will return rgba when there is transparency.
-            if (format === "name" && this._a === 0) {
-                return this.toName();
-            }
-            return this.toRgbString();
-        }
-        if (format === "rgb") {
-            formattedString = this.toRgbString();
-        }
-        if (format === "prgb") {
-            formattedString = this.toPercentageRgbString();
-        }
-        if (format === "hex" || format === "hex6") {
-            formattedString = this.toHexString();
-        }
-        if (format === "hex3") {
-            formattedString = this.toHexString(true);
-        }
-        if (format === "hex4") {
-            formattedString = this.toHex8String(true);
-        }
-        if (format === "hex8") {
-            formattedString = this.toHex8String();
-        }
-        if (format === "name") {
-            formattedString = this.toName();
-        }
-        if (format === "hsl") {
-            formattedString = this.toHslString();
-        }
-        if (format === "hsv") {
-            formattedString = this.toHsvString();
-        }
-
-        return formattedString || this.toHexString();
-    },
-    clone: function() {
-        return tinycolor(this.toString());
-    },
-
-    _applyModification: function(fn, args) {
-        var color = fn.apply(null, [this].concat([].slice.call(args)));
-        this._r = color._r;
-        this._g = color._g;
-        this._b = color._b;
-        this.setAlpha(color._a);
-        return this;
-    },
-    lighten: function() {
-        return this._applyModification(lighten, arguments);
-    },
-    brighten: function() {
-        return this._applyModification(brighten, arguments);
-    },
-    darken: function() {
-        return this._applyModification(darken, arguments);
-    },
-    desaturate: function() {
-        return this._applyModification(desaturate, arguments);
-    },
-    saturate: function() {
-        return this._applyModification(saturate, arguments);
-    },
-    greyscale: function() {
-        return this._applyModification(greyscale, arguments);
-    },
-    spin: function() {
-        return this._applyModification(spin, arguments);
-    },
-
-    _applyCombination: function(fn, args) {
-        return fn.apply(null, [this].concat([].slice.call(args)));
-    },
-    analogous: function() {
-        return this._applyCombination(analogous, arguments);
-    },
-    complement: function() {
-        return this._applyCombination(complement, arguments);
-    },
-    monochromatic: function() {
-        return this._applyCombination(monochromatic, arguments);
-    },
-    splitcomplement: function() {
-        return this._applyCombination(splitcomplement, arguments);
-    },
-    triad: function() {
-        return this._applyCombination(triad, arguments);
-    },
-    tetrad: function() {
-        return this._applyCombination(tetrad, arguments);
-    }
-};
-
-// If input is an object, force 1 into "1.0" to handle ratios properly
-// String input requires "1.0" as input, so 1 will be treated as 1
-tinycolor.fromRatio = function(color, opts) {
-    if (typeof color == "object") {
-        var newColor = {};
-        for (var i in color) {
-            if (color.hasOwnProperty(i)) {
-                if (i === "a") {
-                    newColor[i] = color[i];
-                }
-                else {
-                    newColor[i] = convertToPercentage(color[i]);
-                }
-            }
-        }
-        color = newColor;
-    }
-
-    return tinycolor(color, opts);
-};
-
-// Given a string or object, convert that input to RGB
-// Possible string inputs:
-//
-//     "red"
-//     "#f00" or "f00"
-//     "#ff0000" or "ff0000"
-//     "#ff000000" or "ff000000"
-//     "rgb 255 0 0" or "rgb (255, 0, 0)"
-//     "rgb 1.0 0 0" or "rgb (1, 0, 0)"
-//     "rgba (255, 0, 0, 1)" or "rgba 255, 0, 0, 1"
-//     "rgba (1.0, 0, 0, 1)" or "rgba 1.0, 0, 0, 1"
-//     "hsl(0, 100%, 50%)" or "hsl 0 100% 50%"
-//     "hsla(0, 100%, 50%, 1)" or "hsla 0 100% 50%, 1"
-//     "hsv(0, 100%, 100%)" or "hsv 0 100% 100%"
-//
-function inputToRGB(color) {
-
-    var rgb = { r: 0, g: 0, b: 0 };
-    var a = 1;
-    var s = null;
-    var v = null;
-    var l = null;
-    var ok = false;
-    var format = false;
-
-    if (typeof color == "string") {
-        color = stringInputToObject(color);
-    }
-
-    if (typeof color == "object") {
-        if (isValidCSSUnit(color.r) && isValidCSSUnit(color.g) && isValidCSSUnit(color.b)) {
-            rgb = rgbToRgb(color.r, color.g, color.b);
-            ok = true;
-            format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
-        }
-        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
-            s = convertToPercentage(color.s);
-            v = convertToPercentage(color.v);
-            rgb = hsvToRgb(color.h, s, v);
-            ok = true;
-            format = "hsv";
-        }
-        else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
-            s = convertToPercentage(color.s);
-            l = convertToPercentage(color.l);
-            rgb = hslToRgb(color.h, s, l);
-            ok = true;
-            format = "hsl";
-        }
-
-        if (color.hasOwnProperty("a")) {
-            a = color.a;
-        }
-    }
-
-    a = boundAlpha(a);
-
-    return {
-        ok: ok,
-        format: color.format || format,
-        r: mathMin(255, mathMax(rgb.r, 0)),
-        g: mathMin(255, mathMax(rgb.g, 0)),
-        b: mathMin(255, mathMax(rgb.b, 0)),
-        a: a
-    };
-}
-
-
-// Conversion Functions
-// --------------------
-
-// `rgbToHsl`, `rgbToHsv`, `hslToRgb`, `hsvToRgb` modified from:
-// <http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript>
-
-// `rgbToRgb`
-// Handle bounds / percentage checking to conform to CSS color spec
-// <http://www.w3.org/TR/css3-color/>
-// *Assumes:* r, g, b in [0, 255] or [0, 1]
-// *Returns:* { r, g, b } in [0, 255]
-function rgbToRgb(r, g, b){
-    return {
-        r: bound01(r, 255) * 255,
-        g: bound01(g, 255) * 255,
-        b: bound01(b, 255) * 255
-    };
-}
-
-// `rgbToHsl`
-// Converts an RGB color value to HSL.
-// *Assumes:* r, g, and b are contained in [0, 255] or [0, 1]
-// *Returns:* { h, s, l } in [0,1]
-function rgbToHsl(r, g, b) {
-
-    r = bound01(r, 255);
-    g = bound01(g, 255);
-    b = bound01(b, 255);
-
-    var max = mathMax(r, g, b), min = mathMin(r, g, b);
-    var h, s, l = (max + min) / 2;
-
-    if(max == min) {
-        h = s = 0; // achromatic
-    }
-    else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max) {
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-
-        h /= 6;
-    }
-
-    return { h: h, s: s, l: l };
-}
-
-// `hslToRgb`
-// Converts an HSL color value to RGB.
-// *Assumes:* h is contained in [0, 1] or [0, 360] and s and l are contained [0, 1] or [0, 100]
-// *Returns:* { r, g, b } in the set [0, 255]
-function hslToRgb(h, s, l) {
-    var r, g, b;
-
-    h = bound01(h, 360);
-    s = bound01(s, 100);
-    l = bound01(l, 100);
-
-    function hue2rgb(p, q, t) {
-        if(t < 0) t += 1;
-        if(t > 1) t -= 1;
-        if(t < 1/6) return p + (q - p) * 6 * t;
-        if(t < 1/2) return q;
-        if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-        return p;
-    }
-
-    if(s === 0) {
-        r = g = b = l; // achromatic
-    }
-    else {
-        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-        var p = 2 * l - q;
-        r = hue2rgb(p, q, h + 1/3);
-        g = hue2rgb(p, q, h);
-        b = hue2rgb(p, q, h - 1/3);
-    }
-
-    return { r: r * 255, g: g * 255, b: b * 255 };
-}
-
-// `rgbToHsv`
-// Converts an RGB color value to HSV
-// *Assumes:* r, g, and b are contained in the set [0, 255] or [0, 1]
-// *Returns:* { h, s, v } in [0,1]
-function rgbToHsv(r, g, b) {
-
-    r = bound01(r, 255);
-    g = bound01(g, 255);
-    b = bound01(b, 255);
-
-    var max = mathMax(r, g, b), min = mathMin(r, g, b);
-    var h, s, v = max;
-
-    var d = max - min;
-    s = max === 0 ? 0 : d / max;
-
-    if(max == min) {
-        h = 0; // achromatic
-    }
-    else {
-        switch(max) {
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-    }
-    return { h: h, s: s, v: v };
-}
-
-// `hsvToRgb`
-// Converts an HSV color value to RGB.
-// *Assumes:* h is contained in [0, 1] or [0, 360] and s and v are contained in [0, 1] or [0, 100]
-// *Returns:* { r, g, b } in the set [0, 255]
- function hsvToRgb(h, s, v) {
-
-    h = bound01(h, 360) * 6;
-    s = bound01(s, 100);
-    v = bound01(v, 100);
-
-    var i = Math.floor(h),
-        f = h - i,
-        p = v * (1 - s),
-        q = v * (1 - f * s),
-        t = v * (1 - (1 - f) * s),
-        mod = i % 6,
-        r = [v, q, p, p, t, v][mod],
-        g = [t, v, v, q, p, p][mod],
-        b = [p, p, t, v, v, q][mod];
-
-    return { r: r * 255, g: g * 255, b: b * 255 };
-}
-
-// `rgbToHex`
-// Converts an RGB color to hex
-// Assumes r, g, and b are contained in the set [0, 255]
-// Returns a 3 or 6 character hex
-function rgbToHex(r, g, b, allow3Char) {
-
-    var hex = [
-        pad2(mathRound(r).toString(16)),
-        pad2(mathRound(g).toString(16)),
-        pad2(mathRound(b).toString(16))
-    ];
-
-    // Return a 3 character hex if possible
-    if (allow3Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1)) {
-        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0);
-    }
-
-    return hex.join("");
-}
-
-// `rgbaToHex`
-// Converts an RGBA color plus alpha transparency to hex
-// Assumes r, g, b are contained in the set [0, 255] and
-// a in [0, 1]. Returns a 4 or 8 character rgba hex
-function rgbaToHex(r, g, b, a, allow4Char) {
-
-    var hex = [
-        pad2(mathRound(r).toString(16)),
-        pad2(mathRound(g).toString(16)),
-        pad2(mathRound(b).toString(16)),
-        pad2(convertDecimalToHex(a))
-    ];
-
-    // Return a 4 character hex if possible
-    if (allow4Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1) && hex[3].charAt(0) == hex[3].charAt(1)) {
-        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
-    }
-
-    return hex.join("");
-}
-
-// `rgbaToArgbHex`
-// Converts an RGBA color to an ARGB Hex8 string
-// Rarely used, but required for "toFilter()"
-function rgbaToArgbHex(r, g, b, a) {
-
-    var hex = [
-        pad2(convertDecimalToHex(a)),
-        pad2(mathRound(r).toString(16)),
-        pad2(mathRound(g).toString(16)),
-        pad2(mathRound(b).toString(16))
-    ];
-
-    return hex.join("");
-}
-
-// `equals`
-// Can be called with any tinycolor input
-tinycolor.equals = function (color1, color2) {
-    if (!color1 || !color2) { return false; }
-    return tinycolor(color1).toRgbString() == tinycolor(color2).toRgbString();
-};
-
-tinycolor.random = function() {
-    return tinycolor.fromRatio({
-        r: mathRandom(),
-        g: mathRandom(),
-        b: mathRandom()
-    });
-};
-
-
-// Modification Functions
-// ----------------------
-// Thanks to less.js for some of the basics here
-// <https://github.com/cloudhead/less.js/blob/master/lib/less/functions.js>
-
-function desaturate(color, amount) {
-    amount = (amount === 0) ? 0 : (amount || 10);
-    var hsl = tinycolor(color).toHsl();
-    hsl.s -= amount / 100;
-    hsl.s = clamp01(hsl.s);
-    return tinycolor(hsl);
-}
-
-function saturate(color, amount) {
-    amount = (amount === 0) ? 0 : (amount || 10);
-    var hsl = tinycolor(color).toHsl();
-    hsl.s += amount / 100;
-    hsl.s = clamp01(hsl.s);
-    return tinycolor(hsl);
-}
-
-function greyscale(color) {
-    return tinycolor(color).desaturate(100);
-}
-
-function lighten (color, amount) {
-    amount = (amount === 0) ? 0 : (amount || 10);
-    var hsl = tinycolor(color).toHsl();
-    hsl.l += amount / 100;
-    hsl.l = clamp01(hsl.l);
-    return tinycolor(hsl);
-}
-
-function brighten(color, amount) {
-    amount = (amount === 0) ? 0 : (amount || 10);
-    var rgb = tinycolor(color).toRgb();
-    rgb.r = mathMax(0, mathMin(255, rgb.r - mathRound(255 * - (amount / 100))));
-    rgb.g = mathMax(0, mathMin(255, rgb.g - mathRound(255 * - (amount / 100))));
-    rgb.b = mathMax(0, mathMin(255, rgb.b - mathRound(255 * - (amount / 100))));
-    return tinycolor(rgb);
-}
-
-function darken (color, amount) {
-    amount = (amount === 0) ? 0 : (amount || 10);
-    var hsl = tinycolor(color).toHsl();
-    hsl.l -= amount / 100;
-    hsl.l = clamp01(hsl.l);
-    return tinycolor(hsl);
-}
-
-// Spin takes a positive or negative amount within [-360, 360] indicating the change of hue.
-// Values outside of this range will be wrapped into this range.
-function spin(color, amount) {
-    var hsl = tinycolor(color).toHsl();
-    var hue = (hsl.h + amount) % 360;
-    hsl.h = hue < 0 ? 360 + hue : hue;
-    return tinycolor(hsl);
-}
-
-// Combination Functions
-// ---------------------
-// Thanks to jQuery xColor for some of the ideas behind these
-// <https://github.com/infusion/jQuery-xcolor/blob/master/jquery.xcolor.js>
-
-function complement(color) {
-    var hsl = tinycolor(color).toHsl();
-    hsl.h = (hsl.h + 180) % 360;
-    return tinycolor(hsl);
-}
-
-function triad(color) {
-    var hsl = tinycolor(color).toHsl();
-    var h = hsl.h;
-    return [
-        tinycolor(color),
-        tinycolor({ h: (h + 120) % 360, s: hsl.s, l: hsl.l }),
-        tinycolor({ h: (h + 240) % 360, s: hsl.s, l: hsl.l })
-    ];
-}
-
-function tetrad(color) {
-    var hsl = tinycolor(color).toHsl();
-    var h = hsl.h;
-    return [
-        tinycolor(color),
-        tinycolor({ h: (h + 90) % 360, s: hsl.s, l: hsl.l }),
-        tinycolor({ h: (h + 180) % 360, s: hsl.s, l: hsl.l }),
-        tinycolor({ h: (h + 270) % 360, s: hsl.s, l: hsl.l })
-    ];
-}
-
-function splitcomplement(color) {
-    var hsl = tinycolor(color).toHsl();
-    var h = hsl.h;
-    return [
-        tinycolor(color),
-        tinycolor({ h: (h + 72) % 360, s: hsl.s, l: hsl.l}),
-        tinycolor({ h: (h + 216) % 360, s: hsl.s, l: hsl.l})
-    ];
-}
-
-function analogous(color, results, slices) {
-    results = results || 6;
-    slices = slices || 30;
-
-    var hsl = tinycolor(color).toHsl();
-    var part = 360 / slices;
-    var ret = [tinycolor(color)];
-
-    for (hsl.h = ((hsl.h - (part * results >> 1)) + 720) % 360; --results; ) {
-        hsl.h = (hsl.h + part) % 360;
-        ret.push(tinycolor(hsl));
-    }
-    return ret;
-}
-
-function monochromatic(color, results) {
-    results = results || 6;
-    var hsv = tinycolor(color).toHsv();
-    var h = hsv.h, s = hsv.s, v = hsv.v;
-    var ret = [];
-    var modification = 1 / results;
-
-    while (results--) {
-        ret.push(tinycolor({ h: h, s: s, v: v}));
-        v = (v + modification) % 1;
-    }
-
-    return ret;
-}
-
-// Utility Functions
-// ---------------------
-
-tinycolor.mix = function(color1, color2, amount) {
-    amount = (amount === 0) ? 0 : (amount || 50);
-
-    var rgb1 = tinycolor(color1).toRgb();
-    var rgb2 = tinycolor(color2).toRgb();
-
-    var p = amount / 100;
-
-    var rgba = {
-        r: ((rgb2.r - rgb1.r) * p) + rgb1.r,
-        g: ((rgb2.g - rgb1.g) * p) + rgb1.g,
-        b: ((rgb2.b - rgb1.b) * p) + rgb1.b,
-        a: ((rgb2.a - rgb1.a) * p) + rgb1.a
-    };
-
-    return tinycolor(rgba);
-};
-
-
-// Readability Functions
-// ---------------------
-// <http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef (WCAG Version 2)
-
-// `contrast`
-// Analyze the 2 colors and returns the color contrast defined by (WCAG Version 2)
-tinycolor.readability = function(color1, color2) {
-    var c1 = tinycolor(color1);
-    var c2 = tinycolor(color2);
-    return (Math.max(c1.getLuminance(),c2.getLuminance())+0.05) / (Math.min(c1.getLuminance(),c2.getLuminance())+0.05);
-};
-
-// `isReadable`
-// Ensure that foreground and background color combinations meet WCAG2 guidelines.
-// The third argument is an optional Object.
-//      the 'level' property states 'AA' or 'AAA' - if missing or invalid, it defaults to 'AA';
-//      the 'size' property states 'large' or 'small' - if missing or invalid, it defaults to 'small'.
-// If the entire object is absent, isReadable defaults to {level:"AA",size:"small"}.
-
-// *Example*
-//    tinycolor.isReadable("#000", "#111") => false
-//    tinycolor.isReadable("#000", "#111",{level:"AA",size:"large"}) => false
-tinycolor.isReadable = function(color1, color2, wcag2) {
-    var readability = tinycolor.readability(color1, color2);
-    var wcag2Parms, out;
-
-    out = false;
-
-    wcag2Parms = validateWCAG2Parms(wcag2);
-    switch (wcag2Parms.level + wcag2Parms.size) {
-        case "AAsmall":
-        case "AAAlarge":
-            out = readability >= 4.5;
-            break;
-        case "AAlarge":
-            out = readability >= 3;
-            break;
-        case "AAAsmall":
-            out = readability >= 7;
-            break;
-    }
-    return out;
-
-};
-
-// `mostReadable`
-// Given a base color and a list of possible foreground or background
-// colors for that base, returns the most readable color.
-// Optionally returns Black or White if the most readable color is unreadable.
-// *Example*
-//    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:false}).toHexString(); // "#112255"
-//    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:true}).toHexString();  // "#ffffff"
-//    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"large"}).toHexString(); // "#faf3f3"
-//    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(); // "#ffffff"
-tinycolor.mostReadable = function(baseColor, colorList, args) {
-    var bestColor = null;
-    var bestScore = 0;
-    var readability;
-    var includeFallbackColors, level, size ;
-    args = args || {};
-    includeFallbackColors = args.includeFallbackColors ;
-    level = args.level;
-    size = args.size;
-
-    for (var i= 0; i < colorList.length ; i++) {
-        readability = tinycolor.readability(baseColor, colorList[i]);
-        if (readability > bestScore) {
-            bestScore = readability;
-            bestColor = tinycolor(colorList[i]);
-        }
-    }
-
-    if (tinycolor.isReadable(baseColor, bestColor, {"level":level,"size":size}) || !includeFallbackColors) {
-        return bestColor;
-    }
-    else {
-        args.includeFallbackColors=false;
-        return tinycolor.mostReadable(baseColor,["#fff", "#000"],args);
-    }
-};
-
-
-// Big List of Colors
-// ------------------
-// <http://www.w3.org/TR/css3-color/#svg-color>
-var names = tinycolor.names = {
-    aliceblue: "f0f8ff",
-    antiquewhite: "faebd7",
-    aqua: "0ff",
-    aquamarine: "7fffd4",
-    azure: "f0ffff",
-    beige: "f5f5dc",
-    bisque: "ffe4c4",
-    black: "000",
-    blanchedalmond: "ffebcd",
-    blue: "00f",
-    blueviolet: "8a2be2",
-    brown: "a52a2a",
-    burlywood: "deb887",
-    burntsienna: "ea7e5d",
-    cadetblue: "5f9ea0",
-    chartreuse: "7fff00",
-    chocolate: "d2691e",
-    coral: "ff7f50",
-    cornflowerblue: "6495ed",
-    cornsilk: "fff8dc",
-    crimson: "dc143c",
-    cyan: "0ff",
-    darkblue: "00008b",
-    darkcyan: "008b8b",
-    darkgoldenrod: "b8860b",
-    darkgray: "a9a9a9",
-    darkgreen: "006400",
-    darkgrey: "a9a9a9",
-    darkkhaki: "bdb76b",
-    darkmagenta: "8b008b",
-    darkolivegreen: "556b2f",
-    darkorange: "ff8c00",
-    darkorchid: "9932cc",
-    darkred: "8b0000",
-    darksalmon: "e9967a",
-    darkseagreen: "8fbc8f",
-    darkslateblue: "483d8b",
-    darkslategray: "2f4f4f",
-    darkslategrey: "2f4f4f",
-    darkturquoise: "00ced1",
-    darkviolet: "9400d3",
-    deeppink: "ff1493",
-    deepskyblue: "00bfff",
-    dimgray: "696969",
-    dimgrey: "696969",
-    dodgerblue: "1e90ff",
-    firebrick: "b22222",
-    floralwhite: "fffaf0",
-    forestgreen: "228b22",
-    fuchsia: "f0f",
-    gainsboro: "dcdcdc",
-    ghostwhite: "f8f8ff",
-    gold: "ffd700",
-    goldenrod: "daa520",
-    gray: "808080",
-    green: "008000",
-    greenyellow: "adff2f",
-    grey: "808080",
-    honeydew: "f0fff0",
-    hotpink: "ff69b4",
-    indianred: "cd5c5c",
-    indigo: "4b0082",
-    ivory: "fffff0",
-    khaki: "f0e68c",
-    lavender: "e6e6fa",
-    lavenderblush: "fff0f5",
-    lawngreen: "7cfc00",
-    lemonchiffon: "fffacd",
-    lightblue: "add8e6",
-    lightcoral: "f08080",
-    lightcyan: "e0ffff",
-    lightgoldenrodyellow: "fafad2",
-    lightgray: "d3d3d3",
-    lightgreen: "90ee90",
-    lightgrey: "d3d3d3",
-    lightpink: "ffb6c1",
-    lightsalmon: "ffa07a",
-    lightseagreen: "20b2aa",
-    lightskyblue: "87cefa",
-    lightslategray: "789",
-    lightslategrey: "789",
-    lightsteelblue: "b0c4de",
-    lightyellow: "ffffe0",
-    lime: "0f0",
-    limegreen: "32cd32",
-    linen: "faf0e6",
-    magenta: "f0f",
-    maroon: "800000",
-    mediumaquamarine: "66cdaa",
-    mediumblue: "0000cd",
-    mediumorchid: "ba55d3",
-    mediumpurple: "9370db",
-    mediumseagreen: "3cb371",
-    mediumslateblue: "7b68ee",
-    mediumspringgreen: "00fa9a",
-    mediumturquoise: "48d1cc",
-    mediumvioletred: "c71585",
-    midnightblue: "191970",
-    mintcream: "f5fffa",
-    mistyrose: "ffe4e1",
-    moccasin: "ffe4b5",
-    navajowhite: "ffdead",
-    navy: "000080",
-    oldlace: "fdf5e6",
-    olive: "808000",
-    olivedrab: "6b8e23",
-    orange: "ffa500",
-    orangered: "ff4500",
-    orchid: "da70d6",
-    palegoldenrod: "eee8aa",
-    palegreen: "98fb98",
-    paleturquoise: "afeeee",
-    palevioletred: "db7093",
-    papayawhip: "ffefd5",
-    peachpuff: "ffdab9",
-    peru: "cd853f",
-    pink: "ffc0cb",
-    plum: "dda0dd",
-    powderblue: "b0e0e6",
-    purple: "800080",
-    rebeccapurple: "663399",
-    red: "f00",
-    rosybrown: "bc8f8f",
-    royalblue: "4169e1",
-    saddlebrown: "8b4513",
-    salmon: "fa8072",
-    sandybrown: "f4a460",
-    seagreen: "2e8b57",
-    seashell: "fff5ee",
-    sienna: "a0522d",
-    silver: "c0c0c0",
-    skyblue: "87ceeb",
-    slateblue: "6a5acd",
-    slategray: "708090",
-    slategrey: "708090",
-    snow: "fffafa",
-    springgreen: "00ff7f",
-    steelblue: "4682b4",
-    tan: "d2b48c",
-    teal: "008080",
-    thistle: "d8bfd8",
-    tomato: "ff6347",
-    turquoise: "40e0d0",
-    violet: "ee82ee",
-    wheat: "f5deb3",
-    white: "fff",
-    whitesmoke: "f5f5f5",
-    yellow: "ff0",
-    yellowgreen: "9acd32"
-};
-
-// Make it easy to access colors via `hexNames[hex]`
-var hexNames = tinycolor.hexNames = flip(names);
-
-
-// Utilities
-// ---------
-
-// `{ 'name1': 'val1' }` becomes `{ 'val1': 'name1' }`
-function flip(o) {
-    var flipped = { };
-    for (var i in o) {
-        if (o.hasOwnProperty(i)) {
-            flipped[o[i]] = i;
-        }
-    }
-    return flipped;
-}
-
-// Return a valid alpha value [0,1] with all invalid values being set to 1
-function boundAlpha(a) {
-    a = parseFloat(a);
-
-    if (isNaN(a) || a < 0 || a > 1) {
-        a = 1;
-    }
-
-    return a;
-}
-
-// Take input from [0, n] and return it as [0, 1]
-function bound01(n, max) {
-    if (isOnePointZero(n)) { n = "100%"; }
-
-    var processPercent = isPercentage(n);
-    n = mathMin(max, mathMax(0, parseFloat(n)));
-
-    // Automatically convert percentage into number
-    if (processPercent) {
-        n = parseInt(n * max, 10) / 100;
-    }
-
-    // Handle floating point rounding errors
-    if ((Math.abs(n - max) < 0.000001)) {
-        return 1;
-    }
-
-    // Convert into [0, 1] range if it isn't already
-    return (n % max) / parseFloat(max);
-}
-
-// Force a number between 0 and 1
-function clamp01(val) {
-    return mathMin(1, mathMax(0, val));
-}
-
-// Parse a base-16 hex value into a base-10 integer
-function parseIntFromHex(val) {
-    return parseInt(val, 16);
-}
-
-// Need to handle 1.0 as 100%, since once it is a number, there is no difference between it and 1
-// <http://stackoverflow.com/questions/7422072/javascript-how-to-detect-number-as-a-decimal-including-1-0>
-function isOnePointZero(n) {
-    return typeof n == "string" && n.indexOf('.') != -1 && parseFloat(n) === 1;
-}
-
-// Check to see if string passed in is a percentage
-function isPercentage(n) {
-    return typeof n === "string" && n.indexOf('%') != -1;
-}
-
-// Force a hex value to have 2 characters
-function pad2(c) {
-    return c.length == 1 ? '0' + c : '' + c;
-}
-
-// Replace a decimal with it's percentage value
-function convertToPercentage(n) {
-    if (n <= 1) {
-        n = (n * 100) + "%";
-    }
-
-    return n;
-}
-
-// Converts a decimal to a hex value
-function convertDecimalToHex(d) {
-    return Math.round(parseFloat(d) * 255).toString(16);
-}
-// Converts a hex value to a decimal
-function convertHexToDecimal(h) {
-    return (parseIntFromHex(h) / 255);
-}
-
-var matchers = (function() {
-
-    // <http://www.w3.org/TR/css3-values/#integers>
-    var CSS_INTEGER = "[-\\+]?\\d+%?";
-
-    // <http://www.w3.org/TR/css3-values/#number-value>
-    var CSS_NUMBER = "[-\\+]?\\d*\\.\\d+%?";
-
-    // Allow positive/negative integer/number.  Don't capture the either/or, just the entire outcome.
-    var CSS_UNIT = "(?:" + CSS_NUMBER + ")|(?:" + CSS_INTEGER + ")";
-
-    // Actual matching.
-    // Parentheses and commas are optional, but not required.
-    // Whitespace can take the place of commas or opening paren
-    var PERMISSIVE_MATCH3 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
-    var PERMISSIVE_MATCH4 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
-
-    return {
-        CSS_UNIT: new RegExp(CSS_UNIT),
-        rgb: new RegExp("rgb" + PERMISSIVE_MATCH3),
-        rgba: new RegExp("rgba" + PERMISSIVE_MATCH4),
-        hsl: new RegExp("hsl" + PERMISSIVE_MATCH3),
-        hsla: new RegExp("hsla" + PERMISSIVE_MATCH4),
-        hsv: new RegExp("hsv" + PERMISSIVE_MATCH3),
-        hsva: new RegExp("hsva" + PERMISSIVE_MATCH4),
-        hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
-        hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,
-        hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
-        hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/
-    };
-})();
-
-// `isValidCSSUnit`
-// Take in a single string / number and check to see if it looks like a CSS unit
-// (see `matchers` above for definition).
-function isValidCSSUnit(color) {
-    return !!matchers.CSS_UNIT.exec(color);
-}
-
-// `stringInputToObject`
-// Permissive string parsing.  Take in a number of formats, and output an object
-// based on detected format.  Returns `{ r, g, b }` or `{ h, s, l }` or `{ h, s, v}`
-function stringInputToObject(color) {
-
-    color = color.replace(trimLeft,'').replace(trimRight, '').toLowerCase();
-    var named = false;
-    if (names[color]) {
-        color = names[color];
-        named = true;
-    }
-    else if (color == 'transparent') {
-        return { r: 0, g: 0, b: 0, a: 0, format: "name" };
-    }
-
-    // Try to match string input using regular expressions.
-    // Keep most of the number bounding out of this function - don't worry about [0,1] or [0,100] or [0,360]
-    // Just return an object and let the conversion functions handle that.
-    // This way the result will be the same whether the tinycolor is initialized with string or object.
-    var match;
-    if ((match = matchers.rgb.exec(color))) {
-        return { r: match[1], g: match[2], b: match[3] };
-    }
-    if ((match = matchers.rgba.exec(color))) {
-        return { r: match[1], g: match[2], b: match[3], a: match[4] };
-    }
-    if ((match = matchers.hsl.exec(color))) {
-        return { h: match[1], s: match[2], l: match[3] };
-    }
-    if ((match = matchers.hsla.exec(color))) {
-        return { h: match[1], s: match[2], l: match[3], a: match[4] };
-    }
-    if ((match = matchers.hsv.exec(color))) {
-        return { h: match[1], s: match[2], v: match[3] };
-    }
-    if ((match = matchers.hsva.exec(color))) {
-        return { h: match[1], s: match[2], v: match[3], a: match[4] };
-    }
-    if ((match = matchers.hex8.exec(color))) {
-        return {
-            r: parseIntFromHex(match[1]),
-            g: parseIntFromHex(match[2]),
-            b: parseIntFromHex(match[3]),
-            a: convertHexToDecimal(match[4]),
-            format: named ? "name" : "hex8"
-        };
-    }
-    if ((match = matchers.hex6.exec(color))) {
-        return {
-            r: parseIntFromHex(match[1]),
-            g: parseIntFromHex(match[2]),
-            b: parseIntFromHex(match[3]),
-            format: named ? "name" : "hex"
-        };
-    }
-    if ((match = matchers.hex4.exec(color))) {
-        return {
-            r: parseIntFromHex(match[1] + '' + match[1]),
-            g: parseIntFromHex(match[2] + '' + match[2]),
-            b: parseIntFromHex(match[3] + '' + match[3]),
-            a: convertHexToDecimal(match[4] + '' + match[4]),
-            format: named ? "name" : "hex8"
-        };
-    }
-    if ((match = matchers.hex3.exec(color))) {
-        return {
-            r: parseIntFromHex(match[1] + '' + match[1]),
-            g: parseIntFromHex(match[2] + '' + match[2]),
-            b: parseIntFromHex(match[3] + '' + match[3]),
-            format: named ? "name" : "hex"
-        };
-    }
-
-    return false;
-}
-
-function validateWCAG2Parms(parms) {
-    // return valid WCAG2 parms for isReadable.
-    // If input parms are invalid, return {"level":"AA", "size":"small"}
-    var level, size;
-    parms = parms || {"level":"AA", "size":"small"};
-    level = (parms.level || "AA").toUpperCase();
-    size = (parms.size || "small").toLowerCase();
-    if (level !== "AA" && level !== "AAA") {
-        level = "AA";
-    }
-    if (size !== "small" && size !== "large") {
-        size = "small";
-    }
-    return {"level":level, "size":size};
-}
-
-// Node: Export function
-if ( module.exports) {
-    module.exports = tinycolor;
-}
-// AMD/requirejs: Define the module
-else {
-    window.tinycolor = tinycolor;
-}
-
-})(Math);
-});
-
-var color = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.red = exports.getContrastingColor = exports.isValidHex = exports.toState = exports.simpleCheckForValidColor = undefined;
-
-
-
-var _each2 = _interopRequireDefault(each__default['default']);
-
-
-
-var _tinycolor2 = _interopRequireDefault(tinycolor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var simpleCheckForValidColor = exports.simpleCheckForValidColor = function simpleCheckForValidColor(data) {
-  var keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
-  var checked = 0;
-  var passed = 0;
-  (0, _each2.default)(keysToCheck, function (letter) {
-    if (data[letter]) {
-      checked += 1;
-      if (!isNaN(data[letter])) {
-        passed += 1;
-      }
-      if (letter === 's' || letter === 'l') {
-        var percentPatt = /^\d+%$/;
-        if (percentPatt.test(data[letter])) {
-          passed += 1;
-        }
-      }
-    }
-  });
-  return checked === passed ? data : false;
-};
-
-var toState = exports.toState = function toState(data, oldHue) {
-  var color = data.hex ? (0, _tinycolor2.default)(data.hex) : (0, _tinycolor2.default)(data);
-  var hsl = color.toHsl();
-  var hsv = color.toHsv();
-  var rgb = color.toRgb();
-  var hex = color.toHex();
-  if (hsl.s === 0) {
-    hsl.h = oldHue || 0;
-    hsv.h = oldHue || 0;
-  }
-  var transparent = hex === '000000' && rgb.a === 0;
-
-  return {
-    hsl: hsl,
-    hex: transparent ? 'transparent' : '#' + hex,
-    rgb: rgb,
-    hsv: hsv,
-    oldHue: data.h || oldHue || hsl.h,
-    source: data.source
-  };
-};
-
-var isValidHex = exports.isValidHex = function isValidHex(hex) {
-  // disable hex4 and hex8
-  var lh = String(hex).charAt(0) === '#' ? 1 : 0;
-  return hex.length !== 4 + lh && hex.length < 7 + lh && (0, _tinycolor2.default)(hex).isValid();
-};
-
-var getContrastingColor = exports.getContrastingColor = function getContrastingColor(data) {
-  if (!data) {
-    return '#fff';
-  }
-  var col = toState(data);
-  if (col.hex === 'transparent') {
-    return 'rgba(0,0,0,0.4)';
-  }
-  var yiq = (col.rgb.r * 299 + col.rgb.g * 587 + col.rgb.b * 114) / 1000;
-  return yiq >= 128 ? '#000' : '#fff';
-};
-
-var red = exports.red = {
-  hsl: { a: 1, h: 0, l: 0.5, s: 1 },
-  hex: '#ff0000',
-  rgb: { r: 255, g: 0, b: 0, a: 1 },
-  hsv: { h: 0, s: 1, v: 1, a: 1 }
-};
-
-exports.default = exports;
-});
-
-var ColorWrap_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ColorWrap = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _debounce2 = _interopRequireDefault(debounce__default['default']);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ColorWrap = exports.ColorWrap = function ColorWrap(Picker) {
-  var ColorPicker = function (_ref) {
-    _inherits(ColorPicker, _ref);
-
-    function ColorPicker(props) {
-      _classCallCheck(this, ColorPicker);
-
-      var _this = _possibleConstructorReturn(this, (ColorPicker.__proto__ || Object.getPrototypeOf(ColorPicker)).call(this));
-
-      _this.handleChange = function (data, event) {
-        var isValidColor = _color2.default.simpleCheckForValidColor(data);
-        if (isValidColor) {
-          var colors = _color2.default.toState(data, data.h || _this.state.oldHue);
-          _this.setState(colors);
-          _this.props.onChangeComplete && _this.debounce(_this.props.onChangeComplete, colors, event);
-          _this.props.onChange && _this.props.onChange(colors, event);
-        }
-      };
-
-      _this.handleSwatchHover = function (data, event) {
-        var isValidColor = _color2.default.simpleCheckForValidColor(data);
-        if (isValidColor) {
-          var colors = _color2.default.toState(data, data.h || _this.state.oldHue);
-          _this.props.onSwatchHover && _this.props.onSwatchHover(colors, event);
-        }
-      };
-
-      _this.state = _extends({}, _color2.default.toState(props.color, 0));
-
-      _this.debounce = (0, _debounce2.default)(function (fn, data, event) {
-        fn(data, event);
-      }, 100);
-      return _this;
-    }
-
-    _createClass(ColorPicker, [{
-      key: 'render',
-      value: function render() {
-        var optionalEvents = {};
-        if (this.props.onSwatchHover) {
-          optionalEvents.onSwatchHover = this.handleSwatchHover;
-        }
-
-        return _react2.default.createElement(Picker, _extends({}, this.props, this.state, {
-          onChange: this.handleChange
-        }, optionalEvents));
-      }
-    }], [{
-      key: 'getDerivedStateFromProps',
-      value: function getDerivedStateFromProps(nextProps, state) {
-        return _extends({}, _color2.default.toState(nextProps.color, state.oldHue));
-      }
-    }]);
-
-    return ColorPicker;
-  }(React__default['default'].PureComponent || React__default['default'].Component);
-
-  ColorPicker.propTypes = _extends({}, Picker.propTypes);
-
-  ColorPicker.defaultProps = _extends({}, Picker.defaultProps, {
-    color: {
-      h: 250,
-      s: 0.50,
-      l: 0.20,
-      a: 1
-    }
-  });
-
-  return ColorPicker;
-};
-
-exports.default = ColorWrap;
-});
-
-var interaction = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.handleFocus = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable no-invalid-this */
-
-
-var handleFocus = exports.handleFocus = function handleFocus(Component) {
-  var Span = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'span';
-  return function (_React$Component) {
-    _inherits(Focus, _React$Component);
-
-    function Focus() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, Focus);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Focus.__proto__ || Object.getPrototypeOf(Focus)).call.apply(_ref, [this].concat(args))), _this), _this.state = { focus: false }, _this.handleFocus = function () {
-        return _this.setState({ focus: true });
-      }, _this.handleBlur = function () {
-        return _this.setState({ focus: false });
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(Focus, [{
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(
-          Span,
-          { onFocus: this.handleFocus, onBlur: this.handleBlur },
-          _react2.default.createElement(Component, _extends({}, this.props, this.state))
-        );
-      }
-    }]);
-
-    return Focus;
-  }(_react2.default.Component);
-};
-});
-
-var Swatch_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Swatch = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-
-
-var _Checkboard2 = _interopRequireDefault(Checkboard_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ENTER = 13;
-
-var Swatch = exports.Swatch = function Swatch(_ref) {
-  var color = _ref.color,
-      style = _ref.style,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
-      onHover = _ref.onHover,
-      _ref$title = _ref.title,
-      title = _ref$title === undefined ? color : _ref$title,
-      children = _ref.children,
-      focus = _ref.focus,
-      _ref$focusStyle = _ref.focusStyle,
-      focusStyle = _ref$focusStyle === undefined ? {} : _ref$focusStyle;
-
-  var transparent = color === 'transparent';
-  var styles = (0, _reactcss2.default)({
-    default: {
-      swatch: _extends({
-        background: color,
-        height: '100%',
-        width: '100%',
-        cursor: 'pointer',
-        position: 'relative',
-        outline: 'none'
-      }, style, focus ? focusStyle : {})
-    }
-  });
-
-  var handleClick = function handleClick(e) {
-    return onClick(color, e);
-  };
-  var handleKeyDown = function handleKeyDown(e) {
-    return e.keyCode === ENTER && onClick(color, e);
-  };
-  var handleHover = function handleHover(e) {
-    return onHover(color, e);
-  };
-
-  var optionalEvents = {};
-  if (onHover) {
-    optionalEvents.onMouseOver = handleHover;
-  }
-
-  return _react2.default.createElement(
-    'div',
-    _extends({
-      style: styles.swatch,
-      onClick: handleClick,
-      title: title,
-      tabIndex: 0,
-      onKeyDown: handleKeyDown
-    }, optionalEvents),
-    children,
-    transparent && _react2.default.createElement(_Checkboard2.default, {
-      borderRadius: styles.swatch.borderRadius,
-      boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1)'
-    })
-  );
-};
-
-exports.default = (0, interaction.handleFocus)(Swatch);
-});
-
-var common = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-
-
-Object.defineProperty(exports, 'Alpha', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Alpha_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'Checkboard', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Checkboard_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'EditableInput', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(EditableInput_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'Hue', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Hue_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'Raised', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Raised_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'Saturation', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Saturation_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'ColorWrap', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(ColorWrap_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'Swatch', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Swatch_1).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-});
-
-var AlphaPointer_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AlphaPointer = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var AlphaPointer = exports.AlphaPointer = function AlphaPointer(_ref) {
-  var direction = _ref.direction;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        width: '18px',
-        height: '18px',
-        borderRadius: '50%',
-        transform: 'translate(-9px, -1px)',
-        backgroundColor: 'rgb(248, 248, 248)',
-        boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)'
-      }
-    },
-    'vertical': {
-      picker: {
-        transform: 'translate(-3px, -9px)'
-      }
-    }
-  }, { vertical: direction === 'vertical' });
-
-  return _react2.default.createElement('div', { style: styles.picker });
-};
-
-exports.default = AlphaPointer;
-});
-
-var Alpha = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AlphaPicker = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-
-
-var _AlphaPointer2 = _interopRequireDefault(AlphaPointer_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var AlphaPicker = exports.AlphaPicker = function AlphaPicker(_ref) {
-  var rgb = _ref.rgb,
-      hsl = _ref.hsl,
-      width = _ref.width,
-      height = _ref.height,
-      onChange = _ref.onChange,
-      direction = _ref.direction,
-      style = _ref.style,
-      renderers = _ref.renderers,
-      pointer = _ref.pointer,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        position: 'relative',
-        width: width,
-        height: height
-      },
-      alpha: {
-        radius: '2px',
-        style: style
-      }
-    }
-  });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.picker, className: 'alpha-picker ' + className },
-    _react2.default.createElement(common.Alpha, _extends({}, styles.alpha, {
-      rgb: rgb,
-      hsl: hsl,
-      pointer: pointer,
-      renderers: renderers,
-      onChange: onChange,
-      direction: direction
-    }))
-  );
-};
-
-AlphaPicker.defaultProps = {
-  width: '316px',
-  height: '16px',
-  direction: 'horizontal',
-  pointer: _AlphaPointer2.default
-};
-
-exports.default = (0, common.ColorWrap)(AlphaPicker);
-});
-
-var BlockSwatches_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BlockSwatches = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BlockSwatches = exports.BlockSwatches = function BlockSwatches(_ref) {
-  var colors = _ref.colors,
-      onClick = _ref.onClick,
-      onSwatchHover = _ref.onSwatchHover;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      swatches: {
-        marginRight: '-10px'
-      },
-      swatch: {
-        width: '22px',
-        height: '22px',
-        float: 'left',
-        marginRight: '10px',
-        marginBottom: '10px',
-        borderRadius: '4px'
-      },
-      clear: {
-        clear: 'both'
-      }
-    }
-  });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.swatches },
-    (0, _map2.default)(colors, function (c) {
-      return _react2.default.createElement(common.Swatch, {
-        key: c,
-        color: c,
-        style: styles.swatch,
-        onClick: onClick,
-        onHover: onSwatchHover,
-        focusStyle: {
-          boxShadow: '0 0 4px ' + c
-        }
-      });
-    }),
-    _react2.default.createElement('div', { style: styles.clear })
-  );
-};
-
-exports.default = BlockSwatches;
-});
-
-var Block_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Block = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-
-
-var _BlockSwatches2 = _interopRequireDefault(BlockSwatches_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Block = exports.Block = function Block(_ref) {
-  var onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      hex = _ref.hex,
-      colors = _ref.colors,
-      width = _ref.width,
-      triangle = _ref.triangle,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var transparent = hex === 'transparent';
-  var handleChange = function handleChange(hexCode, e) {
-    _color2.default.isValidHex(hexCode) && onChange({
-      hex: hexCode,
-      source: 'hex'
-    }, e);
-  };
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      card: {
-        width: width,
-        background: '#fff',
-        boxShadow: '0 1px rgba(0,0,0,.1)',
-        borderRadius: '6px',
-        position: 'relative'
-      },
-      head: {
-        height: '110px',
-        background: hex,
-        borderRadius: '6px 6px 0 0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative'
-      },
-      body: {
-        padding: '10px'
-      },
-      label: {
-        fontSize: '18px',
-        color: _color2.default.getContrastingColor(hex),
-        position: 'relative'
-      },
-      triangle: {
-        width: '0px',
-        height: '0px',
-        borderStyle: 'solid',
-        borderWidth: '0 10px 10px 10px',
-        borderColor: 'transparent transparent ' + hex + ' transparent',
-        position: 'absolute',
-        top: '-10px',
-        left: '50%',
-        marginLeft: '-10px'
-      },
-      input: {
-        width: '100%',
-        fontSize: '12px',
-        color: '#666',
-        border: '0px',
-        outline: 'none',
-        height: '22px',
-        boxShadow: 'inset 0 0 0 1px #ddd',
-        borderRadius: '4px',
-        padding: '0 7px',
-        boxSizing: 'border-box'
-      }
-    },
-    'hide-triangle': {
-      triangle: {
-        display: 'none'
-      }
-    }
-  }, passedStyles), { 'hide-triangle': triangle === 'hide' });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.card, className: 'block-picker ' + className },
-    _react2.default.createElement('div', { style: styles.triangle }),
-    _react2.default.createElement(
-      'div',
-      { style: styles.head },
-      transparent && _react2.default.createElement(common.Checkboard, { borderRadius: '6px 6px 0 0' }),
-      _react2.default.createElement(
-        'div',
-        { style: styles.label },
-        hex
-      )
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.body },
-      _react2.default.createElement(_BlockSwatches2.default, { colors: colors, onClick: handleChange, onSwatchHover: onSwatchHover }),
-      _react2.default.createElement(common.EditableInput, {
-        style: { input: styles.input },
-        value: hex,
-        onChange: handleChange
-      })
-    )
-  );
-};
-
-Block.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  triangle: _propTypes2.default.oneOf(['top', 'hide']),
-  styles: _propTypes2.default.object
-};
-
-Block.defaultProps = {
-  width: 170,
-  colors: ['#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65', '#ba68c8'],
-  triangle: 'top',
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Block);
-});
-
-var red = {"50":"#ffebee","100":"#ffcdd2","200":"#ef9a9a","300":"#e57373","400":"#ef5350","500":"#f44336","600":"#e53935","700":"#d32f2f","800":"#c62828","900":"#b71c1c","a100":"#ff8a80","a200":"#ff5252","a400":"#ff1744","a700":"#d50000"};
-var pink = {"50":"#fce4ec","100":"#f8bbd0","200":"#f48fb1","300":"#f06292","400":"#ec407a","500":"#e91e63","600":"#d81b60","700":"#c2185b","800":"#ad1457","900":"#880e4f","a100":"#ff80ab","a200":"#ff4081","a400":"#f50057","a700":"#c51162"};
-var purple = {"50":"#f3e5f5","100":"#e1bee7","200":"#ce93d8","300":"#ba68c8","400":"#ab47bc","500":"#9c27b0","600":"#8e24aa","700":"#7b1fa2","800":"#6a1b9a","900":"#4a148c","a100":"#ea80fc","a200":"#e040fb","a400":"#d500f9","a700":"#aa00ff"};
-var deepPurple = {"50":"#ede7f6","100":"#d1c4e9","200":"#b39ddb","300":"#9575cd","400":"#7e57c2","500":"#673ab7","600":"#5e35b1","700":"#512da8","800":"#4527a0","900":"#311b92","a100":"#b388ff","a200":"#7c4dff","a400":"#651fff","a700":"#6200ea"};
-var indigo = {"50":"#e8eaf6","100":"#c5cae9","200":"#9fa8da","300":"#7986cb","400":"#5c6bc0","500":"#3f51b5","600":"#3949ab","700":"#303f9f","800":"#283593","900":"#1a237e","a100":"#8c9eff","a200":"#536dfe","a400":"#3d5afe","a700":"#304ffe"};
-var blue = {"50":"#e3f2fd","100":"#bbdefb","200":"#90caf9","300":"#64b5f6","400":"#42a5f5","500":"#2196f3","600":"#1e88e5","700":"#1976d2","800":"#1565c0","900":"#0d47a1","a100":"#82b1ff","a200":"#448aff","a400":"#2979ff","a700":"#2962ff"};
-var lightBlue = {"50":"#e1f5fe","100":"#b3e5fc","200":"#81d4fa","300":"#4fc3f7","400":"#29b6f6","500":"#03a9f4","600":"#039be5","700":"#0288d1","800":"#0277bd","900":"#01579b","a100":"#80d8ff","a200":"#40c4ff","a400":"#00b0ff","a700":"#0091ea"};
-var cyan = {"50":"#e0f7fa","100":"#b2ebf2","200":"#80deea","300":"#4dd0e1","400":"#26c6da","500":"#00bcd4","600":"#00acc1","700":"#0097a7","800":"#00838f","900":"#006064","a100":"#84ffff","a200":"#18ffff","a400":"#00e5ff","a700":"#00b8d4"};
-var teal = {"50":"#e0f2f1","100":"#b2dfdb","200":"#80cbc4","300":"#4db6ac","400":"#26a69a","500":"#009688","600":"#00897b","700":"#00796b","800":"#00695c","900":"#004d40","a100":"#a7ffeb","a200":"#64ffda","a400":"#1de9b6","a700":"#00bfa5"};
-var green = {"50":"#e8f5e9","100":"#c8e6c9","200":"#a5d6a7","300":"#81c784","400":"#66bb6a","500":"#4caf50","600":"#43a047","700":"#388e3c","800":"#2e7d32","900":"#1b5e20","a100":"#b9f6ca","a200":"#69f0ae","a400":"#00e676","a700":"#00c853"};
-var lightGreen = {"50":"#f1f8e9","100":"#dcedc8","200":"#c5e1a5","300":"#aed581","400":"#9ccc65","500":"#8bc34a","600":"#7cb342","700":"#689f38","800":"#558b2f","900":"#33691e","a100":"#ccff90","a200":"#b2ff59","a400":"#76ff03","a700":"#64dd17"};
-var lime = {"50":"#f9fbe7","100":"#f0f4c3","200":"#e6ee9c","300":"#dce775","400":"#d4e157","500":"#cddc39","600":"#c0ca33","700":"#afb42b","800":"#9e9d24","900":"#827717","a100":"#f4ff81","a200":"#eeff41","a400":"#c6ff00","a700":"#aeea00"};
-var yellow = {"50":"#fffde7","100":"#fff9c4","200":"#fff59d","300":"#fff176","400":"#ffee58","500":"#ffeb3b","600":"#fdd835","700":"#fbc02d","800":"#f9a825","900":"#f57f17","a100":"#ffff8d","a200":"#ffff00","a400":"#ffea00","a700":"#ffd600"};
-var amber = {"50":"#fff8e1","100":"#ffecb3","200":"#ffe082","300":"#ffd54f","400":"#ffca28","500":"#ffc107","600":"#ffb300","700":"#ffa000","800":"#ff8f00","900":"#ff6f00","a100":"#ffe57f","a200":"#ffd740","a400":"#ffc400","a700":"#ffab00"};
-var orange = {"50":"#fff3e0","100":"#ffe0b2","200":"#ffcc80","300":"#ffb74d","400":"#ffa726","500":"#ff9800","600":"#fb8c00","700":"#f57c00","800":"#ef6c00","900":"#e65100","a100":"#ffd180","a200":"#ffab40","a400":"#ff9100","a700":"#ff6d00"};
-var deepOrange = {"50":"#fbe9e7","100":"#ffccbc","200":"#ffab91","300":"#ff8a65","400":"#ff7043","500":"#ff5722","600":"#f4511e","700":"#e64a19","800":"#d84315","900":"#bf360c","a100":"#ff9e80","a200":"#ff6e40","a400":"#ff3d00","a700":"#dd2c00"};
-var brown = {"50":"#efebe9","100":"#d7ccc8","200":"#bcaaa4","300":"#a1887f","400":"#8d6e63","500":"#795548","600":"#6d4c41","700":"#5d4037","800":"#4e342e","900":"#3e2723"};
-var grey = {"50":"#fafafa","100":"#f5f5f5","200":"#eeeeee","300":"#e0e0e0","400":"#bdbdbd","500":"#9e9e9e","600":"#757575","700":"#616161","800":"#424242","900":"#212121"};
-var blueGrey = {"50":"#eceff1","100":"#cfd8dc","200":"#b0bec5","300":"#90a4ae","400":"#78909c","500":"#607d8b","600":"#546e7a","700":"#455a64","800":"#37474f","900":"#263238"};
-var darkText = {"primary":"rgba(0, 0, 0, 0.87)","secondary":"rgba(0, 0, 0, 0.54)","disabled":"rgba(0, 0, 0, 0.38)","dividers":"rgba(0, 0, 0, 0.12)"};
-var lightText = {"primary":"rgba(255, 255, 255, 1)","secondary":"rgba(255, 255, 255, 0.7)","disabled":"rgba(255, 255, 255, 0.5)","dividers":"rgba(255, 255, 255, 0.12)"};
-var darkIcons = {"active":"rgba(0, 0, 0, 0.54)","inactive":"rgba(0, 0, 0, 0.38)"};
-var lightIcons = {"active":"rgba(255, 255, 255, 1)","inactive":"rgba(255, 255, 255, 0.5)"};
-var white = "#ffffff";
-var black = "#000000";
-
-var _materialColors = {
-  red: red,
-  pink: pink,
-  purple: purple,
-  deepPurple: deepPurple,
-  indigo: indigo,
-  blue: blue,
-  lightBlue: lightBlue,
-  cyan: cyan,
-  teal: teal,
-  green: green,
-  lightGreen: lightGreen,
-  lime: lime,
-  yellow: yellow,
-  amber: amber,
-  orange: orange,
-  deepOrange: deepOrange,
-  brown: brown,
-  grey: grey,
-  blueGrey: blueGrey,
-  darkText: darkText,
-  lightText: lightText,
-  darkIcons: darkIcons,
-  lightIcons: lightIcons,
-  white: white,
-  black: black
-};
-
-var CircleSwatch_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CircleSwatch = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CircleSwatch = exports.CircleSwatch = function CircleSwatch(_ref) {
-  var color = _ref.color,
-      onClick = _ref.onClick,
-      onSwatchHover = _ref.onSwatchHover,
-      hover = _ref.hover,
-      active = _ref.active,
-      circleSize = _ref.circleSize,
-      circleSpacing = _ref.circleSpacing;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      swatch: {
-        width: circleSize,
-        height: circleSize,
-        marginRight: circleSpacing,
-        marginBottom: circleSpacing,
-        transform: 'scale(1)',
-        transition: '100ms transform ease'
-      },
-      Swatch: {
-        borderRadius: '50%',
-        background: 'transparent',
-        boxShadow: 'inset 0 0 0 ' + (circleSize / 2 + 1) + 'px ' + color,
-        transition: '100ms box-shadow ease'
-      }
-    },
-    'hover': {
-      swatch: {
-        transform: 'scale(1.2)'
-      }
-    },
-    'active': {
-      Swatch: {
-        boxShadow: 'inset 0 0 0 3px ' + color
-      }
-    }
-  }, { hover: hover, active: active });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.swatch },
-    _react2.default.createElement(common.Swatch, {
-      style: styles.Swatch,
-      color: color,
-      onClick: onClick,
-      onHover: onSwatchHover,
-      focusStyle: { boxShadow: styles.Swatch.boxShadow + ', 0 0 5px ' + color }
-    })
-  );
-};
-
-CircleSwatch.defaultProps = {
-  circleSize: 28,
-  circleSpacing: 14
-};
-
-exports.default = (0, lib.handleHover)(CircleSwatch);
-});
-
-var Circle_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Circle = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-var material = _interopRequireWildcard(_materialColors);
-
-
-
-
-
-var _CircleSwatch2 = _interopRequireDefault(CircleSwatch_1);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Circle = exports.Circle = function Circle(_ref) {
-  var width = _ref.width,
-      onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      colors = _ref.colors,
-      hex = _ref.hex,
-      circleSize = _ref.circleSize,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      circleSpacing = _ref.circleSpacing,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      card: {
-        width: width,
-        display: 'flex',
-        flexWrap: 'wrap',
-        marginRight: -circleSpacing,
-        marginBottom: -circleSpacing
-      }
-    }
-  }, passedStyles));
-
-  var handleChange = function handleChange(hexCode, e) {
-    return onChange({ hex: hexCode, source: 'hex' }, e);
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.card, className: 'circle-picker ' + className },
-    (0, _map2.default)(colors, function (c) {
-      return _react2.default.createElement(_CircleSwatch2.default, {
-        key: c,
-        color: c,
-        onClick: handleChange,
-        onSwatchHover: onSwatchHover,
-        active: hex === c.toLowerCase(),
-        circleSize: circleSize,
-        circleSpacing: circleSpacing
-      });
-    })
-  );
-};
-
-Circle.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  circleSize: _propTypes2.default.number,
-  circleSpacing: _propTypes2.default.number,
-  styles: _propTypes2.default.object
-};
-
-Circle.defaultProps = {
-  width: 252,
-  circleSize: 28,
-  circleSpacing: 14,
-  colors: [material.red['500'], material.pink['500'], material.purple['500'], material.deepPurple['500'], material.indigo['500'], material.blue['500'], material.lightBlue['500'], material.cyan['500'], material.teal['500'], material.green['500'], material.lightGreen['500'], material.lime['500'], material.yellow['500'], material.amber['500'], material.orange['500'], material.deepOrange['500'], material.brown['500'], material.blueGrey['500']],
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Circle);
-});
-
-var UnfoldMoreHorizontalIcon = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var DEFAULT_SIZE = 24;
-
-exports.default = function (_ref) {
-  var _ref$fill = _ref.fill,
-      fill = _ref$fill === undefined ? 'currentColor' : _ref$fill,
-      _ref$width = _ref.width,
-      width = _ref$width === undefined ? DEFAULT_SIZE : _ref$width,
-      _ref$height = _ref.height,
-      height = _ref$height === undefined ? DEFAULT_SIZE : _ref$height,
-      _ref$style = _ref.style,
-      style = _ref$style === undefined ? {} : _ref$style,
-      props = _objectWithoutProperties(_ref, ['fill', 'width', 'height', 'style']);
-
-  return _react2.default.createElement(
-    'svg',
-    _extends({
-      viewBox: '0 0 ' + DEFAULT_SIZE + ' ' + DEFAULT_SIZE,
-      style: _extends({ fill: fill, width: width, height: height }, style)
-    }, props),
-    _react2.default.createElement('path', { d: 'M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z' })
-  );
-};
-});
-
-var ChromeFields_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ChromeFields = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-var _isUndefined2 = _interopRequireDefault(isUndefined__default['default']);
-
-
-
-
-
-var _UnfoldMoreHorizontalIcon2 = _interopRequireDefault(UnfoldMoreHorizontalIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/no-did-mount-set-state, no-param-reassign */
-
-var ChromeFields = exports.ChromeFields = function (_React$Component) {
-  _inherits(ChromeFields, _React$Component);
-
-  function ChromeFields(props) {
-    _classCallCheck(this, ChromeFields);
-
-    var _this = _possibleConstructorReturn(this, (ChromeFields.__proto__ || Object.getPrototypeOf(ChromeFields)).call(this));
-
-    _this.toggleViews = function () {
-      if (_this.state.view === 'hex') {
-        _this.setState({ view: 'rgb' });
-      } else if (_this.state.view === 'rgb') {
-        _this.setState({ view: 'hsl' });
-      } else if (_this.state.view === 'hsl') {
-        if (_this.props.hsl.a === 1) {
-          _this.setState({ view: 'hex' });
-        } else {
-          _this.setState({ view: 'rgb' });
-        }
-      }
-    };
-
-    _this.handleChange = function (data, e) {
-      if (data.hex) {
-        _color2.default.isValidHex(data.hex) && _this.props.onChange({
-          hex: data.hex,
-          source: 'hex'
-        }, e);
-      } else if (data.r || data.g || data.b) {
-        _this.props.onChange({
-          r: data.r || _this.props.rgb.r,
-          g: data.g || _this.props.rgb.g,
-          b: data.b || _this.props.rgb.b,
-          source: 'rgb'
-        }, e);
-      } else if (data.a) {
-        if (data.a < 0) {
-          data.a = 0;
-        } else if (data.a > 1) {
-          data.a = 1;
-        }
-
-        _this.props.onChange({
-          h: _this.props.hsl.h,
-          s: _this.props.hsl.s,
-          l: _this.props.hsl.l,
-          a: Math.round(data.a * 100) / 100,
-          source: 'rgb'
-        }, e);
-      } else if (data.h || data.s || data.l) {
-        // Remove any occurances of '%'.
-        if (typeof data.s === 'string' && data.s.includes('%')) {
-          data.s = data.s.replace('%', '');
-        }
-        if (typeof data.l === 'string' && data.l.includes('%')) {
-          data.l = data.l.replace('%', '');
-        }
-
-        // We store HSL as a unit interval so we need to override the 1 input to 0.01
-        if (data.s == 1) {
-          data.s = 0.01;
-        } else if (data.l == 1) {
-          data.l = 0.01;
-        }
-
-        _this.props.onChange({
-          h: data.h || _this.props.hsl.h,
-          s: Number(!(0, _isUndefined2.default)(data.s) ? data.s : _this.props.hsl.s),
-          l: Number(!(0, _isUndefined2.default)(data.l) ? data.l : _this.props.hsl.l),
-          source: 'hsl'
-        }, e);
-      }
-    };
-
-    _this.showHighlight = function (e) {
-      e.currentTarget.style.background = '#eee';
-    };
-
-    _this.hideHighlight = function (e) {
-      e.currentTarget.style.background = 'transparent';
-    };
-
-    if (props.hsl.a !== 1 && props.view === "hex") {
-      _this.state = {
-        view: "rgb"
-      };
-    } else {
-      _this.state = {
-        view: props.view
-      };
-    }
-    return _this;
-  }
-
-  _createClass(ChromeFields, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var styles = (0, _reactcss2.default)({
-        'default': {
-          wrap: {
-            paddingTop: '16px',
-            display: 'flex'
-          },
-          fields: {
-            flex: '1',
-            display: 'flex',
-            marginLeft: '-6px'
-          },
-          field: {
-            paddingLeft: '6px',
-            width: '100%'
-          },
-          alpha: {
-            paddingLeft: '6px',
-            width: '100%'
-          },
-          toggle: {
-            width: '32px',
-            textAlign: 'right',
-            position: 'relative'
-          },
-          icon: {
-            marginRight: '-4px',
-            marginTop: '12px',
-            cursor: 'pointer',
-            position: 'relative'
-          },
-          iconHighlight: {
-            position: 'absolute',
-            width: '24px',
-            height: '28px',
-            background: '#eee',
-            borderRadius: '4px',
-            top: '10px',
-            left: '12px',
-            display: 'none'
-          },
-          input: {
-            fontSize: '11px',
-            color: '#333',
-            width: '100%',
-            borderRadius: '2px',
-            border: 'none',
-            boxShadow: 'inset 0 0 0 1px #dadada',
-            height: '21px',
-            textAlign: 'center'
-          },
-          label: {
-            textTransform: 'uppercase',
-            fontSize: '11px',
-            lineHeight: '11px',
-            color: '#969696',
-            textAlign: 'center',
-            display: 'block',
-            marginTop: '12px'
-          },
-          svg: {
-            fill: '#333',
-            width: '24px',
-            height: '24px',
-            border: '1px transparent solid',
-            borderRadius: '5px'
-          }
-        },
-        'disableAlpha': {
-          alpha: {
-            display: 'none'
-          }
-        }
-      }, this.props, this.state);
-
-      var fields = void 0;
-      if (this.state.view === 'hex') {
-        fields = _react2.default.createElement(
-          'div',
-          { style: styles.fields, className: 'flexbox-fix' },
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'hex', value: this.props.hex,
-              onChange: this.handleChange
-            })
-          )
-        );
-      } else if (this.state.view === 'rgb') {
-        fields = _react2.default.createElement(
-          'div',
-          { style: styles.fields, className: 'flexbox-fix' },
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'r',
-              value: this.props.rgb.r,
-              onChange: this.handleChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'g',
-              value: this.props.rgb.g,
-              onChange: this.handleChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'b',
-              value: this.props.rgb.b,
-              onChange: this.handleChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.alpha },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'a',
-              value: this.props.rgb.a,
-              arrowOffset: 0.01,
-              onChange: this.handleChange
-            })
-          )
-        );
-      } else if (this.state.view === 'hsl') {
-        fields = _react2.default.createElement(
-          'div',
-          { style: styles.fields, className: 'flexbox-fix' },
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'h',
-              value: Math.round(this.props.hsl.h),
-              onChange: this.handleChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 's',
-              value: Math.round(this.props.hsl.s * 100) + '%',
-              onChange: this.handleChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.field },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'l',
-              value: Math.round(this.props.hsl.l * 100) + '%',
-              onChange: this.handleChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.alpha },
-            _react2.default.createElement(common.EditableInput, {
-              style: { input: styles.input, label: styles.label },
-              label: 'a',
-              value: this.props.hsl.a,
-              arrowOffset: 0.01,
-              onChange: this.handleChange
-            })
-          )
-        );
-      }
-
-      return _react2.default.createElement(
-        'div',
-        { style: styles.wrap, className: 'flexbox-fix' },
-        fields,
-        _react2.default.createElement(
-          'div',
-          { style: styles.toggle },
-          _react2.default.createElement(
-            'div',
-            { style: styles.icon, onClick: this.toggleViews, ref: function ref(icon) {
-                return _this2.icon = icon;
-              } },
-            _react2.default.createElement(_UnfoldMoreHorizontalIcon2.default, {
-              style: styles.svg,
-              onMouseOver: this.showHighlight,
-              onMouseEnter: this.showHighlight,
-              onMouseOut: this.hideHighlight
-            })
-          )
-        )
-      );
-    }
-  }], [{
-    key: 'getDerivedStateFromProps',
-    value: function getDerivedStateFromProps(nextProps, state) {
-      if (nextProps.hsl.a !== 1 && state.view === 'hex') {
-        return { view: 'rgb' };
-      }
-      return null;
-    }
-  }]);
-
-  return ChromeFields;
-}(_react2.default.Component);
-
-ChromeFields.defaultProps = {
-  view: "hex"
-};
-
-exports.default = ChromeFields;
-});
-
-var ChromePointer_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ChromePointer = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ChromePointer = exports.ChromePointer = function ChromePointer() {
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        width: '12px',
-        height: '12px',
-        borderRadius: '6px',
-        transform: 'translate(-6px, -1px)',
-        backgroundColor: 'rgb(248, 248, 248)',
-        boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)'
-      }
-    }
-  });
-
-  return _react2.default.createElement('div', { style: styles.picker });
-};
-
-exports.default = ChromePointer;
-});
-
-var ChromePointerCircle_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ChromePointerCircle = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ChromePointerCircle = exports.ChromePointerCircle = function ChromePointerCircle() {
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        width: '12px',
-        height: '12px',
-        borderRadius: '6px',
-        boxShadow: 'inset 0 0 0 1px #fff',
-        transform: 'translate(-6px, -6px)'
-      }
-    }
-  });
-
-  return _react2.default.createElement('div', { style: styles.picker });
-};
-
-exports.default = ChromePointerCircle;
-});
-
-var Chrome_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Chrome = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-
-
-var _ChromeFields2 = _interopRequireDefault(ChromeFields_1);
-
-
-
-var _ChromePointer2 = _interopRequireDefault(ChromePointer_1);
-
-
-
-var _ChromePointerCircle2 = _interopRequireDefault(ChromePointerCircle_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Chrome = exports.Chrome = function Chrome(_ref) {
-  var width = _ref.width,
-      onChange = _ref.onChange,
-      disableAlpha = _ref.disableAlpha,
-      rgb = _ref.rgb,
-      hsl = _ref.hsl,
-      hsv = _ref.hsv,
-      hex = _ref.hex,
-      renderers = _ref.renderers,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className,
-      defaultView = _ref.defaultView;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      picker: {
-        width: width,
-        background: '#fff',
-        borderRadius: '2px',
-        boxShadow: '0 0 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.3)',
-        boxSizing: 'initial',
-        fontFamily: 'Menlo'
-      },
-      saturation: {
-        width: '100%',
-        paddingBottom: '55%',
-        position: 'relative',
-        borderRadius: '2px 2px 0 0',
-        overflow: 'hidden'
-      },
-      Saturation: {
-        radius: '2px 2px 0 0'
-      },
-      body: {
-        padding: '16px 16px 12px'
-      },
-      controls: {
-        display: 'flex'
-      },
-      color: {
-        width: '32px'
-      },
-      swatch: {
-        marginTop: '6px',
-        width: '16px',
-        height: '16px',
-        borderRadius: '8px',
-        position: 'relative',
-        overflow: 'hidden'
-      },
-      active: {
-        absolute: '0px 0px 0px 0px',
-        borderRadius: '8px',
-        boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
-        background: 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + rgb.a + ')',
-        zIndex: '2'
-      },
-      toggles: {
-        flex: '1'
-      },
-      hue: {
-        height: '10px',
-        position: 'relative',
-        marginBottom: '8px'
-      },
-      Hue: {
-        radius: '2px'
-      },
-      alpha: {
-        height: '10px',
-        position: 'relative'
-      },
-      Alpha: {
-        radius: '2px'
-      }
-    },
-    'disableAlpha': {
-      color: {
-        width: '22px'
-      },
-      alpha: {
-        display: 'none'
-      },
-      hue: {
-        marginBottom: '0px'
-      },
-      swatch: {
-        width: '10px',
-        height: '10px',
-        marginTop: '0px'
-      }
-    }
-  }, passedStyles), { disableAlpha: disableAlpha });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.picker, className: 'chrome-picker ' + className },
-    _react2.default.createElement(
-      'div',
-      { style: styles.saturation },
-      _react2.default.createElement(common.Saturation, {
-        style: styles.Saturation,
-        hsl: hsl,
-        hsv: hsv,
-        pointer: _ChromePointerCircle2.default,
-        onChange: onChange
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.body },
-      _react2.default.createElement(
-        'div',
-        { style: styles.controls, className: 'flexbox-fix' },
-        _react2.default.createElement(
-          'div',
-          { style: styles.color },
-          _react2.default.createElement(
-            'div',
-            { style: styles.swatch },
-            _react2.default.createElement('div', { style: styles.active }),
-            _react2.default.createElement(common.Checkboard, { renderers: renderers })
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: styles.toggles },
-          _react2.default.createElement(
-            'div',
-            { style: styles.hue },
-            _react2.default.createElement(common.Hue, {
-              style: styles.Hue,
-              hsl: hsl,
-              pointer: _ChromePointer2.default,
-              onChange: onChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.alpha },
-            _react2.default.createElement(common.Alpha, {
-              style: styles.Alpha,
-              rgb: rgb,
-              hsl: hsl,
-              pointer: _ChromePointer2.default,
-              renderers: renderers,
-              onChange: onChange
-            })
-          )
-        )
-      ),
-      _react2.default.createElement(_ChromeFields2.default, {
-        rgb: rgb,
-        hsl: hsl,
-        hex: hex,
-        view: defaultView,
-        onChange: onChange,
-        disableAlpha: disableAlpha
-      })
-    )
-  );
-};
-
-Chrome.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  disableAlpha: _propTypes2.default.bool,
-  styles: _propTypes2.default.object,
-  defaultView: _propTypes2.default.oneOf(["hex", "rgb", "hsl"])
-};
-
-Chrome.defaultProps = {
-  width: 225,
-  disableAlpha: false,
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Chrome);
-});
-
-var CompactColor_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CompactColor = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CompactColor = exports.CompactColor = function CompactColor(_ref) {
-  var color = _ref.color,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
-      onSwatchHover = _ref.onSwatchHover,
-      active = _ref.active;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      color: {
-        background: color,
-        width: '15px',
-        height: '15px',
-        float: 'left',
-        marginRight: '5px',
-        marginBottom: '5px',
-        position: 'relative',
-        cursor: 'pointer'
-      },
-      dot: {
-        absolute: '5px 5px 5px 5px',
-        background: _color2.default.getContrastingColor(color),
-        borderRadius: '50%',
-        opacity: '0'
-      }
-    },
-    'active': {
-      dot: {
-        opacity: '1'
-      }
-    },
-    'color-#FFFFFF': {
-      color: {
-        boxShadow: 'inset 0 0 0 1px #ddd'
-      },
-      dot: {
-        background: '#000'
-      }
-    },
-    'transparent': {
-      dot: {
-        background: '#000'
-      }
-    }
-  }, { active: active, 'color-#FFFFFF': color === '#FFFFFF', 'transparent': color === 'transparent' });
-
-  return _react2.default.createElement(
-    common.Swatch,
-    {
-      style: styles.color,
-      color: color,
-      onClick: onClick,
-      onHover: onSwatchHover,
-      focusStyle: { boxShadow: '0 0 4px ' + color }
-    },
-    _react2.default.createElement('div', { style: styles.dot })
-  );
-};
-
-exports.default = CompactColor;
-});
-
-var CompactFields_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CompactFields = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CompactFields = exports.CompactFields = function CompactFields(_ref) {
-  var hex = _ref.hex,
-      rgb = _ref.rgb,
-      onChange = _ref.onChange;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      fields: {
-        display: 'flex',
-        paddingBottom: '6px',
-        paddingRight: '5px',
-        position: 'relative'
-      },
-      active: {
-        position: 'absolute',
-        top: '6px',
-        left: '5px',
-        height: '9px',
-        width: '9px',
-        background: hex
-      },
-      HEXwrap: {
-        flex: '6',
-        position: 'relative'
-      },
-      HEXinput: {
-        width: '80%',
-        padding: '0px',
-        paddingLeft: '20%',
-        border: 'none',
-        outline: 'none',
-        background: 'none',
-        fontSize: '12px',
-        color: '#333',
-        height: '16px'
-      },
-      HEXlabel: {
-        display: 'none'
-      },
-      RGBwrap: {
-        flex: '3',
-        position: 'relative'
-      },
-      RGBinput: {
-        width: '70%',
-        padding: '0px',
-        paddingLeft: '30%',
-        border: 'none',
-        outline: 'none',
-        background: 'none',
-        fontSize: '12px',
-        color: '#333',
-        height: '16px'
-      },
-      RGBlabel: {
-        position: 'absolute',
-        top: '3px',
-        left: '0px',
-        lineHeight: '16px',
-        textTransform: 'uppercase',
-        fontSize: '12px',
-        color: '#999'
-      }
-    }
-  });
-
-  var handleChange = function handleChange(data, e) {
-    if (data.r || data.g || data.b) {
-      onChange({
-        r: data.r || rgb.r,
-        g: data.g || rgb.g,
-        b: data.b || rgb.b,
-        source: 'rgb'
-      }, e);
-    } else {
-      onChange({
-        hex: data.hex,
-        source: 'hex'
-      }, e);
-    }
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.fields, className: 'flexbox-fix' },
-    _react2.default.createElement('div', { style: styles.active }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.HEXwrap, input: styles.HEXinput, label: styles.HEXlabel },
-      label: 'hex',
-      value: hex,
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'r',
-      value: rgb.r,
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'g',
-      value: rgb.g,
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'b',
-      value: rgb.b,
-      onChange: handleChange
-    })
-  );
-};
-
-exports.default = CompactFields;
-});
-
-var Compact_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Compact = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-
-
-var _CompactColor2 = _interopRequireDefault(CompactColor_1);
-
-
-
-var _CompactFields2 = _interopRequireDefault(CompactFields_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Compact = exports.Compact = function Compact(_ref) {
-  var onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      colors = _ref.colors,
-      hex = _ref.hex,
-      rgb = _ref.rgb,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      Compact: {
-        background: '#f6f6f6',
-        radius: '4px'
-      },
-      compact: {
-        paddingTop: '5px',
-        paddingLeft: '5px',
-        boxSizing: 'initial',
-        width: '240px'
-      },
-      clear: {
-        clear: 'both'
-      }
-    }
-  }, passedStyles));
-
-  var handleChange = function handleChange(data, e) {
-    if (data.hex) {
-      _color2.default.isValidHex(data.hex) && onChange({
-        hex: data.hex,
-        source: 'hex'
-      }, e);
-    } else {
-      onChange(data, e);
-    }
-  };
-
-  return _react2.default.createElement(
-    common.Raised,
-    { style: styles.Compact, styles: passedStyles },
-    _react2.default.createElement(
-      'div',
-      { style: styles.compact, className: 'compact-picker ' + className },
-      _react2.default.createElement(
-        'div',
-        null,
-        (0, _map2.default)(colors, function (c) {
-          return _react2.default.createElement(_CompactColor2.default, {
-            key: c,
-            color: c,
-            active: c.toLowerCase() === hex,
-            onClick: handleChange,
-            onSwatchHover: onSwatchHover
-          });
-        }),
-        _react2.default.createElement('div', { style: styles.clear })
-      ),
-      _react2.default.createElement(_CompactFields2.default, { hex: hex, rgb: rgb, onChange: handleChange })
-    )
-  );
-};
-
-Compact.propTypes = {
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  styles: _propTypes2.default.object
-};
-
-Compact.defaultProps = {
-  colors: ['#4D4D4D', '#999999', '#FFFFFF', '#F44E3B', '#FE9200', '#FCDC00', '#DBDF00', '#A4DD00', '#68CCCA', '#73D8FF', '#AEA1FF', '#FDA1FF', '#333333', '#808080', '#cccccc', '#D33115', '#E27300', '#FCC400', '#B0BC00', '#68BC00', '#16A5A5', '#009CE0', '#7B64FF', '#FA28FF', '#000000', '#666666', '#B3B3B3', '#9F0500', '#C45100', '#FB9E00', '#808900', '#194D33', '#0C797D', '#0062B1', '#653294', '#AB149E'],
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Compact);
-});
-
-var GithubSwatch_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GithubSwatch = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GithubSwatch = exports.GithubSwatch = function GithubSwatch(_ref) {
-  var hover = _ref.hover,
-      color = _ref.color,
-      onClick = _ref.onClick,
-      onSwatchHover = _ref.onSwatchHover;
-
-  var hoverSwatch = {
-    position: 'relative',
-    zIndex: '2',
-    outline: '2px solid #fff',
-    boxShadow: '0 0 5px 2px rgba(0,0,0,0.25)'
-  };
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      swatch: {
-        width: '25px',
-        height: '25px',
-        fontSize: '0'
-      }
-    },
-    'hover': {
-      swatch: hoverSwatch
-    }
-  }, { hover: hover });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.swatch },
-    _react2.default.createElement(common.Swatch, {
-      color: color,
-      onClick: onClick,
-      onHover: onSwatchHover,
-      focusStyle: hoverSwatch
-    })
-  );
-};
-
-exports.default = (0, lib.handleHover)(GithubSwatch);
-});
-
-var Github_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Github = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-
-
-var _GithubSwatch2 = _interopRequireDefault(GithubSwatch_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Github = exports.Github = function Github(_ref) {
-  var width = _ref.width,
-      colors = _ref.colors,
-      onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      triangle = _ref.triangle,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      card: {
-        width: width,
-        background: '#fff',
-        border: '1px solid rgba(0,0,0,0.2)',
-        boxShadow: '0 3px 12px rgba(0,0,0,0.15)',
-        borderRadius: '4px',
-        position: 'relative',
-        padding: '5px',
-        display: 'flex',
-        flexWrap: 'wrap'
-      },
-      triangle: {
-        position: 'absolute',
-        border: '7px solid transparent',
-        borderBottomColor: '#fff'
-      },
-      triangleShadow: {
-        position: 'absolute',
-        border: '8px solid transparent',
-        borderBottomColor: 'rgba(0,0,0,0.15)'
-      }
-    },
-    'hide-triangle': {
-      triangle: {
-        display: 'none'
-      },
-      triangleShadow: {
-        display: 'none'
-      }
-    },
-    'top-left-triangle': {
-      triangle: {
-        top: '-14px',
-        left: '10px'
-      },
-      triangleShadow: {
-        top: '-16px',
-        left: '9px'
-      }
-    },
-    'top-right-triangle': {
-      triangle: {
-        top: '-14px',
-        right: '10px'
-      },
-      triangleShadow: {
-        top: '-16px',
-        right: '9px'
-      }
-    },
-    'bottom-left-triangle': {
-      triangle: {
-        top: '35px',
-        left: '10px',
-        transform: 'rotate(180deg)'
-      },
-      triangleShadow: {
-        top: '37px',
-        left: '9px',
-        transform: 'rotate(180deg)'
-      }
-    },
-    'bottom-right-triangle': {
-      triangle: {
-        top: '35px',
-        right: '10px',
-        transform: 'rotate(180deg)'
-      },
-      triangleShadow: {
-        top: '37px',
-        right: '9px',
-        transform: 'rotate(180deg)'
-      }
-    }
-  }, passedStyles), {
-    'hide-triangle': triangle === 'hide',
-    'top-left-triangle': triangle === 'top-left',
-    'top-right-triangle': triangle === 'top-right',
-    'bottom-left-triangle': triangle === 'bottom-left',
-    'bottom-right-triangle': triangle === 'bottom-right'
-  });
-
-  var handleChange = function handleChange(hex, e) {
-    return onChange({ hex: hex, source: 'hex' }, e);
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.card, className: 'github-picker ' + className },
-    _react2.default.createElement('div', { style: styles.triangleShadow }),
-    _react2.default.createElement('div', { style: styles.triangle }),
-    (0, _map2.default)(colors, function (c) {
-      return _react2.default.createElement(_GithubSwatch2.default, {
-        color: c,
-        key: c,
-        onClick: handleChange,
-        onSwatchHover: onSwatchHover
-      });
-    })
-  );
-};
-
-Github.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  triangle: _propTypes2.default.oneOf(['hide', 'top-left', 'top-right', 'bottom-left', 'bottom-right']),
-  styles: _propTypes2.default.object
-};
-
-Github.defaultProps = {
-  width: 200,
-  colors: ['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', '#FEF3BD', '#C1E1C5', '#BEDADC', '#C4DEF6', '#BED3F3', '#D4C4FB'],
-  triangle: 'top-left',
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Github);
-});
-
-var HuePointer = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderPointer = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderPointer = exports.SliderPointer = function SliderPointer(_ref) {
-  var direction = _ref.direction;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        width: '18px',
-        height: '18px',
-        borderRadius: '50%',
-        transform: 'translate(-9px, -1px)',
-        backgroundColor: 'rgb(248, 248, 248)',
-        boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)'
-      }
-    },
-    'vertical': {
-      picker: {
-        transform: 'translate(-3px, -9px)'
-      }
-    }
-  }, { vertical: direction === 'vertical' });
-
-  return _react2.default.createElement('div', { style: styles.picker });
-};
-
-exports.default = SliderPointer;
-});
-
-var Hue = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.HuePicker = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-
-
-var _HuePointer2 = _interopRequireDefault(HuePointer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HuePicker = exports.HuePicker = function HuePicker(_ref) {
-  var width = _ref.width,
-      height = _ref.height,
-      onChange = _ref.onChange,
-      hsl = _ref.hsl,
-      direction = _ref.direction,
-      pointer = _ref.pointer,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      picker: {
-        position: 'relative',
-        width: width,
-        height: height
-      },
-      hue: {
-        radius: '2px'
-      }
-    }
-  }, passedStyles));
-
-  // Overwrite to provide pure hue color
-  var handleChange = function handleChange(data) {
-    return onChange({ a: 1, h: data.h, l: 0.5, s: 1 });
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.picker, className: 'hue-picker ' + className },
-    _react2.default.createElement(common.Hue, _extends({}, styles.hue, {
-      hsl: hsl,
-      pointer: pointer,
-      onChange: handleChange,
-      direction: direction
-    }))
-  );
-};
-
-HuePicker.propTypes = {
-  styles: _propTypes2.default.object
-};
-HuePicker.defaultProps = {
-  width: '316px',
-  height: '16px',
-  direction: 'horizontal',
-  pointer: _HuePointer2.default,
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(HuePicker);
-});
-
-var Material_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Material = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Material = exports.Material = function Material(_ref) {
-  var onChange = _ref.onChange,
-      hex = _ref.hex,
-      rgb = _ref.rgb,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      material: {
-        width: '98px',
-        height: '98px',
-        padding: '16px',
-        fontFamily: 'Roboto'
-      },
-      HEXwrap: {
-        position: 'relative'
-      },
-      HEXinput: {
-        width: '100%',
-        marginTop: '12px',
-        fontSize: '15px',
-        color: '#333',
-        padding: '0px',
-        border: '0px',
-        borderBottom: '2px solid ' + hex,
-        outline: 'none',
-        height: '30px'
-      },
-      HEXlabel: {
-        position: 'absolute',
-        top: '0px',
-        left: '0px',
-        fontSize: '11px',
-        color: '#999999',
-        textTransform: 'capitalize'
-      },
-      Hex: {
-        style: {}
-      },
-      RGBwrap: {
-        position: 'relative'
-      },
-      RGBinput: {
-        width: '100%',
-        marginTop: '12px',
-        fontSize: '15px',
-        color: '#333',
-        padding: '0px',
-        border: '0px',
-        borderBottom: '1px solid #eee',
-        outline: 'none',
-        height: '30px'
-      },
-      RGBlabel: {
-        position: 'absolute',
-        top: '0px',
-        left: '0px',
-        fontSize: '11px',
-        color: '#999999',
-        textTransform: 'capitalize'
-      },
-      split: {
-        display: 'flex',
-        marginRight: '-10px',
-        paddingTop: '11px'
-      },
-      third: {
-        flex: '1',
-        paddingRight: '10px'
-      }
-    }
-  }, passedStyles));
-
-  var handleChange = function handleChange(data, e) {
-    if (data.hex) {
-      _color2.default.isValidHex(data.hex) && onChange({
-        hex: data.hex,
-        source: 'hex'
-      }, e);
-    } else if (data.r || data.g || data.b) {
-      onChange({
-        r: data.r || rgb.r,
-        g: data.g || rgb.g,
-        b: data.b || rgb.b,
-        source: 'rgb'
-      }, e);
-    }
-  };
-
-  return _react2.default.createElement(
-    common.Raised,
-    { styles: passedStyles },
-    _react2.default.createElement(
-      'div',
-      { style: styles.material, className: 'material-picker ' + className },
-      _react2.default.createElement(common.EditableInput, {
-        style: { wrap: styles.HEXwrap, input: styles.HEXinput, label: styles.HEXlabel },
-        label: 'hex',
-        value: hex,
-        onChange: handleChange
-      }),
-      _react2.default.createElement(
-        'div',
-        { style: styles.split, className: 'flexbox-fix' },
-        _react2.default.createElement(
-          'div',
-          { style: styles.third },
-          _react2.default.createElement(common.EditableInput, {
-            style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-            label: 'r', value: rgb.r,
-            onChange: handleChange
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: styles.third },
-          _react2.default.createElement(common.EditableInput, {
-            style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-            label: 'g',
-            value: rgb.g,
-            onChange: handleChange
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: styles.third },
-          _react2.default.createElement(common.EditableInput, {
-            style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-            label: 'b',
-            value: rgb.b,
-            onChange: handleChange
-          })
-        )
-      )
-    )
-  );
-};
-
-exports.default = (0, common.ColorWrap)(Material);
-});
-
-var PhotoshopFields = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPicker = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPicker = exports.PhotoshopPicker = function PhotoshopPicker(_ref) {
-  var onChange = _ref.onChange,
-      rgb = _ref.rgb,
-      hsv = _ref.hsv,
-      hex = _ref.hex;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      fields: {
-        paddingTop: '5px',
-        paddingBottom: '9px',
-        width: '80px',
-        position: 'relative'
-      },
-      divider: {
-        height: '5px'
-      },
-      RGBwrap: {
-        position: 'relative'
-      },
-      RGBinput: {
-        marginLeft: '40%',
-        width: '40%',
-        height: '18px',
-        border: '1px solid #888888',
-        boxShadow: 'inset 0 1px 1px rgba(0,0,0,.1), 0 1px 0 0 #ECECEC',
-        marginBottom: '5px',
-        fontSize: '13px',
-        paddingLeft: '3px',
-        marginRight: '10px'
-      },
-      RGBlabel: {
-        left: '0px',
-        width: '34px',
-        textTransform: 'uppercase',
-        fontSize: '13px',
-        height: '18px',
-        lineHeight: '22px',
-        position: 'absolute'
-      },
-      HEXwrap: {
-        position: 'relative'
-      },
-      HEXinput: {
-        marginLeft: '20%',
-        width: '80%',
-        height: '18px',
-        border: '1px solid #888888',
-        boxShadow: 'inset 0 1px 1px rgba(0,0,0,.1), 0 1px 0 0 #ECECEC',
-        marginBottom: '6px',
-        fontSize: '13px',
-        paddingLeft: '3px'
-      },
-      HEXlabel: {
-        position: 'absolute',
-        top: '0px',
-        left: '0px',
-        width: '14px',
-        textTransform: 'uppercase',
-        fontSize: '13px',
-        height: '18px',
-        lineHeight: '22px'
-      },
-      fieldSymbols: {
-        position: 'absolute',
-        top: '5px',
-        right: '-7px',
-        fontSize: '13px'
-      },
-      symbol: {
-        height: '20px',
-        lineHeight: '22px',
-        paddingBottom: '7px'
-      }
-    }
-  });
-
-  var handleChange = function handleChange(data, e) {
-    if (data['#']) {
-      _color2.default.isValidHex(data['#']) && onChange({
-        hex: data['#'],
-        source: 'hex'
-      }, e);
-    } else if (data.r || data.g || data.b) {
-      onChange({
-        r: data.r || rgb.r,
-        g: data.g || rgb.g,
-        b: data.b || rgb.b,
-        source: 'rgb'
-      }, e);
-    } else if (data.h || data.s || data.v) {
-      onChange({
-        h: data.h || hsv.h,
-        s: data.s || hsv.s,
-        v: data.v || hsv.v,
-        source: 'hsv'
-      }, e);
-    }
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.fields },
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'h',
-      value: Math.round(hsv.h),
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 's',
-      value: Math.round(hsv.s * 100),
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'v',
-      value: Math.round(hsv.v * 100),
-      onChange: handleChange
-    }),
-    _react2.default.createElement('div', { style: styles.divider }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'r',
-      value: rgb.r,
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'g',
-      value: rgb.g,
-      onChange: handleChange
-    }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.RGBwrap, input: styles.RGBinput, label: styles.RGBlabel },
-      label: 'b',
-      value: rgb.b,
-      onChange: handleChange
-    }),
-    _react2.default.createElement('div', { style: styles.divider }),
-    _react2.default.createElement(common.EditableInput, {
-      style: { wrap: styles.HEXwrap, input: styles.HEXinput, label: styles.HEXlabel },
-      label: '#',
-      value: hex.replace('#', ''),
-      onChange: handleChange
-    }),
-    _react2.default.createElement(
-      'div',
-      { style: styles.fieldSymbols },
-      _react2.default.createElement(
-        'div',
-        { style: styles.symbol },
-        '\xB0'
-      ),
-      _react2.default.createElement(
-        'div',
-        { style: styles.symbol },
-        '%'
-      ),
-      _react2.default.createElement(
-        'div',
-        { style: styles.symbol },
-        '%'
-      )
-    )
-  );
-};
-
-exports.default = PhotoshopPicker;
-});
-
-var PhotoshopPointerCircle_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPointerCircle = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPointerCircle = exports.PhotoshopPointerCircle = function PhotoshopPointerCircle(_ref) {
-  var hsl = _ref.hsl;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        width: '12px',
-        height: '12px',
-        borderRadius: '6px',
-        boxShadow: 'inset 0 0 0 1px #fff',
-        transform: 'translate(-6px, -6px)'
-      }
-    },
-    'black-outline': {
-      picker: {
-        boxShadow: 'inset 0 0 0 1px #000'
-      }
-    }
-  }, { 'black-outline': hsl.l > 0.5 });
-
-  return _react2.default.createElement('div', { style: styles.picker });
-};
-
-exports.default = PhotoshopPointerCircle;
-});
-
-var PhotoshopPointer = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPointerCircle = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPointerCircle = exports.PhotoshopPointerCircle = function PhotoshopPointerCircle() {
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      triangle: {
-        width: 0,
-        height: 0,
-        borderStyle: 'solid',
-        borderWidth: '4px 0 4px 6px',
-        borderColor: 'transparent transparent transparent #fff',
-        position: 'absolute',
-        top: '1px',
-        left: '1px'
-      },
-      triangleBorder: {
-        width: 0,
-        height: 0,
-        borderStyle: 'solid',
-        borderWidth: '5px 0 5px 8px',
-        borderColor: 'transparent transparent transparent #555'
-      },
-
-      left: {
-        Extend: 'triangleBorder',
-        transform: 'translate(-13px, -4px)'
-      },
-      leftInside: {
-        Extend: 'triangle',
-        transform: 'translate(-8px, -5px)'
-      },
-
-      right: {
-        Extend: 'triangleBorder',
-        transform: 'translate(20px, -14px) rotate(180deg)'
-      },
-      rightInside: {
-        Extend: 'triangle',
-        transform: 'translate(-8px, -5px)'
-      }
-    }
-  });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.pointer },
-    _react2.default.createElement(
-      'div',
-      { style: styles.left },
-      _react2.default.createElement('div', { style: styles.leftInside })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.right },
-      _react2.default.createElement('div', { style: styles.rightInside })
-    )
-  );
-};
-
-exports.default = PhotoshopPointerCircle;
-});
-
-var PhotoshopButton_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopButton = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopButton = exports.PhotoshopButton = function PhotoshopButton(_ref) {
-  var onClick = _ref.onClick,
-      label = _ref.label,
-      children = _ref.children,
-      active = _ref.active;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      button: {
-        backgroundImage: 'linear-gradient(-180deg, #FFFFFF 0%, #E6E6E6 100%)',
-        border: '1px solid #878787',
-        borderRadius: '2px',
-        height: '20px',
-        boxShadow: '0 1px 0 0 #EAEAEA',
-        fontSize: '14px',
-        color: '#000',
-        lineHeight: '20px',
-        textAlign: 'center',
-        marginBottom: '10px',
-        cursor: 'pointer'
-      }
-    },
-    'active': {
-      button: {
-        boxShadow: '0 0 0 1px #878787'
-      }
-    }
-  }, { active: active });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.button, onClick: onClick },
-    label || children
-  );
-};
-
-exports.default = PhotoshopButton;
-});
-
-var PhotoshopPreviews_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PhotoshopPreviews = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PhotoshopPreviews = exports.PhotoshopPreviews = function PhotoshopPreviews(_ref) {
-  var rgb = _ref.rgb,
-      currentColor = _ref.currentColor;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      swatches: {
-        border: '1px solid #B3B3B3',
-        borderBottom: '1px solid #F0F0F0',
-        marginBottom: '2px',
-        marginTop: '1px'
-      },
-      new: {
-        height: '34px',
-        background: 'rgb(' + rgb.r + ',' + rgb.g + ', ' + rgb.b + ')',
-        boxShadow: 'inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 1px 0 #000'
-      },
-      current: {
-        height: '34px',
-        background: currentColor,
-        boxShadow: 'inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 -1px 0 #000'
-      },
-      label: {
-        fontSize: '14px',
-        color: '#000',
-        textAlign: 'center'
-      }
-    }
-  });
-
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'div',
-      { style: styles.label },
-      'new'
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatches },
-      _react2.default.createElement('div', { style: styles.new }),
-      _react2.default.createElement('div', { style: styles.current })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.label },
-      'current'
-    )
-  );
-};
-
-exports.default = PhotoshopPreviews;
-});
-
-var Photoshop_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Photoshop = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-
-
-var _PhotoshopFields2 = _interopRequireDefault(PhotoshopFields);
-
-
-
-var _PhotoshopPointerCircle2 = _interopRequireDefault(PhotoshopPointerCircle_1);
-
-
-
-var _PhotoshopPointer2 = _interopRequireDefault(PhotoshopPointer);
-
-
-
-var _PhotoshopButton2 = _interopRequireDefault(PhotoshopButton_1);
-
-
-
-var _PhotoshopPreviews2 = _interopRequireDefault(PhotoshopPreviews_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Photoshop = exports.Photoshop = function (_React$Component) {
-  _inherits(Photoshop, _React$Component);
-
-  function Photoshop(props) {
-    _classCallCheck(this, Photoshop);
-
-    var _this = _possibleConstructorReturn(this, (Photoshop.__proto__ || Object.getPrototypeOf(Photoshop)).call(this));
-
-    _this.state = {
-      currentColor: props.hex
-    };
-    return _this;
-  }
-
-  _createClass(Photoshop, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          _props$styles = _props.styles,
-          passedStyles = _props$styles === undefined ? {} : _props$styles,
-          _props$className = _props.className,
-          className = _props$className === undefined ? '' : _props$className;
-
-      var styles = (0, _reactcss2.default)((0, _merge2.default)({
-        'default': {
-          picker: {
-            background: '#DCDCDC',
-            borderRadius: '4px',
-            boxShadow: '0 0 0 1px rgba(0,0,0,.25), 0 8px 16px rgba(0,0,0,.15)',
-            boxSizing: 'initial',
-            width: '513px'
-          },
-          head: {
-            backgroundImage: 'linear-gradient(-180deg, #F0F0F0 0%, #D4D4D4 100%)',
-            borderBottom: '1px solid #B1B1B1',
-            boxShadow: 'inset 0 1px 0 0 rgba(255,255,255,.2), inset 0 -1px 0 0 rgba(0,0,0,.02)',
-            height: '23px',
-            lineHeight: '24px',
-            borderRadius: '4px 4px 0 0',
-            fontSize: '13px',
-            color: '#4D4D4D',
-            textAlign: 'center'
-          },
-          body: {
-            padding: '15px 15px 0',
-            display: 'flex'
-          },
-          saturation: {
-            width: '256px',
-            height: '256px',
-            position: 'relative',
-            border: '2px solid #B3B3B3',
-            borderBottom: '2px solid #F0F0F0',
-            overflow: 'hidden'
-          },
-          hue: {
-            position: 'relative',
-            height: '256px',
-            width: '19px',
-            marginLeft: '10px',
-            border: '2px solid #B3B3B3',
-            borderBottom: '2px solid #F0F0F0'
-          },
-          controls: {
-            width: '180px',
-            marginLeft: '10px'
-          },
-          top: {
-            display: 'flex'
-          },
-          previews: {
-            width: '60px'
-          },
-          actions: {
-            flex: '1',
-            marginLeft: '20px'
-          }
-        }
-      }, passedStyles));
-
-      return _react2.default.createElement(
-        'div',
-        { style: styles.picker, className: 'photoshop-picker ' + className },
-        _react2.default.createElement(
-          'div',
-          { style: styles.head },
-          this.props.header
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: styles.body, className: 'flexbox-fix' },
-          _react2.default.createElement(
-            'div',
-            { style: styles.saturation },
-            _react2.default.createElement(common.Saturation, {
-              hsl: this.props.hsl,
-              hsv: this.props.hsv,
-              pointer: _PhotoshopPointerCircle2.default,
-              onChange: this.props.onChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.hue },
-            _react2.default.createElement(common.Hue, {
-              direction: 'vertical',
-              hsl: this.props.hsl,
-              pointer: _PhotoshopPointer2.default,
-              onChange: this.props.onChange
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.controls },
-            _react2.default.createElement(
-              'div',
-              { style: styles.top, className: 'flexbox-fix' },
-              _react2.default.createElement(
-                'div',
-                { style: styles.previews },
-                _react2.default.createElement(_PhotoshopPreviews2.default, {
-                  rgb: this.props.rgb,
-                  currentColor: this.state.currentColor
-                })
-              ),
-              _react2.default.createElement(
-                'div',
-                { style: styles.actions },
-                _react2.default.createElement(_PhotoshopButton2.default, { label: 'OK', onClick: this.props.onAccept, active: true }),
-                _react2.default.createElement(_PhotoshopButton2.default, { label: 'Cancel', onClick: this.props.onCancel }),
-                _react2.default.createElement(_PhotoshopFields2.default, {
-                  onChange: this.props.onChange,
-                  rgb: this.props.rgb,
-                  hsv: this.props.hsv,
-                  hex: this.props.hex
-                })
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Photoshop;
-}(_react2.default.Component);
-
-Photoshop.propTypes = {
-  header: _propTypes2.default.string,
-  styles: _propTypes2.default.object
-};
-
-Photoshop.defaultProps = {
-  header: 'Color Picker',
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Photoshop);
-});
-
-var SketchFields_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SketchFields = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* eslint-disable no-param-reassign */
-
-var SketchFields = exports.SketchFields = function SketchFields(_ref) {
-  var onChange = _ref.onChange,
-      rgb = _ref.rgb,
-      hsl = _ref.hsl,
-      hex = _ref.hex,
-      disableAlpha = _ref.disableAlpha;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      fields: {
-        display: 'flex',
-        paddingTop: '4px'
-      },
-      single: {
-        flex: '1',
-        paddingLeft: '6px'
-      },
-      alpha: {
-        flex: '1',
-        paddingLeft: '6px'
-      },
-      double: {
-        flex: '2'
-      },
-      input: {
-        width: '80%',
-        padding: '4px 10% 3px',
-        border: 'none',
-        boxShadow: 'inset 0 0 0 1px #ccc',
-        fontSize: '11px'
-      },
-      label: {
-        display: 'block',
-        textAlign: 'center',
-        fontSize: '11px',
-        color: '#222',
-        paddingTop: '3px',
-        paddingBottom: '4px',
-        textTransform: 'capitalize'
-      }
-    },
-    'disableAlpha': {
-      alpha: {
-        display: 'none'
-      }
-    }
-  }, { disableAlpha: disableAlpha });
-
-  var handleChange = function handleChange(data, e) {
-    if (data.hex) {
-      _color2.default.isValidHex(data.hex) && onChange({
-        hex: data.hex,
-        source: 'hex'
-      }, e);
-    } else if (data.r || data.g || data.b) {
-      onChange({
-        r: data.r || rgb.r,
-        g: data.g || rgb.g,
-        b: data.b || rgb.b,
-        a: rgb.a,
-        source: 'rgb'
-      }, e);
-    } else if (data.a) {
-      if (data.a < 0) {
-        data.a = 0;
-      } else if (data.a > 100) {
-        data.a = 100;
-      }
-
-      data.a /= 100;
-      onChange({
-        h: hsl.h,
-        s: hsl.s,
-        l: hsl.l,
-        a: data.a,
-        source: 'rgb'
-      }, e);
-    }
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.fields, className: 'flexbox-fix' },
-    _react2.default.createElement(
-      'div',
-      { style: styles.double },
-      _react2.default.createElement(common.EditableInput, {
-        style: { input: styles.input, label: styles.label },
-        label: 'hex',
-        value: hex.replace('#', ''),
-        onChange: handleChange
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.single },
-      _react2.default.createElement(common.EditableInput, {
-        style: { input: styles.input, label: styles.label },
-        label: 'r',
-        value: rgb.r,
-        onChange: handleChange,
-        dragLabel: 'true',
-        dragMax: '255'
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.single },
-      _react2.default.createElement(common.EditableInput, {
-        style: { input: styles.input, label: styles.label },
-        label: 'g',
-        value: rgb.g,
-        onChange: handleChange,
-        dragLabel: 'true',
-        dragMax: '255'
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.single },
-      _react2.default.createElement(common.EditableInput, {
-        style: { input: styles.input, label: styles.label },
-        label: 'b',
-        value: rgb.b,
-        onChange: handleChange,
-        dragLabel: 'true',
-        dragMax: '255'
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.alpha },
-      _react2.default.createElement(common.EditableInput, {
-        style: { input: styles.input, label: styles.label },
-        label: 'a',
-        value: Math.round(rgb.a * 100),
-        onChange: handleChange,
-        dragLabel: 'true',
-        dragMax: '100'
-      })
-    )
-  );
-};
-
-exports.default = SketchFields;
-});
-
-var SketchPresetColors_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SketchPresetColors = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SketchPresetColors = exports.SketchPresetColors = function SketchPresetColors(_ref) {
-  var colors = _ref.colors,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
-      onSwatchHover = _ref.onSwatchHover;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      colors: {
-        margin: '0 -10px',
-        padding: '10px 0 0 10px',
-        borderTop: '1px solid #eee',
-        display: 'flex',
-        flexWrap: 'wrap',
-        position: 'relative'
-      },
-      swatchWrap: {
-        width: '16px',
-        height: '16px',
-        margin: '0 10px 10px 0'
-      },
-      swatch: {
-        borderRadius: '3px',
-        boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15)'
-      }
-    },
-    'no-presets': {
-      colors: {
-        display: 'none'
-      }
-    }
-  }, {
-    'no-presets': !colors || !colors.length
-  });
-
-  var handleClick = function handleClick(hex, e) {
-    onClick({
-      hex: hex,
-      source: 'hex'
-    }, e);
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.colors, className: 'flexbox-fix' },
-    colors.map(function (colorObjOrString) {
-      var c = typeof colorObjOrString === 'string' ? { color: colorObjOrString } : colorObjOrString;
-      var key = '' + c.color + (c.title || '');
-      return _react2.default.createElement(
-        'div',
-        { key: key, style: styles.swatchWrap },
-        _react2.default.createElement(common.Swatch, _extends({}, c, {
-          style: styles.swatch,
-          onClick: handleClick,
-          onHover: onSwatchHover,
-          focusStyle: {
-            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ' + c.color
-          }
-        }))
-      );
-    })
-  );
-};
-
-SketchPresetColors.propTypes = {
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
-    color: _propTypes2.default.string,
-    title: _propTypes2.default.string
-  })])).isRequired
-};
-
-exports.default = SketchPresetColors;
-});
-
-var Sketch_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Sketch = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-
-
-var _SketchFields2 = _interopRequireDefault(SketchFields_1);
-
-
-
-var _SketchPresetColors2 = _interopRequireDefault(SketchPresetColors_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Sketch = exports.Sketch = function Sketch(_ref) {
-  var width = _ref.width,
-      rgb = _ref.rgb,
-      hex = _ref.hex,
-      hsv = _ref.hsv,
-      hsl = _ref.hsl,
-      onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      disableAlpha = _ref.disableAlpha,
-      presetColors = _ref.presetColors,
-      renderers = _ref.renderers,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': _extends({
-      picker: {
-        width: width,
-        padding: '10px 10px 0',
-        boxSizing: 'initial',
-        background: '#fff',
-        borderRadius: '4px',
-        boxShadow: '0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15)'
-      },
-      saturation: {
-        width: '100%',
-        paddingBottom: '75%',
-        position: 'relative',
-        overflow: 'hidden'
-      },
-      Saturation: {
-        radius: '3px',
-        shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
-      },
-      controls: {
-        display: 'flex'
-      },
-      sliders: {
-        padding: '4px 0',
-        flex: '1'
-      },
-      color: {
-        width: '24px',
-        height: '24px',
-        position: 'relative',
-        marginTop: '4px',
-        marginLeft: '4px',
-        borderRadius: '3px'
-      },
-      activeColor: {
-        absolute: '0px 0px 0px 0px',
-        borderRadius: '2px',
-        background: 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + rgb.a + ')',
-        boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
-      },
-      hue: {
-        position: 'relative',
-        height: '10px',
-        overflow: 'hidden'
-      },
-      Hue: {
-        radius: '2px',
-        shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
-      },
-
-      alpha: {
-        position: 'relative',
-        height: '10px',
-        marginTop: '4px',
-        overflow: 'hidden'
-      },
-      Alpha: {
-        radius: '2px',
-        shadow: 'inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)'
-      }
-    }, passedStyles),
-    'disableAlpha': {
-      color: {
-        height: '10px'
-      },
-      hue: {
-        height: '10px'
-      },
-      alpha: {
-        display: 'none'
-      }
-    }
-  }, passedStyles), { disableAlpha: disableAlpha });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.picker, className: 'sketch-picker ' + className },
-    _react2.default.createElement(
-      'div',
-      { style: styles.saturation },
-      _react2.default.createElement(common.Saturation, {
-        style: styles.Saturation,
-        hsl: hsl,
-        hsv: hsv,
-        onChange: onChange
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.controls, className: 'flexbox-fix' },
-      _react2.default.createElement(
-        'div',
-        { style: styles.sliders },
-        _react2.default.createElement(
-          'div',
-          { style: styles.hue },
-          _react2.default.createElement(common.Hue, {
-            style: styles.Hue,
-            hsl: hsl,
-            onChange: onChange
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: styles.alpha },
-          _react2.default.createElement(common.Alpha, {
-            style: styles.Alpha,
-            rgb: rgb,
-            hsl: hsl,
-            renderers: renderers,
-            onChange: onChange
-          })
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { style: styles.color },
-        _react2.default.createElement(common.Checkboard, null),
-        _react2.default.createElement('div', { style: styles.activeColor })
-      )
-    ),
-    _react2.default.createElement(_SketchFields2.default, {
-      rgb: rgb,
-      hsl: hsl,
-      hex: hex,
-      onChange: onChange,
-      disableAlpha: disableAlpha
-    }),
-    _react2.default.createElement(_SketchPresetColors2.default, {
-      colors: presetColors,
-      onClick: onChange,
-      onSwatchHover: onSwatchHover
-    })
-  );
-};
-
-Sketch.propTypes = {
-  disableAlpha: _propTypes2.default.bool,
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  styles: _propTypes2.default.object
-};
-
-Sketch.defaultProps = {
-  disableAlpha: false,
-  width: 200,
-  styles: {},
-  presetColors: ['#D0021B', '#F5A623', '#F8E71C', '#8B572A', '#7ED321', '#417505', '#BD10E0', '#9013FE', '#4A90E2', '#50E3C2', '#B8E986', '#000000', '#4A4A4A', '#9B9B9B', '#FFFFFF']
-};
-
-exports.default = (0, common.ColorWrap)(Sketch);
-});
-
-var SliderSwatch_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderSwatch = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderSwatch = exports.SliderSwatch = function SliderSwatch(_ref) {
-  var hsl = _ref.hsl,
-      offset = _ref.offset,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
-      active = _ref.active,
-      first = _ref.first,
-      last = _ref.last;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      swatch: {
-        height: '12px',
-        background: 'hsl(' + hsl.h + ', 50%, ' + offset * 100 + '%)',
-        cursor: 'pointer'
-      }
-    },
-    'first': {
-      swatch: {
-        borderRadius: '2px 0 0 2px'
-      }
-    },
-    'last': {
-      swatch: {
-        borderRadius: '0 2px 2px 0'
-      }
-    },
-    'active': {
-      swatch: {
-        transform: 'scaleY(1.8)',
-        borderRadius: '3.6px/2px'
-      }
-    }
-  }, { active: active, first: first, last: last });
-
-  var handleClick = function handleClick(e) {
-    return onClick({
-      h: hsl.h,
-      s: 0.5,
-      l: offset,
-      source: 'hsl'
-    }, e);
-  };
-
-  return _react2.default.createElement('div', { style: styles.swatch, onClick: handleClick });
-};
-
-exports.default = SliderSwatch;
-});
-
-var SliderSwatches_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderSwatches = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _SliderSwatch2 = _interopRequireDefault(SliderSwatch_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderSwatches = exports.SliderSwatches = function SliderSwatches(_ref) {
-  var onClick = _ref.onClick,
-      hsl = _ref.hsl;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      swatches: {
-        marginTop: '20px'
-      },
-      swatch: {
-        boxSizing: 'border-box',
-        width: '20%',
-        paddingRight: '1px',
-        float: 'left'
-      },
-      clear: {
-        clear: 'both'
-      }
-    }
-  });
-
-  // Acceptible difference in floating point equality
-  var epsilon = 0.1;
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.swatches },
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
-        hsl: hsl,
-        offset: '.80',
-        active: Math.abs(hsl.l - 0.80) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
-        onClick: onClick,
-        first: true
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
-        hsl: hsl,
-        offset: '.65',
-        active: Math.abs(hsl.l - 0.65) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
-        onClick: onClick
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
-        hsl: hsl,
-        offset: '.50',
-        active: Math.abs(hsl.l - 0.50) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
-        onClick: onClick
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
-        hsl: hsl,
-        offset: '.35',
-        active: Math.abs(hsl.l - 0.35) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
-        onClick: onClick
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatch },
-      _react2.default.createElement(_SliderSwatch2.default, {
-        hsl: hsl,
-        offset: '.20',
-        active: Math.abs(hsl.l - 0.20) < epsilon && Math.abs(hsl.s - 0.50) < epsilon,
-        onClick: onClick,
-        last: true
-      })
-    ),
-    _react2.default.createElement('div', { style: styles.clear })
-  );
-};
-
-exports.default = SliderSwatches;
-});
-
-var SliderPointer_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SliderPointer = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SliderPointer = exports.SliderPointer = function SliderPointer() {
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      picker: {
-        width: '14px',
-        height: '14px',
-        borderRadius: '6px',
-        transform: 'translate(-7px, -1px)',
-        backgroundColor: 'rgb(248, 248, 248)',
-        boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)'
-      }
-    }
-  });
-
-  return _react2.default.createElement('div', { style: styles.picker });
-};
-
-exports.default = SliderPointer;
-});
-
-var Slider_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Slider = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-
-
-var _SliderSwatches2 = _interopRequireDefault(SliderSwatches_1);
-
-
-
-var _SliderPointer2 = _interopRequireDefault(SliderPointer_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Slider = exports.Slider = function Slider(_ref) {
-  var hsl = _ref.hsl,
-      onChange = _ref.onChange,
-      pointer = _ref.pointer,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      hue: {
-        height: '12px',
-        position: 'relative'
-      },
-      Hue: {
-        radius: '2px'
-      }
-    }
-  }, passedStyles));
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.wrap || {}, className: 'slider-picker ' + className },
-    _react2.default.createElement(
-      'div',
-      { style: styles.hue },
-      _react2.default.createElement(common.Hue, {
-        style: styles.Hue,
-        hsl: hsl,
-        pointer: pointer,
-        onChange: onChange
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: styles.swatches },
-      _react2.default.createElement(_SliderSwatches2.default, { hsl: hsl, onClick: onChange })
-    )
-  );
-};
-
-Slider.propTypes = {
-  styles: _propTypes2.default.object
-};
-Slider.defaultProps = {
-  pointer: _SliderPointer2.default,
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Slider);
-});
-
-var CheckIcon = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var DEFAULT_SIZE = 24;
-
-exports.default = function (_ref) {
-  var _ref$fill = _ref.fill,
-      fill = _ref$fill === undefined ? 'currentColor' : _ref$fill,
-      _ref$width = _ref.width,
-      width = _ref$width === undefined ? DEFAULT_SIZE : _ref$width,
-      _ref$height = _ref.height,
-      height = _ref$height === undefined ? DEFAULT_SIZE : _ref$height,
-      _ref$style = _ref.style,
-      style = _ref$style === undefined ? {} : _ref$style,
-      props = _objectWithoutProperties(_ref, ['fill', 'width', 'height', 'style']);
-
-  return _react2.default.createElement(
-    'svg',
-    _extends({
-      viewBox: '0 0 ' + DEFAULT_SIZE + ' ' + DEFAULT_SIZE,
-      style: _extends({ fill: fill, width: width, height: height }, style)
-    }, props),
-    _react2.default.createElement('path', { d: 'M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z' })
-  );
-};
-});
-
-var SwatchesColor_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SwatchesColor = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-
-
-var _CheckIcon2 = _interopRequireDefault(CheckIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SwatchesColor = exports.SwatchesColor = function SwatchesColor(_ref) {
-  var color = _ref.color,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick,
-      onSwatchHover = _ref.onSwatchHover,
-      first = _ref.first,
-      last = _ref.last,
-      active = _ref.active;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      color: {
-        width: '40px',
-        height: '24px',
-        cursor: 'pointer',
-        background: color,
-        marginBottom: '1px'
-      },
-      check: {
-        color: _color2.default.getContrastingColor(color),
-        marginLeft: '8px',
-        display: 'none'
-      }
-    },
-    'first': {
-      color: {
-        overflow: 'hidden',
-        borderRadius: '2px 2px 0 0'
-      }
-    },
-    'last': {
-      color: {
-        overflow: 'hidden',
-        borderRadius: '0 0 2px 2px'
-      }
-    },
-    'active': {
-      check: {
-        display: 'block'
-      }
-    },
-    'color-#FFFFFF': {
-      color: {
-        boxShadow: 'inset 0 0 0 1px #ddd'
-      },
-      check: {
-        color: '#333'
-      }
-    },
-    'transparent': {
-      check: {
-        color: '#333'
-      }
-    }
-  }, {
-    first: first,
-    last: last,
-    active: active,
-    'color-#FFFFFF': color === '#FFFFFF',
-    'transparent': color === 'transparent'
-  });
-
-  return _react2.default.createElement(
-    common.Swatch,
-    {
-      color: color,
-      style: styles.color,
-      onClick: onClick,
-      onHover: onSwatchHover,
-      focusStyle: { boxShadow: '0 0 4px ' + color }
-    },
-    _react2.default.createElement(
-      'div',
-      { style: styles.check },
-      _react2.default.createElement(_CheckIcon2.default, null)
-    )
-  );
-};
-
-exports.default = SwatchesColor;
-});
-
-var SwatchesGroup_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SwatchesGroup = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-var _SwatchesColor2 = _interopRequireDefault(SwatchesColor_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SwatchesGroup = exports.SwatchesGroup = function SwatchesGroup(_ref) {
-  var onClick = _ref.onClick,
-      onSwatchHover = _ref.onSwatchHover,
-      group = _ref.group,
-      active = _ref.active;
-
-  var styles = (0, _reactcss2.default)({
-    'default': {
-      group: {
-        paddingBottom: '10px',
-        width: '40px',
-        float: 'left',
-        marginRight: '10px'
-      }
-    }
-  });
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.group },
-    (0, _map2.default)(group, function (color, i) {
-      return _react2.default.createElement(_SwatchesColor2.default, {
-        key: color,
-        color: color,
-        active: color.toLowerCase() === active,
-        first: i === 0,
-        last: i === group.length - 1,
-        onClick: onClick,
-        onSwatchHover: onSwatchHover
-      });
-    })
-  );
-};
-
-exports.default = SwatchesGroup;
-});
-
-var Swatches_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Swatches = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-var material = _interopRequireWildcard(_materialColors);
-
-
-
-
-
-var _SwatchesGroup2 = _interopRequireDefault(SwatchesGroup_1);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Swatches = exports.Swatches = function Swatches(_ref) {
-  var width = _ref.width,
-      height = _ref.height,
-      onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      colors = _ref.colors,
-      hex = _ref.hex,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      picker: {
-        width: width,
-        height: height
-      },
-      overflow: {
-        height: height,
-        overflowY: 'scroll'
-      },
-      body: {
-        padding: '16px 0 6px 16px'
-      },
-      clear: {
-        clear: 'both'
-      }
-    }
-  }, passedStyles));
-
-  var handleChange = function handleChange(data, e) {
-    return onChange({ hex: data, source: 'hex' }, e);
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.picker, className: 'swatches-picker ' + className },
-    _react2.default.createElement(
-      common.Raised,
-      null,
-      _react2.default.createElement(
-        'div',
-        { style: styles.overflow },
-        _react2.default.createElement(
-          'div',
-          { style: styles.body },
-          (0, _map2.default)(colors, function (group) {
-            return _react2.default.createElement(_SwatchesGroup2.default, {
-              key: group.toString(),
-              group: group,
-              active: hex,
-              onClick: handleChange,
-              onSwatchHover: onSwatchHover
-            });
-          }),
-          _react2.default.createElement('div', { style: styles.clear })
-        )
-      )
-    )
-  );
-};
-
-Swatches.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.string)),
-  styles: _propTypes2.default.object
-
-  /* eslint-disable max-len */
-};Swatches.defaultProps = {
-  width: 320,
-  height: 240,
-  colors: [[material.red['900'], material.red['700'], material.red['500'], material.red['300'], material.red['100']], [material.pink['900'], material.pink['700'], material.pink['500'], material.pink['300'], material.pink['100']], [material.purple['900'], material.purple['700'], material.purple['500'], material.purple['300'], material.purple['100']], [material.deepPurple['900'], material.deepPurple['700'], material.deepPurple['500'], material.deepPurple['300'], material.deepPurple['100']], [material.indigo['900'], material.indigo['700'], material.indigo['500'], material.indigo['300'], material.indigo['100']], [material.blue['900'], material.blue['700'], material.blue['500'], material.blue['300'], material.blue['100']], [material.lightBlue['900'], material.lightBlue['700'], material.lightBlue['500'], material.lightBlue['300'], material.lightBlue['100']], [material.cyan['900'], material.cyan['700'], material.cyan['500'], material.cyan['300'], material.cyan['100']], [material.teal['900'], material.teal['700'], material.teal['500'], material.teal['300'], material.teal['100']], ['#194D33', material.green['700'], material.green['500'], material.green['300'], material.green['100']], [material.lightGreen['900'], material.lightGreen['700'], material.lightGreen['500'], material.lightGreen['300'], material.lightGreen['100']], [material.lime['900'], material.lime['700'], material.lime['500'], material.lime['300'], material.lime['100']], [material.yellow['900'], material.yellow['700'], material.yellow['500'], material.yellow['300'], material.yellow['100']], [material.amber['900'], material.amber['700'], material.amber['500'], material.amber['300'], material.amber['100']], [material.orange['900'], material.orange['700'], material.orange['500'], material.orange['300'], material.orange['100']], [material.deepOrange['900'], material.deepOrange['700'], material.deepOrange['500'], material.deepOrange['300'], material.deepOrange['100']], [material.brown['900'], material.brown['700'], material.brown['500'], material.brown['300'], material.brown['100']], [material.blueGrey['900'], material.blueGrey['700'], material.blueGrey['500'], material.blueGrey['300'], material.blueGrey['100']], ['#000000', '#525252', '#969696', '#D9D9D9', '#FFFFFF']],
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Swatches);
-});
-
-var Twitter_1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Twitter = undefined;
-
-
-
-var _react2 = _interopRequireDefault(React__default['default']);
-
-
-
-var _propTypes2 = _interopRequireDefault(propTypes);
-
-
-
-var _reactcss2 = _interopRequireDefault(lib);
-
-
-
-var _map2 = _interopRequireDefault(map__default['default']);
-
-
-
-var _merge2 = _interopRequireDefault(merge__default['default']);
-
-
-
-var _color2 = _interopRequireDefault(color);
-
-
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Twitter = exports.Twitter = function Twitter(_ref) {
-  var onChange = _ref.onChange,
-      onSwatchHover = _ref.onSwatchHover,
-      hex = _ref.hex,
-      colors = _ref.colors,
-      width = _ref.width,
-      triangle = _ref.triangle,
-      _ref$styles = _ref.styles,
-      passedStyles = _ref$styles === undefined ? {} : _ref$styles,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className;
-
-  var styles = (0, _reactcss2.default)((0, _merge2.default)({
-    'default': {
-      card: {
-        width: width,
-        background: '#fff',
-        border: '0 solid rgba(0,0,0,0.25)',
-        boxShadow: '0 1px 4px rgba(0,0,0,0.25)',
-        borderRadius: '4px',
-        position: 'relative'
-      },
-      body: {
-        padding: '15px 9px 9px 15px'
-      },
-      label: {
-        fontSize: '18px',
-        color: '#fff'
-      },
-      triangle: {
-        width: '0px',
-        height: '0px',
-        borderStyle: 'solid',
-        borderWidth: '0 9px 10px 9px',
-        borderColor: 'transparent transparent #fff transparent',
-        position: 'absolute'
-      },
-      triangleShadow: {
-        width: '0px',
-        height: '0px',
-        borderStyle: 'solid',
-        borderWidth: '0 9px 10px 9px',
-        borderColor: 'transparent transparent rgba(0,0,0,.1) transparent',
-        position: 'absolute'
-      },
-      hash: {
-        background: '#F0F0F0',
-        height: '30px',
-        width: '30px',
-        borderRadius: '4px 0 0 4px',
-        float: 'left',
-        color: '#98A1A4',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      },
-      input: {
-        width: '100px',
-        fontSize: '14px',
-        color: '#666',
-        border: '0px',
-        outline: 'none',
-        height: '28px',
-        boxShadow: 'inset 0 0 0 1px #F0F0F0',
-        boxSizing: 'content-box',
-        borderRadius: '0 4px 4px 0',
-        float: 'left',
-        paddingLeft: '8px'
-      },
-      swatch: {
-        width: '30px',
-        height: '30px',
-        float: 'left',
-        borderRadius: '4px',
-        margin: '0 6px 6px 0'
-      },
-      clear: {
-        clear: 'both'
-      }
-    },
-    'hide-triangle': {
-      triangle: {
-        display: 'none'
-      },
-      triangleShadow: {
-        display: 'none'
-      }
-    },
-    'top-left-triangle': {
-      triangle: {
-        top: '-10px',
-        left: '12px'
-      },
-      triangleShadow: {
-        top: '-11px',
-        left: '12px'
-      }
-    },
-    'top-right-triangle': {
-      triangle: {
-        top: '-10px',
-        right: '12px'
-      },
-      triangleShadow: {
-        top: '-11px',
-        right: '12px'
-      }
-    }
-  }, passedStyles), {
-    'hide-triangle': triangle === 'hide',
-    'top-left-triangle': triangle === 'top-left',
-    'top-right-triangle': triangle === 'top-right'
-  });
-
-  var handleChange = function handleChange(hexcode, e) {
-    _color2.default.isValidHex(hexcode) && onChange({
-      hex: hexcode,
-      source: 'hex'
-    }, e);
-  };
-
-  return _react2.default.createElement(
-    'div',
-    { style: styles.card, className: 'twitter-picker ' + className },
-    _react2.default.createElement('div', { style: styles.triangleShadow }),
-    _react2.default.createElement('div', { style: styles.triangle }),
-    _react2.default.createElement(
-      'div',
-      { style: styles.body },
-      (0, _map2.default)(colors, function (c, i) {
-        return _react2.default.createElement(common.Swatch, {
-          key: i,
-          color: c,
-          hex: c,
-          style: styles.swatch,
-          onClick: handleChange,
-          onHover: onSwatchHover,
-          focusStyle: {
-            boxShadow: '0 0 4px ' + c
-          }
-        });
-      }),
-      _react2.default.createElement(
-        'div',
-        { style: styles.hash },
-        '#'
-      ),
-      _react2.default.createElement(common.EditableInput, {
-        label: null,
-        style: { input: styles.input },
-        value: hex.replace('#', ''),
-        onChange: handleChange
-      }),
-      _react2.default.createElement('div', { style: styles.clear })
-    )
-  );
-};
-
-Twitter.propTypes = {
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  triangle: _propTypes2.default.oneOf(['hide', 'top-left', 'top-right']),
-  colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
-  styles: _propTypes2.default.object
-};
-
-Twitter.defaultProps = {
-  width: 276,
-  colors: ['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF'],
-  triangle: 'top-left',
-  styles: {}
-};
-
-exports.default = (0, common.ColorWrap)(Twitter);
-});
-
-var lib$1 = createCommonjsModule(function (module, exports) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CustomPicker = exports.TwitterPicker = exports.SwatchesPicker = exports.SliderPicker = exports.SketchPicker = exports.PhotoshopPicker = exports.MaterialPicker = exports.HuePicker = exports.GithubPicker = exports.CompactPicker = exports.ChromePicker = exports.default = exports.CirclePicker = exports.BlockPicker = exports.AlphaPicker = undefined;
-
-
-
-Object.defineProperty(exports, 'AlphaPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Alpha).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'BlockPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Block_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'CirclePicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Circle_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'ChromePicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Chrome_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'CompactPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Compact_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'GithubPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Github_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'HuePicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Hue).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'MaterialPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Material_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'PhotoshopPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Photoshop_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'SketchPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Sketch_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'SliderPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Slider_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'SwatchesPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Swatches_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'TwitterPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(Twitter_1).default;
-  }
-});
-
-
-
-Object.defineProperty(exports, 'CustomPicker', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(ColorWrap_1).default;
-  }
-});
-
-var _Chrome2 = _interopRequireDefault(Chrome_1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Chrome2.default;
-});
-
-var index$1 = /*@__PURE__*/unwrapExports(lib$1);
-
-var __jsx$2e = React__default['default'].createElement;
+var __jsx$2h = React__default['default'].createElement;
 var ColorPicker = function ColorPicker(_ref) {
   var type = _ref.type,
       onChangeComplete = _ref.onChangeComplete,
@@ -31213,27 +24174,27 @@ var ColorPicker = function ColorPicker(_ref) {
 
   switch (type) {
     case 'circle':
-      return __jsx$2e(index$1.CirclePicker, _extends({
+      return __jsx$2h(reactColor.CirclePicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'sketch':
-      return __jsx$2e(index$1.SketchPicker, _extends({
+      return __jsx$2h(reactColor.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'github':
-      return __jsx$2e(index$1.GithubPicker, _extends({
+      return __jsx$2h(reactColor.GithubPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'twitter':
-      return __jsx$2e(index$1.TwitterPicker, _extends({
+      return __jsx$2h(reactColor.TwitterPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     default:
-      return __jsx$2e(index$1.SketchPicker, _extends({
+      return __jsx$2h(reactColor.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
   }
@@ -31248,7 +24209,7 @@ ColorPicker.propTypes = {
   width: propTypes.string
 };
 
-var __jsx$2f = React__default['default'].createElement;
+var __jsx$2i = React__default['default'].createElement;
 var EmailChange = function EmailChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -31266,32 +24227,32 @@ var EmailChange = function EmailChange(_ref) {
   var submit = function submit(data) {};
 
   var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return __jsx$2f(React__default['default'].Fragment, null, __jsx$2f(PageHeading, {
+  return __jsx$2i(React__default['default'].Fragment, null, __jsx$2i(PageHeading, {
     center: true,
     heading: "Email Change",
     divider: false
-  }), error && __jsx$2f(Alert, {
+  }), error && __jsx$2i(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2f(Form, {
+  }), __jsx$2i(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2f(FormLabel, {
+  }, __jsx$2i(FormLabel, {
     label: "Email"
-  }, __jsx$2f(FormField, {
+  }, __jsx$2i(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2f(Button, {
+  })), __jsx$2i(Button, {
     block: true,
     content: "Submit",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2f("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
+  }), __jsx$2i("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
 };
 EmailChange.propTypes = {
   showPlaceholder: propTypes.bool
@@ -31313,7 +24274,7 @@ var BlockType = {
   LI: 'unordered-list-item'
 };
 
-var __jsx$2g = React__default['default'].createElement;
+var __jsx$2j = React__default['default'].createElement;
 var DraftJs = function DraftJs(_ref) {
   var control = _ref.control,
       name = _ref.name,
@@ -31348,31 +24309,31 @@ var DraftJs = function DraftJs(_ref) {
   }; // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
 
 
-  return __jsx$2g(React__default['default'].Fragment, null, __jsx$2g("input", {
+  return __jsx$2j(React__default['default'].Fragment, null, __jsx$2j("input", {
     type: "button",
     value: "B",
     "data-style": "BOLD",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2g("input", {
+  }), __jsx$2j("input", {
     type: "button",
     value: "I",
     "data-style": "ITALIC",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2g("input", {
+  }), __jsx$2j("input", {
     type: "button",
     value: "S",
     "data-style": "STRIKETHROUGH",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2g("input", {
+  }), __jsx$2j("input", {
     type: "button",
     value: "U",
     "data-style": "UNDERLINE",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2g(reactHookForm.Controller, {
+  }), __jsx$2j(reactHookForm.Controller, {
     name: name,
     control: control,
     render: function render(props) {
-      return __jsx$2g(draftJs.Editor, {
+      return __jsx$2j(draftJs.Editor, {
         editorState: editorState,
         blockStyleFn: myBlockStyleFn,
         handleKeyCommand: handleKeyCommand,
@@ -31391,14 +24352,14 @@ function myBlockStyleFn(contentBlock) {
   }
 }
 
-var __jsx$2h = React__default['default'].createElement;
+var __jsx$2k = React__default['default'].createElement;
 var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       fixed = _ref.fixed;
 
   var renderColumns = function renderColumns() {
     return columns.map(function (column, index) {
-      return __jsx$2h(Column, _extends({
+      return __jsx$2k(Column, _extends({
         align: column.align,
         key: index,
         offset: column.offset
@@ -31409,7 +24370,7 @@ var Footer = function Footer(_ref) {
 
         switch (key) {
           case 'header':
-            return __jsx$2h(StyledHeading$3, {
+            return __jsx$2k(StyledHeading$3, {
               align: value.align,
               content: value.content,
               key: "".concat(value.content).concat(index).concat(i),
@@ -31433,7 +24394,7 @@ var Footer = function Footer(_ref) {
     var align = _ref4.align,
         direction = _ref4.direction,
         items = _ref4.items;
-    return __jsx$2h(StyledList$2, {
+    return __jsx$2k(StyledList$2, {
       align: align,
       direction: direction,
       key: "".concat(items[0]).concat(index),
@@ -31443,12 +24404,12 @@ var Footer = function Footer(_ref) {
           id = _ref5.id,
           name = _ref5.name,
           to = _ref5.to;
-      return __jsx$2h(StyledListItem$1, {
+      return __jsx$2k(StyledListItem$1, {
         key: id
-      }, __jsx$2h(Link, {
+      }, __jsx$2k(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2h(StyledIcon$6, {
+      }, icon && __jsx$2k(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -31459,18 +24420,18 @@ var Footer = function Footer(_ref) {
   var renderText = function renderText(_ref6, index) {
     var align = _ref6.align,
         items = _ref6.items;
-    return __jsx$2h(React.Fragment, {
+    return __jsx$2k(React.Fragment, {
       key: index
     }, items === null || items === void 0 ? void 0 : items.map(function (_ref7, i) {
       var content = _ref7.content,
           icon = _ref7.icon;
-      return __jsx$2h(React.Fragment, {
+      return __jsx$2k(React.Fragment, {
         key: i
-      }, icon && __jsx$2h(StyledIcon$6, {
+      }, icon && __jsx$2k(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
-      }), __jsx$2h(StyledText$5, {
+      }), __jsx$2k(StyledText$5, {
         align: align,
         dangerouslySetInnerHTML: {
           __html: content
@@ -31479,10 +24440,10 @@ var Footer = function Footer(_ref) {
     }));
   };
 
-  return __jsx$2h(StyledFooter$2, {
+  return __jsx$2k(StyledFooter$2, {
     "data-cy": "footer",
     fixed: fixed
-  }, __jsx$2h(Container, null, __jsx$2h(Row, null, renderColumns())));
+  }, __jsx$2k(Container, null, __jsx$2k(Row, null, renderColumns())));
 };
 var StyledFooter$2 = styled__default['default'].div.withConfig({
   displayName: "footer__StyledFooter",
@@ -31572,42 +24533,42 @@ var ForgotDetailsSchema = yup$1.object().shape({
   email: yup$1.string().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
 });
 
-var __jsx$2i = React__default['default'].createElement;
+var __jsx$2l = React__default['default'].createElement;
 var ForgotDetails = function ForgotDetails(_ref) {
   var pathLogIn = _ref.pathLogIn,
       showPlaceholder = _ref.showPlaceholder,
       submit = _ref.submit;
 
   var _useForm = useForm({
-    validationSchema: ForgotDetailsSchema
+    resolver: yupResolver(ForgotDetailsSchema)
   }),
       errors = _useForm.errors,
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2i(React__default['default'].Fragment, null, __jsx$2i(PageHeading, {
+  return __jsx$2l(React__default['default'].Fragment, null, __jsx$2l(PageHeading, {
     center: true,
-    heading: "Forgot Details",
-    divider: false
-  }), __jsx$2i(Form, {
+    divider: false,
+    heading: "Forgot Details"
+  }), __jsx$2l(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2i(FormLabel, {
+  }, __jsx$2l(FormLabel, {
     label: "Email"
-  }, __jsx$2i(FormField, {
+  }, __jsx$2l(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     register: register
-  })), __jsx$2i(Button, {
+  })), __jsx$2l(Button, {
     block: true,
     content: "Send reset link",
     size: "lg",
     type: "submit"
-  }), __jsx$2i(Link, {
+  }), __jsx$2l(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2i(StyledLink$8, null, "Back to Log In"))));
+  }, __jsx$2l(StyledLink$8, null, "Back to Log In"))));
 };
 var StyledLink$8 = styled__default['default'].span.withConfig({
   displayName: "forgotDetails__StyledLink",
@@ -31630,7 +24591,7 @@ var ForgotDetailsResetSchema = yup$1.object().shape({
   password: yup$1.string().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
 });
 
-var __jsx$2j = React__default['default'].createElement;
+var __jsx$2m = React__default['default'].createElement;
 var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
   var _errors$password;
 
@@ -31644,31 +24605,31 @@ var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2j(React__default['default'].Fragment, null, __jsx$2j(PageHeading, {
+  return __jsx$2m(React__default['default'].Fragment, null, __jsx$2m(PageHeading, {
     center: true,
     heading: "Set New Password",
     divider: false
-  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2j(Alert, {
+  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2m(Alert, {
     content: errors.password.message,
     context: "warning"
-  }), __jsx$2j(Form, {
+  }), __jsx$2m(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2j(FormLabel, {
+  }, __jsx$2m(FormLabel, {
     label: "Password"
-  }, __jsx$2j(FormField, {
+  }, __jsx$2m(FormField, {
     errors: errors,
     name: "password",
     register: register,
     type: "password"
-  })), __jsx$2j(Button, {
+  })), __jsx$2m(Button, {
     block: true,
     content: "Submit",
     size: "lg",
     type: "submit"
-  }), __jsx$2j(Link, {
+  }), __jsx$2m(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2j(StyledLink$9, null, "Back to Log In"))));
+  }, __jsx$2m(StyledLink$9, null, "Back to Log In"))));
 };
 var StyledLink$9 = styled__default['default'].span.withConfig({
   displayName: "forgotDetailsReset__StyledLink",
@@ -31682,7 +24643,7 @@ ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 };
 
-var __jsx$2k = React__default['default'].createElement;
+var __jsx$2n = React__default['default'].createElement;
 var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var Login = function Login(_ref) {
   var blockSubmitButton = _ref.blockSubmitButton,
@@ -31737,41 +24698,41 @@ var Login = function Login(_ref) {
   // }
 
 
-  return __jsx$2k(React__default['default'].Fragment, null, __jsx$2k(PageHeading, {
+  return __jsx$2n(React__default['default'].Fragment, null, __jsx$2n(PageHeading, {
     center: true,
     heading: heading,
     divider: false
-  }), error && __jsx$2k(Alert, {
+  }), error && __jsx$2n(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2k(Form, {
+  }), __jsx$2n(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2k(FormLabel, {
+  }, __jsx$2n(FormLabel, {
     label: "Email"
-  }, __jsx$2k(FormField, {
+  }, __jsx$2n(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2k(FormLabel, {
+  })), __jsx$2n(FormLabel, {
     label: "Password"
-  }, __jsx$2k(FormField, {
+  }, __jsx$2n(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     register: register,
     type: showPass ? 'text' : 'password'
-  })), showPassword && __jsx$2k(ShowPassword, {
+  })), showPassword && __jsx$2n(ShowPassword, {
     onClick: function onClick() {
       return setShowPass(function (prev) {
         return !prev;
       });
     }
-  }, __jsx$2k("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2k("div", {
+  }, __jsx$2n("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2n("div", {
     className: "text-right"
-  }, __jsx$2k(Button, {
+  }, __jsx$2n(Button, {
     align: "right",
     block: blockSubmitButton,
     content: "Log in",
@@ -31779,11 +24740,11 @@ var Login = function Login(_ref) {
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), forgotPassword && __jsx$2k(ForgotPasswordWrapper, null, __jsx$2k(Link, {
+  }), forgotPassword && __jsx$2n(ForgotPasswordWrapper, null, __jsx$2n(Link, {
     to: pathForgot
-  }, "Forgot password?")))), pathSignUp && __jsx$2k(React__default['default'].Fragment, null, __jsx$2k("p", {
+  }, "Forgot password?")))), pathSignUp && __jsx$2n(React__default['default'].Fragment, null, __jsx$2n("p", {
     className: "text-center"
-  }, "Don't have an account? ", __jsx$2k(Link, {
+  }, "Don't have an account? ", __jsx$2n(Link, {
     to: pathSignUp
   }, "Apply now!"))));
 };
@@ -31816,22 +24777,22 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2l = React__default['default'].createElement;
+var __jsx$2o = React__default['default'].createElement;
 var Message = function Message(_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  return __jsx$2l(Row, {
+  return __jsx$2o(Row, {
     style: {
       position: 'relative'
     }
-  }, type === 'out' && __jsx$2l(Column, {
+  }, type === 'out' && __jsx$2o(Column, {
     sm: 1
-  }, "\xA0"), __jsx$2l(Tail, {
+  }, "\xA0"), __jsx$2o(Tail, {
     type: type
-  }), __jsx$2l(MessageBase, _extends({
+  }), __jsx$2o(MessageBase, _extends({
     prevType: prevType
   }, message, props)));
 };
@@ -31840,9 +24801,10 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2m = React__default['default'].createElement;
+var __jsx$2p = React__default['default'].createElement;
 var MessageIcon = function MessageIcon(_ref) {
-  var icon = _ref.icon;
+  var icon = _ref.icon,
+      prefix = _ref.prefix;
   var useIcon = '';
 
   switch (icon) {
@@ -31859,10 +24821,10 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2m(StyledIcon$7, {
+  return __jsx$2p(StyledIcon$7, {
     fixedWidth: false,
     icon: useIcon,
-    prefix: "fad"
+    prefix: prefix
   });
 };
 var StyledIcon$7 = styled__default['default'](Icon).withConfig({
@@ -31873,10 +24835,14 @@ var StyledIcon$7 = styled__default['default'](Icon).withConfig({
   return theme.COLOUR.primary;
 });
 MessageIcon.propTypes = {
-  icon: propTypes.string
+  icon: propTypes.string.isRequired,
+  prefix: propTypes.oneOf(Object.values(ICON_PREFIX))
+};
+MessageIcon.defaultProps = {
+  prefix: 'fas'
 };
 
-var __jsx$2n = React__default['default'].createElement;
+var __jsx$2q = React__default['default'].createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -31899,7 +24865,7 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2n(StyledImage$3, {
+  return icon && __jsx$2q(StyledImage$3, {
     alt: "audience",
     src: icon
   });
@@ -31909,10 +24875,10 @@ var StyledImage$3 = styled__default['default'](Image$1).withConfig({
   componentId: "sc-1dfvymz-0"
 })(["margin-right:0.5rem;vertical-align:middle !important;"]);
 MessageTo.propTypes = {
-  to: propTypes.string
+  to: propTypes.string.isRequired
 };
 
-var __jsx$2o = React__default['default'].createElement;
+var __jsx$2r = React__default['default'].createElement;
 var MessageBase = function MessageBase(_ref) {
   var content = _ref.content,
       from = _ref.from,
@@ -31938,43 +24904,43 @@ var MessageBase = function MessageBase(_ref) {
       behavior: 'smooth'
     });
   }, []);
-  return __jsx$2o(Column, {
+  return __jsx$2r(Column, {
     sm: 11,
     columnRef: messageRef
-  }, __jsx$2o(StyledCard$2, {
+  }, __jsx$2r(StyledCard$2, {
     type: type
-  }, __jsx$2o(Row, null, __jsx$2o(Column, {
+  }, __jsx$2r(Row, null, __jsx$2r(Column, {
     sm: 6
-  }, __jsx$2o(MessageIcon, {
+  }, __jsx$2r(MessageIcon, {
     icon: icon
-  }), __jsx$2o(MessageTo, {
+  }), __jsx$2r(MessageTo, {
     to: to
-  }), __jsx$2o(StyledTime, null, time)), __jsx$2o(Column, {
+  }), __jsx$2r(StyledTime$1, null, time)), __jsx$2r(Column, {
     sm: 6
-  }, __jsx$2o(StyledFrom, null, from))), __jsx$2o(Row, null, pictureId && __jsx$2o(Column, {
+  }, __jsx$2r(StyledFrom, null, from))), __jsx$2r(Row, null, pictureId && __jsx$2r(Column, {
     sm: 2
-  }, __jsx$2o(Image$1, {
+  }, __jsx$2r(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2o(Column, {
+  })), __jsx$2r(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2o(StyledReply, null, reply), __jsx$2o(StyledContent$4, {
+  }, __jsx$2r(StyledReply, null, reply), __jsx$2r(StyledContent$4, {
     seeMore: seeMore
   }, content && content.split('\n').map(function (item, key) {
-    return __jsx$2o("span", {
+    return __jsx$2r("span", {
       key: key
-    }, item, __jsx$2o("br", null));
-  })), more && __jsx$2o(StyledCollapse, {
+    }, item, __jsx$2r("br", null));
+  })), more && __jsx$2r(StyledCollapse, {
     onClick: function onClick() {
       return setSeeMore(!seeMore);
     }
-  }, seeMore ? __jsx$2o(React__default['default'].Fragment, null, __jsx$2o("span", null, "Close"), __jsx$2o(Icon, {
+  }, seeMore ? __jsx$2r(React__default['default'].Fragment, null, __jsx$2r("span", null, "Close"), __jsx$2r(Icon, {
     icon: "chevron-up"
-  })) : __jsx$2o(React__default['default'].Fragment, null, __jsx$2o("span", null, "See more"), __jsx$2o(Icon, {
+  })) : __jsx$2r(React__default['default'].Fragment, null, __jsx$2r("span", null, "See more"), __jsx$2r(Icon, {
     icon: "chevron-down"
-  })))), !type && __jsx$2o(Column, {
+  })))), !type && __jsx$2r(Column, {
     sm: 1
-  }, __jsx$2o(Icon, {
+  }, __jsx$2r(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
   })))));
@@ -32001,14 +24967,14 @@ var StyledCollapse = styled__default['default'].div.withConfig({
   displayName: "base__StyledCollapse",
   componentId: "sc-19m896m-3"
 })(["color:#faac46;cursor:pointer;display:inline-block;font-size:0.75rem;text-transform:uppercase;"]);
-var StyledTime = styled__default['default'].span.withConfig({
+var StyledTime$1 = styled__default['default'].span.withConfig({
   displayName: "base__StyledTime",
   componentId: "sc-19m896m-4"
 })(["color:", ";font-size:0.75rem;margin-bottom:0.5rem;"], function (_ref4) {
   var theme = _ref4.theme;
   return theme.COLOUR.primary;
 });
-var StyledFrom = styled__default['default'](StyledTime).withConfig({
+var StyledFrom = styled__default['default'](StyledTime$1).withConfig({
   displayName: "base__StyledFrom",
   componentId: "sc-19m896m-5"
 })(["display:block;text-align:right;"]);
@@ -32038,7 +25004,7 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2p = React__default['default'].createElement;
+var __jsx$2s = React__default['default'].createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -32048,15 +25014,15 @@ var MessagingContainer = function MessagingContainer(_ref) {
       onSearch = _ref.onSearch,
       onSubmit = _ref.onSubmit,
       style = _ref.style;
-  return __jsx$2p(React__default['default'].Fragment, null, __jsx$2p(MessagingSearch, {
+  return __jsx$2s(React__default['default'].Fragment, null, __jsx$2s(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2p(StyledContainer$7, {
+  }), __jsx$2s(StyledContainer$7, {
     className: className,
     style: style
-  }, __jsx$2p(MessageList, {
+  }, __jsx$2s(MessageList, {
     messages: messages
-  })), __jsx$2p(MessagingSend, {
+  })), __jsx$2s(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: onSubmit,
     maxLength: maxLength
@@ -32077,11 +25043,11 @@ MessagingContainer.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$2q = React__default['default'].createElement;
+var __jsx$2t = React__default['default'].createElement;
 var MessageList = function MessageList(_ref) {
   var messages = _ref.messages;
   return messages.map(function (message, index) {
-    return __jsx$2q(Message, {
+    return __jsx$2t(Message, {
       message: message,
       key: index,
       prevType: message.type,
@@ -32094,7 +25060,7 @@ MessageList.propTypes = {
   messages: propTypes.array.isRequired
 };
 
-var __jsx$2r = React__default['default'].createElement;
+var __jsx$2u = React__default['default'].createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -32124,22 +25090,23 @@ var MessagingSearch = function MessagingSearch(_ref) {
     onSearch(data.query);
   };
 
-  return __jsx$2r(StyledContainer$8, null, __jsx$2r(Form, {
-    handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2r(Row, null, __jsx$2r(Column, {
-    md: 6
-  }, __jsx$2r(StyledSearch, {
+  var defaultOptions = {
     errors: errors,
-    prependSearchIcon: true,
-    placeholder: placeholder,
     register: register
-  })), __jsx$2r(Column, {
+  };
+  return __jsx$2u(StyledContainer$8, null, __jsx$2u(Form, {
+    handleSubmit: handleSubmit(onSubmit)
+  }, __jsx$2u(Row, null, __jsx$2u(Column, {
     md: 6
-  }, __jsx$2r(StyledSelect$1, {
-    change: onFilter,
-    id: "messagingFilter",
+  }, __jsx$2u(StyledSearch, _extends({}, defaultOptions, {
+    prependSearchIcon: true,
+    placeholder: placeholder
+  }))), __jsx$2u(Column, {
+    md: 6
+  }, __jsx$2u(StyledSelect$1, _extends({}, defaultOptions, {
+    name: "messagingFilter",
     options: Items
-  })))));
+  }))))));
 };
 var StyledContainer$8 = styled__default['default'].div.withConfig({
   displayName: "search__StyledContainer",
@@ -32162,17 +25129,18 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2s = React__default['default'].createElement;
+var __jsx$2v = React__default['default'].createElement;
 var MessagingSend = function MessagingSend(_ref) {
   var audienceItems = _ref.audienceItems,
-      onSubmit = _ref.onSubmit,
-      maxLength = _ref.maxLength;
+      maxLength = _ref.maxLength,
+      onSubmit = _ref.onSubmit;
 
   var _useForm = useForm({
     defaultValues: {
       message: ''
     }
   }),
+      errors = _useForm.errors,
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register,
       setValue = _useForm.setValue,
@@ -32220,58 +25188,59 @@ var MessagingSend = function MessagingSend(_ref) {
     setValue('message', '');
   };
 
-  return __jsx$2s(React__default['default'].Fragment, null, open && __jsx$2s(StyledPickerContainer, null, __jsx$2s(EmojiMart, {
+  return __jsx$2v(React__default['default'].Fragment, null, open && __jsx$2v(StyledPickerContainer, null, __jsx$2v(EmojiMart, {
     handleOpenPicker: handleOpenPicker,
     handleSelect: handleEmojiSelect,
     open: open
-  })), __jsx$2s(StyledContainer$9, {
+  })), __jsx$2v(StyledContainer$9, {
     audience: audience
-  }, __jsx$2s(StyledForm$1, {
+  }, __jsx$2v(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, audience && __jsx$2s(StyledDropDown, {
+  }, audience && __jsx$2v(StyledDropDown, {
     items: audienceItems,
-    position: "top",
     onChange: function onChange(item) {
       return setAudience(item);
-    }
-  }, audience.name), __jsx$2s(StyledTextarea$1, {
-    register: register,
-    name: "message",
+    },
+    position: "top"
+  }, audience.name), __jsx$2v(StyledTextarea$1, {
+    errors: errors,
     maxLength: maxLength,
+    name: "message",
     placeholder: "Write message",
-    rows: 1
-  }), __jsx$2s("input", {
-    ref: fileInputRef,
-    type: "file",
+    register: register,
+    rows: 2
+  }), __jsx$2v("input", {
     multiple: true,
     onChange: handleFilesChange,
+    ref: fileInputRef,
     style: {
       display: 'none'
-    }
-  }), __jsx$2s(StyledElements, null, __jsx$2s(StyledIcon$8, {
+    },
+    type: "file"
+  }), __jsx$2v(StyledElements, null, __jsx$2v(StyledIcon$8, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2s(StyledIcon$8, {
+  }), __jsx$2v(StyledIcon$8, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
       return setOpen(!open);
     },
     size: "2x"
-  }), __jsx$2s(Button, {
+  }), __jsx$2v(Button, {
     content: "Send",
     context: "info",
-    size: "md",
-    type: "submit",
-    disabled: message.length === 0 && attachments.length === 0
+    disabled: message.length === 0 && attachments.length === 0,
+    size: "sm",
+    type: "submit"
   })))));
 };
 var StyledContainer$9 = styled__default['default'].div.withConfig({
   displayName: "send__StyledContainer",
   componentId: "sc-18pp565-0"
-})(["background-color:#fff;border-bottom:1px solid #c0c0c0;border-top:1px solid #c0c0c0;color:#c0c0c0;padding:", ";position:relative;box-sizing:border-box;"], function (_ref2) {
+})(["background-color:#fff;border-bottom:1px solid #c0c0c0;border-top:1px solid #c0c0c0;box-sizing:border-box;color:#c0c0c0;padding:", ";position:relative;"], function (_ref2) {
   var audience = _ref2.audience;
   return audience ? '1.5rem 1rem 1rem' : '1rem';
 });
@@ -32286,7 +25255,13 @@ var StyledForm$1 = styled__default['default'](Form).withConfig({
 var StyledTextarea$1 = styled__default['default'](TextareaField).withConfig({
   displayName: "send__StyledTextarea",
   componentId: "sc-18pp565-3"
-})(["border:none;line-height:1.5;resize:none;&:focus{border-color:initial;box-shadow:initial;}"]);
+})(["background-color:", ";border:", ";border-radius:1rem;line-height:1.5;resize:none;margin:0.5rem 0.5rem 0 0;padding:0.5rem;&:focus{border-color:initial;box-shadow:initial;}"], function (_ref3) {
+  var theme = _ref3.theme;
+  return theme.COLOUR.light;
+}, function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.COLOUR.light;
+});
 var StyledElements = styled__default['default'].div.withConfig({
   displayName: "send__StyledElements",
   componentId: "sc-18pp565-4"
@@ -32294,15 +25269,15 @@ var StyledElements = styled__default['default'].div.withConfig({
 var StyledIcon$8 = styled__default['default'](Icon).withConfig({
   displayName: "send__StyledIcon",
   componentId: "sc-18pp565-5"
-})(["cursor:pointer;margin-right:1rem;&:hover{color:", ";}"], function (_ref3) {
-  var theme = _ref3.theme;
+})(["cursor:pointer;margin-right:1rem;&:hover{color:", ";}"], function (_ref5) {
+  var theme = _ref5.theme;
   return theme.COLOUR.info;
 });
 var StyledDropDown = styled__default['default'](Dropdown).withConfig({
   displayName: "send__StyledDropDown",
   componentId: "sc-18pp565-6"
-})(["position:absolute;text-transform:uppercase;top:-24px;left:8px;.dropdown--link{color:#000;font-size:10px;}.dropdown--toggle,svg{color:", ";font-size:10px;}"], function (_ref4) {
-  var theme = _ref4.theme;
+})(["position:absolute;left:8px;text-transform:uppercase;top:-24px;.dropdown--link{color:#000;font-size:10px;}.dropdown--toggle,svg{color:", ";font-size:10px;}"], function (_ref6) {
+  var theme = _ref6.theme;
   return theme.COLOUR.info;
 });
 MessagingSend.propTypes = {
@@ -32332,7 +25307,7 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var __jsx$2t = React__default['default'].createElement;
+var __jsx$2w = React__default['default'].createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -32350,34 +25325,34 @@ var PasswordChange = function PasswordChange(_ref) {
 
   var submit = function submit(data) {};
 
-  return __jsx$2t(React__default['default'].Fragment, null, __jsx$2t(PageHeading, {
+  return __jsx$2w(React__default['default'].Fragment, null, __jsx$2w(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2t(Alert, {
+  }), error && __jsx$2w(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2t(Form, {
+  }), __jsx$2w(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2t(FormLabel, {
+  }, __jsx$2w(FormLabel, {
     label: "Old password"
-  }, __jsx$2t(FormField, {
+  }, __jsx$2w(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2t(FormLabel, {
+  })), __jsx$2w(FormLabel, {
     label: "New password"
-  }, __jsx$2t(FormField, {
+  }, __jsx$2w(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2t(FormLabel, {
+  })), __jsx$2w(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2t(FormField, {
+  }, __jsx$2w(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -32386,7 +25361,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2t(Button, {
+  })), __jsx$2w(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -32399,7 +25374,7 @@ PasswordChange.propTypes = {
   showPlaceholder: propTypes.bool
 };
 
-var __jsx$2u = React__default['default'].createElement;
+var __jsx$2x = React__default['default'].createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -32426,13 +25401,13 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2u(React__default['default'].Fragment, null, __jsx$2u(DatePickerInput, {
+    return __jsx$2x(React__default['default'].Fragment, null, __jsx$2x(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2u(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2x(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
   var _useContext = React.useContext(UserContext),
@@ -32480,55 +25455,55 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2u(Form, {
+  return __jsx$2x(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2u(Alert, {
+  }, error && __jsx$2x(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2u(FormLabel, {
+  }), __jsx$2x(FormLabel, {
     label: "First name"
-  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2u(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Last name"
-  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2u(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Email"
-  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2u(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Password"
-  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2u(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2u(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2u(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2x(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2u(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2x(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2u(Button, {
+  })), __jsx$2x(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2u(StyledLink$a, null, "Already have an account? ", __jsx$2u(Link, {
+  }), __jsx$2x(StyledLink$a, null, "Already have an account? ", __jsx$2x(Link, {
     to: pathLogin
   }, "Log in")));
 };
@@ -32558,7 +25533,7 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2v = React__default['default'].createElement;
+var __jsx$2y = React__default['default'].createElement;
 
 var ArticleLayout = function ArticleLayout(_ref) {
   var children = _ref.children,
@@ -32568,14 +25543,14 @@ var ArticleLayout = function ArticleLayout(_ref) {
   //   description: frontMatter.description,
   //   title: frontMatter.title
   // }
-  return __jsx$2v(Container, null, __jsx$2v(Row, null, __jsx$2v(Column, {
+  return __jsx$2y(Container, null, __jsx$2y(Row, null, __jsx$2y(Column, {
     md: 12
-  }, __jsx$2v(Article, {
+  }, __jsx$2y(Article, {
     article: frontMatter
   }))));
 };
 
-var __jsx$2w = React__default['default'].createElement;
+var __jsx$2z = React__default['default'].createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -32584,10 +25559,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2w(React__default['default'].Fragment, null, __jsx$2w(Navigation, null), children, footer && __jsx$2w(Footer, {
+  return __jsx$2z(React__default['default'].Fragment, null, __jsx$2z(Navigation, null), children, footer && __jsx$2z(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2w(Copyright, {
+  }), copyright && __jsx$2z(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -32606,7 +25581,7 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2x = React__default['default'].createElement;
+var __jsx$2A = React__default['default'].createElement;
 
 function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -32627,16 +25602,16 @@ var Dashboard = function Dashboard(_ref) {
 
   var mergedMeta = _objectSpread$d(_objectSpread$d({}, defaultMeta), meta);
 
-  return __jsx$2x(React__default['default'].Fragment, null, __jsx$2x(React.Suspense, {
-    fallback: __jsx$2x(PageLoading, {
-      indicator: __jsx$2x(LdsSpinner, null)
+  return __jsx$2A(React__default['default'].Fragment, null, __jsx$2A(React.Suspense, {
+    fallback: __jsx$2A(PageLoading, {
+      indicator: __jsx$2A(LdsSpinner, null)
     })
-  }, __jsx$2x(React__default['default'].Fragment, null, __jsx$2x(Page, {
+  }, __jsx$2A(React__default['default'].Fragment, null, __jsx$2A(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2x(Alert, {
+  }), message && __jsx$2A(Alert, {
     content: message,
     context: context
   }))));
@@ -32661,7 +25636,7 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2y = React__default['default'].createElement;
+var __jsx$2B = React__default['default'].createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
@@ -32672,13 +25647,13 @@ var Page = function Page(_ref) {
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2y(StyledPage, null, meta && __jsx$2y(MetaHead, {
+  return __jsx$2B(StyledPage, null, meta && __jsx$2B(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2y(Container, {
+  }), __jsx$2B(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2y(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$2B(PageHeading, pageHeading), children));
 };
 var StyledPage = styled__default['default'].div.withConfig({
   displayName: "page__StyledPage",
@@ -32701,7 +25676,7 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$2z = React__default['default'].createElement;
+var __jsx$2C = React__default['default'].createElement;
 var SidebarLayout = function SidebarLayout(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -32712,16 +25687,16 @@ var SidebarLayout = function SidebarLayout(_ref) {
   var _useContext = React.useContext(ConfigContext),
       Sidebar = _useContext.Sidebar;
 
-  return __jsx$2z(Container, {
+  return __jsx$2C(Container, {
     fluid: true
-  }, __jsx$2z(Row, null, __jsx$2z(Column, {
+  }, __jsx$2C(Row, null, __jsx$2C(Column, {
     md: 2
-  }, __jsx$2z(Sidebar, null)), __jsx$2z(Column, {
+  }, __jsx$2C(Sidebar, null)), __jsx$2C(Column, {
     md: 10,
     style: {
       padding: 0
     }
-  }, __jsx$2z(Bootstrap, {
+  }, __jsx$2C(Bootstrap, {
     brand: brand,
     copyright: copyright,
     footer: footer,
@@ -32736,7 +25711,7 @@ SidebarLayout.propTypes = {
   navigation: propTypes.func
 };
 
-var __jsx$2A = React__default['default'].createElement;
+var __jsx$2D = React__default['default'].createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -32749,7 +25724,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$2A(React__default['default'].Fragment, null, iFrame && __jsx$2A("iframe", {
+  return __jsx$2D(React__default['default'].Fragment, null, iFrame && __jsx$2D("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -32760,7 +25735,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$2A("div", {
+  }), !iFrame && __jsx$2D("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -32771,10 +25746,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$2A("blockquote", {
+  }, __jsx$2D("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$2A("a", {
+  }, __jsx$2D("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -32803,7 +25778,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$2B = React__default['default'].createElement;
+var __jsx$2E = React__default['default'].createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -32811,7 +25786,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$2B(React__default['default'].Fragment, null, iFrame && __jsx$2B("iframe", {
+  return __jsx$2E(React__default['default'].Fragment, null, iFrame && __jsx$2E("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -32822,13 +25797,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$2B("div", {
+  }), !iFrame && __jsx$2E("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$2B("a", {
+  }, __jsx$2E("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -32849,7 +25824,7 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$2C = React__default['default'].createElement;
+var __jsx$2F = React__default['default'].createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
@@ -32861,7 +25836,7 @@ var Typeform = function Typeform(_ref) {
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$2C("div", {
+  return __jsx$2F("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -32901,34 +25876,34 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$2D = React__default['default'].createElement;
+var __jsx$2G = React__default['default'].createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2D(StyledArticle, {
+  return __jsx$2G(StyledArticle, {
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article"
-  }, __jsx$2D("header", null, __jsx$2D(StyledImage$4, {
+  }, __jsx$2G("header", null, __jsx$2G(StyledImage$4, {
     alt: article.heading,
     slant: true,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), __jsx$2D(Breadcrumb, {
+  }), __jsx$2G(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && __jsx$2D(BlogCategory, {
+  }), config && __jsx$2G(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$2D(StyledHeading$4, {
+  }), __jsx$2G(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$2D(BlogDetails, {
+  }), facebook && __jsx$2G(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$2D("span", {
+  })), __jsx$2G("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
@@ -33049,20 +26024,20 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$2E = React__default['default'].createElement;
+var __jsx$2H = React__default['default'].createElement;
 var Error404 = function Error404() {
   var meta = {
     description: "\n      DryKISS is a full service internet and mobile digital production house.\n      Our services span consulting, strategy; planning; development; testing\n      and analytics.\n    ",
     path: '/404',
     title: 'DryKISS develops hybrid mobile and responsive websites'
   };
-  return __jsx$2E(Page, {
+  return __jsx$2H(Page, {
     heading: "404 ERROR PAGE \u2013 NOT FOUND",
     meta: meta
-  }, __jsx$2E("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
+  }, __jsx$2H("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
 };
 
-var __jsx$2F = React__default['default'].createElement;
+var __jsx$2I = React__default['default'].createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -33078,47 +26053,47 @@ var BlogCard = function BlogCard(_ref) {
     as: "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$2F("article", {
+  return __jsx$2I("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$2F(Card, {
+  }, __jsx$2I(Card, {
     shadow: true
-  }, __jsx$2F(Link, {
+  }, __jsx$2I(Link, {
     to: articleLink
-  }, __jsx$2F(CardImage, {
+  }, __jsx$2I(CardImage, {
     alt: heading,
     src: "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$2F(StyledCardBody, {
+  })), __jsx$2I(StyledCardBody, {
     type: type
-  }, type === 'normal' && __jsx$2F(BlogCategory, {
+  }, type === 'normal' && __jsx$2I(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$2F(StyledContent$5, {
+  }), __jsx$2I(StyledContent$5, {
     type: type
-  }, __jsx$2F(Link, {
+  }, __jsx$2I(Link, {
     to: articleLink
-  }, __jsx$2F(StyledHeading$5, {
+  }, __jsx$2I(StyledHeading$5, {
     content: heading,
     tag: "h1",
     noWrap: true,
     type: type
-  })), type === 'normal' && __jsx$2F("p", {
+  })), type === 'normal' && __jsx$2I("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$2F(React__default['default'].Fragment, null, article.tags && __jsx$2F(TagsContainer, null, __jsx$2F(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$2I(React__default['default'].Fragment, null, article.tags && __jsx$2I(TagsContainer, null, __jsx$2I(BlogTags, {
     tags: article.tags
-  })), __jsx$2F(Divider, {
+  })), __jsx$2I(Divider, {
     size: "sm"
-  }), __jsx$2F(BlogCategory, {
+  }), __jsx$2I(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), __jsx$2F(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2F(Link, {
+  }), __jsx$2I(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2I(Link, {
     to: articleLink
-  }, __jsx$2F(StyledButton$8, {
+  }, __jsx$2I(StyledButton$8, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
@@ -33175,7 +26150,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$2G = React__default['default'].createElement;
+var __jsx$2J = React__default['default'].createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -33200,10 +26175,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$2G("section", null, _find().map(function (articles, index) {
-    return __jsx$2G(React.Fragment, {
+  return __jsx$2J("section", null, _find().map(function (articles, index) {
+    return __jsx$2J(React.Fragment, {
       key: index
-    }, __jsx$2G(Link, {
+    }, __jsx$2J(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -33213,14 +26188,14 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$2G(StyledHeading$6, {
+    }, __jsx$2J(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$2G(Row, null, articles.map(function (article, index) {
-      return __jsx$2G(Column, {
+    })), __jsx$2J(Row, null, articles.map(function (article, index) {
+      return __jsx$2J(Column, {
         key: index,
         md: 6
-      }, __jsx$2G(BlogCard, {
+      }, __jsx$2J(BlogCard, {
         article: article,
         config: config
       }));
@@ -33236,17 +26211,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$2H = React__default['default'].createElement;
+var __jsx$2K = React__default['default'].createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$2H(StyledCategory, {
+  return __jsx$2K(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$2H(Link, {
+  }, __jsx$2K(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -33272,58 +26247,58 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2I = React__default['default'].createElement;
+var __jsx$2L = React__default['default'].createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2I(StyledArticleDetails, null, __jsx$2I(Divider, {
+  return __jsx$2L(StyledArticleDetails, null, __jsx$2L(Divider, {
     size: "sm"
-  }), __jsx$2I(List, {
+  }), __jsx$2L(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$2I(ListItem, {
+  }, __jsx$2L(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2I(StyledIcon$9, {
+  }, __jsx$2L(StyledIcon$9, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$2I(Date$1, {
+  }), __jsx$2L(Date$1, {
     date: article.date
-  })), __jsx$2I(ListItem, {
+  })), __jsx$2L(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2I(StyledIcon$9, {
+  }, __jsx$2L(StyledIcon$9, {
     context: "dark",
     icon: "user"
-  }), __jsx$2I(BlogCategory, {
+  }), __jsx$2L(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$2I(ListItem, {
+  })), __jsx$2L(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2I(StyledIcon$9, {
+  }, __jsx$2L(StyledIcon$9, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$2I(BlogReadTime, {
+  }), __jsx$2L(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$2I(BlogTags, {
+  }))), article.tags && __jsx$2L(BlogTags, {
     tags: article.tags
-  }), __jsx$2I(Divider, {
+  }), __jsx$2L(Divider, {
     size: "sm"
-  }), __jsx$2I(StyledShare, null, __jsx$2I(StyledShareText, null, "Share this article"), __jsx$2I(FacebookShareButton, {
+  }), __jsx$2L(StyledShare, null, __jsx$2L(StyledShareText, null, "Share this article"), __jsx$2L(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$2I(Divider, {
+  })), __jsx$2L(Divider, {
     size: "sm"
   }));
 };
@@ -33356,7 +26331,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$2J = React__default['default'].createElement;
+var __jsx$2M = React__default['default'].createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33371,16 +26346,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$2J(Column, {
+    return __jsx$2M(Column, {
       md: 12 / number
-    }, __jsx$2J(BlogCard, {
+    }, __jsx$2M(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$2J(Row, null, renderHero());
+  return __jsx$2M(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -33391,7 +26366,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$2K = React__default['default'].createElement;
+var __jsx$2N = React__default['default'].createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -33419,11 +26394,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$2K(Row, null, _find().map(function (article, index) {
-    return __jsx$2K(Column, {
+  return __jsx$2N(Row, null, _find().map(function (article, index) {
+    return __jsx$2N(Column, {
       key: index,
       md: 6
-    }, __jsx$2K(BlogCard, {
+    }, __jsx$2N(BlogCard, {
       article: article,
       config: config
     }));
@@ -33437,31 +26412,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$2L = React__default['default'].createElement;
+var __jsx$2O = React__default['default'].createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$2L("span", null, "Read time: ", time, " min(s)");
+  return __jsx$2O("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$2M = React__default['default'].createElement;
+var __jsx$2P = React__default['default'].createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$2M(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$2P(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$2M(React.Fragment, {
+    return __jsx$2P(React.Fragment, {
       key: index
-    }, __jsx$2M(StyledDt, null, __jsx$2M(Badge, {
+    }, __jsx$2P(StyledDt, null, __jsx$2P(Badge, {
       content: badge
-    })), __jsx$2M(StyledDd, null, __jsx$2M(Link, {
+    })), __jsx$2P(StyledDd, null, __jsx$2P(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -33474,7 +26449,7 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$2M(StyledA$1, null, name))));
+    }, __jsx$2P(StyledA$1, null, name))));
   }));
 };
 var StyledDl = styled__default['default'].dl.withConfig({
@@ -33504,16 +26479,16 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$2N = React__default['default'].createElement;
+var __jsx$2Q = React__default['default'].createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$2N(StyledSection, null, heading && __jsx$2N(React__default['default'].Fragment, null, __jsx$2N(StyledHeading$7, {
+  return __jsx$2Q(StyledSection, null, heading && __jsx$2Q(React__default['default'].Fragment, null, __jsx$2Q(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$2N(Divider, {
+  }), __jsx$2Q(Divider, {
     size: "sm"
   })), children);
 };
@@ -33530,7 +26505,7 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$2O = React__default['default'].createElement;
+var __jsx$2R = React__default['default'].createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33567,9 +26542,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2O(BlogSection, {
+  return __jsx$2R(BlogSection, {
     heading: "Archive"
-  }, __jsx$2O(BlogList, {
+  }, __jsx$2R(BlogList, {
     config: config,
     list: list
   }));
@@ -33583,7 +26558,7 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$2P = React__default['default'].createElement;
+var __jsx$2S = React__default['default'].createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33622,9 +26597,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2P(BlogSection, {
+  return __jsx$2S(BlogSection, {
     heading: "Author"
-  }, __jsx$2P(BlogList, {
+  }, __jsx$2S(BlogList, {
     config: config,
     author: true,
     list: list
@@ -33639,7 +26614,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$2Q = React__default['default'].createElement;
+var __jsx$2T = React__default['default'].createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -33678,35 +26653,35 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$2Q(BlogSection, null, __jsx$2Q(StyledContainer$a, {
+  return __jsx$2T(BlogSection, null, __jsx$2T(StyledContainer$a, {
     colour: colour
-  }, __jsx$2Q(StyledForm$2, {
+  }, __jsx$2T(StyledForm$2, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2Q(FormLabel, {
+  }, __jsx$2T(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$2Q(InputGroup, null, __jsx$2Q(FormField, {
+  }, __jsx$2T(InputGroup, null, __jsx$2T(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$2Q(InputGroupAddon, null, __jsx$2Q(Button, {
+  }), __jsx$2T(InputGroupAddon, null, __jsx$2T(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$2Q(FormError, {
+  })), errors.postCode && __jsx$2T(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$2Q("div", {
+  }), msg && __jsx$2T("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$2Q(Link, {
+  }, msg)))), __jsx$2T(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$2Q(StyledA$2, null, "Deliveroo ", __jsx$2Q(Icon, {
+  }, __jsx$2T(StyledA$2, null, "Deliveroo ", __jsx$2T(Icon, {
     icon: "external-link"
   })))));
 };
@@ -33831,13 +26806,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$2R = React__default['default'].createElement;
+var __jsx$2U = React__default['default'].createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$2R(BlogSection, {
+  return __jsx$2U(BlogSection, {
     heading: "Media"
-  }, __jsx$2R(BlogList, {
+  }, __jsx$2U(BlogList, {
     config: config,
     list: media
   }));
@@ -33847,13 +26822,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$2S = React__default['default'].createElement;
+var __jsx$2V = React__default['default'].createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$2S(BlogSection, {
+  return __jsx$2V(BlogSection, {
     heading: "Promo"
-  }, __jsx$2S(Image$1, {
+  }, __jsx$2V(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -33863,7 +26838,7 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2T = React__default['default'].createElement;
+var __jsx$2W = React__default['default'].createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33892,9 +26867,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$2T(BlogSection, {
+  return __jsx$2W(BlogSection, {
     heading: "Recent"
-  }, __jsx$2T(BlogList, {
+  }, __jsx$2W(BlogList, {
     config: config,
     list: list
   }));
@@ -33908,7 +26883,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$2U = React__default['default'].createElement;
+var __jsx$2X = React__default['default'].createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -33917,22 +26892,22 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$2U(StyledAside$1, null, findFood && __jsx$2U(BlogFindFood, null), media && __jsx$2U(BlogMedia, {
+  return __jsx$2X(StyledAside$1, null, findFood && __jsx$2X(BlogFindFood, null), media && __jsx$2X(BlogMedia, {
     media: media
-  }), __jsx$2U(BlogSocial, {
+  }), __jsx$2X(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$2U(BlogPromo, {
+  }), promo && __jsx$2X(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$2U(BlogRecent, {
+  }), __jsx$2X(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$2U(BlogTagCloud, {
+  }), tags && __jsx$2X(BlogTagCloud, {
     articles: articles
-  }), __jsx$2U(BlogArchive, {
+  }), __jsx$2X(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$2U(BlogAuthor, {
+  }), __jsx$2X(BlogAuthor, {
     articles: articles,
     config: config
   }));
@@ -33954,20 +26929,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$2V = React__default['default'].createElement;
+var __jsx$2Y = React__default['default'].createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$2V(React__default['default'].Fragment, null, facebook && __jsx$2V(BlogSection, {
+  return __jsx$2Y(React__default['default'].Fragment, null, facebook && __jsx$2Y(BlogSection, {
     heading: "Facebook"
-  }, __jsx$2V(FacebookPagePlugin, {
+  }, __jsx$2Y(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$2V(BlogSection, {
+  })), instagram && __jsx$2Y(BlogSection, {
     heading: "Instagram"
-  }, __jsx$2V("iframe", {
+  }, __jsx$2Y("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -33975,7 +26950,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$2V(BlogSection, {
+  })), twitter && __jsx$2Y(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -33989,7 +26964,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$2W = React__default['default'].createElement;
+var __jsx$2Z = React__default['default'].createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -34062,7 +27037,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$2W(BlogSection, {
+  return __jsx$2Z(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -34121,7 +27096,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$2X = React__default['default'].createElement;
+var __jsx$2_ = React__default['default'].createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -34135,7 +27110,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$2X(Badge, {
+      return __jsx$2_(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -34145,7 +27120,7 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$2X("div", null, tagMap());
+  return __jsx$2_("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
@@ -34275,7 +27250,7 @@ var Api = function Api() {
  */
 var UserContext = /*#__PURE__*/React.createContext();
 
-var __jsx$2Y = React__default['default'].createElement;
+var __jsx$2$ = React__default['default'].createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
@@ -34466,7 +27441,7 @@ var UserProvider = function UserProvider(_ref) {
     return true;
   };
 
-  return !isLoading && __jsx$2Y(UserContext.Provider, {
+  return !isLoading && __jsx$2$(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -34485,7 +27460,7 @@ var UserProvider = function UserProvider(_ref) {
  */
 var AuthorizationContext = /*#__PURE__*/React.createContext();
 
-var __jsx$2Z = React__default['default'].createElement;
+var __jsx$30 = React__default['default'].createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
@@ -34572,7 +27547,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$2Z(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$30(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -34585,9 +27560,9 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
  */
 var ConfigContext = /*#__PURE__*/React.createContext();
 
-var __jsx$2_ = React__default['default'].createElement;
+var __jsx$31 = React__default['default'].createElement;
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$2_(ConfigContext.Provider, _extends({
+  return __jsx$31(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -35006,7 +27981,7 @@ var InternationalisationContext = /*#__PURE__*/React.createContext({
   }
 });
 
-var __jsx$2$ = React__default['default'].createElement;
+var __jsx$32 = React__default['default'].createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
@@ -35042,7 +28017,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$2$(InternationalisationContext.Provider, {
+  return __jsx$32(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -35091,7 +28066,7 @@ var getInitialLocale = function getInitialLocale() {
  */
 var NotificationsContext = /*#__PURE__*/React.createContext();
 
-var __jsx$30 = React__default['default'].createElement;
+var __jsx$33 = React__default['default'].createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -35111,7 +28086,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$30(NotificationsContext.Provider, {
+  return __jsx$33(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -38142,7 +31117,7 @@ var useNotifications = function useNotifications(url) {
  */
 var OffCanvasContext = /*#__PURE__*/React.createContext();
 
-var __jsx$31 = React__default['default'].createElement;
+var __jsx$34 = React__default['default'].createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
@@ -38186,12 +31161,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$31(OffCanvasContext.Provider, {
+  return __jsx$34(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$31(OffCanvas, {
+  }, children, __jsx$34(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -38208,7 +31183,7 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$31(StyledWrapper$2, {
+    return __jsx$34(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
@@ -38222,7 +31197,7 @@ var StyledWrapper$2 = styled__default['default'].div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$32 = React__default['default'].createElement;
+var __jsx$35 = React__default['default'].createElement;
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -38255,7 +31230,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$32(React__default['default'].Fragment, null, __jsx$32(ThemeStyle, null), user && __jsx$32(UserProvider, null, __jsx$32(AuthorizationProvider, null, __jsx$32(InternationalisationProvider, null, __jsx$32(NotificationsProvider, null, offCanvas ? __jsx$32(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$35(React__default['default'].Fragment, null, __jsx$35(ThemeStyle, null), user && __jsx$35(UserProvider, null, __jsx$35(AuthorizationProvider, null, __jsx$35(InternationalisationProvider, null, __jsx$35(NotificationsProvider, null, offCanvas ? __jsx$35(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -38263,9 +31238,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$32(React__default['default'].Fragment, null, __jsx$32(ConfigProvider, {
+      return __jsx$35(React__default['default'].Fragment, null, __jsx$35(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$32(client.ApolloProvider, {
+      }, apolloClient ? __jsx$35(client.ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -38278,14 +31253,14 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$32(Layout, null, pageProgressBar && __jsx$32(PageProgressBar, {
+      return __jsx$35(Layout, null, pageProgressBar && __jsx$35(PageProgressBar, {
         router: router
-      }), __jsx$32(Component, pageProps));
+      }), __jsx$35(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$32(styled.ThemeProvider, {
+      return __jsx$35(styled.ThemeProvider, {
         theme: merge__default['default'](Theme, this.props.theme)
       }, this.data());
     }
@@ -38380,7 +31355,6 @@ exports.ConfigContext = ConfigContext;
 exports.ConfigProvider = ConfigProvider;
 exports.Contained = Contained;
 exports.Container = Container;
-exports.ControlTypes = ControlTypes;
 exports.Controller = Controller;
 exports.Copyright = Copyright;
 exports.CurrencyInput = CurrencyInput;
@@ -38436,6 +31410,7 @@ exports.Hero = Hero;
 exports.ICON_PREFIX = ICON_PREFIX;
 exports.ICON_PULL = ICON_PULL;
 exports.ICON_SIZE = ICON_SIZE;
+exports.IUIRich = IUIRich;
 exports.Icon = Icon;
 exports.IconStacked = IconStacked;
 exports.Image = Image$1;
@@ -38512,6 +31487,7 @@ exports.ReactHolderJs = ReactHolderJs;
 exports.ReactSelectField = ReactSelectField;
 exports.Register = Register;
 exports.ResizeDetector = ResizeDetector;
+exports.RichTextInput = RichTextInput;
 exports.Row = Row;
 exports.SIZE = SIZE;
 exports.SPACER = SPACER;
@@ -38610,6 +31586,7 @@ exports.shortDate = shortDate;
 exports.sizeArray = sizeArray;
 exports.slugify = slugify;
 exports.useAxios = useAxios;
+exports.useForceUpdate = useForceUpdate;
 exports.useForm = useForm;
 exports.useGeoCoder = useGeoCoder;
 exports.useInterval = useInterval;

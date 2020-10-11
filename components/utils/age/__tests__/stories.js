@@ -2,6 +2,9 @@
  * Age
  */
 
+// Storybook
+import { ControlTypes } from 'decorators'
+
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
@@ -10,32 +13,39 @@ import { age, Button, DatePickerCalendar, Divider, Form, Text, useForm } from 'c
 import Readme from '../README.md'
 
 export default {
+  args: {
+    birthDate: new Date('2001-09-20')
+  },
+  argTypes: {
+    birthDate: {
+      name: 'Birth Date',
+      control: { type: ControlTypes.Date }
+    }
+  },
   title: 'Utils/Age',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
 
-export const main = () => {
-  const { control, errors, getValues, handleSubmit } = useForm({
-    defaultValues: {
-      birthDate: new Date('2001-09-20')
-    }
-  })
+export const main = args => {
+  const { control, errors, handleSubmit } = useForm()
 
   const defaultProps = {
     control: control,
     errors: errors,
+    locale: enGB,
     minDate: null,
-    name: 'birthDate',
-    locale: enGB
+    name: 'birthDate'
   }
 
   const onSubmit = data => {}
 
-  const birthDate = getValues()?.birthDate
+  const birthDate = args.birthDate
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>

@@ -19,8 +19,10 @@ export default {
   title: 'Molecules/Carousel',
   component: Carousel,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

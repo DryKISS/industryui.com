@@ -1,6 +1,5 @@
 /**
- * Size
- * Provides a list of the accepted sizes
+ *  Theme - Constants - Size
  */
 export const SIZE = {
   XXS: 'xxs',

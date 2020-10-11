@@ -13,8 +13,10 @@ export default {
   title: 'Molecules/Sidebar',
   component: Sidebar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

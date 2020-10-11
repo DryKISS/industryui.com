@@ -31,8 +31,10 @@ export default {
   title: 'Molecules/Dropdown',
   component: Dropdown,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

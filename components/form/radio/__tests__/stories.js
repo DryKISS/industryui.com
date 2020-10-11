@@ -16,8 +16,10 @@ export default {
   title: 'Form/Radio',
   component: RadioField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

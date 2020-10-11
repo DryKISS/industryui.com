@@ -1,5 +1,3 @@
-# Intercom
-
 ## Links
 
 https://developers.intercom.com/installing-intercom/docs/quickstart

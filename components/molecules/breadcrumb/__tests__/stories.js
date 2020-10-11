@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Breadcrumb',
   component: Breadcrumb,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

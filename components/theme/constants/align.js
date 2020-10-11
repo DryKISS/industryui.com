@@ -1,5 +1,5 @@
 /**
- * Theme - Variables - Colour
+ * Theme - Constants - Align
  */
 export const ALIGN = {
   Start: 'flex-start',

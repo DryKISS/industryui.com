@@ -9,8 +9,10 @@ export default {
   title: 'Molecules/Map/DynamicLocation',
   component: DynamicLocation,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

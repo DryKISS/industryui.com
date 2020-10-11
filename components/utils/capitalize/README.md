@@ -1,0 +1,1 @@
+Capitalizes the string

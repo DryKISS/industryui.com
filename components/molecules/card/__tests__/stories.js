@@ -14,8 +14,10 @@ export default {
   component: Card,
   decorators: [story => <Column md={4}>{story()}</Column>],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

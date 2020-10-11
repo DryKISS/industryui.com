@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Get Address',
   component: GetAddress,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

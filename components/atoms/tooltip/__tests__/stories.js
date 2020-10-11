@@ -13,8 +13,10 @@ export default {
   title: 'Atoms/Tooltip',
   component: Tooltip,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

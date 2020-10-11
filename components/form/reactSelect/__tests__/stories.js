@@ -29,8 +29,10 @@ export default {
   title: 'Form/ReactSelect',
   component: ReactSelectField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

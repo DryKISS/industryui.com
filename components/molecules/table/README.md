@@ -1,5 +1,3 @@
-# Table
-
 Creates a simple table
 
 ## Links

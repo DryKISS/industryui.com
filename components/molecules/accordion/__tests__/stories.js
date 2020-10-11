@@ -10,8 +10,10 @@ import { Data } from '../__mocks__/accordion'
 export default {
   title: 'Molecules/Accordion',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

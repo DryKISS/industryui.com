@@ -11,8 +11,10 @@ export default {
   title: 'Molecules/Dog/Card',
   component: DogCard,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

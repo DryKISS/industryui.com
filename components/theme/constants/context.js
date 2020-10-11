@@ -1,6 +1,5 @@
 /**
- * Context
- * Provides a list of the accepted colours
+ * Theme - Constants - Context
  */
 export const CONTEXT = {
   DARKGREY: 'darkGrey',

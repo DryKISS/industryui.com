@@ -13,8 +13,10 @@ export default {
   title: 'Molecules/Stepper',
   component: Stepper,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

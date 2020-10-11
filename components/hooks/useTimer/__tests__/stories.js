@@ -10,8 +10,10 @@ import Readme from '../README.md'
 export default {
   title: 'Hooks/Timer',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

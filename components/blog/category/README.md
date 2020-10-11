@@ -1,3 +1,1 @@
-# Blog - Category
-
 Category link

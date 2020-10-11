@@ -1,5 +1,3 @@
-# EmojiMart
-
 ## Links
 
-- [Github](https://github.com/missive/emoji-mart)
+[Github](https://github.com/missive/emoji-mart)

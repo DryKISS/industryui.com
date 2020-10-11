@@ -29,8 +29,10 @@ export default {
   title: 'Form/Checkbox',
   component: CheckboxField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -10,8 +10,10 @@ export default {
   title: 'Organisms/Big Calendar',
   components: BigCalendar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

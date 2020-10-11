@@ -2,6 +2,9 @@
  * Form - Search
  */
 
+// Stroybook
+import { ControlTypes } from 'decorators'
+
 // Yup
 import { object, string } from 'yup'
 
@@ -10,7 +13,6 @@ import {
   arrayOfValues,
   Button,
   Column,
-  ControlTypes,
   Form,
   Input,
   InputTypes,
@@ -28,8 +30,10 @@ export default {
   title: 'Form/Input',
   component: Input,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

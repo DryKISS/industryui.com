@@ -14,8 +14,10 @@ export default {
   title: 'Atoms/Progress',
   component: Progress,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

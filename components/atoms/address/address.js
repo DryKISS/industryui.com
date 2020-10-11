@@ -11,17 +11,11 @@ import { Text } from 'components'
 export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
   <address>
     <Text>{line1}</Text>
-
     {line2 && <Text>{line2}</Text>}
-
     {line3 && <Text>{line3}</Text>}
-
     <Text>{town}</Text>
-
     {county && <Text>{county}</Text>}
-
     <Text>{postcode}</Text>
-
     <Text>{country}</Text>
   </address>
 )

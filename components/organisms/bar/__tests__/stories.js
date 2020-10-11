@@ -2,21 +2,26 @@
  * Bar
  */
 
+// Storybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import { Bar, BarConfig, CONTEXT, ControlTypes } from 'components'
+import { Bar, BarConfig, CONTEXT } from 'components'
 import Readme from '../README.md'
 
 // Style
 import styled from 'styled-components'
 
 export default {
-  title: 'Organisms/Bar',
   component: Bar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Organisms/Bar'
 }
 
 const BaseComponent = (args = {}) => {

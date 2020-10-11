@@ -2,26 +2,25 @@
  * Components - Details
  */
 
-// React
-import { bool, node, string } from 'prop-types'
-
 // UI
 import { Button } from '../../atoms'
+import { DetailsPropTypes, DetailsDefaultProps } from './props'
 
 // Style
 import styled from 'styled-components'
 
 export const Details = ({
   children,
-  SummaryActionsComponent,
+  context,
   open,
-  style,
   summary,
+  SummaryActionsComponent,
+  style,
   Toolbar,
   ...props
 }) => {
   return (
-    <StyledDetails open={open} {...props}>
+    <StyledDetails context={context} open={open}>
       <StyledSummary>
         {summary}
         {props.button && (
@@ -32,7 +31,7 @@ export const Details = ({
             size='sm'
           />
         )}
-        {SummaryActionsComponent && <ActionsWrapper> {SummaryActionsComponent}</ActionsWrapper>}
+        {SummaryActionsComponent && <ActionsWrapper>{SummaryActionsComponent}</ActionsWrapper>}
         {Toolbar && <Toolbar />}
       </StyledSummary>
 
@@ -40,21 +39,23 @@ export const Details = ({
     </StyledDetails>
   )
 }
+
 const ActionsWrapper = styled.div`
-  width: fit-content;
   float: right;
+  width: fit-content;
 `
+
 const StyledDetails = styled.details`
   background-color: #fff;
   border: 1px solid #eee;
-  border-bottom: 1px solid rgb(0, 204, 188);
+  border-bottom: 1px solid ${({ context, theme }) => theme.COLOUR[context]};
   box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
   margin-bottom: 0.5rem;
 `
 
 const StyledSummary = styled.summary`
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
   outline: none;
   padding: 1rem;
   position: relative;
@@ -69,12 +70,5 @@ const StyledBody = styled.div`
   padding: 0 1rem 1rem;
 `
 
-Details.propTypes = {
-  children: node.isRequired,
-  open: bool,
-  summary: string.isRequired
-}
-
-Details.defaultProps = {
-  open: false
-}
+Details.propTypes = DetailsPropTypes
+Details.defaultProps = DetailsDefaultProps

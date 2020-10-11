@@ -16,16 +16,28 @@ import Readme from '../README.md'
 import { messages } from '../__mocks__/container'
 
 export default {
-  title: 'Organisms/Messaging/Container',
+  args: {
+    audienceItems: [],
+    className: '',
+    maxLength: 320,
+    messages: messages,
+    onFilter: () => {},
+    onSearch: () => {},
+    onSubmit: () => {},
+    style: {}
+  },
   component: MessagingContainer,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Organisms/Messaging/Container'
 }
 
-const BaseComponent = (props = {}) => {
+export const main = args => {
   const [messaging, setMessaging] = useState(messages)
 
   const handleFilter = type => {
@@ -87,10 +99,8 @@ const BaseComponent = (props = {}) => {
     onSearch: handleSearch,
     onFilter: handleFilter,
     onSubmit: handleSubmit,
-    ...props
+    ...args
   }
 
-  return messaging && <MessagingContainer {...defaultProps} />
+  return <MessagingContainer {...defaultProps} />
 }
-
-export const main = () => <BaseComponent />

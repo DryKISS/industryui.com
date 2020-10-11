@@ -2,12 +2,6 @@
  * Storybook Configuration
  */
 
-// Storybook
-import { addParameters } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { addReadme } from 'storybook-readme'
-import { withKnobs } from '@storybook/addon-knobs'
-
 // Next
 import Router from 'next/router'
 
@@ -40,13 +34,4 @@ const mockedRouter = {
 
 Router.router = mockedRouter
 
-addParameters({
-  options: {
-    panelPosition: 'right'
-  },
-  readme: {
-    excludePropTables: []
-  }
-})
-
-export const decorators = [Container, addReadme, Wrapper]
+export const decorators = [Container, Wrapper]

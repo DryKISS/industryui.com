@@ -2,27 +2,36 @@
  * Image Location
  */
 
+// Storybook
+import { object, select } from '@storybook/addon-knobs'
+
 // Yup
 import { object as obj } from 'yup'
 
-// Storybook
-import { object, select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
-
 // UI
-import { Alert, Button, ImageLocation, ImageLocationFormElement } from 'components'
+import {
+  Alert,
+  Button,
+  Form,
+  ImageLocation,
+  ImageLocationFormElement,
+  useForm,
+  yupResolver
+} from 'components'
+
 import Readme from '../README.md'
 
 // Data
 import { Item } from '../__mocks__/itemFloor'
-import { useForm } from 'react-hook-form'
 
 export default {
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -39,7 +48,7 @@ const BaseComponent = (props = {}) => {
         y: 41
       }),
     item: Item,
-    locationChange: action('change')
+    locationChange: 'change'
   }
 
   const markerStyles = {
@@ -89,13 +98,16 @@ export const UsedInForm = () => {
     imageLocationData: obj().required()
   })
 
-  const { control, errors, handleSubmit, setValue } = useForm({ validationSchema: schema })
+  const { control, errors, handleSubmit, setValue } = useForm({
+    resolver: yupResolver(schema)
+  })
+
   const onFormSubmit = data => {
     console.log(data)
   }
 
   return (
-    <form onSubmit={handleSubmit(data => onFormSubmit(data))}>
+    <Form handleSubmit={handleSubmit(data => onFormSubmit(data))}>
       <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
       {errors.imageLocationData && (
         <Alert
@@ -106,6 +118,6 @@ export const UsedInForm = () => {
         />
       )}
       <Button type='submit'>submit form</Button>
-    </form>
+    </Form>
   )
 }

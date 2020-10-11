@@ -10,8 +10,10 @@ export default {
   title: 'Blog/Read Time',
   component: BlogReadTime,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

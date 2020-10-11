@@ -13,8 +13,10 @@ export default {
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

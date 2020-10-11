@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Dog/Link',
   component: DogLink,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

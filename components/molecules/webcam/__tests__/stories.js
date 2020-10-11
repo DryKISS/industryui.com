@@ -10,8 +10,10 @@ export default {
   title: 'Molecules/Webcam',
   component: Webcam,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

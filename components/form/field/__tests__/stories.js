@@ -13,8 +13,10 @@ export default {
   title: 'Form/Field',
   component: FormField,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
  */
 
 // React
-import { bool, number, string, object, oneOf } from 'prop-types'
+import { any, bool, func, number, object, oneOf, string } from 'prop-types'
 
 // UI
 import { COMMON_INPUT_STYLES, FieldHOC, ERROR_STYLE, SIZE } from '../../'
@@ -22,32 +22,32 @@ export const TextareaField = ({
   name,
   placeholder,
   readOnly,
+  register,
   rows,
   size,
   spellCheck,
   tabIndex,
-  wrap,
-  ...props
+  wrap
 }) => {
   return (
     <FieldHOC
-      component={StyledTextarea}
       autoFocus={autoFocus}
-      className={`${className} Form-control Textarea`}
+      className={className}
       cols={cols}
+      component={StyledTextarea}
       dir={dir}
       disabled={disabled}
       errors={errors[name]}
       maxLength={maxLength}
+      name={name}
       placeholder={placeholder}
       readOnly={readOnly}
+      register={register}
       rows={rows}
-      showError={false}
       size={size}
       spellcheck={spellCheck}
       tabIndex={tabIndex}
       wrap={wrap}
-      {...props}
     />
   )
 }
@@ -75,15 +75,18 @@ const StyledTextarea = styled.textarea`
 
 TextareaField.propTypes = {
   autoFocus: bool,
+  className: any,
   cols: number,
   dir: oneOf(['ltr', 'rtl']),
   disabled: bool,
-  errors: object,
+  errors: object.isRequired,
   maxLength: number,
-  name: string,
+  name: string.isRequired,
   placeholder: string,
   readOnly: bool,
+  register: func.isRequired,
   rows: number,
+  size: oneOf(Object.values(SIZE)),
   spellCheck: bool,
   tabIndex: number,
   wrap: oneOf(['soft', 'hard'])
@@ -92,5 +95,6 @@ TextareaField.propTypes = {
 TextareaField.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
-  rows: 5
+  rows: 5,
+  size: 'md'
 }

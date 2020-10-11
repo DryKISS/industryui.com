@@ -1,5 +1,3 @@
-# DatePicker - Calendar
-
 Provides a Calendar widget to pick the day, month and year plus optionally the time.
 
 We use the React datepicker library for this component, it is wrapped in a controlled component for

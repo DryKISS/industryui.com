@@ -3,65 +3,55 @@
  */
 
 // Storybook
-import { action } from '@storybook/addon-actions'
+import { ContextControl, SizeControl } from 'decorators'
 
 // UI
-import { arrayOfValues, Avatar, CONTEXT, ControlTypes, SIZE } from 'components'
+import { Avatar, CONTEXT, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    action: 'Edit',
+    actionClick: () => {},
+    children: '',
+    className: '',
+    context: CONTEXT.PRIMARY,
+    content: 'Avatar',
+    click: () => {},
+    gmail: 'test@gmail.com',
+    size: SIZE.MD,
+    src: 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg',
+    style: '',
+    withAction: false,
+    withImage: false,
+    withGravatar: false
+  },
   argTypes: {
-    context: {
-      control: {
-        type: ControlTypes.Select,
-        options: arrayOfValues(CONTEXT)
-      }
-    },
-    size: {
-      control: {
-        type: ControlTypes.Select,
-        options: arrayOfValues(SIZE)
+    actionClick: { action: 'clicked' },
+    context: ContextControl(),
+    click: { action: 'clicked' },
+    size: SizeControl()
+  },
+  component: Avatar,
+  parameters: {
+    docs: {
+      description: {
+        component: Readme
       }
     }
   },
-  component: Avatar,
-  title: 'Atoms/Avatar',
-
-  parameters: {
-    readme: {
-      sidebar: Readme
-    }
-  }
+  title: 'Atoms/Avatar'
 }
 
-const BaseComponent = props => {
-  const defaultProps = {
-    action: props.withAction && props.action,
-    actionClick: () => action('Action click'),
-    children: '',
-    className: '',
-    click: () => action('Click'),
-    content: props.content,
-    context: props.context,
-    gmail: props.withGravatar && props.gmail,
-    size: props.size,
-    src: props.withImage && 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg',
-    style: {}
+export const main = args => {
+  const props = {
+    action: args.withAction ? args.action : '',
+    content: args.content,
+    context: args.context,
+    gmail: args.withGravatar ? args.gmail : '',
+    size: args.size,
+    src: args.withImage ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg' : ''
   }
 
-  return <Avatar {...defaultProps} />
-}
-
-export const main = BaseComponent.bind({})
-
-main.args = {
-  action: 'Edit',
-  context: CONTEXT.DARKGREY,
-  content: 'Avatar',
-  gmail: 'test@gmail.com',
-  size: SIZE.MD,
-  src: 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg',
-  withAction: false,
-  withImage: false,
-  withGravatar: false
+  return <Avatar {...props} />
 }

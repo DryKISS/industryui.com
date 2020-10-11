@@ -18,8 +18,10 @@ export default {
   title: 'Atoms/Divider',
   component: Divider,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

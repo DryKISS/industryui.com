@@ -19,6 +19,7 @@ export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, p
   return (
     <StyledDropdownMenu elementType={elementType} className='dropdown--menu' position={position}>
       <TooltipRectangle position={position} />
+      <TooltipRectangle position={position} border />
       {items.map(item => (
         <DropdownItem
           closeDropdown={closeDropdown}
@@ -34,7 +35,9 @@ export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, p
 
 const StyledDropdownMenu = styled.div`
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  ${({ theme }) => css`
+    border: 1px solid ${theme.DROPDOWN.BORDER_COLOUR};
+  `}
   border-radius: 0.25rem;
   left: 0;
   margin-top: 1px;
@@ -43,6 +46,7 @@ const StyledDropdownMenu = styled.div`
   position: absolute;
   top: 100%;
   z-index: 1;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   ${({ position }) =>
     position &&
     css`
@@ -72,22 +76,24 @@ const dist = '0.625rem'
 const size = '0.875rem'
 
 const TooltipRectangle = styled.div`
-  border-color: transparent transparent rgb(255, 255, 255);
+  ${({ border }) => css`
+    border-color: transparent transparent ${border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)'};
+  `}
   border-image: initial;
   border-style: solid;
   border-width: 0.438rem;
   position: absolute;
 
-  ${({ position }) => {
+  ${({ position, border }) => {
     switch (position) {
       case Position.Bottom:
         return css`
-          top: -${size};
+          top: calc(-${size} - ${border ? '0px' : '1px'});
           left: ${dist};
         `
       case Position.Top:
         return css`
-          bottom: -${size};
+          bottom: calc(-${size} - ${border ? '0px' : '1px'});
           left: ${dist};
           transform: rotateX(180deg);
         `
@@ -95,14 +101,14 @@ const TooltipRectangle = styled.div`
         return css`
           display: none; /*remove when initial left position is resolved */
           bottom: ${size};
-          right: -${size};
+          right: calc(-${size} - ${border ? '0px' : '1px'});
           transform: rotateZ(90deg);
         `
       case Position.Right:
         return css`
           display: none; /*remove when initial left position is resolved */
           bottom: ${size};
-          left: -${size};
+          left: calc(-${size} - ${border ? '0px' : '1px'});
           transform: rotateZ(-90deg);
         `
       default:

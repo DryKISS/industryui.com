@@ -13,8 +13,10 @@ export default {
   title: 'Blog/Sidebar',
   component: BlogSidebar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

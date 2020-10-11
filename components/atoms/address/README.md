@@ -1,5 +1,3 @@
-# Address
-
 Wraps and styles an address elements
 
 ## Links

@@ -31,17 +31,19 @@ export default {
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const schema = object().shape({
-    expiryAt: string().required()
-  })
+const schema = object().shape({
+  expiryAt: string().required()
+})
 
+const BaseComponent = (props = {}) => {
   const { control, errors, getValues, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })
