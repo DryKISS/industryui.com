@@ -29,7 +29,6 @@
     "url": "https://github.com/DryKISS/industryui.com/issues"
   },
   "scripts": {
-    "check": "npm-check -s -u",
     "serve": "npx http-server storybook-static",
     "start": "start-storybook -s ./.storybook/static -p 9000 --quiet -c .storybook",
     "standard": "standard | snazzy",
@@ -148,7 +147,6 @@
     "jest-styled-components": "^7.0.3",
     "lint-staged": "^10.4.0",
     "markdown-loader-jest": "^0.1.1",
-    "npm-check": "^5.9.2",
     "path": "^0.12.7",
     "prettier-standard": "^16.4.1",
     "react-test-renderer": "^16.13.1",
