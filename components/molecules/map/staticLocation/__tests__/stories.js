@@ -12,8 +12,10 @@ export default {
   title: 'Molecules/Map/StaticLocation',
   component: StaticLocation,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { string } from 'prop-types'
 
 const canUseDOM = !!(
@@ -18,7 +18,7 @@ export const IntercomAPI = (...args) => {
   }
 }
 
-export const Intercom = React.memo(({ appID }) => {
+export const Intercom = memo(({ appID }) => {
   useEffect(() => {
     if (!appID || !canUseDOM) {
       return

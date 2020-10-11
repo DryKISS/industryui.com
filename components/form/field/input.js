@@ -3,8 +3,9 @@
  */
 
 // React
-import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 import { useState } from 'react'
+import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
+
 // Style
 import styled, { css } from 'styled-components'
 
@@ -41,11 +42,11 @@ export const FormField = ({
       }}
       errors={errors[name]}
       isTyping={isTyping}
-      register={register}
       key={name}
       name={name}
       placeholder={placeholder}
       readOnly={readOnly}
+      register={register}
       size={size}
       withAddon={withAddon}
       {...props}
@@ -100,7 +101,6 @@ FormField.propTypes = {
   placeholder: string,
   readOnly: bool,
   register: func.isRequired,
-  Required: bool,
   size: oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
   style: object,
   type: string,
@@ -112,6 +112,5 @@ FormField.defaultProps = {
   autoFocus: false,
   disabled: false,
   readOnly: false,
-  Required: false,
   type: 'text'
 }

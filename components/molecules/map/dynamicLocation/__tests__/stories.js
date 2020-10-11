@@ -2,15 +2,17 @@
  * Location
  */
 
-import { DynamicLocation, Marker } from '../'
+import { DynamicLocation, Marker } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/Map/DynamicLocation',
   component: DynamicLocation,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

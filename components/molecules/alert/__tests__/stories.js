@@ -4,19 +4,19 @@
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { Wrapper } from 'decorators'
 
 // UI
-import { Alert } from '../'
+import { Alert } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/Alert',
   component: Alert,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

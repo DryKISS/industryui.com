@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { any, bool, func, string } from 'prop-types'
 
 // UI

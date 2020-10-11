@@ -3,10 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
+import { useState } from 'react'
 
 // UI
 import {
@@ -20,15 +17,17 @@ import {
   useForm,
   useGeoCoder
 } from 'components'
+
 import Readme from '../README.md'
 
 export default {
   title: 'Services/Google/GeoCoder',
   component: GeoCoder,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

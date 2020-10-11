@@ -1,5 +1,3 @@
-# Typeform
-
 Embeds a Typeform into an exisitng page.
 
 ## Usage

@@ -2,12 +2,8 @@
  * React Select
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { Button, Form, FormError, FormLabel, DropzoneField, useForm } from 'components'
@@ -16,10 +12,11 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Dropzone',
   component: DropzoneField,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

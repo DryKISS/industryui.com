@@ -3,7 +3,6 @@
  */
 
 // React
-import React from 'react'
 import { any, bool, func, object } from 'prop-types'
 
 // Lodash

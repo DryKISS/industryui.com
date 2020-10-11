@@ -36,38 +36,32 @@ const COLOUR = {
 
 const HEADINGS = {
   h1: {
-    fontFamily: 'JetBrains Mono Bold',
     fontSize: '2rem',
     lineHeight: '1.25',
     textTransform: 'initial'
   },
   h2: {
-    fontFamily: 'JetBrains Mono Bold',
     fontSize: '1.75rem',
     lineHeight: '1.25',
     textTransform: 'initial'
   },
   h3: {
-    fontFamily: 'JetBrains Mono Bold',
     fontSize: '1.5rem',
     lineHeight: '1.25',
     textTransform: 'initial'
   },
   h4: {
-    fontFamily: 'JetBrains Mono Bold',
     fontSize: '1.25rem',
     lineHeight: '1.25',
     textTransform: 'initial'
   },
   h5: {
-    fontFamily: 'JetBrains Mono',
     fontSize: '1rem',
     lineHeight: '1.5',
     letterSpacing: '2px',
     textTransform: 'uppercase'
   },
   h6: {
-    fontFamily: 'JetBrains Mono',
     fontSize: '0.875rem',
     lineHeight: '1.5',
     letterSpacing: '2px',
@@ -121,7 +115,6 @@ const PAGE = {
 }
 
 const TYPOGRAPHY = {
-  font: '"JetBrains Mono"',
   fontColour: COLOUR.black,
   fontSizeBase: '1rem'
 }

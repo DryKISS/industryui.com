@@ -2,4 +2,4 @@
  * Social
  */
 export * from './facebook'
-export * from './typeform'
+export * from './typeform/typeformEmbed'

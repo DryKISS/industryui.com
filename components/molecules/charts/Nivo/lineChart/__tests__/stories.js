@@ -4,7 +4,6 @@
 
 // Storybook
 import { boolean, select, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Nivo
 import { colorSchemes } from '@nivo/colors'
@@ -23,10 +22,11 @@ import styled from 'styled-components'
 export default {
   title: 'Molecules/Charts/Nivo/Line',
   component: LineChart,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -62,7 +62,6 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-/// stories
 export const main = () => {
   return <BaseComponent axisBottom={{ tickRotation: 90 }} />
 }

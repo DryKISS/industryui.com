@@ -1,3 +1,1 @@
-# Close
-
 Generic close Icon

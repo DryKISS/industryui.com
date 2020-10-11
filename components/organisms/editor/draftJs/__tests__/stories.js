@@ -2,20 +2,20 @@
  * Draft JS
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-import Readme from '../README.md'
+// DraftJS
+import { DraftJs } from '../draftJs'
 
 // UI
-import { DraftJs } from '../draftJs'
 import { Button, Form, useForm } from 'components'
+import Readme from '../README.md'
 
 export default {
   title: 'Organisms/Editor',
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

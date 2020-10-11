@@ -2,23 +2,18 @@
  * Form - Error
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { FormError } from '../../'
+import { FormError } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Error',
+  title: 'Form',
   component: FormError,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -32,4 +27,4 @@ const BaseComponent = (props = {}) => {
   return <FormError {...defaultProps} />
 }
 
-export const main = () => <BaseComponent />
+export const error = () => <BaseComponent />

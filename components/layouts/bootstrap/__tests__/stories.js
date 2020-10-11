@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 // UI
 import { Bootstrap, ConfigContext, Navbar } from 'components'
@@ -19,8 +19,10 @@ export default {
   title: 'Layouts/Bootstrap',
   component: Bootstrap,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

@@ -3,53 +3,55 @@
  */
 
 // Storybook
-import { action } from '@storybook/addon-actions'
-import { Wrapper } from 'decorators'
+import { ContextControl, SizeControl } from 'decorators'
 
 // UI
-import { arrayOfValues, Avatar, CONTEXT, ControlTypes, SIZE } from 'components'
+import { Avatar, CONTEXT, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Avatar',
+  args: {
+    action: 'Edit',
+    actionClick: () => {},
+    children: '',
+    className: '',
+    context: CONTEXT.PRIMARY,
+    content: 'Avatar',
+    click: () => {},
+    gmail: 'test@gmail.com',
+    size: SIZE.MD,
+    src: 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg',
+    style: '',
+    withAction: false,
+    withImage: false,
+    withGravatar: false
+  },
+  argTypes: {
+    actionClick: { action: 'clicked' },
+    context: ContextControl(),
+    click: { action: 'clicked' },
+    size: SizeControl()
+  },
   component: Avatar,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Avatar'
 }
 
-const BaseComponent = ({ ...args }) => {
-  const defaultProps = {
-    content: 'Avatar'
+export const main = args => {
+  const props = {
+    action: args.withAction ? args.action : '',
+    content: args.content,
+    context: args.context,
+    gmail: args.withGravatar ? args.gmail : '',
+    size: args.size,
+    src: args.withImage ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg' : ''
   }
-  if (args.withImage) {
-    args.src = 'https://via.placeholder.com/128'
-    delete args.withImage
-  }
-  if (args.withAction) {
-    args.action = 'edit'
-    args.actionClick = () => action('clicked')
-    delete args.withAction
-  }
-  if (args.withGravatar) {
-    args.gmail = 'test@gmail.com'
-    delete args.withGravatar
-  }
-  return <Avatar {...defaultProps} {...args} />
-}
 
-export const avatar = BaseComponent.bind({})
-avatar.args = {
-  withAction: false,
-  withImage: false,
-  withGravatar: false,
-  context: CONTEXT.DARKGREY,
-  size: SIZE.MD
-}
-avatar.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
-  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
+  return <Avatar {...props} />
 }

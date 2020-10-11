@@ -3,19 +3,20 @@
  */
 
 // Storybook
-import { Size, Wrapper } from 'decorators'
+import { Size } from 'decorators'
 
 // UI
 import { Button, FormField, Icon, InputGroup, InputGroupAddon, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/InputGroup',
   component: InputGroup,
-  decorators: [Wrapper],
+  title: 'Form/InputGroup',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -39,7 +40,7 @@ export const prependButton = () => {
   return (
     <BaseComponent>
       <InputGroupAddon addonType='prepend'>
-        <Button content='Search' type='submit' />
+        <Button content='Search' type='submit' size='sm' />
       </InputGroupAddon>
 
       <Input />
@@ -65,7 +66,7 @@ export const appendButton = () => {
       <Input />
 
       <InputGroupAddon addonType='append'>
-        <Button content='Search' type='submit' />
+        <Button content='Search' type='submit' size='sm' />
       </InputGroupAddon>
     </BaseComponent>
   )

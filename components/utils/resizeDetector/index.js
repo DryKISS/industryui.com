@@ -1,8 +1,14 @@
-import React, { memo } from 'react'
+/**
+ * Resize Detector
+ */
+
+// React
+import { memo } from 'react'
+
+// Utils
 import { withResizeDetector } from 'react-resize-detector'
 import styled from 'styled-components'
 
-// let timer
 export const ResizeDetector = withResizeDetector(
   memo(
     ({ height, onResize, style, width }) => {
@@ -12,11 +18,12 @@ export const ResizeDetector = withResizeDetector(
     ({ width: prevWidth }, { width: nextWidth }) => prevWidth === nextWidth
   )
 )
+
 const ResizeDetectorWrapper = styled.div`
-  width: 100%;
   height: 100%;
-  top: 0;
-  position: absolute;
   left: 0;
   pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
 `

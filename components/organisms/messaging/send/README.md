@@ -1,5 +1,3 @@
-# Messaging/Send
-
 Provides a messaging send box, attach, emoji and send button.
 
 @features

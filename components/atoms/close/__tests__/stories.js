@@ -3,38 +3,35 @@
  */
 
 // Storybook
-import { action } from '@storybook/addon-actions'
-import { Context, Wrapper } from 'decorators'
-import { text } from '@storybook/addon-knobs'
+import { ContextControl, IconPrefixControl } from 'decorators'
 
 // UI
 import { Close } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Close',
+  args: {
+    className: '',
+    click: '',
+    context: 'dark',
+    icon: 'times-circle',
+    prefix: 'fas'
+  },
+  argTypes: {
+    context: ContextControl(),
+    prefix: IconPrefixControl()
+  },
   component: Close,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Close'
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    className: text('Classname', ''),
-    click: action('clicked'),
-    context: Context('', 'dark'),
-    icon: text('Icon', 'times-circle'),
-    iconPrefix: text('Icon prefix', 'fas'),
-    ...props
-  }
-
-  return <Close {...defaultProps} />
+export const main = args => {
+  return <Close {...args} />
 }
-
-export const main = () => <BaseComponent />
-export const custom = () => <BaseComponent icon='copy' iconPrefix='far' />
-export const context = () => <BaseComponent context='danger' />

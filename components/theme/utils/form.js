@@ -1,3 +1,8 @@
+/**
+ * Theme - Utils - Form Styles
+ */
+
+// Style
 import { css } from 'styled-components'
 
 export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
@@ -19,6 +24,7 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
       `}
   `
 }
+
 export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Required, theme }) => {
   return css`
     background-clip: padding-box;

@@ -1,4 +1,4 @@
 /**
  * Templates
  */
-export * from './article'
+export * from './article/article'

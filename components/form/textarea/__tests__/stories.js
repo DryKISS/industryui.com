@@ -3,34 +3,51 @@
  */
 
 // Storybook
-import { text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
+import { SizeControl } from 'decorators'
+
+// Yup
+import { object, string } from 'yup'
 
 // UI
-import { Button, Form, TextareaField, FormLabel, useForm } from '../../../../'
+import { Button, Form, FormLabel, TextareaField, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Textarea',
+  args: {
+    name: 'textarea',
+    rows: 1
+  },
+  argTypes: {
+    size: SizeControl()
+  },
   component: TextareaField,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Form/Textarea'
 }
 
-const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm()
-  const onSubmit = data => {}
+const schema = object().shape({
+  textarea: string().required()
+})
+
+export const main = args => {
+  const { errors, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
+  })
+
+  const onSubmit = data => {
+    console.info(data)
+  }
 
   const defaultProps = {
     errors: errors,
-    name: 'description',
-    placeholder: text('Placeholder', 'Description'),
     register: register,
-    ...props
+    ...args
   }
 
   return (
@@ -43,5 +60,3 @@ const BaseComponent = (props = {}) => {
     </Form>
   )
 }
-
-export const main = () => <BaseComponent />

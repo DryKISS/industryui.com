@@ -1,3 +1,8 @@
+/**
+ * useTheme
+ */
+
+// React
 import { useLayoutEffect } from 'react'
 
 // Hook

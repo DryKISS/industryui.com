@@ -3,17 +3,17 @@
  */
 
 // React
-import React, { useState, useRef } from 'react'
-import { number, func, array } from 'prop-types'
+import { useRef, useState } from 'react'
+import { array, func, number } from 'prop-types'
 
 // UI
-import { Button, EmojiMart, Form, Icon, TextareaField, Dropdown, useForm } from '../../../'
+import { Button, Dropdown, EmojiMart, Form, Icon, TextareaField, useForm } from '../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
-  const { handleSubmit, register, setValue, watch } = useForm({
+export const MessagingSend = ({ audienceItems, maxLength, onSubmit }) => {
+  const { errors, handleSubmit, register, setValue, watch } = useForm({
     defaultValues: {
       message: ''
     }
@@ -71,27 +71,28 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
           {audience && (
             <StyledDropDown
               items={audienceItems}
-              position='top'
               onChange={item => setAudience(item)}
+              position='top'
             >
               {audience.name}
             </StyledDropDown>
           )}
 
           <StyledTextarea
-            register={register}
-            name='message'
+            errors={errors}
             maxLength={maxLength}
+            name='message'
             placeholder='Write message'
-            rows={1}
+            register={register}
+            rows={2}
           />
 
           <input
-            ref={fileInputRef}
-            type='file'
             multiple
             onChange={handleFilesChange}
+            ref={fileInputRef}
             style={{ display: 'none' }}
+            type='file'
           />
 
           <StyledElements>
@@ -101,9 +102,9 @@ export const MessagingSend = ({ audienceItems, onSubmit, maxLength }) => {
             <Button
               content='Send'
               context='info'
-              size='md'
-              type='submit'
               disabled={message.length === 0 && attachments.length === 0}
+              size='sm'
+              type='submit'
             />
           </StyledElements>
         </StyledForm>
@@ -116,10 +117,10 @@ const StyledContainer = styled.div`
   background-color: #fff;
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #c0c0c0;
+  box-sizing: border-box;
   color: #c0c0c0;
   padding: ${({ audience }) => (audience ? '1.5rem 1rem 1rem' : '1rem')};
   position: relative;
-  box-sizing: border-box;
 `
 
 const StyledPickerContainer = styled(StyledContainer)`
@@ -142,15 +143,20 @@ const StyledForm = styled(Form)`
 `
 
 const StyledTextarea = styled(TextareaField)`
-  border: none;
+  background-color: ${({ theme }) => theme.COLOUR.light};
+  border: ${({ theme }) => theme.COLOUR.light};
+  border-radius: 1rem;
   line-height: 1.5;
   resize: none;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem;
 
   &:focus {
     border-color: initial;
     box-shadow: initial;
   }
 `
+
 const StyledElements = styled.div`
   align-items: center;
   display: flex;
@@ -167,9 +173,9 @@ const StyledIcon = styled(Icon)`
 
 const StyledDropDown = styled(Dropdown)`
   position: absolute;
+  left: 8px;
   text-transform: uppercase;
   top: -24px;
-  left: 8px;
 
   .dropdown--link {
     color: #000;

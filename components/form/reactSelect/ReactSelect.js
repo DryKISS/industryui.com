@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 // React Hook Form
 import { Controller } from 'react-hook-form'

@@ -1,5 +1,3 @@
-# Input
-
 Form input component
 
 ## Usage

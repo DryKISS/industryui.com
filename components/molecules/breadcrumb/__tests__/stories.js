@@ -2,22 +2,20 @@
  * Breadcrumb
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
-import { Breadcrumb } from '../'
+import { Breadcrumb } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Molecules/Breadcrumb',
   component: Breadcrumb,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
 
-export const main = () => <Breadcrumb category='Ian Warner' page='Home' path='/' />
+export const main = () => <Breadcrumb category='DryKISS' page='Home' path='/' />

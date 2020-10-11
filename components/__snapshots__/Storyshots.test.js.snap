@@ -1,1201 +1,2251 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Atoms/Address Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
-exports[`Storyshots Atoms/Avatar Avatar 1`] = `
+exports[`Storyshots Atoms/Avatar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Badge Badge 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Blockquote Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Button Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Button/Toolbar Button Toolbar 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Close Context 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Close Custom 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Close Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Date Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Details Details 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/DetailsText Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Divider Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Divider Vertical 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Figure Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Container 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Container Fluid 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Offsets 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Row 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Row Align 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Row Justified 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Row Wrap 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Grid Scaled Columns 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Heading Heading Component 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Icon Brands 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Icon Icons 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Icon Layers 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Icon Transform 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Icon/Stacked Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Image Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Link Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Link Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/List Border 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/List Flush 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/List Group 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/List Knobbed 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/List Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Progress Animated 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Progress Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Progress Multiple Progress Bars 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Progress Striped 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Space Space 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Text Text 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Toggle Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Tooltip Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Atoms/Tooltip With Jsx 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Card Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Categories Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Category Author 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Category Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Details Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Hero Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Listing Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Listing Tag 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Read Time Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Sidebar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Blog/Tags Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form All Inputs Template 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Checkbox Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Checkbox Stacked 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Date Picker/Calendar Default Value 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Date Picker/Calendar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Date Picker/Calendar Time 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Date Picker/Calendar Working Hours 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Date Picker/Input Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Date Picker/Input Selective 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Dropzone Single 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Dropzone/Standard Accept All 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Dropzone/Standard Disabled 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Dropzone/Standard Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Dropzone/Standard Multiple False 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Dropzone/Uploader Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Error Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Field Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
@@ -1217,2849 +2267,5431 @@ exports[`Storyshots Form/IUIRichEditor IUI Rich Editor 1`] = `
 `;
 
 exports[`Storyshots Form/Input Input Template 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/InputGroup Append Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/InputGroup Append Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/InputGroup Prepend Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/InputGroup Prepend Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Label Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Radio Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Radio Stacked 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/ReactSelect Async 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/ReactSelect Chained 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/ReactSelect Chained No Default 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/ReactSelect Multi 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/ReactSelect Single 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/ReactSelect With Default Value 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Search Appended Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Search Custom Label 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Search Default Value 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Search Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Search Prepended Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Select Country 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Select Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Select Option Groups 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Select Range 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Form/Textarea Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Hooks/Timer Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Hooks/Timer Manual Start 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Hooks/Timer Show Duration 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Hooks/Timer With Initial Time 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Layouts/Article Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Layouts/Bootstrap Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Layouts/Dashboard Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Layouts/Page Fluid 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Layouts/Page Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Layouts/Sidebar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Accordion Close Other Accords On One Accord Opening 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Accordion Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Accordion Open 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Alert Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Alert With Close 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Alert With Header 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Alert With Header Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Alert With Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Breadcrumb Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Buttons Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Card Long Title 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Card Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Card No Image 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Card With Cta 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel With Array 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel With HTML Image Tag 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel With Image Component 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel With Just One Item 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel With Just Text 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Carousel With Pagination 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Axis 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Label 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Tooltip 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Bar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Bar Stacked Bar Double 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Bar Stacked Bar Triple 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Line Area 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Line Bigdata 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Line Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Pie Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Pie Other Data Pie 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Copyright Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dog/Card Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dog/Link Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dog/Name Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dog/Table Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Avatar 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Colour Picker 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Icon 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Icon Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Icon Picker 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Language 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Dropdown Right Aligned 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/EmojiMart Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Get Address Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Hero Centered 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Hero Cleverly Block 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Hero Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/ImageLocation Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/ImageLocation Used In Form 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/ImageLocation With Coordinates Stored 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Intercom Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Map/DynamicLocation Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Map/StaticLocation Covent Garden 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Map/StaticLocation Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Map/StaticLocation Responsive Western Central 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Map/StaticLocation Westminster Abbey 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Navbar Brand 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Navbar Contained 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Navbar Navbar 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Navbar Toggler 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Molecules/Navbar Widgets 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+>
+  <div
+    className="storybook-readme-story"
+  >
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Navbar/Theme Cleverly 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Navbar/Theme Cleverly Admin 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Navbar/Theme Drykiss 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/Navbar/Widgets Widgets 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/NavbarBrand Brand 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/NavbarContained Contained 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/NavbarMAin Navbar 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Molecules/NavbarToggler Toggler 1`] = `
-@media (min-width:62em) {
-
-}
-
-<div
-  className="storybook-readme-story"
->
-  <div
-    style={Object {}}
-  >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Notification Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/OffCanvas Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageHeading Centered 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageHeading Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageHeading With Context 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageHeading With Help 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageLoading Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageLoading With Children 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/PageProgressBar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Pagination Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Pagination With Custom Prev And Next Buttons 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Pagination With Many Items 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Pagination With Prev And Next Buttons 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Rating Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Rating With Context 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Rating With Size 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Section Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Sidebar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/SimpleTime Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Stepper Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Actions 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Align 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Caption 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Context 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Formatter 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Hover 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Loading 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Loading Without Data 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table No Columns 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Responsive 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Row Click Story 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Show No Data 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table Striped 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Table With Pagination 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Tabs Active 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Tabs Disabled 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Tabs Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Molecules/Webcam Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Bar As Footer 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Bar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Big Calendar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Color Picker Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Editor Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Email Change Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Footer 12 Column 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Footer Formatter 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Footer Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Footer Portal 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Forgot Details Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Forgot Details Reset Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Base Component 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Custom Calendar 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Custom Events 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Event Click 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Events 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Events With Event Addition On Click 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Events With Tooltip 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Fetch Events 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Fetch Events With Loading Indicator 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Fetch Events With Tooltip 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Full Calendar Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Login Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Login With Block Submit Button 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Login With Http Request 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Login With Placeholder 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Login With Show And Hide Password 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Messaging/Background Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Messaging/Container Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Messaging/List Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Messaging/Message Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Messaging/Send Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Password Change Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Register Error 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Organisms/Register Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Pages/Error404 Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Services/Google/GeoCoder Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Templates/Article Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Utils/Age Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
@@ -4113,49 +7745,91 @@ exports[`Storyshots Utils/Capitalize Capitalize 1`] = `
 `;
 
 exports[`Storyshots Utils/Colour Linear Blend 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Utils/Colour Linear Shade 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Utils/ComunicationService Comunication Show Case 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
@@ -4241,33 +7915,61 @@ exports[`Storyshots Utils/GetUrlParameters Get Url Parameter 1`] = `
 `;
 
 exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
@@ -4305,33 +8007,61 @@ exports[`Storyshots Utils/ResizeDetetor Resize Detector 1`] = `
 `;
 
 exports[`Storyshots Utils/Slugify Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Storyshots Utils/Validator/PostCode Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
 @media (min-width:62em) {
 
 }
 
 <div
-  className="storybook-readme-story"
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
 >
   <div
-    style={Object {}}
+    className="storybook-readme-story"
   >
-    <div />
+    <div
+      style={Object {}}
+    >
+      <div />
+    </div>
   </div>
 </div>
 `;

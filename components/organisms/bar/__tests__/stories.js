@@ -2,30 +2,26 @@
  * Bar
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { Wrapper } from 'decorators'
+import { ControlTypes } from 'decorators'
 
 // UI
-
-import { Bar, BarConfig, CONTEXT, ControlTypes } from 'components'
-
+import { Bar, BarConfig, CONTEXT } from 'components'
 import Readme from '../README.md'
 
+// Style
 import styled from 'styled-components'
-// Data
 
 export default {
-  title: 'Organisms/Bar',
   component: Bar,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Organisms/Bar'
 }
 
 const BaseComponent = (args = {}) => {
@@ -35,29 +31,35 @@ const BaseComponent = (args = {}) => {
 
   return <Bar {...defaultProps} />
 }
+
 export const main = args => {
   return (
     <MainWrapper>
       <BaseComponent {...args} />
+
       <div>
         <p>Content</p>
       </div>
     </MainWrapper>
   )
 }
+
 export const asFooter = () => {
   return (
     <MainWrapper>
       <div style={{ height: '85%' }}>
         <p>Content</p>
       </div>
+
       <BaseComponent placement={BarConfig.PLACEMENT.BOTTOM} flat />
     </MainWrapper>
   )
 }
+
 const MainWrapper = styled.div`
   height: 40rem;
 `
+
 main.args = {
   background: CONTEXT.LIGHT,
   flat: false,
@@ -68,6 +70,7 @@ main.args = {
   width: 15,
   withExposedButton: true
 }
+
 main.argTypes = {
   background: {
     control: {

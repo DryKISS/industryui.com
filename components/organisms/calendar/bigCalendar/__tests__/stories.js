@@ -2,9 +2,6 @@
  * Big Calendar
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { BigCalendar } from 'components'
 import Readme from '../README.md'
@@ -12,10 +9,11 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Big Calendar',
   components: BigCalendar,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

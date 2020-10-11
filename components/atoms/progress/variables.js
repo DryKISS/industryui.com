@@ -1,3 +1,7 @@
+/**
+ * Progress - Variables
+ */
+
 // UI
 import { COLOUR } from '../../theme/variables/colour'
 

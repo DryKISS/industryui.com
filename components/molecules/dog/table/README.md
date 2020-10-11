@@ -1,5 +1,3 @@
-# Dog - Table
-
 Creates a simple datagrid
 
 ## Links

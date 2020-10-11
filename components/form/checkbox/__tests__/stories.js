@@ -2,12 +2,8 @@
  * Form - Field
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Yup
 import { object, string } from 'yup'
@@ -32,10 +28,11 @@ const data = [
 export default {
   title: 'Form/Checkbox',
   component: CheckboxField,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

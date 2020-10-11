@@ -89,8 +89,7 @@ export const SelectField = forwardRef(
 )
 
 const StyledSelect = styled.select`
-${props => COMMON_INPUT_STYLES(props)}
-
+  ${props => COMMON_INPUT_STYLES(props)}
   ${({ size }) => {
     switch (size) {
       case SIZE.SM:

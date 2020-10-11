@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Style
 import styled from 'styled-components'

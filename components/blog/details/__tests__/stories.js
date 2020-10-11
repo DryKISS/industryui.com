@@ -2,12 +2,6 @@
  * Blog - Details
  */
 
-// React
-import React from 'react'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 // UI
 import { BlogDetails } from 'components'
 import Readme from '../README.md'
@@ -18,10 +12,11 @@ import { Articles, Blog, Facebook } from '../../__mocks__/articles'
 export default {
   title: 'Blog/Details',
   component: BlogDetails,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

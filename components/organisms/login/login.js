@@ -4,7 +4,7 @@
  */
 
 // React
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { bool, object, oneOfType, string } from 'prop-types'
 
 // UI
@@ -19,10 +19,12 @@ import {
   PageHeading,
   UserContext,
   useForm
-} from '../../../'
+} from '../../'
 
 // Style
 import styled from 'styled-components'
+
+const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 export const Login = ({
   blockSubmitButton,
@@ -61,8 +63,6 @@ export const Login = ({
   //     }
   //   ]
   // }
-
-  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
   return (
     <>

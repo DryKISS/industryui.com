@@ -1,3 +1,1 @@
-# Blog - Sidebar
-
 Listing

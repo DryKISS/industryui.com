@@ -3,15 +3,17 @@
  */
 
 // UI
-import { Navbar, SidebarLayout } from '../../../'
+import { Navbar, SidebarLayout } from 'components'
 import Readme from '../README.md'
 
 export default {
   title: 'Layouts/Sidebar',
   component: SidebarLayout,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

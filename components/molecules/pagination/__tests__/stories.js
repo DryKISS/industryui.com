@@ -3,11 +3,11 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Storybook
 import { number } from '@storybook/addon-knobs'
-import { Context, Size, Wrapper } from 'decorators'
+import { Context, Size } from 'decorators'
 
 // UI
 import { Pagination } from '../'
@@ -17,10 +17,11 @@ import { Icon } from '../../../atoms'
 export default {
   title: 'Molecules/Pagination',
   component: Pagination,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

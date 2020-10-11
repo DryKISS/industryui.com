@@ -12,10 +12,10 @@ import { CONTEXT, Icon } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Close = ({ className, click, context, icon, iconPrefix }) => {
+export const Close = ({ className, click, context, icon, prefix }) => {
   return (
     <StyledButton className={className} context={context} onClick={click}>
-      <Icon aria-hidden='true' context={context} icon={icon} prefix={iconPrefix} />
+      <Icon aria-hidden='true' context={context} icon={icon} prefix={prefix} />
     </StyledButton>
   )
 }
@@ -47,11 +47,11 @@ Close.propTypes = {
   click: func.isRequired,
   context: oneOf(Object.values(CONTEXT)),
   icon: string,
-  iconPrefix: string
+  prefix: string
 }
 
 Close.defaultProps = {
   context: 'dark',
   icon: 'times-circle',
-  iconPrefix: 'fas'
+  prefix: 'fas'
 }

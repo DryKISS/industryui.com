@@ -1,3 +1,6 @@
+/**
+ * Theme - Constants - Position
+ */
 export const Position = {
   Bottom: 'bottom',
   Top: 'top',

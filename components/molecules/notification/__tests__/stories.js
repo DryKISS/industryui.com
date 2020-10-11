@@ -5,7 +5,7 @@
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
-import { Context, Wrapper } from 'decorators'
+import { Context } from 'decorators'
 
 // UI
 import { Notification } from 'components'
@@ -14,10 +14,11 @@ import Readme from '../README.md'
 export default {
   title: 'Molecules/Notification',
   component: Notification,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

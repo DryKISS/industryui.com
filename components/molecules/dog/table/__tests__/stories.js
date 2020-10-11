@@ -22,8 +22,10 @@ export default {
   title: 'Molecules/Dog/Table',
   component: TableDogs,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

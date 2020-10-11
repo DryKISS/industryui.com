@@ -4,7 +4,6 @@
 
 // Storybook
 import { boolean } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { Footer } from 'components'
@@ -16,10 +15,11 @@ import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__/footer'
 export default {
   title: 'Organisms/Footer',
   component: Footer,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -35,9 +35,6 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = () => <BaseComponent />
-
 export const formatter = () => <BaseComponent columns={FORMATTER} />
-
 export const portal = () => <BaseComponent columns={PORTAL} />
-
 export const _12Column = () => <BaseComponent columns={ONE_COLUMN} />

@@ -3,45 +3,41 @@
  */
 
 // Storybook
-import { Wrapper } from 'decorators'
+import { ContextControl, SizeControl } from 'decorators'
 
 // UI
-import { Button, CONTEXT, ControlTypes, SIZE } from 'components'
+import { Button, CONTEXT, SIZE } from 'components'
 import Readme from '../README.md'
-import { arrayOfValues } from 'components/utils'
 
 export default {
-  title: 'Atoms/Button',
-  decorators: [Wrapper],
+  args: {
+    block: false,
+    center: false,
+    content: 'Button text',
+    context: CONTEXT.PRIMARY,
+    dashed: false,
+    disabled: false,
+    endIcon: 'user',
+    outline: false,
+    shadow: false,
+    size: SIZE.MD,
+    startIcon: 'user'
+  },
+  argTypes: {
+    context: ContextControl(),
+    size: SizeControl()
+  },
   component: Button,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Button'
 }
 
-const BaseComponent = ({ ...args }) => {
+export const main = args => {
   return <Button {...args} />
-}
-
-export const button = BaseComponent.bind({})
-
-button.args = {
-  block: false,
-  center: false,
-  content: 'Button text',
-  context: CONTEXT.PRIMARY,
-  dashed: false,
-  disabled: false,
-  endIcon: 'user',
-  outline: false,
-  shadow: false,
-  size: SIZE.MD,
-  startIcon: 'user'
-}
-
-button.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
-  size: { control: { type: ControlTypes.Select, options: arrayOfValues(SIZE) } }
 }

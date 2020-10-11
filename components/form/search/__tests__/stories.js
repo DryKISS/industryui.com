@@ -4,7 +4,6 @@
 
 // Storybook
 import { boolean, select, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Yup
 import { object, string } from 'yup'
@@ -16,10 +15,11 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Search',
   component: Search,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

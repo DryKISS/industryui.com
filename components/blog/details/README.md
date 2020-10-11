@@ -1,3 +1,1 @@
-# Blog - Details
-
 Details

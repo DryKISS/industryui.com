@@ -3,7 +3,6 @@
  */
 
 // React
-import React from 'react'
 import { bool, object, string } from 'prop-types'
 
 // React Hook Form

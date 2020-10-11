@@ -1,9 +1,9 @@
 /**
- * Notifications - Provider
+ * Services - Notifications - Provider
  */
 
 // UI
-import { NotificationsContext, useNotifications } from '../../../'
+import { NotificationsContext, useNotifications } from '../../'
 
 export const NotificationsProvider = ({ children, user }) => {
   // const {

@@ -64,16 +64,18 @@ const getTextContext = (context, outline, theme) => {
 
 const StyledButton = styled.button`
   ${props => BACKGROUND(props)}
-
-  color: ${({ textContext, theme: { COLOUR } }) => COLOUR[textContext]};
-
-  border-radius: 4px;
+  align-items: center;
+  border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
+    outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
+  border-radius: .25rem;
   box-sizing: border-box;
+  color: ${({ textContext, theme: { COLOUR } }) => COLOUR[textContext]};
   cursor: pointer;
   display: ${({ block, centre }) => (centre || block ? 'flex' : 'inline-flex')};
-  align-items: center;
+  font-size: 14px;
+  height: 3rem;
   justify-content: center;
-  font-family: ${({ theme }) => theme.font}; /* stylelint-disable-line */
+  line-height: 100%;
   outline: none;
   overflow: visible;
   text-decoration: none;
@@ -84,13 +86,6 @@ const StyledButton = styled.button`
   margin: ${({ centre }) => (centre ? 'auto' : 0)};
   padding: ${({ theme }) => theme.SPACING(3, 6)};
   width: ${({ block }) => (block ? '100%' : 'initial')};
-  height: 48px;
-  font-size: 14px;
-  line-height: 100%;
-
-  border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
-    outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
-
   ${({ disabled }) =>
     disabled &&
     css`

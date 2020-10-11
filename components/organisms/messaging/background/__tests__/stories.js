@@ -3,34 +3,41 @@
  */
 
 // Storybook
-import { select } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
+import { ControlTypes } from 'decorators'
 
 // UI
-import { MessageBackground } from 'components'
+import { arrayOfValues, MessageBackground } from 'components'
 import Readme from '../README.md'
+
+const options = {
+  DryKISS: '/messaging/background.png',
+  WhatsApp: '/messaging/whatsapp.png'
+}
 
 const Height = story => {
   return <div style={{ height: '500px' }}>{story()}</div>
 }
 
 export default {
-  title: 'Organisms/Messaging/Background',
-  component: MessageBackground,
-  decorators: [Height, Wrapper],
-  parameters: {
-    readme: {
-      sidebar: Readme
+  argTypes: {
+    path: {
+      name: 'Path',
+      control: {
+        options: arrayOfValues(options),
+        type: ControlTypes.Select
+      }
     }
-  }
+  },
+  component: MessageBackground,
+  decorators: [Height],
+  parameters: {
+    docs: {
+      description: {
+        component: Readme
+      }
+    }
+  },
+  title: 'Organisms/Messaging/Background'
 }
 
-const options = {
-  Blank: '',
-  DryKISS: '/messaging/background.png',
-  WhatsApp: '/messaging/whatsapp.png'
-}
-
-const defaultValue = '/messaging/background.png'
-
-export const main = () => <MessageBackground path={select('Background', options, defaultValue)} />
+export const Main = args => <MessageBackground {...args} />

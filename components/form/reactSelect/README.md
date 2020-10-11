@@ -1,5 +1,3 @@
-# React Select
-
 Select input for multiselect, autocomplete and async.
 
 ## Links

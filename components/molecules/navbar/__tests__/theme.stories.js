@@ -18,8 +18,10 @@ import { Default } from '../__mocks__/navbar'
 export default {
   title: 'Molecules/Navbar/Theme',
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   },
   ...options
@@ -39,6 +41,6 @@ export const CleverlyAdmin = () => (
 
 export const Drykiss = () => (
   <ThemeProvider theme={DryKISSTheme}>
-    <BaseComponent custom widgets={Default} />
+    <BaseComponent widgets={Default} />
   </ThemeProvider>
 )

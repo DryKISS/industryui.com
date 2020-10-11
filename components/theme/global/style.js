@@ -9,21 +9,6 @@ import { createGlobalStyle } from 'styled-components'
 import { MEDIA_QUERY } from '../../'
 
 export const ThemeStyle = createGlobalStyle`
-  .Form-feedback {
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
-  }
-
-  .Form-validated .Form-control:valid~.Form-feedback {
-    display: none;
-  }
-
-  .Form-validated .Form-control:invalid {
-    border-color: #dc3545;
-  }
-
   .text-center {
     text-align: center;
   }
@@ -75,18 +60,13 @@ export const ThemeStyle = createGlobalStyle`
 
   body {
     color: ${props => props.theme.TYPOGRAPHY.fontColour};
-    font-family: ${props => props.theme.TYPOGRAPHY.font}; /* stylelint-disable-line */
+    font-family: ${props => props.theme.TYPOGRAPHY.font}, sans-serif;
     margin: 0;
     position: relative;
   }
 
   .fc-event {
     cursor: pointer;
-  }
-
-  pre {
-    font-family: monospace;
-    font-size: 1em;
   }
 
   abbr[title] {
@@ -103,7 +83,6 @@ export const ThemeStyle = createGlobalStyle`
   code,
   kbd,
   samp {
-    font-family: monospace;
     font-size: 1em;
   }
 
@@ -133,13 +112,16 @@ export const ThemeStyle = createGlobalStyle`
 
   input,
   optgroup,
-  select,
-  textarea {
+  select {
     font-family: inherit;
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
   }
+
+  /* textarea {
+    overflow: auto;
+  } */
 
   input {
     overflow: visible;
@@ -181,10 +163,6 @@ export const ThemeStyle = createGlobalStyle`
 
   progress {
     vertical-align: baseline;
-  }
-
-  textarea {
-    overflow: auto;
   }
 
   [type="checkbox"],

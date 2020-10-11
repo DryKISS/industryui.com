@@ -11,11 +11,10 @@ import { forwardRef, useState } from 'react'
 
 // UI
 import { LdsSpinner, PageLoading, Theme } from '../../../'
+import { CalendarWrapper } from './calendarWrapper'
 
 // Styled Components
 import styled from 'styled-components'
-
-import { CalendarWrapper } from './calendarWrapper'
 
 export const Calendar = forwardRef(({ ...props }, ref) => {
   const { CALENDAR, COLOUR } = Theme

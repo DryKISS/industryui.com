@@ -4,10 +4,9 @@
 
 // Storybook
 import { boolean, number, text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
-import { Table } from '../'
+import { Table } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -24,14 +23,15 @@ import {
 const dataContext = rowsContext.data
 
 export default {
-  title: 'Molecules/Table',
   component: Table,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Molecules/Table'
 }
 
 const BaseComponent = (props = {}) => {

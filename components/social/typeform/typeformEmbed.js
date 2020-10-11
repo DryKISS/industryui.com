@@ -5,7 +5,7 @@
  */
 
 // React
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { string, shape, number, func, bool, object } from 'prop-types'
 
 export const Typeform = ({ options, style, url }) => {

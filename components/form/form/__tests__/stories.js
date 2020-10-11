@@ -4,7 +4,8 @@
 
 // Storybook
 import { text } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
+import { ControlTypes } from 'decorators'
+
 // Yup
 import { number, object, string } from 'yup'
 
@@ -14,7 +15,6 @@ import {
   CheckboxField,
   Column,
   Controller,
-  ControlTypes,
   CurrencyInput,
   DatePickerCalendar,
   Divider,
@@ -24,10 +24,14 @@ import {
   Form,
   FormLabel,
   Heading,
+  InputGroup,
+  InputGroupAddon,
+  PercentInput,
   RadioField,
   ReactSelectField,
   RichTextInput,
   Row,
+  Search,
   SelectField,
   SIZE,
   Space,
@@ -48,10 +52,11 @@ import { COLOURS } from '../../select/__mocks__/colours'
 export default {
   title: 'Form',
   component: Form,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -95,10 +100,7 @@ const all = ({ ...args }) => {
     console.log(data)
   }
 
-  console.log(errors)
-
   const colMd = args.ColumnWidth
-
   const rowBackground = args.backgroundColour
 
   const defaultProps = {
@@ -193,14 +195,29 @@ const all = ({ ...args }) => {
 
       <Divider size='md' />
 
-      <CurrencyInput {...defaultProps} name='amount' label='Total amount' />
+      <FormLabel label='Input Group'>
+        <InputGroup>
+          <FormField {...defaultProps} name='id' placeholder='Search...' />
+
+          <InputGroupAddon addonType='append'>
+            <Button content='Search' type='submit' size='sm' />
+          </InputGroupAddon>
+        </InputGroup>
+      </FormLabel>
+
+      <FormLabel label='Search'>
+        <Search {...defaultProps} />
+      </FormLabel>
+
+      <CurrencyInput {...defaultProps} name='amount' label='Currency input' />
+      <PercentInput {...defaultProps} name='amount' label='Percent input' />
 
       <FormLabel label='Input'>
         <FormField {...defaultProps} name='input' />
       </FormLabel>
 
       <FormLabel label='Textarea'>
-        <TextareaField {...defaultProps} rows={2} name='textarea' />
+        <TextareaField {...defaultProps} name='textarea' rows={2} />
       </FormLabel>
 
       <FormLabel label='Select'>
@@ -215,6 +232,7 @@ const all = ({ ...args }) => {
       />
 
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend='Gender?' name='radio' />
+
       <FormLabel label='Rich'>
         <RichTextInput
           control={control}
@@ -223,6 +241,7 @@ const all = ({ ...args }) => {
           name='rich'
         />
       </FormLabel>
+
       <Button content='Submit' type='submit' />
     </Form>
   )
@@ -238,6 +257,7 @@ AllInputsTemplate.args = {
   size: 'lg',
   datePickerValue: ''
 }
+
 AllInputsTemplate.argTypes = {
   children: {
     control: {

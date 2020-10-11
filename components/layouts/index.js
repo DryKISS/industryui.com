@@ -1,9 +1,8 @@
 /**
  * Layouts
  */
-
-export * from './article'
-export * from './bootstrap'
-export * from './dashboard'
-export * from './page'
-export * from './sidebar'
+export * from './article/article'
+export * from './bootstrap/bootstrap'
+export * from './dashboard/dashboard'
+export * from './page/page'
+export * from './sidebar/sidebar'

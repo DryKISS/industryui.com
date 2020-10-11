@@ -2,8 +2,6 @@
  * Table Row (tr)
  */
 
-import React from 'react'
-
 // UI
 import { BACKGROUND } from '../../../'
 

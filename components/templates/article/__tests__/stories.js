@@ -2,22 +2,23 @@
  * Article
  */
 
+// Storybook
 import { array, text } from '@storybook/addon-knobs'
 
-import icon from '../__resources__/dog-icon.png'
-
 // UI
-import { Article } from '../'
+import { Article } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Templates/Article',
   component: Article,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Templates/Article'
 }
 
 export const main = () => (
@@ -28,7 +29,7 @@ export const main = () => (
       data:
         'This is <b>formatted</b> article text. <br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       heading: text('Heading', 'Dogs for everyone'),
-      image: icon,
+      image: '',
       tags: array('Tags', ['dogs', 'faq'])
     }}
     config={{}}

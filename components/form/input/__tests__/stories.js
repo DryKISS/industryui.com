@@ -2,8 +2,8 @@
  * Form - Search
  */
 
-// Storybook
-import { Wrapper } from 'decorators'
+// Stroybook
+import { ControlTypes } from 'decorators'
 
 // Yup
 import { object, string } from 'yup'
@@ -13,7 +13,6 @@ import {
   arrayOfValues,
   Button,
   Column,
-  ControlTypes,
   Form,
   Input,
   InputTypes,
@@ -30,10 +29,11 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Input',
   component: Input,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

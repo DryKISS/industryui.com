@@ -2,12 +2,8 @@
  * Form - Date Picker - Input
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { boolean } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // Yup
 import { object, string } from 'yup'
@@ -19,10 +15,11 @@ import Readme from '../README.md'
 export default {
   title: 'Form/Date Picker/Input',
   component: DatePickerInput,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }

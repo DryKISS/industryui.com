@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { array, bool, func, node, oneOf, string } from 'prop-types'
 
 // Style
@@ -63,7 +63,7 @@ export const Dropdown = ({
           <Icon
             aria-hidden='true'
             className='dropdown--caret'
-            icon={position === Position.Top ? 'carat-up' : 'caret-down'}
+            icon={position === Position.Top ? 'caret-up' : 'caret-down'}
             prefix='fas'
           />
         )}

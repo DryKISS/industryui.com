@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { func, object } from 'prop-types'
 
 import styled from 'styled-components'

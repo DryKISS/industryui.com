@@ -2,27 +2,25 @@
  * Link
  */
 
-// React
-import React from 'react'
-
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { boolean, text } from '@storybook/addon-knobs'
-import { Context, Wrapper } from 'decorators'
+import { Context } from 'decorators'
 
 // UI
 import { Button, Divider, Link } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Link',
   component: Link,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Atoms/Link'
 }
 
 const BaseComponent = (props = {}) => {

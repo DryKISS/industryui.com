@@ -43,7 +43,7 @@ export const Search = ({
 
       {appendSearchButton && (
         <InputGroupAddon addonType='append'>
-          <Button content={label || 'Search'} context='dark' size='lg' type='submit' />
+          <Button content={label || 'Search'} context='dark' size='sm' type='submit' />
         </InputGroupAddon>
       )}
     </InputGroup>

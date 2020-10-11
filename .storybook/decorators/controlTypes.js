@@ -1,3 +1,6 @@
+/**
+ * Stroybook - Control Types
+ */
 export const ControlTypes = {
   Array: 'array',
   Boolean: 'boolean',

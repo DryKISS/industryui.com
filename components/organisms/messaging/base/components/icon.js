@@ -1,16 +1,17 @@
 /**
- * Messaging/Base/Icon
+ * Messaging - Base - Icon
  */
 
-import { string } from 'prop-types'
+// React
+import { oneOf, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../../../'
+import { Icon, ICON_PREFIX } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const MessageIcon = ({ icon }) => {
+export const MessageIcon = ({ icon, prefix }) => {
   let useIcon = ''
 
   switch (icon) {
@@ -26,7 +27,7 @@ export const MessageIcon = ({ icon }) => {
       break
   }
 
-  return <StyledIcon fixedWidth={false} icon={useIcon} prefix='fad' />
+  return <StyledIcon fixedWidth={false} icon={useIcon} prefix={prefix} />
 }
 
 const StyledIcon = styled(Icon)`
@@ -36,5 +37,10 @@ const StyledIcon = styled(Icon)`
 `
 
 MessageIcon.propTypes = {
-  icon: string
+  icon: string.isRequired,
+  prefix: oneOf(Object.values(ICON_PREFIX))
+}
+
+MessageIcon.defaultProps = {
+  prefix: 'fas'
 }

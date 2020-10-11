@@ -3,11 +3,10 @@
  */
 
 // React
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // Storybook
 import { select } from '@storybook/addon-knobs'
-import { Wrapper } from 'decorators'
 
 // UI
 import { Alert, Login, requestSimulator, useForm } from 'components'
@@ -16,10 +15,11 @@ import Readme from '../README.md'
 export default {
   title: 'Organisms/Login',
   component: Login,
-  decorators: [Wrapper],
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
   }
 }
@@ -65,14 +65,14 @@ export const main = () => {
 }
 
 export const withShowAndHidePassword = () => {
-  return <Login showPassword />
+  return <BaseComponent showPassword />
 }
 
 export const withBlockSubmitButton = () => {
-  return <Login blockSubmitButton />
+  return <BaseComponent blockSubmitButton />
 }
 
-export const withPlaceholder = () => <Login showLabel={false} showPlaceholder />
+export const withPlaceholder = () => <BaseComponent showLabel={false} showPlaceholder />
 
 export const withHttpRequest = () => {
   const { change, form } = useForm({ email: '', password: '' })

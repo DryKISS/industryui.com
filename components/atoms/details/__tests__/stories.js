@@ -2,37 +2,55 @@
  * Components - Details - Stories
  */
 
-// React
-import React from 'react'
-
 // Storybook
-import { Wrapper } from 'decorators'
+import { ContextControl } from 'decorators'
 
 // UI
 import { Button, ButtonToolbar, Details } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Details',
-  component: Details,
-  decorators: [Wrapper],
-  parameters: {
-    readme: {
-      sidebar: Readme
+  args: {
+    children: 'Content',
+    context: 'primary',
+    open: false,
+    summary: 'Summary',
+    SummaryActionsComponent: '',
+    style: {},
+    Toolbar: '',
+    withButton: false,
+    withActionsComponent: false
+  },
+  argTypes: {
+    context: ContextControl(),
+    withButton: {
+      name: 'With Simple Button'
+    },
+    withActionsComponent: {
+      name: 'With Actions Component'
     }
-  }
+  },
+  component: Details,
+  parameters: {
+    docs: {
+      description: {
+        component: Readme
+      }
+    }
+  },
+  title: 'Atoms/Details'
 }
 
-const main = ({ ...args }) => {
-  const additionalProps = {}
+export const main = args => {
   if (args.withButton) {
-    additionalProps.button = 'button'
-    additionalProps.handleClick = e => {
+    args.button = 'button'
+    args.handleClick = e => {
       console.log(e)
     }
   }
+
   if (args.withActionsComponent) {
-    additionalProps.SummaryActionsComponent = (
+    args.SummaryActionsComponent = (
       <ButtonToolbar>
         <Button size='xs'>button1</Button>
         <Button size='xs'>button2</Button>
@@ -40,20 +58,5 @@ const main = ({ ...args }) => {
     )
   }
 
-  return (
-    <Details {...args} {...additionalProps}>
-      {args.content}
-    </Details>
-  )
-}
-export const details = main.bind({})
-details.args = {
-  summary: 'Summary',
-  content: 'Content',
-  withButton: false,
-  withActionsComponent: false
-}
-details.argTypes = {
-  withButton: { name: 'With Simple Button' },
-  withActionsComponent: { name: 'With Actions Component' }
+  return <Details {...args} />
 }
