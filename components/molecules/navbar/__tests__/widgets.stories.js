@@ -7,7 +7,7 @@ import { BaseComponent, options } from './baseComponent'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Navbar',
+  title: 'Molecules/Navbar/Widgets',
   parameters: {
     docs: {
       description: {

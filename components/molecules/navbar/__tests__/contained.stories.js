@@ -10,7 +10,7 @@ import Readme from '../README.md'
 import { Default } from '../__mocks__/navbar'
 
 export default {
-  title: 'Molecules/Navbar',
+  title: 'Molecules/Navbar/Contained',
   parameters: {
     docs: {
       description: {

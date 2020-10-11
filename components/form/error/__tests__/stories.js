@@ -7,7 +7,6 @@ import { FormError } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form',
   component: FormError,
   parameters: {
     docs: {
@@ -15,16 +14,15 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Error'
 }
 
-const BaseComponent = (props = {}) => {
+export const main = args => {
   const defaultProps = {
     message: 'This is required',
-    ...props
+    ...args
   }
 
   return <FormError {...defaultProps} />
 }
-
-export const error = () => <BaseComponent />

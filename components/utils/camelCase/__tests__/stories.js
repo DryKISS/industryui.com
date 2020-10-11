@@ -2,21 +2,22 @@
  * CamelCase
  */
 
-import Readme from '../README.md'
+// UI
 import { camelCase, Text } from 'components'
+import Readme from '../README.md'
 
 export default {
   args: {
     text: 'Imagine there is no heaven'
   },
-  title: 'Utils/CamelCase',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/CamelCase'
 }
 
 export const CamelCase = args => {

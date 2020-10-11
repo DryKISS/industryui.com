@@ -2,21 +2,14 @@
  * Age
  */
 
+// Storybook
+import { ControlTypes } from 'decorators'
+
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import {
-  age,
-  Button,
-  ControlTypes,
-  DatePickerCalendar,
-  Divider,
-  Form,
-  Text,
-  useForm
-} from 'components'
-
+import { age, Button, DatePickerCalendar, Divider, Form, Text, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {

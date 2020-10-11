@@ -2,23 +2,24 @@
  * Format Price
  */
 
-import Readme from '../README.md'
+// UI
 import { formatPrice, Text } from 'components'
+import Readme from '../README.md'
 
 export default {
   args: {
     price: 123456789
   },
-  title: 'Utils/formatPrice',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/formatPrice'
 }
 
 export const FormatPrice = args => {
-  return <Text> formatted: {formatPrice(args.price)} </Text>
+  return <Text>Formatted: {formatPrice(args.price)}</Text>
 }

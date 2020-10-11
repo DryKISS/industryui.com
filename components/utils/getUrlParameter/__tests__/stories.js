@@ -2,18 +2,19 @@
  * Get Url Parameter
  */
 
-import Readme from '../README.md'
+// UI
 import { getUrlParameter, Text } from 'components'
+import Readme from '../README.md'
 
 export default {
-  title: 'Utils/GetUrlParameters',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/GetUrlParameters'
 }
 
 export const GetUrlParameter = () => {

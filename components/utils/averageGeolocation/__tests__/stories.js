@@ -2,8 +2,9 @@
  * Average Geolocation
  */
 
-import Readme from '../README.md'
+// UI
 import { averageGeolocation, Text, Space } from 'components'
+import Readme from '../README.md'
 
 export default {
   args: {
@@ -37,6 +38,7 @@ export const AverageGeolocation = args => {
       <Space>
         <Text>Location Array: {JSON.stringify(locations)}</Text>
       </Space>
+
       <Text>average lat: {averageGeolocation(locations).lat} </Text>
       <Text>average lng: {averageGeolocation(locations).lng} </Text>
     </>

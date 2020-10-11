@@ -2,18 +2,19 @@
  * getOne
  */
 
-import Readme from '../README.md'
+// UI
 import { getOne, Space, Text } from 'components'
+import Readme from '../README.md'
 
 export default {
-  title: 'Utils/GetOne',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/GetOne'
 }
 
 export const GetOne = () => {
@@ -29,9 +30,11 @@ export const GetOne = () => {
       <Space>
         <Text>elements of the array should have unique id</Text>
       </Space>
+
       <Space>
         <Text> array: {JSON.stringify(arr)} </Text>
       </Space>
+
       <Text> element with id=2: {JSON.stringify(getOne(2, arr))} </Text>
     </>
   )

@@ -4,25 +4,28 @@
 // React
 import { useState } from 'react'
 
-import Readme from '../README.md'
+// UI
 import { Button, debounce, Text } from 'components'
+import Readme from '../README.md'
 
 export default {
-  title: 'Utils/Debounce',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/Debounce'
 }
 
 export const Debounce = () => {
   const [counter, setcounter] = useState(0)
+
   const handleClick = () => {
     setcounter(counter + 1)
   }
+
   return (
     <>
       <Text>{counter}</Text>

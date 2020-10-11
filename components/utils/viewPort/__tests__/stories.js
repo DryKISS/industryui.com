@@ -4,26 +4,28 @@
 // React
 import { useLayoutEffect, useRef, useState } from 'react'
 
-import Readme from '../README.md'
+// UI
 import { Text, viewPort } from 'components'
+import Readme from '../README.md'
 
 export default {
   args: {
     WindowViewPort: false
   },
-  title: 'Utils/ViewPort',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/ViewPort'
 }
 
 export const ViewPort = args => {
   const ref = useRef(null)
   const [Width, setWidth] = useState(0)
+
   useLayoutEffect(() => {
     setWidth(viewPort(args.WindowViewPort ? null : ref.current))
     return () => {}

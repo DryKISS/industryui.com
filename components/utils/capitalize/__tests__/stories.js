@@ -2,21 +2,22 @@
  * Capitalise
  */
 
-import Readme from '../README.md'
+// UI
 import { capitalize, Text } from 'components'
+import Readme from '../README.md'
 
 export default {
   args: {
     text: 'yellow submarine'
   },
-  title: 'Utils/Capitalize',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/Capitalize'
 }
 
 export const Capitalize = args => {

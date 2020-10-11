@@ -2,24 +2,28 @@
  * Random Key
  */
 
+// UI
+import { RandomKey } from 'components'
 import Readme from '../README.md'
+
+// Style
 import styled from 'styled-components'
-import { RandomKey } from '..'
 
 export default {
-  title: 'Utils/RandomKey',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/RandomKey'
 }
 
 export const RandomKeysShowCase = () => {
   const elementsLength = 50
   const arr = Array.from(Array(elementsLength).keys())
+
   const keys = arr.map(() => {
     return RandomKey()
   })

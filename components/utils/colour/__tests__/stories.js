@@ -2,9 +2,11 @@
  * Colour
  */
 
-// UI
-import { blendLinearRgb, ControlTypes, shadeLinearRgb } from 'components'
+// Storybook
+import { ControlTypes } from 'decorators'
 
+// UI
+import { blendLinearRgb, shadeLinearRgb } from 'components'
 import Readme from '../README.md'
 
 export default {

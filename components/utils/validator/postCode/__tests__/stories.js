@@ -10,7 +10,6 @@ import { Button, Form, FormField, FormLabel, validatorPostCode, useForm } from '
 import Readme from '../README.md'
 
 export default {
-  title: 'Utils/Validator/PostCode',
   component: validatorPostCode,
   parameters: {
     docs: {
@@ -18,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/Validator/PostCode'
 }
 
 export const main = () => {

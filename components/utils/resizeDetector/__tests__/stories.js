@@ -4,23 +4,27 @@
 // React
 import { useState } from 'react'
 
-import Readme from '../README.md'
+// UI
 import { ResizeDetector } from 'components'
+import Readme from '../README.md'
+
+// Style
 import styled from 'styled-components'
 
 export default {
-  title: 'Utils/ResizeDetetor',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/ResizeDetetor'
 }
 
 export const resizeDetector = () => {
   const [Dimentions, setDimentions] = useState({ height: 400, width: 300 })
+
   return (
     <ElementsWrapper>
       <p>height:{Dimentions.height}px</p>
