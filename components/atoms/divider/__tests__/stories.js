@@ -3,7 +3,7 @@
  */
 
 // Storybook
-// import { number } from '@storybook/addon-knobs'
+import { number } from '@storybook/addon-knobs'
 import { Context, Size } from 'decorators'
 
 // Style
@@ -28,9 +28,9 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    // context: Context('', DividerDefaultProps.context),
-    // size: Size('', DividerDefaultProps.size),
-    // thickness: number('Thickness', DividerDefaultProps.thickness),
+    context: Context('', DividerDefaultProps.context),
+    size: Size('', DividerDefaultProps.size),
+    thickness: number('Thickness', DividerDefaultProps.thickness),
     ...props
   }
 

@@ -5,6 +5,9 @@
 // React
 import { useContext } from 'react'
 
+// Storybook
+import { boolean, text } from '@storybook/addon-knobs'
+
 // UI
 import { ConfigContext, Navbar } from 'components'
 import { Dashboard } from '../__mocks__/navbar'
@@ -17,10 +20,10 @@ export const BaseComponent = (props = {}) => {
   const { Brand } = useContext(ConfigContext)
 
   const defaultProps = {
-    // brand: text('Brand', props.brand || Brand.logo),
-    // contained: boolean('Contained', props.contained || false),
-    // showMenu: boolean('Show Menu', props.showMenu || true),
-    // widgets: Dashboard,
+    brand: text('Brand', props.brand || Brand.logo),
+    contained: boolean('Contained', props.contained || false),
+    showMenu: boolean('Show Menu', props.showMenu || true),
+    widgets: Dashboard,
     ...props
   }
 
