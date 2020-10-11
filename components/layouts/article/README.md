@@ -1,3 +1,1 @@
-# Article
-
 Article layout

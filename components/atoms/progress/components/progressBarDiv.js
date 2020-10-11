@@ -1,5 +1,5 @@
 /**
- * Progress Bar Div
+ * Progress - Bar Div
  */
 
 // React

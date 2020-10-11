@@ -1,5 +1,3 @@
-# Full Calendar
-
 ## Events
 
 ### Main properties

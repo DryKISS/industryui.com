@@ -2,7 +2,7 @@
  * Bar
  */
 
-// Stroybook
+// Storybook
 import { ControlTypes } from 'decorators'
 
 // UI
@@ -13,7 +13,6 @@ import Readme from '../README.md'
 import styled from 'styled-components'
 
 export default {
-  title: 'Organisms/Bar',
   component: Bar,
   parameters: {
     docs: {
@@ -21,7 +20,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Bar'
 }
 
 const BaseComponent = (args = {}) => {

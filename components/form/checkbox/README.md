@@ -1,5 +1,3 @@
-# Checkbox
-
 In some contexts like the Fixtures Grid, checking a checkbox should update the checkbox count.
 
 ## Links

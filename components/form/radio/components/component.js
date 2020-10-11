@@ -10,9 +10,7 @@ import { bool } from 'prop-types'
 import styled from 'styled-components'
 
 export const RadioComponent = forwardRef(({ disabled, ...props }, ref) => {
-  return (
-    <StyledInput className='Form-control' disabled={disabled} type='radio' ref={ref} {...props} />
-  )
+  return <StyledInput disabled={disabled} type='radio' ref={ref} {...props} />
 })
 
 const StyledInput = styled.input`

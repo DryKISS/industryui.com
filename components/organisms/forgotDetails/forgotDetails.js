@@ -2,10 +2,11 @@
  * Forgot Details
  */
 
+// React
 import { bool, func, string } from 'prop-types'
 
 // UI
-import { Button, Form, FormField, FormLabel, Link, PageHeading, useForm } from '../../'
+import { Button, Form, FormField, FormLabel, Link, PageHeading, useForm, yupResolver } from '../../'
 import { ForgotDetailsSchema } from './schema'
 
 // Style
@@ -13,12 +14,12 @@ import styled from 'styled-components'
 
 export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    validationSchema: ForgotDetailsSchema
+    resolver: yupResolver(ForgotDetailsSchema)
   })
 
   return (
     <>
-      <PageHeading center heading='Forgot Details' divider={false} />
+      <PageHeading center divider={false} heading='Forgot Details' />
 
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>

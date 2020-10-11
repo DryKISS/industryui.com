@@ -2,6 +2,9 @@
  * Table
  */
 
+// Storybook
+import { boolean, number, text } from '@storybook/addon-knobs'
+
 // UI
 import { Table } from 'components'
 import Readme from '../README.md'
@@ -33,30 +36,30 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    // align: boolean('Align', props.align || false),
-    // caption: text('Caption', props.caption || ''),
-    // className: text('Class name', props.className || ''),
-    // columns: columns,
-    // fullHeight: boolean('Full height', props.fullHeight || false),
-    // hover: boolean('Hover', props.hover || false),
-    // loading: boolean('Loading', props.loading || false),
-    // pagination: boolean('Pagination', props.pagination || true),
-    // paginationProps: {
-    //   changeUrlOnChange: boolean('Change URL', props.changeUrlOnChange || false),
-    //   initialPage: number('Initial page', props.initialPage || 1),
-    //   perPage: number('Per page', props.perPage || 10)
-    // },
-    // responsive: boolean('Responsive', props.responsive || true),
-    // rows: props.rows || [
-    //   ...rows.data,
-    //   ...rows.data,
-    //   ...rows.data,
-    //   ...rows.data,
-    //   ...rows.data,
-    //   ...rows.data,
-    //   ...rows.data
-    // ],
-    // striped: boolean('Striped', props.striped || false),
+    align: boolean('Align', props.align || false),
+    caption: text('Caption', props.caption || ''),
+    className: text('Class name', props.className || ''),
+    columns: columns,
+    fullHeight: boolean('Full height', props.fullHeight || false),
+    hover: boolean('Hover', props.hover || false),
+    loading: boolean('Loading', props.loading || false),
+    pagination: boolean('Pagination', props.pagination || true),
+    paginationProps: {
+      changeUrlOnChange: boolean('Change URL', props.changeUrlOnChange || false),
+      initialPage: number('Initial page', props.initialPage || 1),
+      perPage: number('Per page', props.perPage || 10)
+    },
+    responsive: boolean('Responsive', props.responsive || true),
+    rows: props.rows || [
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data,
+      ...rows.data
+    ],
+    striped: boolean('Striped', props.striped || false),
     ...props
   }
 

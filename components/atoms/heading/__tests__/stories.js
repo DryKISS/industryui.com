@@ -2,7 +2,7 @@
  * Heading
  */
 
-// Stroybook
+// Storybook
 import { ControlTypes } from 'decorators'
 
 // UI
@@ -57,5 +57,10 @@ HeadingComponent.args = {
 }
 
 HeadingComponent.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } }
+  context: {
+    control: {
+      options: arrayOfValues(CONTEXT),
+      type: ControlTypes.Select
+    }
+  }
 }

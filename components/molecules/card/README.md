@@ -1,11 +1,9 @@
-# Card
-
 Provide a flexible container to showcase the content for the correct context.
 
 ## Links
 
-- [Bootstrap](https://getbootstrap.com/docs/4.3/components/card)
-- [Ant Design](https://ant.design/components/card/)
+[Bootstrap](https://getbootstrap.com/docs/4.3/components/card)
+[Ant Design](https://ant.design/components/card/)
 
 ## Rules
 

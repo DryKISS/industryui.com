@@ -1,5 +1,3 @@
-# Register
-
 Register
 
 ## Usage

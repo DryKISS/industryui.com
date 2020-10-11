@@ -2,15 +2,29 @@
  * Messaging/Send
  */
 
-// Storybook
-import { action } from '@storybook/addon-actions'
-
 // UI
-import { MessagingSend, useForm } from 'components'
+import { MessagingSend } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Messaging/Send',
+  args: {
+    audienceItems: [
+      { name: 'All', id: 'all' },
+      { name: 'Internal', id: 'internal' },
+      { name: 'Customer Only', id: 'customer' },
+      { name: 'Supplier Only', id: 'supplier' },
+      { name: 'Customer & Supplier', id: 'customer-supplier' }
+    ],
+    maxLength: 320,
+    onSubmit: () => {}
+  },
+  argTypes: {
+    maxLength: {
+      control: {
+        type: 'number'
+      }
+    }
+  },
   component: MessagingSend,
   parameters: {
     docs: {
@@ -18,24 +32,10 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Messaging/Send'
 }
 
-const BaseComponent = () => {
-  const initialState = { message: '' }
-
-  const { change, form, setForm } = useForm(initialState)
-  const { message } = form
-
-  return (
-    <MessagingSend
-      handleChange={change}
-      handleSelect={msg => setForm({ message: message + msg })}
-      onSubmit={action('Submit')}
-      maxLength={320}
-      message={message}
-    />
-  )
+export const main = args => {
+  return <MessagingSend {...args} />
 }
-
-export const main = () => <BaseComponent />

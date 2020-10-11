@@ -18,10 +18,17 @@ const Items = [
 ]
 
 export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
-  const { errors, handleSubmit, register } = useForm({ mode: 'onChange' })
+  const { errors, handleSubmit, register } = useForm({
+    mode: 'onChange'
+  })
 
   const onSubmit = data => {
     onSearch(data.query)
+  }
+
+  const defaultOptions = {
+    errors: errors,
+    register: register
   }
 
   return (
@@ -29,16 +36,11 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Column md={6}>
-            <StyledSearch
-              errors={errors}
-              prependSearchIcon
-              placeholder={placeholder}
-              register={register}
-            />
+            <StyledSearch {...defaultOptions} prependSearchIcon placeholder={placeholder} />
           </Column>
 
           <Column md={6}>
-            <StyledSelect change={onFilter} id='messagingFilter' options={Items} />
+            <StyledSelect {...defaultOptions} name='messagingFilter' options={Items} />
           </Column>
         </Row>
       </Form>

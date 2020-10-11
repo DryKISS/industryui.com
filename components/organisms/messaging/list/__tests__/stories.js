@@ -10,7 +10,6 @@ import Readme from '../README.md'
 import { messages } from '../__mocks__/list'
 
 export default {
-  title: 'Organisms/Messaging/List',
   component: MessageList,
   parameters: {
     docs: {
@@ -18,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Messaging/List'
 }
 
 export const main = () => <MessageList messages={messages} />

@@ -1,3 +1,1 @@
-# Blog - Listing
-
 Listing

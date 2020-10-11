@@ -39,11 +39,11 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const schema = object().shape({
-    expiryAt: string().required()
-  })
+const schema = object().shape({
+  expiryAt: string().required()
+})
 
+const BaseComponent = (props = {}) => {
   const { control, errors, getValues, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })

@@ -2,12 +2,14 @@
  * Article
  */
 
+// Storybook
+import { array, text } from '@storybook/addon-knobs'
+
 // UI
 import { Article } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Templates/Article',
   component: Article,
   parameters: {
     docs: {
@@ -15,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Templates/Article'
 }
 
 export const main = () => (

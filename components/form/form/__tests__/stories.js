@@ -214,7 +214,7 @@ const all = ({ ...args }) => {
       </FormLabel>
 
       <FormLabel label='Textarea'>
-        <TextareaField {...defaultProps} rows={2} name='textarea' />
+        <TextareaField {...defaultProps} name='textarea' rows={2} />
       </FormLabel>
 
       <FormLabel label='Select'>

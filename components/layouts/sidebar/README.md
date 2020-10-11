@@ -1,3 +1,1 @@
-# Sidebar
-
 Sidebar layout

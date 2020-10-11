@@ -2,22 +2,31 @@
  * Messaging/Background
  */
 
+// Storybook
+import { ControlTypes } from 'decorators'
+
 // UI
-import { MessageBackground } from 'components'
+import { arrayOfValues, MessageBackground } from 'components'
 import Readme from '../README.md'
 
-const defaultValue = '/messaging/background.png'
+const options = {
+  DryKISS: '/messaging/background.png',
+  WhatsApp: '/messaging/whatsapp.png'
+}
 
 const Height = story => {
   return <div style={{ height: '500px' }}>{story()}</div>
 }
 
 export default {
-  args: {
-    path: defaultValue
-  },
   argTypes: {
-    backgroundColor: { select: 'color' }
+    path: {
+      name: 'Path',
+      control: {
+        options: arrayOfValues(options),
+        type: ControlTypes.Select
+      }
+    }
   },
   component: MessageBackground,
   decorators: [Height],
@@ -31,14 +40,4 @@ export default {
   title: 'Organisms/Messaging/Background'
 }
 
-const options = {
-  Blank: '',
-  DryKISS: '/messaging/background.png',
-  WhatsApp: '/messaging/whatsapp.png'
-}
-
-const Main = args => (
-  <MessageBackground {...args} path={select('Background', options, defaultValue)} />
-)
-
-export const Primary = Main.bind({})
+export const Main = args => <MessageBackground {...args} />

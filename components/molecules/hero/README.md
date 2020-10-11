@@ -1,5 +1,3 @@
-# Hero
-
 Provides a marketing block to describe the product and also provides a
 succint call to action.
 

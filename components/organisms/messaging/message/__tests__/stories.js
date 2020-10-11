@@ -10,7 +10,6 @@ import Readme from '../README.md'
 import { message } from '../__mocks__/message'
 
 export default {
-  title: 'Organisms/Messaging/Message',
   component: Message,
   parameters: {
     docs: {
@@ -18,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Messaging/Message'
 }
 
 export const main = () => <Message message={message} prevType='out' time='12:00' type='in' />

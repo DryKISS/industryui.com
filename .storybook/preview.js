@@ -35,9 +35,3 @@ const mockedRouter = {
 Router.router = mockedRouter
 
 export const decorators = [Container, Wrapper]
-
-export const parameters = {
-  controls: {
-    expanded: true
-  }
-}

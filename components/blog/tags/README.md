@@ -1,3 +1,1 @@
-# Blog - Tags
-
 Tags

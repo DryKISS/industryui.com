@@ -7,7 +7,6 @@ import { PasswordChange } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Password Change',
   component: PasswordChange,
   parameters: {
     docs: {
@@ -15,16 +14,10 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Password Change'
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    // showPlaceholder: boolean('Placeholder', true),
-    ...props
-  }
-
-  return <PasswordChange {...defaultProps} />
+export const main = args => {
+  return <PasswordChange {...args} />
 }
-
-export const main = () => <BaseComponent />

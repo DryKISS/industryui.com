@@ -3,14 +3,14 @@
  */
 
 // React
-import { func, node, string } from 'prop-types'
+import { any, func, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
-export const Form = ({ children, handleSubmit, id, style }) => {
+export const Form = ({ children, className, handleSubmit, id, style }) => {
   return (
-    <StyledForm style={style} id={id} onSubmit={handleSubmit}>
+    <StyledForm className={className} id={id} onSubmit={handleSubmit} style={style}>
       {children}
     </StyledForm>
   )
@@ -22,6 +22,8 @@ const StyledForm = styled.form`
 
 Form.propTypes = {
   children: node.isRequired,
+  className: any,
   handleSubmit: func.isRequired,
-  id: string
+  id: string,
+  style: any
 }
