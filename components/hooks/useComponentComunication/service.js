@@ -5,4 +5,12 @@ const ComunicationService = {
     Subscriber.next(msg)
   }
 }
-export { ComunicationService, Subscriber }
+
+const LiveChartSubscriber = new Subject()
+const LiveChartMessageService = {
+  send: msg => {
+    LiveChartSubscriber.next(msg)
+  }
+}
+
+export { ComunicationService, LiveChartMessageService, LiveChartSubscriber, Subscriber }

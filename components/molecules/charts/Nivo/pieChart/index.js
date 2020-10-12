@@ -11,35 +11,36 @@ export const PieChart = withTheme(({ theme, ...props }) => {
       borderColor,
       borderWidth,
       startAngle,
+      legends,
       margin,
+      motionStiffness,
+      motionDamping,
       radialLabelsSkipAngle,
       radialLabelsTextColor,
       radialLabelsLinkColor,
       slicesLabelsSkipAngle,
-      slicesLabelsTextColor,
-      legends,
-      motionStiffness,
-      motionDamping
+      slicesLabelsTextColor
     }
   } = theme
 
   const {
     colorScheme,
+    cornerRadius = PIECHART.cornerRadius,
     data,
-    onClick,
     enableRadialLabels,
     enableSlicesLabels,
     innerRadius = PIECHART.innerRadius,
     isInteractive,
-    showLegend,
-    sortByValue,
+    onClick,
+    padAngle = PIECHART.padAngle,
     radialLabelsLinkStrokeWidth = PIECHART.radialLabelsLinkStrokeWidth,
     radialLabelsTextXOffset = PIECHART.radialLabelsTextXOffset,
     radialLabelsLinkHorizontalLength = PIECHART.radialLabelsLinkHorizontalLength,
     radialLabelsLinkDiagonalLength = PIECHART.radialLabelsLinkDiagonalLength,
     radialLabelsLinkOffset = PIECHART.radialLabelsLinkOffset,
-    cornerRadius = PIECHART.cornerRadius,
-    padAngle = PIECHART.padAngle
+    showLegend,
+    sortByValue,
+    tooltip = PieDefaultProps.tooltip
   } = props
 
   return (
@@ -47,17 +48,19 @@ export const PieChart = withTheme(({ theme, ...props }) => {
       animate={animate}
       onClick={onClick}
       data={data}
-      margin={margin.call(props)}
-      startAngle={startAngle}
+      enableSlicesLabels={enableSlicesLabels}
+      enableRadialLabels={enableRadialLabels}
+      isInteractive={isInteractive}
       innerRadius={innerRadius}
-      padAngle={padAngle}
       cornerRadius={cornerRadius}
       colors={{ scheme: colorScheme }}
       borderWidth={borderWidth}
       borderColor={borderColor}
-      enableSlicesLabels={enableSlicesLabels}
-      enableRadialLabels={enableRadialLabels}
-      isInteractive={isInteractive}
+      legends={showLegend ? legends : []}
+      margin={margin.call(props)}
+      motionDamping={motionDamping}
+      motionStiffness={motionStiffness}
+      padAngle={padAngle}
       radialLabelsSkipAngle={radialLabelsSkipAngle}
       radialLabelsTextXOffset={radialLabelsTextXOffset}
       radialLabelsTextColor={radialLabelsTextColor}
@@ -69,9 +72,8 @@ export const PieChart = withTheme(({ theme, ...props }) => {
       slicesLabelsSkipAngle={slicesLabelsSkipAngle}
       slicesLabelsTextColor={slicesLabelsTextColor}
       sortByValue={sortByValue}
-      motionStiffness={motionStiffness}
-      motionDamping={motionDamping}
-      legends={showLegend ? legends : []}
+      startAngle={startAngle}
+      tooltip={tooltip}
     />
   )
 })
