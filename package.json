@@ -104,6 +104,8 @@
     "draftjs-to-html": "^0.9.1",
     "emoji-mart": "^3.0.0",
     "gravatar": "^1.8.1",
+    "highcharts": "^8.2.0",
+    "highcharts-react-official": "^3.0.0",
     "holderjs": "^2.9.7",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
