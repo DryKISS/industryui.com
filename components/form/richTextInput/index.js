@@ -1,18 +1,25 @@
 // React
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { object, string } from 'prop-types'
 
 import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js'
 import { Controller } from 'react-hook-form'
-import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
 
 // UI
 import styled, { css } from 'styled-components'
-import { COMMON_INPUT_STYLES, ERROR_STYLE } from 'components'
+import { COMMON_INPUT_STYLES, ERROR_STYLE, useForceUpdate } from 'components'
+
+let LazyEditor = () => <></>
 
 export const RichTextInput = ({ control, errors, initialValue, name }) => {
   const editor = useRef(null)
+  const [forceUpdate] = useForceUpdate()
+
+  useEffect(() => {
+    LazyEditor = require('react-draft-wysiwyg').Editor
+    forceUpdate()
+  }, [])
 
   const content = EditorState.createWithContent(
     ContentState.createFromBlockArray(convertFromHTML(initialValue ?? ''))
@@ -35,7 +42,7 @@ export const RichTextInput = ({ control, errors, initialValue, name }) => {
         control={control}
         defaultValue={defaultValue}
         render={({ value, onChange }) => (
-          <Editor
+          <LazyEditor
             editorState={value.editorState}
             wrapperClassName='wrapper-class'
             editorClassName='editor-class'
