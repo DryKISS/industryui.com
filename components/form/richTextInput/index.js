@@ -1,5 +1,5 @@
 // React
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { object, string } from 'prop-types'
 
 import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js'
@@ -16,7 +16,7 @@ export const RichTextInput = ({ control, errors, initialValue, name }) => {
   const editor = useRef(null)
   const [forceUpdate] = useForceUpdate()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     LazyEditor = require('react-draft-wysiwyg').Editor
     forceUpdate()
   }, [])
