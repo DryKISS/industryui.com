@@ -2800,6 +2800,66 @@ exports[`Storyshots Molecules/Charts/Nivo/Pie Other Data Pie 1`] = `
 />
 `;
 
+exports[`Storyshots Molecules/Charts/highCharts/BigData Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/highCharts/Liveline Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/highCharts/line Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Molecules/Copyright Main 1`] = `
 .c0 {
   padding: 1rem;
