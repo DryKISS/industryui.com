@@ -3,8 +3,7 @@
  */
 
 // Storybook
-import { number } from '@storybook/addon-knobs'
-import { Context, Size } from 'decorators'
+import { ContextControl, SizeControl } from 'decorators'
 
 // Style
 import styled from 'styled-components'
@@ -15,6 +14,15 @@ import Readme from '../README.md'
 import { DividerDefaultProps } from '../props'
 
 export default {
+  args: {
+    thickness: DividerDefaultProps.thickness,
+    size: DividerDefaultProps.size,
+    context: DividerDefaultProps.context
+  },
+  argTypes: {
+    context: ContextControl(),
+    size: SizeControl()
+  },
   title: 'Atoms/Divider',
   component: Divider,
   parameters: {
@@ -26,12 +34,9 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
+const BaseComponent = props => {
   const defaultProps = {
-    context: Context('', DividerDefaultProps.context),
-    size: Size('', DividerDefaultProps.size),
-    thickness: number('Thickness', DividerDefaultProps.thickness),
-    ...props
+    ...props.args
   }
 
   return (
