@@ -720,67 +720,7 @@ exports[`Storyshots Atoms/List Main 1`] = `
 />
 `;
 
-exports[`Storyshots Atoms/Progress Animated 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Atoms/Progress Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Atoms/Progress Multiple Progress Bars 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Atoms/Progress Striped 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -1160,26 +1100,6 @@ exports[`Storyshots Form/Checkbox Main 1`] = `
 />
 `;
 
-exports[`Storyshots Form/Checkbox Stacked 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Form/Date Picker/Calendar Default Value 1`] = `
 .c0 {
   padding: 1rem;
@@ -1261,26 +1181,6 @@ exports[`Storyshots Form/Date Picker/Calendar Working Hours 1`] = `
 `;
 
 exports[`Storyshots Form/Date Picker/Input Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Form/Date Picker/Input Selective 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -1620,26 +1520,6 @@ exports[`Storyshots Form/Radio Main 1`] = `
 />
 `;
 
-exports[`Storyshots Form/Radio Stacked 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Form/ReactSelect Async 1`] = `
 .c0 {
   padding: 1rem;
@@ -1700,27 +1580,7 @@ exports[`Storyshots Form/ReactSelect Chained No Default 1`] = `
 />
 `;
 
-exports[`Storyshots Form/ReactSelect Multi 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Form/ReactSelect Single 1`] = `
+exports[`Storyshots Form/ReactSelect Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -2360,67 +2220,7 @@ exports[`Storyshots Molecules/Buttons Main 1`] = `
 />
 `;
 
-exports[`Storyshots Molecules/Card Long Title 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Molecules/Card Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Card No Image 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Card With Cta 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -3060,26 +2860,6 @@ exports[`Storyshots Molecules/Dropdown Main 1`] = `
 />
 `;
 
-exports[`Storyshots Molecules/Dropdown Right Aligned 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Molecules/EmojiMart Main 1`] = `
 .c0 {
   padding: 1rem;
@@ -3201,26 +2981,6 @@ exports[`Storyshots Molecules/ImageLocation Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/ImageLocation Used In Form 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/ImageLocation With Coordinates Stored 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -3740,87 +3500,7 @@ exports[`Storyshots Molecules/Pagination With Custom Prev And Next Buttons 1`] =
 />
 `;
 
-exports[`Storyshots Molecules/Pagination With Many Items 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Pagination With Prev And Next Buttons 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Molecules/Rating Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Rating With Context 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Rating With Size 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -3940,46 +3620,6 @@ exports[`Storyshots Molecules/Table Actions 1`] = `
 />
 `;
 
-exports[`Storyshots Molecules/Table Align 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Table Caption 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Molecules/Table Context 1`] = `
 .c0 {
   padding: 1rem;
@@ -4001,46 +3641,6 @@ exports[`Storyshots Molecules/Table Context 1`] = `
 `;
 
 exports[`Storyshots Molecules/Table Formatter 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Table Hover 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Table Loading 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4161,26 +3761,6 @@ exports[`Storyshots Molecules/Table Row Click Story 1`] = `
 `;
 
 exports[`Storyshots Molecules/Table Show No Data 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Table Striped 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4780,26 +4360,6 @@ exports[`Storyshots Organisms/Login Main 1`] = `
 />
 `;
 
-exports[`Storyshots Organisms/Login With Block Submit Button 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Organisms/Login With Http Request 1`] = `
 .c0 {
   padding: 1rem;
@@ -4821,26 +4381,6 @@ exports[`Storyshots Organisms/Login With Http Request 1`] = `
 `;
 
 exports[`Storyshots Organisms/Login With Placeholder 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Organisms/Login With Show And Hide Password 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
