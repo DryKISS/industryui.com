@@ -3,19 +3,19 @@
  */
 
 // React
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 
 // UI
 import styled from 'styled-components'
 
-// Storybook
-import { Wrapper } from 'decorators'
 import useComponentComunication from '../useSubscription'
-import { Subscriber, ComunicationService } from '../service'
+import { ComunicationService, Subscriber } from '../service'
 import { MessageNames } from '../messageNames'
 import { RandomColor } from 'components/utils'
-
 import { Button, Text } from 'components'
+
+// Storybook
+import { Wrapper } from 'decorators'
 
 export default {
   title: 'Utils/ComunicationService',
@@ -72,14 +72,14 @@ export const comunicationShowCase = () => {
   )
 }
 const StyledContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1rem;
+  width: 100%;
 `
 const SimpleWrapper = styled.div`
-  padding: 1rem;
   margin: 1rem;
+  padding: 1rem;
 `
