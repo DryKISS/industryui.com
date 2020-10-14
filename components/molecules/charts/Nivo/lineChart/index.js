@@ -35,9 +35,8 @@ export const LineChart = withTheme(({ theme, ...props }) => {
 
   const {
     colorScheme,
-    data,
     curve,
-    lineWidth,
+    data,
     enableArea,
     areaOpacity,
     enableCrosshair,
@@ -47,14 +46,21 @@ export const LineChart = withTheme(({ theme, ...props }) => {
     enableGridY,
     enableSlices,
     isInteractive,
+    lineWidth,
     pointSize = LINECHART.pointSize,
-    showLegend
+    showLegend,
+    tooltip = LineDefaultProps.tooltip
   } = props
 
   return (
     <ResponsiveLine
       areaOpacity={areaOpacity}
+      axisTop={axisTop}
+      axisRight={axisRight}
+      axisBottom={axisBottom.call(props)}
+      axisLeft={axisLeft.call(props)}
       curve={curve}
+      colors={{ scheme: colorScheme }}
       data={data}
       enableArea={enableArea}
       enableCrosshair={enableCrosshair}
@@ -64,23 +70,19 @@ export const LineChart = withTheme(({ theme, ...props }) => {
       enableGridY={enableGridY}
       enableSlices={enableSlices}
       isInteractive={isInteractive}
+      lineWidth={lineWidth}
+      legends={showLegend ? legends : []}
       margin={margin.call(props)}
-      xScale={xScale}
-      yScale={yScale.call(props)}
-      axisTop={axisTop}
-      axisRight={axisRight}
-      axisBottom={axisBottom.call(props)}
-      axisLeft={axisLeft.call(props)}
-      colors={{ scheme: colorScheme }}
       pointSize={pointSize}
       pointColor={pointColor}
       pointBorderColor={pointBorderColor}
       pointBorderWidth={pointBorderWidth}
       pointLabel={pointLabel}
       pointLabelYOffset={pointLabelYOffset}
+      tooltip={tooltip}
       useMesh={useMesh}
-      legends={showLegend ? legends : []}
-      lineWidth={lineWidth}
+      xScale={xScale}
+      yScale={yScale.call(props)}
     />
   )
 })
@@ -90,8 +92,8 @@ LineChart.displayName = 'LineChart'
 LineChart.propTypes = Object.assign({}, LinePropTypes, {
   // TODO: maybe write more custom schemes :)
   bottomLegend: string,
-  leftLegend: string,
   colorScheme: oneOf(Object.keys(colorSchemes)),
+  leftLegend: string,
   showLegend: bool
 })
 
