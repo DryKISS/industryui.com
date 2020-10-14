@@ -81,11 +81,11 @@ const BaseComponent = props => {
   )
 }
 
+export const main = args => {
+  return <BaseComponent args={args} />
+}
+
 const StyledWrapper = styled.div`
   text-align: center;
   height: 500px;
 `
-
-export const main = args => {
-  return <BaseComponent args={args} />
-}
