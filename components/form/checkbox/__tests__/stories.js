@@ -6,7 +6,7 @@
 import { object, string } from 'yup'
 
 // UI
-import { Button, Form, CheckboxField, useForm, yupResolver } from 'components'
+import { Button, CheckboxField, Form, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 const data = [

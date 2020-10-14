@@ -7,10 +7,10 @@ import { object, string } from 'yup'
 
 // Date utility
 import addDays from 'date-fns/addDays'
+import enGB from 'date-fns/locale/en-GB'
 import getDay from 'date-fns/getDay'
 import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
-import enGB from 'date-fns/locale/en-GB'
 
 // UI
 import {

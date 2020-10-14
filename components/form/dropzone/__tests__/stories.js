@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Button, Form, FormError, FormLabel, DropzoneField, useForm } from 'components'
+import { Button, DropzoneField, Form, FormError, FormLabel, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
