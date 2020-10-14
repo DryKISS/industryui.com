@@ -1,5 +1,5 @@
 /**
- * Random Color
+ * Component Comunication Service
  */
 
 // React
@@ -8,20 +8,21 @@ import { useState, useRef } from 'react'
 // UI
 import styled from 'styled-components'
 
-// UI
 import useComponentComunication from '../useSubscription'
-import { Subscriber, ComunicationService } from '../service'
+import { ComunicationService, Subscriber } from '../service'
 import { MessageNames } from '../messageNames'
 import { RandomColor } from 'components/utils'
 import { Button, Text } from 'components'
 
-export default {
-  title: 'Utils/ComunicationService'
-}
+// Storybook
+import { Wrapper } from 'decorators'
 
+export default {
+  title: 'Utils/ComunicationService',
+  decorators: [Wrapper]
+}
 const Sender = () => {
   const val = useRef('')
-
   return (
     <SimpleWrapper style={{ background: RandomColor() }}>
       <input onChange={e => (val.current = e.target.value)} />
@@ -70,17 +71,15 @@ export const comunicationShowCase = () => {
     </>
   )
 }
-
 const StyledContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1rem;
+  width: 100%;
 `
-
 const SimpleWrapper = styled.div`
-  padding: 1rem;
   margin: 1rem;
+  padding: 1rem;
 `
