@@ -15,9 +15,9 @@ import { DividerDefaultProps } from '../props'
 
 export default {
   args: {
-    thickness: DividerDefaultProps.thickness,
+    context: DividerDefaultProps.context,
     size: DividerDefaultProps.size,
-    context: DividerDefaultProps.context
+    thickness: DividerDefaultProps.thickness
   },
   argTypes: {
     context: ContextControl(),
@@ -35,27 +35,23 @@ export default {
 }
 
 const BaseComponent = props => {
-  const defaultProps = {
-    ...props.args
-  }
-
   return (
     <StyledWrapper>
       <Text>Text</Text>
 
-      <Divider {...defaultProps} />
+      <Divider {...props} />
 
       <Text>Text</Text>
     </StyledWrapper>
   )
 }
 
-export const main = () => <BaseComponent />
-export const vertical = () => <BaseComponent flexItem vertical />
+export const main = args => <BaseComponent {...args} />
+export const vertical = args => <BaseComponent {...args} flexItem vertical />
 
 const StyledWrapper = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   flex-wrap: wrap;
   padding: 16px;
 `

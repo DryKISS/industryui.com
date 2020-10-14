@@ -4,14 +4,24 @@
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { text } from '@storybook/addon-knobs'
-import { Context } from 'decorators'
+import { ContextControl } from 'decorators'
 
 // UI
 import { Notification } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    content: 'Info: Everything is ok',
+    context: 'primary',
+    date: '2019-11-11',
+    icon: 'times-circle',
+    link: '/',
+    title: 'Info'
+  },
+  argTypes: {
+    context: ContextControl()
+  },
   title: 'Molecules/Notification',
   component: Notification,
   parameters: {
@@ -24,28 +34,25 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
+  const { args } = props
+
   const defaultProps = {
     close: action('closed'),
-    content: text('Content', 'Info: Everything is ok'),
-    context: Context(),
-    date: text('Date', '2019-11-11'),
-    icon: text('Icon', 'times-circle'),
-    link: text('Link', '/'),
-    title: text('Title', 'Info'),
+    ...args,
     ...props
   }
 
   return <Notification {...defaultProps} />
 }
 
-export const main = () => {
+export const main = args => {
   return (
     <>
       <p>Default</p>
-      <BaseComponent />
+      <BaseComponent args={args} />
 
       <p>Minimal</p>
-      <BaseComponent context='danger' date='' icon='' title='' />
+      <BaseComponent args={args} context='danger' date='' icon='' title='' />
     </>
   )
 }

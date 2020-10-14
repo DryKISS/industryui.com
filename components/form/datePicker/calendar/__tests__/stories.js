@@ -25,9 +25,11 @@ import {
 } from 'components'
 
 import Readme from '../README.md'
-import { KNOBS } from './knobs'
+import { args, argTypes } from './controls'
 
 export default {
+  args,
+  argTypes,
   title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
   parameters: {
@@ -47,17 +49,12 @@ const BaseComponent = (props = {}) => {
   const { control, errors, getValues, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })
-
   const onSubmit = data => {}
-
-  const knobs = KNOBS()
-
   const defaultProps = {
     control: control,
     errors: errors,
     name: 'expiryAt',
     locale: enGB,
-    ...knobs,
     ...props
   }
 
@@ -78,11 +75,15 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => <BaseComponent />
-export const defaultValue = () => <BaseComponent defaultValue={addDays(new Date(), 5)} />
-export const time = () => <BaseComponent dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
+export const main = args => <BaseComponent {...args} />
+export const defaultValue = args => (
+  <BaseComponent {...args} defaultValue={addDays(new Date(), 5)} />
+)
+export const time = args => (
+  <BaseComponent {...args} dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
+)
 
-export const workingHours = () => {
+export const workingHours = args => {
   const isWeekday = date => {
     const day = getDay(date)
     return day !== 0 && day !== 6
@@ -110,6 +111,7 @@ export const workingHours = () => {
       <Text>Our Schedule: 9:30AM - 6:30PM, Monday - Friday</Text>
 
       <BaseComponent
+        {...args}
         excludeDates={holidays}
         excludeTimes={[
           setHours(setMinutes(new Date(), 0), 17),

@@ -4,14 +4,24 @@
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { boolean, select } from '@storybook/addon-knobs'
-import { Context } from 'decorators'
+import { ContextControl, ControlTypes } from 'decorators'
 
 // UI
 import { Toggle } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    context: 'primary',
+    disabled: false,
+    size: 'md'
+  },
+  argTypes: {
+    context: ContextControl(),
+    size: {
+      control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] }
+    }
+  },
   title: 'Atoms/Toggle',
   component: Toggle,
   parameters: {
@@ -23,11 +33,11 @@ export default {
   }
 }
 
-export const main = () => (
+export const main = args => (
   <Toggle
-    context={Context()}
-    disabled={boolean('Disabled', false)}
+    context={args.context}
+    disabled={args.disabled}
     onToggle={action('toggled')}
-    size={select('Size', ['sm', 'md', 'lg'], 'md')}
+    size={args.size}
   />
 )

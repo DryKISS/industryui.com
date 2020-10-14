@@ -5,14 +5,32 @@
 // React
 import { useState } from 'react'
 
-// Storybook
-import { select } from '@storybook/addon-knobs'
-
 // UI
 import { Alert, Login, requestSimulator, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    blockSubmitButton: true,
+    forgotPassword: true,
+    heading: 'Log In',
+    pathForgot: '/account/forgot-details',
+    pathSignUp: '/account/sign-in',
+    remember: '',
+    showLabel: true,
+    showPassword: false,
+    showPlaceholder: true,
+    submitLoading: true,
+    value: 'Response Type'
+  },
+  argTypes: {
+    value: {
+      control: {
+        type: 'select',
+        options: ['Response Type', 'success', 'failure', 'GROUP-ID1']
+      }
+    }
+  },
   title: 'Organisms/Login',
   component: Login,
   parameters: {
@@ -38,16 +56,6 @@ const BaseComponent = (props = {}) => {
   }
 
   const defaultProps = {
-    blockSubmitButton: true,
-    forgotPassword: true,
-    heading: 'Log In',
-    pathForgot: '/account/forgot-details',
-    pathSignUp: '/account/sign-in',
-    remember: '',
-    showLabel: true,
-    showPassword: true,
-    showPlaceholder: true,
-    submitLoading: true,
     submit: submit,
     ...props
   }
@@ -60,21 +68,13 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => {
-  return <BaseComponent />
+export const main = args => {
+  return <BaseComponent {...args} />
 }
 
-export const withShowAndHidePassword = () => {
-  return <BaseComponent showPassword />
-}
+export const withPlaceholder = args => <BaseComponent {...args} showLabel={false} showPlaceholder />
 
-export const withBlockSubmitButton = () => {
-  return <BaseComponent blockSubmitButton />
-}
-
-export const withPlaceholder = () => <BaseComponent showLabel={false} showPlaceholder />
-
-export const withHttpRequest = () => {
+export const withHttpRequest = args => {
   const { change, form } = useForm({ email: '', password: '' })
 
   const [loading, setLoading] = useState(false)
@@ -83,11 +83,7 @@ export const withHttpRequest = () => {
     message: ''
   })
 
-  const label = 'Response Type'
-  const options = ['success', 'failure']
-  const defaultValue = 'failure'
-  const groupId = 'GROUP-ID1'
-  const value = select(label, options, defaultValue, groupId)
+  const { value } = args
 
   const submit = e => {
     e.preventDefault()
