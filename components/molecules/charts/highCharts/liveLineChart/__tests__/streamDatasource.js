@@ -1,6 +1,8 @@
 import { MessageNames } from 'components/hooks/useComponentComunication/messageNames'
 import { LiveChartMessageService } from 'components/hooks/useComponentComunication/service'
+
 let interval
+
 export const LiveHighChartTestStreamDataSource = {
   start: () => {
     interval = setInterval(function () {

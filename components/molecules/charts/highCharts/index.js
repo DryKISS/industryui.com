@@ -1,3 +1,8 @@
+/**
+ * Molecules - Charts - Highcharts
+ */
+
+// Highcharts
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 

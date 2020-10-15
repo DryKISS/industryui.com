@@ -12,13 +12,15 @@ import styled from 'styled-components'
 export default {
   args: {},
   argTypes: {},
-  title: 'Molecules/Charts/highCharts/line',
   component: HighChart,
   parameters: {
-    readme: {
-      sidebar: Readme
+    docs: {
+      description: {
+        component: Readme
+      }
     }
-  }
+  },
+  title: 'Molecules/Charts/highCharts/line'
 }
 
 const BaseComponent = props => {

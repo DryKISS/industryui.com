@@ -1,6 +1,7 @@
 /**
  * highCharts - live line chart
  */
+
 // React
 import { useEffect, useRef } from 'react'
 

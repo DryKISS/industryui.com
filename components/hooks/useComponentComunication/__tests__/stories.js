@@ -8,7 +8,7 @@ import { useState, useRef } from 'react'
 // UI
 import styled from 'styled-components'
 
-import useComponentComunication from '../useSubscription'
+import { useComponentComunication } from '../useSubscription'
 import { ComunicationService, Subscriber } from '../service'
 import { MessageNames } from '../messageNames'
 import { RandomColor } from 'components/utils'
