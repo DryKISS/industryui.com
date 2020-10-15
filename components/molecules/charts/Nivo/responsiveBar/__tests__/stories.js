@@ -7,7 +7,6 @@ import { colorSchemes } from '@nivo/colors'
 
 // UI
 import { BarChart, objectWithoutProperties } from 'components'
-
 import Readme from '../README.md'
 
 // Mocks
@@ -72,7 +71,6 @@ export default {
       }
     }
   },
-  title: 'Molecules/Charts/Nivo/Bar',
   component: BarChart,
   parameters: {
     docs: {
@@ -80,7 +78,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Charts/Nivo/Bar'
 }
 const BaseComponent = props => {
   const { args } = props
@@ -97,7 +96,6 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-/// storeis
 export const main = args => {
   return <BaseComponent data={Data} indexBy={keyToIndexBy} keys={keys} args={args} />
 }

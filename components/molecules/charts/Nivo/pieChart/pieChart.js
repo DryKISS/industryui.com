@@ -1,7 +1,16 @@
+/**
+ * Pie chart
+ */
+
+// React
 import { oneOf, bool } from 'prop-types'
+
+// Nivo
 import { ResponsivePie, PiePropTypes, PieDefaultProps } from '@nivo/pie'
-import { withTheme } from 'styled-components'
 import { colorSchemes } from '@nivo/colors'
+
+// Style
+import { withTheme } from 'styled-components'
 
 export const PieChart = withTheme(({ theme, ...props }) => {
   const {

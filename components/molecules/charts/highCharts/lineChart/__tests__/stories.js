@@ -51,7 +51,7 @@ const StyledWrapper = styled.div`
   text-align: center;
   height: 500px;
 `
-/// storeis
+
 export const main = args => {
   return <BaseComponent args={args} />
 }

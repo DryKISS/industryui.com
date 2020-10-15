@@ -1,9 +1,17 @@
+/**
+ * Bar chart
+ *
+ * @see https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
+ */
+
 // React
-import React from 'react'
 import { func, oneOf, bool, string } from 'prop-types'
+
+// Nivo
 import { ResponsiveBar, BarPropTypes, BarDefaultProps } from '@nivo/bar'
-// Source: https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
 import { colorSchemes } from '@nivo/colors'
+
+// Style
 import { withTheme } from 'styled-components'
 
 const BarComponent = ({ theme, ...props }) => {
@@ -51,7 +59,6 @@ const BarComponent = ({ theme, ...props }) => {
       legends={showLegend ? BARCHART.legends : []}
       minValue={minValue}
       maxValue={maxValue}
-      // TODO: Write color schemes according to the context value
       margin={BARCHART.margin.call(props)}
       padding={BARCHART.padding}
       reverse={reverse}
@@ -74,11 +81,10 @@ BarPropTypes.getLabelLinkColor = func
 BarPropTypes.getTooltipLabel = func
 
 export const BarChart = withTheme(BarComponent)
-// override 'withTheme(BarComponent)'
+
 BarChart.displayName = 'BarChart'
 
 BarChart.propTypes = Object.assign({}, BarPropTypes, {
-  // TODO: maybe write more custom schemes :)
   bottomLegend: string,
   colorScheme: oneOf(Object.keys(colorSchemes)),
   leftLegend: string,
