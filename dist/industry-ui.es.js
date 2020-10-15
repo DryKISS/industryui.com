@@ -24,10 +24,12 @@ import { Editor as Editor$1 } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import _range from 'lodash/range';
+import Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
 import { BarPropTypes, BarDefaultProps, ResponsiveBar } from '@nivo/bar';
 import { colorSchemes } from '@nivo/colors';
-import { ResponsiveLine, LinePropTypes, LineDefaultProps } from '@nivo/line';
-import { ResponsivePie, PiePropTypes, PieDefaultProps } from '@nivo/pie';
+import { LineDefaultProps, ResponsiveLine, LinePropTypes } from '@nivo/line';
+import { PieDefaultProps, ResponsivePie, PiePropTypes } from '@nivo/pie';
 import { Picker } from 'emoji-mart';
 import util$1 from 'util';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker as Marker$1, InfoWindow as InfoWindow$1 } from 'react-google-maps';
@@ -3479,6 +3481,18 @@ var getLast = function getLast(array) {
   return array[array.length - 1];
 };
 
+var objectWithoutProperties = function objectWithoutProperties(obj, keys) {
+  var target = {};
+
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+
+  return target;
+};
+
 /**
  * random hex color generator
  */
@@ -5210,6 +5224,7 @@ function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if 
 function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var legendTranslateX = 110;
 var BARCHART = {
+  animate: false,
   colors: COLOUR$1,
   margin: function margin() {
     return {
@@ -5220,17 +5235,16 @@ var BARCHART = {
       left: 80
     };
   },
-  padding: 0.2,
-  borderWidth: 1,
   borderColor: COLOUR$1.black,
-  labelSkipHeight: 24,
-  enableLabel: true,
-  animate: false,
-  isInteractive: false,
+  borderWidth: 1,
   enableGridX: false,
   enableGridY: true,
+  enableLabel: true,
+  isInteractive: false,
+  labelSkipHeight: 24,
+  padding: 0.2,
   axisBottom: function axisBottom() {
-    return _objectSpread$2(_objectSpread$2({}, {
+    return _objectSpread$2({
       tickSize: 10,
       tickPadding: 10,
       tickRotation: -1,
@@ -5238,10 +5252,10 @@ var BARCHART = {
       // string passed as prop
       legendPosition: 'middle',
       legendOffset: 36
-    }), this.axisBottom);
+    }, this.axisBottom);
   },
   axisLeft: function axisLeft() {
-    return _objectSpread$2(_objectSpread$2({}, {
+    return _objectSpread$2({
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
@@ -5249,27 +5263,27 @@ var BARCHART = {
       // string passed as prop
       legendPosition: 'middle',
       legendOffset: -60
-    }), this.axisLeft);
+    }, this.axisLeft);
   },
   legends: [{
-    dataFrom: 'keys',
     anchor: 'bottom-right',
+    dataFrom: 'keys',
     direction: 'column',
-    justify: false,
-    translateX: legendTranslateX,
-    translateY: 0,
-    itemsSpacing: 2,
-    itemWidth: 100,
-    itemHeight: 20,
-    itemDirection: 'left-to-right',
-    itemOpacity: 0.85,
-    symbolSize: 20,
     effects: [{
       on: 'hover',
       style: {
         itemOpacity: 1
       }
-    }]
+    }],
+    itemDirection: 'left-to-right',
+    itemHeight: 20,
+    itemsSpacing: 2,
+    itemOpacity: 0.85,
+    itemWidth: 100,
+    justify: false,
+    translateX: legendTranslateX,
+    translateY: 0,
+    symbolSize: 20
   }]
 };
 
@@ -5385,23 +5399,17 @@ var HEADINGS = {
   }
 };
 
-/**
- * Charts - Line - Variables
- */
+function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var lastValue = null;
 var LINECHART = {
   axisBottom: function axisBottom() {
     var _this = this;
 
-    return {
-      orient: 'bottom',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: this.bottomLegend,
-      // string passed as prop
-      legendOffset: 36,
-      legendPosition: 'middle',
+    return _objectSpread$3({
+      axisTop: null,
+      axisRight: null,
       format: function format(value) {
         if (_this.axisBottomDistinct) {
           var formatted = shortDate(value);
@@ -5411,40 +5419,53 @@ var LINECHART = {
             return formatted;
           }
         } else return value;
-      }
-    };
+      },
+      legend: this.bottomLegend,
+      // string passed as prop
+      legendOffset: 36,
+      legendPosition: 'middle',
+      orient: 'bottom',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0
+    }, this.axisBottom);
   },
   axisLeft: function axisLeft() {
     var _this2 = this;
 
-    return {
-      orient: 'left',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
+    return _objectSpread$3({
+      format: function format(value) {
+        if (value % 1 === 0) return "".concat(value + _this2.axisLeftSymbol || value);
+      },
       legend: this.leftLegend,
       // string passed as prop
       legendOffset: -50,
       legendPosition: 'middle',
-      format: function format(value) {
-        if (value % 1 === 0) return "".concat(value + _this2.axisLeftSymbol || value);
-      }
-    };
+      orient: 'left',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0
+    }, this.axisLeft);
   },
-  axisTop: null,
-  axisRight: null,
   margin: function margin() {
     return {
-      top: 30,
+      bottom: 50,
+      left: 60,
       right: this.showLegend ? 110 : 30,
       // props context
-      bottom: 50,
-      left: 60
+      top: 30
     };
   },
   legends: [{
     anchor: 'bottom-right',
     direction: 'column',
+    effects: [{
+      on: 'hover',
+      style: {
+        itemBackground: 'rgba(0, 0, 0, .03)',
+        itemOpacity: 1
+      }
+    }],
     justify: false,
     translateX: 100,
     translateY: 0,
@@ -5455,14 +5476,7 @@ var LINECHART = {
     itemOpacity: 0.75,
     symbolSize: 12,
     symbolShape: 'circle',
-    symbolBorderColor: 'rgba(0, 0, 0, .5)',
-    effects: [{
-      on: 'hover',
-      style: {
-        itemBackground: 'rgba(0, 0, 0, .03)',
-        itemOpacity: 1
-      }
-    }]
+    symbolBorderColor: 'rgba(0, 0, 0, .5)'
   }],
   pointColor: COLOUR$1.white,
   pointSize: 10,
@@ -5558,28 +5572,6 @@ var PIECHART = {
   cornerRadius: 3,
   padAngle: 0.7,
   innerRadius: 0.5,
-  startAngle: -180,
-  margin: function margin() {
-    return {
-      top: 30,
-      right: 80,
-      bottom: this.showLegend ? 80 : 30,
-      // props context
-      left: 80
-    };
-  },
-  radialLabelsSkipAngle: 10,
-  radialLabelsTextXOffset: 6,
-  radialLabelsTextColor: COLOUR$1.black,
-  radialLabelsLinkOffset: 0,
-  radialLabelsLinkDiagonalLength: 16,
-  radialLabelsLinkHorizontalLength: 24,
-  radialLabelsLinkStrokeWidth: 1,
-  radialLabelsLinkColor: {
-    from: 'color'
-  },
-  slicesLabelsSkipAngle: 10,
-  slicesLabelsTextColor: COLOUR$1.black,
   legends: [{
     anchor: 'bottom',
     direction: 'row',
@@ -5596,8 +5588,30 @@ var PIECHART = {
       }
     }]
   }],
+  margin: function margin() {
+    return {
+      top: 30,
+      right: 80,
+      bottom: this.showLegend ? 80 : 30,
+      // props context
+      left: 80
+    };
+  },
   motionStiffness: 90,
-  motionDamping: 15
+  motionDamping: 15,
+  radialLabelsSkipAngle: 10,
+  radialLabelsTextXOffset: 6,
+  radialLabelsTextColor: COLOUR$1.black,
+  radialLabelsLinkOffset: 0,
+  radialLabelsLinkDiagonalLength: 16,
+  radialLabelsLinkHorizontalLength: 24,
+  radialLabelsLinkStrokeWidth: 1,
+  radialLabelsLinkColor: {
+    from: 'color'
+  },
+  slicesLabelsSkipAngle: 10,
+  slicesLabelsTextColor: COLOUR$1.black,
+  startAngle: -180
 };
 
 /**
@@ -5964,10 +5978,10 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
-function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var IconPropTypes = _objectSpread$3(_objectSpread$3({
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var IconPropTypes = _objectSpread$4(_objectSpread$4({
   border: propTypes.bool,
   className: propTypes.any,
   context: propTypes.oneOf(Object.values(CONTEXT)),
@@ -6155,10 +6169,10 @@ Blockquote.propTypes = {
   text: propTypes.string.isRequired
 };
 
-function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var ButtonPropTypes = _objectSpread$4(_objectSpread$4(_objectSpread$4({
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var ButtonPropTypes = _objectSpread$5(_objectSpread$5(_objectSpread$5({
   block: propTypes.bool,
   centre: propTypes.bool,
   children: propTypes.node,
@@ -7485,10 +7499,10 @@ Space.protoTypes = {
   paddingLeft: propTypes.oneOf(Object.values(SIZE))
 };
 
-function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var TextPropTypes = _objectSpread$5(_objectSpread$5({
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var TextPropTypes = _objectSpread$6(_objectSpread$6({
   align: propTypes.string,
   children: propTypes.node,
   content: propTypes.string,
@@ -12069,9 +12083,9 @@ Form.propTypes = {
 
 var __jsx$J = React.createElement;
 
-function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var FieldHOC = function FieldHOC(_ref) {
   var Component = _ref.component,
       errors = _ref.errors,
@@ -12088,7 +12102,7 @@ var FieldHOC = function FieldHOC(_ref) {
     errors: errors === null || errors === void 0 ? void 0 : errors.message,
     key: props.name,
     name: props.name,
-    ref: register(_objectSpread$6(_objectSpread$6(_objectSpread$6(_objectSpread$6(_objectSpread$6({
+    ref: register(_objectSpread$7(_objectSpread$7(_objectSpread$7(_objectSpread$7(_objectSpread$7({
       validate: validate
     }, props.max && {
       max: props.max
@@ -12101,7 +12115,7 @@ var FieldHOC = function FieldHOC(_ref) {
     }), props.regExp && {
       pattern: new RegExp(props.regExp)
     })),
-    style: _objectSpread$6({
+    style: _objectSpread$7({
       display: !show ? 'none' : undefined
     }, props.style)
   }, props), children), helperMessage && __jsx$J(Space, {
@@ -12845,17 +12859,17 @@ var reactSelectPropTypes = {
   tabSelectsValue: propTypes.bool
 };
 
-function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var defaultStyles = {
   container: function container(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       margin: '0'
     });
   },
   control: function control(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       backgroundColor: '#fff',
       borderColor: COLOUR.dark,
       borderRadius: '0.25rem',
@@ -12867,26 +12881,26 @@ var defaultStyles = {
     });
   },
   menu: function menu(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       borderColor: COLOUR.dark,
       boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
       color: COLOUR.dark
     });
   },
   multiValue: function multiValue(base, state) {
-    return state.data.isFixed ? _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return state.data.isFixed ? _objectSpread$8(_objectSpread$8({}, base), {}, {
       backgroundColor: 'gray'
     }) : base;
   },
   multiValueLabel: function multiValueLabel(base, state) {
-    return state.data.isFixed ? _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return state.data.isFixed ? _objectSpread$8(_objectSpread$8({}, base), {}, {
       fontWeight: 'bold',
       color: 'white',
       paddingRight: 6
     }) : base;
   },
   multiValueRemove: function multiValueRemove(base, state) {
-    return state.data.isFixed ? _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return state.data.isFixed ? _objectSpread$8(_objectSpread$8({}, base), {}, {
       display: 'none'
     }) : base;
   },
@@ -12896,7 +12910,7 @@ var defaultStyles = {
     };
   },
   singleValue: function singleValue(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       color: '#003753'
     });
   }
@@ -14094,69 +14108,79 @@ CardImage.propTypes = {
 };
 
 var __jsx$1a = React.createElement;
+var HighChart = function HighChart(_ref) {
+  var options = _ref.options,
+      constructorType = _ref.constructorType;
+  return __jsx$1a(HighchartsReact, {
+    highcharts: Highcharts,
+    options: options,
+    constructorType: constructorType
+  });
+};
+
+var __jsx$1b = React.createElement;
 
 var BarComponent = function BarComponent(_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
 
   var BARCHART = theme.BARCHART;
-  var data = props.data,
+  var _props$colorBy = props.colorBy,
+      colorBy = _props$colorBy === void 0 ? BarDefaultProps.colorBy : _props$colorBy,
+      colorScheme = props.colorScheme,
+      data = props.data,
+      _props$enableGridY = props.enableGridY,
+      enableGridY = _props$enableGridY === void 0 ? BARCHART.enableGridY : _props$enableGridY,
+      _props$enableGridX = props.enableGridX,
+      enableGridX = _props$enableGridX === void 0 ? BARCHART.enableGridX : _props$enableGridX,
+      _props$groupMode = props.groupMode,
+      groupMode = _props$groupMode === void 0 ? BarDefaultProps.groupMode : _props$groupMode,
       _props$indexBy = props.indexBy,
       indexBy = _props$indexBy === void 0 ? BarDefaultProps.indexBy : _props$indexBy,
+      _props$isInteractive = props.isInteractive,
+      isInteractive = _props$isInteractive === void 0 ? BARCHART.isInteractive : _props$isInteractive,
       _props$keys = props.keys,
       keys = _props$keys === void 0 ? BarDefaultProps.keys : _props$keys,
       _props$label = props.label,
       label = _props$label === void 0 ? BarDefaultProps.label : _props$label,
       _props$layout = props.layout,
       layout = _props$layout === void 0 ? BarDefaultProps.layout : _props$layout,
-      _props$groupMode = props.groupMode,
-      groupMode = _props$groupMode === void 0 ? BarDefaultProps.groupMode : _props$groupMode,
-      _props$reverse = props.reverse,
-      reverse = _props$reverse === void 0 ? BarDefaultProps.reverse : _props$reverse,
       _props$minValue = props.minValue,
       minValue = _props$minValue === void 0 ? BarDefaultProps.minValue : _props$minValue,
       _props$maxValue = props.maxValue,
       maxValue = _props$maxValue === void 0 ? BarDefaultProps.maxValue : _props$maxValue,
-      _props$colorBy = props.colorBy,
-      colorBy = _props$colorBy === void 0 ? BarDefaultProps.colorBy : _props$colorBy,
-      _props$enableGridX = props.enableGridX,
-      enableGridX = _props$enableGridX === void 0 ? BARCHART.enableGridX : _props$enableGridX,
-      _props$enableGridY = props.enableGridY,
-      enableGridY = _props$enableGridY === void 0 ? BARCHART.enableGridY : _props$enableGridY,
-      _props$isInteractive = props.isInteractive,
-      isInteractive = _props$isInteractive === void 0 ? BARCHART.isInteractive : _props$isInteractive,
-      colorScheme = props.colorScheme,
+      _props$reverse = props.reverse,
+      reverse = _props$reverse === void 0 ? BarDefaultProps.reverse : _props$reverse,
       showLegend = props.showLegend,
       _props$tooltip = props.tooltip,
       tooltip = _props$tooltip === void 0 ? BarDefaultProps.tooltip : _props$tooltip;
-  return __jsx$1a(ResponsiveBar, {
-    indexBy: indexBy,
-    keys: keys,
-    label: label,
-    layout: layout,
-    groupMode: groupMode,
-    reverse: reverse,
-    minValue: minValue,
-    maxValue: maxValue,
+  return __jsx$1b(ResponsiveBar, {
+    animate: BARCHART.animate,
+    axisBottom: BARCHART.axisBottom.call(props),
+    axisLeft: BARCHART.axisLeft.call(props),
+    borderColor: BARCHART.borderColor,
+    borderWidth: BARCHART.borderWidth,
     colorBy: colorBy,
-    enableGridX: enableGridX,
-    enableGridY: enableGridY,
-    data: data // TODO: Write color schemes according to the context value
-    ,
     colors: {
       scheme: colorScheme
     },
+    data: data,
+    enableLabel: BARCHART.enableLabel,
+    enableGridX: enableGridX,
+    enableGridY: enableGridY,
+    groupMode: groupMode,
+    indexBy: indexBy,
+    isInteractive: isInteractive,
+    keys: keys,
+    label: label,
+    labelSkipHeight: BARCHART.labelSkipHeight,
+    layout: layout,
+    legends: showLegend ? BARCHART.legends : [],
+    minValue: minValue,
+    maxValue: maxValue,
     margin: BARCHART.margin.call(props),
     padding: BARCHART.padding,
-    axisBottom: BARCHART.axisBottom.call(props),
-    axisLeft: BARCHART.axisLeft.call(props),
-    borderWidth: BARCHART.borderWidth,
-    borderColor: BARCHART.borderColor,
-    enableLabel: BARCHART.enableLabel,
-    labelSkipHeight: BARCHART.labelSkipHeight,
-    legends: showLegend ? BARCHART.legends : [],
-    isInteractive: isInteractive,
-    animate: BARCHART.animate,
+    reverse: reverse,
     tooltip: tooltip
   });
 };
@@ -14167,21 +14191,19 @@ var BarComponent = function BarComponent(_ref) {
  */
 
 
+BarPropTypes.getBorderColor = propTypes.func;
+BarPropTypes.getColor = propTypes.func;
 BarPropTypes.getIndex = propTypes.func;
 BarPropTypes.getLabel = propTypes.func;
 BarPropTypes.getLabelTextColor = propTypes.func;
 BarPropTypes.getLabelLinkColor = propTypes.func;
-BarPropTypes.getColor = propTypes.func;
-BarPropTypes.getBorderColor = propTypes.func;
 BarPropTypes.getTooltipLabel = propTypes.func;
-var BarChart = withTheme(BarComponent); // override 'withTheme(BarComponent)'
-
+var BarChart = withTheme(BarComponent);
 BarChart.displayName = 'BarChart';
 BarChart.propTypes = Object.assign({}, BarPropTypes, {
-  // TODO: maybe write more custom schemes :)
   bottomLegend: propTypes.string,
-  leftLegend: propTypes.string,
   colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+  leftLegend: propTypes.string,
   showLegend: propTypes.bool
 });
 BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
@@ -14189,7 +14211,7 @@ BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
   showLegend: false
 });
 
-var __jsx$1b = React.createElement;
+var __jsx$1c = React.createElement;
 var LineChart = withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
@@ -14211,9 +14233,8 @@ var LineChart = withTheme(function (_ref) {
       xScale = _theme$LINECHART.xScale,
       yScale = _theme$LINECHART.yScale;
   var colorScheme = props.colorScheme,
-      data = props.data,
       curve = props.curve,
-      lineWidth = props.lineWidth,
+      data = props.data,
       enableArea = props.enableArea,
       areaOpacity = props.areaOpacity,
       enableCrosshair = props.enableCrosshair,
@@ -14223,12 +14244,22 @@ var LineChart = withTheme(function (_ref) {
       enableGridY = props.enableGridY,
       enableSlices = props.enableSlices,
       isInteractive = props.isInteractive,
+      lineWidth = props.lineWidth,
       _props$pointSize = props.pointSize,
       pointSize = _props$pointSize === void 0 ? LINECHART.pointSize : _props$pointSize,
-      showLegend = props.showLegend;
-  return __jsx$1b(ResponsiveLine, {
+      showLegend = props.showLegend,
+      _props$tooltip = props.tooltip,
+      tooltip = _props$tooltip === void 0 ? LineDefaultProps.tooltip : _props$tooltip;
+  return __jsx$1c(ResponsiveLine, {
     areaOpacity: areaOpacity,
+    axisTop: axisTop,
+    axisRight: axisRight,
+    axisBottom: axisBottom.call(props),
+    axisLeft: axisLeft.call(props),
     curve: curve,
+    colors: {
+      scheme: colorScheme
+    },
     data: data,
     enableArea: enableArea,
     enableCrosshair: enableCrosshair,
@@ -14238,33 +14269,27 @@ var LineChart = withTheme(function (_ref) {
     enableGridY: enableGridY,
     enableSlices: enableSlices,
     isInteractive: isInteractive,
+    lineWidth: lineWidth,
+    legends: showLegend ? legends : [],
     margin: margin.call(props),
-    xScale: xScale,
-    yScale: yScale.call(props),
-    axisTop: axisTop,
-    axisRight: axisRight,
-    axisBottom: axisBottom.call(props),
-    axisLeft: axisLeft.call(props),
-    colors: {
-      scheme: colorScheme
-    },
     pointSize: pointSize,
     pointColor: pointColor,
     pointBorderColor: pointBorderColor,
     pointBorderWidth: pointBorderWidth,
     pointLabel: pointLabel,
     pointLabelYOffset: pointLabelYOffset,
+    tooltip: tooltip,
     useMesh: useMesh,
-    legends: showLegend ? legends : [],
-    lineWidth: lineWidth
+    xScale: xScale,
+    yScale: yScale.call(props)
   });
 });
 LineChart.displayName = 'LineChart';
 LineChart.propTypes = Object.assign({}, LinePropTypes, {
   // TODO: maybe write more custom schemes :)
   bottomLegend: propTypes.string,
-  leftLegend: propTypes.string,
   colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+  leftLegend: propTypes.string,
   showLegend: propTypes.bool
 });
 LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
@@ -14272,7 +14297,7 @@ LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
   showLegend: false
 });
 
-var __jsx$1c = React.createElement;
+var __jsx$1d = React.createElement;
 var PieChart = withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
@@ -14283,25 +14308,27 @@ var PieChart = withTheme(function (_ref) {
       borderColor = _theme$PIECHART.borderColor,
       borderWidth = _theme$PIECHART.borderWidth,
       startAngle = _theme$PIECHART.startAngle,
+      legends = _theme$PIECHART.legends,
       margin = _theme$PIECHART.margin,
+      motionStiffness = _theme$PIECHART.motionStiffness,
+      motionDamping = _theme$PIECHART.motionDamping,
       radialLabelsSkipAngle = _theme$PIECHART.radialLabelsSkipAngle,
       radialLabelsTextColor = _theme$PIECHART.radialLabelsTextColor,
       radialLabelsLinkColor = _theme$PIECHART.radialLabelsLinkColor,
       slicesLabelsSkipAngle = _theme$PIECHART.slicesLabelsSkipAngle,
-      slicesLabelsTextColor = _theme$PIECHART.slicesLabelsTextColor,
-      legends = _theme$PIECHART.legends,
-      motionStiffness = _theme$PIECHART.motionStiffness,
-      motionDamping = _theme$PIECHART.motionDamping;
+      slicesLabelsTextColor = _theme$PIECHART.slicesLabelsTextColor;
   var colorScheme = props.colorScheme,
+      _props$cornerRadius = props.cornerRadius,
+      cornerRadius = _props$cornerRadius === void 0 ? PIECHART.cornerRadius : _props$cornerRadius,
       data = props.data,
-      onClick = props.onClick,
       enableRadialLabels = props.enableRadialLabels,
       enableSlicesLabels = props.enableSlicesLabels,
       _props$innerRadius = props.innerRadius,
       innerRadius = _props$innerRadius === void 0 ? PIECHART.innerRadius : _props$innerRadius,
       isInteractive = props.isInteractive,
-      showLegend = props.showLegend,
-      sortByValue = props.sortByValue,
+      onClick = props.onClick,
+      _props$padAngle = props.padAngle,
+      padAngle = _props$padAngle === void 0 ? PIECHART.padAngle : _props$padAngle,
       _props$radialLabelsLi = props.radialLabelsLinkStrokeWidth,
       radialLabelsLinkStrokeWidth = _props$radialLabelsLi === void 0 ? PIECHART.radialLabelsLinkStrokeWidth : _props$radialLabelsLi,
       _props$radialLabelsTe = props.radialLabelsTextXOffset,
@@ -14312,27 +14339,29 @@ var PieChart = withTheme(function (_ref) {
       radialLabelsLinkDiagonalLength = _props$radialLabelsLi3 === void 0 ? PIECHART.radialLabelsLinkDiagonalLength : _props$radialLabelsLi3,
       _props$radialLabelsLi4 = props.radialLabelsLinkOffset,
       radialLabelsLinkOffset = _props$radialLabelsLi4 === void 0 ? PIECHART.radialLabelsLinkOffset : _props$radialLabelsLi4,
-      _props$cornerRadius = props.cornerRadius,
-      cornerRadius = _props$cornerRadius === void 0 ? PIECHART.cornerRadius : _props$cornerRadius,
-      _props$padAngle = props.padAngle,
-      padAngle = _props$padAngle === void 0 ? PIECHART.padAngle : _props$padAngle;
-  return __jsx$1c(ResponsivePie, {
+      showLegend = props.showLegend,
+      sortByValue = props.sortByValue,
+      _props$tooltip = props.tooltip,
+      tooltip = _props$tooltip === void 0 ? PieDefaultProps.tooltip : _props$tooltip;
+  return __jsx$1d(ResponsivePie, {
     animate: animate,
     onClick: onClick,
     data: data,
-    margin: margin.call(props),
-    startAngle: startAngle,
+    enableSlicesLabels: enableSlicesLabels,
+    enableRadialLabels: enableRadialLabels,
+    isInteractive: isInteractive,
     innerRadius: innerRadius,
-    padAngle: padAngle,
     cornerRadius: cornerRadius,
     colors: {
       scheme: colorScheme
     },
     borderWidth: borderWidth,
     borderColor: borderColor,
-    enableSlicesLabels: enableSlicesLabels,
-    enableRadialLabels: enableRadialLabels,
-    isInteractive: isInteractive,
+    legends: showLegend ? legends : [],
+    margin: margin.call(props),
+    motionDamping: motionDamping,
+    motionStiffness: motionStiffness,
+    padAngle: padAngle,
     radialLabelsSkipAngle: radialLabelsSkipAngle,
     radialLabelsTextXOffset: radialLabelsTextXOffset,
     radialLabelsTextColor: radialLabelsTextColor,
@@ -14344,9 +14373,8 @@ var PieChart = withTheme(function (_ref) {
     slicesLabelsSkipAngle: slicesLabelsSkipAngle,
     slicesLabelsTextColor: slicesLabelsTextColor,
     sortByValue: sortByValue,
-    motionStiffness: motionStiffness,
-    motionDamping: motionDamping,
-    legends: showLegend ? legends : []
+    startAngle: startAngle,
+    tooltip: tooltip
   });
 });
 PieChart.displayName = 'PieChart';
@@ -14359,17 +14387,17 @@ PieChart.defaultProps = Object.assign({}, PieDefaultProps, {
   showLegend: false
 });
 
-var __jsx$1d = React.createElement;
+var __jsx$1e = React.createElement;
 var CarouselArrow = function CarouselArrow(_ref) {
   var clickFunction = _ref.clickFunction,
       context = _ref.context,
       direction = _ref.direction,
       icon = _ref.icon,
       position = _ref.position;
-  return __jsx$1d(StyledContainer$2, {
+  return __jsx$1e(StyledContainer$2, {
     direction: direction,
     onClick: clickFunction
-  }, __jsx$1d(StyledArrow, {
+  }, __jsx$1e(StyledArrow, {
     context: context,
     icon: icon,
     position: position
@@ -14410,12 +14438,12 @@ CarouselArrow.propTypes = {
   position: propTypes.string.isRequired
 };
 
-var __jsx$1e = React.createElement;
+var __jsx$1f = React.createElement;
 var CarouselSlide = function CarouselSlide(_ref) {
   var children = _ref.children,
       onClick = _ref.onClick,
       style = _ref.style;
-  return __jsx$1e(StyledSlide, {
+  return __jsx$1f(StyledSlide, {
     onClick: onClick,
     style: style
   }, children);
@@ -14430,18 +14458,18 @@ CarouselSlide.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$1f = React.createElement;
+var __jsx$1g = React.createElement;
 var CarouselSampleSlide = function CarouselSampleSlide(_ref) {
   var context = _ref.context,
       img = _ref.img,
       node = _ref.node,
       text = _ref.text;
   if (!img && !text) return null;
-  return __jsx$1f(CarouselSlide, null, node, text && __jsx$1f(StyledText$2, {
+  return __jsx$1g(CarouselSlide, null, node, text && __jsx$1g(StyledText$2, {
     content: text,
     context: context,
     size: "xl"
-  }), img && __jsx$1f(Image$1, {
+  }), img && __jsx$1g(Image$1, {
     src: img
   }));
 };
@@ -14519,7 +14547,7 @@ var CarouselDefaultProps = {
   showPagination: false
 };
 
-var __jsx$1g = React.createElement;
+var __jsx$1h = React.createElement;
 var Carousel = function Carousel(_ref) {
   var arrowContext = _ref.arrowContext,
       arrowPosition = _ref.arrowPosition,
@@ -14556,17 +14584,17 @@ var Carousel = function Carousel(_ref) {
   };
 
   var renderPagination = function renderPagination() {
-    return __jsx$1g(PaginationWrapper, null, __jsx$1g(Pagination, _extends({
+    return __jsx$1h(PaginationWrapper, null, __jsx$1h(Pagination, _extends({
       onPageChange: function onPageChange(page) {
         return setCurrentImageIndex(page - 1);
       },
       currentPage: currentImageIndex + 1,
       pageCount: dataSource.length,
       showNextAndPrev: true,
-      prevLabel: __jsx$1g(Icon, {
+      prevLabel: __jsx$1h(Icon, {
         icon: "chevron-left"
       }),
-      nextLabel: __jsx$1g(Icon, {
+      nextLabel: __jsx$1h(Icon, {
         icon: "chevron-right"
       }),
       size: "xs"
@@ -14575,17 +14603,17 @@ var Carousel = function Carousel(_ref) {
 
   var hasNavigation = Array.isArray(dataSource) && dataSource.length > 1;
   var current = dataSource[currentImageIndex];
-  return __jsx$1g(React.Fragment, null, __jsx$1g(Wrapper$3, {
+  return __jsx$1h(React.Fragment, null, __jsx$1h(Wrapper$3, {
     width: width,
     height: height,
     fullWidth: fullWidth
-  }, hasNavigation && showArrows && __jsx$1g(CarouselArrow, {
+  }, hasNavigation && showArrows && __jsx$1h(CarouselArrow, {
     context: arrowContext,
     clickFunction: previousSlide,
     direction: "left",
     icon: leftArrowIcon,
     position: arrowPosition
-  }), slides ? __jsx$1g(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1g(CarouselArrow, {
+  }), slides ? __jsx$1h(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1h(CarouselArrow, {
     context: arrowContext,
     clickFunction: nextSlide,
     direction: "right",
@@ -14614,7 +14642,7 @@ var PaginationWrapper = styled.div.withConfig({
 Carousel.propTypes = CarouselPropTypes;
 Carousel.defaultProps = CarouselDefaultProps;
 
-var __jsx$1h = React.createElement;
+var __jsx$1i = React.createElement;
 var year = new Date().getFullYear();
 var Copyright = function Copyright(_ref) {
   var brand = _ref.brand,
@@ -14626,20 +14654,20 @@ var Copyright = function Copyright(_ref) {
     return links.map(function (_ref2, index) {
       var name = _ref2.name,
           to = _ref2.to;
-      return __jsx$1h(Link, {
+      return __jsx$1i(Link, {
         key: index,
         passHref: true,
         to: to
-      }, __jsx$1h(StyledLink$1, null, name));
+      }, __jsx$1i(StyledLink$1, null, name));
     });
   };
 
-  return __jsx$1h(StyledCopyright, {
+  return __jsx$1i(StyledCopyright, {
     fixed: fixed,
     "data-cy": "copyright"
-  }, __jsx$1h(StyledContainer$3, null, __jsx$1h(Row, null, __jsx$1h(Column, {
+  }, __jsx$1i(StyledContainer$3, null, __jsx$1i(Row, null, __jsx$1i(Column, {
     md: links.length > 0 ? 3 : 12
-  }, __jsx$1h(StyledBrand, null, __jsx$1h(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1h(Column, {
+  }, __jsx$1i(StyledBrand, null, __jsx$1i(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1i(Column, {
     md: 9
   }, renderLinks()))));
 };
@@ -14692,7 +14720,7 @@ Copyright.defaultProps = {
   links: []
 };
 
-var __jsx$1i = React.createElement;
+var __jsx$1j = React.createElement;
 var DogCard = function DogCard(_ref) {
   var breed = _ref.breed,
       breedName = _ref.breedName,
@@ -14705,7 +14733,7 @@ var DogCard = function DogCard(_ref) {
       sell = _ref.sell;
   var breederSlug = slugify(breeder);
   var nameSlug = slugify(name);
-  return __jsx$1i(Card, {
+  return __jsx$1j(Card, {
     alt: breed,
     bordered: true,
     context: "light",
@@ -14722,12 +14750,12 @@ var DogCard = function DogCard(_ref) {
         }
       }
     }
-  }, __jsx$1i(CardBody, null, __jsx$1i(DogName, {
+  }, __jsx$1j(CardBody, null, __jsx$1j(DogName, {
     row: {
       gender: gender,
       name: name
     }
-  }), sell && __jsx$1i("div", {
+  }), sell && __jsx$1j("div", {
     className: "float-right"
   }, formatPrice(price))));
 };
@@ -14743,7 +14771,7 @@ DogCard.propTypes = {
   sell: propTypes.bool
 };
 
-var __jsx$1j = React.createElement;
+var __jsx$1k = React.createElement;
 var DogLink = function DogLink(_ref) {
   var name = _ref.name;
 
@@ -14753,7 +14781,7 @@ var DogLink = function DogLink(_ref) {
   };
 
   var slug = slugify(name);
-  return __jsx$1j(Link, {
+  return __jsx$1k(Link, {
     to: {
       as: "/dogs/breeds/".concat(slug),
       href: {
@@ -14769,12 +14797,12 @@ DogLink.propTypes = {
   name: propTypes.string.isRequired
 };
 
-var __jsx$1k = React.createElement;
+var __jsx$1l = React.createElement;
 var DogName = function DogName(_ref) {
   var _ref$row = _ref.row,
       gender = _ref$row.gender,
       name = _ref$row.name;
-  return __jsx$1k(React.Fragment, null, __jsx$1k(Icon, {
+  return __jsx$1l(React.Fragment, null, __jsx$1l(Icon, {
     context: gender,
     icon: gender === 'male' ? 'mars' : 'venus',
     size: "lg",
@@ -14789,7 +14817,7 @@ DogName.propTypes = {
   row: propTypes.oneOfType([propTypes.array, propTypes.object]).isRequired
 };
 
-var __jsx$1l = React.createElement;
+var __jsx$1m = React.createElement;
 var Actions = function Actions(_ref) {
   var path = _ref.path,
       row = _ref.row;
@@ -14797,7 +14825,7 @@ var Actions = function Actions(_ref) {
       uId = row.uId;
 
   var action = function action(_action, context, icon, route, tooltip) {
-    return __jsx$1l(Link, {
+    return __jsx$1m(Link, {
       to: {
         href: {
           pathname: "".concat(path, "/").concat(route),
@@ -14809,14 +14837,14 @@ var Actions = function Actions(_ref) {
           }
         }
       }
-    }, __jsx$1l(Tooltip, {
+    }, __jsx$1m(Tooltip, {
       content: tooltip
-    }, __jsx$1l(Button, {
+    }, __jsx$1m(Button, {
       "data-tip": tooltip,
       context: context,
       size: "sm",
       title: _action
-    }, __jsx$1l(Icon, {
+    }, __jsx$1m(Icon, {
       context: "white",
       icon: icon,
       style: {
@@ -14825,7 +14853,7 @@ var Actions = function Actions(_ref) {
     }))));
   };
 
-  return __jsx$1l(React.Fragment, null, __jsx$1l(ButtonToolbar, {
+  return __jsx$1m(React.Fragment, null, __jsx$1m(ButtonToolbar, {
     className: "float-right"
   }, action('Edit', 'primary', 'edit', 'details', 'Edit this dogs profile details'), action('Photos', 'secondary', 'images', 'photos', 'Add or Edit this dogs photos'), action('Health', 'info', 'stethoscope', 'health', 'Add or Edit this dogs health details'), action('Delete', 'danger', 'trash', 'delete', 'Delete this dog')));
 };
@@ -14859,18 +14887,18 @@ var Columns = function Columns(actions, name) {
   }];
 };
 
-var __jsx$1m = React.createElement;
+var __jsx$1n = React.createElement;
 var TableDogs = function TableDogs(_ref) {
   var dogs = _ref.dogs,
       path = _ref.path;
-  return __jsx$1m(Table, {
+  return __jsx$1n(Table, {
     columns: Columns(function (row) {
-      return __jsx$1m(Actions, {
+      return __jsx$1n(Actions, {
         path: path,
         row: row
       });
     }, function (row) {
-      return __jsx$1m(DogName, {
+      return __jsx$1n(DogName, {
         row: row
       });
     }),
@@ -14878,7 +14906,7 @@ var TableDogs = function TableDogs(_ref) {
   });
 };
 
-var __jsx$1n = React.createElement;
+var __jsx$1o = React.createElement;
 var elementTypes = {
   Colour: 'colour',
   List: 'list',
@@ -14918,20 +14946,20 @@ var Dropdown = function Dropdown(_ref) {
       document.removeEventListener('mousedown', handleClickAway);
     };
   }, [open]);
-  return __jsx$1n(StyledDropdown, {
+  return __jsx$1o(StyledDropdown, {
     className: className,
     ref: node
-  }, __jsx$1n(StyledToggle$1, {
+  }, __jsx$1o(StyledToggle$1, {
     className: "".concat(open ? 'dropdown--active' : '', " dropdown--toggle"),
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }, children, caret && __jsx$1n(Icon, {
+  }, children, caret && __jsx$1o(Icon, {
     "aria-hidden": "true",
     className: "dropdown--caret",
     icon: position === Position.Top ? 'caret-up' : 'caret-down',
     prefix: "fas"
-  }), items && open && __jsx$1n(DropdownMenu, {
+  }), items && open && __jsx$1o(DropdownMenu, {
     closeDropdown: function closeDropdown() {
       return setOpen(false);
     },
@@ -14966,7 +14994,7 @@ Dropdown.defaultProps = {
   position: 'left'
 };
 
-var __jsx$1o = React.createElement;
+var __jsx$1p = React.createElement;
 var DropdownMenu = function DropdownMenu(_ref) {
   var closeDropdown = _ref.closeDropdown,
       elementType = _ref.elementType,
@@ -14979,17 +15007,17 @@ var DropdownMenu = function DropdownMenu(_ref) {
     closeDropdown();
   };
 
-  return __jsx$1o(StyledDropdownMenu, {
+  return __jsx$1p(StyledDropdownMenu, {
     elementType: elementType,
     className: "dropdown--menu",
     position: position
-  }, __jsx$1o(TooltipRectangle, {
+  }, __jsx$1p(TooltipRectangle, {
     position: position
-  }), __jsx$1o(TooltipRectangle, {
+  }), __jsx$1p(TooltipRectangle, {
     position: position,
     border: true
   }), items.map(function (item) {
-    return __jsx$1o(DropdownItem, {
+    return __jsx$1p(DropdownItem, {
       closeDropdown: closeDropdown,
       elementType: elementType,
       item: item,
@@ -15046,7 +15074,7 @@ DropdownMenu.propTypes = {
   position: propTypes.oneOf([Position.Top, Position.Right, Position.Bottom, Position.Left])
 };
 
-var __jsx$1p = React.createElement;
+var __jsx$1q = React.createElement;
 
 var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
   var id = _ref.id,
@@ -15054,14 +15082,14 @@ var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
       to = _ref.to;
 
   var item = function item() {
-    return __jsx$1p(StyledLink$2, {
+    return __jsx$1q(StyledLink$2, {
       className: "dropdown--link",
       id: id,
       onClick: onClick
     }, name);
   };
 
-  return to ? __jsx$1p(Link, {
+  return to ? __jsx$1q(Link, {
     border: false,
     passHref: true,
     to: to
@@ -15076,12 +15104,12 @@ var DropdownItem = function DropdownItem(_ref2) {
 
   switch (elementType) {
     case elementTypes.List:
-      return __jsx$1p(StyledDropdownItem, {
+      return __jsx$1q(StyledDropdownItem, {
         divider: item.divider
-      }, item.divider ? __jsx$1p(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
+      }, item.divider ? __jsx$1q(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
 
     case elementTypes.Colour:
-      return __jsx$1p(StyledColourItem, {
+      return __jsx$1q(StyledColourItem, {
         colour: item.colour,
         onClick: function onClick() {
           _onClick(item);
@@ -15089,9 +15117,9 @@ var DropdownItem = function DropdownItem(_ref2) {
       });
 
     case elementTypes.Icon:
-      return __jsx$1p(StyledIconItem, {
+      return __jsx$1q(StyledIconItem, {
         onClick: _onClick
-      }, __jsx$1p(Icon, {
+      }, __jsx$1q(Icon, {
         fixedWidth: false,
         icon: item === null || item === void 0 ? void 0 : item.icon,
         prefix: item === null || item === void 0 ? void 0 : item.prefix
@@ -19226,11 +19254,11 @@ module.exports = exports.default;
 
 var index = /*@__PURE__*/unwrapExports(dist$1);
 
-var __jsx$1q = React.createElement;
+var __jsx$1r = React.createElement;
 
-function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var EmojiMart = function EmojiMart(_ref) {
   var closeOnClickOut = _ref.closeOnClickOut,
       handleSelect = _ref.handleSelect,
@@ -19266,7 +19294,7 @@ var EmojiMart = function EmojiMart(_ref) {
     handleOpenPicker(false);
   };
 
-  return open && __jsx$1q(Picker, {
+  return open && __jsx$1r(Picker, {
     emoji: "",
     emojiSize: 16,
     include: ['foods', 'people', 'recent', 'nature'],
@@ -19275,7 +19303,7 @@ var EmojiMart = function EmojiMart(_ref) {
     sheetSize: 20,
     showSkinTones: false,
     showPreview: false,
-    style: _objectSpread$8({
+    style: _objectSpread$9({
       border: 'initial',
       borderRadius: 'initial',
       width: '100%'
@@ -19296,11 +19324,11 @@ EmojiMart.defaultProps = {
   open: false
 };
 
-var __jsx$1r = React.createElement;
+var __jsx$1s = React.createElement;
 
-function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var apiKey = _ref.apiKey,
       error = _ref.error,
@@ -19309,6 +19337,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
       handleFindAddress = _ref.handleFindAddress,
       handlePopulateAddress = _ref.handlePopulateAddress,
       selectAddress = _ref.selectAddress;
+  console.log(form);
 
   var _useState = useState(false),
       loading = _useState[0],
@@ -19341,7 +19370,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
 
           return response.json();
         }).then(function (data) {
-          setAddresses(_objectSpread$9(_objectSpread$9({}, addresses), {}, {
+          setAddresses(_objectSpread$a(_objectSpread$a({}, addresses), {}, {
             data: data.addresses
           }));
         })["catch"](function (error) {
@@ -19352,9 +19381,9 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   });
 
   var input = function input() {
-    return __jsx$1r(FormLabel, {
+    return __jsx$1s(FormLabel, {
       label: "Postcode"
-    }, __jsx$1r(FormField, {
+    }, __jsx$1s(FormField, {
       onChange: change,
       name: "postcode",
       value: form.postcode
@@ -19362,7 +19391,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   };
 
   var button = function button() {
-    return __jsx$1r(Button, {
+    return __jsx$1s(Button, {
       content: "Find your address",
       context: "primary",
       onClick: handleFindAddress,
@@ -19386,9 +19415,9 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
           text: 'Select address',
           value: ''
         });
-        return __jsx$1r(React.Fragment, null, __jsx$1r("p", null), __jsx$1r(FormLabel, {
+        return __jsx$1s(React.Fragment, null, __jsx$1s("p", null), __jsx$1s(FormLabel, {
           label: "Select your address"
-        }, __jsx$1r(SelectField, {
+        }, __jsx$1s(SelectField, {
           onChange: handlePopulateAddress,
           name: "addresses",
           options: reduced,
@@ -19425,47 +19454,47 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
       return changedInputs.map(function (_ref2) {
         var label = _ref2.label,
             id = _ref2.id;
-        return __jsx$1r("span", {
+        return __jsx$1s("span", {
           key: id
-        }, __jsx$1r(FormLabel, {
+        }, __jsx$1s(FormLabel, {
           label: label
-        }, __jsx$1r(FormField, {
+        }, __jsx$1s(FormField, {
           name: id,
           onChange: change,
           value: form[id]
         })));
       });
     } else {
-      return __jsx$1r("span", null);
+      return __jsx$1s("span", null);
     }
   };
 
   var renderError = function renderError() {
     if (!error) return;
-    return __jsx$1r("p", {
+    return __jsx$1s("p", {
       className: "GetAddress-error"
     }, "The postcode was not found");
   };
 
-  return __jsx$1r(React.Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
+  return __jsx$1s(React.Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
 });
 GetAddress.propTypes = {
   apiKey: propTypes.string.isRequired,
   change: propTypes.func.isRequired
 };
 
-var __jsx$1s = React.createElement;
+var __jsx$1t = React.createElement;
 var HeroButtons = function HeroButtons(_ref) {
   var buttons = _ref.buttons;
   return buttons.map(function (_ref2, index) {
     var content = _ref2.content,
         context = _ref2.context,
         to = _ref2.to;
-    return __jsx$1s(StyledLink$3, {
+    return __jsx$1t(StyledLink$3, {
       border: false,
       to: to,
       key: index
-    }, __jsx$1s(StyledButton$4, {
+    }, __jsx$1t(StyledButton$4, {
       content: content,
       context: context,
       size: "lg"
@@ -19484,16 +19513,16 @@ HeroButtons.propTypes = {
   buttons: propTypes.array
 };
 
-var __jsx$1t = React.createElement;
+var __jsx$1u = React.createElement;
 var HeroImage = function HeroImage(_ref) {
   var alt = _ref.alt,
       align = _ref.align,
       image = _ref.image,
       width = _ref.width;
-  return __jsx$1t(StyledColumn$1, {
+  return __jsx$1u(StyledColumn$1, {
     align: align,
     md: 6
-  }, __jsx$1t(StyledImageContainer, null, __jsx$1t(StyledImage$2, {
+  }, __jsx$1u(StyledImageContainer, null, __jsx$1u(StyledImage$2, {
     alt: alt,
     src: image,
     width: width
@@ -19526,7 +19555,7 @@ HeroImage.propTypes = {
   width: propTypes.number
 };
 
-var __jsx$1u = React.createElement;
+var __jsx$1v = React.createElement;
 
 function _templateObject$5() {
   var data = _taggedTemplateLiteral(["\n    width: 25rem;\n  "]);
@@ -19541,10 +19570,10 @@ var TextBlock = function TextBlock(_ref) {
   var children = _ref.children,
       offset = _ref.offset,
       position = _ref.position;
-  return __jsx$1u(StyledCard$1, {
+  return __jsx$1v(StyledCard$1, {
     rounded: false,
     position: position
-  }, __jsx$1u(CardBody, {
+  }, __jsx$1v(CardBody, {
     children: children
   }));
 };
@@ -19566,7 +19595,7 @@ TextBlock.propTypes = {
   offset: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 
-var __jsx$1v = React.createElement;
+var __jsx$1w = React.createElement;
 
 function _templateObject2$3() {
   var data = _taggedTemplateLiteral(["\n    font-size: 3rem;\n    line-height: 3.25rem;\n  "]);
@@ -19604,27 +19633,27 @@ var Hero = function Hero(_ref) {
       width = _ref.width;
 
   var renderLeft = function renderLeft() {
-    return __jsx$1v(StyledColumn$2, {
+    return __jsx$1w(StyledColumn$2, {
       md: 6
-    }, title && __jsx$1v(StyledTitle$1, {
+    }, title && __jsx$1w(StyledTitle$1, {
       tag: "h1",
       content: title
-    }), strapline && __jsx$1v(StyledStrapline, {
+    }), strapline && __jsx$1w(StyledStrapline, {
       tag: "h2",
       content: strapline
-    }), buttons && __jsx$1v(HeroButtons, {
+    }), buttons && __jsx$1w(HeroButtons, {
       buttons: buttons
-    }), message && __jsx$1v("p", {
+    }), message && __jsx$1w("p", {
       children: message
     }));
   };
 
-  return __jsx$1v(StyledHero, {
+  return __jsx$1w(StyledHero, {
     background: background,
     backgroundSize: backgroundSize,
     className: className,
     height: height
-  }, children && children, !children && __jsx$1v(Container, null, __jsx$1v(Row, null, title && renderLeft(), image && __jsx$1v(HeroImage, {
+  }, children && children, !children && __jsx$1w(Container, null, __jsx$1w(Row, null, title && renderLeft(), image && __jsx$1w(HeroImage, {
     alt: alt,
     align: align,
     image: image,
@@ -19676,13 +19705,13 @@ Hero.defaultProps = {
   style: {}
 };
 
-var __jsx$1w = React.createElement;
+var __jsx$1x = React.createElement;
 var ImageMarker = function ImageMarker(_ref) {
   var _styles$shape, _styles$shape2;
 
   var coordinates = _ref.coordinates,
       styles = _ref.styles;
-  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1w(StyledIcon$5, {
+  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1x(StyledIcon$5, {
     coordinates: coordinates,
     context: "primary",
     icon: styles === null || styles === void 0 ? void 0 : (_styles$shape = styles.shape) === null || _styles$shape === void 0 ? void 0 : _styles$shape.icon,
@@ -19690,7 +19719,7 @@ var ImageMarker = function ImageMarker(_ref) {
     pull: "left",
     styles: styles,
     size: "lg"
-  }) : __jsx$1w(StyledMarker, {
+  }) : __jsx$1x(StyledMarker, {
     coordinates: coordinates,
     styles: styles
   });
@@ -19764,7 +19793,7 @@ var ImageLocationProps = {
   style: propTypes.object
 };
 
-var __jsx$1x = React.createElement;
+var __jsx$1y = React.createElement;
 var ImageLocation = function ImageLocation(_ref) {
   var coordinatesChange = _ref.coordinatesChange,
       initialCoordinates = _ref.initialCoordinates,
@@ -19782,9 +19811,9 @@ var ImageLocation = function ImageLocation(_ref) {
       item: item
     });
   }, [coordinates]);
-  return __jsx$1x(StyledImageLocation, {
+  return __jsx$1y(StyledImageLocation, {
     show: show
-  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1x(ImageWrapper, {
+  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1y(ImageWrapper, {
     coordinates: coordinates,
     markerStyles: markerStyles,
     item: item,
@@ -19803,7 +19832,7 @@ ImageLocation.defaultProps = {
   show: true
 };
 
-var __jsx$1y = React.createElement;
+var __jsx$1z = React.createElement;
 var imageHeight = 0;
 var imageWidth = 0;
 var ImageWrapper = function ImageWrapper(_ref) {
@@ -19831,13 +19860,13 @@ var ImageWrapper = function ImageWrapper(_ref) {
     });
   };
 
-  return __jsx$1y(StyledImageWrapper, null, __jsx$1y(Image$1, {
+  return __jsx$1z(StyledImageWrapper, null, __jsx$1z(Image$1, {
     ref: imageRef,
     onClick: handleImageClick,
     alt: item.name,
     fluid: true,
     src: item.filename
-  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1y(ImageMarker, {
+  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1z(ImageMarker, {
     coordinates: MarkerCoordinates,
     key: item.id,
     styles: markerStyles
@@ -19853,11 +19882,11 @@ ImageWrapper.propTypes = {
   setCoordinates: propTypes.func.isRequired
 };
 
-var __jsx$1z = React.createElement;
+var __jsx$1A = React.createElement;
 
-function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$b(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var elementName = 'imageLocationData';
 var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
   var control = _ref.control,
@@ -19865,9 +19894,9 @@ var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
       setValue = _ref.setValue,
       props = _objectWithoutProperties(_ref, ["control", "errors", "setValue"]);
 
-  return __jsx$1z(ControllerWrapper, {
+  return __jsx$1A(ControllerWrapper, {
     className: "".concat(errors && errors[elementName] && 'hasError')
-  }, __jsx$1z(Controller$1, _extends({
+  }, __jsx$1A(Controller$1, _extends({
     as: ImageLocation,
     control: control,
     coordinatesChange: function coordinatesChange(imageLocationData) {
@@ -19881,7 +19910,7 @@ var ControllerWrapper = styled.div.withConfig({
   displayName: "imageLocationFormElement__ControllerWrapper",
   componentId: "qhiyzk-0"
 })(["&.hasError{box-shadow:0 0 4px red;animation:", " 0.2s linear 2;}"], imageAllert);
-ImageLocationFormElement.propTypes = _objectSpread$a(_objectSpread$a({}, ImageLocationProps), {}, {
+ImageLocationFormElement.propTypes = _objectSpread$b(_objectSpread$b({}, ImageLocationProps), {}, {
   setValue: propTypes.func.isRequired,
   control: propTypes.object.isRequired
 });
@@ -19949,25 +19978,25 @@ Intercom.propTypes = {
   appID: propTypes.string.isRequired
 };
 
-var __jsx$1A = React.createElement;
+var __jsx$1B = React.createElement;
 
-function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$b(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$c(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var DynamicLocationHOC = function DynamicLocationHOC(Component) {
   return function (props) {
     // concat the apiKey
     var googleMapURL = "".concat(props.googleMapURL, "&key=").concat(props.apiKey);
 
-    var containerElement = props.containerElement || __jsx$1A("div", {
+    var containerElement = props.containerElement || __jsx$1B("div", {
       style: {
         height: props.containerHeight,
         width: props.containerWidth
       }
     });
 
-    return __jsx$1A(Component, _extends({}, props, {
+    return __jsx$1B(Component, _extends({}, props, {
       containerElement: containerElement,
       googleMapURL: googleMapURL
     }));
@@ -19975,10 +20004,10 @@ var DynamicLocationHOC = function DynamicLocationHOC(Component) {
 };
 
 var DynamicLocation = DynamicLocationHOC(withScriptjs(withGoogleMap(function (props) {
-  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1A(GoogleMap, props) : null;
+  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1B(GoogleMap, props) : null;
 })));
 DynamicLocation.displayName = 'DynamicLocation';
-DynamicLocation.propTypes = _objectSpread$b({
+DynamicLocation.propTypes = _objectSpread$c({
   apiKey: propTypes.string.isRequired,
   containerElement: propTypes.node,
   containerHeight: propTypes.string,
@@ -19990,14 +20019,14 @@ DynamicLocation.propTypes = _objectSpread$b({
 }, GoogleMap.propTypes);
 DynamicLocation.defaultProps = {
   googleMapURL: 'https://maps.googleapis.com/maps/api/js?',
-  loadingElement: __jsx$1A("div", {
+  loadingElement: __jsx$1B("div", {
     style: {
       height: '100%'
     }
   }),
   containerHeight: '400px',
   containerWidth: '100%',
-  mapElement: __jsx$1A("div", {
+  mapElement: __jsx$1B("div", {
     style: {
       height: '100%'
     }
@@ -20011,7 +20040,7 @@ MarkerClusterer.propTypes = MarkerClusterer$1.propTypes;
 var InfoWindow = InfoWindow$1;
 InfoWindow.propTypes = InfoWindow$1.propTypes;
 
-var __jsx$1B = React.createElement;
+var __jsx$1C = React.createElement;
 var StaticLocation = function StaticLocation(_ref) {
   var apiKey = _ref.apiKey,
       center = _ref.center,
@@ -20068,7 +20097,7 @@ var StaticLocation = function StaticLocation(_ref) {
     var mapUrl = map.generateUrl();
     setMapUrl(mapUrl);
   }, []);
-  return __jsx$1B(Container, {
+  return __jsx$1C(Container, {
     className: className,
     width: width,
     height: height,
@@ -20107,14 +20136,14 @@ StaticLocation.defaultProps = {
   zoom: 15
 };
 
-var __jsx$1C = React.createElement;
+var __jsx$1D = React.createElement;
 var Brand = function Brand(_ref) {
   var brand = _ref.brand;
-  return __jsx$1C(StyledLink$4, {
+  return __jsx$1D(StyledLink$4, {
     border: false,
     to: "/",
     passHref: true
-  }, __jsx$1C(Image$1, {
+  }, __jsx$1D(Image$1, {
     alt: "Logo",
     draggable: "false",
     src: brand,
@@ -20129,10 +20158,10 @@ Brand.propTypes = {
   brand: propTypes.string.isRequired
 };
 
-var __jsx$1D = React.createElement;
+var __jsx$1E = React.createElement;
 var Contained = function Contained(_ref) {
   var content = _ref.content;
-  return __jsx$1D(StyledContainer$4, null, content());
+  return __jsx$1E(StyledContainer$4, null, content());
 };
 var StyledContainer$4 = styled(Container).withConfig({
   displayName: "contained__StyledContainer",
@@ -20142,7 +20171,7 @@ Contained.propTypes = {
   content: propTypes.node.isRequired
 };
 
-var __jsx$1E = React.createElement;
+var __jsx$1F = React.createElement;
 
 function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -20156,17 +20185,17 @@ function _templateObject$7() {
 var Toggler = function Toggler(_ref) {
   var handleMenuClick = _ref.handleMenuClick,
       visible = _ref.visible;
-  return __jsx$1E(StyledToggler, {
+  return __jsx$1F(StyledToggler, {
     "aria-expanded": visible ? 'false' : 'true',
     "aria-label": "Toggle navigation",
     onClick: handleMenuClick
-  }, !visible ? __jsx$1E(Icon, {
+  }, !visible ? __jsx$1F(Icon, {
     icon: "bars",
     prefix: "fas"
-  }) : __jsx$1E(Icon, {
+  }) : __jsx$1F(Icon, {
     icon: "times",
     prefix: "fas"
-  }), __jsx$1E(StyledText$3, null, "Menu"));
+  }), __jsx$1F(StyledText$3, null, "Menu"));
 };
 var StyledToggler = styled.a.withConfig({
   displayName: "toggler__StyledToggler",
@@ -20196,7 +20225,7 @@ Toggler.defaultProps = {
   visible: true
 };
 
-var __jsx$1F = React.createElement;
+var __jsx$1G = React.createElement;
 
 function _templateObject3$1() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -20244,12 +20273,12 @@ var Navbar = function Navbar(_ref) {
   };
 
   var Content = function Content() {
-    return __jsx$1F(React.Fragment, null, brand && __jsx$1F(Brand, {
+    return __jsx$1G(React.Fragment, null, brand && __jsx$1G(Brand, {
       brand: brand
-    }), __jsx$1F(Toggler, {
+    }), __jsx$1G(Toggler, {
       handleMenuClick: handleClick,
       visible: visible
-    }), widgets && __jsx$1F(Widgets, {
+    }), widgets && __jsx$1G(Widgets, {
       brand: brand,
       closeMenu: handleClick,
       type: type,
@@ -20258,11 +20287,11 @@ var Navbar = function Navbar(_ref) {
     }));
   };
 
-  return __jsx$1F(React.Fragment, null, __jsx$1F(StyledNav, {
+  return __jsx$1G(React.Fragment, null, __jsx$1G(StyledNav, {
     style: style
-  }, contained ? __jsx$1F(Contained, {
+  }, contained ? __jsx$1G(Contained, {
     content: Content
-  }) : __jsx$1F(Content, null)), __jsx$1F(StyledOverlay, {
+  }) : __jsx$1G(Content, null)), __jsx$1G(StyledOverlay, {
     hidden: !visible
   }));
 };
@@ -20324,7 +20353,7 @@ Navbar.defaultProps = {
   showMenu: false
 };
 
-var __jsx$1G = React.createElement;
+var __jsx$1H = React.createElement;
 
 function _templateObject$9() {
   var data = _taggedTemplateLiteral(["\n    background: none;\n    border: none;\n    color: ", ";\n    cursor: pointer;\n    font-size: 0.8125rem;\n    padding: 1rem 0.75rem;\n    width: 100%;\n\n    &:hover {\n      color: ", ";\n      background: none;\n    }\n  "]);
@@ -20342,11 +20371,11 @@ var NavButton = function NavButton(_ref) {
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1G(StyledLink$5, {
+  return __jsx$1H(StyledLink$5, {
     border: false,
     passHref: true,
     to: to
-  }, __jsx$1G(StyledButton$5, {
+  }, __jsx$1H(StyledButton$5, {
     id: id,
     context: type.context,
     content: name,
@@ -20410,7 +20439,7 @@ NavCollapse.propTypes = {
   visible: propTypes.bool.isRequired
 };
 
-var __jsx$1H = React.createElement;
+var __jsx$1I = React.createElement;
 
 function _templateObject$b() {
   var data = _taggedTemplateLiteral(["\n      min-width: 11rem;\n      position: absolute;\n    "]);
@@ -20428,15 +20457,15 @@ var NavDropdown = function NavDropdown(_ref) {
       position = _ref.position,
       prefix = _ref.prefix,
       type = _ref.type;
-  return __jsx$1H(StyledContainer$5, null, __jsx$1H(StyledDropdown$1, {
+  return __jsx$1I(StyledContainer$5, null, __jsx$1I(StyledDropdown$1, {
     items: type.items,
     onChange: closeMenu,
     position: position
-  }, icon && __jsx$1H(Icon, {
+  }, icon && __jsx$1I(Icon, {
     "aria-hidden": "true",
     icon: icon,
     prefix: prefix
-  }), __jsx$1H(StyledContent$2, null, name)));
+  }), __jsx$1I(StyledContent$2, null, name)));
 };
 var StyledContainer$5 = styled.div.withConfig({
   displayName: "dropdown__StyledContainer",
@@ -20469,16 +20498,16 @@ NavDropdown.defaultProps = {
   prefix: 'fad'
 };
 
-var __jsx$1I = React.createElement;
+var __jsx$1J = React.createElement;
 var NavIcon = function NavIcon(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1I(Link, {
+  return __jsx$1J(Link, {
     to: to,
     onClick: visible && closeMenu
-  }, __jsx$1I(Icon, {
+  }, __jsx$1J(Icon, {
     icon: type.icon
   }));
 };
@@ -20492,7 +20521,7 @@ NavIcon.defaultProps = {
   visible: false
 };
 
-var __jsx$1J = React.createElement;
+var __jsx$1K = React.createElement;
 
 function _templateObject$c() {
   var data = _taggedTemplateLiteral(["\n    color: ", ";\n    // &:hover {\n    //   color: ", ";\n    // }\n  "]);
@@ -20522,12 +20551,12 @@ var NavLink = function NavLink(_ref) {
     return;
   }
 
-  return __jsx$1J(Link, {
+  return __jsx$1K(Link, {
     border: false,
     onClick: handleClick,
     passHref: true,
     to: to
-  }, __jsx$1J(StyledLink$6, {
+  }, __jsx$1K(StyledLink$6, {
     id: id
   }, name));
 };
@@ -20561,7 +20590,7 @@ NavLink.defaultProps = {
   visible: false
 };
 
-var __jsx$1K = React.createElement;
+var __jsx$1L = React.createElement;
 var NavNotification = function NavNotification(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
@@ -20573,16 +20602,16 @@ var NavNotification = function NavNotification(_ref) {
   };
 
   var link = function link() {
-    return __jsx$1K(Link, {
+    return __jsx$1L(Link, {
       border: false,
       onClick: handleClick,
       passHref: true,
       to: to
-    }, __jsx$1K(Notification, null));
+    }, __jsx$1L(Notification, null));
   };
 
   var Notification = function Notification() {
-    return __jsx$1K(StyledNotifications, null, type && !!type.count && __jsx$1K(StyledCount, null, type.count), __jsx$1K(Icon, {
+    return __jsx$1L(StyledNotifications, null, type && !!type.count && __jsx$1L(StyledCount, null, type.count), __jsx$1L(Icon, {
       icon: "bell",
       prefix: "fad"
     }));
@@ -20591,7 +20620,7 @@ var NavNotification = function NavNotification(_ref) {
   if (to) {
     return link();
   } else {
-    return __jsx$1K(Notification, null);
+    return __jsx$1L(Notification, null);
   }
 };
 var StyledNotifications = styled.div.withConfig({
@@ -20615,7 +20644,7 @@ NavNotification.propTypes = {
   visible: propTypes.bool
 };
 
-var __jsx$1L = React.createElement;
+var __jsx$1M = React.createElement;
 
 function _templateObject2$5() {
   var data = _taggedTemplateLiteral(["\n    border: none;\n    display: flex;\n    flex-direction: column;\n    justify-content: ", ";\n    margin-bottom: ", ";\n  "]);
@@ -20642,14 +20671,14 @@ var Widgets = function Widgets(_ref) {
       type = _ref.type,
       visible = _ref.visible,
       widgets = _ref.widgets;
-  return __jsx$1L(NavCollapse, {
+  return __jsx$1M(NavCollapse, {
     visible: visible
   }, Object.entries(widgets).map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
         direction = _ref3[0],
         link = _ref3[1];
 
-    return __jsx$1L(StyledList$1, {
+    return __jsx$1M(StyledList$1, {
       direction: direction,
       key: direction
     }, link.map(function (_ref4) {
@@ -20663,10 +20692,10 @@ var Widgets = function Widgets(_ref) {
           prefix = _ref4.prefix,
           to = _ref4.to,
           type = _ref4.type;
-      return __jsx$1L(StyledListItem, {
+      return __jsx$1M(StyledListItem, {
         brand: brand,
         key: id
-      }, Component && __jsx$1L(Component, null), type && type.as === 'button' && NavButton({
+      }, Component && __jsx$1M(Component, null), type && type.as === 'button' && NavButton({
         closeMenu: closeMenu,
         id: id,
         name: name,
@@ -20747,7 +20776,7 @@ Widgets.propTypes = {
   widgets: propTypes.object.isRequired
 };
 
-var __jsx$1M = React.createElement;
+var __jsx$1N = React.createElement;
 var Notification = function Notification(_ref) {
   var close = _ref.close,
       content = _ref.content,
@@ -20757,10 +20786,10 @@ var Notification = function Notification(_ref) {
       link = _ref.link,
       title = _ref.title;
 
-  var body = __jsx$1M(React.Fragment, null, __jsx$1M(StyledNotificationBody, null, content), date && __jsx$1M(StyledDate, null, formatRelativeTime(date)));
+  var body = __jsx$1N(React.Fragment, null, __jsx$1N(StyledNotificationBody, null, content), date && __jsx$1N(StyledDate, null, formatRelativeTime(date)));
 
   if (link) {
-    body = __jsx$1M(Link, {
+    body = __jsx$1N(Link, {
       border: false,
       to: {
         href: link
@@ -20771,7 +20800,7 @@ var Notification = function Notification(_ref) {
     }, body);
   }
 
-  return __jsx$1M(StyledNotificationWrapper, null, __jsx$1M(Alert, {
+  return __jsx$1N(StyledNotificationWrapper, null, __jsx$1N(Alert, {
     close: close,
     content: body,
     context: context,
@@ -21824,7 +21853,7 @@ var curriedLighten = /*#__PURE__*/curry
 /* ::<number | string, string, string> */
 (lighten);
 
-var __jsx$1N = React.createElement;
+var __jsx$1O = React.createElement;
 var OffCanvasHeader = function OffCanvasHeader(_ref) {
   var context = _ref.context,
       hasAvatar = _ref.hasAvatar,
@@ -21833,44 +21862,44 @@ var OffCanvasHeader = function OffCanvasHeader(_ref) {
       submit = _ref.submit,
       title = _ref.title,
       variant = _ref.variant;
-  return __jsx$1N(StyledHeader$2, {
+  return __jsx$1O(StyledHeader$2, {
     context: context,
     variant: variant
-  }, __jsx$1N(Row, {
+  }, __jsx$1O(Row, {
     align: "center"
-  }, __jsx$1N(Column, {
+  }, __jsx$1O(Column, {
     md: 8
-  }, __jsx$1N(Icon, {
+  }, __jsx$1O(Icon, {
     context: variant === 'extended' ? 'white' : context,
     icon: "expand",
     prefix: "fas"
-  }), __jsx$1N(StyledHeading$1, {
+  }), __jsx$1O(StyledHeading$1, {
     content: title,
     context: context,
     tag: "h4",
     variant: variant
-  })), __jsx$1N(Column, {
+  })), __jsx$1O(Column, {
     md: 4
-  }, __jsx$1N(StyledContainer$6, null, submit && __jsx$1N(React.Fragment, null, __jsx$1N(Button, {
+  }, __jsx$1O(StyledContainer$6, null, submit && __jsx$1O(React.Fragment, null, __jsx$1O(Button, {
     content: "Submit",
     context: "primary",
     form: "offCanvasForm",
     size: "sm",
     type: "submit"
-  }), __jsx$1N(Divider, {
+  }), __jsx$1O(Divider, {
     flexItem: true,
     size: "sm",
     vertical: true
-  })), __jsx$1N(Close, {
+  })), __jsx$1O(Close, {
     click: onClose,
     context: variant === 'normal' ? context : 'white'
-  })))), __jsx$1N(StyledBodyContainer, null, hasAvatar && __jsx$1N(StyledAvatarContainer, {
+  })))), __jsx$1O(StyledBodyContainer, null, hasAvatar && __jsx$1O(StyledAvatarContainer, {
     context: context
-  }, __jsx$1N(Avatar, {
+  }, __jsx$1O(Avatar, {
     content: "Avatar",
     context: context,
     size: "lg"
-  })), headerContent && __jsx$1N(StyledText$4, {
+  })), headerContent && __jsx$1O(StyledText$4, {
     content: headerContent,
     context: context,
     size: "xs",
@@ -21971,7 +22000,7 @@ OffCanvasOverlay.defaultProps = {
   opacity: 0.3
 };
 
-var __jsx$1O = React.createElement;
+var __jsx$1P = React.createElement;
 var OffCanvasComponent = function OffCanvasComponent(_ref) {
   var children = _ref.children,
       closeOnOverlayClick = _ref.closeOnOverlayClick,
@@ -22010,19 +22039,19 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     }
   };
 
-  return __jsx$1O(React.Fragment, null, overlay && __jsx$1O(OffCanvasOverlay, {
+  return __jsx$1P(React.Fragment, null, overlay && __jsx$1P(OffCanvasOverlay, {
     duration: transitionDuration,
     onClick: handleOverlayClick,
     opacity: overlayOpacity,
     show: initialState
-  }), __jsx$1O(OffCanvasDiv, {
+  }), __jsx$1P(OffCanvasDiv, {
     "data-cy": "offCanvas",
     duration: transitionDuration,
     height: height,
     placement: placement,
     show: initialState,
     width: width
-  }, __jsx$1O(OffCanvasHeader, {
+  }, __jsx$1P(OffCanvasHeader, {
     context: context,
     "data-cy": "offCanvasHeader",
     hasAvatar: hasAvatar,
@@ -22033,7 +22062,7 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     submit: submit,
     title: headerText,
     variant: variant
-  }), __jsx$1O(OffCanvasContent, null, children)));
+  }), __jsx$1P(OffCanvasContent, null, children)));
 };
 OffCanvasComponent.propTypes = {
   children: propTypes.node,
@@ -22067,7 +22096,7 @@ OffCanvasComponent.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1P = React.createElement;
+var __jsx$1Q = React.createElement;
 var OffCanvas = function OffCanvas(props) {
   var _useState = useState(false),
       mounted = _useState[0],
@@ -22093,7 +22122,7 @@ var OffCanvas = function OffCanvas(props) {
       }
     }
   }, [props.show]);
-  return mounted ? /*#__PURE__*/createPortal(__jsx$1P(OffCanvasComponent, props), container) : null;
+  return mounted ? /*#__PURE__*/createPortal(__jsx$1Q(OffCanvasComponent, props), container) : null;
 };
 OffCanvas.propTypes = {
   closeOnOverlayClick: propTypes.bool,
@@ -22124,7 +22153,7 @@ OffCanvas.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1Q = React.createElement;
+var __jsx$1R = React.createElement;
 var PageHeading = function PageHeading(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -22134,14 +22163,14 @@ var PageHeading = function PageHeading(_ref) {
       help = _ref.help,
       helpContent = _ref.helpContent,
       strapline = _ref.strapline;
-  return __jsx$1Q(StyledPageHeader, {
+  return __jsx$1R(StyledPageHeader, {
     center: center,
     divider: divider
-  }, __jsx$1Q(StyledLeft, null, __jsx$1Q(StyledHeading$2, {
+  }, __jsx$1R(StyledLeft, null, __jsx$1R(StyledHeading$2, {
     content: heading,
     context: context,
     pageHeading: true
-  }), strapline && __jsx$1Q("div", null, strapline)), (children || help) && __jsx$1Q(StyledRight, null, children || helpContent), divider && __jsx$1Q(StyledDivider$1, {
+  }), strapline && __jsx$1R("div", null, strapline)), (children || help) && __jsx$1R(StyledRight, null, children || helpContent), divider && __jsx$1R(StyledDivider$1, {
     size: "md"
   }));
 };
@@ -22193,14 +22222,14 @@ PageHeading.defaultProps = {
   strapline: ''
 };
 
-var __jsx$1R = React.createElement;
+var __jsx$1S = React.createElement;
 var PageLoading = function PageLoading(_ref) {
   var children = _ref.children,
       dataCy = _ref.dataCy,
       indicator = _ref.indicator,
       props = _objectWithoutProperties(_ref, ["children", "dataCy", "indicator"]);
 
-  return __jsx$1R(StyledLoading, _extends({
+  return __jsx$1S(StyledLoading, _extends({
     "data-cy": dataCy
   }, props), indicator || children);
 };
@@ -22232,7 +22261,7 @@ PageLoading.defaultProps = {
   position: 'fixed'
 };
 
-var __jsx$1S = React.createElement;
+var __jsx$1T = React.createElement;
 var SPINNER = Array(12).fill('');
 var LdsSpinnerWrapper = styled.div.withConfig({
   displayName: "ldsSpinner__LdsSpinnerWrapper",
@@ -22276,10 +22305,10 @@ var LdsSpinnerWrapper = styled.div.withConfig({
   return temp;
 });
 var LdsSpinner = function LdsSpinner(props) {
-  return __jsx$1S(LdsSpinnerWrapper, _extends({}, props, {
+  return __jsx$1T(LdsSpinnerWrapper, _extends({}, props, {
     spinner: SPINNER
   }), SPINNER.map(function (s, i) {
-    return __jsx$1S("div", {
+    return __jsx$1T("div", {
       key: 'spin' + i
     });
   }));
@@ -22293,12 +22322,12 @@ LdsSpinner.defaultProps = {
   color: '#333'
 };
 
-var __jsx$1T = React.createElement;
+var __jsx$1U = React.createElement;
 var Container$1 = function Container(_ref) {
   var children = _ref.children,
       isFinished = _ref.isFinished,
       animationDuration = _ref.animationDuration;
-  return __jsx$1T("div", {
+  return __jsx$1U("div", {
     style: {
       opacity: isFinished ? 0 : 1,
       pointerEvents: 'none',
@@ -22312,12 +22341,12 @@ Container$1.propTypes = {
   isFinished: propTypes.bool.isRequired
 };
 
-var __jsx$1U = React.createElement;
+var __jsx$1V = React.createElement;
 var Bar = function Bar(_ref) {
   var animationDuration = _ref.animationDuration,
       context = _ref.context,
       progress = _ref.progress;
-  return __jsx$1U(StyledBar, {
+  return __jsx$1V(StyledBar, {
     context: context,
     style: {
       marginLeft: "".concat((-1 + progress) * 100, "%"),
@@ -22339,7 +22368,7 @@ var StyledBar = styled.div.withConfig({
   return COLOUR[context];
 });
 
-var __jsx$1V = React.createElement;
+var __jsx$1W = React.createElement;
 var PageProgressBar = function PageProgressBar(_ref) {
   var context = _ref.context,
       isAnimating = _ref.isAnimating,
@@ -22370,17 +22399,17 @@ var PageProgressBar = function PageProgressBar(_ref) {
       router.events.on('routeChangeError', routeChangeEndHandler);
     }
   }, []);
-  return __jsx$1V(NProgress, {
+  return __jsx$1W(NProgress, {
     isAnimating: isRouteChanging || isAnimating,
     key: loadingKey || instanceKey
   }, function (_ref2) {
     var animationDuration = _ref2.animationDuration,
         isFinished = _ref2.isFinished,
         progress = _ref2.progress;
-    return __jsx$1V(Container$1, {
+    return __jsx$1W(Container$1, {
       animationDuration: animationDuration,
       isFinished: isFinished
-    }, __jsx$1V(Bar, {
+    }, __jsx$1W(Bar, {
       animationDuration: animationDuration,
       context: context,
       progress: progress
@@ -22399,7 +22428,7 @@ PageProgressBar.defaultProps = {
   instanceKey: null
 };
 
-var __jsx$1W = React.createElement;
+var __jsx$1X = React.createElement;
 var Pagination = function Pagination(_ref) {
   var breakCount = _ref.breakCount,
       children = _ref.children,
@@ -22435,7 +22464,7 @@ var Pagination = function Pagination(_ref) {
   var showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount;
 
   var renderContent = function renderContent() {
-    return __jsx$1W(React.Fragment, null, showPrevButton && __jsx$1W(PaginationItem, {
+    return __jsx$1X(React.Fragment, null, showPrevButton && __jsx$1X(PaginationItem, {
       context: context,
       disabled: currentPage === 1,
       label: prevLabel,
@@ -22443,7 +22472,7 @@ var Pagination = function Pagination(_ref) {
         return handleChange('prev');
       },
       size: size
-    }), showPrevDots && __jsx$1W(PaginationItem, {
+    }), showPrevDots && __jsx$1X(PaginationItem, {
       onClick: function onClick() {
         return handleChange(prevChunk[prevChunk.length - 1]);
       },
@@ -22451,7 +22480,7 @@ var Pagination = function Pagination(_ref) {
       label: "...",
       size: size
     }), currentChunk.map(function (p) {
-      return __jsx$1W(PaginationItem, {
+      return __jsx$1X(PaginationItem, {
         active: p === currentPage,
         context: context,
         key: "".concat("page".concat(p)),
@@ -22461,14 +22490,14 @@ var Pagination = function Pagination(_ref) {
         },
         size: size
       });
-    }), showNextDots && __jsx$1W(PaginationItem, {
+    }), showNextDots && __jsx$1X(PaginationItem, {
       onClick: function onClick() {
         return handleChange(nextChunk[0]);
       },
       context: context,
       label: "...",
       size: size
-    }), showNextButton && __jsx$1W(PaginationItem, {
+    }), showNextButton && __jsx$1X(PaginationItem, {
       context: context,
       disabled: currentPage === pageCount,
       label: nextLabel,
@@ -22483,7 +22512,7 @@ var Pagination = function Pagination(_ref) {
     return null;
   }
 
-  return __jsx$1W(StyledPagination, _extends({
+  return __jsx$1X(StyledPagination, _extends({
     "aria-label": "Pagination"
   }, props), children || renderContent());
 };
@@ -22494,7 +22523,7 @@ var StyledPagination = styled.ul.withConfig({
 Pagination.propTypes = PaginationPropTypes;
 Pagination.defaultProps = PaginationDefaultProps;
 
-var __jsx$1X = React.createElement;
+var __jsx$1Y = React.createElement;
 var PaginationItem = function PaginationItem(_ref) {
   var active = _ref.active,
       context = _ref.context,
@@ -22504,7 +22533,7 @@ var PaginationItem = function PaginationItem(_ref) {
       size = _ref.size,
       props = _objectWithoutProperties(_ref, ["active", "context", "disabled", "label", "onClick", "size"]);
 
-  return __jsx$1X(StyledLi$1, null, __jsx$1X(StyledButton$6, _extends({
+  return __jsx$1Y(StyledLi$1, null, __jsx$1Y(StyledButton$6, _extends({
     active: active,
     context: context,
     onClick: onClick,
@@ -22566,7 +22595,7 @@ PaginationItem.defaultProps = {
   size: 'md'
 };
 
-var __jsx$1Y = React.createElement;
+var __jsx$1Z = React.createElement;
 var Rating = function Rating(_ref) {
   var className = _ref.className,
       context = _ref.context,
@@ -22575,7 +22604,7 @@ var Rating = function Rating(_ref) {
   var rating = [];
 
   for (var i = 0; i < size; i++) {
-    rating.push(__jsx$1Y(StyledRating, {
+    rating.push(__jsx$1Z(StyledRating, {
       active: i + 1 <= value,
       className: className,
       context: context,
@@ -22605,19 +22634,19 @@ Rating.defaultProps = {
   size: 5
 };
 
-var __jsx$1Z = React.createElement;
+var __jsx$1_ = React.createElement;
 var Section = function Section(_ref) {
   var children = _ref.children,
       className = _ref.className,
       heading = _ref.heading,
       row = _ref.row,
       style = _ref.style;
-  return __jsx$1Z(StyleSection, null, __jsx$1Z(Container, null, heading && __jsx$1Z(Heading, {
+  return __jsx$1_(StyleSection, null, __jsx$1_(Container, null, heading && __jsx$1_(Heading, {
     className: "text-center",
     content: heading,
     context: "primary",
     tag: "h2"
-  }), row ? __jsx$1Z(Row, null, children) : children));
+  }), row ? __jsx$1_(Row, null, children) : children));
 };
 var StyleSection = styled.section.withConfig({
   displayName: "section__StyleSection",
@@ -22635,26 +22664,26 @@ Section.defaultProps = {
   row: true
 };
 
-var __jsx$1_ = React.createElement;
+var __jsx$1$ = React.createElement;
 var Sidebar = function Sidebar(_ref) {
   var brand = _ref.brand,
       data = _ref.data;
 
   var link = function link(icon, name, to) {
     var iconArray = Array.isArray(icon);
-    return __jsx$1_(Link, {
+    return __jsx$1$(Link, {
       to: to,
       passHref: true
-    }, __jsx$1_(StyledLink$7, null, icon && __jsx$1_(Icon, {
+    }, __jsx$1$(StyledLink$7, null, icon && __jsx$1$(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0]
     }), name));
   };
 
-  return __jsx$1_(StyledAside, null, __jsx$1_(StyledBrand$1, null, __jsx$1_(Image$1, {
+  return __jsx$1$(StyledAside, null, __jsx$1$(StyledBrand$1, null, __jsx$1$(Image$1, {
     alt: "Logo",
     src: brand
-  })), __jsx$1_(List, {
+  })), __jsx$1$(List, {
     group: true
   }, data.map(function (_ref2, index) {
     var Component = _ref2.Component,
@@ -22662,11 +22691,11 @@ var Sidebar = function Sidebar(_ref) {
         icon = _ref2.icon,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$1_(StyledLi$2, {
+    return __jsx$1$(StyledLi$2, {
       key: index
-    }, divider ? __jsx$1_(StyledDivider$2, {
+    }, divider ? __jsx$1$(StyledDivider$2, {
       size: "sm"
-    }) : Component ? __jsx$1_(Component, null) : to ? link(icon, name, to) : name);
+    }) : Component ? __jsx$1$(Component, null) : to ? link(icon, name, to) : name);
   })));
 };
 var StyledAside = styled.aside.withConfig({
@@ -22725,17 +22754,17 @@ SimpleTime.propTypes = {
   endTime: propTypes.oneOfType([propTypes.number, propTypes.string])
 };
 
-var __jsx$1$ = React.createElement;
+var __jsx$20 = React.createElement;
 var Stepper = function Stepper(_ref) {
   var className = _ref.className,
       items = _ref.items,
       summary = _ref.summary;
-  return __jsx$1$(StyledStepper, null, __jsx$1$("ul", null, items.map(function (item) {
-    return item.active !== false && __jsx$1$(StepperItem, {
+  return __jsx$20(StyledStepper, null, __jsx$20("ul", null, items.map(function (item) {
+    return item.active !== false && __jsx$20(StepperItem, {
       item: item,
       key: item.id
     });
-  })), summary && __jsx$1$(StepperSummary, {
+  })), summary && __jsx$20(StepperSummary, {
     summary: summary
   }));
 };
@@ -22749,7 +22778,7 @@ Stepper.propTypes = {
   summary: propTypes.oneOfType([propTypes.array, propTypes.func])
 };
 
-var __jsx$20 = React.createElement;
+var __jsx$21 = React.createElement;
 var StepperItem = function StepperItem(_ref) {
   var item = _ref.item;
 
@@ -22758,7 +22787,7 @@ var StepperItem = function StepperItem(_ref) {
       var id = _ref2.id,
           active = _ref2.active,
           data = _ref2.data;
-      return active && __jsx$20("li", {
+      return active && __jsx$21("li", {
         key: id
       }, typeof data === 'function' ? data() : data);
     });
@@ -22774,9 +22803,9 @@ var StepperItem = function StepperItem(_ref) {
           handleClick = _ref3.handleClick,
           to = _ref3.to,
           type = _ref3.type;
-      return active && __jsx$20("li", {
+      return active && __jsx$21("li", {
         key: id
-      }, type === 'button' && __jsx$20(Button, _extends({
+      }, type === 'button' && __jsx$21(Button, _extends({
         onClick: handleClick,
         content: content,
         context: context,
@@ -22785,17 +22814,17 @@ var StepperItem = function StepperItem(_ref) {
     });
   };
 
-  return __jsx$20(StyledStepperItem, null, __jsx$20(StyledIconContainer, {
+  return __jsx$21(StyledStepperItem, null, __jsx$21(StyledIconContainer, {
     active: item.date
-  }, item.date && __jsx$20(Icon, {
+  }, item.date && __jsx$21(Icon, {
     "aria-hidden": "true",
     color: STEPPER.colourCheckmark,
     fixedWidth: false,
     icon: "check",
     prefix: "fas"
-  })), __jsx$20(StyledLabel$4, {
+  })), __jsx$21(StyledLabel$4, {
     active: item.date
-  }, item.label), (item.date || item.info) && __jsx$20(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$20(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$20(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$20(Divider, {
+  }, item.label), (item.date || item.info) && __jsx$21(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$21(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$21(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$21(Divider, {
     size: "sm"
   }));
 };
@@ -22837,7 +22866,7 @@ StyledStepperItem.propTypes = {
   item: propTypes.object
 };
 
-var __jsx$21 = React.createElement;
+var __jsx$22 = React.createElement;
 var StepperSummary = function StepperSummary(_ref) {
   var className = _ref.className,
       summary = _ref.summary;
@@ -22846,13 +22875,13 @@ var StepperSummary = function StepperSummary(_ref) {
     return summary.map(function (_ref2, i) {
       var label = _ref2.label,
           value = _ref2.value;
-      return __jsx$21("li", {
+      return __jsx$22("li", {
         key: i
-      }, __jsx$21(StyledLabel$5, null, label, " "), __jsx$21(StyledValue, null, value));
+      }, __jsx$22(StyledLabel$5, null, label, " "), __jsx$22(StyledValue, null, value));
     });
   };
 
-  return __jsx$21(StyledStepperSummary, null, __jsx$21("ul", null, renderItems(summary)));
+  return __jsx$22(StyledStepperSummary, null, __jsx$22("ul", null, renderItems(summary)));
 };
 var StyledStepperSummary = styled.div.withConfig({
   displayName: "summary__StyledStepperSummary",
@@ -22874,9 +22903,9 @@ StepperSummary.propTypes = {
   summary: propTypes.array.isRequired
 };
 
-var __jsx$22 = React.createElement;
+var __jsx$23 = React.createElement;
 var TableData = function TableData(props) {
-  return __jsx$22(StyledTd, props);
+  return __jsx$23(StyledTd, props);
 };
 TableData.propTypes = {};
 var StyledTd = styled.td.withConfig({
@@ -22893,9 +22922,9 @@ var StyledTd = styled.td.withConfig({
   return align && 'center';
 });
 
-var __jsx$23 = React.createElement;
+var __jsx$24 = React.createElement;
 var TableHead = function TableHead(props) {
-  return __jsx$23(StyledTh, props);
+  return __jsx$24(StyledTh, props);
 };
 TableHead.propTypes = {};
 var StyledTh = styled.th.withConfig({
@@ -22918,7 +22947,7 @@ var StyledTh = styled.th.withConfig({
   return sortable && 'cursor: pointer';
 });
 
-var __jsx$24 = React.createElement;
+var __jsx$25 = React.createElement;
 var TableLoading = function TableLoading(_ref) {
   var colsLength = _ref.colsLength,
       show = _ref.show;
@@ -22927,9 +22956,9 @@ var TableLoading = function TableLoading(_ref) {
     return null;
   }
 
-  return __jsx$24(PageLoading, {
+  return __jsx$25(PageLoading, {
     backgroundColor: "#fff",
-    indicator: __jsx$24(LdsSpinner, {
+    indicator: __jsx$25(LdsSpinner, {
       color: "#000",
       size: 50
     }),
@@ -22942,9 +22971,9 @@ TableLoading.propTypes = {
   show: propTypes.bool
 };
 
-var __jsx$25 = React.createElement;
+var __jsx$26 = React.createElement;
 var TableRow = function TableRow(props) {
-  return __jsx$25(StyledTr, props);
+  return __jsx$26(StyledTr, props);
 };
 TableRow.propTypes = {};
 var StyledTr = styled.tr.withConfig({
@@ -22965,11 +22994,11 @@ var StyledTr = styled.tr.withConfig({
   return hover && css([":hover{background-color:#eee;}"]);
 });
 
-var __jsx$26 = React.createElement;
+var __jsx$27 = React.createElement;
 
-function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$c(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$d(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var Table = function Table(_ref) {
   var align = _ref.align,
       caption = _ref.caption,
@@ -23044,12 +23073,12 @@ var Table = function Table(_ref) {
         }
       };
 
-      return __jsx$26(TableHead, {
+      return __jsx$27(TableHead, {
         align: align,
         key: index,
         onClick: handleSort,
         sortable: sortable
-      }, text, sortable && hasSort && __jsx$26(Icon, {
+      }, text, sortable && hasSort && __jsx$27(Icon, {
         icon: sort.order === 'asc' ? 'caret-down' : 'caret-up',
         prefix: "fas"
       }));
@@ -23069,7 +23098,7 @@ var Table = function Table(_ref) {
         delete row.hidden;
       }
 
-      return __jsx$26(TableRow, {
+      return __jsx$27(TableRow, {
         context: context,
         key: index,
         "data-item": JSON.stringify(row),
@@ -23090,12 +23119,12 @@ var Table = function Table(_ref) {
         }
 
         var renderValue = typeof value === 'function' ? value() : value;
-        return __jsx$26(TableData, {
+        return __jsx$27(TableData, {
           align: align,
           key: index
         }, length > 0 && column.formatter ? column.formatter({
           row: row
-        }, column.formatterData) : value && value.__html ? __jsx$26("span", {
+        }, column.formatterData) : value && value.__html ? __jsx$27("span", {
           dangerouslySetInnerHTML: value
         }) : renderValue);
       }));
@@ -23103,21 +23132,21 @@ var Table = function Table(_ref) {
   };
 
   var renderTable = function renderTable() {
-    return __jsx$26(StyledTable, {
+    return __jsx$27(StyledTable, {
       className: className
-    }, caption && __jsx$26(StyledCaption$1, null, caption), __jsx$26("thead", null, __jsx$26("tr", null, columns && renderColumns())), __jsx$26("tbody", null, noData && !loading && !rows.length ? __jsx$26(TableRow, null, __jsx$26(TableData, {
+    }, caption && __jsx$27(StyledCaption$1, null, caption), __jsx$27("thead", null, __jsx$27("tr", null, columns && renderColumns())), __jsx$27("tbody", null, noData && !loading && !rows.length ? __jsx$27(TableRow, null, __jsx$27(TableData, {
       align: "center",
       colSpan: tableSpan
     }, "No data available")) : renderRows()));
   };
 
-  return __jsx$26(React.Fragment, null, __jsx$26(StyledWrapper$1, {
+  return __jsx$27(React.Fragment, null, __jsx$27(StyledWrapper$1, {
     fullHeight: fullHeight,
     isLoading: loading
-  }, __jsx$26(TableLoading, {
+  }, __jsx$27(TableLoading, {
     colsLength: tableSpan,
     show: loading
-  }), responsive ? __jsx$26(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$26(Pagination, _extends({
+  }), responsive ? __jsx$27(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$27(Pagination, _extends({
     currentPage: currentPage,
     onPageChange: handlePagination,
     pageCount: Math.ceil(rows.length / perPage),
@@ -23169,7 +23198,7 @@ Table.propTypes = {
   hover: propTypes.bool,
   loading: propTypes.bool,
   pagination: propTypes.bool,
-  paginationProps: propTypes.shape(_objectSpread$c({
+  paginationProps: propTypes.shape(_objectSpread$d({
     changeUrlOnChange: propTypes.bool,
     initialPage: propTypes.number,
     perPage: propTypes.number
@@ -23201,7 +23230,7 @@ Table.defaultProps = {
   striped: true
 };
 
-var __jsx$27 = React.createElement;
+var __jsx$28 = React.createElement;
 var TableActions = function TableActions(_ref, data) {
   var row = _ref.row;
 
@@ -23213,7 +23242,7 @@ var TableActions = function TableActions(_ref, data) {
     };
   };
 
-  return __jsx$27(React.Fragment, null, __jsx$27(ButtonToolbar, {
+  return __jsx$28(React.Fragment, null, __jsx$28(ButtonToolbar, {
     align: "flex-start",
     style: {
       zIndex: '100000000'
@@ -23228,10 +23257,10 @@ var TableActions = function TableActions(_ref, data) {
         to = _ref2.to,
         tooltip = _ref2.tooltip;
     var iconArray = Array.isArray(icon);
-    return __jsx$27(Tooltip, {
+    return __jsx$28(Tooltip, {
       content: tooltip,
       key: index
-    }, __jsx$27(StyledButton$7, {
+    }, __jsx$28(StyledButton$7, {
       forwardedAs: "a",
       disabled: disabled,
       context: context,
@@ -23239,13 +23268,13 @@ var TableActions = function TableActions(_ref, data) {
         return onClick(e, row);
       } : handleClick("".concat(to, "?id=").concat(row.id)),
       size: "sm"
-    }, __jsx$27(Icon, {
+    }, __jsx$28(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0],
       style: {
         pointerEvents: 'none'
       }
-    }), row[numberOverlay] > 0 && __jsx$27(StyledNumberOverlay, null, row[numberOverlay])));
+    }), row[numberOverlay] > 0 && __jsx$28(StyledNumberOverlay, null, row[numberOverlay])));
   })));
 };
 var StyledButton$7 = styled(Button).withConfig({
@@ -23260,7 +23289,7 @@ TableActions.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$28 = React.createElement;
+var __jsx$29 = React.createElement;
 var TableLink = function TableLink(path, key, value, dynamicUrl) {
   return function (_ref) {
     var row = _ref.row;
@@ -23279,7 +23308,7 @@ var TableLink = function TableLink(path, key, value, dynamicUrl) {
     };
 
     var item = row[value];
-    return useLink ? __jsx$28(React.Fragment, null, item === '-' && '-', item !== '-' && __jsx$28(StyleLink, {
+    return useLink ? __jsx$29(React.Fragment, null, item === '-' && '-', item !== '-' && __jsx$29(StyleLink, {
       border: false,
       href: getPath(),
       onClick: handleClick
@@ -23294,7 +23323,7 @@ TableLink.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$29 = React.createElement;
+var __jsx$2a = React.createElement;
 var Tab = function Tab(_ref) {
   var activeTab = _ref.activeTab,
       childClick = _ref.childClick,
@@ -23308,7 +23337,7 @@ var Tab = function Tab(_ref) {
     childClick && childClick();
   };
 
-  return __jsx$29(StyledTab, {
+  return __jsx$2a(StyledTab, {
     active: activeTab === label,
     context: context,
     disabled: disabled,
@@ -23365,7 +23394,7 @@ Tab.defaultProps = {
   context: false
 };
 
-var __jsx$2a = React.createElement;
+var __jsx$2b = React.createElement;
 var Tabs = function Tabs(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -23402,11 +23431,11 @@ var Tabs = function Tabs(_ref) {
     });
   };
 
-  return __jsx$2a(React.Fragment, null, __jsx$2a(StyledTabs, {
+  return __jsx$2b(React.Fragment, null, __jsx$2b(StyledTabs, {
     className: className
   }, children.map(function (_ref2) {
     var props = _ref2.props;
-    return __jsx$2a(Tab, _extends({
+    return __jsx$2b(Tab, _extends({
       activeTab: activeTab,
       key: props.label,
       onClick: props.disabled ? function () {} : onClickTabItem
@@ -23480,14 +23509,14 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-var __jsx$2b = React.createElement;
+var __jsx$2c = React.createElement;
 var Design = function Design(_ref) {
   var handleReset = _ref.handleReset,
       handleScreenshot = _ref.handleScreenshot,
       refProp = _ref.refProp,
       screenshot = _ref.screenshot,
       videoConstraints = _ref.videoConstraints;
-  return __jsx$2b(React.Fragment, null, __jsx$2b("div", {
+  return __jsx$2c(React.Fragment, null, __jsx$2c("div", {
     className: "text-center",
     style: {
       background: '#000',
@@ -23495,24 +23524,24 @@ var Design = function Design(_ref) {
       borderRadius: '.5rem .5rem 0 0',
       marginBottom: '-8px'
     }
-  }, !screenshot && __jsx$2b(Webcam, {
+  }, !screenshot && __jsx$2c(Webcam, {
     ref: refProp,
     screenshotFormat: "image/jpeg",
     videoConstraints: videoConstraints
-  }), screenshot && __jsx$2b("img", {
+  }), screenshot && __jsx$2c("img", {
     alt: "user photo",
     src: screenshot,
     style: {
       borderRadius: '.5rem .5rem 0 0'
     }
-  })), __jsx$2b("div", {
+  })), __jsx$2c("div", {
     style: {
       background: '#C8D1D8',
       borderRadius: '0 0 .5rem .5rem',
       height: '50px',
       position: 'relative'
     }
-  }, __jsx$2b("div", {
+  }, __jsx$2c("div", {
     onClick: screenshot ? handleReset : handleScreenshot,
     style: {
       background: "".concat(!screenshot ? '#04d4cd' : '#e60811'),
@@ -23527,7 +23556,7 @@ var Design = function Design(_ref) {
       textAlign: 'center',
       width: '50px'
     }
-  }, __jsx$2b(Icon, {
+  }, __jsx$2c(Icon, {
     color: "white",
     icon: "camera",
     style: {
@@ -23537,7 +23566,7 @@ var Design = function Design(_ref) {
 };
 
 var _class, _temp;
-var __jsx$2c = React.createElement;
+var __jsx$2d = React.createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -23782,7 +23811,7 @@ var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
           style = _this$props5.style,
           width = _this$props5.width;
       var src = this.state.src;
-      return __jsx$2c("video", {
+      return __jsx$2d("video", {
         autoPlay: true,
         width: width,
         height: height,
@@ -23880,7 +23909,7 @@ Webcam.Design = Design;
 //   width: constrainLongType,
 // });
 
-var __jsx$2d = React.createElement;
+var __jsx$2e = React.createElement;
 var Bar$1 = function Bar(_ref) {
   var background = _ref.background,
       children = _ref.children,
@@ -23900,7 +23929,7 @@ var Bar$1 = function Bar(_ref) {
     setIsOpen(!IsOpen);
   };
 
-  return __jsx$2d(React.Fragment, null, __jsx$2d(StyledBarWrapper, {
+  return __jsx$2e(React.Fragment, null, __jsx$2e(StyledBarWrapper, {
     background: background,
     flat: flat,
     open: IsOpen,
@@ -23908,18 +23937,18 @@ var Bar$1 = function Bar(_ref) {
     variant: variant,
     width: width,
     minSize: minSize
-  }, __jsx$2d(OpenButton, {
+  }, __jsx$2e(OpenButton, {
     background: background,
     flat: flat,
     exposed: withExposedButton,
     onClick: toggleOpen,
     open: IsOpen,
     placement: placement
-  }, __jsx$2d(Icon, {
+  }, __jsx$2e(Icon, {
     icon: "user",
     size: "1x",
     prefix: "fas"
-  })), children), __jsx$2d(StyledOverlay$1, {
+  })), children), __jsx$2e(StyledOverlay$1, {
     onClick: toggleOpen,
     open: IsOpen,
     placement: placement,
@@ -24016,7 +24045,7 @@ var BarConfig = {
   }
 };
 
-var __jsx$2e = React.createElement;
+var __jsx$2f = React.createElement;
 var events = [{
   start: moment(),
   end: moment().add(1, 'days').toDate(),
@@ -24024,7 +24053,7 @@ var events = [{
 }];
 var BigCalendar = function BigCalendar() {
   var localizer = momentLocalizer(moment);
-  return __jsx$2e("div", null, __jsx$2e(Calendar$1, {
+  return __jsx$2f("div", null, __jsx$2f(Calendar$1, {
     localizer: localizer,
     defaultDate: new Date(),
     events: events,
@@ -24036,7 +24065,7 @@ var BigCalendar = function BigCalendar() {
   }));
 };
 
-var __jsx$2f = React.createElement;
+var __jsx$2g = React.createElement;
 var FullCalendar;
 var CalendarWrapper = function CalendarWrapper(props) {
   var _useState = useState(false),
@@ -24058,7 +24087,7 @@ var CalendarWrapper = function CalendarWrapper(props) {
         var Calendar = _ref.calendar,
             plugins = _objectWithoutProperties(_ref, ["calendar"]);
 
-        return __jsx$2f(Calendar, _extends({
+        return __jsx$2g(Calendar, _extends({
           plugins: Object.values(plugins),
           ref: props.forwardedRef
         }, props));
@@ -24075,14 +24104,14 @@ var CalendarWrapper = function CalendarWrapper(props) {
   }, []);
 
   var showCalendar = function showCalendar(props) {
-    if (!calendarLoaded) return __jsx$2f("div", null, "Loading ...");
-    return __jsx$2f(FullCalendar, props);
+    if (!calendarLoaded) return __jsx$2g("div", null, "Loading ...");
+    return __jsx$2g(FullCalendar, props);
   };
 
-  return __jsx$2f("div", null, showCalendar(props));
+  return __jsx$2g("div", null, showCalendar(props));
 };
 
-var __jsx$2g = React.createElement;
+var __jsx$2h = React.createElement;
 var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var props = _extends({}, _ref);
 
@@ -24093,14 +24122,14 @@ var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
-  return __jsx$2g(Wrapper$4, null, props.hasLoading && loading && __jsx$2g(PageLoading, {
-    indicator: __jsx$2g(LdsSpinner, {
+  return __jsx$2h(Wrapper$4, null, props.hasLoading && loading && __jsx$2h(PageLoading, {
+    indicator: __jsx$2h(LdsSpinner, {
       color: "#000",
       size: 50
     }),
     opacity: 0.7,
     position: "absolute"
-  }), __jsx$2g(CalendarWrapper, _extends({}, props, {
+  }), __jsx$2h(CalendarWrapper, _extends({}, props, {
     eventColor: props.defaultEventColor || COLOUR.primary,
     header: props.header || CALENDAR.header,
     events: props.events,
@@ -24113,7 +24142,7 @@ var Wrapper$4 = styled.div.withConfig({
   componentId: "sc-12sqf83-0"
 })(["position:relative;width:100%;@media (max-width:700px){.fc-header-toolbar{flex-direction:column;}}"]);
 
-var __jsx$2h = React.createElement;
+var __jsx$2i = React.createElement;
 var ColorPicker = function ColorPicker(_ref) {
   var type = _ref.type,
       onChangeComplete = _ref.onChangeComplete,
@@ -24121,27 +24150,27 @@ var ColorPicker = function ColorPicker(_ref) {
 
   switch (type) {
     case 'circle':
-      return __jsx$2h(CirclePicker, _extends({
+      return __jsx$2i(CirclePicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'sketch':
-      return __jsx$2h(SketchPicker, _extends({
+      return __jsx$2i(SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'github':
-      return __jsx$2h(GithubPicker, _extends({
+      return __jsx$2i(GithubPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'twitter':
-      return __jsx$2h(TwitterPicker, _extends({
+      return __jsx$2i(TwitterPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     default:
-      return __jsx$2h(SketchPicker, _extends({
+      return __jsx$2i(SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
   }
@@ -24156,7 +24185,7 @@ ColorPicker.propTypes = {
   width: propTypes.string
 };
 
-var __jsx$2i = React.createElement;
+var __jsx$2j = React.createElement;
 var EmailChange = function EmailChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -24174,32 +24203,32 @@ var EmailChange = function EmailChange(_ref) {
   var submit = function submit(data) {};
 
   var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return __jsx$2i(React.Fragment, null, __jsx$2i(PageHeading, {
+  return __jsx$2j(React.Fragment, null, __jsx$2j(PageHeading, {
     center: true,
     heading: "Email Change",
     divider: false
-  }), error && __jsx$2i(Alert, {
+  }), error && __jsx$2j(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2i(Form, {
+  }), __jsx$2j(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2i(FormLabel, {
+  }, __jsx$2j(FormLabel, {
     label: "Email"
-  }, __jsx$2i(FormField, {
+  }, __jsx$2j(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2i(Button, {
+  })), __jsx$2j(Button, {
     block: true,
     content: "Submit",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2i("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
+  }), __jsx$2j("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
 };
 EmailChange.propTypes = {
   showPlaceholder: propTypes.bool
@@ -24221,7 +24250,7 @@ var BlockType = {
   LI: 'unordered-list-item'
 };
 
-var __jsx$2j = React.createElement;
+var __jsx$2k = React.createElement;
 var DraftJs = function DraftJs(_ref) {
   var control = _ref.control,
       name = _ref.name,
@@ -24256,31 +24285,31 @@ var DraftJs = function DraftJs(_ref) {
   }; // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
 
 
-  return __jsx$2j(React.Fragment, null, __jsx$2j("input", {
+  return __jsx$2k(React.Fragment, null, __jsx$2k("input", {
     type: "button",
     value: "B",
     "data-style": "BOLD",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2j("input", {
+  }), __jsx$2k("input", {
     type: "button",
     value: "I",
     "data-style": "ITALIC",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2j("input", {
+  }), __jsx$2k("input", {
     type: "button",
     value: "S",
     "data-style": "STRIKETHROUGH",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2j("input", {
+  }), __jsx$2k("input", {
     type: "button",
     value: "U",
     "data-style": "UNDERLINE",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2j(Controller$1, {
+  }), __jsx$2k(Controller$1, {
     name: name,
     control: control,
     render: function render(props) {
-      return __jsx$2j(Editor, {
+      return __jsx$2k(Editor, {
         editorState: editorState,
         blockStyleFn: myBlockStyleFn,
         handleKeyCommand: handleKeyCommand,
@@ -24299,14 +24328,14 @@ function myBlockStyleFn(contentBlock) {
   }
 }
 
-var __jsx$2k = React.createElement;
+var __jsx$2l = React.createElement;
 var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       fixed = _ref.fixed;
 
   var renderColumns = function renderColumns() {
     return columns.map(function (column, index) {
-      return __jsx$2k(Column, _extends({
+      return __jsx$2l(Column, _extends({
         align: column.align,
         key: index,
         offset: column.offset
@@ -24317,7 +24346,7 @@ var Footer = function Footer(_ref) {
 
         switch (key) {
           case 'header':
-            return __jsx$2k(StyledHeading$3, {
+            return __jsx$2l(StyledHeading$3, {
               align: value.align,
               content: value.content,
               key: "".concat(value.content).concat(index).concat(i),
@@ -24341,7 +24370,7 @@ var Footer = function Footer(_ref) {
     var align = _ref4.align,
         direction = _ref4.direction,
         items = _ref4.items;
-    return __jsx$2k(StyledList$2, {
+    return __jsx$2l(StyledList$2, {
       align: align,
       direction: direction,
       key: "".concat(items[0]).concat(index),
@@ -24351,12 +24380,12 @@ var Footer = function Footer(_ref) {
           id = _ref5.id,
           name = _ref5.name,
           to = _ref5.to;
-      return __jsx$2k(StyledListItem$1, {
+      return __jsx$2l(StyledListItem$1, {
         key: id
-      }, __jsx$2k(Link, {
+      }, __jsx$2l(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2k(StyledIcon$6, {
+      }, icon && __jsx$2l(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -24367,18 +24396,18 @@ var Footer = function Footer(_ref) {
   var renderText = function renderText(_ref6, index) {
     var align = _ref6.align,
         items = _ref6.items;
-    return __jsx$2k(Fragment$1, {
+    return __jsx$2l(Fragment$1, {
       key: index
     }, items === null || items === void 0 ? void 0 : items.map(function (_ref7, i) {
       var content = _ref7.content,
           icon = _ref7.icon;
-      return __jsx$2k(Fragment$1, {
+      return __jsx$2l(Fragment$1, {
         key: i
-      }, icon && __jsx$2k(StyledIcon$6, {
+      }, icon && __jsx$2l(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
-      }), __jsx$2k(StyledText$5, {
+      }), __jsx$2l(StyledText$5, {
         align: align,
         dangerouslySetInnerHTML: {
           __html: content
@@ -24387,10 +24416,10 @@ var Footer = function Footer(_ref) {
     }));
   };
 
-  return __jsx$2k(StyledFooter$2, {
+  return __jsx$2l(StyledFooter$2, {
     "data-cy": "footer",
     fixed: fixed
-  }, __jsx$2k(Container, null, __jsx$2k(Row, null, renderColumns())));
+  }, __jsx$2l(Container, null, __jsx$2l(Row, null, renderColumns())));
 };
 var StyledFooter$2 = styled.div.withConfig({
   displayName: "footer__StyledFooter",
@@ -24480,7 +24509,7 @@ var ForgotDetailsSchema = object$1().shape({
   email: string$1().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
 });
 
-var __jsx$2l = React.createElement;
+var __jsx$2m = React.createElement;
 var ForgotDetails = function ForgotDetails(_ref) {
   var pathLogIn = _ref.pathLogIn,
       showPlaceholder = _ref.showPlaceholder,
@@ -24493,29 +24522,29 @@ var ForgotDetails = function ForgotDetails(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2l(React.Fragment, null, __jsx$2l(PageHeading, {
+  return __jsx$2m(React.Fragment, null, __jsx$2m(PageHeading, {
     center: true,
     divider: false,
     heading: "Forgot Details"
-  }), __jsx$2l(Form, {
+  }), __jsx$2m(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2l(FormLabel, {
+  }, __jsx$2m(FormLabel, {
     label: "Email"
-  }, __jsx$2l(FormField, {
+  }, __jsx$2m(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     register: register
-  })), __jsx$2l(Button, {
+  })), __jsx$2m(Button, {
     block: true,
     content: "Send reset link",
     size: "lg",
     type: "submit"
-  }), __jsx$2l(Link, {
+  }), __jsx$2m(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2l(StyledLink$8, null, "Back to Log In"))));
+  }, __jsx$2m(StyledLink$8, null, "Back to Log In"))));
 };
 var StyledLink$8 = styled.span.withConfig({
   displayName: "forgotDetails__StyledLink",
@@ -24538,7 +24567,7 @@ var ForgotDetailsResetSchema = object$1().shape({
   password: string$1().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
 });
 
-var __jsx$2m = React.createElement;
+var __jsx$2n = React.createElement;
 var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
   var _errors$password;
 
@@ -24552,31 +24581,31 @@ var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2m(React.Fragment, null, __jsx$2m(PageHeading, {
+  return __jsx$2n(React.Fragment, null, __jsx$2n(PageHeading, {
     center: true,
     heading: "Set New Password",
     divider: false
-  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2m(Alert, {
+  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2n(Alert, {
     content: errors.password.message,
     context: "warning"
-  }), __jsx$2m(Form, {
+  }), __jsx$2n(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2m(FormLabel, {
+  }, __jsx$2n(FormLabel, {
     label: "Password"
-  }, __jsx$2m(FormField, {
+  }, __jsx$2n(FormField, {
     errors: errors,
     name: "password",
     register: register,
     type: "password"
-  })), __jsx$2m(Button, {
+  })), __jsx$2n(Button, {
     block: true,
     content: "Submit",
     size: "lg",
     type: "submit"
-  }), __jsx$2m(Link, {
+  }), __jsx$2n(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2m(StyledLink$9, null, "Back to Log In"))));
+  }, __jsx$2n(StyledLink$9, null, "Back to Log In"))));
 };
 var StyledLink$9 = styled.span.withConfig({
   displayName: "forgotDetailsReset__StyledLink",
@@ -24590,7 +24619,7 @@ ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 };
 
-var __jsx$2n = React.createElement;
+var __jsx$2o = React.createElement;
 var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var Login = function Login(_ref) {
   var blockSubmitButton = _ref.blockSubmitButton,
@@ -24645,41 +24674,41 @@ var Login = function Login(_ref) {
   // }
 
 
-  return __jsx$2n(React.Fragment, null, __jsx$2n(PageHeading, {
+  return __jsx$2o(React.Fragment, null, __jsx$2o(PageHeading, {
     center: true,
     heading: heading,
     divider: false
-  }), error && __jsx$2n(Alert, {
+  }), error && __jsx$2o(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2n(Form, {
+  }), __jsx$2o(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2n(FormLabel, {
+  }, __jsx$2o(FormLabel, {
     label: "Email"
-  }, __jsx$2n(FormField, {
+  }, __jsx$2o(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2n(FormLabel, {
+  })), __jsx$2o(FormLabel, {
     label: "Password"
-  }, __jsx$2n(FormField, {
+  }, __jsx$2o(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     register: register,
     type: showPass ? 'text' : 'password'
-  })), showPassword && __jsx$2n(ShowPassword, {
+  })), showPassword && __jsx$2o(ShowPassword, {
     onClick: function onClick() {
       return setShowPass(function (prev) {
         return !prev;
       });
     }
-  }, __jsx$2n("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2n("div", {
+  }, __jsx$2o("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2o("div", {
     className: "text-right"
-  }, __jsx$2n(Button, {
+  }, __jsx$2o(Button, {
     align: "right",
     block: blockSubmitButton,
     content: "Log in",
@@ -24687,11 +24716,11 @@ var Login = function Login(_ref) {
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), forgotPassword && __jsx$2n(ForgotPasswordWrapper, null, __jsx$2n(Link, {
+  }), forgotPassword && __jsx$2o(ForgotPasswordWrapper, null, __jsx$2o(Link, {
     to: pathForgot
-  }, "Forgot password?")))), pathSignUp && __jsx$2n(React.Fragment, null, __jsx$2n("p", {
+  }, "Forgot password?")))), pathSignUp && __jsx$2o(React.Fragment, null, __jsx$2o("p", {
     className: "text-center"
-  }, "Don't have an account? ", __jsx$2n(Link, {
+  }, "Don't have an account? ", __jsx$2o(Link, {
     to: pathSignUp
   }, "Apply now!"))));
 };
@@ -24724,22 +24753,22 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2o = React.createElement;
+var __jsx$2p = React.createElement;
 var Message = function Message(_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  return __jsx$2o(Row, {
+  return __jsx$2p(Row, {
     style: {
       position: 'relative'
     }
-  }, type === 'out' && __jsx$2o(Column, {
+  }, type === 'out' && __jsx$2p(Column, {
     sm: 1
-  }, "\xA0"), __jsx$2o(Tail, {
+  }, "\xA0"), __jsx$2p(Tail, {
     type: type
-  }), __jsx$2o(MessageBase, _extends({
+  }), __jsx$2p(MessageBase, _extends({
     prevType: prevType
   }, message, props)));
 };
@@ -24748,7 +24777,7 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2p = React.createElement;
+var __jsx$2q = React.createElement;
 var MessageIcon = function MessageIcon(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix;
@@ -24768,7 +24797,7 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2p(StyledIcon$7, {
+  return __jsx$2q(StyledIcon$7, {
     fixedWidth: false,
     icon: useIcon,
     prefix: prefix
@@ -24789,7 +24818,7 @@ MessageIcon.defaultProps = {
   prefix: 'fas'
 };
 
-var __jsx$2q = React.createElement;
+var __jsx$2r = React.createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -24812,7 +24841,7 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2q(StyledImage$3, {
+  return icon && __jsx$2r(StyledImage$3, {
     alt: "audience",
     src: icon
   });
@@ -24825,7 +24854,7 @@ MessageTo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2r = React.createElement;
+var __jsx$2s = React.createElement;
 var MessageBase = function MessageBase(_ref) {
   var content = _ref.content,
       from = _ref.from,
@@ -24851,43 +24880,43 @@ var MessageBase = function MessageBase(_ref) {
       behavior: 'smooth'
     });
   }, []);
-  return __jsx$2r(Column, {
+  return __jsx$2s(Column, {
     sm: 11,
     columnRef: messageRef
-  }, __jsx$2r(StyledCard$2, {
+  }, __jsx$2s(StyledCard$2, {
     type: type
-  }, __jsx$2r(Row, null, __jsx$2r(Column, {
+  }, __jsx$2s(Row, null, __jsx$2s(Column, {
     sm: 6
-  }, __jsx$2r(MessageIcon, {
+  }, __jsx$2s(MessageIcon, {
     icon: icon
-  }), __jsx$2r(MessageTo, {
+  }), __jsx$2s(MessageTo, {
     to: to
-  }), __jsx$2r(StyledTime$1, null, time)), __jsx$2r(Column, {
+  }), __jsx$2s(StyledTime$1, null, time)), __jsx$2s(Column, {
     sm: 6
-  }, __jsx$2r(StyledFrom, null, from))), __jsx$2r(Row, null, pictureId && __jsx$2r(Column, {
+  }, __jsx$2s(StyledFrom, null, from))), __jsx$2s(Row, null, pictureId && __jsx$2s(Column, {
     sm: 2
-  }, __jsx$2r(Image$1, {
+  }, __jsx$2s(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2r(Column, {
+  })), __jsx$2s(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2r(StyledReply, null, reply), __jsx$2r(StyledContent$4, {
+  }, __jsx$2s(StyledReply, null, reply), __jsx$2s(StyledContent$4, {
     seeMore: seeMore
   }, content && content.split('\n').map(function (item, key) {
-    return __jsx$2r("span", {
+    return __jsx$2s("span", {
       key: key
-    }, item, __jsx$2r("br", null));
-  })), more && __jsx$2r(StyledCollapse, {
+    }, item, __jsx$2s("br", null));
+  })), more && __jsx$2s(StyledCollapse, {
     onClick: function onClick() {
       return setSeeMore(!seeMore);
     }
-  }, seeMore ? __jsx$2r(React.Fragment, null, __jsx$2r("span", null, "Close"), __jsx$2r(Icon, {
+  }, seeMore ? __jsx$2s(React.Fragment, null, __jsx$2s("span", null, "Close"), __jsx$2s(Icon, {
     icon: "chevron-up"
-  })) : __jsx$2r(React.Fragment, null, __jsx$2r("span", null, "See more"), __jsx$2r(Icon, {
+  })) : __jsx$2s(React.Fragment, null, __jsx$2s("span", null, "See more"), __jsx$2s(Icon, {
     icon: "chevron-down"
-  })))), !type && __jsx$2r(Column, {
+  })))), !type && __jsx$2s(Column, {
     sm: 1
-  }, __jsx$2r(Icon, {
+  }, __jsx$2s(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
   })))));
@@ -24951,7 +24980,7 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2s = React.createElement;
+var __jsx$2t = React.createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -24961,15 +24990,15 @@ var MessagingContainer = function MessagingContainer(_ref) {
       onSearch = _ref.onSearch,
       onSubmit = _ref.onSubmit,
       style = _ref.style;
-  return __jsx$2s(React.Fragment, null, __jsx$2s(MessagingSearch, {
+  return __jsx$2t(React.Fragment, null, __jsx$2t(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2s(StyledContainer$7, {
+  }), __jsx$2t(StyledContainer$7, {
     className: className,
     style: style
-  }, __jsx$2s(MessageList, {
+  }, __jsx$2t(MessageList, {
     messages: messages
-  })), __jsx$2s(MessagingSend, {
+  })), __jsx$2t(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: onSubmit,
     maxLength: maxLength
@@ -24990,11 +25019,11 @@ MessagingContainer.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$2t = React.createElement;
+var __jsx$2u = React.createElement;
 var MessageList = function MessageList(_ref) {
   var messages = _ref.messages;
   return messages.map(function (message, index) {
-    return __jsx$2t(Message, {
+    return __jsx$2u(Message, {
       message: message,
       key: index,
       prevType: message.type,
@@ -25007,7 +25036,7 @@ MessageList.propTypes = {
   messages: propTypes.array.isRequired
 };
 
-var __jsx$2u = React.createElement;
+var __jsx$2v = React.createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -25041,16 +25070,16 @@ var MessagingSearch = function MessagingSearch(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2u(StyledContainer$8, null, __jsx$2u(Form, {
+  return __jsx$2v(StyledContainer$8, null, __jsx$2v(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2u(Row, null, __jsx$2u(Column, {
+  }, __jsx$2v(Row, null, __jsx$2v(Column, {
     md: 6
-  }, __jsx$2u(StyledSearch, _extends({}, defaultOptions, {
+  }, __jsx$2v(StyledSearch, _extends({}, defaultOptions, {
     prependSearchIcon: true,
     placeholder: placeholder
-  }))), __jsx$2u(Column, {
+  }))), __jsx$2v(Column, {
     md: 6
-  }, __jsx$2u(StyledSelect$1, _extends({}, defaultOptions, {
+  }, __jsx$2v(StyledSelect$1, _extends({}, defaultOptions, {
     name: "messagingFilter",
     options: Items
   }))))));
@@ -25076,7 +25105,7 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2v = React.createElement;
+var __jsx$2w = React.createElement;
 var MessagingSend = function MessagingSend(_ref) {
   var audienceItems = _ref.audienceItems,
       maxLength = _ref.maxLength,
@@ -25135,28 +25164,28 @@ var MessagingSend = function MessagingSend(_ref) {
     setValue('message', '');
   };
 
-  return __jsx$2v(React.Fragment, null, open && __jsx$2v(StyledPickerContainer, null, __jsx$2v(EmojiMart, {
+  return __jsx$2w(React.Fragment, null, open && __jsx$2w(StyledPickerContainer, null, __jsx$2w(EmojiMart, {
     handleOpenPicker: handleOpenPicker,
     handleSelect: handleEmojiSelect,
     open: open
-  })), __jsx$2v(StyledContainer$9, {
+  })), __jsx$2w(StyledContainer$9, {
     audience: audience
-  }, __jsx$2v(StyledForm$1, {
+  }, __jsx$2w(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, audience && __jsx$2v(StyledDropDown, {
+  }, audience && __jsx$2w(StyledDropDown, {
     items: audienceItems,
     onChange: function onChange(item) {
       return setAudience(item);
     },
     position: "top"
-  }, audience.name), __jsx$2v(StyledTextarea$1, {
+  }, audience.name), __jsx$2w(StyledTextarea$1, {
     errors: errors,
     maxLength: maxLength,
     name: "message",
     placeholder: "Write message",
     register: register,
     rows: 2
-  }), __jsx$2v("input", {
+  }), __jsx$2w("input", {
     multiple: true,
     onChange: handleFilesChange,
     ref: fileInputRef,
@@ -25164,19 +25193,19 @@ var MessagingSend = function MessagingSend(_ref) {
       display: 'none'
     },
     type: "file"
-  }), __jsx$2v(StyledElements, null, __jsx$2v(StyledIcon$8, {
+  }), __jsx$2w(StyledElements, null, __jsx$2w(StyledIcon$8, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2v(StyledIcon$8, {
+  }), __jsx$2w(StyledIcon$8, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
       return setOpen(!open);
     },
     size: "2x"
-  }), __jsx$2v(Button, {
+  }), __jsx$2w(Button, {
     content: "Send",
     context: "info",
     disabled: message.length === 0 && attachments.length === 0,
@@ -25254,7 +25283,7 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var __jsx$2w = React.createElement;
+var __jsx$2x = React.createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -25272,34 +25301,34 @@ var PasswordChange = function PasswordChange(_ref) {
 
   var submit = function submit(data) {};
 
-  return __jsx$2w(React.Fragment, null, __jsx$2w(PageHeading, {
+  return __jsx$2x(React.Fragment, null, __jsx$2x(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2w(Alert, {
+  }), error && __jsx$2x(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2w(Form, {
+  }), __jsx$2x(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2w(FormLabel, {
+  }, __jsx$2x(FormLabel, {
     label: "Old password"
-  }, __jsx$2w(FormField, {
+  }, __jsx$2x(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2w(FormLabel, {
+  })), __jsx$2x(FormLabel, {
     label: "New password"
-  }, __jsx$2w(FormField, {
+  }, __jsx$2x(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2w(FormLabel, {
+  })), __jsx$2x(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2w(FormField, {
+  }, __jsx$2x(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -25308,7 +25337,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2w(Button, {
+  })), __jsx$2x(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -25321,7 +25350,7 @@ PasswordChange.propTypes = {
   showPlaceholder: propTypes.bool
 };
 
-var __jsx$2x = React.createElement;
+var __jsx$2y = React.createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -25348,13 +25377,13 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2x(React.Fragment, null, __jsx$2x(DatePickerInput, {
+    return __jsx$2y(React.Fragment, null, __jsx$2y(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2x(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2y(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
   var _useContext = useContext(UserContext),
@@ -25402,55 +25431,55 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2x(Form, {
+  return __jsx$2y(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2x(Alert, {
+  }, error && __jsx$2y(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2x(FormLabel, {
+  }), __jsx$2y(FormLabel, {
     label: "First name"
-  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2x(FormLabel, {
+  }))), __jsx$2y(FormLabel, {
     label: "Last name"
-  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2x(FormLabel, {
+  }))), __jsx$2y(FormLabel, {
     label: "Email"
-  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2x(FormLabel, {
+  }))), __jsx$2y(FormLabel, {
     label: "Password"
-  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2x(FormLabel, {
+  }))), __jsx$2y(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2x(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2y(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2x(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2y(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2x(Button, {
+  })), __jsx$2y(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2x(StyledLink$a, null, "Already have an account? ", __jsx$2x(Link, {
+  }), __jsx$2y(StyledLink$a, null, "Already have an account? ", __jsx$2y(Link, {
     to: pathLogin
   }, "Log in")));
 };
@@ -25480,7 +25509,7 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2y = React.createElement;
+var __jsx$2z = React.createElement;
 
 var ArticleLayout = function ArticleLayout(_ref) {
   var children = _ref.children,
@@ -25490,14 +25519,14 @@ var ArticleLayout = function ArticleLayout(_ref) {
   //   description: frontMatter.description,
   //   title: frontMatter.title
   // }
-  return __jsx$2y(Container, null, __jsx$2y(Row, null, __jsx$2y(Column, {
+  return __jsx$2z(Container, null, __jsx$2z(Row, null, __jsx$2z(Column, {
     md: 12
-  }, __jsx$2y(Article, {
+  }, __jsx$2z(Article, {
     article: frontMatter
   }))));
 };
 
-var __jsx$2z = React.createElement;
+var __jsx$2A = React.createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -25506,10 +25535,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2z(React.Fragment, null, __jsx$2z(Navigation, null), children, footer && __jsx$2z(Footer, {
+  return __jsx$2A(React.Fragment, null, __jsx$2A(Navigation, null), children, footer && __jsx$2A(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2z(Copyright, {
+  }), copyright && __jsx$2A(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -25528,11 +25557,11 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2A = React.createElement;
+var __jsx$2B = React.createElement;
 
-function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$d(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$e(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var Dashboard = function Dashboard(_ref) {
   var children = _ref.children,
       meta = _ref.meta,
@@ -25547,18 +25576,18 @@ var Dashboard = function Dashboard(_ref) {
     title: 'Admin'
   };
 
-  var mergedMeta = _objectSpread$d(_objectSpread$d({}, defaultMeta), meta);
+  var mergedMeta = _objectSpread$e(_objectSpread$e({}, defaultMeta), meta);
 
-  return __jsx$2A(React.Fragment, null, __jsx$2A(Suspense$1, {
-    fallback: __jsx$2A(PageLoading, {
-      indicator: __jsx$2A(LdsSpinner, null)
+  return __jsx$2B(React.Fragment, null, __jsx$2B(Suspense$1, {
+    fallback: __jsx$2B(PageLoading, {
+      indicator: __jsx$2B(LdsSpinner, null)
     })
-  }, __jsx$2A(React.Fragment, null, __jsx$2A(Page, {
+  }, __jsx$2B(React.Fragment, null, __jsx$2B(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2A(Alert, {
+  }), message && __jsx$2B(Alert, {
     content: message,
     context: context
   }))));
@@ -25583,7 +25612,7 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2B = React.createElement;
+var __jsx$2C = React.createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
@@ -25594,13 +25623,13 @@ var Page = function Page(_ref) {
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2B(StyledPage, null, meta && __jsx$2B(MetaHead, {
+  return __jsx$2C(StyledPage, null, meta && __jsx$2C(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2B(Container, {
+  }), __jsx$2C(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2B(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$2C(PageHeading, pageHeading), children));
 };
 var StyledPage = styled.div.withConfig({
   displayName: "page__StyledPage",
@@ -25623,7 +25652,7 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$2C = React.createElement;
+var __jsx$2D = React.createElement;
 var SidebarLayout = function SidebarLayout(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -25634,16 +25663,16 @@ var SidebarLayout = function SidebarLayout(_ref) {
   var _useContext = useContext(ConfigContext),
       Sidebar = _useContext.Sidebar;
 
-  return __jsx$2C(Container, {
+  return __jsx$2D(Container, {
     fluid: true
-  }, __jsx$2C(Row, null, __jsx$2C(Column, {
+  }, __jsx$2D(Row, null, __jsx$2D(Column, {
     md: 2
-  }, __jsx$2C(Sidebar, null)), __jsx$2C(Column, {
+  }, __jsx$2D(Sidebar, null)), __jsx$2D(Column, {
     md: 10,
     style: {
       padding: 0
     }
-  }, __jsx$2C(Bootstrap, {
+  }, __jsx$2D(Bootstrap, {
     brand: brand,
     copyright: copyright,
     footer: footer,
@@ -25658,7 +25687,7 @@ SidebarLayout.propTypes = {
   navigation: propTypes.func
 };
 
-var __jsx$2D = React.createElement;
+var __jsx$2E = React.createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -25671,7 +25700,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$2D(React.Fragment, null, iFrame && __jsx$2D("iframe", {
+  return __jsx$2E(React.Fragment, null, iFrame && __jsx$2E("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -25682,7 +25711,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$2D("div", {
+  }), !iFrame && __jsx$2E("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -25693,10 +25722,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$2D("blockquote", {
+  }, __jsx$2E("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$2D("a", {
+  }, __jsx$2E("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -25725,7 +25754,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$2E = React.createElement;
+var __jsx$2F = React.createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -25733,7 +25762,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$2E(React.Fragment, null, iFrame && __jsx$2E("iframe", {
+  return __jsx$2F(React.Fragment, null, iFrame && __jsx$2F("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -25744,13 +25773,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$2E("div", {
+  }), !iFrame && __jsx$2F("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$2E("a", {
+  }, __jsx$2F("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -25771,7 +25800,7 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$2F = React.createElement;
+var __jsx$2G = React.createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
@@ -25783,7 +25812,7 @@ var Typeform = function Typeform(_ref) {
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$2F("div", {
+  return __jsx$2G("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -25823,34 +25852,34 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$2G = React.createElement;
+var __jsx$2H = React.createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2G(StyledArticle, {
+  return __jsx$2H(StyledArticle, {
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article"
-  }, __jsx$2G("header", null, __jsx$2G(StyledImage$4, {
+  }, __jsx$2H("header", null, __jsx$2H(StyledImage$4, {
     alt: article.heading,
     slant: true,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), __jsx$2G(Breadcrumb, {
+  }), __jsx$2H(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && __jsx$2G(BlogCategory, {
+  }), config && __jsx$2H(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$2G(StyledHeading$4, {
+  }), __jsx$2H(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$2G(BlogDetails, {
+  }), facebook && __jsx$2H(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$2G("span", {
+  })), __jsx$2H("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
@@ -25971,20 +26000,20 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$2H = React.createElement;
+var __jsx$2I = React.createElement;
 var Error404 = function Error404() {
   var meta = {
     description: "\n      DryKISS is a full service internet and mobile digital production house.\n      Our services span consulting, strategy; planning; development; testing\n      and analytics.\n    ",
     path: '/404',
     title: 'DryKISS develops hybrid mobile and responsive websites'
   };
-  return __jsx$2H(Page, {
+  return __jsx$2I(Page, {
     heading: "404 ERROR PAGE \u2013 NOT FOUND",
     meta: meta
-  }, __jsx$2H("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
+  }, __jsx$2I("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
 };
 
-var __jsx$2I = React.createElement;
+var __jsx$2J = React.createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -26000,47 +26029,47 @@ var BlogCard = function BlogCard(_ref) {
     as: "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$2I("article", {
+  return __jsx$2J("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$2I(Card, {
+  }, __jsx$2J(Card, {
     shadow: true
-  }, __jsx$2I(Link, {
+  }, __jsx$2J(Link, {
     to: articleLink
-  }, __jsx$2I(CardImage, {
+  }, __jsx$2J(CardImage, {
     alt: heading,
     src: "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$2I(StyledCardBody, {
+  })), __jsx$2J(StyledCardBody, {
     type: type
-  }, type === 'normal' && __jsx$2I(BlogCategory, {
+  }, type === 'normal' && __jsx$2J(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$2I(StyledContent$5, {
+  }), __jsx$2J(StyledContent$5, {
     type: type
-  }, __jsx$2I(Link, {
+  }, __jsx$2J(Link, {
     to: articleLink
-  }, __jsx$2I(StyledHeading$5, {
+  }, __jsx$2J(StyledHeading$5, {
     content: heading,
     tag: "h1",
     noWrap: true,
     type: type
-  })), type === 'normal' && __jsx$2I("p", {
+  })), type === 'normal' && __jsx$2J("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$2I(React.Fragment, null, article.tags && __jsx$2I(TagsContainer, null, __jsx$2I(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$2J(React.Fragment, null, article.tags && __jsx$2J(TagsContainer, null, __jsx$2J(BlogTags, {
     tags: article.tags
-  })), __jsx$2I(Divider, {
+  })), __jsx$2J(Divider, {
     size: "sm"
-  }), __jsx$2I(BlogCategory, {
+  }), __jsx$2J(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), __jsx$2I(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2I(Link, {
+  }), __jsx$2J(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2J(Link, {
     to: articleLink
-  }, __jsx$2I(StyledButton$8, {
+  }, __jsx$2J(StyledButton$8, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
@@ -26097,7 +26126,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$2J = React.createElement;
+var __jsx$2K = React.createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -26122,10 +26151,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$2J("section", null, _find().map(function (articles, index) {
-    return __jsx$2J(Fragment$1, {
+  return __jsx$2K("section", null, _find().map(function (articles, index) {
+    return __jsx$2K(Fragment$1, {
       key: index
-    }, __jsx$2J(Link, {
+    }, __jsx$2K(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -26135,14 +26164,14 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$2J(StyledHeading$6, {
+    }, __jsx$2K(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$2J(Row, null, articles.map(function (article, index) {
-      return __jsx$2J(Column, {
+    })), __jsx$2K(Row, null, articles.map(function (article, index) {
+      return __jsx$2K(Column, {
         key: index,
         md: 6
-      }, __jsx$2J(BlogCard, {
+      }, __jsx$2K(BlogCard, {
         article: article,
         config: config
       }));
@@ -26158,17 +26187,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$2K = React.createElement;
+var __jsx$2L = React.createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$2K(StyledCategory, {
+  return __jsx$2L(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$2K(Link, {
+  }, __jsx$2L(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -26194,58 +26223,58 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2L = React.createElement;
+var __jsx$2M = React.createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2L(StyledArticleDetails, null, __jsx$2L(Divider, {
+  return __jsx$2M(StyledArticleDetails, null, __jsx$2M(Divider, {
     size: "sm"
-  }), __jsx$2L(List, {
+  }), __jsx$2M(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$2L(ListItem, {
+  }, __jsx$2M(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2L(StyledIcon$9, {
+  }, __jsx$2M(StyledIcon$9, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$2L(Date$1, {
+  }), __jsx$2M(Date$1, {
     date: article.date
-  })), __jsx$2L(ListItem, {
+  })), __jsx$2M(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2L(StyledIcon$9, {
+  }, __jsx$2M(StyledIcon$9, {
     context: "dark",
     icon: "user"
-  }), __jsx$2L(BlogCategory, {
+  }), __jsx$2M(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$2L(ListItem, {
+  })), __jsx$2M(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2L(StyledIcon$9, {
+  }, __jsx$2M(StyledIcon$9, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$2L(BlogReadTime, {
+  }), __jsx$2M(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$2L(BlogTags, {
+  }))), article.tags && __jsx$2M(BlogTags, {
     tags: article.tags
-  }), __jsx$2L(Divider, {
+  }), __jsx$2M(Divider, {
     size: "sm"
-  }), __jsx$2L(StyledShare, null, __jsx$2L(StyledShareText, null, "Share this article"), __jsx$2L(FacebookShareButton, {
+  }), __jsx$2M(StyledShare, null, __jsx$2M(StyledShareText, null, "Share this article"), __jsx$2M(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$2L(Divider, {
+  })), __jsx$2M(Divider, {
     size: "sm"
   }));
 };
@@ -26278,7 +26307,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$2M = React.createElement;
+var __jsx$2N = React.createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26293,16 +26322,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$2M(Column, {
+    return __jsx$2N(Column, {
       md: 12 / number
-    }, __jsx$2M(BlogCard, {
+    }, __jsx$2N(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$2M(Row, null, renderHero());
+  return __jsx$2N(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -26313,7 +26342,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$2N = React.createElement;
+var __jsx$2O = React.createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -26341,11 +26370,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$2N(Row, null, _find().map(function (article, index) {
-    return __jsx$2N(Column, {
+  return __jsx$2O(Row, null, _find().map(function (article, index) {
+    return __jsx$2O(Column, {
       key: index,
       md: 6
-    }, __jsx$2N(BlogCard, {
+    }, __jsx$2O(BlogCard, {
       article: article,
       config: config
     }));
@@ -26359,31 +26388,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$2O = React.createElement;
+var __jsx$2P = React.createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$2O("span", null, "Read time: ", time, " min(s)");
+  return __jsx$2P("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$2P = React.createElement;
+var __jsx$2Q = React.createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$2P(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$2Q(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$2P(Fragment$1, {
+    return __jsx$2Q(Fragment$1, {
       key: index
-    }, __jsx$2P(StyledDt, null, __jsx$2P(Badge, {
+    }, __jsx$2Q(StyledDt, null, __jsx$2Q(Badge, {
       content: badge
-    })), __jsx$2P(StyledDd, null, __jsx$2P(Link, {
+    })), __jsx$2Q(StyledDd, null, __jsx$2Q(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -26396,7 +26425,7 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$2P(StyledA$1, null, name))));
+    }, __jsx$2Q(StyledA$1, null, name))));
   }));
 };
 var StyledDl = styled.dl.withConfig({
@@ -26426,16 +26455,16 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$2Q = React.createElement;
+var __jsx$2R = React.createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$2Q(StyledSection, null, heading && __jsx$2Q(React.Fragment, null, __jsx$2Q(StyledHeading$7, {
+  return __jsx$2R(StyledSection, null, heading && __jsx$2R(React.Fragment, null, __jsx$2R(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$2Q(Divider, {
+  }), __jsx$2R(Divider, {
     size: "sm"
   })), children);
 };
@@ -26452,7 +26481,7 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$2R = React.createElement;
+var __jsx$2S = React.createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26489,9 +26518,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2R(BlogSection, {
+  return __jsx$2S(BlogSection, {
     heading: "Archive"
-  }, __jsx$2R(BlogList, {
+  }, __jsx$2S(BlogList, {
     config: config,
     list: list
   }));
@@ -26505,7 +26534,7 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$2S = React.createElement;
+var __jsx$2T = React.createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26544,9 +26573,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2S(BlogSection, {
+  return __jsx$2T(BlogSection, {
     heading: "Author"
-  }, __jsx$2S(BlogList, {
+  }, __jsx$2T(BlogList, {
     config: config,
     author: true,
     list: list
@@ -26561,7 +26590,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$2T = React.createElement;
+var __jsx$2U = React.createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -26600,35 +26629,35 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$2T(BlogSection, null, __jsx$2T(StyledContainer$a, {
+  return __jsx$2U(BlogSection, null, __jsx$2U(StyledContainer$a, {
     colour: colour
-  }, __jsx$2T(StyledForm$2, {
+  }, __jsx$2U(StyledForm$2, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2T(FormLabel, {
+  }, __jsx$2U(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$2T(InputGroup, null, __jsx$2T(FormField, {
+  }, __jsx$2U(InputGroup, null, __jsx$2U(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$2T(InputGroupAddon, null, __jsx$2T(Button, {
+  }), __jsx$2U(InputGroupAddon, null, __jsx$2U(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$2T(FormError, {
+  })), errors.postCode && __jsx$2U(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$2T("div", {
+  }), msg && __jsx$2U("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$2T(Link, {
+  }, msg)))), __jsx$2U(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$2T(StyledA$2, null, "Deliveroo ", __jsx$2T(Icon, {
+  }, __jsx$2U(StyledA$2, null, "Deliveroo ", __jsx$2U(Icon, {
     icon: "external-link"
   })))));
 };
@@ -26753,13 +26782,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$2U = React.createElement;
+var __jsx$2V = React.createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$2U(BlogSection, {
+  return __jsx$2V(BlogSection, {
     heading: "Media"
-  }, __jsx$2U(BlogList, {
+  }, __jsx$2V(BlogList, {
     config: config,
     list: media
   }));
@@ -26769,13 +26798,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$2V = React.createElement;
+var __jsx$2W = React.createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$2V(BlogSection, {
+  return __jsx$2W(BlogSection, {
     heading: "Promo"
-  }, __jsx$2V(Image$1, {
+  }, __jsx$2W(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -26785,7 +26814,7 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2W = React.createElement;
+var __jsx$2X = React.createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26814,9 +26843,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$2W(BlogSection, {
+  return __jsx$2X(BlogSection, {
     heading: "Recent"
-  }, __jsx$2W(BlogList, {
+  }, __jsx$2X(BlogList, {
     config: config,
     list: list
   }));
@@ -26830,7 +26859,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$2X = React.createElement;
+var __jsx$2Y = React.createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26839,22 +26868,22 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$2X(StyledAside$1, null, findFood && __jsx$2X(BlogFindFood, null), media && __jsx$2X(BlogMedia, {
+  return __jsx$2Y(StyledAside$1, null, findFood && __jsx$2Y(BlogFindFood, null), media && __jsx$2Y(BlogMedia, {
     media: media
-  }), __jsx$2X(BlogSocial, {
+  }), __jsx$2Y(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$2X(BlogPromo, {
+  }), promo && __jsx$2Y(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$2X(BlogRecent, {
+  }), __jsx$2Y(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$2X(BlogTagCloud, {
+  }), tags && __jsx$2Y(BlogTagCloud, {
     articles: articles
-  }), __jsx$2X(BlogArchive, {
+  }), __jsx$2Y(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$2X(BlogAuthor, {
+  }), __jsx$2Y(BlogAuthor, {
     articles: articles,
     config: config
   }));
@@ -26876,20 +26905,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$2Y = React.createElement;
+var __jsx$2Z = React.createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$2Y(React.Fragment, null, facebook && __jsx$2Y(BlogSection, {
+  return __jsx$2Z(React.Fragment, null, facebook && __jsx$2Z(BlogSection, {
     heading: "Facebook"
-  }, __jsx$2Y(FacebookPagePlugin, {
+  }, __jsx$2Z(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$2Y(BlogSection, {
+  })), instagram && __jsx$2Z(BlogSection, {
     heading: "Instagram"
-  }, __jsx$2Y("iframe", {
+  }, __jsx$2Z("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -26897,7 +26926,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$2Y(BlogSection, {
+  })), twitter && __jsx$2Z(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -26911,7 +26940,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$2Z = React.createElement;
+var __jsx$2_ = React.createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -26984,7 +27013,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$2Z(BlogSection, {
+  return __jsx$2_(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -27043,7 +27072,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$2_ = React.createElement;
+var __jsx$2$ = React.createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -27057,7 +27086,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$2_(Badge, {
+      return __jsx$2$(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -27067,7 +27096,7 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$2_("div", null, tagMap());
+  return __jsx$2$("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
@@ -27197,7 +27226,7 @@ var Api = function Api() {
  */
 var UserContext = /*#__PURE__*/createContext();
 
-var __jsx$2$ = React.createElement;
+var __jsx$30 = React.createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
@@ -27388,7 +27417,7 @@ var UserProvider = function UserProvider(_ref) {
     return true;
   };
 
-  return !isLoading && __jsx$2$(UserContext.Provider, {
+  return !isLoading && __jsx$30(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -27407,7 +27436,7 @@ var UserProvider = function UserProvider(_ref) {
  */
 var AuthorizationContext = /*#__PURE__*/createContext();
 
-var __jsx$30 = React.createElement;
+var __jsx$31 = React.createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
@@ -27494,7 +27523,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$30(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$31(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -27507,9 +27536,9 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
  */
 var ConfigContext = /*#__PURE__*/createContext();
 
-var __jsx$31 = React.createElement;
+var __jsx$32 = React.createElement;
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$31(ConfigContext.Provider, _extends({
+  return __jsx$32(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -27928,7 +27957,7 @@ var InternationalisationContext = /*#__PURE__*/createContext({
   }
 });
 
-var __jsx$32 = React.createElement;
+var __jsx$33 = React.createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
@@ -27964,7 +27993,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$32(InternationalisationContext.Provider, {
+  return __jsx$33(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -28013,7 +28042,7 @@ var getInitialLocale = function getInitialLocale() {
  */
 var NotificationsContext = /*#__PURE__*/createContext();
 
-var __jsx$33 = React.createElement;
+var __jsx$34 = React.createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -28033,7 +28062,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$33(NotificationsContext.Provider, {
+  return __jsx$34(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -31064,7 +31093,7 @@ var useNotifications = function useNotifications(url) {
  */
 var OffCanvasContext = /*#__PURE__*/createContext();
 
-var __jsx$34 = React.createElement;
+var __jsx$35 = React.createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
@@ -31108,12 +31137,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$34(OffCanvasContext.Provider, {
+  return __jsx$35(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$34(OffCanvas, {
+  }, children, __jsx$35(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -31130,7 +31159,7 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$34(StyledWrapper$2, {
+    return __jsx$35(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
@@ -31144,7 +31173,7 @@ var StyledWrapper$2 = styled.div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$35 = React.createElement;
+var __jsx$36 = React.createElement;
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -31177,7 +31206,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$35(React.Fragment, null, __jsx$35(ThemeStyle, null), user && __jsx$35(UserProvider, null, __jsx$35(AuthorizationProvider, null, __jsx$35(InternationalisationProvider, null, __jsx$35(NotificationsProvider, null, offCanvas ? __jsx$35(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$36(React.Fragment, null, __jsx$36(ThemeStyle, null), user && __jsx$36(UserProvider, null, __jsx$36(AuthorizationProvider, null, __jsx$36(InternationalisationProvider, null, __jsx$36(NotificationsProvider, null, offCanvas ? __jsx$36(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -31185,9 +31214,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$35(React.Fragment, null, __jsx$35(ConfigProvider, {
+      return __jsx$36(React.Fragment, null, __jsx$36(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$35(ApolloProvider, {
+      }, apolloClient ? __jsx$36(ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -31200,14 +31229,14 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$35(Layout, null, pageProgressBar && __jsx$35(PageProgressBar, {
+      return __jsx$36(Layout, null, pageProgressBar && __jsx$36(PageProgressBar, {
         router: router
-      }), __jsx$35(Component, pageProps));
+      }), __jsx$36(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$35(ThemeProvider, {
+      return __jsx$36(ThemeProvider, {
         theme: merge$1(Theme, this.props.theme)
       }, this.data());
     }
@@ -31237,5 +31266,5 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, IUIRich, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, RichTextInput, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
+export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, HighChart, ICON_PREFIX, ICON_PULL, ICON_SIZE, IUIRich, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, RichTextInput, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, objectWithoutProperties, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
 //# sourceMappingURL=industry-ui.es.js.map
