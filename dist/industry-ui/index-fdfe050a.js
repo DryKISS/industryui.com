@@ -1,51 +1,100 @@
-import React, { useContext, useState, useEffect, useRef, memo, forwardRef, Children, cloneElement, useImperativeHandle, Component, Fragment as Fragment$1, Suspense as Suspense$1, createContext } from 'react';
-import axios from 'axios';
-import moment from 'moment';
-import { isValid, differenceInYears, format as format$2 } from 'date-fns';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import styled, { css, createGlobalStyle, useTheme, keyframes, withTheme, ThemeProvider } from 'styled-components';
-import cloneDeep from 'lodash/cloneDeep';
-import ReactDOM, { createPortal } from 'react-dom';
-import { withResizeDetector } from 'react-resize-detector';
-import Head from 'next/head';
-import gravatar from 'gravatar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NextLink from 'next/link';
-import Tippy from '@tippyjs/react';
-import { Controller as Controller$1 } from 'react-hook-form';
-import ReactDatePicker from 'react-datepicker';
-import { useDropzone } from 'react-dropzone';
-import Dropzone$1 from 'react-dropzone-uploader';
-import { EditorState, Editor, RichUtils, ContentState, convertFromHTML, convertToRaw } from 'draft-js';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import { Editor as Editor$1 } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import _range from 'lodash/range';
-import Highcharts from 'highcharts/highstock';
-import HighchartsReact from 'highcharts-react-official';
-import { BarPropTypes, BarDefaultProps, ResponsiveBar } from '@nivo/bar';
-import { colorSchemes } from '@nivo/colors';
-import { LineDefaultProps, ResponsiveLine, LinePropTypes } from '@nivo/line';
-import { PieDefaultProps, ResponsivePie, PiePropTypes } from '@nivo/pie';
-import { Picker } from 'emoji-mart';
-import util$1 from 'util';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker as Marker$1, InfoWindow as InfoWindow$1 } from 'react-google-maps';
-import { MarkerClusterer as MarkerClusterer$1 } from 'react-google-maps/lib/components/addons/MarkerClusterer';
-import { NProgress } from '@tanem/react-nprogress';
-import chunk from 'lodash/chunk';
-import Router, { useRouter } from 'next/router';
-import { momentLocalizer, Calendar as Calendar$1 } from 'react-big-calendar';
-import dynamic from 'next/dynamic';
-import { SketchPicker, TwitterPicker, GithubPicker, CirclePicker } from 'react-color';
-import { object as object$1, string as string$1 } from 'yup';
-import _filter from 'lodash/filter';
-import { useSubscription, ApolloProvider } from '@apollo/client';
-import merge$1 from 'lodash/merge';
-import App from 'next/app';
-import TagManager from 'react-gtm-module';
+'use strict';
+
+var React = require('react');
+var axios = require('axios');
+var moment = require('moment');
+var dateFns$1 = require('date-fns');
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+var styled = require('styled-components');
+var cloneDeep = require('lodash/cloneDeep');
+var ReactDOM = require('react-dom');
+var reactResizeDetector = require('react-resize-detector');
+var Head = require('next/head');
+var gravatar = require('gravatar');
+var reactFontawesome = require('@fortawesome/react-fontawesome');
+var NextLink = require('next/link');
+var Tippy = require('@tippyjs/react');
+var reactHookForm = require('react-hook-form');
+var ReactDatePicker = require('react-datepicker');
+var reactDropzone = require('react-dropzone');
+var Dropzone$1 = require('react-dropzone-uploader');
+var draftJs = require('draft-js');
+var Select = require('react-select');
+var AsyncSelect = require('react-select/async');
+var dynamic = require('next/dynamic');
+var _range = require('lodash/range');
+var Highcharts = require('highcharts/highstock');
+var HighchartsReact = require('highcharts-react-official');
+var bar = require('@nivo/bar');
+var colors = require('@nivo/colors');
+var line = require('@nivo/line');
+var pie = require('@nivo/pie');
+var emojiMart = require('emoji-mart');
+var util$1 = require('util');
+var reactGoogleMaps = require('react-google-maps');
+var MarkerClusterer$1 = require('react-google-maps/lib/components/addons/MarkerClusterer');
+var reactNprogress = require('@tanem/react-nprogress');
+var chunk = require('lodash/chunk');
+var Router = require('next/router');
+var reactBigCalendar = require('react-big-calendar');
+var reactColor = require('react-color');
+var yup$1 = require('yup');
+var _filter = require('lodash/filter');
+var client = require('@apollo/client');
+var merge$1 = require('lodash/merge');
+var App = require('next/app');
+var TagManager = require('react-gtm-module');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
+var moment__default = /*#__PURE__*/_interopDefaultLegacy(moment);
+var bcrypt__default = /*#__PURE__*/_interopDefaultLegacy(bcrypt);
+var jwt__default = /*#__PURE__*/_interopDefaultLegacy(jwt);
+var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
+var cloneDeep__default = /*#__PURE__*/_interopDefaultLegacy(cloneDeep);
+var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
+var Head__default = /*#__PURE__*/_interopDefaultLegacy(Head);
+var gravatar__default = /*#__PURE__*/_interopDefaultLegacy(gravatar);
+var NextLink__default = /*#__PURE__*/_interopDefaultLegacy(NextLink);
+var Tippy__default = /*#__PURE__*/_interopDefaultLegacy(Tippy);
+var ReactDatePicker__default = /*#__PURE__*/_interopDefaultLegacy(ReactDatePicker);
+var Dropzone__default = /*#__PURE__*/_interopDefaultLegacy(Dropzone$1);
+var Select__default = /*#__PURE__*/_interopDefaultLegacy(Select);
+var AsyncSelect__default = /*#__PURE__*/_interopDefaultLegacy(AsyncSelect);
+var dynamic__default = /*#__PURE__*/_interopDefaultLegacy(dynamic);
+var _range__default = /*#__PURE__*/_interopDefaultLegacy(_range);
+var Highcharts__default = /*#__PURE__*/_interopDefaultLegacy(Highcharts);
+var HighchartsReact__default = /*#__PURE__*/_interopDefaultLegacy(HighchartsReact);
+var util__default = /*#__PURE__*/_interopDefaultLegacy(util$1);
+var chunk__default = /*#__PURE__*/_interopDefaultLegacy(chunk);
+var Router__default = /*#__PURE__*/_interopDefaultLegacy(Router);
+var _filter__default = /*#__PURE__*/_interopDefaultLegacy(_filter);
+var merge__default = /*#__PURE__*/_interopDefaultLegacy(merge$1);
+var App__default = /*#__PURE__*/_interopDefaultLegacy(App);
+var TagManager__default = /*#__PURE__*/_interopDefaultLegacy(TagManager);
 
 /**
  * Country
@@ -2588,23 +2637,23 @@ var useAxios = function useAxios(url, params, initialValue) {
     };
   }
 
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       apiConfig = _useContext.apiConfig;
 
-  var _useState = useState(_objectSpread(_objectSpread({}, initialValue), {}, {
+  var _useState = React.useState(_objectSpread(_objectSpread({}, initialValue), {}, {
     isLoading: true
   })),
       data = _useState[0],
       setData = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     var bearerToken = window.localStorage.getItem('bearerToken');
 
     if (bearerToken) {
       apiConfig.headers.Authorization = 'Bearer ' + bearerToken;
     }
 
-    var http = axios.create(apiConfig); // Mock requests
+    var http = axios__default['default'].create(apiConfig); // Mock requests
 
     var mocker = {};
     mocker.apply(http);
@@ -2670,14 +2719,14 @@ var useGeoCoder = function useGeoCoder(_ref) {
       language = _ref.language,
       region = _ref.region;
 
-  var _useState = useState({
+  var _useState = React.useState({
     lat: '',
     lng: ''
   }),
       coordinates = _useState[0],
       setCoordinates = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     var getCoordinates = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee() {
         var geo, coordinates;
@@ -2725,13 +2774,13 @@ var useGeoCoder = function useGeoCoder(_ref) {
  * @see https://overreacted.io/making-setinterval-declarative-with-react-hooks/
  */
 var useInterval = function useInterval(callback, delay) {
-  var savedCallback = useRef(); // Remember the latest callback.
+  var savedCallback = React.useRef(); // Remember the latest callback.
 
-  useEffect(function () {
+  React.useEffect(function () {
     savedCallback.current = callback;
   }, [callback]); // Set up the interval.
 
-  useEffect(function () {
+  React.useEffect(function () {
     function tick() {
       savedCallback.current();
     }
@@ -2768,7 +2817,7 @@ var useLocalStorage = function useLocalStorage(key, initialValue) {
   // Pass initial state function to useState so logic is only executed once
 
 
-  var _useState = useState(function () {
+  var _useState = React.useState(function () {
     try {
       // Get from local storage by key
       var item = window.localStorage.getItem(key); // Parse stored json or if none return initialValue
@@ -2806,8 +2855,8 @@ var useLocalStorage = function useLocalStorage(key, initialValue) {
  * Allows us os save the previous state variable, good for counters or loops
  */
 var usePrevious = function usePrevious(value) {
-  var ref = useRef();
-  useEffect(function () {
+  var ref = React.useRef();
+  React.useEffect(function () {
     ref.current = value;
   });
   return ref.current;
@@ -2827,20 +2876,20 @@ function useTimer() {
 
   var getTime = function getTime() {
     var diff = 0;
-    var now = endTime ? moment(endTime) : moment();
+    var now = endTime ? moment__default['default'](endTime) : moment__default['default']();
 
     if (typeof startTime === 'string') {
-      diff = now.diff() - moment(startTime).diff();
+      diff = now.diff() - moment__default['default'](startTime).diff();
     }
 
     return diff > -1 ? diff : 0;
   };
 
-  var _useState = useState(getTime()),
+  var _useState = React.useState(getTime()),
       time = _useState[0],
       setTime = _useState[1];
 
-  var _useState2 = useState(null),
+  var _useState2 = React.useState(null),
       timer = _useState2[0],
       setTimer = _useState2[1];
 
@@ -2858,7 +2907,7 @@ function useTimer() {
     setTimer(null);
   };
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (autoStart) start();
     return function () {
       stop();
@@ -2866,7 +2915,7 @@ function useTimer() {
   }, []);
 
   var getFormattedTime = function getFormattedTime() {
-    var temp = moment.duration(time);
+    var temp = moment__default['default'].duration(time);
     return {
       seconds: temp.seconds().toString().padStart(2, '0'),
       minutes: temp.minutes().toString().padStart(2, '0'),
@@ -2890,11 +2939,11 @@ function useTimer() {
  * @todo Translations are usually pushed into the provider not here!
  */
 var useTranslation = function useTranslation() {
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       defaultLocale = _useContext.defaultLocale,
       Translations = _useContext.Translations;
 
-  var _useContext2 = useContext(InternationalisationContext),
+  var _useContext2 = React.useContext(InternationalisationContext),
       locale = _useContext2.locale;
 
   var t = function t(key) {
@@ -2917,11 +2966,11 @@ var useTranslation = function useTranslation() {
  * birthDate: Instance of Date
  */
 var age = function age(birthDate) {
-  if (!birthDate || !isValid(birthDate)) {
+  if (!birthDate || !dateFns$1.isValid(birthDate)) {
     return 0;
   }
 
-  return differenceInYears(new Date(), birthDate);
+  return dateFns$1.differenceInYears(new Date(), birthDate);
 };
 
 var arrayOfKeys = function arrayOfKeys(obj) {
@@ -2951,23 +3000,23 @@ var arrayOfValues = function arrayOfValues(obj) {
  * Auth utils
  */
 var hashPassword = function hashPassword(password) {
-  return bcrypt.hashSync(password, 10);
+  return bcrypt__default['default'].hashSync(password, 10);
 };
 var validatePassword = function validatePassword(user, password) {
-  return bcrypt.compareSync(password, user.password);
+  return bcrypt__default['default'].compareSync(password, user.password);
 };
 var generateToken = function generateToken(data, config) {
-  return jwt.sign(data, config.secret, {
+  return jwt__default['default'].sign(data, config.secret, {
     expiresIn: '14d'
   });
 };
 var validateToken = function validateToken(token, config) {
-  return jwt.verify(token, config.key, {
+  return jwt__default['default'].verify(token, config.key, {
     algorithms: ['RS512']
   });
 };
 var decodeToken = function decodeToken(token) {
-  return jwt.decode(token);
+  return jwt__default['default'].decode(token);
 };
 var getUserFromToken = function getUserFromToken(headers, config) {
   if (!headers.Authorization) {
@@ -3191,11 +3240,11 @@ var convertImgUrlToDataURLviaCanvas = function convertImgUrlToDataURLviaCanvas(u
  * Format date
  */
 var dateFns = function dateFns(string) {
-  return format$2(new Date(string), 'LLL d, H:mm');
+  return dateFns$1.format(new Date(string), 'LLL d, H:mm');
 };
 var shortDate = function shortDate(string) {
   var date = Date.parse(string);
-  return !isNaN(date) ? format$2(date, 'MMM d') : string;
+  return !isNaN(date) ? dateFns$1.format(date, 'MMM d') : string;
 };
 
 /**
@@ -3227,7 +3276,7 @@ function debounce(callback, wait) {
  * Components - Suppliers - SSIP - Force Update
  */
 var useForceUpdate = function useForceUpdate() {
-  var _useState = useState(1),
+  var _useState = React.useState(1),
       value = _useState[0],
       setValue = _useState[1]; // integer state
 
@@ -3314,7 +3363,7 @@ var formatDateStandard = function formatDateStandard(date) {
   }
 };
 var formatRelativeTime = function formatRelativeTime(date) {
-  return moment(date).fromNow();
+  return moment__default['default'](date).fromNow();
 };
 
 /**
@@ -3384,7 +3433,7 @@ var MEDIA_QUERY = Object.keys(sizes).reduce(function (accumulator, label) {
   var emSize = sizes[label] / 16;
 
   accumulator[label] = function () {
-    return css(["@media (min-width:", "em){", "}"], emSize, css.apply(void 0, arguments));
+    return styled.css(["@media (min-width:", "em){", "}"], emSize, styled.css.apply(void 0, arguments));
   };
 
   return accumulator;
@@ -3393,7 +3442,7 @@ var MEDIA_QUERY_MAX = Object.keys(sizes).reduce(function (accumulator, label) {
   var emSize = sizes[label] / 16;
 
   accumulator[label] = function () {
-    return css(["@media (max-width:", "em){", "}"], emSize, css.apply(void 0, arguments));
+    return styled.css(["@media (max-width:", "em){", "}"], emSize, styled.css.apply(void 0, arguments));
   };
 
   return accumulator;
@@ -3423,7 +3472,7 @@ var mergeLocalData = function mergeLocalData(array, key) {
     });
   }
 
-  return cloneDeep(array);
+  return cloneDeep__default['default'](array);
 };
 var findByKey = function findByKey(array, key, value) {
   return array.find(function (a) {
@@ -4580,16 +4629,16 @@ if (process.env.NODE_ENV !== 'production') {
 }
 });
 
-var __jsx = React.createElement;
+var __jsx = React__default['default'].createElement;
 var ReactHolderJs = function ReactHolderJs(_ref) {
   var src = _ref.src,
       width = _ref.width,
       height = _ref.height,
       usePlaceholder = _ref.usePlaceholder;
-  useEffect(function () {
+  React.useEffect(function () {
     init();
   }, [src, usePlaceholder]);
-  var placeholderRef = useRef();
+  var placeholderRef = React.useRef();
 
   var init = function init() {
     if (!(typeof window !== 'undefined' && window.document)) {
@@ -4600,7 +4649,7 @@ var ReactHolderJs = function ReactHolderJs(_ref) {
       return;
     }
 
-    var node = ReactDOM.findDOMNode(placeholderRef.current); // require in here to prevent errors during server-side rendering
+    var node = ReactDOM__default['default'].findDOMNode(placeholderRef.current); // require in here to prevent errors during server-side rendering
 
     var Holder = require('holderjs');
 
@@ -4640,8 +4689,8 @@ ReactHolderJs.defaultProps = {
   usePlaceholder: false
 };
 
-var __jsx$1 = React.createElement;
-var ResizeDetector = withResizeDetector( /*#__PURE__*/memo(function (_ref) {
+var __jsx$1 = React__default['default'].createElement;
+var ResizeDetector = reactResizeDetector.withResizeDetector( /*#__PURE__*/React.memo(function (_ref) {
   var height = _ref.height,
       onResize = _ref.onResize,
       style = _ref.style,
@@ -4660,7 +4709,7 @@ var ResizeDetector = withResizeDetector( /*#__PURE__*/memo(function (_ref) {
   var nextWidth = _ref3.width;
   return prevWidth === nextWidth;
 }));
-var ResizeDetectorWrapper = styled.div.withConfig({
+var ResizeDetectorWrapper = styled__default['default'].div.withConfig({
   displayName: "resizeDetector__ResizeDetectorWrapper",
   componentId: "sc-1agzfum-0"
 })(["height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;"]);
@@ -4908,7 +4957,7 @@ function _templateObject() {
 
   return data;
 }
-var ThemeStyle = createGlobalStyle(_templateObject(), MEDIA_QUERY.desktop(_templateObject2()), function (props) {
+var ThemeStyle = styled.createGlobalStyle(_templateObject(), MEDIA_QUERY.desktop(_templateObject2()), function (props) {
   return props.theme.TYPOGRAPHY.fontColour;
 }, function (props) {
   return props.theme.TYPOGRAPHY.font;
@@ -5048,7 +5097,7 @@ var ERROR_STYLE = function ERROR_STYLE(_ref) {
   var theme = _ref.theme,
       isTyping = _ref.isTyping,
       withAddon = _ref.withAddon;
-  return css(["border-color:", ";border-image:initial;border-style:solid;border-left-width:", ";&:hover{border-color:", ";}&:focus{border-color:", ";}", ""], theme.COLOUR.danger, !withAddon && '0.25rem', !isTyping && theme.COLOUR.lightRed, theme.COLOUR.error, isTyping === true && css(["box-shadow:0px 0px 4px ", ";"], theme.COLOUR.fadeRed));
+  return styled.css(["border-color:", ";border-image:initial;border-style:solid;border-left-width:", ";&:hover{border-color:", ";}&:focus{border-color:", ";}", ""], theme.COLOUR.danger, !withAddon && '0.25rem', !isTyping && theme.COLOUR.lightRed, theme.COLOUR.error, isTyping === true && styled.css(["box-shadow:0px 0px 4px ", ";"], theme.COLOUR.fadeRed));
 };
 var COMMON_INPUT_STYLES = function COMMON_INPUT_STYLES(_ref2) {
   var disabled = _ref2.disabled,
@@ -5057,16 +5106,16 @@ var COMMON_INPUT_STYLES = function COMMON_INPUT_STYLES(_ref2) {
       readOnly = _ref2.readOnly,
       Required = _ref2.Required,
       theme = _ref2.theme;
-  return css(["background-clip:padding-box;background-color:", ";border:1px solid ", ";border-radius:", ";box-sizing:border-box;color:", ";display:block;font-size:0.75rem;", " ", " outline:none;padding:0 0.725rem;transition:border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;width:100%;&:hover{border-color:", ";}&:focus{border-color:", ";}::placeholder{color:", ";opacity:1;}", " ", ""], theme.COLOUR.white, theme.COLOUR.grey80, theme.FORM_ELEMENTS_STYLES.inputBorderRadius, theme.COLOUR.blackText, Required && css(["border-right-width:0.25rem;"]), isTyping === true && css(["box-shadow:0px 0px 4px ", ";"], theme.COLOUR.fadeBlue), !disabled && !readOnly && theme.COLOUR.lightBlue, function () {
+  return styled.css(["background-clip:padding-box;background-color:", ";border:1px solid ", ";border-radius:", ";box-sizing:border-box;color:", ";display:block;font-size:0.75rem;", " ", " outline:none;padding:0 0.725rem;transition:border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;width:100%;&:hover{border-color:", ";}&:focus{border-color:", ";}::placeholder{color:", ";opacity:1;}", " ", ""], theme.COLOUR.white, theme.COLOUR.grey80, theme.FORM_ELEMENTS_STYLES.inputBorderRadius, theme.COLOUR.blackText, Required && styled.css(["border-right-width:0.25rem;"]), isTyping === true && styled.css(["box-shadow:0px 0px 4px ", ";"], theme.COLOUR.fadeBlue), !disabled && !readOnly && theme.COLOUR.lightBlue, function () {
     if (!readOnly) {
       return errors ? theme.COLOUR.error : theme.COLOUR.primary;
     } else {
       return theme ? theme.COLOUR.darkGrey : '#CCCCCC';
     }
-  }(), theme ? theme.COLOUR.grey80 : '#cccccc', disabled && css(["background:", ";cursor:not-allowed;border-color:", ";"], theme.COLOUR.grey, function (_ref3) {
+  }(), theme ? theme.COLOUR.grey80 : '#cccccc', disabled && styled.css(["background:", ";cursor:not-allowed;border-color:", ";"], theme.COLOUR.grey, function (_ref3) {
     var theme = _ref3.theme;
     return theme ? theme.COLOUR.darkGrey : '#cccccc';
-  }), readOnly && css(["background-color:transparent;border-color:", ";border-width:1px;padding:0.5rem;"], function (_ref4) {
+  }), readOnly && styled.css(["background-color:transparent;border-color:", ";border-width:1px;padding:0.5rem;"], function (_ref4) {
     var theme = _ref4.theme;
     return theme ? theme.COLOUR.darkGrey : '#cccccc';
   }));
@@ -5745,7 +5794,7 @@ var Theme = {
   TYPOGRAPHY: TYPOGRAPHY
 };
 
-var __jsx$2 = React.createElement;
+var __jsx$2 = React__default['default'].createElement;
 var MetaHead = function MetaHead(_ref) {
   var canonical = _ref.canonical,
       brand = _ref.brand,
@@ -5753,7 +5802,7 @@ var MetaHead = function MetaHead(_ref) {
   var description = meta.description,
       path = meta.path,
       title = meta.title;
-  return __jsx$2(Head, null, __jsx$2("title", null, title, " | ", brand), __jsx$2("meta", {
+  return __jsx$2(Head__default['default'], null, __jsx$2("title", null, title, " | ", brand), __jsx$2("meta", {
     name: "description",
     content: description,
     key: "description"
@@ -5786,7 +5835,7 @@ MetaHead.propTypes = {
   meta: propTypes.object.isRequired
 };
 
-var __jsx$3 = React.createElement;
+var __jsx$3 = React__default['default'].createElement;
 var Address = function Address(_ref) {
   var county = _ref.county,
       country = _ref.country,
@@ -5828,7 +5877,7 @@ var AvatarDefaultProps = {
   size: 'lg'
 };
 
-var __jsx$4 = React.createElement;
+var __jsx$4 = React__default['default'].createElement;
 var Avatar = function Avatar(_ref) {
   var action = _ref.action,
       actionClick = _ref.actionClick,
@@ -5841,7 +5890,7 @@ var Avatar = function Avatar(_ref) {
       size = _ref.size,
       src = _ref.src,
       style = _ref.style;
-  var avatarSrc = src || gmail && gravatar.url(gmail, {
+  var avatarSrc = src || gmail && gravatar__default['default'].url(gmail, {
     d: 'identicon'
   });
   return __jsx$4(StyledAvatar, {
@@ -5857,14 +5906,14 @@ var Avatar = function Avatar(_ref) {
     onClick: actionClick
   }, action));
 };
-var StyledAction = styled.div.withConfig({
+var StyledAction = styled__default['default'].div.withConfig({
   displayName: "avatar__StyledAction",
   componentId: "sc-56ekci-0"
 })(["background-color:rgba(0,0,0,0.5);bottom:0;color:#fff;cursor:pointer;font-size:", ";left:0;padding:4px;position:absolute;opacity:0;right:0;transition:all 0.1s ease-in-out;text-align:center;visibility:hidden;width:100%;"], function (_ref2) {
   var theme = _ref2.theme;
   return theme.TYPOGRAPHY.fontSizeBase;
 });
-var StyledAvatar = styled.div.withConfig({
+var StyledAvatar = styled__default['default'].div.withConfig({
   displayName: "avatar__StyledAvatar",
   componentId: "sc-56ekci-1"
 })(["align-items:center;background:", ";border-radius:50%;box-sizing:border-box;color:", ";display:flex;justify-content:center;position:relative;overflow:hidden;object-fit:cover;", " ", " &:hover{", "{visibility:visible;opacity:1;}}"], function (_ref3) {
@@ -5881,7 +5930,7 @@ var StyledAvatar = styled.div.withConfig({
       theme = _ref5.theme;
   var sizeIndex = size && Object.values(SIZE).indexOf(size);
   var dimension = theme.TYPOGRAPHY.fontSizes[sizeIndex] + 24;
-  return css(["height:", "px;min-width:", "px;width:", "px;"], dimension, dimension, dimension);
+  return styled.css(["height:", "px;min-width:", "px;width:", "px;"], dimension, dimension, dimension);
 }, StyledAction);
 Avatar.propTypes = AvatarPropTypes;
 Avatar.defaultProps = AvatarDefaultProps;
@@ -6005,7 +6054,7 @@ var IconDefaultProps = {
   prefix: 'fas'
 };
 
-var __jsx$5 = React.createElement;
+var __jsx$5 = React__default['default'].createElement;
 var Icon = function Icon(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix,
@@ -6015,7 +6064,7 @@ var Icon = function Icon(_ref) {
     icon: [prefix, icon]
   }, props));
 };
-var StyledIcon = styled(FontAwesomeIcon).withConfig({
+var StyledIcon = styled__default['default'](reactFontawesome.FontAwesomeIcon).withConfig({
   displayName: "icon__StyledIcon",
   componentId: "sc-1fbcyge-0"
 })(["color:", ";", " ", ""], function (_ref2) {
@@ -6031,7 +6080,7 @@ var StyledIcon = styled(FontAwesomeIcon).withConfig({
 Icon.propTypes = IconPropTypes;
 Icon.defaultProps = IconDefaultProps;
 
-var __jsx$6 = React.createElement;
+var __jsx$6 = React__default['default'].createElement;
 var IconStacked = function IconStacked(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix;
@@ -6083,7 +6132,7 @@ var BadgeDefaultProps = {
   size: 'md'
 };
 
-var __jsx$7 = React.createElement;
+var __jsx$7 = React__default['default'].createElement;
 var Badge = function Badge(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -6108,7 +6157,7 @@ var Badge = function Badge(_ref) {
     prefix: iconPrefix
   }), content || children);
 };
-var StyledBadge = styled.a.withConfig({
+var StyledBadge = styled__default['default'].a.withConfig({
   displayName: "badge__StyledBadge",
   componentId: "sc-1yjw714-0"
 })(["", " ", " border:", ";border-radius:", ";color:", ";display:inline-block;line-height:1;margin:0 0.5em 0.5em 0;padding:", ";font-size:", ";text-align:center;vertical-align:baseline;white-space:nowrap;transition:all 0.1s ease-in-out;text-decoration:none;cursor:default;", " &:empty{display:none;}"], function (props) {
@@ -6137,30 +6186,30 @@ var StyledBadge = styled.a.withConfig({
   return theme.BADGE.FONT_SIZE[size];
 }, function (_ref7) {
   var href = _ref7.href;
-  return href && css(["&:hover{opacity:0.7;cursor:pointer;}"]);
+  return href && styled.css(["&:hover{opacity:0.7;cursor:pointer;}"]);
 });
-var StyledIcon$1 = styled(Icon).withConfig({
+var StyledIcon$1 = styled__default['default'](Icon).withConfig({
   displayName: "badge__StyledIcon",
   componentId: "sc-1yjw714-1"
 })(["margin-right:5px;"]);
 Badge.propTypes = BadgePropTypes;
 Badge.defaultProps = BadgeDefaultProps;
 
-var __jsx$8 = React.createElement;
+var __jsx$8 = React__default['default'].createElement;
 var Blockquote = function Blockquote(_ref) {
   var footer = _ref.footer,
       text = _ref.text;
   return __jsx$8(StyledBlockquote, null, __jsx$8(StyledText, null, text), footer && __jsx$8(StyledFooter, null, footer));
 };
-var StyledBlockquote = styled.blockquote.withConfig({
+var StyledBlockquote = styled__default['default'].blockquote.withConfig({
   displayName: "blockquote__StyledBlockquote",
   componentId: "sc-1l9ajin-0"
 })(["border-left:5px solid rgba(240,0,0,0.5);margin:1rem 0;padding:10px 20px;"]);
-var StyledText = styled.h1.withConfig({
+var StyledText = styled__default['default'].h1.withConfig({
   displayName: "blockquote__StyledText",
   componentId: "sc-1l9ajin-1"
 })(["color:#000;font-size:2rem;font-weight:normal;margin:0;"]);
-var StyledFooter = styled.footer.withConfig({
+var StyledFooter = styled__default['default'].footer.withConfig({
   displayName: "blockquote__StyledFooter",
   componentId: "sc-1l9ajin-2"
 })(["font-size:1rem;&::before{content:'\\2014 \\A0';}"]);
@@ -6200,8 +6249,8 @@ var ButtonDefaultProps = {
   type: 'button'
 };
 
-var __jsx$9 = React.createElement;
-var Button = /*#__PURE__*/forwardRef(function (_ref, ref) {
+var __jsx$9 = React__default['default'].createElement;
+var Button = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var children = _ref.children,
       content = _ref.content,
       context = _ref.context,
@@ -6212,7 +6261,7 @@ var Button = /*#__PURE__*/forwardRef(function (_ref, ref) {
       outline = _ref.outline,
       props = _objectWithoutProperties(_ref, ["children", "content", "context", "endIcon", "endIconProps", "startIcon", "startIconProps", "outline"]);
 
-  var theme = useTheme();
+  var theme = styled.useTheme();
   var textContext = getTextContext(context, outline);
   var text = children || content;
   return __jsx$9(StyledButton, _extends({
@@ -6244,7 +6293,7 @@ var getTextContext = function getTextContext(context, outline, theme) {
   return 'white';
 };
 
-var StyledButton = styled.button.withConfig({
+var StyledButton = styled__default['default'].button.withConfig({
   displayName: "button__StyledButton",
   componentId: "n5qq37-0"
 })(["", " align-items:center;border:", ";border-radius:.25rem;box-sizing:border-box;color:", ";cursor:pointer;display:", ";font-size:14px;height:3rem;justify-content:center;line-height:100%;outline:none;overflow:visible;text-decoration:none;text-transform:none;user-select:none;vertical-align:middle;white-space:nowrap;margin:", ";padding:", ";width:", ";", " ", " ", " ", " & + &{margin-top:", ";}&:hover{background-color:", ";border-color:", ";color:", ";}transition:all 0.1s ease-in-out;", " ", " ", " ", ""], function (props) {
@@ -6274,20 +6323,20 @@ var StyledButton = styled.button.withConfig({
   return block ? '100%' : 'initial';
 }, function (_ref8) {
   var disabled = _ref8.disabled;
-  return disabled && css(["cursor:not-allowed;opacity:0.2;pointer-events:none;"]);
+  return disabled && styled.css(["cursor:not-allowed;opacity:0.2;pointer-events:none;"]);
 }, function (_ref9) {
   var size = _ref9.size,
       theme = _ref9.theme;
-  return size === 'xs' && css(["font-size:12px;padding:", ";height:24px;"], theme.SPACING(1, 2));
+  return size === 'xs' && styled.css(["font-size:12px;padding:", ";height:24px;"], theme.SPACING(1, 2));
 }, function (_ref10) {
   var size = _ref10.size;
-  return size === 'sm' && css(["font-size:12px;padding:", ";height:32px;"], function (_ref11) {
+  return size === 'sm' && styled.css(["font-size:12px;padding:", ";height:32px;"], function (_ref11) {
     var theme = _ref11.theme;
     return theme.SPACING(2, 4);
   });
 }, function (_ref12) {
   var size = _ref12.size;
-  return size === 'lg' && css(["font-size:16px;padding:", ";height:56px;"], function (_ref13) {
+  return size === 'lg' && styled.css(["font-size:16px;padding:", ";height:56px;"], function (_ref13) {
     var theme = _ref13.theme;
     return theme.SPACING(4, 8);
   });
@@ -6314,7 +6363,7 @@ var StyledButton = styled.button.withConfig({
 }, function (theme) {
   return SPACER(theme);
 });
-var StyledContent = styled.div.withConfig({
+var StyledContent = styled__default['default'].div.withConfig({
   displayName: "button__StyledContent",
   componentId: "n5qq37-1"
 })([":not(:first-child){margin-left:", ";}:not(:last-child){margin-right:", ";}"], function (_ref18) {
@@ -6327,7 +6376,7 @@ var StyledContent = styled.div.withConfig({
 Button.propTypes = ButtonPropTypes;
 Button.defaultProps = ButtonDefaultProps;
 
-var __jsx$a = React.createElement;
+var __jsx$a = React__default['default'].createElement;
 var ButtonToolbar = function ButtonToolbar(_ref) {
   var align = _ref.align,
       children = _ref.children;
@@ -6340,14 +6389,14 @@ var ButtonToolbar = function ButtonToolbar(_ref) {
     "aria-label": "First group"
   }, children));
 };
-var StyledToolbar = styled.div.withConfig({
+var StyledToolbar = styled__default['default'].div.withConfig({
   displayName: "toolbar__StyledToolbar",
   componentId: "sc-14iq22n-0"
 })(["display:flex;flex-wrap:wrap;justify-content:", ";"], function (_ref2) {
   var align = _ref2.align;
   return align;
 });
-var StyledGroup = styled.div.withConfig({
+var StyledGroup = styled__default['default'].div.withConfig({
   displayName: "toolbar__StyledGroup",
   componentId: "sc-14iq22n-1"
 })(["display:inline-flex;position:relative;vertical-align:middle;a:hover{color:white;}a:not(:last-child),button:not(:last-child){border-bottom-right-radius:0;border-right:1px solid ", ";border-top-right-radius:0;}a:not(:first-child),button:not(:first-child),a:not(:first-child) button{border-top-left-radius:0;border-bottom-left-radius:0;margin-left:0;}a:not(:last-child) button{border-bottom-right-radius:0;border-right:1px solid ", ";border-top-right-radius:0;}"], function (_ref3) {
@@ -6365,7 +6414,7 @@ ButtonToolbar.defaultProps = {
   align: 'center'
 };
 
-var __jsx$b = React.createElement;
+var __jsx$b = React__default['default'].createElement;
 var Close = function Close(_ref) {
   var className = _ref.className,
       click = _ref.click,
@@ -6383,7 +6432,7 @@ var Close = function Close(_ref) {
     prefix: prefix
   }));
 };
-var StyledButton$1 = styled(Button).withConfig({
+var StyledButton$1 = styled__default['default'](Button).withConfig({
   displayName: "close__StyledButton",
   componentId: "bk2anc-0"
 })(["background-color:transparent;border:0;color:", ";cursor:pointer;float:right;font-size:1.5rem;height:auto;line-height:0;margin:0;padding:0;text-shadow:0 1px 0 #fff;z-index:10000;&:hover{background-color:transparent;color:#000;opacity:0.8;text-decoration:none;}"], function (_ref2) {
@@ -6404,7 +6453,7 @@ Close.defaultProps = {
   prefix: 'fas'
 };
 
-var __jsx$c = React.createElement;
+var __jsx$c = React__default['default'].createElement;
 var Date$1 = function Date(_ref) {
   var date = _ref.date,
       size = _ref.size;
@@ -6415,7 +6464,7 @@ var Date$1 = function Date(_ref) {
     pubdate: "pubdate"
   }, date);
 };
-var StyledTime = styled.time.withConfig({
+var StyledTime = styled__default['default'].time.withConfig({
   displayName: "date__StyledTime",
   componentId: "sc-1t9t69m-0"
 })(["", ""], function (_ref2) {
@@ -6423,7 +6472,7 @@ var StyledTime = styled.time.withConfig({
 
   var size = _ref2.size,
       theme = _ref2.theme;
-  return css(["font-size:", ";line-height:", ";font-family:", ";color:", ";"], (_theme$TEXT_STYLE$FON = theme.TEXT_STYLE.FONT_SIZE[size]) !== null && _theme$TEXT_STYLE$FON !== void 0 ? _theme$TEXT_STYLE$FON : '1rem', (_theme$TEXT_STYLE$LIN = theme.TEXT_STYLE.LINE_HEIGHT[size]) !== null && _theme$TEXT_STYLE$LIN !== void 0 ? _theme$TEXT_STYLE$LIN : '1rem', (_ref3 = (_theme$TEXT_STYLE$FON2 = theme.TEXT_STYLE.FONT_FAMILY[size]) !== null && _theme$TEXT_STYLE$FON2 !== void 0 ? _theme$TEXT_STYLE$FON2 : theme.TEXT_STYLE.FONT_FAMILY["default"]) !== null && _ref3 !== void 0 ? _ref3 : 'sans-serif', theme.COLOUR.black);
+  return styled.css(["font-size:", ";line-height:", ";font-family:", ";color:", ";"], (_theme$TEXT_STYLE$FON = theme.TEXT_STYLE.FONT_SIZE[size]) !== null && _theme$TEXT_STYLE$FON !== void 0 ? _theme$TEXT_STYLE$FON : '1rem', (_theme$TEXT_STYLE$LIN = theme.TEXT_STYLE.LINE_HEIGHT[size]) !== null && _theme$TEXT_STYLE$LIN !== void 0 ? _theme$TEXT_STYLE$LIN : '1rem', (_ref3 = (_theme$TEXT_STYLE$FON2 = theme.TEXT_STYLE.FONT_FAMILY[size]) !== null && _theme$TEXT_STYLE$FON2 !== void 0 ? _theme$TEXT_STYLE$FON2 : theme.TEXT_STYLE.FONT_FAMILY["default"]) !== null && _ref3 !== void 0 ? _ref3 : 'sans-serif', theme.COLOUR.black);
 });
 Date$1.propTypes = {
   date: propTypes.string.isRequired
@@ -6449,7 +6498,7 @@ var DetailsDefaultProps = {
   open: false
 };
 
-var __jsx$d = React.createElement;
+var __jsx$d = React__default['default'].createElement;
 var Details = function Details(_ref) {
   var children = _ref.children,
       context = _ref.context,
@@ -6472,11 +6521,11 @@ var Details = function Details(_ref) {
     style: style
   }, children));
 };
-var ActionsWrapper = styled.div.withConfig({
+var ActionsWrapper = styled__default['default'].div.withConfig({
   displayName: "details__ActionsWrapper",
   componentId: "sc-1tw1laa-0"
 })(["float:right;width:fit-content;"]);
-var StyledDetails = styled.details.withConfig({
+var StyledDetails = styled__default['default'].details.withConfig({
   displayName: "details__StyledDetails",
   componentId: "sc-1tw1laa-1"
 })(["background-color:#fff;border:1px solid #eee;border-bottom:1px solid ", ";box-shadow:rgba(45,62,80,0.12) 0 1px 5px 0;margin-bottom:0.5rem;"], function (_ref2) {
@@ -6484,26 +6533,26 @@ var StyledDetails = styled.details.withConfig({
       theme = _ref2.theme;
   return theme.COLOUR[context];
 });
-var StyledSummary = styled.summary.withConfig({
+var StyledSummary = styled__default['default'].summary.withConfig({
   displayName: "details__StyledSummary",
   componentId: "sc-1tw1laa-2"
 })(["cursor:pointer;font-weight:bold;outline:none;padding:1rem;position:relative;"]);
-var StyledButton$2 = styled(Button).withConfig({
+var StyledButton$2 = styled__default['default'](Button).withConfig({
   displayName: "details__StyledButton",
   componentId: "sc-1tw1laa-3"
 })(["float:right;"]);
-var StyledBody = styled.div.withConfig({
+var StyledBody = styled__default['default'].div.withConfig({
   displayName: "details__StyledBody",
   componentId: "sc-1tw1laa-4"
 })(["font-size:1rem;padding:0 1rem 1rem;"]);
 Details.propTypes = DetailsPropTypes;
 Details.defaultProps = DetailsDefaultProps;
 
-var __jsx$e = React.createElement;
+var __jsx$e = React__default['default'].createElement;
 var DetailsText = function DetailsText(_ref) {
   var content = _ref.content,
       text = _ref.text;
-  return __jsx$e(React.Fragment, null, __jsx$e(Space, {
+  return __jsx$e(React__default['default'].Fragment, null, __jsx$e(Space, {
     marginBottom: "sm"
   }), __jsx$e(Text, {
     content: content,
@@ -6530,7 +6579,7 @@ var DividerDefaultProps = {
 /**
  * Divider
  */
-var Divider = styled.hr.withConfig({
+var Divider = styled__default['default'].hr.withConfig({
   displayName: "divider__Divider",
   componentId: "sc-1896imx-0"
 })(["border:none;height:", "px;flex-shrink:0;width:100%;", " ", " margin:", ";", ""], function (_ref) {
@@ -6540,7 +6589,7 @@ var Divider = styled.hr.withConfig({
   return BACKGROUND(props);
 }, function (_ref2) {
   var vertical = _ref2.vertical;
-  return vertical && css(["width:", "px;height:100%;"], function (_ref3) {
+  return vertical && styled.css(["width:", "px;height:100%;"], function (_ref3) {
     var thickness = _ref3.thickness;
     return thickness;
   });
@@ -6572,12 +6621,12 @@ var Divider = styled.hr.withConfig({
   return theme.SPACING(8, 0);
 }, function (_ref5) {
   var flexItem = _ref5.flexItem;
-  return flexItem && css(["height:auto;align-self:stretch;"]);
+  return flexItem && styled.css(["height:auto;align-self:stretch;"]);
 });
 Divider.propTypes = DividerPropTypes;
 Divider.defaultProps = DividerDefaultProps;
 
-var __jsx$f = React.createElement;
+var __jsx$f = React__default['default'].createElement;
 var FigureCaption = function FigureCaption(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -6588,7 +6637,7 @@ var FigureCaption = function FigureCaption(_ref) {
     style: style
   });
 };
-var StyledCaption = styled.figcaption.withConfig({
+var StyledCaption = styled__default['default'].figcaption.withConfig({
   displayName: "caption__StyledCaption",
   componentId: "ounis6-0"
 })(["background-color:", ";border:1px solid ", ";border-radius:0 0 0.25rem 0.25rem;font-size:90%;margin-top:-2px;padding:0.5rem;"], function (_ref2) {
@@ -6607,7 +6656,7 @@ FigureCaption.propTypes = {
 /**
  * Image
  */
-var Image$1 = styled.img.attrs(function (props) {
+var Image$1 = styled__default['default'].img.attrs(function (props) {
   return {
     itemProp: 'contentUrl'
   };
@@ -6616,20 +6665,20 @@ var Image$1 = styled.img.attrs(function (props) {
   componentId: "ainnks-0"
 })(["", " ", " ", " ", " ", ""], function (_ref) {
   var cover = _ref.cover;
-  return cover && css(["height:150px;object-fit:fill;width:100%;"]);
+  return cover && styled.css(["height:150px;object-fit:fill;width:100%;"]);
 }, function (_ref2) {
   var fluid = _ref2.fluid;
-  return fluid && css(["height:auto;max-width:100%;"]);
+  return fluid && styled.css(["height:auto;max-width:100%;"]);
 }, function (_ref3) {
   var rounded = _ref3.rounded;
-  return rounded && css(["border-radius:0.25rem;"]);
+  return rounded && styled.css(["border-radius:0.25rem;"]);
 }, function (_ref4) {
   var roundedCircle = _ref4.roundedCircle;
-  return roundedCircle && css(["border-radius:50%;"]);
+  return roundedCircle && styled.css(["border-radius:50%;"]);
 }, function (_ref5) {
   var thumbnail = _ref5.thumbnail,
       theme = _ref5.theme;
-  return thumbnail && css(["background-color:", ";border:1px solid ", ";border-radius:0.25rem;height:auto;max-width:100%;padding:0.65rem;"], theme.COLOUR.light, theme.COLOUR.dark);
+  return thumbnail && styled.css(["background-color:", ";border:1px solid ", ";border-radius:0.25rem;height:auto;max-width:100%;padding:0.65rem;"], theme.COLOUR.light, theme.COLOUR.dark);
 });
 Image$1.propTypes = {
   alt: propTypes.string.isRequired,
@@ -6650,7 +6699,7 @@ Image$1.defaultProps = {
   thumbnail: false
 };
 
-var __jsx$g = React.createElement;
+var __jsx$g = React__default['default'].createElement;
 var FigureImage = function FigureImage(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -6661,7 +6710,7 @@ var FigureImage = function FigureImage(_ref) {
     style: style
   }, props));
 };
-var StyledImage = styled(Image$1).withConfig({
+var StyledImage = styled__default['default'](Image$1).withConfig({
   displayName: "image__StyledImage",
   componentId: "sc-2jm9e0-0"
 })(["display:block;line-height:1;"]);
@@ -6670,7 +6719,7 @@ FigureImage.propTypes = {
   style: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 
-var __jsx$h = React.createElement;
+var __jsx$h = React__default['default'].createElement;
 
 var Figure = function Figure(_ref) {
   var children = _ref.children,
@@ -6689,7 +6738,7 @@ var Figure = function Figure(_ref) {
 };
 
 var slantStyles = "\n  &:after {\n    background-color: #fff;\n    bottom: 0;\n    content: '';\n    display: block;\n    height: 25%;\n    left: 0;\n    position: absolute;\n    right: 0;\n    transform: skewy(6deg);\n    transform-origin: 0 100%;\n    width: 100%;\n    z-index: 1;\n  }\n";
-var StyledFigure = styled.figure.withConfig({
+var StyledFigure = styled__default['default'].figure.withConfig({
   displayName: "figure__StyledFigure",
   componentId: "sc-7qqof-0"
 })(["display:inline-block;border:0;margin:0 0 1rem;", ""], function (props) {
@@ -6729,7 +6778,7 @@ var GoogleEvent = function GoogleEvent(_ref) {
   });
 };
 
-var __jsx$i = React.createElement;
+var __jsx$i = React__default['default'].createElement;
 var Column = function Column(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -6762,7 +6811,7 @@ var Column = function Column(_ref) {
     ref: columnRef
   });
 };
-var StyledColumn = styled.div.withConfig({
+var StyledColumn = styled__default['default'].div.withConfig({
   displayName: "Column__StyledColumn",
   componentId: "sc-135xo8w-0"
 })(["box-sizing:border-box;height:100%;margin-left:unset;min-height:1px;position:relative;padding-left:", "px;padding-right:", "px;width:100%;@media (min-width:0){flex:0 0 ", "%;margin-left:", "%;max-width:", "%;}@media (min-width:", "px){flex:0 0 ", "%;margin-left:", "%;max-width:", "%;}@media (min-width:", "px){flex:0 0 ", "%;margin-left:", "%;max-width:", "%;}@media (min-width:", "px){flex:0 0 ", "%;margin-left:", "%;max-width:", "%;}"], function (_ref2) {
@@ -6840,7 +6889,7 @@ Column.defaultProps = {
   debug: false
 };
 
-var __jsx$j = React.createElement;
+var __jsx$j = React__default['default'].createElement;
 var Container = function Container(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -6853,7 +6902,7 @@ var Container = function Container(_ref) {
     style: style
   });
 };
-var StyledGrid = styled.div.withConfig({
+var StyledGrid = styled__default['default'].div.withConfig({
   displayName: "Container__StyledGrid",
   componentId: "sc-1efnbom-0"
 })(["box-sizing:border-box;margin-left:auto;margin-right:auto;position:relative;width:", ";", " ", ""], function (_ref2) {
@@ -6861,10 +6910,10 @@ var StyledGrid = styled.div.withConfig({
   return fluid && '100%';
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return css(["padding-left:", "px;padding-right:", "px;"], theme.GRID.gutterWidth / 2, theme.GRID.gutterWidth / 2);
+  return styled.css(["padding-left:", "px;padding-right:", "px;"], theme.GRID.gutterWidth / 2, theme.GRID.gutterWidth / 2);
 }, function (_ref4) {
   var fluid = _ref4.fluid;
-  return !fluid && css(["@media (min-width:", "px){max-width:", "px;}@media (min-width:", "px){max-width:", "px;}@media (min-width:", "px){max-width:", "px;}@media (min-width:", "px){max-width:", "px;}"], function (_ref5) {
+  return !fluid && styled.css(["@media (min-width:", "px){max-width:", "px;}@media (min-width:", "px){max-width:", "px;}@media (min-width:", "px){max-width:", "px;}@media (min-width:", "px){max-width:", "px;}"], function (_ref5) {
     var theme = _ref5.theme;
     return theme.GRID.breakpoints.sm;
   }, function (_ref6) {
@@ -6901,7 +6950,7 @@ Container.defaultProps = {
   style: {}
 };
 
-var __jsx$k = React.createElement;
+var __jsx$k = React__default['default'].createElement;
 var Row = function Row(_ref) {
   var align = _ref.align,
       children = _ref.children,
@@ -6920,7 +6969,7 @@ var Row = function Row(_ref) {
     style: style
   });
 };
-var StyledRow = styled.div.withConfig({
+var StyledRow = styled__default['default'].div.withConfig({
   displayName: "Row__StyledRow",
   componentId: "sc-1oayzma-0"
 })(["display:flex;flex-grow:0;flex-shrink:0;flex-wrap:", ";", " ", " ", " ", ""], function (_ref2) {
@@ -6928,17 +6977,17 @@ var StyledRow = styled.div.withConfig({
   return noWrap ? 'nowrap' : 'wrap';
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return css(["margin-left:-", "px;margin-right:-", "px;"], theme.GRID.gutterWidth / 2, theme.GRID.gutterWidth / 2);
+  return styled.css(["margin-left:-", "px;margin-right:-", "px;"], theme.GRID.gutterWidth / 2, theme.GRID.gutterWidth / 2);
 }, function (_ref4) {
   var noGutter = _ref4.noGutter,
       theme = _ref4.theme;
-  return noGutter && css(["margin-left:-", "px;margin-right:-", "px;"], theme.GRID.gutterWidth, theme.GRID.gutterWidth);
+  return noGutter && styled.css(["margin-left:-", "px;margin-right:-", "px;"], theme.GRID.gutterWidth, theme.GRID.gutterWidth);
 }, function (_ref5) {
   var align = _ref5.align;
-  return css(["align-items:", ";"], align === 'start' && 'flex-start' || align === 'end' && 'flex-end' || align === 'center' && 'center' || align === 'stretch' && 'stretch' || align === 'baseline' && 'baseline');
+  return styled.css(["align-items:", ";"], align === 'start' && 'flex-start' || align === 'end' && 'flex-end' || align === 'center' && 'center' || align === 'stretch' && 'stretch' || align === 'baseline' && 'baseline');
 }, function (_ref6) {
   var justify = _ref6.justify;
-  return css(["justify-content:", ";"], justify === 'start' && 'flex-start' || justify === 'end' && 'flex-end' || justify === 'between' && 'space-between' || justify === 'around' && 'space-around' || justify === 'center' && 'center' || justify === 'initial' && 'initial' || justify === 'inherit' && 'inherit');
+  return styled.css(["justify-content:", ";"], justify === 'start' && 'flex-start' || justify === 'end' && 'flex-end' || justify === 'between' && 'space-between' || justify === 'around' && 'space-around' || justify === 'center' && 'center' || justify === 'initial' && 'initial' || justify === 'inherit' && 'inherit');
 });
 Row.propTypes = {
   align: propTypes.oneOf(['baseline', 'start', 'center', 'end', 'stretch']),
@@ -6977,7 +7026,7 @@ var HeadingDefaultProps = {
   tag: 'h1'
 };
 
-var __jsx$l = React.createElement;
+var __jsx$l = React__default['default'].createElement;
 var Heading = function Heading(_ref) {
   var className = _ref.className,
       content = _ref.content,
@@ -6999,7 +7048,7 @@ var Heading = function Heading(_ref) {
     dangerouslySetInnerHTML: content
   }) : content);
 };
-var StyledHeading = styled.span.withConfig({
+var StyledHeading = styled__default['default'].span.withConfig({
   displayName: "heading__StyledHeading",
   componentId: "sc-5ag1xp-0"
 })(["font-weight:normal;", " position:relative;", " ", " ", ""], function (props) {
@@ -7007,13 +7056,13 @@ var StyledHeading = styled.span.withConfig({
 }, function (_ref2) {
   var as = _ref2.as,
       theme = _ref2.theme;
-  return css(["font-family:", ";font-size:", ";line-height:", ";text-transform:", ";margin:0;"], theme.HEADINGS[as].fontFamily, theme.HEADINGS[as].fontSize, theme.HEADINGS[as].lineHeight, theme.HEADINGS[as].textTransform);
+  return styled.css(["font-family:", ";font-size:", ";line-height:", ";text-transform:", ";margin:0;"], theme.HEADINGS[as].fontFamily, theme.HEADINGS[as].fontSize, theme.HEADINGS[as].lineHeight, theme.HEADINGS[as].textTransform);
 }, function (_ref3) {
   var ellipsis = _ref3.ellipsis;
-  return ellipsis && css(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"]);
+  return ellipsis && styled.css(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"]);
 }, function (_ref4) {
   var noWrap = _ref4.noWrap;
-  return noWrap && css(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"]);
+  return noWrap && styled.css(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"]);
 });
 Heading.propTypes = HeadingPropTypes;
 Heading.defaultProps = HeadingDefaultProps;
@@ -7034,7 +7083,7 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-var __jsx$m = React.createElement;
+var __jsx$m = React__default['default'].createElement;
 var Link = function Link(_ref) {
   var border = _ref.border,
       children = _ref.children,
@@ -7050,7 +7099,7 @@ var Link = function Link(_ref) {
   var obj = _typeof(to) === 'object' ? to : {
     href: to
   };
-  return !validatorUri(to) ? __jsx$m(NextLink, _extends({}, obj, {
+  return !validatorUri(to) ? __jsx$m(NextLink__default['default'], _extends({}, obj, {
     passHref: passHref,
     replace: replace,
     scroll: scroll,
@@ -7069,7 +7118,7 @@ var Link = function Link(_ref) {
     target: target
   }, children);
 };
-var StyledLink = styled.a.withConfig({
+var StyledLink = styled__default['default'].a.withConfig({
   displayName: "link__StyledLink",
   componentId: "sc-1k7fazj-0"
 })(["background-color:transparent;border-bottom:", ";color:", ";display:", ";cursor:pointer;max-width:100%;outline:none;text-decoration:none;&:hover,&.link--hover{border-bottom:", ";color:", ";}&:active,&.link--active{border-bottom:", ";color:", ";}&:visited,&.link--visited{border-bottom:", ";color:", ";}"], function (_ref2) {
@@ -7128,7 +7177,7 @@ Link.defaultProps = {
   shallow: false
 };
 
-var __jsx$n = React.createElement;
+var __jsx$n = React__default['default'].createElement;
 var List = function List(_ref) {
   var border = _ref.border,
       children = _ref.children,
@@ -7140,8 +7189,8 @@ var List = function List(_ref) {
       unstyled = _ref.unstyled;
 
   var renderListItems = function renderListItems() {
-    return React.Children.map(children, function (child) {
-      return /*#__PURE__*/React.cloneElement(child, {
+    return React__default['default'].Children.map(children, function (child) {
+      return /*#__PURE__*/React__default['default'].cloneElement(child, {
         border: border,
         flush: flush,
         group: group
@@ -7160,10 +7209,10 @@ var List = function List(_ref) {
     unstyled: unstyled
   }, renderListItems());
 };
-var groupStyles = css(["margin:-1px;"]);
-var inlineStyles = css(["align-items:center;display:inline-flex;"]);
-var unstyledStyles = css(["list-style:none;margin:0;padding-left:0;"]);
-var StyledList = styled.ul.withConfig({
+var groupStyles = styled.css(["margin:-1px;"]);
+var inlineStyles = styled.css(["align-items:center;display:inline-flex;"]);
+var unstyledStyles = styled.css(["list-style:none;margin:0;padding-left:0;"]);
+var StyledList = styled__default['default'].ul.withConfig({
   displayName: "list__StyledList",
   componentId: "nv3dze-0"
 })(["", " ", " ", ""], function (_ref2) {
@@ -7196,7 +7245,7 @@ List.defaultProps = {
   unstyled: false
 };
 
-var __jsx$o = React.createElement;
+var __jsx$o = React__default['default'].createElement;
 var ListItem = function ListItem(_ref) {
   var border = _ref.border,
       children = _ref.children,
@@ -7219,10 +7268,10 @@ var ListItem = function ListItem(_ref) {
     size: "2x"
   }), children);
 };
-var borderStyles = css(["border:1px solid rgba(0,0,0,0.125);"]);
-var flushStyles = css(["border-right:0;border-left:0;border-radius:0;&:first-child{border-top:0;}&:last-child{border-bottom:0;margin-bottom:0;}"]);
-var groupStyles$1 = css(["margin-bottom:-1px;padding:0.75rem 1.25rem;"]);
-var StyledItem = styled.li.withConfig({
+var borderStyles = styled.css(["border:1px solid rgba(0,0,0,0.125);"]);
+var flushStyles = styled.css(["border-right:0;border-left:0;border-radius:0;&:first-child{border-top:0;}&:last-child{border-bottom:0;margin-bottom:0;}"]);
+var groupStyles$1 = styled.css(["margin-bottom:-1px;padding:0.75rem 1.25rem;"]);
+var StyledItem = styled__default['default'].li.withConfig({
   displayName: "listItem__StyledItem",
   componentId: "sc-1glmc6k-0"
 })(["position:relative;", " ", " ", ""], function (_ref2) {
@@ -7238,7 +7287,7 @@ var StyledItem = styled.li.withConfig({
   var flush = _ref4.flush;
   return flush && flushStyles;
 });
-var StyledIcon$2 = styled(Icon).withConfig({
+var StyledIcon$2 = styled__default['default'](Icon).withConfig({
   displayName: "listItem__StyledIcon",
   componentId: "sc-1glmc6k-1"
 })(["color:", ";float:left;margin:0.1rem 1rem 0 0;"], function (_ref5) {
@@ -7257,7 +7306,7 @@ ListItem.propTypes = {
 /**
  * Progress
  */
-var Progress = styled.div.withConfig({
+var Progress = styled__default['default'].div.withConfig({
   displayName: "progress__Progress",
   componentId: "sc-1fk70jh-0"
 })(["background-color:", ";border-radius:", ";display:flex;font-size:", ";height:", ";overflow:hidden;"], function (_ref) {
@@ -7283,7 +7332,7 @@ Progress.defaultProps = {
   size: 'md'
 };
 
-var __jsx$p = React.createElement;
+var __jsx$p = React__default['default'].createElement;
 var ProgressBar = function ProgressBar(props) {
   return __jsx$p(ProgressBarDiv, _extends({
     "aria-valuenow": props.now,
@@ -7315,15 +7364,15 @@ ProgressBar.defaultProps = {
 /**
  * Progress - Bar Div
  */
-var ProgressBarStripesAnimation = keyframes(["0%{background-position:1rem 0;}100%{background-position:0 0;}"]);
-var ProgressBarDiv = styled.div.withConfig({
+var ProgressBarStripesAnimation = styled.keyframes(["0%{background-position:1rem 0;}100%{background-position:0 0;}"]);
+var ProgressBarDiv = styled__default['default'].div.withConfig({
   displayName: "progressBarDiv__ProgressBarDiv",
   componentId: "sc-1e0t0py-0"
 })(["", " animation:", ";background-image:", ";background-size:", ";color:", ";display:flex;flex-direction:column;justify-content:center;overflow:hidden;text-align:center;transition:", ";white-space:nowrap;width:", ";"], function (props) {
   return BACKGROUND(props);
 }, function (_ref) {
   var animated = _ref.animated;
-  return animated ? css(["", " 1s linear infinite"], ProgressBarStripesAnimation) : 'none 0 ease 0 1 normal none running';
+  return animated ? styled.css(["", " 1s linear infinite"], ProgressBarStripesAnimation) : 'none 0 ease 0 1 normal none running';
 }, function (_ref2) {
   var striped = _ref2.striped,
       bgImage = _ref2.theme.PROGRESSBAR.bgImage;
@@ -7393,13 +7442,13 @@ var spaceStyler = function spaceStyler(properties) {
   });
 
   if (counter === 0) {
-    return css(["margin-bottom:", ";", ""], sizes$1.mdSize, MEDIA_QUERY.desktop(_templateObject2$1(), sizes$1.mdSize));
+    return styled.css(["margin-bottom:", ";", ""], sizes$1.mdSize, MEDIA_QUERY.desktop(_templateObject2$1(), sizes$1.mdSize));
   }
 
-  return css(["", ""], stl);
+  return styled.css(["", ""], stl);
 };
 
-var __jsx$q = React.createElement;
+var __jsx$q = React__default['default'].createElement;
 var Space = function Space(_ref) {
   var children = _ref.children,
       content = _ref.content,
@@ -7434,7 +7483,7 @@ var Space = function Space(_ref) {
     paddingLeft: paddingLeft
   }, content || children);
 };
-var StyledSpace = styled.div.withConfig({
+var StyledSpace = styled__default['default'].div.withConfig({
   displayName: "space__StyledSpace",
   componentId: "sc-1otqdhh-0"
 })(["margin:0;padding:0;", ""], function (_ref2) {
@@ -7514,7 +7563,7 @@ var TextDefaultProps = {
   size: 'md'
 };
 
-var __jsx$r = React.createElement;
+var __jsx$r = React__default['default'].createElement;
 
 function _templateObject10() {
   var data = _taggedTemplateLiteral(["\n        -webkit-text-stroke: 3px #000;\n      "]);
@@ -7635,7 +7684,7 @@ var Text = function Text(_ref) {
     size: size
   }, props), content || children);
 };
-var StyledText$1 = styled.p.withConfig({
+var StyledText$1 = styled__default['default'].p.withConfig({
   displayName: "text__StyledText",
   componentId: "sc-1hmk421-0"
 })(["color:", ";margin:0;padding:0;text-align:", ";", " ", " ", " ", " ", " ", ""], function (_ref2) {
@@ -7652,16 +7701,16 @@ var StyledText$1 = styled.p.withConfig({
 
   var size = _ref4.size,
       theme = _ref4.theme;
-  return css(["font-size:", ";line-height:", ";font-family:", ";"], (_theme$TEXT_STYLE$FON = theme.TEXT_STYLE.FONT_SIZE[size]) !== null && _theme$TEXT_STYLE$FON !== void 0 ? _theme$TEXT_STYLE$FON : '1rem', (_theme$TEXT_STYLE$LIN = theme.TEXT_STYLE.LINE_HEIGHT[size]) !== null && _theme$TEXT_STYLE$LIN !== void 0 ? _theme$TEXT_STYLE$LIN : '1rem', (_ref5 = (_theme$TEXT_STYLE$FON2 = theme.TEXT_STYLE.FONT_FAMILY[size]) !== null && _theme$TEXT_STYLE$FON2 !== void 0 ? _theme$TEXT_STYLE$FON2 : theme.TEXT_STYLE.FONT_FAMILY["default"]) !== null && _ref5 !== void 0 ? _ref5 : 'sans-serif');
+  return styled.css(["font-size:", ";line-height:", ";font-family:", ";"], (_theme$TEXT_STYLE$FON = theme.TEXT_STYLE.FONT_SIZE[size]) !== null && _theme$TEXT_STYLE$FON !== void 0 ? _theme$TEXT_STYLE$FON : '1rem', (_theme$TEXT_STYLE$LIN = theme.TEXT_STYLE.LINE_HEIGHT[size]) !== null && _theme$TEXT_STYLE$LIN !== void 0 ? _theme$TEXT_STYLE$LIN : '1rem', (_ref5 = (_theme$TEXT_STYLE$FON2 = theme.TEXT_STYLE.FONT_FAMILY[size]) !== null && _theme$TEXT_STYLE$FON2 !== void 0 ? _theme$TEXT_STYLE$FON2 : theme.TEXT_STYLE.FONT_FAMILY["default"]) !== null && _ref5 !== void 0 ? _ref5 : 'sans-serif');
 }, function (_ref6) {
   var size = _ref6.size;
-  return size === 'xxl' && css(["", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject$2()), MEDIA_QUERY.tablet(_templateObject2$2()), MEDIA_QUERY.desktop(_templateObject3()), MEDIA_QUERY.giant(_templateObject4()));
+  return size === 'xxl' && styled.css(["", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject$2()), MEDIA_QUERY.tablet(_templateObject2$2()), MEDIA_QUERY.desktop(_templateObject3()), MEDIA_QUERY.giant(_templateObject4()));
 }, function (_ref7) {
   var size = _ref7.size;
-  return size === 'xxxl' && css(["", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject5()), MEDIA_QUERY.tablet(_templateObject6()), MEDIA_QUERY.desktop(_templateObject7()), MEDIA_QUERY.giant(_templateObject8()));
+  return size === 'xxxl' && styled.css(["", " ", " ", " ", ""], MEDIA_QUERY.phone(_templateObject5()), MEDIA_QUERY.tablet(_templateObject6()), MEDIA_QUERY.desktop(_templateObject7()), MEDIA_QUERY.giant(_templateObject8()));
 }, function (_ref8) {
   var stroke = _ref8.stroke;
-  return stroke === 'true' && css(["-webkit-text-stroke:1px #000;color:transparent;", " ", ""], MEDIA_QUERY.tablet(_templateObject9()), MEDIA_QUERY.desktop(_templateObject10()));
+  return stroke === 'true' && styled.css(["-webkit-text-stroke:1px #000;color:transparent;", " ", ""], MEDIA_QUERY.tablet(_templateObject9()), MEDIA_QUERY.desktop(_templateObject10()));
 }, function (theme) {
   return DISPLAY(theme);
 }, function (theme) {
@@ -7670,7 +7719,7 @@ var StyledText$1 = styled.p.withConfig({
 Text.protoTypes = TextPropTypes;
 Text.defaultProps = TextDefaultProps;
 
-var __jsx$s = React.createElement;
+var __jsx$s = React__default['default'].createElement;
 var Switch = function Switch(_ref) {
   var context = _ref.context,
       disabled = _ref.disabled,
@@ -7688,7 +7737,7 @@ var Switch = function Switch(_ref) {
     toggled: toggled
   }));
 };
-var StyledSwitchContainer = styled.div.withConfig({
+var StyledSwitchContainer = styled__default['default'].div.withConfig({
   displayName: "switch__StyledSwitchContainer",
   componentId: "sc-1wx9a43-0"
 })(["align-items:center;background-color:", ";cursor:", ";display:flex;justify-content:space-between;opacity:", ";position:relative;transition:background-color 0.2s;", " ", " ", ""], function (_ref2) {
@@ -7704,15 +7753,15 @@ var StyledSwitchContainer = styled.div.withConfig({
   return disabled ? 0.5 : 1;
 }, function (_ref5) {
   var size = _ref5.size;
-  return size === 'sm' && css(["border-radius:40px;height:20px;width:40px;"]);
+  return size === 'sm' && styled.css(["border-radius:40px;height:20px;width:40px;"]);
 }, function (_ref6) {
   var size = _ref6.size;
-  return size === 'md' && css(["border-radius:60px;height:30px;width:60px;"]);
+  return size === 'md' && styled.css(["border-radius:60px;height:30px;width:60px;"]);
 }, function (_ref7) {
   var size = _ref7.size;
-  return size === 'lg' && css(["border-radius:100px;height:50px;width:100px;"]);
+  return size === 'lg' && styled.css(["border-radius:100px;height:50px;width:100px;"]);
 });
-var StyledSwitch = styled.span.withConfig({
+var StyledSwitch = styled__default['default'].span.withConfig({
   displayName: "switch__StyledSwitch",
   componentId: "sc-1wx9a43-1"
 })(["background:#fff;box-shadow:0 0 2px 0 rgba(10,10,10,0.29);left:2px;position:absolute;top:2px;transition:left 0.2s,transform 0.2s;", " ", " ", " ", ""], function (_ref8) {
@@ -7720,13 +7769,13 @@ var StyledSwitch = styled.span.withConfig({
   return toggled && "\n      left: calc(100% - 2px);\n      transform: translateX(-100%);\n    ";
 }, function (_ref9) {
   var size = _ref9.size;
-  return size === 'sm' && css(["border-radius:16px;height:16px;width:16px;"]);
+  return size === 'sm' && styled.css(["border-radius:16px;height:16px;width:16px;"]);
 }, function (_ref10) {
   var size = _ref10.size;
-  return size === 'md' && css(["border-radius:26px;height:26px;width:26px;"]);
+  return size === 'md' && styled.css(["border-radius:26px;height:26px;width:26px;"]);
 }, function (_ref11) {
   var size = _ref11.size;
-  return size === 'lg' && css(["border-radius:46px;height:46px;width:46px;"]);
+  return size === 'lg' && styled.css(["border-radius:46px;height:46px;width:46px;"]);
 });
 Switch.propTypes = {
   handleToggle: propTypes.func,
@@ -7734,7 +7783,7 @@ Switch.propTypes = {
   toggled: propTypes.bool
 };
 
-var __jsx$t = React.createElement;
+var __jsx$t = React__default['default'].createElement;
 var Toggle = function Toggle(_ref) {
   var context = _ref.context,
       disabled = _ref.disabled,
@@ -7742,11 +7791,11 @@ var Toggle = function Toggle(_ref) {
       size = _ref.size,
       initial = _ref.toggled;
 
-  var _useState = useState(initial),
+  var _useState = React.useState(initial),
       toggled = _useState[0],
       setToggled = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     setToggled(initial);
   }, [initial]);
 
@@ -7763,7 +7812,7 @@ var Toggle = function Toggle(_ref) {
     toggled: toggled
   }));
 };
-var StyledToggle = styled.div.withConfig({
+var StyledToggle = styled__default['default'].div.withConfig({
   displayName: "toggle__StyledToggle",
   componentId: "wgmn17-0"
 })(["display:inline-block;position:relative;"]);
@@ -7792,7 +7841,7 @@ var TooltipDefaultProps = {
   context: 'black'
 };
 
-var __jsx$u = React.createElement;
+var __jsx$u = React__default['default'].createElement;
 var Tooltip = function Tooltip(_ref) {
   var children = _ref.children,
       content = _ref.content,
@@ -7804,7 +7853,7 @@ var Tooltip = function Tooltip(_ref) {
     context: context
   }, props), children);
 };
-var StyledTippy = styled(Tippy).withConfig({
+var StyledTippy = styled__default['default'](Tippy__default['default']).withConfig({
   displayName: "tooltip__StyledTippy",
   componentId: "sc-6b7oo7-0"
 })(["&&{", " .tippy-content{padding:8px;}.tippy-arrow::before{color:", ";}}"], function (props) {
@@ -11232,8 +11281,8 @@ var useTooltip = function useTooltip() {
   };
 };
 
-var __jsx$v = React.createElement;
-var CheckboxComponent = /*#__PURE__*/forwardRef(function (_ref, ref) {
+var __jsx$v = React__default['default'].createElement;
+var CheckboxComponent = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var disabled = _ref.disabled,
       props = _objectWithoutProperties(_ref, ["disabled"]);
 
@@ -11243,7 +11292,7 @@ var CheckboxComponent = /*#__PURE__*/forwardRef(function (_ref, ref) {
     type: "checkbox"
   }, props));
 });
-var StyledCheckbox = styled.input.withConfig({
+var StyledCheckbox = styled__default['default'].input.withConfig({
   displayName: "component__StyledCheckbox",
   componentId: "sc-1cyi0gq-0"
 })(["cursor:pointer;margin-right:0.5rem;"]);
@@ -11254,7 +11303,7 @@ CheckboxComponent.defaultProps = {
   stacked: false
 };
 
-var __jsx$w = React.createElement;
+var __jsx$w = React__default['default'].createElement;
 var CheckboxField = function CheckboxField(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -11281,21 +11330,21 @@ var CheckboxField = function CheckboxField(_ref) {
     }, data, props)), label);
   }));
 };
-var StyledFieldset = styled.fieldset.withConfig({
+var StyledFieldset = styled__default['default'].fieldset.withConfig({
   displayName: "checkbox__StyledFieldset",
   componentId: "sc-1wburha-0"
 })(["border-radius:0.25rem;", ""], function (_ref3) {
   var error = _ref3.error;
-  return error && css(["", " padding:0.5rem;"], function (props) {
+  return error && styled.css(["", " padding:0.5rem;"], function (props) {
     return ERROR_STYLE(props);
   });
 });
-var StyledLabel = styled.label.withConfig({
+var StyledLabel = styled__default['default'].label.withConfig({
   displayName: "checkbox__StyledLabel",
   componentId: "sc-1wburha-1"
 })(["cursor:pointer;margin-right:1.25rem;position:relative;", ""], function (_ref4) {
   var stacked = _ref4.stacked;
-  return stacked && css(["display:block;margin:0.5rem 0;"]);
+  return stacked && styled.css(["display:block;margin:0.5rem 0;"]);
 });
 CheckboxField.propTypes = {
   data: propTypes.array.isRequired,
@@ -11427,7 +11476,7 @@ var PROPERTIES = {
   showPopperArrow: propTypes.bool
 };
 
-var __jsx$x = React.createElement;
+var __jsx$x = React__default['default'].createElement;
 var DatePickerCalendar = function DatePickerCalendar(_ref) {
   var control = _ref.control,
       defaultValue = _ref.defaultValue,
@@ -11436,9 +11485,9 @@ var DatePickerCalendar = function DatePickerCalendar(_ref) {
       placeholder = _ref.placeholder,
       parentProps = _objectWithoutProperties(_ref, ["control", "defaultValue", "errors", "name", "placeholder"]);
 
-  return __jsx$x(Controller$1, {
+  return __jsx$x(reactHookForm.Controller, {
     render: function render(props) {
-      return __jsx$x(ReactDatePicker, _extends({
+      return __jsx$x(ReactDatePicker__default['default'], _extends({
         customInput: __jsx$x(StyledInput, {
           errors: errors[name]
         }),
@@ -11542,7 +11591,7 @@ for (var d$1 = 1; d$1 <= 31; d$1++) {
 
 var DAYS = days;
 
-var __jsx$y = React.createElement;
+var __jsx$y = React__default['default'].createElement;
 var DatePickerInput = function DatePickerInput(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -11560,7 +11609,7 @@ var DatePickerInput = function DatePickerInput(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$y(React.Fragment, null, __jsx$y(Space, {
+  return __jsx$y(React__default['default'].Fragment, null, __jsx$y(Space, {
     marginBottom: "0.5rem"
   }, label), __jsx$y(Row, null, showDay && __jsx$y(Column, {
     md: 4
@@ -11621,7 +11670,7 @@ DatePickerInput.defaultProps = {
   yearStart: 1920
 };
 
-var __jsx$z = React.createElement;
+var __jsx$z = React__default['default'].createElement;
 var Accept = function Accept(_ref) {
   var accept = _ref.accept;
   var files = accept.replace(/,/g, ' and ');
@@ -11634,7 +11683,7 @@ Accept.defaultProps = {
   accept: 'image/jpeg,image/png'
 };
 
-var __jsx$A = React.createElement;
+var __jsx$A = React__default['default'].createElement;
 var DropzonePreview = function DropzonePreview(_ref) {
   var file = _ref.file,
       handleRemove = _ref.handleRemove,
@@ -11646,7 +11695,7 @@ var DropzonePreview = function DropzonePreview(_ref) {
     src: file.preview
   }));
 };
-var StyledPreview = styled.div.withConfig({
+var StyledPreview = styled__default['default'].div.withConfig({
   displayName: "preview__StyledPreview",
   componentId: "bfmgta-0"
 })(["border:1px solid #000;margin-bottom:1.5rem;z-index:1;"]);
@@ -11656,18 +11705,18 @@ DropzonePreview.propTypes = {
   index: propTypes.any.isRequired
 };
 
-var __jsx$B = React.createElement;
+var __jsx$B = React__default['default'].createElement;
 var Dropzone = function Dropzone(_ref) {
   var accept = _ref.accept,
       disabled = _ref.disabled,
       multiple = _ref.multiple,
       onChange = _ref.onChange;
 
-  var _useState = useState([]),
+  var _useState = React.useState([]),
       files = _useState[0],
       setFiles = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     return function () {
       // Make sure to revoke the data uris to avoid memory leaks
       files.forEach(function (file) {
@@ -11676,7 +11725,7 @@ var Dropzone = function Dropzone(_ref) {
     };
   }, [files]);
 
-  var _useDropzone = useDropzone({
+  var _useDropzone = reactDropzone.useDropzone({
     accept: accept,
     disabled: disabled,
     multiple: multiple,
@@ -11723,16 +11772,16 @@ var Dropzone = function Dropzone(_ref) {
     })));
   };
 
-  return __jsx$B(React.Fragment, null, __jsx$B(StyledContainer, _extends({
+  return __jsx$B(React__default['default'].Fragment, null, __jsx$B(StyledContainer, _extends({
     dragActive: isDragActive,
     dragAccept: isDragAccept,
     dragReject: isDragReject,
     disabled: disabled
-  }, getRootProps()), __jsx$B("input", getInputProps()), isDragAccept && __jsx$B(Text, null, "Accepted"), isDragReject && __jsx$B(Text, null, "Rejected"), isDragActive ? __jsx$B(Text, null, "Drop here") : __jsx$B(React.Fragment, null, __jsx$B(Text, null, "Drop, or click to select"), accept && __jsx$B(Accept, {
+  }, getRootProps()), __jsx$B("input", getInputProps()), isDragAccept && __jsx$B(Text, null, "Accepted"), isDragReject && __jsx$B(Text, null, "Rejected"), isDragActive ? __jsx$B(Text, null, "Drop here") : __jsx$B(React__default['default'].Fragment, null, __jsx$B(Text, null, "Drop, or click to select"), accept && __jsx$B(Accept, {
     accept: accept
   }), multiple ? __jsx$B(Text, null, "Accepts multiple files") : __jsx$B(Text, null, "Single file only"))), files.length > 0 && thumbs());
 };
-var StyledContainer = styled.div.withConfig({
+var StyledContainer = styled__default['default'].div.withConfig({
   displayName: "dropzone__StyledContainer",
   componentId: "e0zwa5-0"
 })(["background-color:", ";border-color:", ";border-radius:0.25rem;border-style:", ";border-width:2px;cursor:pointer;margin-bottom:1rem;height:25vh;padding:1rem;outline:none;overflow:auto;text-align:center;transition:border 0.24s ease-in-out;width:100%;", ""], function (_ref2) {
@@ -11748,7 +11797,7 @@ var StyledContainer = styled.div.withConfig({
   return dragActive ? 'solid' : 'dashed';
 }, function (_ref5) {
   var disabled = _ref5.disabled;
-  return disabled && css(["cursor:not-allowed;opacity:0.5;"]);
+  return disabled && styled.css(["cursor:not-allowed;opacity:0.5;"]);
 });
 Dropzone.propTypes = {
   accept: propTypes.string,
@@ -11761,7 +11810,7 @@ Dropzone.defaultProps = {
   multiple: true
 };
 
-var __jsx$C = React.createElement;
+var __jsx$C = React__default['default'].createElement;
 var DropzoneUploader = function DropzoneUploader(_ref) {
   var autoUpload = _ref.autoUpload,
       SubmitButtonComponent = _ref.SubmitButtonComponent,
@@ -11789,7 +11838,7 @@ var DropzoneUploader = function DropzoneUploader(_ref) {
     });
   };
 
-  return __jsx$C(Dropzone$1, {
+  return __jsx$C(Dropzone__default['default'], {
     accept: "image/*,audio/*,video/*",
     autoUpload: autoUpload,
     canRestart: false,
@@ -11810,13 +11859,13 @@ DropzoneUploader.defaultProps = {
   url: 'https://httpbin.org/post'
 };
 
-var __jsx$D = React.createElement;
+var __jsx$D = React__default['default'].createElement;
 var DropzoneField = function DropzoneField(_ref) {
   var control = _ref.control,
       name = _ref.name,
       props = _objectWithoutProperties(_ref, ["control", "name"]);
 
-  return __jsx$D(Controller$1, _extends({
+  return __jsx$D(reactHookForm.Controller, _extends({
     as: Dropzone,
     control: control,
     name: name
@@ -11836,7 +11885,7 @@ DropzoneField.defaultProps = {
   multiple: false
 };
 
-var __jsx$E = React.createElement;
+var __jsx$E = React__default['default'].createElement;
 var FormError = function FormError(_ref) {
   var message = _ref.message,
       colour = _ref.colour,
@@ -11848,7 +11897,7 @@ var FormError = function FormError(_ref) {
     color: colour
   }, message));
 };
-var StyledSmall = styled.small.withConfig({
+var StyledSmall = styled__default['default'].small.withConfig({
   displayName: "error__StyledSmall",
   componentId: "qya04k-0"
 })(["color:", ";display:block;font-size:0.625rem;font-weight:400;width:100%;"], function (_ref2) {
@@ -11861,7 +11910,7 @@ FormError.propTypes = {
   colour: propTypes.string
 };
 
-var __jsx$F = React.createElement;
+var __jsx$F = React__default['default'].createElement;
 var CurrencyInput = function CurrencyInput(_ref) {
   var currencySymbol = _ref.currencySymbol,
       errors = _ref.errors,
@@ -11922,7 +11971,7 @@ CurrencyInput.defaultProps = {
   vat: false
 };
 
-var __jsx$G = React.createElement;
+var __jsx$G = React__default['default'].createElement;
 var FormField = function FormField(_ref) {
   var disabled = _ref.disabled,
       errors = _ref.errors,
@@ -11937,7 +11986,7 @@ var FormField = function FormField(_ref) {
       withAddon = _ref.withAddon,
       props = _objectWithoutProperties(_ref, ["disabled", "errors", "helperMessage", "name", "placeholder", "readOnly", "regExp", "register", "size", "validate", "withAddon"]);
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       isTyping = _useState[0],
       setisTyping = _useState[1];
 
@@ -11963,7 +12012,7 @@ var FormField = function FormField(_ref) {
     withAddon: withAddon
   }, props));
 };
-var StyledInput = styled.input.attrs(function (props) {
+var StyledInput = styled__default['default'].input.attrs(function (props) {
   return {
     autoComplete: 'off',
     autoFocus: false
@@ -11975,7 +12024,7 @@ var StyledInput = styled.input.attrs(function (props) {
   return COMMON_INPUT_STYLES(props);
 }, function (_ref2) {
   var errors = _ref2.errors;
-  return errors && css(["", ""], function (props) {
+  return errors && styled.css(["", ""], function (props) {
     return ERROR_STYLE(props);
   });
 }, function (_ref3) {
@@ -11983,16 +12032,16 @@ var StyledInput = styled.input.attrs(function (props) {
 
   switch (size) {
     case SIZE.SM:
-      return css(["height:1.5rem;font-size:0.625rem;"]);
+      return styled.css(["height:1.5rem;font-size:0.625rem;"]);
 
     case SIZE.MD:
-      return css(["height:1.875rem;"]);
+      return styled.css(["height:1.875rem;"]);
 
     case SIZE.LG:
-      return css(["height:2.25rem;"]);
+      return styled.css(["height:2.25rem;"]);
 
     default:
-      return css(["height:2.25rem;"]);
+      return styled.css(["height:2.25rem;"]);
   }
 });
 FormField.propTypes = {
@@ -12020,7 +12069,7 @@ FormField.defaultProps = {
   type: 'text'
 };
 
-var __jsx$H = React.createElement;
+var __jsx$H = React__default['default'].createElement;
 var PercentInput = function PercentInput(_ref) {
   var errors = _ref.errors,
       label = _ref.label,
@@ -12055,7 +12104,7 @@ PercentInput.defaultProps = {
   symbol: '%'
 };
 
-var __jsx$I = React.createElement;
+var __jsx$I = React__default['default'].createElement;
 var Form = function Form(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -12069,7 +12118,7 @@ var Form = function Form(_ref) {
     style: style
   }, children);
 };
-var StyledForm = styled.form.withConfig({
+var StyledForm = styled__default['default'].form.withConfig({
   displayName: "form__StyledForm",
   componentId: "sc-88j1vz-0"
 })(["margin-bottom:1rem;"]);
@@ -12081,7 +12130,7 @@ Form.propTypes = {
   style: propTypes.any
 };
 
-var __jsx$J = React.createElement;
+var __jsx$J = React__default['default'].createElement;
 
 function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -12097,7 +12146,7 @@ var FieldHOC = function FieldHOC(_ref) {
       validate = _ref.validate,
       props = _objectWithoutProperties(_ref, ["component", "errors", "children", "helperMessage", "register", "show", "showError", "validate"]);
 
-  return __jsx$J(React.Fragment, null, __jsx$J(Component, _extends({
+  return __jsx$J(React__default['default'].Fragment, null, __jsx$J(Component, _extends({
     "aria-label": props.name,
     errors: errors === null || errors === void 0 ? void 0 : errors.message,
     key: props.name,
@@ -12135,7 +12184,7 @@ FieldHOC.defaultProps = {
   showError: false
 };
 
-var __jsx$K = React.createElement;
+var __jsx$K = React__default['default'].createElement;
 var colourPlate = {
   dark: COLOUR$1.darkText,
   darkBorder: COLOUR$1.grey80,
@@ -12189,7 +12238,7 @@ var Input = function Input(_ref) {
     theme: props.theme,
     decoration: decoration,
     readOnly: props.readOnly
-  }, label && __jsx$K(React.Fragment, null, __jsx$K(Space, {
+  }, label && __jsx$K(React__default['default'].Fragment, null, __jsx$K(Space, {
     marginBottom: "xs"
   }, __jsx$K(StyledLabel$1, {
     theme: props.theme,
@@ -12216,14 +12265,14 @@ var Input = function Input(_ref) {
     size: size
   }, adornments.endAdornment))), message && __jsx$K(StyledMessage, null, message));
 };
-var StyledLabel$1 = styled(Text).withConfig({
+var StyledLabel$1 = styled__default['default'](Text).withConfig({
   displayName: "input__StyledLabel",
   componentId: "sc-12vpjez-0"
 })(["color:", ";font-size:0.75rem;"], function (_ref2) {
   var theme = _ref2.theme;
   return colourProvider(theme, 'dark');
 });
-var StyledMessage = styled(Text).withConfig({
+var StyledMessage = styled__default['default'](Text).withConfig({
   displayName: "input__StyledMessage",
   componentId: "sc-12vpjez-1"
 })(["font-size:0.625rem;color:", ";"], function (_ref3) {
@@ -12231,7 +12280,7 @@ var StyledMessage = styled(Text).withConfig({
       decoration = _ref3.decoration;
   return colourProvider(theme, 'disabled');
 });
-var InputWrapper = styled.div.withConfig({
+var InputWrapper = styled__default['default'].div.withConfig({
   displayName: "input__InputWrapper",
   componentId: "sc-12vpjez-2"
 })(["align-items:center;display:flex;width:100%;", ""], function (_ref4) {
@@ -12239,23 +12288,23 @@ var InputWrapper = styled.div.withConfig({
 
   switch (size) {
     case SIZE.SM:
-      return css(["height:1.5rem;", "{padding:0.5rem 1rem;}"], Adornment);
+      return styled.css(["height:1.5rem;", "{padding:0.5rem 1rem;}"], Adornment);
 
     case SIZE.MD:
-      return css(["height:1.875rem;._,", "{padding:0.75rem 1.25rem;}"], Adornment);
+      return styled.css(["height:1.875rem;._,", "{padding:0.75rem 1.25rem;}"], Adornment);
 
     case SIZE.LG:
-      return css(["height:2.25rem;.__,", "{padding:0.875rem 1.625rem;}"], Adornment);
+      return styled.css(["height:2.25rem;.__,", "{padding:0.875rem 1.625rem;}"], Adornment);
 
     default:
-      return css(["height:1.875rem;.___,", "{padding:0.75rem 1.25rem;}"], Adornment);
+      return styled.css(["height:1.875rem;.___,", "{padding:0.75rem 1.25rem;}"], Adornment);
   }
 });
-var withAdornmentStyles = css(["", ""], function (_ref5) {
+var withAdornmentStyles = styled.css(["", ""], function (_ref5) {
   var adornments = _ref5.adornments;
-  return adornments && css(["", " ", ""], adornments.startAdornment && css(["border-bottom-left-radius:0;border-top-left-radius:0;"]), adornments.endAdornment && css(["border-bottom-right-radius:0;border-top-right-radius:0;"]));
+  return adornments && styled.css(["", " ", ""], adornments.startAdornment && styled.css(["border-bottom-left-radius:0;border-top-left-radius:0;"]), adornments.endAdornment && styled.css(["border-bottom-right-radius:0;border-top-right-radius:0;"]));
 });
-var StyledInput$1 = styled.input.attrs(function (props) {
+var StyledInput$1 = styled__default['default'].input.attrs(function (props) {
   return {
     'aria-label': props.name,
     autoComplete: 'off',
@@ -12275,14 +12324,14 @@ var StyledInput$1 = styled.input.attrs(function (props) {
   var theme = _ref8.theme;
   return colourProvider(theme, 'danger');
 }, withAdornmentStyles);
-var Wrapper = styled.div.withConfig({
+var Wrapper = styled__default['default'].div.withConfig({
   displayName: "input__Wrapper",
   componentId: "sc-12vpjez-4"
 })(["width:100%;", ""], function (_ref9) {
   var decoration = _ref9.decoration,
       readOnly = _ref9.readOnly,
       theme = _ref9.theme;
-  return css(["", "{color:", ";}", ",", "{border-color:", ";", "}", "{background-color:", ";}"], StyledMessage, decoration === InputDecorationTypes.DEFAULT || decoration === InputDecorationTypes.WARNING || decoration === InputDecorationTypes.READONLY ? colourProvider(theme, 'dark') : colourProvider(theme, decoration), StyledInput$1, Adornment, decoration !== InputDecorationTypes.DEFAULT ? colourProvider(theme, decoration) : colourProvider(theme, 'dark'), decoration === InputDecorationTypes.READONLY || readOnly === true && css(["background:transparent;pointer-events:none;"]), Adornment, colourProvider(theme, decoration));
+  return styled.css(["", "{color:", ";}", ",", "{border-color:", ";", "}", "{background-color:", ";}"], StyledMessage, decoration === InputDecorationTypes.DEFAULT || decoration === InputDecorationTypes.WARNING || decoration === InputDecorationTypes.READONLY ? colourProvider(theme, 'dark') : colourProvider(theme, decoration), StyledInput$1, Adornment, decoration !== InputDecorationTypes.DEFAULT ? colourProvider(theme, decoration) : colourProvider(theme, 'dark'), decoration === InputDecorationTypes.READONLY || readOnly === true && styled.css(["background:transparent;pointer-events:none;"]), Adornment, colourProvider(theme, decoration));
 });
 Input.propTypes = {
   adornments: propTypes.shape({
@@ -12302,12 +12351,12 @@ Input.defaultProps = {
   size: SIZE.MD
 };
 
-var Adornment = styled.div.withConfig({
+var Adornment = styled__default['default'].div.withConfig({
   displayName: "adornment__Adornment",
   componentId: "c7tn09-0"
 })(["align-items:center;border:1px solid;display:flex;height:100%;", ""], function (_ref) {
   var startAdornment = _ref.startAdornment;
-  return startAdornment ? css(["border-bottom-left-radius:'0.25rem';border-right:none;border-top-left-radius:'0.25rem';"]) : css(["border-bottom-right-radius:'0.25rem';border-left:none;border-top-right-radius:'0.25rem';"]);
+  return startAdornment ? styled.css(["border-bottom-left-radius:'0.25rem';border-right:none;border-top-left-radius:'0.25rem';"]) : styled.css(["border-bottom-right-radius:'0.25rem';border-left:none;border-top-right-radius:'0.25rem';"]);
 });
 
 var InputDecorationTypes = {
@@ -12319,7 +12368,7 @@ var InputDecorationTypes = {
   WARNING: 'warning'
 };
 
-var __jsx$L = React.createElement;
+var __jsx$L = React__default['default'].createElement;
 var InputGroupAddon = function InputGroupAddon(_ref) {
   var addonType = _ref.addonType,
       className = _ref.className,
@@ -12340,12 +12389,12 @@ var InputGroupAddon = function InputGroupAddon(_ref) {
     theme: theme
   });
 };
-var StyledInputGroupAddon = styled.div.withConfig({
+var StyledInputGroupAddon = styled__default['default'].div.withConfig({
   displayName: "addon__StyledInputGroupAddon",
   componentId: "sc-143wx32-0"
 })(["align-items:center;display:flex;& > *{height:100%;}", " ", " &,button{", " ", "}"], function (_ref2) {
   var text = _ref2.text;
-  return text && css(["background-color:", ";border:1px solid ", ";border-radius:", ";color:", ";display:flex;font-size:0.75rem;font-weight:400;line-height:1;margin-bottom:0;padding:0.375rem 1.25rem;text-align:center;transition:background-color 0.15s linear;white-space:nowrap;"], function (_ref3) {
+  return text && styled.css(["background-color:", ";border:1px solid ", ";border-radius:", ";color:", ";display:flex;font-size:0.75rem;font-weight:400;line-height:1;margin-bottom:0;padding:0.375rem 1.25rem;text-align:center;transition:background-color 0.15s linear;white-space:nowrap;"], function (_ref3) {
     var theme = _ref3.theme,
         error = _ref3.error;
     return error ? theme.COLOUR.danger : theme.COLOUR.grey;
@@ -12363,13 +12412,13 @@ var StyledInputGroupAddon = styled.div.withConfig({
   });
 }, function (_ref7) {
   var size = _ref7.size;
-  return size === SIZE.SM && css(["font-size:0.625rem;padding:0 0.75rem;"]);
+  return size === SIZE.SM && styled.css(["font-size:0.625rem;padding:0 0.75rem;"]);
 }, function (_ref8) {
   var addonType = _ref8.addonType;
-  return addonType === 'prepend' && css(["border-top-right-radius:0;border-bottom-right-radius:0;margin-right:-1px;"]);
+  return addonType === 'prepend' && styled.css(["border-top-right-radius:0;border-bottom-right-radius:0;margin-right:-1px;"]);
 }, function (_ref9) {
   var addonType = _ref9.addonType;
-  return addonType === 'append' && css(["border-top-left-radius:0;border-bottom-left-radius:0;margin-left:-1px;"]);
+  return addonType === 'append' && styled.css(["border-top-left-radius:0;border-bottom-left-radius:0;margin-left:-1px;"]);
 });
 InputGroupAddon.propTypes = {
   addonType: propTypes.oneOf(['prepend', 'append']),
@@ -12383,7 +12432,7 @@ InputGroupAddon.defaultProps = {
   context: 'light'
 };
 
-var __jsx$M = React.createElement;
+var __jsx$M = React__default['default'].createElement;
 var InputGroup = function InputGroup(_ref) {
   var children = _ref.children,
       error = _ref.error,
@@ -12396,13 +12445,13 @@ var InputGroup = function InputGroup(_ref) {
     theme: theme
   });
 };
-var StyledInputGroup = styled.div.withConfig({
+var StyledInputGroup = styled__default['default'].div.withConfig({
   displayName: "group__StyledInputGroup",
   componentId: "ghbmob-0"
 })(["align-items:stretch;display:flex;flex-wrap:wrap;position:relative;width:100%;input{flex:1 1 0%;min-width:0;margin-bottom:0;position:relative;:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0;}:first-child{border-top-right-radius:0;border-bottom-right-radius:0;}}", ""], function (_ref2) {
   var error = _ref2.error,
       theme = _ref2.theme;
-  return error && theme && css(["&:hover{.prepend,.append{background:", ";border-color:", ";}}"], theme.COLOUR.lightRed, theme.COLOUR.lightRed);
+  return error && theme && styled.css(["&:hover{.prepend,.append{background:", ";border-color:", ";}}"], theme.COLOUR.lightRed, theme.COLOUR.lightRed);
 });
 InputGroup.propTypes = {
   size: propTypes.string
@@ -12411,7 +12460,7 @@ InputGroup.defaultProps = {
   size: 'md'
 };
 
-var __jsx$N = React.createElement;
+var __jsx$N = React__default['default'].createElement;
 var BLOCK_TYPES = [{
   label: 'H1',
   style: 'header-one'
@@ -12518,21 +12567,21 @@ var StyleButton = function StyleButton(_ref) {
   }, label);
 };
 
-var StyledRichButton = styled.span.withConfig({
+var StyledRichButton = styled__default['default'].span.withConfig({
   displayName: "config__StyledRichButton",
   componentId: "sc-18t2mch-0"
 })(["cursor:pointer;margin:0 0.5rem;", ""], function (_ref2) {
   var active = _ref2.active;
-  return active && css(["color:red;"]);
+  return active && styled.css(["color:red;"]);
 });
 
-var __jsx$O = React.createElement;
+var __jsx$O = React__default['default'].createElement;
 var IUIRich = function IUIRich() {
-  var _useState = useState(EditorState.createEmpty()),
+  var _useState = React.useState(draftJs.EditorState.createEmpty()),
       editorState = _useState[0],
       seteditorState = _useState[1];
 
-  var ref = useRef(null);
+  var ref = React.useRef(null);
 
   var focus = function focus() {
     ref.current.focus();
@@ -12543,7 +12592,7 @@ var IUIRich = function IUIRich() {
   };
 
   var onKeyCommand = function onKeyCommand(command) {
-    var newState = RichUtils.handleKeyCommand(editorState, command);
+    var newState = draftJs.RichUtils.handleKeyCommand(editorState, command);
 
     if (newState) {
       handleChange(newState);
@@ -12555,15 +12604,15 @@ var IUIRich = function IUIRich() {
 
   var handleTab = function handleTab(e) {
     var maxDepth = 4;
-    handleChange(RichUtils.onTab(e, editorState, maxDepth));
+    handleChange(draftJs.RichUtils.onTab(e, editorState, maxDepth));
   };
 
   var toggleBlockType = function toggleBlockType(blockType) {
-    handleChange(RichUtils.toggleBlockType(editorState, blockType));
+    handleChange(draftJs.RichUtils.toggleBlockType(editorState, blockType));
   };
 
   var toggleInlineStyle = function toggleInlineStyle(inlineStyle) {
-    handleChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
+    handleChange(draftJs.RichUtils.toggleInlineStyle(editorState, inlineStyle));
   };
 
   return __jsx$O("div", {
@@ -12574,7 +12623,7 @@ var IUIRich = function IUIRich() {
   }), __jsx$O(InlineStyleControls, {
     editorState: editorState,
     onToggle: toggleInlineStyle
-  }), __jsx$O(Editor, {
+  }), __jsx$O(draftJs.Editor, {
     blockStyleFn: getBlockStyle,
     customStyleMap: styleMap,
     editorState: editorState,
@@ -12587,7 +12636,7 @@ var IUIRich = function IUIRich() {
   }));
 };
 
-var __jsx$P = React.createElement;
+var __jsx$P = React__default['default'].createElement;
 var FormLabel = function FormLabel(_ref) {
   var children = _ref.children,
       id = _ref.id,
@@ -12606,7 +12655,7 @@ var FormLabel = function FormLabel(_ref) {
     content: label
   })), children);
 };
-var StyledLabel$2 = styled.label.withConfig({
+var StyledLabel$2 = styled__default['default'].label.withConfig({
   displayName: "label__StyledLabel",
   componentId: "fmiqu3-0"
 })(["display:", ";margin-bottom:", ";.react-datepicker-wrapper{width:100%;}"], function (_ref2) {
@@ -12626,8 +12675,8 @@ FormLabel.defaultProps = {
   show: true
 };
 
-var __jsx$Q = React.createElement;
-var RadioComponent = /*#__PURE__*/forwardRef(function (_ref, ref) {
+var __jsx$Q = React__default['default'].createElement;
+var RadioComponent = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var disabled = _ref.disabled,
       props = _objectWithoutProperties(_ref, ["disabled"]);
 
@@ -12637,7 +12686,7 @@ var RadioComponent = /*#__PURE__*/forwardRef(function (_ref, ref) {
     ref: ref
   }, props));
 });
-var StyledInput$2 = styled.input.withConfig({
+var StyledInput$2 = styled__default['default'].input.withConfig({
   displayName: "component__StyledInput",
   componentId: "sc-1lw7efx-0"
 })(["cursor:pointer;margin-right:0.5rem;"]);
@@ -12648,7 +12697,7 @@ RadioComponent.defaultProps = {
   stacked: false
 };
 
-var __jsx$R = React.createElement;
+var __jsx$R = React__default['default'].createElement;
 var RadioField = function RadioField(_ref) {
   var data = _ref.data,
       errors = _ref.errors,
@@ -12677,28 +12726,28 @@ var RadioField = function RadioField(_ref) {
     }, data, props)), label);
   }));
 };
-var StyledFieldset$1 = styled.fieldset.withConfig({
+var StyledFieldset$1 = styled__default['default'].fieldset.withConfig({
   displayName: "radio__StyledFieldset",
   componentId: "wmvn6q-0"
 })(["border-radius:0.25rem;", ""], function (_ref3) {
   var error = _ref3.error;
-  return error && css(["", " padding:0.5rem;"], function (props) {
+  return error && styled.css(["", " padding:0.5rem;"], function (props) {
     return ERROR_STYLE(props);
   });
 });
-var StyledLegend = styled.legend.withConfig({
+var StyledLegend = styled__default['default'].legend.withConfig({
   displayName: "radio__StyledLegend",
   componentId: "wmvn6q-1"
 })(["", ""], function (_ref4) {
   var error = _ref4.error;
-  return error && css(["padding:0 0.5rem;"]);
+  return error && styled.css(["padding:0 0.5rem;"]);
 });
-var StyledLabel$3 = styled.label.withConfig({
+var StyledLabel$3 = styled__default['default'].label.withConfig({
   displayName: "radio__StyledLabel",
   componentId: "wmvn6q-2"
 })(["cursor:pointer;margin-right:1.25rem;position:relative;", ""], function (_ref5) {
   var stacked = _ref5.stacked;
-  return stacked && css(["display:block;margin:0.5rem 0;"]);
+  return stacked && styled.css(["display:block;margin:0.5rem 0;"]);
 });
 RadioField.propTypes = {
   data: propTypes.array.isRequired,
@@ -12916,7 +12965,7 @@ var defaultStyles = {
   }
 };
 
-var __jsx$S = React.createElement;
+var __jsx$S = React__default['default'].createElement;
 var ReactSelectField = function ReactSelectField(_ref) {
   var async = _ref.async,
       cacheOptions = _ref.cacheOptions,
@@ -12932,16 +12981,16 @@ var ReactSelectField = function ReactSelectField(_ref) {
       size = _ref.size,
       parentProps = _objectWithoutProperties(_ref, ["async", "cacheOptions", "control", "defaultOptions", "defaultValue", "error", "errors", "loadOptions", "name", "options", "selectedOption", "size"]);
 
-  var Component = /*#__PURE__*/forwardRef(function (data, ref) {
+  var Component = /*#__PURE__*/React.forwardRef(function (data, ref) {
     if (async) {
-      return __jsx$S(AsyncSelect, _extends({
+      return __jsx$S(AsyncSelect__default['default'], _extends({
         cacheOptions: cacheOptions,
         defaultOptions: defaultOptions,
         loadOptions: loadOptions,
         ref: ref
       }, data));
     } else {
-      return __jsx$S(Select, _extends({
+      return __jsx$S(Select__default['default'], _extends({
         ref: ref
       }, data));
     }
@@ -12949,7 +12998,7 @@ var ReactSelectField = function ReactSelectField(_ref) {
   return __jsx$S(Wrapper$1, {
     size: size,
     error: error || errors[name]
-  }, __jsx$S(Controller$1, {
+  }, __jsx$S(reactHookForm.Controller, {
     render: function render(props) {
       return __jsx$S(Component, _extends({
         options: options,
@@ -12961,7 +13010,7 @@ var ReactSelectField = function ReactSelectField(_ref) {
     name: name
   }));
 };
-var Wrapper$1 = styled.div.withConfig({
+var Wrapper$1 = styled__default['default'].div.withConfig({
   displayName: "ReactSelect__Wrapper",
   componentId: "sc-10dmu44-0"
 })(["& > div:first-of-type > div:first-of-type{", " display:flex;padding:0;color:", ";", "}", ""], function (props) {
@@ -12974,86 +13023,41 @@ var Wrapper$1 = styled.div.withConfig({
 
   switch (size) {
     case SIZE.SM:
-      return css(["height:1.5rem;"]);
+      return styled.css(["height:1.5rem;"]);
 
     case SIZE.MD:
-      return css(["height:1.875rem;"]);
+      return styled.css(["height:1.875rem;"]);
 
     case SIZE.LG:
-      return css(["height:2.25rem !important;"]);
+      return styled.css(["height:2.25rem !important;"]);
 
     default:
-      return css(["height:2.25rem !important;"]);
+      return styled.css(["height:2.25rem !important;"]);
   }
 }, function (_ref4) {
   var error = _ref4.error;
-  return error && css(["[class*='control']{", "}"], function (props) {
+  return error && styled.css(["[class*='control']{", "}"], function (props) {
     return ERROR_STYLE(props);
   });
 });
 ReactSelectField.propTypes = reactSelectPropTypes;
 ReactSelectField.defaultProps = reactSelectDefaultProps(defaultStyles);
 
-var __jsx$T = React.createElement;
-var RichTextInput = function RichTextInput(_ref) {
-  var _editor$current;
-
-  var control = _ref.control,
-      errors = _ref.errors,
-      initialValue = _ref.initialValue,
-      name = _ref.name;
-  var content = EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(initialValue !== null && initialValue !== void 0 ? initialValue : '')));
-  console.log(content);
-  var editor = useRef(null); // const [editorState, setEditorState] = useState(EditorState.createEmpty())
-
-  var _onEditorStateChange = function onEditorStateChange(editorState, onChange) {
-    console.log(editorState);
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-    onChange(editorState); // onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())))
-    // setEditorState(editorState)
-    // setValue(name, draftToHtml(convertToRaw(editorState.getCurrentContent())))
-  };
-
-  return __jsx$T(Wrapper$2, {
-    errors: errors[name],
-    onClick: (_editor$current = editor.current) === null || _editor$current === void 0 ? void 0 : _editor$current.focus()
-  }, __jsx$T(Controller$1, {
-    name: name,
-    control: control,
-    defaultValue: content,
-    render: function render(_ref2) {
-      var value = _ref2.value,
-          onChange = _ref2.onChange;
-      return __jsx$T(Editor$1, {
-        editorState: value,
-        wrapperClassName: "wrapper-class",
-        editorClassName: "editor-class",
-        onEditorStateChange: function onEditorStateChange(e) {
-          return _onEditorStateChange(e, onChange);
-        }
-      });
-    }
-  }));
-};
-var Wrapper$2 = styled.div.withConfig({
-  displayName: "richTextInput__Wrapper",
-  componentId: "vech9m-0"
-})(["", " ", ""], function (props) {
-  return COMMON_INPUT_STYLES(props);
-}, function (_ref3) {
-  var errors = _ref3.errors;
-  return errors && css(["", ""], function (props) {
-    return ERROR_STYLE(props);
+var RichTextInput = dynamic__default['default'](function () {
+  return Promise.resolve().then(function () { return require('./richEditor-24649cf0.js'); }).then(function (mod) {
+    return mod.RichTextInput;
   });
+}, {
+  ssr: false,
+  loadableGenerated: {
+    webpack: function webpack() {
+      return [require.resolveWeak("./richEditor")];
+    },
+    modules: ["./richEditor"]
+  }
 });
-RichTextInput.propTypes = {
-  control: propTypes.object.isRequired,
-  errors: propTypes.object.isRequired,
-  name: propTypes.string.isRequired,
-  initialValue: propTypes.string
-};
 
-var __jsx$U = React.createElement;
+var __jsx$T = React__default['default'].createElement;
 var Search = function Search(_ref) {
   var appendSearchButton = _ref.appendSearchButton,
       appendSearchIcon = _ref.appendSearchIcon,
@@ -13064,29 +13068,29 @@ var Search = function Search(_ref) {
       prefix = _ref.prefix,
       register = _ref.register,
       type = _ref.type;
-  return __jsx$U(InputGroup, null, prependSearchIcon && __jsx$U(InputGroupAddon, {
+  return __jsx$T(InputGroup, null, prependSearchIcon && __jsx$T(InputGroupAddon, {
     addonType: "prepend",
     text: true
-  }, __jsx$U(Icon, {
+  }, __jsx$T(Icon, {
     size: "md",
     icon: "search",
     prefix: prefix
-  })), __jsx$U(FormField, {
+  })), __jsx$T(FormField, {
     errors: errors,
     name: "query",
     placeholder: placeholder,
     register: register,
     type: type
-  }), appendSearchIcon && __jsx$U(InputGroupAddon, {
+  }), appendSearchIcon && __jsx$T(InputGroupAddon, {
     addonType: "append",
     text: true
-  }, __jsx$U(Icon, {
+  }, __jsx$T(Icon, {
     icon: "search",
     size: "md",
     prefix: prefix
-  })), appendSearchButton && __jsx$U(InputGroupAddon, {
+  })), appendSearchButton && __jsx$T(InputGroupAddon, {
     addonType: "append"
-  }, __jsx$U(Button, {
+  }, __jsx$T(Button, {
     content: label || 'Search',
     context: "dark",
     size: "sm",
@@ -13110,14 +13114,14 @@ Search.defaultProps = {
   type: 'search'
 };
 
-var __jsx$V = React.createElement;
+var __jsx$U = React__default['default'].createElement;
 var SelectCountryField = function SelectCountryField(_ref) {
   var errors = _ref.errors,
       name = _ref.name,
       register = _ref.register,
       props = _objectWithoutProperties(_ref, ["errors", "name", "register"]);
 
-  return __jsx$V(SelectField, _extends({
+  return __jsx$U(SelectField, _extends({
     errors: errors,
     name: name,
     options: COUNTRY,
@@ -13130,8 +13134,8 @@ SelectCountryField.propTypes = {
   register: propTypes.func.isRequired
 };
 
-var __jsx$W = React.createElement;
-var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
+var __jsx$V = React__default['default'].createElement;
+var SelectField = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var data = _ref.data,
       defaultValue = _ref.defaultValue,
       disabled = _ref.disabled,
@@ -13145,14 +13149,14 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
       props = _objectWithoutProperties(_ref, ["data", "defaultValue", "disabled", "errors", "name", "options", "placeholder", "range", "showError", "size"]);
 
   var renderRange = function renderRange() {
-    var options = [__jsx$W("option", {
+    var options = [__jsx$V("option", {
       disabled: true,
       value: "",
       key: "initial0"
     }, placeholder)];
 
-    _range(range[1], range[0]).map(function (i) {
-      return options.push(__jsx$W("option", {
+    _range__default['default'](range[1], range[0]).map(function (i) {
+      return options.push(__jsx$V("option", {
         key: "range".concat(i),
         value: i
       }, i));
@@ -13174,13 +13178,13 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
           value = _ref2.value;
 
       if (group) {
-        return __jsx$W("optgroup", {
+        return __jsx$V("optgroup", {
           key: "option".concat(group),
           label: group
         }, renderOptions(items));
       }
 
-      return __jsx$W("option", {
+      return __jsx$V("option", {
         children: text,
         disabled: disabled,
         key: "option".concat(value),
@@ -13189,7 +13193,7 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     });
   };
 
-  return __jsx$W(FieldHOC, _extends({
+  return __jsx$V(FieldHOC, _extends({
     component: StyledSelect,
     defaultValue: defaultValue,
     disabled: disabled,
@@ -13200,7 +13204,7 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     size: size
   }, data, props), range && range.length > 0 && renderRange(), options && renderOptions());
 });
-var StyledSelect = styled.select.withConfig({
+var StyledSelect = styled__default['default'].select.withConfig({
   displayName: "Select__StyledSelect",
   componentId: "sc-113skpa-0"
 })(["", " ", " ", ""], function (props) {
@@ -13210,20 +13214,20 @@ var StyledSelect = styled.select.withConfig({
 
   switch (size) {
     case SIZE.SM:
-      return css(["height:1.5rem;font-size:0.625rem;"]);
+      return styled.css(["height:1.5rem;font-size:0.625rem;"]);
 
     case SIZE.MD:
-      return css(["height:1.875rem;"]);
+      return styled.css(["height:1.875rem;"]);
 
     case SIZE.LG:
-      return css(["height:2.25rem;"]);
+      return styled.css(["height:2.25rem;"]);
 
     default:
-      return css(["height:2.25rem;"]);
+      return styled.css(["height:2.25rem;"]);
   }
 }, function (_ref4) {
   var errors = _ref4.errors;
-  return errors && css(["", ""], function (props) {
+  return errors && styled.css(["", ""], function (props) {
     return ERROR_STYLE(props);
   });
 });
@@ -13245,7 +13249,7 @@ SelectField.defaultProps = {
   showError: false
 };
 
-var __jsx$X = React.createElement;
+var __jsx$W = React__default['default'].createElement;
 var TextareaField = function TextareaField(_ref) {
   var autoFocus = _ref.autoFocus,
       className = _ref.className,
@@ -13263,7 +13267,7 @@ var TextareaField = function TextareaField(_ref) {
       spellCheck = _ref.spellCheck,
       tabIndex = _ref.tabIndex,
       wrap = _ref.wrap;
-  return __jsx$X(FieldHOC, {
+  return __jsx$W(FieldHOC, {
     autoFocus: autoFocus,
     className: className,
     cols: cols,
@@ -13283,7 +13287,7 @@ var TextareaField = function TextareaField(_ref) {
     wrap: wrap
   });
 };
-var StyledTextarea = styled.textarea.withConfig({
+var StyledTextarea = styled__default['default'].textarea.withConfig({
   displayName: "textarea__StyledTextarea",
   componentId: "sc-12e9yj7-0"
 })(["", " direction:", ";display:block;font-size:1rem;line-height:2rem;", " ", ""], function (props) {
@@ -13293,12 +13297,12 @@ var StyledTextarea = styled.textarea.withConfig({
   return dir;
 }, function (_ref3) {
   var errors = _ref3.errors;
-  return errors && css(["", ""], function (props) {
+  return errors && styled.css(["", ""], function (props) {
     return ERROR_STYLE(props);
   });
 }, function (_ref4) {
   var size = _ref4.size;
-  return size === SIZE.SM && css(["font-size:0.625rem;"]);
+  return size === SIZE.SM && styled.css(["font-size:0.625rem;"]);
 });
 TextareaField.propTypes = {
   autoFocus: propTypes.bool,
@@ -13333,13 +13337,13 @@ var yup = require('yup');
 var _require$1 = require('@hookform/resolvers'),
     yupResolver = _require$1.yupResolver;
 
-var __jsx$Y = React.createElement;
+var __jsx$X = React__default['default'].createElement;
 
 var renderItem = function renderItem(_ref, index, current, handleCurrent) {
   var body = _ref.body,
       context = _ref.context,
       title = _ref.title;
-  return __jsx$Y(AccordionItem, {
+  return __jsx$X(AccordionItem, {
     key: index,
     context: context,
     open: current.includes(index),
@@ -13361,7 +13365,7 @@ var Body = function Body(_ref2) {
     return _.open;
   });
 
-  var _useState = useState(initialOpen > -1 ? [initialOpen] : []),
+  var _useState = React.useState(initialOpen > -1 ? [initialOpen] : []),
       current = _useState[0],
       setCurrent = _useState[1];
 
@@ -13384,8 +13388,8 @@ var Body = function Body(_ref2) {
   var map = [];
 
   if (children) {
-    map = Children.map(children, function (child, index) {
-      return /*#__PURE__*/cloneElement(child, {
+    map = React.Children.map(children, function (child, index) {
+      return /*#__PURE__*/React.cloneElement(child, {
         index: index,
         key: index,
         open: current.includes(index),
@@ -13410,16 +13414,16 @@ var Accordion = function Accordion(_ref3) {
       style = _ref3.style,
       closeOthersOnOpen = _ref3.closeOthersOnOpen;
   //  moved the body component  and its dependants outside because StyledAccordion doesn't need to be rendered on every single change of body state
-  return __jsx$Y(StyledAccordion, {
+  return __jsx$X(StyledAccordion, {
     className: className,
     style: style
-  }, __jsx$Y(Body, {
+  }, __jsx$X(Body, {
     children: children,
     data: data,
     closeOthersOnOpen: closeOthersOnOpen
   }));
 };
-var StyledAccordion = styled.div.withConfig({
+var StyledAccordion = styled__default['default'].div.withConfig({
   displayName: "accordion__StyledAccordion",
   componentId: "zg6lk6-0"
 })(["border:1px solid rgba(0,0,0,0.125);border-radius:0.25rem;"]);
@@ -13431,8 +13435,8 @@ Accordion.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$Z = React.createElement;
-var AccordionItem = /*#__PURE__*/memo(function (_ref) {
+var __jsx$Y = React__default['default'].createElement;
+var AccordionItem = /*#__PURE__*/React.memo(function (_ref) {
   var children = _ref.children,
       className = _ref.className,
       context = _ref.context,
@@ -13440,19 +13444,19 @@ var AccordionItem = /*#__PURE__*/memo(function (_ref) {
       index = _ref.index,
       open = _ref.open,
       title = _ref.title;
-  return __jsx$Z(StyledAccordionItem, {
+  return __jsx$Y(StyledAccordionItem, {
     className: className
-  }, __jsx$Z(Header, {
+  }, __jsx$Y(Header, {
     className: open ? 'opened' : 'closed',
     onClick: function onClick() {
       return handleOpen(index);
     },
     context: context || 'dark'
-  }, title, ' ', __jsx$Z(HeaderIcon, {
+  }, title, ' ', __jsx$Y(HeaderIcon, {
     "aria-hidden": "true",
     context: "white",
     icon: open ? 'chevron-up' : 'chevron-down'
-  })), __jsx$Z(Content, {
+  })), __jsx$Y(Content, {
     className: open ? 'opened' : 'closed'
   }, children));
 }, function (_ref2, _ref3) {
@@ -13462,11 +13466,11 @@ var AccordionItem = /*#__PURE__*/memo(function (_ref) {
       nextContext = _ref3.context;
   return prevOpenState === nextOpenState && prevContext === nextContext;
 });
-var StyledAccordionItem = styled.div.withConfig({
+var StyledAccordionItem = styled__default['default'].div.withConfig({
   displayName: "accordionItem__StyledAccordionItem",
   componentId: "sc-8aj890-0"
 })(["&:last-child header.closed{border:0;}"]);
-var Header = styled.header.withConfig({
+var Header = styled__default['default'].header.withConfig({
   displayName: "accordionItem__Header",
   componentId: "sc-8aj890-1"
 })(["background-color:", ";border-bottom:1px solid ", ";color:", ";cursor:pointer;font-size:1rem;padding:0.75rem 1.25rem;"], function (_ref4) {
@@ -13480,11 +13484,11 @@ var Header = styled.header.withConfig({
       theme = _ref5.theme;
   return context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white;
 });
-var HeaderIcon = styled(Icon).withConfig({
+var HeaderIcon = styled__default['default'](Icon).withConfig({
   displayName: "accordionItem__HeaderIcon",
   componentId: "sc-8aj890-2"
 })(["float:right;"]);
-var Content = styled.div.withConfig({
+var Content = styled__default['default'].div.withConfig({
   displayName: "accordionItem__Content",
   componentId: "sc-8aj890-3"
 })(["box-sizing:border-box;max-height:0;overflow:hidden;&.opened{max-height:fit-content;padding:1.25rem;}"]);
@@ -13502,7 +13506,7 @@ AccordionItem["default"] = {
   open: false
 };
 
-var __jsx$_ = React.createElement;
+var __jsx$Z = React__default['default'].createElement;
 var Alert = function Alert(_ref) {
   var className = _ref.className,
       close = _ref.close,
@@ -13513,7 +13517,7 @@ var Alert = function Alert(_ref) {
       iconPrefix = _ref.iconPrefix,
       style = _ref.style;
 
-  var _useState = useState(true),
+  var _useState = React.useState(true),
       visible = _useState[0],
       setVisible = _useState[1];
 
@@ -13522,27 +13526,27 @@ var Alert = function Alert(_ref) {
     close && close();
   };
 
-  return visible && __jsx$_(StyledAlert, {
+  return visible && __jsx$Z(StyledAlert, {
     className: className,
     context: context,
     style: style
-  }, close && __jsx$_(StyledClose, {
+  }, close && __jsx$Z(StyledClose, {
     click: handleClose,
     context: "white",
     header: header,
     icon: "times"
-  }), header && __jsx$_(AlertHeader, {
+  }), header && __jsx$Z(AlertHeader, {
     context: context,
     header: header,
     icon: icon,
     iconPrefix: iconPrefix
-  }), __jsx$_(AlertContent, {
+  }), __jsx$Z(AlertContent, {
     content: content,
     icon: header ? null : icon,
     iconPrefix: iconPrefix
   }));
 };
-var StyledAlert = styled.div.withConfig({
+var StyledAlert = styled__default['default'].div.withConfig({
   displayName: "alert__StyledAlert",
   componentId: "aamjtz-0"
 })(["", " border:1px solid ", ";border-radius:0.25rem;color:", ";position:relative;"], function (props) {
@@ -13555,7 +13559,7 @@ var StyledAlert = styled.div.withConfig({
       theme = _ref3.theme;
   return shadeLinearRgb(-0.8, theme.COLOUR[context]);
 });
-var StyledClose = styled(Close).withConfig({
+var StyledClose = styled__default['default'](Close).withConfig({
   displayName: "alert__StyledClose",
   componentId: "aamjtz-1"
 })(["margin:0;position:absolute;right:0;top:", ";"], function (_ref4) {
@@ -13575,19 +13579,19 @@ Alert.defaultProps = {
   context: 'primary'
 };
 
-var __jsx$$ = React.createElement;
+var __jsx$_ = React__default['default'].createElement;
 var AlertContent = function AlertContent(_ref) {
   var content = _ref.content,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$$(StyledAlertContent, null, icon && __jsx$$(Icon, {
+  return __jsx$_(StyledAlertContent, null, icon && __jsx$_(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
     prefix: iconPrefix
   }), content);
 };
-var StyledAlertContent = styled.div.withConfig({
+var StyledAlertContent = styled__default['default'].div.withConfig({
   displayName: "content__StyledAlertContent",
   componentId: "sc-1ipm4sm-0"
 })(["padding:0.75rem 1.25rem;"]);
@@ -13597,22 +13601,22 @@ AlertContent.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$10 = React.createElement;
+var __jsx$$ = React__default['default'].createElement;
 var AlertHeader = function AlertHeader(_ref) {
   var context = _ref.context,
       header = _ref.header,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$10(StyledHeader, {
+  return __jsx$$(StyledHeader, {
     context: context
-  }, icon && __jsx$10(Icon, {
+  }, icon && __jsx$$(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
     prefix: iconPrefix
   }), " ", header);
 };
-var StyledHeader = styled.div.withConfig({
+var StyledHeader = styled__default['default'].div.withConfig({
   displayName: "header__StyledHeader",
   componentId: "sc-16vasow-0"
 })(["background:", ";border-top-left-radius:0.25rem;border-top-right-radius:0.25rem;color:#fff;font-weight:600;letter-spacing:1px;padding:0.5rem 1.25rem;"], function (_ref2) {
@@ -13627,38 +13631,38 @@ AlertHeader.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$11 = React.createElement;
+var __jsx$10 = React__default['default'].createElement;
 var Breadcrumb = function Breadcrumb(_ref) {
   var category = _ref.category,
       path = _ref.path,
       page = _ref.page;
   var categoryFormatted = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-  return __jsx$11("nav", {
+  return __jsx$10("nav", {
     "aria-label": "breadcrumb"
-  }, __jsx$11(StyledOl, {
+  }, __jsx$10(StyledOl, {
     itemScope: "",
     itemType: "http://schema.org/BreadcrumbList"
-  }, __jsx$11(StyledLi, {
+  }, __jsx$10(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$11(Link, {
+  }, __jsx$10(Link, {
     to: "/",
     passHref: true
-  }, __jsx$11(StyledA, {
+  }, __jsx$10(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, __jsx$11(Icon, {
+  }, __jsx$10(Icon, {
     icon: "home-heart"
-  }))), __jsx$11("meta", {
+  }))), __jsx$10("meta", {
     itemProp: "position",
     content: "1"
-  })), __jsx$11(StyledLi, {
+  })), __jsx$10(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$11(Link, {
+  }, __jsx$10(Link, {
     to: {
       as: "/blog/".concat(slugify(path)),
       href: {
@@ -13669,34 +13673,34 @@ var Breadcrumb = function Breadcrumb(_ref) {
       }
     },
     passHref: true
-  }, __jsx$11(StyledA, {
+  }, __jsx$10(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, categoryFormatted)), __jsx$11("meta", {
+  }, categoryFormatted)), __jsx$10("meta", {
     itemProp: "position",
     content: "2"
-  })), __jsx$11(StyledLi, {
+  })), __jsx$10(StyledLi, {
     "aria-current": "page",
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$11("span", {
+  }, __jsx$10("span", {
     itemProp: "name"
-  }, page), __jsx$11("meta", {
+  }, page), __jsx$10("meta", {
     itemProp: "position",
     content: "3"
   }))));
 };
-var StyledA = styled.span.withConfig({
+var StyledA = styled__default['default'].span.withConfig({
   displayName: "breadcrumb__StyledA",
   componentId: "sc-1p4h6tg-0"
 })(["color:#fff;&:hover{color:#00ccbc;}"]);
-var StyledOl = styled.ol.withConfig({
+var StyledOl = styled__default['default'].ol.withConfig({
   displayName: "breadcrumb__StyledOl",
   componentId: "sc-1p4h6tg-1"
 })(["background-color:rgba(62,62,62,0.5);border-bottom:1px #aaa solid;border-radius:0;color:#fff;display:flex;flex-wrap:wrap;list-style:none;margin:0;padding:0.75rem 1rem;position:absolute;top:0;width:100%;z-index:1;"]);
-var StyledLi = styled.li.withConfig({
+var StyledLi = styled__default['default'].li.withConfig({
   displayName: "breadcrumb__StyledLi",
   componentId: "sc-1p4h6tg-2"
 })(["&:not(:first-child)::before{color:#ccc;content:'/';display:inline-block;padding-left:0.5rem;padding-right:0.5rem;}"]);
@@ -13706,7 +13710,7 @@ Breadcrumb.propTypes = {
   path: propTypes.string.isRequired
 };
 
-var __jsx$12 = React.createElement;
+var __jsx$11 = React__default['default'].createElement;
 var Buttons = function Buttons(_ref) {
   var back = _ref.back,
       backText = _ref.backText,
@@ -13715,26 +13719,26 @@ var Buttons = function Buttons(_ref) {
       nextText = _ref.nextText,
       pathBack = _ref.pathBack,
       pathNext = _ref.pathNext;
-  return __jsx$12(React.Fragment, null, __jsx$12(Divider, {
+  return __jsx$11(React__default['default'].Fragment, null, __jsx$11(Divider, {
     size: "sm"
-  }), back && __jsx$12(Link, {
+  }), back && __jsx$11(Link, {
     to: pathBack
-  }, __jsx$12(Button, {
+  }, __jsx$11(Button, {
     context: "secondary",
     size: "lg"
-  }, backText)), next && __jsx$12("div", {
+  }, backText)), next && __jsx$11("div", {
     className: "float-right"
-  }, pathNext && __jsx$12(Link, {
+  }, pathNext && __jsx$11(Link, {
     to: pathNext
-  }, __jsx$12(Button, {
+  }, __jsx$11(Button, {
     context: "primary",
     size: "lg"
-  }, nextText)), !pathNext && __jsx$12(Button, {
+  }, nextText)), !pathNext && __jsx$11(Button, {
     context: "primary",
     disabled: nextDisabled,
     size: "lg",
     type: "submit"
-  }, nextText)), __jsx$12("div", {
+  }, nextText)), __jsx$11("div", {
     style: {
       clear: 'both',
       marginBottom: '1rem'
@@ -13755,28 +13759,28 @@ Buttons.defaultProps = {
   nextText: 'Next'
 };
 
-var __jsx$13 = React.createElement;
+var __jsx$12 = React__default['default'].createElement;
 var CardCTA = function CardCTA(_ref) {
   var func = _ref.func,
       link = _ref.link,
       title = _ref.title;
 
   var CtaButton = function CtaButton(props) {
-    return __jsx$13(StyledButton$3, _extends({
+    return __jsx$12(StyledButton$3, _extends({
       content: title,
       context: "secondary"
     }, props));
   };
 
-  return link ? __jsx$13(Link, {
+  return link ? __jsx$12(Link, {
     border: false,
     passHref: true,
     to: link
-  }, __jsx$13(CtaButton, null)) : __jsx$13(CtaButton, {
+  }, __jsx$12(CtaButton, null)) : __jsx$12(CtaButton, {
     onClick: func
   });
 };
-var StyledButton$3 = styled(Button).withConfig({
+var StyledButton$3 = styled__default['default'](Button).withConfig({
   displayName: "cta__StyledButton",
   componentId: "sc-1yle9v9-0"
 })(["display:block;margin-top:0.5rem;"]);
@@ -13789,7 +13793,7 @@ CardCTA.defaultProps = {
   title: 'Read more'
 };
 
-var __jsx$14 = React.createElement;
+var __jsx$13 = React__default['default'].createElement;
 var CardBody = function CardBody(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -13801,37 +13805,37 @@ var CardBody = function CardBody(_ref) {
       showCta = _ref.showCta,
       title = _ref.title,
       titleNoWrap = _ref.titleNoWrap;
-  return __jsx$14(StyledBody$1, {
+  return __jsx$13(StyledBody$1, {
     className: className,
     center: center
-  }, title && __jsx$14(StyledWrapper, null, __jsx$14(StyledTitle, {
+  }, title && __jsx$13(StyledWrapper, null, __jsx$13(StyledTitle, {
     content: title,
     noWrap: titleNoWrap,
     tag: "h2"
-  })), (children || showCta) && __jsx$14(StyledContent$1, {
+  })), (children || showCta) && __jsx$13(StyledContent$1, {
     context: context
-  }, children, showCta && __jsx$14(CardCTA, {
+  }, children, showCta && __jsx$13(CardCTA, {
     func: ctaFunc,
     link: ctaLink,
     title: ctaTitle
   })));
 };
-var StyledBody$1 = styled.div.withConfig({
+var StyledBody$1 = styled__default['default'].div.withConfig({
   displayName: "body__StyledBody",
   componentId: "r9ylmd-0"
 })(["", ""], function (_ref2) {
   var center = _ref2.center;
   return center && "\n    align-items: center;\n    display: flex;\n    justify-content: center;\n    flex: 1 1 auto;\n    text-align: center;\n  ";
 });
-var StyledWrapper = styled.div.withConfig({
+var StyledWrapper = styled__default['default'].div.withConfig({
   displayName: "body__StyledWrapper",
   componentId: "r9ylmd-1"
 })(["display:flex;"]);
-var StyledTitle = styled(Heading).withConfig({
+var StyledTitle = styled__default['default'](Heading).withConfig({
   displayName: "body__StyledTitle",
   componentId: "r9ylmd-2"
 })(["margin:24px auto 16px auto;text-align:center;width:75%;"]);
-var StyledContent$1 = styled.div.withConfig({
+var StyledContent$1 = styled__default['default'].div.withConfig({
   displayName: "body__StyledContent",
   componentId: "r9ylmd-3"
 })(["padding:1rem;"]);
@@ -13892,7 +13896,7 @@ var CardDefaultProps = {
   titleNoWrap: false
 };
 
-var __jsx$15 = React.createElement;
+var __jsx$14 = React__default['default'].createElement;
 
 function _templateObject$3() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex: 1 0 calc(100%/3 - 30px);\n    flex-direction: column;\n    margin-right: 15px;\n    margin-left: 15px;\n  "]);
@@ -13930,7 +13934,7 @@ var Card = function Card(_ref) {
       to = _ref.to;
 
   var linked = function linked() {
-    return __jsx$15(Link, {
+    return __jsx$14(Link, {
       border: false,
       passHref: true,
       to: to
@@ -13938,7 +13942,7 @@ var Card = function Card(_ref) {
   };
 
   var card = function card() {
-    return __jsx$15(StyledCard, {
+    return __jsx$14(StyledCard, {
       bordered: bordered,
       className: className,
       context: context,
@@ -13946,18 +13950,18 @@ var Card = function Card(_ref) {
       rounded: rounded,
       shadow: shadow,
       style: style
-    }, close && __jsx$15(Close, {
+    }, close && __jsx$14(Close, {
       click: close
-    }), image && __jsx$15(CardImage, {
+    }), image && __jsx$14(CardImage, {
       alt: alt,
       src: image
-    }), header && __jsx$15(CardHeader, {
+    }), header && __jsx$14(CardHeader, {
       content: header,
       context: footerContext
-    }), icon && __jsx$15(StyledIcon$3, {
+    }), icon && __jsx$14(StyledIcon$3, {
       icon: icon,
       size: "4x"
-    }), (title || body) && __jsx$15(CardBody, {
+    }), (title || body) && __jsx$14(CardBody, {
       center: center,
       children: body,
       context: context,
@@ -13967,7 +13971,7 @@ var Card = function Card(_ref) {
       showCta: showCta,
       title: title,
       titleNoWrap: titleNoWrap
-    }), children, footer && __jsx$15(CardFooter, {
+    }), children, footer && __jsx$14(CardFooter, {
       children: footer,
       context: footerContext
     }));
@@ -13975,7 +13979,7 @@ var Card = function Card(_ref) {
 
   return to ? linked() : card();
 };
-var StyledCard = styled.div.withConfig({
+var StyledCard = styled__default['default'].div.withConfig({
   displayName: "card__StyledCard",
   componentId: "sc-7z4bwp-0"
 })(["background-clip:border-box;background-color:", ";border:", ";border-radius:", ";box-shadow:", ";color:", ";display:flex;flex-direction:column;font-size:inherit;margin:0;min-width:0;position:relative;word-wrap:break-word;overflow:hidden;", ""], function (_ref2) {
@@ -13999,14 +14003,14 @@ var StyledCard = styled.div.withConfig({
   var deck = _ref7.deck;
   return deck && MEDIA_QUERY.desktop(_templateObject$3());
 });
-var StyledIcon$3 = styled(Icon).withConfig({
+var StyledIcon$3 = styled__default['default'](Icon).withConfig({
   displayName: "card__StyledIcon",
   componentId: "sc-7z4bwp-1"
 })(["margin:1rem auto;"]);
 Card.propTypes = CardPropTypes;
 Card.defaultProps = CardDefaultProps;
 
-var __jsx$16 = React.createElement;
+var __jsx$15 = React__default['default'].createElement;
 
 function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n    flex-flow: row wrap;\n    margin-left: -15px;\n    margin-right: -15px;\n  "]);
@@ -14019,9 +14023,9 @@ function _templateObject$4() {
 }
 var CardDecks = function CardDecks(_ref) {
   var children = _ref.children;
-  return __jsx$16(StyledDecks, null, children);
+  return __jsx$15(StyledDecks, null, children);
 };
-var StyledDecks = styled.div.withConfig({
+var StyledDecks = styled__default['default'].div.withConfig({
   displayName: "decks__StyledDecks",
   componentId: "sc-1or8ba2-0"
 })(["display:flex;flex-direction:column;", ""], MEDIA_QUERY.desktop(_templateObject$4()));
@@ -14029,15 +14033,15 @@ CardDecks.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var __jsx$17 = React.createElement;
+var __jsx$16 = React__default['default'].createElement;
 var CardFooter = function CardFooter(_ref) {
   var children = _ref.children,
       context = _ref.context;
-  return __jsx$17(StyledFooter$1, {
+  return __jsx$16(StyledFooter$1, {
     context: context
   }, children);
 };
-var StyledFooter$1 = styled.div.withConfig({
+var StyledFooter$1 = styled__default['default'].div.withConfig({
   displayName: "footer__StyledFooter",
   componentId: "h0mvsc-0"
 })(["align-items:center;background-color:", ";border-top:1px solid rgba(0,0,0,0.125);border-radius:0 0 0.25rem 0.25rem;color:", ";display:flex;justify-content:center;margin-top:auto;min-height:4.5rem;padding:0.75rem;text-align:center;"], function (_ref2) {
@@ -14057,15 +14061,15 @@ CardFooter.defaultProps = {
   context: 'light'
 };
 
-var __jsx$18 = React.createElement;
+var __jsx$17 = React__default['default'].createElement;
 var CardHeader = function CardHeader(_ref) {
   var content = _ref.content,
       context = _ref.context;
-  return __jsx$18(StyledHeader$1, {
+  return __jsx$17(StyledHeader$1, {
     context: context
   }, content);
 };
-var StyledHeader$1 = styled.h2.withConfig({
+var StyledHeader$1 = styled__default['default'].h2.withConfig({
   displayName: "header__StyledHeader",
   componentId: "sc-1h2ryx5-0"
 })(["background-color:", ";border-bottom:1px solid rgba(0,0,0,0.125);border-radius:0.25rem 0.25rem 0 0;color:", ";font-size:1.25rem;margin:0;padding:0.75rem 0.5rem;text-align:center;"], function (_ref2) {
@@ -14082,23 +14086,23 @@ CardHeader.propTypes = {
   context: propTypes.oneOf(Object.values(CONTEXT))
 };
 
-var __jsx$19 = React.createElement;
+var __jsx$18 = React__default['default'].createElement;
 var CardImage = function CardImage(_ref) {
   var alt = _ref.alt,
       header = _ref.header,
       src = _ref.src;
-  return __jsx$19(StyledContainer$1, null, __jsx$19(StyledImage$1, {
+  return __jsx$18(StyledContainer$1, null, __jsx$18(StyledImage$1, {
     alt: alt,
     fluid: false,
     imageClasses: "rounded",
     src: src
   }, header));
 };
-var StyledContainer$1 = styled.div.withConfig({
+var StyledContainer$1 = styled__default['default'].div.withConfig({
   displayName: "image__StyledContainer",
   componentId: "sc-1341tnt-0"
 })(["align-items:flex-start;display:flex;flex-direction:column;flex-wrap:wrap;"]);
-var StyledImage$1 = styled(Image$1).withConfig({
+var StyledImage$1 = styled__default['default'](Image$1).withConfig({
   displayName: "image__StyledImage",
   componentId: "sc-1341tnt-1"
 })(["display:block;object-fit:cover;width:100%;.rounded{border-radius:0.25rem 0.25rem 0 0;border-style:none;}"]);
@@ -14107,18 +14111,18 @@ CardImage.propTypes = {
   src: propTypes.string.isRequired
 };
 
-var __jsx$1a = React.createElement;
+var __jsx$19 = React__default['default'].createElement;
 var HighChart = function HighChart(_ref) {
   var options = _ref.options,
       constructorType = _ref.constructorType;
-  return __jsx$1a(HighchartsReact, {
-    highcharts: Highcharts,
+  return __jsx$19(HighchartsReact__default['default'], {
+    highcharts: Highcharts__default['default'],
     options: options,
     constructorType: constructorType
   });
 };
 
-var __jsx$1b = React.createElement;
+var __jsx$1a = React__default['default'].createElement;
 
 var BarComponent = function BarComponent(_ref) {
   var theme = _ref.theme,
@@ -14126,7 +14130,7 @@ var BarComponent = function BarComponent(_ref) {
 
   var BARCHART = theme.BARCHART;
   var _props$colorBy = props.colorBy,
-      colorBy = _props$colorBy === void 0 ? BarDefaultProps.colorBy : _props$colorBy,
+      colorBy = _props$colorBy === void 0 ? bar.BarDefaultProps.colorBy : _props$colorBy,
       colorScheme = props.colorScheme,
       data = props.data,
       _props$enableGridY = props.enableGridY,
@@ -14134,27 +14138,27 @@ var BarComponent = function BarComponent(_ref) {
       _props$enableGridX = props.enableGridX,
       enableGridX = _props$enableGridX === void 0 ? BARCHART.enableGridX : _props$enableGridX,
       _props$groupMode = props.groupMode,
-      groupMode = _props$groupMode === void 0 ? BarDefaultProps.groupMode : _props$groupMode,
+      groupMode = _props$groupMode === void 0 ? bar.BarDefaultProps.groupMode : _props$groupMode,
       _props$indexBy = props.indexBy,
-      indexBy = _props$indexBy === void 0 ? BarDefaultProps.indexBy : _props$indexBy,
+      indexBy = _props$indexBy === void 0 ? bar.BarDefaultProps.indexBy : _props$indexBy,
       _props$isInteractive = props.isInteractive,
       isInteractive = _props$isInteractive === void 0 ? BARCHART.isInteractive : _props$isInteractive,
       _props$keys = props.keys,
-      keys = _props$keys === void 0 ? BarDefaultProps.keys : _props$keys,
+      keys = _props$keys === void 0 ? bar.BarDefaultProps.keys : _props$keys,
       _props$label = props.label,
-      label = _props$label === void 0 ? BarDefaultProps.label : _props$label,
+      label = _props$label === void 0 ? bar.BarDefaultProps.label : _props$label,
       _props$layout = props.layout,
-      layout = _props$layout === void 0 ? BarDefaultProps.layout : _props$layout,
+      layout = _props$layout === void 0 ? bar.BarDefaultProps.layout : _props$layout,
       _props$minValue = props.minValue,
-      minValue = _props$minValue === void 0 ? BarDefaultProps.minValue : _props$minValue,
+      minValue = _props$minValue === void 0 ? bar.BarDefaultProps.minValue : _props$minValue,
       _props$maxValue = props.maxValue,
-      maxValue = _props$maxValue === void 0 ? BarDefaultProps.maxValue : _props$maxValue,
+      maxValue = _props$maxValue === void 0 ? bar.BarDefaultProps.maxValue : _props$maxValue,
       _props$reverse = props.reverse,
-      reverse = _props$reverse === void 0 ? BarDefaultProps.reverse : _props$reverse,
+      reverse = _props$reverse === void 0 ? bar.BarDefaultProps.reverse : _props$reverse,
       showLegend = props.showLegend,
       _props$tooltip = props.tooltip,
-      tooltip = _props$tooltip === void 0 ? BarDefaultProps.tooltip : _props$tooltip;
-  return __jsx$1b(ResponsiveBar, {
+      tooltip = _props$tooltip === void 0 ? bar.BarDefaultProps.tooltip : _props$tooltip;
+  return __jsx$1a(bar.ResponsiveBar, {
     animate: BARCHART.animate,
     axisBottom: BARCHART.axisBottom.call(props),
     axisLeft: BARCHART.axisLeft.call(props),
@@ -14191,28 +14195,28 @@ var BarComponent = function BarComponent(_ref) {
  */
 
 
-BarPropTypes.getBorderColor = propTypes.func;
-BarPropTypes.getColor = propTypes.func;
-BarPropTypes.getIndex = propTypes.func;
-BarPropTypes.getLabel = propTypes.func;
-BarPropTypes.getLabelTextColor = propTypes.func;
-BarPropTypes.getLabelLinkColor = propTypes.func;
-BarPropTypes.getTooltipLabel = propTypes.func;
-var BarChart = withTheme(BarComponent);
+bar.BarPropTypes.getBorderColor = propTypes.func;
+bar.BarPropTypes.getColor = propTypes.func;
+bar.BarPropTypes.getIndex = propTypes.func;
+bar.BarPropTypes.getLabel = propTypes.func;
+bar.BarPropTypes.getLabelTextColor = propTypes.func;
+bar.BarPropTypes.getLabelLinkColor = propTypes.func;
+bar.BarPropTypes.getTooltipLabel = propTypes.func;
+var BarChart = styled.withTheme(BarComponent);
 BarChart.displayName = 'BarChart';
-BarChart.propTypes = Object.assign({}, BarPropTypes, {
+BarChart.propTypes = Object.assign({}, bar.BarPropTypes, {
   bottomLegend: propTypes.string,
-  colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+  colorScheme: propTypes.oneOf(Object.keys(colors.colorSchemes)),
   leftLegend: propTypes.string,
   showLegend: propTypes.bool
 });
-BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
+BarChart.defaultProps = Object.assign({}, bar.BarDefaultProps, {
   colorScheme: 'nivo',
   showLegend: false
 });
 
-var __jsx$1c = React.createElement;
-var LineChart = withTheme(function (_ref) {
+var __jsx$1b = React__default['default'].createElement;
+var LineChart = styled.withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
 
@@ -14249,8 +14253,8 @@ var LineChart = withTheme(function (_ref) {
       pointSize = _props$pointSize === void 0 ? LINECHART.pointSize : _props$pointSize,
       showLegend = props.showLegend,
       _props$tooltip = props.tooltip,
-      tooltip = _props$tooltip === void 0 ? LineDefaultProps.tooltip : _props$tooltip;
-  return __jsx$1c(ResponsiveLine, {
+      tooltip = _props$tooltip === void 0 ? line.LineDefaultProps.tooltip : _props$tooltip;
+  return __jsx$1b(line.ResponsiveLine, {
     areaOpacity: areaOpacity,
     axisTop: axisTop,
     axisRight: axisRight,
@@ -14285,20 +14289,20 @@ var LineChart = withTheme(function (_ref) {
   });
 });
 LineChart.displayName = 'LineChart';
-LineChart.propTypes = Object.assign({}, LinePropTypes, {
+LineChart.propTypes = Object.assign({}, line.LinePropTypes, {
   // TODO: maybe write more custom schemes :)
   bottomLegend: propTypes.string,
-  colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+  colorScheme: propTypes.oneOf(Object.keys(colors.colorSchemes)),
   leftLegend: propTypes.string,
   showLegend: propTypes.bool
 });
-LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
+LineChart.defaultProps = Object.assign({}, line.LineDefaultProps, {
   colorScheme: 'nivo',
   showLegend: false
 });
 
-var __jsx$1d = React.createElement;
-var PieChart = withTheme(function (_ref) {
+var __jsx$1c = React__default['default'].createElement;
+var PieChart = styled.withTheme(function (_ref) {
   var theme = _ref.theme,
       props = _objectWithoutProperties(_ref, ["theme"]);
 
@@ -14342,8 +14346,8 @@ var PieChart = withTheme(function (_ref) {
       showLegend = props.showLegend,
       sortByValue = props.sortByValue,
       _props$tooltip = props.tooltip,
-      tooltip = _props$tooltip === void 0 ? PieDefaultProps.tooltip : _props$tooltip;
-  return __jsx$1d(ResponsivePie, {
+      tooltip = _props$tooltip === void 0 ? pie.PieDefaultProps.tooltip : _props$tooltip;
+  return __jsx$1c(pie.ResponsivePie, {
     animate: animate,
     onClick: onClick,
     data: data,
@@ -14378,32 +14382,32 @@ var PieChart = withTheme(function (_ref) {
   });
 });
 PieChart.displayName = 'PieChart';
-PieChart.propTypes = Object.assign({}, PiePropTypes, {
-  colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+PieChart.propTypes = Object.assign({}, pie.PiePropTypes, {
+  colorScheme: propTypes.oneOf(Object.keys(colors.colorSchemes)),
   showLegend: propTypes.bool
 });
-PieChart.defaultProps = Object.assign({}, PieDefaultProps, {
+PieChart.defaultProps = Object.assign({}, pie.PieDefaultProps, {
   colorScheme: 'nivo',
   showLegend: false
 });
 
-var __jsx$1e = React.createElement;
+var __jsx$1d = React__default['default'].createElement;
 var CarouselArrow = function CarouselArrow(_ref) {
   var clickFunction = _ref.clickFunction,
       context = _ref.context,
       direction = _ref.direction,
       icon = _ref.icon,
       position = _ref.position;
-  return __jsx$1e(StyledContainer$2, {
+  return __jsx$1d(StyledContainer$2, {
     direction: direction,
     onClick: clickFunction
-  }, __jsx$1e(StyledArrow, {
+  }, __jsx$1d(StyledArrow, {
     context: context,
     icon: icon,
     position: position
   }));
 };
-var StyledContainer$2 = styled.div.withConfig({
+var StyledContainer$2 = styled__default['default'].div.withConfig({
   displayName: "arrow__StyledContainer",
   componentId: "xu0mw9-0"
 })(["position:absolute;top:0;", " background:linear-gradient(", "deg,rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 100%);height:100%;width:80px;display:flex;justify-content:center;cursor:pointer;z-index:1;padding:1rem 0;&:hover{background:linear-gradient(", "deg,rgba(0,0,0,0.2) 0%,rgba(255,255,255,0) 100%);}"], function (_ref2) {
@@ -14416,7 +14420,7 @@ var StyledContainer$2 = styled.div.withConfig({
   var direction = _ref4.direction;
   return direction === 'left' ? 90 : 270;
 });
-var StyledArrow = styled(Icon).withConfig({
+var StyledArrow = styled__default['default'](Icon).withConfig({
   displayName: "arrow__StyledArrow",
   componentId: "xu0mw9-1"
 })(["color:", ";align-self:center;", " ", " &&{font-size:2rem;}"], function (_ref5) {
@@ -14425,10 +14429,10 @@ var StyledArrow = styled(Icon).withConfig({
   return COLOUR[context];
 }, function (_ref6) {
   var position = _ref6.position;
-  return position === 'top' && css(["align-self:flex-start;"]);
+  return position === 'top' && styled.css(["align-self:flex-start;"]);
 }, function (_ref7) {
   var position = _ref7.position;
-  return position === 'bottom' && css(["align-self:flex-end;"]);
+  return position === 'bottom' && styled.css(["align-self:flex-end;"]);
 });
 CarouselArrow.propTypes = {
   clickFunction: propTypes.func.isRequired,
@@ -14438,17 +14442,17 @@ CarouselArrow.propTypes = {
   position: propTypes.string.isRequired
 };
 
-var __jsx$1f = React.createElement;
+var __jsx$1e = React__default['default'].createElement;
 var CarouselSlide = function CarouselSlide(_ref) {
   var children = _ref.children,
       onClick = _ref.onClick,
       style = _ref.style;
-  return __jsx$1f(StyledSlide, {
+  return __jsx$1e(StyledSlide, {
     onClick: onClick,
     style: style
   }, children);
 };
-var StyledSlide = styled.div.withConfig({
+var StyledSlide = styled__default['default'].div.withConfig({
   displayName: "slide__StyledSlide",
   componentId: "k3xq9p-0"
 })(["position:relative;height:100%;width:100%;overflow:hidden;user-select:none;img{width:100%;}"]);
@@ -14458,22 +14462,22 @@ CarouselSlide.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$1g = React.createElement;
+var __jsx$1f = React__default['default'].createElement;
 var CarouselSampleSlide = function CarouselSampleSlide(_ref) {
   var context = _ref.context,
       img = _ref.img,
       node = _ref.node,
       text = _ref.text;
   if (!img && !text) return null;
-  return __jsx$1g(CarouselSlide, null, node, text && __jsx$1g(StyledText$2, {
+  return __jsx$1f(CarouselSlide, null, node, text && __jsx$1f(StyledText$2, {
     content: text,
     context: context,
     size: "xl"
-  }), img && __jsx$1g(Image$1, {
+  }), img && __jsx$1f(Image$1, {
     src: img
   }));
 };
-var StyledText$2 = styled(Text).withConfig({
+var StyledText$2 = styled__default['default'](Text).withConfig({
   displayName: "sample__StyledText",
   componentId: "sc-1qpc17m-0"
 })(["position:absolute;top:2em;left:2em;"]);
@@ -14547,7 +14551,7 @@ var CarouselDefaultProps = {
   showPagination: false
 };
 
-var __jsx$1h = React.createElement;
+var __jsx$1g = React__default['default'].createElement;
 var Carousel = function Carousel(_ref) {
   var arrowContext = _ref.arrowContext,
       arrowPosition = _ref.arrowPosition,
@@ -14563,7 +14567,7 @@ var Carousel = function Carousel(_ref) {
       slides = _ref.slides,
       width = _ref.width;
 
-  var _useState = useState(0),
+  var _useState = React.useState(0),
       currentImageIndex = _useState[0],
       setCurrentImageIndex = _useState[1];
 
@@ -14584,17 +14588,17 @@ var Carousel = function Carousel(_ref) {
   };
 
   var renderPagination = function renderPagination() {
-    return __jsx$1h(PaginationWrapper, null, __jsx$1h(Pagination, _extends({
+    return __jsx$1g(PaginationWrapper, null, __jsx$1g(Pagination, _extends({
       onPageChange: function onPageChange(page) {
         return setCurrentImageIndex(page - 1);
       },
       currentPage: currentImageIndex + 1,
       pageCount: dataSource.length,
       showNextAndPrev: true,
-      prevLabel: __jsx$1h(Icon, {
+      prevLabel: __jsx$1g(Icon, {
         icon: "chevron-left"
       }),
-      nextLabel: __jsx$1h(Icon, {
+      nextLabel: __jsx$1g(Icon, {
         icon: "chevron-right"
       }),
       size: "xs"
@@ -14603,17 +14607,17 @@ var Carousel = function Carousel(_ref) {
 
   var hasNavigation = Array.isArray(dataSource) && dataSource.length > 1;
   var current = dataSource[currentImageIndex];
-  return __jsx$1h(React.Fragment, null, __jsx$1h(Wrapper$3, {
+  return __jsx$1g(React__default['default'].Fragment, null, __jsx$1g(Wrapper$2, {
     width: width,
     height: height,
     fullWidth: fullWidth
-  }, hasNavigation && showArrows && __jsx$1h(CarouselArrow, {
+  }, hasNavigation && showArrows && __jsx$1g(CarouselArrow, {
     context: arrowContext,
     clickFunction: previousSlide,
     direction: "left",
     icon: leftArrowIcon,
     position: arrowPosition
-  }), slides ? __jsx$1h(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1h(CarouselArrow, {
+  }), slides ? __jsx$1g(CarouselSampleSlide, current) : current || children, hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination(), hasNavigation && showArrows && __jsx$1g(CarouselArrow, {
     context: arrowContext,
     clickFunction: nextSlide,
     direction: "right",
@@ -14621,7 +14625,7 @@ var Carousel = function Carousel(_ref) {
     position: arrowPosition
   })), hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination());
 };
-var Wrapper$3 = styled.div.withConfig({
+var Wrapper$2 = styled__default['default'].div.withConfig({
   displayName: "carousel__Wrapper",
   componentId: "sc-1656prh-0"
 })(["height:", ";min-height:", ";margin:0;position:relative;width:", ";"], function (_ref2) {
@@ -14635,14 +14639,14 @@ var Wrapper$3 = styled.div.withConfig({
       fullWidth = _ref4.fullWidth;
   return fullWidth ? '100%' : width;
 });
-var PaginationWrapper = styled.div.withConfig({
+var PaginationWrapper = styled__default['default'].div.withConfig({
   displayName: "carousel__PaginationWrapper",
   componentId: "sc-1656prh-1"
 })(["margin:1rem 0;width:100%;box-sizing:border-box;"]);
 Carousel.propTypes = CarouselPropTypes;
 Carousel.defaultProps = CarouselDefaultProps;
 
-var __jsx$1i = React.createElement;
+var __jsx$1h = React__default['default'].createElement;
 var year = new Date().getFullYear();
 var Copyright = function Copyright(_ref) {
   var brand = _ref.brand,
@@ -14654,24 +14658,24 @@ var Copyright = function Copyright(_ref) {
     return links.map(function (_ref2, index) {
       var name = _ref2.name,
           to = _ref2.to;
-      return __jsx$1i(Link, {
+      return __jsx$1h(Link, {
         key: index,
         passHref: true,
         to: to
-      }, __jsx$1i(StyledLink$1, null, name));
+      }, __jsx$1h(StyledLink$1, null, name));
     });
   };
 
-  return __jsx$1i(StyledCopyright, {
+  return __jsx$1h(StyledCopyright, {
     fixed: fixed,
     "data-cy": "copyright"
-  }, __jsx$1i(StyledContainer$3, null, __jsx$1i(Row, null, __jsx$1i(Column, {
+  }, __jsx$1h(StyledContainer$3, null, __jsx$1h(Row, null, __jsx$1h(Column, {
     md: links.length > 0 ? 3 : 12
-  }, __jsx$1i(StyledBrand, null, __jsx$1i(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1i(Column, {
+  }, __jsx$1h(StyledBrand, null, __jsx$1h(StyledIcon$4, icon), year, " \u2014 ", brand)), links.length > 0 && __jsx$1h(Column, {
     md: 9
   }, renderLinks()))));
 };
-var StyledCopyright = styled.section.withConfig({
+var StyledCopyright = styled__default['default'].section.withConfig({
   displayName: "copyright__StyledCopyright",
   componentId: "yqlm33-0"
 })(["background-color:", ";color:", ";font-size:0.75rem;", ""], function (_ref3) {
@@ -14682,21 +14686,21 @@ var StyledCopyright = styled.section.withConfig({
   return theme.COPYRIGHT.colour;
 }, function (_ref5) {
   var fixed = _ref5.fixed;
-  return fixed && css(["bottom:0;position:fixed;left:0;width:100%;z-index:1;"]);
+  return fixed && styled.css(["bottom:0;position:fixed;left:0;width:100%;z-index:1;"]);
 });
-var StyledContainer$3 = styled(Container).withConfig({
+var StyledContainer$3 = styled__default['default'](Container).withConfig({
   displayName: "copyright__StyledContainer",
   componentId: "yqlm33-1"
 })(["height:3.5rem;"]);
-var StyledBrand = styled.div.withConfig({
+var StyledBrand = styled__default['default'].div.withConfig({
   displayName: "copyright__StyledBrand",
   componentId: "yqlm33-2"
 })(["display:flex;justify-content:center;"]);
-var StyledIcon$4 = styled(Icon).withConfig({
+var StyledIcon$4 = styled__default['default'](Icon).withConfig({
   displayName: "copyright__StyledIcon",
   componentId: "yqlm33-3"
 })(["margin:auto 0;padding-right:0.25rem;"]);
-var StyledLink$1 = styled.span.withConfig({
+var StyledLink$1 = styled__default['default'].span.withConfig({
   displayName: "copyright__StyledLink",
   componentId: "yqlm33-4"
 })(["margin-right:1.5rem;"]);
@@ -14720,7 +14724,7 @@ Copyright.defaultProps = {
   links: []
 };
 
-var __jsx$1j = React.createElement;
+var __jsx$1i = React__default['default'].createElement;
 var DogCard = function DogCard(_ref) {
   var breed = _ref.breed,
       breedName = _ref.breedName,
@@ -14733,7 +14737,7 @@ var DogCard = function DogCard(_ref) {
       sell = _ref.sell;
   var breederSlug = slugify(breeder);
   var nameSlug = slugify(name);
-  return __jsx$1j(Card, {
+  return __jsx$1i(Card, {
     alt: breed,
     bordered: true,
     context: "light",
@@ -14750,12 +14754,12 @@ var DogCard = function DogCard(_ref) {
         }
       }
     }
-  }, __jsx$1j(CardBody, null, __jsx$1j(DogName, {
+  }, __jsx$1i(CardBody, null, __jsx$1i(DogName, {
     row: {
       gender: gender,
       name: name
     }
-  }), sell && __jsx$1j("div", {
+  }), sell && __jsx$1i("div", {
     className: "float-right"
   }, formatPrice(price))));
 };
@@ -14771,7 +14775,7 @@ DogCard.propTypes = {
   sell: propTypes.bool
 };
 
-var __jsx$1k = React.createElement;
+var __jsx$1j = React__default['default'].createElement;
 var DogLink = function DogLink(_ref) {
   var name = _ref.name;
 
@@ -14781,7 +14785,7 @@ var DogLink = function DogLink(_ref) {
   };
 
   var slug = slugify(name);
-  return __jsx$1k(Link, {
+  return __jsx$1j(Link, {
     to: {
       as: "/dogs/breeds/".concat(slug),
       href: {
@@ -14797,12 +14801,12 @@ DogLink.propTypes = {
   name: propTypes.string.isRequired
 };
 
-var __jsx$1l = React.createElement;
+var __jsx$1k = React__default['default'].createElement;
 var DogName = function DogName(_ref) {
   var _ref$row = _ref.row,
       gender = _ref$row.gender,
       name = _ref$row.name;
-  return __jsx$1l(React.Fragment, null, __jsx$1l(Icon, {
+  return __jsx$1k(React__default['default'].Fragment, null, __jsx$1k(Icon, {
     context: gender,
     icon: gender === 'male' ? 'mars' : 'venus',
     size: "lg",
@@ -14817,7 +14821,7 @@ DogName.propTypes = {
   row: propTypes.oneOfType([propTypes.array, propTypes.object]).isRequired
 };
 
-var __jsx$1m = React.createElement;
+var __jsx$1l = React__default['default'].createElement;
 var Actions = function Actions(_ref) {
   var path = _ref.path,
       row = _ref.row;
@@ -14825,7 +14829,7 @@ var Actions = function Actions(_ref) {
       uId = row.uId;
 
   var action = function action(_action, context, icon, route, tooltip) {
-    return __jsx$1m(Link, {
+    return __jsx$1l(Link, {
       to: {
         href: {
           pathname: "".concat(path, "/").concat(route),
@@ -14837,14 +14841,14 @@ var Actions = function Actions(_ref) {
           }
         }
       }
-    }, __jsx$1m(Tooltip, {
+    }, __jsx$1l(Tooltip, {
       content: tooltip
-    }, __jsx$1m(Button, {
+    }, __jsx$1l(Button, {
       "data-tip": tooltip,
       context: context,
       size: "sm",
       title: _action
-    }, __jsx$1m(Icon, {
+    }, __jsx$1l(Icon, {
       context: "white",
       icon: icon,
       style: {
@@ -14853,7 +14857,7 @@ var Actions = function Actions(_ref) {
     }))));
   };
 
-  return __jsx$1m(React.Fragment, null, __jsx$1m(ButtonToolbar, {
+  return __jsx$1l(React__default['default'].Fragment, null, __jsx$1l(ButtonToolbar, {
     className: "float-right"
   }, action('Edit', 'primary', 'edit', 'details', 'Edit this dogs profile details'), action('Photos', 'secondary', 'images', 'photos', 'Add or Edit this dogs photos'), action('Health', 'info', 'stethoscope', 'health', 'Add or Edit this dogs health details'), action('Delete', 'danger', 'trash', 'delete', 'Delete this dog')));
 };
@@ -14887,18 +14891,18 @@ var Columns = function Columns(actions, name) {
   }];
 };
 
-var __jsx$1n = React.createElement;
+var __jsx$1m = React__default['default'].createElement;
 var TableDogs = function TableDogs(_ref) {
   var dogs = _ref.dogs,
       path = _ref.path;
-  return __jsx$1n(Table, {
+  return __jsx$1m(Table, {
     columns: Columns(function (row) {
-      return __jsx$1n(Actions, {
+      return __jsx$1m(Actions, {
         path: path,
         row: row
       });
     }, function (row) {
-      return __jsx$1n(DogName, {
+      return __jsx$1m(DogName, {
         row: row
       });
     }),
@@ -14906,7 +14910,7 @@ var TableDogs = function TableDogs(_ref) {
   });
 };
 
-var __jsx$1o = React.createElement;
+var __jsx$1n = React__default['default'].createElement;
 var elementTypes = {
   Colour: 'colour',
   List: 'list',
@@ -14921,11 +14925,11 @@ var Dropdown = function Dropdown(_ref) {
       onChange = _ref.onChange,
       position = _ref.position;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       open = _useState[0],
       setOpen = _useState[1];
 
-  var node = useRef();
+  var node = React.useRef();
 
   var handleClickAway = function handleClickAway(event) {
     if (node.current.contains(event.target)) {
@@ -14935,7 +14939,7 @@ var Dropdown = function Dropdown(_ref) {
     setOpen(false);
   };
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (open) {
       document.addEventListener('mousedown', handleClickAway);
     } else {
@@ -14946,20 +14950,20 @@ var Dropdown = function Dropdown(_ref) {
       document.removeEventListener('mousedown', handleClickAway);
     };
   }, [open]);
-  return __jsx$1o(StyledDropdown, {
+  return __jsx$1n(StyledDropdown, {
     className: className,
     ref: node
-  }, __jsx$1o(StyledToggle$1, {
+  }, __jsx$1n(StyledToggle$1, {
     className: "".concat(open ? 'dropdown--active' : '', " dropdown--toggle"),
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }, children, caret && __jsx$1o(Icon, {
+  }, children, caret && __jsx$1n(Icon, {
     "aria-hidden": "true",
     className: "dropdown--caret",
     icon: position === Position.Top ? 'caret-up' : 'caret-down',
     prefix: "fas"
-  }), items && open && __jsx$1o(DropdownMenu, {
+  }), items && open && __jsx$1n(DropdownMenu, {
     closeDropdown: function closeDropdown() {
       return setOpen(false);
     },
@@ -14969,11 +14973,11 @@ var Dropdown = function Dropdown(_ref) {
     onItemClick: onChange
   })));
 };
-var StyledDropdown = styled.div.withConfig({
+var StyledDropdown = styled__default['default'].div.withConfig({
   displayName: "dropdown__StyledDropdown",
   componentId: "tcetc7-0"
 })(["display:inline-block;position:relative;"]);
-var StyledToggle$1 = styled.div.withConfig({
+var StyledToggle$1 = styled__default['default'].div.withConfig({
   displayName: "dropdown__StyledToggle",
   componentId: "tcetc7-1"
 })(["color:", ";cursor:pointer;display:inline-block;line-height:1.5;text-decoration:none;"], function (_ref2) {
@@ -14994,7 +14998,7 @@ Dropdown.defaultProps = {
   position: 'left'
 };
 
-var __jsx$1p = React.createElement;
+var __jsx$1o = React__default['default'].createElement;
 var DropdownMenu = function DropdownMenu(_ref) {
   var closeDropdown = _ref.closeDropdown,
       elementType = _ref.elementType,
@@ -15007,17 +15011,17 @@ var DropdownMenu = function DropdownMenu(_ref) {
     closeDropdown();
   };
 
-  return __jsx$1p(StyledDropdownMenu, {
+  return __jsx$1o(StyledDropdownMenu, {
     elementType: elementType,
     className: "dropdown--menu",
     position: position
-  }, __jsx$1p(TooltipRectangle, {
+  }, __jsx$1o(TooltipRectangle, {
     position: position
-  }), __jsx$1p(TooltipRectangle, {
+  }), __jsx$1o(TooltipRectangle, {
     position: position,
     border: true
   }), items.map(function (item) {
-    return __jsx$1p(DropdownItem, {
+    return __jsx$1o(DropdownItem, {
       closeDropdown: closeDropdown,
       elementType: elementType,
       item: item,
@@ -15028,43 +15032,43 @@ var DropdownMenu = function DropdownMenu(_ref) {
     });
   }));
 };
-var StyledDropdownMenu = styled.div.withConfig({
+var StyledDropdownMenu = styled__default['default'].div.withConfig({
   displayName: "menu__StyledDropdownMenu",
   componentId: "sc-11f1boj-0"
 })(["background:#fff;", " border-radius:0.25rem;left:0;margin-top:1px;min-width:8rem;padding:0.5rem 0;position:absolute;top:100%;z-index:1;box-shadow:0px 2px 8px rgba(0,0,0,0.15);", " ", ""], function (_ref2) {
   var theme = _ref2.theme;
-  return css(["border:1px solid ", ";"], theme.DROPDOWN.BORDER_COLOUR);
+  return styled.css(["border:1px solid ", ";"], theme.DROPDOWN.BORDER_COLOUR);
 }, function (_ref3) {
   var position = _ref3.position;
-  return position && css(["left:", ";right:", ";", ""], position === Position.Right ? 'auto' : '0', position === Position.Right ? '0' : 'auto', position === Position.Top && css(["bottom:100%;top:unset;"]));
+  return position && styled.css(["left:", ";right:", ";", ""], position === Position.Right ? 'auto' : '0', position === Position.Right ? '0' : 'auto', position === Position.Top && styled.css(["bottom:100%;top:unset;"]));
 }, function (_ref4) {
   var elementType = _ref4.elementType;
-  return (elementType === elementTypes.Colour || elementType === elementTypes.Icon) && css(["box-shadow:rgba(0,0,0,0.15) 0px 3px 12px;display:grid;padding:5px;grid-template-columns:repeat(8,2rem);grid-template-rows:repeat(3,2rem);"]);
+  return (elementType === elementTypes.Colour || elementType === elementTypes.Icon) && styled.css(["box-shadow:rgba(0,0,0,0.15) 0px 3px 12px;display:grid;padding:5px;grid-template-columns:repeat(8,2rem);grid-template-rows:repeat(3,2rem);"]);
 });
 var dist = '0.625rem';
 var size = '0.875rem';
-var TooltipRectangle = styled.div.withConfig({
+var TooltipRectangle = styled__default['default'].div.withConfig({
   displayName: "menu__TooltipRectangle",
   componentId: "sc-11f1boj-1"
 })(["", " border-image:initial;border-style:solid;border-width:0.438rem;position:absolute;", ""], function (_ref5) {
   var border = _ref5.border;
-  return css(["border-color:transparent transparent ", ";"], border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)');
+  return styled.css(["border-color:transparent transparent ", ";"], border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)');
 }, function (_ref6) {
   var position = _ref6.position,
       border = _ref6.border;
 
   switch (position) {
     case Position.Bottom:
-      return css(["top:calc(-", " - ", ");left:", ";"], size, border ? '0px' : '1px', dist);
+      return styled.css(["top:calc(-", " - ", ");left:", ";"], size, border ? '0px' : '1px', dist);
 
     case Position.Top:
-      return css(["bottom:calc(-", " - ", ");left:", ";transform:rotateX(180deg);"], size, border ? '0px' : '1px', dist);
+      return styled.css(["bottom:calc(-", " - ", ");left:", ";transform:rotateX(180deg);"], size, border ? '0px' : '1px', dist);
 
     case Position.Left:
-      return css(["display:none;bottom:", ";right:calc(-", " - ", ");transform:rotateZ(90deg);"], size, size, border ? '0px' : '1px');
+      return styled.css(["display:none;bottom:", ";right:calc(-", " - ", ");transform:rotateZ(90deg);"], size, size, border ? '0px' : '1px');
 
     case Position.Right:
-      return css(["display:none;bottom:", ";left:calc(-", " - ", ");transform:rotateZ(-90deg);"], size, size, border ? '0px' : '1px');
+      return styled.css(["display:none;bottom:", ";left:calc(-", " - ", ");transform:rotateZ(-90deg);"], size, size, border ? '0px' : '1px');
   }
 });
 DropdownMenu.propTypes = {
@@ -15074,7 +15078,7 @@ DropdownMenu.propTypes = {
   position: propTypes.oneOf([Position.Top, Position.Right, Position.Bottom, Position.Left])
 };
 
-var __jsx$1q = React.createElement;
+var __jsx$1p = React__default['default'].createElement;
 
 var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
   var id = _ref.id,
@@ -15082,14 +15086,14 @@ var renderItem$1 = function renderItem(_ref, closeDropdown, onClick) {
       to = _ref.to;
 
   var item = function item() {
-    return __jsx$1q(StyledLink$2, {
+    return __jsx$1p(StyledLink$2, {
       className: "dropdown--link",
       id: id,
       onClick: onClick
     }, name);
   };
 
-  return to ? __jsx$1q(Link, {
+  return to ? __jsx$1p(Link, {
     border: false,
     passHref: true,
     to: to
@@ -15104,12 +15108,12 @@ var DropdownItem = function DropdownItem(_ref2) {
 
   switch (elementType) {
     case elementTypes.List:
-      return __jsx$1q(StyledDropdownItem, {
+      return __jsx$1p(StyledDropdownItem, {
         divider: item.divider
-      }, item.divider ? __jsx$1q(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
+      }, item.divider ? __jsx$1p(StyledDivider, null) : renderItem$1(item, closeDropdown, _onClick));
 
     case elementTypes.Colour:
-      return __jsx$1q(StyledColourItem, {
+      return __jsx$1p(StyledColourItem, {
         colour: item.colour,
         onClick: function onClick() {
           _onClick(item);
@@ -15117,9 +15121,9 @@ var DropdownItem = function DropdownItem(_ref2) {
       });
 
     case elementTypes.Icon:
-      return __jsx$1q(StyledIconItem, {
+      return __jsx$1p(StyledIconItem, {
         onClick: _onClick
-      }, __jsx$1q(Icon, {
+      }, __jsx$1p(Icon, {
         fixedWidth: false,
         icon: item === null || item === void 0 ? void 0 : item.icon,
         prefix: item === null || item === void 0 ? void 0 : item.prefix
@@ -15129,7 +15133,7 @@ var DropdownItem = function DropdownItem(_ref2) {
       return 'invalid elementType';
   }
 };
-var StyledIconItem = styled.div.withConfig({
+var StyledIconItem = styled__default['default'].div.withConfig({
   displayName: "item__StyledIconItem",
   componentId: "w8w3k4-0"
 })(["border:1px solid ", ";height:2rem;line-height:2rem;text-align:center;width:2rem;&:hover{border:1px solid ", ";}"], function (_ref3) {
@@ -15139,31 +15143,31 @@ var StyledIconItem = styled.div.withConfig({
   var theme = _ref4.theme;
   return theme.COLOUR.dark;
 });
-var StyledColourItem = styled.div.withConfig({
+var StyledColourItem = styled__default['default'].div.withConfig({
   displayName: "item__StyledColourItem",
   componentId: "w8w3k4-1"
 })(["height:2em;width:2rem;", " ", ""], function (_ref5) {
   var colour = _ref5.colour,
       theme = _ref5.theme;
-  return css(["background-color:", ";&:hover{border:1px solid ", ";}"], colour, theme.COLOUR.white);
+  return styled.css(["background-color:", ";&:hover{border:1px solid ", ";}"], colour, theme.COLOUR.white);
 }, function (_ref6) {
   var colour = _ref6.colour,
       theme = _ref6.theme;
   var size = '0.5rem';
-  return colour === 'transparent' && css(["background-image:linear-gradient(45deg,#808080 25%,transparent 25%),linear-gradient(-45deg,#808080 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#808080 75%),linear-gradient(-45deg,transparent 75%,#808080 75%);background-size:", " ", ";background-position:0 0,0 ", ",", " -", ",-", " 0px;"], size, size, size, size, size, size);
+  return colour === 'transparent' && styled.css(["background-image:linear-gradient(45deg,#808080 25%,transparent 25%),linear-gradient(-45deg,#808080 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#808080 75%),linear-gradient(-45deg,transparent 75%,#808080 75%);background-size:", " ", ";background-position:0 0,0 ", ",", " -", ",-", " 0px;"], size, size, size, size, size, size);
 });
-var StyledDropdownItem = styled.div.withConfig({
+var StyledDropdownItem = styled__default['default'].div.withConfig({
   displayName: "item__StyledDropdownItem",
   componentId: "w8w3k4-2"
 })(["line-height:1.5;white-space:nowrap;", ""], function (_ref7) {
   var divider = _ref7.divider;
-  return divider && css(["padding:0;"]);
+  return divider && styled.css(["padding:0;"]);
 });
-var StyledDivider = styled.div.withConfig({
+var StyledDivider = styled__default['default'].div.withConfig({
   displayName: "item__StyledDivider",
   componentId: "w8w3k4-3"
 })(["border-top:1px solid #33475b;height:0;margin:0.5rem;overflow:hidden;"]);
-var StyledLink$2 = styled.span.withConfig({
+var StyledLink$2 = styled__default['default'].span.withConfig({
   displayName: "item__StyledLink",
   componentId: "w8w3k4-4"
 })(["color:", ";display:block;padding:0.25rem 1.5rem;&:hover{background-color:#f8f9fa;color:inherit;}"], function (_ref8) {
@@ -16597,7 +16601,7 @@ module.exports = exports.default;
  * For Node.js, simply re-export the core `util.deprecate` function.
  */
 
-var node$1 = util$1.deprecate;
+var node$1 = util__default['default'].deprecate;
 
 var attribute = createCommonjsModule(function (module, exports) {
 
@@ -19254,7 +19258,7 @@ module.exports = exports.default;
 
 var index = /*@__PURE__*/unwrapExports(dist$1);
 
-var __jsx$1r = React.createElement;
+var __jsx$1q = React__default['default'].createElement;
 
 function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19265,18 +19269,18 @@ var EmojiMart = function EmojiMart(_ref) {
       handleOpenPicker = _ref.handleOpenPicker,
       open = _ref.open,
       style = _ref.style;
-  var node = useRef();
+  var node = React.useRef();
 
   var handleClickAway = function handleClickAway(e) {
     e.preventDefault();
-    var domNode = ReactDOM.findDOMNode(node.current);
+    var domNode = ReactDOM__default['default'].findDOMNode(node.current);
 
     if (domNode.contains(encodeURIComponent.target)) {
       handleOpenPicker(false);
     }
   };
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (open && closeOnClickOut) {
       document.addEventListener('mousedown', handleClickAway);
     } else {
@@ -19294,7 +19298,7 @@ var EmojiMart = function EmojiMart(_ref) {
     handleOpenPicker(false);
   };
 
-  return open && __jsx$1r(Picker, {
+  return open && __jsx$1q(emojiMart.Picker, {
     emoji: "",
     emojiSize: 16,
     include: ['foods', 'people', 'recent', 'nature'],
@@ -19324,12 +19328,12 @@ EmojiMart.defaultProps = {
   open: false
 };
 
-var __jsx$1s = React.createElement;
+var __jsx$1r = React__default['default'].createElement;
 
 function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
+var GetAddress = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var apiKey = _ref.apiKey,
       error = _ref.error,
       change = _ref.change,
@@ -19339,17 +19343,17 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
       selectAddress = _ref.selectAddress;
   console.log(form);
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       loading = _useState[0],
       setLoading = _useState[1];
 
-  var _useState2 = useState({
+  var _useState2 = React.useState({
     data: []
   }),
       addresses = _useState2[0],
       setAddresses = _useState2[1];
 
-  useImperativeHandle(ref, function () {
+  React.useImperativeHandle(ref, function () {
     return {
       removeWhitespace: function removeWhitespace(postcode) {
         return postcode.replace(/\s/g, '');
@@ -19381,9 +19385,9 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   });
 
   var input = function input() {
-    return __jsx$1s(FormLabel, {
+    return __jsx$1r(FormLabel, {
       label: "Postcode"
-    }, __jsx$1s(FormField, {
+    }, __jsx$1r(FormField, {
       onChange: change,
       name: "postcode",
       value: form.postcode
@@ -19391,7 +19395,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   };
 
   var button = function button() {
-    return __jsx$1s(Button, {
+    return __jsx$1r(Button, {
       content: "Find your address",
       context: "primary",
       onClick: handleFindAddress,
@@ -19415,9 +19419,9 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
           text: 'Select address',
           value: ''
         });
-        return __jsx$1s(React.Fragment, null, __jsx$1s("p", null), __jsx$1s(FormLabel, {
+        return __jsx$1r(React__default['default'].Fragment, null, __jsx$1r("p", null), __jsx$1r(FormLabel, {
           label: "Select your address"
-        }, __jsx$1s(SelectField, {
+        }, __jsx$1r(SelectField, {
           onChange: handlePopulateAddress,
           name: "addresses",
           options: reduced,
@@ -19454,58 +19458,58 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
       return changedInputs.map(function (_ref2) {
         var label = _ref2.label,
             id = _ref2.id;
-        return __jsx$1s("span", {
+        return __jsx$1r("span", {
           key: id
-        }, __jsx$1s(FormLabel, {
+        }, __jsx$1r(FormLabel, {
           label: label
-        }, __jsx$1s(FormField, {
+        }, __jsx$1r(FormField, {
           name: id,
           onChange: change,
           value: form[id]
         })));
       });
     } else {
-      return __jsx$1s("span", null);
+      return __jsx$1r("span", null);
     }
   };
 
   var renderError = function renderError() {
     if (!error) return;
-    return __jsx$1s("p", {
+    return __jsx$1r("p", {
       className: "GetAddress-error"
     }, "The postcode was not found");
   };
 
-  return __jsx$1s(React.Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
+  return __jsx$1r(React__default['default'].Fragment, null, input(), button(), renderError(), postcodeAddresses(), addressDetails());
 });
 GetAddress.propTypes = {
   apiKey: propTypes.string.isRequired,
   change: propTypes.func.isRequired
 };
 
-var __jsx$1t = React.createElement;
+var __jsx$1s = React__default['default'].createElement;
 var HeroButtons = function HeroButtons(_ref) {
   var buttons = _ref.buttons;
   return buttons.map(function (_ref2, index) {
     var content = _ref2.content,
         context = _ref2.context,
         to = _ref2.to;
-    return __jsx$1t(StyledLink$3, {
+    return __jsx$1s(StyledLink$3, {
       border: false,
       to: to,
       key: index
-    }, __jsx$1t(StyledButton$4, {
+    }, __jsx$1s(StyledButton$4, {
       content: content,
       context: context,
       size: "lg"
     }));
   });
 };
-var StyledButton$4 = styled(Button).withConfig({
+var StyledButton$4 = styled__default['default'](Button).withConfig({
   displayName: "buttons__StyledButton",
   componentId: "sc-5e7u5g-0"
 })(["margin-right:1rem;"]);
-var StyledLink$3 = styled(Link).withConfig({
+var StyledLink$3 = styled__default['default'](Link).withConfig({
   displayName: "buttons__StyledLink",
   componentId: "sc-5e7u5g-1"
 })(["display:inline-block;"]);
@@ -19513,33 +19517,33 @@ HeroButtons.propTypes = {
   buttons: propTypes.array
 };
 
-var __jsx$1u = React.createElement;
+var __jsx$1t = React__default['default'].createElement;
 var HeroImage = function HeroImage(_ref) {
   var alt = _ref.alt,
       align = _ref.align,
       image = _ref.image,
       width = _ref.width;
-  return __jsx$1u(StyledColumn$1, {
+  return __jsx$1t(StyledColumn$1, {
     align: align,
     md: 6
-  }, __jsx$1u(StyledImageContainer, null, __jsx$1u(StyledImage$2, {
+  }, __jsx$1t(StyledImageContainer, null, __jsx$1t(StyledImage$2, {
     alt: alt,
     src: image,
     width: width
   })));
 };
-var StyledColumn$1 = styled(Column).withConfig({
+var StyledColumn$1 = styled__default['default'](Column).withConfig({
   displayName: "image__StyledColumn",
   componentId: "sc-1oeqzm8-0"
 })(["align-self:", ";"], function (_ref2) {
   var align = _ref2.align;
   return align || 'flex-end';
 });
-var StyledImageContainer = styled.div.withConfig({
+var StyledImageContainer = styled__default['default'].div.withConfig({
   displayName: "image__StyledImageContainer",
   componentId: "sc-1oeqzm8-1"
 })(["display:flex;justify-content:start;margin:10px 0;"]);
-var StyledImage$2 = styled(Image$1).withConfig({
+var StyledImage$2 = styled__default['default'](Image$1).withConfig({
   displayName: "image__StyledImage",
   componentId: "sc-1oeqzm8-2"
 })(["width:", ";height:", ";"], function (_ref3) {
@@ -19555,7 +19559,7 @@ HeroImage.propTypes = {
   width: propTypes.number
 };
 
-var __jsx$1v = React.createElement;
+var __jsx$1u = React__default['default'].createElement;
 
 function _templateObject$5() {
   var data = _taggedTemplateLiteral(["\n    width: 25rem;\n  "]);
@@ -19570,18 +19574,18 @@ var TextBlock = function TextBlock(_ref) {
   var children = _ref.children,
       offset = _ref.offset,
       position = _ref.position;
-  return __jsx$1v(StyledCard$1, {
+  return __jsx$1u(StyledCard$1, {
     rounded: false,
     position: position
-  }, __jsx$1v(CardBody, {
+  }, __jsx$1u(CardBody, {
     children: children
   }));
 };
-var bl = css(["left:6rem;bottom:0;"]);
-var br = css(["right:6rem;bottom:0;"]);
-var tl = css(["left:6rem;top:0;"]);
-var tr = css(["right:6rem;top:0;"]);
-var StyledCard$1 = styled(Card).withConfig({
+var bl = styled.css(["left:6rem;bottom:0;"]);
+var br = styled.css(["right:6rem;bottom:0;"]);
+var tl = styled.css(["left:6rem;top:0;"]);
+var tr = styled.css(["right:6rem;top:0;"]);
+var StyledCard$1 = styled__default['default'](Card).withConfig({
   displayName: "textBlock__StyledCard",
   componentId: "sc-1ugd3xe-0"
 })(["background-color:white;margin:0;opacity:0.95;offset:", ";position:absolute;", " ", ""], function (_ref2) {
@@ -19595,7 +19599,7 @@ TextBlock.propTypes = {
   offset: propTypes.objectOf(propTypes.oneOfType([propTypes.number, propTypes.string]))
 };
 
-var __jsx$1w = React.createElement;
+var __jsx$1v = React__default['default'].createElement;
 
 function _templateObject2$3() {
   var data = _taggedTemplateLiteral(["\n    font-size: 3rem;\n    line-height: 3.25rem;\n  "]);
@@ -19633,34 +19637,34 @@ var Hero = function Hero(_ref) {
       width = _ref.width;
 
   var renderLeft = function renderLeft() {
-    return __jsx$1w(StyledColumn$2, {
+    return __jsx$1v(StyledColumn$2, {
       md: 6
-    }, title && __jsx$1w(StyledTitle$1, {
+    }, title && __jsx$1v(StyledTitle$1, {
       tag: "h1",
       content: title
-    }), strapline && __jsx$1w(StyledStrapline, {
+    }), strapline && __jsx$1v(StyledStrapline, {
       tag: "h2",
       content: strapline
-    }), buttons && __jsx$1w(HeroButtons, {
+    }), buttons && __jsx$1v(HeroButtons, {
       buttons: buttons
-    }), message && __jsx$1w("p", {
+    }), message && __jsx$1v("p", {
       children: message
     }));
   };
 
-  return __jsx$1w(StyledHero, {
+  return __jsx$1v(StyledHero, {
     background: background,
     backgroundSize: backgroundSize,
     className: className,
     height: height
-  }, children && children, !children && __jsx$1w(Container, null, __jsx$1w(Row, null, title && renderLeft(), image && __jsx$1w(HeroImage, {
+  }, children && children, !children && __jsx$1v(Container, null, __jsx$1v(Row, null, title && renderLeft(), image && __jsx$1v(HeroImage, {
     alt: alt,
     align: align,
     image: image,
     width: width
   }))));
 };
-var StyledHero = styled.header.withConfig({
+var StyledHero = styled__default['default'].header.withConfig({
   displayName: "hero__StyledHero",
   componentId: "rxajoc-0"
 })(["background-image:", ";background-position:center;background-size:", ";height:", ";padding:2rem 0 0;position:relative;"], function (_ref2) {
@@ -19673,15 +19677,15 @@ var StyledHero = styled.header.withConfig({
   var height = _ref4.height;
   return height;
 });
-var StyledColumn$2 = styled(Column).withConfig({
+var StyledColumn$2 = styled__default['default'](Column).withConfig({
   displayName: "hero__StyledColumn",
   componentId: "rxajoc-1"
 })(["margin:0 auto;text-align:center;", ""], MEDIA_QUERY.desktop(_templateObject$6()));
-var StyledTitle$1 = styled(Heading).withConfig({
+var StyledTitle$1 = styled__default['default'](Heading).withConfig({
   displayName: "hero__StyledTitle",
   componentId: "rxajoc-2"
 })(["line-height:2.75rem;", ""], MEDIA_QUERY.desktop(_templateObject2$3()));
-var StyledStrapline = styled(Heading).withConfig({
+var StyledStrapline = styled__default['default'](Heading).withConfig({
   displayName: "hero__StyledStrapline",
   componentId: "rxajoc-3"
 })(["font-size:1.25rem;font-weight:normal;line-height:1.5rem;margin:0 0 2rem 0;"]);
@@ -19705,13 +19709,13 @@ Hero.defaultProps = {
   style: {}
 };
 
-var __jsx$1x = React.createElement;
+var __jsx$1w = React__default['default'].createElement;
 var ImageMarker = function ImageMarker(_ref) {
   var _styles$shape, _styles$shape2;
 
   var coordinates = _ref.coordinates,
       styles = _ref.styles;
-  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1x(StyledIcon$5, {
+  return (styles === null || styles === void 0 ? void 0 : styles.shape) ? __jsx$1w(StyledIcon$5, {
     coordinates: coordinates,
     context: "primary",
     icon: styles === null || styles === void 0 ? void 0 : (_styles$shape = styles.shape) === null || _styles$shape === void 0 ? void 0 : _styles$shape.icon,
@@ -19719,15 +19723,15 @@ var ImageMarker = function ImageMarker(_ref) {
     pull: "left",
     styles: styles,
     size: "lg"
-  }) : __jsx$1x(StyledMarker, {
+  }) : __jsx$1w(StyledMarker, {
     coordinates: coordinates,
     styles: styles
   });
 };
-var blinker = keyframes(["50%{opacity:0;}"]);
-var commonMarkerCss = css(["animation:", ";margin-left:", ";margin-top:", ";pointer-events:none;position:absolute;transition-duration:0.2s;transition-property:left,top;", ""], function (_ref2) {
+var blinker = styled.keyframes(["50%{opacity:0;}"]);
+var commonMarkerCss = styled.css(["animation:", ";margin-left:", ";margin-top:", ";pointer-events:none;position:absolute;transition-duration:0.2s;transition-property:left,top;", ""], function (_ref2) {
   var styles = _ref2.styles;
-  return (styles === null || styles === void 0 ? void 0 : styles.animation) === 'blinker' ? css(["", " 1s ease-in-out infinite forwards"], blinker) : '';
+  return (styles === null || styles === void 0 ? void 0 : styles.animation) === 'blinker' ? styled.css(["", " 1s ease-in-out infinite forwards"], blinker) : '';
 }, function (_ref3) {
   var styles = _ref3.styles;
   return '-' + ((styles === null || styles === void 0 ? void 0 : styles.width) ? Number(styles.width.replace('px', '') / 2) + 'px' : '7px');
@@ -19736,16 +19740,16 @@ var commonMarkerCss = css(["animation:", ";margin-left:", ";margin-top:", ";poin
   return '-' + ((styles === null || styles === void 0 ? void 0 : styles.height) ? Number(styles.height.replace('px', '') / 2) + 'px' : '7px');
 }, function (_ref5) {
   var coordinates = _ref5.coordinates;
-  return coordinates && css(["display:block;left:", "%;top:", "%;"], coordinates.x, coordinates.y);
+  return coordinates && styled.css(["display:block;left:", "%;top:", "%;"], coordinates.x, coordinates.y);
 });
-var StyledIcon$5 = styled(Icon).withConfig({
+var StyledIcon$5 = styled__default['default'](Icon).withConfig({
   displayName: "imageMarker__StyledIcon",
   componentId: "svetek-0"
 })(["background-color:white;color:", ";", ""], function (_ref6) {
   var styles = _ref6.styles;
   return (styles === null || styles === void 0 ? void 0 : styles.color) ? styles === null || styles === void 0 ? void 0 : styles.color : 'red';
 }, commonMarkerCss);
-var StyledMarker = styled.div.withConfig({
+var StyledMarker = styled__default['default'].div.withConfig({
   displayName: "imageMarker__StyledMarker",
   componentId: "svetek-1"
 })(["background-color:", ";border-radius:", ";display:none;height:", ";width:", ";", ""], function (_ref7) {
@@ -19793,7 +19797,7 @@ var ImageLocationProps = {
   style: propTypes.object
 };
 
-var __jsx$1y = React.createElement;
+var __jsx$1x = React__default['default'].createElement;
 var ImageLocation = function ImageLocation(_ref) {
   var coordinatesChange = _ref.coordinatesChange,
       initialCoordinates = _ref.initialCoordinates,
@@ -19801,26 +19805,26 @@ var ImageLocation = function ImageLocation(_ref) {
       markerStyles = _ref.markerStyles,
       show = _ref.show;
 
-  var _useState = useState(initialCoordinates),
+  var _useState = React.useState(initialCoordinates),
       coordinates = _useState[0],
       setCoordinates = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     coordinatesChange && item && coordinates && coordinatesChange({
       coordinates: coordinates,
       item: item
     });
   }, [coordinates]);
-  return __jsx$1y(StyledImageLocation, {
+  return __jsx$1x(StyledImageLocation, {
     show: show
-  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1y(ImageWrapper, {
+  }, (item === null || item === void 0 ? void 0 : item.filename) && __jsx$1x(ImageWrapper, {
     coordinates: coordinates,
     markerStyles: markerStyles,
     item: item,
     setCoordinates: setCoordinates
   }));
 };
-var StyledImageLocation = styled.div.withConfig({
+var StyledImageLocation = styled__default['default'].div.withConfig({
   displayName: "imageLocation__StyledImageLocation",
   componentId: "r5ls9o-0"
 })(["display:", ";overflow-x:auto;"], function (_ref2) {
@@ -19832,7 +19836,7 @@ ImageLocation.defaultProps = {
   show: true
 };
 
-var __jsx$1z = React.createElement;
+var __jsx$1y = React__default['default'].createElement;
 var imageHeight = 0;
 var imageWidth = 0;
 var ImageWrapper = function ImageWrapper(_ref) {
@@ -19840,9 +19844,9 @@ var ImageWrapper = function ImageWrapper(_ref) {
       item = _ref.item,
       markerStyles = _ref.markerStyles,
       setCoordinates = _ref.setCoordinates;
-  var imageRef = useRef();
+  var imageRef = React.useRef();
 
-  var _useState = useState(coordinates),
+  var _useState = React.useState(coordinates),
       MarkerCoordinates = _useState[0],
       setMarkerCoordinates = _useState[1];
 
@@ -19860,19 +19864,19 @@ var ImageWrapper = function ImageWrapper(_ref) {
     });
   };
 
-  return __jsx$1z(StyledImageWrapper, null, __jsx$1z(Image$1, {
+  return __jsx$1y(StyledImageWrapper, null, __jsx$1y(Image$1, {
     ref: imageRef,
     onClick: handleImageClick,
     alt: item.name,
     fluid: true,
     src: item.filename
-  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1z(ImageMarker, {
+  }), (MarkerCoordinates === null || MarkerCoordinates === void 0 ? void 0 : MarkerCoordinates.x) && __jsx$1y(ImageMarker, {
     coordinates: MarkerCoordinates,
     key: item.id,
     styles: markerStyles
   }));
 };
-var StyledImageWrapper = styled.div.withConfig({
+var StyledImageWrapper = styled__default['default'].div.withConfig({
   displayName: "imageWrapper__StyledImageWrapper",
   componentId: "sc-15nqse3-0"
 })(["display:inline-block;position:relative;width:100%;", "{width:100%;}"], Image$1);
@@ -19882,7 +19886,7 @@ ImageWrapper.propTypes = {
   setCoordinates: propTypes.func.isRequired
 };
 
-var __jsx$1A = React.createElement;
+var __jsx$1z = React__default['default'].createElement;
 
 function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19894,9 +19898,9 @@ var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
       setValue = _ref.setValue,
       props = _objectWithoutProperties(_ref, ["control", "errors", "setValue"]);
 
-  return __jsx$1A(ControllerWrapper, {
+  return __jsx$1z(ControllerWrapper, {
     className: "".concat(errors && errors[elementName] && 'hasError')
-  }, __jsx$1A(Controller$1, _extends({
+  }, __jsx$1z(reactHookForm.Controller, _extends({
     as: ImageLocation,
     control: control,
     coordinatesChange: function coordinatesChange(imageLocationData) {
@@ -19905,8 +19909,8 @@ var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
     name: elementName
   }, props)));
 };
-var imageAllert = keyframes(["from{filter:invert(0);}to{filter:invert(1);}"]);
-var ControllerWrapper = styled.div.withConfig({
+var imageAllert = styled.keyframes(["from{filter:invert(0);}to{filter:invert(1);}"]);
+var ControllerWrapper = styled__default['default'].div.withConfig({
   displayName: "imageLocationFormElement__ControllerWrapper",
   componentId: "qhiyzk-0"
 })(["&.hasError{box-shadow:0 0 4px red;animation:", " 0.2s linear 2;}"], imageAllert);
@@ -19928,9 +19932,9 @@ var IntercomAPI = function IntercomAPI() {
     window.Intercom.apply(null, args);
   }
 };
-var Intercom = /*#__PURE__*/memo(function (_ref) {
+var Intercom = /*#__PURE__*/React.memo(function (_ref) {
   var appID = _ref.appID;
-  useEffect(function () {
+  React.useEffect(function () {
     if (!appID || !canUseDOM) {
       return;
     }
@@ -19978,7 +19982,7 @@ Intercom.propTypes = {
   appID: propTypes.string.isRequired
 };
 
-var __jsx$1B = React.createElement;
+var __jsx$1A = React__default['default'].createElement;
 
 function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -19989,22 +19993,22 @@ var DynamicLocationHOC = function DynamicLocationHOC(Component) {
     // concat the apiKey
     var googleMapURL = "".concat(props.googleMapURL, "&key=").concat(props.apiKey);
 
-    var containerElement = props.containerElement || __jsx$1B("div", {
+    var containerElement = props.containerElement || __jsx$1A("div", {
       style: {
         height: props.containerHeight,
         width: props.containerWidth
       }
     });
 
-    return __jsx$1B(Component, _extends({}, props, {
+    return __jsx$1A(Component, _extends({}, props, {
       containerElement: containerElement,
       googleMapURL: googleMapURL
     }));
   };
 };
 
-var DynamicLocation = DynamicLocationHOC(withScriptjs(withGoogleMap(function (props) {
-  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1B(GoogleMap, props) : null;
+var DynamicLocation = DynamicLocationHOC(reactGoogleMaps.withScriptjs(reactGoogleMaps.withGoogleMap(function (props) {
+  return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1A(reactGoogleMaps.GoogleMap, props) : null;
 })));
 DynamicLocation.displayName = 'DynamicLocation';
 DynamicLocation.propTypes = _objectSpread$c({
@@ -20016,31 +20020,31 @@ DynamicLocation.propTypes = _objectSpread$c({
   googleMapURL: propTypes.string.isRequired,
   mapElement: propTypes.node.isRequired,
   markers: propTypes.array
-}, GoogleMap.propTypes);
+}, reactGoogleMaps.GoogleMap.propTypes);
 DynamicLocation.defaultProps = {
   googleMapURL: 'https://maps.googleapis.com/maps/api/js?',
-  loadingElement: __jsx$1B("div", {
+  loadingElement: __jsx$1A("div", {
     style: {
       height: '100%'
     }
   }),
   containerHeight: '400px',
   containerWidth: '100%',
-  mapElement: __jsx$1B("div", {
+  mapElement: __jsx$1A("div", {
     style: {
       height: '100%'
     }
   }),
   zoom: 15
 };
-var Marker = Marker$1;
-Marker.propTypes = Marker$1.propTypes;
-var MarkerClusterer = MarkerClusterer$1;
-MarkerClusterer.propTypes = MarkerClusterer$1.propTypes;
-var InfoWindow = InfoWindow$1;
-InfoWindow.propTypes = InfoWindow$1.propTypes;
+var Marker = reactGoogleMaps.Marker;
+Marker.propTypes = reactGoogleMaps.Marker.propTypes;
+var MarkerClusterer = MarkerClusterer$1.MarkerClusterer;
+MarkerClusterer.propTypes = MarkerClusterer$1.MarkerClusterer.propTypes;
+var InfoWindow = reactGoogleMaps.InfoWindow;
+InfoWindow.propTypes = reactGoogleMaps.InfoWindow.propTypes;
 
-var __jsx$1C = React.createElement;
+var __jsx$1B = React__default['default'].createElement;
 var StaticLocation = function StaticLocation(_ref) {
   var apiKey = _ref.apiKey,
       center = _ref.center,
@@ -20069,12 +20073,12 @@ var StaticLocation = function StaticLocation(_ref) {
       width = _size$split2[0],
       height = _size$split2[1];
 
-  var _useState = useState(''),
+  var _useState = React.useState(''),
       mapUrl = _useState[0],
       setMapUrl = _useState[1]; // on mount
 
 
-  useEffect(function () {
+  React.useEffect(function () {
     var map = new StaticMap({
       apiKey: apiKey,
       center: center,
@@ -20097,7 +20101,7 @@ var StaticLocation = function StaticLocation(_ref) {
     var mapUrl = map.generateUrl();
     setMapUrl(mapUrl);
   }, []);
-  return __jsx$1C(Container, {
+  return __jsx$1B(Container, {
     className: className,
     width: width,
     height: height,
@@ -20136,21 +20140,21 @@ StaticLocation.defaultProps = {
   zoom: 15
 };
 
-var __jsx$1D = React.createElement;
+var __jsx$1C = React__default['default'].createElement;
 var Brand = function Brand(_ref) {
   var brand = _ref.brand;
-  return __jsx$1D(StyledLink$4, {
+  return __jsx$1C(StyledLink$4, {
     border: false,
     to: "/",
     passHref: true
-  }, __jsx$1D(Image$1, {
+  }, __jsx$1C(Image$1, {
     alt: "Logo",
     draggable: "false",
     src: brand,
     "data-cy": "navBrand"
   }));
 };
-var StyledLink$4 = styled(Link).withConfig({
+var StyledLink$4 = styled__default['default'](Link).withConfig({
   displayName: "brand__StyledLink",
   componentId: "senape-0"
 })(["display:flex;"]);
@@ -20158,12 +20162,12 @@ Brand.propTypes = {
   brand: propTypes.string.isRequired
 };
 
-var __jsx$1E = React.createElement;
+var __jsx$1D = React__default['default'].createElement;
 var Contained = function Contained(_ref) {
   var content = _ref.content;
-  return __jsx$1E(StyledContainer$4, null, content());
+  return __jsx$1D(StyledContainer$4, null, content());
 };
-var StyledContainer$4 = styled(Container).withConfig({
+var StyledContainer$4 = styled__default['default'](Container).withConfig({
   displayName: "contained__StyledContainer",
   componentId: "sc-1wmpurl-0"
 })(["align-items:center;display:flex;flex-wrap:wrap;justify-content:space-between;width:100%;"]);
@@ -20171,7 +20175,7 @@ Contained.propTypes = {
   content: propTypes.node.isRequired
 };
 
-var __jsx$1F = React.createElement;
+var __jsx$1E = React__default['default'].createElement;
 
 function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -20185,19 +20189,19 @@ function _templateObject$7() {
 var Toggler = function Toggler(_ref) {
   var handleMenuClick = _ref.handleMenuClick,
       visible = _ref.visible;
-  return __jsx$1F(StyledToggler, {
+  return __jsx$1E(StyledToggler, {
     "aria-expanded": visible ? 'false' : 'true',
     "aria-label": "Toggle navigation",
     onClick: handleMenuClick
-  }, !visible ? __jsx$1F(Icon, {
+  }, !visible ? __jsx$1E(Icon, {
     icon: "bars",
     prefix: "fas"
-  }) : __jsx$1F(Icon, {
+  }) : __jsx$1E(Icon, {
     icon: "times",
     prefix: "fas"
-  }), __jsx$1F(StyledText$3, null, "Menu"));
+  }), __jsx$1E(StyledText$3, null, "Menu"));
 };
-var StyledToggler = styled.a.withConfig({
+var StyledToggler = styled__default['default'].a.withConfig({
   displayName: "toggler__StyledToggler",
   componentId: "sc-1t70814-0"
 })(["color:", ";cursor:pointer;font-size:", ";padding:", ";&:hover{color:", ";}", ""], function (_ref2) {
@@ -20213,7 +20217,7 @@ var StyledToggler = styled.a.withConfig({
   var theme = _ref5.theme;
   return theme.NAVBAR.colourHoverToggler;
 }, MEDIA_QUERY.desktop(_templateObject$7()));
-var StyledText$3 = styled.span.withConfig({
+var StyledText$3 = styled__default['default'].span.withConfig({
   displayName: "toggler__StyledText",
   componentId: "sc-1t70814-1"
 })(["margin-left:0.25rem;"]);
@@ -20225,7 +20229,7 @@ Toggler.defaultProps = {
   visible: true
 };
 
-var __jsx$1G = React.createElement;
+var __jsx$1F = React__default['default'].createElement;
 
 function _templateObject3$1() {
   var data = _taggedTemplateLiteral(["\n    display: none;\n  "]);
@@ -20264,7 +20268,7 @@ var Navbar = function Navbar(_ref) {
       showMenu = _ref.showMenu,
       widgets = _ref.widgets;
 
-  var _useState = useState(showMenu),
+  var _useState = React.useState(showMenu),
       visible = _useState[0],
       setVisible = _useState[1];
 
@@ -20273,12 +20277,12 @@ var Navbar = function Navbar(_ref) {
   };
 
   var Content = function Content() {
-    return __jsx$1G(React.Fragment, null, brand && __jsx$1G(Brand, {
+    return __jsx$1F(React__default['default'].Fragment, null, brand && __jsx$1F(Brand, {
       brand: brand
-    }), __jsx$1G(Toggler, {
+    }), __jsx$1F(Toggler, {
       handleMenuClick: handleClick,
       visible: visible
-    }), widgets && __jsx$1G(Widgets, {
+    }), widgets && __jsx$1F(Widgets, {
       brand: brand,
       closeMenu: handleClick,
       type: type,
@@ -20287,15 +20291,15 @@ var Navbar = function Navbar(_ref) {
     }));
   };
 
-  return __jsx$1G(React.Fragment, null, __jsx$1G(StyledNav, {
+  return __jsx$1F(React__default['default'].Fragment, null, __jsx$1F(StyledNav, {
     style: style
-  }, contained ? __jsx$1G(Contained, {
+  }, contained ? __jsx$1F(Contained, {
     content: Content
-  }) : __jsx$1G(Content, null)), __jsx$1G(StyledOverlay, {
+  }) : __jsx$1F(Content, null)), __jsx$1F(StyledOverlay, {
     hidden: !visible
   }));
 };
-var StyledNav = styled.nav.withConfig({
+var StyledNav = styled__default['default'].nav.withConfig({
   displayName: "navbar__StyledNav",
   componentId: "cif9qh-0"
 })(["background-color:", ";border-top-width:", ";border-top-style:", ";border-top-color:", ";display:flex;flex-wrap:wrap;height:", ";justify-content:space-between;padding:", ";position:relative;z-index:200;", " ", ""], function (_ref2) {
@@ -20323,7 +20327,7 @@ var StyledNav = styled.nav.withConfig({
   var theme = _ref9.theme;
   return theme.NAVBAR.paddingDesktop;
 }));
-var StyledOverlay = styled.div.withConfig({
+var StyledOverlay = styled__default['default'].div.withConfig({
   displayName: "navbar__StyledOverlay",
   componentId: "cif9qh-1"
 })(["background:", ";bottom:0;cursor:pointer;height:", ";position:", ";right:0;top:0;transition-property:width;transition-duration:0.2s;width:", ";z-index:199;", ""], function (_ref10) {
@@ -20353,7 +20357,7 @@ Navbar.defaultProps = {
   showMenu: false
 };
 
-var __jsx$1H = React.createElement;
+var __jsx$1G = React__default['default'].createElement;
 
 function _templateObject$9() {
   var data = _taggedTemplateLiteral(["\n    background: none;\n    border: none;\n    color: ", ";\n    cursor: pointer;\n    font-size: 0.8125rem;\n    padding: 1rem 0.75rem;\n    width: 100%;\n\n    &:hover {\n      color: ", ";\n      background: none;\n    }\n  "]);
@@ -20371,11 +20375,11 @@ var NavButton = function NavButton(_ref) {
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1H(StyledLink$5, {
+  return __jsx$1G(StyledLink$5, {
     border: false,
     passHref: true,
     to: to
-  }, __jsx$1H(StyledButton$5, {
+  }, __jsx$1G(StyledButton$5, {
     id: id,
     context: type.context,
     content: name,
@@ -20385,11 +20389,11 @@ var NavButton = function NavButton(_ref) {
     type: type.as
   }));
 };
-var StyledLink$5 = styled(Link).withConfig({
+var StyledLink$5 = styled__default['default'](Link).withConfig({
   displayName: "button__StyledLink",
   componentId: "sc-16rzl3u-0"
 })(["padding:0rem 0.75rem;"]);
-var StyledButton$5 = styled(Button).withConfig({
+var StyledButton$5 = styled__default['default'](Button).withConfig({
   displayName: "button__StyledButton",
   componentId: "sc-16rzl3u-1"
 })(["", ""], MEDIA_QUERY_MAX.desktop(_templateObject$9(), function (_ref2) {
@@ -20420,7 +20424,7 @@ function _templateObject$a() {
 
   return data;
 }
-var NavCollapse = styled.div.withConfig({
+var NavCollapse = styled__default['default'].div.withConfig({
   displayName: "collapse__NavCollapse",
   componentId: "sc-157aoai-0"
 })(["flex-basis:100%;flex-grow:1;display:", ";position:", ";right:", ";margin:", ";", ""], function (props) {
@@ -20439,7 +20443,7 @@ NavCollapse.propTypes = {
   visible: propTypes.bool.isRequired
 };
 
-var __jsx$1I = React.createElement;
+var __jsx$1H = React__default['default'].createElement;
 
 function _templateObject$b() {
   var data = _taggedTemplateLiteral(["\n      min-width: 11rem;\n      position: absolute;\n    "]);
@@ -20457,21 +20461,21 @@ var NavDropdown = function NavDropdown(_ref) {
       position = _ref.position,
       prefix = _ref.prefix,
       type = _ref.type;
-  return __jsx$1I(StyledContainer$5, null, __jsx$1I(StyledDropdown$1, {
+  return __jsx$1H(StyledContainer$5, null, __jsx$1H(StyledDropdown$1, {
     items: type.items,
     onChange: closeMenu,
     position: position
-  }, icon && __jsx$1I(Icon, {
+  }, icon && __jsx$1H(Icon, {
     "aria-hidden": "true",
     icon: icon,
     prefix: prefix
-  }), __jsx$1I(StyledContent$2, null, name)));
+  }), __jsx$1H(StyledContent$2, null, name)));
 };
-var StyledContainer$5 = styled.div.withConfig({
+var StyledContainer$5 = styled__default['default'].div.withConfig({
   displayName: "dropdown__StyledContainer",
   componentId: "sc-16a5kxn-0"
 })(["align-items:center;display:flex;flex:1;position:relative;user-select:none;width:100%;"]);
-var StyledDropdown$1 = styled(Dropdown).withConfig({
+var StyledDropdown$1 = styled__default['default'](Dropdown).withConfig({
   displayName: "dropdown__StyledDropdown",
   componentId: "sc-16a5kxn-1"
 })(["flex:1;position:initial;.dropdown--active{background-color:rgb(37,51,66);.dropdown--caret{color:", ";}}.dropdown--toggle{display:block;line-height:60px;padding:0 0.5rem;&:hover .dropdown--caret{color:", ";}}.dropdown--menu{background-color:rgb(37,51,66);border:initial;border-radius:0;margin:0;padding:0;position:initial;top:3.7rem;width:100%;", "}.dropdown--link{color:#fff;padding:0.75rem;text-shadow:0 0 1px transparent;vertical-align:baseline;&:hover{background-color:#33475b;}}"], function (_ref2) {
@@ -20481,7 +20485,7 @@ var StyledDropdown$1 = styled(Dropdown).withConfig({
   var theme = _ref3.theme;
   return theme.COLOUR.primary;
 }, MEDIA_QUERY.desktop(_templateObject$b()));
-var StyledContent$2 = styled.span.withConfig({
+var StyledContent$2 = styled__default['default'].span.withConfig({
   displayName: "dropdown__StyledContent",
   componentId: "sc-16a5kxn-2"
 })(["margin:0 0.25rem;"]);
@@ -20498,16 +20502,16 @@ NavDropdown.defaultProps = {
   prefix: 'fad'
 };
 
-var __jsx$1J = React.createElement;
+var __jsx$1I = React__default['default'].createElement;
 var NavIcon = function NavIcon(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
       type = _ref.type,
       visible = _ref.visible;
-  return __jsx$1J(Link, {
+  return __jsx$1I(Link, {
     to: to,
     onClick: visible && closeMenu
-  }, __jsx$1J(Icon, {
+  }, __jsx$1I(Icon, {
     icon: type.icon
   }));
 };
@@ -20521,7 +20525,7 @@ NavIcon.defaultProps = {
   visible: false
 };
 
-var __jsx$1K = React.createElement;
+var __jsx$1J = React__default['default'].createElement;
 
 function _templateObject$c() {
   var data = _taggedTemplateLiteral(["\n    color: ", ";\n    // &:hover {\n    //   color: ", ";\n    // }\n  "]);
@@ -20551,16 +20555,16 @@ var NavLink = function NavLink(_ref) {
     return;
   }
 
-  return __jsx$1K(Link, {
+  return __jsx$1J(Link, {
     border: false,
     onClick: handleClick,
     passHref: true,
     to: to
-  }, __jsx$1K(StyledLink$6, {
+  }, __jsx$1J(StyledLink$6, {
     id: id
   }, name));
 };
-var StyledLink$6 = styled.span.withConfig({
+var StyledLink$6 = styled__default['default'].span.withConfig({
   displayName: "link__StyledLink",
   componentId: "sc-1t9u2hf-0"
 })(["align-items:center;color:", ";display:flex;flex:1;justify-content:center;padding:", ";", ""], function (_ref2) {
@@ -20590,7 +20594,7 @@ NavLink.defaultProps = {
   visible: false
 };
 
-var __jsx$1L = React.createElement;
+var __jsx$1K = React__default['default'].createElement;
 var NavNotification = function NavNotification(_ref) {
   var closeMenu = _ref.closeMenu,
       to = _ref.to,
@@ -20602,16 +20606,16 @@ var NavNotification = function NavNotification(_ref) {
   };
 
   var link = function link() {
-    return __jsx$1L(Link, {
+    return __jsx$1K(Link, {
       border: false,
       onClick: handleClick,
       passHref: true,
       to: to
-    }, __jsx$1L(Notification, null));
+    }, __jsx$1K(Notification, null));
   };
 
   var Notification = function Notification() {
-    return __jsx$1L(StyledNotifications, null, type && !!type.count && __jsx$1L(StyledCount, null, type.count), __jsx$1L(Icon, {
+    return __jsx$1K(StyledNotifications, null, type && !!type.count && __jsx$1K(StyledCount, null, type.count), __jsx$1K(Icon, {
       icon: "bell",
       prefix: "fad"
     }));
@@ -20620,10 +20624,10 @@ var NavNotification = function NavNotification(_ref) {
   if (to) {
     return link();
   } else {
-    return __jsx$1L(Notification, null);
+    return __jsx$1K(Notification, null);
   }
 };
-var StyledNotifications = styled.div.withConfig({
+var StyledNotifications = styled__default['default'].div.withConfig({
   displayName: "notification__StyledNotifications",
   componentId: "jg22gt-0"
 })(["color:", ";display:inline-block;margin-right:0.5rem;padding:1rem 0.75rem;position:relative;width:100%;&:hover{color:", ";}"], function (_ref2) {
@@ -20633,7 +20637,7 @@ var StyledNotifications = styled.div.withConfig({
   var theme = _ref3.theme;
   return theme.NAVBAR.colourActive;
 });
-var StyledCount = styled.div.withConfig({
+var StyledCount = styled__default['default'].div.withConfig({
   displayName: "notification__StyledCount",
   componentId: "jg22gt-1"
 })(["background:red;border:1px solid #fff;border-radius:0.5rem;color:#fff;font-size:0.75rem;left:50%;line-height:1;padding:2px 5px;position:absolute;text-align:center;top:0.4rem;user-select:none;"]);
@@ -20644,7 +20648,7 @@ NavNotification.propTypes = {
   visible: propTypes.bool
 };
 
-var __jsx$1M = React.createElement;
+var __jsx$1L = React__default['default'].createElement;
 
 function _templateObject2$5() {
   var data = _taggedTemplateLiteral(["\n    border: none;\n    display: flex;\n    flex-direction: column;\n    justify-content: ", ";\n    margin-bottom: ", ";\n  "]);
@@ -20671,14 +20675,14 @@ var Widgets = function Widgets(_ref) {
       type = _ref.type,
       visible = _ref.visible,
       widgets = _ref.widgets;
-  return __jsx$1M(NavCollapse, {
+  return __jsx$1L(NavCollapse, {
     visible: visible
   }, Object.entries(widgets).map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
         direction = _ref3[0],
         link = _ref3[1];
 
-    return __jsx$1M(StyledList$1, {
+    return __jsx$1L(StyledList$1, {
       direction: direction,
       key: direction
     }, link.map(function (_ref4) {
@@ -20692,10 +20696,10 @@ var Widgets = function Widgets(_ref) {
           prefix = _ref4.prefix,
           to = _ref4.to,
           type = _ref4.type;
-      return __jsx$1M(StyledListItem, {
+      return __jsx$1L(StyledListItem, {
         brand: brand,
         key: id
-      }, Component && __jsx$1M(Component, null), type && type.as === 'button' && NavButton({
+      }, Component && __jsx$1L(Component, null), type && type.as === 'button' && NavButton({
         closeMenu: closeMenu,
         id: id,
         name: name,
@@ -20731,7 +20735,7 @@ var Widgets = function Widgets(_ref) {
     }));
   }));
 };
-var StyledList$1 = styled.ul.withConfig({
+var StyledList$1 = styled__default['default'].ul.withConfig({
   displayName: "widgets__StyledList",
   componentId: "sc-19k00th-0"
 })(["background-color:", ";display:flex;flex-direction:column;font-size:", ";list-style:none;margin:0;padding:0;text-align:center;", ""], function (_ref5) {
@@ -20744,7 +20748,7 @@ var StyledList$1 = styled.ul.withConfig({
   var direction = _ref7.direction;
   return direction === 'left' ? 'flex-start' : 'flex-end';
 }));
-var StyledListItem = styled.li.withConfig({
+var StyledListItem = styled__default['default'].li.withConfig({
   displayName: "widgets__StyledListItem",
   componentId: "sc-19k00th-1"
 })(["position:relative;border-top:", ";background-color:", ";&:hover{background-color:", ";border-bottom:", ";}", " ", ""], function (_ref8) {
@@ -20760,7 +20764,7 @@ var StyledListItem = styled.li.withConfig({
   var theme = _ref11.theme;
   return theme.NAVBAR.borderBottomHoverListItem;
 }, function (props) {
-  return !props.brand && css(["&:first-child{margin-left:0;}"]);
+  return !props.brand && styled.css(["&:first-child{margin-left:0;}"]);
 }, MEDIA_QUERY.desktop(_templateObject2$5(), function (_ref12) {
   var theme = _ref12.theme;
   return theme.NAVBAR.justifyContentDesktopListItem;
@@ -20776,7 +20780,7 @@ Widgets.propTypes = {
   widgets: propTypes.object.isRequired
 };
 
-var __jsx$1N = React.createElement;
+var __jsx$1M = React__default['default'].createElement;
 var Notification = function Notification(_ref) {
   var close = _ref.close,
       content = _ref.content,
@@ -20786,10 +20790,10 @@ var Notification = function Notification(_ref) {
       link = _ref.link,
       title = _ref.title;
 
-  var body = __jsx$1N(React.Fragment, null, __jsx$1N(StyledNotificationBody, null, content), date && __jsx$1N(StyledDate, null, formatRelativeTime(date)));
+  var body = __jsx$1M(React__default['default'].Fragment, null, __jsx$1M(StyledNotificationBody, null, content), date && __jsx$1M(StyledDate, null, formatRelativeTime(date)));
 
   if (link) {
-    body = __jsx$1N(Link, {
+    body = __jsx$1M(Link, {
       border: false,
       to: {
         href: link
@@ -20800,7 +20804,7 @@ var Notification = function Notification(_ref) {
     }, body);
   }
 
-  return __jsx$1N(StyledNotificationWrapper, null, __jsx$1N(Alert, {
+  return __jsx$1M(StyledNotificationWrapper, null, __jsx$1M(Alert, {
     close: close,
     content: body,
     context: context,
@@ -20808,15 +20812,15 @@ var Notification = function Notification(_ref) {
     icon: icon
   }));
 };
-var StyledNotificationWrapper = styled.div.withConfig({
+var StyledNotificationWrapper = styled__default['default'].div.withConfig({
   displayName: "notification__StyledNotificationWrapper",
   componentId: "sc-1h0hzg8-0"
 })(["border-radius:0.25rem;box-shadow:rgba(45,62,80,0.12) 0 1px 5px 0;max-width:100%;width:350px;"]);
-var StyledNotificationBody = styled.div.withConfig({
+var StyledNotificationBody = styled__default['default'].div.withConfig({
   displayName: "notification__StyledNotificationBody",
   componentId: "sc-1h0hzg8-1"
 })(["color:#fff;"]);
-var StyledDate = styled.time.withConfig({
+var StyledDate = styled__default['default'].time.withConfig({
   displayName: "notification__StyledDate",
   componentId: "sc-1h0hzg8-2"
 })(["border-top:1px solid #eaeaea;color:#eaeaea;display:block;font-size:0.9rem;margin-top:15px;padding-top:0.25rem;"]);
@@ -20849,7 +20853,7 @@ function _templateObject$e() {
 
   return data;
 }
-var OffCanvasDiv = styled.div.withConfig({
+var OffCanvasDiv = styled__default['default'].div.withConfig({
   displayName: "container__OffCanvasDiv",
   componentId: "sc-17fi5vb-0"
 })(["background-color:#fff;border-left:", ";box-shadow:", ";overflow-x:hidden;overflow-y:auto;position:fixed;transition:transform ", "ms ease-in-out;z-index:9999;", " ", " ", " ", ""], function (_ref) {
@@ -20863,25 +20867,25 @@ var OffCanvasDiv = styled.div.withConfig({
   return duration;
 }, function (_ref4) {
   var placement = _ref4.placement;
-  return placement === 'top' && css(["height:", ";left:0;right:0;top:0;width:100vw;"], function (_ref5) {
+  return placement === 'top' && styled.css(["height:", ";left:0;right:0;top:0;width:100vw;"], function (_ref5) {
     var height = _ref5.height;
     return height || '50%';
   });
 }, function (_ref6) {
   var placement = _ref6.placement;
-  return placement === 'right' && css(["height:100vh;right:0;top:0;width:90%;", ""], MEDIA_QUERY.desktop(_templateObject$e(), function (_ref7) {
+  return placement === 'right' && styled.css(["height:100vh;right:0;top:0;width:90%;", ""], MEDIA_QUERY.desktop(_templateObject$e(), function (_ref7) {
     var width = _ref7.width;
     return width;
   }));
 }, function (_ref8) {
   var placement = _ref8.placement;
-  return placement === 'bottom' && css(["bottom:0;height:", ";left:0;right:0;width:100vw;"], function (_ref9) {
+  return placement === 'bottom' && styled.css(["bottom:0;height:", ";left:0;right:0;width:100vw;"], function (_ref9) {
     var height = _ref9.height;
     return height || '50%';
   });
 }, function (_ref10) {
   var placement = _ref10.placement;
-  return placement === 'left' && css(["height:100vh;left:0;top:0;width:90%;", ""], MEDIA_QUERY.desktop(_templateObject2$6(), function (_ref11) {
+  return placement === 'left' && styled.css(["height:100vh;left:0;top:0;width:90%;", ""], MEDIA_QUERY.desktop(_templateObject2$6(), function (_ref11) {
     var width = _ref11.width;
     return width;
   }));
@@ -20895,7 +20899,7 @@ OffCanvasDiv.propTypes = {
 /**
  * Molecules - OffCanvas - Content
  */
-var OffCanvasContent = styled.div.withConfig({
+var OffCanvasContent = styled__default['default'].div.withConfig({
   displayName: "content__OffCanvasContent",
   componentId: "fmbgwb-0"
 })(["flex:1;margin-top:72px;padding:24px;z-index:-1;"]);
@@ -21853,7 +21857,7 @@ var curriedLighten = /*#__PURE__*/curry
 /* ::<number | string, string, string> */
 (lighten);
 
-var __jsx$1O = React.createElement;
+var __jsx$1N = React__default['default'].createElement;
 var OffCanvasHeader = function OffCanvasHeader(_ref) {
   var context = _ref.context,
       hasAvatar = _ref.hasAvatar,
@@ -21862,51 +21866,51 @@ var OffCanvasHeader = function OffCanvasHeader(_ref) {
       submit = _ref.submit,
       title = _ref.title,
       variant = _ref.variant;
-  return __jsx$1O(StyledHeader$2, {
+  return __jsx$1N(StyledHeader$2, {
     context: context,
     variant: variant
-  }, __jsx$1O(Row, {
+  }, __jsx$1N(Row, {
     align: "center"
-  }, __jsx$1O(Column, {
+  }, __jsx$1N(Column, {
     md: 8
-  }, __jsx$1O(Icon, {
+  }, __jsx$1N(Icon, {
     context: variant === 'extended' ? 'white' : context,
     icon: "expand",
     prefix: "fas"
-  }), __jsx$1O(StyledHeading$1, {
+  }), __jsx$1N(StyledHeading$1, {
     content: title,
     context: context,
     tag: "h4",
     variant: variant
-  })), __jsx$1O(Column, {
+  })), __jsx$1N(Column, {
     md: 4
-  }, __jsx$1O(StyledContainer$6, null, submit && __jsx$1O(React.Fragment, null, __jsx$1O(Button, {
+  }, __jsx$1N(StyledContainer$6, null, submit && __jsx$1N(React__default['default'].Fragment, null, __jsx$1N(Button, {
     content: "Submit",
     context: "primary",
     form: "offCanvasForm",
     size: "sm",
     type: "submit"
-  }), __jsx$1O(Divider, {
+  }), __jsx$1N(Divider, {
     flexItem: true,
     size: "sm",
     vertical: true
-  })), __jsx$1O(Close, {
+  })), __jsx$1N(Close, {
     click: onClose,
     context: variant === 'normal' ? context : 'white'
-  })))), __jsx$1O(StyledBodyContainer, null, hasAvatar && __jsx$1O(StyledAvatarContainer, {
+  })))), __jsx$1N(StyledBodyContainer, null, hasAvatar && __jsx$1N(StyledAvatarContainer, {
     context: context
-  }, __jsx$1O(Avatar, {
+  }, __jsx$1N(Avatar, {
     content: "Avatar",
     context: context,
     size: "lg"
-  })), headerContent && __jsx$1O(StyledText$4, {
+  })), headerContent && __jsx$1N(StyledText$4, {
     content: headerContent,
     context: context,
     size: "xs",
     variant: variant
   })));
 };
-var StyledHeader$2 = styled.div.withConfig({
+var StyledHeader$2 = styled__default['default'].div.withConfig({
   displayName: "header__StyledHeader",
   componentId: "sc-19iiwbd-0"
 })(["background-color:", ";border-top:.5rem solid ", ";", " color:", ";display:flex;flex:1;flex-direction:column;padding:1rem;position:fixed;width:inherit;z-index:1;"], function (_ref2) {
@@ -21926,7 +21930,7 @@ var StyledHeader$2 = styled.div.withConfig({
   var COLOUR = _ref5.theme.COLOUR;
   return COLOUR.black;
 });
-var StyledHeading$1 = styled(Heading).withConfig({
+var StyledHeading$1 = styled__default['default'](Heading).withConfig({
   displayName: "header__StyledHeading",
   componentId: "sc-19iiwbd-1"
 })(["color:", ";display:inline;margin:0;padding-left:0.25rem;"], function (_ref6) {
@@ -21935,15 +21939,15 @@ var StyledHeading$1 = styled(Heading).withConfig({
       variant = _ref6.variant;
   return variant === 'normal' ? COLOUR.black : COLOUR.white;
 });
-var StyledContainer$6 = styled.div.withConfig({
+var StyledContainer$6 = styled__default['default'].div.withConfig({
   displayName: "header__StyledContainer",
   componentId: "sc-19iiwbd-2"
 })(["align-items:center;display:flex;justify-content:flex-end;"]);
-var StyledBodyContainer = styled.div.withConfig({
+var StyledBodyContainer = styled__default['default'].div.withConfig({
   displayName: "header__StyledBodyContainer",
   componentId: "sc-19iiwbd-3"
 })(["display:flex;"]);
-var StyledAvatarContainer = styled.div.withConfig({
+var StyledAvatarContainer = styled__default['default'].div.withConfig({
   displayName: "header__StyledAvatarContainer",
   componentId: "sc-19iiwbd-4"
 })(["align-items:center;background-color:", ";border-radius:4px;display:flex;justify-content:center;margin-right:24.5px;min-height:70px;min-width:70px;"], function (_ref7) {
@@ -21951,7 +21955,7 @@ var StyledAvatarContainer = styled.div.withConfig({
       theme = _ref7.theme;
   return curriedLighten(0.2, theme.COLOUR[context]);
 });
-var StyledText$4 = styled(Text).withConfig({
+var StyledText$4 = styled__default['default'](Text).withConfig({
   displayName: "header__StyledText",
   componentId: "sc-19iiwbd-5"
 })(["color:", ";"], function (_ref8) {
@@ -21978,7 +21982,7 @@ OffCanvasHeader.defaultProps = {
 /**
  * Molecules - OffCanvas - Overlay
  */
-var OffCanvasOverlay = styled.div.withConfig({
+var OffCanvasOverlay = styled__default['default'].div.withConfig({
   displayName: "overlay__OffCanvasOverlay",
   componentId: "sc-1gevpiw-0"
 })(["background-color:rgba(0,0,0,", ");height:100vh;left:0;position:fixed;right:0;top:0;transition:background-color ", "ms ease-in-out;width:100vw;will-change:background-color;z-index:9998;"], function (_ref) {
@@ -22000,7 +22004,7 @@ OffCanvasOverlay.defaultProps = {
   opacity: 0.3
 };
 
-var __jsx$1P = React.createElement;
+var __jsx$1O = React__default['default'].createElement;
 var OffCanvasComponent = function OffCanvasComponent(_ref) {
   var children = _ref.children,
       closeOnOverlayClick = _ref.closeOnOverlayClick,
@@ -22019,11 +22023,11 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
       variant = _ref.variant,
       width = _ref.width;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       initialState = _useState[0],
       setInitialState = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (show) {
       setTimeout(function () {
         return setInitialState(true);
@@ -22039,19 +22043,19 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     }
   };
 
-  return __jsx$1P(React.Fragment, null, overlay && __jsx$1P(OffCanvasOverlay, {
+  return __jsx$1O(React__default['default'].Fragment, null, overlay && __jsx$1O(OffCanvasOverlay, {
     duration: transitionDuration,
     onClick: handleOverlayClick,
     opacity: overlayOpacity,
     show: initialState
-  }), __jsx$1P(OffCanvasDiv, {
+  }), __jsx$1O(OffCanvasDiv, {
     "data-cy": "offCanvas",
     duration: transitionDuration,
     height: height,
     placement: placement,
     show: initialState,
     width: width
-  }, __jsx$1P(OffCanvasHeader, {
+  }, __jsx$1O(OffCanvasHeader, {
     context: context,
     "data-cy": "offCanvasHeader",
     hasAvatar: hasAvatar,
@@ -22062,7 +22066,7 @@ var OffCanvasComponent = function OffCanvasComponent(_ref) {
     submit: submit,
     title: headerText,
     variant: variant
-  }), __jsx$1P(OffCanvasContent, null, children)));
+  }), __jsx$1O(OffCanvasContent, null, children)));
 };
 OffCanvasComponent.propTypes = {
   children: propTypes.node,
@@ -22096,14 +22100,14 @@ OffCanvasComponent.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1Q = React.createElement;
+var __jsx$1P = React__default['default'].createElement;
 var OffCanvas = function OffCanvas(props) {
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       mounted = _useState[0],
       setMounted = _useState[1];
 
   var container = document.body;
-  useEffect(function () {
+  React.useEffect(function () {
     container = props.container || container;
 
     if (!props.show) {
@@ -22122,7 +22126,7 @@ var OffCanvas = function OffCanvas(props) {
       }
     }
   }, [props.show]);
-  return mounted ? /*#__PURE__*/createPortal(__jsx$1Q(OffCanvasComponent, props), container) : null;
+  return mounted ? /*#__PURE__*/ReactDOM.createPortal(__jsx$1P(OffCanvasComponent, props), container) : null;
 };
 OffCanvas.propTypes = {
   closeOnOverlayClick: propTypes.bool,
@@ -22153,7 +22157,7 @@ OffCanvas.defaultProps = {
   width: '30vw'
 };
 
-var __jsx$1R = React.createElement;
+var __jsx$1Q = React__default['default'].createElement;
 var PageHeading = function PageHeading(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -22163,18 +22167,18 @@ var PageHeading = function PageHeading(_ref) {
       help = _ref.help,
       helpContent = _ref.helpContent,
       strapline = _ref.strapline;
-  return __jsx$1R(StyledPageHeader, {
+  return __jsx$1Q(StyledPageHeader, {
     center: center,
     divider: divider
-  }, __jsx$1R(StyledLeft, null, __jsx$1R(StyledHeading$2, {
+  }, __jsx$1Q(StyledLeft, null, __jsx$1Q(StyledHeading$2, {
     content: heading,
     context: context,
     pageHeading: true
-  }), strapline && __jsx$1R("div", null, strapline)), (children || help) && __jsx$1R(StyledRight, null, children || helpContent), divider && __jsx$1R(StyledDivider$1, {
+  }), strapline && __jsx$1Q("div", null, strapline)), (children || help) && __jsx$1Q(StyledRight, null, children || helpContent), divider && __jsx$1Q(StyledDivider$1, {
     size: "md"
   }));
 };
-var StyledPageHeader = styled.header.withConfig({
+var StyledPageHeader = styled__default['default'].header.withConfig({
   displayName: "pageHeading__StyledPageHeader",
   componentId: "sl4ilk-0"
 })(["align-items:center;display:flex;flex-flow:row wrap;justify-content:space-between;margin-bottom:", ";text-align:", ";"], function (_ref2) {
@@ -22184,22 +22188,22 @@ var StyledPageHeader = styled.header.withConfig({
   var center = _ref3.center;
   return center && 'center';
 });
-var StyledLeft = styled.span.withConfig({
+var StyledLeft = styled__default['default'].span.withConfig({
   displayName: "pageHeading__StyledLeft",
   componentId: "sl4ilk-1"
 })(["flex:1;"]);
-var StyledRight = styled.span.withConfig({
+var StyledRight = styled__default['default'].span.withConfig({
   displayName: "pageHeading__StyledRight",
   componentId: "sl4ilk-2"
 })(["display:flex;flex:1;justify-content:flex-end;"]);
-var StyledHeading$2 = styled(Heading).withConfig({
+var StyledHeading$2 = styled__default['default'](Heading).withConfig({
   displayName: "pageHeading__StyledHeading",
   componentId: "sl4ilk-3"
 })(["margin-bottom:", ";"], function (_ref4) {
   var divider = _ref4.divider;
   return !divider ? '0' : '0.5rem';
 });
-var StyledDivider$1 = styled(Divider).withConfig({
+var StyledDivider$1 = styled__default['default'](Divider).withConfig({
   displayName: "pageHeading__StyledDivider",
   componentId: "sl4ilk-4"
 })(["width:100%;"]);
@@ -22222,18 +22226,18 @@ PageHeading.defaultProps = {
   strapline: ''
 };
 
-var __jsx$1S = React.createElement;
+var __jsx$1R = React__default['default'].createElement;
 var PageLoading = function PageLoading(_ref) {
   var children = _ref.children,
       dataCy = _ref.dataCy,
       indicator = _ref.indicator,
       props = _objectWithoutProperties(_ref, ["children", "dataCy", "indicator"]);
 
-  return __jsx$1S(StyledLoading, _extends({
+  return __jsx$1R(StyledLoading, _extends({
     "data-cy": dataCy
   }, props), indicator || children);
 };
-var StyledLoading = styled.div.withConfig({
+var StyledLoading = styled__default['default'].div.withConfig({
   displayName: "pageLoading__StyledLoading",
   componentId: "cscj9c-0"
 })(["align-items:center;background-color:", ";color:#fff;display:flex;height:100%;justify-content:center;left:0;opacity:", ";position:", ";right:0;top:0;width:100%;z-index:99;"], function (_ref2) {
@@ -22261,9 +22265,9 @@ PageLoading.defaultProps = {
   position: 'fixed'
 };
 
-var __jsx$1T = React.createElement;
+var __jsx$1S = React__default['default'].createElement;
 var SPINNER = Array(12).fill('');
-var LdsSpinnerWrapper = styled.div.withConfig({
+var LdsSpinnerWrapper = styled__default['default'].div.withConfig({
   displayName: "ldsSpinner__LdsSpinnerWrapper",
   componentId: "sc-22hvzl-0"
 })(["display:inline-block;position:relative;width:", "px;height:", "px;div{transform-origin:", "px ", "px;animation:lds-spinner 1.2s linear infinite;::after{content:' ';display:block;position:absolute;top:", "px;left:", "px;width:", "px;height:", "px;border-radius:", "%;background:", ";}}", " @keyframes lds-spinner{0%{opacity:1;}100%{opacity:0;}}"], function (_ref) {
@@ -22305,10 +22309,10 @@ var LdsSpinnerWrapper = styled.div.withConfig({
   return temp;
 });
 var LdsSpinner = function LdsSpinner(props) {
-  return __jsx$1T(LdsSpinnerWrapper, _extends({}, props, {
+  return __jsx$1S(LdsSpinnerWrapper, _extends({}, props, {
     spinner: SPINNER
   }), SPINNER.map(function (s, i) {
-    return __jsx$1T("div", {
+    return __jsx$1S("div", {
       key: 'spin' + i
     });
   }));
@@ -22322,12 +22326,12 @@ LdsSpinner.defaultProps = {
   color: '#333'
 };
 
-var __jsx$1U = React.createElement;
+var __jsx$1T = React__default['default'].createElement;
 var Container$1 = function Container(_ref) {
   var children = _ref.children,
       isFinished = _ref.isFinished,
       animationDuration = _ref.animationDuration;
-  return __jsx$1U("div", {
+  return __jsx$1T("div", {
     style: {
       opacity: isFinished ? 0 : 1,
       pointerEvents: 'none',
@@ -22341,12 +22345,12 @@ Container$1.propTypes = {
   isFinished: propTypes.bool.isRequired
 };
 
-var __jsx$1V = React.createElement;
+var __jsx$1U = React__default['default'].createElement;
 var Bar = function Bar(_ref) {
   var animationDuration = _ref.animationDuration,
       context = _ref.context,
       progress = _ref.progress;
-  return __jsx$1V(StyledBar, {
+  return __jsx$1U(StyledBar, {
     context: context,
     style: {
       marginLeft: "".concat((-1 + progress) * 100, "%"),
@@ -22359,7 +22363,7 @@ Bar.propTypes = {
   context: propTypes.string,
   progress: propTypes.number.isRequired
 };
-var StyledBar = styled.div.withConfig({
+var StyledBar = styled__default['default'].div.withConfig({
   displayName: "bar__StyledBar",
   componentId: "sc-15l0b92-0"
 })(["background-color:", ";height:0.25rem;left:0;position:fixed;top:0;width:100%;z-index:1031;"], function (_ref2) {
@@ -22368,18 +22372,18 @@ var StyledBar = styled.div.withConfig({
   return COLOUR[context];
 });
 
-var __jsx$1W = React.createElement;
+var __jsx$1V = React__default['default'].createElement;
 var PageProgressBar = function PageProgressBar(_ref) {
   var context = _ref.context,
       isAnimating = _ref.isAnimating,
       instanceKey = _ref.instanceKey,
       router = _ref.router;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       isRouteChanging = _useState[0],
       setIsRouteChanging = _useState[1];
 
-  var _useState2 = useState(null),
+  var _useState2 = React.useState(null),
       loadingKey = _useState2[0],
       setLoadingKey = _useState2[1];
 
@@ -22392,24 +22396,24 @@ var PageProgressBar = function PageProgressBar(_ref) {
     setIsRouteChanging(false);
   };
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (router) {
       router.events.on('routeChangeStart', routeChangeStartHandler);
       router.events.on('routeChangeComplete', routeChangeEndHandler);
       router.events.on('routeChangeError', routeChangeEndHandler);
     }
   }, []);
-  return __jsx$1W(NProgress, {
+  return __jsx$1V(reactNprogress.NProgress, {
     isAnimating: isRouteChanging || isAnimating,
     key: loadingKey || instanceKey
   }, function (_ref2) {
     var animationDuration = _ref2.animationDuration,
         isFinished = _ref2.isFinished,
         progress = _ref2.progress;
-    return __jsx$1W(Container$1, {
+    return __jsx$1V(Container$1, {
       animationDuration: animationDuration,
       isFinished: isFinished
-    }, __jsx$1W(Bar, {
+    }, __jsx$1V(Bar, {
       animationDuration: animationDuration,
       context: context,
       progress: progress
@@ -22428,7 +22432,7 @@ PageProgressBar.defaultProps = {
   instanceKey: null
 };
 
-var __jsx$1X = React.createElement;
+var __jsx$1W = React__default['default'].createElement;
 var Pagination = function Pagination(_ref) {
   var breakCount = _ref.breakCount,
       children = _ref.children,
@@ -22449,7 +22453,7 @@ var Pagination = function Pagination(_ref) {
     if (type === 'prev') onPageChange(currentPage - 1);else if (type === 'next') onPageChange(currentPage + 1);else onPageChange(type);
   };
 
-  var pagesArray = chunk(Array(pageCount).fill(0).map(function (p, i) {
+  var pagesArray = chunk__default['default'](Array(pageCount).fill(0).map(function (p, i) {
     return i + 1;
   }), breakCount);
   var currentChunkIndex = pagesArray.findIndex(function (p) {
@@ -22464,7 +22468,7 @@ var Pagination = function Pagination(_ref) {
   var showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount;
 
   var renderContent = function renderContent() {
-    return __jsx$1X(React.Fragment, null, showPrevButton && __jsx$1X(PaginationItem, {
+    return __jsx$1W(React__default['default'].Fragment, null, showPrevButton && __jsx$1W(PaginationItem, {
       context: context,
       disabled: currentPage === 1,
       label: prevLabel,
@@ -22472,7 +22476,7 @@ var Pagination = function Pagination(_ref) {
         return handleChange('prev');
       },
       size: size
-    }), showPrevDots && __jsx$1X(PaginationItem, {
+    }), showPrevDots && __jsx$1W(PaginationItem, {
       onClick: function onClick() {
         return handleChange(prevChunk[prevChunk.length - 1]);
       },
@@ -22480,7 +22484,7 @@ var Pagination = function Pagination(_ref) {
       label: "...",
       size: size
     }), currentChunk.map(function (p) {
-      return __jsx$1X(PaginationItem, {
+      return __jsx$1W(PaginationItem, {
         active: p === currentPage,
         context: context,
         key: "".concat("page".concat(p)),
@@ -22490,14 +22494,14 @@ var Pagination = function Pagination(_ref) {
         },
         size: size
       });
-    }), showNextDots && __jsx$1X(PaginationItem, {
+    }), showNextDots && __jsx$1W(PaginationItem, {
       onClick: function onClick() {
         return handleChange(nextChunk[0]);
       },
       context: context,
       label: "...",
       size: size
-    }), showNextButton && __jsx$1X(PaginationItem, {
+    }), showNextButton && __jsx$1W(PaginationItem, {
       context: context,
       disabled: currentPage === pageCount,
       label: nextLabel,
@@ -22512,18 +22516,18 @@ var Pagination = function Pagination(_ref) {
     return null;
   }
 
-  return __jsx$1X(StyledPagination, _extends({
+  return __jsx$1W(StyledPagination, _extends({
     "aria-label": "Pagination"
   }, props), children || renderContent());
 };
-var StyledPagination = styled.ul.withConfig({
+var StyledPagination = styled__default['default'].ul.withConfig({
   displayName: "pagination__StyledPagination",
   componentId: "cikqta-0"
 })(["padding-left:0;list-style:none;width:fit-content;margin:0 auto;"]);
 Pagination.propTypes = PaginationPropTypes;
 Pagination.defaultProps = PaginationDefaultProps;
 
-var __jsx$1Y = React.createElement;
+var __jsx$1X = React__default['default'].createElement;
 var PaginationItem = function PaginationItem(_ref) {
   var active = _ref.active,
       context = _ref.context,
@@ -22533,7 +22537,7 @@ var PaginationItem = function PaginationItem(_ref) {
       size = _ref.size,
       props = _objectWithoutProperties(_ref, ["active", "context", "disabled", "label", "onClick", "size"]);
 
-  return __jsx$1Y(StyledLi$1, null, __jsx$1Y(StyledButton$6, _extends({
+  return __jsx$1X(StyledLi$1, null, __jsx$1X(StyledButton$6, _extends({
     active: active,
     context: context,
     onClick: onClick,
@@ -22541,11 +22545,11 @@ var PaginationItem = function PaginationItem(_ref) {
     size: size
   }, props), label));
 };
-var StyledLi$1 = styled.li.withConfig({
+var StyledLi$1 = styled__default['default'].li.withConfig({
   displayName: "paginationItem__StyledLi",
   componentId: "sc-1b3o3tm-0"
 })(["display:inline;&:first-child button{margin-left:0;border-top-left-radius:0.25rem;border-bottom-left-radius:0.25rem;}&:last-child button{border-top-right-radius:0.25rem;border-bottom-right-radius:0.25rem;}"]);
-var StyledButton$6 = styled(Button).withConfig({
+var StyledButton$6 = styled__default['default'](Button).withConfig({
   displayName: "paginationItem__StyledButton",
   componentId: "sc-1b3o3tm-1"
 })(["position:relative;cursor:", ";", " padding:0.5rem 0.75rem;margin-left:-1px;line-height:1.25;color:", ";background-color:", ";border:1px solid ", ";", " border-radius:0;&:hover{background-color:", ";color:", ";border:1px solid ", ";}"], function (_ref2) {
@@ -22595,7 +22599,7 @@ PaginationItem.defaultProps = {
   size: 'md'
 };
 
-var __jsx$1Z = React.createElement;
+var __jsx$1Y = React__default['default'].createElement;
 var Rating = function Rating(_ref) {
   var className = _ref.className,
       context = _ref.context,
@@ -22604,7 +22608,7 @@ var Rating = function Rating(_ref) {
   var rating = [];
 
   for (var i = 0; i < size; i++) {
-    rating.push(__jsx$1Z(StyledRating, {
+    rating.push(__jsx$1Y(StyledRating, {
       active: i + 1 <= value,
       className: className,
       context: context,
@@ -22614,7 +22618,7 @@ var Rating = function Rating(_ref) {
 
   return rating;
 };
-var StyledRating = styled.div.withConfig({
+var StyledRating = styled__default['default'].div.withConfig({
   displayName: "rating__StyledRating",
   componentId: "sc-1eott8c-0"
 })(["", " border-radius:0.25rem;display:inline-block;height:15px;margin-right:0.25rem;width:15px;", ""], function (props) {
@@ -22634,21 +22638,21 @@ Rating.defaultProps = {
   size: 5
 };
 
-var __jsx$1_ = React.createElement;
+var __jsx$1Z = React__default['default'].createElement;
 var Section = function Section(_ref) {
   var children = _ref.children,
       className = _ref.className,
       heading = _ref.heading,
       row = _ref.row,
       style = _ref.style;
-  return __jsx$1_(StyleSection, null, __jsx$1_(Container, null, heading && __jsx$1_(Heading, {
+  return __jsx$1Z(StyleSection, null, __jsx$1Z(Container, null, heading && __jsx$1Z(Heading, {
     className: "text-center",
     content: heading,
     context: "primary",
     tag: "h2"
-  }), row ? __jsx$1_(Row, null, children) : children));
+  }), row ? __jsx$1Z(Row, null, children) : children));
 };
-var StyleSection = styled.section.withConfig({
+var StyleSection = styled__default['default'].section.withConfig({
   displayName: "section__StyleSection",
   componentId: "sggygo-0"
 })(["border-top:4px solid #ecf0f3;padding:3rem 0;"]);
@@ -22664,26 +22668,26 @@ Section.defaultProps = {
   row: true
 };
 
-var __jsx$1$ = React.createElement;
+var __jsx$1_ = React__default['default'].createElement;
 var Sidebar = function Sidebar(_ref) {
   var brand = _ref.brand,
       data = _ref.data;
 
   var link = function link(icon, name, to) {
     var iconArray = Array.isArray(icon);
-    return __jsx$1$(Link, {
+    return __jsx$1_(Link, {
       to: to,
       passHref: true
-    }, __jsx$1$(StyledLink$7, null, icon && __jsx$1$(Icon, {
+    }, __jsx$1_(StyledLink$7, null, icon && __jsx$1_(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0]
     }), name));
   };
 
-  return __jsx$1$(StyledAside, null, __jsx$1$(StyledBrand$1, null, __jsx$1$(Image$1, {
+  return __jsx$1_(StyledAside, null, __jsx$1_(StyledBrand$1, null, __jsx$1_(Image$1, {
     alt: "Logo",
     src: brand
-  })), __jsx$1$(List, {
+  })), __jsx$1_(List, {
     group: true
   }, data.map(function (_ref2, index) {
     var Component = _ref2.Component,
@@ -22691,14 +22695,14 @@ var Sidebar = function Sidebar(_ref) {
         icon = _ref2.icon,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$1$(StyledLi$2, {
+    return __jsx$1_(StyledLi$2, {
       key: index
-    }, divider ? __jsx$1$(StyledDivider$2, {
+    }, divider ? __jsx$1_(StyledDivider$2, {
       size: "sm"
-    }) : Component ? __jsx$1$(Component, null) : to ? link(icon, name, to) : name);
+    }) : Component ? __jsx$1_(Component, null) : to ? link(icon, name, to) : name);
   })));
 };
-var StyledAside = styled.aside.withConfig({
+var StyledAside = styled__default['default'].aside.withConfig({
   displayName: "sidebar__StyledAside",
   componentId: "sc-65qjgl-0"
 })(["background-color:", ";border-right:1px solid ", ";box-shadow:0 0 4rem -1rem rgba(0,0,0,0.75);height:100vh;left:0;overflow:hidden;padding:1rem 0;position:fixed;top:0;width:16.66667%;"], function (_ref3) {
@@ -22708,22 +22712,22 @@ var StyledAside = styled.aside.withConfig({
   var theme = _ref4.theme;
   return theme.SIDEBAR.highlight;
 });
-var StyledBrand$1 = styled.div.withConfig({
+var StyledBrand$1 = styled__default['default'].div.withConfig({
   displayName: "sidebar__StyledBrand",
   componentId: "sc-65qjgl-1"
 })(["display:block;padding:0 3rem;line-height:2;"]);
-var StyledDivider$2 = styled(Divider).withConfig({
+var StyledDivider$2 = styled__default['default'](Divider).withConfig({
   displayName: "sidebar__StyledDivider",
   componentId: "sc-65qjgl-2"
 })(["border-top-width:1px;opacity:0.2;"]);
-var StyledLi$2 = styled(ListItem).withConfig({
+var StyledLi$2 = styled__default['default'](ListItem).withConfig({
   displayName: "sidebar__StyledLi",
   componentId: "sc-65qjgl-3"
 })(["cursor:pointer;padding:0;svg{margin-right:0.5rem;}&:hover{", "}"], function (_ref5) {
   var theme = _ref5.theme;
-  return css(["background-color:", ";border-right:2px solid ", ";a{color:", ";}"], theme.SIDEBAR.linkHover, theme.SIDEBAR.highlight, theme.SIDEBAR.highlight);
+  return styled.css(["background-color:", ";border-right:2px solid ", ";a{color:", ";}"], theme.SIDEBAR.linkHover, theme.SIDEBAR.highlight, theme.SIDEBAR.highlight);
 });
-var StyledLink$7 = styled.span.withConfig({
+var StyledLink$7 = styled__default['default'].span.withConfig({
   displayName: "sidebar__StyledLink",
   componentId: "sc-65qjgl-4"
 })(["color:", ";display:block;padding:1rem 1.5rem;"], function (_ref6) {
@@ -22754,21 +22758,21 @@ SimpleTime.propTypes = {
   endTime: propTypes.oneOfType([propTypes.number, propTypes.string])
 };
 
-var __jsx$20 = React.createElement;
+var __jsx$1$ = React__default['default'].createElement;
 var Stepper = function Stepper(_ref) {
   var className = _ref.className,
       items = _ref.items,
       summary = _ref.summary;
-  return __jsx$20(StyledStepper, null, __jsx$20("ul", null, items.map(function (item) {
-    return item.active !== false && __jsx$20(StepperItem, {
+  return __jsx$1$(StyledStepper, null, __jsx$1$("ul", null, items.map(function (item) {
+    return item.active !== false && __jsx$1$(StepperItem, {
       item: item,
       key: item.id
     });
-  })), summary && __jsx$20(StepperSummary, {
+  })), summary && __jsx$1$(StepperSummary, {
     summary: summary
   }));
 };
-var StyledStepper = styled.div.withConfig({
+var StyledStepper = styled__default['default'].div.withConfig({
   displayName: "stepper__StyledStepper",
   componentId: "sc-6whc8t-0"
 })(["display:inline-block;> ul{list-style:none;margin:0 0.5rem 1rem;padding:0;}"]);
@@ -22778,7 +22782,7 @@ Stepper.propTypes = {
   summary: propTypes.oneOfType([propTypes.array, propTypes.func])
 };
 
-var __jsx$21 = React.createElement;
+var __jsx$20 = React__default['default'].createElement;
 var StepperItem = function StepperItem(_ref) {
   var item = _ref.item;
 
@@ -22787,7 +22791,7 @@ var StepperItem = function StepperItem(_ref) {
       var id = _ref2.id,
           active = _ref2.active,
           data = _ref2.data;
-      return active && __jsx$21("li", {
+      return active && __jsx$20("li", {
         key: id
       }, typeof data === 'function' ? data() : data);
     });
@@ -22803,9 +22807,9 @@ var StepperItem = function StepperItem(_ref) {
           handleClick = _ref3.handleClick,
           to = _ref3.to,
           type = _ref3.type;
-      return active && __jsx$21("li", {
+      return active && __jsx$20("li", {
         key: id
-      }, type === 'button' && __jsx$21(Button, _extends({
+      }, type === 'button' && __jsx$20(Button, _extends({
         onClick: handleClick,
         content: content,
         context: context,
@@ -22814,28 +22818,28 @@ var StepperItem = function StepperItem(_ref) {
     });
   };
 
-  return __jsx$21(StyledStepperItem, null, __jsx$21(StyledIconContainer, {
+  return __jsx$20(StyledStepperItem, null, __jsx$20(StyledIconContainer, {
     active: item.date
-  }, item.date && __jsx$21(Icon, {
+  }, item.date && __jsx$20(Icon, {
     "aria-hidden": "true",
     color: STEPPER.colourCheckmark,
     fixedWidth: false,
     icon: "check",
     prefix: "fas"
-  })), __jsx$21(StyledLabel$4, {
+  })), __jsx$20(StyledLabel$4, {
     active: item.date
-  }, item.label), (item.date || item.info) && __jsx$21(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$21(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$21(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$21(Divider, {
+  }, item.label), (item.date || item.info) && __jsx$20(StyledInfo, null, item.date || item.info), item.content && item.content.length > 0 && __jsx$20(StyledContent$3, null, renderContent(item.content)), item.actions && item.actions.length > 0 && __jsx$20(StyledContent$3, null, renderActions(item.actions)), item.label !== 'Closed' && __jsx$20(Divider, {
     size: "sm"
   }));
 };
-var StyledStepperItem = styled.li.withConfig({
+var StyledStepperItem = styled__default['default'].li.withConfig({
   displayName: "stepperItem__StyledStepperItem",
   componentId: "sc-15nfxgj-0"
 })(["border-left:3px solid ", ";padding:0 1rem 1px;position:relative;&:last-child{border:0;margin-left:3px;}"], function (_ref4) {
   var theme = _ref4.theme;
   return theme.STEPPER.colour;
 });
-var StyledIconContainer = styled.div.withConfig({
+var StyledIconContainer = styled__default['default'].div.withConfig({
   displayName: "stepperItem__StyledIconContainer",
   componentId: "sc-15nfxgj-1"
 })(["align-items:center;background:", ";border:3px solid ", ";border-radius:50%;display:flex;height:1.5rem;justify-content:center;left:-13px;position:absolute;top:0;width:1.5rem;"], function (_ref5) {
@@ -22846,11 +22850,11 @@ var StyledIconContainer = styled.div.withConfig({
   var theme = _ref6.theme;
   return theme.STEPPER.colour;
 });
-var StyledContent$3 = styled.ul.withConfig({
+var StyledContent$3 = styled__default['default'].ul.withConfig({
   displayName: "stepperItem__StyledContent",
   componentId: "sc-15nfxgj-2"
 })(["font-size:0.8rem;list-style:none;margin:0.5rem;padding:0;li{margin-bottom:5px;}"]);
-var StyledLabel$4 = styled.span.withConfig({
+var StyledLabel$4 = styled__default['default'].span.withConfig({
   displayName: "stepperItem__StyledLabel",
   componentId: "sc-15nfxgj-3"
 })(["color:", ";margin:0 0.5rem;"], function (_ref7) {
@@ -22858,7 +22862,7 @@ var StyledLabel$4 = styled.span.withConfig({
       theme = _ref7.theme;
   return active ? theme.COLOUR.black : theme.COLOUR.dark;
 });
-var StyledInfo = styled.span.withConfig({
+var StyledInfo = styled__default['default'].span.withConfig({
   displayName: "stepperItem__StyledInfo",
   componentId: "sc-15nfxgj-4"
 })(["font-size:0.75rem;"]);
@@ -22866,7 +22870,7 @@ StyledStepperItem.propTypes = {
   item: propTypes.object
 };
 
-var __jsx$22 = React.createElement;
+var __jsx$21 = React__default['default'].createElement;
 var StepperSummary = function StepperSummary(_ref) {
   var className = _ref.className,
       summary = _ref.summary;
@@ -22875,23 +22879,23 @@ var StepperSummary = function StepperSummary(_ref) {
     return summary.map(function (_ref2, i) {
       var label = _ref2.label,
           value = _ref2.value;
-      return __jsx$22("li", {
+      return __jsx$21("li", {
         key: i
-      }, __jsx$22(StyledLabel$5, null, label, " "), __jsx$22(StyledValue, null, value));
+      }, __jsx$21(StyledLabel$5, null, label, " "), __jsx$21(StyledValue, null, value));
     });
   };
 
-  return __jsx$22(StyledStepperSummary, null, __jsx$22("ul", null, renderItems(summary)));
+  return __jsx$21(StyledStepperSummary, null, __jsx$21("ul", null, renderItems(summary)));
 };
-var StyledStepperSummary = styled.div.withConfig({
+var StyledStepperSummary = styled__default['default'].div.withConfig({
   displayName: "summary__StyledStepperSummary",
   componentId: "sc-1nk57mg-0"
 })(["display:inline-block;> ul{list-style:none;margin:0;padding:0;}"]);
-var StyledLabel$5 = styled.span.withConfig({
+var StyledLabel$5 = styled__default['default'].span.withConfig({
   displayName: "summary__StyledLabel",
   componentId: "sc-1nk57mg-1"
 })(["font-size:0.85rem;"]);
-var StyledValue = styled.span.withConfig({
+var StyledValue = styled__default['default'].span.withConfig({
   displayName: "summary__StyledValue",
   componentId: "sc-1nk57mg-2"
 })(["font-size:0.85rem;color:", ";"], function (_ref3) {
@@ -22903,12 +22907,12 @@ StepperSummary.propTypes = {
   summary: propTypes.array.isRequired
 };
 
-var __jsx$23 = React.createElement;
+var __jsx$22 = React__default['default'].createElement;
 var TableData = function TableData(props) {
-  return __jsx$23(StyledTd, props);
+  return __jsx$22(StyledTd, props);
 };
 TableData.propTypes = {};
-var StyledTd = styled.td.withConfig({
+var StyledTd = styled__default['default'].td.withConfig({
   displayName: "data__StyledTd",
   componentId: "cgms5o-0"
 })(["border-top:1px solid ", ";padding:", ";text-align:", ";"], function (_ref) {
@@ -22922,12 +22926,12 @@ var StyledTd = styled.td.withConfig({
   return align && 'center';
 });
 
-var __jsx$24 = React.createElement;
+var __jsx$23 = React__default['default'].createElement;
 var TableHead = function TableHead(props) {
-  return __jsx$24(StyledTh, props);
+  return __jsx$23(StyledTh, props);
 };
 TableHead.propTypes = {};
-var StyledTh = styled.th.withConfig({
+var StyledTh = styled__default['default'].th.withConfig({
   displayName: "head__StyledTh",
   componentId: "sc-1utvknw-0"
 })(["border-bottom:2px solid ", ";border-top:1px solid ", ";padding:", ";text-align:", ";", ""], function (_ref) {
@@ -22947,7 +22951,7 @@ var StyledTh = styled.th.withConfig({
   return sortable && 'cursor: pointer';
 });
 
-var __jsx$25 = React.createElement;
+var __jsx$24 = React__default['default'].createElement;
 var TableLoading = function TableLoading(_ref) {
   var colsLength = _ref.colsLength,
       show = _ref.show;
@@ -22956,9 +22960,9 @@ var TableLoading = function TableLoading(_ref) {
     return null;
   }
 
-  return __jsx$25(PageLoading, {
+  return __jsx$24(PageLoading, {
     backgroundColor: "#fff",
-    indicator: __jsx$25(LdsSpinner, {
+    indicator: __jsx$24(LdsSpinner, {
       color: "#000",
       size: 50
     }),
@@ -22971,12 +22975,12 @@ TableLoading.propTypes = {
   show: propTypes.bool
 };
 
-var __jsx$26 = React.createElement;
+var __jsx$25 = React__default['default'].createElement;
 var TableRow = function TableRow(props) {
-  return __jsx$26(StyledTr, props);
+  return __jsx$25(StyledTr, props);
 };
 TableRow.propTypes = {};
-var StyledTr = styled.tr.withConfig({
+var StyledTr = styled__default['default'].tr.withConfig({
   displayName: "row__StyledTr",
   componentId: "tjsorm-0"
 })(["cursor:", ";", " ", " ", ""], function (_ref) {
@@ -22986,15 +22990,15 @@ var StyledTr = styled.tr.withConfig({
   var context = _ref2.context,
       striped = _ref2.striped,
       theme = _ref2.theme;
-  return !context && striped && css([":nth-child(odd){background-color:", ";}"], theme.COLOUR.light);
+  return !context && striped && styled.css([":nth-child(odd){background-color:", ";}"], theme.COLOUR.light);
 }, function (props) {
-  return props.context && css(["", " color:white;"], BACKGROUND(props));
+  return props.context && styled.css(["", " color:white;"], BACKGROUND(props));
 }, function (_ref3) {
   var hover = _ref3.hover;
-  return hover && css([":hover{background-color:#eee;}"]);
+  return hover && styled.css([":hover{background-color:#eee;}"]);
 });
 
-var __jsx$27 = React.createElement;
+var __jsx$26 = React__default['default'].createElement;
 
 function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -23024,7 +23028,7 @@ var Table = function Table(_ref) {
       setSort = _ref.setSort,
       striped = _ref.striped;
 
-  var _useState = useState(initialPage),
+  var _useState = React.useState(initialPage),
       currentPage = _useState[0],
       setCurrentPage = _useState[1];
 
@@ -23073,12 +23077,12 @@ var Table = function Table(_ref) {
         }
       };
 
-      return __jsx$27(TableHead, {
+      return __jsx$26(TableHead, {
         align: align,
         key: index,
         onClick: handleSort,
         sortable: sortable
-      }, text, sortable && hasSort && __jsx$27(Icon, {
+      }, text, sortable && hasSort && __jsx$26(Icon, {
         icon: sort.order === 'asc' ? 'caret-down' : 'caret-up',
         prefix: "fas"
       }));
@@ -23098,7 +23102,7 @@ var Table = function Table(_ref) {
         delete row.hidden;
       }
 
-      return __jsx$27(TableRow, {
+      return __jsx$26(TableRow, {
         context: context,
         key: index,
         "data-item": JSON.stringify(row),
@@ -23119,12 +23123,12 @@ var Table = function Table(_ref) {
         }
 
         var renderValue = typeof value === 'function' ? value() : value;
-        return __jsx$27(TableData, {
+        return __jsx$26(TableData, {
           align: align,
           key: index
         }, length > 0 && column.formatter ? column.formatter({
           row: row
-        }, column.formatterData) : value && value.__html ? __jsx$27("span", {
+        }, column.formatterData) : value && value.__html ? __jsx$26("span", {
           dangerouslySetInnerHTML: value
         }) : renderValue);
       }));
@@ -23132,21 +23136,21 @@ var Table = function Table(_ref) {
   };
 
   var renderTable = function renderTable() {
-    return __jsx$27(StyledTable, {
+    return __jsx$26(StyledTable, {
       className: className
-    }, caption && __jsx$27(StyledCaption$1, null, caption), __jsx$27("thead", null, __jsx$27("tr", null, columns && renderColumns())), __jsx$27("tbody", null, noData && !loading && !rows.length ? __jsx$27(TableRow, null, __jsx$27(TableData, {
+    }, caption && __jsx$26(StyledCaption$1, null, caption), __jsx$26("thead", null, __jsx$26("tr", null, columns && renderColumns())), __jsx$26("tbody", null, noData && !loading && !rows.length ? __jsx$26(TableRow, null, __jsx$26(TableData, {
       align: "center",
       colSpan: tableSpan
     }, "No data available")) : renderRows()));
   };
 
-  return __jsx$27(React.Fragment, null, __jsx$27(StyledWrapper$1, {
+  return __jsx$26(React__default['default'].Fragment, null, __jsx$26(StyledWrapper$1, {
     fullHeight: fullHeight,
     isLoading: loading
-  }, __jsx$27(TableLoading, {
+  }, __jsx$26(TableLoading, {
     colsLength: tableSpan,
     show: loading
-  }), responsive ? __jsx$27(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$27(Pagination, _extends({
+  }), responsive ? __jsx$26(StyledResponsive, null, renderTable()) : renderTable()), pagination && rows.length > 0 && __jsx$26(Pagination, _extends({
     currentPage: currentPage,
     onPageChange: handlePagination,
     pageCount: Math.ceil(rows.length / perPage),
@@ -23157,7 +23161,7 @@ var Table = function Table(_ref) {
     }
   }, otherPaginationProps)));
 };
-var StyledWrapper$1 = styled.div.withConfig({
+var StyledWrapper$1 = styled__default['default'].div.withConfig({
   displayName: "table__StyledWrapper",
   componentId: "sc-203uoz-0"
 })(["width:100%;", " position:relative;", ""], function (_ref5) {
@@ -23166,13 +23170,13 @@ var StyledWrapper$1 = styled.div.withConfig({
   return (fullHeight || isLoading !== undefined) && 'height: 100%;';
 }, function (_ref6) {
   var isLoading = _ref6.isLoading;
-  return isLoading && css(["position:relative;"]);
+  return isLoading && styled.css(["position:relative;"]);
 });
-var StyledResponsive = styled.div.withConfig({
+var StyledResponsive = styled__default['default'].div.withConfig({
   displayName: "table__StyledResponsive",
   componentId: "sc-203uoz-1"
 })(["background-color:#fff;display:block;width:100%;overflow-x:auto;"]);
-var StyledTable = styled.table.withConfig({
+var StyledTable = styled__default['default'].table.withConfig({
   displayName: "table__StyledTable",
   componentId: "sc-203uoz-2"
 })(["background-color:", ";border-collapse:collapse;font-size:", ";width:100%;"], function (_ref7) {
@@ -23182,7 +23186,7 @@ var StyledTable = styled.table.withConfig({
   var theme = _ref8.theme;
   return theme.TABLE.fontSize;
 });
-var StyledCaption$1 = styled.caption.withConfig({
+var StyledCaption$1 = styled__default['default'].caption.withConfig({
   displayName: "table__StyledCaption",
   componentId: "sc-203uoz-3"
 })(["caption-side:bottom;color:#6c757d;padding:", " 0;text-align:left;"], function (_ref9) {
@@ -23230,7 +23234,7 @@ Table.defaultProps = {
   striped: true
 };
 
-var __jsx$28 = React.createElement;
+var __jsx$27 = React__default['default'].createElement;
 var TableActions = function TableActions(_ref, data) {
   var row = _ref.row;
 
@@ -23238,11 +23242,11 @@ var TableActions = function TableActions(_ref, data) {
     return function (e) {
       e.preventDefault();
       e.stopPropagation();
-      Router.push(path);
+      Router__default['default'].push(path);
     };
   };
 
-  return __jsx$28(React.Fragment, null, __jsx$28(ButtonToolbar, {
+  return __jsx$27(React__default['default'].Fragment, null, __jsx$27(ButtonToolbar, {
     align: "flex-start",
     style: {
       zIndex: '100000000'
@@ -23257,10 +23261,10 @@ var TableActions = function TableActions(_ref, data) {
         to = _ref2.to,
         tooltip = _ref2.tooltip;
     var iconArray = Array.isArray(icon);
-    return __jsx$28(Tooltip, {
+    return __jsx$27(Tooltip, {
       content: tooltip,
       key: index
-    }, __jsx$28(StyledButton$7, {
+    }, __jsx$27(StyledButton$7, {
       forwardedAs: "a",
       disabled: disabled,
       context: context,
@@ -23268,20 +23272,20 @@ var TableActions = function TableActions(_ref, data) {
         return onClick(e, row);
       } : handleClick("".concat(to, "?id=").concat(row.id)),
       size: "sm"
-    }, __jsx$28(Icon, {
+    }, __jsx$27(Icon, {
       icon: icon ? iconArray ? icon[1] : icon : null,
       prefix: icon && iconArray && icon[0],
       style: {
         pointerEvents: 'none'
       }
-    }), row[numberOverlay] > 0 && __jsx$28(StyledNumberOverlay, null, row[numberOverlay])));
+    }), row[numberOverlay] > 0 && __jsx$27(StyledNumberOverlay, null, row[numberOverlay])));
   })));
 };
-var StyledButton$7 = styled(Button).withConfig({
+var StyledButton$7 = styled__default['default'](Button).withConfig({
   displayName: "actions__StyledButton",
   componentId: "sc-1rwzgo8-0"
 })(["font-size:16px;padding:0.3rem;position:relative;"]);
-var StyledNumberOverlay = styled.span.withConfig({
+var StyledNumberOverlay = styled__default['default'].span.withConfig({
   displayName: "actions__StyledNumberOverlay",
   componentId: "sc-1rwzgo8-1"
 })(["font-size:0.7em;display:block;position:absolute;top:-0.75em;right:-0.75em;width:2em;height:2em;line-height:2em;border-radius:50%;text-align:center;color:#fff;background:rgba(236,86,86,0.88);"]);
@@ -23289,7 +23293,7 @@ TableActions.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$29 = React.createElement;
+var __jsx$28 = React__default['default'].createElement;
 var TableLink = function TableLink(path, key, value, dynamicUrl) {
   return function (_ref) {
     var row = _ref.row;
@@ -23304,18 +23308,18 @@ var TableLink = function TableLink(path, key, value, dynamicUrl) {
     var handleClick = function handleClick(e) {
       e.preventDefault();
       e.stopPropagation();
-      Router.push(getPath());
+      Router__default['default'].push(getPath());
     };
 
     var item = row[value];
-    return useLink ? __jsx$29(React.Fragment, null, item === '-' && '-', item !== '-' && __jsx$29(StyleLink, {
+    return useLink ? __jsx$28(React__default['default'].Fragment, null, item === '-' && '-', item !== '-' && __jsx$28(StyleLink, {
       border: false,
       href: getPath(),
       onClick: handleClick
     }, item)) : item;
   };
 };
-var StyleLink = styled(StyledLink).withConfig({
+var StyleLink = styled__default['default'](StyledLink).withConfig({
   displayName: "link__StyleLink",
   componentId: "mew5ph-0"
 })(["&:hover{background:#ddd;margin:-8px;padding:8px;}"]);
@@ -23323,7 +23327,7 @@ TableLink.propTypes = {
   row: propTypes.object.isRequired
 };
 
-var __jsx$2a = React.createElement;
+var __jsx$29 = React__default['default'].createElement;
 var Tab = function Tab(_ref) {
   var activeTab = _ref.activeTab,
       childClick = _ref.childClick,
@@ -23337,41 +23341,41 @@ var Tab = function Tab(_ref) {
     childClick && childClick();
   };
 
-  return __jsx$2a(StyledTab, {
+  return __jsx$29(StyledTab, {
     active: activeTab === label,
     context: context,
     disabled: disabled,
     onClick: handleClick
   }, label);
 };
-var StyledTab = styled.li.withConfig({
+var StyledTab = styled__default['default'].li.withConfig({
   displayName: "tab__StyledTab",
   componentId: "sc-1eaeu70-0"
 })(["", " ", " ", " ", " &:hover{", " ", "}&:last-of-type{border-top-right-radius:", ";border-top-left-radius:inherit;border-right:1px solid ", ";}&:first-child{border-top-left-radius:", ";border-top-right-radius:inherit;border-right:0px;}display:inline-block;list-style:none;margin-bottom:-1px;padding:.5rem .75rem;"], function (_ref2) {
   var context = _ref2.context,
       theme = _ref2.theme;
-  return css(["background-color:", ";border-left:1px solid ", ";border-bottom:1px solid ", ";border-top:1px solid ", ";"], theme.TABS.colour, theme.TABS.borderColour, context ? theme.COLOUR[context] : theme.TABS.borderColour, theme.TABS.borderColour);
+  return styled.css(["background-color:", ";border-left:1px solid ", ";border-bottom:1px solid ", ";border-top:1px solid ", ";"], theme.TABS.colour, theme.TABS.borderColour, context ? theme.COLOUR[context] : theme.TABS.borderColour, theme.TABS.borderColour);
 }, function (_ref3) {
   var active = _ref3.active,
       context = _ref3.context,
       theme = _ref3.theme;
-  return active && css(["background-color:", ";border-bottom:1px solid ", ";"], theme.TABS.activeColour, theme.COLOUR.primary);
+  return active && styled.css(["background-color:", ";border-bottom:1px solid ", ";"], theme.TABS.activeColour, theme.COLOUR.primary);
 }, function (_ref4) {
   var active = _ref4.active,
       theme = _ref4.theme;
-  return !active && css(["cursor:pointer;"]);
+  return !active && styled.css(["cursor:pointer;"]);
 }, function (_ref5) {
   var disabled = _ref5.disabled,
       theme = _ref5.theme;
-  return disabled && css(["background-color:", ";cursor:no-drop;"], theme.TABS.disabledColour);
+  return disabled && styled.css(["background-color:", ";cursor:no-drop;"], theme.TABS.disabledColour);
 }, function (_ref6) {
   var active = _ref6.active,
       theme = _ref6.theme;
-  return !active && css(["background-color:", ";"], theme.TABS.hoverColour);
+  return !active && styled.css(["background-color:", ";"], theme.TABS.hoverColour);
 }, function (_ref7) {
   var disabled = _ref7.disabled,
       theme = _ref7.theme;
-  return disabled && css(["background-color:", ";"], theme.TABS.disabledColour);
+  return disabled && styled.css(["background-color:", ";"], theme.TABS.disabledColour);
 }, function (_ref8) {
   var theme = _ref8.theme;
   return theme.TABS.borderRadius;
@@ -23394,15 +23398,15 @@ Tab.defaultProps = {
   context: false
 };
 
-var __jsx$2b = React.createElement;
+var __jsx$2a = React__default['default'].createElement;
 var Tabs = function Tabs(_ref) {
   var children = _ref.children,
       className = _ref.className,
       handleChange = _ref.handleChange;
-  var router = useRouter();
+  var router = Router.useRouter();
 
   if (!Array.isArray(children)) {
-    children = React.Children.toArray(children);
+    children = React__default['default'].Children.toArray(children);
   }
 
   var active = children[0].props.label;
@@ -23412,7 +23416,7 @@ var Tabs = function Tabs(_ref) {
     }
   });
 
-  var _useState = useState(active),
+  var _useState = React.useState(active),
       activeTab = _useState[0],
       setActiveTab = _useState[1];
 
@@ -23426,16 +23430,16 @@ var Tabs = function Tabs(_ref) {
     // console.log('Router change ', router)
     // console.log('Router change2 ', router, router.query.id, router.query)
     var href = "".concat(router.pathname, "?id=").concat(router.query.id, "&tab=").concat(tab);
-    Router.push(href, href, {
+    Router__default['default'].push(href, href, {
       shallow: true
     });
   };
 
-  return __jsx$2b(React.Fragment, null, __jsx$2b(StyledTabs, {
+  return __jsx$2a(React__default['default'].Fragment, null, __jsx$2a(StyledTabs, {
     className: className
   }, children.map(function (_ref2) {
     var props = _ref2.props;
-    return __jsx$2b(Tab, _extends({
+    return __jsx$2a(Tab, _extends({
       activeTab: activeTab,
       key: props.label,
       onClick: props.disabled ? function () {} : onClickTabItem
@@ -23448,7 +23452,7 @@ var Tabs = function Tabs(_ref) {
     return child.props.children;
   }));
 };
-var StyledTabs = styled.ol.withConfig({
+var StyledTabs = styled__default['default'].ol.withConfig({
   displayName: "tabs__StyledTabs",
   componentId: "mlaa2h-0"
 })(["align-items:flex-end;border-bottom:1px solid ", ";display:flex;margin:0 0 1rem 0;padding-left:0;"], function (_ref3) {
@@ -23509,14 +23513,14 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
-var __jsx$2c = React.createElement;
+var __jsx$2b = React__default['default'].createElement;
 var Design = function Design(_ref) {
   var handleReset = _ref.handleReset,
       handleScreenshot = _ref.handleScreenshot,
       refProp = _ref.refProp,
       screenshot = _ref.screenshot,
       videoConstraints = _ref.videoConstraints;
-  return __jsx$2c(React.Fragment, null, __jsx$2c("div", {
+  return __jsx$2b(React__default['default'].Fragment, null, __jsx$2b("div", {
     className: "text-center",
     style: {
       background: '#000',
@@ -23524,24 +23528,24 @@ var Design = function Design(_ref) {
       borderRadius: '.5rem .5rem 0 0',
       marginBottom: '-8px'
     }
-  }, !screenshot && __jsx$2c(Webcam, {
+  }, !screenshot && __jsx$2b(Webcam, {
     ref: refProp,
     screenshotFormat: "image/jpeg",
     videoConstraints: videoConstraints
-  }), screenshot && __jsx$2c("img", {
+  }), screenshot && __jsx$2b("img", {
     alt: "user photo",
     src: screenshot,
     style: {
       borderRadius: '.5rem .5rem 0 0'
     }
-  })), __jsx$2c("div", {
+  })), __jsx$2b("div", {
     style: {
       background: '#C8D1D8',
       borderRadius: '0 0 .5rem .5rem',
       height: '50px',
       position: 'relative'
     }
-  }, __jsx$2c("div", {
+  }, __jsx$2b("div", {
     onClick: screenshot ? handleReset : handleScreenshot,
     style: {
       background: "".concat(!screenshot ? '#04d4cd' : '#e60811'),
@@ -23556,7 +23560,7 @@ var Design = function Design(_ref) {
       textAlign: 'center',
       width: '50px'
     }
-  }, __jsx$2c(Icon, {
+  }, __jsx$2b(Icon, {
     color: "white",
     icon: "camera",
     style: {
@@ -23566,12 +23570,12 @@ var Design = function Design(_ref) {
 };
 
 var _class, _temp;
-var __jsx$2d = React.createElement;
+var __jsx$2c = React__default['default'].createElement;
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
+var Webcam = styled.withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
   _inherits(Webcam, _Component);
 
   var _super = _createSuper(Webcam);
@@ -23811,7 +23815,7 @@ var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
           style = _this$props5.style,
           width = _this$props5.width;
       var src = this.state.src;
-      return __jsx$2d("video", {
+      return __jsx$2c("video", {
         autoPlay: true,
         width: width,
         height: height,
@@ -23828,7 +23832,7 @@ var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
   }]);
 
   return Webcam;
-}(Component), _defineProperty(_class, "propTypes", {
+}(React.Component), _defineProperty(_class, "propTypes", {
   audio: propTypes.bool,
   onUserMedia: propTypes.func,
   onUserMediaError: propTypes.func,
@@ -23909,7 +23913,7 @@ Webcam.Design = Design;
 //   width: constrainLongType,
 // });
 
-var __jsx$2e = React.createElement;
+var __jsx$2d = React__default['default'].createElement;
 var Bar$1 = function Bar(_ref) {
   var background = _ref.background,
       children = _ref.children,
@@ -23921,7 +23925,7 @@ var Bar$1 = function Bar(_ref) {
       width = _ref.width,
       withExposedButton = _ref.withExposedButton;
 
-  var _useState = useState(open !== null && open !== void 0 ? open : true),
+  var _useState = React.useState(open !== null && open !== void 0 ? open : true),
       IsOpen = _useState[0],
       setIsOpen = _useState[1];
 
@@ -23929,7 +23933,7 @@ var Bar$1 = function Bar(_ref) {
     setIsOpen(!IsOpen);
   };
 
-  return __jsx$2e(React.Fragment, null, __jsx$2e(StyledBarWrapper, {
+  return __jsx$2d(React__default['default'].Fragment, null, __jsx$2d(StyledBarWrapper, {
     background: background,
     flat: flat,
     open: IsOpen,
@@ -23937,18 +23941,18 @@ var Bar$1 = function Bar(_ref) {
     variant: variant,
     width: width,
     minSize: minSize
-  }, __jsx$2e(OpenButton, {
+  }, __jsx$2d(OpenButton, {
     background: background,
     flat: flat,
     exposed: withExposedButton,
     onClick: toggleOpen,
     open: IsOpen,
     placement: placement
-  }, __jsx$2e(Icon, {
+  }, __jsx$2d(Icon, {
     icon: "user",
     size: "1x",
     prefix: "fas"
-  })), children), __jsx$2e(StyledOverlay$1, {
+  })), children), __jsx$2d(StyledOverlay$1, {
     onClick: toggleOpen,
     open: IsOpen,
     placement: placement,
@@ -23956,7 +23960,7 @@ var Bar$1 = function Bar(_ref) {
     width: width
   }));
 };
-var OpenButton = styled.div.withConfig({
+var OpenButton = styled__default['default'].div.withConfig({
   displayName: "bar__OpenButton",
   componentId: "sc-1az3wwm-0"
 })(["border-radius:0.25rem;cursor:pointer;display:none;z-index:1;position:absolute;svg{transition:transform ", " ease;transform:rotate(0deg);position:absolute;top:1rem;right:0.2rem;}", " ", ""], function (_ref2) {
@@ -23967,33 +23971,33 @@ var OpenButton = styled.div.withConfig({
       exposed = _ref3.exposed,
       flat = _ref3.flat,
       placement = _ref3.placement;
-  return (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && css(["border-top-", "-radius:0;border-bottom-", "-radius:0;display:", ";width:1.5rem;height:3rem;", ":100%;background-color:", ";box-shadow:", ";"], placement, placement, exposed ? 'block' : 'none', placement, function (_ref4) {
+  return (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && styled.css(["border-top-", "-radius:0;border-bottom-", "-radius:0;display:", ";width:1.5rem;height:3rem;", ":100%;background-color:", ";box-shadow:", ";"], placement, placement, exposed ? 'block' : 'none', placement, function (_ref4) {
     var background = _ref4.background,
         theme = _ref4.theme;
     return theme ? theme.COLOUR[background] : 'white';
   }, !flat && (placement === BarConfig.PLACEMENT.LEFT ? '2px 1px 2px 0px rgb(0 0 0 / 13%)' : '-2px 1px 2px 0px rgb(0 0 0 / 13%)'));
 }, function (_ref5) {
   var open = _ref5.open;
-  return open === true && css(["._,svg{transform:rotate(180deg);}"]);
+  return open === true && styled.css(["._,svg{transform:rotate(180deg);}"]);
 });
-var StyledOverlay$1 = styled.div.withConfig({
+var StyledOverlay$1 = styled__default['default'].div.withConfig({
   displayName: "bar__StyledOverlay",
   componentId: "sc-1az3wwm-1"
 })(["transition:", ";", " ", ""], function (_ref6) {
   var theme = _ref6.theme,
       placement = _ref6.placement;
-  return css(["opacity ", " ", ",", " ", " ", ";"], theme.BAR.transitionDuration, theme.BAR.transitionTiming, placement, theme.BAR.transitionDuration, theme.BAR.transitionTiming);
+  return styled.css(["opacity ", " ", ",", " ", " ", ";"], theme.BAR.transitionDuration, theme.BAR.transitionTiming, placement, theme.BAR.transitionDuration, theme.BAR.transitionTiming);
 }, function (_ref7) {
   var placement = _ref7.placement,
       variant = _ref7.variant,
       width = _ref7.width;
-  return variant === BarConfig.VARIANT.OVERLAY && (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && css(["width:calc(100% - ", "rem);height:100%;background-color:rgba(0,0,0,0.5);opacity:1;top:0;position:absolute;", ":", "rem;"], width, placement, width);
+  return variant === BarConfig.VARIANT.OVERLAY && (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && styled.css(["width:calc(100% - ", "rem);height:100%;background-color:rgba(0,0,0,0.5);opacity:1;top:0;position:absolute;", ":", "rem;"], width, placement, width);
 }, function (_ref8) {
   var open = _ref8.open,
       placement = _ref8.placement;
-  return !open && css(["opacity:0;pointer-events:none;width:100%;", ":0;"], placement);
+  return !open && styled.css(["opacity:0;pointer-events:none;width:100%;", ":0;"], placement);
 });
-var StyledBarWrapper = styled.div.withConfig({
+var StyledBarWrapper = styled__default['default'].div.withConfig({
   displayName: "bar__StyledBarWrapper",
   componentId: "sc-1az3wwm-2"
 })(["align-items:center;background-color:", ";box-shadow:", ";display:flex;flex-direction:column;height:100%;position:relative;transition-duration:", ";transition-property:left,opacity,right,width;transition-timing-function:", ";", " ", ""], function (_ref9) {
@@ -24015,14 +24019,14 @@ var StyledBarWrapper = styled.div.withConfig({
       placement = _ref13.placement,
       theme = _ref13.theme,
       width = _ref13.width;
-  return placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM ? css(["width:100%;height:", ";flex-direction:row;"], minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize) : open ? css(["width:", "rem;"], width) : css(["width:", ";"], minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize);
+  return placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM ? styled.css(["width:100%;height:", ";flex-direction:row;"], minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize) : open ? styled.css(["width:", "rem;"], width) : styled.css(["width:", ";"], minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize);
 }, function (_ref14) {
   var minSize = _ref14.minSize,
       open = _ref14.open,
       placement = _ref14.placement,
       theme = _ref14.theme,
       variant = _ref14.variant;
-  return variant === BarConfig.VARIANT.OVERLAY ? css(["position:absolute;opacity:1;", ":0;", " ", " ", ""], placement, (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && css(["top:0;align-items:center;"]), !open && css(["margin-", ":-", ";background-color:transparent;box-shadow:none;"], placement, minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize), (placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM) && css(["left:0;"])) : css(["float:", ";"], placement);
+  return variant === BarConfig.VARIANT.OVERLAY ? styled.css(["position:absolute;opacity:1;", ":0;", " ", " ", ""], placement, (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) && styled.css(["top:0;align-items:center;"]), !open && styled.css(["margin-", ":-", ";background-color:transparent;box-shadow:none;"], placement, minSize !== null && minSize !== void 0 ? minSize : theme.BAR.minSize), (placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM) && styled.css(["left:0;"])) : styled.css(["float:", ";"], placement);
 });
 Bar$1.propTypes = {};
 Bar$1.defaultProps = {
@@ -24045,15 +24049,15 @@ var BarConfig = {
   }
 };
 
-var __jsx$2f = React.createElement;
+var __jsx$2e = React__default['default'].createElement;
 var events = [{
-  start: moment(),
-  end: moment().add(1, 'days').toDate(),
+  start: moment__default['default'](),
+  end: moment__default['default']().add(1, 'days').toDate(),
   title: 'Sprint planning'
 }];
 var BigCalendar = function BigCalendar() {
-  var localizer = momentLocalizer(moment);
-  return __jsx$2f("div", null, __jsx$2f(Calendar$1, {
+  var localizer = reactBigCalendar.momentLocalizer(moment__default['default']);
+  return __jsx$2e("div", null, __jsx$2e(reactBigCalendar.Calendar, {
     localizer: localizer,
     defaultDate: new Date(),
     events: events,
@@ -24065,29 +24069,29 @@ var BigCalendar = function BigCalendar() {
   }));
 };
 
-var __jsx$2g = React.createElement;
+var __jsx$2f = React__default['default'].createElement;
 var FullCalendar;
 var CalendarWrapper = function CalendarWrapper(props) {
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       calendarLoaded = _useState[0],
       setCalendarLoaded = _useState[1];
 
-  useEffect(function () {
-    FullCalendar = dynamic({
+  React.useEffect(function () {
+    FullCalendar = dynamic__default['default']({
       modules: function modules() {
         return {
-          calendar: import('@fullcalendar/react'),
-          dayGridPlugin: import('@fullcalendar/daygrid'),
-          timeGridPlugin: import('@fullcalendar/timegrid'),
-          interactionPlugin: import('@fullcalendar/interaction'),
-          listPlugin: import('@fullcalendar/list')
+          calendar: Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@fullcalendar/react')); }),
+          dayGridPlugin: Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@fullcalendar/daygrid')); }),
+          timeGridPlugin: Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@fullcalendar/timegrid')); }),
+          interactionPlugin: Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@fullcalendar/interaction')); }),
+          listPlugin: Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@fullcalendar/list')); })
         };
       },
       render: function render(props, _ref) {
         var Calendar = _ref.calendar,
             plugins = _objectWithoutProperties(_ref, ["calendar"]);
 
-        return __jsx$2g(Calendar, _extends({
+        return __jsx$2f(Calendar, _extends({
           plugins: Object.values(plugins),
           ref: props.forwardedRef
         }, props));
@@ -24104,32 +24108,32 @@ var CalendarWrapper = function CalendarWrapper(props) {
   }, []);
 
   var showCalendar = function showCalendar(props) {
-    if (!calendarLoaded) return __jsx$2g("div", null, "Loading ...");
-    return __jsx$2g(FullCalendar, props);
+    if (!calendarLoaded) return __jsx$2f("div", null, "Loading ...");
+    return __jsx$2f(FullCalendar, props);
   };
 
-  return __jsx$2g("div", null, showCalendar(props));
+  return __jsx$2f("div", null, showCalendar(props));
 };
 
-var __jsx$2h = React.createElement;
-var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
+var __jsx$2g = React__default['default'].createElement;
+var Calendar = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
   var props = _extends({}, _ref);
 
   var CALENDAR = Theme.CALENDAR,
       COLOUR = Theme.COLOUR;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       loading = _useState[0],
       setLoading = _useState[1];
 
-  return __jsx$2h(Wrapper$4, null, props.hasLoading && loading && __jsx$2h(PageLoading, {
-    indicator: __jsx$2h(LdsSpinner, {
+  return __jsx$2g(Wrapper$3, null, props.hasLoading && loading && __jsx$2g(PageLoading, {
+    indicator: __jsx$2g(LdsSpinner, {
       color: "#000",
       size: 50
     }),
     opacity: 0.7,
     position: "absolute"
-  }), __jsx$2h(CalendarWrapper, _extends({}, props, {
+  }), __jsx$2g(CalendarWrapper, _extends({}, props, {
     eventColor: props.defaultEventColor || COLOUR.primary,
     header: props.header || CALENDAR.header,
     events: props.events,
@@ -24137,12 +24141,12 @@ var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
     loading: setLoading
   })));
 });
-var Wrapper$4 = styled.div.withConfig({
+var Wrapper$3 = styled__default['default'].div.withConfig({
   displayName: "fullCalendar__Wrapper",
   componentId: "sc-12sqf83-0"
 })(["position:relative;width:100%;@media (max-width:700px){.fc-header-toolbar{flex-direction:column;}}"]);
 
-var __jsx$2i = React.createElement;
+var __jsx$2h = React__default['default'].createElement;
 var ColorPicker = function ColorPicker(_ref) {
   var type = _ref.type,
       onChangeComplete = _ref.onChangeComplete,
@@ -24150,27 +24154,27 @@ var ColorPicker = function ColorPicker(_ref) {
 
   switch (type) {
     case 'circle':
-      return __jsx$2i(CirclePicker, _extends({
+      return __jsx$2h(reactColor.CirclePicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'sketch':
-      return __jsx$2i(SketchPicker, _extends({
+      return __jsx$2h(reactColor.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'github':
-      return __jsx$2i(GithubPicker, _extends({
+      return __jsx$2h(reactColor.GithubPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     case 'twitter':
-      return __jsx$2i(TwitterPicker, _extends({
+      return __jsx$2h(reactColor.TwitterPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
 
     default:
-      return __jsx$2i(SketchPicker, _extends({
+      return __jsx$2h(reactColor.SketchPicker, _extends({
         onChangeComplete: onChangeComplete
       }, props));
   }
@@ -24185,7 +24189,7 @@ ColorPicker.propTypes = {
   width: propTypes.string
 };
 
-var __jsx$2j = React.createElement;
+var __jsx$2i = React__default['default'].createElement;
 var EmailChange = function EmailChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -24197,38 +24201,38 @@ var EmailChange = function EmailChange(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       error = _useState[0];
 
   var submit = function submit(data) {};
 
   var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return __jsx$2j(React.Fragment, null, __jsx$2j(PageHeading, {
+  return __jsx$2i(React__default['default'].Fragment, null, __jsx$2i(PageHeading, {
     center: true,
     heading: "Email Change",
     divider: false
-  }), error && __jsx$2j(Alert, {
+  }), error && __jsx$2i(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2j(Form, {
+  }), __jsx$2i(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2j(FormLabel, {
+  }, __jsx$2i(FormLabel, {
     label: "Email"
-  }, __jsx$2j(FormField, {
+  }, __jsx$2i(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2j(Button, {
+  })), __jsx$2i(Button, {
     block: true,
     content: "Submit",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2j("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
+  }), __jsx$2i("p", null, "We will send you a re-validation email after this. Please also check your spam folder.")));
 };
 EmailChange.propTypes = {
   showPlaceholder: propTypes.bool
@@ -24250,24 +24254,24 @@ var BlockType = {
   LI: 'unordered-list-item'
 };
 
-var __jsx$2k = React.createElement;
+var __jsx$2j = React__default['default'].createElement;
 var DraftJs = function DraftJs(_ref) {
   var control = _ref.control,
       name = _ref.name,
       setValue = _ref.setValue;
 
-  var _useState = useState(EditorState.createEmpty()),
+  var _useState = React.useState(draftJs.EditorState.createEmpty()),
       editorState = _useState[0],
       setEditorState = _useState[1];
 
   var toggleInlineStyle = function toggleInlineStyle(event) {
     event.preventDefault();
     var style = event.currentTarget.getAttribute('data-style');
-    setEditorState(RichUtils.toggleInlineStyle(editorState, style));
+    setEditorState(draftJs.RichUtils.toggleInlineStyle(editorState, style));
   };
 
   var handleKeyCommand = function handleKeyCommand(command, editorState) {
-    var newEditorState = RichUtils.handleKeyCommand(editorState, command);
+    var newEditorState = draftJs.RichUtils.handleKeyCommand(editorState, command);
 
     if (newEditorState) {
       setEditorState(newEditorState);
@@ -24285,31 +24289,31 @@ var DraftJs = function DraftJs(_ref) {
   }; // TODO: Do the inputList dynamic creating a map with the Key-Value to generate the needed
 
 
-  return __jsx$2k(React.Fragment, null, __jsx$2k("input", {
+  return __jsx$2j(React__default['default'].Fragment, null, __jsx$2j("input", {
     type: "button",
     value: "B",
     "data-style": "BOLD",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2k("input", {
+  }), __jsx$2j("input", {
     type: "button",
     value: "I",
     "data-style": "ITALIC",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2k("input", {
+  }), __jsx$2j("input", {
     type: "button",
     value: "S",
     "data-style": "STRIKETHROUGH",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2k("input", {
+  }), __jsx$2j("input", {
     type: "button",
     value: "U",
     "data-style": "UNDERLINE",
     onMouseDown: toggleInlineStyle
-  }), __jsx$2k(Controller$1, {
+  }), __jsx$2j(reactHookForm.Controller, {
     name: name,
     control: control,
     render: function render(props) {
-      return __jsx$2k(Editor, {
+      return __jsx$2j(draftJs.Editor, {
         editorState: editorState,
         blockStyleFn: myBlockStyleFn,
         handleKeyCommand: handleKeyCommand,
@@ -24328,14 +24332,14 @@ function myBlockStyleFn(contentBlock) {
   }
 }
 
-var __jsx$2l = React.createElement;
+var __jsx$2k = React__default['default'].createElement;
 var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       fixed = _ref.fixed;
 
   var renderColumns = function renderColumns() {
     return columns.map(function (column, index) {
-      return __jsx$2l(Column, _extends({
+      return __jsx$2k(Column, _extends({
         align: column.align,
         key: index,
         offset: column.offset
@@ -24346,7 +24350,7 @@ var Footer = function Footer(_ref) {
 
         switch (key) {
           case 'header':
-            return __jsx$2l(StyledHeading$3, {
+            return __jsx$2k(StyledHeading$3, {
               align: value.align,
               content: value.content,
               key: "".concat(value.content).concat(index).concat(i),
@@ -24370,7 +24374,7 @@ var Footer = function Footer(_ref) {
     var align = _ref4.align,
         direction = _ref4.direction,
         items = _ref4.items;
-    return __jsx$2l(StyledList$2, {
+    return __jsx$2k(StyledList$2, {
       align: align,
       direction: direction,
       key: "".concat(items[0]).concat(index),
@@ -24380,12 +24384,12 @@ var Footer = function Footer(_ref) {
           id = _ref5.id,
           name = _ref5.name,
           to = _ref5.to;
-      return __jsx$2l(StyledListItem$1, {
+      return __jsx$2k(StyledListItem$1, {
         key: id
-      }, __jsx$2l(Link, {
+      }, __jsx$2k(Link, {
         to: to,
         passHref: true
-      }, icon && __jsx$2l(StyledIcon$6, {
+      }, icon && __jsx$2k(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
@@ -24396,18 +24400,18 @@ var Footer = function Footer(_ref) {
   var renderText = function renderText(_ref6, index) {
     var align = _ref6.align,
         items = _ref6.items;
-    return __jsx$2l(Fragment$1, {
+    return __jsx$2k(React.Fragment, {
       key: index
     }, items === null || items === void 0 ? void 0 : items.map(function (_ref7, i) {
       var content = _ref7.content,
           icon = _ref7.icon;
-      return __jsx$2l(Fragment$1, {
+      return __jsx$2k(React.Fragment, {
         key: i
-      }, icon && __jsx$2l(StyledIcon$6, {
+      }, icon && __jsx$2k(StyledIcon$6, {
         context: "primary",
         icon: icon,
         prefix: "fad"
-      }), __jsx$2l(StyledText$5, {
+      }), __jsx$2k(StyledText$5, {
         align: align,
         dangerouslySetInnerHTML: {
           __html: content
@@ -24416,12 +24420,12 @@ var Footer = function Footer(_ref) {
     }));
   };
 
-  return __jsx$2l(StyledFooter$2, {
+  return __jsx$2k(StyledFooter$2, {
     "data-cy": "footer",
     fixed: fixed
-  }, __jsx$2l(Container, null, __jsx$2l(Row, null, renderColumns())));
+  }, __jsx$2k(Container, null, __jsx$2k(Row, null, renderColumns())));
 };
-var StyledFooter$2 = styled.div.withConfig({
+var StyledFooter$2 = styled__default['default'].div.withConfig({
   displayName: "footer__StyledFooter",
   componentId: "sc-5csagl-0"
 })(["border-top:2px solid ", ";font-size:0.875rem;", " padding-top:2rem;", ""], function (_ref8) {
@@ -24429,19 +24433,19 @@ var StyledFooter$2 = styled.div.withConfig({
   return theme.COLOUR.primary;
 }, function (_ref9) {
   var FOOTER = _ref9.theme.FOOTER;
-  return css(["background:", ";color:", ";"], FOOTER.background, FOOTER.colour);
+  return styled.css(["background:", ";color:", ";"], FOOTER.background, FOOTER.colour);
 }, function (_ref10) {
   var fixed = _ref10.fixed;
-  return fixed && css(["bottom:0;position:fixed;left:0;width:100%;z-index:1;"]);
+  return fixed && styled.css(["bottom:0;position:fixed;left:0;width:100%;z-index:1;"]);
 });
-var StyledHeading$3 = styled(Heading).withConfig({
+var StyledHeading$3 = styled__default['default'](Heading).withConfig({
   displayName: "footer__StyledHeading",
   componentId: "sc-5csagl-1"
 })(["text-align:", ";"], function (_ref11) {
   var align = _ref11.align;
   return align;
 });
-var StyledList$2 = styled(List).withConfig({
+var StyledList$2 = styled__default['default'](List).withConfig({
   displayName: "footer__StyledList",
   componentId: "sc-5csagl-2"
 })(["display:flex;flex-direction:", ";flex-wrap:wrap;justify-content:", ";"], function (_ref12) {
@@ -24451,15 +24455,15 @@ var StyledList$2 = styled(List).withConfig({
   var align = _ref13.align;
   return align;
 });
-var StyledListItem$1 = styled(ListItem).withConfig({
+var StyledListItem$1 = styled__default['default'](ListItem).withConfig({
   displayName: "footer__StyledListItem",
   componentId: "sc-5csagl-3"
 })(["margin-bottom:1.25rem;padding-right:1rem;"]);
-var StyledIcon$6 = styled(Icon).withConfig({
+var StyledIcon$6 = styled__default['default'](Icon).withConfig({
   displayName: "footer__StyledIcon",
   componentId: "sc-5csagl-4"
 })(["margin:0 0.5rem 0 0;"]);
-var StyledText$5 = styled.p.withConfig({
+var StyledText$5 = styled__default['default'].p.withConfig({
   displayName: "footer__StyledText",
   componentId: "sc-5csagl-5"
 })(["margin:0 0 1rem;text-align:", ";"], function (_ref14) {
@@ -24505,11 +24509,11 @@ Footer.defaultProps = {
 /**
  * Organisms - Forgot Details - Schema
  */
-var ForgotDetailsSchema = object$1().shape({
-  email: string$1().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
+var ForgotDetailsSchema = yup$1.object().shape({
+  email: yup$1.string().required('Please Enter an email').matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email must be valid')
 });
 
-var __jsx$2m = React.createElement;
+var __jsx$2l = React__default['default'].createElement;
 var ForgotDetails = function ForgotDetails(_ref) {
   var pathLogIn = _ref.pathLogIn,
       showPlaceholder = _ref.showPlaceholder,
@@ -24522,31 +24526,31 @@ var ForgotDetails = function ForgotDetails(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2m(React.Fragment, null, __jsx$2m(PageHeading, {
+  return __jsx$2l(React__default['default'].Fragment, null, __jsx$2l(PageHeading, {
     center: true,
     divider: false,
     heading: "Forgot Details"
-  }), __jsx$2m(Form, {
+  }), __jsx$2l(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2m(FormLabel, {
+  }, __jsx$2l(FormLabel, {
     label: "Email"
-  }, __jsx$2m(FormField, {
+  }, __jsx$2l(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     register: register
-  })), __jsx$2m(Button, {
+  })), __jsx$2l(Button, {
     block: true,
     content: "Send reset link",
     size: "lg",
     type: "submit"
-  }), __jsx$2m(Link, {
+  }), __jsx$2l(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2m(StyledLink$8, null, "Back to Log In"))));
+  }, __jsx$2l(StyledLink$8, null, "Back to Log In"))));
 };
-var StyledLink$8 = styled.span.withConfig({
+var StyledLink$8 = styled__default['default'].span.withConfig({
   displayName: "forgotDetails__StyledLink",
   componentId: "sc-1bspzrc-0"
 })(["display:block;margin:1rem 0 0 0;"]);
@@ -24563,11 +24567,11 @@ ForgotDetails.defaultProps = {
 /**
  * Organisms - Forgot Details Reset - Schema
  */
-var ForgotDetailsResetSchema = object$1().shape({
-  password: string$1().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
+var ForgotDetailsResetSchema = yup$1.object().shape({
+  password: yup$1.string().required('Please Enter a password').min(8, 'Password is too short - should be 8 chars minimum.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character')
 });
 
-var __jsx$2n = React.createElement;
+var __jsx$2m = React__default['default'].createElement;
 var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
   var _errors$password;
 
@@ -24581,33 +24585,33 @@ var ForgotDetailsReset = function ForgotDetailsReset(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  return __jsx$2n(React.Fragment, null, __jsx$2n(PageHeading, {
+  return __jsx$2m(React__default['default'].Fragment, null, __jsx$2m(PageHeading, {
     center: true,
     heading: "Set New Password",
     divider: false
-  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2n(Alert, {
+  }), (errors === null || errors === void 0 ? void 0 : (_errors$password = errors.password) === null || _errors$password === void 0 ? void 0 : _errors$password.message) && __jsx$2m(Alert, {
     content: errors.password.message,
     context: "warning"
-  }), __jsx$2n(Form, {
+  }), __jsx$2m(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2n(FormLabel, {
+  }, __jsx$2m(FormLabel, {
     label: "Password"
-  }, __jsx$2n(FormField, {
+  }, __jsx$2m(FormField, {
     errors: errors,
     name: "password",
     register: register,
     type: "password"
-  })), __jsx$2n(Button, {
+  })), __jsx$2m(Button, {
     block: true,
     content: "Submit",
     size: "lg",
     type: "submit"
-  }), __jsx$2n(Link, {
+  }), __jsx$2m(Link, {
     to: pathLogIn,
     passHref: true
-  }, __jsx$2n(StyledLink$9, null, "Back to Log In"))));
+  }, __jsx$2m(StyledLink$9, null, "Back to Log In"))));
 };
-var StyledLink$9 = styled.span.withConfig({
+var StyledLink$9 = styled__default['default'].span.withConfig({
   displayName: "forgotDetailsReset__StyledLink",
   componentId: "sc-158xnzv-0"
 })(["display:block;margin:1rem 0 0 0;"]);
@@ -24619,7 +24623,7 @@ ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 };
 
-var __jsx$2o = React.createElement;
+var __jsx$2n = React__default['default'].createElement;
 var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var Login = function Login(_ref) {
   var blockSubmitButton = _ref.blockSubmitButton,
@@ -24641,15 +24645,15 @@ var Login = function Login(_ref) {
       register = _useForm.register,
       handleSubmit = _useForm.handleSubmit;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       showPass = _useState[0],
       setShowPass = _useState[1];
 
-  var _useState2 = useState(false),
+  var _useState2 = React.useState(false),
       error = _useState2[0],
       setError = _useState2[1];
 
-  var _useContext = useContext(UserContext),
+  var _useContext = React.useContext(UserContext),
       signIn = _useContext.signIn;
 
   var onSubmit = function onSubmit(data) {
@@ -24674,41 +24678,41 @@ var Login = function Login(_ref) {
   // }
 
 
-  return __jsx$2o(React.Fragment, null, __jsx$2o(PageHeading, {
+  return __jsx$2n(React__default['default'].Fragment, null, __jsx$2n(PageHeading, {
     center: true,
     heading: heading,
     divider: false
-  }), error && __jsx$2o(Alert, {
+  }), error && __jsx$2n(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2o(Form, {
+  }), __jsx$2n(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2o(FormLabel, {
+  }, __jsx$2n(FormLabel, {
     label: "Email"
-  }, __jsx$2o(FormField, {
+  }, __jsx$2n(FormField, {
     autoFocus: true,
     errors: errors,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern,
     register: register
-  })), __jsx$2o(FormLabel, {
+  })), __jsx$2n(FormLabel, {
     label: "Password"
-  }, __jsx$2o(FormField, {
+  }, __jsx$2n(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     register: register,
     type: showPass ? 'text' : 'password'
-  })), showPassword && __jsx$2o(ShowPassword, {
+  })), showPassword && __jsx$2n(ShowPassword, {
     onClick: function onClick() {
       return setShowPass(function (prev) {
         return !prev;
       });
     }
-  }, __jsx$2o("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2o("div", {
+  }, __jsx$2n("a", null, showPass ? 'Hide Password' : 'Show Password')), __jsx$2n("div", {
     className: "text-right"
-  }, __jsx$2o(Button, {
+  }, __jsx$2n(Button, {
     align: "right",
     block: blockSubmitButton,
     content: "Log in",
@@ -24716,19 +24720,19 @@ var Login = function Login(_ref) {
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), forgotPassword && __jsx$2o(ForgotPasswordWrapper, null, __jsx$2o(Link, {
+  }), forgotPassword && __jsx$2n(ForgotPasswordWrapper, null, __jsx$2n(Link, {
     to: pathForgot
-  }, "Forgot password?")))), pathSignUp && __jsx$2o(React.Fragment, null, __jsx$2o("p", {
+  }, "Forgot password?")))), pathSignUp && __jsx$2n(React__default['default'].Fragment, null, __jsx$2n("p", {
     className: "text-center"
-  }, "Don't have an account? ", __jsx$2o(Link, {
+  }, "Don't have an account? ", __jsx$2n(Link, {
     to: pathSignUp
   }, "Apply now!"))));
 };
-var ShowPassword = styled.div.withConfig({
+var ShowPassword = styled__default['default'].div.withConfig({
   displayName: "login__ShowPassword",
   componentId: "sc-191dszw-0"
 })(["cursor:pointer;font-size:0.8rem;margin-bottom:1rem;text-align:right;"]);
-var ForgotPasswordWrapper = styled.div.withConfig({
+var ForgotPasswordWrapper = styled__default['default'].div.withConfig({
   displayName: "login__ForgotPasswordWrapper",
   componentId: "sc-191dszw-1"
 })(["margin-top:1rem;text-align:center;"]);
@@ -24753,22 +24757,22 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
-var __jsx$2p = React.createElement;
+var __jsx$2o = React__default['default'].createElement;
 var Message = function Message(_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  return __jsx$2p(Row, {
+  return __jsx$2o(Row, {
     style: {
       position: 'relative'
     }
-  }, type === 'out' && __jsx$2p(Column, {
+  }, type === 'out' && __jsx$2o(Column, {
     sm: 1
-  }, "\xA0"), __jsx$2p(Tail, {
+  }, "\xA0"), __jsx$2o(Tail, {
     type: type
-  }), __jsx$2p(MessageBase, _extends({
+  }), __jsx$2o(MessageBase, _extends({
     prevType: prevType
   }, message, props)));
 };
@@ -24777,7 +24781,7 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2q = React.createElement;
+var __jsx$2p = React__default['default'].createElement;
 var MessageIcon = function MessageIcon(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix;
@@ -24797,13 +24801,13 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2q(StyledIcon$7, {
+  return __jsx$2p(StyledIcon$7, {
     fixedWidth: false,
     icon: useIcon,
     prefix: prefix
   });
 };
-var StyledIcon$7 = styled(Icon).withConfig({
+var StyledIcon$7 = styled__default['default'](Icon).withConfig({
   displayName: "icon__StyledIcon",
   componentId: "hstm32-0"
 })(["color:", ";margin-right:0.5rem;vertical-align:middle !important;"], function (_ref2) {
@@ -24818,7 +24822,7 @@ MessageIcon.defaultProps = {
   prefix: 'fas'
 };
 
-var __jsx$2r = React.createElement;
+var __jsx$2q = React__default['default'].createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -24841,12 +24845,12 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2r(StyledImage$3, {
+  return icon && __jsx$2q(StyledImage$3, {
     alt: "audience",
     src: icon
   });
 };
-var StyledImage$3 = styled(Image$1).withConfig({
+var StyledImage$3 = styled__default['default'](Image$1).withConfig({
   displayName: "to__StyledImage",
   componentId: "sc-1dfvymz-0"
 })(["margin-right:0.5rem;vertical-align:middle !important;"]);
@@ -24854,7 +24858,7 @@ MessageTo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2s = React.createElement;
+var __jsx$2r = React__default['default'].createElement;
 var MessageBase = function MessageBase(_ref) {
   var content = _ref.content,
       from = _ref.from,
@@ -24869,88 +24873,88 @@ var MessageBase = function MessageBase(_ref) {
       more = _ref.more,
       type = _ref.type;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       seeMore = _useState[0],
       setSeeMore = _useState[1];
 
-  var messageRef = useRef(null);
-  useEffect(function () {
+  var messageRef = React.useRef(null);
+  React.useEffect(function () {
     if (scrollToMessage) messageRef.current.scrollIntoView({
       block: 'nearest',
       behavior: 'smooth'
     });
   }, []);
-  return __jsx$2s(Column, {
+  return __jsx$2r(Column, {
     sm: 11,
     columnRef: messageRef
-  }, __jsx$2s(StyledCard$2, {
+  }, __jsx$2r(StyledCard$2, {
     type: type
-  }, __jsx$2s(Row, null, __jsx$2s(Column, {
+  }, __jsx$2r(Row, null, __jsx$2r(Column, {
     sm: 6
-  }, __jsx$2s(MessageIcon, {
+  }, __jsx$2r(MessageIcon, {
     icon: icon
-  }), __jsx$2s(MessageTo, {
+  }), __jsx$2r(MessageTo, {
     to: to
-  }), __jsx$2s(StyledTime$1, null, time)), __jsx$2s(Column, {
+  }), __jsx$2r(StyledTime$1, null, time)), __jsx$2r(Column, {
     sm: 6
-  }, __jsx$2s(StyledFrom, null, from))), __jsx$2s(Row, null, pictureId && __jsx$2s(Column, {
+  }, __jsx$2r(StyledFrom, null, from))), __jsx$2r(Row, null, pictureId && __jsx$2r(Column, {
     sm: 2
-  }, __jsx$2s(Image$1, {
+  }, __jsx$2r(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2s(Column, {
+  })), __jsx$2r(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2s(StyledReply, null, reply), __jsx$2s(StyledContent$4, {
+  }, __jsx$2r(StyledReply, null, reply), __jsx$2r(StyledContent$4, {
     seeMore: seeMore
   }, content && content.split('\n').map(function (item, key) {
-    return __jsx$2s("span", {
+    return __jsx$2r("span", {
       key: key
-    }, item, __jsx$2s("br", null));
-  })), more && __jsx$2s(StyledCollapse, {
+    }, item, __jsx$2r("br", null));
+  })), more && __jsx$2r(StyledCollapse, {
     onClick: function onClick() {
       return setSeeMore(!seeMore);
     }
-  }, seeMore ? __jsx$2s(React.Fragment, null, __jsx$2s("span", null, "Close"), __jsx$2s(Icon, {
+  }, seeMore ? __jsx$2r(React__default['default'].Fragment, null, __jsx$2r("span", null, "Close"), __jsx$2r(Icon, {
     icon: "chevron-up"
-  })) : __jsx$2s(React.Fragment, null, __jsx$2s("span", null, "See more"), __jsx$2s(Icon, {
+  })) : __jsx$2r(React__default['default'].Fragment, null, __jsx$2r("span", null, "See more"), __jsx$2r(Icon, {
     icon: "chevron-down"
-  })))), !type && __jsx$2s(Column, {
+  })))), !type && __jsx$2r(Column, {
     sm: 1
-  }, __jsx$2s(Icon, {
+  }, __jsx$2r(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
   })))));
 };
-var StyledCard$2 = styled(Card).withConfig({
+var StyledCard$2 = styled__default['default'](Card).withConfig({
   displayName: "base__StyledCard",
   componentId: "sc-19m896m-0"
 })(["background-color:", ";border-radius:1rem;margin-bottom:0.5rem;padding:0.75rem 1rem;"], function (_ref2) {
   var type = _ref2.type;
   return type === 'in' ? '#fff' : '#F7F7F7';
 });
-var StyledContent$4 = styled.div.withConfig({
+var StyledContent$4 = styled__default['default'].div.withConfig({
   displayName: "base__StyledContent",
   componentId: "sc-19m896m-1"
 })(["color:#000;", ""], function (_ref3) {
   var seeMore = _ref3.seeMore;
   return !seeMore && TruncateByMaxHeight('70px');
 });
-var StyledReply = styled.div.withConfig({
+var StyledReply = styled__default['default'].div.withConfig({
   displayName: "base__StyledReply",
   componentId: "sc-19m896m-2"
 })(["color:#696969;font-size:0.75rem;margin-bottom:0.5rem;"]);
-var StyledCollapse = styled.div.withConfig({
+var StyledCollapse = styled__default['default'].div.withConfig({
   displayName: "base__StyledCollapse",
   componentId: "sc-19m896m-3"
 })(["color:#faac46;cursor:pointer;display:inline-block;font-size:0.75rem;text-transform:uppercase;"]);
-var StyledTime$1 = styled.span.withConfig({
+var StyledTime$1 = styled__default['default'].span.withConfig({
   displayName: "base__StyledTime",
   componentId: "sc-19m896m-4"
 })(["color:", ";font-size:0.75rem;margin-bottom:0.5rem;"], function (_ref4) {
   var theme = _ref4.theme;
   return theme.COLOUR.primary;
 });
-var StyledFrom = styled(StyledTime$1).withConfig({
+var StyledFrom = styled__default['default'](StyledTime$1).withConfig({
   displayName: "base__StyledFrom",
   componentId: "sc-19m896m-5"
 })(["display:block;text-align:right;"]);
@@ -24966,7 +24970,7 @@ MessageBase.propTypes = {
 /**
  * Messaging/Background
  */
-var MessageBackground = styled.div.withConfig({
+var MessageBackground = styled__default['default'].div.withConfig({
   displayName: "background__MessageBackground",
   componentId: "sc-197phha-0"
 })(["background-image:url(", ");height:100%;opacity:0.6;position:absolute;top:0;width:100%;"], function (_ref) {
@@ -24980,7 +24984,7 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2t = React.createElement;
+var __jsx$2s = React__default['default'].createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -24990,21 +24994,21 @@ var MessagingContainer = function MessagingContainer(_ref) {
       onSearch = _ref.onSearch,
       onSubmit = _ref.onSubmit,
       style = _ref.style;
-  return __jsx$2t(React.Fragment, null, __jsx$2t(MessagingSearch, {
+  return __jsx$2s(React__default['default'].Fragment, null, __jsx$2s(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2t(StyledContainer$7, {
+  }), __jsx$2s(StyledContainer$7, {
     className: className,
     style: style
-  }, __jsx$2t(MessageList, {
+  }, __jsx$2s(MessageList, {
     messages: messages
-  })), __jsx$2t(MessagingSend, {
+  })), __jsx$2s(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: onSubmit,
     maxLength: maxLength
   }));
 };
-var StyledContainer$7 = styled.div.withConfig({
+var StyledContainer$7 = styled__default['default'].div.withConfig({
   displayName: "container__StyledContainer",
   componentId: "sc-18pd3dx-0"
 })(["background-color:rgba(117,204,207,0.4);max-height:calc(100vh - 260px);overflow-x:hidden;overflow-y:scroll;padding:1rem;position:relative;"]);
@@ -25019,11 +25023,11 @@ MessagingContainer.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$2u = React.createElement;
+var __jsx$2t = React__default['default'].createElement;
 var MessageList = function MessageList(_ref) {
   var messages = _ref.messages;
   return messages.map(function (message, index) {
-    return __jsx$2u(Message, {
+    return __jsx$2t(Message, {
       message: message,
       key: index,
       prevType: message.type,
@@ -25036,7 +25040,7 @@ MessageList.propTypes = {
   messages: propTypes.array.isRequired
 };
 
-var __jsx$2v = React.createElement;
+var __jsx$2u = React__default['default'].createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -25070,29 +25074,29 @@ var MessagingSearch = function MessagingSearch(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2v(StyledContainer$8, null, __jsx$2v(Form, {
+  return __jsx$2u(StyledContainer$8, null, __jsx$2u(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2v(Row, null, __jsx$2v(Column, {
+  }, __jsx$2u(Row, null, __jsx$2u(Column, {
     md: 6
-  }, __jsx$2v(StyledSearch, _extends({}, defaultOptions, {
+  }, __jsx$2u(StyledSearch, _extends({}, defaultOptions, {
     prependSearchIcon: true,
     placeholder: placeholder
-  }))), __jsx$2v(Column, {
+  }))), __jsx$2u(Column, {
     md: 6
-  }, __jsx$2v(StyledSelect$1, _extends({}, defaultOptions, {
+  }, __jsx$2u(StyledSelect$1, _extends({}, defaultOptions, {
     name: "messagingFilter",
     options: Items
   }))))));
 };
-var StyledContainer$8 = styled.div.withConfig({
+var StyledContainer$8 = styled__default['default'].div.withConfig({
   displayName: "search__StyledContainer",
   componentId: "sc-12sbun4-0"
 })(["background-color:#eee;border-top:1px solid #c0c0c0;padding:1rem;"]);
-var StyledSearch = styled(Search).withConfig({
+var StyledSearch = styled__default['default'](Search).withConfig({
   displayName: "search__StyledSearch",
   componentId: "sc-12sbun4-1"
 })(["width:75%;"]);
-var StyledSelect$1 = styled(SelectField).withConfig({
+var StyledSelect$1 = styled__default['default'](SelectField).withConfig({
   displayName: "search__StyledSelect",
   componentId: "sc-12sbun4-2"
 })(["width:75%;label{margin:0;}"]);
@@ -25105,7 +25109,7 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2w = React.createElement;
+var __jsx$2v = React__default['default'].createElement;
 var MessagingSend = function MessagingSend(_ref) {
   var audienceItems = _ref.audienceItems,
       maxLength = _ref.maxLength,
@@ -25122,19 +25126,19 @@ var MessagingSend = function MessagingSend(_ref) {
       setValue = _useForm.setValue,
       watch = _useForm.watch;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       open = _useState[0],
       setOpen = _useState[1];
 
-  var _useState2 = useState([]),
+  var _useState2 = React.useState([]),
       attachments = _useState2[0],
       setAttachments = _useState2[1];
 
-  var _useState3 = useState(audienceItems[0] || ''),
+  var _useState3 = React.useState(audienceItems[0] || ''),
       audience = _useState3[0],
       setAudience = _useState3[1];
 
-  var fileInputRef = useRef();
+  var fileInputRef = React.useRef();
   var message = watch('message');
 
   var handleOpenPicker = function handleOpenPicker() {
@@ -25164,28 +25168,28 @@ var MessagingSend = function MessagingSend(_ref) {
     setValue('message', '');
   };
 
-  return __jsx$2w(React.Fragment, null, open && __jsx$2w(StyledPickerContainer, null, __jsx$2w(EmojiMart, {
+  return __jsx$2v(React__default['default'].Fragment, null, open && __jsx$2v(StyledPickerContainer, null, __jsx$2v(EmojiMart, {
     handleOpenPicker: handleOpenPicker,
     handleSelect: handleEmojiSelect,
     open: open
-  })), __jsx$2w(StyledContainer$9, {
+  })), __jsx$2v(StyledContainer$9, {
     audience: audience
-  }, __jsx$2w(StyledForm$1, {
+  }, __jsx$2v(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, audience && __jsx$2w(StyledDropDown, {
+  }, audience && __jsx$2v(StyledDropDown, {
     items: audienceItems,
     onChange: function onChange(item) {
       return setAudience(item);
     },
     position: "top"
-  }, audience.name), __jsx$2w(StyledTextarea$1, {
+  }, audience.name), __jsx$2v(StyledTextarea$1, {
     errors: errors,
     maxLength: maxLength,
     name: "message",
     placeholder: "Write message",
     register: register,
     rows: 2
-  }), __jsx$2w("input", {
+  }), __jsx$2v("input", {
     multiple: true,
     onChange: handleFilesChange,
     ref: fileInputRef,
@@ -25193,19 +25197,19 @@ var MessagingSend = function MessagingSend(_ref) {
       display: 'none'
     },
     type: "file"
-  }), __jsx$2w(StyledElements, null, __jsx$2w(StyledIcon$8, {
+  }), __jsx$2v(StyledElements, null, __jsx$2v(StyledIcon$8, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "2x"
-  }), __jsx$2w(StyledIcon$8, {
+  }), __jsx$2v(StyledIcon$8, {
     fixedWidth: false,
     icon: "smile",
     onClick: function onClick() {
       return setOpen(!open);
     },
     size: "2x"
-  }), __jsx$2w(Button, {
+  }), __jsx$2v(Button, {
     content: "Send",
     context: "info",
     disabled: message.length === 0 && attachments.length === 0,
@@ -25213,22 +25217,22 @@ var MessagingSend = function MessagingSend(_ref) {
     type: "submit"
   })))));
 };
-var StyledContainer$9 = styled.div.withConfig({
+var StyledContainer$9 = styled__default['default'].div.withConfig({
   displayName: "send__StyledContainer",
   componentId: "sc-18pp565-0"
 })(["background-color:#fff;border-bottom:1px solid #c0c0c0;border-top:1px solid #c0c0c0;box-sizing:border-box;color:#c0c0c0;padding:", ";position:relative;"], function (_ref2) {
   var audience = _ref2.audience;
   return audience ? '1.5rem 1rem 1rem' : '1rem';
 });
-var StyledPickerContainer = styled(StyledContainer$9).withConfig({
+var StyledPickerContainer = styled__default['default'](StyledContainer$9).withConfig({
   displayName: "send__StyledPickerContainer",
   componentId: "sc-18pp565-1"
 })(["bottom:80px;left:15px;padding:0;position:absolute;right:15px;z-index:999;"]);
-var StyledForm$1 = styled(Form).withConfig({
+var StyledForm$1 = styled__default['default'](Form).withConfig({
   displayName: "send__StyledForm",
   componentId: "sc-18pp565-2"
 })(["display:flex;position:relative;margin:0;.Form-feedback{width:inherit;}"]);
-var StyledTextarea$1 = styled(TextareaField).withConfig({
+var StyledTextarea$1 = styled__default['default'](TextareaField).withConfig({
   displayName: "send__StyledTextarea",
   componentId: "sc-18pp565-3"
 })(["background-color:", ";border:", ";border-radius:1rem;line-height:1.5;resize:none;margin:0.5rem 0.5rem 0 0;padding:0.5rem;&:focus{border-color:initial;box-shadow:initial;}"], function (_ref3) {
@@ -25238,18 +25242,18 @@ var StyledTextarea$1 = styled(TextareaField).withConfig({
   var theme = _ref4.theme;
   return theme.COLOUR.light;
 });
-var StyledElements = styled.div.withConfig({
+var StyledElements = styled__default['default'].div.withConfig({
   displayName: "send__StyledElements",
   componentId: "sc-18pp565-4"
 })(["align-items:center;display:flex;"]);
-var StyledIcon$8 = styled(Icon).withConfig({
+var StyledIcon$8 = styled__default['default'](Icon).withConfig({
   displayName: "send__StyledIcon",
   componentId: "sc-18pp565-5"
 })(["cursor:pointer;margin-right:1rem;&:hover{color:", ";}"], function (_ref5) {
   var theme = _ref5.theme;
   return theme.COLOUR.info;
 });
-var StyledDropDown = styled(Dropdown).withConfig({
+var StyledDropDown = styled__default['default'](Dropdown).withConfig({
   displayName: "send__StyledDropDown",
   componentId: "sc-18pp565-6"
 })(["position:absolute;left:8px;text-transform:uppercase;top:-24px;.dropdown--link{color:#000;font-size:10px;}.dropdown--toggle,svg{color:", ";font-size:10px;}"], function (_ref6) {
@@ -25269,7 +25273,7 @@ MessagingSend.defaultProps = {
 /**
  * Messaging/Tail
  */
-var Tail = styled.span.withConfig({
+var Tail = styled__default['default'].span.withConfig({
   displayName: "tail__Tail",
   componentId: "pnkt1z-0"
 })(["background-image:", ";background-repeat:no-repeat;bottom:8px;height:16px;position:absolute;", " width:12px;"], function (_ref) {
@@ -25283,7 +25287,7 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var __jsx$2x = React.createElement;
+var __jsx$2w = React__default['default'].createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -25296,39 +25300,39 @@ var PasswordChange = function PasswordChange(_ref) {
       register = _useForm.register,
       watch = _useForm.watch;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       error = _useState[0];
 
   var submit = function submit(data) {};
 
-  return __jsx$2x(React.Fragment, null, __jsx$2x(PageHeading, {
+  return __jsx$2w(React__default['default'].Fragment, null, __jsx$2w(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2x(Alert, {
+  }), error && __jsx$2w(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2x(Form, {
+  }), __jsx$2w(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2x(FormLabel, {
+  }, __jsx$2w(FormLabel, {
     label: "Old password"
-  }, __jsx$2x(FormField, {
+  }, __jsx$2w(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2x(FormLabel, {
+  })), __jsx$2w(FormLabel, {
     label: "New password"
-  }, __jsx$2x(FormField, {
+  }, __jsx$2w(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2x(FormLabel, {
+  })), __jsx$2w(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2x(FormField, {
+  }, __jsx$2w(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -25337,7 +25341,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2x(Button, {
+  })), __jsx$2w(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -25350,7 +25354,7 @@ PasswordChange.propTypes = {
   showPlaceholder: propTypes.bool
 };
 
-var __jsx$2y = React.createElement;
+var __jsx$2x = React__default['default'].createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -25377,16 +25381,16 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2y(React.Fragment, null, __jsx$2y(DatePickerInput, {
+    return __jsx$2x(React__default['default'].Fragment, null, __jsx$2x(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2y(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2x(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
-  var _useContext = useContext(UserContext),
+  var _useContext = React.useContext(UserContext),
       registerContext = _useContext.registerContext;
 
   var _useForm = useForm({
@@ -25397,15 +25401,15 @@ var Register = function Register(_ref) {
       formState = _useForm.formState,
       handleSubmit = _useForm.handleSubmit;
 
-  var _useState = useState(errorSubmit),
+  var _useState = React.useState(errorSubmit),
       error = _useState[0],
       setError = _useState[1];
 
-  var _useState2 = useState(),
+  var _useState2 = React.useState(),
       passwordError = _useState2[0],
       setPasswordError = _useState2[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     setError(errorSubmit);
     return function () {
       setError();
@@ -25431,59 +25435,59 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2y(Form, {
+  return __jsx$2x(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2y(Alert, {
+  }, error && __jsx$2x(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2y(FormLabel, {
+  }), __jsx$2x(FormLabel, {
     label: "First name"
-  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2y(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Last name"
-  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2y(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Email"
-  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2y(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Password"
-  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2y(FormLabel, {
+  }))), __jsx$2x(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2y(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2x(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2y(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2x(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2y(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2x(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2y(Button, {
+  })), __jsx$2x(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2y(StyledLink$a, null, "Already have an account? ", __jsx$2y(Link, {
+  }), __jsx$2x(StyledLink$a, null, "Already have an account? ", __jsx$2x(Link, {
     to: pathLogin
   }, "Log in")));
 };
-var StyledLink$a = styled.div.withConfig({
+var StyledLink$a = styled__default['default'].div.withConfig({
   displayName: "register__StyledLink",
   componentId: "zmjjk5-0"
 })(["display:block;margin:1rem 0;"]);
@@ -25509,7 +25513,7 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2z = React.createElement;
+var __jsx$2y = React__default['default'].createElement;
 
 var ArticleLayout = function ArticleLayout(_ref) {
   var children = _ref.children,
@@ -25519,14 +25523,14 @@ var ArticleLayout = function ArticleLayout(_ref) {
   //   description: frontMatter.description,
   //   title: frontMatter.title
   // }
-  return __jsx$2z(Container, null, __jsx$2z(Row, null, __jsx$2z(Column, {
+  return __jsx$2y(Container, null, __jsx$2y(Row, null, __jsx$2y(Column, {
     md: 12
-  }, __jsx$2z(Article, {
+  }, __jsx$2y(Article, {
     article: frontMatter
   }))));
 };
 
-var __jsx$2A = React.createElement;
+var __jsx$2z = React__default['default'].createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -25535,10 +25539,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2A(React.Fragment, null, __jsx$2A(Navigation, null), children, footer && __jsx$2A(Footer, {
+  return __jsx$2z(React__default['default'].Fragment, null, __jsx$2z(Navigation, null), children, footer && __jsx$2z(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2A(Copyright, {
+  }), copyright && __jsx$2z(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -25557,7 +25561,7 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2B = React.createElement;
+var __jsx$2A = React__default['default'].createElement;
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -25578,16 +25582,16 @@ var Dashboard = function Dashboard(_ref) {
 
   var mergedMeta = _objectSpread$e(_objectSpread$e({}, defaultMeta), meta);
 
-  return __jsx$2B(React.Fragment, null, __jsx$2B(Suspense$1, {
-    fallback: __jsx$2B(PageLoading, {
-      indicator: __jsx$2B(LdsSpinner, null)
+  return __jsx$2A(React__default['default'].Fragment, null, __jsx$2A(React.Suspense, {
+    fallback: __jsx$2A(PageLoading, {
+      indicator: __jsx$2A(LdsSpinner, null)
     })
-  }, __jsx$2B(React.Fragment, null, __jsx$2B(Page, {
+  }, __jsx$2A(React__default['default'].Fragment, null, __jsx$2A(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2B(Alert, {
+  }), message && __jsx$2A(Alert, {
     content: message,
     context: context
   }))));
@@ -25612,26 +25616,26 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2C = React.createElement;
+var __jsx$2B = React__default['default'].createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
       meta = _ref.meta,
       pageHeading = _ref.pageHeading;
 
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2C(StyledPage, null, meta && __jsx$2C(MetaHead, {
+  return __jsx$2B(StyledPage, null, meta && __jsx$2B(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2C(Container, {
+  }), __jsx$2B(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2C(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$2B(PageHeading, pageHeading), children));
 };
-var StyledPage = styled.div.withConfig({
+var StyledPage = styled__default['default'].div.withConfig({
   displayName: "page__StyledPage",
   componentId: "pyq7jv-0"
 })(["background-color:", ";"], function (_ref2) {
@@ -25652,7 +25656,7 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$2D = React.createElement;
+var __jsx$2C = React__default['default'].createElement;
 var SidebarLayout = function SidebarLayout(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -25660,19 +25664,19 @@ var SidebarLayout = function SidebarLayout(_ref) {
       footer = _ref.footer,
       Navigation = _ref.Navigation;
 
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       Sidebar = _useContext.Sidebar;
 
-  return __jsx$2D(Container, {
+  return __jsx$2C(Container, {
     fluid: true
-  }, __jsx$2D(Row, null, __jsx$2D(Column, {
+  }, __jsx$2C(Row, null, __jsx$2C(Column, {
     md: 2
-  }, __jsx$2D(Sidebar, null)), __jsx$2D(Column, {
+  }, __jsx$2C(Sidebar, null)), __jsx$2C(Column, {
     md: 10,
     style: {
       padding: 0
     }
-  }, __jsx$2D(Bootstrap, {
+  }, __jsx$2C(Bootstrap, {
     brand: brand,
     copyright: copyright,
     footer: footer,
@@ -25687,7 +25691,7 @@ SidebarLayout.propTypes = {
   navigation: propTypes.func
 };
 
-var __jsx$2E = React.createElement;
+var __jsx$2D = React__default['default'].createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -25700,7 +25704,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$2E(React.Fragment, null, iFrame && __jsx$2E("iframe", {
+  return __jsx$2D(React__default['default'].Fragment, null, iFrame && __jsx$2D("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -25711,7 +25715,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$2E("div", {
+  }), !iFrame && __jsx$2D("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -25722,10 +25726,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$2E("blockquote", {
+  }, __jsx$2D("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$2E("a", {
+  }, __jsx$2D("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -25754,7 +25758,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$2F = React.createElement;
+var __jsx$2E = React__default['default'].createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -25762,7 +25766,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$2F(React.Fragment, null, iFrame && __jsx$2F("iframe", {
+  return __jsx$2E(React__default['default'].Fragment, null, iFrame && __jsx$2E("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -25773,13 +25777,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$2F("div", {
+  }), !iFrame && __jsx$2E("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$2F("a", {
+  }, __jsx$2E("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -25800,19 +25804,19 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$2G = React.createElement;
+var __jsx$2F = React__default['default'].createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
       url = _ref.url;
-  var typeformRef = useRef();
-  useEffect(function () {
+  var typeformRef = React.useRef();
+  React.useEffect(function () {
     var typeformEmbed = require('@typeform/embed'); // Load Typeform embed widget
 
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$2G("div", {
+  return __jsx$2F("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -25852,48 +25856,48 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$2H = React.createElement;
+var __jsx$2G = React__default['default'].createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2H(StyledArticle, {
+  return __jsx$2G(StyledArticle, {
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article"
-  }, __jsx$2H("header", null, __jsx$2H(StyledImage$4, {
+  }, __jsx$2G("header", null, __jsx$2G(StyledImage$4, {
     alt: article.heading,
     slant: true,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), __jsx$2H(Breadcrumb, {
+  }), __jsx$2G(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && __jsx$2H(BlogCategory, {
+  }), config && __jsx$2G(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$2H(StyledHeading$4, {
+  }), __jsx$2G(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$2H(BlogDetails, {
+  }), facebook && __jsx$2G(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$2H("span", {
+  })), __jsx$2G("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
   }));
 };
-var StyledArticle = styled.article.withConfig({
+var StyledArticle = styled__default['default'].article.withConfig({
   displayName: "article__StyledArticle",
   componentId: "ooxnmr-0"
 })(["max-width:750px;margin:0 auto;position:relative;.article--instagram{display:grid;justify-items:center;}"]);
-var StyledImage$4 = styled(Image$1).withConfig({
+var StyledImage$4 = styled__default['default'](Image$1).withConfig({
   displayName: "article__StyledImage",
   componentId: "ooxnmr-1"
 })(["position:relative;"]);
-var StyledHeading$4 = styled(Heading).withConfig({
+var StyledHeading$4 = styled__default['default'](Heading).withConfig({
   displayName: "article__StyledHeading",
   componentId: "ooxnmr-2"
 })(["margin-bottom:1rem;"]);
@@ -26000,20 +26004,20 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$2I = React.createElement;
+var __jsx$2H = React__default['default'].createElement;
 var Error404 = function Error404() {
   var meta = {
     description: "\n      DryKISS is a full service internet and mobile digital production house.\n      Our services span consulting, strategy; planning; development; testing\n      and analytics.\n    ",
     path: '/404',
     title: 'DryKISS develops hybrid mobile and responsive websites'
   };
-  return __jsx$2I(Page, {
+  return __jsx$2H(Page, {
     heading: "404 ERROR PAGE \u2013 NOT FOUND",
     meta: meta
-  }, __jsx$2I("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
+  }, __jsx$2H("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
 };
 
-var __jsx$2J = React.createElement;
+var __jsx$2I = React__default['default'].createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -26029,80 +26033,80 @@ var BlogCard = function BlogCard(_ref) {
     as: "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$2J("article", {
+  return __jsx$2I("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$2J(Card, {
+  }, __jsx$2I(Card, {
     shadow: true
-  }, __jsx$2J(Link, {
+  }, __jsx$2I(Link, {
     to: articleLink
-  }, __jsx$2J(CardImage, {
+  }, __jsx$2I(CardImage, {
     alt: heading,
     src: "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$2J(StyledCardBody, {
+  })), __jsx$2I(StyledCardBody, {
     type: type
-  }, type === 'normal' && __jsx$2J(BlogCategory, {
+  }, type === 'normal' && __jsx$2I(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$2J(StyledContent$5, {
+  }), __jsx$2I(StyledContent$5, {
     type: type
-  }, __jsx$2J(Link, {
+  }, __jsx$2I(Link, {
     to: articleLink
-  }, __jsx$2J(StyledHeading$5, {
+  }, __jsx$2I(StyledHeading$5, {
     content: heading,
     tag: "h1",
     noWrap: true,
     type: type
-  })), type === 'normal' && __jsx$2J("p", {
+  })), type === 'normal' && __jsx$2I("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$2J(React.Fragment, null, article.tags && __jsx$2J(TagsContainer, null, __jsx$2J(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$2I(React__default['default'].Fragment, null, article.tags && __jsx$2I(TagsContainer, null, __jsx$2I(BlogTags, {
     tags: article.tags
-  })), __jsx$2J(Divider, {
+  })), __jsx$2I(Divider, {
     size: "sm"
-  }), __jsx$2J(BlogCategory, {
+  }), __jsx$2I(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), __jsx$2J(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2J(Link, {
+  }), __jsx$2I(StyledReadTime, null, article.readtime, "min read time.")), __jsx$2I(Link, {
     to: articleLink
-  }, __jsx$2J(StyledButton$8, {
+  }, __jsx$2I(StyledButton$8, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
     position: type
   })))));
 };
-var TagsContainer = styled.div.withConfig({
+var TagsContainer = styled__default['default'].div.withConfig({
   displayName: "card__TagsContainer",
   componentId: "jk3gp-0"
 })(["height:1.75rem;margin-top:0.25rem;overflow:hidden;"]);
-var StyledButton$8 = styled(Button).withConfig({
+var StyledButton$8 = styled__default['default'](Button).withConfig({
   displayName: "card__StyledButton",
   componentId: "jk3gp-1"
 })(["bottom:1.25rem;position:absolute;right:1rem;z-index:2;", ""], function (_ref2) {
   var position = _ref2.position;
-  return position === 'hero' && css(["bottom:1.25rem;"]);
+  return position === 'hero' && styled.css(["bottom:1.25rem;"]);
 });
-var StyledCardBody = styled(CardBody).withConfig({
+var StyledCardBody = styled__default['default'](CardBody).withConfig({
   displayName: "card__StyledCardBody",
   componentId: "jk3gp-2"
 })(["min-height:303px;position:relative;z-index:0;", ""], function (_ref3) {
   var COLOUR = _ref3.theme.COLOUR,
       type = _ref3.type;
-  return type === 'hero' && css(["background-color:", ";min-height:80px;&:after{background:", ";content:'';display:block;height:120px;left:0;position:absolute;right:0;top:0;transform:skewy(6deg);transform-origin:100% 0;z-index:-1;}"], COLOUR.primary, COLOUR.primary);
+  return type === 'hero' && styled.css(["background-color:", ";min-height:80px;&:after{background:", ";content:'';display:block;height:120px;left:0;position:absolute;right:0;top:0;transform:skewy(6deg);transform-origin:100% 0;z-index:-1;}"], COLOUR.primary, COLOUR.primary);
 });
-var StyledContent$5 = styled.div.withConfig({
+var StyledContent$5 = styled__default['default'].div.withConfig({
   displayName: "card__StyledContent",
   componentId: "jk3gp-3"
 })(["height:128px;margin-bottom:1rem;overflow:hidden;", ""], function (_ref4) {
   var type = _ref4.type;
-  return type === 'hero' && css(["height:122px;margin-bottom:0;"]);
+  return type === 'hero' && styled.css(["height:122px;margin-bottom:0;"]);
 });
-var StyledHeading$5 = styled(Heading).withConfig({
+var StyledHeading$5 = styled__default['default'](Heading).withConfig({
   displayName: "card__StyledHeading",
   componentId: "jk3gp-4"
 })(["color:#000;font-size:1.25rem;line-height:1.25rem;margin-bottom:0;max-width:500px;overflow:hidden;position:relative;z-index:2;&:hover{color:", ";}", ""], function (_ref5) {
@@ -26111,9 +26115,9 @@ var StyledHeading$5 = styled(Heading).withConfig({
   return type === 'hero' ? COLOUR.light : COLOUR.drykiss_lightBlue;
 }, function (_ref6) {
   var type = _ref6.type;
-  return type === 'hero' && css(["color:#fff;font-size:2rem;line-height:2rem;max-height:115px;"]);
+  return type === 'hero' && styled.css(["color:#fff;font-size:2rem;line-height:2rem;max-height:115px;"]);
 });
-var StyledReadTime = styled.p.withConfig({
+var StyledReadTime = styled__default['default'].p.withConfig({
   displayName: "card__StyledReadTime",
   componentId: "jk3gp-5"
 })(["font-size:0.75rem;margin:0;"]);
@@ -26126,7 +26130,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$2K = React.createElement;
+var __jsx$2J = React__default['default'].createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -26151,10 +26155,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$2K("section", null, _find().map(function (articles, index) {
-    return __jsx$2K(Fragment$1, {
+  return __jsx$2J("section", null, _find().map(function (articles, index) {
+    return __jsx$2J(React.Fragment, {
       key: index
-    }, __jsx$2K(Link, {
+    }, __jsx$2J(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -26164,21 +26168,21 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$2K(StyledHeading$6, {
+    }, __jsx$2J(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$2K(Row, null, articles.map(function (article, index) {
-      return __jsx$2K(Column, {
+    })), __jsx$2J(Row, null, articles.map(function (article, index) {
+      return __jsx$2J(Column, {
         key: index,
         md: 6
-      }, __jsx$2K(BlogCard, {
+      }, __jsx$2J(BlogCard, {
         article: article,
         config: config
       }));
     })));
   }));
 };
-var StyledHeading$6 = styled(Heading).withConfig({
+var StyledHeading$6 = styled__default['default'](Heading).withConfig({
   displayName: "categories__StyledHeading",
   componentId: "qxuayx-0"
 })(["font-size:1.5rem;margin-top:2rem;text-align:center;&:hover{color:#00ccbc;}"]);
@@ -26187,17 +26191,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$2L = React.createElement;
+var __jsx$2K = React__default['default'].createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$2L(StyledCategory, {
+  return __jsx$2K(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$2L(Link, {
+  }, __jsx$2K(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -26211,7 +26215,7 @@ var BlogCategory = function BlogCategory(_ref) {
     passHref: true
   }, to.toUpperCase().replace('-', ' ')));
 };
-var StyledCategory = styled.div.withConfig({
+var StyledCategory = styled__default['default'].div.withConfig({
   displayName: "category__StyledCategory",
   componentId: "sc-14v5wh4-0"
 })(["display:inline;font-size:12px;margin-bottom:5px;position:relative;z-index:2;"]);
@@ -26223,74 +26227,74 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2M = React.createElement;
+var __jsx$2L = React__default['default'].createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$2M(StyledArticleDetails, null, __jsx$2M(Divider, {
+  return __jsx$2L(StyledArticleDetails, null, __jsx$2L(Divider, {
     size: "sm"
-  }), __jsx$2M(List, {
+  }), __jsx$2L(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$2M(ListItem, {
+  }, __jsx$2L(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2M(StyledIcon$9, {
+  }, __jsx$2L(StyledIcon$9, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$2M(Date$1, {
+  }), __jsx$2L(Date$1, {
     date: article.date
-  })), __jsx$2M(ListItem, {
+  })), __jsx$2L(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2M(StyledIcon$9, {
+  }, __jsx$2L(StyledIcon$9, {
     context: "dark",
     icon: "user"
-  }), __jsx$2M(BlogCategory, {
+  }), __jsx$2L(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$2M(ListItem, {
+  })), __jsx$2L(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$2M(StyledIcon$9, {
+  }, __jsx$2L(StyledIcon$9, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$2M(BlogReadTime, {
+  }), __jsx$2L(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$2M(BlogTags, {
+  }))), article.tags && __jsx$2L(BlogTags, {
     tags: article.tags
-  }), __jsx$2M(Divider, {
+  }), __jsx$2L(Divider, {
     size: "sm"
-  }), __jsx$2M(StyledShare, null, __jsx$2M(StyledShareText, null, "Share this article"), __jsx$2M(FacebookShareButton, {
+  }), __jsx$2L(StyledShare, null, __jsx$2L(StyledShareText, null, "Share this article"), __jsx$2L(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$2M(Divider, {
+  })), __jsx$2L(Divider, {
     size: "sm"
   }));
 };
-var StyledArticleDetails = styled.div.withConfig({
+var StyledArticleDetails = styled__default['default'].div.withConfig({
   displayName: "details__StyledArticleDetails",
   componentId: "sc-15a4gif-0"
 })(["font-size:0.875rem;"]);
-var StyledIcon$9 = styled(Icon).withConfig({
+var StyledIcon$9 = styled__default['default'](Icon).withConfig({
   displayName: "details__StyledIcon",
   componentId: "sc-15a4gif-1"
 })(["margin-right:0.25rem;"]);
-var StyledShare = styled.div.withConfig({
+var StyledShare = styled__default['default'].div.withConfig({
   displayName: "details__StyledShare",
   componentId: "sc-15a4gif-2"
 })(["align-items:center;display:flex;"]);
-var StyledShareText = styled.span.withConfig({
+var StyledShareText = styled__default['default'].span.withConfig({
   displayName: "details__StyledShareText",
   componentId: "sc-15a4gif-3"
 })(["margin-right:1rem;"]); // const StyledShareLink = styled.a`
@@ -26307,7 +26311,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$2N = React.createElement;
+var __jsx$2M = React__default['default'].createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26322,16 +26326,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$2N(Column, {
+    return __jsx$2M(Column, {
       md: 12 / number
-    }, __jsx$2N(BlogCard, {
+    }, __jsx$2M(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$2N(Row, null, renderHero());
+  return __jsx$2M(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -26342,7 +26346,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$2O = React.createElement;
+var __jsx$2N = React__default['default'].createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -26351,7 +26355,7 @@ var BlogListing = function BlogListing(_ref) {
       tag = _ref.tag;
 
   var _findTag = function _findTag(articles) {
-    return _filter(articles, {
+    return _filter__default['default'](articles, {
       tags: [tag]
     });
   };
@@ -26370,11 +26374,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$2O(Row, null, _find().map(function (article, index) {
-    return __jsx$2O(Column, {
+  return __jsx$2N(Row, null, _find().map(function (article, index) {
+    return __jsx$2N(Column, {
       key: index,
       md: 6
-    }, __jsx$2O(BlogCard, {
+    }, __jsx$2N(BlogCard, {
       article: article,
       config: config
     }));
@@ -26388,31 +26392,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$2P = React.createElement;
+var __jsx$2O = React__default['default'].createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$2P("span", null, "Read time: ", time, " min(s)");
+  return __jsx$2O("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$2Q = React.createElement;
+var __jsx$2P = React__default['default'].createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$2Q(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$2P(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$2Q(Fragment$1, {
+    return __jsx$2P(React.Fragment, {
       key: index
-    }, __jsx$2Q(StyledDt, null, __jsx$2Q(Badge, {
+    }, __jsx$2P(StyledDt, null, __jsx$2P(Badge, {
       content: badge
-    })), __jsx$2Q(StyledDd, null, __jsx$2Q(Link, {
+    })), __jsx$2P(StyledDd, null, __jsx$2P(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -26425,22 +26429,22 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$2Q(StyledA$1, null, name))));
+    }, __jsx$2P(StyledA$1, null, name))));
   }));
 };
-var StyledDl = styled.dl.withConfig({
+var StyledDl = styled__default['default'].dl.withConfig({
   displayName: "list__StyledDl",
   componentId: "a6obyo-0"
 })(["display:flex;flex-wrap:wrap;margin:0 -15px;"]);
-var StyledDt = styled.dt.withConfig({
+var StyledDt = styled__default['default'].dt.withConfig({
   displayName: "list__StyledDt",
   componentId: "a6obyo-1"
 })(["flex:0 0 25%;max-width:25%;position:relative;width:100%;min-height:1px;padding:0 1rem;"]);
-var StyledDd = styled.dd.withConfig({
+var StyledDd = styled__default['default'].dd.withConfig({
   displayName: "list__StyledDd",
   componentId: "a6obyo-2"
 })(["flex:0 0 75%;max-width:75%;position:relative;margin-left:0;min-height:1px;padding:0.2rem 1rem 0 1rem;width:100%;"]);
-var StyledA$1 = styled.span.withConfig({
+var StyledA$1 = styled__default['default'].span.withConfig({
   displayName: "list__StyledA",
   componentId: "a6obyo-3"
 })(["", ""], function (props) {
@@ -26455,24 +26459,24 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$2R = React.createElement;
+var __jsx$2Q = React__default['default'].createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$2R(StyledSection, null, heading && __jsx$2R(React.Fragment, null, __jsx$2R(StyledHeading$7, {
+  return __jsx$2Q(StyledSection, null, heading && __jsx$2Q(React__default['default'].Fragment, null, __jsx$2Q(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$2R(Divider, {
+  }), __jsx$2Q(Divider, {
     size: "sm"
   })), children);
 };
-var StyledSection = styled.dl.withConfig({
+var StyledSection = styled__default['default'].dl.withConfig({
   displayName: "section__StyledSection",
   componentId: "sc-13a5bvc-0"
 })(["margin-top:0;margin-bottom:1rem;"]);
-var StyledHeading$7 = styled(Heading).withConfig({
+var StyledHeading$7 = styled__default['default'](Heading).withConfig({
   displayName: "section__StyledHeading",
   componentId: "sc-13a5bvc-1"
 })(["font-size:1.25rem;"]);
@@ -26481,17 +26485,17 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$2S = React.createElement;
+var __jsx$2R = React__default['default'].createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
       total = _ref.total;
 
-  var _useState = useState([]),
+  var _useState = React.useState([]),
       list = _useState[0],
       setList = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     setList(_find());
   }, []);
 
@@ -26518,9 +26522,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2S(BlogSection, {
+  return __jsx$2R(BlogSection, {
     heading: "Archive"
-  }, __jsx$2S(BlogList, {
+  }, __jsx$2R(BlogList, {
     config: config,
     list: list
   }));
@@ -26534,17 +26538,17 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$2T = React.createElement;
+var __jsx$2S = React__default['default'].createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
       total = _ref.total;
 
-  var _useState = useState([]),
+  var _useState = React.useState([]),
       list = _useState[0],
       setList = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     setList(_find());
   }, []);
 
@@ -26573,9 +26577,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$2T(BlogSection, {
+  return __jsx$2S(BlogSection, {
     heading: "Author"
-  }, __jsx$2T(BlogList, {
+  }, __jsx$2S(BlogList, {
     config: config,
     author: true,
     list: list
@@ -26590,7 +26594,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$2U = React.createElement;
+var __jsx$2T = React__default['default'].createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -26607,7 +26611,7 @@ var BlogFindFood = function BlogFindFood(_ref) {
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register;
 
-  var _useState = useState(false),
+  var _useState = React.useState(false),
       msg = _useState[0],
       setMsg = _useState[1];
 
@@ -26629,49 +26633,49 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$2U(BlogSection, null, __jsx$2U(StyledContainer$a, {
+  return __jsx$2T(BlogSection, null, __jsx$2T(StyledContainer$a, {
     colour: colour
-  }, __jsx$2U(StyledForm$2, {
+  }, __jsx$2T(StyledForm$2, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2U(FormLabel, {
+  }, __jsx$2T(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$2U(InputGroup, null, __jsx$2U(FormField, {
+  }, __jsx$2T(InputGroup, null, __jsx$2T(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$2U(InputGroupAddon, null, __jsx$2U(Button, {
+  }), __jsx$2T(InputGroupAddon, null, __jsx$2T(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$2U(FormError, {
+  })), errors.postCode && __jsx$2T(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$2U("div", {
+  }), msg && __jsx$2T("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$2U(Link, {
+  }, msg)))), __jsx$2T(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$2U(StyledA$2, null, "Deliveroo ", __jsx$2U(Icon, {
+  }, __jsx$2T(StyledA$2, null, "Deliveroo ", __jsx$2T(Icon, {
     icon: "external-link"
   })))));
 };
-var StyledContainer$a = styled.div.withConfig({
+var StyledContainer$a = styled__default['default'].div.withConfig({
   displayName: "findFood__StyledContainer",
   componentId: "geadxj-0"
 })(["background-color:", ";color:#fff;line-height:22px;margin:0 -10px;padding:30px 15px 20px;"], function (props) {
   return props.colour === 'beetroot' ? '#e2004f' : '#4e0064';
 });
-var StyledForm$2 = styled(Form).withConfig({
+var StyledForm$2 = styled__default['default'](Form).withConfig({
   displayName: "findFood__StyledForm",
   componentId: "geadxj-1"
 })([".Form-label{font-size:2rem;line-height:2rem;margin-bottom:1.5rem;}"]);
-var StyledA$2 = styled.span.withConfig({
+var StyledA$2 = styled__default['default'].span.withConfig({
   displayName: "findFood__StyledA",
   componentId: "geadxj-2"
 })(["color:#fff;display:block;font-size:0.75rem;text-align:right;&:hover,&:focus{color:#bdbaba;}"]);
@@ -26782,13 +26786,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$2V = React.createElement;
+var __jsx$2U = React__default['default'].createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$2V(BlogSection, {
+  return __jsx$2U(BlogSection, {
     heading: "Media"
-  }, __jsx$2V(BlogList, {
+  }, __jsx$2U(BlogList, {
     config: config,
     list: media
   }));
@@ -26798,13 +26802,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$2W = React.createElement;
+var __jsx$2V = React__default['default'].createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$2W(BlogSection, {
+  return __jsx$2V(BlogSection, {
     heading: "Promo"
-  }, __jsx$2W(Image$1, {
+  }, __jsx$2V(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -26814,17 +26818,17 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2X = React.createElement;
+var __jsx$2W = React__default['default'].createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
       total = _ref.total;
 
-  var _useState = useState([]),
+  var _useState = React.useState([]),
       list = _useState[0],
       setList = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     setList(_find());
   }, []);
 
@@ -26843,9 +26847,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$2X(BlogSection, {
+  return __jsx$2W(BlogSection, {
     heading: "Recent"
-  }, __jsx$2X(BlogList, {
+  }, __jsx$2W(BlogList, {
     config: config,
     list: list
   }));
@@ -26859,7 +26863,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$2Y = React.createElement;
+var __jsx$2X = React__default['default'].createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -26868,27 +26872,27 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$2Y(StyledAside$1, null, findFood && __jsx$2Y(BlogFindFood, null), media && __jsx$2Y(BlogMedia, {
+  return __jsx$2X(StyledAside$1, null, findFood && __jsx$2X(BlogFindFood, null), media && __jsx$2X(BlogMedia, {
     media: media
-  }), __jsx$2Y(BlogSocial, {
+  }), __jsx$2X(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$2Y(BlogPromo, {
+  }), promo && __jsx$2X(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$2Y(BlogRecent, {
+  }), __jsx$2X(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$2Y(BlogTagCloud, {
+  }), tags && __jsx$2X(BlogTagCloud, {
     articles: articles
-  }), __jsx$2Y(BlogArchive, {
+  }), __jsx$2X(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$2Y(BlogAuthor, {
+  }), __jsx$2X(BlogAuthor, {
     articles: articles,
     config: config
   }));
 };
-var StyledAside$1 = styled.aside.withConfig({
+var StyledAside$1 = styled__default['default'].aside.withConfig({
   displayName: "sidebar__StyledAside",
   componentId: "jmtdl8-0"
 })(["border-left:1px solid #797878;height:100%;padding-left:10px;"]);
@@ -26905,20 +26909,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$2Z = React.createElement;
+var __jsx$2Y = React__default['default'].createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$2Z(React.Fragment, null, facebook && __jsx$2Z(BlogSection, {
+  return __jsx$2Y(React__default['default'].Fragment, null, facebook && __jsx$2Y(BlogSection, {
     heading: "Facebook"
-  }, __jsx$2Z(FacebookPagePlugin, {
+  }, __jsx$2Y(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$2Z(BlogSection, {
+  })), instagram && __jsx$2Y(BlogSection, {
     heading: "Instagram"
-  }, __jsx$2Z("iframe", {
+  }, __jsx$2Y("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -26926,7 +26930,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$2Z(BlogSection, {
+  })), twitter && __jsx$2Y(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -26940,7 +26944,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$2_ = React.createElement;
+var __jsx$2Z = React__default['default'].createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -26951,11 +26955,11 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   var articles = _ref.articles,
       total = _ref.total;
 
-  var _useState = useState([]),
+  var _useState = React.useState([]),
       cloud = _useState[0],
       setCloud = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     setCloud(_find());
   }, []);
 
@@ -27013,7 +27017,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$2_(BlogSection, {
+  return __jsx$2Z(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -27072,7 +27076,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$2$ = React.createElement;
+var __jsx$2_ = React__default['default'].createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -27086,7 +27090,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$2$(Badge, {
+      return __jsx$2_(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -27096,14 +27100,14 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$2$("div", null, tagMap());
+  return __jsx$2_("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
 };
 
 var Api = function Api() {
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       apiConfig = _useContext.apiConfig;
 
   return {
@@ -27115,7 +27119,7 @@ var Api = function Api() {
         apiConfig.headers.Authorization = 'Bearer ' + bearerToken;
       }
 
-      var http = axios.create(apiConfig);
+      var http = axios__default['default'].create(apiConfig);
       mocker.apply(http);
       return http;
     },
@@ -27224,29 +27228,29 @@ var Api = function Api() {
  * Services - Authentication - Hooks - Use User
  * Wraps a page with the ability to provide user data
  */
-var UserContext = /*#__PURE__*/createContext();
+var UserContext = /*#__PURE__*/React.createContext();
 
-var __jsx$30 = React.createElement;
+var __jsx$2$ = React__default['default'].createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = useState(null),
+  var _useState = React.useState(null),
       accessToken = _useState[0],
       setAccessToken = _useState[1];
 
-  var _useState2 = useState(null),
+  var _useState2 = React.useState(null),
       user = _useState2[0],
       setUser = _useState2[1];
 
-  var _useState3 = useState(true),
+  var _useState3 = React.useState(true),
       isLoading = _useState3[0],
       setIsLoading = _useState3[1];
 
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       apiConfig = _useContext.apiConfig,
       jwtConfig = _useContext.jwtConfig;
 
-  useEffect(function () {
+  React.useEffect(function () {
     var bearerToken = window.localStorage.getItem('bearerToken');
 
     if (bearerToken) {
@@ -27279,7 +27283,7 @@ var UserProvider = function UserProvider(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.post("".concat(apiConfig.authURL, "/login"), {
+              return axios__default['default'].post("".concat(apiConfig.authURL, "/login"), {
                 email: username,
                 password: password
               });
@@ -27306,7 +27310,7 @@ var UserProvider = function UserProvider(_ref) {
                 setUser(user);
                 window.localStorage.setItem('bearerToken', token);
                 setAccessToken(token);
-                Router.push('/dashboard');
+                Router__default['default'].push('/dashboard');
               }
 
             case 16:
@@ -27332,7 +27336,7 @@ var UserProvider = function UserProvider(_ref) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios.post("".concat(apiConfig.authURL, "/register"), {
+              return axios__default['default'].post("".concat(apiConfig.authURL, "/register"), {
                 nameFirst: nameFirst,
                 nameLast: nameLast,
                 email: email,
@@ -27363,7 +27367,7 @@ var UserProvider = function UserProvider(_ref) {
                 setUser(user);
                 window.localStorage.setItem('bearerToken', token);
                 setAccessToken(token);
-                Router.push('/dashboard');
+                Router__default['default'].push('/dashboard');
               }
 
             case 16:
@@ -27404,20 +27408,20 @@ var UserProvider = function UserProvider(_ref) {
   }();
 
   var hashPassword = function hashPassword(password) {
-    return bcrypt.hashSync(password, 10);
+    return bcrypt__default['default'].hashSync(password, 10);
   }; // TODO - remove after converting all pages to new user roles
 
 
   var authorise = function authorise(condition) {
     if (!condition(user)) {
-      Router.push('/account/sign-in');
+      Router__default['default'].push('/account/sign-in');
       return false;
     }
 
     return true;
   };
 
-  return !isLoading && __jsx$30(UserContext.Provider, {
+  return !isLoading && __jsx$2$(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -27434,28 +27438,28 @@ var UserProvider = function UserProvider(_ref) {
  * Services - Authorization
  *
  */
-var AuthorizationContext = /*#__PURE__*/createContext();
+var AuthorizationContext = /*#__PURE__*/React.createContext();
 
-var __jsx$31 = React.createElement;
+var __jsx$30 = React__default['default'].createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = useState(true),
+  var _useState = React.useState(true),
       isLoading = _useState[0],
       setIsLoading = _useState[1];
 
-  var _useContext = useContext(UserContext),
+  var _useContext = React.useContext(UserContext),
       user = _useContext.user;
 
-  var router = useRouter();
+  var router = Router.useRouter();
 
-  var _useContext2 = useContext(ConfigContext),
+  var _useContext2 = React.useContext(ConfigContext),
       AccessPages = _useContext2.AccessPages,
       AccessRules = _useContext2.AccessRules;
 
   var permissions = user && user.role ? AccessRules[user.role] : []; // Check if the user is allowed page access
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (router.pathname !== '/403') {
       if (!AccessPages[router.pathname]) {
         // Allow access to non-protected page
@@ -27465,7 +27469,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
         setIsLoading(false);
       } else {
         // Not authorized, redirect to /403 page
-        Router.push('/403');
+        Router__default['default'].push('/403');
       }
     } else {
       setIsLoading(false);
@@ -27523,7 +27527,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$31(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$30(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -27534,11 +27538,11 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
 /**
  * Services - Config - Context
  */
-var ConfigContext = /*#__PURE__*/createContext();
+var ConfigContext = /*#__PURE__*/React.createContext();
 
-var __jsx$32 = React.createElement;
+var __jsx$31 = React__default['default'].createElement;
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$32(ConfigContext.Provider, _extends({
+  return __jsx$31(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -27583,7 +27587,7 @@ var GeoCoder = /*#__PURE__*/function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get(url)["catch"](function () {
+                return axios__default['default'].get(url)["catch"](function () {
                   return Promise.reject(new Error('Error fetching data'));
                 });
 
@@ -27950,19 +27954,19 @@ var StaticMap = /*#__PURE__*/function () {
 /**
  * Services - Internationalisation - Context
  */
-var InternationalisationContext = /*#__PURE__*/createContext({
+var InternationalisationContext = /*#__PURE__*/React.createContext({
   locale: 'es',
   setLocale: function setLocale() {
     return null;
   }
 });
 
-var __jsx$33 = React.createElement;
+var __jsx$32 = React__default['default'].createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
 
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       locales = _useContext.locales;
 
   var _useLocalStorage = useLocalStorage('locale'),
@@ -27970,20 +27974,20 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       getStoredLocale = _useLocalStorage2[0],
       setStoredLocale = _useLocalStorage2[1];
 
-  var router = useRouter();
+  var router = Router.useRouter();
 
-  var _useState = useState({
+  var _useState = React.useState({
     locale: locale
   }),
       localeState = _useState[0],
       setLocaleState = _useState[1];
 
-  useEffect(function () {
+  React.useEffect(function () {
     if (localeState !== getStoredLocale) {
       setStoredLocale(localeState);
     }
   }, [localeState]);
-  useEffect(function () {
+  React.useEffect(function () {
     if (isLocale({
       locales: locales,
       test: router === null || router === void 0 ? void 0 : router.query.lang
@@ -27993,7 +27997,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$33(InternationalisationContext.Provider, {
+  return __jsx$32(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -28017,7 +28021,7 @@ var isLocale = function isLocale(_ref) {
  */
 
 var getInitialLocale = function getInitialLocale() {
-  var _useContext = useContext(ConfigContext),
+  var _useContext = React.useContext(ConfigContext),
       defaultLocale = _useContext.defaultLocale;
 
   var localSetting = window.localStorage.getItem('locale');
@@ -28040,9 +28044,9 @@ var getInitialLocale = function getInitialLocale() {
 /**
  * Services - Notifications - Context
  */
-var NotificationsContext = /*#__PURE__*/createContext();
+var NotificationsContext = /*#__PURE__*/React.createContext();
 
-var __jsx$34 = React.createElement;
+var __jsx$33 = React__default['default'].createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -28062,7 +28066,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$34(NotificationsContext.Provider, {
+  return __jsx$33(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -31055,7 +31059,7 @@ var useNotifications = function useNotifications(url) {
   // }
   var GET_NOTIFICATIONS = src(_templateObject$f());
 
-  var _useSubscription = useSubscription(GET_NOTIFICATIONS, {
+  var _useSubscription = client.useSubscription(GET_NOTIFICATIONS, {
     variables: {
       userId: 48
     }
@@ -31091,18 +31095,18 @@ var useNotifications = function useNotifications(url) {
 /**
  * Services - OffCanvas - Context
  */
-var OffCanvasContext = /*#__PURE__*/createContext();
+var OffCanvasContext = /*#__PURE__*/React.createContext();
 
-var __jsx$35 = React.createElement;
+var __jsx$34 = React__default['default'].createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = useState([]),
+  var _useState = React.useState([]),
       dataManager = _useState[0],
       setDataManager = _useState[1];
 
-  var _useState2 = useState([]),
+  var _useState2 = React.useState([]),
       visibilityManager = _useState2[0],
       setVisibilityManager = _useState2[1];
 
@@ -31137,12 +31141,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$35(OffCanvasContext.Provider, {
+  return __jsx$34(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$35(OffCanvas, {
+  }, children, __jsx$34(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -31159,13 +31163,13 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$35(StyledWrapper$2, {
+    return __jsx$34(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
   })));
 };
-var StyledWrapper$2 = styled.div.withConfig({
+var StyledWrapper$2 = styled__default['default'].div.withConfig({
   displayName: "provider__StyledWrapper",
   componentId: "q8lkvu-0"
 })(["", ""], function (_ref2) {
@@ -31173,7 +31177,7 @@ var StyledWrapper$2 = styled.div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$36 = React.createElement;
+var __jsx$35 = React__default['default'].createElement;
 
 function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -31195,7 +31199,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var google = this.props.google;
 
       if (google) {
-        TagManager.initialize({
+        TagManager__default['default'].initialize({
           gtmId: google.analytics
         });
       }
@@ -31206,7 +31210,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$36(React.Fragment, null, __jsx$36(ThemeStyle, null), user && __jsx$36(UserProvider, null, __jsx$36(AuthorizationProvider, null, __jsx$36(InternationalisationProvider, null, __jsx$36(NotificationsProvider, null, offCanvas ? __jsx$36(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$35(React__default['default'].Fragment, null, __jsx$35(ThemeStyle, null), user && __jsx$35(UserProvider, null, __jsx$35(AuthorizationProvider, null, __jsx$35(InternationalisationProvider, null, __jsx$35(NotificationsProvider, null, offCanvas ? __jsx$35(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -31214,9 +31218,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$36(React.Fragment, null, __jsx$36(ConfigProvider, {
+      return __jsx$35(React__default['default'].Fragment, null, __jsx$35(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$36(ApolloProvider, {
+      }, apolloClient ? __jsx$35(client.ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -31229,21 +31233,21 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$36(Layout, null, pageProgressBar && __jsx$36(PageProgressBar, {
+      return __jsx$35(Layout, null, pageProgressBar && __jsx$35(PageProgressBar, {
         router: router
-      }), __jsx$36(Component, pageProps));
+      }), __jsx$35(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$36(ThemeProvider, {
-        theme: merge$1(Theme, this.props.theme)
+      return __jsx$35(styled.ThemeProvider, {
+        theme: merge__default['default'](Theme, this.props.theme)
       }, this.data());
     }
   }]);
 
   return MyApp;
-}(App);
+}(App__default['default']);
 
 _defineProperty(MyApp, "propTypes", {
   apolloClient: propTypes.object,
@@ -31266,5 +31270,321 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, HighChart, ICON_PREFIX, ICON_PULL, ICON_SIZE, IUIRich, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, RichTextInput, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, objectWithoutProperties, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
-//# sourceMappingURL=industry-ui.es.js.map
+exports.ALIGN = ALIGN;
+exports.Accordion = Accordion;
+exports.AccordionItem = AccordionItem;
+exports.Address = Address;
+exports.Adornment = Adornment;
+exports.Alert = Alert;
+exports.AlertContent = AlertContent;
+exports.AlertHeader = AlertHeader;
+exports.Api = Api;
+exports.Article = Article;
+exports.ArticleLayout = ArticleLayout;
+exports.AuthorizationContext = AuthorizationContext;
+exports.AuthorizationProvider = AuthorizationProvider;
+exports.Avatar = Avatar;
+exports.BACKGROUND = BACKGROUND;
+exports.Badge = Badge;
+exports.Bar = Bar$1;
+exports.BarChart = BarChart;
+exports.BarConfig = BarConfig;
+exports.BigCalendar = BigCalendar;
+exports.Blockquote = Blockquote;
+exports.BlogArchive = BlogArchive;
+exports.BlogAuthor = BlogAuthor;
+exports.BlogCard = BlogCard;
+exports.BlogCategories = BlogCategories;
+exports.BlogCategory = BlogCategory;
+exports.BlogDetails = BlogDetails;
+exports.BlogFindFood = BlogFindFood;
+exports.BlogHero = BlogHero;
+exports.BlogListing = BlogListing;
+exports.BlogMedia = BlogMedia;
+exports.BlogPromo = BlogPromo;
+exports.BlogReadTime = BlogReadTime;
+exports.BlogRecent = BlogRecent;
+exports.BlogSidebar = BlogSidebar;
+exports.BlogSocial = BlogSocial;
+exports.BlogTagCloud = BlogTagCloud;
+exports.BlogTags = BlogTags;
+exports.Bootstrap = Bootstrap;
+exports.Brand = Brand;
+exports.Breadcrumb = Breadcrumb;
+exports.Button = Button;
+exports.ButtonToolbar = ButtonToolbar;
+exports.Buttons = Buttons;
+exports.COLOUR = COLOUR;
+exports.COMMON_INPUT_STYLES = COMMON_INPUT_STYLES;
+exports.CONTEXT = CONTEXT;
+exports.COUNTRY = COUNTRY;
+exports.Calendar = Calendar;
+exports.Card = Card;
+exports.CardBody = CardBody;
+exports.CardDecks = CardDecks;
+exports.CardFooter = CardFooter;
+exports.CardHeader = CardHeader;
+exports.CardImage = CardImage;
+exports.Carousel = Carousel;
+exports.CarouselSlide = CarouselSlide;
+exports.CheckboxField = CheckboxField;
+exports.Close = Close;
+exports.ColorPicker = ColorPicker;
+exports.Column = Column;
+exports.ConfigContext = ConfigContext;
+exports.ConfigProvider = ConfigProvider;
+exports.Contained = Contained;
+exports.Container = Container;
+exports.Controller = Controller;
+exports.Copyright = Copyright;
+exports.CurrencyInput = CurrencyInput;
+exports.DIMENSION = DIMENSION;
+exports.DIMENSION_PROP_TYPES = DIMENSION_PROP_TYPES;
+exports.DISPLAY = DISPLAY;
+exports.DISPLAY_PROP_TYPES = DISPLAY_PROP_TYPES;
+exports.DOG_BREED = DOG_BREED;
+exports.DOG_COAT = DOG_COAT;
+exports.DOG_COLOUR = DOG_COLOUR;
+exports.DOG_GROUP = DOG_GROUP;
+exports.Dashboard = Dashboard;
+exports.Date = Date$1;
+exports.DatePickerCalendar = DatePickerCalendar;
+exports.DatePickerInput = DatePickerInput;
+exports.Details = Details;
+exports.DetailsText = DetailsText;
+exports.Divider = Divider;
+exports.DogCard = DogCard;
+exports.DogLink = DogLink;
+exports.DogName = DogName;
+exports.DraftJs = DraftJs;
+exports.Dropdown = Dropdown;
+exports.DropdownItem = DropdownItem;
+exports.DropdownMenu = DropdownMenu;
+exports.Dropzone = Dropzone;
+exports.DropzoneField = DropzoneField;
+exports.DropzoneUploader = DropzoneUploader;
+exports.DynamicLocation = DynamicLocation;
+exports.ERROR_STYLE = ERROR_STYLE;
+exports.EmailChange = EmailChange;
+exports.EmojiMart = EmojiMart;
+exports.Error404 = Error404;
+exports.FONTSIZE = FONTSIZE;
+exports.FacebookPagePlugin = FacebookPagePlugin;
+exports.FacebookShareButton = FacebookShareButton;
+exports.FieldHOC = FieldHOC;
+exports.Figure = Figure;
+exports.Footer = Footer;
+exports.ForgotDetails = ForgotDetails;
+exports.ForgotDetailsReset = ForgotDetailsReset;
+exports.Form = Form;
+exports.FormError = FormError;
+exports.FormField = FormField;
+exports.FormLabel = FormLabel;
+exports.GENDER = GENDER;
+exports.GeoCoder = GeoCoder;
+exports.GetAddress = GetAddress;
+exports.GoogleAnalyticsPageView = GoogleAnalyticsPageView;
+exports.GoogleEvent = GoogleEvent;
+exports.Heading = Heading;
+exports.Hero = Hero;
+exports.HighChart = HighChart;
+exports.ICON_PREFIX = ICON_PREFIX;
+exports.ICON_PULL = ICON_PULL;
+exports.ICON_SIZE = ICON_SIZE;
+exports.IUIRich = IUIRich;
+exports.Icon = Icon;
+exports.IconStacked = IconStacked;
+exports.Image = Image$1;
+exports.ImageLocation = ImageLocation;
+exports.ImageLocationFormElement = ImageLocationFormElement;
+exports.ImageLocationProps = ImageLocationProps;
+exports.ImageMarker = ImageMarker;
+exports.ImageWrapper = ImageWrapper;
+exports.InfoWindow = InfoWindow;
+exports.Input = Input;
+exports.InputDecorationTypes = InputDecorationTypes;
+exports.InputGroup = InputGroup;
+exports.InputGroupAddon = InputGroupAddon;
+exports.InputTypes = InputTypes;
+exports.Intercom = Intercom;
+exports.IntercomAPI = IntercomAPI;
+exports.InternationalisationContext = InternationalisationContext;
+exports.InternationalisationProvider = InternationalisationProvider;
+exports.LdsSpinner = LdsSpinner;
+exports.LineChart = LineChart;
+exports.Link = Link;
+exports.List = List;
+exports.ListItem = ListItem;
+exports.Login = Login;
+exports.MEDIA_QUERY = MEDIA_QUERY;
+exports.MEDIA_QUERY_MAX = MEDIA_QUERY_MAX;
+exports.Marker = Marker;
+exports.MarkerClusterer = MarkerClusterer;
+exports.Message = Message;
+exports.MessageBackground = MessageBackground;
+exports.MessageBase = MessageBase;
+exports.MessageList = MessageList;
+exports.MessagingContainer = MessagingContainer;
+exports.MessagingSearch = MessagingSearch;
+exports.MessagingSend = MessagingSend;
+exports.MetaHead = MetaHead;
+exports.MyApp = MyApp;
+exports.NavButton = NavButton;
+exports.NavCollapse = NavCollapse;
+exports.NavDropdown = NavDropdown;
+exports.NavIcon = NavIcon;
+exports.NavLink = NavLink;
+exports.NavNotification = NavNotification;
+exports.Navbar = Navbar;
+exports.Notification = Notification;
+exports.NotificationsContext = NotificationsContext;
+exports.NotificationsProvider = NotificationsProvider;
+exports.OffCanvas = OffCanvas;
+exports.OffCanvasComponent = OffCanvasComponent;
+exports.OffCanvasContent = OffCanvasContent;
+exports.OffCanvasContext = OffCanvasContext;
+exports.OffCanvasDiv = OffCanvasDiv;
+exports.OffCanvasHeader = OffCanvasHeader;
+exports.OffCanvasOverlay = OffCanvasOverlay;
+exports.OffCanvasProvider = OffCanvasProvider;
+exports.Page = Page;
+exports.PageHeading = PageHeading;
+exports.PageLoading = PageLoading;
+exports.PageProgressBar = PageProgressBar;
+exports.Pagination = Pagination;
+exports.PaginationItem = PaginationItem;
+exports.PasswordChange = PasswordChange;
+exports.PercentInput = PercentInput;
+exports.PieChart = PieChart;
+exports.Position = Position;
+exports.Progress = Progress;
+exports.ProgressBar = ProgressBar;
+exports.ProgressBarDiv = ProgressBarDiv;
+exports.RadioField = RadioField;
+exports.RandomColor = RandomColor;
+exports.RandomKey = RandomKey;
+exports.Rating = Rating;
+exports.ReactHolderJs = ReactHolderJs;
+exports.ReactSelectField = ReactSelectField;
+exports.Register = Register;
+exports.ResizeDetector = ResizeDetector;
+exports.RichTextInput = RichTextInput;
+exports.Row = Row;
+exports.SIZE = SIZE;
+exports.SPACER = SPACER;
+exports.SPACER_FORMULA = SPACER_FORMULA;
+exports.SPACER_PROP_TYPES = SPACER_PROP_TYPES;
+exports.SPACING = SPACING;
+exports.STEPPER = STEPPER;
+exports.Search = Search;
+exports.Section = Section;
+exports.SelectCountryField = SelectCountryField;
+exports.SelectField = SelectField;
+exports.Sidebar = Sidebar;
+exports.SidebarLayout = SidebarLayout;
+exports.SimpleTime = SimpleTime;
+exports.Space = Space;
+exports.StaticLocation = StaticLocation;
+exports.StaticMap = StaticMap;
+exports.Stepper = Stepper;
+exports.StepperItem = StepperItem;
+exports.StepperSummary = StepperSummary;
+exports.StyledInput = StyledInput;
+exports.StyledLink = StyledLink;
+exports.StyledSmall = StyledSmall;
+exports.Switch = Switch;
+exports.TEXT_STYLE = TEXT_STYLE;
+exports.Table = Table;
+exports.TableActions = TableActions;
+exports.TableData = TableData;
+exports.TableDogs = TableDogs;
+exports.TableHead = TableHead;
+exports.TableLink = TableLink;
+exports.TableLoading = TableLoading;
+exports.TableRow = TableRow;
+exports.Tabs = Tabs;
+exports.Tail = Tail;
+exports.Text = Text;
+exports.TextBlock = TextBlock;
+exports.TextareaField = TextareaField;
+exports.Theme = Theme;
+exports.ThemeStyle = ThemeStyle;
+exports.Toggle = Toggle;
+exports.Toggler = Toggler;
+exports.Tooltip = Tooltip;
+exports.Truncate = Truncate;
+exports.TruncateByMaxHeight = TruncateByMaxHeight;
+exports.Typeform = Typeform;
+exports.UserContext = UserContext;
+exports.UserProvider = UserProvider;
+exports.Webcam = Webcam;
+exports.Widgets = Widgets;
+exports.age = age;
+exports.arrayOfKeys = arrayOfKeys;
+exports.arrayOfValues = arrayOfValues;
+exports.averageGeolocation = averageGeolocation;
+exports.blendLinearRgb = blendLinearRgb;
+exports.camelCase = camelCase;
+exports.capitalize = capitalize;
+exports.colourList = colourList;
+exports.contextArray = contextArray;
+exports.convertImgUrlToDataURLviaCanvas = convertImgUrlToDataURLviaCanvas;
+exports.dateFns = dateFns;
+exports.debounce = debounce;
+exports.decodeToken = decodeToken;
+exports.elementTypes = elementTypes;
+exports.filterByKey = filterByKey;
+exports.filterByString = filterByString;
+exports.findByKey = findByKey;
+exports.formatDate = formatDate;
+exports.formatDateStandard = formatDateStandard;
+exports.formatIntDate = formatIntDate;
+exports.formatIntDateShort = formatIntDateShort;
+exports.formatIntDateYear = formatIntDateYear;
+exports.formatPrice = formatPrice;
+exports.formatRelativeTime = formatRelativeTime;
+exports.formatTime = formatTime;
+exports.generateToken = generateToken;
+exports.getAcronym = getAcronym;
+exports.getAssociations = getAssociations;
+exports.getFirst = getFirst;
+exports.getInitialLocale = getInitialLocale;
+exports.getItemAssociation = getItemAssociation;
+exports.getItemAssociations = getItemAssociations;
+exports.getLast = getLast;
+exports.getManyToManyAssociations = getManyToManyAssociations;
+exports.getOne = getOne;
+exports.getUrlParameter = getUrlParameter;
+exports.getUserFromToken = getUserFromToken;
+exports.hashPassword = hashPassword;
+exports.historyPush = historyPush;
+exports.isLocale = isLocale;
+exports.mergeLocalData = mergeLocalData;
+exports.objectWithoutProperties = objectWithoutProperties;
+exports.parsePostCode = parsePostCode;
+exports.propTypes = propTypes;
+exports.requestSimulator = requestSimulator;
+exports.shadeLinearRgb = shadeLinearRgb;
+exports.shortDate = shortDate;
+exports.sizeArray = sizeArray;
+exports.slugify = slugify;
+exports.useAxios = useAxios;
+exports.useForceUpdate = useForceUpdate;
+exports.useForm = useForm;
+exports.useGeoCoder = useGeoCoder;
+exports.useInterval = useInterval;
+exports.useLocalStorage = useLocalStorage;
+exports.useNotifications = useNotifications;
+exports.usePrevious = usePrevious;
+exports.useTimer = useTimer;
+exports.useTooltip = useTooltip;
+exports.useTranslation = useTranslation;
+exports.validatePassword = validatePassword;
+exports.validateToken = validateToken;
+exports.validatorPostCode = validatorPostCode;
+exports.validatorUri = validatorUri;
+exports.validatorUuid4 = validatorUuid4;
+exports.viewPort = viewPort;
+exports.yup = yup;
+exports.yupResolver = yupResolver;
+//# sourceMappingURL=index-fdfe050a.js.map
