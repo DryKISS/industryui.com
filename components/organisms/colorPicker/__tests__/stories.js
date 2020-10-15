@@ -8,14 +8,16 @@ import { useState } from 'react'
 // Styled Components
 import styled from 'styled-components'
 
-// Storybook
-import { select, text } from '@storybook/addon-knobs'
-
 // UI
 import { ColorPicker, Text } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: { type: 'github', width: 214 },
+  argTypes: {
+    type: { control: { type: 'select', options: ['circle', 'sketch', 'github', 'twitter'] } },
+    width: { control: { type: 'range', min: 100, max: 400 } }
+  },
   title: 'Organisms/Color Picker',
   components: ColorPicker,
   parameters: {
@@ -37,17 +39,7 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
   const defaultProps = {
     color: assetIconColor,
     onChangeComplete: changeColor,
-    type: select(
-      'Type',
-      {
-        Circle: 'circle',
-        Sketch: 'sketch',
-        Github: 'github',
-        Twitter: 'twitter'
-      },
-      'github'
-    ),
-    width: text('width', '214px'),
+    width: props.width + 'px',
     ...props
   }
 
@@ -60,7 +52,7 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
   )
 }
 
-export const main = () => <BaseComponent />
+export const main = args => <BaseComponent {...args} />
 
 const StyledBackgroundColor = styled.div`
   background-color: ${({ assetIconColor }) => assetIconColor};

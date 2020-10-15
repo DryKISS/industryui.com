@@ -2,14 +2,18 @@
  * Form - Field
  */
 
-// Storybook
-import { boolean, text } from '@storybook/addon-knobs'
-
 // UI
 import { Button, Form, FormField, FormLabel, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    placeholder: 'Email...',
+    readOnly: false
+  },
+  argTypes: {
+    readOnly: { name: 'Read Only' }
+  },
   title: 'Form/Field',
   component: FormField,
   parameters: {
@@ -28,9 +32,8 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     errors: errors,
     name: 'email',
-    placeholder: text('Placeholder', 'Email...'),
-    readOnly: boolean('Read only', false),
     register: register,
+
     ...props
   }
 
@@ -52,4 +55,4 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => <BaseComponent />
+export const main = args => <BaseComponent {...args} />

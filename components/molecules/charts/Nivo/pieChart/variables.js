@@ -11,25 +11,6 @@ export const PIECHART = {
   cornerRadius: 3,
   padAngle: 0.7,
   innerRadius: 0.5,
-  startAngle: -180,
-  margin: function () {
-    return {
-      top: 30,
-      right: 80,
-      bottom: this.showLegend ? 80 : 30, // props context
-      left: 80
-    }
-  },
-  radialLabelsSkipAngle: 10,
-  radialLabelsTextXOffset: 6,
-  radialLabelsTextColor: COLOUR.black,
-  radialLabelsLinkOffset: 0,
-  radialLabelsLinkDiagonalLength: 16,
-  radialLabelsLinkHorizontalLength: 24,
-  radialLabelsLinkStrokeWidth: 1,
-  radialLabelsLinkColor: { from: 'color' },
-  slicesLabelsSkipAngle: 10,
-  slicesLabelsTextColor: COLOUR.black,
   legends: [
     {
       anchor: 'bottom',
@@ -50,6 +31,25 @@ export const PIECHART = {
       ]
     }
   ],
+  margin: function () {
+    return {
+      top: 30,
+      right: 80,
+      bottom: this.showLegend ? 80 : 30, // props context
+      left: 80
+    }
+  },
   motionStiffness: 90,
-  motionDamping: 15
+  motionDamping: 15,
+  radialLabelsSkipAngle: 10,
+  radialLabelsTextXOffset: 6,
+  radialLabelsTextColor: COLOUR.black,
+  radialLabelsLinkOffset: 0,
+  radialLabelsLinkDiagonalLength: 16,
+  radialLabelsLinkHorizontalLength: 24,
+  radialLabelsLinkStrokeWidth: 1,
+  radialLabelsLinkColor: { from: 'color' },
+  slicesLabelsSkipAngle: 10,
+  slicesLabelsTextColor: COLOUR.black,
+  startAngle: -180
 }

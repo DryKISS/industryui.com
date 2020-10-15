@@ -2,14 +2,12 @@
  * React Select
  */
 
-// Storybook
-import { boolean } from '@storybook/addon-knobs'
-
 // UI
-import { Button, Form, FormError, FormLabel, DropzoneField, useForm } from 'components'
+import { Button, DropzoneField, Form, FormError, FormLabel, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: { disabled: false, multiple: false },
   title: 'Form/Dropzone',
   component: DropzoneField,
   parameters: {
@@ -31,9 +29,7 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     accept: 'image/*',
     control,
-    disabled: boolean('Disabled', false),
     errors: errors,
-    multiple: boolean('Multiple', false),
     ...props
   }
 
@@ -49,6 +45,6 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const Single = () => {
-  return <BaseComponent />
+export const Single = args => {
+  return <BaseComponent {...args} />
 }

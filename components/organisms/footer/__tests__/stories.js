@@ -2,9 +2,6 @@
  * Footer
  */
 
-// Storybook
-import { boolean } from '@storybook/addon-knobs'
-
 // UI
 import { Footer } from 'components'
 import Readme from '../README.md'
@@ -13,6 +10,9 @@ import Readme from '../README.md'
 import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__/footer'
 
 export default {
+  args: {
+    showMonth: false
+  },
   title: 'Organisms/Footer',
   component: Footer,
   parameters: {
@@ -27,14 +27,14 @@ export default {
 const BaseComponent = (props = {}) => {
   const defaultProps = {
     columns: DRYKISS,
-    fixed: boolean('Fixed', props.showMonth || false),
+    fixed: props.showMonth,
     ...props
   }
 
   return <Footer {...defaultProps} />
 }
 
-export const main = () => <BaseComponent />
-export const formatter = () => <BaseComponent columns={FORMATTER} />
-export const portal = () => <BaseComponent columns={PORTAL} />
-export const _12Column = () => <BaseComponent columns={ONE_COLUMN} />
+export const main = args => <BaseComponent {...args} />
+export const formatter = args => <BaseComponent {...args} columns={FORMATTER} />
+export const portal = args => <BaseComponent {...args} columns={PORTAL} />
+export const _12Column = args => <BaseComponent {...args} columns={ONE_COLUMN} />

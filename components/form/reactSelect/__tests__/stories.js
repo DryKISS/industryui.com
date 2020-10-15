@@ -5,9 +5,6 @@
 // React
 import { useEffect, useState } from 'react'
 
-// Storybook
-import { boolean, text } from '@storybook/addon-knobs'
-
 // UI
 import {
   Button,
@@ -26,6 +23,7 @@ import Readme from '../README.md'
 import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
 
 export default {
+  args: { isMulti: false },
   title: 'Form/ReactSelect',
   component: ReactSelectField,
   parameters: {
@@ -37,24 +35,8 @@ export default {
   }
 }
 
-const useKnobs = (props = {}) => {
-  const { defaultProps } = ReactSelectField
-
-  const knobs = Object.keys(defaultProps)
-    .filter(key => typeof defaultProps[key] === 'string' || typeof defaultProps[key] === 'boolean')
-    .reduce((acc, key) => {
-      const value = props[key] !== undefined ? props[key] : defaultProps[key]
-      const knob = typeof value === 'boolean' ? boolean(key, value) : text(key, value)
-      acc[key] = knob
-      return acc
-    }, {})
-
-  return knobs
-}
-
 const BaseComponent = (props = {}) => {
   const { control, errors, handleSubmit } = useForm()
-  const knobs = useKnobs()
   const onSubmit = data => {
     console.log('data: ', data)
   }
@@ -65,7 +47,6 @@ const BaseComponent = (props = {}) => {
     isClearable: true,
     name: 'reactSelect',
     options: Options,
-    ...knobs,
     ...props
   }
 
@@ -82,17 +63,12 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const Single = () => {
-  return <BaseComponent />
+export const main = args => {
+  return <BaseComponent {...args} />
 }
 
-export const Multi = () => {
-  const knobs = useKnobs({ isMulti: true })
-  return <BaseComponent {...knobs} />
-}
-
-export const withDefaultValue = () => {
-  return <BaseComponent defaultValue={Options[0]} />
+export const withDefaultValue = args => {
+  return <BaseComponent {...args} defaultValue={Options[0]} />
 }
 
 export const async = () => {
@@ -151,8 +127,6 @@ export const chained = () => {
     }
   }, [watchCustomer])
 
-  const knobs = useKnobs()
-
   const onSubmit = data => {
     console.log(data)
     setData(data)
@@ -164,8 +138,7 @@ export const chained = () => {
     control,
     defaultOptions: true,
     errors: errors,
-    isClearable: true,
-    ...knobs
+    isClearable: true
   }
 
   return (
@@ -275,8 +248,6 @@ export const chainedNoDefault = () => {
     }
   }, [watchCustomer])
 
-  const knobs = useKnobs()
-
   const onSubmit = data => {
     console.log(data)
     setData(data)
@@ -288,8 +259,7 @@ export const chainedNoDefault = () => {
     control,
     defaultOptions: true,
     errors: errors,
-    isClearable: true,
-    ...knobs
+    isClearable: true
   }
 
   return (

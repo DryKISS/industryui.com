@@ -1,8 +1,22 @@
+/**
+ * Hooks - Use Component Communication - Service
+ */
+
+// RXJS
 import { Subject } from 'rxjs'
-const Subscriber = new Subject()
-const ComunicationService = {
+
+export const Subscriber = new Subject()
+
+export const ComunicationService = {
   send: msg => {
     Subscriber.next(msg)
   }
 }
-export { ComunicationService, Subscriber }
+
+export const LiveChartSubscriber = new Subject()
+
+export const LiveChartMessageService = {
+  send: msg => {
+    LiveChartSubscriber.next(msg)
+  }
+}

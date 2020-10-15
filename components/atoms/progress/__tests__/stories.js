@@ -1,16 +1,31 @@
 /**
  * Progress
  */
+// React
+import { useState } from 'react'
 
 // Storybook
-import { boolean, number } from '@storybook/addon-knobs'
-import { Context, Size } from 'decorators'
+import { ContextControl, SizeControl } from 'decorators'
 
 // UI
-import { Progress, ProgressBar } from 'components'
+import { Button, Progress, ProgressBar, Space } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    animated: false,
+    context: 'primary',
+    now: 30,
+    striped: false,
+    size: 'md'
+  },
+  argTypes: {
+    now: {
+      name: 'now (percentage completed)'
+    },
+    context: ContextControl(),
+    size: SizeControl()
+  },
   title: 'Atoms/Progress',
   component: Progress,
   parameters: {
@@ -22,84 +37,32 @@ export default {
   }
 }
 
-const ProgressGroupId = 'Progress'
-const ProgressBarGroupId = 'ProgressBar'
-const ProgressBarGroupId2 = 'ProgressBar2'
+export const main = args => {
+  const [Percent, setPercent] = useState(args.now)
 
-export const main = () => {
-  const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
-
-  return (
-    <Progress size={Size(ProgressGroupId)}>
-      <ProgressBar
-        animated={boolean('animated (striped must be checked)', false, ProgressBarGroupId)}
-        context={Context(ProgressBarGroupId)}
-        now={now}
-        striped={boolean('striped', false, ProgressBarGroupId)}
-      >
-        {now}%
-      </ProgressBar>
-    </Progress>
-  )
-}
-
-export const Striped = () => {
-  const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
+  const handleClick = () => {
+    if (Percent < 100) {
+      setPercent(Percent + 5)
+    }
+  }
 
   return (
-    <Progress size={Size(ProgressGroupId)}>
-      <ProgressBar
-        animated={boolean('animated (striped must be checked)', false, ProgressBarGroupId)}
-        context={Context(ProgressBarGroupId)}
-        now={now}
-        striped={boolean('striped', true, ProgressBarGroupId)}
-      >
-        {now}%
-      </ProgressBar>
-    </Progress>
-  )
-}
-
-export const Animated = () => {
-  const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
-
-  return (
-    <Progress size={Size(ProgressGroupId)}>
-      <ProgressBar
-        animated={boolean('animated (striped must be checked)', true, ProgressBarGroupId)}
-        context={Context(ProgressBarGroupId)}
-        now={now}
-        striped={boolean('striped', true, ProgressBarGroupId)}
-      >
-        {now}%
-      </ProgressBar>
-    </Progress>
-  )
-}
-
-export const MultipleProgressBars = () => {
-  const now = number('now (percentage completed)', 30, {}, ProgressBarGroupId)
-  const now2 = number('now (percentage completed)', 30, {}, ProgressBarGroupId2)
-
-  return (
-    <Progress size={Size(ProgressGroupId)}>
-      <ProgressBar
-        animated={boolean('animated (striped must be checked)', true, ProgressBarGroupId)}
-        context={Context(ProgressBarGroupId)}
-        now={now}
-        striped={boolean('striped', true, ProgressBarGroupId)}
-      >
-        {now}%
-      </ProgressBar>
-
-      <ProgressBar
-        animated={boolean('animated (striped must be checked)', false, ProgressBarGroupId)}
-        context={Context(ProgressBarGroupId2)}
-        now={now2}
-        striped={boolean('striped', true, ProgressBarGroupId)}
-      >
-        {now2}%
-      </ProgressBar>
-    </Progress>
+    <>
+      <Space>
+        <Progress size={args.size}>
+          <ProgressBar
+            animated={args.animated}
+            context={args.context}
+            now={Percent}
+            striped={args.striped}
+          >
+            {Percent}%
+          </ProgressBar>
+        </Progress>
+      </Space>
+      <Button size='sm' onClick={handleClick}>
+        Increase
+      </Button>
+    </>
   )
 }
