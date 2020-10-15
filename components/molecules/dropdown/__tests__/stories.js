@@ -5,9 +5,6 @@
 // React
 import { useContext, useState } from 'react'
 
-// Storybook
-import { boolean, select, text } from '@storybook/addon-knobs'
-
 // UI
 import {
   Avatar,
@@ -28,6 +25,8 @@ import { Icons, Items, Language } from '../__mocks__/dropdown'
 import styled, { css } from 'styled-components'
 
 export default {
+  args: { caret: true, children: 'Dropdown', position: 'bottom' },
+  argTypes: { control: { type: 'select', options: ['top', 'bottom'] } },
   title: 'Molecules/Dropdown',
   component: Dropdown,
   parameters: {
@@ -47,66 +46,56 @@ const BaseComponent = props => {
   }
 
   const defaultProps = {
-    caret: boolean('Caret', props.caret || true),
-    children: props.children || text('Children', 'Dropdown'),
+    children: props.children || 'Dropdown',
     items: Items,
     onChange: onChange,
-    position: select(
-      'Position',
-      {
-        Top: 'top',
-        Bottom: 'bottom'
-      },
-      props.position || 'bottom'
-    ),
+
     ...props
   }
 
   return <Dropdown {...defaultProps} />
 }
 
-export const main = () => <BaseComponent />
+export const main = args => <BaseComponent {...args} />
 
-export const language = () => {
+export const language = args => {
   const { t } = useTranslation()
 
   return (
     <>
-      <BaseComponent children='Change language' items={Language} />
+      <BaseComponent children='Change language' items={Language} {...args} />
       <h1>{t('home')}</h1>
     </>
   )
 }
 
-export const rightAligned = () => <BaseComponent position='right' />
-
-export const button = () => (
-  <BaseComponent caret={false}>
+export const button = args => (
+  <BaseComponent {...args} caret={false}>
     <Button>Dropdown</Button>
   </BaseComponent>
 )
 
-export const icon = () => (
-  <BaseComponent>
+export const icon = args => (
+  <BaseComponent {...args}>
     <Icon context='info' icon='user' prefix='fas' />
   </BaseComponent>
 )
 
-export const iconButton = () => (
-  <BaseComponent caret={false}>
+export const iconButton = args => (
+  <BaseComponent {...args} caret={false}>
     <Button context='white'>
       <Icon context='info' icon='user' prefix='fas' />
     </Button>
   </BaseComponent>
 )
 
-export const avatar = () => (
-  <BaseComponent caret={false}>
+export const avatar = args => (
+  <BaseComponent {...args} caret={false}>
     <Avatar>KH</Avatar>
   </BaseComponent>
 )
 
-export const colourPicker = () => {
+export const colourPicker = args => {
   const [selectedColour, setSelectedColour] = useState('green')
 
   const changeColor = colour => {
@@ -119,6 +108,7 @@ export const colourPicker = () => {
       <Space />
 
       <BaseComponent
+        {...args}
         items={colourList}
         onChange={e => {
           changeColor(e)
@@ -131,7 +121,7 @@ export const colourPicker = () => {
   )
 }
 
-export const iconPicker = () => {
+export const iconPicker = args => {
   const [selectedIcon, setSelectedIcon] = useState({ icon: 'cloud', prefix: 'fas' })
 
   const changeIcon = icon => {
@@ -144,6 +134,7 @@ export const iconPicker = () => {
       <Space />
 
       <BaseComponent
+        {...args}
         items={Icons}
         onChange={e => {
           changeIcon(e)

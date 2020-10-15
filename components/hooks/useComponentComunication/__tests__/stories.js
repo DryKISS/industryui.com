@@ -5,22 +5,25 @@
 // React
 import { useState, useRef } from 'react'
 
-// UI
+// Style
 import styled from 'styled-components'
 
+// UI
 import { useComponentComunication } from '../useSubscription'
 import { ComunicationService, Subscriber } from '../service'
 import { MessageNames } from '../messageNames'
 import { RandomColor } from 'components/utils'
 import { Button, Text } from 'components'
 
-export default {
-  title: 'Utils/ComunicationService'
-}
+// Storybook
+import { Wrapper } from 'decorators'
 
+export default {
+  title: 'Utils/ComunicationService',
+  decorators: [Wrapper]
+}
 const Sender = () => {
   const val = useRef('')
-
   return (
     <SimpleWrapper style={{ background: RandomColor() }}>
       <input onChange={e => (val.current = e.target.value)} />
@@ -74,7 +77,6 @@ export const comunicationShowCase = () => {
     </>
   )
 }
-
 const StyledContainer = styled.div`
   align-items: center;
   display: flex;
@@ -83,7 +85,6 @@ const StyledContainer = styled.div`
   padding: 1rem;
   width: 100%;
 `
-
 const SimpleWrapper = styled.div`
   margin: 1rem;
   padding: 1rem;

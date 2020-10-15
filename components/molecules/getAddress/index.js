@@ -14,6 +14,7 @@ export const GetAddress = forwardRef(
     { apiKey, error, change, form, handleFindAddress, handlePopulateAddress, selectAddress },
     ref
   ) => {
+    console.log(form)
     const [loading, setLoading] = useState(false)
     const [addresses, setAddresses] = useState({ data: [] })
 

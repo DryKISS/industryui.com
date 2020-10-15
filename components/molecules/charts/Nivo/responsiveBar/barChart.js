@@ -1,7 +1,5 @@
 /**
- * Bar chart
- *
- * @see https://github.com/plouc/nivo/blob/master/packages/colors/src/schemes.js
+ * Charts - Bar - responsiveBar
  */
 
 // React

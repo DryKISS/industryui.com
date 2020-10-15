@@ -93,7 +93,6 @@
     "@nivo/line": "^0.62.0",
     "@nivo/pie": "^0.62.0",
     "@storybook/addon-actions": "^6.0.22",
-    "@storybook/addon-knobs": "^6.0.22",
     "@tanem/react-nprogress": "^3.0.45",
     "@tippyjs/react": "^4.2.0",
     "@typeform/embed": "^0.25.1",

@@ -110,10 +110,8 @@ export default {
   component: PieChart,
 
   parameters: {
-    docs: {
-      description: {
-        component: Readme
-      }
+    readme: {
+      sidebar: Readme
     }
   }
 }

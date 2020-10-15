@@ -5,9 +5,7 @@
 // React
 import { useState } from 'react'
 
-// Storybook
-import { number } from '@storybook/addon-knobs'
-import { Context, Size } from 'decorators'
+import { ContextControl, SizeControl } from 'decorators'
 
 // UI
 import { Pagination } from '../'
@@ -15,6 +13,8 @@ import Readme from '../README.md'
 import { Icon } from '../../../atoms'
 
 export default {
+  args: { breakCount: 5, pageCount: 10, context: 'primary', size: 'md', showNextAndPrev: false },
+  argTypes: { context: ContextControl(), size: SizeControl() },
   title: 'Molecules/Pagination',
   component: Pagination,
   parameters: {
@@ -26,30 +26,23 @@ export default {
   }
 }
 
-const BaseComponent = ({ pageCount, ...props }) => {
+const BaseComponent = props => {
   const [currentPage, setCurrentPage] = useState(1)
+
   const defaultProps = {
-    breakCount: number('Break count', 5),
-    context: Context(),
     currentPage,
     onPageChange: setCurrentPage,
-    pageCount: number('Page count', pageCount || 10),
-    size: Size(),
     ...props
   }
 
   return <Pagination {...defaultProps} />
 }
 
-export const Main = () => <BaseComponent />
+export const Main = args => <BaseComponent {...args} />
 
-export const withPrevAndNextButtons = () => <BaseComponent showNextAndPrev />
-
-export const withManyItems = () => <BaseComponent showNextAndPrev pageCount={50} />
-
-export const withCustomPrevAndNextButtons = () => (
+export const withCustomPrevAndNextButtons = args => (
   <BaseComponent
-    showNextAndPrev
+    {...args}
     prevLabel={<Icon icon='chevron-left' />}
     nextLabel={<Icon icon='chevron-right' />}
   />

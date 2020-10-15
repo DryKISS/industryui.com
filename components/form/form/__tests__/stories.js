@@ -2,8 +2,6 @@
  * Form - Form
  */
 
-// Storybook
-import { text } from '@storybook/addon-knobs'
 import { ControlTypes } from 'decorators'
 
 // Yup
@@ -227,7 +225,7 @@ const all = ({ ...args }) => {
       <CheckboxField
         {...defaultProps}
         data={checkbox}
-        legend={text('Legend', 'Checkbox Legend')}
+        legend={args.checkboxLegend}
         name='checkbox'
       />
 
@@ -254,8 +252,9 @@ AllInputsTemplate.args = {
     'Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
   backgroundColour: '#F5F5F7',
   ColumnWidth: 6,
-  size: 'lg',
-  datePickerValue: ''
+  datePickerValue: '',
+  checkboxLegend: 'Checkbox Legend',
+  size: 'lg'
 }
 
 AllInputsTemplate.argTypes = {
