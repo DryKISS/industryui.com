@@ -2,9 +2,6 @@
  * Image Location
  */
 
-// Storybook
-import { object, select } from '@storybook/addon-knobs'
-
 // Yup
 import { object as obj } from 'yup'
 
@@ -25,6 +22,21 @@ import Readme from '../README.md'
 import { Item } from '../__mocks__/itemFloor'
 
 export default {
+  args: {
+    initialCoordinates: {
+      x: 42,
+      y: 41
+    },
+    animation: 'none',
+    markerColour: '#ff0000',
+    withInitialCoordinates: false
+  },
+  argTypes: {
+    animation: {
+      control: { type: 'select', options: ['blinker', 'none'] }
+    },
+    markerColour: { control: { type: 'color' } }
+  },
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
   parameters: {
@@ -37,61 +49,29 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
+  const { args } = props
+
   const defaultProps = {
     coordinatesChange: coordinates => {
       console.info('Coordinates', coordinates)
     },
-    initialCoordinates:
-      props.initialCoordinates &&
-      object('Initial Coordinates', {
-        x: 42,
-        y: 41
-      }),
+    ...(args.withInitialCoordinates && { initialCoordinates: args.initialCoordinates }),
     item: Item,
     locationChange: 'change'
   }
 
   const markerStyles = {
-    animation: select(
-      'Animation',
-      {
-        NoAnimation: '',
-        Blinker: 'blinker'
-      },
-      'red'
-    ),
+    animation: args.animation,
     borderRadius: '50%',
-    color: select(
-      'Color',
-      {
-        Red: 'red',
-        Blue: 'blue',
-        Green: 'green',
-        Orange: 'orange'
-      },
-      'red'
-    ),
+    color: args.markerColour,
     height: '20px',
-    shape: select(
-      'Shape',
-      {
-        Yes: {
-          icon: 'images',
-          prefix: 'fas'
-        },
-        No: ''
-      },
-      ''
-    ),
     width: '20px'
   }
 
   return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
 }
 
-export const main = () => <BaseComponent />
-
-export const withCoordinatesStored = () => <BaseComponent initialCoordinates />
+export const main = args => <BaseComponent args={args} />
 
 export const UsedInForm = () => {
   const schema = obj().shape({

@@ -3,13 +3,17 @@
  */
 
 // Storybook
-import { Context } from 'decorators'
+import { ContextControl } from 'decorators'
 
 // UI
 import { Button, Text, Tooltip } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: { context: 'primary' },
+  argTypes: {
+    size: ContextControl()
+  },
   title: 'Atoms/Tooltip',
   component: Tooltip,
   parameters: {
@@ -31,7 +35,7 @@ const SampleTooltip = () => (
 const BaseComponent = props => {
   const defaultProps = {
     content: 'Hovered',
-    context: Context('tooltip', 'black'),
+
     ...props
   }
 
@@ -44,5 +48,5 @@ const BaseComponent = props => {
   )
 }
 
-export const main = () => <BaseComponent />
-export const withJsx = () => <BaseComponent content={<SampleTooltip />} />
+export const main = args => <BaseComponent {...args} />
+export const withJsx = args => <BaseComponent {...args} content={<SampleTooltip />} />

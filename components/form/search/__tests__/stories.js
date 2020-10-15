@@ -2,9 +2,6 @@
  * Form - Search
  */
 
-// Storybook
-import { boolean, select, text } from '@storybook/addon-knobs'
-
 // Yup
 import { object, string } from 'yup'
 
@@ -13,6 +10,22 @@ import { Divider, FormError, Form, Search, Text, useForm, yupResolver } from 'co
 import Readme from '../README.md'
 
 export default {
+  args: {
+    appendSearchButton: false,
+    appendSearchIcon: false,
+    label: 'Go',
+    placeholder: 'Search...',
+    prependSearchIcon: false,
+    type: 'search'
+  },
+  argTypes: {
+    type: {
+      control: {
+        type: 'select',
+        options: ['search', 'text']
+      }
+    }
+  },
   title: 'Form/Search',
   component: Search,
   parameters: {
@@ -43,21 +56,8 @@ const BaseComponent = (props = {}) => {
   const value = getValues()?.query?.toString()
 
   const defaultProps = {
-    appendSearchButton: boolean('Append saerch button', props.appendSearchButton || false),
-    appendSearchIcon: boolean('Append saerch icon', props.appendSearchIcon || false),
     errors: errors,
-    label: text('Label', props.label || 'Go'),
-    placeholder: text('Placeholder', props.placeholder || 'Search...'),
-    prependSearchIcon: boolean('Prepend search icon', props.prependSearchIcon || false),
     register: register,
-    type: select(
-      'Type',
-      {
-        Search: 'search',
-        Text: 'text'
-      },
-      props.type || 'search'
-    ),
     ...props
   }
 
@@ -74,8 +74,8 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => <BaseComponent />
-export const defaultValue = () => <BaseComponent value='XYZ' />
-export const customLabel = () => <BaseComponent appendSearchButton label='Go' />
-export const prependedIcon = () => <BaseComponent prependSearchIcon />
-export const appendedIcon = () => <BaseComponent appendSearchIcon />
+export const main = args => <BaseComponent {...args} />
+export const defaultValue = args => <BaseComponent {...args} value='XYZ' />
+export const customLabel = args => <BaseComponent appendSearchButton {...args} label='Go' />
+export const prependedIcon = args => <BaseComponent {...args} prependSearchIcon />
+export const appendedIcon = args => <BaseComponent {...args} appendSearchIcon />

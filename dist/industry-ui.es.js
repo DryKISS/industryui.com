@@ -17,17 +17,16 @@ import { Controller as Controller$1 } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import { useDropzone } from 'react-dropzone';
 import Dropzone$1 from 'react-dropzone-uploader';
-import { EditorState, Editor, RichUtils, ContentState, convertFromHTML, convertToRaw } from 'draft-js';
+import { EditorState, Editor, RichUtils } from 'draft-js';
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
-import { Editor as Editor$1 } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import _range from 'lodash/range';
+import Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
 import { BarPropTypes, BarDefaultProps, ResponsiveBar } from '@nivo/bar';
 import { colorSchemes } from '@nivo/colors';
-import { ResponsiveLine, LinePropTypes, LineDefaultProps } from '@nivo/line';
-import { ResponsivePie, PiePropTypes, PieDefaultProps } from '@nivo/pie';
+import { LineDefaultProps, ResponsiveLine, LinePropTypes } from '@nivo/line';
+import { PieDefaultProps, ResponsivePie, PiePropTypes } from '@nivo/pie';
 import { Picker } from 'emoji-mart';
 import util$1 from 'util';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker as Marker$1, InfoWindow as InfoWindow$1 } from 'react-google-maps';
@@ -3479,6 +3478,18 @@ var getLast = function getLast(array) {
   return array[array.length - 1];
 };
 
+var objectWithoutProperties = function objectWithoutProperties(obj, keys) {
+  var target = {};
+
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+
+  return target;
+};
+
 /**
  * random hex color generator
  */
@@ -5210,6 +5221,7 @@ function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if 
 function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var legendTranslateX = 110;
 var BARCHART = {
+  animate: false,
   colors: COLOUR$1,
   margin: function margin() {
     return {
@@ -5220,17 +5232,16 @@ var BARCHART = {
       left: 80
     };
   },
-  padding: 0.2,
-  borderWidth: 1,
   borderColor: COLOUR$1.black,
-  labelSkipHeight: 24,
-  enableLabel: true,
-  animate: false,
-  isInteractive: false,
+  borderWidth: 1,
   enableGridX: false,
   enableGridY: true,
+  enableLabel: true,
+  isInteractive: false,
+  labelSkipHeight: 24,
+  padding: 0.2,
   axisBottom: function axisBottom() {
-    return _objectSpread$2(_objectSpread$2({}, {
+    return _objectSpread$2({
       tickSize: 10,
       tickPadding: 10,
       tickRotation: -1,
@@ -5238,10 +5249,10 @@ var BARCHART = {
       // string passed as prop
       legendPosition: 'middle',
       legendOffset: 36
-    }), this.axisBottom);
+    }, this.axisBottom);
   },
   axisLeft: function axisLeft() {
-    return _objectSpread$2(_objectSpread$2({}, {
+    return _objectSpread$2({
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
@@ -5249,27 +5260,27 @@ var BARCHART = {
       // string passed as prop
       legendPosition: 'middle',
       legendOffset: -60
-    }), this.axisLeft);
+    }, this.axisLeft);
   },
   legends: [{
-    dataFrom: 'keys',
     anchor: 'bottom-right',
+    dataFrom: 'keys',
     direction: 'column',
-    justify: false,
-    translateX: legendTranslateX,
-    translateY: 0,
-    itemsSpacing: 2,
-    itemWidth: 100,
-    itemHeight: 20,
-    itemDirection: 'left-to-right',
-    itemOpacity: 0.85,
-    symbolSize: 20,
     effects: [{
       on: 'hover',
       style: {
         itemOpacity: 1
       }
-    }]
+    }],
+    itemDirection: 'left-to-right',
+    itemHeight: 20,
+    itemsSpacing: 2,
+    itemOpacity: 0.85,
+    itemWidth: 100,
+    justify: false,
+    translateX: legendTranslateX,
+    translateY: 0,
+    symbolSize: 20
   }]
 };
 
@@ -5385,23 +5396,17 @@ var HEADINGS = {
   }
 };
 
-/**
- * Charts - Line - Variables
- */
+function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var lastValue = null;
 var LINECHART = {
   axisBottom: function axisBottom() {
     var _this = this;
 
-    return {
-      orient: 'bottom',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: this.bottomLegend,
-      // string passed as prop
-      legendOffset: 36,
-      legendPosition: 'middle',
+    return _objectSpread$3({
+      axisTop: null,
+      axisRight: null,
       format: function format(value) {
         if (_this.axisBottomDistinct) {
           var formatted = shortDate(value);
@@ -5411,40 +5416,53 @@ var LINECHART = {
             return formatted;
           }
         } else return value;
-      }
-    };
+      },
+      legend: this.bottomLegend,
+      // string passed as prop
+      legendOffset: 36,
+      legendPosition: 'middle',
+      orient: 'bottom',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0
+    }, this.axisBottom);
   },
   axisLeft: function axisLeft() {
     var _this2 = this;
 
-    return {
-      orient: 'left',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
+    return _objectSpread$3({
+      format: function format(value) {
+        if (value % 1 === 0) return "".concat(value + _this2.axisLeftSymbol || value);
+      },
       legend: this.leftLegend,
       // string passed as prop
       legendOffset: -50,
       legendPosition: 'middle',
-      format: function format(value) {
-        if (value % 1 === 0) return "".concat(value + _this2.axisLeftSymbol || value);
-      }
-    };
+      orient: 'left',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0
+    }, this.axisLeft);
   },
-  axisTop: null,
-  axisRight: null,
   margin: function margin() {
     return {
-      top: 30,
+      bottom: 50,
+      left: 60,
       right: this.showLegend ? 110 : 30,
       // props context
-      bottom: 50,
-      left: 60
+      top: 30
     };
   },
   legends: [{
     anchor: 'bottom-right',
     direction: 'column',
+    effects: [{
+      on: 'hover',
+      style: {
+        itemBackground: 'rgba(0, 0, 0, .03)',
+        itemOpacity: 1
+      }
+    }],
     justify: false,
     translateX: 100,
     translateY: 0,
@@ -5455,14 +5473,7 @@ var LINECHART = {
     itemOpacity: 0.75,
     symbolSize: 12,
     symbolShape: 'circle',
-    symbolBorderColor: 'rgba(0, 0, 0, .5)',
-    effects: [{
-      on: 'hover',
-      style: {
-        itemBackground: 'rgba(0, 0, 0, .03)',
-        itemOpacity: 1
-      }
-    }]
+    symbolBorderColor: 'rgba(0, 0, 0, .5)'
   }],
   pointColor: COLOUR$1.white,
   pointSize: 10,
@@ -5558,28 +5569,6 @@ var PIECHART = {
   cornerRadius: 3,
   padAngle: 0.7,
   innerRadius: 0.5,
-  startAngle: -180,
-  margin: function margin() {
-    return {
-      top: 30,
-      right: 80,
-      bottom: this.showLegend ? 80 : 30,
-      // props context
-      left: 80
-    };
-  },
-  radialLabelsSkipAngle: 10,
-  radialLabelsTextXOffset: 6,
-  radialLabelsTextColor: COLOUR$1.black,
-  radialLabelsLinkOffset: 0,
-  radialLabelsLinkDiagonalLength: 16,
-  radialLabelsLinkHorizontalLength: 24,
-  radialLabelsLinkStrokeWidth: 1,
-  radialLabelsLinkColor: {
-    from: 'color'
-  },
-  slicesLabelsSkipAngle: 10,
-  slicesLabelsTextColor: COLOUR$1.black,
   legends: [{
     anchor: 'bottom',
     direction: 'row',
@@ -5596,8 +5585,30 @@ var PIECHART = {
       }
     }]
   }],
+  margin: function margin() {
+    return {
+      top: 30,
+      right: 80,
+      bottom: this.showLegend ? 80 : 30,
+      // props context
+      left: 80
+    };
+  },
   motionStiffness: 90,
-  motionDamping: 15
+  motionDamping: 15,
+  radialLabelsSkipAngle: 10,
+  radialLabelsTextXOffset: 6,
+  radialLabelsTextColor: COLOUR$1.black,
+  radialLabelsLinkOffset: 0,
+  radialLabelsLinkDiagonalLength: 16,
+  radialLabelsLinkHorizontalLength: 24,
+  radialLabelsLinkStrokeWidth: 1,
+  radialLabelsLinkColor: {
+    from: 'color'
+  },
+  slicesLabelsSkipAngle: 10,
+  slicesLabelsTextColor: COLOUR$1.black,
+  startAngle: -180
 };
 
 /**
@@ -5964,10 +5975,10 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
-function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var IconPropTypes = _objectSpread$3(_objectSpread$3({
+function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var IconPropTypes = _objectSpread$4(_objectSpread$4({
   border: propTypes.bool,
   className: propTypes.any,
   context: propTypes.oneOf(Object.values(CONTEXT)),
@@ -6155,10 +6166,10 @@ Blockquote.propTypes = {
   text: propTypes.string.isRequired
 };
 
-function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var ButtonPropTypes = _objectSpread$4(_objectSpread$4(_objectSpread$4({
+function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var ButtonPropTypes = _objectSpread$5(_objectSpread$5(_objectSpread$5({
   block: propTypes.bool,
   centre: propTypes.bool,
   children: propTypes.node,
@@ -7485,10 +7496,10 @@ Space.protoTypes = {
   paddingLeft: propTypes.oneOf(Object.values(SIZE))
 };
 
-function ownKeys$5(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$5(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var TextPropTypes = _objectSpread$5(_objectSpread$5({
+function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var TextPropTypes = _objectSpread$6(_objectSpread$6({
   align: propTypes.string,
   children: propTypes.node,
   content: propTypes.string,
@@ -12069,9 +12080,9 @@ Form.propTypes = {
 
 var __jsx$J = React.createElement;
 
-function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var FieldHOC = function FieldHOC(_ref) {
   var Component = _ref.component,
       errors = _ref.errors,
@@ -12088,7 +12099,7 @@ var FieldHOC = function FieldHOC(_ref) {
     errors: errors === null || errors === void 0 ? void 0 : errors.message,
     key: props.name,
     name: props.name,
-    ref: register(_objectSpread$6(_objectSpread$6(_objectSpread$6(_objectSpread$6(_objectSpread$6({
+    ref: register(_objectSpread$7(_objectSpread$7(_objectSpread$7(_objectSpread$7(_objectSpread$7({
       validate: validate
     }, props.max && {
       max: props.max
@@ -12101,7 +12112,7 @@ var FieldHOC = function FieldHOC(_ref) {
     }), props.regExp && {
       pattern: new RegExp(props.regExp)
     })),
-    style: _objectSpread$6({
+    style: _objectSpread$7({
       display: !show ? 'none' : undefined
     }, props.style)
   }, props), children), helperMessage && __jsx$J(Space, {
@@ -12845,17 +12856,17 @@ var reactSelectPropTypes = {
   tabSelectsValue: propTypes.bool
 };
 
-function ownKeys$7(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$7(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var defaultStyles = {
   container: function container(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       margin: '0'
     });
   },
   control: function control(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       backgroundColor: '#fff',
       borderColor: COLOUR.dark,
       borderRadius: '0.25rem',
@@ -12867,26 +12878,26 @@ var defaultStyles = {
     });
   },
   menu: function menu(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       borderColor: COLOUR.dark,
       boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
       color: COLOUR.dark
     });
   },
   multiValue: function multiValue(base, state) {
-    return state.data.isFixed ? _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return state.data.isFixed ? _objectSpread$8(_objectSpread$8({}, base), {}, {
       backgroundColor: 'gray'
     }) : base;
   },
   multiValueLabel: function multiValueLabel(base, state) {
-    return state.data.isFixed ? _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return state.data.isFixed ? _objectSpread$8(_objectSpread$8({}, base), {}, {
       fontWeight: 'bold',
       color: 'white',
       paddingRight: 6
     }) : base;
   },
   multiValueRemove: function multiValueRemove(base, state) {
-    return state.data.isFixed ? _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return state.data.isFixed ? _objectSpread$8(_objectSpread$8({}, base), {}, {
       display: 'none'
     }) : base;
   },
@@ -12896,7 +12907,7 @@ var defaultStyles = {
     };
   },
   singleValue: function singleValue(base, state) {
-    return _objectSpread$7(_objectSpread$7({}, base), {}, {
+    return _objectSpread$8(_objectSpread$8({}, base), {}, {
       color: '#003753'
     });
   }
@@ -12981,65 +12992,6 @@ ReactSelectField.propTypes = reactSelectPropTypes;
 ReactSelectField.defaultProps = reactSelectDefaultProps(defaultStyles);
 
 var __jsx$T = React.createElement;
-var RichTextInput = function RichTextInput(_ref) {
-  var _editor$current;
-
-  var control = _ref.control,
-      errors = _ref.errors,
-      initialValue = _ref.initialValue,
-      name = _ref.name;
-  var content = EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(initialValue !== null && initialValue !== void 0 ? initialValue : '')));
-  console.log(content);
-  var editor = useRef(null); // const [editorState, setEditorState] = useState(EditorState.createEmpty())
-
-  var _onEditorStateChange = function onEditorStateChange(editorState, onChange) {
-    console.log(editorState);
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-    onChange(editorState); // onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())))
-    // setEditorState(editorState)
-    // setValue(name, draftToHtml(convertToRaw(editorState.getCurrentContent())))
-  };
-
-  return __jsx$T(Wrapper$2, {
-    errors: errors[name],
-    onClick: (_editor$current = editor.current) === null || _editor$current === void 0 ? void 0 : _editor$current.focus()
-  }, __jsx$T(Controller$1, {
-    name: name,
-    control: control,
-    defaultValue: content,
-    render: function render(_ref2) {
-      var value = _ref2.value,
-          onChange = _ref2.onChange;
-      return __jsx$T(Editor$1, {
-        editorState: value,
-        wrapperClassName: "wrapper-class",
-        editorClassName: "editor-class",
-        onEditorStateChange: function onEditorStateChange(e) {
-          return _onEditorStateChange(e, onChange);
-        }
-      });
-    }
-  }));
-};
-var Wrapper$2 = styled.div.withConfig({
-  displayName: "richTextInput__Wrapper",
-  componentId: "vech9m-0"
-})(["", " ", ""], function (props) {
-  return COMMON_INPUT_STYLES(props);
-}, function (_ref3) {
-  var errors = _ref3.errors;
-  return errors && css(["", ""], function (props) {
-    return ERROR_STYLE(props);
-  });
-});
-RichTextInput.propTypes = {
-  control: propTypes.object.isRequired,
-  errors: propTypes.object.isRequired,
-  name: propTypes.string.isRequired,
-  initialValue: propTypes.string
-};
-
-var __jsx$U = React.createElement;
 var Search = function Search(_ref) {
   var appendSearchButton = _ref.appendSearchButton,
       appendSearchIcon = _ref.appendSearchIcon,
@@ -13050,29 +13002,29 @@ var Search = function Search(_ref) {
       prefix = _ref.prefix,
       register = _ref.register,
       type = _ref.type;
-  return __jsx$U(InputGroup, null, prependSearchIcon && __jsx$U(InputGroupAddon, {
+  return __jsx$T(InputGroup, null, prependSearchIcon && __jsx$T(InputGroupAddon, {
     addonType: "prepend",
     text: true
-  }, __jsx$U(Icon, {
+  }, __jsx$T(Icon, {
     size: "md",
     icon: "search",
     prefix: prefix
-  })), __jsx$U(FormField, {
+  })), __jsx$T(FormField, {
     errors: errors,
     name: "query",
     placeholder: placeholder,
     register: register,
     type: type
-  }), appendSearchIcon && __jsx$U(InputGroupAddon, {
+  }), appendSearchIcon && __jsx$T(InputGroupAddon, {
     addonType: "append",
     text: true
-  }, __jsx$U(Icon, {
+  }, __jsx$T(Icon, {
     icon: "search",
     size: "md",
     prefix: prefix
-  })), appendSearchButton && __jsx$U(InputGroupAddon, {
+  })), appendSearchButton && __jsx$T(InputGroupAddon, {
     addonType: "append"
-  }, __jsx$U(Button, {
+  }, __jsx$T(Button, {
     content: label || 'Search',
     context: "dark",
     size: "sm",
@@ -13096,14 +13048,14 @@ Search.defaultProps = {
   type: 'search'
 };
 
-var __jsx$V = React.createElement;
+var __jsx$U = React.createElement;
 var SelectCountryField = function SelectCountryField(_ref) {
   var errors = _ref.errors,
       name = _ref.name,
       register = _ref.register,
       props = _objectWithoutProperties(_ref, ["errors", "name", "register"]);
 
-  return __jsx$V(SelectField, _extends({
+  return __jsx$U(SelectField, _extends({
     errors: errors,
     name: name,
     options: COUNTRY,
@@ -13116,7 +13068,7 @@ SelectCountryField.propTypes = {
   register: propTypes.func.isRequired
 };
 
-var __jsx$W = React.createElement;
+var __jsx$V = React.createElement;
 var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var data = _ref.data,
       defaultValue = _ref.defaultValue,
@@ -13131,14 +13083,14 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
       props = _objectWithoutProperties(_ref, ["data", "defaultValue", "disabled", "errors", "name", "options", "placeholder", "range", "showError", "size"]);
 
   var renderRange = function renderRange() {
-    var options = [__jsx$W("option", {
+    var options = [__jsx$V("option", {
       disabled: true,
       value: "",
       key: "initial0"
     }, placeholder)];
 
     _range(range[1], range[0]).map(function (i) {
-      return options.push(__jsx$W("option", {
+      return options.push(__jsx$V("option", {
         key: "range".concat(i),
         value: i
       }, i));
@@ -13160,13 +13112,13 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
           value = _ref2.value;
 
       if (group) {
-        return __jsx$W("optgroup", {
+        return __jsx$V("optgroup", {
           key: "option".concat(group),
           label: group
         }, renderOptions(items));
       }
 
-      return __jsx$W("option", {
+      return __jsx$V("option", {
         children: text,
         disabled: disabled,
         key: "option".concat(value),
@@ -13175,7 +13127,7 @@ var SelectField = /*#__PURE__*/forwardRef(function (_ref, ref) {
     });
   };
 
-  return __jsx$W(FieldHOC, _extends({
+  return __jsx$V(FieldHOC, _extends({
     component: StyledSelect,
     defaultValue: defaultValue,
     disabled: disabled,
@@ -13231,7 +13183,7 @@ SelectField.defaultProps = {
   showError: false
 };
 
-var __jsx$X = React.createElement;
+var __jsx$W = React.createElement;
 var TextareaField = function TextareaField(_ref) {
   var autoFocus = _ref.autoFocus,
       className = _ref.className,
@@ -13249,7 +13201,7 @@ var TextareaField = function TextareaField(_ref) {
       spellCheck = _ref.spellCheck,
       tabIndex = _ref.tabIndex,
       wrap = _ref.wrap;
-  return __jsx$X(FieldHOC, {
+  return __jsx$W(FieldHOC, {
     autoFocus: autoFocus,
     className: className,
     cols: cols,
@@ -13319,13 +13271,13 @@ var yup = require('yup');
 var _require$1 = require('@hookform/resolvers'),
     yupResolver = _require$1.yupResolver;
 
-var __jsx$Y = React.createElement;
+var __jsx$X = React.createElement;
 
 var renderItem = function renderItem(_ref, index, current, handleCurrent) {
   var body = _ref.body,
       context = _ref.context,
       title = _ref.title;
-  return __jsx$Y(AccordionItem, {
+  return __jsx$X(AccordionItem, {
     key: index,
     context: context,
     open: current.includes(index),
@@ -13396,10 +13348,10 @@ var Accordion = function Accordion(_ref3) {
       style = _ref3.style,
       closeOthersOnOpen = _ref3.closeOthersOnOpen;
   //  moved the body component  and its dependants outside because StyledAccordion doesn't need to be rendered on every single change of body state
-  return __jsx$Y(StyledAccordion, {
+  return __jsx$X(StyledAccordion, {
     className: className,
     style: style
-  }, __jsx$Y(Body, {
+  }, __jsx$X(Body, {
     children: children,
     data: data,
     closeOthersOnOpen: closeOthersOnOpen
@@ -13417,7 +13369,7 @@ Accordion.propTypes = {
   style: propTypes.object
 };
 
-var __jsx$Z = React.createElement;
+var __jsx$Y = React.createElement;
 var AccordionItem = /*#__PURE__*/memo(function (_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -13426,19 +13378,19 @@ var AccordionItem = /*#__PURE__*/memo(function (_ref) {
       index = _ref.index,
       open = _ref.open,
       title = _ref.title;
-  return __jsx$Z(StyledAccordionItem, {
+  return __jsx$Y(StyledAccordionItem, {
     className: className
-  }, __jsx$Z(Header, {
+  }, __jsx$Y(Header, {
     className: open ? 'opened' : 'closed',
     onClick: function onClick() {
       return handleOpen(index);
     },
     context: context || 'dark'
-  }, title, ' ', __jsx$Z(HeaderIcon, {
+  }, title, ' ', __jsx$Y(HeaderIcon, {
     "aria-hidden": "true",
     context: "white",
     icon: open ? 'chevron-up' : 'chevron-down'
-  })), __jsx$Z(Content, {
+  })), __jsx$Y(Content, {
     className: open ? 'opened' : 'closed'
   }, children));
 }, function (_ref2, _ref3) {
@@ -13488,7 +13440,7 @@ AccordionItem["default"] = {
   open: false
 };
 
-var __jsx$_ = React.createElement;
+var __jsx$Z = React.createElement;
 var Alert = function Alert(_ref) {
   var className = _ref.className,
       close = _ref.close,
@@ -13508,21 +13460,21 @@ var Alert = function Alert(_ref) {
     close && close();
   };
 
-  return visible && __jsx$_(StyledAlert, {
+  return visible && __jsx$Z(StyledAlert, {
     className: className,
     context: context,
     style: style
-  }, close && __jsx$_(StyledClose, {
+  }, close && __jsx$Z(StyledClose, {
     click: handleClose,
     context: "white",
     header: header,
     icon: "times"
-  }), header && __jsx$_(AlertHeader, {
+  }), header && __jsx$Z(AlertHeader, {
     context: context,
     header: header,
     icon: icon,
     iconPrefix: iconPrefix
-  }), __jsx$_(AlertContent, {
+  }), __jsx$Z(AlertContent, {
     content: content,
     icon: header ? null : icon,
     iconPrefix: iconPrefix
@@ -13561,12 +13513,12 @@ Alert.defaultProps = {
   context: 'primary'
 };
 
-var __jsx$$ = React.createElement;
+var __jsx$_ = React.createElement;
 var AlertContent = function AlertContent(_ref) {
   var content = _ref.content,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$$(StyledAlertContent, null, icon && __jsx$$(Icon, {
+  return __jsx$_(StyledAlertContent, null, icon && __jsx$_(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
@@ -13583,15 +13535,15 @@ AlertContent.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$10 = React.createElement;
+var __jsx$$ = React.createElement;
 var AlertHeader = function AlertHeader(_ref) {
   var context = _ref.context,
       header = _ref.header,
       icon = _ref.icon,
       iconPrefix = _ref.iconPrefix;
-  return __jsx$10(StyledHeader, {
+  return __jsx$$(StyledHeader, {
     context: context
-  }, icon && __jsx$10(Icon, {
+  }, icon && __jsx$$(Icon, {
     "aria-hidden": "true",
     context: "help",
     icon: icon,
@@ -13613,38 +13565,38 @@ AlertHeader.propTypes = {
   iconPrefix: propTypes.string
 };
 
-var __jsx$11 = React.createElement;
+var __jsx$10 = React.createElement;
 var Breadcrumb = function Breadcrumb(_ref) {
   var category = _ref.category,
       path = _ref.path,
       page = _ref.page;
   var categoryFormatted = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-  return __jsx$11("nav", {
+  return __jsx$10("nav", {
     "aria-label": "breadcrumb"
-  }, __jsx$11(StyledOl, {
+  }, __jsx$10(StyledOl, {
     itemScope: "",
     itemType: "http://schema.org/BreadcrumbList"
-  }, __jsx$11(StyledLi, {
+  }, __jsx$10(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$11(Link, {
+  }, __jsx$10(Link, {
     to: "/",
     passHref: true
-  }, __jsx$11(StyledA, {
+  }, __jsx$10(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, __jsx$11(Icon, {
+  }, __jsx$10(Icon, {
     icon: "home-heart"
-  }))), __jsx$11("meta", {
+  }))), __jsx$10("meta", {
     itemProp: "position",
     content: "1"
-  })), __jsx$11(StyledLi, {
+  })), __jsx$10(StyledLi, {
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$11(Link, {
+  }, __jsx$10(Link, {
     to: {
       as: "/blog/".concat(slugify(path)),
       href: {
@@ -13655,21 +13607,21 @@ var Breadcrumb = function Breadcrumb(_ref) {
       }
     },
     passHref: true
-  }, __jsx$11(StyledA, {
+  }, __jsx$10(StyledA, {
     itemProp: "item",
     itemScope: "itemscope",
     itemType: "http://schema.org/Thing"
-  }, categoryFormatted)), __jsx$11("meta", {
+  }, categoryFormatted)), __jsx$10("meta", {
     itemProp: "position",
     content: "2"
-  })), __jsx$11(StyledLi, {
+  })), __jsx$10(StyledLi, {
     "aria-current": "page",
     itemProp: "itemListElement",
     itemScope: "",
     itemType: "http://schema.org/ListItem"
-  }, __jsx$11("span", {
+  }, __jsx$10("span", {
     itemProp: "name"
-  }, page), __jsx$11("meta", {
+  }, page), __jsx$10("meta", {
     itemProp: "position",
     content: "3"
   }))));
@@ -13692,7 +13644,7 @@ Breadcrumb.propTypes = {
   path: propTypes.string.isRequired
 };
 
-var __jsx$12 = React.createElement;
+var __jsx$11 = React.createElement;
 var Buttons = function Buttons(_ref) {
   var back = _ref.back,
       backText = _ref.backText,
@@ -13701,26 +13653,26 @@ var Buttons = function Buttons(_ref) {
       nextText = _ref.nextText,
       pathBack = _ref.pathBack,
       pathNext = _ref.pathNext;
-  return __jsx$12(React.Fragment, null, __jsx$12(Divider, {
+  return __jsx$11(React.Fragment, null, __jsx$11(Divider, {
     size: "sm"
-  }), back && __jsx$12(Link, {
+  }), back && __jsx$11(Link, {
     to: pathBack
-  }, __jsx$12(Button, {
+  }, __jsx$11(Button, {
     context: "secondary",
     size: "lg"
-  }, backText)), next && __jsx$12("div", {
+  }, backText)), next && __jsx$11("div", {
     className: "float-right"
-  }, pathNext && __jsx$12(Link, {
+  }, pathNext && __jsx$11(Link, {
     to: pathNext
-  }, __jsx$12(Button, {
+  }, __jsx$11(Button, {
     context: "primary",
     size: "lg"
-  }, nextText)), !pathNext && __jsx$12(Button, {
+  }, nextText)), !pathNext && __jsx$11(Button, {
     context: "primary",
     disabled: nextDisabled,
     size: "lg",
     type: "submit"
-  }, nextText)), __jsx$12("div", {
+  }, nextText)), __jsx$11("div", {
     style: {
       clear: 'both',
       marginBottom: '1rem'
@@ -13741,24 +13693,24 @@ Buttons.defaultProps = {
   nextText: 'Next'
 };
 
-var __jsx$13 = React.createElement;
+var __jsx$12 = React.createElement;
 var CardCTA = function CardCTA(_ref) {
   var func = _ref.func,
       link = _ref.link,
       title = _ref.title;
 
   var CtaButton = function CtaButton(props) {
-    return __jsx$13(StyledButton$3, _extends({
+    return __jsx$12(StyledButton$3, _extends({
       content: title,
       context: "secondary"
     }, props));
   };
 
-  return link ? __jsx$13(Link, {
+  return link ? __jsx$12(Link, {
     border: false,
     passHref: true,
     to: link
-  }, __jsx$13(CtaButton, null)) : __jsx$13(CtaButton, {
+  }, __jsx$12(CtaButton, null)) : __jsx$12(CtaButton, {
     onClick: func
   });
 };
@@ -13775,7 +13727,7 @@ CardCTA.defaultProps = {
   title: 'Read more'
 };
 
-var __jsx$14 = React.createElement;
+var __jsx$13 = React.createElement;
 var CardBody = function CardBody(_ref) {
   var center = _ref.center,
       children = _ref.children,
@@ -13787,16 +13739,16 @@ var CardBody = function CardBody(_ref) {
       showCta = _ref.showCta,
       title = _ref.title,
       titleNoWrap = _ref.titleNoWrap;
-  return __jsx$14(StyledBody$1, {
+  return __jsx$13(StyledBody$1, {
     className: className,
     center: center
-  }, title && __jsx$14(StyledWrapper, null, __jsx$14(StyledTitle, {
+  }, title && __jsx$13(StyledWrapper, null, __jsx$13(StyledTitle, {
     content: title,
     noWrap: titleNoWrap,
     tag: "h2"
-  })), (children || showCta) && __jsx$14(StyledContent$1, {
+  })), (children || showCta) && __jsx$13(StyledContent$1, {
     context: context
-  }, children, showCta && __jsx$14(CardCTA, {
+  }, children, showCta && __jsx$13(CardCTA, {
     func: ctaFunc,
     link: ctaLink,
     title: ctaTitle
@@ -13878,7 +13830,7 @@ var CardDefaultProps = {
   titleNoWrap: false
 };
 
-var __jsx$15 = React.createElement;
+var __jsx$14 = React.createElement;
 
 function _templateObject$3() {
   var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex: 1 0 calc(100%/3 - 30px);\n    flex-direction: column;\n    margin-right: 15px;\n    margin-left: 15px;\n  "]);
@@ -13916,7 +13868,7 @@ var Card = function Card(_ref) {
       to = _ref.to;
 
   var linked = function linked() {
-    return __jsx$15(Link, {
+    return __jsx$14(Link, {
       border: false,
       passHref: true,
       to: to
@@ -13924,7 +13876,7 @@ var Card = function Card(_ref) {
   };
 
   var card = function card() {
-    return __jsx$15(StyledCard, {
+    return __jsx$14(StyledCard, {
       bordered: bordered,
       className: className,
       context: context,
@@ -13932,18 +13884,18 @@ var Card = function Card(_ref) {
       rounded: rounded,
       shadow: shadow,
       style: style
-    }, close && __jsx$15(Close, {
+    }, close && __jsx$14(Close, {
       click: close
-    }), image && __jsx$15(CardImage, {
+    }), image && __jsx$14(CardImage, {
       alt: alt,
       src: image
-    }), header && __jsx$15(CardHeader, {
+    }), header && __jsx$14(CardHeader, {
       content: header,
       context: footerContext
-    }), icon && __jsx$15(StyledIcon$3, {
+    }), icon && __jsx$14(StyledIcon$3, {
       icon: icon,
       size: "4x"
-    }), (title || body) && __jsx$15(CardBody, {
+    }), (title || body) && __jsx$14(CardBody, {
       center: center,
       children: body,
       context: context,
@@ -13953,7 +13905,7 @@ var Card = function Card(_ref) {
       showCta: showCta,
       title: title,
       titleNoWrap: titleNoWrap
-    }), children, footer && __jsx$15(CardFooter, {
+    }), children, footer && __jsx$14(CardFooter, {
       children: footer,
       context: footerContext
     }));
@@ -13992,7 +13944,7 @@ var StyledIcon$3 = styled(Icon).withConfig({
 Card.propTypes = CardPropTypes;
 Card.defaultProps = CardDefaultProps;
 
-var __jsx$16 = React.createElement;
+var __jsx$15 = React.createElement;
 
 function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n    flex-flow: row wrap;\n    margin-left: -15px;\n    margin-right: -15px;\n  "]);
@@ -14005,7 +13957,7 @@ function _templateObject$4() {
 }
 var CardDecks = function CardDecks(_ref) {
   var children = _ref.children;
-  return __jsx$16(StyledDecks, null, children);
+  return __jsx$15(StyledDecks, null, children);
 };
 var StyledDecks = styled.div.withConfig({
   displayName: "decks__StyledDecks",
@@ -14015,11 +13967,11 @@ CardDecks.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var __jsx$17 = React.createElement;
+var __jsx$16 = React.createElement;
 var CardFooter = function CardFooter(_ref) {
   var children = _ref.children,
       context = _ref.context;
-  return __jsx$17(StyledFooter$1, {
+  return __jsx$16(StyledFooter$1, {
     context: context
   }, children);
 };
@@ -14043,11 +13995,11 @@ CardFooter.defaultProps = {
   context: 'light'
 };
 
-var __jsx$18 = React.createElement;
+var __jsx$17 = React.createElement;
 var CardHeader = function CardHeader(_ref) {
   var content = _ref.content,
       context = _ref.context;
-  return __jsx$18(StyledHeader$1, {
+  return __jsx$17(StyledHeader$1, {
     context: context
   }, content);
 };
@@ -14068,12 +14020,12 @@ CardHeader.propTypes = {
   context: propTypes.oneOf(Object.values(CONTEXT))
 };
 
-var __jsx$19 = React.createElement;
+var __jsx$18 = React.createElement;
 var CardImage = function CardImage(_ref) {
   var alt = _ref.alt,
       header = _ref.header,
       src = _ref.src;
-  return __jsx$19(StyledContainer$1, null, __jsx$19(StyledImage$1, {
+  return __jsx$18(StyledContainer$1, null, __jsx$18(StyledImage$1, {
     alt: alt,
     fluid: false,
     imageClasses: "rounded",
@@ -14093,6 +14045,17 @@ CardImage.propTypes = {
   src: propTypes.string.isRequired
 };
 
+var __jsx$19 = React.createElement;
+var HighChart = function HighChart(_ref) {
+  var options = _ref.options,
+      constructorType = _ref.constructorType;
+  return __jsx$19(HighchartsReact, {
+    highcharts: Highcharts,
+    options: options,
+    constructorType: constructorType
+  });
+};
+
 var __jsx$1a = React.createElement;
 
 var BarComponent = function BarComponent(_ref) {
@@ -14100,63 +14063,62 @@ var BarComponent = function BarComponent(_ref) {
       props = _objectWithoutProperties(_ref, ["theme"]);
 
   var BARCHART = theme.BARCHART;
-  var data = props.data,
+  var _props$colorBy = props.colorBy,
+      colorBy = _props$colorBy === void 0 ? BarDefaultProps.colorBy : _props$colorBy,
+      colorScheme = props.colorScheme,
+      data = props.data,
+      _props$enableGridY = props.enableGridY,
+      enableGridY = _props$enableGridY === void 0 ? BARCHART.enableGridY : _props$enableGridY,
+      _props$enableGridX = props.enableGridX,
+      enableGridX = _props$enableGridX === void 0 ? BARCHART.enableGridX : _props$enableGridX,
+      _props$groupMode = props.groupMode,
+      groupMode = _props$groupMode === void 0 ? BarDefaultProps.groupMode : _props$groupMode,
       _props$indexBy = props.indexBy,
       indexBy = _props$indexBy === void 0 ? BarDefaultProps.indexBy : _props$indexBy,
+      _props$isInteractive = props.isInteractive,
+      isInteractive = _props$isInteractive === void 0 ? BARCHART.isInteractive : _props$isInteractive,
       _props$keys = props.keys,
       keys = _props$keys === void 0 ? BarDefaultProps.keys : _props$keys,
       _props$label = props.label,
       label = _props$label === void 0 ? BarDefaultProps.label : _props$label,
       _props$layout = props.layout,
       layout = _props$layout === void 0 ? BarDefaultProps.layout : _props$layout,
-      _props$groupMode = props.groupMode,
-      groupMode = _props$groupMode === void 0 ? BarDefaultProps.groupMode : _props$groupMode,
-      _props$reverse = props.reverse,
-      reverse = _props$reverse === void 0 ? BarDefaultProps.reverse : _props$reverse,
       _props$minValue = props.minValue,
       minValue = _props$minValue === void 0 ? BarDefaultProps.minValue : _props$minValue,
       _props$maxValue = props.maxValue,
       maxValue = _props$maxValue === void 0 ? BarDefaultProps.maxValue : _props$maxValue,
-      _props$colorBy = props.colorBy,
-      colorBy = _props$colorBy === void 0 ? BarDefaultProps.colorBy : _props$colorBy,
-      _props$enableGridX = props.enableGridX,
-      enableGridX = _props$enableGridX === void 0 ? BARCHART.enableGridX : _props$enableGridX,
-      _props$enableGridY = props.enableGridY,
-      enableGridY = _props$enableGridY === void 0 ? BARCHART.enableGridY : _props$enableGridY,
-      _props$isInteractive = props.isInteractive,
-      isInteractive = _props$isInteractive === void 0 ? BARCHART.isInteractive : _props$isInteractive,
-      colorScheme = props.colorScheme,
+      _props$reverse = props.reverse,
+      reverse = _props$reverse === void 0 ? BarDefaultProps.reverse : _props$reverse,
       showLegend = props.showLegend,
       _props$tooltip = props.tooltip,
       tooltip = _props$tooltip === void 0 ? BarDefaultProps.tooltip : _props$tooltip;
   return __jsx$1a(ResponsiveBar, {
-    indexBy: indexBy,
-    keys: keys,
-    label: label,
-    layout: layout,
-    groupMode: groupMode,
-    reverse: reverse,
-    minValue: minValue,
-    maxValue: maxValue,
+    animate: BARCHART.animate,
+    axisBottom: BARCHART.axisBottom.call(props),
+    axisLeft: BARCHART.axisLeft.call(props),
+    borderColor: BARCHART.borderColor,
+    borderWidth: BARCHART.borderWidth,
     colorBy: colorBy,
-    enableGridX: enableGridX,
-    enableGridY: enableGridY,
-    data: data // TODO: Write color schemes according to the context value
-    ,
     colors: {
       scheme: colorScheme
     },
+    data: data,
+    enableLabel: BARCHART.enableLabel,
+    enableGridX: enableGridX,
+    enableGridY: enableGridY,
+    groupMode: groupMode,
+    indexBy: indexBy,
+    isInteractive: isInteractive,
+    keys: keys,
+    label: label,
+    labelSkipHeight: BARCHART.labelSkipHeight,
+    layout: layout,
+    legends: showLegend ? BARCHART.legends : [],
+    minValue: minValue,
+    maxValue: maxValue,
     margin: BARCHART.margin.call(props),
     padding: BARCHART.padding,
-    axisBottom: BARCHART.axisBottom.call(props),
-    axisLeft: BARCHART.axisLeft.call(props),
-    borderWidth: BARCHART.borderWidth,
-    borderColor: BARCHART.borderColor,
-    enableLabel: BARCHART.enableLabel,
-    labelSkipHeight: BARCHART.labelSkipHeight,
-    legends: showLegend ? BARCHART.legends : [],
-    isInteractive: isInteractive,
-    animate: BARCHART.animate,
+    reverse: reverse,
     tooltip: tooltip
   });
 };
@@ -14167,21 +14129,19 @@ var BarComponent = function BarComponent(_ref) {
  */
 
 
+BarPropTypes.getBorderColor = propTypes.func;
+BarPropTypes.getColor = propTypes.func;
 BarPropTypes.getIndex = propTypes.func;
 BarPropTypes.getLabel = propTypes.func;
 BarPropTypes.getLabelTextColor = propTypes.func;
 BarPropTypes.getLabelLinkColor = propTypes.func;
-BarPropTypes.getColor = propTypes.func;
-BarPropTypes.getBorderColor = propTypes.func;
 BarPropTypes.getTooltipLabel = propTypes.func;
-var BarChart = withTheme(BarComponent); // override 'withTheme(BarComponent)'
-
+var BarChart = withTheme(BarComponent);
 BarChart.displayName = 'BarChart';
 BarChart.propTypes = Object.assign({}, BarPropTypes, {
-  // TODO: maybe write more custom schemes :)
   bottomLegend: propTypes.string,
-  leftLegend: propTypes.string,
   colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+  leftLegend: propTypes.string,
   showLegend: propTypes.bool
 });
 BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
@@ -14211,9 +14171,8 @@ var LineChart = withTheme(function (_ref) {
       xScale = _theme$LINECHART.xScale,
       yScale = _theme$LINECHART.yScale;
   var colorScheme = props.colorScheme,
-      data = props.data,
       curve = props.curve,
-      lineWidth = props.lineWidth,
+      data = props.data,
       enableArea = props.enableArea,
       areaOpacity = props.areaOpacity,
       enableCrosshair = props.enableCrosshair,
@@ -14223,12 +14182,22 @@ var LineChart = withTheme(function (_ref) {
       enableGridY = props.enableGridY,
       enableSlices = props.enableSlices,
       isInteractive = props.isInteractive,
+      lineWidth = props.lineWidth,
       _props$pointSize = props.pointSize,
       pointSize = _props$pointSize === void 0 ? LINECHART.pointSize : _props$pointSize,
-      showLegend = props.showLegend;
+      showLegend = props.showLegend,
+      _props$tooltip = props.tooltip,
+      tooltip = _props$tooltip === void 0 ? LineDefaultProps.tooltip : _props$tooltip;
   return __jsx$1b(ResponsiveLine, {
     areaOpacity: areaOpacity,
+    axisTop: axisTop,
+    axisRight: axisRight,
+    axisBottom: axisBottom.call(props),
+    axisLeft: axisLeft.call(props),
     curve: curve,
+    colors: {
+      scheme: colorScheme
+    },
     data: data,
     enableArea: enableArea,
     enableCrosshair: enableCrosshair,
@@ -14238,33 +14207,27 @@ var LineChart = withTheme(function (_ref) {
     enableGridY: enableGridY,
     enableSlices: enableSlices,
     isInteractive: isInteractive,
+    lineWidth: lineWidth,
+    legends: showLegend ? legends : [],
     margin: margin.call(props),
-    xScale: xScale,
-    yScale: yScale.call(props),
-    axisTop: axisTop,
-    axisRight: axisRight,
-    axisBottom: axisBottom.call(props),
-    axisLeft: axisLeft.call(props),
-    colors: {
-      scheme: colorScheme
-    },
     pointSize: pointSize,
     pointColor: pointColor,
     pointBorderColor: pointBorderColor,
     pointBorderWidth: pointBorderWidth,
     pointLabel: pointLabel,
     pointLabelYOffset: pointLabelYOffset,
+    tooltip: tooltip,
     useMesh: useMesh,
-    legends: showLegend ? legends : [],
-    lineWidth: lineWidth
+    xScale: xScale,
+    yScale: yScale.call(props)
   });
 });
 LineChart.displayName = 'LineChart';
 LineChart.propTypes = Object.assign({}, LinePropTypes, {
   // TODO: maybe write more custom schemes :)
   bottomLegend: propTypes.string,
-  leftLegend: propTypes.string,
   colorScheme: propTypes.oneOf(Object.keys(colorSchemes)),
+  leftLegend: propTypes.string,
   showLegend: propTypes.bool
 });
 LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
@@ -14283,25 +14246,27 @@ var PieChart = withTheme(function (_ref) {
       borderColor = _theme$PIECHART.borderColor,
       borderWidth = _theme$PIECHART.borderWidth,
       startAngle = _theme$PIECHART.startAngle,
+      legends = _theme$PIECHART.legends,
       margin = _theme$PIECHART.margin,
+      motionStiffness = _theme$PIECHART.motionStiffness,
+      motionDamping = _theme$PIECHART.motionDamping,
       radialLabelsSkipAngle = _theme$PIECHART.radialLabelsSkipAngle,
       radialLabelsTextColor = _theme$PIECHART.radialLabelsTextColor,
       radialLabelsLinkColor = _theme$PIECHART.radialLabelsLinkColor,
       slicesLabelsSkipAngle = _theme$PIECHART.slicesLabelsSkipAngle,
-      slicesLabelsTextColor = _theme$PIECHART.slicesLabelsTextColor,
-      legends = _theme$PIECHART.legends,
-      motionStiffness = _theme$PIECHART.motionStiffness,
-      motionDamping = _theme$PIECHART.motionDamping;
+      slicesLabelsTextColor = _theme$PIECHART.slicesLabelsTextColor;
   var colorScheme = props.colorScheme,
+      _props$cornerRadius = props.cornerRadius,
+      cornerRadius = _props$cornerRadius === void 0 ? PIECHART.cornerRadius : _props$cornerRadius,
       data = props.data,
-      onClick = props.onClick,
       enableRadialLabels = props.enableRadialLabels,
       enableSlicesLabels = props.enableSlicesLabels,
       _props$innerRadius = props.innerRadius,
       innerRadius = _props$innerRadius === void 0 ? PIECHART.innerRadius : _props$innerRadius,
       isInteractive = props.isInteractive,
-      showLegend = props.showLegend,
-      sortByValue = props.sortByValue,
+      onClick = props.onClick,
+      _props$padAngle = props.padAngle,
+      padAngle = _props$padAngle === void 0 ? PIECHART.padAngle : _props$padAngle,
       _props$radialLabelsLi = props.radialLabelsLinkStrokeWidth,
       radialLabelsLinkStrokeWidth = _props$radialLabelsLi === void 0 ? PIECHART.radialLabelsLinkStrokeWidth : _props$radialLabelsLi,
       _props$radialLabelsTe = props.radialLabelsTextXOffset,
@@ -14312,27 +14277,29 @@ var PieChart = withTheme(function (_ref) {
       radialLabelsLinkDiagonalLength = _props$radialLabelsLi3 === void 0 ? PIECHART.radialLabelsLinkDiagonalLength : _props$radialLabelsLi3,
       _props$radialLabelsLi4 = props.radialLabelsLinkOffset,
       radialLabelsLinkOffset = _props$radialLabelsLi4 === void 0 ? PIECHART.radialLabelsLinkOffset : _props$radialLabelsLi4,
-      _props$cornerRadius = props.cornerRadius,
-      cornerRadius = _props$cornerRadius === void 0 ? PIECHART.cornerRadius : _props$cornerRadius,
-      _props$padAngle = props.padAngle,
-      padAngle = _props$padAngle === void 0 ? PIECHART.padAngle : _props$padAngle;
+      showLegend = props.showLegend,
+      sortByValue = props.sortByValue,
+      _props$tooltip = props.tooltip,
+      tooltip = _props$tooltip === void 0 ? PieDefaultProps.tooltip : _props$tooltip;
   return __jsx$1c(ResponsivePie, {
     animate: animate,
     onClick: onClick,
     data: data,
-    margin: margin.call(props),
-    startAngle: startAngle,
+    enableSlicesLabels: enableSlicesLabels,
+    enableRadialLabels: enableRadialLabels,
+    isInteractive: isInteractive,
     innerRadius: innerRadius,
-    padAngle: padAngle,
     cornerRadius: cornerRadius,
     colors: {
       scheme: colorScheme
     },
     borderWidth: borderWidth,
     borderColor: borderColor,
-    enableSlicesLabels: enableSlicesLabels,
-    enableRadialLabels: enableRadialLabels,
-    isInteractive: isInteractive,
+    legends: showLegend ? legends : [],
+    margin: margin.call(props),
+    motionDamping: motionDamping,
+    motionStiffness: motionStiffness,
+    padAngle: padAngle,
     radialLabelsSkipAngle: radialLabelsSkipAngle,
     radialLabelsTextXOffset: radialLabelsTextXOffset,
     radialLabelsTextColor: radialLabelsTextColor,
@@ -14344,9 +14311,8 @@ var PieChart = withTheme(function (_ref) {
     slicesLabelsSkipAngle: slicesLabelsSkipAngle,
     slicesLabelsTextColor: slicesLabelsTextColor,
     sortByValue: sortByValue,
-    motionStiffness: motionStiffness,
-    motionDamping: motionDamping,
-    legends: showLegend ? legends : []
+    startAngle: startAngle,
+    tooltip: tooltip
   });
 });
 PieChart.displayName = 'PieChart';
@@ -14575,7 +14541,7 @@ var Carousel = function Carousel(_ref) {
 
   var hasNavigation = Array.isArray(dataSource) && dataSource.length > 1;
   var current = dataSource[currentImageIndex];
-  return __jsx$1g(React.Fragment, null, __jsx$1g(Wrapper$3, {
+  return __jsx$1g(React.Fragment, null, __jsx$1g(Wrapper$2, {
     width: width,
     height: height,
     fullWidth: fullWidth
@@ -14593,7 +14559,7 @@ var Carousel = function Carousel(_ref) {
     position: arrowPosition
   })), hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination());
 };
-var Wrapper$3 = styled.div.withConfig({
+var Wrapper$2 = styled.div.withConfig({
   displayName: "carousel__Wrapper",
   componentId: "sc-1656prh-0"
 })(["height:", ";min-height:", ";margin:0;position:relative;width:", ";"], function (_ref2) {
@@ -19228,9 +19194,9 @@ var index = /*@__PURE__*/unwrapExports(dist$1);
 
 var __jsx$1q = React.createElement;
 
-function ownKeys$8(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$8(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$8(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$8(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var EmojiMart = function EmojiMart(_ref) {
   var closeOnClickOut = _ref.closeOnClickOut,
       handleSelect = _ref.handleSelect,
@@ -19275,7 +19241,7 @@ var EmojiMart = function EmojiMart(_ref) {
     sheetSize: 20,
     showSkinTones: false,
     showPreview: false,
-    style: _objectSpread$8({
+    style: _objectSpread$9({
       border: 'initial',
       borderRadius: 'initial',
       width: '100%'
@@ -19298,9 +19264,9 @@ EmojiMart.defaultProps = {
 
 var __jsx$1r = React.createElement;
 
-function ownKeys$9(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$9(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$9(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$9(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
   var apiKey = _ref.apiKey,
       error = _ref.error,
@@ -19309,6 +19275,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
       handleFindAddress = _ref.handleFindAddress,
       handlePopulateAddress = _ref.handlePopulateAddress,
       selectAddress = _ref.selectAddress;
+  console.log(form);
 
   var _useState = useState(false),
       loading = _useState[0],
@@ -19341,7 +19308,7 @@ var GetAddress = /*#__PURE__*/forwardRef(function (_ref, ref) {
 
           return response.json();
         }).then(function (data) {
-          setAddresses(_objectSpread$9(_objectSpread$9({}, addresses), {}, {
+          setAddresses(_objectSpread$a(_objectSpread$a({}, addresses), {}, {
             data: data.addresses
           }));
         })["catch"](function (error) {
@@ -19855,9 +19822,9 @@ ImageWrapper.propTypes = {
 
 var __jsx$1z = React.createElement;
 
-function ownKeys$a(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$a(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$a(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$a(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$b(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var elementName = 'imageLocationData';
 var ImageLocationFormElement = function ImageLocationFormElement(_ref) {
   var control = _ref.control,
@@ -19881,7 +19848,7 @@ var ControllerWrapper = styled.div.withConfig({
   displayName: "imageLocationFormElement__ControllerWrapper",
   componentId: "qhiyzk-0"
 })(["&.hasError{box-shadow:0 0 4px red;animation:", " 0.2s linear 2;}"], imageAllert);
-ImageLocationFormElement.propTypes = _objectSpread$a(_objectSpread$a({}, ImageLocationProps), {}, {
+ImageLocationFormElement.propTypes = _objectSpread$b(_objectSpread$b({}, ImageLocationProps), {}, {
   setValue: propTypes.func.isRequired,
   control: propTypes.object.isRequired
 });
@@ -19951,9 +19918,9 @@ Intercom.propTypes = {
 
 var __jsx$1A = React.createElement;
 
-function ownKeys$b(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$b(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$b(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$b(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$c(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var DynamicLocationHOC = function DynamicLocationHOC(Component) {
   return function (props) {
@@ -19978,7 +19945,7 @@ var DynamicLocation = DynamicLocationHOC(withScriptjs(withGoogleMap(function (pr
   return props.defaultCenter.lat && props.defaultCenter.lng ? __jsx$1A(GoogleMap, props) : null;
 })));
 DynamicLocation.displayName = 'DynamicLocation';
-DynamicLocation.propTypes = _objectSpread$b({
+DynamicLocation.propTypes = _objectSpread$c({
   apiKey: propTypes.string.isRequired,
   containerElement: propTypes.node,
   containerHeight: propTypes.string,
@@ -22967,9 +22934,9 @@ var StyledTr = styled.tr.withConfig({
 
 var __jsx$26 = React.createElement;
 
-function ownKeys$c(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$c(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$c(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$c(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$d(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var Table = function Table(_ref) {
   var align = _ref.align,
       caption = _ref.caption,
@@ -23169,7 +23136,7 @@ Table.propTypes = {
   hover: propTypes.bool,
   loading: propTypes.bool,
   pagination: propTypes.bool,
-  paginationProps: propTypes.shape(_objectSpread$c({
+  paginationProps: propTypes.shape(_objectSpread$d({
     changeUrlOnChange: propTypes.bool,
     initialPage: propTypes.number,
     perPage: propTypes.number
@@ -24093,7 +24060,7 @@ var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
-  return __jsx$2g(Wrapper$4, null, props.hasLoading && loading && __jsx$2g(PageLoading, {
+  return __jsx$2g(Wrapper$3, null, props.hasLoading && loading && __jsx$2g(PageLoading, {
     indicator: __jsx$2g(LdsSpinner, {
       color: "#000",
       size: 50
@@ -24108,7 +24075,7 @@ var Calendar = /*#__PURE__*/forwardRef(function (_ref, ref) {
     loading: setLoading
   })));
 });
-var Wrapper$4 = styled.div.withConfig({
+var Wrapper$3 = styled.div.withConfig({
   displayName: "fullCalendar__Wrapper",
   componentId: "sc-12sqf83-0"
 })(["position:relative;width:100%;@media (max-width:700px){.fc-header-toolbar{flex-direction:column;}}"]);
@@ -25530,9 +25497,9 @@ Bootstrap.defaultProps = {
 
 var __jsx$2A = React.createElement;
 
-function ownKeys$d(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$d(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$d(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$d(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$e(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$e(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$e(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 var Dashboard = function Dashboard(_ref) {
   var children = _ref.children,
       meta = _ref.meta,
@@ -25547,7 +25514,7 @@ var Dashboard = function Dashboard(_ref) {
     title: 'Admin'
   };
 
-  var mergedMeta = _objectSpread$d(_objectSpread$d({}, defaultMeta), meta);
+  var mergedMeta = _objectSpread$e(_objectSpread$e({}, defaultMeta), meta);
 
   return __jsx$2A(React.Fragment, null, __jsx$2A(Suspense$1, {
     fallback: __jsx$2A(PageLoading, {
@@ -31237,5 +31204,5 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, ICON_PREFIX, ICON_PULL, ICON_SIZE, IUIRich, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, RichTextInput, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
+export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, Close, ColorPicker, Column, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, HighChart, ICON_PREFIX, ICON_PULL, ICON_SIZE, IUIRich, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LdsSpinner, LineChart, Link, List, ListItem, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, Message, MessageBackground, MessageBase, MessageList, MessagingContainer, MessagingSearch, MessagingSend, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, historyPush, isLocale, mergeLocalData, objectWithoutProperties, parsePostCode, requestSimulator, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
 //# sourceMappingURL=industry-ui.es.js.map

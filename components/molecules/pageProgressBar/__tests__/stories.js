@@ -3,20 +3,22 @@
  */
 
 // Storybook
-import { Context } from 'decorators'
+import { ContextControl } from 'decorators'
 
 // UI
 import { PageProgressBar } from 'components'
 
 export default {
+  args: { context: 'primary' },
+  argTypes: {
+    size: ContextControl()
+  },
   title: 'Molecules/PageProgressBar',
   component: PageProgressBar
 }
 
-const BaseComponent = () => {
-  const contextKnob = Context()
-
-  return <PageProgressBar context={contextKnob} isAnimating instanceKey={new Date().getTime()} />
+const BaseComponent = args => {
+  return <PageProgressBar {...args} isAnimating instanceKey={new Date().getTime()} />
 }
 
-export const main = () => <BaseComponent />
+export const main = args => <BaseComponent {...args} />

@@ -18,6 +18,7 @@ import 'emoji-mart/css/emoji-mart.css'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'tippy.js/dist/tippy.css'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 const actionWithPromise = () => {
   action('clicked link')()
