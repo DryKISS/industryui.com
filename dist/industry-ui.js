@@ -1,5 +1,7 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var React = require('react');
 var axios = require('axios');
 var moment = require('moment');
@@ -22,7 +24,6 @@ var Dropzone$1 = require('react-dropzone-uploader');
 var draftJs = require('draft-js');
 var Select = require('react-select');
 var AsyncSelect = require('react-select/async');
-var dynamic = require('next/dynamic');
 var _range = require('lodash/range');
 var Highcharts = require('highcharts/highstock');
 var HighchartsReact = require('highcharts-react-official');
@@ -38,6 +39,7 @@ var reactNprogress = require('@tanem/react-nprogress');
 var chunk = require('lodash/chunk');
 var Router = require('next/router');
 var reactBigCalendar = require('react-big-calendar');
+var dynamic = require('next/dynamic');
 var reactColor = require('react-color');
 var yup$1 = require('yup');
 var _filter = require('lodash/filter');
@@ -84,13 +86,13 @@ var ReactDatePicker__default = /*#__PURE__*/_interopDefaultLegacy(ReactDatePicke
 var Dropzone__default = /*#__PURE__*/_interopDefaultLegacy(Dropzone$1);
 var Select__default = /*#__PURE__*/_interopDefaultLegacy(Select);
 var AsyncSelect__default = /*#__PURE__*/_interopDefaultLegacy(AsyncSelect);
-var dynamic__default = /*#__PURE__*/_interopDefaultLegacy(dynamic);
 var _range__default = /*#__PURE__*/_interopDefaultLegacy(_range);
 var Highcharts__default = /*#__PURE__*/_interopDefaultLegacy(Highcharts);
 var HighchartsReact__default = /*#__PURE__*/_interopDefaultLegacy(HighchartsReact);
 var util__default = /*#__PURE__*/_interopDefaultLegacy(util$1);
 var chunk__default = /*#__PURE__*/_interopDefaultLegacy(chunk);
 var Router__default = /*#__PURE__*/_interopDefaultLegacy(Router);
+var dynamic__default = /*#__PURE__*/_interopDefaultLegacy(dynamic);
 var _filter__default = /*#__PURE__*/_interopDefaultLegacy(_filter);
 var merge__default = /*#__PURE__*/_interopDefaultLegacy(merge$1);
 var App__default = /*#__PURE__*/_interopDefaultLegacy(App);
@@ -13042,20 +13044,6 @@ var Wrapper$1 = styled__default['default'].div.withConfig({
 });
 ReactSelectField.propTypes = reactSelectPropTypes;
 ReactSelectField.defaultProps = reactSelectDefaultProps(defaultStyles);
-
-var RichTextInput = dynamic__default['default'](function () {
-  return Promise.resolve().then(function () { return require('./richEditor-24649cf0.js'); }).then(function (mod) {
-    return mod.RichTextInput;
-  });
-}, {
-  ssr: false,
-  loadableGenerated: {
-    webpack: function webpack() {
-      return [require.resolveWeak("./richEditor")];
-    },
-    modules: ["./richEditor"]
-  }
-});
 
 var __jsx$T = React__default['default'].createElement;
 var Search = function Search(_ref) {
@@ -31468,7 +31456,6 @@ exports.ReactHolderJs = ReactHolderJs;
 exports.ReactSelectField = ReactSelectField;
 exports.Register = Register;
 exports.ResizeDetector = ResizeDetector;
-exports.RichTextInput = RichTextInput;
 exports.Row = Row;
 exports.SIZE = SIZE;
 exports.SPACER = SPACER;
@@ -31562,7 +31549,6 @@ exports.isLocale = isLocale;
 exports.mergeLocalData = mergeLocalData;
 exports.objectWithoutProperties = objectWithoutProperties;
 exports.parsePostCode = parsePostCode;
-exports.propTypes = propTypes;
 exports.requestSimulator = requestSimulator;
 exports.shadeLinearRgb = shadeLinearRgb;
 exports.shortDate = shortDate;
@@ -31587,4 +31573,4 @@ exports.validatorUuid4 = validatorUuid4;
 exports.viewPort = viewPort;
 exports.yup = yup;
 exports.yupResolver = yupResolver;
-//# sourceMappingURL=index-fdfe050a.js.map
+//# sourceMappingURL=industry-ui.js.map

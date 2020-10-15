@@ -6,8 +6,8 @@
     "DryKISS, Ltd."
   ],
   "homepage": "https://industryui.com",
-  "main": "dist/industry-ui",
-  "module": "dist/industry-ui.es",
+  "main": "dist/industry-ui.js",
+  "module": "dist/industry-ui.es.js",
   "license": "MIT",
   "version": "1.0.0",
   "version_short": "0.1",
