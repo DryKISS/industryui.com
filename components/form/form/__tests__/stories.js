@@ -27,7 +27,7 @@ import {
   PercentInput,
   RadioField,
   ReactSelectField,
-  RichTextInput,
+  // RichTextInput,
   Row,
   Search,
   SelectField,
@@ -87,7 +87,7 @@ const checkbox = [
     value: 'checked'
   }
 ]
-const draftInitialhtml = '<div><p>initial Text <b>bold</b></p></div>'
+// const draftInitialhtml = '<div><p>initial Text <b>bold</b></p></div>'
 
 const all = ({ ...args }) => {
   const { control, errors, handleSubmit, register } = useForm({
@@ -231,14 +231,14 @@ const all = ({ ...args }) => {
 
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend='Gender?' name='radio' />
 
-      <FormLabel label='Rich'>
+      {/* <FormLabel label='Rich'>
         <RichTextInput
           control={control}
           errors={errors}
           initialValue={draftInitialhtml}
           name='rich'
         />
-      </FormLabel>
+      </FormLabel> */}
 
       <Button content='Submit' type='submit' />
     </Form>
