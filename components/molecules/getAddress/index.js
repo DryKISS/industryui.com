@@ -35,6 +35,8 @@ export const GetAddress = ({
 
   const ref = useRef(null)
 
+  const InputRef = useRef('')
+
   const onApiCall = data => {
     const { response, hasError } = data
 
@@ -52,6 +54,7 @@ export const GetAddress = ({
   }
 
   const handleInputChange = value => {
+    InputRef.current = value
     GetAddressService.getAddresses({
       postCode: value,
       callback: onApiCall,
@@ -61,7 +64,7 @@ export const GetAddress = ({
   }
 
   const handleAddressSelect = ({ name: address, id }) => {
-    setValue(name, address)
+    setValue(name, InputRef.current + '-' + address)
   }
 
   return (

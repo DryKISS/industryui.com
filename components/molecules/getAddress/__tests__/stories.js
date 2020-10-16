@@ -17,12 +17,12 @@ import Readme from '../README.md'
 export default {
   args: { size: 'lg', label: 'PostalCode', placeholder: 'enter postal code here ...', throttle: 0 },
   argTypes: {
-    errors: { control: null },
-    name: { control: null },
-    register: { control: null },
-    setValue: { control: null },
+    errors: { control: { disable: true } },
+    name: { control: { disable: true } },
+    register: { control: { disable: true } },
+    setValue: { control: { disable: true } },
     size: { control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] } },
-    validator: { control: null }
+    validator: { control: { disable: true } }
   },
   title: 'Molecules/Get Address',
   component: GetAddress,
