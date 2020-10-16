@@ -12,10 +12,11 @@ import {
   FormField,
   FormLabel,
   GetAddressService,
+  Shimmer,
   SIZE,
   validatorPostCode
 } from 'components'
-
+import styled, { css } from 'styled-components'
 // test postCode: SW19 2EZ
 
 export const GetAddress = ({
@@ -30,7 +31,7 @@ export const GetAddress = ({
   validator
 }) => {
   const [Errors, setErrors] = useState(errors ?? { [name]: null })
-
+  const [IsLoading, setIsLoading] = useState(false)
   const [Addresses, setAddresses] = useState([])
 
   const ref = useRef(null)
@@ -51,9 +52,11 @@ export const GetAddress = ({
     } else {
       setErrors({ [name]: { message: response } })
     }
+    setIsLoading(false)
   }
 
   const handleInputChange = value => {
+    setIsLoading(true)
     InputRef.current = value
     GetAddressService.getAddresses({
       postCode: value,
@@ -78,6 +81,11 @@ export const GetAddress = ({
         register={register}
         size={size}
       />
+      {IsLoading && (
+        <LoadingWrapper size={size}>
+          <Shimmer duration={500} />
+        </LoadingWrapper>
+      )}
 
       <Dropdown caret={false} items={Addresses} onChange={handleAddressSelect}>
         <div ref={ref} />
@@ -85,6 +93,34 @@ export const GetAddress = ({
     </FormLabel>
   )
 }
+const LoadingWrapper = styled.div`
+  width: 80%;
+  position: absolute;
+  top: 2.4rem;
+  left: 1.5rem;
+
+  ${({ size }) => {
+    switch (size) {
+      case SIZE.SM:
+        return css`
+          top: 2.1rem;
+          height: 0.8rem;
+        `
+      case SIZE.MD:
+        return css`
+          height: 1.125rem;
+        `
+      case SIZE.LG:
+        return css`
+          height: 1.45rem;
+        `
+      default:
+        return css`
+          height: 1.45rem;
+        `
+    }
+  }}
+`
 
 GetAddress.propTypes = {
   errors: object.isRequired,
@@ -92,7 +128,11 @@ GetAddress.propTypes = {
   name: string.isRequired,
   register: func.isRequired,
   setValue: func.isRequired,
-  size: oneOf(Object.values(SIZE)),
+  size: oneOf(['sm', 'md', 'lg']),
   throttle: number,
   validator: func
+}
+
+GetAddress.defaultProps = {
+  size: 'lg'
 }
