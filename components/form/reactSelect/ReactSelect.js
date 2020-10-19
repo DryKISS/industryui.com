@@ -103,12 +103,6 @@ const Wrapper = styled.div`
       }
     `}
 
-  div[class$="option"] {
-    font-size: ${({ theme, size }) =>
-      css`
-        ${theme.SELECT.FONT_SIZE[size]}
-      `};
-  }
   div[class$='menu'] {
     box-shadow: none;
     border: 1px solid
@@ -116,6 +110,13 @@ const Wrapper = styled.div`
         css`
           ${theme.SELECT.MENU_BORDER_COLOUR}
         `};
+  }
+
+  div[class$='option'] {
+    font-size: ${({ theme, size }) =>
+      css`
+        ${theme.SELECT.FONT_SIZE[size]}
+      `};
   }
 `
 
