@@ -13,7 +13,7 @@ const getAddressesApi = async postCode => {
     )
     return { response: data, hasError: false }
   } catch (error) {
-    return { response: 'error while getting addresses', hasError: true }
+    return { response: 'Error While Getting Address List', hasError: true }
   }
 }
 
@@ -29,7 +29,7 @@ const getAddresses = ({ callback: callFunc, callThrottle, postCode, validator })
         callFunc(res)
       })
     } else {
-      callFunc({ response: 'invalid post code', hasError: true })
+      callFunc({ response: 'Invalid Postal Code', hasError: true })
     }
   }, callThrottle)
 }
