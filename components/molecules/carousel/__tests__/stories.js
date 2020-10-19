@@ -3,8 +3,7 @@
  */
 
 // Storybook
-import { Context } from 'decorators'
-import { boolean, select } from '@storybook/addon-knobs'
+import { ContextControl } from 'decorators'
 
 // Style
 import styled from 'styled-components'
@@ -16,6 +15,18 @@ import Readme from '../README.md'
 import vizla from 'storybook/static/card/vizla.jpg'
 
 export default {
+  args: {
+    arrowContext: 'black',
+    arrowPosition: 'middle',
+    fullWidth: false,
+    showArrows: false,
+    showPagination: false
+  },
+  argTypes: {
+    arrowContext: ContextControl(),
+    arrowPosition: { control: { type: 'select', options: ['top', 'middle', 'bottom'] } }
+  },
+
   title: 'Molecules/Carousel',
   component: Carousel,
   parameters: {
@@ -36,17 +47,6 @@ const SampleSlide = ({ title = 'Sample Slide' }) => (
 
 const BaseComponent = props => {
   const defaultProps = {
-    arrowContext: Context(null, 'black', 'Arrow context'),
-    arrowPosition: select(
-      'Arrow position',
-      {
-        Top: 'top',
-        Middle: 'middle',
-        Bottom: 'bottom'
-      },
-      'middle'
-    ),
-    fullWidth: boolean('Full width', false),
     height: '300px',
     width: '900px',
     ...props
@@ -54,16 +54,17 @@ const BaseComponent = props => {
   return <Carousel {...defaultProps} />
 }
 
-export const main = () => (
-  <BaseComponent>
+export const main = args => (
+  <BaseComponent {...args}>
     <SampleSlide />
 
     <SampleSlide title='Another Slide' />
   </BaseComponent>
 )
 
-export const withArray = () => (
+export const withArray = args => (
   <BaseComponent
+    {...args}
     slides={[
       {
         context: 'light',
@@ -78,8 +79,8 @@ export const withArray = () => (
   />
 )
 
-export const withPagination = () => (
-  <BaseComponent showArrows={false} showPagination>
+export const withPagination = args => (
+  <BaseComponent {...args}>
     <SampleSlide />
 
     <SampleSlide title='Another Slide' />
@@ -88,8 +89,8 @@ export const withPagination = () => (
   </BaseComponent>
 )
 
-export const withImageComponent = () => (
-  <BaseComponent>
+export const withImageComponent = args => (
+  <BaseComponent {...args}>
     <CarouselSlide>
       <TextLabel>With Image Component</TextLabel>
       <Image src={vizla} />
@@ -99,8 +100,8 @@ export const withImageComponent = () => (
   </BaseComponent>
 )
 
-export const withHTMLImageTag = () => (
-  <BaseComponent>
+export const withHTMLImageTag = args => (
+  <BaseComponent {...args}>
     <CarouselSlide>
       <TextLabel>With HTML Image Tag</TextLabel>
       <img src={vizla} />
@@ -110,16 +111,16 @@ export const withHTMLImageTag = () => (
   </BaseComponent>
 )
 
-export const withJustText = () => (
-  <BaseComponent>
+export const withJustText = args => (
+  <BaseComponent {...args}>
     <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
 
     <SampleSlide />
   </BaseComponent>
 )
 
-export const withJustOneItem = () => (
-  <BaseComponent>
+export const withJustOneItem = args => (
+  <BaseComponent {...args}>
     <SampleSlide />
   </BaseComponent>
 )

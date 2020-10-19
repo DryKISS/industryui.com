@@ -2,14 +2,11 @@
  * Form - Field
  */
 
-// Storybook
-import { text } from '@storybook/addon-knobs'
-
 // Yup
 import { object, string } from 'yup'
 
 // UI
-import { Button, Form, CheckboxField, useForm, yupResolver } from 'components'
+import { Button, CheckboxField, Form, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 const data = [
@@ -26,6 +23,10 @@ const data = [
 ]
 
 export default {
+  args: {
+    legend: 'Do you like Industry-UI?',
+    stacked: false
+  },
   title: 'Form/Checkbox',
   component: CheckboxField,
   parameters: {
@@ -50,7 +51,6 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     errors: errors,
     name: 'checkbox',
-    legend: text('Legend', 'Do you like Industry-UI?'),
     register: register,
     ...props
   }
@@ -63,5 +63,4 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => <BaseComponent />
-export const stacked = () => <BaseComponent stacked />
+export const main = args => <BaseComponent {...args} />

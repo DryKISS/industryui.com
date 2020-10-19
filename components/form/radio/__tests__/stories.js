@@ -2,9 +2,6 @@
  * Form - Radio
  */
 
-// Storybook
-import { text } from '@storybook/addon-knobs'
-
 // UI
 import { Button, Form, RadioField, useForm } from 'components'
 import Readme from '../README.md'
@@ -13,6 +10,10 @@ import Readme from '../README.md'
 import { RADIO_GENDER } from '../__mocks__/radio'
 
 export default {
+  args: {
+    legend: 'Gender?',
+    stacked: false
+  },
   title: 'Form/Radio',
   component: RadioField,
   parameters: {
@@ -31,8 +32,8 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     errors: errors,
     name: 'radio',
-    legend: text('Legend', 'Gender?'),
     register: register,
+
     ...props
   }
 
@@ -44,5 +45,4 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => <BaseComponent />
-export const stacked = () => <BaseComponent stacked />
+export const main = args => <BaseComponent {...args} />

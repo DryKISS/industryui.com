@@ -10,13 +10,8 @@ let lastValue = null
 export const LINECHART = {
   axisBottom: function () {
     return {
-      orient: 'bottom',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: this.bottomLegend, // string passed as prop
-      legendOffset: 36,
-      legendPosition: 'middle',
+      axisTop: null,
+      axisRight: null,
       format: value => {
         if (this.axisBottomDistinct) {
           const formatted = shortDate(value)
@@ -25,37 +20,53 @@ export const LINECHART = {
             return formatted
           }
         } else return value
-      }
+      },
+      legend: this.bottomLegend, // string passed as prop
+      legendOffset: 36,
+      legendPosition: 'middle',
+      orient: 'bottom',
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      ...this.axisBottom
     }
   },
   axisLeft: function () {
     return {
+      format: value => {
+        if (value % 1 === 0) return `${value + this.axisLeftSymbol || value}`
+      },
+      legend: this.leftLegend, // string passed as prop
+      legendOffset: -50,
+      legendPosition: 'middle',
       orient: 'left',
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: this.leftLegend, // string passed as prop
-      legendOffset: -50,
-      legendPosition: 'middle',
-      format: value => {
-        if (value % 1 === 0) return `${value + this.axisLeftSymbol || value}`
-      }
+      ...this.axisLeft
     }
   },
-  axisTop: null,
-  axisRight: null,
   margin: function () {
     return {
-      top: 30,
-      right: this.showLegend ? 110 : 30, // props context
       bottom: 50,
-      left: 60
+      left: 60,
+      right: this.showLegend ? 110 : 30, // props context
+      top: 30
     }
   },
   legends: [
     {
       anchor: 'bottom-right',
       direction: 'column',
+      effects: [
+        {
+          on: 'hover',
+          style: {
+            itemBackground: 'rgba(0, 0, 0, .03)',
+            itemOpacity: 1
+          }
+        }
+      ],
       justify: false,
       translateX: 100,
       translateY: 0,
@@ -66,16 +77,7 @@ export const LINECHART = {
       itemOpacity: 0.75,
       symbolSize: 12,
       symbolShape: 'circle',
-      symbolBorderColor: 'rgba(0, 0, 0, .5)',
-      effects: [
-        {
-          on: 'hover',
-          style: {
-            itemBackground: 'rgba(0, 0, 0, .03)',
-            itemOpacity: 1
-          }
-        }
-      ]
+      symbolBorderColor: 'rgba(0, 0, 0, .5)'
     }
   ],
   pointColor: COLOUR.white,

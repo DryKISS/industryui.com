@@ -3,13 +3,17 @@
  */
 
 // Storybook
-import { Size } from 'decorators'
+import { SizeControl } from 'decorators'
 
 // UI
 import { Button, FormField, Icon, InputGroup, InputGroupAddon, useForm } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: { size: 'md' },
+  argTypes: {
+    size: SizeControl()
+  },
   component: InputGroup,
   title: 'Form/InputGroup',
   parameters: {
@@ -22,12 +26,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    size: Size(),
-    ...props
-  }
-
-  return <InputGroup {...defaultProps} />
+  return <InputGroup {...props} />
 }
 
 const Input = () => {
@@ -36,9 +35,9 @@ const Input = () => {
   return <FormField errors={errors} name='id' placeholder='Search...' register={register} />
 }
 
-export const prependButton = () => {
+export const prependButton = args => {
   return (
-    <BaseComponent>
+    <BaseComponent {...args}>
       <InputGroupAddon addonType='prepend'>
         <Button content='Search' type='submit' size='sm' />
       </InputGroupAddon>
@@ -48,9 +47,9 @@ export const prependButton = () => {
   )
 }
 
-export const prependIcon = () => {
+export const prependIcon = args => {
   return (
-    <BaseComponent>
+    <BaseComponent {...args}>
       <InputGroupAddon addonType='prepend' text>
         <Icon icon='search' />
       </InputGroupAddon>
@@ -60,9 +59,9 @@ export const prependIcon = () => {
   )
 }
 
-export const appendButton = () => {
+export const appendButton = args => {
   return (
-    <BaseComponent>
+    <BaseComponent {...args}>
       <Input />
 
       <InputGroupAddon addonType='append'>
@@ -72,9 +71,9 @@ export const appendButton = () => {
   )
 }
 
-export const appendIcon = () => {
+export const appendIcon = args => {
   return (
-    <BaseComponent>
+    <BaseComponent {...args}>
       <Input />
 
       <InputGroupAddon addonType='append' text>

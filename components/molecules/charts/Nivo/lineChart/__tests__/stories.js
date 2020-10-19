@@ -2,24 +2,75 @@
  * Charts - Line - Tests - Story
  */
 
-// Storybook
-import { boolean, select, text } from '@storybook/addon-knobs'
-
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 import { lineCurvePropKeys } from '@nivo/core'
 
 // UI
-import { LineChart } from 'components'
+import { LineChart, objectWithoutProperties } from 'components'
 import Readme from '../README.md'
 
 // Mocks
-import { Data, BigData } from '../__mocks__/nivoLine'
+import { BigData, Data } from '../__mocks__/nivoLine'
 
 // Styled Components
 import styled from 'styled-components'
 
 export default {
+  args: {
+    areaOpacity: 0.2,
+    bottomLegend: 'Vehicles',
+    colorScheme: 'nivo',
+    curve: 'linear',
+    enableArea: false,
+    enableCrosshair: true,
+    enableGridX: true,
+    enableGridY: true,
+    enablePointLabel: false,
+    enablePoints: true,
+    enableSlices: false,
+    isInteractive: true,
+    leftLegend: 'Volume',
+    lineWidth: 2,
+    pointSize: 10,
+    showLegend: true,
+    stacked: true
+  },
+  argTypes: {
+    areaOpacity: {
+      name: 'Area Opacity',
+      control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 }
+    },
+    colorScheme: {
+      name: 'Colour Scheme',
+      control: {
+        type: 'select',
+        options: Object.keys(colorSchemes)
+      }
+    },
+    curve: {
+      control: {
+        type: 'select',
+        options: lineCurvePropKeys
+      }
+    },
+    enableSlices: {
+      name: 'Enable Slices',
+      control: {
+        type: 'select',
+        options: ['x', 'y', false]
+      }
+    },
+    isInteractive: { name: 'isInteractive (tooltip)' },
+    lineWidth: {
+      name: 'line Width',
+      control: { type: 'range', min: 1, max: 10, step: 1 }
+    },
+    pointSize: {
+      name: 'point Size',
+      control: { type: 'range', min: 0.0, max: 10, step: 1 }
+    }
+  },
   title: 'Molecules/Charts/Nivo/Line',
   component: LineChart,
   parameters: {
@@ -31,44 +82,25 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    areaOpacity: select('areaOpacity', [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], 0.2),
-    bottomLegend: text('bottomLegend', props.bottomLegendText || 'Vehicles'),
-    colorScheme: select('colorScheme', Object.keys(colorSchemes), 'nivo'),
-    curve: select('curve (interpolation)', lineCurvePropKeys, props.curveSelect || 'linear'),
-    data: Data,
-    enableArea: boolean('enableArea', props.enableArea || false),
-    enableCrosshair: boolean('enableCrosshair', props.enableCrosshair || true),
-    enableGridX: boolean('enableGridX', props.enableGridX || true),
-    enableGridY: boolean('enableGridY', props.enableGridY || true),
-    enablePointLabel: boolean('enablePointLabel', props.enablePointLabel || false),
-    enablePoints: boolean('enablePoints', props.enablePoints || true),
-    enableSlices: select('enableSlices', ['x', 'y', false], props.enableSlices || false),
-    isInteractive: boolean('isInteractive (tooltip)', props.isInteractive || true),
-    leftLegend: text('leftLegend', props.leftLegendText || 'Volume'),
-    lineWidth: select('lineWidth', [...Array(21).keys()], props.lineWidthSelect || 2),
-    pointSize: select('pointSize', [...Array(21).keys()], props.pointSize || 10),
-    showLegend: boolean('showLegend', props.showLegend || true),
-    stacked: boolean('stacked', props.stacked || true),
-
-    ...props
-  }
-
+const BaseComponent = props => {
+  const { args } = props
+  const restOfProps = objectWithoutProperties(props, ['args'])
   return (
     <StyledWrapper>
-      <LineChart {...defaultProps} />
+      <LineChart data={Data} {...restOfProps} {...args} />
     </StyledWrapper>
   )
 }
 
-export const main = () => {
-  return <BaseComponent axisBottom={{ tickRotation: 90 }} />
+/// stories
+export const main = args => {
+  return <BaseComponent args={args} axisBottom={{ tickRotation: 90 }} />
 }
 
-export const area = () => {
+export const area = args => {
   return (
     <BaseComponent
+      args={args}
       curveSelect='cardinal'
       enableArea
       enableCrosshair={false}
@@ -81,9 +113,10 @@ export const area = () => {
   )
 }
 
-export const bigdata = () => {
+export const bigdata = args => {
   return (
     <BaseComponent
+      args={args}
       data={BigData}
       curveSelect='cardinal'
       enableArea

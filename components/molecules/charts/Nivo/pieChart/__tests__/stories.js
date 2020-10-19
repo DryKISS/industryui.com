@@ -2,14 +2,11 @@
  * Charts - Pie - Tests - Story
  */
 
-// Storybook
-import { boolean, select } from '@storybook/addon-knobs'
-
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { PieChart } from 'components'
+import { objectWithoutProperties, PieChart } from 'components'
 import Readme from '../README.md'
 
 // Mocks
@@ -19,64 +16,112 @@ import { Data, Data2 } from '../__mocks__/nivoPie'
 import styled from 'styled-components'
 
 export default {
+  args: {
+    colorScheme: 'nivo',
+    cornerRadius: 1,
+    enableSlicesLabels: true,
+    enableRadialLabels: true,
+    innerRadius: 0.5,
+    isInteractive: true,
+    padAngle: 0,
+    radialLabelsLinkStrokeWidth: 1,
+    radialLabelsTextXOffset: 6,
+    radialLabelsLinkHorizontalLength: 24,
+    radialLabelsLinkDiagonalLength: 18,
+    radialLabelsLinkOffset: 0,
+    showLegend: true,
+    sortByValue: false
+  },
+  argTypes: {
+    colorScheme: {
+      name: 'Colour Scheme',
+      control: {
+        type: 'select',
+        options: Object.keys(colorSchemes)
+      }
+    },
+    cornerRadius: {
+      name: 'cornerRadius (px)',
+      control: {
+        type: 'range',
+        min: 0,
+        max: 50,
+        step: 1
+      }
+    },
+    innerRadius: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 1,
+        step: 0.1
+      }
+    },
+    padAngle: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 90,
+        step: 1
+      }
+    },
+    radialLabelsLinkStrokeWidth: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 10,
+        step: 1
+      }
+    },
+    radialLabelsTextXOffset: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 12,
+        step: 1
+      }
+    },
+    radialLabelsLinkHorizontalLength: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 35,
+        step: 1
+      }
+    },
+    radialLabelsLinkDiagonalLength: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 50,
+        step: 1
+      }
+    },
+    radialLabelsLinkOffset: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 30,
+        step: 1
+      }
+    }
+  },
   title: 'Molecules/Charts/Nivo/Pie',
   component: PieChart,
+
   parameters: {
-    docs: {
-      description: {
-        component: Readme
-      }
+    readme: {
+      sidebar: Readme
     }
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    colorScheme: select('colorScheme', Object.keys(colorSchemes), props.colorScheme || 'nivo'),
-    cornerRadius: select('cornerRadius (px)', [...Array(46).keys()], props.cornerRadius || 3),
-    enableSlicesLabels: boolean('enableSlicesLabels', props.enableSlicesLabels || true),
-    enableRadialLabels: boolean('enableRadialLabels', props.enableRadialLabels || true),
-    innerRadius: select(
-      'innerRadius',
-      [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
-      props.innerRadius || 0.5
-    ),
-    isInteractive: boolean('isInteractive (tooltip)', props.isInteractive || true),
-    padAngle: select('padAngle', [0.4, 0.5, 0.7, 0.8, ...Array(46).keys()], props.padAngle || 0.7),
-    radialLabelsLinkStrokeWidth: select(
-      'radialLabelsLinkStrokeWidth (px)',
-      [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      props.radialLabelsLinkStrokeWidth || 1
-    ),
-    radialLabelsTextXOffset: select(
-      'radialLabelsTextXOffset (px)',
-      [...Array(11).keys()],
-      props.radialLabelsTextXOffset || 6
-    ),
-    radialLabelsLinkHorizontalLength: select(
-      'radialLabelsLinkHorizontalLength (px)',
-      [...Array(31).keys()],
-      props.radialLabelsLinkHorizontalLength || 24
-    ),
-    radialLabelsLinkDiagonalLength: select(
-      'radialLabelsLinkDiagonalLength',
-      [...Array(37).keys()],
-      props.radialLabelsLinkDiagonalLength || 18
-    ),
-    radialLabelsLinkOffset: select(
-      'radialLabelsLinkOffset',
-      [...Array(31).keys()],
-      props.radialLabelsLinkOffset || 0
-    ),
-    showLegend: boolean('showLegend', props.showLegend || true),
-    sortByValue: boolean('sortByValue', props.sortByValue || false),
-    data: Data,
-    ...props
-  }
-
+const BaseComponent = props => {
+  const { args } = props
+  const restOfProps = objectWithoutProperties(props, ['args'])
   return (
     <StyledWrapper>
-      <PieChart {...defaultProps} />
+      <PieChart data={Data} {...args} {...restOfProps} />
     </StyledWrapper>
   )
 }
@@ -86,10 +131,10 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-export const main = () => {
-  return <BaseComponent />
+export const main = args => {
+  return <BaseComponent args={args} />
 }
 
-export const OtherDataPie = () => {
-  return <BaseComponent data={Data2} />
+export const OtherDataPie = args => {
+  return <BaseComponent data={Data2} args={args} />
 }

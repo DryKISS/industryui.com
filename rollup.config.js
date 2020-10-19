@@ -31,9 +31,9 @@ const baseConfig = {
 const CommonJS = {
   ...baseConfig,
   output: {
-    globals,
     file: pkg.main,
     format: 'cjs',
+    globals,
     sourcemap: true
   }
 }
@@ -41,9 +41,9 @@ const CommonJS = {
 const ESModules = {
   ...baseConfig,
   output: {
-    globals,
     file: pkg.module,
     format: 'es',
+    globals,
     sourcemap: true
   }
 }

@@ -5,9 +5,6 @@
 // React
 import { useState, useRef, useEffect } from 'react'
 
-// Storybook
-import { boolean, select } from '@storybook/addon-knobs'
-
 // UI
 import { Calendar, Theme } from 'components'
 import Readme from '../README.md'
@@ -20,6 +17,22 @@ import { CustomCalendarStyles } from './customCalendarStyles'
 import { CustomEventsStory } from './customEventsStory'
 
 export default {
+  args: {
+    businessHoursSelect: 'true',
+    defaultView: 'dayGridMonth',
+    defaultEventColorSelect: 'primary',
+    nowIndicatorBoolean: false,
+    weekendsBoolean: true
+  },
+  argTypes: {
+    defaultView: { control: { type: 'select', options: AvailableViews } },
+    businessHoursSelect: {
+      control: { type: 'select', options: ['true', 'MondayToFriday', 'MondayToThursday'] }
+    },
+    defaultEventColorSelect: {
+      control: { type: 'select', options: Object.keys(Theme.COLOUR) }
+    }
+  },
   title: 'Organisms/Full Calendar',
   components: Calendar,
   parameters: {
@@ -32,7 +45,7 @@ export default {
 }
 
 export const BaseComponent = (props = {}) => {
-  const defaultView = select('defaultView', AvailableViews, 'dayGridMonth')
+  const defaultView = props.defaultView
 
   const calendarRef = useRef(null)
 
@@ -44,37 +57,35 @@ export const BaseComponent = (props = {}) => {
   }, [defaultView])
 
   const defaultCalendarProps = {
-    businessHoursSelect: select('businessHours', {
-      false: false,
-      MondayToFriday: true,
-      MondayToThursday: {
-        // days of week. an array of zero-based day of week integers (0=Sunday)
-        daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
-        startTime: '10:00', // a start time (10am in this example)
-        endTime: '18:00' // an end time (6pm in this example)
-      }
-    }),
-    defaultEventColorSelect: select('defaultEventColor', Object.keys(Theme.COLOUR), 'primary'),
-    nowIndicatorBoolean: boolean('nowIndicator', false),
-    weekendsBoolean: boolean('weekends', true),
-    defaultView,
+    businessHoursSelect:
+      props.businessHoursSelect === 'true'
+        ? true
+        : props.businessHoursSelect === 'MondayToThursday'
+        ? {
+            // days of week. an array of zero-based day of week integers (0=Sunday)
+            daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
+            startTime: '10:00', // a start time (10am in this example)
+            endTime: '18:00' // an end time (6pm in this example)
+          }
+        : false,
 
+    defaultView,
     ...props
   }
 
   return <Calendar ref={calendarRef} {...defaultCalendarProps} />
 }
 
-export const main = () => <BaseComponent />
+export const main = args => <BaseComponent {...args} />
 
-export const events = () => <BaseComponent events={Events} />
+export const events = args => <BaseComponent {...args} events={Events} />
 
-export const CustomCalendar = () => {
-  return <CustomCalendarStyles />
+export const CustomCalendar = args => {
+  return <CustomCalendarStyles {...args} />
 }
 
-export const CustomEvents = () => {
-  return <CustomEventsStory />
+export const CustomEvents = args => {
+  return <CustomEventsStory {...args} />
 }
 
 export const eventsWithEventAdditionOnClick = () => {
@@ -93,44 +104,44 @@ export const eventsWithEventAdditionOnClick = () => {
   return <BaseComponent events={events} dateClick={handleDateClick} />
 }
 
-export const eventClick = () => {
+export const eventClick = args => {
   const handleEventClick = ({ event }) => {
     event.setProp('title', event.title + ' - ' + 'updated')
   }
 
-  return <BaseComponent eventClick={handleEventClick} events={Events} />
+  return <BaseComponent {...args} eventClick={handleEventClick} events={Events} />
 }
 
-export const eventsWithTooltip = () => {
-  return <BaseComponent events={Events} showTooltip />
+export const eventsWithTooltip = args => {
+  return <BaseComponent {...args} events={Events} showTooltip />
 }
 
-export const fetchEvents = () => {
+export const fetchEvents = args => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
     }, 1000)
   }
 
-  return <BaseComponent events={fetchEvents} />
+  return <BaseComponent {...args} events={fetchEvents} />
 }
 
-export const fetchEventsWithTooltip = () => {
+export const fetchEventsWithTooltip = args => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
     }, 1000)
   }
 
-  return <BaseComponent events={fetchEvents} showTooltip />
+  return <BaseComponent {...args} events={fetchEvents} showTooltip />
 }
 
-export const fetchEventsWithLoadingIndicator = () => {
+export const fetchEventsWithLoadingIndicator = args => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
     }, 1000)
   }
 
-  return <BaseComponent events={fetchEvents} hasLoading />
+  return <BaseComponent {...args} events={fetchEvents} hasLoading />
 }
