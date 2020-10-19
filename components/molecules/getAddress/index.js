@@ -8,10 +8,13 @@ import { func, object, oneOf, number, string } from 'prop-types'
 
 // UI
 import {
+  Button,
   Dropdown,
+  FormError,
   FormField,
   FormLabel,
   GetAddressService,
+  InputGroupAddon,
   Shimmer,
   SIZE,
   validatorPostCode
@@ -56,10 +59,13 @@ export const GetAddress = ({
   }
 
   const handleInputChange = value => {
-    setIsLoading(true)
     InputRef.current = value
+  }
+
+  const handleSearchClick = () => {
+    setIsLoading(true)
     GetAddressService.getAddresses({
-      postCode: value,
+      postCode: InputRef.current,
       callback: onApiCall,
       callThrottle: throttle ?? 500,
       validator: validator ?? validatorPostCode
@@ -72,15 +78,22 @@ export const GetAddress = ({
 
   return (
     <FormLabel label={label}>
-      <FormField
-        errors={errors[name] ? errors : Errors}
-        showError
-        name={name}
-        onChange={e => handleInputChange(e.target.value)}
-        placeholder={placeholder}
-        register={register}
-        size={size}
-      />
+      <InputWrapper>
+        <FormField
+          errors={errors[name] ? errors : Errors}
+          name={name}
+          onChange={e => handleInputChange(e.target.value)}
+          placeholder={placeholder}
+          register={register}
+          size={size}
+        />
+        <InputGroupAddon addonType='append'>
+          <Button onClick={handleSearchClick} content='Search' context='primary' size='sm' />
+        </InputGroupAddon>
+      </InputWrapper>
+      {(errors[name] || Errors[name]) && (
+        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
+      )}
       {IsLoading && (
         <LoadingWrapper size={size}>
           <Shimmer duration={500} />
@@ -93,6 +106,15 @@ export const GetAddress = ({
     </FormLabel>
   )
 }
+
+const InputWrapper = styled.div`
+  display: flex;
+  input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`
+
 const LoadingWrapper = styled.div`
   width: 80%;
   position: absolute;
