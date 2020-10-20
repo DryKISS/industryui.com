@@ -49,7 +49,7 @@ const fixAddresses = addresses => {
     })
 }
 
-export const GetAddressService = { getAddresses, fixAddresses }
+export const GetAddressService = { fixAddresses, getAddresses, getAddressesApi }
 
 getAddresses.propTypes = {
   callback: func.isRequired,
