@@ -3,7 +3,7 @@
  */
 
 // React
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { func, object, oneOf, number, string } from 'prop-types'
 
 // UI
@@ -17,10 +17,11 @@ import {
   InputGroupAddon,
   Shimmer,
   SIZE,
+  ConfigContext,
   validatorPostCode
 } from 'components'
+
 import styled, { css } from 'styled-components'
-// test postCode: SW19 2EZ
 
 export const GetAddress = ({
   errors,
@@ -33,13 +34,14 @@ export const GetAddress = ({
   throttle,
   validator
 }) => {
+  const { GetAddressConfig } = useContext(ConfigContext)
   const [Errors, setErrors] = useState(errors ?? { [name]: null })
   const [IsLoading, setIsLoading] = useState(false)
   const [Addresses, setAddresses] = useState([])
 
   const ref = useRef(null)
 
-  const InputRef = useRef('')
+  const InputValueRef = useRef('')
 
   const onApiCall = data => {
     const { response, hasError } = data
@@ -59,13 +61,14 @@ export const GetAddress = ({
   }
 
   const handleInputChange = value => {
-    InputRef.current = value
+    InputValueRef.current = value
   }
 
   const handleSearchClick = () => {
     setIsLoading(true)
     GetAddressService.getAddresses({
-      postCode: InputRef.current,
+      apiKey: GetAddressConfig.apiKey,
+      postCode: InputValueRef.current,
       callback: onApiCall,
       callThrottle: throttle ?? 500,
       validator: validator ?? validatorPostCode
@@ -73,7 +76,7 @@ export const GetAddress = ({
   }
 
   const handleAddressSelect = ({ name: address, id }) => {
-    setValue(name, InputRef.current + '-' + address)
+    setValue(name, InputValueRef.current + '-' + address)
   }
 
   return (

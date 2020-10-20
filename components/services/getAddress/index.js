@@ -6,10 +6,10 @@ import { func, number, string } from 'prop-types'
 
 const API_KEY = 'AG2YtZS2HEKCTOsZcDCFTg28696'
 
-const getAddressesApi = async postCode => {
+const getAddressesApi = async (apiKey, postCode) => {
   try {
     const { data } = await axios.get(
-      `https://api.getAddress.io/find/${postCode}?api-key=${API_KEY}`
+      `https://api.getAddress.io/find/${postCode}?api-key=${apiKey ?? API_KEY}`
     )
     return { response: data, hasError: false }
   } catch (error) {
@@ -19,12 +19,12 @@ const getAddressesApi = async postCode => {
 
 let timeout
 
-const getAddresses = ({ callback: callFunc, callThrottle, postCode, validator }) => {
+const getAddresses = ({ apiKey, callback: callFunc, callThrottle, postCode, validator }) => {
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     const isValid = validator(postCode)
     if (isValid) {
-      const data = getAddressesApi(postCode)
+      const data = getAddressesApi(apiKey, postCode)
       data.then(res => {
         callFunc(res)
       })

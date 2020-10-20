@@ -1,5 +1,8 @@
 module.exports = {
-  stories: ['../components/**/*stories.js', '../components/**/**.test.js'],
+  stories:
+    process.env.ENVIRONMENT === 'test'
+      ? ['../components/**/*stories.js', '../components/**/**.test.js']
+      : ['../components/**/*stories.js'],
   addons: [
     {
       name: '@storybook/addon-essentials'
