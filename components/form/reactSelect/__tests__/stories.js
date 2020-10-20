@@ -8,6 +8,9 @@ import { useEffect, useState } from 'react'
 // Storybook
 import { boolean, text } from '@storybook/addon-knobs'
 
+// Yup
+import { object, string } from 'yup'
+
 // UI
 import {
   Button,
@@ -17,7 +20,8 @@ import {
   ReactSelectField,
   Text,
   useForm,
-  usePrevious
+  usePrevious,
+  yupResolver
 } from 'components'
 
 import Readme from '../README.md'
@@ -52,8 +56,14 @@ const useKnobs = (props = {}) => {
   return knobs
 }
 
+const schema = object().shape({
+  reactSelect: string().required()
+})
+
 const BaseComponent = (props = {}) => {
-  const { control, errors, handleSubmit } = useForm()
+  const { control, errors, handleSubmit } = useForm({
+    resolver: yupResolver(schema)
+  })
   const knobs = useKnobs()
   const onSubmit = data => {
     console.log('data: ', data)
