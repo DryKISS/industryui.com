@@ -1,4 +1,3 @@
-/* globals describe,test,expect */
 import { GetAddressService } from '..'
 
 describe('GetAddress Service', () => {

@@ -69,7 +69,8 @@
     "ignore": [
       "node_modules/**",
       "*.bundle*.js",
-      "**/__tests__/*.test.js"
+      "**/__tests__/*.test.js",
+      "**/__tests__/**.test.js"
     ],
     "parser": "babel-eslint"
   },
