@@ -2,9 +2,6 @@
  * Form - Date Picker - Input
  */
 
-// Storybook
-import { boolean } from '@storybook/addon-knobs'
-
 // Yup
 import { object, string } from 'yup'
 
@@ -13,6 +10,7 @@ import { Button, DatePickerInput, Divider, Form, Text, useForm, yupResolver } fr
 import Readme from '../README.md'
 
 export default {
+  args: { showDay: true, showMonth: true, showYear: true },
   title: 'Form/Date Picker/Input',
   component: DatePickerInput,
   parameters: {
@@ -45,9 +43,6 @@ const BaseComponent = (props = {}) => {
     label: 'Date Picker',
     name: 'Picker',
     register: register,
-    showDay: boolean('Day', props.showDay || true),
-    showMonth: boolean('Month', props.showMonth || true),
-    showYear: boolean('Year', props.showYear || true),
     yearEnd: 2020,
     yearStart: 1919,
     ...props
@@ -78,5 +73,4 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = () => <BaseComponent />
-export const selective = () => <BaseComponent showDay={false} />
+export const main = args => <BaseComponent {...args} />

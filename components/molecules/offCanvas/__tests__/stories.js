@@ -5,9 +5,7 @@
 // React
 import { useContext } from 'react'
 
-// Storybook
-import { select, text, number, boolean } from '@storybook/addon-knobs'
-import { Context } from 'decorators'
+import { ContextControl } from 'decorators'
 
 // UI
 import { Button, OffCanvasContext, useForm } from 'components'
@@ -15,6 +13,29 @@ import Readme from '../README.md'
 import { OffCanvasForm } from './form'
 
 export default {
+  args: {
+    closeOnOverlayClick: true,
+    container: '',
+    context: 'primary',
+    hasAvatar: false,
+    headerContent: '',
+    lockScrollOnOpen: false,
+    overlay: true,
+    overlayOpacity: 0.3,
+    placement: 'right',
+    submit: false,
+    title: 'Header',
+    transitionDuration: 300,
+    variant: 'extended',
+    width: 40
+  },
+  argTypes: {
+    context: ContextControl(),
+    overlayOpacity: { control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 } },
+    placement: { control: { type: 'select', options: ['bottom', 'left', 'right', 'top'] } },
+    variant: { control: { type: 'select', options: ['extended', 'normal'] } },
+    width: { name: 'Width(%)' }
+  },
   title: 'Molecules/OffCanvas',
   parameters: {
     docs: {
@@ -30,53 +51,9 @@ const BaseComponent = props => {
 
   const { register } = useForm()
 
-  const defaultProps = {
-    closeOnOverlayClick: boolean('Close on overlay click', true),
-    container: text('Container', ''),
-    context: Context('', 'primary'),
-    hasAvatar: boolean('Avatar', false),
-    headerContent: text('headerContent', ''),
-    lockScrollOnOpen: boolean('Lock scroll open', false),
-    overlay: boolean('Overlay', true),
-    overlayOpacity: number('Opacity', 0.3, {
-      range: true,
-      min: 0.1,
-      max: 1,
-      step: 0.1
-    }),
-    placement: select(
-      'Placement',
-      {
-        Top: 'top',
-        Right: 'right',
-        Bottom: 'bottom',
-        Left: 'left'
-      },
-      'right'
-    ),
-    submit: boolean('Submit', false),
-    title: text('Title', 'Header'),
-    transitionDuration: number('Transition duration', 300),
-    variant: select(
-      'Variant',
-      {
-        Normal: 'normal',
-        Extended: 'extended'
-      },
-      'Extended'
-    ),
-    width:
-      number('Width (%)', 40, {
-        range: true,
-        min: 1,
-        max: 100,
-        step: 1
-      }) + '%'
-  }
-
   const handleClick = () => {
     offCanvas.show({
-      ...defaultProps,
+      ...props,
       content: <OffCanvasForm register={register} />
     })
   }
@@ -84,4 +61,4 @@ const BaseComponent = props => {
   return <Button content='Show' onClick={handleClick} />
 }
 
-export const main = () => <BaseComponent />
+export const main = args => <BaseComponent {...args} />

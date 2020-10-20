@@ -3,15 +3,25 @@
  */
 
 // Storybook
+import { ContextControl } from 'decorators'
 import { action } from '@storybook/addon-actions'
-import { boolean, text } from '@storybook/addon-knobs'
-import { Context } from 'decorators'
 
 // UI
 import { Button, Divider, Link } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    border: true,
+    children: 'link',
+    context: 'black',
+    passHref: true,
+    target: '_blank',
+    to: '/here'
+  },
+  argTypes: {
+    context: ContextControl()
+  },
   component: Link,
   parameters: {
     docs: {
@@ -25,39 +35,38 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    border: boolean('Border', true),
-    children: text('Children', 'Link'),
-    className: '',
-    context: Context(),
     onClick: action('clicked'),
-    passHref: boolean('PassHref', true),
-    target: text('Target', '_blank'),
-    to: text('To', '/here'),
     ...props
   }
 
   return <Link {...defaultProps}>{defaultProps.children}</Link>
 }
 
-export const main = () => {
+export const main = args => {
   return (
     <>
-      <BaseComponent />
+      <BaseComponent {...args} />
       <Divider size='sm' />
 
-      <BaseComponent className='link--hover'>Hover</BaseComponent>
+      <BaseComponent className='link--hover' {...args}>
+        Hover
+      </BaseComponent>
       <Divider size='sm' />
 
-      <BaseComponent className='link--active'>Active</BaseComponent>
+      <BaseComponent className='link--active' {...args}>
+        Active
+      </BaseComponent>
       <Divider size='sm' />
 
-      <BaseComponent className='link--visited'>Visited</BaseComponent>
+      <BaseComponent className='link--visited' {...args}>
+        Visited
+      </BaseComponent>
     </>
   )
 }
 
-export const button = () => (
-  <BaseComponent>
+export const button = args => (
+  <BaseComponent {...args}>
     <Button>Home</Button>
   </BaseComponent>
 )

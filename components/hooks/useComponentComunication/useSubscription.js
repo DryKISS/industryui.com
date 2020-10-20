@@ -1,15 +1,21 @@
 /**
- * Communication
+ * Hooks - Use Component Communication - Use Subscription
  */
 
 // React
 import { useEffect } from 'react'
 import { array, func, instanceOf, string } from 'prop-types'
+
+// RXJS
 import { Subject } from 'rxjs'
 
-const useComponentComunication = props => {
-  const { onRecieve, dependencies, id, messageName, subscriber } = props
-
+export const useComponentComunication = ({
+  dependencies,
+  id,
+  messageName,
+  onRecieve,
+  subscriber
+}) => {
   useEffect(() => {
     const Subscription = subscriber.subscribe(message => {
       if (message.name === messageName && (!id || id === message.id)) {
@@ -22,12 +28,11 @@ const useComponentComunication = props => {
     }
   }, dependencies ?? [])
 }
-export default useComponentComunication
 
 useComponentComunication.propTypes = {
-  onRecieve: func.isRequired,
   dependencies: array,
   id: string,
   messageName: string.isRequired,
+  onRecieve: func.isRequired,
   subscriber: instanceOf(Subject).isRequired
 }

@@ -1,5 +1,3 @@
-# Bar
-
 ## Links
 
 - [Nivo Bar Docs](https://nivo.rocks/bar/)

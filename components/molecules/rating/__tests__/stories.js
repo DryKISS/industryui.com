@@ -2,15 +2,24 @@
  * Rating
  */
 
-// Storybook
-import { number } from '@storybook/addon-knobs'
-import { Context } from 'decorators'
+import { ContextControl } from 'decorators'
 
 // UI
 import { Rating } from '../'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    value: 2,
+    context: 'warning',
+    withSize: false,
+    size: 10
+  },
+  argTypes: {
+    size: { control: { type: 'range', min: 0, max: 50 } },
+    value: { control: { type: 'range', min: 0, max: 5 } },
+    context: ContextControl()
+  },
   title: 'Molecules/Rating',
   component: Rating,
   parameters: {
@@ -22,22 +31,4 @@ export default {
   }
 }
 
-const valueKnob = (current, max) =>
-  number('Rate', current || 3, {
-    min: 0,
-    max: max || 5
-  })
-
-export const main = () => <Rating value={valueKnob()} />
-
-export const withSize = () => (
-  <Rating
-    size={number('Size', 10, {
-      min: 0,
-      max: 50
-    })}
-    value={valueKnob(3, 50)}
-  />
-)
-
-export const withContext = () => <Rating value={valueKnob()} context={Context(null, 'warning')} />
+export const main = args => <Rating {...args} size={args.withSize === true ? args.size : 5} />

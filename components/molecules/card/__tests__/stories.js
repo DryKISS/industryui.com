@@ -2,14 +2,21 @@
  * Card Stories
  */
 
-// Storybook
-import { boolean, text } from '@storybook/addon-knobs'
-
 // UI
 import { Card, Column } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    alt: 'Visla',
+    body: 'Content',
+    bordered: true,
+    footer: 'Footer',
+    image: '/card/vizla.jpg',
+    title: 'Title',
+    titleNoWrap: false,
+    showCta: false
+  },
   title: 'Molecules/Card',
   component: Card,
   decorators: [story => <Column md={4}>{story()}</Column>],
@@ -23,31 +30,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const defaultProps = {
-    alt: 'Vizla',
-    body: text('Content', 'Content'),
-    bordered: boolean('Bordered', true),
-    footer: text('Footer', 'Footer'),
-    image: '/card/vizla.jpg',
-    title: text('Title', 'Title'),
-    ...props
-  }
-
-  return <Card {...defaultProps} />
+  return <Card {...props} />
 }
 
-export const main = () => <BaseComponent />
-
-export const noImage = () => <BaseComponent image='' title={text('Title', 'No Image')} />
-
-export const longTitle = () => (
-  <BaseComponent
-    title={text(
-      'Title',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar lectus enim, a porttitor ex tincidunt id. '
-    )}
-    titleNoWrap={boolean('No wrap', true)}
-  />
-)
-
-export const withCta = () => <BaseComponent showCta={boolean('Show CTA', true)} />
+export const main = args => <BaseComponent {...args} />
