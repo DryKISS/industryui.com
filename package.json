@@ -2,9 +2,7 @@
   "name": "@drykiss/industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
   "main": "dist/industry-ui.js",
   "module": "dist/industry-ui.es.js",
@@ -64,7 +62,15 @@
   },
   "standard": {
     "globals": [
-      "__SITE__"
+      "__SITE__",
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
     ],
     "ignore": [
       "node_modules/**",
