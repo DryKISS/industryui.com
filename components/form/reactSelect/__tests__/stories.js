@@ -14,8 +14,11 @@ import {
   ReactSelectField,
   Text,
   useForm,
-  usePrevious
+  usePrevious,
+  yupResolver
 } from 'components'
+
+import { object, string } from 'yup'
 
 import Readme from '../README.md'
 
@@ -35,8 +38,12 @@ export default {
   }
 }
 
+const schema = object().shape({
+  reactSelect: string().required()
+})
+
 const BaseComponent = (props = {}) => {
-  const { control, errors, handleSubmit } = useForm()
+  const { control, errors, handleSubmit } = useForm({ resolver: yupResolver(schema) })
   const onSubmit = data => {
     console.log('data: ', data)
   }

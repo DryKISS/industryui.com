@@ -118,7 +118,7 @@
     "react-dropzone-uploader": "^2.11.0",
     "react-google-maps": "^9.4.5",
     "react-gtm-module": "^2.0.11",
-    "react-hook-form": "^6.8.6",
+    "react-hook-form": "^6.9.4",
     "react-resize-detector": "^5.2.0",
     "react-select": "^3.1.0",
     "yup": "^0.29.3"

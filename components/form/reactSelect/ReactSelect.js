@@ -97,10 +97,27 @@ const Wrapper = styled.div`
   ${({ error }) =>
     error &&
     css`
-      [class*='control'] {
+      ._,
+      & > div:first-of-type > div:first-of-type {
         ${props => ERROR_STYLE(props)}
       }
     `}
+
+  div[class$='menu'] {
+    box-shadow: none;
+    border: 1px solid
+      ${({ theme }) =>
+        css`
+          ${theme.SELECT.MENU_BORDER_COLOUR}
+        `};
+  }
+
+  div[class$='option'] {
+    font-size: ${({ theme, size }) =>
+      css`
+        ${theme.SELECT.FONT_SIZE[size]}
+      `};
+  }
 `
 
 ReactSelectField.propTypes = reactSelectPropTypes
