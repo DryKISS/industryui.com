@@ -67,7 +67,7 @@ export const GetAddress = ({
   const handleSearchClick = () => {
     setIsLoading(true)
     GetAddressService.getAddresses({
-      apiKey: GetAddressConfig.apiKey,
+      apiKey: GetAddressConfig.apiKey ?? 'AG2YtZS2HEKCTOsZcDCFTg28696',
       postCode: InputValueRef.current,
       callback: onApiCall,
       callThrottle: throttle ?? 500,

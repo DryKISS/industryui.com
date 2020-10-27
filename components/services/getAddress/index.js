@@ -4,13 +4,9 @@ import axios from 'axios'
 // React
 import { func, number, string } from 'prop-types'
 
-const API_KEY = 'AG2YtZS2HEKCTOsZcDCFTg28696'
-
 const getAddressesApi = async (apiKey, postCode) => {
   try {
-    const { data } = await axios.get(
-      `https://api.getAddress.io/find/${postCode}?api-key=${apiKey ?? API_KEY}`
-    )
+    const { data } = await axios.get(`https://api.getAddress.io/find/${postCode}?api-key=${apiKey}`)
     return { response: data, hasError: false }
   } catch (error) {
     return { response: 'Error While Getting Address List', hasError: true }
