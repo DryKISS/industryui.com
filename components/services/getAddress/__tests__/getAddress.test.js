@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import { GetAddressService } from '..'
 
 describe('GetAddress Service', () => {
