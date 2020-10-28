@@ -20,6 +20,7 @@ export const Carousel = ({
   height,
   leftArrowIcon,
   navComponent,
+  rightNavComponent,
   paginationProps,
   paginationPosition,
   rightArrowIcon,
@@ -89,8 +90,8 @@ export const Carousel = ({
         {hasNavigation && showArrows && (
           <>
             {navComponent ? (
-              <NavWrapper endNav onClick={previousSlide}>
-                {navComponent}
+              <NavWrapper endNav mirrored={!rightNavComponent} onClick={previousSlide}>
+                {rightNavComponent ?? navComponent}
               </NavWrapper>
             ) : (
               <CarouselArrow
@@ -120,8 +121,12 @@ const NavWrapper = styled.div`
   ${({ endNav }) =>
     endNav === true &&
     css`
-      transform: rotateY(180deg);
       right: 0;
+    `}
+  ${({ mirrored }) =>
+    mirrored === true &&
+    css`
+      transform: rotateY(180deg);
     `}
 `
 const Wrapper = styled.div`
