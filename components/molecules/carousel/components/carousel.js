@@ -6,7 +6,7 @@
 import { useState } from 'react'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CarouselArrow } from './arrow'
 import { CarouselSampleSlide } from './sample'
 import { Icon, Pagination } from '../../../'
@@ -19,6 +19,7 @@ export const Carousel = ({
   fullWidth,
   height,
   leftArrowIcon,
+  navComponent,
   paginationProps,
   paginationPosition,
   rightArrowIcon,
@@ -66,13 +67,19 @@ export const Carousel = ({
     <>
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
         {hasNavigation && showArrows && (
-          <CarouselArrow
-            context={arrowContext}
-            clickFunction={previousSlide}
-            direction='left'
-            icon={leftArrowIcon}
-            position={arrowPosition}
-          />
+          <>
+            {navComponent ? (
+              <NavWrapper onClick={nextSlide}>{navComponent}</NavWrapper>
+            ) : (
+              <CarouselArrow
+                context={arrowContext}
+                clickFunction={previousSlide}
+                direction='left'
+                icon={leftArrowIcon}
+                position={arrowPosition}
+              />
+            )}
+          </>
         )}
 
         {slides ? <CarouselSampleSlide {...current} /> : current || children}
@@ -80,13 +87,21 @@ export const Carousel = ({
         {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
 
         {hasNavigation && showArrows && (
-          <CarouselArrow
-            context={arrowContext}
-            clickFunction={nextSlide}
-            direction='right'
-            icon={rightArrowIcon}
-            position={arrowPosition}
-          />
+          <>
+            {navComponent ? (
+              <NavWrapper endNav onClick={previousSlide}>
+                {navComponent}
+              </NavWrapper>
+            ) : (
+              <CarouselArrow
+                context={arrowContext}
+                clickFunction={nextSlide}
+                direction='right'
+                icon={rightArrowIcon}
+                position={arrowPosition}
+              />
+            )}
+          </>
         )}
       </Wrapper>
 
@@ -94,7 +109,21 @@ export const Carousel = ({
     </>
   )
 }
-
+const NavWrapper = styled.div`
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  top: 0;
+  align-items: center;
+  cursor: pointer;
+  ${({ endNav }) =>
+    endNav === true &&
+    css`
+      transform: rotateY(180deg);
+      right: 0;
+    `}
+`
 const Wrapper = styled.div`
   height: ${({ height }) => height};
   min-height: ${({ height }) => height};

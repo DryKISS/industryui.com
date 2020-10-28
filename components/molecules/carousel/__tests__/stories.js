@@ -9,7 +9,7 @@ import { ContextControl } from 'decorators'
 import styled from 'styled-components'
 
 // UI
-import { Carousel, CarouselSlide, Image, ReactHolderJs } from 'components'
+import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from 'components'
 import { CarouselSampleSlide } from '../components/sample'
 import Readme from '../README.md'
 import vizla from 'storybook/static/card/vizla.jpg'
@@ -78,7 +78,24 @@ export const withArray = args => (
     ]}
   />
 )
-
+export const withCustomeNav = args => (
+  <BaseComponent
+    {...args}
+    showArrows
+    navComponent={<Button size='sm'>{'<'}</Button>}
+    slides={[
+      {
+        context: 'light',
+        img: vizla,
+        text: 'Sample text from Array Carousel'
+      },
+      {
+        node: <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />,
+        text: 'Another text from Array Carousel'
+      }
+    ]}
+  />
+)
 export const withPagination = args => (
   <BaseComponent {...args}>
     <SampleSlide />
