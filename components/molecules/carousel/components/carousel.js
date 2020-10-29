@@ -156,6 +156,6 @@ const PaginationWrapper = styled.div`
   width: 100%;
 `
 
-Carousel.propTypes = CarouselPropTypes
-
 Carousel.defaultProps = CarouselDefaultProps
+
+Carousel.propTypes = CarouselPropTypes
