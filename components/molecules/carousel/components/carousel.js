@@ -9,7 +9,7 @@ import { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { CarouselArrow } from './arrow'
 import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination } from '../../../'
+import { Icon, Pagination } from 'components'
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
 
 export const Carousel = ({
@@ -49,12 +49,12 @@ export const Carousel = ({
   const renderPagination = () => (
     <PaginationWrapper>
       <Pagination
-        onPageChange={page => setCurrentImageIndex(page - 1)}
         currentPage={currentImageIndex + 1}
-        pageCount={dataSource.length}
-        showNextAndPrev
-        prevLabel={<Icon icon='chevron-left' />}
         nextLabel={<Icon icon='chevron-right' />}
+        onPageChange={page => setCurrentImageIndex(page - 1)}
+        pageCount={dataSource.length}
+        prevLabel={<Icon icon='chevron-left' />}
+        showNextAndPrev
         size='xs'
         {...paginationProps}
       />
@@ -64,46 +64,60 @@ export const Carousel = ({
   const hasNavigation = Array.isArray(dataSource) && dataSource.length > 1
   const current = dataSource[currentImageIndex]
 
+  const navComponents = () => {
+    let components = {
+      left: (
+        <CarouselArrow
+          context={arrowContext}
+          clickFunction={previousSlide}
+          direction='left'
+          icon={leftArrowIcon}
+          position={arrowPosition}
+        />
+      ),
+      right: (
+        <CarouselArrow
+          context={arrowContext}
+          clickFunction={nextSlide}
+          direction='right'
+          icon={rightArrowIcon}
+          position={arrowPosition}
+        />
+      )
+    }
+    if (navComponent) {
+      components = {
+        left: (
+          <NavWrapper componentPosition={arrowPosition} onClick={nextSlide}>
+            {navComponent}
+          </NavWrapper>
+        ),
+        right: (
+          <NavWrapper
+            componentPosition={arrowPosition}
+            endNav
+            mirrored={!rightNavComponent}
+            onClick={previousSlide}
+          >
+            {rightNavComponent ?? navComponent}
+          </NavWrapper>
+        )
+      }
+    }
+
+    return components
+  }
+
   return (
     <>
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
-        {hasNavigation && showArrows && (
-          <>
-            {navComponent ? (
-              <NavWrapper onClick={nextSlide}>{navComponent}</NavWrapper>
-            ) : (
-              <CarouselArrow
-                context={arrowContext}
-                clickFunction={previousSlide}
-                direction='left'
-                icon={leftArrowIcon}
-                position={arrowPosition}
-              />
-            )}
-          </>
-        )}
+        {hasNavigation && showArrows && navComponents().left}
 
         {slides ? <CarouselSampleSlide {...current} /> : current || children}
 
         {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
 
-        {hasNavigation && showArrows && (
-          <>
-            {navComponent ? (
-              <NavWrapper endNav mirrored={!rightNavComponent} onClick={previousSlide}>
-                {rightNavComponent ?? navComponent}
-              </NavWrapper>
-            ) : (
-              <CarouselArrow
-                context={arrowContext}
-                clickFunction={nextSlide}
-                direction='right'
-                icon={rightArrowIcon}
-                position={arrowPosition}
-              />
-            )}
-          </>
-        )}
+        {hasNavigation && showArrows && navComponents().right}
       </Wrapper>
 
       {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
@@ -111,12 +125,17 @@ export const Carousel = ({
   )
 }
 const NavWrapper = styled.div`
-  position: absolute;
-  z-index: 1;
-  height: 100%;
+  align-items: ${({ componentPosition }) =>
+    componentPosition === 'top'
+      ? 'flex-start'
+      : componentPosition === 'bottom'
+      ? 'flex-end'
+      : 'center'};
   display: flex;
+  height: 100%;
+  position: absolute;
   top: 0;
-  align-items: center;
+  z-index: 1;
   cursor: pointer;
   ${({ endNav }) =>
     endNav === true &&
