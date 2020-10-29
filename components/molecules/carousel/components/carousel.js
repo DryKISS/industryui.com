@@ -19,7 +19,7 @@ export const Carousel = ({
   fullWidth,
   height,
   leftArrowIcon,
-  navComponent,
+  leftNavComponent,
   paginationProps,
   paginationPosition,
   rightArrowIcon,
@@ -65,7 +65,7 @@ export const Carousel = ({
   const current = dataSource[currentImageIndex]
 
   const navComponents = () => {
-    let components = {
+    const components = {
       left: (
         <CarouselArrow
           context={arrowContext}
@@ -85,24 +85,19 @@ export const Carousel = ({
         />
       )
     }
-    if (navComponent) {
-      components = {
-        left: (
-          <NavWrapper componentPosition={arrowPosition} onClick={nextSlide}>
-            {navComponent}
-          </NavWrapper>
-        ),
-        right: (
-          <NavWrapper
-            componentPosition={arrowPosition}
-            endNav
-            mirrored={!rightNavComponent}
-            onClick={previousSlide}
-          >
-            {rightNavComponent ?? navComponent}
-          </NavWrapper>
-        )
-      }
+    if (leftNavComponent) {
+      components.left = (
+        <NavWrapper componentPosition={arrowPosition} onClick={nextSlide}>
+          {leftNavComponent}
+        </NavWrapper>
+      )
+    }
+    if (rightNavComponent) {
+      components.right = (
+        <NavWrapper componentPosition={arrowPosition} endNav onClick={previousSlide}>
+          {rightNavComponent}
+        </NavWrapper>
+      )
     }
 
     return components
@@ -141,11 +136,6 @@ const NavWrapper = styled.div`
     endNav === true &&
     css`
       right: 0;
-    `}
-  ${({ mirrored }) =>
-    mirrored === true &&
-    css`
-      transform: rotateY(180deg);
     `}
 `
 const Wrapper = styled.div`

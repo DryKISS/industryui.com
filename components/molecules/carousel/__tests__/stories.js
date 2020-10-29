@@ -78,29 +78,12 @@ export const withArray = args => (
     ]}
   />
 )
-export const withCustomeNav = args => (
+
+export const withCustomNav = args => (
   <BaseComponent
     {...args}
     showArrows
-    navComponent={<Button size='sm'>{'<'}</Button>}
-    slides={[
-      {
-        context: 'light',
-        img: vizla,
-        text: 'Sample text from Array Carousel'
-      },
-      {
-        node: <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />,
-        text: 'Another text from Array Carousel'
-      }
-    ]}
-  />
-)
-export const withCustomeRightNav = args => (
-  <BaseComponent
-    {...args}
-    showArrows
-    navComponent={<Button size='sm'>{'<'}</Button>}
+    leftNavComponent={<Button size='sm'>{'<'}</Button>}
     rightNavComponent={<Button size='sm'>next</Button>}
     slides={[
       {
