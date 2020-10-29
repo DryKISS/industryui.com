@@ -62,6 +62,7 @@ export const Carousel = ({
   )
 
   const hasNavigation = Array.isArray(dataSource) && dataSource.length > 1
+
   const current = dataSource[currentImageIndex]
 
   const navComponents = () => {
@@ -75,6 +76,7 @@ export const Carousel = ({
           position={arrowPosition}
         />
       ),
+
       right: (
         <CarouselArrow
           context={arrowContext}
@@ -126,12 +128,14 @@ const NavWrapper = styled.div`
       : componentPosition === 'bottom'
       ? 'flex-end'
       : 'center'};
+
   display: flex;
   height: 100%;
   position: absolute;
   top: 0;
   z-index: 1;
   cursor: pointer;
+
   ${({ endNav }) =>
     endNav === true &&
     css`
@@ -147,9 +151,9 @@ const Wrapper = styled.div`
 `
 
 const PaginationWrapper = styled.div`
+  box-sizing: border-box;
   margin: 1rem 0;
   width: 100%;
-  box-sizing: border-box;
 `
 
 Carousel.propTypes = CarouselPropTypes
