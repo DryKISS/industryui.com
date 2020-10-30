@@ -3,23 +3,27 @@
  */
 
 // React
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
 import { CarouselArrow } from './arrow'
 import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination } from 'components'
+import { Icon, Pagination, revert } from 'components'
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
-
+let interval
 export const Carousel = ({
   arrowContext,
   arrowPosition,
+  autoplay,
+  autoplayInterval,
   children,
   fullWidth,
+  gap,
   height,
   leftArrowIcon,
   leftNavComponent,
+  numberOfItems,
   paginationProps,
   paginationPosition,
   rightArrowIcon,
@@ -29,29 +33,43 @@ export const Carousel = ({
   slides,
   width
 }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const dataSource = slides || children
+  let dataSource = slides || children
+  dataSource = revert(dataSource)
+  const [currentImageIndex, setCurrentImageIndex] = useState((slides || children).length - 1)
+
+  useEffect(() => {
+    if (autoplay === true) {
+      interval = setInterval(() => {
+        nextSlide()
+      }, autoplayInterval)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [currentImageIndex])
 
   const previousSlide = () => {
-    const lastIndex = dataSource.length - 1
-    const shouldResetIndex = currentImageIndex === 0
-    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
-    setCurrentImageIndex(index)
-  }
-
-  const nextSlide = () => {
     const lastIndex = dataSource.length - 1
     const shouldResetIndex = currentImageIndex === lastIndex
     const index = shouldResetIndex ? 0 : currentImageIndex + 1
     setCurrentImageIndex(index)
   }
 
+  const nextSlide = () => {
+    const lastIndex = dataSource.length - 1
+    const shouldResetIndex = currentImageIndex === numberOfItems - 1
+    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
+    setCurrentImageIndex(index)
+  }
+
   const renderPagination = () => (
     <PaginationWrapper>
       <Pagination
-        currentPage={currentImageIndex + 1}
+        currentPage={dataSource.length - currentImageIndex}
         nextLabel={<Icon icon='chevron-right' />}
-        onPageChange={page => setCurrentImageIndex(page - 1)}
+        onPageChange={page => {
+          setCurrentImageIndex(dataSource.length - page)
+        }}
         pageCount={dataSource.length}
         prevLabel={<Icon icon='chevron-left' />}
         showNextAndPrev
@@ -62,8 +80,6 @@ export const Carousel = ({
   )
 
   const hasNavigation = Array.isArray(dataSource) && dataSource.length > 1
-
-  const current = dataSource[currentImageIndex]
 
   const navComponents = () => {
     const components = {
@@ -110,7 +126,18 @@ export const Carousel = ({
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
         {hasNavigation && showArrows && navComponents().left}
 
-        {slides ? <CarouselSampleSlide {...current} /> : current || children}
+        {dataSource.map((item, index) => {
+          return (
+            <ItemWrapper
+              gap={gap}
+              width={`calc(${100 / numberOfItems}% - ${gap}px)`}
+              transform={`translateX(calc(${currentImageIndex - index} * calc(100% + ${gap}px)))`}
+              key={'slide' + index}
+            >
+              {slides ? <CarouselSampleSlide {...item} /> : dataSource[index]}
+            </ItemWrapper>
+          )
+        })}
 
         {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
 
@@ -121,6 +148,17 @@ export const Carousel = ({
     </>
   )
 }
+
+const ItemWrapper = styled.div`
+  position: absolute;
+  transition: all 0.5s ease;
+  ${({ gap, transform, width }) => css`
+    margin-left: ${gap / 2}px;
+    transform: ${transform};
+    width: ${width};
+  `}
+`
+
 const NavWrapper = styled.div`
   align-items: ${({ componentPosition }) =>
     componentPosition === 'top'
@@ -143,6 +181,7 @@ const NavWrapper = styled.div`
     `}
 `
 const Wrapper = styled.div`
+  overflow: hidden;
   height: ${({ height }) => height};
   min-height: ${({ height }) => height};
   margin: 0;

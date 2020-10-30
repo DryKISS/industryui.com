@@ -4,27 +4,25 @@
 
 // Storybook
 import { ContextControl } from 'decorators'
-
+import { CarouselDefaultProps } from '../components/props'
 // Style
 import styled from 'styled-components'
 
 // UI
 import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from 'components'
 import { CarouselSampleSlide } from '../components/sample'
+
 import Readme from '../README.md'
 import vizla from 'storybook/static/card/vizla.jpg'
 
 export default {
-  args: {
-    arrowContext: 'black',
-    arrowPosition: 'middle',
-    fullWidth: false,
-    showArrows: false,
-    showPagination: false
-  },
+  args: CarouselDefaultProps,
   argTypes: {
     arrowContext: ContextControl(),
-    arrowPosition: { control: { type: 'select', options: ['top', 'middle', 'bottom'] } }
+    arrowPosition: { control: { type: 'select', options: ['top', 'middle', 'bottom'] } },
+    autoplayInterval: { name: 'autoplay Interval(ms)' },
+    numberOfItems: { control: { type: 'range', min: 1, max: 10 } },
+    gap: { name: 'gap between elements(px)', control: { type: 'range', min: 1, max: 200 } }
   },
 
   title: 'Molecules/Carousel',
@@ -101,11 +99,15 @@ export const withCustomNav = args => (
 
 export const withPagination = args => (
   <BaseComponent {...args}>
-    <SampleSlide />
+    <SampleSlide title='1' />
 
-    <SampleSlide title='Another Slide' />
+    <SampleSlide title='2' />
 
-    <SampleSlide title='Another Third Slide' />
+    <SampleSlide title='3' />
+    <SampleSlide title='4' />
+    <SampleSlide title='5' />
+    <SampleSlide title='6' />
+    <SampleSlide title='7' />
   </BaseComponent>
 )
 
