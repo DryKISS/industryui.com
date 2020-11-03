@@ -104,8 +104,8 @@ const Wrapper = styled.div`
 `
 
 const PaginationWrapper = styled.div`
-  margin: 1rem 0;
   box-sizing: border-box;
+  margin: 1rem 0;
   width: 100%;
 `
 
