@@ -3,7 +3,18 @@ import styled, { css } from 'styled-components'
 
 import { Close, Space, Text } from 'components'
 
-export const MessagingDragHover = ({ onClose, files, isOpen }) => {
+const Preview = ({ file, showName }) => {
+  return file?.type.includes('image') ? (
+    <TopPreviewImage src={URL.createObjectURL(file)} />
+  ) : (
+    <PlaceHolder>
+      <FilePlaceHolder />
+      {showName && file?.name}
+    </PlaceHolder>
+  )
+}
+
+export const MessagingDragHover = ({ onClose, files, handleRemoveFile, isOpen }) => {
   return (
     <Wrapper open={isOpen}>
       <ContentWrapper>
@@ -14,14 +25,7 @@ export const MessagingDragHover = ({ onClose, files, isOpen }) => {
           </Space>
         </Head>
         <LastFilePreviewContainer visible={files.length > 0}>
-          {files[files.length - 1]?.type.includes('image') ? (
-            <TopPreviewImage src={URL.createObjectURL(files[files.length - 1])} />
-          ) : (
-            <PlaceHolder>
-              <FilePlaceHolder />
-              {files[files.length - 1]?.name}
-            </PlaceHolder>
-          )}
+          <Preview file={files[files.length - 1]} showName />
         </LastFilePreviewContainer>
         {!files[0] && (
           <DragFilesHereContainer>
@@ -35,14 +39,10 @@ export const MessagingDragHover = ({ onClose, files, isOpen }) => {
             files.map((item, index) => {
               return (
                 <BottomPreviewContainer key={index}>
-                  {item.type.includes('image') ? (
-                    <TopPreviewImage src={URL.createObjectURL(files[index])} />
-                  ) : (
-                    <PlaceHolder>
-                      <FilePlaceHolder />
-                      {files[index]?.name}
-                    </PlaceHolder>
-                  )}
+                  <RemoveContainer>
+                    <Close click={() => handleRemoveFile(index)} context='white' />
+                  </RemoveContainer>
+                  <Preview file={item} />
                 </BottomPreviewContainer>
               )
             })}
@@ -51,6 +51,17 @@ export const MessagingDragHover = ({ onClose, files, isOpen }) => {
     </Wrapper>
   )
 }
+const RemoveContainer = styled.div`
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.3s;
+  width: 100%;
+`
 const PreviewContainer = styled.div`
   align-items: center;
   bottom: 0;
@@ -77,9 +88,15 @@ const PlaceHolder = styled.div`
   align-items: center;
 `
 const BottomPreviewContainer = styled.div`
-  width: 4rem;
-  margin: 0 0.25rem;
   border: 0.25rem solid ${({ theme }) => theme.COLOUR.white};
+  margin: 0 0.25rem;
+  position: relative;
+  width: 4rem;
+  &:hover {
+    ${RemoveContainer} {
+      opacity: 1;
+    }
+  }
 `
 const TopPreviewImage = styled.img`
   width: 100%;

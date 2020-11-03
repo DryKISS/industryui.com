@@ -45,6 +45,17 @@ export const MessagingContainer = ({
     setFiles(files => [])
     setIsDragHoverOpen(false)
   }
+
+  const handleRemoveFile = fileIndex => {
+    const newFiles = [...Files]
+    newFiles.splice(fileIndex, 1)
+    if (newFiles.length === 0) {
+      closeHoverPopup()
+      return
+    }
+    setFiles(newFiles)
+  }
+
   return (
     <DragAndDropable onHover={onHover} onLeave={onLeave} onFileDrop={onDrop}>
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
@@ -54,7 +65,12 @@ export const MessagingContainer = ({
       </StyledContainer>
 
       <MessagingSend audienceItems={audienceItems} onSubmit={onSubmit} maxLength={maxLength} />
-      <MessagingDragHover files={Files} isOpen={IsDragHoverOpen} onClose={closeHoverPopup} />
+      <MessagingDragHover
+        files={Files}
+        handleRemoveFile={handleRemoveFile}
+        isOpen={IsDragHoverOpen}
+        onClose={closeHoverPopup}
+      />
     </DragAndDropable>
   )
 }
