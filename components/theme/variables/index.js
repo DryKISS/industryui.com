@@ -20,6 +20,7 @@ import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { LINECHART } from '../../molecules/charts/Nivo/lineChart/variables'
 import { LINK } from '../../atoms/link/variables'
+import { MESSAGING } from '../../organisms/messaging/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
 import { PAGE } from '../../layouts/page/variables'
 import { PIECHART } from '../../molecules/charts/Nivo/pieChart/variables'
@@ -47,6 +48,7 @@ export const Theme = {
   HEADINGS,
   LINECHART,
   LINK,
+  MESSAGING,
   NAVBAR,
   PAGE,
   PIECHART,

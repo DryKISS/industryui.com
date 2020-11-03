@@ -3,10 +3,17 @@
  */
 
 // React
+import { useState } from 'react'
 import { array, object, string, func, number } from 'prop-types'
 
 // UI
-import { MessageList, MessagingSearch, MessagingSend } from '../../../'
+import {
+  DragAndDropable,
+  MessageList,
+  MessagingDragHover,
+  MessagingSearch,
+  MessagingSend
+} from 'components'
 
 // Style
 import styled from 'styled-components'
@@ -21,8 +28,25 @@ export const MessagingContainer = ({
   onSubmit,
   style
 }) => {
+  const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
+  const [Files, setFiles] = useState([])
+  const onHover = () => {
+    if (!IsDragHoverOpen) {
+      setIsDragHoverOpen(true)
+    }
+  }
+  const onLeave = () => {
+    setIsDragHoverOpen(false)
+  }
+  const onDrop = e => {
+    setFiles(e)
+  }
+  const closeHoverPopup = () => {
+    setFiles(files => [])
+    setIsDragHoverOpen(false)
+  }
   return (
-    <>
+    <DragAndDropable onHover={onHover} onLeave={onLeave} onFileDrop={onDrop}>
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
       <StyledContainer className={className} style={style}>
@@ -30,7 +54,8 @@ export const MessagingContainer = ({
       </StyledContainer>
 
       <MessagingSend audienceItems={audienceItems} onSubmit={onSubmit} maxLength={maxLength} />
-    </>
+      <MessagingDragHover files={Files} isOpen={IsDragHoverOpen} onClose={closeHoverPopup} />
+    </DragAndDropable>
   )
 }
 
