@@ -1,5 +1,3 @@
-// @jest-environment node
-
 import { GetAddressService } from '..'
 
 describe('GetAddress Service', () => {
@@ -16,7 +14,7 @@ describe('GetAddress Service', () => {
 
   test('it should get the address array for postal code="SW19 2EZ"', async () => {
     const POSTAL_CODE = 'SW19 2EZ'
-    const data = await GetAddressService.getAddressesApi(null, POSTAL_CODE)
+    const data = GetAddressService.getAddressesApi(null, POSTAL_CODE)
     expect(data.hasError).toEqual(false)
     expect.assertions(1)
   })
