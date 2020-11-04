@@ -84,11 +84,12 @@ export const MessagingContainer = ({
 
 const StyledContainer = styled.div`
   background-color: rgba(117, 204, 207, 0.4);
-  max-height: calc(100vh - 260px);
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 1rem;
+  height: calc(100vh - 260px);
+  overflow: hidden;
   position: relative;
+  .ReactVirtualized__Grid {
+    outline: none;
+  }
 `
 
 MessagingContainer.propTypes = {

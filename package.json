@@ -121,6 +121,7 @@
     "react-hook-form": "^6.9.4",
     "react-resize-detector": "^5.2.0",
     "react-select": "^3.1.0",
+    "react-virtualized": "^9.22.2",
     "yup": "^0.29.3"
   },
   "devDependencies": {

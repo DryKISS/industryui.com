@@ -9,7 +9,26 @@ import { array } from 'prop-types'
 
 // UI
 import { Message, useComponentComunication } from 'components'
+import styled from 'styled-components'
+
 import { MessageNames, MessagingSubscriber } from 'components/services'
+import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
+
+const cache = new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
+
+const renderMessage = ({ index, parent, key, style }, messages) => {
+  return (
+    <CellMeasurer cache={cache} key={index} parent={parent} columnIndex={0} rowIndex={index}>
+      <MessageContainer style={style}>
+        <Message
+          message={messages[index]}
+          prevType={messages[index].type}
+          type={messages[index].type}
+        />
+      </MessageContainer>
+    </CellMeasurer>
+  )
+}
 
 export const MessageList = ({ messages }) => {
   const [Messages, setMessages] = useState(messages)
@@ -24,17 +43,27 @@ export const MessageList = ({ messages }) => {
     subscriber: MessagingSubscriber
   })
 
-  return messages.map((message, index) => (
-    <Message
-      key={index}
-      message={message}
-      prevType={message.type}
-      scrollToMessage={index + 1 === messages.length}
-      type={message.type}
-    />
-  ))
+  return (
+    <AutoSizer>
+      {({ height, width }) => {
+        return (
+          <List
+            deferredMeasurementCache={cache}
+            height={height}
+            rowCount={messages.length}
+            rowHeight={cache.rowHeight}
+            rowRenderer={e => renderMessage(e, messages)}
+            scrollToIndex={messages.length - 1}
+            width={width}
+          />
+        )
+      }}
+    </AutoSizer>
+  )
 }
-
+const MessageContainer = styled.div`
+  padding: 0 1rem;
+`
 MessageList.propTypes = {
   messages: array.isRequired
 }

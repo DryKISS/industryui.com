@@ -27,4 +27,5 @@ export const DragAndDropable = ({ children, onFileDrop, onHover, onLeave }) => {
 const Container = styled.div`
   overflow: hidden;
   position: relative;
+  outline: none;
 `

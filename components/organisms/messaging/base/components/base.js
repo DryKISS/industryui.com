@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { string, bool } from 'prop-types'
 
 // UI
@@ -21,19 +21,14 @@ export const MessageBase = ({
   pictureId,
   prevType,
   reply,
-  scrollToMessage,
   statusText,
   time,
   to,
   more,
   type
 }) => {
-  const [seeMore, setSeeMore] = useState(false)
+  const [seeMore, setSeeMore] = useState(true)
   const messageRef = useRef(null)
-
-  useEffect(() => {
-    if (scrollToMessage) messageRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
-  }, [])
 
   return (
     <Column sm={11} columnRef={messageRef}>
