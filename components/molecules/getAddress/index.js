@@ -3,136 +3,161 @@
  */
 
 // React
-import { forwardRef, useImperativeHandle, useState } from 'react'
-import { func, string } from 'prop-types'
+import { useContext, useRef, useState } from 'react'
+import { func, object, oneOf, number, string } from 'prop-types'
 
 // UI
-import { Button, FormField, FormLabel, SelectField, validatorPostCode } from '../../'
+import {
+  Button,
+  Dropdown,
+  FormError,
+  FormField,
+  FormLabel,
+  GetAddressService,
+  InputGroupAddon,
+  Shimmer,
+  SIZE,
+  ConfigContext,
+  validatorPostCode
+} from 'components'
 
-export const GetAddress = forwardRef(
-  (
-    { apiKey, error, change, form, handleFindAddress, handlePopulateAddress, selectAddress },
-    ref
-  ) => {
-    console.log(form)
-    const [loading, setLoading] = useState(false)
-    const [addresses, setAddresses] = useState({ data: [] })
+import styled, { css } from 'styled-components'
 
-    useImperativeHandle(ref, () => ({
-      removeWhitespace: postcode => {
-        return postcode.replace(/\s/g, '')
-      },
+export const GetAddress = ({
+  errors,
+  label,
+  name,
+  placeholder,
+  register,
+  setValue,
+  size,
+  throttle,
+  validator
+}) => {
+  const { GetAddressConfig } = useContext(ConfigContext)
+  const [Errors, setErrors] = useState(errors ?? { [name]: null })
+  const [IsLoading, setIsLoading] = useState(false)
+  const [Addresses, setAddresses] = useState([])
 
-      validatePostcode: postcode => {
-        validatorPostCode(postcode)
-      },
+  const ref = useRef(null)
 
-      getAddress: postcode => {
-        setLoading(true)
-        // let data = addresses.data
-        // data = ADDRESS_DATA.addresses
-        // setAddresses({ ...addresses, data: [...data] })
+  const InputValueRef = useRef('')
 
-        // Fetch
-        window
-          .fetch(`https://api.getaddress.io/find//${postcode}?api-key=${apiKey}`)
-          .then(response => {
-            if (!response.ok) {
-              return false
-            }
-            return response.json()
-          })
-          .then(data => {
-            setAddresses({ ...addresses, data: data.addresses })
-          })
-          .catch(error => {
-            console.error('Error', error)
-          })
-      }
-    }))
+  const onApiCall = data => {
+    const { response, hasError } = data
 
-    const input = () => (
-      <FormLabel label='Postcode'>
-        <FormField onChange={change} name='postcode' value={form.postcode} />
-      </FormLabel>
-    )
+    if (!hasError) {
+      const { addresses } = response
 
-    const button = () => (
-      <Button content='Find your address' context='primary' onClick={handleFindAddress} size='lg' />
-    )
+      const fixedAddresses = GetAddressService.fixAddresses(addresses)
 
-    const postcodeAddresses = () => {
-      if (loading) {
-        if (addresses.data.length > 0) {
-          // Reduce the array to conform to the select
-          const reduced = addresses.data.reduce((acc, cur, i) => {
-            acc.push({ text: cur, value: i + 1 })
-            return acc
-          }, [])
-
-          reduced.unshift({ disabled: true, text: 'Select address', value: '' })
-
-          return (
-            <>
-              <p />
-              <FormLabel label='Select your address'>
-                <SelectField
-                  onChange={handlePopulateAddress}
-                  name='addresses'
-                  options={reduced}
-                  value={selectAddress}
-                />
-              </FormLabel>
-            </>
-          )
-        }
-      }
+      setErrors({ [name]: null })
+      setAddresses(fixedAddresses)
+      ref.current.click()
+    } else {
+      setErrors({ [name]: { message: response } })
     }
-
-    const addressDetails = () => {
-      if (form.line1) {
-        const changedInputs = [
-          { label: 'Address line 1', id: 'line1' },
-          { label: 'Address line 2', id: 'line2' },
-          { label: 'Address line 3', id: 'line3' },
-          { label: 'City / Town', id: 'town' },
-          { label: 'County', id: 'county' },
-          { label: 'Postcode', id: 'postcode' },
-          { label: 'Country', id: 'country' }
-        ]
-
-        return changedInputs.map(({ label, id }) => {
-          return (
-            <span key={id}>
-              <FormLabel label={label}>
-                <FormField name={id} onChange={change} value={form[id]} />
-              </FormLabel>
-            </span>
-          )
-        })
-      } else {
-        return <span />
-      }
-    }
-
-    const renderError = () => {
-      if (!error) return
-      return <p className='GetAddress-error'>The postcode was not found</p>
-    }
-
-    return (
-      <>
-        {input()}
-        {button()}
-        {renderError()}
-        {postcodeAddresses()}
-        {addressDetails()}
-      </>
-    )
+    setIsLoading(false)
   }
-)
+
+  const handleInputChange = value => {
+    InputValueRef.current = value
+  }
+
+  const handleSearchClick = () => {
+    setIsLoading(true)
+    GetAddressService.getAddresses({
+      apiKey: GetAddressConfig.apiKey ?? 'AG2YtZS2HEKCTOsZcDCFTg28696',
+      postCode: InputValueRef.current,
+      callback: onApiCall,
+      callThrottle: throttle ?? 500,
+      validator: validator ?? validatorPostCode
+    })
+  }
+
+  const handleAddressSelect = ({ name: address, id }) => {
+    setValue(name, InputValueRef.current + '-' + address)
+  }
+
+  return (
+    <FormLabel label={label}>
+      <InputWrapper>
+        <FormField
+          errors={errors[name] ? errors : Errors}
+          name={name}
+          onChange={e => handleInputChange(e.target.value)}
+          placeholder={placeholder}
+          register={register}
+          size={size}
+        />
+        <InputGroupAddon addonType='append'>
+          <Button onClick={handleSearchClick} content='Search' context='primary' size='sm' />
+        </InputGroupAddon>
+      </InputWrapper>
+      {(errors[name] || Errors[name]) && (
+        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
+      )}
+      {IsLoading && (
+        <LoadingWrapper size={size}>
+          <Shimmer duration={500} />
+        </LoadingWrapper>
+      )}
+
+      <Dropdown caret={false} items={Addresses} onChange={handleAddressSelect}>
+        <div ref={ref} />
+      </Dropdown>
+    </FormLabel>
+  )
+}
+
+const InputWrapper = styled.div`
+  display: flex;
+  input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`
+
+const LoadingWrapper = styled.div`
+  width: 80%;
+  position: absolute;
+  top: 2.4rem;
+  left: 1.5rem;
+
+  ${({ size }) => {
+    switch (size) {
+      case SIZE.SM:
+        return css`
+          top: 2.1rem;
+          height: 0.8rem;
+        `
+      case SIZE.MD:
+        return css`
+          height: 1.125rem;
+        `
+      case SIZE.LG:
+        return css`
+          height: 1.45rem;
+        `
+      default:
+        return css`
+          height: 1.45rem;
+        `
+    }
+  }}
+`
 
 GetAddress.propTypes = {
-  apiKey: string.isRequired,
-  change: func.isRequired
+  errors: object.isRequired,
+  label: string,
+  name: string.isRequired,
+  register: func.isRequired,
+  setValue: func.isRequired,
+  size: oneOf(['sm', 'md', 'lg']),
+  throttle: number,
+  validator: func
+}
+
+GetAddress.defaultProps = {
+  size: 'lg'
 }

@@ -104,9 +104,9 @@ const Wrapper = styled.div`
 `
 
 const PaginationWrapper = styled.div`
+  box-sizing: border-box;
   margin: 1rem 0;
   width: 100%;
-  box-sizing: border-box;
 `
 
 Carousel.propTypes = CarouselPropTypes
