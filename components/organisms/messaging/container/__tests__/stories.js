@@ -14,6 +14,7 @@ import Readme from '../README.md'
 
 // Data
 import { messages } from '../__mocks__/container'
+import { MessageNames, MessagingComunicationService } from 'components/services'
 
 export default {
   args: {
@@ -58,7 +59,14 @@ export const main = args => {
       setMessaging(messages)
     }
   }
-
+  const handleFileSelect = files => {
+    setTimeout(() => {
+      MessagingComunicationService.send({
+        name: MessageNames.Messaging.NEW_MESSAGES,
+        payload: files
+      })
+    }, 1000)
+  }
   const handleSubmit = form => {
     const { audience, from, icon, message, type } = form
 
@@ -97,6 +105,7 @@ export const main = args => {
     ],
     messages: messaging,
     onSearch: handleSearch,
+    onFileSelect: handleFileSelect,
     onFilter: handleFilter,
     onSubmit: handleSubmit,
     ...args

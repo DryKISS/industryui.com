@@ -9,9 +9,8 @@ import { useState, useRef } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { useComponentComunication } from '../useSubscription'
-import { ComunicationService, Subscriber } from '../service'
-import { MessageNames } from '../messageNames'
+import { useComponentComunication } from 'components/hooks'
+import { ComunicationService, Subscriber, MessageNames } from 'components/services'
 import { RandomColor } from 'components/utils'
 import { Button, Text } from 'components'
 

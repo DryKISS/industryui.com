@@ -2,6 +2,7 @@
  * Hooks
  */
 export * from './useAxios'
+export * from './useComponentComunication/useSubscription'
 export * from './useGeoCoder'
 export * from './useInterval'
 export * from './useForm/form'

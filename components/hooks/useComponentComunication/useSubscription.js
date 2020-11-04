@@ -22,7 +22,6 @@ export const useComponentComunication = ({
         onRecieve(message.payload)
       }
     })
-
     return () => {
       Subscription.unsubscribe()
     }

@@ -1,7 +1,7 @@
 // UI
 import styled, { css } from 'styled-components'
 
-import { Close, Space, Text } from 'components'
+import { Button, Close, Space, Text } from 'components'
 
 const Preview = ({ file, showName }) => {
   return file?.type.includes('image') ? (
@@ -14,7 +14,7 @@ const Preview = ({ file, showName }) => {
   )
 }
 
-export const MessagingDragHover = ({ onClose, files, handleRemoveFile, isOpen }) => {
+export const MessagingDragHover = ({ isOpen, files, handleRemoveFile, onClose, onSend }) => {
   return (
     <Wrapper open={isOpen}>
       <ContentWrapper>
@@ -34,6 +34,11 @@ export const MessagingDragHover = ({ onClose, files, handleRemoveFile, isOpen })
             </Text>
           </DragFilesHereContainer>
         )}
+        <SendButtonContainer hasFile={files.length > 0}>
+          <StyledSendButton style={{ borderRadius: '50px' }} onClick={onSend}>
+            send
+          </StyledSendButton>
+        </SendButtonContainer>
         <PreviewContainer>
           {files.length > 0 &&
             files.map((item, index) => {
@@ -51,6 +56,24 @@ export const MessagingDragHover = ({ onClose, files, handleRemoveFile, isOpen })
     </Wrapper>
   )
 }
+const StyledSendButton = styled(Button)`
+  border-radius: 5rem;
+  height: 5rem;
+`
+const SendButtonContainer = styled.div`
+  bottom: 6.5rem;
+  position: absolute;
+  right: 1rem;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  ${({ hasFile }) =>
+    hasFile === true &&
+    css`
+      transform: scale(1);
+    `}
+`
+
 const RemoveContainer = styled.div`
   align-items: center;
   background: rgba(0, 0, 0, 0.2);

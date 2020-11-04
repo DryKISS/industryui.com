@@ -23,6 +23,7 @@ export const MessagingContainer = ({
   className,
   maxLength,
   messages,
+  onFileSelect,
   onFilter,
   onSearch,
   onSubmit,
@@ -55,6 +56,11 @@ export const MessagingContainer = ({
     }
     setFiles(newFiles)
   }
+  const handleSendClick = () => {
+    onFileSelect(Files)
+    setFiles(files => [])
+    setIsDragHoverOpen(false)
+  }
 
   return (
     <DragAndDropable onHover={onHover} onLeave={onLeave} onFileDrop={onDrop}>
@@ -70,6 +76,7 @@ export const MessagingContainer = ({
         handleRemoveFile={handleRemoveFile}
         isOpen={IsDragHoverOpen}
         onClose={closeHoverPopup}
+        onSend={handleSendClick}
       />
     </DragAndDropable>
   )

@@ -10,13 +10,12 @@ import { HighChart } from 'components'
 import Readme from '../README.md'
 
 // Data
-import { LiveChartSubscriber } from 'components/hooks/useComponentComunication/service'
+import { LiveChartSubscriber, MessageNames } from 'components/services'
 import { LiveChartInitialTestDataSource } from './initialDataSource'
 import { LiveHighChartTestStreamDataSource } from './streamDatasource'
 
 // Styled Components
 import styled from 'styled-components'
-import { MessageNames } from 'components/hooks/useComponentComunication/messageNames'
 
 export default {
   args: {
