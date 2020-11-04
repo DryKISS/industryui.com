@@ -27,7 +27,7 @@ export const MessageBase = ({
   more,
   type
 }) => {
-  const [seeMore, setSeeMore] = useState(true)
+  const [seeMore, setSeeMore] = useState(false)
   const messageRef = useRef(null)
 
   return (
