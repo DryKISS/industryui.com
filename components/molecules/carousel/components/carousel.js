@@ -7,28 +7,28 @@ import { useEffect, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
-import { CarouselArrow } from './arrow'
+import { Carouselnav } from './nav'
 import { CarouselSampleSlide } from './sample'
 import { Icon, Pagination, revert } from 'components'
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
 let interval
 export const Carousel = ({
-  arrowContext,
-  arrowPosition,
+  navContext,
+  navPosition,
   autoplay,
   autoplayInterval,
   children,
   fullWidth,
   gap,
   height,
-  leftArrowIcon,
+  leftnavIcon,
   leftNavComponent,
   numberOfItems,
   paginationProps,
   paginationPosition,
-  rightArrowIcon,
+  rightnavIcon,
   rightNavComponent,
-  showArrows,
+  showNavs,
   showPagination,
   slides,
   width
@@ -84,35 +84,35 @@ export const Carousel = ({
   const navComponents = () => {
     const components = {
       left: (
-        <CarouselArrow
-          context={arrowContext}
+        <Carouselnav
+          context={navContext}
           clickFunction={previousSlide}
           direction='left'
-          icon={leftArrowIcon}
-          position={arrowPosition}
+          icon={leftnavIcon}
+          position={navPosition}
         />
       ),
 
       right: (
-        <CarouselArrow
-          context={arrowContext}
+        <Carouselnav
+          context={navContext}
           clickFunction={nextSlide}
           direction='right'
-          icon={rightArrowIcon}
-          position={arrowPosition}
+          icon={rightnavIcon}
+          position={navPosition}
         />
       )
     }
     if (leftNavComponent) {
       components.left = (
-        <NavWrapper componentPosition={arrowPosition} onClick={nextSlide}>
+        <NavWrapper componentPosition={navPosition} onClick={nextSlide}>
           {leftNavComponent}
         </NavWrapper>
       )
     }
     if (rightNavComponent) {
       components.right = (
-        <NavWrapper componentPosition={arrowPosition} endNav onClick={previousSlide}>
+        <NavWrapper componentPosition={navPosition} endNav onClick={previousSlide}>
           {rightNavComponent}
         </NavWrapper>
       )
@@ -124,7 +124,7 @@ export const Carousel = ({
   return (
     <>
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
-        {hasNavigation && showArrows && navComponents().left}
+        {hasNavigation && showNavs && navComponents().left}
 
         {dataSource.map((item, index) => {
           return (
@@ -141,7 +141,7 @@ export const Carousel = ({
 
         {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
 
-        {hasNavigation && showArrows && navComponents().right}
+        {hasNavigation && showNavs && navComponents().right}
       </Wrapper>
 
       {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
