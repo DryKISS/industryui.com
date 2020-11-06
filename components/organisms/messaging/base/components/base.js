@@ -3,11 +3,11 @@
  */
 
 // React
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { string, bool } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Row, TruncateByMaxHeight } from '../../../../'
+import { Card, Column, Icon, Image, Preview, Row } from 'components'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
 
@@ -15,28 +15,28 @@ import { MessageTo } from './to'
 import styled from 'styled-components'
 
 export const MessageBase = ({
+  attachments,
   content,
   from,
   icon,
+  more,
   pictureId,
   prevType,
   reply,
   statusText,
   time,
   to,
-  more,
   type
 }) => {
-  const [seeMore, setSeeMore] = useState(false)
   const messageRef = useRef(null)
-
+  console.log(attachments)
   return (
     <Column sm={11} columnRef={messageRef}>
       <StyledCard type={type}>
         <Row>
           <Column sm={6}>
             <MessageIcon icon={icon} />
-            <MessageTo to={to} />
+            {to && <MessageTo to={to} />}
             <StyledTime>{time}</StyledTime>
           </Column>
 
@@ -54,33 +54,7 @@ export const MessageBase = ({
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
-            <StyledContent seeMore={seeMore}>
-              {content &&
-                content.split('\n').map((item, key) => {
-                  return (
-                    <span key={key}>
-                      {item}
-                      <br />
-                    </span>
-                  )
-                })}
-            </StyledContent>
-
-            {more && (
-              <StyledCollapse onClick={() => setSeeMore(!seeMore)}>
-                {seeMore ? (
-                  <>
-                    <span>Close</span>
-                    <Icon icon='chevron-up' />
-                  </>
-                ) : (
-                  <>
-                    <span>See more</span>
-                    <Icon icon='chevron-down' />
-                  </>
-                )}
-              </StyledCollapse>
-            )}
+            <StyledContent>{content}</StyledContent>
           </Column>
 
           {!type && (
@@ -89,10 +63,26 @@ export const MessageBase = ({
             </Column>
           )}
         </Row>
+        {attachments && attachments.length > 0 && (
+          <AttachmentsContainer>
+            {Array.from(attachments).map((item, index) => {
+              return (
+                <SingleAttachment key={index}>
+                  <Preview
+                    imageStyles={{ minHeight: '10rem', height: '10rem', width: 'unset' }}
+                    file={item}
+                  />
+                </SingleAttachment>
+              )
+            })}
+          </AttachmentsContainer>
+        )}
       </StyledCard>
     </Column>
   )
 }
+const SingleAttachment = styled.div``
+const AttachmentsContainer = styled.div``
 
 const StyledCard = styled(Card)`
   background-color: ${({ type }) => (type === 'in' ? '#fff' : '#F7F7F7')};
@@ -103,21 +93,12 @@ const StyledCard = styled(Card)`
 
 const StyledContent = styled.div`
   color: #000;
-  ${({ seeMore }) => !seeMore && TruncateByMaxHeight('70px')}
 `
 
 const StyledReply = styled.div`
   color: #696969;
   font-size: 0.75rem;
   margin-bottom: 0.5rem;
-`
-
-const StyledCollapse = styled.div`
-  color: #faac46;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
 `
 
 const StyledTime = styled.span`

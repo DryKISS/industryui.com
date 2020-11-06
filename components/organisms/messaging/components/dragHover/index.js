@@ -1,20 +1,9 @@
 // UI
 import styled, { css } from 'styled-components'
 
-import { Button, Close, Space, Text } from 'components'
+import { Button, Close, Preview, Space, Text } from 'components'
 
-const Preview = ({ file, showName }) => {
-  return file?.type.includes('image') ? (
-    <TopPreviewImage src={URL.createObjectURL(file)} />
-  ) : (
-    <PlaceHolder>
-      <FilePlaceHolder />
-      {showName && file?.name}
-    </PlaceHolder>
-  )
-}
-
-export const MessagingDragHover = ({ isOpen, files, handleRemoveFile, onClose, onSend }) => {
+export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   return (
     <Wrapper open={isOpen}>
       <ContentWrapper>
@@ -35,8 +24,8 @@ export const MessagingDragHover = ({ isOpen, files, handleRemoveFile, onClose, o
           </DragFilesHereContainer>
         )}
         <SendButtonContainer hasFile={files.length > 0}>
-          <StyledSendButton style={{ borderRadius: '50px' }} onClick={onSend}>
-            send
+          <StyledSendButton style={{ borderRadius: '50px' }} onClick={onSubmit}>
+            submit
           </StyledSendButton>
         </SendButtonContainer>
         <PreviewContainer>
@@ -97,19 +86,7 @@ const PreviewContainer = styled.div`
     background-color: ${theme.COLOUR.grey};
   `}
 `
-const FilePlaceHolder = styled.div`
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAA8CAYAAADL94L/AAAByElEQVR4Ae3axdJTQRAFYFyegA3u8ALseCDcicsGhxt3x+G32BXc3X3NBnfXYTqp3sZlhuqpOlXZRL46He9ReJyJxGSTEreaPfEHZiX+1uSJvelVNu+Jvjd7Yk9zI8aSUe0eDpjCIYfNSuw5v/zF5In/6mU27478tXriLJvXjdSwPq1lCDTCmxjiCNav8GZYBVMwWKagX8kWjk9vCcMhYWhEFEw1+oV0wZjdPKY6Vn9EwmBDTYPwBoXCYPLGDQTJjkHQNQRJj0FQtmgs+C8wOHIIkh2DoDu5vD5Xfkz9hsTBWDyxhjDYUDqvLRYSY1JilSQGyyxXOt4QKJPX70NDQmI27gyxHcn9bH/5RFMNAUgoDI4afOAMHBiCdiDNj5woGAhgsCEYudSI1lBCRwoPL957slAoDDYEoPXb/ZVs3FE/y9072fDxsx4BMPVfGOpl1VY/y5++4EWM1Fm9LcCKpy8RpnchDGEIQxjCEIYwhCEMYQhDGMIQhjCEIQxhCEMYwhCGMIQhDGEIQxhYNlXiP+XHXLRDM5thQVpyzIfS2YtLceVEkRmzalsgMArPhp258bA6b/LEb8LqPM930VNdvY/fhMmCxw+Of+4BTcPInBo2AAAAAElFTkSuQmCC);
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 3rem;
-  margin-bottom: 0.5rem;
-  width: 3rem;
-`
-const PlaceHolder = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+
 const BottomPreviewContainer = styled.div`
   border: 0.25rem solid ${({ theme }) => theme.COLOUR.white};
   margin: 0 0.25rem;
@@ -121,9 +98,7 @@ const BottomPreviewContainer = styled.div`
     }
   }
 `
-const TopPreviewImage = styled.img`
-  width: 100%;
-`
+
 const ContentWrapper = styled.div`
   background-color: ${({ theme }) => theme.COLOUR.white};
   height: 100%;

@@ -3,15 +3,13 @@
  */
 
 // React
-import { useState } from 'react'
 
 import { array } from 'prop-types'
 
 // UI
-import { Message, useComponentComunication } from 'components'
+import { Message } from 'components'
 import styled from 'styled-components'
 
-import { MessageNames, MessagingSubscriber } from 'components/services'
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
 
 const cache = new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
@@ -31,18 +29,6 @@ const renderMessage = ({ index, parent, key, style }, messages) => {
 }
 
 export const MessageList = ({ messages }) => {
-  const [Messages, setMessages] = useState(messages)
-  console.log(Messages)
-  const onRecieve = payload => {
-    setMessages(Messages)
-    console.log(payload)
-  }
-  useComponentComunication({
-    messageName: MessageNames.Messaging.NEW_MESSAGES,
-    onRecieve,
-    subscriber: MessagingSubscriber
-  })
-
   return (
     <AutoSizer>
       {({ height, width }) => {

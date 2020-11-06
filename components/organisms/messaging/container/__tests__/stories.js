@@ -4,17 +4,16 @@
 
 // React
 import { useState } from 'react'
-
-// Moment
-import moment from 'moment'
+import { MessagingComunicationService, MessageNames } from 'components/services'
 
 // UI
-import { filterByKey, filterByString, MessagingContainer } from 'components'
+import { Button, filterByKey, filterByString, MessagingContainer } from 'components'
+
 import Readme from '../README.md'
 
 // Data
 import { messages } from '../__mocks__/container'
-import { MessageNames, MessagingComunicationService } from 'components/services'
+import { mentions } from '../__mocks__/mentions'
 
 export default {
   args: {
@@ -59,41 +58,6 @@ export const main = args => {
       setMessaging(messages)
     }
   }
-  const handleFileSelect = files => {
-    setTimeout(() => {
-      MessagingComunicationService.send({
-        name: MessageNames.Messaging.NEW_MESSAGES,
-        payload: files
-      })
-    }, 1000)
-  }
-  const handleSubmit = form => {
-    const { audience, from, icon, message, type } = form
-
-    const msg = {
-      content: message,
-      from: from || null,
-      icon: icon || 'comment',
-      pictureId: null,
-      statusText: 'delivered',
-      to: audience,
-      type: type || 'out',
-      issueId: 1
-    }
-
-    msg.id = messaging[messaging.length - 1].id + 1
-
-    msg.createdAt = moment().format('YYYY-MM-DD HH:mm')
-    msg.time = moment().format('ddd D MMM YYYY HH:mm')
-
-    msg.issueId = parseInt(msg.issueId)
-    msg.from = 'test'
-
-    messaging.push(msg)
-    window.localStorage.setItem('messaging', JSON.stringify(messaging))
-
-    setMessaging([...messaging])
-  }
 
   const defaultProps = {
     audienceItems: [
@@ -103,13 +67,36 @@ export const main = args => {
       { name: 'Supplier Only', id: 'supplier' },
       { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
+    mentions,
     messages: messaging,
     onSearch: handleSearch,
-    onFileSelect: handleFileSelect,
     onFilter: handleFilter,
-    onSubmit: handleSubmit,
     ...args
   }
-
-  return <MessagingContainer {...defaultProps} />
+  const mimicRecieve = () => {
+    MessagingComunicationService.send({
+      name: MessageNames.Messaging.NEW_MESSAGES,
+      payload: [
+        {
+          content:
+            'Hiya we are expecting a PPM scheduled maintenance check on our LED lightbulbs throughout the third floor of XYZ Company offices today. Would appreciate a timely response on this so we can sort out security.',
+          from: 'Mike <mike@xyz.com>',
+          icon: 'email',
+          more: false,
+          pictureId: null,
+          reply: 'Re: 5397 — PPM',
+          statusText: 'delivered',
+          time: 'Mon 4 Nov 2019 11:59',
+          to: 'internal',
+          type: 'in'
+        }
+      ]
+    })
+  }
+  return (
+    <>
+      <MessagingContainer {...defaultProps} />
+      <Button onClick={mimicRecieve}>mimic message recieve</Button>
+    </>
+  )
 }

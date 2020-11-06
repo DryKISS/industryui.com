@@ -5,6 +5,7 @@
 // React
 import { useState } from 'react'
 import { array, object, string, func, number } from 'prop-types'
+import moment from 'moment'
 
 // UI
 import {
@@ -12,8 +13,15 @@ import {
   MessageList,
   MessagingDragHover,
   MessagingSearch,
-  MessagingSend
+  MessagingSend,
+  useComponentComunication
 } from 'components'
+
+import {
+  MessageNames,
+  MessagingComunicationService,
+  MessagingSubscriber
+} from 'components/services'
 
 // Style
 import styled from 'styled-components'
@@ -22,15 +30,16 @@ export const MessagingContainer = ({
   audienceItems,
   className,
   maxLength,
+  mentions,
   messages,
-  onFileSelect,
   onFilter,
   onSearch,
-  onSubmit,
   style
 }) => {
-  const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
   const [Files, setFiles] = useState([])
+  const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
+  const [Messages, setMessages] = useState(messages)
+
   const onHover = () => {
     if (!IsDragHoverOpen) {
       setIsDragHoverOpen(true)
@@ -56,10 +65,49 @@ export const MessagingContainer = ({
     }
     setFiles(newFiles)
   }
-  const handleSendClick = () => {
-    onFileSelect(Files)
-    setFiles(files => [])
+  const handleAttachSubmitClick = () => {
+    MessagingComunicationService.send({
+      name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+      payload: Files
+    })
+
     setIsDragHoverOpen(false)
+  }
+
+  const onRecieve = payload => {
+    const newMessagesArray = [...Messages, ...payload]
+    setMessages([...newMessagesArray])
+  }
+  useComponentComunication({
+    dependencies: [Messages.length],
+    messageName: MessageNames.Messaging.NEW_MESSAGES,
+    onRecieve,
+    subscriber: MessagingSubscriber
+  })
+
+  const handleSubmit = messageToSend => {
+    const msg = {
+      attachments: messageToSend.attachments || [],
+      content: messageToSend.message,
+      createdAt: moment().format('YYYY-MM-DD HH:mm'),
+      from: 'me',
+      icon: 'comment',
+      id: Messages[Messages.length - 1].id + 1,
+      pictureId: null,
+      statusText: 'delivered',
+      time: moment().format('ddd D MMM YYYY HH:mm'),
+      to: 'all',
+      type: 'out',
+      issueId: 1
+    }
+    MessagingComunicationService.send({
+      name: MessageNames.Messaging.NEW_MESSAGES,
+      payload: [msg]
+    })
+    MessagingComunicationService.send({
+      name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+      payload: []
+    })
   }
 
   return (
@@ -67,16 +115,21 @@ export const MessagingContainer = ({
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
       <StyledContainer className={className} style={style}>
-        <MessageList messages={messages} />
+        <MessageList messages={Messages} />
       </StyledContainer>
 
-      <MessagingSend audienceItems={audienceItems} onSubmit={onSubmit} maxLength={maxLength} />
+      <MessagingSend
+        audienceItems={audienceItems}
+        onSubmit={handleSubmit}
+        maxLength={maxLength}
+        mentions={mentions}
+      />
       <MessagingDragHover
         files={Files}
         handleRemoveFile={handleRemoveFile}
         isOpen={IsDragHoverOpen}
         onClose={closeHoverPopup}
-        onSend={handleSendClick}
+        onSubmit={handleAttachSubmitClick}
       />
     </DragAndDropable>
   )

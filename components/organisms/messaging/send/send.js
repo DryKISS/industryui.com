@@ -5,14 +5,29 @@
 // React
 import { useRef, useState } from 'react'
 import { array, func, number } from 'prop-types'
-
+import {
+  MessageNames,
+  MessagingComunicationService,
+  MessagingSubscriber
+} from 'components/services'
+import { convertToRaw } from 'draft-js'
 // UI
-import { Button, Dropdown, EmojiMart, Form, Icon, TextareaField, useForm } from '../../../'
+import {
+  Button,
+  Dropdown,
+  EmojiMart,
+  Form,
+  MessagingInput,
+  Icon,
+  TextareaField,
+  useComponentComunication,
+  useForm
+} from 'components'
 
 // Style
 import styled from 'styled-components'
 
-export const MessagingSend = ({ audienceItems, maxLength, onSubmit }) => {
+export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   const { errors, handleSubmit, register, setValue, watch } = useForm({
     defaultValues: {
       message: ''
@@ -36,8 +51,23 @@ export const MessagingSend = ({ audienceItems, maxLength, onSubmit }) => {
 
   const handleFilesChange = e => {
     const { files } = e.target
+    MessagingComunicationService.send({
+      name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+      payload: files
+    })
+    //
+  }
+
+  const handleFilesRecieve = files => {
     setAttachments(files)
   }
+
+  useComponentComunication({
+    dependencies: [attachments.length],
+    messageName: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+    onRecieve: handleFilesRecieve,
+    subscriber: MessagingSubscriber
+  })
 
   const handleEmojiSelect = emoji => {
     setValue('message', message + emoji)
@@ -52,6 +82,11 @@ export const MessagingSend = ({ audienceItems, maxLength, onSubmit }) => {
 
     onSubmit(data)
     setValue('message', '')
+  }
+
+  const handleInputChange = e => {
+    const contentState = e.getCurrentContent()
+    console.log(convertToRaw(contentState))
   }
 
   return (
@@ -77,7 +112,7 @@ export const MessagingSend = ({ audienceItems, maxLength, onSubmit }) => {
               {audience.name}
             </StyledDropDown>
           )}
-
+          <MessagingInput mentions={mentions} onChange={handleInputChange} />
           <StyledTextarea
             errors={errors}
             maxLength={maxLength}
@@ -143,6 +178,7 @@ const StyledForm = styled(Form)`
 `
 
 const StyledTextarea = styled(TextareaField)`
+  display: none;
   background-color: ${({ theme }) => theme.COLOUR.light};
   border: ${({ theme }) => theme.COLOUR.light};
   border-radius: 1rem;
