@@ -12,38 +12,24 @@ import {
 } from 'components/services'
 import { convertToRaw } from 'draft-js'
 // UI
-import {
-  Button,
-  Dropdown,
-  EmojiMart,
-  Form,
-  MessagingInput,
-  Icon,
-  TextareaField,
-  useComponentComunication,
-  useForm
-} from 'components'
+import { Button, MessagingInput, Icon, useComponentComunication } from 'components'
 
 // Style
 import styled from 'styled-components'
 
 export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
-  const { errors, handleSubmit, register, setValue, watch } = useForm({
-    defaultValues: {
-      message: ''
-    }
-  })
+  // const [open, setOpen] = useState(false)
+  const [Message, setMessage] = useState({})
 
-  const [open, setOpen] = useState(false)
   const [attachments, setAttachments] = useState([])
-  const [audience, setAudience] = useState(audienceItems[0] || '')
+  const [audience] = useState(audienceItems[0] || '')
   const fileInputRef = useRef()
 
-  const message = watch('message')
+  // const message = watch('message')
 
-  const handleOpenPicker = () => {
-    setOpen(false)
-  }
+  // const handleOpenPicker = () => {
+  //   setOpen(false)
+  // }
 
   const openFileDialog = () => {
     fileInputRef.current.click()
@@ -69,29 +55,28 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     subscriber: MessagingSubscriber
   })
 
-  const handleEmojiSelect = emoji => {
-    setValue('message', message + emoji)
-  }
+  // const handleEmojiSelect = emoji => {
+  //   setValue('message', message + emoji)
+  // }
 
   const submit = form => {
     const data = {
       attachments,
       audience: audience.id,
-      message: form.message
+      message: Message
     }
-
     onSubmit(data)
-    setValue('message', '')
   }
 
   const handleInputChange = e => {
     const contentState = e.getCurrentContent()
     console.log(convertToRaw(contentState))
+    setMessage(convertToRaw(contentState))
   }
 
   return (
     <>
-      {open && (
+      {/* {open && (
         <StyledPickerContainer>
           <EmojiMart
             handleOpenPicker={handleOpenPicker}
@@ -99,11 +84,11 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             open={open}
           />
         </StyledPickerContainer>
-      )}
+      )} */}
 
       <StyledContainer audience={audience}>
-        <StyledForm handleSubmit={handleSubmit(submit)}>
-          {audience && (
+        <StyledWrapper>
+          {/* {audience && (
             <StyledDropDown
               items={audienceItems}
               onChange={item => setAudience(item)}
@@ -111,16 +96,9 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             >
               {audience.name}
             </StyledDropDown>
-          )}
+          )} */}
+
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
-          <StyledTextarea
-            errors={errors}
-            maxLength={maxLength}
-            name='message'
-            placeholder='Write message'
-            register={register}
-            rows={2}
-          />
 
           <input
             multiple
@@ -132,17 +110,11 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
           <StyledElements>
             <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
-            <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' />
+            {/* <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' /> */}
 
-            <Button
-              content='Send'
-              context='info'
-              disabled={message.length === 0 && attachments.length === 0}
-              size='sm'
-              type='submit'
-            />
+            <Button content='Send' context='info' size='sm' onClick={submit} />
           </StyledElements>
-        </StyledForm>
+        </StyledWrapper>
       </StyledContainer>
     </>
   )
@@ -158,39 +130,19 @@ const StyledContainer = styled.div`
   position: relative;
 `
 
-const StyledPickerContainer = styled(StyledContainer)`
-  bottom: 80px;
-  left: 15px;
-  padding: 0;
-  position: absolute;
-  right: 15px;
-  z-index: 999;
-`
+// const StyledPickerContainer = styled(StyledContainer)`
+//   bottom: 80px;
+//   left: 15px;
+//   padding: 0;
+//   position: absolute;
+//   right: 15px;
+//   z-index: 999;
+// `
 
-const StyledForm = styled(Form)`
+const StyledWrapper = styled.div`
   display: flex;
   position: relative;
   margin: 0;
-
-  .Form-feedback {
-    width: inherit;
-  }
-`
-
-const StyledTextarea = styled(TextareaField)`
-  display: none;
-  background-color: ${({ theme }) => theme.COLOUR.light};
-  border: ${({ theme }) => theme.COLOUR.light};
-  border-radius: 1rem;
-  line-height: 1.5;
-  resize: none;
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.5rem;
-
-  &:focus {
-    border-color: initial;
-    box-shadow: initial;
-  }
 `
 
 const StyledElements = styled.div`
@@ -204,24 +156,6 @@ const StyledIcon = styled(Icon)`
 
   &:hover {
     color: ${({ theme }) => theme.COLOUR.info};
-  }
-`
-
-const StyledDropDown = styled(Dropdown)`
-  position: absolute;
-  left: 8px;
-  text-transform: uppercase;
-  top: -24px;
-
-  .dropdown--link {
-    color: #000;
-    font-size: 10px;
-  }
-
-  .dropdown--toggle,
-  svg {
-    color: ${({ theme }) => theme.COLOUR.info};
-    font-size: 10px;
   }
 `
 

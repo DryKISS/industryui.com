@@ -4,13 +4,13 @@
 
 // React
 import { useRef } from 'react'
-import { string, bool } from 'prop-types'
+import { any, bool, string } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, Preview, Row } from 'components'
+import { Card, Column, Icon, Image, MessagingEditor, Preview, Row } from 'components'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
-
+import { EditorState, convertFromRaw } from 'draft-js'
 // Style
 import styled from 'styled-components'
 
@@ -29,7 +29,15 @@ export const MessageBase = ({
   type
 }) => {
   const messageRef = useRef(null)
-  console.log(attachments)
+  let messageContent
+  if (content.blocks) {
+    const contentState = convertFromRaw(content)
+    const editorState = EditorState.createWithContent(contentState)
+    messageContent = <MessagingEditor editorState={editorState} readOnly />
+  } else {
+    messageContent = content
+  }
+
   return (
     <Column sm={11} columnRef={messageRef}>
       <StyledCard type={type}>
@@ -54,7 +62,7 @@ export const MessageBase = ({
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
-            <StyledContent>{content}</StyledContent>
+            <StyledContent>{messageContent}</StyledContent>
           </Column>
 
           {!type && (
@@ -113,7 +121,7 @@ const StyledFrom = styled(StyledTime)`
 `
 
 MessageBase.propTypes = {
-  content: string,
+  content: any,
   pictureId: string,
   scrollToMessage: bool,
   statusText: string,

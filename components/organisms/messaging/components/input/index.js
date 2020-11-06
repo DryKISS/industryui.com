@@ -3,14 +3,16 @@ import { useState, useRef } from 'react'
 // UI
 import styled from 'styled-components'
 
-import { EditorState } from 'draft-js'
-import Editor from 'draft-js-plugins-editor'
-import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
+import {
+  EmojiSuggestions,
+  EmojiSelect,
+  MentionSuggestions,
+  MessagingEditor,
+  messagingPlugins
+} from 'components'
 
-// Draft-JS-Mentions plugin configuration
-const mentionPlugin = createMentionPlugin()
-const { MentionSuggestions } = mentionPlugin
-const plugins = [mentionPlugin]
+import { EditorState } from 'draft-js'
+import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
 
 export const MessagingInput = ({ mentions, onChange }) => {
   const [suggestions, setSuggestions] = useState(mentions)
@@ -45,10 +47,12 @@ export const MessagingInput = ({ mentions, onChange }) => {
         suggestions={suggestions}
         onAddMention={onAddMention}
       />
-      <Editor
+      <EmojiSuggestions />
+      <EmojiSelect />
+      <MessagingEditor
         ref={editor}
         editorState={editorState}
-        plugins={plugins}
+        plugins={messagingPlugins}
         onChange={handleChange}
         placeholder='Type here...'
       />
@@ -56,8 +60,20 @@ export const MessagingInput = ({ mentions, onChange }) => {
   )
 }
 const Wrapper = styled.div`
-  width: 100%;
   .draftJsMentionPlugin__mentionSuggestions__2DWjA {
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
+  .draftJsEmojiPlugin__emojiSelectPopover__1J1s0 {
+    top: -400px;
+  }
+  .draftJsEmojiPlugin__emojiSuggestions__2ffcV {
+    top: -350px !important;
+  }
+  background-color: ${({ theme }) => theme.COLOUR.light};
+  border: ${({ theme }) => theme.COLOUR.light};
+  border-radius: 1rem;
+  line-height: 1.5;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem;
+  width: 100%;
 `
