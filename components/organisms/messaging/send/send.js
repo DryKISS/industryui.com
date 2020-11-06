@@ -76,28 +76,8 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
   return (
     <>
-      {/* {open && (
-        <StyledPickerContainer>
-          <EmojiMart
-            handleOpenPicker={handleOpenPicker}
-            handleSelect={handleEmojiSelect}
-            open={open}
-          />
-        </StyledPickerContainer>
-      )} */}
-
       <StyledContainer audience={audience}>
         <StyledWrapper>
-          {/* {audience && (
-            <StyledDropDown
-              items={audienceItems}
-              onChange={item => setAudience(item)}
-              position='top'
-            >
-              {audience.name}
-            </StyledDropDown>
-          )} */}
-
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
 
           <input
@@ -107,11 +87,8 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             style={{ display: 'none' }}
             type='file'
           />
-
           <StyledElements>
             <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
-            {/* <StyledIcon fixedWidth={false} icon='smile' onClick={() => setOpen(!open)} size='2x' /> */}
-
             <Button content='Send' context='info' size='sm' onClick={submit} />
           </StyledElements>
         </StyledWrapper>
@@ -129,15 +106,6 @@ const StyledContainer = styled.div`
   padding: ${({ audience }) => (audience ? '1.5rem 1rem 1rem' : '1rem')};
   position: relative;
 `
-
-// const StyledPickerContainer = styled(StyledContainer)`
-//   bottom: 80px;
-//   left: 15px;
-//   padding: 0;
-//   position: absolute;
-//   right: 15px;
-//   z-index: 999;
-// `
 
 const StyledWrapper = styled.div`
   display: flex;

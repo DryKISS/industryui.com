@@ -41,20 +41,20 @@ export const MessagingInput = ({ mentions, onChange }) => {
   }
 
   return (
-    <Wrapper topMultiplier={suggestions.length} onClick={() => focusEditor()}>
+    <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions.length}>
       <MentionSuggestions
+        onAddMention={onAddMention}
         onSearchChange={onSearchChange}
         suggestions={suggestions}
-        onAddMention={onAddMention}
       />
       <EmojiSuggestions />
       <EmojiSelect />
       <MessagingEditor
-        ref={editor}
         editorState={editorState}
-        plugins={messagingPlugins}
         onChange={handleChange}
+        plugins={messagingPlugins}
         placeholder='Type here...'
+        ref={editor}
       />
     </Wrapper>
   )

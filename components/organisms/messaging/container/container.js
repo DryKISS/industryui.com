@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { array, object, string, func, number } from 'prop-types'
+import { array, func, number, object, string } from 'prop-types'
 import moment from 'moment'
 
 // UI
@@ -65,6 +65,7 @@ export const MessagingContainer = ({
     }
     setFiles(newFiles)
   }
+
   const handleAttachSubmitClick = () => {
     MessagingComunicationService.send({
       name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
@@ -78,6 +79,7 @@ export const MessagingContainer = ({
     const newMessagesArray = [...Messages, ...payload]
     setMessages([...newMessagesArray])
   }
+
   useComponentComunication({
     dependencies: [Messages.length],
     messageName: MessageNames.Messaging.NEW_MESSAGES,
@@ -93,13 +95,14 @@ export const MessagingContainer = ({
       from: 'me',
       icon: 'comment',
       id: Messages[Messages.length - 1].id + 1,
+      issueId: 1,
       pictureId: null,
       statusText: 'delivered',
       time: moment().format('ddd D MMM YYYY HH:mm'),
       to: 'all',
-      type: 'out',
-      issueId: 1
+      type: 'out'
     }
+
     MessagingComunicationService.send({
       name: MessageNames.Messaging.NEW_MESSAGES,
       payload: [msg]
@@ -111,7 +114,7 @@ export const MessagingContainer = ({
   }
 
   return (
-    <DragAndDropable onHover={onHover} onLeave={onLeave} onFileDrop={onDrop}>
+    <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
       <StyledContainer className={className} style={style}>

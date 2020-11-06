@@ -8,7 +8,7 @@ import { memo } from 'react'
 import { object, string } from 'prop-types'
 
 // UI
-import { Column, MessageBase, Row, Tail } from '../../../'
+import { Column, MessageBase, Row, Tail } from 'components'
 
 export const Message = memo(({ message, prevType, type, ...props }) => {
   return (
