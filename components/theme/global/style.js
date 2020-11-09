@@ -112,7 +112,7 @@ export const ThemeStyle = createGlobalStyle`
 
   input,
   optgroup,
-  select {
+  select,textarea {
     font-family: inherit;
     font-size: 100%;
     line-height: 1.15;
