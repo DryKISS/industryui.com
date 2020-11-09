@@ -24,6 +24,7 @@ import { NAVBAR } from '../../molecules/navbar/variables'
 import { PAGE } from '../../layouts/page/variables'
 import { PIECHART } from '../../molecules/charts/Nivo/pieChart/variables'
 import { PROGRESS, PROGRESSBAR } from '../../atoms/progress/variables'
+import { SELECT } from '../../form/reactSelect/variables'
 import { SIDEBAR } from '../../molecules/sidebar/variables'
 import { SPACING } from '../utils'
 import { STEPPER } from '../../molecules/stepper/variables'
@@ -51,6 +52,7 @@ export const Theme = {
   PIECHART,
   PROGRESS,
   PROGRESSBAR,
+  SELECT,
   SIDEBAR,
   SPACING,
   STEPPER,

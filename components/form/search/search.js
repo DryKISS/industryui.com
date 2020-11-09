@@ -23,7 +23,7 @@ export const Search = ({
     <InputGroup>
       {prependSearchIcon && (
         <InputGroupAddon addonType='prepend' text>
-          <Icon size='md' icon='search' prefix={prefix} />
+          <Icon size='sm' icon='search' prefix={prefix} />
         </InputGroupAddon>
       )}
 
@@ -37,7 +37,7 @@ export const Search = ({
 
       {appendSearchIcon && (
         <InputGroupAddon addonType='append' text>
-          <Icon icon='search' size='md' prefix={prefix} />
+          <Icon icon='search' size='sm' prefix={prefix} />
         </InputGroupAddon>
       )}
 

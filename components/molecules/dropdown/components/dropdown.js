@@ -25,6 +25,7 @@ export const Dropdown = ({
   elementType,
   items,
   onChange,
+
   position
 }) => {
   const [open, setOpen] = useState(false)
@@ -35,7 +36,6 @@ export const Dropdown = ({
     if (node.current.contains(event.target)) {
       return
     }
-
     setOpen(false)
   }
 
@@ -45,7 +45,6 @@ export const Dropdown = ({
     } else {
       document.removeEventListener('mousedown', handleClickAway)
     }
-
     return () => {
       document.removeEventListener('mousedown', handleClickAway)
     }
@@ -97,7 +96,7 @@ const StyledToggle = styled.div`
 
 Dropdown.propTypes = {
   caret: bool,
-  children: node.isRequired,
+  children: node,
   className: string,
   elementType: oneOf([elementTypes.Colour, elementTypes.Icon, elementTypes.List]),
   items: array.isRequired,
