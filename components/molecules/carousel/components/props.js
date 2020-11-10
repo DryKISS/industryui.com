@@ -14,7 +14,7 @@ export const CarouselPropTypes = {
   gap: number,
   height: string,
   leftArrowIcon: string,
-  numberOfItems: object,
+  numberOfItems: object | number,
   paginationProps: shape(PaginationPropTypes),
   paginationPosition: oneOf(['inside', 'outside']),
   rightArrowIcon: string,
@@ -39,13 +39,7 @@ export const CarouselDefaultProps = {
   fullWidth: false,
   gap: 10,
   leftArrowIcon: 'chevron-left',
-  numberOfItems: {
-    600: 1,
-    900: 3,
-    1200: 8,
-    1400: 10,
-    4000: 12
-  },
+  numberOfItems: 1,
   paginationPosition: 'outside',
   rightArrowIcon: 'chevron-right',
   showArrows: true,
