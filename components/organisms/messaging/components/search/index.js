@@ -5,7 +5,7 @@
 import { func, string } from 'prop-types'
 
 // UI
-import { Column, Form, Row, Search, SelectField, useForm } from '../../../'
+import { Column, Form, Row, Search, SelectField, useForm } from '../../../..'
 
 // Style
 import styled from 'styled-components'

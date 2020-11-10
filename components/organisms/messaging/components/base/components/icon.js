@@ -6,7 +6,7 @@
 import { oneOf, string } from 'prop-types'
 
 // UI
-import { Icon, ICON_PREFIX } from '../../../../'
+import { Icon, ICON_PREFIX } from 'components'
 
 // Style
 import styled from 'styled-components'

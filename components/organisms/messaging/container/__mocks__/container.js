@@ -78,8 +78,7 @@ export const messages = [
     type: 'in'
   },
   {
-    content:
-      'Mike can you let us know that the contractor is through security and the job is underway.',
+    content: 'Mike can you let us know that the contractor is through security?',
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     from: 'Cleverly <support@cleverly.com>',

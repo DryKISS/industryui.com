@@ -5,7 +5,7 @@
 import { string } from 'prop-types'
 
 // UI
-import { Image } from '../../../../'
+import { Image } from 'components'
 
 // Style
 import styled from 'styled-components'

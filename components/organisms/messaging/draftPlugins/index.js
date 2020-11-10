@@ -1,5 +1,5 @@
 import createEmojiPlugin from 'draft-js-emoji-plugin'
-import createHashtagPlugin from 'draft-js-hashtag-plugin'
+import { createHashtagPlugin } from './hashtag'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import Editor from 'draft-js-plugins-editor'
 
