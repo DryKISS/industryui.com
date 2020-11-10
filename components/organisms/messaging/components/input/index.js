@@ -15,7 +15,7 @@ import { EditorState } from 'draft-js'
 import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
 
 export const MessagingInput = ({ mentions, onChange }) => {
-  const [suggestions, setSuggestions] = useState(mentions)
+  const [suggestions, setSuggestions] = useState(mentions ?? [])
 
   // Draft-JS editor configuration
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
@@ -41,12 +41,14 @@ export const MessagingInput = ({ mentions, onChange }) => {
   }
 
   return (
-    <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions.length}>
-      <MentionSuggestions
-        onAddMention={onAddMention}
-        onSearchChange={onSearchChange}
-        suggestions={suggestions}
-      />
+    <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
+      {suggestions.length > 0 && (
+        <MentionSuggestions
+          onAddMention={onAddMention}
+          onSearchChange={onSearchChange}
+          suggestions={suggestions}
+        />
+      )}
       <EmojiSuggestions />
       <EmojiSelect />
       <MessagingEditor

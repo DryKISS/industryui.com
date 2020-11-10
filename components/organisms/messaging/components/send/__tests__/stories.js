@@ -5,7 +5,7 @@
 // UI
 import { MessagingSend } from 'components'
 import Readme from '../README.md'
-
+import { mentions } from '../../../container/__mocks__/mentions'
 export default {
   args: {
     audienceItems: [
@@ -26,6 +26,7 @@ export default {
     }
   },
   component: MessagingSend,
+  mentions,
   parameters: {
     docs: {
       description: {

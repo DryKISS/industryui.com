@@ -3,6 +3,7 @@
  */
 
 // UI
+import styled from 'styled-components'
 import { MessageList } from 'components'
 import Readme from '../README.md'
 
@@ -21,4 +22,11 @@ export default {
   title: 'Organisms/Messaging/List'
 }
 
-export const main = () => <MessageList messages={messages} />
+export const main = () => (
+  <ListWrapper>
+    <MessageList messages={messages} />
+  </ListWrapper>
+)
+const ListWrapper = styled.div`
+  min-height: 30rem;
+`
