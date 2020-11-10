@@ -38,7 +38,9 @@ export const Carousel = ({
   dataSource = revert(dataSource)
 
   const [currentImageIndex, setCurrentImageIndex] = useState((slides || children).length - 1)
-  const [NumberOfItems, setNumberOfItems] = useState(1)
+  const [NumberOfItems, setNumberOfItems] = useState(
+    typeof numberOfItems === 'number' ? numberOfItems : 1
+  )
 
   const resetNumberOfItems = width => {
     let found = false
@@ -140,8 +142,12 @@ export const Carousel = ({
   return (
     <>
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
+        {typeof numberOfItems !== 'number' && (
+          <ResizeDetector onResize={({ width }) => resetNumberOfItems(width)} />
+        )}
+
         {hasNavigation && showArrows && navComponents().left}
-        <ResizeDetector onResize={({ width }) => resetNumberOfItems(width)} />
+
         {dataSource.map((item, index) => {
           return (
             <ItemWrapper
