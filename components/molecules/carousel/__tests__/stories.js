@@ -18,10 +18,9 @@ import vizla from 'storybook/static/card/vizla.jpg'
 export default {
   args: CarouselDefaultProps,
   argTypes: {
-    navContext: ContextControl(),
-    navPosition: { control: { type: 'select', options: ['top', 'middle', 'bottom'] } },
+    arrowContext: ContextControl(),
+    arrowPosition: { control: { type: 'select', options: ['top', 'middle', 'bottom'] } },
     autoplayInterval: { name: 'autoplay Interval(ms)' },
-    numberOfItems: { control: { type: 'range', min: 1, max: 10 } },
     gap: { name: 'gap between elements(px)', control: { type: 'range', min: 1, max: 200 } }
   },
 
@@ -47,6 +46,13 @@ const BaseComponent = props => {
   const defaultProps = {
     height: '300px',
     width: '900px',
+    numberOfItems: {
+      600: 1,
+      1200: 3,
+      1400: 8,
+      1600: 10,
+      4000: 12
+    },
     ...props
   }
   return <Carousel {...defaultProps} />
@@ -80,7 +86,7 @@ export const withArray = args => (
 export const withCustomNav = args => (
   <BaseComponent
     {...args}
-    showNavs
+    showArrows
     leftNavComponent={<Button size='sm'>{'<'}</Button>}
     rightNavComponent={<Button size='sm'>next</Button>}
     slides={[

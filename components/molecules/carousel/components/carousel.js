@@ -7,35 +7,51 @@ import { useEffect, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
-import { Carouselnav } from './nav'
+import { CarouselArrow } from './arrow'
 import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination, revert } from 'components'
+import { Icon, Pagination, revert, ResizeDetector } from 'components'
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
 let interval
 export const Carousel = ({
-  navContext,
-  navPosition,
+  arrowContext,
+  arrowPosition,
   autoplay,
   autoplayInterval,
   children,
   fullWidth,
   gap,
   height,
-  leftnavIcon,
+  leftArrowIcon,
   leftNavComponent,
   numberOfItems,
   paginationProps,
   paginationPosition,
-  rightnavIcon,
+  rightArrowIcon,
   rightNavComponent,
-  showNavs,
+  showArrows,
   showPagination,
   slides,
   width
 }) => {
   let dataSource = slides || children
+
   dataSource = revert(dataSource)
+
   const [currentImageIndex, setCurrentImageIndex] = useState((slides || children).length - 1)
+  const [NumberOfItems, setNumberOfItems] = useState(1)
+
+  const resetNumberOfItems = width => {
+    let found = false
+    for (const key in numberOfItems) {
+      if (width <= Number(key) && found === false) {
+        found = true
+        setNumberOfItems(numberOfItems[key])
+      }
+    }
+    if (found === false) {
+      setNumberOfItems(10)
+    }
+  }
 
   useEffect(() => {
     if (autoplay === true) {
@@ -57,7 +73,7 @@ export const Carousel = ({
 
   const nextSlide = () => {
     const lastIndex = dataSource.length - 1
-    const shouldResetIndex = currentImageIndex === numberOfItems - 1
+    const shouldResetIndex = currentImageIndex === NumberOfItems - 1
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
     setCurrentImageIndex(index)
   }
@@ -84,35 +100,35 @@ export const Carousel = ({
   const navComponents = () => {
     const components = {
       left: (
-        <Carouselnav
-          context={navContext}
+        <CarouselArrow
+          context={arrowContext}
           clickFunction={previousSlide}
           direction='left'
-          icon={leftnavIcon}
-          position={navPosition}
+          icon={leftArrowIcon}
+          position={arrowPosition}
         />
       ),
 
       right: (
-        <Carouselnav
-          context={navContext}
+        <CarouselArrow
+          context={arrowContext}
           clickFunction={nextSlide}
           direction='right'
-          icon={rightnavIcon}
-          position={navPosition}
+          icon={rightArrowIcon}
+          position={arrowPosition}
         />
       )
     }
     if (leftNavComponent) {
       components.left = (
-        <NavWrapper componentPosition={navPosition} onClick={nextSlide}>
+        <NavWrapper componentPosition={arrowPosition} onClick={nextSlide}>
           {leftNavComponent}
         </NavWrapper>
       )
     }
     if (rightNavComponent) {
       components.right = (
-        <NavWrapper componentPosition={navPosition} endNav onClick={previousSlide}>
+        <NavWrapper componentPosition={arrowPosition} endNav onClick={previousSlide}>
           {rightNavComponent}
         </NavWrapper>
       )
@@ -124,13 +140,13 @@ export const Carousel = ({
   return (
     <>
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
-        {hasNavigation && showNavs && navComponents().left}
-
+        {hasNavigation && showArrows && navComponents().left}
+        <ResizeDetector onResize={({ width }) => resetNumberOfItems(width)} />
         {dataSource.map((item, index) => {
           return (
             <ItemWrapper
               gap={gap}
-              width={`calc(${100 / numberOfItems}% - ${gap}px)`}
+              width={`calc(${100 / NumberOfItems}% - ${gap}px)`}
               transform={`translateX(calc(${currentImageIndex - index} * calc(100% + ${gap}px)))`}
               key={'slide' + index}
             >
@@ -141,7 +157,7 @@ export const Carousel = ({
 
         {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
 
-        {hasNavigation && showNavs && navComponents().right}
+        {hasNavigation && showArrows && navComponents().right}
       </Wrapper>
 
       {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
