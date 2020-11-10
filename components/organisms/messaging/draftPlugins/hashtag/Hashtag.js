@@ -16,7 +16,6 @@ export default function Hashtag (props) {
     blockKey,
     ...otherProps
   } = props
-  console.log(props)
   const combinedClassName = clsx(theme.hashtag, className)
   return <StyledHashtag {...otherProps} className={combinedClassName} />
 }

@@ -30,7 +30,6 @@ export const MessageBase = ({
 }) => {
   const messageRef = useRef(null)
   let messageContent
-  console.log(content)
   if (content.blocks) {
     const contentState = convertFromRaw(content)
     const editorState = EditorState.createWithContent(contentState)

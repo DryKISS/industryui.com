@@ -70,7 +70,6 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
   const handleInputChange = e => {
     const contentState = e.getCurrentContent()
-    console.log(convertToRaw(contentState))
     setMessage(convertToRaw(contentState))
   }
 
