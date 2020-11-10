@@ -7,7 +7,7 @@ import { Subject } from 'rxjs'
 
 export const Subscriber = new Subject()
 
-export const ComunicationService = {
+export const CommunicationService = {
   send: msg => {
     Subscriber.next(msg)
   }

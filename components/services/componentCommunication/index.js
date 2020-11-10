@@ -6,7 +6,7 @@
 import { Subject } from 'rxjs'
 
 export const Subscriber = new Subject()
-export const ComunicationService = {
+export const CommunicationService = {
   send: msg => {
     Subscriber.next(msg)
   }
@@ -20,7 +20,7 @@ export const LiveChartMessageService = {
 }
 
 export const MessagingSubscriber = new Subject()
-export const MessagingComunicationService = {
+export const MessagingCommunicationService = {
   send: msg => {
     MessagingSubscriber.next(msg)
   }

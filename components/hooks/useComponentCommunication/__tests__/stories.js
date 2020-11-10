@@ -1,5 +1,5 @@
 /**
- * Component Comunication Service
+ * Component Communication Service
  */
 
 // React
@@ -9,8 +9,8 @@ import { useState, useRef } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { useComponentComunication } from 'components/hooks'
-import { ComunicationService, Subscriber, MessageNames } from 'components/services'
+import { useComponentCommunication } from 'components/hooks'
+import { CommunicationService, Subscriber, MessageNames } from 'components/services'
 import { RandomColor } from 'components/utils'
 import { Button, Text } from 'components'
 
@@ -18,7 +18,7 @@ import { Button, Text } from 'components'
 import { Wrapper } from 'decorators'
 
 export default {
-  title: 'Utils/ComunicationService',
+  title: 'Utils/CommunicationService',
   decorators: [Wrapper]
 }
 const Sender = () => {
@@ -30,7 +30,7 @@ const Sender = () => {
 
       <Button
         onClick={() => {
-          ComunicationService.send({ name: MessageNames.TEST, payload: val.current })
+          CommunicationService.send({ name: MessageNames.TEST, payload: val.current })
         }}
       >
         send message
@@ -46,7 +46,7 @@ const Reciever = () => {
     setPayload(payload)
   }
 
-  useComponentComunication({
+  useComponentCommunication({
     onRecieve: logPayload,
     subscriber: Subscriber,
     messageName: MessageNames.TEST
@@ -55,7 +55,7 @@ const Reciever = () => {
   return <Text style={{ background: RandomColor() }}>{Payload ?? 'no message'}</Text>
 }
 
-export const comunicationShowCase = () => {
+export const CommunicationShowCase = () => {
   return (
     <>
       <Text>components background color is randomly generated to spot new renders</Text>

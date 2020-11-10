@@ -9,7 +9,7 @@ import { array, func, instanceOf, string } from 'prop-types'
 // RXJS
 import { Subject } from 'rxjs'
 
-export const useComponentComunication = ({
+export const useComponentCommunication = ({
   dependencies,
   id,
   messageName,
@@ -28,7 +28,7 @@ export const useComponentComunication = ({
   }, dependencies ?? [])
 }
 
-useComponentComunication.propTypes = {
+useComponentCommunication.propTypes = {
   dependencies: array,
   id: string,
   messageName: string.isRequired,

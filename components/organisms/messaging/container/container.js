@@ -14,12 +14,12 @@ import {
   MessagingDragHover,
   MessagingSearch,
   MessagingSend,
-  useComponentComunication
+  useComponentCommunication
 } from 'components'
 
 import {
   MessageNames,
-  MessagingComunicationService,
+  MessagingCommunicationService,
   MessagingSubscriber
 } from 'components/services'
 
@@ -67,7 +67,7 @@ export const MessagingContainer = ({
   }
 
   const handleAttachSubmitClick = () => {
-    MessagingComunicationService.send({
+    MessagingCommunicationService.send({
       name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
       payload: Files
     })
@@ -80,7 +80,7 @@ export const MessagingContainer = ({
     setMessages([...newMessagesArray])
   }
 
-  useComponentComunication({
+  useComponentCommunication({
     dependencies: [Messages.length],
     messageName: MessageNames.Messaging.NEW_MESSAGES,
     onRecieve,
@@ -103,11 +103,11 @@ export const MessagingContainer = ({
       type: 'out'
     }
 
-    MessagingComunicationService.send({
+    MessagingCommunicationService.send({
       name: MessageNames.Messaging.NEW_MESSAGES,
       payload: [msg]
     })
-    MessagingComunicationService.send({
+    MessagingCommunicationService.send({
       name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
       payload: []
     })

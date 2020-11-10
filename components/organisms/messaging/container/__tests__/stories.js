@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { MessagingComunicationService, MessageNames } from 'components/services'
+import { MessagingCommunicationService, MessageNames } from 'components/services'
 
 // UI
 import { Button, filterByKey, filterByString, MessagingContainer } from 'components'
@@ -74,7 +74,7 @@ export const main = args => {
     ...args
   }
   const mimicRecieve = () => {
-    MessagingComunicationService.send({
+    MessagingCommunicationService.send({
       name: MessageNames.Messaging.NEW_MESSAGES,
       payload: [
         {

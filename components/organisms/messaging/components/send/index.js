@@ -7,12 +7,12 @@ import { useRef, useState } from 'react'
 import { array, func, number } from 'prop-types'
 import {
   MessageNames,
-  MessagingComunicationService,
+  MessagingCommunicationService,
   MessagingSubscriber
 } from 'components/services'
 import { convertToRaw } from 'draft-js'
 // UI
-import { Button, MessagingInput, Icon, useComponentComunication } from 'components'
+import { Button, MessagingInput, Icon, useComponentCommunication } from 'components'
 
 // Style
 import styled from 'styled-components'
@@ -37,7 +37,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
   const handleFilesChange = e => {
     const { files } = e.target
-    MessagingComunicationService.send({
+    MessagingCommunicationService.send({
       name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
       payload: files
     })
@@ -48,7 +48,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     setAttachments(files)
   }
 
-  useComponentComunication({
+  useComponentCommunication({
     dependencies: [attachments.length],
     messageName: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
     onRecieve: handleFilesRecieve,
