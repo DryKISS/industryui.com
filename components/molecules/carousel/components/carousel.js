@@ -41,8 +41,9 @@ export const Carousel = ({
   const [NumberOfItems, setNumberOfItems] = useState(
     typeof numberOfItems === 'number' ? numberOfItems : 1
   )
-
+  console.log(typeof numberOfItems)
   const resetNumberOfItems = width => {
+    console.log(width)
     let found = false
     for (const key in numberOfItems) {
       if (width <= Number(key) && found === false) {
