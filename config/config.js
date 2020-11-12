@@ -18,8 +18,8 @@ export const Brand = {
 
 export const Canonical = 'https://industryui.com'
 
-export const GetAddress = {
-  apiKey: ''
+export const GetAddressConfig = {
+  apiKey: 'AG2YtZS2HEKCTOsZcDCFTg28696'
 }
 
 export const Google = {
@@ -94,6 +94,7 @@ export const Config = {
   Brand,
   Canonical,
   defaultLocale,
+  GetAddressConfig,
   Google,
   Icons,
   jwtConfig,

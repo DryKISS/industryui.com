@@ -2,21 +2,23 @@
  * Carousel - Props
  */
 
-import { arrayOf, bool, oneOf, node, shape, string } from 'prop-types'
+import { arrayOf, bool, oneOf, node, number, shape, string } from 'prop-types'
 import { CONTEXT } from '../../../'
 import { PaginationPropTypes } from '../../pagination/components/props'
 
 export const CarouselPropTypes = {
-  arrowContext: oneOf(Object.values(CONTEXT)),
-  arrowPosition: oneOf(['top', 'middle', 'bottom']),
+  navContext: oneOf(Object.values(CONTEXT)),
+  navPosition: oneOf(['top', 'middle', 'bottom']),
   children: node,
   fullWidth: bool,
+  gap: number,
   height: string,
-  leftArrowIcon: string,
+  leftnavIcon: string,
+  numberOfItems: number,
   paginationProps: shape(PaginationPropTypes),
   paginationPosition: oneOf(['inside', 'outside']),
-  rightArrowIcon: string,
-  showArrows: bool,
+  rightnavIcon: string,
+  showNavs: bool,
   showPagination: bool,
   slides: arrayOf(
     shape({
@@ -30,12 +32,16 @@ export const CarouselPropTypes = {
 }
 
 export const CarouselDefaultProps = {
-  arrowContext: CONTEXT.BLACK,
-  arrowPosition: 'middle',
+  navContext: CONTEXT.BLACK,
+  navPosition: 'middle',
+  autoplay: false,
+  autoplayInterval: 1000,
   fullWidth: false,
-  leftArrowIcon: 'chevron-left',
+  gap: 10,
+  leftnavIcon: 'chevron-left',
+  numberOfItems: 1,
   paginationPosition: 'outside',
-  rightArrowIcon: 'chevron-right',
-  showArrows: true,
+  rightnavIcon: 'chevron-right',
+  showNavs: true,
   showPagination: false
 }

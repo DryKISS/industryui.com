@@ -2,9 +2,7 @@
   "name": "@drykiss/industry-ui",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
-  "contributors": [
-    "DryKISS, Ltd."
-  ],
+  "contributors": ["DryKISS, Ltd."],
   "homepage": "https://industryui.com",
   "main": "dist/industry-ui.js",
   "module": "dist/industry-ui.es.js",
@@ -38,10 +36,10 @@
     "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
     "clean-dist": "rm -rf ./dist",
-    "build": "NODE_ENV=build rollup -c",
+    "build": "cross-env NODE_ENV=build rollup -c",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
-    "test:snapshot": "jest",
-    "test:snapshot:update": "jest --updateSnapshot"
+    "test:snapshot": "cross-env ENVIRONMENT=test jest",
+    "test:snapshot:update": "cross-env ENVIRONMENT=test  jest --updateSnapshot"
   },
   "engines": {
     "node": ">=12"
@@ -64,12 +62,21 @@
   },
   "standard": {
     "globals": [
-      "__SITE__"
+      "__SITE__",
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
     ],
     "ignore": [
       "node_modules/**",
       "*.bundle*.js",
-      "**/__tests__/*.test.js"
+      "**/__tests__/*.test.js",
+      "**/__tests__/**.test.js"
     ],
     "parser": "babel-eslint"
   },
@@ -142,6 +149,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "cross-env": "^7.0.2",
     "husky": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "26.4.2",
