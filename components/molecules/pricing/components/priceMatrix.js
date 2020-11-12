@@ -94,7 +94,7 @@ const MatrixCol = styled.div`
     !freeSize &&
     css`
       display: ${show ? 'block' : 'none'};
-      min-width: 13rem;
+      min-width: 13.5rem;
       margin: 0;
       ${flex && 'flex:1;'}
     `}
