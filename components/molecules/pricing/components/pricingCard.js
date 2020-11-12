@@ -1,21 +1,25 @@
 import { Icon, Text } from 'components'
 import styled from 'styled-components'
 
-export const PricingCard = ({ data }) => {
-  const { checkList, dark, price } = data
+export const PricingCard = ({ data, onCardSelect }) => {
+  const { checkList, recommended, price } = data
   return (
-    <Wrapper dark={dark}>
-      <Title dark={dark}>{data.title}</Title>
+    <Wrapper recommended={recommended}>
+      <Title recommended={recommended}>{data.title}</Title>
       <ChecklistWrapper>
         {checkList.map((item, index) => {
           return (
             <ListItem key={index}>
               <Icon
-                color={dark ? 'rgb(255, 202, 16)' : 'rgb(69, 186, 190)'}
+                color={recommended ? 'rgb(255, 202, 16)' : 'rgb(69, 186, 190)'}
                 icon='check'
                 prefix='fas'
               />
-              <StyledText content={item.title} context={dark ? 'white' : 'blackText'} size='xxs' />
+              <StyledText
+                content={item.title}
+                context={recommended ? 'white' : 'blackText'}
+                size='xxs'
+              />
             </ListItem>
           )
         })}
@@ -24,15 +28,15 @@ export const PricingCard = ({ data }) => {
       <Fee
         align='center'
         content={price}
-        context={dark ? 'white' : 'deepBlue'}
-        dark={dark}
+        context={recommended ? 'white' : 'deepBlue'}
+        recommended={recommended}
         size='xl'
       />
-      <AddButtonWrapper>
+      <AddButtonWrapper onClick={() => onCardSelect(data)}>
         <AddToCartText
           align='center'
           content='Add To Cart'
-          context={dark ? 'white' : 'deepBlue'}
+          context={recommended ? 'white' : 'deepBlue'}
           size='sm'
         />
       </AddButtonWrapper>
@@ -43,13 +47,15 @@ const AddToCartText = styled(Text)`
   font-weight: 700;
 `
 const AddButtonWrapper = styled.div`
+  cursor: pointer;
   padding-top: 0.75rem;
 `
 const FlexSpacer = styled.div`
   flex: 1;
 `
 const Fee = styled(Text)`
-  border-bottom: 1px solid ${({ theme, dark }) => (dark ? theme.COLOUR.white : theme.COLOUR.black)};
+  border-bottom: 1px solid
+    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.black)};
   font-weight: 700;
   line-height: 1rem;
   padding-bottom: 1.25rem;
@@ -67,8 +73,8 @@ const ChecklistWrapper = styled.div`
 `
 const Title = styled.p`
   border-bottom: 1px solid
-    ${({ theme, dark }) => (dark ? theme.COLOUR.white : theme.COLOUR.darkGrey)};
-  color: ${({ theme, dark }) => (dark ? theme.COLOUR.white : theme.COLOUR.blackText)};
+    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.darkGrey)};
+  color: ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.blackText)};
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
@@ -76,13 +82,15 @@ const Title = styled.p`
   text-align: center;
 `
 const Wrapper = styled.div`
-  background-color: ${({ theme, dark }) =>
-    dark ? theme.COLOUR.darkBlue : theme.COLOUR.watterBlue};
+  background-color: ${({ theme, recommended }) =>
+    recommended ? theme.COLOUR.darkBlue : theme.COLOUR.watterBlue};
 
-  border: ${({ theme, dark }) => (dark ? 'none' : `1px solid ${theme.COLOUR.darkGrey}`)};
+  border: ${({ theme, recommended }) =>
+    recommended ? 'none' : `1px solid ${theme.COLOUR.darkGrey}`};
   border-radius: 1rem;
 
-  box-shadow: ${({ theme, dark }) => (dark ? `0px 3px 8px ${theme.COLOUR.darkBlue}` : 'none')};
+  box-shadow: ${({ theme, recommended }) =>
+    recommended ? `0px 3px 8px ${theme.COLOUR.darkBlue}` : 'none'};
 
   display: flex;
   flex-direction: column;

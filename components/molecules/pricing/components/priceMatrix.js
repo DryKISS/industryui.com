@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import { Icon, Text } from 'components'
-export const PriceMatrix = ({ layout, pricingInfo }) => {
+import { Icon, LAYOUTS, Text } from 'components'
+export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}
   const features = []
   pricingInfo.forEach(item => {
@@ -37,12 +37,16 @@ export const PriceMatrix = ({ layout, pricingInfo }) => {
       </MatrixCol>
       {pricingInfo.map((item, index) => {
         return (
-          <MatrixCol key={index}>
+          <MatrixCol
+            key={index}
+            show={layout === LAYOUTS.DESKTOP || selectedPlan === index}
+            flex={layout !== LAYOUTS.DESKTOP}
+          >
             {features.map((feature, idx) => {
               return (
-                <FeatureCheckColumn key={idx}>
+                <FeatureCheckColumn odd={idx % 2 !== 0} key={idx}>
                   {featureExist(item, feature) ? (
-                    <StyledIcon prefix='fas' icon='check' dark={item.dark} />
+                    <StyledIcon prefix='fas' icon='check' recommended={item.recommended ? 1 : 0} />
                   ) : (
                     ''
                   )}
@@ -57,12 +61,12 @@ export const PriceMatrix = ({ layout, pricingInfo }) => {
 }
 
 const StyledIcon = styled(Icon).attrs(props => ({
-  color: props.dark ? props.theme.COLOUR.deepBlue : props.theme.COLOUR.darkGrey
+  color: props.recommended ? props.theme.COLOUR.deepBlue : props.theme.COLOUR.darkGrey
 }))``
 
 const FeatureCheckColumn = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.COLOUR.white};
+  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.grey : theme.COLOUR.white)};
   display: flex;
   justify-content: center;
   margin: 1px 0;
@@ -79,18 +83,21 @@ const FeatureNameColumn = styled.div`
   padding-left: 1.875rem;
 `
 const MatrixCol = styled.div`
+  margin: 0 0.375rem;
   ${({ freeSize }) =>
     freeSize &&
     css`
       flex: 1;
     `}
 
-  ${({ freeSize }) =>
+  ${({ freeSize, show, flex }) =>
     !freeSize &&
     css`
-      min-width: 12.75rem;
+      display: ${show ? 'block' : 'none'};
+      min-width: 13rem;
+      margin: 0;
+      ${flex && 'flex:1;'}
     `}
-  margin: 0 0.375rem;
 `
 const PriceMatrixWrapper = styled.div`
   display: flex;

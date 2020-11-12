@@ -1,0 +1,5 @@
+export const LAYOUTS = {
+  DESKTOP: 'DESKTOP',
+  MOBILE: 'MOBILE',
+  TABLET: 'TABLET'
+}
