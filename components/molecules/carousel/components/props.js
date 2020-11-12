@@ -13,7 +13,7 @@ export const CarouselPropTypes = {
   fullWidth: bool,
   gap: number,
   height: string,
-  leftArrowIcon: string,
+  leftNavIcon: string,
   numberOfItems: any,
   paginationProps: shape(PaginationPropTypes),
   paginationPosition: oneOf(['inside', 'outside']),
@@ -32,13 +32,13 @@ export const CarouselPropTypes = {
 }
 
 export const CarouselDefaultProps = {
-  arrowContext: CONTEXT.BLACK,
-  arrowPosition: 'middle',
+  navContext: CONTEXT.BLACK,
+  navPosition: 'middle',
   autoplay: false,
   autoplayInterval: 1000,
   fullWidth: false,
   gap: 10,
-  leftArrowIcon: 'chevron-left',
+  leftNavIcon: 'chevron-left',
   paginationPosition: 'outside',
   rightnavIcon: 'chevron-right',
   showNavs: true,
