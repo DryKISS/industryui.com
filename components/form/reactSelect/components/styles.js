@@ -1,3 +1,8 @@
+/**
+ * Form - React Select - Default Styles
+ */
+
+// UI
 import { COLOUR } from '../../../'
 
 export const defaultStyles = {

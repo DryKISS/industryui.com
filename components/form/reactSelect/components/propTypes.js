@@ -1,3 +1,8 @@
+/**
+ * Form - React Select - Prop Types
+ */
+
+// React
 import { array, bool, func, string, number, object, oneOf, oneOfType } from 'prop-types'
 
 export const reactSelectPropTypes = {
