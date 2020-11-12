@@ -11,7 +11,7 @@ import { TooltipDefaultProps, TooltipPropTypes } from './props'
 
 export const Tooltip = ({ children, content, context, ...props }) => {
   return (
-    <StyledTippy content={content} context={context} {...props}>
+    <StyledTippy content={content} {...props}>
       {children}
     </StyledTippy>
   )

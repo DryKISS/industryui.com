@@ -7,8 +7,8 @@ import { CONTEXT } from '../../../'
 import { PaginationPropTypes } from '../../pagination/components/props'
 
 export const CarouselPropTypes = {
-  arrowContext: oneOf(Object.values(CONTEXT)),
-  arrowPosition: oneOf(['top', 'middle', 'bottom']),
+  navContext: oneOf(Object.values(CONTEXT)),
+  navPosition: oneOf(['top', 'middle', 'bottom']),
   children: node,
   fullWidth: bool,
   gap: number,
@@ -17,8 +17,8 @@ export const CarouselPropTypes = {
   numberOfItems: any,
   paginationProps: shape(PaginationPropTypes),
   paginationPosition: oneOf(['inside', 'outside']),
-  rightArrowIcon: string,
-  showArrows: bool,
+  rightnavIcon: string,
+  showNavs: bool,
   showPagination: bool,
   slides: arrayOf(
     shape({
@@ -40,7 +40,7 @@ export const CarouselDefaultProps = {
   gap: 10,
   leftArrowIcon: 'chevron-left',
   paginationPosition: 'outside',
-  rightArrowIcon: 'chevron-right',
-  showArrows: true,
+  rightnavIcon: 'chevron-right',
+  showNavs: true,
   showPagination: false
 }
