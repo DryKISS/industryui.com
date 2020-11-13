@@ -27,7 +27,9 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
   const resetLayout = () => {
     const wrapper = WrapperRef.current
     const width = wrapper.offsetWidth
-    if (width > 1024) {
+    if (width > 1440) {
+      if (Layout !== LAYOUTS.MEDDESKTOP) setLayout(LAYOUTS.MEDDESKTOP)
+    } else if (width > 1024) {
       if (Layout !== LAYOUTS.DESKTOP) setLayout(LAYOUTS.DESKTOP)
     } else if (width > 768) {
       if (Layout !== LAYOUTS.TABLET) setLayout(LAYOUTS.TABLET)
@@ -49,9 +51,16 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
       <ResizeDetector onResize={({ width }) => resetLayout(width)} />
       <PricesWrapper>
         <>
-          {Layout === LAYOUTS.DESKTOP ? (
+          {Layout.includes(LAYOUTS.DESKTOP) ? (
             pricingInfo.map((item, index) => {
-              return <PricingCard onCardSelect={handlePlanSelect} data={item} key={index} />
+              return (
+                <PricingCard
+                  layout={Layout}
+                  onCardSelect={handlePlanSelect}
+                  data={item}
+                  key={index}
+                />
+              )
             })
           ) : (
             <DropDownAndFeatues>

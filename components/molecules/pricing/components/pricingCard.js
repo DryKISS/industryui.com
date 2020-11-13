@@ -1,10 +1,10 @@
-import { Icon, Text } from 'components'
+import { Icon, priceLayoutSizes, Text } from 'components'
 import styled from 'styled-components'
 
-export const PricingCard = ({ data, onCardSelect }) => {
+export const PricingCard = ({ data, layout, onCardSelect }) => {
   const { checkList, recommended, price } = data
   return (
-    <Wrapper recommended={recommended}>
+    <Wrapper layout={layout} recommended={recommended}>
       <Title recommended={recommended}>{data.title}</Title>
       <ChecklistWrapper>
         {checkList.map((item, index) => {
@@ -18,7 +18,7 @@ export const PricingCard = ({ data, onCardSelect }) => {
               <StyledText
                 content={item.title}
                 context={recommended ? 'white' : 'blackText'}
-                size='xxs'
+                size={priceLayoutSizes(layout).featuresTextSize}
               />
             </ListItem>
           )
@@ -96,7 +96,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin: 0 0.375rem;
   min-height: 20.25rem;
-  min-width: 12.75rem;
+  min-width: ${({ layout }) => priceLayoutSizes(layout).priceCardWidth};
   padding: 1.375rem;
   padding-bottom: 0.75rem;
 `

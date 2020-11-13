@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
-import { Icon, LAYOUTS, Text } from 'components'
+import { Icon, LAYOUTS, priceLayoutSizes, Text } from 'components'
+
 export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}
   const features = []
@@ -30,7 +31,11 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
         {features.map((item, index) => {
           return (
             <FeatureNameColumn key={index} odd={index % 2 !== 0}>
-              <Text content={item} context='black' size='xxs' />
+              <Text
+                content={item}
+                context='black'
+                size={priceLayoutSizes(layout).featuresTextSize}
+              />
             </FeatureNameColumn>
           )
         })}
@@ -39,8 +44,9 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
         return (
           <MatrixCol
             key={index}
-            show={layout === LAYOUTS.DESKTOP || selectedPlan === index}
-            flex={layout !== LAYOUTS.DESKTOP}
+            show={layout.includes(LAYOUTS.DESKTOP) || selectedPlan === index}
+            flex={!layout.includes(LAYOUTS.DESKTOP)}
+            layout={layout}
           >
             {features.map((feature, idx) => {
               return (
@@ -90,13 +96,13 @@ const MatrixCol = styled.div`
       flex: 1;
     `}
 
-  ${({ freeSize, show, flex }) =>
+  ${({ flex, freeSize, layout, show }) =>
     !freeSize &&
     css`
       display: ${show ? 'block' : 'none'};
-      min-width: 13.5rem;
       margin: 0;
       ${flex && 'flex:1;'}
+      min-width:calc(${priceLayoutSizes(layout).priceCardWidth} + 0.75rem );
     `}
 `
 const PriceMatrixWrapper = styled.div`
