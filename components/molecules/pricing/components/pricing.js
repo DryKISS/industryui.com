@@ -27,9 +27,9 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
   const resetLayout = () => {
     const wrapper = WrapperRef.current
     const width = wrapper.offsetWidth
-    if (width > 900) {
+    if (width > 1024) {
       if (Layout !== LAYOUTS.DESKTOP) setLayout(LAYOUTS.DESKTOP)
-    } else if (width > 500) {
+    } else if (width > 768) {
       if (Layout !== LAYOUTS.TABLET) setLayout(LAYOUTS.TABLET)
     } else {
       if (Layout !== LAYOUTS.MOBILE) setLayout(LAYOUTS.MOBILE)

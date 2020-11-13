@@ -66,7 +66,7 @@ const StyledIcon = styled(Icon).attrs(props => ({
 
 const FeatureCheckColumn = styled.div`
   align-items: center;
-  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.grey : theme.COLOUR.white)};
+  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};
   display: flex;
   justify-content: center;
   margin: 1px 0;
