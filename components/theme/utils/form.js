@@ -75,7 +75,7 @@ export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Requ
 
     ${readOnly &&
       css`
-        background-color: transparent;
+        background-color: ${({ theme }) => (theme ? theme.COLOUR.light : 'rgb(241,241,241)')};
         border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
         border-width: 1px;
         padding: 0.5rem;
