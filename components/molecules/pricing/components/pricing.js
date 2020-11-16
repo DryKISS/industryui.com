@@ -27,7 +27,9 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
   const resetLayout = () => {
     const wrapper = WrapperRef.current
     const width = wrapper.offsetWidth
-    if (width > 1440) {
+    if (width > 1920) {
+      if (Layout !== LAYOUTS.LARGEDESKTOP) setLayout(LAYOUTS.LARGEDESKTOP)
+    } else if (width > 1440) {
       if (Layout !== LAYOUTS.MEDDESKTOP) setLayout(LAYOUTS.MEDDESKTOP)
     } else if (width > 1024) {
       if (Layout !== LAYOUTS.DESKTOP) setLayout(LAYOUTS.DESKTOP)
@@ -107,14 +109,14 @@ const StyledButton = styled(Button)`
 `
 
 const AddToCartWrapper = styled.div`
+  margin-top: 1.875rem;
+  margin-bottom: 1.5rem;
   width: 15rem;
   ${({ fullWidth }) =>
     fullWidth &&
     css`
       width: 100%;
     `}
-  margin-top: 1.875rem;
-  margin-bottom: 1.5rem;
 `
 const FeaturesWrapper = styled.div``
 
@@ -129,10 +131,10 @@ const ListItem = styled.div`
 `
 
 const FeaturesAndAdd = styled.div`
-  margin-top: 1.5rem;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-top: 1.5rem;
 `
 const DropDownAndFeatues = styled.div`
   width: 100%;
@@ -142,9 +144,9 @@ const Wrapper = styled.div`
   min-width: 21.25rem;
 `
 const PricesWrapper = styled.div`
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1rem;
   position: relative;
+  width: 100%;
 `

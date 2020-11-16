@@ -8,9 +8,7 @@ import { Pricing } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: {
-    title: 'pricing'
-  },
+  args: {},
   title: 'Molecules/Pricing',
   component: Pricing,
   parameters: {

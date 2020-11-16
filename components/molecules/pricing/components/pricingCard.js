@@ -1,5 +1,7 @@
-import { Icon, priceLayoutSizes, Text } from 'components'
+// UI
 import styled from 'styled-components'
+
+import { Icon, priceLayoutSizes, Text } from 'components'
 
 export const PricingCard = ({ data, layout, onCardSelect }) => {
   const { checkList, recommended, price } = data
@@ -95,7 +97,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 0.375rem;
-  min-height: 20.25rem;
+  min-height: ${({ layout }) => priceLayoutSizes(layout).priceCardHeight};
   min-width: ${({ layout }) => priceLayoutSizes(layout).priceCardWidth};
   padding: 1.375rem;
   padding-bottom: 0.75rem;
