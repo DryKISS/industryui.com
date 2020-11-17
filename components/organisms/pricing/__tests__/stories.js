@@ -9,7 +9,7 @@ import Readme from '../README.md'
 
 export default {
   args: {},
-  title: 'Molecules/Pricing',
+  title: 'Organisms/Pricing',
   component: Pricing,
   parameters: {
     docs: {
