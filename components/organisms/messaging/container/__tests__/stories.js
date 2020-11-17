@@ -93,9 +93,21 @@ export const main = args => {
       ]
     })
   }
+
+  const onHashtagClick = e => {
+    console.log(e)
+  }
+  const onMentionClick = e => {
+    console.log(e)
+  }
+
   return (
     <>
-      <MessagingContainer {...defaultProps} />
+      <MessagingContainer
+        {...defaultProps}
+        onHashtagClick={onHashtagClick}
+        onMentionClick={onMentionClick}
+      />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
     </>
   )

@@ -4,9 +4,9 @@ import createMentionPlugin from 'draft-js-mention-plugin'
 import Editor from 'draft-js-plugins-editor'
 
 //  plugins configuration
-const mentionPlugin = createMentionPlugin()
-const hashtagPlugin = createHashtagPlugin()
-const emojiPlugin = createEmojiPlugin()
+export const mentionPlugin = createMentionPlugin()
+export const hashtagPlugin = createHashtagPlugin()
+export const emojiPlugin = createEmojiPlugin()
 
 export const MentionSuggestions = mentionPlugin.MentionSuggestions
 

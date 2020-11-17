@@ -7,8 +7,11 @@ import {
   EmojiSuggestions,
   EmojiSelect,
   MentionSuggestions,
+  MessageNames,
   MessagingEditor,
-  messagingPlugins
+  messagingPlugins,
+  MessagingSubscriber,
+  useComponentCommunication
 } from 'components'
 
 import { EditorState } from 'draft-js'
@@ -23,6 +26,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
 
   // Check editor text for mentions
   const onSearchChange = ({ value }) => {
+    console.log(value, mentions)
     setSuggestions(defaultSuggestionsFilter(value, mentions))
   }
 
@@ -40,9 +44,17 @@ export const MessagingInput = ({ mentions, onChange }) => {
     setEditorState(e)
   }
 
+  useComponentCommunication({
+    messageName: MessageNames.Messaging.CLEAR_INPUT,
+    onRecieve: () => {
+      setEditorState(EditorState.createEmpty())
+    },
+    subscriber: MessagingSubscriber
+  })
+
   return (
     <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
-      {suggestions.length > 0 && (
+      {mentions && (
         <MentionSuggestions
           onAddMention={onAddMention}
           onSearchChange={onSearchChange}

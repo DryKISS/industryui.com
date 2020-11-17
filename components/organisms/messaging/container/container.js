@@ -33,6 +33,8 @@ export const MessagingContainer = ({
   mentions,
   messages,
   onFilter,
+  onHashtagClick,
+  onMentionClick,
   onSearch,
   style
 }) => {
@@ -86,6 +88,16 @@ export const MessagingContainer = ({
     onRecieve,
     subscriber: MessagingSubscriber
   })
+  useComponentCommunication({
+    messageName: MessageNames.Messaging.HASHTAG_CLICKED,
+    onRecieve: e => onHashtagClick(e),
+    subscriber: MessagingSubscriber
+  })
+  useComponentCommunication({
+    messageName: MessageNames.Messaging.MENTION_CLICKED,
+    onRecieve: e => onMentionClick(e),
+    subscriber: MessagingSubscriber
+  })
 
   const handleSubmit = messageToSend => {
     const msg = {
@@ -106,6 +118,9 @@ export const MessagingContainer = ({
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.NEW_MESSAGES,
       payload: [msg]
+    })
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.CLEAR_INPUT
     })
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,

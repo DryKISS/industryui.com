@@ -3,17 +3,30 @@
  */
 
 // React
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { any, bool, string } from 'prop-types'
 
 // UI
-import { Card, Column, Icon, Image, MessagingEditor, Preview, Row } from 'components'
+import {
+  Card,
+  Column,
+  hashtagPlugin,
+  Icon,
+  Image,
+  MentionComponent,
+  MessagingEditor,
+  Preview,
+  Row
+} from 'components'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
-import { EditorState, convertFromRaw } from 'draft-js'
+import { EditorState, ContentState, convertFromRaw } from 'draft-js'
+import createMentionPlugin from 'draft-js-mention-plugin'
 // Style
 import styled from 'styled-components'
-
+const mentionPlugin = createMentionPlugin({
+  mentionComponent: mentionProps => <MentionComponent mentionProps={mentionProps} />
+})
 export const MessageBase = ({
   attachments,
   content,
@@ -29,14 +42,12 @@ export const MessageBase = ({
   type
 }) => {
   const messageRef = useRef(null)
-  let messageContent
-  if (content.blocks) {
-    const contentState = convertFromRaw(content)
-    const editorState = EditorState.createWithContent(contentState)
-    messageContent = <MessagingEditor editorState={editorState} readOnly />
-  } else {
-    messageContent = content
-  }
+
+  const [editorState, seteditorState] = useState(
+    EditorState.createWithContent(
+      content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
+    )
+  )
 
   return (
     <Column sm={11} columnRef={messageRef}>
@@ -62,7 +73,14 @@ export const MessageBase = ({
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
-            <StyledContent>{messageContent}</StyledContent>
+            <StyledContent>
+              <MessagingEditor
+                plugins={[hashtagPlugin, mentionPlugin]}
+                onChange={e => seteditorState(e)}
+                editorState={editorState}
+                readOnly
+              />
+            </StyledContent>
           </Column>
 
           {!type && (
