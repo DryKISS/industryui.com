@@ -21,5 +21,10 @@ export default {
   }
 }
 
-export const main = () => <BlogListing articles={Articles} category='development' config={Blog} />
+export const main = () => <BlogListing articles={Articles} config={Blog} />
+
+export const category = () => (
+  <BlogListing articles={Articles} category='development' config={Blog} />
+)
+
 export const tag = () => <BlogListing articles={Articles} config={Blog} tag='jam' />
