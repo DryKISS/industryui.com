@@ -17,7 +17,7 @@ export const CarouselPropTypes = {
   numberOfItems: any,
   paginationProps: shape(PaginationPropTypes),
   paginationPosition: oneOf(['inside', 'outside']),
-  rightnavIcon: string,
+  rightNavIcon: string,
   showNavs: bool,
   showPagination: bool,
   slides: arrayOf(
@@ -40,7 +40,7 @@ export const CarouselDefaultProps = {
   gap: 10,
   leftNavIcon: 'chevron-left',
   paginationPosition: 'outside',
-  rightnavIcon: 'chevron-right',
+  rightNavIcon: 'chevron-right',
   showNavs: true,
   showPagination: false
 }
