@@ -4640,6 +4640,26 @@ exports[`Storyshots Organisms/Password Change Main 1`] = `
 />
 `;
 
+exports[`Storyshots Organisms/Pricing Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Organisms/Register Error 1`] = `
 .c0 {
   padding: 1rem;

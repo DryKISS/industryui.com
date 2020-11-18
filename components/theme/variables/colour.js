@@ -8,8 +8,10 @@ export const COLOUR = {
   blackText: 'rgb(102, 102, 102)',
   danger: 'rgb(255, 51, 51)',
   dark: 'rgb(63, 81, 90)',
+  darkBlue: 'rgb(0, 29, 102)',
   darkGrey: 'rgb(204, 204, 204)',
   darkText: '#666666',
+  deepBlue: 'rgb(0, 43, 153)',
   drykiss_lightBlue: 'rgb(0, 225, 218)',
   drykiss_darkPink: 'rgb(255, 0, 99)',
   error: 'rgb(255, 45, 45)',
@@ -32,5 +34,6 @@ export const COLOUR = {
   transparent: 'transparent',
   visited: 'rgb(180, 14, 180)',
   warning: 'rgb(250, 207, 56)',
+  watterBlue: 'rgb(242, 246, 255)',
   white: 'rgb(255, 255, 255)'
 }
