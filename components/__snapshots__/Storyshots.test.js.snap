@@ -980,6 +980,26 @@ exports[`Storyshots Blog/Hero Main 1`] = `
 />
 `;
 
+exports[`Storyshots Blog/Listing Category 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Blog/Listing Main 1`] = `
 .c0 {
   padding: 1rem;
