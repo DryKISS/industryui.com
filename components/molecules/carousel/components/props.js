@@ -2,7 +2,7 @@
  * Carousel - Props
  */
 
-import { arrayOf, bool, oneOf, node, number, shape, string } from 'prop-types'
+import { arrayOf, bool, object, oneOf, oneOfType, node, number, shape, string } from 'prop-types'
 import { CONTEXT } from '../../../'
 import { PaginationPropTypes } from '../../pagination/components/props'
 
@@ -13,11 +13,11 @@ export const CarouselPropTypes = {
   fullWidth: bool,
   gap: number,
   height: string,
-  leftnavIcon: string,
-  numberOfItems: number,
+  leftNavIcon: string,
+  numberOfItems: oneOfType([object, number]),
   paginationProps: shape(PaginationPropTypes),
   paginationPosition: oneOf(['inside', 'outside']),
-  rightnavIcon: string,
+  rightNavIcon: string,
   showNavs: bool,
   showPagination: bool,
   slides: arrayOf(
@@ -38,10 +38,9 @@ export const CarouselDefaultProps = {
   autoplayInterval: 1000,
   fullWidth: false,
   gap: 10,
-  leftnavIcon: 'chevron-left',
-  numberOfItems: 1,
+  leftNavIcon: 'chevron-left',
   paginationPosition: 'outside',
-  rightnavIcon: 'chevron-right',
+  rightNavIcon: 'chevron-right',
   showNavs: true,
   showPagination: false
 }

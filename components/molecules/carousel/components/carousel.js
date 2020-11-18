@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { Carouselnav } from './nav'
 import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination, revert } from 'components'
+import { Icon, Pagination, revert, ResizeDetector } from 'components'
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
 let interval
 export const Carousel = ({
@@ -21,12 +21,12 @@ export const Carousel = ({
   fullWidth,
   gap,
   height,
-  leftnavIcon,
+  leftNavIcon,
   leftNavComponent,
   numberOfItems,
   paginationProps,
   paginationPosition,
-  rightnavIcon,
+  rightNavIcon,
   rightNavComponent,
   showNavs,
   showPagination,
@@ -34,8 +34,26 @@ export const Carousel = ({
   width
 }) => {
   let dataSource = slides || children
+
   dataSource = revert(dataSource)
+
   const [currentImageIndex, setCurrentImageIndex] = useState((slides || children).length - 1)
+  const [NumberOfItems, setNumberOfItems] = useState(
+    typeof numberOfItems === 'number' ? numberOfItems : 1
+  )
+
+  const resetNumberOfItems = width => {
+    let found = false
+    for (const key in numberOfItems) {
+      if (width <= Number(key) && found === false) {
+        found = true
+        setNumberOfItems(numberOfItems[key])
+      }
+    }
+    if (found === false) {
+      setNumberOfItems(10)
+    }
+  }
 
   useEffect(() => {
     if (autoplay === true) {
@@ -57,7 +75,7 @@ export const Carousel = ({
 
   const nextSlide = () => {
     const lastIndex = dataSource.length - 1
-    const shouldResetIndex = currentImageIndex === numberOfItems - 1
+    const shouldResetIndex = currentImageIndex === NumberOfItems - 1
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
     setCurrentImageIndex(index)
   }
@@ -88,7 +106,7 @@ export const Carousel = ({
           context={navContext}
           clickFunction={previousSlide}
           direction='left'
-          icon={leftnavIcon}
+          icon={leftNavIcon}
           position={navPosition}
         />
       ),
@@ -98,7 +116,7 @@ export const Carousel = ({
           context={navContext}
           clickFunction={nextSlide}
           direction='right'
-          icon={rightnavIcon}
+          icon={rightNavIcon}
           position={navPosition}
         />
       )
@@ -124,13 +142,17 @@ export const Carousel = ({
   return (
     <>
       <Wrapper width={width} height={height} fullWidth={fullWidth}>
+        {typeof numberOfItems !== 'number' && (
+          <ResizeDetector onResize={({ width }) => resetNumberOfItems(width)} />
+        )}
+
         {hasNavigation && showNavs && navComponents().left}
 
         {dataSource.map((item, index) => {
           return (
             <ItemWrapper
               gap={gap}
-              width={`calc(${100 / numberOfItems}% - ${gap}px)`}
+              width={`calc(${100 / NumberOfItems}% - ${gap}px)`}
               transform={`translateX(calc(${currentImageIndex - index} * calc(100% + ${gap}px)))`}
               key={'slide' + index}
             >
