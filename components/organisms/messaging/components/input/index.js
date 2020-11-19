@@ -74,13 +74,13 @@ export const MessagingInput = ({ mentions, onChange }) => {
   )
 }
 const Wrapper = styled.div`
-  .draftJsMentionPlugin__mentionSuggestions__2DWjA {
+  [class*='mentionSuggestions'] {
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
-  .draftJsEmojiPlugin__emojiSelectPopover__1J1s0 {
+  [class*='emojiSelectPopover_'] {
     top: -400px;
   }
-  .draftJsEmojiPlugin__emojiSuggestions__2ffcV {
+  [class*='emojiSuggestions'] {
     top: -350px !important;
   }
   background-color: ${({ theme }) => theme.COLOUR.light};

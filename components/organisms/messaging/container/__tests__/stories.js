@@ -76,21 +76,7 @@ export const main = args => {
   const mimicRecieve = () => {
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.NEW_MESSAGES,
-      payload: [
-        {
-          content:
-            'Hiya we are expecting a PPM scheduled maintenance check on our LED lightbulbs throughout the third floor of XYZ Company offices today. Would appreciate a timely response on this so we can sort out security.',
-          from: 'Mike <mike@xyz.com>',
-          icon: 'email',
-          more: false,
-          pictureId: null,
-          reply: 'Re: 5397 — PPM',
-          statusText: 'delivered',
-          time: 'Mon 4 Nov 2019 11:59',
-          to: 'internal',
-          type: 'in'
-        }
-      ]
+      payload: [messaging[Math.floor(Math.random() * 3)]]
     })
   }
 
