@@ -12,7 +12,8 @@ import styled from 'styled-components'
 export const ResizeDetector = withResizeDetector(
   memo(
     ({ height, onResize, style, width }) => {
-      window.requestAnimationFrame(() => onResize({ height, width }))
+      typeof window !== 'undefined' &&
+        window.requestAnimationFrame(() => onResize({ height, width }))
       return <ResizeDetectorWrapper style={style} />
     },
     ({ width: prevWidth }, { width: nextWidth }) => prevWidth === nextWidth
