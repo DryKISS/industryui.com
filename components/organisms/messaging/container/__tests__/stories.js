@@ -4,16 +4,16 @@
 
 // React
 import { useState } from 'react'
-
-// Moment
-import moment from 'moment'
+import { MessagingCommunicationService, MessageNames } from 'components/services'
 
 // UI
-import { filterByKey, filterByString, MessagingContainer } from 'components'
+import { Button, filterByKey, filterByString, MessagingContainer } from 'components'
+
 import Readme from '../README.md'
 
 // Data
 import { messages } from '../__mocks__/container'
+import { mentions } from '../__mocks__/mentions'
 
 export default {
   args: {
@@ -59,34 +59,6 @@ export const main = args => {
     }
   }
 
-  const handleSubmit = form => {
-    const { audience, from, icon, message, type } = form
-
-    const msg = {
-      content: message,
-      from: from || null,
-      icon: icon || 'comment',
-      pictureId: null,
-      statusText: 'delivered',
-      to: audience,
-      type: type || 'out',
-      issueId: 1
-    }
-
-    msg.id = messaging[messaging.length - 1].id + 1
-
-    msg.createdAt = moment().format('YYYY-MM-DD HH:mm')
-    msg.time = moment().format('ddd D MMM YYYY HH:mm')
-
-    msg.issueId = parseInt(msg.issueId)
-    msg.from = 'test'
-
-    messaging.push(msg)
-    window.localStorage.setItem('messaging', JSON.stringify(messaging))
-
-    setMessaging([...messaging])
-  }
-
   const defaultProps = {
     audienceItems: [
       { name: 'All', id: 'all' },
@@ -95,12 +67,34 @@ export const main = args => {
       { name: 'Supplier Only', id: 'supplier' },
       { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
+    mentions,
     messages: messaging,
     onSearch: handleSearch,
     onFilter: handleFilter,
-    onSubmit: handleSubmit,
     ...args
   }
+  const mimicRecieve = () => {
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.NEW_MESSAGES,
+      payload: [messaging[Math.floor(Math.random() * 3)]]
+    })
+  }
 
-  return <MessagingContainer {...defaultProps} />
+  const onHashtagClick = e => {
+    console.log(e)
+  }
+  const onMentionClick = e => {
+    console.log(e)
+  }
+
+  return (
+    <>
+      <MessagingContainer
+        {...defaultProps}
+        onHashtagClick={onHashtagClick}
+        onMentionClick={onMentionClick}
+      />
+      <Button onClick={mimicRecieve}>mimic message recieve</Button>
+    </>
+  )
 }

@@ -20,6 +20,11 @@ import 'react-datepicker/dist/react-datepicker.css'
 import 'tippy.js/dist/tippy.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
+import 'draft-js/dist/Draft.css'
+import 'draft-js-mention-plugin/lib/plugin.css'
+import 'draft-js-hashtag-plugin/lib/plugin.css'
+import 'draft-js-emoji-plugin/lib/plugin.css'
+
 const actionWithPromise = () => {
   action('clicked link')()
   return new Promise((_, reject) => reject())
