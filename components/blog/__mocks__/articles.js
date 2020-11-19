@@ -4,7 +4,7 @@
 export const Articles = [
   {
     author: 'Ian Warner',
-    category: 'Development',
+    category: 'Tech',
     data: '<p>Static Site development</p>',
     date: '2019-07-16',
     description: 'Static Site development',

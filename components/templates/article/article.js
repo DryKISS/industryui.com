@@ -4,7 +4,7 @@
  */
 
 // React
-import { object } from 'prop-types'
+import { object, string } from 'prop-types'
 
 // UI
 import { BlogCategory, BlogDetails, Breadcrumb, Heading, Image } from '../../'
@@ -12,24 +12,27 @@ import { BlogCategory, BlogDetails, Breadcrumb, Heading, Image } from '../../'
 // Style
 import styled from 'styled-components'
 
-export const Article = ({ article, config, facebook }) => {
+export const Article = ({ article, className, config, facebook, style }) => {
   return (
     <StyledArticle
+      className={className}
       itemProp='blogPost'
       itemScope
       itemType='http://schema.org/BlogPosting'
       role='article'
+      style={style}
     >
       <header>
         <StyledImage
           alt={article.heading}
-          slant
           src={article.image || `/static/blog/${article.slug}/hero.jpg`}
         />
 
-        <Breadcrumb category={article.category} page={article.title} path={article.category} />
+        {article.category && (
+          <Breadcrumb category={article.category} page={article.title} path={article.category} />
+        )}
 
-        {config && <BlogCategory config={config} to={article.category} />}
+        {config && article.category && <BlogCategory config={config} to={article.category} />}
 
         <StyledHeading content={article.heading} />
 
@@ -79,8 +82,10 @@ const StyledHeading = styled(Heading)`
 
 Article.propTypes = {
   article: object.isRequired,
+  className: string,
   config: object,
-  facebook: object
+  facebook: object,
+  style: object
 }
 
 // li:before {

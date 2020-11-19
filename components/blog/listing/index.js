@@ -32,7 +32,9 @@ export const BlogListing = ({ articles, author, category, config, tag }) => {
   }
 
   const _find = () => {
-    const _findMe = tag ? _findTag(articles) : _findArticle(articles)
+    let _findMe = articles
+    if (tag) _findMe = _findTag(articles)
+    if (category) _findMe = _findArticle(articles)
 
     return _findMe
       .sort((a, b) => {

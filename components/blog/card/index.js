@@ -18,22 +18,24 @@ export const BlogCard = ({ article, config, type }) => {
   const { author, category, excerpt, heading, slug } = article
 
   const articleSlug = slugify(article.slug)
-  const categorySlug = slugify(category)
+  const categorySlug = category ? slugify(category) : null
 
   const articleLink = {
-    as: `${config.path}/${categorySlug}/${articleSlug}`,
-    href: `${config.path}/[categoryId]/[articleId]`
+    as: article?.linkAs || `${config.path}/${categorySlug}/${articleSlug}`,
+    href: article?.linkHref || `${config.path}/[categoryId]/[articleId]`
   }
 
   return (
     <article role='article' itemProp='blogPost' itemScope itemType='http://schema.org/BlogPosting'>
       <Card shadow>
         <Link to={articleLink}>
-          <CardImage alt={heading} src={`/static/blog/${slug}/hero.jpg?v=1.00`} />
+          <CardImage alt={heading} src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`} />
         </Link>
 
         <StyledCardBody type={type}>
-          {type === 'normal' && <BlogCategory config={config} to={category} type={type} />}
+          {type === 'normal' && category && (
+            <BlogCategory config={config} to={category} type={type} />
+          )}
 
           <StyledContent type={type}>
             <Link to={articleLink}>
@@ -53,9 +55,11 @@ export const BlogCard = ({ article, config, type }) => {
 
               <Divider size='sm' />
 
-              <BlogCategory author to={author} config={config} type={type} />
+              {author && <BlogCategory author to={author} config={config} type={type} />}
 
-              <StyledReadTime>{article.readtime}min read time.</StyledReadTime>
+              {article.readtime && (
+                <StyledReadTime>{article.readtime}min read time.</StyledReadTime>
+              )}
             </>
           )}
 
