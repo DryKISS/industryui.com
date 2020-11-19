@@ -57,9 +57,7 @@ const StyledTextarea = styled.textarea`
 
   direction: ${({ dir }) => dir};
   display: block;
-  font-size: 1rem;
-  line-height: 2rem;
-
+  line-height: 1.25rem;
   ${({ errors }) =>
     errors &&
     css`
