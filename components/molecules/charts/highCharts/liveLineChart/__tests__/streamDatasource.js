@@ -1,5 +1,4 @@
-import { MessageNames } from 'components/hooks/useComponentComunication/messageNames'
-import { LiveChartMessageService } from 'components/hooks/useComponentComunication/service'
+import { LiveChartMessageService, MessageNames } from 'components/services'
 
 let interval
 
