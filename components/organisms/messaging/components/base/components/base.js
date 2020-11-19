@@ -13,6 +13,7 @@ import {
   hashtagPlugin,
   Icon,
   Image,
+  linkifyPlugin,
   MentionComponent,
   MessagingEditor,
   Preview,
@@ -22,11 +23,13 @@ import { MessageIcon } from './icon'
 import { MessageTo } from './to'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
+
 // Style
 import styled from 'styled-components'
 const mentionPlugin = createMentionPlugin({
   mentionComponent: mentionProps => <MentionComponent mentionProps={mentionProps} />
 })
+
 export const MessageBase = ({
   attachments,
   content,
@@ -75,7 +78,7 @@ export const MessageBase = ({
             <StyledReply>{reply}</StyledReply>
             <StyledContent>
               <MessagingEditor
-                plugins={[hashtagPlugin, mentionPlugin]}
+                plugins={[hashtagPlugin, linkifyPlugin, mentionPlugin]}
                 onChange={e => seteditorState(e)}
                 editorState={editorState}
                 readOnly

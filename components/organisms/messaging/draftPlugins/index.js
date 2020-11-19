@@ -1,7 +1,13 @@
 import createEmojiPlugin from 'draft-js-emoji-plugin'
 import { createHashtagPlugin } from './hashtag'
+import { LinkPluginComponent } from 'components'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import Editor from 'draft-js-plugins-editor'
+import createLinkifyPlugin from 'draft-js-linkify-plugin'
+
+export const linkifyPlugin = createLinkifyPlugin({
+  component: props => <LinkPluginComponent {...props} />
+})
 
 //  plugins configuration
 export const mentionPlugin = createMentionPlugin()
@@ -16,4 +22,4 @@ export const EmojiSelect = emojiPlugin.EmojiSelect
 
 export const MessagingEditor = Editor
 
-export const messagingPlugins = [emojiPlugin, hashtagPlugin, mentionPlugin]
+export const messagingPlugins = [emojiPlugin, hashtagPlugin, mentionPlugin, linkifyPlugin]
