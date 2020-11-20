@@ -2,12 +2,22 @@
  * Breadcrumb
  */
 
+import { ControlTypes } from 'decorators'
+
 // UI
-import { Breadcrumb } from 'components'
+import { Breadcrumb, Icon, SIZE } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Breadcrumb',
+  args: {
+    size: SIZE.LG
+  },
+  argTypes: {
+    size: {
+      control: { options: Object.values(SIZE), type: ControlTypes.Select }
+    },
+    separator: { control: null }
+  },
   component: Breadcrumb,
   parameters: {
     docs: {
@@ -15,7 +25,34 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Breadcrumb'
 }
+const breadcrumbs = [
+  {
+    to: '/',
+    title: 'Home'
+  },
+  {
+    icon: <Icon icon='smile' prefix='fas' />,
+    to: {
+      as: '/blog/asdasdasd',
+      href: {
+        pathname: '/blog/category',
+        query: {
+          category: 'asdasdsadasd'
+        }
+      }
+    },
+    title: 'DryKISS'
+  },
+  {
+    icon: <Icon icon='images' prefix='fas' />,
+    to: '/rrrr',
+    title: 'Current Page'
+  }
+]
+const separator = '\\'
+// const customSeparator = <Icon icon='images' prefix='fas' />
 
-export const main = () => <Breadcrumb category='DryKISS' page='Home' path='/' />
+export const main = args => <Breadcrumb breadcrumbs={breadcrumbs} separator={separator} {...args} />
