@@ -4,104 +4,166 @@
  */
 
 // React
-import { string } from 'prop-types'
+import { oneOf, oneOfType, string } from 'prop-types'
 
 // Fontawesome
-import { Icon, Link, slugify } from '../../'
+import { Icon, Link, SIZE } from 'components'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Breadcrumb = ({ category, path, page }) => {
-  const categoryFormatted = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')
-
+export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
   return (
     <nav aria-label='breadcrumb'>
       <StyledOl itemScope='' itemType='http://schema.org/BreadcrumbList'>
         {/* Home link - always static and routes to / */}
-        <StyledLi itemProp='itemListElement' itemScope='' itemType='http://schema.org/ListItem'>
-          <Link to='/' passHref>
-            <StyledA itemProp='item' itemScope='itemscope' itemType='http://schema.org/Thing'>
-              <Icon icon='home-heart' />
-            </StyledA>
-          </Link>
-
-          <meta itemProp='position' content='1' />
-        </StyledLi>
-
-        {/* Category link - Need name and path */}
-        <StyledLi itemProp='itemListElement' itemScope='' itemType='http://schema.org/ListItem'>
-          <Link
-            to={{
-              as: `/blog/${slugify(path)}`,
-              href: {
-                pathname: '/blog/category',
-                query: {
-                  category: slugify(path)
-                }
-              }
-            }}
-            passHref
-          >
-            <StyledA itemProp='item' itemScope='itemscope' itemType='http://schema.org/Thing'>
-              {categoryFormatted}
-            </StyledA>
-          </Link>
-
-          <meta itemProp='position' content='2' />
-        </StyledLi>
-
-        {/* Current page */}
-        <StyledLi
-          aria-current='page'
-          itemProp='itemListElement'
-          itemScope=''
-          itemType='http://schema.org/ListItem'
-        >
-          <span itemProp='name'>{page}</span>
-          <meta itemProp='position' content='3' />
-        </StyledLi>
+        {breadcrumbs.map((item, index) => {
+          return (
+            <StyledLi
+              itemProp='itemListElement'
+              itemScope=''
+              itemType='http://schema.org/ListItem'
+              key={index}
+            >
+              {index + 1 !== breadcrumbs.length ? (
+                <Link to={item.to} passHref>
+                  <StyledA
+                    itemProp='item'
+                    itemScope='itemscope'
+                    size={size}
+                    itemType='http://schema.org/Thing'
+                  >
+                    {item.icon && <StyledIconWrapper size={size}>{item.icon}</StyledIconWrapper>}
+                    <StyledTitle size={size}> {item.title}</StyledTitle>
+                  </StyledA>
+                </Link>
+              ) : (
+                <StyledLastTitle size={size} itemProp='name'>
+                  {item.icon && <StyledIconWrapper size={size}>{item.icon}</StyledIconWrapper>}
+                  <StyledTitle last size={size}>
+                    {item.title}
+                  </StyledTitle>
+                </StyledLastTitle>
+              )}
+              <meta itemProp='position' content={index + 1 + ''} />
+              {index + 1 !== breadcrumbs.length && (
+                <StyledSeperator size={size}>
+                  {customSeparator ??
+                    (separator && separator === 'chevron' ? (
+                      <StyledIcon icon='chevron-right' prefix='fas' />
+                    ) : separator && separator === 'slash' ? (
+                      <StyledIcon icon='slash' prefix='fas' />
+                    ) : (
+                      separator || '\\'
+                    ))}
+                </StyledSeperator>
+              )}
+            </StyledLi>
+          )
+        })}
       </StyledOl>
     </nav>
   )
 }
 
-const StyledA = styled.span`
-  color: #fff;
-
-  &:hover {
-    color: #00ccbc;
+const sizedStyles = size => {
+  switch (size) {
+    case SIZE.XXS:
+      return css`
+        font-size: 0.625rem;
+        padding: 0 0.25rem;
+      `
+    case SIZE.XS:
+      return css`
+        font-size: 0.75rem;
+        padding: 0 0.25rem;
+      `
+    case SIZE.SM:
+      return css`
+        font-size: 0.875rem;
+        padding: 0 0.25rem;
+      `
+    case SIZE.MD:
+      return css`
+        font-size: 1rem;
+        padding: 0 0.375rem;
+      `
+    case SIZE.LG:
+      return css`
+        font-size: 1.25rem;
+        padding: 0 0.375rem;
+      `
+    case SIZE.XL:
+      return css`
+        font-size: 1.5rem;
+        padding: 0 0.375rem;
+      `
+    case SIZE.XXL:
+      return css`
+        font-size: 2rem;
+        padding: 0 0.5rem;
+      `
+    case SIZE.XXXL:
+      return css`
+        font-size: 3rem;
+        padding: 0 0.5rem;
+      `
+    default:
+      return css`
+        font-size: 1.25rem;
+        padding: 0 0.375rem;
+      `
   }
+}
+
+const StyledTitle = styled.span`
+  ${({ size }) => sizedStyles(size)}
+  color: ${({ theme }) => theme.COLOUR.link};
+  ${({ last, theme }) =>
+    last &&
+    css`
+      color: ${theme.COLOUR.blackText};
+    `}
 `
 
+const StyledIconWrapper = styled.span`
+  ${({ size }) => sizedStyles(size)}
+  color: ${({ theme }) => theme.COLOUR.blackGrey};
+`
+const StyledIcon = styled(Icon).attrs(props => ({
+  color: props.theme.darkGrey
+}))``
+
+const StyledSeperator = styled.span`
+  color: ${({ theme }) => theme.COLOUR.darkGrey};
+  ${({ size }) => sizedStyles(size)}
+`
+
+const StyledA = styled.span``
+
+const StyledLastTitle = styled.span`
+  ${({ size }) => sizedStyles(size)}
+`
 const StyledOl = styled.ol`
-  background-color: rgba(62, 62, 62, 0.5);
-  border-bottom: 1px #aaa solid;
   border-radius: 0;
-  color: #fff;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding: 0.75rem 1rem;
-  position: absolute;
-  top: 0;
   width: 100%;
-  z-index: 1;
 `
 
 const StyledLi = styled.li`
-  &:not(:first-child)::before {
-    color: #ccc;
-    content: '/';
-    display: inline-block;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  a {
+    border: none !important;
   }
 `
 
+Breadcrumb.defaultProps = {
+  size: 'lg'
+}
+
 Breadcrumb.propTypes = {
-  category: string.isRequired,
-  page: string.isRequired,
-  path: string.isRequired
+  separator: oneOfType([oneOf(['chevron', 'slash']), string]),
+  size: oneOf(Object.values(SIZE))
 }
