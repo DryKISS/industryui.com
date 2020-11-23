@@ -12,6 +12,7 @@ import styled from 'styled-components'
 export const Details = ({
   children,
   context,
+  dataSet,
   open,
   summary,
   SummaryActionsComponent,
@@ -20,7 +21,7 @@ export const Details = ({
   ...props
 }) => {
   return (
-    <StyledDetails context={context} open={open}>
+    <StyledDetails context={context} open={open} {...dataSet}>
       <StyledSummary>
         {summary}
         {props.button && (
