@@ -71,7 +71,6 @@ ${props => COMMON_INPUT_STYLES(props)}
         case SIZE.SM:
           return css`
             height: 1.5rem;
-            font-size: 0.625rem;
           `
         case SIZE.MD:
           return css`

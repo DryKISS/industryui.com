@@ -4,6 +4,7 @@
 
 // Style
 import { css } from 'styled-components'
+import { SIZE } from 'components'
 
 export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
   return css`
@@ -25,7 +26,34 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
   `
 }
 
-export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Required, theme }) => {
+export const INPUT_FONT_SIZE = size => {
+  switch (size) {
+    case SIZE.SM:
+      return css`
+        font-size: 0.625rem;
+      `
+    case SIZE.MD:
+      return css`
+        font-size: 1rem;
+      `
+    case SIZE.LG:
+      return css``
+    default:
+      return css`
+        font-size: 1rem;
+      `
+  }
+}
+
+export const COMMON_INPUT_STYLES = ({
+  disabled,
+  errors,
+  isTyping,
+  readOnly,
+  Required,
+  size,
+  theme
+}) => {
   return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
@@ -34,7 +62,8 @@ export const COMMON_INPUT_STYLES = ({ disabled, errors, isTyping, readOnly, Requ
     box-sizing: border-box;
     color: ${theme.COLOUR.blackText};
     display: block;
-    font-size: 0.75rem;
+
+    ${INPUT_FONT_SIZE(size)}
     ${Required &&
       css`
         border-right-width: 0.25rem;
