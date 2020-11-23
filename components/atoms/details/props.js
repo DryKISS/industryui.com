@@ -3,7 +3,7 @@
  */
 
 // React
-import { any, bool, node, oneOf, string } from 'prop-types'
+import { any, bool, node, object, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../../'
@@ -11,6 +11,7 @@ import { CONTEXT } from '../../'
 export const DetailsPropTypes = {
   children: node.isRequired,
   context: oneOf(Object.values(CONTEXT)),
+  dataSet: object,
   open: bool,
   summary: string.isRequired,
   SummaryActionsComponent: node,
@@ -20,5 +21,6 @@ export const DetailsPropTypes = {
 
 export const DetailsDefaultProps = {
   context: 'primary',
+  dataSet: { 'data-cy': 'details' },
   open: false
 }
