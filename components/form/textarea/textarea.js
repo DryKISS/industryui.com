@@ -69,6 +69,7 @@ const StyledTextarea = styled.textarea`
     css`
       font-size: 0.625rem;
     `}
+    padding: 0.5rem 0.725rem;
 `
 
 TextareaField.propTypes = {
