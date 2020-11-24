@@ -20,9 +20,6 @@ export default {
     className: '',
     maxLength: 320,
     messages: messages,
-    onFilter: () => {},
-    onSearch: () => {},
-    onSubmit: () => {},
     style: {}
   },
   component: MessagingContainer,
@@ -40,6 +37,8 @@ export const main = args => {
   const [messaging] = useState(messages)
 
   const handleFilter = type => {
+    console.log(type)
+
     if (type !== 'all') {
       const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
       const filter = filterByKey(msgs, 'icon', type)
@@ -56,6 +55,7 @@ export const main = args => {
   }
 
   const handleSearch = query => {
+    console.log(query)
     if (query) {
       const search = filterByString(messaging, 'content', query)
       // setMessaging(search)
