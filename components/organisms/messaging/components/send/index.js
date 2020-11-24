@@ -45,6 +45,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   }
 
   const handleFilesRecieve = files => {
+    console.log(files)
     setAttachments(files)
   }
 
@@ -72,7 +73,16 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     const contentState = e.getCurrentContent()
     setMessage(convertToRaw(contentState))
   }
-
+  const isSendDisabled = () => {
+    let disabled = false
+    if (
+      attachments.length === 0 &&
+      (Message === {} || (Message.blocks && !Message.blocks[0].text))
+    ) {
+      disabled = true
+    }
+    return disabled
+  }
   return (
     <>
       <StyledContainer audience={audience}>
@@ -88,7 +98,13 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           />
           <StyledElements>
             <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
-            <Button content='Send' context='info' size='sm' onClick={submit} />
+            <Button
+              content='Send'
+              context='info'
+              disabled={isSendDisabled()}
+              size='sm'
+              onClick={submit}
+            />
           </StyledElements>
         </StyledWrapper>
       </StyledContainer>

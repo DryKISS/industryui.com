@@ -86,13 +86,38 @@ export const main = args => {
   const onMentionClick = e => {
     console.log(e)
   }
+  const onSubmit = message => {
+    console.log(message)
+    const msg = {
+      // attachments can be an array of files or array of type {src:string}
+      attachments: message.attachments || [],
 
+      content: message.message,
+      createdAt: 'YYYY-MM-DD HH:mm',
+      from: 'me',
+      icon: 'comment',
+      id: 'unique id recieved from server',
+      issueId: 1,
+      pictureId: null,
+      statusText: 'status from server',
+      time: 'ddd D MMM YYYY HH:mm',
+      to: 'all',
+      type: 'out'
+    }
+    setTimeout(() => {
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.NEW_MESSAGES,
+        payload: [msg]
+      })
+    }, 100)
+  }
   return (
     <>
       <MessagingContainer
         {...defaultProps}
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}
+        onMessageSubmit={onSubmit}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
     </>

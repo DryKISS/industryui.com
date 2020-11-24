@@ -5,7 +5,6 @@
 // React
 import { useState } from 'react'
 import { array, func, number, object, string } from 'prop-types'
-import moment from 'moment'
 
 // UI
 import {
@@ -35,6 +34,7 @@ export const MessagingContainer = ({
   onFilter,
   onHashtagClick,
   onMentionClick,
+  onMessageSubmit,
   onSearch,
   style
 }) => {
@@ -100,25 +100,8 @@ export const MessagingContainer = ({
   })
 
   const handleSubmit = messageToSend => {
-    const msg = {
-      attachments: messageToSend.attachments || [],
-      content: messageToSend.message,
-      createdAt: moment().format('YYYY-MM-DD HH:mm'),
-      from: 'me',
-      icon: 'comment',
-      id: Messages[Messages.length - 1].id + 1,
-      issueId: 1,
-      pictureId: null,
-      statusText: 'delivered',
-      time: moment().format('ddd D MMM YYYY HH:mm'),
-      to: 'all',
-      type: 'out'
-    }
+    onMessageSubmit(messageToSend)
 
-    MessagingCommunicationService.send({
-      name: MessageNames.Messaging.NEW_MESSAGES,
-      payload: [msg]
-    })
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.CLEAR_INPUT
     })
