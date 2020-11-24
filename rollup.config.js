@@ -4,6 +4,7 @@ import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import svg from 'rollup-plugin-svg'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import visualizer from 'rollup-plugin-visualizer'
 import pkg from './package.json'
 
 const globals = {
@@ -24,7 +25,8 @@ const baseConfig = {
     babel({
       babelHelpers: 'runtime',
       exclude: /node_modules/
-    })
+    }),
+    visualizer()
   ]
 }
 
