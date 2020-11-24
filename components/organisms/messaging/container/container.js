@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { array, func, object, string } from 'prop-types'
+import { array, func, number, object, string } from 'prop-types'
 
 // UI
 import {
@@ -31,6 +31,7 @@ export const MessagingContainer = ({
   maxLength,
   mentions,
   messages,
+  messagesContainerHeight,
   onFilter,
   onHashtagClick,
   onMentionClick,
@@ -146,7 +147,8 @@ export const MessagingContainer = ({
 
 const StyledContainer = styled.div`
   background-color: rgba(117, 204, 207, 0.4);
-  height: calc(100vh - 260px);
+  height: ${({ messagesContainerHeight }) =>
+    messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;
   position: relative;
   .ReactVirtualized__Grid {
@@ -158,6 +160,7 @@ MessagingContainer.propTypes = {
   audienceItems: array,
   className: string,
   messages: array.isRequired,
+  messagesContainerHeight: number,
   onFilter: func.isRequired,
   onSearch: func.isRequired,
   onMessageSubmit: func.isRequired,
