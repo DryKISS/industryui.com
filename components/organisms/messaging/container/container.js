@@ -81,7 +81,9 @@ export const MessagingContainer = ({
     const newMessagesArray = [...Messages, ...payload]
     setMessages([...newMessagesArray])
   }
-
+  const onRenewMessages = messages => {
+    setMessages(() => messages)
+  }
   useComponentCommunication({
     dependencies: [Messages.length],
     messageName: MessageNames.Messaging.NEW_MESSAGES,
@@ -96,6 +98,12 @@ export const MessagingContainer = ({
   useComponentCommunication({
     messageName: MessageNames.Messaging.MENTION_CLICKED,
     onRecieve: e => onMentionClick(e),
+    subscriber: MessagingSubscriber
+  })
+
+  useComponentCommunication({
+    messageName: MessageNames.Messaging.RENEW_MESSAGES,
+    onRecieve: e => onRenewMessages(e),
     subscriber: MessagingSubscriber
   })
 

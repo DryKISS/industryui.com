@@ -80,18 +80,31 @@ export const main = args => {
     })
   }
 
+  const mimicMessageFilter = () => {
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.RENEW_MESSAGES,
+      payload: [
+        messaging[Math.floor(Math.random() * 3)],
+        messaging[Math.floor(Math.random() * 3)],
+        messaging[Math.floor(Math.random() * 3)],
+        messaging[Math.floor(Math.random() * 3)],
+        messaging[Math.floor(Math.random() * 3)]
+      ]
+    })
+  }
+
   const onHashtagClick = e => {
     console.log(e)
   }
   const onMentionClick = e => {
     console.log(e)
   }
+
   const onSubmit = message => {
     console.log(message)
     const msg = {
       // attachments can be an array of files or array of type {src:string}
       attachments: message.attachments || [],
-
       content: message.message,
       createdAt: 'YYYY-MM-DD HH:mm',
       from: 'me',
@@ -121,6 +134,7 @@ export const main = args => {
         onMessageSubmit={onSubmit}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
+      <Button onClick={mimicMessageFilter}>mimic messageFilter</Button>
     </>
   )
 }
