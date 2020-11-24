@@ -5,11 +5,10 @@
 // React
 import { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { bool, func } from 'prop-types'
+import { bool, func, string } from 'prop-types'
 
 // Emoji
 import { Picker } from 'emoji-mart'
-import { string } from 'postcss-selector-parser'
 
 export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, open, style }) => {
   const node = useRef()
