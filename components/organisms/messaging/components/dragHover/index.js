@@ -14,7 +14,7 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
           </Space>
         </Head>
         <LastFilePreviewContainer visible={files.length > 0}>
-          <Preview file={files[files.length - 1]} showName />
+          {files.length > 0 && <Preview file={files[files.length - 1]} showName />}
         </LastFilePreviewContainer>
         {!files[0] && (
           <DragFilesHereContainer>

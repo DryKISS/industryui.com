@@ -5,7 +5,6 @@
 // React
 import { useState } from 'react'
 import { array, func, number, object, string } from 'prop-types'
-import moment from 'moment'
 
 // UI
 import {
@@ -32,9 +31,11 @@ export const MessagingContainer = ({
   maxLength,
   mentions,
   messages,
+  messagesContainerHeight,
   onFilter,
   onHashtagClick,
   onMentionClick,
+  onMessageSubmit,
   onSearch,
   style
 }) => {
@@ -81,7 +82,9 @@ export const MessagingContainer = ({
     const newMessagesArray = [...Messages, ...payload]
     setMessages([...newMessagesArray])
   }
-
+  const onRenewMessages = messages => {
+    setMessages(() => messages)
+  }
   useComponentCommunication({
     dependencies: [Messages.length],
     messageName: MessageNames.Messaging.NEW_MESSAGES,
@@ -99,26 +102,15 @@ export const MessagingContainer = ({
     subscriber: MessagingSubscriber
   })
 
-  const handleSubmit = messageToSend => {
-    const msg = {
-      attachments: messageToSend.attachments || [],
-      content: messageToSend.message,
-      createdAt: moment().format('YYYY-MM-DD HH:mm'),
-      from: 'me',
-      icon: 'comment',
-      id: Messages[Messages.length - 1].id + 1,
-      issueId: 1,
-      pictureId: null,
-      statusText: 'delivered',
-      time: moment().format('ddd D MMM YYYY HH:mm'),
-      to: 'all',
-      type: 'out'
-    }
+  useComponentCommunication({
+    messageName: MessageNames.Messaging.RENEW_MESSAGES,
+    onRecieve: e => onRenewMessages(e),
+    subscriber: MessagingSubscriber
+  })
 
-    MessagingCommunicationService.send({
-      name: MessageNames.Messaging.NEW_MESSAGES,
-      payload: [msg]
-    })
+  const handleSubmit = messageToSend => {
+    onMessageSubmit(messageToSend)
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.CLEAR_INPUT
     })
@@ -155,7 +147,8 @@ export const MessagingContainer = ({
 
 const StyledContainer = styled.div`
   background-color: rgba(117, 204, 207, 0.4);
-  height: calc(100vh - 260px);
+  height: ${({ messagesContainerHeight }) =>
+    messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;
   position: relative;
   .ReactVirtualized__Grid {
@@ -166,10 +159,10 @@ const StyledContainer = styled.div`
 MessagingContainer.propTypes = {
   audienceItems: array,
   className: string,
-  maxLength: number,
   messages: array.isRequired,
+  messagesContainerHeight: number,
   onFilter: func.isRequired,
   onSearch: func.isRequired,
-  onSubmit: func.isRequired,
+  onMessageSubmit: func.isRequired,
   style: object
 }

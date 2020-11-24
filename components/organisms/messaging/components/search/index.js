@@ -26,6 +26,10 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
     onSearch(data.query)
   }
 
+  const onFilterChange = e => {
+    onFilter && onFilter(e.target.value)
+  }
+
   const defaultOptions = {
     errors: errors,
     register: register
@@ -40,7 +44,12 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
           </Column>
 
           <Column md={6}>
-            <StyledSelect {...defaultOptions} name='messagingFilter' options={Items} />
+            <StyledSelect
+              {...defaultOptions}
+              name='messagingFilter'
+              onChange={onFilterChange}
+              options={Items}
+            />
           </Column>
         </Row>
       </Form>

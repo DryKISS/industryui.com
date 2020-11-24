@@ -17,13 +17,9 @@ import { mentions } from '../__mocks__/mentions'
 
 export default {
   args: {
-    audienceItems: [],
     className: '',
     maxLength: 320,
     messages: messages,
-    onFilter: () => {},
-    onSearch: () => {},
-    onSubmit: () => {},
     style: {}
   },
   component: MessagingContainer,
@@ -38,24 +34,40 @@ export default {
 }
 
 export const main = args => {
-  const [messaging, setMessaging] = useState(messages)
+  const [messaging] = useState(messages)
 
   const handleFilter = type => {
+    console.log(type)
+
     if (type !== 'all') {
       const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
       const filter = filterByKey(msgs, 'icon', type)
-      setMessaging(filter)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: filter
+      })
     } else {
-      setMessaging(messages)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: messages
+      })
     }
   }
 
   const handleSearch = query => {
+    console.log(query)
     if (query) {
       const search = filterByString(messaging, 'content', query)
-      setMessaging(search)
+      // setMessaging(search)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: search
+      })
     } else {
-      setMessaging(messages)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: messages
+      })
     }
   }
 
@@ -87,12 +99,38 @@ export const main = args => {
     console.log(e)
   }
 
+  const onSubmit = message => {
+    console.log(message)
+    const msg = {
+      // attachments can be an array of files or array of type {src:string}
+      attachments: message.attachments || [],
+      content: message.message,
+      createdAt: 'YYYY-MM-DD HH:mm',
+      from: 'me',
+      icon: 'comment',
+      id: 'unique id recieved from server',
+      issueId: 1,
+      pictureId: null,
+      statusText: 'status from server',
+      time: 'ddd D MMM YYYY HH:mm',
+      to: 'all',
+      type: 'out'
+    }
+    // mimic the server delay and response(response is msg which should be passed to service as [msg])
+    setTimeout(() => {
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.NEW_MESSAGES,
+        payload: [msg]
+      })
+    }, 100)
+  }
   return (
     <>
       <MessagingContainer
         {...defaultProps}
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}
+        onMessageSubmit={onSubmit}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
     </>

@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 
 export const Preview = ({ file, placeHolderImageUrl, imageStyles, showName }) => {
-  return file?.type.includes('image') ? (
-    <PreviewImage src={URL.createObjectURL(file)} style={imageStyles} />
+  return file?.type.includes('image') || file?.src ? (
+    <PreviewImage src={file.src ?? URL.createObjectURL(file)} style={imageStyles} />
   ) : (
     <PlaceHolder>
       <FilePlaceHolder placeHolderImageUrl={placeHolderImageUrl} />
