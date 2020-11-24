@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { array, func, number, object, string } from 'prop-types'
+import { array, func, object, string } from 'prop-types'
 
 // UI
 import {
@@ -157,10 +157,9 @@ const StyledContainer = styled.div`
 MessagingContainer.propTypes = {
   audienceItems: array,
   className: string,
-  maxLength: number,
   messages: array.isRequired,
   onFilter: func.isRequired,
   onSearch: func.isRequired,
-  onSubmit: func.isRequired,
+  onMessageSubmit: func.isRequired,
   style: object
 }

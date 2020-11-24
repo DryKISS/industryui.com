@@ -17,7 +17,6 @@ import { mentions } from '../__mocks__/mentions'
 
 export default {
   args: {
-    audienceItems: [],
     className: '',
     maxLength: 320,
     messages: messages,
@@ -38,24 +37,37 @@ export default {
 }
 
 export const main = args => {
-  const [messaging, setMessaging] = useState(messages)
+  const [messaging] = useState(messages)
 
   const handleFilter = type => {
     if (type !== 'all') {
       const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
       const filter = filterByKey(msgs, 'icon', type)
-      setMessaging(filter)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: filter
+      })
     } else {
-      setMessaging(messages)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: messages
+      })
     }
   }
 
   const handleSearch = query => {
     if (query) {
       const search = filterByString(messaging, 'content', query)
-      setMessaging(search)
+      // setMessaging(search)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: search
+      })
     } else {
-      setMessaging(messages)
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.RENEW_MESSAGES,
+        payload: messages
+      })
     }
   }
 
@@ -77,19 +89,6 @@ export const main = args => {
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.NEW_MESSAGES,
       payload: [messaging[Math.floor(Math.random() * 3)]]
-    })
-  }
-
-  const mimicMessageFilter = () => {
-    MessagingCommunicationService.send({
-      name: MessageNames.Messaging.RENEW_MESSAGES,
-      payload: [
-        messaging[Math.floor(Math.random() * 3)],
-        messaging[Math.floor(Math.random() * 3)],
-        messaging[Math.floor(Math.random() * 3)],
-        messaging[Math.floor(Math.random() * 3)],
-        messaging[Math.floor(Math.random() * 3)]
-      ]
     })
   }
 
@@ -134,7 +133,6 @@ export const main = args => {
         onMessageSubmit={onSubmit}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
-      <Button onClick={mimicMessageFilter}>mimic messageFilter</Button>
     </>
   )
 }

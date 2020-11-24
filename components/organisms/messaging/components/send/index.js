@@ -12,7 +12,7 @@ import {
 } from 'components/services'
 import { convertToRaw } from 'draft-js'
 // UI
-import { Button, MessagingInput, Icon, useComponentCommunication } from 'components'
+import { Button, Dropdown, Icon, MessagingInput, useComponentCommunication } from 'components'
 
 // Style
 import styled from 'styled-components'
@@ -22,7 +22,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   const [Message, setMessage] = useState({})
 
   const [attachments, setAttachments] = useState([])
-  const [audience] = useState(audienceItems[0] || '')
+  const [audience, setAudience] = useState(audienceItems[0] || '')
   const fileInputRef = useRef()
 
   // const message = watch('message')
@@ -45,7 +45,6 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   }
 
   const handleFilesRecieve = files => {
-    console.log(files)
     setAttachments(files)
   }
 
@@ -87,7 +86,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     <>
       <StyledContainer audience={audience}>
         <StyledWrapper>
-          {/* {audience && (
+          {audience && (
             <StyledDropDown
               items={audienceItems}
               onChange={item => setAudience(item)}
@@ -95,7 +94,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             >
               {audience.name}
             </StyledDropDown>
-          )} */}
+          )}
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
 
           <input
@@ -131,6 +130,23 @@ const StyledContainer = styled.div`
   position: relative;
 `
 
+const StyledDropDown = styled(Dropdown)`
+  position: absolute;
+  left: 8px;
+  text-transform: uppercase;
+  top: -24px;
+
+  .dropdown--link {
+    color: #000;
+    font-size: 10px;
+  }
+
+  .dropdown--toggle,
+  svg {
+    color: ${({ theme }) => theme.COLOUR.info};
+    font-size: 10px;
+  }
+`
 const StyledWrapper = styled.div`
   display: flex;
   position: relative;

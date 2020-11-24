@@ -3,7 +3,7 @@
  */
 
 // React
-
+import { useEffect, useRef, useState } from 'react'
 import { array } from 'prop-types'
 
 // UI
@@ -27,8 +27,16 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
 }
 
 export const MessageList = ({ messages }) => {
-  const cache = new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
+  const ref = useRef(null)
+  const [cache, setcache] = useState(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
 
+  useEffect(() => {
+    setcache(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+    setTimeout(() => {
+      ref.current && ref.current.scrollToRow(messages.length)
+    }, 0)
+    return () => {}
+  }, [messages.length])
   return (
     <AutoSizer>
       {({ height, width }) => {
@@ -36,6 +44,7 @@ export const MessageList = ({ messages }) => {
           <List
             deferredMeasurementCache={cache}
             height={height}
+            ref={ref}
             rowCount={messages.length}
             rowHeight={cache.rowHeight}
             rowRenderer={e => renderMessage(e, messages, cache)}
