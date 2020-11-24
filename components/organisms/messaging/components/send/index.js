@@ -87,6 +87,15 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     <>
       <StyledContainer audience={audience}>
         <StyledWrapper>
+          {/* {audience && (
+            <StyledDropDown
+              items={audienceItems}
+              onChange={item => setAudience(item)}
+              position='top'
+            >
+              {audience.name}
+            </StyledDropDown>
+          )} */}
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
 
           <input
