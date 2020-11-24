@@ -104,7 +104,7 @@ export const main = args => {
       to: 'all',
       type: 'out'
     }
-    // mimic the server delay
+    // mimic the server delay and response(response is msg which should be passed to service as [msg])
     setTimeout(() => {
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.NEW_MESSAGES,
