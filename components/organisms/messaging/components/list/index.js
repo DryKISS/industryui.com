@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { array } from 'prop-types'
 
 // UI
@@ -28,13 +28,14 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
 
 export const MessageList = ({ messages }) => {
   const ref = useRef(null)
-  const [cache, setcache] = useState(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+  const cache = new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
+  // const [cache, setcache] = useState()
 
   useEffect(() => {
-    setcache(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
-    setTimeout(() => {
-      ref.current && ref.current.scrollToRow(messages.length)
-    }, 0)
+    window &&
+      window.requestAnimationFrame(() => {
+        ref.current && ref.current.scrollToRow(messages.length)
+      })
     return () => {}
   }, [messages.length])
   return (
