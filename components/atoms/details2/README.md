@@ -1,0 +1,1 @@
+New Implementation of details

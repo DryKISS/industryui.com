@@ -2,6 +2,9 @@
  * Hooks - Use Component Communication - Message Names
  */
 export const MessageNames = {
+  DetailsComponent: {
+    SET_OPEN: 'TOGGLE_OPEN'
+  },
   Messaging: {
     CLEAR_INPUT: 'CLEAR_INPUT',
     HASHTAG_CLICKED: 'HASHTAG_CLICKED',
