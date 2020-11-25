@@ -28,8 +28,6 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
 
 export const MessageList = ({ messages }) => {
   const ref = useRef(null)
-  const cache = new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
-  // const [cache, setcache] = useState()
 
   useEffect(() => {
     window &&
@@ -41,6 +39,8 @@ export const MessageList = ({ messages }) => {
   return (
     <AutoSizer>
       {({ height, width }) => {
+        const cache = new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
+
         return (
           <List
             deferredMeasurementCache={cache}
