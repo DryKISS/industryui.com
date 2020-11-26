@@ -125,7 +125,7 @@ export const MessagingContainer = ({
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
       <StyledContainer
-        messagesContainerHeight={messagesContainerHeight}
+        messagesContainerHeight={Messages.length > 0 ? messagesContainerHeight : 0}
         className={className}
         style={style}
       >
