@@ -124,7 +124,11 @@ export const MessagingContainer = ({
     <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
-      <StyledContainer className={className} style={style}>
+      <StyledContainer
+        messagesContainerHeight={messagesContainerHeight}
+        className={className}
+        style={style}
+      >
         <MessageList messages={Messages} />
       </StyledContainer>
 

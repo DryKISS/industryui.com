@@ -131,6 +131,7 @@ export const main = args => {
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}
         onMessageSubmit={onSubmit}
+        messagesContainerHeight={600}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
     </>
