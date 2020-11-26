@@ -79,7 +79,7 @@ export const main = args => {
       { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
     mentions,
-    messages: [],
+    messages,
     onSearch: handleSearch,
     onFilter: handleFilter,
     ...args

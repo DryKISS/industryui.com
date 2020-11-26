@@ -43,6 +43,7 @@ export const MessageList = ({ messages }) => {
 
         return (
           <List
+            style={{ padding: '0.5rem 0' }}
             deferredMeasurementCache={cache}
             height={height}
             ref={ref}
