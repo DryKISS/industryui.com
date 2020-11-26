@@ -6,14 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 
 // UI
 import { DetailsPropTypes, DetailsDefaultProps } from './props'
-import {
-  DetailsSubscriber,
-  Icon,
-  MessageNames,
-  SIZE,
-  Text,
-  useComponentCommunication
-} from 'components'
+import { DetailsSubscriber, MessageNames, SIZE, Text, useComponentCommunication } from 'components'
 
 // Style
 import styled from 'styled-components'
@@ -23,8 +16,9 @@ export const Details2 = ({
   children,
   content,
   context,
+  disableAnimation,
   endActionComponent,
-  icon,
+  iconComponent,
   open,
   startActionComponent,
   title,
@@ -33,38 +27,39 @@ export const Details2 = ({
   unmountContentOnClose,
   ...props
 }) => {
-  const [IsOpen, setIsOpen] = useState(open)
-  const [ChildrenMounted, setChildrenMounted] = useState(unmountContentOnClose ? open : true)
-  const [ContentHeight, setContentHeight] = useState(0)
+  const animationtime = disableAnimation ? 0 : animationDuration
+  const [isOpen, setisOpen] = useState(open)
+  const [childrenMounted, setchildrenMounted] = useState(unmountContentOnClose ? open : true)
+  const [contentHeight, setcontentHeight] = useState(0)
 
   const contentRef = useRef(null)
 
   useEffect(() => {
     if (unmountContentOnClose) {
-      IsOpen
-        ? setChildrenMounted(() => true)
+      isOpen
+        ? setchildrenMounted(() => true)
         : setTimeout(() => {
             window &&
               window.requestAnimationFrame(() => {
-                setChildrenMounted(() => false)
+                setchildrenMounted(() => false)
               })
-          }, animationDuration ?? 300)
+          }, animationtime ?? 300)
     }
     setTimeout(
       () => {
         window &&
           window.requestAnimationFrame(() => {
-            contentRef.current && setContentHeight(() => contentRef.current.offsetHeight)
+            contentRef.current && setcontentHeight(() => contentRef.current.offsetHeight)
           })
       },
-      !IsOpen ? animationDuration ?? 300 : 0
+      !isOpen ? animationtime ?? 300 : 0
     )
 
     return () => {}
-  }, [contentRef.current, IsOpen])
+  }, [contentRef.current, isOpen])
 
   const handleEventRecieve = e => {
-    setIsOpen(e)
+    setisOpen(e)
   }
 
   useComponentCommunication({
@@ -75,20 +70,16 @@ export const Details2 = ({
   })
 
   const handleOpenClose = () => {
-    setIsOpen(IsOpen => !IsOpen)
+    setisOpen(isOpen => !isOpen)
   }
 
   return (
     <Wrapper context={context} {...props}>
       <Header>
-        <OpenIconAndTitleWrapper>
+        <OpenIconAndTitleWrapper onClick={handleOpenClose}>
           {(content || children) && (
-            <OpenCloseWrapper
-              open={IsOpen}
-              onClick={handleOpenClose}
-              animationDuration={animationDuration}
-            >
-              {icon ? <Icon icon={icon} prefix='fas' /> : <CaretRight />}{' '}
+            <OpenCloseWrapper open={isOpen} animationDuration={animationtime}>
+              {iconComponent ?? <CaretRight />}
             </OpenCloseWrapper>
           )}
           <Text size={SIZE.MD} style={{ fontWeight: '600' }} context='blackText' content={title} />
@@ -105,12 +96,8 @@ export const Details2 = ({
         </ActionsWrapper>
       </Header>
       {(content || children) && (
-        <ContentWrapper
-          maxHeight={ContentHeight}
-          open={IsOpen}
-          animationDuration={animationDuration}
-        >
-          <Content ref={contentRef}>{ChildrenMounted && (content || children)}</Content>
+        <ContentWrapper maxHeight={contentHeight} open={isOpen} animationDuration={animationtime}>
+          <Content ref={contentRef}>{childrenMounted && (content || children)}</Content>
         </ContentWrapper>
       )}
     </Wrapper>
@@ -145,12 +132,11 @@ const ActionsWrapper = styled.div`
   display: flex;
 `
 const Content = styled.div`
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 `
 
 const OpenCloseWrapper = styled.div`
   align-items: center;
-  cursor: pointer;
   display: flex;
   margin-right: 1rem;
   transform: rotate(${({ open }) => (open ? '90deg' : '0deg')});
@@ -165,6 +151,7 @@ const Wrapper = styled.div`
   width: 100%;
 `
 const OpenIconAndTitleWrapper = styled.div`
+  cursor: pointer;
   display: flex;
 `
 const Header = styled.div`

@@ -9,6 +9,7 @@ import {
   Column,
   Details2,
   DetailsCommunicationService,
+  Icon,
   MessageNames,
   Row
 } from 'components'
@@ -105,6 +106,7 @@ export const main = args => {
         }
         context='danger'
         endActionComponent={endActionComponent}
+        iconComponent={<Icon icon='images' prefix='fas' />}
         open
         startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
@@ -150,6 +152,7 @@ export const main = args => {
               </>
             }
             context='success'
+            disableAnimation
             open={false}
             startActionComponent={
               <Button
