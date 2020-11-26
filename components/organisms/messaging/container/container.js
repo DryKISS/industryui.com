@@ -155,6 +155,7 @@ const StyledContainer = styled.div`
     messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;
   position: relative;
+  padding: 1rem 0;
   .ReactVirtualized__Grid {
     outline: none;
   }
