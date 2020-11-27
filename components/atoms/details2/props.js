@@ -3,19 +3,27 @@
  */
 
 // React
-import { any, bool, oneOf, string } from 'prop-types'
+import { bool, node, number, object, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../..'
 
 export const DetailsPropTypes = {
-  children: any,
-  content: any,
+  animationDuration: number,
+  children: node,
+  content: node,
+  contentStyle: object,
   context: oneOf(Object.values(CONTEXT)),
-  icon: string,
+  disableAnimation: bool,
+  endActionComponent: node,
+  iconComponent: node,
   open: bool,
+  startActionComponent: node,
+  style: object,
   title: string.isRequired,
-  Toolbar: any
+  toolbar: node,
+  uniqueId: string,
+  unmountContentOnClose: bool
 }
 
 export const DetailsDefaultProps = {

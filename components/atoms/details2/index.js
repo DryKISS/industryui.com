@@ -15,12 +15,14 @@ export const Details2 = ({
   animationDuration,
   children,
   content,
+  contentStyle,
   context,
   disableAnimation,
   endActionComponent,
   iconComponent,
   open,
   startActionComponent,
+  style,
   title,
   toolbar,
   uniqueId,
@@ -74,7 +76,7 @@ export const Details2 = ({
   }
 
   return (
-    <Wrapper context={context} {...props}>
+    <Wrapper context={context} style={style}>
       <Header>
         <OpenIconAndTitleWrapper onClick={handleOpenClose}>
           {(content || children) && (
@@ -97,7 +99,9 @@ export const Details2 = ({
       </Header>
       {(content || children) && (
         <ContentWrapper maxHeight={contentHeight} open={isOpen} animationDuration={animationtime}>
-          <Content ref={contentRef}>{childrenMounted && (content || children)}</Content>
+          <Content style={contentStyle} ref={contentRef}>
+            {childrenMounted && (content || children)}
+          </Content>
         </ContentWrapper>
       )}
     </Wrapper>
@@ -132,7 +136,7 @@ const ActionsWrapper = styled.div`
   display: flex;
 `
 const Content = styled.div`
-  padding: 0.5rem 0;
+  padding: 0.5rem;
 `
 
 const OpenCloseWrapper = styled.div`
