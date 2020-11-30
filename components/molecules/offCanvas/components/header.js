@@ -33,14 +33,14 @@ export const OffCanvasHeader = ({
   variant
 }) => {
   return (
-    <StyledHeader context={context} variant={variant}>
+    <StyledHeader context={context} data-cy='offCanvasHeader' variant={variant}>
       <Row align='center'>
-        <Column md={8}>
+        <Column sm={8}>
           <Icon context={variant === 'extended' ? 'white' : context} icon='expand' prefix='fas' />
           <StyledHeading content={title} context={context} tag='h4' variant={variant} />
         </Column>
 
-        <Column md={4}>
+        <Column sm={4}>
           <StyledContainer>
             {submit && (
               <>
@@ -86,7 +86,7 @@ const StyledHeader = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.5rem 1rem 1rem;
   position: fixed;
   width: inherit;
   z-index: 1;
