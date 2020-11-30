@@ -55,11 +55,7 @@ export const OffCanvasHeader = ({
                 <Divider flexItem size='sm' vertical />
               </>
             )}
-            <Close
-              click={onClose}
-              context={variant === 'normal' ? context : 'white'}
-              data-cy='offCanvasClose'
-            />
+            <Close click={onClose} context={variant === 'normal' ? context : 'white'} />
           </StyledContainer>
         </Column>
       </Row>
