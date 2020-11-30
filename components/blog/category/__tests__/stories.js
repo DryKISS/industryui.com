@@ -10,7 +10,6 @@ import Readme from '../README.md'
 import { Blog } from '../../__mocks__/articles'
 
 export default {
-  title: 'Blog/Category',
   component: BlogCategory,
   parameters: {
     docs: {
@@ -18,8 +17,13 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Blog/Category'
 }
 
-export const main = () => <BlogCategory config={Blog} to='development' />
-export const author = () => <BlogCategory author config={Blog} to='development' />
+export const main = args => (
+  <BlogCategory config={Blog} link={{ prefetch: false, to: 'development' }} {...args} />
+)
+export const author = args => (
+  <BlogCategory author config={Blog} link={{ prefetch: false, to: 'development' }} {...args} />
+)

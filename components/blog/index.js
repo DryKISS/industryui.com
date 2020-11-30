@@ -1,12 +1,12 @@
 /**
  * Blog
  */
-export * from './card'
-export * from './categories'
-export * from './category'
-export * from './details'
-export * from './hero'
-export * from './listing'
-export * from './readTime'
+export * from './card/card'
+export * from './categories/categories'
+export * from './category/category'
+export * from './details/details'
+export * from './hero/hero'
+export * from './listing/listing'
+export * from './readTime/readTime'
 export * from './sidebar'
-export * from './tags'
+export * from './tags/tags'

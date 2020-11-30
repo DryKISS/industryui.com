@@ -24,7 +24,6 @@ export default {
     context: ContextControl(),
     size: SizeControl()
   },
-  title: 'Atoms/Divider',
   component: Divider,
   parameters: {
     docs: {
@@ -32,7 +31,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Divider'
 }
 
 const BaseComponent = props => {
@@ -54,5 +54,4 @@ const StyledWrapper = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  padding: 16px;
 `

@@ -10,7 +10,6 @@ import Readme from '../README.md'
 import { Articles, Blog, Facebook } from '../../__mocks__/articles'
 
 export default {
-  title: 'Blog/Sidebar',
   component: BlogSidebar,
   parameters: {
     docs: {
@@ -18,9 +17,10 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Blog/Sidebar'
 }
 
-export const main = () => (
-  <BlogSidebar articles={Articles} config={Blog} facebook={Facebook} findFood />
+export const main = args => (
+  <BlogSidebar articles={Articles} config={Blog} facebook={Facebook} findFood {...args} />
 )

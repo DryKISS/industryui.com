@@ -3,7 +3,7 @@
  */
 
 // React
-import { any, object, string } from 'prop-types'
+import { any, bool, object, oneOf, shape } from 'prop-types'
 
 // UI
 import { BlogCategory, BlogTags, Card, CardImage, Divider, Link, slugify } from '../../'
@@ -14,7 +14,7 @@ import { Heading } from '../../atoms/heading/heading'
 // Style
 import styled, { css } from 'styled-components'
 
-export const BlogCard = ({ article, config, type }) => {
+export const BlogCard = ({ article, config, link, type }) => {
   const { author, category, excerpt, heading, slug } = article
 
   const articleSlug = slugify(article.slug)
@@ -28,17 +28,17 @@ export const BlogCard = ({ article, config, type }) => {
   return (
     <article role='article' itemProp='blogPost' itemScope itemType='http://schema.org/BlogPosting'>
       <Card shadow>
-        <Link to={articleLink}>
+        <Link to={articleLink} {...link}>
           <CardImage alt={heading} src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`} />
         </Link>
 
         <StyledCardBody type={type}>
           {type === 'normal' && category && (
-            <BlogCategory config={config} to={category} type={type} />
+            <BlogCategory config={config} link={{ to: category, ...link }} type={type} />
           )}
 
           <StyledContent type={type}>
-            <Link to={articleLink}>
+            <Link to={articleLink} {...link}>
               <StyledHeading content={heading} tag='h1' noWrap type={type} />
             </Link>
 
@@ -55,7 +55,9 @@ export const BlogCard = ({ article, config, type }) => {
 
               <Divider size='sm' />
 
-              {author && <BlogCategory author to={author} config={config} type={type} />}
+              {author && (
+                <BlogCategory author link={{ to: author, ...link }} config={config} type={type} />
+              )}
 
               {article.readtime && (
                 <StyledReadTime>{article.readtime}min read time.</StyledReadTime>
@@ -63,7 +65,7 @@ export const BlogCard = ({ article, config, type }) => {
             </>
           )}
 
-          <Link to={articleLink}>
+          <Link to={articleLink} {...link}>
             <StyledButton
               content='Read more'
               context={type === 'normal' ? 'primary' : 'white'}
@@ -165,7 +167,10 @@ const StyledReadTime = styled.p`
 BlogCard.propTypes = {
   article: any.isRequired,
   config: object.isRequired,
-  type: string
+  link: shape({
+    prefetch: bool
+  }),
+  type: oneOf(['hero', 'normal'])
 }
 
 BlogCard.defaultProps = {
