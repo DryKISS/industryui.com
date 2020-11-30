@@ -33,7 +33,7 @@ export const OffCanvasHeader = ({
   variant
 }) => {
   return (
-    <StyledHeader context={context} variant={variant}>
+    <StyledHeader context={context} data-cy='offCanvasHeader' variant={variant}>
       <Row align='center'>
         <Column md={8}>
           <Icon context={variant === 'extended' ? 'white' : context} icon='expand' prefix='fas' />
@@ -55,7 +55,11 @@ export const OffCanvasHeader = ({
                 <Divider flexItem size='sm' vertical />
               </>
             )}
-            <Close click={onClose} context={variant === 'normal' ? context : 'white'} />
+            <Close
+              click={onClose}
+              context={variant === 'normal' ? context : 'white'}
+              data-cy='offCanvasClose'
+            />
           </StyledContainer>
         </Column>
       </Row>
