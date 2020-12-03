@@ -3,7 +3,7 @@
  */
 
 // React
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { any, bool, string } from 'prop-types'
 
 // UI
@@ -15,20 +15,26 @@ import {
   Image,
   linkifyPlugin,
   MentionComponent,
+  MessagingAudioPlayer,
   MessagingEditor,
   Preview,
   Row
 } from 'components'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
+import { MenuIcon } from './menuIcon'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
+import createEmojiPlugin from 'draft-js-emoji-plugin'
 
 // Style
 import styled from 'styled-components'
+
 const mentionPlugin = createMentionPlugin({
   mentionComponent: mentionProps => <MentionComponent mentionProps={mentionProps} />
 })
+
+const emojiPlugin = createEmojiPlugin()
 
 export const MessageBase = ({
   attachments,
@@ -42,21 +48,22 @@ export const MessageBase = ({
   statusText,
   time,
   to,
-  type
+  type,
+  voice
 }) => {
-  const messageRef = useRef(null)
-
   const [editorState, seteditorState] = useState(
     EditorState.createWithContent(
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
-
   return (
-    <Column sm={11} columnRef={messageRef}>
+    <MessageWrapper>
       <StyledCard type={type}>
         <Row>
-          <Column sm={6}>
+          <Column sm={6} style={{ display: 'flex', alignItems: 'center', marginTop: '-0.5rem' }}>
+            <MenuWrapper>
+              <MenuIcon />
+            </MenuWrapper>
             <MessageIcon icon={icon} />
             {to && <MessageTo to={to} />}
             <StyledTime>{time}</StyledTime>
@@ -77,8 +84,10 @@ export const MessageBase = ({
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
             <StyledContent>
+              {voice && <MessagingAudioPlayer src={voice} />}
+
               <MessagingEditor
-                plugins={[hashtagPlugin, linkifyPlugin, mentionPlugin]}
+                plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
                 onChange={e => seteditorState(e)}
                 editorState={editorState}
                 readOnly
@@ -107,15 +116,26 @@ export const MessageBase = ({
           </AttachmentsContainer>
         )}
       </StyledCard>
-    </Column>
+    </MessageWrapper>
   )
 }
+const MenuWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
+`
 const SingleAttachment = styled.div``
 const AttachmentsContainer = styled.div``
 
+const MessageWrapper = styled.div`
+  flex: 1;
+  margin-top: 1.5rem;
+`
+
 const StyledCard = styled(Card)`
-  background-color: ${({ type }) => (type === 'in' ? '#fff' : '#F7F7F7')};
-  border-radius: 1rem;
+  background-color: ${({ type, theme }) =>
+    type === 'in' ? theme.COLOUR.neutral : theme.COLOUR.neutral2};
+  border: 1px solid ${({ theme }) => theme.COLOUR.grey80};
+  border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
   padding: 0.75rem 1rem;
 `
@@ -133,7 +153,6 @@ const StyledReply = styled.div`
 const StyledTime = styled.span`
   color: ${({ theme }) => theme.COLOUR.primary};
   font-size: 0.75rem;
-  margin-bottom: 0.5rem;
 `
 
 const StyledFrom = styled(StyledTime)`

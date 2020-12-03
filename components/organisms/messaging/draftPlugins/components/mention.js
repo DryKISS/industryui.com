@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { MessagingCommunicationService, MessageNames } from 'components'
+import { MessagingActions, MessagingCommunicationService, MessageNames } from 'components'
 
 const handleMentionClick = mentionProps => {
   MessagingCommunicationService.send({
-    name: MessageNames.Messaging.MENTION_CLICKED,
-    payload: mentionProps.mention
+    name: MessageNames.Messaging.MESSAGING_ACTION,
+    payload: { action: MessagingActions.MENTION_CLICKED, data: mentionProps.mention }
   })
 }
 

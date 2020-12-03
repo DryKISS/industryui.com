@@ -24,7 +24,7 @@ export default {
 
 export const main = () => (
   <ListWrapper>
-    <MessageList messages={messages} />
+    <MessageList initialMessages={messages} />
   </ListWrapper>
 )
 const ListWrapper = styled.div`

@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { MessagingCommunicationService, MessageNames } from 'components/services'
+import { MessagingActions, MessagingCommunicationService, MessageNames } from 'components/services'
 
 // UI
 import { Button, filterByKey, filterByString, MessagingContainer } from 'components'
@@ -41,14 +41,15 @@ export const main = args => {
     if (type !== 'all') {
       const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
       const filter = filterByKey(msgs, 'icon', type)
+
       MessagingCommunicationService.send({
-        name: MessageNames.Messaging.RENEW_MESSAGES,
-        payload: filter
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: filter }
       })
     } else {
       MessagingCommunicationService.send({
-        name: MessageNames.Messaging.RENEW_MESSAGES,
-        payload: messages
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: messages }
       })
     }
   }
@@ -59,13 +60,13 @@ export const main = args => {
       const search = filterByString(messaging, 'content', query)
       // setMessaging(search)
       MessagingCommunicationService.send({
-        name: MessageNames.Messaging.RENEW_MESSAGES,
-        payload: search
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: search }
       })
     } else {
       MessagingCommunicationService.send({
-        name: MessageNames.Messaging.RENEW_MESSAGES,
-        payload: messages
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: messages }
       })
     }
   }
@@ -86,8 +87,11 @@ export const main = args => {
   }
   const mimicRecieve = () => {
     MessagingCommunicationService.send({
-      name: MessageNames.Messaging.NEW_MESSAGES,
-      payload: [messaging[Math.floor(Math.random() * 3)]]
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.NEW_MESSAGES,
+        data: [messaging[Math.floor(Math.random() * 3)]]
+      }
     })
   }
 
@@ -107,19 +111,23 @@ export const main = args => {
       createdAt: 'YYYY-MM-DD HH:mm',
       from: 'me',
       icon: 'comment',
-      id: 'unique id recieved from server',
+      id: Math.floor(Math.random() * 1000),
       issueId: 1,
       pictureId: null,
       statusText: 'status from server',
       time: 'ddd D MMM YYYY HH:mm',
       to: 'all',
-      type: 'out'
+      type: 'out',
+      ...(message.voice && { voice: URL.createObjectURL(message.voice) })
     }
     // mimic the server delay and response(response is msg which should be passed to service as [msg])
     setTimeout(() => {
       MessagingCommunicationService.send({
-        name: MessageNames.Messaging.NEW_MESSAGES,
-        payload: [msg]
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: {
+          action: MessagingActions.NEW_MESSAGES,
+          data: [msg]
+        }
       })
     }, 100)
   }
@@ -130,7 +138,7 @@ export const main = args => {
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}
         onMessageSubmit={onSubmit}
-        messagesContainerHeight={600}
+        messagesContainerHeight={550}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
     </>

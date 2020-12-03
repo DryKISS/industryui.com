@@ -20,9 +20,10 @@ export const Button = forwardRef(
       context,
       endIcon,
       endIconProps,
+      noPadding,
+      outline,
       startIcon,
       startIconProps,
-      outline,
       ...props
     },
     ref
@@ -34,6 +35,7 @@ export const Button = forwardRef(
     return (
       <StyledButton
         context={context}
+        noPadding={noPadding}
         outline={outline}
         textContext={textContext}
         ref={ref}
@@ -84,7 +86,7 @@ const StyledButton = styled.button`
   vertical-align: middle;
   white-space: nowrap;
   margin: ${({ centre }) => (centre ? 'auto' : 0)};
-  padding: ${({ theme }) => theme.SPACING(3, 6)};
+  padding: ${({ theme, noPadding }) => (noPadding ? '0' : theme.SPACING(3, 6))};
   width: ${({ block }) => (block ? '100%' : 'initial')};
   ${({ disabled }) =>
     disabled &&

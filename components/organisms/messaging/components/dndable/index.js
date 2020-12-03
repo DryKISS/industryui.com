@@ -28,4 +28,15 @@ const Container = styled.div`
   overflow: hidden;
   position: relative;
   outline: none;
+  * {
+    &::-webkit-scrollbar {
+      width: 0.25rem;
+      background-color: rgb(245, 245, 255);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgb(190, 190, 194);
+    }
+  }
 `

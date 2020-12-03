@@ -29,6 +29,8 @@ export const COLOUR = {
   lightRed: 'rgb(255, 151, 151)',
   link: 'rgb(35, 146, 220)',
   male: 'rgb(142, 206, 253)',
+  neutral: 'rgb(216, 218, 225)',
+  neutral2: 'rgb(208, 210, 218)',
   primary: 'rgb(51, 51, 255)',
   secondary: 'rgb(6, 121, 216)',
   success: 'rgb(89, 217, 143)',

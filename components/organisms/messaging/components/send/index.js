@@ -5,14 +5,30 @@
 // React
 import { useRef, useState } from 'react'
 import { array, func, number } from 'prop-types'
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
+
 import {
   MessageNames,
+  MessagingActions,
   MessagingCommunicationService,
   MessagingSubscriber
 } from 'components/services'
+
+import { PaperPlane } from './paperPlane'
+
 import { convertToRaw } from 'draft-js'
 // UI
-import { Button, Dropdown, Icon, MessagingInput, useComponentCommunication } from 'components'
+import {
+  AudioWrapper,
+  Button,
+  Dropdown,
+  EmojiSelect,
+  EmojiSuggestions,
+  Icon,
+  MessagingInput,
+  useComponentCommunication,
+  VoiceRecorder
+} from 'components'
 
 // Style
 import styled from 'styled-components'
@@ -20,16 +36,10 @@ import styled from 'styled-components'
 export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
-
   const [attachments, setAttachments] = useState([])
+  const [voiceMessage, setvoiceMessage] = useState(null)
   const [audience, setAudience] = useState(audienceItems[0] || '')
   const fileInputRef = useRef()
-
-  // const message = watch('message')
-
-  // const handleOpenPicker = () => {
-  //   setOpen(false)
-  // }
 
   const openFileDialog = () => {
     fileInputRef.current.click()
@@ -38,34 +48,41 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   const handleFilesChange = e => {
     const { files } = e.target
     MessagingCommunicationService.send({
-      name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-      payload: files
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: files }
     })
-    //
   }
 
-  const handleFilesRecieve = files => {
-    setAttachments(files)
+  const onActionRecieved = payload => {
+    switch (payload.action) {
+      case MessagingActions.SET_RECORDED_VOICE:
+        setvoiceMessage(payload.data)
+        break
+      case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
+        setAttachments(payload.data)
+        break
+
+      default:
+        break
+    }
   }
 
   useComponentCommunication({
-    dependencies: [attachments.length],
-    messageName: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-    onRecieve: handleFilesRecieve,
+    messageName: MessageNames.Messaging.MESSAGING_ACTION,
+    onRecieve: e => onActionRecieved(e),
     subscriber: MessagingSubscriber
   })
-
-  // const handleEmojiSelect = emoji => {
-  //   setValue('message', message + emoji)
-  // }
 
   const submit = form => {
     const data = {
       attachments,
       audience: audience.id,
-      message: Message
+      message: Message,
+      ...(voiceMessage && { voice: voiceMessage })
     }
+
     onSubmit(data)
+    setvoiceMessage(null)
   }
 
   const handleInputChange = e => {
@@ -76,11 +93,14 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     let disabled = false
     if (
       attachments.length === 0 &&
-      (Message === {} || (Message.blocks && !Message.blocks[0].text))
+      (Message === {} || (Message.blocks && !Message.blocks[0].text && voiceMessage === null))
     ) {
       disabled = true
     }
     return disabled
+  }
+  const handleDeleteVoiceClick = () => {
+    setvoiceMessage(null)
   }
   return (
     <>
@@ -95,6 +115,29 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
               {audience.name}
             </StyledDropDown>
           )}
+          <StyledElements>
+            <EmojiSelectWrapper>
+              <EmojiSuggestions />
+              <EmojiSelect />
+            </EmojiSelectWrapper>
+            <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='lg' />
+          </StyledElements>
+
+          {voiceMessage && (
+            <AudioWrapper preview>
+              <AudioPlayer
+                src={URL.createObjectURL(voiceMessage)}
+                customProgressBarSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR]}
+                customControlsSection={[]}
+                showJumpControls={false}
+                showFilledVolume
+              />
+              <DeleteIconWrapper onClick={handleDeleteVoiceClick}>
+                <Icon context='danger' icon='trash' prefix='fas' size='lg' />
+              </DeleteIconWrapper>
+            </AudioWrapper>
+          )}
+
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
 
           <input
@@ -105,14 +148,19 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             type='file'
           />
           <StyledElements>
-            <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='2x' />
-            <Button
-              content='Send'
-              context='info'
-              disabled={isSendDisabled()}
-              size='sm'
-              onClick={submit}
-            />
+            {isSendDisabled() ? (
+              <VoiceRecorder />
+            ) : (
+              <Button
+                context='transparent'
+                disabled={isSendDisabled()}
+                noPadding
+                onClick={submit}
+                size='xs'
+              >
+                <PaperPlane />
+              </Button>
+            )}
           </StyledElements>
         </StyledWrapper>
       </StyledContainer>
@@ -120,14 +168,53 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   )
 }
 
+const DeleteIconWrapper = styled.div`
+  padding-top: 1rem;
+  padding-top: 0.5rem;
+  cursor: pointer;
+`
+
+const EmojiSelectWrapper = styled.div`
+  [class*='emojiSelectPopover_'] {
+    top: -400px;
+    left: -10px;
+  }
+  [class*='emojiSuggestions'] {
+    top: -350px !important;
+  }
+  [class*='draftJsEmojiPlugin__emojiSelectButton_'] {
+    background-color: transparent !important;
+    border: none;
+    color: ${({ theme }) => theme.COLOUR.blackGrey};
+    font-size: 2.5rem;
+    font-weight: 600;
+    height: unset;
+    margin-top: -5px;
+    margin-right: 3px;
+    &:hover {
+      color: ${({ theme }) => theme.COLOUR.info};
+    }
+    width: unset;
+  }
+`
+const StyledElements = styled.div`
+  align-items: center;
+  display: flex;
+  place-content: space-evenly;
+  width: 4rem;
+`
+
 const StyledContainer = styled.div`
-  background-color: #fff;
+  background-color: rgb(242, 242, 242);
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #c0c0c0;
   box-sizing: border-box;
   color: #c0c0c0;
   padding: ${({ audience }) => (audience ? '1.5rem 1rem 1rem' : '1rem')};
   position: relative;
+  .public-DraftStyleDefault-block {
+    margin: 0.5em 0;
+  }
 `
 
 const StyledDropDown = styled(Dropdown)`
@@ -153,15 +240,10 @@ const StyledWrapper = styled.div`
   margin: 0;
 `
 
-const StyledElements = styled.div`
-  align-items: center;
-  display: flex;
-`
-
 const StyledIcon = styled(Icon)`
   cursor: pointer;
   margin-right: 1rem;
-
+  color: ${({ theme }) => theme.COLOUR.blackGrey};
   &:hover {
     color: ${({ theme }) => theme.COLOUR.info};
   }
