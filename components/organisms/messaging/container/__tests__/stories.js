@@ -19,7 +19,6 @@ export default {
   args: {
     className: '',
     maxLength: 320,
-    messages: messages,
     style: {}
   },
   component: MessagingContainer,
@@ -80,7 +79,7 @@ export const main = args => {
       { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
     mentions,
-    messages: messaging,
+    messages,
     onSearch: handleSearch,
     onFilter: handleFilter,
     ...args
@@ -131,6 +130,7 @@ export const main = args => {
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}
         onMessageSubmit={onSubmit}
+        messagesContainerHeight={600}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
     </>

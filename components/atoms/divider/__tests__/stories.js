@@ -17,7 +17,8 @@ export default {
   args: {
     context: DividerDefaultProps.context,
     size: DividerDefaultProps.size,
-    thickness: DividerDefaultProps.thickness
+    thickness: DividerDefaultProps.thickness,
+    dashed: false
   },
   argTypes: {
     context: ContextControl(),
