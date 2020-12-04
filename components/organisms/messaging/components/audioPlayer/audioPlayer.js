@@ -1,8 +1,11 @@
 import dynamic from 'next/dynamic'
-const AudioPlayer = dynamic(() => import('react-h5-audio-player'), {
+
+const MessageAudioPlayer = dynamic(() => import('./players').then(mod => mod.MessageAudioPlayer), {
   ssr: false
 })
-const RHAP_UI = dynamic(() => import('react-h5-audio-player').then(mod => mod.RHAP_UI), {
+
+const PreviewAudioPlayer = dynamic(() => import('./players').then(mod => mod.PreviewAudioPlayer), {
   ssr: false
 })
-export { AudioPlayer, RHAP_UI }
+
+export { MessageAudioPlayer, PreviewAudioPlayer }

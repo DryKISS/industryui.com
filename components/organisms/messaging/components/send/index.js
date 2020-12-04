@@ -5,7 +5,6 @@
 // React
 import { useRef, useState } from 'react'
 import { array, func, number } from 'prop-types'
-import { RHAP_UI } from 'react-h5-audio-player'
 
 import {
   MessageNames,
@@ -19,7 +18,6 @@ import { PaperPlane } from './paperPlane'
 import { convertToRaw } from 'draft-js'
 // UI
 import {
-  AudioPlayer,
   AudioWrapper,
   Button,
   Dropdown,
@@ -27,6 +25,7 @@ import {
   EmojiSuggestions,
   Icon,
   MessagingInput,
+  PreviewAudioPlayer,
   useComponentCommunication,
   VoiceRecorder
 } from 'components'
@@ -126,13 +125,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
           {voiceMessage && (
             <AudioWrapper preview>
-              <AudioPlayer
-                src={URL.createObjectURL(voiceMessage)}
-                customProgressBarSection={[RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR]}
-                customControlsSection={[]}
-                showJumpControls={false}
-                showFilledVolume
-              />
+              <PreviewAudioPlayer src={URL.createObjectURL(voiceMessage)} />
               <DeleteIconWrapper onClick={handleDeleteVoiceClick}>
                 <Icon context='danger' icon='trash' prefix='fas' size='lg' />
               </DeleteIconWrapper>
