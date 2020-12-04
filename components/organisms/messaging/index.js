@@ -3,6 +3,7 @@
  */
 export * from './components/audioPlayer'
 export * from './components/audioPlayer/audioPlayer'
+export * from './components/audioPlayer/players'
 export * from './background/background'
 export * from './components/message'
 export * from './components/base'

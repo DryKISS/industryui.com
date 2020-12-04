@@ -1,12 +1,8 @@
 import styled, { css } from 'styled-components'
-import { MessageAudioPlayer } from 'components'
+import { IUIAudioPlayer } from 'components'
 
-export const MessagingAudioPlayer = ({ src, inMessage }) => {
-  return (
-    <AudioWrapper>
-      <MessageAudioPlayer src={src} inMessage={inMessage} />
-    </AudioWrapper>
-  )
+export const MessagingAudioPlayer = props => {
+  return <IUIAudioPlayer {...props} />
 }
 
 export const AudioWrapper = styled.div`

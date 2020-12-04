@@ -25,7 +25,7 @@ import {
   EmojiSuggestions,
   Icon,
   MessagingInput,
-  MessageAudioPlayer,
+  MessagingAudioPlayer,
   useComponentCommunication,
   VoiceRecorder
 } from 'components'
@@ -125,7 +125,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
           {voiceMessage && (
             <AudioWrapper preview>
-              <MessageAudioPlayer src={URL.createObjectURL(voiceMessage)} />
+              <MessagingAudioPlayer src={URL.createObjectURL(voiceMessage)} />
               <DeleteIconWrapper onClick={handleDeleteVoiceClick}>
                 <Icon context='danger' icon='trash' prefix='fas' size='lg' />
               </DeleteIconWrapper>
