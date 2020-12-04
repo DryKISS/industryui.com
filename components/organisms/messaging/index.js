@@ -2,6 +2,7 @@
  * Messaging
  */
 export * from './components/audioPlayer'
+export * from './components/audioPlayer/audioPlayer'
 export * from './background/background'
 export * from './components/message'
 export * from './components/base'

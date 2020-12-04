@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
-
+import { RHAP_UI } from 'react-h5-audio-player'
+import { AudioPlayer } from 'components'
 export const MessagingAudioPlayer = ({ src }) => {
   return (
     <AudioWrapper>
@@ -24,6 +24,11 @@ export const MessagingAudioPlayer = ({ src }) => {
 }
 export const AudioWrapper = styled.div`
   width: 100%;
+  ${({ hidden }) =>
+    hidden === true &&
+    css`
+      display: none;
+    `}
   ${({ preview }) =>
     preview &&
     css`

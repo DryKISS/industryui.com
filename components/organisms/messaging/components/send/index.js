@@ -5,7 +5,7 @@
 // React
 import { useRef, useState } from 'react'
 import { array, func, number } from 'prop-types'
-import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
+import { RHAP_UI } from 'react-h5-audio-player'
 
 import {
   MessageNames,
@@ -19,6 +19,7 @@ import { PaperPlane } from './paperPlane'
 import { convertToRaw } from 'draft-js'
 // UI
 import {
+  AudioPlayer,
   AudioWrapper,
   Button,
   Dropdown,
