@@ -14,7 +14,7 @@ const globals = {
 }
 
 const baseConfig = {
-  inlineDynamicImports: true,
+  // inlineDynamicImports: true,
   input: path.resolve(__dirname, 'components', 'index.js'),
   plugins: [
     peerDepsExternal({
