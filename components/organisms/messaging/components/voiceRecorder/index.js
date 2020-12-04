@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-const VoiceRecorder = dynamic(() => import('./voiceRecorder').then(mod => mod.VoiceRecorder), {
+export const IUIVoiceRecorder = dynamic(() => import('components').then(mod => mod.VoiceRecorder), {
   ssr: false
 })
-export { VoiceRecorder }

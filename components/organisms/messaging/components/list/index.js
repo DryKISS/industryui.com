@@ -84,7 +84,10 @@ export const MessageList = memo(
           if (width !== widthRef.current || height !== heightRef.current) {
             widthRef.current = width
             heightRef.current = height
-            setcache(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+            window &&
+              window.requestAnimationFrame(() => {
+                setcache(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+              })
           }
           return (
             <List

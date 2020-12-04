@@ -1,7 +1,7 @@
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import styled from 'styled-components'
 
-export const MessageAudioPlayer = ({ src, inMessage }) => {
+export const MessagingAudioPlayer = ({ src, inMessage }) => {
   return (
     <AudioPlayer
       src={src}

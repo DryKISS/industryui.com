@@ -8,6 +8,7 @@ import { any, bool, string } from 'prop-types'
 
 // UI
 import {
+  AudioWrapper,
   Card,
   Column,
   hashtagPlugin,
@@ -15,7 +16,7 @@ import {
   Image,
   linkifyPlugin,
   MentionComponent,
-  MessagingAudioPlayer,
+  IUIMessagingAudioPlayer,
   MessagingEditor,
   Preview,
   Row
@@ -84,7 +85,11 @@ export const MessageBase = ({
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
             <StyledContent>
-              {voice && <MessagingAudioPlayer src={voice} inMessage />}
+              {voice && (
+                <AudioWrapper>
+                  <IUIMessagingAudioPlayer src={voice} inMessage />
+                </AudioWrapper>
+              )}
 
               <MessagingEditor
                 plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
