@@ -42,14 +42,14 @@ import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import { useSubscription, ApolloProvider } from '@apollo/client';
 import { CellMeasurerCache, AutoSizer, List as List$1, CellMeasurer } from 'react-virtualized';
+import AudioRecorder from 'audio-recorder-polyfill';
+import mpegEncoder from 'audio-recorder-polyfill/mpeg-encoder';
 import Editor$1 from 'draft-js-plugins-editor';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import _filter from 'lodash/filter';
 import merge from 'lodash/merge';
 import App from 'next/app';
 import TagManager from 'react-gtm-module';
-import AudioRecorder from 'audio-recorder-polyfill';
-import mpegEncoder from 'audio-recorder-polyfill/mpeg-encoder';
 
 /**
  * Country
@@ -17938,6 +17938,24 @@ var OffCanvasContent = styled.div.withConfig({
   componentId: "fmbgwb-0"
 })(["flex:1;margin-top:72px;padding:24px;z-index:-1;"]);
 
+function _extends$1() {
+  _extends$1 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends$1.apply(this, arguments);
+}
+
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -18881,7 +18899,7 @@ function guard(lowerBoundary, upperBoundary, value) {
 function lighten(amount, color) {
   if (color === 'transparent') return color;
   var hslColor = parseToHsl(color);
-  return toColorString(_extends({}, hslColor, {
+  return toColorString(_extends$1({}, hslColor, {
     lightness: guard(0, 1, hslColor.lightness + parseFloat(amount))
   }));
 } // prettier-ignore
@@ -20524,6 +20542,23 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
+function _assertThisInitialized$1(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _setPrototypeOf$1(o, p) {
+  _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf$1(o, p);
+}
+
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
@@ -20536,7 +20571,7 @@ function _inherits(subClass, superClass) {
       configurable: true
     }
   });
-  if (superClass) _setPrototypeOf(subClass, superClass);
+  if (superClass) _setPrototypeOf$1(subClass, superClass);
 }
 
 function _possibleConstructorReturn(self, call) {
@@ -20544,7 +20579,14 @@ function _possibleConstructorReturn(self, call) {
     return call;
   }
 
-  return _assertThisInitialized(self);
+  return _assertThisInitialized$1(self);
+}
+
+function _getPrototypeOf$1(o) {
+  _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf$1(o);
 }
 
 var __jsx$2c = React.createElement;
@@ -20606,7 +20648,7 @@ var Design = function Design(_ref) {
 var _class, _temp;
 var __jsx$2d = React.createElement;
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
@@ -20621,11 +20663,11 @@ var Webcam = withTheme((_temp = _class = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this);
 
-    _defineProperty(_assertThisInitialized(_this), "hasGetUserMedia", function () {
+    _defineProperty(_assertThisInitialized$1(_this), "hasGetUserMedia", function () {
       return !!(navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleUserMedia", function (err, stream) {
+    _defineProperty(_assertThisInitialized$1(_this), "handleUserMedia", function (err, stream) {
       var _this$props = _this.props,
           onUserMediaError = _this$props.onUserMediaError,
           onUserMedia = _this$props.onUserMedia;
@@ -21791,13 +21833,52 @@ Login.defaultProps = {
   showPlaceholder: false
 };
 
+var IUIMessagingAudioPlayer = dynamic(function () {
+  return Promise.resolve().then(function () { return index; }).then(function (module) {
+    return module.MessagingAudioPlayer;
+  });
+}, {
+  ssr: false,
+  loadableGenerated: {
+    webpack: function webpack() {
+      return [require.resolveWeak("../../../..")];
+    },
+    modules: ["../../../.."]
+  }
+});
+
 var __jsx$2p = React.createElement;
-var MessagingAudioPlayer = function MessagingAudioPlayer(props) {
-  return __jsx$2p(IUIAudioPlayer, props);
+var MessagingAudioPlayer = function MessagingAudioPlayer(_ref) {
+  var src = _ref.src,
+      inMessage = _ref.inMessage;
+  return __jsx$2p(AudioPlayer, {
+    src: src,
+    customProgressBarSection: inMessage ? [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR, RHAP_UI.VOLUME, __jsx$2p(Spacer, {
+      key: "rh1",
+      style: {
+        margin: '0 5px',
+        width: '5px'
+      }
+    }), RHAP_UI.CURRENT_TIME, __jsx$2p(Slash, {
+      key: "rh2"
+    }, "/"), RHAP_UI.DURATION] : [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR],
+    customControlsSection: [],
+    showJumpControls: false,
+    showFilledVolume: true
+  });
 };
+var Spacer = styled.div.withConfig({
+  displayName: "messagingAudioPlayer__Spacer",
+  componentId: "sc-8bi17w-0"
+})(["margin:0 5px;width:5px;"]);
+var Slash = styled.div.withConfig({
+  displayName: "messagingAudioPlayer__Slash",
+  componentId: "sc-8bi17w-1"
+})([""]);
+
 var AudioWrapper = styled.div.withConfig({
-  displayName: "audioPlayer__AudioWrapper",
-  componentId: "sc-1mreswt-0"
+  displayName: "wrapper__AudioWrapper",
+  componentId: "sc-1cn65l1-0"
 })(["width:100%;", " ", " .rhap_container{box-sizing:border-box;display:flex;flex-direction:column;line-height:1;font-family:inherit;width:100%;}.rhap_container:focus:not(:focus-visible){outline:0;}.rhap_container svg{vertical-align:initial;}.rhap_header{margin-bottom:10px;}.rhap_footer{margin-top:5px;}.rhap_main{display:flex;flex-direction:column;flex:1 1 auto;}.rhap_progress-section{display:flex;flex:3 1 auto;align-items:center;}.rhap_controls-section{display:flex;flex:1 1 auto;justify-content:space-between;align-items:center;}.rhap_stacked .rhap_controls-section{margin-top:8px;}.rhap_horizontal{flex-direction:row;}.rhap_horizontal .rhap_controls-section{margin-left:8px;}.rhap_horizontal-reverse{flex-direction:row-reverse;}.rhap_horizontal-reverse .rhap_controls-section{margin-right:8px;}.rhap_stacked-reverse{flex-direction:column-reverse;}.rhap_stacked-reverse .rhap_controls-section{margin-bottom:8px;}.rhap_progress-container{display:flex;align-items:center;height:20px;flex:1 0 auto;align-self:center;margin:0 calc(10px + 1%);cursor:pointer;}.rhap_progress-container:focus:not(:focus-visible){outline:0;}.rhap_time{color:#333;font-size:16px;user-select:none;}.rhap_progress-bar{box-sizing:border-box;position:relative;z-index:0;width:100%;height:5px;background-color:#dddddd;border-radius:2px;}.rhap_progress-filled{height:100%;position:absolute;z-index:2;background-color:", ";border-radius:2px;}.rhap_progress-bar-show-download{background-color:rgba(221,221,221,0.5);}.rhap_download-progress{height:100%;position:absolute;z-index:1;background-color:rgba(25,129,255,0.25);border-radius:2px;}.rhap_progress-indicator{box-sizing:border-box;position:absolute;z-index:3;width:10px;height:10px;margin-left:-3px;top:-3px;background:", ";border-radius:50px;}.rhap_additional-controls{display:flex;flex:1 0 auto;align-items:center;}.rhap_repeat-button{font-size:26px;width:26px;height:26px;color:#868686;margin-right:6px;}.rhap_main-controls{flex:0 1 auto;display:flex;justify-content:center;align-items:center;}.rhap_main-controls-button{margin:0 3px;color:#868686;font-size:35px;width:35px;height:35px;}.rhap_play-pause-button{font-size:40px;width:40px;height:40px;}.rhap_volume-controls{display:flex;flex:1 0 auto;justify-content:flex-end;align-items:center;}.rhap_volume-button{flex:0 0 26px;font-size:26px;width:26px;height:26px;color:#868686;margin-right:6px;}.rhap_volume-container{display:flex;align-items:center;flex:0 1 100px;}.rhap_volume-bar-area{display:flex;align-items:center;width:100%;height:14px;cursor:pointer;}.rhap_volume-bar-area:focus:not(:focus-visible){outline:0;}.rhap_volume-bar{box-sizing:border-box;position:relative;width:100%;height:4px;background:#dddddd;border-radius:2px;}.rhap_volume-indicator{box-sizing:border-box;position:absolute;width:10px;height:10px;margin-left:-5px;left:0;top:-3px;background:", ";opacity:0.9;border-radius:50px;cursor:pointer;}.rhap_volume-indicator:hover{opacity:0.9;}.rhap_volume-filled{height:100%;position:absolute;z-index:2;background-color:", ";border-radius:2px;}.rhap_button-clear{background-color:transparent;border:none;padding:0;overflow:hidden;cursor:pointer;}.rhap_button-clear[aria-label='Play'],.rhap_button-clear[aria-label='Pause']{svg{path{fill:", ";}}}.rhap_button-clear:hover{opacity:0.9;transition-duration:0.2s;}.rhap_button-clear:active{opacity:0.95;}.rhap_button-clear:focus:not(:focus-visible){outline:0;}"], function (_ref) {
   var hidden = _ref.hidden;
   return hidden === true && css(["display:none;"]);
@@ -21824,54 +21905,6 @@ var AudioWrapper = styled.div.withConfig({
   return theme.COLOUR.primary;
 });
 
-var IUIAudioPlayer = dynamic(function () {
-  return Promise.resolve().then(function () { return players; }).then(function (mod) {
-    return mod.MessageAudioPlayer;
-  });
-}, {
-  ssr: false,
-  loadableGenerated: {
-    webpack: function webpack() {
-      return [require.resolveWeak("./players")];
-    },
-    modules: ["./players"]
-  }
-});
-
-var __jsx$2q = React.createElement;
-var MessageAudioPlayer = function MessageAudioPlayer(_ref) {
-  var src = _ref.src,
-      inMessage = _ref.inMessage;
-  return __jsx$2q(AudioPlayer, {
-    src: src,
-    customProgressBarSection: inMessage ? [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR, RHAP_UI.VOLUME, __jsx$2q(Spacer, {
-      key: "rh1",
-      style: {
-        margin: '0 5px',
-        width: '5px'
-      }
-    }), RHAP_UI.CURRENT_TIME, __jsx$2q(Slash, {
-      key: "rh2"
-    }, "/"), RHAP_UI.DURATION] : [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR],
-    customControlsSection: [],
-    showJumpControls: false,
-    showFilledVolume: true
-  });
-};
-var Spacer = styled.div.withConfig({
-  displayName: "players__Spacer",
-  componentId: "sc-13tew3g-0"
-})(["margin:0 5px;width:5px;"]);
-var Slash = styled.div.withConfig({
-  displayName: "players__Slash",
-  componentId: "sc-13tew3g-1"
-})([""]);
-
-var players = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  MessageAudioPlayer: MessageAudioPlayer
-});
-
 /**
  * Messaging/Background
  */
@@ -21889,8 +21922,22 @@ MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 };
 
-var __jsx$2r = React.createElement;
+var __jsx$2q = React.createElement;
 var ReplyIcon = function ReplyIcon(props) {
+  return __jsx$2q("svg", {
+    width: "16",
+    height: "15",
+    viewBox: "0 0 16 15",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, __jsx$2q("path", {
+    d: "M0.259656 5.43237L5.75978 0.682841C6.24122 0.26706 7 0.604591 7 1.25047V3.75212C12.0197 3.80959 16 4.81562 16 9.57268C16 11.4927 14.7631 13.3948 13.3958 14.3893C12.9692 14.6997 12.3611 14.3102 12.5184 13.8071C13.9354 9.27543 11.8463 8.07237 7 8.00265V10.75C7 11.3969 6.24062 11.7329 5.75978 11.3176L0.259656 6.56762C-0.0863132 6.26881 -0.0867825 5.73159 0.259656 5.43237Z",
+    fill: "#666666"
+  }));
+};
+
+var __jsx$2r = React.createElement;
+var ShareIcon = function ShareIcon(props) {
   return __jsx$2r("svg", {
     width: "16",
     height: "15",
@@ -21898,47 +21945,33 @@ var ReplyIcon = function ReplyIcon(props) {
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, __jsx$2r("path", {
-    d: "M0.259656 5.43237L5.75978 0.682841C6.24122 0.26706 7 0.604591 7 1.25047V3.75212C12.0197 3.80959 16 4.81562 16 9.57268C16 11.4927 14.7631 13.3948 13.3958 14.3893C12.9692 14.6997 12.3611 14.3102 12.5184 13.8071C13.9354 9.27543 11.8463 8.07237 7 8.00265V10.75C7 11.3969 6.24062 11.7329 5.75978 11.3176L0.259656 6.56762C-0.0863132 6.26881 -0.0867825 5.73159 0.259656 5.43237Z",
-    fill: "#666666"
-  }));
-};
-
-var __jsx$2s = React.createElement;
-var ShareIcon = function ShareIcon(props) {
-  return __jsx$2s("svg", {
-    width: "16",
-    height: "15",
-    viewBox: "0 0 16 15",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, __jsx$2s("path", {
     d: "M15.7403 5.43237L10.2402 0.682841C9.75878 0.26706 9 0.604591 9 1.25047V3.75212C3.98034 3.80959 0 4.81562 0 9.57268C0 11.4927 1.23691 13.3948 2.60416 14.3893C3.03081 14.6997 3.63888 14.3102 3.48156 13.8071C2.06456 9.27543 4.15366 8.07237 9 8.00265V10.75C9 11.3969 9.75938 11.7329 10.2402 11.3176L15.7403 6.56762C16.0863 6.26881 16.0868 5.73159 15.7403 5.43237Z",
     fill: "#666666"
   }));
 };
 
-var __jsx$2t = React.createElement;
+var __jsx$2s = React.createElement;
 var Message = /*#__PURE__*/memo(function (_ref) {
   var message = _ref.message,
       prevType = _ref.prevType,
       type = _ref.type,
       props = _objectWithoutProperties(_ref, ["message", "prevType", "type"]);
 
-  var avatar = message.avatar ? __jsx$2t(Avatar, {
+  var avatar = message.avatar ? __jsx$2s(Avatar, {
     size: "xxs",
     src: message.avatar
-  }) : __jsx$2t(Avatar, {
+  }) : __jsx$2s(Avatar, {
     size: "xxs",
     content: message.from[0]
   });
 
-  var sideActions = __jsx$2t(SideActionsWrapper, null, __jsx$2t(AvatarWrapper, null, avatar), __jsx$2t(IconWrapper, {
+  var sideActions = __jsx$2s(SideActionsWrapper, null, __jsx$2s(AvatarWrapper, null, avatar), __jsx$2s(IconWrapper, {
     title: "reply"
-  }, __jsx$2t(ReplyIcon, null)), __jsx$2t(IconWrapper, {
+  }, __jsx$2s(ReplyIcon, null)), __jsx$2s(IconWrapper, {
     title: "share"
-  }, __jsx$2t(ShareIcon, null)));
+  }, __jsx$2s(ShareIcon, null)));
 
-  return __jsx$2t(RowWrapper, null, type === 'in' && sideActions, __jsx$2t(MessageBase, _extends({
+  return __jsx$2s(RowWrapper, null, type === 'in' && sideActions, __jsx$2s(MessageBase, _extends({
     prevType: prevType
   }, message, props)), type === 'out' && sideActions);
 }, function () {
@@ -21965,7 +21998,7 @@ Message.propTypes = {
   prevType: propTypes.string.isRequired
 };
 
-var __jsx$2u = React.createElement;
+var __jsx$2t = React.createElement;
 var MessageIcon = function MessageIcon(_ref) {
   var icon = _ref.icon,
       prefix = _ref.prefix;
@@ -21985,7 +22018,7 @@ var MessageIcon = function MessageIcon(_ref) {
       break;
   }
 
-  return __jsx$2u(StyledIcon$8, {
+  return __jsx$2t(StyledIcon$8, {
     fixedWidth: false,
     icon: useIcon,
     prefix: prefix
@@ -22006,7 +22039,7 @@ MessageIcon.defaultProps = {
   prefix: 'fas'
 };
 
-var __jsx$2v = React.createElement;
+var __jsx$2u = React.createElement;
 var MessageTo = function MessageTo(_ref) {
   var to = _ref.to;
   var icon = '';
@@ -22029,7 +22062,7 @@ var MessageTo = function MessageTo(_ref) {
       break;
   }
 
-  return icon && __jsx$2v(StyledImage$3, {
+  return icon && __jsx$2u(StyledImage$3, {
     alt: "audience",
     src: icon
   });
@@ -22042,15 +22075,15 @@ MessageTo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$2w = React.createElement;
+var __jsx$2v = React.createElement;
 var MenuIcon = function MenuIcon(props) {
-  return __jsx$2w("svg", {
+  return __jsx$2v("svg", {
     width: "32",
     height: "32",
     viewBox: "0 0 32 32",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, __jsx$2w("path", {
+  }, __jsx$2v("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
     d: "M16 12C17.1 12 18 11.1 18 10C18 8.9 17.1 8 16 8C14.9 8 14 8.9 14 10C14 11.1 14.9 12 16 12ZM16 14C14.9 14 14 14.9 14 16C14 17.1 14.9 18 16 18C17.1 18 18 17.1 18 16C18 14.9 17.1 14 16 14ZM14 22C14 20.9 14.9 20 16 20C17.1 20 18 20.9 18 22C18 23.1 17.1 24 16 24C14.9 24 14 23.1 14 22Z",
@@ -22058,10 +22091,10 @@ var MenuIcon = function MenuIcon(props) {
   }));
 };
 
-var __jsx$2x = React.createElement;
+var __jsx$2w = React.createElement;
 var mentionPlugin = createMentionPlugin({
   mentionComponent: function mentionComponent(mentionProps) {
-    return __jsx$2x(MentionComponent, {
+    return __jsx$2w(MentionComponent, {
       mentionProps: mentionProps
     });
   }
@@ -22086,47 +22119,47 @@ var MessageBase = function MessageBase(_ref) {
       editorState = _useState[0],
       seteditorState = _useState[1];
 
-  return __jsx$2x(MessageWrapper, null, __jsx$2x(StyledCard$2, {
+  return __jsx$2w(MessageWrapper, null, __jsx$2w(StyledCard$2, {
     type: type
-  }, __jsx$2x(Row, null, __jsx$2x(Column, {
+  }, __jsx$2w(Row, null, __jsx$2w(Column, {
     sm: 6,
     style: {
       display: 'flex',
       alignItems: 'center',
       marginTop: '-0.5rem'
     }
-  }, __jsx$2x(MenuWrapper, null, __jsx$2x(MenuIcon, null)), __jsx$2x(MessageIcon, {
+  }, __jsx$2w(MenuWrapper, null, __jsx$2w(MenuIcon, null)), __jsx$2w(MessageIcon, {
     icon: icon
-  }), to && __jsx$2x(MessageTo, {
+  }), to && __jsx$2w(MessageTo, {
     to: to
-  }), __jsx$2x(StyledTime$1, null, time)), __jsx$2x(Column, {
+  }), __jsx$2w(StyledTime$1, null, time)), __jsx$2w(Column, {
     sm: 6
-  }, __jsx$2x(StyledFrom, null, from))), __jsx$2x(Row, null, pictureId && __jsx$2x(Column, {
+  }, __jsx$2w(StyledFrom, null, from))), __jsx$2w(Row, null, pictureId && __jsx$2w(Column, {
     sm: 2
-  }, __jsx$2x(Image$1, {
+  }, __jsx$2w(Image$1, {
     alt: "Image",
     src: pictureId
-  })), __jsx$2x(Column, {
+  })), __jsx$2w(Column, {
     sm: pictureId ? 8 : !type ? 11 : 12
-  }, __jsx$2x(StyledReply, null, reply), __jsx$2x(StyledContent$4, null, voice && __jsx$2x(MessagingAudioPlayer, {
+  }, __jsx$2w(StyledReply, null, reply), __jsx$2w(StyledContent$4, null, voice && __jsx$2w(AudioWrapper, null, __jsx$2w(IUIMessagingAudioPlayer, {
     src: voice,
     inMessage: true
-  }), __jsx$2x(MessagingEditor, {
+  })), __jsx$2w(MessagingEditor, {
     plugins: [emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin],
     onChange: function onChange(e) {
       return seteditorState(e);
     },
     editorState: editorState,
     readOnly: true
-  }))), !type && __jsx$2x(Column, {
+  }))), !type && __jsx$2w(Column, {
     sm: 1
-  }, __jsx$2x(Icon, {
+  }, __jsx$2w(Icon, {
     color: statusText === 'Delivered' ? 'green' : '#bbb',
     icon: "check-circle"
-  }))), attachments && attachments.length > 0 && __jsx$2x(AttachmentsContainer, null, Array.from(attachments).map(function (item, index) {
-    return __jsx$2x(SingleAttachment, {
+  }))), attachments && attachments.length > 0 && __jsx$2w(AttachmentsContainer, null, Array.from(attachments).map(function (item, index) {
+    return __jsx$2w(SingleAttachment, {
       key: index
-    }, __jsx$2x(Preview, {
+    }, __jsx$2w(Preview, {
       imageStyles: {
         minHeight: '10rem',
         height: '10rem',
@@ -22194,7 +22227,7 @@ MessageBase.propTypes = {
   type: propTypes.string
 };
 
-var __jsx$2y = React.createElement;
+var __jsx$2x = React.createElement;
 var DragAndDropable = function DragAndDropable(_ref) {
   var children = _ref.children,
       onFileDrop = _ref.onFileDrop,
@@ -22223,7 +22256,7 @@ var DragAndDropable = function DragAndDropable(_ref) {
       isDragActive = _useDropzone.isDragActive,
       isDragReject = _useDropzone.isDragReject;
 
-  return __jsx$2y(Container$2, getRootProps({
+  return __jsx$2x(Container$2, getRootProps({
     isDragActive: isDragActive,
     isDragAccept: isDragAccept,
     isDragReject: isDragReject
@@ -22234,46 +22267,46 @@ var Container$2 = styled.div.withConfig({
   componentId: "sc-1wgvic2-0"
 })(["overflow:hidden;position:relative;outline:none;*{&::-webkit-scrollbar{width:0.25rem;background-color:rgb(245,245,255);}&::-webkit-scrollbar-thumb{border-radius:10px;background-color:rgb(190,190,194);}}"]);
 
-var __jsx$2z = React.createElement;
+var __jsx$2y = React.createElement;
 var MessagingDragHover = function MessagingDragHover(_ref) {
   var files = _ref.files,
       handleRemoveFile = _ref.handleRemoveFile,
       isOpen = _ref.isOpen,
       onClose = _ref.onClose,
       onSubmit = _ref.onSubmit;
-  return __jsx$2z(Wrapper$4, {
+  return __jsx$2y(Wrapper$4, {
     open: isOpen
-  }, __jsx$2z(ContentWrapper, null, __jsx$2z(Head, null, __jsx$2z(Close, {
+  }, __jsx$2y(ContentWrapper, null, __jsx$2y(Head, null, __jsx$2y(Close, {
     click: onClose,
     context: "white"
-  }), __jsx$2z(Space, {
+  }), __jsx$2y(Space, {
     marginLeft: "sm"
-  }, __jsx$2z(Text, {
+  }, __jsx$2y(Text, {
     context: "white"
-  }, "Preview"))), __jsx$2z(LastFilePreviewContainer, {
+  }, "Preview"))), __jsx$2y(LastFilePreviewContainer, {
     visible: files.length > 0
-  }, files.length > 0 && __jsx$2z(Preview, {
+  }, files.length > 0 && __jsx$2y(Preview, {
     file: files[files.length - 1],
     showName: true
-  })), !files[0] && __jsx$2z(DragFilesHereContainer, null, __jsx$2z(Text, {
+  })), !files[0] && __jsx$2y(DragFilesHereContainer, null, __jsx$2y(Text, {
     size: "xl",
     context: "dark"
-  }, "Drag File Here")), __jsx$2z(SendButtonContainer, {
+  }, "Drag File Here")), __jsx$2y(SendButtonContainer, {
     hasFile: files.length > 0
-  }, __jsx$2z(StyledSendButton, {
+  }, __jsx$2y(StyledSendButton, {
     style: {
       borderRadius: '50px'
     },
     onClick: onSubmit
-  }, "submit")), __jsx$2z(PreviewContainer, null, files.length > 0 && files.map(function (item, index) {
-    return __jsx$2z(BottomPreviewContainer, {
+  }, "submit")), __jsx$2y(PreviewContainer, null, files.length > 0 && files.map(function (item, index) {
+    return __jsx$2y(BottomPreviewContainer, {
       key: index
-    }, __jsx$2z(RemoveContainer, null, __jsx$2z(Close, {
+    }, __jsx$2y(RemoveContainer, null, __jsx$2y(Close, {
       click: function click() {
         return handleRemoveFile(index);
       },
       context: "white"
-    })), __jsx$2z(Preview, {
+    })), __jsx$2y(Preview, {
       file: item
     }));
   }))));
@@ -22353,7 +22386,7 @@ var Wrapper$4 = styled.div.withConfig({
   return open === true && css(["transform:translateY(0%);"]);
 });
 
-var __jsx$2A = React.createElement;
+var __jsx$2z = React.createElement;
 var MessagingInput = function MessagingInput(_ref) {
   var _suggestions$length;
 
@@ -22405,16 +22438,16 @@ var MessagingInput = function MessagingInput(_ref) {
     onRecieve: onActionRecieved,
     subscriber: MessagingSubscriber
   });
-  return __jsx$2A(Wrapper$5, {
+  return __jsx$2z(Wrapper$5, {
     onClick: function onClick() {
       return focusEditor();
     },
     topMultiplier: (_suggestions$length = suggestions === null || suggestions === void 0 ? void 0 : suggestions.length) !== null && _suggestions$length !== void 0 ? _suggestions$length : 0
-  }, mentions && __jsx$2A(MentionSuggestions, {
+  }, mentions && __jsx$2z(MentionSuggestions, {
     onAddMention: onAddMention,
     onSearchChange: onSearchChange,
     suggestions: suggestions
-  }), __jsx$2A(MessagingEditor, {
+  }), __jsx$2z(MessagingEditor, {
     editorState: editorState,
     onChange: handleChange,
     plugins: messagingPlugins,
@@ -22432,7 +22465,7 @@ var Wrapper$5 = styled.div.withConfig({
   return COMMON_INPUT_STYLES(props);
 });
 
-var __jsx$2B = React.createElement;
+var __jsx$2A = React.createElement;
 var Preview = function Preview(_ref) {
   var _file$src;
 
@@ -22440,10 +22473,10 @@ var Preview = function Preview(_ref) {
       placeHolderImageUrl = _ref.placeHolderImageUrl,
       imageStyles = _ref.imageStyles,
       showName = _ref.showName;
-  return file !== null && file !== void 0 && file.type.includes('image') || file !== null && file !== void 0 && file.src ? __jsx$2B(PreviewImage, {
+  return file !== null && file !== void 0 && file.type.includes('image') || file !== null && file !== void 0 && file.src ? __jsx$2A(PreviewImage, {
     src: (_file$src = file.src) !== null && _file$src !== void 0 ? _file$src : URL.createObjectURL(file),
     style: imageStyles
-  }) : __jsx$2B(PlaceHolder, null, __jsx$2B(FilePlaceHolder, {
+  }) : __jsx$2A(PlaceHolder, null, __jsx$2A(FilePlaceHolder, {
     placeHolderImageUrl: placeHolderImageUrl
   }), showName && (file === null || file === void 0 ? void 0 : file.name));
 };
@@ -22587,7 +22620,7 @@ var Api = function Api() {
  */
 var UserContext = /*#__PURE__*/createContext();
 
-var __jsx$2C = React.createElement;
+var __jsx$2B = React.createElement;
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
@@ -22778,7 +22811,7 @@ var UserProvider = function UserProvider(_ref) {
     return true;
   };
 
-  return !isLoading && __jsx$2C(UserContext.Provider, {
+  return !isLoading && __jsx$2B(UserContext.Provider, {
     value: {
       accessToken: accessToken,
       authorise: authorise,
@@ -22797,7 +22830,7 @@ var UserProvider = function UserProvider(_ref) {
  */
 var AuthorizationContext = /*#__PURE__*/createContext();
 
-var __jsx$2D = React.createElement;
+var __jsx$2C = React.createElement;
 var AuthorizationProvider = function AuthorizationProvider(_ref) {
   var children = _ref.children;
 
@@ -22884,7 +22917,7 @@ var AuthorizationProvider = function AuthorizationProvider(_ref) {
     return false;
   };
 
-  return !isLoading && __jsx$2D(AuthorizationContext.Provider, {
+  return !isLoading && __jsx$2C(AuthorizationContext.Provider, {
     value: {
       hasAccess: hasAccess,
       hasRole: hasRole
@@ -22939,9 +22972,9 @@ var MessagingActions = {
  */
 var ConfigContext = /*#__PURE__*/createContext();
 
-var __jsx$2E = React.createElement;
+var __jsx$2D = React.createElement;
 var ConfigProvider = function ConfigProvider(props) {
-  return __jsx$2E(ConfigContext.Provider, _extends({
+  return __jsx$2D(ConfigContext.Provider, _extends({
     value: props.config
   }, props));
 };
@@ -23455,7 +23488,7 @@ var InternationalisationContext = /*#__PURE__*/createContext({
   }
 });
 
-var __jsx$2F = React.createElement;
+var __jsx$2E = React.createElement;
 var InternationalisationProvider = function InternationalisationProvider(_ref) {
   var locale = _ref.locale,
       children = _ref.children;
@@ -23491,7 +23524,7 @@ var InternationalisationProvider = function InternationalisationProvider(_ref) {
       });
     }
   }, [router === null || router === void 0 ? void 0 : router.query.lang, localeState]);
-  return __jsx$2F(InternationalisationContext.Provider, {
+  return __jsx$2E(InternationalisationContext.Provider, {
     value: {
       locale: localeState.locale,
       setLocale: setLocaleState
@@ -23540,7 +23573,7 @@ var getInitialLocale = function getInitialLocale() {
  */
 var NotificationsContext = /*#__PURE__*/createContext();
 
-var __jsx$2G = React.createElement;
+var __jsx$2F = React.createElement;
 var NotificationsProvider = function NotificationsProvider(_ref) {
   var children = _ref.children,
       user = _ref.user;
@@ -23560,7 +23593,7 @@ var NotificationsProvider = function NotificationsProvider(_ref) {
   //   </NotificationsContext.Provider>
   // )
 
-  return __jsx$2G(NotificationsContext.Provider, {
+  return __jsx$2F(NotificationsContext.Provider, {
     value: {
       items: items,
       user: user
@@ -26591,7 +26624,7 @@ var useNotifications = function useNotifications(url) {
  */
 var OffCanvasContext = /*#__PURE__*/createContext();
 
-var __jsx$2H = React.createElement;
+var __jsx$2G = React.createElement;
 var DURATION = 300;
 var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var children = _ref.children;
@@ -26635,12 +26668,12 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
   var options = getFirst(dataManager); // Get title and content from last item
 
   var data = getLast(dataManager);
-  return __jsx$2H(OffCanvasContext.Provider, {
+  return __jsx$2G(OffCanvasContext.Provider, {
     value: {
       show: handleShow,
       close: handleClose
     }
-  }, children, __jsx$2H(OffCanvas, {
+  }, children, __jsx$2G(OffCanvas, {
     context: data === null || data === void 0 ? void 0 : data.context,
     handleSubmit: data === null || data === void 0 ? void 0 : data.handleSubmit,
     hasAvatar: data === null || data === void 0 ? void 0 : data.hasAvatar,
@@ -26657,7 +26690,7 @@ var OffCanvasProvider = function OffCanvasProvider(_ref) {
     variant: data === null || data === void 0 ? void 0 : data.variant,
     width: options === null || options === void 0 ? void 0 : options.width
   }, dataManager.map(function (d, i) {
-    return __jsx$2H(StyledWrapper$2, {
+    return __jsx$2G(StyledWrapper$2, {
       key: i,
       show: i + 1 === dataManager.length
     }, d.content);
@@ -26671,23 +26704,23 @@ var StyledWrapper$2 = styled.div.withConfig({
   return !show && 'display:none';
 });
 
-var __jsx$2I = React.createElement;
+var __jsx$2H = React.createElement;
 
 var renderMessage = function renderMessage(_ref, messages, cache) {
   var index = _ref.index,
       parent = _ref.parent,
       key = _ref.key,
       style = _ref.style;
-  return __jsx$2I(CellMeasurer, {
+  return __jsx$2H(CellMeasurer, {
     cache: cache,
     key: index,
     parent: parent,
     columnIndex: 0,
     rowIndex: index
-  }, __jsx$2I(MessageContainer, {
+  }, __jsx$2H(MessageContainer, {
     type: messages[index].type,
     style: style
-  }, __jsx$2I(Message, {
+  }, __jsx$2H(Message, {
     message: messages[index],
     prevType: messages[index].type,
     type: messages[index].type
@@ -26758,20 +26791,22 @@ var MessageList = /*#__PURE__*/memo(function (_ref2) {
     onRecieve: onAction,
     subscriber: MessagingSubscriber
   });
-  return __jsx$2I(AutoSizer, null, function (_ref3) {
+  return __jsx$2H(AutoSizer, null, function (_ref3) {
     var height = _ref3.height,
         width = _ref3.width;
 
     if (width !== widthRef.current || height !== heightRef.current) {
       widthRef.current = width;
       heightRef.current = height;
-      setcache(new CellMeasurerCache({
-        fixedWidth: true,
-        defaultHeight: 50
-      }));
+      window && window.requestAnimationFrame(function () {
+        setcache(new CellMeasurerCache({
+          fixedWidth: true,
+          defaultHeight: 50
+        }));
+      });
     }
 
-    return __jsx$2I(List$1, {
+    return __jsx$2H(List$1, {
       style: {
         padding: '0.5rem 0'
       },
@@ -26801,7 +26836,7 @@ MessageList.propTypes = {
   initialMessages: propTypes.array.isRequired
 };
 
-var __jsx$2J = React.createElement;
+var __jsx$2I = React.createElement;
 var Items = [{
   text: 'All',
   value: 'all'
@@ -26839,16 +26874,16 @@ var MessagingSearch = function MessagingSearch(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2J(StyledContainer$7, null, __jsx$2J(Form, {
+  return __jsx$2I(StyledContainer$7, null, __jsx$2I(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, __jsx$2J(Row, null, __jsx$2J(Column, {
+  }, __jsx$2I(Row, null, __jsx$2I(Column, {
     md: 6
-  }, __jsx$2J(StyledSearch, _extends({}, defaultOptions, {
+  }, __jsx$2I(StyledSearch, _extends({}, defaultOptions, {
     prependSearchIcon: true,
     placeholder: placeholder
-  }))), __jsx$2J(Column, {
+  }))), __jsx$2I(Column, {
     md: 6
-  }, __jsx$2J(StyledSelect$1, _extends({}, defaultOptions, {
+  }, __jsx$2I(StyledSelect$1, _extends({}, defaultOptions, {
     name: "messagingFilter",
     onChange: onFilterChange,
     options: Items
@@ -26875,14 +26910,14 @@ MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 };
 
-var __jsx$2K = React.createElement;
+var __jsx$2J = React.createElement;
 var PaperPlane = function PaperPlane(props) {
-  return __jsx$2K(StyledSvg, _extends({}, props, {
+  return __jsx$2J(StyledSvg, _extends({}, props, {
     "aria-hidden": "true",
     width: 25,
     focusable: "false",
     viewBox: "0 0 512 512"
-  }), __jsx$2K("path", {
+  }), __jsx$2J("path", {
     d: "M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
   }));
 };
@@ -26899,7 +26934,7 @@ var StyledSvg = styled.svg.withConfig({
   return !disabled ? theme.COLOUR.info : theme.COLOUR.neutral;
 });
 
-var __jsx$2L = React.createElement;
+var __jsx$2K = React.createElement;
 
 function ownKeys$e(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -26996,34 +27031,34 @@ var MessagingSend = function MessagingSend(_ref) {
     setvoiceMessage(null);
   };
 
-  return __jsx$2L(React.Fragment, null, __jsx$2L(StyledContainer$8, {
+  return __jsx$2K(React.Fragment, null, __jsx$2K(StyledContainer$8, {
     audience: audience
-  }, __jsx$2L(StyledWrapper$3, null, audience && __jsx$2L(StyledDropDown, {
+  }, __jsx$2K(StyledWrapper$3, null, audience && __jsx$2K(StyledDropDown, {
     items: audienceItems,
     onChange: function onChange(item) {
       return setAudience(item);
     },
     position: "top"
-  }, audience.name), __jsx$2L(StyledElements, null, __jsx$2L(EmojiSelectWrapper, null, __jsx$2L(EmojiSuggestions, null), __jsx$2L(EmojiSelect, null)), __jsx$2L(StyledIcon$9, {
+  }, audience.name), __jsx$2K(StyledElements, null, __jsx$2K(EmojiSelectWrapper, null, __jsx$2K(EmojiSuggestions, null), __jsx$2K(EmojiSelect, null)), __jsx$2K(StyledIcon$9, {
     fixedWidth: false,
     icon: "paperclip",
     onClick: openFileDialog,
     size: "lg"
-  })), voiceMessage && __jsx$2L(AudioWrapper, {
+  })), voiceMessage && __jsx$2K(AudioWrapper, {
     preview: true
-  }, __jsx$2L(MessagingAudioPlayer, {
+  }, __jsx$2K(IUIMessagingAudioPlayer, {
     src: URL.createObjectURL(voiceMessage)
-  }), __jsx$2L(DeleteIconWrapper, {
+  }), __jsx$2K(DeleteIconWrapper, {
     onClick: handleDeleteVoiceClick
-  }, __jsx$2L(Icon, {
+  }, __jsx$2K(Icon, {
     context: "danger",
     icon: "trash",
     prefix: "fas",
     size: "lg"
-  }))), __jsx$2L(MessagingInput, {
+  }))), __jsx$2K(MessagingInput, {
     mentions: mentions,
     onChange: handleInputChange
-  }), __jsx$2L("input", {
+  }), __jsx$2K("input", {
     multiple: true,
     onChange: handleFilesChange,
     ref: fileInputRef,
@@ -27031,13 +27066,13 @@ var MessagingSend = function MessagingSend(_ref) {
       display: 'none'
     },
     type: "file"
-  }), __jsx$2L(StyledElements, null, isSendDisabled() ? __jsx$2L(VoiceRecorder, null) : __jsx$2L(Button, {
+  }), __jsx$2K(StyledElements, null, isSendDisabled() ? __jsx$2K(IUIVoiceRecorder, null) : __jsx$2K(Button, {
     context: "transparent",
     disabled: isSendDisabled(),
     noPadding: true,
     onClick: submit,
     size: "xs"
-  }, __jsx$2L(PaperPlane, null))))));
+  }, __jsx$2K(PaperPlane, null))))));
 };
 var DeleteIconWrapper = styled.div.withConfig({
   displayName: "send__DeleteIconWrapper",
@@ -27112,21 +27147,135 @@ Tail.propTypes = {
   type: propTypes.oneOf(['in', 'out']).isRequired
 };
 
-var VoiceRecorder = dynamic(function () {
-  return Promise.resolve().then(function () { return voiceRecorder; }).then(function (mod) {
+var IUIVoiceRecorder = dynamic(function () {
+  return Promise.resolve().then(function () { return index; }).then(function (mod) {
     return mod.VoiceRecorder;
   });
 }, {
   ssr: false,
   loadableGenerated: {
     webpack: function webpack() {
-      return [require.resolveWeak("./voiceRecorder")];
+      return [require.resolveWeak("../../../..")];
     },
-    modules: ["./voiceRecorder"]
+    modules: ["../../../.."]
   }
 });
 
+var __jsx$2L = React.createElement;
+var Microphone = function Microphone(_ref) {
+  var isRecording = _ref.isRecording;
+  return __jsx$2L(StyledSvg$1, {
+    isRecording: isRecording,
+    width: "15",
+    height: "22",
+    viewBox: "0 0 15 22",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, __jsx$2L("path", {
+    d: "M7.5 15.125C9.75938 15.125 11.5909 13.2782 11.5909 11V4.125C11.5909 1.8468 9.75938 0 7.5 0C5.24062 0 3.40909 1.8468 3.40909 4.125V11C3.40909 13.2782 5.24062 15.125 7.5 15.125ZM14.3182 8.25H13.6364C13.2597 8.25 12.9545 8.55766 12.9545 8.9375V11C12.9545 14.2141 10.2064 16.793 6.95497 16.4734C4.12117 16.1945 2.04545 13.6258 2.04545 10.7551V8.9375C2.04545 8.55766 1.74034 8.25 1.36364 8.25H0.681818C0.305114 8.25 0 8.55766 0 8.9375V10.6631C0 14.5148 2.72599 17.9485 6.47727 18.4701V19.9375H4.09091C3.7142 19.9375 3.40909 20.2452 3.40909 20.625V21.3125C3.40909 21.6923 3.7142 22 4.09091 22H10.9091C11.2858 22 11.5909 21.6923 11.5909 21.3125V20.625C11.5909 20.2452 11.2858 19.9375 10.9091 19.9375H8.52273V18.4864C12.1751 17.9811 15 14.8199 15 11V8.9375C15 8.55766 14.6949 8.25 14.3182 8.25Z"
+  }));
+};
+var StyledSvg$1 = styled.svg.withConfig({
+  displayName: "microphone__StyledSvg",
+  componentId: "sc-1bwhcm5-0"
+})(["path{fill:", ";}"], function (_ref2) {
+  var isRecording = _ref2.isRecording,
+      theme = _ref2.theme;
+  return isRecording ? theme.COLOUR.success : theme.COLOUR.blackGrey;
+});
+
 var __jsx$2M = React.createElement;
+AudioRecorder.encoder = mpegEncoder;
+AudioRecorder.prototype.mimeType = 'audio/mpeg';
+
+if (window) {
+  window.MediaRecorder = AudioRecorder;
+}
+
+var VoiceRecorder = function VoiceRecorder(props) {
+  var recorder = useRef();
+  var canSendData = useRef(true);
+
+  var _useState = useState(false),
+      isRecording = _useState[0],
+      setisRecording = _useState[1];
+
+  var handleStartRecord = function handleStartRecord() {
+    navigator.mediaDevices.getUserMedia({
+      audio: true
+    }).then(function (stream) {
+      recorder.current = new window.MediaRecorder(stream); // Set record to <audio> when recording will be finished
+
+      recorder.current.addEventListener('dataavailable', function (e) {
+        if (canSendData.current === true) {
+          setTimeout(function () {
+            MessagingCommunicationService.send({
+              name: MessageNames.Messaging.MESSAGING_ACTION,
+              payload: {
+                action: MessagingActions.SET_RECORDED_VOICE,
+                data: e.data
+              }
+            });
+          }, 200);
+        } else {
+          canSendData.current = true;
+        }
+      }); // Start recording
+
+      recorder.current.start();
+      setisRecording(true);
+    });
+  };
+
+  var handleStopRecord = function handleStopRecord() {
+    recorder.current.stop(); // Remove “recording” icon from browser tab
+
+    recorder.current.stream.getTracks().forEach(function (i) {
+      return i.stop();
+    });
+    setisRecording(false);
+  };
+
+  var handleCancelRecord = function handleCancelRecord() {
+    canSendData.current = false;
+    recorder.current.stop(); // Remove “recording” icon from browser tab
+
+    recorder.current.stream.getTracks().forEach(function (i) {
+      return i.stop();
+    });
+    setisRecording(false);
+  };
+
+  return __jsx$2M(React.Fragment, null, __jsx$2M(OverLay, {
+    isRecording: isRecording
+  }, __jsx$2M(Text, {
+    content: "Recording... ",
+    context: "blackText"
+  }), __jsx$2M(Close, {
+    click: handleCancelRecord,
+    context: "danger"
+  })), __jsx$2M(Wrapper$6, {
+    onClick: isRecording ? handleStopRecord : handleStartRecord
+  }, __jsx$2M(Microphone, {
+    isRecording: isRecording
+  })));
+};
+var Wrapper$6 = styled.div.withConfig({
+  displayName: "voiceRecorder__Wrapper",
+  componentId: "sc-8hdhkz-0"
+})(["cursor:pointer;padding-top:0.25rem;"]);
+var OverLay = styled.div.withConfig({
+  displayName: "voiceRecorder__OverLay",
+  componentId: "sc-8hdhkz-1"
+})(["align-items:center;background-color:", ";display:flex;height:45px;justify-content:space-between;left:4rem;overflow:hidden;position:absolute;top:-2px;transition-property:padding-left,padding-right,width,opacity;transition-duration:0.3s;transition-timing-function:cubic-bezier(0.4,0,0.2,1);z-index:1;", ""], function (_ref) {
+  var theme = _ref.theme;
+  return theme.COLOUR.light;
+}, function (_ref2) {
+  var isRecording = _ref2.isRecording;
+  return css(["opacity:", ";padding-left:", ";padding-right:", ";width:", ";"], isRecording ? '1' : '0', isRecording ? '1rem' : '0rem', isRecording ? '1rem' : '0rem', isRecording ? 'calc(100% - 8rem)' : '0px');
+});
+
+var __jsx$2N = React.createElement;
 var MessagingContainer = function MessagingContainer(_ref) {
   var audienceItems = _ref.audienceItems,
       className = _ref.className,
@@ -27240,26 +27389,26 @@ var MessagingContainer = function MessagingContainer(_ref) {
     });
   };
 
-  return __jsx$2M(DragAndDropable, {
+  return __jsx$2N(DragAndDropable, {
     onFileDrop: onDrop,
     onHover: onHover,
     onLeave: onLeave
-  }, __jsx$2M(MessagingSearch, {
+  }, __jsx$2N(MessagingSearch, {
     onFilter: onFilter,
     onSearch: onSearch
-  }), __jsx$2M(StyledContainer$9, {
+  }), __jsx$2N(StyledContainer$9, {
     messagesContainerHeight: hasMessage ? messagesContainerHeight : 0,
     className: className,
     style: style
-  }, __jsx$2M(MessageList, {
+  }, __jsx$2N(MessageList, {
     initialMessages: messages,
     onMessageRecieved: handleMessageRecieved
-  })), __jsx$2M(MessagingSend, {
+  })), __jsx$2N(MessagingSend, {
     audienceItems: audienceItems,
     onSubmit: handleSubmit,
     maxLength: maxLength,
     mentions: mentions
-  }), __jsx$2M(MessagingDragHover, {
+  }), __jsx$2N(MessagingDragHover, {
     files: Files,
     handleRemoveFile: handleRemoveFile,
     isOpen: IsDragHoverOpen,
@@ -27336,7 +27485,7 @@ var handleHashtagClick = function handleHashtagClick(hashtag) {
   });
 };
 
-var __jsx$2N = React.createElement;
+var __jsx$2O = React.createElement;
 function Hashtag(props) {
   var _props$theme = props.theme,
       theme = _props$theme === void 0 ? {} : _props$theme,
@@ -27352,7 +27501,7 @@ function Hashtag(props) {
       otherProps = _objectWithoutProperties(props, ["theme", "className", "decoratedText", "dir", "entityKey", "getEditorState", "offsetKey", "setEditorState", "contentState", "blockKey"]);
 
   var combinedClassName = clsx(theme.hashtag, className);
-  return __jsx$2N(StyledHashtag, _extends({
+  return __jsx$2O(StyledHashtag, _extends({
     onClick: function onClick() {
       return handleHashtagClick(props.decoratedText);
     }
@@ -27450,11 +27599,11 @@ var hashtagStrategy = (function (contentBlock, callback) {
   });
 });
 
-var __jsx$2O = React.createElement;
+var __jsx$2P = React.createElement;
 var createHashtagPlugin = function createHashtagPlugin() {
 
   var DecoratedHashtag = function DecoratedHashtag(props) {
-    return __jsx$2O(Hashtag, props);
+    return __jsx$2P(Hashtag, props);
   };
 
   return {
@@ -27465,10 +27614,10 @@ var createHashtagPlugin = function createHashtagPlugin() {
   };
 };
 
-var __jsx$2P = React.createElement;
+var __jsx$2Q = React.createElement;
 var linkifyPlugin = createLinkifyPlugin({
   component: function component(props) {
-    return __jsx$2P(LinkPluginComponent, props);
+    return __jsx$2Q(LinkPluginComponent, props);
   }
 }); //  plugins configuration
 
@@ -27481,7 +27630,7 @@ var EmojiSelect = emojiPlugin$1.EmojiSelect;
 var MessagingEditor = Editor$1;
 var messagingPlugins = [emojiPlugin$1, hashtagPlugin, mentionPlugin$1, linkifyPlugin];
 
-var __jsx$2Q = React.createElement;
+var __jsx$2R = React.createElement;
 
 var handleMentionClick = function handleMentionClick(mentionProps) {
   MessagingCommunicationService.send({
@@ -27495,7 +27644,7 @@ var handleMentionClick = function handleMentionClick(mentionProps) {
 
 var MentionComponent = function MentionComponent(_ref) {
   var mentionProps = _ref.mentionProps;
-  return __jsx$2Q(StyledMention, {
+  return __jsx$2R(StyledMention, {
     className: mentionProps.className // eslint-disable-next-line no-alert
     ,
     onClick: function onClick() {
@@ -27508,14 +27657,14 @@ var StyledMention = styled.span.withConfig({
   componentId: "pzsgie-0"
 })([""]);
 
-var __jsx$2R = React.createElement;
+var __jsx$2S = React.createElement;
 var LinkPluginComponent = function LinkPluginComponent(props) {
-  return __jsx$2R("a", _extends({}, props, {
+  return __jsx$2S("a", _extends({}, props, {
     onClick: function onClick() {}
   }));
 };
 
-var __jsx$2S = React.createElement;
+var __jsx$2T = React.createElement;
 var PasswordChange = function PasswordChange(_ref) {
   var showPlaceholder = _ref.showPlaceholder;
 
@@ -27533,34 +27682,34 @@ var PasswordChange = function PasswordChange(_ref) {
 
   var submit = function submit(data) {};
 
-  return __jsx$2S(React.Fragment, null, __jsx$2S(PageHeading, {
+  return __jsx$2T(React.Fragment, null, __jsx$2T(PageHeading, {
     center: true,
     heading: "Password Change",
     divider: false
-  }), error && __jsx$2S(Alert, {
+  }), error && __jsx$2T(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2S(Form, {
+  }), __jsx$2T(Form, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$2S(FormLabel, {
+  }, __jsx$2T(FormLabel, {
     label: "Old password"
-  }, __jsx$2S(FormField, {
+  }, __jsx$2T(FormField, {
     errors: errors,
     name: "passwordOld",
     placeholder: showPlaceholder ? 'Old Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2S(FormLabel, {
+  })), __jsx$2T(FormLabel, {
     label: "New password"
-  }, __jsx$2S(FormField, {
+  }, __jsx$2T(FormField, {
     errors: errors,
     name: "password",
     placeholder: showPlaceholder ? 'New Password' : '',
     register: register,
     type: "password"
-  })), __jsx$2S(FormLabel, {
+  })), __jsx$2T(FormLabel, {
     label: "Confirm password"
-  }, __jsx$2S(FormField, {
+  }, __jsx$2T(FormField, {
     errors: errors,
     name: "passwordConfirm",
     placeholder: showPlaceholder ? 'Confirm Password' : '',
@@ -27569,7 +27718,7 @@ var PasswordChange = function PasswordChange(_ref) {
     validate: function validate(v) {
       return v === watch('password');
     }
-  })), __jsx$2S(Button, {
+  })), __jsx$2T(Button, {
     block: true,
     content: "Submit",
     context: "primary",
@@ -27590,7 +27739,7 @@ var LAYOUTS = {
   TABLET: 'TABLET'
 };
 
-var __jsx$2T = React.createElement;
+var __jsx$2U = React.createElement;
 var Pricing = function Pricing(_ref) {
   var pricingInfo = _ref.pricingInfo,
       onPlanSelect = _ref.onPlanSelect;
@@ -27633,46 +27782,46 @@ var Pricing = function Pricing(_ref) {
     onPlanSelect(e);
   };
 
-  return __jsx$2T(Wrapper$6, {
+  return __jsx$2U(Wrapper$7, {
     ref: WrapperRef
-  }, __jsx$2T(ResizeDetector, {
+  }, __jsx$2U(ResizeDetector, {
     onResize: function onResize(_ref2) {
       var width = _ref2.width;
       return resetLayout();
     }
-  }), __jsx$2T(PricesWrapper, null, __jsx$2T(React.Fragment, null, Layout.includes(LAYOUTS.DESKTOP) ? pricingInfo.map(function (item, index) {
-    return __jsx$2T(PricingCard, {
+  }), __jsx$2U(PricesWrapper, null, __jsx$2U(React.Fragment, null, Layout.includes(LAYOUTS.DESKTOP) ? pricingInfo.map(function (item, index) {
+    return __jsx$2U(PricingCard, {
       layout: Layout,
       onCardSelect: handlePlanSelect,
       data: item,
       key: index
     });
-  }) : __jsx$2T(DropDownAndFeatues, null, __jsx$2T(PricingDropdown, {
+  }) : __jsx$2U(DropDownAndFeatues, null, __jsx$2U(PricingDropdown, {
     onPlanChange: handlePlanChange,
     pricingInfo: pricingInfo,
     selectedPlan: SelectedPlan
-  }), __jsx$2T(FeaturesAndAdd, null, __jsx$2T(FeaturesWrapper, null, pricingInfo[SelectedPlan].checkList.map(function (item, index) {
-    return __jsx$2T(ListItem$1, {
+  }), __jsx$2U(FeaturesAndAdd, null, __jsx$2U(FeaturesWrapper, null, pricingInfo[SelectedPlan].checkList.map(function (item, index) {
+    return __jsx$2U(ListItem$1, {
       key: index
-    }, __jsx$2T(Icon, {
+    }, __jsx$2U(Icon, {
       color: "rgb(69, 186, 190)",
       icon: "check",
       prefix: "fas"
-    }), __jsx$2T(StyledFeature, {
+    }), __jsx$2U(StyledFeature, {
       content: item.title,
       context: "blackText",
       size: "sm"
     }));
-  })), __jsx$2T(AddToCartWrapper, {
+  })), __jsx$2U(AddToCartWrapper, {
     fullWidth: Layout === LAYOUTS.MOBILE
-  }, __jsx$2T(StyledButton$8, {
+  }, __jsx$2U(StyledButton$8, {
     block: true,
     context: "deepBlue",
     onClick: function onClick() {
       return handlePlanSelect(pricingInfo[SelectedPlan]);
     },
     outline: true
-  }, "Add To Cart")))))), __jsx$2T(PriceMatrix, {
+  }, "Add To Cart")))))), __jsx$2U(PriceMatrix, {
     pricingInfo: pricingInfo,
     layout: Layout,
     selectedPlan: SelectedPlan
@@ -27709,7 +27858,7 @@ var DropDownAndFeatues = styled.div.withConfig({
   displayName: "pricing__DropDownAndFeatues",
   componentId: "v9tuh9-6"
 })(["width:100%;"]);
-var Wrapper$6 = styled.div.withConfig({
+var Wrapper$7 = styled.div.withConfig({
   displayName: "pricing__Wrapper",
   componentId: "v9tuh9-7"
 })(["min-width:21.25rem;"]);
@@ -27718,7 +27867,7 @@ var PricesWrapper = styled.div.withConfig({
   componentId: "v9tuh9-8"
 })(["display:flex;justify-content:flex-end;margin-bottom:1rem;position:relative;width:100%;"]);
 
-var __jsx$2U = React.createElement;
+var __jsx$2V = React.createElement;
 var PricingCard = function PricingCard(_ref) {
   var data = _ref.data,
       layout = _ref.layout,
@@ -27726,34 +27875,34 @@ var PricingCard = function PricingCard(_ref) {
   var checkList = data.checkList,
       recommended = data.recommended,
       price = data.price;
-  return __jsx$2U(Wrapper$7, {
+  return __jsx$2V(Wrapper$8, {
     layout: layout,
     recommended: recommended
-  }, __jsx$2U(Title, {
+  }, __jsx$2V(Title, {
     recommended: recommended
-  }, data.title), __jsx$2U(ChecklistWrapper, null, checkList.map(function (item, index) {
-    return __jsx$2U(ListItem$2, {
+  }, data.title), __jsx$2V(ChecklistWrapper, null, checkList.map(function (item, index) {
+    return __jsx$2V(ListItem$2, {
       key: index
-    }, __jsx$2U(Icon, {
+    }, __jsx$2V(Icon, {
       color: recommended ? 'rgb(255, 202, 16)' : 'rgb(69, 186, 190)',
       icon: "check",
       prefix: "fas"
-    }), __jsx$2U(StyledText$6, {
+    }), __jsx$2V(StyledText$6, {
       content: item.title,
       context: recommended ? 'white' : 'blackText',
       size: priceLayoutSizes(layout).featuresTextSize
     }));
-  })), __jsx$2U(FlexSpacer, null), __jsx$2U(Fee, {
+  })), __jsx$2V(FlexSpacer, null), __jsx$2V(Fee, {
     align: "center",
     content: price,
     context: recommended ? 'white' : 'deepBlue',
     recommended: recommended,
     size: "xl"
-  }), __jsx$2U(AddButtonWrapper, {
+  }), __jsx$2V(AddButtonWrapper, {
     onClick: function onClick() {
       return onCardSelect(data);
     }
-  }, __jsx$2U(AddToCartText, {
+  }, __jsx$2V(AddToCartText, {
     align: "center",
     content: "Add To Cart",
     context: recommended ? 'white' : 'deepBlue',
@@ -27804,7 +27953,7 @@ var Title = styled.p.withConfig({
       recommended = _ref4.recommended;
   return recommended ? theme.COLOUR.white : theme.COLOUR.blackText;
 });
-var Wrapper$7 = styled.div.withConfig({
+var Wrapper$8 = styled.div.withConfig({
   displayName: "pricingCard__Wrapper",
   componentId: "fq5pyi-8"
 })(["background-color:", ";border:", ";border-radius:1rem;box-shadow:", ";display:flex;flex-direction:column;margin:0 0.375rem;min-height:", ";min-width:", ";padding:1.375rem;padding-bottom:0.75rem;"], function (_ref5) {
@@ -27827,7 +27976,7 @@ var Wrapper$7 = styled.div.withConfig({
   return priceLayoutSizes(layout).priceCardWidth;
 });
 
-var __jsx$2V = React.createElement;
+var __jsx$2W = React.createElement;
 var PricingDropdown = function PricingDropdown(_ref) {
   var onPlanChange = _ref.onPlanChange,
       pricingInfo = _ref.pricingInfo,
@@ -27854,42 +28003,42 @@ var PricingDropdown = function PricingDropdown(_ref) {
     }, 0);
   };
 
-  return __jsx$2V(Wrapper$8, {
+  return __jsx$2W(Wrapper$9, {
     onClick: handleClickOnWrapper,
     onClickAway: handleClickAway
-  }, __jsx$2V(TitleWrapper, null, __jsx$2V(StyledTitle$3, {
+  }, __jsx$2W(TitleWrapper, null, __jsx$2W(StyledTitle$3, {
     content: selected.title,
     context: "blackText",
     size: "xl"
-  })), __jsx$2V(PriceAndDropIconWrapper, null, __jsx$2V(StyledPrice, {
+  })), __jsx$2W(PriceAndDropIconWrapper, null, __jsx$2W(StyledPrice, {
     content: selected.price,
     size: "lg",
     context: "deepBlue"
-  }), __jsx$2V(StyledDownIcon, {
+  }), __jsx$2W(StyledDownIcon, {
     icon: "caret-down",
     prefix: "fas"
-  })), __jsx$2V(PlansWrapper, {
+  })), __jsx$2W(PlansWrapper, {
     open: IsOpen
   }, pricingInfo.map(function (item, index) {
-    return __jsx$2V(PriceElement, {
+    return __jsx$2W(PriceElement, {
       key: index,
       isLast: index === pricingInfo.length - 1,
       onClick: function onClick() {
         return handlePlanClick(index);
       }
-    }, __jsx$2V(ElementTitleAndDescriptionsWrapper, null, __jsx$2V(StyledElementTitle, {
+    }, __jsx$2W(ElementTitleAndDescriptionsWrapper, null, __jsx$2W(StyledElementTitle, {
       content: item.title,
       context: item.recommended ? 'deepBlue' : 'blackText',
       size: "sm"
-    }), __jsx$2V(StyledElementDescription, {
+    }), __jsx$2W(StyledElementDescription, {
       content: item.description,
       context: item.recommended ? 'deepBlue' : 'blackText',
       size: "xs"
-    })), __jsx$2V(PriceAndDropIconWrapper, null, item.recommended && __jsx$2V(StyledRecomendedText, {
+    })), __jsx$2W(PriceAndDropIconWrapper, null, item.recommended && __jsx$2W(StyledRecomendedText, {
       content: "Recommend by IUI",
       context: "gold40",
       size: "xs"
-    }), __jsx$2V(StyledPrice, {
+    }), __jsx$2W(StyledPrice, {
       content: item.price,
       size: "lg",
       context: "deepBlue"
@@ -27954,7 +28103,7 @@ var TitleWrapper = styled.div.withConfig({
   displayName: "pricingDropdown__TitleWrapper",
   componentId: "sc-14menzf-10"
 })([""]);
-var Wrapper$8 = styled(ClickAwayListener).withConfig({
+var Wrapper$9 = styled(ClickAwayListener).withConfig({
   displayName: "pricingDropdown__Wrapper",
   componentId: "sc-14menzf-11"
 })(["align-items:center;background-color:", ";border:1px solid ", ";border-radius:9px;cursor:pointer;display:flex;height:3.5rem;justify-content:space-between;margin:6px;padding:0 1.5rem;position:relative;width:100%;"], function (_ref5) {
@@ -27965,7 +28114,7 @@ var Wrapper$8 = styled(ClickAwayListener).withConfig({
   return "".concat(theme.COLOUR.darkGrey);
 });
 
-var __jsx$2W = React.createElement;
+var __jsx$2X = React.createElement;
 var PriceMatrix = function PriceMatrix(_ref) {
   var layout = _ref.layout,
       pricingInfo = _ref.pricingInfo,
@@ -27997,28 +28146,28 @@ var PriceMatrix = function PriceMatrix(_ref) {
     return exists;
   };
 
-  return __jsx$2W(PriceMatrixWrapper, null, __jsx$2W(MatrixCol, {
+  return __jsx$2X(PriceMatrixWrapper, null, __jsx$2X(MatrixCol, {
     freeSize: true
   }, features.map(function (item, index) {
-    return __jsx$2W(FeatureNameColumn, {
+    return __jsx$2X(FeatureNameColumn, {
       key: index,
       odd: index % 2 !== 0
-    }, __jsx$2W(Text, {
+    }, __jsx$2X(Text, {
       content: item,
       context: "black",
       size: priceLayoutSizes(layout).featuresTextSize
     }));
   })), pricingInfo.map(function (item, index) {
-    return __jsx$2W(MatrixCol, {
+    return __jsx$2X(MatrixCol, {
       key: index,
       show: layout.includes(LAYOUTS.DESKTOP) || selectedPlan === index,
       flex: !layout.includes(LAYOUTS.DESKTOP),
       layout: layout
     }, features.map(function (feature, idx) {
-      return __jsx$2W(FeatureCheckColumn, {
+      return __jsx$2X(FeatureCheckColumn, {
         odd: idx % 2 !== 0,
         key: idx
-      }, featureExist(item, feature) ? __jsx$2W(StyledIcon$a, {
+      }, featureExist(item, feature) ? __jsx$2X(StyledIcon$a, {
         prefix: "fas",
         icon: "check",
         recommended: item.recommended ? 1 : 0
@@ -28103,7 +28252,7 @@ var priceLayoutSizes = function priceLayoutSizes(layout) {
   }
 };
 
-var __jsx$2X = React.createElement;
+var __jsx$2Y = React.createElement;
 var CHECKBOX_TERMS = [{
   id: 'terms',
   label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
@@ -28130,13 +28279,13 @@ var Register = function Register(_ref) {
       yearBirthday = _ref.yearBirthday;
 
   var renderBirthday = function renderBirthday() {
-    return __jsx$2X(React.Fragment, null, __jsx$2X(DatePickerInput, {
+    return __jsx$2Y(React.Fragment, null, __jsx$2Y(DatePickerInput, {
       day: dayBirthday,
       id: "Birthday",
       label: "Birthdate",
       month: monthBirthday,
       year: yearBirthday
-    }), __jsx$2X(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
+    }), __jsx$2Y(Text, null, "To sign up, you must be 18 or older. Other users will not see this."));
   };
 
   var _useContext = useContext(UserContext),
@@ -28184,55 +28333,55 @@ var Register = function Register(_ref) {
     errors: errors,
     register: register
   };
-  return __jsx$2X(Form, {
+  return __jsx$2Y(Form, {
     handleSubmit: handleSubmit(onSubmit)
-  }, error && __jsx$2X(Alert, {
+  }, error && __jsx$2Y(Alert, {
     content: error.message,
     context: "warning"
-  }), __jsx$2X(FormLabel, {
+  }), __jsx$2Y(FormLabel, {
     label: "First name"
-  }, __jsx$2X(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2Y(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "nameFirst",
     placeholder: showPlaceholder ? 'Tommy' : ''
-  }))), __jsx$2X(FormLabel, {
+  }))), __jsx$2Y(FormLabel, {
     label: "Last name"
-  }, __jsx$2X(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2Y(FormField, _extends({}, defaultOptions, {
     name: "nameLast",
     placeholder: showPlaceholder ? 'Ryder' : ''
-  }))), __jsx$2X(FormLabel, {
+  }))), __jsx$2Y(FormLabel, {
     label: "Email"
-  }, __jsx$2X(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2Y(FormField, _extends({}, defaultOptions, {
     autoFocus: true,
     name: "email",
     placeholder: showPlaceholder ? 'Email' : '',
     regExp: pattern$1
-  }))), __jsx$2X(FormLabel, {
+  }))), __jsx$2Y(FormLabel, {
     label: "Password"
-  }, __jsx$2X(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2Y(FormField, _extends({}, defaultOptions, {
     name: "password",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), __jsx$2X(FormLabel, {
+  }))), __jsx$2Y(FormLabel, {
     label: "Repeat Password"
-  }, __jsx$2X(FormField, _extends({}, defaultOptions, {
+  }, __jsx$2Y(FormField, _extends({}, defaultOptions, {
     name: "repeatPassword",
     placeholder: showPlaceholder ? 'Password' : '',
     type: "password"
-  }))), birthday && renderBirthday(), passwordError && __jsx$2X(Alert, {
+  }))), birthday && renderBirthday(), passwordError && __jsx$2Y(Alert, {
     content: passwordError.message,
     context: "warning"
-  }), __jsx$2X(CheckboxField, _extends({}, defaultOptions, {
+  }), __jsx$2Y(CheckboxField, _extends({}, defaultOptions, {
     data: CHECKBOX_TERMS,
     stacked: true
-  })), __jsx$2X(Button, {
+  })), __jsx$2Y(Button, {
     align: "right",
     content: "Sign up",
     context: "primary",
     disabled: !formState.isValid,
     size: "lg",
     type: "submit"
-  }), __jsx$2X(StyledLink$a, null, "Already have an account? ", __jsx$2X(Link, {
+  }), __jsx$2Y(StyledLink$a, null, "Already have an account? ", __jsx$2Y(Link, {
     to: pathLogin
   }, "Log in")));
 };
@@ -28262,7 +28411,7 @@ Register.defaultProps = {
   pathLogin: '/account/login'
 };
 
-var __jsx$2Y = React.createElement;
+var __jsx$2Z = React.createElement;
 
 var ArticleLayout = function ArticleLayout(_ref) {
   var children = _ref.children,
@@ -28272,14 +28421,14 @@ var ArticleLayout = function ArticleLayout(_ref) {
   //   description: frontMatter.description,
   //   title: frontMatter.title
   // }
-  return __jsx$2Y(Container, null, __jsx$2Y(Row, null, __jsx$2Y(Column, {
+  return __jsx$2Z(Container, null, __jsx$2Z(Row, null, __jsx$2Z(Column, {
     md: 12
-  }, __jsx$2Y(Article, {
+  }, __jsx$2Z(Article, {
     article: frontMatter
   }))));
 };
 
-var __jsx$2Z = React.createElement;
+var __jsx$2_ = React.createElement;
 var Bootstrap = function Bootstrap(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -28288,10 +28437,10 @@ var Bootstrap = function Bootstrap(_ref) {
       fixed = _ref.fixed,
       icon = _ref.icon,
       Navigation = _ref.Navigation;
-  return __jsx$2Z(React.Fragment, null, __jsx$2Z(Navigation, null), children, footer && __jsx$2Z(Footer, {
+  return __jsx$2_(React.Fragment, null, __jsx$2_(Navigation, null), children, footer && __jsx$2_(Footer, {
     columns: footer,
     fixed: fixed
-  }), copyright && __jsx$2Z(Copyright, {
+  }), copyright && __jsx$2_(Copyright, {
     brand: brand,
     icon: icon,
     links: copyright
@@ -28310,7 +28459,7 @@ Bootstrap.defaultProps = {
   fixed: false
 };
 
-var __jsx$2_ = React.createElement;
+var __jsx$2$ = React.createElement;
 
 function ownKeys$f(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -28331,16 +28480,16 @@ var Dashboard = function Dashboard(_ref) {
 
   var mergedMeta = _objectSpread$f(_objectSpread$f({}, defaultMeta), meta);
 
-  return __jsx$2_(React.Fragment, null, __jsx$2_(Suspense$1, {
-    fallback: __jsx$2_(PageLoading, {
-      indicator: __jsx$2_(LdsSpinner, null)
+  return __jsx$2$(React.Fragment, null, __jsx$2$(Suspense$1, {
+    fallback: __jsx$2$(PageLoading, {
+      indicator: __jsx$2$(LdsSpinner, null)
     })
-  }, __jsx$2_(React.Fragment, null, __jsx$2_(Page, {
+  }, __jsx$2$(React.Fragment, null, __jsx$2$(Page, {
     children: View || children,
     fluid: true,
     meta: mergedMeta,
     pageHeading: pageHeading
-  }), message && __jsx$2_(Alert, {
+  }), message && __jsx$2$(Alert, {
     content: message,
     context: context
   }))));
@@ -28365,7 +28514,7 @@ Dashboard.defaultProps = {
   }
 };
 
-var __jsx$2$ = React.createElement;
+var __jsx$30 = React.createElement;
 var Page = function Page(_ref) {
   var children = _ref.children,
       fluid = _ref.fluid,
@@ -28376,13 +28525,13 @@ var Page = function Page(_ref) {
       Brand = _useContext.Brand,
       Canonical = _useContext.Canonical;
 
-  return __jsx$2$(StyledPage, null, meta && __jsx$2$(MetaHead, {
+  return __jsx$30(StyledPage, null, meta && __jsx$30(MetaHead, {
     canonical: Canonical,
     brand: Brand.name,
     meta: meta
-  }), __jsx$2$(Container, {
+  }), __jsx$30(Container, {
     fluid: fluid
-  }, pageHeading && __jsx$2$(PageHeading, pageHeading), children));
+  }, pageHeading && __jsx$30(PageHeading, pageHeading), children));
 };
 var StyledPage = styled.div.withConfig({
   displayName: "page__StyledPage",
@@ -28405,7 +28554,7 @@ Page.defaultProps = {
   fluid: false
 };
 
-var __jsx$30 = React.createElement;
+var __jsx$31 = React.createElement;
 var SidebarLayout = function SidebarLayout(_ref) {
   var brand = _ref.brand,
       children = _ref.children,
@@ -28416,16 +28565,16 @@ var SidebarLayout = function SidebarLayout(_ref) {
   var _useContext = useContext(ConfigContext),
       Sidebar = _useContext.Sidebar;
 
-  return __jsx$30(Container, {
+  return __jsx$31(Container, {
     fluid: true
-  }, __jsx$30(Row, null, __jsx$30(Column, {
+  }, __jsx$31(Row, null, __jsx$31(Column, {
     md: 2
-  }, __jsx$30(Sidebar, null)), __jsx$30(Column, {
+  }, __jsx$31(Sidebar, null)), __jsx$31(Column, {
     md: 10,
     style: {
       padding: 0
     }
-  }, __jsx$30(Bootstrap, {
+  }, __jsx$31(Bootstrap, {
     brand: brand,
     copyright: copyright,
     footer: footer,
@@ -28440,7 +28589,7 @@ SidebarLayout.propTypes = {
   navigation: propTypes.func
 };
 
-var __jsx$31 = React.createElement;
+var __jsx$32 = React.createElement;
 var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
   var appId = _ref.appId,
       iFrame = _ref.iFrame,
@@ -28453,7 +28602,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       tabs = _ref.tabs,
       to = _ref.to,
       width = _ref.width;
-  return __jsx$31(React.Fragment, null, iFrame && __jsx$31("iframe", {
+  return __jsx$32(React.Fragment, null, iFrame && __jsx$32("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: height,
@@ -28464,7 +28613,7 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
       overflow: 'hidden'
     },
     width: width
-  }), !iFrame && __jsx$31("div", {
+  }), !iFrame && __jsx$32("div", {
     className: "fb-page",
     "data-adapt-container-width": "true",
     "data-height": "",
@@ -28475,10 +28624,10 @@ var FacebookPagePlugin = function FacebookPagePlugin(_ref) {
     "data-small-header": "false",
     "data-tabs": "timeline",
     "data-width": ""
-  }, __jsx$31("blockquote", {
+  }, __jsx$32("blockquote", {
     cite: "https://www.facebook.com/maitaidating/",
     className: "fb-xfbml-parse-ignore"
-  }, __jsx$31("a", {
+  }, __jsx$32("a", {
     href: to
   }, "Mai Tai Dating"))));
 };
@@ -28507,7 +28656,7 @@ FacebookPagePlugin.defaultProps = {
   width: 340
 };
 
-var __jsx$32 = React.createElement;
+var __jsx$33 = React.createElement;
 var FacebookShareButton = function FacebookShareButton(_ref) {
   var appId = _ref.appId,
       hashTag = _ref.hashTag,
@@ -28515,7 +28664,7 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       layout = _ref.layout,
       size = _ref.size,
       to = _ref.to;
-  return __jsx$32(React.Fragment, null, iFrame && __jsx$32("iframe", {
+  return __jsx$33(React.Fragment, null, iFrame && __jsx$33("iframe", {
     allow: "encrypted-media",
     frameBorder: "0",
     height: "29",
@@ -28526,13 +28675,13 @@ var FacebookShareButton = function FacebookShareButton(_ref) {
       overflow: 'hidden'
     },
     width: "104"
-  }), !iFrame && __jsx$32("div", {
+  }), !iFrame && __jsx$33("div", {
     className: "fb-share-button",
     "data-hashtag": hashTag,
     "data-href": to,
     "data-layout": layout,
     "data-size": size
-  }, __jsx$32("a", {
+  }, __jsx$33("a", {
     className: "fb-xfbml-parse-ignore",
     href: "https://www.facebook.com/sharer/sharer.php?u=".concat(to, "&src=sdkprepars"),
     rel: "noopener noreferrer",
@@ -28553,7 +28702,7 @@ FacebookShareButton.defaultProps = {
   size: 'large'
 };
 
-var __jsx$33 = React.createElement;
+var __jsx$34 = React.createElement;
 var Typeform = function Typeform(_ref) {
   var options = _ref.options,
       style = _ref.style,
@@ -28565,7 +28714,7 @@ var Typeform = function Typeform(_ref) {
 
     typeformEmbed.makeWidget(typeformRef.current, url, options);
   }, []);
-  return __jsx$33("div", {
+  return __jsx$34("div", {
     className: "ReactTypeformEmbed",
     ref: typeformRef,
     style: style
@@ -28605,37 +28754,37 @@ Typeform.defaultProps = {
   }
 };
 
-var __jsx$34 = React.createElement;
+var __jsx$35 = React.createElement;
 var Article = function Article(_ref) {
   var article = _ref.article,
       className = _ref.className,
       config = _ref.config,
       facebook = _ref.facebook,
       style = _ref.style;
-  return __jsx$34(StyledArticle, {
+  return __jsx$35(StyledArticle, {
     className: className,
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting",
     role: "article",
     style: style
-  }, __jsx$34("header", null, __jsx$34(StyledImage$4, {
+  }, __jsx$35("header", null, __jsx$35(StyledImage$4, {
     alt: article.heading,
     src: article.image || "/static/blog/".concat(article.slug, "/hero.jpg")
-  }), article.category && __jsx$34(Breadcrumb, {
+  }), article.category && __jsx$35(Breadcrumb, {
     category: article.category,
     page: article.title,
     path: article.category
-  }), config && article.category && __jsx$34(BlogCategory, {
+  }), config && article.category && __jsx$35(BlogCategory, {
     config: config,
     to: article.category
-  }), __jsx$34(StyledHeading$4, {
+  }), __jsx$35(StyledHeading$4, {
     content: article.heading
-  }), facebook && __jsx$34(BlogDetails, {
+  }), facebook && __jsx$35(BlogDetails, {
     article: article,
     config: config,
     facebook: facebook
-  })), __jsx$34("span", {
+  })), __jsx$35("span", {
     dangerouslySetInnerHTML: {
       __html: article.data
     }
@@ -28758,20 +28907,20 @@ Article.propTypes = {
 // }
 // }
 
-var __jsx$35 = React.createElement;
+var __jsx$36 = React.createElement;
 var Error404 = function Error404() {
   var meta = {
     description: "\n      DryKISS is a full service internet and mobile digital production house.\n      Our services span consulting, strategy; planning; development; testing\n      and analytics.\n    ",
     path: '/404',
     title: 'DryKISS develops hybrid mobile and responsive websites'
   };
-  return __jsx$35(Page, {
+  return __jsx$36(Page, {
     heading: "404 ERROR PAGE \u2013 NOT FOUND",
     meta: meta
-  }, __jsx$35("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
+  }, __jsx$36("p", null, "The page you were looking for no longer exists or never did. Please use the links at the top of your screen to get back in the game, or click here to go home and start again."));
 };
 
-var __jsx$36 = React.createElement;
+var __jsx$37 = React.createElement;
 var BlogCard = function BlogCard(_ref) {
   var article = _ref.article,
       config = _ref.config,
@@ -28787,47 +28936,47 @@ var BlogCard = function BlogCard(_ref) {
     as: (article === null || article === void 0 ? void 0 : article.linkAs) || "".concat(config.path, "/").concat(categorySlug, "/").concat(articleSlug),
     href: (article === null || article === void 0 ? void 0 : article.linkHref) || "".concat(config.path, "/[categoryId]/[articleId]")
   };
-  return __jsx$36("article", {
+  return __jsx$37("article", {
     role: "article",
     itemProp: "blogPost",
     itemScope: true,
     itemType: "http://schema.org/BlogPosting"
-  }, __jsx$36(Card, {
+  }, __jsx$37(Card, {
     shadow: true
-  }, __jsx$36(Link, {
+  }, __jsx$37(Link, {
     to: articleLink
-  }, __jsx$36(CardImage, {
+  }, __jsx$37(CardImage, {
     alt: heading,
     src: (article === null || article === void 0 ? void 0 : article.image) || "/static/blog/".concat(slug, "/hero.jpg?v=1.00")
-  })), __jsx$36(StyledCardBody, {
+  })), __jsx$37(StyledCardBody, {
     type: type
-  }, type === 'normal' && category && __jsx$36(BlogCategory, {
+  }, type === 'normal' && category && __jsx$37(BlogCategory, {
     config: config,
     to: category,
     type: type
-  }), __jsx$36(StyledContent$5, {
+  }), __jsx$37(StyledContent$5, {
     type: type
-  }, __jsx$36(Link, {
+  }, __jsx$37(Link, {
     to: articleLink
-  }, __jsx$36(StyledHeading$5, {
+  }, __jsx$37(StyledHeading$5, {
     content: heading,
     tag: "h1",
     noWrap: true,
     type: type
-  })), type === 'normal' && __jsx$36("p", {
+  })), type === 'normal' && __jsx$37("p", {
     itemProp: "description"
-  }, excerpt)), type === 'normal' && __jsx$36(React.Fragment, null, article.tags && __jsx$36(TagsContainer, null, __jsx$36(BlogTags, {
+  }, excerpt)), type === 'normal' && __jsx$37(React.Fragment, null, article.tags && __jsx$37(TagsContainer, null, __jsx$37(BlogTags, {
     tags: article.tags
-  })), __jsx$36(Divider, {
+  })), __jsx$37(Divider, {
     size: "sm"
-  }), author && __jsx$36(BlogCategory, {
+  }), author && __jsx$37(BlogCategory, {
     author: true,
     to: author,
     config: config,
     type: type
-  }), article.readtime && __jsx$36(StyledReadTime, null, article.readtime, "min read time.")), __jsx$36(Link, {
+  }), article.readtime && __jsx$37(StyledReadTime, null, article.readtime, "min read time.")), __jsx$37(Link, {
     to: articleLink
-  }, __jsx$36(StyledButton$9, {
+  }, __jsx$37(StyledButton$9, {
     content: "Read more",
     context: type === 'normal' ? 'primary' : 'white',
     size: type === 'normal' ? 'sm' : 'lg',
@@ -28884,7 +29033,7 @@ BlogCard.defaultProps = {
   type: 'normal'
 };
 
-var __jsx$37 = React.createElement;
+var __jsx$38 = React.createElement;
 var BlogCategories = function BlogCategories(_ref) {
   var articles = _ref.articles,
       config = _ref.config;
@@ -28909,10 +29058,10 @@ var BlogCategories = function BlogCategories(_ref) {
     });
   };
 
-  return __jsx$37("section", null, _find().map(function (articles, index) {
-    return __jsx$37(Fragment$1, {
+  return __jsx$38("section", null, _find().map(function (articles, index) {
+    return __jsx$38(Fragment$1, {
       key: index
-    }, __jsx$37(Link, {
+    }, __jsx$38(Link, {
       to: {
         as: "".concat(config.path, "/").concat(slugify(articles[0].category)),
         href: {
@@ -28922,14 +29071,14 @@ var BlogCategories = function BlogCategories(_ref) {
           }
         }
       }
-    }, __jsx$37(StyledHeading$6, {
+    }, __jsx$38(StyledHeading$6, {
       content: articles[0].category,
       tag: "h2"
-    })), __jsx$37(Row, null, articles.map(function (article, index) {
-      return __jsx$37(Column, {
+    })), __jsx$38(Row, null, articles.map(function (article, index) {
+      return __jsx$38(Column, {
         key: index,
         md: 6
-      }, __jsx$37(BlogCard, {
+      }, __jsx$38(BlogCard, {
         article: article,
         config: config
       }));
@@ -28945,17 +29094,17 @@ BlogCategories.propTypes = {
   config: propTypes.object.isRequired
 };
 
-var __jsx$38 = React.createElement;
+var __jsx$39 = React.createElement;
 var BlogCategory = function BlogCategory(_ref) {
   var author = _ref.author,
       config = _ref.config,
       className = _ref.className,
       style = _ref.style,
       to = _ref.to;
-  return __jsx$38(StyledCategory, {
+  return __jsx$39(StyledCategory, {
     className: className,
     style: style
-  }, __jsx$38(Link, {
+  }, __jsx$39(Link, {
     to: {
       as: "".concat(config.path, "/").concat(slugify(to)),
       href: {
@@ -28981,58 +29130,58 @@ BlogCategory.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$39 = React.createElement;
+var __jsx$3a = React.createElement;
 var BlogDetails = function BlogDetails(_ref) {
   var article = _ref.article,
       config = _ref.config,
       facebook = _ref.facebook;
-  return __jsx$39(StyledArticleDetails, null, __jsx$39(Divider, {
+  return __jsx$3a(StyledArticleDetails, null, __jsx$3a(Divider, {
     size: "sm"
-  }), __jsx$39(List, {
+  }), __jsx$3a(List, {
     inline: true,
     unstyled: true,
     style: {
       marginTop: '.25rem'
     }
-  }, __jsx$39(ListItem, {
+  }, __jsx$3a(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$39(StyledIcon$b, {
+  }, __jsx$3a(StyledIcon$b, {
     context: "dark",
     icon: "calendar-alt"
-  }), __jsx$39(Date$1, {
+  }), __jsx$3a(Date$1, {
     date: article.date
-  })), __jsx$39(ListItem, {
+  })), __jsx$3a(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$39(StyledIcon$b, {
+  }, __jsx$3a(StyledIcon$b, {
     context: "dark",
     icon: "user"
-  }), __jsx$39(BlogCategory, {
+  }), __jsx$3a(BlogCategory, {
     author: true,
     config: config,
     to: article.author
-  })), __jsx$39(ListItem, {
+  })), __jsx$3a(ListItem, {
     style: {
       marginRight: '1rem'
     }
-  }, __jsx$39(StyledIcon$b, {
+  }, __jsx$3a(StyledIcon$b, {
     context: "dark",
     icon: "stopwatch"
-  }), __jsx$39(BlogReadTime, {
+  }), __jsx$3a(BlogReadTime, {
     time: article.readtime
-  }))), article.tags && __jsx$39(BlogTags, {
+  }))), article.tags && __jsx$3a(BlogTags, {
     tags: article.tags
-  }), __jsx$39(Divider, {
+  }), __jsx$3a(Divider, {
     size: "sm"
-  }), __jsx$39(StyledShare, null, __jsx$39(StyledShareText, null, "Share this article"), __jsx$39(FacebookShareButton, {
+  }), __jsx$3a(StyledShare, null, __jsx$3a(StyledShareText, null, "Share this article"), __jsx$3a(FacebookShareButton, {
     appId: facebook.appId,
     hashTag: facebook.hashTag,
     iFrame: true,
     to: "".concat(facebook.domain).concat(config.path, "/").concat(slugify(article.category), "/").concat(article.slug)
-  })), __jsx$39(Divider, {
+  })), __jsx$3a(Divider, {
     size: "sm"
   }));
 };
@@ -29065,7 +29214,7 @@ BlogDetails.propTypes = {
   facebook: propTypes.object
 };
 
-var __jsx$3a = React.createElement;
+var __jsx$3b = React.createElement;
 var BlogHero = function BlogHero(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -29080,16 +29229,16 @@ var BlogHero = function BlogHero(_ref) {
   var renderHero = function renderHero() {
     var article = _find();
 
-    return __jsx$3a(Column, {
+    return __jsx$3b(Column, {
       md: 12 / number
-    }, __jsx$3a(BlogCard, {
+    }, __jsx$3b(BlogCard, {
       article: article,
       config: config,
       type: "hero"
     }));
   };
 
-  return __jsx$3a(Row, null, renderHero());
+  return __jsx$3b(Row, null, renderHero());
 };
 BlogHero.propTypes = {
   articles: propTypes.any.isRequired,
@@ -29100,7 +29249,7 @@ BlogHero.defaultProps = {
   number: 1
 };
 
-var __jsx$3b = React.createElement;
+var __jsx$3c = React.createElement;
 var BlogListing = function BlogListing(_ref) {
   var articles = _ref.articles,
       author = _ref.author,
@@ -29129,11 +29278,11 @@ var BlogListing = function BlogListing(_ref) {
     }).slice(0, 10);
   };
 
-  return __jsx$3b(Row, null, _find().map(function (article, index) {
-    return __jsx$3b(Column, {
+  return __jsx$3c(Row, null, _find().map(function (article, index) {
+    return __jsx$3c(Column, {
       key: index,
       md: 6
-    }, __jsx$3b(BlogCard, {
+    }, __jsx$3c(BlogCard, {
       article: article,
       config: config
     }));
@@ -29147,31 +29296,31 @@ BlogListing.propTypes = {
   tag: propTypes.string
 };
 
-var __jsx$3c = React.createElement;
+var __jsx$3d = React.createElement;
 var BlogReadTime = function BlogReadTime(_ref) {
   var time = _ref.time;
-  return __jsx$3c("span", null, "Read time: ", time, " min(s)");
+  return __jsx$3d("span", null, "Read time: ", time, " min(s)");
 };
 BlogReadTime.propTypes = {
   time: propTypes.number.isRequired
 };
 
-var __jsx$3d = React.createElement;
+var __jsx$3e = React.createElement;
 var BlogList = function BlogList(_ref) {
   var author = _ref.author,
       config = _ref.config,
       list = _ref.list;
-  return __jsx$3d(StyledDl, null, list.map(function (_ref2, index) {
+  return __jsx$3e(StyledDl, null, list.map(function (_ref2, index) {
     var badge = _ref2.badge,
         _ref2$category = _ref2.category,
         category = _ref2$category === void 0 ? '' : _ref2$category,
         name = _ref2.name,
         to = _ref2.to;
-    return __jsx$3d(Fragment$1, {
+    return __jsx$3e(Fragment$1, {
       key: index
-    }, __jsx$3d(StyledDt, null, __jsx$3d(Badge, {
+    }, __jsx$3e(StyledDt, null, __jsx$3e(Badge, {
       content: badge
-    })), __jsx$3d(StyledDd, null, __jsx$3d(Link, {
+    })), __jsx$3e(StyledDd, null, __jsx$3e(Link, {
       to: {
         as: "".concat(config.path, "/").concat(category && slugify(category) + '/').concat(slugify(to)),
         href: {
@@ -29184,7 +29333,7 @@ var BlogList = function BlogList(_ref) {
         }
       },
       passHref: true
-    }, __jsx$3d(StyledA$1, null, name))));
+    }, __jsx$3e(StyledA$1, null, name))));
   }));
 };
 var StyledDl = styled.dl.withConfig({
@@ -29214,16 +29363,16 @@ BlogList.defaultProps = {
   author: false
 };
 
-var __jsx$3e = React.createElement;
+var __jsx$3f = React.createElement;
 var BlogSection = function BlogSection(_ref) {
   var children = _ref.children,
       heading = _ref.heading;
-  return __jsx$3e(StyledSection, null, heading && __jsx$3e(React.Fragment, null, __jsx$3e(StyledHeading$7, {
+  return __jsx$3f(StyledSection, null, heading && __jsx$3f(React.Fragment, null, __jsx$3f(StyledHeading$7, {
     content: heading,
     context: "primary",
     noMargin: true,
     tag: "h3"
-  }), __jsx$3e(Divider, {
+  }), __jsx$3f(Divider, {
     size: "sm"
   })), children);
 };
@@ -29240,7 +29389,7 @@ BlogSection.propTypes = {
   heading: propTypes.string
 };
 
-var __jsx$3f = React.createElement;
+var __jsx$3g = React.createElement;
 var BlogArchive = function BlogArchive(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -29277,9 +29426,9 @@ var BlogArchive = function BlogArchive(_ref) {
     return countsMapped;
   };
 
-  return __jsx$3f(BlogSection, {
+  return __jsx$3g(BlogSection, {
     heading: "Archive"
-  }, __jsx$3f(BlogList, {
+  }, __jsx$3g(BlogList, {
     config: config,
     list: list
   }));
@@ -29293,7 +29442,7 @@ BlogArchive.defaultProps = {
   total: 5
 };
 
-var __jsx$3g = React.createElement;
+var __jsx$3h = React.createElement;
 var BlogAuthor = function BlogAuthor(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -29332,9 +29481,9 @@ var BlogAuthor = function BlogAuthor(_ref) {
     return countsMapped;
   };
 
-  return __jsx$3g(BlogSection, {
+  return __jsx$3h(BlogSection, {
     heading: "Author"
-  }, __jsx$3g(BlogList, {
+  }, __jsx$3h(BlogList, {
     config: config,
     author: true,
     list: list
@@ -29349,7 +29498,7 @@ BlogAuthor.defaultProps = {
   total: 5
 };
 
-var __jsx$3h = React.createElement;
+var __jsx$3i = React.createElement;
 var schema = yup.object().shape({
   postCode: yup.string().required().test('is-valid', "We couldn't recognise that postcode - check and try again.", function (value) {
     return validatorPostCode(value);
@@ -29388,35 +29537,35 @@ var BlogFindFood = function BlogFindFood(_ref) {
     });
   };
 
-  return __jsx$3h(BlogSection, null, __jsx$3h(StyledContainer$a, {
+  return __jsx$3i(BlogSection, null, __jsx$3i(StyledContainer$a, {
     colour: colour
-  }, __jsx$3h(StyledForm$1, {
+  }, __jsx$3i(StyledForm$1, {
     handleSubmit: handleSubmit(submit)
-  }, __jsx$3h(FormLabel, {
+  }, __jsx$3i(FormLabel, {
     text: "Your favourite restaurants, delivered."
-  }, __jsx$3h(InputGroup, null, __jsx$3h(FormField, {
+  }, __jsx$3i(InputGroup, null, __jsx$3i(FormField, {
     errors: errors,
     register: register,
     name: "postCode",
     placeholder: "Enter your postcode"
-  }), __jsx$3h(InputGroupAddon, null, __jsx$3h(Button, {
+  }), __jsx$3i(InputGroupAddon, null, __jsx$3i(Button, {
     content: "Find food",
     style: {
       background: '#440063',
       borderColor: '#32004a'
     },
     type: "submit"
-  })), errors.postCode && __jsx$3h(FormError, {
+  })), errors.postCode && __jsx$3i(FormError, {
     message: errors.postCode.message
-  }), msg && __jsx$3h("div", {
+  }), msg && __jsx$3i("div", {
     style: {
       color: '#fff'
     }
-  }, msg)))), __jsx$3h(Link, {
+  }, msg)))), __jsx$3i(Link, {
     to: "https://".concat(domain),
     passHref: true,
     target: "_blank"
-  }, __jsx$3h(StyledA$2, null, "Deliveroo ", __jsx$3h(Icon, {
+  }, __jsx$3i(StyledA$2, null, "Deliveroo ", __jsx$3i(Icon, {
     icon: "external-link"
   })))));
 };
@@ -29541,13 +29690,13 @@ BlogFindFood.defaultProps = {
 // }
 // }
 
-var __jsx$3i = React.createElement;
+var __jsx$3j = React.createElement;
 var BlogMedia = function BlogMedia(_ref) {
   var config = _ref.config,
       media = _ref.media;
-  return __jsx$3i(BlogSection, {
+  return __jsx$3j(BlogSection, {
     heading: "Media"
-  }, __jsx$3i(BlogList, {
+  }, __jsx$3j(BlogList, {
     config: config,
     list: media
   }));
@@ -29557,13 +29706,13 @@ BlogMedia.propTypes = {
   media: propTypes.array.isRequired
 };
 
-var __jsx$3j = React.createElement;
+var __jsx$3k = React.createElement;
 var BlogPromo = function BlogPromo(_ref) {
   var src = _ref.src,
       to = _ref.to;
-  return __jsx$3j(BlogSection, {
+  return __jsx$3k(BlogSection, {
     heading: "Promo"
-  }, __jsx$3j(Image$1, {
+  }, __jsx$3k(Image$1, {
     alt: "Image",
     src: src
   }));
@@ -29573,7 +29722,7 @@ BlogPromo.propTypes = {
   to: propTypes.string.isRequired
 };
 
-var __jsx$3k = React.createElement;
+var __jsx$3l = React.createElement;
 var BlogRecent = function BlogRecent(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -29602,9 +29751,9 @@ var BlogRecent = function BlogRecent(_ref) {
     });
   };
 
-  return __jsx$3k(BlogSection, {
+  return __jsx$3l(BlogSection, {
     heading: "Recent"
-  }, __jsx$3k(BlogList, {
+  }, __jsx$3l(BlogList, {
     config: config,
     list: list
   }));
@@ -29618,7 +29767,7 @@ BlogRecent.defaultProps = {
   total: 5
 };
 
-var __jsx$3l = React.createElement;
+var __jsx$3m = React.createElement;
 var BlogSidebar = function BlogSidebar(_ref) {
   var articles = _ref.articles,
       config = _ref.config,
@@ -29627,22 +29776,22 @@ var BlogSidebar = function BlogSidebar(_ref) {
       media = _ref.media,
       promo = _ref.promo,
       tags = _ref.tags;
-  return __jsx$3l(StyledAside$1, null, findFood && __jsx$3l(BlogFindFood, null), media && __jsx$3l(BlogMedia, {
+  return __jsx$3m(StyledAside$1, null, findFood && __jsx$3m(BlogFindFood, null), media && __jsx$3m(BlogMedia, {
     media: media
-  }), __jsx$3l(BlogSocial, {
+  }), __jsx$3m(BlogSocial, {
     facebook: facebook
-  }), promo && __jsx$3l(BlogPromo, {
+  }), promo && __jsx$3m(BlogPromo, {
     src: promo.src,
     to: promo.to
-  }), __jsx$3l(BlogRecent, {
+  }), __jsx$3m(BlogRecent, {
     articles: articles,
     config: config
-  }), tags && __jsx$3l(BlogTagCloud, {
+  }), tags && __jsx$3m(BlogTagCloud, {
     articles: articles
-  }), __jsx$3l(BlogArchive, {
+  }), __jsx$3m(BlogArchive, {
     articles: articles,
     config: config
-  }), __jsx$3l(BlogAuthor, {
+  }), __jsx$3m(BlogAuthor, {
     articles: articles,
     config: config
   }));
@@ -29664,20 +29813,20 @@ BlogSidebar.defaultProps = {
   findFood: false
 };
 
-var __jsx$3m = React.createElement;
+var __jsx$3n = React.createElement;
 var BlogSocial = function BlogSocial(_ref) {
   var facebook = _ref.facebook,
       instagram = _ref.instagram,
       twitter = _ref.twitter;
-  return __jsx$3m(React.Fragment, null, facebook && __jsx$3m(BlogSection, {
+  return __jsx$3n(React.Fragment, null, facebook && __jsx$3n(BlogSection, {
     heading: "Facebook"
-  }, __jsx$3m(FacebookPagePlugin, {
+  }, __jsx$3n(FacebookPagePlugin, {
     appId: facebook.appId,
     to: facebook.appPath,
     width: 349
-  })), instagram && __jsx$3m(BlogSection, {
+  })), instagram && __jsx$3n(BlogSection, {
     heading: "Instagram"
-  }, __jsx$3m("iframe", {
+  }, __jsx$3n("iframe", {
     src: "https://lightwidget.com/widgets/ff03b23658a55244989ab894695973f9.html",
     scrolling: "no",
     style: {
@@ -29685,7 +29834,7 @@ var BlogSocial = function BlogSocial(_ref) {
       border: '0',
       overflow: 'hidden'
     }
-  })), twitter && __jsx$3m(BlogSection, {
+  })), twitter && __jsx$3n(BlogSection, {
     heading: "Twitter"
   }));
 };
@@ -29699,7 +29848,7 @@ BlogSocial.defaultProps = {
   twitter: false
 };
 
-var __jsx$3n = React.createElement;
+var __jsx$3o = React.createElement;
 
 function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
@@ -29772,7 +29921,7 @@ var BlogTagCloud = function BlogTagCloud(_ref) {
   // ]
 
 
-  return __jsx$3n(BlogSection, {
+  return __jsx$3o(BlogSection, {
     heading: "Tags"
   }, cloud);
 };
@@ -29831,7 +29980,7 @@ BlogTagCloud.defaultProps = {
 //   </div>
 // </section>
 
-var __jsx$3o = React.createElement;
+var __jsx$3p = React.createElement;
 var BlogTags = function BlogTags(_ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -29845,7 +29994,7 @@ var BlogTags = function BlogTags(_ref) {
     var tagsUnique = _toConsumableArray(new Set(tagsSlugged));
 
     return tagsUnique.map(function (tag, index) {
-      return __jsx$3o(Badge, {
+      return __jsx$3p(Badge, {
         className: className,
         content: tag,
         key: "".concat(tag, "_").concat(index),
@@ -29855,15 +30004,15 @@ var BlogTags = function BlogTags(_ref) {
     });
   };
 
-  return __jsx$3o("div", null, tagMap());
+  return __jsx$3p("div", null, tagMap());
 };
 BlogTags.propTypes = {
   tags: propTypes.array.isRequired
 };
 
-var __jsx$3p = React.createElement;
+var __jsx$3q = React.createElement;
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf$1(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$1(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 var MyApp = /*#__PURE__*/function (_App) {
@@ -29894,7 +30043,7 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props = this.props,
           offCanvas = _this$props.offCanvas,
           user = _this$props.user;
-      return __jsx$3p(React.Fragment, null, __jsx$3p(ThemeStyle, null), user && __jsx$3p(UserProvider, null, __jsx$3p(AuthorizationProvider, null, __jsx$3p(InternationalisationProvider, null, __jsx$3p(NotificationsProvider, null, offCanvas ? __jsx$3p(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
+      return __jsx$3q(React.Fragment, null, __jsx$3q(ThemeStyle, null), user && __jsx$3q(UserProvider, null, __jsx$3q(AuthorizationProvider, null, __jsx$3q(InternationalisationProvider, null, __jsx$3q(NotificationsProvider, null, offCanvas ? __jsx$3q(OffCanvasProvider, null, this.layout()) : this.layout())))), !user && this.layout());
     }
   }, {
     key: "data",
@@ -29902,9 +30051,9 @@ var MyApp = /*#__PURE__*/function (_App) {
       var _this$props2 = this.props,
           apolloClient = _this$props2.apolloClient,
           config = _this$props2.config;
-      return __jsx$3p(React.Fragment, null, __jsx$3p(ConfigProvider, {
+      return __jsx$3q(React.Fragment, null, __jsx$3q(ConfigProvider, {
         config: config
-      }, apolloClient ? __jsx$3p(ApolloProvider, {
+      }, apolloClient ? __jsx$3q(ApolloProvider, {
         client: apolloClient
       }, this.elements()) : this.elements()));
     }
@@ -29917,14 +30066,14 @@ var MyApp = /*#__PURE__*/function (_App) {
           pageProps = _this$props3.pageProps,
           pageProgressBar = _this$props3.pageProgressBar,
           router = _this$props3.router;
-      return __jsx$3p(Layout, null, pageProgressBar && __jsx$3p(PageProgressBar, {
+      return __jsx$3q(Layout, null, pageProgressBar && __jsx$3q(PageProgressBar, {
         router: router
-      }), __jsx$3p(Component, pageProps));
+      }), __jsx$3q(Component, pageProps));
     }
   }, {
     key: "render",
     value: function render() {
-      return __jsx$3p(ThemeProvider, {
+      return __jsx$3q(ThemeProvider, {
         theme: merge(Theme, this.props.theme)
       }, this.data());
     }
@@ -29954,124 +30103,369 @@ _defineProperty(MyApp, "defaultProps", {
   user: false
 });
 
-var __jsx$3q = React.createElement;
-var Microphone = function Microphone(_ref) {
-  var isRecording = _ref.isRecording;
-  return __jsx$3q(StyledSvg$1, {
-    isRecording: isRecording,
-    width: "15",
-    height: "22",
-    viewBox: "0 0 15 22",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, __jsx$3q("path", {
-    d: "M7.5 15.125C9.75938 15.125 11.5909 13.2782 11.5909 11V4.125C11.5909 1.8468 9.75938 0 7.5 0C5.24062 0 3.40909 1.8468 3.40909 4.125V11C3.40909 13.2782 5.24062 15.125 7.5 15.125ZM14.3182 8.25H13.6364C13.2597 8.25 12.9545 8.55766 12.9545 8.9375V11C12.9545 14.2141 10.2064 16.793 6.95497 16.4734C4.12117 16.1945 2.04545 13.6258 2.04545 10.7551V8.9375C2.04545 8.55766 1.74034 8.25 1.36364 8.25H0.681818C0.305114 8.25 0 8.55766 0 8.9375V10.6631C0 14.5148 2.72599 17.9485 6.47727 18.4701V19.9375H4.09091C3.7142 19.9375 3.40909 20.2452 3.40909 20.625V21.3125C3.40909 21.6923 3.7142 22 4.09091 22H10.9091C11.2858 22 11.5909 21.6923 11.5909 21.3125V20.625C11.5909 20.2452 11.2858 19.9375 10.9091 19.9375H8.52273V18.4864C12.1751 17.9811 15 14.8199 15 11V8.9375C15 8.55766 14.6949 8.25 14.3182 8.25Z"
-  }));
-};
-var StyledSvg$1 = styled.svg.withConfig({
-  displayName: "microphone__StyledSvg",
-  componentId: "sc-1bwhcm5-0"
-})(["path{fill:", ";}"], function (_ref2) {
-  var isRecording = _ref2.isRecording,
-      theme = _ref2.theme;
-  return isRecording ? theme.COLOUR.success : theme.COLOUR.blackGrey;
-});
+/**
+ * Components
+ */
 
-var __jsx$3r = React.createElement;
-AudioRecorder.encoder = mpegEncoder;
-AudioRecorder.prototype.mimeType = 'audio/mpeg';
-
-if (window) {
-  window.MediaRecorder = AudioRecorder;
-}
-
-var VoiceRecorder$1 = function VoiceRecorder(props) {
-  var recorder = useRef();
-  var canSendData = useRef(true);
-
-  var _useState = useState(false),
-      isRecording = _useState[0],
-      setisRecording = _useState[1];
-
-  var handleStartRecord = function handleStartRecord() {
-    navigator.mediaDevices.getUserMedia({
-      audio: true
-    }).then(function (stream) {
-      recorder.current = new window.MediaRecorder(stream); // Set record to <audio> when recording will be finished
-
-      recorder.current.addEventListener('dataavailable', function (e) {
-        if (canSendData.current === true) {
-          setTimeout(function () {
-            MessagingCommunicationService.send({
-              name: MessageNames.Messaging.MESSAGING_ACTION,
-              payload: {
-                action: MessagingActions.SET_RECORDED_VOICE,
-                data: e.data
-              }
-            });
-          }, 200);
-        } else {
-          canSendData.current = true;
-        }
-      }); // Start recording
-
-      recorder.current.start();
-      setisRecording(true);
-    });
-  };
-
-  var handleStopRecord = function handleStopRecord() {
-    recorder.current.stop(); // Remove “recording” icon from browser tab
-
-    recorder.current.stream.getTracks().forEach(function (i) {
-      return i.stop();
-    });
-    setisRecording(false);
-  };
-
-  var handleCancelRecord = function handleCancelRecord() {
-    canSendData.current = false;
-    recorder.current.stop(); // Remove “recording” icon from browser tab
-
-    recorder.current.stream.getTracks().forEach(function (i) {
-      return i.stop();
-    });
-    setisRecording(false);
-  };
-
-  return __jsx$3r(React.Fragment, null, __jsx$3r(OverLay, {
-    isRecording: isRecording
-  }, __jsx$3r(Text, {
-    content: "Recording... ",
-    context: "blackText"
-  }), __jsx$3r(Close, {
-    click: handleCancelRecord,
-    context: "danger"
-  })), __jsx$3r(Wrapper$9, {
-    onClick: isRecording ? handleStopRecord : handleStartRecord
-  }, __jsx$3r(Microphone, {
-    isRecording: isRecording
-  })));
-};
-var Wrapper$9 = styled.div.withConfig({
-  displayName: "voiceRecorder__Wrapper",
-  componentId: "sc-8hdhkz-0"
-})(["cursor:pointer;padding-top:0.25rem;"]);
-var OverLay = styled.div.withConfig({
-  displayName: "voiceRecorder__OverLay",
-  componentId: "sc-8hdhkz-1"
-})(["align-items:center;background-color:", ";display:flex;height:45px;justify-content:space-between;left:4rem;overflow:hidden;position:absolute;top:-2px;transition-property:padding-left,padding-right,width,opacity;transition-duration:0.3s;transition-timing-function:cubic-bezier(0.4,0,0.2,1);z-index:1;", ""], function (_ref) {
-  var theme = _ref.theme;
-  return theme.COLOUR.light;
-}, function (_ref2) {
-  var isRecording = _ref2.isRecording;
-  return css(["opacity:", ";padding-left:", ";padding-right:", ";width:", ";"], isRecording ? '1' : '0', isRecording ? '1rem' : '0rem', isRecording ? '1rem' : '0rem', isRecording ? 'calc(100% - 8rem)' : '0px');
-});
-
-var voiceRecorder = /*#__PURE__*/Object.freeze({
+var index = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  VoiceRecorder: VoiceRecorder$1
+  COUNTRY: COUNTRY,
+  DOG_BREED: DOG_BREED,
+  DOG_COAT: DOG_COAT,
+  DOG_COLOUR: DOG_COLOUR,
+  DOG_GROUP: DOG_GROUP,
+  GENDER: GENDER,
+  useAxios: useAxios,
+  useComponentCommunication: useComponentCommunication,
+  useGeoCoder: useGeoCoder,
+  useInterval: useInterval,
+  Controller: Controller,
+  useForm: useForm,
+  useLocalStorage: useLocalStorage,
+  usePrevious: usePrevious,
+  useTimer: useTimer,
+  useTranslation: useTranslation,
+  age: age,
+  arrayOfKeys: arrayOfKeys,
+  arrayOfValues: arrayOfValues,
+  hashPassword: hashPassword,
+  validatePassword: validatePassword,
+  generateToken: generateToken,
+  validateToken: validateToken,
+  decodeToken: decodeToken,
+  getUserFromToken: getUserFromToken,
+  averageGeolocation: averageGeolocation,
+  camelCase: camelCase,
+  capitalize: capitalize,
+  ClickAwayListener: ClickAwayListener,
+  blendLinearRgb: blendLinearRgb,
+  shadeLinearRgb: shadeLinearRgb,
+  shadeColor: shadeColor,
+  convertImgUrlToDataURLviaCanvas: convertImgUrlToDataURLviaCanvas,
+  dateFns: dateFns,
+  shortDate: shortDate,
+  debounce: debounce,
+  useForceUpdate: useForceUpdate,
+  formatDate: formatDate,
+  formatIntDate: formatIntDate,
+  formatIntDateShort: formatIntDateShort,
+  formatIntDateYear: formatIntDateYear,
+  formatTime: formatTime,
+  formatDateStandard: formatDateStandard,
+  formatRelativeTime: formatRelativeTime,
+  formatPrice: formatPrice,
+  getAcronym: getAcronym,
+  getOne: getOne,
+  getUrlParameter: getUrlParameter,
+  MEDIA_QUERY: MEDIA_QUERY,
+  MEDIA_QUERY_MAX: MEDIA_QUERY_MAX,
+  mergeLocalData: mergeLocalData,
+  findByKey: findByKey,
+  filterByKey: filterByKey,
+  filterByString: filterByString,
+  getItemAssociation: getItemAssociation,
+  getItemAssociations: getItemAssociations,
+  getAssociations: getAssociations,
+  getManyToManyAssociations: getManyToManyAssociations,
+  getFirst: getFirst,
+  getLast: getLast,
+  objectWithoutProperties: objectWithoutProperties,
+  RandomColor: RandomColor,
+  RandomKey: RandomKey,
+  ReactHolderJs: ReactHolderJs,
+  ResizeDetector: ResizeDetector,
+  requestSimulator: requestSimulator,
+  revert: revert,
+  slugify: slugify,
+  Truncate: Truncate,
+  TruncateByMaxHeight: TruncateByMaxHeight,
+  validatorPostCode: validatorPostCode,
+  parsePostCode: parsePostCode,
+  validatorUri: validatorUri,
+  validatorUuid4: validatorUuid4,
+  historyPush: historyPush,
+  viewPort: viewPort,
+  ALIGN: ALIGN,
+  CONTEXT: CONTEXT,
+  contextArray: contextArray,
+  SIZE: SIZE,
+  sizeArray: sizeArray,
+  Position: Position,
+  ThemeStyle: ThemeStyle,
+  BACKGROUND: BACKGROUND,
+  COLOUR: COLOUR,
+  colourList: colourList,
+  DIMENSION: DIMENSION,
+  DIMENSION_PROP_TYPES: DIMENSION_PROP_TYPES,
+  DISPLAY: DISPLAY,
+  DISPLAY_PROP_TYPES: DISPLAY_PROP_TYPES,
+  FONTSIZE: FONTSIZE,
+  ERROR_STYLE: ERROR_STYLE,
+  INPUT_FONT_SIZE: INPUT_FONT_SIZE,
+  COMMON_INPUT_STYLES: COMMON_INPUT_STYLES,
+  SPACER_FORMULA: SPACER_FORMULA,
+  SPACING: SPACING,
+  SPACER: SPACER,
+  SPACER_PROP_TYPES: SPACER_PROP_TYPES,
+  Theme: Theme,
+  MetaHead: MetaHead,
+  Address: Address,
+  Avatar: Avatar,
+  Badge: Badge,
+  Blockquote: Blockquote,
+  Button: Button,
+  ButtonToolbar: ButtonToolbar,
+  Close: Close,
+  Date: Date$1,
+  Details: Details,
+  DetailsText: DetailsText,
+  Divider: Divider,
+  Figure: Figure,
+  GoogleAnalyticsPageView: GoogleAnalyticsPageView,
+  GoogleEvent: GoogleEvent,
+  Column: Column,
+  Container: Container,
+  Row: Row,
+  Heading: Heading,
+  ICON_PREFIX: ICON_PREFIX,
+  ICON_PULL: ICON_PULL,
+  ICON_SIZE: ICON_SIZE,
+  Icon: Icon,
+  IconStacked: IconStacked,
+  Image: Image$1,
+  Link: Link,
+  StyledLink: StyledLink,
+  List: List,
+  ListItem: ListItem,
+  Progress: Progress,
+  ProgressBar: ProgressBar,
+  ProgressBarDiv: ProgressBarDiv,
+  Shimmer: Shimmer,
+  Space: Space,
+  Text: Text,
+  TEXT_STYLE: TEXT_STYLE,
+  Switch: Switch,
+  Toggle: Toggle,
+  Tooltip: Tooltip,
+  useTooltip: useTooltip,
+  CheckboxField: CheckboxField,
+  DatePickerCalendar: DatePickerCalendar,
+  DatePickerInput: DatePickerInput,
+  Dropzone: Dropzone,
+  DropzoneUploader: DropzoneUploader,
+  DropzoneField: DropzoneField,
+  FormError: FormError,
+  StyledSmall: StyledSmall,
+  CurrencyInput: CurrencyInput,
+  FormField: FormField,
+  StyledInput: StyledInput,
+  PercentInput: PercentInput,
+  Form: Form,
+  FieldHOC: FieldHOC,
+  InputTypes: InputTypes,
+  Input: Input,
+  Adornment: Adornment,
+  InputDecorationTypes: InputDecorationTypes,
+  InputGroupAddon: InputGroupAddon,
+  InputGroup: InputGroup,
+  IUIRich: IUIRich,
+  FormLabel: FormLabel,
+  RadioField: RadioField,
+  ReactSelectField: ReactSelectField,
+  Search: Search,
+  SelectCountryField: SelectCountryField,
+  SelectField: SelectField,
+  TextareaField: TextareaField,
+  yup: yup,
+  yupResolver: yupResolver,
+  Accordion: Accordion,
+  AccordionItem: AccordionItem,
+  Alert: Alert,
+  AlertContent: AlertContent,
+  AlertHeader: AlertHeader,
+  Breadcrumb: Breadcrumb,
+  Buttons: Buttons,
+  CardBody: CardBody,
+  Card: Card,
+  CardDecks: CardDecks,
+  CardFooter: CardFooter,
+  CardHeader: CardHeader,
+  CardImage: CardImage,
+  HighChart: HighChart,
+  BarChart: BarChart,
+  LineChart: LineChart,
+  PieChart: PieChart,
+  Carousel: Carousel,
+  CarouselSlide: CarouselSlide,
+  Copyright: Copyright,
+  DogCard: DogCard,
+  DogLink: DogLink,
+  DogName: DogName,
+  TableDogs: TableDogs,
+  elementTypes: elementTypes,
+  Dropdown: Dropdown,
+  DropdownMenu: DropdownMenu,
+  DropdownItem: DropdownItem,
+  EmojiMart: EmojiMart,
+  GetAddress: GetAddress,
+  Hero: Hero,
+  TextBlock: TextBlock,
+  ImageMarker: ImageMarker,
+  ImageLocation: ImageLocation,
+  ImageWrapper: ImageWrapper,
+  ImageLocationFormElement: ImageLocationFormElement,
+  ImageLocationProps: ImageLocationProps,
+  IntercomAPI: IntercomAPI,
+  Intercom: Intercom,
+  DynamicLocation: DynamicLocation,
+  Marker: Marker,
+  MarkerClusterer: MarkerClusterer,
+  InfoWindow: InfoWindow,
+  StaticLocation: StaticLocation,
+  Brand: Brand,
+  Contained: Contained,
+  Toggler: Toggler,
+  Navbar: Navbar,
+  NavButton: NavButton,
+  NavCollapse: NavCollapse,
+  NavDropdown: NavDropdown,
+  NavIcon: NavIcon,
+  NavLink: NavLink,
+  NavNotification: NavNotification,
+  Widgets: Widgets,
+  Notification: Notification,
+  OffCanvasDiv: OffCanvasDiv,
+  OffCanvasContent: OffCanvasContent,
+  OffCanvasHeader: OffCanvasHeader,
+  OffCanvasOverlay: OffCanvasOverlay,
+  OffCanvasComponent: OffCanvasComponent,
+  OffCanvas: OffCanvas,
+  PageHeading: PageHeading,
+  PageLoading: PageLoading,
+  LdsSpinner: LdsSpinner,
+  PageProgressBar: PageProgressBar,
+  Pagination: Pagination,
+  PaginationItem: PaginationItem,
+  Rating: Rating,
+  Section: Section,
+  Sidebar: Sidebar,
+  SimpleTime: SimpleTime,
+  Stepper: Stepper,
+  StepperItem: StepperItem,
+  StepperSummary: StepperSummary,
+  STEPPER: STEPPER,
+  TableData: TableData,
+  TableHead: TableHead,
+  TableLoading: TableLoading,
+  TableRow: TableRow,
+  Table: Table,
+  TableActions: TableActions,
+  TableLink: TableLink,
+  Tabs: Tabs,
+  Webcam: Webcam,
+  Bar: Bar$1,
+  BarConfig: BarConfig,
+  BigCalendar: BigCalendar,
+  Calendar: Calendar,
+  ColorPicker: ColorPicker,
+  EmailChange: EmailChange,
+  DraftJs: DraftJs,
+  Footer: Footer,
+  ForgotDetails: ForgotDetails,
+  ForgotDetailsReset: ForgotDetailsReset,
+  Login: Login,
+  IUIMessagingAudioPlayer: IUIMessagingAudioPlayer,
+  MessagingAudioPlayer: MessagingAudioPlayer,
+  AudioWrapper: AudioWrapper,
+  MessageBackground: MessageBackground,
+  Message: Message,
+  MessageBase: MessageBase,
+  DragAndDropable: DragAndDropable,
+  MessagingDragHover: MessagingDragHover,
+  MessagingInput: MessagingInput,
+  Preview: Preview,
+  MessageList: MessageList,
+  MessagingSearch: MessagingSearch,
+  MessagingSend: MessagingSend,
+  Tail: Tail,
+  IUIVoiceRecorder: IUIVoiceRecorder,
+  VoiceRecorder: VoiceRecorder,
+  MessagingContainer: MessagingContainer,
+  linkifyPlugin: linkifyPlugin,
+  mentionPlugin: mentionPlugin$1,
+  hashtagPlugin: hashtagPlugin,
+  emojiPlugin: emojiPlugin$1,
+  MentionSuggestions: MentionSuggestions,
+  EmojiSuggestions: EmojiSuggestions,
+  EmojiSelect: EmojiSelect,
+  MessagingEditor: MessagingEditor,
+  messagingPlugins: messagingPlugins,
+  MentionComponent: MentionComponent,
+  LinkPluginComponent: LinkPluginComponent,
+  PasswordChange: PasswordChange,
+  LAYOUTS: LAYOUTS,
+  Pricing: Pricing,
+  PricingCard: PricingCard,
+  PricingDropdown: PricingDropdown,
+  PriceMatrix: PriceMatrix,
+  priceLayoutSizes: priceLayoutSizes,
+  Register: Register,
+  ArticleLayout: ArticleLayout,
+  Bootstrap: Bootstrap,
+  Dashboard: Dashboard,
+  Page: Page,
+  SidebarLayout: SidebarLayout,
+  FacebookPagePlugin: FacebookPagePlugin,
+  FacebookShareButton: FacebookShareButton,
+  Typeform: Typeform,
+  Article: Article,
+  Error404: Error404,
+  BlogCard: BlogCard,
+  BlogCategories: BlogCategories,
+  BlogCategory: BlogCategory,
+  BlogDetails: BlogDetails,
+  BlogHero: BlogHero,
+  BlogListing: BlogListing,
+  BlogReadTime: BlogReadTime,
+  BlogArchive: BlogArchive,
+  BlogAuthor: BlogAuthor,
+  BlogFindFood: BlogFindFood,
+  BlogMedia: BlogMedia,
+  BlogPromo: BlogPromo,
+  BlogRecent: BlogRecent,
+  BlogSidebar: BlogSidebar,
+  BlogSocial: BlogSocial,
+  BlogTagCloud: BlogTagCloud,
+  BlogTags: BlogTags,
+  Api: Api,
+  UserContext: UserContext,
+  UserProvider: UserProvider,
+  AuthorizationContext: AuthorizationContext,
+  AuthorizationProvider: AuthorizationProvider,
+  Subscriber: Subscriber$1,
+  CommunicationService: CommunicationService,
+  LiveChartSubscriber: LiveChartSubscriber,
+  LiveChartMessageService: LiveChartMessageService,
+  MessagingSubscriber: MessagingSubscriber,
+  MessagingCommunicationService: MessagingCommunicationService,
+  MessageNames: MessageNames,
+  MessagingActions: MessagingActions,
+  ConfigContext: ConfigContext,
+  ConfigProvider: ConfigProvider,
+  GetAddressService: GetAddressService,
+  GeoCoder: GeoCoder,
+  StaticMap: StaticMap,
+  InternationalisationContext: InternationalisationContext,
+  InternationalisationProvider: InternationalisationProvider,
+  isLocale: isLocale,
+  getInitialLocale: getInitialLocale,
+  NotificationsContext: NotificationsContext,
+  NotificationsProvider: NotificationsProvider,
+  useNotifications: useNotifications,
+  OffCanvasContext: OffCanvasContext,
+  OffCanvasProvider: OffCanvasProvider,
+  MyApp: MyApp
 });
 
-export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AudioWrapper, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, ClickAwayListener, Close, ColorPicker, Column, CommunicationService, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, DragAndDropable, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, EmojiSelect, EmojiSuggestions, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GetAddressService, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, HighChart, ICON_PREFIX, ICON_PULL, ICON_SIZE, INPUT_FONT_SIZE, IUIAudioPlayer, IUIRich, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LAYOUTS, LdsSpinner, LineChart, Link, LinkPluginComponent, List, ListItem, LiveChartMessageService, LiveChartSubscriber, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, MentionComponent, MentionSuggestions, Message, MessageAudioPlayer, MessageBackground, MessageBase, MessageList, MessageNames, MessagingActions, MessagingAudioPlayer, MessagingCommunicationService, MessagingContainer, MessagingDragHover, MessagingEditor, MessagingInput, MessagingSearch, MessagingSend, MessagingSubscriber, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Preview, PriceMatrix, Pricing, PricingCard, PricingDropdown, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Shimmer, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Subscriber$1 as Subscriber, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, VoiceRecorder, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, emojiPlugin$1 as emojiPlugin, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, hashtagPlugin, historyPush, isLocale, linkifyPlugin, mentionPlugin$1 as mentionPlugin, mergeLocalData, messagingPlugins, objectWithoutProperties, parsePostCode, priceLayoutSizes, requestSimulator, revert, shadeColor, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useComponentCommunication, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
+export { ALIGN, Accordion, AccordionItem, Address, Adornment, Alert, AlertContent, AlertHeader, Api, Article, ArticleLayout, AudioWrapper, AuthorizationContext, AuthorizationProvider, Avatar, BACKGROUND, Badge, Bar$1 as Bar, BarChart, BarConfig, BigCalendar, Blockquote, BlogArchive, BlogAuthor, BlogCard, BlogCategories, BlogCategory, BlogDetails, BlogFindFood, BlogHero, BlogListing, BlogMedia, BlogPromo, BlogReadTime, BlogRecent, BlogSidebar, BlogSocial, BlogTagCloud, BlogTags, Bootstrap, Brand, Breadcrumb, Button, ButtonToolbar, Buttons, COLOUR, COMMON_INPUT_STYLES, CONTEXT, COUNTRY, Calendar, Card, CardBody, CardDecks, CardFooter, CardHeader, CardImage, Carousel, CarouselSlide, CheckboxField, ClickAwayListener, Close, ColorPicker, Column, CommunicationService, ConfigContext, ConfigProvider, Contained, Container, Controller, Copyright, CurrencyInput, DIMENSION, DIMENSION_PROP_TYPES, DISPLAY, DISPLAY_PROP_TYPES, DOG_BREED, DOG_COAT, DOG_COLOUR, DOG_GROUP, Dashboard, Date$1 as Date, DatePickerCalendar, DatePickerInput, Details, DetailsText, Divider, DogCard, DogLink, DogName, DraftJs, DragAndDropable, Dropdown, DropdownItem, DropdownMenu, Dropzone, DropzoneField, DropzoneUploader, DynamicLocation, ERROR_STYLE, EmailChange, EmojiMart, EmojiSelect, EmojiSuggestions, Error404, FONTSIZE, FacebookPagePlugin, FacebookShareButton, FieldHOC, Figure, Footer, ForgotDetails, ForgotDetailsReset, Form, FormError, FormField, FormLabel, GENDER, GeoCoder, GetAddress, GetAddressService, GoogleAnalyticsPageView, GoogleEvent, Heading, Hero, HighChart, ICON_PREFIX, ICON_PULL, ICON_SIZE, INPUT_FONT_SIZE, IUIMessagingAudioPlayer, IUIRich, IUIVoiceRecorder, Icon, IconStacked, Image$1 as Image, ImageLocation, ImageLocationFormElement, ImageLocationProps, ImageMarker, ImageWrapper, InfoWindow, Input, InputDecorationTypes, InputGroup, InputGroupAddon, InputTypes, Intercom, IntercomAPI, InternationalisationContext, InternationalisationProvider, LAYOUTS, LdsSpinner, LineChart, Link, LinkPluginComponent, List, ListItem, LiveChartMessageService, LiveChartSubscriber, Login, MEDIA_QUERY, MEDIA_QUERY_MAX, Marker, MarkerClusterer, MentionComponent, MentionSuggestions, Message, MessageBackground, MessageBase, MessageList, MessageNames, MessagingActions, MessagingAudioPlayer, MessagingCommunicationService, MessagingContainer, MessagingDragHover, MessagingEditor, MessagingInput, MessagingSearch, MessagingSend, MessagingSubscriber, MetaHead, MyApp, NavButton, NavCollapse, NavDropdown, NavIcon, NavLink, NavNotification, Navbar, Notification, NotificationsContext, NotificationsProvider, OffCanvas, OffCanvasComponent, OffCanvasContent, OffCanvasContext, OffCanvasDiv, OffCanvasHeader, OffCanvasOverlay, OffCanvasProvider, Page, PageHeading, PageLoading, PageProgressBar, Pagination, PaginationItem, PasswordChange, PercentInput, PieChart, Position, Preview, PriceMatrix, Pricing, PricingCard, PricingDropdown, Progress, ProgressBar, ProgressBarDiv, RadioField, RandomColor, RandomKey, Rating, ReactHolderJs, ReactSelectField, Register, ResizeDetector, Row, SIZE, SPACER, SPACER_FORMULA, SPACER_PROP_TYPES, SPACING, STEPPER, Search, Section, SelectCountryField, SelectField, Shimmer, Sidebar, SidebarLayout, SimpleTime, Space, StaticLocation, StaticMap, Stepper, StepperItem, StepperSummary, StyledInput, StyledLink, StyledSmall, Subscriber$1 as Subscriber, Switch, TEXT_STYLE, Table, TableActions, TableData, TableDogs, TableHead, TableLink, TableLoading, TableRow, Tabs, Tail, Text, TextBlock, TextareaField, Theme, ThemeStyle, Toggle, Toggler, Tooltip, Truncate, TruncateByMaxHeight, Typeform, UserContext, UserProvider, VoiceRecorder, Webcam, Widgets, age, arrayOfKeys, arrayOfValues, averageGeolocation, blendLinearRgb, camelCase, capitalize, colourList, contextArray, convertImgUrlToDataURLviaCanvas, dateFns, debounce, decodeToken, elementTypes, emojiPlugin$1 as emojiPlugin, filterByKey, filterByString, findByKey, formatDate, formatDateStandard, formatIntDate, formatIntDateShort, formatIntDateYear, formatPrice, formatRelativeTime, formatTime, generateToken, getAcronym, getAssociations, getFirst, getInitialLocale, getItemAssociation, getItemAssociations, getLast, getManyToManyAssociations, getOne, getUrlParameter, getUserFromToken, hashPassword, hashtagPlugin, historyPush, isLocale, linkifyPlugin, mentionPlugin$1 as mentionPlugin, mergeLocalData, messagingPlugins, objectWithoutProperties, parsePostCode, priceLayoutSizes, requestSimulator, revert, shadeColor, shadeLinearRgb, shortDate, sizeArray, slugify, useAxios, useComponentCommunication, useForceUpdate, useForm, useGeoCoder, useInterval, useLocalStorage, useNotifications, usePrevious, useTimer, useTooltip, useTranslation, validatePassword, validateToken, validatorPostCode, validatorUri, validatorUuid4, viewPort, yup, yupResolver };
 //# sourceMappingURL=industry-ui.es.js.map
