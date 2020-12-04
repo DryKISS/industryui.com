@@ -4,8 +4,4 @@ const MessageAudioPlayer = dynamic(() => import('./players').then(mod => mod.Mes
   ssr: false
 })
 
-const PreviewAudioPlayer = dynamic(() => import('./players').then(mod => mod.PreviewAudioPlayer), {
-  ssr: false
-})
-
-export { MessageAudioPlayer, PreviewAudioPlayer }
+export { MessageAudioPlayer }

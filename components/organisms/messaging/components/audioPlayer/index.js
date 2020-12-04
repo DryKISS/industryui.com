@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
 import { MessageAudioPlayer } from 'components'
 
-export const MessagingAudioPlayer = ({ src }) => {
+export const MessagingAudioPlayer = ({ src, inMessage }) => {
   return (
     <AudioWrapper>
-      <MessageAudioPlayer src={src} />
+      <MessageAudioPlayer src={src} inMessage={inMessage} />
     </AudioWrapper>
   )
 }

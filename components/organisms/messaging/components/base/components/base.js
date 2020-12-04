@@ -84,7 +84,7 @@ export const MessageBase = ({
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
             <StyledReply>{reply}</StyledReply>
             <StyledContent>
-              {voice && <MessagingAudioPlayer src={voice} />}
+              {voice && <MessagingAudioPlayer src={voice} inMessage />}
 
               <MessagingEditor
                 plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
