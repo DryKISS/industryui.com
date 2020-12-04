@@ -10,9 +10,9 @@ export const MessagingAudioPlayer = ({ src }) => {
           RHAP_UI.MAIN_CONTROLS,
           RHAP_UI.PROGRESS_BAR,
           RHAP_UI.VOLUME,
-          <div key='rh1' style={{ margin: '0 5px', width: '5px' }} />,
+          <Spacer key='rh1' style={{ margin: '0 5px', width: '5px' }} />,
           RHAP_UI.CURRENT_TIME,
-          <div key='rh2'>/</div>,
+          <Slash key='rh2'>/</Slash>,
           RHAP_UI.DURATION
         ]}
         customControlsSection={[]}
@@ -22,6 +22,12 @@ export const MessagingAudioPlayer = ({ src }) => {
     </AudioWrapper>
   )
 }
+
+const Spacer = styled.div`
+  margin: 0 5px;
+  width: 5px;
+`
+const Slash = styled.div``
 export const AudioWrapper = styled.div`
   width: 100%;
   ${({ hidden }) =>
