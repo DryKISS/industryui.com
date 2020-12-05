@@ -9,32 +9,66 @@
 
 // React
 import { useEffect, useState } from 'react'
-
+import styled from 'styled-components'
+// import { RHAP_UI } from 'react-h5-audio-player'
 // Next
 import dynamic from 'next/dynamic'
 
-let IUIPlayer
+let AudioPlayer
 
-export const IUIMessagingAudioPlayer = props => {
+const RHAP_UI = {
+  CURRENT_TIME: 'CURRENT_TIME',
+  CURRENT_LEFT_TIME: 'CURRENT_LEFT_TIME',
+  PROGRESS_BAR: 'PROGRESS_BAR',
+  DURATION: 'DURATION',
+  ADDITIONAL_CONTROLS: 'ADDITIONAL_CONTROLS',
+  MAIN_CONTROLS: 'MAIN_CONTROLS',
+  VOLUME_CONTROLS: 'VOLUME_CONTROLS',
+  LOOP: 'LOOP',
+  VOLUME: 'VOLUME'
+}
+
+export const IUIMessagingAudioPlayer = ({ src, inMessage }) => {
   const [playerLoaded, setPlayerLoaded] = useState(false)
 
   useEffect(() => {
-    IUIPlayer = dynamic({
-      modules: () => ({
-        player: import('./messagingAudioPlayer').then(mod => mod.MessagingAudioPlayer)
-      }),
-      render: (props, { player: Player }) => <Player {...props} />,
-      ssr: false
-    })
-
+    AudioPlayer = dynamic(() => import('react-h5-audio-player'), { ssr: false })
     setPlayerLoaded(true)
   }, [])
 
-  const showPlayer = props => {
+  const showPlayer = () => {
     if (!playerLoaded) return <div>Loading ...</div>
-
-    return <IUIPlayer {...props} />
+    return (
+      <AudioPlayer
+        src={src}
+        customProgressBarSection={
+          inMessage
+            ? [
+                RHAP_UI.MAIN_CONTROLS,
+                RHAP_UI.PROGRESS_BAR,
+                RHAP_UI.VOLUME,
+                <Spacer key='rh1' style={{ margin: '0 5px', width: '5px' }} />,
+                RHAP_UI.CURRENT_TIME,
+                <Slash key='rh2'>/</Slash>,
+                RHAP_UI.DURATION
+              ]
+            : [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR]
+        }
+        customControlsSection={[]}
+        showJumpControls={false}
+        showFilledVolume
+      />
+    )
   }
 
-  return <div>{showPlayer(props)}</div>
+  return <Wrapper>{showPlayer()}</Wrapper>
 }
+const Wrapper = styled.div`
+  flex: 1;
+`
+
+const Spacer = styled.div`
+  margin: 0 5px;
+  width: 5px;
+`
+const Slash = styled.div``
