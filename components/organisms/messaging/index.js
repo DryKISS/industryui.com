@@ -2,7 +2,6 @@
  * Messaging
  */
 export * from './components/audioPlayer'
-export * from './components/audioPlayer/messagingAudioPlayer'
 export * from './components/audioPlayer/wrapper'
 export * from './background/background'
 export * from './components/message'
@@ -16,7 +15,6 @@ export * from './components/search'
 export * from './components/send'
 export * from './components/tail'
 export * from './components/voiceRecorder'
-export * from './components/voiceRecorder/voiceRecorder'
 export * from './container/container'
 export * from './draftPlugins'
 export * from './draftPlugins/components/mention'
