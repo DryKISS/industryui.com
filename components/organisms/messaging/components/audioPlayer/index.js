@@ -18,7 +18,7 @@ const RHAP_UI = {
   VOLUME: 'VOLUME'
 }
 
-export const IUIMessagingAudioPlayer = ({ inMessage, src }) => {
+export const MessagingAudioPlayer = ({ inMessage, src }) => {
   const [playerLoaded, setPlayerLoaded] = useState(false)
 
   useEffect(() => {

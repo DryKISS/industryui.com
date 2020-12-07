@@ -24,9 +24,9 @@ import {
   EmojiSelect,
   EmojiSuggestions,
   Icon,
-  IUIVoiceRecorder,
+  VoiceRecorder,
   MessagingInput,
-  IUIMessagingAudioPlayer,
+  MessagingAudioPlayer,
   useComponentCommunication
 } from 'components'
 
@@ -125,7 +125,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
           {voiceMessage && (
             <AudioWrapper preview>
-              <IUIMessagingAudioPlayer src={URL.createObjectURL(voiceMessage)} />
+              <MessagingAudioPlayer src={URL.createObjectURL(voiceMessage)} />
               <DeleteIconWrapper onClick={handleDeleteVoiceClick}>
                 <Icon context='danger' icon='trash' prefix='fas' size='lg' />
               </DeleteIconWrapper>
@@ -143,7 +143,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           />
           <StyledElements>
             {isSendDisabled() ? (
-              <IUIVoiceRecorder />
+              <VoiceRecorder />
             ) : (
               <Button
                 context='transparent'

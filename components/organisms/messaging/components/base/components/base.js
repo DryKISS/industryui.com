@@ -16,7 +16,7 @@ import {
   Image,
   linkifyPlugin,
   MentionComponent,
-  IUIMessagingAudioPlayer,
+  MessagingAudioPlayer,
   MessagingEditor,
   Preview,
   Row
@@ -87,7 +87,7 @@ export const MessageBase = ({
             <StyledContent>
               {voice && (
                 <AudioWrapper>
-                  <IUIMessagingAudioPlayer src={voice} inMessage />
+                  <MessagingAudioPlayer src={voice} inMessage />
                 </AudioWrapper>
               )}
 

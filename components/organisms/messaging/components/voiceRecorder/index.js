@@ -8,11 +8,15 @@ import { Close, Text } from 'components'
 let AudioRecorder
 let mpegEncoder
 
-export const IUIVoiceRecorder = props => {
+export const VoiceRecorder = props => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
+
   const recorder = useRef()
+
   const canSendData = useRef(true)
+
   const [isRecording, setisRecording] = useState(false)
+
   const loadModules = async () => {
     AudioRecorder = (await import('audio-recorder-polyfill')).default
     mpegEncoder = (await import('audio-recorder-polyfill/mpeg-encoder')).default
@@ -23,6 +27,7 @@ export const IUIVoiceRecorder = props => {
     }
     setRecorderLoaded(true)
   }
+
   useEffect(() => {
     loadModules()
   }, [])
@@ -52,7 +57,7 @@ export const IUIVoiceRecorder = props => {
 
   const handleStopRecord = () => {
     recorder.current.stop()
-    // Remove “recording” icon from browser tab
+    // Remove "recording" icon from browser tab
     recorder.current.stream.getTracks().forEach(i => i.stop())
     setisRecording(false)
   }
