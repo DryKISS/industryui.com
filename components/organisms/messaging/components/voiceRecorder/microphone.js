@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-export const Microphone = ({ isRecording }) => {
+export const Microphone = ({ isRecording, isLoading }) => {
   return (
     <StyledSvg
       isRecording={isRecording}
+      isLoading={isLoading}
       width='15'
       height='22'
       viewBox='0 0 15 22'
@@ -15,7 +16,7 @@ export const Microphone = ({ isRecording }) => {
 }
 const StyledSvg = styled.svg`
   path {
-    fill: ${({ isRecording, theme }) =>
-      isRecording ? theme.COLOUR.success : theme.COLOUR.blackGrey};
+    fill: ${({ isLoading, isRecording, theme }) =>
+      isLoading ? theme.COLOUR.grey : isRecording ? theme.COLOUR.success : theme.COLOUR.blackGrey};
   }
 `

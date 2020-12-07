@@ -1,19 +1,9 @@
-// import dynamic from 'next/dynamic'
-// export const IUIVoiceRecorder = dynamic(
-//   () => import('./voiceRecorder').then(mod => mod.VoiceRecorder),
-//   {
-//     ssr: false
-//   }
-// )
-
 // React
 import { useEffect, useRef, useState } from 'react'
 import { MessageNames, MessagingCommunicationService, MessagingActions } from 'components/services'
 import styled, { css } from 'styled-components'
 import { Microphone } from './microphone'
 import { Close, Text } from 'components'
-// Next
-import dynamic from 'next/dynamic'
 
 let AudioRecorder
 let mpegEncoder
@@ -23,25 +13,18 @@ export const IUIVoiceRecorder = props => {
   const recorder = useRef()
   const canSendData = useRef(true)
   const [isRecording, setisRecording] = useState(false)
-  useEffect(() => {
-    mpegEncoder = dynamic(() => import('audio-recorder-polyfill/mpeg-encoder'), {
-      ssr: false
-    })
-    AudioRecorder = dynamic(
-      () =>
-        import('audio-recorder-polyfill').then(mod => {
-          mod.encoder = mpegEncoder
-          mod.prototype.mimeType = 'audio/mpeg'
-          if (window) {
-            window.MediaRecorder = AudioRecorder
-          }
-        }),
-      {
-        ssr: false
-      }
-    )
-
+  const loadModules = async () => {
+    AudioRecorder = (await import('audio-recorder-polyfill')).default
+    mpegEncoder = (await import('audio-recorder-polyfill/mpeg-encoder')).default
+    AudioRecorder.encoder = mpegEncoder
+    AudioRecorder.prototype.mimeType = 'audio/mpeg'
+    if (window) {
+      window.MediaRecorder = AudioRecorder
+    }
     setRecorderLoaded(true)
+  }
+  useEffect(() => {
+    loadModules()
   }, [])
 
   const handleStartRecord = () => {
@@ -79,7 +62,7 @@ export const IUIVoiceRecorder = props => {
   }
 
   const showRecorder = props => {
-    if (!recorderLoaded) return <div>Loading ...</div>
+    if (!recorderLoaded) return <Microphone isLoading />
     return (
       <>
         <OverLay isRecording={isRecording}>

@@ -1,16 +1,6 @@
-// import dynamic from 'next/dynamic'
-
-// export const IUIMessagingAudioPlayer = dynamic(
-//   () => import('./messagingAudioPlayer').then(module => module.MessagingAudioPlayer),
-//   {
-//     ssr: false
-//   }
-// )
-
 // React
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-// import { RHAP_UI } from 'react-h5-audio-player'
 // Next
 import dynamic from 'next/dynamic'
 
