@@ -39,6 +39,7 @@ export const CardDefaultProps = {
   bordered: false,
   context: 'white',
   footerContext: 'light',
+  headerContext: 'light',
   role: 'article',
   rounded: true,
   shadow: false,

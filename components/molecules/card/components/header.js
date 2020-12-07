@@ -9,7 +9,7 @@ import { oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 import { CONTEXT } from '../../../'
 
-export const CardHeader = ({ content, context }) => {
+export const CardHeader = ({ content, context, align }) => {
   return <StyledHeader context={context}>{content}</StyledHeader>
 }
 
@@ -27,5 +27,10 @@ const StyledHeader = styled.h2`
 
 CardHeader.propTypes = {
   content: string.isRequired,
-  context: oneOf(Object.values(CONTEXT))
+  context: oneOf(Object.values(CONTEXT)),
+  align: oneOf(['center', 'right', 'left'])
+}
+
+CardHeader.defaultProps = {
+  align: 'center'
 }
