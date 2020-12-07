@@ -25,7 +25,8 @@ export const Link = ({
   scroll,
   shallow,
   target,
-  to
+  to,
+  fullWidth
 }) => {
   const obj = typeof to === 'object' ? to : { href: to }
 
@@ -37,12 +38,20 @@ export const Link = ({
         context={context}
         onClick={onClick}
         target={target}
+        fullWidth={fullWidth}
       >
         {children}
       </StyledLink>
     </NextLink>
   ) : (
-    <StyledLink border={border} className={className} context={context} href={to} target={target}>
+    <StyledLink
+      fullWidth={fullWidth}
+      border={border}
+      className={className}
+      context={context}
+      href={to}
+      target={target}
+    >
       {children}
     </StyledLink>
   )
@@ -52,9 +61,14 @@ export const StyledLink = styled.a`
   background-color: transparent;
   border-bottom: ${({ border, context, theme }) =>
     border && `2px solid ${shadeLinearRgb(0.88, theme.COLOUR[context] || theme.LINK.colour)}`};
-  color: ${({ context, theme }) => theme.COLOUR[context] || theme.LINK.colour};
+
   display: ${({ border }) => (border ? 'inline-block' : 'block')};
+  color: ${({ context, theme }) => {
+    if (context === CONTEXT.INITIAL) return CONTEXT.INITIAL
+    return theme.COLOUR[context] || theme.LINK.colour
+  }};
   cursor: pointer;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
   max-width: 100%;
   outline: none;
   text-decoration: none;
@@ -93,12 +107,14 @@ Link.propTypes = {
   scroll: bool,
   shallow: bool,
   target: string,
-  to: oneOfType([object, string]).isRequired
+  to: oneOfType([object, string]).isRequired,
+  fullWidth: bool
 }
 
 Link.defaultProps = {
   border: true,
   replace: false,
+  initial: false,
   scroll: true,
   shallow: false
 }
