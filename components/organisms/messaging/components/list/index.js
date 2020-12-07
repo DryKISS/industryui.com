@@ -109,7 +109,6 @@ export const MessageList = memo(
   () => true
 )
 const MessageContainer = styled.div`
-  /* transition: all 0.2s; */
   ${({ type }) =>
     type === 'in'
       ? css`
