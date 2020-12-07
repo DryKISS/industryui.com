@@ -28,7 +28,7 @@ const RHAP_UI = {
   VOLUME: 'VOLUME'
 }
 
-export const IUIMessagingAudioPlayer = ({ src, inMessage }) => {
+export const IUIMessagingAudioPlayer = ({ inMessage, src }) => {
   const [playerLoaded, setPlayerLoaded] = useState(false)
 
   useEffect(() => {
@@ -37,11 +37,9 @@ export const IUIMessagingAudioPlayer = ({ src, inMessage }) => {
   }, [])
 
   const showPlayer = () => {
-    //
     if (!playerLoaded) return <div>Loading ...</div>
     return (
       <AudioPlayer
-        src={src}
         customProgressBarSection={
           inMessage
             ? [
@@ -58,6 +56,7 @@ export const IUIMessagingAudioPlayer = ({ src, inMessage }) => {
         customControlsSection={[]}
         showJumpControls={false}
         showFilledVolume
+        src={src}
       />
     )
   }

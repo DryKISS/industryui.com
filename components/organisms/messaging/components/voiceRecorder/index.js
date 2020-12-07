@@ -8,15 +8,15 @@
 
 // React
 import { useEffect, useRef, useState } from 'react'
-import { MessagingCommunicationService, MessageNames, MessagingActions } from 'components/services'
+import { MessageNames, MessagingCommunicationService, MessagingActions } from 'components/services'
 import styled, { css } from 'styled-components'
 import { Microphone } from './microphone'
 import { Close, Text } from 'components'
 // Next
 import dynamic from 'next/dynamic'
 
-let mpegEncoder
 let AudioRecorder
+let mpegEncoder
 
 export const IUIVoiceRecorder = props => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
@@ -75,10 +75,7 @@ export const IUIVoiceRecorder = props => {
   }
   const handleCancelRecord = () => {
     canSendData.current = false
-    recorder.current.stop()
-    // Remove “recording” icon from browser tab
-    recorder.current.stream.getTracks().forEach(i => i.stop())
-    setisRecording(false)
+    handleStopRecord()
   }
 
   const showRecorder = props => {
