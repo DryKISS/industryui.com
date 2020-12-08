@@ -47,6 +47,9 @@ const IconWrapper = styled.div`
   padding: 0.25rem 0;
   text-align: center;
   width: 100%;
+  path {
+    fill: ${({ theme: { MESSAGING } }) => MESSAGING.FORWARD_AND_REPLY_ICONS_COLOUR};
+  }
 `
 
 const SideActionsWrapper = styled.div`

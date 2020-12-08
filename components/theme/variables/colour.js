@@ -26,6 +26,7 @@ export const COLOUR = {
   info: 'rgb(25, 129, 255)',
   light: 'rgb(242, 242, 242)',
   lightBlue: 'rgb(173, 195, 245)',
+  lightBlack: 'rgb(110,110,111)',
   lightRed: 'rgb(255, 151, 151)',
   link: 'rgb(35, 146, 220)',
   male: 'rgb(142, 206, 253)',

@@ -137,26 +137,27 @@ const MessageWrapper = styled.div`
 `
 
 const StyledCard = styled(Card)`
-  background-color: ${({ type, theme }) =>
-    type === 'in' ? theme.COLOUR.neutral : theme.COLOUR.neutral2};
-  border: 1px solid ${({ theme }) => theme.COLOUR.grey80};
+  background-color: ${({ type, theme: { MESSAGING } }) =>
+    type === 'in' ? MESSAGING.RECIEVED_MESSAGE_BACKGROUND : MESSAGING.SENT_MESSAGE_BACKGROUND};
+  border: 1px solid ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_BORDER_COLOUR};
   border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
   padding: 0.75rem 1rem;
 `
 
 const StyledContent = styled.div`
-  color: #000;
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_CONTENT_COLOUR};
+  font-size: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_FONT_SIZE};
 `
 
 const StyledReply = styled.div`
-  color: #696969;
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_REPLY_TEXT_COLOUR};
   font-size: 0.75rem;
   margin-bottom: 0.5rem;
 `
 
 const StyledTime = styled.span`
-  color: ${({ theme }) => theme.COLOUR.primary};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_TIME_TEXT_COLOUR};
   font-size: 0.75rem;
 `
 

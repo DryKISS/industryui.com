@@ -16,7 +16,17 @@ export const Microphone = ({ isRecording, isLoading }) => {
 }
 const StyledSvg = styled.svg`
   path {
-    fill: ${({ isLoading, isRecording, theme }) =>
-      isLoading ? theme.COLOUR.grey : isRecording ? theme.COLOUR.success : theme.COLOUR.blackGrey};
+    fill: ${({ isLoading, isRecording, theme: { MESSAGING } }) =>
+      isLoading
+        ? MESSAGING.RECORDER_LOADING_STATE_COLOUR
+        : isRecording
+        ? MESSAGING.RECORDER_RECORDING_STATE_COLOUR
+        : MESSAGING.INPUT_ICONS_COLOUR};
+  }
+  &:hover {
+    path {
+      fill: ${({ isLoading, isRecording, theme: { MESSAGING } }) =>
+        !isLoading && !isRecording && MESSAGING.INPUT_ICONS_HOVER_COLOUR};
+    }
   }
 `

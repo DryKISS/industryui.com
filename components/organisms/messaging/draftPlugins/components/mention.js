@@ -12,11 +12,12 @@ export const MentionComponent = ({ mentionProps }) => {
   return (
     <StyledMention
       className={mentionProps.className}
-      // eslint-disable-next-line no-alert
       onClick={() => handleMentionClick(mentionProps)}
     >
       {mentionProps.children}
     </StyledMention>
   )
 }
-const StyledMention = styled.span``
+const StyledMention = styled.span`
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.MENTION_COLOUR};
+`

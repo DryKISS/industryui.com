@@ -179,14 +179,14 @@ const EmojiSelectWrapper = styled.div`
   [class*='draftJsEmojiPlugin__emojiSelectButton_'] {
     background-color: transparent !important;
     border: none;
-    color: ${({ theme }) => theme.COLOUR.blackGrey};
+    color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_ICONS_COLOUR};
     font-size: 2.5rem;
     font-weight: 600;
     height: unset;
     margin-top: -5px;
     margin-right: 3px;
     &:hover {
-      color: ${({ theme }) => theme.COLOUR.info};
+      color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_ICONS_HOVER_COLOUR};
     }
     width: unset;
   }
@@ -199,7 +199,7 @@ const StyledElements = styled.div`
 `
 
 const StyledContainer = styled.div`
-  background-color: rgb(242, 242, 242);
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_SECTION_BACKGROUND_COLOUR};
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #c0c0c0;
   box-sizing: border-box;
@@ -237,9 +237,9 @@ const StyledWrapper = styled.div`
 const StyledIcon = styled(Icon)`
   cursor: pointer;
   margin-right: 1rem;
-  color: ${({ theme }) => theme.COLOUR.blackGrey};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_ICONS_COLOUR};
   &:hover {
-    color: ${({ theme }) => theme.COLOUR.info};
+    color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_ICONS_HOVER_COLOUR};
   }
 `
 

@@ -10,7 +10,7 @@ export const AudioWrapper = styled.div`
   ${({ preview }) =>
     preview &&
     css`
-      background-color: ${({ theme }) => theme.COLOUR.light};
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_SECTION_BACKGROUND_COLOUR};
       display: flex;
       left: 4rem;
       position: absolute;
@@ -116,7 +116,7 @@ export const AudioWrapper = styled.div`
     height: 100%;
     position: absolute;
     z-index: 2;
-    background-color: ${({ theme }) => theme.COLOUR.info};
+    background-color: ${({ theme: { MESSAGING } }) => MESSAGING.AUDIO_AND_VOLUME_PROGRESS_COLOUR};
     border-radius: 2px;
   }
 
@@ -140,7 +140,7 @@ export const AudioWrapper = styled.div`
     height: 10px;
     margin-left: -3px;
     top: -3px;
-    background: ${({ theme }) => theme.COLOUR.info};
+    background: ${({ theme: { MESSAGING } }) => MESSAGING.AUDIO_AND_VOLUME_PROGRESS_COLOUR};
     border-radius: 50px;
   }
 
@@ -229,7 +229,7 @@ export const AudioWrapper = styled.div`
     margin-left: -5px;
     left: 0;
     top: -3px;
-    background: ${({ theme }) => theme.COLOUR.info};
+    background: ${({ theme: { MESSAGING } }) => MESSAGING.AUDIO_AND_VOLUME_PROGRESS_COLOUR};
     opacity: 0.9;
     border-radius: 50px;
     cursor: pointer;
@@ -242,7 +242,7 @@ export const AudioWrapper = styled.div`
     height: 100%;
     position: absolute;
     z-index: 2;
-    background-color: ${({ theme }) => theme.COLOUR.info};
+    background-color: ${({ theme: { MESSAGING } }) => MESSAGING.AUDIO_AND_VOLUME_PROGRESS_COLOUR};
     border-radius: 2px;
   }
 
@@ -258,7 +258,7 @@ export const AudioWrapper = styled.div`
   .rhap_button-clear[aria-label='Pause'] {
     svg {
       path {
-        fill: ${({ theme }) => theme.COLOUR.primary};
+        fill: ${({ theme: { MESSAGING } }) => MESSAGING.AUDIO_CONTROLLERS_COLOUR};
       }
     }
   }
