@@ -25,6 +25,7 @@ export const Card = ({
   deck,
   footer,
   footerContext,
+  headerContext,
   header,
   headerAlign,
   headerContext,
