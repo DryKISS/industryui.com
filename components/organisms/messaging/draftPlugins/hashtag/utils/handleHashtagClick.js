@@ -1,8 +1,8 @@
-import { MessageNames, MessagingCommunicationService } from 'components'
+import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components'
 
 export const handleHashtagClick = hashtag => {
   MessagingCommunicationService.send({
-    name: MessageNames.Messaging.HASHTAG_CLICKED,
-    payload: hashtag
+    name: MessageNames.Messaging.MESSAGING_ACTION,
+    payload: { action: MessagingActions.HASHTAG_CLICKED, data: hashtag }
   })
 }

@@ -28,4 +28,15 @@ const Container = styled.div`
   overflow: hidden;
   position: relative;
   outline: none;
+  * {
+    &::-webkit-scrollbar {
+      width: 0.25rem;
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.scrollBarColour};
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.scrollThumbColour};
+    }
+  }
 `

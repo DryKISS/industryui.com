@@ -4,6 +4,7 @@
 
 // React
 import { useState } from 'react'
+
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
@@ -18,6 +19,7 @@ import {
 
 import {
   MessageNames,
+  MessagingActions,
   MessagingCommunicationService,
   MessagingSubscriber
 } from 'components/services'
@@ -40,9 +42,9 @@ export const MessagingContainer = ({
   style
 }) => {
   const [Files, setFiles] = useState([])
+  const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
-  const [Messages, setMessages] = useState(messages)
-
+  // const [voiceSrc, setvoiceSrc] = useState(null)
   const onHover = () => {
     if (!IsDragHoverOpen) {
       setIsDragHoverOpen(true)
@@ -71,40 +73,35 @@ export const MessagingContainer = ({
 
   const handleAttachSubmitClick = () => {
     MessagingCommunicationService.send({
-      name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-      payload: Files
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: Files }
     })
-
     setIsDragHoverOpen(false)
   }
 
-  const onRecieve = payload => {
-    const newMessagesArray = [...Messages, ...payload]
-    setMessages([...newMessagesArray])
+  const handleMessageRecieved = () => {
+    if (hasMessage === false) {
+      sethasMessage(true)
+    }
   }
-  const onRenewMessages = messages => {
-    setMessages(() => messages)
+
+  const onAction = payload => {
+    switch (payload.action) {
+      case MessagingActions.HASHTAG_CLICKED:
+        onHashtagClick(payload.data)
+        break
+      case MessagingActions.MENTION_CLICKED:
+        onMentionClick(payload.data)
+        break
+
+      default:
+        break
+    }
   }
-  useComponentCommunication({
-    dependencies: [Messages.length],
-    messageName: MessageNames.Messaging.NEW_MESSAGES,
-    onRecieve,
-    subscriber: MessagingSubscriber
-  })
-  useComponentCommunication({
-    messageName: MessageNames.Messaging.HASHTAG_CLICKED,
-    onRecieve: e => onHashtagClick(e),
-    subscriber: MessagingSubscriber
-  })
-  useComponentCommunication({
-    messageName: MessageNames.Messaging.MENTION_CLICKED,
-    onRecieve: e => onMentionClick(e),
-    subscriber: MessagingSubscriber
-  })
 
   useComponentCommunication({
-    messageName: MessageNames.Messaging.RENEW_MESSAGES,
-    onRecieve: e => onRenewMessages(e),
+    messageName: MessageNames.Messaging.MESSAGING_ACTION,
+    onRecieve: onAction,
     subscriber: MessagingSubscriber
   })
 
@@ -112,11 +109,12 @@ export const MessagingContainer = ({
     onMessageSubmit(messageToSend)
 
     MessagingCommunicationService.send({
-      name: MessageNames.Messaging.CLEAR_INPUT
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.CLEAR_INPUT }
     })
     MessagingCommunicationService.send({
-      name: MessageNames.Messaging.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-      payload: []
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: [] }
     })
   }
 
@@ -125,11 +123,11 @@ export const MessagingContainer = ({
       <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
       <StyledContainer
-        messagesContainerHeight={Messages.length > 0 ? messagesContainerHeight : 0}
+        messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
         className={className}
         style={style}
       >
-        <MessageList messages={Messages} />
+        <MessageList initialMessages={messages} onMessageRecieved={handleMessageRecieved} />
       </StyledContainer>
 
       <MessagingSend
@@ -150,7 +148,7 @@ export const MessagingContainer = ({
 }
 
 const StyledContainer = styled.div`
-  background-color: rgba(117, 204, 207, 0.4);
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>
     messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;
@@ -158,6 +156,9 @@ const StyledContainer = styled.div`
 
   .ReactVirtualized__Grid {
     outline: none;
+  }
+  .public-DraftStyleDefault-block {
+    margin: 0.25em 0;
   }
 `
 
