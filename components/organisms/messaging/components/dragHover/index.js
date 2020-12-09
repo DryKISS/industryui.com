@@ -146,7 +146,7 @@ const Head = styled.div`
   display: flex;
   height: 3rem;
   padding: 0 1.25rem;
-  background-color: ${({ theme }) => theme.COLOUR[theme.MESSAGING.HEADER_BACKGROUND_COLOUR]};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.dropableHeaderBackground};
 `
 const Wrapper = styled.div`
   height: 100%;

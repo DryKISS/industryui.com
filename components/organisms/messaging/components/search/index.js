@@ -58,7 +58,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
 }
 
 const StyledContainer = styled.div`
-  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.HEADER_BACKGROUND};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.headerBackground};
   border-top: 1px solid #c0c0c0;
   padding: 1rem;
 `

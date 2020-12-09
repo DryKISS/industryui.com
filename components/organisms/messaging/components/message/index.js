@@ -48,7 +48,7 @@ const IconWrapper = styled.div`
   text-align: center;
   width: 100%;
   path {
-    fill: ${({ theme: { MESSAGING } }) => MESSAGING.FORWARD_AND_REPLY_ICONS_COLOUR};
+    fill: ${({ theme: { MESSAGING } }) => MESSAGING.forwardAndReplyIconsColour};
   }
 `
 

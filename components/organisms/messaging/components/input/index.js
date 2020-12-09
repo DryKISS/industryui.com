@@ -86,8 +86,8 @@ const Wrapper = styled.div`
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
   ${props => COMMON_INPUT_STYLES(props)}
-font-size:${({ theme: { MESSAGING } }) => MESSAGING.INPUT_FONT_SIZE};
+font-size:${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
   width: calc(100% - 8rem);
-  max-height: ${({ theme: { MESSAGING } }) => MESSAGING.MAX_INPUT_HEIGHT};
+  max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
   overflow-y: auto;
 `

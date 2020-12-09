@@ -18,15 +18,15 @@ const StyledSvg = styled.svg`
   path {
     fill: ${({ isLoading, isRecording, theme: { MESSAGING } }) =>
       isLoading
-        ? MESSAGING.RECORDER_LOADING_STATE_COLOUR
+        ? MESSAGING.recorderLoadingStateColour
         : isRecording
-        ? MESSAGING.RECORDER_RECORDING_STATE_COLOUR
-        : MESSAGING.INPUT_ICONS_COLOUR};
+        ? MESSAGING.recorderRecordingStateColour
+        : MESSAGING.inputIconsColour};
   }
   &:hover {
     path {
       fill: ${({ isLoading, isRecording, theme: { MESSAGING } }) =>
-        !isLoading && !isRecording && MESSAGING.INPUT_ICONS_HOVER_COLOUR};
+        !isLoading && !isRecording && MESSAGING.inpotIconsHoverColour};
     }
   }
 `

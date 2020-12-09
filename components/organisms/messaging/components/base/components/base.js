@@ -138,26 +138,26 @@ const MessageWrapper = styled.div`
 
 const StyledCard = styled(Card)`
   background-color: ${({ type, theme: { MESSAGING } }) =>
-    type === 'in' ? MESSAGING.RECIEVED_MESSAGE_BACKGROUND : MESSAGING.SENT_MESSAGE_BACKGROUND};
-  border: 1px solid ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_BORDER_COLOUR};
+    type === 'in' ? MESSAGING.receivedMessageBackground : MESSAGING.sentMessageBackground};
+  border: 1px solid ${({ theme: { MESSAGING } }) => MESSAGING.messageBorderColour};
   border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
   padding: 0.75rem 1rem;
 `
 
 const StyledContent = styled.div`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_CONTENT_COLOUR};
-  font-size: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_FONT_SIZE};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageContentColour};
+  font-size: ${({ theme: { MESSAGING } }) => MESSAGING.messageFontSize};
 `
 
 const StyledReply = styled.div`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_REPLY_TEXT_COLOUR};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageReplyRextColour};
   font-size: 0.75rem;
   margin-bottom: 0.5rem;
 `
 
 const StyledTime = styled.span`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_TIME_TEXT_COLOUR};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageTimeTextColour};
   font-size: 0.75rem;
 `
 

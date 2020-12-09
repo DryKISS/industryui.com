@@ -31,7 +31,7 @@ export const MessageIcon = ({ icon, prefix }) => {
 }
 
 const StyledIcon = styled(Icon)`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.MESSAGE_ICON_COLOUR};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageIconColour};
   margin-right: 0.5rem;
   vertical-align: middle !important;
 `

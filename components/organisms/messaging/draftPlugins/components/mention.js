@@ -19,5 +19,5 @@ export const MentionComponent = ({ mentionProps }) => {
   )
 }
 const StyledMention = styled.span`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.MENTION_COLOUR};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.mentionColour};
 `

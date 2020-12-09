@@ -148,7 +148,7 @@ export const MessagingContainer = ({
 }
 
 const StyledContainer = styled.div`
-  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.CONTAINER_BACKGROUND};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>
     messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;

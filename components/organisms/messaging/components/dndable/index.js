@@ -31,12 +31,12 @@ const Container = styled.div`
   * {
     &::-webkit-scrollbar {
       width: 0.25rem;
-      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.SCROLL_BAR_COLOUR};
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.scrollBarColour};
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.SCROLL_THUMB_COLOUR};
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.scrollThumbColour};
     }
   }
 `

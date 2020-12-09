@@ -28,6 +28,6 @@ export default function Hashtag (props) {
   )
 }
 const StyledHashtag = styled.span`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.HASHTAG_COLOUR};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.hashtagColour};
   cursor: pointer;
 `

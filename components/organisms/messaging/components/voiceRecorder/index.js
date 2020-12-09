@@ -89,7 +89,7 @@ const Wrapper = styled.div`
 `
 const OverLay = styled.div`
   align-items: center;
-  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.INPUT_SECTION_BACKGROUND_COLOUR};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
   display: flex;
   height: 45px;
   justify-content: space-between;
