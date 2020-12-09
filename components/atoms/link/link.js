@@ -19,14 +19,14 @@ export const Link = ({
   children,
   className,
   context,
+  fullWidth,
   onClick,
   passHref,
   replace,
   scroll,
   shallow,
   target,
-  to,
-  fullWidth
+  to
 }) => {
   const obj = typeof to === 'object' ? to : { href: to }
 
@@ -36,19 +36,19 @@ export const Link = ({
         border={border}
         className={className}
         context={context}
+        fullWidth={fullWidth}
         onClick={onClick}
         target={target}
-        fullWidth={fullWidth}
       >
         {children}
       </StyledLink>
     </NextLink>
   ) : (
     <StyledLink
-      fullWidth={fullWidth}
       border={border}
       className={className}
       context={context}
+      fullWidth={fullWidth}
       href={to}
       target={target}
     >
@@ -68,7 +68,7 @@ export const StyledLink = styled.a`
     return theme.COLOUR[context] || theme.LINK.colour
   }};
   cursor: pointer;
-  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'initial')};
   max-width: 100%;
   outline: none;
   text-decoration: none;
@@ -101,14 +101,14 @@ Link.propTypes = {
   children: node.isRequired,
   className: any,
   context: oneOf(Object.values(CONTEXT)),
+  fullWidth: bool,
   onClick: func,
   passHref: bool,
   replace: bool,
   scroll: bool,
   shallow: bool,
   target: string,
-  to: oneOfType([object, string]).isRequired,
-  fullWidth: bool
+  to: oneOfType([object, string]).isRequired
 }
 
 Link.defaultProps = {
