@@ -27,6 +27,8 @@ export const Card = ({
   footerContext,
   headerContext,
   header,
+  headerAlign,
+  headerContext,
   icon,
   image,
   rounded,
@@ -60,7 +62,7 @@ export const Card = ({
 
         {image && <CardImage alt={alt} src={image} />}
 
-        {header && <CardHeader content={header} context={headerContext} />}
+        {header && <CardHeader align={headerAlign} content={header} context={headerContext} />}
 
         {icon && <StyledIcon icon={icon} size='4x' />}
 
