@@ -10,6 +10,7 @@ import { Tabs } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: { grabbable: true, grabWalkSpeed: 25, scrollToActiveTab: true },
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
@@ -21,29 +22,51 @@ export default {
   }
 }
 
-export const main = () => (
-  <Tabs onChange={action('change')}>
-    <div label='Tab 1'>Tab 1 Content</div>
-    <div label='Tab 2'>Tab 2 Content</div>
+const renderTab = (index, activeTab) => (
+  <div active={index === activeTab} key={index} label={`Tab ${index + 1}`}>
+    {`Tab ${index + 1} Content`}
+  </div>
+)
+
+const BaseComponent = ({ children, ...props }) => (
+  <Tabs onChange={action('change')} {...props}>
+    {children}
   </Tabs>
 )
 
-export const disabled = () => (
-  <Tabs onChange={action('change')}>
-    <div label='Tab 1'>Tab 1 Content</div>
-    <div label='Tab 2'>Tab 2 Content</div>
+export const main = args => (
+  <BaseComponent {...args}>
+    {Array(25)
+      .fill('')
+      .map((_, idx) => renderTab(idx))}
+  </BaseComponent>
+)
+
+export const disabled = args => (
+  <BaseComponent {...args}>
+    {Array(2)
+      .fill('')
+      .map((_, idx) => renderTab(idx))}
     <div disabled label='Tab 3 Disabled'>
       Tab 3 Disabled
     </div>
-  </Tabs>
+  </BaseComponent>
 )
 
-export const active = () => (
-  <Tabs onChange={action('change')}>
-    <div label='Tab 1'>Tab 1 Content</div>
+export const active = args => (
+  <BaseComponent {...args}>
+    {renderTab(1)}
     <div active label='Tab 2'>
       Tab 2 Content
     </div>
-    <div label='Tab 3'>Tab 3 Content</div>
-  </Tabs>
+    {renderTab(3)}
+  </BaseComponent>
+)
+
+export const initialScrollToActiveTab = args => (
+  <BaseComponent {...args}>
+    {Array(25)
+      .fill('')
+      .map((_, idx) => renderTab(idx, 23))}
+  </BaseComponent>
 )
