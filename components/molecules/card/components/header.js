@@ -7,22 +7,24 @@ import { oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { CONTEXT } from '../../../'
+import { CONTEXT, shadeLinearRgb } from '../../../'
 
 export const CardHeader = ({ content, context, align }) => {
-  return <StyledHeader context={context}>{content}</StyledHeader>
+  return (
+    <StyledHeader align={align} context={context}>
+      {content}
+    </StyledHeader>
+  )
 }
 
 const StyledHeader = styled.h2`
-  background-color: ${({ context, theme }) => theme.COLOUR[context]};
+  background-color: ${({ context, theme }) => shadeLinearRgb(0.8, theme.COLOUR[context])};
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem 0.25rem 0 0;
-  color: ${({ context, theme }) =>
-    context === 'light' || context === 'white' ? theme.COLOUR.dark : theme.COLOUR.white};
+  color: ${({ context, theme }) => theme.COLOUR[context]};
   font-size: 1.25rem;
   margin: 0;
   padding: 0.75rem 0.5rem;
-  text-align: center;
+  text-align: ${({ align }) => align};
 `
 
 CardHeader.propTypes = {
