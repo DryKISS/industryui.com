@@ -114,7 +114,6 @@ Link.propTypes = {
 Link.defaultProps = {
   border: true,
   replace: false,
-  initial: false,
   scroll: true,
   shallow: false
 }
