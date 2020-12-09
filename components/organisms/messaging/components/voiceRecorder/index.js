@@ -33,26 +33,27 @@ export const VoiceRecorder = props => {
   }, [])
 
   const handleStartRecord = () => {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-      recorder.current = new window.MediaRecorder(stream)
-      // Set record to <audio> when recording will be finished
-      recorder.current.addEventListener('dataavailable', e => {
-        if (canSendData.current === true) {
-          setTimeout(() => {
-            MessagingCommunicationService.send({
-              name: MessageNames.Messaging.MESSAGING_ACTION,
-              payload: { action: MessagingActions.SET_RECORDED_VOICE, data: e.data }
-            })
-          }, 200)
-        } else {
-          canSendData.current = true
-        }
-      })
+    window &&
+      window.navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        recorder.current = new window.MediaRecorder(stream)
+        // Set record to <audio> when recording will be finished
+        recorder.current.addEventListener('dataavailable', e => {
+          if (canSendData.current === true) {
+            setTimeout(() => {
+              MessagingCommunicationService.send({
+                name: MessageNames.Messaging.MESSAGING_ACTION,
+                payload: { action: MessagingActions.SET_RECORDED_VOICE, data: e.data }
+              })
+            }, 200)
+          } else {
+            canSendData.current = true
+          }
+        })
 
-      // Start recording
-      recorder.current.start()
-      setisRecording(true)
-    })
+        // Start recording
+        recorder.current.start()
+        setisRecording(true)
+      })
   }
 
   const handleStopRecord = () => {

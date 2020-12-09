@@ -86,7 +86,6 @@ const StyledButton = styled.button`
   vertical-align: middle;
   white-space: nowrap;
   margin: ${({ centre }) => (centre ? 'auto' : 0)};
-  padding: ${({ theme, noPadding }) => (noPadding ? '0' : theme.SPACING(3, 6))};
   width: ${({ block }) => (block ? '100%' : 'initial')};
   ${({ disabled }) =>
     disabled &&
@@ -140,6 +139,12 @@ const StyledButton = styled.button`
   ${theme => DIMENSION(theme)}
   ${theme => DISPLAY(theme)}
   ${theme => SPACER(theme)}
+   ${({ theme, noPadding }) =>
+     noPadding &&
+     css`
+       padding: 0;
+     `}
+
 `
 
 const StyledContent = styled.div`
