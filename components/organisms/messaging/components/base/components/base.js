@@ -19,8 +19,9 @@ import {
   MessagingAudioPlayer,
   MessagingEditor,
   Preview,
-  Row
-} from '../../../../../'
+  Row,
+  TranslationService
+} from 'components'
 
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
@@ -53,11 +54,37 @@ export const MessageBase = ({
   type,
   voice
 }) => {
-  const [editorState, seteditorState] = useState(
+  const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
+
+  const [showingTranslation, setShowingTranslation] = useState(false)
+
+  const toggleTranslation = async () => {
+    if (!showingTranslation) {
+      let plainText
+      if (content.blocks) {
+        plainText = content.blocks
+          .map(block => (!block.text.trim() && '\n') || block.text)
+          .join('\n')
+      } else {
+        plainText = content
+      }
+      const { response } = await TranslationService.translate(plainText)
+      setEditorState(EditorState.createWithContent(ContentState.createFromText(response)))
+      setShowingTranslation(true)
+    } else {
+      setEditorState(
+        EditorState.createWithContent(
+          content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
+        )
+      )
+      setShowingTranslation(false)
+    }
+  }
+
   return (
     <MessageWrapper>
       <StyledCard type={type}>
@@ -94,7 +121,7 @@ export const MessageBase = ({
 
               <MessagingEditor
                 plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
-                onChange={e => seteditorState(e)}
+                onChange={e => setEditorState(e)}
                 editorState={editorState}
                 readOnly
               />
@@ -107,6 +134,9 @@ export const MessageBase = ({
             </Column>
           )}
         </Row>
+        <TranslatorWrapper onClick={toggleTranslation}>
+          {showingTranslation ? 'Show Original' : 'Show Translation'}
+        </TranslatorWrapper>
         {attachments && attachments.length > 0 && (
           <AttachmentsContainer>
             {Array.from(attachments).map((item, index) => {
@@ -125,6 +155,13 @@ export const MessageBase = ({
     </MessageWrapper>
   )
 }
+
+const TranslatorWrapper = styled.div`
+  color: ${({ theme }) => theme.COLOUR.primary};
+  cursor: pointer;
+  font-size: 0.75rem;
+`
+
 const MenuWrapper = styled.div`
   cursor: pointer;
   display: flex;

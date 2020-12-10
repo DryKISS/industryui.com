@@ -26,8 +26,9 @@ export const messages = [
   },
   {
     avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
-    content:
-      'Hiya this is a message adding "Read more " where we are expecting a PPM scheduled maintenance check on our LED lightbulbs throughout the third floor of XYZ Company offices today.\n  Would appreciate a timely response on this so we can sort out security. \n Text hidden by See More',
+    content: `Hola, este es un mensaje que agrega "Leer más" en el que esperamos una revisión de mantenimiento programada de PPM en nuestras bombillas LED en el tercer piso de las oficinas de XYZ Company hoy. \n
+      Agradecería una respuesta oportuna sobre esto para que podamos solucionar la seguridad. \n
+     Texto oculto por Ver más`,
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 1,
@@ -99,7 +100,7 @@ export const messages = [
     type: 'out'
   },
   {
-    content: 'Job complete.',
+    content: 'Trabajo completado.',
     icon: 'notification',
     id: 7,
     from: 'System message',
