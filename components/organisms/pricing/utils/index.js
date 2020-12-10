@@ -1,4 +1,4 @@
-import { LAYOUTS } from 'components'
+import { LAYOUTS } from '../../../'
 
 export const priceLayoutSizes = layout => {
   switch (layout) {
