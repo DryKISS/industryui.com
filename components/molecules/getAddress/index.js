@@ -19,7 +19,7 @@ import {
   SIZE,
   ConfigContext,
   validatorPostCode
-} from 'components'
+} from '../../'
 
 import styled, { css } from 'styled-components'
 

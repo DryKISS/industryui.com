@@ -14,8 +14,8 @@ import {
 } from 'components/services'
 
 import { PaperPlane } from './paperPlane'
-
 import { convertToRaw } from 'draft-js'
+
 // UI
 import {
   AudioWrapper,
@@ -28,7 +28,7 @@ import {
   MessagingInput,
   MessagingAudioPlayer,
   useComponentCommunication
-} from 'components'
+} from '../../../../'
 
 // Style
 import styled from 'styled-components'

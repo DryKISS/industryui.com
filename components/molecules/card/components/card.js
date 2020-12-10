@@ -27,7 +27,6 @@ export const Card = ({
   footerContext,
   header,
   headerAlign,
-  headerContext,
   icon,
   image,
   rounded,

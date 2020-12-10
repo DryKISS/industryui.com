@@ -1,11 +1,18 @@
+/**
+ * Components - Messaging
+ */
+
 import createEmojiPlugin from 'draft-js-emoji-plugin'
 import { createHashtagPlugin } from './hashtag'
-import { LinkPluginComponent } from 'components'
+
+import { LinkPluginComponent } from '../../../'
+
 import createMentionPlugin from 'draft-js-mention-plugin'
 import Editor from 'draft-js-plugins-editor'
 import createLinkifyPlugin from 'draft-js-linkify-plugin'
 
 export const linkifyPlugin = createLinkifyPlugin({
+  target: '_blank',
   component: props => <LinkPluginComponent {...props} />
 })
 

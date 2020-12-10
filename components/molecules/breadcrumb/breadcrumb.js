@@ -7,7 +7,7 @@
 import { oneOf, oneOfType, string } from 'prop-types'
 
 // Fontawesome
-import { Icon, Link, SIZE } from 'components'
+import { Icon, Link, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 
 // UI
 import { DetailsPropTypes, DetailsDefaultProps } from './props'
-import { DetailsSubscriber, MessageNames, SIZE, Text, useComponentCommunication } from 'components'
+import { DetailsSubscriber, MessageNames, SIZE, Text, useComponentCommunication } from '../../'
 
 // Style
 import styled from 'styled-components'

@@ -4,7 +4,7 @@
 
 // Style
 import { css } from 'styled-components'
-import { SIZE } from 'components'
+import { SIZE } from '../../'
 
 export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
   return css`

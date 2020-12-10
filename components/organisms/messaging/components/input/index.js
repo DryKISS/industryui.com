@@ -1,8 +1,14 @@
+/**
+ * Components - Messaging
+ */
+
+// React
 import { useState, useRef } from 'react'
 
-// UI
+// Style
 import styled from 'styled-components'
 
+// UI
 import {
   COMMON_INPUT_STYLES,
   MentionSuggestions,
@@ -12,7 +18,7 @@ import {
   messagingPlugins,
   MessagingSubscriber,
   useComponentCommunication
-} from 'components'
+} from '../../../../'
 
 import { EditorState } from 'draft-js'
 import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
