@@ -1,15 +1,29 @@
 // React
-import { memo, useState } from 'react'
+import { memo } from 'react'
 
 // UI
 import styled, { css } from 'styled-components'
 import { Page } from 'react-pdf'
 import { Document } from 'react-pdf/dist/esm/entry.webpack'
+import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
+
+const imageFormats = ['.jpg', '.jpeg', '.png']
+
+const isImage = src => {
+  let isIt = false
+  for (const format of imageFormats) {
+    if (src.includes(format)) {
+      isIt = true
+      break
+    }
+  }
+  return isIt
+}
 
 const fileType = source => {
   if (source) {
     const src = source.toLowerCase()
-    if (src.includes('.jpg') || src.includes('.jpeg') || src.includes('.png')) {
+    if (isImage(src)) {
       return 'image'
     } else if (src.includes('.pdf')) {
       return 'pdf'
@@ -26,11 +40,28 @@ const source = file => {
   return file.src ?? URL.createObjectURL(file)
 }
 export const Preview = memo(
-  ({ file, imageStyles, onClick, placeHolderImageUrl, showName, small, message }) => {
-    const [numPages, setNumPages] = useState(null)
-
+  ({
+    file,
+    imageStyles,
+    onClick,
+    placeHolderImageUrl,
+    showName,
+    showPagesNumber,
+    small,
+    message
+  }) => {
     const onDocumentLoadSuccess = ({ numPages }) => {
-      setNumPages(numPages)
+      showPagesNumber &&
+        MessagingCommunicationService.send({
+          name: MessageNames.Messaging.MESSAGING_ACTION,
+          payload: {
+            action: MessagingActions.SET_DOCUMENT_INFO,
+            data: {
+              name: file?.name,
+              pagesNumber: numPages
+            }
+          }
+        })
     }
 
     const src = source(file)
@@ -42,7 +73,6 @@ export const Preview = memo(
         <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
           <Page pageNumber={1} />
         </Document>
-        <p>{numPages} pages</p>
       </PdfWrapper>
     ) : (
       <PlaceHolder>

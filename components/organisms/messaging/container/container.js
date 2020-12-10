@@ -76,7 +76,10 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: Files }
     })
-    setIsDragHoverOpen(false)
+    setIsDragHoverOpen(() => false)
+    setTimeout(() => {
+      setFiles(files => [])
+    }, 500)
   }
 
   const handleMessageRecieved = () => {
