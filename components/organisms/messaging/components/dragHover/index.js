@@ -1,9 +1,22 @@
+// React
+import { useEffect, useState } from 'react'
+
 // UI
 import styled, { css } from 'styled-components'
 
 import { Button, Close, Preview, Space, Text } from 'components'
 
 export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
+  const [selectedFile, setselectedFile] = useState(null)
+
+  const onFileClick = file => {
+    setselectedFile(file)
+  }
+
+  useEffect(() => {
+    setselectedFile(files[files.length - 1])
+  }, [files.length])
+
   return (
     <Wrapper open={isOpen}>
       <ContentWrapper>
@@ -14,7 +27,7 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
           </Space>
         </Head>
         <LastFilePreviewContainer visible={files.length > 0}>
-          {files.length > 0 && <Preview file={files[files.length - 1]} showName />}
+          {selectedFile && <Preview file={selectedFile} showName />}
         </LastFilePreviewContainer>
         {!files[0] && (
           <DragFilesHereContainer>
@@ -29,14 +42,14 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
           </StyledSendButton>
         </SendButtonContainer>
         <PreviewContainer>
-          {files.length > 0 &&
+          {selectedFile &&
             files.map((item, index) => {
               return (
                 <BottomPreviewContainer key={index}>
                   <RemoveContainer>
                     <Close click={() => handleRemoveFile(index)} context='white' />
                   </RemoveContainer>
-                  <Preview file={item} />
+                  <Preview onClick={() => onFileClick(item)} file={item} small />
                 </BottomPreviewContainer>
               )
             })}
@@ -77,6 +90,7 @@ const RemoveContainer = styled.div`
   transition: opacity 0.3s;
   top: -12px;
   width: 26px;
+  z-index: 1;
 `
 const PreviewContainer = styled.div`
   align-items: center;
@@ -92,7 +106,7 @@ const PreviewContainer = styled.div`
 `
 
 const BottomPreviewContainer = styled.div`
-  border: 1px solid ${({ theme }) => theme.COLOUR.blackGrey};
+  border: 2px solid ${({ theme }) => theme.COLOUR.blackGrey};
   box-sizing: content-box;
   margin: 0 0.25rem;
   position: relative;

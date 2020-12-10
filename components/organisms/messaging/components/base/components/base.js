@@ -114,6 +114,7 @@ export const MessageBase = ({
                   <Preview
                     imageStyles={{ minHeight: '10rem', height: '10rem', width: 'unset' }}
                     file={item}
+                    message
                   />
                 </SingleAttachment>
               )
