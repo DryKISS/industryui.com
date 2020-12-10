@@ -19,7 +19,8 @@ import {
   MessagingAudioPlayer,
   MessagingEditor,
   Preview,
-  Row
+  Row,
+  TranslationService
 } from 'components'
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
@@ -61,29 +62,26 @@ export const MessageBase = ({
   const [showingTranslation, setshowingTranslation] = useState(false)
 
   const toggleTranslation = async () => {
-    /// / remove comments till
-    // if (!showingTranslation) {
-    //   let plainText
-    //   if (content.blocks) {
-    //     plainText = content.blocks
-    //       .map(block => (!block.text.trim() && '\n') || block.text)
-    //       .join('\n')
-    //   } else {
-    //     plainText = content
-    //   }
-    //   const Translated = await TranslationService.translateText(plainText)
-    //   seteditorState(EditorState.createWithContent(ContentState.createFromText(Translated)))
-    //   setshowingTranslation(true)
-    // } else {
-    //   seteditorState(
-    //     EditorState.createWithContent(
-    //       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
-    //     )
-    //   )
-    //   setshowingTranslation(false)
-    // }
-    /// here!
-    setshowingTranslation(!showingTranslation)
+    if (!showingTranslation) {
+      let plainText
+      if (content.blocks) {
+        plainText = content.blocks
+          .map(block => (!block.text.trim() && '\n') || block.text)
+          .join('\n')
+      } else {
+        plainText = content
+      }
+      const { response } = await TranslationService.translate(plainText)
+      seteditorState(EditorState.createWithContent(ContentState.createFromText(response)))
+      setshowingTranslation(true)
+    } else {
+      seteditorState(
+        EditorState.createWithContent(
+          content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
+        )
+      )
+      setshowingTranslation(false)
+    }
   }
 
   return (
