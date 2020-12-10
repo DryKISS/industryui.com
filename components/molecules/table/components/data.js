@@ -1,17 +1,11 @@
 /**
- * Table Data (td)
+ * Components - Molecules - Table - Data
  */
 
 // Style
 import styled from 'styled-components'
 
-export const TableData = props => {
-  return <StyledTd {...props} />
-}
-
-TableData.propTypes = {}
-
-const StyledTd = styled.td`
+export const TableData = styled.td`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => align && 'center'};

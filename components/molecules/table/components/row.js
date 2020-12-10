@@ -8,14 +8,9 @@ import { BACKGROUND } from '../../../'
 // Style
 import styled, { css } from 'styled-components'
 
-export const TableRow = props => {
-  return <StyledTr {...props} />
-}
-
-TableRow.propTypes = {}
-
-const StyledTr = styled.tr`
+export const TableRow = styled.tr`
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
+
   ${({ context, striped, theme }) =>
     !context &&
     striped &&

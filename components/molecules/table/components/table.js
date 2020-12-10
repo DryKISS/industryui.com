@@ -194,9 +194,9 @@ export const Table = ({
 }
 
 const StyledWrapper = styled.div`
-  width: 100%;
   ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%;'}
   position: relative;
+  width: 100%;
   ${({ isLoading }) =>
     isLoading &&
     css`
@@ -207,8 +207,8 @@ const StyledWrapper = styled.div`
 const StyledResponsive = styled.div`
   background-color: #fff;
   display: block;
-  width: 100%;
   overflow-x: auto;
+  width: 100%;
 `
 
 const StyledTable = styled.table`

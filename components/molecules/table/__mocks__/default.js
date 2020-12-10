@@ -1,9 +1,6 @@
 /**
- * Mocks
+ * Components - Molecules - Table - Mock
  */
-
-// Next
-import Router from 'next/router'
 
 // UI
 import { Image, TableActions, TableLink } from '../../../'
@@ -190,8 +187,4 @@ export const rowsContext = {
       actions: ''
     }
   ]
-}
-
-export const rowClick = row => {
-  Router.push('/shortcodes/[addressId]', '/shortcodes/1')
 }

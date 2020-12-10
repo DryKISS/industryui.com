@@ -28,7 +28,6 @@ export const Card = ({
   headerContext,
   header,
   headerAlign,
-  headerContext,
   icon,
   image,
   rounded,
@@ -124,5 +123,4 @@ const StyledIcon = styled(Icon)`
 `
 
 Card.propTypes = CardPropTypes
-
 Card.defaultProps = CardDefaultProps

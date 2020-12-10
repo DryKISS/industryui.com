@@ -1,5 +1,5 @@
 /**
- * Table
+ * Components - Molecules - Table - Story
  */
 
 // UI
@@ -12,7 +12,6 @@ import {
   columnsActions,
   columnsFormatter,
   noCols,
-  rowClick,
   rows,
   rowsContext
 } from '../__mocks__/default'
@@ -43,6 +42,10 @@ export default {
     }
   },
   title: 'Molecules/Table'
+}
+
+const rowClick = row => {
+  console.log('er')
 }
 
 const BaseComponent = (props = {}) => {
