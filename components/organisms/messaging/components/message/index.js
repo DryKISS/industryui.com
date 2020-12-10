@@ -65,6 +65,9 @@ const RowWrapper = styled.div`
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;
   margin-bottom: 0.5rem;
+  div {
+    background: ${({ theme: { MESSAGING } }) => MESSAGING.avatarBackground};
+  }
 `
 Message.propTypes = {
   message: object.isRequired,
