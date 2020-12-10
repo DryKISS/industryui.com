@@ -57,6 +57,35 @@ export const MessageBase = ({
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
+
+  const [showingTranslation, setshowingTranslation] = useState(false)
+
+  const toggleTranslation = async () => {
+    /// / remove comments till
+    // if (!showingTranslation) {
+    //   let plainText
+    //   if (content.blocks) {
+    //     plainText = content.blocks
+    //       .map(block => (!block.text.trim() && '\n') || block.text)
+    //       .join('\n')
+    //   } else {
+    //     plainText = content
+    //   }
+    //   const Translated = await TranslationService.translateText(plainText)
+    //   seteditorState(EditorState.createWithContent(ContentState.createFromText(Translated)))
+    //   setshowingTranslation(true)
+    // } else {
+    //   seteditorState(
+    //     EditorState.createWithContent(
+    //       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
+    //     )
+    //   )
+    //   setshowingTranslation(false)
+    // }
+    /// here!
+    setshowingTranslation(!showingTranslation)
+  }
+
   return (
     <MessageWrapper>
       <StyledCard type={type}>
@@ -106,6 +135,9 @@ export const MessageBase = ({
             </Column>
           )}
         </Row>
+        <TranslatorWrapper onClick={toggleTranslation}>
+          {showingTranslation ? 'Show Original' : 'Show Translation'}
+        </TranslatorWrapper>
         {attachments && attachments.length > 0 && (
           <AttachmentsContainer>
             {Array.from(attachments).map((item, index) => {
@@ -124,6 +156,13 @@ export const MessageBase = ({
     </MessageWrapper>
   )
 }
+
+const TranslatorWrapper = styled.div`
+  color: ${({ theme }) => theme.COLOUR.primary};
+  cursor: pointer;
+  font-size: 0.75rem;
+`
+
 const MenuWrapper = styled.div`
   cursor: pointer;
   display: flex;
