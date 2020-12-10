@@ -1,5 +1,12 @@
+/**
+ * Components - Pricing
+ */
+
+// Style
 import styled, { css } from 'styled-components'
-import { Icon, LAYOUTS, priceLayoutSizes, Text } from 'components'
+
+// UI
+import { Icon, LAYOUTS, priceLayoutSizes, Text } from '../../../'
 
 export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}

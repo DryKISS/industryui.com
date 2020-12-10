@@ -2,23 +2,44 @@
  * Tab
  */
 
+// React
+import { useEffect, useRef } from 'react'
+
 import { bool, func, oneOfType, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Tab = ({ activeTab, childClick, context, disabled, label, onClick }) => {
-  const handleClick = () => {
+export const Tab = ({
+  activeTab,
+  childClick,
+  context,
+  disabled,
+  label,
+  onClick,
+  scrollToActiveTab
+}) => {
+  const tabRef = useRef(null)
+  const isActive = activeTab === label
+
+  useEffect(() => {
+    if (scrollToActiveTab && tabRef.current) {
+      tabRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' })
+    }
+  }, [isActive])
+
+  const handleClick = e => {
     onClick(label)
     childClick && childClick()
   }
 
   return (
     <StyledTab
-      active={activeTab === label}
+      active={isActive}
       context={context}
       disabled={disabled}
       onClick={handleClick}
+      ref={isActive && scrollToActiveTab ? tabRef : null}
     >
       {label}
     </StyledTab>
@@ -50,7 +71,7 @@ const StyledTab = styled.li`
     disabled &&
     css`
       background-color: ${theme.TABS.disabledColour};
-      cursor: no-drop;
+      cursor: not-allowed;
     `}
 
   &:hover {
@@ -79,6 +100,7 @@ const StyledTab = styled.li`
     border-right: 0px;
   }
 
+  min-width: fit-content;
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;

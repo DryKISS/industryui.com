@@ -6,7 +6,7 @@
 import { string } from 'prop-types'
 
 // UI
-import { Text } from 'components'
+import { Text } from '../../'
 
 export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
   <address>

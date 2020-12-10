@@ -7,11 +7,15 @@ import { useEffect, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
 import { Carouselnav } from './nav'
 import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination, revert, ResizeDetector } from 'components'
+import { Icon, Pagination, revert, ResizeDetector } from '../../../'
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
+
 let interval
+
 export const Carousel = ({
   navContext,
   navPosition,

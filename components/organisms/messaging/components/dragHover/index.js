@@ -1,7 +1,12 @@
-// UI
+/**
+ * Components - Messaging
+ */
+
+// Style
 import styled, { css } from 'styled-components'
 
-import { Button, Close, Preview, Space, Text } from 'components'
+// UI
+import { Button, Close, Preview, Space, Text } from '../../../../'
 
 export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   return (
@@ -65,14 +70,18 @@ const SendButtonContainer = styled.div`
 
 const RemoveContainer = styled.div`
   align-items: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: ${({ theme }) => theme.COLOUR.info};
+  border: 2px solid ${({ theme }) => theme.COLOUR.info};
+  border-radius: 50px;
   display: flex;
-  height: 100%;
+  height: 26px;
   justify-content: center;
   opacity: 0;
   position: absolute;
+  right: -15px;
   transition: opacity 0.3s;
-  width: 100%;
+  top: -12px;
+  width: 26px;
 `
 const PreviewContainer = styled.div`
   align-items: center;
@@ -88,11 +97,15 @@ const PreviewContainer = styled.div`
 `
 
 const BottomPreviewContainer = styled.div`
-  border: 0.25rem solid ${({ theme }) => theme.COLOUR.white};
+  border: 1px solid ${({ theme }) => theme.COLOUR.blackGrey};
+  box-sizing: content-box;
   margin: 0 0.25rem;
   position: relative;
   width: 4rem;
+  transition-property: border-color;
+  transition-duration: 0.3s;
   &:hover {
+    border: 2px solid ${({ theme }) => theme.COLOUR.info};
     ${RemoveContainer} {
       opacity: 1;
     }
@@ -118,6 +131,8 @@ const DragFilesHereContainer = styled(CenterContainer)`
   border: 0.25rem dashed;
 `
 const LastFilePreviewContainer = styled(CenterContainer)`
+  border-radius: 9px;
+  border: 1px solid;
   opacity: 0;
   overflow: hidden;
   transform: scale(0.5);
@@ -136,7 +151,7 @@ const Head = styled.div`
   display: flex;
   height: 3rem;
   padding: 0 1.25rem;
-  background-color: ${({ theme }) => theme.COLOUR[theme.MESSAGING.HEADER_BACKGROUND_COLOUR]};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.dropableHeaderBackground};
 `
 const Wrapper = styled.div`
   height: 100%;

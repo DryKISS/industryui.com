@@ -1,18 +1,24 @@
+/**
+ * Components - Messaging
+ */
+
+// React
 import { useState, useRef } from 'react'
 
-// UI
+// Style
 import styled from 'styled-components'
 
+// UI
 import {
-  EmojiSuggestions,
-  EmojiSelect,
+  COMMON_INPUT_STYLES,
   MentionSuggestions,
   MessageNames,
+  MessagingActions,
   MessagingEditor,
   messagingPlugins,
   MessagingSubscriber,
   useComponentCommunication
-} from 'components'
+} from '../../../../'
 
 import { EditorState } from 'draft-js'
 import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
@@ -26,7 +32,6 @@ export const MessagingInput = ({ mentions, onChange }) => {
 
   // Check editor text for mentions
   const onSearchChange = ({ value }) => {
-    console.log(value, mentions)
     setSuggestions(defaultSuggestionsFilter(value, mentions))
   }
 
@@ -44,11 +49,20 @@ export const MessagingInput = ({ mentions, onChange }) => {
     setEditorState(e)
   }
 
+  const onActionRecieved = payload => {
+    switch (payload.action) {
+      case MessagingActions.CLEAR_INPUT:
+        setEditorState(EditorState.createEmpty())
+        break
+
+      default:
+        break
+    }
+  }
+
   useComponentCommunication({
-    messageName: MessageNames.Messaging.CLEAR_INPUT,
-    onRecieve: () => {
-      setEditorState(EditorState.createEmpty())
-    },
+    messageName: MessageNames.Messaging.MESSAGING_ACTION,
+    onRecieve: onActionRecieved,
     subscriber: MessagingSubscriber
   })
 
@@ -61,8 +75,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
           suggestions={suggestions}
         />
       )}
-      <EmojiSuggestions />
-      <EmojiSelect />
+
       <MessagingEditor
         editorState={editorState}
         onChange={handleChange}
@@ -73,21 +86,14 @@ export const MessagingInput = ({ mentions, onChange }) => {
     </Wrapper>
   )
 }
+
 const Wrapper = styled.div`
   [class*='mentionSuggestions'] {
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
-  [class*='emojiSelectPopover_'] {
-    top: -400px;
-  }
-  [class*='emojiSuggestions'] {
-    top: -350px !important;
-  }
-  background-color: ${({ theme }) => theme.COLOUR.light};
-  border: ${({ theme }) => theme.COLOUR.light};
-  border-radius: 1rem;
-  line-height: 1.5;
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.5rem;
-  width: 100%;
+  ${props => COMMON_INPUT_STYLES(props)}
+font-size:${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
+  width: calc(100% - 8rem);
+  max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
+  overflow-y: auto;
 `

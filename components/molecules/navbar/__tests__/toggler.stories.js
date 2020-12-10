@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Toggler } from 'components'
+import { Toggler } from '../../../'
 import { BaseComponent } from './baseComponent'
 import Readme from '../README.md'
 

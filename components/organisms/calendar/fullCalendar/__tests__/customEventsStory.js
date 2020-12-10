@@ -15,7 +15,7 @@ import {
   FormField,
   CheckboxField,
   useForm
-} from 'components'
+} from '../../../../'
 
 import { BaseComponent } from './stories'
 

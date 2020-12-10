@@ -6,7 +6,7 @@
 import { useContext } from 'react'
 
 // UI
-import { ConfigContext, Navbar } from 'components'
+import { ConfigContext, Navbar } from '../../../'
 import { Dashboard } from '../__mocks__/navbar'
 
 export const options = {

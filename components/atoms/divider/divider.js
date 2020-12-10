@@ -4,8 +4,7 @@
 
 // UI
 import { DividerPropTypes, DividerDefaultProps } from './props'
-
-import { SIZE } from 'components'
+import { SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
