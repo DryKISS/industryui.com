@@ -6481,6 +6481,7 @@ var LINK = {
 };
 
 var MESSAGING = {
+  avatarBackground: COLOUR$1.primary,
   audioAndVolumeProgressColour: COLOUR$1.info,
   audioControllersColour: COLOUR$1.primary,
   containerBackground: COLOUR$1.grey,
@@ -15226,7 +15227,6 @@ var Card = function Card(_ref) {
       deck = _ref.deck,
       footer = _ref.footer,
       footerContext = _ref.footerContext,
-      headerContext = _ref.headerContext,
       header = _ref.header,
       headerAlign = _ref.headerAlign,
       icon = _ref.icon,
@@ -22320,7 +22320,10 @@ var RowWrapper = styled.div.withConfig({
 var AvatarWrapper = styled.div.withConfig({
   displayName: "message__AvatarWrapper",
   componentId: "sc-5iqhvt-3"
-})(["margin:0 0.5rem;margin-bottom:0.5rem;"]);
+})(["margin:0 0.5rem;margin-bottom:0.5rem;div{background:", ";}"], function (_ref3) {
+  var MESSAGING = _ref3.theme.MESSAGING;
+  return MESSAGING.avatarBackground;
+});
 Message.propTypes = {
   message: propTypes.object.isRequired,
   prevType: propTypes.string.isRequired
