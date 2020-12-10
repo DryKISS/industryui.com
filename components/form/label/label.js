@@ -7,7 +7,7 @@ import { bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { Space, Text } from 'components'
+import { Space, Text } from '../../'
 
 export const FormLabel = ({ children, id, label, show, size }) => {
   return (

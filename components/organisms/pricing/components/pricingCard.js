@@ -1,7 +1,12 @@
-// UI
+/**
+ * Components - Pricing
+ */
+
+// Style
 import styled from 'styled-components'
 
-import { Icon, priceLayoutSizes, Text } from 'components'
+// UI
+import { Icon, priceLayoutSizes, Text } from '../../../'
 
 export const PricingCard = ({ data, layout, onCardSelect }) => {
   const { checkList, recommended, price } = data

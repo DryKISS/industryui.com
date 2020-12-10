@@ -1,7 +1,12 @@
-// UI
+/**
+ * Components - Messaging
+ */
+
+// Style
 import styled, { css } from 'styled-components'
 
-import { Button, Close, Preview, Space, Text } from 'components'
+// UI
+import { Button, Close, Preview, Space, Text } from '../../../../'
 
 export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   return (

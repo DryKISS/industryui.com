@@ -7,7 +7,7 @@ import { memo, useRef, useState } from 'react'
 import { array } from 'prop-types'
 
 // UI
-import { Message, useComponentCommunication } from 'components'
+import { Message, useComponentCommunication } from '../../../../'
 import { MessageNames, MessagingSubscriber, MessagingActions } from 'components/services'
 import styled, { css } from 'styled-components'
 

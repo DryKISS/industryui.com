@@ -20,7 +20,8 @@ import {
   MessagingEditor,
   Preview,
   Row
-} from 'components'
+} from '../../../../../'
+
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
 import { MenuIcon } from './menuIcon'

@@ -8,8 +8,9 @@ import styled from 'styled-components'
 import { object, string } from 'prop-types'
 import { ReplyIcon } from './replyIcon'
 import { ShareIcon } from './shareIcon'
+
 // UI
-import { Avatar, MessageBase } from 'components'
+import { Avatar, MessageBase } from '../../../../'
 
 export const Message = memo(
   ({ message, prevType, type, ...props }) => {

@@ -1,9 +1,17 @@
+/**
+ * Components - Messaging
+ */
+
 // React
 import { useEffect, useRef, useState } from 'react'
-import { MessageNames, MessagingCommunicationService, MessagingActions } from 'components/services'
+
+// Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { MessageNames, MessagingCommunicationService, MessagingActions } from 'components/services'
 import { Microphone } from './microphone'
-import { Close, Text } from 'components'
+import { Close, Text } from '../../../../'
 
 let AudioRecorder
 let mpegEncoder

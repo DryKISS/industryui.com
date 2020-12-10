@@ -7,7 +7,7 @@ import { string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { SIZE, Space } from 'components'
+import { SIZE, Space } from '../../'
 
 export const FormError = ({ message, colour, ...props }) => {
   return (

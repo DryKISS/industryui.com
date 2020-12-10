@@ -9,7 +9,7 @@ import draftToHtml from 'draftjs-to-html'
 
 // UI
 import styled, { css } from 'styled-components'
-import { COMMON_INPUT_STYLES, ERROR_STYLE } from 'components'
+import { COMMON_INPUT_STYLES, ERROR_STYLE } from '../../'
 
 export const RichTextInput = ({ control, errors, initialValue, name }) => {
   const editor = useRef(null)

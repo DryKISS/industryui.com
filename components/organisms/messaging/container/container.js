@@ -4,7 +4,6 @@
 
 // React
 import { useState } from 'react'
-
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
@@ -15,7 +14,7 @@ import {
   MessagingSearch,
   MessagingSend,
   useComponentCommunication
-} from 'components'
+} from '../../../'
 
 import {
   MessageNames,
