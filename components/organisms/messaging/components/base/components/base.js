@@ -54,13 +54,13 @@ export const MessageBase = ({
   type,
   voice
 }) => {
-  const [editorState, seteditorState] = useState(
+  const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
 
-  const [showingTranslation, setshowingTranslation] = useState(false)
+  const [showingTranslation, setShowingTranslation] = useState(false)
 
   const toggleTranslation = async () => {
     if (!showingTranslation) {
@@ -73,15 +73,15 @@ export const MessageBase = ({
         plainText = content
       }
       const { response } = await TranslationService.translate(plainText)
-      seteditorState(EditorState.createWithContent(ContentState.createFromText(response)))
-      setshowingTranslation(true)
+      setEditorState(EditorState.createWithContent(ContentState.createFromText(response)))
+      setShowingTranslation(true)
     } else {
-      seteditorState(
+      setEditorState(
         EditorState.createWithContent(
           content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
         )
       )
-      setshowingTranslation(false)
+      setShowingTranslation(false)
     }
   }
 
@@ -121,7 +121,7 @@ export const MessageBase = ({
 
               <MessagingEditor
                 plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
-                onChange={e => seteditorState(e)}
+                onChange={e => setEditorState(e)}
                 editorState={editorState}
                 readOnly
               />
