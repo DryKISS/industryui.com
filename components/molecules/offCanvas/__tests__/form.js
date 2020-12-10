@@ -6,7 +6,7 @@
 import { object, string } from 'yup'
 
 // UI
-import { Form, FormField, FormLabel, useForm, yupResolver } from 'components'
+import { Form, FormField, FormLabel, useForm, yupResolver } from '../../../'
 
 export const OffCanvasForm = ({ onSubmit }) => {
   const schema = object().shape({

@@ -7,8 +7,7 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Adornment, arrayOfValues, InputDecorationTypes, SIZE, Space, Text } from 'components'
-
+import { Adornment, arrayOfValues, InputDecorationTypes, SIZE, Space, Text } from '../../'
 import { COLOUR } from 'components/theme/variables/colour'
 
 const colourPlate = {
