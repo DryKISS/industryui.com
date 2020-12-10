@@ -1,6 +1,7 @@
 import { COLOUR } from '../../theme/variables/colour'
 
 export const MESSAGING = {
+  avatarBackground: COLOUR.primary,
   audioAndVolumeProgressColour: COLOUR.info,
   audioControllersColour: COLOUR.primary,
   containerBackground: COLOUR.grey,
