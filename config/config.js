@@ -22,6 +22,10 @@ export const GetAddressConfig = {
   apiKey: 'AG2YtZS2HEKCTOsZcDCFTg28696'
 }
 
+export const RapidApi = {
+  apiKey: '1882a05a31mshaf0342eab29f980p18a203jsna9807a52e188'
+}
+
 export const Google = {
   analytics: ''
 }
@@ -100,6 +104,7 @@ export const Config = {
   jwtConfig,
   languageNames,
   locales,
+  RapidApi,
   Sidebar,
   Translations
 }
