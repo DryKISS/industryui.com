@@ -6,6 +6,7 @@ import Editor from 'draft-js-plugins-editor'
 import createLinkifyPlugin from 'draft-js-linkify-plugin'
 
 export const linkifyPlugin = createLinkifyPlugin({
+  target: '_blank',
   component: props => <LinkPluginComponent {...props} />
 })
 

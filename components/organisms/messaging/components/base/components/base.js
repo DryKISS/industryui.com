@@ -57,9 +57,7 @@ export const MessageBase = ({
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
-  if (content.blocks) {
-    console.log(content.blocks.map(block => (!block.text.trim() && '\n') || block.text).join('\n'))
-  }
+
   return (
     <MessageWrapper>
       <StyledCard type={type}>

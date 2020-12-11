@@ -57,7 +57,7 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
         <LastFilePreviewContainer visible={files.length > 0}>
           {selectedFile && <Preview file={selectedFile} showName showPagesNumber />}
         </LastFilePreviewContainer>
-        {documentInfo.pagesNumber && (
+        {documentInfo.pagesNumber > 0 && files.length > 0 && (
           <DocumentInfoWrapper>
             <DocumentNameWrapper>
               <DocumentFileIcon pdf />
@@ -123,7 +123,7 @@ const DocumentInfoWrapper = styled.div`
   justify-content: space-between;
   padding: 0 3.5rem;
   position: absolute;
-  top: 33rem;
+  top: 27rem;
   width: 100%;
   p {
     color: ${({ theme }) => theme.COLOUR.blackText};
