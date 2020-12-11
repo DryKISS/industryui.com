@@ -15,32 +15,39 @@ import { Tab } from './tab'
 // Style
 import styled, { css } from 'styled-components'
 
-export const handleScroll = (el, grabWalkSpeed) => {
+export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   const slider = el
+  let clickTime
   let isDown = false
+  let isScrolling = false
   let startX
   let sl
 
   slider.addEventListener('mousedown', e => {
+    clickTime = e.timeStamp
     isDown = true
     startX = e.pageX - slider.offsetLeft
     sl = slider.scrollLeft
   })
   slider.addEventListener('mouseleave', () => {
     isDown = false
+    isScrolling = false
     slider.classList.remove('active')
   })
   slider.addEventListener('mouseup', () => {
     isDown = false
+    isScrolling = false
     slider.classList.remove('active')
   })
   slider.addEventListener('mousemove', e => {
-    if (!isDown) return
-    e.preventDefault()
-    slider.classList.add('active')
-    const x = e.pageX - slider.offsetLeft
-    const walk = x - startX
-    slider.scrollLeft = sl - walk + grabWalkSpeed
+    if (isScrolling || (isDown && e.timeStamp - clickTime > grabTimeout)) {
+      e.preventDefault()
+      slider.classList.add('active')
+      const x = e.pageX - slider.offsetLeft
+      const walk = x - startX
+      isScrolling = true
+      slider.scrollLeft = sl - walk + grabWalkSpeed
+    }
   })
 }
 
@@ -49,6 +56,7 @@ export const Tabs = ({
   className,
   grabbable,
   grabWalkSpeed,
+  grabTimeout,
   handleChange,
   scrollToActiveTab
 }) => {
@@ -56,7 +64,7 @@ export const Tabs = ({
   const wrapperRef = createRef()
 
   useEffect(() => {
-    if (grabbable) handleScroll(wrapperRef.current, grabWalkSpeed)
+    if (grabbable) handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
   }, [])
 
   if (!Array.isArray(children)) {
@@ -143,6 +151,7 @@ Tabs.propTypes = {
   className: string,
   grabbable: bool,
   grabWalkSpeed: number,
+  grabTimeout: number,
   handleChange: bool,
   scrollToActiveTab: bool
 }
@@ -150,6 +159,7 @@ Tabs.propTypes = {
 Tabs.defaultProps = {
   grabbable: true,
   grabWalkSpeed: 25,
+  grabTimeout: 100,
   handleChange: true,
   scrollToActiveTab: true
 }
