@@ -3,7 +3,7 @@
  */
 
 // React
-import { memo, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { array } from 'prop-types'
 
 // UI
@@ -30,19 +30,23 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
 export const MessageList = memo(
   ({ initialMessages, onMessageRecieved }) => {
     const listRef = useRef(null)
-    // const cacheRef = useRef(null)
     const widthRef = useRef(null)
     const heightRef = useRef(null)
     const [cache, setcache] = useState(
       new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
     )
-    const onRecieve = payload => {
-      const newMessagesArray = [...Messages, ...payload]
-      setMessages(() => [...newMessagesArray])
+
+    const scrollToBottom = () => {
       window &&
         window.requestAnimationFrame(() => {
           listRef.current && listRef.current.scrollToRow(Messages.length)
         })
+    }
+
+    const onRecieve = payload => {
+      const newMessagesArray = [...Messages, ...payload]
+      setMessages(() => [...newMessagesArray])
+      scrollToBottom()
     }
 
     const onRenewMessages = messages => {
@@ -55,6 +59,11 @@ export const MessageList = memo(
     }
 
     const [Messages, setMessages] = useState(initialMessages)
+
+    useEffect(() => {
+      scrollToBottom()
+      return () => {}
+    }, [Messages.length])
 
     const onAction = payload => {
       switch (payload.action) {
