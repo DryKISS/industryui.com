@@ -9,7 +9,7 @@ import { useState } from 'react'
 import moment from 'moment'
 
 // UI
-import { OffCanvas, Button, Form, FormLabel, FormField, SelectField, useForm } from 'components'
+import { OffCanvas, Button, Form, FormLabel, FormField, SelectField, useForm } from '../../../../'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
 

@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { object, string } from 'prop-types'
 import { ReplyIcon } from './replyIcon'
 import { ShareIcon } from './shareIcon'
+
 // UI
 import { Avatar, MessageBase } from 'components'
 
@@ -65,6 +66,9 @@ const RowWrapper = styled.div`
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;
   margin-bottom: 0.5rem;
+  div {
+    background: ${({ theme: { MESSAGING } }) => MESSAGING.avatarBackground};
+  }
 `
 Message.propTypes = {
   message: object.isRequired,

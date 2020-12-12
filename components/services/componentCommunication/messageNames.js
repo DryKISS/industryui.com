@@ -2,6 +2,9 @@
  * Hooks - Use Component Communication - Message Names
  */
 export const MessageNames = {
+  DetailsComponent: {
+    SET_OPEN: 'TOGGLE_OPEN'
+  },
   Messaging: {
     MESSAGING_ACTION: 'MESSAGING_ACTION'
   },

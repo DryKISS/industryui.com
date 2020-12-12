@@ -5,7 +5,7 @@ throughout our NextJS projects.
 
 It enables us to rapidly prototype any type of site at any scale.
 
-WE are making this available to the wider community to experiment with at this time.
+We are making this available to the wider community to experiment with at this time.
 
 ![](https://github.com/DryKISS/industryui.com/workflows/Lint%20IndustryUI/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
@@ -18,16 +18,7 @@ $ yarn install
 $ yarn start
 ```
 
-To develop locally we run yarn link at the root of industryUI, and the second command in the project
-where we wish to use it.
-
-```bash
-$ yarn link
-$ yarn link industry-ui
-```
-
-Currently we have to remove the node_modules directory from IndustryUI when running the parent
-project to avoid double React loading and hooks issues.
+This will start Storybook to play with the components
 
 ## Creators
 

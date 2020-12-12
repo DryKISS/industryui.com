@@ -4,7 +4,7 @@
 
 // React
 import { useState } from 'react'
-import { BarConfig, Icon } from 'components'
+import { BarConfig, Icon } from '../../../'
 
 // Style
 import styled, { css } from 'styled-components'

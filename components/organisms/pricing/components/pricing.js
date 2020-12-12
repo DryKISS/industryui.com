@@ -1,5 +1,14 @@
+/**
+ * Components - Pricing
+ */
+
+// React
 import { useEffect, useRef, useState } from 'react'
+
+// Style
 import styled, { css } from 'styled-components'
+
+// UI
 import {
   Button,
   Icon,
@@ -9,7 +18,7 @@ import {
   PricingDropdown,
   ResizeDetector,
   Text
-} from 'components'
+} from '../../../'
 
 export const Pricing = ({ pricingInfo, onPlanSelect }) => {
   const WrapperRef = useRef(null)

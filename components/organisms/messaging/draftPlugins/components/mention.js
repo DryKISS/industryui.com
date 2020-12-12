@@ -1,5 +1,12 @@
+/**
+ * Components - Messaging
+ */
+
+// Style
 import styled from 'styled-components'
-import { MessagingActions, MessagingCommunicationService, MessageNames } from 'components'
+
+// UI
+import { MessagingActions, MessagingCommunicationService, MessageNames } from '../../../../'
 
 const handleMentionClick = mentionProps => {
   MessagingCommunicationService.send({

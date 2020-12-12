@@ -1,6 +1,15 @@
-import styled, { css } from 'styled-components'
-import { ClickAwayListener, Icon, Text } from 'components'
+/**
+ * Components - Pricing
+ */
+
+// React
 import { useState } from 'react'
+
+// Style
+import styled, { css } from 'styled-components'
+
+// UI
+import { ClickAwayListener, Icon, Text } from '../../../'
 
 export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
   const [IsOpen, setIsOpen] = useState(false)

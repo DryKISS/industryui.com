@@ -15,7 +15,7 @@ import {
   MessagingSearch,
   MessagingSend,
   useComponentCommunication
-} from 'components'
+} from '../../../'
 
 import {
   MessageNames,
