@@ -27,14 +27,14 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
   )
 }
 
+const cacheConfig = { fixedWidth: true, defaultHeight: 50 }
+
 export const MessageList = memo(
   ({ initialMessages, onMessageRecieved }) => {
     const listRef = useRef(null)
     const widthRef = useRef(null)
     const heightRef = useRef(null)
-    const [cache, setcache] = useState(
-      new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
-    )
+    const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
 
     const scrollToBottom = () => {
       window &&
@@ -53,7 +53,7 @@ export const MessageList = memo(
       setMessages(() => [...messages])
       window &&
         window.requestAnimationFrame(() => {
-          setcache(() => new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+          setcache(() => new CellMeasurerCache(cacheConfig))
           listRef.current && listRef.current.scrollToRow(Messages.length)
         })
     }
@@ -95,7 +95,7 @@ export const MessageList = memo(
             heightRef.current = height
             window &&
               window.requestAnimationFrame(() => {
-                setcache(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+                setcache(new CellMeasurerCache(cacheConfig))
               })
           }
           return (

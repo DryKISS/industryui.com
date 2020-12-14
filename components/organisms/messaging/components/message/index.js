@@ -3,7 +3,7 @@
  */
 
 // React
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import styled from 'styled-components'
 import { object, string } from 'prop-types'
 import { ReplyIcon } from './replyIcon'
@@ -11,6 +11,7 @@ import { ShareIcon } from './shareIcon'
 
 // UI
 import { Avatar, MessageBase } from 'components'
+import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
 
 export const Message = memo(
   ({ message, prevType, type, ...props }) => {
@@ -19,11 +20,21 @@ export const Message = memo(
     ) : (
       <Avatar size='xxs' content={message.from[0]} />
     )
+    const handleReplyClick = () => {
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: {
+          action: MessagingActions.REPLY_MESSAGE,
+          data: message
+        }
+      })
+    }
 
+    const [hovered, sethovered] = useState(false)
     const sideActions = (
       <SideActionsWrapper>
         <AvatarWrapper>{avatar}</AvatarWrapper>
-        <IconWrapper title='reply'>
+        <IconWrapper onClick={handleReplyClick} title='reply'>
           <ReplyIcon />
         </IconWrapper>
         <IconWrapper title='share'>
@@ -33,9 +44,14 @@ export const Message = memo(
     )
 
     return (
-      <RowWrapper>
+      <RowWrapper
+        onMouseOver={() => sethovered(true)}
+        onMouseLeave={() => {
+          sethovered(false)
+        }}
+      >
         {type === 'in' && sideActions}
-        <MessageBase prevType={prevType} {...message} {...props} />
+        <MessageBase hovered={hovered} prevType={prevType} {...message} {...props} />
         {type === 'out' && sideActions}
       </RowWrapper>
     )

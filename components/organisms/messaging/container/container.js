@@ -44,7 +44,7 @@ export const MessagingContainer = ({
   const [Files, setFiles] = useState([])
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
-  // const [voiceSrc, setvoiceSrc] = useState(null)
+
   const onHover = () => {
     if (!IsDragHoverOpen) {
       setIsDragHoverOpen(true)
@@ -96,6 +96,15 @@ export const MessagingContainer = ({
       case MessagingActions.MENTION_CLICKED:
         onMentionClick(payload.data)
         break
+      case MessagingActions.EDIT_MESSAGE:
+        console.log(payload.data)
+        break
+      case MessagingActions.DELETE_MESSAGE:
+        console.log(payload.data)
+        break
+      case MessagingActions.STAR_MESSAGE:
+        console.log(payload.data)
+        break
 
       default:
         break
@@ -115,6 +124,7 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.CLEAR_INPUT }
     })
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: [] }
@@ -132,7 +142,6 @@ export const MessagingContainer = ({
       >
         <MessageList initialMessages={messages} onMessageRecieved={handleMessageRecieved} />
       </StyledContainer>
-
       <MessagingSend
         audienceItems={audienceItems}
         onSubmit={handleSubmit}
@@ -149,7 +158,6 @@ export const MessagingContainer = ({
     </DragAndDropable>
   )
 }
-
 const StyledContainer = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>

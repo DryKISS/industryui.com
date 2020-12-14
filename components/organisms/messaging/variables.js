@@ -7,6 +7,7 @@ export const MESSAGING = {
   containerBackground: COLOUR.grey,
   dropableHeaderBackground: COLOUR.drykiss_lightBlue,
   forwardAndReplyIconsColour: COLOUR.blackText,
+  fromTextColour: COLOUR.blackText,
   hashtagColour: COLOUR.secondary,
   headerBackground: COLOUR.light,
   inputFontSize: '1rem',
@@ -20,12 +21,17 @@ export const MESSAGING = {
   messageContentColour: COLOUR.black,
   messageFontSize: '1rem',
   messageIconColour: COLOUR.primary,
-  messageReplyRextColour: COLOUR.blackText,
-  messageTimeTextColour: COLOUR.primary,
+  messageReplyTextColour: COLOUR.blackText,
   receivedMessageBackground: COLOUR.neutral,
   recorderRecordingStateColour: COLOUR.success,
   recorderLoadingStateColour: COLOUR.grey,
+  replyContainerBackground: COLOUR.light,
+  replyContainerBackgroundInsideMessage: COLOUR.grey,
+  replyContainerHeight: '4.25rem',
+  replyTextColour: COLOUR.blackText,
+  replyFromColour: COLOUR.info,
   scrollBarColour: COLOUR.watterBlue,
   scrollThumbColour: COLOUR.blackGrey,
-  sentMessageBackground: COLOUR.neutral2
+  sentMessageBackground: COLOUR.neutral2,
+  translatorTextColour: COLOUR.primary
 }

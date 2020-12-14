@@ -28,6 +28,7 @@ import {
   VoiceRecorder,
   MessagingInput,
   MessagingAudioPlayer,
+  ReplyContainer,
   useComponentCommunication
 } from 'components'
 
@@ -54,6 +55,8 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     })
   }
 
+  const [replyMessage, setreplyMessage] = useState(null)
+
   const onActionRecieved = payload => {
     switch (payload.action) {
       case MessagingActions.SET_RECORDED_VOICE:
@@ -61,6 +64,9 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
         break
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
+        break
+      case MessagingActions.REPLY_MESSAGE:
+        setreplyMessage(payload.data)
         break
 
       default:
@@ -75,15 +81,19 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   })
 
   const submit = form => {
+    replyMessage?.replyTo && delete replyMessage.replyTo
+
     const data = {
       attachments,
       audience: audience.id,
       message: Message,
-      ...(voiceMessage && { voice: voiceMessage })
+      ...(voiceMessage && { voice: voiceMessage }),
+      ...(replyMessage && { replyTo: replyMessage })
     }
 
     onSubmit(data)
     setvoiceMessage(null)
+    setreplyMessage(null)
   }
 
   const handleInputChange = e => {
@@ -106,6 +116,12 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   return (
     <>
       <StyledContainer audience={audience}>
+        {replyMessage && (
+          <ReplyContainer message={replyMessage} onClose={() => setreplyMessage(null)}>
+            {replyMessage.id}
+          </ReplyContainer>
+        )}
+
         <StyledWrapper>
           {audience && (
             <StyledDropDown
