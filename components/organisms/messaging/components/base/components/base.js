@@ -148,7 +148,7 @@ export const MessageBase = ({
   return (
     <MessageWrapper type={type} hovered={hovered}>
       <StyledHead type={type}>
-        <StyledHeadText>
+        <StyledHeadText type={type}>
           {from} <Dot />
           {time.split(' ')[time.split(' ').length - 1]}
         </StyledHeadText>
@@ -239,6 +239,11 @@ export const MessageBase = ({
 
 const StyledHeadText = styled.div`
   display: flex;
+  ${({ type }) =>
+    type === 'out' &&
+    css`
+      flex-direction: row-reverse;
+    `}
 `
 
 const TranslatorWrapper = styled.div`
