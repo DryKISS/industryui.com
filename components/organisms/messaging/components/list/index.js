@@ -117,6 +117,7 @@ export const MessageList = memo(
               style={{ padding: '0.5rem 0' }}
               deferredMeasurementCache={cache}
               height={height}
+              overscanRowCount={10}
               ref={listRef}
               rowCount={Messages.length}
               rowHeight={cache.rowHeight}
