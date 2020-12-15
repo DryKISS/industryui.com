@@ -49,6 +49,7 @@ export const MessageBase = ({
   attachments,
   content,
   from,
+  hasMenu,
   hasText,
   hovered,
   icon,
@@ -151,20 +152,22 @@ export const MessageBase = ({
           {from} <Dot />
           {time.split(' ')[time.split(' ').length - 1]}
         </StyledHeadText>
-        <MenuWrapper>
-          <Dropdown
-            caret={false}
-            items={[
-              { name: 'Star Message', id: 'star' },
-              { name: 'Edit Message', id: 'edit' },
-              { name: 'Delete Message', id: 'delete' }
-            ]}
-            position='bottom'
-            onChange={item => dropDownAction(item)}
-          >
-            <MenuIcon />
-          </Dropdown>
-        </MenuWrapper>
+        {hasMenu && (
+          <MenuWrapper>
+            <Dropdown
+              caret={false}
+              items={[
+                { name: 'Star Message', id: 'star' },
+                { name: 'Edit Message', id: 'edit' },
+                { name: 'Delete Message', id: 'delete' }
+              ]}
+              position='bottom'
+              onChange={item => dropDownAction(item)}
+            >
+              <MenuIcon />
+            </Dropdown>
+          </MenuWrapper>
+        )}
       </StyledHead>
       <StyledCard type={type}>
         <Row>

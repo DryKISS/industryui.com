@@ -14,7 +14,7 @@ import { Avatar, MessageBase } from 'components'
 import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
 
 export const Message = memo(
-  ({ message, prevType, type, ...props }) => {
+  ({ config, message, prevType, type, ...props }) => {
     const avatar = message.avatar ? (
       <Avatar size='xxs' src={message.avatar} />
     ) : (
@@ -34,12 +34,16 @@ export const Message = memo(
     const sideActions = (
       <SideActionsWrapper>
         <AvatarWrapper>{avatar}</AvatarWrapper>
-        <IconWrapper onClick={handleReplyClick} title='reply'>
-          <ReplyIcon />
-        </IconWrapper>
-        <IconWrapper title='share'>
-          <ShareIcon />
-        </IconWrapper>
+        {config.hasReply && (
+          <IconWrapper onClick={handleReplyClick} title='reply'>
+            <ReplyIcon />
+          </IconWrapper>
+        )}
+        {config.hasForward && (
+          <IconWrapper title='share'>
+            <ShareIcon />
+          </IconWrapper>
+        )}
       </SideActionsWrapper>
     )
     const hasText = () => {
@@ -57,19 +61,20 @@ export const Message = memo(
       }
       return false
     }
-
+    const handleMouseOver = () => {
+      config.hasMenu && sethovered(true)
+    }
+    const handleMouseLeave = () => {
+      config.hasMenu && sethovered(false)
+    }
     return (
-      <RowWrapper
-        onMouseOver={() => sethovered(true)}
-        onMouseLeave={() => {
-          sethovered(false)
-        }}
-      >
+      <RowWrapper onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
         {type === 'in' && sideActions}
         <MessageBase
           hovered={hovered}
           prevType={prevType}
           hasText={hasText()}
+          hasMenu={config.hasMenu}
           {...message}
           {...props}
         />

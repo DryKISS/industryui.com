@@ -13,11 +13,12 @@ import styled, { css } from 'styled-components'
 
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
 
-const renderMessage = ({ index, parent, key, style }, messages, cache) => {
+const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
   return (
     <CellMeasurer cache={cache} key={index} parent={parent} columnIndex={0} rowIndex={index}>
       <MessageContainer type={messages[index].type} style={style}>
         <Message
+          config={config}
           message={messages[index]}
           prevType={messages[index].type}
           type={messages[index].type}
@@ -30,7 +31,7 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
 const cacheConfig = { fixedWidth: true, defaultHeight: 50 }
 
 export const MessageList = memo(
-  ({ initialMessages, onMessageRecieved }) => {
+  ({ initialMessages, onMessageRecieved, config }) => {
     const listRef = useRef(null)
     const widthRef = useRef(null)
     const heightRef = useRef(null)
@@ -106,7 +107,7 @@ export const MessageList = memo(
               ref={listRef}
               rowCount={Messages.length}
               rowHeight={cache.rowHeight}
-              rowRenderer={e => renderMessage(e, Messages, cache)}
+              rowRenderer={e => renderMessage(e, Messages, cache, config)}
               scrollToIndex={Messages.length - 1}
               width={width}
             />

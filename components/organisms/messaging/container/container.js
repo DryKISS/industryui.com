@@ -30,8 +30,10 @@ import styled from 'styled-components'
 export const MessagingContainer = ({
   audienceItems,
   className,
+  forwardForMessages,
   maxLength,
   mentions,
+  menuForMessages,
   messages,
   messagesContainerHeight,
   onFilter,
@@ -39,8 +41,15 @@ export const MessagingContainer = ({
   onMentionClick,
   onMessageSubmit,
   onSearch,
+  replyForMessages,
   style
 }) => {
+  const messagesConfig = {
+    ...(forwardForMessages && { hasForward: true }),
+    ...(menuForMessages && { hasMenu: true }),
+    ...(replyForMessages && { hasReply: true })
+  }
+
   const [Files, setFiles] = useState([])
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
@@ -140,7 +149,11 @@ export const MessagingContainer = ({
         className={className}
         style={style}
       >
-        <MessageList initialMessages={messages} onMessageRecieved={handleMessageRecieved} />
+        <MessageList
+          config={messagesConfig}
+          initialMessages={messages}
+          onMessageRecieved={handleMessageRecieved}
+        />
       </StyledContainer>
       <MessagingSend
         audienceItems={audienceItems}
