@@ -4,7 +4,7 @@
 
 // React
 import { memo, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { object, string } from 'prop-types'
 import { ReplyIcon } from './replyIcon'
 import { ShareIcon } from './shareIcon'
@@ -55,7 +55,6 @@ export const Message = memo(
       } else {
         plainText = message.content
       }
-      console.log(plainText.length)
       if (plainText.length > 1) {
         return true
       }
@@ -68,7 +67,16 @@ export const Message = memo(
       config.hasMenu && sethovered(false)
     }
     return (
-      <RowWrapper onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+      <RowWrapper
+        hasTimeHeader={message.headerTime}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+      >
+        {message.headerTime && (
+          <TimeHeader>
+            <span>{message.headerTime}</span>
+          </TimeHeader>
+        )}
         {type === 'in' && sideActions}
         <MessageBase
           hovered={hovered}
@@ -84,7 +92,23 @@ export const Message = memo(
   },
   () => true
 )
-
+const TimeHeader = styled.p`
+  position: absolute;
+  margin-top: -0.1rem;
+  text-align: center;
+  width: 100%;
+  background: #000;
+  height: 1px;
+  span {
+    background: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
+    padding: 0.25rem 0.5rem;
+    position: relative;
+    top: -0.75rem;
+    font-size: 0.75rem;
+    border: 1px solid;
+    border-radius: 100px;
+  }
+`
 const IconWrapper = styled.div`
   cursor: pointer;
   padding: 0.25rem 0;
@@ -104,6 +128,11 @@ const SideActionsWrapper = styled.div`
 const RowWrapper = styled.div`
   display: flex;
   position: relative;
+  ${({ hasTimeHeader }) =>
+    hasTimeHeader &&
+    css`
+      margin-top: 1rem;
+    `}
 `
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;

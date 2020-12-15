@@ -12,6 +12,7 @@ import { MessageNames, MessagingSubscriber, MessagingActions } from 'components/
 import styled, { css } from 'styled-components'
 
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
+import { DateDiff } from 'components/utils'
 
 const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
   return (
@@ -35,8 +36,22 @@ export const MessageList = memo(
     const listRef = useRef(null)
     const widthRef = useRef(null)
     const heightRef = useRef(null)
+    const [Messages, setMessages] = useState(initialMessages)
+
     const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
 
+    for (let i = 0; i < Messages.length; i++) {
+      if (i !== 0) {
+        const current = new Date(Messages[i].time)
+        const previous = new Date(Messages[i - 1].time)
+        const diff = DateDiff.inDays(previous, current)
+        if (diff > 0) {
+          Messages[i].headerTime = Messages[i].time.slice(0, 14)
+        }
+      } else {
+        Messages[i].headerTime = Messages[i].time.slice(0, 14)
+      }
+    }
     const scrollToBottom = () => {
       window &&
         window.requestAnimationFrame(() => {
@@ -58,8 +73,6 @@ export const MessageList = memo(
           listRef.current && listRef.current.scrollToRow(Messages.length)
         })
     }
-
-    const [Messages, setMessages] = useState(initialMessages)
 
     useEffect(() => {
       scrollToBottom()
