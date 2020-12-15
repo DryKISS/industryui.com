@@ -27,7 +27,7 @@ export const MESSAGING = {
   recorderLoadingStateColour: COLOUR.grey,
   replyContainerBackground: COLOUR.light,
   replyContainerBackgroundInsideMessage: COLOUR.grey,
-  replyContainerHeight: '4.25rem',
+  replyContainerHeight: '4.15rem',
   replyTextColour: COLOUR.blackText,
   replyFromColour: COLOUR.info,
   scrollBarColour: COLOUR.watterBlue,
