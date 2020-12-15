@@ -42,6 +42,21 @@ export const Message = memo(
         </IconWrapper>
       </SideActionsWrapper>
     )
+    const hasText = () => {
+      let plainText = ''
+      if (message.content.blocks) {
+        plainText = message.content.blocks
+          .map(block => (!block.text.trim() && '\n') || block.text)
+          .join('\n')
+      } else {
+        plainText = message.content
+      }
+      console.log(plainText.length)
+      if (plainText.length > 1) {
+        return true
+      }
+      return false
+    }
 
     return (
       <RowWrapper
@@ -51,7 +66,13 @@ export const Message = memo(
         }}
       >
         {type === 'in' && sideActions}
-        <MessageBase hovered={hovered} prevType={prevType} {...message} {...props} />
+        <MessageBase
+          hovered={hovered}
+          prevType={prevType}
+          hasText={hasText()}
+          {...message}
+          {...props}
+        />
         {type === 'out' && sideActions}
       </RowWrapper>
     )

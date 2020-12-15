@@ -49,6 +49,7 @@ export const MessageBase = ({
   attachments,
   content,
   from,
+  hasText,
   hovered,
   icon,
   id,
@@ -63,7 +64,6 @@ export const MessageBase = ({
   type,
   voice
 }) => {
-  console.log(replyTo)
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
@@ -191,12 +191,14 @@ export const MessageBase = ({
                 </AudioWrapper>
               )}
 
-              <MessagingEditor
-                plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
-                onChange={e => setEditorState(e)}
-                editorState={editorState}
-                readOnly
-              />
+              {hasText && (
+                <MessagingEditor
+                  plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
+                  onChange={e => setEditorState(e)}
+                  editorState={editorState}
+                  readOnly
+                />
+              )}
             </StyledContent>
           </Column>
 
@@ -206,7 +208,7 @@ export const MessageBase = ({
             </Column>
           )}
         </Row>
-        {type === 'in' && content !== '' && (
+        {type === 'in' && hasText && (
           <TranslatorWrapper onClick={toggleTranslation}>
             {showingTranslation ? 'See Original' : 'See Translation'}
             {loadingTranslation && <Loadingspinner />}
