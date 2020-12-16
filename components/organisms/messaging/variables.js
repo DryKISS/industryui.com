@@ -33,5 +33,6 @@ export const MESSAGING = {
   scrollBarColour: COLOUR.watterBlue,
   scrollThumbColour: COLOUR.blackGrey,
   sentMessageBackground: COLOUR.neutral2,
+  timerColour: COLOUR.info,
   translatorTextColour: COLOUR.primary
 }
