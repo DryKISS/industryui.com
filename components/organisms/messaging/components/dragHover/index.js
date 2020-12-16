@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 // UI
 import styled, { css } from 'styled-components'
 
-import { Button, Close, Preview, Space, Text, useComponentCommunication } from 'components'
+import { Close, Preview, Space, Text, useComponentCommunication } from 'components'
 
 import { MessageNames, MessagingActions, MessagingSubscriber } from 'components/services'
 
@@ -75,11 +75,7 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
             </Text>
           </DragFilesHereContainer>
         )}
-        <SendButtonContainer hasFile={files.length > 0}>
-          <StyledSendButton style={{ borderRadius: '50px' }} onClick={onSubmit}>
-            Submit Files
-          </StyledSendButton>
-        </SendButtonContainer>
+
         <PreviewContainer>
           {selectedFile &&
             files.map((item, index) => {
@@ -130,23 +126,6 @@ const DocumentInfoWrapper = styled.div`
     font-size: 1.25rem;
     margin: 0;
   }
-`
-const StyledSendButton = styled(Button)`
-  border-radius: 5rem;
-  height: 5rem;
-`
-const SendButtonContainer = styled.div`
-  bottom: 6.5rem;
-  position: absolute;
-  right: 1rem;
-  transform: scale(0);
-  transition: transform 0.3s ease-in-out;
-  z-index: 1;
-  ${({ hasFile }) =>
-    hasFile === true &&
-    css`
-      transform: scale(1);
-    `}
 `
 
 const RemoveContainer = styled.div`
