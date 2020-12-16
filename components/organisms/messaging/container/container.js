@@ -85,8 +85,12 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: Files }
     })
-    setIsDragHoverOpen(() => false)
 
+    setIsDragHoverOpen(() => false)
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.TRIGER_SEND }
+    })
     setTimeout(() => {
       setFiles(files => [])
     }, 500)
@@ -129,7 +133,6 @@ export const MessagingContainer = ({
 
   const handleSubmit = messageToSend => {
     onMessageSubmit(messageToSend)
-
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.CLEAR_INPUT }
