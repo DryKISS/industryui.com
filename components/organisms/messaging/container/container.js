@@ -87,10 +87,7 @@ export const MessagingContainer = ({
     })
 
     setIsDragHoverOpen(() => false)
-    MessagingCommunicationService.send({
-      name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.TRIGER_SEND }
-    })
+
     setTimeout(() => {
       setFiles(files => [])
     }, 500)

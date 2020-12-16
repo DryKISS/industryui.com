@@ -68,9 +68,6 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
       case MessagingActions.REPLY_MESSAGE:
         setreplyMessage(payload.data)
         break
-      case MessagingActions.TRIGER_SEND:
-        submit()
-        break
 
       default:
         break
