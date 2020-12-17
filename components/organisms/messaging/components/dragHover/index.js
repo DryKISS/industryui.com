@@ -64,7 +64,7 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
               <DocumentName>{documentInfo.name}</DocumentName>
             </DocumentNameWrapper>
             <DucumentPagesNumber>
-              {`${documentInfo.pagesNumber} Page${documentInfo.pagesNumber > 1 && 's'}`}
+              {`${documentInfo.pagesNumber} Page${documentInfo.pagesNumber > 1 ? 's' : ''}`}
             </DucumentPagesNumber>
           </DocumentInfoWrapper>
         )}
