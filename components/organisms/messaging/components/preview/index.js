@@ -69,11 +69,15 @@ export const Preview = memo(
     return checkFileType(file, 'image') ? (
       <PreviewImage src={src} onClick={onClick} style={imageStyles} />
     ) : checkFileType(file, 'pdf') ? (
-      <PdfWrapper onClick={onClick} small={small} message={message}>
-        <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page pageNumber={1} />
-        </Document>
-      </PdfWrapper>
+      file.thumbnail ? (
+        <PreviewImage src={file.thumbnail} onClick={onClick} style={imageStyles} />
+      ) : (
+        <PdfWrapper onClick={onClick} small={small} message={message}>
+          <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
+            <Page pageNumber={1} />
+          </Document>
+        </PdfWrapper>
+      )
     ) : (
       <PlaceHolder>
         <FilePlaceHolder placeHolderImageUrl={placeHolderImageUrl} />
