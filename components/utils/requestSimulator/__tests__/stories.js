@@ -6,11 +6,14 @@
 import { useState } from 'react'
 
 // UI
-
-import { Button, requestSimulator, Text } from 'components'
+import { Button, requestSimulator, Space, Text } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    responseType: 'success',
+    timeout: 1000
+  },
   parameters: {
     docs: {
       description: {
@@ -21,19 +24,22 @@ export default {
   title: 'Utils/RequestSimulator'
 }
 
-export const RequestSimulator = () => {
-  const [state, setstate] = useState({ message: '' })
+export const RequestSimulator = args => {
+  const [state, setstate] = useState({
+    message: ''
+  })
 
   const handleClick = async () => {
-    setstate({ message: 'loading...' })
-    const res = await requestSimulator()
+    setstate({ message: 'Loading...' })
+    const res = await requestSimulator(args.responseType, args.timeout)
     setstate(res)
   }
 
   return (
     <>
       <Text>{state.message}</Text>
-      <Button onClick={handleClick}>mock request</Button>
+      <Space />
+      <Button onClick={handleClick}>Mock request</Button>
     </>
   )
 }
