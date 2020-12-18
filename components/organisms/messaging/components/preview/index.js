@@ -116,12 +116,12 @@ const PdfWrapper = styled.div`
     if (message || small) {
       var size = small ? '4rem' : '10rem'
       return css`
-        width: ${size};
+        width: 100%;
         height: ${size};
         overflow: hidden;
         .react-pdf__Page__canvas,
         .react-pdf__Page__textContent {
-          width: ${size} !important;
+          width: 100% !important;
           height: auto !important;
         }
       `

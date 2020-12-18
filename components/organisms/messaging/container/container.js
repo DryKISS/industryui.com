@@ -86,6 +86,10 @@ export const MessagingContainer = ({
       return
     }
     setFiles(newFiles)
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: newFiles }
+    })
   }
 
   const handleAttachSubmitClick = () => {

@@ -220,15 +220,22 @@ export const MessageBase = ({
         {attachments && attachments.length > 0 && (
           <AttachmentsContainer>
             {Array.from(attachments).map((item, index) => {
-              return (
-                <SingleAttachment key={index}>
-                  <Preview
-                    imageStyles={{ minHeight: '10rem', height: '10rem', width: 'unset' }}
-                    file={item}
-                    message
-                  />
-                </SingleAttachment>
-              )
+              if (index < 4) {
+                return (
+                  <SingleAttachment key={index}>
+                    {attachments.length > 4 && index === 3 && (
+                      <OverlayForAdditionalMessages>
+                        +{attachments.length - 4}
+                      </OverlayForAdditionalMessages>
+                    )}
+                    <Preview
+                      imageStyles={{ minHeight: '10rem', height: '10rem', objectFit: 'fill' }}
+                      file={item}
+                      message
+                    />
+                  </SingleAttachment>
+                )
+              }
             })}
           </AttachmentsContainer>
         )}
@@ -236,7 +243,18 @@ export const MessageBase = ({
     </MessageWrapper>
   )
 }
-
+const OverlayForAdditionalMessages = styled.div`
+  align-items: center;
+  background: #00000061;
+  color: white;
+  display: flex;
+  height: 40%;
+  font-size: 5rem;
+  position: absolute;
+  justify-content: center;
+  width: 40%;
+  z-index: 1;
+`
 const StyledHeadText = styled.div`
   display: flex;
   ${({ type }) =>
@@ -265,8 +283,16 @@ const MenuWrapper = styled.div`
   pointer-events: none;
   transition: opacity 0.3s;
 `
-const SingleAttachment = styled.div``
-const AttachmentsContainer = styled.div``
+const SingleAttachment = styled.div`
+  overflow: hidden;
+  max-width: calc(90% - 0.5rem);
+`
+const AttachmentsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 49% 49%;
+  grid-row: auto auto;
+  grid-row-gap: 1rem;
+`
 
 const MessageWrapper = styled.div`
   flex: 1;
