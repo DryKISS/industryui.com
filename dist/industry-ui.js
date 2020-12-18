@@ -30861,7 +30861,7 @@ _defineProperty(MyApp, "propTypes", {
 _defineProperty(MyApp, "defaultProps", {
   offCanvas: false,
   pageProgressBar: false,
-  theme: [],
+  theme: {},
   user: false
 });
 
