@@ -2,12 +2,27 @@
  * Page
  */
 
+// Storybook
+import { SizeControl } from 'decorators'
+
 // UI
-import { Page } from 'components'
+import { Page, Text } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Layouts/Page',
+  args: {
+    meta: {
+      description: 'Description',
+      title: 'Meta'
+    },
+    pageHeading: {
+      heading: 'Heading',
+      strapline: 'Strapline'
+    }
+  },
+  argTypes: {
+    padding: SizeControl()
+  },
   component: Page,
   parameters: {
     docs: {
@@ -15,18 +30,13 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Layouts/Page'
 }
 
-export const main = () => (
-  <Page
-    meta={{ title: 'Example Page' }}
-    pageHeading={{
-      heading: 'Example page',
-      strapline: 'Test Subtitle'
-    }}
-  >
-    <p>
+export const main = args => (
+  <Page {...args}>
+    <Text>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
       been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
       galley of type and scrambled it to make a type specimen book. It has survived not only five
@@ -34,27 +44,6 @@ export const main = () => (
       was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
       passages, and more recently with desktop publishing software like Aldus PageMaker including
       versions of Lorem Ipsum.
-    </p>
-  </Page>
-)
-
-export const fluid = () => (
-  <Page
-    fluid
-    meta={{ title: 'Example Page' }}
-    pageHeading={{
-      heading: 'Fluid Container page',
-      strapline: 'Test Subtitle'
-    }}
-  >
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-      been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-      galley of type and scrambled it to make a type specimen book. It has survived not only five
-      centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
-      was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-      passages, and more recently with desktop publishing software like Aldus PageMaker including
-      versions of Lorem Ipsum.
-    </p>
+    </Text>
   </Page>
 )

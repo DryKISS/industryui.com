@@ -4,10 +4,10 @@
 
 // React
 import { Suspense } from 'react'
-import { node, object, shape, string } from 'prop-types'
+import { any, bool, node, oneOf, shape, string } from 'prop-types'
 
 // UI
-import { Alert, LdsSpinner, Page, PageLoading } from '../../'
+import { Alert, CONTEXT, LdsSpinner, Page, PageLoading, Space } from '../../'
 
 export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
   const { context, message } = resultAlert
@@ -23,10 +23,16 @@ export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) =>
   return (
     <>
       <Suspense fallback={<PageLoading indicator={<LdsSpinner />} />}>
-        <>
-          <Page children={View || children} fluid meta={mergedMeta} pageHeading={pageHeading} />
-          {message && <Alert content={message} context={context} />}
-        </>
+        <Page fluid meta={mergedMeta} pageHeading={pageHeading}>
+          {View || children}
+
+          {message && (
+            <>
+              <Space />
+              <Alert content={message} context={context} />
+            </>
+          )}
+        </Page>
       </Suspense>
     </>
   )
@@ -39,16 +45,18 @@ Dashboard.propTypes = {
     path: string,
     title: string
   }),
-  pageHeading: object,
+  pageHeading: shape({
+    center: bool,
+    context: oneOf(Object.values(CONTEXT)),
+    divider: bool,
+    heading: any.isRequired,
+    help: bool,
+    helpContent: any,
+    strapline: string
+  }),
   resultAlert: shape({
     context: string,
     message: string
-  })
-}
-
-Dashboard.defaultProps = {
-  resultAlert: {
-    context: 'success',
-    message: ''
-  }
+  }),
+  View: node
 }

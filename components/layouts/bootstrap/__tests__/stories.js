@@ -6,7 +6,7 @@
 import { useContext } from 'react'
 
 // UI
-import { Bootstrap, ConfigContext, Navbar } from 'components'
+import { Bootstrap, ConfigContext, Navbar, Text } from 'components'
 import Readme from '../README.md'
 
 // Footer
@@ -16,7 +16,6 @@ import { FORMATTER } from '../../../organisms/footer/__mocks__/footer'
 import { Default } from '../../../molecules/navbar/__mocks__/navbar'
 
 export default {
-  title: 'Layouts/Bootstrap',
   component: Bootstrap,
   parameters: {
     docs: {
@@ -24,19 +23,21 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Layouts/Bootstrap'
 }
 
-export const main = () => {
+export const main = args => {
   const { Brand } = useContext(ConfigContext)
 
   return (
     <Bootstrap
+      {...args}
       footer={FORMATTER}
       Navigation={() => <Navbar brand={Brand.logo} links={Default} />}
       brand={Brand.name}
     >
-      <p>Bootstrap</p>
+      <Text>Bootstrap</Text>
     </Bootstrap>
   )
 }

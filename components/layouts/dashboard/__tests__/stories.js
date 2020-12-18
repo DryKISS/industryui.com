@@ -13,7 +13,6 @@ const meta = {
 }
 
 export default {
-  title: 'Layouts/Dashboard',
   component: Dashboard,
   parameters: {
     docs: {
@@ -21,15 +20,17 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Layouts/Dashboard'
 }
 
 const Test = () => {
   return <>HERE</>
 }
 
-export const main = () => (
+export const main = args => (
   <Dashboard
+    {...args}
     meta={meta}
     pageHeading={{
       heading: 'Default'
