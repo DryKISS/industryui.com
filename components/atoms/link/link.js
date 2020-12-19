@@ -2,14 +2,12 @@
  * Link
  */
 
-// React
-import { any, bool, func, node, object, oneOf, oneOfType, string } from 'prop-types'
-
 // Next
 import NextLink from 'next/link'
 
 // UI
 import { CONTEXT, shadeLinearRgb, validatorUri } from '../../'
+import { LinkPropTypes, LinkDefaultProps } from './props'
 
 // Style
 import styled from 'styled-components'
@@ -22,6 +20,7 @@ export const Link = ({
   fullWidth,
   onClick,
   passHref,
+  prefetch,
   replace,
   scroll,
   shallow,
@@ -31,7 +30,14 @@ export const Link = ({
   const obj = typeof to === 'object' ? to : { href: to }
 
   return !validatorUri(to) ? (
-    <NextLink {...obj} passHref={passHref} replace={replace} scroll={scroll} shallow={shallow}>
+    <NextLink
+      {...obj}
+      passHref={passHref}
+      prefetch={prefetch}
+      replace={replace}
+      scroll={scroll}
+      shallow={shallow}
+    >
       <StyledLink
         border={border}
         className={className}
@@ -64,7 +70,10 @@ export const StyledLink = styled.a`
 
   display: ${({ border }) => (border ? 'inline-block' : 'block')};
   color: ${({ context, theme }) => {
-    if (context === CONTEXT.INITIAL) return CONTEXT.INITIAL
+    if (context === CONTEXT.INITIAL) {
+      return CONTEXT.INITIAL
+    }
+
     return theme.COLOUR[context] || theme.LINK.colour
   }};
   cursor: pointer;
@@ -96,24 +105,5 @@ export const StyledLink = styled.a`
   }
 `
 
-Link.propTypes = {
-  border: bool,
-  children: node.isRequired,
-  className: any,
-  context: oneOf(Object.values(CONTEXT)),
-  fullWidth: bool,
-  onClick: func,
-  passHref: bool,
-  replace: bool,
-  scroll: bool,
-  shallow: bool,
-  target: string,
-  to: oneOfType([object, string]).isRequired
-}
-
-Link.defaultProps = {
-  border: true,
-  replace: false,
-  scroll: true,
-  shallow: false
-}
+Link.propTypes = LinkPropTypes
+Link.defaultProps = LinkDefaultProps

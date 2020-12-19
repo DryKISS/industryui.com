@@ -60,6 +60,7 @@ export const main = args => {
           </ProgressBar>
         </Progress>
       </Space>
+
       <Button size='sm' onClick={handleClick}>
         Increase
       </Button>

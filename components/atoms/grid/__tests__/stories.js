@@ -1,5 +1,5 @@
 /**
- * Grid
+ * Atoms - Grid
  */
 
 // UI
@@ -7,71 +7,16 @@ import { Container, Row } from '../'
 import Readme from '../README.md'
 import { StyledColumn } from '../__mocks__/grid'
 
-const debug = {
-  border: '1px solid black'
-}
-
 export default {
-  title: 'Atoms/Grid',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Grid'
 }
-
-export const container = () => <Container style={debug}>Container</Container>
-
-export const containerFluid = () => (
-  <Container fluid style={debug}>
-    Container
-  </Container>
-)
-
-export const row = () => <Row style={debug}>Row</Row>
-
-export const rowJustified = () => (
-  <>
-    <Row justify='end'>
-      <StyledColumn md={3}>md={3}</StyledColumn>
-      <StyledColumn md={3}>md={3}</StyledColumn>
-    </Row>
-    <Row justify='start'>
-      <StyledColumn md={3}>md={3}</StyledColumn>
-      <StyledColumn md={3}>md={3}</StyledColumn>
-    </Row>
-  </>
-)
-
-export const rowAlign = () => {
-  const style = { backgroundColor: 'rgba(255,0,0,.1)', minHeight: '10rem' }
-
-  return (
-    <>
-      <Row align='start' style={style}>
-        <StyledColumn md={3}>md={3} Align Start</StyledColumn>
-        <StyledColumn md={3}>md={3} Align Start</StyledColumn>
-      </Row>
-      <br />
-      <Row align='end' style={style}>
-        <StyledColumn md={3}>md={3} Align End</StyledColumn>
-        <StyledColumn md={3}>md={3} Align End</StyledColumn>
-      </Row>
-    </>
-  )
-}
-
-export const rowWrap = () => (
-  <>
-    <Row noWrap>
-      <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
-      <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
-      <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
-    </Row>
-  </>
-)
 
 export const main = () => (
   <Container>

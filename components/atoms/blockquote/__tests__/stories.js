@@ -7,6 +7,10 @@ import { Blockquote } from 'components'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    footer: 'Footer',
+    text: 'Title'
+  },
   component: Blockquote,
   parameters: {
     docs: {
@@ -18,4 +22,4 @@ export default {
   title: 'Atoms/Blockquote'
 }
 
-export const main = () => <Blockquote footer='Footer Text' text='Title Text' />
+export const main = args => <Blockquote {...args} />

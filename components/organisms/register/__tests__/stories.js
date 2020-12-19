@@ -10,7 +10,6 @@ import { Alert, Register, requestSimulator } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Register',
   component: Register,
   parameters: {
     docs: {
@@ -18,10 +17,11 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Register'
 }
 
-const BaseComponent = (props = {}) => {
+export const main = args => {
   const [loggedToast, setLoggedToast] = useState(false)
 
   const submit = e => {
@@ -50,7 +50,7 @@ const BaseComponent = (props = {}) => {
     submit: submit,
     terms: false,
     yearBirthday: '2020',
-    ...props
+    ...args
   }
 
   return (
@@ -59,14 +59,6 @@ const BaseComponent = (props = {}) => {
       <Register {...defaultProps} />
     </>
   )
-}
-
-export const main = () => {
-  return <BaseComponent />
-}
-
-export const error = () => {
-  return <BaseComponent />
 }
 
 // export const error = () => {

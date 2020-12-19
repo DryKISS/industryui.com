@@ -38,7 +38,6 @@ const Buttons = [
 ]
 
 export default {
-  title: 'Molecules/Hero',
   component: Hero,
   parameters: {
     docs: {
@@ -46,11 +45,13 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Hero'
 }
 
-export const main = () => (
+export const main = args => (
   <Hero
+    {...args}
     alt='Tailwise Jack Russell Dog'
     buttons={Buttons}
     image={Jack}
@@ -64,8 +65,9 @@ export const main = () => (
   />
 )
 
-export const centered = () => (
+export const centered = args => (
   <Hero
+    {...args}
     alt='Tailwise Jack Russell Dog'
     buttons={Buttons}
     background={Puppies}
@@ -80,22 +82,18 @@ export const centered = () => (
   />
 )
 
-export const CleverlyBlock = () => {
+export const CleverlyBlock = args => {
   return (
-    <>
-      <Hero background={Puppies} backgroundSize='100%' height='100vh'>
-        <>
-          <TextBlock content='Test' md={4} offset={{ md: 1 }} top='394px'>
-            <Image alt='Icon' src={Custom} width='64px' />
-            <Heading content='CUSTOM SOLUTIONS' noMargin tag='h2' />
-            <p>
-              Cleverly provides solutions for clients in a number of different sectors.whether you
-              are looking for a single service line or a 'Compliance as a Service' solution,
-              Cleverly can help.
-            </p>
-          </TextBlock>
-        </>
-      </Hero>
-    </>
+    <Hero {...args} background={Puppies} backgroundSize='100%' height='100vh'>
+      <TextBlock content='Test' md={4} offset={{ md: 1 }} top='394px'>
+        <Image alt='Icon' src={Custom} width='64px' />
+        <Heading content='CUSTOM SOLUTIONS' noMargin tag='h2' />
+        <p>
+          Cleverly provides solutions for clients in a number of different sectors.whether you are
+          looking for a single service line or a 'Compliance as a Service' solution, Cleverly can
+          help.
+        </p>
+      </TextBlock>
+    </Hero>
   )
 }

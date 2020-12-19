@@ -1,5 +1,5 @@
 /**
- * Row
+ * Atoms - Grid - Components - Row
  */
 
 // React
@@ -71,7 +71,7 @@ Row.propTypes = {
 
 Row.defaultProps = {
   align: 'stretch',
-  gutterWidth: null,
+  gutterWidth: 32,
   justify: 'start',
   noGutter: false,
   style: {},

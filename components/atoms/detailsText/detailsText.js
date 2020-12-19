@@ -2,6 +2,9 @@
  * Components - Formatters - Details Text
  */
 
+// React
+import { string } from 'prop-types'
+
 // UI
 import { Space, Text } from '../index'
 
@@ -13,4 +16,9 @@ export const DetailsText = ({ content, text }) => {
       <Text>{text}</Text>
     </>
   )
+}
+
+DetailsText.propTypes = {
+  content: string.isRequired,
+  text: string.isRequired
 }

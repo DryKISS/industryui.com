@@ -16,8 +16,9 @@ export default {
     children: 'link',
     context: 'black',
     passHref: true,
+    prefetch: false,
     target: '_blank',
-    to: '/here'
+    to: '/'
   },
   argTypes: {
     context: ContextControl()

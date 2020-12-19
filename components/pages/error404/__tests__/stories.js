@@ -18,4 +18,4 @@ export default {
   title: 'Pages/Error404'
 }
 
-export const main = () => <Error404 />
+export const main = args => <Error404 {...args} />

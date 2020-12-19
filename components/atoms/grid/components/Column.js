@@ -1,5 +1,5 @@
 /**
- * Column
+ * Atoms - Grid - Components - Column
  */
 
 // React

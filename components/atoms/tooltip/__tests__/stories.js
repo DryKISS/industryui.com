@@ -10,11 +10,12 @@ import { Button, Text, Tooltip } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: { context: 'primary' },
+  args: {
+    context: 'primary'
+  },
   argTypes: {
     size: ContextControl()
   },
-  title: 'Atoms/Tooltip',
   component: Tooltip,
   parameters: {
     docs: {
@@ -22,7 +23,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Tooltip'
 }
 
 const SampleTooltip = () => (
@@ -35,16 +37,13 @@ const SampleTooltip = () => (
 const BaseComponent = props => {
   const defaultProps = {
     content: 'Hovered',
-
     ...props
   }
 
   return (
-    <>
-      <Tooltip {...defaultProps}>
-        <Button content='Hover over me' />
-      </Tooltip>
-    </>
+    <Tooltip {...defaultProps}>
+      <Button content='Hover over me' />
+    </Tooltip>
   )
 }
 

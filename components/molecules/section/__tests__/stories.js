@@ -7,7 +7,9 @@ import { Section } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Section',
+  args: {
+    heading: 'Section Heading'
+  },
   component: Section,
   parameters: {
     docs: {
@@ -15,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Section'
 }
 
-export const main = () => <Section heading='Section Heading' />
+export const main = args => <Section {...args} />

@@ -7,7 +7,6 @@ import { BlogReadTime } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Blog/Read Time',
   component: BlogReadTime,
   parameters: {
     docs: {
@@ -15,7 +14,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Blog/Read Time'
 }
 
-export const main = () => <BlogReadTime time={2} />
+export const main = args => <BlogReadTime time={2} {...args} />

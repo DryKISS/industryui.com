@@ -7,7 +7,10 @@ import { PageHeading } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/PageHeading',
+  args: {
+    heading: 'Heading',
+    strapline: 'Strapline'
+  },
   component: PageHeading,
   parameters: {
     docs: {
@@ -15,17 +18,14 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/PageHeading'
 }
 
-export const main = () => <PageHeading heading='Page Heading' strapline='Strapline' />
+export const main = args => <PageHeading {...args} />
 
-export const withHelp = () => (
-  <PageHeading heading='Page Heading' strapline='Strapline' help helpContent='Help Content' />
-)
+export const withHelp = args => <PageHeading {...args} help helpContent='Help Content' />
 
-export const centered = () => <PageHeading heading='Page Heading' strapline='Strapline' center />
+export const centered = args => <PageHeading {...args} center />
 
-export const withContext = () => (
-  <PageHeading heading='Page Heading' strapline='Strapline' context='warning' />
-)
+export const withContext = args => <PageHeading {...args} context='warning' />

@@ -7,18 +7,15 @@ import { SimpleTime } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/SimpleTime',
+  component: SimpleTime,
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/SimpleTime'
 }
 
-const BaseComponent = props => {
-  return <SimpleTime />
-}
-
-export const main = () => <BaseComponent />
+export const main = args => <SimpleTime {...args} />

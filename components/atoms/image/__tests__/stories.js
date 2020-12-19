@@ -7,7 +7,10 @@ import { Image } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Image',
+  args: {
+    alt: 'DryKISS',
+    src: 'http://via.placeholder.com/350x150'
+  },
   component: Image,
   parameters: {
     docs: {
@@ -15,7 +18,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Image'
 }
 
-export const main = () => <Image alt='Ian Warner' src='http://via.placeholder.com/350x150' />
+export const main = args => <Image {...args} />

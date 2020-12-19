@@ -1,5 +1,5 @@
 /**
- * Grid
+ * Atoms - Grid - Components
  */
 export * from './Column'
 export * from './Container'

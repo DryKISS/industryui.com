@@ -2,11 +2,8 @@
  * Storybook Configuration
  */
 
-// Next
-import Router from 'next/router'
-
 // UI
-import { Container, Wrapper } from 'decorators'
+import { Container, RouterWrap, Wrapper } from 'decorators'
 import './decorators/icons'
 
 // CSS
@@ -30,14 +27,4 @@ const actionWithPromise = () => {
   return new Promise((_, reject) => reject())
 }
 
-const mockedRouter = {
-  push: () => {},
-  prefetch: () => new Promise((resolve, reject) => {}),
-  asPath: '',
-  pathName: '',
-  query: 'query.com/es'
-}
-
-Router.router = mockedRouter
-
-export const decorators = [Container, Wrapper]
+export const decorators = [RouterWrap, Container, Wrapper]
