@@ -145,6 +145,17 @@ export const MessageBase = ({
       }
     })
   }
+
+  const handleFileClick = (files, index) => {
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.SET_FULL_PREVIEW_FILES,
+        data: { files, selectedIndex: index }
+      }
+    })
+  }
+
   return (
     <MessageWrapper type={type} hovered={hovered}>
       <StyledHead type={type}>
@@ -222,14 +233,14 @@ export const MessageBase = ({
             {Array.from(attachments).map((item, index) => {
               if (index < 4) {
                 return (
-                  <SingleAttachment key={index}>
+                  <SingleAttachment key={index} onClick={() => handleFileClick(attachments, index)}>
                     {attachments.length > 4 && index === 3 && (
                       <OverlayForAdditionalMessages>
                         +{attachments.length - 4}
                       </OverlayForAdditionalMessages>
                     )}
                     <Preview
-                      imageStyles={{ minHeight: '10rem', height: '10rem', objectFit: 'fill' }}
+                      imageStyles={{ minHeight: '10rem', height: '10rem', objectFit: 'cover' }}
                       file={item}
                       message
                     />
@@ -284,6 +295,7 @@ const MenuWrapper = styled.div`
   transition: opacity 0.3s;
 `
 const SingleAttachment = styled.div`
+  cursor: pointer;
   overflow: hidden;
   max-width: calc(90% - 0.5rem);
 `

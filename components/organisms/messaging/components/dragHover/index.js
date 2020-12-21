@@ -28,7 +28,9 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
   const onActionRecieved = payload => {
     switch (payload.action) {
       case MessagingActions.SET_DOCUMENT_INFO:
-        setDocumentInfo(() => payload.data)
+        setTimeout(() => {
+          setDocumentInfo(() => payload.data)
+        }, 0)
         break
       default:
         break
@@ -119,7 +121,7 @@ const DocumentInfoWrapper = styled.div`
   justify-content: space-between;
   padding: 0 3.5rem;
   position: absolute;
-  top: 27rem;
+  top: 70%;
   width: 100%;
   p {
     color: ${({ theme }) => theme.COLOUR.blackText};

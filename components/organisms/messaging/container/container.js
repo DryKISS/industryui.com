@@ -10,6 +10,7 @@ import { array, func, number, object, string } from 'prop-types'
 // UI
 import {
   DragAndDropable,
+  FullPreview,
   MessageList,
   MessagingDragHover,
   MessagingSearch,
@@ -97,12 +98,6 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: Files }
     })
-
-    // setIsDragHoverOpen(() => false)
-
-    // setTimeout(() => {
-    //  setFiles(files => [])
-    // }, 500)
   }
 
   const handleMessageRecieved = () => {
@@ -158,34 +153,37 @@ export const MessagingContainer = ({
   }
 
   return (
-    <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
-      <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
+    <>
+      <FullPreview />
+      <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
+        <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
-      <StyledContainer
-        messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
-        className={className}
-        style={style}
-      >
-        <MessageList
-          config={messagesConfig}
-          initialMessages={messages}
-          onMessageRecieved={handleMessageRecieved}
+        <StyledContainer
+          messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
+          className={className}
+          style={style}
+        >
+          <MessageList
+            config={messagesConfig}
+            initialMessages={messages}
+            onMessageRecieved={handleMessageRecieved}
+          />
+        </StyledContainer>
+        <MessagingSend
+          audienceItems={audienceItems}
+          onSubmit={handleSubmit}
+          maxLength={maxLength}
+          mentions={mentions}
         />
-      </StyledContainer>
-      <MessagingSend
-        audienceItems={audienceItems}
-        onSubmit={handleSubmit}
-        maxLength={maxLength}
-        mentions={mentions}
-      />
-      <MessagingDragHover
-        files={Files}
-        handleRemoveFile={handleRemoveFile}
-        isOpen={IsDragHoverOpen}
-        onClose={closeHoverPopup}
-        onSubmit={handleAttachSubmitClick}
-      />
-    </DragAndDropable>
+        <MessagingDragHover
+          files={Files}
+          handleRemoveFile={handleRemoveFile}
+          isOpen={IsDragHoverOpen}
+          onClose={closeHoverPopup}
+          onSubmit={handleAttachSubmitClick}
+        />
+      </DragAndDropable>
+    </>
   )
 }
 const StyledContainer = styled.div`
