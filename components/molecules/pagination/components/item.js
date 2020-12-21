@@ -2,6 +2,8 @@
  * Pagination - Item
  */
 
+// React
+import { memo } from 'react'
 import { bool, any, func, string } from 'prop-types'
 
 // UI
@@ -10,7 +12,7 @@ import { Button, FONTSIZE } from '../../../'
 // Style
 import styled from 'styled-components'
 
-export const PaginationItem = ({ active, context, disabled, label, onClick, size, ...props }) => {
+export const PaginationItem = memo(({ active, context, disabled, label, onClick, size }) => {
   return (
     <StyledLi>
       <StyledButton
@@ -19,13 +21,12 @@ export const PaginationItem = ({ active, context, disabled, label, onClick, size
         onClick={onClick}
         disabled={disabled}
         size={size}
-        {...props}
       >
         {label}
       </StyledButton>
     </StyledLi>
   )
-}
+})
 
 const StyledLi = styled.li`
   display: inline;
@@ -41,23 +42,23 @@ const StyledLi = styled.li`
 `
 
 const StyledButton = styled(Button)`
-  position: relative;
   cursor: ${({ active }) => (active ? 'unset' : 'pointer')};
   ${({ active }) => active && 'pointer-events: none;'}
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: ${({ active, context, theme }) => (active ? theme.COLOUR.white : theme.COLOUR[context])};
   background-color: ${({ theme, active, context }) =>
     active ? theme.COLOUR[context] : theme.COLOUR.white};
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
-  ${props => FONTSIZE(props)}
   border-radius: 0;
+  color: ${({ active, context, theme }) => (active ? theme.COLOUR.white : theme.COLOUR[context])};
+  line-height: 1.25;
+  margin-left: -1px;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  ${props => FONTSIZE(props)}
   &:hover {
     background-color: ${({ active, context, theme }) =>
       active ? theme.COLOUR[context] : theme.COLOUR.light};
-    color: ${({ active, theme, context }) => (active ? theme.COLOUR.white : theme.COLOUR[context])};
     border: 1px solid ${({ theme }) => theme.COLOUR.light};
+    color: ${({ active, theme, context }) => (active ? theme.COLOUR.white : theme.COLOUR[context])};
   }
 `
 

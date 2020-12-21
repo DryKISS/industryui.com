@@ -434,57 +434,6 @@ transform.args = {
   transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
 }
 
-export const brands = args => (
-  <>
-    <StyledCard>
-      <StyledHeading
-        content='Result'
-        style={{
-          background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
-        }}
-      />
-      <StyledBody>
-        <Icon icon='git' prefix='fab' size='3x' />
-        <StyledNote
-          style={{
-            background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
-            borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
-          }}
-        >
-          <Icon
-            icon='graduation-cap'
-            prefix='fas'
-            size='sm'
-            fixedWidth
-            context='success'
-            style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem'
-            }}
-          />
-          Free brands Font Awesome icons with 'fab' prefix.
-        </StyledNote>
-      </StyledBody>
-    </StyledCard>
-
-    <StyledCard>
-      <StyledBody>
-        <StyledHeadingH4
-          content='Brands'
-          style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
-          }}
-        />
-        <Icon icon='codepen' prefix='fab' size='3x' />
-        <Icon icon='github' prefix='fab' size='3x' />
-        <Icon icon='linkedin' prefix='fab' size='3x' />
-      </StyledBody>
-    </StyledCard>
-  </>
-)
-
 export const layers = args => (
   <>
     <StyledCard>

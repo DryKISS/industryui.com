@@ -24,12 +24,18 @@ export const Pagination = ({
   size,
   ...props
 }) => {
-  if (!pageCount) return null
+  if (!pageCount) {
+    return null
+  }
 
   const handleChange = type => {
-    if (type === 'prev') onPageChange(currentPage - 1)
-    else if (type === 'next') onPageChange(currentPage + 1)
-    else onPageChange(type)
+    if (type === 'prev') {
+      onPageChange(currentPage - 1)
+    } else if (type === 'next') {
+      onPageChange(currentPage + 1)
+    } else {
+      onPageChange(type)
+    }
   }
 
   const pagesArray = chunk(
@@ -75,7 +81,7 @@ export const Pagination = ({
           <PaginationItem
             active={p === currentPage}
             context={context}
-            key={`${`page${p}`}`}
+            key={p}
             label={p}
             onClick={() => handleChange(p)}
             size={size}
@@ -108,11 +114,7 @@ export const Pagination = ({
     return null
   }
 
-  return (
-    <StyledPagination aria-label='Pagination' {...props}>
-      {children || renderContent()}
-    </StyledPagination>
-  )
+  return <StyledPagination aria-label='Pagination'>{children || renderContent()}</StyledPagination>
 }
 
 const StyledPagination = styled.ul`
@@ -123,5 +125,4 @@ const StyledPagination = styled.ul`
 `
 
 Pagination.propTypes = PaginationPropTypes
-
 Pagination.defaultProps = PaginationDefaultProps

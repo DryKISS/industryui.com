@@ -1,5 +1,5 @@
 /**
- * Table - Formatter - Actions
+ * Components - Molecules - Table - Formatter - Actions
  */
 
 // React
@@ -9,8 +9,7 @@ import { object } from 'prop-types'
 import Router from 'next/router'
 
 // UI
-import { ButtonToolbar, Icon, Tooltip } from '../../../'
-import { Button } from '../../../atoms/button/components/button/button'
+import { Button, ButtonToolbar, Icon, Tooltip } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -61,6 +60,7 @@ const StyledButton = styled(Button)`
   padding: 0.3rem;
   position: relative;
 `
+
 const StyledNumberOverlay = styled.span`
   font-size: 0.7em;
   display: block;

@@ -1,6 +1,9 @@
 /**
- * Table Row (tr)
+ * Components - Molecules - Row
  */
+
+// React
+import { memo } from 'react'
 
 // UI
 import { BACKGROUND } from '../../../'
@@ -8,14 +11,9 @@ import { BACKGROUND } from '../../../'
 // Style
 import styled, { css } from 'styled-components'
 
-export const TableRow = props => {
-  return <StyledTr {...props} />
-}
-
-TableRow.propTypes = {}
-
-const StyledTr = styled.tr`
+export const TableRow = memo(styled.tr`
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
+
   ${({ context, striped, theme }) =>
     !context &&
     striped &&
@@ -39,4 +37,4 @@ const StyledTr = styled.tr`
         background-color: #eee;
       }
     `}
-`
+`)

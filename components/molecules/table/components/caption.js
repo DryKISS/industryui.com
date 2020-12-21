@@ -8,8 +8,8 @@ import { memo } from 'react'
 // Style
 import styled from 'styled-components'
 
-export const TableData = memo(styled.td`
-  border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
+export const TableCaption = memo(styled.caption`
+  caption-side: bottom;
   padding: ${({ theme }) => theme.TABLE.padding};
-  text-align: ${({ align }) => align && 'center'};
+  text-align: left;
 `)

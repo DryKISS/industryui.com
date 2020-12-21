@@ -17,6 +17,7 @@ import {
   faCommentDots,
   faCopy as fasCopy,
   faCopyright,
+  faEdit,
   faEllipsisH,
   faEnvelope,
   faExpand,
@@ -42,9 +43,6 @@ import {
   faUserCircle as farUserCircle
 } from '@fortawesome/free-regular-svg-icons'
 
-// Free Brands / FAB
-import { faGit, faGithub, faLinkedin, faCodepen } from '@fortawesome/free-brands-svg-icons'
-
 library.add(
   // Icons
   faBars,
@@ -60,6 +58,7 @@ library.add(
   farCopy,
   fasCopy,
   faCopyright,
+  faEdit,
   faEllipsisH,
   faEnvelope,
   faExpand,
@@ -77,13 +76,7 @@ library.add(
   faTrash,
   faUser,
   farUserCircle,
-  fasUserCircle,
-
-  // Brands
-  faCodepen,
-  faGit,
-  faGithub,
-  faLinkedin
+  fasUserCircle
 )
 
 export { library }

@@ -1,4 +1,6 @@
-Creates a simple table
+Table
+
+Expectation is that sorting and paginations is handled on the server side.
 
 ## Links
 

@@ -144,7 +144,6 @@ const StyledButton = styled.button`
      css`
        padding: 0;
      `}
-
 `
 
 const StyledContent = styled.div`

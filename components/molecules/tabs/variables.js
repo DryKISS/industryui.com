@@ -1,6 +1,8 @@
 /**
  * Theme - Variables - Tabs
  */
+
+// UI
 import { COLOUR } from '../../theme/variables/colour'
 
 export const TABS = {
