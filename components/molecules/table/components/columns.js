@@ -3,6 +3,7 @@
  */
 
 // React
+import { array, bool, func, shape, string } from 'prop-types'
 import { memo } from 'react'
 
 // UI
@@ -49,3 +50,19 @@ export const TableColumns = memo(({ align, columns, setSort, sort }) => (
     </tr>
   </thead>
 ))
+
+TableColumns.propTypes = {
+  align: bool,
+  columns: array,
+  setSort: func,
+  sort: shape({
+    item: string,
+    order: string
+  })
+}
+
+TableColumns.defaultProps = {
+  align: false,
+  columns: [],
+  sort: {}
+}

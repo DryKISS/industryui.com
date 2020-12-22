@@ -4,6 +4,7 @@
 
 // React
 import { memo } from 'react'
+import { bool, string } from 'prop-types'
 
 // UI
 import { BACKGROUND } from '../../../'
@@ -38,3 +39,10 @@ export const TableRow = memo(styled.tr`
       }
     `}
 `)
+
+TableRow.propTypes = {
+  context: string,
+  hover: bool,
+  pointer: bool,
+  striped: bool
+}

@@ -16,12 +16,9 @@ export const TableContent = ({
   caption,
   className,
   columns,
-  currentPage,
   hover,
   loading,
   noData,
-  pagination,
-  perPage,
   rowClick,
   rows,
   sort,
@@ -67,11 +64,9 @@ TableContent.propTypes = {
   caption: string,
   className: string,
   columns: array,
-  currentPage: number,
   hover: bool,
   loading: bool,
   noData: bool,
-  pagination: bool,
   rowClick: func,
   rows: array.isRequired,
   sort: shape({
@@ -89,7 +84,6 @@ TableContent.defaultProps = {
   hover: true,
   loading: false,
   noData: true,
-  pagination: false,
   sort: {},
   striped: true
 }

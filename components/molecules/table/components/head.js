@@ -3,6 +3,7 @@
  */
 
 // React
+import { bool, string } from 'prop-types'
 import { memo } from 'react'
 
 // Style
@@ -15,3 +16,8 @@ export const TableHead = memo(styled.th`
   text-align: ${({ align }) => (align ? 'center' : 'left')};
   ${({ sortable }) => sortable && 'cursor: pointer'}
 `)
+
+TableHead.propTypes = {
+  align: string,
+  sortable: bool
+}

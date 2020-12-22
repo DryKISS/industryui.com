@@ -22,7 +22,6 @@ export default {
     hover: true,
     loading: false,
     pagination: true,
-    initialPage: 1,
     perPage: 10,
     responsive: true,
     striped: true
@@ -88,8 +87,7 @@ const BaseComponent = (props = {}) => {
 
   const defaultProps = {
     paginationProps: {
-      currentPage,
-      initialPage: props.initialPage,
+      currentPage: currentPage,
       onPageChange: handlePageChange,
       pageCount: Math.ceil(data.length / props.perPage),
       perPage: props.perPage

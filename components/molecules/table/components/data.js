@@ -3,6 +3,7 @@
  */
 
 // React
+import { string } from 'prop-types'
 import { memo } from 'react'
 
 // Style
@@ -13,3 +14,7 @@ export const TableData = memo(styled.td`
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => align && 'center'};
 `)
+
+TableData.propTypes = {
+  align: string
+}

@@ -24,7 +24,7 @@ export const Table = memo(
     loading,
     noData,
     pagination,
-    paginationProps: { currentPage, initialPage = 1, onPageChange, pageCount, perPage = 10 },
+    paginationProps: { currentPage, onPageChange, pageCount, perPage = 10 },
     responsive,
     rowClick,
     rows,
@@ -107,7 +107,6 @@ Table.propTypes = {
   pagination: bool,
   paginationProps: shape({
     currentPage: number,
-    initialPage: number,
     onPageChange: func,
     perPage: number
   }),
@@ -131,6 +130,7 @@ Table.defaultProps = {
   loading: undefined,
   noData: true,
   pagination: false,
+  paginationProps: {},
   responsive: true,
   striped: true
 }
