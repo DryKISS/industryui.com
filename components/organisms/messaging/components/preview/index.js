@@ -1,11 +1,12 @@
 // React
-import { memo } from 'react'
+import { memo, useRef } from 'react'
 
 // UI
 import styled, { css } from 'styled-components'
 import { Page } from 'react-pdf'
 import { Document } from 'react-pdf/dist/esm/entry.webpack'
 import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
+import Cropper from 'react-cropper'
 
 const imageFormats = ['.jpg', '.jpeg', '.png']
 
@@ -41,6 +42,7 @@ const source = file => {
 }
 export const Preview = memo(
   ({
+    contain,
     file,
     imageStyles,
     onClick,
@@ -48,8 +50,10 @@ export const Preview = memo(
     showName,
     showPagesNumber,
     small,
-    message
+    message,
+    zoomable
   }) => {
+    const cropperRef = useRef(null)
     const onDocumentLoadSuccess = ({ numPages }) => {
       showPagesNumber &&
         MessagingCommunicationService.send({
@@ -67,10 +71,33 @@ export const Preview = memo(
     const src = source(file)
 
     return checkFileType(file, 'image') ? (
-      <PreviewImage src={src} onClick={onClick} style={imageStyles} />
+      zoomable ? (
+        <Cropper
+          src={file.src}
+          style={{ height: '100%', width: '100%' }}
+          highlight
+          movable
+          zoomable
+          zoomOnTouch
+          zoomOnWheel
+          autoCrop={false}
+          background={false}
+          guides={false}
+          checkCrossOrigin={false}
+          dragMode='move'
+          ref={cropperRef}
+        />
+      ) : (
+        <PreviewImage contain={contain} src={src} onClick={onClick} style={imageStyles} />
+      )
     ) : checkFileType(file, 'pdf') ? (
       file.thumbnail ? (
-        <PreviewImage src={file.thumbnail} onClick={onClick} style={imageStyles} />
+        <PreviewImage
+          contain={contain}
+          src={file.thumbnail}
+          onClick={onClick}
+          style={imageStyles}
+        />
       ) : (
         <PdfWrapper onClick={onClick} small={small} message={message}>
           <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
@@ -104,6 +131,11 @@ const PreviewImage = styled.img`
     onClick &&
     css`
       cursor: pointer;
+    `}
+  ${({ contain }) =>
+    contain &&
+    css`
+      object-fit: contain;
     `}
 `
 const PdfWrapper = styled.div`

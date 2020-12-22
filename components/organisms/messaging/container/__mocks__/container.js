@@ -100,6 +100,25 @@ export const messages = [
     type: 'out'
   },
   {
+    attachments: [
+      {
+        src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+        type: 'image'
+      },
+      {
+        src:
+          'https://www.genesis-publications.com/assets/pages/00001468/jeff-beck-2018-concert-news-5560486.jpg',
+        type: 'image'
+      },
+      {
+        src: 'https://i.ytimg.com/vi/xjmzca8uqlE/maxresdefault.jpg',
+        type: 'image'
+      },
+      {
+        src: 'https://wallpapercave.com/wp/wp2195720.jpg',
+        type: 'image'
+      }
+    ],
     content: 'Trabajo completado.',
     icon: 'notification',
     id: 7,

@@ -8,6 +8,7 @@ import { any, bool, string } from 'prop-types'
 
 // UI
 import {
+  Avatar,
   AudioWrapper,
   Card,
   Column,
@@ -47,6 +48,7 @@ const emojiPlugin = createEmojiPlugin()
 
 export const MessageBase = ({
   attachments,
+  avatar,
   content,
   from,
   hasMenu,
@@ -147,11 +149,19 @@ export const MessageBase = ({
   }
 
   const handleFileClick = (files, index) => {
+    const av = avatar ? <Avatar size='xxs' src={avatar} /> : <Avatar size='xxs' content={from[0]} />
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
-        data: { files, selectedIndex: index }
+        data: {
+          files,
+          selectedIndex: index,
+          avatar: av,
+          from,
+          time
+        }
       }
     })
   }
