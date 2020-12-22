@@ -21,20 +21,18 @@ export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) =>
   const mergedMeta = { ...defaultMeta, ...meta }
 
   return (
-    <>
-      <Suspense fallback={<PageLoading indicator={<LdsSpinner />} />}>
-        <Page fluid meta={mergedMeta} pageHeading={pageHeading}>
-          {View || children}
+    <Suspense fallback={<PageLoading indicator={<LdsSpinner />} />}>
+      <Page fluid meta={mergedMeta} pageHeading={pageHeading}>
+        {View || children}
 
-          {message && (
-            <>
-              <Space />
-              <Alert content={message} context={context} />
-            </>
-          )}
-        </Page>
-      </Suspense>
-    </>
+        {message && (
+          <>
+            <Space />
+            <Alert content={message} context={context} />
+          </>
+        )}
+      </Page>
+    </Suspense>
   )
 }
 
@@ -59,4 +57,11 @@ Dashboard.propTypes = {
     message: string
   }),
   View: node
+}
+
+Dashboard.defaultProps = {
+  resultAlert: {
+    context: 'success',
+    message: ''
+  }
 }
