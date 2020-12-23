@@ -43,6 +43,7 @@ const source = file => {
 export const Preview = memo(
   ({
     contain,
+    dim,
     file,
     imageStyles,
     onClick,
@@ -73,7 +74,7 @@ export const Preview = memo(
     return checkFileType(file, 'image') ? (
       zoomable ? (
         <Cropper
-          src={file.src}
+          src={file.src ?? URL.createObjectURL(file)}
           style={{ height: '100%', width: '100%' }}
           highlight
           movable
@@ -88,12 +89,13 @@ export const Preview = memo(
           ref={cropperRef}
         />
       ) : (
-        <PreviewImage contain={contain} src={src} onClick={onClick} style={imageStyles} />
+        <PreviewImage contain={contain} dim={dim} src={src} onClick={onClick} style={imageStyles} />
       )
     ) : checkFileType(file, 'pdf') ? (
       file.thumbnail ? (
         <PreviewImage
           contain={contain}
+          dim={dim}
           src={file.thumbnail}
           onClick={onClick}
           style={imageStyles}
@@ -137,6 +139,12 @@ const PreviewImage = styled.img`
     css`
       object-fit: contain;
     `}
+  ${({ dim }) =>
+    dim &&
+    css`
+      filter: brightness(0.4);
+    `}
+
 `
 const PdfWrapper = styled.div`
   ${({ onClick }) =>

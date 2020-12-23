@@ -250,6 +250,7 @@ export const MessageBase = ({
                       </OverlayForAdditionalMessages>
                     )}
                     <Preview
+                      dim={attachments.length > 4 && index === 3}
                       imageStyles={{ minHeight: '10rem', height: '10rem', objectFit: 'cover' }}
                       file={item}
                       message
@@ -266,7 +267,6 @@ export const MessageBase = ({
 }
 const OverlayForAdditionalMessages = styled.div`
   align-items: center;
-  background: #00000061;
   color: white;
   display: flex;
   height: 40%;

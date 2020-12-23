@@ -115,7 +115,7 @@ export const messages = [
         type: 'image'
       },
       {
-        src: 'https://wallpapercave.com/wp/wp2195720.jpg',
+        src: 'https://i.imgur.com/j4vJ4ea.jpg',
         type: 'image'
       }
     ],

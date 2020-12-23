@@ -5,6 +5,8 @@ import styled, { css } from 'styled-components'
 import { useComponentCommunication, Preview } from '../../../../'
 import { MessageNames, MessagingActions, MessagingSubscriber } from '../../../../services'
 import { Arrow } from './arrow'
+import { Cross } from './cross'
+import { DownloadButton } from './download'
 
 export const FullPreview = () => {
   const [selectedFileIndex, setselectedFileIndex] = useState(null)
@@ -12,6 +14,18 @@ export const FullPreview = () => {
   const files = useRef()
   const senderData = useRef()
   const previewWrapperRef = useRef()
+
+  let fileName
+  if (selectedFileIndex !== null) {
+    if (files.current[selectedFileIndex]?.src) {
+      fileName = files.current[selectedFileIndex].src.split('/')[
+        files.current[selectedFileIndex].src.split('/').length - 1
+      ]
+    } else {
+      fileName = 'localFile'
+    }
+  }
+
   useEffect(() => {
     if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
       setTimeout(() => {
@@ -27,11 +41,10 @@ export const FullPreview = () => {
   const onAction = payload => {
     switch (payload.action) {
       case MessagingActions.SET_FULL_PREVIEW_FILES:
-        var { avatar, from, time, files: attachments } = payload.data
-        files.current = attachments
-
+        var { avatar, from, time, files: attachments, selectedIndex } = payload.data
+        files.current = Array.from(attachments)
         senderData.current = { avatar, from, time }
-        setselectedFileIndex(payload.data.selectedIndex)
+        setselectedFileIndex(selectedIndex)
         break
 
       default:
@@ -81,6 +94,9 @@ export const FullPreview = () => {
   }
   return (
     <Wrapper onClick={handleHide} visible={selectedFileIndex !== null}>
+      <CrossWrapper onClick={handleHide}>
+        <Cross />
+      </CrossWrapper>
       <ContentWrapper>
         {selectedFileIndex !== null && (
           <SelectedFilePreviewContainer
@@ -123,11 +139,18 @@ export const FullPreview = () => {
                 </InfoWrapper>
               </SenderInfoWrapper>
               <NumbersWrapper>
-                {`${selectedFileIndex + 1} of ${files.current.length - 1}`}
+                {`${selectedFileIndex + 1} of ${files.current.length}`}
               </NumbersWrapper>
-              <ActionsWrapper>
-                <Actions>actions</Actions>
-              </ActionsWrapper>
+              {selectedFileIndex !== null && (
+                <ActionsWrapper onClick={e => e.stopPropagation()}>
+                  <Actions>
+                    <DownloadButton
+                      url={files.current[selectedFileIndex].src}
+                      filename={fileName}
+                    />
+                  </Actions>
+                </ActionsWrapper>
+              )}
             </>
           )}
         </BottomContainer>
@@ -135,13 +158,20 @@ export const FullPreview = () => {
     </Wrapper>
   )
 }
-const Actions = styled.div`
-  display: none;
+const CrossWrapper = styled.div`
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1;
 `
+
+const Actions = styled.div``
 const ActionsWrapper = styled.div``
 const NumbersWrapper = styled.div`
   color: ${({ theme }) => theme.COLOUR.white};
   flex: 1;
+  padding-left: 25%;
 `
 const AvatarWrapper = styled.div`
   margin-right: 1rem;
