@@ -9,7 +9,7 @@ import { Cross } from './cross'
 import { DownloadButton } from './download'
 
 export const FullPreview = () => {
-  const [selectedFileIndex, setselectedFileIndex] = useState(null)
+  const [selectedFileIndex, setSelectedFileIndex] = useState(null)
   const [maxDocHeight, setmaxDocHeight] = useState(null)
   const files = useRef()
   const senderData = useRef()
@@ -44,7 +44,7 @@ export const FullPreview = () => {
         var { avatar, from, time, files: attachments, selectedIndex } = payload.data
         files.current = Array.from(attachments)
         senderData.current = { avatar, from, time }
-        setselectedFileIndex(selectedIndex)
+        setSelectedFileIndex(selectedIndex)
         break
 
       default:
@@ -59,30 +59,30 @@ export const FullPreview = () => {
   })
 
   const handleHide = () => {
-    setselectedFileIndex(null)
+    setSelectedFileIndex(null)
   }
 
   const onFileClick = (e, index) => {
     e.stopPropagation()
-    setselectedFileIndex(index)
+    setSelectedFileIndex(index)
   }
   const handleArrowClick = (e, direction) => {
     e.stopPropagation()
     switch (direction) {
       case 'right':
         if (selectedFileIndex === files.current.length - 1) {
-          setselectedFileIndex(0)
+          setSelectedFileIndex(0)
           return
         }
-        setselectedFileIndex(index => index + 1)
+        setSelectedFileIndex(index => index + 1)
         break
 
       case 'left':
         if (selectedFileIndex === 0) {
-          setselectedFileIndex(files.current.length - 1)
+          setSelectedFileIndex(files.current.length - 1)
           return
         }
-        setselectedFileIndex(index => index - 1)
+        setSelectedFileIndex(index => index - 1)
         break
 
       default:

@@ -71,48 +71,66 @@ export const Preview = memo(
 
     const src = source(file)
 
-    return checkFileType(file, 'image') ? (
-      zoomable ? (
-        <Cropper
-          src={file.src ?? URL.createObjectURL(file)}
-          style={{ height: '100%', width: '100%' }}
-          highlight
-          movable
-          zoomable
-          zoomOnTouch
-          zoomOnWheel
-          autoCrop={false}
-          background={false}
-          guides={false}
-          checkCrossOrigin={false}
-          dragMode='move'
-          ref={cropperRef}
-        />
-      ) : (
-        <PreviewImage contain={contain} dim={dim} src={src} onClick={onClick} style={imageStyles} />
+    let returnComponent
+    if (checkFileType(file, 'image')) {
+      if (zoomable) {
+        returnComponent = (
+          <Cropper
+            src={file.src ?? URL.createObjectURL(file)}
+            style={{ height: '100%', width: '100%' }}
+            highlight
+            movable
+            zoomable
+            zoomOnTouch
+            zoomOnWheel
+            autoCrop={false}
+            background={false}
+            guides={false}
+            checkCrossOrigin={false}
+            dragMode='move'
+            ref={cropperRef}
+          />
+        )
+      } else {
+        returnComponent = (
+          <PreviewImage
+            contain={contain}
+            dim={dim}
+            src={src}
+            onClick={onClick}
+            style={imageStyles}
+          />
+        )
+      }
+    } else if (checkFileType(file, 'pdf')) {
+      if (file.thumbnail) {
+        returnComponent = (
+          <PreviewImage
+            contain={contain}
+            dim={dim}
+            src={file.thumbnail}
+            onClick={onClick}
+            style={imageStyles}
+          />
+        )
+      } else {
+        returnComponent = (
+          <PdfWrapper onClick={onClick} small={small} message={message}>
+            <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
+              <Page pageNumber={1} />
+            </Document>
+          </PdfWrapper>
+        )
+      }
+    } else {
+      returnComponent = (
+        <PlaceHolder>
+          <FilePlaceHolder placeHolderImageUrl={placeHolderImageUrl} />
+          {showName && file?.name}
+        </PlaceHolder>
       )
-    ) : checkFileType(file, 'pdf') ? (
-      file.thumbnail ? (
-        <PreviewImage
-          contain={contain}
-          dim={dim}
-          src={file.thumbnail}
-          onClick={onClick}
-          style={imageStyles}
-        />
-      ) : (
-        <PdfWrapper onClick={onClick} small={small} message={message}>
-          <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
-            <Page pageNumber={1} />
-          </Document>
-        </PdfWrapper>
-      )
-    ) : (
-      <PlaceHolder>
-        <FilePlaceHolder placeHolderImageUrl={placeHolderImageUrl} />
-        {showName && file?.name}
-      </PlaceHolder>
-    )
+    }
+    return returnComponent
   },
   ({ file: prevFile }, { file: nextFile }) => {
     if (nextFile.src) {
