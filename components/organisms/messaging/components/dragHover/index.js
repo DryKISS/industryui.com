@@ -1,14 +1,52 @@
-/**
- * Components - Messaging
- */
-
-// Style
-import styled, { css } from 'styled-components'
+// React
+import { useEffect, useState } from 'react'
 
 // UI
-import { Button, Close, Preview, Space, Text } from '../../../../'
+import styled, { css } from 'styled-components'
+
+import { Close, Preview, Space, Text, useComponentCommunication } from 'components'
+
+import { MessageNames, MessagingActions, MessagingSubscriber } from 'components/services'
 
 export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
+  const [selectedFile, setselectedFile] = useState(null)
+  const [documentInfo, setDocumentInfo] = useState({ name: null, pagesNumber: 0 })
+
+  const resetDocInfo = () => {
+    setDocumentInfo({ name: null, pagesNumber: 0 })
+  }
+
+  const onFileClick = file => {
+    resetDocInfo()
+    setselectedFile(file)
+  }
+  const handleRemoveClick = e => {
+    resetDocInfo()
+    handleRemoveFile(e)
+  }
+
+  const onActionRecieved = payload => {
+    switch (payload.action) {
+      case MessagingActions.SET_DOCUMENT_INFO:
+        setTimeout(() => {
+          setDocumentInfo(() => payload.data)
+        }, 0)
+        break
+      default:
+        break
+    }
+  }
+
+  useComponentCommunication({
+    messageName: MessageNames.Messaging.MESSAGING_ACTION,
+    onRecieve: e => onActionRecieved(e),
+    subscriber: MessagingSubscriber
+  })
+
+  useEffect(() => {
+    setselectedFile(files[files.length - 1])
+  }, [files.length])
+
   return (
     <Wrapper open={isOpen}>
       <ContentWrapper>
@@ -19,8 +57,19 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
           </Space>
         </Head>
         <LastFilePreviewContainer visible={files.length > 0}>
-          {files.length > 0 && <Preview file={files[files.length - 1]} showName />}
+          {selectedFile && <Preview file={selectedFile} showName showPagesNumber />}
         </LastFilePreviewContainer>
+        {documentInfo.pagesNumber > 0 && files.length > 0 && (
+          <DocumentInfoWrapper>
+            <DocumentNameWrapper>
+              <DocumentFileIcon pdf />
+              <DocumentName>{documentInfo.name}</DocumentName>
+            </DocumentNameWrapper>
+            <DucumentPagesNumber>
+              {`${documentInfo.pagesNumber} Page${documentInfo.pagesNumber > 1 ? 's' : ''}`}
+            </DucumentPagesNumber>
+          </DocumentInfoWrapper>
+        )}
         {!files[0] && (
           <DragFilesHereContainer>
             <Text size='xl' context='dark'>
@@ -28,20 +77,16 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
             </Text>
           </DragFilesHereContainer>
         )}
-        <SendButtonContainer hasFile={files.length > 0}>
-          <StyledSendButton style={{ borderRadius: '50px' }} onClick={onSubmit}>
-            submit
-          </StyledSendButton>
-        </SendButtonContainer>
+
         <PreviewContainer>
-          {files.length > 0 &&
+          {selectedFile &&
             files.map((item, index) => {
               return (
                 <BottomPreviewContainer key={index}>
                   <RemoveContainer>
-                    <Close click={() => handleRemoveFile(index)} context='white' />
+                    <Close click={() => handleRemoveClick(index)} context='white' />
                   </RemoveContainer>
-                  <Preview file={item} />
+                  <Preview onClick={() => onFileClick(item)} file={item} small />
                 </BottomPreviewContainer>
               )
             })}
@@ -50,22 +95,39 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
     </Wrapper>
   )
 }
-const StyledSendButton = styled(Button)`
-  border-radius: 5rem;
-  height: 5rem;
+const DocumentNameWrapper = styled.div`
+  align-items: center;
+  display: flex;
 `
-const SendButtonContainer = styled.div`
-  bottom: 6.5rem;
+const DocumentFileIcon = styled.div`
+  background-repeat: no-repeat;
+  height: 1.5rem;
+  margin-right: 1rem;
+  width: 1rem;
+  ${({ pdf }) => {
+    return (
+      pdf === true &&
+      css`
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAWCAYAAAAmaHdCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEwSURBVHgBpZPvbYMwEMXfAZHykRGcDSAs0A3abNAVOkGaCdoNwgbtBmWAJKUT1CPwMVLkuGcaS4DABvKkky3/+flxd5DOsi8AD3BL0vG40mmag+iXTqddczMYAWiL6FWv19suZLo6oHkQC8qyvZlGuE/PDJoICYJPaC27y8QkjXHaQKmyb2OKkw+EYe+GL7Ebtv/iOeN0UtzsS3ZQ8RgPHXQ5ERwVRsgHsYoxE2IvS3gcuSB5DYmixJfc4T5RasUJNf/HE8/Tem25NOsxR8Jtv/c5yaksJTv4wWJhAKKO87nC5RLjei2andsusdYVt/aODod3nSTmtUe+tGVHNrHmou1a0f85xnYYCh4LHr/RrtCgmk5kHUpJdvM2FtCFiNvrMTx94YL8g2bIVKfEfSr+AAEZZZW4bAd8AAAAAElFTkSuQmCC');
+      `
+    )
+  }}
+`
+const DocumentName = styled.p``
+const DucumentPagesNumber = styled.p``
+
+const DocumentInfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3.5rem;
   position: absolute;
-  right: 1rem;
-  transform: scale(0);
-  transition: transform 0.3s ease-in-out;
-  z-index: 1;
-  ${({ hasFile }) =>
-    hasFile === true &&
-    css`
-      transform: scale(1);
-    `}
+  top: 70%;
+  width: 100%;
+  p {
+    color: ${({ theme }) => theme.COLOUR.blackText};
+    font-size: 1.25rem;
+    margin: 0;
+  }
 `
 
 const RemoveContainer = styled.div`
@@ -82,6 +144,7 @@ const RemoveContainer = styled.div`
   transition: opacity 0.3s;
   top: -12px;
   width: 26px;
+  z-index: 1;
 `
 const PreviewContainer = styled.div`
   align-items: center;
@@ -97,7 +160,7 @@ const PreviewContainer = styled.div`
 `
 
 const BottomPreviewContainer = styled.div`
-  border: 1px solid ${({ theme }) => theme.COLOUR.blackGrey};
+  border: 2px solid ${({ theme }) => theme.COLOUR.blackGrey};
   box-sizing: content-box;
   margin: 0 0.25rem;
   position: relative;
@@ -120,12 +183,12 @@ const ContentWrapper = styled.div`
 `
 const CenterContainer = styled.div`
   display: grid;
-  height: calc(100% - 15rem);
-  left: 1rem;
+  height: calc(100% - 17rem);
+  left: 3.5rem;
   place-content: center;
   position: absolute;
   top: 4rem;
-  width: calc(100% - 2rem);
+  width: calc(100% - 7rem);
 `
 const DragFilesHereContainer = styled(CenterContainer)`
   border: 0.25rem dashed;
@@ -154,10 +217,10 @@ const Head = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.dropableHeaderBackground};
 `
 const Wrapper = styled.div`
-  height: 100%;
+  height: calc(100% - 5.3rem);
   position: absolute;
   top: 0;
-  transform: translateY(100%);
+  transform: translateY(calc(100% + 5.3rem));
   width: 100%;
 
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);

@@ -3,22 +3,28 @@
  */
 
 // React
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { any, bool, string } from 'prop-types'
 
 // UI
 import {
+  Avatar,
   AudioWrapper,
   Card,
   Column,
+  Dropdown,
   hashtagPlugin,
   Icon,
   Image,
   linkifyPlugin,
   MentionComponent,
+  MessageNames,
+  MessagingActions,
   MessagingAudioPlayer,
+  MessagingCommunicationService,
   MessagingEditor,
   Preview,
+  ReplyContainer,
   Row,
   TranslationService
 } from 'components'
@@ -26,12 +32,13 @@ import {
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'
 import { MenuIcon } from './menuIcon'
+import { Loadingspinner } from './loadingSpinner'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createEmojiPlugin from 'draft-js-emoji-plugin'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const mentionPlugin = createMentionPlugin({
   mentionComponent: mentionProps => <MentionComponent mentionProps={mentionProps} />
@@ -41,13 +48,19 @@ const emojiPlugin = createEmojiPlugin()
 
 export const MessageBase = ({
   attachments,
+  avatar,
   content,
   from,
+  hasMenu,
+  hasText,
+  hovered,
   icon,
+  id,
   more,
   pictureId,
   prevType,
   reply,
+  replyTo,
   statusText,
   time,
   to,
@@ -61,20 +74,30 @@ export const MessageBase = ({
   )
 
   const [showingTranslation, setShowingTranslation] = useState(false)
+  const [loadingTranslation, setloadingTranslation] = useState(false)
+  const translated = useRef(null)
 
   const toggleTranslation = async () => {
     if (!showingTranslation) {
-      let plainText
-      if (content.blocks) {
-        plainText = content.blocks
-          .map(block => (!block.text.trim() && '\n') || block.text)
-          .join('\n')
+      if (!translated.current) {
+        setloadingTranslation(true)
+        let plainText
+        if (content.blocks) {
+          plainText = content.blocks
+            .map(block => (!block.text.trim() && '\n') || block.text)
+            .join('\n')
+        } else {
+          plainText = content
+        }
+        const { response } = await TranslationService.translate(plainText)
+        translated.current = EditorState.createWithContent(ContentState.createFromText(response))
+        setEditorState(translated.current)
+        setShowingTranslation(true)
+        setloadingTranslation(false)
       } else {
-        plainText = content
+        setEditorState(translated.current)
+        setShowingTranslation(true)
       }
-      const { response } = await TranslationService.translate(plainText)
-      setEditorState(EditorState.createWithContent(ContentState.createFromText(response)))
-      setShowingTranslation(true)
     } else {
       setEditorState(
         EditorState.createWithContent(
@@ -84,22 +107,95 @@ export const MessageBase = ({
       setShowingTranslation(false)
     }
   }
+  const dropDownAction = item => {
+    let action = ''
+    switch (item.id) {
+      case 'edit':
+        action = MessagingActions.EDIT_MESSAGE
+        break
+      case 'delete':
+        action = MessagingActions.DELETE_MESSAGE
+        break
+      case 'star':
+        action = MessagingActions.STAR_MESSAGE
+        break
+
+      default:
+        break
+    }
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action,
+        data: {
+          attachments,
+          content,
+          from,
+          hovered,
+          icon,
+          id,
+          more,
+          pictureId,
+          prevType,
+          reply,
+          statusText,
+          time,
+          to,
+          type,
+          voice
+        }
+      }
+    })
+  }
+
+  const handleFileClick = (files, index) => {
+    const av = avatar ? <Avatar size='xxs' src={avatar} /> : <Avatar size='xxs' content={from[0]} />
+
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.SET_FULL_PREVIEW_FILES,
+        data: {
+          files,
+          selectedIndex: index,
+          avatar: av,
+          from,
+          time
+        }
+      }
+    })
+  }
 
   return (
-    <MessageWrapper>
+    <MessageWrapper type={type} hovered={hovered}>
+      <StyledHead type={type}>
+        <StyledHeadText type={type}>
+          {from} <Dot />
+          {time.split(' ')[time.split(' ').length - 1]}
+        </StyledHeadText>
+        {hasMenu && (
+          <MenuWrapper>
+            <Dropdown
+              caret={false}
+              items={[
+                { name: 'Star Message', id: 'star' },
+                { name: 'Edit Message', id: 'edit' },
+                { name: 'Delete Message', id: 'delete' }
+              ]}
+              position='bottom'
+              onChange={item => dropDownAction(item)}
+            >
+              <MenuIcon />
+            </Dropdown>
+          </MenuWrapper>
+        )}
+      </StyledHead>
       <StyledCard type={type}>
         <Row>
           <Column sm={6} style={{ display: 'flex', alignItems: 'center', marginTop: '-0.5rem' }}>
-            <MenuWrapper>
-              <MenuIcon />
-            </MenuWrapper>
             <MessageIcon icon={icon} />
             {to && <MessageTo to={to} />}
-            <StyledTime>{time}</StyledTime>
-          </Column>
-
-          <Column sm={6}>
-            <StyledFrom>{from}</StyledFrom>
+            <StyledReply>{reply}</StyledReply>
           </Column>
         </Row>
 
@@ -111,7 +207,7 @@ export const MessageBase = ({
           )}
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
-            <StyledReply>{reply}</StyledReply>
+            {replyTo && <ReplyContainer message={replyTo} inMessage onClose={null} />}
             <StyledContent>
               {voice && (
                 <AudioWrapper>
@@ -119,12 +215,14 @@ export const MessageBase = ({
                 </AudioWrapper>
               )}
 
-              <MessagingEditor
-                plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
-                onChange={e => setEditorState(e)}
-                editorState={editorState}
-                readOnly
-              />
+              {hasText && (
+                <MessagingEditor
+                  plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
+                  onChange={e => setEditorState(e)}
+                  editorState={editorState}
+                  readOnly
+                />
+              )}
             </StyledContent>
           </Column>
 
@@ -134,20 +232,32 @@ export const MessageBase = ({
             </Column>
           )}
         </Row>
-        <TranslatorWrapper onClick={toggleTranslation}>
-          {showingTranslation ? 'Show Original' : 'Show Translation'}
-        </TranslatorWrapper>
+        {type === 'in' && hasText && (
+          <TranslatorWrapper onClick={toggleTranslation}>
+            {showingTranslation ? 'See Original' : 'See Translation'}
+            {loadingTranslation && <Loadingspinner />}
+          </TranslatorWrapper>
+        )}
         {attachments && attachments.length > 0 && (
           <AttachmentsContainer>
             {Array.from(attachments).map((item, index) => {
-              return (
-                <SingleAttachment key={index}>
-                  <Preview
-                    imageStyles={{ minHeight: '10rem', height: '10rem', width: 'unset' }}
-                    file={item}
-                  />
-                </SingleAttachment>
-              )
+              if (index < 4) {
+                return (
+                  <SingleAttachment key={index} onClick={() => handleFileClick(attachments, index)}>
+                    {attachments.length > 4 && index === 3 && (
+                      <OverlayForAdditionalMessages>
+                        +{attachments.length - 4}
+                      </OverlayForAdditionalMessages>
+                    )}
+                    <Preview
+                      dim={attachments.length > 4 && index === 3}
+                      imageStyles={{ minHeight: '10rem', height: '10rem', objectFit: 'cover' }}
+                      file={item}
+                      message
+                    />
+                  </SingleAttachment>
+                )
+              }
             })}
           </AttachmentsContainer>
         )}
@@ -155,23 +265,74 @@ export const MessageBase = ({
     </MessageWrapper>
   )
 }
+const OverlayForAdditionalMessages = styled.div`
+  align-items: center;
+  color: white;
+  display: flex;
+  height: 40%;
+  font-size: 5rem;
+  position: absolute;
+  justify-content: center;
+  width: 40%;
+  z-index: 1;
+`
+const StyledHeadText = styled.div`
+  display: flex;
+  ${({ type }) =>
+    type === 'out' &&
+    css`
+      flex-direction: row-reverse;
+    `}
+`
 
 const TranslatorWrapper = styled.div`
-  color: ${({ theme }) => theme.COLOUR.primary};
+  align-items: center;
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.translatorTextColour};
   cursor: pointer;
-  font-size: 0.75rem;
+  display: flex;
+  font-size: 0.625rem;
+  font-weight: 600;
+  width: fit-content;
 `
 
 const MenuWrapper = styled.div`
   cursor: pointer;
   display: flex;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
 `
-const SingleAttachment = styled.div``
-const AttachmentsContainer = styled.div``
+const SingleAttachment = styled.div`
+  cursor: pointer;
+  overflow: hidden;
+  max-width: calc(90% - 0.5rem);
+`
+const AttachmentsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 49% 49%;
+  grid-row: auto auto;
+  grid-row-gap: 1rem;
+`
 
 const MessageWrapper = styled.div`
   flex: 1;
   margin-top: 1.5rem;
+  max-width: 80%;
+  ${({ type }) =>
+    type === 'out' &&
+    css`
+      margin-left: 20%;
+    `}
+  ${({ hovered }) =>
+    hovered &&
+    css`
+      ${MenuWrapper} {
+        opacity: 1;
+        pointer-events: inherit;
+      }
+    `}
 `
 
 const StyledCard = styled(Card)`
@@ -180,7 +341,7 @@ const StyledCard = styled(Card)`
   border: 1px solid ${({ theme: { MESSAGING } }) => MESSAGING.messageBorderColour};
   border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
-  padding: 0.75rem 1rem;
+  padding: 1.25rem 1rem;
 `
 
 const StyledContent = styled.div`
@@ -189,19 +350,39 @@ const StyledContent = styled.div`
 `
 
 const StyledReply = styled.div`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageReplyRextColour};
-  font-size: 0.75rem;
-  margin-bottom: 0.5rem;
-`
-
-const StyledTime = styled.span`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageTimeTextColour};
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.messageReplyTextColour};
   font-size: 0.75rem;
 `
 
-const StyledFrom = styled(StyledTime)`
-  display: block;
+const StyledHead = styled.span`
+  align-items: center;
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.fromTextColour};
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  justify-content: space-between;
+  position: absolute;
   text-align: right;
+  top: 0.25rem;
+  ${({ type }) =>
+    type === 'out'
+      ? css`
+          flex-direction: row-reverse;
+          right: 3.25rem;
+          width: 73%;
+        `
+      : css`
+          left: 3.25rem;
+          width: 80%;
+        `}
+`
+
+const Dot = styled.div`
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.fromTextColour};
+  border-radius: 1rem;
+  height: 0.25rem;
+  margin: 0.25rem;
+  width: 0.25rem;
 `
 
 MessageBase.propTypes = {

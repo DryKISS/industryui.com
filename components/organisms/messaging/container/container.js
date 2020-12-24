@@ -4,11 +4,13 @@
 
 // React
 import { useState } from 'react'
+
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
 import {
   DragAndDropable,
+  FullPreview,
   MessageList,
   MessagingDragHover,
   MessagingSearch,
@@ -29,8 +31,10 @@ import styled from 'styled-components'
 export const MessagingContainer = ({
   audienceItems,
   className,
+  forwardForMessages,
   maxLength,
   mentions,
+  menuForMessages,
   messages,
   messagesContainerHeight,
   onFilter,
@@ -38,12 +42,19 @@ export const MessagingContainer = ({
   onMentionClick,
   onMessageSubmit,
   onSearch,
+  replyForMessages,
   style
 }) => {
+  const messagesConfig = {
+    ...(forwardForMessages && { hasForward: true }),
+    ...(menuForMessages && { hasMenu: true }),
+    ...(replyForMessages && { hasReply: true })
+  }
+
   const [Files, setFiles] = useState([])
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
-  // const [voiceSrc, setvoiceSrc] = useState(null)
+
   const onHover = () => {
     if (!IsDragHoverOpen) {
       setIsDragHoverOpen(true)
@@ -54,10 +65,18 @@ export const MessagingContainer = ({
   }
   const onDrop = e => {
     setFiles(e)
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: e }
+    })
   }
   const closeHoverPopup = () => {
     setFiles(files => [])
     setIsDragHoverOpen(false)
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: [] }
+    })
   }
 
   const handleRemoveFile = fileIndex => {
@@ -68,6 +87,10 @@ export const MessagingContainer = ({
       return
     }
     setFiles(newFiles)
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: newFiles }
+    })
   }
 
   const handleAttachSubmitClick = () => {
@@ -75,7 +98,6 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: Files }
     })
-    setIsDragHoverOpen(false)
   }
 
   const handleMessageRecieved = () => {
@@ -92,6 +114,15 @@ export const MessagingContainer = ({
       case MessagingActions.MENTION_CLICKED:
         onMentionClick(payload.data)
         break
+      case MessagingActions.EDIT_MESSAGE:
+        console.log(payload.data)
+        break
+      case MessagingActions.DELETE_MESSAGE:
+        console.log(payload.data)
+        break
+      case MessagingActions.STAR_MESSAGE:
+        console.log(payload.data)
+        break
 
       default:
         break
@@ -106,46 +137,55 @@ export const MessagingContainer = ({
 
   const handleSubmit = messageToSend => {
     onMessageSubmit(messageToSend)
-
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.CLEAR_INPUT }
     })
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: [] }
     })
+    setIsDragHoverOpen(() => false)
+    setTimeout(() => {
+      setFiles(files => [])
+    }, 500)
   }
 
   return (
-    <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
-      <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
+    <>
+      <FullPreview />
+      <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
+        <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
-      <StyledContainer
-        messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
-        className={className}
-        style={style}
-      >
-        <MessageList initialMessages={messages} onMessageRecieved={handleMessageRecieved} />
-      </StyledContainer>
-
-      <MessagingSend
-        audienceItems={audienceItems}
-        onSubmit={handleSubmit}
-        maxLength={maxLength}
-        mentions={mentions}
-      />
-      <MessagingDragHover
-        files={Files}
-        handleRemoveFile={handleRemoveFile}
-        isOpen={IsDragHoverOpen}
-        onClose={closeHoverPopup}
-        onSubmit={handleAttachSubmitClick}
-      />
-    </DragAndDropable>
+        <StyledContainer
+          messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
+          className={className}
+          style={style}
+        >
+          <MessageList
+            config={messagesConfig}
+            initialMessages={messages}
+            onMessageRecieved={handleMessageRecieved}
+          />
+        </StyledContainer>
+        <MessagingSend
+          audienceItems={audienceItems}
+          onSubmit={handleSubmit}
+          maxLength={maxLength}
+          mentions={mentions}
+        />
+        <MessagingDragHover
+          files={Files}
+          handleRemoveFile={handleRemoveFile}
+          isOpen={IsDragHoverOpen}
+          onClose={closeHoverPopup}
+          onSubmit={handleAttachSubmitClick}
+        />
+      </DragAndDropable>
+    </>
   )
 }
-
 const StyledContainer = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>
