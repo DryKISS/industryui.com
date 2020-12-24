@@ -126,9 +126,9 @@ export const Preview = memo(
     }
 
     if (checkFileType(file, 'image')) {
-      return imagePreview
+      return imagePreview()
     } else if (checkFileType(file, 'pdf')) {
-      return pdfPreview
+      return pdfPreview()
     } else {
       return (
         <PlaceHolder>
