@@ -71,10 +71,9 @@ export const Preview = memo(
 
     const src = source(file)
 
-    let returnComponent
-    if (checkFileType(file, 'image')) {
+    const imagePreview = () => {
       if (zoomable) {
-        returnComponent = (
+        return (
           <Cropper
             src={file.src ?? URL.createObjectURL(file)}
             style={{ height: '100%', width: '100%' }}
@@ -92,7 +91,7 @@ export const Preview = memo(
           />
         )
       } else {
-        returnComponent = (
+        return (
           <PreviewImage
             contain={contain}
             dim={dim}
@@ -102,9 +101,11 @@ export const Preview = memo(
           />
         )
       }
-    } else if (checkFileType(file, 'pdf')) {
+    }
+
+    const pdfPreview = () => {
       if (file.thumbnail) {
-        returnComponent = (
+        return (
           <PreviewImage
             contain={contain}
             dim={dim}
@@ -114,7 +115,7 @@ export const Preview = memo(
           />
         )
       } else {
-        returnComponent = (
+        return (
           <PdfWrapper onClick={onClick} small={small} message={message}>
             <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
               <Page pageNumber={1} />
@@ -122,15 +123,20 @@ export const Preview = memo(
           </PdfWrapper>
         )
       }
+    }
+
+    if (checkFileType(file, 'image')) {
+      return imagePreview
+    } else if (checkFileType(file, 'pdf')) {
+      return pdfPreview
     } else {
-      returnComponent = (
+      return (
         <PlaceHolder>
           <FilePlaceHolder placeHolderImageUrl={placeHolderImageUrl} />
           {showName && file?.name}
         </PlaceHolder>
       )
     }
-    return returnComponent
   },
   ({ file: prevFile }, { file: nextFile }) => {
     if (nextFile.src) {
