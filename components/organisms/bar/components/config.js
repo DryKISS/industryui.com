@@ -1,3 +1,6 @@
+/**
+ * Components - Organisms - Config
+ */
 export const BarConfig = {
   PLACEMENT: {
     BOTTOM: 'bottom',

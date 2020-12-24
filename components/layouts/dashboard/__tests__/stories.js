@@ -1,9 +1,9 @@
 /**
- * Dashboard
+ * Layouts - Dashboard - Story
  */
 
 // UI
-import { Dashboard } from 'components'
+import { Dashboard, Text } from 'components'
 import Readme from '../README.md'
 
 const meta = {
@@ -25,7 +25,7 @@ export default {
 }
 
 const Test = () => {
-  return <>HERE</>
+  return <Text>HERE</Text>
 }
 
 export const main = args => (

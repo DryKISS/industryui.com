@@ -1,5 +1,5 @@
 /**
- * Layout - Dashboard
+ * Layouts - Dashboard
  */
 
 // React

@@ -1,5 +1,4 @@
 /**
- * Bar
+ * Components - Organisms - Bar
  */
 export * from './bar'
-export * from './config'

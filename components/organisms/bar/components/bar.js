@@ -1,26 +1,21 @@
 /**
- * Bar
+ * Components - Organisms - Bar
  */
 
 // React
 import { useState } from 'react'
-import { BarConfig, Icon } from '../../../'
+
+// UI
+import { BarConfig } from './config'
+import { BarToggle } from './toggle'
+import { BarPropTypes, BarDefaultProps } from './props'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Bar = ({
-  background,
-  children,
-  flat,
-  minSize,
-  open,
-  placement,
-  variant,
-  width,
-  withExposedButton
-}) => {
+export const Bar = ({ children, minSize, open, placement, variant, width, withToggle }) => {
   const [IsOpen, setIsOpen] = useState(open ?? true)
+
   const toggleOpen = () => {
     setIsOpen(!IsOpen)
   }
@@ -28,24 +23,13 @@ export const Bar = ({
   return (
     <>
       <StyledBarWrapper
-        background={background}
-        flat={flat}
         open={IsOpen}
         placement={placement}
         variant={variant}
         width={width}
         minSize={minSize}
       >
-        <OpenButton
-          background={background}
-          flat={flat}
-          exposed={withExposedButton}
-          onClick={toggleOpen}
-          open={IsOpen}
-          placement={placement}
-        >
-          <Icon icon='user' size='1x' prefix='fas' />
-        </OpenButton>
+        {withToggle && <BarToggle onClick={toggleOpen} open={IsOpen} placement={placement} />}
 
         {children}
       </StyledBarWrapper>
@@ -60,44 +44,6 @@ export const Bar = ({
     </>
   )
 }
-
-const OpenButton = styled.div`
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: none;
-  z-index: 1;
-  position: absolute;
-  svg {
-    transition: transform ${({ theme }) => theme.BAR.transitionDuration} ease;
-    transform: rotate(0deg);
-    position: absolute;
-    top: 1rem;
-    right: 0.2rem;
-  }
-  ${({ background, exposed, flat, placement }) =>
-    (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
-    css`
-    border-top-${placement}-radius:0;
-    border-bottom-${placement}-radius:0;
-    display:${exposed ? 'block' : 'none'};
-    width:1.5rem;
-    height:3rem;
-    ${placement}:100%;
-    background-color:${({ background, theme }) => (theme ? theme.COLOUR[background] : 'white')};
-    box-shadow:${!flat &&
-      (placement === BarConfig.PLACEMENT.LEFT
-        ? '2px 1px 2px 0px rgb(0 0 0 / 13%)'
-        : '-2px 1px 2px 0px rgb(0 0 0 / 13%)')} ;
-    `}
-  ${({ open }) =>
-    open === true &&
-    css`
-      ._,
-      svg {
-        transform: rotate(180deg);
-      }
-    `}
-`
 
 const StyledOverlay = styled.div`
   transition: ${({ theme, placement }) => css`
@@ -128,8 +74,7 @@ const StyledOverlay = styled.div`
 
 const StyledBarWrapper = styled.div`
   align-items: center;
-  background-color: ${({ background, theme }) => (theme ? theme.COLOUR[background] : 'white')};
-  box-shadow: ${({ flat }) => !flat && ' 0px 4px 4px rgba(0, 0, 0, 0.25)'};
+  background-color: ${({ theme }) => theme.BAR.background};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -157,7 +102,7 @@ const StyledBarWrapper = styled.div`
     variant === BarConfig.VARIANT.OVERLAY
       ? css`
           position: absolute;
-          opacity:1;
+          opacity: 1;
           ${placement}: 0;
           ${(placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
             css`
@@ -167,8 +112,8 @@ const StyledBarWrapper = styled.div`
             ${!open &&
               css`
             margin-${placement}:-${minSize ?? theme.BAR.minSize};
-            background-color:transparent;
-            box-shadow:none;
+            background-color: transparent;
+            box-shadow: none;
             `}
           ${(placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM) &&
             css`
@@ -180,11 +125,5 @@ const StyledBarWrapper = styled.div`
         `}
 `
 
-Bar.propTypes = {}
-
-Bar.defaultProps = {
-  width: 10,
-  placement: 'left',
-  variant: 'push',
-  background: 'white'
-}
+Bar.propTypes = BarPropTypes
+Bar.defaultProps = BarDefaultProps
