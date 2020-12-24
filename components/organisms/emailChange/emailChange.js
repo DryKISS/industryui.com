@@ -15,8 +15,6 @@ export const EmailChange = ({ showPlaceholder }) => {
 
   const submit = data => {}
 
-  const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
   return (
     <>
       <PageHeading center heading='Email Change' divider={false} />
@@ -30,7 +28,6 @@ export const EmailChange = ({ showPlaceholder }) => {
             errors={errors}
             name='email'
             placeholder={showPlaceholder ? 'Email' : ''}
-            regExp={pattern}
             register={register}
           />
         </FormLabel>

@@ -27,7 +27,6 @@ import {
   PercentInput,
   RadioField,
   ReactSelectField,
-  // RichTextInput,
   Row,
   Search,
   SelectField,
@@ -64,7 +63,9 @@ const schema = object().shape({
   checkbox: string().required(),
   radio: string().required(),
   disabled: string(),
-  email: string().required(),
+  email: string()
+    .required('Please Enter an email')
+    .email(),
   input: string().required(),
   name: string().required(),
   reactSelect: string().required(),
@@ -87,7 +88,6 @@ const checkbox = [
     value: 'checked'
   }
 ]
-// const draftInitialhtml = '<div><p>initial Text <b>bold</b></p></div>'
 
 const all = ({ ...args }) => {
   const { control, errors, handleSubmit, register } = useForm({
@@ -230,15 +230,6 @@ const all = ({ ...args }) => {
       />
 
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend='Gender?' name='radio' />
-
-      {/* <FormLabel label='Rich'>
-        <RichTextInput
-          control={control}
-          errors={errors}
-          initialValue={draftInitialhtml}
-          name='rich'
-        />
-      </FormLabel> */}
 
       <Button content='Submit' type='submit' />
     </Form>

@@ -9,6 +9,7 @@ import { bool, func, number, object, oneOfType, node, string } from 'prop-types'
 import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
 
 export const CurrencyInput = ({
+  children,
   currencySymbol,
   errors,
   label,
@@ -18,13 +19,16 @@ export const CurrencyInput = ({
   show,
   style,
   size,
-  theme,
   vat
 }) => {
+  const defaultOptions = {
+    error: errors[name]
+  }
+
   return (
     <FormLabel show={show} label={label}>
-      <InputGroup theme={theme} error={errors[name]}>
-        <InputGroupAddon addonType='prepend' error={errors[name]} text theme={theme} size={size}>
+      <InputGroup {...defaultOptions}>
+        <InputGroupAddon {...defaultOptions} addonType='prepend' text size={size}>
           {currencySymbol}
         </InputGroupAddon>
 
@@ -35,15 +39,17 @@ export const CurrencyInput = ({
           register={register}
           style={style}
           size={size}
-          withAddon
           step='any'
           type='number'
         />
 
         {vat && (
-          <InputGroupAddon addonType='append' error={errors[name]} text theme={theme} size={size}>
-            Inc VAT
-          </InputGroupAddon>
+          <>
+            <InputGroupAddon {...defaultOptions} addonType='append' text size={size}>
+              {vat}
+            </InputGroupAddon>
+            {children}
+          </>
         )}
       </InputGroup>
     </FormLabel>
@@ -51,6 +57,7 @@ export const CurrencyInput = ({
 }
 
 CurrencyInput.propTypes = {
+  children: node,
   currencySymbol: oneOfType([object, string]),
   errors: object.isRequired,
   label: string.isRequired,
@@ -59,12 +66,14 @@ CurrencyInput.propTypes = {
   register: func.isRequired,
   show: bool,
   style: node,
-  vat: bool
+  size: string,
+  vat: oneOfType([string, bool])
 }
 
 CurrencyInput.defaultProps = {
   currencySymbol: '£',
   min: 0,
   show: true,
-  vat: false
+  size: 'md',
+  vat: 'Incl VAT'
 }
