@@ -36,8 +36,6 @@ const CHECKBOX_TERMS = [
   }
 ]
 
-const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
 export const Register = ({
   birthday,
   dayBirthday,
@@ -136,7 +134,6 @@ export const Register = ({
           autoFocus
           name='email'
           placeholder={showPlaceholder ? 'Email' : ''}
-          regExp={pattern}
         />
       </FormLabel>
 

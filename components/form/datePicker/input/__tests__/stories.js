@@ -22,13 +22,13 @@ export default {
   }
 }
 
-const BaseComponent = (props = {}) => {
-  const schema = object().shape({
-    dayPicker: string().required(),
-    monthPicker: string().required(),
-    yearPicker: string().required()
-  })
+const schema = object().shape({
+  dayPicker: string().required(),
+  monthPicker: string().required(),
+  yearPicker: string().required()
+})
 
+const BaseComponent = (props = {}) => {
   const { errors, getValues, handleSubmit, register } = useForm({
     defaultValues: { dayPicker: 10 },
     resolver: yupResolver(schema)

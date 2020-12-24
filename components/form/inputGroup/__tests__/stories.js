@@ -10,19 +10,21 @@ import { Button, FormField, Icon, InputGroup, InputGroupAddon, useForm } from 'c
 import Readme from '../README.md'
 
 export default {
-  args: { size: 'md' },
+  args: {
+    size: 'md'
+  },
   argTypes: {
     size: SizeControl()
   },
   component: InputGroup,
-  title: 'Form/InputGroup',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/InputGroup'
 }
 
 const BaseComponent = (props = {}) => {
