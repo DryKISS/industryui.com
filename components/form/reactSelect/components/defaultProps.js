@@ -1,3 +1,6 @@
+/**
+ * Form - React Select - Default Props
+ */
 export const reactSelectDefaultProps = defaultStyles => ({
   backspaceRemovesValue: true,
   closeMenuOnSelect: true,

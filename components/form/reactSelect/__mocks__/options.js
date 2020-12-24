@@ -1,15 +1,46 @@
 /**
- * React Select
+ * Form - React Select - Options
  */
 export const Options = [
-  { value: 'ocean', label: 'Ocean' },
-  { value: 'blue', label: 'Blue', isDisabled: true },
-  { value: 'purple', label: 'Purple' },
-  { value: 'red', label: 'Red' },
-  { value: 'orange', label: 'Orange' },
-  { value: 'yellow', label: 'Yellow' },
-  { value: 'green', label: 'Green' },
-  { value: 'forest', label: 'Forest' },
-  { value: 'slate', label: 'Slate' },
-  { value: 'silver', label: 'Silver' }
+  {
+    label: 'Ocean',
+    value: 'ocean'
+  },
+  {
+    label: 'Blue',
+    isDisabled: true,
+    value: 'blue'
+  },
+  {
+    label: 'Purple',
+    value: 'purple'
+  },
+  {
+    label: 'Red',
+    value: 'red'
+  },
+  {
+    label: 'Orange',
+    value: 'orange'
+  },
+  {
+    label: 'Yellow',
+    value: 'yellow'
+  },
+  {
+    label: 'Green',
+    value: 'green'
+  },
+  {
+    label: 'Forest',
+    value: 'forest'
+  },
+  {
+    label: 'Slate',
+    value: 'slate'
+  },
+  {
+    label: 'Silver',
+    value: 'silver'
+  }
 ]
