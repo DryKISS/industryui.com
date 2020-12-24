@@ -2,8 +2,11 @@
  * Form - Field
  */
 
+// Yup
+import { object, string } from 'yup'
+
 // UI
-import { Button, Form, FormField, FormLabel, useForm } from 'components'
+import { Button, Form, FormField, FormLabel, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -12,9 +15,10 @@ export default {
     readOnly: false
   },
   argTypes: {
-    readOnly: { name: 'Read Only' }
+    readOnly: {
+      name: 'Read Only'
+    }
   },
-  title: 'Form/Field',
   component: FormField,
   parameters: {
     docs: {
@@ -22,32 +26,44 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Field'
 }
 
+const schema = object().shape({
+  email: string()
+    .required('Please Enter a valid email')
+    .email(),
+  password: string()
+    .required('Please Enter a password')
+    .min(8, 'Password is too short - should be 8 chars minimum.')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+      'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
+    )
+})
+
 const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm()
+  const { errors, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
+  })
+
   const onSubmit = data => {}
 
   const defaultProps = {
     errors: errors,
-    name: 'email',
     register: register,
-
     ...props
   }
-
-  const pattern =
-    '/^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/'
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <FormLabel label='Email'>
-        <FormField {...defaultProps} regExp={pattern} />
+        <FormField {...defaultProps} name='email' />
       </FormLabel>
 
-      <FormLabel label='Name'>
-        <FormField {...defaultProps} minLength={10} defaultValue='Fred' name='fred' />
+      <FormLabel label='Password'>
+        <FormField {...defaultProps} name='password' type='password' />
       </FormLabel>
 
       <Button content='Submit' type='submit' />

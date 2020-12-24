@@ -16,7 +16,9 @@ export const OffCanvasForm = ({ onSubmit }) => {
     brand: string().required(),
     preferences: string().required(),
     suggestions: string().required(),
-    email: string().required(),
+    email: string()
+      .required('Please Enter an email')
+      .email(),
     password: string().required()
   })
 

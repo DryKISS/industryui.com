@@ -11,7 +11,6 @@ import { bool, object, oneOfType, string } from 'prop-types'
 import {
   Alert,
   Button,
-  // Checkbox,
   FormField,
   Form,
   FormLabel,
@@ -52,18 +51,6 @@ export const Login = ({
     }
   }
 
-  // let CHECKBOX_REMEMBER = null
-
-  // if (remember) {
-  //   CHECKBOX_REMEMBER = [
-  //     {
-  //       id: 'remember',
-  //       label: 'Remember me',
-  //       isChecked: remember
-  //     }
-  //   ]
-  // }
-
   return (
     <>
       <PageHeading center heading={heading} divider={false} />
@@ -97,8 +84,6 @@ export const Login = ({
             <a>{showPass ? 'Hide Password' : 'Show Password'}</a>
           </ShowPassword>
         )}
-
-        {/* {remember && <Checkbox change={change} data={CHECKBOX_REMEMBER} />} */}
 
         <div className='text-right'>
           <Button
