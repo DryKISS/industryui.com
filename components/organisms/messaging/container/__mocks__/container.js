@@ -20,7 +20,7 @@ export const messages = [
     to: 'internal',
     pictureId: null,
     statusText: 'delivered',
-    time: 'Mon 4 Nov 2019 11:59',
+    time: 'Mon 1 Nov 2019 11:59',
     type: 'in',
     more: false
   },
@@ -36,7 +36,7 @@ export const messages = [
     to: 'internal',
     pictureId: null,
     statusText: 'delivered',
-    time: 'Mon 4 Nov 2019 11:59',
+    time: 'Mon 1 Nov 2019 11:59',
     type: 'in',
     more: true
   },
@@ -49,7 +49,7 @@ export const messages = [
     to: 'all',
     pictureId: null,
     statusText: 'sent',
-    time: 'Mon 4 Nov 2019 13:00',
+    time: 'Mon 3 Nov 2019 13:00',
     type: 'in'
   },
   {
@@ -60,7 +60,7 @@ export const messages = [
     to: 'customer',
     pictureId: null,
     statusText: 'sent',
-    time: 'Mon 4 Nov 2019 13:11',
+    time: 'Mon 3 Nov 2019 13:11',
     type: 'out'
   },
   {
@@ -73,7 +73,7 @@ export const messages = [
     to: 'internal',
     pictureId: null,
     statusText: 'delivered',
-    time: 'Mon 4 Nov 2019 13:13',
+    time: 'Mon 3 Nov 2019 13:13',
     type: 'in'
   },
   {
@@ -100,6 +100,25 @@ export const messages = [
     type: 'out'
   },
   {
+    attachments: [
+      {
+        src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+        type: 'image'
+      },
+      {
+        src:
+          'https://www.genesis-publications.com/assets/pages/00001468/jeff-beck-2018-concert-news-5560486.jpg',
+        type: 'image'
+      },
+      {
+        src: 'https://i.ytimg.com/vi/xjmzca8uqlE/maxresdefault.jpg',
+        type: 'image'
+      },
+      {
+        src: 'https://i.imgur.com/j4vJ4ea.jpg',
+        type: 'image'
+      }
+    ],
     content: 'Trabajo completado.',
     icon: 'notification',
     id: 7,
@@ -107,7 +126,7 @@ export const messages = [
     to: 'all',
     pictureId: null,
     statusText: 'sent',
-    time: 'Mon 4 Nov 2019 14:25',
+    time: 'Mon 5 Nov 2019 14:25',
     type: 'in'
   }
 ]

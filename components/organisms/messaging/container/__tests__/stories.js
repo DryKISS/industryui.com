@@ -110,11 +110,13 @@ export const main = args => {
       id: Math.floor(Math.random() * 1000),
       issueId: 1,
       pictureId: null,
+
       statusText: 'status from server',
       time: 'ddd D MMM YYYY HH:mm',
       to: 'all',
       type: 'out',
-      ...(message.voice && { voice: URL.createObjectURL(message.voice) })
+      ...(message.voice && { voice: URL.createObjectURL(message.voice) }),
+      ...(message.replyTo && { replyTo: message.replyTo })
     }
     // mimic the server delay and response(response is msg which should be passed to service as [msg])
     setTimeout(() => {

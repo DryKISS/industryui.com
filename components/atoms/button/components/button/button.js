@@ -139,6 +139,7 @@ const StyledButton = styled.button`
   ${theme => DIMENSION(theme)}
   ${theme => DISPLAY(theme)}
   ${theme => SPACER(theme)}
+
    ${({ theme, noPadding }) =>
      noPadding &&
      css`

@@ -11,15 +11,16 @@ import styled, { css } from 'styled-components'
 // UI
 import { MessageNames, MessagingCommunicationService, MessagingActions } from 'components/services'
 import { Microphone } from './microphone'
-import { Close, Text } from '../../../../'
+import { Close, Text, toHHMMSS } from '../../../../'
 
 let AudioRecorder
 let mpegEncoder
 
 export const VoiceRecorder = props => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
-
+  const [timer, settimer] = useState(0)
   const recorder = useRef()
+  const timerInterval = useRef()
 
   const canSendData = useRef(true)
 
@@ -38,8 +39,18 @@ export const VoiceRecorder = props => {
 
   useEffect(() => {
     loadModules()
+    return () => {
+      stopTimer()
+    }
   }, [])
 
+  const stopTimer = () => {
+    clearInterval(timerInterval.current)
+    timerInterval.current = null
+    setTimeout(() => {
+      settimer(0)
+    }, 300)
+  }
   const handleStartRecord = () => {
     window &&
       window.navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -56,10 +67,14 @@ export const VoiceRecorder = props => {
           } else {
             canSendData.current = true
           }
+          stopTimer()
         })
 
         // Start recording
         recorder.current.start()
+        timerInterval.current = setInterval(() => {
+          settimer(time => time + 1)
+        }, 1000)
         setisRecording(true)
       })
   }
@@ -69,6 +84,7 @@ export const VoiceRecorder = props => {
     // Remove "recording" icon from browser tab
     recorder.current.stream.getTracks().forEach(i => i.stop())
     setisRecording(false)
+    stopTimer()
   }
   const handleCancelRecord = () => {
     canSendData.current = false
@@ -80,11 +96,26 @@ export const VoiceRecorder = props => {
     return (
       <>
         <OverLay isRecording={isRecording}>
-          <Text content='Recording... ' context='blackText' />
+          {isRecording && (
+            <OverlayRecorderIconWrapper>
+              <Microphone isRecording />
+            </OverlayRecorderIconWrapper>
+          )}
+          <Text content='Recording' context='blackText' />
+
+          <Loader>
+            <Dot>.</Dot>
+            <Dot>.</Dot>
+            <Dot>.</Dot>
+          </Loader>
+
+          <TimerWrapper>
+            {toHHMMSS({ sec: timer + '', hasMinute: true, hasSecond: true })}
+          </TimerWrapper>
           <Close click={handleCancelRecord} context='danger' />
         </OverLay>
         <Wrapper onClick={isRecording ? handleStopRecord : handleStartRecord}>
-          <Microphone isRecording={isRecording} />
+          {isRecording ? <StopIcon /> : <Microphone />}
         </Wrapper>
       </>
     )
@@ -92,6 +123,45 @@ export const VoiceRecorder = props => {
 
   return <div>{showRecorder(props)}</div>
 }
+
+const StopIcon = styled.div`
+  background-color: ${({ theme }) => theme.COLOUR.danger};
+  border-radius: 3px;
+  height: 1rem;
+  margin-top: -0.5rem;
+  width: 1rem;
+`
+const Dot = styled.span``
+const Loader = styled.div`
+  margin-top: -0.25rem;
+  @keyframes blink {
+    50% {
+      color: transparent;
+    }
+  }
+  ${Dot} {
+    animation: 1s blink infinite;
+    font-size: 1.5rem;
+  }
+ /*prettier-ignore */
+  ${Dot}:nth-child(2) {
+    animation-delay: 250ms;
+  }
+  /*prettier-ignore */
+  ${Dot}:nth-child(3) {
+    animation-delay: 500ms;
+  }
+`
+const OverlayRecorderIconWrapper = styled.div`
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+`
+const TimerWrapper = styled.div`
+  color: ${({ theme: { MESSAGING } }) => MESSAGING.timerColour};
+  flex: 1;
+  text-align: end;
+  padding-right: 1rem;
+`
 const Wrapper = styled.div`
   cursor: pointer;
   padding-top: 0.25rem;
@@ -101,7 +171,6 @@ const OverLay = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
   display: flex;
   height: 45px;
-  justify-content: space-between;
   left: 4rem;
   overflow: hidden;
   position: absolute;

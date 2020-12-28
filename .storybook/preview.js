@@ -21,6 +21,7 @@ import 'draft-js/dist/Draft.css'
 import 'draft-js-mention-plugin/lib/plugin.css'
 import 'draft-js-hashtag-plugin/lib/plugin.css'
 import 'draft-js-emoji-plugin/lib/plugin.css'
+import 'cropperjs/dist/cropper.css'
 
 const actionWithPromise = () => {
   action('clicked link')()

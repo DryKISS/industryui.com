@@ -25,10 +25,10 @@ export const Dropdown = ({
   elementType,
   items,
   onChange,
-
+  defaultOpen,
   position
 }) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(defaultOpen)
 
   const node = useRef()
 

@@ -40,6 +40,7 @@
     "stylelint": "stylelint './components/**/*.js'",
     "test": "yarn run prettier && yarn run stylelint",
     "clean-dist": "rm -rf ./dist",
+    "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
     "build": "cross-env NODE_ENV=build rollup -c",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
     "test:snapshot": "cross-env ENVIRONMENT=test jest",
@@ -85,6 +86,11 @@
     ],
     "parser": "babel-eslint"
   },
+  "storybook-deployer": {
+    "gitUsername": "iwarner",
+    "gitEmail": "ian.warner@drykiss.com",
+    "commitMessage": "Deploy Storybook"
+  },
   "dependencies": {
     "@apollo/client": "^3.2.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -128,6 +134,7 @@
     "next": "^10.0.3",
     "react-big-calendar": "^0.28.0",
     "react-color": "^2.18.1",
+    "react-cropper": "^2.1.4",
     "react-datepicker": "^3.2.2",
     "react-draft-wysiwyg": "^1.14.5",
     "react-dropzone": "^11.2.0",
@@ -156,6 +163,7 @@
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-storyshots": "^6.1.11",
     "@storybook/react": "^6.1.11",
+    "@storybook/storybook-deployer": "^2.8.7",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",

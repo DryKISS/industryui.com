@@ -12,12 +12,14 @@ import { MessageNames, MessagingSubscriber, MessagingActions } from 'components/
 import styled, { css } from 'styled-components'
 
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
+import { DateDiff } from 'components/utils'
 
-const renderMessage = ({ index, parent, key, style }, messages, cache) => {
+const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
   return (
     <CellMeasurer cache={cache} key={index} parent={parent} columnIndex={0} rowIndex={index}>
       <MessageContainer type={messages[index].type} style={style}>
         <Message
+          config={config}
           message={messages[index]}
           prevType={messages[index].type}
           type={messages[index].type}
@@ -27,15 +29,29 @@ const renderMessage = ({ index, parent, key, style }, messages, cache) => {
   )
 }
 
+const cacheConfig = { fixedWidth: true, defaultHeight: 50 }
+
 export const MessageList = memo(
-  ({ initialMessages, onMessageRecieved }) => {
+  ({ initialMessages, onMessageRecieved, config }) => {
     const listRef = useRef(null)
     const widthRef = useRef(null)
     const heightRef = useRef(null)
-    const [cache, setcache] = useState(
-      new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 })
-    )
+    const [Messages, setMessages] = useState(initialMessages)
 
+    const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
+
+    for (let i = 0; i < Messages.length; i++) {
+      if (i !== 0) {
+        const current = new Date(Messages[i].time)
+        const previous = new Date(Messages[i - 1].time)
+        const diff = DateDiff.inDays(previous, current)
+        if (diff > 0) {
+          Messages[i].headerTime = Messages[i].time.slice(0, 14)
+        }
+      } else {
+        Messages[i].headerTime = Messages[i].time.slice(0, 14)
+      }
+    }
     const scrollToBottom = () => {
       window &&
         window.requestAnimationFrame(() => {
@@ -53,12 +69,10 @@ export const MessageList = memo(
       setMessages(() => [...messages])
       window &&
         window.requestAnimationFrame(() => {
-          setcache(() => new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+          setcache(() => new CellMeasurerCache(cacheConfig))
           listRef.current && listRef.current.scrollToRow(Messages.length)
         })
     }
-
-    const [Messages, setMessages] = useState(initialMessages)
 
     useEffect(() => {
       scrollToBottom()
@@ -95,7 +109,7 @@ export const MessageList = memo(
             heightRef.current = height
             window &&
               window.requestAnimationFrame(() => {
-                setcache(new CellMeasurerCache({ fixedWidth: true, defaultHeight: 50 }))
+                setcache(new CellMeasurerCache(cacheConfig))
               })
           }
           return (
@@ -103,10 +117,11 @@ export const MessageList = memo(
               style={{ padding: '0.5rem 0' }}
               deferredMeasurementCache={cache}
               height={height}
+              overscanRowCount={10}
               ref={listRef}
               rowCount={Messages.length}
               rowHeight={cache.rowHeight}
-              rowRenderer={e => renderMessage(e, Messages, cache)}
+              rowRenderer={e => renderMessage(e, Messages, cache, config)}
               scrollToIndex={Messages.length - 1}
               width={width}
             />
