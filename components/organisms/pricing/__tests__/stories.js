@@ -8,7 +8,7 @@ import { Pricing } from 'components'
 import Readme from '../README.md'
 
 const handlePlanSelect = e => {
-  console.log(e)
+  console.info(e)
 }
 
 export default {

@@ -103,7 +103,7 @@ const BaseComponent = memo(
     })
 
     const onSubmit = data => {
-      console.log('data: ', data)
+      console.info('data: ', data)
     }
 
     const defaultProps = {
@@ -129,7 +129,6 @@ const BaseComponent = memo(
     )
   },
   (prevProps, nextProps) => {
-    console.log('Props', prevProps, nextProps)
     return true
   }
 )
@@ -168,7 +167,6 @@ export const chained = () => {
   const CustomerOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Customers')
         resolve(Customers)
       }, 1000)
     })
@@ -176,16 +174,12 @@ export const chained = () => {
   const UserOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Users')
         resolve(users)
       }, 2000)
     })
 
   useEffect(() => {
     if (watchCustomer !== prevCustomer) {
-      // Debug
-      // console.log('Changed Customer', prevCustomer, watchCustomer)
-
       if (watchCustomer === null) {
         setUsers(null)
       } else if (watchCustomer.value === '2') {
@@ -199,7 +193,6 @@ export const chained = () => {
   }, [watchCustomer])
 
   const onSubmit = data => {
-    console.log(data)
     setData(data)
   }
 
@@ -273,7 +266,6 @@ export const chainedNoDefault = () => {
 
   // GraphQL happens before this and sets the defaults
   const watchCustomer = watch('customer', null)
-  const watchUser = watch('user', null)
 
   const [data, setData] = useState()
 
@@ -281,12 +273,10 @@ export const chainedNoDefault = () => {
   const [user] = useState(null)
 
   const prevCustomer = usePrevious(watchCustomer)
-  const prevUser = usePrevious(watchUser)
 
   const CustomerOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Customers')
         resolve(Customers)
       }, 1000)
     })
@@ -294,24 +284,17 @@ export const chainedNoDefault = () => {
   const UserOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Users')
         resolve(users)
       }, 2000)
     })
 
   useEffect(() => {
     if (watchCustomer !== prevCustomer) {
-      console.log('Changed Customer', prevCustomer, watchCustomer)
-      console.log('Changed User', prevUser, watchUser)
-
       if (watchCustomer === null) {
-        console.log('reset')
         setUsers(null)
       } else if (watchCustomer.value === '2') {
-        console.log('Avison')
         setUsers(UsersAvison)
       } else {
-        console.log('Housing')
         setUsers(UsersHousing)
       }
 
@@ -320,7 +303,6 @@ export const chainedNoDefault = () => {
   }, [watchCustomer])
 
   const onSubmit = data => {
-    console.log(data)
     setData(data)
   }
 

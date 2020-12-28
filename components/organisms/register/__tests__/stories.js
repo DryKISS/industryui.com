@@ -60,31 +60,3 @@ export const main = args => {
     </>
   )
 }
-
-// export const error = () => {
-//   const { change, form } = useForm(initialState)
-//   const [error, setError] = useState()
-
-//   const submit = e => {
-//     requestSimulator('false').catch(e => {
-//       console.error('request false ', e.message)
-//       setError(e)
-//     })
-//   }
-
-//   return (
-//     <Register
-//       change={change}
-//       nameFirst={form.nameFirst}
-//       nameLast={form.nameLast}
-//       email={form.email}
-//       password={form.password}
-//       repeatPassword={form.repeatPassword}
-//       marketing={form.marketing}
-//       terms={form.terms}
-//       pathLogin='/account/login'
-//       submit={submit}
-//       errorSubmit={error}
-//     />
-//   )
-// }

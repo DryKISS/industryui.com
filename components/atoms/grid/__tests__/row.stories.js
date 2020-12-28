@@ -16,7 +16,7 @@ export default {
       }
     }
   },
-  title: 'Atoms/Grid'
+  title: 'Atoms/Grid/Row'
 }
 
 export const row = args => (

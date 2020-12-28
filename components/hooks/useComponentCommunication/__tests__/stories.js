@@ -41,8 +41,8 @@ const Sender = () => {
 
 const Reciever = () => {
   const [Payload, setPayload] = useState()
+
   const logPayload = payload => {
-    console.log(payload)
     setPayload(payload)
   }
 

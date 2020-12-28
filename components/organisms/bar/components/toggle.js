@@ -23,9 +23,8 @@ export const BarToggle = ({ onClick, open, placement }) => {
 const OpenButton = styled.div`
   border-radius: 0.25rem;
   cursor: pointer;
-  display: none;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 
   svg {
     right: 0.2rem;
@@ -38,13 +37,12 @@ const OpenButton = styled.div`
   ${({ placement }) =>
     (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
     css`
-    background-color:${({ theme }) => theme.BAR.background};
-    border-top-${placement}-radius: 0;
-    border-bottom-${placement}-radius: 0;
-    display: block;
-    width: 1.5rem;
-    height: 3rem;
-    ${placement}: 100%;
+      background-color:${({ theme }) => theme.BAR.background};
+      border-top-${placement}-radius: 0;
+      border-bottom-${placement}-radius: 0;
+      width: 1.5rem;
+      height: 3rem;
+      ${placement}: 100%;
     `}
 `
 

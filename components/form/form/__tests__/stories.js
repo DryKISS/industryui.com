@@ -95,7 +95,7 @@ const all = ({ ...args }) => {
   })
 
   const onSubmit = data => {
-    console.log(data)
+    console.info(data)
   }
 
   const colMd = args.ColumnWidth

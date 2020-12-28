@@ -1,4 +1,4 @@
 /**
- * Components - Organisms - Bar
+ * Components - Organisms - Bar - Components
  */
 export * from './bar'

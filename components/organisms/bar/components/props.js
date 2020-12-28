@@ -1,26 +1,26 @@
 /**
- * Components - Organisms - Bar - Props
+ * Components - Organisms - Bar - Components - Props
  */
 
 // React
-import { bool, number, oneOf, string } from 'prop-types'
+import { bool, node, number, oneOf, string } from 'prop-types'
 
 // UI
 import { BarConfig } from '../components/config'
 
 export const BarPropTypes = {
-  children: string,
+  children: node,
   minSize: string,
   open: bool,
   placement: oneOf(Object.values(BarConfig.PLACEMENT)),
   variant: oneOf(['push', 'overlay']),
   width: number,
-  withToggle: bool
+  toggle: bool
 }
 
 export const BarDefaultProps = {
   placement: 'left',
-  variant: 'push',
+  variant: 'overlay',
   width: 10,
-  withToggle: true
+  toggle: true
 }

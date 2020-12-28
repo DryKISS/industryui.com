@@ -23,7 +23,7 @@ export default {
       }
     }
   },
-  title: 'Form/Field'
+  title: 'Form/Field/Currency'
 }
 
 const schema = object().shape({

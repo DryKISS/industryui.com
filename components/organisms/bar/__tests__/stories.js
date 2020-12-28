@@ -6,9 +6,12 @@
 import { ControlTypes } from 'decorators'
 
 // UI
-import { Bar } from 'components'
+import { Bar, Divider, List, ListItem } from 'components'
 import { BarConfig } from '../components/config'
 import Readme from '../README.md'
+
+// Data
+import { barMock } from '../__mocks__/barMock'
 
 // Style
 import styled from 'styled-components'
@@ -20,7 +23,7 @@ export default {
     placement: BarConfig.PLACEMENT.LEFT,
     variant: BarConfig.VARIANT.OVERLAY,
     width: 15,
-    withToggle: true
+    toggle: true
   },
   component: Bar,
   parameters: {
@@ -40,7 +43,17 @@ const BaseComponent = args => {
 
   return (
     <StyledWrapper>
-      <Bar {...defaultProps} />
+      <Bar {...defaultProps}>
+        <List group>
+          {barMock.map(({ Component, divider, icon, name, to }, index) => {
+            return (
+              <ListItem key={index}>
+                {divider ? <Divider size='sm' /> : Component ? <Component /> : to ? name : name}
+              </ListItem>
+            )
+          })}
+        </List>
+      </Bar>
     </StyledWrapper>
   )
 }

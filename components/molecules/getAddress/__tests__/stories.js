@@ -43,8 +43,9 @@ const schema = object().shape({
 
 export const main = args => {
   const { errors, handleSubmit, register, setValue } = useForm({ resolver: yupResolver(schema) })
+
   const onSubmit = data => {
-    console.log(data)
+    console.info(data)
   }
 
   return (

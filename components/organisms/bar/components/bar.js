@@ -1,19 +1,20 @@
 /**
- * Components - Organisms - Bar
+ * Components - Organisms - Bar - Components - Bar
  */
 
 // React
 import { useState } from 'react'
 
 // UI
-import { BarConfig } from './config'
+import { BarOverlay } from './overlay'
 import { BarToggle } from './toggle'
+import { BarWrapper } from './wrapper'
 import { BarPropTypes, BarDefaultProps } from './props'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-export const Bar = ({ children, minSize, open, placement, variant, width, withToggle }) => {
+export const Bar = ({ children, minSize, open, placement, variant, width, toggle }) => {
   const [IsOpen, setIsOpen] = useState(open ?? true)
 
   const toggleOpen = () => {
@@ -22,19 +23,18 @@ export const Bar = ({ children, minSize, open, placement, variant, width, withTo
 
   return (
     <>
-      <StyledBarWrapper
+      <BarWrapper
         open={IsOpen}
         placement={placement}
         variant={variant}
         width={width}
         minSize={minSize}
       >
-        {withToggle && <BarToggle onClick={toggleOpen} open={IsOpen} placement={placement} />}
+        {toggle && <BarToggle onClick={toggleOpen} open={IsOpen} placement={placement} />}
+        <StyledContent open={IsOpen}>{children}</StyledContent>
+      </BarWrapper>
 
-        {children}
-      </StyledBarWrapper>
-
-      <StyledOverlay
+      <BarOverlay
         onClick={toggleOpen}
         open={IsOpen}
         placement={placement}
@@ -45,84 +45,8 @@ export const Bar = ({ children, minSize, open, placement, variant, width, withTo
   )
 }
 
-const StyledOverlay = styled.div`
-  transition: ${({ theme, placement }) => css`
-  opacity ${theme.BAR.transitionDuration} ${theme.BAR.transitionTiming},
-  ${placement} ${theme.BAR.transitionDuration} ${theme.BAR.transitionTiming};
-  `};
-  ${({ placement, variant, width }) =>
-    variant === BarConfig.VARIANT.OVERLAY &&
-    (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
-    css`
-      width: calc(100% - ${width}rem);
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      opacity: 1;
-      top: 0;
-      position: absolute;
-      ${placement}: ${width}rem;
-    `}
-  ${({ open, placement }) =>
-    !open &&
-    css`
-      opacity: 0;
-      pointer-events: none;
-      width: 100%;
-      ${placement}: 0;
-    `}
-`
-
-const StyledBarWrapper = styled.div`
-  align-items: center;
-  background-color: ${({ theme }) => theme.BAR.background};
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: relative;
-  transition-duration: ${({ theme }) => theme.BAR.transitionDuration};
-  transition-property: left, opacity, right, width;
-  transition-timing-function: ${({ theme }) => theme.BAR.transitionTiming};
-
-  ${({ minSize, open, placement, theme, width }) =>
-    placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM
-      ? css`
-          width: 100%;
-          height: ${minSize ?? theme.BAR.minSize};
-          flex-direction: row;
-        `
-      : open
-      ? css`
-          width: ${width}rem;
-        `
-      : css`
-          width: ${minSize ?? theme.BAR.minSize};
-        `}
-
-  ${({ minSize, open, placement, theme, variant }) =>
-    variant === BarConfig.VARIANT.OVERLAY
-      ? css`
-          position: absolute;
-          opacity: 1;
-          ${placement}: 0;
-          ${(placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
-            css`
-              top: 0;
-              align-items: center;
-            `}
-            ${!open &&
-              css`
-            margin-${placement}:-${minSize ?? theme.BAR.minSize};
-            background-color: transparent;
-            box-shadow: none;
-            `}
-          ${(placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM) &&
-            css`
-              left: 0;
-            `}
-        `
-      : css`
-          float: ${placement};
-        `}
+const StyledContent = styled.div`
+  display: ${({ open }) => !open && 'none'};
 `
 
 Bar.propTypes = BarPropTypes

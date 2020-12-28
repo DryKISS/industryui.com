@@ -1,5 +1,5 @@
 /**
- * Components - Organisms - Bar
+ * Components - Organisms - Bar - Components - Overlay
  */
 
 // React
@@ -11,19 +11,7 @@ import { BarConfig } from './config'
 // Style
 import styled, { css } from 'styled-components'
 
-export const BarOverlay = ({ onClick, open, placement, variant, width }) => {
-  return (
-    <StyledOverlay
-      onClick={onClick}
-      open={open}
-      placement={placement}
-      variant={variant}
-      width={width}
-    />
-  )
-}
-
-const StyledOverlay = styled.div`
+export const BarOverlay = styled.div`
   transition: ${({ theme: { BAR }, placement }) => css`
     opacity ${BAR.transitionDuration} ${BAR.transitionTiming}, ${placement} ${BAR.transitionDuration} ${BAR.transitionTiming};
   `};

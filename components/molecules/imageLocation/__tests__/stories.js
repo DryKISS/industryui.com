@@ -83,7 +83,7 @@ export const UsedInForm = () => {
   })
 
   const onFormSubmit = data => {
-    console.log(data)
+    console.info(data)
   }
 
   return (

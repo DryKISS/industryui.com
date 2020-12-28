@@ -19,7 +19,7 @@ export default {
       }
     }
   },
-  title: 'Atoms/Grid'
+  title: 'Atoms/Grid/Container'
 }
 
 export const container = args => (
