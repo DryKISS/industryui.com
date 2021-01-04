@@ -45,7 +45,7 @@ const Webcam = withTheme(
       onUserMediaError: () => {},
       screenshotFormat: 'image/webp',
       screenshotQuality: 0.8,
-      style: { borderRadius: '.5rem .5rem 0 0' },
+      // style: { borderRadius: '.5rem .5rem 0 0' },
       width: 824
     }
 

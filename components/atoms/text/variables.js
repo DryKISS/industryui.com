@@ -1,15 +1,8 @@
 /**
  * Theme - Variables - Text
  */
-import { TYPOGRAPHY } from '../../theme/variables/typography'
-
 export const TEXT_STYLE = {
   DEFAULT_COLOUR: 'rgb(102, 102, 102)',
-  FONT_FAMILY: {
-    default: TYPOGRAPHY.font,
-    xxl: 'JetBrains Mono ExtraBold',
-    xxxl: 'JetBrains Mono ExtraBold'
-  },
   FONT_SIZE: {
     xxs: '0.625rem',
     xs: '0.75rem',

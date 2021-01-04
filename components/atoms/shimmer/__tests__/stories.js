@@ -7,8 +7,12 @@ import { Shimmer } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: { duration: 700, height: '50px', hexColour: '#f6f7f8', width: '200px' },
-
+  args: {
+    duration: 700,
+    height: '50px',
+    hexColour: '#f6f7f8',
+    width: '200px'
+  },
   component: Shimmer,
   parameters: {
     docs: {

@@ -1,19 +1,37 @@
 /**
- * Password Change
+ * Organisms - Password Change
  */
 
 // React
 import { useState } from 'react'
-import { bool } from 'prop-types'
+import { bool, func } from 'prop-types'
 
 // UI
-import { Alert, Button, FormField, Form, FormLabel, PageHeading, useForm } from '../../'
+import {
+  Alert,
+  Button,
+  FormField,
+  Form,
+  FormLabel,
+  PageHeading,
+  useForm,
+  yupResolver
+} from '../../'
 
-export const PasswordChange = ({ showPlaceholder }) => {
-  const { errors, formState, handleSubmit, register, watch } = useForm({ mode: 'onChange' })
+import { PasswordChangeSchema as schema } from './schema'
+
+export const PasswordChange = ({ showPlaceholder, submit }) => {
+  const { errors, formState, handleSubmit, register, watch } = useForm({
+    resolver: yupResolver(schema)
+  })
+
   const [error] = useState(false)
 
-  const submit = data => {}
+  const defaultOptions = {
+    errors: errors,
+    register: register,
+    type: 'password'
+  }
 
   return (
     <>
@@ -24,31 +42,25 @@ export const PasswordChange = ({ showPlaceholder }) => {
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Old password'>
           <FormField
-            errors={errors}
+            {...defaultOptions}
             name='passwordOld'
             placeholder={showPlaceholder ? 'Old Password' : ''}
-            register={register}
-            type='password'
           />
         </FormLabel>
 
         <FormLabel label='New password'>
           <FormField
-            errors={errors}
+            {...defaultOptions}
             name='password'
             placeholder={showPlaceholder ? 'New Password' : ''}
-            register={register}
-            type='password'
           />
         </FormLabel>
 
         <FormLabel label='Confirm password'>
           <FormField
-            errors={errors}
+            {...defaultOptions}
             name='passwordConfirm'
             placeholder={showPlaceholder ? 'Confirm Password' : ''}
-            register={register}
-            type='password'
             validate={v => v === watch('password')}
           />
         </FormLabel>
@@ -57,8 +69,7 @@ export const PasswordChange = ({ showPlaceholder }) => {
           block
           content='Submit'
           context='primary'
-          disabled={!formState.isValid}
-          size='lg'
+          disabled={formState.isSubmitting}
           type='submit'
         />
       </Form>
@@ -67,5 +78,10 @@ export const PasswordChange = ({ showPlaceholder }) => {
 }
 
 PasswordChange.propTypes = {
-  showPlaceholder: bool
+  showPlaceholder: bool,
+  submit: func.isRequired
+}
+
+PasswordChange.defaultProps = {
+  showPlaceholder: false
 }

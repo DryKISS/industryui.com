@@ -7,7 +7,10 @@ import { DetailsText } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/DetailsText',
+  args: {
+    content: 'Content',
+    text: 'Text'
+  },
   component: DetailsText,
   parameters: {
     docs: {
@@ -15,7 +18,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/DetailsText'
 }
 
-export const main = () => <DetailsText content='Caption' text='value for this property' />
+export const main = args => <DetailsText {...args} />

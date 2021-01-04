@@ -5,6 +5,7 @@
 storybook-static
 
 # Environment
+dist
 .env
 .env.local
 .env.development.local

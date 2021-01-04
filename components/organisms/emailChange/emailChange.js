@@ -1,19 +1,39 @@
 /**
- * Email Change
+ * Organisms - Email Change
  */
 
 // React
 import { useState } from 'react'
-import { bool } from 'prop-types'
+import { bool, func } from 'prop-types'
 
 // UI
-import { Alert, Button, FormField, Form, FormLabel, PageHeading, useForm } from '../../'
+import {
+  Alert,
+  Button,
+  FormField,
+  Form,
+  FormLabel,
+  PageHeading,
+  Space,
+  Text,
+  useForm,
+  yupResolver
+} from '../../'
 
-export const EmailChange = ({ showPlaceholder }) => {
-  const { errors, formState, handleSubmit, register } = useForm({ mode: 'onChange' })
+import { EmailChangeSchema as schema } from './schema'
+
+export const EmailChange = ({ showPlaceholder, submit }) => {
+  const { errors, formState, handleSubmit, register } = useForm({
+    resolver: yupResolver(schema)
+  })
+
   const [error] = useState(false)
 
-  const submit = data => {}
+  const defaultOptions = {
+    errors: errors,
+    register: register,
+    type: 'password'
+  }
 
   return (
     <>
@@ -24,11 +44,10 @@ export const EmailChange = ({ showPlaceholder }) => {
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
           <FormField
+            {...defaultOptions}
             autoFocus
-            errors={errors}
             name='email'
-            placeholder={showPlaceholder ? 'Email' : ''}
-            register={register}
+            placeholder={showPlaceholder && 'Email'}
           />
         </FormLabel>
 
@@ -36,21 +55,23 @@ export const EmailChange = ({ showPlaceholder }) => {
           block
           content='Submit'
           context='primary'
-          disabled={!formState.isValid}
-          size='lg'
+          disabled={formState.isSubmitting}
           type='submit'
         />
 
-        <p>
+        <Space />
+
+        <Text>
           We will send you a re-validation email after this. Please also check your spam folder.
-        </p>
+        </Text>
       </Form>
     </>
   )
 }
 
 EmailChange.propTypes = {
-  showPlaceholder: bool
+  showPlaceholder: bool,
+  submit: func.isRequired
 }
 
 EmailChange.defaultProps = {

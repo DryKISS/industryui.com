@@ -3,7 +3,7 @@
  */
 
 // Layout
-import { Page } from '../../'
+import { Page, Text } from '../../'
 
 export const Error404 = () => {
   const meta = {
@@ -18,10 +18,10 @@ export const Error404 = () => {
 
   return (
     <Page heading='404 ERROR PAGE – NOT FOUND' meta={meta}>
-      <p>
+      <Text>
         The page you were looking for no longer exists or never did. Please use the links at the top
         of your screen to get back in the game, or click here to go home and start again.
-      </p>
+      </Text>
     </Page>
   )
 }

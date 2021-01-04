@@ -21,7 +21,9 @@ export default {
 }
 
 export const main = () => {
-  const onSubmit = data => console.log(data)
+  const onSubmit = data => {
+    console.info(data)
+  }
 
   const { control, handleSubmit, setValue } = useForm()
   const name = 'draftjs'

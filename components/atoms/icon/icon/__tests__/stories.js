@@ -2,19 +2,17 @@
  * Icon
  */
 
-// Stroybook
+// Storybook
 import { ControlTypes } from 'decorators'
 
 // UI
 import { arrayOfValues, blendLinearRgb, Card, CONTEXT, Heading, Icon, SIZE } from 'components'
-
 import Readme from '../README.md'
 
 // Style
 import styled from 'styled-components'
 
 export default {
-  title: 'Atoms/Icon',
   component: Icon,
   parameters: {
     docs: {
@@ -22,8 +20,10 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Icon'
 }
+
 const ListIcons = {
   Copy: 'copy',
   Copyright: 'copyright',
@@ -31,13 +31,15 @@ const ListIcons = {
   Smile: 'smile',
   UserCircle: 'user-circle'
 }
+
 const IconPrefix = {
   Solid: 'fas',
   Regular: 'far'
 }
-const main = ({ ...args }) => {
+
+const main = args => {
   return (
-    <div>
+    <>
       <StyledCard>
         <StyledHeading
           content='Result'
@@ -249,11 +251,12 @@ const main = ({ ...args }) => {
           </StyledNote>
         </StyledBody>
       </StyledCard>
-    </div>
+    </>
   )
 }
 
 export const icons = main.bind({})
+
 icons.args = {
   border: false,
   context: CONTEXT.PRIMARY,
@@ -282,8 +285,8 @@ icons.argTypes = {
   }
 }
 
-const transformIcon = ({ ...args }) => (
-  <div>
+const transformIcon = args => (
+  <>
     <StyledCard>
       <StyledHeading
         content='Result'
@@ -422,66 +425,17 @@ const transformIcon = ({ ...args }) => (
         <Icon icon='images' prefix='fas' size='3x' pull='left' transform='rotate--270' />
       </StyledBody>
     </StyledCard>
-  </div>
+  </>
 )
+
 export const transform = transformIcon.bind({})
+
 transform.args = {
   transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
 }
 
-export const brands = () => (
-  <div>
-    <StyledCard>
-      <StyledHeading
-        content='Result'
-        style={{
-          background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
-        }}
-      />
-      <StyledBody>
-        <Icon icon='git' prefix='fab' size='3x' />
-        <StyledNote
-          style={{
-            background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
-            borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
-          }}
-        >
-          <Icon
-            icon='graduation-cap'
-            prefix='fas'
-            size='sm'
-            fixedWidth
-            context='success'
-            style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem'
-            }}
-          />
-          Free brands Font Awesome icons with 'fab' prefix.
-        </StyledNote>
-      </StyledBody>
-    </StyledCard>
-
-    <StyledCard>
-      <StyledBody>
-        <StyledHeadingH4
-          content='Brands'
-          style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
-          }}
-        />
-        <Icon icon='codepen' prefix='fab' size='3x' />
-        <Icon icon='github' prefix='fab' size='3x' />
-        <Icon icon='linkedin' prefix='fab' size='3x' />
-      </StyledBody>
-    </StyledCard>
-  </div>
-)
-
-export const layers = () => (
-  <div>
+export const layers = args => (
+  <>
     <StyledCard>
       <StyledHeading
         content='Result'
@@ -574,13 +528,14 @@ export const layers = () => (
         </span>
       </StyledBody>
     </StyledCard>
-  </div>
+  </>
 )
 
 const StyledCard = styled(Card)`
   border-radius: 0.5rem;
   overflow: hidden;
 `
+
 const StyledHeading = styled(Heading)`
   font-size: 0.875rem;
   font-weight: 700;
@@ -589,6 +544,7 @@ const StyledHeading = styled(Heading)`
   margin: 0;
   text-transform: uppercase;
 `
+
 const StyledHeadingH4 = styled(StyledHeading)`
   font-size: 1rem;
   letter-spacing: 0.03125rem;
@@ -596,12 +552,15 @@ const StyledHeadingH4 = styled(StyledHeading)`
   margin-bottom: 1rem;
   text-transform: none;
 `
+
 const StyledBody = styled.div`
   padding: 1.5rem;
 `
+
 const StyledBox = styled.div`
   display: flex;
 `
+
 const StyledNote = styled.div`
   display: flex;
   align-items: center;

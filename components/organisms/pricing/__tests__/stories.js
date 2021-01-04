@@ -7,9 +7,15 @@ import { pricingInfo } from '../__mocks__'
 import { Pricing } from 'components'
 import Readme from '../README.md'
 
+const handlePlanSelect = e => {
+  console.info(e)
+}
+
 export default {
-  args: {},
-  title: 'Organisms/Pricing',
+  args: {
+    pricingInfo: pricingInfo,
+    onPlanSelect: handlePlanSelect
+  },
   component: Pricing,
   parameters: {
     docs: {
@@ -17,15 +23,10 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Pricing'
 }
 
-const BaseComponent = (props = {}) => {
-  const handlePlanSelect = e => {
-    console.log(e)
-  }
-
-  return <Pricing {...props} pricingInfo={pricingInfo} onPlanSelect={handlePlanSelect} />
+export const main = args => {
+  return <Pricing {...args} />
 }
-
-export const main = args => <BaseComponent {...args} />

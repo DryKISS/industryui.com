@@ -19,6 +19,7 @@ const main = ({ ...args }) => {
       <Space {...args}>
         <Text>text1</Text>
       </Space>
+
       <Space {...args}>
         <Text>text2</Text>
       </Space>
@@ -35,7 +36,9 @@ space.args = {
   marginRight: 0,
   marginTop: 0
 }
+
 const control = { type: ControlTypes.Select, options: [0, ...arrayOfValues(SIZE)] }
+
 space.argTypes = {
   margin: {
     name: 'Margin',

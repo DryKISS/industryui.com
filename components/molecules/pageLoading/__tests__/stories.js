@@ -6,9 +6,9 @@
 import { PageLoading, LdsSpinner } from 'components'
 
 export default {
-  title: 'Molecules/PageLoading',
-  component: PageLoading
+  component: PageLoading,
+  title: 'Molecules/PageLoading'
 }
 
-export const main = () => <PageLoading indicator={<LdsSpinner />} />
-export const withChildren = () => <PageLoading>Loading...</PageLoading>
+export const main = args => <PageLoading {...args} indicator={<LdsSpinner />} />
+export const withChildren = args => <PageLoading {...args}>Loading...</PageLoading>

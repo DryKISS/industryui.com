@@ -1,10 +1,10 @@
 /**
- * Theme - Variables - Bar
+ * Components - Organisms - Bar - Variables
  */
 import { COLOUR } from '../../theme/variables/colour'
 
 export const BAR = {
-  background: '#003753',
+  background: COLOUR.dark,
   highlight: COLOUR.primary,
   linkColour: COLOUR.light,
   linkHover: 'rgba(0, 0, 0, 0.75)',

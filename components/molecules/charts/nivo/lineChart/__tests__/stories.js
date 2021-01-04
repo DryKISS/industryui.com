@@ -11,7 +11,7 @@ import { LineChart, objectWithoutProperties } from 'components'
 import Readme from '../README.md'
 
 // Mocks
-import { BigData, Data } from '../__mocks__/nivoLine'
+import { Big, Line } from '../__mocks__'
 
 // Styled Components
 import styled from 'styled-components'
@@ -87,7 +87,7 @@ const BaseComponent = props => {
   const restOfProps = objectWithoutProperties(props, ['args'])
   return (
     <StyledWrapper>
-      <LineChart data={Data} {...restOfProps} {...args} />
+      <LineChart data={Line} {...restOfProps} {...args} />
     </StyledWrapper>
   )
 }
@@ -117,7 +117,7 @@ export const bigdata = args => {
   return (
     <BaseComponent
       args={args}
-      data={BigData}
+      data={Big}
       curveSelect='cardinal'
       enableArea
       enableCrosshair={false}

@@ -2,17 +2,21 @@
  * Copyright
  */
 
+// React
+import { memo, useContext } from 'react'
 import { array, bool, oneOf, shape, string } from 'prop-types'
 
 // UI
-import { Column, Container, CONTEXT, Icon, Link, Row } from '../../'
+import { Column, ConfigContext, Container, CONTEXT, Icon, Link, Row } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
 
 const year = new Date().getFullYear()
 
-export const Copyright = ({ brand, fixed, icon, links }) => {
+export const Copyright = memo(({ fixed, icon, links }) => {
+  const { Brand } = useContext(ConfigContext)
+
   const renderLinks = () => {
     return links.map(({ name, to }, index) => (
       <Link key={index} passHref to={to}>
@@ -24,25 +28,25 @@ export const Copyright = ({ brand, fixed, icon, links }) => {
   return (
     <StyledCopyright fixed={fixed} data-cy='copyright'>
       <StyledContainer>
-        <Row>
+        <StyledRow>
           <Column md={links.length > 0 ? 3 : 12}>
-            <StyledBrand>
-              <StyledIcon {...icon} />
-              {year} — {brand}
-            </StyledBrand>
+            <StyledIcon {...icon} />
+            {year} — {Brand.name}
           </Column>
 
-          {links.length > 0 && <Column md={9}>{renderLinks()}</Column>}
-        </Row>
+          {links.length > 0 && <StyledColumn md={9}>{renderLinks()}</StyledColumn>}
+        </StyledRow>
       </StyledContainer>
     </StyledCopyright>
   )
-}
+})
 
 const StyledCopyright = styled.section`
   background-color: ${({ theme }) => theme.COPYRIGHT.background};
   color: ${({ theme }) => theme.COPYRIGHT.colour};
+  display: flex;
   font-size: 0.75rem;
+  height: 3.5rem;
   ${({ fixed }) =>
     fixed &&
     css`
@@ -55,12 +59,18 @@ const StyledCopyright = styled.section`
 `
 
 const StyledContainer = styled(Container)`
-  height: 3.5rem;
+  display: flex;
+  flex: 1;
+  align-items: center;
 `
 
-const StyledBrand = styled.div`
+const StyledRow = styled(Row)`
+  flex: 1;
+`
+
+const StyledColumn = styled(Column)`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 `
 
 const StyledIcon = styled(Icon)`
@@ -73,7 +83,6 @@ const StyledLink = styled.span`
 `
 
 Copyright.propTypes = {
-  brand: string.isRequired,
   fixed: bool,
   icon: shape({
     context: oneOf(Object.values(CONTEXT)),

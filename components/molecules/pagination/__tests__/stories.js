@@ -5,17 +5,26 @@
 // React
 import { useState } from 'react'
 
+// Storybook
 import { ContextControl, SizeControl } from 'decorators'
 
 // UI
-import { Pagination } from '../'
+import { Icon, Pagination } from 'components'
 import Readme from '../README.md'
-import { Icon } from '../../../atoms'
 
 export default {
-  args: { breakCount: 5, pageCount: 10, context: 'primary', size: 'md', showNextAndPrev: false },
-  argTypes: { context: ContextControl(), size: SizeControl() },
-  title: 'Molecules/Pagination',
+  args: {
+    breakCount: 5,
+    pageCount: 10,
+    context: 'primary',
+    size: 'md',
+    showNextAndPrev: false
+  },
+  argTypes: {
+    context: ContextControl(),
+    size: SizeControl()
+  },
+
   component: Pagination,
   parameters: {
     docs: {
@@ -23,7 +32,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Pagination'
 }
 
 const BaseComponent = props => {

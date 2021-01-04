@@ -7,7 +7,6 @@ import { Webcam } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Webcam',
   component: Webcam,
   parameters: {
     docs: {
@@ -15,7 +14,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Webcam'
 }
 
-export const main = () => <Webcam />
+export const main = args => <Webcam {...args} />

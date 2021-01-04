@@ -1,7 +1,11 @@
 /**
  * Pagination - Props
  */
+
+// React
 import { any, func, number, string, bool, oneOfType, node, oneOf } from 'prop-types'
+
+// UI
 import { CONTEXT, SIZE } from '../../../'
 
 export const PaginationPropTypes = {

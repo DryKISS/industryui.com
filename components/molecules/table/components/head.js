@@ -1,20 +1,23 @@
 /**
- * Table Head (th)
+ * Components - Molecules - Head
  */
+
+// React
+import { bool, string } from 'prop-types'
+import { memo } from 'react'
 
 // Style
 import styled from 'styled-components'
 
-export const TableHead = props => {
-  return <StyledTh {...props} />
-}
-
-TableHead.propTypes = {}
-
-const StyledTh = styled.th`
+export const TableHead = memo(styled.th`
   border-bottom: 2px solid ${({ theme }) => theme.COLOUR.dark};
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => (align ? 'center' : 'left')};
   ${({ sortable }) => sortable && 'cursor: pointer'}
-`
+`)
+
+TableHead.propTypes = {
+  align: string,
+  sortable: bool
+}

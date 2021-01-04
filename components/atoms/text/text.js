@@ -46,10 +46,6 @@ const StyledText = styled.p`
   ${({ size, theme }) => css`
     font-size: ${theme.TEXT_STYLE.FONT_SIZE[size] ?? '1rem'};
     line-height: ${theme.TEXT_STYLE.LINE_HEIGHT[size] ?? '1rem'};
-    /* stylelint-disable */
-    font-family: ${theme.TEXT_STYLE.FONT_FAMILY[size] ??
-      theme.TEXT_STYLE.FONT_FAMILY.default ??
-      'sans-serif'};
   `}
 
   ${({ size }) =>

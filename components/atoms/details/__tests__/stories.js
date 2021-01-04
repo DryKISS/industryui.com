@@ -45,7 +45,7 @@ export const main = args => {
   if (args.withButton) {
     args.button = 'button'
     args.handleClick = e => {
-      console.log(e)
+      console.info(e)
     }
   }
 
