@@ -4,7 +4,6 @@ import { memo, useRef } from 'react'
 // UI
 import styled, { css } from 'styled-components'
 import { Document, Page, pdfjs } from 'react-pdf'
-import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
 import Cropper from 'react-cropper'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
@@ -48,6 +47,7 @@ export const Preview = memo(
     file,
     imageStyles,
     onClick,
+    onPdfDocumentLoaded,
     placeHolderImageUrl,
     showName,
     showPagesNumber,
@@ -58,15 +58,11 @@ export const Preview = memo(
     const cropperRef = useRef(null)
     const onDocumentLoadSuccess = ({ numPages }) => {
       showPagesNumber &&
-        MessagingCommunicationService.send({
-          name: MessageNames.Messaging.MESSAGING_ACTION,
-          payload: {
-            action: MessagingActions.SET_DOCUMENT_INFO,
-            data: {
-              name: file?.name,
-              pagesNumber: numPages
-            }
-          }
+        onPdfDocumentLoaded &&
+        onPdfDocumentLoaded({
+          file,
+          name: file?.name,
+          pagesNumber: numPages
         })
     }
 

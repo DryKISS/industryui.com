@@ -4,9 +4,7 @@ import { useEffect, useState } from 'react'
 // UI
 import styled, { css } from 'styled-components'
 
-import { Close, Preview, Space, Text, useComponentCommunication } from 'components'
-
-import { MessageNames, MessagingActions, MessagingSubscriber } from 'components/services'
+import { Close, Preview, Space, Text } from 'components'
 
 export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   const [selectedFile, setselectedFile] = useState(null)
@@ -25,27 +23,13 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
     handleRemoveFile(e)
   }
 
-  const onActionRecieved = payload => {
-    switch (payload.action) {
-      case MessagingActions.SET_DOCUMENT_INFO:
-        setTimeout(() => {
-          setDocumentInfo(() => payload.data)
-        }, 0)
-        break
-      default:
-        break
-    }
-  }
-
-  useComponentCommunication({
-    messageName: MessageNames.Messaging.MESSAGING_ACTION,
-    onRecieve: e => onActionRecieved(e),
-    subscriber: MessagingSubscriber
-  })
-
   useEffect(() => {
     setselectedFile(files[files.length - 1])
-  }, [files.length])
+  }, [files.length, files[0] ? files[0].name : ''])
+
+  const handlePdfDocumentLoaded = data => {
+    setDocumentInfo(data)
+  }
 
   return (
     <Wrapper open={isOpen}>
@@ -57,7 +41,14 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
           </Space>
         </Head>
         <LastFilePreviewContainer visible={files.length > 0}>
-          {selectedFile && <Preview file={selectedFile} showName showPagesNumber />}
+          {selectedFile && (
+            <Preview
+              file={selectedFile}
+              showName
+              showPagesNumber
+              onPdfDocumentLoaded={handlePdfDocumentLoaded}
+            />
+          )}
         </LastFilePreviewContainer>
         {documentInfo.pagesNumber > 0 && files.length > 0 && (
           <DocumentInfoWrapper>

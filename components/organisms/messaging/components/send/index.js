@@ -59,9 +59,6 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
   const onActionRecieved = payload => {
     switch (payload.action) {
-      case MessagingActions.SET_RECORDED_VOICE:
-        setvoiceMessage(payload.data)
-        break
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
         break
@@ -112,6 +109,11 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   const handleDeleteVoiceClick = () => {
     setvoiceMessage(null)
   }
+
+  const handleVoiceRecord = e => {
+    setvoiceMessage(e.data)
+  }
+
   return (
     <>
       <StyledContainer audience={audience}>
@@ -159,7 +161,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           />
           <StyledElements>
             {isSendDisabled() ? (
-              <VoiceRecorder />
+              <VoiceRecorder onVoiceRecord={handleVoiceRecord} />
             ) : (
               <Button
                 context='transparent'
