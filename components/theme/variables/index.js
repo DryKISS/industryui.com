@@ -17,6 +17,7 @@ import { FOOTER } from '../../organisms/footer/variables'
 import { FORM_ELEMENTS_STYLES } from '../../form/variables/formVariables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
+import { ICONS } from '../../icons/variables'
 import { LINK } from '../../atoms/link/variables'
 import { MESSAGING } from '../../organisms/messaging/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
@@ -49,6 +50,7 @@ export const Theme = {
   FORM_ELEMENTS_STYLES,
   GRID,
   HEADINGS,
+  ICONS,
   LINECHART,
   LINK,
   MESSAGING,

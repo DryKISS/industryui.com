@@ -5,19 +5,20 @@
 // Particles
 export * from './constants'
 export * from './hooks'
-export * from './utils'
-export * from './theme'
 export * from './meta'
+export * from './theme'
+export * from './utils'
+export * from './icons'
 
 // Components
 export * from './atoms'
 export * from './form'
+export * from './layouts'
 export * from './molecules'
 export * from './organisms'
-export * from './layouts'
+export * from './pages'
 export * from './social'
 export * from './templates'
-export * from './pages'
 
 // Groups
 export * from './blog'

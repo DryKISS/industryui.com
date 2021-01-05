@@ -1,0 +1,5 @@
+export * from './chevronIcon'
+export * from './crossIcon'
+export * from './downloadIcon'
+export * from './micIcon'
+export * from './paperPlaneIcon'

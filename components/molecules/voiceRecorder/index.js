@@ -9,8 +9,8 @@ import { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Microphone } from './microphone'
-import { Close, Text, toHHMMSS } from '../../'
+import { Close, Text, MicIcon, toHHMMSS } from '../../'
+import { COLOUR } from '../../theme/variables/colour'
 
 let AudioRecorder
 let mpegEncoder
@@ -48,7 +48,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
     timerInterval.current = null
     setTimeout(() => {
       settimer(0)
-    }, 300)
+    }, 100)
   }
   const handleStartRecord = () => {
     window &&
@@ -86,13 +86,13 @@ export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
   }
 
   const showRecorder = ({ onVoiceRecord, overLayStyle }) => {
-    if (!recorderLoaded) return <Microphone isLoading />
+    if (!recorderLoaded) return <MicIcon disabled />
     return (
       <>
         <OverLay isRecording={isRecording} style={overLayStyle}>
           {isRecording && (
             <OverlayRecorderIconWrapper>
-              <Microphone isRecording />
+              <MicIcon colour={COLOUR.success} />
             </OverlayRecorderIconWrapper>
           )}
           <Text content='Recording' context='blackText' />
@@ -109,7 +109,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
           <Close click={handleCancelRecord} context='danger' />
         </OverLay>
         <Wrapper onClick={isRecording ? handleStopRecord : handleStartRecord}>
-          {isRecording ? <StopIcon /> : <Microphone />}
+          {isRecording ? <StopIcon /> : <MicIcon hoverColour='default' />}
         </Wrapper>
       </>
     )
@@ -122,7 +122,6 @@ const StopIcon = styled.div`
   background-color: ${({ theme }) => theme.COLOUR.danger};
   border-radius: 3px;
   height: 1rem;
-  margin-top: -0.25rem;
   width: 1rem;
 `
 const Dot = styled.span``
@@ -161,7 +160,7 @@ const Wrapper = styled.div`
   cursor: pointer;
   display: flex;
   height: 100%;
-  padding-top: 0.25rem;
+  padding-left: 0.25rem;
 `
 const OverLay = styled.div`
   align-items: center;

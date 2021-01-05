@@ -13,8 +13,6 @@ import {
   MessagingSubscriber
 } from 'components/services'
 
-import { PaperPlane } from './paperPlane'
-
 import { convertToRaw } from 'draft-js'
 
 // UI
@@ -28,6 +26,7 @@ import {
   VoiceRecorder,
   MessagingInput,
   MessagingAudioPlayer,
+  PaperPlaneIcon,
   ReplyContainer,
   useComponentCommunication
 } from 'components'
@@ -170,7 +169,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
                 onClick={submit}
                 size='xs'
               >
-                <PaperPlane />
+                <PaperPlaneIcon hoverColour='default' />
               </Button>
             )}
           </StyledElements>
