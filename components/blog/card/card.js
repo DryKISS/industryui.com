@@ -6,8 +6,8 @@
 import { any, bool, object, oneOf, shape } from 'prop-types'
 
 // UI
-import { BlogCategory, BlogTags, Card, CardImage, Divider, Link, slugify } from '../../'
-import { Button } from '../../atoms/button/components/button/button'
+import { BlogCategory, BlogTags, Button, Card, CardImage, Divider, Link, slugify } from '../../'
+// import { Button } from '../../atoms/button/components/button/button'
 import { CardBody } from '../../molecules/card/components/body'
 import { Heading } from '../../atoms/heading/heading'
 
