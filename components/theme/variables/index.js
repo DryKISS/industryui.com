@@ -34,7 +34,7 @@ import { VOICE_RECORDER } from '../../molecules/voiceRecorder/variables'
 
 // Nivo
 import { BARCHART } from '../../molecules/charts/nivo/responsiveBar/variables'
-import { LINECHART } from '../../molecules/charts/nivo/lineChart/variables'
+import { LINECHART } from '../../molecules/charts/Nivo/lineChart/variables'
 import { PIECHART } from '../../molecules/charts/nivo/pieChart/variables'
 
 export const Theme = {
