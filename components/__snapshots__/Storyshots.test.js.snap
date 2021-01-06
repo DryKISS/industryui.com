@@ -3680,6 +3680,46 @@ exports[`Storyshots Molecules/Tabs Main 1`] = `
 />
 `;
 
+exports[`Storyshots Molecules/VoiceRecorder No Overlay 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/VoiceRecorder With Overlay 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Molecules/Webcam Main 1`] = `
 .c0 {
   padding: 1rem;
