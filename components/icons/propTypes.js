@@ -1,11 +1,11 @@
-import { bool, func, number, string } from 'prop-types'
+import { bool, func, number, oneOfType, string } from 'prop-types'
 
 export const commonIconPropTypes = {
   colour: string,
   disabled: bool,
   disabledColour: string,
   fixColour: string,
-  hoverColour: string,
+  hoverColour: oneOfType([bool, string]),
   onClick: func,
-  size: number
+  size: oneOfType([number, string])
 }
