@@ -169,7 +169,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
                 onClick={submit}
                 size='xs'
               >
-                <PaperPlaneIcon hoverColour='default' />
+                <PaperPlaneIcon hoverColour />
               </Button>
             )}
           </StyledElements>

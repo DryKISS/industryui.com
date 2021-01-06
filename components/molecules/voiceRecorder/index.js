@@ -109,7 +109,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
           <Close click={handleCancelRecord} context='danger' />
         </OverLay>
         <Wrapper onClick={isRecording ? handleStopRecord : handleStartRecord}>
-          {isRecording ? <StopIcon /> : <MicIcon hoverColour='default' />}
+          {isRecording ? <StopIcon /> : <MicIcon hoverColour />}
         </Wrapper>
       </>
     )

@@ -52,7 +52,7 @@ const setColour = (state, props) => {
       ? ICONS.disabledIconColour
       : colour || ICONS.defaultIconColour
   } else if (state === states.HOVER && hoverColour) {
-    if (hoverColour === 'default') {
+    if (hoverColour === true) {
       hoverColour = ICONS.hoverIconColour
     }
     return disabled && disabledColour
