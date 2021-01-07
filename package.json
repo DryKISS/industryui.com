@@ -11,7 +11,7 @@
   "module": "dist/industry-ui.es.js",
   "sideEffects": false,
   "license": "MIT",
-  "version": "1.9.2-patch.1",
+  "version": "1.9.2-patch.2",
   "version_short": "0.1",
   "keywords": [
     "react",
