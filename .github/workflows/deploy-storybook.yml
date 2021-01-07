@@ -1,9 +1,9 @@
 name: Deploy IndustryUI
 
 on:
-  pull_request:
+  push:
     branches:
-      - deploy
+      - develop
 
 env:
   CI: true
