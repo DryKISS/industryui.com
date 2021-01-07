@@ -3,10 +3,11 @@ import { memo, useRef } from 'react'
 
 // UI
 import styled, { css } from 'styled-components'
-import { Page } from 'react-pdf'
-import { Document } from 'react-pdf/dist/esm/entry.webpack'
+import { Document, Page, pdfjs } from 'react-pdf'
 import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
 import Cropper from 'react-cropper'
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
 const imageFormats = ['.jpg', '.jpeg', '.png']
 
