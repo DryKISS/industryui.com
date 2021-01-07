@@ -52,7 +52,16 @@ export const UserProvider = ({ children }) => {
   const signIn = async (provider, username, password, callback) => {
     let user, token
     try {
-      const { data } = await axios.post(`${apiConfig.authURL}/login`, { email: username, password })
+      const { data } = await axios.post(
+        `${apiConfig.authURL}/login`,
+        { email: username, password },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            ...apiConfig.headers
+          }
+        }
+      )
       token = data.token
       const tokenData = decodeToken(token)
       user = tokenData.user
@@ -81,14 +90,23 @@ export const UserProvider = ({ children }) => {
     let user, token
 
     try {
-      const { data } = await axios.post(`${apiConfig.authURL}/register`, {
-        nameFirst,
-        nameLast,
-        email,
-        password,
-        marketing,
-        birthday
-      })
+      const { data } = await axios.post(
+        `${apiConfig.authURL}/register`,
+        {
+          nameFirst,
+          nameLast,
+          email,
+          password,
+          marketing,
+          birthday
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            ...apiConfig.headers
+          }
+        }
+      )
       token = data.token
       const tokenData = decodeToken(token)
       user = tokenData.user
