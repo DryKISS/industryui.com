@@ -25,7 +25,7 @@ const renderItem = ({ body, context, title }, index, current, handleCurrent) => 
     </AccordionItem>
   )
 }
-// there is no need to redefine and rerender Body on every state change
+
 const Body = ({ children, data, closeOthersOnOpen }) => {
   const initialOpen = children ? children.findIndex(_ => _.props.open) : data.findIndex(_ => _.open)
   const [current, setCurrent] = useState(initialOpen > -1 ? [initialOpen] : [])
@@ -41,7 +41,9 @@ const Body = ({ children, data, closeOthersOnOpen }) => {
       return temp
     })
   }
+
   let map = []
+
   if (children) {
     map = Children.map(children, (child, index) => {
       return cloneElement(child, {
@@ -54,10 +56,11 @@ const Body = ({ children, data, closeOthersOnOpen }) => {
   } else {
     map = data.map((item, index) => renderItem(item, index, current, handleCurrent, index))
   }
+
   return map
 }
+
 export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
-  //  moved the body component  and its dependants outside because StyledAccordion doesn't need to be rendered on every single change of body state
   return (
     <StyledAccordion className={className} style={style}>
       <Body children={children} data={data} closeOthersOnOpen={closeOthersOnOpen} />

@@ -31,7 +31,6 @@ export const RandomKeysShowCase = () => {
   return (
     <ElementsWrapper>
       {arr.map((_, index) => {
-        console.log(keys[index])
         return <p key={keys[index]}>{keys[index]}</p>
       })}
     </ElementsWrapper>

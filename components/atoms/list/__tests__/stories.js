@@ -7,50 +7,20 @@ import { List, ListItem } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/List',
+  component: List,
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  subcomponents: { ListItem },
+  title: 'Atoms/List'
 }
 
-export const main = () => (
-  <List>
-    <ListItem>Item1</ListItem>
-    <ListItem>Item2</ListItem>
-    <ListItem>Item3</ListItem>
-  </List>
-)
-
-export const group = () => (
-  <List group>
-    <ListItem>Item1</ListItem>
-    <ListItem>Item2</ListItem>
-    <ListItem>Item3</ListItem>
-  </List>
-)
-
-export const border = () => (
-  <List border>
-    <ListItem>Item1</ListItem>
-    <ListItem>Item2</ListItem>
-    <ListItem>Item3</ListItem>
-  </List>
-)
-
-export const flush = () => (
-  <List flush>
-    <ListItem>Item1</ListItem>
-    <ListItem>Item2</ListItem>
-    <ListItem>Item3</ListItem>
-  </List>
-)
-
-export const knobbed = () => (
-  <List>
+export const main = args => (
+  <List {...args}>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
     <ListItem>Item3</ListItem>

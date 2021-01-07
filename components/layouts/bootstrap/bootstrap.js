@@ -3,12 +3,13 @@
  * Sets up a container for all the pages, called on each route change
  */
 
-import { array, bool, func, node, object, string } from 'prop-types'
+// React
+import { array, bool, func, node, object } from 'prop-types'
 
 // UI
 import { Copyright, Footer } from '../../'
 
-export const Bootstrap = ({ brand, children, copyright, footer, fixed, icon, Navigation }) => {
+export const Bootstrap = ({ children, copyright, footer, fixed, icon, Navigation }) => {
   return (
     <>
       <Navigation />
@@ -17,13 +18,12 @@ export const Bootstrap = ({ brand, children, copyright, footer, fixed, icon, Nav
 
       {footer && <Footer columns={footer} fixed={fixed} />}
 
-      {copyright && <Copyright brand={brand} icon={icon} links={copyright} />}
+      {copyright && <Copyright icon={icon} links={copyright} />}
     </>
   )
 }
 
 Bootstrap.propTypes = {
-  brand: string,
   children: node.isRequired,
   copyright: array,
   fixed: bool,

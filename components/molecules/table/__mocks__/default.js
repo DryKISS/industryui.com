@@ -1,9 +1,6 @@
 /**
- * Mocks
+ * Components - Molecules - Table - Mock
  */
-
-// Next
-import Router from 'next/router'
 
 // UI
 import { Image, TableActions, TableLink } from '../../../'
@@ -67,19 +64,17 @@ export const noCols = [
 
 const renderImage = ({ row }) => <Image alt='Logo' style={{ width: '50%' }} src={row.logo} />
 
-export const columnsFormatter = [
+export const columnsActions = [
   {
     text: 'ID'
   },
   {
+    sortable: true,
+    sortName: 'company',
     text: 'Company'
   },
   {
-    formatter: TableLink,
-    formatterData: {
-      cell: 'company',
-      to: 'url'
-    },
+    formatter: TableLink('/', 'url', 'company'),
     text: 'URL'
   },
   {
@@ -90,33 +85,12 @@ export const columnsFormatter = [
     hidden: true
   },
   {
-    text: 'Actions'
-  }
-]
-
-export const columnsActions = [
-  {
-    text: 'ID'
-  },
-  {
-    text: 'Company'
-  },
-  {
-    text: 'URL'
-  },
-  {
-    hidden: true
-  },
-  {
-    hidden: true
-  },
-  {
     formatter: TableActions,
     formatterData: [
       {
         content: 'Edit',
         context: 'primary',
-        icon: ['fad', 'edit'],
+        icon: ['fas', 'edit'],
         to: '/manage',
         tooltip: 'Edit',
         numberOverlay: 'itemCount'
@@ -124,7 +98,7 @@ export const columnsActions = [
       {
         content: 'Delete',
         context: 'danger',
-        icon: ['fad', 'trash'],
+        icon: ['fas', 'trash'],
         to: '/delete',
         tooltip: 'Delete'
       }
@@ -190,8 +164,4 @@ export const rowsContext = {
       actions: ''
     }
   ]
-}
-
-export const rowClick = row => {
-  Router.push('/shortcodes/[addressId]', '/shortcodes/1')
 }

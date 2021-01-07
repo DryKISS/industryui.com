@@ -1,9 +1,12 @@
 /**
- * Email Change
+ * Organisms - Email Change - Story
  */
 
+// React
+import { useState } from 'react'
+
 // UI
-import { EmailChange } from 'components'
+import { Alert, EmailChange, requestSimulator } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -19,5 +22,18 @@ export default {
 }
 
 export const main = args => {
-  return <EmailChange {...args} />
+  const [submitted, setSubmitted] = useState(false)
+
+  const submit = async data => {
+    setSubmitted(false)
+    await requestSimulator('success', 2000)
+    setSubmitted(true)
+  }
+
+  return (
+    <>
+      <EmailChange {...args} submit={submit} />
+      {submitted && <Alert content='Submitted' context='info' />}
+    </>
+  )
 }

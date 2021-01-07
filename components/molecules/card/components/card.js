@@ -123,5 +123,4 @@ const StyledIcon = styled(Icon)`
 `
 
 Card.propTypes = CardPropTypes
-
 Card.defaultProps = CardDefaultProps

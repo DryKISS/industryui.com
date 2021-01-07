@@ -18,6 +18,7 @@ export const NAVBAR = {
   borderTopColor: COLOUR.primary,
   borderTopWidth: '0.25rem',
   borderTopStyle: 'solid',
+  borderBottom: `2px solid ${COLOUR.light}`,
 
   // Overlay
   backgroundOverlay: COLOUR.white,

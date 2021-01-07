@@ -10,7 +10,11 @@ import Readme from '../README.md'
 import { Data } from '../__mocks__/stepper'
 
 export default {
-  title: 'Molecules/Stepper',
+  args: {
+    items: Data.items,
+    summary: Data.summary
+  },
+
   component: Stepper,
   parameters: {
     docs: {
@@ -18,7 +22,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Stepper'
 }
 
-export const main = () => <Stepper items={Data.items} summary={Data.summary} />
+export const main = args => <Stepper {...args} />

@@ -2,4 +2,4 @@
  * Charts
  */
 export * from './highCharts'
-export * from './Nivo'
+export * from './nivo'

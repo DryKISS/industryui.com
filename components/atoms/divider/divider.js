@@ -28,11 +28,11 @@ export const Divider = styled.hr`
     `
   }}
 
-  ${({ dashed, vertical }) =>
+  ${({ dashed, vertical, height }) =>
     vertical &&
     css`
       width: ${({ thickness }) => (dashed ? 2 : thickness)}px;
-      height: 100%;
+      height: ${height ?? '100%'};
     `}
 
   margin: ${({ size, theme, vertical }) => {

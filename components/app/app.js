@@ -51,7 +51,7 @@ export class MyApp extends App {
   static defaultProps = {
     offCanvas: false,
     pageProgressBar: false,
-    theme: [],
+    theme: {},
     user: false
   }
 

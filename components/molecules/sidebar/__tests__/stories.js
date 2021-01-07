@@ -10,7 +10,10 @@ import Readme from '../README.md'
 import { Sidebar as Data } from '../__mocks__/links'
 
 export default {
-  title: 'Molecules/Sidebar',
+  args: {
+    data: Data
+  },
+
   component: Sidebar,
   parameters: {
     docs: {
@@ -18,7 +21,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Sidebar'
 }
 
-export const main = () => <Sidebar data={Data} />
+export const main = args => <Sidebar {...args} />

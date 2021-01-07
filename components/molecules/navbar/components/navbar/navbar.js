@@ -52,6 +52,7 @@ export const Navbar = ({ brand, contained, type, style, showMenu, widgets }) => 
 
 const StyledNav = styled.nav`
   background-color: ${({ theme }) => theme.NAVBAR.background};
+  border-bottom: ${({ theme }) => theme.NAVBAR.borderBottom};
   border-top-width: ${({ theme }) => theme.NAVBAR.borderTopWidth};
   border-top-style: ${({ theme }) => theme.NAVBAR.borderTopStyle};
   border-top-color: ${({ theme }) => theme.NAVBAR.borderTopColor};

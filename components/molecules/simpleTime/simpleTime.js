@@ -5,12 +5,13 @@
 // React
 import { bool, number, oneOfType, string } from 'prop-types'
 
+// UI
 import { useTimer } from '../../../'
 
-export const SimpleTime = props => {
+export const SimpleTime = ({ autoStart, endTime, startTime }) => {
   const {
     time: { seconds, minutes, hours, days }
-  } = useTimer(props)
+  } = useTimer({ autoStart, endTime, startTime })
 
   return `${days}:${hours}:${minutes}:${seconds}`
 }

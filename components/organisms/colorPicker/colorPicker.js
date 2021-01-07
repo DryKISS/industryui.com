@@ -2,6 +2,7 @@
  * Organisms - Color picker
  */
 
+// React
 import { string, func } from 'prop-types'
 
 // React Color

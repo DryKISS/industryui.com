@@ -1,9 +1,9 @@
 /**
- * Dashboard
+ * Layouts - Dashboard - Story
  */
 
 // UI
-import { Dashboard } from 'components'
+import { Dashboard, Text } from 'components'
 import Readme from '../README.md'
 
 const meta = {
@@ -13,7 +13,6 @@ const meta = {
 }
 
 export default {
-  title: 'Layouts/Dashboard',
   component: Dashboard,
   parameters: {
     docs: {
@@ -21,15 +20,17 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Layouts/Dashboard'
 }
 
 const Test = () => {
-  return <>HERE</>
+  return <Text>HERE</Text>
 }
 
-export const main = () => (
+export const main = args => (
   <Dashboard
+    {...args}
     meta={meta}
     pageHeading={{
       heading: 'Default'

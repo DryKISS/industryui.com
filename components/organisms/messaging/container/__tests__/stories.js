@@ -36,8 +36,6 @@ export const main = args => {
   const [messaging] = useState(messages)
 
   const handleFilter = type => {
-    console.log(type)
-
     if (type !== 'all') {
       const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
       const filter = filterByKey(msgs, 'icon', type)
@@ -55,7 +53,6 @@ export const main = args => {
   }
 
   const handleSearch = query => {
-    console.log(query)
     if (query) {
       const search = filterByString(messaging, 'content', query)
       // setMessaging(search)
@@ -96,14 +93,13 @@ export const main = args => {
   }
 
   const onHashtagClick = e => {
-    console.log(e)
+    console.info(e)
   }
   const onMentionClick = e => {
-    console.log(e)
+    console.info(e)
   }
 
   const onSubmit = message => {
-    console.log(message)
     const msg = {
       // attachments can be an array of files or array of type {src:string}
       attachments: message.attachments || [],
@@ -114,11 +110,13 @@ export const main = args => {
       id: Math.floor(Math.random() * 1000),
       issueId: 1,
       pictureId: null,
+
       statusText: 'status from server',
       time: 'ddd D MMM YYYY HH:mm',
       to: 'all',
       type: 'out',
-      ...(message.voice && { voice: URL.createObjectURL(message.voice) })
+      ...(message.voice && { voice: URL.createObjectURL(message.voice) }),
+      ...(message.replyTo && { replyTo: message.replyTo })
     }
     // mimic the server delay and response(response is msg which should be passed to service as [msg])
     setTimeout(() => {

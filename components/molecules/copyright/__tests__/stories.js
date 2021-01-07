@@ -10,6 +10,9 @@ import Readme from '../README.md'
 import { Copyright as Data } from '../__mocks__/copyright'
 
 export default {
+  args: {
+    links: Data
+  },
   component: Copyright,
   parameters: {
     docs: {
@@ -21,4 +24,4 @@ export default {
   title: 'Molecules/Copyright'
 }
 
-export const main = () => <Copyright brand='Company Name' links={Data} />
+export const main = args => <Copyright {...args} />

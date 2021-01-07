@@ -36,7 +36,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
   }
 
   const onAddMention = e => {
-    console.log(e)
+    console.info(e)
   }
 
   // Focus on editor window

@@ -7,7 +7,10 @@ import { Buttons } from 'components'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Buttons',
+  args: {
+    next: true,
+    nextText: 'Submit'
+  },
   component: Buttons,
   parameters: {
     docs: {
@@ -15,7 +18,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Buttons'
 }
 
-export const main = () => <Buttons next nextText='Submit' />
+export const main = args => <Buttons {...args} />

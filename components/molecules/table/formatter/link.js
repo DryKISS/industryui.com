@@ -1,7 +1,8 @@
 /**
- * Table - Formatter - Link
+ * Components - Molecules - Table - Formatter - Link
  */
 
+// React
 import { object } from 'prop-types'
 
 // Next
@@ -31,14 +32,13 @@ export const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
   const item = row[value]
 
   return useLink ? (
-    <>
-      {item === '-' && '-'}
-      {item !== '-' && (
-        <StyleLink border={false} href={getPath()} onClick={handleClick}>
-          {item}
-        </StyleLink>
-      )}
-    </>
+    item !== '-' ? (
+      <StyleLink border={false} href={getPath()} onClick={handleClick}>
+        {item}
+      </StyleLink>
+    ) : (
+      '-'
+    )
   ) : (
     item
   )

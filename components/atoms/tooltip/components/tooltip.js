@@ -32,5 +32,4 @@ const StyledTippy = styled(Tippy)`
 `
 
 Tooltip.propTypes = TooltipPropTypes
-
 Tooltip.defaultProps = TooltipDefaultProps

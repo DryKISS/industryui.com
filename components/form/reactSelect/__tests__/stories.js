@@ -1,13 +1,14 @@
 /**
- * React Select
+ * Form - React Select
  */
 
 // React
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 
 // UI
 import {
   Button,
+  Divider,
   Form,
   FormError,
   FormLabel,
@@ -25,9 +26,59 @@ import Readme from '../README.md'
 // Data
 import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
 
+// components: {},
+// controlShouldRenderValue: true,
+// defaultValue: undefined,
+// error: '',
+// errors: {},
+// escapeClearsValue: false,
+// isDisabled: false,
+// isLoading: false,
+
+// isRtl: false,
+// isSearchable: true,
+// loadingMessage: () => 'Loading...',
+// maxMenuHeight: 300,
+// minMenuHeight: 140,
+// menuPlacement: 'bottom',
+// menuPosition: 'absolute',
+// menuShouldBlockScroll: false,
+// noOptionsMessage: () => 'No options',
+// openMenuOnFocus: false,
+// openMenuOnClick: true,
+// options: [],
+// pageSize: 5,
+// placeholder: 'Select...',
+// screenReaderStatus: ({ count }) => `${count} result${count !== 1 ? 's' : ''} available`,
+// styles: defaultStyles,
+// tabIndex: '0',
+// tabSelectsValue: true
+
 export default {
-  args: { isMulti: false },
-  title: 'Form/ReactSelect',
+  args: {
+    'aria-label': '',
+    'aria-labelledby': '',
+    async: false,
+    autoFocus: false,
+    backspaceRemovesValue: true,
+    blurInputOnSelect: true,
+    captureMenuScroll: true,
+    cacheOptions: true,
+    className: '',
+    classNamePrefix: '',
+    closeMenuOnSelect: true,
+    closeMenuOnScroll: false,
+    components: {},
+    controlShouldRenderValue: true,
+    defaultOptions: {},
+    delimiter: '',
+    escapeClearsValue: false,
+    filterOption: null,
+    formatGroupLabel: null,
+    formatOptionLabel: null,
+    isMulti: false,
+    isLoading: false
+  },
   component: ReactSelectField,
   parameters: {
     docs: {
@@ -35,40 +86,52 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/ReactSelect'
 }
 
 const schema = object().shape({
-  reactSelect: string().required()
+  reactSelect: string()
+    .nullable()
+    .required()
 })
 
-const BaseComponent = (props = {}) => {
-  const { control, errors, handleSubmit } = useForm({ resolver: yupResolver(schema) })
-  const onSubmit = data => {
-    console.log('data: ', data)
+const BaseComponent = memo(
+  args => {
+    const { control, errors, handleSubmit } = useForm({
+      resolver: yupResolver(schema)
+    })
+
+    const onSubmit = data => {
+      console.info('data: ', data)
+    }
+
+    const defaultProps = {
+      control,
+      errors: errors,
+      isClearable: true,
+      name: 'reactSelect',
+      options: Options,
+      ...args
+    }
+
+    return (
+      <Form handleSubmit={handleSubmit(onSubmit)}>
+        <FormLabel label='React Select'>
+          <ReactSelectField {...defaultProps} />
+        </FormLabel>
+
+        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
+        <Divider size='sm' />
+
+        <Button content='Submit' size='sm' type='submit' />
+      </Form>
+    )
+  },
+  (prevProps, nextProps) => {
+    return true
   }
-
-  const defaultProps = {
-    control,
-    errors: errors,
-    isClearable: true,
-    name: 'reactSelect',
-    options: Options,
-    ...props
-  }
-
-  return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='React Select'>
-        <ReactSelectField {...defaultProps} />
-      </FormLabel>
-
-      {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
-
-      <Button content='Submit' secondary type='submit' />
-    </Form>
-  )
-}
+)
 
 export const main = args => {
   return <BaseComponent {...args} />
@@ -104,7 +167,6 @@ export const chained = () => {
   const CustomerOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Customers')
         resolve(Customers)
       }, 1000)
     })
@@ -112,16 +174,12 @@ export const chained = () => {
   const UserOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Users')
         resolve(users)
       }, 2000)
     })
 
   useEffect(() => {
     if (watchCustomer !== prevCustomer) {
-      // Debug
-      // console.log('Changed Customer', prevCustomer, watchCustomer)
-
       if (watchCustomer === null) {
         setUsers(null)
       } else if (watchCustomer.value === '2') {
@@ -135,7 +193,6 @@ export const chained = () => {
   }, [watchCustomer])
 
   const onSubmit = data => {
-    console.log(data)
     setData(data)
   }
 
@@ -198,7 +255,7 @@ export const chained = () => {
           </>
         )}
 
-        <Button content='Submit' secondary type='submit' />
+        <Button size='sm' type='submit' />
       </Form>
     </>
   )
@@ -209,7 +266,6 @@ export const chainedNoDefault = () => {
 
   // GraphQL happens before this and sets the defaults
   const watchCustomer = watch('customer', null)
-  const watchUser = watch('user', null)
 
   const [data, setData] = useState()
 
@@ -217,12 +273,10 @@ export const chainedNoDefault = () => {
   const [user] = useState(null)
 
   const prevCustomer = usePrevious(watchCustomer)
-  const prevUser = usePrevious(watchUser)
 
   const CustomerOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Customers')
         resolve(Customers)
       }, 1000)
     })
@@ -230,24 +284,17 @@ export const chainedNoDefault = () => {
   const UserOptions = inputValue =>
     new Promise(resolve => {
       setTimeout(() => {
-        console.log('Firing Users')
         resolve(users)
       }, 2000)
     })
 
   useEffect(() => {
     if (watchCustomer !== prevCustomer) {
-      console.log('Changed Customer', prevCustomer, watchCustomer)
-      console.log('Changed User', prevUser, watchUser)
-
       if (watchCustomer === null) {
-        console.log('reset')
         setUsers(null)
       } else if (watchCustomer.value === '2') {
-        console.log('Avison')
         setUsers(UsersAvison)
       } else {
-        console.log('Housing')
         setUsers(UsersHousing)
       }
 
@@ -256,7 +303,6 @@ export const chainedNoDefault = () => {
   }, [watchCustomer])
 
   const onSubmit = data => {
-    console.log(data)
     setData(data)
   }
 

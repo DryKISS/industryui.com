@@ -1,5 +1,5 @@
 /**
- * Container
+ * Atoms - Grid - Components - Container
  * Creates a container for the Grid based layout. This container can be fluid or
  * fixed based on the UI breakpoints.
  */

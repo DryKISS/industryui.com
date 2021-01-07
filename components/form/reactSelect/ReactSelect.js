@@ -1,5 +1,5 @@
 /**
- * React Select
+ * Form - React Select
  */
 
 // React
@@ -55,12 +55,12 @@ export const ReactSelectField = ({
   return (
     <Wrapper size={size} error={error || errors[name]}>
       <Controller
-        render={props => (
-          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
-        )}
         control={control}
         defaultValue={defaultValue}
         name={name}
+        render={props => (
+          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
+        )}
       />
     </Wrapper>
   )

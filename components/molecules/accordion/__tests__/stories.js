@@ -8,18 +8,19 @@ import Readme from '../README.md'
 import { Data } from '../__mocks__/accordion'
 
 export default {
-  title: 'Molecules/Accordion',
+  component: Accordion,
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Accordion'
 }
 
-export const main = () => (
-  <Accordion>
+export const main = args => (
+  <Accordion {...args}>
     <AccordionItem title='Item 1'>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
       squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
