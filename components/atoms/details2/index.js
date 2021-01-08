@@ -151,7 +151,7 @@ const Content = styled.div`
   ${({ fitParentHeight, open }) =>
     fitParentHeight &&
     css`
-      height: ${!open ? '0px' : 'calc(100% - 3.5rem)'};
+      height: ${!open ? '0px' : '100%'};
     `}
 `
 
