@@ -1,12 +1,9 @@
 // React
-import { memo, useRef } from 'react'
+import { memo, useEffect, useState, useRef } from 'react'
 
 // UI
 import styled, { css } from 'styled-components'
-import { Document, Page, pdfjs } from 'react-pdf'
 import Cropper from 'react-cropper'
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
 const imageFormats = ['.jpg', '.jpeg', '.png']
 
@@ -40,6 +37,7 @@ const checkFileType = (file, type) => {
 const source = file => {
   return file.src ?? URL.createObjectURL(file)
 }
+
 export const Preview = memo(
   ({
     contain,
@@ -55,6 +53,18 @@ export const Preview = memo(
     message,
     zoomable
   }) => {
+    const [pdfLoader, setPdfLoader] = useState({ Document: null, Page: null, pdfjs: null })
+    const loadModules = async () => {
+      const { Document, Page, pdfjs } = await import('react-pdf')
+      pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
+      setPdfLoader({ Document, Page, pdfjs })
+    }
+
+    useEffect(() => {
+      loadModules()
+      return () => {}
+    }, [])
+
     const cropperRef = useRef(null)
     const onDocumentLoadSuccess = ({ numPages }) => {
       showPagesNumber &&
@@ -114,9 +124,13 @@ export const Preview = memo(
       } else {
         return (
           <PdfWrapper onClick={onClick} small={small} message={message}>
-            <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
-              <Page pageNumber={1} />
-            </Document>
+            {pdfLoader.Document && (
+              <>
+                <pdfLoader.Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
+                  <pdfLoader.Page pageNumber={1} />
+                </pdfLoader.Document>
+              </>
+            )}
           </PdfWrapper>
         )
       }
