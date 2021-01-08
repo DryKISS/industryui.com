@@ -105,7 +105,12 @@ export const Details2 = ({
           animationDuration={animationtime}
           fitParentHeight={fitParentHeight}
         >
-          <Content style={contentStyle} ref={contentRef} fitParentHeight={fitParentHeight}>
+          <Content
+            style={contentStyle}
+            ref={contentRef}
+            fitParentHeight={fitParentHeight}
+            open={isOpen}
+          >
             {childrenMounted && (content || children)}
           </Content>
         </ContentWrapper>
