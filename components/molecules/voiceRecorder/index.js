@@ -15,7 +15,7 @@ import { COLOUR } from '../../theme/variables/colour'
 let AudioRecorder
 let mpegEncoder
 
-export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
+export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
   const [timer, settimer] = useState(0)
   const recorder = useRef()
@@ -85,11 +85,11 @@ export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
     handleStopRecord()
   }
 
-  const showRecorder = ({ onVoiceRecord, overLayStyle }) => {
+  const showRecorder = ({ onVoiceRecord, overlayStyle }) => {
     if (!recorderLoaded) return <MicIcon disabled />
     return (
       <>
-        <OverLay isRecording={isRecording} style={overLayStyle}>
+        <OverLay isRecording={isRecording} style={overlayStyle}>
           {isRecording && (
             <OverlayRecorderIconWrapper>
               <MicIcon colour={COLOUR.success} />
@@ -115,7 +115,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overLayStyle }) => {
     )
   }
 
-  return showRecorder({ onVoiceRecord, overLayStyle })
+  return showRecorder({ onVoiceRecord, overlayStyle })
 }
 
 const StopIcon = styled.div`
