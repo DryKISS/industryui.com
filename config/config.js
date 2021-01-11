@@ -70,7 +70,7 @@ export const Translations = {
 
 const sidebarData = [
   {
-    icon: ['fad', 'tachometer-alt-average'],
+    icon: ['fas', 'tachometer-alt-average'],
     name: 'Dashboard',
     to: '/dashboard'
   },
