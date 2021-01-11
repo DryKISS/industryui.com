@@ -1900,26 +1900,6 @@ exports[`Storyshots Layouts/Dashboard Main 1`] = `
 />
 `;
 
-exports[`Storyshots Layouts/Grid Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Layouts/Page Main 1`] = `
 .c0 {
   padding: 1rem;
@@ -3601,26 +3581,6 @@ exports[`Storyshots Molecules/Table No Columns 1`] = `
 `;
 
 exports[`Storyshots Molecules/Table Show No Data 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Table/Actions Table Action 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
