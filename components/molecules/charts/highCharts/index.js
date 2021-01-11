@@ -3,11 +3,16 @@
  */
 
 // Highcharts
-import Highcharts from 'highcharts/highstock'
+import HighStockcharts from 'highcharts/highstock'
+import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-export const HighChart = ({ options, constructorType }) => {
+export const HighChart = ({ options, constructorType, chartType }) => {
   return (
-    <HighchartsReact highcharts={Highcharts} options={options} constructorType={constructorType} />
+    <HighchartsReact
+      highcharts={constructorType === 'stockChart' ? HighStockcharts : Highcharts}
+      options={options}
+      constructorType={constructorType}
+    />
   )
 }

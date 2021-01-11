@@ -3,7 +3,7 @@
  */
 
 // UI
-import { pricingInfo } from '../__mocks__/pricing'
+import { pricingInfo } from '../__mocks__/pricing_mock_data'
 import { Pricing } from 'components'
 import Readme from '../README.md'
 
