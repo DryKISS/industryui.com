@@ -10,16 +10,7 @@ import HighMapcharts from 'highcharts/highmaps'
 import HighGanttcharts from 'highcharts/highcharts-gantt'
 import HighchartsReact from 'highcharts-react-official'
 
-export const HighChart = ({
-  allowChartUpdate,
-  callback,
-  constructorType,
-  containerProps,
-  immutable,
-  options,
-  updateArgs,
-  ...props
-}) => {
+const getChartType = constructorType => {
   let chart
   switch (constructorType) {
     case 'stockChart':
@@ -35,11 +26,24 @@ export const HighChart = ({
       chart = Highcharts
       break
   }
+  return chart
+}
+
+export const HighChart = ({
+  allowChartUpdate,
+  callback,
+  constructorType,
+  containerProps,
+  immutable,
+  options,
+  updateArgs,
+  ...props
+}) => {
   return (
     <HighchartsReact
       allowChartUpdate={allowChartUpdate}
       constructorType={constructorType || 'chart'}
-      highcharts={chart}
+      highcharts={getChartType(constructorType)}
       options={options}
       callback={callback}
       containerProps={containerProps}
