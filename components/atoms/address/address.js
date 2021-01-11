@@ -1,5 +1,5 @@
 /**
- * Address
+ * Components - Atoms - Address
  */
 
 // React
@@ -22,7 +22,7 @@ export const Address = ({ county, country, line1, line2, line3, postcode, town }
 
 Address.propTypes = {
   county: string,
-  country: string.isRequired,
+  country: string,
   line1: string.isRequired,
   line2: string,
   line3: string,
