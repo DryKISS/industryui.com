@@ -1,8 +1,11 @@
 /**
  * Tooltip
  */
+
+// Style
 import styled from 'styled-components'
 
+// Tippy
 import Tippy from '@tippyjs/react'
 
 // UI

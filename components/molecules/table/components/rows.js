@@ -51,7 +51,7 @@ export const TableRows = memo(({ align, columns, hover, rowClick, rows, striped 
           return (
             <TableData align={align} key={index}>
               {length > 0 && column.formatter ? (
-                column.formatter({ row }, column.formatterData)
+                column.formatter({ row, data: column.formatterData })
               ) : value && value.__html ? (
                 <span dangerouslySetInnerHTML={value} />
               ) : (
