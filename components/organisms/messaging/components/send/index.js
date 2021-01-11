@@ -13,8 +13,6 @@ import {
   MessagingSubscriber
 } from 'components/services'
 
-import { PaperPlane } from './paperPlane'
-
 import { convertToRaw } from 'draft-js'
 
 // UI
@@ -28,6 +26,7 @@ import {
   VoiceRecorder,
   MessagingInput,
   MessagingAudioPlayer,
+  PaperPlaneIcon,
   ReplyContainer,
   useComponentCommunication
 } from 'components'
@@ -39,7 +38,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])
-  const [voiceMessage, setvoiceMessage] = useState(null)
+  const [voiceMessage, setVoiceMessage] = useState(null)
   const [audience, setAudience] = useState(audienceItems[0] || '')
   const fileInputRef = useRef()
 
@@ -59,9 +58,6 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
   const onActionRecieved = payload => {
     switch (payload.action) {
-      case MessagingActions.SET_RECORDED_VOICE:
-        setvoiceMessage(payload.data)
-        break
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
         break
@@ -91,7 +87,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     }
 
     onSubmit(data)
-    setvoiceMessage(null)
+    setVoiceMessage(null)
     setreplyMessage(null)
   }
 
@@ -110,8 +106,13 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     return disabled
   }
   const handleDeleteVoiceClick = () => {
-    setvoiceMessage(null)
+    setVoiceMessage(null)
   }
+
+  const handleVoiceRecord = e => {
+    setVoiceMessage(e.data)
+  }
+
   return (
     <>
       <StyledContainer audience={audience}>
@@ -159,7 +160,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           />
           <StyledElements>
             {isSendDisabled() ? (
-              <VoiceRecorder />
+              <VoiceRecorder onVoiceRecord={handleVoiceRecord} />
             ) : (
               <Button
                 context='transparent'
@@ -168,7 +169,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
                 onClick={submit}
                 size='xs'
               >
-                <PaperPlane />
+                <PaperPlaneIcon hoverColour />
               </Button>
             )}
           </StyledElements>

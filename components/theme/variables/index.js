@@ -17,6 +17,7 @@ import { FOOTER } from '../../organisms/footer/variables'
 import { FORM_ELEMENTS_STYLES } from '../../form/variables/formVariables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
+import { ICONS } from '../../icons/variables'
 import { LINK } from '../../atoms/link/variables'
 import { MESSAGING } from '../../organisms/messaging/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
@@ -29,6 +30,7 @@ import { STEPPER } from '../../molecules/stepper/variables'
 import { TABLE } from '../../molecules/table/variables'
 import { TABS } from '../../molecules/tabs/variables'
 import { TEXT_STYLE } from '../../atoms/text/variables'
+import { VOICE_RECORDER } from '../../molecules/voiceRecorder/variables'
 
 // Nivo
 import { BARCHART } from '../../molecules/charts/nivo/responsiveBar/variables'
@@ -48,6 +50,7 @@ export const Theme = {
   FORM_ELEMENTS_STYLES,
   GRID,
   HEADINGS,
+  ICONS,
   LINECHART,
   LINK,
   MESSAGING,
@@ -63,5 +66,6 @@ export const Theme = {
   TABLE,
   TABS,
   TEXT_STYLE,
-  TYPOGRAPHY
+  TYPOGRAPHY,
+  VOICE_RECORDER
 }

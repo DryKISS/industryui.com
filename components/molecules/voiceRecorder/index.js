@@ -9,14 +9,13 @@ import { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { MessageNames, MessagingCommunicationService, MessagingActions } from 'components/services'
-import { Microphone } from './microphone'
-import { Close, Text, toHHMMSS } from '../../../../'
+import { Close, Text, MicIcon, toHHMMSS } from '../../'
+import { COLOUR } from '../../theme/variables/colour'
 
 let AudioRecorder
 let mpegEncoder
 
-export const VoiceRecorder = props => {
+export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
   const [timer, settimer] = useState(0)
   const recorder = useRef()
@@ -49,7 +48,7 @@ export const VoiceRecorder = props => {
     timerInterval.current = null
     setTimeout(() => {
       settimer(0)
-    }, 300)
+    }, 100)
   }
   const handleStartRecord = () => {
     window &&
@@ -58,12 +57,7 @@ export const VoiceRecorder = props => {
         // Set record to <audio> when recording will be finished
         recorder.current.addEventListener('dataavailable', e => {
           if (canSendData.current === true) {
-            setTimeout(() => {
-              MessagingCommunicationService.send({
-                name: MessageNames.Messaging.MESSAGING_ACTION,
-                payload: { action: MessagingActions.SET_RECORDED_VOICE, data: e.data }
-              })
-            }, 200)
+            onVoiceRecord(e)
           } else {
             canSendData.current = true
           }
@@ -91,14 +85,14 @@ export const VoiceRecorder = props => {
     handleStopRecord()
   }
 
-  const showRecorder = props => {
-    if (!recorderLoaded) return <Microphone isLoading />
+  const showRecorder = ({ onVoiceRecord, overlayStyle }) => {
+    if (!recorderLoaded) return <MicIcon disabled />
     return (
       <>
-        <OverLay isRecording={isRecording}>
+        <OverLay isRecording={isRecording} style={overlayStyle}>
           {isRecording && (
             <OverlayRecorderIconWrapper>
-              <Microphone isRecording />
+              <MicIcon colour={COLOUR.success} />
             </OverlayRecorderIconWrapper>
           )}
           <Text content='Recording' context='blackText' />
@@ -115,20 +109,19 @@ export const VoiceRecorder = props => {
           <Close click={handleCancelRecord} context='danger' />
         </OverLay>
         <Wrapper onClick={isRecording ? handleStopRecord : handleStartRecord}>
-          {isRecording ? <StopIcon /> : <Microphone />}
+          {isRecording ? <StopIcon /> : <MicIcon hoverColour />}
         </Wrapper>
       </>
     )
   }
 
-  return <div>{showRecorder(props)}</div>
+  return showRecorder({ onVoiceRecord, overlayStyle })
 }
 
 const StopIcon = styled.div`
   background-color: ${({ theme }) => theme.COLOUR.danger};
   border-radius: 3px;
   height: 1rem;
-  margin-top: -0.5rem;
   width: 1rem;
 `
 const Dot = styled.span``
@@ -139,16 +132,16 @@ const Loader = styled.div`
       color: transparent;
     }
   }
-  ${Dot} {
+  span {
     animation: 1s blink infinite;
     font-size: 1.5rem;
   }
- /*prettier-ignore */
-  ${Dot}:nth-child(2) {
+
+  span:nth-child(2) {
     animation-delay: 250ms;
   }
-  /*prettier-ignore */
-  ${Dot}:nth-child(3) {
+
+  span:nth-child(3) {
     animation-delay: 500ms;
   }
 `
@@ -157,18 +150,21 @@ const OverlayRecorderIconWrapper = styled.div`
   margin-top: 0.5rem;
 `
 const TimerWrapper = styled.div`
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.timerColour};
+  color: ${({ theme: { VOICE_RECORDER } }) => VOICE_RECORDER.timerColour};
   flex: 1;
   text-align: end;
   padding-right: 1rem;
 `
 const Wrapper = styled.div`
+  align-items: center;
   cursor: pointer;
-  padding-top: 0.25rem;
+  display: flex;
+  height: 100%;
+  padding-left: 0.25rem;
 `
 const OverLay = styled.div`
   align-items: center;
-  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
+  background-color: ${({ theme: { VOICE_RECORDER } }) => VOICE_RECORDER.overlayBackground};
   display: flex;
   height: 45px;
   left: 4rem;
