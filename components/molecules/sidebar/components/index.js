@@ -1,4 +1,0 @@
-/**
- * Sidebar
- */
-export * from './sidebar'

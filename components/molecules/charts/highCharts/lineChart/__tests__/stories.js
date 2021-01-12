@@ -44,7 +44,7 @@ const BaseComponent = props => {
 
   return (
     <StyledWrapper>
-      <HighChart options={options} constructorType='chart' />
+      <HighChart options={options} />
     </StyledWrapper>
   )
 }

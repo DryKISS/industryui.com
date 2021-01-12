@@ -96,5 +96,5 @@ NavDropdown.propTypes = {
 
 NavDropdown.defaultProps = {
   position: 'left',
-  prefix: 'fad'
+  prefix: 'fas'
 }

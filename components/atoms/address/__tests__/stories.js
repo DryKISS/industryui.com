@@ -1,5 +1,5 @@
 /**
- * Address
+ * Components - Atoms - Address - Story
  */
 
 // Storybook
@@ -20,11 +20,6 @@ export default {
     town: 'London'
   },
   argTypes: {
-    county: {
-      control: {
-        type: 'text'
-      }
-    },
     country: CountryControl
   },
   component: Address,

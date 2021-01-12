@@ -2,8 +2,8 @@
  * Avatar - Props
  */
 
+// UI
 import { any, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
-
 import { CONTEXT, SIZE } from '../../'
 
 export const AvatarPropTypes = {

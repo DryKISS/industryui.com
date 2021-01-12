@@ -50,7 +50,7 @@ export const Footer = ({ columns, fixed }) => {
         {items.map(({ icon, id, name, to }) => (
           <StyledListItem key={id}>
             <Link to={to} passHref>
-              {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
+              {icon && <StyledIcon context='primary' icon={icon} />}
               {name}
             </Link>
           </StyledListItem>
@@ -63,7 +63,7 @@ export const Footer = ({ columns, fixed }) => {
     <Fragment key={index}>
       {items?.map(({ content, icon }, i) => (
         <Fragment key={i}>
-          {icon && <StyledIcon context='primary' icon={icon} prefix='fad' />}
+          {icon && <StyledIcon context='primary' icon={icon} />}
           <StyledText align={align} dangerouslySetInnerHTML={{ __html: content }} />
         </Fragment>
       ))}

@@ -9,7 +9,7 @@ import { DetailsPropTypes, DetailsDefaultProps } from './props'
 import { DetailsSubscriber, MessageNames, SIZE, Text, useComponentCommunication } from '../../'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Details2 = ({
   animationDuration,
@@ -19,6 +19,7 @@ export const Details2 = ({
   context,
   disableAnimation,
   endActionComponent,
+  fitParentHeight,
   iconComponent,
   open,
   startActionComponent,
@@ -76,7 +77,7 @@ export const Details2 = ({
   }
 
   return (
-    <Wrapper context={context} style={style}>
+    <Wrapper context={context} style={style} fitParentHeight={fitParentHeight} open={isOpen}>
       <Header>
         <OpenIconAndTitleWrapper onClick={handleOpenClose}>
           {(content || children) && (
@@ -98,8 +99,18 @@ export const Details2 = ({
         </ActionsWrapper>
       </Header>
       {(content || children) && (
-        <ContentWrapper maxHeight={contentHeight} open={isOpen} animationDuration={animationtime}>
-          <Content style={contentStyle} ref={contentRef}>
+        <ContentWrapper
+          maxHeight={contentHeight}
+          open={isOpen}
+          animationDuration={animationtime}
+          fitParentHeight={fitParentHeight}
+        >
+          <Content
+            style={contentStyle}
+            ref={contentRef}
+            fitParentHeight={fitParentHeight}
+            open={isOpen}
+          >
             {childrenMounted && (content || children)}
           </Content>
         </ContentWrapper>
@@ -137,6 +148,11 @@ const ActionsWrapper = styled.div`
 `
 const Content = styled.div`
   padding: 0.5rem;
+  ${({ fitParentHeight, open }) =>
+    fitParentHeight &&
+    css`
+      height: ${!open ? '0px' : '100%'};
+    `}
 `
 
 const OpenCloseWrapper = styled.div`
@@ -153,6 +169,16 @@ const Wrapper = styled.div`
   border-bottom: 2px solid;
   border-bottom-color: ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
   width: 100%;
+  transition: height 0.3 cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${({ fitParentHeight, open }) => {
+    return (
+      fitParentHeight &&
+      css`
+        height: ${!open ? '3.6rem' : '100%'};
+      `
+    )
+  }}
 `
 const OpenIconAndTitleWrapper = styled.div`
   cursor: pointer;
@@ -168,8 +194,14 @@ const Header = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  max-height: ${({ open, maxHeight }) => (open ? maxHeight + 'px' : '0px')};
+  max-height: ${({ fitParentHeight, maxHeight, open }) =>
+    fitParentHeight ? 'unset' : open ? maxHeight + 'px' : '0px'};
   overflow: hidden;
+  ${({ fitParentHeight, open }) =>
+    fitParentHeight &&
+    css`
+      height: ${!open ? '0px' : 'calc(100% - 3.5rem)'};
+    `}
   transition-duration: ${({ animationDuration }) => (animationDuration ?? 300) + 'ms'};
   transition-property: max-height;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

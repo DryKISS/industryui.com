@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 
 import styled, { css } from 'styled-components'
 
-import { useComponentCommunication, Preview } from '../../../../'
+import {
+  ChevronIcon,
+  CrossIcon,
+  DownloadIcon,
+  downloadFile,
+  Preview,
+  useComponentCommunication
+} from '../../../../'
+
 import { MessageNames, MessagingActions, MessagingSubscriber } from '../../../../services'
-import { Arrow } from './arrow'
-import { Cross } from './cross'
-import { DownloadButton } from './download'
 
 export const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
@@ -92,10 +97,11 @@ export const FullPreview = () => {
   const handleMainPreviewClick = e => {
     e.stopPropagation()
   }
+  const handleDownloadClick = (url, filename) => downloadFile({ url, filename })
   return (
     <Wrapper onClick={handleHide} visible={selectedFileIndex !== null}>
       <CrossWrapper onClick={handleHide}>
-        <Cross />
+        <CrossIcon colour='white' />
       </CrossWrapper>
       <ContentWrapper>
         {selectedFileIndex !== null && (
@@ -105,13 +111,17 @@ export const FullPreview = () => {
             maxDocHeight={maxDocHeight}
             visible={files.current.length > 0}
           >
-            <Arrow onClick={e => handleArrowClick(e, 'left')} />
+            <ChevronWrapper>
+              <ChevronIcon size={36} onClick={e => handleArrowClick(e, 'left')} />
+            </ChevronWrapper>
             <Preview
               file={files.current[selectedFileIndex]}
               contain
               zoomable={files.current[selectedFileIndex].type.includes('image')}
             />
-            <Arrow onClick={e => handleArrowClick(e, 'right')} right />
+            <ChevronWrapper right>
+              <ChevronIcon size={36} onClick={e => handleArrowClick(e, 'right')} />
+            </ChevronWrapper>
           </SelectedFilePreviewContainer>
         )}
 
@@ -144,9 +154,11 @@ export const FullPreview = () => {
               {selectedFileIndex !== null && (
                 <ActionsWrapper onClick={e => e.stopPropagation()}>
                   <Actions>
-                    <DownloadButton
-                      url={files.current[selectedFileIndex].src}
-                      filename={fileName}
+                    <DownloadIcon
+                      onClick={() =>
+                        handleDownloadClick(files.current[selectedFileIndex].src, fileName)
+                      }
+                      colour='#c1c1c1'
                     />
                   </Actions>
                 </ActionsWrapper>
@@ -158,6 +170,21 @@ export const FullPreview = () => {
     </Wrapper>
   )
 }
+
+const ChevronWrapper = styled.div`
+  left: 0.5rem;
+  position: absolute;
+  top: 40%;
+  z-index: 1;
+  ${({ right }) =>
+    right &&
+    css`
+      left: unset;
+      right: 0.5rem;
+      transform: rotate(180deg);
+    `}
+`
+
 const CrossWrapper = styled.div`
   cursor: pointer;
   position: absolute;
