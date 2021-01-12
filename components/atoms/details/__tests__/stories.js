@@ -15,19 +15,21 @@ export default {
     context: 'primary',
     open: false,
     summary: 'Summary',
-    SummaryActionsComponent: '',
     style: {},
-    Toolbar: '',
+    withActionsComponent: false,
     withButton: false,
-    withActionsComponent: false
+    withToolbar: false
   },
   argTypes: {
     context: ContextControl(),
+    withActionsComponent: {
+      name: 'With Actions Component'
+    },
     withButton: {
       name: 'With Simple Button'
     },
-    withActionsComponent: {
-      name: 'With Actions Component'
+    withToolbar: {
+      name: 'With Toolbar'
     }
   },
   component: Details,
@@ -41,9 +43,19 @@ export default {
   title: 'Atoms/Details'
 }
 
+const toolbar = () => {
+  return (
+    <ButtonToolbar>
+      <Button size='xs'>button1</Button>
+      <Button size='xs'>button2</Button>
+    </ButtonToolbar>
+  )
+}
+
 export const main = args => {
   if (args.withButton) {
     args.button = 'button'
+
     args.handleClick = e => {
       console.info(e)
     }
@@ -56,6 +68,10 @@ export const main = args => {
         <Button size='xs'>button2</Button>
       </ButtonToolbar>
     )
+  }
+
+  if (args.withToolbar) {
+    args.Toolbar = toolbar
   }
 
   return <Details {...args} />
