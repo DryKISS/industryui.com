@@ -3,7 +3,7 @@
  */
 
 // React
-import { bool, string } from 'prop-types'
+import { bool } from 'prop-types'
 import { memo } from 'react'
 
 // Style
@@ -18,6 +18,6 @@ export const TableHead = memo(styled.th`
 `)
 
 TableHead.propTypes = {
-  align: string,
+  align: bool,
   sortable: bool
 }
