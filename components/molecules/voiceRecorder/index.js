@@ -46,9 +46,8 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
   const stopTimer = () => {
     clearInterval(timerInterval.current)
     timerInterval.current = null
-    setTimeout(() => {
-      settimer(0)
-    }, 100)
+
+    settimer(0)
   }
   const handleStartRecord = () => {
     window &&
