@@ -6,35 +6,43 @@
 import { bool, func, string } from 'prop-types'
 
 // UI
-import { Icon } from '../../../'
+import { ChevronRightIcon } from '../../../'
 import { BarConfig } from './config'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const BarToggle = ({ onClick, open, placement, barWidth }) => {
+export const BarToggle = ({ barWidth, onClick, open, placement }) => {
   return (
     <OpenButton onClick={onClick} open={open} placement={placement} place={barWidth}>
-      <Icon icon='user' prefix='fas' />
+      <ChevronRightIcon />
     </OpenButton>
   )
 }
 
 const OpenButton = styled.div`
+  align-items: center;
   border-radius: 0.25rem;
   cursor: pointer;
+  display: flex;
   position: fixed;
-  z-index: 10;
   transition-duration: ${({ theme }) => theme.BAR.transitionDuration};
-  transition-property: left, opacity, right, width;
+  transition-property: left, opacity, right, width, transition;
   transition-timing-function: ${({ theme }) => theme.BAR.transitionTiming};
+  z-index: 10;
   svg {
     right: 0.2rem;
     position: absolute;
-    top: 1rem;
-    transform: rotate(0deg);
     transition: transform ${({ theme }) => theme.BAR.transitionDuration} ease;
   }
+  ${({ open }) => {
+    return css`
+      svg,
+      ._ {
+        transform: rotate(${open ? '180' : '0'}deg);
+      }
+    `
+  }}
 
   ${({ placement, open, place }) =>
     (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
