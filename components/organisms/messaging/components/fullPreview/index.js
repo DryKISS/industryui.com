@@ -15,7 +15,7 @@ import { MessageNames, MessagingActions, MessagingSubscriber } from '../../../..
 
 export const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
-  const [maxDocHeight, setmaxDocHeight] = useState(null)
+  const [maxDocHeight, setMaxDocHeight] = useState(null)
   const files = useRef()
   const senderData = useRef()
   const previewWrapperRef = useRef()
@@ -35,10 +35,10 @@ export const FullPreview = () => {
     if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
       setTimeout(() => {
         const height = previewWrapperRef.current.offsetHeight
-        setmaxDocHeight(height)
+        setMaxDocHeight(height)
       }, 0)
     } else if (maxDocHeight !== null) {
-      setmaxDocHeight(null)
+      setMaxDocHeight(null)
     }
     return () => {}
   }, [selectedFileIndex])

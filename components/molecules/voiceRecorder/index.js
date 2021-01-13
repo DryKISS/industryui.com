@@ -17,7 +17,7 @@ let mpegEncoder
 
 export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
-  const [timer, settimer] = useState(0)
+  const [timer, setTimer] = useState(0)
   const recorder = useRef()
   const timerInterval = useRef()
 
@@ -47,7 +47,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
     clearInterval(timerInterval.current)
     timerInterval.current = null
 
-    settimer(0)
+    setTimer(0)
   }
   const handleStartRecord = () => {
     window &&
@@ -66,7 +66,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
         // Start recording
         recorder.current.start()
         timerInterval.current = setInterval(() => {
-          settimer(time => time + 1)
+          setTimer(time => time + 1)
         }, 1000)
         setisRecording(true)
       })
