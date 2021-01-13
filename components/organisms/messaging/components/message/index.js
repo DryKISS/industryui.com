@@ -74,7 +74,10 @@ export const Message = memo(
       >
         {message.headerTime && (
           <TimeHeader>
-            <span>{message.headerTime}</span>
+            <div>
+              <span>{message.headerTime}</span>
+              <p />
+            </div>
           </TimeHeader>
         )}
         {type === 'in' && sideActions}
@@ -92,21 +95,42 @@ export const Message = memo(
   },
   () => true
 )
-const TimeHeader = styled.p`
+const TimeHeader = styled.div`
   position: absolute;
   margin-top: -0.1rem;
   text-align: center;
   width: 100%;
   background: #000;
   height: 1px;
-  span {
-    background: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
-    padding: 0.25rem 0.5rem;
-    position: relative;
-    top: -0.75rem;
-    font-size: 0.75rem;
+  div {
+    background: white;
     border: 1px solid;
     border-radius: 100px;
+    display: flex;
+    font-size: 0.75rem;
+    height: 19px;
+    left: calc(50% - 50px);
+    padding: 0.1rem 0.5rem;
+    place-content: center;
+    position: relative;
+    top: -0.7rem;
+    width: 110px;
+    span {
+      line-height: 12px;
+      padding-top: 1px;
+      position: absolute;
+      z-index: 1;
+    }
+    p {
+      background: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
+      border-radius: 15px;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 `
 const IconWrapper = styled.div`
