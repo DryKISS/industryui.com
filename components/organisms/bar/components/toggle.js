@@ -12,9 +12,9 @@ import { BarConfig } from './config'
 // Style
 import styled, { css } from 'styled-components'
 
-export const BarToggle = ({ onClick, open, placement }) => {
+export const BarToggle = ({ onClick, open, placement, barWidth }) => {
   return (
-    <OpenButton onClick={onClick} open={open} placement={placement}>
+    <OpenButton onClick={onClick} open={open} placement={placement} place={barWidth}>
       <Icon icon='user' prefix='fas' />
     </OpenButton>
   )
@@ -23,9 +23,11 @@ export const BarToggle = ({ onClick, open, placement }) => {
 const OpenButton = styled.div`
   border-radius: 0.25rem;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   z-index: 10;
-
+  transition-duration: ${({ theme }) => theme.BAR.transitionDuration};
+  transition-property: left, opacity, right, width;
+  transition-timing-function: ${({ theme }) => theme.BAR.transitionTiming};
   svg {
     right: 0.2rem;
     position: absolute;
@@ -34,7 +36,7 @@ const OpenButton = styled.div`
     transition: transform ${({ theme }) => theme.BAR.transitionDuration} ease;
   }
 
-  ${({ placement }) =>
+  ${({ placement, open, place }) =>
     (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
     css`
       background-color:${({ theme }) => theme.BAR.background};
@@ -42,7 +44,7 @@ const OpenButton = styled.div`
       border-bottom-${placement}-radius: 0;
       width: 1.5rem;
       height: 3rem;
-      ${placement}: 100%;
+      ${placement}: ${open ? place + 'rem' : '1rem'};
     `}
 `
 

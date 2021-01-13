@@ -20,12 +20,13 @@ export const BarOverlay = styled.div`
     variant === BarConfig.VARIANT.OVERLAY &&
     (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
     css`
-      width: calc(100% - ${width}rem);
+      width: calc(100%);
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       opacity: 1;
       top: 0;
-      position: absolute;
+      position: fixed;
+      z-index: 1;
       ${placement}: ${width}rem;
     `}
 
