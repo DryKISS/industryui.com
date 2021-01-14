@@ -14,6 +14,7 @@ import styled, { css } from 'styled-components'
 export const Details2 = ({
   animationDuration,
   children,
+  className,
   content,
   contentStyle,
   context,
@@ -77,7 +78,13 @@ export const Details2 = ({
   }
 
   return (
-    <Wrapper context={context} style={style} fitParentHeight={fitParentHeight} open={isOpen}>
+    <Wrapper
+      className={className}
+      context={context}
+      style={style}
+      fitParentHeight={fitParentHeight}
+      open={isOpen}
+    >
       <Header>
         <OpenIconAndTitleWrapper onClick={handleOpenClose}>
           {(content || children) && (
