@@ -24,6 +24,7 @@ export const Footer = ({ columns, fixed }) => {
                   <StyledHeading
                     align={value.align}
                     content={value.content}
+                    context={value.context}
                     key={`${value.content}${index}${i}`}
                     tag='h6'
                   />
@@ -44,13 +45,13 @@ export const Footer = ({ columns, fixed }) => {
     })
   }
 
-  const renderLinks = ({ align, direction, items }, index) => {
+  const renderLinks = ({ align, border, context, direction, items }, index) => {
     return (
       <StyledList align={align} direction={direction} key={`${items[0]}${index}`} unstyled>
-        {items.map(({ icon, id, name, to }) => (
+        {items.map(({ icon, iconPrefix, id, name, to }) => (
           <StyledListItem key={id}>
-            <Link to={to} passHref>
-              {icon && <StyledIcon context='primary' icon={icon} />}
+            <Link border={border} context={context} to={to} passHref>
+              {icon && <StyledIcon context='primary' icon={icon} prefix={iconPrefix} />}
               {name}
             </Link>
           </StyledListItem>
