@@ -1,23 +1,53 @@
 /**
- * Components - Details2 - Stories
+ * Components - Atoms - Details2 - Stories
  */
+
+// Storybook
+import { ContextControl } from 'decorators'
 
 // UI
 import {
   Button,
   ButtonToolbar,
   Column,
+  CONTEXT,
   Details2,
   DetailsCommunicationService,
   Icon,
   MessageNames,
-  Row
+  Row,
+  Text
 } from 'components'
+
 import Readme from '../README.md'
+
+const Content = () => {
+  return (
+    <>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+    </>
+  )
+}
 
 export default {
   args: {
-    children: 'Content'
+    animationDuration: 100,
+    disableAnimation: false,
+    context: CONTEXT.PRIMARY,
+    fitParentHeight: false,
+    iconComponent: <Icon fixedWidth={false} icon='images' />,
+    open: true,
+    title: 'Details 2',
+    uniqueId: '1',
+    unmountContentOnClose: false
+  },
+  argTypes: {
+    context: ContextControl()
   },
   component: Details2,
   parameters: {
@@ -31,6 +61,22 @@ export default {
 }
 
 export const main = args => {
+  return (
+    <Details2 {...args}>
+      <Content />
+    </Details2>
+  )
+}
+
+export const caret = args => {
+  return (
+    <Details2 {...args} iconComponent={null}>
+      <Content />
+    </Details2>
+  )
+}
+
+export const communication = args => {
   const toolbar = (
     <ButtonToolbar>
       <Button size='xs'>button1</Button>
@@ -39,7 +85,6 @@ export const main = args => {
   )
 
   const startActionComponent = <Button>button</Button>
-
   const endActionComponent = <Button>lastButton</Button>
 
   return (
@@ -83,6 +128,7 @@ export const main = args => {
         uniqueId='primary_Details'
         unmountContentOnClose
       />
+
       <Details2
         content={
           <>
@@ -114,6 +160,7 @@ export const main = args => {
         toolbar={toolbar}
         uniqueId='danger_Details'
       />
+
       <Row>
         <Column md={6}>
           <Details2
@@ -137,6 +184,7 @@ export const main = args => {
             uniqueId='warning_Details'
           />
         </Column>
+
         <Column md={6}>
           <Details2
             content={

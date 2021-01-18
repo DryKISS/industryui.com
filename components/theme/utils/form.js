@@ -60,7 +60,7 @@ export const COMMON_INPUT_STYLES = ({
     border: 1px solid ${theme.COLOUR.grey80};
     border-radius: ${theme.FORM_ELEMENTS_STYLES.inputBorderRadius};
     box-sizing: border-box;
-    color: ${theme.COLOUR.blackText};
+    color: ${theme.COLOUR.dark};
     display: block;
 
     ${INPUT_FONT_SIZE(size)}

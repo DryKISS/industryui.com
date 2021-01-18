@@ -122,7 +122,7 @@ const StyledTitle = styled.span`
   ${({ last, theme }) =>
     last &&
     css`
-      color: ${theme.COLOUR.blackText};
+      color: ${theme.COLOUR.dark};
     `}
 `
 

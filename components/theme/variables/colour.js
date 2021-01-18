@@ -5,7 +5,6 @@ export const COLOUR = {
   accent: 'rgb(102, 171, 255)',
   active: 'rgb(204 ,0, 0)',
   black: 'rgb(0, 0, 0)',
-  blackText: 'rgb(102, 102, 102)',
   danger: 'rgb(255, 51, 51)',
   dark: 'rgb(63, 81, 90)',
   darkBlue: 'rgb(0, 29, 102)',
