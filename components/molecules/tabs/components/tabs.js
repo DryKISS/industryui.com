@@ -4,7 +4,7 @@
 
 // React
 import React, { createRef, useEffect, useState } from 'react'
-import { array, bool, number, object, oneOfType, string } from 'prop-types'
+import { array, bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // Next
 import Router, { useRouter } from 'next/router'
@@ -61,6 +61,7 @@ export const Tabs = ({
   grabWalkSpeed,
   grabTimeout,
   handleChange,
+  onTabChange,
   scrollToActiveTab
 }) => {
   const router = useRouter()
@@ -86,7 +87,7 @@ export const Tabs = ({
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
-    handleChange && handleTabChange(tab)
+    onTabChange ? handleChange(tab) : handleChange && handleTabChange(tab)
   }
 
   const handleTabChange = tab => {
@@ -179,6 +180,7 @@ Tabs.propTypes = {
   grabTimeout: number,
   handleChange: bool,
   indicatorSize: number,
+  onTabChange: func,
   scrollToActiveTab: bool
 }
 
