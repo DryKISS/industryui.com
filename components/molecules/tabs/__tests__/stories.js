@@ -77,10 +77,3 @@ export const initialScrollToActiveTab = args => (
       .map((_, idx) => renderTab(idx, 23))}
   </BaseComponent>
 )
-export const fullWidthContent = args => (
-  <BaseComponent {...args}>
-    {Array(5)
-      .fill('')
-      .map((_, idx) => renderTab(idx))}
-  </BaseComponent>
-)
