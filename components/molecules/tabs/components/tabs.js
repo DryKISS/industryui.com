@@ -4,7 +4,7 @@
 
 // React
 import React, { createRef, useEffect, useState } from 'react'
-import { array, bool, func, number, object, oneOfType, string } from 'prop-types'
+import { array, bool, number, object, oneOfType, string } from 'prop-types'
 
 // Next
 import Router, { useRouter } from 'next/router'
@@ -180,7 +180,6 @@ Tabs.propTypes = {
   grabTimeout: number,
   handleChange: bool,
   indicatorSize: number,
-  onTabChange: oneOfType([func, null]),
   scrollToActiveTab: bool
 }
 
@@ -192,6 +191,5 @@ Tabs.defaultProps = {
   grabTimeout: 100,
   handleChange: true,
   indicatorSize: 1,
-  onTabChange: null,
   scrollToActiveTab: true
 }
