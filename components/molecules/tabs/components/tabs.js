@@ -87,7 +87,7 @@ export const Tabs = ({
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
-    onTabChange ? handleChange(tab) : handleChange && handleTabChange(tab)
+    onTabChange ? onTabChange(tab) : handleChange && handleTabChange(tab)
   }
 
   const handleTabChange = tab => {
@@ -180,7 +180,7 @@ Tabs.propTypes = {
   grabTimeout: number,
   handleChange: bool,
   indicatorSize: number,
-  onTabChange: func,
+  onTabChange: oneOfType([func, null]),
   scrollToActiveTab: bool
 }
 
@@ -192,5 +192,6 @@ Tabs.defaultProps = {
   grabTimeout: 100,
   handleChange: true,
   indicatorSize: 1,
+  onTabChange: null,
   scrollToActiveTab: true
 }

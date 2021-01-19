@@ -43,6 +43,7 @@
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
     "build": "cross-env NODE_ENV=build rollup -c",
     "build-storybook": "build-storybook --quiet -s ./.storybook/static",
+    "pack": "yarn run build && npm pack",
     "test:snapshot": "cross-env ENVIRONMENT=test jest",
     "test:snapshot:update": "cross-env ENVIRONMENT=test  jest --updateSnapshot"
   },
