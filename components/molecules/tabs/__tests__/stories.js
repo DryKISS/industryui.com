@@ -10,7 +10,14 @@ import { Tabs } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: { grabbable: true, grabWalkSpeed: 25, scrollToActiveTab: true },
+  args: {
+    centerTabs: false,
+    gap: 0,
+    grabbable: true,
+    grabWalkSpeed: 25,
+    indicatorSize: 1,
+    scrollToActiveTab: true
+  },
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
@@ -68,5 +75,12 @@ export const initialScrollToActiveTab = args => (
     {Array(25)
       .fill('')
       .map((_, idx) => renderTab(idx, 23))}
+  </BaseComponent>
+)
+export const fullWidthContent = args => (
+  <BaseComponent {...args}>
+    {Array(5)
+      .fill('')
+      .map((_, idx) => renderTab(idx))}
   </BaseComponent>
 )
