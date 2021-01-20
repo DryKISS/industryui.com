@@ -278,6 +278,7 @@ const OverlayForAdditionalMessages = styled.div`
 `
 const StyledHeadText = styled.div`
   display: flex;
+  align-items: center;
   ${({ type }) =>
     type === 'out' &&
     css`
