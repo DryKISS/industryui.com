@@ -38,7 +38,6 @@ export const Text = ({
 const StyledText = styled.p`
   color: ${({ context, theme: { COLOUR, TEXT_STYLE } }) =>
     context ? COLOUR[context] : TEXT_STYLE.DEFAULT_COLOUR};
-
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};

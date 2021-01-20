@@ -20,6 +20,7 @@ import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { ICONS } from '../../icons/variables'
 import { LINK } from '../../atoms/link/variables'
+import { LOGIN } from '../../organisms/login/variables'
 import { MESSAGING } from '../../organisms/messaging/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
 import { PAGE } from '../../layouts/page/variables'
@@ -55,6 +56,7 @@ export const Theme = {
   ICONS,
   LINECHART,
   LINK,
+  LOGIN,
   MESSAGING,
   NAVBAR,
   PAGE,

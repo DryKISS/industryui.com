@@ -10,6 +10,7 @@ storybook-static
 .env.development.local
 .env.test.local
 .env.production.local
+drykiss-industry-ui*
 service-account.json
 
 # Node

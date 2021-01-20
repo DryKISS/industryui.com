@@ -17,6 +17,11 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
     resolver: yupResolver(ForgotDetailsSchema)
   })
 
+  const defaultOptions = {
+    errors: errors,
+    register: register
+  }
+
   return (
     <>
       <PageHeading center divider={false} heading='Forgot Details' />
@@ -24,11 +29,10 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label='Email'>
           <FormField
+            {...defaultOptions}
             autoFocus
-            errors={errors}
             name='email'
             placeholder={showPlaceholder ? 'Email' : ''}
-            register={register}
           />
         </FormLabel>
 
