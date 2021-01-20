@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from 'components'
+import { string } from 'prop-types'
 
 export const VideoPlayer = ({ src, poster, className }) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -87,3 +88,7 @@ const Video = styled.video`
   outline: none;
   width: 100%;
 `
+VideoPlayer.prototypes = {
+  src: string.isRequired,
+  poster: string
+}
