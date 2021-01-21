@@ -15,7 +15,7 @@ import { MessageNames, MessagingActions, MessagingSubscriber } from '../../../..
 
 export const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
-  const [maxDocHeight, setmaxDocHeight] = useState(null)
+  const [maxDocHeight, setMaxDocHeight] = useState(null)
   const files = useRef()
   const senderData = useRef()
   const previewWrapperRef = useRef()
@@ -35,11 +35,10 @@ export const FullPreview = () => {
     if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
       setTimeout(() => {
         const height = previewWrapperRef.current.offsetHeight
-        console.log(height)
-        setmaxDocHeight(height)
+        setMaxDocHeight(height)
       }, 0)
     } else if (maxDocHeight !== null) {
-      setmaxDocHeight(null)
+      setMaxDocHeight(null)
     }
     return () => {}
   }, [selectedFileIndex])
@@ -187,7 +186,11 @@ const ChevronWrapper = styled.div`
 
 const CrossWrapper = styled.div`
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5rem;
+  display: flex;
   position: absolute;
+  padding: 5px;
   right: 1rem;
   top: 1rem;
   z-index: 1;
@@ -232,6 +235,7 @@ const SelectedFilePreviewContainer = styled.div`
   flex: 1;
   justify-content: center;
   max-height: 78%;
+  overflow: hidden;
   padding-top: 1rem;
   img {
     max-height: 100%;
@@ -276,6 +280,7 @@ const ContentWrapper = styled.div`
   height: 100%;
   position: relative;
   width: 100%;
+  gap: 1rem;
 `
 const Wrapper = styled.div`
   background: rgba(0, 0, 0, 0.9);

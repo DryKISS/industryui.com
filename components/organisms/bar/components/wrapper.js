@@ -54,7 +54,8 @@ export const BarWrapper = styled.aside`
     variant === BarConfig.VARIANT.OVERLAY
       ? css`
           opacity: 1;
-          position: absolute;
+          position: fixed;
+					z-index:1;
           ${placement}: 0;
           ${(placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
             css`

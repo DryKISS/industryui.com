@@ -4,7 +4,8 @@
 export const DRYKISS = [
   {
     header: {
-      content: 'About'
+      content: 'About',
+      context: 'black'
     },
     size: { sm: 12, md: 3 },
     text: {
@@ -52,6 +53,8 @@ export const DRYKISS = [
       content: 'Social'
     },
     links: {
+      border: false,
+      context: 'secondary',
       items: [
         {
           id: 'footerFacebook',

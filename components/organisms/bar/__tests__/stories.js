@@ -22,6 +22,7 @@ export default {
     open: true,
     placement: BarConfig.PLACEMENT.LEFT,
     variant: BarConfig.VARIANT.OVERLAY,
+    backdrop: false,
     width: 15,
     toggle: true
   },
