@@ -97,7 +97,7 @@ const TimeHeader = styled.p`
   margin-top: -0.1rem;
   text-align: center;
   width: 100%;
-  background: #000;
+  background: ${({ theme: { MESSAGING } }) => MESSAGING.dateDividerColour || '#0000'};
   height: 1px;
   span {
     background: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
@@ -137,6 +137,7 @@ const RowWrapper = styled.div`
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   div {
     background: ${({ theme: { MESSAGING } }) => MESSAGING.avatarBackground};
   }
