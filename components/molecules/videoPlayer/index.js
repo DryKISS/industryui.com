@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from 'components'
-import { string } from 'prop-types'
+import { any, string } from 'prop-types'
 
-export const VideoPlayer = ({ src, poster, className }) => {
+export const VideoPlayer = ({ src, poster, className, videoProps }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [width, setWidth] = useState(0)
   const videoRef = useRef()
@@ -39,7 +39,7 @@ export const VideoPlayer = ({ src, poster, className }) => {
         <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
         <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
       </Overlay>
-      <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed}>
+      <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
         <source src={src} type='video/mp4' />
         Your browser does not support the video tag.
       </Video>
@@ -89,6 +89,7 @@ const Video = styled.video`
   width: 100%;
 `
 VideoPlayer.prototypes = {
+  poster: string,
   src: string.isRequired,
-  poster: string
+  videoProps: any
 }
