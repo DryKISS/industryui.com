@@ -100,7 +100,7 @@ const TimeHeader = styled.div`
   margin-top: -0.1rem;
   text-align: center;
   width: 100%;
-  background: #000;
+  background: ${({ theme: { MESSAGING } }) => MESSAGING.dateDividerColour || '#0000'};
   height: 1px;
   div {
     background: white;
@@ -161,6 +161,7 @@ const RowWrapper = styled.div`
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   div {
     background: ${({ theme: { MESSAGING } }) => MESSAGING.avatarBackground};
   }
