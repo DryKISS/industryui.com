@@ -131,11 +131,11 @@ const StyledIconWrapper = styled.span`
   color: ${({ theme }) => theme.COLOUR.blackGrey};
 `
 const StyledIcon = styled(Icon).attrs(props => ({
-  color: props.theme.darkGrey
+  color: props.theme.dark
 }))``
 
 const StyledSeperator = styled.span`
-  color: ${({ theme }) => theme.COLOUR.darkGrey};
+  color: ${({ theme }) => theme.COLOUR.dark};
   ${({ size }) => sizedStyles(size)}
 `
 

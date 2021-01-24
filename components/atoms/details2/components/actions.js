@@ -66,7 +66,7 @@ export const Details2Actions = ({ endActionComponent, startActionComponent, tool
 }
 
 const ActionsDivider = styled.div`
-  background-color: ${({ theme }) => theme.COLOUR.darkGrey};
+  background-color: ${({ theme }) => theme.COLOUR.dark};
   height: 1rem;
   margin: 0 1rem;
   width: 2px;

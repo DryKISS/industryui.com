@@ -18,7 +18,7 @@ export const FormError = ({ message, colour, ...props }) => {
 }
 
 export const StyledSmall = styled.small`
-  color: ${({ theme, colour }) => colour ?? theme.COLOUR.error};
+  color: ${({ theme, colour }) => colour ?? theme.COLOUR.danger};
   display: block;
   font-size: 0.625rem;
   font-weight: 400;

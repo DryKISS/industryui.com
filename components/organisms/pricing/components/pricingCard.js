@@ -80,7 +80,7 @@ const ChecklistWrapper = styled.div`
 `
 const Title = styled.p`
   border-bottom: 1px solid
-    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.darkGrey)};
+    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.dark)};
   color: ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.dark)};
   font-size: 1.25rem;
   font-weight: 600;
@@ -92,8 +92,7 @@ const Wrapper = styled.div`
   background-color: ${({ theme, recommended }) =>
     recommended ? theme.COLOUR.darkBlue : theme.COLOUR.watterBlue};
 
-  border: ${({ theme, recommended }) =>
-    recommended ? 'none' : `1px solid ${theme.COLOUR.darkGrey}`};
+  border: ${({ theme, recommended }) => (recommended ? 'none' : `1px solid ${theme.COLOUR.dark}`)};
   border-radius: 1rem;
 
   box-shadow: ${({ theme, recommended }) =>

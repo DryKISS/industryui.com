@@ -42,8 +42,8 @@ const StyledInputGroup = styled.div`
       &:hover {
         .prepend,
         .append {
-          background: ${theme.COLOUR.lightRed};
-          border-color: ${theme.COLOUR.lightRed};
+          background: ${theme.COLOUR.danger};
+          border-color: ${theme.COLOUR.danger};
         }
       }
     `}
