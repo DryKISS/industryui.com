@@ -15,6 +15,8 @@ export const Tab = ({
   childClick,
   context,
   disabled,
+  gap,
+  indicatorSize,
   label,
   onClick,
   scrollToActiveTab
@@ -38,8 +40,10 @@ export const Tab = ({
       active={isActive}
       context={context}
       disabled={disabled}
+      indicatorSize={indicatorSize}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
+      gap={gap}
     >
       {label}
     </StyledTab>
@@ -47,18 +51,24 @@ export const Tab = ({
 }
 
 const StyledTab = styled.li`
-  ${({ context, theme }) => css`
+  ${({ context, theme, gap }) => css`
     background-color: ${theme.TABS.colour};
     border-left: 1px solid ${theme.TABS.borderColour};
     border-bottom: 1px solid ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     border-top: 1px solid ${theme.TABS.borderColour};
+    color: ${theme.TABS.tabTextColour};
+    ${gap !== 0 &&
+      css`
+        border-right: 1px solid ${theme.TABS.borderColour};
+      `}
   `}
 
-  ${({ active, context, theme }) =>
+  ${({ active, context, indicatorSize, theme }) =>
     active &&
     css`
       background-color: ${theme.TABS.activeColour};
-      border-bottom: 1px solid ${theme.COLOUR.primary};
+      border-bottom: ${indicatorSize}px solid ${theme.COLOUR.primary};
+      color: ${theme.TABS.activeTabTextColour};
     `}
 
   ${({ active, theme }) =>

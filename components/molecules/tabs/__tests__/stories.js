@@ -10,7 +10,14 @@ import { Tabs } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: { grabbable: true, grabWalkSpeed: 25, scrollToActiveTab: true },
+  args: {
+    centerTabs: false,
+    gap: 0,
+    grabbable: true,
+    grabWalkSpeed: 25,
+    indicatorSize: 1,
+    scrollToActiveTab: true
+  },
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {

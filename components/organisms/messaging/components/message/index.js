@@ -122,7 +122,8 @@ const TimeHeader = styled.div`
       z-index: 1;
     }
     p {
-      background: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
+      background: ${({ theme: { MESSAGING } }) =>
+        MESSAGING.dateBadgeBackground || MESSAGING.containerBackground};
       border-radius: 15px;
       bottom: 0;
       left: 0;

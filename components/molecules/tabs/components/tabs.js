@@ -52,12 +52,16 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
 }
 
 export const Tabs = ({
+  centerTabs,
   children,
   className,
+  indicatorSize,
+  gap,
   grabbable,
   grabWalkSpeed,
   grabTimeout,
   handleChange,
+  onTabChange,
   scrollToActiveTab
 }) => {
   const router = useRouter()
@@ -83,7 +87,7 @@ export const Tabs = ({
 
   const onClickTabItem = tab => {
     setActiveTab(tab)
-    handleChange && handleTabChange(tab)
+    onTabChange ? onTabChange(tab) : handleChange && handleTabChange(tab)
   }
 
   const handleTabChange = tab => {
@@ -93,7 +97,13 @@ export const Tabs = ({
 
   return (
     <>
-      <StyledTabs className={className} grabbable={grabbable} ref={wrapperRef}>
+      <StyledTabs
+        centerTabs={centerTabs}
+        className={className}
+        gap={gap}
+        grabbable={grabbable}
+        ref={wrapperRef}
+      >
         {children.map(({ props }) => {
           return (
             <Tab
@@ -101,6 +111,8 @@ export const Tabs = ({
               key={props.label}
               onClick={props.disabled ? () => {} : onClickTabItem}
               scrollToActiveTab={scrollToActiveTab}
+              gap={gap}
+              indicatorSize={indicatorSize}
               {...props}
             />
           )
@@ -122,6 +134,18 @@ const StyledTabs = styled.ol`
   display: flex;
   align-items: flex-end;
   border-bottom: 1px solid ${({ theme }) => theme.TABS.borderColour};
+  ${({ gap }) =>
+    gap !== 0 &&
+    css`
+      gap: ${gap}px;
+    `}
+
+  ${({ centerTabs }) =>
+    centerTabs &&
+    css`
+      justify-content: center;
+    `}
+
   margin: 0 0 1rem 0;
   padding-left: 0;
   white-space: nowrap;
@@ -147,19 +171,25 @@ const StyledTabs = styled.ol`
 `
 
 Tabs.propTypes = {
+  centerTabs: bool,
   children: oneOfType([array, object]).isRequired,
   className: string,
+  gap: number,
   grabbable: bool,
   grabWalkSpeed: number,
   grabTimeout: number,
   handleChange: bool,
+  indicatorSize: number,
   scrollToActiveTab: bool
 }
 
 Tabs.defaultProps = {
+  centerTabs: false,
+  gap: 0,
   grabbable: true,
   grabWalkSpeed: 25,
   grabTimeout: 100,
   handleChange: true,
+  indicatorSize: 1,
   scrollToActiveTab: true
 }
