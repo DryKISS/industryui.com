@@ -14,7 +14,6 @@ export default {
     items: Data.items,
     summary: Data.summary
   },
-
   component: Stepper,
   parameters: {
     docs: {

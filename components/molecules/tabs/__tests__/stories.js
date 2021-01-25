@@ -1,5 +1,5 @@
 /**
- * Tabs
+ * Components - Molecules - Tabs - Story
  */
 
 // Storybook
@@ -10,8 +10,6 @@ import { Tabs } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: { grabbable: true, grabWalkSpeed: 25, scrollToActiveTab: true },
-  title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
     docs: {
@@ -19,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Tabs'
 }
 
 const renderTab = (index, activeTab) => (
@@ -36,30 +35,16 @@ const BaseComponent = ({ children, ...props }) => (
 
 export const main = args => (
   <BaseComponent {...args}>
-    {Array(25)
-      .fill('')
-      .map((_, idx) => renderTab(idx))}
-  </BaseComponent>
-)
-
-export const disabled = args => (
-  <BaseComponent {...args}>
-    {Array(2)
-      .fill('')
-      .map((_, idx) => renderTab(idx))}
-    <div disabled label='Tab 3 Disabled'>
-      Tab 3 Disabled
+    <div data={{ 'data-cy': 'tab1' }} label='Tab 1'>
+      Tab 1 Content
     </div>
-  </BaseComponent>
-)
-
-export const active = args => (
-  <BaseComponent {...args}>
-    {renderTab(1)}
-    <div active label='Tab 2'>
-      Tab 2 Content
+    <div disabled label='Disabled'>
+      Tab 2 Disabled
     </div>
-    {renderTab(3)}
+    <div active label='Tab 3'>
+      Tab 3
+    </div>
+    <div label='Tab 4'>Tab 4</div>
   </BaseComponent>
 )
 

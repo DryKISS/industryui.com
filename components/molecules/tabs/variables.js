@@ -1,5 +1,5 @@
 /**
- * Theme - Variables - Tabs
+ * Components - Molecules - Tabs - Variables
  */
 
 // UI

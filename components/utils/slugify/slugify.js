@@ -1,17 +1,24 @@
 /**
- * Slugify a string
+ * Components - Utils - Slugify
+ *
+ * Normalization Form Compatibility Decomposition
+ * Replace spaces replacer
+ * Remove all non-word chars
+ * Replace multiple spaces with replacer
+ * Replace the replacer in the last occurence
  */
 export const slugify = string => {
   const replacer = '-'
+
   const slug = string
     .toString()
     .toLowerCase()
     .trim()
-    .normalize('NFKD') // Normalization Form Compatibility Decomposition
-    .replace(/\s+/g, replacer) // Replace spaces replacer
-    .replace(/[^\w-]+/g, '') // Remove all non-word chars
-    .replace(/--+/g, replacer) // Replace multiple spaces with replacer
-    .replace(new RegExp(replacer + '$'), '') // Replace the replacer in the last occurence
+    .normalize('NFKD')
+    .replace(/\s+/g, replacer)
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, replacer)
+    .replace(new RegExp(replacer + '$'), '')
 
   return slug
 }
