@@ -4,7 +4,7 @@
 
 // React
 import { useEffect, useRef } from 'react'
-import { bool, func, object, oneOfType, string } from 'prop-types'
+import { bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // UI
 import { slugify } from '../../../'
@@ -18,12 +18,14 @@ export const Tab = ({
   context,
   data,
   disabled,
+  index,
   label,
   onClick,
   scrollToActiveTab
 }) => {
   const tabRef = useRef(null)
-  const isActive = activeTab === slugify(label)
+  const labelSlug = slugify(label)
+  const isActive = activeTab.label === labelSlug
 
   useEffect(() => {
     if (scrollToActiveTab && tabRef.current) {
@@ -39,8 +41,13 @@ export const Tab = ({
       return
     }
 
-    onClick && onClick(label)
+    onClick && onClick({ index: index, label: labelSlug })
     childClick && childClick()
+  }
+
+  // If no data then default to Cypress ID
+  if (!data) {
+    data = { 'data-cy': `${labelSlug}Tab` }
   }
 
   return (
@@ -124,6 +131,7 @@ Tab.propTypes = {
   context: oneOfType([bool, string]),
   data: object,
   disabled: bool,
+  index: number,
   label: string.isRequired,
   onClick: oneOfType([bool, func]).isRequired,
   scrollToActiveTab: bool

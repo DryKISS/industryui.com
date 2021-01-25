@@ -55,6 +55,13 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   })
 }
 
+export const TabContent = ({ activeTab, children }) => {
+  return children[activeTab.index].props.children
+}
+
+// Active
+let active = ''
+
 export const Tabs = ({
   children,
   className,
@@ -77,25 +84,28 @@ export const Tabs = ({
     children = React.Children.toArray(children)
   }
 
-  // Active
-  let active = ''
-
   // Find active in children if more than one tab or make first active
   if (children.length > 1) {
-    children.map(child => {
+    children.map((child, index) => {
       if (child.props.active === true) {
-        active = slugify(child.props.label)
+        active = {
+          index: index,
+          label: slugify(child.props.label)
+        }
       }
     })
   } else {
-    active = slugify(children[0].props.label)
+    active = {
+      index: 0,
+      label: slugify(children[0].props.label)
+    }
   }
 
   const [activeTab, setActiveTab] = useState(active)
 
-  const onClickTabItem = tab => {
-    tab = slugify(tab)
-    setActiveTab(tab)
+  const onClickTabItem = ({ index, label }) => {
+    const tab = slugify(label)
+    setActiveTab({ index: index, label: tab })
     handleChange && handleTabChange(tab)
   }
 
@@ -114,10 +124,11 @@ export const Tabs = ({
   return (
     <>
       <StyledTabs className={className} grabbable={grabbable} ref={wrapperRef}>
-        {children.map(({ props }) => {
+        {children.map(({ props }, index) => {
           return (
             <Tab
               activeTab={activeTab}
+              index={index}
               key={props.label}
               onClick={!props.disabled && onClickTabItem}
               scrollToActiveTab={scrollToActiveTab}
@@ -127,13 +138,7 @@ export const Tabs = ({
         })}
       </StyledTabs>
 
-      {children.map(child => {
-        if (child.props.label !== activeTab) {
-          return undefined
-        }
-
-        return child.props.children
-      })}
+      <TabContent activeTab={activeTab} children={children} />
     </>
   )
 }

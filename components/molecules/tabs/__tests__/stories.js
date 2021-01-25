@@ -44,7 +44,9 @@ export const main = args => (
     <div active label='Tab 3'>
       Tab 3
     </div>
-    <div label='Tab 4'>Tab 4</div>
+    <div context='danger' label='Tab 4'>
+      Tab 4
+    </div>
   </BaseComponent>
 )
 
