@@ -2,11 +2,8 @@
  * Components - Molecules - Tabs - Story
  */
 
-// Storybook
-import { action } from '@storybook/addon-actions'
-
 // UI
-import { Tabs } from 'components'
+import { Space, Tabs } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -27,11 +24,7 @@ const renderTab = (index, activeTab) => (
   </div>
 )
 
-const BaseComponent = ({ children, ...props }) => (
-  <Tabs onChange={action('change')} {...props}>
-    {children}
-  </Tabs>
-)
+const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</Tabs>
 
 export const main = args => (
   <BaseComponent {...args}>
@@ -49,6 +42,30 @@ export const main = args => (
     </div>
   </BaseComponent>
 )
+
+export const change = args => {
+  const renderTabContent = tab => {
+    return (
+      <>
+        HERE
+        <Space />
+        THERE
+        {tab}
+      </>
+    )
+  }
+
+  return (
+    <BaseComponent {...args} handleChange={false}>
+      <div active label='Tab 1'>
+        Tab 1 Content
+      </div>
+      <div label='Disabled'>Tab 2 Disabled</div>
+      <div label='Tab 3'>{renderTabContent('customerVat')}</div>
+      <div label='Tab 4'>Tab 4</div>
+    </BaseComponent>
+  )
+}
 
 export const initialScrollToActiveTab = args => (
   <BaseComponent {...args}>

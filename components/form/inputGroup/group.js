@@ -34,6 +34,11 @@ const StyledInputGroup = styled.div`
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+
+    :not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
   ${({ error, theme }) =>
     error &&

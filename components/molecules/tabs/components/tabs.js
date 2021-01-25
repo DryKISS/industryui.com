@@ -106,7 +106,10 @@ export const Tabs = ({
   const onClickTabItem = ({ index, label }) => {
     const tab = slugify(label)
     setActiveTab({ index: index, label: tab })
-    handleChange && handleTabChange(tab)
+
+    if (handleChange) {
+      handleTabChange(tab)
+    }
   }
 
   const handleTabChange = tab => {
