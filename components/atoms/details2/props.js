@@ -1,14 +1,14 @@
 /**
- * Details - Props
+ * Components - Atoms - Details2 - Props
  */
 
 // React
 import { bool, node, number, object, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../..'
+import { CONTEXT } from '../../'
 
-export const DetailsPropTypes = {
+export const Details2PropTypes = {
   animationDuration: number,
   children: node,
   content: node,
@@ -16,6 +16,7 @@ export const DetailsPropTypes = {
   context: oneOf(Object.values(CONTEXT)),
   disableAnimation: bool,
   endActionComponent: node,
+  fitParentHeight: bool,
   iconComponent: node,
   open: bool,
   startActionComponent: node,
@@ -26,7 +27,12 @@ export const DetailsPropTypes = {
   unmountContentOnClose: bool
 }
 
-export const DetailsDefaultProps = {
+export const Details2DefaultProps = {
+  animationDuration: 100,
   context: 'primary',
-  open: false
+  disableAnimation: false,
+  fitParentHeight: false,
+  iconComponent: false,
+  open: false,
+  unmountContentOnClose: false
 }

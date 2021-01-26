@@ -115,13 +115,13 @@ export const MessagingContainer = ({
         onMentionClick(payload.data)
         break
       case MessagingActions.EDIT_MESSAGE:
-        console.log(payload.data)
+        console.info(payload.data)
         break
       case MessagingActions.DELETE_MESSAGE:
-        console.log(payload.data)
+        console.info(payload.data)
         break
       case MessagingActions.STAR_MESSAGE:
-        console.log(payload.data)
+        console.info(payload.data)
         break
 
       default:

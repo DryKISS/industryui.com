@@ -12,6 +12,7 @@ import { BADGE } from '../../atoms/badge/variables'
 import { BAR } from '../../organisms/bar/variables'
 import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
 import { COPYRIGHT } from '../../molecules/copyright/variables'
+import { DETAILS2 } from '../../atoms/details2/variables'
 import { DROPDOWN } from '../../molecules/dropdown/variables'
 import { FOOTER } from '../../organisms/footer/variables'
 import { FORM_ELEMENTS_STYLES } from '../../form/variables/formVariables'
@@ -19,6 +20,7 @@ import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { ICONS } from '../../icons/variables'
 import { LINK } from '../../atoms/link/variables'
+import { LOGIN } from '../../organisms/login/variables'
 import { MESSAGING } from '../../organisms/messaging/variables'
 import { NAVBAR } from '../../molecules/navbar/variables'
 import { PAGE } from '../../layouts/page/variables'
@@ -45,6 +47,7 @@ export const Theme = {
   CALENDAR,
   COLOUR,
   COPYRIGHT,
+  DETAILS2,
   DROPDOWN,
   FOOTER,
   FORM_ELEMENTS_STYLES,
@@ -53,6 +56,7 @@ export const Theme = {
   ICONS,
   LINECHART,
   LINK,
+  LOGIN,
   MESSAGING,
   NAVBAR,
   PAGE,

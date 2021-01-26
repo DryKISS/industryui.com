@@ -31,8 +31,7 @@ export const EmailChange = ({ showPlaceholder, submit }) => {
 
   const defaultOptions = {
     errors: errors,
-    register: register,
-    type: 'password'
+    register: register
   }
 
   return (

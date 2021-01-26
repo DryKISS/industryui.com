@@ -94,7 +94,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
               <MicIcon colour={COLOUR.success} />
             </OverlayRecorderIconWrapper>
           )}
-          <Text content='Recording' context='blackText' />
+          <Text content='Recording' context='dark' />
 
           <Loader>
             <Dot>.</Dot>

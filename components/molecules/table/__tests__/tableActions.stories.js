@@ -30,7 +30,7 @@ const data = [
   {
     context: 'secondary',
     icon: ['fas', 'edit'],
-    numberOverlay: '√',
+    overlayCustom: '√',
     to: '/manage',
     tooltip: 'Edit'
   },
@@ -49,7 +49,7 @@ const data = [
   },
   {
     context: 'danger',
-    numberOverlay: '3',
+    overlayCustom: '3',
     icon: ['fas', 'trash'],
     to: '/delete',
     tooltip: 'Delete'

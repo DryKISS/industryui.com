@@ -71,7 +71,7 @@ const Wrapper = styled.div`
     ${props => COMMON_INPUT_STYLES(props)}
     display:flex;
     padding: 0;
-    color: ${({ theme }) => theme.COLOUR.blackText};
+    color: ${({ theme }) => theme.COLOUR.dark};
     ${({ size }) => {
       switch (size) {
         case SIZE.SM:

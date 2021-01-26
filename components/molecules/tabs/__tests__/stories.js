@@ -1,24 +1,12 @@
 /**
- * Tabs
+ * Components - Molecules - Tabs - Story
  */
 
-// Storybook
-import { action } from '@storybook/addon-actions'
-
 // UI
-import { Tabs } from 'components'
+import { Space, Tabs } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: {
-    centerTabs: false,
-    gap: 0,
-    grabbable: true,
-    grabWalkSpeed: 25,
-    indicatorSize: 1,
-    scrollToActiveTab: true
-  },
-  title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
     docs: {
@@ -26,7 +14,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Tabs'
 }
 
 const renderTab = (index, activeTab) => (
@@ -35,40 +24,48 @@ const renderTab = (index, activeTab) => (
   </div>
 )
 
-const BaseComponent = ({ children, ...props }) => (
-  <Tabs onChange={action('change')} {...props}>
-    {children}
-  </Tabs>
-)
+const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</Tabs>
 
 export const main = args => (
   <BaseComponent {...args}>
-    {Array(25)
-      .fill('')
-      .map((_, idx) => renderTab(idx))}
-  </BaseComponent>
-)
-
-export const disabled = args => (
-  <BaseComponent {...args}>
-    {Array(2)
-      .fill('')
-      .map((_, idx) => renderTab(idx))}
-    <div disabled label='Tab 3 Disabled'>
-      Tab 3 Disabled
+    <div data={{ 'data-cy': 'tab1' }} label='Tab 1'>
+      Tab 1 Content
+    </div>
+    <div disabled label='Disabled'>
+      Tab 2 Disabled
+    </div>
+    <div active label='Tab 3'>
+      Tab 3
+    </div>
+    <div context='danger' label='Tab 4'>
+      Tab 4
     </div>
   </BaseComponent>
 )
 
-export const active = args => (
-  <BaseComponent {...args}>
-    {renderTab(1)}
-    <div active label='Tab 2'>
-      Tab 2 Content
-    </div>
-    {renderTab(3)}
-  </BaseComponent>
-)
+export const change = args => {
+  const renderTabContent = tab => {
+    return (
+      <>
+        HERE
+        <Space />
+        THERE
+        {tab}
+      </>
+    )
+  }
+
+  return (
+    <BaseComponent {...args} handleChange={false}>
+      <div active label='Tab 1'>
+        Tab 1 Content
+      </div>
+      <div label='Disabled'>Tab 2 Disabled</div>
+      <div label='Tab 3'>{renderTabContent('customerVat')}</div>
+      <div label='Tab 4'>Tab 4</div>
+    </BaseComponent>
+  )
+}
 
 export const initialScrollToActiveTab = args => (
   <BaseComponent {...args}>

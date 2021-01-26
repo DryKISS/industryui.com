@@ -25,6 +25,7 @@ export const MessagingCommunicationService = {
     MessagingSubscriber.next(msg)
   }
 }
+
 export const DetailsSubscriber = new Subject()
 export const DetailsCommunicationService = {
   send: msg => {

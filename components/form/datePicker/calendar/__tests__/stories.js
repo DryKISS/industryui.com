@@ -30,7 +30,6 @@ import { args, argTypes } from './controls'
 export default {
   args,
   argTypes,
-  title: 'Form/Date Picker/Calendar',
   component: DatePickerCalendar,
   parameters: {
     docs: {
@@ -38,7 +37,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Date Picker/Calendar'
 }
 
 const schema = object().shape({
@@ -49,12 +49,14 @@ const BaseComponent = (props = {}) => {
   const { control, errors, getValues, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })
+
   const onSubmit = data => {}
+
   const defaultProps = {
     control: control,
     errors: errors,
-    name: 'expiryAt',
     locale: enGB,
+    name: 'expiryAt',
     ...props
   }
 
@@ -66,7 +68,7 @@ const BaseComponent = (props = {}) => {
 
       <Divider size='sm' />
 
-      <Button content='Submit' type='submit' />
+      <Button content='Submit' size='sm' type='submit' />
 
       <Text>{value}</Text>
 
@@ -76,11 +78,29 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = args => <BaseComponent {...args} />
+
 export const defaultValue = args => (
   <BaseComponent {...args} defaultValue={addDays(new Date(), 5)} />
 )
+
 export const time = args => (
   <BaseComponent {...args} dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
+)
+
+const filterPassedTime = time => {
+  const currentDate = new Date()
+  const selectedDate = new Date(time)
+  return currentDate.getTime() < selectedDate.getTime()
+}
+
+export const minTime = args => (
+  <BaseComponent
+    {...args}
+    dateFormat='MMMM d, yyyy h:mm aa'
+    minDate={new Date()}
+    filterTime={filterPassedTime}
+    showTimeSelect
+  />
 )
 
 export const workingHours = args => {

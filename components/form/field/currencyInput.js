@@ -28,7 +28,7 @@ export const CurrencyInput = ({
   return (
     <FormLabel show={show} label={label}>
       <InputGroup {...defaultOptions}>
-        <InputGroupAddon {...defaultOptions} addonType='prepend' text size={size}>
+        <InputGroupAddon {...defaultOptions} addonType='prepend' size={size} text>
           {currencySymbol}
         </InputGroupAddon>
 
@@ -45,7 +45,7 @@ export const CurrencyInput = ({
 
         {vat && (
           <>
-            <InputGroupAddon {...defaultOptions} addonType='append' text size={size}>
+            <InputGroupAddon {...defaultOptions} addonType='append' size={size} text>
               {vat}
             </InputGroupAddon>
             {children}

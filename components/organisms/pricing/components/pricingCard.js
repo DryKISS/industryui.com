@@ -24,7 +24,7 @@ export const PricingCard = ({ data, layout, onCardSelect }) => {
               />
               <StyledText
                 content={item.title}
-                context={recommended ? 'white' : 'blackText'}
+                context={recommended ? 'white' : 'dark'}
                 size={priceLayoutSizes(layout).featuresTextSize}
               />
             </ListItem>
@@ -80,8 +80,8 @@ const ChecklistWrapper = styled.div`
 `
 const Title = styled.p`
   border-bottom: 1px solid
-    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.darkGrey)};
-  color: ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.blackText)};
+    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.dark)};
+  color: ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.dark)};
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
@@ -92,8 +92,7 @@ const Wrapper = styled.div`
   background-color: ${({ theme, recommended }) =>
     recommended ? theme.COLOUR.darkBlue : theme.COLOUR.watterBlue};
 
-  border: ${({ theme, recommended }) =>
-    recommended ? 'none' : `1px solid ${theme.COLOUR.darkGrey}`};
+  border: ${({ theme, recommended }) => (recommended ? 'none' : `1px solid ${theme.COLOUR.dark}`)};
   border-radius: 1rem;
 
   box-shadow: ${({ theme, recommended }) =>

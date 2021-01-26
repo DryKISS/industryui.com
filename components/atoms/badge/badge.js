@@ -42,7 +42,7 @@ const StyledBadge = styled.a`
   ${props => BACKGROUND(props)}
   ${props => FONTSIZE(props)}
   border: ${({ context, theme }) =>
-    context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.blackText};
+    context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.dark};
   border-radius: ${({ shape, theme }) => theme.BADGE.BORDER_RADIUS[shape]};
   color: ${({ theme, context }) => (context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black)};
   display: inline-block;

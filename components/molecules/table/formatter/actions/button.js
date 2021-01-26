@@ -17,7 +17,7 @@ import { TableActionsOverlay } from './overlay'
 import styled from 'styled-components'
 
 export const TableActionsButton = forwardRef(
-  ({ context, disabled, icon, numberOverlay, onClick, row, to }, ref) => {
+  ({ context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to }, ref) => {
     const handleClick = path => e => {
       e.preventDefault()
       e.stopPropagation()
@@ -25,7 +25,7 @@ export const TableActionsButton = forwardRef(
     }
 
     const iconArray = Array.isArray(icon)
-    const overlay = row[numberOverlay] || numberOverlay
+    const overlay = row[numberOverlay] || overlayCustom
     const click = onClick ? e => onClick(e, row) : handleClick(`${to}?id=${row.id}`)
 
     return (
@@ -64,6 +64,7 @@ TableActionsButton.propTypes = {
   icon: oneOfType([array, string]),
   numberOverlay: string,
   onClick: func,
+  overlayCustom: string,
   row: object.isRequired,
   to: string
 }

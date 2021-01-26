@@ -58,6 +58,7 @@ export const StyledInput = styled.input.attrs(props => ({
   autoComplete: 'off',
   autoFocus: false
 }))`
+
 ${props => COMMON_INPUT_STYLES(props)}
 
   ${({ errors }) =>
