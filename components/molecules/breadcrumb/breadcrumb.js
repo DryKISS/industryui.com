@@ -4,7 +4,7 @@
  */
 
 // React
-import { oneOf, oneOfType, string } from 'prop-types'
+import { array, node, oneOf, oneOfType, string } from 'prop-types'
 
 // Fontawesome
 import { Icon, Link, SIZE } from '../../'
@@ -165,5 +165,7 @@ Breadcrumb.defaultProps = {
 
 Breadcrumb.propTypes = {
   separator: oneOfType([oneOf(['chevron', 'slash']), string]),
-  size: oneOf(Object.values(SIZE))
+  size: oneOf(Object.values(SIZE)),
+  breadcrumbs: array,
+  customSeparator: node
 }
