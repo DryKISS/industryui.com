@@ -3,14 +3,13 @@
  */
 
 // UI
-import styled from 'styled-components'
 import { VoiceRecorder } from 'components'
 import Readme from '../README.md'
 
-// Data
+// Style
+import styled from 'styled-components'
 
 export default {
-  title: 'Molecules/VoiceRecorder',
   component: VoiceRecorder,
   parameters: {
     docs: {
@@ -18,13 +17,15 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/VoiceRecorder'
 }
 
 export const noOverlay = () => {
   const handleVoiceRecorded = e => {
-    console.log(e)
+    console.info(e)
   }
+
   return (
     <Wrapper>
       <VoiceRecorder onVoiceRecord={handleVoiceRecorded} overlayStyle={{ display: 'none' }} />
@@ -33,8 +34,9 @@ export const noOverlay = () => {
 }
 export const withOverlay = () => {
   const handleVoiceRecorded = e => {
-    console.log(e)
+    console.info(e)
   }
+
   return (
     <Wrapper>
       <VoiceRecorder onVoiceRecord={handleVoiceRecorded} overlayStyle={{ top: '0.5rem' }} />

@@ -1,6 +1,8 @@
 /**
  * Form - DatePicker - Calendar - Properties
  */
+
+// React
 import {
   array,
   bool,
@@ -16,7 +18,7 @@ import {
   string
 } from 'prop-types'
 
-export const PROPERTIES = {
+export const DatePickerCalendarPropTypes = {
   adjustDateOnChange: bool,
   allowSameDay: bool,
   ariaLabelledBy: string,
