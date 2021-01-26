@@ -21,8 +21,8 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
       if (sortable) {
         if (hasSort && sort.order === 'desc') {
           setSort({
-            item: '',
-            order: ''
+            item: null,
+            order: null
           })
         } else {
           setSort({

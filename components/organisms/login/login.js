@@ -1,11 +1,10 @@
 /**
- * Login
- * Standard login view allowing for a user to sign into the website through email and password.
+ * Components - Organisms - Login
  */
 
 // React
 import { useContext, useState } from 'react'
-import { bool, object, oneOfType, string } from 'prop-types'
+import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
 import {
@@ -13,17 +12,23 @@ import {
   Button,
   FormField,
   Form,
+  FormError,
   FormLabel,
   Link,
   PageHeading,
+  Space,
+  Text,
   UserContext,
-  useForm
+  useForm,
+  yupResolver
 } from '../../'
 
 // Style
 import styled from 'styled-components'
 
-const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+import { LoginSchema as schema } from './schema'
+
+const ErrMessage = message => <FormError message={message} />
 
 export const Login = ({
   blockSubmitButton,
@@ -37,22 +42,30 @@ export const Login = ({
   showPassword,
   showPlaceholder
 }) => {
-  const { errors, formState, register, handleSubmit } = useForm({ mode: 'onChange' })
-  const [showPass, setShowPass] = useState(false)
+  const { errors, formState, register, handleSubmit } = useForm({
+    resolver: yupResolver(schema)
+  })
+
   const [error, setError] = useState(false)
+  const [showPass, setShowPass] = useState(false)
+
   const { signIn } = useContext(UserContext)
 
-  const onSubmit = data => {
+  const onSubmit = ({ email, password }) => {
     if (!submit) {
-      const { email, password } = data
       signIn('email', email, password, error => error && setError(error))
     } else {
       submit()
     }
   }
 
+  const defaultOptions = {
+    errors: errors,
+    register: register
+  }
+
   return (
-    <>
+    <Wrapper>
       <PageHeading center heading={heading} divider={false} />
 
       {error && <Alert content={error.message} context='warning' />}
@@ -60,77 +73,75 @@ export const Login = ({
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label='Email'>
           <FormField
+            {...defaultOptions}
             autoFocus
-            errors={errors}
             name='email'
             placeholder={showPlaceholder ? 'Email' : ''}
-            regExp={pattern}
-            register={register}
           />
+          {errors.email && ErrMessage(errors.email.message)}
         </FormLabel>
 
         <FormLabel label='Password'>
           <FormField
-            errors={errors}
+            {...defaultOptions}
             name='password'
             placeholder={showPlaceholder ? 'Password' : ''}
-            register={register}
             type={showPass ? 'text' : 'password'}
           />
+          {errors.password && ErrMessage(errors.password.message)}
         </FormLabel>
 
         {showPassword && (
-          <ShowPassword onClick={() => setShowPass(prev => !prev)}>
-            <a>{showPass ? 'Hide Password' : 'Show Password'}</a>
+          <ShowPassword align='right' onClick={() => setShowPass(prev => !prev)}>
+            {showPass ? 'Hide Password' : 'Show Password'}
           </ShowPassword>
         )}
 
-        <div className='text-right'>
-          <Button
-            align='right'
-            block={blockSubmitButton}
-            content='Log in'
-            context='primary'
-            disabled={!formState.isValid}
-            size='lg'
-            type='submit'
-          />
-
-          {forgotPassword && (
-            <ForgotPasswordWrapper>
-              <Link to={pathForgot}>Forgot password?</Link>
-            </ForgotPasswordWrapper>
-          )}
-        </div>
+        <Button
+          align='right'
+          block={blockSubmitButton}
+          content='Log in'
+          context='primary'
+          disabled={formState.isSubmitting}
+          size='lg'
+          type='submit'
+        />
       </Form>
 
-      {pathSignUp && (
+      {forgotPassword && (
         <>
-          <p className='text-center'>
-            Don't have an account? <Link to={pathSignUp}>Apply now!</Link>
-          </p>
+          <Text align='center'>
+            <Link to={pathForgot}>Forgot password?</Link>
+          </Text>
+          <Space marginBottom='md' />
         </>
       )}
-    </>
+
+      {pathSignUp && (
+        <Text align='center'>
+          Don't have an account? <Link to={pathSignUp}>Apply now!</Link>
+        </Text>
+      )}
+    </Wrapper>
   )
 }
 
-const ShowPassword = styled.div`
-  cursor: pointer;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-  text-align: right;
+const Wrapper = styled.div`
+  background: ${({ theme: { LOGIN } }) => LOGIN.background};
+  padding: 1rem;
 `
 
-const ForgotPasswordWrapper = styled.div`
-  margin-top: 1rem;
-  text-align: center;
+const ShowPassword = styled(Text)`
+  cursor: pointer;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
 `
 
 Login.propTypes = {
   blockSubmitButton: bool,
   forgotPassword: bool,
   heading: string,
+  submit: func.isRequired,
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
   remember: string,
@@ -140,11 +151,13 @@ Login.propTypes = {
 }
 
 Login.defaultProps = {
-  blockSubmitButton: false,
+  blockSubmitButton: true,
   forgotPassword: true,
   heading: 'Log In',
   pathForgot: '/account/forgot-details',
+  pathSignUp: '/account/sign-in',
+  remember: '',
   showLabel: true,
-  showPassword: false,
+  showPassword: true,
   showPlaceholder: false
 }

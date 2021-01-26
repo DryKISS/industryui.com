@@ -1,11 +1,13 @@
 /**
- * Tab
+ * Components - Molecules - Tabs - Components - Tab
  */
 
 // React
 import { useEffect, useRef } from 'react'
+import { bool, func, number, object, oneOfType, string } from 'prop-types'
 
-import { bool, func, oneOfType, string } from 'prop-types'
+// UI
+import { slugify } from '../../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -14,32 +16,52 @@ export const Tab = ({
   activeTab,
   childClick,
   context,
+  data,
   disabled,
+  gap,
+  index,
+  indicatorSize,
   label,
   onClick,
   scrollToActiveTab
 }) => {
   const tabRef = useRef(null)
-  const isActive = activeTab === label
+  const labelSlug = slugify(label)
+  const isActive = activeTab.label === labelSlug
 
   useEffect(() => {
     if (scrollToActiveTab && tabRef.current) {
-      tabRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' })
+      tabRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+      })
     }
   }, [isActive])
 
   const handleClick = e => {
-    onClick(label)
+    if (isActive) {
+      return
+    }
+
+    onClick && onClick({ index: index, label: labelSlug })
     childClick && childClick()
+  }
+
+  // If no data then default to Cypress ID
+  if (!data) {
+    data = { 'data-cy': `${labelSlug}Tab` }
   }
 
   return (
     <StyledTab
       active={isActive}
       context={context}
+      {...data}
       disabled={disabled}
+      indicatorSize={indicatorSize}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
+      gap={gap}
     >
       {label}
     </StyledTab>
@@ -47,18 +69,24 @@ export const Tab = ({
 }
 
 const StyledTab = styled.li`
-  ${({ context, theme }) => css`
+  ${({ context, theme, gap }) => css`
     background-color: ${theme.TABS.colour};
     border-left: 1px solid ${theme.TABS.borderColour};
     border-bottom: 1px solid ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     border-top: 1px solid ${theme.TABS.borderColour};
+    color: ${theme.TABS.tabTextColour};
+    ${gap !== 0 &&
+      css`
+        border-right: 1px solid ${theme.TABS.borderColour};
+      `}
   `}
 
-  ${({ active, context, theme }) =>
+  ${({ active, context, indicatorSize, theme }) =>
     active &&
     css`
       background-color: ${theme.TABS.activeColour};
-      border-bottom: 1px solid ${theme.COLOUR.primary};
+      border-bottom: ${indicatorSize}px solid ${theme.COLOUR.primary};
+      color: ${theme.TABS.activeTabTextColour};
     `}
 
   ${({ active, theme }) =>
@@ -111,11 +139,15 @@ Tab.propTypes = {
   activeTab: string.isRequired,
   childClick: func,
   context: oneOfType([bool, string]),
+  data: object,
   disabled: bool,
+  index: number,
   label: string.isRequired,
-  onClick: func.isRequired
+  onClick: oneOfType([bool, func]).isRequired,
+  scrollToActiveTab: bool
 }
 
 Tab.defaultProps = {
-  context: false
+  context: false,
+  scrollToActiveTab: true
 }

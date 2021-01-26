@@ -1,1 +1,1 @@
-New Implementation of details
+Collapseable panel

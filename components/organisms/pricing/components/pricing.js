@@ -86,7 +86,7 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
                     return (
                       <ListItem key={index}>
                         <Icon color='rgb(69, 186, 190)' icon='check' prefix='fas' />
-                        <StyledFeature content={item.title} context='blackText' size='sm' />
+                        <StyledFeature content={item.title} context='dark' size='sm' />
                       </ListItem>
                     )
                   })}

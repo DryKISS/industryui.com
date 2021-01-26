@@ -38,7 +38,7 @@ export const ReplyContainer = ({ message, onClose, inMessage }) => {
         <FromWrapper>{message.from}</FromWrapper>
         <MessagingEditor onChange={e => setEditorState(e)} editorState={editorState} readOnly />
       </MessageWrapper>
-      {onClose && <Close click={handleCloseClick} context='darkGrey' />}
+      {onClose && <Close click={handleCloseClick} context='dark' />}
     </Container>
   )
 }

@@ -1,5 +1,5 @@
 /**
- * Slugify
+ * Components - Utils - Slugify
  */
 
 // React

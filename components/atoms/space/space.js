@@ -61,11 +61,15 @@ const StyledSpace = styled.div`
     marginTop,
     marginLeft,
     marginRight,
+    marginX,
+    marginY,
     padding,
+    paddingBottom,
     paddingLeft,
     paddingRight,
     paddingTop,
-    paddingBottom
+    paddingX,
+    paddingY
   }) =>
     spaceStyler([
       { k: 'margin', v: margin },
@@ -77,7 +81,31 @@ const StyledSpace = styled.div`
       { k: 'padding-bottom', v: paddingBottom },
       { k: 'padding-left', v: paddingLeft },
       { k: 'padding-right', v: paddingRight },
-      { k: 'padding-top', v: paddingTop }
+      { k: 'padding-top', v: paddingTop },
+      ...(marginY
+        ? [
+            { k: 'margin-top', v: marginY },
+            { k: 'margin-bottom', v: marginY }
+          ]
+        : []),
+      ...(marginX
+        ? [
+            { k: 'margin-left', v: marginX },
+            { k: 'margin-right', v: marginX }
+          ]
+        : []),
+      ...(paddingY
+        ? [
+            { k: 'padding-top', v: paddingY },
+            { k: 'padding-bottom', v: paddingY }
+          ]
+        : []),
+      ...(paddingX
+        ? [
+            { k: 'padding-left', v: paddingX },
+            { k: 'padding-right', v: paddingX }
+          ]
+        : [])
     ])}
 `
 

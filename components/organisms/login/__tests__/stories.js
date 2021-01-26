@@ -1,5 +1,5 @@
 /**
- * Login
+ * Components - Organisms - Login - Story
  */
 
 // React
@@ -11,16 +11,6 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    blockSubmitButton: true,
-    forgotPassword: true,
-    heading: 'Log In',
-    pathForgot: '/account/forgot-details',
-    pathSignUp: '/account/sign-in',
-    remember: '',
-    showLabel: true,
-    showPassword: false,
-    showPlaceholder: true,
-    submitLoading: true,
     value: 'Response Type'
   },
   argTypes: {
@@ -31,7 +21,6 @@ export default {
       }
     }
   },
-  title: 'Organisms/Login',
   component: Login,
   parameters: {
     docs: {
@@ -39,7 +28,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Login'
 }
 
 const BaseComponent = (props = {}) => {
@@ -105,13 +95,10 @@ export const withHttpRequest = args => {
   }
 
   return (
-    <Login
-      change={change}
-      email={form.email}
-      submit={submit}
-      password={form.password}
-      submitResult={result}
-      submitLoading={loading}
-    />
+    <>
+      <Login change={change} email={form.email} submit={submit} password={form.password} />
+      {loading}
+      {result}
+    </>
   )
 }

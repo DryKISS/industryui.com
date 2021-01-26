@@ -34,6 +34,11 @@ const StyledInputGroup = styled.div`
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+
+    :not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
   ${({ error, theme }) =>
     error &&
@@ -42,8 +47,8 @@ const StyledInputGroup = styled.div`
       &:hover {
         .prepend,
         .append {
-          background: ${theme.COLOUR.lightRed};
-          border-color: ${theme.COLOUR.lightRed};
+          background: ${theme.COLOUR.danger};
+          border-color: ${theme.COLOUR.danger};
         }
       }
     `}

@@ -3,7 +3,7 @@
  */
 
 // React
-import { any, bool, node, object, oneOf, string } from 'prop-types'
+import { any, bool, func, node, object, oneOf, string } from 'prop-types'
 
 // UI
 import { CONTEXT } from '../../'
@@ -16,7 +16,7 @@ export const DetailsPropTypes = {
   summary: string.isRequired,
   SummaryActionsComponent: node,
   style: any,
-  Toolbar: node
+  Toolbar: func
 }
 
 export const DetailsDefaultProps = {

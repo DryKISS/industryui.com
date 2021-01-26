@@ -3,7 +3,7 @@
  */
 
 // UI
-import { DetailsText } from 'components'
+import { DetailsText, Link } from 'components'
 import Readme from '../README.md'
 
 export default {
@@ -22,4 +22,19 @@ export default {
   title: 'Atoms/DetailsText'
 }
 
-export const main = args => <DetailsText {...args} />
+export const main = args => {
+  return (
+    <>
+      <DetailsText {...args} />
+
+      <DetailsText
+        {...args}
+        text={
+          <Link to={`/dashboard/issues/view?id=${1001}`} passHref>
+            {1001}
+          </Link>
+        }
+      />
+    </>
+  )
+}

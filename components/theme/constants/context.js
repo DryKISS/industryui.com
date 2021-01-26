@@ -2,7 +2,6 @@
  * Theme - Constants - Context
  */
 export const CONTEXT = {
-  DARKGREY: 'darkGrey',
   DEEPBLUE: 'deepBlue',
   WHITE: 'white',
   BLACK: 'black',

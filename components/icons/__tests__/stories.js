@@ -2,8 +2,10 @@
  * IUI Icons Story
  */
 
-// UI
+// Style
 import styled from 'styled-components'
+
+// UI
 import {
   ArrowDownIcon,
   BellIcon,
@@ -48,9 +50,8 @@ import {
   UploadIcon,
   VerticalThreeDotsIcon
 } from 'components'
-import Readme from '../README.md'
 
-// Data
+import Readme from '../README.md'
 
 export default {
   args: {
@@ -74,14 +75,17 @@ export const main = props => {
   if (props.hoverColour === 'false') {
     delete props.hoverColour
   }
+
   if (props.onClick === false) {
     delete props.onClick
   } else {
     props.onClick = () => {}
   }
+
   if (!isNaN(Number(props.size))) {
     props.size = Number(props.size)
   }
+
   return (
     <Wrapper>
       <BellIcon {...props} />
@@ -132,6 +136,6 @@ export const main = props => {
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 1rem 1rem;
   flex-wrap: wrap;
+  gap: 1rem 1rem;
 `

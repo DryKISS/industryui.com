@@ -74,7 +74,7 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
 }
 
 const StyledIcon = styled(Icon).attrs(props => ({
-  color: props.recommended ? props.theme.COLOUR.deepBlue : props.theme.COLOUR.darkGrey
+  color: props.recommended ? props.theme.COLOUR.deepBlue : props.theme.COLOUR.dark
 }))``
 
 const FeatureCheckColumn = styled.div`
@@ -89,7 +89,7 @@ const FeatureCheckColumn = styled.div`
 const FeatureNameColumn = styled.div`
   align-items: center;
   background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};
-  border: 1px solid ${({ theme }) => theme.COLOUR.darkGrey};
+  border: 1px solid ${({ theme }) => theme.COLOUR.dark};
   display: flex;
   margin: 1px 0;
   min-height: 2.5rem;

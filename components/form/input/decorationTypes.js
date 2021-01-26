@@ -1,7 +1,7 @@
 export const InputDecorationTypes = {
   DEFAULT: 'default',
   DISABLED: 'disabled',
-  ERROR: 'error',
+  DANGER: 'danger',
   READONLY: 'readOnly',
   SUCCESS: 'success',
   WARNING: 'warning'
