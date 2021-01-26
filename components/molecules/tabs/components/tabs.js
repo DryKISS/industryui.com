@@ -112,7 +112,7 @@ export const Tabs = ({
     setActiveTab({ index: index, label: tab })
 
     if (handleChange) {
-      handleTabChange(tab)
+      handleRoute(tab)
     }
 
     if (onTabChange) {
@@ -120,7 +120,7 @@ export const Tabs = ({
     }
   }
 
-  const handleTabChange = tab => {
+  const handleRoute = tab => {
     const query = router.query
     delete query.tab
     query.tab = tab
