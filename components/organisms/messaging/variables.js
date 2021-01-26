@@ -5,6 +5,8 @@ export const MESSAGING = {
   audioAndVolumeProgressColour: COLOUR.info,
   audioControllersColour: COLOUR.primary,
   containerBackground: COLOUR.grey,
+  dateBadgeBackground: COLOUR.white,
+  dateDividerColour: COLOUR.black,
   dropableHeaderBackground: COLOUR.drykiss_lightBlue,
   forwardAndReplyIconsColour: COLOUR.dark,
   fromTextColour: COLOUR.dark,
