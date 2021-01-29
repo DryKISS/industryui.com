@@ -52,6 +52,7 @@ export const COMMON_INPUT_STYLES = ({
   readOnly,
   Required,
   size,
+  textAlign,
   theme
 }) => {
   return css`
@@ -109,5 +110,10 @@ export const COMMON_INPUT_STYLES = ({
         border-width: 1px;
         padding: 0.5rem;
       `}
+
+      ${textAlign &&
+        css`
+          text-align: ${textAlign};
+        `}
   `
 }
