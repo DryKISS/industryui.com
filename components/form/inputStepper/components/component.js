@@ -14,7 +14,19 @@ import { InputStepperDefaultProps, InputStepperPropTypes } from './props'
 
 export const InputStepperComponent = forwardRef(
   (
-    { buttonProps, errors, fullWidth, inputProps, onChange, name, value, valueAlign, ...props },
+    {
+      buttonContext,
+      buttonProps,
+      className,
+      errors,
+      fullWidth,
+      inputProps,
+      onChange,
+      name,
+      style,
+      value,
+      valueAlign
+    },
     ref
   ) => {
     const handleChange = type => {
@@ -35,30 +47,42 @@ export const InputStepperComponent = forwardRef(
           newVal -= 1
         }
       } else {
-        newVal = Number(type.current.value)
+        newVal = Number(type.target.value)
       }
 
       onChange(newVal)
     }
 
     return (
-      <InputGroup fullWidth={fullWidth}>
+      <InputGroup className={className} fullWidth={fullWidth} style={style}>
         <InputGroupAddon addonType='prepend'>
-          <Button content='-' size='sm' {...buttonProps} onClick={() => handleChange('sub')} />
+          <Button
+            content='-'
+            context={buttonContext}
+            size='sm'
+            {...buttonProps}
+            onClick={() => handleChange('sub')}
+          />
         </InputGroupAddon>
 
         <StyledFormField
           {...inputProps}
           errors={errors}
           name={name}
-          onChange={onChange}
+          onChange={handleChange}
           value={value}
           textAlign={valueAlign}
           type='number'
         />
 
         <InputGroupAddon addonType='append'>
-          <Button content='+' size='sm' {...buttonProps} onClick={() => handleChange('add')} />
+          <Button
+            content='+'
+            context={buttonContext}
+            size='sm'
+            {...buttonProps}
+            onClick={() => handleChange('add')}
+          />
         </InputGroupAddon>
       </InputGroup>
     )

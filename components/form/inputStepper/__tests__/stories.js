@@ -1,6 +1,9 @@
 /**
  * Form - InputStepper
  */
+// Storybook
+import { ContextControl } from 'decorators'
+
 // Yup
 import { object, number } from 'yup'
 
@@ -9,6 +12,9 @@ import { Button, Form, FormLabel, InputStepper, useForm, yupResolver } from 'com
 import Readme from '../README.md'
 
 export default {
+  argTypes: {
+    buttonContext: ContextControl()
+  },
   component: InputStepper,
   parameters: {
     docs: {
