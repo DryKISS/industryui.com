@@ -103,6 +103,7 @@ FormField.propTypes = {
   register: func.isRequired,
   size: oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
   style: object,
+  textAlign: string,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
