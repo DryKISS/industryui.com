@@ -1,25 +1,14 @@
 /**
  * Form - InputStepper
  */
-
-// Storybook
-import { SizeControl } from 'decorators'
-
 // Yup
-import { object, string } from 'yup'
+import { object, number } from 'yup'
 
 // UI
 import { Button, Form, FormLabel, InputStepper, useForm, yupResolver } from 'components'
 import Readme from '../README.md'
 
 export default {
-  args: {
-    name: 'textarea',
-    rows: 1
-  },
-  argTypes: {
-    size: SizeControl()
-  },
   component: InputStepper,
   parameters: {
     docs: {
@@ -32,11 +21,13 @@ export default {
 }
 
 const schema = object().shape({
-  textarea: string().required()
+  inputStepper: number()
+    .min(0, 'Should be greater than 0')
+    .required()
 })
 
 export const main = args => {
-  const { errors, getValues, handleSubmit, register, setValue } = useForm({
+  const { control, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -45,16 +36,19 @@ export const main = args => {
   }
 
   const defaultProps = {
+    control,
     errors,
-    getValues,
-    register,
-    setValue,
+    inputProps: {
+      min: 0,
+      max: 10
+    },
+    name: 'inputStepper',
     ...args
   }
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='Description'>
+      <FormLabel label='Quantity'>
         <InputStepper {...defaultProps} />
       </FormLabel>
 

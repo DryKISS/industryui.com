@@ -3,20 +3,24 @@
  */
 
 // React
-import { bool, func, object, number, string } from 'prop-types'
+import { bool, object, number, string } from 'prop-types'
 
 export const InputStepperPropTypes = {
+  buttonProps: object,
+  control: object,
   defaultValue: number,
-  errors: object.isRequired,
+  errors: object,
   fullWidth: bool,
-  register: func.isRequired,
+  inputProps: object,
   name: string.isRequired,
-  setValue: func.isRequired,
   valueAlign: string
 }
 
 export const InputStepperDefaultProps = {
+  buttonProps: {},
   defaultValue: 0,
+  errors: {},
   fullWidth: false,
+  inputProps: {},
   valueAlign: 'center'
 }

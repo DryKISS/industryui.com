@@ -100,7 +100,7 @@ FormField.propTypes = {
   name: string.isRequired,
   placeholder: string,
   readOnly: bool,
-  register: func.isRequired,
+  register: func,
   size: oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
   style: object,
   textAlign: string,
@@ -112,6 +112,7 @@ FormField.defaultProps = {
   autoComplete: 'off',
   autoFocus: false,
   disabled: false,
+  errors: {},
   readOnly: false,
   type: 'text'
 }
