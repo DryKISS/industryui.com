@@ -20,11 +20,13 @@ export const Details2 = ({
   disableAnimation,
   endActionComponent,
   fitParentHeight,
+  headerContext,
   iconComponent,
   open,
   startActionComponent,
   style,
   title,
+  titleContext,
   toolbar,
   uniqueId,
   unmountContentOnClose,
@@ -78,14 +80,19 @@ export const Details2 = ({
 
   return (
     <Wrapper context={context} style={style} fitParentHeight={fitParentHeight} open={isOpen}>
-      <Header>
+      <Header context={headerContext}>
         <OpenIconAndTitleWrapper onClick={handleOpenClose}>
           {(content || children) && (
             <OpenCloseWrapper open={isOpen} animationDuration={animationtime}>
               {iconComponent ?? <CaretRight />}
             </OpenCloseWrapper>
           )}
-          <Text size={SIZE.MD} style={{ fontWeight: '600' }} context='blackText' content={title} />
+          <Text
+            size={SIZE.MD}
+            style={{ fontWeight: '600' }}
+            context={titleContext || 'blackText'}
+            content={title}
+          />
         </OpenIconAndTitleWrapper>
         <ActionsWrapper>
           <StartActionComponentWrapper>
@@ -93,7 +100,7 @@ export const Details2 = ({
           </StartActionComponentWrapper>
           <ToolbarWrapper>
             {toolbar}
-            {endActionComponent && <ActionsDivider />}
+            {endActionComponent && toolbar && <ActionsDivider />}
           </ToolbarWrapper>
           {endActionComponent}
         </ActionsWrapper>
@@ -186,7 +193,7 @@ const OpenIconAndTitleWrapper = styled.div`
 `
 const Header = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.COLOUR.light};
+  background-color: ${({ theme, context }) => theme.COLOUR[context] || theme.COLOUR.light};
   display: flex;
   height: 3.5rem;
   justify-content: space-between;
