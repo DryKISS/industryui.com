@@ -11,6 +11,7 @@ import styled, { css } from 'styled-components'
 
 export const Text = ({
   align,
+  bold,
   children,
   className,
   colour,
@@ -23,6 +24,7 @@ export const Text = ({
   return (
     <StyledText
       align={align}
+      bold={bold}
       className={className}
       colour={colour}
       context={context}
@@ -95,6 +97,11 @@ const StyledText = styled.p`
 
   ${theme => DISPLAY(theme)}
   ${theme => SPACER(theme)}
+  ${({ bold }) =>
+    bold &&
+    css`
+      font-weight: 600;
+    `}
 `
 
 Text.protoTypes = TextPropTypes

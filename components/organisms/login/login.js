@@ -29,6 +29,7 @@ export const Login = ({
   blockSubmitButton,
   forgotPassword,
   heading,
+  noTitle,
   submit,
   pathForgot,
   pathSignUp,
@@ -53,7 +54,7 @@ export const Login = ({
 
   return (
     <>
-      <PageHeading center heading={heading} divider={false} />
+      {!noTitle && <PageHeading center heading={heading} divider={false} />}
 
       {error && <Alert content={error.message} context='warning' />}
 
