@@ -1420,6 +1420,26 @@ exports[`Storyshots Form/InputGroup Prepend Icon 1`] = `
 />
 `;
 
+exports[`Storyshots Form/InputStepper Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Form/Label Main 1`] = `
 .c0 {
   padding: 1rem;

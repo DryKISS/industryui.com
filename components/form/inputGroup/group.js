@@ -3,13 +3,21 @@
  * Wraps the Input so we can append or prepend another element
  */
 
-import { string } from 'prop-types'
+import { bool, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const InputGroup = ({ children, error, size, theme }) => {
-  return <StyledInputGroup children={children} error={error} size={size} theme={theme} />
+export const InputGroup = ({ children, error, fullWidth, size, theme }) => {
+  return (
+    <StyledInputGroup
+      children={children}
+      error={error}
+      fullWidth={fullWidth}
+      size={size}
+      theme={theme}
+    />
+  )
 }
 
 const StyledInputGroup = styled.div`
@@ -20,7 +28,7 @@ const StyledInputGroup = styled.div`
   width: 100%;
 
   input {
-    flex: 1 1 0%;
+    ${({ fullWidth }) => (fullWidth ? 'flex: 1 1 0%;' : 'width: auto;')}
     min-width: 0;
     margin-bottom: 0;
     position: relative;
@@ -55,9 +63,11 @@ const StyledInputGroup = styled.div`
 `
 
 InputGroup.propTypes = {
+  fullWidth: bool,
   size: string
 }
 
 InputGroup.defaultProps = {
+  fullWidth: true,
   size: 'md'
 }
