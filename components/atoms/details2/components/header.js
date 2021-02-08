@@ -16,12 +16,14 @@ export const Details2Header = ({
   children,
   content,
   handleOpenClose,
+  headerContext,
   iconComponent,
   isOpen,
-  title
+  title,
+  titleContext
 }) => {
   return (
-    <Header onClick={handleOpenClose}>
+    <Header context={headerContext} onClick={handleOpenClose}>
       <Content>
         {(content || children) && (
           <Details2Icon
@@ -31,7 +33,7 @@ export const Details2Header = ({
           />
         )}
 
-        <Text size={SIZE.MD} context='dark' content={title} />
+        <Text size={SIZE.MD} context={titleContext || 'dark'} content={title} />
       </Content>
     </Header>
   )
@@ -39,7 +41,8 @@ export const Details2Header = ({
 
 const Header = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.DETAILS2.header.background};
+  background-color: ${({ theme, context }) =>
+    theme.COLOUR[context] || theme.DETAILS2.header.background};
   cursor: pointer;
   display: flex;
   height: 3.5rem;
