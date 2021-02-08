@@ -67,7 +67,7 @@ export const Login = ({
 
   return (
     <Wrapper>
-      <PageHeading center heading={heading} divider={false} />
+      {!noTitle && <PageHeading center heading={heading} divider={false} />}
 
       {error && <Alert content={error.message} context='warning' />}
 
