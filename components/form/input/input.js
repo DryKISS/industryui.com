@@ -14,8 +14,7 @@ const colourPlate = {
   dark: COLOUR.darkText,
   darkBorder: COLOUR.grey80,
   default: COLOUR.grey,
-  disabled: COLOUR.darkGrey,
-  error: COLOUR.error,
+  disabled: COLOUR.dark,
   readOnly: COLOUR.grey,
   success: COLOUR.formSuccess,
   warning: COLOUR.gold40
@@ -25,8 +24,7 @@ const inputThemeColourPlate = {
   dark: 'darkText',
   darkBorder: 'grey80',
   default: 'grey',
-  disabled: 'darkGrey',
-  error: 'error',
+  disabled: 'dark',
   readOnly: 'grey',
   success: 'formSuccess',
   warning: 'gold40'

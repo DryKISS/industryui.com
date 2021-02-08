@@ -13,21 +13,27 @@ import { TableActionsButton } from './button'
 export const TableActions = ({ align, row, data }) => {
   return (
     <ButtonToolbar align={align}>
-      {data.map(({ context, disabled, icon, numberOverlay, onClick, to, tooltip }, index) => {
-        return (
-          <TableActionsTooltip key={index} tooltip={tooltip}>
-            <TableActionsButton
-              context={context}
-              disabled={disabled}
-              icon={icon}
-              numberOverlay={numberOverlay}
-              onClick={onClick}
-              row={row}
-              to={to}
-            />
-          </TableActionsTooltip>
-        )
-      })}
+      {data.map(
+        (
+          { context, disabled, icon, numberOverlay, onClick, overlayCustom, to, tooltip },
+          index
+        ) => {
+          return (
+            <TableActionsTooltip key={index} tooltip={tooltip}>
+              <TableActionsButton
+                context={context}
+                disabled={disabled}
+                icon={icon}
+                numberOverlay={numberOverlay}
+                onClick={onClick}
+                overlayCustom={overlayCustom}
+                row={row}
+                to={to}
+              />
+            </TableActionsTooltip>
+          )
+        }
+      )}
     </ButtonToolbar>
   )
 }
@@ -42,6 +48,7 @@ TableActions.propTypes = {
       icon: oneOfType([array, string]),
       numberOverlay: string,
       onClick: func,
+      overlayCustom: string,
       to: string,
       tooltip: string
     })

@@ -33,7 +33,7 @@ export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => 
   return (
     <Wrapper onClick={handleClickOnWrapper} onClickAway={handleClickAway}>
       <TitleWrapper>
-        <StyledTitle content={selected.title} context='blackText' size='xl' />
+        <StyledTitle content={selected.title} context='dark' size='xl' />
       </TitleWrapper>
       <PriceAndDropIconWrapper>
         <StyledPrice content={selected.price} size='lg' context='deepBlue' />
@@ -50,12 +50,12 @@ export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => 
               <ElementTitleAndDescriptionsWrapper>
                 <StyledElementTitle
                   content={item.title}
-                  context={item.recommended ? 'deepBlue' : 'blackText'}
+                  context={item.recommended ? 'deepBlue' : 'dark'}
                   size='sm'
                 />
                 <StyledElementDescription
                   content={item.description}
-                  context={item.recommended ? 'deepBlue' : 'blackText'}
+                  context={item.recommended ? 'deepBlue' : 'dark'}
                   size='xs'
                 />
               </ElementTitleAndDescriptionsWrapper>
@@ -90,7 +90,7 @@ const PriceElement = styled.div`
   align-items: center;
   ${({ theme, isLast }) =>
     css`
-      border-bottom: ${isLast ? '0' : '1'}px solid ${theme.COLOUR.darkGrey};
+      border-bottom: ${isLast ? '0' : '1'}px solid ${theme.COLOUR.dark};
       background-color: ${theme.COLOUR.white};
     `}
   display: flex;
@@ -100,7 +100,7 @@ const PriceElement = styled.div`
 `
 
 const PlansWrapper = styled(ClickAwayListener)`
-  border: 1px solid ${({ theme }) => `${theme.COLOUR.darkGrey}`};
+  border: 1px solid ${({ theme }) => `${theme.COLOUR.dark}`};
   border-radius: 9px;
   left: 0;
   opacity: 0;
@@ -141,7 +141,7 @@ const TitleWrapper = styled.div``
 const Wrapper = styled(ClickAwayListener)`
   align-items: center;
   background-color: ${({ theme }) => theme.COLOUR.watterBlue};
-  border: 1px solid ${({ theme }) => `${theme.COLOUR.darkGrey}`};
+  border: 1px solid ${({ theme }) => `${theme.COLOUR.dark}`};
   border-radius: 9px;
   cursor: pointer;
   display: flex;

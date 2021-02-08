@@ -115,7 +115,7 @@ const DocumentInfoWrapper = styled.div`
   top: 70%;
   width: 100%;
   p {
-    color: ${({ theme }) => theme.COLOUR.blackText};
+    color: ${({ theme }) => theme.COLOUR.dark};
     font-size: 1.25rem;
     margin: 0;
   }

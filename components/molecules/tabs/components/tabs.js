@@ -1,5 +1,5 @@
 /**
- * Tabs
+ * Components - Molecules - Tabs - Components - Tabs
  */
 
 // React
@@ -10,6 +10,7 @@ import { array, bool, number, object, oneOfType, string } from 'prop-types'
 import Router, { useRouter } from 'next/router'
 
 // UI
+import { slugify } from '../../../'
 import { Tab } from './tab'
 
 // Style
@@ -29,16 +30,19 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
     startX = e.pageX - slider.offsetLeft
     sl = slider.scrollLeft
   })
+
   slider.addEventListener('mouseleave', () => {
     isDown = false
     isScrolling = false
     slider.classList.remove('active')
   })
+
   slider.addEventListener('mouseup', () => {
     isDown = false
     isScrolling = false
     slider.classList.remove('active')
   })
+
   slider.addEventListener('mousemove', e => {
     if (isScrolling || (isDown && e.timeStamp - clickTime > grabTimeout)) {
       e.preventDefault()
@@ -50,6 +54,13 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
     }
   })
 }
+
+export const TabContent = ({ activeTab, children }) => {
+  return children[activeTab.index].props.children
+}
+
+// Active
+let active = ''
 
 export const Tabs = ({
   centerTabs,
@@ -68,31 +79,57 @@ export const Tabs = ({
   const wrapperRef = createRef()
 
   useEffect(() => {
-    if (grabbable) handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
+    if (grabbable) {
+      handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
+    }
   }, [])
 
   if (!Array.isArray(children)) {
     children = React.Children.toArray(children)
   }
 
-  let active = children[0].props.label
-
-  children.map(child => {
-    if (child.props.active === true) {
-      active = child.props.label
+  // Find active in children if more than one tab or make first active
+  if (children.length > 1) {
+    children.map((child, index) => {
+      if (child.props.active === true) {
+        active = {
+          index: index,
+          label: slugify(child.props.label)
+        }
+      }
+    })
+  } else {
+    active = {
+      index: 0,
+      label: slugify(children[0].props.label)
     }
-  })
+  }
 
   const [activeTab, setActiveTab] = useState(active)
 
-  const onClickTabItem = tab => {
-    setActiveTab(tab)
-    onTabChange ? onTabChange(tab) : handleChange && handleTabChange(tab)
+  const onClickTabItem = ({ index, label }) => {
+    const tab = slugify(label)
+    setActiveTab({ index: index, label: tab })
+
+    if (handleChange) {
+      handleRoute(tab)
+    }
+
+    if (onTabChange) {
+      onTabChange(tab)
+    }
   }
 
-  const handleTabChange = tab => {
-    const href = `${router.pathname}?id=${router.query.id}&tab=${tab}`
-    Router.push(href, href, { shallow: true })
+  const handleRoute = tab => {
+    const query = router.query
+    delete query.tab
+    query.tab = tab
+
+    Router.push({
+      pathname: router.pathname,
+      query: query,
+      shallow: true
+    })
   }
 
   return (
@@ -104,12 +141,13 @@ export const Tabs = ({
         grabbable={grabbable}
         ref={wrapperRef}
       >
-        {children.map(({ props }) => {
+        {children.map(({ props }, index) => {
           return (
             <Tab
               activeTab={activeTab}
+              index={index}
               key={props.label}
-              onClick={props.disabled ? () => {} : onClickTabItem}
+              onClick={!props.disabled && onClickTabItem}
               scrollToActiveTab={scrollToActiveTab}
               gap={gap}
               indicatorSize={indicatorSize}
@@ -119,21 +157,15 @@ export const Tabs = ({
         })}
       </StyledTabs>
 
-      {children.map(child => {
-        if (child.props.label !== activeTab) {
-          return undefined
-        }
-
-        return child.props.children
-      })}
+      <TabContent activeTab={activeTab} children={children} />
     </>
   )
 }
 
 const StyledTabs = styled.ol`
-  display: flex;
   align-items: flex-end;
   border-bottom: 1px solid ${({ theme }) => theme.TABS.borderColour};
+  display: flex;
   ${({ gap }) =>
     gap !== 0 &&
     css`
@@ -148,9 +180,9 @@ const StyledTabs = styled.ol`
 
   margin: 0 0 1rem 0;
   padding-left: 0;
-  white-space: nowrap;
   overflow-x: scroll;
   user-select: none;
+  white-space: nowrap;
   -ms-overflow-style: none;
   &&::-webkit-scrollbar {
     display: none;

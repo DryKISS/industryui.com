@@ -58,7 +58,7 @@ const InputElement = args => {
       <Row>
         <Column md={6}>
           <Input
-            decoration={errors?.email ? InputDecorationTypes.ERROR : args.decoration}
+            decoration={errors?.email ? InputDecorationTypes.DANGER : args.decoration}
             adornments={{
               ...(args.WithStartAdornment && { startAdornment: <>S</> }),
               ...(args.WithEndAdornment && { endAdornment: <>E</> })

@@ -13,15 +13,15 @@ export const ERROR_STYLE = ({ theme, isTyping, withAddon }) => {
     border-style: solid;
     border-left-width: ${!withAddon && '0.25rem'};
     &:hover {
-      border-color: ${!isTyping && theme.COLOUR.lightRed};
+      border-color: ${!isTyping && theme.COLOUR.danger};
     }
     &:focus {
-      border-color: ${theme.COLOUR.error};
+      border-color: ${theme.COLOUR.danger};
     }
 
     ${isTyping === true &&
       css`
-        box-shadow: 0px 0px 4px ${theme.COLOUR.fadeRed};
+        box-shadow: 0px 0px 4px ${theme.COLOUR.danger};
       `}
   `
 }
@@ -52,6 +52,7 @@ export const COMMON_INPUT_STYLES = ({
   readOnly,
   Required,
   size,
+  textAlign,
   theme
 }) => {
   return css`
@@ -60,7 +61,7 @@ export const COMMON_INPUT_STYLES = ({
     border: 1px solid ${theme.COLOUR.grey80};
     border-radius: ${theme.FORM_ELEMENTS_STYLES.inputBorderRadius};
     box-sizing: border-box;
-    color: ${theme.COLOUR.blackText};
+    color: ${theme.COLOUR.dark};
     display: block;
 
     ${INPUT_FONT_SIZE(size)}
@@ -84,9 +85,9 @@ export const COMMON_INPUT_STYLES = ({
     &:focus {
       border-color: ${(() => {
         if (!readOnly) {
-          return errors ? theme.COLOUR.error : theme.COLOUR.primary
+          return errors ? theme.COLOUR.danger : theme.COLOUR.primary
         } else {
-          return theme ? theme.COLOUR.darkGrey : '#CCCCCC'
+          return theme ? theme.COLOUR.dark : theme.COLOUR.light
         }
       })()};
     }
@@ -99,15 +100,20 @@ export const COMMON_INPUT_STYLES = ({
       css`
         background: ${theme.COLOUR.grey};
         cursor: not-allowed;
-        border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
+        border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : theme.COLOUR.light)};
       `}
 
     ${readOnly &&
       css`
         background-color: ${({ theme }) => (theme ? theme.COLOUR.light : 'rgb(241,241,241)')};
-        border-color: ${({ theme }) => (theme ? theme.COLOUR.darkGrey : '#cccccc')};
+        border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : '#cccccc')};
         border-width: 1px;
         padding: 0.5rem;
       `}
+
+      ${textAlign &&
+        css`
+          text-align: ${textAlign};
+        `}
   `
 }

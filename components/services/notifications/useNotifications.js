@@ -44,12 +44,6 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
     }
   })
 
-  // Debug
-  // console.log('useNotifications')
-  // console.log('Params', url, params, seconds)
-  // console.log('Loading', loading)
-  // console.log('Items', items)
-
   // const fetchNotifications = async () => {
   //   const res = await Api.get(url, params)
 

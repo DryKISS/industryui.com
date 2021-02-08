@@ -3,7 +3,7 @@
  */
 
 // React
-import { string } from 'prop-types'
+import { node, oneOfType, string } from 'prop-types'
 
 // UI
 import { Space, Text } from '../index'
@@ -20,5 +20,5 @@ export const DetailsText = ({ content, text }) => {
 
 DetailsText.propTypes = {
   content: string.isRequired,
-  text: string.isRequired
+  text: oneOfType([node, string]).isRequired
 }
