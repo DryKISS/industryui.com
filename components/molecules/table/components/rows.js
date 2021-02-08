@@ -4,7 +4,7 @@
 
 // React
 import { memo } from 'react'
-import { array, bool, func } from 'prop-types'
+import { array, bool, func, oneOfType, string } from 'prop-types'
 
 // UI
 import { TableData, TableRow } from '../../../'
@@ -66,7 +66,7 @@ export const TableRows = memo(({ align, columns, hover, rowClick, rows, striped 
 })
 
 TableRows.propTypes = {
-  align: bool,
+  align: oneOfType([string, bool]),
   columns: array,
   hover: bool,
   rowClick: func,

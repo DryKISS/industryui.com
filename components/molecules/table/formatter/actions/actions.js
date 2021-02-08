@@ -33,7 +33,7 @@ export const TableActions = ({ align, row, data }) => {
 }
 
 TableActions.propTypes = {
-  align: string,
+  align: oneOfType([string, bool]),
   data: arrayOf(
     shape({
       content: string,
