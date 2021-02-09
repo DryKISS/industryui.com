@@ -19,6 +19,7 @@ export const Text = ({
   context,
   stroke,
   size,
+  weight,
   ...props
 }) => {
   return (
@@ -30,6 +31,7 @@ export const Text = ({
       context={context}
       stroke={stroke}
       size={size}
+      weight={weight}
       {...props}
     >
       {content || children}
@@ -101,6 +103,20 @@ const StyledText = styled.p`
     css`
       font-weight: 600;
     `}
+  ${({ weight }) =>
+    weight &&
+    css`
+      font-weight: ${weight === 'light'
+        ? 400
+        : weight === 'regular'
+        ? 500
+        : weight === 'semiBold'
+        ? 600
+        : weight === 'bold'
+        ? 700
+        : 500};
+    `}
+
 `
 
 Text.protoTypes = TextPropTypes

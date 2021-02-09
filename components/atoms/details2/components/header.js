@@ -33,7 +33,7 @@ export const Details2Header = ({
           />
         )}
 
-        <Text size={SIZE.MD} context={titleContext || 'dark'} content={title} />
+        <Text size={SIZE.MD} context={titleContext} content={title} />
       </Content>
     </Header>
   )
@@ -61,10 +61,12 @@ Details2Header.propTypes = {
   handleOpenClose: func.isRequired,
   iconComponent: node,
   isOpen: bool,
-  title: string.isRequired
+  title: string.isRequired,
+  titleContext: string
 }
 
 Details2Header.defaultProps = {
   animationTime: 100,
-  isOpen: false
+  isOpen: false,
+  titleContext: 'dark'
 }
