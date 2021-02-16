@@ -49,7 +49,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args } = props
+  const { args, customIcon } = props
 
   const defaultProps = {
     coordinatesChange: coordinates => {
@@ -68,10 +68,11 @@ const BaseComponent = (props = {}) => {
     width: '20px'
   }
 
-  return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
+  return <ImageLocation markerStyles={markerStyles} customIcon={customIcon} {...defaultProps} />
 }
 
 export const main = args => <BaseComponent args={args} />
+export const withCustomIcon = args => <BaseComponent customIcon='sensor' args={args} />
 
 export const UsedInForm = () => {
   const schema = obj().shape({
