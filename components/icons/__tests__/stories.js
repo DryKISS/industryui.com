@@ -51,7 +51,18 @@ import {
   VerticalThreeDotsIcon,
   SmokeDetectorIcon,
   SensorIcon,
-  AirConditionerIcon
+  AirConditionerIcon,
+  SirenIcon,
+  DesktopIcon,
+  MeetingRoomIcon,
+  TelevisionIcon,
+  ProjectorIcon,
+  DeskIcon,
+  CofeeMachineIcon,
+  OvenIcon,
+  MicrowaveIcon,
+  PumpIcon,
+  BoilerIcon
 } from 'components'
 
 import Readme from '../README.md'
@@ -136,6 +147,17 @@ export const main = props => {
       <SensorIcon {...props} />
       <SmokeDetectorIcon {...props} />
       <AirConditionerIcon {...props} />
+      <SirenIcon {...props} />
+      <DesktopIcon {...props} />
+      <MeetingRoomIcon {...props} />
+      <TelevisionIcon {...props} />
+      <ProjectorIcon {...props} />
+      <DeskIcon {...props} />
+      <CofeeMachineIcon {...props} />
+      <MicrowaveIcon {...props} />
+      <OvenIcon {...props} />
+      <PumpIcon {...props} />
+      <BoilerIcon {...props} />
     </Wrapper>
   )
 }
