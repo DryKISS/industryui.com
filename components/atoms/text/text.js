@@ -18,6 +18,7 @@ export const Text = ({
   context,
   stroke,
   size,
+  weight,
   ...props
 }) => {
   return (
@@ -28,6 +29,7 @@ export const Text = ({
       context={context}
       stroke={stroke}
       size={size}
+      weight={weight}
       {...props}
     >
       {content || children}
@@ -46,6 +48,7 @@ const StyledText = styled.p`
     font-size: ${theme.TEXT_STYLE.FONT_SIZE[size] ?? '1rem'};
     line-height: ${theme.TEXT_STYLE.LINE_HEIGHT[size] ?? '1rem'};
   `}
+
 
   ${({ size }) =>
     size === 'xxl' &&
@@ -94,6 +97,22 @@ const StyledText = styled.p`
 
   ${theme => DISPLAY(theme)}
   ${theme => SPACER(theme)}
+
+
+  ${({ weight }) =>
+    weight &&
+    css`
+      font-weight: ${weight === 'light'
+        ? 400
+        : weight === 'regular'
+        ? 500
+        : weight === 'semiBold'
+        ? 600
+        : weight === 'bold'
+        ? 700
+        : 500};
+    `}
+
 `
 
 Text.protoTypes = TextPropTypes

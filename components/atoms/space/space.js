@@ -14,6 +14,7 @@ import { spaceStyler } from './style'
 
 export const Space = ({
   children,
+  className,
   content,
   margin,
   marginX,
@@ -32,6 +33,7 @@ export const Space = ({
 }) => {
   return (
     <StyledSpace
+      className={className}
       margin={margin}
       marginX={marginX}
       marginY={marginY}
