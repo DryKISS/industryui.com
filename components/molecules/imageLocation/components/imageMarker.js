@@ -15,7 +15,7 @@ export const ImageMarker = ({ coordinates, customIcon, styles }) => {
   if (customIcon) {
     return (
       <CustomIconWrapper {...{ coordinates, styles }}>
-        <LazyIcon iconName={customIcon} />
+        <LazyIcon iconName={customIcon} size={styles.width ?? 24} />
       </CustomIconWrapper>
     )
   }
