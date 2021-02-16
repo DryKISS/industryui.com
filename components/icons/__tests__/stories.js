@@ -62,7 +62,15 @@ import {
   OvenIcon,
   MicrowaveIcon,
   PumpIcon,
-  BoilerIcon
+  BoilerIcon,
+  BicycleIcon,
+  DishwasherIcon,
+  FreezerIcon,
+  FridgeIcon,
+  FuseBoxIcon,
+  SprinkleIcon,
+  WashingMachineIcon,
+  ThermometerIcon
 } from 'components'
 
 import Readme from '../README.md'
@@ -144,6 +152,7 @@ export const main = props => {
       <UploadIcon {...props} />
       <VerticalThreeDotsIcon {...props} />
       <ExclamationCircleIcon {...props} />
+      <ThermometerIcon {...props} />
       <SensorIcon {...props} />
       <SmokeDetectorIcon {...props} />
       <AirConditionerIcon {...props} />
@@ -158,6 +167,13 @@ export const main = props => {
       <OvenIcon {...props} />
       <PumpIcon {...props} />
       <BoilerIcon {...props} />
+      <BicycleIcon {...props} />
+      <DishwasherIcon {...props} />
+      <FreezerIcon {...props} />
+      <FridgeIcon {...props} />
+      <FuseBoxIcon {...props} />
+      <SprinkleIcon {...props} />
+      <WashingMachineIcon {...props} />
     </Wrapper>
   )
 }

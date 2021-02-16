@@ -1,5 +1,6 @@
 import { oneOf } from 'prop-types'
 import { lazy, Suspense } from 'react'
+import { commonIconPropTypes } from './propTypes'
 
 export const lazyComponents = {
   get arrowDown () {
@@ -144,25 +145,67 @@ export const lazyComponents = {
     )
   },
   get bicycle () {
-    return lazy(() => import('./bicycle').then(_ => ({ default: _.BicycleIcon })))
+    return lazy(() => import('./bicycleIcon').then(_ => ({ default: _.BicycleIcon })))
   },
   get dishwasher () {
-    return lazy(() => import('./dishwasher').then(_ => ({ default: _.DishwasherIcon })))
+    return lazy(() => import('./dishwasherIcon').then(_ => ({ default: _.DishwasherIcon })))
   },
   get freezer () {
-    return lazy(() => import('./freezer').then(_ => ({ default: _.FreezerIcon })))
+    return lazy(() => import('./freezerIcon').then(_ => ({ default: _.FreezerIcon })))
   },
   get fridge () {
-    return lazy(() => import('./fridge').then(_ => ({ default: _.FridgeIcon })))
+    return lazy(() => import('./fridgeIcon').then(_ => ({ default: _.FridgeIcon })))
   },
   get fuseBox () {
-    return lazy(() => import('./fuseBox').then(_ => ({ default: _.FuseBoxIcon })))
+    return lazy(() => import('./fuseBoxIcon').then(_ => ({ default: _.FuseBoxIcon })))
   },
   get sprinkle () {
-    return lazy(() => import('./sprinkle').then(_ => ({ default: _.SprinkleIcon })))
+    return lazy(() => import('./sprinkleIcon').then(_ => ({ default: _.SprinkleIcon })))
   },
   get washingMachine () {
-    return lazy(() => import('./washingMachine').then(_ => ({ default: _.WashingMachineIcon })))
+    return lazy(() => import('./washingMachineIcon').then(_ => ({ default: _.WashingMachineIcon })))
+  },
+  get sensor () {
+    return lazy(() => import('./sensorIcon').then(_ => ({ default: _.SensorIcon })))
+  },
+  get smokeDetector () {
+    return lazy(() => import('./smokeDetectorIcon').then(_ => ({ default: _.SmokeDetectorIcon })))
+  },
+  get airConditioner () {
+    return lazy(() => import('./airConditionerIcon').then(_ => ({ default: _.AirConditionerIcon })))
+  },
+  get siren () {
+    return lazy(() => import('./sirenIcon').then(_ => ({ default: _.SirenIcon })))
+  },
+  get desktop () {
+    return lazy(() => import('./desktopIcon').then(_ => ({ default: _.DesktopIcon })))
+  },
+  get meetingRoom () {
+    return lazy(() => import('./meetingRoomIcon').then(_ => ({ default: _.MeetingRoomIcon })))
+  },
+  get television () {
+    return lazy(() => import('./televisionIcon').then(_ => ({ default: _.TelevisionIcon })))
+  },
+  get projector () {
+    return lazy(() => import('./projectorIcon').then(_ => ({ default: _.ProjectorIcon })))
+  },
+  get desk () {
+    return lazy(() => import('./deskIcon').then(_ => ({ default: _.DeskIcon })))
+  },
+  get cofeeMachine () {
+    return lazy(() => import('./cofeeMachineIcon').then(_ => ({ default: _.CofeeMachineIcon })))
+  },
+  get microwave () {
+    return lazy(() => import('./microwaveIcon').then(_ => ({ default: _.MicrowaveIcon })))
+  },
+  get oven () {
+    return lazy(() => import('./ovenIcon').then(_ => ({ default: _.OvenIcon })))
+  },
+  get pump () {
+    return lazy(() => import('./pumpIcon').then(_ => ({ default: _.PumpIcon })))
+  },
+  get boiler () {
+    return lazy(() => import('./boilerIcon').then(_ => ({ default: _.BoilerIcon })))
   }
 }
 const NotFound = () => <div>icon not found !</div>
@@ -177,5 +220,6 @@ export const LazyIcon = ({ iconName, ...props }) => {
 }
 
 LazyIcon.propTypes = {
-  iconName: oneOf(Object.keys(lazyComponents))
+  iconName: oneOf(Object.keys(lazyComponents)),
+  ...commonIconPropTypes
 }
