@@ -48,7 +48,10 @@ import {
   SquareCloseIcon,
   TriangleIcon,
   UploadIcon,
-  VerticalThreeDotsIcon
+  VerticalThreeDotsIcon,
+  SmokeDetectorIcon,
+  SensorIcon,
+  AirConditionerIcon
 } from 'components'
 
 import Readme from '../README.md'
@@ -130,6 +133,9 @@ export const main = props => {
       <UploadIcon {...props} />
       <VerticalThreeDotsIcon {...props} />
       <ExclamationCircleIcon {...props} />
+      <SensorIcon {...props} />
+      <SmokeDetectorIcon {...props} />
+      <AirConditionerIcon {...props} />
     </Wrapper>
   )
 }

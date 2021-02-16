@@ -40,3 +40,9 @@ export * from './squareCloseIcon'
 export * from './triangleIcon'
 export * from './uploadIcon'
 export * from './verticalThreeDotsIcon'
+//
+
+export * from './thermometerIcon'
+export * from './sensorIcon'
+export * from './smokeDetectorIcon'
+export * from './airConditionerIcon'
