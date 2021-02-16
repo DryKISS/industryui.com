@@ -1,3 +1,4 @@
+import { oneOf } from 'prop-types'
 import { lazy, Suspense } from 'react'
 
 export const lazyComponents = {
@@ -141,6 +142,27 @@ export const lazyComponents = {
     return lazy(() =>
       import('./verticalThreeDotsIcon').then(_ => ({ default: _.VerticalThreeDotsIcon }))
     )
+  },
+  get bicycle () {
+    return lazy(() => import('./bicycle').then(_ => ({ default: _.BicycleIcon })))
+  },
+  get dishwasher () {
+    return lazy(() => import('./dishwasher').then(_ => ({ default: _.DishwasherIcon })))
+  },
+  get freezer () {
+    return lazy(() => import('./freezer').then(_ => ({ default: _.FreezerIcon })))
+  },
+  get fridge () {
+    return lazy(() => import('./fridge').then(_ => ({ default: _.FridgeIcon })))
+  },
+  get fuseBox () {
+    return lazy(() => import('./fuseBox').then(_ => ({ default: _.FuseBoxIcon })))
+  },
+  get sprinkle () {
+    return lazy(() => import('./sprinkle').then(_ => ({ default: _.SprinkleIcon })))
+  },
+  get washingMachine () {
+    return lazy(() => import('./washingMachine').then(_ => ({ default: _.WashingMachineIcon })))
   }
 }
 const NotFound = () => <div>icon not found !</div>
@@ -152,4 +174,8 @@ export const LazyIcon = ({ iconName, ...props }) => {
       <Icon {...props} />
     </Suspense>
   )
+}
+
+LazyIcon.propTypes = {
+  iconName: oneOf(Object.keys(lazyComponents))
 }
