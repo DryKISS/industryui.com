@@ -2,7 +2,7 @@ import { oneOf } from 'prop-types'
 import { lazy, Suspense } from 'react'
 import { commonIconPropTypes } from './propTypes'
 
-export const lazyComponents = {
+export const lazyIcons = {
   get arrowDown () {
     return lazy(() => import('./arrowDownIcon').then(_ => ({ default: _.ArrowDownIcon })))
   },
@@ -210,7 +210,7 @@ export const lazyComponents = {
 }
 const NotFound = () => <div>icon not found !</div>
 export const LazyIcon = ({ iconName, ...props }) => {
-  const Icon = lazyComponents[iconName] || NotFound
+  const Icon = lazyIcons[iconName] || NotFound
 
   return (
     <Suspense fallback={<></>}>
@@ -220,6 +220,6 @@ export const LazyIcon = ({ iconName, ...props }) => {
 }
 
 LazyIcon.propTypes = {
-  iconName: oneOf(Object.keys(lazyComponents)),
+  iconName: oneOf(Object.keys(lazyIcons)),
   ...commonIconPropTypes
 }

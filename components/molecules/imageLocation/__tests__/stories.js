@@ -12,6 +12,7 @@ import {
   Form,
   ImageLocation,
   ImageLocationFormElement,
+  lazyIcons,
   useForm,
   yupResolver
 } from 'components'
@@ -23,6 +24,7 @@ import { Item } from '../__mocks__/itemFloor'
 
 export default {
   args: {
+    customIcon: null,
     initialCoordinates: {
       x: 42,
       y: 41
@@ -32,6 +34,9 @@ export default {
     withInitialCoordinates: false
   },
   argTypes: {
+    customIcon: {
+      control: { type: 'select', options: Object.keys(lazyIcons) }
+    },
     animation: {
       control: { type: 'select', options: ['blinker', 'none'] }
     },
@@ -49,7 +54,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args, customIcon } = props
+  const { args } = props
 
   const defaultProps = {
     coordinatesChange: coordinates => {
@@ -57,6 +62,7 @@ const BaseComponent = (props = {}) => {
     },
     ...(args.withInitialCoordinates && { initialCoordinates: args.initialCoordinates }),
     item: Item,
+    customIcon: args.customIcon,
     locationChange: 'change'
   }
 
@@ -68,11 +74,10 @@ const BaseComponent = (props = {}) => {
     width: '20px'
   }
 
-  return <ImageLocation markerStyles={markerStyles} customIcon={customIcon} {...defaultProps} />
+  return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
 }
 
 export const main = args => <BaseComponent args={args} />
-export const withCustomIcon = args => <BaseComponent customIcon='sensor' args={args} />
 
 export const UsedInForm = () => {
   const schema = obj().shape({
