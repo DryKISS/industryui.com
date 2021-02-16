@@ -2,6 +2,9 @@
  * Components - Pricing
  */
 
+// React
+import React from 'react'
+
 // Style
 import styled, { css } from 'styled-components'
 

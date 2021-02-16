@@ -3,17 +3,18 @@
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 import { CarouselDefaultProps } from '../components/props'
+
 // Style
 import styled from 'styled-components'
 
 // UI
-import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from 'components'
+import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
 import { CarouselSampleSlide } from '../components/sample'
 
 import Readme from '../README.md'
-import vizla from 'storybook/static/card/vizla.jpg'
+import vizla from '../../../../static/card/vizla.jpg'
 
 export default {
   args: CarouselDefaultProps,

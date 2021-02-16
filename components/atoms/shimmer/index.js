@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { number, string } from 'prop-types'
 
 // Style

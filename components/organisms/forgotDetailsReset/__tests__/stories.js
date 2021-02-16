@@ -3,7 +3,7 @@
  */
 
 // UI
-import { ForgotDetailsReset } from 'components'
+import { ForgotDetailsReset } from '../../../'
 import Readme from '../README.md'
 
 export default {

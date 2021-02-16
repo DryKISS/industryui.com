@@ -6,11 +6,11 @@
 import { memo } from 'react'
 import { bool, string } from 'prop-types'
 
-// UI
-import { BACKGROUND } from '../../../'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { themeBackground } from '../../../theme/utils/background'
 
 export const TableRow = memo(styled.tr`
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
@@ -27,7 +27,7 @@ export const TableRow = memo(styled.tr`
   ${props =>
     props.context &&
     css`
-      ${BACKGROUND(props)}
+      ${themeBackground(props)}
       color: white;
     `}
 

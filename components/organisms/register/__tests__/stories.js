@@ -6,7 +6,7 @@
 import { useState } from 'react'
 
 // UI
-import { Alert, Register, requestSimulator } from 'components'
+import { Alert, Register, requestSimulator } from '../../../'
 import Readme from '../README.md'
 
 export default {

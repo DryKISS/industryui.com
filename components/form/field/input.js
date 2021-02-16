@@ -1,16 +1,18 @@
 /**
- * Form - Field - Input
+ * Components - Form - Field - Input
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
-import { COMMON_INPUT_STYLES, ERROR_STYLE, FieldHOC, SIZE } from '../../'
+import { FieldHOC } from '../hoc'
+import { formStyle, formErrorStyle } from '../variables/style'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const FormField = ({
   disabled,
@@ -59,25 +61,25 @@ export const StyledInput = styled.input.attrs(props => ({
   autoFocus: false
 }))`
 
-${props => COMMON_INPUT_STYLES(props)}
+${props => formStyle(props)}
 
   ${({ errors }) =>
     errors &&
     css`
-      ${props => ERROR_STYLE(props)}
+      ${props => formErrorStyle(props)}
     `}
 
     ${({ size }) => {
       switch (size) {
-        case SIZE.SM:
+        case THEME_SIZE.SM:
           return css`
             height: 1.5rem;
           `
-        case SIZE.MD:
+        case THEME_SIZE.MD:
           return css`
             height: 1.875rem;
           `
-        case SIZE.LG:
+        case THEME_SIZE.LG:
           return css`
             height: 2.25rem;
           `
@@ -101,7 +103,7 @@ FormField.propTypes = {
   placeholder: string,
   readOnly: bool,
   register: func.isRequired,
-  size: oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
+  size: oneOf([THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]),
   style: object,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])

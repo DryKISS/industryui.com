@@ -1,13 +1,13 @@
 /**
- * voiceRecorder
+ * Components - Molecules - Voice Rcorder - Story
  */
-
-// UI
-import { VoiceRecorder } from 'components'
-import Readme from '../README.md'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { VoiceRecorder } from '../voiceRecorder'
+import Readme from '../README.md'
 
 export default {
   component: VoiceRecorder,
@@ -32,6 +32,7 @@ export const noOverlay = () => {
     </Wrapper>
   )
 }
+
 export const withOverlay = () => {
   const handleVoiceRecorded = e => {
     console.info(e)

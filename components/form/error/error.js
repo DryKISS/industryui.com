@@ -1,17 +1,21 @@
 /**
- * Form - Error
+ * Components - Form - Error
  */
 
 // React
+import React from 'react'
 import { string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { SIZE, Space } from '../../'
+
+// UI
+import { Space } from '../../'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const FormError = ({ message, colour, ...props }) => {
   return (
-    <Space marginTop={SIZE.XS}>
+    <Space marginTop={THEME_SIZE.XS}>
       <StyledSmall color={colour}>{message}</StyledSmall>
     </Space>
   )

@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BlogCard } from 'components'
+import { BlogCard } from '../../../'
 import Readme from '../README.md'
 
 // Data

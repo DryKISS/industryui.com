@@ -2,6 +2,10 @@
  * Dropzone - Placeholder
  * Shows the uploaded image preview
  */
+
+// React
+import React from 'react'
+
 export const DropzonePlaceholder = ({ file, handleRemove, index }) => {
   return (
     <div className='Dropzone-placeholder'>

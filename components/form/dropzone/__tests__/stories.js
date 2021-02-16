@@ -2,8 +2,11 @@
  * React Select
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, DropzoneField, Form, FormError, FormLabel, useForm } from 'components'
+import { Button, DropzoneField, Form, FormError, FormLabel } from '../../../'
 import Readme from '../README.md'
 
 export default {

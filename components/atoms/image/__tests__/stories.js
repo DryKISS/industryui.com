@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Image } from 'components'
+import { Image } from '../../../'
 import Readme from '../README.md'
 
 export default {

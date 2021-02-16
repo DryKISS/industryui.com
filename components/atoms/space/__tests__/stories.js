@@ -2,29 +2,34 @@
  * Space
  */
 
-// Stroybook
-import { ControlTypes } from 'decorators'
+// Storybook
+import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { arrayOfValues, SIZE, Space, Text } from 'components'
-const control = { type: ControlTypes.Select, options: [0, ...arrayOfValues(SIZE)] }
+import { arrayOfValues, Space, Text } from '../../../'
+import { THEME_SIZE } from '../../../theme/constants/size'
+
+const control = {
+  type: ControlTypes.Select,
+  options: arrayOfValues(THEME_SIZE)
+}
 
 export default {
   args: {
-    margin: 0,
-    marginBottom: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
-    marginX: 0,
-    marginY: 0,
-    padding: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
-    paddingX: 0,
-    paddingY: 0
+    margin: 'sm',
+    marginBottom: 'sm',
+    marginLeft: 'sm',
+    marginRight: 'sm',
+    marginTop: 'sm',
+    marginX: 'sm',
+    marginY: 'sm',
+    padding: 'sm',
+    paddingBottom: 'sm',
+    paddingLeft: 'sm',
+    paddingRight: 'sm',
+    paddingTop: 'sm',
+    paddingX: 'sm',
+    paddingY: 'sm'
   },
   argTypes: {
     margin: {
@@ -84,11 +89,11 @@ export default {
       control
     }
   },
-  title: 'Atoms/Space',
-  component: Space
+  component: Space,
+  title: 'Atoms/Space'
 }
 
-const main = ({ ...args }) => {
+export const main = args => {
   return (
     <>
       <Space {...args}>
@@ -101,5 +106,3 @@ const main = ({ ...args }) => {
     </>
   )
 }
-
-export const space = main.bind({})

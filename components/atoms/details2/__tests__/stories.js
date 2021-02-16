@@ -3,21 +3,22 @@
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
 import {
   Button,
   ButtonToolbar,
   Column,
-  CONTEXT,
   Details2,
   DetailsCommunicationService,
   Icon,
   MessageNames,
   Row,
   Text
-} from 'components'
+} from '../../../'
+
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 import Readme from '../README.md'
 
@@ -38,7 +39,7 @@ export default {
   args: {
     animationDuration: 100,
     disableAnimation: false,
-    context: CONTEXT.PRIMARY,
+    context: THEME_CONTEXT.PRIMARY,
     fitParentHeight: false,
     iconComponent: <Icon fixedWidth={false} icon='images' />,
     open: true,

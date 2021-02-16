@@ -3,14 +3,14 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { bool, object, oneOf, string } from 'prop-types'
 
 // React NProgress
 import { NProgress } from '@tanem/react-nprogress'
 
 // UI
-import { CONTEXT } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 // Components
 import { Container } from './container'
@@ -49,7 +49,7 @@ export const PageProgressBar = ({ context, isAnimating, instanceKey, router }) =
 }
 
 PageProgressBar.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   isAnimating: bool,
   instanceKey: string,
   router: object

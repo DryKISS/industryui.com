@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Message } from 'components'
+import { Message } from '../../../'
 import Readme from '../README.md'
 
 // Data

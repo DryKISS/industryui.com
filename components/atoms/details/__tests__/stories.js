@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Button, ButtonToolbar, Details } from 'components'
+import { Button, ButtonToolbar, Details } from '../../../'
 import Readme from '../README.md'
 
 export default {

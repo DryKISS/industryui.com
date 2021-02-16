@@ -3,15 +3,17 @@
  */
 
 // React
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { array, bool, func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // Next
 import Router from 'next/router'
 
 // UI
-import { Button, CONTEXT, Icon } from '../../../../'
+import { Button } from '../../../../atoms/button/button/button'
+import { Icon } from '../../../../atoms/icon/icon/icon'
 import { TableActionsOverlay } from './overlay'
+import { THEME_CONTEXT } from '../../../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -59,7 +61,7 @@ const StyledIcon = styled(Icon)`
 `
 
 TableActionsButton.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   disabled: bool,
   icon: oneOfType([array, string]),
   numberOverlay: string,

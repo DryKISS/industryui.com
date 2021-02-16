@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Row } from '../'
+import { Row } from '../../../'
 import Readme from '../README.md'
 import { StyledColumn } from '../__mocks__/grid'
 

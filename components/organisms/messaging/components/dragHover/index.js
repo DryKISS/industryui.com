@@ -1,10 +1,11 @@
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-// UI
+// Style
 import styled, { css } from 'styled-components'
 
-import { Close, Preview, Space, Text } from 'components'
+// UI
+import { Close, Preview, Space, Text } from '../../../../'
 
 export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   const [selectedFile, setselectedFile] = useState(null)

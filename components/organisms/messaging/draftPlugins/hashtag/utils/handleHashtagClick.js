@@ -1,6 +1,8 @@
 /**
  * Components - Messaging
  */
+
+// UI
 import { MessageNames, MessagingActions, MessagingCommunicationService } from '../../../../../'
 
 export const handleHashtagClick = hashtag => {

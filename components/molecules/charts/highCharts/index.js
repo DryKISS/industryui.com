@@ -1,6 +1,9 @@
 /**
  * Molecules - Charts - Highcharts
  */
+
+// React
+import React from 'react'
 import { any, arrayOf, bool, func, oneOf } from 'prop-types'
 
 // Highcharts

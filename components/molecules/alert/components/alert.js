@@ -1,17 +1,21 @@
 /**
- * Alert
+ * Components - Molecules - Alert - Components - Alert
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { func, object, objectOf, number, oneOf, oneOfType, string } from 'prop-types'
-
-// UI
-import { BACKGROUND, Close, CONTEXT, shadeLinearRgb } from '../../../'
-import { AlertContent, AlertHeader } from './'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { AlertContent } from './content'
+import { AlertHeader } from './header'
+
+import { Close, shadeLinearRgb } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
+import { themeBackground } from '../../../theme/utils/background'
 
 export const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
   const [visible, setVisible] = useState(true)
@@ -37,7 +41,7 @@ export const Alert = ({ className, close, content, context, header, icon, iconPr
 }
 
 const StyledAlert = styled.div`
-  ${props => BACKGROUND(props)}
+  ${props => themeBackground(props)}
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
   border-radius: 0.25rem;
   color: ${({ context, theme }) => shadeLinearRgb(-0.8, theme.COLOUR[context])};
@@ -54,7 +58,7 @@ const StyledClose = styled(Close)`
 Alert.propTypes = {
   close: func,
   content: oneOfType([object, string]).isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   header: string,
   icon: string,
   iconPrefix: string,

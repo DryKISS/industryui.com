@@ -1,26 +1,21 @@
 /**
- * Blog - Details
+ * Components -  Blog - Details
  */
 
 // React
+import React from 'react'
 import { object } from 'prop-types'
-
-// UI
-import {
-  BlogCategory,
-  BlogReadTime,
-  BlogTags,
-  Date,
-  Divider,
-  FacebookShareButton,
-  Icon,
-  List,
-  ListItem,
-  slugify
-} from '../../'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { BlogCategory } from '../category/category'
+import { BlogReadTime } from '../readTime/readTime'
+
+import { BlogTags, Divider, FacebookShareButton, Icon, List, ListItem, slugify } from '../../'
+
+import { Date } from '../../atoms/date/date'
 
 export const BlogDetails = ({ article, config, facebook }) => {
   return (
@@ -28,19 +23,16 @@ export const BlogDetails = ({ article, config, facebook }) => {
       <Divider size='sm' />
 
       <List inline unstyled style={{ marginTop: '.25rem' }}>
-        {/* Date / Time */}
         <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='calendar-alt' />
-          <Date date={article.date} />
+          <Date date={article.date} size='sm' />
         </ListItem>
 
-        {/* Author */}
         <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='user' />
           <BlogCategory author config={config} to={article.author} />
         </ListItem>
 
-        {/* Read time */}
         <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context='dark' icon='stopwatch' />
           <BlogReadTime time={article.readtime} />

@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../../.storybook/decorators'
 
 // UI
-import { arrayOfValues, MessageBackground } from 'components'
+import { arrayOfValues, MessageBackground } from '../../../../'
 import Readme from '../README.md'
 
 const options = {

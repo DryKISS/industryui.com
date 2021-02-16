@@ -4,14 +4,17 @@
 //
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
 
-// UI
-import { Button, Column, Form, GetAddress, useForm, yupResolver } from 'components'
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
+// UI
+import { Button, Column, Form, GetAddress } from '../../../'
 import Readme from '../README.md'
 
 export default {

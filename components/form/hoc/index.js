@@ -1,9 +1,13 @@
 /**
- * Form - WrappedComponent
+ * Components - Form - WrappedComponent
  */
 
+// React
+import React from 'react'
+
 // UI
-import { FormError, SIZE, Space, Text } from '../../'
+import { FormError, Space, Text } from '../../'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const FieldHOC = ({
   component: Component,
@@ -40,8 +44,8 @@ export const FieldHOC = ({
     </Component>
 
     {helperMessage && (
-      <Space marginTop={SIZE.SM} marginBottom={SIZE.XS}>
-        <Text size={SIZE.XS} context='default'>
+      <Space marginTop={THEME_SIZE.SM} marginBottom={THEME_SIZE.XS}>
+        <Text size={THEME_SIZE.XS} context='default'>
           {helperMessage}
         </Text>
       </Space>

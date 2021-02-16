@@ -2,16 +2,17 @@
  * Size selector
  */
 
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from './'
 
 // UI
-import { arrayOfValues, SIZE } from 'components'
+import { arrayOfValues } from '../../components'
+import { THEME_SIZE } from '../../components/theme/constants/size'
 
 export const SizeControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(SIZE)
+      options: arrayOfValues(THEME_SIZE)
     }
   }
 }

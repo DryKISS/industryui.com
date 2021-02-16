@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { PageProgressBar } from 'components'
+import { PageProgressBar } from '../../../'
 
 export default {
   args: { context: 'primary' },

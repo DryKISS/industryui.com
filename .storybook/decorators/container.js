@@ -10,10 +10,10 @@ import {
   Theme,
   ThemeStyle,
   UserProvider
-} from 'components'
+} from '../../components'
 
 // Config
-import { Config } from 'config'
+import { Config } from '../../config'
 
 // Style
 import { ThemeProvider } from 'styled-components'

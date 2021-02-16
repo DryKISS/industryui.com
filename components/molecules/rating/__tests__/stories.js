@@ -2,10 +2,10 @@
  * Rating
  */
 
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Rating } from '../'
+import { Rating } from '../rating'
 import Readme from '../README.md'
 
 export default {

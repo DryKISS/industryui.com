@@ -4,7 +4,7 @@
  */
 
 // React
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { array, number, node, object, oneOf, string } from 'prop-types'
 
 // Services

@@ -3,7 +3,7 @@
  */
 
 // UI
-import { HighChart } from 'components'
+import { HighChart } from '../../../'
 import Readme from '../README.md'
 
 // Styled Components

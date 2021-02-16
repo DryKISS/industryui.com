@@ -6,20 +6,15 @@
 // React
 import { func, string } from 'prop-types'
 
-// UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormLabel,
-  Link,
-  PageHeading,
-  useForm,
-  yupResolver
-} from '../../'
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
 import { ForgotDetailsResetSchema } from './schema'
+
+// UI
+import { Alert, Button, FormField, Form, FormLabel, Link, PageHeading } from '../../'
 
 // Style
 import styled from 'styled-components'

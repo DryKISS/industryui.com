@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BlogCategory } from 'components'
+import { BlogCategory } from '../../../'
 import Readme from '../README.md'
 
 // Data

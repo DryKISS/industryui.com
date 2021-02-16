@@ -3,7 +3,7 @@
  */
 
 // UI
-import { PageHeading } from 'components'
+import { PageHeading } from '../../../'
 import Readme from '../README.md'
 
 export default {

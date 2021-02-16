@@ -3,7 +3,7 @@
  */
 
 // UI
-import { TableActions } from 'components'
+import { TableActions } from '../../../'
 import Readme from '../README.md'
 
 export default {

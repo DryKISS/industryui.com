@@ -3,19 +3,19 @@
  */
 
 // Storybook
-import { ControlTypes, ContextControl, SizeControl } from 'decorators'
+import { ControlTypes, ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Badge, CONTEXT, SIZE } from 'components'
+import { Badge, THEME_CONTEXT, THEME_SIZE } from '../../../'
 import Readme from '../README.md'
 
 export default {
   args: {
     content: 'Badge',
-    context: CONTEXT.PRIMARY,
+    context: THEME_CONTEXT.PRIMARY,
     icon: false,
     shape: 'square',
-    size: SIZE.MD,
+    size: THEME_SIZE.MD,
     to: false
   },
   argTypes: {

@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Shimmer } from 'components'
+import { Shimmer } from '../../../'
 import Readme from '../README.md'
 
 export default {

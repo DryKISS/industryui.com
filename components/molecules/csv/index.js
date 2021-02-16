@@ -6,13 +6,14 @@
  */
 
 // React
+import React from 'react'
 import { element, func, object, oneOfType, string } from 'prop-types'
 
 // UI
 import { FormField } from '../../'
 
 // Papa parse
-const PapaParse = require('papaparse/papaparse.min.js')
+import PapaParse from 'papaparse'
 
 export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
   const change = e => {

@@ -3,15 +3,23 @@
  */
 
 // React
-import { memo, useState } from 'react'
-import styled, { css } from 'styled-components'
+import React, { memo, useState } from 'react'
 import { object, string } from 'prop-types'
-import { ReplyIcon } from './replyIcon'
-import { ShareIcon } from './shareIcon'
+
+// Style
+import styled, { css } from 'styled-components'
 
 // UI
-import { Avatar, MessageBase } from 'components'
-import { MessageNames, MessagingActions, MessagingCommunicationService } from 'components/services'
+import {
+  Avatar,
+  MessageBase,
+  MessageNames,
+  MessagingActions,
+  MessagingCommunicationService
+} from '../../../../'
+
+import { ReplyIcon } from './replyIcon'
+import { ShareIcon } from './shareIcon'
 
 export const Message = memo(
   ({ config, message, prevType, type, ...props }) => {

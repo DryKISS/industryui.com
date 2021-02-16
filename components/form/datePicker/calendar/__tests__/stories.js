@@ -2,8 +2,12 @@
  * Form - DatePicker - Calendar - Stories
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // Date utility
 import addDays from 'date-fns/addDays'
@@ -13,16 +17,7 @@ import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 
 // UI
-import {
-  Button,
-  DatePickerCalendar,
-  Divider,
-  Form,
-  FormError,
-  Text,
-  useForm,
-  yupResolver
-} from 'components'
+import { Button, DatePickerCalendar, Divider, Form, FormError, Text } from '../../../../'
 
 import Readme from '../README.md'
 import { args, argTypes } from './controls'

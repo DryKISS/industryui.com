@@ -4,7 +4,7 @@
 
 // UI
 import { pricingInfo } from '../__mocks__/pricing_mock_data'
-import { Pricing } from 'components'
+import { Pricing } from '../../../'
 import Readme from '../README.md'
 
 const handlePlanSelect = e => {

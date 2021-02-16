@@ -3,8 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
-
+import React, { useState } from 'react'
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
@@ -15,15 +14,12 @@ import {
   MessagingDragHover,
   MessagingSearch,
   MessagingSend,
-  useComponentCommunication
-} from '../../../'
-
-import {
   MessageNames,
   MessagingActions,
   MessagingCommunicationService,
-  MessagingSubscriber
-} from 'components/services'
+  MessagingSubscriber,
+  useComponentCommunication
+} from '../../../'
 
 // Style
 import styled from 'styled-components'

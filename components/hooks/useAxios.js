@@ -9,7 +9,7 @@ import { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 // UI
-import { ConfigContext } from '../'
+import { ConfigContext } from '../services/config/context'
 
 export const useAxios = (url, params, initialValue) => {
   if (!url) {

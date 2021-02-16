@@ -3,13 +3,17 @@
  */
 
 // Storybook
-import { SizeControl } from 'decorators'
+import { SizeControl } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, FormLabel, TextareaField, useForm, yupResolver } from 'components'
+import { Button, Form, FormLabel, TextareaField } from '../../../'
 import Readme from '../README.md'
 
 export default {

@@ -2,10 +2,11 @@
  * Card - Props
  */
 
+// React
 import { any, bool, func, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const CardPropTypes = {
   alt: string,
@@ -14,7 +15,7 @@ export const CardPropTypes = {
   center: bool,
   children: node,
   className: any,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   ctaFunc: func,
   ctaLink: string,
   ctaTitle: string,
@@ -23,7 +24,7 @@ export const CardPropTypes = {
   fullHeight: bool,
   header: string,
   headerAlign: string,
-  headerContext: oneOf(Object.values(CONTEXT)),
+  headerContext: oneOf(Object.values(THEME_CONTEXT)),
   to: oneOfType([object, string]),
   horizontal: bool,
   icon: string,
@@ -40,8 +41,8 @@ export const CardPropTypes = {
 export const CardDefaultProps = {
   bordered: false,
   context: 'white',
-  footerContext: CONTEXT.LIGHT,
-  headerContext: CONTEXT.DARK,
+  footerContext: THEME_CONTEXT.LIGHT,
+  headerContext: THEME_CONTEXT.DARK,
   role: 'article',
   rounded: true,
   shadow: false,

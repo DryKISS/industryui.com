@@ -3,7 +3,7 @@
  */
 
 // UI
-import { getOne, Space, Text } from 'components'
+import { getOne, Space, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

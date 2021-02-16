@@ -1,16 +1,17 @@
 /**
- * Dropdown
+ * Components - Molecules - Dropdown
  */
 
 // React
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { array, bool, func, node, oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { DropdownMenu, Icon, Position } from '../../../'
+import { DropdownMenu, Icon } from '../../../'
+import { THEME_POSITION } from '../../../theme/constants/position'
 
 export const elementTypes = {
   Colour: 'colour',
@@ -62,7 +63,7 @@ export const Dropdown = ({
           <Icon
             aria-hidden='true'
             className='dropdown--caret'
-            icon={position === Position.Top ? 'caret-up' : 'caret-down'}
+            icon={position === THEME_POSITION.Top ? 'caret-up' : 'caret-down'}
             prefix='fas'
           />
         )}

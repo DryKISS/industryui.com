@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Sidebar } from 'components'
+import { Sidebar } from '../../../'
 import Readme from '../README.md'
 
 // Data

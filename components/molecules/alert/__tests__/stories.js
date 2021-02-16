@@ -1,15 +1,12 @@
 /**
- * Alert
+ *  Components - Molecules - Alert - Story
  */
 
 // Storybook
-// import { action } from '@storybook/addon-actions'
-
-// Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Alert } from 'components'
+import { Alert } from '../components/alert'
 import Readme from '../README.md'
 
 export default {

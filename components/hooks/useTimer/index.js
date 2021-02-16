@@ -1,5 +1,0 @@
-/**
- * useTimer
- */
-
-export * from './components'

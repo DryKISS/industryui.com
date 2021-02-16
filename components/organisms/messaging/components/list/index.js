@@ -3,16 +3,24 @@
  */
 
 // React
-import { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { array } from 'prop-types'
 
-// UI
-import { Message, useComponentCommunication } from '../../../../'
-import { MessageNames, MessagingSubscriber, MessagingActions } from 'components/services'
-import styled, { css } from 'styled-components'
-
+// React Virtualised
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
-import { DateDiff } from 'components/utils'
+
+// UI
+import {
+  DateDiff,
+  Message,
+  MessageNames,
+  MessagingSubscriber,
+  MessagingActions,
+  useComponentCommunication
+} from '../../../../'
+
+// Style
+import styled, { css } from 'styled-components'
 
 const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
   return (

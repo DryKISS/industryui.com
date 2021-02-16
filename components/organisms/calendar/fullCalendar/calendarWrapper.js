@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Next
 import dynamic from 'next/dynamic'

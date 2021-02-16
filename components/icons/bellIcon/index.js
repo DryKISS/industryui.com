@@ -1,4 +1,5 @@
-import { commonIconPropTypes } from '../propTypes'
+import React from 'react'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const BellIcon = props => {
@@ -9,4 +10,4 @@ export const BellIcon = props => {
   )
 }
 
-BellIcon.propTypes = commonIconPropTypes
+BellIcon.propTypes = propTypes

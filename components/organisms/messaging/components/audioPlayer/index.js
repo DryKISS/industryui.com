@@ -1,6 +1,7 @@
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+
 // Next
 import dynamic from 'next/dynamic'
 
@@ -53,6 +54,7 @@ export const MessagingAudioPlayer = ({ inMessage, src }) => {
 
   return <Wrapper>{showPlayer()}</Wrapper>
 }
+
 const Wrapper = styled.div`
   flex: 1;
 `
@@ -61,4 +63,5 @@ const Spacer = styled.div`
   margin: 0 5px;
   width: 5px;
 `
+
 const Slash = styled.div``

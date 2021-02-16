@@ -5,7 +5,7 @@
 import { useState } from 'react'
 
 // UI
-import { ResizeDetector } from 'components'
+import { ResizeDetector } from '../../../'
 import Readme from '../README.md'
 
 // Style

@@ -1,8 +1,9 @@
 /**
- * Navbar — Widgets
+ * Components - Molecules - Navbar — Widgets
  */
 
 // React
+import React from 'react'
 import { bool, func, object, string } from 'prop-types'
 
 // UI
@@ -19,7 +20,7 @@ import {
 // Style
 import styled, { css } from 'styled-components'
 
-export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
+export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
   return (
     <NavCollapse visible={visible}>
       {Object.entries(widgets).map(([direction, link]) => (
@@ -97,7 +98,7 @@ const StyledListItem = styled.li`
   `}
 `
 
-Widgets.propTypes = {
+NavWidgets.propTypes = {
   brand: string,
   closeMenu: func,
   type: string,

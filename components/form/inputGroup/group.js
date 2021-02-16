@@ -3,6 +3,8 @@
  * Wraps the Input so we can append or prepend another element
  */
 
+// React
+import React from 'react'
 import { string } from 'prop-types'
 
 // Style

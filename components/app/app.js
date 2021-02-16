@@ -1,8 +1,11 @@
 /**
  * App
+ *
+ * @todo This is doing too much Apollo provider and GTM should be abstracted as options and the providers sorted out
  */
 
 // React
+import React from 'react'
 import { any, bool, func, object } from 'prop-types'
 
 // Lodash
@@ -18,8 +21,8 @@ import App from 'next/app'
 import TagManager from 'react-gtm-module'
 
 // UI
+import { AuthorizationProvider } from '../services/authorization/provider'
 import {
-  AuthorizationProvider,
   ConfigProvider,
   InternationalisationProvider,
   NotificationsProvider,

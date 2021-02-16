@@ -3,13 +3,14 @@
  */
 
 // React
+import React from 'react'
 import { node, oneOf, string } from 'prop-types'
-
-// UI
-import { SIZE } from '../../'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { THEME_SIZE } from '../../theme/constants/size'
 import { spaceStyler } from './style'
 
 export const Space = ({
@@ -109,21 +110,21 @@ const StyledSpace = styled.div`
     ])}
 `
 
-Space.protoTypes = {
+Space.propTypes = {
   children: node,
   content: string,
-  margin: oneOf(Object.values(SIZE)),
-  marginY: oneOf(Object.values(SIZE)),
-  marginX: oneOf(Object.values(SIZE)),
-  marginTop: oneOf(Object.values(SIZE)),
-  marginRight: oneOf(Object.values(SIZE)),
-  marginBottom: oneOf(Object.values(SIZE)),
-  marginLeft: oneOf(Object.values(SIZE)),
-  padding: oneOf(Object.values(SIZE)),
-  paddingY: oneOf(Object.values(SIZE)),
-  paddingX: oneOf(Object.values(SIZE)),
-  paddingTop: oneOf(Object.values(SIZE)),
-  paddingRight: oneOf(Object.values(SIZE)),
-  paddingBottom: oneOf(Object.values(SIZE)),
-  paddingLeft: oneOf(Object.values(SIZE))
+  margin: oneOf(Object.values(THEME_SIZE)),
+  marginY: oneOf(Object.values(THEME_SIZE)),
+  marginX: oneOf(Object.values(THEME_SIZE)),
+  marginTop: oneOf(Object.values(THEME_SIZE)),
+  marginRight: oneOf(Object.values(THEME_SIZE)),
+  marginBottom: oneOf(Object.values(THEME_SIZE)),
+  marginLeft: oneOf(Object.values(THEME_SIZE)),
+  padding: oneOf(Object.values(THEME_SIZE)),
+  paddingY: oneOf(Object.values(THEME_SIZE)),
+  paddingX: oneOf(Object.values(THEME_SIZE)),
+  paddingTop: oneOf(Object.values(THEME_SIZE)),
+  paddingRight: oneOf(Object.values(THEME_SIZE)),
+  paddingBottom: oneOf(Object.values(THEME_SIZE)),
+  paddingLeft: oneOf(Object.values(THEME_SIZE))
 }

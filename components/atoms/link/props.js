@@ -6,13 +6,13 @@
 import { any, bool, func, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
-export const LinkPropTypes = {
+export const propTypes = {
   border: bool,
   children: node.isRequired,
   className: any,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   onClick: func,
   passHref: bool,
   prefetch: bool,
@@ -23,8 +23,9 @@ export const LinkPropTypes = {
   to: oneOfType([object, string]).isRequired
 }
 
-export const LinkDefaultProps = {
+export const defaultProps = {
   border: true,
+  context: THEME_CONTEXT.DARK,
   prefetch: true,
   replace: false,
   scroll: true,

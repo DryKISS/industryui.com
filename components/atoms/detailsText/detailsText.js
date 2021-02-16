@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { node, oneOfType, string } from 'prop-types'
 
 // UI
-import { Space, Text } from '../index'
+import { Space } from '../space/space'
+import { Text } from '../text/text'
 
 export const DetailsText = ({ content, text }) => {
   return (

@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { any, func } from 'prop-types'
 
 // UI

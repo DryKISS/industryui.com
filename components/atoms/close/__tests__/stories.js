@@ -3,16 +3,16 @@
  */
 
 // Storybook
-import { ContextControl, IconPrefixControl } from 'decorators'
+import { ContextControl, IconPrefixControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Close } from 'components'
+import { Close } from '../../../'
 import Readme from '../README.md'
 
 export default {
   args: {
     className: '',
-    click: '',
+    click: () => {},
     context: 'dark',
     icon: 'times-circle',
     prefix: 'fas'

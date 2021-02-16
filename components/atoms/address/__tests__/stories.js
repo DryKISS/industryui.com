@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { CountryControl } from 'decorators'
+import { CountryControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Address } from 'components'
+import { Address } from '../../../'
 import Readme from '../README.md'
 
 export default {

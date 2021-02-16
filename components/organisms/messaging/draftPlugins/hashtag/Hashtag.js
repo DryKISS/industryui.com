@@ -1,6 +1,12 @@
+// React
 import React from 'react'
+
 import clsx from 'clsx'
+
+// Style
 import styled from 'styled-components'
+
+// UI
 import { handleHashtagClick } from './utils/handleHashtagClick'
 
 export default function Hashtag (props) {
@@ -27,6 +33,7 @@ export default function Hashtag (props) {
     />
   )
 }
+
 const StyledHashtag = styled.span`
   color: ${({ theme: { MESSAGING } }) => MESSAGING.hashtagColour};
   cursor: pointer;

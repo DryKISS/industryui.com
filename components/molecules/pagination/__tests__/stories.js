@@ -6,10 +6,10 @@
 import { useState } from 'react'
 
 // Storybook
-import { ContextControl, SizeControl } from 'decorators'
+import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Icon, Pagination } from 'components'
+import { Icon, Pagination } from '../../../'
 import Readme from '../README.md'
 
 export default {

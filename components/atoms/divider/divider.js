@@ -2,12 +2,12 @@
  * Divider
  */
 
-// UI
-import { DividerPropTypes, DividerDefaultProps } from './props'
-import { SIZE } from '../../'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { THEME_SIZE } from '../../theme/constants/size'
+import { propTypes, defaultProps } from './props'
 
 export const Divider = styled.hr`
   border: none;
@@ -38,25 +38,25 @@ export const Divider = styled.hr`
   margin: ${({ size, theme, vertical }) => {
     var margin = '1rem'
     switch (size) {
-      case SIZE.XXS:
+      case THEME_SIZE.XXS:
         margin = '0.25rem'
         break
-      case SIZE.SM:
+      case THEME_SIZE.SM:
         margin = '0.5rem'
         break
-      case SIZE.MD:
+      case THEME_SIZE.MD:
         margin = '1rem'
         break
-      case SIZE.LG:
+      case THEME_SIZE.LG:
         margin = '2rem'
         break
-      case SIZE.XL:
+      case THEME_SIZE.XL:
         margin = '3rem'
         break
-      case SIZE.XXL:
+      case THEME_SIZE.XXL:
         margin = '4rem'
         break
-      case SIZE.XXXL:
+      case THEME_SIZE.XXXL:
         margin = '8rem'
         break
 
@@ -75,5 +75,5 @@ export const Divider = styled.hr`
 
 `
 
-Divider.propTypes = DividerPropTypes
-Divider.defaultProps = DividerDefaultProps
+Divider.propTypes = propTypes
+Divider.defaultProps = defaultProps

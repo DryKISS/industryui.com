@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, node, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, Heading } from '../../../'
+import { Heading } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { CardCTA } from './cta'
 
 // Style
@@ -72,7 +74,7 @@ CardBody.propTypes = {
   center: bool,
   children: node,
   className: string,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   ctaFunc: func,
   ctaLink: string,
   ctaTitle: string,

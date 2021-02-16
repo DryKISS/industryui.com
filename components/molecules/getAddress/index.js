@@ -1,10 +1,13 @@
 /**
- * Get Address
+ * Components - Molecules - Get Address
  */
 
 // React
-import { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { func, object, oneOf, number, string } from 'prop-types'
+
+// Style
+import styled, { css } from 'styled-components'
 
 // UI
 import {
@@ -16,12 +19,11 @@ import {
   GetAddressService,
   InputGroupAddon,
   Shimmer,
-  SIZE,
   ConfigContext,
   validatorPostCode
 } from '../../'
 
-import styled, { css } from 'styled-components'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const GetAddress = ({
   errors,
@@ -126,16 +128,16 @@ const LoadingWrapper = styled.div`
 
   ${({ size }) => {
     switch (size) {
-      case SIZE.SM:
+      case THEME_SIZE.SM:
         return css`
           top: 2.1rem;
           height: 0.8rem;
         `
-      case SIZE.MD:
+      case THEME_SIZE.MD:
         return css`
           height: 1.125rem;
         `
-      case SIZE.LG:
+      case THEME_SIZE.LG:
         return css`
           height: 1.45rem;
         `

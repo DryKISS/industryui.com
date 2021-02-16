@@ -1,4 +1,5 @@
-import { commonIconPropTypes } from '../propTypes'
+import React from 'react'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const ListIcon = props => {
@@ -14,4 +15,4 @@ export const ListIcon = props => {
   )
 }
 
-ListIcon.propTypes = commonIconPropTypes
+ListIcon.propTypes = propTypes

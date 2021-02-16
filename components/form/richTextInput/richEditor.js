@@ -1,5 +1,5 @@
 // React
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { object, string } from 'prop-types'
 
 import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js'

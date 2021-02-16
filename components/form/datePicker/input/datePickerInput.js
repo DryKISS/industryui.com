@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, number, object, string } from 'prop-types'
 
 // UI
-import { Column, Row, SelectField, Space } from '../../../'
+import { Column, Row, SelectField } from '../../../'
+import { Space } from '../../../atoms/space/space'
 
 // Data
 import { DAYS, MONTHS } from './constants/dates'
@@ -32,7 +34,7 @@ export const DatePickerInput = ({
 
   return (
     <>
-      <Space marginBottom='0.5rem'>{label}</Space>
+      <Space marginBottom='xs'>{label}</Space>
 
       <Row>
         {showDay && (
@@ -53,11 +55,11 @@ export const DatePickerInput = ({
               data={{ 'data-index': index, 'data-name': 'month' }}
               name={`month${name}`}
               options={[
-                {
-                  disabled: true,
-                  text: placeHolder ?? 'Select month',
-                  value: ''
-                },
+                // {
+                //   disabled: true,
+                //   text: placeHolder ?? 'Select month',
+                //   value: ''
+                // },
                 ...MONTHS
               ]}
             />

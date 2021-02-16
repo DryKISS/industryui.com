@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BigCalendar } from 'components'
+import { BigCalendar } from '../../../'
 import Readme from '../README.md'
 
 export default {

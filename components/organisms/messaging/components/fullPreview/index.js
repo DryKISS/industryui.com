@@ -1,17 +1,21 @@
-import { useEffect, useRef, useState } from 'react'
+// React
+import React, { useEffect, useRef, useState } from 'react'
 
+// Style
 import styled, { css } from 'styled-components'
 
+// UI
 import {
   ChevronIcon,
   CrossIcon,
   DownloadIcon,
   downloadFile,
+  MessageNames,
+  MessagingActions,
+  MessagingSubscriber,
   Preview,
   useComponentCommunication
 } from '../../../../'
-
-import { MessageNames, MessagingActions, MessagingSubscriber } from '../../../../services'
 
 export const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)

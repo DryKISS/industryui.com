@@ -6,7 +6,7 @@
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { BarChart, objectWithoutProperties } from 'components'
+import { BarChart, objectWithoutProperties } from '../../../../../'
 import Readme from '../README.md'
 
 // Mocks

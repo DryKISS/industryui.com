@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Blockquote } from 'components'
+import { Blockquote } from '../../../'
 import Readme from '../README.md'
 
 export default {

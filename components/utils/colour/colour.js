@@ -1,5 +1,5 @@
 /**
- * Colour
+ * Components - Utils Colour
  */
 export const blendLinearRgb = (p, c1, c2) => {
   const i = parseInt
@@ -47,6 +47,7 @@ export const shadeLinearRgb = (p, c1) => {
     (d ? ',' + d : ')')
   )
 }
+
 export const shadeColor = (color, percent) => {
   let R = parseInt(color.substring(1, 3), 16)
   let G = parseInt(color.substring(3, 5), 16)

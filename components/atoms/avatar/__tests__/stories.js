@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { ContextControl, SizeControl } from 'decorators'
+import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Avatar, CONTEXT, SIZE } from 'components'
+import { Avatar, THEME_CONTEXT, THEME_SIZE } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -15,11 +15,11 @@ export default {
     actionClick: () => {},
     children: '',
     className: '',
-    context: CONTEXT.PRIMARY,
+    context: THEME_CONTEXT.PRIMARY,
     content: 'Avatar',
     click: () => {},
     gmail: 'test@gmail.com',
-    size: SIZE.MD,
+    size: THEME_SIZE.MD,
     src: 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg',
     style: '',
     withAction: false,

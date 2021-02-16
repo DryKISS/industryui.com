@@ -5,10 +5,14 @@
 // React
 import { useContext } from 'react'
 
-import { ContextControl } from 'decorators'
+// Decorators
+import { ContextControl } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, OffCanvasContext, useForm } from 'components'
+import { Button, OffCanvasContext } from '../../../'
 import Readme from '../README.md'
 import { OffCanvasForm } from './form'
 

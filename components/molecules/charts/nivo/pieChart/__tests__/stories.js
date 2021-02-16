@@ -6,7 +6,7 @@
 import { colorSchemes } from '@nivo/colors'
 
 // UI
-import { objectWithoutProperties, PieChart } from 'components'
+import { objectWithoutProperties, PieChart } from '../../../../../'
 import Readme from '../README.md'
 
 // Mocks

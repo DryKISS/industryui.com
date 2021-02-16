@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Footer } from 'components'
+import { Footer } from '../../../'
 import Readme from '../README.md'
 
 // Data

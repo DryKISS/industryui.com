@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Bar, Divider, List, ListItem } from 'components'
+import { Bar, Divider, List, ListItem } from '../../../'
 import { BarConfig } from '../components/config'
 import Readme from '../README.md'
 

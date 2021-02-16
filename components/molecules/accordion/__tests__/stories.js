@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Accordion, AccordionItem } from 'components'
+import { Accordion, AccordionItem } from '../../../'
 import Readme from '../README.md'
 import { Data } from '../__mocks__/accordion'
 

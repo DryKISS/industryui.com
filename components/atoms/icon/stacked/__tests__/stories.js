@@ -3,7 +3,7 @@
  */
 
 // UI
-import { IconStacked } from 'components'
+import { IconStacked } from '../../../'
 import Readme from '../README.md'
 
 export default {

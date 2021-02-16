@@ -2,11 +2,15 @@
  * Form - Search
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Divider, FormError, Form, Search, Text, useForm, yupResolver } from 'components'
+import { Divider, FormError, Form, Search, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

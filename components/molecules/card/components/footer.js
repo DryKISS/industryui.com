@@ -3,10 +3,11 @@
  */
 
 // React
+import React from 'react'
 import { oneOf, node } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -31,7 +32,7 @@ const StyledFooter = styled.div`
 `
 
 CardFooter.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   children: node
 }
 

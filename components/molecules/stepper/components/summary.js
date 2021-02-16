@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { array, string } from 'prop-types'
 
 // Style

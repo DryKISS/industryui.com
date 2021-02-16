@@ -6,7 +6,7 @@
 import { useState, useRef, useEffect } from 'react'
 
 // UI
-import { Calendar, Theme } from 'components'
+import { Calendar, Theme } from '../../../../'
 import Readme from '../README.md'
 
 // Data
@@ -33,7 +33,6 @@ export default {
       control: { type: 'select', options: Object.keys(Theme.COLOUR) }
     }
   },
-  title: 'Organisms/Full Calendar',
   components: Calendar,
   parameters: {
     docs: {
@@ -41,7 +40,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Full Calendar'
 }
 
 export const BaseComponent = (props = {}) => {

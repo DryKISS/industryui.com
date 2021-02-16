@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, object, oneOfType, string } from 'prop-types'
 
 // UI

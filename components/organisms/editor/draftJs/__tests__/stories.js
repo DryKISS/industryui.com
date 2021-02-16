@@ -5,19 +5,22 @@
 // DraftJS
 import { DraftJs } from '../draftJs'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, Form, useForm } from 'components'
+import { Button, Form } from '../../../../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Editor',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Editor'
 }
 
 export const main = () => {

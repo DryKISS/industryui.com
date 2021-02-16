@@ -3,22 +3,22 @@
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { CONTEXT, Figure } from 'components'
+import { Figure } from '../figure'
 import Readme from '../README.md'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export default {
   args: {
-    context: CONTEXT.WHITE,
-    bgContext: CONTEXT.DARK
+    context: THEME_CONTEXT.WHITE,
+    bgContext: THEME_CONTEXT.DARK
   },
   argTypes: {
     context: ContextControl(),
     bgContext: ContextControl()
   },
-  title: 'Atoms/Figure',
   component: Figure,
   parameters: {
     docs: {
@@ -26,7 +26,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Figure'
 }
 
 export const main = args => (

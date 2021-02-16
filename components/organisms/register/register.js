@@ -3,8 +3,11 @@
  */
 
 // React
-import { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { any, bool, func, string } from 'prop-types'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
 import {
@@ -17,8 +20,7 @@ import {
   FormField,
   Link,
   Text,
-  UserContext,
-  useForm
+  UserContext
 } from '../../'
 
 // Style

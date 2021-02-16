@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { array, arrayOf, bool, func, object, oneOf, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { ButtonToolbar, CONTEXT } from '../../../../'
+import { ButtonToolbar } from '../../../../atoms/button/toolbar/toolbar'
+import { THEME_CONTEXT } from '../../../../theme/constants/context'
 import { TableActionsTooltip } from './tooltip'
 import { TableActionsButton } from './button'
 
@@ -43,7 +45,7 @@ TableActions.propTypes = {
   data: arrayOf(
     shape({
       content: string,
-      context: oneOf(Object.values(CONTEXT)),
+      context: oneOf(Object.values(THEME_CONTEXT)),
       disabled: bool,
       icon: oneOfType([array, string]),
       numberOverlay: string,

@@ -3,12 +3,15 @@
  * Provides the standard H1-H6 HTML tags
  */
 
-// UI
-import { COLOUR } from '../../'
-import { HeadingPropTypes, HeadingDefaultProps } from './props'
+// React
+import React from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { themeColour } from '../../theme/utils/colour'
+import { propTypes, defaultProps } from './props'
 
 export const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {
   return (
@@ -29,7 +32,7 @@ export const Heading = ({ className, content, context, noMargin, noWrap, style, 
 
 const StyledHeading = styled.span`
   font-weight: normal;
-  ${props => COLOUR(props)}
+  ${props => themeColour(props)}
   position: relative;
   ${({ as, theme }) => css`
     font-family: ${theme.HEADINGS[as].fontFamily};
@@ -54,5 +57,5 @@ const StyledHeading = styled.span`
     `}
 `
 
-Heading.propTypes = HeadingPropTypes
-Heading.defaultProps = HeadingDefaultProps
+Heading.propTypes = propTypes
+Heading.defaultProps = defaultProps

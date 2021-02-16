@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Stepper } from 'components'
+import { Stepper } from '../../../'
 import Readme from '../README.md'
 
 // Data

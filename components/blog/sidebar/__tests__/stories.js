@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BlogSidebar } from 'components'
+import { BlogSidebar } from '../../../'
 import Readme from '../README.md'
 
 // Data

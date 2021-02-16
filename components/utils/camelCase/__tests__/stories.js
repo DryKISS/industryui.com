@@ -3,7 +3,7 @@
  */
 
 // UI
-import { camelCase, Text } from 'components'
+import { camelCase, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

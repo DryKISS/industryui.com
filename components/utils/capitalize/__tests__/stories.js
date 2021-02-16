@@ -3,7 +3,7 @@
  */
 
 // UI
-import { capitalize, Text } from 'components'
+import { capitalize, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

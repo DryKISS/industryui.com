@@ -3,11 +3,11 @@
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 import { action } from '@storybook/addon-actions'
 
 // UI
-import { Button, Divider, Link } from 'components'
+import { Button, Divider, Link } from '../../../'
 import Readme from '../README.md'
 
 export default {

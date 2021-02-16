@@ -180,6 +180,66 @@ exports[`Storyshots Atoms/Details Main 1`] = `
 />
 `;
 
+exports[`Storyshots Atoms/Details2 Caret 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Atoms/Details2 Communication 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Atoms/Details2 Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Atoms/DetailsText Main 1`] = `
 .c0 {
   padding: 1rem;
@@ -1220,26 +1280,6 @@ exports[`Storyshots Form/Dropzone/Standard Multiple False 1`] = `
 />
 `;
 
-exports[`Storyshots Form/Dropzone/Uploader Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
 exports[`Storyshots Form/Error Main 1`] = `
 .c0 {
   padding: 1rem;
@@ -2060,6 +2100,26 @@ exports[`Storyshots Molecules/Alert Main 1`] = `
 />
 `;
 
+exports[`Storyshots Molecules/Breadcrumb Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Molecules/Buttons Main 1`] = `
 .c0 {
   padding: 1rem;
@@ -2541,86 +2601,6 @@ exports[`Storyshots Molecules/Charts/highCharts/line Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/Copyright Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Dog/Card Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Dog/Link Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Dog/Name Main 1`] = `
-.c0 {
-  padding: 1rem;
-  position: relative;
-}
-
-@media (min-width:62em) {
-
-}
-
-<div
-  className="c0"
-  style={
-    Object {
-      "background": "rgba(0,6,51, 0.04",
-    }
-  }
-/>
-`;
-
-exports[`Storyshots Molecules/Dog/Table Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;

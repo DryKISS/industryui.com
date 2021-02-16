@@ -1,9 +1,9 @@
 /**
- * EmojiMart
+ * Components - Molecules -  EmojiMart
  */
 
 // UI
-import { EmojiMart } from 'components'
+import { EmojiMart } from '../../../'
 import Readme from '../README.md'
 
 export default {

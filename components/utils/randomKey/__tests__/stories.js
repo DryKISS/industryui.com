@@ -3,7 +3,7 @@
  */
 
 // UI
-import { RandomKey } from 'components'
+import { RandomKey } from '../../../'
 import Readme from '../README.md'
 
 // Style

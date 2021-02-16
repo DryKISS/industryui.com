@@ -5,22 +5,28 @@
 // React
 import { useState, useRef } from 'react'
 
+// Storybook
+import { Wrapper } from '../../../../.storybook/decorators'
+
+// UI
+import {
+  Button,
+  CommunicationService,
+  MessageNames,
+  RandomColor,
+  Subscriber,
+  Text,
+  useComponentCommunication
+} from '../../../'
+
 // Style
 import styled from 'styled-components'
 
-// UI
-import { useComponentCommunication } from 'components/hooks'
-import { CommunicationService, Subscriber, MessageNames } from 'components/services'
-import { RandomColor } from 'components/utils'
-import { Button, Text } from 'components'
-
-// Storybook
-import { Wrapper } from 'decorators'
-
 export default {
-  title: 'Utils/CommunicationService',
-  decorators: [Wrapper]
+  decorators: [Wrapper],
+  title: 'Utils/CommunicationService'
 }
+
 const Sender = () => {
   const val = useRef('')
   return (
@@ -76,6 +82,7 @@ export const CommunicationShowCase = () => {
     </>
   )
 }
+
 const StyledContainer = styled.div`
   align-items: center;
   display: flex;
@@ -84,6 +91,7 @@ const StyledContainer = styled.div`
   padding: 1rem;
   width: 100%;
 `
+
 const SimpleWrapper = styled.div`
   margin: 1rem;
   padding: 1rem;

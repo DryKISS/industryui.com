@@ -3,8 +3,8 @@
  */
 
 // React
-import { bool } from 'prop-types'
 import { memo } from 'react'
+import { bool } from 'prop-types'
 
 // Style
 import styled from 'styled-components'

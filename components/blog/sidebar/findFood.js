@@ -11,8 +11,15 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { oneOf } from 'prop-types'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import {
@@ -25,10 +32,7 @@ import {
   InputGroup,
   InputGroupAddon,
   Link,
-  useForm,
-  validatorPostCode,
-  yup,
-  yupResolver
+  validatorPostCode
 } from '../../'
 
 import { BlogSection } from './components'
@@ -36,9 +40,8 @@ import { BlogSection } from './components'
 // Style
 import styled from 'styled-components'
 
-const schema = yup.object().shape({
-  postCode: yup
-    .string()
+const schema = object().shape({
+  postCode: string()
     .required()
     .test('is-valid', "We couldn't recognise that postcode - check and try again.", value =>
       validatorPostCode(value)

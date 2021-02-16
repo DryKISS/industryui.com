@@ -1,12 +1,12 @@
 /**
- * Colour
+ * Compontns - Utils - Colour - Story
  */
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { blendLinearRgb, shadeLinearRgb } from 'components'
+import { blendLinearRgb, shadeLinearRgb } from '../colour'
 import Readme from '../README.md'
 
 export default {

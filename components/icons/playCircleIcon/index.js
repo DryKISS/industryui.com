@@ -1,4 +1,5 @@
-import { commonIconPropTypes } from '../propTypes'
+import React from 'react'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const PlayCircleIcon = props => {
@@ -8,4 +9,4 @@ export const PlayCircleIcon = props => {
     </IconWrapper>
   )
 }
-PlayCircleIcon.propTypes = commonIconPropTypes
+PlayCircleIcon.propTypes = propTypes

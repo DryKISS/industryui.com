@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BlogTags } from 'components'
+import { BlogTags } from '../../../'
 import Readme from '../README.md'
 
 // Data

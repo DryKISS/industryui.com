@@ -1,12 +1,12 @@
 /**
- * Tooltip
+ * Components - Atoms - Tooltip - Story
  */
 
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Button, Text, Tooltip } from 'components'
+import { Button, Text, Tooltip } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -14,7 +14,7 @@ export default {
     context: 'primary'
   },
   argTypes: {
-    size: ContextControl()
+    context: ContextControl()
   },
   component: Tooltip,
   parameters: {

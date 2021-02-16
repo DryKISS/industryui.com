@@ -4,7 +4,7 @@
 
 // UI
 import styled from 'styled-components'
-import { VideoPlayer } from 'components'
+import { VideoPlayer } from '../../../'
 import Readme from '../README.md'
 import video from '../__mocks__/video.mp4'
 import poster from '../__mocks__/poster.png'

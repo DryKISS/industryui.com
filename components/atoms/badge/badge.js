@@ -1,14 +1,20 @@
 /**
- * Badge
+ * Components - Atoms - Badge
  */
 
-// UI
-import { BACKGROUND, FONTSIZE } from '../../'
-import { Icon } from '../icon'
-import { BadgeDefaultProps, BadgePropTypes } from './props'
+// React
+import React from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { Icon } from '../icon/icon/icon'
+import { themeBackground } from '../../theme/utils/background'
+import { themeFontSize } from '../../theme/utils/fontSize'
+
+// Props
+import { defaultProps, propTypes } from './props'
 
 export const Badge = ({
   children,
@@ -39,8 +45,8 @@ export const Badge = ({
 }
 
 const StyledBadge = styled.a`
-  ${props => BACKGROUND(props)}
-  ${props => FONTSIZE(props)}
+  ${props => themeBackground(props)}
+  ${props => themeFontSize(props)}
   border: ${({ context, theme }) =>
     context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.dark};
   border-radius: ${({ shape, theme }) => theme.BADGE.BORDER_RADIUS[shape]};
@@ -75,6 +81,5 @@ const StyledIcon = styled(Icon)`
   margin-right: 5px;
 `
 
-Badge.propTypes = BadgePropTypes
-
-Badge.defaultProps = BadgeDefaultProps
+Badge.propTypes = propTypes
+Badge.defaultProps = defaultProps

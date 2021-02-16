@@ -3,21 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, oneOf, string } from 'prop-types'
 
 // UI
-import {
-  Avatar,
-  Button,
-  Close,
-  CONTEXT,
-  Column,
-  Divider,
-  Heading,
-  Icon,
-  Row,
-  Text
-} from '../../../'
+import { Avatar, Button, Close, Column, Divider, Heading, Icon, Row, Text } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -127,7 +118,7 @@ const StyledText = styled(Text)`
 `
 
 OffCanvasHeader.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   hasAvatar: bool,
   headerContent: string,
   onClose: func.isRequired,

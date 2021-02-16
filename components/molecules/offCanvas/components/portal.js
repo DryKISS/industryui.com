@@ -3,12 +3,13 @@
  */
 
 // React
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, OffCanvasComponent } from '../../../'
+import { OffCanvasComponent } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const OffCanvas = props => {
   const [mounted, setMounted] = useState(false)
@@ -42,7 +43,7 @@ export const OffCanvas = props => {
 OffCanvas.propTypes = {
   closeOnOverlayClick: bool,
   container: any,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   handleSubmit: func,
   headerText: string.isRequired,
   lockScrollOnOpen: bool,

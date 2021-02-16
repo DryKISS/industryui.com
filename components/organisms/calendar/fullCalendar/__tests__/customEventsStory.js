@@ -3,7 +3,10 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
 import {
@@ -13,8 +16,7 @@ import {
   Form,
   FormLabel,
   FormField,
-  CheckboxField,
-  useForm
+  CheckboxField
 } from '../../../../'
 
 import { BaseComponent } from './stories'

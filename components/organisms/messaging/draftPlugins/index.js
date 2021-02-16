@@ -2,6 +2,9 @@
  * Components - Messaging
  */
 
+// React
+import React from 'react'
+
 import createEmojiPlugin from 'draft-js-emoji-plugin'
 import { createHashtagPlugin } from './hashtag'
 

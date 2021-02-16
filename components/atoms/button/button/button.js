@@ -1,16 +1,21 @@
 /**
- * Button
+ * Components - Atoms - Button
  */
 
 // React
-import { forwardRef } from 'react'
-
-// UI
-import { BACKGROUND, DIMENSION, DISPLAY, Icon, shadeLinearRgb, SPACER } from '../../../../'
-import { ButtonPropTypes, ButtonDefaultProps } from './props'
+import React, { forwardRef } from 'react'
 
 // Style
 import styled, { css, useTheme } from 'styled-components'
+
+// UI
+import { Icon, shadeLinearRgb, SPACER } from '../../../'
+import { themeBackground } from '../../../theme/utils/background'
+import { themeDimension } from '../../../theme/utils/dimension'
+import { themeDisplay } from '../../../theme/utils/display'
+
+// Props
+import { propTypes, defaultProps } from './props'
 
 export const Button = forwardRef(
   (
@@ -65,7 +70,7 @@ const getTextContext = (context, outline, theme) => {
 }
 
 const StyledButton = styled.button`
-  ${props => BACKGROUND(props)}
+  ${props => themeBackground(props)}
   align-items: center;
   border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
     outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
@@ -136,8 +141,8 @@ const StyledButton = styled.button`
     props.shadow &&
     'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
 
-  ${theme => DIMENSION(theme)}
-  ${theme => DISPLAY(theme)}
+  ${theme => themeDimension(theme)}
+  ${theme => themeDisplay(theme)}
   ${theme => SPACER(theme)}
 
    ${({ theme, noPadding }) =>
@@ -157,5 +162,5 @@ const StyledContent = styled.div`
   }
 `
 
-Button.propTypes = ButtonPropTypes
-Button.defaultProps = ButtonDefaultProps
+Button.propTypes = propTypes
+Button.defaultProps = defaultProps

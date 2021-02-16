@@ -1,21 +1,24 @@
+/**
+ * Components - Atoms - Button - Props
+ */
+
+// React
 import { bool, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import {
-  CONTEXT,
-  DIMENSION_PROP_TYPES,
-  DISPLAY_PROP_TYPES,
-  SIZE,
-  SPACER_PROP_TYPES
-} from '../../../../'
+import { DIMENSION_PROP_TYPES } from '../../../theme/utils/dimension'
+import { DISPLAY_PROP_TYPES } from '../../../theme/utils/display'
+import { SPACER_PROP_TYPES } from '../../../theme/utils/spacer'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
+import { THEME_SIZE } from '../../../theme/constants/size'
 
-export const ButtonPropTypes = {
+export const propTypes = {
   block: bool,
   centre: bool,
   children: node,
   className: string,
   content: node,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   dashed: bool,
   disabled: bool,
   endIcon: string,
@@ -25,7 +28,7 @@ export const ButtonPropTypes = {
   shadow: bool,
   startIcon: string,
   startIconProps: object,
-  size: oneOf(Object.values(SIZE)),
+  size: oneOf(Object.values(THEME_SIZE)),
   style: objectOf(oneOfType([number, string])),
   type: oneOf(['button', 'reset', 'submit']),
   ...DIMENSION_PROP_TYPES,
@@ -33,7 +36,7 @@ export const ButtonPropTypes = {
   ...SPACER_PROP_TYPES
 }
 
-export const ButtonDefaultProps = {
+export const defaultProps = {
   context: 'primary',
   disabled: false,
   shadow: false,

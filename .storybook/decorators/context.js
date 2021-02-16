@@ -1,17 +1,18 @@
 /**
- * Context selector
+ * Storybook - Decorators - Context
  */
 
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from './'
 
 // UI
-import { arrayOfValues, CONTEXT } from 'components'
+import { arrayOfValues } from '../../components'
+import { THEME_CONTEXT } from '../../components/theme/constants/context'
 
 export const ContextControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(CONTEXT).sort()
+      options: arrayOfValues(THEME_CONTEXT).sort()
     }
   }
 }

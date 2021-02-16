@@ -1,4 +1,0 @@
-/**
- * Stacked
- */
-export * from './stacked'

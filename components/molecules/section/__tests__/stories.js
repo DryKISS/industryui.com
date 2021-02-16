@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Section } from 'components'
+import { Section } from '../../../'
 import Readme from '../README.md'
 
 export default {

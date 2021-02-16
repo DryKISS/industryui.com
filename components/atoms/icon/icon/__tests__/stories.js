@@ -3,10 +3,12 @@
  */
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../../.storybook/decorators'
 
 // UI
-import { arrayOfValues, blendLinearRgb, Card, CONTEXT, Heading, Icon, SIZE } from 'components'
+import { arrayOfValues, blendLinearRgb, Card, Heading, Icon } from '../../../../'
+import { THEME_CONTEXT } from '../../../../theme/constants/context'
+import { THEME_SIZE } from '../../../../theme/constants/size'
 import Readme from '../README.md'
 
 // Style
@@ -117,21 +119,6 @@ const main = args => {
             />
             Context property have priority over color property.
           </StyledNote>
-        </StyledBody>
-      </StyledCard>
-
-      <StyledCard>
-        <StyledBody>
-          <StyledHeadingH4
-            content='Prefixes'
-            style={{
-              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
-            }}
-          />
-          <StyledBox>
-            <Icon icon='images' prefix='fas' size='lg' pull='left' />
-            <Icon icon='images' prefix='far' size='lg' pull='left' />
-          </StyledBox>
         </StyledBody>
       </StyledCard>
 
@@ -259,12 +246,12 @@ export const icons = main.bind({})
 
 icons.args = {
   border: false,
-  context: CONTEXT.PRIMARY,
+  context: THEME_CONTEXT.PRIMARY,
   icon: 'images',
   fixedWidth: false,
   prefix: 'fas',
   pulse: false,
-  size: SIZE.LG,
+  size: THEME_SIZE.LG,
   spin: false,
   style: {
     color: '',
@@ -274,7 +261,7 @@ icons.args = {
 }
 
 icons.argTypes = {
-  context: { control: { type: ControlTypes.Select, options: arrayOfValues(CONTEXT) } },
+  context: { control: { type: ControlTypes.Select, options: arrayOfValues(THEME_CONTEXT) } },
   icon: { control: { type: ControlTypes.Select, options: arrayOfValues(ListIcons) } },
   prefix: { control: { type: ControlTypes.Select, options: arrayOfValues(IconPrefix) } },
   size: {

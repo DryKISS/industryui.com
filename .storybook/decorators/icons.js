@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faBars,
   faBell,
+  faCalendarAlt,
   faCaretDown,
   faCaretUp,
   faCheck,
@@ -15,7 +16,7 @@ import {
   faCircle,
   faCloud,
   faCommentDots,
-  faCopy as fasCopy,
+  faCopy,
   faCopyright,
   faEdit,
   faEllipsisH,
@@ -23,30 +24,31 @@ import {
   faExpand,
   faFlag,
   faGraduationCap,
-  faImages as fasImages,
+  faImages,
   faPaperclip,
   faSearch,
   faShieldAlt,
-  faSmile as fasSmile,
+  faSmile,
+  faStopwatch,
   faTimes,
   faTimesCircle,
   faTrash,
-  faUserCircle as fasUserCircle,
+  faUserCircle,
   faUser
 } from '@fortawesome/free-solid-svg-icons'
 
-// Free Regular / FAR
-import {
-  faCopy as farCopy,
-  faImages as farImages,
-  faSmile as farSmile,
-  faUserCircle as farUserCircle
-} from '@fortawesome/free-regular-svg-icons'
+// // Free Regular / FAR
+// import {
+//   faCopy as farCopy,
+//   faImages as farImages,
+//   faSmile as farSmile,
+//   faUserCircle as farUserCircle
+// } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
-  // Icons
   faBars,
   faBell,
+  faCalendarAlt,
   faCaretDown,
   faCaretUp,
   faCheck,
@@ -55,8 +57,7 @@ library.add(
   faCircle,
   faCloud,
   faCommentDots,
-  farCopy,
-  fasCopy,
+  faCopy,
   faCopyright,
   faEdit,
   faEllipsisH,
@@ -64,19 +65,18 @@ library.add(
   faExpand,
   faFlag,
   faGraduationCap,
-  farImages,
-  fasImages,
+  faImages,
   faPaperclip,
   faSearch,
   faShieldAlt,
-  fasSmile,
-  farSmile,
+  faSmile,
+  faSmile,
+  faStopwatch,
   faTimes,
   faTimesCircle,
   faTrash,
   faUser,
-  farUserCircle,
-  fasUserCircle
+  faUserCircle
 )
 
 export { library }

@@ -2,6 +2,9 @@
  * Components - Messaging
  */
 
+// React
+import React from 'react'
+
 // Style
 import styled from 'styled-components'
 
@@ -25,6 +28,7 @@ export const MentionComponent = ({ mentionProps }) => {
     </StyledMention>
   )
 }
+
 const StyledMention = styled.span`
   color: ${({ theme: { MESSAGING } }) => MESSAGING.mentionColour};
 `

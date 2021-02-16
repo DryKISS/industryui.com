@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Heading, Hero, Image } from 'components'
+import { Heading, Hero, Image } from '../../../'
 import { TextBlock } from '../components/textBlock'
 import Readme from '../README.md'
 

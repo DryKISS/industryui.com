@@ -1,13 +1,22 @@
+// React
+import React, { useRef, useState } from 'react'
+
+// Draft JS
 import { Editor, EditorState, RichUtils } from 'draft-js'
-import { useRef, useState } from 'react'
+
+// Config
 import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from './config'
+
 export const IUIRich = () => {
   const [editorState, seteditorState] = useState(EditorState.createEmpty())
   const ref = useRef(null)
+
   const focus = () => {
     ref.current.focus()
   }
+
   const handleChange = EditorState => seteditorState(EditorState)
+
   const onKeyCommand = command => {
     const newState = RichUtils.handleKeyCommand(editorState, command)
     if (newState) {

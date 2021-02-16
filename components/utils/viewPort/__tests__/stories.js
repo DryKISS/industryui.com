@@ -5,7 +5,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
 // UI
-import { Text, viewPort } from 'components'
+import { Text, viewPort } from '../../../'
 import Readme from '../README.md'
 
 export default {

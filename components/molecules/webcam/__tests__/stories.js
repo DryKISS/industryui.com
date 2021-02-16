@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Webcam } from 'components'
+import { Webcam } from '../../../'
 import Readme from '../README.md'
 
 export default {

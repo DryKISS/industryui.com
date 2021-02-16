@@ -3,11 +3,13 @@
  */
 
 // React
+import React from 'react'
 import { any, func, oneOf, string } from 'prop-types'
 
 // UI
 import { Button } from '../../atoms/button'
-import { CONTEXT, Icon } from '../../'
+import { Icon } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -45,7 +47,7 @@ const StyledButton = styled(Button)`
 Close.propTypes = {
   className: any,
   click: func.isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   icon: string,
   prefix: string
 }

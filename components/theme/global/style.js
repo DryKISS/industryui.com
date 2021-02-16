@@ -1,12 +1,12 @@
 /**
- * Global style
+ * Components - Theme - Global style
  */
 
 // Style
 import { createGlobalStyle } from 'styled-components'
 
 // UI
-import { MEDIA_QUERY } from 'components/utils'
+import { MEDIA_QUERY } from '../../utils/mediaQueries'
 
 export const ThemeStyle = createGlobalStyle`
   .text-center {
@@ -118,10 +118,6 @@ export const ThemeStyle = createGlobalStyle`
     line-height: 1.15;
     margin: 0;
   }
-
-  /* textarea {
-    overflow: auto;
-  } */
 
   input {
     overflow: visible;

@@ -1,9 +1,9 @@
 /**
- * Blog - Listing
+ * Components - Blog - Listing
  */
 
 // UI
-import { BlogListing } from 'components'
+import { BlogListing } from '../listing'
 import Readme from '../README.md'
 
 // Data

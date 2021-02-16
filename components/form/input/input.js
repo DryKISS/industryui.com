@@ -3,21 +3,25 @@
  */
 
 // React
+import React from 'react'
 import { func, node, object, oneOf, shape, string } from 'prop-types'
+
+// Style
 import styled, { css } from 'styled-components'
 
 // UI
-import { Adornment, arrayOfValues, InputDecorationTypes, SIZE, Space, Text } from '../../'
-import { COLOUR } from 'components/theme/variables/colour'
+import { Adornment, arrayOfValues, InputDecorationTypes, Space, Text } from '../../'
+import { THEME_COLOUR } from '../../theme/variables/colour'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 const colourPlate = {
-  dark: COLOUR.darkText,
-  darkBorder: COLOUR.grey80,
-  default: COLOUR.grey,
-  disabled: COLOUR.dark,
-  readOnly: COLOUR.grey,
-  success: COLOUR.formSuccess,
-  warning: COLOUR.gold40
+  dark: THEME_COLOUR.darkText,
+  darkBorder: THEME_COLOUR.grey80,
+  default: THEME_COLOUR.grey,
+  disabled: THEME_COLOUR.dark,
+  readOnly: THEME_COLOUR.grey,
+  success: THEME_COLOUR.formSuccess,
+  warning: THEME_COLOUR.gold40
 }
 
 const inputThemeColourPlate = {
@@ -111,14 +115,14 @@ const InputWrapper = styled.div`
   width: 100%;
   ${({ size }) => {
     switch (size) {
-      case SIZE.SM:
+      case THEME_SIZE.SM:
         return css`
           height: 1.5rem;
           ${Adornment} {
             padding: 0.5rem 1rem;
           }
         `
-      case SIZE.MD:
+      case THEME_SIZE.MD:
         return css`
           height: 1.875rem;
           ._,/* neccessary because commit prehook cant understand switch case in styled component with selector */
@@ -126,7 +130,7 @@ const InputWrapper = styled.div`
             padding: 0.75rem 1.25rem;
           }
         `
-      case SIZE.LG:
+      case THEME_SIZE.LG:
         return css`
           height: 2.25rem;
           .__,/* read the upper comment please */
@@ -239,5 +243,5 @@ Input.propTypes = {
 Input.defaultProps = {
   decoration: 'default',
   type: InputTypes.TEXT,
-  size: SIZE.MD
+  size: THEME_SIZE.MD
 }

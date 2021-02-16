@@ -6,7 +6,7 @@
 import { useContext } from 'react'
 
 // UI
-import { Bootstrap, ConfigContext, Navbar, Page, Text } from 'components'
+import { Bootstrap, ConfigContext, Navbar, Page, Text } from '../../../'
 import Readme from '../README.md'
 
 // Copyright

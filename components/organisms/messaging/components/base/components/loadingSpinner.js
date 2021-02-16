@@ -1,8 +1,13 @@
+// React
+import React from 'react'
+
+// Style
 import styled from 'styled-components'
 
 export const Loadingspinner = () => {
   return <Loading />
 }
+
 const Loading = styled.div`
   border: 2px solid rgba(0, 168, 232, 0.1);
   border-top-color: ${({ theme: { MESSAGING } }) => MESSAGING.translatorTextColour};

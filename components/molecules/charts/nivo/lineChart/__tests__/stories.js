@@ -7,7 +7,7 @@ import { colorSchemes } from '@nivo/colors'
 import { lineCurvePropKeys } from '@nivo/core'
 
 // UI
-import { LineChart, objectWithoutProperties } from 'components'
+import { LineChart, objectWithoutProperties } from '../../../../../'
 import Readme from '../README.md'
 
 // Mocks

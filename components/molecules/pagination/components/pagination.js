@@ -2,11 +2,16 @@
  * Pagination
  */
 
+// React
+import React from 'react'
+
+// Style
 import styled from 'styled-components'
 
 // Lodash
 import chunk from 'lodash/chunk'
 
+// UI
 import { PaginationItem } from './'
 import { PaginationPropTypes, PaginationDefaultProps } from './props'
 

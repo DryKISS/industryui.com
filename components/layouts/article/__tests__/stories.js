@@ -3,7 +3,7 @@
  */
 
 // UI
-import { ArticleLayout } from 'components'
+import { ArticleLayout } from '../../../'
 import Readme from '../README.md'
 
 export default {

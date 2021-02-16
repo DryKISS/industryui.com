@@ -1,18 +1,22 @@
 /**
- * Form - Form
+ * Components - Form - Form
  */
 
-import { ControlTypes } from 'decorators'
+// Decorators
+import { ControlTypes } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { Controller, useForm } from 'react-hook-form'
 
 // Yup
 import { number, object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import {
   Button,
   CheckboxField,
   Column,
-  Controller,
   CurrencyInput,
   DatePickerCalendar,
   Divider,
@@ -30,14 +34,12 @@ import {
   Row,
   Search,
   SelectField,
-  SIZE,
   Space,
   Text,
-  TextareaField,
-  useForm,
-  yupResolver
-} from 'components'
+  TextareaField
+} from '../../../'
 
+import { THEME_SIZE } from '../../../theme/constants/size'
 import Readme from '../README.md'
 
 // Data
@@ -269,6 +271,6 @@ AllInputsTemplate.argTypes = {
 
   size: {
     name: 'Input Size',
-    control: { type: ControlTypes.Select, options: [SIZE.SM, SIZE.MD, SIZE.LG] }
+    control: { type: ControlTypes.Select, options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG] }
   }
 }

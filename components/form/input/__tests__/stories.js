@@ -1,12 +1,16 @@
 /**
- * Form - Search
+ * Components - Form - Input - Story
  */
 
-// Stroybook
-import { ControlTypes } from 'decorators'
+// Storybook
+import { ControlTypes } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import {
@@ -18,16 +22,13 @@ import {
   InputTypes,
   InputDecorationTypes,
   Row,
-  SIZE,
-  Space,
-  useForm,
-  yupResolver
-} from 'components'
+  Space
+} from '../../../'
 
+import { THEME_SIZE } from '../../../theme/constants/size'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Input',
   component: Input,
   parameters: {
     docs: {
@@ -35,7 +36,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Input'
 }
 
 const InputElement = args => {
@@ -88,7 +90,7 @@ InputTemplate.args = {
   decoration: InputDecorationTypes.DEFAULT,
   inputType: InputTypes.TEXT,
   messageText: '',
-  size: SIZE.MD,
+  size: THEME_SIZE.MD,
   WithStartAdornment: false,
   WithEndAdornment: false
 }
@@ -118,7 +120,7 @@ InputTemplate.argTypes = {
     name: 'Size',
     control: {
       type: ControlTypes.Select,
-      options: [SIZE.SM, SIZE.MD, SIZE.LG]
+      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
     }
   },
 

@@ -4,10 +4,17 @@
 
 // React
 import { useState } from 'react'
-import { MessagingActions, MessagingCommunicationService, MessageNames } from 'components/services'
 
 // UI
-import { Button, filterByKey, filterByString, MessagingContainer } from 'components'
+import {
+  Button,
+  filterByKey,
+  filterByString,
+  MessagingContainer,
+  MessagingActions,
+  MessagingCommunicationService,
+  MessageNames
+} from '../../../../'
 
 import Readme from '../README.md'
 

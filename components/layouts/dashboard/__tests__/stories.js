@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Dashboard, Text } from 'components'
+import { Dashboard, Text } from '../../../'
 import Readme from '../README.md'
 
 const meta = {

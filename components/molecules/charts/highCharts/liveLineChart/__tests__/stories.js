@@ -6,11 +6,10 @@
 import { useEffect, useRef } from 'react'
 
 // UI
-import { HighChart } from 'components'
+import { HighChart, LiveChartSubscriber, MessageNames } from '../../../../../'
 import Readme from '../README.md'
 
 // Data
-import { LiveChartSubscriber, MessageNames } from 'components/services'
 import { LiveChartInitialTestDataSource } from './initialDataSource'
 import { LiveHighChartTestStreamDataSource } from './streamDatasource'
 

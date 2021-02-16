@@ -1,10 +1,19 @@
+/**
+ * Components - Services - Translation
+ */
+
+// React
+import { useContext } from 'react'
+
 // Axios
 import axios from 'axios'
 
 // Config
-import { Config } from '../../../config'
+import { ConfigContext } from '../../services/config/context'
 
 const translate = async (text, from = 'es', to = 'en') => {
+  const { RapidApi } = useContext(ConfigContext)
+
   try {
     const { data } = await axios.post(
       'https://microsoft-translator-text.p.rapidapi.com/translate',
@@ -13,7 +22,7 @@ const translate = async (text, from = 'es', to = 'en') => {
         params: { to, 'api-version': '3.0', profanityAction: 'NoAction', textType: 'plain' },
         headers: {
           'content-type': 'application/json',
-          'x-rapidapi-key': Config.RapidApi.apiKey,
+          'x-rapidapi-key': RapidApi.apiKey,
           'x-rapidapi-host': 'microsoft-translator-text.p.rapidapi.com'
         }
       }

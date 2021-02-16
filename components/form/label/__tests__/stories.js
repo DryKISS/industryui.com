@@ -3,7 +3,7 @@
  */
 
 // UI
-import { FormLabel } from 'components'
+import { FormLabel } from '../../../'
 import Readme from '../README.md'
 
 export default {

@@ -1,3 +1,11 @@
+/**
+ * Components - Icons - Wrapper
+ */
+
+// React
+import React from 'react'
+
+// Style
 import styled, { css } from 'styled-components'
 
 export const IconWrapper = ({
@@ -12,8 +20,10 @@ export const IconWrapper = ({
   ...props
 }) => {
   const { mainSize } = props
+
   if (typeof size === 'string') {
     let tmpSize = 22
+
     switch (size) {
       case 'xxxs':
         tmpSize = 8
@@ -52,6 +62,7 @@ export const IconWrapper = ({
   }
 
   let scale = 1
+
   if (mainSize && size !== mainSize) {
     scale = Number(size / mainSize)
   }
@@ -74,10 +85,12 @@ export const IconWrapper = ({
     </StyledSvg>
   )
 }
+
 const states = {
   DEFAULT: 'default',
   HOVER: 'hover'
 }
+
 const setColour = (state, props) => {
   let {
     colour,

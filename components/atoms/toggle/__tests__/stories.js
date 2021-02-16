@@ -4,10 +4,10 @@
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { ContextControl, ControlTypes } from 'decorators'
+import { ContextControl, ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Toggle } from 'components'
+import { Toggle } from '../../../'
 import Readme from '../README.md'
 
 export default {

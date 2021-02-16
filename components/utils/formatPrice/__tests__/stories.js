@@ -3,7 +3,7 @@
  */
 
 // UI
-import { formatPrice, Text } from 'components'
+import { formatPrice, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

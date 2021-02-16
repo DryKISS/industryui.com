@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, node, number } from 'prop-types'
 
 export const Container = ({ children, isFinished, animationDuration }) => (

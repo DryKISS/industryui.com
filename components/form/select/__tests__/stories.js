@@ -2,20 +2,15 @@
  * Select
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import {
-  Button,
-  Form,
-  FormLabel,
-  SelectField,
-  SelectCountryField,
-  Text,
-  useForm,
-  yupResolver
-} from 'components'
+import { Button, Form, FormLabel, SelectField, SelectCountryField, Text } from '../../../'
 
 import Readme from '../README.md'
 import { COLOURS, EXPENSES } from '../__mocks__/select'

@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { array, object } from 'prop-types'
 
 // UI

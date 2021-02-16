@@ -2,11 +2,15 @@
  * Form - Date Picker - Input
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, DatePickerInput, Divider, Form, Text, useForm, yupResolver } from 'components'
+import { Button, DatePickerInput, Divider, Form, Text } from '../../../../'
 import Readme from '../README.md'
 
 export default {

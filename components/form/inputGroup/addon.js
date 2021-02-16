@@ -4,13 +4,15 @@
  */
 
 // React
+import React from 'react'
 import { any, bool, node, oneOf } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // Context
-import { CONTEXT, SIZE } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const InputGroupAddon = ({
   addonType,
@@ -62,7 +64,7 @@ const StyledInputGroupAddon = styled.div`
       white-space: nowrap;
     `}
   ${({ size }) =>
-    size === SIZE.SM &&
+    size === THEME_SIZE.SM &&
     css`
       font-size: 0.625rem;
       padding: 0 0.75rem;
@@ -92,7 +94,7 @@ InputGroupAddon.propTypes = {
   addonType: oneOf(['prepend', 'append']),
   className: any,
   children: node,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   text: bool
 }
 

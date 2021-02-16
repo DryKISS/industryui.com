@@ -2,10 +2,10 @@
  * IconSize selector
  */
 
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from './'
 
 // UI
-import { arrayOfValues, ICON_PULL, ICON_PREFIX, ICON_SIZE } from 'components'
+import { arrayOfValues, ICON_PULL, ICON_PREFIX, ICON_SIZE } from '../../components'
 
 const List_Icons = {
   Copy: 'copy',

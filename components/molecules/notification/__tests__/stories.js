@@ -4,10 +4,10 @@
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Notification } from 'components'
+import { Notification } from '../../../'
 import Readme from '../README.md'
 
 export default {

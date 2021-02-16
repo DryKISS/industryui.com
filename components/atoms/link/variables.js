@@ -1,8 +1,12 @@
 /**
  * Theme - Variables - Link
  */
-import { COLOUR } from '../../theme/variables/colour'
+
+// UI
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const LINK = {
-  colour: COLOUR.primary
+  active: THEME_COLOUR.secondary,
+  colour: THEME_COLOUR.primary,
+  visited: THEME_COLOUR.secondary
 }

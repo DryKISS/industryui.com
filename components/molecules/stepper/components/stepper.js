@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { array, func, oneOfType, string } from 'prop-types'
 
 // UI

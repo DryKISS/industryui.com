@@ -1,7 +1,7 @@
 /**
  * Theme - Variables - Text
  */
-export const TEXT_STYLE = {
+export const TEXT = {
   DEFAULT_COLOUR: 'rgb(102, 102, 102)',
   FONT_SIZE: {
     xxs: '0.625rem',

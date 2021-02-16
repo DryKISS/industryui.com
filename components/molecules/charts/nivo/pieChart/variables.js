@@ -2,7 +2,8 @@
  * PieChart - Variables
  */
 
-import { COLOUR } from '../../../../theme/variables/colour'
+// UI
+import { THEME_COLOUR } from '../../../../theme/variables/colour'
 
 export const PIECHART = {
   animate: true,
@@ -43,13 +44,13 @@ export const PIECHART = {
   motionDamping: 15,
   radialLabelsSkipAngle: 10,
   radialLabelsTextXOffset: 6,
-  radialLabelsTextColor: COLOUR.black,
+  radialLabelsTextColor: THEME_COLOUR.dark,
   radialLabelsLinkOffset: 0,
   radialLabelsLinkDiagonalLength: 16,
   radialLabelsLinkHorizontalLength: 24,
   radialLabelsLinkStrokeWidth: 1,
   radialLabelsLinkColor: { from: 'color' },
   slicesLabelsSkipAngle: 10,
-  slicesLabelsTextColor: COLOUR.black,
+  slicesLabelsTextColor: THEME_COLOUR.dark,
   startAngle: -180
 }

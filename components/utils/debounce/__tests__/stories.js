@@ -5,7 +5,7 @@
 import { useState } from 'react'
 
 // UI
-import { Button, debounce, Text } from 'components'
+import { Button, debounce, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

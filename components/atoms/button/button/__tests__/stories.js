@@ -1,12 +1,15 @@
 /**
- * Button
+ * Components - Atoms - Button - Story
  */
 
 // Storybook
-import { ContextControl, SizeControl } from 'decorators'
+import { ContextControl } from '../../../../../.storybook/decorators/context'
+import { SizeControl } from '../../../../../.storybook/decorators/size'
 
 // UI
-import { Button, CONTEXT, SIZE } from 'components'
+import { Button } from '../../button/button'
+import { THEME_CONTEXT } from '../../../../theme/constants/context'
+import { THEME_SIZE } from '../../../../theme/constants/size'
 import Readme from '../README.md'
 
 export default {
@@ -14,13 +17,13 @@ export default {
     block: false,
     center: false,
     content: 'Button text',
-    context: CONTEXT.PRIMARY,
+    context: THEME_CONTEXT.PRIMARY,
     dashed: false,
     disabled: false,
     endIcon: 'user',
     outline: false,
     shadow: false,
-    size: SIZE.MD,
+    size: THEME_SIZE.MD,
     startIcon: 'user'
   },
   argTypes: {

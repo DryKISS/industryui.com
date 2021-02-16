@@ -4,7 +4,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { bool, string } from 'prop-types'
 
 // React Dropzone

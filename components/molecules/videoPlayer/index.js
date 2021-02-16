@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
-import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from 'components'
+import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from '../../'
 import { any, string } from 'prop-types'
 
 export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {

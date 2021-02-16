@@ -4,7 +4,7 @@
 
 // UI
 import styled from 'styled-components'
-import { MessageList } from 'components'
+import { MessageList } from '../../../'
 import Readme from '../README.md'
 
 // Data

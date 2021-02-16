@@ -5,6 +5,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style

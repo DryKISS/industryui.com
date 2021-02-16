@@ -3,7 +3,7 @@
  */
 
 // UI
-import { List, ListItem } from 'components'
+import { List, ListItem } from '../../../'
 import Readme from '../README.md'
 
 export default {

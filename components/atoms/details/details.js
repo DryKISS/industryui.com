@@ -2,6 +2,9 @@
  * Components - Details
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Button } from '../../atoms'
 import { DetailsPropTypes, DetailsDefaultProps } from './props'

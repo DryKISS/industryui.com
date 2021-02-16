@@ -3,7 +3,7 @@
  */
 
 // UI
-import { FormError } from 'components'
+import { FormError } from '../../../'
 import Readme from '../README.md'
 
 export default {

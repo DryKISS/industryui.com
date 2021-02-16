@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { array, bool, func, node, object } from 'prop-types'
 
 // UI

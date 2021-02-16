@@ -3,7 +3,7 @@
  */
 
 // UI
-import { averageGeolocation, Text, Space } from 'components'
+import { averageGeolocation, Text, Space } from '../../../'
 import Readme from '../README.md'
 
 export default {

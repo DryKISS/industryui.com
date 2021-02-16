@@ -6,13 +6,14 @@
 import { any, bool, number, object, array, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { CONTEXT, DISPLAY_PROP_TYPES, SPACER_PROP_TYPES } from '../../../'
+import { DISPLAY_PROP_TYPES, SPACER_PROP_TYPES } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { ICON_PULL, ICON_PREFIX, ICON_SIZE } from '../constants'
 
 export const IconPropTypes = {
   border: bool,
   className: any,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   mask: oneOfType([object, array, string]),
   fixedWidth: bool,
   inverse: bool,

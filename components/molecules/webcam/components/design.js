@@ -2,6 +2,9 @@
  * Webcam design
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Icon, Webcam } from '../../../'
 

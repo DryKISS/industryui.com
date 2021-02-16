@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Container } from 'components'
+import { Container } from '../../../'
 import Readme from '../README.md'
 
 const debug = {

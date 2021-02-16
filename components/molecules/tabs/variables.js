@@ -3,15 +3,15 @@
  */
 
 // UI
-import { COLOUR } from '../../theme/variables/colour'
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const TABS = {
-  activeColour: COLOUR.white,
-  tabTextColour: COLOUR.dark,
-  activeTabTextColour: COLOUR.dark,
+  activeColour: THEME_COLOUR.white,
+  tabTextColour: THEME_COLOUR.dark,
+  activeTabTextColour: THEME_COLOUR.dark,
   borderColour: '#dee2e6',
   borderRadius: '.1rem',
-  colour: COLOUR.light,
-  disabledColour: '#eee',
+  colour: THEME_COLOUR.light,
+  disabledTHEME_Colour: '#eee',
   hoverColour: '#dee2e6'
 }

@@ -6,14 +6,14 @@
 import { bool, node, number, object, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 export const Details2PropTypes = {
   animationDuration: number,
   children: node,
   content: node,
   contentStyle: object,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   disableAnimation: bool,
   endActionComponent: node,
   fitParentHeight: bool,

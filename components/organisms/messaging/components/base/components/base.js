@@ -3,7 +3,7 @@
  */
 
 // React
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { any, bool, string } from 'prop-types'
 
 // UI
@@ -27,7 +27,7 @@ import {
   ReplyContainer,
   Row,
   TranslationService
-} from 'components'
+} from '../../../../../'
 
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'

@@ -1,16 +1,17 @@
 /**
- * Breadcrumb
- * Allows a breadcrumb list of two deep
+ * Components - Molecules - Breadcrumb
  */
 
 // React
+import React from 'react'
 import { oneOf, oneOfType, string } from 'prop-types'
-
-// Fontawesome
-import { Icon, Link, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { Icon, Link } from '../../'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
   return (
@@ -45,7 +46,9 @@ export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) =>
                   </StyledTitle>
                 </StyledLastTitle>
               )}
+
               <meta itemProp='position' content={index + 1 + ''} />
+
               {index + 1 !== breadcrumbs.length && (
                 <StyledSeperator size={size}>
                   {customSeparator ??
@@ -68,42 +71,42 @@ export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) =>
 
 const sizedStyles = size => {
   switch (size) {
-    case SIZE.XXS:
+    case THEME_SIZE.XXS:
       return css`
         font-size: 0.625rem;
         padding: 0 0.25rem;
       `
-    case SIZE.XS:
+    case THEME_SIZE.XS:
       return css`
         font-size: 0.75rem;
         padding: 0 0.25rem;
       `
-    case SIZE.SM:
+    case THEME_SIZE.SM:
       return css`
         font-size: 0.875rem;
         padding: 0 0.25rem;
       `
-    case SIZE.MD:
+    case THEME_SIZE.MD:
       return css`
         font-size: 1rem;
         padding: 0 0.375rem;
       `
-    case SIZE.LG:
+    case THEME_SIZE.LG:
       return css`
         font-size: 1.25rem;
         padding: 0 0.375rem;
       `
-    case SIZE.XL:
+    case THEME_SIZE.XL:
       return css`
         font-size: 1.5rem;
         padding: 0 0.375rem;
       `
-    case SIZE.XXL:
+    case THEME_SIZE.XXL:
       return css`
         font-size: 2rem;
         padding: 0 0.5rem;
       `
-    case SIZE.XXXL:
+    case THEME_SIZE.XXXL:
       return css`
         font-size: 3rem;
         padding: 0 0.5rem;
@@ -130,6 +133,7 @@ const StyledIconWrapper = styled.span`
   ${({ size }) => sizedStyles(size)}
   color: ${({ theme }) => theme.COLOUR.blackGrey};
 `
+
 const StyledIcon = styled(Icon).attrs(props => ({
   color: props.theme.dark
 }))``
@@ -144,6 +148,7 @@ const StyledA = styled.span``
 const StyledLastTitle = styled.span`
   ${({ size }) => sizedStyles(size)}
 `
+
 const StyledOl = styled.ol`
   border-radius: 0;
   display: flex;
@@ -159,11 +164,11 @@ const StyledLi = styled.li`
   }
 `
 
-Breadcrumb.defaultProps = {
-  size: 'lg'
-}
-
 Breadcrumb.propTypes = {
   separator: oneOfType([oneOf(['chevron', 'slash']), string]),
-  size: oneOf(Object.values(SIZE))
+  size: oneOf(Object.values(THEME_SIZE))
+}
+
+Breadcrumb.defaultProps = {
+  size: 'lg'
 }

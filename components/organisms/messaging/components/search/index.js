@@ -2,10 +2,15 @@
  * Messaging/Search
  */
 
+// React
+import React from 'react'
 import { func, string } from 'prop-types'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Column, Form, Row, Search, SelectField, useForm } from '../../../..'
+import { Column, Form, Row, Search, SelectField } from '../../../..'
 
 // Style
 import styled from 'styled-components'

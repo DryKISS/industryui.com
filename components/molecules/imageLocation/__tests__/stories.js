@@ -2,20 +2,15 @@
  * Image Location
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object as obj } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import {
-  Alert,
-  Button,
-  Form,
-  ImageLocation,
-  ImageLocationFormElement,
-  useForm,
-  yupResolver
-} from 'components'
-
+import { Alert, Button, Form, ImageLocation, ImageLocationFormElement } from '../../../'
 import Readme from '../README.md'
 
 // Data

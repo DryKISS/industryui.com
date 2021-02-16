@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Dropzone } from 'components'
+import { Dropzone } from '../../../'
 import Readme from '../README.md'
 
 export default {

@@ -5,6 +5,13 @@
 // React
 import { memo, useEffect, useState } from 'react'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+
 // UI
 import {
   Button,
@@ -14,45 +21,13 @@ import {
   FormLabel,
   ReactSelectField,
   Text,
-  useForm,
-  usePrevious,
-  yupResolver
-} from 'components'
-
-import { object, string } from 'yup'
+  usePrevious
+} from '../../../'
 
 import Readme from '../README.md'
 
 // Data
 import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
-
-// components: {},
-// controlShouldRenderValue: true,
-// defaultValue: undefined,
-// error: '',
-// errors: {},
-// escapeClearsValue: false,
-// isDisabled: false,
-// isLoading: false,
-
-// isRtl: false,
-// isSearchable: true,
-// loadingMessage: () => 'Loading...',
-// maxMenuHeight: 300,
-// minMenuHeight: 140,
-// menuPlacement: 'bottom',
-// menuPosition: 'absolute',
-// menuShouldBlockScroll: false,
-// noOptionsMessage: () => 'No options',
-// openMenuOnFocus: false,
-// openMenuOnClick: true,
-// options: [],
-// pageSize: 5,
-// placeholder: 'Select...',
-// screenReaderStatus: ({ count }) => `${count} result${count !== 1 ? 's' : ''} available`,
-// styles: defaultStyles,
-// tabIndex: '0',
-// tabSelectsValue: true
 
 export default {
   args: {

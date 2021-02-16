@@ -5,8 +5,11 @@
 // React
 import { useState } from 'react'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, Form, FormField, FormLabel, validatorPostCode, useForm } from 'components'
+import { Button, Form, FormField, FormLabel, validatorPostCode } from '../../../../'
 import Readme from '../README.md'
 
 export default {

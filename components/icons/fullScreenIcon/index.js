@@ -1,4 +1,4 @@
-import { commonIconPropTypes } from '../propTypes'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const FullScreenIcon = props => {
@@ -13,4 +13,4 @@ export const FullScreenIcon = props => {
   )
 }
 
-FullScreenIcon.propTypes = commonIconPropTypes
+FullScreenIcon.propTypes = propTypes

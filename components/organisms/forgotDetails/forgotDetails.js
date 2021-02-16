@@ -5,9 +5,15 @@
 // React
 import { bool, func, string } from 'prop-types'
 
-// UI
-import { Button, Form, FormField, FormLabel, Link, PageHeading, useForm, yupResolver } from '../../'
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
 import { ForgotDetailsSchema } from './schema'
+
+// UI
+import { Button, Form, FormField, FormLabel, Link, PageHeading } from '../../'
 
 // Style
 import styled from 'styled-components'

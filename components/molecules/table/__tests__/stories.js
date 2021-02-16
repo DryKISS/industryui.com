@@ -6,7 +6,7 @@
 import { useState } from 'react'
 
 // UI
-import { Table } from 'components'
+import { Table } from '../../../'
 import Readme from '../README.md'
 
 // Data

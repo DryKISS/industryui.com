@@ -3,11 +3,12 @@
  */
 
 // React
-import { Suspense } from 'react'
+import React, { Suspense } from 'react'
 import { any, bool, node, oneOf, shape, string } from 'prop-types'
 
 // UI
-import { Alert, CONTEXT, LdsSpinner, Page, PageLoading, Space } from '../../'
+import { Alert, LdsSpinner, Page, PageLoading, Space } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
   const { context, message } = resultAlert
@@ -45,7 +46,7 @@ Dashboard.propTypes = {
   }),
   pageHeading: shape({
     center: bool,
-    context: oneOf(Object.values(CONTEXT)),
+    context: oneOf(Object.values(THEME_CONTEXT)),
     divider: bool,
     heading: any.isRequired,
     help: bool,

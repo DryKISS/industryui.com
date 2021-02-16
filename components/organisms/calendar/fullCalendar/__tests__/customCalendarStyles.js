@@ -3,13 +3,16 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Moment
 import moment from 'moment'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { OffCanvas, Button, Form, FormLabel, FormField, SelectField, useForm } from '../../../../'
+import { OffCanvas, Button, Form, FormLabel, FormField, SelectField } from '../../../../'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
 
@@ -82,7 +85,6 @@ export const Events = [
     title: 'Event 1',
     tooltip: 'All day event tooltip'
   },
-
   {
     description: 'Event starting at a specific time',
     date: moment()

@@ -3,10 +3,13 @@
  */
 
 // Storybook
-import { SizeControl } from 'decorators'
+import { SizeControl } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormField, Icon, InputGroup, InputGroupAddon, useForm } from 'components'
+import { Button, FormField, Icon, InputGroup, InputGroupAddon } from '../../../'
 import Readme from '../README.md'
 
 export default {

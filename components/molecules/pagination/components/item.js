@@ -3,11 +3,12 @@
  */
 
 // React
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { bool, any, func, string } from 'prop-types'
 
 // UI
-import { Button, FONTSIZE } from '../../../'
+import { Button } from '../../../atoms/button/button/button'
+import { themeFontSize } from '../../../theme/utils/fontSize'
 
 // Style
 import styled from 'styled-components'
@@ -53,7 +54,7 @@ const StyledButton = styled(Button)`
   margin-left: -1px;
   padding: 0.5rem 0.75rem;
   position: relative;
-  ${props => FONTSIZE(props)}
+  ${props => themeFontSize(props)}
   &:hover {
     background-color: ${({ active, context, theme }) =>
       active ? theme.COLOUR[context] : theme.COLOUR.light};

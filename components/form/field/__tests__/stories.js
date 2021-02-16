@@ -2,11 +2,15 @@
  * Form - Field
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, FormField, FormLabel, useForm, yupResolver } from 'components'
+import { Button, Form, FormField, FormLabel } from '../../../'
 import Readme from '../README.md'
 
 export default {

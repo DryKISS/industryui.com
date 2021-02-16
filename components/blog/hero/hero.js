@@ -10,6 +10,7 @@
  */
 
 // React
+import React from 'react'
 import { any, number, object } from 'prop-types'
 
 // UI

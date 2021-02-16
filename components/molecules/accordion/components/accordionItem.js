@@ -3,12 +3,12 @@
  */
 
 // React
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { bool, oneOf, string, func, number } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
 import { Icon } from '../../../atoms/icon'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 // Styled
 import styled from 'styled-components'
@@ -74,7 +74,7 @@ const Content = styled.div`
 AccordionItem.propTypes = {
   children: string.isRequired,
   className: string,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   handleOpen: func,
   index: number,
   open: bool,

@@ -1,3 +1,6 @@
+/**
+ * Components - Icons
+ */
 export * from './arrowDownIcon'
 export * from './bellIcon'
 export * from './chevronIcon'

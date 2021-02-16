@@ -3,16 +3,18 @@
  */
 
 // Storybook
-import { AlignControl, SizeControl } from 'decorators'
+import { AlignControl, SizeControl } from '../../../../../.storybook/decorators'
 
 // UI
-import { ALIGN, Button, ButtonToolbar, Icon, SIZE } from 'components'
+import { Button, ButtonToolbar, Icon } from '../../../../'
+import { THEME_ALIGN } from '../../../../theme/constants/align'
+import { THEME_SIZE } from '../../../../theme/constants/size'
 import Readme from '../README.md'
 
 export default {
   args: {
-    align: ALIGN.Start,
-    size: SIZE.MD
+    align: THEME_ALIGN.Start,
+    size: THEME_SIZE.MD
   },
   argTypes: {
     align: AlignControl(),

@@ -1,26 +1,29 @@
 /**
- * Avatar - Props
+ * Components - Atoms - Avatar - Props
  */
 
-// UI
+// React
 import { any, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
-import { CONTEXT, SIZE } from '../../'
 
-export const AvatarPropTypes = {
+// UI
+import { THEME_CONTEXT } from '../../theme/constants/context'
+import { THEME_SIZE } from '../../theme/constants/size'
+
+export const propTypes = {
   action: node,
   actionClick: func,
   children: any,
   className: any,
   click: func,
   content: any,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   gmail: string,
-  size: oneOf(Object.values(SIZE)),
+  size: oneOf(Object.values(THEME_SIZE)),
   src: string,
   style: objectOf(oneOfType([number, string]))
 }
 
-export const AvatarDefaultProps = {
+export const defaultProps = {
   context: 'primary',
   size: 'lg'
 }

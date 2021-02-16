@@ -3,7 +3,7 @@
  */
 
 // UI
-import { COUNTRY } from 'components'
+import { COUNTRY } from '../../components'
 
 export const CountryControl = () => {
   COUNTRY.shift()

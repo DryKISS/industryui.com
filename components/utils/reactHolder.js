@@ -5,7 +5,7 @@
  */
 
 // React
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { string, bool, object } from 'prop-types'
 

@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BlogReadTime } from 'components'
+import { BlogReadTime } from '../../../'
 import Readme from '../README.md'
 
 export default {

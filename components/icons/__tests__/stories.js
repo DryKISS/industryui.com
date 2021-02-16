@@ -49,7 +49,7 @@ import {
   TriangleIcon,
   UploadIcon,
   VerticalThreeDotsIcon
-} from 'components'
+} from '../'
 
 import Readme from '../README.md'
 

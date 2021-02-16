@@ -1,14 +1,15 @@
 /**
  * Progress
  */
+
 // React
 import { useState } from 'react'
 
 // Storybook
-import { ContextControl, SizeControl } from 'decorators'
+import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Button, Progress, ProgressBar, Space } from 'components'
+import { Button, Progress, ProgressBar, Space } from '../../../'
 import Readme from '../README.md'
 
 export default {

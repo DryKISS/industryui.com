@@ -9,7 +9,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { array, number } from 'prop-types'
 
 // Lodash

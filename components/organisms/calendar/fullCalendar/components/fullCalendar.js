@@ -3,7 +3,7 @@
  */
 
 // React
-import { forwardRef, useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import { bool, string } from 'prop-types'
 
 // Next

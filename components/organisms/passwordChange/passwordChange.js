@@ -3,22 +3,18 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { bool, func } from 'prop-types'
 
-// UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormLabel,
-  PageHeading,
-  useForm,
-  yupResolver
-} from '../../'
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
 import { PasswordChangeSchema as schema } from './schema'
+
+// UI
+import { Alert, Button, FormField, Form, FormLabel, PageHeading } from '../../'
 
 export const PasswordChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({

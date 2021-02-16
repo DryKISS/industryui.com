@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, object, string } from 'prop-types'
 
 // UI

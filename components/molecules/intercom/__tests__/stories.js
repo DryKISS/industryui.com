@@ -3,7 +3,7 @@
  */
 
 // Hero
-import { Intercom } from 'components'
+import { Intercom } from '../../../'
 import Readme from '../README.md'
 
 export default {

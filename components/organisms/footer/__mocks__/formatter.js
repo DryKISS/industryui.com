@@ -3,7 +3,7 @@
  */
 
 // React
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 
 // UI
 import { Image, List, ListItem } from '../../../'

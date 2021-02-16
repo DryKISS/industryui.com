@@ -4,7 +4,7 @@
 
 // UI
 import Readme from '../README.md'
-import { objectWithoutProperties, Space, Text } from 'components'
+import { objectWithoutProperties, Space, Text } from '../../../'
 
 export default {
   title: 'Utils/objWithoutProperties',

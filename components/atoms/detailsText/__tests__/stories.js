@@ -3,7 +3,8 @@
  */
 
 // UI
-import { DetailsText, Link } from 'components'
+import { DetailsText } from '../detailsText'
+import { Link } from '../../../atoms/link/link'
 import Readme from '../README.md'
 
 export default {

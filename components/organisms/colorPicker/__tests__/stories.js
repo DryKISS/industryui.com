@@ -9,7 +9,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { ColorPicker, Text } from 'components'
+import { ColorPicker, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

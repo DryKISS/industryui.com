@@ -1,5 +1,9 @@
+/**
+ * Preview
+ */
+
 // React
-import { memo, useEffect, useState, useRef } from 'react'
+import React, { memo, useEffect, useState, useRef } from 'react'
 
 // UI
 import styled, { css } from 'styled-components'

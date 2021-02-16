@@ -9,14 +9,15 @@ import { useContext, useState } from 'react'
 import {
   Avatar,
   Button,
-  colourList,
   Dropdown,
   elementTypes,
   Icon,
   InternationalisationContext,
   Space,
   useTranslation
-} from 'components'
+} from '../../../'
+
+import { THEME_COLOUR_LIST } from '../../../theme/constants/colourList'
 
 import Readme from '../README.md'
 import { Icons, Items, Language } from '../__mocks__/dropdown'
@@ -109,7 +110,7 @@ export const colourPicker = args => {
 
       <BaseComponent
         {...args}
-        items={colourList}
+        items={THEME_COLOUR_LIST}
         onChange={e => {
           changeColor(e)
         }}

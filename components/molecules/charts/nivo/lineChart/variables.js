@@ -2,11 +2,14 @@
  * Charts - Line - Variables
  */
 
-import { COLOUR } from '../../../../theme/variables/colour'
-
 // Date fns
 import { shortDate } from '../../../../utils/dateFns/date'
+
+// UI
+import { THEME_COLOUR } from '../../../../theme/variables/colour'
+
 let lastValue = null
+
 export const LINECHART = {
   axisBottom: function () {
     return {
@@ -80,7 +83,7 @@ export const LINECHART = {
       symbolBorderColor: 'rgba(0, 0, 0, .5)'
     }
   ],
-  pointColor: COLOUR.white,
+  pointColor: THEME_COLOUR.white,
   pointSize: 10,
   pointBorderColor: { from: 'serieColor' },
   pointBorderWidth: 2,

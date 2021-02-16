@@ -3,13 +3,16 @@
  */
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { age, Button, DatePickerCalendar, Divider, Form, Text, useForm } from 'components'
+import { age, Button, DatePickerCalendar, Divider, Form, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

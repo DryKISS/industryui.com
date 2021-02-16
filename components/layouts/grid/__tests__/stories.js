@@ -3,7 +3,7 @@
  */
 
 // UI
-import { LayoutGrid } from 'components'
+import { LayoutGrid } from '../../../'
 import Readme from '../README.md'
 
 export default {

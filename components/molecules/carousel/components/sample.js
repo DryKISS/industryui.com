@@ -2,6 +2,8 @@
  * Carousel Sample Slide
  */
 
+// React
+import React from 'react'
 import { node, string } from 'prop-types'
 
 // Style

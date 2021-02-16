@@ -3,17 +3,12 @@
  */
 
 // React
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { any, bool, func, node, number, oneOf, string } from 'prop-types'
 
 // UI
-import {
-  CONTEXT,
-  OffCanvasDiv,
-  OffCanvasHeader,
-  OffCanvasContent,
-  OffCanvasOverlay
-} from '../../../'
+import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const OffCanvasComponent = ({
   children,
@@ -87,7 +82,7 @@ export const OffCanvasComponent = ({
 OffCanvasComponent.propTypes = {
   children: node,
   closeOnOverlayClick: bool,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   container: any,
   hasAvatar: bool,
   headerText: string.isRequired,

@@ -5,6 +5,7 @@
  */
 
 // React
+import React from 'react'
 import { array, bool, object } from 'prop-types'
 
 import {

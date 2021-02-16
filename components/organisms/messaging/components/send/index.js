@@ -3,16 +3,10 @@
  */
 
 // React
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { array, func, number } from 'prop-types'
 
-import {
-  MessageNames,
-  MessagingActions,
-  MessagingCommunicationService,
-  MessagingSubscriber
-} from 'components/services'
-
+// DraftJS
 import { convertToRaw } from 'draft-js'
 
 // UI
@@ -26,10 +20,14 @@ import {
   VoiceRecorder,
   MessagingInput,
   MessagingAudioPlayer,
+  MessageNames,
+  MessagingActions,
+  MessagingCommunicationService,
+  MessagingSubscriber,
   PaperPlaneIcon,
   ReplyContainer,
   useComponentCommunication
-} from 'components'
+} from '../../../../'
 
 // Style
 import styled from 'styled-components'

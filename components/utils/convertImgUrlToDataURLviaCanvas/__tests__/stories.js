@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 
 // UI
-import { convertImgUrlToDataURLviaCanvas } from 'components'
+import { convertImgUrlToDataURLviaCanvas } from '../../../'
 import Readme from '../README.md'
 
 // Style

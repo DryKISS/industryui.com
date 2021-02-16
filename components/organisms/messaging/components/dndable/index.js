@@ -1,4 +1,10 @@
+// React
+import React from 'react'
+
+// React Dropzone
 import { useDropzone } from 'react-dropzone'
+
+// Style
 import styled from 'styled-components'
 
 export const DragAndDropable = ({ children, onFileDrop, onHover, onLeave }) => {

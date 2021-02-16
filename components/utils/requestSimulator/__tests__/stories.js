@@ -6,7 +6,7 @@
 import { useState } from 'react'
 
 // UI
-import { Button, requestSimulator, Space, Text } from 'components'
+import { Button, requestSimulator, Space, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

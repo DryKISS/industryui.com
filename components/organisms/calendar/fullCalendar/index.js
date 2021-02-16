@@ -7,7 +7,7 @@
  */
 
 // React
-import { forwardRef, useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 // UI
 import { LdsSpinner, PageLoading, Theme } from '../../../'

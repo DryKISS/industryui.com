@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Copyright } from 'components'
+import { Copyright } from '../../../'
 import Readme from '../README.md'
 
 // Data

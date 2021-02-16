@@ -1,18 +1,11 @@
 /**
  * DryKiss Theme
- *
  */
 
 // Polished
 import { tint } from 'polished'
 
 const COLOUR = {
-  drykiss_lightBlue: 'rgb(0, 225, 218)',
-  drykiss_darkPink: 'rgb(255, 0, 99)',
-
-  active: '#000000',
-  visited: '#0000ff',
-
   white: '#ffffff',
   black: '#000000',
 

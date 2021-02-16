@@ -3,10 +3,10 @@
  */
 
 // Storybook
-import { SizeControl } from 'decorators'
+import { SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Page, Text } from 'components'
+import { Page, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

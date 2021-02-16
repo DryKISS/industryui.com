@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { func, oneOf, bool, string } from 'prop-types'
 
 // Nivo

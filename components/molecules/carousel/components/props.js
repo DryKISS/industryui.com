@@ -2,6 +2,7 @@
  * Carousel - Props
  */
 
+// React
 import {
   any,
   arrayOf,
@@ -14,11 +15,13 @@ import {
   shape,
   string
 } from 'prop-types'
-import { CONTEXT } from '../../../'
+
+// UI
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { PaginationPropTypes } from '../../pagination/components/props'
 
 export const CarouselPropTypes = {
-  navContext: oneOf(Object.values(CONTEXT)),
+  navContext: oneOf(Object.values(THEME_CONTEXT)),
   navPosition: oneOf(['top', 'middle', 'bottom']),
   children: node,
   fullWidth: bool,
@@ -45,7 +48,7 @@ export const CarouselPropTypes = {
 }
 
 export const CarouselDefaultProps = {
-  navContext: CONTEXT.BLACK,
+  navContext: THEME_CONTEXT.BLACK,
   navPosition: 'middle',
   autoplay: false,
   autoplayInterval: 1000,

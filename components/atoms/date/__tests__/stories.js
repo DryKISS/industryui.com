@@ -1,14 +1,21 @@
 /**
- * Date
+ * Components - Atoms - Date - Story
  */
 
+// Storybook
+import { SizeControl } from '../../../../.storybook/decorators'
+
 // UI
-import { Date } from 'components'
+import { Date } from '../date'
 import Readme from '../README.md'
 
 export default {
   args: {
-    date: '24 Feb 2020 08:36'
+    date: '24 Feb 2020 08:36',
+    size: 'md'
+  },
+  argTypes: {
+    size: SizeControl()
   },
   component: Date,
   parameters: {

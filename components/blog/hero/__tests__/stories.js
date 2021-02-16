@@ -3,7 +3,7 @@
  */
 
 // UI
-import { BlogHero } from 'components'
+import { BlogHero } from '../../../'
 import Readme from '../README.md'
 
 // Data

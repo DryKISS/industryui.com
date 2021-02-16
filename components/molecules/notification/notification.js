@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Alert, CONTEXT, formatRelativeTime, Link } from '../../'
+import { Alert, formatRelativeTime, Link } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -57,7 +59,7 @@ const StyledDate = styled.time`
 Notification.propTypes = {
   close: func.isRequired,
   content: oneOfType([object, string]).isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   date: string,
   icon: string,
   link: string,

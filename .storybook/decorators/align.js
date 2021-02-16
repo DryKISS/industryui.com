@@ -1,11 +1,12 @@
 /**
- * Align selector
+ * Storybook - Decorators - Align
  */
 
-import { ControlTypes } from 'decorators'
+// Decorator
+import { ControlTypes } from './'
 
 // UI
-import { arrayOfValues, ALIGN } from 'components'
+import { arrayOfValues, THEME_ALIGN } from '../../components'
 
 export const AlignControl = () => {
   return {

@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Error404 } from 'components'
+import { Error404 } from '../../../'
 import Readme from '../README.md'
 
 export default {

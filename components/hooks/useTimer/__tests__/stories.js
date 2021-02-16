@@ -3,19 +3,18 @@
  */
 
 // UI
-import { useTimer } from '../'
-import { Button, ButtonToolbar } from '../../..'
+import { Button, ButtonToolbar, useTimer } from '../../../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Hooks/Timer',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Hooks/Timer'
 }
 
 const BaseComponent = props => {

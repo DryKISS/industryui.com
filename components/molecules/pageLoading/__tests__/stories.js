@@ -3,7 +3,7 @@
  */
 
 // UI
-import { PageLoading, LdsSpinner } from 'components'
+import { PageLoading, LdsSpinner } from '../../../'
 
 export default {
   component: PageLoading,

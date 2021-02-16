@@ -3,7 +3,7 @@
  */
 
 // UI
-import { getUrlParameter, Text } from 'components'
+import { getUrlParameter, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

@@ -2,11 +2,15 @@
  * Molecules - OffCanvas - Tests - Form
  */
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Form, FormField, FormLabel, useForm, yupResolver } from '../../../'
+import { Form, FormField, FormLabel } from '../../../'
 
 export const OffCanvasForm = ({ onSubmit }) => {
   const schema = object().shape({

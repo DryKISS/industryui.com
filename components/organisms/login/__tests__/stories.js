@@ -5,8 +5,11 @@
 // React
 import { useState } from 'react'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Alert, Login, requestSimulator, useForm } from 'components'
+import { Alert, Login, requestSimulator } from '../../../'
 import Readme from '../README.md'
 
 export default {

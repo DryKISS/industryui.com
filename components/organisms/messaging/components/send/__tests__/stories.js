@@ -3,7 +3,7 @@
  */
 
 // UI
-import { MessagingSend } from 'components'
+import { MessagingSend } from '../../../'
 import Readme from '../README.md'
 import { mentions } from '../../../container/__mocks__/mentions'
 export default {

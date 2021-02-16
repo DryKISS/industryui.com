@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, node, number, string } from 'prop-types'
 
 // UI
-import { Details2Icon, SIZE, Text } from '../../../'
+import { Details2Icon, Text } from '../../../'
+import { THEME_SIZE } from '../../../theme/constants/size'
 
 // Style
 import styled from 'styled-components'
@@ -31,7 +33,7 @@ export const Details2Header = ({
           />
         )}
 
-        <Text size={SIZE.MD} context='dark' content={title} />
+        <Text size={THEME_SIZE.MD} context='dark' content={title} />
       </Content>
     </Header>
   )

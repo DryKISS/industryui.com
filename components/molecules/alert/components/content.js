@@ -1,15 +1,16 @@
 /**
- * Alert
+ * Components - Molecules - Alert - Components - Content
  */
 
 // React
+import React from 'react'
 import { object, oneOfType, string } from 'prop-types'
-
-// UI
-import { Icon } from '../../../'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { Icon } from '../../../atoms/icon/icon/icon'
 
 export const AlertContent = ({ content, icon, iconPrefix }) => (
   <StyledAlertContent>

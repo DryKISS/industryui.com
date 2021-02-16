@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 import styled from 'styled-components'
 
 //UI
-import { blendLinearRgb } from 'components'
+import { blendLinearRgb } from '../../components'
 
 export const Wrapper = Story => {
   return (

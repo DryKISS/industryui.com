@@ -1,4 +1,4 @@
-import { commonIconPropTypes } from '../propTypes'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const ChevronCircleLeftIcon = props => {
@@ -9,4 +9,4 @@ export const ChevronCircleLeftIcon = props => {
   )
 }
 
-ChevronCircleLeftIcon.propTypes = commonIconPropTypes
+ChevronCircleLeftIcon.propTypes = propTypes

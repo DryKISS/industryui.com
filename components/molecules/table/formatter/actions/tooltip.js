@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { node, string } from 'prop-types'
 
 // UI

@@ -3,24 +3,18 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { bool, func } from 'prop-types'
 
-// UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormLabel,
-  PageHeading,
-  Space,
-  Text,
-  useForm,
-  yupResolver
-} from '../../'
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
 import { EmailChangeSchema as schema } from './schema'
+
+// UI
+import { Alert, Button, FormField, Form, FormLabel, PageHeading, Space, Text } from '../../'
 
 export const EmailChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register } = useForm({

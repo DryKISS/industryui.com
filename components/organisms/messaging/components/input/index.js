@@ -3,14 +3,17 @@
  */
 
 // React
-import { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
+
+// Draft JS
+import { EditorState } from 'draft-js'
+import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
 
 // Style
 import styled from 'styled-components'
 
 // UI
 import {
-  COMMON_INPUT_STYLES,
   MentionSuggestions,
   MessageNames,
   MessagingActions,
@@ -20,8 +23,7 @@ import {
   useComponentCommunication
 } from '../../../../'
 
-import { EditorState } from 'draft-js'
-import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
+import { formStyle } from '../../../../form/variables/style'
 
 export const MessagingInput = ({ mentions, onChange }) => {
   const [suggestions, setSuggestions] = useState(mentions ?? [])
@@ -91,8 +93,8 @@ const Wrapper = styled.div`
   [class*='mentionSuggestions'] {
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
-  ${props => COMMON_INPUT_STYLES(props)}
-font-size:${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
+  ${props => formStyle(props)}
+  font-size:${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
   width: calc(100% - 8rem);
   max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
   overflow-y: auto;

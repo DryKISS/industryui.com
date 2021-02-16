@@ -3,8 +3,15 @@
  */
 
 // React
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
+import { LoginSchema as schema } from './schema'
 
 // UI
 import {
@@ -18,15 +25,11 @@ import {
   PageHeading,
   Space,
   Text,
-  UserContext,
-  useForm,
-  yupResolver
+  UserContext
 } from '../../'
 
 // Style
 import styled from 'styled-components'
-
-import { LoginSchema as schema } from './schema'
 
 const ErrMessage = message => <FormError message={message} />
 

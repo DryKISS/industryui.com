@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Space, Tabs } from 'components'
+import { Space, Tabs } from '../../../'
 import Readme from '../README.md'
 
 export default {

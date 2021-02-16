@@ -3,8 +3,8 @@
  */
 
 // React
+import React, { memo } from 'react'
 import { array, bool, func, shape, string } from 'prop-types'
-import { memo } from 'react'
 
 // UI
 import { Icon, TableHead } from '../../../'

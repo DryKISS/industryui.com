@@ -3,7 +3,7 @@
  */
 
 import Readme from '../README.md'
-import { IUIRich } from 'components'
+import { IUIRich } from '../../../'
 
 export default {
   title: 'Form/IUIRichEditor',

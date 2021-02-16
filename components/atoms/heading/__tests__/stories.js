@@ -3,10 +3,11 @@
  */
 
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { arrayOfValues, CONTEXT, Heading } from 'components'
+import { arrayOfValues, Heading } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 import Readme from '../README.md'
 
 export default {
@@ -59,7 +60,7 @@ HeadingComponent.args = {
 HeadingComponent.argTypes = {
   context: {
     control: {
-      options: arrayOfValues(CONTEXT),
+      options: arrayOfValues(THEME_CONTEXT),
       type: ControlTypes.Select
     }
   }

@@ -7,7 +7,7 @@
  */
 
 // React
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { any, object } from 'prop-types'
 
 // UI

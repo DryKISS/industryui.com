@@ -3,7 +3,7 @@
  */
 
 // UI
-import { getAcronym, Text } from 'components'
+import { getAcronym, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {

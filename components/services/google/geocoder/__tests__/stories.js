@@ -5,6 +5,9 @@
 // React
 import { useState } from 'react'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
 import {
   Button,
@@ -14,9 +17,8 @@ import {
   FormLabel,
   GeoCoder,
   Row,
-  useForm,
   useGeoCoder
-} from 'components'
+} from '../../../../'
 
 import Readme from '../README.md'
 
