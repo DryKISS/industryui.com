@@ -3,10 +3,11 @@
  */
 
 // Style
-import styled from 'styled-components'
+import { CheckedIcon } from 'components/icons'
+import styled, { css } from 'styled-components'
 
 // UI
-import { Icon, priceLayoutSizes, Text } from '../../../'
+import { priceLayoutSizes, Text } from '../../../'
 
 export const PricingCard = ({ data, layout, onCardSelect }) => {
   const { checkList, recommended, price } = data
@@ -17,10 +18,10 @@ export const PricingCard = ({ data, layout, onCardSelect }) => {
         {checkList.map((item, index) => {
           return (
             <ListItem key={index}>
-              <Icon
-                color={recommended ? 'rgb(255, 202, 16)' : 'rgb(69, 186, 190)'}
-                icon='check'
-                prefix='fas'
+              <StyledCheckIcon
+                size={16}
+                recommended={recommended}
+                // colour={recommended ? 'rgb(255, 202, 16)' : 'rgb(69, 186, 190)'}
               />
               <StyledText
                 content={item.title}
@@ -32,25 +33,27 @@ export const PricingCard = ({ data, layout, onCardSelect }) => {
         })}
       </ChecklistWrapper>
       <FlexSpacer />
-      <Fee
-        align='center'
-        content={price}
-        context={recommended ? 'white' : 'deepBlue'}
-        recommended={recommended}
-        size='xl'
-      />
+      <Fee align='center' content={price} recommended={recommended} size='xl' />
       <AddButtonWrapper onClick={() => onCardSelect(data)}>
-        <AddToCartText
-          align='center'
-          content='Add To Cart'
-          context={recommended ? 'white' : 'deepBlue'}
-          size='sm'
-        />
+        <AddToCartText align='center' content='Add To Cart' recommended={recommended} size='sm' />
       </AddButtonWrapper>
     </Wrapper>
   )
 }
+
+const StyledCheckIcon = styled(CheckedIcon)`
+  ${({ theme: { PRICING }, recommended }) => css`
+    path {
+      fill: ${recommended
+        ? PRICING.recommendedCardCheckedIconColour
+        : PRICING.cardCheckedIconColour} !important;
+    }
+  `}
+`
+
 const AddToCartText = styled(Text)`
+  color: ${({ theme: { PRICING }, recommended }) =>
+    recommended ? PRICING.recommendedAddToCartTextColour : PRICING.addToCartTextColour};
   font-weight: 700;
 `
 const AddButtonWrapper = styled.div`
@@ -62,7 +65,10 @@ const FlexSpacer = styled.div`
 `
 const Fee = styled(Text)`
   border-bottom: 1px solid
-    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.black)};
+    ${({ theme: { PRICING }, recommended }) =>
+      recommended ? PRICING.recommendedCardPriceTextColour : PRICING.cardPriceTextColour};
+  color: ${({ theme: { PRICING }, recommended }) =>
+    recommended ? PRICING.recommendedCardPriceTextColour : PRICING.cardPriceTextColour};
   font-weight: 700;
   line-height: 1rem;
   padding-bottom: 1.25rem;
@@ -89,8 +95,8 @@ const Title = styled.p`
   text-align: center;
 `
 const Wrapper = styled.div`
-  background-color: ${({ theme, recommended }) =>
-    recommended ? theme.COLOUR.darkBlue : theme.COLOUR.watterBlue};
+  background-color: ${({ theme: { PRICING }, recommended }) =>
+    recommended ? PRICING.recommendedCardBackground : PRICING.cardBackground};
 
   border: ${({ theme, recommended }) => (recommended ? 'none' : `1px solid ${theme.COLOUR.dark}`)};
   border-radius: 1rem;

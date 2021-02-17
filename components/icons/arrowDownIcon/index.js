@@ -8,5 +8,5 @@ export const ArrowDownIcon = props => {
     </IconWrapper>
   )
 }
-
+export default ArrowDownIcon
 ArrowDownIcon.propTypes = commonIconPropTypes

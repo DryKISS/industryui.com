@@ -4,7 +4,7 @@
 
 // React
 import { memo } from 'react'
-import { array, bool, func, number, shape, string } from 'prop-types'
+import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
 // UI
 import { TableContent, TableLoading, TablePagination } from '../../../'
@@ -34,7 +34,6 @@ export const Table = memo(
   }) => {
     const tableSpan = tableColumnCount(columns)
     const rowLength = rows.length > 0
-
     return (
       <StyledWrapper fullHeight={fullHeight} isLoading={loading}>
         <TableLoading colsLength={tableSpan} show={loading} />
@@ -97,7 +96,7 @@ const StyledResponsive = styled.div`
 `
 
 Table.propTypes = {
-  align: bool,
+  align: oneOfType([string, bool]),
   caption: string,
   className: string,
   columns: array,

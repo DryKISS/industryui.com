@@ -3,10 +3,11 @@
  */
 
 // Style
+import { CheckedIcon } from 'components/icons'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Icon, LAYOUTS, priceLayoutSizes, Text } from '../../../'
+import { LAYOUTS, priceLayoutSizes, Text } from '../../../'
 
 export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}
@@ -38,11 +39,7 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
         {features.map((item, index) => {
           return (
             <FeatureNameColumn key={index} odd={index % 2 !== 0}>
-              <Text
-                content={item}
-                context='black'
-                size={priceLayoutSizes(layout).featuresTextSize}
-              />
+              <MatrixText content={item} size={priceLayoutSizes(layout).featuresTextSize} />
             </FeatureNameColumn>
           )
         })}
@@ -59,7 +56,7 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
               return (
                 <FeatureCheckColumn odd={idx % 2 !== 0} key={idx}>
                   {featureExist(item, feature) ? (
-                    <StyledIcon prefix='fas' icon='check' recommended={item.recommended ? 1 : 0} />
+                    <StyledCheckedIcon size={18} recommended={item.recommended} />
                   ) : (
                     ''
                   )}
@@ -72,11 +69,20 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
     </PriceMatrixWrapper>
   )
 }
-
-const StyledIcon = styled(Icon).attrs(props => ({
-  color: props.recommended ? props.theme.COLOUR.deepBlue : props.theme.COLOUR.dark
-}))``
-
+const StyledCheckedIcon = styled(CheckedIcon)`
+  ${({ theme: { PRICING }, recommended }) => css`
+    path {
+      fill: ${recommended
+        ? PRICING.priceMatrixRecommendedheckedColour
+        : PRICING.priceMatrixCheckedColour} !important;
+    }
+  `}
+`
+const MatrixText = styled(Text)`
+  ${({ theme: { PRICING } }) => css`
+    color: ${PRICING.priceMatrixTextColour};
+  `}
+`
 const FeatureCheckColumn = styled.div`
   align-items: center;
   background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};

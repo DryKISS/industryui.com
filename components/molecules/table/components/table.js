@@ -3,7 +3,7 @@
  */
 
 // React
-import { array, bool, func, number, shape, string } from 'prop-types'
+import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
 // UI
 import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
@@ -26,6 +26,15 @@ export const TableContent = ({
   striped,
   tableSpan
 }) => {
+  const bottomCells = { data: [], hasData: false }
+  columns.forEach(element => {
+    if (element.bottomCell) {
+      bottomCells.hasData = true
+      bottomCells.data.push(element)
+    } else {
+      bottomCells.data.push(null)
+    }
+  })
   return (
     <StyledTable className={className}>
       {caption !== '' && <TableCaption>{caption}</TableCaption>}
@@ -41,12 +50,20 @@ export const TableContent = ({
         ) : (
           <TableRows
             align={align}
+            bottomCells={bottomCells}
             columns={columns}
             hover={hover}
             rowClick={rowClick}
             rows={rows}
             striped={striped}
           />
+        )}
+        {bottomCells?.hasData && (
+          <TableRow>
+            {bottomCells.data.map((cell, j) => (
+              <TableData key={`bottom${j}`}>{cell ? cell.bottomCell : ''}</TableData>
+            ))}
+          </TableRow>
         )}
       </tbody>
     </StyledTable>
@@ -60,7 +77,7 @@ const StyledTable = styled.table`
 `
 
 TableContent.propTypes = {
-  align: bool,
+  align: oneOfType([string, bool]),
   caption: string,
   className: string,
   columns: array,
