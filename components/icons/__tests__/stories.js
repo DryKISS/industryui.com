@@ -58,7 +58,7 @@ import {
   TelevisionIcon,
   ProjectorIcon,
   DeskIcon,
-  CofeeMachineIcon,
+  CoffeeMachineIcon,
   OvenIcon,
   MicrowaveIcon,
   PumpIcon,
@@ -162,7 +162,7 @@ export const main = props => {
       <TelevisionIcon {...props} />
       <ProjectorIcon {...props} />
       <DeskIcon {...props} />
-      <CofeeMachineIcon {...props} />
+      <CoffeeMachineIcon {...props} />
       <MicrowaveIcon {...props} />
       <OvenIcon {...props} />
       <PumpIcon {...props} />
