@@ -1,7 +1,7 @@
 import { commonIconPropTypes } from '../propTypes'
 import { IconWrapper } from '../wrapper'
 
-export const CofeeMachineIcon = props => {
+export const CoffeeMachineIcon = props => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <g id='outline'>
@@ -13,4 +13,4 @@ export const CofeeMachineIcon = props => {
   )
 }
 
-CofeeMachineIcon.propTypes = commonIconPropTypes
+CoffeeMachineIcon.propTypes = commonIconPropTypes
