@@ -2,6 +2,7 @@
  * Marker
  */
 
+import { LazyIcon } from 'components/icons'
 import { object } from 'prop-types'
 
 // Style
@@ -10,22 +11,27 @@ import styled, { css, keyframes } from 'styled-components'
 // UI
 import { Icon } from '../../../'
 
-export const ImageMarker = ({ coordinates, styles }) => {
+export const ImageMarker = ({ coordinates, customIcon, styles }) => {
+  if (customIcon) {
+    return (
+      <CustomIconWrapper {...{ coordinates, styles }}>
+        <LazyIcon iconName={customIcon} size={styles.width ?? 24} />
+      </CustomIconWrapper>
+    )
+  }
   return styles?.shape ? (
     <StyledIcon
-      coordinates={coordinates}
       context='primary'
       icon={styles?.shape?.icon}
       prefix={styles?.shape?.prefix}
       pull='left'
-      styles={styles}
       size='lg'
+      {...{ coordinates, styles }}
     />
   ) : (
-    <StyledMarker coordinates={coordinates} styles={styles} />
+    <StyledMarker {...{ coordinates, styles }} />
   )
 }
-
 const blinker = keyframes`
     50% {
     opacity: 0;
@@ -54,6 +60,12 @@ const commonMarkerCss = css`
       left: ${coordinates.x}%;
       top: ${coordinates.y}%;
     `}
+`
+const CustomIconWrapper = styled.div`
+  path {
+    fill: ${({ styles }) => (styles?.color ? styles?.color : 'red')} !important;
+  }
+  ${commonMarkerCss}
 `
 const StyledIcon = styled(Icon)`
   background-color: white;
