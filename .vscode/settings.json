@@ -2,11 +2,9 @@
   // CSS
   "css.validate": false,
   // Editor
-  "editor.formatOnSave": true,
   "editor.rulers": [100],
   "editor.tabSize": 2,
   // Files
-  "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
     "**/.DS_Store": true,
@@ -29,7 +27,7 @@
   "scss.validate": false,
   // Standard
   "standard.enable": true,
-  "standard.autoFixOnSave": true,
+  "standard.autoFixOnSave": false,
   "standard.options": {
     "globals": [
       "afterEach",
