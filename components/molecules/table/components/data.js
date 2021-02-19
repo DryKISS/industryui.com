@@ -4,7 +4,7 @@
 
 // React
 import { memo } from 'react'
-import { bool } from 'prop-types'
+import { bool, oneOfType, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -16,5 +16,5 @@ export const TableData = memo(styled.td`
 `)
 
 TableData.propTypes = {
-  align: bool
+  align: oneOfType([string, bool])
 }

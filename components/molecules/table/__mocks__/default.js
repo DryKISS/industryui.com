@@ -3,7 +3,7 @@
  */
 
 // UI
-import { Image, TableActions, TableLink } from '../../../'
+import { Image, TableActions, TableLink, Text } from '../../../'
 
 export const columns = [
   {
@@ -69,6 +69,11 @@ export const columnsActions = [
     text: 'ID'
   },
   {
+    bottomCell: (
+      <Text bold context='danger'>
+        bottom Cell
+      </Text>
+    ),
     sortable: true,
     sortName: 'company',
     text: 'Company'

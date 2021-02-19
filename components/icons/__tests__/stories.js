@@ -48,8 +48,30 @@ import {
   SquareCloseIcon,
   TriangleIcon,
   UploadIcon,
-  VerticalThreeDotsIcon
-} from '../'
+  VerticalThreeDotsIcon,
+  SmokeDetectorIcon,
+  SensorIcon,
+  AirConditionerIcon,
+  SirenIcon,
+  DesktopIcon,
+  MeetingRoomIcon,
+  TelevisionIcon,
+  ProjectorIcon,
+  DeskIcon,
+  CoffeeMachineIcon,
+  OvenIcon,
+  MicrowaveIcon,
+  PumpIcon,
+  BoilerIcon,
+  BicycleIcon,
+  DishwasherIcon,
+  FreezerIcon,
+  FridgeIcon,
+  FuseBoxIcon,
+  SprinkleIcon,
+  WashingMachineIcon,
+  ThermometerIcon
+} from 'components'
 
 import Readme from '../README.md'
 
@@ -130,6 +152,28 @@ export const main = props => {
       <UploadIcon {...props} />
       <VerticalThreeDotsIcon {...props} />
       <ExclamationCircleIcon {...props} />
+      <ThermometerIcon {...props} />
+      <SensorIcon {...props} />
+      <SmokeDetectorIcon {...props} />
+      <AirConditionerIcon {...props} />
+      <SirenIcon {...props} />
+      <DesktopIcon {...props} />
+      <MeetingRoomIcon {...props} />
+      <TelevisionIcon {...props} />
+      <ProjectorIcon {...props} />
+      <DeskIcon {...props} />
+      <CoffeeMachineIcon {...props} />
+      <MicrowaveIcon {...props} />
+      <OvenIcon {...props} />
+      <PumpIcon {...props} />
+      <BoilerIcon {...props} />
+      <BicycleIcon {...props} />
+      <DishwasherIcon {...props} />
+      <FreezerIcon {...props} />
+      <FridgeIcon {...props} />
+      <FuseBoxIcon {...props} />
+      <SprinkleIcon {...props} />
+      <WashingMachineIcon {...props} />
     </Wrapper>
   )
 }

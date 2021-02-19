@@ -1432,10 +1432,10 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz#9daf5745156fd84b8e9889a2dc721f0c58e894aa"
   integrity sha512-CAEbWH7OIur6jEOzaai83jq3FmKmv4PmX1JYfs9IrYcGEVI/lyL1EXJGCj7eFVJ0bg5QR8LMxBlEtA+xKiLpFw==
 
-"@hookform/resolvers@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.3.4.tgz#3129243180a5ecc4347b9e66ad693148215c2986"
-  integrity sha512-K56VLSInXNIT/r14pkzRn1FJclqzGOWqpe3Bf0kz2Hf98ZOmRRFh4fhB7F3ofqCQ03CEQQkV44CTg7ql6nEvEg==
+"@hookform/resolvers@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.3.0.tgz#b2b0ff3b4b6b104e0df1954e58098e0a9cb6195d"
+  integrity sha512-NF+KJYDiFjnGAqhM92vG5kFJFCZFFjO5VxcByf06o6FrG7BEta5NDBhqVsIAMSfMNsn1kWfSKX1TkDT21xq9Hg==
 
 "@iarna/toml@2.2.3":
   version "2.2.3"
@@ -12486,10 +12486,10 @@ react-helmet-async@^1.0.2:
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
 
-react-hook-form@^6.9.4:
-  version "6.15.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.1.tgz#57d887ec4dac5a6c0099902171aa39cc893f7bca"
-  integrity sha512-bL0LQuQ3OlM3JYfbacKtBPLOHhmgYz8Lj6ivMrvu2M6e1wnt4sbGRtPEPYCc/8z3WDbjrMwfAfLX92OsB65pFA==
+react-hook-form@^6.15.1:
+  version "6.15.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.2.tgz#3dd4eecfb6ebc261d4372df57d166c6bf893d246"
+  integrity sha512-2yAn+vjYaM1jDqhsZdL9964wyNUZhVWC+epEYh4f3sUKaDYxmewp1fqQyF1kaIjuaQWG3OMoM81RkXeHCsQvig==
 
 react-hotkeys@2.0.0:
   version "2.0.0"

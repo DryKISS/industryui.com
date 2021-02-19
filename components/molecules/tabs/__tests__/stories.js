@@ -7,6 +7,15 @@ import { Space, Tabs } from '../../../'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    centerTabs: false,
+    gap: 0,
+    grabbable: true,
+    grabWalkSpeed: 25,
+    indicatorSize: 1,
+    scrollToActiveTab: true
+  },
+  title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
     docs: {
@@ -14,8 +23,7 @@ export default {
         component: Readme
       }
     }
-  },
-  title: 'Molecules/Tabs'
+  }
 }
 
 const renderTab = (index, activeTab) => (

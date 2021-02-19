@@ -27,11 +27,13 @@ export const Details2 = ({
   disableAnimation,
   endActionComponent,
   fitParentHeight,
+  headerContext,
   iconComponent,
   open,
   startActionComponent,
   style,
   title,
+  titleContext,
   toolbar,
   uniqueId,
   unmountContentOnClose
@@ -88,10 +90,12 @@ export const Details2 = ({
       <Details2Header
         animationtime={animationTime}
         children={children}
-        iconComponent={iconComponent}
+        headerContext={headerContext}
         handleOpenClose={handleOpenClose}
+        iconComponent={iconComponent}
         isOpen={isOpen}
         title={title}
+        titleContext={titleContext}
       />
 
       {children && (

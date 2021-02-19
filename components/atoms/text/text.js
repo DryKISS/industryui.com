@@ -1,5 +1,5 @@
 /**
- * Components - Text
+ * Components - Atoms - Text
  */
 
 // React
@@ -15,9 +15,9 @@ import { themeDisplay } from '../../theme/utils/display'
 // Props
 import { propTypes, defaultProps } from './props'
 
-export const Text = ({ align, children, className, content, context, stroked, size }) => {
+export const Text = ({ align, children, className, content, context, size, weight }) => {
   return (
-    <StyledText align={align} className={className} context={context} stroked={stroked} size={size}>
+    <StyledText align={align} className={className} context={context} size={size}>
       {content || children}
     </StyledText>
   )
@@ -34,6 +34,7 @@ const StyledText = styled.p`
     font-size: ${theme.TEXT.FONT_SIZE[size] ?? '1rem'};
     line-height: ${theme.TEXT.LINE_HEIGHT[size] ?? '1rem'};
   `}
+
 
   ${({ size }) =>
     size === 'xxl' &&
@@ -67,21 +68,25 @@ const StyledText = styled.p`
         font-size: 8rem;
       `}
     `}
-  ${({ stroked }) =>
-    stroked === 'true' &&
-    css`
-      -webkit-text-stroke: 1px #000;
-      color: transparent;
-      ${MEDIA_QUERY.tablet`
-        -webkit-text-stroke: 2px #000;
-      `}
-      ${MEDIA_QUERY.desktop`
-        -webkit-text-stroke: 3px #000;
-      `}
-    `}
 
   ${theme => themeDisplay(theme)}
   ${theme => SPACER(theme)}
+
+
+  ${({ weight }) =>
+    weight &&
+    css`
+      font-weight: ${weight === 'light'
+        ? 400
+        : weight === 'regular'
+        ? 500
+        : weight === 'semiBold'
+        ? 600
+        : weight === 'bold'
+        ? 700
+        : 500};
+    `}
+
 `
 
 Text.propTypes = propTypes

@@ -6,11 +6,11 @@
 import { useForm } from 'react-hook-form'
 
 // Yup
-import { object as obj } from 'yup'
+import { object } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Alert, Button, Form, ImageLocation, ImageLocationFormElement } from '../../../'
+import { Alert, Button, Form, ImageLocation, ImageLocationFormElement, lazyIcons } from 'components'
 import Readme from '../README.md'
 
 // Data
@@ -18,6 +18,7 @@ import { Item } from '../__mocks__/itemFloor'
 
 export default {
   args: {
+    customIcon: null,
     initialCoordinates: {
       x: 42,
       y: 41
@@ -27,6 +28,9 @@ export default {
     withInitialCoordinates: false
   },
   argTypes: {
+    customIcon: {
+      control: { type: 'select', options: Object.keys(lazyIcons) }
+    },
     animation: {
       control: { type: 'select', options: ['blinker', 'none'] }
     },
@@ -52,6 +56,7 @@ const BaseComponent = (props = {}) => {
     },
     ...(args.withInitialCoordinates && { initialCoordinates: args.initialCoordinates }),
     item: Item,
+    customIcon: args.customIcon,
     locationChange: 'change'
   }
 
@@ -69,8 +74,8 @@ const BaseComponent = (props = {}) => {
 export const main = args => <BaseComponent args={args} />
 
 export const UsedInForm = () => {
-  const schema = obj().shape({
-    imageLocationData: obj().required()
+  const schema = object().shape({
+    imageLocationData: object().required()
   })
 
   const { control, errors, handleSubmit, setValue } = useForm({

@@ -1,3 +1,6 @@
+/**
+ * Components - Icons - Arrow Down
+ */
 import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'

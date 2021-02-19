@@ -8,7 +8,16 @@ import { css } from 'styled-components'
 // UI
 import { THEME_SIZE } from '../../theme/constants/size'
 
-export const formStyle = ({ disabled, errors, isTyping, readOnly, Required, size, theme }) => {
+export const formStyle = ({
+  disabled,
+  errors,
+  isTyping,
+  readOnly,
+  Required,
+  size,
+  textAlign,
+  theme
+}) => {
   return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
@@ -64,6 +73,11 @@ export const formStyle = ({ disabled, errors, isTyping, readOnly, Required, size
         border-width: 1px;
         padding: 0.5rem;
       `}
+
+      ${textAlign &&
+        css`
+          text-align: ${textAlign};
+        `}
   `
 }
 

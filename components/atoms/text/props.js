@@ -19,6 +19,7 @@ export const propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
   size: oneOf(Object.values(THEME_SIZE)),
   stroked: bool,
+  weight: oneOf(['light', 'regular', 'semiBold', 'bold']),
   ...DISPLAY_PROP_TYPES,
   ...SPACER_PROP_TYPES
 }

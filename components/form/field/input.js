@@ -105,6 +105,7 @@ FormField.propTypes = {
   register: func.isRequired,
   size: oneOf([THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]),
   style: object,
+  textAlign: string,
   type: string,
   value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
@@ -113,6 +114,7 @@ FormField.defaultProps = {
   autoComplete: 'off',
   autoFocus: false,
   disabled: false,
+  errors: {},
   readOnly: false,
   type: 'text'
 }

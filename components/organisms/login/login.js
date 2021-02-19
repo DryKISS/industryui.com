@@ -37,6 +37,7 @@ export const Login = ({
   blockSubmitButton,
   forgotPassword,
   heading,
+  showTitle,
   submit,
   pathForgot,
   pathSignUp,
@@ -69,7 +70,7 @@ export const Login = ({
 
   return (
     <Wrapper>
-      <PageHeading center heading={heading} divider={false} />
+      {showTitle && <PageHeading center heading={heading} divider={false} />}
 
       {error && <Alert content={error.message} context='warning' />}
 
@@ -150,7 +151,8 @@ Login.propTypes = {
   remember: string,
   showLabel: bool,
   showPassword: bool,
-  showPlaceholder: bool
+  showPlaceholder: bool,
+  showTitle: bool
 }
 
 Login.defaultProps = {
@@ -162,5 +164,6 @@ Login.defaultProps = {
   remember: '',
   showLabel: true,
   showPassword: true,
-  showPlaceholder: false
+  showPlaceholder: false,
+  showTitle: true
 }

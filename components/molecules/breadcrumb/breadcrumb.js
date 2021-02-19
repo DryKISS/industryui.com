@@ -4,13 +4,14 @@
 
 // React
 import React from 'react'
-import { oneOf, oneOfType, string } from 'prop-types'
+import { array, node, oneOf, oneOfType, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
-import { Icon, Link } from '../../'
+import { Icon } from '../../atoms/icon/icon/icon'
+import { Link } from '../../atoms/link/link'
 import { THEME_SIZE } from '../../theme/constants/size'
 
 export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
@@ -165,10 +166,8 @@ const StyledLi = styled.li`
 `
 
 Breadcrumb.propTypes = {
+  breadcrumbs: array,
+  customSeparator: node,
   separator: oneOfType([oneOf(['chevron', 'slash']), string]),
   size: oneOf(Object.values(THEME_SIZE))
-}
-
-Breadcrumb.defaultProps = {
-  size: 'lg'
 }

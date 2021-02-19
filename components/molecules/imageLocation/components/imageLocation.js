@@ -14,6 +14,7 @@ import { ImageLocationProps } from './props'
 
 export const ImageLocation = ({
   coordinatesChange,
+  customIcon,
   initialCoordinates,
   item,
   markerStyles,
@@ -29,6 +30,7 @@ export const ImageLocation = ({
     <StyledImageLocation show={show}>
       {item?.filename && (
         <ImageWrapper
+          customIcon={customIcon}
           coordinates={coordinates}
           markerStyles={markerStyles}
           item={item}

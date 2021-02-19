@@ -6,24 +6,27 @@
 import React from 'react'
 import { bool, func, node, number, string } from 'prop-types'
 
-// UI
-import { Details2Icon, Text } from '../../../'
-import { THEME_SIZE } from '../../../theme/constants/size'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import { Details2Icon } from './icon'
+import { Text } from '../../text/text'
+import { THEME_SIZE } from '../../../theme/constants/size'
 
 export const Details2Header = ({
   animationTime,
   children,
   content,
+  context,
   handleOpenClose,
+  headerContext,
   iconComponent,
   isOpen,
   title
 }) => {
   return (
-    <Header onClick={handleOpenClose}>
+    <Header context={headerContext} onClick={handleOpenClose}>
       <Content>
         {(content || children) && (
           <Details2Icon
@@ -33,7 +36,7 @@ export const Details2Header = ({
           />
         )}
 
-        <Text size={THEME_SIZE.MD} context='dark' content={title} />
+        <Text size={THEME_SIZE.MD} context={context} content={title} />
       </Content>
     </Header>
   )
@@ -41,7 +44,8 @@ export const Details2Header = ({
 
 const Header = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.DETAILS2.header.background};
+  background-color: ${({ theme, context }) =>
+    theme.COLOUR[context] || theme.DETAILS2.header.background};
   cursor: pointer;
   display: flex;
   height: 3.5rem;
@@ -57,6 +61,7 @@ Details2Header.propTypes = {
   animationTime: number,
   children: node,
   content: node,
+  context: string,
   handleOpenClose: func.isRequired,
   iconComponent: node,
   isOpen: bool,
@@ -65,5 +70,6 @@ Details2Header.propTypes = {
 
 Details2Header.defaultProps = {
   animationTime: 100,
+  context: 'dark',
   isOpen: false
 }

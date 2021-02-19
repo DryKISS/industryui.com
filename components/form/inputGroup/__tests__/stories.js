@@ -1,5 +1,5 @@
 /**
- * Form - Input - Group
+ * Components - Form - Input Group - Story
  */
 
 // Storybook

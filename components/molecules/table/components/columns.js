@@ -4,7 +4,7 @@
 
 // React
 import React, { memo } from 'react'
-import { array, bool, func, shape, string } from 'prop-types'
+import { array, bool, func, oneOfType, shape, string } from 'prop-types'
 
 // UI
 import { Icon, TableHead } from '../../../'
@@ -52,7 +52,7 @@ export const TableColumns = memo(({ align, columns, setSort, sort }) => (
 ))
 
 TableColumns.propTypes = {
-  align: bool,
+  align: oneOfType([string, bool]),
   columns: array,
   setSort: func,
   sort: shape({

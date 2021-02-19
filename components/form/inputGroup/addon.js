@@ -1,5 +1,5 @@
 /**
- * Input Group Addon
+ * Components - Form - Input Group - Addon
  * Allows the element to be positioned
  */
 

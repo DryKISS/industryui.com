@@ -1,8 +1,7 @@
 /**
- * Theme - Variables - Text
+ * Components - Atoms - Text - Variables
  */
 export const TEXT = {
-  DEFAULT_COLOUR: 'rgb(102, 102, 102)',
   FONT_SIZE: {
     xxs: '0.625rem',
     xs: '0.75rem',
