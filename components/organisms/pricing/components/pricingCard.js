@@ -1,16 +1,17 @@
 /**
- * Components - Pricing
+ * Components - Organisms - Pricing - Components - Card
  */
 
 // React
 import React from 'react'
 
 // Style
-import { CheckedIcon } from 'components/icons'
 import styled, { css } from 'styled-components'
 
 // UI
-import { priceLayoutSizes, Text } from '../../../'
+import { CheckedIcon } from '../../../icons/checkedIcon/index'
+import { priceLayoutSizes } from '../utils/index'
+import { Text } from '../../../atoms/text/text'
 
 export const PricingCard = ({ data, layout, onCardSelect }) => {
   const { checkList, recommended, price } = data

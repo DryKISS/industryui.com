@@ -1,5 +1,5 @@
 /**
- * Image Location
+ * Components - Molecules  Image Location
  */
 
 // React Hook Form
@@ -10,7 +10,7 @@ import { object } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Alert, Button, Form, ImageLocation, ImageLocationFormElement, lazyIcons } from 'components'
+import { Alert, Button, Form, ImageLocation, ImageLocationFormElement, lazyIcons } from '../../../'
 import Readme from '../README.md'
 
 // Data

@@ -1,17 +1,20 @@
-import { COLOUR } from '../../theme/variables/colour'
+/**
+ * Components - Organsims - Pricing - Variables
+ */
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const PRICING = {
-  addToCartTextColour: COLOUR.deepBlue,
-  cardBackground: COLOUR.watterBlue,
-  cardCheckedIconColour: COLOUR.male,
-  cardPropertiesTextColour: COLOUR.blackText,
-  cardPriceTextColour: COLOUR.black,
-  priceMatrixCheckedColour: COLOUR.blackGrey,
-  priceMatrixRecommendedheckedColour: COLOUR.deepBlue,
-  priceMatrixTextColour: COLOUR.black,
-  recommendedAddToCartTextColour: COLOUR.white,
-  recommendedCardBackground: COLOUR.deepBlue,
-  recommendedCardCheckedIconColour: COLOUR.warning,
-  recommendedCardPriceTextColour: COLOUR.white,
-  recommendedCardPropertiesTextColour: COLOUR.white
+  addToCartTextColour: THEME_COLOUR.deepBlue,
+  cardBackground: THEME_COLOUR.watterBlue,
+  cardCheckedIconColour: THEME_COLOUR.male,
+  cardPropertiesTextColour: THEME_COLOUR.blackText,
+  cardPriceTextColour: THEME_COLOUR.black,
+  priceMatrixCheckedColour: THEME_COLOUR.blackGrey,
+  priceMatrixRecommendedheckedColour: THEME_COLOUR.deepBlue,
+  priceMatrixTextColour: THEME_COLOUR.black,
+  recommendedAddToCartTextColour: THEME_COLOUR.white,
+  recommendedCardBackground: THEME_COLOUR.deepBlue,
+  recommendedCardCheckedIconColour: THEME_COLOUR.warning,
+  recommendedCardPriceTextColour: THEME_COLOUR.white,
+  recommendedCardPropertiesTextColour: THEME_COLOUR.white
 }

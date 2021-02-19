@@ -1,4 +1,4 @@
-import { commonIconPropTypes } from '../propTypes'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const SprinkleIcon = props => {
@@ -27,4 +27,4 @@ export const SprinkleIcon = props => {
   )
 }
 
-SprinkleIcon.propTypes = commonIconPropTypes
+SprinkleIcon.propTypes = propTypes

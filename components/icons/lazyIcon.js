@@ -1,6 +1,13 @@
-import { oneOf } from 'prop-types'
+/**
+ * Components - Icons - Lazy Icon
+ */
+
+// React
 import { lazy, Suspense } from 'react'
-import { commonIconPropTypes } from './propTypes'
+import { oneOf } from 'prop-types'
+
+// UI
+import { propTypes } from './props'
 
 export const lazyIcons = {
   get airConditioner () {
@@ -221,5 +228,5 @@ export const LazyIcon = ({ iconName, ...props }) => {
 
 LazyIcon.propTypes = {
   iconName: oneOf(Object.keys(lazyIcons)),
-  ...commonIconPropTypes
+  ...propTypes
 }

@@ -1,5 +1,5 @@
 /**
- * Marker
+ * Components - Molecules- Image Locations - Marker
  */
 
 // React
@@ -10,8 +10,7 @@ import { object } from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import { Icon } from '../../../'
-import { LazyIcon } from 'components/icons'
+import { Icon, LazyIcon } from '../../../'
 
 export const ImageMarker = ({ coordinates, customIcon, styles }) => {
   if (customIcon) {

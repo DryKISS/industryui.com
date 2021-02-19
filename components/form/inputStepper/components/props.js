@@ -6,10 +6,10 @@
 import { bool, func, object, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const InputStepperPropTypes = {
-  buttonContext: oneOf(Object.values(CONTEXT)),
+  buttonContext: oneOf(Object.values(THEME_CONTEXT)),
   buttonProps: object,
   control: object,
   defaultValue: oneOfType([number, string]),

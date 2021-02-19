@@ -1,4 +1,4 @@
-import { commonIconPropTypes } from '../propTypes'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 export const PumpIcon = props => {
   return (
@@ -38,4 +38,4 @@ c0,1.485-1.209,2.695-2.695,2.695h-53.895c-4.465,0-8.084,3.62-8.084,8.084S434.777
     </IconWrapper>
   )
 }
-PumpIcon.propTypes = commonIconPropTypes
+PumpIcon.propTypes = propTypes

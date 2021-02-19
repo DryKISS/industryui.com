@@ -1,16 +1,19 @@
 /**
- * Components - Pricing
+ * Components - Organisms - Pricing
  */
 
 // React
 import React from 'react'
 
 // Style
-import { CheckedIcon } from 'components/icons'
+
 import styled, { css } from 'styled-components'
 
 // UI
-import { LAYOUTS, priceLayoutSizes, Text } from '../../../'
+import { CheckedIcon } from '../../../icons/checkedIcon'
+import { LAYOUTS } from './constants'
+import { priceLayoutSizes } from '../utils/index'
+import { Text } from '../../../atoms/text/text'
 
 export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}

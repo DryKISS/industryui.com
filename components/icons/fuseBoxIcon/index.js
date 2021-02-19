@@ -1,4 +1,4 @@
-import { commonIconPropTypes } from '../propTypes'
+import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
 export const FuseBoxIcon = props => {
@@ -42,4 +42,4 @@ export const FuseBoxIcon = props => {
   )
 }
 
-FuseBoxIcon.propTypes = commonIconPropTypes
+FuseBoxIcon.propTypes = propTypes
