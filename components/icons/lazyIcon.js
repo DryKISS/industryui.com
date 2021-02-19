@@ -215,9 +215,8 @@ export const lazyIcons = {
     return lazy(() => import('./washingMachineIcon').then(_ => ({ default: _.WashingMachineIcon })))
   }
 }
-const NotFound = () => <div>icon not found !</div>
 export const LazyIcon = ({ iconName, ...props }) => {
-  const Icon = lazyIcons[iconName] || NotFound
+  const Icon = lazyIcons[iconName] || lazyIcons.circle
 
   return (
     <Suspense fallback={<></>}>
