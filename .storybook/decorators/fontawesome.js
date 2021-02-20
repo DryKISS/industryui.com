@@ -2,9 +2,11 @@
  * IconSize selector
  */
 
-import { ControlTypes } from './'
+// React
+import React from 'react'
 
 // UI
+import { ControlTypes } from './'
 import { arrayOfValues, ICON_PULL, ICON_PREFIX, ICON_SIZE } from '../../components'
 
 const List_Icons = {

@@ -1,18 +1,13 @@
 /**
- * videoPlayer
+ * Components - Molecules - Video Player - Story
  */
 
 // UI
-import styled from 'styled-components'
-import { VideoPlayer } from '../../../'
+import { VideoPlayer } from '../videoPlayer'
 import Readme from '../README.md'
-import video from '../__mocks__/video.mp4'
-import poster from '../__mocks__/poster.png'
 
 // Data
-
 export default {
-  title: 'Molecules/VideoPlayer',
   component: VideoPlayer,
   parameters: {
     docs: {
@@ -20,15 +15,10 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/VideoPlayer'
 }
 
-export const player = () => {
-  return (
-    <Wrapper>
-      <VideoPlayer src={video} poster={poster} />
-    </Wrapper>
-  )
-}
-
-const Wrapper = styled.div``
+export const main = args => (
+  <VideoPlayer {...args} src='/video/video.mp4' poster='/video/poster.png' />
+)

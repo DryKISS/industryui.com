@@ -2,6 +2,9 @@
  * Components - Atoms - Details2 - Stories
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators'
 

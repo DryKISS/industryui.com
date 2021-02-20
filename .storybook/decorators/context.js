@@ -2,10 +2,12 @@
  * Storybook - Decorators - Context
  */
 
-import { ControlTypes } from './'
+// React
+import React from 'react'
 
 // UI
 import { arrayOfValues } from '../../components'
+import { ControlTypes } from './'
 import { THEME_CONTEXT } from '../../components/theme/constants/context'
 
 export const ContextControl = () => {

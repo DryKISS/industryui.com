@@ -1,5 +1,5 @@
 /**
- * Button - Toolbar
+ * Components - Atoms - Button - Toolbar
  */
 
 // React

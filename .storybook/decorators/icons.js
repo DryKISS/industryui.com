@@ -1,6 +1,8 @@
 /**
  * FontAwesome Library
  */
+
+// Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Free Solid / FAS
@@ -36,14 +38,6 @@ import {
   faUserCircle,
   faUser
 } from '@fortawesome/free-solid-svg-icons'
-
-// // Free Regular / FAR
-// import {
-//   faCopy as farCopy,
-//   faImages as farImages,
-//   faSmile as farSmile,
-//   faUserCircle as farUserCircle
-// } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
   faBars,

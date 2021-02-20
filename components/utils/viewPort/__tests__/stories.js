@@ -1,11 +1,13 @@
 /**
  * viewPort
  */
+
 // React
-import { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 
 // UI
-import { Text, viewPort } from '../../../'
+import { viewPort } from '../viewPort'
+import { Text } from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {

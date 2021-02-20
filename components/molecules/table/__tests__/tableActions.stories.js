@@ -2,6 +2,9 @@
  * Components - Molecules - Table Actions - Story
  */
 
+// React
+import React from 'react'
+
 // UI
 import { TableActions } from '../../../'
 import Readme from '../README.md'

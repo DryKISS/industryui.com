@@ -2,10 +2,12 @@
  * Size selector
  */
 
-import { ControlTypes } from './'
+// React
+import React from 'react'
 
 // UI
 import { arrayOfValues } from '../../components'
+import { ControlTypes } from './'
 import { THEME_SIZE } from '../../components/theme/constants/size'
 
 export const SizeControl = () => {

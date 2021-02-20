@@ -3,10 +3,10 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
-import { Table } from '../../../'
+import { Table } from '../components/wrapper'
 import Readme from '../README.md'
 
 // Data

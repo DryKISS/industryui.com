@@ -2,6 +2,9 @@
  * Components - Molecules - Table - Mock
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Image, TableActions, TableLink, Text } from '../../../'
 

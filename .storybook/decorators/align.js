@@ -2,6 +2,9 @@
  * Storybook - Decorators - Align
  */
 
+// React
+import React from 'react'
+
 // Decorator
 import { ControlTypes } from './'
 
@@ -12,7 +15,7 @@ export const AlignControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(ALIGN).sort()
+      options: arrayOfValues(THEME_ALIGN).sort()
     }
   }
 }

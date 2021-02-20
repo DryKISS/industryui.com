@@ -1,7 +1,16 @@
+/**
+ * Components - Molecules - Video Player
+ */
+
+// React
 import React, { useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
-import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from '../../'
 import { any, string } from 'prop-types'
+
+// Style
+import styled, { css } from 'styled-components'
+
+// UI
+import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from '../../'
 
 export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -17,6 +26,7 @@ export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) =
   const handlePaused = () => {
     setIsPlaying(false)
   }
+
   const handlePlayed = () => (played.current = true)
 
   const handleFullScreen = () => {
@@ -31,14 +41,18 @@ export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) =
       setWidth(width)
     }
   }
+
   const iconSize = width ? width / 6 : 40
+
   return (
     <VideoPlayerWrapper className={className}>
       <ResizeDetector onResize={handleResize} />
+
       <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
         <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
         <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
       </Overlay>
+
       <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
         <source src={src} type={videoType || 'video/mp4'} />
         Your browser does not support the video tag.
@@ -46,6 +60,7 @@ export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) =
     </VideoPlayerWrapper>
   )
 }
+
 const Overlay = styled.div`
   align-items: center;
   background: rgba(0, 0, 0, 0.3);
@@ -75,6 +90,7 @@ const Overlay = styled.div`
           pointer-events: none;
         `}
 `
+
 const VideoPlayerWrapper = styled.div`
   border-radius: 0.5rem;
   height: 100%;
@@ -82,14 +98,18 @@ const VideoPlayerWrapper = styled.div`
   overflow: hidden;
   width: 100%;
 `
+
 const Video = styled.video`
   border-radius: 0.5rem;
   height: 100%;
   outline: none;
   width: 100%;
 `
+
 VideoPlayer.prototypes = {
+  className: string,
   poster: string,
   src: string.isRequired,
-  videoProps: any
+  videoProps: any,
+  videoType: string
 }
