@@ -30,12 +30,14 @@ export const Details = ({
         {props.button && (
           <StyledButton
             content={props.button || 'Add New'}
-            context='secondary'
+            context="secondary"
             onClick={props.handleClick}
-            size='sm'
+            size="sm"
           />
         )}
-        {SummaryActionsComponent && <ActionsWrapper>{SummaryActionsComponent}</ActionsWrapper>}
+        {SummaryActionsComponent && (
+          <ActionsWrapper>{SummaryActionsComponent}</ActionsWrapper>
+        )}
         {Toolbar && <Toolbar />}
       </StyledSummary>
 

@@ -53,32 +53,34 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
 
   const handleStartRecord = () => {
     window &&
-      window.navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-        recorder.current = new window.MediaRecorder(stream)
+      window.navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then((stream) => {
+          recorder.current = new window.MediaRecorder(stream)
 
-        // Set record to <audio> when recording will be finished
-        recorder.current.addEventListener('dataavailable', e => {
-          if (canSendData.current === true) {
-            onVoiceRecord(e)
-          } else {
-            canSendData.current = true
-          }
-          stopTimer()
+          // Set record to <audio> when recording will be finished
+          recorder.current.addEventListener('dataavailable', (e) => {
+            if (canSendData.current === true) {
+              onVoiceRecord(e)
+            } else {
+              canSendData.current = true
+            }
+            stopTimer()
+          })
+
+          // Start recording
+          recorder.current.start()
+          timerInterval.current = setInterval(() => {
+            setTimer((time) => time + 1)
+          }, 1000)
+          setisRecording(true)
         })
-
-        // Start recording
-        recorder.current.start()
-        timerInterval.current = setInterval(() => {
-          setTimer(time => time + 1)
-        }, 1000)
-        setisRecording(true)
-      })
   }
 
   const handleStopRecord = () => {
     recorder.current.stop()
     // Remove "recording" icon from browser tab
-    recorder.current.stream.getTracks().forEach(i => i.stop())
+    recorder.current.stream.getTracks().forEach((i) => i.stop())
     setisRecording(false)
     stopTimer()
   }
@@ -99,7 +101,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
             </OverlayRecorderIconWrapper>
           )}
 
-          <Text content='Recording' context='dark' />
+          <Text content="Recording" context="dark" />
 
           <Loader>
             <Dot>.</Dot>
@@ -111,7 +113,7 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
             {toHHMMSS({ sec: timer + '', hasMinute: true, hasSecond: true })}
           </TimerWrapper>
 
-          <Close click={handleCancelRecord} context='danger' />
+          <Close click={handleCancelRecord} context="danger" />
         </OverLay>
 
         <Wrapper onClick={isRecording ? handleStopRecord : handleStartRecord}>
@@ -176,7 +178,8 @@ const Wrapper = styled.div`
 
 const OverLay = styled.div`
   align-items: center;
-  background-color: ${({ theme: { VOICE_RECORDER } }) => VOICE_RECORDER.overlayBackground};
+  background-color: ${({ theme: { VOICE_RECORDER } }) =>
+    VOICE_RECORDER.overlayBackground};
   display: flex;
   height: 45px;
   left: 4rem;

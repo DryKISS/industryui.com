@@ -16,24 +16,34 @@ import {
   withScriptjs
 } from 'react-google-maps'
 
-import { MarkerClusterer as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
+import { M as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
-const DynamicLocationHOC = Component => {
-  return props => {
+const DynamicLocationHOC = (Component) => {
+  return (props) => {
     // concat the apiKey
     const googleMapURL = `${props.googleMapURL}&key=${props.apiKey}`
     const containerElement = props.containerElement || (
-      <div style={{ height: props.containerHeight, width: props.containerWidth }} />
+      <div
+        style={{ height: props.containerHeight, width: props.containerWidth }}
+      />
     )
 
-    return <Component {...props} containerElement={containerElement} googleMapURL={googleMapURL} />
+    return (
+      <Component
+        {...props}
+        containerElement={containerElement}
+        googleMapURL={googleMapURL}
+      />
+    )
   }
 }
 
 export const DynamicLocation = DynamicLocationHOC(
   withScriptjs(
-    withGoogleMap(props => {
-      return props.defaultCenter.lat && props.defaultCenter.lng ? <GoogleMap {...props} /> : null
+    withGoogleMap((props) => {
+      return props.defaultCenter.lat && props.defaultCenter.lng ? (
+        <GoogleMap {...props} />
+      ) : null
     })
   )
 )

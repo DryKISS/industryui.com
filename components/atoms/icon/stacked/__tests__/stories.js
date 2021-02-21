@@ -2,12 +2,14 @@
  * Icon
  */
 
+// React
+import React from 'react'
+
 // UI
-import { IconStacked } from '../../../'
+import { IconStacked } from '../stacked'
 import Readme from '../README.md'
 
 export default {
-  title: 'Atoms/Icon/Stacked',
   component: IconStacked,
   parameters: {
     docs: {
@@ -15,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Icon/Stacked'
 }
 
-export const main = () => <IconStacked icon='envelope' />
+export const main = () => <IconStacked icon="envelope" />

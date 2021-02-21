@@ -33,7 +33,7 @@ export const Dropdown = ({
 
   const node = useRef()
 
-  const handleClickAway = event => {
+  const handleClickAway = (event) => {
     if (node.current.contains(event.target)) {
       return
     }
@@ -55,16 +55,15 @@ export const Dropdown = ({
     <StyledDropdown className={className} ref={node}>
       <StyledToggle
         className={`${open ? 'dropdown--active' : ''} dropdown--toggle`}
-        onClick={() => setOpen(!open)}
-      >
+        onClick={() => setOpen(!open)}>
         {children}
 
         {caret && (
           <Icon
-            aria-hidden='true'
-            className='dropdown--caret'
+            aria-hidden="true"
+            className="dropdown--caret"
             icon={position === THEME_POSITION.Top ? 'caret-up' : 'caret-down'}
-            prefix='fas'
+            prefix="fas"
           />
         )}
 
@@ -99,7 +98,11 @@ Dropdown.propTypes = {
   caret: bool,
   children: node,
   className: string,
-  elementType: oneOf([elementTypes.Colour, elementTypes.Icon, elementTypes.List]),
+  elementType: oneOf([
+    elementTypes.Colour,
+    elementTypes.Icon,
+    elementTypes.List
+  ]),
   items: array.isRequired,
   onChange: func,
   position: string

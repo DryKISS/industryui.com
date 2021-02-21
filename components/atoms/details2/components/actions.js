@@ -9,7 +9,18 @@ import { bool, func, node, number, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Details2Actions = ({ endActionComponent, startActionComponent, toolbar }) => {
+export const Details2Actions = ({
+  animationtime,
+  children,
+  content,
+  handleOpenClose,
+  iconComponent,
+  isOpen,
+  title,
+  endActionComponent,
+  startActionComponent,
+  toolbar
+}) => {
   // const animationtime = disableAnimation ? 0 : animationDuration
   // const [isOpen, setisOpen] = useState(open)
 
@@ -53,7 +64,8 @@ export const Details2Actions = ({ endActionComponent, startActionComponent, tool
   return (
     <ActionsWrapper>
       <StartActionComponentWrapper>
-        {startActionComponent} {(toolbar || endActionComponent) && <ActionsDivider />}
+        {startActionComponent}{' '}
+        {(toolbar || endActionComponent) && <ActionsDivider />}
       </StartActionComponentWrapper>
 
       <ToolbarWrapper>
@@ -97,5 +109,3 @@ Details2Actions.propTypes = {
   isOpen: bool,
   title: string.isRequired
 }
-
-Details2Actions.defaultProps = {}

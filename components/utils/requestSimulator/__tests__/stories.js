@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
 import { Button, requestSimulator, Space, Text } from '../../../'
@@ -24,7 +24,7 @@ export default {
   title: 'Utils/RequestSimulator'
 }
 
-export const RequestSimulator = args => {
+export const Main = (args) => {
   const [state, setstate] = useState({
     message: ''
   })

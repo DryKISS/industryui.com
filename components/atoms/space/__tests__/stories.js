@@ -2,6 +2,9 @@
  * Space
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ControlTypes } from '../../../../.storybook/decorators'
 
@@ -93,7 +96,7 @@ export default {
   title: 'Atoms/Space'
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <>
       <Space {...args}>

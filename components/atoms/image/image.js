@@ -3,12 +3,20 @@
  */
 
 // React
-import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types'
+import {
+  any,
+  bool,
+  func,
+  number,
+  objectOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Image = styled.img.attrs(props => ({
+export const Image = styled.img.attrs((props) => ({
   itemProp: 'contentUrl'
 }))`
   ${({ cover }) =>

@@ -11,8 +11,11 @@ import styled from 'styled-components'
 
 export const ButtonToolbar = ({ align, children }) => {
   return (
-    <StyledToolbar align={align} aria-label='Toolbar with button groups' role='toolbar'>
-      <StyledGroup role='group' aria-label='First group'>
+    <StyledToolbar
+      align={align}
+      aria-label="Toolbar with button groups"
+      role="toolbar">
+      <StyledGroup role="group" aria-label="First group">
         {children}
       </StyledGroup>
     </StyledToolbar>

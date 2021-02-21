@@ -4,7 +4,7 @@
  */
 import { differenceInYears, isValid } from 'date-fns'
 
-export const age = birthDate => {
+export const age = (birthDate) => {
   if (!birthDate || !isValid(birthDate)) {
     return 0
   }

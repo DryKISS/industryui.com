@@ -2,6 +2,9 @@
  * IUI Icons Story
  */
 
+// React
+import React from 'react'
+
 // Style
 import styled from 'styled-components'
 
@@ -93,7 +96,7 @@ export default {
   title: 'Icons/AllIcons'
 }
 
-export const main = props => {
+export const main = (props) => {
   if (props.hoverColour === 'false') {
     delete props.hoverColour
   }

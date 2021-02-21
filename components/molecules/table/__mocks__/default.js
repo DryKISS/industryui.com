@@ -65,7 +65,9 @@ export const noCols = [
   }
 ]
 
-const renderImage = ({ row }) => <Image alt='Logo' style={{ width: '50%' }} src={row.logo} />
+const renderImage = ({ row }) => (
+  <Image alt="Logo" style={{ width: '50%' }} src={row.logo} />
+)
 
 export const columnsActions = [
   {
@@ -73,7 +75,7 @@ export const columnsActions = [
   },
   {
     bottomCell: (
-      <Text bold context='danger'>
+      <Text bold context="danger">
         bottom Cell
       </Text>
     ),

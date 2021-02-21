@@ -12,7 +12,7 @@ import Head from 'next/head'
 export const MetaGoogle = ({ verification }) => {
   return (
     <Head>
-      <meta name='google-site-verification' content={verification} />
+      <meta name="google-site-verification" content={verification} />
     </Head>
   )
 }

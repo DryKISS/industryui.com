@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
 import {
@@ -39,12 +39,13 @@ export default {
   title: 'Organisms/Messaging/Container'
 }
 
-export const main = args => {
+export const Main = (args) => {
   const [messaging] = useState(messages)
 
-  const handleFilter = type => {
+  const handleFilter = (type) => {
     if (type !== 'all') {
-      const msgs = JSON.parse(window.localStorage.getItem('messaging')) || messages
+      const msgs =
+        JSON.parse(window.localStorage.getItem('messaging')) || messages
       const filter = filterByKey(msgs, 'icon', type)
 
       MessagingCommunicationService.send({
@@ -59,7 +60,7 @@ export const main = args => {
     }
   }
 
-  const handleSearch = query => {
+  const handleSearch = (query) => {
     if (query) {
       const search = filterByString(messaging, 'content', query)
       // setMessaging(search)
@@ -99,14 +100,14 @@ export const main = args => {
     })
   }
 
-  const onHashtagClick = e => {
+  const onHashtagClick = (e) => {
     console.info(e)
   }
-  const onMentionClick = e => {
+  const onMentionClick = (e) => {
     console.info(e)
   }
 
-  const onSubmit = message => {
+  const onSubmit = (message) => {
     const msg = {
       // attachments can be an array of files or array of type {src:string}
       attachments: message.attachments || [],
@@ -125,7 +126,7 @@ export const main = args => {
       ...(message.voice && { voice: URL.createObjectURL(message.voice) }),
       ...(message.replyTo && { replyTo: message.replyTo })
     }
-    // mimic the server delay and response(response is msg which should be passed to service as [msg])
+    // mimic the server delay and response is msg which should be passed to service as [msg]
     setTimeout(() => {
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
@@ -136,6 +137,7 @@ export const main = args => {
       })
     }, 100)
   }
+
   return (
     <>
       <MessagingContainer

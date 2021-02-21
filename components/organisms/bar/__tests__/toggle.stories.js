@@ -2,6 +2,9 @@
  * Components - Organisms - Bar - Tests - Toggle
  */
 
+// React
+import React from 'react'
+
 // UI
 import { BarToggle } from '../components/toggle'
 import Readme from '../README.md'
@@ -18,6 +21,6 @@ export default {
   title: 'Organisms/Bar/Toggle'
 }
 
-export const toggle = args => {
+export const toggle = (args) => {
   return <BarToggle {...args} />
 }

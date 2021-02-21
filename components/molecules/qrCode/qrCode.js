@@ -29,11 +29,11 @@ export const QrCode = ({ assetId, path }) => {
   }
 
   return (
-    <Details button='Download' handleClick={downloadQR} open summary='QR Code'>
+    <Details button="Download" handleClick={downloadQR} open summary="QR Code">
       <StyledQRContainer id={`qr${assetId}`}>
         <QRCode
-          bgColor='#ffffff'
-          fgColor='#000000'
+          bgColor="#ffffff"
+          fgColor="#000000"
           includeMargin={false}
           // imageSettings={{
           //   src: 'https://admin.cleverly.works/static/logo/cleverly-mark-logo.svg',
@@ -43,8 +43,8 @@ export const QrCode = ({ assetId, path }) => {
           //   width: 24,
           //   excavate: true
           // }}
-          level='H'
-          renderAs='canvas'
+          level="H"
+          renderAs="canvas"
           size={256}
           value={`${path}`}
         />

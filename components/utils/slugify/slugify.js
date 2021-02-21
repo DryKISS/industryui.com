@@ -7,7 +7,7 @@
  * Replace multiple spaces with replacer
  * Replace the replacer in the last occurence
  */
-export const slugify = string => {
+export const slugify = (string) => {
   const replacer = '-'
 
   const slug = string

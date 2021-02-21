@@ -2,8 +2,14 @@
  * Charts - Bar - responsiveBar - Story
  */
 
+// React
+import React from 'react'
+
 // Nivo
 import { colorSchemes } from '@nivo/colors'
+
+// Styled Components
+import styled from 'styled-components'
 
 // UI
 import { BarChart, objectWithoutProperties } from '../../../../../'
@@ -21,9 +27,6 @@ import {
   keyToIndexBy2,
   keyToIndexBy3
 } from '../__mocks__/nivoResponsive'
-
-// Styled Components
-import styled from 'styled-components'
 
 export default {
   args: {
@@ -81,7 +84,7 @@ export default {
   },
   title: 'Molecules/Charts/Nivo/Bar'
 }
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const { args } = props
   const restOfProps = objectWithoutProperties(props, ['args'])
   return (
@@ -96,11 +99,13 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-export const main = args => {
-  return <BaseComponent data={Data} indexBy={keyToIndexBy} keys={keys} args={args} />
+export const main = (args) => {
+  return (
+    <BaseComponent data={Data} indexBy={keyToIndexBy} keys={keys} args={args} />
+  )
 }
 
-export const StackedBarDouble = args => {
+export const StackedBarDouble = (args) => {
   return (
     <BaseComponent
       args={args}
@@ -112,7 +117,7 @@ export const StackedBarDouble = args => {
   )
 }
 
-export const StackedBarTriple = args => {
+export const StackedBarTriple = (args) => {
   return (
     <BaseComponent
       args={args}
@@ -123,7 +128,7 @@ export const StackedBarTriple = args => {
     />
   )
 }
-export const CustomAxis = args => {
+export const CustomAxis = (args) => {
   return (
     <BaseComponent
       args={args}
@@ -131,7 +136,7 @@ export const CustomAxis = args => {
         tickRotation: 45,
         legend: 'Custom Legend'
       }}
-      axisLeft={{ format: value => `${value}$` }}
+      axisLeft={{ format: (value) => `${value}$` }}
       data={Data}
       indexBy={keyToIndexBy}
       keys={keys}
@@ -139,25 +144,27 @@ export const CustomAxis = args => {
   )
 }
 
-export const CustomLabel = args => {
+export const CustomLabel = (args) => {
   return (
     <BaseComponent
       args={args}
       data={Data}
       indexBy={keyToIndexBy}
-      label={v => `${v.value}$`}
+      label={(v) => `${v.value}$`}
       keys={keys}
     />
   )
 }
 
-export const CustomTooltip = args => {
+export const CustomTooltip = (args) => {
   return (
     <BaseComponent
       args={args}
       data={Data}
       indexBy={keyToIndexBy}
-      tooltip={pointData => `${pointData.data.product}:${pointData.data.profit}$`}
+      tooltip={(pointData) =>
+        `${pointData.data.product}:${pointData.data.profit}$`
+      }
       keys={keys}
     />
   )

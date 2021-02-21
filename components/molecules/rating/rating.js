@@ -16,7 +16,12 @@ export const Rating = ({ className, context, value, size }) => {
   const rating = []
   for (let i = 0; i < size; i++) {
     rating.push(
-      <StyledRating active={i + 1 <= value} className={className} context={context} key={i} />
+      <StyledRating
+        active={i + 1 <= value}
+        className={className}
+        context={context}
+        key={i}
+      />
     )
   }
 
@@ -24,7 +29,7 @@ export const Rating = ({ className, context, value, size }) => {
 }
 
 const StyledRating = styled.div`
-  ${props => themeBackground(props)}
+  ${(props) => themeBackground(props)}
   border-radius: 0.25rem;
   display: inline-block;
   height: 15px;

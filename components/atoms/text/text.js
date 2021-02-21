@@ -15,9 +15,21 @@ import { themeDisplay } from '../../theme/utils/display'
 // Props
 import { propTypes, defaultProps } from './props'
 
-export const Text = ({ align, children, className, content, context, size, weight }) => {
+export const Text = ({
+  align,
+  children,
+  className,
+  content,
+  context,
+  size,
+  weight
+}) => {
   return (
-    <StyledText align={align} className={className} context={context} size={size}>
+    <StyledText
+      align={align}
+      className={className}
+      context={context}
+      size={size}>
       {content || children}
     </StyledText>
   )
@@ -34,7 +46,6 @@ const StyledText = styled.p`
     font-size: ${theme.TEXT.FONT_SIZE[size] ?? '1rem'};
     line-height: ${theme.TEXT.LINE_HEIGHT[size] ?? '1rem'};
   `}
-
 
   ${({ size }) =>
     size === 'xxl' &&
@@ -69,8 +80,8 @@ const StyledText = styled.p`
       `}
     `}
 
-  ${theme => themeDisplay(theme)}
-  ${theme => SPACER(theme)}
+  ${(theme) => themeDisplay(theme)}
+  ${(theme) => SPACER(theme)}
 
 
   ${({ weight }) =>
@@ -86,7 +97,6 @@ const StyledText = styled.p`
         ? 700
         : 500};
     `}
-
 `
 
 Text.propTypes = propTypes

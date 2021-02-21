@@ -14,7 +14,7 @@ import { defaultProps, propTypes } from './props'
 
 export const Tooltip = styled(Tippy)`
   && {
-    ${props => themeBackground(props)}
+    ${(props) => themeBackground(props)}
 
     .tippy-content {
       padding: 8px;

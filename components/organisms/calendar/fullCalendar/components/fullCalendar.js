@@ -1,5 +1,5 @@
 /**
- * Full Calendar
+ * Components - Organisms - Calendar - Full Calendar
  */
 
 // React
@@ -19,30 +19,32 @@ const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
   ssr: false
 })
 
-export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }, ref) => {
-  const { CALENDAR } = Theme
-  const [loading, setLoading] = useState(false)
+export const Calendar = forwardRef(
+  ({ defaultEventColor, showTooltip, ...props }, ref) => {
+    const { CALENDAR } = Theme
+    const [loading, setLoading] = useState(false)
 
-  return (
-    <Wrapper>
-      {props.hasLoading && loading && (
-        <PageLoading
-          indicator={<LdsSpinner color='#000' size={50} />}
-          opacity={0.7}
-          position='absolute'
+    return (
+      <Wrapper>
+        {props.hasLoading && loading && (
+          <PageLoading
+            indicator={<LdsSpinner color="#000" size={50} />}
+            opacity={0.7}
+            position="absolute"
+          />
+        )}
+
+        <CalendarWrapper
+          {...props}
+          header={props.header || CALENDAR.header}
+          events={props.events}
+          forwardedRef={ref}
+          loading={setLoading}
         />
-      )}
-
-      <CalendarWrapper
-        {...props}
-        header={props.header || CALENDAR.header}
-        events={props.events}
-        forwardedRef={ref}
-        loading={setLoading}
-      />
-    </Wrapper>
-  )
-})
+      </Wrapper>
+    )
+  }
+)
 
 const Wrapper = styled.div`
   position: relative;

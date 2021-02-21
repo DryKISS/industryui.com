@@ -1,7 +1,10 @@
 /**
- * What this?
+ * Get Initial Locale
+ * Gets the users locale string from locale storage
+ *
+ * @todo the User Provider should also push down a user saved locale
+ * @todo we have a localstorage hook - use it
  */
-
 // React
 import { useContext } from 'react'
 
@@ -9,17 +12,10 @@ import { useContext } from 'react'
 import { ConfigContext } from '../../'
 
 export const isLocale = ({ locales, tested }) => {
-  return locales.some(locale => locale === tested)
+  return locales.some((locale) => locale === tested)
 }
 
-/**
- * Get Initial Locale
- * Gets the users locale string from locale storage
- *
- * @todo the User Provider should also push down a user saved locale
- * @todo we have a localstorage hook - use it
- */
-export const getInitialLocale = () => {
+export const GetInitialLocale = () => {
   const { defaultLocale } = useContext(ConfigContext)
 
   const localSetting = window.localStorage.getItem('locale')

@@ -2,12 +2,15 @@
  * Toggle - Stories
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { action } from '@storybook/addon-actions'
 import { ContextControl, ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Toggle } from '../../../'
+import { Toggle } from '../components/toggle'
 import Readme from '../README.md'
 
 export default {
@@ -22,7 +25,6 @@ export default {
       control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] }
     }
   },
-  title: 'Atoms/Toggle',
   component: Toggle,
   parameters: {
     docs: {
@@ -30,10 +32,11 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Toggle'
 }
 
-export const main = args => (
+export const main = (args) => (
   <Toggle
     context={args.context}
     disabled={args.disabled}

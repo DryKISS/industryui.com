@@ -31,7 +31,7 @@ import {
 // Style
 import styled from 'styled-components'
 
-const ErrMessage = message => <FormError message={message} />
+const ErrMessage = (message) => <FormError message={message} />
 
 export const Login = ({
   blockSubmitButton,
@@ -57,7 +57,7 @@ export const Login = ({
 
   const onSubmit = ({ email, password }) => {
     if (!submit) {
-      signIn('email', email, password, error => error && setError(error))
+      signIn('email', email, password, (error) => error && setError(error))
     } else {
       submit()
     }
@@ -72,23 +72,23 @@ export const Login = ({
     <Wrapper>
       {showTitle && <PageHeading center heading={heading} divider={false} />}
 
-      {error && <Alert content={error.message} context='warning' />}
+      {error && <Alert content={error.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label='Email'>
+        <FormLabel label="Email">
           <FormField
             {...defaultOptions}
             autoFocus
-            name='email'
+            name="email"
             placeholder={showPlaceholder ? 'Email' : ''}
           />
           {errors.email && ErrMessage(errors.email.message)}
         </FormLabel>
 
-        <FormLabel label='Password'>
+        <FormLabel label="Password">
           <FormField
             {...defaultOptions}
-            name='password'
+            name="password"
             placeholder={showPlaceholder ? 'Password' : ''}
             type={showPass ? 'text' : 'password'}
           />
@@ -96,33 +96,35 @@ export const Login = ({
         </FormLabel>
 
         {showPassword && (
-          <ShowPassword align='right' onClick={() => setShowPass(prev => !prev)}>
+          <ShowPassword
+            align="right"
+            onClick={() => setShowPass((prev) => !prev)}>
             {showPass ? 'Hide Password' : 'Show Password'}
           </ShowPassword>
         )}
 
         <Button
-          align='right'
+          align="right"
           block={blockSubmitButton}
-          content='Log in'
-          context='primary'
+          content="Log in"
+          context="primary"
           disabled={formState.isSubmitting}
-          size='lg'
-          type='submit'
+          size="lg"
+          type="submit"
         />
       </Form>
 
       {forgotPassword && (
         <>
-          <Text align='center'>
+          <Text align="center">
             <Link to={pathForgot}>Forgot password?</Link>
           </Text>
-          <Space marginBottom='md' />
+          <Space marginBottom="md" />
         </>
       )}
 
       {pathSignUp && (
-        <Text align='center'>
+        <Text align="center">
           Don't have an account? <Link to={pathSignUp}>Apply now!</Link>
         </Text>
       )}

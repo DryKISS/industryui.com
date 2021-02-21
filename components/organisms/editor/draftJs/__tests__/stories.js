@@ -2,6 +2,9 @@
  * Draft JS
  */
 
+// React
+import React from 'react'
+
 // DraftJS
 import { DraftJs } from '../draftJs'
 
@@ -23,8 +26,8 @@ export default {
   title: 'Organisms/Editor'
 }
 
-export const main = () => {
-  const onSubmit = data => {
+export const Main = () => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -34,7 +37,7 @@ export const main = () => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <DraftJs control={control} name={name} setValue={setValue} />
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }

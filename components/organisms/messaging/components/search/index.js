@@ -27,11 +27,11 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
     mode: 'onChange'
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     onSearch(data.query)
   }
 
-  const onFilterChange = e => {
+  const onFilterChange = (e) => {
     onFilter && onFilter(e.target.value)
   }
 
@@ -45,13 +45,17 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Column md={6}>
-            <StyledSearch {...defaultOptions} prependSearchIcon placeholder={placeholder} />
+            <StyledSearch
+              {...defaultOptions}
+              prependSearchIcon
+              placeholder={placeholder}
+            />
           </Column>
 
           <Column md={6}>
             <StyledSelect
               {...defaultOptions}
-              name='messagingFilter'
+              name="messagingFilter"
               onChange={onFilterChange}
               options={Items}
             />

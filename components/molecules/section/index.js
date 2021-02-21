@@ -16,7 +16,14 @@ import styled from 'styled-components'
 export const Section = ({ children, className, heading, row, style }) => (
   <StyleSection>
     <Container>
-      {heading && <Heading className='text-center' content={heading} context='primary' tag='h2' />}
+      {heading && (
+        <Heading
+          className="text-center"
+          content={heading}
+          context="primary"
+          tag="h2"
+        />
+      )}
       {row ? <Row>{children}</Row> : children}
     </Container>
   </StyleSection>

@@ -2,6 +2,9 @@
  * Components - Blog - Listing
  */
 
+// React
+import React from 'react'
+
 // UI
 import { BlogListing } from '../listing'
 import Readme from '../README.md'
@@ -21,10 +24,19 @@ export default {
   title: 'Blog/Listing'
 }
 
-export const main = args => <BlogListing articles={Articles} config={Blog} {...args} />
-
-export const category = args => (
-  <BlogListing articles={Articles} category='development' config={Blog} {...args} />
+export const main = (args) => (
+  <BlogListing articles={Articles} config={Blog} {...args} />
 )
 
-export const tag = args => <BlogListing articles={Articles} config={Blog} tag='jam' {...args} />
+export const category = (args) => (
+  <BlogListing
+    articles={Articles}
+    category="development"
+    config={Blog}
+    {...args}
+  />
+)
+
+export const tag = (args) => (
+  <BlogListing articles={Articles} config={Blog} tag="jam" {...args} />
+)

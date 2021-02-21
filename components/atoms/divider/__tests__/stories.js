@@ -2,6 +2,9 @@
  * Divider
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
@@ -35,7 +38,7 @@ export default {
   title: 'Atoms/Divider'
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   return (
     <StyledWrapper>
       <Text>Text</Text>
@@ -47,8 +50,8 @@ const BaseComponent = props => {
   )
 }
 
-export const main = args => <BaseComponent {...args} />
-export const vertical = args => <BaseComponent {...args} flexItem vertical />
+export const main = (args) => <BaseComponent {...args} />
+export const vertical = (args) => <BaseComponent {...args} flexItem vertical />
 
 const StyledWrapper = styled.div`
   align-items: center;

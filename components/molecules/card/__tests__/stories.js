@@ -2,6 +2,9 @@
  * Card Stories
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators'
 
@@ -28,7 +31,7 @@ export default {
   },
   title: 'Molecules/Card',
   component: Card,
-  decorators: [story => <Column md={4}>{story()}</Column>],
+  decorators: [(story) => <Column md={4}>{story()}</Column>],
   parameters: {
     docs: {
       description: {
@@ -42,4 +45,4 @@ const BaseComponent = (props = {}) => {
   return <Card {...props} />
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

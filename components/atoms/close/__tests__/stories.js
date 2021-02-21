@@ -2,11 +2,17 @@
  * CLose
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ContextControl, IconPrefixControl } from '../../../../.storybook/decorators'
+import {
+  ContextControl,
+  IconPrefixControl
+} from '../../../../.storybook/decorators'
 
 // UI
-import { Close } from '../../../'
+import { Close } from '../close'
 import Readme from '../README.md'
 
 export default {
@@ -32,6 +38,6 @@ export default {
   title: 'Atoms/Close'
 }
 
-export const main = args => {
+export const main = (args) => {
   return <Close {...args} />
 }

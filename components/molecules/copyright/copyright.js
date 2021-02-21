@@ -27,7 +27,7 @@ export const Copyright = memo(({ fixed, icon, links }) => {
   }
 
   return (
-    <StyledCopyright fixed={fixed} data-cy='copyright'>
+    <StyledCopyright fixed={fixed} data-cy="copyright">
       <StyledContainer>
         <StyledRow>
           <Column md={links.length > 0 ? 3 : 12}>
@@ -35,7 +35,9 @@ export const Copyright = memo(({ fixed, icon, links }) => {
             {year} — {Brand.name}
           </Column>
 
-          {links.length > 0 && <StyledColumn md={9}>{renderLinks()}</StyledColumn>}
+          {links.length > 0 && (
+            <StyledColumn md={9}>{renderLinks()}</StyledColumn>
+          )}
         </StyledRow>
       </StyledContainer>
     </StyledCopyright>

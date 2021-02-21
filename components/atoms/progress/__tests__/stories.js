@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Storybook
 import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
@@ -27,7 +27,6 @@ export default {
     context: ContextControl(),
     size: SizeControl()
   },
-  title: 'Atoms/Progress',
   component: Progress,
   parameters: {
     docs: {
@@ -35,10 +34,11 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Atoms/Progress'
 }
 
-export const main = args => {
+export const Main = (args) => {
   const [Percent, setPercent] = useState(args.now)
 
   const handleClick = () => {
@@ -55,14 +55,13 @@ export const main = args => {
             animated={args.animated}
             context={args.context}
             now={Percent}
-            striped={args.striped}
-          >
+            striped={args.striped}>
             {Percent}%
           </ProgressBar>
         </Progress>
       </Space>
 
-      <Button size='sm' onClick={handleClick}>
+      <Button size="sm" onClick={handleClick}>
         Increase
       </Button>
     </>

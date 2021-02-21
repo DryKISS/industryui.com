@@ -3,7 +3,17 @@
  */
 
 // React
-import { any, bool, number, object, array, objectOf, oneOf, oneOfType, string } from 'prop-types'
+import {
+  any,
+  bool,
+  number,
+  object,
+  array,
+  objectOf,
+  oneOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // UI
 import { DISPLAY_PROP_TYPES, SPACER_PROP_TYPES } from '../../../'

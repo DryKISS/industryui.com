@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../components/social/facebook/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,cAAd;AACA,cAAc,eAAd","sourcesContent":["/**\n * Facebook\n */\nexport * from './pagePlugin'\nexport * from './shareButton'\n"],"file":"index.js"}

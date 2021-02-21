@@ -30,14 +30,16 @@ export const CardBody = ({
     <StyledBody className={className} center={center}>
       {title && (
         <StyledWrapper>
-          <StyledTitle content={title} noWrap={titleNoWrap} tag='h2' />
+          <StyledTitle content={title} noWrap={titleNoWrap} tag="h2" />
         </StyledWrapper>
       )}
 
       {(children || showCta) && (
         <StyledContent context={context}>
           {children}
-          {showCta && <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />}
+          {showCta && (
+            <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />
+          )}
         </StyledContent>
       )}
     </StyledBody>

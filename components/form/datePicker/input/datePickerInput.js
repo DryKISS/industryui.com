@@ -34,7 +34,7 @@ export const DatePickerInput = ({
 
   return (
     <>
-      <Space marginBottom='xs'>{label}</Space>
+      <Space marginBottom="xs">{label}</Space>
 
       <Row>
         {showDay && (
@@ -72,7 +72,7 @@ export const DatePickerInput = ({
               {...defaultOptions}
               data={{ 'data-index': index, 'data-name': 'year' }}
               name={`year${name}`}
-              placeholder='Select year'
+              placeholder="Select year"
               range={[yearStart, yearEnd]}
             />
           </Column>

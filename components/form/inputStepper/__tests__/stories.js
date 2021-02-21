@@ -1,6 +1,9 @@
 /**
- * Form - InputStepper
+ * Components - Form - Input Stepper
  */
+
+// React
+import React from 'react'
 
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators/context'
@@ -32,17 +35,15 @@ export default {
 }
 
 const schema = object().shape({
-  inputStepper: number()
-    .min(0, 'Should be greater than 0')
-    .required()
+  inputStepper: number().min(0, 'Should be greater than 0').required()
 })
 
-export const main = args => {
+export const Main = (args) => {
   const { control, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -59,11 +60,11 @@ export const main = args => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='Quantity'>
+      <FormLabel label="Quantity">
         <InputStepper {...defaultProps} />
       </FormLabel>
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }

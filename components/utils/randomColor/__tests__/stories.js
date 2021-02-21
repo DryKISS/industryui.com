@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
 import { RandomColor } from '../../../'
@@ -23,7 +23,7 @@ export default {
   title: 'Utils/RandomColor'
 }
 
-export const RandomColorCanvas = () => {
+export const Main = () => {
   const [Counter, setCounter] = useState(0)
 
   return (
@@ -31,8 +31,7 @@ export const RandomColorCanvas = () => {
       onClick={() => {
         setCounter(Counter + 1)
       }}
-      style={{ backgroundColor: RandomColor() }}
-    >
+      style={{ backgroundColor: RandomColor() }}>
       click on this area to visualize new render
     </ColorWrapper>
   )

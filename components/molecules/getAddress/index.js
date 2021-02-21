@@ -45,7 +45,7 @@ export const GetAddress = ({
 
   const InputValueRef = useRef('')
 
-  const onApiCall = data => {
+  const onApiCall = (data) => {
     const { response, hasError } = data
 
     if (!hasError) {
@@ -62,7 +62,7 @@ export const GetAddress = ({
     setIsLoading(false)
   }
 
-  const handleInputChange = value => {
+  const handleInputChange = (value) => {
     InputValueRef.current = value
   }
 
@@ -87,17 +87,24 @@ export const GetAddress = ({
         <FormField
           errors={errors[name] ? errors : Errors}
           name={name}
-          onChange={e => handleInputChange(e.target.value)}
+          onChange={(e) => handleInputChange(e.target.value)}
           placeholder={placeholder}
           register={register}
           size={size}
         />
-        <InputGroupAddon addonType='append'>
-          <Button onClick={handleSearchClick} content='Search' context='primary' size='sm' />
+        <InputGroupAddon addonType="append">
+          <Button
+            onClick={handleSearchClick}
+            content="Search"
+            context="primary"
+            size="sm"
+          />
         </InputGroupAddon>
       </InputWrapper>
       {(errors[name] || Errors[name]) && (
-        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
+        <FormError
+          message={errors[name] ? errors[name].message : Errors[name].message}
+        />
       )}
       {IsLoading && (
         <LoadingWrapper size={size}>

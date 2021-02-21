@@ -2,6 +2,9 @@
  * Location
  */
 
+// React
+import React from 'react'
+
 import { DynamicLocation, Marker } from '../../../'
 import Readme from '../README.md'
 
@@ -23,11 +26,10 @@ export const main = () => {
 
   return (
     <DynamicLocation
-      apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
+      apiKey="AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM"
       defaultCenter={coventGardenCoordinates}
-      width='400px'
-      zoom={13.5}
-    >
+      width="400px"
+      zoom={13.5}>
       <Marker position={coventGardenCoordinates} />
       <Marker position={westminsterAbbeyCoordinates} />
     </DynamicLocation>

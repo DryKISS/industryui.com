@@ -5,14 +5,35 @@
 // React
 import { number, bool } from 'prop-types'
 
-export const SPACER_FORMULA = factor => factor * 4
+export const SPACER_FORMULA = (factor) => factor * 4
 
 export const SPACING = (...nums) => {
   const amount = 4
-  return nums.reduce((output, n) => `${output}${n * amount}${n > 0 ? 'px' : ''} `, '')
+  return nums.reduce(
+    (output, n) => `${output}${n * amount}${n > 0 ? 'px' : ''} `,
+    ''
+  )
 }
 
-export const SPACER = ({ m, m0, mx, my, mt, mb, mr, ml, mAuto, p, p0, px, py, pt, pb, pr, pl }) => {
+export const SPACER = ({
+  m,
+  m0,
+  mx,
+  my,
+  mt,
+  mb,
+  mr,
+  ml,
+  mAuto,
+  p,
+  p0,
+  px,
+  py,
+  pt,
+  pb,
+  pr,
+  pl
+}) => {
   let temp = ''
 
   if (m) {

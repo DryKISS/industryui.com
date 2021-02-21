@@ -26,11 +26,11 @@ export const Intercom = memo(({ appID }) => {
 
     if (!window.Intercom) {
       ;((w, d, id, s, x) => {
-        function i () {
+        function i() {
           i.c(arguments)
         }
         i.q = []
-        i.c = args => {
+        i.c = (args) => {
           i.q.push(args)
         }
         w.Intercom = i

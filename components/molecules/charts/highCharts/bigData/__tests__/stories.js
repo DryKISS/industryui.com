@@ -2,6 +2,9 @@
  * highCharts - big data line chart
  */
 
+// React
+import React from 'react'
+
 // UI
 import { HighChart } from '../../../'
 import Readme from '../README.md'
@@ -36,7 +39,7 @@ export default {
   }
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const violationCheck = ({ y }) => {
     if (props.args.withViolationLimits) {
       if (y > props.args.violationMax || y < props.args.violationMin) {
@@ -76,12 +79,12 @@ const BaseComponent = props => {
 
   return (
     <StyledWrapper>
-      <HighChart options={options} constructorType='stockChart' />
+      <HighChart options={options} constructorType="stockChart" />
     </StyledWrapper>
   )
 }
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent args={args} />
 }
 

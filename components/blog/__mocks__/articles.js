@@ -42,7 +42,7 @@ export const Articles = [
     description: 'Static Site development',
     excerpt: 'Static Site development',
     heading:
-      'truncated header truncated header truncated header truncated header truncated header truncated header ',
+      'truncated header truncated header truncated header truncated header truncated header',
     hero: true,
     published: true,
     readtime: 2,

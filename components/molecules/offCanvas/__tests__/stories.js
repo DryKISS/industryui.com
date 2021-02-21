@@ -3,7 +3,7 @@
  */
 
 // React
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 
 // Decorators
 import { ContextControl } from '../../../../.storybook/decorators'
@@ -35,8 +35,12 @@ export default {
   },
   argTypes: {
     context: ContextControl(),
-    overlayOpacity: { control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 } },
-    placement: { control: { type: 'select', options: ['bottom', 'left', 'right', 'top'] } },
+    overlayOpacity: {
+      control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 }
+    },
+    placement: {
+      control: { type: 'select', options: ['bottom', 'left', 'right', 'top'] }
+    },
     variant: { control: { type: 'select', options: ['extended', 'normal'] } },
     width: { name: 'Width(%)' }
   },
@@ -50,7 +54,7 @@ export default {
   }
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const offCanvas = useContext(OffCanvasContext)
 
   const { register } = useForm()
@@ -62,7 +66,7 @@ const BaseComponent = props => {
     })
   }
 
-  return <Button content='Show' onClick={handleClick} />
+  return <Button content="Show" onClick={handleClick} />
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

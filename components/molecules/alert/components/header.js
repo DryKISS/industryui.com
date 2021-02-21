@@ -15,12 +15,16 @@ import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const AlertHeader = ({ context, header, icon, iconPrefix }) => (
   <StyledHeader context={context}>
-    {icon && <Icon aria-hidden='true' context='help' icon={icon} prefix={iconPrefix} />} {header}
+    {icon && (
+      <Icon aria-hidden="true" context="help" icon={icon} prefix={iconPrefix} />
+    )}{' '}
+    {header}
   </StyledHeader>
 )
 
 const StyledHeader = styled.div`
-  background: ${({ context, theme }) => shadeLinearRgb(-0.4, theme.COLOUR[context])};
+  background: ${({ context, theme }) =>
+    shadeLinearRgb(-0.4, theme.COLOUR[context])};
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   color: #fff;

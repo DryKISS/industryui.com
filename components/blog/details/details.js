@@ -13,35 +13,43 @@ import styled from 'styled-components'
 import { BlogCategory } from '../category/category'
 import { BlogReadTime } from '../readTime/readTime'
 
-import { BlogTags, Divider, FacebookShareButton, Icon, List, ListItem, slugify } from '../../'
+import {
+  BlogTags,
+  Divider,
+  FacebookShareButton,
+  Icon,
+  List,
+  ListItem,
+  slugify
+} from '../../'
 
 import { Date } from '../../atoms/date/date'
 
 export const BlogDetails = ({ article, config, facebook }) => {
   return (
     <StyledArticleDetails>
-      <Divider size='sm' />
+      <Divider size="sm" />
 
       <List inline unstyled style={{ marginTop: '.25rem' }}>
         <ListItem style={{ marginRight: '1rem' }}>
-          <StyledIcon context='dark' icon='calendar-alt' />
-          <Date date={article.date} size='sm' />
+          <StyledIcon context="dark" icon="calendar-alt" />
+          <Date date={article.date} size="sm" />
         </ListItem>
 
         <ListItem style={{ marginRight: '1rem' }}>
-          <StyledIcon context='dark' icon='user' />
+          <StyledIcon context="dark" icon="user" />
           <BlogCategory author config={config} to={article.author} />
         </ListItem>
 
         <ListItem style={{ marginRight: '1rem' }}>
-          <StyledIcon context='dark' icon='stopwatch' />
+          <StyledIcon context="dark" icon="stopwatch" />
           <BlogReadTime time={article.readtime} />
         </ListItem>
       </List>
 
       {article.tags && <BlogTags tags={article.tags} />}
 
-      <Divider size='sm' />
+      <Divider size="sm" />
 
       <StyledShare>
         <StyledShareText>Share this article</StyledShareText>
@@ -50,7 +58,9 @@ export const BlogDetails = ({ article, config, facebook }) => {
           appId={facebook.appId}
           hashTag={facebook.hashTag}
           iFrame
-          to={`${facebook.domain}${config.path}/${slugify(article.category)}/${article.slug}`}
+          to={`${facebook.domain}${config.path}/${slugify(article.category)}/${
+            article.slug
+          }`}
         />
 
         {/* Twitter */}
@@ -64,7 +74,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
         </StyledShareLink> */}
       </StyledShare>
 
-      <Divider size='sm' />
+      <Divider size="sm" />
     </StyledArticleDetails>
   )
 }

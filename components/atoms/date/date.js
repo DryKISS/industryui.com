@@ -14,7 +14,11 @@ import { THEME_SIZE } from '../../theme/constants/size'
 
 export const Date = ({ date, size }) => {
   return (
-    <StyledTime dateTime={date} itemProp='datePublished' pubdate='pubdate' size={size}>
+    <StyledTime
+      dateTime={date}
+      itemProp="datePublished"
+      pubdate="pubdate"
+      size={size}>
       {date}
     </StyledTime>
   )

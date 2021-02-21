@@ -2,6 +2,9 @@
  * Avatar
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
@@ -43,14 +46,16 @@ export default {
   title: 'Atoms/Avatar'
 }
 
-export const main = args => {
+export const main = (args) => {
   const props = {
     action: args.withAction ? args.action : '',
     content: args.content,
     context: args.context,
     gmail: args.withGravatar ? args.gmail : '',
     size: args.size,
-    src: args.withImage ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg' : ''
+    src: args.withImage
+      ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg'
+      : ''
   }
 
   return <Avatar {...props} />

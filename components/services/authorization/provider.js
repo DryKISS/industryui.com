@@ -53,7 +53,7 @@ export const AuthorizationProvider = ({ children }) => {
     }
   }
 
-  const checkRole = role => {
+  const checkRole = (role) => {
     // check
     const [type, subtype] = role.split('_')
 
@@ -62,7 +62,9 @@ export const AuthorizationProvider = ({ children }) => {
         case 'owner':
           return user.role === type + '_owner'
         case 'manager':
-          return user.role === type + '_owner' || user.role === type + '_manager'
+          return (
+            user.role === type + '_owner' || user.role === type + '_manager'
+          )
         case 'user':
           return user.role.startsWith(type)
         default:
@@ -73,7 +75,7 @@ export const AuthorizationProvider = ({ children }) => {
     }
   }
 
-  const hasRole = role => {
+  const hasRole = (role) => {
     if (user && user.role) {
       if (Array.isArray(role)) {
         return role.some(checkRole)
@@ -90,8 +92,7 @@ export const AuthorizationProvider = ({ children }) => {
         value={{
           hasAccess,
           hasRole
-        }}
-      >
+        }}>
         {children}
       </AuthorizationContext.Provider>
     )

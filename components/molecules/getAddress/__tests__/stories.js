@@ -1,7 +1,9 @@
 /**
  * Get Address
  */
-//
+
+// React
+import React from 'react'
 
 // Storybook
 import { ControlTypes } from '../../../../.storybook/decorators'
@@ -18,13 +20,20 @@ import { Button, Column, Form, GetAddress } from '../../../'
 import Readme from '../README.md'
 
 export default {
-  args: { size: 'lg', label: 'PostalCode', placeholder: 'enter postal code here ...', throttle: 0 },
+  args: {
+    size: 'lg',
+    label: 'PostalCode',
+    placeholder: 'enter postal code here ...',
+    throttle: 0
+  },
   argTypes: {
     errors: { control: { disable: true } },
     name: { control: { disable: true } },
     register: { control: { disable: true } },
     setValue: { control: { disable: true } },
-    size: { control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] } },
+    size: {
+      control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] }
+    },
     validator: { control: { disable: true } }
   },
   title: 'Molecules/Get Address',
@@ -44,10 +53,12 @@ const schema = object().shape({
   [elementName]: string().required('This Field Is Required')
 })
 
-export const main = args => {
-  const { errors, handleSubmit, register, setValue } = useForm({ resolver: yupResolver(schema) })
+export const Main = (args) => {
+  const { errors, handleSubmit, register, setValue } = useForm({
+    resolver: yupResolver(schema)
+  })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -61,7 +72,7 @@ export const main = args => {
           register={register}
           name={elementName}
         />
-        <Button content='Submit' type='submit' />
+        <Button content="Submit" type="submit" />
       </Column>
     </Form>
   )

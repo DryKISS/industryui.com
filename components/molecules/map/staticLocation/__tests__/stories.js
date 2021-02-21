@@ -2,10 +2,14 @@
  * Map - Static Location
  */
 
+// React
+import React from 'react'
+
+// Style
 import styled from 'styled-components'
 
 // Hero
-import { StaticLocation } from '../'
+import { StaticLocation } from '../staticLocation'
 import Readme from '../README.md'
 
 export default {
@@ -36,7 +40,7 @@ export const main = () => {
 
   return (
     <StaticLocation
-      apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
+      apiKey="AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM"
       center={center}
       size={size}
       paths={paths}
@@ -51,7 +55,7 @@ export const coventGarden = () => {
 
   return (
     <StaticLocation
-      apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
+      apiKey="AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM"
       center={coventGardenPostCode}
       size={size}
       location={coventGardenPostCode}
@@ -65,7 +69,7 @@ export const westminsterAbbey = () => {
 
   return (
     <StaticLocation
-      apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
+      apiKey="AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM"
       center={westminsterAbbeyPostCode}
       size={size}
       location={westminsterAbbeyPostCode}
@@ -86,8 +90,8 @@ export const responsiveWesternCentral = () => {
 
   return (
     <StaticLocation
-      apiKey='AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM'
-      center='London'
+      apiKey="AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM"
+      center="London"
       container={ResponsiveImg}
       size={size}
       location={westernCentralPostCode}

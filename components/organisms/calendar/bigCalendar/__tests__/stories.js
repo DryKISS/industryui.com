@@ -2,12 +2,14 @@
  * Big Calendar
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BigCalendar } from '../../../'
+import { BigCalendar } from '../bigCalendar'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Big Calendar',
   components: BigCalendar,
   parameters: {
     docs: {
@@ -15,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Big Calendar'
 }
 
-export const main = () => <BigCalendar />
+export const main = (args) => <BigCalendar {...args} />

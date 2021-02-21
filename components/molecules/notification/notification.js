@@ -13,7 +13,15 @@ import { THEME_CONTEXT } from '../../theme/constants/context'
 // Style
 import styled from 'styled-components'
 
-export const Notification = ({ close, content, context, date, icon, link, title }) => {
+export const Notification = ({
+  close,
+  content,
+  context,
+  date,
+  icon,
+  link,
+  title
+}) => {
   let body = (
     <>
       <StyledNotificationBody>{content}</StyledNotificationBody>
@@ -31,7 +39,13 @@ export const Notification = ({ close, content, context, date, icon, link, title 
 
   return (
     <StyledNotificationWrapper>
-      <Alert close={close} content={body} context={context} header={title} icon={icon} />
+      <Alert
+        close={close}
+        content={body}
+        context={context}
+        header={title}
+        icon={icon}
+      />
     </StyledNotificationWrapper>
   )
 }

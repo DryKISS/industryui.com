@@ -11,7 +11,7 @@ import { any, bool, func, number, oneOf, string } from 'prop-types'
 import { OffCanvasComponent } from '../../../'
 import { THEME_CONTEXT } from '../../../theme/constants/context'
 
-export const OffCanvas = props => {
+export const OffCanvas = (props) => {
   const [mounted, setMounted] = useState(false)
 
   let container = document.body
@@ -37,7 +37,9 @@ export const OffCanvas = props => {
     }
   }, [props.show])
 
-  return mounted ? createPortal(<OffCanvasComponent {...props} />, container) : null
+  return mounted
+    ? createPortal(<OffCanvasComponent {...props} />, container)
+    : null
 }
 
 OffCanvas.propTypes = {

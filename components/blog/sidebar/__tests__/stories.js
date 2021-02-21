@@ -2,8 +2,11 @@
  * Blog - Sidebar
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogSidebar } from '../../../'
+import { BlogSidebar } from '../sidebar'
 import Readme from '../README.md'
 
 // Data
@@ -21,6 +24,12 @@ export default {
   title: 'Blog/Sidebar'
 }
 
-export const main = args => (
-  <BlogSidebar articles={Articles} config={Blog} facebook={Facebook} findFood {...args} />
+export const main = (args) => (
+  <BlogSidebar
+    articles={Articles}
+    config={Blog}
+    facebook={Facebook}
+    findFood
+    {...args}
+  />
 )

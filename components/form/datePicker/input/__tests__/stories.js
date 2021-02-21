@@ -2,6 +2,9 @@
  * Form - Date Picker - Input
  */
 
+// React
+import React from 'react'
+
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
@@ -38,7 +41,7 @@ const BaseComponent = (props = {}) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     data: {},
@@ -56,9 +59,9 @@ const BaseComponent = (props = {}) => {
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerInput {...defaultProps} />
 
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
 
       <Text>
         {getValues() && getValues().yearPicker}
@@ -77,4 +80,4 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

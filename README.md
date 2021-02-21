@@ -14,8 +14,8 @@ We are making this available to the wider community to experiment with at this t
 ## Setup
 
 ```bash
-$ yarn install
-$ yarn start
+$ npm install
+$ npm start
 ```
 
 This will start Storybook to play with the components

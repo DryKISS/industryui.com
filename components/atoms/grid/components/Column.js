@@ -4,12 +4,22 @@
 
 // React
 import React from 'react'
-import { any, bool, number, objectOf, oneOfType, string, shape } from 'prop-types'
+import { any, number, objectOf, oneOfType, string, shape } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
-export const Column = ({ children, className, columnRef, style, sm, md, lg, xl, offset }) => {
+export const Column = ({
+  children,
+  className,
+  columnRef,
+  style,
+  sm,
+  md,
+  lg,
+  xl,
+  offset
+}) => {
   sm = sm !== undefined ? sm : 0
   md = md !== undefined ? md : sm
   lg = lg !== undefined ? lg : md
@@ -44,9 +54,12 @@ const StyledColumn = styled.div`
 
   /* SM Medium devices (tablets, 576px and up) */
   @media (min-width: 0) {
-    flex: 0 0 ${({ size }) => (size.sm ? (100 / (12 / size.sm)).toFixed(5) : 100)}%;
-    margin-left: ${({ off }) => (off.sm ? ((100 / 12) * off.sm).toFixed(5) : 0)}%;
-    max-width: ${({ size }) => (size.sm ? (100 / (12 / size.sm)).toFixed(5) : 100)}%;
+    flex: 0 0
+      ${({ size }) => (size.sm ? (100 / (12 / size.sm)).toFixed(5) : 100)}%;
+    margin-left: ${({ off }) =>
+      off.sm ? ((100 / 12) * off.sm).toFixed(5) : 0}%;
+    max-width: ${({ size }) =>
+      size.sm ? (100 / (12 / size.sm)).toFixed(5) : 100}%;
   }
 
   /* MD Medium devices (tablets, 768px and up) */
@@ -74,8 +87,6 @@ const StyledColumn = styled.div`
 Column.propTypes = {
   children: any.isRequired,
   className: string,
-  debug: bool,
-  fluid: string,
   md: number,
   lg: number,
   offset: shape({

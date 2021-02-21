@@ -10,31 +10,43 @@ import { bool, object, oneOfType, string } from 'prop-types'
 // UI
 import { Button, Divider, Link } from '../../'
 
-export const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
+export const Buttons = ({
+  back,
+  backText,
+  next,
+  nextDisabled,
+  nextText,
+  pathBack,
+  pathNext
+}) => {
   return (
     <>
-      <Divider size='sm' />
+      <Divider size="sm" />
 
       {back && (
         <Link to={pathBack}>
-          <Button context='secondary' size='lg'>
+          <Button context="secondary" size="lg">
             {backText}
           </Button>
         </Link>
       )}
 
       {next && (
-        <div className='float-right'>
+        <div className="float-right">
           {pathNext && (
             <Link to={pathNext}>
-              <Button context='primary' size='lg'>
+              <Button context="primary" size="lg">
                 {nextText}
               </Button>
             </Link>
           )}
 
           {!pathNext && (
-            <Button context='primary' disabled={nextDisabled} size='lg' type='submit'>
+            <Button
+              context="primary"
+              disabled={nextDisabled}
+              size="lg"
+              type="submit">
               {nextText}
             </Button>
           )}

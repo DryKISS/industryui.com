@@ -2,6 +2,9 @@
  * Components - Molecules - Voice Rcorder - Story
  */
 
+// React
+import React from 'react'
+
 // Style
 import styled from 'styled-components'
 
@@ -22,25 +25,31 @@ export default {
 }
 
 export const noOverlay = () => {
-  const handleVoiceRecorded = e => {
+  const handleVoiceRecorded = (e) => {
     console.info(e)
   }
 
   return (
     <Wrapper>
-      <VoiceRecorder onVoiceRecord={handleVoiceRecorded} overlayStyle={{ display: 'none' }} />
+      <VoiceRecorder
+        onVoiceRecord={handleVoiceRecorded}
+        overlayStyle={{ display: 'none' }}
+      />
     </Wrapper>
   )
 }
 
 export const withOverlay = () => {
-  const handleVoiceRecorded = e => {
+  const handleVoiceRecorded = (e) => {
     console.info(e)
   }
 
   return (
     <Wrapper>
-      <VoiceRecorder onVoiceRecord={handleVoiceRecorded} overlayStyle={{ top: '0.5rem' }} />
+      <VoiceRecorder
+        onVoiceRecord={handleVoiceRecorded}
+        overlayStyle={{ top: '0.5rem' }}
+      />
     </Wrapper>
   )
 }

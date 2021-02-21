@@ -6,7 +6,9 @@ import { func, number, string } from 'prop-types'
 
 const getAddressesApi = async (apiKey, postCode) => {
   try {
-    const { data } = await axios.get(`https://api.getAddress.io/find/${postCode}?api-key=${apiKey}`)
+    const { data } = await axios.get(
+      `https://api.getAddress.io/find/${postCode}?api-key=${apiKey}`
+    )
     return { response: data, hasError: false }
   } catch (error) {
     return { response: 'Error While Getting Address List', hasError: true }
@@ -15,13 +17,19 @@ const getAddressesApi = async (apiKey, postCode) => {
 
 let timeout
 
-const getAddresses = ({ apiKey, callback: callFunc, callThrottle, postCode, validator }) => {
+const getAddresses = ({
+  apiKey,
+  callback: callFunc,
+  callThrottle,
+  postCode,
+  validator
+}) => {
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     const isValid = validator(postCode)
     if (isValid) {
       const data = getAddressesApi(apiKey, postCode)
-      data.then(res => {
+      data.then((res) => {
         callFunc(res)
       })
     } else {
@@ -32,12 +40,14 @@ const getAddresses = ({ apiKey, callback: callFunc, callThrottle, postCode, vali
 
 const addressStringSeparator = ', '
 
-const fixAddresses = addresses => {
+const fixAddresses = (addresses) => {
   return addresses
-    .map(addressString => {
-      const elements = addressString.split(addressStringSeparator).filter(part => {
-        return part !== ''
-      })
+    .map((addressString) => {
+      const elements = addressString
+        .split(addressStringSeparator)
+        .filter((part) => {
+          return part !== ''
+        })
       return elements.join(', ')
     })
     .map((item, index) => {

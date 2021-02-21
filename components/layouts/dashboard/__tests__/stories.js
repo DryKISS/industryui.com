@@ -2,6 +2,9 @@
  * Layouts - Dashboard - Story
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Dashboard, Text } from '../../../'
 import Readme from '../README.md'
@@ -28,7 +31,7 @@ const Test = () => {
   return <Text>HERE</Text>
 }
 
-export const main = args => (
+export const main = (args) => (
   <Dashboard
     {...args}
     meta={meta}
@@ -36,8 +39,7 @@ export const main = args => (
       heading: 'Default'
     }}
     resultAlert={{ message: 'Success' }}
-    View={<Test />}
-  >
+    View={<Test />}>
     Dashboard Layout
   </Dashboard>
 )

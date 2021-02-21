@@ -20,12 +20,11 @@ export const AccordionItem = memo(
         <Header
           className={open ? 'opened' : 'closed'}
           onClick={() => handleOpen(index)}
-          context={context || 'dark'}
-        >
+          context={context || 'dark'}>
           {title}{' '}
           <HeaderIcon
-            aria-hidden='true'
-            context='white'
+            aria-hidden="true"
+            context="white"
             icon={open ? 'chevron-up' : 'chevron-down'}
           />
         </Header>
@@ -49,7 +48,7 @@ const StyledAccordionItem = styled.div`
 
 const Header = styled.header`
   background-color: ${({ context, theme }) => theme.COLOUR[context]};
-  border-bottom: 1px solid ${props => props.theme.COLOUR[props.context]};
+  border-bottom: 1px solid ${(props) => props.theme.COLOUR[props.context]};
   color: ${({ context, theme }) =>
     context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white};
   cursor: pointer;

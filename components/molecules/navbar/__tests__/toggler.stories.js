@@ -2,6 +2,9 @@
  * Navbar - Toggler
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Toggler } from '../../../'
 import { BaseComponent } from './baseComponent'

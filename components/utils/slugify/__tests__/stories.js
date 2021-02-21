@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
 import { slugify } from '../../../'
@@ -20,13 +20,13 @@ export default {
   title: 'Utils/Slugify'
 }
 
-export const main = () => {
+export const Main = () => {
   const [url, setURL] = useState('Hi #@$%& ółźćę 🙂 20!!')
 
   return (
     <>
       <p>URL: {slugify(url)}</p>
-      <input type='text' value={url} onChange={e => setURL(e.target.value)} />
+      <input type="text" value={url} onChange={(e) => setURL(e.target.value)} />
     </>
   )
 }

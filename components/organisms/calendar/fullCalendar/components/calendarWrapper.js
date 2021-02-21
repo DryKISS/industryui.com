@@ -1,6 +1,9 @@
 /**
- * Full Calendar - Wrapper
+ * Components - Organisms - Calendar - Full Calendar - Wrapper
  */
+
+// React
+import React from 'react'
 
 // UI
 import FullCalendar from '@fullcalendar/react'
@@ -12,8 +15,7 @@ import listPlugin from '@fullcalendar/list'
 // This is to show how to import it but its not working for us
 // import bootstrapPlugin from '@fullcalendar/bootstrap'
 // import '@fullcalendar/bootstrap/main.css'
-
-export const CalendarWrapper = props => {
+export const CalendarWrapper = (props) => {
   return (
     <FullCalendar
       defaultView={props.defaultView}

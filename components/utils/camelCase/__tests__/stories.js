@@ -2,6 +2,9 @@
  * CamelCase
  */
 
+// React
+import React from 'react'
+
 // UI
 import { camelCase, Text } from '../../../'
 import Readme from '../README.md'
@@ -20,7 +23,7 @@ export default {
   title: 'Utils/CamelCase'
 }
 
-export const CamelCase = args => {
+export const CamelCase = (args) => {
   return (
     <>
       <Text>original: {args.text}</Text>

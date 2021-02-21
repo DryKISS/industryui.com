@@ -2,6 +2,9 @@
  * Charts - Line - Tests - Story
  */
 
+// React
+import React from 'react'
+
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 import { lineCurvePropKeys } from '@nivo/core'
@@ -82,7 +85,7 @@ export default {
   }
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const { args } = props
   const restOfProps = objectWithoutProperties(props, ['args'])
   return (
@@ -93,18 +96,18 @@ const BaseComponent = props => {
 }
 
 /// stories
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent args={args} axisBottom={{ tickRotation: 90 }} />
 }
 
-export const area = args => {
+export const area = (args) => {
   return (
     <BaseComponent
       args={args}
-      curveSelect='cardinal'
+      curveSelect="cardinal"
       enableArea
       enableCrosshair={false}
-      enableSlices='x'
+      enableSlices="x"
       lineWidthSelect={3}
       pointSize={15}
       showLegend={false}
@@ -113,24 +116,24 @@ export const area = args => {
   )
 }
 
-export const bigdata = args => {
+export const bigdata = (args) => {
   return (
     <BaseComponent
       args={args}
       data={Big}
-      curveSelect='cardinal'
+      curveSelect="cardinal"
       enableArea
       enableCrosshair={false}
-      enableSlices='x'
+      enableSlices="x"
       lineWidthSelect={3}
       pointSize={15}
       showLegend={false}
       stacked={false}
       enablePoints={false}
-      bottomLegend='Date'
-      leftLegend='Temperature'
+      bottomLegend="Date"
+      leftLegend="Temperature"
       axisBottomDistinct
-      axisLeftSymbol='°C'
+      axisLeftSymbol="°C"
     />
   )
 }

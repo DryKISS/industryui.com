@@ -17,7 +17,7 @@ export const useTranslation = () => {
   const { defaultLocale, Translations } = useContext(ConfigContext)
   const { locale } = useContext(InternationalisationContext)
 
-  const t = key => {
+  const t = (key) => {
     if (!Translations[locale][key]) {
       // Debug
       console.warn(`Translation '${key}' for locale '${locale}' not found.`)

@@ -1,7 +1,7 @@
 /**
- * Viewport width
+ * Components - Utils - View Port
  */
-export const viewPort = source => {
+export const viewPort = (source) => {
   if (source && source.clientWidth) {
     return source.clientWidth
   }

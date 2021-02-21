@@ -16,7 +16,10 @@ export const Stepper = ({ className, items, summary }) => {
   return (
     <StyledStepper>
       <ul>
-        {items.map(item => item.active !== false && <StepperItem item={item} key={item.id} />)}
+        {items.map(
+          (item) =>
+            item.active !== false && <StepperItem item={item} key={item.id} />
+        )}
       </ul>
 
       {summary && <StepperSummary summary={summary} />}

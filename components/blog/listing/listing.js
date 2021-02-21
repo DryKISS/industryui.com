@@ -19,14 +19,15 @@ import { BlogCard } from '../card/card'
 import { Column, Row, slugify } from '../../'
 
 export const BlogListing = ({ articles, author, category, config, tag }) => {
-  const _findTag = articles => {
+  const _findTag = (articles) => {
     return _filter(articles, { tags: [tag] })
   }
 
-  const _findArticle = articles => {
-    return articles.filter(article => {
+  const _findArticle = (articles) => {
+    return articles.filter((article) => {
       return (
-        slugify(category ? article.category : article.author) === (category || author) &&
+        slugify(category ? article.category : article.author) ===
+          (category || author) &&
         article.homepage !== false &&
         article.published
       )

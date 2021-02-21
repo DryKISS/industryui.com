@@ -2,6 +2,9 @@
  * Section
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Section } from '../../../'
 import Readme from '../README.md'
@@ -21,4 +24,4 @@ export default {
   title: 'Molecules/Section'
 }
 
-export const main = args => <Section {...args} />
+export const main = (args) => <Section {...args} />

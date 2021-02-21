@@ -38,7 +38,7 @@ export const Tab = ({
     }
   }, [isActive])
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (isActive) {
       return
     }
@@ -61,8 +61,7 @@ export const Tab = ({
       indicatorSize={indicatorSize}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
-      gap={gap}
-    >
+      gap={gap}>
       {label}
     </StyledTab>
   )
@@ -72,13 +71,14 @@ const StyledTab = styled.li`
   ${({ context, theme, gap }) => css`
     background-color: ${theme.TABS.colour};
     border-left: 1px solid ${theme.TABS.borderColour};
-    border-bottom: 1px solid ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+    border-bottom: 1px solid
+      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     border-top: 1px solid ${theme.TABS.borderColour};
     color: ${theme.TABS.tabTextColour};
     ${gap !== 0 &&
-      css`
-        border-right: 1px solid ${theme.TABS.borderColour};
-      `}
+    css`
+      border-right: 1px solid ${theme.TABS.borderColour};
+    `}
   `}
 
   ${({ active, context, indicatorSize, theme }) =>
@@ -132,7 +132,7 @@ const StyledTab = styled.li`
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
 `
 
 Tab.propTypes = {

@@ -74,7 +74,8 @@ export const Table = memo(
 
 const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.TABLE.background};
-  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%;'}
+  ${({ fullHeight, isLoading }) =>
+    (fullHeight || isLoading !== undefined) && 'height: 100%;'}
   position: relative;
   width: 100%;
   ${({ isLoading }) =>

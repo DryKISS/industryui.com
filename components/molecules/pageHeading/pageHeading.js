@@ -30,9 +30,11 @@ export const PageHeading = ({
         {strapline && <div>{strapline}</div>}
       </StyledLeft>
 
-      {(children || help) && <StyledRight>{children || helpContent}</StyledRight>}
+      {(children || help) && (
+        <StyledRight>{children || helpContent}</StyledRight>
+      )}
 
-      {divider && <StyledDivider size='md' />}
+      {divider && <StyledDivider size="md" />}
     </StyledPageHeader>
   )
 }

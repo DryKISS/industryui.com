@@ -24,7 +24,7 @@ export const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
     return `${url}?id=${row[key]}`
   }
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault()
     e.stopPropagation()
     Router.push(getPath())

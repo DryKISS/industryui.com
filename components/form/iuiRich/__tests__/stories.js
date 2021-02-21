@@ -2,16 +2,20 @@
  * Random Color
  */
 
+// React
+import React from 'react'
+
+// UI
+import { IUIRich } from '../index'
 import Readme from '../README.md'
-import { IUIRich } from '../../../'
 
 export default {
-  title: 'Form/IUIRichEditor',
   parameters: {
     readme: {
       sidebar: Readme
     }
-  }
+  },
+  title: 'Form/IUIRichEditor'
 }
 
 export const IUIRichEditor = () => {

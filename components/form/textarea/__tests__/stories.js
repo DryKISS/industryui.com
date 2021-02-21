@@ -2,6 +2,9 @@
  * Form - Field
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { SizeControl } from '../../../../.storybook/decorators'
 
@@ -39,12 +42,12 @@ const schema = object().shape({
   textarea: string().required()
 })
 
-export const main = args => {
+export const Main = (args) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -56,11 +59,11 @@ export const main = args => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='Description'>
+      <FormLabel label="Description">
         <TextareaField {...defaultProps} />
       </FormLabel>
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }

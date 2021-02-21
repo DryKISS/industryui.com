@@ -7,7 +7,7 @@ import React, { useState, useRef } from 'react'
 
 // Draft JS
 import { EditorState } from 'draft-js'
-import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
+import { defaultSuggestionsFilter } from '@draft-js-plugins/mention'
 
 // Style
 import styled from 'styled-components'
@@ -29,7 +29,9 @@ export const MessagingInput = ({ mentions, onChange }) => {
   const [suggestions, setSuggestions] = useState(mentions ?? [])
 
   // Draft-JS editor configuration
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  )
   const editor = useRef(null)
 
   // Check editor text for mentions
@@ -37,7 +39,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
     setSuggestions(defaultSuggestionsFilter(value, mentions))
   }
 
-  const onAddMention = e => {
+  const onAddMention = (e) => {
     console.info(e)
   }
 
@@ -46,12 +48,12 @@ export const MessagingInput = ({ mentions, onChange }) => {
     editor.current.focus()
   }
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     onChange(e)
     setEditorState(e)
   }
 
-  const onActionRecieved = payload => {
+  const onActionRecieved = (payload) => {
     switch (payload.action) {
       case MessagingActions.CLEAR_INPUT:
         setEditorState(EditorState.createEmpty())
@@ -69,7 +71,9 @@ export const MessagingInput = ({ mentions, onChange }) => {
   })
 
   return (
-    <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
+    <Wrapper
+      onClick={() => focusEditor()}
+      topMultiplier={suggestions?.length ?? 0}>
       {mentions && (
         <MentionSuggestions
           onAddMention={onAddMention}
@@ -82,7 +86,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
         editorState={editorState}
         onChange={handleChange}
         plugins={messagingPlugins}
-        placeholder='Type here...'
+        placeholder="Type here..."
         ref={editor}
       />
     </Wrapper>
@@ -93,7 +97,7 @@ const Wrapper = styled.div`
   [class*='mentionSuggestions'] {
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
-  ${props => formStyle(props)}
+  ${(props) => formStyle(props)}
   font-size:${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
   width: calc(100% - 8rem);
   max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};

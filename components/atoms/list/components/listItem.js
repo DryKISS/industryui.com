@@ -12,9 +12,25 @@ import { Icon } from '../../icon'
 // Style
 import styled, { css } from 'styled-components'
 
-export const ListItem = ({ border, children, className, flush, group, icon, prefix, style }) => (
-  <StyledItem border={border} className={className} flush={flush} group={group} style={style}>
-    {icon && <StyledIcon aria-hidden='true' icon={icon} prefix={prefix} size='2x' />}
+export const ListItem = ({
+  border,
+  children,
+  className,
+  flush,
+  group,
+  icon,
+  prefix,
+  style
+}) => (
+  <StyledItem
+    border={border}
+    className={className}
+    flush={flush}
+    group={group}
+    style={style}>
+    {icon && (
+      <StyledIcon aria-hidden="true" icon={icon} prefix={prefix} size="2x" />
+    )}
     {children}
   </StyledItem>
 )

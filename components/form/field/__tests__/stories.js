@@ -2,6 +2,9 @@
  * Form - Field
  */
 
+// React
+import React from 'react'
+
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
@@ -35,15 +38,13 @@ export default {
 }
 
 const schema = object().shape({
-  email: string()
-    .required('Please Enter a valid email')
-    .email(),
+  email: string().required('Please Enter a valid email').email(),
   password: string()
     .required('Please Enter a password')
     .min(8, 'Password is too short - should be 8 chars minimum.')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-      'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
+      'Must contain 8 characters, with at least ine uppercase, number and special character'
     )
 })
 
@@ -52,7 +53,7 @@ const BaseComponent = (props = {}) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     errors: errors,
@@ -62,17 +63,17 @@ const BaseComponent = (props = {}) => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='Email'>
-        <FormField {...defaultProps} name='email' />
+      <FormLabel label="Email">
+        <FormField {...defaultProps} name="email" />
       </FormLabel>
 
-      <FormLabel label='Password'>
-        <FormField {...defaultProps} name='password' type='password' />
+      <FormLabel label="Password">
+        <FormField {...defaultProps} name="password" type="password" />
       </FormLabel>
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

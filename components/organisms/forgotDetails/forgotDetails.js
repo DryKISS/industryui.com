@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, string } from 'prop-types'
 
 // React Hook Form
@@ -30,19 +31,19 @@ export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
 
   return (
     <>
-      <PageHeading center divider={false} heading='Forgot Details' />
+      <PageHeading center divider={false} heading="Forgot Details" />
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label='Email'>
+        <FormLabel label="Email">
           <FormField
             {...defaultOptions}
             autoFocus
-            name='email'
+            name="email"
             placeholder={showPlaceholder ? 'Email' : ''}
           />
         </FormLabel>
 
-        <Button block content='Send reset link' size='lg' type='submit' />
+        <Button block content="Send reset link" size="lg" type="submit" />
 
         <Link to={pathLogIn} passHref>
           <StyledLink>Back to Log In</StyledLink>

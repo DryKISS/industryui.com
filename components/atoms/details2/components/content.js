@@ -23,9 +23,11 @@ export const Details2Content = ({
       animationDuration={animationTime}
       fitParentHeight={fitParentHeight}
       maxHeight={maxHeight}
-      isOpen={isOpen}
-    >
-      <Content fitParentHeight={fitParentHeight} isOpen={isOpen} ref={contentRef}>
+      isOpen={isOpen}>
+      <Content
+        fitParentHeight={fitParentHeight}
+        isOpen={isOpen}
+        ref={contentRef}>
         {mounted && children}
       </Content>
     </Wrapper>
@@ -41,7 +43,8 @@ const Wrapper = styled.div`
     css`
       height: ${!isOpen ? '0px' : 'calc(100% - 3.5rem)'};
     `}
-  transition-duration: ${({ animationDuration }) => (animationDuration ?? 300) + 'ms'};
+  transition-duration: ${({ animationDuration }) =>
+    (animationDuration ?? 300) + 'ms'};
   transition-property: max-height;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 `

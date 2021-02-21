@@ -21,9 +21,10 @@ export const Icon = ({ icon, prefix, ...props }) => {
 }
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: ${({ color, context, theme }) => (context ? theme.COLOUR[context] : color)};
-  ${theme => themeDisplay(theme)}
-  ${theme => SPACER(theme)}
+  color: ${({ color, context, theme }) =>
+    context ? theme.COLOUR[context] : color};
+  ${(theme) => themeDisplay(theme)}
+  ${(theme) => SPACER(theme)}
 `
 
 Icon.propTypes = IconPropTypes

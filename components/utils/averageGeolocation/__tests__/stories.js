@@ -2,6 +2,9 @@
  * Average Geolocation
  */
 
+// React
+import React from 'react'
+
 // UI
 import { averageGeolocation, Text, Space } from '../../../'
 import Readme from '../README.md'
@@ -31,8 +34,11 @@ export default {
   }
 }
 
-export const AverageGeolocation = args => {
-  const locations = [...args.coordinatesArray, { lat: args.additionalLat, lng: args.additionalLng }]
+export const AverageGeolocation = (args) => {
+  const locations = [
+    ...args.coordinatesArray,
+    { lat: args.additionalLat, lng: args.additionalLng }
+  ]
   return (
     <>
       <Space>

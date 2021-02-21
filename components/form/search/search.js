@@ -23,28 +23,33 @@ export const Search = ({
   return (
     <InputGroup>
       {prependSearchIcon && (
-        <InputGroupAddon addonType='prepend' text>
-          <Icon size='sm' icon='search' prefix={prefix} />
+        <InputGroupAddon addonType="prepend" text>
+          <Icon size="sm" icon="search" prefix={prefix} />
         </InputGroupAddon>
       )}
 
       <FormField
         errors={errors}
-        name='query'
+        name="query"
         placeholder={placeholder}
         register={register}
         type={type}
       />
 
       {appendSearchIcon && (
-        <InputGroupAddon addonType='append' text>
-          <Icon icon='search' size='sm' prefix={prefix} />
+        <InputGroupAddon addonType="append" text>
+          <Icon icon="search" size="sm" prefix={prefix} />
         </InputGroupAddon>
       )}
 
       {appendSearchButton && (
-        <InputGroupAddon addonType='append'>
-          <Button content={label || 'Search'} context='dark' size='sm' type='submit' />
+        <InputGroupAddon addonType="append">
+          <Button
+            content={label || 'Search'}
+            context="dark"
+            size="sm"
+            type="submit"
+          />
         </InputGroupAddon>
       )}
     </InputGroup>

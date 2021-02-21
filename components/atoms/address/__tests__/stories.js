@@ -2,11 +2,14 @@
  * Components - Atoms - Address - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { CountryControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Address } from '../../../'
+import { Address } from '../address'
 import Readme from '../README.md'
 
 export default {
@@ -33,4 +36,4 @@ export default {
   title: 'Atoms/Address'
 }
 
-export const main = args => <Address {...args} />
+export const main = (args) => <Address {...args} />

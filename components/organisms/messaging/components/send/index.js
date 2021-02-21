@@ -32,7 +32,12 @@ import {
 // Style
 import styled from 'styled-components'
 
-export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
+export const MessagingSend = ({
+  audienceItems,
+  maxLength,
+  mentions,
+  onSubmit
+}) => {
   // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])
@@ -44,17 +49,20 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     fileInputRef.current.click()
   }
 
-  const handleFilesChange = e => {
+  const handleFilesChange = (e) => {
     const { files } = e.target
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: files }
+      payload: {
+        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+        data: files
+      }
     })
   }
 
   const [replyMessage, setreplyMessage] = useState(null)
 
-  const onActionRecieved = payload => {
+  const onActionRecieved = (payload) => {
     switch (payload.action) {
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
@@ -70,7 +78,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
 
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
-    onRecieve: e => onActionRecieved(e),
+    onRecieve: (e) => onActionRecieved(e),
     subscriber: MessagingSubscriber
   })
 
@@ -89,7 +97,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     setreplyMessage(null)
   }
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const contentState = e.getCurrentContent()
     setMessage(convertToRaw(contentState))
   }
@@ -97,7 +105,8 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     let disabled = false
     if (
       attachments.length === 0 &&
-      (Message === {} || (Message.blocks && !Message.blocks[0].text && voiceMessage === null))
+      (Message === {} ||
+        (Message.blocks && !Message.blocks[0].text && voiceMessage === null))
     ) {
       disabled = true
     }
@@ -107,7 +116,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     setVoiceMessage(null)
   }
 
-  const handleVoiceRecord = e => {
+  const handleVoiceRecord = (e) => {
     setVoiceMessage(e.data)
   }
 
@@ -115,7 +124,9 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
     <>
       <StyledContainer audience={audience}>
         {replyMessage && (
-          <ReplyContainer message={replyMessage} onClose={() => setreplyMessage(null)}>
+          <ReplyContainer
+            message={replyMessage}
+            onClose={() => setreplyMessage(null)}>
             {replyMessage.id}
           </ReplyContainer>
         )}
@@ -124,9 +135,8 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           {audience && (
             <StyledDropDown
               items={audienceItems}
-              onChange={item => setAudience(item)}
-              position='top'
-            >
+              onChange={(item) => setAudience(item)}
+              position="top">
               {audience.name}
             </StyledDropDown>
           )}
@@ -135,14 +145,19 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
               <EmojiSuggestions />
               <EmojiSelect />
             </EmojiSelectWrapper>
-            <StyledIcon fixedWidth={false} icon='paperclip' onClick={openFileDialog} size='lg' />
+            <StyledIcon
+              fixedWidth={false}
+              icon="paperclip"
+              onClick={openFileDialog}
+              size="lg"
+            />
           </StyledElements>
 
           {voiceMessage && (
             <AudioWrapper preview>
               <MessagingAudioPlayer src={URL.createObjectURL(voiceMessage)} />
               <DeleteIconWrapper onClick={handleDeleteVoiceClick}>
-                <Icon context='danger' icon='trash' prefix='fas' size='lg' />
+                <Icon context="danger" icon="trash" prefix="fas" size="lg" />
               </DeleteIconWrapper>
             </AudioWrapper>
           )}
@@ -154,19 +169,18 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             onChange={handleFilesChange}
             ref={fileInputRef}
             style={{ display: 'none' }}
-            type='file'
+            type="file"
           />
           <StyledElements>
             {isSendDisabled() ? (
               <VoiceRecorder onVoiceRecord={handleVoiceRecord} />
             ) : (
               <Button
-                context='transparent'
+                context="transparent"
                 disabled={isSendDisabled()}
                 noPadding
                 onClick={submit}
-                size='xs'
-              >
+                size="xs">
                 <PaperPlaneIcon hoverColour />
               </Button>
             )}
@@ -214,7 +228,8 @@ const StyledElements = styled.div`
 `
 
 const StyledContainer = styled.div`
-  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
+  background-color: ${({ theme: { MESSAGING } }) =>
+    MESSAGING.inputSectionBackground};
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #c0c0c0;
   box-sizing: border-box;

@@ -40,7 +40,7 @@ const breadcrumbs = [
     title: 'Home'
   },
   {
-    icon: <Icon icon='smile' prefix='fas' />,
+    icon: <Icon icon="smile" prefix="fas" />,
     to: {
       as: '/blog/asdasdasd',
       href: {
@@ -53,7 +53,7 @@ const breadcrumbs = [
     title: 'DryKISS'
   },
   {
-    icon: <Icon icon='images' prefix='fas' />,
+    icon: <Icon icon="images" prefix="fas" />,
     to: '/rrrr',
     title: 'Current Page'
   }
@@ -61,4 +61,6 @@ const breadcrumbs = [
 
 const separator = '\\'
 
-export const main = args => <Breadcrumb breadcrumbs={breadcrumbs} separator={separator} {...args} />
+export const main = (args) => (
+  <Breadcrumb breadcrumbs={breadcrumbs} separator={separator} {...args} />
+)

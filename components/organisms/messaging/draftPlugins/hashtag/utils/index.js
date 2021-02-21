@@ -1,11 +1,11 @@
 import regexes from './hashtagRegex'
 
-export const extractHashtagsWithIndices = text => {
+export const extractHashtagsWithIndices = (text) => {
   if (!text || !text.match(regexes.hashSigns)) {
     return []
   }
   const tags = []
-  function replacer (match, before, hash, hashText, offset, chunk) {
+  function replacer(match, before, hash, hashText, offset, chunk) {
     const after = chunk.slice(offset + match.length)
     if (after.match(regexes.endHashtagMatch)) {
       return ''

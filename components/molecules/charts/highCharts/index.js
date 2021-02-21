@@ -13,7 +13,7 @@ import HighMapcharts from 'highcharts/highmaps'
 import HighGanttcharts from 'highcharts/highcharts-gantt'
 import HighchartsReact from 'highcharts-react-official'
 
-const getChartType = constructorType => {
+const getChartType = (constructorType) => {
   let chart
   switch (constructorType) {
     case 'stockChart':
@@ -59,7 +59,14 @@ export const HighChart = ({
 HighChart.prototypes = {
   allowChartUpdate: bool,
   callback: func,
-  constructorType: oneOf(['chart', 'stockChart', 'mapChart', 'ganttChart', undefined, null]),
+  constructorType: oneOf([
+    'chart',
+    'stockChart',
+    'mapChart',
+    'ganttChart',
+    undefined,
+    null
+  ]),
   containerProps: any,
   highcharts: any,
   immutable: bool,

@@ -2,8 +2,11 @@
  * Forgot Details Reset
  */
 
+// React
+import React from 'react'
+
 // UI
-import { ForgotDetailsReset } from '../../../'
+import { ForgotDetailsReset } from '../forgotDetailsReset'
 import Readme from '../README.md'
 
 export default {
@@ -18,6 +21,6 @@ export default {
   title: 'Organisms/Forgot Details Reset'
 }
 
-export const BaseComponent = args => {
+export const BaseComponent = (args) => {
   return <ForgotDetailsReset {...args} />
 }

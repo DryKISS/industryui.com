@@ -1,16 +1,16 @@
 /**
- * convert Img Url To Data URL via Canvas
+ * Components - Utils convert Img Url To Data URL via Canvas
  */
 
 // React
-import { useEffect, useState } from 'react'
-
-// UI
-import { convertImgUrlToDataURLviaCanvas } from '../../../'
-import Readme from '../README.md'
+import React, { useEffect, useState } from 'react'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { convertImgUrlToDataURLviaCanvas } from '../index'
+import Readme from '../README.md'
 
 export default {
   parameters: {
@@ -30,9 +30,11 @@ export const ConvertImgUrlToDataURLviaCanvas = () => {
     const imageData = convertImgUrlToDataURLviaCanvas(
       'https://drykiss.com/static/services/services.jpg'
     )
-    imageData.then(value => {
+
+    imageData.then((value) => {
       setImageSrc(value)
     })
+
     return () => {}
   }, [])
 

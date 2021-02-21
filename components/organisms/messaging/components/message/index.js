@@ -24,9 +24,9 @@ import { ShareIcon } from './shareIcon'
 export const Message = memo(
   ({ config, message, prevType, type, ...props }) => {
     const avatar = message.avatar ? (
-      <Avatar size='xxs' src={message.avatar} />
+      <Avatar size="xxs" src={message.avatar} />
     ) : (
-      <Avatar size='xxs' content={message.from[0]} />
+      <Avatar size="xxs" content={message.from[0]} />
     )
     const handleReplyClick = () => {
       MessagingCommunicationService.send({
@@ -43,12 +43,12 @@ export const Message = memo(
       <SideActionsWrapper>
         <AvatarWrapper>{avatar}</AvatarWrapper>
         {config.hasReply && (
-          <IconWrapper onClick={handleReplyClick} title='reply'>
+          <IconWrapper onClick={handleReplyClick} title="reply">
             <ReplyIcon />
           </IconWrapper>
         )}
         {config.hasForward && (
-          <IconWrapper title='share'>
+          <IconWrapper title="share">
             <ShareIcon />
           </IconWrapper>
         )}
@@ -58,7 +58,7 @@ export const Message = memo(
       let plainText = ''
       if (message.content.blocks) {
         plainText = message.content.blocks
-          .map(block => (!block.text.trim() && '\n') || block.text)
+          .map((block) => (!block.text.trim() && '\n') || block.text)
           .join('\n')
       } else {
         plainText = message.content
@@ -78,8 +78,7 @@ export const Message = memo(
       <RowWrapper
         hasTimeHeader={message.headerTime}
         onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
-      >
+        onMouseLeave={handleMouseLeave}>
         {message.headerTime && (
           <TimeHeader>
             <div>
@@ -108,7 +107,8 @@ const TimeHeader = styled.div`
   margin-top: -0.1rem;
   text-align: center;
   width: 100%;
-  background: ${({ theme: { MESSAGING } }) => MESSAGING.dateDividerColour || '#0000'};
+  background: ${({ theme: { MESSAGING } }) =>
+    MESSAGING.dateDividerColour || '#0000'};
   height: 1px;
   div {
     background: white;

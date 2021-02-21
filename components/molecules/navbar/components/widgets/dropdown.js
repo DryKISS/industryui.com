@@ -13,11 +13,21 @@ import { Dropdown } from '../../../dropdown'
 // Style
 import styled from 'styled-components'
 
-export const NavDropdown = ({ closeMenu, icon, name, position, prefix, type }) => {
+export const NavDropdown = ({
+  closeMenu,
+  icon,
+  name,
+  position,
+  prefix,
+  type
+}) => {
   return (
     <StyledContainer>
-      <StyledDropdown items={type.items} onChange={closeMenu} position={position}>
-        {icon && <Icon aria-hidden='true' icon={icon} prefix={prefix} />}
+      <StyledDropdown
+        items={type.items}
+        onChange={closeMenu}
+        position={position}>
+        {icon && <Icon aria-hidden="true" icon={icon} prefix={prefix} />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
     </StyledContainer>

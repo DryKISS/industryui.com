@@ -1,5 +1,5 @@
 /**
- * Divider
+ * Components - Atoms - Divider
  */
 
 // Style
@@ -36,7 +36,8 @@ export const Divider = styled.hr`
     `}
 
   margin: ${({ size, theme, vertical }) => {
-    var margin = '1rem'
+    let margin = '1rem'
+
     switch (size) {
       case THEME_SIZE.XXS:
         margin = '0.25rem'
@@ -72,7 +73,6 @@ export const Divider = styled.hr`
       height: auto;
       align-self: stretch;
     `}
-
 `
 
 Divider.propTypes = propTypes

@@ -12,7 +12,7 @@ import { BlogList, BlogSection } from './components'
 
 export const BlogMedia = ({ config, media }) => {
   return (
-    <BlogSection heading='Media'>
+    <BlogSection heading="Media">
       <BlogList config={config} list={media} />
     </BlogSection>
   )

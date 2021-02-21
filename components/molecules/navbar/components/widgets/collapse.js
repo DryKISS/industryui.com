@@ -14,10 +14,12 @@ import styled from 'styled-components'
 export const NavCollapse = styled.div`
   flex-basis: 100%;
   flex-grow: 1;
-  display: ${props => (props.visible ? 'block' : 'none')};
+  display: ${(props) => (props.visible ? 'block' : 'none')};
   position: ${({ theme }) => theme.NAVBAR.positionCollapse};
-  right: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '0' : 'inherit')};
-  margin: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '2.5rem 2rem' : 'inherit')};
+  right: ${({ theme }) =>
+    theme.NAVBAR.positionCollapse === 'fixed' ? '0' : 'inherit'};
+  margin: ${({ theme }) =>
+    theme.NAVBAR.positionCollapse === 'fixed' ? '2.5rem 2rem' : 'inherit'};
   ${MEDIA_QUERY.desktop`
     border: none;
     display: flex;

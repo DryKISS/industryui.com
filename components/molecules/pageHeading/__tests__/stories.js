@@ -2,6 +2,9 @@
  * Page Heading
  */
 
+// React
+import React from 'react'
+
 // UI
 import { PageHeading } from '../../../'
 import Readme from '../README.md'
@@ -22,10 +25,12 @@ export default {
   title: 'Molecules/PageHeading'
 }
 
-export const main = args => <PageHeading {...args} />
+export const main = (args) => <PageHeading {...args} />
 
-export const withHelp = args => <PageHeading {...args} help helpContent='Help Content' />
+export const withHelp = (args) => (
+  <PageHeading {...args} help helpContent="Help Content" />
+)
 
-export const centered = args => <PageHeading {...args} center />
+export const centered = (args) => <PageHeading {...args} center />
 
-export const withContext = args => <PageHeading {...args} context='warning' />
+export const withContext = (args) => <PageHeading {...args} context="warning" />

@@ -1,0 +1,8 @@
+node_modules
+config
+.github
+.jest
+.storybook
+.vscode
+api
+static

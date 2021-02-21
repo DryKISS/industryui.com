@@ -2,6 +2,9 @@
  * Format Price
  */
 
+// React
+import React from 'react'
+
 // UI
 import { formatPrice, Text } from '../../../'
 import Readme from '../README.md'
@@ -20,6 +23,6 @@ export default {
   title: 'Utils/formatPrice'
 }
 
-export const FormatPrice = args => {
+export const FormatPrice = (args) => {
   return <Text>Formatted: {formatPrice(args.price)}</Text>
 }

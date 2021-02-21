@@ -17,8 +17,8 @@ export const BlogSection = ({ children, heading }) => (
   <StyledSection>
     {heading && (
       <>
-        <StyledHeading content={heading} context='primary' noMargin tag='h3' />
-        <Divider size='sm' />
+        <StyledHeading content={heading} context="primary" noMargin tag="h3" />
+        <Divider size="sm" />
       </>
     )}
 

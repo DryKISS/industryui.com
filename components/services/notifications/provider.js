@@ -22,8 +22,7 @@ export const NotificationsProvider = ({ children, user }) => {
       value={{
         items,
         user
-      }}
-    >
+      }}>
       {children}
     </NotificationsContext.Provider>
   )

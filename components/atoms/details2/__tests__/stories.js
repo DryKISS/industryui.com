@@ -44,7 +44,7 @@ export default {
     disableAnimation: false,
     context: THEME_CONTEXT.PRIMARY,
     fitParentHeight: false,
-    iconComponent: <Icon fixedWidth={false} icon='images' />,
+    iconComponent: <Icon fixedWidth={false} icon="images" />,
     open: true,
     title: 'Details 2',
     uniqueId: '1',
@@ -64,7 +64,7 @@ export default {
   title: 'Atoms/Details2'
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <Details2 {...args}>
       <Content />
@@ -72,7 +72,7 @@ export const main = args => {
   )
 }
 
-export const caret = args => {
+export const caret = (args) => {
   return (
     <Details2 {...args} iconComponent={null}>
       <Content />
@@ -80,11 +80,11 @@ export const caret = args => {
   )
 }
 
-export const communication = args => {
+export const communication = (args) => {
   const toolbar = (
     <ButtonToolbar>
-      <Button size='xs'>button1</Button>
-      <Button size='xs'>button2</Button>
+      <Button size="xs">button1</Button>
+      <Button size="xs">button2</Button>
     </ButtonToolbar>
   )
 
@@ -108,8 +108,7 @@ export const communication = args => {
                   id: 'danger_Details',
                   payload: true
                 })
-              }}
-            >
+              }}>
               Open red Details
             </Button>
             <p>wdsfsadfgsafgd</p>
@@ -122,14 +121,14 @@ export const communication = args => {
             <p>wdsfsadfgsafgd</p>
           </>
         }
-        context='primary'
+        context="primary"
         endActionComponent={endActionComponent}
         open={false}
         startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
-        title='first details component'
+        title="first details component"
         toolbar={toolbar}
-        uniqueId='primary_Details'
+        uniqueId="primary_Details"
         unmountContentOnClose
       />
 
@@ -146,46 +145,44 @@ export const communication = args => {
                   id: 'primary_Details',
                   payload: true
                 })
-              }}
-            >
+              }}>
               Open primary Details
             </Button>
             <p>wdsfsadfgsafgd</p>
             <p>wdsfsadfgsafgd</p>
           </>
         }
-        context='danger'
+        context="danger"
         endActionComponent={endActionComponent}
-        iconComponent={<Icon icon='images' prefix='fas' />}
+        iconComponent={<Icon icon="images" prefix="fas" />}
         open
         startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
-        title='second details component'
+        title="second details component"
         toolbar={toolbar}
-        uniqueId='danger_Details'
+        uniqueId="danger_Details"
       />
 
       <Row>
         <Column md={6}>
           <Details2
-            context='warning'
+            context="warning"
             open={false}
             startActionComponent={
               <Button
-                size='sm'
+                size="sm"
                 onClick={() => {
                   DetailsCommunicationService.send({
                     name: MessageNames.DetailsComponent.SET_OPEN,
                     id: 'success_Details',
                     payload: false
                   })
-                }}
-              >
+                }}>
                 close success Details
               </Button>
             }
-            title='third details component'
-            uniqueId='warning_Details'
+            title="third details component"
+            uniqueId="warning_Details"
           />
         </Column>
 
@@ -203,25 +200,24 @@ export const communication = args => {
                 <p>asfddfsdfsadfasdfasdf</p>
               </>
             }
-            context='success'
+            context="success"
             disableAnimation
             open={false}
             startActionComponent={
               <Button
-                size='sm'
+                size="sm"
                 onClick={() => {
                   DetailsCommunicationService.send({
                     name: MessageNames.DetailsComponent.SET_OPEN,
                     id: 'danger_Details',
                     payload: true
                   })
-                }}
-              >
+                }}>
                 open danger Details
               </Button>
             }
-            title='forth details component'
-            uniqueId='success_Details'
+            title="forth details component"
+            uniqueId="success_Details"
           />
         </Column>
       </Row>

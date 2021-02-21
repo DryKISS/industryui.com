@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { any, array, number, object, objectOf, oneOfType, string } from 'prop-types'
+import { any, array, number, object, oneOfType, string } from 'prop-types'
 
 // UI
 import { Container, Column, Heading, MEDIA_QUERY, Row } from '../../'
@@ -32,8 +32,8 @@ export const Hero = ({
   const renderLeft = () => {
     return (
       <StyledColumn md={6}>
-        {title && <StyledTitle tag='h1' content={title} />}
-        {strapline && <StyledStrapline tag='h2' content={strapline} />}
+        {title && <StyledTitle tag="h1" content={title} />}
+        {strapline && <StyledStrapline tag="h2" content={strapline} />}
         {buttons && <HeroButtons buttons={buttons} />}
         {message && <p children={message} />}
       </StyledColumn>
@@ -45,15 +45,16 @@ export const Hero = ({
       background={background}
       backgroundSize={backgroundSize}
       className={className}
-      height={height}
-    >
+      height={height}>
       {children && children}
 
       {!children && (
         <Container>
           <Row>
             {title && renderLeft()}
-            {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
+            {image && (
+              <HeroImage alt={alt} align={align} image={image} width={width} />
+            )}
           </Row>
         </Container>
       )}
@@ -62,7 +63,8 @@ export const Hero = ({
 }
 
 const StyledHero = styled.header`
-  background-image: ${({ background }) => (background ? `url(${background})` : 'none')};
+  background-image: ${({ background }) =>
+    background ? `url(${background})` : 'none'};
   background-position: center;
   background-size: ${({ backgroundSize }) => backgroundSize};
   height: ${({ height }) => height};
@@ -103,7 +105,6 @@ Hero.propTypes = {
   height: string,
   image: string,
   strapline: oneOfType([object, string]),
-  style: objectOf(oneOfType([number, string])),
   title: string,
   width: number
 }

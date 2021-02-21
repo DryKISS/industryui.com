@@ -1,5 +1,5 @@
 /**
- * viewPort
+ * Components - Utils - View Port
  */
 
 // React
@@ -24,7 +24,7 @@ export default {
   title: 'Utils/ViewPort'
 }
 
-export const ViewPort = args => {
+export const Main = (args) => {
   const ref = useRef(null)
   const [Width, setWidth] = useState(0)
 

@@ -33,11 +33,10 @@ export const Badge = ({
       className={className}
       context={context}
       href={to}
-      itemProp='keywords'
+      itemProp="keywords"
       shape={shape}
       size={size}
-      style={style}
-    >
+      style={style}>
       {icon && <StyledIcon icon={icon} prefix={iconPrefix} />}
       {content || children}
     </StyledBadge>
@@ -45,17 +44,18 @@ export const Badge = ({
 }
 
 const StyledBadge = styled.a`
-  ${props => themeBackground(props)}
-  ${props => themeFontSize(props)}
+  ${(props) => themeBackground(props)}
+  ${(props) => themeFontSize(props)}
   border: ${({ context, theme }) =>
     context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.dark};
   border-radius: ${({ shape, theme }) => theme.BADGE.BORDER_RADIUS[shape]};
-  color: ${({ theme, context }) => (context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black)};
+  color: ${({ theme, context }) =>
+    context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black};
   display: inline-block;
   line-height: 1;
   margin: 0 0.5em 0.5em 0;
-  padding:${({ size, theme }) => theme.BADGE.PADDING[size]} ;
-  font-size:${({ size, theme }) => theme.BADGE.FONT_SIZE[size]} ;
+  padding: ${({ size, theme }) => theme.BADGE.PADDING[size]};
+  font-size: ${({ size, theme }) => theme.BADGE.FONT_SIZE[size]};
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;

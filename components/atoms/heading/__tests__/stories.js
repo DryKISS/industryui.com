@@ -2,6 +2,9 @@
  * Heading
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ControlTypes } from '../../../../.storybook/decorators'
 
@@ -35,17 +38,17 @@ const main = ({ ...args }) => {
   return (
     <>
       H1
-      <BaseComponent tag='h1' {...HProps} />
+      <BaseComponent tag="h1" {...HProps} />
       H2
-      <BaseComponent tag='h2' {...HProps} />
+      <BaseComponent tag="h2" {...HProps} />
       H3
-      <BaseComponent tag='h3' {...HProps} />
+      <BaseComponent tag="h3" {...HProps} />
       H4
-      <BaseComponent tag='h4' {...HProps} />
+      <BaseComponent tag="h4" {...HProps} />
       H5
-      <BaseComponent tag='h5' {...HProps} />
+      <BaseComponent tag="h5" {...HProps} />
       H6
-      <BaseComponent tag='h6' {...HProps} />
+      <BaseComponent tag="h6" {...HProps} />
     </>
   )
 }

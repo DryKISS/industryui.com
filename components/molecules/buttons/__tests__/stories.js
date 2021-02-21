@@ -2,6 +2,9 @@
  * Buttons
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Buttons } from '../../../'
 import Readme from '../README.md'
@@ -22,4 +25,4 @@ export default {
   title: 'Molecules/Buttons'
 }
 
-export const main = args => <Buttons {...args} />
+export const main = (args) => <Buttons {...args} />

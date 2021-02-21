@@ -14,7 +14,9 @@ import { Icon } from '../../../atoms/icon/icon/icon'
 
 export const AlertContent = ({ content, icon, iconPrefix }) => (
   <StyledAlertContent>
-    {icon && <Icon aria-hidden='true' context='help' icon={icon} prefix={iconPrefix} />}
+    {icon && (
+      <Icon aria-hidden="true" context="help" icon={icon} prefix={iconPrefix} />
+    )}
     {content}
   </StyledAlertContent>
 )

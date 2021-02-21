@@ -3,7 +3,15 @@
  */
 
 // React
-import { any, node, number, objectOf, oneOfType, string, oneOf } from 'prop-types'
+import {
+  any,
+  node,
+  number,
+  objectOf,
+  oneOfType,
+  string,
+  oneOf
+} from 'prop-types'
 
 // Style
 import styled from 'styled-components'

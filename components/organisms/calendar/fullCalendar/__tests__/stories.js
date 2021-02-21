@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 // UI
 import { Calendar, Theme } from '../../../../'
@@ -27,7 +27,10 @@ export default {
   argTypes: {
     defaultView: { control: { type: 'select', options: AvailableViews } },
     businessHoursSelect: {
-      control: { type: 'select', options: ['true', 'MondayToFriday', 'MondayToThursday'] }
+      control: {
+        type: 'select',
+        options: ['true', 'MondayToFriday', 'MondayToThursday']
+      }
     },
     defaultEventColorSelect: {
       control: { type: 'select', options: Object.keys(Theme.COLOUR) }
@@ -76,22 +79,24 @@ export const BaseComponent = (props = {}) => {
   return <Calendar ref={calendarRef} {...defaultCalendarProps} />
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />
 
-export const events = args => <BaseComponent {...args} events={Events} />
+export const events = (args) => <BaseComponent {...args} events={Events} />
 
-export const CustomCalendar = args => {
+export const CustomCalendar = (args) => {
   return <CustomCalendarStyles {...args} />
 }
 
-export const CustomEvents = args => {
+export const CustomEvents = (args) => {
   return <CustomEventsStory {...args} />
 }
 
-export const eventsWithEventAdditionOnClick = () => {
+export const EventsWithEventAdditionOnClick = () => {
   const [events, setEvents] = useState(Events || [])
-  const handleDateClick = arg => {
-    if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
+  const handleDateClick = (arg) => {
+    if (
+      window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')
+    ) {
       const event = {
         title: 'New Event',
         start: arg.date,
@@ -104,19 +109,21 @@ export const eventsWithEventAdditionOnClick = () => {
   return <BaseComponent events={events} dateClick={handleDateClick} />
 }
 
-export const eventClick = args => {
+export const eventClick = (args) => {
   const handleEventClick = ({ event }) => {
     event.setProp('title', event.title + ' - ' + 'updated')
   }
 
-  return <BaseComponent {...args} eventClick={handleEventClick} events={Events} />
+  return (
+    <BaseComponent {...args} eventClick={handleEventClick} events={Events} />
+  )
 }
 
-export const eventsWithTooltip = args => {
+export const eventsWithTooltip = (args) => {
   return <BaseComponent {...args} events={Events} showTooltip />
 }
 
-export const fetchEvents = args => {
+export const fetchEvents = (args) => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
@@ -126,7 +133,7 @@ export const fetchEvents = args => {
   return <BaseComponent {...args} events={fetchEvents} />
 }
 
-export const fetchEventsWithTooltip = args => {
+export const fetchEventsWithTooltip = (args) => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)
@@ -136,7 +143,7 @@ export const fetchEventsWithTooltip = args => {
   return <BaseComponent {...args} events={fetchEvents} showTooltip />
 }
 
-export const fetchEventsWithLoadingIndicator = args => {
+export const fetchEventsWithLoadingIndicator = (args) => {
   const fetchEvents = (info, success) => {
     setTimeout(() => {
       success(Events)

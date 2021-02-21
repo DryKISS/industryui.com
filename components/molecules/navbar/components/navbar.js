@@ -13,7 +13,14 @@ import { NavWidgets } from '../components/widgets/widgets'
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({ brand, contained, type, style, showMenu, widgets }) => {
+export const Navbar = ({
+  brand,
+  contained,
+  type,
+  style,
+  showMenu,
+  widgets
+}) => {
   const [visible, setVisible] = useState(showMenu)
 
   const handleClick = () => {

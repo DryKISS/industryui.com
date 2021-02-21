@@ -10,9 +10,20 @@ import { any, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from '../../'
+import {
+  PlayCircleIcon,
+  fullScreen,
+  FullScreenIcon,
+  ResizeDetector
+} from '../../'
 
-export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
+export const VideoPlayer = ({
+  src,
+  poster,
+  className,
+  videoProps,
+  videoType
+}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [width, setWidth] = useState(0)
   const videoRef = useRef()
@@ -20,7 +31,7 @@ export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) =
 
   const handlePlayPause = () => {
     isPlaying === false ? videoRef.current.play() : videoRef.current.pause()
-    setIsPlaying(state => !state)
+    setIsPlaying((state) => !state)
   }
 
   const handlePaused = () => {
@@ -48,12 +59,24 @@ export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) =
     <VideoPlayerWrapper className={className}>
       <ResizeDetector onResize={handleResize} />
 
-      <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
+      <Overlay
+        show={!isPlaying}
+        poster={played.current ? null : poster}
+        gap={iconSize / 3}>
         <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
-        <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
+        <FullScreenIcon
+          size={iconSize}
+          hoverColour
+          onClick={handleFullScreen}
+        />
       </Overlay>
 
-      <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
+      <Video
+        ref={videoRef}
+        controls
+        onPause={handlePaused}
+        onPlay={handlePlayed}
+        {...videoProps}>
         <source src={src} type={videoType || 'video/mp4'} />
         Your browser does not support the video tag.
       </Video>
@@ -65,7 +88,8 @@ const Overlay = styled.div`
   align-items: center;
   background: rgba(0, 0, 0, 0.3);
   background-image: ${({ poster }) =>
-    poster && ` linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${poster})`};
+    poster &&
+    ` linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${poster})`};
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0.5rem;

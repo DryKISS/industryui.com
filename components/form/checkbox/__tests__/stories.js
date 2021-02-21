@@ -2,6 +2,9 @@
  * Form - Field
  */
 
+// React
+import React from 'react'
+
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
@@ -51,7 +54,7 @@ const BaseComponent = (props = {}) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     errors: errors,
@@ -63,9 +66,9 @@ const BaseComponent = (props = {}) => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <CheckboxField {...defaultProps} data={data} />
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

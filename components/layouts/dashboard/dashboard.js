@@ -10,7 +10,13 @@ import { any, bool, node, oneOf, shape, string } from 'prop-types'
 import { Alert, LdsSpinner, Page, PageLoading, Space } from '../../'
 import { THEME_CONTEXT } from '../../theme/constants/context'
 
-export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
+export const Dashboard = ({
+  children,
+  meta,
+  pageHeading,
+  resultAlert,
+  View
+}) => {
   const { context, message } = resultAlert
 
   const defaultMeta = {

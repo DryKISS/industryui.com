@@ -1,6 +1,6 @@
 /**
  * Card - Groups
- * Use card groups to render cards as a single, attached element with equal width and height columns.
+ * Use card groups to render cards as a single, attached element with equal width and height columns
  */
 
 // React

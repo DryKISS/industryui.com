@@ -60,8 +60,13 @@ export const ReactSelectField = ({
         control={control}
         defaultValue={defaultValue}
         name={name}
-        render={props => (
-          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
+        render={(props) => (
+          <Component
+            options={options}
+            selectedOption={props.value}
+            {...props}
+            {...parentProps}
+          />
         )}
       />
     </Wrapper>
@@ -70,7 +75,7 @@ export const ReactSelectField = ({
 
 const Wrapper = styled.div`
   & > div:first-of-type > div:first-of-type {
-    ${props => formStyle(props)}
+    ${(props) => formStyle(props)}
     display:flex;
     padding: 0;
     color: ${({ theme }) => theme.COLOUR.dark};
@@ -101,7 +106,7 @@ const Wrapper = styled.div`
     css`
       ._,
       & > div:first-of-type > div:first-of-type {
-        ${props => formErrorStyle(props)}
+        ${(props) => formErrorStyle(props)}
       }
     `}
 

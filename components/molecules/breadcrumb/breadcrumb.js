@@ -14,49 +14,60 @@ import { Icon } from '../../atoms/icon/icon/icon'
 import { Link } from '../../atoms/link/link'
 import { THEME_SIZE } from '../../theme/constants/size'
 
-export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
+export const Breadcrumb = ({
+  breadcrumbs,
+  customSeparator,
+  separator,
+  size
+}) => {
   return (
-    <nav aria-label='breadcrumb'>
-      <StyledOl itemScope='' itemType='http://schema.org/BreadcrumbList'>
+    <nav aria-label="breadcrumb">
+      <StyledOl itemScope="" itemType="http://schema.org/BreadcrumbList">
         {/* Home link - always static and routes to / */}
         {breadcrumbs.map((item, index) => {
           return (
             <StyledLi
-              itemProp='itemListElement'
-              itemScope=''
-              itemType='http://schema.org/ListItem'
-              key={index}
-            >
+              itemProp="itemListElement"
+              itemScope=""
+              itemType="http://schema.org/ListItem"
+              key={index}>
               {index + 1 !== breadcrumbs.length ? (
                 <Link to={item.to} passHref>
                   <StyledA
-                    itemProp='item'
-                    itemScope='itemscope'
+                    itemProp="item"
+                    itemScope="itemscope"
                     size={size}
-                    itemType='http://schema.org/Thing'
-                  >
-                    {item.icon && <StyledIconWrapper size={size}>{item.icon}</StyledIconWrapper>}
+                    itemType="http://schema.org/Thing">
+                    {item.icon && (
+                      <StyledIconWrapper size={size}>
+                        {item.icon}
+                      </StyledIconWrapper>
+                    )}
                     <StyledTitle size={size}> {item.title}</StyledTitle>
                   </StyledA>
                 </Link>
               ) : (
-                <StyledLastTitle size={size} itemProp='name'>
-                  {item.icon && <StyledIconWrapper size={size}>{item.icon}</StyledIconWrapper>}
+                <StyledLastTitle size={size} itemProp="name">
+                  {item.icon && (
+                    <StyledIconWrapper size={size}>
+                      {item.icon}
+                    </StyledIconWrapper>
+                  )}
                   <StyledTitle last size={size}>
                     {item.title}
                   </StyledTitle>
                 </StyledLastTitle>
               )}
 
-              <meta itemProp='position' content={index + 1 + ''} />
+              <meta itemProp="position" content={index + 1 + ''} />
 
               {index + 1 !== breadcrumbs.length && (
                 <StyledSeperator size={size}>
                   {customSeparator ??
                     (separator && separator === 'chevron' ? (
-                      <StyledIcon icon='chevron-right' prefix='fas' />
+                      <StyledIcon icon="chevron-right" prefix="fas" />
                     ) : separator && separator === 'slash' ? (
-                      <StyledIcon icon='slash' prefix='fas' />
+                      <StyledIcon icon="slash" prefix="fas" />
                     ) : (
                       separator || '\\'
                     ))}
@@ -70,7 +81,7 @@ export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) =>
   )
 }
 
-const sizedStyles = size => {
+const sizedStyles = (size) => {
   switch (size) {
     case THEME_SIZE.XXS:
       return css`
@@ -135,7 +146,7 @@ const StyledIconWrapper = styled.span`
   color: ${({ theme }) => theme.COLOUR.blackGrey};
 `
 
-const StyledIcon = styled(Icon).attrs(props => ({
+const StyledIcon = styled(Icon).attrs((props) => ({
   color: props.theme.dark
 }))``
 

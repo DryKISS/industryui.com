@@ -17,7 +17,7 @@ import styled from 'styled-components'
 export const Close = ({ className, click, context, icon, prefix }) => {
   return (
     <StyledButton className={className} context={context} onClick={click}>
-      <Icon aria-hidden='true' context={context} icon={icon} prefix={prefix} />
+      <Icon aria-hidden="true" context={context} icon={icon} prefix={prefix} />
     </StyledButton>
   )
 }

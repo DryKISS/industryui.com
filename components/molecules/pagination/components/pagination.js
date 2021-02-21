@@ -33,7 +33,7 @@ export const Pagination = ({
     return null
   }
 
-  const handleChange = type => {
+  const handleChange = (type) => {
     if (type === 'prev') {
       onPageChange(currentPage - 1)
     } else if (type === 'next') {
@@ -50,15 +50,17 @@ export const Pagination = ({
     breakCount
   )
 
-  const currentChunkIndex = pagesArray.findIndex(p => p.includes(currentPage))
+  const currentChunkIndex = pagesArray.findIndex((p) => p.includes(currentPage))
   const prevChunk = pagesArray[currentChunkIndex - 1]
   const currentChunk = pagesArray[currentChunkIndex]
   const nextChunk = pagesArray[currentChunkIndex + 1]
   const showPrevDots = currentChunkIndex > 0
-  const showNextDots = pagesArray.length > 1 && currentChunkIndex + 1 < pagesArray.length
+  const showNextDots =
+    pagesArray.length > 1 && currentChunkIndex + 1 < pagesArray.length
 
   const showPrevButton = showNextAndPrev && pageCount > 5 && currentPage > 1
-  const showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount
+  const showNextButton =
+    showNextAndPrev && pageCount > 5 && currentPage < pageCount
 
   const renderContent = () => (
     <>
@@ -76,12 +78,12 @@ export const Pagination = ({
         <PaginationItem
           onClick={() => handleChange(prevChunk[prevChunk.length - 1])}
           context={context}
-          label='...'
+          label="..."
           size={size}
         />
       )}
 
-      {currentChunk.map(p => {
+      {currentChunk.map((p) => {
         return (
           <PaginationItem
             active={p === currentPage}
@@ -98,7 +100,7 @@ export const Pagination = ({
         <PaginationItem
           onClick={() => handleChange(nextChunk[0])}
           context={context}
-          label='...'
+          label="..."
           size={size}
         />
       )}
@@ -119,7 +121,11 @@ export const Pagination = ({
     return null
   }
 
-  return <StyledPagination aria-label='Pagination'>{children || renderContent()}</StyledPagination>
+  return (
+    <StyledPagination aria-label="Pagination">
+      {children || renderContent()}
+    </StyledPagination>
+  )
 }
 
 const StyledPagination = styled.ul`

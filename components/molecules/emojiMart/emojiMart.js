@@ -10,10 +10,16 @@ import { bool, func, string } from 'prop-types'
 // Emoji Mart
 import { Picker } from 'emoji-mart'
 
-export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, open, style }) => {
+export const EmojiMart = ({
+  closeOnClickOut,
+  handleSelect,
+  handleOpenPicker,
+  open,
+  style
+}) => {
   const node = useRef()
 
-  const handleClickAway = e => {
+  const handleClickAway = (e) => {
     e.preventDefault()
     const domNode = ReactDOM.findDOMNode(node.current)
 
@@ -42,16 +48,21 @@ export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, ope
   return (
     open && (
       <Picker
-        emoji=''
+        emoji=""
         emojiSize={16}
         include={['foods', 'people', 'recent', 'nature']}
         onClick={handlePickEmoji}
-        set='google'
+        set="google"
         sheetSize={20}
         showSkinTones={false}
         showPreview={false}
-        style={{ border: 'initial', borderRadius: 'initial', width: '100%', ...style }}
-        title='Pick your emoji...'
+        style={{
+          border: 'initial',
+          borderRadius: 'initial',
+          width: '100%',
+          ...style
+        }}
+        title="Pick your emoji..."
         ref={node}
       />
     )

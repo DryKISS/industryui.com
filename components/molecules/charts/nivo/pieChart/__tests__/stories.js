@@ -2,8 +2,14 @@
  * Charts - Pie - Tests - Story
  */
 
+// React
+import React from 'react'
+
 // Nivo
 import { colorSchemes } from '@nivo/colors'
+
+// Styled Components
+import styled from 'styled-components'
 
 // UI
 import { objectWithoutProperties, PieChart } from '../../../../../'
@@ -11,9 +17,6 @@ import Readme from '../README.md'
 
 // Mocks
 import { Data, Data2 } from '../__mocks__/nivoPie'
-
-// Styled Components
-import styled from 'styled-components'
 
 export default {
   args: {
@@ -116,7 +119,7 @@ export default {
   }
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const { args } = props
   const restOfProps = objectWithoutProperties(props, ['args'])
   return (
@@ -131,10 +134,10 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent args={args} />
 }
 
-export const OtherDataPie = args => {
+export const OtherDataPie = (args) => {
   return <BaseComponent data={Data2} args={args} />
 }

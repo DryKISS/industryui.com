@@ -22,7 +22,7 @@ export const INLINE_STYLES = [
   { label: 'Underline', style: 'UNDERLINE' }
 ]
 
-export const BlockStyleControls = props => {
+export const BlockStyleControls = (props) => {
   const { editorState } = props
   const selection = editorState.getSelection()
   const blockType = editorState
@@ -31,8 +31,8 @@ export const BlockStyleControls = props => {
     .getType()
 
   return (
-    <div className='RichEditor-controls'>
-      {BLOCK_TYPES.map(type => (
+    <div className="RichEditor-controls">
+      {BLOCK_TYPES.map((type) => (
         <StyleButton
           key={type.label}
           active={type.style === blockType}
@@ -45,11 +45,11 @@ export const BlockStyleControls = props => {
   )
 }
 
-export const InlineStyleControls = props => {
-  var currentStyle = props.editorState.getCurrentInlineStyle()
+export const InlineStyleControls = (props) => {
+  const currentStyle = props.editorState.getCurrentInlineStyle()
   return (
-    <div className='RichEditor-controls'>
-      {INLINE_STYLES.map(type => (
+    <div className="RichEditor-controls">
+      {INLINE_STYLES.map((type) => (
         <StyleButton
           key={type.label}
           active={currentStyle.has(type.style)}
@@ -69,7 +69,7 @@ export const styleMap = {
     padding: 2
   }
 }
-export const getBlockStyle = block => {
+export const getBlockStyle = (block) => {
   switch (block.getType()) {
     case 'blockquote':
       return 'RichEditor-blockquote'
@@ -78,7 +78,7 @@ export const getBlockStyle = block => {
   }
 }
 const StyleButton = ({ active, label, onToggle, style }) => {
-  const handleToggle = e => {
+  const handleToggle = (e) => {
     e.preventDefault()
     onToggle(style)
   }

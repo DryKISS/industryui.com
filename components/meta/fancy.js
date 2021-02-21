@@ -12,7 +12,7 @@ import Head from 'next/head'
 export const MetaFancy = ({ category }) => {
   return (
     <Head>
-      <meta property='fancy:category' content={category} />
+      <meta property="fancy:category" content={category} />
     </Head>
   )
 }

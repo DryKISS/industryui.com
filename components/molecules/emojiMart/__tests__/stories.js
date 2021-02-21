@@ -2,12 +2,14 @@
  * Components - Molecules -  EmojiMart
  */
 
+// React
+import React from 'react'
+
 // UI
-import { EmojiMart } from '../../../'
+import { EmojiMart } from '../emojiMart'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/EmojiMart',
   component: EmojiMart,
   parameters: {
     docs: {
@@ -15,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/EmojiMart'
 }
 
 export const main = () => <EmojiMart open />

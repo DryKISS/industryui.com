@@ -17,10 +17,13 @@ export const Toggler = ({ handleMenuClick, visible }) => {
   return (
     <StyledToggler
       aria-expanded={visible ? 'false' : 'true'}
-      aria-label='Toggle navigation'
-      onClick={handleMenuClick}
-    >
-      {!visible ? <Icon icon='bars' prefix='fas' /> : <Icon icon='times' prefix='fas' />}
+      aria-label="Toggle navigation"
+      onClick={handleMenuClick}>
+      {!visible ? (
+        <Icon icon="bars" prefix="fas" />
+      ) : (
+        <Icon icon="times" prefix="fas" />
+      )}
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )

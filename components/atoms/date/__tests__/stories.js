@@ -2,6 +2,9 @@
  * Components - Atoms - Date - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { SizeControl } from '../../../../.storybook/decorators'
 
@@ -28,4 +31,4 @@ export default {
   title: 'Atoms/Date'
 }
 
-export const main = args => <Date {...args} />
+export const main = (args) => <Date {...args} />

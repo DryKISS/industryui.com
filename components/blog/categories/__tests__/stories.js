@@ -2,8 +2,11 @@
  * Blog - Categories
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogCategories } from '../../../'
+import { BlogCategories } from '../categories'
 import Readme from '../README.md'
 
 // Data
@@ -21,4 +24,6 @@ export default {
   title: 'Blog/Categories'
 }
 
-export const main = args => <BlogCategories articles={Articles} config={Blog} {...args} />
+export const main = (args) => (
+  <BlogCategories articles={Articles} config={Blog} {...args} />
+)

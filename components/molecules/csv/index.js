@@ -7,7 +7,7 @@
 
 // React
 import React from 'react'
-import { element, func, object, oneOfType, string } from 'prop-types'
+import { func, object } from 'prop-types'
 
 // UI
 import { FormField } from '../../'
@@ -16,11 +16,11 @@ import { FormField } from '../../'
 import PapaParse from 'papaparse'
 
 export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
-  const change = e => {
+  const change = (e) => {
     const reader = new window.FileReader()
     const filename = e.target.files[0].name
 
-    reader.onload = event => {
+    reader.onload = (event) => {
       const csvData = PapaParse.parse(
         event.target.result,
         Object.assign(parserOptions, {
@@ -36,20 +36,18 @@ export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
 
   return (
     <FormField
-      accept='.csv, text/csv'
-      id='inputId'
-      label='CSV Upload'
+      accept=".csv, text/csv"
+      id="inputId"
+      label="CSV Upload"
       onChange={change}
-      type='file'
+      type="file"
     />
   )
 }
 
 CSVReader.propTypes = {
-  label: oneOfType([string, element]),
   onFileLoaded: func.isRequired,
   onError: func,
-  inputId: string,
   parserOptions: object
 }
 

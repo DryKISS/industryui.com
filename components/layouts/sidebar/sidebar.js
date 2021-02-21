@@ -10,7 +10,13 @@ import { array, func, node, string } from 'prop-types'
 // UI
 import { Bootstrap, ConfigContext, Container, Column, Row } from '../../'
 
-export const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
+export const SidebarLayout = ({
+  brand,
+  children,
+  copyright,
+  footer,
+  Navigation
+}) => {
   const { Sidebar } = useContext(ConfigContext)
 
   return (
@@ -21,7 +27,11 @@ export const SidebarLayout = ({ brand, children, copyright, footer, Navigation }
         </Column>
 
         <Column md={10} style={{ padding: 0 }}>
-          <Bootstrap brand={brand} copyright={copyright} footer={footer} Navigation={Navigation}>
+          <Bootstrap
+            brand={brand}
+            copyright={copyright}
+            footer={footer}
+            Navigation={Navigation}>
             {children}
           </Bootstrap>
         </Column>
@@ -35,5 +45,5 @@ SidebarLayout.propTypes = {
   children: node.isRequired,
   copyright: array,
   footer: array,
-  navigation: func
+  Navigation: func
 }

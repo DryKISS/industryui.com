@@ -10,7 +10,13 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Adornment, arrayOfValues, InputDecorationTypes, Space, Text } from '../../'
+import {
+  Adornment,
+  arrayOfValues,
+  InputDecorationTypes,
+  Space,
+  Text
+} from '../../'
 import { THEME_COLOUR } from '../../theme/variables/colour'
 import { THEME_SIZE } from '../../theme/constants/size'
 
@@ -62,15 +68,18 @@ export const Input = ({
   ...props
 }) => {
   return (
-    <Wrapper theme={props.theme} decoration={decoration} readOnly={props.readOnly}>
+    <Wrapper
+      theme={props.theme}
+      decoration={decoration}
+      readOnly={props.readOnly}>
       {label && (
         <>
-          <Space marginBottom='xs'>
+          <Space marginBottom="xs">
             <StyledLabel theme={props.theme} content={label} />
           </Space>
         </>
       )}
-      <Space marginBottom='xs'>
+      <Space marginBottom="xs">
         <InputWrapper size={size}>
           {adornments?.startAdornment && (
             <Adornment startAdornment size={size}>
@@ -80,11 +89,15 @@ export const Input = ({
 
           <StyledInput
             adornments={adornments}
-            disabled={props.disabled || decoration === InputDecorationTypes.DISABLED}
+            disabled={
+              props.disabled || decoration === InputDecorationTypes.DISABLED
+            }
             message={message}
             name={name}
             placeholder={placeholder}
-            readOnly={props.readOnly || decoration === InputDecorationTypes.READONLY}
+            readOnly={
+              props.readOnly || decoration === InputDecorationTypes.READONLY
+            }
             ref={register}
             size={size}
             type={type}
@@ -92,7 +105,9 @@ export const Input = ({
             {...props}
           />
 
-          {adornments?.endAdornment && <Adornment size={size}>{adornments.endAdornment}</Adornment>}
+          {adornments?.endAdornment && (
+            <Adornment size={size}>{adornments.endAdornment}</Adornment>
+          )}
         </InputWrapper>
       </Space>
       {message && <StyledMessage>{message}</StyledMessage>}
@@ -125,7 +140,6 @@ const InputWrapper = styled.div`
       case THEME_SIZE.MD:
         return css`
           height: 1.875rem;
-          ._,/* neccessary because commit prehook cant understand switch case in styled component with selector */
           ${Adornment} {
             padding: 0.75rem 1.25rem;
           }
@@ -133,7 +147,6 @@ const InputWrapper = styled.div`
       case THEME_SIZE.LG:
         return css`
           height: 2.25rem;
-          .__,/* read the upper comment please */
           ${Adornment} {
             padding: 0.875rem 1.625rem;
           }
@@ -141,7 +154,6 @@ const InputWrapper = styled.div`
       default:
         return css`
           height: 1.875rem;
-          .___,/* read the upper comment please */
           ${Adornment} {
             padding: 0.75rem 1.25rem;
           }
@@ -155,21 +167,21 @@ const withAdornmentStyles = css`
       adornments &&
       css`
         ${adornments.startAdornment &&
-          css`
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-          `}
+        css`
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+        `}
         ${adornments.endAdornment &&
-          css`
-            border-bottom-right-radius: 0;
-            border-top-right-radius: 0;
-          `}
+        css`
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+        `}
       `
     )
   }}
 `
 
-const StyledInput = styled.input.attrs(props => ({
+const StyledInput = styled.input.attrs((props) => ({
   'aria-label': props.name,
   autoComplete: 'off',
   autoFocus: false
@@ -214,11 +226,11 @@ const Wrapper = styled.div`
           ? colourProvider(theme, decoration)
           : colourProvider(theme, 'dark')};
         ${decoration === InputDecorationTypes.READONLY ||
-          (readOnly === true &&
-            css`
-              background: transparent;
-              pointer-events: none;
-            `)}
+        (readOnly === true &&
+          css`
+            background: transparent;
+            pointer-events: none;
+          `)}
       }
       ${Adornment} {
         background-color: ${colourProvider(theme, decoration)};

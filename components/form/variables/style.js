@@ -29,13 +29,13 @@ export const formStyle = ({
 
     ${formfontSize(size)}
     ${Required &&
-      css`
-        border-right-width: 0.25rem;
-      `}
+    css`
+      border-right-width: 0.25rem;
+    `}
     ${isTyping === true &&
-      css`
-        box-shadow: 0px 0px 4px ${theme.COLOUR.fadeBlue};
-      `}
+    css`
+      box-shadow: 0px 0px 4px ${theme.COLOUR.fadeBlue};
+    `}
 
     outline: none;
     padding: 0 0.725rem;
@@ -60,24 +60,26 @@ export const formStyle = ({
       opacity: 1;
     }
     ${disabled &&
-      css`
-        background: ${theme.COLOUR.grey};
-        cursor: not-allowed;
-        border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : theme.COLOUR.light)};
-      `}
+    css`
+      background: ${theme.COLOUR.grey};
+      cursor: not-allowed;
+      border-color: ${({ theme }) =>
+        theme ? theme.COLOUR.dark : theme.COLOUR.light};
+    `}
 
     ${readOnly &&
-      css`
-        background-color: ${({ theme }) => (theme ? theme.COLOUR.light : 'rgb(241,241,241)')};
-        border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : '#cccccc')};
-        border-width: 1px;
-        padding: 0.5rem;
-      `}
+    css`
+      background-color: ${({ theme }) =>
+        theme ? theme.COLOUR.light : 'rgb(241,241,241)'};
+      border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : '#cccccc')};
+      border-width: 1px;
+      padding: 0.5rem;
+    `}
 
       ${textAlign &&
-        css`
-          text-align: ${textAlign};
-        `}
+    css`
+      text-align: ${textAlign};
+    `}
   `
 }
 
@@ -95,13 +97,13 @@ export const formErrorStyle = ({ theme, isTyping, withAddon }) => {
     }
 
     ${isTyping === true &&
-      css`
-        box-shadow: 0px 0px 4px ${theme.COLOUR.danger};
-      `}
+    css`
+      box-shadow: 0px 0px 4px ${theme.COLOUR.danger};
+    `}
   `
 }
 
-export const formfontSize = size => {
+export const formfontSize = (size) => {
   switch (size) {
     case THEME_SIZE.SM:
       return css`

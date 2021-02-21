@@ -1,7 +1,7 @@
 /**
  * Array of Values
  */
-export const arrayOfValues = obj => {
+export const arrayOfValues = (obj) => {
   const arr = []
 
   for (const key in obj) {

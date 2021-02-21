@@ -2,6 +2,9 @@
  * Config
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Sidebar as SidebarUI } from '../components'
 
@@ -91,7 +94,9 @@ const sidebarData = [
   }
 ]
 
-export const Sidebar = () => <SidebarUI brand='/drykiss.svg' data={sidebarData} />
+export const Sidebar = () => (
+  <SidebarUI brand="/drykiss.svg" data={sidebarData} />
+)
 
 export const Config = {
   apiConfig,

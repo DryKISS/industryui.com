@@ -16,7 +16,7 @@ export const TablePagination = memo(
       onPageChange={handlePagination}
       pageCount={pageCount}
       showNextAndPrev
-      size='sm'
+      size="sm"
     />
   )
 )

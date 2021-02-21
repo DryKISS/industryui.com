@@ -30,7 +30,7 @@ export const MessageTo = ({ to }) => {
       break
   }
 
-  return icon && <StyledImage alt='audience' src={icon} />
+  return icon && <StyledImage alt="audience" src={icon} />
 }
 
 const StyledImage = styled(Image)`

@@ -2,6 +2,9 @@
  * Components - Form - Form
  */
 
+// React
+import React from 'react'
+
 // Decorators
 import { ControlTypes } from '../../../../.storybook/decorators'
 
@@ -65,9 +68,7 @@ const schema = object().shape({
   checkbox: string().required(),
   radio: string().required(),
   disabled: string(),
-  email: string()
-    .required('Please Enter an email')
-    .email(),
+  email: string().required('Please Enter an email').email(),
   input: string().required(),
   name: string().required(),
   reactSelect: string().required(),
@@ -91,12 +92,12 @@ const checkbox = [
   }
 ]
 
-const all = ({ ...args }) => {
+const All = ({ ...args }) => {
   const { control, errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -109,11 +110,11 @@ const all = ({ ...args }) => {
     size: args.size
   }
 
-  const ErrMessage = message => <FormError message={message} />
+  const ErrMessage = (message) => <FormError message={message} />
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <Heading content='Inputs' tag='h1' />
+      <Heading content="Inputs" tag="h1" />
 
       <Space />
 
@@ -123,37 +124,37 @@ const all = ({ ...args }) => {
 
       <Row style={{ background: rowBackground }}>
         <Column md={colMd}>
-          <FormLabel size='md' label='Name'>
-            <FormField {...defaultProps} name='name' />
+          <FormLabel size="md" label="Name">
+            <FormField {...defaultProps} name="name" />
             {errors.name && ErrMessage(errors.name.message)}
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel size='md' label='Email'>
+          <FormLabel size="md" label="Email">
             <FormField
               {...defaultProps}
               helperMessage={"We'll never share your email with anyone else."}
-              name='email'
-              placeholder='Enter Email'
+              name="email"
+              placeholder="Enter Email"
             />
             {errors.email && ErrMessage(errors.email.message)}
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label='Disabled'>
-            <FormField {...defaultProps} disabled name='disabled' />
+          <FormLabel label="Disabled">
+            <FormField {...defaultProps} disabled name="disabled" />
             {errors.disabled && ErrMessage(errors.disabled.message)}
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label='Readonly'>
+          <FormLabel label="Readonly">
             <FormField
               {...defaultProps}
-              defaultValue='Readonly with defaultValue'
-              name='readonly'
+              defaultValue="Readonly with defaultValue"
+              name="readonly"
               readOnly
             />
             {errors.readonly && ErrMessage(errors.readonly.message)}
@@ -161,88 +162,93 @@ const all = ({ ...args }) => {
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label='Datepicker'>
+          <FormLabel label="Datepicker">
             <DatePickerCalendar
               {...defaultProps}
               control={control}
               locale={enGB}
-              name='datepicker'
+              name="datepicker"
             />
           </FormLabel>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label='React Select'>
+          <FormLabel label="React Select">
             <ReactSelectField
               {...defaultProps}
               control={control}
-              name='reactSelect'
+              name="reactSelect"
               options={Options}
             />
           </FormLabel>
         </Column>
 
         <Column md={12}>
-          <FormLabel children='' label='Dropzone' />
+          <FormLabel children="" label="Dropzone" />
           <Controller
             {...defaultProps}
             render={() => <Dropzone multiple={false} />}
             control={control}
-            name='dropzone'
+            name="dropzone"
           />
         </Column>
       </Row>
 
-      <Divider size='md' />
+      <Divider size="md" />
 
-      <FormLabel label='Input Group'>
+      <FormLabel label="Input Group">
         <InputGroup>
-          <FormField {...defaultProps} name='id' placeholder='Search...' />
+          <FormField {...defaultProps} name="id" placeholder="Search..." />
 
-          <InputGroupAddon addonType='append'>
-            <Button content='Search' type='submit' size='sm' />
+          <InputGroupAddon addonType="append">
+            <Button content="Search" type="submit" size="sm" />
           </InputGroupAddon>
         </InputGroup>
       </FormLabel>
 
-      <FormLabel label='Search'>
+      <FormLabel label="Search">
         <Search {...defaultProps} />
       </FormLabel>
 
-      <CurrencyInput {...defaultProps} name='amount' label='Currency input' />
-      <PercentInput {...defaultProps} name='amount' label='Percent input' />
+      <CurrencyInput {...defaultProps} name="amount" label="Currency input" />
+      <PercentInput {...defaultProps} name="amount" label="Percent input" />
 
-      <FormLabel label='Input'>
-        <FormField {...defaultProps} name='input' />
+      <FormLabel label="Input">
+        <FormField {...defaultProps} name="input" />
       </FormLabel>
 
-      <FormLabel label='Textarea'>
-        <TextareaField {...defaultProps} name='textarea' rows={2} />
+      <FormLabel label="Textarea">
+        <TextareaField {...defaultProps} name="textarea" rows={2} />
       </FormLabel>
 
-      <FormLabel label='Select'>
-        <SelectField {...defaultProps} options={COLOURS} name='select' />
+      <FormLabel label="Select">
+        <SelectField {...defaultProps} options={COLOURS} name="select" />
       </FormLabel>
 
       <CheckboxField
         {...defaultProps}
         data={checkbox}
         legend={args.checkboxLegend}
-        name='checkbox'
+        name="checkbox"
       />
 
-      <RadioField {...defaultProps} data={RADIO_GENDER()} legend='Gender?' name='radio' />
+      <RadioField
+        {...defaultProps}
+        data={RADIO_GENDER()}
+        legend="Gender?"
+        name="radio"
+      />
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }
 
-export const AllInputsTemplate = all.bind({})
+export const AllInputsTemplate = All.bind({})
 
 AllInputsTemplate.args = {
   formTitle:
-    'Grid elements can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
+    'Grid can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
   backgroundColour: '#F5F5F7',
   ColumnWidth: 6,
   datePickerValue: '',
@@ -271,6 +277,9 @@ AllInputsTemplate.argTypes = {
 
   size: {
     name: 'Input Size',
-    control: { type: ControlTypes.Select, options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG] }
+    control: {
+      type: ControlTypes.Select,
+      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
+    }
   }
 }

@@ -2,6 +2,9 @@
  *  Components - Molecules - Alert - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators'
 
@@ -33,4 +36,4 @@ export default {
   title: 'Molecules/Alert'
 }
 
-export const main = args => <Alert {...args} />
+export const main = (args) => <Alert {...args} />

@@ -2,6 +2,9 @@
  * Components - Details - Stories
  */
 
+// React
+import React from 'react'
+
 // UI
 import { DetailsText } from '../detailsText'
 import { Link } from '../../../atoms/link/link'
@@ -23,7 +26,7 @@ export default {
   title: 'Atoms/DetailsText'
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <>
       <DetailsText {...args} />

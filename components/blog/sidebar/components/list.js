@@ -24,9 +24,13 @@ export const BlogList = ({ author, config, list }) => {
           <StyledDd>
             <Link
               to={{
-                as: `${config.path}/${category && slugify(category) + '/'}${slugify(to)}`,
+                as: `${config.path}/${
+                  category && slugify(category) + '/'
+                }${slugify(to)}`,
                 href: {
-                  pathname: author ? `${config.path}/author` : `${config.path}/article`,
+                  pathname: author
+                    ? `${config.path}/author`
+                    : `${config.path}/article`,
                   query: {
                     articleSlug: slugify(to),
                     author: slugify(to),
@@ -34,8 +38,7 @@ export const BlogList = ({ author, config, list }) => {
                   }
                 }
               }}
-              passHref
-            >
+              passHref>
               <StyledA>{name}</StyledA>
             </Link>
           </StyledDd>
@@ -71,7 +74,7 @@ const StyledDd = styled.dd`
 `
 
 const StyledA = styled.span`
-  ${props => Truncate('100px')}
+  ${(props) => Truncate('100px')}
 `
 
 BlogList.propTypes = {

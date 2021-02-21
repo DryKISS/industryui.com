@@ -38,14 +38,13 @@ export const FieldHOC = ({
         display: !show ? 'none' : undefined,
         ...props.style
       }}
-      {...props}
-    >
+      {...props}>
       {children}
     </Component>
 
     {helperMessage && (
       <Space marginTop={THEME_SIZE.SM} marginBottom={THEME_SIZE.XS}>
-        <Text size={THEME_SIZE.XS} context='default'>
+        <Text size={THEME_SIZE.XS} context="default">
           {helperMessage}
         </Text>
       </Space>

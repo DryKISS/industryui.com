@@ -21,7 +21,9 @@ export const Page = ({ children, fluid, meta, padding, pageHeading }) => {
     <StyledPage>
       {padding && <Space paddingTop={padding} />}
 
-      {meta && <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />}
+      {meta && (
+        <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
+      )}
 
       <Container fluid={fluid}>
         {pageHeading && <PageHeading {...pageHeading} />}

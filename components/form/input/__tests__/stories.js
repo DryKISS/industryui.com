@@ -2,6 +2,9 @@
  * Components - Form - Input - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ControlTypes } from '../../../../.storybook/decorators'
 
@@ -40,18 +43,16 @@ export default {
   title: 'Form/Input'
 }
 
-const InputElement = args => {
+const InputElement = (args) => {
   const schema = object().shape({
-    email: string()
-      .required('Please Enter an email')
-      .email()
+    email: string().required('Please Enter an email').email()
   })
 
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -60,24 +61,28 @@ const InputElement = args => {
       <Row>
         <Column md={6}>
           <Input
-            decoration={errors?.email ? InputDecorationTypes.DANGER : args.decoration}
+            decoration={
+              errors?.email ? InputDecorationTypes.DANGER : args.decoration
+            }
             adornments={{
               ...(args.WithStartAdornment && { startAdornment: <>S</> }),
               ...(args.WithEndAdornment && { endAdornment: <>E</> })
             }}
-            label='Label'
+            label="Label"
             type={args.inputType}
-            message={errors?.email?.message ? errors.email.message : args.messageText}
+            message={
+              errors?.email?.message ? errors.email.message : args.messageText
+            }
             errors={errors}
-            name='email'
+            name="email"
             register={register}
-            placeholder='Placeholder'
+            placeholder="Placeholder"
             size={args.size}
           />
 
           <Space />
 
-          <Button type='submit'>submit</Button>
+          <Button type="submit">submit</Button>
         </Column>
       </Row>
     </Form>

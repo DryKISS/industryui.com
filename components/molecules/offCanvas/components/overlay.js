@@ -9,7 +9,12 @@ import { bool, number, string } from 'prop-types'
 import styled from 'styled-components'
 
 export const OffCanvasOverlay = styled.div`
-  background-color: rgba(0, 0, 0, ${({ opacity, show }) => (show ? opacity : 0)});
+  background-color: rgba(
+    0,
+    0,
+    0,
+    ${({ opacity, show }) => (show ? opacity : 0)}
+  );
   height: 100vh;
   left: 0;
   position: fixed;

@@ -2,6 +2,9 @@
  * Components - Molecules - Video Player - Story
  */
 
+// React
+import React from 'react'
+
 // UI
 import { VideoPlayer } from '../videoPlayer'
 import Readme from '../README.md'
@@ -19,6 +22,6 @@ export default {
   title: 'Molecules/VideoPlayer'
 }
 
-export const main = args => (
-  <VideoPlayer {...args} src='/video/video.mp4' poster='/video/poster.png' />
+export const main = (args) => (
+  <VideoPlayer {...args} src="/video/video.mp4" poster="/video/poster.png" />
 )

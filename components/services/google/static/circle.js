@@ -9,11 +9,11 @@
  * @see https://stackoverflow.com/questions/7316963/drawing-a-circle-google-static-maps
  */
 
-function locationBuilder (location) {
+function locationBuilder(location) {
   const urlParts = []
 
   if (Array.isArray(location)) {
-    const arrParts = location.map(val => this.locationBuilder(val))
+    const arrParts = location.map((val) => this.locationBuilder(val))
     urlParts.push(...arrParts)
   }
 
@@ -28,7 +28,7 @@ function locationBuilder (location) {
   return urlParts.join('%7C')
 }
 
-function GMapCircle (lat, lng, rad, detail = 8) {
+function GMapCircle(lat, lng, rad, detail = 8) {
   const r = 6371
   const pi = Math.PI
   let staticMapSrc = ''
@@ -43,7 +43,8 @@ function GMapCircle (lat, lng, rad, detail = 8) {
     const brng = (i * pi) / 180
 
     let pLat = Math.asin(
-      Math.sin(_lat) * Math.cos(d) + Math.cos(_lat) * Math.sin(d) * Math.cos(brng)
+      Math.sin(_lat) * Math.cos(d) +
+        Math.cos(_lat) * Math.sin(d) * Math.cos(brng)
     )
     const pLng =
       ((_lng +
@@ -62,7 +63,7 @@ function GMapCircle (lat, lng, rad, detail = 8) {
   return encodeURI(staticMapSrc)
 }
 
-export function encodeCircle (latitude, longitude, radius) {
+export function encodeCircle(latitude, longitude, radius) {
   const circle = GMapCircle(latitude, longitude, radius)
   return circle
 }

@@ -36,12 +36,12 @@ export const SelectField = forwardRef(
   ) => {
     const renderRange = () => {
       const options = [
-        <option disabled value='' key='initial0'>
+        <option disabled value="" key="initial0">
           {placeholder}
         </option>
       ]
 
-      _range(range[1], range[0]).map(i =>
+      _range(range[1], range[0]).map((i) =>
         options.push(
           <option key={`range${i}`} value={i}>
             {i}
@@ -52,7 +52,7 @@ export const SelectField = forwardRef(
       return options
     }
 
-    const renderOptions = items => {
+    const renderOptions = (items) => {
       if (items) {
         options = items
       }
@@ -66,7 +66,14 @@ export const SelectField = forwardRef(
           )
         }
 
-        return <option children={text} disabled={disabled} key={`option${value}`} value={value} />
+        return (
+          <option
+            children={text}
+            disabled={disabled}
+            key={`option${value}`}
+            value={value}
+          />
+        )
       })
     }
 
@@ -81,8 +88,7 @@ export const SelectField = forwardRef(
         showError={showError}
         size={size}
         {...data}
-        {...props}
-      >
+        {...props}>
         {range && range.length > 0 && renderRange()}
         {options && renderOptions()}
       </FieldHOC>
@@ -91,7 +97,7 @@ export const SelectField = forwardRef(
 )
 
 const StyledSelect = styled.select`
-  ${props => formStyle(props)}
+  ${(props) => formStyle(props)}
   ${({ size }) => {
     switch (size) {
       case THEME_SIZE.SM:
@@ -116,7 +122,7 @@ const StyledSelect = styled.select`
   ${({ errors }) =>
     errors &&
     css`
-      ${props => formErrorStyle(props)}
+      ${(props) => formErrorStyle(props)}
     `}
 `
 

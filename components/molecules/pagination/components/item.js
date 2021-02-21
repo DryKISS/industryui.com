@@ -13,21 +13,22 @@ import { themeFontSize } from '../../../theme/utils/fontSize'
 // Style
 import styled from 'styled-components'
 
-export const PaginationItem = memo(({ active, context, disabled, label, onClick, size }) => {
-  return (
-    <StyledLi>
-      <StyledButton
-        active={active}
-        context={context}
-        onClick={onClick}
-        disabled={disabled}
-        size={size}
-      >
-        {label}
-      </StyledButton>
-    </StyledLi>
-  )
-})
+export const PaginationItem = memo(
+  ({ active, context, disabled, label, onClick, size }) => {
+    return (
+      <StyledLi>
+        <StyledButton
+          active={active}
+          context={context}
+          onClick={onClick}
+          disabled={disabled}
+          size={size}>
+          {label}
+        </StyledButton>
+      </StyledLi>
+    )
+  }
+)
 
 const StyledLi = styled.li`
   display: inline;
@@ -49,17 +50,19 @@ const StyledButton = styled(Button)`
     active ? theme.COLOUR[context] : theme.COLOUR.white};
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
   border-radius: 0;
-  color: ${({ active, context, theme }) => (active ? theme.COLOUR.white : theme.COLOUR[context])};
+  color: ${({ active, context, theme }) =>
+    active ? theme.COLOUR.white : theme.COLOUR[context]};
   line-height: 1.25;
   margin-left: -1px;
   padding: 0.5rem 0.75rem;
   position: relative;
-  ${props => themeFontSize(props)}
+  ${(props) => themeFontSize(props)}
   &:hover {
     background-color: ${({ active, context, theme }) =>
       active ? theme.COLOUR[context] : theme.COLOUR.light};
     border: 1px solid ${({ theme }) => theme.COLOUR.light};
-    color: ${({ active, theme, context }) => (active ? theme.COLOUR.white : theme.COLOUR[context])};
+    color: ${({ active, theme, context }) =>
+      active ? theme.COLOUR.white : theme.COLOUR[context]};
   }
 `
 

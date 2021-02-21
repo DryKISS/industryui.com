@@ -14,12 +14,18 @@ import { Image, ImageMarker } from '../../../'
 let imageHeight = 0
 let imageWidth = 0
 
-export const ImageWrapper = ({ coordinates, customIcon, item, markerStyles, setCoordinates }) => {
+export const ImageWrapper = ({
+  coordinates,
+  customIcon,
+  item,
+  markerStyles,
+  setCoordinates
+}) => {
   const imageRef = useRef()
 
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
 
-  const handleImageClick = event => {
+  const handleImageClick = (event) => {
     const { current: image } = imageRef
 
     imageWidth = image.clientWidth
@@ -33,12 +39,18 @@ export const ImageWrapper = ({ coordinates, customIcon, item, markerStyles, setC
 
     setCoordinates(coordinates)
 
-    setMarkerCoordinates(co => coordinates)
+    setMarkerCoordinates((co) => coordinates)
   }
 
   return (
     <StyledImageWrapper>
-      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} fluid src={item.filename} />
+      <Image
+        ref={imageRef}
+        onClick={handleImageClick}
+        alt={item.name}
+        fluid
+        src={item.filename}
+      />
       {MarkerCoordinates?.x && (
         <ImageMarker
           {...{ customIcon }}

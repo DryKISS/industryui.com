@@ -24,7 +24,7 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   let startX
   let sl
 
-  slider.addEventListener('mousedown', e => {
+  slider.addEventListener('mousedown', (e) => {
     clickTime = e.timeStamp
     isDown = true
     startX = e.pageX - slider.offsetLeft
@@ -43,7 +43,7 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
     slider.classList.remove('active')
   })
 
-  slider.addEventListener('mousemove', e => {
+  slider.addEventListener('mousemove', (e) => {
     if (isScrolling || (isDown && e.timeStamp - clickTime > grabTimeout)) {
       e.preventDefault()
       slider.classList.add('active')
@@ -90,7 +90,7 @@ export const Tabs = ({
 
   // Find active in children if more than one tab or make first active
   if (children.length > 1) {
-    children.map((child, index) => {
+    children.forEach((child, index) => {
       if (child.props.active === true) {
         active = {
           index: index,
@@ -120,7 +120,7 @@ export const Tabs = ({
     }
   }
 
-  const handleRoute = tab => {
+  const handleRoute = (tab) => {
     const query = router.query
     delete query.tab
     query.tab = tab
@@ -139,8 +139,7 @@ export const Tabs = ({
         className={className}
         gap={gap}
         grabbable={grabbable}
-        ref={wrapperRef}
-      >
+        ref={wrapperRef}>
         {children.map(({ props }, index) => {
           return (
             <Tab

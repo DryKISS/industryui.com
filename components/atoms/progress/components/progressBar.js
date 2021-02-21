@@ -10,7 +10,7 @@ import { number, string, bool, oneOf } from 'prop-types'
 import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { ProgressBarDiv } from '../../../'
 
-export const ProgressBar = props => {
+export const ProgressBar = (props) => {
   return (
     <ProgressBarDiv
       aria-valuenow={props.now}

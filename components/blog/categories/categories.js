@@ -18,16 +18,18 @@ import styled from 'styled-components'
 
 export const BlogCategories = ({ articles, config }) => {
   const _uniqueCategories = () => {
-    const uniqueCategories = [...new Set(articles.map(article => article.category))]
+    const uniqueCategories = [
+      ...new Set(articles.map((article) => article.category))
+    ]
     return uniqueCategories
   }
 
   const _find = () => {
     const categories = _uniqueCategories()
 
-    return categories.map(category => {
+    return categories.map((category) => {
       return articles
-        .filter(article => {
+        .filter((article) => {
           return article.category === category && article.homepage !== false
         })
         .sort((a, b) => {
@@ -50,9 +52,8 @@ export const BlogCategories = ({ articles, config }) => {
                   category: slugify(articles[0].category)
                 }
               }
-            }}
-          >
-            <StyledHeading content={articles[0].category} tag='h2' />
+            }}>
+            <StyledHeading content={articles[0].category} tag="h2" />
           </Link>
 
           <Row>

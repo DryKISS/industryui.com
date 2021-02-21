@@ -2,8 +2,11 @@
  * Form - Error
  */
 
+// React
+import React from 'react'
+
 // UI
-import { FormError } from '../../../'
+import { FormError } from '../error'
 import Readme from '../README.md'
 
 export default {
@@ -18,7 +21,7 @@ export default {
   title: 'Form/Error'
 }
 
-export const main = args => {
+export const main = (args) => {
   const defaultProps = {
     message: 'This is required',
     ...args

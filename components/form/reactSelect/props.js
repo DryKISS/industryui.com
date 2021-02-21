@@ -3,7 +3,16 @@
  */
 
 // React
-import { array, bool, func, string, number, object, oneOf, oneOfType } from 'prop-types'
+import {
+  array,
+  bool,
+  func,
+  string,
+  number,
+  object,
+  oneOf,
+  oneOfType
+} from 'prop-types'
 
 export const propTypes = {
   // Whether select is async or not
@@ -158,7 +167,7 @@ export const propTypes = {
   tabSelectsValue: bool
 }
 
-export const defaultProps = defaultStyles => ({
+export const defaultProps = (defaultStyles) => ({
   backspaceRemovesValue: true,
   closeMenuOnSelect: true,
   closeMenuOnScroll: false,
@@ -185,7 +194,8 @@ export const defaultProps = defaultStyles => ({
   options: [],
   pageSize: 5,
   placeholder: 'Select...',
-  screenReaderStatus: ({ count }) => `${count} result${count !== 1 ? 's' : ''} available`,
+  screenReaderStatus: ({ count }) =>
+    `${count} result${count !== 1 ? 's' : ''} available`,
   styles: defaultStyles,
   tabIndex: '0',
   tabSelectsValue: true

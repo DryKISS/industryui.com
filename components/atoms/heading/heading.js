@@ -13,7 +13,15 @@ import styled, { css } from 'styled-components'
 import { themeColour } from '../../theme/utils/colour'
 import { propTypes, defaultProps } from './props'
 
-export const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {
+export const Heading = ({
+  className,
+  content,
+  context,
+  noMargin,
+  noWrap,
+  style,
+  tag
+}) => {
   return (
     <StyledHeading
       as={tag}
@@ -21,18 +29,21 @@ export const Heading = ({ className, content, context, noMargin, noWrap, style, 
       context={context}
       noMargin={noMargin}
       noWrap={noWrap}
-      itemProp='name headline'
-      rel='bookmark'
-      style={style}
-    >
-      {content && content.__html ? <span dangerouslySetInnerHTML={content} /> : content}
+      itemProp="name headline"
+      rel="bookmark"
+      style={style}>
+      {content && content.__html ? (
+        <span dangerouslySetInnerHTML={content} />
+      ) : (
+        content
+      )}
     </StyledHeading>
   )
 }
 
 const StyledHeading = styled.span`
   font-weight: normal;
-  ${props => themeColour(props)}
+  ${(props) => themeColour(props)}
   position: relative;
   ${({ as, theme }) => css`
     font-family: ${theme.HEADINGS[as].fontFamily};

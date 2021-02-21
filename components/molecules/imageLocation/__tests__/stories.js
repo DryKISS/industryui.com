@@ -2,6 +2,9 @@
  * Components - Molecules  Image Location
  */
 
+// React
+import React from 'react'
+
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
@@ -10,7 +13,14 @@ import { object } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Alert, Button, Form, ImageLocation, ImageLocationFormElement, lazyIcons } from '../../../'
+import {
+  Alert,
+  Button,
+  Form,
+  ImageLocation,
+  ImageLocationFormElement,
+  lazyIcons
+} from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -51,10 +61,12 @@ const BaseComponent = (props = {}) => {
   const { args } = props
 
   const defaultProps = {
-    coordinatesChange: coordinates => {
+    coordinatesChange: (coordinates) => {
       console.info('Coordinates', coordinates)
     },
-    ...(args.withInitialCoordinates && { initialCoordinates: args.initialCoordinates }),
+    ...(args.withInitialCoordinates && {
+      initialCoordinates: args.initialCoordinates
+    }),
     item: Item,
     customIcon: args.customIcon,
     locationChange: 'change'
@@ -71,7 +83,7 @@ const BaseComponent = (props = {}) => {
   return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
 }
 
-export const main = args => <BaseComponent args={args} />
+export const main = (args) => <BaseComponent args={args} />
 
 export const UsedInForm = () => {
   const schema = object().shape({
@@ -82,13 +94,18 @@ export const UsedInForm = () => {
     resolver: yupResolver(schema)
   })
 
-  const onFormSubmit = data => {
+  const onFormSubmit = (data) => {
     console.info(data)
   }
 
   return (
-    <Form handleSubmit={handleSubmit(data => onFormSubmit(data))}>
-      <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
+    <Form handleSubmit={handleSubmit((data) => onFormSubmit(data))}>
+      <ImageLocationFormElement
+        item={Item}
+        control={control}
+        errors={errors}
+        setValue={setValue}
+      />
       {errors.imageLocationData && (
         <Alert
           content={
@@ -97,7 +114,7 @@ export const UsedInForm = () => {
           }
         />
       )}
-      <Button type='submit'>submit form</Button>
+      <Button type="submit">submit form</Button>
     </Form>
   )
 }

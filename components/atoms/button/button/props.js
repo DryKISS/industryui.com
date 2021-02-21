@@ -3,7 +3,17 @@
  */
 
 // React
-import { bool, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
+import {
+  bool,
+  func,
+  node,
+  number,
+  object,
+  objectOf,
+  oneOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // UI
 import { DIMENSION_PROP_TYPES } from '../../../theme/utils/dimension'

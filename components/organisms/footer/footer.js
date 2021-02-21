@@ -4,10 +4,28 @@
 
 // React
 import React, { Fragment } from 'react'
-import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'prop-types'
+import {
+  arrayOf,
+  bool,
+  func,
+  number,
+  object,
+  oneOfType,
+  shape,
+  string
+} from 'prop-types'
 
 // UI
-import { Column, Container, Heading, Icon, Link, List, ListItem, Row } from '../../'
+import {
+  Column,
+  Container,
+  Heading,
+  Icon,
+  Link,
+  List,
+  ListItem,
+  Row
+} from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -16,8 +34,12 @@ export const Footer = ({ columns, fixed }) => {
   const renderColumns = () => {
     return columns.map((column, index) => {
       return (
-        <Column align={column.align} key={index} offset={column.offset} {...column.size}>
-          {Object.entries(column).map(([key, value], i) => {
+        <Column
+          align={column.align}
+          key={index}
+          offset={column.offset}
+          {...column.size}>
+          {Object.entries(column).forEach(([key, value], i) => {
             switch (key) {
               case 'header':
                 return (
@@ -26,7 +48,7 @@ export const Footer = ({ columns, fixed }) => {
                     content={value.content}
                     context={value.context}
                     key={`${value.content}${index}${i}`}
-                    tag='h6'
+                    tag="h6"
                   />
                 )
 
@@ -47,11 +69,17 @@ export const Footer = ({ columns, fixed }) => {
 
   const renderLinks = ({ align, border, context, direction, items }, index) => {
     return (
-      <StyledList align={align} direction={direction} key={`${items[0]}${index}`} unstyled>
+      <StyledList
+        align={align}
+        direction={direction}
+        key={`${items[0]}${index}`}
+        unstyled>
         {items.map(({ icon, iconPrefix, id, name, to }) => (
           <StyledListItem key={id}>
             <Link border={border} context={context} to={to} passHref>
-              {icon && <StyledIcon context='primary' icon={icon} prefix={iconPrefix} />}
+              {icon && (
+                <StyledIcon context="primary" icon={icon} prefix={iconPrefix} />
+              )}
               {name}
             </Link>
           </StyledListItem>
@@ -64,15 +92,18 @@ export const Footer = ({ columns, fixed }) => {
     <Fragment key={index}>
       {items?.map(({ content, icon }, i) => (
         <Fragment key={i}>
-          {icon && <StyledIcon context='primary' icon={icon} />}
-          <StyledText align={align} dangerouslySetInnerHTML={{ __html: content }} />
+          {icon && <StyledIcon context="primary" icon={icon} />}
+          <StyledText
+            align={align}
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </Fragment>
       ))}
     </Fragment>
   )
 
   return (
-    <StyledFooter data-cy='footer' fixed={fixed}>
+    <StyledFooter data-cy="footer" fixed={fixed}>
       <Container>
         <Row>{renderColumns()}</Row>
       </Container>

@@ -21,7 +21,7 @@ const ProgressBarStripesAnimation = keyframes`
 `
 
 export const ProgressBarDiv = styled.div`
-  ${props => themeBackground(props)}
+  ${(props) => themeBackground(props)}
   animation: ${({ animated }) =>
     animated
       ? css`

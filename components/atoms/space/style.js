@@ -19,11 +19,11 @@ const sizes = {
   xxxlSize: '3rem'
 }
 
-export const spaceStyler = properties => {
+export const spaceStyler = (properties) => {
   let stl = ''
   let counter = 0
 
-  properties.forEach(property => {
+  properties.forEach((property) => {
     if (property.v) {
       counter++
       stl += `${property.k}: ${sizes[property.v + 'Size']};

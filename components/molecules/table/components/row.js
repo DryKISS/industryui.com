@@ -24,7 +24,7 @@ export const TableRow = memo(styled.tr`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.context &&
     css`
       ${themeBackground(props)}

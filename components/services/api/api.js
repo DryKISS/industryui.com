@@ -46,7 +46,7 @@ export const Api = () => {
       return http.put(url, data)
     },
 
-    delete: async url => {
+    delete: async (url) => {
       const http = Api.init()
       return http.delete(url)
     }

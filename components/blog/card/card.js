@@ -7,7 +7,16 @@ import React from 'react'
 import { any, bool, object, oneOf, shape } from 'prop-types'
 
 // UI
-import { BlogCategory, BlogTags, Button, Card, CardImage, Divider, Link, slugify } from '../../'
+import {
+  BlogCategory,
+  BlogTags,
+  Button,
+  Card,
+  CardImage,
+  Divider,
+  Link,
+  slugify
+} from '../../'
 import { CardBody } from '../../molecules/card/components/body'
 import { Heading } from '../../atoms/heading/heading'
 
@@ -26,23 +35,34 @@ export const BlogCard = ({ article, config, link, type }) => {
   }
 
   return (
-    <article role='article' itemProp='blogPost' itemScope itemType='http://schema.org/BlogPosting'>
+    <article
+      role="article"
+      itemProp="blogPost"
+      itemScope
+      itemType="http://schema.org/BlogPosting">
       <Card shadow>
         <Link to={articleLink} {...link}>
-          <CardImage alt={heading} src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`} />
+          <CardImage
+            alt={heading}
+            src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`}
+          />
         </Link>
 
         <StyledCardBody type={type}>
           {type === 'normal' && category && (
-            <BlogCategory config={config} link={{ to: category, ...link }} type={type} />
+            <BlogCategory
+              config={config}
+              link={{ to: category, ...link }}
+              type={type}
+            />
           )}
 
           <StyledContent type={type}>
             <Link to={articleLink} {...link}>
-              <StyledHeading content={heading} tag='h1' noWrap type={type} />
+              <StyledHeading content={heading} tag="h1" noWrap type={type} />
             </Link>
 
-            {type === 'normal' && <p itemProp='description'>{excerpt}</p>}
+            {type === 'normal' && <p itemProp="description">{excerpt}</p>}
           </StyledContent>
 
           {type === 'normal' && (
@@ -53,21 +73,28 @@ export const BlogCard = ({ article, config, link, type }) => {
                 </TagsContainer>
               )}
 
-              <Divider size='sm' />
+              <Divider size="sm" />
 
               {author && (
-                <BlogCategory author link={{ to: author, ...link }} config={config} type={type} />
+                <BlogCategory
+                  author
+                  link={{ to: author, ...link }}
+                  config={config}
+                  type={type}
+                />
               )}
 
               {article.readtime && (
-                <StyledReadTime>{article.readtime}min read time.</StyledReadTime>
+                <StyledReadTime>
+                  {article.readtime}min read time.
+                </StyledReadTime>
               )}
             </>
           )}
 
           <Link to={articleLink} {...link}>
             <StyledButton
-              content='Read more'
+              content="Read more"
               context={type === 'normal' ? 'primary' : 'white'}
               size={type === 'normal' ? 'sm' : 'lg'}
               position={type}

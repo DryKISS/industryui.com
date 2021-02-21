@@ -1,6 +1,9 @@
 /**
- * Age
+ * Components - Utils - Age
  */
+
+// React
+import React from 'react'
 
 // Storybook
 import { ControlTypes } from '../../../../.storybook/decorators'
@@ -25,17 +28,17 @@ export default {
       control: { type: ControlTypes.Date }
     }
   },
-  title: 'Utils/Age',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/Age'
 }
 
-export const main = args => {
+export const Main = (args) => {
   const { control, errors, handleSubmit } = useForm()
 
   const defaultProps = {
@@ -46,7 +49,7 @@ export const main = args => {
     name: 'birthDate'
   }
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const birthDate = args.birthDate
 
@@ -56,9 +59,9 @@ export const main = args => {
 
       <DatePickerCalendar {...defaultProps} />
 
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }

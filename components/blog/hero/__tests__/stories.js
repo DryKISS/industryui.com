@@ -2,8 +2,11 @@
  * Blog - Hero
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogHero } from '../../../'
+import { BlogHero } from '../hero'
 import Readme from '../README.md'
 
 // Data
@@ -21,4 +24,6 @@ export default {
   title: 'Blog/Hero'
 }
 
-export const main = args => <BlogHero articles={Articles} config={Blog} {...args} />
+export const main = (args) => (
+  <BlogHero articles={Articles} config={Blog} {...args} />
+)

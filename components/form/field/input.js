@@ -4,7 +4,16 @@
 
 // React
 import React, { useState } from 'react'
-import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
+import {
+  arrayOf,
+  bool,
+  func,
+  number,
+  object,
+  oneOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -36,7 +45,7 @@ export const FormField = ({
       component={StyledInput}
       disabled={disabled}
       helperMessage={helperMessage}
-      onKeyDown={e => {
+      onKeyDown={(e) => {
         setisTyping(true)
       }}
       onBlur={() => {
@@ -56,39 +65,38 @@ export const FormField = ({
   )
 }
 
-export const StyledInput = styled.input.attrs(props => ({
+export const StyledInput = styled.input.attrs((props) => ({
   autoComplete: 'off',
   autoFocus: false
 }))`
-
-${props => formStyle(props)}
+  ${(props) => formStyle(props)}
 
   ${({ errors }) =>
     errors &&
     css`
-      ${props => formErrorStyle(props)}
+      ${(props) => formErrorStyle(props)}
     `}
 
     ${({ size }) => {
-      switch (size) {
-        case THEME_SIZE.SM:
-          return css`
-            height: 1.5rem;
-          `
-        case THEME_SIZE.MD:
-          return css`
-            height: 1.875rem;
-          `
-        case THEME_SIZE.LG:
-          return css`
-            height: 2.25rem;
-          `
-        default:
-          return css`
-            height: 2.25rem;
-          `
-      }
-    }}
+    switch (size) {
+      case THEME_SIZE.SM:
+        return css`
+          height: 1.5rem;
+        `
+      case THEME_SIZE.MD:
+        return css`
+          height: 1.875rem;
+        `
+      case THEME_SIZE.LG:
+        return css`
+          height: 2.25rem;
+        `
+      default:
+        return css`
+          height: 2.25rem;
+        `
+    }
+  }}
 `
 
 FormField.propTypes = {
@@ -107,7 +115,12 @@ FormField.propTypes = {
   style: object,
   textAlign: string,
   type: string,
-  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
+  value: oneOfType([
+    string,
+    number,
+    bool,
+    arrayOf(oneOfType([string, number, bool]))
+  ])
 }
 
 FormField.defaultProps = {

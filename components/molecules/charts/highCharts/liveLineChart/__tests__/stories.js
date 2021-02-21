@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 // UI
 import { HighChart, LiveChartSubscriber, MessageNames } from '../../../../../'
@@ -35,11 +35,11 @@ export default {
   }
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const series = useRef(null)
   useEffect(() => {
     LiveHighChartTestStreamDataSource.start()
-    const Subscription = LiveChartSubscriber.subscribe(message => {
+    const Subscription = LiveChartSubscriber.subscribe((message) => {
       if (
         series.current &&
         message.name === MessageNames.UPDATE_CHART_DATA &&
@@ -112,7 +112,7 @@ const BaseComponent = props => {
     series: [
       {
         name: props.args.tooltipTitle,
-        data: LiveChartInitialTestDataSource.map(item => {
+        data: LiveChartInitialTestDataSource.map((item) => {
           return { x: item[0], y: item[1] }
         }),
         marker: {
@@ -126,7 +126,7 @@ const BaseComponent = props => {
 
   return (
     <StyledWrapper>
-      <HighChart options={options} constructorType='stockChart' />
+      <HighChart options={options} constructorType="stockChart" />
     </StyledWrapper>
   )
 }
@@ -136,6 +136,6 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent args={args} />
 }

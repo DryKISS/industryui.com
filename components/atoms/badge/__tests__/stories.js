@@ -2,8 +2,15 @@
  * Badge
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ControlTypes, ContextControl, SizeControl } from '../../../../.storybook/decorators'
+import {
+  ControlTypes,
+  ContextControl,
+  SizeControl
+} from '../../../../.storybook/decorators'
 
 // UI
 import { Badge, THEME_CONTEXT, THEME_SIZE } from '../../../'
@@ -39,7 +46,7 @@ export default {
   title: 'Atoms/Badge'
 }
 
-export const main = args => {
+export const main = (args) => {
   args.to = args.to ? '/example' : null
   args.icon = args.icon ? 'user' : null
 

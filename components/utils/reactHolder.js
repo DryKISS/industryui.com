@@ -1,5 +1,5 @@
 /**
- * Utils - React Holder
+ * Components - Utils - React Holder
  *
  * @see https://github.com/imsky/holder#placeholder-options for info on more props and themes
  */

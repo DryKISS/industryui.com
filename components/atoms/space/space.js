@@ -48,8 +48,7 @@ export const Space = ({
       paddingTop={paddingTop}
       paddingRight={paddingRight}
       paddingBottom={paddingBottom}
-      paddingLeft={paddingLeft}
-    >
+      paddingLeft={paddingLeft}>
       {content || children}
     </StyledSpace>
   )

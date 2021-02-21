@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../components/pages/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,qBAAd","sourcesContent":["/**\n * Pages\n */\nexport * from './error404/error404'\n"],"file":"index.js"}

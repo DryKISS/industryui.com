@@ -2,6 +2,9 @@
  * Form - DatePicker - Calendar - Stories
  */
 
+// React
+import React from 'react'
+
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
@@ -17,7 +20,14 @@ import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 
 // UI
-import { Button, DatePickerCalendar, Divider, Form, FormError, Text } from '../../../../'
+import {
+  Button,
+  DatePickerCalendar,
+  Divider,
+  Form,
+  FormError,
+  Text
+} from '../../../../'
 
 import Readme from '../README.md'
 import { args, argTypes } from './controls'
@@ -45,7 +55,7 @@ const BaseComponent = (props = {}) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     control: control,
@@ -61,9 +71,9 @@ const BaseComponent = (props = {}) => {
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerCalendar {...defaultProps} />
 
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <Button content='Submit' size='sm' type='submit' />
+      <Button content="Submit" size="sm" type="submit" />
 
       <Text>{value}</Text>
 
@@ -72,34 +82,34 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />
 
-export const defaultValue = args => (
+export const defaultValue = (args) => (
   <BaseComponent {...args} defaultValue={addDays(new Date(), 5)} />
 )
 
-export const time = args => (
-  <BaseComponent {...args} dateFormat='MMMM d, yyyy h:mm aa' showTimeSelect />
+export const time = (args) => (
+  <BaseComponent {...args} dateFormat="MMMM d, yyyy h:mm aa" showTimeSelect />
 )
 
-const filterPassedTime = time => {
+const filterPassedTime = (time) => {
   const currentDate = new Date()
   const selectedDate = new Date(time)
   return currentDate.getTime() < selectedDate.getTime()
 }
 
-export const minTime = args => (
+export const minTime = (args) => (
   <BaseComponent
     {...args}
-    dateFormat='MMMM d, yyyy h:mm aa'
+    dateFormat="MMMM d, yyyy h:mm aa"
     minDate={new Date()}
     filterTime={filterPassedTime}
     showTimeSelect
   />
 )
 
-export const workingHours = args => {
-  const isWeekday = date => {
+export const workingHours = (args) => {
+  const isWeekday = (date) => {
     const day = getDay(date)
     return day !== 0 && day !== 6
   }
@@ -113,7 +123,7 @@ export const workingHours = args => {
     new Date(2020, 11, 10)
   ]
 
-  const stringifyArray = arr => arr.map(item => item.toString())
+  const stringifyArray = (arr) => arr.map((item) => item.toString())
 
   const renderDayContents = (day, date) => {
     const tooltipText = 'No need to pay'
@@ -138,10 +148,9 @@ export const workingHours = args => {
         highlightDates={freeDays}
         maxTime={setHours(setMinutes(new Date(), 30), 18)}
         minTime={setHours(setMinutes(new Date(), 30), 9)}
-        placeholderText='Select your appointment'
+        placeholderText="Select your appointment"
         renderDayContents={renderDayContents}
-        showTimeSelect
-      >
+        showTimeSelect>
         <Text>*50% Discount</Text>
       </BaseComponent>
     </>

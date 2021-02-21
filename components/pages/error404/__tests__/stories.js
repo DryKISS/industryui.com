@@ -2,6 +2,9 @@
  * Error404
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Error404 } from '../../../'
 import Readme from '../README.md'
@@ -18,4 +21,4 @@ export default {
   title: 'Pages/Error404'
 }
 
-export const main = args => <Error404 {...args} />
+export const main = (args) => <Error404 {...args} />

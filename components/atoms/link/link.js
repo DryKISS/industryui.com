@@ -43,16 +43,14 @@ export const Link = ({
       prefetch={prefetch}
       replace={replace}
       scroll={scroll}
-      shallow={shallow}
-    >
+      shallow={shallow}>
       <StyledLink
         border={border}
         className={className}
         context={context}
         fullWidth={fullWidth}
         onClick={onClick}
-        target={target}
-      >
+        target={target}>
         {children}
       </StyledLink>
     </NextLink>
@@ -63,8 +61,7 @@ export const Link = ({
       context={context}
       fullWidth={fullWidth}
       href={to}
-      target={target}
-    >
+      target={target}>
       {children}
     </StyledLink>
   )
@@ -73,7 +70,11 @@ export const Link = ({
 export const StyledLink = styled.a`
   background-color: transparent;
   border-bottom: ${({ border, context, theme }) =>
-    border && `2px solid ${shadeLinearRgb(0.88, theme.COLOUR[context] || theme.LINK.colour)}`};
+    border &&
+    `2px solid ${shadeLinearRgb(
+      0.88,
+      theme.COLOUR[context] || theme.LINK.colour
+    )}`};
   display: ${({ border }) => (border ? 'inline-block' : 'block')};
   color: ${({ context, theme }) => {
     if (context === THEME_CONTEXT.INITIAL) {
@@ -91,7 +92,11 @@ export const StyledLink = styled.a`
   &:hover,
   &.link--hover {
     border-bottom: ${({ border, context, theme }) =>
-      border && `2px solid ${shadeLinearRgb(0.8, theme.COLOUR[context] || theme.LINK.colour)}`};
+      border &&
+      `2px solid ${shadeLinearRgb(
+        0.8,
+        theme.COLOUR[context] || theme.LINK.colour
+      )}`};
     color: ${({ context, theme }) =>
       shadeLinearRgb(-0.2, theme.COLOUR[context] || theme.LINK.colour)};
   }

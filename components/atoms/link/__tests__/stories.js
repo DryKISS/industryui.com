@@ -2,6 +2,9 @@
  * Link
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators'
 import { action } from '@storybook/addon-actions'
@@ -43,30 +46,30 @@ const BaseComponent = (props = {}) => {
   return <Link {...defaultProps}>{defaultProps.children}</Link>
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <>
       <BaseComponent {...args} />
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <BaseComponent className='link--hover' {...args}>
+      <BaseComponent className="link--hover" {...args}>
         Hover
       </BaseComponent>
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <BaseComponent className='link--active' {...args}>
+      <BaseComponent className="link--active" {...args}>
         Active
       </BaseComponent>
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <BaseComponent className='link--visited' {...args}>
+      <BaseComponent className="link--visited" {...args}>
         Visited
       </BaseComponent>
     </>
   )
 }
 
-export const button = args => (
+export const button = (args) => (
   <BaseComponent {...args}>
     <Button>Home</Button>
   </BaseComponent>

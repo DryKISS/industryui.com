@@ -9,7 +9,15 @@ import { string } from 'prop-types'
 // UI
 import { Text } from '../../'
 
-export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
+export const Address = ({
+  county,
+  country,
+  line1,
+  line2,
+  line3,
+  postcode,
+  town
+}) => (
   <address>
     <Text>{line1}</Text>
     {line2 && <Text>{line2}</Text>}

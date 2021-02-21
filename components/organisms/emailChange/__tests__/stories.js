@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
 import { Alert, EmailChange, requestSimulator } from '../../../'
@@ -21,10 +21,10 @@ export default {
   title: 'Organisms/Email Change'
 }
 
-export const main = args => {
+export const Main = (args) => {
   const [submitted, setSubmitted] = useState(false)
 
-  const submit = async data => {
+  const submit = async (data) => {
     setSubmitted(false)
     await requestSimulator('success', 2000)
     setSubmitted(true)
@@ -33,7 +33,7 @@ export const main = args => {
   return (
     <>
       <EmailChange {...args} submit={submit} />
-      {submitted && <Alert content='Submitted' context='info' />}
+      {submitted && <Alert content="Submitted" context="info" />}
     </>
   )
 }

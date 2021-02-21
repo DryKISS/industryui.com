@@ -5,7 +5,14 @@
 // React
 import { bool } from 'prop-types'
 
-export const themeDisplay = ({ dBlock, dFlex, dInline, dInlineBlock, dInlineFlex, dNone }) => {
+export const themeDisplay = ({
+  dBlock,
+  dFlex,
+  dInline,
+  dInlineBlock,
+  dInlineFlex,
+  dNone
+}) => {
   let display = null
 
   if (dBlock) {

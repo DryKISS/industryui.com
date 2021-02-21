@@ -4,7 +4,15 @@
 
 // React
 import React, { useState } from 'react'
-import { func, object, objectOf, number, oneOf, oneOfType, string } from 'prop-types'
+import {
+  func,
+  object,
+  objectOf,
+  number,
+  oneOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -17,7 +25,16 @@ import { Close, shadeLinearRgb } from '../../../'
 import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { themeBackground } from '../../../theme/utils/background'
 
-export const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
+export const Alert = ({
+  className,
+  close,
+  content,
+  context,
+  header,
+  icon,
+  iconPrefix,
+  style
+}) => {
   const [visible, setVisible] = useState(true)
 
   const handleClose = () => {
@@ -28,20 +45,36 @@ export const Alert = ({ className, close, content, context, header, icon, iconPr
   return (
     visible && (
       <StyledAlert className={className} context={context} style={style}>
-        {close && <StyledClose click={handleClose} context='white' header={header} icon='times' />}
-
-        {header && (
-          <AlertHeader context={context} header={header} icon={icon} iconPrefix={iconPrefix} />
+        {close && (
+          <StyledClose
+            click={handleClose}
+            context="white"
+            header={header}
+            icon="times"
+          />
         )}
 
-        <AlertContent content={content} icon={header ? null : icon} iconPrefix={iconPrefix} />
+        {header && (
+          <AlertHeader
+            context={context}
+            header={header}
+            icon={icon}
+            iconPrefix={iconPrefix}
+          />
+        )}
+
+        <AlertContent
+          content={content}
+          icon={header ? null : icon}
+          iconPrefix={iconPrefix}
+        />
       </StyledAlert>
     )
   )
 }
 
 const StyledAlert = styled.div`
-  ${props => themeBackground(props)}
+  ${(props) => themeBackground(props)}
   border: 1px solid ${({ theme }) => theme.COLOUR.light};
   border-radius: 0.25rem;
   color: ${({ context, theme }) => shadeLinearRgb(-0.8, theme.COLOUR[context])};

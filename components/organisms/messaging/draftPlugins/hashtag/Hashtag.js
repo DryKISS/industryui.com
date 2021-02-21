@@ -9,7 +9,7 @@ import styled from 'styled-components'
 // UI
 import { handleHashtagClick } from './utils/handleHashtagClick'
 
-export default function Hashtag (props) {
+export default function Hashtag(props) {
   const {
     theme = {},
     className,

@@ -2,6 +2,9 @@
  * Select
  */
 
+// React
+import React from 'react'
+
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
@@ -10,7 +13,14 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, FormLabel, SelectField, SelectCountryField, Text } from '../../../'
+import {
+  Button,
+  Form,
+  FormLabel,
+  SelectField,
+  SelectCountryField,
+  Text
+} from '../../../'
 
 import Readme from '../README.md'
 import { COLOURS, EXPENSES } from '../__mocks__/select'
@@ -36,7 +46,7 @@ const BaseComponent = (props = {}) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     data: { name: 'fred' },
@@ -53,12 +63,12 @@ const BaseComponent = (props = {}) => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label='Select'>
+      <FormLabel label="Select">
         {!props.country && <SelectField {...defaultProps} />}
         {props.country && <SelectCountryField {...defaultProps} />}
       </FormLabel>
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
 
       {getValues() && <Text>{getValues().select}</Text>}
     </Form>

@@ -1,5 +1,5 @@
 /**
- * Full Calendar - Wrapper
+ * Components - Organisms - Calendar - Full Calendar - Wrapper
  */
 
 // React
@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic'
 
 let FullCalendar
 
-export const CalendarWrapper = props => {
+export const CalendarWrapper = (props) => {
   const [calendarLoaded, setCalendarLoaded] = useState(false)
 
   useEffect(() => {
@@ -23,7 +23,11 @@ export const CalendarWrapper = props => {
         listPlugin: import('@fullcalendar/list')
       }),
       render: (props, { calendar: Calendar, ...plugins }) => (
-        <Calendar plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
+        <Calendar
+          plugins={Object.values(plugins)}
+          ref={props.forwardedRef}
+          {...props}
+        />
       ),
       ssr: false
     })
@@ -31,7 +35,7 @@ export const CalendarWrapper = props => {
     setCalendarLoaded(true)
   }, [])
 
-  const showCalendar = props => {
+  const showCalendar = (props) => {
     if (!calendarLoaded) return <div>Loading ...</div>
 
     return <FullCalendar {...props} />

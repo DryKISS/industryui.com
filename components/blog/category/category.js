@@ -22,14 +22,15 @@ export const BlogCategory = ({ author, config, className, style, to }) => {
         to={{
           as: `${config.path}/${path}`,
           href: {
-            pathname: author ? `${config.path}/author` : `${config.path}/category`,
+            pathname: author
+              ? `${config.path}/author`
+              : `${config.path}/category`,
             query: {
               author: path,
               category: path
             }
           }
-        }}
-      >
+        }}>
         {path.toUpperCase().replace('-', ' ')}
       </Link>
     </StyledCategory>

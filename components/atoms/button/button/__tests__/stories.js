@@ -2,6 +2,9 @@
  * Components - Atoms - Button - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl } from '../../../../../.storybook/decorators/context'
 import { SizeControl } from '../../../../../.storybook/decorators/size'
@@ -41,6 +44,6 @@ export default {
   title: 'Atoms/Button'
 }
 
-export const main = args => {
+export const main = (args) => {
   return <Button {...args} />
 }

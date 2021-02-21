@@ -56,7 +56,7 @@ export const TextareaField = ({
 }
 
 const StyledTextarea = styled.textarea`
-  ${props => formStyle(props)}
+  ${(props) => formStyle(props)}
 
   direction: ${({ dir }) => dir};
   display: block;
@@ -64,7 +64,7 @@ const StyledTextarea = styled.textarea`
   ${({ errors }) =>
     errors &&
     css`
-      ${props => formErrorStyle(props)}
+      ${(props) => formErrorStyle(props)}
     `}
 
   ${({ size }) =>

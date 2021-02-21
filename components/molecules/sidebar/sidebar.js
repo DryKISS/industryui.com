@@ -34,7 +34,7 @@ export const Sidebar = ({ brand, data }) => {
   return (
     <StyledAside>
       <StyledBrand>
-        <Image alt='Logo' src={brand} />
+        <Image alt="Logo" src={brand} />
       </StyledBrand>
 
       <List group>
@@ -42,7 +42,7 @@ export const Sidebar = ({ brand, data }) => {
           return (
             <StyledLi key={index}>
               {divider ? (
-                <StyledDivider size='sm' />
+                <StyledDivider size="sm" />
               ) : Component ? (
                 <Component />
               ) : to ? (

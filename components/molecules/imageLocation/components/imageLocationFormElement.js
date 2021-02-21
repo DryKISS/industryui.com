@@ -17,13 +17,19 @@ import { ImageLocation, ImageLocationProps } from '../../../'
 
 const elementName = 'imageLocationData'
 
-export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
+export const ImageLocationFormElement = ({
+  control,
+  errors,
+  setValue,
+  ...props
+}) => {
   return (
-    <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
+    <ControllerWrapper
+      className={`${errors && errors[elementName] && 'hasError'}`}>
       <Controller
         as={ImageLocation}
         control={control}
-        coordinatesChange={imageLocationData => {
+        coordinatesChange={(imageLocationData) => {
           setValue(elementName, imageLocationData)
         }}
         name={elementName}

@@ -2,6 +2,9 @@
  * Components - Molecules - Tabs - Story
  */
 
+// React
+import React from 'react'
+
 // UI
 import { Space, Tabs } from '../../../'
 import Readme from '../README.md'
@@ -32,27 +35,29 @@ const renderTab = (index, activeTab) => (
   </div>
 )
 
-const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</Tabs>
+const BaseComponent = ({ children, ...props }) => (
+  <Tabs {...props}>{children}</Tabs>
+)
 
-export const main = args => (
+export const main = (args) => (
   <BaseComponent {...args}>
-    <div data={{ 'data-cy': 'tab1' }} label='Tab 1'>
+    <div data={{ 'data-cy': 'tab1' }} label="Tab 1">
       Tab 1 Content
     </div>
-    <div disabled label='Disabled'>
+    <div disabled label="Disabled">
       Tab 2 Disabled
     </div>
-    <div active label='Tab 3'>
+    <div active label="Tab 3">
       Tab 3
     </div>
-    <div context='danger' label='Tab 4'>
+    <div context="danger" label="Tab 4">
       Tab 4
     </div>
   </BaseComponent>
 )
 
-export const change = args => {
-  const renderTabContent = tab => {
+export const change = (args) => {
+  const renderTabContent = (tab) => {
     return (
       <>
         HERE
@@ -65,17 +70,17 @@ export const change = args => {
 
   return (
     <BaseComponent {...args} handleChange={false}>
-      <div active label='Tab 1'>
+      <div active label="Tab 1">
         Tab 1 Content
       </div>
-      <div label='Disabled'>Tab 2 Disabled</div>
-      <div label='Tab 3'>{renderTabContent('customerVat')}</div>
-      <div label='Tab 4'>Tab 4</div>
+      <div label="Disabled">Tab 2 Disabled</div>
+      <div label="Tab 3">{renderTabContent('customerVat')}</div>
+      <div label="Tab 4">Tab 4</div>
     </BaseComponent>
   )
 }
 
-export const initialScrollToActiveTab = args => (
+export const initialScrollToActiveTab = (args) => (
   <BaseComponent {...args}>
     {Array(25)
       .fill('')

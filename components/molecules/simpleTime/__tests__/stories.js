@@ -2,6 +2,9 @@
  * SimpleTime
  */
 
+// React
+import React from 'react'
+
 // UI
 import { SimpleTime } from '../../../'
 import Readme from '../README.md'
@@ -18,4 +21,4 @@ export default {
   title: 'Molecules/SimpleTime'
 }
 
-export const main = args => <SimpleTime {...args} />
+export const main = (args) => <SimpleTime {...args} />

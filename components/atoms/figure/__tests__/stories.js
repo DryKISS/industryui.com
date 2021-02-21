@@ -2,6 +2,9 @@
  * Figure
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators'
 
@@ -30,9 +33,9 @@ export default {
   title: 'Atoms/Figure'
 }
 
-export const main = args => (
+export const main = (args) => (
   <Figure>
-    <Figure.Image src='/placeholder.svg' itemprop='contentUrl' />
+    <Figure.Image src="/placeholder.svg" itemprop="contentUrl" />
     <Figure.Caption {...args}>
       DryKISS - Don't repeat yourself, Keep It Simple Stupid
     </Figure.Caption>

@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Storybook
 import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
@@ -36,7 +36,7 @@ export default {
   title: 'Molecules/Pagination'
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const defaultProps = {
@@ -48,12 +48,12 @@ const BaseComponent = props => {
   return <Pagination {...defaultProps} />
 }
 
-export const Main = args => <BaseComponent {...args} />
+export const Main = (args) => <BaseComponent {...args} />
 
-export const withCustomPrevAndNextButtons = args => (
+export const withCustomPrevAndNextButtons = (args) => (
   <BaseComponent
     {...args}
-    prevLabel={<Icon icon='chevron-left' />}
-    nextLabel={<Icon icon='chevron-right' />}
+    prevLabel={<Icon icon="chevron-left" />}
+    nextLabel={<Icon icon="chevron-right" />}
   />
 )

@@ -21,7 +21,7 @@ export const BlogAuthor = ({ articles, config, total }) => {
   const _find = () => {
     const counts = articles
 
-      .filter(article => {
+      .filter((article) => {
         return article.category !== 'terms' && article.homepage !== false
       })
 
@@ -41,7 +41,7 @@ export const BlogAuthor = ({ articles, config, total }) => {
       .filter((article, v) => {
         return article !== 'undefined'
       })
-      .map(k => {
+      .map((k) => {
         return {
           badge: k,
           name: counts[k],
@@ -53,7 +53,7 @@ export const BlogAuthor = ({ articles, config, total }) => {
   }
 
   return (
-    <BlogSection heading='Author'>
+    <BlogSection heading="Author">
       <BlogList config={config} author list={list} />
     </BlogSection>
   )

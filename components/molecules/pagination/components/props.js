@@ -3,7 +3,16 @@
  */
 
 // React
-import { any, func, number, string, bool, oneOfType, node, oneOf } from 'prop-types'
+import {
+  any,
+  func,
+  number,
+  string,
+  bool,
+  oneOfType,
+  node,
+  oneOf
+} from 'prop-types'
 
 // UI
 import { THEME_CONTEXT } from '../../../theme/constants/context'

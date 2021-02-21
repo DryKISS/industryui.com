@@ -2,8 +2,11 @@
  * Blog - Read Time
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogReadTime } from '../../../'
+import { BlogReadTime } from '../readTime'
 import Readme from '../README.md'
 
 export default {
@@ -18,4 +21,4 @@ export default {
   title: 'Blog/Read Time'
 }
 
-export const main = args => <BlogReadTime time={2} {...args} />
+export const main = (args) => <BlogReadTime time={2} {...args} />

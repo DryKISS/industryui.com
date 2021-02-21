@@ -1,8 +1,9 @@
 /**
  * Debounce
  */
+
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
 import { Button, debounce, Text } from '../../../'
@@ -19,7 +20,7 @@ export default {
   title: 'Utils/Debounce'
 }
 
-export const Debounce = () => {
+export const Main = () => {
   const [counter, setcounter] = useState(0)
 
   const handleClick = () => {
@@ -29,7 +30,9 @@ export const Debounce = () => {
   return (
     <>
       <Text>{counter}</Text>
-      <Button onClick={() => debounce(handleClick, 1000)}>inc. with debounce </Button>
+      <Button onClick={() => debounce(handleClick, 1000)}>
+        inc. with debounce{' '}
+      </Button>
     </>
   )
 }

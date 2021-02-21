@@ -37,18 +37,22 @@ export const ReplyContainer = ({ message, onClose, inMessage }) => {
     <Container inMessage={inMessage}>
       {!inMessage && (
         <ReplyIconWrapper>
-          <ReplyIcon context='info' />
+          <ReplyIcon context="info" />
         </ReplyIconWrapper>
       )}
 
-      <Divider context='info' height='1.5rem' vertical />
+      <Divider context="info" height="1.5rem" vertical />
 
       <MessageWrapper>
         <FromWrapper>{message.from}</FromWrapper>
-        <MessagingEditor onChange={e => setEditorState(e)} editorState={editorState} readOnly />
+        <MessagingEditor
+          onChange={(e) => setEditorState(e)}
+          editorState={editorState}
+          readOnly
+        />
       </MessageWrapper>
 
-      {onClose && <Close click={handleCloseClick} context='dark' />}
+      {onClose && <Close click={handleCloseClick} context="dark" />}
     </Container>
   )
 }
@@ -71,7 +75,8 @@ const ReplyIconWrapper = styled.div`
 `
 
 const Container = styled.div`
-  background: ${({ theme: { MESSAGING } }) => MESSAGING.replyContainerBackground};
+  background: ${({ theme: { MESSAGING } }) =>
+    MESSAGING.replyContainerBackground};
   display: flex;
   height: ${({ theme: { MESSAGING } }) => MESSAGING.replyContainerHeight};
   left: -4px;
@@ -84,7 +89,8 @@ const Container = styled.div`
   ${({ inMessage }) =>
     inMessage &&
     css`
-      background: ${({ theme: { MESSAGING } }) => MESSAGING.replyContainerBackgroundInsideMessage};
+      background: ${({ theme: { MESSAGING } }) =>
+        MESSAGING.replyContainerBackgroundInsideMessage};
       border-radius: 0.5rem;
       position: relative;
       top: 0.5rem;
