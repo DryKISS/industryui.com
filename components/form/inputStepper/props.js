@@ -14,7 +14,7 @@ import {
 } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 export const propTypes = {
   buttonContext: oneOf(Object.values(THEME_CONTEXT)),

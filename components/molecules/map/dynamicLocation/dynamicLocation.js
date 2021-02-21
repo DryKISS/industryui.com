@@ -16,7 +16,8 @@ import {
   withScriptjs
 } from 'react-google-maps'
 
-import { M as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
+/* eslint-disable */
+import { MarkerClusterer as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
 const DynamicLocationHOC = (Component) => {
   return (props) => {

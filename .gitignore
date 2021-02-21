@@ -1,8 +1,6 @@
-# Next
-.next
-
 # Storybook
 storybook-static
+esm
 
 # Environment
 .env

@@ -1,6 +1,6 @@
 {
   "name": "@drykiss/industry-ui",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
@@ -39,7 +39,7 @@
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
     "build": "npm run clean && BABEL_ENV=esm babel components --out-dir esm  --source-maps true",
     "build-storybook": "build-storybook --quiet -s ./static",
-    "pack": "npx build && npm pack",
+    "pack": "npm run build && npm pack",
     "test:snapshot": "cross-env ENVIRONMENT=test jest",
     "test:snapshot:update": "cross-env ENVIRONMENT=test jest --updateSnapshot"
   },
@@ -157,7 +157,6 @@
     "path": "^0.12.7",
     "prettier": "2.2.1",
     "prettier-config-standard": "^4.0.0",
-    "react-test-renderer": "^17.0.1",
-    "snazzy": "^9.0.0"
+    "react-test-renderer": "^17.0.1"
   }
 }

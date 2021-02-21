@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Some minimizers convert string escapes into their literal values, which leads to intermittent
 // Unicode normalization bugs and increases the gzipped download size. Use RegEx literals as opposed
 // to string literals to prevent that.

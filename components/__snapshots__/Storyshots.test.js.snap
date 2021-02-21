@@ -2760,7 +2760,7 @@ exports[`Storyshots Molecules/Dropdown Icon Picker 1`] = `
 />
 `;
 
-exports[`Storyshots Molecules/Dropdown Language 1`] = `
+exports[`Storyshots Molecules/Dropdown Lang 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4740,7 +4740,7 @@ exports[`Storyshots Utils/ConvertImgUrlToDataURLviaCanvas Convert Img Url To Dat
 />
 `;
 
-exports[`Storyshots Utils/Debounce Debounce 1`] = `
+exports[`Storyshots Utils/Debounce Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4760,7 +4760,7 @@ exports[`Storyshots Utils/Debounce Debounce 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/GetAcronym Get Acronym 1`] = `
+exports[`Storyshots Utils/GetAcronym Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4780,7 +4780,7 @@ exports[`Storyshots Utils/GetAcronym Get Acronym 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/GetOne Get One 1`] = `
+exports[`Storyshots Utils/GetOne Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4800,7 +4800,7 @@ exports[`Storyshots Utils/GetOne Get One 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/GetUrlParameters Get Url Parameter 1`] = `
+exports[`Storyshots Utils/GetUrlParameters Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4820,7 +4820,7 @@ exports[`Storyshots Utils/GetUrlParameters Get Url Parameter 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
+exports[`Storyshots Utils/RandomColor Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4840,7 +4840,7 @@ exports[`Storyshots Utils/RandomColor Random Color Canvas 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
+exports[`Storyshots Utils/RandomKey Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4860,7 +4860,7 @@ exports[`Storyshots Utils/RandomKey Random Keys Show Case 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/RequestSimulator Request Simulator 1`] = `
+exports[`Storyshots Utils/RequestSimulator Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4880,7 +4880,7 @@ exports[`Storyshots Utils/RequestSimulator Request Simulator 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/ResizeDetetor Resize Detector 1`] = `
+exports[`Storyshots Utils/ResizeDetetor Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4940,7 +4940,7 @@ exports[`Storyshots Utils/Validator/PostCode Main 1`] = `
 />
 `;
 
-exports[`Storyshots Utils/ViewPort View Port 1`] = `
+exports[`Storyshots Utils/ViewPort Main 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
