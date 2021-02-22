@@ -23,15 +23,8 @@
     "**/.svn": true,
     "**/CVS": true
   },
-  // Javascript
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
   // CSS
   "scss.validate": false,
   "less.validate": false,
-  "css.validate": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  "css.validate": false
 }
