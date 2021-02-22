@@ -1,19 +1,25 @@
 /**
- * Components - Pricing
+ * Components - Organisms - Pricing
  */
 
+// React
+import React from 'react'
+
 // Style
-import { CheckedIcon } from 'components/icons'
+
 import styled, { css } from 'styled-components'
 
 // UI
-import { LAYOUTS, priceLayoutSizes, Text } from '../../../'
+import { CheckedIcon } from '../../../icons/components/checkedIcon'
+import { LAYOUTS } from './constants'
+import { priceLayoutSizes } from '../utils/index'
+import { Text } from '../../../atoms/text/text'
 
 export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}
   const features = []
-  pricingInfo.forEach(item => {
-    item.checkList.forEach(feature => {
+  pricingInfo.forEach((item) => {
+    item.checkList.forEach((feature) => {
       if (!pure[feature.title.replace(/ /g, '')]) {
         pure[feature.title.replace(/ /g, '')] = feature
         features.push(feature.title)
@@ -39,7 +45,10 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
         {features.map((item, index) => {
           return (
             <FeatureNameColumn key={index} odd={index % 2 !== 0}>
-              <MatrixText content={item} size={priceLayoutSizes(layout).featuresTextSize} />
+              <MatrixText
+                content={item}
+                size={priceLayoutSizes(layout).featuresTextSize}
+              />
             </FeatureNameColumn>
           )
         })}
@@ -50,13 +59,15 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
             key={index}
             show={layout.includes(LAYOUTS.DESKTOP) || selectedPlan === index}
             flex={!layout.includes(LAYOUTS.DESKTOP)}
-            layout={layout}
-          >
+            layout={layout}>
             {features.map((feature, idx) => {
               return (
                 <FeatureCheckColumn odd={idx % 2 !== 0} key={idx}>
                   {featureExist(item, feature) ? (
-                    <StyledCheckedIcon size={18} recommended={item.recommended} />
+                    <StyledCheckedIcon
+                      size={18}
+                      recommended={item.recommended}
+                    />
                   ) : (
                     ''
                   )}
@@ -78,14 +89,17 @@ const StyledCheckedIcon = styled(CheckedIcon)`
     }
   `}
 `
+
 const MatrixText = styled(Text)`
   ${({ theme: { PRICING } }) => css`
     color: ${PRICING.priceMatrixTextColour};
   `}
 `
+
 const FeatureCheckColumn = styled.div`
   align-items: center;
-  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};
+  background-color: ${({ theme, odd }) =>
+    odd ? theme.COLOUR.light : theme.COLOUR.white};
   display: flex;
   justify-content: center;
   margin: 1px 0;
@@ -94,13 +108,15 @@ const FeatureCheckColumn = styled.div`
 
 const FeatureNameColumn = styled.div`
   align-items: center;
-  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};
+  background-color: ${({ theme, odd }) =>
+    odd ? theme.COLOUR.light : theme.COLOUR.white};
   border: 1px solid ${({ theme }) => theme.COLOUR.dark};
   display: flex;
   margin: 1px 0;
   min-height: 2.5rem;
   padding-left: 1.875rem;
 `
+
 const MatrixCol = styled.div`
   margin: 0 0.375rem;
   ${({ freeSize }) =>
@@ -118,6 +134,7 @@ const MatrixCol = styled.div`
       min-width:calc(${priceLayoutSizes(layout).priceCardWidth} + 0.75rem );
     `}
 `
+
 const PriceMatrixWrapper = styled.div`
   display: flex;
   width: 100%;

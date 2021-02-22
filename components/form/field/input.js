@@ -1,16 +1,27 @@
 /**
- * Form - Field - Input
+ * Components - Form - Field - Input
  */
 
 // React
-import { useState } from 'react'
-import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
+import React, { useState } from 'react'
+import {
+  arrayOf,
+  bool,
+  func,
+  number,
+  object,
+  oneOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
-import { COMMON_INPUT_STYLES, ERROR_STYLE, FieldHOC, SIZE } from '../../'
+import { FieldHOC } from '../hoc'
+import { formStyle, formErrorStyle } from '../variables/style'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const FormField = ({
   disabled,
@@ -34,7 +45,7 @@ export const FormField = ({
       component={StyledInput}
       disabled={disabled}
       helperMessage={helperMessage}
-      onKeyDown={e => {
+      onKeyDown={(e) => {
         setisTyping(true)
       }}
       onBlur={() => {
@@ -54,39 +65,38 @@ export const FormField = ({
   )
 }
 
-export const StyledInput = styled.input.attrs(props => ({
+export const StyledInput = styled.input.attrs((props) => ({
   autoComplete: 'off',
   autoFocus: false
 }))`
-
-${props => COMMON_INPUT_STYLES(props)}
+  ${(props) => formStyle(props)}
 
   ${({ errors }) =>
     errors &&
     css`
-      ${props => ERROR_STYLE(props)}
+      ${(props) => formErrorStyle(props)}
     `}
 
     ${({ size }) => {
-      switch (size) {
-        case SIZE.SM:
-          return css`
-            height: 1.5rem;
-          `
-        case SIZE.MD:
-          return css`
-            height: 1.875rem;
-          `
-        case SIZE.LG:
-          return css`
-            height: 2.25rem;
-          `
-        default:
-          return css`
-            height: 2.25rem;
-          `
-      }
-    }}
+    switch (size) {
+      case THEME_SIZE.SM:
+        return css`
+          height: 1.5rem;
+        `
+      case THEME_SIZE.MD:
+        return css`
+          height: 1.875rem;
+        `
+      case THEME_SIZE.LG:
+        return css`
+          height: 2.25rem;
+        `
+      default:
+        return css`
+          height: 2.25rem;
+        `
+    }
+  }}
 `
 
 FormField.propTypes = {
@@ -100,12 +110,17 @@ FormField.propTypes = {
   name: string.isRequired,
   placeholder: string,
   readOnly: bool,
-  register: func,
-  size: oneOf([SIZE.SM, SIZE.MD, SIZE.LG]),
+  register: func.isRequired,
+  size: oneOf([THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]),
   style: object,
   textAlign: string,
   type: string,
-  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
+  value: oneOfType([
+    string,
+    number,
+    bool,
+    arrayOf(oneOfType([string, number, bool]))
+  ])
 }
 
 FormField.defaultProps = {

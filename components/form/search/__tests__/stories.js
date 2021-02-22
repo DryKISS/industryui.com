@@ -2,11 +2,18 @@
  * Form - Search
  */
 
+// React
+import React from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Divider, FormError, Form, Search, Text, useForm, yupResolver } from 'components'
+import { Divider, FormError, Form, Search, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -49,7 +56,7 @@ const BaseComponent = (props = {}) => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -65,7 +72,7 @@ const BaseComponent = (props = {}) => {
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <Search {...defaultProps} />
 
-      <Divider size='sm' />
+      <Divider size="sm" />
       <Text>Search:</Text>
       <Text>{value}</Text>
 
@@ -74,8 +81,14 @@ const BaseComponent = (props = {}) => {
   )
 }
 
-export const main = args => <BaseComponent {...args} />
-export const defaultValue = args => <BaseComponent {...args} value='XYZ' />
-export const customLabel = args => <BaseComponent appendSearchButton {...args} label='Go' />
-export const prependedIcon = args => <BaseComponent {...args} prependSearchIcon />
-export const appendedIcon = args => <BaseComponent {...args} appendSearchIcon />
+export const main = (args) => <BaseComponent {...args} />
+export const defaultValue = (args) => <BaseComponent {...args} value="XYZ" />
+export const customLabel = (args) => (
+  <BaseComponent appendSearchButton {...args} label="Go" />
+)
+export const prependedIcon = (args) => (
+  <BaseComponent {...args} prependSearchIcon />
+)
+export const appendedIcon = (args) => (
+  <BaseComponent {...args} appendSearchIcon />
+)

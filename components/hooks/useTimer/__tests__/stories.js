@@ -2,23 +2,25 @@
  * useTimer
  */
 
+// React
+import React from 'react'
+
 // UI
-import { useTimer } from '../'
-import { Button, ButtonToolbar } from '../../..'
+import { Button, ButtonToolbar, useTimer } from '../../../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Hooks/Timer',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Hooks/Timer'
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const {
     time: { seconds, minutes, hours, days },
     start,
@@ -39,10 +41,16 @@ const BaseComponent = props => {
 
 export const main = () => <BaseComponent />
 
-export const withInitialTime = () => <BaseComponent startTime='2020-03-07T12:35:00' />
+export const withInitialTime = () => (
+  <BaseComponent startTime="2020-03-07T12:35:00" />
+)
 
 export const manualStart = () => <BaseComponent autoStart={false} />
 
 export const showDuration = () => (
-  <BaseComponent autoStart={false} startTime='2020-03-07T12:35:00' endTime='2020-03-07T13:40:00' />
+  <BaseComponent
+    autoStart={false}
+    startTime="2020-03-07T12:35:00"
+    endTime="2020-03-07T13:40:00"
+  />
 )

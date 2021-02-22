@@ -2,7 +2,7 @@
  * Components - Utils - URL
  */
 
-export const historyPush = query => {
+export const historyPush = (query) => {
   const { protocol, host, pathname } = window.location
   const url = `${protocol}//${host}${pathname}${query}`
 

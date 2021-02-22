@@ -2,8 +2,11 @@
  * Webcam
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Webcam } from 'components'
+import { Webcam } from '../components/webcam'
 import Readme from '../README.md'
 
 export default {
@@ -18,4 +21,4 @@ export default {
   title: 'Molecules/Webcam'
 }
 
-export const main = args => <Webcam {...args} />
+export const main = (args) => <Webcam {...args} />

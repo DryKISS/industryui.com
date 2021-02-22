@@ -3,13 +3,18 @@
  */
 
 // React
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 // Next
 import { useRouter } from 'next/router'
 
 // UI
-import { ConfigContext, InternationalisationContext, isLocale, useLocalStorage } from '../../'
+import {
+  ConfigContext,
+  InternationalisationContext,
+  isLocale,
+  useLocalStorage
+} from '../../'
 
 export const InternationalisationProvider = ({ locale, children }) => {
   const { locales } = useContext(ConfigContext)
@@ -25,15 +30,17 @@ export const InternationalisationProvider = ({ locale, children }) => {
   }, [localeState])
 
   useEffect(() => {
-    if (isLocale({ locales: locales, test: router?.query.lang }) && locale !== router?.query.lang) {
+    if (
+      isLocale({ locales: locales, test: router?.query.lang }) &&
+      locale !== router?.query.lang
+    ) {
       setLocaleState({ locale: router?.query.lang })
     }
   }, [router?.query.lang, localeState])
 
   return (
     <InternationalisationContext.Provider
-      value={{ locale: localeState.locale, setLocale: setLocaleState }}
-    >
+      value={{ locale: localeState.locale, setLocale: setLocaleState }}>
       {children}
     </InternationalisationContext.Provider>
   )

@@ -2,8 +2,11 @@
  * Copyright
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Copyright } from 'components'
+import { Copyright } from '../copyright'
 import Readme from '../README.md'
 
 // Data
@@ -24,4 +27,4 @@ export default {
   title: 'Molecules/Copyright'
 }
 
-export const main = args => <Copyright {...args} />
+export const main = (args) => <Copyright {...args} />

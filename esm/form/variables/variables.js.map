@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../components/form/variables/variables.js"],"names":["FORM_ELEMENTS_STYLES","inputBorderRadius"],"mappings":"AAAA;AACA;AACA;AACA,OAAO,IAAMA,oBAAoB,GAAG;AAClCC,EAAAA,iBAAiB,EAAE;AADe,CAA7B","sourcesContent":["/**\n * Components - Form - Variables\n */\nexport const FORM_ELEMENTS_STYLES = {\n  inputBorderRadius: '.25rem'\n}\n"],"file":"variables.js"}

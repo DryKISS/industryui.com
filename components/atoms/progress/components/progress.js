@@ -1,5 +1,5 @@
 /**
- * Progress
+ * Components - Atoms - Progress
  */
 
 // React
@@ -9,7 +9,7 @@ import { oneOf } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { SIZE } from '../../../'
+import { THEME_SIZE } from '../../../theme/constants/size'
 
 export const Progress = styled.div`
   background-color: ${({
@@ -42,7 +42,7 @@ export const Progress = styled.div`
 `
 
 Progress.propTypes = {
-  size: oneOf(Object.values(SIZE))
+  size: oneOf(Object.values(THEME_SIZE))
 }
 
 Progress.defaultProps = {

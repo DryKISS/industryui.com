@@ -2,8 +2,14 @@
  * Form - Radio
  */
 
+// React
+import React from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, Form, RadioField, useForm } from 'components'
+import { Button, Form, RadioField } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -14,7 +20,6 @@ export default {
     legend: 'Gender?',
     stacked: false
   },
-  title: 'Form/Radio',
   component: RadioField,
   parameters: {
     docs: {
@@ -22,12 +27,13 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Radio'
 }
 
 const BaseComponent = (props = {}) => {
   const { errors, handleSubmit, register } = useForm()
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     errors: errors,
@@ -40,9 +46,9 @@ const BaseComponent = (props = {}) => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <RadioField {...defaultProps} data={RADIO_GENDER()} />
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

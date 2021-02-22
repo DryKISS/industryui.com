@@ -2,8 +2,15 @@
  * Navbar - Tests
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { CleverlyTheme, CleverlyAdminTheme, DryKISSTheme } from 'themes'
+import {
+  CleverlyTheme,
+  CleverlyAdminTheme,
+  DryKISSTheme
+} from '../../../../.storybook/themes'
 
 // UI
 import { BaseComponent, options } from './baseComponent'

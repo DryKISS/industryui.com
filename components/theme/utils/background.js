@@ -1,8 +1,10 @@
 /**
- * Background colour
+ * Components - Theme - Utils - Background
  */
-export const BACKGROUND = ({ context, outline, theme }) => {
-  return `background-color: ${(outline && 'transparent') ||
+export const themeBackground = ({ context, outline, theme }) => {
+  return `background-color: ${
+    (outline && 'transparent') ||
     (context && theme.COLOUR[context]) ||
-    theme.COLOUR.dark};`
+    theme.COLOUR.dark
+  };`
 }

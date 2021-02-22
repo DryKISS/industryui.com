@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../components/organisms/messaging/components/base/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,cAAd","sourcesContent":["/**\n * Messaging/Base\n */\nexport * from './components'\n"],"file":"index.js"}

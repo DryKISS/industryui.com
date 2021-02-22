@@ -10,7 +10,7 @@
 import { encodeCircle } from './circle'
 
 export class StaticMap {
-  constructor ({
+  constructor({
     apiKey,
     center,
     channel,
@@ -50,7 +50,7 @@ export class StaticMap {
     this.zoom = zoom
   }
 
-  urlBuilder (property, value, separator) {
+  urlBuilder(property, value, separator) {
     if (value) {
       return `${property}${separator}${value}`
     }
@@ -58,7 +58,7 @@ export class StaticMap {
     return null
   }
 
-  renderBaseMap () {
+  renderBaseMap() {
     const urlParts = []
     urlParts.push(this.urlBuilder('key', this.apiKey, '='))
     urlParts.push(this.urlBuilder('center', this.center, '='))
@@ -74,15 +74,15 @@ export class StaticMap {
     urlParts.push(this.urlBuilder('style', this.style, '='))
     urlParts.push(this.urlBuilder('visible', this.visible, '='))
     urlParts.push(this.urlBuilder('zoom', this.zoom, '='))
-    const parts = urlParts.filter(x => x).join('&')
+    const parts = urlParts.filter((x) => x).join('&')
     return `${this.rootURL}?${parts}`
   }
 
-  locationBuilder (location) {
+  locationBuilder(location) {
     const urlParts = []
 
     if (Array.isArray(location)) {
-      const arrParts = location.map(val => this.locationBuilder(val))
+      const arrParts = location.map((val) => this.locationBuilder(val))
       urlParts.push(...arrParts)
     }
 
@@ -98,7 +98,7 @@ export class StaticMap {
   }
 
   // Create the URL segment for the Path
-  renderPath ({ circle, color, fillcolor, geodesic, points, weight }) {
+  renderPath({ circle, color, fillcolor, geodesic, points, weight }) {
     const urlParts = []
 
     if (circle) {
@@ -112,23 +112,23 @@ export class StaticMap {
     urlParts.push(this.urlBuilder('geodesic', geodesic, ':'))
     urlParts.push(this.urlBuilder('', this.locationBuilder(points), ''))
 
-    const url = urlParts.filter(x => x).join('%7C')
+    const url = urlParts.filter((x) => x).join('%7C')
 
     return `path=${url}`
   }
 
-  renderParts () {
-    return this.paths.map(path => {
+  renderParts() {
+    return this.paths.map((path) => {
       return this.renderPath(path)
     })
   }
 
-  renderMarkers () {
+  renderMarkers() {
     const { markers, locationBuilder, location } = this
     let urlParts = {}
 
     if (markers.length) {
-      urlParts = markers.map(marker => {
+      urlParts = markers.map((marker) => {
         let markerUrl = 'markers='
         switch (typeof marker) {
           case 'string': {
@@ -154,7 +154,7 @@ export class StaticMap {
     return urlParts.join('&')
   }
 
-  generateUrl () {
+  generateUrl() {
     const childrenUrlParts = this.renderParts() || []
     const mainUrlParts = this.renderBaseMap()
     const markerParts = this.renderMarkers()

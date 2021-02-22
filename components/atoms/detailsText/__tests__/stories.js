@@ -2,8 +2,12 @@
  * Components - Details - Stories
  */
 
+// React
+import React from 'react'
+
 // UI
-import { DetailsText, Link } from 'components'
+import { DetailsText } from '../detailsText'
+import { Link } from '../../../atoms/link/link'
 import Readme from '../README.md'
 
 export default {
@@ -22,7 +26,7 @@ export default {
   title: 'Atoms/DetailsText'
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <>
       <DetailsText {...args} />

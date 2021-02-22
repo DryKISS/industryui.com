@@ -9,7 +9,7 @@ import { number, oneOf, oneOfType, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { CONTEXT } from '../../../../'
+import { THEME_CONTEXT } from '../../../../theme/constants/context'
 
 export const TableActionsOverlay = styled.span`
   background: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
@@ -29,6 +29,6 @@ export const TableActionsOverlay = styled.span`
 `
 
 TableActionsOverlay.propTypes = {
-  background: oneOf(Object.values(CONTEXT)),
+  background: oneOf(Object.values(THEME_CONTEXT)),
   children: oneOfType([number, string]).isRequired
 }

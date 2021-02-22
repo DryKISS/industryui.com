@@ -3,7 +3,7 @@
  */
 
 // UI
-import { RandomKey } from 'components'
+import React, { RandomKey } from '../../../'
 import Readme from '../README.md'
 
 // Style
@@ -20,7 +20,7 @@ export default {
   title: 'Utils/RandomKey'
 }
 
-export const RandomKeysShowCase = () => {
+export const Main = () => {
   const elementsLength = 50
   const arr = Array.from(Array(elementsLength).keys())
 

@@ -1,7 +1,10 @@
+// React
+import React from 'react'
+
 import { CompositeDecorator } from 'draft-js'
 
-const SearchHighlight = props => (
-  <span className='search-and-replace-highlight'>{props.children}</span>
+const SearchHighlight = (props) => (
+  <span className="search-and-replace-highlight">{props.children}</span>
 )
 
 const findWithRegex = (regex, contentBlock, callback) => {
@@ -14,7 +17,7 @@ const findWithRegex = (regex, contentBlock, callback) => {
   }
 }
 
-export const generateDecorator = highlightTerm => {
+export const generateDecorator = (highlightTerm) => {
   const regex = new RegExp(highlightTerm, 'g')
   return new CompositeDecorator([
     {

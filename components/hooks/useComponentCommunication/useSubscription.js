@@ -17,7 +17,7 @@ export const useComponentCommunication = ({
   subscriber
 }) => {
   useEffect(() => {
-    const Subscription = subscriber.subscribe(message => {
+    const Subscription = subscriber.subscribe((message) => {
       if (message.name === messageName && (!id || id === message.id)) {
         onRecieve(message.payload)
       }

@@ -3,7 +3,7 @@
  * @param {Array<{lat:number,lng:number}>} coords
  */
 
-export const averageGeolocation = coords => {
+export const averageGeolocation = (coords) => {
   if (coords.length === 1) {
     return coords[0]
   }

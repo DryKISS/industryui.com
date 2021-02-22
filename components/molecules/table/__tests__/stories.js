@@ -3,10 +3,10 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
-import { Table } from 'components'
+import { Table } from '../components/wrapper'
 import Readme from '../README.md'
 
 // Data
@@ -50,7 +50,7 @@ const BaseComponent = (props = {}) => {
     order: 'asc'
   })
 
-  const handlePageChange = page => {
+  const handlePageChange = (page) => {
     setCurrentPage(page)
   }
 
@@ -83,7 +83,10 @@ const BaseComponent = (props = {}) => {
     ...rows.data
   ]
 
-  const pageSlice = data.slice((currentPage - 1) * props.perPage, currentPage * props.perPage)
+  const pageSlice = data.slice(
+    (currentPage - 1) * props.perPage,
+    currentPage * props.perPage
+  )
 
   const defaultProps = {
     paginationProps: {
@@ -105,11 +108,17 @@ const BaseComponent = (props = {}) => {
   return <Table {...defaultProps} />
 }
 
-export const main = args => <BaseComponent {...args} columns={columnsActions} />
-export const context = args => <BaseComponent {...args} pagination={false} rows={dataContext} />
-export const loadingWithoutData = args => <BaseComponent {...args} rows={[]} loading />
-export const showNoData = args => <BaseComponent {...args} rows={[]} />
+export const main = (args) => (
+  <BaseComponent {...args} columns={columnsActions} />
+)
+export const context = (args) => (
+  <BaseComponent {...args} pagination={false} rows={dataContext} />
+)
+export const loadingWithoutData = (args) => (
+  <BaseComponent {...args} rows={[]} loading />
+)
+export const showNoData = (args) => <BaseComponent {...args} rows={[]} />
 
-export const noColumns = args => (
+export const noColumns = (args) => (
   <BaseComponent {...args} columns={false} pagination={false} rows={noCols} />
 )

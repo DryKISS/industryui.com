@@ -3,7 +3,7 @@
  */
 
 // React
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { bool, number } from 'prop-types'
 
 // UI
@@ -14,7 +14,13 @@ export const TableLoading = memo(({ colsLength, show }) => {
     return null
   }
 
-  return <PageLoading indicator={<LdsSpinner size={50} />} opacity={0.7} position='absolute' />
+  return (
+    <PageLoading
+      indicator={<LdsSpinner size={50} />}
+      opacity={0.7}
+      position="absolute"
+    />
+  )
 })
 
 TableLoading.propTypes = {

@@ -1,40 +1,24 @@
 /**
- * Theme - Variables - COLOUR
+ * Components - Theme - Variables - Colour
  */
-export const COLOUR = {
-  accent: 'rgb(102, 171, 255)',
-  active: 'rgb(204 ,0, 0)',
+export const THEME_COLOUR = {
+  white: 'rgb(255, 255, 255)',
   black: 'rgb(0, 0, 0)',
-  danger: 'rgb(255, 51, 51)',
+
   dark: 'rgb(63, 81, 90)',
-  darkBlue: 'rgb(0, 29, 102)',
-  blackGrey: 'rgb(153, 153, 153)',
-  darkText: '#666666',
-  deepBlue: 'rgb(0, 43, 153)',
-  drykiss_lightBlue: 'rgb(0, 225, 218)',
-  drykiss_darkPink: 'rgb(255, 0, 99)',
-  error: 'rgb(255, 45, 45)',
-  fadeBlue: 'rgba(36, 94, 229, 0.3)',
-  female: 'rgb(248, 139, 157)',
-  grey: 'rgb(235, 235, 235)',
-  grey80: 'rgb(204, 204, 204)',
-  gold40: 'rgb(250, 207, 56)',
-  help: 'rgb(255, 203, 68)',
-  info: 'rgb(25, 129, 255)',
   light: 'rgb(242, 242, 242)',
-  lightBlue: 'rgb(173, 195, 245)',
-  lightBlack: 'rgb(110,110,111)',
-  link: 'rgb(35, 146, 220)',
-  male: 'rgb(142, 206, 253)',
-  neutral: 'rgb(216, 218, 225)',
-  neutral2: 'rgb(208, 210, 218)',
+
   primary: 'rgb(51, 51, 255)',
   secondary: 'rgb(6, 121, 216)',
   success: 'rgb(89, 217, 143)',
-  formSuccess: 'rgb(69, 186, 190)',
-  transparent: 'transparent',
-  visited: 'rgb(180, 14, 180)',
+  info: 'rgb(25, 129, 255)',
   warning: 'rgb(250, 207, 56)',
-  watterBlue: 'rgb(242, 246, 255)',
-  white: 'rgb(255, 255, 255)'
+  danger: 'rgb(255, 51, 51)',
+
+  help: 'rgb(255, 203, 68)',
+
+  female: 'rgb(248, 139, 157)',
+  male: 'rgb(142, 206, 253)',
+
+  transparent: 'transparent'
 }

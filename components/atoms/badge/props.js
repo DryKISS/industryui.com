@@ -2,24 +2,27 @@
  * Badge - Props
  */
 
+// React
 import { node, oneOf, object, string } from 'prop-types'
 
-import { CONTEXT, SIZE } from '../../'
+// UI
+import { THEME_CONTEXT } from '../../theme/constants/context'
+import { THEME_SIZE } from '../../theme/constants/size'
 
-export const BadgePropTypes = {
+export const propTypes = {
   children: node,
   className: string,
   content: string.isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   icon: string,
   iconPrefix: string,
   shape: oneOf(['round', 'square']),
-  size: oneOf(Object.values(SIZE)),
+  size: oneOf(Object.values(THEME_SIZE)),
   style: object,
   to: string
 }
 
-export const BadgeDefaultProps = {
+export const defaultProps = {
   context: 'primary',
   shape: 'square',
   size: 'md'

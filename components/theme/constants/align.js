@@ -1,7 +1,7 @@
 /**
- * Theme - Constants - Align
+ * Components - Theme - Constants - Align
  */
-export const ALIGN = {
+export const THEME_ALIGN = {
   Start: 'flex-start',
   End: 'flex-end',
   Left: 'left',

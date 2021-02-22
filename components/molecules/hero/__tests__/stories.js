@@ -2,8 +2,11 @@
  * Hero
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Heading, Hero, Image } from 'components'
+import { Heading, Hero, Image } from '../../../'
 import { TextBlock } from '../components/textBlock'
 import Readme from '../README.md'
 
@@ -49,49 +52,49 @@ export default {
   title: 'Molecules/Hero'
 }
 
-export const main = args => (
+export const main = (args) => (
   <Hero
     {...args}
-    alt='Tailwise Jack Russell Dog'
+    alt="Tailwise Jack Russell Dog"
     buttons={Buttons}
     image={Jack}
-    message='Message'
+    message="Message"
     strapline={`
         Tailwise takes the hassle out of matching verified breeders with future
         dog owners, in their search to find the perfect pup. That means no
         puppy farms anywhere in the United Kingdom.
       `}
-    title='The perfect puppy starts with a responsible breeder'
+    title="The perfect puppy starts with a responsible breeder"
   />
 )
 
-export const centered = args => (
+export const centered = (args) => (
   <Hero
     {...args}
-    alt='Tailwise Jack Russell Dog'
+    alt="Tailwise Jack Russell Dog"
     buttons={Buttons}
     background={Puppies}
-    backgroundSize='100%'
-    message='Message'
+    backgroundSize="100%"
+    message="Message"
     strapline={`
         Tailwise takes the hassle out of matching verified breeders with future
         dog owners, in their search to find the perfect pup. That means no
         puppy farms anywhere in the United Kingdom.
       `}
-    title='The perfect puppy starts with a responsible breeder'
+    title="The perfect puppy starts with a responsible breeder"
   />
 )
 
-export const CleverlyBlock = args => {
+export const CleverlyBlock = (args) => {
   return (
-    <Hero {...args} background={Puppies} backgroundSize='100%' height='100vh'>
-      <TextBlock content='Test' md={4} offset={{ md: 1 }} top='394px'>
-        <Image alt='Icon' src={Custom} width='64px' />
-        <Heading content='CUSTOM SOLUTIONS' noMargin tag='h2' />
+    <Hero {...args} background={Puppies} backgroundSize="100%" height="100vh">
+      <TextBlock content="Test" md={4} offset={{ md: 1 }} top="394px">
+        <Image alt="Icon" src={Custom} width="64px" />
+        <Heading content="CUSTOM SOLUTIONS" noMargin tag="h2" />
         <p>
-          Cleverly provides solutions for clients in a number of different sectors.whether you are
-          looking for a single service line or a 'Compliance as a Service' solution, Cleverly can
-          help.
+          Cleverly provides solutions for clients in a number of different
+          sectors.whether you are looking for a single service line or a
+          'Compliance as a Service' solution, Cleverly can help.
         </p>
       </TextBlock>
     </Hero>

@@ -3,15 +3,25 @@
  */
 
 // React
+import React from 'react'
 import { func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Alert, CONTEXT, formatRelativeTime, Link } from '../../'
+import { Alert, formatRelativeTime, Link } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
 
-export const Notification = ({ close, content, context, date, icon, link, title }) => {
+export const Notification = ({
+  close,
+  content,
+  context,
+  date,
+  icon,
+  link,
+  title
+}) => {
   let body = (
     <>
       <StyledNotificationBody>{content}</StyledNotificationBody>
@@ -29,7 +39,13 @@ export const Notification = ({ close, content, context, date, icon, link, title 
 
   return (
     <StyledNotificationWrapper>
-      <Alert close={close} content={body} context={context} header={title} icon={icon} />
+      <Alert
+        close={close}
+        content={body}
+        context={context}
+        header={title}
+        icon={icon}
+      />
     </StyledNotificationWrapper>
   )
 }
@@ -57,7 +73,7 @@ const StyledDate = styled.time`
 Notification.propTypes = {
   close: func.isRequired,
   content: oneOfType([object, string]).isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   date: string,
   icon: string,
   link: string,

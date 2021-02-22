@@ -5,11 +5,11 @@
 // React
 import { number, string, bool } from 'prop-types'
 
-// UI
-import { BACKGROUND } from '../../../'
-
 // Style
 import styled, { css, keyframes } from 'styled-components'
+
+// UI
+import { themeBackground } from '../../../theme/utils/background'
 
 const ProgressBarStripesAnimation = keyframes`
   0% {
@@ -21,7 +21,7 @@ const ProgressBarStripesAnimation = keyframes`
 `
 
 export const ProgressBarDiv = styled.div`
-  ${props => BACKGROUND(props)}
+  ${(props) => themeBackground(props)}
   animation: ${({ animated }) =>
     animated
       ? css`

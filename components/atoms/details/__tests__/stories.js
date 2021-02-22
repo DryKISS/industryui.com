@@ -2,11 +2,14 @@
  * Components - Details - Stories
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Button, ButtonToolbar, Details } from 'components'
+import { Button, ButtonToolbar, Details } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -46,17 +49,17 @@ export default {
 const toolbar = () => {
   return (
     <ButtonToolbar>
-      <Button size='xs'>button1</Button>
-      <Button size='xs'>button2</Button>
+      <Button size="xs">button1</Button>
+      <Button size="xs">button2</Button>
     </ButtonToolbar>
   )
 }
 
-export const main = args => {
+export const main = (args) => {
   if (args.withButton) {
     args.button = 'button'
 
-    args.handleClick = e => {
+    args.handleClick = (e) => {
       console.info(e)
     }
   }
@@ -64,8 +67,8 @@ export const main = args => {
   if (args.withActionsComponent) {
     args.SummaryActionsComponent = (
       <ButtonToolbar>
-        <Button size='xs'>button1</Button>
-        <Button size='xs'>button2</Button>
+        <Button size="xs">button1</Button>
+        <Button size="xs">button2</Button>
       </ButtonToolbar>
     )
   }

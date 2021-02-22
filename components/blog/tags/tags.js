@@ -7,6 +7,7 @@
  */
 
 // React
+import React from 'react'
 import { any, array } from 'prop-types'
 
 // UI

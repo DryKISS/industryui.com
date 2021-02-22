@@ -1,6 +1,9 @@
+/**
+ * Components - Organisms - Pricing - Utils
+ */
 import { LAYOUTS } from '../../../'
 
-export const priceLayoutSizes = layout => {
+export const priceLayoutSizes = (layout) => {
   switch (layout) {
     case LAYOUTS.DESKTOP:
       return {

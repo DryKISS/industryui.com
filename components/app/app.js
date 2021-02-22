@@ -1,8 +1,12 @@
 /**
  * App
+ *
+ * @todo This is doing too much Apollo provider and GTM should be abstracted as options and the
+ * providers sorted out
  */
 
 // React
+import React from 'react'
 import { any, bool, func, object } from 'prop-types'
 
 // Lodash
@@ -18,8 +22,8 @@ import App from 'next/app'
 import TagManager from 'react-gtm-module'
 
 // UI
+import { AuthorizationProvider } from '../services/authorization/provider'
 import {
-  AuthorizationProvider,
   ConfigProvider,
   InternationalisationProvider,
   NotificationsProvider,
@@ -55,14 +59,15 @@ export class MyApp extends App {
     user: false
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { google } = this.props
+
     if (google) {
       TagManager.initialize({ gtmId: google.analytics })
     }
   }
 
-  elements () {
+  elements() {
     const { offCanvas, user } = this.props
 
     return (
@@ -89,14 +94,16 @@ export class MyApp extends App {
     )
   }
 
-  data () {
+  data() {
     const { apolloClient, config } = this.props
 
     return (
       <>
         <ConfigProvider config={config}>
           {apolloClient ? (
-            <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
+            <ApolloProvider client={apolloClient}>
+              {this.elements()}
+            </ApolloProvider>
           ) : (
             this.elements()
           )}
@@ -105,7 +112,7 @@ export class MyApp extends App {
     )
   }
 
-  layout () {
+  layout() {
     const { Component, Layout, pageProps, pageProgressBar, router } = this.props
 
     return (
@@ -116,7 +123,11 @@ export class MyApp extends App {
     )
   }
 
-  render () {
-    return <ThemeProvider theme={merge(Theme, this.props.theme)}>{this.data()}</ThemeProvider>
+  render() {
+    return (
+      <ThemeProvider theme={merge(Theme, this.props.theme)}>
+        {this.data()}
+      </ThemeProvider>
+    )
   }
 }

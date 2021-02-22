@@ -3,6 +3,9 @@
  * Provides the base template to showcase an Article
  */
 
+// React
+import React from 'react'
+
 // Config
 // import { BRAND } from 'config'
 

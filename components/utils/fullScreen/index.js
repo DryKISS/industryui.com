@@ -40,7 +40,9 @@ const ms = [
 
 // so it doesn't throw error if no window or document is present
 const document =
-  typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {}
+  typeof window !== 'undefined' && typeof window.document !== 'undefined'
+    ? window.document
+    : {}
 
 const vendor =
   ('fullscreenEnabled' in document && Object.keys(key)) ||
@@ -50,36 +52,41 @@ const vendor =
   []
 
 export const fullScreen = {
-  requestFullscreen: element => element[vendor[key.requestFullscreen]](),
-  requestFullscreenFunction: element => element[vendor[key.requestFullscreen]],
-  get exitFullscreen () {
+  requestFullscreen: (element) => element[vendor[key.requestFullscreen]](),
+  requestFullscreenFunction: (element) =>
+    element[vendor[key.requestFullscreen]],
+  get exitFullscreen() {
     return document[vendor[key.exitFullscreen]].bind(document)
   },
-  get fullscreenPseudoClass () {
+  get fullscreenPseudoClass() {
     return `:${vendor[key.fullscreen]}`
   },
   addEventListener: (type, handler, options) =>
     document.addEventListener(vendor[key[type]], handler, options),
   removeEventListener: (type, handler, options) =>
     document.removeEventListener(vendor[key[type]], handler, options),
-  get fullscreenEnabled () {
+  get fullscreenEnabled() {
     return Boolean(document[vendor[key.fullscreenEnabled]])
   },
-  set fullscreenEnabled (val) {},
-  get fullscreenElement () {
+  set fullscreenEnabled(val) {},
+  get fullscreenElement() {
     return document[vendor[key.fullscreenElement]]
   },
-  set fullscreenElement (val) {},
-  get onfullscreenchange () {
+  set fullscreenElement(val) {},
+  get onfullscreenchange() {
     return document[`on${vendor[key.fullscreenchange]}`.toLowerCase()]
   },
-  set onfullscreenchange (handler) {
-    return (document[`on${vendor[key.fullscreenchange]}`.toLowerCase()] = handler)
+  set onfullscreenchange(handler) {
+    return (document[
+      `on${vendor[key.fullscreenchange]}`.toLowerCase()
+    ] = handler)
   },
-  get onfullscreenerror () {
+  get onfullscreenerror() {
     return document[`on${vendor[key.fullscreenerror]}`.toLowerCase()]
   },
-  set onfullscreenerror (handler) {
-    return (document[`on${vendor[key.fullscreenerror]}`.toLowerCase()] = handler)
+  set onfullscreenerror(handler) {
+    return (document[
+      `on${vendor[key.fullscreenerror]}`.toLowerCase()
+    ] = handler)
   }
 }

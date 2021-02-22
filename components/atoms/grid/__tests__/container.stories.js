@@ -2,8 +2,11 @@
  * Atoms - Grid - Container - Story
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Container } from 'components'
+import { Container } from '../components/Container'
 import Readme from '../README.md'
 
 const debug = {
@@ -22,7 +25,7 @@ export default {
   title: 'Atoms/Grid/Container'
 }
 
-export const container = args => (
+export const container = (args) => (
   <Container {...args} style={debug}>
     Container
   </Container>

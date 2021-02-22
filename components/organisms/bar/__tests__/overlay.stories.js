@@ -2,6 +2,9 @@
  * Components - Organisms - Bar - Tests - Overlay
  */
 
+// React
+import React from 'react'
+
 // UI
 import { BarOverlay } from '../components/overlay'
 import Readme from '../README.md'
@@ -25,6 +28,6 @@ export default {
   title: 'Organisms/Bar/Overlay'
 }
 
-export const overlay = args => {
+export const overlay = (args) => {
   return <BarOverlay {...args} />
 }

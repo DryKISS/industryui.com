@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -25,41 +25,51 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
 
   useEffect(() => {
     resetLayout()
-
     return () => {}
   }, [])
 
   const [Layout, setLayout] = useState(LAYOUTS.DESKTOP)
-
   const [SelectedPlan, setSelectedPlan] = useState(0)
 
   const resetLayout = () => {
     const wrapper = WrapperRef.current
     const width = wrapper.offsetWidth
+
     if (width > 1920) {
-      if (Layout !== LAYOUTS.LARGEDESKTOP) setLayout(LAYOUTS.LARGEDESKTOP)
+      if (Layout !== LAYOUTS.LARGEDESKTOP) {
+        setLayout(LAYOUTS.LARGEDESKTOP)
+      }
     } else if (width > 1440) {
-      if (Layout !== LAYOUTS.MEDDESKTOP) setLayout(LAYOUTS.MEDDESKTOP)
+      if (Layout !== LAYOUTS.MEDDESKTOP) {
+        setLayout(LAYOUTS.MEDDESKTOP)
+      }
     } else if (width > 1024) {
-      if (Layout !== LAYOUTS.DESKTOP) setLayout(LAYOUTS.DESKTOP)
+      if (Layout !== LAYOUTS.DESKTOP) {
+        setLayout(LAYOUTS.DESKTOP)
+      }
     } else if (width > 768) {
-      if (Layout !== LAYOUTS.TABLET) setLayout(LAYOUTS.TABLET)
+      if (Layout !== LAYOUTS.TABLET) {
+        setLayout(LAYOUTS.TABLET)
+      }
     } else {
-      if (Layout !== LAYOUTS.MOBILE) setLayout(LAYOUTS.MOBILE)
+      if (Layout !== LAYOUTS.MOBILE) {
+        setLayout(LAYOUTS.MOBILE)
+      }
     }
   }
 
-  const handlePlanChange = planIndex => {
+  const handlePlanChange = (planIndex) => {
     setSelectedPlan(planIndex)
   }
 
-  const handlePlanSelect = e => {
+  const handlePlanSelect = (e) => {
     onPlanSelect(e)
   }
 
   return (
     <Wrapper ref={WrapperRef}>
       <ResizeDetector onResize={({ width }) => resetLayout(width)} />
+
       <PricesWrapper>
         <>
           {Layout.includes(LAYOUTS.DESKTOP) ? (
@@ -80,24 +90,33 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
                 pricingInfo={pricingInfo}
                 selectedPlan={SelectedPlan}
               />
+
               <FeaturesAndAdd>
-                <FeaturesWrapper>
+                <div>
                   {pricingInfo[SelectedPlan].checkList.map((item, index) => {
                     return (
                       <ListItem key={index}>
-                        <Icon color='rgb(69, 186, 190)' icon='check' prefix='fas' />
-                        <StyledFeature content={item.title} context='dark' size='sm' />
+                        <Icon
+                          color="rgb(69, 186, 190)"
+                          icon="check"
+                          prefix="fas"
+                        />
+                        <StyledFeature
+                          content={item.title}
+                          context="dark"
+                          size="sm"
+                        />
                       </ListItem>
                     )
                   })}
-                </FeaturesWrapper>
+                </div>
+
                 <AddToCartWrapper fullWidth={Layout === LAYOUTS.MOBILE}>
                   <StyledButton
                     block
-                    context='deepBlue'
+                    context="deepBlue"
                     onClick={() => handlePlanSelect(pricingInfo[SelectedPlan])}
-                    outline
-                  >
+                    outline>
                     Add To Cart
                   </StyledButton>
                 </AddToCartWrapper>
@@ -106,7 +125,12 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
           )}
         </>
       </PricesWrapper>
-      <PriceMatrix pricingInfo={pricingInfo} layout={Layout} selectedPlan={SelectedPlan} />
+
+      <PriceMatrix
+        pricingInfo={pricingInfo}
+        layout={Layout}
+        selectedPlan={SelectedPlan}
+      />
     </Wrapper>
   )
 }
@@ -127,7 +151,6 @@ const AddToCartWrapper = styled.div`
       width: 100%;
     `}
 `
-const FeaturesWrapper = styled.div``
 
 const StyledFeature = styled(Text)`
   line-height: 1.25rem;
@@ -145,6 +168,7 @@ const FeaturesAndAdd = styled.div`
   flex-direction: column;
   margin-top: 1.5rem;
 `
+
 const DropDownAndFeatues = styled.div`
   width: 100%;
 `
@@ -152,6 +176,7 @@ const DropDownAndFeatues = styled.div`
 const Wrapper = styled.div`
   min-width: 21.25rem;
 `
+
 const PricesWrapper = styled.div`
   display: flex;
   justify-content: flex-end;

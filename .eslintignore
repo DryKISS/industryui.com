@@ -1,0 +1,12 @@
+api
+config
+esm
+node_modules
+static
+storybook-static
+
+.cache
+.github
+.jest
+.storybook
+.vscode

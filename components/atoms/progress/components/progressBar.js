@@ -3,12 +3,14 @@
  */
 
 // React
+import React from 'react'
 import { number, string, bool, oneOf } from 'prop-types'
 
 // UI
-import { CONTEXT, ProgressBarDiv } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
+import { ProgressBarDiv } from '../../../'
 
-export const ProgressBar = props => {
+export const ProgressBar = (props) => {
   return (
     <ProgressBarDiv
       aria-valuenow={props.now}
@@ -26,7 +28,7 @@ ProgressBar.propTypes = {
   bgImage: string,
   bgSize: string,
   color: string,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   now: number,
   role: string,
   striped: bool,

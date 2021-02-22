@@ -3,7 +3,7 @@
  */
 
 // React
-import { memo } from 'react'
+import React, { memo } from 'react'
 
 // Utils
 import { withResizeDetector } from 'react-resize-detector'

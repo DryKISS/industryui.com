@@ -3,7 +3,7 @@
  */
 import moment from 'moment'
 
-export const formatDate = date => {
+export const formatDate = (date) => {
   return new Date(date.seconds * 1000).toLocaleDateString()
 }
 
@@ -48,7 +48,7 @@ export const formatIntDateYear = (date, code = 'en-GB') => {
   return newDate
 }
 
-export const formatTime = date => {
+export const formatTime = (date) => {
   const d = new Date(date)
   let hour = '' + d.getHours()
   let minute = '' + d.getMinutes()
@@ -77,6 +77,6 @@ export const formatDateStandard = (date, showTime = false) => {
   }
 }
 
-export const formatRelativeTime = date => {
+export const formatRelativeTime = (date) => {
   return moment(date).fromNow()
 }

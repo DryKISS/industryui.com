@@ -2,8 +2,11 @@
  * Article
  */
 
+// React
+import React from 'react'
+
 // UI
-import { ArticleLayout } from 'components'
+import { ArticleLayout } from '../article'
 import Readme from '../README.md'
 
 export default {

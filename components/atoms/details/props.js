@@ -6,11 +6,11 @@
 import { any, bool, func, node, object, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 export const DetailsPropTypes = {
   children: node.isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   dataSet: object,
   open: bool,
   summary: string.isRequired,

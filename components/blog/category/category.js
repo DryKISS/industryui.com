@@ -1,36 +1,37 @@
 /**
- * Blog - Category
+ * Components - Blog - Category
  */
 
 // React
+import React from 'react'
 import { any, bool, object, oneOfType, shape, string } from 'prop-types'
-
-// UI
-import { Link, slugify } from '../../'
 
 // Style
 import styled from 'styled-components'
 
-export const BlogCategory = ({ author, config, className, link, style }) => {
-  const path = slugify(link.to)
+// UI
+import { Link, slugify } from '../../'
+
+export const BlogCategory = ({ author, config, className, style, to }) => {
+  const path = slugify(to)
 
   return (
     <StyledCategory className={className} style={style}>
       <Link
         passHref
-        prefetch={link.prefetch}
         to={{
           as: `${config.path}/${path}`,
           href: {
-            pathname: author ? `${config.path}/author` : `${config.path}/category`,
+            pathname: author
+              ? `${config.path}/author`
+              : `${config.path}/category`,
             query: {
               author: path,
               category: path
             }
           }
-        }}
-      >
-        {link.to.toUpperCase().replace('-', ' ')}
+        }}>
+        {path.toUpperCase().replace('-', ' ')}
       </Link>
     </StyledCategory>
   )
@@ -49,7 +50,7 @@ BlogCategory.propTypes = {
   className: any,
   config: object.isRequired,
   style: any,
-  link: shape({
+  to: shape({
     passHref: bool,
     prefetch: bool,
     to: oneOfType([object, string]).isRequired

@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Styled Components
 import styled from 'styled-components'
@@ -18,7 +18,7 @@ export const OffCanvasProvider = ({ children }) => {
   const [visibilityManager, setVisibilityManager] = useState([])
 
   const handleClose = () => {
-    setVisibilityManager(prev => {
+    setVisibilityManager((prev) => {
       prev.pop()
       return [...prev]
     })
@@ -26,7 +26,7 @@ export const OffCanvasProvider = ({ children }) => {
     // Prevent data to disappear suddenly on close
     setTimeout(
       () => {
-        setDataManager(prev => {
+        setDataManager((prev) => {
           prev.pop()
           return [...prev]
         })
@@ -35,10 +35,10 @@ export const OffCanvasProvider = ({ children }) => {
     )
   }
 
-  const handleShow = data => {
+  const handleShow = (data) => {
     if (data && data.content) {
-      setVisibilityManager(prev => [...prev, true])
-      setDataManager(prev => [...prev, data])
+      setVisibilityManager((prev) => [...prev, true])
+      setDataManager((prev) => [...prev, data])
     } else {
       handleClose()
     }
@@ -55,8 +55,7 @@ export const OffCanvasProvider = ({ children }) => {
       value={{
         show: handleShow,
         close: handleClose
-      }}
-    >
+      }}>
       {children}
 
       <OffCanvas
@@ -74,8 +73,7 @@ export const OffCanvasProvider = ({ children }) => {
         toggleShow={handleClose}
         transitionDuration={DURATION}
         variant={data?.variant}
-        width={options?.width}
-      >
+        width={options?.width}>
         {dataManager.map((d, i) => (
           <StyledWrapper key={i} show={i + 1 === dataManager.length}>
             {d.content}

@@ -1,7 +1,14 @@
-import { useEffect, useState } from 'react'
+// React
+import React, { useEffect, useState } from 'react'
+
+// Style
 import styled, { css } from 'styled-components'
+
+// Draft JS
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
-import { Close, Divider, MessagingEditor, ReplyIcon } from 'components'
+
+// UI
+import { Close, Divider, MessagingEditor, ReplyIcon } from '../../../../'
 
 export const ReplyContainer = ({ message, onClose, inMessage }) => {
   const [editorState, setEditorState] = useState(
@@ -30,15 +37,22 @@ export const ReplyContainer = ({ message, onClose, inMessage }) => {
     <Container inMessage={inMessage}>
       {!inMessage && (
         <ReplyIconWrapper>
-          <ReplyIcon context='info' />
+          <ReplyIcon context="info" />
         </ReplyIconWrapper>
       )}
-      <Divider context='info' height='1.5rem' vertical />
+
+      <Divider context="info" height="1.5rem" vertical />
+
       <MessageWrapper>
         <FromWrapper>{message.from}</FromWrapper>
-        <MessagingEditor onChange={e => setEditorState(e)} editorState={editorState} readOnly />
+        <MessagingEditor
+          onChange={(e) => setEditorState(e)}
+          editorState={editorState}
+          readOnly
+        />
       </MessageWrapper>
-      {onClose && <Close click={handleCloseClick} context='dark' />}
+
+      {onClose && <Close click={handleCloseClick} context="dark" />}
     </Container>
   )
 }
@@ -49,16 +63,20 @@ const FromWrapper = styled.div`
   margin-bottom: -0.3rem;
   margin-top: 0.3rem;
 `
+
 const MessageWrapper = styled.div`
   color: ${({ theme: { MESSAGING } }) => MESSAGING.replyTextColour};
   flex: 1;
   line-height: 2rem;
 `
+
 const ReplyIconWrapper = styled.div`
   height: 100%;
 `
+
 const Container = styled.div`
-  background: ${({ theme: { MESSAGING } }) => MESSAGING.replyContainerBackground};
+  background: ${({ theme: { MESSAGING } }) =>
+    MESSAGING.replyContainerBackground};
   display: flex;
   height: ${({ theme: { MESSAGING } }) => MESSAGING.replyContainerHeight};
   left: -4px;
@@ -71,7 +89,8 @@ const Container = styled.div`
   ${({ inMessage }) =>
     inMessage &&
     css`
-      background: ${({ theme: { MESSAGING } }) => MESSAGING.replyContainerBackgroundInsideMessage};
+      background: ${({ theme: { MESSAGING } }) =>
+        MESSAGING.replyContainerBackgroundInsideMessage};
       border-radius: 0.5rem;
       position: relative;
       top: 0.5rem;

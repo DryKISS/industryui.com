@@ -2,7 +2,8 @@ export const mentions = [
   {
     name: 'Ali',
     title: 'Randomly Generated User',
-    avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg'
+    avatar:
+      'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg'
   },
   {
     name: 'Alireza',
@@ -32,6 +33,7 @@ export const mentions = [
   {
     name: 'Naser',
     title: 'Randomly Generated User',
-    avatar: 'https://pbs.twimg.com/profile_images/688487813025640448/E6O6I011_400x400.png'
+    avatar:
+      'https://pbs.twimg.com/profile_images/688487813025640448/E6O6I011_400x400.png'
   }
 ]

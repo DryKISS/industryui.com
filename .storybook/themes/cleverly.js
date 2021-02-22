@@ -62,9 +62,6 @@ const COLOUR = {
   white: 'rgb(255, 255, 255)',
   black: 'rgb(0, 0, 0)',
 
-  active: 'rgb(204 ,0, 0)',
-  visited: 'rgb(180, 14, 180)',
-
   dark: 'rgb(0, 55, 83)',
   light: 'rgb(236, 240, 243)',
 

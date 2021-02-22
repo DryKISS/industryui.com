@@ -1,11 +1,13 @@
 /**
- * viewPort
+ * Components - Utils - View Port
  */
+
 // React
-import { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 
 // UI
-import { Text, viewPort } from 'components'
+import { viewPort } from '../viewPort'
+import { Text } from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {
@@ -22,7 +24,7 @@ export default {
   title: 'Utils/ViewPort'
 }
 
-export const ViewPort = args => {
+export const Main = (args) => {
   const ref = useRef(null)
   const [Width, setWidth] = useState(0)
 

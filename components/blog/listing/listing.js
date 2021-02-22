@@ -1,5 +1,5 @@
 /**
- * Blog - Listing
+ * Components - Blog - Listing
  * Displays articles cards from selected author, category or tag
  *
  * - Published is true
@@ -8,23 +8,26 @@
  */
 
 // React
+import React from 'react'
 import { any, string, object } from 'prop-types'
 
 // Lodash
 import _filter from 'lodash/filter'
 
 // UI
-import { BlogCard, Column, Row, slugify } from '../../'
+import { BlogCard } from '../card/card'
+import { Column, Row, slugify } from '../../'
 
 export const BlogListing = ({ articles, author, category, config, tag }) => {
-  const _findTag = articles => {
+  const _findTag = (articles) => {
     return _filter(articles, { tags: [tag] })
   }
 
-  const _findArticle = articles => {
-    return articles.filter(article => {
+  const _findArticle = (articles) => {
+    return articles.filter((article) => {
       return (
-        slugify(category ? article.category : article.author) === (category || author) &&
+        slugify(category ? article.category : article.author) ===
+          (category || author) &&
         article.homepage !== false &&
         article.published
       )
@@ -33,8 +36,14 @@ export const BlogListing = ({ articles, author, category, config, tag }) => {
 
   const _find = () => {
     let _findMe = articles
-    if (tag) _findMe = _findTag(articles)
-    if (category) _findMe = _findArticle(articles)
+
+    if (tag) {
+      _findMe = _findTag(articles)
+    }
+
+    if (category) {
+      _findMe = _findArticle(articles)
+    }
 
     return _findMe
       .sort((a, b) => {
@@ -45,6 +54,7 @@ export const BlogListing = ({ articles, author, category, config, tag }) => {
 
   return (
     <Row>
+      here
       {_find().map((article, index) => (
         <Column key={index} md={6}>
           <BlogCard article={article} config={config} />

@@ -3,13 +3,14 @@
  */
 
 // React
+import React from 'react'
 import { string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 //UI
-import { blendLinearRgb } from 'components'
+import { blendLinearRgb } from '../../components'
 
 export const Wrapper = Story => {
   return (

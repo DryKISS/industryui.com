@@ -32,7 +32,7 @@ import { useState, useEffect } from 'react'
 // Hook
 const cachedScripts = []
 
-export function useScript (src) {
+export function useScript(src) {
   // Keeping track of script loaded and error state
   const [state, setState] = useState({
     loaded: false,

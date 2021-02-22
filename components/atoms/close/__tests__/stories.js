@@ -2,17 +2,23 @@
  * CLose
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ContextControl, IconPrefixControl } from 'decorators'
+import {
+  ContextControl,
+  IconPrefixControl
+} from '../../../../.storybook/decorators'
 
 // UI
-import { Close } from 'components'
+import { Close } from '../close'
 import Readme from '../README.md'
 
 export default {
   args: {
     className: '',
-    click: '',
+    click: () => {},
     context: 'dark',
     icon: 'times-circle',
     prefix: 'fas'
@@ -32,6 +38,6 @@ export default {
   title: 'Atoms/Close'
 }
 
-export const main = args => {
+export const main = (args) => {
   return <Close {...args} />
 }

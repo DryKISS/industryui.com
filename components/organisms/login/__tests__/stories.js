@@ -3,10 +3,15 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
-import { Alert, Login, requestSimulator, useForm } from 'components'
+import { Alert } from '../../../molecules/alert/components/alert'
+import { Login } from '../login'
+import { requestSimulator } from '../../../utils/requestSimulator/requestSimulator'
 import Readme from '../README.md'
 
 export default {
@@ -35,8 +40,8 @@ export default {
 const BaseComponent = (props = {}) => {
   const [loggedToast, setLoggedToast] = useState(false)
 
-  const submit = e => {
-    requestSimulator().then(res => {
+  const submit = (e) => {
+    requestSimulator().then((res) => {
       setLoggedToast(true)
 
       setTimeout(() => {
@@ -52,19 +57,21 @@ const BaseComponent = (props = {}) => {
 
   return (
     <>
-      {loggedToast && <Alert content='logged' context='success' />}
+      {loggedToast && <Alert content="logged" context="success" />}
       <Login {...defaultProps} />
     </>
   )
 }
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent {...args} />
 }
 
-export const withPlaceholder = args => <BaseComponent {...args} showLabel={false} showPlaceholder />
+export const withPlaceholder = (args) => (
+  <BaseComponent {...args} showLabel={false} showPlaceholder />
+)
 
-export const withHttpRequest = args => {
+export const WithHttpRequest = (args) => {
   const { change, form } = useForm({ email: '', password: '' })
 
   const [loading, setLoading] = useState(false)
@@ -75,17 +82,17 @@ export const withHttpRequest = args => {
 
   const { value } = args
 
-  const submit = e => {
+  const submit = (e) => {
     e.preventDefault()
     setLoading(true)
     requestSimulator(value)
-      .then(res => {
+      .then((res) => {
         setResult({
           type: 'success',
           message: res.message
         })
       })
-      .catch(e => {
+      .catch((e) => {
         setResult({
           type: 'danger',
           message: e.message
@@ -96,7 +103,12 @@ export const withHttpRequest = args => {
 
   return (
     <>
-      <Login change={change} email={form.email} submit={submit} password={form.password} />
+      <Login
+        change={change}
+        email={form.email}
+        submit={submit}
+        password={form.password}
+      />
       {loading}
       {result}
     </>

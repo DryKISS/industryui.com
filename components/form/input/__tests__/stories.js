@@ -1,12 +1,19 @@
 /**
- * Form - Search
+ * Components - Form - Input - Story
  */
 
-// Stroybook
-import { ControlTypes } from 'decorators'
+// React
+import React from 'react'
+
+// Storybook
+import { ControlTypes } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import {
@@ -18,16 +25,13 @@ import {
   InputTypes,
   InputDecorationTypes,
   Row,
-  SIZE,
-  Space,
-  useForm,
-  yupResolver
-} from 'components'
+  Space
+} from '../../../'
 
+import { THEME_SIZE } from '../../../theme/constants/size'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Input',
   component: Input,
   parameters: {
     docs: {
@@ -35,21 +39,20 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Input'
 }
 
-const InputElement = args => {
+const InputElement = (args) => {
   const schema = object().shape({
-    email: string()
-      .required('Please Enter an email')
-      .email()
+    email: string().required('Please Enter an email').email()
   })
 
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -58,24 +61,28 @@ const InputElement = args => {
       <Row>
         <Column md={6}>
           <Input
-            decoration={errors?.email ? InputDecorationTypes.DANGER : args.decoration}
+            decoration={
+              errors?.email ? InputDecorationTypes.DANGER : args.decoration
+            }
             adornments={{
               ...(args.WithStartAdornment && { startAdornment: <>S</> }),
               ...(args.WithEndAdornment && { endAdornment: <>E</> })
             }}
-            label='Label'
+            label="Label"
             type={args.inputType}
-            message={errors?.email?.message ? errors.email.message : args.messageText}
+            message={
+              errors?.email?.message ? errors.email.message : args.messageText
+            }
             errors={errors}
-            name='email'
+            name="email"
             register={register}
-            placeholder='Placeholder'
+            placeholder="Placeholder"
             size={args.size}
           />
 
           <Space />
 
-          <Button type='submit'>submit</Button>
+          <Button type="submit">submit</Button>
         </Column>
       </Row>
     </Form>
@@ -88,7 +95,7 @@ InputTemplate.args = {
   decoration: InputDecorationTypes.DEFAULT,
   inputType: InputTypes.TEXT,
   messageText: '',
-  size: SIZE.MD,
+  size: THEME_SIZE.MD,
   WithStartAdornment: false,
   WithEndAdornment: false
 }
@@ -118,7 +125,7 @@ InputTemplate.argTypes = {
     name: 'Size',
     control: {
       type: ControlTypes.Select,
-      options: [SIZE.SM, SIZE.MD, SIZE.LG]
+      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
     }
   },
 

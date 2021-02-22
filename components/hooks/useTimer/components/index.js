@@ -1,4 +1,0 @@
-/**
- * useTimer
- */
-export * from './useTimer'

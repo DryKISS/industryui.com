@@ -2,6 +2,12 @@
  * Container
  */
 
+// React
+import React from 'react'
+
+// Style
+import { ThemeProvider } from 'styled-components'
+
 // UI
 import {
   ConfigProvider,
@@ -10,13 +16,10 @@ import {
   Theme,
   ThemeStyle,
   UserProvider
-} from 'components'
+} from '../../components'
 
 // Config
-import { Config } from 'config'
-
-// Style
-import { ThemeProvider } from 'styled-components'
+import { Config } from '../../config'
 
 export const Container = Story => {
   return (

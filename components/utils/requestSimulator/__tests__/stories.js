@@ -3,10 +3,10 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
-import { Button, requestSimulator, Space, Text } from 'components'
+import { Button, requestSimulator, Space, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -24,7 +24,7 @@ export default {
   title: 'Utils/RequestSimulator'
 }
 
-export const RequestSimulator = args => {
+export const Main = (args) => {
   const [state, setstate] = useState({
     message: ''
   })

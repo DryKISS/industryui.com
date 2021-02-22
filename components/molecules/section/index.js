@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { any, bool, node, string } from 'prop-types'
 
 // UI
@@ -15,7 +16,14 @@ import styled from 'styled-components'
 export const Section = ({ children, className, heading, row, style }) => (
   <StyleSection>
     <Container>
-      {heading && <Heading className='text-center' content={heading} context='primary' tag='h2' />}
+      {heading && (
+        <Heading
+          className="text-center"
+          content={heading}
+          context="primary"
+          tag="h2"
+        />
+      )}
       {row ? <Row>{children}</Row> : children}
     </Container>
   </StyleSection>

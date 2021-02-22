@@ -2,8 +2,11 @@
  * getOne
  */
 
+// React
+import React from 'react'
+
 // UI
-import { getOne, Space, Text } from 'components'
+import { getOne, Space, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -17,7 +20,7 @@ export default {
   title: 'Utils/GetOne'
 }
 
-export const GetOne = () => {
+export const Main = () => {
   const arr = [
     { id: 0, val: 0 },
     { id: 1, val: 1 },

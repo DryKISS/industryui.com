@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../components/atoms/details2/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,cAAd","sourcesContent":["/**\n * Components - Atoms - Details2\n */\nexport * from './components'\n"],"file":"index.js"}

@@ -1,16 +1,23 @@
 /**
- * Avatar
+ * Components - Atoms - Avatar
  */
+
+// React
+import React from 'react'
 
 // Gravatar
 import gravatar from 'gravatar'
 
-// UI
-import { FONTSIZE, getAcronym, Image, SIZE } from '../../'
-import { AvatarPropTypes, AvatarDefaultProps } from './props'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { getAcronym, Image } from '../../'
+import { themeFontSize } from '../../theme/utils/fontSize'
+import { THEME_SIZE } from '../../theme/constants/size'
+
+// Props
+import { propTypes, defaultProps } from './props'
 
 export const Avatar = ({
   action,
@@ -28,8 +35,15 @@ export const Avatar = ({
   const avatarSrc = src || (gmail && gravatar.url(gmail, { d: 'identicon' }))
 
   return (
-    <StyledAvatar className={className} context={context} onClick={click} size={size} style={style}>
-      {children || (avatarSrc && <Image alt='Avatar' src={avatarSrc} />) || getAcronym(content)}
+    <StyledAvatar
+      className={className}
+      context={context}
+      onClick={click}
+      size={size}
+      style={style}>
+      {children ||
+        (avatarSrc && <Image alt="Avatar" src={avatarSrc} />) ||
+        getAcronym(content)}
       {action && <StyledAction onClick={actionClick}>{action}</StyledAction>}
     </StyledAvatar>
   )
@@ -65,10 +79,10 @@ const StyledAvatar = styled.div`
   overflow: hidden;
   object-fit: cover;
 
-  ${props => FONTSIZE(props)}
+  ${(props) => themeFontSize(props)}
 
   ${({ size, theme }) => {
-    const sizeIndex = size && Object.values(SIZE).indexOf(size)
+    const sizeIndex = size && Object.values(THEME_SIZE).indexOf(size)
     const dimension = theme.TYPOGRAPHY.fontSizes[sizeIndex] + 24
 
     return css`
@@ -86,5 +100,5 @@ const StyledAvatar = styled.div`
   }
 `
 
-Avatar.propTypes = AvatarPropTypes
-Avatar.defaultProps = AvatarDefaultProps
+Avatar.propTypes = propTypes
+Avatar.defaultProps = defaultProps

@@ -25,7 +25,7 @@ export const Sidebar = [
     to: '/dashboard/messages'
   },
   {
-    icon: ['far', 'bell'],
+    icon: ['fas', 'bell'],
     name: 'Notifications',
     to: '/dashboard/notifications'
   }

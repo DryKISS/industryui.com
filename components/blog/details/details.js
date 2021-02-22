@@ -1,16 +1,20 @@
 /**
- * Blog - Details
+ * Components -  Blog - Details
  */
 
 // React
+import React from 'react'
 import { object } from 'prop-types'
 
+// Style
+import styled from 'styled-components'
+
 // UI
+import { BlogCategory } from '../category/category'
+import { BlogReadTime } from '../readTime/readTime'
+
 import {
-  BlogCategory,
-  BlogReadTime,
   BlogTags,
-  Date,
   Divider,
   FacebookShareButton,
   Icon,
@@ -19,37 +23,33 @@ import {
   slugify
 } from '../../'
 
-// Style
-import styled from 'styled-components'
+import { Date } from '../../atoms/date/date'
 
 export const BlogDetails = ({ article, config, facebook }) => {
   return (
     <StyledArticleDetails>
-      <Divider size='sm' />
+      <Divider size="sm" />
 
       <List inline unstyled style={{ marginTop: '.25rem' }}>
-        {/* Date / Time */}
         <ListItem style={{ marginRight: '1rem' }}>
-          <StyledIcon context='dark' icon='calendar-alt' />
-          <Date date={article.date} />
+          <StyledIcon context="dark" icon="calendar-alt" />
+          <Date date={article.date} size="sm" />
         </ListItem>
 
-        {/* Author */}
         <ListItem style={{ marginRight: '1rem' }}>
-          <StyledIcon context='dark' icon='user' />
+          <StyledIcon context="dark" icon="user" />
           <BlogCategory author config={config} to={article.author} />
         </ListItem>
 
-        {/* Read time */}
         <ListItem style={{ marginRight: '1rem' }}>
-          <StyledIcon context='dark' icon='stopwatch' />
+          <StyledIcon context="dark" icon="stopwatch" />
           <BlogReadTime time={article.readtime} />
         </ListItem>
       </List>
 
       {article.tags && <BlogTags tags={article.tags} />}
 
-      <Divider size='sm' />
+      <Divider size="sm" />
 
       <StyledShare>
         <StyledShareText>Share this article</StyledShareText>
@@ -58,7 +58,9 @@ export const BlogDetails = ({ article, config, facebook }) => {
           appId={facebook.appId}
           hashTag={facebook.hashTag}
           iFrame
-          to={`${facebook.domain}${config.path}/${slugify(article.category)}/${article.slug}`}
+          to={`${facebook.domain}${config.path}/${slugify(article.category)}/${
+            article.slug
+          }`}
         />
 
         {/* Twitter */}
@@ -72,7 +74,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
         </StyledShareLink> */}
       </StyledShare>
 
-      <Divider size='sm' />
+      <Divider size="sm" />
     </StyledArticleDetails>
   )
 }

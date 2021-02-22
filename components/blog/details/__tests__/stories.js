@@ -2,8 +2,11 @@
  * Blog - Details
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogDetails } from 'components'
+import { BlogDetails } from '../details'
 import Readme from '../README.md'
 
 // Data
@@ -21,6 +24,11 @@ export default {
   title: 'Blog/Details'
 }
 
-export const main = args => (
-  <BlogDetails article={Articles[0]} config={Blog} facebook={Facebook} {...args} />
+export const main = (args) => (
+  <BlogDetails
+    article={Articles[0]}
+    config={Blog}
+    facebook={Facebook}
+    {...args}
+  />
 )

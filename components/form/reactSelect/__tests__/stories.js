@@ -3,7 +3,14 @@
  */
 
 // React
-import { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import {
@@ -14,45 +21,18 @@ import {
   FormLabel,
   ReactSelectField,
   Text,
-  useForm,
-  usePrevious,
-  yupResolver
-} from 'components'
-
-import { object, string } from 'yup'
+  usePrevious
+} from '../../../'
 
 import Readme from '../README.md'
 
 // Data
-import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
-
-// components: {},
-// controlShouldRenderValue: true,
-// defaultValue: undefined,
-// error: '',
-// errors: {},
-// escapeClearsValue: false,
-// isDisabled: false,
-// isLoading: false,
-
-// isRtl: false,
-// isSearchable: true,
-// loadingMessage: () => 'Loading...',
-// maxMenuHeight: 300,
-// minMenuHeight: 140,
-// menuPlacement: 'bottom',
-// menuPosition: 'absolute',
-// menuShouldBlockScroll: false,
-// noOptionsMessage: () => 'No options',
-// openMenuOnFocus: false,
-// openMenuOnClick: true,
-// options: [],
-// pageSize: 5,
-// placeholder: 'Select...',
-// screenReaderStatus: ({ count }) => `${count} result${count !== 1 ? 's' : ''} available`,
-// styles: defaultStyles,
-// tabIndex: '0',
-// tabSelectsValue: true
+import {
+  Customers,
+  Options,
+  UsersAvison,
+  UsersHousing
+} from '../__mocks__/reactSelect'
 
 export default {
   args: {
@@ -91,18 +71,16 @@ export default {
 }
 
 const schema = object().shape({
-  reactSelect: string()
-    .nullable()
-    .required()
+  reactSelect: string().nullable().required()
 })
 
 const BaseComponent = memo(
-  args => {
+  (args) => {
     const { control, errors, handleSubmit } = useForm({
       resolver: yupResolver(schema)
     })
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
       console.info('data: ', data)
     }
 
@@ -117,14 +95,16 @@ const BaseComponent = memo(
 
     return (
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label='React Select'>
+        <FormLabel label="React Select">
           <ReactSelectField {...defaultProps} />
         </FormLabel>
 
-        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
-        <Divider size='sm' />
+        {errors.reactSelect && (
+          <FormError message={errors.reactSelect.message} />
+        )}
+        <Divider size="sm" />
 
-        <Button content='Submit' size='sm' type='submit' />
+        <Button content="Submit" size="sm" type="submit" />
       </Form>
     )
   },
@@ -133,25 +113,32 @@ const BaseComponent = memo(
   }
 )
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent {...args} />
 }
 
-export const withDefaultValue = args => {
+export const withDefaultValue = (args) => {
   return <BaseComponent {...args} defaultValue={Options[0]} />
 }
 
 export const async = () => {
   const loadOptions = (inputValue, callback) => {
     setTimeout(() => {
-      callback(Options.filter(o => o.value.includes(inputValue)))
+      callback(Options.filter((o) => o.value.includes(inputValue)))
     }, 2000)
   }
 
-  return <BaseComponent async defaultOptions name='asyncSelect' loadOptions={loadOptions} />
+  return (
+    <BaseComponent
+      async
+      defaultOptions
+      name="asyncSelect"
+      loadOptions={loadOptions}
+    />
+  )
 }
 
-export const chained = () => {
+export const Chained = () => {
   const { control, errors, handleSubmit, setValue, watch } = useForm()
 
   // GraphQL happens before this and sets the defaults
@@ -164,15 +151,15 @@ export const chained = () => {
 
   const prevCustomer = usePrevious(watchCustomer)
 
-  const CustomerOptions = inputValue =>
-    new Promise(resolve => {
+  const CustomerOptions = (inputValue) =>
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve(Customers)
       }, 1000)
     })
 
-  const UserOptions = inputValue =>
-    new Promise(resolve => {
+  const UserOptions = (inputValue) =>
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve(users)
       }, 2000)
@@ -192,7 +179,7 @@ export const chained = () => {
     }
   }, [watchCustomer])
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     setData(data)
   }
 
@@ -208,40 +195,44 @@ export const chained = () => {
   return (
     <>
       <Text>
-        Initially load the async react select with a promise. we use the defaultValue prop to load
-        any options already submitted. This should be part of the original GraphQL query. It must be
-        in the form {'{'} value: '2', label: 'Avison Young' {'}'}
+        Initially load the async react select with a promise. we use the
+        defaultValue prop to load any options already submitted. This should be
+        part of the original GraphQL query. It must be in the form {'{'} value:
+        '2', label: 'Avison Young' {'}'}
       </Text>
 
       <Text>
-        Customers will never lose their options, but can change or remove the default value, they
-        will return the account ID to get the Users/
+        Customers will never lose their options, but can change or remove the
+        default value, they will return the account ID to get the Users/
         <br />
-        Default Customer, Click X on customer it should unload default and options
+        Default Customer, Click X on customer it should unload default and
+        options
         <br />
         It does not matter if the user changes their option
       </Text>
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label='Customers'>
+        <FormLabel label="Customers">
           <ReactSelectField
             defaultValue={Customers[0]}
             loadOptions={CustomerOptions}
-            name='customer'
+            name="customer"
             {...defaultProps}
           />
         </FormLabel>
 
-        <FormLabel label='Users'>
+        <FormLabel label="Users">
           <ReactSelectField
             defaultValue={user}
             loadOptions={UserOptions}
-            name='user'
+            name="user"
             {...defaultProps}
           />
         </FormLabel>
 
-        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
+        {errors.reactSelect && (
+          <FormError message={errors.reactSelect.message} />
+        )}
 
         {data && (
           <>
@@ -255,13 +246,13 @@ export const chained = () => {
           </>
         )}
 
-        <Button size='sm' type='submit' />
+        <Button size="sm" type="submit" />
       </Form>
     </>
   )
 }
 
-export const chainedNoDefault = () => {
+export const ChainedNoDefault = () => {
   const { control, errors, handleSubmit, setValue, watch } = useForm()
 
   // GraphQL happens before this and sets the defaults
@@ -274,15 +265,15 @@ export const chainedNoDefault = () => {
 
   const prevCustomer = usePrevious(watchCustomer)
 
-  const CustomerOptions = inputValue =>
-    new Promise(resolve => {
+  const CustomerOptions = (inputValue) =>
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve(Customers)
       }, 1000)
     })
 
-  const UserOptions = inputValue =>
-    new Promise(resolve => {
+  const UserOptions = (inputValue) =>
+    new Promise((resolve) => {
       setTimeout(() => {
         resolve(users)
       }, 2000)
@@ -302,7 +293,7 @@ export const chainedNoDefault = () => {
     }
   }, [watchCustomer])
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     setData(data)
   }
 
@@ -318,40 +309,44 @@ export const chainedNoDefault = () => {
   return (
     <>
       <Text>
-        Initially load the async react select with a promise. we use the defaultValue prop to load
-        any options already submitted. This should be part of the original GraphQL query. It must be
-        in the form {'{'} value: '2', label: 'Avison Young' {'}'}
+        Initially load the async react select with a promise. we use the
+        defaultValue prop to load any options already submitted. This should be
+        part of the original GraphQL query. It must be in the form {'{'} value:
+        '2', label: 'Avison Young' {'}'}
       </Text>
 
       <Text>
-        Customers will never lose their options, but can change or remove the default value, they
-        will return the account ID to get the Users/
+        Customers will never lose their options, but can change or remove the
+        default value, they will return the account ID to get the Users/
         <br />
-        Default Customer, Click X on customer it should unload default and options
+        Default Customer, Click X on customer it should unload default and
+        options
         <br />
         It does not matter if the user changes their option
       </Text>
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label='Customers'>
+        <FormLabel label="Customers">
           <ReactSelectField
             defaultValue={null}
             loadOptions={CustomerOptions}
-            name='customer'
+            name="customer"
             {...defaultProps}
           />
         </FormLabel>
 
-        <FormLabel label='Users'>
+        <FormLabel label="Users">
           <ReactSelectField
             defaultValue={user}
             loadOptions={UserOptions}
-            name='user'
+            name="user"
             {...defaultProps}
           />
         </FormLabel>
 
-        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
+        {errors.reactSelect && (
+          <FormError message={errors.reactSelect.message} />
+        )}
 
         {data && (
           <>
@@ -365,7 +360,7 @@ export const chainedNoDefault = () => {
           </>
         )}
 
-        <Button content='Submit' secondary type='submit' />
+        <Button content="Submit" secondary type="submit" />
       </Form>
     </>
   )

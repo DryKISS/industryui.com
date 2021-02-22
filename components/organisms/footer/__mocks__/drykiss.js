@@ -11,7 +11,8 @@ export const DRYKISS = [
     text: {
       items: [
         {
-          content: 'DryKISS is a full service internet and mobile digital production house.'
+          content:
+            'DryKISS is a full service internet and mobile digital production house.'
         },
         {
           content: `Our core services span consulting, strategy; planning; development; testing and
@@ -37,8 +38,8 @@ export const DRYKISS = [
     text: {
       items: [
         {
-          content: `DryKISS develops hybrid mobile apps (iOS &amp; Android); responsive internet sites;
-            administration systems and social applications.`
+          content: `DryKISS develops hybrid mobile apps (iOS &amp; Android); responsive internet
+          sites; administration systems and social applications.`
         },
         {
           content:

@@ -1,5 +1,8 @@
-import { COLOUR } from '../../theme/variables/colour'
+/**
+ * Components - Molecules - Video Player
+ */
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const VIDEO_PLAYER = {
-  iconColour: COLOUR.light
+  iconColour: THEME_COLOUR.light
 }

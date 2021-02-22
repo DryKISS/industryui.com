@@ -1,12 +1,23 @@
 /**
- * Utils - PostCode
+ * Components - Utils - Validator - Post Code
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, Form, FormField, FormLabel, validatorPostCode, useForm } from 'components'
+import {
+  Button,
+  Form,
+  FormField,
+  FormLabel,
+  Text,
+  validatorPostCode
+} from '../../../../'
+
 import Readme from '../README.md'
 
 export default {
@@ -21,27 +32,27 @@ export default {
   title: 'Utils/Validator/PostCode'
 }
 
-export const main = () => {
+export const Main = () => {
   const { errors, handleSubmit, register, formState } = useForm()
   const [valid, setValid] = useState('')
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     const valid = validatorPostCode(data.postCode)
     setValid(valid)
   }
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <p>A valid UK postcode will look something like `SW192EZ`</p>
+      <Text>A valid UK postcode will look something like `SW192EZ`</Text>
 
-      <FormLabel label='Post code'>
-        <FormField errors={errors} name='postCode' register={register} />
+      <FormLabel label="Post code">
+        <FormField errors={errors} name="postCode" register={register} />
       </FormLabel>
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
 
-      {valid && <p>valid</p>}
-      {!valid && formState.isSubmitted && <p>not valid</p>}
+      {valid && <Text>valid</Text>}
+      {!valid && formState.isSubmitted && <Text>not valid</Text>}
     </Form>
   )
 }

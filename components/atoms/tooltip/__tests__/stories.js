@@ -1,12 +1,15 @@
 /**
- * Tooltip
+ * Components - Atoms - Tooltip - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Button, Text, Tooltip } from 'components'
+import { Button, Text, Tooltip } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -14,7 +17,7 @@ export default {
     context: 'primary'
   },
   argTypes: {
-    size: ContextControl()
+    context: ContextControl()
   },
   component: Tooltip,
   parameters: {
@@ -29,12 +32,12 @@ export default {
 
 const SampleTooltip = () => (
   <>
-    <Text content='Tooltip' context='white' />
-    <Text content='Note' context='dark' />
+    <Text content="Tooltip" context="white" />
+    <Text content="Note" context="dark" />
   </>
 )
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const defaultProps = {
     content: 'Hovered',
     ...props
@@ -42,10 +45,12 @@ const BaseComponent = props => {
 
   return (
     <Tooltip {...defaultProps}>
-      <Button content='Hover over me' />
+      <Button content="Hover over me" />
     </Tooltip>
   )
 }
 
-export const main = args => <BaseComponent {...args} />
-export const withJsx = args => <BaseComponent {...args} content={<SampleTooltip />} />
+export const main = (args) => <BaseComponent {...args} />
+export const withJsx = (args) => (
+  <BaseComponent {...args} content={<SampleTooltip />} />
+)

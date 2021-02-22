@@ -3,8 +3,15 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { bool, func } from 'prop-types'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
+import { EmailChangeSchema as schema } from './schema'
 
 // UI
 import {
@@ -15,12 +22,8 @@ import {
   FormLabel,
   PageHeading,
   Space,
-  Text,
-  useForm,
-  yupResolver
+  Text
 } from '../../'
-
-import { EmailChangeSchema as schema } from './schema'
 
 export const EmailChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register } = useForm({
@@ -36,32 +39,33 @@ export const EmailChange = ({ showPlaceholder, submit }) => {
 
   return (
     <>
-      <PageHeading center heading='Email Change' divider={false} />
+      <PageHeading center heading="Email Change" divider={false} />
 
-      {error && <Alert content={error.message} context='warning' />}
+      {error && <Alert content={error.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label='Email'>
+        <FormLabel label="Email">
           <FormField
             {...defaultOptions}
             autoFocus
-            name='email'
+            name="email"
             placeholder={showPlaceholder && 'Email'}
           />
         </FormLabel>
 
         <Button
           block
-          content='Submit'
-          context='primary'
+          content="Submit"
+          context="primary"
           disabled={formState.isSubmitting}
-          type='submit'
+          type="submit"
         />
 
         <Space />
 
         <Text>
-          We will send you a re-validation email after this. Please also check your spam folder.
+          We will send you a re-validation email after this. Please also check
+          your spam folder.
         </Text>
       </Form>
     </>

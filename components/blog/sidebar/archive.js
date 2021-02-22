@@ -7,7 +7,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
@@ -24,7 +24,7 @@ export const BlogArchive = ({ articles, config, total }) => {
   const _find = () => {
     const counts = articles
 
-      .filter(article => {
+      .filter((article) => {
         return article.category !== 'terms' && article.homepage !== false
       })
 
@@ -41,7 +41,7 @@ export const BlogArchive = ({ articles, config, total }) => {
       }, {})
 
     const countsMapped = Object.keys(counts)
-      .map(k => {
+      .map((k) => {
         return {
           badge: k,
           name: counts[k],
@@ -54,7 +54,7 @@ export const BlogArchive = ({ articles, config, total }) => {
   }
 
   return (
-    <BlogSection heading='Archive'>
+    <BlogSection heading="Archive">
       <BlogList config={config} list={list} />
     </BlogSection>
   )

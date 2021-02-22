@@ -1,7 +1,9 @@
 /**
- * Full Calendar - Event
+ * Components - Organisms - Calendar - Full Calendar - Event
  */
 
+// React
+import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Styled Components
@@ -20,21 +22,35 @@ const EventContent = ({
 }) => {
   const content = (
     <StyledEvent context={context || defaultEventColor}>
-      <Text content={title} context='light' />
+      <Text content={title} context="light" />
     </StyledEvent>
   )
 
-  return showTooltip ? <Tooltip content={tooltip || description}>{content}</Tooltip> : content
+  return showTooltip ? (
+    <Tooltip content={tooltip || description}>{content}</Tooltip>
+  ) : (
+    content
+  )
 }
 
-export const renderEvent = ({ defaultEventColor, event, el, showTooltip, view }) => {
+export const renderEvent = ({
+  defaultEventColor,
+  event,
+  el,
+  showTooltip,
+  view
+}) => {
   const eventDiv = document.createElement('div')
   const classes = Array.from(el.classList)
   eventDiv.classList.add(...classes)
 
   ReactDOM.render(
     <ThemeProvider theme={Theme}>
-      <EventContent defaultEventColor={defaultEventColor} event={event} showTooltip={showTooltip} />
+      <EventContent
+        defaultEventColor={defaultEventColor}
+        event={event}
+        showTooltip={showTooltip}
+      />
     </ThemeProvider>,
     eventDiv
   )
@@ -43,7 +59,7 @@ export const renderEvent = ({ defaultEventColor, event, el, showTooltip, view })
 }
 
 const StyledEvent = styled.div`
-  ${props => BACKGROUND(props)}
+  ${(props) => BACKGROUND(props)}
   padding: 0 4px;
   color: white;
   border-radius: 4px;

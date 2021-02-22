@@ -1,16 +1,18 @@
 /**
- * Input Group Addon
+ * Components - Form - Input Group - Addon
  * Allows the element to be positioned
  */
 
 // React
+import React from 'react'
 import { any, bool, node, oneOf } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // Context
-import { CONTEXT, SIZE } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const InputGroupAddon = ({
   addonType,
@@ -47,10 +49,15 @@ const StyledInputGroupAddon = styled.div`
   ${({ text }) =>
     text &&
     css`
-      background-color: ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey)};
-      border: 1px solid ${({ theme, error }) => (error ? theme.COLOUR.danger : theme.COLOUR.grey80)};
-      border-radius: ${({ theme }) => theme.FORM_ELEMENTS_STYLES.inputBorderRadius};
-      color: ${({ theme, error }) => (error ? theme.COLOUR.light : theme.COLOUR.dark)};
+      background-color: ${({ theme, error }) =>
+        error ? theme.COLOUR.danger : theme.COLOUR.grey};
+      border: 1px solid
+        ${({ theme, error }) =>
+          error ? theme.COLOUR.danger : theme.COLOUR.grey80};
+      border-radius: ${({ theme }) =>
+        theme.FORM_ELEMENTS_STYLES.inputBorderRadius};
+      color: ${({ theme, error }) =>
+        error ? theme.COLOUR.light : theme.COLOUR.dark};
       display: flex;
       font-size: 0.75rem;
       font-weight: 400;
@@ -62,7 +69,7 @@ const StyledInputGroupAddon = styled.div`
       white-space: nowrap;
     `}
   ${({ size }) =>
-    size === SIZE.SM &&
+    size === THEME_SIZE.SM &&
     css`
       font-size: 0.625rem;
       padding: 0 0.75rem;
@@ -92,7 +99,7 @@ InputGroupAddon.propTypes = {
   addonType: oneOf(['prepend', 'append']),
   className: any,
   children: node,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   text: bool
 }
 

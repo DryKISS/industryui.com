@@ -3,25 +3,29 @@
  */
 
 // UI
-import { Container, RouterWrap, Wrapper } from 'decorators'
+import { Container, RouterWrap, Wrapper } from './decorators'
 import './decorators/icons'
 
 // CSS
-import '@fullcalendar/core/main.css'
-import '@fullcalendar/daygrid/main.css'
-import '@fullcalendar/list/main.css'
-import '@fullcalendar/timegrid/main.css'
-import 'emoji-mart/css/emoji-mart.css'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
-import 'react-datepicker/dist/react-datepicker.css'
-import 'tippy.js/dist/tippy.css'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import '@fullcalendar/core/main.min.css'
+import '@fullcalendar/daygrid/main.min.css'
+import '@fullcalendar/list/main.min.css'
+import '@fullcalendar/timegrid/main.min.css'
+
+import 'cropperjs/dist/cropper.min.css'
 
 import 'draft-js/dist/Draft.css'
-import 'draft-js-mention-plugin/lib/plugin.css'
-import 'draft-js-hashtag-plugin/lib/plugin.css'
-import 'draft-js-emoji-plugin/lib/plugin.css'
-import 'cropperjs/dist/cropper.css'
+import '@draft-js-plugins/mention/lib/plugin.css'
+import '@draft-js-plugins/hashtag/lib/plugin.css'
+import '@draft-js-plugins/emoji/lib/plugin.css'
+
+import 'emoji-mart/css/emoji-mart.css'
+
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+import 'react-datepicker/dist/react-datepicker.min.css'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+
+import 'tippy.js/dist/tippy.css'
 
 const actionWithPromise = () => {
   action('clicked link')()

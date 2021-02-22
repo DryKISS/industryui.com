@@ -2,12 +2,15 @@
  * Molecules - Notification
  */
 
+// React
+import React from 'react'
+
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Notification } from 'components'
+import { Notification } from '../notification'
 import Readme from '../README.md'
 
 export default {
@@ -45,14 +48,14 @@ const BaseComponent = (props = {}) => {
   return <Notification {...defaultProps} />
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <>
       <p>Default</p>
       <BaseComponent args={args} />
 
       <p>Minimal</p>
-      <BaseComponent args={args} context='danger' date='' icon='' title='' />
+      <BaseComponent args={args} context="danger" date="" icon="" title="" />
     </>
   )
 }

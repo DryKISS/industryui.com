@@ -2,8 +2,11 @@
  * Footer
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Footer } from 'components'
+import { Footer } from '../footer'
 import Readme from '../README.md'
 
 // Data
@@ -34,7 +37,11 @@ const BaseComponent = (props = {}) => {
   return <Footer {...defaultProps} />
 }
 
-export const main = args => <BaseComponent {...args} />
-export const formatter = args => <BaseComponent {...args} columns={FORMATTER} />
-export const portal = args => <BaseComponent {...args} columns={PORTAL} />
-export const _12Column = args => <BaseComponent {...args} columns={ONE_COLUMN} />
+export const main = (args) => <BaseComponent {...args} />
+export const formatter = (args) => (
+  <BaseComponent {...args} columns={FORMATTER} />
+)
+export const portal = (args) => <BaseComponent {...args} columns={PORTAL} />
+export const _12Column = (args) => (
+  <BaseComponent {...args} columns={ONE_COLUMN} />
+)

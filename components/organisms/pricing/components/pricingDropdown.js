@@ -3,7 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -11,7 +11,11 @@ import styled, { css } from 'styled-components'
 // UI
 import { ClickAwayListener, Icon, Text } from '../../../'
 
-export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
+export const PricingDropdown = ({
+  onPlanChange,
+  pricingInfo,
+  selectedPlan
+}) => {
   const [IsOpen, setIsOpen] = useState(false)
 
   const selected = pricingInfo[selectedPlan]
@@ -23,7 +27,7 @@ export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => 
     setIsOpen(true)
   }
 
-  const handlePlanClick = planIndex => {
+  const handlePlanClick = (planIndex) => {
     onPlanChange(planIndex)
     setTimeout(() => {
       setIsOpen(false)
@@ -32,38 +36,48 @@ export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => 
 
   return (
     <Wrapper onClick={handleClickOnWrapper} onClickAway={handleClickAway}>
-      <TitleWrapper>
-        <StyledTitle content={selected.title} context='dark' size='xl' />
-      </TitleWrapper>
+      <div>
+        <StyledTitle content={selected.title} context="dark" size="xl" />
+      </div>
+
       <PriceAndDropIconWrapper>
-        <StyledPrice content={selected.price} size='lg' context='deepBlue' />
-        <StyledDownIcon icon='caret-down' prefix='fas' />
+        <StyledPrice content={selected.price} size="lg" context="deepBlue" />
+        <StyledDownIcon icon="caret-down" prefix="fas" />
       </PriceAndDropIconWrapper>
+
       <PlansWrapper open={IsOpen}>
         {pricingInfo.map((item, index) => {
           return (
             <PriceElement
               key={index}
               isLast={index === pricingInfo.length - 1}
-              onClick={() => handlePlanClick(index)}
-            >
-              <ElementTitleAndDescriptionsWrapper>
+              onClick={() => handlePlanClick(index)}>
+              <div>
                 <StyledElementTitle
                   content={item.title}
                   context={item.recommended ? 'deepBlue' : 'dark'}
-                  size='sm'
+                  size="sm"
                 />
-                <StyledElementDescription
+                <Text
                   content={item.description}
                   context={item.recommended ? 'deepBlue' : 'dark'}
-                  size='xs'
+                  size="xs"
                 />
-              </ElementTitleAndDescriptionsWrapper>
+              </div>
+
               <PriceAndDropIconWrapper>
                 {item.recommended && (
-                  <StyledRecomendedText content='Recommend by IUI' context='gold40' size='xs' />
+                  <StyledRecomendedText
+                    content="Recommend by IUI"
+                    context="gold40"
+                    size="xs"
+                  />
                 )}
-                <StyledPrice content={item.price} size='lg' context='deepBlue' />
+                <StyledPrice
+                  content={item.price}
+                  size="lg"
+                  context="deepBlue"
+                />
               </PriceAndDropIconWrapper>
             </PriceElement>
           )
@@ -78,13 +92,9 @@ const StyledRecomendedText = styled(Text)`
   margin-inline-end: 2rem;
 `
 
-const StyledElementDescription = styled(Text)``
-
 const StyledElementTitle = styled(Text)`
   font-weight: 700;
 `
-
-const ElementTitleAndDescriptionsWrapper = styled.div``
 
 const PriceElement = styled.div`
   align-items: center;
@@ -122,21 +132,22 @@ const PlansWrapper = styled(ClickAwayListener)`
   width: 100%;
 `
 
-const StyledDownIcon = styled(Icon).attrs(props => ({
+const StyledDownIcon = styled(Icon).attrs((props) => ({
   color: props.theme.COLOUR.deepBlue
 }))``
 
 const StyledPrice = styled(Text)`
   font-weight: 600;
 `
+
 const PriceAndDropIconWrapper = styled.div`
   align-items: center;
   display: flex;
 `
+
 const StyledTitle = styled(Text)`
   font-weight: 600;
 `
-const TitleWrapper = styled.div``
 
 const Wrapper = styled(ClickAwayListener)`
   align-items: center;

@@ -3,10 +3,11 @@
  */
 
 // React
+import React from 'react'
 import { oneOf, node } from 'prop-types'
 
 // UI
-import { CONTEXT } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -21,7 +22,9 @@ const StyledFooter = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0 0 0.25rem 0.25rem;
   color: ${({ context, theme }) =>
-    context === 'light' || context === 'white' ? theme.COLOUR.dark : theme.COLOUR.white};
+    context === 'light' || context === 'white'
+      ? theme.COLOUR.dark
+      : theme.COLOUR.white};
   display: flex;
   justify-content: center;
   margin-top: auto;
@@ -31,7 +34,7 @@ const StyledFooter = styled.div`
 `
 
 CardFooter.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   children: node
 }
 

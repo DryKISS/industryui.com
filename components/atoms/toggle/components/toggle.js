@@ -3,16 +3,23 @@
  */
 
 // React
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { bool, func, oneOf } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { CONTEXT, Switch } from '../../../'
+import { Switch } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
-export const Toggle = ({ context, disabled, onToggle, size, toggled: initial }) => {
+export const Toggle = ({
+  context,
+  disabled,
+  onToggle,
+  size,
+  toggled: initial
+}) => {
   const [toggled, setToggled] = useState(initial)
   useEffect(() => {
     setToggled(initial)
@@ -42,7 +49,7 @@ const StyledToggle = styled.div`
 `
 
 Toggle.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   disabled: bool,
   onToggle: func,
   size: oneOf(['sm', 'md', 'lg']),

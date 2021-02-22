@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, node, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, Heading } from '../../../'
+import { Heading } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { CardCTA } from './cta'
 
 // Style
@@ -28,14 +30,16 @@ export const CardBody = ({
     <StyledBody className={className} center={center}>
       {title && (
         <StyledWrapper>
-          <StyledTitle content={title} noWrap={titleNoWrap} tag='h2' />
+          <StyledTitle content={title} noWrap={titleNoWrap} tag="h2" />
         </StyledWrapper>
       )}
 
       {(children || showCta) && (
         <StyledContent context={context}>
           {children}
-          {showCta && <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />}
+          {showCta && (
+            <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />
+          )}
         </StyledContent>
       )}
     </StyledBody>
@@ -72,7 +76,7 @@ CardBody.propTypes = {
   center: bool,
   children: node,
   className: string,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   ctaFunc: func,
   ctaLink: string,
   ctaTitle: string,

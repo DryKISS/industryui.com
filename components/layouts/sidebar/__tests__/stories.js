@@ -2,8 +2,11 @@
  * Sidebar
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Navbar, SidebarLayout } from 'components'
+import { Navbar, SidebarLayout } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -73,7 +76,11 @@ const Navigation = () => {
 }
 
 export const main = () => (
-  <SidebarLayout brand='DryKISS' copyright={Copyright} footer={Footer} Navigation={Navigation}>
+  <SidebarLayout
+    brand="DryKISS"
+    copyright={Copyright}
+    footer={Footer}
+    Navigation={Navigation}>
     <>HERE</>
   </SidebarLayout>
 )

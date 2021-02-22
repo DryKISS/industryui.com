@@ -3,10 +3,12 @@
  */
 
 // React
+import React from 'react'
 import { any, bool, element, oneOf, string } from 'prop-types'
 
 // UI
-import { CONTEXT, Divider, Heading } from '../../'
+import { Divider, Heading } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -28,9 +30,11 @@ export const PageHeading = ({
         {strapline && <div>{strapline}</div>}
       </StyledLeft>
 
-      {(children || help) && <StyledRight>{children || helpContent}</StyledRight>}
+      {(children || help) && (
+        <StyledRight>{children || helpContent}</StyledRight>
+      )}
 
-      {divider && <StyledDivider size='md' />}
+      {divider && <StyledDivider size="md" />}
     </StyledPageHeader>
   )
 }
@@ -65,7 +69,7 @@ const StyledDivider = styled(Divider)`
 PageHeading.propTypes = {
   center: bool,
   children: element,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   divider: bool,
   heading: any.isRequired,
   help: bool,

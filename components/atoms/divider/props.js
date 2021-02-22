@@ -6,16 +6,17 @@
 import { any, number, oneOf } from 'prop-types'
 
 // UI
-import { CONTEXT, SIZE } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
+import { THEME_SIZE } from '../../theme/constants/size'
 
-export const DividerPropTypes = {
+export const propTypes = {
   className: any,
-  context: oneOf(Object.values(CONTEXT)),
-  size: oneOf(Object.values(SIZE)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
+  size: oneOf(Object.values(THEME_SIZE)),
   thickness: number
 }
 
-export const DividerDefaultProps = {
+export const defaultProps = {
   context: 'light',
   size: 'md',
   thickness: 2

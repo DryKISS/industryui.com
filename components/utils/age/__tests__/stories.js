@@ -1,15 +1,21 @@
 /**
- * Age
+ * Components - Utils - Age
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // Date FNS
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-import { age, Button, DatePickerCalendar, Divider, Form, Text, useForm } from 'components'
+import { age, Button, DatePickerCalendar, Divider, Form, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -22,17 +28,17 @@ export default {
       control: { type: ControlTypes.Date }
     }
   },
-  title: 'Utils/Age',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Utils/Age'
 }
 
-export const main = args => {
+export const Main = (args) => {
   const { control, errors, handleSubmit } = useForm()
 
   const defaultProps = {
@@ -43,7 +49,7 @@ export const main = args => {
     name: 'birthDate'
   }
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const birthDate = args.birthDate
 
@@ -53,9 +59,9 @@ export const main = args => {
 
       <DatePickerCalendar {...defaultProps} />
 
-      <Divider size='sm' />
+      <Divider size="sm" />
 
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }

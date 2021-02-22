@@ -1,4 +1,0 @@
-/**
- * InputStepper
- */
-export * from './inputStepper'

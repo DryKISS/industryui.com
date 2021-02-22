@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, oneOf } from 'prop-types'
 
 // Style
@@ -15,8 +16,7 @@ export const Switch = ({ context, disabled, handleToggle, size, toggled }) => {
       disabled={disabled}
       onClick={handleToggle}
       size={size}
-      toggled={toggled}
-    >
+      toggled={toggled}>
       <StyledSwitch size={size} toggled={toggled} />
     </StyledSwitchContainer>
   )

@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, object, string } from 'prop-types'
 
 // UI
@@ -25,7 +26,7 @@ export const NavNotification = ({ closeMenu, to, type, visible }) => {
   const Notification = () => (
     <StyledNotifications>
       {type && !!type.count && <StyledCount>{type.count}</StyledCount>}
-      <Icon icon='bell' />
+      <Icon icon="bell" />
     </StyledNotifications>
   )
 

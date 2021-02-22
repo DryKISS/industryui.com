@@ -2,17 +2,32 @@
  * Components - Forms - Precent Input
  */
 
+// React
+import React from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
 import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
 
-export const PercentInput = ({ errors, label, name, register, show, symbol }) => {
+export const PercentInput = ({
+  errors,
+  label,
+  name,
+  register,
+  show,
+  symbol
+}) => {
   return (
     <FormLabel show={show} label={label}>
       <InputGroup>
-        <FormField errors={errors} name={name} register={register} step='any' type='number' />
-        <InputGroupAddon addonType='append' text>
+        <FormField
+          errors={errors}
+          name={name}
+          register={register}
+          step="any"
+          type="number"
+        />
+        <InputGroupAddon addonType="append" text>
           {symbol}
         </InputGroupAddon>
       </InputGroup>

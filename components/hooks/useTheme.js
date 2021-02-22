@@ -6,7 +6,7 @@
 import { useLayoutEffect } from 'react'
 
 // Hook
-export function useTheme (theme) {
+export function useTheme(theme) {
   useLayoutEffect(
     () => {
       // Iterate through each value in theme object

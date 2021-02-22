@@ -3,12 +3,29 @@
  */
 
 // React
-import { node, number, objectOf, oneOf, oneOfType, string, bool } from 'prop-types'
+import React from 'react'
+import {
+  node,
+  number,
+  objectOf,
+  oneOf,
+  oneOfType,
+  string,
+  bool
+} from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Row = ({ align, children, className, justify, noGutter, noWrap, style }) => {
+export const Row = ({
+  align,
+  children,
+  className,
+  justify,
+  noGutter,
+  noWrap,
+  style
+}) => {
   return (
     <StyledRow
       align={align}
@@ -41,20 +58,20 @@ const StyledRow = styled.div`
 
   ${({ align }) => css`
     align-items: ${(align === 'start' && 'flex-start') ||
-      (align === 'end' && 'flex-end') ||
-      (align === 'center' && 'center') ||
-      (align === 'stretch' && 'stretch') ||
-      (align === 'baseline' && 'baseline')};
+    (align === 'end' && 'flex-end') ||
+    (align === 'center' && 'center') ||
+    (align === 'stretch' && 'stretch') ||
+    (align === 'baseline' && 'baseline')};
   `}
 
   ${({ justify }) => css`
     justify-content: ${(justify === 'start' && 'flex-start') ||
-      (justify === 'end' && 'flex-end') ||
-      (justify === 'between' && 'space-between') ||
-      (justify === 'around' && 'space-around') ||
-      (justify === 'center' && 'center') ||
-      (justify === 'initial' && 'initial') ||
-      (justify === 'inherit' && 'inherit')};
+    (justify === 'end' && 'flex-end') ||
+    (justify === 'between' && 'space-between') ||
+    (justify === 'around' && 'space-around') ||
+    (justify === 'center' && 'center') ||
+    (justify === 'initial' && 'initial') ||
+    (justify === 'inherit' && 'inherit')};
   `}
 `
 
@@ -62,8 +79,15 @@ Row.propTypes = {
   align: oneOf(['baseline', 'start', 'center', 'end', 'stretch']),
   children: node.isRequired,
   className: string,
-  gutterWidth: number,
-  justify: oneOf(['start', 'center', 'end', 'between', 'around', 'initial', 'inherit']),
+  justify: oneOf([
+    'start',
+    'center',
+    'end',
+    'between',
+    'around',
+    'initial',
+    'inherit'
+  ]),
   noGutter: bool,
   noWrap: bool,
   style: objectOf(oneOfType([number, string]))
@@ -71,7 +95,6 @@ Row.propTypes = {
 
 Row.defaultProps = {
   align: 'stretch',
-  gutterWidth: 32,
   justify: 'start',
   noGutter: false,
   style: {},

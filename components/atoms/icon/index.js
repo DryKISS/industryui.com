@@ -3,4 +3,4 @@
  */
 export * from './constants'
 export * from './icon/icon'
-export * from './stacked'
+export * from './stacked/stacked'

@@ -3,14 +3,16 @@
  */
 
 // React
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { any, bool, node, oneOf, oneOfType, shape, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { ConfigContext, Container, CONTEXT, MetaHead, PageHeading, SIZE, Space } from '../../'
+import { ConfigContext, Container, MetaHead, PageHeading, Space } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const Page = ({ children, fluid, meta, padding, pageHeading }) => {
   const { Brand, Canonical } = useContext(ConfigContext)
@@ -19,7 +21,9 @@ export const Page = ({ children, fluid, meta, padding, pageHeading }) => {
     <StyledPage>
       {padding && <Space paddingTop={padding} />}
 
-      {meta && <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />}
+      {meta && (
+        <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
+      )}
 
       <Container fluid={fluid}>
         {pageHeading && <PageHeading {...pageHeading} />}
@@ -43,10 +47,10 @@ Page.propTypes = {
     path: string,
     title: string.isRequired
   }),
-  padding: oneOfType([bool, oneOf(Object.values(SIZE))]),
+  padding: oneOfType([bool, oneOf(Object.values(THEME_SIZE))]),
   pageHeading: shape({
     center: bool,
-    context: oneOf(Object.values(CONTEXT)),
+    context: oneOf(Object.values(THEME_CONTEXT)),
     divider: bool,
     heading: any.isRequired,
     help: bool,

@@ -3,17 +3,18 @@
  */
 
 // React
-import { useState, useEffect } from 'react'
-import { any, bool, func, node, number, oneOf, string } from 'prop-types'
+import React, { useState, useEffect } from 'react'
+import { bool, func, node, number, oneOf, string } from 'prop-types'
 
 // UI
 import {
-  CONTEXT,
   OffCanvasDiv,
   OffCanvasHeader,
   OffCanvasContent,
   OffCanvasOverlay
 } from '../../../'
+
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const OffCanvasComponent = ({
   children,
@@ -61,18 +62,17 @@ export const OffCanvasComponent = ({
       )}
 
       <OffCanvasDiv
-        data-cy='offCanvas'
+        data-cy="offCanvas"
         duration={transitionDuration}
         height={height}
         placement={placement}
         show={initialState}
-        width={width}
-      >
+        width={width}>
         <OffCanvasHeader
           context={context}
           hasAvatar={hasAvatar}
           headerContent={headerContent}
-          onClose={e => toggleShow(false)}
+          onClose={(e) => toggleShow(false)}
           submit={submit}
           title={headerText}
           variant={variant}
@@ -87,13 +87,11 @@ export const OffCanvasComponent = ({
 OffCanvasComponent.propTypes = {
   children: node,
   closeOnOverlayClick: bool,
-  context: oneOf(Object.values(CONTEXT)),
-  container: any,
+  context: oneOf(Object.values(THEME_CONTEXT)),
   hasAvatar: bool,
   headerText: string.isRequired,
   headerContent: string,
   height: string,
-  lockScrollOnOpen: bool,
   overlay: bool,
   overlayOpacity: number,
   placement: oneOf(['top', 'right', 'bottom', 'left']),

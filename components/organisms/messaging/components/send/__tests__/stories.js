@@ -2,10 +2,14 @@
  * Messaging/Send
  */
 
+// React
+import React from 'react'
+
 // UI
-import { MessagingSend } from 'components'
+import { MessagingSend } from '../index'
 import Readme from '../README.md'
 import { mentions } from '../../../container/__mocks__/mentions'
+
 export default {
   args: {
     audienceItems: [
@@ -37,6 +41,6 @@ export default {
   title: 'Organisms/Messaging/Send'
 }
 
-export const main = args => {
+export const main = (args) => {
   return <MessagingSend {...args} />
 }

@@ -1,14 +1,20 @@
 /**
- * Badge
+ * Components - Atoms - Badge
  */
 
-// UI
-import { BACKGROUND, FONTSIZE } from '../../'
-import { Icon } from '../icon'
-import { BadgeDefaultProps, BadgePropTypes } from './props'
+// React
+import React from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { Icon } from '../icon/icon/icon'
+import { themeBackground } from '../../theme/utils/background'
+import { themeFontSize } from '../../theme/utils/fontSize'
+
+// Props
+import { defaultProps, propTypes } from './props'
 
 export const Badge = ({
   children,
@@ -27,11 +33,10 @@ export const Badge = ({
       className={className}
       context={context}
       href={to}
-      itemProp='keywords'
+      itemProp="keywords"
       shape={shape}
       size={size}
-      style={style}
-    >
+      style={style}>
       {icon && <StyledIcon icon={icon} prefix={iconPrefix} />}
       {content || children}
     </StyledBadge>
@@ -39,17 +44,18 @@ export const Badge = ({
 }
 
 const StyledBadge = styled.a`
-  ${props => BACKGROUND(props)}
-  ${props => FONTSIZE(props)}
+  ${(props) => themeBackground(props)}
+  ${(props) => themeFontSize(props)}
   border: ${({ context, theme }) =>
     context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.dark};
   border-radius: ${({ shape, theme }) => theme.BADGE.BORDER_RADIUS[shape]};
-  color: ${({ theme, context }) => (context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black)};
+  color: ${({ theme, context }) =>
+    context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black};
   display: inline-block;
   line-height: 1;
   margin: 0 0.5em 0.5em 0;
-  padding:${({ size, theme }) => theme.BADGE.PADDING[size]} ;
-  font-size:${({ size, theme }) => theme.BADGE.FONT_SIZE[size]} ;
+  padding: ${({ size, theme }) => theme.BADGE.PADDING[size]};
+  font-size: ${({ size, theme }) => theme.BADGE.FONT_SIZE[size]};
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
@@ -75,6 +81,5 @@ const StyledIcon = styled(Icon)`
   margin-right: 5px;
 `
 
-Badge.propTypes = BadgePropTypes
-
-Badge.defaultProps = BadgeDefaultProps
+Badge.propTypes = propTypes
+Badge.defaultProps = defaultProps

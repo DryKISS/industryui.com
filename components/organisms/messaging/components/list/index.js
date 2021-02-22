@@ -3,20 +3,43 @@
  */
 
 // React
-import { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { array } from 'prop-types'
 
+// React Virtualised
+import {
+  AutoSizer,
+  CellMeasurer,
+  CellMeasurerCache,
+  List
+} from 'react-virtualized'
+
 // UI
-import { Message, useComponentCommunication } from '../../../../'
-import { MessageNames, MessagingSubscriber, MessagingActions } from 'components/services'
+import {
+  DateDiff,
+  Message,
+  MessageNames,
+  MessagingSubscriber,
+  MessagingActions,
+  useComponentCommunication
+} from '../../../../'
+
+// Style
 import styled, { css } from 'styled-components'
 
-import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
-import { DateDiff } from 'components/utils'
-
-const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
+const renderMessage = (
+  { index, parent, key, style },
+  messages,
+  cache,
+  config
+) => {
   return (
-    <CellMeasurer cache={cache} key={index} parent={parent} columnIndex={0} rowIndex={index}>
+    <CellMeasurer
+      cache={cache}
+      key={index}
+      parent={parent}
+      columnIndex={0}
+      rowIndex={index}>
       <MessageContainer type={messages[index].type} style={style}>
         <Message
           config={config}
@@ -59,13 +82,13 @@ export const MessageList = memo(
         })
     }
 
-    const onRecieve = payload => {
+    const onRecieve = (payload) => {
       const newMessagesArray = [...Messages, ...payload]
       setMessages(() => [...newMessagesArray])
       scrollToBottom()
     }
 
-    const onRenewMessages = messages => {
+    const onRenewMessages = (messages) => {
       setMessages(() => [...messages])
       window &&
         window.requestAnimationFrame(() => {
@@ -79,7 +102,7 @@ export const MessageList = memo(
       return () => {}
     }, [Messages.length])
 
-    const onAction = payload => {
+    const onAction = (payload) => {
       switch (payload.action) {
         case MessagingActions.NEW_MESSAGES:
           onRecieve(payload.data)
@@ -121,7 +144,7 @@ export const MessageList = memo(
               ref={listRef}
               rowCount={Messages.length}
               rowHeight={cache.rowHeight}
-              rowRenderer={e => renderMessage(e, Messages, cache, config)}
+              rowRenderer={(e) => renderMessage(e, Messages, cache, config)}
               scrollToIndex={Messages.length - 1}
               width={width}
             />

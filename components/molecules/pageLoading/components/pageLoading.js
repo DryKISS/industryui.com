@@ -2,6 +2,8 @@
  * Page Loading
  */
 
+// React
+import React from 'react'
 import { any, number, string } from 'prop-types'
 
 // Style

@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, string, func } from 'prop-types'
 
 // UI
@@ -11,7 +12,16 @@ import { Link, MEDIA_QUERY } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visible }) => {
+export const NavLink = ({
+  active,
+  closeMenu,
+  id,
+  name,
+  onClick,
+  to,
+  type,
+  visible
+}) => {
   const handleClick = () => {
     visible && closeMenu()
     onClick && onClick()

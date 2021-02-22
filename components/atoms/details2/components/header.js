@@ -3,24 +3,27 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, node, number, string } from 'prop-types'
-
-// UI
-import { Details2Icon, SIZE, Text } from '../../../'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import { Details2Icon } from './icon'
+import { Text } from '../../text/text'
+import { THEME_SIZE } from '../../../theme/constants/size'
 
 export const Details2Header = ({
   animationTime,
   children,
   content,
+  context,
   handleOpenClose,
   headerContext,
   iconComponent,
   isOpen,
-  title,
-  titleContext
+  title
 }) => {
   return (
     <Header context={headerContext} onClick={handleOpenClose}>
@@ -33,7 +36,7 @@ export const Details2Header = ({
           />
         )}
 
-        <Text size={SIZE.MD} context={titleContext} content={title} />
+        <Text size={THEME_SIZE.MD} context={context} content={title} />
       </Content>
     </Header>
   )
@@ -58,15 +61,15 @@ Details2Header.propTypes = {
   animationTime: number,
   children: node,
   content: node,
+  context: string,
   handleOpenClose: func.isRequired,
   iconComponent: node,
   isOpen: bool,
-  title: string.isRequired,
-  titleContext: string
+  title: string.isRequired
 }
 
 Details2Header.defaultProps = {
   animationTime: 100,
-  isOpen: false,
-  titleContext: 'dark'
+  context: 'dark',
+  isOpen: false
 }

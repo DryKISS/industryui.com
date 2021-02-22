@@ -1,4 +1,7 @@
-import { LiveChartMessageService, MessageNames } from 'components/services'
+/**
+ * Components - Molecules - Charts - High Charts - Live line chart - Stream datascources
+ */
+import { LiveChartMessageService, MessageNames } from '../../../../../'
 
 let interval
 

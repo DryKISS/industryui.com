@@ -1,4 +1,4 @@
-export const arrayOfKeys = obj => {
+export const arrayOfKeys = (obj) => {
   const arr = []
   for (const key in obj) {
     arr.push(key)

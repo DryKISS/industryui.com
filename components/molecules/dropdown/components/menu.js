@@ -1,26 +1,38 @@
 /**
- * Dropdown - Menu
+ * Components - Molecules - Dropdown - Menu
  */
 
+// React
+import React from 'react'
 import { array, func, oneOf } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
-import { elementTypes, DropdownItem, Position } from '../../../'
+import { elementTypes, DropdownItem } from '../../../'
+import { THEME_POSITION } from '../../../theme/constants/position'
 
-export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, position }) => {
-  const handleClick = item => {
+export const DropdownMenu = ({
+  closeDropdown,
+  elementType,
+  items,
+  onItemClick,
+  position
+}) => {
+  const handleClick = (item) => {
     onItemClick && onItemClick(item)
     closeDropdown()
   }
 
   return (
-    <StyledDropdownMenu elementType={elementType} className='dropdown--menu' position={position}>
+    <StyledDropdownMenu
+      elementType={elementType}
+      className="dropdown--menu"
+      position={position}>
       <TooltipRectangle position={position} />
       <TooltipRectangle position={position} border />
-      {items.map(item => (
+      {items.map((item) => (
         <DropdownItem
           closeDropdown={closeDropdown}
           elementType={elementType}
@@ -50,17 +62,18 @@ const StyledDropdownMenu = styled.div`
   ${({ position }) =>
     position &&
     css`
-      left: ${position === Position.Right ? 'auto' : '0'};
-      right: ${position === Position.Right ? '0' : 'auto'};
-      ${position === Position.Top &&
-        css`
-          bottom: 100%;
-          top: unset;
-        `}
+      left: ${position === THEME_POSITION.Right ? 'auto' : '0'};
+      right: ${position === THEME_POSITION.Right ? '0' : 'auto'};
+      ${position === THEME_POSITION.Top &&
+      css`
+        bottom: 100%;
+        top: unset;
+      `}
     `}
   ${({ elementType }) => {
     return (
-      (elementType === elementTypes.Colour || elementType === elementTypes.Icon) &&
+      (elementType === elementTypes.Colour ||
+        elementType === elementTypes.Icon) &&
       css`
         box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
         display: grid;
@@ -77,7 +90,8 @@ const size = '0.875rem'
 
 const TooltipRectangle = styled.div`
   ${({ border }) => css`
-    border-color: transparent transparent ${border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)'};
+    border-color: transparent transparent
+      ${border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)'};
   `}
   border-image: initial;
   border-style: solid;
@@ -86,25 +100,25 @@ const TooltipRectangle = styled.div`
 
   ${({ position, border }) => {
     switch (position) {
-      case Position.Bottom:
+      case THEME_POSITION.Bottom:
         return css`
           top: calc(-${size} - ${border ? '0px' : '1px'});
           left: ${dist};
         `
-      case Position.Top:
+      case THEME_POSITION.Top:
         return css`
           bottom: calc(-${size} - ${border ? '0px' : '1px'});
           left: ${dist};
           transform: rotateX(180deg);
         `
-      case Position.Left:
+      case THEME_POSITION.Left:
         return css`
           display: none; /*remove when initial left position is resolved */
           bottom: ${size};
           right: calc(-${size} - ${border ? '0px' : '1px'});
           transform: rotateZ(90deg);
         `
-      case Position.Right:
+      case THEME_POSITION.Right:
         return css`
           display: none; /*remove when initial left position is resolved */
           bottom: ${size};
@@ -121,5 +135,10 @@ DropdownMenu.propTypes = {
   closeDropdown: func,
   items: array.isRequired,
   onItemClick: func,
-  position: oneOf([Position.Top, Position.Right, Position.Bottom, Position.Left])
+  position: oneOf([
+    THEME_POSITION.Top,
+    THEME_POSITION.Right,
+    THEME_POSITION.Bottom,
+    THEME_POSITION.Left
+  ])
 }

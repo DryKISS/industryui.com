@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { object } from 'prop-types'
 
 // UI
@@ -12,13 +13,13 @@ import { Button, Divider, Icon, STEPPER } from '../../../'
 import styled from 'styled-components'
 
 export const StepperItem = ({ item }) => {
-  const renderContent = content =>
+  const renderContent = (content) =>
     content.map(
       ({ id, active, data }) =>
         active && <li key={id}>{typeof data === 'function' ? data() : data}</li>
     )
 
-  const renderActions = actions =>
+  const renderActions = (actions) =>
     actions.map(
       ({ id, active, content, context, data, handleClick, to, type }) =>
         active && (
@@ -28,7 +29,7 @@ export const StepperItem = ({ item }) => {
                 onClick={handleClick}
                 content={content}
                 context={context}
-                size='xs'
+                size="xs"
                 {...data}
               />
             )}
@@ -41,18 +42,20 @@ export const StepperItem = ({ item }) => {
       <StyledIconContainer active={item.date}>
         {item.date && (
           <Icon
-            aria-hidden='true'
+            aria-hidden="true"
             color={STEPPER.colourCheckmark}
             fixedWidth={false}
-            icon='check'
-            prefix='fas'
+            icon="check"
+            prefix="fas"
           />
         )}
       </StyledIconContainer>
 
       <StyledLabel active={item.date}>{item.label}</StyledLabel>
 
-      {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
+      {(item.date || item.info) && (
+        <StyledInfo>{item.date || item.info}</StyledInfo>
+      )}
 
       {item.content && item.content.length > 0 && (
         <StyledContent>{renderContent(item.content)}</StyledContent>
@@ -62,7 +65,7 @@ export const StepperItem = ({ item }) => {
         <StyledContent>{renderActions(item.actions)}</StyledContent>
       )}
 
-      {item.label !== 'Closed' && <Divider size='sm' />}
+      {item.label !== 'Closed' && <Divider size="sm" />}
     </StyledStepperItem>
   )
 }
@@ -79,7 +82,8 @@ const StyledStepperItem = styled.li`
 
 const StyledIconContainer = styled.div`
   align-items: center;
-  background: ${({ active, theme }) => (active ? theme.STEPPER.colour : '#fff')};
+  background: ${({ active, theme }) =>
+    active ? theme.STEPPER.colour : '#fff'};
   border: 3px solid ${({ theme }) => theme.STEPPER.colour};
   border-radius: 50%;
   display: flex;
@@ -102,7 +106,8 @@ const StyledContent = styled.ul`
 `
 
 const StyledLabel = styled.span`
-  color: ${({ active, theme }) => (active ? theme.COLOUR.black : theme.COLOUR.dark)};
+  color: ${({ active, theme }) =>
+    active ? theme.COLOUR.black : theme.COLOUR.dark};
   margin: 0 0.5rem;
 `
 

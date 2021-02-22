@@ -12,9 +12,9 @@ describe('GetAddress Service', () => {
     expect(GetAddressService.fixAddresses(input)).toEqual(output)
   })
 
-  test('it should get the address array for postal code="SW19 2EZ" with a callback function', async () => {
+  test('It should get the address for postal code="SW19 2EZ" with a callback', async () => {
     const POSTAL_CODE = 'SW19 2EZ'
-    const callFunc = data => {
+    const callFunc = (data) => {
       expect(data.hasError).toEqual(false)
       expect.assertions(1)
     }

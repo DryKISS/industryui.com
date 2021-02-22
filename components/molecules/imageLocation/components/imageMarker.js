@@ -1,15 +1,16 @@
 /**
- * Marker
+ * Components - Molecules- Image Locations - Marker
  */
 
-import { LazyIcon } from 'components/icons'
+// React
+import React from 'react'
 import { object } from 'prop-types'
 
 // Style
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import { Icon } from '../../../'
+import { Icon, LazyIcon } from '../../../'
 
 export const ImageMarker = ({ coordinates, customIcon, styles }) => {
   if (customIcon) {
@@ -21,11 +22,11 @@ export const ImageMarker = ({ coordinates, customIcon, styles }) => {
   }
   return styles?.shape ? (
     <StyledIcon
-      context='primary'
+      context="primary"
       icon={styles?.shape?.icon}
       prefix={styles?.shape?.prefix}
-      pull='left'
-      size='lg'
+      pull="left"
+      size="lg"
       {...{ coordinates, styles }}
     />
   ) : (
@@ -45,9 +46,15 @@ const commonMarkerCss = css`
         `
       : ''};
   margin-left: ${({ styles }) =>
-    '-' + (styles?.width ? Number(styles.width.replace('px', '') / 2) + 'px' : '7px')};
+    '-' +
+    (styles?.width
+      ? Number(styles.width.replace('px', '') / 2) + 'px'
+      : '7px')};
   margin-top: ${({ styles }) =>
-    '-' + (styles?.height ? Number(styles.height.replace('px', '') / 2) + 'px' : '7px')};
+    '-' +
+    (styles?.height
+      ? Number(styles.height.replace('px', '') / 2) + 'px'
+      : '7px')};
   pointer-events: none;
   position: absolute;
   transition-duration: 0.2s;
@@ -76,7 +83,8 @@ const StyledIcon = styled(Icon)`
 
 const StyledMarker = styled.div`
   background-color: ${({ styles }) => (styles?.color ? styles.color : 'red')};
-  border-radius: ${({ styles }) => (styles?.borderRadius ? styles.borderRadius : '50%')};
+  border-radius: ${({ styles }) =>
+    styles?.borderRadius ? styles.borderRadius : '50%'};
   display: none;
   height: ${({ styles }) => (styles?.height ? styles.height : '15px')};
   width: ${({ styles }) => (styles?.width ? styles.width : '15px')};

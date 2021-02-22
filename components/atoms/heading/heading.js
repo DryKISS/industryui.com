@@ -3,14 +3,25 @@
  * Provides the standard H1-H6 HTML tags
  */
 
-// UI
-import { COLOUR } from '../../'
-import { HeadingPropTypes, HeadingDefaultProps } from './props'
+// React
+import React from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {
+// UI
+import { themeColour } from '../../theme/utils/colour'
+import { propTypes, defaultProps } from './props'
+
+export const Heading = ({
+  className,
+  content,
+  context,
+  noMargin,
+  noWrap,
+  style,
+  tag
+}) => {
   return (
     <StyledHeading
       as={tag}
@@ -18,18 +29,21 @@ export const Heading = ({ className, content, context, noMargin, noWrap, style, 
       context={context}
       noMargin={noMargin}
       noWrap={noWrap}
-      itemProp='name headline'
-      rel='bookmark'
-      style={style}
-    >
-      {content && content.__html ? <span dangerouslySetInnerHTML={content} /> : content}
+      itemProp="name headline"
+      rel="bookmark"
+      style={style}>
+      {content && content.__html ? (
+        <span dangerouslySetInnerHTML={content} />
+      ) : (
+        content
+      )}
     </StyledHeading>
   )
 }
 
 const StyledHeading = styled.span`
   font-weight: normal;
-  ${props => COLOUR(props)}
+  ${(props) => themeColour(props)}
   position: relative;
   ${({ as, theme }) => css`
     font-family: ${theme.HEADINGS[as].fontFamily};
@@ -54,5 +68,5 @@ const StyledHeading = styled.span`
     `}
 `
 
-Heading.propTypes = HeadingPropTypes
-Heading.defaultProps = HeadingDefaultProps
+Heading.propTypes = propTypes
+Heading.defaultProps = defaultProps

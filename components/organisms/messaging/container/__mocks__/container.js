@@ -10,9 +10,11 @@
  */
 export const messages = [
   {
-    avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
-    content:
-      'Hiya we are expecting a PPM scheduled maintenance check on our LED lightbulbs throughout the third floor of XYZ Company offices today. Would appreciate a timely response on this so we can sort out security.',
+    avatar:
+      'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
+    content: `Hiya we are expecting a PPM scheduled maintenance check on our LED lightbulbs
+    throughout the third floor of XYZ Company offices today. Would appreciate a timely response on \
+    this so we can sort out security.`,
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 0,
@@ -25,10 +27,12 @@ export const messages = [
     more: false
   },
   {
-    avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
-    content: `Hola, este es un mensaje que agrega "Leer más" en el que esperamos una revisión de mantenimiento programada de PPM en nuestras bombillas LED en el tercer piso de las oficinas de XYZ Company hoy. \n
-      Agradecería una respuesta oportuna sobre esto para que podamos solucionar la seguridad. \n
-     Texto oculto por Ver más`,
+    avatar:
+      'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
+    content: `Hola, este es un mensaje que agrega "Leer más" en el que esperamos una revisión de
+    mantenimiento programada de PPM en nuestras bombillas LED en el tercer piso de las oficinas de
+    XYZ Company hoy. Agradecería una respuesta oportuna sobre esto para que podamos solucionar la
+    seguridad. Texto oculto por Ver más`,
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 1,
@@ -64,8 +68,8 @@ export const messages = [
     type: 'out'
   },
   {
-    content:
-      'Thank you for the comment, please let us know what time the contractor will be here so we can pass security.',
+    content: `Thank you for the comment, please let us know what time the contractor will be here so
+    we can pass security.`,
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 4,
@@ -88,7 +92,8 @@ export const messages = [
     type: 'in'
   },
   {
-    content: 'Mike can you let us know that the contractor is through security?',
+    content:
+      'Mike can you let us know that the contractor is through security?',
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 6,
@@ -102,12 +107,8 @@ export const messages = [
   {
     attachments: [
       {
-        src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
-        type: 'image'
-      },
-      {
         src:
-          'https://www.genesis-publications.com/assets/pages/00001468/jeff-beck-2018-concert-news-5560486.jpg',
+          'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
         type: 'image'
       },
       {

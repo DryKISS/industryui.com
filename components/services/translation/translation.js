@@ -1,27 +1,42 @@
+/**
+ * Components - Services - Translation
+ */
+
+// React
+import { useContext } from 'react'
+
 // Axios
 import axios from 'axios'
 
 // Config
-import { Config } from '../../../config'
+import { ConfigContext } from '../../services/config/context'
 
-const translate = async (text, from = 'es', to = 'en') => {
+const Translate = async (text, from = 'es', to = 'en') => {
+  const { RapidApi } = useContext(ConfigContext)
+
   try {
     const { data } = await axios.post(
       'https://microsoft-translator-text.p.rapidapi.com/translate',
       [{ Text: text }],
       {
-        params: { to, 'api-version': '3.0', profanityAction: 'NoAction', textType: 'plain' },
+        params: {
+          to,
+          'api-version': '3.0',
+          profanityAction: 'NoAction',
+          textType: 'plain'
+        },
         headers: {
           'content-type': 'application/json',
-          'x-rapidapi-key': Config.RapidApi.apiKey,
+          'x-rapidapi-key': RapidApi.apiKey,
           'x-rapidapi-host': 'microsoft-translator-text.p.rapidapi.com'
         }
       }
     )
+
     return { response: data[0]?.translations[0]?.text || text, hasError: false }
   } catch (error) {
     return { response: 'Error while translating text', hasError: true }
   }
 }
 
-export const TranslationService = { translate }
+export const TranslationService = { Translate }

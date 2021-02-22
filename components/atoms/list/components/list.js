@@ -9,9 +9,18 @@ import { bool, node, object, string } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const List = ({ border, children, className, flush, inline, group, style, unstyled }) => {
+export const List = ({
+  border,
+  children,
+  className,
+  flush,
+  inline,
+  group,
+  style,
+  unstyled
+}) => {
   const renderListItems = () =>
-    React.Children.map(children, child =>
+    React.Children.map(children, (child) =>
       React.cloneElement(child, {
         border: border,
         flush: flush,
@@ -26,10 +35,9 @@ export const List = ({ border, children, className, flush, inline, group, style,
       flush={flush}
       group={group}
       inline={inline}
-      role='list'
+      role="list"
       style={style}
-      unstyled={unstyled}
-    >
+      unstyled={unstyled}>
       {renderListItems()}
     </StyledList>
   )

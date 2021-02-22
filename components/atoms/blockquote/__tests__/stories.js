@@ -2,8 +2,11 @@
  * Blockquote
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Blockquote } from 'components'
+import { Blockquote } from '../blockquote'
 import Readme from '../README.md'
 
 export default {
@@ -22,4 +25,4 @@ export default {
   title: 'Atoms/Blockquote'
 }
 
-export const main = args => <Blockquote {...args} />
+export const main = (args) => <Blockquote {...args} />

@@ -1,3 +1,6 @@
+/**
+ * Components - Organisms - Pricing
+ */
 export * from './components/constants'
 export * from './components/pricing'
 export * from './components/pricingCard'

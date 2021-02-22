@@ -1,9 +1,11 @@
 /**
- * Theme - Variables - Copyright
+ * Components - Molecules - Copyright - Variables
  */
-import { COLOUR } from '../../theme/variables/colour'
+
+// UI
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const COPYRIGHT = {
-  background: COLOUR.white,
-  colour: COLOUR.black
+  background: THEME_COLOUR.white,
+  colour: THEME_COLOUR.black
 }

@@ -26,7 +26,7 @@ export const barMock = [
     to: '/dashboard/messages'
   },
   {
-    icon: ['far', 'bell'],
+    icon: ['fas', 'bell'],
     name: 'Notifications',
     to: '/dashboard/notifications'
   }

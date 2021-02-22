@@ -1,16 +1,23 @@
 /**
- * Button
+ * Components - Atoms - Button
  */
 
 // React
-import { forwardRef } from 'react'
-
-// UI
-import { BACKGROUND, DIMENSION, DISPLAY, Icon, shadeLinearRgb, SPACER } from '../../../../'
-import { ButtonPropTypes, ButtonDefaultProps } from './props'
+import React, { forwardRef } from 'react'
 
 // Style
 import styled, { css, useTheme } from 'styled-components'
+
+// UI
+import { Icon } from '../../../atoms/icon/icon/icon'
+import { shadeLinearRgb } from '../../../utils/colour/colour'
+import { SPACER } from '../../../theme/utils/spacer'
+import { themeBackground } from '../../../theme/utils/background'
+import { themeDimension } from '../../../theme/utils/dimension'
+import { themeDisplay } from '../../../theme/utils/display'
+
+// Props
+import { propTypes, defaultProps } from './props'
 
 export const Button = forwardRef(
   (
@@ -39,14 +46,25 @@ export const Button = forwardRef(
         outline={outline}
         textContext={textContext}
         ref={ref}
-        role='button'
-        {...props}
-      >
-        {startIcon && <Icon icon={startIcon} {...startIconProps} prefix={startIconProps?.prefix} />}
+        role="button"
+        {...props}>
+        {startIcon && (
+          <Icon
+            icon={startIcon}
+            {...startIconProps}
+            prefix={startIconProps?.prefix}
+          />
+        )}
 
         {text && <StyledContent>{text}</StyledContent>}
 
-        {endIcon && <Icon icon={endIcon} {...endIconProps} prefix={endIconProps?.prefix} />}
+        {endIcon && (
+          <Icon
+            icon={endIcon}
+            {...endIconProps}
+            prefix={endIconProps?.prefix}
+          />
+        )}
       </StyledButton>
     )
   }
@@ -65,11 +83,11 @@ const getTextContext = (context, outline, theme) => {
 }
 
 const StyledButton = styled.button`
-  ${props => BACKGROUND(props)}
+  ${(props) => themeBackground(props)}
   align-items: center;
   border: ${({ context, dashed, outline, theme: { COLOUR } }) =>
     outline ? `1px ${dashed ? 'dashed' : 'solid'} ${COLOUR[context]}` : 'none'};
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   box-sizing: border-box;
   color: ${({ textContext, theme: { COLOUR } }) => COLOUR[textContext]};
   cursor: pointer;
@@ -125,26 +143,32 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.1, COLOUR[context])};
-    border-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.12, COLOUR[context])};
+    background-color: ${({ context, theme: { COLOUR } }) =>
+      shadeLinearRgb(-0.1, COLOUR[context])};
+    border-color: ${({ context, theme: { COLOUR } }) =>
+      shadeLinearRgb(-0.12, COLOUR[context])};
     color: ${({ theme: { COLOUR } }) => COLOUR.white};
   }
 
   transition: all 0.1s ease-in-out;
 
-  ${props =>
+  ${(props) =>
     props.shadow &&
-    'box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12), 0px 10px 24px 0px rgba(0, 0, 0, .12);'}
+    css`
+      box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.12),
+        0px 10px 24px 0px rgba(0, 0, 0, 0.12),
+        0px 10px 24px 0px rgba(0, 0, 0, 0.12);
+    `}
 
-  ${theme => DIMENSION(theme)}
-  ${theme => DISPLAY(theme)}
-  ${theme => SPACER(theme)}
+  ${(theme) => themeDimension(theme)}
+  ${(theme) => themeDisplay(theme)}
+  ${(theme) => SPACER(theme)}
 
    ${({ theme, noPadding }) =>
-     noPadding &&
-     css`
-       padding: 0;
-     `}
+    noPadding &&
+    css`
+      padding: 0;
+    `}
 `
 
 const StyledContent = styled.div`
@@ -157,5 +181,5 @@ const StyledContent = styled.div`
   }
 `
 
-Button.propTypes = ButtonPropTypes
-Button.defaultProps = ButtonDefaultProps
+Button.propTypes = propTypes
+Button.defaultProps = defaultProps

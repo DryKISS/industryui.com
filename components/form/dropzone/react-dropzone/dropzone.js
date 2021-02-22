@@ -4,7 +4,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { bool, string } from 'prop-types'
 
 // React Dropzone
@@ -24,17 +24,23 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
   useEffect(
     () => () => {
       // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach(file => URL.revokeObjectURL(file.preview))
+      files.forEach((file) => URL.revokeObjectURL(file.preview))
     },
     [files]
   )
 
-  const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject
+  } = useDropzone({
     accept: accept,
     disabled: disabled,
     multiple: multiple,
-    onDrop: acceptedFiles => {
-      const accepted = acceptedFiles.map(file =>
+    onDrop: (acceptedFiles) => {
+      const accepted = acceptedFiles.map((file) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file)
         })
@@ -48,7 +54,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     }
   })
 
-  const removeFile = file => {
+  const removeFile = (file) => {
     const newFiles = [...files]
     newFiles.splice(newFiles.indexOf(file), 1)
     setFiles(newFiles)
@@ -58,7 +64,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     return (
       <StyledContainer fluid>
         <Row>
-          {files.map(file => (
+          {files.map((file) => (
             <Column md={3} key={file.name}>
               <DropzonePreview
                 file={file}
@@ -79,8 +85,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
         dragAccept={isDragAccept}
         dragReject={isDragReject}
         disabled={disabled}
-        {...getRootProps()}
-      >
+        {...getRootProps()}>
         <input {...getInputProps()} />
 
         {isDragAccept && <Text>Accepted</Text>}
@@ -92,7 +97,11 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
           <>
             <Text>Drop, or click to select</Text>
             {accept && <Accept accept={accept} />}
-            {multiple ? <Text>Accepts multiple files</Text> : <Text>Single file only</Text>}
+            {multiple ? (
+              <Text>Accepts multiple files</Text>
+            ) : (
+              <Text>Single file only</Text>
+            )}
           </>
         )}
       </StyledContainer>
