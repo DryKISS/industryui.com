@@ -1,4 +1,0 @@
-/**
- * Grid
- */
-export * from './components'

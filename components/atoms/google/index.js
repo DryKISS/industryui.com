@@ -1,4 +1,0 @@
-/**
- * Google
- */
-export * from './analytics'

@@ -1,4 +1,0 @@
-/**
- * Bar
- */
-export * from './components'

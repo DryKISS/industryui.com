@@ -1,1 +1,0 @@
-Gets average geolocation center

@@ -1,4 +1,0 @@
-/**
- * Alert
- */
-export * from './components'

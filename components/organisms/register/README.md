@@ -1,7 +1,0 @@
-Register
-
-## Usage
-
-```html
-<Register />
-```

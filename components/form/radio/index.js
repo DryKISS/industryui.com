@@ -1,5 +1,0 @@
-/**
- * Radio
- */
-
-export * from './components'

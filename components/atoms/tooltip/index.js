@@ -1,5 +1,0 @@
-/**
- * Tooltip
- */
-
-export * from './components'

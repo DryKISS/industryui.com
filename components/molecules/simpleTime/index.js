@@ -1,4 +1,0 @@
-/**
- * SimpleTime
- */
-export * from './components'

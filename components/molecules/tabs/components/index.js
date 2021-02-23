@@ -1,4 +1,0 @@
-/**
- * Tabs
- */
-export * from './tabs'

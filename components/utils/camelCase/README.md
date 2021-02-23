@@ -1,1 +1,0 @@
-camelCases the string

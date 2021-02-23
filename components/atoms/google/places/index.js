@@ -1,4 +1,0 @@
-/**
- * Places
- */
-export * from './autoComplete'
