@@ -17,4 +17,6 @@ export const ArrowDownIcon = (props) => {
   )
 }
 
+export default ArrowDownIcon
+
 ArrowDownIcon.propTypes = propTypes

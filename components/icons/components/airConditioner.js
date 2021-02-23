@@ -23,5 +23,5 @@ export const AirConditionerIcon = (props) => {
     </IconWrapper>
   )
 }
-
+export default AirConditionerIcon
 AirConditionerIcon.propTypes = propTypes

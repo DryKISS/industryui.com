@@ -13,4 +13,6 @@ export const BicycleIcon = (props) => {
   )
 }
 
+export default BicycleIcon
+
 BicycleIcon.propTypes = propTypes

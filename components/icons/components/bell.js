@@ -17,4 +17,6 @@ export const BellIcon = (props) => {
   )
 }
 
+export default BellIcon
+
 BellIcon.propTypes = propTypes
