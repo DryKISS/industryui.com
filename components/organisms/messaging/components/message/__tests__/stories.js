@@ -2,8 +2,11 @@
  * Messaging/Message
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Message } from 'components'
+import { Message } from '../index'
 import Readme from '../README.md'
 
 // Data
@@ -22,5 +25,11 @@ export default {
 }
 
 export const main = () => (
-  <Message config={{}} message={message} prevType='out' time='12:00' type='in' />
+  <Message
+    config={{}}
+    message={message}
+    prevType="out"
+    time="12:00"
+    type="in"
+  />
 )

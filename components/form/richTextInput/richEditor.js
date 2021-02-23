@@ -1,8 +1,13 @@
 // React
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { object, string } from 'prop-types'
 
-import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js'
+import {
+  ContentState,
+  convertFromHTML,
+  convertToRaw,
+  EditorState
+} from 'draft-js'
 import { Controller } from 'react-hook-form'
 import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
@@ -36,9 +41,9 @@ export const RichTextInput = ({ control, errors, initialValue, name }) => {
         render={({ value, onChange }) => (
           <Editor
             editorState={value.editorState}
-            wrapperClassName='wrapper-class'
-            editorClassName='editor-class'
-            onEditorStateChange={e => onEditorStateChange(e, onChange)}
+            wrapperClassName="wrapper-class"
+            editorClassName="editor-class"
+            onEditorStateChange={(e) => onEditorStateChange(e, onChange)}
           />
         )}
       />
@@ -47,11 +52,11 @@ export const RichTextInput = ({ control, errors, initialValue, name }) => {
 }
 
 const Wrapper = styled.div`
-  ${props => COMMON_INPUT_STYLES(props)}
+  ${(props) => COMMON_INPUT_STYLES(props)}
   ${({ errors }) =>
     errors &&
     css`
-      ${props => ERROR_STYLE(props)}
+      ${(props) => ERROR_STYLE(props)}
     `}
 `
 

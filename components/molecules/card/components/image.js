@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { string } from 'prop-types'
 
 // UI
@@ -14,7 +15,7 @@ import styled from 'styled-components'
 export const CardImage = ({ alt, header, src }) => {
   return (
     <StyledContainer>
-      <StyledImage alt={alt} fluid={false} imageClasses='rounded' src={src}>
+      <StyledImage alt={alt} fluid={false} imageClasses="rounded" src={src}>
         {header}
       </StyledImage>
     </StyledContainer>

@@ -1,8 +1,10 @@
 /**
- * Input Group
+ * Components - Form - Input Group - Group
  * Wraps the Input so we can append or prepend another element
  */
 
+// React
+import React from 'react'
 import { bool, string } from 'prop-types'
 
 // Style

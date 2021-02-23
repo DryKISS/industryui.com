@@ -13,12 +13,17 @@ import styled, { css } from 'styled-components'
 
 export const BarOverlay = styled.div`
   transition: ${({ theme: { BAR }, placement }) => css`
-    opacity ${BAR.transitionDuration} ${BAR.transitionTiming}, ${placement} ${BAR.transitionDuration} ${BAR.transitionTiming};
+    opacity ${BAR.transitionDuration}
+    ${BAR.transitionTiming},
+    ${placement}
+    ${BAR.transitionDuration}
+    ${BAR.transitionTiming};
   `};
 
   ${({ placement, variant, width }) =>
     variant === BarConfig.VARIANT.OVERLAY &&
-    (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
+    (placement === BarConfig.PLACEMENT.LEFT ||
+      placement === BarConfig.PLACEMENT.RIGHT) &&
     css`
       width: calc(100%);
       height: 100%;

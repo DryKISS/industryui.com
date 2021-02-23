@@ -3,11 +3,15 @@
  */
 
 // React
+import React from 'react'
 import { oneOf, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { CONTEXT, shadeLinearRgb } from '../../../'
+
+// UI
+import { shadeLinearRgb } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 export const CardHeader = ({ content, context, align }) => {
   return (
@@ -18,7 +22,8 @@ export const CardHeader = ({ content, context, align }) => {
 }
 
 const StyledHeader = styled.h2`
-  background-color: ${({ context, theme }) => shadeLinearRgb(0.8, theme.COLOUR[context])};
+  background-color: ${({ context, theme }) =>
+    shadeLinearRgb(0.8, theme.COLOUR[context])};
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   color: ${({ context, theme }) => theme.COLOUR[context]};
   font-size: 1.25rem;
@@ -29,7 +34,7 @@ const StyledHeader = styled.h2`
 
 CardHeader.propTypes = {
   content: string.isRequired,
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   align: oneOf(['center', 'right', 'left'])
 }
 

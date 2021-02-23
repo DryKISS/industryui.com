@@ -10,7 +10,7 @@ export const ClickAwayListener = ({
   const node = useRef(null)
 
   useEffect(() => {
-    const handleEvents = event => {
+    const handleEvents = (event) => {
       if (node.current && node.current.contains(event.target)) {
         return
       }

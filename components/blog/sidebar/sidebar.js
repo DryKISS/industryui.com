@@ -5,6 +5,7 @@
  */
 
 // React
+import React from 'react'
 import { array, bool, object } from 'prop-types'
 
 import {
@@ -21,7 +22,15 @@ import {
 // Style
 import styled from 'styled-components'
 
-export const BlogSidebar = ({ articles, config, facebook, findFood, media, promo, tags }) => {
+export const BlogSidebar = ({
+  articles,
+  config,
+  facebook,
+  findFood,
+  media,
+  promo,
+  tags
+}) => {
   return (
     <StyledAside>
       {findFood && <BlogFindFood />}

@@ -2,8 +2,11 @@
  * Get Url Parameter
  */
 
+// React
+import React from 'react'
+
 // UI
-import { getUrlParameter, Text } from 'components'
+import { getUrlParameter, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -17,10 +20,13 @@ export default {
   title: 'Utils/GetUrlParameters'
 }
 
-export const GetUrlParameter = () => {
+export const Main = () => {
   return (
     <>
-      <Text>url: http://drykiss.com/?id=utils-geturlparameters--get-url-parameter</Text>
+      <Text>
+        url: http://drykiss.com/?id=utils-geturlparameters--get-url-parameter
+      </Text>
+
       <Text>id parameter: {JSON.stringify(getUrlParameter('id'))}</Text>
     </>
   )

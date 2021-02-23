@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // UI
 import {
@@ -61,7 +61,8 @@ export const Details2 = ({
       () => {
         window &&
           window.requestAnimationFrame(() => {
-            contentRef.current && setcontentHeight(() => contentRef.current.offsetHeight)
+            contentRef.current &&
+              setcontentHeight(() => contentRef.current.offsetHeight)
           })
       },
       !isOpen ? animationTime ?? 300 : 0
@@ -70,23 +71,27 @@ export const Details2 = ({
     return () => {}
   }, [contentRef.current, isOpen])
 
-  const handleEventRecieve = e => {
+  const handleEventRecieve = (e) => {
     setisOpen(e)
   }
 
   useComponentCommunication({
     id: uniqueId,
     messageName: MessageNames.DetailsComponent.SET_OPEN,
-    onRecieve: e => handleEventRecieve(e),
+    onRecieve: (e) => handleEventRecieve(e),
     subscriber: DetailsSubscriber
   })
 
   const handleOpenClose = () => {
-    setisOpen(isOpen => !isOpen)
+    setisOpen((isOpen) => !isOpen)
   }
 
   return (
-    <Wrapper context={context} style={style} fitParentHeight={fitParentHeight} open={isOpen}>
+    <Wrapper
+      context={context}
+      style={style}
+      fitParentHeight={fitParentHeight}
+      open={isOpen}>
       <Details2Header
         animationtime={animationTime}
         children={children}
@@ -115,7 +120,8 @@ export const Details2 = ({
 
 const Wrapper = styled.div`
   background: ${({ theme }) => theme.DETAILS2.wrapper.background};
-  border-bottom: 2px solid ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
+  border-bottom: 2px solid
+    ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
   transition: height 0.3 cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
 

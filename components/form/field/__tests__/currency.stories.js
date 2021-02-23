@@ -2,11 +2,18 @@
  * Form - Field
  */
 
+// React
+import React from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, CurrencyInput, InputGroupAddon, useForm, yupResolver } from 'components'
+import { Button, Form, CurrencyInput, InputGroupAddon } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -30,12 +37,12 @@ const schema = object().shape({
   expense: string().required()
 })
 
-const BaseComponent = args => {
+const BaseComponent = (args) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => {}
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     errors: errors,
@@ -48,12 +55,12 @@ const BaseComponent = args => {
       <CurrencyInput {...defaultProps} />
 
       <CurrencyInput {...defaultProps}>
-        <InputGroupAddon addonType='append'>
-          <Button content='Submit' type='submit' size='sm' />
+        <InputGroupAddon addonType="append">
+          <Button content="Submit" type="submit" size="sm" />
         </InputGroupAddon>
       </CurrencyInput>
     </Form>
   )
 }
 
-export const currency = args => <BaseComponent {...args} />
+export const currency = (args) => <BaseComponent {...args} />

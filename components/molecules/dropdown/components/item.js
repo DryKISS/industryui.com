@@ -2,6 +2,8 @@
  * Dropdown - Item
  */
 
+// React
+import React from 'react'
 import { func, object, node } from 'prop-types'
 
 // Style
@@ -12,7 +14,7 @@ import { elementTypes, Icon, Link } from '../../../'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
-    <StyledLink className='dropdown--link' id={id} onClick={onClick}>
+    <StyledLink className="dropdown--link" id={id} onClick={onClick}>
       {name}
     </StyledLink>
   )
@@ -31,7 +33,11 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
     case elementTypes.List:
       return (
         <StyledDropdownItem divider={item.divider}>
-          {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
+          {item.divider ? (
+            <StyledDivider />
+          ) : (
+            renderItem(item, closeDropdown, onClick)
+          )}
         </StyledDropdownItem>
       )
 

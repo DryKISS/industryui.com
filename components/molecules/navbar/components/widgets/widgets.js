@@ -1,8 +1,9 @@
 /**
- * Navbar — Widgets
+ * Components - Molecules - Navbar — Widgets
  */
 
 // React
+import React from 'react'
 import { bool, func, object, string } from 'prop-types'
 
 // UI
@@ -19,13 +20,24 @@ import {
 // Style
 import styled, { css } from 'styled-components'
 
-export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
+export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
   return (
     <NavCollapse visible={visible}>
       {Object.entries(widgets).map(([direction, link]) => (
         <StyledList direction={direction} key={direction}>
           {link.map(
-            ({ active, Component, icon, id, name, onClick, position, prefix, to, type }) => (
+            ({
+              active,
+              Component,
+              icon,
+              id,
+              name,
+              onClick,
+              position,
+              prefix,
+              to,
+              type
+            }) => (
               <StyledListItem brand={brand} key={id}>
                 {Component && <Component />}
 
@@ -33,11 +45,20 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
                   type.as === 'button' &&
                   NavButton({ closeMenu, id, name, to, type, visible })}
 
-                {type && type.as === 'icon' && NavIcon({ closeMenu, to, type, visible })}
+                {type &&
+                  type.as === 'icon' &&
+                  NavIcon({ closeMenu, to, type, visible })}
 
                 {type &&
                   type.as === 'dropdown' &&
-                  NavDropdown({ closeMenu, icon, name, position, prefix, type })}
+                  NavDropdown({
+                    closeMenu,
+                    icon,
+                    name,
+                    position,
+                    prefix,
+                    type
+                  })}
 
                 {type &&
                   type.as === 'notification' &&
@@ -45,7 +66,15 @@ export const Widgets = ({ brand, closeMenu, type, visible, widgets }) => {
 
                 {!Component &&
                   (!type || type.as === 'link') &&
-                  NavLink({ active, closeMenu, id, name, onClick, to, visible })}
+                  NavLink({
+                    active,
+                    closeMenu,
+                    id,
+                    name,
+                    onClick,
+                    to,
+                    visible
+                  })}
               </StyledListItem>
             )
           )}
@@ -68,7 +97,8 @@ const StyledList = styled.ul`
     background-color: initial;
     flex-direction: row;
     flex: 1;
-    justify-content: ${({ direction }) => (direction === 'left' ? 'flex-start' : 'flex-end')};
+    justify-content: ${({ direction }) =>
+      direction === 'left' ? 'flex-start' : 'flex-end'};
     text-align: left;
   `}
 `
@@ -81,7 +111,7 @@ const StyledListItem = styled.li`
     background-color: ${({ theme }) => theme.NAVBAR.backgroundHoverListItem};
     border-bottom: ${({ theme }) => theme.NAVBAR.borderBottomHoverListItem};
   }
-  ${props =>
+  ${(props) =>
     !props.brand &&
     css`
       &:first-child {
@@ -92,12 +122,13 @@ const StyledListItem = styled.li`
     border: none;
     display: flex;
     flex-direction: column;
-    justify-content: ${({ theme }) => theme.NAVBAR.justifyContentDesktopListItem};
+    justify-content: ${({ theme }) =>
+      theme.NAVBAR.justifyContentDesktopListItem};
     margin-bottom: ${({ theme }) => theme.NAVBAR.marginBottomDesktopListItem};
   `}
 `
 
-Widgets.propTypes = {
+NavWidgets.propTypes = {
   brand: string,
   closeMenu: func,
   type: string,

@@ -2,26 +2,41 @@
  * Carousel
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ContextControl } from 'decorators'
+import { ContextControl } from '../../../../.storybook/decorators'
 import { CarouselDefaultProps } from '../components/props'
+
 // Style
 import styled from 'styled-components'
 
 // UI
-import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from 'components'
+import {
+  Button,
+  Carousel,
+  CarouselSlide,
+  Image,
+  ReactHolderJs
+} from '../../../'
 import { CarouselSampleSlide } from '../components/sample'
 
 import Readme from '../README.md'
-import vizla from 'storybook/static/card/vizla.jpg'
+import vizla from '../../../../static/card/vizla.jpg'
 
 export default {
   args: CarouselDefaultProps,
   argTypes: {
     navContext: ContextControl(),
-    navPosition: { control: { type: 'select', options: ['top', 'middle', 'bottom'] } },
+    navPosition: {
+      control: { type: 'select', options: ['top', 'middle', 'bottom'] }
+    },
     autoplayInterval: { name: 'autoplay Interval(ms)' },
-    gap: { name: 'gap between elements(px)', control: { type: 'range', min: 1, max: 200 } }
+    gap: {
+      name: 'gap between elements(px)',
+      control: { type: 'range', min: 1, max: 200 }
+    }
   },
 
   title: 'Molecules/Carousel',
@@ -38,11 +53,18 @@ export default {
 const SampleSlide = ({ title = 'Sample Slide' }) => (
   <CarouselSampleSlide
     text={title}
-    node={<ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />}
+    node={
+      <ReactHolderJs
+        src="./img/test1.jpg"
+        width={900}
+        height={300}
+        usePlaceholder
+      />
+    }
   />
 )
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const defaultProps = {
     height: '300px',
     width: '900px',
@@ -58,15 +80,15 @@ const BaseComponent = props => {
   return <Carousel {...defaultProps} />
 }
 
-export const main = args => (
+export const main = (args) => (
   <BaseComponent {...args}>
     <SampleSlide />
 
-    <SampleSlide title='Another Slide' />
+    <SampleSlide title="Another Slide" />
   </BaseComponent>
 )
 
-export const withArray = args => (
+export const withArray = (args) => (
   <BaseComponent
     {...args}
     slides={[
@@ -76,19 +98,26 @@ export const withArray = args => (
         text: 'Sample text from Array Carousel'
       },
       {
-        node: <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />,
+        node: (
+          <ReactHolderJs
+            src="./img/test1.jpg"
+            width={900}
+            height={300}
+            usePlaceholder
+          />
+        ),
         text: 'Another text from Array Carousel'
       }
     ]}
   />
 )
 
-export const withCustomNav = args => (
+export const withCustomNav = (args) => (
   <BaseComponent
     {...args}
     showNavs
-    leftNavComponent={<Button size='sm'>{'<'}</Button>}
-    rightNavComponent={<Button size='sm'>next</Button>}
+    leftNavComponent={<Button size="sm">{'<'}</Button>}
+    rightNavComponent={<Button size="sm">next</Button>}
     slides={[
       {
         context: 'light',
@@ -96,28 +125,35 @@ export const withCustomNav = args => (
         text: 'Sample text from Array Carousel'
       },
       {
-        node: <ReactHolderJs src='./img/test1.jpg' width={900} height={300} usePlaceholder />,
+        node: (
+          <ReactHolderJs
+            src="./img/test1.jpg"
+            width={900}
+            height={300}
+            usePlaceholder
+          />
+        ),
         text: 'Another text from Array Carousel'
       }
     ]}
   />
 )
 
-export const withPagination = args => (
+export const withPagination = (args) => (
   <BaseComponent {...args}>
-    <SampleSlide title='1' />
+    <SampleSlide title="1" />
 
-    <SampleSlide title='2' />
+    <SampleSlide title="2" />
 
-    <SampleSlide title='3' />
-    <SampleSlide title='4' />
-    <SampleSlide title='5' />
-    <SampleSlide title='6' />
-    <SampleSlide title='7' />
+    <SampleSlide title="3" />
+    <SampleSlide title="4" />
+    <SampleSlide title="5" />
+    <SampleSlide title="6" />
+    <SampleSlide title="7" />
   </BaseComponent>
 )
 
-export const withImageComponent = args => (
+export const withImageComponent = (args) => (
   <BaseComponent {...args}>
     <CarouselSlide>
       <TextLabel>With Image Component</TextLabel>
@@ -128,7 +164,7 @@ export const withImageComponent = args => (
   </BaseComponent>
 )
 
-export const withHTMLImageTag = args => (
+export const withHTMLImageTag = (args) => (
   <BaseComponent {...args}>
     <CarouselSlide>
       <TextLabel>With HTML Image Tag</TextLabel>
@@ -139,15 +175,17 @@ export const withHTMLImageTag = args => (
   </BaseComponent>
 )
 
-export const withJustText = args => (
+export const withJustText = (args) => (
   <BaseComponent {...args}>
-    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
+    <CarouselSlide style={{ width: '100%', height: '300px' }}>
+      this is text div
+    </CarouselSlide>
 
     <SampleSlide />
   </BaseComponent>
 )
 
-export const withJustOneItem = args => (
+export const withJustOneItem = (args) => (
   <BaseComponent {...args}>
     <SampleSlide />
   </BaseComponent>

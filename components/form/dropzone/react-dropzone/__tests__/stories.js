@@ -2,12 +2,14 @@
  * Dropzone
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Dropzone } from 'components'
+import { Dropzone } from '../dropzone'
 import Readme from '../README.md'
 
 export default {
-  title: 'Form/Dropzone/Standard',
   component: Dropzone,
   parameters: {
     docs: {
@@ -15,11 +17,12 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Dropzone/Standard'
 }
 
 const BaseComponent = (props = {}) => {
-  const onChange = change => {
+  const onChange = (change) => {
     console.info('Changed', change)
   }
 
@@ -36,5 +39,5 @@ const BaseComponent = (props = {}) => {
 
 export const main = () => <BaseComponent />
 export const multipleFalse = () => <BaseComponent multiple={false} />
-export const acceptAll = () => <BaseComponent accept='' />
+export const acceptAll = () => <BaseComponent accept="" />
 export const disabled = () => <BaseComponent disabled />

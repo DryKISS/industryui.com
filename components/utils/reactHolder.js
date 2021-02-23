@@ -1,11 +1,11 @@
 /**
- * Utils - React Holder
+ * Components - Utils - React Holder
  *
  * @see https://github.com/imsky/holder#placeholder-options for info on more props and themes
  */
 
 // React
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { string, bool, object } from 'prop-types'
 

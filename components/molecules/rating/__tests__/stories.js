@@ -2,10 +2,14 @@
  * Rating
  */
 
-import { ContextControl } from 'decorators'
+// React
+import React from 'react'
+
+// Stroyboom
+import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Rating } from '../'
+import { Rating } from '../rating'
 import Readme from '../README.md'
 
 export default {
@@ -31,4 +35,6 @@ export default {
   }
 }
 
-export const main = args => <Rating {...args} size={args.withSize === true ? args.size : 5} />
+export const main = (args) => (
+  <Rating {...args} size={args.withSize === true ? args.size : 5} />
+)

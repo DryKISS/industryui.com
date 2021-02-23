@@ -10,13 +10,14 @@
 import { useContext } from 'react'
 
 // UI
-import { ConfigContext, InternationalisationContext } from '../../'
+import { ConfigContext } from '../../services/config/context'
+import { InternationalisationContext } from '../../services/internationalisation/context'
 
 export const useTranslation = () => {
   const { defaultLocale, Translations } = useContext(ConfigContext)
   const { locale } = useContext(InternationalisationContext)
 
-  const t = key => {
+  const t = (key) => {
     if (!Translations[locale][key]) {
       // Debug
       console.warn(`Translation '${key}' for locale '${locale}' not found.`)

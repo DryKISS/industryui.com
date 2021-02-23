@@ -2,8 +2,11 @@
  * Layouts - Grid - Story
  */
 
+// React
+import React from 'react'
+
 // UI
-import { LayoutGrid } from 'components'
+import { LayoutGrid } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -18,4 +21,4 @@ export default {
   title: 'Layouts/Grid'
 }
 
-export const main = args => <LayoutGrid {...args}>HERE</LayoutGrid>
+export const main = (args) => <LayoutGrid {...args}>HERE</LayoutGrid>

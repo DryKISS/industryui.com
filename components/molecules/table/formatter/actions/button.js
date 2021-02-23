@@ -3,22 +3,27 @@
  */
 
 // React
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { array, bool, func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // Next
 import Router from 'next/router'
 
 // UI
-import { Button, CONTEXT, Icon } from '../../../../'
+import { Button } from '../../../../atoms/button/button/button'
+import { Icon } from '../../../../atoms/icon/icon/icon'
 import { TableActionsOverlay } from './overlay'
+import { THEME_CONTEXT } from '../../../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
 
 export const TableActionsButton = forwardRef(
-  ({ context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to }, ref) => {
-    const handleClick = path => e => {
+  (
+    { context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to },
+    ref
+  ) => {
+    const handleClick = (path) => (e) => {
       e.preventDefault()
       e.stopPropagation()
       Router.push(path)
@@ -26,18 +31,21 @@ export const TableActionsButton = forwardRef(
 
     const iconArray = Array.isArray(icon)
     const overlay = row[numberOverlay] || overlayCustom
-    const click = onClick ? e => onClick(e, row) : handleClick(`${to}?id=${row.id}`)
+    const click = onClick
+      ? (e) => onClick(e, row)
+      : handleClick(`${to}?id=${row.id}`)
 
     return (
       <StyledButton
-        forwardedAs='a'
+        forwardedAs="a"
         disabled={disabled}
         context={context}
         onClick={click}
         ref={ref}
-        size='sm'
-      >
-        {overlay && <TableActionsOverlay children={overlay} context={context} />}
+        size="sm">
+        {overlay && (
+          <TableActionsOverlay children={overlay} context={context} />
+        )}
 
         <StyledIcon
           icon={icon ? (iconArray ? icon[1] : icon) : null}
@@ -59,7 +67,7 @@ const StyledIcon = styled(Icon)`
 `
 
 TableActionsButton.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   disabled: bool,
   icon: oneOfType([array, string]),
   numberOverlay: string,

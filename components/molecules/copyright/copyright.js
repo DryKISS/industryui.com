@@ -3,11 +3,12 @@
  */
 
 // React
-import { memo, useContext } from 'react'
+import React, { memo, useContext } from 'react'
 import { array, bool, oneOf, shape, string } from 'prop-types'
 
 // UI
-import { Column, ConfigContext, Container, CONTEXT, Icon, Link, Row } from '../../'
+import { Column, ConfigContext, Container, Icon, Link, Row } from '../../'
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -26,7 +27,7 @@ export const Copyright = memo(({ fixed, icon, links }) => {
   }
 
   return (
-    <StyledCopyright fixed={fixed} data-cy='copyright'>
+    <StyledCopyright fixed={fixed} data-cy="copyright">
       <StyledContainer>
         <StyledRow>
           <Column md={links.length > 0 ? 3 : 12}>
@@ -34,7 +35,9 @@ export const Copyright = memo(({ fixed, icon, links }) => {
             {year} — {Brand.name}
           </Column>
 
-          {links.length > 0 && <StyledColumn md={9}>{renderLinks()}</StyledColumn>}
+          {links.length > 0 && (
+            <StyledColumn md={9}>{renderLinks()}</StyledColumn>
+          )}
         </StyledRow>
       </StyledContainer>
     </StyledCopyright>
@@ -85,7 +88,7 @@ const StyledLink = styled.span`
 Copyright.propTypes = {
   fixed: bool,
   icon: shape({
-    context: oneOf(Object.values(CONTEXT)),
+    context: oneOf(Object.values(THEME_CONTEXT)),
     icon: string,
     prefix: string
   }),

@@ -3,8 +3,8 @@
  */
 
 // React
+import React, { memo } from 'react'
 import { array, bool, func, oneOfType, shape, string } from 'prop-types'
-import { memo } from 'react'
 
 // UI
 import { Icon, TableHead } from '../../../'
@@ -12,7 +12,7 @@ import { Icon, TableHead } from '../../../'
 const RenderColumns = ({ align, columns, setSort, sort }) =>
   columns.map(({ hidden, sortable, sortName = '', text }, index) => {
     if (hidden) {
-      return
+      return false
     }
 
     const hasSort = sort.item === sortName
@@ -34,10 +34,17 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
     }
 
     return (
-      <TableHead align={align} key={index} onClick={handleSort} sortable={sortable}>
+      <TableHead
+        align={align}
+        key={index}
+        onClick={handleSort}
+        sortable={sortable}>
         {text}
         {sortable && hasSort && (
-          <Icon icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'} prefix='fas' />
+          <Icon
+            icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'}
+            prefix="fas"
+          />
         )}
       </TableHead>
     )
@@ -46,7 +53,12 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
 export const TableColumns = memo(({ align, columns, setSort, sort }) => (
   <thead>
     <tr>
-      <RenderColumns align={align} columns={columns} setSort={setSort} sort={sort} />
+      <RenderColumns
+        align={align}
+        columns={columns}
+        setSort={setSort}
+        sort={sort}
+      />
     </tr>
   </thead>
 ))

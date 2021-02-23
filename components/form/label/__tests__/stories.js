@@ -2,8 +2,11 @@
  * Form - Label
  */
 
+// React
+import React from 'react'
+
 // UI
-import { FormLabel } from 'components'
+import { FormLabel } from '../label'
 import Readme from '../README.md'
 
 export default {

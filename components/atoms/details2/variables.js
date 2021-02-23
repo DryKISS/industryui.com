@@ -3,13 +3,13 @@
  */
 
 // UI
-import { COLOUR } from '../../theme/variables/colour'
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const DETAILS2 = {
   wrapper: {
-    background: COLOUR.white
+    background: THEME_COLOUR.white
   },
   header: {
-    background: COLOUR.light
+    background: THEME_COLOUR.light
   }
 }

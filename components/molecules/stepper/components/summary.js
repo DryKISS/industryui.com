@@ -3,13 +3,14 @@
  */
 
 // React
+import React from 'react'
 import { array, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 export const StepperSummary = ({ className, summary }) => {
-  const renderItems = summary =>
+  const renderItems = (summary) =>
     summary.map(({ label, value }, i) => (
       <li key={i}>
         <StyledLabel>{label} </StyledLabel>

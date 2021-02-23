@@ -2,7 +2,8 @@ module.exports = {
   cacheDirectory: '.cache/jest',
   clearMocks: true,
   moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$': 'identity-obj-proxy'
+    '.+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$':
+      'identity-obj-proxy'
   },
   roots: ['<rootDir>/components'],
   testMatch: ['<rootDir>/components/*.test.js'],

@@ -2,8 +2,11 @@
  * Force Update
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Button, RandomColor, useForceUpdate } from 'components'
+import { Button, RandomColor, useForceUpdate } from '../../../'
 import Readme from '../README.md'
 
 export default {

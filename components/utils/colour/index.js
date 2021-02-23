@@ -1,4 +1,0 @@
-/**
- * Colour
- */
-export * from './colour'

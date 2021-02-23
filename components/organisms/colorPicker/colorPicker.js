@@ -3,10 +3,16 @@
  */
 
 // React
+import React from 'react'
 import { string, func } from 'prop-types'
 
 // React Color
-import { SketchPicker, CirclePicker, TwitterPicker, GithubPicker } from 'react-color'
+import {
+  SketchPicker,
+  CirclePicker,
+  TwitterPicker,
+  GithubPicker
+} from 'react-color'
 
 export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
   switch (type) {

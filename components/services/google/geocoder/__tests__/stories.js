@@ -3,7 +3,10 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
 import {
@@ -14,9 +17,8 @@ import {
   FormLabel,
   GeoCoder,
   Row,
-  useForm,
   useGeoCoder
-} from 'components'
+} from '../../../../'
 
 import Readme from '../README.md'
 
@@ -32,7 +34,7 @@ export default {
   }
 }
 
-export const main = () => {
+export const Main = () => {
   const [coordinates, setCoordinates] = useState({ lat: '', lng: '' })
 
   const geoState = {
@@ -70,7 +72,7 @@ export const main = () => {
     setCoordinates(coordinates)
   }
 
-  const submitForm = data => {
+  const submitForm = (data) => {
     getCoordinates(data)
   }
 
@@ -78,22 +80,22 @@ export const main = () => {
     <Row>
       <Column md={8}>
         <Form handleSubmit={handleSubmit(submitForm)}>
-          <FormLabel label='Address'>
-            <FormField register={register} label='Address' name='address' />
+          <FormLabel label="Address">
+            <FormField register={register} label="Address" name="address" />
           </FormLabel>
 
-          <FormLabel label='Address'>
-            <FormField register={register} label='City' name='city' />
+          <FormLabel label="Address">
+            <FormField register={register} label="City" name="city" />
           </FormLabel>
 
-          <FormLabel label='Address'>
-            <FormField register={register} label='Region' name='region' />
+          <FormLabel label="Address">
+            <FormField register={register} label="Region" name="region" />
           </FormLabel>
 
-          <FormLabel label='Address'>
-            <FormField register={register} label='Language' name='language' />
+          <FormLabel label="Address">
+            <FormField register={register} label="Language" name="language" />
           </FormLabel>
-          <Button centre secondary type='submit'>
+          <Button centre secondary type="submit">
             Get Coordinates
           </Button>
         </Form>

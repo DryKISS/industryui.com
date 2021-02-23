@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -41,12 +41,14 @@ export const Carousel = ({
 
   dataSource = revert(dataSource)
 
-  const [currentImageIndex, setCurrentImageIndex] = useState((slides || children).length - 1)
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    (slides || children).length - 1
+  )
   const [NumberOfItems, setNumberOfItems] = useState(
     typeof numberOfItems === 'number' ? numberOfItems : 1
   )
 
-  const resetNumberOfItems = width => {
+  const resetNumberOfItems = (width) => {
     let found = false
     for (const key in numberOfItems) {
       if (width <= Number(key) && found === false) {
@@ -88,14 +90,14 @@ export const Carousel = ({
     <PaginationWrapper>
       <Pagination
         currentPage={dataSource.length - currentImageIndex}
-        nextLabel={<Icon icon='chevron-right' />}
-        onPageChange={page => {
+        nextLabel={<Icon icon="chevron-right" />}
+        onPageChange={(page) => {
           setCurrentImageIndex(dataSource.length - page)
         }}
         pageCount={dataSource.length}
-        prevLabel={<Icon icon='chevron-left' />}
+        prevLabel={<Icon icon="chevron-left" />}
         showNextAndPrev
-        size='xs'
+        size="xs"
         {...paginationProps}
       />
     </PaginationWrapper>
@@ -109,7 +111,7 @@ export const Carousel = ({
         <Carouselnav
           context={navContext}
           clickFunction={previousSlide}
-          direction='left'
+          direction="left"
           icon={leftNavIcon}
           position={navPosition}
         />
@@ -119,7 +121,7 @@ export const Carousel = ({
         <Carouselnav
           context={navContext}
           clickFunction={nextSlide}
-          direction='right'
+          direction="right"
           icon={rightNavIcon}
           position={navPosition}
         />
@@ -134,7 +136,10 @@ export const Carousel = ({
     }
     if (rightNavComponent) {
       components.right = (
-        <NavWrapper componentPosition={navPosition} endNav onClick={previousSlide}>
+        <NavWrapper
+          componentPosition={navPosition}
+          endNav
+          onClick={previousSlide}>
           {rightNavComponent}
         </NavWrapper>
       )
@@ -157,20 +162,27 @@ export const Carousel = ({
             <ItemWrapper
               gap={gap}
               width={`calc(${100 / NumberOfItems}% - ${gap}px)`}
-              transform={`translateX(calc(${currentImageIndex - index} * calc(100% + ${gap}px)))`}
-              key={'slide' + index}
-            >
+              transform={`translateX(calc(${
+                currentImageIndex - index
+              } * calc(100% + ${gap}px)))`}
+              key={'slide' + index}>
               {slides ? <CarouselSampleSlide {...item} /> : dataSource[index]}
             </ItemWrapper>
           )
         })}
 
-        {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
+        {hasNavigation &&
+          showPagination &&
+          paginationPosition === 'inside' &&
+          renderPagination()}
 
         {hasNavigation && showNavs && navComponents().right}
       </Wrapper>
 
-      {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
+      {hasNavigation &&
+        showPagination &&
+        paginationPosition === 'outside' &&
+        renderPagination()}
     </>
   )
 }

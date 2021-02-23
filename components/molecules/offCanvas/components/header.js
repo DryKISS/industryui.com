@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, func, oneOf, string } from 'prop-types'
 
 // UI
@@ -10,7 +11,6 @@ import {
   Avatar,
   Button,
   Close,
-  CONTEXT,
   Column,
   Divider,
   Heading,
@@ -18,6 +18,7 @@ import {
   Row,
   Text
 } from '../../../'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
 // Style
 import styled from 'styled-components'
@@ -33,11 +34,20 @@ export const OffCanvasHeader = ({
   variant
 }) => {
   return (
-    <StyledHeader context={context} data-cy='offCanvasHeader' variant={variant}>
-      <Row align='center'>
+    <StyledHeader context={context} data-cy="offCanvasHeader" variant={variant}>
+      <Row align="center">
         <Column sm={8}>
-          <Icon context={variant === 'extended' ? 'white' : context} icon='expand' prefix='fas' />
-          <StyledHeading content={title} context={context} tag='h4' variant={variant} />
+          <Icon
+            context={variant === 'extended' ? 'white' : context}
+            icon="expand"
+            prefix="fas"
+          />
+          <StyledHeading
+            content={title}
+            context={context}
+            tag="h4"
+            variant={variant}
+          />
         </Column>
 
         <Column sm={4}>
@@ -45,17 +55,20 @@ export const OffCanvasHeader = ({
             {submit && (
               <>
                 <Button
-                  content='Submit'
-                  context='primary'
-                  form='offCanvasForm'
-                  size='sm'
-                  type='submit'
+                  content="Submit"
+                  context="primary"
+                  form="offCanvasForm"
+                  size="sm"
+                  type="submit"
                 />
 
-                <Divider flexItem size='sm' vertical />
+                <Divider flexItem size="sm" vertical />
               </>
             )}
-            <Close click={onClose} context={variant === 'normal' ? context : 'white'} />
+            <Close
+              click={onClose}
+              context={variant === 'normal' ? context : 'white'}
+            />
           </StyledContainer>
         </Column>
       </Row>
@@ -63,12 +76,17 @@ export const OffCanvasHeader = ({
       <StyledBodyContainer>
         {hasAvatar && (
           <StyledAvatarContainer context={context}>
-            <Avatar content='Avatar' context={context} size='lg' />
+            <Avatar content="Avatar" context={context} size="lg" />
           </StyledAvatarContainer>
         )}
 
         {headerContent && (
-          <StyledText content={headerContent} context={context} size='xs' variant={variant} />
+          <StyledText
+            content={headerContent}
+            context={context}
+            size="xs"
+            variant={variant}
+          />
         )}
       </StyledBodyContainer>
     </StyledHeader>
@@ -78,10 +96,13 @@ export const OffCanvasHeader = ({
 const StyledHeader = styled.div`
   background-color: ${({ context, theme, variant }) =>
     variant === 'normal' ? '#fff' : lighten(0.1, theme.COLOUR[context])};
-  border-top: .5rem solid
+  border-top: 0.5rem solid
     ${({ context, variant, theme }) =>
-      variant === 'normal' && context !== 'primary' ? theme.COLOUR[context] : 'transparent'};
-  ${({ shadow }) => shadow && 'box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.11);'}
+      variant === 'normal' && context !== 'primary'
+        ? theme.COLOUR[context]
+        : 'transparent'};
+  ${({ shadow }) =>
+    shadow && 'box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.11);'}
   color: ${({ theme: { COLOUR } }) => COLOUR.black};
   display: flex;
   flex: 1;
@@ -112,7 +133,8 @@ const StyledBodyContainer = styled.div`
 
 const StyledAvatarContainer = styled.div`
   align-items: center;
-  background-color: ${({ context, theme }) => lighten(0.2, theme.COLOUR[context])};
+  background-color: ${({ context, theme }) =>
+    lighten(0.2, theme.COLOUR[context])};
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -127,7 +149,7 @@ const StyledText = styled(Text)`
 `
 
 OffCanvasHeader.propTypes = {
-  context: oneOf(Object.values(CONTEXT)),
+  context: oneOf(Object.values(THEME_CONTEXT)),
   hasAvatar: bool,
   headerContent: string,
   onClose: func.isRequired,

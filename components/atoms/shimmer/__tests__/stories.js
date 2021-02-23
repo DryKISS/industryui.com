@@ -2,8 +2,11 @@
  * Shimmer
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Shimmer } from 'components'
+import { Shimmer } from '../shimmer'
 import Readme from '../README.md'
 
 export default {
@@ -24,4 +27,4 @@ export default {
   title: 'Atoms/Shimmer'
 }
 
-export const main = args => <Shimmer {...args} />
+export const main = (args) => <Shimmer {...args} />

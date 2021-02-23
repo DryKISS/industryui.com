@@ -1,10 +1,10 @@
 /**
- * Theme - Variables
+ * Components - Theme - Variables
  */
 
-// Core
-import { COLOUR } from './colour'
-import { TYPOGRAPHY } from './typography'
+// Theme
+import { THEME_COLOUR as COLOUR } from './colour'
+import { THEME_TYPOGRAPHY as TYPOGRAPHY } from './typography'
 
 // Components
 import { AVATAR } from '../../atoms/avatar/variables'
@@ -15,7 +15,7 @@ import { COPYRIGHT } from '../../molecules/copyright/variables'
 import { DETAILS2 } from '../../atoms/details2/variables'
 import { DROPDOWN } from '../../molecules/dropdown/variables'
 import { FOOTER } from '../../organisms/footer/variables'
-import { FORM_ELEMENTS_STYLES } from '../../form/variables/formVariables'
+import { FORM_ELEMENTS_STYLES } from '../../form/variables/variables'
 import { GRID } from '../../atoms/grid/variables'
 import { HEADINGS } from '../../atoms/heading/variables'
 import { ICONS } from '../../icons/variables'
@@ -32,7 +32,7 @@ import { SPACING } from '../utils'
 import { STEPPER } from '../../molecules/stepper/variables'
 import { TABLE } from '../../molecules/table/variables'
 import { TABS } from '../../molecules/tabs/variables'
-import { TEXT_STYLE } from '../../atoms/text/variables'
+import { TEXT } from '../../atoms/text/variables'
 import { VOICE_RECORDER } from '../../molecules/voiceRecorder/variables'
 
 // Nivo
@@ -71,7 +71,7 @@ export const Theme = {
   STEPPER,
   TABLE,
   TABS,
-  TEXT_STYLE,
+  TEXT,
   TYPOGRAPHY,
   VOICE_RECORDER
 }

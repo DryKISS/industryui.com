@@ -3,10 +3,17 @@
  */
 
 // React
+import React from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
+import {
+  TableCaption,
+  TableColumns,
+  TableData,
+  TableRow,
+  TableRows
+} from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -27,7 +34,7 @@ export const TableContent = ({
   tableSpan
 }) => {
   const bottomCells = { data: [], hasData: false }
-  columns.forEach(element => {
+  columns.forEach((element) => {
     if (element.bottomCell) {
       bottomCells.hasData = true
       bottomCells.data.push(element)
@@ -38,12 +45,19 @@ export const TableContent = ({
   return (
     <StyledTable className={className}>
       {caption !== '' && <TableCaption>{caption}</TableCaption>}
-      {columns && <TableColumns align={align} columns={columns} setSort={setSort} sort={sort} />}
+      {columns && (
+        <TableColumns
+          align={align}
+          columns={columns}
+          setSort={setSort}
+          sort={sort}
+        />
+      )}
 
       <tbody>
         {noData && !loading && !rows.length ? (
           <TableRow>
-            <TableData align='center' colSpan={tableSpan}>
+            <TableData align="center" colSpan={tableSpan}>
               No data available
             </TableData>
           </TableRow>
@@ -61,7 +75,9 @@ export const TableContent = ({
         {bottomCells?.hasData && (
           <TableRow>
             {bottomCells.data.map((cell, j) => (
-              <TableData key={`bottom${j}`}>{cell ? cell.bottomCell : ''}</TableData>
+              <TableData key={`bottom${j}`}>
+                {cell ? cell.bottomCell : ''}
+              </TableData>
             ))}
           </TableRow>
         )}

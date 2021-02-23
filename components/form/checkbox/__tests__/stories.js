@@ -2,11 +2,18 @@
  * Form - Field
  */
 
+// React
+import React from 'react'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // Yup
 import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, CheckboxField, Form, useForm, yupResolver } from 'components'
+import { Button, CheckboxField, Form } from '../../../'
 import Readme from '../README.md'
 
 const data = [
@@ -46,7 +53,8 @@ const BaseComponent = (props = {}) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
-  const onSubmit = data => {}
+
+  const onSubmit = (data) => {}
 
   const defaultProps = {
     errors: errors,
@@ -58,9 +66,9 @@ const BaseComponent = (props = {}) => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <CheckboxField {...defaultProps} data={data} />
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }
 
-export const main = args => <BaseComponent {...args} />
+export const main = (args) => <BaseComponent {...args} />

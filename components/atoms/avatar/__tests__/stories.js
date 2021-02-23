@@ -2,11 +2,14 @@
  * Avatar
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ContextControl, SizeControl } from 'decorators'
+import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Avatar, CONTEXT, SIZE } from 'components'
+import { Avatar, THEME_CONTEXT, THEME_SIZE } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -15,11 +18,11 @@ export default {
     actionClick: () => {},
     children: '',
     className: '',
-    context: CONTEXT.PRIMARY,
+    context: THEME_CONTEXT.PRIMARY,
     content: 'Avatar',
     click: () => {},
     gmail: 'test@gmail.com',
-    size: SIZE.MD,
+    size: THEME_SIZE.MD,
     src: 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg',
     style: '',
     withAction: false,
@@ -43,14 +46,16 @@ export default {
   title: 'Atoms/Avatar'
 }
 
-export const main = args => {
+export const main = (args) => {
   const props = {
     action: args.withAction ? args.action : '',
     content: args.content,
     context: args.context,
     gmail: args.withGravatar ? args.gmail : '',
     size: args.size,
-    src: args.withImage ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg' : ''
+    src: args.withImage
+      ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg'
+      : ''
   }
 
   return <Avatar {...props} />

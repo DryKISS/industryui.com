@@ -1,39 +1,47 @@
 /**
- * Social - Facebook - Share Button
+ * Components - Social - Facebook - Share Button
  */
 
 // React
+import React from 'react'
 import { bool, number, oneOf, string } from 'prop-types'
 
-export const FacebookShareButton = ({ appId, hashTag, iFrame, layout, size, to }) => {
+const p = 'https://www.facebook.com/plugins/share_button.php'
+
+export const FacebookShareButton = ({
+  appId,
+  hashTag,
+  iFrame,
+  layout,
+  size,
+  to
+}) => {
   return (
     <>
       {iFrame && (
         <iframe
-          allow='encrypted-media'
-          frameBorder='0'
-          height='29'
-          scrolling='no'
-          src={`https://www.facebook.com/plugins/share_button.php?href=${to}&layout=${layout}&size=${size}&appId=${appId}&width=104&height=30`}
+          allow="encrypted-media"
+          frameBorder="0"
+          height="29"
+          scrolling="no"
+          src={`${p}?href=${to}&layout=${layout}&size=${size}&appId=${appId}&width=104&height=30`}
           style={{ border: 'none', overflow: 'hidden' }}
-          width='104'
+          width="104"
         />
       )}
 
       {!iFrame && (
         <div
-          className='fb-share-button'
+          className="fb-share-button"
           data-hashtag={hashTag}
           data-href={to}
           data-layout={layout}
-          data-size={size}
-        >
+          data-size={size}>
           <a
-            className='fb-xfbml-parse-ignore'
+            className="fb-xfbml-parse-ignore"
             href={`https://www.facebook.com/sharer/sharer.php?u=${to}&src=sdkprepars`}
-            rel='noopener noreferrer'
-            target='_blank'
-          >
+            rel="noopener noreferrer"
+            target="_blank">
             {' '}
           </a>
         </div>

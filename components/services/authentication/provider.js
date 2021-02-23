@@ -6,7 +6,7 @@
  */
 
 // React
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 // Bcrypt
 import bcrypt from 'bcryptjs'
@@ -132,12 +132,12 @@ export const UserProvider = ({ children }) => {
     setUser(null)
   }
 
-  const hashPassword = password => {
+  const hashPassword = (password) => {
     return bcrypt.hashSync(password, 10)
   }
 
   // TODO - remove after converting all pages to new user roles
-  const authorise = condition => {
+  const authorise = (condition) => {
     if (!condition(user)) {
       Router.push('/account/sign-in')
       return false
@@ -156,8 +156,7 @@ export const UserProvider = ({ children }) => {
           registerContext,
           signOut,
           user
-        }}
-      >
+        }}>
         {children}
       </UserContext.Provider>
     )

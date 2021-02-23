@@ -1,7 +1,7 @@
 /**
- * Theme - Constants - Position
+ * Components - Theme - Constants - Position
  */
-export const Position = {
+export const THEME_POSITION = {
   Bottom: 'bottom',
   Top: 'top',
   Right: 'right',

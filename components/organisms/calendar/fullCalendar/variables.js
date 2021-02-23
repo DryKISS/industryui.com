@@ -1,5 +1,5 @@
 /**
- * Full Calendar - Variables
+ * Components - Organisms - Calendar - Full Calendar - Variables
  */
 
 export const CALENDAR = {

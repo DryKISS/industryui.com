@@ -3,8 +3,7 @@
  */
 
 // React
-import { useState } from 'react'
-
+import React, { useState } from 'react'
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
@@ -15,15 +14,12 @@ import {
   MessagingDragHover,
   MessagingSearch,
   MessagingSend,
-  useComponentCommunication
-} from '../../../'
-
-import {
   MessageNames,
   MessagingActions,
   MessagingCommunicationService,
-  MessagingSubscriber
-} from 'components/services'
+  MessagingSubscriber,
+  useComponentCommunication
+} from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -63,23 +59,29 @@ export const MessagingContainer = ({
   const onLeave = () => {
     setIsDragHoverOpen(false)
   }
-  const onDrop = e => {
+  const onDrop = (e) => {
     setFiles(e)
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: e }
+      payload: {
+        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+        data: e
+      }
     })
   }
   const closeHoverPopup = () => {
-    setFiles(files => [])
+    setFiles((files) => [])
     setIsDragHoverOpen(false)
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: [] }
+      payload: {
+        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+        data: []
+      }
     })
   }
 
-  const handleRemoveFile = fileIndex => {
+  const handleRemoveFile = (fileIndex) => {
     const newFiles = [...Files]
     newFiles.splice(fileIndex, 1)
     if (newFiles.length === 0) {
@@ -89,14 +91,20 @@ export const MessagingContainer = ({
     setFiles(newFiles)
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: newFiles }
+      payload: {
+        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+        data: newFiles
+      }
     })
   }
 
   const handleAttachSubmitClick = () => {
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: Files }
+      payload: {
+        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+        data: Files
+      }
     })
   }
 
@@ -106,7 +114,7 @@ export const MessagingContainer = ({
     }
   }
 
-  const onAction = payload => {
+  const onAction = (payload) => {
     switch (payload.action) {
       case MessagingActions.HASHTAG_CLICKED:
         onHashtagClick(payload.data)
@@ -135,7 +143,7 @@ export const MessagingContainer = ({
     subscriber: MessagingSubscriber
   })
 
-  const handleSubmit = messageToSend => {
+  const handleSubmit = (messageToSend) => {
     onMessageSubmit(messageToSend)
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
@@ -144,11 +152,14 @@ export const MessagingContainer = ({
 
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE, data: [] }
+      payload: {
+        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+        data: []
+      }
     })
     setIsDragHoverOpen(() => false)
     setTimeout(() => {
-      setFiles(files => [])
+      setFiles((files) => [])
     }, 500)
   }
 
@@ -161,8 +172,7 @@ export const MessagingContainer = ({
         <StyledContainer
           messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
           className={className}
-          style={style}
-        >
+          style={style}>
           <MessageList
             config={messagesConfig}
             initialMessages={messages}
@@ -187,7 +197,8 @@ export const MessagingContainer = ({
   )
 }
 const StyledContainer = styled.div`
-  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
+  background-color: ${({ theme: { MESSAGING } }) =>
+    MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>
     messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;

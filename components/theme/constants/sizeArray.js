@@ -1,15 +1,15 @@
 /**
- * Theme - Constants - Size Array
+ * Components - Theme - Constants - Size Array
  */
 
 // UI
-import { SIZE } from './size'
+import { THEME_SIZE } from './size'
 
-export const sizeArray = (() => {
+export const THEME_SIZE_ARRAY = (() => {
   const array = []
 
-  for (const key in SIZE) {
-    array.push(SIZE[key])
+  for (const key in THEME_SIZE) {
+    array.push(THEME_SIZE[key])
   }
 
   return array

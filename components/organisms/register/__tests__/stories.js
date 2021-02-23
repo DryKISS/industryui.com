@@ -3,10 +3,10 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // UI
-import { Alert, Register, requestSimulator } from 'components'
+import { Alert, Register, requestSimulator } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -21,11 +21,11 @@ export default {
   title: 'Organisms/Register'
 }
 
-export const main = args => {
+export const Main = (args) => {
   const [loggedToast, setLoggedToast] = useState(false)
 
-  const submit = e => {
-    requestSimulator().then(res => {
+  const submit = (e) => {
+    requestSimulator().then((res) => {
       setLoggedToast(true)
 
       setTimeout(() => {
@@ -55,7 +55,7 @@ export const main = args => {
 
   return (
     <>
-      {loggedToast && <Alert content='logged' context='success' />}
+      {loggedToast && <Alert content="logged" context="success" />}
       <Register {...defaultProps} />
     </>
   )

@@ -2,8 +2,12 @@
  * Error 404
  */
 
+// React
+import React from 'react'
+
 // Layout
-import { Page, Text } from '../../'
+import { Page } from '../../layouts/page/page'
+import { Text } from '../../atoms/text/text'
 
 export const Error404 = () => {
   const meta = {
@@ -17,10 +21,11 @@ export const Error404 = () => {
   }
 
   return (
-    <Page heading='404 ERROR PAGE – NOT FOUND' meta={meta}>
+    <Page heading="404 ERROR PAGE – NOT FOUND" meta={meta}>
       <Text>
-        The page you were looking for no longer exists or never did. Please use the links at the top
-        of your screen to get back in the game, or click here to go home and start again.
+        The page you were looking for no longer exists or never did. Please use
+        the links at the top of your screen to get back in the game, or click
+        here to go home and start again.
       </Text>
     </Page>
   )

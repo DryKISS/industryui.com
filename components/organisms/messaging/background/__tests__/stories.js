@@ -2,11 +2,14 @@
  * Messaging/Background
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../../.storybook/decorators'
 
 // UI
-import { arrayOfValues, MessageBackground } from 'components'
+import { arrayOfValues, MessageBackground } from '../../../../'
 import Readme from '../README.md'
 
 const options = {
@@ -14,7 +17,7 @@ const options = {
   WhatsApp: '/messaging/whatsapp.png'
 }
 
-const Height = story => {
+const Height = (story) => {
   return <div style={{ height: '500px' }}>{story()}</div>
 }
 
@@ -40,4 +43,4 @@ export default {
   title: 'Organisms/Messaging/Background'
 }
 
-export const Main = args => <MessageBackground {...args} />
+export const Main = (args) => <MessageBackground {...args} />

@@ -2,8 +2,11 @@
  * Sidebar
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Sidebar } from 'components'
+import { Sidebar } from '../../../'
 import Readme from '../README.md'
 
 // Data
@@ -25,4 +28,4 @@ export default {
   title: 'Molecules/Sidebar'
 }
 
-export const main = args => <Sidebar {...args} />
+export const main = (args) => <Sidebar {...args} />

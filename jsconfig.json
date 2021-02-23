@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es6",
     "target": "es6",
     "allowSyntheticDefaultImports": false,
-    "baseUrl": "./",
-    "paths": {
-      "components": ["./components", "themes"]
-    }
+    "baseUrl": "./"
   },
   "include": ["components/**/*", ".storybook/themes/**/*"]
 }

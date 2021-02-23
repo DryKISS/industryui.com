@@ -1,10 +1,13 @@
 /**
- * Get Address
+ * Components - Molecules - Get Address
  */
 
 // React
-import { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { func, object, oneOf, number, string } from 'prop-types'
+
+// Style
+import styled, { css } from 'styled-components'
 
 // UI
 import {
@@ -16,12 +19,11 @@ import {
   GetAddressService,
   InputGroupAddon,
   Shimmer,
-  SIZE,
   ConfigContext,
   validatorPostCode
 } from '../../'
 
-import styled, { css } from 'styled-components'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const GetAddress = ({
   errors,
@@ -43,7 +45,7 @@ export const GetAddress = ({
 
   const InputValueRef = useRef('')
 
-  const onApiCall = data => {
+  const onApiCall = (data) => {
     const { response, hasError } = data
 
     if (!hasError) {
@@ -60,7 +62,7 @@ export const GetAddress = ({
     setIsLoading(false)
   }
 
-  const handleInputChange = value => {
+  const handleInputChange = (value) => {
     InputValueRef.current = value
   }
 
@@ -85,17 +87,24 @@ export const GetAddress = ({
         <FormField
           errors={errors[name] ? errors : Errors}
           name={name}
-          onChange={e => handleInputChange(e.target.value)}
+          onChange={(e) => handleInputChange(e.target.value)}
           placeholder={placeholder}
           register={register}
           size={size}
         />
-        <InputGroupAddon addonType='append'>
-          <Button onClick={handleSearchClick} content='Search' context='primary' size='sm' />
+        <InputGroupAddon addonType="append">
+          <Button
+            onClick={handleSearchClick}
+            content="Search"
+            context="primary"
+            size="sm"
+          />
         </InputGroupAddon>
       </InputWrapper>
       {(errors[name] || Errors[name]) && (
-        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
+        <FormError
+          message={errors[name] ? errors[name].message : Errors[name].message}
+        />
       )}
       {IsLoading && (
         <LoadingWrapper size={size}>
@@ -126,16 +135,16 @@ const LoadingWrapper = styled.div`
 
   ${({ size }) => {
     switch (size) {
-      case SIZE.SM:
+      case THEME_SIZE.SM:
         return css`
           top: 2.1rem;
           height: 0.8rem;
         `
-      case SIZE.MD:
+      case THEME_SIZE.MD:
         return css`
           height: 1.125rem;
         `
-      case SIZE.LG:
+      case THEME_SIZE.LG:
         return css`
           height: 1.45rem;
         `

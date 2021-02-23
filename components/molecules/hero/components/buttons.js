@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { array } from 'prop-types'
 
 // UI
@@ -14,7 +15,7 @@ import styled from 'styled-components'
 export const HeroButtons = ({ buttons }) => {
   return buttons.map(({ content, context, to }, index) => (
     <StyledLink border={false} to={to} key={index}>
-      <StyledButton content={content} context={context} size='lg' />
+      <StyledButton content={content} context={context} size="lg" />
     </StyledLink>
   ))
 }

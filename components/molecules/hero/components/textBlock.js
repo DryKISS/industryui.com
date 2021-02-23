@@ -4,6 +4,7 @@
  */
 
 // React
+import React from 'react'
 import { number, string, objectOf, oneOfType } from 'prop-types'
 
 // UI

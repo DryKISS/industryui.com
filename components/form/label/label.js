@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { bool, node, string } from 'prop-types'
 
 // Style
@@ -12,8 +13,8 @@ import { Space, Text } from '../../'
 export const FormLabel = ({ children, id, label, show, size }) => {
   return (
     <StyledLabel hasChild={children} htmlFor={id} show={show}>
-      <Space marginBottom='xs'>
-        <Text size={size ?? 'md'} colour='darkText' content={label} />
+      <Space marginBottom="xs">
+        <Text size={size ?? 'md'} colour="darkText" content={label} />
       </Space>
       {children}
     </StyledLabel>

@@ -1,18 +1,23 @@
 /**
- * Button - Toolbar
+ * Components - Atoms - Button - Toolbar
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { AlignControl, SizeControl } from 'decorators'
+import { AlignControl, SizeControl } from '../../../../../.storybook/decorators'
 
 // UI
-import { ALIGN, Button, ButtonToolbar, Icon, SIZE } from 'components'
+import { Button, ButtonToolbar, Icon } from '../../../../'
+import { THEME_ALIGN } from '../../../../theme/constants/align'
+import { THEME_SIZE } from '../../../../theme/constants/size'
 import Readme from '../README.md'
 
 export default {
   args: {
-    align: ALIGN.Start,
-    size: SIZE.MD
+    align: THEME_ALIGN.Start,
+    size: THEME_SIZE.MD
   },
   argTypes: {
     align: AlignControl(),
@@ -32,18 +37,30 @@ export default {
 const Children = ({ size }) => {
   return (
     <>
-      <Button as='a' data-tip='Button' context='primary' key={1} onClick={() => {}} size={size}>
-        <Icon icon='user' prefix='fas' style={{ pointerEvents: 'none' }} />
+      <Button
+        as="a"
+        data-tip="Button"
+        context="primary"
+        key={1}
+        onClick={() => {}}
+        size={size}>
+        <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
       </Button>
 
-      <Button as='a' data-tip='Button' context='warning' key={2} onClick={() => {}} size={size}>
-        <Icon icon='trash' prefix='fas' style={{ pointerEvents: 'none' }} />
+      <Button
+        as="a"
+        data-tip="Button"
+        context="warning"
+        key={2}
+        onClick={() => {}}
+        size={size}>
+        <Icon icon="trash" prefix="fas" style={{ pointerEvents: 'none' }} />
       </Button>
     </>
   )
 }
 
-export const main = args => {
+export const main = (args) => {
   return (
     <ButtonToolbar {...args}>
       <Children size={args.size} />

@@ -2,8 +2,11 @@
  * Atoms - Grid - Row - Story
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Row } from '../'
+import { Row } from '../components/Row'
 import Readme from '../README.md'
 import { StyledColumn } from '../__mocks__/grid'
 
@@ -19,23 +22,23 @@ export default {
   title: 'Atoms/Grid/Row'
 }
 
-export const row = args => (
+export const row = (args) => (
   <>
     <Row {...args}>
       <StyledColumn md={6}>Flexible Row md={6}</StyledColumn>
     </Row>
-    <Row {...args} justify='end'>
+    <Row {...args} justify="end">
       <StyledColumn md={3}>End md={3}</StyledColumn>
       <StyledColumn md={3}>End md={3}</StyledColumn>
     </Row>
-    <Row {...args} justify='start'>
+    <Row {...args} justify="start">
       <StyledColumn md={3}>Start md={3}</StyledColumn>
       <StyledColumn md={3}>Start md={3}</StyledColumn>
     </Row>
   </>
 )
 
-export const rowAlign = args => {
+export const rowAlign = (args) => {
   const style = { backgroundColor: 'rgba(255,0,0,.1)', minHeight: '10rem' }
 
   return (
@@ -46,7 +49,7 @@ export const rowAlign = args => {
   )
 }
 
-export const rowWrap = args => (
+export const rowWrap = (args) => (
   <Row {...args}>
     <StyledColumn md={5}>md={5} NoWrap</StyledColumn>
     <StyledColumn md={5}>md={5} NoWrap</StyledColumn>

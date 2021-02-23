@@ -6,7 +6,7 @@
 import axios from 'axios'
 
 export class GeoCoder {
-  constructor ({ apiKey, debug = false, language, region }) {
+  constructor({ apiKey, debug = false, language, region }) {
     this.apiKey = apiKey
     this.debug = debug
     this.language = language
@@ -14,7 +14,7 @@ export class GeoCoder {
     this.GOOGLE_API_URL = 'https://maps.google.com/maps/api/geocode/json'
   }
 
-  log (message, warn = false) {
+  log(message, warn = false) {
     if (this.debug) {
       if (warn) {
         console.warn(message)
@@ -24,7 +24,7 @@ export class GeoCoder {
     }
   }
 
-  async handleUrl (url) {
+  async handleUrl(url) {
     const response = await axios
       .get(url)
       .catch(() => Promise.reject(new Error('Error fetching data')))
@@ -34,14 +34,19 @@ export class GeoCoder {
       return response.data
     }
 
-    this.log(`${response.statusText}.\nServer returned status code ${response.statusText}`, true)
+    this.log(
+      `${response.statusText}.\nServer returned status code ${response.statusText}`,
+      true
+    )
 
     return Promise.reject(
-      new Error(`${response.statusText}.\nServer returned status code ${response.statusText}`)
+      new Error(
+        `${response.statusText}.\nServer returned status code ${response.statusText}`
+      )
     )
   }
 
-  async fromAddress ({ address, city = '' }) {
+  async fromAddress({ address, city = '' }) {
     if (!address) {
       this.log('Provided address is invalid', true)
       return Promise.reject(new Error('Provided address is invalid'))

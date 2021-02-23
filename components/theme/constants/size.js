@@ -1,7 +1,7 @@
 /**
- *  Theme - Constants - Size
+ * Components - Theme - Constants - Size
  */
-export const SIZE = {
+export const THEME_SIZE = {
   XXS: 'xxs',
   XS: 'xs',
   SM: 'sm',

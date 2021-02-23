@@ -1,5 +1,9 @@
+/**
+ * Preview
+ */
+
 // React
-import { memo, useEffect, useState, useRef } from 'react'
+import React, { memo, useEffect, useState, useRef } from 'react'
 
 // UI
 import styled, { css } from 'styled-components'
@@ -7,20 +11,23 @@ import Cropper from 'react-cropper'
 
 const imageFormats = ['.jpg', '.jpeg', '.png']
 
-const isImage = src => {
+const isImage = (src) => {
   let isIt = false
+
   for (const format of imageFormats) {
     if (src.includes(format)) {
       isIt = true
       break
     }
   }
+
   return isIt
 }
 
-const fileType = source => {
+const fileType = (source) => {
   if (source) {
     const src = source.toLowerCase()
+
     if (isImage(src)) {
       return 'image'
     } else if (src.includes('.pdf')) {
@@ -28,13 +35,20 @@ const fileType = source => {
     } else {
       return undefined
     }
-  } else return undefined
+  } else {
+    return undefined
+  }
 }
+
 const checkFileType = (file, type) => {
-  if (file?.type.includes(type) || fileType(file?.src) === type) return true
+  if (file?.type.includes(type) || fileType(file?.src) === type) {
+    return true
+  }
+
   return false
 }
-const source = file => {
+
+const source = (file) => {
   return file.src ?? URL.createObjectURL(file)
 }
 
@@ -53,10 +67,16 @@ export const Preview = memo(
     message,
     zoomable
   }) => {
-    const [pdfLoader, setPdfLoader] = useState({ Document: null, Page: null, pdfjs: null })
+    const [pdfLoader, setPdfLoader] = useState({
+      Document: null,
+      Page: null,
+      pdfjs: null
+    })
+
     const loadModules = async () => {
       const { Document, Page, pdfjs } = await import('react-pdf')
-      pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
+      const path = '//cdnjs.cloudflare.com/ajax/libs/pdf.js'
+      pdfjs.GlobalWorkerOptions.workerSrc = `${path}/${pdfjs.version}/pdf.worker.js`
       setPdfLoader({ Document, Page, pdfjs })
     }
 
@@ -66,6 +86,7 @@ export const Preview = memo(
     }, [])
 
     const cropperRef = useRef(null)
+
     const onDocumentLoadSuccess = ({ numPages }) => {
       showPagesNumber &&
         onPdfDocumentLoaded &&
@@ -93,7 +114,7 @@ export const Preview = memo(
             background={false}
             guides={false}
             checkCrossOrigin={false}
-            dragMode='move'
+            dragMode="move"
             ref={cropperRef}
           />
         )
@@ -126,7 +147,9 @@ export const Preview = memo(
           <PdfWrapper onClick={onClick} small={small} message={message}>
             {pdfLoader.Document && (
               <>
-                <pdfLoader.Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
+                <pdfLoader.Document
+                  file={src}
+                  onLoadSuccess={onDocumentLoadSuccess}>
                   <pdfLoader.Page pageNumber={1} />
                 </pdfLoader.Document>
               </>
@@ -162,6 +185,7 @@ export const Preview = memo(
     return true
   }
 )
+
 const PreviewImage = styled.img`
   width: 100%;
   ${({ onClick }) =>
@@ -179,8 +203,8 @@ const PreviewImage = styled.img`
     css`
       filter: brightness(0.4);
     `}
-
 `
+
 const PdfWrapper = styled.div`
   ${({ onClick }) =>
     onClick &&
@@ -189,7 +213,7 @@ const PdfWrapper = styled.div`
     `}
   ${({ small, message }) => {
     if (message || small) {
-      var size = small ? '4rem' : '10rem'
+      const size = small ? '4rem' : '10rem'
       return css`
         width: 100%;
         height: ${size};
@@ -214,6 +238,7 @@ const FilePlaceHolder = styled.div`
   margin-bottom: 0.5rem;
   width: 3rem;
 `
+
 const PlaceHolder = styled.div`
   align-items: center;
   display: flex;

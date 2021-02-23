@@ -2,8 +2,11 @@
  * highCharts - line chart
  */
 
+// React
+import React from 'react'
+
 // UI
-import { HighChart } from 'components'
+import { HighChart } from '../../../'
 import Readme from '../README.md'
 
 // Styled Components
@@ -23,7 +26,7 @@ export default {
   title: 'Molecules/Charts/highCharts/line'
 }
 
-const BaseComponent = props => {
+const BaseComponent = (props) => {
   const options = {
     chart: {
       type: 'line'
@@ -54,6 +57,6 @@ const StyledWrapper = styled.div`
   height: 500px;
 `
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent args={args} />
 }

@@ -9,13 +9,9 @@ import { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 // UI
-import { ConfigContext } from '../'
+import { ConfigContext } from '../services/config/context'
 
 export const useAxios = (url, params, initialValue) => {
-  if (!url) {
-    return { data: { isLoading: false } }
-  }
-
   const { apiConfig } = useContext(ConfigContext)
   const [data, setData] = useState({ ...initialValue, isLoading: true })
 

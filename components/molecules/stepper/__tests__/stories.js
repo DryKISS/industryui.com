@@ -2,8 +2,11 @@
  * Stepper
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Stepper } from 'components'
+import { Stepper } from '../components/stepper'
 import Readme from '../README.md'
 
 // Data
@@ -25,4 +28,4 @@ export default {
   title: 'Molecules/Stepper'
 }
 
-export const main = args => <Stepper {...args} />
+export const main = (args) => <Stepper {...args} />

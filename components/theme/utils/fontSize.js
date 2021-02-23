@@ -1,14 +1,16 @@
 /**
- * Theme - Font Size
+ * Components - Theme - Utils - Font Size
  */
 
 // Utils
-import { SIZE } from '../../'
+import { THEME_SIZE } from '../../'
 
-export const FONTSIZE = ({ size, theme }) => {
-  const fontSize = size && Object.values(SIZE).indexOf(size)
+export const themeFontSize = ({ size, theme }) => {
+  const fontSize = size && Object.values(THEME_SIZE).indexOf(size)
 
   return `font-size: ${
-    fontSize > -1 ? theme.TYPOGRAPHY.fontSizes[fontSize] + 'px' : theme.TYPOGRAPHY.fontSizeBase
+    fontSize > -1
+      ? theme.TYPOGRAPHY.fontSizes[fontSize] + 'px'
+      : theme.TYPOGRAPHY.fontSizeBase
   };`
 }

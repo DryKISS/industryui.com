@@ -1,12 +1,18 @@
 /**
- * Form - Input - Group
+ * Components - Form - Input Group - Story
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { SizeControl } from 'decorators'
+import { SizeControl } from '../../../../.storybook/decorators'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormField, Icon, InputGroup, InputGroupAddon, useForm } from 'components'
+import { Button, FormField, Icon, InputGroup, InputGroupAddon } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -34,14 +40,21 @@ const BaseComponent = (props = {}) => {
 const Input = () => {
   const { register, errors } = useForm()
 
-  return <FormField errors={errors} name='id' placeholder='Search...' register={register} />
+  return (
+    <FormField
+      errors={errors}
+      name="id"
+      placeholder="Search..."
+      register={register}
+    />
+  )
 }
 
-export const prependButton = args => {
+export const prependButton = (args) => {
   return (
     <BaseComponent {...args}>
-      <InputGroupAddon addonType='prepend'>
-        <Button content='Search' type='submit' size='sm' />
+      <InputGroupAddon addonType="prepend">
+        <Button content="Search" type="submit" size="sm" />
       </InputGroupAddon>
 
       <Input />
@@ -49,11 +62,11 @@ export const prependButton = args => {
   )
 }
 
-export const prependIcon = args => {
+export const prependIcon = (args) => {
   return (
     <BaseComponent {...args}>
-      <InputGroupAddon addonType='prepend' text>
-        <Icon icon='search' />
+      <InputGroupAddon addonType="prepend" text>
+        <Icon icon="search" />
       </InputGroupAddon>
 
       <Input />
@@ -61,25 +74,25 @@ export const prependIcon = args => {
   )
 }
 
-export const appendButton = args => {
+export const appendButton = (args) => {
   return (
     <BaseComponent {...args}>
       <Input />
 
-      <InputGroupAddon addonType='append'>
-        <Button content='Search' type='submit' size='sm' />
+      <InputGroupAddon addonType="append">
+        <Button content="Search" type="submit" size="sm" />
       </InputGroupAddon>
     </BaseComponent>
   )
 }
 
-export const appendIcon = args => {
+export const appendIcon = (args) => {
   return (
     <BaseComponent {...args}>
       <Input />
 
-      <InputGroupAddon addonType='append' text>
-        <Icon icon='search' />
+      <InputGroupAddon addonType="append" text>
+        <Icon icon="search" />
       </InputGroupAddon>
     </BaseComponent>
   )

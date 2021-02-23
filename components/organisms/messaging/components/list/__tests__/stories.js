@@ -2,9 +2,14 @@
  * Messaging/List
  */
 
-// UI
+// React
+import React from 'react'
+
+// Style
 import styled from 'styled-components'
-import { MessageList } from 'components'
+
+// UI
+import { MessageList } from '../index'
 import Readme from '../README.md'
 
 // Data
@@ -27,6 +32,7 @@ export const main = () => (
     <MessageList initialMessages={messages} />
   </ListWrapper>
 )
+
 const ListWrapper = styled.div`
   min-height: 30rem;
 `

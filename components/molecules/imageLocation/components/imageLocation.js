@@ -3,7 +3,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Style
 import styled from 'styled-components'
@@ -23,7 +23,10 @@ export const ImageLocation = ({
   const [coordinates, setCoordinates] = useState(initialCoordinates)
 
   useEffect(() => {
-    coordinatesChange && item && coordinates && coordinatesChange({ coordinates, item })
+    coordinatesChange &&
+      item &&
+      coordinates &&
+      coordinatesChange({ coordinates, item })
   }, [coordinates])
 
   return (

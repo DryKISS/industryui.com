@@ -2,8 +2,11 @@
  * getAcronym
  */
 
+// React
+import React from 'react'
+
 // UI
-import { getAcronym, Text } from 'components'
+import { getAcronym, Text } from '../../../'
 import Readme from '../README.md'
 
 export default {
@@ -20,7 +23,7 @@ export default {
   title: 'Utils/GetAcronym'
 }
 
-export const GetAcronym = args => {
+export const Main = (args) => {
   return (
     <>
       <Text>Original: {args.fullText}</Text>

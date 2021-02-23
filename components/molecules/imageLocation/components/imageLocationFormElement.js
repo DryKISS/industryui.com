@@ -2,7 +2,11 @@
  * Image Location FormElement
  */
 
+// React
+import React from 'react'
 import { func, object } from 'prop-types'
+
+// React Hook Form
 import { Controller } from 'react-hook-form'
 
 // Style
@@ -13,13 +17,19 @@ import { ImageLocation, ImageLocationProps } from '../../../'
 
 const elementName = 'imageLocationData'
 
-export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
+export const ImageLocationFormElement = ({
+  control,
+  errors,
+  setValue,
+  ...props
+}) => {
   return (
-    <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
+    <ControllerWrapper
+      className={`${errors && errors[elementName] && 'hasError'}`}>
       <Controller
         as={ImageLocation}
         control={control}
-        coordinatesChange={imageLocationData => {
+        coordinatesChange={(imageLocationData) => {
           setValue(elementName, imageLocationData)
         }}
         name={elementName}

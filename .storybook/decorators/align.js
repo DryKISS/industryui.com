@@ -1,17 +1,21 @@
 /**
- * Align selector
+ * Storybook - Decorators - Align
  */
 
-import { ControlTypes } from 'decorators'
+// React
+import React from 'react'
+
+// Decorator
+import { ControlTypes } from './'
 
 // UI
-import { arrayOfValues, ALIGN } from 'components'
+import { arrayOfValues, THEME_ALIGN } from '../../components'
 
 export const AlignControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(ALIGN).sort()
+      options: arrayOfValues(THEME_ALIGN).sort()
     }
   }
 }

@@ -1,54 +1,51 @@
 /**
- * Components - Text
+ * Components - Atoms - Text
  */
 
-// UI
-import { DISPLAY, SPACER, MEDIA_QUERY } from '../../'
-import { TextPropTypes, TextDefaultProps } from './props'
+// React
+import React from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { SPACER, MEDIA_QUERY } from '../../'
+import { themeDisplay } from '../../theme/utils/display'
+
+// Props
+import { propTypes, defaultProps } from './props'
 
 export const Text = ({
   align,
   children,
   className,
-  colour,
   content,
   context,
-  stroke,
   size,
-  weight,
-  ...props
+  weight
 }) => {
   return (
     <StyledText
       align={align}
       className={className}
-      colour={colour}
       context={context}
-      stroke={stroke}
-      size={size}
-      weight={weight}
-      {...props}
-    >
+      size={size}>
       {content || children}
     </StyledText>
   )
 }
 
 const StyledText = styled.p`
-  color: ${({ context, theme: { COLOUR, TEXT_STYLE } }) =>
-    context ? COLOUR[context] : TEXT_STYLE.DEFAULT_COLOUR};
+  color: ${({ context, theme: { COLOUR, TEXT } }) =>
+    context ? COLOUR[context] : TEXT.DEFAULT_COLOUR};
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
 
   ${({ size, theme }) => css`
-    font-size: ${theme.TEXT_STYLE.FONT_SIZE[size] ?? '1rem'};
-    line-height: ${theme.TEXT_STYLE.LINE_HEIGHT[size] ?? '1rem'};
+    font-size: ${theme.TEXT.FONT_SIZE[size] ?? '1rem'};
+    line-height: ${theme.TEXT.LINE_HEIGHT[size] ?? '1rem'};
   `}
-
 
   ${({ size }) =>
     size === 'xxl' &&
@@ -82,21 +79,9 @@ const StyledText = styled.p`
         font-size: 8rem;
       `}
     `}
-  ${({ stroke }) =>
-    stroke === 'true' &&
-    css`
-      -webkit-text-stroke: 1px #000;
-      color: transparent;
-      ${MEDIA_QUERY.tablet`
-        -webkit-text-stroke: 2px #000;
-      `}
-      ${MEDIA_QUERY.desktop`
-        -webkit-text-stroke: 3px #000;
-      `}
-    `}
 
-  ${theme => DISPLAY(theme)}
-  ${theme => SPACER(theme)}
+  ${(theme) => themeDisplay(theme)}
+  ${(theme) => SPACER(theme)}
 
 
   ${({ weight }) =>
@@ -112,8 +97,7 @@ const StyledText = styled.p`
         ? 700
         : 500};
     `}
-
 `
 
-Text.protoTypes = TextPropTypes
-Text.defaultProps = TextDefaultProps
+Text.propTypes = propTypes
+Text.defaultProps = defaultProps

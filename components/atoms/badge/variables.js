@@ -1,3 +1,6 @@
+/**
+ * Components - Atoms - Badge - Variables
+ */
 export const BADGE = {
   BORDER_RADIUS: {
     round: '5rem',

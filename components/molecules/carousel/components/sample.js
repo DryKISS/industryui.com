@@ -2,6 +2,8 @@
  * Carousel Sample Slide
  */
 
+// React
+import React from 'react'
 import { node, string } from 'prop-types'
 
 // Style
@@ -17,7 +19,7 @@ export const CarouselSampleSlide = ({ context, img, node, text }) => {
   return (
     <CarouselSlide>
       {node}
-      {text && <StyledText content={text} context={context} size='xl' />}
+      {text && <StyledText content={text} context={context} size="xl" />}
       {img && <Image src={img} />}
     </CarouselSlide>
   )

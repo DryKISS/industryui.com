@@ -1,15 +1,15 @@
 /**
- * Theme - Constants - Contaxt Arrat
+ * Components - Theme - Constants - Contaxt Array
  */
 
 // UI
-import { CONTEXT } from './context'
+import { THEME_CONTEXT } from './context'
 
-export const contextArray = (() => {
+export const THEME_CONTEXT_ARRAY = (() => {
   const array = []
 
-  for (const key in CONTEXT) {
-    array.push(CONTEXT[key])
+  for (const key in THEME_CONTEXT) {
+    array.push(THEME_CONTEXT[key])
   }
 
   return array

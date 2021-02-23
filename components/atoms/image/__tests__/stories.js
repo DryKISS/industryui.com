@@ -2,8 +2,11 @@
  * Image
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Image } from 'components'
+import { Image } from '../image'
 import Readme from '../README.md'
 
 export default {
@@ -22,4 +25,4 @@ export default {
   title: 'Atoms/Image'
 }
 
-export const main = args => <Image {...args} />
+export const main = (args) => <Image {...args} />

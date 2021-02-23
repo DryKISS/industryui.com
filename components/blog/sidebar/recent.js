@@ -8,7 +8,7 @@
  */
 
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
@@ -24,14 +24,14 @@ export const BlogRecent = ({ articles, config, total }) => {
 
   const _find = () => {
     return articles
-      .filter(article => {
+      .filter((article) => {
         return article.category !== 'terms' && article.homepage !== false
       })
       .sort((a, b) => {
         return new Date(b.date) - new Date(a.date)
       })
       .slice(0, total)
-      .map(opt => ({
+      .map((opt) => ({
         badge: formatIntDateShort(new Date(opt.date)),
         category: opt.category,
         name: opt.heading,
@@ -40,7 +40,7 @@ export const BlogRecent = ({ articles, config, total }) => {
   }
 
   return (
-    <BlogSection heading='Recent'>
+    <BlogSection heading="Recent">
       <BlogList config={config} list={list} />
     </BlogSection>
   )

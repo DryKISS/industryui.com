@@ -16,7 +16,7 @@ export const Truncate = () => {
 }
 
 // TODO: This will be deprecated when we manage it directly in JS.
-export const TruncateByMaxHeight = maxHeight => {
+export const TruncateByMaxHeight = (maxHeight) => {
   return `
     display: inline-block;
     line-height: 1.4;

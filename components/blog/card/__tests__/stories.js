@@ -2,8 +2,11 @@
  * Blog - Card
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogCard } from 'components'
+import { BlogCard } from '../card'
 import Readme from '../README.md'
 
 // Data
@@ -21,6 +24,11 @@ export default {
   title: 'Blog/Card'
 }
 
-export const main = args => (
-  <BlogCard article={Articles[0]} config={Blog} link={{ prefetch: false }} {...args} />
+export const main = (args) => (
+  <BlogCard
+    article={Articles[0]}
+    config={Blog}
+    link={{ prefetch: false }}
+    {...args}
+  />
 )

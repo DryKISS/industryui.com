@@ -1,2 +1,5 @@
-export * from './dynamicLocation'
-export * from './staticLocation'
+/**
+ * Components - Molecules - Map
+ */
+export * from './dynamicLocation/dynamicLocation'
+export * from './staticLocation/staticLocation'

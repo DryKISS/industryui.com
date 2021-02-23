@@ -2,17 +2,20 @@
  * Charts - Line - Variables
  */
 
-import { COLOUR } from '../../../../theme/variables/colour'
-
 // Date fns
 import { shortDate } from '../../../../utils/dateFns/date'
+
+// UI
+import { THEME_COLOUR } from '../../../../theme/variables/colour'
+
 let lastValue = null
+
 export const LINECHART = {
   axisBottom: function () {
     return {
       axisTop: null,
       axisRight: null,
-      format: value => {
+      format: (value) => {
         if (this.axisBottomDistinct) {
           const formatted = shortDate(value)
           if (formatted !== lastValue) {
@@ -33,7 +36,7 @@ export const LINECHART = {
   },
   axisLeft: function () {
     return {
-      format: value => {
+      format: (value) => {
         if (value % 1 === 0) return `${value + this.axisLeftSymbol || value}`
       },
       legend: this.leftLegend, // string passed as prop
@@ -80,7 +83,7 @@ export const LINECHART = {
       symbolBorderColor: 'rgba(0, 0, 0, .5)'
     }
   ],
-  pointColor: COLOUR.white,
+  pointColor: THEME_COLOUR.white,
   pointSize: 10,
   pointBorderColor: { from: 'serieColor' },
   pointBorderWidth: 2,

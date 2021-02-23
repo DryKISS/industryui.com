@@ -1,6 +1,6 @@
 /**
  * Validator
  */
-export * from './postCode'
+export * from './postCode/postCode'
 export * from './uri'
 export * from './uuid4'

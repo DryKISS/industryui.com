@@ -1,24 +1,25 @@
 /**
- * Organisms - Password Change
+ * Components - Organisms - Password Change
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { bool, func } from 'prop-types'
 
-// UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormLabel,
-  PageHeading,
-  useForm,
-  yupResolver
-} from '../../'
+// React Hook Form
+import { useForm } from 'react-hook-form'
 
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
 import { PasswordChangeSchema as schema } from './schema'
+
+// UI
+import { Alert } from '../../molecules/alert/components/alert'
+import { Button } from '../../atoms/button/button/button'
+import { Form } from '../../form/form/form'
+import { FormField } from '../../form/field/input'
+import { FormLabel } from '../../form/label/label'
+import { PageHeading } from '../../molecules/pageHeading/pageHeading'
 
 export const PasswordChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({
@@ -35,42 +36,42 @@ export const PasswordChange = ({ showPlaceholder, submit }) => {
 
   return (
     <>
-      <PageHeading center heading='Password Change' divider={false} />
+      <PageHeading center heading="Password Change" divider={false} />
 
-      {error && <Alert content={error.message} context='warning' />}
+      {error && <Alert content={error.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label='Old password'>
+        <FormLabel label="Old password">
           <FormField
             {...defaultOptions}
-            name='passwordOld'
+            name="passwordOld"
             placeholder={showPlaceholder ? 'Old Password' : ''}
           />
         </FormLabel>
 
-        <FormLabel label='New password'>
+        <FormLabel label="New password">
           <FormField
             {...defaultOptions}
-            name='password'
+            name="password"
             placeholder={showPlaceholder ? 'New Password' : ''}
           />
         </FormLabel>
 
-        <FormLabel label='Confirm password'>
+        <FormLabel label="Confirm password">
           <FormField
             {...defaultOptions}
-            name='passwordConfirm'
+            name="passwordConfirm"
             placeholder={showPlaceholder ? 'Confirm Password' : ''}
-            validate={v => v === watch('password')}
+            validate={(v) => v === watch('password')}
           />
         </FormLabel>
 
         <Button
           block
-          content='Submit'
-          context='primary'
+          content="Submit"
+          context="primary"
           disabled={formState.isSubmitting}
-          type='submit'
+          type="submit"
         />
       </Form>
     </>

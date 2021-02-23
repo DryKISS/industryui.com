@@ -2,6 +2,9 @@
  * Form - DatePicker - Calendar
  */
 
+// React
+import React from 'react'
+
 // Date Picker
 import ReactDatePicker from 'react-datepicker'
 
@@ -28,14 +31,14 @@ export const DatePickerCalendar = ({
   return (
     <StyleSpan>
       <Controller
-        render={props => (
+        render={(props) => (
           <ReactDatePicker
             customInput={<StyledInput errors={errors[name]} />}
             selected={props.value}
             {...props}
             {...parentProps}
             placeholderText={placeholder ?? 'Click to select time'}
-            wrapperClassName='datePicker'
+            wrapperClassName="datePicker"
           />
         )}
         control={control}

@@ -3,13 +3,16 @@
  */
 
 // React
+import React from 'react'
 import { any, bool, func, number, object, oneOf, string } from 'prop-types'
-
-// UI
-import { COMMON_INPUT_STYLES, FieldHOC, ERROR_STYLE, SIZE } from '../../'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { FieldHOC } from '../hoc'
+import { formErrorStyle, formStyle } from '../variables/style'
+import { THEME_SIZE } from '../../theme/constants/size'
 
 export const TextareaField = ({
   autoFocus,
@@ -53,7 +56,7 @@ export const TextareaField = ({
 }
 
 const StyledTextarea = styled.textarea`
-  ${props => COMMON_INPUT_STYLES(props)}
+  ${(props) => formStyle(props)}
 
   direction: ${({ dir }) => dir};
   display: block;
@@ -61,11 +64,11 @@ const StyledTextarea = styled.textarea`
   ${({ errors }) =>
     errors &&
     css`
-      ${props => ERROR_STYLE(props)}
+      ${(props) => formErrorStyle(props)}
     `}
 
   ${({ size }) =>
-    size === SIZE.SM &&
+    size === THEME_SIZE.SM &&
     css`
       font-size: 0.625rem;
     `}
@@ -85,7 +88,7 @@ TextareaField.propTypes = {
   readOnly: bool,
   register: func.isRequired,
   rows: number,
-  size: oneOf(Object.values(SIZE)),
+  size: oneOf(Object.values(THEME_SIZE)),
   spellCheck: bool,
   tabIndex: number,
   wrap: oneOf(['soft', 'hard'])

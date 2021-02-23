@@ -2,6 +2,8 @@
  * Messaging/Base/To
  */
 
+// React
+import React from 'react'
 import { string } from 'prop-types'
 
 // UI
@@ -28,7 +30,7 @@ export const MessageTo = ({ to }) => {
       break
   }
 
-  return icon && <StyledImage alt='audience' src={icon} />
+  return icon && <StyledImage alt="audience" src={icon} />
 }
 
 const StyledImage = styled(Image)`

@@ -2,8 +2,11 @@
  * Atoms - Grid
  */
 
+// React
+import React from 'react'
+
 // UI
-import { Container, Row } from '../'
+import { Container, Row } from '../index'
 import Readme from '../README.md'
 import { StyledColumn } from '../__mocks__/grid'
 

@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [12]
+        node: [14]
 
     steps:
       - name: Checkout 🛎️
@@ -25,25 +25,27 @@ jobs:
           persist-credentials: false
 
       - name: Use Node.js ${{ matrix.node }} 🔧
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
-          check-latest: true
 
-      - name: Install Yarn 🔧
-        run: npm install -g yarn
-
-      - name: Cache node_modules 🔧
+      - name: Cache node modules
         uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install Modules 🔧
-        run: yarn install
+        run: npm install
 
       - name: Build 🔧
-        run: yarn build-storybook
+        run: npm run build-storybook
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3

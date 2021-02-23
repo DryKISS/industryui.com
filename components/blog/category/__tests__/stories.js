@@ -2,8 +2,11 @@
  * Blog - Category
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogCategory } from 'components'
+import { BlogCategory } from '../category'
 import Readme from '../README.md'
 
 // Data
@@ -21,9 +24,19 @@ export default {
   title: 'Blog/Category'
 }
 
-export const main = args => (
-  <BlogCategory config={Blog} link={{ prefetch: false, to: 'development' }} {...args} />
+export const main = (args) => (
+  <BlogCategory
+    config={Blog}
+    link={{ prefetch: false, to: 'development' }}
+    {...args}
+  />
 )
-export const author = args => (
-  <BlogCategory author config={Blog} link={{ prefetch: false, to: 'development' }} {...args} />
+
+export const author = (args) => (
+  <BlogCategory
+    author
+    config={Blog}
+    link={{ prefetch: false, to: 'development' }}
+    {...args}
+  />
 )

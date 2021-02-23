@@ -2,12 +2,14 @@
  * Intercom
  */
 
+// React
+import React from 'react'
+
 // Hero
-import { Intercom } from 'components'
+import { Intercom } from '../intercom'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Intercom',
   component: Intercom,
   parameters: {
     docs: {
@@ -15,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Intercom'
 }
 
-export const main = () => <Intercom appID='12345' />
+export const main = () => <Intercom appID="12345" />

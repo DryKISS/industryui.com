@@ -6,7 +6,7 @@
 import { bool, number, oneOfType, string } from 'prop-types'
 
 // UI
-import { useTimer } from '../../../'
+import { useTimer } from '../../'
 
 export const SimpleTime = ({ autoStart, endTime, startTime }) => {
   const {

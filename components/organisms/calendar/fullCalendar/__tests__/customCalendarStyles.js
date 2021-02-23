@@ -3,13 +3,23 @@
  */
 
 // React
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Moment
 import moment from 'moment'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { OffCanvas, Button, Form, FormLabel, FormField, SelectField, useForm } from '../../../../'
+import {
+  OffCanvas,
+  Button,
+  Form,
+  FormLabel,
+  FormField,
+  SelectField
+} from '../../../../'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
 
@@ -25,7 +35,7 @@ export const CustomCalendarStyles = () => {
     showError: true
   }
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     const newCalendarStyles = {
       height: Number(data.height),
       eventColor: data.eventColor,
@@ -39,21 +49,25 @@ export const CustomCalendarStyles = () => {
   const CalendarStyleForm = () => {
     return (
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label='Height'>
+        <FormLabel label="Height">
           <FormField
-            type='number'
-            name='height'
+            type="number"
+            name="height"
             errors={errors}
-            placeholder='Introduce the calendar height'
+            placeholder="Introduce the calendar height"
             register={register}
           />
         </FormLabel>
 
-        <FormLabel label='Default event color'>
-          <SelectField name='eventColor' options={colorEvent} {...defaultProps} />
+        <FormLabel label="Default event color">
+          <SelectField
+            name="eventColor"
+            options={colorEvent}
+            {...defaultProps}
+          />
         </FormLabel>
 
-        <Button content='Submit' type='submit' />
+        <Button content="Submit" type="submit" />
       </Form>
     )
   }
@@ -63,7 +77,7 @@ export const CustomCalendarStyles = () => {
       <button onClick={() => setShowOffCanvas(true)}>Open canvas</button>
 
       {showOffCanvas && (
-        <OffCanvas headerText='Add custom event' show={showOffCanvas}>
+        <OffCanvas headerText="Add custom event" show={showOffCanvas}>
           {CalendarStyleForm()}
         </OffCanvas>
       )}
@@ -75,32 +89,21 @@ export const CustomCalendarStyles = () => {
 
 export const Events = [
   {
-    date: moment()
-      .date(2)
-      .format('YYYY-MM-DD'),
+    date: moment().date(2).format('YYYY-MM-DD'),
     description: 'All day event',
     title: 'Event 1',
     tooltip: 'All day event tooltip'
   },
-
   {
     description: 'Event starting at a specific time',
-    date: moment()
-      .date(7)
-      .hour(14)
-      .minute(30)
-      .format(),
+    date: moment().date(7).hour(14).minute(30).format(),
     title: 'Event 2'
   },
   {
     daysOfWeek: [2],
     description: 'Recurring event, once per week, all day',
-    endRecur: moment()
-      .date(30)
-      .format('YYYY-MM-DD'),
-    startRecur: moment()
-      .date(5)
-      .format('YYYY-MM-DD'),
+    endRecur: moment().date(30).format('YYYY-MM-DD'),
+    startRecur: moment().date(5).format('YYYY-MM-DD'),
     title: 'PPM: Boiler Check'
   }
 ]

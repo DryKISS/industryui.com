@@ -2,6 +2,9 @@
  * IUI Icons Story
  */
 
+// React
+import React from 'react'
+
 // Style
 import styled from 'styled-components'
 
@@ -71,7 +74,7 @@ import {
   SprinkleIcon,
   WashingMachineIcon,
   ThermometerIcon
-} from 'components'
+} from '../index'
 
 import Readme from '../README.md'
 
@@ -83,17 +86,17 @@ export default {
     size: '22',
     hoverColour: 'false'
   },
-  title: 'Icons/AllIcons',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Icons/AllIcons'
 }
 
-export const main = props => {
+export const main = (props) => {
   if (props.hoverColour === 'false') {
     delete props.hoverColour
   }

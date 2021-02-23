@@ -4,7 +4,15 @@
  */
 
 // React
+import React from 'react'
 import { func, string } from 'prop-types'
+
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
+// Yup
+import { yupResolver } from '@hookform/resolvers/yup'
+import { ForgotDetailsResetSchema } from './schema'
 
 // UI
 import {
@@ -14,12 +22,8 @@ import {
   Form,
   FormLabel,
   Link,
-  PageHeading,
-  useForm,
-  yupResolver
+  PageHeading
 } from '../../'
-
-import { ForgotDetailsResetSchema } from './schema'
 
 // Style
 import styled from 'styled-components'
@@ -31,16 +35,23 @@ export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
 
   return (
     <>
-      <PageHeading center heading='Set New Password' divider={false} />
+      <PageHeading center heading="Set New Password" divider={false} />
 
-      {errors?.password?.message && <Alert content={errors.password.message} context='warning' />}
+      {errors?.password?.message && (
+        <Alert content={errors.password.message} context="warning" />
+      )}
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label='Password'>
-          <FormField errors={errors} name='password' register={register} type='password' />
+        <FormLabel label="Password">
+          <FormField
+            errors={errors}
+            name="password"
+            register={register}
+            type="password"
+          />
         </FormLabel>
 
-        <Button block content='Submit' size='lg' type='submit' />
+        <Button block content="Submit" size="lg" type="submit" />
 
         <Link to={pathLogIn} passHref>
           <StyledLink>Back to Log In</StyledLink>

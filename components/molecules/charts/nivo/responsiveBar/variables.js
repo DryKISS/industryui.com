@@ -2,13 +2,14 @@
  * BarChart - Variables
  */
 
-import { COLOUR } from '../../../../theme/variables/colour'
+// UI
+import { THEME_COLOUR } from '../../../../theme/variables/colour'
 
 const legendTranslateX = 110
 
 export const BARCHART = {
   animate: false,
-  colors: COLOUR,
+  colors: THEME_COLOUR,
   margin: function () {
     return {
       top: 50,
@@ -17,7 +18,7 @@ export const BARCHART = {
       left: 80
     }
   },
-  borderColor: COLOUR.black,
+  borderColor: THEME_COLOUR.dark,
   borderWidth: 1,
   enableGridX: false,
   enableGridY: true,

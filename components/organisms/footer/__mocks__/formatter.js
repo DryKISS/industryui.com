@@ -3,14 +3,14 @@
  */
 
 // React
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 
 // UI
 import { Image, List, ListItem } from '../../../'
 
-const renderColumn = index => (
+const renderColumn = (index) => (
   <Fragment key={index}>
-    <Image alt='Tailwise' src='/drykiss.svg' />
+    <Image alt="Tailwise" src="/drykiss.svg" />
 
     <List unstyled>
       <ListItem>Strapline</ListItem>

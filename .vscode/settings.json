@@ -1,12 +1,20 @@
 {
-  // CSS
-  "css.validate": false,
+  // ESlint
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  },
+  "eslint.validate": [
+    "javascript"
+  ],
   // Editor
-  "editor.formatOnSave": true,
-  "editor.rulers": [100],
+  "editor.formatOnSave": false,
+  "editor.rulers": [
+    100
+  ],
   "editor.tabSize": 2,
   // Files
-  "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
     "**/.DS_Store": true,
@@ -15,37 +23,8 @@
     "**/.svn": true,
     "**/CVS": true
   },
-  // Javascript
-  "javascript.validate.enable": false,
-  "[javascript]": {
-    "editor.defaultFormatter": "numso.prettier-standard-vscode"
-  },
-  // LESS
-  "less.validate": false,
-  // Prettier
-  "prettier.semi": false,
-  "prettier.printWidth": 100,
-  // SCSS
+  // CSS
   "scss.validate": false,
-  // Standard
-  "standard.enable": true,
-  "standard.autoFixOnSave": true,
-  "standard.options": {
-    "globals": [
-      "afterEach",
-      "before",
-      "beforeEach",
-      "cy",
-      "Cypress",
-      "describe",
-      "expect",
-      "it",
-      "localStorage",
-      "test"
-    ],
-    "parser": "babel-eslint"
-  },
-  "standard.usePackageJson": true,
-  // Typescript
-  "typescript.validate.enable": false
+  "less.validate": false,
+  "css.validate": false
 }

@@ -3,10 +3,10 @@
  */
 
 // UI
-import { COLOUR } from '../../theme/variables/colour'
+import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const PROGRESS = {
-  bgColor: COLOUR.light,
+  bgColor: THEME_COLOUR.light,
   borderRadius: '.25rem',
   fontSize: {
     xs: '.25rem',

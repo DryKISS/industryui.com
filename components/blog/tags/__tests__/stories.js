@@ -2,8 +2,11 @@
  * Blog - Tags
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogTags } from 'components'
+import { BlogTags } from '../tags'
 import Readme from '../README.md'
 
 // Data
@@ -21,4 +24,4 @@ export default {
   title: 'Blog/Tags'
 }
 
-export const main = args => <BlogTags tags={Articles[0].tags} {...args} />
+export const main = (args) => <BlogTags tags={Articles[0].tags} {...args} />

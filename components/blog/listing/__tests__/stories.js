@@ -1,9 +1,12 @@
 /**
- * Blog - Listing
+ * Components - Blog - Listing
  */
 
+// React
+import React from 'react'
+
 // UI
-import { BlogListing } from 'components'
+import { BlogListing } from '../listing'
 import Readme from '../README.md'
 
 // Data
@@ -21,10 +24,19 @@ export default {
   title: 'Blog/Listing'
 }
 
-export const main = args => <BlogListing articles={Articles} config={Blog} {...args} />
-
-export const category = args => (
-  <BlogListing articles={Articles} category='development' config={Blog} {...args} />
+export const main = (args) => (
+  <BlogListing articles={Articles} config={Blog} {...args} />
 )
 
-export const tag = args => <BlogListing articles={Articles} config={Blog} tag='jam' {...args} />
+export const category = (args) => (
+  <BlogListing
+    articles={Articles}
+    category="development"
+    config={Blog}
+    {...args}
+  />
+)
+
+export const tag = (args) => (
+  <BlogListing articles={Articles} config={Blog} tag="jam" {...args} />
+)

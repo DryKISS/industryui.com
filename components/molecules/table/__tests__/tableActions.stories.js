@@ -2,8 +2,11 @@
  * Components - Molecules - Table Actions - Story
  */
 
+// React
+import React from 'react'
+
 // UI
-import { TableActions } from 'components'
+import { TableActions } from '../formatter/actions/actions'
 import Readme from '../README.md'
 
 export default {
@@ -72,4 +75,6 @@ const row = {
   actions: ''
 }
 
-export const tableAction = args => <TableActions {...args} data={data} row={row} />
+export const tableAction = (args) => (
+  <TableActions {...args} data={data} row={row} />
+)

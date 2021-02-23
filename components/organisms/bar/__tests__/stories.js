@@ -2,11 +2,14 @@
  * Components - Organisms - Bar
  */
 
+// React
+import React from 'react'
+
 // Storybook
-import { ControlTypes } from 'decorators'
+import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Bar, Divider, List, ListItem } from 'components'
+import { Bar, Divider, List, ListItem } from '../../../'
 import { BarConfig } from '../components/config'
 import Readme from '../README.md'
 
@@ -37,7 +40,7 @@ export default {
   title: 'Organisms/Bar'
 }
 
-const BaseComponent = args => {
+const BaseComponent = (args) => {
   const defaultProps = {
     ...args
   }
@@ -49,7 +52,15 @@ const BaseComponent = args => {
           {barMock.map(({ Component, divider, icon, name, to }, index) => {
             return (
               <ListItem key={index}>
-                {divider ? <Divider size='sm' /> : Component ? <Component /> : to ? name : name}
+                {divider ? (
+                  <Divider size="sm" />
+                ) : Component ? (
+                  <Component />
+                ) : to ? (
+                  name
+                ) : (
+                  name
+                )}
               </ListItem>
             )
           })}
@@ -59,7 +70,7 @@ const BaseComponent = args => {
   )
 }
 
-export const main = args => {
+export const main = (args) => {
   return <BaseComponent {...args} />
 }
 

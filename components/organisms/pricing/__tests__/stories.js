@@ -2,12 +2,15 @@
  * Pricing Stories
  */
 
+// React
+import React from 'react'
+
 // UI
 import { pricingInfo } from '../__mocks__/pricing_mock_data'
-import { Pricing } from 'components'
+import { Pricing } from '../../../'
 import Readme from '../README.md'
 
-const handlePlanSelect = e => {
+const handlePlanSelect = (e) => {
   console.info(e)
 }
 
@@ -27,6 +30,6 @@ export default {
   title: 'Organisms/Pricing'
 }
 
-export const main = args => {
+export const main = (args) => {
   return <Pricing {...args} />
 }

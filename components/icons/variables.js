@@ -1,7 +1,10 @@
-import { COLOUR } from '../theme/variables/colour'
+/**
+ * Components - Icons - Variables
+ */
+import { THEME_COLOUR } from '../theme/variables/colour'
 
 export const ICONS = {
-  defaultIconColour: COLOUR.blackGrey,
-  disabledIconColour: COLOUR.grey,
-  hoverIconColour: COLOUR.info
+  defaultIconColour: THEME_COLOUR.blackGrey,
+  disabledIconColour: THEME_COLOUR.grey,
+  hoverIconColour: THEME_COLOUR.info
 }

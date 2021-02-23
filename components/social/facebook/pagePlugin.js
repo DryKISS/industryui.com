@@ -1,5 +1,5 @@
 /**
- * Social - Facebook - Page Plugin
+ * Components -Social - Facebook - Page Plugin
  *
  * - height: Min. is 70
  * - tabs: Tabs to render i.e. [timeline, events, messages]
@@ -7,7 +7,10 @@
  */
 
 // React
+import React from 'react'
 import { bool, number, string } from 'prop-types'
+
+const p = 'https://www.facebook.com/plugins/page.php'
 
 export const FacebookPagePlugin = ({
   appId,
@@ -22,15 +25,19 @@ export const FacebookPagePlugin = ({
   to,
   width
 }) => {
+  const url = `${p}?href=${to}&tabs=${tabs}&width=${width}&height=${height}
+    &small_header=${smallHeader} &adapt_container_width=${adaptContainerWidth}
+    &hide_cover=${hideCover}&show_facepile=${showFacepile}&appId=${appId}`
+
   return (
     <>
       {iFrame && (
         <iframe
-          allow='encrypted-media'
-          frameBorder='0'
+          allow="encrypted-media"
+          frameBorder="0"
           height={height}
-          scrolling='no'
-          src={`https://www.facebook.com/plugins/page.php?href=${to}&tabs=${tabs}&width=${width}&height=${height}&small_header=${smallHeader}&adapt_container_width=${adaptContainerWidth}&hide_cover=${hideCover}&show_facepile=${showFacepile}&appId=${appId}`}
+          scrolling="no"
+          src={url}
           style={{ border: 'none', overflow: 'hidden' }}
           width={width}
         />
@@ -38,21 +45,19 @@ export const FacebookPagePlugin = ({
 
       {!iFrame && (
         <div
-          className='fb-page'
-          data-adapt-container-width='true'
-          data-height=''
-          data-hide-cover='false'
+          className="fb-page"
+          data-adapt-container-width="true"
+          data-height=""
+          data-hide-cover="false"
           data-href={to}
-          data-layout='button_count'
-          data-show-facepile='true'
-          data-small-header='false'
-          data-tabs='timeline'
-          data-width=''
-        >
+          data-layout="button_count"
+          data-show-facepile="true"
+          data-small-header="false"
+          data-tabs="timeline"
+          data-width="">
           <blockquote
-            cite='https://www.facebook.com/maitaidating/'
-            className='fb-xfbml-parse-ignore'
-          >
+            cite="https://www.facebook.com/maitaidating/"
+            className="fb-xfbml-parse-ignore">
             <a href={to}>Mai Tai Dating</a>
           </blockquote>
         </div>

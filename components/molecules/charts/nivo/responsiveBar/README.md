@@ -1,9 +1,9 @@
 ## Links
 
-- [Nivo Bar Docs](https://nivo.rocks/bar/)
-- [Nivo's Bar Source](https://github.com/plouc/nivo/blob/master/packages/bar/src/Bar.js)
-- [Nivo's ResponsiveBar Source](https://github.com/plouc/nivo/blob/master/packages/bar/src/ResponsiveBar.js)
-- [HTML](https://www.w3schools.com/tags/tag_button.asp)
+[Nivo Bar Docs](https://nivo.rocks/bar/)<br />
+[Nivo's Bar Source](https://github.com/plouc/nivo/blob/master/packages/bar/src/Bar.js)<br />
+[Nivo's ResponsiveBar Source](https://github.com/plouc/nivo/blob/master/packages/bar/src/ResponsiveBar.js)<br />
+[HTML](https://www.w3schools.com/tags/tag_button.asp)
 
 ## Usage
 

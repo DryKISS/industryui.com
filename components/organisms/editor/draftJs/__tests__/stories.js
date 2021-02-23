@@ -2,26 +2,32 @@
  * Draft JS
  */
 
+// React
+import React from 'react'
+
 // DraftJS
 import { DraftJs } from '../draftJs'
 
+// React Hook Form
+import { useForm } from 'react-hook-form'
+
 // UI
-import { Button, Form, useForm } from 'components'
+import { Button, Form } from '../../../../'
 import Readme from '../README.md'
 
 export default {
-  title: 'Organisms/Editor',
   parameters: {
     docs: {
       description: {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Editor'
 }
 
-export const main = () => {
-  const onSubmit = data => {
+export const Main = () => {
+  const onSubmit = (data) => {
     console.info(data)
   }
 
@@ -31,7 +37,7 @@ export const main = () => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <DraftJs control={control} name={name} setValue={setValue} />
-      <Button content='Submit' type='submit' />
+      <Button content="Submit" type="submit" />
     </Form>
   )
 }

@@ -3,7 +3,7 @@
  */
 
 // React
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { array, func, number } from 'prop-types'
 
 // UI
@@ -16,7 +16,7 @@ export const TablePagination = memo(
       onPageChange={handlePagination}
       pageCount={pageCount}
       showNextAndPrev
-      size='sm'
+      size="sm"
     />
   )
 )

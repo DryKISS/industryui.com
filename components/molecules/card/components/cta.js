@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { func, string } from 'prop-types'
 
 // UI
@@ -10,7 +11,9 @@ import { Button, Link } from '../../../'
 import styled from 'styled-components'
 
 export const CardCTA = ({ func, link, title }) => {
-  const CtaButton = props => <StyledButton content={title} context='secondary' {...props} />
+  const CtaButton = (props) => (
+    <StyledButton content={title} context="secondary" {...props} />
+  )
 
   return link ? (
     <Link border={false} passHref to={link}>

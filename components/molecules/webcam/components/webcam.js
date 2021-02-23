@@ -3,8 +3,16 @@
  */
 
 // React
-import { Component } from 'react'
-import { bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
+import React, { Component } from 'react'
+import {
+  bool,
+  func,
+  number,
+  object,
+  oneOf,
+  oneOfType,
+  string
+} from 'prop-types'
 
 // UI
 import { Design } from './design'
@@ -14,7 +22,7 @@ import { withTheme } from 'styled-components'
 
 const Webcam = withTheme(
   class Webcam extends Component {
-    constructor () {
+    constructor() {
       super()
       this.state = {
         hasUserMedia: false,
@@ -53,7 +61,7 @@ const Webcam = withTheme(
 
     static userMediaRequested = false
 
-    componentDidMount () {
+    componentDidMount() {
       if (!this.hasGetUserMedia()) return
 
       const { hasUserMedia } = this.state
@@ -65,18 +73,20 @@ const Webcam = withTheme(
       }
     }
 
-    componentWillUpdate (nextProps) {
+    componentWillUpdate(nextProps) {
       const { audioConstraints, videoConstraints } = this.props
 
       if (
-        JSON.stringify(nextProps.audioConstraints) !== JSON.stringify(audioConstraints) ||
-        JSON.stringify(nextProps.videoConstraints) !== JSON.stringify(videoConstraints)
+        JSON.stringify(nextProps.audioConstraints) !==
+          JSON.stringify(audioConstraints) ||
+        JSON.stringify(nextProps.videoConstraints) !==
+          JSON.stringify(videoConstraints)
       ) {
         this.requestUserMedia()
       }
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
       const { src } = this.state
 
       const index = Webcam.mountedInstances.indexOf(this)
@@ -87,10 +97,10 @@ const Webcam = withTheme(
           this.stream.stop()
         } else {
           if (this.stream.getVideoTracks) {
-            this.stream.getVideoTracks().map(track => track.stop())
+            this.stream.getVideoTracks().map((track) => track.stop())
           }
           if (this.stream.getAudioTracks) {
-            this.stream.getAudioTracks().map(track => track.stop())
+            this.stream.getAudioTracks().map((track) => track.stop())
           }
         }
         Webcam.userMediaRequested = false
@@ -107,7 +117,7 @@ const Webcam = withTheme(
       )
     }
 
-    getScreenshot () {
+    getScreenshot() {
       const { screenshotFormat, screenshotQuality } = this.props
       const { hasUserMedia } = this.state
 
@@ -118,7 +128,7 @@ const Webcam = withTheme(
       return canvas && canvas.toDataURL(screenshotFormat, screenshotQuality)
     }
 
-    getCanvas () {
+    getCanvas() {
       const { screenshotWidth } = this.props
       const { hasUserMedia } = this.state
       const { clientWidth, videoHeight, videoWidth } = this.video
@@ -144,7 +154,7 @@ const Webcam = withTheme(
       return canvas
     }
 
-    requestUserMedia () {
+    requestUserMedia() {
       const { audio, audioConstraints, videoConstraints } = this.props
 
       navigator.getUserMedia =
@@ -166,10 +176,12 @@ const Webcam = withTheme(
 
         navigator.mediaDevices
           .getUserMedia(constraints)
-          .then(stream => {
-            Webcam.mountedInstances.forEach(() => this.handleUserMedia(null, stream))
+          .then((stream) => {
+            Webcam.mountedInstances.forEach(() =>
+              this.handleUserMedia(null, stream)
+            )
           })
-          .catch(e => {
+          .catch((e) => {
             Webcam.mountedInstances.forEach(() => this.handleUserMedia(e))
           })
       }
@@ -177,9 +189,9 @@ const Webcam = withTheme(
       if ('mediaDevices' in navigator) {
         sourceSelected(audioConstraints, videoConstraints)
       } else {
-        const optionalSource = id => ({ optional: [{ sourceId: id }] })
+        const optionalSource = (id) => ({ optional: [{ sourceId: id }] })
 
-        const constraintToSourceId = constraint => {
+        const constraintToSourceId = (constraint) => {
           const deviceId = (constraint || {}).deviceId
 
           if (typeof deviceId === 'string') {
@@ -193,11 +205,11 @@ const Webcam = withTheme(
           return null
         }
 
-        window.MediaStreamTrack.getSources(sources => {
+        window.MediaStreamTrack.getSources((sources) => {
           let audioSource = null
           let videoSource = null
 
-          sources.forEach(source => {
+          sources.forEach((source) => {
             if (source.kind === 'audio') {
               audioSource = source.id
             } else if (source.kind === 'video') {
@@ -215,7 +227,10 @@ const Webcam = withTheme(
             videoSource = videoSourceId
           }
 
-          sourceSelected(optionalSource(audioSource), optionalSource(videoSource))
+          sourceSelected(
+            optionalSource(audioSource),
+            optionalSource(videoSource)
+          )
         })
       }
 
@@ -246,7 +261,7 @@ const Webcam = withTheme(
       onUserMedia()
     }
 
-    render () {
+    render() {
       const { audio, className, height, style, width } = this.props
       const { src } = this.state
 
@@ -260,7 +275,7 @@ const Webcam = withTheme(
           className={className}
           playsInline
           style={style}
-          ref={ref => {
+          ref={(ref) => {
             this.video = ref
           }}
         />

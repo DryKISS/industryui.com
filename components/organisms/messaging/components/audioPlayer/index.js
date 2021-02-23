@@ -1,6 +1,7 @@
 // React
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+
 // Next
 import dynamic from 'next/dynamic'
 
@@ -36,9 +37,9 @@ export const MessagingAudioPlayer = ({ inMessage, src }) => {
                 RHAP_UI.MAIN_CONTROLS,
                 RHAP_UI.PROGRESS_BAR,
                 RHAP_UI.VOLUME,
-                <Spacer key='rh1' style={{ margin: '0 5px', width: '5px' }} />,
+                <Spacer key="rh1" style={{ margin: '0 5px', width: '5px' }} />,
                 RHAP_UI.CURRENT_TIME,
-                <Slash key='rh2'>/</Slash>,
+                <Slash key="rh2">/</Slash>,
                 RHAP_UI.DURATION
               ]
             : [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR]
@@ -53,6 +54,7 @@ export const MessagingAudioPlayer = ({ inMessage, src }) => {
 
   return <Wrapper>{showPlayer()}</Wrapper>
 }
+
 const Wrapper = styled.div`
   flex: 1;
 `
@@ -61,4 +63,5 @@ const Spacer = styled.div`
   margin: 0 5px;
   width: 5px;
 `
+
 const Slash = styled.div``
