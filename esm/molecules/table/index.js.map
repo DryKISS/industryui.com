@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/molecules/table/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,cAAd;AACA,cAAc,aAAd","sourcesContent":["/**\n * Components - Molecules - Table\n */\nexport * from './components'\nexport * from './formatter'\n"],"file":"index.js"}

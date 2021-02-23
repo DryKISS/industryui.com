@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../components/form/dropzone/react-dropzone/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,YAAd","sourcesContent":["/**\n * React Dropzone\n */\nexport * from './dropzone'\n"],"file":"index.js"}

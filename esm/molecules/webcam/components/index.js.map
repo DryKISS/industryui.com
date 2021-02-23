@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../components/molecules/webcam/components/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,UAAd","sourcesContent":["/**\n * Webcam\n */\nexport * from './webcam'\n"],"file":"index.js"}

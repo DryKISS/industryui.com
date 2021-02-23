@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/molecules/dropdown/variables.js"],"names":["DROPDOWN","BORDER_COLOUR"],"mappings":"AAAA,OAAO,IAAMA,QAAQ,GAAG;AACtBC,EAAAA,aAAa,EAAE;AADO,CAAjB","sourcesContent":["export const DROPDOWN = {\n  BORDER_COLOUR: 'rgb(149, 171, 182)'\n}\n"],"file":"variables.js"}
