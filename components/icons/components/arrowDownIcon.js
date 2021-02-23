@@ -11,8 +11,8 @@ import { IconWrapper } from '../wrapper'
 
 export const ArrowDownIcon = (props) => {
   return (
-    <IconWrapper name="iconArrowDown" {...props} mainSize={22}>
-      <path d="M7 10L12 15L17 10H7Z" />
+    <IconWrapper name='iconArrowDown' {...props} mainSize={22}>
+      <path d='M7 10L12 15L17 10H7Z' />
     </IconWrapper>
   )
 }

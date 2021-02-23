@@ -17,6 +17,7 @@ export const ImageLocation = ({
   customIcon,
   initialCoordinates,
   item,
+  markers,
   markerStyles,
   show
 }) => {
@@ -33,11 +34,7 @@ export const ImageLocation = ({
     <StyledImageLocation show={show}>
       {item?.filename && (
         <ImageWrapper
-          customIcon={customIcon}
-          coordinates={coordinates}
-          markerStyles={markerStyles}
-          item={item}
-          setCoordinates={setCoordinates}
+        {...{ coordinates, customIcon, item, markers, markerStyles, setCoordinates }}
         />
       )}
     </StyledImageLocation>

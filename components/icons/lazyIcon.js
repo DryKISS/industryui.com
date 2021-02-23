@@ -3,422 +3,343 @@
  */
 
 // React
-import React, { lazy, Suspense } from 'react'
-import { oneOf } from 'prop-types'
+import dynamic from 'next/dynamic'
 
-// UI
+import { oneOf } from 'prop-types'
+import { useEffect, useState } from 'react'
 import { propTypes } from './props'
 
+// UI
+
 export const lazyIcons = {
-  get airConditioner() {
-    return lazy(() =>
-      import('./components/airConditionerIcon').then((_) => ({
-        default: _.AirConditionerIcon
-      }))
+  get airConditioner () {
+    return dynamic(() =>
+      import('./components/airConditionerIcon').then(_ => ( _.AirConditionerIcon
+      ))
     )
   },
-  get arrowDown() {
-    return lazy(() =>
-      import('./components/arrowDownIcon').then((_) => ({
-        default: _.ArrowDownIcon
-      }))
+  get arrowDown () {
+    return dynamic(() =>
+      import('./components/arrowDownIcon').then(_ => ( _.ArrowDownIcon
+      ))
     )
   },
-  get bell() {
-    return lazy(() =>
-      import('./components/bellIcon').then((_) => ({ default: _.BellIcon }))
+  get bell () {
+    return dynamic(() => import('./components/bellIcon').then(_ => ( _.BellIcon )))
+  },
+  get bicycle () {
+    return dynamic(() =>
+      import('./components/bicycleIcon').then(_ => ( _.BicycleIcon
+      ))
     )
   },
-  get bicycle() {
-    return lazy(() =>
-      import('./components/bicycleIcon').then((_) => ({
-        default: _.BicycleIcon
-      }))
+  get boiler () {
+    return dynamic(() => import('./components/boilerIcon').then(_ => ( _.BoilerIcon )))
+  },
+  get checkCircle () {
+    return dynamic(() =>
+      import('./components/checkCircleIcon').then(_ => ( _.CheckCircleIcon
+      ))
     )
   },
-  get boiler() {
-    return lazy(() =>
-      import('./components/boilerIcon').then((_) => ({ default: _.BoilerIcon }))
+  get checked () {
+    return dynamic(() =>
+      import('./components/checkedIcon').then(_ => ( _.CheckedIcon
+      ))
     )
   },
-  get checkCircle() {
-    return lazy(() =>
-      import('./components/checkCircleIcon').then((_) => ({
-        default: _.CheckCircleIcon
-      }))
+  get chevron () {
+    return dynamic(() =>
+      import('./components/chevronIcon').then(_ => ( _.ChevronIcon
+      ))
     )
   },
-  get checked() {
-    return lazy(() =>
-      import('./components/checkedIcon').then((_) => ({
-        default: _.CheckedIcon
-      }))
+  get chevronCircleDown () {
+    return dynamic(() =>
+      import('./components/chevronCircleDownIcon').then(_ => ( _.ChevronCircleDownIcon
+      ))
     )
   },
-  get chevron() {
-    return lazy(() =>
-      import('./components/chevronIcon').then((_) => ({
-        default: _.ChevronIcon
-      }))
+  get chevronCircleLeft () {
+    return dynamic(() =>
+      import('./components/chevronCircleLeftIcon').then(_ => ( _.ChevronCircleLeftIcon
+      ))
     )
   },
-  get chevronCircleDown() {
-    return lazy(() =>
-      import('./components/chevronCircleDownIcon').then((_) => ({
-        default: _.ChevronCircleDownIcon
-      }))
+  get chevronCircleRight () {
+    return dynamic(() =>
+      import('./components/chevronCircleRightIcon').then(_ => ( _.ChevronCircleRightIcon
+      ))
     )
   },
-  get chevronCircleLeft() {
-    return lazy(() =>
-      import('./components/chevronCircleLeftIcon').then((_) => ({
-        default: _.ChevronCircleLeftIcon
-      }))
+  get chevronCircleUp () {
+    return dynamic(() =>
+      import('./components/chevronCircleUpIcon').then(_ => ( _.ChevronCircleUpIcon
+      ))
     )
   },
-  get chevronCircleRight() {
-    return lazy(() =>
-      import('./components/chevronCircleRightIcon').then((_) => ({
-        default: _.ChevronCircleRightIcon
-      }))
+  get chevronDown () {
+    return dynamic(() =>
+      import('./components/chevronDownIcon').then(_ => ( _.ChevronDownIcon
+      ))
     )
   },
-  get chevronCircleUp() {
-    return lazy(() =>
-      import('./components/chevronCircleUpIcon').then((_) => ({
-        default: _.ChevronCircleUpIcon
-      }))
+  get chevronLeft () {
+    return dynamic(() =>
+      import('./components/chevronLeftIcon').then(_ => ( _.ChevronLeftIcon
+      ))
     )
   },
-  get chevronDown() {
-    return lazy(() =>
-      import('./components/chevronDownIcon').then((_) => ({
-        default: _.ChevronDownIcon
-      }))
+  get chevronRight () {
+    return dynamic(() =>
+      import('./components/chevronRightIcon').then(_ => ( _.ChevronRightIcon
+      ))
     )
   },
-  get chevronLeft() {
-    return lazy(() =>
-      import('./components/chevronLeftIcon').then((_) => ({
-        default: _.ChevronLeftIcon
-      }))
+  get chevronUp () {
+    return dynamic(() =>
+      import('./components/chevronUpIcon').then(_ => ( _.ChevronUpIcon
+      ))
     )
   },
-  get chevronRight() {
-    return lazy(() =>
-      import('./components/chevronRightIcon').then((_) => ({
-        default: _.ChevronRightIcon
-      }))
+  get circle () {
+    return dynamic(() => import('./components/circleIcon').then(_ => ( _.CircleIcon )))
+  },
+  get close () {
+    return dynamic(() => import('./components/closeIcon').then(_ => ( _.CloseIcon )))
+  },
+  get coffeeMachine () {
+    return dynamic(() =>
+      import('./components/coffeeMachineIcon').then(_ => ( _.CoffeeMachineIcon
+      ))
     )
   },
-  get chevronUp() {
-    return lazy(() =>
-      import('./components/chevronUpIcon').then((_) => ({
-        default: _.ChevronUpIcon
-      }))
+  get cross () {
+    return dynamic(() => import('./components/crossIcon').then(_ => ( _.CrossIcon )))
+  },
+  get delete () {
+    return dynamic(() => import('./components/deleteIcon').then(_ => ( _.DeleteIcon )))
+  },
+  get desk () {
+    return dynamic(() => import('./components/deskIcon').then(_ => ( _.DeskIcon )))
+  },
+  get desktop () {
+    return dynamic(() =>
+      import('./components/desktopIcon').then(_ => ( _.DesktopIcon
+      ))
     )
   },
-  get circle() {
-    return lazy(() =>
-      import('./components/circleIcon').then((_) => ({ default: _.CircleIcon }))
+  get dishwasher () {
+    return dynamic(() =>
+      import('./components/dishwasherIcon').then(_ => ( _.DishwasherIcon
+      ))
     )
   },
-  get close() {
-    return lazy(() =>
-      import('./components/closeIcon').then((_) => ({ default: _.CloseIcon }))
+  get download () {
+    return dynamic(() =>
+      import('./components/downloadIcon').then(_ => ( _.DownloadIcon
+      ))
     )
   },
-  get coffeeMachine() {
-    return lazy(() =>
-      import('./components/coffeeMachineIcon').then((_) => ({
-        default: _.CoffeeMachineIcon
-      }))
+  get edit () {
+    return dynamic(() => import('./components/editIcon').then(_ => ( _.EditIcon )))
+  },
+  get exclamationCircle () {
+    return dynamic(() =>
+      import('./components/exclamationCircleIcon').then(_ => ( _.ExclamationCircleIcon
+      ))
     )
   },
-  get cross() {
-    return lazy(() =>
-      import('./components/crossIcon').then((_) => ({ default: _.CrossIcon }))
+  get filePdf () {
+    return dynamic(() =>
+      import('./components/filePdfIcon').then(_ => ( _.FilePdfIcon
+      ))
     )
   },
-  get delete() {
-    return lazy(() =>
-      import('./components/deleteIcon').then((_) => ({ default: _.DeleteIcon }))
+  get flag () {
+    return dynamic(() => import('./components/flagIcon').then(_ => ( _.FlagIcon )))
+  },
+  get freezer () {
+    return dynamic(() =>
+      import('./components/freezerIcon').then(_ => ( _.FreezerIcon
+      ))
     )
   },
-  get desk() {
-    return lazy(() =>
-      import('./components/deskIcon').then((_) => ({ default: _.DeskIcon }))
+  get fridge () {
+    return dynamic(() => import('./components/fridgeIcon').then(_ => ( _.FridgeIcon )))
+  },
+  get fullScreen () {
+    return dynamic(() =>
+      import('./components/fullScreenIcon').then(_ => ( _.FullScreenIcon
+      ))
     )
   },
-  get desktop() {
-    return lazy(() =>
-      import('./components/desktopIcon').then((_) => ({
-        default: _.DesktopIcon
-      }))
+  get fuseBox () {
+    return dynamic(() =>
+      import('./components/fuseBoxIcon').then(_ => ( _.FuseBoxIcon
+      ))
     )
   },
-  get dishwasher() {
-    return lazy(() =>
-      import('./components/dishwasherIcon').then((_) => ({
-        default: _.DishwasherIcon
-      }))
+  get group () {
+    return dynamic(() => import('./components/groupIcon').then(_ => ( _.GroupIcon )))
+  },
+  get image () {
+    return dynamic(() => import('./components/imageIcon').then(_ => ( _.ImageIcon )))
+  },
+  get list () {
+    return dynamic(() => import('./components/listIcon').then(_ => ( _.ListIcon )))
+  },
+  get mapMarker () {
+    return dynamic(() =>
+      import('./components/mapMarkerIcon').then(_ => ( _.MapMarkerIcon
+      ))
     )
   },
-  get download() {
-    return lazy(() =>
-      import('./components/downloadIcon').then((_) => ({
-        default: _.DownloadIcon
-      }))
+  get meetingRoom () {
+    return dynamic(() =>
+      import('./components/meetingRoomIcon').then(_ => ( _.MeetingRoomIcon
+      ))
     )
   },
-  get edit() {
-    return lazy(() =>
-      import('./components/editIcon').then((_) => ({ default: _.EditIcon }))
+  get menuBars () {
+    return dynamic(() =>
+      import('./components/menuBarsIcon').then(_ => ( _.MenuBarsIcon
+      ))
     )
   },
-  get exclamationCircle() {
-    return lazy(() =>
-      import('./components/exclamationCircleIcon').then((_) => ({
-        default: _.ExclamationCircleIcon
-      }))
+  get mic () {
+    return dynamic(() => import('./components/micIcon').then(_ => ( _.MicIcon )))
+  },
+  get microwave () {
+    return dynamic(() =>
+      import('./components/microwaveIcon').then(_ => ( _.MicrowaveIcon
+      ))
     )
   },
-  get filePdf() {
-    return lazy(() =>
-      import('./components/filePdfIcon').then((_) => ({
-        default: _.FilePdfIcon
-      }))
+  get octagon () {
+    return dynamic(() =>
+      import('./components/octagonIcon').then(_ => ( _.OctagonIcon
+      ))
     )
   },
-  get flag() {
-    return lazy(() =>
-      import('./components/flagIcon').then((_) => ({ default: _.FlagIcon }))
+  get oven () {
+    return dynamic(() => import('./components/ovenIcon').then(_ => ( _.OvenIcon )))
+  },
+  get paperPlane () {
+    return dynamic(() =>
+      import('./components/paperPlaneIcon').then(_ => ( _.PaperPlaneIcon
+      ))
     )
   },
-  get freezer() {
-    return lazy(() =>
-      import('./components/freezerIcon').then((_) => ({
-        default: _.FreezerIcon
-      }))
+  get pauseCircle () {
+    return dynamic(() =>
+      import('./components/pauseCircleIcon').then(_ => ( _.PauseCircleIcon
+      ))
     )
   },
-  get fridge() {
-    return lazy(() =>
-      import('./components/fridgeIcon').then((_) => ({ default: _.FridgeIcon }))
+  get playCircle () {
+    return dynamic(() =>
+      import('./components/playCircleIcon').then(_ => ( _.PlayCircleIcon
+      ))
     )
   },
-  get fullScreen() {
-    return lazy(() =>
-      import('./components/fullScreenIcon').then((_) => ({
-        default: _.FullScreenIcon
-      }))
+  get plus () {
+    return dynamic(() => import('./components/plusIcon').then(_ => ( _.PlusIcon )))
+  },
+  get projector () {
+    return dynamic(() =>
+      import('./components/projectorIcon').then(_ => ( _.ProjectorIcon
+      ))
     )
   },
-  get fuseBox() {
-    return lazy(() =>
-      import('./components/fuseBoxIcon').then((_) => ({
-        default: _.FuseBoxIcon
-      }))
+  get pump () {
+    return dynamic(() => import('./components/pumpIcon').then(_ => ( _.PumpIcon )))
+  },
+  get save () {
+    return dynamic(() => import('./components/saveIcon').then(_ => ( _.SaveIcon )))
+  },
+  get search () {
+    return dynamic(() => import('./components/searchIcon').then(_ => ( _.SearchIcon )))
+  },
+  get sensor () {
+    return dynamic(() => import('./components/sensorIcon').then(_ => ( _.SensorIcon )))
+  },
+  get siren () {
+    return dynamic(() => import('./components/sirenIcon').then(_ => ( _.SirenIcon )))
+  },
+  get smokeDetector () {
+    return dynamic(() =>
+      import('./components/smokeDetectorIcon').then(_ => ( _.SmokeDetectorIcon
+      ))
     )
   },
-  get group() {
-    return lazy(() =>
-      import('./components/groupIcon').then((_) => ({ default: _.GroupIcon }))
+  get sprinkle () {
+    return dynamic(() =>
+      import('./components/sprinkleIcon').then(_ => ( _.SprinkleIcon
+      ))
     )
   },
-  get image() {
-    return lazy(() =>
-      import('./components/imageIcon').then((_) => ({ default: _.ImageIcon }))
+  get squareClose () {
+    return dynamic(() =>
+      import('./components/squareCloseIcon').then(_ => ( _.SquareCloseIcon
+      ))
     )
   },
-  get list() {
-    return lazy(() =>
-      import('./components/listIcon').then((_) => ({ default: _.ListIcon }))
+  get square () {
+    return dynamic(() => import('./components/squareIcon').then(_ => ( _.SquareIcon )))
+  },
+  get star () {
+    return dynamic(() => import('./components/starIcon').then(_ => ( _.StarIcon )))
+  },
+  get television () {
+    return dynamic(() =>
+      import('./components/televisionIcon').then(_ => ( _.TelevisionIcon
+      ))
     )
   },
-  get mapMarker() {
-    return lazy(() =>
-      import('./components/mapMarkerIcon').then((_) => ({
-        default: _.MapMarkerIcon
-      }))
+  get thermometer () {
+    return dynamic(() =>
+      import('./components/thermometerIcon').then(_ => ( _.ThermometerIcon
+      ))
     )
   },
-  get meetingRoom() {
-    return lazy(() =>
-      import('./components/meetingRoomIcon').then((_) => ({
-        default: _.MeetingRoomIcon
-      }))
+  get triangle () {
+    return dynamic(() =>
+      import('./components/triangleIcon').then(_ => ( _.TriangleIcon
+      ))
     )
   },
-  get menuBars() {
-    return lazy(() =>
-      import('./components/menuBarsIcon').then((_) => ({
-        default: _.MenuBarsIcon
-      }))
+  get upload () {
+    return dynamic(() => import('./components/uploadIcon').then(_ => ( _.UploadIcon )))
+  },
+  get verticalThreeDots () {
+    return dynamic(() =>
+      import('./components/verticalThreeDotsIcon').then(_ => ( _.VerticalThreeDotsIcon
+      ))
     )
   },
-  get mic() {
-    return lazy(() =>
-      import('./components/micIcon').then((_) => ({ default: _.MicIcon }))
-    )
-  },
-  get microwave() {
-    return lazy(() =>
-      import('./components/microwaveIcon').then((_) => ({
-        default: _.MicrowaveIcon
-      }))
-    )
-  },
-  get octagon() {
-    return lazy(() =>
-      import('./components/octagonIcon').then((_) => ({
-        default: _.OctagonIcon
-      }))
-    )
-  },
-  get oven() {
-    return lazy(() =>
-      import('./components/ovenIcon').then((_) => ({ default: _.OvenIcon }))
-    )
-  },
-  get paperPlane() {
-    return lazy(() =>
-      import('./components/paperPlaneIcon').then((_) => ({
-        default: _.PaperPlaneIcon
-      }))
-    )
-  },
-  get pauseCircle() {
-    return lazy(() =>
-      import('./components/pauseCircleIcon').then((_) => ({
-        default: _.PauseCircleIcon
-      }))
-    )
-  },
-  get playCircle() {
-    return lazy(() =>
-      import('./components/playCircleIcon').then((_) => ({
-        default: _.PlayCircleIcon
-      }))
-    )
-  },
-  get plus() {
-    return lazy(() =>
-      import('./components/plusIcon').then((_) => ({ default: _.PlusIcon }))
-    )
-  },
-  get projector() {
-    return lazy(() =>
-      import('./components/projectorIcon').then((_) => ({
-        default: _.ProjectorIcon
-      }))
-    )
-  },
-  get pump() {
-    return lazy(() =>
-      import('./components/pumpIcon').then((_) => ({ default: _.PumpIcon }))
-    )
-  },
-  get save() {
-    return lazy(() =>
-      import('./components/saveIcon').then((_) => ({ default: _.SaveIcon }))
-    )
-  },
-  get search() {
-    return lazy(() =>
-      import('./components/searchIcon').then((_) => ({ default: _.SearchIcon }))
-    )
-  },
-  get sensor() {
-    return lazy(() =>
-      import('./components/sensorIcon').then((_) => ({ default: _.SensorIcon }))
-    )
-  },
-  get siren() {
-    return lazy(() =>
-      import('./components/sirenIcon').then((_) => ({ default: _.SirenIcon }))
-    )
-  },
-  get smokeDetector() {
-    return lazy(() =>
-      import('./components/smokeDetectorIcon').then((_) => ({
-        default: _.SmokeDetectorIcon
-      }))
-    )
-  },
-  get sprinkle() {
-    return lazy(() =>
-      import('./components/sprinkleIcon').then((_) => ({
-        default: _.SprinkleIcon
-      }))
-    )
-  },
-  get squareClose() {
-    return lazy(() =>
-      import('./components/squareCloseIcon').then((_) => ({
-        default: _.SquareCloseIcon
-      }))
-    )
-  },
-  get square() {
-    return lazy(() =>
-      import('./components/squareIcon').then((_) => ({ default: _.SquareIcon }))
-    )
-  },
-  get star() {
-    return lazy(() =>
-      import('./components/starIcon').then((_) => ({ default: _.StarIcon }))
-    )
-  },
-  get television() {
-    return lazy(() =>
-      import('./components/televisionIcon').then((_) => ({
-        default: _.TelevisionIcon
-      }))
-    )
-  },
-  get thermometer() {
-    return lazy(() =>
-      import('./components/thermometerIcon').then((_) => ({
-        default: _.ThermometerIcon
-      }))
-    )
-  },
-  get triangle() {
-    return lazy(() =>
-      import('./components/triangleIcon').then((_) => ({
-        default: _.TriangleIcon
-      }))
-    )
-  },
-  get upload() {
-    return lazy(() =>
-      import('./components/uploadIcon').then((_) => ({ default: _.UploadIcon }))
-    )
-  },
-  get verticalThreeDots() {
-    return lazy(() =>
-      import('./components/verticalThreeDotsIcon').then((_) => ({
-        default: _.VerticalThreeDotsIcon
-      }))
-    )
-  },
-  get washingMachine() {
-    return lazy(() =>
-      import('./components/washingMachineIcon').then((_) => ({
-        default: _.WashingMachineIcon
-      }))
+  get washingMachine () {
+    return dynamic(() =>
+      import('./components/washingMachineIcon').then(_ => ( _.WashingMachineIcon
+      ))
     )
   }
 }
 export const LazyIcon = ({ iconName, ...props }) => {
-  const Icon = lazyIcons[iconName] || lazyIcons.circle
+  const [LoadedIcon, setLoadedIcon] = useState(null)
+  const loadModule = async () => {
+    if (LoadedIcon === null) {
+      const Icon = (await (lazyIcons[iconName] ?? lazyIcons.circle))
+      setLoadedIcon(Icon)
+    }
+  }
 
-  return (
-    <Suspense fallback={<></>}>
-      <Icon {...props} />
-    </Suspense>
-  )
+  useEffect(() => {
+    loadModule()
+    return () => {}
+  }, [])
+
+  return LoadedIcon ? <LoadedIcon {...props} /> : <></>
 }
 
 LazyIcon.propTypes = {

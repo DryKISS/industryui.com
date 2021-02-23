@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../components/social/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,YAAd","sourcesContent":["/**\n * Social\n */\nexport * from './facebook'\n"],"file":"index.js"}

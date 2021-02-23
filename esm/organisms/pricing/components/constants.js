@@ -1,8 +1,0 @@
-export var LAYOUTS = {
-  DESKTOP: 'DESKTOP',
-  MEDDESKTOP: 'MEDDESKTOP',
-  LARGEDESKTOP: 'LARGEDESKTOP',
-  MOBILE: 'MOBILE',
-  TABLET: 'TABLET'
-};
-//# sourceMappingURL=constants.js.map

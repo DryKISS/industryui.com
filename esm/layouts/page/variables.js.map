@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/layouts/page/variables.js"],"names":["PAGE","backGroundColour"],"mappings":"AAAA;AACA;AACA;AACA,OAAO,IAAMA,IAAI,GAAG;AAClBC,EAAAA,gBAAgB,EAAE;AADA,CAAb","sourcesContent":["/**\n * Theme - Variables - Page\n */\nexport const PAGE = {\n  backGroundColour: 'rgb(245, 248, 250)'\n}\n"],"file":"variables.js"}

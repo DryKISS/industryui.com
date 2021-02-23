@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/atoms/google/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,aAAd","sourcesContent":["/**\n * Google\n */\nexport * from './analytics'\n"],"file":"index.js"}

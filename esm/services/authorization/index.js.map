@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/services/authorization/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,WAAd;AACA,cAAc,YAAd","sourcesContent":["/**\n * Authorization\n */\nexport * from './context'\nexport * from './provider'\n"],"file":"index.js"}

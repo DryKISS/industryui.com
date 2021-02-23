@@ -10,13 +10,13 @@ import { object } from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import { Icon, LazyIcon } from '../../../'
+import { Icon } from '../../../'
 
 export const ImageMarker = ({ coordinates, customIcon, styles }) => {
   if (customIcon) {
     return (
       <CustomIconWrapper {...{ coordinates, styles }}>
-        <LazyIcon iconName={customIcon} size={styles.width ?? 24} />
+        <Icon icon={customIcon} size={styles.width ?? 24} iui />
       </CustomIconWrapper>
     )
   }

@@ -58,7 +58,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args } = props
+  const { args,markers } = props
 
   const defaultProps = {
     coordinatesChange: (coordinates) => {
@@ -69,7 +69,8 @@ const BaseComponent = (props = {}) => {
     }),
     item: Item,
     customIcon: args.customIcon,
-    locationChange: 'change'
+    locationChange: 'change',
+    ...(markers && { markers }),
   }
 
   const markerStyles = {
@@ -84,7 +85,25 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = (args) => <BaseComponent args={args} />
-
+export const withMarkers = args => (
+  <BaseComponent
+    markers={[
+      {
+        icon: 'circle',
+        x: 50,
+        y: 50,
+        colour: 'red'
+      },
+      {
+        icon: 'bell',
+        x: 50,
+        y: 10,
+        colour: 'blue'
+      }
+    ]}
+    args={args}
+  />
+)
 export const UsedInForm = () => {
   const schema = object().shape({
     imageLocationData: object().required()
