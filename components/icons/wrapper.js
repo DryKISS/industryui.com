@@ -72,7 +72,6 @@ export const IconWrapper = ({
       colour={colour}
       disabled={disabled}
       disabledColour={disabledColour}
-      fill="none"
       hoverColour={hoverColour}
       onClick={onClick}
       scale={scale}

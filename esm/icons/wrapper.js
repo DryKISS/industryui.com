@@ -84,7 +84,6 @@ export var IconWrapper = function IconWrapper(_ref) {
     colour: colour,
     disabled: disabled,
     disabledColour: disabledColour,
-    fill: "none",
     hoverColour: hoverColour,
     onClick: onClick,
     scale: scale,

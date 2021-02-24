@@ -6,7 +6,8 @@
 import React from 'react';
 import { array, bool, func, node, object } from 'prop-types'; // UI
 
-import { Copyright, Footer } from '../../';
+import { Copyright } from '../../molecules/copyright/copyright';
+import { Footer } from '../../organisms/footer/footer';
 export var Bootstrap = function Bootstrap(_ref) {
   var children = _ref.children,
       copyright = _ref.copyright,

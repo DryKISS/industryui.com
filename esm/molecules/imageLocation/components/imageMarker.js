@@ -45,7 +45,7 @@ export var ImageMarker = function ImageMarker(_ref) {
   });
 };
 var blinker = keyframes(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    50% {\n    opacity: 0;\n  }"])));
-var commonMarkerCss = css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  animation: ", ";\n  margin-left: ", ";\n  margin-top: ", ";\n  pointer-events: none;\n  position: absolute;\n  transition-duration: 0.2s;\n  transition-property: left, top;\n\n  ", "\n"])), function (_ref2) {
+var commonMarkerCss = css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  animation: ", ";\n  margin-left: ", ";\n  margin-top: ", ";\n  pointer-events: none;\n  position: absolute;\n  transition-duration: 0.2s;\n  transition-property: left, top;\n  ", "\n"])), function (_ref2) {
   var styles = _ref2.styles;
   return (styles === null || styles === void 0 ? void 0 : styles.animation) === 'blinker' ? css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          ", " 1s ease-in-out infinite forwards\n        "])), blinker) : '';
 }, function (_ref3) {
@@ -62,7 +62,7 @@ var CustomIconWrapper = styled.div(_templateObject5 || (_templateObject5 = _tagg
   var styles = _ref6.styles;
   return styles !== null && styles !== void 0 && styles.color ? styles === null || styles === void 0 ? void 0 : styles.color : 'red';
 }, commonMarkerCss);
-var StyledIcon = styled(Icon)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  background-color: white;\n  color: ", ";\n\n  ", "\n"])), function (_ref7) {
+var StyledIcon = styled(Icon)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  background-color: white;\n  color: ", ";\n  ", "\n"])), function (_ref7) {
   var styles = _ref7.styles;
   return styles !== null && styles !== void 0 && styles.color ? styles === null || styles === void 0 ? void 0 : styles.color : 'red';
 }, commonMarkerCss);

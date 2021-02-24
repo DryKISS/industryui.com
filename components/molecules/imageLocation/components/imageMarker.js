@@ -20,6 +20,7 @@ export const ImageMarker = ({ coordinates, customIcon, styles }) => {
       </CustomIconWrapper>
     )
   }
+
   return styles?.shape ? (
     <StyledIcon
       context="primary"
@@ -33,6 +34,7 @@ export const ImageMarker = ({ coordinates, customIcon, styles }) => {
     <StyledMarker {...{ coordinates, styles }} />
   )
 }
+
 const blinker = keyframes`
     50% {
     opacity: 0;
@@ -59,7 +61,6 @@ const commonMarkerCss = css`
   position: absolute;
   transition-duration: 0.2s;
   transition-property: left, top;
-
   ${({ coordinates }) =>
     coordinates &&
     css`
@@ -68,16 +69,17 @@ const commonMarkerCss = css`
       top: ${coordinates.y}%;
     `}
 `
+
 const CustomIconWrapper = styled.div`
   path {
     fill: ${({ styles }) => (styles?.color ? styles?.color : 'red')} !important;
   }
   ${commonMarkerCss}
 `
+
 const StyledIcon = styled(Icon)`
   background-color: white;
   color: ${({ styles }) => (styles?.color ? styles?.color : 'red')};
-
   ${commonMarkerCss}
 `
 
