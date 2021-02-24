@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/constants/dog/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,SAAd;AACA,cAAc,QAAd;AACA,cAAc,UAAd;AACA,cAAc,SAAd","sourcesContent":["/**\n * Dog\n */\nexport * from './breed'\nexport * from './coat'\nexport * from './colour'\nexport * from './group'\n"],"file":"index.js"}

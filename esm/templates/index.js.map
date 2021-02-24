@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../components/templates/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,mBAAd","sourcesContent":["/**\n * Templates\n */\nexport * from './article/article'\n"],"file":"index.js"}

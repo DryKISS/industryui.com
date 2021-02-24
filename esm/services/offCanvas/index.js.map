@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../components/services/offCanvas/index.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,cAAc,WAAd;AACA,cAAc,YAAd","sourcesContent":["/**\n * Services - OffCanvas\n */\nexport * from './context'\nexport * from './provider'\n"],"file":"index.js"}
