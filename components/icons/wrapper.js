@@ -72,15 +72,14 @@ export const IconWrapper = ({
       colour={colour}
       disabled={disabled}
       disabledColour={disabledColour}
-      fill='none'
+      fill="none"
       hoverColour={hoverColour}
       onClick={onClick}
       scale={scale}
       size={size}
       translate={translate}
-      xmlns='http://www.w3.org/2000/svg'
-      {...props}
-    >
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}>
       {children}
     </StyledSvg>
   )
@@ -100,7 +99,9 @@ const setColour = (state, props) => {
     hoverColour,
     theme: { ICONS, THEME_COLOUR }
   } = props
-  const defaultColour = context ? THEME_COLOUR.context : colour || ICONS.defaultIconColour
+  const defaultColour = context
+    ? THEME_COLOUR.context
+    : colour || ICONS.defaultIconColour
   if (state === states.DEFAULT) {
     return disabled && disabledColour
       ? disabledColour
@@ -140,7 +141,7 @@ const StyledSvg = styled.svg`
 
   path {
     transition: fill 0.2s ease;
-    fill: ${props => setColour(states.DEFAULT, props)};
+    fill: ${(props) => setColour(states.DEFAULT, props)};
     ${({ scale, translate }) => {
       return (
         scale &&
@@ -152,7 +153,7 @@ const StyledSvg = styled.svg`
   }
   &:hover {
     path {
-      fill: ${props => setColour(states.HOVER, props)};
+      fill: ${(props) => setColour(states.HOVER, props)};
     }
   }
   ${({ onClick, disabled }) =>

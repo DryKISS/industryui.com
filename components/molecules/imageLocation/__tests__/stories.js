@@ -19,12 +19,12 @@ import {
   Form,
   ImageLocation,
   ImageLocationFormElement,
+  randomFloat,
   RawIcons
 } from '../../../'
 import Readme from '../README.md'
-
 // Data
-import { Item } from '../__mocks__/itemFloor'
+import { Item, SvgTest } from '../__mocks__/itemFloor'
 
 export default {
   args: {
@@ -58,7 +58,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args,markers } = props
+  const { args, item, markers } = props
 
   const defaultProps = {
     coordinatesChange: (coordinates) => {
@@ -67,10 +67,10 @@ const BaseComponent = (props = {}) => {
     ...(args.withInitialCoordinates && {
       initialCoordinates: args.initialCoordinates
     }),
-    item: Item,
+    item: item ?? Item,
     customIcon: args.customIcon,
     locationChange: 'change',
-    ...(markers && { markers }),
+    ...(markers && { markers })
   }
 
   const markerStyles = {
@@ -85,7 +85,7 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = (args) => <BaseComponent args={args} />
-export const withMarkers = args => (
+export const withMarkers = (args) => (
   <BaseComponent
     markers={[
       {
@@ -104,6 +104,19 @@ export const withMarkers = args => (
     args={args}
   />
 )
+export const withSvgAsMainImage = (args) => {
+  const markers = []
+  for (let i = 0; i <= 1000; i++) {
+    markers.push({
+      icon: 'circle',
+      x: randomFloat({ minimum: 0, maximum: 100 }),
+      y: randomFloat({ minimum: 0, maximum: 100 }),
+      colour: 'magenta'
+    })
+  }
+
+  return <BaseComponent item={SvgTest} markers={markers} args={args} />
+}
 export const UsedInForm = () => {
   const schema = object().shape({
     imageLocationData: object().required()

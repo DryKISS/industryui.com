@@ -29,13 +29,16 @@ export const ImageWrapper = ({
   const markersArray = useRef([])
 
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
-  const [imageDimentions, setImageDimentions] = useState({ height: 0, width: 0 })
+  const [imageDimentions, setImageDimentions] = useState({
+    height: 0,
+    width: 0
+  })
   const bounds = [
     [imageDimentions.height, 0],
     [0, imageDimentions.width]
   ]
 
-  const handleImageClick = event => {
+  const handleImageClick = (event) => {
     const { current: image } = imageRef
 
     imageWidth = image.clientWidth
@@ -49,7 +52,7 @@ export const ImageWrapper = ({
 
     setCoordinates(coordinates)
 
-    setMarkerCoordinates(co => coordinates)
+    setMarkerCoordinates((co) => coordinates)
   }
 
   const handleLoad = () => {
@@ -60,8 +63,8 @@ export const ImageWrapper = ({
     markersArray.current = markers.map((item, i) => {
       let { colour, context, icon, iui, x, y } = item
 
-      x =  (x * imageHeight) / 100
-      y =(y * imageWidth) / 100
+      x = (x * imageHeight) / 100
+      y = (y * imageWidth) / 100
 
       if (iui !== false) {
         iui = true
@@ -102,12 +105,11 @@ export const ImageWrapper = ({
           <MapContainer
             crs={L.CRS.Simple}
             bounds={bounds}
-            maxZoom={5}
+            maxZoom={12}
             center={[0, -imageDimentions.width]}
             // scrollWheelZoom={false}
             // onzoomstart={e => console.log(e)}
-            attributionControl={false}
-          >
+            attributionControl={false}>
             {markersArray.current}
             <ImageOverlay url={item.filename} bounds={bounds} />
           </MapContainer>
@@ -118,7 +120,13 @@ export const ImageWrapper = ({
 
   return (
     <StyledImageWrapper>
-      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} fluid src={item.filename} />
+      <Image
+        ref={imageRef}
+        onClick={handleImageClick}
+        alt={item.name}
+        fluid
+        src={item.filename}
+      />
       {MarkerCoordinates?.x && (
         <ImageMarker
           {...{ customIcon }}
