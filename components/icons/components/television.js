@@ -25,4 +25,6 @@ export const TelevisionIcon = (props) => {
   )
 }
 
+export default TelevisionIcon
+
 TelevisionIcon.propTypes = propTypes

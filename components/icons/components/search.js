@@ -10,4 +10,6 @@ export const SearchIcon = (props) => {
   )
 }
 
+export default SearchIcon
+
 SearchIcon.propTypes = propTypes

@@ -12,4 +12,6 @@ export const FullScreenIcon = (props) => {
   )
 }
 
+export default FullScreenIcon
+
 FullScreenIcon.propTypes = propTypes

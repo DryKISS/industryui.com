@@ -9,4 +9,7 @@ export const DeleteIcon = (props) => {
     </IconWrapper>
   )
 }
+
+export default DeleteIcon
+
 DeleteIcon.propTypes = propTypes

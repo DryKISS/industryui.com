@@ -10,4 +10,6 @@ export const SquareIcon = (props) => {
   )
 }
 
+export default SquareIcon
+
 SquareIcon.propTypes = propTypes

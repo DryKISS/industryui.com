@@ -14,4 +14,6 @@ export const FridgeIcon = (props) => {
   )
 }
 
+export default FridgeIcon
+
 FridgeIcon.propTypes = propTypes

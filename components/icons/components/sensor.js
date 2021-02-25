@@ -18,4 +18,6 @@ export const SensorIcon = (props) => {
   )
 }
 
+export default SensorIcon
+
 SensorIcon.propTypes = propTypes

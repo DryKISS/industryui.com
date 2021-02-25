@@ -10,4 +10,6 @@ export const MenuBarsIcon = (props) => {
   )
 }
 
+export default MenuBarsIcon
+
 MenuBarsIcon.propTypes = propTypes

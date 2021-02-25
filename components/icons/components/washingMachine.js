@@ -21,4 +21,6 @@ export const WashingMachineIcon = (props) => {
   )
 }
 
+export default WashingMachineIcon
+
 WashingMachineIcon.propTypes = propTypes

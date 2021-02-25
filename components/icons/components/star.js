@@ -10,4 +10,6 @@ export const StarIcon = (props) => {
   )
 }
 
+export default StarIcon
+
 StarIcon.propTypes = propTypes

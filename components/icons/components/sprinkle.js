@@ -28,4 +28,6 @@ export const SprinkleIcon = (props) => {
   )
 }
 
+export default SprinkleIcon
+
 SprinkleIcon.propTypes = propTypes

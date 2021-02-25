@@ -10,4 +10,6 @@ export const CrossIcon = (props) => {
   )
 }
 
+export default CrossIcon
+
 CrossIcon.propTypes = propTypes

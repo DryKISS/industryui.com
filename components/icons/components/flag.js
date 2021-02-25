@@ -9,4 +9,7 @@ export const FlagIcon = (props) => {
     </IconWrapper>
   )
 }
+
+export default FlagIcon
+
 FlagIcon.propTypes = propTypes

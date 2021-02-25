@@ -12,4 +12,6 @@ export const MeetingRoomIcon = (props) => {
   )
 }
 
+export default MeetingRoomIcon
+
 MeetingRoomIcon.propTypes = propTypes

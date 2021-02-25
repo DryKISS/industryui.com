@@ -10,4 +10,6 @@ export const EditIcon = (props) => {
   )
 }
 
+export default EditIcon
+
 EditIcon.propTypes = propTypes

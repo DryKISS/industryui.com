@@ -10,4 +10,6 @@ export const MapMarkerIcon = (props) => {
   )
 }
 
+export default MapMarkerIcon
+
 MapMarkerIcon.propTypes = propTypes

@@ -10,4 +10,6 @@ export const CloseIcon = (props) => {
   )
 }
 
+export default CloseIcon
+
 CloseIcon.propTypes = propTypes

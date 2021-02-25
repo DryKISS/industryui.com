@@ -15,4 +15,6 @@ export const BoilerIcon = (props) => {
   )
 }
 
+export default BoilerIcon
+
 BoilerIcon.propTypes = propTypes

@@ -10,4 +10,6 @@ export const ImageIcon = (props) => {
   )
 }
 
+export default ImageIcon
+
 ImageIcon.propTypes = propTypes

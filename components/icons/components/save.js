@@ -10,4 +10,6 @@ export const SaveIcon = (props) => {
   )
 }
 
+export default SaveIcon
+
 SaveIcon.propTypes = propTypes

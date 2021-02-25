@@ -10,4 +10,6 @@ export const CircleIcon = (props) => {
   )
 }
 
+export default CircleIcon
+
 CircleIcon.propTypes = propTypes

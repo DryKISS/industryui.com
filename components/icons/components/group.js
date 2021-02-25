@@ -10,4 +10,6 @@ export const GroupIcon = (props) => {
   )
 }
 
+export default GroupIcon
+
 GroupIcon.propTypes = propTypes

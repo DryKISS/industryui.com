@@ -11,4 +11,7 @@ export const CheckCircleIcon = (props) => {
     </IconWrapper>
   )
 }
+
+export default CheckCircleIcon
+
 CheckCircleIcon.propTypes = propTypes

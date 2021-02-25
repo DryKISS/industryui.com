@@ -17,4 +17,6 @@ export const SmokeDetectorIcon = (props) => {
   )
 }
 
+export default SmokeDetectorIcon
+
 SmokeDetectorIcon.propTypes = propTypes

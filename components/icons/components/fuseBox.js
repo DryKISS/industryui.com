@@ -43,4 +43,8 @@ export const FuseBoxIcon = (props) => {
   )
 }
 
+
+export default FuseBoxIcon
+
+
 FuseBoxIcon.propTypes = propTypes

@@ -10,4 +10,6 @@ export const ExclamationCircleIcon = (props) => {
   )
 }
 
+export default ExclamationCircleIcon
+
 ExclamationCircleIcon.propTypes = propTypes

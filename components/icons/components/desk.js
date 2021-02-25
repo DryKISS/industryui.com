@@ -21,4 +21,6 @@ export const DeskIcon = (props) => {
   )
 }
 
+export default DeskIcon
+
 DeskIcon.propTypes = propTypes

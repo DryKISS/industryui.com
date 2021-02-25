@@ -8,4 +8,7 @@ export const MicIcon = (props) => {
     </IconWrapper>
   )
 }
+
+export default MicIcon
+
 MicIcon.propTypes = propTypes

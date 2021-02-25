@@ -10,4 +10,6 @@ export const UploadIcon = (props) => {
   )
 }
 
+export default UploadIcon
+
 UploadIcon.propTypes = propTypes

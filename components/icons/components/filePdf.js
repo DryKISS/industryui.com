@@ -10,4 +10,6 @@ export const FilePdfIcon = (props) => {
   )
 }
 
+export default FilePdfIcon
+
 FilePdfIcon.propTypes = propTypes

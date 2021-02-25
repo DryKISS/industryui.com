@@ -15,4 +15,6 @@ export const ListIcon = (props) => {
   )
 }
 
+export default ListIcon
+
 ListIcon.propTypes = propTypes

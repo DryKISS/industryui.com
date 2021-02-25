@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import L from 'leaflet'
 import { ImageOverlay, MapContainer, Marker } from 'react-leaflet'
 // UI
-import { Icon, Image, ImageMarker } from '../../../'
+import { RawIcons, Image, ImageMarker } from '../../../'
 
 let imageHeight = 0
 let imageWidth = 0
@@ -60,8 +60,8 @@ export const ImageWrapper = ({
     markersArray.current = markers.map((item, i) => {
       let { colour, context, icon, iui, x, y } = item
 
-      x = (x * imageWidth) / 100
-      y = (y * imageHeight) / 100
+      x =  (x * imageHeight) / 100
+      y =(y * imageWidth) / 100
 
       if (iui !== false) {
         iui = true
@@ -71,7 +71,8 @@ export const ImageWrapper = ({
         colour = 'red'
       }
 
-      const iconToRender =<Icon {...{ icon, colour, context }} />
+      const RawIcon = RawIcons[icon] ?? RawIcons.circle
+      const iconToRender = <RawIcon {...{ icon, colour, context }} />
 
       const leafletIcon = L.divIcon({
         className: 'marker-icon',
@@ -83,6 +84,8 @@ export const ImageWrapper = ({
 
     setImageDimentions({ height: imageHeight, width: imageWidth })
   }
+
+  console.log(imageDimentions)
 
   if (markers) {
     return (
@@ -100,6 +103,7 @@ export const ImageWrapper = ({
             crs={L.CRS.Simple}
             bounds={bounds}
             maxZoom={5}
+            center={[0, -imageDimentions.width]}
             // scrollWheelZoom={false}
             // onzoomstart={e => console.log(e)}
             attributionControl={false}

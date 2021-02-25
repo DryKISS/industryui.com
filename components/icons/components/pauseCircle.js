@@ -10,4 +10,6 @@ export const PauseCircleIcon = (props) => {
   )
 }
 
+export default PauseCircleIcon
+
 PauseCircleIcon.propTypes = propTypes

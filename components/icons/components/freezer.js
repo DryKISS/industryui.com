@@ -35,4 +35,6 @@ export const FreezerIcon = (props) => {
   )
 }
 
+export default FreezerIcon
+
 FreezerIcon.propTypes = propTypes

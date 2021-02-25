@@ -10,4 +10,6 @@ export const PlusIcon = (props) => {
   )
 }
 
+export default PlusIcon
+
 PlusIcon.propTypes = propTypes

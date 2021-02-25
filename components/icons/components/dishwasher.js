@@ -23,4 +23,6 @@ export const DishwasherIcon = (props) => {
   )
 }
 
+export default DishwasherIcon
+
 DishwasherIcon.propTypes = propTypes

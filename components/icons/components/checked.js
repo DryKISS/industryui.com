@@ -10,4 +10,6 @@ export const CheckedIcon = (props) => {
   )
 }
 
+export default CheckedIcon
+
 CheckedIcon.propTypes = propTypes

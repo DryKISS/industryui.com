@@ -18,4 +18,6 @@ export const SirenIcon = (props) => {
   )
 }
 
+export default SirenIcon
+
 SirenIcon.propTypes = propTypes

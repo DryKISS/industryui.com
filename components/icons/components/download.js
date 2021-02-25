@@ -10,4 +10,6 @@ export const DownloadIcon = (props) => {
   )
 }
 
+export default DownloadIcon
+
 DownloadIcon.propTypes = propTypes

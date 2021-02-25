@@ -9,4 +9,7 @@ export const PlayCircleIcon = (props) => {
     </IconWrapper>
   )
 }
+
+export default PlayCircleIcon
+
 PlayCircleIcon.propTypes = propTypes

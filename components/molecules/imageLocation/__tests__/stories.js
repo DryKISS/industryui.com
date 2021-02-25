@@ -19,7 +19,7 @@ import {
   Form,
   ImageLocation,
   ImageLocationFormElement,
-  lazyIcons
+  RawIcons
 } from '../../../'
 import Readme from '../README.md'
 
@@ -39,7 +39,7 @@ export default {
   },
   argTypes: {
     customIcon: {
-      control: { type: 'select', options: Object.keys(lazyIcons) }
+      control: { type: 'select', options: Object.keys(RawIcons) }
     },
     animation: {
       control: { type: 'select', options: ['blinker', 'none'] }

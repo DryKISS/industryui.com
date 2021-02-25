@@ -11,4 +11,7 @@ export const PumpIcon = (props) => {
     </IconWrapper>
   )
 }
+
+export default PumpIcon
+
 PumpIcon.propTypes = propTypes

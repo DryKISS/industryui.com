@@ -23,4 +23,6 @@ export const OvenIcon = (props) => {
   )
 }
 
+export default OvenIcon
+
 OvenIcon.propTypes = propTypes

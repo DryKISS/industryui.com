@@ -13,4 +13,6 @@ export const ThermometerIcon = (props) => {
   )
 }
 
+export default ThermometerIcon
+
 ThermometerIcon.propTypes = propTypes

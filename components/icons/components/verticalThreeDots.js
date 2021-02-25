@@ -12,4 +12,6 @@ export const VerticalThreeDotsIcon = (props) => {
   )
 }
 
+export default VerticalThreeDotsIcon
+
 VerticalThreeDotsIcon.propTypes = propTypes

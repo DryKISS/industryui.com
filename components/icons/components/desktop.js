@@ -14,4 +14,6 @@ export const DesktopIcon = (props) => {
   )
 }
 
+export default DesktopIcon
+
 DesktopIcon.propTypes = propTypes

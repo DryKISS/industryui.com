@@ -20,4 +20,6 @@ export const ProjectorIcon = (props) => {
   )
 }
 
+export default ProjectorIcon
+
 ProjectorIcon.propTypes = propTypes

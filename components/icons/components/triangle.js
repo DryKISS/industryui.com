@@ -10,4 +10,6 @@ export const TriangleIcon = (props) => {
   )
 }
 
+export default TriangleIcon
+
 TriangleIcon.propTypes = propTypes

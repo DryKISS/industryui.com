@@ -16,4 +16,6 @@ export const CoffeeMachineIcon = (props) => {
   )
 }
 
+export default CoffeeMachineIcon
+
 CoffeeMachineIcon.propTypes = propTypes

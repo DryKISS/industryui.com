@@ -16,4 +16,6 @@ export const MicrowaveIcon = (props) => {
   )
 }
 
+export default MicrowaveIcon
+
 MicrowaveIcon.propTypes = propTypes

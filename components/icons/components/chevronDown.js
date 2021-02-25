@@ -10,4 +10,6 @@ export const ChevronDownIcon = (props) => {
   )
 }
 
+export default ChevronDownIcon
+
 ChevronDownIcon.propTypes = propTypes

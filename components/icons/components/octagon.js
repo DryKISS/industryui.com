@@ -10,4 +10,6 @@ export const OctagonIcon = (props) => {
   )
 }
 
+export default OctagonIcon
+
 OctagonIcon.propTypes = propTypes
