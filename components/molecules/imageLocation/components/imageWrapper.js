@@ -85,7 +85,18 @@ export const ImageWrapper = ({
         html: renderToString(iconToRender)
       })
 
-      return <Marker key={i} position={[x, y]} icon={leafletIcon} />
+      return (
+        <Marker
+          eventHandlers={{
+            click: (e) => {
+              console.log('marker clicked', e)
+            }
+          }}
+          key={i}
+          position={[x, y]}
+          icon={leafletIcon}
+        />
+      )
     })
 
     setImageDimentions({ height: imageHeight, width: imageWidth })
