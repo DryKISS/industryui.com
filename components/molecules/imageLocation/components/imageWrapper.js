@@ -11,8 +11,11 @@ import { func, object } from 'prop-types'
 import styled from 'styled-components'
 import L from 'leaflet'
 import { ImageOverlay, MapContainer, Marker } from 'react-leaflet'
+import MarkerClusterGroup from 'react-leaflet-markercluster'
+
 // UI
 import { RawIcons, Image, ImageMarker } from '../../../'
+import { ClusterIcon } from './clusterIcon'
 
 let imageHeight = 0
 let imageWidth = 0
@@ -87,8 +90,13 @@ export const ImageWrapper = ({
 
     setImageDimentions({ height: imageHeight, width: imageWidth })
   }
-
-  console.log(imageDimentions)
+  const createClusterCustomIcon = (cluster) => {
+    return L.divIcon({
+      html: renderToString(<ClusterIcon cluster={cluster} />),
+      className: 'marker-cluster'
+      // iconSize: L.point(38, 38, true)
+    })
+  }
 
   if (markers) {
     return (
@@ -110,7 +118,9 @@ export const ImageWrapper = ({
             // scrollWheelZoom={false}
             // onzoomstart={e => console.log(e)}
             attributionControl={false}>
-            {markersArray.current}
+            <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
+              {markersArray.current}
+            </MarkerClusterGroup>
             <ImageOverlay url={item.filename} bounds={bounds} />
           </MapContainer>
         )}
