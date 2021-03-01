@@ -20,7 +20,7 @@ import { ClusterIcon } from './clusterIcon'
 let imageHeight = 0
 let imageWidth = 0
 
-const createClusterCustomIcon = cluster => {
+const createClusterCustomIcon = (cluster) => {
   return L.divIcon({
     html: renderToString(<ClusterIcon cluster={cluster} />),
     className: 'marker-cluster'
@@ -29,11 +29,13 @@ const createClusterCustomIcon = cluster => {
 }
 
 export const ImageWrapper = ({
+  autoCloseMarkerPopup,
   coordinates,
   customIcon,
   item,
   markers,
   markerStyles,
+  onMarkerClick,
   setCoordinates
 }) => {
   const imageRef = useRef()
@@ -49,7 +51,7 @@ export const ImageWrapper = ({
     [0, imageDimentions.width]
   ]
 
-  const handleImageClick = event => {
+  const handleImageClick = (event) => {
     const { current: image } = imageRef
 
     imageWidth = image.clientWidth
@@ -63,7 +65,7 @@ export const ImageWrapper = ({
 
     setCoordinates(coordinates)
 
-    setMarkerCoordinates(co => coordinates)
+    setMarkerCoordinates((co) => coordinates)
   }
 
   const handleLoad = () => {
@@ -96,15 +98,22 @@ export const ImageWrapper = ({
       return (
         <Marker
           eventHandlers={{
-            click: e => {
-              console.log('marker clicked', e)
+            click: (e) => {
+              onMarkerClick(item)
+            },
+            mouseover: (e) => {
+              popupComponent && e.target.openPopup()
+            },
+            mouseout: (e) => {
+              popupComponent && autoCloseMarkerPopup && e.target.closePopup()
             }
           }}
           key={i}
           position={[x, y]}
-          icon={leafletIcon}
-        >
-          {popupComponent && <Popup>{popupComponent}</Popup>}
+          icon={leafletIcon}>
+          {popupComponent && (
+            <Popup closeButton={!autoCloseMarkerPopup}>{popupComponent}</Popup>
+          )}
         </Marker>
       )
     })
@@ -124,7 +133,11 @@ export const ImageWrapper = ({
         />
 
         {imageDimentions.width !== 0 && (
-          <MapContainer crs={L.CRS.Simple} bounds={bounds} maxZoom={12} attributionControl={false}>
+          <MapContainer
+            crs={L.CRS.Simple}
+            bounds={bounds}
+            maxZoom={12}
+            attributionControl={false}>
             <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
               {markersArray.current}
             </MarkerClusterGroup>
@@ -137,7 +150,13 @@ export const ImageWrapper = ({
 
   return (
     <StyledImageWrapper>
-      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} fluid src={item.filename} />
+      <Image
+        ref={imageRef}
+        onClick={handleImageClick}
+        alt={item.name}
+        fluid
+        src={item.filename}
+      />
       {MarkerCoordinates?.x && (
         <ImageMarker
           {...{ customIcon }}

@@ -58,10 +58,10 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args, item, markers } = props
+  const { args, item, markers, onMarkerClick } = props
 
   const defaultProps = {
-    coordinatesChange: coordinates => {
+    coordinatesChange: (coordinates) => {
       console.info('Coordinates', coordinates)
     },
     ...(args.withInitialCoordinates && {
@@ -70,7 +70,8 @@ const BaseComponent = (props = {}) => {
     item: item ?? Item,
     customIcon: args.customIcon,
     locationChange: 'change',
-    ...(markers && { markers })
+    ...(markers && { markers }),
+    ...(onMarkerClick && { onMarkerClick })
   }
 
   const markerStyles = {
@@ -81,11 +82,17 @@ const BaseComponent = (props = {}) => {
     width: '20px'
   }
 
-  return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
+  return (
+    <ImageLocation
+      autoCloseMarkerPopup
+      markerStyles={markerStyles}
+      {...defaultProps}
+    />
+  )
 }
 
-export const main = args => <BaseComponent args={args} />
-export const withMarkers = args => (
+export const main = (args) => <BaseComponent args={args} />
+export const withMarkers = (args) => (
   <BaseComponent
     markers={[
       {
@@ -104,7 +111,10 @@ export const withMarkers = args => (
     args={args}
   />
 )
-export const withSvgAsMainImage = args => {
+export const withSvgAsMainImage = (args) => {
+  const handleMarkerClick = (markerData) => {
+    console.log(markerData)
+  }
   const markers = []
   for (let i = 0; i <= 1000; i++) {
     markers.push({
@@ -115,8 +125,14 @@ export const withSvgAsMainImage = args => {
       colour: 'magenta'
     })
   }
-
-  return <BaseComponent item={SvgTest} markers={markers} args={args} />
+  return (
+    <BaseComponent
+      item={SvgTest}
+      markers={markers}
+      onMarkerClick={handleMarkerClick}
+      args={args}
+    />
+  )
 }
 export const UsedInForm = () => {
   const schema = object().shape({
@@ -127,13 +143,18 @@ export const UsedInForm = () => {
     resolver: yupResolver(schema)
   })
 
-  const onFormSubmit = data => {
+  const onFormSubmit = (data) => {
     console.info(data)
   }
 
   return (
-    <Form handleSubmit={handleSubmit(data => onFormSubmit(data))}>
-      <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
+    <Form handleSubmit={handleSubmit((data) => onFormSubmit(data))}>
+      <ImageLocationFormElement
+        item={Item}
+        control={control}
+        errors={errors}
+        setValue={setValue}
+      />
       {errors.imageLocationData && (
         <Alert
           content={
@@ -142,7 +163,7 @@ export const UsedInForm = () => {
           }
         />
       )}
-      <Button type='submit'>submit form</Button>
+      <Button type="submit">submit form</Button>
     </Form>
   )
 }

@@ -13,11 +13,13 @@ import { ImageWrapper } from '../../'
 import { ImageLocationProps } from './props'
 
 export const ImageLocation = ({
+  autoCloseMarkerPopup,
   coordinatesChange,
   customIcon,
   initialCoordinates,
   item,
   markers,
+  onMarkerClick,
   markerStyles,
   show
 }) => {
@@ -35,11 +37,13 @@ export const ImageLocation = ({
       {item?.filename && (
         <ImageWrapper
           {...{
+            autoCloseMarkerPopup,
             coordinates,
             customIcon,
             item,
             markers,
             markerStyles,
+            onMarkerClick,
             setCoordinates
           }}
         />
