@@ -99,7 +99,9 @@ export const ImageWrapper = ({
         <Marker
           eventHandlers={{
             click: (e) => {
-              onMarkerClick(item)
+              const markerProps = { ...item }
+              delete markerProps.popupComponent
+              onMarkerClick(markerProps)
             },
             mouseover: (e) => {
               popupComponent && e.target.openPopup()
