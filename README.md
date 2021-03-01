@@ -26,7 +26,7 @@ DryKISS
 
 > <https://drykiss.com> > <https://github.com/drykiss>
 
-## Copyright and license
+## Copyright and License
 
 Code and documentation copyright 2013-2019 the
 [IndustryUI Authors](https://github.com/DryKISS/industryui.com/graphs/contributors)
