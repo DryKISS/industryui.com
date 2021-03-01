@@ -7,7 +7,11 @@ import React, { Suspense } from 'react'
 import { any, bool, node, oneOf, shape, string } from 'prop-types'
 
 // UI
-import { Alert, LdsSpinner, Page, PageLoading, Space } from '../../'
+import { Alert } from '../../molecules/alert/components/alert'
+import { LdsSpinner } from '../../molecules/pageLoading/components/ldsSpinner'
+import { Page } from '../page/page'
+import { PageLoading } from '../../molecules/pageLoading/components/pageLoading'
+import { Space } from '../../atoms/space/space'
 import { THEME_CONTEXT } from '../../theme/constants/context'
 
 export const Dashboard = ({

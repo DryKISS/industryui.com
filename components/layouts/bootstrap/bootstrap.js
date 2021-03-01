@@ -8,7 +8,8 @@ import React from 'react'
 import { array, bool, func, node, object } from 'prop-types'
 
 // UI
-import { Copyright, Footer } from '../../'
+import { Copyright } from '../../molecules/copyright/copyright'
+import { Footer } from '../../organisms/footer/footer'
 
 export const Bootstrap = ({
   children,

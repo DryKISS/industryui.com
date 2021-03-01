@@ -15,7 +15,6 @@ export const Events = [
     title: 'Event 1',
     tooltip: 'All day event tooltip'
   },
-
   {
     context: 'secondary',
     backgroundColor: 'yellow',
