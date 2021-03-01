@@ -1,5 +1,6 @@
 {
   // ESlint
+  "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
@@ -10,21 +11,46 @@
   ],
   // Editor
   "editor.formatOnSave": false,
+  "editor.tabSize": 2,
   "editor.rulers": [
     100
   ],
-  "editor.tabSize": 2,
-  // Files
+  "editor.minimap.enabled": false,
+  "editor.folding": false,
+  "editor.fontFamily": "'Fira Code', Inconsolata, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 12,
+  "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
-  "files.exclude": {
-    "**/.DS_Store": true,
-    "**/.git": true,
-    "**/.hg": true,
-    "**/.svn": true,
-    "**/CVS": true
+  "files.associations": {
+    "*.builder": "ruby",
+    "*.thor": "ruby",
+    "*.md": "markdown",
+    "*.variables": "less",
+    "*.overrides": "less"
   },
+  // UI
+  "breadcrumbs.enabled": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+  // Javascript
+  "javascript.validate.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  // Typescript
+  "typescript.validate.enable": false,
+  "typescript.format.enable": false,
+  // PHP
+  "php.validate.enable": false,
   // CSS
   "scss.validate": false,
   "less.validate": false,
-  "css.validate": false
+  "css.validate": false,
+  // GIT
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }

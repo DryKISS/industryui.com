@@ -19,12 +19,12 @@ import {
   Form,
   ImageLocation,
   ImageLocationFormElement,
-  lazyIcons
+  randomFloat,
+  RawIcons
 } from '../../../'
 import Readme from '../README.md'
-
 // Data
-import { Item } from '../__mocks__/itemFloor'
+import { Item, SvgTest } from '../__mocks__/itemFloor'
 
 export default {
   args: {
@@ -39,7 +39,7 @@ export default {
   },
   argTypes: {
     customIcon: {
-      control: { type: 'select', options: Object.keys(lazyIcons) }
+      control: { type: 'select', options: Object.keys(RawIcons) }
     },
     animation: {
       control: { type: 'select', options: ['blinker', 'none'] }
@@ -58,7 +58,7 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args } = props
+  const { args, item, markers, onMarkerClick } = props
 
   const defaultProps = {
     coordinatesChange: (coordinates) => {
@@ -67,9 +67,11 @@ const BaseComponent = (props = {}) => {
     ...(args.withInitialCoordinates && {
       initialCoordinates: args.initialCoordinates
     }),
-    item: Item,
+    item: item ?? Item,
     customIcon: args.customIcon,
-    locationChange: 'change'
+    locationChange: 'change',
+    ...(markers && { markers }),
+    ...(onMarkerClick && { onMarkerClick })
   }
 
   const markerStyles = {
@@ -80,11 +82,58 @@ const BaseComponent = (props = {}) => {
     width: '20px'
   }
 
-  return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
+  return (
+    <ImageLocation
+      autoCloseMarkerPopup
+      markerStyles={markerStyles}
+      {...defaultProps}
+    />
+  )
 }
 
 export const main = (args) => <BaseComponent args={args} />
-
+export const withMarkers = (args) => (
+  <BaseComponent
+    markers={[
+      {
+        icon: 'circle',
+        x: 50,
+        y: 50,
+        colour: 'red'
+      },
+      {
+        icon: 'bell',
+        x: 50,
+        y: 10,
+        colour: 'blue'
+      }
+    ]}
+    args={args}
+  />
+)
+export const withSvgAsMainImage = (args) => {
+  const handleMarkerClick = (markerData) => {
+    console.log(markerData)
+  }
+  const markers = []
+  for (let i = 0; i <= 1000; i++) {
+    markers.push({
+      icon: 'circle',
+      popupComponent: <div>icon {i}</div>,
+      x: randomFloat({ minimum: 0, maximum: 100 }),
+      y: randomFloat({ minimum: 0, maximum: 100 }),
+      colour: 'magenta'
+    })
+  }
+  return (
+    <BaseComponent
+      item={SvgTest}
+      markers={markers}
+      onMarkerClick={handleMarkerClick}
+      args={args}
+    />
+  )
+}
 export const UsedInForm = () => {
   const schema = object().shape({
     imageLocationData: object().required()

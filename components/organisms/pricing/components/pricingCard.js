@@ -9,7 +9,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { CheckedIcon } from '../../../icons/components/checkedIcon'
+import { CheckedIcon } from '../../../icons/components/checked'
 import { priceLayoutSizes } from '../utils/index'
 import { Text } from '../../../atoms/text/text'
 
