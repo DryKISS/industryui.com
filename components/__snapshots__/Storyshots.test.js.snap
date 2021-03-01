@@ -2940,6 +2940,46 @@ exports[`Storyshots Molecules/ImageLocation Used In Form 1`] = `
 />
 `;
 
+exports[`Storyshots Molecules/ImageLocation With Markers 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/ImageLocation With Svg As Main Image 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Molecules/Intercom Main 1`] = `
 .c0 {
   padding: 1rem;

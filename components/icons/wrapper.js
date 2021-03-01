@@ -92,18 +92,21 @@ const states = {
 const setColour = (state, props) => {
   let {
     colour,
+    context,
     disabled,
     disabledColour,
     hoverColour,
-    theme: { ICONS }
+    theme: { ICONS, THEME_COLOUR }
   } = props
-
+  const defaultColour = context
+    ? THEME_COLOUR.context
+    : colour || ICONS.defaultIconColour
   if (state === states.DEFAULT) {
     return disabled && disabledColour
       ? disabledColour
       : disabled
       ? ICONS.disabledIconColour
-      : colour || ICONS.defaultIconColour
+      : defaultColour
   }
 
   if (state === states.HOVER && hoverColour) {
@@ -115,14 +118,14 @@ const setColour = (state, props) => {
       ? disabledColour
       : disabled
       ? ICONS.disabledIconColour
-      : hoverColour || ICONS.hoverIconColour || ICONS.defaultIconColour
+      : hoverColour || ICONS.hoverIconColour || defaultColour
   }
 
   if (disabled) {
     return disabledColour || ICONS.disabledIconColour
   }
 
-  return colour || ICONS.defaultColour
+  return defaultColour
 }
 
 const StyledSvg = styled.svg`
