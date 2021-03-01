@@ -61,7 +61,7 @@ const BaseComponent = (props = {}) => {
   const { args, item, markers } = props
 
   const defaultProps = {
-    coordinatesChange: (coordinates) => {
+    coordinatesChange: coordinates => {
       console.info('Coordinates', coordinates)
     },
     ...(args.withInitialCoordinates && {
@@ -84,8 +84,8 @@ const BaseComponent = (props = {}) => {
   return <ImageLocation markerStyles={markerStyles} {...defaultProps} />
 }
 
-export const main = (args) => <BaseComponent args={args} />
-export const withMarkers = (args) => (
+export const main = args => <BaseComponent args={args} />
+export const withMarkers = args => (
   <BaseComponent
     markers={[
       {
@@ -104,11 +104,12 @@ export const withMarkers = (args) => (
     args={args}
   />
 )
-export const withSvgAsMainImage = (args) => {
+export const withSvgAsMainImage = args => {
   const markers = []
   for (let i = 0; i <= 1000; i++) {
     markers.push({
       icon: 'circle',
+      popupComponent: <div>icon {i}</div>,
       x: randomFloat({ minimum: 0, maximum: 100 }),
       y: randomFloat({ minimum: 0, maximum: 100 }),
       colour: 'magenta'
@@ -126,18 +127,13 @@ export const UsedInForm = () => {
     resolver: yupResolver(schema)
   })
 
-  const onFormSubmit = (data) => {
+  const onFormSubmit = data => {
     console.info(data)
   }
 
   return (
-    <Form handleSubmit={handleSubmit((data) => onFormSubmit(data))}>
-      <ImageLocationFormElement
-        item={Item}
-        control={control}
-        errors={errors}
-        setValue={setValue}
-      />
+    <Form handleSubmit={handleSubmit(data => onFormSubmit(data))}>
+      <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
       {errors.imageLocationData && (
         <Alert
           content={
@@ -146,7 +142,7 @@ export const UsedInForm = () => {
           }
         />
       )}
-      <Button type="submit">submit form</Button>
+      <Button type='submit'>submit form</Button>
     </Form>
   )
 }

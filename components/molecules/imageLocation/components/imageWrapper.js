@@ -10,7 +10,7 @@ import { func, object } from 'prop-types'
 
 import styled from 'styled-components'
 import L from 'leaflet'
-import { ImageOverlay, MapContainer, Marker } from 'react-leaflet'
+import { ImageOverlay, MapContainer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
 
 // UI
@@ -19,6 +19,14 @@ import { ClusterIcon } from './clusterIcon'
 
 let imageHeight = 0
 let imageWidth = 0
+
+const createClusterCustomIcon = cluster => {
+  return L.divIcon({
+    html: renderToString(<ClusterIcon cluster={cluster} />),
+    className: 'marker-cluster'
+    // iconSize: L.point(38, 38, true)
+  })
+}
 
 export const ImageWrapper = ({
   coordinates,
@@ -41,7 +49,7 @@ export const ImageWrapper = ({
     [0, imageDimentions.width]
   ]
 
-  const handleImageClick = (event) => {
+  const handleImageClick = event => {
     const { current: image } = imageRef
 
     imageWidth = image.clientWidth
@@ -55,7 +63,7 @@ export const ImageWrapper = ({
 
     setCoordinates(coordinates)
 
-    setMarkerCoordinates((co) => coordinates)
+    setMarkerCoordinates(co => coordinates)
   }
 
   const handleLoad = () => {
@@ -64,7 +72,7 @@ export const ImageWrapper = ({
     imageWidth = image.clientWidth
     imageHeight = image.clientHeight
     markersArray.current = markers.map((item, i) => {
-      let { colour, context, icon, iui, x, y } = item
+      let { colour, context, icon, iui, popupComponent, x, y } = item
 
       x = (x * imageHeight) / 100
       y = (y * imageWidth) / 100
@@ -88,25 +96,20 @@ export const ImageWrapper = ({
       return (
         <Marker
           eventHandlers={{
-            click: (e) => {
+            click: e => {
               console.log('marker clicked', e)
             }
           }}
           key={i}
           position={[x, y]}
           icon={leafletIcon}
-        />
+        >
+          {popupComponent && <Popup>{popupComponent}</Popup>}
+        </Marker>
       )
     })
 
     setImageDimentions({ height: imageHeight, width: imageWidth })
-  }
-  const createClusterCustomIcon = (cluster) => {
-    return L.divIcon({
-      html: renderToString(<ClusterIcon cluster={cluster} />),
-      className: 'marker-cluster'
-      // iconSize: L.point(38, 38, true)
-    })
   }
 
   if (markers) {
@@ -121,14 +124,7 @@ export const ImageWrapper = ({
         />
 
         {imageDimentions.width !== 0 && (
-          <MapContainer
-            crs={L.CRS.Simple}
-            bounds={bounds}
-            maxZoom={12}
-            center={[0, -imageDimentions.width]}
-            // scrollWheelZoom={false}
-            // onzoomstart={e => console.log(e)}
-            attributionControl={false}>
+          <MapContainer crs={L.CRS.Simple} bounds={bounds} maxZoom={12} attributionControl={false}>
             <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
               {markersArray.current}
             </MarkerClusterGroup>
@@ -141,13 +137,7 @@ export const ImageWrapper = ({
 
   return (
     <StyledImageWrapper>
-      <Image
-        ref={imageRef}
-        onClick={handleImageClick}
-        alt={item.name}
-        fluid
-        src={item.filename}
-      />
+      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} fluid src={item.filename} />
       {MarkerCoordinates?.x && (
         <ImageMarker
           {...{ customIcon }}
