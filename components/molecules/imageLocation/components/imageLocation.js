@@ -17,10 +17,12 @@ export const ImageLocation = ({
   coordinatesChange,
   customIcon,
   initialCoordinates,
+  initialZoomLevel,
   item,
   markers,
-  onMarkerClick,
   markerStyles,
+  maxZoomLevel,
+  onMarkerClick,
   show
 }) => {
   const [coordinates, setCoordinates] = useState(initialCoordinates)
@@ -40,9 +42,11 @@ export const ImageLocation = ({
             autoCloseMarkerPopup,
             coordinates,
             customIcon,
+            initialZoomLevel,
             item,
             markers,
             markerStyles,
+            maxZoomLevel,
             onMarkerClick,
             setCoordinates
           }}

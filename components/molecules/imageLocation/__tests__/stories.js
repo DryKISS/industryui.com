@@ -58,7 +58,14 @@ export default {
 }
 
 const BaseComponent = (props = {}) => {
-  const { args, item, markers, onMarkerClick } = props
+  const {
+    args,
+    item,
+    initialZoomLevel,
+    markers,
+    maxZoomLevel,
+    onMarkerClick
+  } = props
 
   const defaultProps = {
     coordinatesChange: (coordinates) => {
@@ -70,6 +77,8 @@ const BaseComponent = (props = {}) => {
     item: item ?? Item,
     customIcon: args.customIcon,
     locationChange: 'change',
+    ...(initialZoomLevel && { initialZoomLevel }),
+    ...(maxZoomLevel && { maxZoomLevel }),
     ...(markers && { markers }),
     ...(onMarkerClick && { onMarkerClick })
   }
@@ -128,6 +137,8 @@ export const withSvgAsMainImage = (args) => {
   return (
     <BaseComponent
       item={SvgTest}
+      initialZoomLevel={2}
+      maxZoomLevel={14}
       markers={markers}
       onMarkerClick={handleMarkerClick}
       args={args}

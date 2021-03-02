@@ -10,7 +10,13 @@ import { func, object } from 'prop-types'
 
 import styled from 'styled-components'
 import L from 'leaflet'
-import { ImageOverlay, MapContainer, Marker, Popup } from 'react-leaflet'
+import {
+  ImageOverlay,
+  MapConsumer,
+  MapContainer,
+  Marker,
+  Popup
+} from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
 
 // UI
@@ -33,13 +39,16 @@ export const ImageWrapper = ({
   coordinates,
   customIcon,
   item,
+  initialZoomLevel,
   markers,
   markerStyles,
+  maxZoomLevel,
   onMarkerClick,
   setCoordinates
 }) => {
   const imageRef = useRef()
   const markersArray = useRef([])
+  const mapRef = useRef()
 
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
   const [imageDimentions, setImageDimentions] = useState({
@@ -121,6 +130,9 @@ export const ImageWrapper = ({
     })
 
     setImageDimentions({ height: imageHeight, width: imageWidth })
+    setTimeout(() => {
+      initialZoomLevel && mapRef.current.setZoom(initialZoomLevel)
+    }, 0)
   }
 
   if (markers) {
@@ -138,8 +150,14 @@ export const ImageWrapper = ({
           <MapContainer
             crs={L.CRS.Simple}
             bounds={bounds}
-            maxZoom={12}
+            maxZoom={maxZoomLevel ?? 12}
             attributionControl={false}>
+            <MapConsumer>
+              {(map) => {
+                mapRef.current = map
+                return null
+              }}
+            </MapConsumer>
             <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
               {markersArray.current}
             </MarkerClusterGroup>
