@@ -67,7 +67,10 @@ export const Login = ({
     errors: errors,
     register: register
   }
-
+  const handleTogglePassword = () => {
+    console.log(showPass)
+    setShowPass((prev) => !prev)
+  }
   return (
     <Wrapper>
       {showTitle && <PageHeading center heading={heading} divider={false} />}
@@ -96,11 +99,11 @@ export const Login = ({
         </FormLabel>
 
         {showPassword && (
-          <ShowPassword
-            align="right"
-            onClick={() => setShowPass((prev) => !prev)}>
-            {showPass ? 'Hide Password' : 'Show Password'}
-          </ShowPassword>
+          <ShowPassWrapper onClick={handleTogglePassword}>
+            <ShowPassword align="right">
+              {showPass ? 'Hide Password' : 'Show Password'}
+            </ShowPassword>
+          </ShowPassWrapper>
         )}
 
         <Button
@@ -131,7 +134,7 @@ export const Login = ({
     </Wrapper>
   )
 }
-
+const ShowPassWrapper = styled.div``
 const Wrapper = styled.div`
   background: ${({ theme: { LOGIN } }) => LOGIN.background};
   padding: 1rem;
