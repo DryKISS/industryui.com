@@ -12,8 +12,15 @@ import styled from 'styled-components'
 // UI
 import { Link, slugify } from '../../'
 
-export const BlogCategory = ({ author, config, className, style, to }) => {
-  const path = slugify(to)
+export const BlogCategory = ({
+  author,
+  config,
+  className,
+  link,
+  style,
+  to
+}) => {
+  const path = slugify(to ?? link.to)
 
   return (
     <StyledCategory className={className} style={style}>
