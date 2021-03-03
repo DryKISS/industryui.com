@@ -3,21 +3,12 @@
  */
 
 // React
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { renderToString } from 'react-dom/server'
 
 import { func, object } from 'prop-types'
 
 import styled from 'styled-components'
-import L from 'leaflet'
-import {
-  ImageOverlay,
-  MapConsumer,
-  MapContainer,
-  Marker,
-  Popup
-} from 'react-leaflet'
-import MarkerClusterGroup from 'react-leaflet-markercluster'
 
 // UI
 import { RawIcons, Image, ImageMarker } from '../../../'
@@ -25,14 +16,6 @@ import { ClusterIcon } from './clusterIcon'
 
 let imageHeight = 0
 let imageWidth = 0
-
-const createClusterCustomIcon = (cluster) => {
-  return L.divIcon({
-    html: renderToString(<ClusterIcon cluster={cluster} />),
-    className: 'marker-cluster'
-    // iconSize: L.point(38, 38, true)
-  })
-}
 
 export const ImageWrapper = ({
   autoCloseMarkerPopup,
@@ -46,6 +29,44 @@ export const ImageWrapper = ({
   onMarkerClick,
   setCoordinates
 }) => {
+  const [Leaflet, setLeaflet] = useState(null)
+
+  const createClusterCustomIcon = (cluster) => {
+    return Leaflet.L.divIcon({
+      html: renderToString(<ClusterIcon cluster={cluster} />),
+      className: 'marker-cluster'
+      // iconSize: L.point(38, 38, true)
+    })
+  }
+
+  const loadModules = async () => {
+    const {
+      ImageOverlay,
+      MapConsumer,
+      MapContainer,
+      Marker,
+      Popup
+    } = await import('react-leaflet')
+    const L = (await import('leaflet')).default
+    const MarkerClusterGroup = (await import('react-leaflet-markercluster'))
+      .default
+
+    setLeaflet({
+      ImageOverlay,
+      MapConsumer,
+      MapContainer,
+      Marker,
+      Popup,
+      L,
+      MarkerClusterGroup
+    })
+  }
+
+  useEffect(() => {
+    loadModules()
+    return () => {}
+  }, [])
+
   const imageRef = useRef()
   const markersArray = useRef([])
   const mapRef = useRef()
@@ -99,13 +120,13 @@ export const ImageWrapper = ({
       const RawIcon = RawIcons[icon] ?? RawIcons.circle
       const iconToRender = <RawIcon {...{ icon, colour, context }} />
 
-      const leafletIcon = L.divIcon({
+      const leafletIcon = Leaflet.L.divIcon({
         className: 'marker-icon',
         html: renderToString(iconToRender)
       })
 
       return (
-        <Marker
+        <Leaflet.Marker
           eventHandlers={{
             click: (e) => {
               const markerProps = { ...item }
@@ -123,9 +144,11 @@ export const ImageWrapper = ({
           position={[x, y]}
           icon={leafletIcon}>
           {popupComponent && (
-            <Popup closeButton={!autoCloseMarkerPopup}>{popupComponent}</Popup>
+            <Leaflet.Popup closeButton={!autoCloseMarkerPopup}>
+              {popupComponent}
+            </Leaflet.Popup>
           )}
-        </Marker>
+        </Leaflet.Marker>
       )
     })
 
@@ -135,7 +158,7 @@ export const ImageWrapper = ({
     }, 0)
   }
 
-  if (markers) {
+  if (Leaflet && markers) {
     return (
       <Wrapper>
         <HiddenMapImage
@@ -147,22 +170,23 @@ export const ImageWrapper = ({
         />
 
         {imageDimentions.width !== 0 && (
-          <MapContainer
-            crs={L.CRS.Simple}
+          <Leaflet.MapContainer
+            crs={Leaflet.L.CRS.Simple}
             bounds={bounds}
             maxZoom={maxZoomLevel ?? 12}
             attributionControl={false}>
-            <MapConsumer>
+            <Leaflet.MapConsumer>
               {(map) => {
                 mapRef.current = map
                 return null
               }}
-            </MapConsumer>
-            <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
+            </Leaflet.MapConsumer>
+            <Leaflet.MarkerClusterGroup
+              iconCreateFunction={createClusterCustomIcon}>
               {markersArray.current}
-            </MarkerClusterGroup>
-            <ImageOverlay url={item.filename} bounds={bounds} />
-          </MapContainer>
+            </Leaflet.MarkerClusterGroup>
+            <Leaflet.ImageOverlay url={item.filename} bounds={bounds} />
+          </Leaflet.MapContainer>
         )}
       </Wrapper>
     )
