@@ -32,6 +32,118 @@ export const Default = {
       }
     },
     {
+      id: 'navDropdown',
+      name: 'User',
+      type: {
+        as: 'dropdown',
+        items: [
+          {
+            id: 'settings',
+            name: 'Settings',
+            to: '/'
+          },
+          {
+            id: 'profile',
+            name: 'Profile',
+            to: '/'
+          },
+          {
+            id: 'logout-divider',
+            divider: true
+          },
+          {
+            id: 'logout',
+            name: 'Logout',
+            to: '/'
+          }
+        ]
+      }
+    },
+    {
+      id: 'navDropdown',
+      name: 'User',
+      type: {
+        as: 'dropdown',
+        items: [
+          {
+            id: 'settings',
+            name: 'Settings',
+            to: '/'
+          },
+          {
+            id: 'profile',
+            name: 'Profile',
+            to: '/'
+          },
+          {
+            id: 'logout-divider',
+            divider: true
+          },
+          {
+            id: 'logout',
+            name: 'Logout',
+            to: '/'
+          }
+        ]
+      }
+    },
+    {
+      id: 'navDropdown',
+      name: 'User',
+      type: {
+        as: 'dropdown',
+        items: [
+          {
+            id: 'settings',
+            name: 'Settings',
+            to: '/'
+          },
+          {
+            id: 'profile',
+            name: 'Profile',
+            to: '/'
+          },
+          {
+            id: 'logout-divider',
+            divider: true
+          },
+          {
+            id: 'logout',
+            name: 'Logout',
+            to: '/'
+          }
+        ]
+      }
+    },
+    {
+      id: 'navDropdown',
+      name: 'User',
+      type: {
+        as: 'dropdown',
+        items: [
+          {
+            id: 'settings',
+            name: 'Settings',
+            to: '/'
+          },
+          {
+            id: 'profile',
+            name: 'Profile',
+            to: '/'
+          },
+          {
+            id: 'logout-divider',
+            divider: true
+          },
+          {
+            id: 'logout',
+            name: 'Logout',
+            to: '/'
+          }
+        ]
+      }
+    },
+    {
       id: 'navHome',
       name: 'Home',
       to: '/'

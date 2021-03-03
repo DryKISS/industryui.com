@@ -26,7 +26,7 @@ import styled, { css } from 'styled-components'
 export const BlogCard = ({ article, config, link, type }) => {
   const { author, category, excerpt, heading, slug } = article
 
-  const articleSlug = slugify(article.slug)
+  const articleSlug = article ? slugify(slug) : null
   const categorySlug = category ? slugify(category) : null
 
   const articleLink = {
