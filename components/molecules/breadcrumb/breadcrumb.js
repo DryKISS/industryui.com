@@ -24,59 +24,58 @@ export const Breadcrumb = ({
     <nav aria-label="breadcrumb">
       <StyledOl itemScope="" itemType="http://schema.org/BreadcrumbList">
         {/* Home link - always static and routes to / */}
-        {breadcrumbs &&
-          breadcrumbs.map((item, index) => {
-            return (
-              <StyledLi
-                itemProp="itemListElement"
-                itemScope=""
-                itemType="http://schema.org/ListItem"
-                key={index}>
-                {index + 1 !== breadcrumbs.length ? (
-                  <Link to={item.to} passHref>
-                    <StyledA
-                      itemProp="item"
-                      itemScope="itemscope"
-                      size={size}
-                      itemType="http://schema.org/Thing">
-                      {item.icon && (
-                        <StyledIconWrapper size={size}>
-                          {item.icon}
-                        </StyledIconWrapper>
-                      )}
-                      <StyledTitle size={size}> {item.title}</StyledTitle>
-                    </StyledA>
-                  </Link>
-                ) : (
-                  <StyledLastTitle size={size} itemProp="name">
+        {breadcrumbs.map((item, index) => {
+          return (
+            <StyledLi
+              itemProp="itemListElement"
+              itemScope=""
+              itemType="http://schema.org/ListItem"
+              key={index}>
+              {index + 1 !== breadcrumbs.length ? (
+                <Link to={item.to} passHref>
+                  <StyledA
+                    itemProp="item"
+                    itemScope="itemscope"
+                    size={size}
+                    itemType="http://schema.org/Thing">
                     {item.icon && (
                       <StyledIconWrapper size={size}>
                         {item.icon}
                       </StyledIconWrapper>
                     )}
-                    <StyledTitle last size={size}>
-                      {item.title}
-                    </StyledTitle>
-                  </StyledLastTitle>
-                )}
+                    <StyledTitle size={size}> {item.title}</StyledTitle>
+                  </StyledA>
+                </Link>
+              ) : (
+                <StyledLastTitle size={size} itemProp="name">
+                  {item.icon && (
+                    <StyledIconWrapper size={size}>
+                      {item.icon}
+                    </StyledIconWrapper>
+                  )}
+                  <StyledTitle last size={size}>
+                    {item.title}
+                  </StyledTitle>
+                </StyledLastTitle>
+              )}
 
-                <meta itemProp="position" content={index + 1 + ''} />
+              <meta itemProp="position" content={index + 1 + ''} />
 
-                {index + 1 !== breadcrumbs.length && (
-                  <StyledSeperator size={size}>
-                    {customSeparator ??
-                      (separator && separator === 'chevron' ? (
-                        <StyledIcon icon="chevron-right" prefix="fas" />
-                      ) : separator && separator === 'slash' ? (
-                        <StyledIcon icon="slash" prefix="fas" />
-                      ) : (
-                        separator || '\\'
-                      ))}
-                  </StyledSeperator>
-                )}
-              </StyledLi>
-            )
-          })}
+              {index + 1 !== breadcrumbs.length && (
+                <StyledSeperator size={size}>
+                  {customSeparator ??
+                    (separator && separator === 'chevron' ? (
+                      <StyledIcon icon="chevron-right" prefix="fas" />
+                    ) : separator && separator === 'slash' ? (
+                      <StyledIcon icon="slash" prefix="fas" />
+                    ) : (
+                      separator || '\\'
+                    ))}
+                </StyledSeperator>
+              )}
+            </StyledLi>
+          )
+        })}
       </StyledOl>
     </nav>
   )
