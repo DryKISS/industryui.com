@@ -41,7 +41,7 @@ export const TableRows = memo(
           {Object.entries(row).map(([key, value], index) => {
             const length = columns.length
             const column = columns[index]
-            const { formatterData } = column
+            const formatterData = column?.formatterData
             if (length && column.hidden) {
               return false
             }
