@@ -96,7 +96,7 @@ export const columnsActions = [
   },
   {
     formatter: TableActions,
-    formatterData: [
+    formatterData: (row) => [
       {
         content: 'Edit',
         context: 'primary',
@@ -104,7 +104,7 @@ export const columnsActions = [
         to: '/manage',
         tooltip: 'Edit',
         numberOverlay: 'itemCount',
-        onClick: (e, row) => console.log('edit', row)
+        onClick: () => console.log('edit', row)
       },
       {
         content: 'Delete',
