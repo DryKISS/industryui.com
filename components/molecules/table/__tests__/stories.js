@@ -16,12 +16,12 @@ const dataContext = rowsContext.data
 export default {
   args: {
     align: false,
+    border: true,
     caption: 'Caption goes here',
     className: '',
     fullHeight: false,
     hover: true,
     loading: false,
-    noBorder: false,
     pagination: true,
     perPage: 10,
     responsive: true,

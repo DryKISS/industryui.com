@@ -12,17 +12,18 @@ import { tableColumnCount } from '../utils/columnCount'
 
 // Style
 import styled, { css } from 'styled-components'
+import { boolean } from 'yup'
 
 export const Table = memo(
   ({
     align,
+    border,
     caption,
     className,
     columns,
     fullHeight,
     hover,
     loading,
-    noBorder,
     noData,
     pagination,
     paginationProps: { currentPage, onPageChange, pageCount, perPage = 10 },
@@ -50,7 +51,7 @@ export const Table = memo(
       <StyledWrapper
         fullHeight={fullHeight}
         isLoading={loading}
-        noBorder={noBorder}>
+        border={border}>
         <TableLoading colsLength={tableSpan} show={loading} />
 
         <StyledResponsive
@@ -101,8 +102,8 @@ const StyledWrapper = styled.div`
     css`
       position: relative;
     `}
-  ${({ noBorder }) =>
-    noBorder &&
+  ${({ border }) =>
+    border === false &&
     css`
       td,
       th {
@@ -129,6 +130,7 @@ const StyledResponsive = styled.div`
 
 Table.propTypes = {
   align: oneOfType([string, bool]),
+  border: boolean,
   caption: string,
   className: string,
   columns: array,
@@ -154,6 +156,7 @@ Table.propTypes = {
 
 Table.defaultProps = {
   align: false,
+  border: true,
   columns: [],
   className: 'Table',
   fullHeight: false,
