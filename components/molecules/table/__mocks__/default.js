@@ -103,7 +103,8 @@ export const columnsActions = [
         icon: ['fas', 'edit'],
         to: '/manage',
         tooltip: 'Edit',
-        numberOverlay: 'itemCount'
+        numberOverlay: 'itemCount',
+        onClick: (e, row) => console.log('edit', row)
       },
       {
         content: 'Delete',

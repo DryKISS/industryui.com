@@ -22,6 +22,7 @@ export const Table = memo(
     fullHeight,
     hover,
     loading,
+    noBorder,
     noData,
     pagination,
     paginationProps: { currentPage, onPageChange, pageCount, perPage = 10 },
@@ -35,7 +36,10 @@ export const Table = memo(
     const tableSpan = tableColumnCount(columns)
     const rowLength = rows.length > 0
     return (
-      <StyledWrapper fullHeight={fullHeight} isLoading={loading}>
+      <StyledWrapper
+        fullHeight={fullHeight}
+        isLoading={loading}
+        noBorder={noBorder}>
         <TableLoading colsLength={tableSpan} show={loading} />
 
         <StyledResponsive responsive={responsive}>
@@ -82,6 +86,14 @@ const StyledWrapper = styled.div`
     isLoading &&
     css`
       position: relative;
+    `}
+  ${({ noBorder }) =>
+    noBorder &&
+    css`
+      td,
+      th {
+        border: none !important;
+      }
     `}
 `
 

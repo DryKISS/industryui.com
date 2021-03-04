@@ -41,9 +41,20 @@ export const TableRows = memo(
           {Object.entries(row).map(([key, value], index) => {
             const length = columns.length
             const column = columns[index]
-
+            const { formatterData } = column
             if (length && column.hidden) {
               return false
+            }
+            let formatter
+            if (formatterData) {
+              if (typeof formatterData === 'function') {
+                formatter = column.formatter({
+                  row,
+                  data: (row) => formatterData
+                })
+              } else {
+                formatter = column.formatter({ row, data: formatterData })
+              }
             }
 
             const renderValue = typeof value === 'function' ? value() : value
@@ -51,7 +62,7 @@ export const TableRows = memo(
             return (
               <TableData align={align} key={index}>
                 {length > 0 && column.formatter ? (
-                  column.formatter({ row, data: column.formatterData })
+                  formatter
                 ) : value && value.__html ? (
                   <span dangerouslySetInnerHTML={value} />
                 ) : (

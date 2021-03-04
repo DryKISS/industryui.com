@@ -21,6 +21,7 @@ export default {
     fullHeight: false,
     hover: true,
     loading: false,
+    noBorder: false,
     pagination: true,
     perPage: 10,
     responsive: true,
@@ -117,6 +118,7 @@ export const context = (args) => (
 export const loadingWithoutData = (args) => (
   <BaseComponent {...args} rows={[]} loading />
 )
+
 export const showNoData = (args) => <BaseComponent {...args} rows={[]} />
 
 export const noColumns = (args) => (
