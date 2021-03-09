@@ -78,6 +78,39 @@ export const UserProvider = ({ children }) => {
       Router.push('/dashboard')
     }
   }
+
+  const switchAccount = async (accountId, callback) => {
+    let user, newToken
+    const token = window.localStorage.getItem('bearerToken')
+
+    try {
+      const { data } = await axios.post(
+        `${apiConfig.authURL}/switch-account`,
+        { accountId },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+          }
+        }
+      )
+      newToken = data.token
+      const tokenData = decodeToken(newToken)
+      user = tokenData.user
+    } catch (err) {
+      const error = err.response?.data?.error || 'Error switching account'
+      callback(error)
+    }
+
+    const isAuthed = user && newToken
+    if (isAuthed) {
+      setUser(user)
+      window.localStorage.setItem('bearerToken', newToken)
+      setAccessToken(newToken)
+      Router.push('/dashboard')
+    }
+  }
+
   const registerContext = async (
     nameFirst,
     nameLast,
@@ -155,6 +188,7 @@ export const UserProvider = ({ children }) => {
           signIn,
           registerContext,
           signOut,
+          switchAccount,
           user
         }}>
         {children}
