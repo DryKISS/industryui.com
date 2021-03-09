@@ -194,9 +194,6 @@ const StyledReadTime = styled.p`
 BlogCard.propTypes = {
   article: any.isRequired,
   config: object.isRequired,
-  link: shape({
-    prefetch: bool
-  }),
   type: oneOf(['hero', 'normal'])
 }
 

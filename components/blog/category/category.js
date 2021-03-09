@@ -59,7 +59,6 @@ BlogCategory.propTypes = {
   style: any,
   to: shape({
     passHref: bool,
-    prefetch: bool,
     to: oneOfType([object, string]).isRequired
   })
 }

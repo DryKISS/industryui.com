@@ -24,7 +24,6 @@ export const propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
   onClick: func,
   passHref: bool,
-  prefetch: bool,
   replace: bool,
   scroll: bool,
   shallow: bool,
@@ -35,7 +34,6 @@ export const propTypes = {
 export const defaultProps = {
   border: true,
   context: THEME_CONTEXT.DARK,
-  prefetch: true,
   replace: false,
   scroll: true,
   shallow: false

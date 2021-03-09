@@ -6,7 +6,9 @@
 import React, { Fragment } from 'react'
 
 // UI
-import { Image, List, ListItem } from '../../../'
+import { Image } from '../../../atoms/image/image'
+import { List } from '../../../atoms/list/components/list'
+import { ListItem } from '../../../atoms/list/components/listItem'
 
 const renderColumn = (index) => (
   <Fragment key={index}>
@@ -22,12 +24,21 @@ const renderColumn = (index) => (
 
 export const FORMATTER = [
   {
-    size: { md: 8, lg: 6 },
-    offset: { md: 4, lg: 0 },
+    size: {
+      md: 8,
+      lg: 6
+    },
+    offset: {
+      md: 4,
+      lg: 0
+    },
     formatter: renderColumn
   },
   {
-    size: { md: 4, lg: 2 },
+    size: {
+      md: 4,
+      lg: 2
+    },
     header: {
       content: 'About'
     },
@@ -47,7 +58,10 @@ export const FORMATTER = [
     }
   },
   {
-    size: { md: 4, lg: 2 },
+    size: {
+      md: 4,
+      lg: 2
+    },
     header: {
       content: 'Discover'
     },
@@ -67,7 +81,10 @@ export const FORMATTER = [
     }
   },
   {
-    size: { md: 4, lg: 2 },
+    size: {
+      md: 4,
+      lg: 2
+    },
     header: {
       content: 'Contact'
     },

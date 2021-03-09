@@ -15,20 +15,18 @@ import {
   string
 } from 'prop-types'
 
-// UI
-import {
-  Column,
-  Container,
-  Heading,
-  Icon,
-  Link,
-  List,
-  ListItem,
-  Row
-} from '../../'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { Column } from '../../atoms/grid/components/Column'
+import { Container } from '../../atoms/grid/components/Container'
+import { Heading } from '../../atoms/heading/heading'
+import { Icon } from '../../atoms/icon/icon/icon'
+import { Link } from '../../atoms/link/link'
+import { List } from '../../atoms/list/components/list'
+import { ListItem } from '../../atoms/list/components/listItem'
+import { Row } from '../../atoms/grid/components/Row'
 
 export const Footer = ({ columns, fixed }) => {
   const renderColumns = () => {
@@ -39,7 +37,7 @@ export const Footer = ({ columns, fixed }) => {
           key={index}
           offset={column.offset}
           {...column.size}>
-          {Object.entries(column).forEach(([key, value], i) => {
+          {Object.entries(column).map(([key, value], i) => {
             switch (key) {
               case 'header':
                 return (
@@ -58,7 +56,7 @@ export const Footer = ({ columns, fixed }) => {
               case 'links':
                 return renderLinks(value, `${index}${i}`)
 
-              case 'text':
+              default:
                 return renderText(value, `${index}${i}`)
             }
           })}

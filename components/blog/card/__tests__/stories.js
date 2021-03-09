@@ -25,10 +25,5 @@ export default {
 }
 
 export const main = (args) => (
-  <BlogCard
-    article={Articles[0]}
-    config={Blog}
-    link={{ prefetch: false }}
-    {...args}
-  />
+  <BlogCard article={Articles[0]} config={Blog} {...args} />
 )

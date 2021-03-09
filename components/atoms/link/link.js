@@ -27,7 +27,6 @@ export const Link = ({
   fullWidth,
   onClick,
   passHref,
-  prefetch,
   replace,
   scroll,
   shallow,
@@ -40,7 +39,6 @@ export const Link = ({
     <NextLink
       {...obj}
       passHref={passHref}
-      prefetch={prefetch}
       replace={replace}
       scroll={scroll}
       shallow={shallow}>

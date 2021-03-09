@@ -16,7 +16,6 @@ export default {
   args: {
     showMonth: false
   },
-  title: 'Organisms/Footer',
   component: Footer,
   parameters: {
     docs: {
@@ -24,7 +23,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Organisms/Footer'
 }
 
 const BaseComponent = (props = {}) => {
