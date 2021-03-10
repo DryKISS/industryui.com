@@ -4,10 +4,10 @@
 
 // React
 import React, { useEffect, useRef, useState } from 'react'
+import { func, object } from 'prop-types'
 import { renderToString } from 'react-dom/server'
 
-import { func, object } from 'prop-types'
-
+// Style
 import styled from 'styled-components'
 
 // UI
