@@ -25,9 +25,7 @@ export const Page = ({ children, fluid, meta, padding, pageHeading }) => {
     <StyledPage>
       {padding && <Space paddingTop={padding} />}
 
-      {meta && (
-        <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />
-      )}
+      {meta && <MetaHead canonical={Canonical} brand={Brand.name} meta={meta} />}
 
       <Container fluid={fluid}>
         {pageHeading && <PageHeading {...pageHeading} />}
@@ -49,7 +47,7 @@ Page.propTypes = {
   meta: shape({
     description: string.isRequired,
     path: string,
-    title: string.isRequired
+    title: string.isRequired,
   }),
   padding: oneOfType([bool, oneOf(Object.values(THEME_SIZE))]),
   pageHeading: shape({
@@ -59,11 +57,11 @@ Page.propTypes = {
     heading: any.isRequired,
     help: bool,
     helpContent: any,
-    strapline: string
-  })
+    strapline: string,
+  }),
 }
 
 Page.defaultProps = {
   fluid: false,
-  padding: 'md'
+  padding: 'md',
 }

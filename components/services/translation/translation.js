@@ -23,13 +23,13 @@ const Translate = async (text, from = 'es', to = 'en') => {
           to,
           'api-version': '3.0',
           profanityAction: 'NoAction',
-          textType: 'plain'
+          textType: 'plain',
         },
         headers: {
           'content-type': 'application/json',
           'x-rapidapi-key': RapidApi.apiKey,
-          'x-rapidapi-host': 'microsoft-translator-text.p.rapidapi.com'
-        }
+          'x-rapidapi-host': 'microsoft-translator-text.p.rapidapi.com',
+        },
       }
     )
 

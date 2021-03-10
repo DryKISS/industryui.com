@@ -7,7 +7,7 @@ import { Container, RouterWrap, Wrapper } from './decorators'
 import './decorators/icons'
 
 // CSS
-import '@fullcalendar/core/main.min.css'
+import '@fullcalendar/common/main.min.css'
 import '@fullcalendar/daygrid/main.min.css'
 import '@fullcalendar/list/main.min.css'
 import '@fullcalendar/timegrid/main.min.css'

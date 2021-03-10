@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react'
 import { array, number, node, object, oneOf, string } from 'prop-types'
 
 // Services
-import { StaticMap } from '../../../'
+import { StaticMap } from '../../../services/google/static/map'
 
 export const StaticLocation = ({
   apiKey,
@@ -30,7 +30,7 @@ export const StaticLocation = ({
   style,
   styleMap,
   visible,
-  zoom
+  zoom,
 }) => {
   const [width, height] = size.split('x')
   const [mapUrl, setMapUrl] = useState('')
@@ -54,7 +54,7 @@ export const StaticLocation = ({
       size,
       style: styleMap,
       visible,
-      zoom
+      zoom,
     })
 
     const mapUrl = map.generateUrl()
@@ -93,7 +93,7 @@ StaticLocation.propTypes = {
   style: object,
   styleMap: string,
   visible: string,
-  zoom: number
+  zoom: number,
 }
 
 StaticLocation.defaultProps = {
@@ -101,5 +101,5 @@ StaticLocation.defaultProps = {
   maptype: 'roadmap',
   scale: 1,
   size: '400x200',
-  zoom: 15
+  zoom: 15,
 }

@@ -1,39 +1,34 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: [
-    'standard',
-    'standard-react',
-    'prettier',
-    'prettier/react',
-    'prettier-standard'
-  ],
+  extends: ['standard', 'standard-react', 'prettier', 'prettier/react', 'prettier-standard'],
   env: {
     browser: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   settings: {
     react: {
-      version: '17.0.1'
-    }
+      version: '17.0.1',
+    },
   },
   plugins: ['react', 'react-hooks'],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
+    'prettier/prettier': [1, { printWidth: 100, semi: false, singleQuote: true }],
     'max-len': [
       'error',
       {
         // Ignore SVGs d=
         ignorePattern: 'd="([\\s\\S]*?)"|data:image',
         code: 100,
-        tabWidth: 2
-      }
+        tabWidth: 2,
+      },
     ],
 
     // Make sure imports are taken care off
@@ -47,6 +42,6 @@ module.exports = {
     // allow specifying true explicitly for boolean props
     'react/jsx-boolean-value': 0,
     'react-hooks/rules-of-hooks': 'error',
-    'react/no-did-update-set-state': 0
-  }
+    'react/no-did-update-set-state': 0,
+  },
 }

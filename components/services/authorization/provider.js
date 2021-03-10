@@ -9,7 +9,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import Router, { useRouter } from 'next/router'
 
 // UI
-import { AuthorizationContext, ConfigContext, UserContext } from '../../'
+import { AuthorizationContext } from '../authorization/context'
+import { ConfigContext } from '../config/context'
+import { UserContext } from '../authentication/context'
 
 export const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -62,9 +64,7 @@ export const AuthorizationProvider = ({ children }) => {
         case 'owner':
           return user.role === type + '_owner'
         case 'manager':
-          return (
-            user.role === type + '_owner' || user.role === type + '_manager'
-          )
+          return user.role === type + '_owner' || user.role === type + '_manager'
         case 'user':
           return user.role.startsWith(type)
         default:
@@ -91,8 +91,9 @@ export const AuthorizationProvider = ({ children }) => {
       <AuthorizationContext.Provider
         value={{
           hasAccess,
-          hasRole
-        }}>
+          hasRole,
+        }}
+      >
         {children}
       </AuthorizationContext.Provider>
     )

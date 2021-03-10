@@ -21,21 +21,19 @@ import App from 'next/app'
 // Google Tag Manager
 import TagManager from 'react-gtm-module'
 
-// UI
-import { AuthorizationProvider } from '../services/authorization/provider'
-import {
-  ConfigProvider,
-  InternationalisationProvider,
-  NotificationsProvider,
-  OffCanvasProvider,
-  PageProgressBar,
-  Theme,
-  ThemeStyle,
-  UserProvider
-} from '../'
-
 // Style
 import { ThemeProvider } from 'styled-components'
+
+// UI
+import { AuthorizationProvider } from '../services/authorization/provider'
+import { ConfigProvider } from '../services/config/provider'
+import { InternationalisationProvider } from '../services/internationalisation/provider'
+import { NotificationsProvider } from '../services/notifications/provider'
+import { OffCanvasProvider } from '../services/offCanvas/provider'
+import { PageProgressBar } from '../molecules/pageProgressBar/components/pageProgressBar'
+import { Theme } from '../theme/variables/index'
+import { ThemeStyle } from '../theme/global/style'
+import { UserProvider } from '../services/authentication/provider'
 
 export class MyApp extends App {
   static propTypes = {
@@ -49,14 +47,14 @@ export class MyApp extends App {
     pageProps: object,
     pageProgressBar: bool,
     theme: object,
-    user: bool
+    user: bool,
   }
 
   static defaultProps = {
     offCanvas: false,
     pageProgressBar: false,
     theme: {},
-    user: false
+    user: false,
   }
 
   componentDidMount() {
@@ -101,9 +99,7 @@ export class MyApp extends App {
       <>
         <ConfigProvider config={config}>
           {apolloClient ? (
-            <ApolloProvider client={apolloClient}>
-              {this.elements()}
-            </ApolloProvider>
+            <ApolloProvider client={apolloClient}>{this.elements()}</ApolloProvider>
           ) : (
             this.elements()
           )}
@@ -124,10 +120,6 @@ export class MyApp extends App {
   }
 
   render() {
-    return (
-      <ThemeProvider theme={merge(Theme, this.props.theme)}>
-        {this.data()}
-      </ThemeProvider>
-    )
+    return <ThemeProvider theme={merge(Theme, this.props.theme)}>{this.data()}</ThemeProvider>
   }
 }
