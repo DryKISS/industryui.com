@@ -4,7 +4,7 @@
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
-    "DryKISS, Ltd."
+    "DryKISS, Ltd"
   ],
   "homepage": "https://industryui.com",
   "module": "esm/index.js",
