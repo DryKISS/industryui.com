@@ -96,14 +96,15 @@ export const columnsActions = [
   },
   {
     formatter: TableActions,
-    formatterData: [
+    formatterData: (row) => [
       {
         content: 'Edit',
         context: 'primary',
         icon: ['fas', 'edit'],
         to: '/manage',
         tooltip: 'Edit',
-        numberOverlay: 'itemCount'
+        numberOverlay: 'itemCount',
+        onClick: () => console.log('edit', row)
       },
       {
         content: 'Delete',

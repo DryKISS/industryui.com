@@ -23,9 +23,15 @@ import { TableActionsTooltip } from './tooltip'
 import { TableActionsButton } from './button'
 
 export const TableActions = ({ align, row, data }) => {
+  let dataArray
+  if (typeof data === 'function') {
+    dataArray = data()(row)
+  } else {
+    dataArray = data
+  }
   return (
     <ButtonToolbar align={align}>
-      {data.map(
+      {dataArray.map(
         (
           {
             context,

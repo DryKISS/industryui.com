@@ -16,6 +16,7 @@ const dataContext = rowsContext.data
 export default {
   args: {
     align: false,
+    border: true,
     caption: 'Caption goes here',
     className: '',
     fullHeight: false,
@@ -117,6 +118,7 @@ export const context = (args) => (
 export const loadingWithoutData = (args) => (
   <BaseComponent {...args} rows={[]} loading />
 )
+
 export const showNoData = (args) => <BaseComponent {...args} rows={[]} />
 
 export const noColumns = (args) => (

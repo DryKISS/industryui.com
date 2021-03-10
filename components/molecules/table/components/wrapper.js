@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { memo } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
 // UI
@@ -12,10 +12,12 @@ import { tableColumnCount } from '../utils/columnCount'
 
 // Style
 import styled, { css } from 'styled-components'
+import { boolean } from 'yup'
 
 export const Table = memo(
   ({
     align,
+    border,
     caption,
     className,
     columns,
@@ -33,12 +35,29 @@ export const Table = memo(
     striped
   }) => {
     const tableSpan = tableColumnCount(columns)
+    const [containerHeight, setcContainerHeight] = useState(null)
+    const tableRef = useRef(null)
+    const tableReady = useRef(false)
     const rowLength = rows.length > 0
+    useEffect(() => {
+      const table = tableRef.current
+      if (table && loading !== true && tableReady.current === false) {
+        tableReady.current = true
+        setcContainerHeight(table.clientHeight)
+      }
+      return () => {}
+    }, [rowLength])
     return (
-      <StyledWrapper fullHeight={fullHeight} isLoading={loading}>
+      <StyledWrapper
+        fullHeight={fullHeight}
+        isLoading={loading}
+        border={border}>
         <TableLoading colsLength={tableSpan} show={loading} />
 
-        <StyledResponsive responsive={responsive}>
+        <StyledResponsive
+          ref={tableRef}
+          minHeight={containerHeight}
+          responsive={responsive}>
           <TableContent
             align={align}
             caption={caption}
@@ -83,6 +102,14 @@ const StyledWrapper = styled.div`
     css`
       position: relative;
     `}
+  ${({ border }) =>
+    border === false &&
+    css`
+      td,
+      th {
+        border: none !important;
+      }
+    `}
 `
 
 const StyledResponsive = styled.div`
@@ -94,10 +121,16 @@ const StyledResponsive = styled.div`
       overflow-x: auto;
       width: 100%;
     `}
+  ${({ minHeight }) =>
+    minHeight &&
+    css`
+      min-height: ${minHeight}px;
+    `}
 `
 
 Table.propTypes = {
   align: oneOfType([string, bool]),
+  border: boolean,
   caption: string,
   className: string,
   columns: array,
@@ -123,6 +156,7 @@ Table.propTypes = {
 
 Table.defaultProps = {
   align: false,
+  border: true,
   columns: [],
   className: 'Table',
   fullHeight: false,

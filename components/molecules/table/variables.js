@@ -8,5 +8,6 @@ import { THEME_COLOUR } from '../../theme/variables/colour'
 export const TABLE = {
   background: THEME_COLOUR.white,
   fontSize: '0.875rem',
-  padding: '0.5rem'
+  padding: '0.5rem',
+  selectedRowBackground: THEME_COLOUR.white
 }
