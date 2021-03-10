@@ -38,6 +38,11 @@ export const TableRow = memo(styled.tr`
         background-color: #eee;
       }
     `}
+  ${({ selected, theme }) =>
+    selected &&
+    css`
+      background-color: ${theme.TABLE.selectedRowBackground} !important;
+    `}
 `)
 
 TableRow.propTypes = {

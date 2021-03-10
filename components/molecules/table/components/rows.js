@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
 // UI
@@ -11,10 +11,12 @@ import { TableData, TableRow } from '../../../'
 
 export const TableRows = memo(
   ({ align, columns, hover, rowClick, rows, striped }) => {
-    const handleClick = (e) => {
+    const [selectedIndex, setSelectedIndex] = useState(null)
+    const handleClick = (e, index) => {
       e.preventDefault()
       const row = e.currentTarget.getAttribute('data-item')
       rowClick(JSON.parse(row))
+      setSelectedIndex(index)
     }
 
     const clickable = typeof rowClick === 'function'
@@ -35,15 +37,27 @@ export const TableRows = memo(
           data-item={JSON.stringify(row)}
           hover={hover}
           key={index}
-          onClick={clickable ? handleClick : null}
+          onClick={clickable ? (row) => handleClick(row, index) : null}
           pointer={clickable}
+          selected={selectedIndex === index}
           striped={striped}>
           {Object.entries(row).map(([key, value], index) => {
             const length = columns.length
             const column = columns[index]
-
+            const formatterData = column?.formatterData
             if (length && column.hidden) {
               return false
+            }
+            let formatter
+            if (formatterData) {
+              if (typeof formatterData === 'function') {
+                formatter = column.formatter({
+                  row,
+                  data: (row) => formatterData
+                })
+              } else {
+                formatter = column.formatter({ row, data: formatterData })
+              }
             }
 
             const renderValue = typeof value === 'function' ? value() : value
@@ -51,7 +65,7 @@ export const TableRows = memo(
             return (
               <TableData align={align} key={index}>
                 {length > 0 && column.formatter ? (
-                  column.formatter({ row, data: column.formatterData })
+                  formatter
                 ) : value && value.__html ? (
                   <span dangerouslySetInnerHTML={value} />
                 ) : (
