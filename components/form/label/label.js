@@ -33,9 +33,9 @@ FormLabel.propTypes = {
   children: node,
   id: string,
   label: string,
-  show: bool,
+  show: bool
 }
 
 FormLabel.defaultProps = {
-  show: true,
+  show: true
 }

@@ -155,7 +155,7 @@ export const propTypes = {
   tabIndex: string,
 
   // Select the currently focused option when the user presses tab
-  tabSelectsValue: bool,
+  tabSelectsValue: bool
 }
 
 export const defaultProps = (defaultStyles) => ({
@@ -188,5 +188,5 @@ export const defaultProps = (defaultStyles) => ({
   screenReaderStatus: ({ count }) => `${count} result${count !== 1 ? 's' : ''} available`,
   styles: defaultStyles,
   tabIndex: '0',
-  tabSelectsValue: true,
+  tabSelectsValue: true
 })

@@ -11,7 +11,7 @@ export const Container = ({ children, isFinished, animationDuration }) => (
     style={{
       opacity: isFinished ? 0 : 1,
       pointerEvents: 'none',
-      transition: `opacity ${animationDuration}ms linear`,
+      transition: `opacity ${animationDuration}ms linear`
     }}
   >
     {children}
@@ -21,5 +21,5 @@ export const Container = ({ children, isFinished, animationDuration }) => (
 Container.propTypes = {
   animationDuration: number.isRequired,
   children: node.isRequired,
-  isFinished: bool.isRequired,
+  isFinished: bool.isRequired
 }

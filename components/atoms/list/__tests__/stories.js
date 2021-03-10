@@ -14,12 +14,12 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
   subcomponents: { ListItem },
-  title: 'Atoms/List',
+  title: 'Atoms/List'
 }
 
 export const main = (args) => (

@@ -19,7 +19,7 @@ export const propTypes = {
   scroll: bool,
   shallow: bool,
   target: string,
-  to: oneOfType([object, string]).isRequired,
+  to: oneOfType([object, string]).isRequired
 }
 
 export const defaultProps = {
@@ -27,5 +27,5 @@ export const defaultProps = {
   context: THEME_CONTEXT.DARK,
   replace: false,
   scroll: true,
-  shallow: false,
+  shallow: false
 }

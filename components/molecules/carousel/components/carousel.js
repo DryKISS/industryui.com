@@ -35,7 +35,7 @@ export const Carousel = ({
   showNavs,
   showPagination,
   slides,
-  width,
+  width
 }) => {
   let dataSource = slides || children
 
@@ -123,7 +123,7 @@ export const Carousel = ({
           icon={rightNavIcon}
           position={navPosition}
         />
-      ),
+      )
     }
     if (leftNavComponent) {
       components.left = (

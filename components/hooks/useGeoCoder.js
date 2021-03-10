@@ -16,7 +16,7 @@ export const useGeoCoder = ({ address, apiKey, city, language, region }) => {
       const geo = new GeoCoder({
         apiKey,
         language,
-        region,
+        region
       })
 
       const coordinates = await geo.fromAddress({ address, city })

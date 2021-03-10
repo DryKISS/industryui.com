@@ -15,36 +15,36 @@ export const Progress = styled.div`
   background-color: ${({
     theme,
     theme: {
-      PROGRESS: { bgColor },
-    },
+      PROGRESS: { bgColor }
+    }
   }) => {
     return bgColor
   }};
   border-radius: ${({
     theme: {
-      PROGRESS: { borderRadius },
-    },
+      PROGRESS: { borderRadius }
+    }
   }) => borderRadius};
   display: flex;
   font-size: ${({
     size,
     theme: {
-      PROGRESS: { fontSize },
-    },
+      PROGRESS: { fontSize }
+    }
   }) => fontSize[size]};
   height: ${({
     size,
     theme: {
-      PROGRESS: { height },
-    },
+      PROGRESS: { height }
+    }
   }) => height[size]};
   overflow: hidden;
 `
 
 Progress.propTypes = {
-  size: oneOf(Object.values(THEME_SIZE)),
+  size: oneOf(Object.values(THEME_SIZE))
 }
 
 Progress.defaultProps = {
-  size: 'md',
+  size: 'md'
 }

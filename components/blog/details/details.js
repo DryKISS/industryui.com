@@ -97,5 +97,5 @@ const StyledShareText = styled.span`
 BlogDetails.propTypes = {
   article: object.isRequired,
   config: object.isRequired,
-  facebook: object,
+  facebook: object
 }

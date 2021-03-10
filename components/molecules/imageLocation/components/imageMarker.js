@@ -88,7 +88,7 @@ const StyledMarker = styled.div`
 
 ImageMarker.propTypes = {
   coordinates: object,
-  styles: object,
+  styles: object
 }
 
 ImageMarker.defaultProps = {
@@ -98,6 +98,6 @@ ImageMarker.defaultProps = {
     color: 'red',
     height: '20px',
     shape: '',
-    width: '20px',
-  },
+    width: '20px'
+  }
 }

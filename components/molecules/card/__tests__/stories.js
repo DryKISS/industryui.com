@@ -24,10 +24,10 @@ export default {
     image: '/card/vizla.jpg',
     title: 'Title',
     titleNoWrap: false,
-    showCta: false,
+    showCta: false
   },
   argTypes: {
-    headerContext: ContextControl(),
+    headerContext: ContextControl()
   },
   title: 'Molecules/Card',
   component: Card,
@@ -35,10 +35,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const BaseComponent = (props = {}) => {

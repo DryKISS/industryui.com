@@ -9,7 +9,7 @@ import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types
 import styled, { css } from 'styled-components'
 
 export const Image = styled.img.attrs((props) => ({
-  itemProp: 'contentUrl',
+  itemProp: 'contentUrl'
 }))`
   ${({ cover }) =>
     cover &&
@@ -60,12 +60,12 @@ Image.propTypes = {
   roundedCircle: bool,
   src: string.isRequired,
   style: objectOf(oneOfType([number, string])),
-  thumbnail: bool,
+  thumbnail: bool
 }
 
 Image.defaultProps = {
   fluid: true,
   rounded: false,
   roundedCircle: false,
-  thumbnail: false,
+  thumbnail: false
 }

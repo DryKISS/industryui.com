@@ -20,5 +20,5 @@ export const BlogPromo = ({ src, to }) => {
 
 BlogPromo.propTypes = {
   src: string.isRequired,
-  to: string.isRequired,
+  to: string.isRequired
 }

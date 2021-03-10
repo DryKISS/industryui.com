@@ -36,5 +36,5 @@ export const BlogTags = ({ className, style, tags }) => {
 BlogTags.propTypes = {
   className: any,
   style: any,
-  tags: array.isRequired,
+  tags: array.isRequired
 }

@@ -11,16 +11,16 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    text: 'Imagine there is no heaven',
+    text: 'Imagine there is no heaven'
   },
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/CamelCase',
+  title: 'Utils/CamelCase'
 }
 
 export const CamelCase = (args) => {

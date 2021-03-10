@@ -20,7 +20,7 @@ import {
   MessagingEditor,
   messagingPlugins,
   MessagingSubscriber,
-  useComponentCommunication,
+  useComponentCommunication
 } from '../../../../'
 
 import { formStyle } from '../../../../form/variables/style'
@@ -65,7 +65,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: onActionRecieved,
-    subscriber: MessagingSubscriber,
+    subscriber: MessagingSubscriber
   })
 
   return (

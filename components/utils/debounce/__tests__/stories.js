@@ -13,11 +13,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/Debounce',
+  title: 'Utils/Debounce'
 }
 
 export const Main = () => {

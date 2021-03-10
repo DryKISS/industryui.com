@@ -16,7 +16,7 @@ import { THEME_POSITION } from '../../../theme/constants/position'
 export const elementTypes = {
   Colour: 'colour',
   List: 'list',
-  Icon: 'icon',
+  Icon: 'icon'
 }
 
 export const Dropdown = ({
@@ -27,7 +27,7 @@ export const Dropdown = ({
   items,
   onChange,
   defaultOpen,
-  position,
+  position
 }) => {
   const [open, setOpen] = useState(defaultOpen)
 
@@ -102,10 +102,10 @@ Dropdown.propTypes = {
   elementType: oneOf([elementTypes.Colour, elementTypes.Icon, elementTypes.List]),
   items: array.isRequired,
   onChange: func,
-  position: string,
+  position: string
 }
 
 Dropdown.defaultProps = {
   caret: true,
-  position: 'left',
+  position: 'left'
 }

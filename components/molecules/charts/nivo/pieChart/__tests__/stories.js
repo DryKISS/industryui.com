@@ -33,15 +33,15 @@ export default {
     radialLabelsLinkDiagonalLength: 18,
     radialLabelsLinkOffset: 0,
     showLegend: true,
-    sortByValue: false,
+    sortByValue: false
   },
   argTypes: {
     colorScheme: {
       name: 'Colour Scheme',
       control: {
         type: 'select',
-        options: Object.keys(colorSchemes),
-      },
+        options: Object.keys(colorSchemes)
+      }
     },
     cornerRadius: {
       name: 'cornerRadius (px)',
@@ -49,74 +49,74 @@ export default {
         type: 'range',
         min: 0,
         max: 50,
-        step: 1,
-      },
+        step: 1
+      }
     },
     innerRadius: {
       control: {
         type: 'range',
         min: 0,
         max: 1,
-        step: 0.1,
-      },
+        step: 0.1
+      }
     },
     padAngle: {
       control: {
         type: 'range',
         min: 0,
         max: 90,
-        step: 1,
-      },
+        step: 1
+      }
     },
     radialLabelsLinkStrokeWidth: {
       control: {
         type: 'range',
         min: 0,
         max: 10,
-        step: 1,
-      },
+        step: 1
+      }
     },
     radialLabelsTextXOffset: {
       control: {
         type: 'range',
         min: 0,
         max: 12,
-        step: 1,
-      },
+        step: 1
+      }
     },
     radialLabelsLinkHorizontalLength: {
       control: {
         type: 'range',
         min: 0,
         max: 35,
-        step: 1,
-      },
+        step: 1
+      }
     },
     radialLabelsLinkDiagonalLength: {
       control: {
         type: 'range',
         min: 0,
         max: 50,
-        step: 1,
-      },
+        step: 1
+      }
     },
     radialLabelsLinkOffset: {
       control: {
         type: 'range',
         min: 0,
         max: 30,
-        step: 1,
-      },
-    },
+        step: 1
+      }
+    }
   },
   title: 'Molecules/Charts/Nivo/Pie',
   component: PieChart,
 
   parameters: {
     readme: {
-      sidebar: Readme,
-    },
-  },
+      sidebar: Readme
+    }
+  }
 }
 
 const BaseComponent = (props) => {

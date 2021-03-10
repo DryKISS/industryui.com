@@ -34,9 +34,9 @@ const StyledHeader = styled.h2`
 CardHeader.propTypes = {
   content: string.isRequired,
   context: oneOf(Object.values(THEME_CONTEXT)),
-  align: oneOf(['center', 'right', 'left']),
+  align: oneOf(['center', 'right', 'left'])
 }
 
 CardHeader.defaultProps = {
-  align: 'center',
+  align: 'center'
 }

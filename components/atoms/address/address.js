@@ -28,5 +28,5 @@ Address.propTypes = {
   line2: string,
   line3: string,
   postcode: string.isRequired,
-  town: string,
+  town: string
 }

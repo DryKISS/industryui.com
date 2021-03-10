@@ -16,7 +16,7 @@ export const Articles = [
     slug: 'static-site-development',
     tags: ['static', 'jam'],
     time: '12:00pm',
-    title: 'Static Site development',
+    title: 'Static Site development'
   },
   {
     author: 'Ian Warner',
@@ -32,7 +32,7 @@ export const Articles = [
     slug: 'static-site-development',
     tags: ['12'],
     time: '12:00pm',
-    title: 'Static Site development',
+    title: 'Static Site development'
   },
   {
     author: 'Ian Warner',
@@ -48,17 +48,17 @@ export const Articles = [
     slug: 'static-site-development',
     tags: ['12'],
     time: '12:00pm',
-    title: 'Static Site development',
-  },
+    title: 'Static Site development'
+  }
 ]
 
 export const Blog = {
-  path: '/blog',
+  path: '/blog'
 }
 
 export const Facebook = {
   appId: 285418984933747,
   appPath: 'https//www.facebook.com/drykissltd',
   domain: 'https://industryui.com',
-  hashTag: 'DryKISS',
+  hashTag: 'DryKISS'
 }

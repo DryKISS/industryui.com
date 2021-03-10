@@ -27,7 +27,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 import 'tippy.js/dist/tippy.css'
 
-import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css'
 
 
 const actionWithPromise = () => {

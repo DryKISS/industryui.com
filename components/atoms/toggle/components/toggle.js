@@ -47,11 +47,11 @@ Toggle.propTypes = {
   disabled: bool,
   onToggle: func,
   size: oneOf(['sm', 'md', 'lg']),
-  toggled: bool,
+  toggled: bool
 }
 
 Toggle.defaultProps = {
   context: 'success',
   size: 'md',
-  toggled: false,
+  toggled: false
 }

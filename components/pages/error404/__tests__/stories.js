@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Pages/Error404',
+  title: 'Pages/Error404'
 }
 
 export const main = (args) => <Error404 {...args} />

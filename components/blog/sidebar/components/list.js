@@ -30,9 +30,9 @@ export const BlogList = ({ author, config, list }) => {
                   query: {
                     articleSlug: slugify(to),
                     author: slugify(to),
-                    category: category && slugify(category),
-                  },
-                },
+                    category: category && slugify(category)
+                  }
+                }
               }}
               passHref
             >
@@ -77,9 +77,9 @@ const StyledA = styled.span`
 BlogList.propTypes = {
   author: bool,
   config: object.isRequired,
-  list: array.isRequired,
+  list: array.isRequired
 }
 
 BlogList.defaultProps = {
-  author: false,
+  author: false
 }

@@ -19,5 +19,5 @@ export const MetaFeed = ({ title }) => {
 }
 
 MetaFeed.propTypes = {
-  title: string.isRequired,
+  title: string.isRequired
 }

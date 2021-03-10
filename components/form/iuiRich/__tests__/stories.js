@@ -12,10 +12,10 @@ import Readme from '../README.md'
 export default {
   parameters: {
     readme: {
-      sidebar: Readme,
-    },
+      sidebar: Readme
+    }
   },
-  title: 'Form/IUIRichEditor',
+  title: 'Form/IUIRichEditor'
 }
 
 export const IUIRichEditor = () => {

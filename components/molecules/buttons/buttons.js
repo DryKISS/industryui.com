@@ -53,10 +53,10 @@ Buttons.propTypes = {
   nextDisabled: bool,
   nextText: string,
   pathBack: oneOfType([object, string]),
-  pathNext: string,
+  pathNext: string
 }
 
 Buttons.defaultProps = {
   backText: 'Back',
-  nextText: 'Next',
+  nextText: 'Next'
 }

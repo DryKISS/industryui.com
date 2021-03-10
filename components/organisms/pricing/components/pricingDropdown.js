@@ -122,7 +122,7 @@ const PlansWrapper = styled(ClickAwayListener)`
 `
 
 const StyledDownIcon = styled(Icon).attrs((props) => ({
-  color: props.theme.COLOUR.deepBlue,
+  color: props.theme.COLOUR.deepBlue
 }))``
 
 const StyledPrice = styled(Text)`

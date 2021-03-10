@@ -21,12 +21,12 @@ import styled from 'styled-components'
 
 export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(ForgotDetailsSchema),
+    resolver: yupResolver(ForgotDetailsSchema)
   })
 
   const defaultOptions = {
     errors: errors,
-    register: register,
+    register: register
   }
 
   return (
@@ -61,10 +61,10 @@ const StyledLink = styled.span`
 ForgotDetails.propTypes = {
   pathLogIn: string,
   showPlaceholder: bool,
-  submit: func.isRequired,
+  submit: func.isRequired
 }
 
 ForgotDetails.defaultProps = {
   pathLogIn: '/account/sign-in',
-  showPlaceholder: false,
+  showPlaceholder: false
 }

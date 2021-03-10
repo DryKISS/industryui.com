@@ -17,11 +17,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Blog/Sidebar',
+  title: 'Blog/Sidebar'
 }
 
 export const main = (args) => (

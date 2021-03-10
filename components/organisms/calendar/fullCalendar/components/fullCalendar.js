@@ -16,7 +16,7 @@ import { LdsSpinner, PageLoading, Theme } from '../../../'
 import styled from 'styled-components'
 
 const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
-  ssr: false,
+  ssr: false
 })
 
 export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }, ref) => {
@@ -64,10 +64,10 @@ const Wrapper = styled.div`
 
 Calendar.propTypes = {
   defaultEventColor: string,
-  showTooltip: bool,
+  showTooltip: bool
 }
 
 Calendar.defaultProps = {
   defaultEventColor: 'primary',
-  showTooltip: false,
+  showTooltip: false
 }

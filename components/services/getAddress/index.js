@@ -51,5 +51,5 @@ getAddresses.propTypes = {
   callback: func.isRequired,
   callThrottle: number.isRequired,
   postCode: string.isRequired,
-  validator: func.isRequired,
+  validator: func.isRequired
 }

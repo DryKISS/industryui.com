@@ -10,7 +10,7 @@ import { Container } from '../components/Container'
 import Readme from '../README.md'
 
 const debug = {
-  border: '1px solid black',
+  border: '1px solid black'
 }
 
 export default {
@@ -18,11 +18,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Grid/Container',
+  title: 'Atoms/Grid/Container'
 }
 
 export const container = (args) => (

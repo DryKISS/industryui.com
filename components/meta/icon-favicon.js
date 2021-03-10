@@ -18,5 +18,5 @@ export const MetaFavicon = ({ verification }) => {
 }
 
 MetaFavicon.propTypes = {
-  verification: string.isRequired,
+  verification: string.isRequired
 }

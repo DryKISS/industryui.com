@@ -20,6 +20,6 @@ export const parsePostCode = (postCode) => {
 
   return {
     area: parsed[1],
-    district: parsed[2],
+    district: parsed[2]
   }
 }

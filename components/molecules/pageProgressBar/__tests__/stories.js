@@ -14,10 +14,10 @@ import { PageProgressBar } from '../../../'
 export default {
   args: { context: 'primary' },
   argTypes: {
-    size: ContextControl(),
+    size: ContextControl()
   },
   title: 'Molecules/PageProgressBar',
-  component: PageProgressBar,
+  component: PageProgressBar
 }
 
 const BaseComponent = (args) => {

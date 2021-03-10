@@ -23,11 +23,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Icon',
+  title: 'Atoms/Icon'
 }
 
 const ListIcons = {
@@ -35,12 +35,12 @@ const ListIcons = {
   Copyright: 'copyright',
   Images: 'images',
   Smile: 'smile',
-  UserCircle: 'user-circle',
+  UserCircle: 'user-circle'
 }
 
 const IconPrefix = {
   Solid: 'fas',
-  Regular: 'far',
+  Regular: 'far'
 }
 
 const main = (args) => {
@@ -51,7 +51,7 @@ const main = (args) => {
           content="Result"
           style={{
             background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)'),
+            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
           }}
         />
         <StyledBody>
@@ -60,7 +60,7 @@ const main = (args) => {
             style={{
               background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
               borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           >
             <Icon
@@ -71,7 +71,7 @@ const main = (args) => {
               context="success"
               style={{
                 color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-                marginRight: '0.5rem',
+                marginRight: '0.5rem'
               }}
             />
             Styling showcase 5 examples of over 1000 free Font Awesome icons.
@@ -83,14 +83,14 @@ const main = (args) => {
           content="Styling"
           style={{
             background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(108, 3, 247, 0.16)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(108, 3, 247, 0.64)'),
+            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(108, 3, 247, 0.64)')
           }}
         />
         <StyledBody>
           <StyledHeadingH4
             content="Context colors"
             style={{
-              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
             }}
           />
           <StyledBox>
@@ -107,7 +107,7 @@ const main = (args) => {
             style={{
               background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
               borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           >
             <Icon
@@ -118,7 +118,7 @@ const main = (args) => {
               context="success"
               style={{
                 color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-                marginRight: '0.5rem',
+                marginRight: '0.5rem'
               }}
             />
             Context property have priority over color property.
@@ -131,7 +131,7 @@ const main = (args) => {
           <StyledHeadingH4
             content="Sizes"
             style={{
-              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
             }}
           />
           <StyledBox>
@@ -146,7 +146,7 @@ const main = (args) => {
             style={{
               background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
               borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           >
             <Icon
@@ -157,7 +157,7 @@ const main = (args) => {
               context="success"
               style={{
                 color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-                marginRight: '0.5rem',
+                marginRight: '0.5rem'
               }}
             />
             Style property have priority over size property.
@@ -170,7 +170,7 @@ const main = (args) => {
           <StyledHeadingH4
             content="Transform"
             style={{
-              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
             }}
           />
           <StyledBox>
@@ -190,7 +190,7 @@ const main = (args) => {
             style={{
               background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
               borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           >
             <Icon
@@ -201,7 +201,7 @@ const main = (args) => {
               context="success"
               style={{
                 color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-                marginRight: '0.5rem',
+                marginRight: '0.5rem'
               }}
             />
             Power transform features.
@@ -214,7 +214,7 @@ const main = (args) => {
           <StyledHeadingH4
             content="Style"
             style={{
-              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
             }}
           />
           <StyledBox>
@@ -224,7 +224,7 @@ const main = (args) => {
             style={{
               background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
               borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           >
             <Icon
@@ -235,7 +235,7 @@ const main = (args) => {
               context="success"
               style={{
                 color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-                marginRight: '0.5rem',
+                marginRight: '0.5rem'
               }}
             />
             CSS styles.
@@ -259,30 +259,30 @@ icons.args = {
   spin: false,
   style: {
     color: '',
-    fontSize: '',
+    fontSize: ''
   },
-  transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0',
+  transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
 }
 
 icons.argTypes = {
   context: {
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(THEME_CONTEXT),
-    },
+      options: arrayOfValues(THEME_CONTEXT)
+    }
   },
   icon: {
-    control: { type: ControlTypes.Select, options: arrayOfValues(ListIcons) },
+    control: { type: ControlTypes.Select, options: arrayOfValues(ListIcons) }
   },
   prefix: {
-    control: { type: ControlTypes.Select, options: arrayOfValues(IconPrefix) },
+    control: { type: ControlTypes.Select, options: arrayOfValues(IconPrefix) }
   },
   size: {
     control: {
       type: ControlTypes.Select,
-      options: ['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x'],
-    },
-  },
+      options: ['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x']
+    }
+  }
 }
 
 const transformIcon = (args) => (
@@ -292,7 +292,7 @@ const transformIcon = (args) => (
         content="Result"
         style={{
           background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)'),
+          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
         }}
       />
       <StyledBody>
@@ -301,7 +301,7 @@ const transformIcon = (args) => (
           style={{
             background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
             borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
           }}
         >
           <Icon
@@ -312,7 +312,7 @@ const transformIcon = (args) => (
             context="success"
             style={{
               color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem',
+              marginRight: '0.5rem'
             }}
           />
           Percentage of rotation from 0° to 360°, include negative values.
@@ -325,14 +325,14 @@ const transformIcon = (args) => (
         content="Styling"
         style={{
           background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(108, 3, 247, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(108, 3, 247, 0.64)'),
+          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(108, 3, 247, 0.64)')
         }}
       />
       <StyledBody>
         <StyledHeadingH4
           content="Grow"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="grow-6" />
@@ -344,7 +344,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Shrink"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="shrink-6" />
@@ -356,7 +356,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Up"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="up-6" />
@@ -368,7 +368,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Down"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="down-6" />
@@ -380,7 +380,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Flip vertical"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="flip-v" />
@@ -392,7 +392,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Flip horizontal"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="flip-h" />
@@ -404,7 +404,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Flip both"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" transform="flip-v flip-h" />
@@ -416,7 +416,7 @@ const transformIcon = (args) => (
         <StyledHeadingH4
           content="Rotate"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <Icon icon="images" prefix="fas" size="3x" pull="left" transform="rotate-22" />
@@ -431,7 +431,7 @@ const transformIcon = (args) => (
 export const transform = transformIcon.bind({})
 
 transform.args = {
-  transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0',
+  transform: 'left-0 right-0 up-0  down-0 grow-0 shrink-0 flip-0 rotate-0'
 }
 
 export const layers = (args) => (
@@ -441,7 +441,7 @@ export const layers = (args) => (
         content="Result"
         style={{
           background: blendLinearRgb(0.8, 'rgba(64, 64, 64)', 'rgba(17, 189, 78, 0.16)'),
-          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)'),
+          color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(17, 189, 78, 0.64)')
         }}
       />
       <StyledBody>
@@ -459,7 +459,7 @@ export const layers = (args) => (
             icon="shield-alt"
             transform="right-9 rotate-20 grow-2 down-1"
             style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)')
             }}
           />
           <Icon
@@ -468,7 +468,7 @@ export const layers = (args) => (
             transform="down-8"
             style={{
               fontSize: '2rem',
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           />
         </span>
@@ -476,7 +476,7 @@ export const layers = (args) => (
           style={{
             background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
             borderColor: blendLinearRgb(0.8, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.08)'),
-            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
           }}
         >
           <Icon
@@ -487,7 +487,7 @@ export const layers = (args) => (
             context="success"
             style={{
               color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
-              marginRight: '0.5rem',
+              marginRight: '0.5rem'
             }}
           />
           Unlimited layers of icons.
@@ -500,7 +500,7 @@ export const layers = (args) => (
         <StyledHeadingH4
           content="Examples"
           style={{
-            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)'),
+            color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
         <span className="fa-layers fa-fw" style={{ fontSize: '4rem' }}>
@@ -517,7 +517,7 @@ export const layers = (args) => (
             icon="shield-alt"
             transform="right-9 rotate-20 grow-2 down-1"
             style={{
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.32)')
             }}
           />
           <Icon
@@ -526,7 +526,7 @@ export const layers = (args) => (
             transform="down-8"
             style={{
               fontSize: '2rem',
-              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)'),
+              color: blendLinearRgb(0.2, 'rgba(16, 16, 16)', 'rgba(54, 197, 58, 0.88)')
             }}
           />
         </span>

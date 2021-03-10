@@ -49,11 +49,11 @@ Close.propTypes = {
   click: func.isRequired,
   context: oneOf(Object.values(THEME_CONTEXT)),
   icon: string,
-  prefix: string,
+  prefix: string
 }
 
 Close.defaultProps = {
   context: 'dark',
   icon: 'times-circle',
-  prefix: 'fas',
+  prefix: 'fas'
 }

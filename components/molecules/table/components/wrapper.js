@@ -32,7 +32,7 @@ export const Table = memo(
     rows,
     setSort,
     sort,
-    striped,
+    striped
   }) => {
     const tableSpan = tableColumnCount(columns)
     const [containerHeight, setcContainerHeight] = useState(null)
@@ -134,7 +134,7 @@ Table.propTypes = {
   paginationProps: shape({
     currentPage: number,
     onPageChange: func,
-    perPage: number,
+    perPage: number
   }),
   responsive: bool,
   rowClick: func,
@@ -142,9 +142,9 @@ Table.propTypes = {
   setSort: func,
   sort: shape({
     item: string,
-    order: string,
+    order: string
   }),
-  striped: bool,
+  striped: bool
 }
 
 Table.defaultProps = {
@@ -159,5 +159,5 @@ Table.defaultProps = {
   pagination: false,
   paginationProps: {},
   responsive: true,
-  striped: true,
+  striped: true
 }

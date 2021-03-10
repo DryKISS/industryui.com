@@ -18,14 +18,14 @@ import { Alert, Button, FormField, Form, FormLabel, PageHeading, Space, Text } f
 
 export const EmailChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema)
   })
 
   const [error] = useState(false)
 
   const defaultOptions = {
     errors: errors,
-    register: register,
+    register: register
   }
 
   return (
@@ -64,9 +64,9 @@ export const EmailChange = ({ showPlaceholder, submit }) => {
 
 EmailChange.propTypes = {
   showPlaceholder: bool,
-  submit: func.isRequired,
+  submit: func.isRequired
 }
 
 EmailChange.defaultProps = {
-  showPlaceholder: false,
+  showPlaceholder: false
 }

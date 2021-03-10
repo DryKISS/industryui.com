@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic'
 
 const RichTextInput = dynamic(() => import('./richEditor').then((mod) => mod.RichTextInput), {
-  ssr: false,
+  ssr: false
 })
 
 export { RichTextInput }

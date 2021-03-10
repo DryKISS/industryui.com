@@ -24,7 +24,7 @@ export const CardBody = ({
   ctaTitle,
   showCta,
   title,
-  titleNoWrap,
+  titleNoWrap
 }) => {
   return (
     <StyledBody className={className} center={center}>
@@ -80,10 +80,10 @@ CardBody.propTypes = {
   ctaTitle: string,
   showCta: bool,
   title: string,
-  titleNoWrap: bool,
+  titleNoWrap: bool
 }
 
 CardBody.defaultProps = {
   context: 'primary',
-  showCta: false,
+  showCta: false
 }

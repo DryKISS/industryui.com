@@ -11,7 +11,7 @@ export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, o
   const [selectedFile, setselectedFile] = useState(null)
   const [documentInfo, setDocumentInfo] = useState({
     name: null,
-    pagesNumber: 0,
+    pagesNumber: 0
   })
 
   const resetDocInfo = () => {

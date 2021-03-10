@@ -20,10 +20,10 @@ export const propTypes = {
   gmail: string,
   size: oneOf(Object.values(THEME_SIZE)),
   src: string,
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }
 
 export const defaultProps = {
   context: 'primary',
-  size: 'lg',
+  size: 'lg'
 }

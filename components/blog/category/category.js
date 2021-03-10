@@ -25,9 +25,9 @@ export const BlogCategory = ({ author, config, className, link, style, to }) => 
             pathname: author ? `${config.path}/author` : `${config.path}/category`,
             query: {
               author: path,
-              category: path,
-            },
-          },
+              category: path
+            }
+          }
         }}
       >
         {path.toUpperCase().replace('-', ' ')}
@@ -51,6 +51,6 @@ BlogCategory.propTypes = {
   style: any,
   to: shape({
     passHref: bool,
-    to: oneOfType([object, string]).isRequired,
-  }),
+    to: oneOfType([object, string]).isRequired
+  })
 }

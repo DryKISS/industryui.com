@@ -112,5 +112,5 @@ const StyledInfo = styled.span`
 `
 
 StyledStepperItem.propTypes = {
-  item: object,
+  item: object
 }

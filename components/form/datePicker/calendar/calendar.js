@@ -67,5 +67,5 @@ DatePickerCalendar.defaultProps = {
   shouldCloseOnSelect: true,
   showTimeSelect: false,
   timeIntervals: 30,
-  todayButton: 'Today',
+  todayButton: 'Today'
 }

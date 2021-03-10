@@ -14,11 +14,11 @@ export const LiveHighChartTestStreamDataSource = {
         name: MessageNames.UPDATE_CHART_DATA,
         // id is specified so if we have multiple charts, we can tell which one we want to update
         id: 'testChart',
-        payload: { x, y },
+        payload: { x, y }
       })
     }, 1000)
   },
   stop: () => {
     window.clearInterval(interval)
-  },
+  }
 }

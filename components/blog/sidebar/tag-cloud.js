@@ -81,9 +81,9 @@ export const BlogTagCloud = ({ articles, total }) => {
 
 BlogTagCloud.propTypes = {
   articles: array.isRequired,
-  total: number,
+  total: number
 }
 
 BlogTagCloud.defaultProps = {
-  total: 5,
+  total: 5
 }

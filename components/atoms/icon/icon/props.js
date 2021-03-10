@@ -6,11 +6,14 @@
 import { any, bool, number, object, array, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { DISPLAY_PROP_TYPES, SPACER_PROP_TYPES } from '../../../'
+import { DISPLAY_PROP_TYPES } from '../../../theme/utils/display'
+import { SPACER_PROP_TYPES } from '../../../theme/utils/spacer'
 import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { ICON_PULL, ICON_PREFIX, ICON_SIZE } from '../constants'
+import { ICON_PULL } from '../constants/pull'
+import { ICON_PREFIX } from '../constants/prefix'
+import { ICON_SIZE } from '../constants/size'
 
-export const IconPropTypes = {
+export const propTypes = {
   border: bool,
   className: any,
   context: oneOf(Object.values(THEME_CONTEXT)),
@@ -29,10 +32,10 @@ export const IconPropTypes = {
   transform: oneOfType([string, object]),
   swapOpacity: bool,
   ...DISPLAY_PROP_TYPES,
-  ...SPACER_PROP_TYPES,
+  ...SPACER_PROP_TYPES
 }
 
-export const IconDefaultProps = {
+export const defaultProps = {
   fixedWidth: true,
-  prefix: 'fas',
+  prefix: 'fas'
 }

@@ -26,5 +26,5 @@ const StyledAlertContent = styled.div`
 AlertContent.propTypes = {
   content: oneOfType([object, string]).isRequired,
   icon: string,
-  iconPrefix: string,
+  iconPrefix: string
 }

@@ -13,18 +13,18 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Hooks/Timer',
+  title: 'Hooks/Timer'
 }
 
 const BaseComponent = (props) => {
   const {
     time: { seconds, minutes, hours, days },
     start,
-    stop,
+    stop
   } = useTimer(props)
 
   return (

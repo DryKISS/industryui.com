@@ -24,16 +24,16 @@ export const OffCanvasForm = ({ onSubmit }) => {
     preferences: string().required(),
     suggestions: string().required(),
     email: string().required('Please Enter an email').email(),
-    password: string().required(),
+    password: string().required()
   })
 
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema)
   })
 
   const defaultOptions = {
     errors: errors,
-    register: register,
+    register: register
   }
 
   return (

@@ -38,7 +38,7 @@ export const FileDownloader = (data, filename) => {
 }
 export const downloadFile = ({ url, filename }) => {
   Axios.get(url, {
-    responseType: 'blob',
+    responseType: 'blob'
   }).then((res) => {
     FileDownloader(res.data, filename)
   })

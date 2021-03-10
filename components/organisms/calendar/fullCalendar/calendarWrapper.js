@@ -20,12 +20,12 @@ export const CalendarWrapper = (props) => {
         dayGridPlugin: import('@fullcalendar/daygrid'),
         timeGridPlugin: import('@fullcalendar/timegrid'),
         interactionPlugin: import('@fullcalendar/interaction'),
-        listPlugin: import('@fullcalendar/list'),
+        listPlugin: import('@fullcalendar/list')
       }),
       render: (props, { calendar: Calendar, ...plugins }) => (
         <Calendar plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
       ),
-      ssr: false,
+      ssr: false
     })
 
     setCalendarLoaded(true)

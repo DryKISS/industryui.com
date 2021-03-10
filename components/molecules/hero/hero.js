@@ -27,7 +27,7 @@ export const Hero = ({
   strapline,
   textblock,
   title,
-  width,
+  width
 }) => {
   const renderLeft = () => {
     return (
@@ -104,11 +104,11 @@ Hero.propTypes = {
   image: string,
   strapline: oneOfType([object, string]),
   title: string,
-  width: number,
+  width: number
 }
 
 Hero.defaultProps = {
   align: 'flex-end',
   backgroundSize: 'cover',
-  style: {},
+  style: {}
 }

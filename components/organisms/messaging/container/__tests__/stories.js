@@ -13,7 +13,7 @@ import {
   MessagingContainer,
   MessagingActions,
   MessagingCommunicationService,
-  MessageNames,
+  MessageNames
 } from '../../../../'
 
 import Readme from '../README.md'
@@ -26,17 +26,17 @@ export default {
   args: {
     className: '',
     maxLength: 320,
-    style: {},
+    style: {}
   },
   component: MessagingContainer,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Organisms/Messaging/Container',
+  title: 'Organisms/Messaging/Container'
 }
 
 export const Main = (args) => {
@@ -49,12 +49,12 @@ export const Main = (args) => {
 
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
-        payload: { action: MessagingActions.RENEW_MESSAGES, data: filter },
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: filter }
       })
     } else {
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
-        payload: { action: MessagingActions.RENEW_MESSAGES, data: messages },
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: messages }
       })
     }
   }
@@ -65,12 +65,12 @@ export const Main = (args) => {
       // setMessaging(search)
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
-        payload: { action: MessagingActions.RENEW_MESSAGES, data: search },
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: search }
       })
     } else {
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
-        payload: { action: MessagingActions.RENEW_MESSAGES, data: messages },
+        payload: { action: MessagingActions.RENEW_MESSAGES, data: messages }
       })
     }
   }
@@ -81,21 +81,21 @@ export const Main = (args) => {
       { name: 'Internal', id: 'internal' },
       { name: 'Customer Only', id: 'customer' },
       { name: 'Supplier Only', id: 'supplier' },
-      { name: 'Customer & Supplier', id: 'customer-supplier' },
+      { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
     mentions,
     messages,
     onSearch: handleSearch,
     onFilter: handleFilter,
-    ...args,
+    ...args
   }
   const mimicRecieve = () => {
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.NEW_MESSAGES,
-        data: [messaging[Math.floor(Math.random() * 3)]],
-      },
+        data: [messaging[Math.floor(Math.random() * 3)]]
+      }
     })
   }
 
@@ -123,7 +123,7 @@ export const Main = (args) => {
       to: 'all',
       type: 'out',
       ...(message.voice && { voice: URL.createObjectURL(message.voice) }),
-      ...(message.replyTo && { replyTo: message.replyTo }),
+      ...(message.replyTo && { replyTo: message.replyTo })
     }
     // mimic the server delay and response is msg which should be passed to service as [msg]
     setTimeout(() => {
@@ -131,8 +131,8 @@ export const Main = (args) => {
         name: MessageNames.Messaging.MESSAGING_ACTION,
         payload: {
           action: MessagingActions.NEW_MESSAGES,
-          data: [msg],
-        },
+          data: [msg]
+        }
       })
     }, 100)
   }

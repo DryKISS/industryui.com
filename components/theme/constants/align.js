@@ -10,5 +10,5 @@ export const THEME_ALIGN = {
   'Space Between': 'space-between',
   'Space Around': 'space-around',
   Initial: 'initial',
-  Inherit: 'inherit',
+  Inherit: 'inherit'
 }

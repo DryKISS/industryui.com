@@ -21,7 +21,7 @@ const colourPlate = {
   disabled: THEME_COLOUR.dark,
   readOnly: THEME_COLOUR.grey,
   success: THEME_COLOUR.formSuccess,
-  warning: THEME_COLOUR.gold40,
+  warning: THEME_COLOUR.gold40
 }
 
 const inputThemeColourPlate = {
@@ -31,13 +31,13 @@ const inputThemeColourPlate = {
   disabled: 'dark',
   readOnly: 'grey',
   success: 'formSuccess',
-  warning: 'gold40',
+  warning: 'gold40'
 }
 
 export const InputTypes = {
   NUMBER: 'number',
   TEXT: 'text',
-  PASSWORD: 'password',
+  PASSWORD: 'password'
 }
 
 const colourProvider = (theme, decoration) => {
@@ -169,7 +169,7 @@ const withAdornmentStyles = css`
 const StyledInput = styled.input.attrs((props) => ({
   'aria-label': props.name,
   autoComplete: 'off',
-  autoFocus: false,
+  autoFocus: false
 }))`
   border: 1px solid;
   border-left-width: ${({ required, adornments }) =>
@@ -227,18 +227,18 @@ const Wrapper = styled.div`
 Input.propTypes = {
   adornments: shape({
     startAdornment: node,
-    endAdornment: node,
+    endAdornment: node
   }),
   errors: object.isRequired,
   label: string,
   name: string.isRequired,
   placeholder: string,
   register: func.isRequired,
-  type: oneOf(arrayOfValues(InputTypes)),
+  type: oneOf(arrayOfValues(InputTypes))
 }
 
 Input.defaultProps = {
   decoration: 'default',
   type: InputTypes.TEXT,
-  size: THEME_SIZE.MD,
+  size: THEME_SIZE.MD
 }

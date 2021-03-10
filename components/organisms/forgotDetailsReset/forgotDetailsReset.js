@@ -22,7 +22,7 @@ import styled from 'styled-components'
 
 export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(ForgotDetailsResetSchema),
+    resolver: yupResolver(ForgotDetailsResetSchema)
   })
 
   return (
@@ -53,9 +53,9 @@ const StyledLink = styled.span`
 
 ForgotDetailsReset.propTypes = {
   pathLogIn: string,
-  submit: func,
+  submit: func
 }
 
 ForgotDetailsReset.defaultProps = {
-  pathLogIn: '/account/sign-in',
+  pathLogIn: '/account/sign-in'
 }

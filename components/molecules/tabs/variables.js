@@ -13,5 +13,5 @@ export const TABS = {
   borderRadius: '.1rem',
   colour: THEME_COLOUR.light,
   disabledTHEME_Colour: '#eee',
-  hoverColour: '#dee2e6',
+  hoverColour: '#dee2e6'
 }

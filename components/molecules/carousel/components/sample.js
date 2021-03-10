@@ -35,9 +35,9 @@ CarouselSampleSlide.propTypes = {
   context: string,
   img: string,
   node: node,
-  text: string,
+  text: string
 }
 
 CarouselSampleSlide.defaultProps = {
-  context: 'dark',
+  context: 'dark'
 }

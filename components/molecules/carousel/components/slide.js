@@ -31,5 +31,5 @@ const StyledSlide = styled.div`
 CarouselSlide.propTypes = {
   children: node.isRequired,
   onClick: func,
-  style: object,
+  style: object
 }

@@ -37,10 +37,10 @@ Rating.propTypes = {
   className: string,
   context: string,
   value: number.isRequired,
-  size: number,
+  size: number
 }
 
 Rating.defaultProps = {
   context: 'primary',
-  size: 5,
+  size: 5
 }

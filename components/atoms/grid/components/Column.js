@@ -80,15 +80,15 @@ Column.propTypes = {
     sm: number,
     md: number,
     lg: number,
-    xl: number,
+    xl: number
   }),
   sm: number,
   style: objectOf(oneOfType([number, string])),
-  xl: number,
+  xl: number
 }
 
 Column.defaultProps = {
   offset: {},
   style: {},
-  debug: false,
+  debug: false
 }

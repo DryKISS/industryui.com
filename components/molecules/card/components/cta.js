@@ -30,9 +30,9 @@ const StyledButton = styled(Button)`
 CardCTA.propTypes = {
   func,
   link: string,
-  title: string,
+  title: string
 }
 
 CardCTA.defaultProps = {
-  title: 'Read more',
+  title: 'Read more'
 }

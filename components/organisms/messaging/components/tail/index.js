@@ -20,5 +20,5 @@ export const Tail = styled.span`
 `
 
 Tail.propTypes = {
-  type: oneOf(['in', 'out']).isRequired,
+  type: oneOf(['in', 'out']).isRequired
 }

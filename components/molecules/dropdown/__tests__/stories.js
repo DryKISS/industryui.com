@@ -17,7 +17,7 @@ import {
   Icon,
   InternationalisationContext,
   Space,
-  useTranslation,
+  useTranslation
 } from '../../../'
 
 import { THEME_COLOUR_LIST } from '../../../theme/constants/colourList'
@@ -28,23 +28,23 @@ export default {
   args: {
     caret: true,
     children: 'Dropdown',
-    position: 'bottom',
+    position: 'bottom'
   },
   argTypes: {
     control: {
       type: 'select',
-      options: ['top', 'bottom'],
-    },
+      options: ['top', 'bottom']
+    }
   },
   component: Dropdown,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Dropdown',
+  title: 'Molecules/Dropdown'
 }
 
 const BaseComponent = (props) => {
@@ -59,7 +59,7 @@ const BaseComponent = (props) => {
     items: Items,
     onChange: onChange,
 
-    ...props,
+    ...props
   }
 
   return <Dropdown {...defaultProps} />
@@ -133,7 +133,7 @@ export const ColourPicker = (args) => {
 export const IconPicker = (args) => {
   const [selectedIcon, setSelectedIcon] = useState({
     icon: 'cloud',
-    prefix: 'fas',
+    prefix: 'fas'
   })
 
   const changeIcon = (icon) => {

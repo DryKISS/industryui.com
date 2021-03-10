@@ -26,7 +26,7 @@ import {
   Preview,
   ReplyContainer,
   Row,
-  TranslationService,
+  TranslationService
 } from '../../../../../'
 
 import { MessageIcon } from './icon'
@@ -41,7 +41,7 @@ import createEmojiPlugin from '@draft-js-plugins/emoji'
 import styled, { css } from 'styled-components'
 
 const mentionPlugin = createMentionPlugin({
-  mentionComponent: (mentionProps) => <MentionComponent mentionProps={mentionProps} />,
+  mentionComponent: (mentionProps) => <MentionComponent mentionProps={mentionProps} />
 })
 
 const emojiPlugin = createEmojiPlugin()
@@ -65,7 +65,7 @@ export const MessageBase = ({
   time,
   to,
   type,
-  voice,
+  voice
 }) => {
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
@@ -142,9 +142,9 @@ export const MessageBase = ({
           time,
           to,
           type,
-          voice,
-        },
-      },
+          voice
+        }
+      }
     })
   }
 
@@ -160,9 +160,9 @@ export const MessageBase = ({
           selectedIndex: index,
           avatar: av,
           from,
-          time,
-        },
-      },
+          time
+        }
+      }
     })
   }
 
@@ -181,7 +181,7 @@ export const MessageBase = ({
               items={[
                 { name: 'Star Message', id: 'star' },
                 { name: 'Edit Message', id: 'edit' },
-                { name: 'Delete Message', id: 'delete' },
+                { name: 'Delete Message', id: 'delete' }
               ]}
               position="bottom"
               onChange={(item) => dropDownAction(item)}
@@ -199,7 +199,7 @@ export const MessageBase = ({
             style={{
               display: 'flex',
               alignItems: 'center',
-              marginTop: '-0.5rem',
+              marginTop: '-0.5rem'
             }}
           >
             <MessageIcon icon={icon} />
@@ -266,7 +266,7 @@ export const MessageBase = ({
                       imageStyles={{
                         minHeight: '10rem',
                         height: '10rem',
-                        objectFit: 'cover',
+                        objectFit: 'cover'
                       }}
                       file={item}
                       message
@@ -411,5 +411,5 @@ MessageBase.propTypes = {
   pictureId: string,
   statusText: string,
   time: string,
-  type: string,
+  type: string
 }

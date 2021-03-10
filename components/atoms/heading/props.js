@@ -15,11 +15,11 @@ export const propTypes = {
   noMargin: bool,
   noWrap: bool,
   style: objectOf(oneOfType([number, string])),
-  tag: string,
+  tag: string
 }
 
 export const defaultProps = {
   context: THEME_CONTEXT.DARK,
   noWrap: false,
-  tag: 'h1',
+  tag: 'h1'
 }

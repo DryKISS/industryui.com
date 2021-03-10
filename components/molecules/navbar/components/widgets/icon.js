@@ -21,9 +21,9 @@ NavIcon.propTypes = {
   closeMenu: func,
   to: string.isRequired,
   type: string.isRequired,
-  visible: bool,
+  visible: bool
 }
 
 NavIcon.defaultProps = {
-  visible: false,
+  visible: false
 }

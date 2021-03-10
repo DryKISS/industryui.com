@@ -22,12 +22,12 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
         if (hasSort && sort.order === 'desc') {
           setSort({
             item: null,
-            order: null,
+            order: null
           })
         } else {
           setSort({
             item: sortName,
-            order: hasSort ? 'desc' : 'asc',
+            order: hasSort ? 'desc' : 'asc'
           })
         }
       }
@@ -57,12 +57,12 @@ TableColumns.propTypes = {
   setSort: func,
   sort: shape({
     item: string,
-    order: string,
-  }),
+    order: string
+  })
 }
 
 TableColumns.defaultProps = {
   align: false,
   columns: [],
-  sort: {},
+  sort: {}
 }

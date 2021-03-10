@@ -58,5 +58,5 @@ Shimmer.propTypes = {
   duration: number,
   height: string,
   hexColour: string,
-  width: string,
+  width: string
 }

@@ -16,25 +16,25 @@ export default {
   args: {
     meta: {
       description: 'Description',
-      title: 'Meta',
+      title: 'Meta'
     },
     pageHeading: {
       heading: 'Heading',
-      strapline: 'Strapline',
-    },
+      strapline: 'Strapline'
+    }
   },
   argTypes: {
-    padding: SizeControl(),
+    padding: SizeControl()
   },
   component: Page,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Layouts/Page',
+  title: 'Layouts/Page'
 }
 
 export const main = (args) => (

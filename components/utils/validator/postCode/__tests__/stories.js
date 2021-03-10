@@ -18,11 +18,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/Validator/PostCode',
+  title: 'Utils/Validator/PostCode'
 }
 
 export const Main = () => {

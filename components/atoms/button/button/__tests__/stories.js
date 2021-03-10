@@ -27,21 +27,21 @@ export default {
     outline: false,
     shadow: false,
     size: THEME_SIZE.MD,
-    startIcon: 'user',
+    startIcon: 'user'
   },
   argTypes: {
     context: ContextControl(),
-    size: SizeControl(),
+    size: SizeControl()
   },
   component: Button,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Button',
+  title: 'Atoms/Button'
 }
 
 export const main = (args) => {

@@ -95,9 +95,9 @@ Copyright.propTypes = {
   icon: shape({
     context: oneOf(Object.values(THEME_CONTEXT)),
     icon: string,
-    prefix: string,
+    prefix: string
   }),
-  links: array,
+  links: array
 }
 
 Copyright.defaultProps = {
@@ -105,7 +105,7 @@ Copyright.defaultProps = {
   icon: {
     context: 'primary',
     icon: 'copyright',
-    prefix: 'fas',
+    prefix: 'fas'
   },
-  links: [],
+  links: []
 }

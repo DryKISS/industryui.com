@@ -1,6 +1,6 @@
 {
   "name": "@drykiss/industry-ui",
-  "version": "1.14.3",
+  "version": "1.14.4",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
@@ -63,9 +63,9 @@
     "@draft-js-plugins/hashtag": "4.1.0",
     "@draft-js-plugins/linkify": "4.1.0",
     "@draft-js-plugins/mention": "4.2.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@fullcalendar/core": "4.4.2",
     "@fullcalendar/daygrid": "4.4.2",
     "@fullcalendar/interaction": "4.4.2",

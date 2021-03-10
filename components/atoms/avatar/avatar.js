@@ -30,7 +30,7 @@ export const Avatar = ({
   gmail,
   size,
   src,
-  style,
+  style
 }) => {
   const avatarSrc = src || (gmail && gravatar.url(gmail, { d: 'identicon' }))
 

@@ -44,10 +44,10 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
 BlogSocial.propTypes = {
   facebook: object,
   instagram: bool,
-  twitter: bool,
+  twitter: bool
 }
 
 BlogSocial.defaultProps = {
   instagram: false,
-  twitter: false,
+  twitter: false
 }

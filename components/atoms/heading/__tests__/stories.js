@@ -19,15 +19,15 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    ...props,
+    ...props
   }
 
   return <Heading {...defaultProps} />
@@ -57,14 +57,14 @@ export const HeadingComponent = main.bind({})
 HeadingComponent.args = {
   content: 'Est Lorem amet cupidatat exercitation fugiat deserunt.',
   context: 'black',
-  noWrap: false,
+  noWrap: false
 }
 
 HeadingComponent.argTypes = {
   context: {
     control: {
       options: arrayOfValues(THEME_CONTEXT),
-      type: ControlTypes.Select,
-    },
-  },
+      type: ControlTypes.Select
+    }
+  }
 }

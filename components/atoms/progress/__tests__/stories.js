@@ -18,24 +18,24 @@ export default {
     context: 'primary',
     now: 30,
     striped: false,
-    size: 'md',
+    size: 'md'
   },
   argTypes: {
     now: {
-      name: 'now (percentage completed)',
+      name: 'now (percentage completed)'
     },
     context: ContextControl(),
-    size: SizeControl(),
+    size: SizeControl()
   },
   component: Progress,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Progress',
+  title: 'Atoms/Progress'
 }
 
 export const Main = (args) => {

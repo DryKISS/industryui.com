@@ -5,14 +5,14 @@ export const ImageLocationProps = {
   coordinatesChange: func.isRequired,
   initialCoordinates: shape({
     x: number,
-    y: number,
+    y: number
   }),
   item: shape({
     filename: string,
     name: string,
-    value: number,
+    value: number
   }).isRequired,
   markerStyles: object,
   show: bool,
-  style: object,
+  style: object
 }

@@ -73,7 +73,7 @@ export const Tabs = ({
   grabTimeout,
   handleChange,
   onTabChange,
-  scrollToActiveTab,
+  scrollToActiveTab
 }) => {
   const router = useRouter()
   const wrapperRef = createRef()
@@ -94,14 +94,14 @@ export const Tabs = ({
       if (child.props.active === true) {
         active = {
           index: index,
-          label: slugify(child.props.label),
+          label: slugify(child.props.label)
         }
       }
     })
   } else {
     active = {
       index: 0,
-      label: slugify(children[0].props.label),
+      label: slugify(children[0].props.label)
     }
   }
 
@@ -128,7 +128,7 @@ export const Tabs = ({
     Router.push({
       pathname: router.pathname,
       query: query,
-      shallow: true,
+      shallow: true
     })
   }
 
@@ -212,7 +212,7 @@ Tabs.propTypes = {
   grabTimeout: number,
   handleChange: bool,
   indicatorSize: number,
-  scrollToActiveTab: bool,
+  scrollToActiveTab: bool
 }
 
 Tabs.defaultProps = {
@@ -223,5 +223,5 @@ Tabs.defaultProps = {
   grabTimeout: 100,
   handleChange: true,
   indicatorSize: 1,
-  scrollToActiveTab: true,
+  scrollToActiveTab: true
 }

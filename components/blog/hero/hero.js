@@ -38,9 +38,9 @@ export const BlogHero = ({ articles, config, number }) => {
 BlogHero.propTypes = {
   articles: any.isRequired,
   config: object.isRequired,
-  number: number,
+  number: number
 }
 
 BlogHero.defaultProps = {
-  number: 1,
+  number: 1
 }

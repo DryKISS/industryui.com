@@ -20,17 +20,17 @@ export default {
     pariatur.`,
     heading: 'Dogs for everyone',
     image: '',
-    tags: ['dogs', 'faq'],
+    tags: ['dogs', 'faq']
   },
   component: Article,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Templates/Article',
+  title: 'Templates/Article'
 }
 
 export const Main = (args) => {
@@ -44,7 +44,7 @@ export const Main = (args) => {
         data,
         heading,
         image,
-        tags,
+        tags
       }}
       config={{}}
       facebook={{}}

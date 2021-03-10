@@ -24,7 +24,7 @@ export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
       const csvData = PapaParse.parse(
         event.target.result,
         Object.assign(parserOptions, {
-          error: onError,
+          error: onError
         })
       )
 
@@ -48,7 +48,7 @@ export const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
 CSVReader.propTypes = {
   onFileLoaded: func.isRequired,
   onError: func,
-  parserOptions: object,
+  parserOptions: object
 }
 
 //   label,

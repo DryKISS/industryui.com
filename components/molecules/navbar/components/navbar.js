@@ -95,11 +95,11 @@ Navbar.propTypes = {
   showMenu: bool,
   style: objectOf(oneOfType([number, string])),
   type: string,
-  widgets: object,
+  widgets: object
 }
 
 Navbar.defaultProps = {
   brand: '',
   contained: false,
-  showMenu: false,
+  showMenu: false
 }

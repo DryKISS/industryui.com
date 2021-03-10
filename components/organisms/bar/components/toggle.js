@@ -60,9 +60,9 @@ const OpenButton = styled.div`
 BarToggle.propTypes = {
   onClick: func.isRequired,
   open: bool.isRequired,
-  placement: string,
+  placement: string
 }
 
 BarToggle.defaultProps = {
-  placement: 'left',
+  placement: 'left'
 }

@@ -66,7 +66,7 @@ Row.propTypes = {
   justify: oneOf(['start', 'center', 'end', 'between', 'around', 'initial', 'inherit']),
   noGutter: bool,
   noWrap: bool,
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }
 
 Row.defaultProps = {
@@ -74,5 +74,5 @@ Row.defaultProps = {
   justify: 'start',
   noGutter: false,
   style: {},
-  noWrap: false,
+  noWrap: false
 }

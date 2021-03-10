@@ -15,17 +15,17 @@ import Readme from '../README.md'
 export default {
   args: {
     disabled: false,
-    multiple: false,
+    multiple: false
   },
   component: DropzoneField,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Form/Dropzone',
+  title: 'Form/Dropzone'
 }
 
 const BaseComponent = (props = {}) => {
@@ -39,7 +39,7 @@ const BaseComponent = (props = {}) => {
     accept: 'image/*',
     control,
     errors: errors,
-    ...props,
+    ...props
   }
 
   return (

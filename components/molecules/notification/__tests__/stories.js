@@ -20,20 +20,20 @@ export default {
     date: '2019-11-11',
     icon: 'times-circle',
     link: '/',
-    title: 'Info',
+    title: 'Info'
   },
   argTypes: {
-    context: ContextControl(),
+    context: ContextControl()
   },
   title: 'Molecules/Notification',
   component: Notification,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const BaseComponent = (props = {}) => {
@@ -42,7 +42,7 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     close: action('closed'),
     ...args,
-    ...props,
+    ...props
   }
 
   return <Notification {...defaultProps} />

@@ -26,18 +26,18 @@ export const PIECHART = {
         {
           on: 'hover',
           style: {
-            itemTextColor: '#000',
-          },
-        },
-      ],
-    },
+            itemTextColor: '#000'
+          }
+        }
+      ]
+    }
   ],
   margin: function () {
     return {
       top: 30,
       right: 80,
       bottom: this.showLegend ? 80 : 30, // props context
-      left: 80,
+      left: 80
     }
   },
   motionStiffness: 90,
@@ -52,5 +52,5 @@ export const PIECHART = {
   radialLabelsLinkColor: { from: 'color' },
   slicesLabelsSkipAngle: 10,
   slicesLabelsTextColor: THEME_COLOUR.dark,
-  startAngle: -180,
+  startAngle: -180
 }

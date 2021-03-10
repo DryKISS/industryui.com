@@ -16,7 +16,7 @@ import {
   MessageNames,
   MessagingSubscriber,
   MessagingActions,
-  useComponentCommunication,
+  useComponentCommunication
 } from '../../../../'
 
 // Style
@@ -106,7 +106,7 @@ export const MessageList = memo(
       dependencies: [Messages.length],
       messageName: MessageNames.Messaging.MESSAGING_ACTION,
       onRecieve: onAction,
-      subscriber: MessagingSubscriber,
+      subscriber: MessagingSubscriber
     })
 
     return (
@@ -151,5 +151,5 @@ const MessageContainer = styled.div`
         `}
 `
 MessageList.propTypes = {
-  initialMessages: array.isRequired,
+  initialMessages: array.isRequired
 }

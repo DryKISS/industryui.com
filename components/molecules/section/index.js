@@ -32,10 +32,10 @@ Section.propTypes = {
   className: any,
   heading: string,
   row: bool,
-  style: any,
+  style: any
 }
 
 Section.defaultProps = {
   children: '',
-  row: true,
+  row: true
 }

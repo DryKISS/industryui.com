@@ -31,10 +31,10 @@ const TwitterTimeline = ({ dataSource, options, onLoad }) => {
 TwitterTimeline.propTypes = {
   dataSource: object.isRequired,
   options: object,
-  onLoad: func,
+  onLoad: func
 }
 
 TwitterTimeline.defaultProps = {
   options: {},
-  onLoad: () => {},
+  onLoad: () => {}
 }

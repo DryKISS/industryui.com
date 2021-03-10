@@ -33,9 +33,9 @@ const StyledFooter = styled.div`
 
 CardFooter.propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
-  children: node,
+  children: node
 }
 
 CardFooter.defaultProps = {
-  context: 'light',
+  context: 'light'
 }

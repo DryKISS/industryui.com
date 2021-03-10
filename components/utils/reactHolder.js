@@ -35,7 +35,7 @@ export const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
       images: node,
       object: null,
       bgnodes: null,
-      stylenodes: null,
+      stylenodes: null
     })
   }
 
@@ -50,13 +50,13 @@ export const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
 ReactHolderJs.propTypes = {
   placeholder: object,
   src: string.isRequired,
-  usePlaceholder: bool,
+  usePlaceholder: bool
 }
 
 ReactHolderJs.defaultProps = {
   placeholder: {
     auto: true,
-    theme: 'vine',
+    theme: 'vine'
   },
-  usePlaceholder: false,
+  usePlaceholder: false
 }

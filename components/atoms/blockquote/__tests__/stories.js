@@ -12,17 +12,17 @@ import Readme from '../README.md'
 export default {
   args: {
     footer: 'Footer',
-    text: 'Title',
+    text: 'Title'
   },
   component: Blockquote,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Blockquote',
+  title: 'Atoms/Blockquote'
 }
 
 export const main = (args) => <Blockquote {...args} />

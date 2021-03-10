@@ -7,9 +7,9 @@ import { THEME_COLOUR } from '../../theme/variables/colour'
 
 export const DETAILS2 = {
   wrapper: {
-    background: THEME_COLOUR.white,
+    background: THEME_COLOUR.white
   },
   header: {
-    background: THEME_COLOUR.light,
-  },
+    background: THEME_COLOUR.light
+  }
 }

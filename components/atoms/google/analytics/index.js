@@ -5,7 +5,7 @@
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const GoogleAnalyticsPageView = (url, id) => {
   window.gtag('config', id, {
-    page_path: url,
+    page_path: url
   })
 }
 
@@ -14,6 +14,6 @@ export const GoogleEvent = ({ action, category, label, value }) => {
   window.gtag('event', action, {
     event_category: category,
     event_label: label,
-    value: value,
+    value: value
   })
 }

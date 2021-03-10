@@ -66,10 +66,10 @@ const StyledInputGroup = styled.div`
 
 InputGroup.propTypes = {
   fullWidth: bool,
-  size: string,
+  size: string
 }
 
 InputGroup.defaultProps = {
   fullWidth: true,
-  size: 'md',
+  size: 'md'
 }

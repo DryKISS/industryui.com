@@ -23,22 +23,22 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const schema = object().shape({
   dayPicker: string().required(),
   monthPicker: string().required(),
-  yearPicker: string().required(),
+  yearPicker: string().required()
 })
 
 const BaseComponent = (props = {}) => {
   const { errors, getValues, handleSubmit, register } = useForm({
     defaultValues: { dayPicker: 10 },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = (data) => {}
@@ -52,7 +52,7 @@ const BaseComponent = (props = {}) => {
     register: register,
     yearEnd: 2020,
     yearStart: 1919,
-    ...props,
+    ...props
   }
 
   return (

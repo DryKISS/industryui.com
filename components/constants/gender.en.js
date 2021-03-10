@@ -5,14 +5,14 @@ export const GENDER = [
   {
     disabled: true,
     text: 'Select gender',
-    value: '',
+    value: ''
   },
   {
     text: 'Male',
-    value: 'male',
+    value: 'male'
   },
   {
     text: 'Female',
-    value: 'female',
-  },
+    value: 'female'
+  }
 ]

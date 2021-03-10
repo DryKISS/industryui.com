@@ -17,7 +17,7 @@ export const formatIntDate = (date, code = 'en-GB') => {
     month: 'long',
     day: '2-digit',
     hour: '2-digit',
-    minute: '2-digit',
+    minute: '2-digit'
   }).format(date)
 
   return newDate
@@ -30,7 +30,7 @@ export const formatIntDateShort = (date, code = 'en-GB') => {
 
   const newDate = new Intl.DateTimeFormat(code, {
     month: 'long',
-    day: '2-digit',
+    day: '2-digit'
   }).format(date)
 
   return newDate
@@ -42,7 +42,7 @@ export const formatIntDateYear = (date, code = 'en-GB') => {
   }
 
   const newDate = new Intl.DateTimeFormat(code, {
-    year: 'numeric',
+    year: 'numeric'
   }).format(date)
 
   return newDate

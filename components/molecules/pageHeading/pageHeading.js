@@ -21,7 +21,7 @@ export const PageHeading = ({
   heading,
   help,
   helpContent,
-  strapline,
+  strapline
 }) => {
   return (
     <StyledPageHeader center={center} divider={divider}>
@@ -72,7 +72,7 @@ PageHeading.propTypes = {
   heading: any.isRequired,
   help: bool,
   helpContent: any,
-  strapline: string,
+  strapline: string
 }
 
 PageHeading.defaultProps = {
@@ -81,5 +81,5 @@ PageHeading.defaultProps = {
   divider: true,
   help: false,
   helpContent: '',
-  strapline: '',
+  strapline: ''
 }

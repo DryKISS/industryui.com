@@ -32,7 +32,7 @@ const BarComponent = ({ theme, ...props }) => {
     maxValue = BarDefaultProps.maxValue,
     reverse = BarDefaultProps.reverse,
     showLegend,
-    tooltip = BarDefaultProps.tooltip,
+    tooltip = BarDefaultProps.tooltip
   } = props
 
   return (
@@ -87,10 +87,10 @@ BarChart.propTypes = Object.assign({}, BarPropTypes, {
   bottomLegend: string,
   colorScheme: oneOf(Object.keys(colorSchemes)),
   leftLegend: string,
-  showLegend: bool,
+  showLegend: bool
 })
 
 BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
   colorScheme: 'nivo',
-  showLegend: false,
+  showLegend: false
 })

@@ -64,13 +64,13 @@ export class GeoCoder {
     }
 
     const {
-      results: [result],
+      results: [result]
     } = await this.handleUrl(url)
 
     const {
       geometry: {
-        location: { lat, lng },
-      },
+        location: { lat, lng }
+      }
     } = result
 
     const coordinates = { lat, lng }

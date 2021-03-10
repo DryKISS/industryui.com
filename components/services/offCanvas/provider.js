@@ -54,7 +54,7 @@ export const OffCanvasProvider = ({ children }) => {
     <OffCanvasContext.Provider
       value={{
         show: handleShow,
-        close: handleClose,
+        close: handleClose
       }}
     >
       {children}

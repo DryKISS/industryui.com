@@ -47,9 +47,9 @@ export const BlogCategories = ({ articles, config }) => {
               href: {
                 pathname: `${config.path}/category`,
                 query: {
-                  category: slugify(articles[0].category),
-                },
-              },
+                  category: slugify(articles[0].category)
+                }
+              }
             }}
           >
             <StyledHeading content={articles[0].category} tag="h2" />
@@ -80,5 +80,5 @@ const StyledHeading = styled(Heading)`
 
 BlogCategories.propTypes = {
   articles: any.isRequired,
-  config: object.isRequired,
+  config: object.isRequired
 }

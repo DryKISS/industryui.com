@@ -10,7 +10,7 @@ export const TEXT = {
     lg: '1.25rem',
     xl: '1.5rem',
     xxl: '2rem',
-    xxxl: '3rem',
+    xxxl: '3rem'
   },
   LINE_HEIGHT: {
     xxs: '1rem',
@@ -20,6 +20,6 @@ export const TEXT = {
     lg: '1.75rem',
     xl: '2.25rem',
     xxl: '3rem',
-    xxxl: '4.5rem',
-  },
+    xxxl: '4.5rem'
+  }
 }

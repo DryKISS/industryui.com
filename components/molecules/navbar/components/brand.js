@@ -26,5 +26,5 @@ const StyledLink = styled(Link)`
 `
 
 Brand.propTypes = {
-  brand: string.isRequired,
+  brand: string.isRequired
 }

@@ -13,11 +13,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/forceUpdate',
+  title: 'Utils/forceUpdate'
 }
 
 export const ForceUpdate = () => {

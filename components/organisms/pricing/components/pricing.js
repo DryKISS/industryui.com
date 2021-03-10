@@ -17,7 +17,7 @@ import {
   PricingCard,
   PricingDropdown,
   ResizeDetector,
-  Text,
+  Text
 } from '../../../'
 
 export const Pricing = ({ pricingInfo, onPlanSelect }) => {

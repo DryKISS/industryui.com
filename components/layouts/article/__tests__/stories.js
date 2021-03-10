@@ -15,10 +15,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const article = {
@@ -36,7 +36,7 @@ const article = {
   slug: 'static-site-development',
   tags: ['static', 'jam'],
   time: '12:00pm',
-  title: 'Static Site development',
+  title: 'Static Site development'
 }
 
 export const main = () => <ArticleLayout frontMatter={article} />

@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Blog/Read Time',
+  title: 'Blog/Read Time'
 }
 
 export const main = (args) => <BlogReadTime time={2} {...args} />

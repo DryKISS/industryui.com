@@ -60,8 +60,8 @@ export const UserProvider = ({ children }) => {
         {
           headers: {
             'Content-Type': 'application/json',
-            ...apiConfig.headers,
-          },
+            ...apiConfig.headers
+          }
         }
       )
       token = data.token
@@ -92,8 +92,8 @@ export const UserProvider = ({ children }) => {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + token,
-          },
+            Authorization: 'Bearer ' + token
+          }
         }
       )
       newToken = data.token
@@ -133,13 +133,13 @@ export const UserProvider = ({ children }) => {
           email,
           password,
           marketing,
-          birthday,
+          birthday
         },
         {
           headers: {
             'Content-Type': 'application/json',
-            ...apiConfig.headers,
-          },
+            ...apiConfig.headers
+          }
         }
       )
       token = data.token
@@ -191,7 +191,7 @@ export const UserProvider = ({ children }) => {
           registerContext,
           signOut,
           switchAccount,
-          user,
+          user
         }}
       >
         {children}

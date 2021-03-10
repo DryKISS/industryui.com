@@ -13,11 +13,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/Slugify',
+  title: 'Utils/Slugify'
 }
 
 export const Main = () => {

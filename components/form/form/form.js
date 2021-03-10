@@ -26,5 +26,5 @@ Form.propTypes = {
   className: any,
   handleSubmit: func.isRequired,
   id: string,
-  style: any,
+  style: any
 }

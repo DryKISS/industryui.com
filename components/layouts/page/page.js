@@ -47,7 +47,7 @@ Page.propTypes = {
   meta: shape({
     description: string.isRequired,
     path: string,
-    title: string.isRequired,
+    title: string.isRequired
   }),
   padding: oneOfType([bool, oneOf(Object.values(THEME_SIZE))]),
   pageHeading: shape({
@@ -57,11 +57,11 @@ Page.propTypes = {
     heading: any.isRequired,
     help: bool,
     helpContent: any,
-    strapline: string,
-  }),
+    strapline: string
+  })
 }
 
 Page.defaultProps = {
   fluid: false,
-  padding: 'md',
+  padding: 'md'
 }

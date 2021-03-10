@@ -17,20 +17,20 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    size: 'md',
+    size: 'md'
   },
   argTypes: {
-    size: SizeControl(),
+    size: SizeControl()
   },
   component: InputGroup,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Form/InputGroup',
+  title: 'Form/InputGroup'
 }
 
 const BaseComponent = (props = {}) => {

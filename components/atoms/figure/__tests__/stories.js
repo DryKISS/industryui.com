@@ -16,21 +16,21 @@ import { THEME_CONTEXT } from '../../../theme/constants/context'
 export default {
   args: {
     context: THEME_CONTEXT.WHITE,
-    bgContext: THEME_CONTEXT.DARK,
+    bgContext: THEME_CONTEXT.DARK
   },
   argTypes: {
     context: ContextControl(),
-    bgContext: ContextControl(),
+    bgContext: ContextControl()
   },
   component: Figure,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Figure',
+  title: 'Atoms/Figure'
 }
 
 export const main = (args) => (

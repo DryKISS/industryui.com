@@ -110,5 +110,5 @@ const StyledLink = styled.span`
 
 Sidebar.propTypes = {
   brand: string,
-  data: array.isRequired,
+  data: array.isRequired
 }

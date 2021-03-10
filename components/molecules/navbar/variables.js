@@ -51,5 +51,5 @@ export const NAVBAR = {
   backgroundHoverListItem: THEME_COLOUR.light,
   borderBottomHoverListItem: 'none',
   justifyContentDesktopListItem: 'center',
-  marginBottomDesktopListItem: 'inherit',
+  marginBottomDesktopListItem: 'inherit'
 }

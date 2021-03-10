@@ -5,7 +5,7 @@ const key = {
   exitFullscreen: 3,
   fullscreenchange: 4,
   fullscreenerror: 5,
-  fullscreen: 6,
+  fullscreen: 6
 }
 
 const webkit = [
@@ -15,7 +15,7 @@ const webkit = [
   'webkitExitFullscreen',
   'webkitfullscreenchange',
   'webkitfullscreenerror',
-  '-webkit-full-screen',
+  '-webkit-full-screen'
 ]
 
 const moz = [
@@ -25,7 +25,7 @@ const moz = [
   'mozCancelFullScreen',
   'mozfullscreenchange',
   'mozfullscreenerror',
-  '-moz-full-screen',
+  '-moz-full-screen'
 ]
 
 const ms = [
@@ -35,7 +35,7 @@ const ms = [
   'msExitFullscreen',
   'MSFullscreenChange',
   'MSFullscreenError',
-  '-ms-fullscreen',
+  '-ms-fullscreen'
 ]
 
 // so it doesn't throw error if no window or document is present
@@ -81,5 +81,5 @@ export const fullScreen = {
   },
   set onfullscreenerror(handler) {
     return (document[`on${vendor[key.fullscreenerror]}`.toLowerCase()] = handler)
-  },
+  }
 }

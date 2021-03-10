@@ -38,10 +38,10 @@ const CaretRight = styled.div`
 Details2Icon.propTypes = {
   animationTime: number,
   iconComponent: node,
-  isOpen: bool,
+  isOpen: bool
 }
 
 Details2Icon.defaultProps = {
   animationTime: 100,
-  isOpen: false,
+  isOpen: false
 }

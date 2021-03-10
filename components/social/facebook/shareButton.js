@@ -51,11 +51,11 @@ FacebookShareButton.propTypes = {
   iFrame: bool,
   layout: oneOf(['box_count', 'button', 'button_count', 'icon_link']),
   size: oneOf(['large', 'small']),
-  to: string.isRequired,
+  to: string.isRequired
 }
 
 FacebookShareButton.defaultProps = {
   iFrame: true,
   layout: 'button',
-  size: 'large',
+  size: 'large'
 }

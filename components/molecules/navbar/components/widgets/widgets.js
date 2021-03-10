@@ -14,7 +14,7 @@ import {
   NavDropdown,
   NavIcon,
   NavLink,
-  NavNotification,
+  NavNotification
 } from '../../../../'
 
 // Style
@@ -44,7 +44,7 @@ export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
                     name,
                     position,
                     prefix,
-                    type,
+                    type
                   })}
 
                 {type &&
@@ -60,7 +60,7 @@ export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
                     name,
                     onClick,
                     to,
-                    visible,
+                    visible
                   })}
               </StyledListItem>
             )
@@ -118,5 +118,5 @@ NavWidgets.propTypes = {
   closeMenu: func,
   type: string,
   visible: bool,
-  widgets: object.isRequired,
+  widgets: object.isRequired
 }

@@ -21,29 +21,29 @@ export default {
     style: {},
     withActionsComponent: false,
     withButton: false,
-    withToolbar: false,
+    withToolbar: false
   },
   argTypes: {
     context: ContextControl(),
     withActionsComponent: {
-      name: 'With Actions Component',
+      name: 'With Actions Component'
     },
     withButton: {
-      name: 'With Simple Button',
+      name: 'With Simple Button'
     },
     withToolbar: {
-      name: 'With Toolbar',
-    },
+      name: 'With Toolbar'
+    }
   },
   component: Details,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Details',
+  title: 'Atoms/Details'
 }
 
 const toolbar = () => {

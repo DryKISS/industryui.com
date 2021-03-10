@@ -22,10 +22,10 @@ const Buttons = [
     to: {
       href: {
         pathname: '/sign-up/template',
-        query: { slug: 'breeder' },
+        query: { slug: 'breeder' }
       },
-      as: '/sign-up/breeder',
-    },
+      as: '/sign-up/breeder'
+    }
   },
   {
     content: 'Create Buyer Profile',
@@ -33,11 +33,11 @@ const Buttons = [
     to: {
       href: {
         pathname: '/sign-up/template',
-        query: { slug: 'seeker' },
+        query: { slug: 'seeker' }
       },
-      as: '/sign-up/seeker',
-    },
-  },
+      as: '/sign-up/seeker'
+    }
+  }
 ]
 
 export default {
@@ -45,11 +45,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Hero',
+  title: 'Molecules/Hero'
 }
 
 export const main = (args) => (

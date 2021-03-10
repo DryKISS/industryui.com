@@ -27,9 +27,9 @@ Core.propTypes = {
   author: string,
   canonical: string.isRequired,
   description: string.isRequired,
-  title: string.isRequired,
+  title: string.isRequired
 }
 
 Core.defaultProps = {
-  author: 'DryKISS',
+  author: 'DryKISS'
 }

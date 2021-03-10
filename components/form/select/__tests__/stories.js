@@ -24,19 +24,19 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const BaseComponent = (props = {}) => {
   const schema = object().shape({
-    select: string().required(),
+    select: string().required()
   })
 
   const { errors, getValues, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = (data) => {}
@@ -51,7 +51,7 @@ const BaseComponent = (props = {}) => {
     range: [],
     register: register,
     showError: true,
-    ...props,
+    ...props
   }
 
   return (

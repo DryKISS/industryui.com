@@ -6,11 +6,12 @@
 import React from 'react'
 import { oneOf, string } from 'prop-types'
 
-// UI
-import { Icon, ICON_PREFIX } from '../../../../../'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import { Icon } from '../../../../../atoms/icon/icon/icon'
+import { ICON_PREFIX } from '../../../../../atoms/icon/constants/prefix'
 
 export const MessageIcon = ({ icon, prefix }) => {
   let useIcon = ''
@@ -39,9 +40,9 @@ const StyledIcon = styled(Icon)`
 
 MessageIcon.propTypes = {
   icon: string.isRequired,
-  prefix: oneOf(Object.values(ICON_PREFIX)),
+  prefix: oneOf(Object.values(ICON_PREFIX))
 }
 
 MessageIcon.defaultProps = {
-  prefix: 'fas',
+  prefix: 'fas'
 }

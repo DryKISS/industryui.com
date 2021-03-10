@@ -55,9 +55,9 @@ NavButton.propTypes = {
   name: string.isRequired,
   to: string.isRequired,
   type: string.isRequired,
-  visible: bool,
+  visible: bool
 }
 
 NavButton.defaultProps = {
-  visible: false,
+  visible: false
 }

@@ -58,9 +58,9 @@ const StyledGroup = styled.div`
 
 ButtonToolbar.propTypes = {
   align: string,
-  children: node.isRequired,
+  children: node.isRequired
 }
 
 ButtonToolbar.defaultProps = {
-  align: 'center',
+  align: 'center'
 }

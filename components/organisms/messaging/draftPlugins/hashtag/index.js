@@ -10,8 +10,8 @@ export const createHashtagPlugin = (config = {}) => {
     decorators: [
       {
         strategy: hashtagStrategy,
-        component: DecoratedHashtag,
-      },
-    ],
+        component: DecoratedHashtag
+      }
+    ]
   }
 }

@@ -23,7 +23,7 @@ export const ImageLocation = ({
   markerStyles,
   maxZoomLevel,
   onMarkerClick,
-  show,
+  show
 }) => {
   const [coordinates, setCoordinates] = useState(initialCoordinates)
 
@@ -45,7 +45,7 @@ export const ImageLocation = ({
             markerStyles,
             maxZoomLevel,
             onMarkerClick,
-            setCoordinates,
+            setCoordinates
           }}
         />
       )}
@@ -61,5 +61,5 @@ const StyledImageLocation = styled.div`
 ImageLocation.propTypes = ImageLocationProps
 
 ImageLocation.defaultProps = {
-  show: true,
+  show: true
 }

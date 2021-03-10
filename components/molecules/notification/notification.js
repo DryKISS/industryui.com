@@ -63,5 +63,5 @@ Notification.propTypes = {
   date: string,
   icon: string,
   link: string,
-  title: string,
+  title: string
 }

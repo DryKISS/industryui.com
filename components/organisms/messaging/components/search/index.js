@@ -19,12 +19,12 @@ const Items = [
   { text: 'All', value: 'all' },
   { text: 'Email', value: 'email' },
   { text: 'Comment', value: 'comment' },
-  { text: 'Notification', value: 'notification' },
+  { text: 'Notification', value: 'notification' }
 ]
 
 export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   const { errors, handleSubmit, register } = useForm({
-    mode: 'onChange',
+    mode: 'onChange'
   })
 
   const onSubmit = (data) => {
@@ -37,7 +37,7 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
 
   const defaultOptions = {
     errors: errors,
-    register: register,
+    register: register
   }
 
   return (
@@ -82,9 +82,9 @@ const StyledSelect = styled(SelectField)`
 MessagingSearch.propTypes = {
   onFilter: func.isRequired,
   onSearch: func.isRequired,
-  placeholder: string,
+  placeholder: string
 }
 
 MessagingSearch.defaultProps = {
-  placeholder: 'Search...',
+  placeholder: 'Search...'
 }

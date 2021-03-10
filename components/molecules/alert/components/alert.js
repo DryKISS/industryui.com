@@ -62,9 +62,9 @@ Alert.propTypes = {
   header: string,
   icon: string,
   iconPrefix: string,
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }
 
 Alert.defaultProps = {
-  context: 'primary',
+  context: 'primary'
 }

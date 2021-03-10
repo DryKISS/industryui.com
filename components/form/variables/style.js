@@ -16,7 +16,7 @@ export const formStyle = ({
   Required,
   size,
   textAlign,
-  theme,
+  theme
 }) => {
   return css`
     background-clip: padding-box;

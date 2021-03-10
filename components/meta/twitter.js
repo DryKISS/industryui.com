@@ -27,5 +27,5 @@ export const MetaTwitter = ({ account, description, image, title, url }) => {
 }
 
 MetaTwitter.propTypes = {
-  account: string.isRequired,
+  account: string.isRequired
 }

@@ -15,10 +15,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const BaseComponent = (props = {}) => {
@@ -26,7 +26,7 @@ const BaseComponent = (props = {}) => {
     children: '',
     id: '',
     label: 'Label',
-    ...props,
+    ...props
   }
 
   return <FormLabel {...defaultProps} />

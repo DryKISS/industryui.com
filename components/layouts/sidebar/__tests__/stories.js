@@ -15,50 +15,50 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const Copyright = [
   {
     name: 'Terms and conditions',
-    to: '/policies/terms-conditions',
+    to: '/policies/terms-conditions'
   },
 
   {
     name: 'Privacy policy',
-    to: '/policies/privacy-policy',
+    to: '/policies/privacy-policy'
   },
 
   {
     name: 'Site map',
-    to: '/policies/site-map',
-  },
+    to: '/policies/site-map'
+  }
 ]
 
 const Footer = [
   {
     size: { sm: 6, md: 3 },
     header: 'About',
-    text: '<p>About</p>',
+    text: '<p>About</p>'
   },
   {
     size: { sm: 6, md: 3 },
     header: 'Site Links',
-    text: '<p>Links</p>',
+    text: '<p>Links</p>'
   },
   {
     size: { sm: 6, md: 3 },
     header: 'Who we Help',
-    text: '<p>Help</p>',
+    text: '<p>Help</p>'
   },
   {
     size: { sm: 6, md: 3 },
     header: 'Contact',
-    text: '<p>Contact</p>',
-  },
+    text: '<p>Contact</p>'
+  }
 ]
 
 const Navigation = () => {
@@ -67,9 +67,9 @@ const Navigation = () => {
       {
         id: 'navHome',
         name: 'Home',
-        to: '/',
-      },
-    ],
+        to: '/'
+      }
+    ]
   }
 
   return <Navbar links={Default} />

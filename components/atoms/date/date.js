@@ -30,9 +30,9 @@ const StyledTime = styled.time`
 
 Date.propTypes = {
   date: string.isRequired,
-  size: oneOf(Object.values(THEME_SIZE)),
+  size: oneOf(Object.values(THEME_SIZE))
 }
 
 Date.defaultProps = {
-  size: 'md',
+  size: 'md'
 }

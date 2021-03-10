@@ -17,7 +17,7 @@ export const Error404 = () => {
       and analytics.
     `,
     path: '/404',
-    title: 'DryKISS develops hybrid mobile and responsive websites',
+    title: 'DryKISS develops hybrid mobile and responsive websites'
   }
 
   return (

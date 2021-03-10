@@ -47,14 +47,14 @@ export class MyApp extends App {
     pageProps: object,
     pageProgressBar: bool,
     theme: object,
-    user: bool,
+    user: bool
   }
 
   static defaultProps = {
     offCanvas: false,
     pageProgressBar: false,
     theme: {},
-    user: false,
+    user: false
   }
 
   componentDidMount() {

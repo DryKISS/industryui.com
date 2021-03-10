@@ -16,7 +16,7 @@ import {
   RandomColor,
   Subscriber,
   Text,
-  useComponentCommunication,
+  useComponentCommunication
 } from '../../../'
 
 // Style
@@ -24,7 +24,7 @@ import styled from 'styled-components'
 
 export default {
   decorators: [Wrapper],
-  title: 'Utils/CommunicationService',
+  title: 'Utils/CommunicationService'
 }
 
 const Sender = () => {
@@ -38,7 +38,7 @@ const Sender = () => {
         onClick={() => {
           CommunicationService.send({
             name: MessageNames.TEST,
-            payload: val.current,
+            payload: val.current
           })
         }}
       >
@@ -58,7 +58,7 @@ const Reciever = () => {
   useComponentCommunication({
     onRecieve: logPayload,
     subscriber: Subscriber,
-    messageName: MessageNames.TEST,
+    messageName: MessageNames.TEST
   })
 
   return <Text style={{ background: RandomColor() }}>{Payload ?? 'no message'}</Text>
@@ -76,7 +76,7 @@ export const CommunicationShowCase = () => {
 
         <SimpleWrapper
           style={{
-            background: RandomColor(),
+            background: RandomColor()
           }}
         >
           <Sender />

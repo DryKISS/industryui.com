@@ -17,7 +17,7 @@ import { LinkPluginComponent } from '../../../'
 
 export const linkifyPlugin = createLinkifyPlugin({
   target: '_blank',
-  component: (props) => <LinkPluginComponent {...props} />,
+  component: (props) => <LinkPluginComponent {...props} />
 })
 
 // Plugins configuration

@@ -25,7 +25,7 @@ export const TableContent = ({
   sort,
   setSort,
   striped,
-  tableSpan,
+  tableSpan
 }) => {
   const bottomCells = { data: [], hasData: false }
   columns.forEach((element) => {
@@ -89,11 +89,11 @@ TableContent.propTypes = {
   rows: array.isRequired,
   sort: shape({
     item: string,
-    order: string,
+    order: string
   }),
   setSort: func,
   striped: bool,
-  tableSpan: number,
+  tableSpan: number
 }
 
 TableContent.defaultProps = {
@@ -103,5 +103,5 @@ TableContent.defaultProps = {
   loading: false,
   noData: true,
   sort: {},
-  striped: true,
+  striped: true
 }

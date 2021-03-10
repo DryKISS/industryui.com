@@ -15,17 +15,17 @@ import { Data } from '../__mocks__/stepper'
 export default {
   args: {
     items: Data.items,
-    summary: Data.summary,
+    summary: Data.summary
   },
   component: Stepper,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Stepper',
+  title: 'Molecules/Stepper'
 }
 
 export const main = (args) => <Stepper {...args} />

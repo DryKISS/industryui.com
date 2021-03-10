@@ -22,5 +22,5 @@ export const PasswordChangeSchema = object().shape({
     ),
   passwordConfirm: string()
     .required()
-    .oneOf([ref('password'), null], 'Passwords must match'),
+    .oneOf([ref('password'), null], 'Passwords must match')
 })

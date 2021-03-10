@@ -12,17 +12,17 @@ import Readme from '../README.md'
 export default {
   args: {
     next: true,
-    nextText: 'Submit',
+    nextText: 'Submit'
   },
   component: Buttons,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Buttons',
+  title: 'Molecules/Buttons'
 }
 
 export const main = (args) => <Buttons {...args} />

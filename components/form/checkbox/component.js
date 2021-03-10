@@ -19,9 +19,9 @@ const StyledCheckbox = styled.input`
 `
 
 CheckboxComponent.propTypes = {
-  disabled: bool,
+  disabled: bool
 }
 
 CheckboxComponent.defaultProps = {
-  stacked: false,
+  stacked: false
 }

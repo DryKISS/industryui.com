@@ -17,11 +17,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/VoiceRecorder',
+  title: 'Molecules/VoiceRecorder'
 }
 
 export const noOverlay = () => {

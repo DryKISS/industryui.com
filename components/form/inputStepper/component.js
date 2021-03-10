@@ -30,7 +30,7 @@ export const InputStepperComponent = forwardRef(
       name,
       style,
       value,
-      valueAlign,
+      valueAlign
     },
     ref
   ) => {

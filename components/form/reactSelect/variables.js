@@ -11,7 +11,7 @@ export const SELECT = {
     lg: '0.75rem',
     xl: '0.75rem',
     xxl: '0.75rem',
-    xxxl: '0.75rem',
+    xxxl: '0.75rem'
   },
-  MENU_BORDER_COLOUR: 'rgb(204, 204, 204)',
+  MENU_BORDER_COLOUR: 'rgb(204, 204, 204)'
 }

@@ -14,7 +14,7 @@ export const useComponentCommunication = ({
   id,
   messageName,
   onRecieve,
-  subscriber,
+  subscriber
 }) => {
   useEffect(() => {
     const Subscription = subscriber.subscribe((message) => {
@@ -33,5 +33,5 @@ useComponentCommunication.propTypes = {
   id: string,
   messageName: string.isRequired,
   onRecieve: func.isRequired,
-  subscriber: instanceOf(Subject).isRequired,
+  subscriber: instanceOf(Subject).isRequired
 }

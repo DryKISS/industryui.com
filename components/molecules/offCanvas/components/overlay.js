@@ -25,10 +25,10 @@ OffCanvasOverlay.propTypes = {
   duration: number,
   opacity: number,
   show: bool,
-  width: string,
+  width: string
 }
 
 OffCanvasOverlay.defaultProps = {
   duration: 300,
-  opacity: 0.3,
+  opacity: 0.3
 }

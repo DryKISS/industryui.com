@@ -66,10 +66,10 @@ export const LdsSpinner = (props) => {
 
 LdsSpinner.propTypes = {
   size: number,
-  color: string,
+  color: string
 }
 
 LdsSpinner.defaultProps = {
   size: 80,
-  color: '#333',
+  color: '#333'
 }

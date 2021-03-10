@@ -13,7 +13,7 @@ export const Design = ({
   handleScreenshot,
   refProp,
   screenshot,
-  videoConstraints,
+  videoConstraints
 }) => (
   <>
     <div
@@ -22,7 +22,7 @@ export const Design = ({
         background: '#000',
         border: '1px solid #C8D1D8',
         borderRadius: '.5rem .5rem 0 0',
-        marginBottom: '-8px',
+        marginBottom: '-8px'
       }}
     >
       {!screenshot && (
@@ -39,7 +39,7 @@ export const Design = ({
         background: '#C8D1D8',
         borderRadius: '0 0 .5rem .5rem',
         height: '50px',
-        position: 'relative',
+        position: 'relative'
       }}
     >
       <div
@@ -55,7 +55,7 @@ export const Design = ({
           lineHeight: '50px',
           position: 'absolute',
           textAlign: 'center',
-          width: '50px',
+          width: '50px'
         }}
       >
         <Icon color="white" icon="camera" style={{ fontSize: '1.5rem' }} />

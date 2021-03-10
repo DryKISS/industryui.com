@@ -68,5 +68,5 @@ BlogListing.propTypes = {
   author: string,
   category: string,
   config: object,
-  tag: string,
+  tag: string
 }

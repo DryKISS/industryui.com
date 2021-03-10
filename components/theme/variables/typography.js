@@ -6,7 +6,7 @@ const fontSizeLg = '($fontSizeBase * 1.25);'
 const fontSizeSm = '($fontSizeBase * .875);'
 
 const fonts = {
-  sans: 'sans-serif',
+  sans: 'sans-serif'
 }
 
 const font = fonts.sans
@@ -23,5 +23,5 @@ export const THEME_TYPOGRAPHY = {
   font,
   fontColour,
   fontFamilies,
-  fontSizes,
+  fontSizes
 }

@@ -25,10 +25,10 @@ FigureCaption.propTypes = {
   children: node,
   className: any,
   context: oneOf(Object.values(THEME_CONTEXT)),
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }
 
 FigureCaption.defaultProps = {
   bgContext: THEME_CONTEXT.DARK,
-  context: THEME_CONTEXT.WHITE,
+  context: THEME_CONTEXT.WHITE
 }

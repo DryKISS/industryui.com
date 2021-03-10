@@ -49,12 +49,12 @@ BarOverlay.propTypes = {
   open: bool,
   placement: oneOf(Object.values(BarConfig.PLACEMENT)),
   variant: oneOf(['push', 'overlay']),
-  width: number,
+  width: number
 }
 
 BarOverlay.defaultProps = {
   open: true,
   placement: 'left',
   variant: 'overlay',
-  width: 10,
+  width: 10
 }

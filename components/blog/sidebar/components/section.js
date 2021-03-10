@@ -37,5 +37,5 @@ const StyledHeading = styled(Heading)`
 
 BlogSection.propTypes = {
   children: node.isRequired,
-  heading: string,
+  heading: string
 }

@@ -19,5 +19,5 @@ const StyledGroups = styled.div`
 `
 
 CardGroups.propTypes = {
-  childern: node.isRequired,
+  childern: node.isRequired
 }

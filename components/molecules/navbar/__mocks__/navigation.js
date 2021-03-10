@@ -12,24 +12,24 @@ export const Default = {
           {
             id: 'settings',
             name: 'Settings',
-            to: '/',
+            to: '/'
           },
           {
             id: 'profile',
             name: 'Profile',
-            to: '/',
+            to: '/'
           },
           {
             id: 'logout-divider',
-            divider: true,
+            divider: true
           },
           {
             id: 'logout',
             name: 'Logout',
-            to: '/',
-          },
-        ],
-      },
+            to: '/'
+          }
+        ]
+      }
     },
     {
       id: 'navDropdown',
@@ -40,24 +40,24 @@ export const Default = {
           {
             id: 'settings',
             name: 'Settings',
-            to: '/',
+            to: '/'
           },
           {
             id: 'profile',
             name: 'Profile',
-            to: '/',
+            to: '/'
           },
           {
             id: 'logout-divider',
-            divider: true,
+            divider: true
           },
           {
             id: 'logout',
             name: 'Logout',
-            to: '/',
-          },
-        ],
-      },
+            to: '/'
+          }
+        ]
+      }
     },
     {
       id: 'navDropdown',
@@ -68,24 +68,24 @@ export const Default = {
           {
             id: 'settings',
             name: 'Settings',
-            to: '/',
+            to: '/'
           },
           {
             id: 'profile',
             name: 'Profile',
-            to: '/',
+            to: '/'
           },
           {
             id: 'logout-divider',
-            divider: true,
+            divider: true
           },
           {
             id: 'logout',
             name: 'Logout',
-            to: '/',
-          },
-        ],
-      },
+            to: '/'
+          }
+        ]
+      }
     },
     {
       id: 'navDropdown',
@@ -96,24 +96,24 @@ export const Default = {
           {
             id: 'settings',
             name: 'Settings',
-            to: '/',
+            to: '/'
           },
           {
             id: 'profile',
             name: 'Profile',
-            to: '/',
+            to: '/'
           },
           {
             id: 'logout-divider',
-            divider: true,
+            divider: true
           },
           {
             id: 'logout',
             name: 'Logout',
-            to: '/',
-          },
-        ],
-      },
+            to: '/'
+          }
+        ]
+      }
     },
     {
       id: 'navDropdown',
@@ -124,34 +124,34 @@ export const Default = {
           {
             id: 'settings',
             name: 'Settings',
-            to: '/',
+            to: '/'
           },
           {
             id: 'profile',
             name: 'Profile',
-            to: '/',
+            to: '/'
           },
           {
             id: 'logout-divider',
-            divider: true,
+            divider: true
           },
           {
             id: 'logout',
             name: 'Logout',
-            to: '/',
-          },
-        ],
-      },
+            to: '/'
+          }
+        ]
+      }
     },
     {
       id: 'navHome',
       name: 'Home',
-      to: '/',
+      to: '/'
     },
     {
       id: 'navNav1',
       name: 'Contact',
-      to: '/',
+      to: '/'
     },
     {
       id: 'navButtonSmall',
@@ -160,18 +160,18 @@ export const Default = {
       type: {
         as: 'button',
         context: 'secondary',
-        size: 'sm',
-      },
+        size: 'sm'
+      }
     },
     {
       id: 'navNotification',
       to: '/',
       type: {
         as: 'notification',
-        count: 9,
-      },
-    },
-  ],
+        count: 9
+      }
+    }
+  ]
 }
 
 export const Left = {
@@ -179,14 +179,14 @@ export const Left = {
     {
       id: 'navHome',
       name: 'Home',
-      to: '/',
+      to: '/'
     },
     {
       id: 'navNav1',
       name: 'Nav1',
-      to: '/',
-    },
-  ],
+      to: '/'
+    }
+  ]
 }
 
 export const Buttons = {
@@ -194,19 +194,19 @@ export const Buttons = {
     {
       id: 'navHome',
       name: 'Home',
-      to: '/',
+      to: '/'
     },
     {
       id: 'navNav1',
       name: 'Nav1',
-      to: '/',
-    },
+      to: '/'
+    }
   ],
   right: [
     {
       id: 'navLogIn',
       name: 'Log in',
-      to: '/',
+      to: '/'
     },
     {
       id: 'navButtonLarge',
@@ -214,8 +214,8 @@ export const Buttons = {
       to: '/',
       type: {
         as: 'button',
-        size: 'lg',
-      },
+        size: 'lg'
+      }
     },
     {
       id: 'navButtonSmall',
@@ -224,8 +224,8 @@ export const Buttons = {
       type: {
         as: 'button',
         context: 'secondary',
-        size: 'sm',
-      },
-    },
-  ],
+        size: 'sm'
+      }
+    }
+  ]
 }

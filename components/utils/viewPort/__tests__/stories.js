@@ -12,16 +12,16 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    WindowViewPort: false,
+    WindowViewPort: false
   },
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/ViewPort',
+  title: 'Utils/ViewPort'
 }
 
 export const Main = (args) => {

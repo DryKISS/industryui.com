@@ -91,7 +91,7 @@ export const AuthorizationProvider = ({ children }) => {
       <AuthorizationContext.Provider
         value={{
           hasAccess,
-          hasRole,
+          hasRole
         }}
       >
         {children}

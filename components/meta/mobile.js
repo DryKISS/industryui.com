@@ -22,5 +22,5 @@ export const MetaMobile = ({ verification }) => {
 }
 
 MetaMobile.propTypes = {
-  verification: string.isRequired,
+  verification: string.isRequired
 }

@@ -27,14 +27,14 @@ export const ImageWrapper = ({
   markerStyles,
   maxZoomLevel,
   onMarkerClick,
-  setCoordinates,
+  setCoordinates
 }) => {
   const [Leaflet, setLeaflet] = useState(null)
 
   const createClusterCustomIcon = (cluster) => {
     return Leaflet.L.divIcon({
       html: renderToString(<ClusterIcon cluster={cluster} />),
-      className: 'marker-cluster',
+      className: 'marker-cluster'
       // iconSize: L.point(38, 38, true)
     })
   }
@@ -51,7 +51,7 @@ export const ImageWrapper = ({
       Marker,
       Popup,
       L,
-      MarkerClusterGroup,
+      MarkerClusterGroup
     })
   }
 
@@ -67,11 +67,11 @@ export const ImageWrapper = ({
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
   const [imageDimentions, setImageDimentions] = useState({
     height: 0,
-    width: 0,
+    width: 0
   })
   const bounds = [
     [imageDimentions.height, 0],
-    [0, imageDimentions.width],
+    [0, imageDimentions.width]
   ]
 
   const handleImageClick = (event) => {
@@ -83,7 +83,7 @@ export const ImageWrapper = ({
 
     const coordinates = {
       x: (event.nativeEvent.offsetX * 100) / imageWidth,
-      y: (event.nativeEvent.offsetY * 100) / imageHeight,
+      y: (event.nativeEvent.offsetY * 100) / imageHeight
     }
 
     setCoordinates(coordinates)
@@ -115,7 +115,7 @@ export const ImageWrapper = ({
 
       const leafletIcon = Leaflet.L.divIcon({
         className: 'marker-icon',
-        html: renderToString(iconToRender),
+        html: renderToString(iconToRender)
       })
 
       return (
@@ -131,7 +131,7 @@ export const ImageWrapper = ({
             },
             mouseout: (e) => {
               popupComponent && autoCloseMarkerPopup && e.target.closePopup()
-            },
+            }
           }}
           key={i}
           position={[x, y]}
@@ -224,5 +224,5 @@ const StyledImageWrapper = styled.div`
 ImageWrapper.propTypes = {
   coordinates: object,
   item: object.isRequired,
-  setCoordinates: func.isRequired,
+  setCoordinates: func.isRequired
 }

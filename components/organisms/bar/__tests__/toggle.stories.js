@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Organisms/Bar/Toggle',
+  title: 'Organisms/Bar/Toggle'
 }
 
 export const toggle = (args) => {

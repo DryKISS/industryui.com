@@ -103,5 +103,5 @@ export const SPACER_PROP_TYPES = {
   pt: number,
   pb: number,
   pr: number,
-  pl: number,
+  pl: number
 }

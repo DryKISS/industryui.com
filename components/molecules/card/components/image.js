@@ -42,5 +42,5 @@ const StyledImage = styled(Image)`
 
 CardImage.propTypes = {
   alt: string.isRequired,
-  src: string.isRequired,
+  src: string.isRequired
 }

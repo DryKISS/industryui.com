@@ -52,7 +52,7 @@ const Body = ({ children, data, closeOthersOnOpen }) => {
         index,
         key: index,
         open: current.includes(index),
-        handleOpen: (index) => handleCurrent(index),
+        handleOpen: (index) => handleCurrent(index)
       })
     })
   } else {
@@ -80,5 +80,5 @@ Accordion.propTypes = {
   className: string,
   closeOthersOnOpen: bool,
   data: array,
-  style: object,
+  style: object
 }

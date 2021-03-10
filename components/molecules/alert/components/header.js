@@ -33,5 +33,5 @@ AlertHeader.propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
   header: string.isRequired,
   icon: string,
-  iconPrefix: string,
+  iconPrefix: string
 }

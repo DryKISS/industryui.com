@@ -26,7 +26,7 @@ import {
   MessagingSubscriber,
   PaperPlaneIcon,
   ReplyContainer,
-  useComponentCommunication,
+  useComponentCommunication
 } from '../../../../'
 
 // Style
@@ -50,8 +50,8 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: files,
-      },
+        data: files
+      }
     })
   }
 
@@ -74,7 +74,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: (e) => onActionRecieved(e),
-    subscriber: MessagingSubscriber,
+    subscriber: MessagingSubscriber
   })
 
   const submit = () => {
@@ -84,7 +84,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
       audience: audience.id,
       message: Message,
       ...(voiceMessage && { voice: voiceMessage }),
-      ...(replyMessage && { replyTo: replyMessage }),
+      ...(replyMessage && { replyTo: replyMessage })
     }
 
     onSubmit(data)
@@ -264,10 +264,10 @@ const StyledIcon = styled(Icon)`
 MessagingSend.propTypes = {
   audienceItems: array,
   onSubmit: func.isRequired,
-  maxLength: number,
+  maxLength: number
 }
 
 MessagingSend.defaultProps = {
   audienceItems: [],
-  maxLength: 320,
+  maxLength: 320
 }

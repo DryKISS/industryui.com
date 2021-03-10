@@ -41,5 +41,5 @@ const StyledFooter = styled.footer`
 
 Blockquote.propTypes = {
   footer: string,
-  text: string.isRequired,
+  text: string.isRequired
 }

@@ -7,7 +7,7 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // UI
-import { Icon } from '../../../'
+import { Icon } from '../icon/icon'
 
 export const IconStacked = ({ icon, prefix }) => {
   return (
@@ -27,9 +27,9 @@ export const IconStacked = ({ icon, prefix }) => {
 
 IconStacked.propTypes = {
   icon: string.isRequired,
-  prefix: string,
+  prefix: string
 }
 
 IconStacked.defaultProps = {
-  prefix: 'fas',
+  prefix: 'fas'
 }

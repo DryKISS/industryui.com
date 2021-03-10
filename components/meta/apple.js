@@ -23,5 +23,5 @@ export const MetaApple = ({ appleId, title }) => {
 
 MetaApple.propTypes = {
   appleId: string.isRequired,
-  title: string.isRequired,
+  title: string.isRequired
 }

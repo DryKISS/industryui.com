@@ -28,10 +28,10 @@ PercentInput.propTypes = {
   name: string.isRequired,
   register: func.isRequired,
   show: bool,
-  symbol: oneOfType([object, string]),
+  symbol: oneOfType([object, string])
 }
 
 PercentInput.defaultProps = {
   show: true,
-  symbol: '%',
+  symbol: '%'
 }

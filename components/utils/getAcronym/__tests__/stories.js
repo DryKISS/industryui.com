@@ -11,16 +11,16 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    fullText: 'dont repeat yourself, keep it stupid simple',
+    fullText: 'dont repeat yourself, keep it stupid simple'
   },
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/GetAcronym',
+  title: 'Utils/GetAcronym'
 }
 
 export const Main = (args) => {

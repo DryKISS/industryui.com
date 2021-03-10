@@ -17,7 +17,7 @@ import {
   FormLabel,
   GeoCoder,
   Row,
-  useGeoCoder,
+  useGeoCoder
 } from '../../../../'
 
 import Readme from '../README.md'
@@ -28,10 +28,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 export const Main = () => {
@@ -41,11 +41,11 @@ export const Main = () => {
     address: 'SW1P 3PA',
     city: 'london',
     region: 'uk',
-    language: 'en',
+    language: 'en'
   }
 
   const { handleSubmit, register, watch } = useForm({
-    defaultValues: geoState,
+    defaultValues: geoState
   })
 
   const address = watch('address')
@@ -58,14 +58,14 @@ export const Main = () => {
     address,
     city,
     region,
-    language,
+    language
   })
 
   const getCoordinates = async ({ address, city, language, region }) => {
     const geo = new GeoCoder({
       apiKey: 'AIzaSyAemr12bOOt2SLS_RiBh8o1UZhDTkE_SIU',
       language,
-      region,
+      region
     })
 
     const coordinates = await geo.fromAddress({ address, city })

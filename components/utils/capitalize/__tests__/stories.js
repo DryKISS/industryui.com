@@ -11,16 +11,16 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    text: 'yellow submarine',
+    text: 'yellow submarine'
   },
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/Capitalize',
+  title: 'Utils/Capitalize'
 }
 
 export const Capitalize = (args) => {

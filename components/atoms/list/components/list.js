@@ -15,7 +15,7 @@ export const List = ({ border, children, className, flush, inline, group, style,
       React.cloneElement(child, {
         border: border,
         flush: flush,
-        group: group,
+        group: group
       })
     )
 
@@ -65,12 +65,12 @@ List.propTypes = {
   flush: bool,
   group: bool,
   style: object,
-  unstyled: bool,
+  unstyled: bool
 }
 
 List.defaultProps = {
   className: '',
   inline: false,
   group: false,
-  unstyled: false,
+  unstyled: false
 }

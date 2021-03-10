@@ -31,7 +31,7 @@ export const LINECHART = {
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      ...this.axisBottom,
+      ...this.axisBottom
     }
   },
   axisLeft: function () {
@@ -46,7 +46,7 @@ export const LINECHART = {
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      ...this.axisLeft,
+      ...this.axisLeft
     }
   },
   margin: function () {
@@ -54,7 +54,7 @@ export const LINECHART = {
       bottom: 50,
       left: 60,
       right: this.showLegend ? 110 : 30, // props context
-      top: 30,
+      top: 30
     }
   },
   legends: [
@@ -66,9 +66,9 @@ export const LINECHART = {
           on: 'hover',
           style: {
             itemBackground: 'rgba(0, 0, 0, .03)',
-            itemOpacity: 1,
-          },
-        },
+            itemOpacity: 1
+          }
+        }
       ],
       justify: false,
       translateX: 100,
@@ -80,8 +80,8 @@ export const LINECHART = {
       itemOpacity: 0.75,
       symbolSize: 12,
       symbolShape: 'circle',
-      symbolBorderColor: 'rgba(0, 0, 0, .5)',
-    },
+      symbolBorderColor: 'rgba(0, 0, 0, .5)'
+    }
   ],
   pointColor: THEME_COLOUR.white,
   pointSize: 10,
@@ -96,7 +96,7 @@ export const LINECHART = {
       type: 'linear',
       stacked: !!this.stacked, // props context
       min: 'auto',
-      max: 'auto',
+      max: 'auto'
     }
-  },
+  }
 }

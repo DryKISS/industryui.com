@@ -24,7 +24,7 @@ export function useWhyDidYouUpdate(name, props) {
           // Add to changesObj
           changesObj[key] = {
             from: previousProps.current[key],
-            to: props[key],
+            to: props[key]
           }
         }
       })

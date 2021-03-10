@@ -13,17 +13,17 @@ import Readme from '../README.md'
 export default {
   args: {
     content: 'Content',
-    text: 'Text',
+    text: 'Text'
   },
   component: DetailsText,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/DetailsText',
+  title: 'Atoms/DetailsText'
 }
 
 export const main = (args) => {

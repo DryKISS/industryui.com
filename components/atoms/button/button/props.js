@@ -33,7 +33,7 @@ export const propTypes = {
   type: oneOf(['button', 'reset', 'submit']),
   ...DIMENSION_PROP_TYPES,
   ...DISPLAY_PROP_TYPES,
-  ...SPACER_PROP_TYPES,
+  ...SPACER_PROP_TYPES
 }
 
 export const defaultProps = {
@@ -41,5 +41,5 @@ export const defaultProps = {
   disabled: false,
   shadow: false,
   size: 'md',
-  type: 'button',
+  type: 'button'
 }

@@ -15,7 +15,7 @@ export const BARCHART = {
       top: 50,
       right: this.showLegend ? 125 : 125 - legendTranslateX, // boolean passed as prop
       bottom: 50,
-      left: 80,
+      left: 80
     }
   },
   borderColor: THEME_COLOUR.dark,
@@ -34,7 +34,7 @@ export const BARCHART = {
       legend: this.bottomLegend, // string passed as prop
       legendPosition: 'middle',
       legendOffset: 36,
-      ...this.axisBottom,
+      ...this.axisBottom
     }
   },
   axisLeft: function () {
@@ -45,7 +45,7 @@ export const BARCHART = {
       legend: this.leftLegend, // string passed as prop
       legendPosition: 'middle',
       legendOffset: -60,
-      ...this.axisLeft,
+      ...this.axisLeft
     }
   },
   legends: [
@@ -57,9 +57,9 @@ export const BARCHART = {
         {
           on: 'hover',
           style: {
-            itemOpacity: 1,
-          },
-        },
+            itemOpacity: 1
+          }
+        }
       ],
       itemDirection: 'left-to-right',
       itemHeight: 20,
@@ -69,7 +69,7 @@ export const BARCHART = {
       justify: false,
       translateX: legendTranslateX,
       translateY: 0,
-      symbolSize: 20,
-    },
-  ],
+      symbolSize: 20
+    }
+  ]
 }

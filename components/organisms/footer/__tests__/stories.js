@@ -14,24 +14,24 @@ import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__/footer'
 
 export default {
   args: {
-    showMonth: false,
+    showMonth: false
   },
   component: Footer,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Organisms/Footer',
+  title: 'Organisms/Footer'
 }
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
     columns: DRYKISS,
     fixed: props.showMonth,
-    ...props,
+    ...props
   }
 
   return <Footer {...defaultProps} />

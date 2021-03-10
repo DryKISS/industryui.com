@@ -17,22 +17,22 @@ export default {
     value: 2,
     context: 'warning',
     withSize: false,
-    size: 10,
+    size: 10
   },
   argTypes: {
     size: { control: { type: 'range', min: 0, max: 50 } },
     value: { control: { type: 'range', min: 0, max: 5 } },
-    context: ContextControl(),
+    context: ContextControl()
   },
   title: 'Molecules/Rating',
   component: Rating,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 export const main = (args) => <Rating {...args} size={args.withSize === true ? args.size : 5} />

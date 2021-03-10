@@ -54,7 +54,7 @@ export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, ope
           border: 'initial',
           borderRadius: 'initial',
           width: '100%',
-          ...style,
+          ...style
         }}
         title="Pick your emoji..."
         ref={node}
@@ -68,10 +68,10 @@ EmojiMart.propTypes = {
   handleOpenPicker: func.isRequired,
   handleSelect: func.isRequired,
   open: bool,
-  style: string,
+  style: string
 }
 
 EmojiMart.defaultProps = {
   closeOnClickOut: true,
-  open: false,
+  open: false
 }

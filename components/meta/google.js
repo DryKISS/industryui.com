@@ -18,5 +18,5 @@ export const MetaGoogle = ({ verification }) => {
 }
 
 MetaGoogle.propTypes = {
-  verification: string.isRequired,
+  verification: string.isRequired
 }

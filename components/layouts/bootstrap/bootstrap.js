@@ -31,9 +31,9 @@ Bootstrap.propTypes = {
   fixed: bool,
   footer: array,
   icon: object,
-  Navigation: func,
+  Navigation: func
 }
 
 Bootstrap.defaultProps = {
-  fixed: false,
+  fixed: false
 }

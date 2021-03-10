@@ -57,5 +57,5 @@ export const MetaTouch = ({ verification }) => {
 }
 
 MetaTouch.propTypes = {
-  verification: string.isRequired,
+  verification: string.isRequired
 }

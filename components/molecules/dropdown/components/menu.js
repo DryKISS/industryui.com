@@ -128,6 +128,6 @@ DropdownMenu.propTypes = {
     THEME_POSITION.Top,
     THEME_POSITION.Right,
     THEME_POSITION.Bottom,
-    THEME_POSITION.Left,
-  ]),
+    THEME_POSITION.Left
+  ])
 }

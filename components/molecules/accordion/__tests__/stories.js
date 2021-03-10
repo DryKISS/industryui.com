@@ -15,11 +15,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Accordion',
+  title: 'Molecules/Accordion'
 }
 
 export const main = (args) => (

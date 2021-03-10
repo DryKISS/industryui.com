@@ -17,11 +17,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  ...options,
+  ...options
 }
 
 export const navbar = () => <BaseComponent widgets={Default} />

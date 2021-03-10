@@ -41,5 +41,5 @@ export const DISPLAY_PROP_TYPES = {
   dInline: bool,
   dInlineBlock: bool,
   dInlineFlex: bool,
-  dNone: bool,
+  dNone: bool
 }

@@ -26,7 +26,7 @@ export const Badge = ({
   shape,
   size,
   style,
-  to,
+  to
 }) => {
   return (
     <StyledBadge

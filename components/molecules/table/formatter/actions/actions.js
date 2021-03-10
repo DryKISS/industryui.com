@@ -58,12 +58,12 @@ TableActions.propTypes = {
       onClick: func,
       overlayCustom: string,
       to: string,
-      tooltip: string,
+      tooltip: string
     })
   ).isRequired,
-  row: object.isRequired,
+  row: object.isRequired
 }
 
 TableActions.defaultProps = {
-  align: 'flex-start',
+  align: 'flex-start'
 }

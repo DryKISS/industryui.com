@@ -50,5 +50,5 @@ const ControllerWrapper = styled.div`
 ImageLocationFormElement.propTypes = {
   ...ImageLocationProps,
   setValue: func.isRequired,
-  control: object.isRequired,
+  control: object.isRequired
 }

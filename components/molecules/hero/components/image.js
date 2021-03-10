@@ -39,5 +39,5 @@ const StyledImage = styled(Image)`
 HeroImage.propTypes = {
   alt: string,
   image: string,
-  width: number,
+  width: number
 }

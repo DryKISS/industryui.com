@@ -24,7 +24,7 @@ export const Details2PropTypes = {
   title: string.isRequired,
   toolbar: node,
   uniqueId: string,
-  unmountContentOnClose: bool,
+  unmountContentOnClose: bool
 }
 
 export const Details2DefaultProps = {
@@ -34,5 +34,5 @@ export const Details2DefaultProps = {
   fitParentHeight: false,
   iconComponent: false,
   open: false,
-  unmountContentOnClose: false,
+  unmountContentOnClose: false
 }

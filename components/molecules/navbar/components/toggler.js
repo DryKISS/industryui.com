@@ -45,9 +45,9 @@ const StyledText = styled.span`
 
 Toggler.propTypes = {
   handleMenuClick: func.isRequired,
-  visible: bool,
+  visible: bool
 }
 
 Toggler.defaultProps = {
-  visible: true,
+  visible: true
 }

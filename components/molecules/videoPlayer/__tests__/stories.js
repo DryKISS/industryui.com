@@ -15,11 +15,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/VideoPlayer',
+  title: 'Molecules/VideoPlayer'
 }
 
 export const main = (args) => (

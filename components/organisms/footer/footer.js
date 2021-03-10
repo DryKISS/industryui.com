@@ -136,7 +136,7 @@ Footer.propTypes = {
     shape({
       header: shape({
         align: string,
-        content: string,
+        content: string
       }),
       formatter: func,
       links: shape({
@@ -146,28 +146,28 @@ Footer.propTypes = {
             id: string,
             icon: string,
             name: string,
-            to: oneOfType([object, string]),
+            to: oneOfType([object, string])
           })
-        ),
+        )
       }),
       offset: shape({
         sm: number,
         md: number,
         lg: number,
-        xl: number,
+        xl: number
       }),
       size: shape({
         sm: number,
         md: number,
         lg: number,
-        xl: number,
+        xl: number
       }),
-      style: object,
+      style: object
     })
   ).isRequired,
-  fixed: bool,
+  fixed: bool
 }
 
 Footer.defaultProps = {
-  fixed: false,
+  fixed: false
 }

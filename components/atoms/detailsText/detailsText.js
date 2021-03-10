@@ -22,5 +22,5 @@ export const DetailsText = ({ content, text }) => {
 
 DetailsText.propTypes = {
   content: string.isRequired,
-  text: oneOfType([node, string]).isRequired,
+  text: oneOfType([node, string]).isRequired
 }

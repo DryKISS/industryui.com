@@ -68,10 +68,10 @@ const StyledLabel = styled.label`
 RadioField.propTypes = {
   data: array.isRequired,
   legend: string,
-  stacked: bool,
+  stacked: bool
 }
 
 RadioField.defaultProps = {
   data: [],
-  stacked: false,
+  stacked: false
 }

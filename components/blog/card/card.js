@@ -22,7 +22,7 @@ export const BlogCard = ({ article, config, link, type }) => {
 
   const articleLink = {
     as: article?.linkAs || `${config.path}/${categorySlug}/${articleSlug}`,
-    href: article?.linkHref || `${config.path}/[categoryId]/[articleId]`,
+    href: article?.linkHref || `${config.path}/[categoryId]/[articleId]`
   }
 
   return (
@@ -167,9 +167,9 @@ const StyledReadTime = styled.p`
 BlogCard.propTypes = {
   article: any.isRequired,
   config: object.isRequired,
-  type: oneOf(['hero', 'normal']),
+  type: oneOf(['hero', 'normal'])
 }
 
 BlogCard.defaultProps = {
-  type: 'normal',
+  type: 'normal'
 }

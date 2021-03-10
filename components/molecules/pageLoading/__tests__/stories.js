@@ -10,7 +10,7 @@ import { PageLoading, LdsSpinner } from '../../../'
 
 export default {
   component: PageLoading,
-  title: 'Molecules/PageLoading',
+  title: 'Molecules/PageLoading'
 }
 
 export const main = (args) => <PageLoading {...args} indicator={<LdsSpinner />} />

@@ -31,5 +31,5 @@ const StyledPreview = styled.div`
 DropzonePreview.propTypes = {
   file: any.isRequired,
   handleRemove: func.isRequired,
-  index: any.isRequired,
+  index: any.isRequired
 }

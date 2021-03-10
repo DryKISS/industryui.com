@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Icon/Stacked',
+  title: 'Atoms/Icon/Stacked'
 }
 
 export const main = () => <IconStacked icon="envelope" />

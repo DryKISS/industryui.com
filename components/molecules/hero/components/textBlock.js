@@ -59,5 +59,5 @@ const StyledCard = styled(Card)`
 `
 
 TextBlock.propTypes = {
-  offset: objectOf(oneOfType([number, string])),
+  offset: objectOf(oneOfType([number, string]))
 }

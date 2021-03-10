@@ -28,5 +28,5 @@ const StyledDecks = styled.div`
 `
 
 CardDecks.propTypes = {
-  children: node.isRequired,
+  children: node.isRequired
 }

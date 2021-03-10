@@ -18,7 +18,7 @@ import {
   MessagingActions,
   MessagingSubscriber,
   Preview,
-  useComponentCommunication,
+  useComponentCommunication
 } from '../../../../'
 
 export const FullPreview = () => {
@@ -70,7 +70,7 @@ export const FullPreview = () => {
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: onAction,
-    subscriber: MessagingSubscriber,
+    subscriber: MessagingSubscriber
   })
 
   const handleHide = () => {

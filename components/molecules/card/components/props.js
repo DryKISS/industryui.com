@@ -35,7 +35,7 @@ export const CardPropTypes = {
   showCta: bool,
   style: object,
   title: string,
-  titleNoWrap: bool,
+  titleNoWrap: bool
 }
 
 export const CardDefaultProps = {
@@ -46,5 +46,5 @@ export const CardDefaultProps = {
   role: 'article',
   rounded: true,
   shadow: false,
-  titleNoWrap: false,
+  titleNoWrap: false
 }

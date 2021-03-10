@@ -7,7 +7,10 @@ import React from 'react'
 
 // UI
 import { ControlTypes } from './'
-import { arrayOfValues, ICON_PULL, ICON_PREFIX, ICON_SIZE } from '../../components'
+import { arrayOfValues } from '../../components/utils/arrayOfValues/index'
+import { ICON_PULL } from '../../components/atoms/icon/constants/pull'
+import { ICON_PREFIX } from '../../components/atoms/icon/constants/prefix'
+import { ICON_SIZE } from '../../components/atoms/icon/constants/size'
 
 const List_Icons = {
   Copy: 'copy',

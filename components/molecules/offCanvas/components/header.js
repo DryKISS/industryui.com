@@ -21,7 +21,7 @@ export const OffCanvasHeader = ({
   onClose,
   submit,
   title,
-  variant,
+  variant
 }) => {
   return (
     <StyledHeader context={context} data-cy="offCanvasHeader" variant={variant}>
@@ -124,11 +124,11 @@ OffCanvasHeader.propTypes = {
   onClose: func.isRequired,
   submit: bool,
   title: string.isRequired,
-  variant: oneOf(['extended', 'normal']),
+  variant: oneOf(['extended', 'normal'])
 }
 
 OffCanvasHeader.defaultProps = {
   hasAvatar: false,
   submit: true,
-  variant: 'extended',
+  variant: 'extended'
 }

@@ -39,12 +39,12 @@ PageLoading.propTypes = {
   dataCy: string,
   indicator: any,
   opacity: number,
-  position: string,
+  position: string
 }
 
 PageLoading.defaultProps = {
   backgroundColor: '#fff',
   dataCy: 'loadingIndicator',
   opacity: 1,
-  position: 'fixed',
+  position: 'fixed'
 }

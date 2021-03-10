@@ -39,7 +39,7 @@ export const Card = ({
   style,
   title,
   titleNoWrap,
-  to,
+  to
 }) => {
   const linked = () => {
     return (

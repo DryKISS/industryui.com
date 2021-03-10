@@ -4,43 +4,43 @@
 export const Options = [
   {
     label: 'Ocean',
-    value: 'ocean',
+    value: 'ocean'
   },
   {
     label: 'Blue',
     isDisabled: true,
-    value: 'blue',
+    value: 'blue'
   },
   {
     label: 'Purple',
-    value: 'purple',
+    value: 'purple'
   },
   {
     label: 'Red',
-    value: 'red',
+    value: 'red'
   },
   {
     label: 'Orange',
-    value: 'orange',
+    value: 'orange'
   },
   {
     label: 'Yellow',
-    value: 'yellow',
+    value: 'yellow'
   },
   {
     label: 'Green',
-    value: 'green',
+    value: 'green'
   },
   {
     label: 'Forest',
-    value: 'forest',
+    value: 'forest'
   },
   {
     label: 'Slate',
-    value: 'slate',
+    value: 'slate'
   },
   {
     label: 'Silver',
-    value: 'silver',
-  },
+    value: 'silver'
+  }
 ]

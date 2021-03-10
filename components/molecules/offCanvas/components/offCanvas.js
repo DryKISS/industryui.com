@@ -27,7 +27,7 @@ export const OffCanvasComponent = ({
   toggleShow,
   transitionDuration,
   variant,
-  width,
+  width
 }) => {
   const [initialState, setInitialState] = useState(false)
 
@@ -96,7 +96,7 @@ OffCanvasComponent.propTypes = {
   toggleShow: func.isRequired,
   transitionDuration: number,
   variant: string,
-  width: string,
+  width: string
 }
 
 OffCanvasComponent.defaultProps = {
@@ -108,5 +108,5 @@ OffCanvasComponent.defaultProps = {
   placement: 'right',
   submit: true,
   transitionDuration: 300,
-  width: '30vw',
+  width: '30vw'
 }

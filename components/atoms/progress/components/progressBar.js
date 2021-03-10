@@ -32,7 +32,7 @@ ProgressBar.propTypes = {
   now: number,
   role: string,
   striped: bool,
-  transition: string,
+  transition: string
 }
 
 ProgressBar.defaultProps = {
@@ -40,5 +40,5 @@ ProgressBar.defaultProps = {
   ariaValueMax: 100,
   ariaValueMin: 0,
   now: 0,
-  striped: false,
+  striped: false
 }

@@ -78,10 +78,10 @@ AccordionItem.propTypes = {
   handleOpen: func,
   index: number,
   open: bool,
-  title: string.isRequired,
+  title: string.isRequired
 }
 
 AccordionItem.default = {
   context: 'dark',
-  open: false,
+  open: false
 }

@@ -28,11 +28,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Layouts/Bootstrap',
+  title: 'Layouts/Bootstrap'
 }
 
 export const Main = (args) => {
@@ -48,11 +48,11 @@ export const Main = (args) => {
       <Page
         meta={{
           description: 'Description',
-          title: 'Meta',
+          title: 'Meta'
         }}
         pageHeading={{
           heading: 'Heading',
-          strapline: 'Strapline',
+          strapline: 'Strapline'
         }}
       >
         <Text>

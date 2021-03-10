@@ -17,23 +17,23 @@ export default {
   args: {
     context: 'primary',
     disabled: false,
-    size: 'md',
+    size: 'md'
   },
   argTypes: {
     context: ContextControl(),
     size: {
-      control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] },
-    },
+      control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] }
+    }
   },
   component: Toggle,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Toggle',
+  title: 'Atoms/Toggle'
 }
 
 export const main = (args) => (

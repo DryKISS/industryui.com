@@ -55,9 +55,9 @@ NavLink.propTypes = {
   onClick: func,
   to: string.isRequired,
   type: string.isRequired,
-  visible: bool,
+  visible: bool
 }
 
 NavLink.defaultProps = {
-  visible: false,
+  visible: false
 }

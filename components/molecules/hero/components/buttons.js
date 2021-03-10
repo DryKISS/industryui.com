@@ -29,5 +29,5 @@ const StyledLink = styled(Link)`
 `
 
 HeroButtons.propTypes = {
-  buttons: array,
+  buttons: array
 }

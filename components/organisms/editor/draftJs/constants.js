@@ -8,5 +8,5 @@ export const BlockType = {
   HEADER_SIX: 'header-six',
   BLOCKQUOTE: 'blockquote',
   FIGURE: 'atomic',
-  LI: 'unordered-list-item',
+  LI: 'unordered-list-item'
 }

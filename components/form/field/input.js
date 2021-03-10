@@ -58,7 +58,7 @@ export const FormField = ({
 
 export const StyledInput = styled.input.attrs((props) => ({
   autoComplete: 'off',
-  autoFocus: false,
+  autoFocus: false
 }))`
   ${(props) => formStyle(props)}
 
@@ -106,7 +106,7 @@ FormField.propTypes = {
   style: object,
   textAlign: string,
   type: string,
-  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))]),
+  value: oneOfType([string, number, bool, arrayOf(oneOfType([string, number, bool]))])
 }
 
 FormField.defaultProps = {
@@ -115,5 +115,5 @@ FormField.defaultProps = {
   disabled: false,
   errors: {},
   readOnly: false,
-  type: 'text',
+  type: 'text'
 }

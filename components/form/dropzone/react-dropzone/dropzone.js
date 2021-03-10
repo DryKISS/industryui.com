@@ -36,7 +36,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     onDrop: (acceptedFiles) => {
       const accepted = acceptedFiles.map((file) =>
         Object.assign(file, {
-          preview: URL.createObjectURL(file),
+          preview: URL.createObjectURL(file)
         })
       )
 
@@ -45,7 +45,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
       if (onChange) {
         onChange(accepted)
       }
-    },
+    }
   })
 
   const removeFile = (file) => {
@@ -129,11 +129,11 @@ const StyledContainer = styled.div`
 Dropzone.propTypes = {
   accept: string,
   disabled: bool,
-  multiple: bool,
+  multiple: bool
 }
 
 Dropzone.defaultProps = {
   accept: 'image/*',
   disabled: false,
-  multiple: true,
+  multiple: true
 }

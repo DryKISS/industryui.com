@@ -26,11 +26,11 @@ export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
 
 ColorPicker.defaultProps = {
   type: 'github',
-  width: '214px',
+  width: '214px'
 }
 
 ColorPicker.propTypes = {
   type: string,
   onChangeComplete: func.isRequired,
-  width: string,
+  width: string
 }

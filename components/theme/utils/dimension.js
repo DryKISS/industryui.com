@@ -31,5 +31,5 @@ export const DIMENSION_PROP_TYPES = {
   h100: bool,
   w100: bool,
   h100vh: bool,
-  w100vw: bool,
+  w100vw: bool
 }

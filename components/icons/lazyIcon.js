@@ -31,5 +31,5 @@ export const LazyIcon = ({ iconName, ...props }) => {
 
 LazyIcon.propTypes = {
   iconName: oneOf(Object.keys(RawIcons)),
-  ...propTypes,
+  ...propTypes
 }

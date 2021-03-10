@@ -52,11 +52,11 @@ PageProgressBar.propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
   isAnimating: bool,
   instanceKey: string,
-  router: object,
+  router: object
 }
 
 PageProgressBar.defaultProps = {
   context: 'info',
   isAnimating: false,
-  instanceKey: null,
+  instanceKey: null
 }

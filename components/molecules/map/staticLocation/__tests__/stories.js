@@ -18,10 +18,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 export const main = () => {
@@ -34,8 +34,8 @@ export const main = () => {
       color: '0x003753',
       geodesic: true,
       weight: '5',
-      points: [coventGardenPostCode, westminsterAbbeyPostCode],
-    },
+      points: [coventGardenPostCode, westminsterAbbeyPostCode]
+    }
   ]
 
   return (

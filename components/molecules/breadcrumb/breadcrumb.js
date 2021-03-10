@@ -136,7 +136,7 @@ const StyledIconWrapper = styled.span`
 `
 
 const StyledIcon = styled(Icon).attrs((props) => ({
-  color: props.theme.dark,
+  color: props.theme.dark
 }))``
 
 const StyledSeperator = styled.span`
@@ -169,5 +169,5 @@ Breadcrumb.propTypes = {
   breadcrumbs: array,
   customSeparator: node,
   separator: oneOfType([oneOf(['chevron', 'slash']), string]),
-  size: oneOf(Object.values(THEME_SIZE)),
+  size: oneOf(Object.values(THEME_SIZE))
 }

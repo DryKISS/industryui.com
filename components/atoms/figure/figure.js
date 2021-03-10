@@ -55,11 +55,11 @@ Figure.propTypes = {
   children: node,
   className: any,
   slant: bool,
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }
 
 Figure.defaultProps = {
-  slant: false,
+  slant: false
 }
 
 Figure.Caption = FigureCaption

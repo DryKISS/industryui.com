@@ -21,7 +21,7 @@ export default {
     enableExport: false,
     titleText: 'Live random data',
     tooltipTitle: 'Random data',
-    useUTC: true,
+    useUTC: true
   },
   argTypes: {},
   title: 'Molecules/Charts/highCharts/Liveline',
@@ -29,10 +29,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
-  },
+        component: Readme
+      }
+    }
+  }
 }
 
 const BaseComponent = (props) => {
@@ -50,7 +50,7 @@ const BaseComponent = (props) => {
         series.current.addPoint(
           {
             x,
-            y,
+            y
           },
           true,
           true
@@ -68,12 +68,12 @@ const BaseComponent = (props) => {
       events: {
         load: function () {
           series.current = this.series[0]
-        },
-      },
+        }
+      }
     },
 
     time: {
-      useUTC: props.args.useUTC,
+      useUTC: props.args.useUTC
     },
 
     rangeSelector: {
@@ -81,33 +81,33 @@ const BaseComponent = (props) => {
         {
           count: 1,
           type: 'minute',
-          text: '1M',
+          text: '1M'
         },
         {
           count: 2,
           type: 'minute',
-          text: '2M',
+          text: '2M'
         },
         {
           count: 5,
           type: 'minute',
-          text: '5M',
+          text: '5M'
         },
         {
           type: 'all',
-          text: 'All',
-        },
+          text: 'All'
+        }
       ],
       inputEnabled: false,
-      selected: 1,
+      selected: 1
     },
 
     title: {
-      text: props.args.titleText,
+      text: props.args.titleText
     },
 
     exporting: {
-      enabled: props.args.enableExport,
+      enabled: props.args.enableExport
     },
     series: [
       {
@@ -118,10 +118,10 @@ const BaseComponent = (props) => {
         marker: {
           enabled: true,
           lineWidth: 1,
-          lineColor: null,
-        },
-      },
-    ],
+          lineColor: null
+        }
+      }
+    ]
   }
 
   return (

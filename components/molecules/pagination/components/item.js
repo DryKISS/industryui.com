@@ -68,10 +68,10 @@ PaginationItem.propTypes = {
   disabled: bool,
   label: any,
   onClick: func,
-  size: string,
+  size: string
 }
 
 PaginationItem.defaultProps = {
   context: 'secondary',
-  size: 'md',
+  size: 'md'
 }

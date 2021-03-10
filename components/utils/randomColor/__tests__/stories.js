@@ -16,11 +16,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/RandomColor',
+  title: 'Utils/RandomColor'
 }
 
 export const Main = () => {

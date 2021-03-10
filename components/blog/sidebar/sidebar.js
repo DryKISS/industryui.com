@@ -16,7 +16,7 @@ import {
   BlogPromo,
   BlogRecent,
   BlogSocial,
-  BlogTagCloud,
+  BlogTagCloud
 } from '../../'
 
 // Style
@@ -57,9 +57,9 @@ BlogSidebar.propTypes = {
   findFood: bool,
   media: array,
   promo: array,
-  tags: array,
+  tags: array
 }
 
 BlogSidebar.defaultProps = {
-  findFood: false,
+  findFood: false
 }

@@ -18,5 +18,5 @@ export const MetaFancy = ({ category }) => {
 }
 
 MetaFancy.propTypes = {
-  category: string.isRequired,
+  category: string.isRequired
 }

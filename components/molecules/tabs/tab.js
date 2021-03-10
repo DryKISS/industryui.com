@@ -23,7 +23,7 @@ export const Tab = ({
   indicatorSize,
   label,
   onClick,
-  scrollToActiveTab,
+  scrollToActiveTab
 }) => {
   const tabRef = useRef(null)
   const labelSlug = slugify(label)
@@ -33,7 +33,7 @@ export const Tab = ({
     if (scrollToActiveTab && tabRef.current) {
       tabRef.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'end',
+        block: 'end'
       })
     }
   }, [isActive])
@@ -144,10 +144,10 @@ Tab.propTypes = {
   index: number,
   label: string.isRequired,
   onClick: oneOfType([bool, func]).isRequired,
-  scrollToActiveTab: bool,
+  scrollToActiveTab: bool
 }
 
 Tab.defaultProps = {
   context: false,
-  scrollToActiveTab: true,
+  scrollToActiveTab: true
 }

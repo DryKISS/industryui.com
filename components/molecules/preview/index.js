@@ -65,12 +65,12 @@ export const Preview = memo(
     showPagesNumber,
     small,
     message,
-    zoomable,
+    zoomable
   }) => {
     const [pdfLoader, setPdfLoader] = useState({
       Document: null,
       Page: null,
-      pdfjs: null,
+      pdfjs: null
     })
 
     const loadModules = async () => {
@@ -93,7 +93,7 @@ export const Preview = memo(
         onPdfDocumentLoaded({
           file,
           name: file?.name,
-          pagesNumber: numPages,
+          pagesNumber: numPages
         })
     }
 

@@ -23,7 +23,7 @@ export const FacebookPagePlugin = ({
   smallHeader,
   tabs,
   to,
-  width,
+  width
 }) => {
   const url = `${p}?href=${to}&tabs=${tabs}&width=${width}&height=${height}
     &small_header=${smallHeader} &adapt_container_width=${adaptContainerWidth}
@@ -79,7 +79,7 @@ FacebookPagePlugin.propTypes = {
   smallHeader: bool,
   tabs: string,
   to: string.isRequired,
-  width: number,
+  width: number
 }
 
 FacebookPagePlugin.defaultProps = {
@@ -91,5 +91,5 @@ FacebookPagePlugin.defaultProps = {
   showFacepile: true,
   smallHeader: true,
   tabs: 'timeline,messages,events',
-  width: 340,
+  width: 340
 }

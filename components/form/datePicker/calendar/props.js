@@ -15,7 +15,7 @@ import {
   oneOf,
   oneOfType,
   shape,
-  string,
+  string
 } from 'prop-types'
 
 export const DatePickerCalendarPropTypes = {
@@ -128,5 +128,5 @@ export const DatePickerCalendarPropTypes = {
   inlineFocusSelectedMonth: bool,
   onDayMouseEnter: func,
   onMonthMouseLeave: func,
-  showPopperArrow: bool,
+  showPopperArrow: bool
 }

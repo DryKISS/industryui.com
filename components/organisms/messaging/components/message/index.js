@@ -15,7 +15,7 @@ import {
   MessageBase,
   MessageNames,
   MessagingActions,
-  MessagingCommunicationService,
+  MessagingCommunicationService
 } from '../../../../'
 
 import { ReplyIcon } from './replyIcon'
@@ -33,8 +33,8 @@ export const Message = memo(
         name: MessageNames.Messaging.MESSAGING_ACTION,
         payload: {
           action: MessagingActions.REPLY_MESSAGE,
-          data: message,
-        },
+          data: message
+        }
       })
     }
 
@@ -177,5 +177,5 @@ const AvatarWrapper = styled.div`
 `
 Message.propTypes = {
   message: object.isRequired,
-  prevType: string.isRequired,
+  prevType: string.isRequired
 }

@@ -25,7 +25,7 @@ import {
   keys3,
   keyToIndexBy,
   keyToIndexBy2,
-  keyToIndexBy3,
+  keyToIndexBy3
 } from '../__mocks__/nivoResponsive'
 
 export default {
@@ -42,47 +42,47 @@ export default {
     minValue: 0,
     maxValue: 160000,
     reverse: false,
-    showLegend: true,
+    showLegend: true
   },
   argTypes: {
     colorScheme: {
       name: 'Colour Scheme',
       control: {
         type: 'select',
-        options: Object.keys(colorSchemes),
-      },
+        options: Object.keys(colorSchemes)
+      }
     },
     colorBy: {
       name: 'Colour by',
       control: {
         type: 'select',
-        options: ['id', 'index'],
-      },
+        options: ['id', 'index']
+      }
     },
     groupMode: {
       name: 'Group Mode',
       control: {
         type: 'select',
-        options: ['stacked', 'grouped'],
-      },
+        options: ['stacked', 'grouped']
+      }
     },
     layout: {
       name: 'Layout',
       control: {
         type: 'select',
-        options: ['horizontal', 'vertical'],
-      },
-    },
+        options: ['horizontal', 'vertical']
+      }
+    }
   },
   component: BarChart,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Charts/Nivo/Bar',
+  title: 'Molecules/Charts/Nivo/Bar'
 }
 const BaseComponent = (props) => {
   const { args } = props
@@ -132,7 +132,7 @@ export const CustomAxis = (args) => {
       args={args}
       axisBottom={{
         tickRotation: 45,
-        legend: 'Custom Legend',
+        legend: 'Custom Legend'
       }}
       axisLeft={{ format: (value) => `${value}$` }}
       data={Data}

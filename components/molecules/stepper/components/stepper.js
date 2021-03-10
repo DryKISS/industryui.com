@@ -36,5 +36,5 @@ const StyledStepper = styled.div`
 Stepper.propTypes = {
   className: string,
   items: oneOfType([array, func]).isRequired,
-  summary: oneOfType([array, func]),
+  summary: oneOfType([array, func])
 }

@@ -31,14 +31,14 @@ export const ProgressBarDiv = styled.div`
   background-image: ${({
     striped,
     theme: {
-      PROGRESSBAR: { bgImage },
-    },
+      PROGRESSBAR: { bgImage }
+    }
   }) => (striped ? bgImage : 'none')};
   background-size: ${({
     striped,
     theme: {
-      PROGRESSBAR: { bgSize },
-    },
+      PROGRESSBAR: { bgSize }
+    }
   }) => (striped ? bgSize : 'auto')};
   color: ${({ color, context, theme }) =>
     color || (context === 'white' ? theme.COLOUR.primary : theme.COLOUR.white)};
@@ -49,8 +49,8 @@ export const ProgressBarDiv = styled.div`
   text-align: center;
   transition: ${({
     theme: {
-      PROGRESSBAR: { transition },
-    },
+      PROGRESSBAR: { transition }
+    }
   }) => transition};
   white-space: nowrap;
   width: ${({ now }) => now + '%'};
@@ -62,5 +62,5 @@ ProgressBarDiv.propTypes = {
   bgSize: string,
   now: number,
   striped: bool,
-  transition: string,
+  transition: string
 }

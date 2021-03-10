@@ -2,7 +2,7 @@
  * FontAwesome Library
  */
 
-// Font Awesome
+// Library
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Free Solid / FAS
@@ -72,5 +72,3 @@ library.add(
   faUser,
   faUserCircle
 )
-
-export { library }

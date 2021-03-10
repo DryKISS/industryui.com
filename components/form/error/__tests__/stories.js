@@ -14,17 +14,17 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Form/Error',
+  title: 'Form/Error'
 }
 
 export const main = (args) => {
   const defaultProps = {
     message: 'This is required',
-    ...args,
+    ...args
   }
 
   return <FormError {...defaultProps} />

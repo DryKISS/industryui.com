@@ -92,10 +92,10 @@ NavDropdown.propTypes = {
   name: string.isRequired,
   position: string,
   prefix: string,
-  type: object.isRequired,
+  type: object.isRequired
 }
 
 NavDropdown.defaultProps = {
   position: 'left',
-  prefix: 'fas',
+  prefix: 'fas'
 }

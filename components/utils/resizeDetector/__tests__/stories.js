@@ -16,11 +16,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/ResizeDetetor',
+  title: 'Utils/ResizeDetetor'
 }
 
 export const Main = () => {

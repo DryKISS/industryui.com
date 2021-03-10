@@ -51,10 +51,10 @@ Container.propTypes = {
   children: node.isRequired,
   className: string,
   fluid: bool,
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }
 
 Container.defaultProps = {
   fluid: false,
-  style: {},
+  style: {}
 }

@@ -31,7 +31,7 @@ export const Link = ({
   scroll,
   shallow,
   target,
-  to,
+  to
 }) => {
   const obj = typeof to === 'object' ? to : { href: to }
 

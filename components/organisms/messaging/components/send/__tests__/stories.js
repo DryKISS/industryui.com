@@ -17,28 +17,28 @@ export default {
       { name: 'Internal', id: 'internal' },
       { name: 'Customer Only', id: 'customer' },
       { name: 'Supplier Only', id: 'supplier' },
-      { name: 'Customer & Supplier', id: 'customer-supplier' },
+      { name: 'Customer & Supplier', id: 'customer-supplier' }
     ],
     maxLength: 320,
-    onSubmit: () => {},
+    onSubmit: () => {}
   },
   argTypes: {
     maxLength: {
       control: {
-        type: 'number',
-      },
-    },
+        type: 'number'
+      }
+    }
   },
   component: MessagingSend,
   mentions,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Organisms/Messaging/Send',
+  title: 'Organisms/Messaging/Send'
 }
 
 export const main = (args) => {

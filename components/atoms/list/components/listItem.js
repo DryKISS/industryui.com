@@ -61,5 +61,5 @@ ListItem.propTypes = {
   flush: bool,
   group: bool,
   icon: string,
-  prefix: string,
+  prefix: string
 }

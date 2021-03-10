@@ -13,7 +13,7 @@ import {
   node,
   number,
   shape,
-  string,
+  string
 } from 'prop-types'
 
 // UI
@@ -41,10 +41,10 @@ export const CarouselPropTypes = {
       context: string,
       img: string,
       node: node,
-      text: string,
+      text: string
     })
   ),
-  width: string,
+  width: string
 }
 
 export const CarouselDefaultProps = {
@@ -58,5 +58,5 @@ export const CarouselDefaultProps = {
   paginationPosition: 'outside',
   rightNavIcon: 'chevron-right',
   showNavs: true,
-  showPagination: false,
+  showPagination: false
 }

@@ -5,56 +5,56 @@ export const MONTHS = [
   {
     disabled: true,
     text: 'Select month',
-    value: '',
+    value: ''
   },
   {
     text: 'January',
-    value: 1,
+    value: 1
   },
   {
     text: 'February',
-    value: 2,
+    value: 2
   },
   {
     text: 'March',
-    value: 3,
+    value: 3
   },
   {
     text: 'April',
-    value: 4,
+    value: 4
   },
   {
     text: 'May',
-    value: 5,
+    value: 5
   },
   {
     text: 'June',
-    value: 6,
+    value: 6
   },
   {
     text: 'July',
-    value: 7,
+    value: 7
   },
   {
     text: 'August',
-    value: 8,
+    value: 8
   },
   {
     text: 'September',
-    value: 9,
+    value: 9
   },
   {
     text: 'October',
-    value: 10,
+    value: 10
   },
   {
     text: 'November',
-    value: 11,
+    value: 11
   },
   {
     text: 'December',
-    value: 12,
-  },
+    value: 12
+  }
 ]
 
 // Days

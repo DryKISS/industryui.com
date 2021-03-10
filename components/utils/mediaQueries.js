@@ -15,7 +15,7 @@ const sizes = {
   giant: 1200,
   desktop: 992,
   tablet: 768,
-  phone: 576,
+  phone: 576
 }
 
 export const MEDIA_QUERY = Object.keys(sizes).reduce((accumulator, label) => {

@@ -33,7 +33,7 @@ import {
   InputGroup,
   InputGroupAddon,
   Link,
-  validatorPostCode,
+  validatorPostCode
 } from '../../'
 
 import { BlogSection } from './components'
@@ -46,13 +46,13 @@ const schema = object().shape({
     .required()
     .test('is-valid', "We couldn't recognise that postcode - check and try again.", (value) =>
       validatorPostCode(value)
-    ),
+    )
 })
 
 export const BlogFindFood = ({ colour }) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema),
-    mode: 'onSubmit',
+    mode: 'onSubmit'
   })
   const [msg, setMsg] = useState(false)
 
@@ -144,9 +144,9 @@ const StyledA = styled.span`
 `
 
 BlogFindFood.propTypes = {
-  colour: oneOf(['beetroot', 'aubergine']),
+  colour: oneOf(['beetroot', 'aubergine'])
 }
 
 BlogFindFood.defaultProps = {
-  colour: 'beetroot',
+  colour: 'beetroot'
 }

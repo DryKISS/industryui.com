@@ -18,5 +18,5 @@ export const FigureImage = styled(Image)`
 
 FigureImage.propTypes = {
   className: any,
-  style: objectOf(oneOfType([number, string])),
+  style: objectOf(oneOfType([number, string]))
 }

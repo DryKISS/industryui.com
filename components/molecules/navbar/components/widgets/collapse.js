@@ -28,5 +28,5 @@ export const NavCollapse = styled.div`
 `
 
 NavCollapse.propTypes = {
-  visible: bool.isRequired,
+  visible: bool.isRequired
 }

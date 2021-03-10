@@ -19,30 +19,30 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Molecules/Charts/highCharts/line',
+  title: 'Molecules/Charts/highCharts/line'
 }
 
 const BaseComponent = (props) => {
   const options = {
     chart: {
-      type: 'line',
+      type: 'line'
     },
     title: {
-      text: 'simple chart',
+      text: 'simple chart'
     },
     series: [
       {
         data: [1, 2, 1, 4, 3, 6],
         marker: {
           lineWidth: 2,
-          lineColor: null, // inherit from series
-        },
-      },
-    ],
+          lineColor: null // inherit from series
+        }
+      }
+    ]
   }
 
   return (

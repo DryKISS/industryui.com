@@ -17,21 +17,21 @@ import Readme from '../README.md'
 export default {
   args: {
     align: THEME_ALIGN.Start,
-    size: THEME_SIZE.MD,
+    size: THEME_SIZE.MD
   },
   argTypes: {
     align: AlignControl(),
-    size: SizeControl(),
+    size: SizeControl()
   },
   component: ButtonToolbar,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Button/Toolbar',
+  title: 'Atoms/Button/Toolbar'
 }
 
 const Children = ({ size }) => {

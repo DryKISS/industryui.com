@@ -31,7 +31,7 @@ export const GetAddress = ({
   setValue,
   size,
   throttle,
-  validator,
+  validator
 }) => {
   const { GetAddressConfig } = useContext(ConfigContext)
   const [Errors, setErrors] = useState(errors ?? { [name]: null })
@@ -70,7 +70,7 @@ export const GetAddress = ({
       postCode: InputValueRef.current,
       callback: onApiCall,
       callThrottle: throttle ?? 500,
-      validator: validator ?? validatorPostCode,
+      validator: validator ?? validatorPostCode
     })
   }
 
@@ -154,9 +154,9 @@ GetAddress.propTypes = {
   setValue: func.isRequired,
   size: oneOf(['sm', 'md', 'lg']),
   throttle: number,
-  validator: func,
+  validator: func
 }
 
 GetAddress.defaultProps = {
-  size: 'lg',
+  size: 'lg'
 }

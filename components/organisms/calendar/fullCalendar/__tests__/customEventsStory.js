@@ -16,7 +16,7 @@ import {
   Form,
   FormLabel,
   FormField,
-  CheckboxField,
+  CheckboxField
 } from '../../../../'
 
 import { BaseComponent } from './stories'
@@ -34,7 +34,7 @@ export const CustomEventsStory = () => {
     disabled: false,
     errors: errors,
     register: register,
-    showError: true,
+    showError: true
   }
 
   // Pending add the tooltip
@@ -53,8 +53,8 @@ export const CustomEventsStory = () => {
       borderColor: data.borderColor,
       textColor: data.textColor,
       extendedProps: {
-        assetType: data.assetType,
-      },
+        assetType: data.assetType
+      }
     }
 
     setEvents([...events, fullEvent])

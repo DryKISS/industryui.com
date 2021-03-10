@@ -14,7 +14,7 @@ export const extractHashtagsWithIndices = (text) => {
     const endPosition = startPosition + hashText.length + 1
     tags.push({
       hashtag: hashText,
-      indices: [startPosition, endPosition],
+      indices: [startPosition, endPosition]
     })
     return ''
   }

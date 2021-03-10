@@ -12,7 +12,7 @@ import Readme from '../README.md'
 const meta = {
   canonical: 'dashboard',
   description: 'Dashboard',
-  title: 'Dashboard',
+  title: 'Dashboard'
 }
 
 export default {
@@ -20,11 +20,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Layouts/Dashboard',
+  title: 'Layouts/Dashboard'
 }
 
 const Test = () => {
@@ -36,7 +36,7 @@ export const main = (args) => (
     {...args}
     meta={meta}
     pageHeading={{
-      heading: 'Default',
+      heading: 'Default'
     }}
     resultAlert={{ message: 'Success' }}
     View={<Test />}

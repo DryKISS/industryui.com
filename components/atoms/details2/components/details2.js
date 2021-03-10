@@ -11,7 +11,7 @@ import {
   Details2Header,
   Details2Content,
   MessageNames,
-  useComponentCommunication,
+  useComponentCommunication
 } from '../../../'
 
 import { Details2PropTypes, Details2DefaultProps } from '../props'
@@ -36,7 +36,7 @@ export const Details2 = ({
   titleContext,
   toolbar,
   uniqueId,
-  unmountContentOnClose,
+  unmountContentOnClose
 }) => {
   const animationTime = disableAnimation ? 0 : animationDuration
   const [isOpen, setisOpen] = useState(open)
@@ -78,7 +78,7 @@ export const Details2 = ({
     id: uniqueId,
     messageName: MessageNames.DetailsComponent.SET_OPEN,
     onRecieve: (e) => handleEventRecieve(e),
-    subscriber: DetailsSubscriber,
+    subscriber: DetailsSubscriber
   })
 
   const handleOpenClose = () => {

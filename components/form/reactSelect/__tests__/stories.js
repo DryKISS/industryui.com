@@ -21,7 +21,7 @@ import {
   FormLabel,
   ReactSelectField,
   Text,
-  usePrevious,
+  usePrevious
 } from '../../../'
 
 import Readme from '../README.md'
@@ -52,27 +52,27 @@ export default {
     formatGroupLabel: null,
     formatOptionLabel: null,
     isMulti: false,
-    isLoading: false,
+    isLoading: false
   },
   component: ReactSelectField,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Form/ReactSelect',
+  title: 'Form/ReactSelect'
 }
 
 const schema = object().shape({
-  reactSelect: string().nullable().required(),
+  reactSelect: string().nullable().required()
 })
 
 const BaseComponent = memo(
   (args) => {
     const { control, errors, handleSubmit } = useForm({
-      resolver: yupResolver(schema),
+      resolver: yupResolver(schema)
     })
 
     const onSubmit = (data) => {
@@ -85,7 +85,7 @@ const BaseComponent = memo(
       isClearable: true,
       name: 'reactSelect',
       options: Options,
-      ...args,
+      ...args
     }
 
     return (
@@ -175,7 +175,7 @@ export const Chained = () => {
     control,
     defaultOptions: true,
     errors: errors,
-    isClearable: true,
+    isClearable: true
   }
 
   return (
@@ -285,7 +285,7 @@ export const ChainedNoDefault = () => {
     control,
     defaultOptions: true,
     errors: errors,
-    isClearable: true,
+    isClearable: true
   }
 
   return (

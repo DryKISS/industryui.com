@@ -53,7 +53,7 @@ export const TableRows = memo(({ align, columns, hover, rowClick, rows, striped 
             if (typeof formatterData === 'function') {
               formatter = column.formatter({
                 row,
-                data: (row) => formatterData,
+                data: (row) => formatterData
               })
             } else {
               formatter = column.formatter({ row, data: formatterData })
@@ -85,12 +85,12 @@ TableRows.propTypes = {
   hover: bool,
   rowClick: func,
   rows: array.isRequired,
-  striped: bool,
+  striped: bool
 }
 
 TableRows.defaultProps = {
   align: false,
   columns: [],
   hover: true,
-  striped: true,
+  striped: true
 }

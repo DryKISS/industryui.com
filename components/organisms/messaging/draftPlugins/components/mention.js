@@ -16,8 +16,8 @@ const handleMentionClick = (mentionProps) => {
     name: MessageNames.Messaging.MESSAGING_ACTION,
     payload: {
       action: MessagingActions.MENTION_CLICKED,
-      data: mentionProps.mention,
-    },
+      data: mentionProps.mention
+    }
   })
 }
 

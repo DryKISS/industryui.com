@@ -19,5 +19,5 @@ export const TableHead = memo(styled.th`
 
 TableHead.propTypes = {
   align: oneOfType([string, bool]),
-  sortable: bool,
+  sortable: bool
 }

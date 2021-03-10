@@ -17,17 +17,17 @@ const handlePlanSelect = (e) => {
 export default {
   args: {
     pricingInfo: pricingInfo,
-    onPlanSelect: handlePlanSelect,
+    onPlanSelect: handlePlanSelect
   },
   component: Pricing,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Organisms/Pricing',
+  title: 'Organisms/Pricing'
 }
 
 export const main = (args) => {

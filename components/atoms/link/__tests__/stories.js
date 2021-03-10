@@ -20,26 +20,26 @@ export default {
     context: 'black',
     passHref: true,
     target: '_blank',
-    to: '/',
+    to: '/'
   },
   argTypes: {
-    context: ContextControl(),
+    context: ContextControl()
   },
   component: Link,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Link',
+  title: 'Atoms/Link'
 }
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
     onClick: action('clicked'),
-    ...props,
+    ...props
   }
 
   return <Link {...defaultProps}>{defaultProps.children}</Link>

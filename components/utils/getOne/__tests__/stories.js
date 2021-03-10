@@ -13,11 +13,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Utils/GetOne',
+  title: 'Utils/GetOne'
 }
 
 export const Main = () => {
@@ -26,7 +26,7 @@ export const Main = () => {
     { id: 1, val: 1 },
     { id: 2, val: 2 },
     { id: 3, val: 3 },
-    { id: 4, val: 4 },
+    { id: 4, val: 4 }
   ]
   return (
     <>

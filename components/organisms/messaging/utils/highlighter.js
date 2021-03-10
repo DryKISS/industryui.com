@@ -26,7 +26,7 @@ export const generateDecorator = (highlightTerm) => {
           findWithRegex(regex, contentBlock, callback)
         }
       },
-      component: SearchHighlight,
-    },
+      component: SearchHighlight
+    }
   ])
 }

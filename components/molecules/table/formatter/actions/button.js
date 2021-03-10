@@ -68,5 +68,5 @@ TableActionsButton.propTypes = {
   onClick: func,
   overlayCustom: string,
   row: object.isRequired,
-  to: string,
+  to: string
 }

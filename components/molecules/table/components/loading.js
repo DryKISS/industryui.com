@@ -19,5 +19,5 @@ export const TableLoading = memo(({ colsLength, show }) => {
 
 TableLoading.propTypes = {
   colsLength: number,
-  show: bool,
+  show: bool
 }

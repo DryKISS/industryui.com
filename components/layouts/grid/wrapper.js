@@ -17,7 +17,7 @@ export const LayoutGridWrapper = styled.div`
 `
 
 LayoutGridWrapper.propTypes = {
-  children: node,
+  children: node
 }
 
 LayoutGridWrapper.defaultProps = {}

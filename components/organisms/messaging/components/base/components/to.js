@@ -39,5 +39,5 @@ const StyledImage = styled(Image)`
 `
 
 MessageTo.propTypes = {
-  to: string.isRequired,
+  to: string.isRequired
 }

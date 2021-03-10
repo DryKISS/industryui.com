@@ -13,7 +13,7 @@ import {
   InfoWindow as GoogleInfoWindow,
   Marker as GoogleMarker,
   withGoogleMap,
-  withScriptjs,
+  withScriptjs
 } from 'react-google-maps'
 
 /* eslint-disable */

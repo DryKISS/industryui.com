@@ -21,5 +21,5 @@ export const SelectCountryField = ({ errors, name, register, ...props }) => {
 SelectCountryField.propTypes = {
   errors: object.isRequired,
   name: string.isRequired,
-  register: func.isRequired,
+  register: func.isRequired
 }

@@ -20,10 +20,10 @@ export const CurrencyInput = ({
   show,
   style,
   size,
-  vat,
+  vat
 }) => {
   const defaultOptions = {
-    error: errors[name],
+    error: errors[name]
   }
 
   return (
@@ -68,7 +68,7 @@ CurrencyInput.propTypes = {
   show: bool,
   style: node,
   size: string,
-  vat: oneOfType([string, bool]),
+  vat: oneOfType([string, bool])
 }
 
 CurrencyInput.defaultProps = {
@@ -76,5 +76,5 @@ CurrencyInput.defaultProps = {
   min: 0,
   show: true,
   size: 'md',
-  vat: 'Incl VAT',
+  vat: 'Incl VAT'
 }

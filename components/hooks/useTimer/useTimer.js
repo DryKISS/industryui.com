@@ -49,7 +49,7 @@ export function useTimer({ autoStart = true, interval = 1000, startTime, endTime
       seconds: temp.seconds().toString().padStart(2, '0'),
       minutes: temp.minutes().toString().padStart(2, '0'),
       hours: parseInt(temp.asHours(), 10),
-      exactHours: temp.asHours().toFixed(2),
+      exactHours: temp.asHours().toFixed(2)
     }
   }
 

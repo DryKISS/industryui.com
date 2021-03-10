@@ -25,11 +25,11 @@ export const DatePickerInput = ({
   showMonth,
   showYear,
   yearEnd,
-  yearStart,
+  yearStart
 }) => {
   const defaultOptions = {
     errors: errors,
-    register: register,
+    register: register
   }
 
   return (
@@ -60,7 +60,7 @@ export const DatePickerInput = ({
                 //   text: placeHolder ?? 'Select month',
                 //   value: ''
                 // },
-                ...MONTHS,
+                ...MONTHS
               ]}
             />
           </Column>
@@ -93,7 +93,7 @@ DatePickerInput.propTypes = {
   showMonth: bool,
   showYear: bool,
   yearEnd: number,
-  yearStart: number,
+  yearStart: number
 }
 
 DatePickerInput.defaultProps = {
@@ -105,5 +105,5 @@ DatePickerInput.defaultProps = {
   showYear: true,
   year: true,
   yearEnd: 2020,
-  yearStart: 1920,
+  yearStart: 1920
 }

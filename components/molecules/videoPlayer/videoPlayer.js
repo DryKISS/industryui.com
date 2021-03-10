@@ -111,5 +111,5 @@ VideoPlayer.prototypes = {
   poster: string,
   src: string.isRequired,
   videoProps: any,
-  videoType: string,
+  videoType: string
 }

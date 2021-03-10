@@ -25,14 +25,14 @@ export const CustomCalendarStyles = () => {
     disabled: false,
     errors: errors,
     register: register,
-    showError: true,
+    showError: true
   }
 
   const onSubmit = (data) => {
     const newCalendarStyles = {
       height: Number(data.height),
       eventColor: data.eventColor,
-      weekends: data.weekends,
+      weekends: data.weekends
     }
 
     setCalendarStyles(newCalendarStyles)
@@ -81,18 +81,18 @@ export const Events = [
     date: moment().date(2).format('YYYY-MM-DD'),
     description: 'All day event',
     title: 'Event 1',
-    tooltip: 'All day event tooltip',
+    tooltip: 'All day event tooltip'
   },
   {
     description: 'Event starting at a specific time',
     date: moment().date(7).hour(14).minute(30).format(),
-    title: 'Event 2',
+    title: 'Event 2'
   },
   {
     daysOfWeek: [2],
     description: 'Recurring event, once per week, all day',
     endRecur: moment().date(30).format('YYYY-MM-DD'),
     startRecur: moment().date(5).format('YYYY-MM-DD'),
-    title: 'PPM: Boiler Check',
-  },
+    title: 'PPM: Boiler Check'
+  }
 ]

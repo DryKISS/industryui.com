@@ -12,17 +12,17 @@ import Readme from '../README.md'
 export default {
   args: {
     alt: 'DryKISS',
-    src: 'http://via.placeholder.com/350x150',
+    src: 'http://via.placeholder.com/350x150'
   },
   component: Image,
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Atoms/Image',
+  title: 'Atoms/Image'
 }
 
 export const main = (args) => <Image {...args} />

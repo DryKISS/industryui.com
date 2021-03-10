@@ -127,5 +127,5 @@ DropdownItem.propTypes = {
   children: node,
   closeDropdown: func,
   item: object,
-  onClick: func,
+  onClick: func
 }

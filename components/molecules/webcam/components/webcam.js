@@ -18,7 +18,7 @@ const Webcam = withTheme(
       super()
       this.state = {
         hasUserMedia: false,
-        src: '',
+        src: ''
       }
     }
 
@@ -32,7 +32,7 @@ const Webcam = withTheme(
       style: object,
       className: string,
       screenshotQuality: number,
-      screenshotWidth: number,
+      screenshotWidth: number
       // audioConstraints: audioConstraintType,
       // videoConstraints: videoConstraintType
     }
@@ -46,7 +46,7 @@ const Webcam = withTheme(
       screenshotFormat: 'image/webp',
       screenshotQuality: 0.8,
       // style: { borderRadius: '.5rem .5rem 0 0' },
-      width: 824,
+      width: 824
     }
 
     static mountedInstances = []
@@ -156,7 +156,7 @@ const Webcam = withTheme(
       const sourceSelected = (audioConstraints, videoConstraints) => {
         // Request video
         const constraints = {
-          video: videoConstraints || true,
+          video: videoConstraints || true
         }
 
         // Request Audo
@@ -239,7 +239,7 @@ const Webcam = withTheme(
       } catch (error) {
         this.setState({
           hasUserMedia: true,
-          src: window.URL.createObjectURL(stream),
+          src: window.URL.createObjectURL(stream)
         })
       }
 

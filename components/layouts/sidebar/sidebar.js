@@ -39,5 +39,5 @@ SidebarLayout.propTypes = {
   children: node.isRequired,
   copyright: array,
   footer: array,
-  Navigation: func,
+  Navigation: func
 }

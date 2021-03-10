@@ -102,5 +102,5 @@ const StyledSwitch = styled.span`
 Switch.propTypes = {
   handleToggle: func,
   size: oneOf(['sm', 'md', 'lg']),
-  toggled: bool,
+  toggled: bool
 }

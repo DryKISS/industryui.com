@@ -5,50 +5,50 @@ export const DOG_COAT = [
   {
     disabled: true,
     text: 'Select coat type',
-    value: '',
+    value: ''
   },
   {
     text: 'Short',
-    value: 'short',
+    value: 'short'
   },
   {
     text: 'Long',
-    value: 'long',
+    value: 'long'
   },
   {
     text: 'Wire',
-    value: 'wire',
+    value: 'wire'
   },
   {
     text: 'Smooth',
-    value: 'smooth',
+    value: 'smooth'
   },
   {
     text: 'Wool',
-    value: 'wool',
+    value: 'wool'
   },
   {
     text: 'Double',
-    value: 'double',
+    value: 'double'
   },
   {
     text: 'Silky',
-    value: 'silky',
+    value: 'silky'
   },
   {
     text: 'Curly',
-    value: 'curly',
+    value: 'curly'
   },
   {
     text: 'Combination',
-    value: 'combination',
+    value: 'combination'
   },
   {
     text: 'Hairless',
-    value: 'hairless',
+    value: 'hairless'
   },
   {
     text: 'Other (Not Listed)',
-    value: 'other',
-  },
+    value: 'other'
+  }
 ]

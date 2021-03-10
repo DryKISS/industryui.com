@@ -42,7 +42,7 @@ export const Article = ({ article, className, config, facebook, style }) => {
 
       <span
         dangerouslySetInnerHTML={{
-          __html: article.data,
+          __html: article.data
         }}
       />
     </StyledArticle>
@@ -73,5 +73,5 @@ Article.propTypes = {
   className: string,
   config: object,
   facebook: object,
-  style: object,
+  style: object
 }

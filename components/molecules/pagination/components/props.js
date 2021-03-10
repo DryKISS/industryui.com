@@ -20,7 +20,7 @@ export const PaginationPropTypes = {
   pageCount: number,
   prevLabel: oneOfType([string, node]),
   showNextAndPrev: bool,
-  size: oneOf(Object.values(THEME_SIZE)),
+  size: oneOf(Object.values(THEME_SIZE))
 }
 
 export const PaginationDefaultProps = {
@@ -30,5 +30,5 @@ export const PaginationDefaultProps = {
   nextLabel: 'Next',
   onPageChange: () => {},
   pageCount: 1,
-  prevLabel: 'Previous',
+  prevLabel: 'Previous'
 }

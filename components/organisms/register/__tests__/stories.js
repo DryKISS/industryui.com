@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme,
-      },
-    },
+        component: Readme
+      }
+    }
   },
-  title: 'Organisms/Register',
+  title: 'Organisms/Register'
 }
 
 export const Main = (args) => {
@@ -50,7 +50,7 @@ export const Main = (args) => {
     submit: submit,
     terms: false,
     yearBirthday: '2020',
-    ...args,
+    ...args
   }
 
   return (

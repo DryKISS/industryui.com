@@ -5,29 +5,29 @@
 export const barMock = [
   {
     name: 'Dashboard',
-    to: '/dashboard',
+    to: '/dashboard'
   },
   {
-    divider: true,
+    divider: true
   },
   {
     name: 'Profile',
-    to: '/dashboard/profile',
+    to: '/dashboard/profile'
   },
   {
     name: 'Calendar',
-    to: '/dashboard/calendar',
+    to: '/dashboard/calendar'
   },
   {
-    divider: true,
+    divider: true
   },
   {
     name: 'Messages',
-    to: '/dashboard/messages',
+    to: '/dashboard/messages'
   },
   {
     icon: ['fas', 'bell'],
     name: 'Notifications',
-    to: '/dashboard/notifications',
-  },
+    to: '/dashboard/notifications'
+  }
 ]

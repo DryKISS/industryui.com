@@ -64,5 +64,5 @@ HighChart.prototypes = {
   highcharts: any,
   immutable: bool,
   options: any.isRequired,
-  updateArgs: arrayOf(bool),
+  updateArgs: arrayOf(bool)
 }

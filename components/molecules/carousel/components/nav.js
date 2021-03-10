@@ -65,5 +65,5 @@ Carouselnav.propTypes = {
   context: string.isRequired,
   direction: oneOf(['left', 'right']).isRequired,
   icon: string.isRequired,
-  position: string.isRequired,
+  position: string.isRequired
 }

@@ -16,9 +16,9 @@ const EventContent = ({
   defaultEventColor,
   event: {
     extendedProps: { context, description, tooltip },
-    title,
+    title
   },
-  showTooltip,
+  showTooltip
 }) => {
   const content = (
     <StyledEvent context={context || defaultEventColor}>

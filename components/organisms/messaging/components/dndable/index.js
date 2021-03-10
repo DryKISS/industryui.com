@@ -21,7 +21,7 @@ export const DragAndDropable = ({ children, onFileDrop, onHover, onLeave }) => {
   const { getRootProps, isDragAccept, isDragActive, isDragReject } = useDropzone({
     onDrop,
     onDragEnter,
-    onDragLeave,
+    onDragLeave
   })
 
   return (

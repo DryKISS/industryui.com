@@ -49,5 +49,5 @@ TableRow.propTypes = {
   context: string,
   hover: bool,
   pointer: bool,
-  striped: bool,
+  striped: bool
 }

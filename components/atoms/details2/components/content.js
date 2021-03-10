@@ -16,7 +16,7 @@ export const Details2Content = ({
   fitParentHeight,
   isOpen,
   maxHeight,
-  mounted,
+  mounted
 }) => {
   return (
     <Wrapper
@@ -62,10 +62,10 @@ Details2Content.propTypes = {
   fitParentHeight: bool,
   isOpen: bool,
   maxHeight: number,
-  mounted: bool,
+  mounted: bool
 }
 
 Details2Content.defaultProps = {
   animationTime: 100,
-  isOpen: false,
+  isOpen: false
 }
