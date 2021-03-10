@@ -8,27 +8,6 @@ import React from 'react'
 // UI
 import { Image, TableActions, TableLink, Text } from '../../../'
 
-export const columns = [
-  {
-    text: 'ID'
-  },
-  {
-    text: 'Company'
-  },
-  {
-    text: 'URL'
-  },
-  {
-    hidden: true
-  },
-  {
-    hidden: true
-  },
-  {
-    text: 'Actions'
-  }
-]
-
 export const rows = {
   data: [
     {
@@ -112,6 +91,30 @@ export const columnsActions = [
         tooltip: 'Delete'
       }
     ],
+    text: 'Actions'
+  }
+]
+
+export const columns = [
+  {
+    text: 'Context'
+  },
+  {
+    text: 'ID'
+  },
+  {
+    text: 'Company'
+  },
+  {
+    text: 'URL'
+  },
+  {
+    text: 'Item Count'
+  },
+  {
+    text: 'Logo'
+  },
+  {
     text: 'Actions'
   }
 ]

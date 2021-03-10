@@ -10,7 +10,7 @@ import { Table } from '../components/wrapper'
 import Readme from '../README.md'
 
 // Data
-import { columnsActions, noCols, rows, rowsContext } from '../__mocks__/default'
+import { columns, columnsActions, noCols, rows, rowsContext } from '../__mocks__/default'
 const dataContext = rowsContext.data
 
 export default {
@@ -107,7 +107,9 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = (args) => <BaseComponent {...args} columns={columnsActions} />
-export const context = (args) => <BaseComponent {...args} pagination={false} rows={dataContext} />
+export const context = (args) => (
+  <BaseComponent {...args} columns={columns} pagination={false} rows={dataContext} />
+)
 export const loadingWithoutData = (args) => <BaseComponent {...args} rows={[]} loading />
 
 export const showNoData = (args) => <BaseComponent {...args} rows={[]} />
