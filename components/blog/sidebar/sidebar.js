@@ -16,21 +16,13 @@ import {
   BlogPromo,
   BlogRecent,
   BlogSocial,
-  BlogTagCloud
+  BlogTagCloud,
 } from '../../'
 
 // Style
 import styled from 'styled-components'
 
-export const BlogSidebar = ({
-  articles,
-  config,
-  facebook,
-  findFood,
-  media,
-  promo,
-  tags
-}) => {
+export const BlogSidebar = ({ articles, config, facebook, findFood, media, promo, tags }) => {
   return (
     <StyledAside>
       {findFood && <BlogFindFood />}
@@ -65,9 +57,9 @@ BlogSidebar.propTypes = {
   findFood: bool,
   media: array,
   promo: array,
-  tags: array
+  tags: array,
 }
 
 BlogSidebar.defaultProps = {
-  findFood: false
+  findFood: false,
 }

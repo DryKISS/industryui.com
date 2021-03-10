@@ -13,14 +13,7 @@ import { NavWidgets } from '../components/widgets/widgets'
 // Style
 import styled from 'styled-components'
 
-export const Navbar = ({
-  brand,
-  contained,
-  type,
-  style,
-  showMenu,
-  widgets
-}) => {
+export const Navbar = ({ brand, contained, type, style, showMenu, widgets }) => {
   const [visible, setVisible] = useState(showMenu)
 
   const handleClick = () => {
@@ -102,11 +95,11 @@ Navbar.propTypes = {
   showMenu: bool,
   style: objectOf(oneOfType([number, string])),
   type: string,
-  widgets: object
+  widgets: object,
 }
 
 Navbar.defaultProps = {
   brand: '',
   contained: false,
-  showMenu: false
+  showMenu: false,
 }

@@ -16,12 +16,7 @@ export const Rating = ({ className, context, value, size }) => {
   const rating = []
   for (let i = 0; i < size; i++) {
     rating.push(
-      <StyledRating
-        active={i + 1 <= value}
-        className={className}
-        context={context}
-        key={i}
-      />
+      <StyledRating active={i + 1 <= value} className={className} context={context} key={i} />
     )
   }
 
@@ -42,10 +37,10 @@ Rating.propTypes = {
   className: string,
   context: string,
   value: number.isRequired,
-  size: number
+  size: number,
 }
 
 Rating.defaultProps = {
   context: 'primary',
-  size: 5
+  size: 5,
 }

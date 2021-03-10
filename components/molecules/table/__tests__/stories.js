@@ -25,22 +25,22 @@ export default {
     pagination: true,
     perPage: 10,
     responsive: true,
-    striped: true
+    striped: true,
   },
   argTypes: {
     rowClick: {
-      action: 'clicked'
-    }
+      action: 'clicked',
+    },
   },
   component: Table,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Table'
+  title: 'Molecules/Table',
 }
 
 const BaseComponent = (props = {}) => {
@@ -48,7 +48,7 @@ const BaseComponent = (props = {}) => {
 
   const [sort, setSort] = useState({
     item: 'company',
-    order: 'asc'
+    order: 'asc',
   })
 
   const handlePageChange = (page) => {
@@ -81,25 +81,22 @@ const BaseComponent = (props = {}) => {
     ...rows.data,
     ...rows.data,
     ...rows.data,
-    ...rows.data
+    ...rows.data,
   ]
 
-  const pageSlice = data.slice(
-    (currentPage - 1) * props.perPage,
-    currentPage * props.perPage
-  )
+  const pageSlice = data.slice((currentPage - 1) * props.perPage, currentPage * props.perPage)
 
   const defaultProps = {
     paginationProps: {
       currentPage: currentPage,
       onPageChange: handlePageChange,
       pageCount: Math.ceil(data.length / props.perPage),
-      perPage: props.perPage
+      perPage: props.perPage,
     },
     rows: props.rows || pageSlice,
     setSort: setSort,
     sort: sort,
-    ...props
+    ...props,
   }
 
   if (props.columns === false || props.columns === null) {
@@ -109,15 +106,9 @@ const BaseComponent = (props = {}) => {
   return <Table {...defaultProps} />
 }
 
-export const main = (args) => (
-  <BaseComponent {...args} columns={columnsActions} />
-)
-export const context = (args) => (
-  <BaseComponent {...args} pagination={false} rows={dataContext} />
-)
-export const loadingWithoutData = (args) => (
-  <BaseComponent {...args} rows={[]} loading />
-)
+export const main = (args) => <BaseComponent {...args} columns={columnsActions} />
+export const context = (args) => <BaseComponent {...args} pagination={false} rows={dataContext} />
+export const loadingWithoutData = (args) => <BaseComponent {...args} rows={[]} loading />
 
 export const showNoData = (args) => <BaseComponent {...args} rows={[]} />
 

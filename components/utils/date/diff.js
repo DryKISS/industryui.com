@@ -27,5 +27,5 @@ export const DateDiff = {
 
   inYears: (d1, d2) => {
     return d2.getFullYear() - d1.getFullYear()
-  }
+  },
 }

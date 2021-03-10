@@ -9,24 +9,11 @@ import { bool, func, object, oneOfType, string } from 'prop-types'
 // UI
 import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
 
-export const PercentInput = ({
-  errors,
-  label,
-  name,
-  register,
-  show,
-  symbol
-}) => {
+export const PercentInput = ({ errors, label, name, register, show, symbol }) => {
   return (
     <FormLabel show={show} label={label}>
       <InputGroup>
-        <FormField
-          errors={errors}
-          name={name}
-          register={register}
-          step="any"
-          type="number"
-        />
+        <FormField errors={errors} name={name} register={register} step="any" type="number" />
         <InputGroupAddon addonType="append" text>
           {symbol}
         </InputGroupAddon>
@@ -41,10 +28,10 @@ PercentInput.propTypes = {
   name: string.isRequired,
   register: func.isRequired,
   show: bool,
-  symbol: oneOfType([object, string])
+  symbol: oneOfType([object, string]),
 }
 
 PercentInput.defaultProps = {
   show: true,
-  symbol: '%'
+  symbol: '%',
 }

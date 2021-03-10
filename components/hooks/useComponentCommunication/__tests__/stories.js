@@ -16,7 +16,7 @@ import {
   RandomColor,
   Subscriber,
   Text,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../'
 
 // Style
@@ -24,7 +24,7 @@ import styled from 'styled-components'
 
 export default {
   decorators: [Wrapper],
-  title: 'Utils/CommunicationService'
+  title: 'Utils/CommunicationService',
 }
 
 const Sender = () => {
@@ -32,18 +32,16 @@ const Sender = () => {
   return (
     <SimpleWrapper style={{ background: RandomColor() }}>
       <input onChange={(e) => (val.current = e.target.value)} />
-      <Text>
-        message can be anything(event,method,flag,json,string), here it's a
-        simple string
-      </Text>
+      <Text>message can be anything(event,method,flag,json,string), here it's a simple string</Text>
 
       <Button
         onClick={() => {
           CommunicationService.send({
             name: MessageNames.TEST,
-            payload: val.current
+            payload: val.current,
           })
-        }}>
+        }}
+      >
         send message
       </Button>
     </SimpleWrapper>
@@ -60,20 +58,16 @@ const Reciever = () => {
   useComponentCommunication({
     onRecieve: logPayload,
     subscriber: Subscriber,
-    messageName: MessageNames.TEST
+    messageName: MessageNames.TEST,
   })
 
-  return (
-    <Text style={{ background: RandomColor() }}>{Payload ?? 'no message'}</Text>
-  )
+  return <Text style={{ background: RandomColor() }}>{Payload ?? 'no message'}</Text>
 }
 
 export const CommunicationShowCase = () => {
   return (
     <>
-      <Text>
-        components background color is randomly generated to spot new renders
-      </Text>
+      <Text>components background color is randomly generated to spot new renders</Text>
 
       <StyledContainer style={{ background: RandomColor() }}>
         <SimpleWrapper style={{ background: RandomColor() }}>
@@ -82,8 +76,9 @@ export const CommunicationShowCase = () => {
 
         <SimpleWrapper
           style={{
-            background: RandomColor()
-          }}>
+            background: RandomColor(),
+          }}
+        >
           <Sender />
         </SimpleWrapper>
       </StyledContainer>

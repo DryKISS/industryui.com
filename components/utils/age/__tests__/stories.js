@@ -20,22 +20,22 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    birthDate: new Date('2001-09-20')
+    birthDate: new Date('2001-09-20'),
   },
   argTypes: {
     birthDate: {
       name: 'Birth Date',
-      control: { type: ControlTypes.Date }
-    }
+      control: { type: ControlTypes.Date },
+    },
   },
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/Age'
+  title: 'Utils/Age',
 }
 
 export const Main = (args) => {
@@ -46,7 +46,7 @@ export const Main = (args) => {
     errors: errors,
     locale: enGB,
     minDate: null,
-    name: 'birthDate'
+    name: 'birthDate',
   }
 
   const onSubmit = (data) => {}

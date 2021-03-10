@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/SimpleTime'
+  title: 'Molecules/SimpleTime',
 }
 
 export const main = (args) => <SimpleTime {...args} />

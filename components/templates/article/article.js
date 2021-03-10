@@ -21,7 +21,8 @@ export const Article = ({ article, className, config, facebook, style }) => {
       itemScope
       itemType="http://schema.org/BlogPosting"
       role="article"
-      style={style}>
+      style={style}
+    >
       <header>
         <StyledImage
           alt={article.heading}
@@ -29,27 +30,19 @@ export const Article = ({ article, className, config, facebook, style }) => {
         />
 
         {article.category && (
-          <Breadcrumb
-            category={article.category}
-            page={article.title}
-            path={article.category}
-          />
+          <Breadcrumb category={article.category} page={article.title} path={article.category} />
         )}
 
-        {config && article.category && (
-          <BlogCategory config={config} to={article.category} />
-        )}
+        {config && article.category && <BlogCategory config={config} to={article.category} />}
 
         <StyledHeading content={article.heading} />
 
-        {facebook && (
-          <BlogDetails article={article} config={config} facebook={facebook} />
-        )}
+        {facebook && <BlogDetails article={article} config={config} facebook={facebook} />}
       </header>
 
       <span
         dangerouslySetInnerHTML={{
-          __html: article.data
+          __html: article.data,
         }}
       />
     </StyledArticle>
@@ -80,5 +73,5 @@ Article.propTypes = {
   className: string,
   config: object,
   facebook: object,
-  style: object
+  style: object,
 }

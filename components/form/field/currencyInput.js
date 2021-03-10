@@ -20,20 +20,16 @@ export const CurrencyInput = ({
   show,
   style,
   size,
-  vat
+  vat,
 }) => {
   const defaultOptions = {
-    error: errors[name]
+    error: errors[name],
   }
 
   return (
     <FormLabel show={show} label={label}>
       <InputGroup {...defaultOptions}>
-        <InputGroupAddon
-          {...defaultOptions}
-          addonType="prepend"
-          size={size}
-          text>
+        <InputGroupAddon {...defaultOptions} addonType="prepend" size={size} text>
           {currencySymbol}
         </InputGroupAddon>
 
@@ -50,11 +46,7 @@ export const CurrencyInput = ({
 
         {vat && (
           <>
-            <InputGroupAddon
-              {...defaultOptions}
-              addonType="append"
-              size={size}
-              text>
+            <InputGroupAddon {...defaultOptions} addonType="append" size={size} text>
               {vat}
             </InputGroupAddon>
             {children}
@@ -76,7 +68,7 @@ CurrencyInput.propTypes = {
   show: bool,
   style: node,
   size: string,
-  vat: oneOfType([string, bool])
+  vat: oneOfType([string, bool]),
 }
 
 CurrencyInput.defaultProps = {
@@ -84,5 +76,5 @@ CurrencyInput.defaultProps = {
   min: 0,
   show: true,
   size: 'md',
-  vat: 'Incl VAT'
+  vat: 'Incl VAT',
 }

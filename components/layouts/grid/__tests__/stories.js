@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Layouts/Grid'
+  title: 'Layouts/Grid',
 }
 
 export const main = (args) => <LayoutGrid {...args}>HERE</LayoutGrid>

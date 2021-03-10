@@ -39,7 +39,7 @@ import {
   SelectField,
   Space,
   Text,
-  TextareaField
+  TextareaField,
 } from '../../../'
 
 import { THEME_SIZE } from '../../../theme/constants/size'
@@ -57,10 +57,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const schema = object().shape({
@@ -76,25 +76,25 @@ const schema = object().shape({
   datepicker: string().required(),
   textarea: string().required(),
   select: string().required(),
-  readonly: string()
+  readonly: string(),
 })
 
 const checkbox = [
   {
     id: 'check',
     label: 'Yes',
-    value: 'check'
+    value: 'check',
   },
   {
     id: 'checked',
     label: 'No',
-    value: 'checked'
-  }
+    value: 'checked',
+  },
 ]
 
 const All = ({ ...args }) => {
   const { control, errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {
@@ -107,7 +107,7 @@ const All = ({ ...args }) => {
   const defaultProps = {
     errors: errors,
     register: register,
-    size: args.size
+    size: args.size,
   }
 
   const ErrMessage = (message) => <FormError message={message} />
@@ -232,12 +232,7 @@ const All = ({ ...args }) => {
         name="checkbox"
       />
 
-      <RadioField
-        {...defaultProps}
-        data={RADIO_GENDER()}
-        legend="Gender?"
-        name="radio"
-      />
+      <RadioField {...defaultProps} data={RADIO_GENDER()} legend="Gender?" name="radio" />
 
       <Button content="Submit" type="submit" />
     </Form>
@@ -253,33 +248,33 @@ AllInputsTemplate.args = {
   ColumnWidth: 6,
   datePickerValue: '',
   checkboxLegend: 'Checkbox Legend',
-  size: 'lg'
+  size: 'lg',
 }
 
 AllInputsTemplate.argTypes = {
   children: {
     control: {
-      type: null
-    }
+      type: null,
+    },
   },
   datePickerValue: {
     name: 'Date Picker Value',
-    control: { type: ControlTypes.Date }
+    control: { type: ControlTypes.Date },
   },
   backgroundColour: { name: 'Background Colour', control: ControlTypes.Color },
   formTitle: {
-    name: 'Form Tilte'
+    name: 'Form Tilte',
   },
   ColumnWidth: {
     name: 'col md',
-    control: { type: ControlTypes.Range, min: 2, max: 12 }
+    control: { type: ControlTypes.Range, min: 2, max: 12 },
   },
 
   size: {
     name: 'Input Size',
     control: {
       type: ControlTypes.Select,
-      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
-    }
-  }
+      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG],
+    },
+  },
 }

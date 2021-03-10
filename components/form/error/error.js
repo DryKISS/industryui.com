@@ -31,5 +31,5 @@ export const StyledSmall = styled.small`
 
 FormError.propTypes = {
   message: string.isRequired,
-  colour: string
+  colour: string,
 }

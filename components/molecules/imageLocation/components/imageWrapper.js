@@ -27,29 +27,22 @@ export const ImageWrapper = ({
   markerStyles,
   maxZoomLevel,
   onMarkerClick,
-  setCoordinates
+  setCoordinates,
 }) => {
   const [Leaflet, setLeaflet] = useState(null)
 
   const createClusterCustomIcon = (cluster) => {
     return Leaflet.L.divIcon({
       html: renderToString(<ClusterIcon cluster={cluster} />),
-      className: 'marker-cluster'
+      className: 'marker-cluster',
       // iconSize: L.point(38, 38, true)
     })
   }
 
   const loadModules = async () => {
-    const {
-      ImageOverlay,
-      MapConsumer,
-      MapContainer,
-      Marker,
-      Popup
-    } = await import('react-leaflet')
+    const { ImageOverlay, MapConsumer, MapContainer, Marker, Popup } = await import('react-leaflet')
     const L = (await import('leaflet')).default
-    const MarkerClusterGroup = (await import('react-leaflet-markercluster'))
-      .default
+    const MarkerClusterGroup = (await import('react-leaflet-markercluster')).default
 
     setLeaflet({
       ImageOverlay,
@@ -58,7 +51,7 @@ export const ImageWrapper = ({
       Marker,
       Popup,
       L,
-      MarkerClusterGroup
+      MarkerClusterGroup,
     })
   }
 
@@ -74,11 +67,11 @@ export const ImageWrapper = ({
   const [MarkerCoordinates, setMarkerCoordinates] = useState(coordinates)
   const [imageDimentions, setImageDimentions] = useState({
     height: 0,
-    width: 0
+    width: 0,
   })
   const bounds = [
     [imageDimentions.height, 0],
-    [0, imageDimentions.width]
+    [0, imageDimentions.width],
   ]
 
   const handleImageClick = (event) => {
@@ -90,7 +83,7 @@ export const ImageWrapper = ({
 
     const coordinates = {
       x: (event.nativeEvent.offsetX * 100) / imageWidth,
-      y: (event.nativeEvent.offsetY * 100) / imageHeight
+      y: (event.nativeEvent.offsetY * 100) / imageHeight,
     }
 
     setCoordinates(coordinates)
@@ -122,7 +115,7 @@ export const ImageWrapper = ({
 
       const leafletIcon = Leaflet.L.divIcon({
         className: 'marker-icon',
-        html: renderToString(iconToRender)
+        html: renderToString(iconToRender),
       })
 
       return (
@@ -138,15 +131,14 @@ export const ImageWrapper = ({
             },
             mouseout: (e) => {
               popupComponent && autoCloseMarkerPopup && e.target.closePopup()
-            }
+            },
           }}
           key={i}
           position={[x, y]}
-          icon={leafletIcon}>
+          icon={leafletIcon}
+        >
           {popupComponent && (
-            <Leaflet.Popup closeButton={!autoCloseMarkerPopup}>
-              {popupComponent}
-            </Leaflet.Popup>
+            <Leaflet.Popup closeButton={!autoCloseMarkerPopup}>{popupComponent}</Leaflet.Popup>
           )}
         </Leaflet.Marker>
       )
@@ -174,15 +166,15 @@ export const ImageWrapper = ({
             crs={Leaflet.L.CRS.Simple}
             bounds={bounds}
             maxZoom={maxZoomLevel ?? 12}
-            attributionControl={false}>
+            attributionControl={false}
+          >
             <Leaflet.MapConsumer>
               {(map) => {
                 mapRef.current = map
                 return null
               }}
             </Leaflet.MapConsumer>
-            <Leaflet.MarkerClusterGroup
-              iconCreateFunction={createClusterCustomIcon}>
+            <Leaflet.MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>
               {markersArray.current}
             </Leaflet.MarkerClusterGroup>
             <Leaflet.ImageOverlay url={item.filename} bounds={bounds} />
@@ -194,13 +186,7 @@ export const ImageWrapper = ({
 
   return (
     <StyledImageWrapper>
-      <Image
-        ref={imageRef}
-        onClick={handleImageClick}
-        alt={item.name}
-        fluid
-        src={item.filename}
-      />
+      <Image ref={imageRef} onClick={handleImageClick} alt={item.name} fluid src={item.filename} />
       {MarkerCoordinates?.x && (
         <ImageMarker
           {...{ customIcon }}
@@ -238,5 +224,5 @@ const StyledImageWrapper = styled.div`
 ImageWrapper.propTypes = {
   coordinates: object,
   item: object.isRequired,
-  setCoordinates: func.isRequired
+  setCoordinates: func.isRequired,
 }

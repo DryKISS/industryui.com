@@ -11,9 +11,7 @@ import { Button, Link } from '../../../'
 import styled from 'styled-components'
 
 export const CardCTA = ({ func, link, title }) => {
-  const CtaButton = (props) => (
-    <StyledButton content={title} context="secondary" {...props} />
-  )
+  const CtaButton = (props) => <StyledButton content={title} context="secondary" {...props} />
 
   return link ? (
     <Link border={false} passHref to={link}>
@@ -32,9 +30,9 @@ const StyledButton = styled(Button)`
 CardCTA.propTypes = {
   func,
   link: string,
-  title: string
+  title: string,
 }
 
 CardCTA.defaultProps = {
-  title: 'Read more'
+  title: 'Read more',
 }

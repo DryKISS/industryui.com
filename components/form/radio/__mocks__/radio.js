@@ -2,16 +2,16 @@ export const RADIO_GENDER = (genderToggle = 'no') => [
   {
     id: 'no',
     label: 'No preference',
-    value: 'no'
+    value: 'no',
   },
   {
     id: 'male',
     label: 'Male',
-    value: 'male'
+    value: 'male',
   },
   {
     id: 'female',
     label: 'Female',
-    value: 'female'
-  }
+    value: 'female',
+  },
 ]

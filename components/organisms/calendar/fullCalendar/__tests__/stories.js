@@ -22,29 +22,29 @@ export default {
     defaultView: 'dayGridMonth',
     defaultEventColorSelect: 'primary',
     nowIndicatorBoolean: false,
-    weekendsBoolean: true
+    weekendsBoolean: true,
   },
   argTypes: {
     defaultView: { control: { type: 'select', options: AvailableViews } },
     businessHoursSelect: {
       control: {
         type: 'select',
-        options: ['true', 'MondayToFriday', 'MondayToThursday']
-      }
+        options: ['true', 'MondayToFriday', 'MondayToThursday'],
+      },
     },
     defaultEventColorSelect: {
-      control: { type: 'select', options: Object.keys(Theme.COLOUR) }
-    }
+      control: { type: 'select', options: Object.keys(Theme.COLOUR) },
+    },
   },
   components: Calendar,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Full Calendar'
+  title: 'Organisms/Full Calendar',
 }
 
 export const BaseComponent = (props = {}) => {
@@ -68,12 +68,12 @@ export const BaseComponent = (props = {}) => {
             // days of week. an array of zero-based day of week integers (0=Sunday)
             daysOfWeek: [1, 2, 3, 4], // Monday - Thursday
             startTime: '10:00', // a start time (10am in this example)
-            endTime: '18:00' // an end time (6pm in this example)
+            endTime: '18:00', // an end time (6pm in this example)
           }
         : false,
 
     defaultView,
-    ...props
+    ...props,
   }
 
   return <Calendar ref={calendarRef} {...defaultCalendarProps} />
@@ -94,13 +94,11 @@ export const CustomEvents = (args) => {
 export const EventsWithEventAdditionOnClick = () => {
   const [events, setEvents] = useState(Events || [])
   const handleDateClick = (arg) => {
-    if (
-      window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')
-    ) {
+    if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
       const event = {
         title: 'New Event',
         start: arg.date,
-        allDay: arg.allDay
+        allDay: arg.allDay,
       }
       setEvents([...events, event])
     }
@@ -114,9 +112,7 @@ export const eventClick = (args) => {
     event.setProp('title', event.title + ' - ' + 'updated')
   }
 
-  return (
-    <BaseComponent {...args} eventClick={handleEventClick} events={Events} />
-  )
+  return <BaseComponent {...args} eventClick={handleEventClick} events={Events} />
 }
 
 export const eventsWithTooltip = (args) => {

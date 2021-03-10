@@ -15,11 +15,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Grid/Row'
+  title: 'Atoms/Grid/Row',
 }
 
 export const row = (args) => (

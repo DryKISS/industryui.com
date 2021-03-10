@@ -17,11 +17,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/VoiceRecorder'
+  title: 'Molecules/VoiceRecorder',
 }
 
 export const noOverlay = () => {
@@ -31,10 +31,7 @@ export const noOverlay = () => {
 
   return (
     <Wrapper>
-      <VoiceRecorder
-        onVoiceRecord={handleVoiceRecorded}
-        overlayStyle={{ display: 'none' }}
-      />
+      <VoiceRecorder onVoiceRecord={handleVoiceRecorded} overlayStyle={{ display: 'none' }} />
     </Wrapper>
   )
 }
@@ -46,10 +43,7 @@ export const withOverlay = () => {
 
   return (
     <Wrapper>
-      <VoiceRecorder
-        onVoiceRecord={handleVoiceRecorded}
-        overlayStyle={{ top: '0.5rem' }}
-      />
+      <VoiceRecorder onVoiceRecord={handleVoiceRecorded} overlayStyle={{ top: '0.5rem' }} />
     </Wrapper>
   )
 }

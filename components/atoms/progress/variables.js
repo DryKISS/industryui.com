@@ -13,15 +13,15 @@ export const PROGRESS = {
     sm: '.5rem',
     md: '.75rem',
     lg: '1.25rem',
-    xl: '1.5rem'
+    xl: '1.5rem',
   },
   height: {
     xs: '.15rem',
     sm: '.5rem',
     md: '1rem',
     lg: '1.5rem',
-    xl: '2rem'
-  }
+    xl: '2rem',
+  },
 }
 
 export const PROGRESSBAR = {
@@ -40,5 +40,5 @@ export const PROGRESSBAR = {
   bgSize: '1rem 1rem',
   context: 'primary',
   role: 'progressbar',
-  transition: 'width .6s ease'
+  transition: 'width .6s ease',
 }

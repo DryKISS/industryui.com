@@ -34,5 +34,5 @@ export const MetaHead = ({ canonical, brand, meta }) => {
 
 MetaHead.propTypes = {
   brand: string.isRequired,
-  meta: object.isRequired
+  meta: object.isRequired,
 }

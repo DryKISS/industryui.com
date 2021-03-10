@@ -35,7 +35,7 @@ export const BlogRecent = ({ articles, config, total }) => {
         badge: formatIntDateShort(new Date(opt.date)),
         category: opt.category,
         name: opt.heading,
-        to: opt.slug
+        to: opt.slug,
       }))
   }
 
@@ -49,9 +49,9 @@ export const BlogRecent = ({ articles, config, total }) => {
 BlogRecent.propTypes = {
   articles: array.isRequired,
   config: object.isRequired,
-  total: number
+  total: number,
 }
 
 BlogRecent.defaultProps = {
-  total: 5
+  total: 5,
 }

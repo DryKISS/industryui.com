@@ -8,14 +8,7 @@ import { bool, number, oneOf, string } from 'prop-types'
 
 const p = 'https://www.facebook.com/plugins/share_button.php'
 
-export const FacebookShareButton = ({
-  appId,
-  hashTag,
-  iFrame,
-  layout,
-  size,
-  to
-}) => {
+export const FacebookShareButton = ({ appId, hashTag, iFrame, layout, size, to }) => {
   return (
     <>
       {iFrame && (
@@ -36,12 +29,14 @@ export const FacebookShareButton = ({
           data-hashtag={hashTag}
           data-href={to}
           data-layout={layout}
-          data-size={size}>
+          data-size={size}
+        >
           <a
             className="fb-xfbml-parse-ignore"
             href={`https://www.facebook.com/sharer/sharer.php?u=${to}&src=sdkprepars`}
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             {' '}
           </a>
         </div>
@@ -56,11 +51,11 @@ FacebookShareButton.propTypes = {
   iFrame: bool,
   layout: oneOf(['box_count', 'button', 'button_count', 'icon_link']),
   size: oneOf(['large', 'small']),
-  to: string.isRequired
+  to: string.isRequired,
 }
 
 FacebookShareButton.defaultProps = {
   iFrame: true,
   layout: 'button',
-  size: 'large'
+  size: 'large',
 }

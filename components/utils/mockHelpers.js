@@ -10,9 +10,7 @@ export const mergeLocalData = (array, key, identifier = 'id') => {
 
   if (local) {
     local.forEach((i) => {
-      const existing = array.find(
-        (o) => o[identifier] === parseInt(i[identifier])
-      )
+      const existing = array.find((o) => o[identifier] === parseInt(i[identifier]))
 
       if (existing) {
         Object.keys(i).forEach((key) => {
@@ -35,9 +33,7 @@ export const filterByKey = (array, key, value) => {
 }
 
 export const filterByString = (array, key, string) => {
-  return array.filter((a) =>
-    a[key].toLowerCase().includes(string.toLowerCase())
-  )
+  return array.filter((a) => a[key].toLowerCase().includes(string.toLowerCase()))
 }
 
 // add associated object to an item
@@ -51,13 +47,7 @@ export const getItemAssociations = (item, related, key, foreignKey) => {
 }
 
 // add associated array to an array
-export const getAssociations = (
-  array,
-  related,
-  association,
-  key,
-  foreignKey
-) => {
+export const getAssociations = (array, related, association, key, foreignKey) => {
   return array.map((item) => {
     item[association] = related.find((r) => r[key] === item[foreignKey])
     return item
@@ -65,13 +55,7 @@ export const getAssociations = (
 }
 
 // add associated array via pivot array
-export const getManyToManyAssociations = (
-  item,
-  pivot,
-  related,
-  key,
-  foreignKey
-) => {
+export const getManyToManyAssociations = (item, pivot, related, key, foreignKey) => {
   const associatedItems = pivot.filter((a) => a[key] === item.id)
   return associatedItems.map((a) => {
     return related.find((r) => r.id === a[foreignKey])

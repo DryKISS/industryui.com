@@ -41,5 +41,5 @@ export const MESSAGING = {
   scrollThumbColour: THEME_COLOUR.blackGrey,
   sentMessageBackground: THEME_COLOUR.neutral2,
   timerColour: THEME_COLOUR.info,
-  translatorTextColour: THEME_COLOUR.primary
+  translatorTextColour: THEME_COLOUR.primary,
 }

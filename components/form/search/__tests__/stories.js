@@ -23,37 +23,37 @@ export default {
     label: 'Go',
     placeholder: 'Search...',
     prependSearchIcon: false,
-    type: 'search'
+    type: 'search',
   },
   argTypes: {
     type: {
       control: {
         type: 'select',
-        options: ['search', 'text']
-      }
-    }
+        options: ['search', 'text'],
+      },
+    },
   },
   title: 'Form/Search',
   component: Search,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const BaseComponent = (props = {}) => {
   const schema = object().shape({
-    query: string().required()
+    query: string().required(),
   })
 
   const { errors, getValues, handleSubmit, register } = useForm({
     defaultValues: {
-      query: props.value
+      query: props.value,
     },
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {
@@ -65,7 +65,7 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     errors: errors,
     register: register,
-    ...props
+    ...props,
   }
 
   return (
@@ -83,12 +83,6 @@ const BaseComponent = (props = {}) => {
 
 export const main = (args) => <BaseComponent {...args} />
 export const defaultValue = (args) => <BaseComponent {...args} value="XYZ" />
-export const customLabel = (args) => (
-  <BaseComponent appendSearchButton {...args} label="Go" />
-)
-export const prependedIcon = (args) => (
-  <BaseComponent {...args} prependSearchIcon />
-)
-export const appendedIcon = (args) => (
-  <BaseComponent {...args} appendSearchIcon />
-)
+export const customLabel = (args) => <BaseComponent appendSearchButton {...args} label="Go" />
+export const prependedIcon = (args) => <BaseComponent {...args} prependSearchIcon />
+export const appendedIcon = (args) => <BaseComponent {...args} appendSearchIcon />

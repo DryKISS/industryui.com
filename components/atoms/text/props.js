@@ -21,11 +21,11 @@ export const propTypes = {
   stroked: bool,
   weight: oneOf(['light', 'regular', 'semiBold', 'bold']),
   ...DISPLAY_PROP_TYPES,
-  ...SPACER_PROP_TYPES
+  ...SPACER_PROP_TYPES,
 }
 
 export const defaultProps = {
   context: 'dark',
   size: 'md',
-  stroked: false
+  stroked: false,
 }

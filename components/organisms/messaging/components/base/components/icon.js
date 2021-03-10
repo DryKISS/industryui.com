@@ -39,9 +39,9 @@ const StyledIcon = styled(Icon)`
 
 MessageIcon.propTypes = {
   icon: string.isRequired,
-  prefix: oneOf(Object.values(ICON_PREFIX))
+  prefix: oneOf(Object.values(ICON_PREFIX)),
 }
 
 MessageIcon.defaultProps = {
-  prefix: 'fas'
+  prefix: 'fas',
 }

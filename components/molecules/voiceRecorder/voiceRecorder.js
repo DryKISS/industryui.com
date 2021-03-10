@@ -53,28 +53,26 @@ export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
 
   const handleStartRecord = () => {
     window &&
-      window.navigator.mediaDevices
-        .getUserMedia({ audio: true })
-        .then((stream) => {
-          recorder.current = new window.MediaRecorder(stream)
+      window.navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+        recorder.current = new window.MediaRecorder(stream)
 
-          // Set record to <audio> when recording will be finished
-          recorder.current.addEventListener('dataavailable', (e) => {
-            if (canSendData.current === true) {
-              onVoiceRecord(e)
-            } else {
-              canSendData.current = true
-            }
-            stopTimer()
-          })
-
-          // Start recording
-          recorder.current.start()
-          timerInterval.current = setInterval(() => {
-            setTimer((time) => time + 1)
-          }, 1000)
-          setisRecording(true)
+        // Set record to <audio> when recording will be finished
+        recorder.current.addEventListener('dataavailable', (e) => {
+          if (canSendData.current === true) {
+            onVoiceRecord(e)
+          } else {
+            canSendData.current = true
+          }
+          stopTimer()
         })
+
+        // Start recording
+        recorder.current.start()
+        timerInterval.current = setInterval(() => {
+          setTimer((time) => time + 1)
+        }, 1000)
+        setisRecording(true)
+      })
   }
 
   const handleStopRecord = () => {
@@ -178,8 +176,7 @@ const Wrapper = styled.div`
 
 const OverLay = styled.div`
   align-items: center;
-  background-color: ${({ theme: { VOICE_RECORDER } }) =>
-    VOICE_RECORDER.overlayBackground};
+  background-color: ${({ theme: { VOICE_RECORDER } }) => VOICE_RECORDER.overlayBackground};
   display: flex;
   height: 45px;
   left: 4rem;

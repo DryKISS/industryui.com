@@ -16,11 +16,11 @@ export const DetailsPropTypes = {
   summary: string.isRequired,
   SummaryActionsComponent: node,
   style: any,
-  Toolbar: func
+  Toolbar: func,
 }
 
 export const DetailsDefaultProps = {
   context: 'primary',
   dataSet: { 'data-cy': 'details' },
-  open: false
+  open: false,
 }

@@ -4,28 +4,12 @@
 
 // React
 import React from 'react'
-import {
-  node,
-  number,
-  objectOf,
-  oneOf,
-  oneOfType,
-  string,
-  bool
-} from 'prop-types'
+import { node, number, objectOf, oneOf, oneOfType, string, bool } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const Row = ({
-  align,
-  children,
-  className,
-  justify,
-  noGutter,
-  noWrap,
-  style
-}) => {
+export const Row = ({ align, children, className, justify, noGutter, noWrap, style }) => {
   return (
     <StyledRow
       align={align}
@@ -79,18 +63,10 @@ Row.propTypes = {
   align: oneOf(['baseline', 'start', 'center', 'end', 'stretch']),
   children: node.isRequired,
   className: string,
-  justify: oneOf([
-    'start',
-    'center',
-    'end',
-    'between',
-    'around',
-    'initial',
-    'inherit'
-  ]),
+  justify: oneOf(['start', 'center', 'end', 'between', 'around', 'initial', 'inherit']),
   noGutter: bool,
   noWrap: bool,
-  style: objectOf(oneOfType([number, string]))
+  style: objectOf(oneOfType([number, string])),
 }
 
 Row.defaultProps = {
@@ -98,5 +74,5 @@ Row.defaultProps = {
   justify: 'start',
   noGutter: false,
   style: {},
-  noWrap: false
+  noWrap: false,
 }

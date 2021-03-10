@@ -14,17 +14,17 @@ import { Copyright as Data } from '../__mocks__/copyright'
 
 export default {
   args: {
-    links: Data
+    links: Data,
   },
   component: Copyright,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Copyright'
+  title: 'Molecules/Copyright',
 }
 
 export const main = (args) => <Copyright {...args} />

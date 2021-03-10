@@ -14,19 +14,13 @@ import { PageLoading } from '../../molecules/pageLoading/components/pageLoading'
 import { Space } from '../../atoms/space/space'
 import { THEME_CONTEXT } from '../../theme/constants/context'
 
-export const Dashboard = ({
-  children,
-  meta,
-  pageHeading,
-  resultAlert,
-  View
-}) => {
+export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
   const { context, message } = resultAlert
 
   const defaultMeta = {
     description: 'Admin',
     path: '/',
-    title: 'Admin'
+    title: 'Admin',
   }
 
   const mergedMeta = { ...defaultMeta, ...meta }
@@ -52,7 +46,7 @@ Dashboard.propTypes = {
   meta: shape({
     description: string,
     path: string,
-    title: string
+    title: string,
   }),
   pageHeading: shape({
     center: bool,
@@ -61,18 +55,18 @@ Dashboard.propTypes = {
     heading: any.isRequired,
     help: bool,
     helpContent: any,
-    strapline: string
+    strapline: string,
   }),
   resultAlert: shape({
     context: string,
-    message: string
+    message: string,
   }),
-  View: node
+  View: node,
 }
 
 Dashboard.defaultProps = {
   resultAlert: {
     context: 'success',
-    message: ''
-  }
+    message: '',
+  },
 }

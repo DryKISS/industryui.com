@@ -16,7 +16,7 @@ const RHAP_UI = {
   MAIN_CONTROLS: 'MAIN_CONTROLS',
   VOLUME_CONTROLS: 'VOLUME_CONTROLS',
   LOOP: 'LOOP',
-  VOLUME: 'VOLUME'
+  VOLUME: 'VOLUME',
 }
 
 export const MessagingAudioPlayer = ({ inMessage, src }) => {
@@ -40,7 +40,7 @@ export const MessagingAudioPlayer = ({ inMessage, src }) => {
                 <Spacer key="rh1" style={{ margin: '0 5px', width: '5px' }} />,
                 RHAP_UI.CURRENT_TIME,
                 <Slash key="rh2">/</Slash>,
-                RHAP_UI.DURATION
+                RHAP_UI.DURATION,
               ]
             : [RHAP_UI.MAIN_CONTROLS, RHAP_UI.PROGRESS_BAR]
         }

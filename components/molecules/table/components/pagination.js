@@ -26,10 +26,10 @@ TablePagination.propTypes = {
   handlePagination: func,
   pageCount: number,
   perPage: number,
-  rows: array.isRequired
+  rows: array.isRequired,
 }
 
 TablePagination.defaultProps = {
   currentPage: 1,
-  perPage: 10
+  perPage: 10,
 }

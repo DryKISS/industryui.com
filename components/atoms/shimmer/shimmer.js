@@ -13,14 +13,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { shadeColor } from '../../'
 
 export const Shimmer = ({ duration, height, hexColour, width }) => {
-  return (
-    <StyledShimmer
-      duration={duration}
-      height={height}
-      hexColour={hexColour}
-      width={width}
-    />
-  )
+  return <StyledShimmer duration={duration} height={height} hexColour={hexColour} width={width} />
 }
 
 const placeholderShimmer = keyframes`
@@ -65,5 +58,5 @@ Shimmer.propTypes = {
   duration: number,
   height: string,
   hexColour: string,
-  width: string
+  width: string,
 }

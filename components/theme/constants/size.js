@@ -9,5 +9,5 @@ export const THEME_SIZE = {
   LG: 'lg',
   XL: 'xl',
   XXL: 'xxl',
-  XXXL: 'xxxl'
+  XXXL: 'xxxl',
 }

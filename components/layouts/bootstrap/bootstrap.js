@@ -11,14 +11,7 @@ import { array, bool, func, node, object } from 'prop-types'
 import { Copyright } from '../../molecules/copyright/copyright'
 import { Footer } from '../../organisms/footer/footer'
 
-export const Bootstrap = ({
-  children,
-  copyright,
-  footer,
-  fixed,
-  icon,
-  Navigation
-}) => {
+export const Bootstrap = ({ children, copyright, footer, fixed, icon, Navigation }) => {
   return (
     <>
       <Navigation />
@@ -38,9 +31,9 @@ Bootstrap.propTypes = {
   fixed: bool,
   footer: array,
   icon: object,
-  Navigation: func
+  Navigation: func,
 }
 
 Bootstrap.defaultProps = {
-  fixed: false
+  fixed: false,
 }

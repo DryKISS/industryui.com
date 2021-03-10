@@ -15,7 +15,7 @@ import {
   MessageBase,
   MessageNames,
   MessagingActions,
-  MessagingCommunicationService
+  MessagingCommunicationService,
 } from '../../../../'
 
 import { ReplyIcon } from './replyIcon'
@@ -33,8 +33,8 @@ export const Message = memo(
         name: MessageNames.Messaging.MESSAGING_ACTION,
         payload: {
           action: MessagingActions.REPLY_MESSAGE,
-          data: message
-        }
+          data: message,
+        },
       })
     }
 
@@ -78,7 +78,8 @@ export const Message = memo(
       <RowWrapper
         hasTimeHeader={message.headerTime}
         onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}>
+        onMouseLeave={handleMouseLeave}
+      >
         {message.headerTime && (
           <TimeHeader>
             <div>
@@ -107,8 +108,7 @@ const TimeHeader = styled.div`
   margin-top: -0.1rem;
   text-align: center;
   width: 100%;
-  background: ${({ theme: { MESSAGING } }) =>
-    MESSAGING.dateDividerColour || '#0000'};
+  background: ${({ theme: { MESSAGING } }) => MESSAGING.dateDividerColour || '#0000'};
   height: 1px;
   div {
     background: white;
@@ -177,5 +177,5 @@ const AvatarWrapper = styled.div`
 `
 Message.propTypes = {
   message: object.isRequired,
-  prevType: string.isRequired
+  prevType: string.isRequired,
 }

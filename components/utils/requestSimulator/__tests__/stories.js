@@ -12,21 +12,21 @@ import Readme from '../README.md'
 export default {
   args: {
     responseType: 'success',
-    timeout: 1000
+    timeout: 1000,
   },
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/RequestSimulator'
+  title: 'Utils/RequestSimulator',
 }
 
 export const Main = (args) => {
   const [state, setstate] = useState({
-    message: ''
+    message: '',
   })
 
   const handleClick = async () => {

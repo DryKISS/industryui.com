@@ -18,15 +18,10 @@ export const DragAndDropable = ({ children, onFileDrop, onHover, onLeave }) => {
     onFileDrop(e)
   }
 
-  const {
-    getRootProps,
-    isDragAccept,
-    isDragActive,
-    isDragReject
-  } = useDropzone({
+  const { getRootProps, isDragAccept, isDragActive, isDragReject } = useDropzone({
     onDrop,
     onDragEnter,
-    onDragLeave
+    onDragLeave,
   })
 
   return (
@@ -42,14 +37,12 @@ const Container = styled.div`
   * {
     &::-webkit-scrollbar {
       width: 0.25rem;
-      background-color: ${({ theme: { MESSAGING } }) =>
-        MESSAGING.scrollBarColour};
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.scrollBarColour};
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background-color: ${({ theme: { MESSAGING } }) =>
-        MESSAGING.scrollThumbColour};
+      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.scrollThumbColour};
     }
   }
 `

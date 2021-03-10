@@ -23,8 +23,7 @@ export const BarWrapper = styled.aside`
   transition-timing-function: ${({ theme }) => theme.BAR.transitionTiming};
 
   ${({ minSize, open, placement, theme, width }) =>
-    placement === BarConfig.PLACEMENT.TOP ||
-    placement === BarConfig.PLACEMENT.BOTTOM
+    placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM
       ? css`
           flex-direction: row;
           height: ${minSize ?? theme.BAR.minSize};
@@ -45,8 +44,7 @@ export const BarWrapper = styled.aside`
           position: fixed;
           z-index: 1;
           ${placement}: 0;
-          ${(placement === BarConfig.PLACEMENT.LEFT ||
-            placement === BarConfig.PLACEMENT.RIGHT) &&
+          ${(placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
           css`
             top: 0;
           `}
@@ -56,8 +54,7 @@ export const BarWrapper = styled.aside`
                 box-shadow: none;
                 margin-${placement}:-${minSize ?? theme.BAR.minSize};
             `}
-          ${(placement === BarConfig.PLACEMENT.TOP ||
-            placement === BarConfig.PLACEMENT.BOTTOM) &&
+          ${(placement === BarConfig.PLACEMENT.TOP || placement === BarConfig.PLACEMENT.BOTTOM) &&
           css`
             left: 0;
           `}
@@ -73,11 +70,11 @@ BarWrapper.propTypes = {
   open: bool,
   placement: oneOf(Object.values(BarConfig.PLACEMENT)),
   variant: oneOf(['push', 'overlay']),
-  width: number
+  width: number,
 }
 
 BarWrapper.defaultProps = {
   placement: 'left',
   variant: 'overlay',
-  width: 10
+  width: 10,
 }

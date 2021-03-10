@@ -38,7 +38,7 @@ export const SelectField = forwardRef(
       const options = [
         <option disabled value="" key="initial0">
           {placeholder}
-        </option>
+        </option>,
       ]
 
       _range(range[1], range[0]).map((i) =>
@@ -66,14 +66,7 @@ export const SelectField = forwardRef(
           )
         }
 
-        return (
-          <option
-            children={text}
-            disabled={disabled}
-            key={`option${value}`}
-            value={value}
-          />
-        )
+        return <option children={text} disabled={disabled} key={`option${value}`} value={value} />
       })
     }
 
@@ -88,7 +81,8 @@ export const SelectField = forwardRef(
         showError={showError}
         size={size}
         {...data}
-        {...props}>
+        {...props}
+      >
         {range && range.length > 0 && renderRange()}
         {options && renderOptions()}
       </FieldHOC>
@@ -135,12 +129,12 @@ SelectField.propTypes = {
   options: array,
   placeholder: string,
   range: array,
-  showError: bool
+  showError: bool,
 }
 
 SelectField.defaultProps = {
   defaultValue: '',
   disabled: false,
   range: [],
-  showError: false
+  showError: false,
 }

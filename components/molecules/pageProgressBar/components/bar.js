@@ -14,7 +14,7 @@ export const Bar = ({ animationDuration, context, progress }) => (
     context={context}
     style={{
       marginLeft: `${(-1 + progress) * 100}%`,
-      transition: `margin-left ${animationDuration}ms linear`
+      transition: `margin-left ${animationDuration}ms linear`,
     }}
   />
 )
@@ -22,7 +22,7 @@ export const Bar = ({ animationDuration, context, progress }) => (
 Bar.propTypes = {
   animationDuration: number.isRequired,
   context: string,
-  progress: number.isRequired
+  progress: number.isRequired,
 }
 
 const StyledBar = styled.div`

@@ -6,8 +6,8 @@ describe('GetAddress Service', () => {
     const output = [
       {
         id: 0,
-        name: 'London , someStreet'
-      }
+        name: 'London , someStreet',
+      },
     ]
     expect(GetAddressService.fixAddresses(input)).toEqual(output)
   })
@@ -21,7 +21,7 @@ describe('GetAddress Service', () => {
     GetAddressService.getAddresses({
       callback: callFunc,
       postCode: POSTAL_CODE,
-      callThrottle: 0
+      callThrottle: 0,
     })
   })
 })

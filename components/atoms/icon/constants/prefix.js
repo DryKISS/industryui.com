@@ -7,5 +7,5 @@ export const ICON_PREFIX = {
   Regular: 'far',
   Light: 'fal',
   Duotone: 'fad',
-  Brands: 'fab'
+  Brands: 'fab',
 }

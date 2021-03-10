@@ -7,13 +7,7 @@ import React from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import {
-  TableCaption,
-  TableColumns,
-  TableData,
-  TableRow,
-  TableRows
-} from '../../../'
+import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
 
 // Style
 import styled from 'styled-components'
@@ -31,7 +25,7 @@ export const TableContent = ({
   sort,
   setSort,
   striped,
-  tableSpan
+  tableSpan,
 }) => {
   const bottomCells = { data: [], hasData: false }
   columns.forEach((element) => {
@@ -45,14 +39,7 @@ export const TableContent = ({
   return (
     <StyledTable className={className}>
       {caption !== '' && <TableCaption>{caption}</TableCaption>}
-      {columns && (
-        <TableColumns
-          align={align}
-          columns={columns}
-          setSort={setSort}
-          sort={sort}
-        />
-      )}
+      {columns && <TableColumns align={align} columns={columns} setSort={setSort} sort={sort} />}
 
       <tbody>
         {noData && !loading && !rows.length ? (
@@ -75,9 +62,7 @@ export const TableContent = ({
         {bottomCells?.hasData && (
           <TableRow>
             {bottomCells.data.map((cell, j) => (
-              <TableData key={`bottom${j}`}>
-                {cell ? cell.bottomCell : ''}
-              </TableData>
+              <TableData key={`bottom${j}`}>{cell ? cell.bottomCell : ''}</TableData>
             ))}
           </TableRow>
         )}
@@ -104,11 +89,11 @@ TableContent.propTypes = {
   rows: array.isRequired,
   sort: shape({
     item: string,
-    order: string
+    order: string,
   }),
   setSort: func,
   striped: bool,
-  tableSpan: number
+  tableSpan: number,
 }
 
 TableContent.defaultProps = {
@@ -118,5 +103,5 @@ TableContent.defaultProps = {
   loading: false,
   noData: true,
   sort: {},
-  striped: true
+  striped: true,
 }

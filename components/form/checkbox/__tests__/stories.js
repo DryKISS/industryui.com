@@ -20,38 +20,38 @@ const data = [
   {
     id: 'check',
     label: 'Yes',
-    value: 'check'
+    value: 'check',
   },
   {
     id: 'checked',
     label: 'No',
-    value: 'checked'
-  }
+    value: 'checked',
+  },
 ]
 
 export default {
   args: {
     legend: 'Do you like Industry-UI?',
-    stacked: false
+    stacked: false,
   },
   title: 'Form/Checkbox',
   component: CheckboxField,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const schema = object().shape({
-  checkbox: string().required()
+  checkbox: string().required(),
 })
 
 const BaseComponent = (props = {}) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {}
@@ -60,7 +60,7 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     name: 'checkbox',
     register: register,
-    ...props
+    ...props,
   }
 
   return (

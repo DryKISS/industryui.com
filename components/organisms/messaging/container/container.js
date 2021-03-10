@@ -18,7 +18,7 @@ import {
   MessagingActions,
   MessagingCommunicationService,
   MessagingSubscriber,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../'
 
 // Style
@@ -39,12 +39,12 @@ export const MessagingContainer = ({
   onMessageSubmit,
   onSearch,
   replyForMessages,
-  style
+  style,
 }) => {
   const messagesConfig = {
     ...(forwardForMessages && { hasForward: true }),
     ...(menuForMessages && { hasMenu: true }),
-    ...(replyForMessages && { hasReply: true })
+    ...(replyForMessages && { hasReply: true }),
   }
 
   const [Files, setFiles] = useState([])
@@ -65,8 +65,8 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: e
-      }
+        data: e,
+      },
     })
   }
   const closeHoverPopup = () => {
@@ -76,8 +76,8 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: []
-      }
+        data: [],
+      },
     })
   }
 
@@ -93,8 +93,8 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: newFiles
-      }
+        data: newFiles,
+      },
     })
   }
 
@@ -103,8 +103,8 @@ export const MessagingContainer = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: Files
-      }
+        data: Files,
+      },
     })
   }
 
@@ -140,22 +140,22 @@ export const MessagingContainer = ({
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: onAction,
-    subscriber: MessagingSubscriber
+    subscriber: MessagingSubscriber,
   })
 
   const handleSubmit = (messageToSend) => {
     onMessageSubmit(messageToSend)
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: { action: MessagingActions.CLEAR_INPUT }
+      payload: { action: MessagingActions.CLEAR_INPUT },
     })
 
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: []
-      }
+        data: [],
+      },
     })
     setIsDragHoverOpen(() => false)
     setTimeout(() => {
@@ -172,7 +172,8 @@ export const MessagingContainer = ({
         <StyledContainer
           messagesContainerHeight={hasMessage ? messagesContainerHeight : 0}
           className={className}
-          style={style}>
+          style={style}
+        >
           <MessageList
             config={messagesConfig}
             initialMessages={messages}
@@ -197,8 +198,7 @@ export const MessagingContainer = ({
   )
 }
 const StyledContainer = styled.div`
-  background-color: ${({ theme: { MESSAGING } }) =>
-    MESSAGING.containerBackground};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>
     messagesContainerHeight ? messagesContainerHeight + 'px' : '300px'};
   overflow: hidden;
@@ -220,5 +220,5 @@ MessagingContainer.propTypes = {
   onFilter: func.isRequired,
   onSearch: func.isRequired,
   onMessageSubmit: func.isRequired,
-  style: object
+  style: object,
 }

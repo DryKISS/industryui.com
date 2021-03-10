@@ -28,6 +28,6 @@ export const useTranslation = () => {
 
   return {
     t,
-    locale
+    locale,
   }
 }

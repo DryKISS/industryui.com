@@ -3,16 +3,7 @@
  */
 
 // React
-import {
-  any,
-  func,
-  node,
-  number,
-  objectOf,
-  oneOf,
-  oneOfType,
-  string
-} from 'prop-types'
+import { any, func, node, number, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
 import { THEME_CONTEXT } from '../../theme/constants/context'
@@ -29,10 +20,10 @@ export const propTypes = {
   gmail: string,
   size: oneOf(Object.values(THEME_SIZE)),
   src: string,
-  style: objectOf(oneOfType([number, string]))
+  style: objectOf(oneOfType([number, string])),
 }
 
 export const defaultProps = {
   context: 'primary',
-  size: 'lg'
+  size: 'lg',
 }

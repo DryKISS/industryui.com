@@ -20,5 +20,5 @@ export const BlogMedia = ({ config, media }) => {
 
 BlogMedia.propTypes = {
   config: object.isRequired,
-  media: array.isRequired
+  media: array.isRequired,
 }

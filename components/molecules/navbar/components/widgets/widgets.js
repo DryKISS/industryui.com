@@ -14,7 +14,7 @@ import {
   NavDropdown,
   NavIcon,
   NavLink,
-  NavNotification
+  NavNotification,
 } from '../../../../'
 
 // Style
@@ -26,18 +26,7 @@ export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
       {Object.entries(widgets).map(([direction, link]) => (
         <StyledList direction={direction} key={direction}>
           {link.map(
-            ({
-              active,
-              Component,
-              icon,
-              id,
-              name,
-              onClick,
-              position,
-              prefix,
-              to,
-              type
-            }) => (
+            ({ active, Component, icon, id, name, onClick, position, prefix, to, type }) => (
               <StyledListItem brand={brand} key={id}>
                 {Component && <Component />}
 
@@ -45,9 +34,7 @@ export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
                   type.as === 'button' &&
                   NavButton({ closeMenu, id, name, to, type, visible })}
 
-                {type &&
-                  type.as === 'icon' &&
-                  NavIcon({ closeMenu, to, type, visible })}
+                {type && type.as === 'icon' && NavIcon({ closeMenu, to, type, visible })}
 
                 {type &&
                   type.as === 'dropdown' &&
@@ -57,7 +44,7 @@ export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
                     name,
                     position,
                     prefix,
-                    type
+                    type,
                   })}
 
                 {type &&
@@ -73,7 +60,7 @@ export const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
                     name,
                     onClick,
                     to,
-                    visible
+                    visible,
                   })}
               </StyledListItem>
             )
@@ -97,8 +84,7 @@ const StyledList = styled.ul`
     background-color: initial;
     flex-direction: row;
     flex: 1;
-    justify-content: ${({ direction }) =>
-      direction === 'left' ? 'flex-start' : 'flex-end'};
+    justify-content: ${({ direction }) => (direction === 'left' ? 'flex-start' : 'flex-end')};
     text-align: left;
   `}
 `
@@ -122,8 +108,7 @@ const StyledListItem = styled.li`
     border: none;
     display: flex;
     flex-direction: column;
-    justify-content: ${({ theme }) =>
-      theme.NAVBAR.justifyContentDesktopListItem};
+    justify-content: ${({ theme }) => theme.NAVBAR.justifyContentDesktopListItem};
     margin-bottom: ${({ theme }) => theme.NAVBAR.marginBottomDesktopListItem};
   `}
 `
@@ -133,5 +118,5 @@ NavWidgets.propTypes = {
   closeMenu: func,
   type: string,
   visible: bool,
-  widgets: object.isRequired
+  widgets: object.isRequired,
 }

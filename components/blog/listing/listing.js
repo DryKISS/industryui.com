@@ -26,8 +26,7 @@ export const BlogListing = ({ articles, author, category, config, tag }) => {
   const _findArticle = (articles) => {
     return articles.filter((article) => {
       return (
-        slugify(category ? article.category : article.author) ===
-          (category || author) &&
+        slugify(category ? article.category : article.author) === (category || author) &&
         article.homepage !== false &&
         article.published
       )
@@ -69,5 +68,5 @@ BlogListing.propTypes = {
   author: string,
   category: string,
   config: object,
-  tag: string
+  tag: string,
 }

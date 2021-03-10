@@ -14,18 +14,18 @@ import { Sidebar as Data } from '../__mocks__/links'
 
 export default {
   args: {
-    data: Data
+    data: Data,
   },
 
   component: Sidebar,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Sidebar'
+  title: 'Molecules/Sidebar',
 }
 
 export const main = (args) => <Sidebar {...args} />

@@ -4,5 +4,5 @@ export const InputDecorationTypes = {
   DANGER: 'danger',
   READONLY: 'readOnly',
   SUCCESS: 'success',
-  WARNING: 'warning'
+  WARNING: 'warning',
 }

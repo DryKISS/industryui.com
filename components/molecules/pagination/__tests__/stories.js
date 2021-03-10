@@ -18,22 +18,22 @@ export default {
     pageCount: 10,
     context: 'primary',
     size: 'md',
-    showNextAndPrev: false
+    showNextAndPrev: false,
   },
   argTypes: {
     context: ContextControl(),
-    size: SizeControl()
+    size: SizeControl(),
   },
 
   component: Pagination,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Pagination'
+  title: 'Molecules/Pagination',
 }
 
 const BaseComponent = (props) => {
@@ -42,7 +42,7 @@ const BaseComponent = (props) => {
   const defaultProps = {
     currentPage,
     onPageChange: setCurrentPage,
-    ...props
+    ...props,
   }
 
   return <Pagination {...defaultProps} />

@@ -23,7 +23,7 @@ export const FacebookPagePlugin = ({
   smallHeader,
   tabs,
   to,
-  width
+  width,
 }) => {
   const url = `${p}?href=${to}&tabs=${tabs}&width=${width}&height=${height}
     &small_header=${smallHeader} &adapt_container_width=${adaptContainerWidth}
@@ -54,10 +54,12 @@ export const FacebookPagePlugin = ({
           data-show-facepile="true"
           data-small-header="false"
           data-tabs="timeline"
-          data-width="">
+          data-width=""
+        >
           <blockquote
             cite="https://www.facebook.com/maitaidating/"
-            className="fb-xfbml-parse-ignore">
+            className="fb-xfbml-parse-ignore"
+          >
             <a href={to}>Mai Tai Dating</a>
           </blockquote>
         </div>
@@ -77,7 +79,7 @@ FacebookPagePlugin.propTypes = {
   smallHeader: bool,
   tabs: string,
   to: string.isRequired,
-  width: number
+  width: number,
 }
 
 FacebookPagePlugin.defaultProps = {
@@ -89,5 +91,5 @@ FacebookPagePlugin.defaultProps = {
   showFacepile: true,
   smallHeader: true,
   tabs: 'timeline,messages,events',
-  width: 340
+  width: 340,
 }

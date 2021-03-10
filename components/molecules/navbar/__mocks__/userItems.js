@@ -5,19 +5,19 @@ export const UserItems = [
   {
     id: 'settings',
     name: 'Settings',
-    to: '/'
+    to: '/',
   },
   {
     id: 'profile',
     name: 'Profile',
-    to: '/'
+    to: '/',
   },
   {
-    divider: true
+    divider: true,
   },
   {
     id: 'logout',
     name: 'Logout',
-    to: '/'
-  }
+    to: '/',
+  },
 ]

@@ -10,15 +10,7 @@ import { bool, object, oneOfType, string } from 'prop-types'
 // UI
 import { Button, Divider, Link } from '../../'
 
-export const Buttons = ({
-  back,
-  backText,
-  next,
-  nextDisabled,
-  nextText,
-  pathBack,
-  pathNext
-}) => {
+export const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
   return (
     <>
       <Divider size="sm" />
@@ -42,11 +34,7 @@ export const Buttons = ({
           )}
 
           {!pathNext && (
-            <Button
-              context="primary"
-              disabled={nextDisabled}
-              size="lg"
-              type="submit">
+            <Button context="primary" disabled={nextDisabled} size="lg" type="submit">
               {nextText}
             </Button>
           )}
@@ -65,10 +53,10 @@ Buttons.propTypes = {
   nextDisabled: bool,
   nextText: string,
   pathBack: oneOfType([object, string]),
-  pathNext: string
+  pathNext: string,
 }
 
 Buttons.defaultProps = {
   backText: 'Back',
-  nextText: 'Next'
+  nextText: 'Next',
 }

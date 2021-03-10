@@ -20,20 +20,20 @@ export default {
     line2: 'Grandhouse',
     line3: 'Bermondsey',
     postcode: 'W1 2N',
-    town: 'London'
+    town: 'London',
   },
   argTypes: {
-    country: CountryControl
+    country: CountryControl,
   },
   component: Address,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Address'
+  title: 'Atoms/Address',
 }
 
 export const main = (args) => <Address {...args} />

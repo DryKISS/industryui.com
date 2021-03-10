@@ -14,5 +14,5 @@ export const ICON_SIZE = {
   x7: '7x',
   x8: '8x',
   x9: '9x',
-  x10: '10x'
+  x10: '10x',
 }

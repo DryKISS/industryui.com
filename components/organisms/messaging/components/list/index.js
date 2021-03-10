@@ -7,12 +7,7 @@ import React, { memo, useEffect, useRef, useState } from 'react'
 import { array } from 'prop-types'
 
 // React Virtualised
-import {
-  AutoSizer,
-  CellMeasurer,
-  CellMeasurerCache,
-  List
-} from 'react-virtualized'
+import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
 
 // UI
 import {
@@ -21,25 +16,15 @@ import {
   MessageNames,
   MessagingSubscriber,
   MessagingActions,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../../'
 
 // Style
 import styled, { css } from 'styled-components'
 
-const renderMessage = (
-  { index, parent, key, style },
-  messages,
-  cache,
-  config
-) => {
+const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
   return (
-    <CellMeasurer
-      cache={cache}
-      key={index}
-      parent={parent}
-      columnIndex={0}
-      rowIndex={index}>
+    <CellMeasurer cache={cache} key={index} parent={parent} columnIndex={0} rowIndex={index}>
       <MessageContainer type={messages[index].type} style={style}>
         <Message
           config={config}
@@ -121,7 +106,7 @@ export const MessageList = memo(
       dependencies: [Messages.length],
       messageName: MessageNames.Messaging.MESSAGING_ACTION,
       onRecieve: onAction,
-      subscriber: MessagingSubscriber
+      subscriber: MessagingSubscriber,
     })
 
     return (
@@ -166,5 +151,5 @@ const MessageContainer = styled.div`
         `}
 `
 MessageList.propTypes = {
-  initialMessages: array.isRequired
+  initialMessages: array.isRequired,
 }

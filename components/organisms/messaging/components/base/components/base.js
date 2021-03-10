@@ -26,7 +26,7 @@ import {
   Preview,
   ReplyContainer,
   Row,
-  TranslationService
+  TranslationService,
 } from '../../../../../'
 
 import { MessageIcon } from './icon'
@@ -41,9 +41,7 @@ import createEmojiPlugin from '@draft-js-plugins/emoji'
 import styled, { css } from 'styled-components'
 
 const mentionPlugin = createMentionPlugin({
-  mentionComponent: (mentionProps) => (
-    <MentionComponent mentionProps={mentionProps} />
-  )
+  mentionComponent: (mentionProps) => <MentionComponent mentionProps={mentionProps} />,
 })
 
 const emojiPlugin = createEmojiPlugin()
@@ -67,13 +65,11 @@ export const MessageBase = ({
   time,
   to,
   type,
-  voice
+  voice,
 }) => {
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(
-      content.blocks
-        ? convertFromRaw(content)
-        : ContentState.createFromText(content)
+      content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
 
@@ -94,9 +90,7 @@ export const MessageBase = ({
           plainText = content
         }
         const { response } = await TranslationService.Translate(plainText)
-        translated.current = EditorState.createWithContent(
-          ContentState.createFromText(response)
-        )
+        translated.current = EditorState.createWithContent(ContentState.createFromText(response))
         setEditorState(translated.current)
         setShowingTranslation(true)
         setloadingTranslation(false)
@@ -107,9 +101,7 @@ export const MessageBase = ({
     } else {
       setEditorState(
         EditorState.createWithContent(
-          content.blocks
-            ? convertFromRaw(content)
-            : ContentState.createFromText(content)
+          content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
         )
       )
       setShowingTranslation(false)
@@ -150,18 +142,14 @@ export const MessageBase = ({
           time,
           to,
           type,
-          voice
-        }
-      }
+          voice,
+        },
+      },
     })
   }
 
   const handleFileClick = (files, index) => {
-    const av = avatar ? (
-      <Avatar size="xxs" src={avatar} />
-    ) : (
-      <Avatar size="xxs" content={from[0]} />
-    )
+    const av = avatar ? <Avatar size="xxs" src={avatar} /> : <Avatar size="xxs" content={from[0]} />
 
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
@@ -172,9 +160,9 @@ export const MessageBase = ({
           selectedIndex: index,
           avatar: av,
           from,
-          time
-        }
-      }
+          time,
+        },
+      },
     })
   }
 
@@ -193,10 +181,11 @@ export const MessageBase = ({
               items={[
                 { name: 'Star Message', id: 'star' },
                 { name: 'Edit Message', id: 'edit' },
-                { name: 'Delete Message', id: 'delete' }
+                { name: 'Delete Message', id: 'delete' },
               ]}
               position="bottom"
-              onChange={(item) => dropDownAction(item)}>
+              onChange={(item) => dropDownAction(item)}
+            >
               <MenuIcon />
             </Dropdown>
           </MenuWrapper>
@@ -210,8 +199,9 @@ export const MessageBase = ({
             style={{
               display: 'flex',
               alignItems: 'center',
-              marginTop: '-0.5rem'
-            }}>
+              marginTop: '-0.5rem',
+            }}
+          >
             <MessageIcon icon={icon} />
             {to && <MessageTo to={to} />}
             <StyledReply>{reply}</StyledReply>
@@ -226,9 +216,7 @@ export const MessageBase = ({
           )}
 
           <Column sm={pictureId ? 8 : !type ? 11 : 12}>
-            {replyTo && (
-              <ReplyContainer message={replyTo} inMessage onClose={null} />
-            )}
+            {replyTo && <ReplyContainer message={replyTo} inMessage onClose={null} />}
             <StyledContent>
               {voice && (
                 <AudioWrapper>
@@ -238,12 +226,7 @@ export const MessageBase = ({
 
               {hasText && (
                 <MessagingEditor
-                  plugins={[
-                    emojiPlugin,
-                    hashtagPlugin,
-                    linkifyPlugin,
-                    mentionPlugin
-                  ]}
+                  plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
                   onChange={(e) => setEditorState(e)}
                   editorState={editorState}
                   readOnly
@@ -254,10 +237,7 @@ export const MessageBase = ({
 
           {!type && (
             <Column sm={1}>
-              <Icon
-                color={statusText === 'Delivered' ? 'green' : '#bbb'}
-                icon="check-circle"
-              />
+              <Icon color={statusText === 'Delivered' ? 'green' : '#bbb'} icon="check-circle" />
             </Column>
           )}
         </Row>
@@ -274,9 +254,7 @@ export const MessageBase = ({
             {Array.from(attachments).forEach((item, index) => {
               if (index < 4) {
                 return (
-                  <SingleAttachment
-                    key={index}
-                    onClick={() => handleFileClick(attachments, index)}>
+                  <SingleAttachment key={index} onClick={() => handleFileClick(attachments, index)}>
                     {attachments.length > 4 && index === 3 && (
                       <OverlayForAdditionalMessages>
                         +{attachments.length - 4}
@@ -288,7 +266,7 @@ export const MessageBase = ({
                       imageStyles={{
                         minHeight: '10rem',
                         height: '10rem',
-                        objectFit: 'cover'
+                        objectFit: 'cover',
                       }}
                       file={item}
                       message
@@ -380,13 +358,9 @@ const MessageWrapper = styled.div`
 
 const StyledCard = styled(Card)`
   background-color: ${({ type, theme: { MESSAGING } }) =>
-    type === 'in'
-      ? MESSAGING.receivedMessageBackground
-      : MESSAGING.sentMessageBackground};
-  border: 1px solid
-    ${({ theme: { MESSAGING } }) => MESSAGING.messageBorderColour};
-  border-radius: ${({ type }) =>
-    type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem'};
+    type === 'in' ? MESSAGING.receivedMessageBackground : MESSAGING.sentMessageBackground};
+  border: 1px solid ${({ theme: { MESSAGING } }) => MESSAGING.messageBorderColour};
+  border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
   padding: 1.25rem 1rem;
 `
@@ -437,5 +411,5 @@ MessageBase.propTypes = {
   pictureId: string,
   statusText: string,
   time: string,
-  type: string
+  type: string,
 }

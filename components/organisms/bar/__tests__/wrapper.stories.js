@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Bar/Wrapper'
+  title: 'Organisms/Bar/Wrapper',
 }
 
 export const wrapper = (args) => {

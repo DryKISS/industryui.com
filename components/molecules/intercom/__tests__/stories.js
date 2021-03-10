@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Intercom'
+  title: 'Molecules/Intercom',
 }
 
 export const main = () => <Intercom appID="12345" />

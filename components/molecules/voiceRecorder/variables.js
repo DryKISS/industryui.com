@@ -11,5 +11,5 @@ export const VOICE_RECORDER = {
   loadingStateColour: THEME_COLOUR.dark,
   overlayBackground: THEME_COLOUR.light,
   recordingStateColour: THEME_COLOUR.success,
-  timerColour: THEME_COLOUR.info
+  timerColour: THEME_COLOUR.info,
 }

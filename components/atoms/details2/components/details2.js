@@ -11,7 +11,7 @@ import {
   Details2Header,
   Details2Content,
   MessageNames,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../'
 
 import { Details2PropTypes, Details2DefaultProps } from '../props'
@@ -36,7 +36,7 @@ export const Details2 = ({
   titleContext,
   toolbar,
   uniqueId,
-  unmountContentOnClose
+  unmountContentOnClose,
 }) => {
   const animationTime = disableAnimation ? 0 : animationDuration
   const [isOpen, setisOpen] = useState(open)
@@ -61,8 +61,7 @@ export const Details2 = ({
       () => {
         window &&
           window.requestAnimationFrame(() => {
-            contentRef.current &&
-              setcontentHeight(() => contentRef.current.offsetHeight)
+            contentRef.current && setcontentHeight(() => contentRef.current.offsetHeight)
           })
       },
       !isOpen ? animationTime ?? 300 : 0
@@ -79,7 +78,7 @@ export const Details2 = ({
     id: uniqueId,
     messageName: MessageNames.DetailsComponent.SET_OPEN,
     onRecieve: (e) => handleEventRecieve(e),
-    subscriber: DetailsSubscriber
+    subscriber: DetailsSubscriber,
   })
 
   const handleOpenClose = () => {
@@ -87,11 +86,7 @@ export const Details2 = ({
   }
 
   return (
-    <Wrapper
-      context={context}
-      style={style}
-      fitParentHeight={fitParentHeight}
-      open={isOpen}>
+    <Wrapper context={context} style={style} fitParentHeight={fitParentHeight} open={isOpen}>
       <Details2Header
         animationtime={animationTime}
         children={children}
@@ -120,8 +115,7 @@ export const Details2 = ({
 
 const Wrapper = styled.div`
   background: ${({ theme }) => theme.DETAILS2.wrapper.background};
-  border-bottom: 2px solid
-    ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
+  border-bottom: 2px solid ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
   transition: height 0.3 cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
 

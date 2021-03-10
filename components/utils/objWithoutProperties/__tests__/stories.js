@@ -13,11 +13,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/objWithoutProperties'
+  title: 'Utils/objWithoutProperties',
 }
 
 export const Main = () => {
@@ -25,7 +25,7 @@ export const Main = () => {
     first: 'firstValue',
     sec: 'secValue',
     third: 'thirdValue',
-    fourth: 'fourthValue'
+    fourth: 'fourthValue',
   }
 
   return (
@@ -36,9 +36,7 @@ export const Main = () => {
 
       <Text>
         removed secound and third key-values :{' '}
-        {JSON.stringify(
-          objectWithoutProperties(originalObject, ['sec', 'third'])
-        )}
+        {JSON.stringify(objectWithoutProperties(originalObject, ['sec', 'third']))}
       </Text>
     </>
   )

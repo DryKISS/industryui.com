@@ -6,9 +6,7 @@ import { func, number, string } from 'prop-types'
 
 const getAddressesApi = async (apiKey, postCode) => {
   try {
-    const { data } = await axios.get(
-      `https://api.getAddress.io/find/${postCode}?api-key=${apiKey}`
-    )
+    const { data } = await axios.get(`https://api.getAddress.io/find/${postCode}?api-key=${apiKey}`)
     return { response: data, hasError: false }
   } catch (error) {
     return { response: 'Error While Getting Address List', hasError: true }
@@ -17,13 +15,7 @@ const getAddressesApi = async (apiKey, postCode) => {
 
 let timeout
 
-const getAddresses = ({
-  apiKey,
-  callback: callFunc,
-  callThrottle,
-  postCode,
-  validator
-}) => {
+const getAddresses = ({ apiKey, callback: callFunc, callThrottle, postCode, validator }) => {
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     const isValid = validator(postCode)
@@ -43,11 +35,9 @@ const addressStringSeparator = ', '
 const fixAddresses = (addresses) => {
   return addresses
     .map((addressString) => {
-      const elements = addressString
-        .split(addressStringSeparator)
-        .filter((part) => {
-          return part !== ''
-        })
+      const elements = addressString.split(addressStringSeparator).filter((part) => {
+        return part !== ''
+      })
       return elements.join(', ')
     })
     .map((item, index) => {
@@ -61,5 +51,5 @@ getAddresses.propTypes = {
   callback: func.isRequired,
   callThrottle: number.isRequired,
   postCode: string.isRequired,
-  validator: func.isRequired
+  validator: func.isRequired,
 }

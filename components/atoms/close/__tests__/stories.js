@@ -6,10 +6,7 @@
 import React from 'react'
 
 // Storybook
-import {
-  ContextControl,
-  IconPrefixControl
-} from '../../../../.storybook/decorators'
+import { ContextControl, IconPrefixControl } from '../../../../.storybook/decorators'
 
 // UI
 import { Close } from '../close'
@@ -21,21 +18,21 @@ export default {
     click: () => {},
     context: 'dark',
     icon: 'times-circle',
-    prefix: 'fas'
+    prefix: 'fas',
   },
   argTypes: {
     context: ContextControl(),
-    prefix: IconPrefixControl()
+    prefix: IconPrefixControl(),
   },
   component: Close,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Close'
+  title: 'Atoms/Close',
 }
 
 export const main = (args) => {

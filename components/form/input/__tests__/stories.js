@@ -25,7 +25,7 @@ import {
   InputTypes,
   InputDecorationTypes,
   Row,
-  Space
+  Space,
 } from '../../../'
 
 import { THEME_SIZE } from '../../../theme/constants/size'
@@ -36,20 +36,20 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Input'
+  title: 'Form/Input',
 }
 
 const InputElement = (args) => {
   const schema = object().shape({
-    email: string().required('Please Enter an email').email()
+    email: string().required('Please Enter an email').email(),
   })
 
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {
@@ -61,18 +61,14 @@ const InputElement = (args) => {
       <Row>
         <Column md={6}>
           <Input
-            decoration={
-              errors?.email ? InputDecorationTypes.DANGER : args.decoration
-            }
+            decoration={errors?.email ? InputDecorationTypes.DANGER : args.decoration}
             adornments={{
               ...(args.WithStartAdornment && { startAdornment: <>S</> }),
-              ...(args.WithEndAdornment && { endAdornment: <>E</> })
+              ...(args.WithEndAdornment && { endAdornment: <>E</> }),
             }}
             label="Label"
             type={args.inputType}
-            message={
-              errors?.email?.message ? errors.email.message : args.messageText
-            }
+            message={errors?.email?.message ? errors.email.message : args.messageText}
             errors={errors}
             name="email"
             register={register}
@@ -97,7 +93,7 @@ InputTemplate.args = {
   messageText: '',
   size: THEME_SIZE.MD,
   WithStartAdornment: false,
-  WithEndAdornment: false
+  WithEndAdornment: false,
 }
 
 InputTemplate.argTypes = {
@@ -105,41 +101,41 @@ InputTemplate.argTypes = {
     name: 'Decoration',
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(InputDecorationTypes)
-    }
+      options: arrayOfValues(InputDecorationTypes),
+    },
   },
 
   inputType: {
     name: 'Input Type',
     control: {
       type: ControlTypes.Select,
-      options: arrayOfValues(InputTypes)
-    }
+      options: arrayOfValues(InputTypes),
+    },
   },
 
   messageText: {
-    name: 'Message Text'
+    name: 'Message Text',
   },
 
   size: {
     name: 'Size',
     control: {
       type: ControlTypes.Select,
-      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
-    }
+      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG],
+    },
   },
 
   WithStartAdornment: {
     name: 'with Start Adornment',
     control: {
-      type: ControlTypes.Boolean
-    }
+      type: ControlTypes.Boolean,
+    },
   },
 
   WithEndAdornment: {
     name: 'with End Adornment',
     control: {
-      type: ControlTypes.Boolean
-    }
-  }
+      type: ControlTypes.Boolean,
+    },
+  },
 }

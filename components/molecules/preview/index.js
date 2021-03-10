@@ -65,12 +65,12 @@ export const Preview = memo(
     showPagesNumber,
     small,
     message,
-    zoomable
+    zoomable,
   }) => {
     const [pdfLoader, setPdfLoader] = useState({
       Document: null,
       Page: null,
-      pdfjs: null
+      pdfjs: null,
     })
 
     const loadModules = async () => {
@@ -93,7 +93,7 @@ export const Preview = memo(
         onPdfDocumentLoaded({
           file,
           name: file?.name,
-          pagesNumber: numPages
+          pagesNumber: numPages,
         })
     }
 
@@ -147,9 +147,7 @@ export const Preview = memo(
           <PdfWrapper onClick={onClick} small={small} message={message}>
             {pdfLoader.Document && (
               <>
-                <pdfLoader.Document
-                  file={src}
-                  onLoadSuccess={onDocumentLoadSuccess}>
+                <pdfLoader.Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
                   <pdfLoader.Page pageNumber={1} />
                 </pdfLoader.Document>
               </>

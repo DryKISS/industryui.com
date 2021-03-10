@@ -16,9 +16,9 @@ const EventContent = ({
   defaultEventColor,
   event: {
     extendedProps: { context, description, tooltip },
-    title
+    title,
   },
-  showTooltip
+  showTooltip,
 }) => {
   const content = (
     <StyledEvent context={context || defaultEventColor}>
@@ -26,31 +26,17 @@ const EventContent = ({
     </StyledEvent>
   )
 
-  return showTooltip ? (
-    <Tooltip content={tooltip || description}>{content}</Tooltip>
-  ) : (
-    content
-  )
+  return showTooltip ? <Tooltip content={tooltip || description}>{content}</Tooltip> : content
 }
 
-export const renderEvent = ({
-  defaultEventColor,
-  event,
-  el,
-  showTooltip,
-  view
-}) => {
+export const renderEvent = ({ defaultEventColor, event, el, showTooltip, view }) => {
   const eventDiv = document.createElement('div')
   const classes = Array.from(el.classList)
   eventDiv.classList.add(...classes)
 
   ReactDOM.render(
     <ThemeProvider theme={Theme}>
-      <EventContent
-        defaultEventColor={defaultEventColor}
-        event={event}
-        showTooltip={showTooltip}
-      />
+      <EventContent defaultEventColor={defaultEventColor} event={event} showTooltip={showTooltip} />
     </ThemeProvider>,
     eventDiv
   )

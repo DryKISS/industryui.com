@@ -16,11 +16,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/ConvertImgUrlToDataURLviaCanvas'
+  title: 'Utils/ConvertImgUrlToDataURLviaCanvas',
 }
 
 export const ConvertImgUrlToDataURLviaCanvas = () => {

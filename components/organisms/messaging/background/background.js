@@ -18,9 +18,9 @@ export const MessageBackground = styled.div`
 `
 
 MessageBackground.propTypes = {
-  path: string
+  path: string,
 }
 
 MessageBackground.defaultProps = {
-  path: '/messaging/background.png'
+  path: '/messaging/background.png',
 }

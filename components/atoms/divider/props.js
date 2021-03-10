@@ -13,11 +13,11 @@ export const propTypes = {
   className: any,
   context: oneOf(Object.values(THEME_CONTEXT)),
   size: oneOf(Object.values(THEME_SIZE)),
-  thickness: number
+  thickness: number,
 }
 
 export const defaultProps = {
   context: 'light',
   size: 'md',
-  thickness: 2
+  thickness: 2,
 }

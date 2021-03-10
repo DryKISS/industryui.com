@@ -36,12 +36,12 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
 
   const {
     data: { items } = {
-      items: []
-    }
+      items: [],
+    },
   } = useSubscription(GET_NOTIFICATIONS, {
     variables: {
-      userId: 48
-    }
+      userId: 48,
+    },
   })
 
   // const fetchNotifications = async () => {

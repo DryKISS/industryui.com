@@ -14,5 +14,5 @@ export const BlogReadTime = ({ time }) => {
 }
 
 BlogReadTime.propTypes = {
-  time: number.isRequired
+  time: number.isRequired,
 }

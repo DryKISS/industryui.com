@@ -73,5 +73,5 @@ export const Theme = {
   TABS,
   TEXT,
   TYPOGRAPHY,
-  VOICE_RECORDER
+  VOICE_RECORDER,
 }

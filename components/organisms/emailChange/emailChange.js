@@ -14,27 +14,18 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { EmailChangeSchema as schema } from './schema'
 
 // UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormLabel,
-  PageHeading,
-  Space,
-  Text
-} from '../../'
+import { Alert, Button, FormField, Form, FormLabel, PageHeading, Space, Text } from '../../'
 
 export const EmailChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const [error] = useState(false)
 
   const defaultOptions = {
     errors: errors,
-    register: register
+    register: register,
   }
 
   return (
@@ -64,8 +55,7 @@ export const EmailChange = ({ showPlaceholder, submit }) => {
         <Space />
 
         <Text>
-          We will send you a re-validation email after this. Please also check
-          your spam folder.
+          We will send you a re-validation email after this. Please also check your spam folder.
         </Text>
       </Form>
     </>
@@ -74,9 +64,9 @@ export const EmailChange = ({ showPlaceholder, submit }) => {
 
 EmailChange.propTypes = {
   showPlaceholder: bool,
-  submit: func.isRequired
+  submit: func.isRequired,
 }
 
 EmailChange.defaultProps = {
-  showPlaceholder: false
+  showPlaceholder: false,
 }

@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/EmojiMart'
+  title: 'Molecules/EmojiMart',
 }
 
 export const main = () => <EmojiMart open />

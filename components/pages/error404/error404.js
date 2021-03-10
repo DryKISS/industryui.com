@@ -17,15 +17,14 @@ export const Error404 = () => {
       and analytics.
     `,
     path: '/404',
-    title: 'DryKISS develops hybrid mobile and responsive websites'
+    title: 'DryKISS develops hybrid mobile and responsive websites',
   }
 
   return (
     <Page heading="404 ERROR PAGE – NOT FOUND" meta={meta}>
       <Text>
-        The page you were looking for no longer exists or never did. Please use
-        the links at the top of your screen to get back in the game, or click
-        here to go home and start again.
+        The page you were looking for no longer exists or never did. Please use the links at the top
+        of your screen to get back in the game, or click here to go home and start again.
       </Text>
     </Page>
   )

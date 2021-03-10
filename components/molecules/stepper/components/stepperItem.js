@@ -53,9 +53,7 @@ export const StepperItem = ({ item }) => {
 
       <StyledLabel active={item.date}>{item.label}</StyledLabel>
 
-      {(item.date || item.info) && (
-        <StyledInfo>{item.date || item.info}</StyledInfo>
-      )}
+      {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
 
       {item.content && item.content.length > 0 && (
         <StyledContent>{renderContent(item.content)}</StyledContent>
@@ -82,8 +80,7 @@ const StyledStepperItem = styled.li`
 
 const StyledIconContainer = styled.div`
   align-items: center;
-  background: ${({ active, theme }) =>
-    active ? theme.STEPPER.colour : '#fff'};
+  background: ${({ active, theme }) => (active ? theme.STEPPER.colour : '#fff')};
   border: 3px solid ${({ theme }) => theme.STEPPER.colour};
   border-radius: 50%;
   display: flex;
@@ -106,8 +103,7 @@ const StyledContent = styled.ul`
 `
 
 const StyledLabel = styled.span`
-  color: ${({ active, theme }) =>
-    active ? theme.COLOUR.black : theme.COLOUR.dark};
+  color: ${({ active, theme }) => (active ? theme.COLOUR.black : theme.COLOUR.dark)};
   margin: 0 0.5rem;
 `
 
@@ -116,5 +112,5 @@ const StyledInfo = styled.span`
 `
 
 StyledStepperItem.propTypes = {
-  item: object
+  item: object,
 }

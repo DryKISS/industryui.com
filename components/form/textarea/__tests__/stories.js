@@ -22,29 +22,29 @@ import Readme from '../README.md'
 export default {
   args: {
     name: 'textarea',
-    rows: 1
+    rows: 1,
   },
   argTypes: {
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: TextareaField,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Textarea'
+  title: 'Form/Textarea',
 }
 
 const schema = object().shape({
-  textarea: string().required()
+  textarea: string().required(),
 })
 
 export const Main = (args) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {
@@ -54,7 +54,7 @@ export const Main = (args) => {
   const defaultProps = {
     errors: errors,
     register: register,
-    ...args
+    ...args,
   }
 
   return (

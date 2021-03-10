@@ -3,16 +3,7 @@
  */
 
 // React
-import {
-  any,
-  bool,
-  object,
-  objectOf,
-  oneOf,
-  oneOfType,
-  number,
-  string
-} from 'prop-types'
+import { any, bool, object, objectOf, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
 import { THEME_CONTEXT } from '../../theme/constants/context'
@@ -24,11 +15,11 @@ export const propTypes = {
   noMargin: bool,
   noWrap: bool,
   style: objectOf(oneOfType([number, string])),
-  tag: string
+  tag: string,
 }
 
 export const defaultProps = {
   context: THEME_CONTEXT.DARK,
   noWrap: false,
-  tag: 'h1'
+  tag: 'h1',
 }

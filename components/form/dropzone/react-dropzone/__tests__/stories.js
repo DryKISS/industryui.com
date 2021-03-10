@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Dropzone/Standard'
+  title: 'Form/Dropzone/Standard',
 }
 
 const BaseComponent = (props = {}) => {
@@ -31,7 +31,7 @@ const BaseComponent = (props = {}) => {
     disabled: false,
     multiple: true,
     onChange: onChange,
-    ...props
+    ...props,
   }
 
   return <Dropzone {...defaultProps} />

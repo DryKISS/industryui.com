@@ -14,16 +14,10 @@ export const TableLoading = memo(({ colsLength, show }) => {
     return null
   }
 
-  return (
-    <PageLoading
-      indicator={<LdsSpinner size={50} />}
-      opacity={0.7}
-      position="absolute"
-    />
-  )
+  return <PageLoading indicator={<LdsSpinner size={50} />} opacity={0.7} position="absolute" />
 })
 
 TableLoading.propTypes = {
   colsLength: number,
-  show: bool
+  show: bool,
 }

@@ -17,13 +17,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Blog/Categories'
+  title: 'Blog/Categories',
 }
 
-export const main = (args) => (
-  <BlogCategories articles={Articles} config={Blog} {...args} />
-)
+export const main = (args) => <BlogCategories articles={Articles} config={Blog} {...args} />

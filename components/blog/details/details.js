@@ -13,15 +13,7 @@ import styled from 'styled-components'
 import { BlogCategory } from '../category/category'
 import { BlogReadTime } from '../readTime/readTime'
 
-import {
-  BlogTags,
-  Divider,
-  FacebookShareButton,
-  Icon,
-  List,
-  ListItem,
-  slugify
-} from '../../'
+import { BlogTags, Divider, FacebookShareButton, Icon, List, ListItem, slugify } from '../../'
 
 import { Date } from '../../atoms/date/date'
 
@@ -58,9 +50,7 @@ export const BlogDetails = ({ article, config, facebook }) => {
           appId={facebook.appId}
           hashTag={facebook.hashTag}
           iFrame
-          to={`${facebook.domain}${config.path}/${slugify(article.category)}/${
-            article.slug
-          }`}
+          to={`${facebook.domain}${config.path}/${slugify(article.category)}/${article.slug}`}
         />
 
         {/* Twitter */}
@@ -107,5 +97,5 @@ const StyledShareText = styled.span`
 BlogDetails.propTypes = {
   article: object.isRequired,
   config: object.isRequired,
-  facebook: object
+  facebook: object,
 }

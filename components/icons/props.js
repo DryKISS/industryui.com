@@ -12,5 +12,5 @@ export const propTypes = {
   fixColour: string,
   hoverColour: oneOfType([bool, string]),
   onClick: func,
-  size: oneOfType([number, string])
+  size: oneOfType([number, string]),
 }

@@ -33,6 +33,6 @@ export const averageGeolocation = (coords) => {
 
   return {
     lat: (centralLatitude * 180) / Math.PI,
-    lng: (centralLongitude * 180) / Math.PI
+    lng: (centralLongitude * 180) / Math.PI,
   }
 }

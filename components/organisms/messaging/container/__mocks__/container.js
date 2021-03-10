@@ -10,8 +10,7 @@
  */
 export const messages = [
   {
-    avatar:
-      'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
+    avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
     content: `Hiya we are expecting a PPM scheduled maintenance check on our LED lightbulbs
     throughout the third floor of XYZ Company offices today. Would appreciate a timely response on \
     this so we can sort out security.`,
@@ -24,11 +23,10 @@ export const messages = [
     statusText: 'delivered',
     time: 'Mon 1 Nov 2019 11:59',
     type: 'in',
-    more: false
+    more: false,
   },
   {
-    avatar:
-      'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
+    avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
     content: `Hola, este es un mensaje que agrega "Leer más" en el que esperamos una revisión de
     mantenimiento programada de PPM en nuestras bombillas LED en el tercer piso de las oficinas de
     XYZ Company hoy. Agradecería una respuesta oportuna sobre esto para que podamos solucionar la
@@ -42,7 +40,7 @@ export const messages = [
     statusText: 'delivered',
     time: 'Mon 1 Nov 2019 11:59',
     type: 'in',
-    more: true
+    more: true,
   },
   {
     avatar: 'https://randomuser.me/api/portraits/men/36.jpg',
@@ -54,7 +52,7 @@ export const messages = [
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 3 Nov 2019 13:00',
-    type: 'in'
+    type: 'in',
   },
   {
     content: 'Sorry to say our contractor is running slightly late',
@@ -65,7 +63,7 @@ export const messages = [
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 3 Nov 2019 13:11',
-    type: 'out'
+    type: 'out',
   },
   {
     content: `Thank you for the comment, please let us know what time the contractor will be here so
@@ -78,7 +76,7 @@ export const messages = [
     pictureId: null,
     statusText: 'delivered',
     time: 'Mon 3 Nov 2019 13:13',
-    type: 'in'
+    type: 'in',
   },
   {
     content: 'Arrived on site.',
@@ -89,11 +87,10 @@ export const messages = [
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 13:35',
-    type: 'in'
+    type: 'in',
   },
   {
-    content:
-      'Mike can you let us know that the contractor is through security?',
+    content: 'Mike can you let us know that the contractor is through security?',
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 6,
@@ -102,23 +99,22 @@ export const messages = [
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 4 Nov 2019 13:39',
-    type: 'out'
+    type: 'out',
   },
   {
     attachments: [
       {
-        src:
-          'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
-        type: 'image'
+        src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+        type: 'image',
       },
       {
         src: 'https://i.ytimg.com/vi/xjmzca8uqlE/maxresdefault.jpg',
-        type: 'image'
+        type: 'image',
       },
       {
         src: 'https://i.imgur.com/j4vJ4ea.jpg',
-        type: 'image'
-      }
+        type: 'image',
+      },
     ],
     content: 'Trabajo completado.',
     icon: 'notification',
@@ -128,6 +124,6 @@ export const messages = [
     pictureId: null,
     statusText: 'sent',
     time: 'Mon 5 Nov 2019 14:25',
-    type: 'in'
-  }
+    type: 'in',
+  },
 ]

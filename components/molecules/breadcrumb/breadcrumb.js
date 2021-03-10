@@ -14,12 +14,7 @@ import { Icon } from '../../atoms/icon/icon/icon'
 import { Link } from '../../atoms/link/link'
 import { THEME_SIZE } from '../../theme/constants/size'
 
-export const Breadcrumb = ({
-  breadcrumbs,
-  customSeparator,
-  separator,
-  size
-}) => {
+export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
   return (
     <nav aria-label="breadcrumb">
       <StyledOl itemScope="" itemType="http://schema.org/BreadcrumbList">
@@ -30,29 +25,23 @@ export const Breadcrumb = ({
               itemProp="itemListElement"
               itemScope=""
               itemType="http://schema.org/ListItem"
-              key={index}>
+              key={index}
+            >
               {index + 1 !== breadcrumbs.length ? (
                 <Link to={item.to} passHref>
                   <StyledA
                     itemProp="item"
                     itemScope="itemscope"
                     size={size}
-                    itemType="http://schema.org/Thing">
-                    {item.icon && (
-                      <StyledIconWrapper size={size}>
-                        {item.icon}
-                      </StyledIconWrapper>
-                    )}
+                    itemType="http://schema.org/Thing"
+                  >
+                    {item.icon && <StyledIconWrapper size={size}>{item.icon}</StyledIconWrapper>}
                     <StyledTitle size={size}> {item.title}</StyledTitle>
                   </StyledA>
                 </Link>
               ) : (
                 <StyledLastTitle size={size} itemProp="name">
-                  {item.icon && (
-                    <StyledIconWrapper size={size}>
-                      {item.icon}
-                    </StyledIconWrapper>
-                  )}
+                  {item.icon && <StyledIconWrapper size={size}>{item.icon}</StyledIconWrapper>}
                   <StyledTitle last size={size}>
                     {item.title}
                   </StyledTitle>
@@ -147,7 +136,7 @@ const StyledIconWrapper = styled.span`
 `
 
 const StyledIcon = styled(Icon).attrs((props) => ({
-  color: props.theme.dark
+  color: props.theme.dark,
 }))``
 
 const StyledSeperator = styled.span`
@@ -180,5 +169,5 @@ Breadcrumb.propTypes = {
   breadcrumbs: array,
   customSeparator: node,
   separator: oneOfType([oneOf(['chevron', 'slash']), string]),
-  size: oneOf(Object.values(THEME_SIZE))
+  size: oneOf(Object.values(THEME_SIZE)),
 }

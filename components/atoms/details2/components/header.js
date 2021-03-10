@@ -23,7 +23,7 @@ export const Details2Header = ({
   headerContext,
   iconComponent,
   isOpen,
-  title
+  title,
 }) => {
   return (
     <Header context={headerContext} onClick={handleOpenClose}>
@@ -65,11 +65,11 @@ Details2Header.propTypes = {
   handleOpenClose: func.isRequired,
   iconComponent: node,
   isOpen: bool,
-  title: string.isRequired
+  title: string.isRequired,
 }
 
 Details2Header.defaultProps = {
   animationTime: 100,
   context: 'dark',
-  isOpen: false
+  isOpen: false,
 }

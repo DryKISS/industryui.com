@@ -18,13 +18,11 @@ const TwitterTimeline = ({ dataSource, options, onLoad }) => {
 
   const ready = (tw, element, done) => {
     // Options and dataSource must be cloned since Twitter Widgets modifies it directly
-    tw.widgets
-      .createTimeline(cloneDeep(dataSource), element, cloneDeep(options))
-      .then(() => {
-        // Widget is loaded
-        done()
-        onLoad()
-      })
+    tw.widgets.createTimeline(cloneDeep(dataSource), element, cloneDeep(options)).then(() => {
+      // Widget is loaded
+      done()
+      onLoad()
+    })
   }
 
   return React.createElement(AbstractWidget, { ready: ready })
@@ -33,10 +31,10 @@ const TwitterTimeline = ({ dataSource, options, onLoad }) => {
 TwitterTimeline.propTypes = {
   dataSource: object.isRequired,
   options: object,
-  onLoad: func
+  onLoad: func,
 }
 
 TwitterTimeline.defaultProps = {
   options: {},
-  onLoad: () => {}
+  onLoad: () => {},
 }

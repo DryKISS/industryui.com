@@ -45,7 +45,7 @@ export const BlogAuthor = ({ articles, config, total }) => {
         return {
           badge: k,
           name: counts[k],
-          to: `${slugify(k)}`
+          to: `${slugify(k)}`,
         }
       })
 
@@ -62,9 +62,9 @@ export const BlogAuthor = ({ articles, config, total }) => {
 BlogAuthor.propTypes = {
   articles: array.isRequired,
   config: object.isRequired,
-  total: number
+  total: number,
 }
 
 BlogAuthor.defaultProps = {
-  total: 5
+  total: 5,
 }

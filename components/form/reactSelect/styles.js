@@ -20,7 +20,7 @@ export const defaultStyles = {
       fontSize: '1rem',
       height: '3rem',
       lineHeight: 1.5,
-      padding: '0'
+      padding: '0',
     }
   },
 
@@ -29,7 +29,7 @@ export const defaultStyles = {
       ...base,
       borderColor: THEME_COLOUR.dark,
       boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
-      color: THEME_COLOUR.dark
+      color: THEME_COLOUR.dark,
     }
   },
 
@@ -49,14 +49,14 @@ export const defaultStyles = {
 
   placeholder: (base, state) => {
     return {
-      color: '#003753'
+      color: '#003753',
     }
   },
 
   singleValue: (base, state) => {
     return {
       ...base,
-      color: '#003753'
+      color: '#003753',
     }
-  }
+  },
 }

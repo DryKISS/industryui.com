@@ -14,16 +14,14 @@ import { PageProgressBar } from '../../../'
 export default {
   args: { context: 'primary' },
   argTypes: {
-    size: ContextControl()
+    size: ContextControl(),
   },
   title: 'Molecules/PageProgressBar',
-  component: PageProgressBar
+  component: PageProgressBar,
 }
 
 const BaseComponent = (args) => {
-  return (
-    <PageProgressBar {...args} isAnimating instanceKey={new Date().getTime()} />
-  )
+  return <PageProgressBar {...args} isAnimating instanceKey={new Date().getTime()} />
 }
 
 export const main = (args) => <BaseComponent {...args} />

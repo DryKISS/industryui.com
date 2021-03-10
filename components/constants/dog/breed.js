@@ -5,1118 +5,1118 @@ export const DOG_BREED = [
   {
     disabled: true,
     text: 'Select breed',
-    value: ''
+    value: '',
   },
   {
     text: 'Affenpinscher',
-    value: 'affenpinscher'
+    value: 'affenpinscher',
   },
   {
     text: 'Afghan Hound',
-    value: 'afghan-hound'
+    value: 'afghan-hound',
   },
   {
     text: 'Airedale Terrier',
-    value: 'airedale-terrier'
+    value: 'airedale-terrier',
   },
   {
     text: 'Akita',
-    value: 'akita'
+    value: 'akita',
   },
   {
     text: 'Alapaha Blue Blood Bulldog',
-    value: 'alapaha-blue-blood-bulldog'
+    value: 'alapaha-blue-blood-bulldog',
   },
   {
     text: 'Alaskan Malamute',
-    value: 'alaskan-malamute'
+    value: 'alaskan-malamute',
   },
   {
     text: 'American Bulldog',
-    value: 'american-bulldog'
+    value: 'american-bulldog',
   },
   {
     text: 'American Cocker Spaniel',
-    value: 'american-cocker-spaniel'
+    value: 'american-cocker-spaniel',
   },
   {
     text: 'Anatolian Shepherd',
-    value: 'anatolian-shepherd'
+    value: 'anatolian-shepherd',
   },
   {
     text: 'Australian Cattle Dog',
-    value: 'australian-cattle-dog'
+    value: 'australian-cattle-dog',
   },
   {
     text: 'Australian Kelpie',
-    value: 'australian-kelpie'
+    value: 'australian-kelpie',
   },
   {
     text: 'Australian Shepherd',
-    value: 'australian-shepherd'
+    value: 'australian-shepherd',
   },
   {
     text: 'Australian Silky Terrier',
-    value: 'australian-silky-terrier'
+    value: 'australian-silky-terrier',
   },
   {
     text: 'Australian Terrier',
-    value: 'australian-terrier'
+    value: 'australian-terrier',
   },
   {
     text: 'Azawakh',
-    value: 'azawakh'
+    value: 'azawakh',
   },
   {
     text: 'Basenji',
-    value: 'basenji'
+    value: 'basenji',
   },
   {
     text: 'Basset Bleu De Gascogne',
-    value: 'basset-bleu-de-gascogne'
+    value: 'basset-bleu-de-gascogne',
   },
   {
     text: 'Basset Fauve De Bretagne',
-    value: 'basset-fauve-de-bretagne'
+    value: 'basset-fauve-de-bretagne',
   },
   {
     text: 'Basset Griffon Vendeen',
-    value: 'basset-griffon-vendeen'
+    value: 'basset-griffon-vendeen',
   },
   {
     text: 'Basset Hound',
-    value: 'basset-hound'
+    value: 'basset-hound',
   },
   {
     text: 'Bavarian Mountain Hound',
-    value: 'bavarian-mountain-hound'
+    value: 'bavarian-mountain-hound',
   },
   {
     text: 'Beagle',
-    value: 'beagle'
+    value: 'beagle',
   },
   {
     text: 'Bearded Collie',
-    value: 'bearded-collie'
+    value: 'bearded-collie',
   },
   {
     text: 'Beauceron',
-    value: 'beauceron'
+    value: 'beauceron',
   },
   {
     text: 'Bedlington Terrier',
-    value: 'bedlington-terrier'
+    value: 'bedlington-terrier',
   },
   {
     text: 'Belgian Shepherd Dog',
-    value: 'belgian-shepherd-dog'
+    value: 'belgian-shepherd-dog',
   },
   {
     text: 'Bergamasco',
-    value: 'bergamasco'
+    value: 'bergamasco',
   },
   {
     text: 'Bernese Mountain Dog',
-    value: 'bernese-mountain-dog'
+    value: 'bernese-mountain-dog',
   },
   {
     text: 'Bichon Frise',
-    value: 'bichon-frise'
+    value: 'bichon-frise',
   },
   {
     text: 'Biewer Terrier',
-    value: 'biewer-terrier'
+    value: 'biewer-terrier',
   },
   {
     text: 'Bloodhound',
-    value: 'bloodhound'
+    value: 'bloodhound',
   },
   {
     text: 'Boerboel',
-    value: 'boerboel'
+    value: 'boerboel',
   },
   {
     text: 'Bolognese',
-    value: 'bolognese'
+    value: 'bolognese',
   },
   {
     text: 'Borador',
-    value: 'borador'
+    value: 'borador',
   },
   {
     text: 'Border Collie',
-    value: 'border-collie'
+    value: 'border-collie',
   },
   {
     text: 'Border Jack',
-    value: 'border-jack'
+    value: 'border-jack',
   },
   {
     text: 'Border Terrier',
-    value: 'border-terrier'
+    value: 'border-terrier',
   },
   {
     text: 'Borzoi',
-    value: 'borzoi'
+    value: 'borzoi',
   },
   {
     text: 'Boston Terrier',
-    value: 'boston-terrier'
+    value: 'boston-terrier',
   },
   {
     text: 'Bouvier Des Flandres',
-    value: 'bouvier-des-flandres'
+    value: 'bouvier-des-flandres',
   },
   {
     text: 'Boxer',
-    value: 'boxer'
+    value: 'boxer',
   },
   {
     text: 'Bracco Italiano',
-    value: 'bracco-italiano'
+    value: 'bracco-italiano',
   },
   {
     text: "Braque d'auvergne",
-    value: 'braque-dauvergne'
+    value: 'braque-dauvergne',
   },
   {
     text: 'Briard',
-    value: 'briard'
+    value: 'briard',
   },
   {
     text: 'Brittany Spaniel',
-    value: 'brittany-spaniel'
+    value: 'brittany-spaniel',
   },
   {
     text: 'Bull Terrier',
-    value: 'bull-terrier'
+    value: 'bull-terrier',
   },
   {
     text: 'Bullmastiff',
-    value: 'bullmastiff'
+    value: 'bullmastiff',
   },
   {
     text: 'Cairn Terrier',
-    value: 'cairn-terrier'
+    value: 'cairn-terrier',
   },
   {
     text: 'Canaan Dog',
-    value: 'canaan-dog'
+    value: 'canaan-dog',
   },
   {
     text: 'Canadian Eskimo Dog',
-    value: 'canadian-eskimo-dog'
+    value: 'canadian-eskimo-dog',
   },
   {
     text: 'Cane Corso',
-    value: 'cane-corso'
+    value: 'cane-corso',
   },
   {
     text: 'Cardigan Welsh Corgi',
-    value: 'cardigan-welsh-corgi'
+    value: 'cardigan-welsh-corgi',
   },
   {
     text: 'Catalan Sheepdog',
-    value: 'catalan-sheepdog'
+    value: 'catalan-sheepdog',
   },
   {
     text: 'Caucasian Shepherd Dog',
-    value: 'caucasian-shepherd-dog'
+    value: 'caucasian-shepherd-dog',
   },
   {
     text: 'Cavachon',
-    value: 'cavachon'
+    value: 'cavachon',
   },
   {
     text: 'Cavalier King Charles Spaniel',
-    value: 'cavalier-king-charles-spaniel'
+    value: 'cavalier-king-charles-spaniel',
   },
   {
     text: 'Cavapoo',
-    value: 'cavapoo'
+    value: 'cavapoo',
   },
   {
     text: 'Central Asian Shepherd',
-    value: 'central-asian-shepherd'
+    value: 'central-asian-shepherd',
   },
   {
     text: 'Cesky Terrier',
-    value: 'cesky-terrier'
+    value: 'cesky-terrier',
   },
   {
     text: 'Chesapeake Bay Retriever',
-    value: 'chesapeake-bay-retriever'
+    value: 'chesapeake-bay-retriever',
   },
   {
     text: 'Chihuahua',
-    value: 'chihuahua'
+    value: 'chihuahua',
   },
   {
     text: 'Chinese Crested',
-    value: 'chinese-crested'
+    value: 'chinese-crested',
   },
   {
     text: 'Chorkie',
-    value: 'chorkie'
+    value: 'chorkie',
   },
   {
     text: 'Chow Chow',
-    value: 'chow-chow'
+    value: 'chow-chow',
   },
   {
     text: 'Chug',
-    value: 'chug'
+    value: 'chug',
   },
   {
     text: "Cirneco dell'etna",
-    value: 'cirneco-delletna'
+    value: 'cirneco-delletna',
   },
   {
     text: 'Clumber Spaniel',
-    value: 'clumber-spaniel'
+    value: 'clumber-spaniel',
   },
   {
     text: 'Cockapoo',
-    value: 'cockapoo'
+    value: 'cockapoo',
   },
   {
     text: 'Cocker Spaniel',
-    value: 'cocker-spaniel'
+    value: 'cocker-spaniel',
   },
   {
     text: 'Coonhound',
-    value: 'coonhound'
+    value: 'coonhound',
   },
   {
     text: 'Coton De Tulear',
-    value: 'coton-de-tulear'
+    value: 'coton-de-tulear',
   },
   {
     text: 'Curly Coated Retriever',
-    value: 'curly-coated-retriever'
+    value: 'curly-coated-retriever',
   },
   {
     text: 'Dalmatian',
-    value: 'dalmatian'
+    value: 'dalmatian',
   },
   {
     text: 'Dandie Dinmont Terrier',
-    value: 'dandie-dinmont-terrier'
+    value: 'dandie-dinmont-terrier',
   },
   {
     text: 'Deerhound',
-    value: 'deerhound'
+    value: 'deerhound',
   },
   {
     text: 'Dobermann',
-    value: 'dobermann'
+    value: 'dobermann',
   },
   {
     text: 'Dogue de Bordeaux',
-    value: 'dogue-de-bordeaux'
+    value: 'dogue-de-bordeaux',
   },
   {
     text: 'English Bulldog',
-    value: 'english-bulldog'
+    value: 'english-bulldog',
   },
   {
     text: 'English Setter',
-    value: 'english-setter'
+    value: 'english-setter',
   },
   {
     text: 'English Springer Spaniel',
-    value: 'english-springer-spaniel'
+    value: 'english-springer-spaniel',
   },
   {
     text: 'English Toy Terrier',
-    value: 'english-toy-terrier'
+    value: 'english-toy-terrier',
   },
   {
     text: 'Entlebucher Mountain Dog',
-    value: 'entlebucher-mountain-dog'
+    value: 'entlebucher-mountain-dog',
   },
   {
     text: 'Estrela Mountain Dog',
-    value: 'estrela-mountain-dog'
+    value: 'estrela-mountain-dog',
   },
   {
     text: 'Eurasier',
-    value: 'eurasier'
+    value: 'eurasier',
   },
   {
     text: 'Field Spaniel',
-    value: 'field-spaniel'
+    value: 'field-spaniel',
   },
   {
     text: 'Finnish Lapphund',
-    value: 'finnish-lapphund'
+    value: 'finnish-lapphund',
   },
   {
     text: 'Finnish Spitz',
-    value: 'finnish-spitz'
+    value: 'finnish-spitz',
   },
   {
     text: 'Flat Coated Retriever',
-    value: 'flat-coated-retriever'
+    value: 'flat-coated-retriever',
   },
   {
     text: 'Foxhound',
-    value: 'foxhound'
+    value: 'foxhound',
   },
   {
     text: 'French Bulldog',
-    value: 'french-bulldog'
+    value: 'french-bulldog',
   },
   {
     text: 'German Longhaired Pointer',
-    value: 'german-longhaired-pointer'
+    value: 'german-longhaired-pointer',
   },
   {
     text: 'German Pinscher',
-    value: 'german-pinscher'
+    value: 'german-pinscher',
   },
   {
     text: 'German Shepherd',
-    value: 'german-shepherd'
+    value: 'german-shepherd',
   },
   {
     text: 'German Shorthaired Pointer',
-    value: 'german-shorthaired-pointer'
+    value: 'german-shorthaired-pointer',
   },
   {
     text: 'German Spitz Klein',
-    value: 'german-spitz-klein'
+    value: 'german-spitz-klein',
   },
   {
     text: 'German Spitz Mittel',
-    value: 'german-spitz-mittel'
+    value: 'german-spitz-mittel',
   },
   {
     text: 'German Wirehaired Pointer',
-    value: 'german-wirehaired-pointer'
+    value: 'german-wirehaired-pointer',
   },
   {
     text: 'Giant Schnauzer',
-    value: 'giant-schnauzer'
+    value: 'giant-schnauzer',
   },
   {
     text: 'Glen of Imaal Terrier',
-    value: 'glen-of-imaal-terrier'
+    value: 'glen-of-imaal-terrier',
   },
   {
     text: 'Goldador',
-    value: 'goldador'
+    value: 'goldador',
   },
   {
     text: 'Golden Retriever',
-    value: 'golden-retriever'
+    value: 'golden-retriever',
   },
   {
     text: 'Goldendoodle',
-    value: 'goldendoodle'
+    value: 'goldendoodle',
   },
   {
     text: 'Gordon Setter',
-    value: 'gordon-setter'
+    value: 'gordon-setter',
   },
   {
     text: 'Grand Basset Griffon Vendeen',
-    value: 'grand-basset-griffon-vendeen'
+    value: 'grand-basset-griffon-vendeen',
   },
   {
     text: 'Grand Bleu De Gascogne',
-    value: 'grand-bleu-de-gascogne'
+    value: 'grand-bleu-de-gascogne',
   },
   {
     text: 'Great Dane',
-    value: 'great-dane'
+    value: 'great-dane',
   },
   {
     text: 'Greater Swiss Mountain Dog',
-    value: 'greater-swiss-mountain-dog'
+    value: 'greater-swiss-mountain-dog',
   },
   {
     text: 'Greenland Dog',
-    value: 'greenland-dog'
+    value: 'greenland-dog',
   },
   {
     text: 'Greyhound',
-    value: 'greyhound'
+    value: 'greyhound',
   },
   {
     text: 'Griffon Bruxellois',
-    value: 'griffon-bruxellois'
+    value: 'griffon-bruxellois',
   },
   {
     text: 'Griffon Fauve De Bretagne',
-    value: 'griffon-fauve-de-bretagne'
+    value: 'griffon-fauve-de-bretagne',
   },
   {
     text: 'Groenendael Belgian Shepherd Dog',
-    value: 'groenendael-belgian-shepherd-dog'
+    value: 'groenendael-belgian-shepherd-dog',
   },
   {
     text: 'Hamiltonstovare',
-    value: 'hamiltonstovare'
+    value: 'hamiltonstovare',
   },
   {
     text: 'Harrier',
-    value: 'harrier'
+    value: 'harrier',
   },
   {
     text: 'Havanese',
-    value: 'havanese'
+    value: 'havanese',
   },
   {
     text: 'Hovawart',
-    value: 'hovawart'
+    value: 'hovawart',
   },
   {
     text: 'Hungarian Kuvasz',
-    value: 'hungarian-kuvasz'
+    value: 'hungarian-kuvasz',
   },
   {
     text: 'Hungarian Puli',
-    value: 'hungarian-puli'
+    value: 'hungarian-puli',
   },
   {
     text: 'Hungarian Pumi',
-    value: 'hungarian-pumi'
+    value: 'hungarian-pumi',
   },
   {
     text: 'Huntaway',
-    value: 'huntaway'
+    value: 'huntaway',
   },
   {
     text: 'Ibizan Hound',
-    value: 'ibizan-hound'
+    value: 'ibizan-hound',
   },
   {
     text: 'Intermediate Mexican Hairless',
-    value: 'intermediate-mexican-hairless'
+    value: 'intermediate-mexican-hairless',
   },
   {
     text: 'Irish Red & White Setter',
-    value: 'irish-red-&-white-setter'
+    value: 'irish-red-&-white-setter',
   },
   {
     text: 'Irish Setter',
-    value: 'irish-setter'
+    value: 'irish-setter',
   },
   {
     text: 'Irish Terrier',
-    value: 'irish-terrier'
+    value: 'irish-terrier',
   },
   {
     text: 'Irish Water Spaniel',
-    value: 'irish-water-spaniel'
+    value: 'irish-water-spaniel',
   },
   {
     text: 'Irish Wolfhound',
-    value: 'irish-wolfhound'
+    value: 'irish-wolfhound',
   },
   {
     text: 'Italian Greyhound',
-    value: 'italian-greyhound'
+    value: 'italian-greyhound',
   },
   {
     text: 'Italian Spinone',
-    value: 'italian-spinone'
+    value: 'italian-spinone',
   },
   {
     text: 'Jack Russell Terrier',
-    value: 'jack-russell-terrier'
+    value: 'jack-russell-terrier',
   },
   {
     text: 'Jackahuahua',
-    value: 'jackahuahua'
+    value: 'jackahuahua',
   },
   {
     text: 'Jackapoo',
-    value: 'jackapoo'
+    value: 'jackapoo',
   },
   {
     text: 'Jagdterrier',
-    value: 'jagdterrier'
+    value: 'jagdterrier',
   },
   {
     text: 'Japanese Akita Inu',
-    value: 'japanese-akita-inu'
+    value: 'japanese-akita-inu',
   },
   {
     text: 'Japanese Chin',
-    value: 'japanese-chin'
+    value: 'japanese-chin',
   },
   {
     text: 'Japanese Shiba Inu',
-    value: 'japanese-shiba-inu'
+    value: 'japanese-shiba-inu',
   },
   {
     text: 'Japanese Spitz',
-    value: 'japanese-spitz'
+    value: 'japanese-spitz',
   },
   {
     text: 'Jorkie',
-    value: 'jorkie'
+    value: 'jorkie',
   },
   {
     text: 'Jug',
-    value: 'jug'
+    value: 'jug',
   },
   {
     text: 'Keeshond',
-    value: 'keeshond'
+    value: 'keeshond',
   },
   {
     text: 'Kerry Blue Terrier',
-    value: 'kerry-blue-terrier'
+    value: 'kerry-blue-terrier',
   },
   {
     text: 'King Charles Spaniel',
-    value: 'king-charles-spaniel'
+    value: 'king-charles-spaniel',
   },
   {
     text: 'Komondor',
-    value: 'komondor'
+    value: 'komondor',
   },
   {
     text: 'Kooikerhondje',
-    value: 'kooikerhondje'
+    value: 'kooikerhondje',
   },
   {
     text: 'Korean Jindo',
-    value: 'korean-jindo'
+    value: 'korean-jindo',
   },
   {
     text: 'Korthals Griffon',
-    value: 'korthals-griffon'
+    value: 'korthals-griffon',
   },
   {
     text: 'Kromfohrlander',
-    value: 'kromfohrlander'
+    value: 'kromfohrlander',
   },
   {
     text: 'Labrador Retriever',
-    value: 'labrador-retriever'
+    value: 'labrador-retriever',
   },
   {
     text: 'Labradoodle',
-    value: 'labradoodle'
+    value: 'labradoodle',
   },
   {
     text: 'Laekenois Belgian Shepherd Dog',
-    value: 'laekenois-belgian-shepherd-dog'
+    value: 'laekenois-belgian-shepherd-dog',
   },
   {
     text: 'Lagotto Romagnolo',
-    value: 'lagotto-romagnolo'
+    value: 'lagotto-romagnolo',
   },
   {
     text: 'Lakeland Terrier',
-    value: 'lakeland-terrier'
+    value: 'lakeland-terrier',
   },
   {
     text: 'Lancashire Heeler',
-    value: 'lancashire-heeler'
+    value: 'lancashire-heeler',
   },
   {
     text: 'Large Münsterländer',
-    value: 'large-munsterlander'
+    value: 'large-munsterlander',
   },
   {
     text: 'Leonberger',
-    value: 'leonberger'
+    value: 'leonberger',
   },
   {
     text: 'Lhasa Apso',
-    value: 'lhasa-apso'
+    value: 'lhasa-apso',
   },
   {
     text: 'Long Coat Chihuahua',
-    value: 'long-coat-chihuahua'
+    value: 'long-coat-chihuahua',
   },
   {
     text: 'Long Haired Dachshund',
-    value: 'long-haired-dachshund'
+    value: 'long-haired-dachshund',
   },
   {
     text: 'Long Haired Pyrenean Sheepdog',
-    value: 'long-haired-pyrenean-sheepdog'
+    value: 'long-haired-pyrenean-sheepdog',
   },
   {
     text: 'Lowchen',
-    value: 'lowchen'
+    value: 'lowchen',
   },
   {
     text: 'Lurcher',
-    value: 'lurcher'
+    value: 'lurcher',
   },
   {
     text: 'Malinois Belgian Shepherd Dog',
-    value: 'malinois-belgian-shepherd-dog'
+    value: 'malinois-belgian-shepherd-dog',
   },
   {
     text: 'Malshi',
-    value: 'malshi'
+    value: 'malshi',
   },
   {
     text: 'Maltese',
-    value: 'maltese'
+    value: 'maltese',
   },
   {
     text: 'Maltipoo',
-    value: 'maltipoo'
+    value: 'maltipoo',
   },
   {
     text: 'Manchester Terrier',
-    value: 'manchester-terrier'
+    value: 'manchester-terrier',
   },
   {
     text: 'Maremma Sheepdog',
-    value: 'maremma-sheepdog'
+    value: 'maremma-sheepdog',
   },
   {
     text: 'Mastiff',
-    value: 'mastiff'
+    value: 'mastiff',
   },
   {
     text: 'Minature Mexican Hairless',
-    value: 'minature-mexican-hairless'
+    value: 'minature-mexican-hairless',
   },
   {
     text: 'Miniature Bull Terrier',
-    value: 'miniature-bull-terrier'
+    value: 'miniature-bull-terrier',
   },
   {
     text: 'Miniature Long Haired Dachshund',
-    value: 'miniature-long-haired-dachshund'
+    value: 'miniature-long-haired-dachshund',
   },
   {
     text: 'Miniature Pinscher',
-    value: 'miniature-pinscher'
+    value: 'miniature-pinscher',
   },
   {
     text: 'Miniature Poodle',
-    value: 'miniature-poodle'
+    value: 'miniature-poodle',
   },
   {
     text: 'Miniature Schnauzer',
-    value: 'miniature-schnauzer'
+    value: 'miniature-schnauzer',
   },
   {
     text: 'Miniature Smooth Haired Dachshund',
-    value: 'miniature-smooth-haired-dachshund'
+    value: 'miniature-smooth-haired-dachshund',
   },
   {
     text: 'Miniature Wire Haired Dachshund',
-    value: 'miniature-wire-haired-dachshund'
+    value: 'miniature-wire-haired-dachshund',
   },
   {
     text: 'Mixed Breed',
-    value: 'mixed-breed'
+    value: 'mixed-breed',
   },
   {
     text: 'Neapolitan Mastiff',
-    value: 'neapolitan-mastiff'
+    value: 'neapolitan-mastiff',
   },
   {
     text: 'Newfoundland',
-    value: 'newfoundland'
+    value: 'newfoundland',
   },
   {
     text: 'Norfolk Terrier',
-    value: 'norfolk-terrier'
+    value: 'norfolk-terrier',
   },
   {
     text: 'Northern Inuit',
-    value: 'northern-inuit'
+    value: 'northern-inuit',
   },
   {
     text: 'Norwegian Buhund',
-    value: 'norwegian-buhund'
+    value: 'norwegian-buhund',
   },
   {
     text: 'Norwegian Elkhound',
-    value: 'norwegian-elkhound'
+    value: 'norwegian-elkhound',
   },
   {
     text: 'Norwich Terrier',
-    value: 'norwich-terrier'
+    value: 'norwich-terrier',
   },
   {
     text: 'Nova Scotia Duck Tolling Retriever',
-    value: 'nova-scotia-duck-tolling-retriever'
+    value: 'nova-scotia-duck-tolling-retriever',
   },
   {
     text: 'Old English Sheepdog',
-    value: 'old-english-sheepdog'
+    value: 'old-english-sheepdog',
   },
   {
     text: 'Old Tyme Bulldog',
-    value: 'old-tyme-bulldog'
+    value: 'old-tyme-bulldog',
   },
   {
     text: 'Otterhound',
-    value: 'otterhound'
+    value: 'otterhound',
   },
   {
     text: 'Papillon',
-    value: 'papillon'
+    value: 'papillon',
   },
   {
     text: 'Parson Russell Terrier',
-    value: 'parson-russell-terrier'
+    value: 'parson-russell-terrier',
   },
   {
     text: 'Patterdale Terrier',
-    value: 'patterdale-terrier'
+    value: 'patterdale-terrier',
   },
   {
     text: 'Pekingese',
-    value: 'pekingese'
+    value: 'pekingese',
   },
   {
     text: 'Pembroke Welsh Corgi',
-    value: 'pembroke-welsh-corgi'
+    value: 'pembroke-welsh-corgi',
   },
   {
     text: 'Petit Basset Griffon Vendeen',
-    value: 'petit-basset-griffon-vendeen'
+    value: 'petit-basset-griffon-vendeen',
   },
   {
     text: 'Pharaoh Hound',
-    value: 'pharaoh-hound'
+    value: 'pharaoh-hound',
   },
   {
     text: 'Picardy Sheepdog',
-    value: 'picardy-sheepdog'
+    value: 'picardy-sheepdog',
   },
   {
     text: 'Picardy Spaniel',
-    value: 'picardy-spaniel'
+    value: 'picardy-spaniel',
   },
   {
     text: 'Pinscher',
-    value: 'pinscher'
+    value: 'pinscher',
   },
   {
     text: 'Plummer Terrier',
-    value: 'plummer-terrier'
+    value: 'plummer-terrier',
   },
   {
     text: 'Pointer',
-    value: 'pointer'
+    value: 'pointer',
   },
   {
     text: 'Polish Lowland Sheepdog',
-    value: 'polish-lowland-sheepdog'
+    value: 'polish-lowland-sheepdog',
   },
   {
     text: 'Pomeranian',
-    value: 'pomeranian'
+    value: 'pomeranian',
   },
   {
     text: 'Pomsky',
-    value: 'pomsky'
+    value: 'pomsky',
   },
   {
     text: 'Poochon',
-    value: 'poochon'
+    value: 'poochon',
   },
   {
     text: 'Portuguese Podengo',
-    value: 'portuguese-podengo'
+    value: 'portuguese-podengo',
   },
   {
     text: 'Portuguese Pointer',
-    value: 'portuguese-pointer'
+    value: 'portuguese-pointer',
   },
   {
     text: 'Portuguese Water Dog',
-    value: 'portuguese-water-dog'
+    value: 'portuguese-water-dog',
   },
   {
     text: 'Presa Canario',
-    value: 'presa-canario'
+    value: 'presa-canario',
   },
   {
     text: 'Pug',
-    value: 'pug'
+    value: 'pug',
   },
   {
     text: 'Puggle',
-    value: 'puggle'
+    value: 'puggle',
   },
   {
     text: 'Pyrenean Mastiff',
-    value: 'pyrenean-mastiff'
+    value: 'pyrenean-mastiff',
   },
   {
     text: 'Pyrenean Mountain Dog',
-    value: 'pyrenean-mountain-dog'
+    value: 'pyrenean-mountain-dog',
   },
   {
     text: 'Pyrenean Sheepdog',
-    value: 'pyrenean-sheepdog'
+    value: 'pyrenean-sheepdog',
   },
   {
     text: 'Rhodesian Ridgeback',
-    value: 'rhodesian-ridgeback'
+    value: 'rhodesian-ridgeback',
   },
   {
     text: 'Rottweiler',
-    value: 'rottweiler'
+    value: 'rottweiler',
   },
   {
     text: 'Rough Collie',
-    value: 'rough-collie'
+    value: 'rough-collie',
   },
   {
     text: 'Russian Black Terrier',
-    value: 'russian-black-terrier'
+    value: 'russian-black-terrier',
   },
   {
     text: 'Russian Toy Terrier',
-    value: 'russian-toy-terrier'
+    value: 'russian-toy-terrier',
   },
   {
     text: 'Saarloos Wolfdog',
-    value: 'saarloos-wolfdog'
+    value: 'saarloos-wolfdog',
   },
   {
     text: 'Saluki',
-    value: 'saluki'
+    value: 'saluki',
   },
   {
     text: 'Samoyed',
-    value: 'samoyed'
+    value: 'samoyed',
   },
   {
     text: 'Schipperke',
-    value: 'schipperke'
+    value: 'schipperke',
   },
   {
     text: 'Schnauzer',
-    value: 'schnauzer'
+    value: 'schnauzer',
   },
   {
     text: 'Schnoodle',
-    value: 'schnoodle'
+    value: 'schnoodle',
   },
   {
     text: 'Scottish Terrier',
-    value: 'scottish-terrier'
+    value: 'scottish-terrier',
   },
   {
     text: 'Sealyham Terrier',
-    value: 'sealyham-terrier'
+    value: 'sealyham-terrier',
   },
   {
     text: 'Segugio Italiano',
-    value: 'segugio-italiano'
+    value: 'segugio-italiano',
   },
   {
     text: 'Shar Pei',
-    value: 'shar-pei'
+    value: 'shar-pei',
   },
   {
     text: 'Sheprador',
-    value: 'sheprador'
+    value: 'sheprador',
   },
   {
     text: 'Shetland Sheepdog',
-    value: 'shetland-sheepdog'
+    value: 'shetland-sheepdog',
   },
   {
     text: 'Shih Tzu',
-    value: 'shih-tzu'
+    value: 'shih-tzu',
   },
   {
     text: 'Shihpoo',
-    value: 'shihpoo'
+    value: 'shihpoo',
   },
   {
     text: 'Shollie',
-    value: 'shollie'
+    value: 'shollie',
   },
   {
     text: 'Siberian Husky',
-    value: 'siberian-husky'
+    value: 'siberian-husky',
   },
   {
     text: 'Skye Terrier',
-    value: 'skye-terrier'
+    value: 'skye-terrier',
   },
   {
     text: 'Sloughi',
-    value: 'sloughi'
+    value: 'sloughi',
   },
   {
     text: 'Slovakian Rough Haired Pointer',
-    value: 'slovakian-rough-haired-pointer'
+    value: 'slovakian-rough-haired-pointer',
   },
   {
     text: 'Small Münsterländer',
-    value: 'small-munsterlander'
+    value: 'small-munsterlander',
   },
   {
     text: 'Smooth Coat Chihuahua',
-    value: 'smooth-coat-chihuahua'
+    value: 'smooth-coat-chihuahua',
   },
   {
     text: 'Smooth Collie',
-    value: 'smooth-collie'
+    value: 'smooth-collie',
   },
   {
     text: 'Smooth Fox Terrier',
-    value: 'smooth-fox-terrier'
+    value: 'smooth-fox-terrier',
   },
   {
     text: 'Smooth Haired Dachshund',
-    value: 'smooth-haired-dachshund'
+    value: 'smooth-haired-dachshund',
   },
   {
     text: 'Soft Coated Wheaten Terrier',
-    value: 'soft-coated-wheaten-terrier'
+    value: 'soft-coated-wheaten-terrier',
   },
   {
     text: 'Spanish Water Dog',
-    value: 'spanish-water-dog'
+    value: 'spanish-water-dog',
   },
   {
     text: 'Sporting Lucas Terrier',
-    value: 'sporting-lucas-terrier'
+    value: 'sporting-lucas-terrier',
   },
   {
     text: 'Springador',
-    value: 'springador'
+    value: 'springador',
   },
   {
     text: 'Sprocker',
-    value: 'sprocker'
+    value: 'sprocker',
   },
   {
     text: 'Sprollie',
-    value: 'sprollie'
+    value: 'sprollie',
   },
   {
     text: 'Sproodle',
-    value: 'sproodle'
+    value: 'sproodle',
   },
   {
     text: 'St. Bernard',
-    value: 'st-bernard'
+    value: 'st-bernard',
   },
   {
     text: 'Staffador',
-    value: 'staffador'
+    value: 'staffador',
   },
   {
     text: 'Staffordshire Bull Terrier',
-    value: 'staffordshire-bull-terrier'
+    value: 'staffordshire-bull-terrier',
   },
   {
     text: 'Staffy Jack',
-    value: 'staffy-jack'
+    value: 'staffy-jack',
   },
   {
     text: 'Standard Mexican Hairless',
-    value: 'standard-mexican-hairless'
+    value: 'standard-mexican-hairless',
   },
   {
     text: 'Standard Poodle',
-    value: 'standard-poodle'
+    value: 'standard-poodle',
   },
   {
     text: 'Sussex Spaniel',
-    value: 'sussex-spaniel'
+    value: 'sussex-spaniel',
   },
   {
     text: 'Swedish Lapphund',
-    value: 'swedish-lapphund'
+    value: 'swedish-lapphund',
   },
   {
     text: 'Swedish Vallhund',
-    value: 'swedish-vallhund'
+    value: 'swedish-vallhund',
   },
   {
     text: 'Tervueren Belgian Shepherd Dog',
-    value: 'tervueren-belgian-shepherd-dog'
+    value: 'tervueren-belgian-shepherd-dog',
   },
   {
     text: 'Thai Ridgeback',
-    value: 'thai-ridgeback'
+    value: 'thai-ridgeback',
   },
   {
     text: 'Tibetan Mastiff',
-    value: 'tibetan-mastiff'
+    value: 'tibetan-mastiff',
   },
   {
     text: 'Tibetan Spaniel',
-    value: 'tibetan-spaniel'
+    value: 'tibetan-spaniel',
   },
   {
     text: 'Tibetan Terrier',
-    value: 'tibetan-terrier'
+    value: 'tibetan-terrier',
   },
   {
     text: 'Toy Poodle',
-    value: 'toy-poodle'
+    value: 'toy-poodle',
   },
   {
     text: 'Turkish Kangal',
-    value: 'turkish-kangal'
+    value: 'turkish-kangal',
   },
   {
     text: 'Utonagan',
-    value: 'utonagan'
+    value: 'utonagan',
   },
   {
     text: 'Vizsla',
-    value: 'vizsla'
+    value: 'vizsla',
   },
   {
     text: 'Weimaraner',
-    value: 'weimaraner'
+    value: 'weimaraner',
   },
   {
     text: 'Welsh Collie',
-    value: 'welsh-collie'
+    value: 'welsh-collie',
   },
   {
     text: 'Welsh Springer Spaniel',
-    value: 'welsh-springer-spaniel'
+    value: 'welsh-springer-spaniel',
   },
   {
     text: 'Welsh Terrier',
-    value: 'welsh-terrier'
+    value: 'welsh-terrier',
   },
   {
     text: 'West Highland Terrier',
-    value: 'west-highland-terrier'
+    value: 'west-highland-terrier',
   },
   {
     text: 'Whippet',
-    value: 'whippet'
+    value: 'whippet',
   },
   {
     text: 'White Swiss Shepherd',
-    value: 'white-swiss-shepherd'
+    value: 'white-swiss-shepherd',
   },
   {
     text: 'Wire Fox Terrier',
-    value: 'wire-fox-terrier'
+    value: 'wire-fox-terrier',
   },
   {
     text: 'Wire Haired Dachshund',
-    value: 'wire-haired-dachshund'
+    value: 'wire-haired-dachshund',
   },
   {
     text: 'Wire Haired Vizsla',
-    value: 'wire-haired-vizsla'
+    value: 'wire-haired-vizsla',
   },
   {
     text: 'Yorkshire Terrier',
-    value: 'yorkshire-terrier'
-  }
+    value: 'yorkshire-terrier',
+  },
 ]

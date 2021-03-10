@@ -20,11 +20,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Messaging/List'
+  title: 'Organisms/Messaging/List',
 }
 
 export const main = () => (

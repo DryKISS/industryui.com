@@ -11,9 +11,9 @@ import { THEME_CONTEXT } from '../../theme/constants/context'
 export const propTypes = {
   children: node,
   content: node,
-  context: oneOf(Object.values(THEME_CONTEXT))
+  context: oneOf(Object.values(THEME_CONTEXT)),
 }
 
 export const defaultProps = {
-  context: THEME_CONTEXT.DARK
+  context: THEME_CONTEXT.DARK,
 }

@@ -7,12 +7,7 @@ import React, { useState, useEffect } from 'react'
 import { bool, func, node, number, oneOf, string } from 'prop-types'
 
 // UI
-import {
-  OffCanvasDiv,
-  OffCanvasHeader,
-  OffCanvasContent,
-  OffCanvasOverlay
-} from '../../../'
+import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../../../'
 
 import { THEME_CONTEXT } from '../../../theme/constants/context'
 
@@ -32,7 +27,7 @@ export const OffCanvasComponent = ({
   toggleShow,
   transitionDuration,
   variant,
-  width
+  width,
 }) => {
   const [initialState, setInitialState] = useState(false)
 
@@ -67,7 +62,8 @@ export const OffCanvasComponent = ({
         height={height}
         placement={placement}
         show={initialState}
-        width={width}>
+        width={width}
+      >
         <OffCanvasHeader
           context={context}
           hasAvatar={hasAvatar}
@@ -100,7 +96,7 @@ OffCanvasComponent.propTypes = {
   toggleShow: func.isRequired,
   transitionDuration: number,
   variant: string,
-  width: string
+  width: string,
 }
 
 OffCanvasComponent.defaultProps = {
@@ -112,5 +108,5 @@ OffCanvasComponent.defaultProps = {
   placement: 'right',
   submit: true,
   transitionDuration: 300,
-  width: '30vw'
+  width: '30vw',
 }

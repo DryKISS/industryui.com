@@ -8,10 +8,10 @@ export const PORTAL = [
       align: 'center',
       items: [
         {
-          content: 'Address can go here, to represent the company, office'
-        }
-      ]
-    }
+          content: 'Address can go here, to represent the company, office',
+        },
+      ],
+    },
   },
   {
     size: { sm: 12, md: 6 },
@@ -22,25 +22,25 @@ export const PORTAL = [
         {
           id: 'footerTerms',
           name: 'T&Cs',
-          to: '/'
+          to: '/',
         },
         {
           id: 'footerPrivacy',
           name: 'Privacy',
-          to: '/'
+          to: '/',
         },
         {
           id: 'footerContact',
           name: 'Contact us',
-          to: '/'
+          to: '/',
         },
         {
           id: 'footerLearning',
           icon: 'graduation-cap',
           name: 'Learning centre',
-          to: '/'
-        }
-      ]
-    }
-  }
+          to: '/',
+        },
+      ],
+    },
+  },
 ]

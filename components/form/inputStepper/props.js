@@ -3,15 +3,7 @@
  */
 
 // React
-import {
-  bool,
-  func,
-  object,
-  oneOf,
-  oneOfType,
-  number,
-  string
-} from 'prop-types'
+import { bool, func, object, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
 import { THEME_CONTEXT } from '../../theme/constants/context'
@@ -27,7 +19,7 @@ export const propTypes = {
   name: string.isRequired,
   onChange: func,
   value: oneOfType([number, string]),
-  valueAlign: string
+  valueAlign: string,
 }
 
 export const defaultProps = {
@@ -37,5 +29,5 @@ export const defaultProps = {
   errors: {},
   fullWidth: false,
   inputProps: {},
-  valueAlign: 'center'
+  valueAlign: 'center',
 }

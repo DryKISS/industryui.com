@@ -21,18 +21,13 @@ import {
   FormLabel,
   ReactSelectField,
   Text,
-  usePrevious
+  usePrevious,
 } from '../../../'
 
 import Readme from '../README.md'
 
 // Data
-import {
-  Customers,
-  Options,
-  UsersAvison,
-  UsersHousing
-} from '../__mocks__/reactSelect'
+import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
 
 export default {
   args: {
@@ -57,27 +52,27 @@ export default {
     formatGroupLabel: null,
     formatOptionLabel: null,
     isMulti: false,
-    isLoading: false
+    isLoading: false,
   },
   component: ReactSelectField,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/ReactSelect'
+  title: 'Form/ReactSelect',
 }
 
 const schema = object().shape({
-  reactSelect: string().nullable().required()
+  reactSelect: string().nullable().required(),
 })
 
 const BaseComponent = memo(
   (args) => {
     const { control, errors, handleSubmit } = useForm({
-      resolver: yupResolver(schema)
+      resolver: yupResolver(schema),
     })
 
     const onSubmit = (data) => {
@@ -90,7 +85,7 @@ const BaseComponent = memo(
       isClearable: true,
       name: 'reactSelect',
       options: Options,
-      ...args
+      ...args,
     }
 
     return (
@@ -99,9 +94,7 @@ const BaseComponent = memo(
           <ReactSelectField {...defaultProps} />
         </FormLabel>
 
-        {errors.reactSelect && (
-          <FormError message={errors.reactSelect.message} />
-        )}
+        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
         <Divider size="sm" />
 
         <Button content="Submit" size="sm" type="submit" />
@@ -128,14 +121,7 @@ export const async = () => {
     }, 2000)
   }
 
-  return (
-    <BaseComponent
-      async
-      defaultOptions
-      name="asyncSelect"
-      loadOptions={loadOptions}
-    />
-  )
+  return <BaseComponent async defaultOptions name="asyncSelect" loadOptions={loadOptions} />
 }
 
 export const Chained = () => {
@@ -189,24 +175,22 @@ export const Chained = () => {
     control,
     defaultOptions: true,
     errors: errors,
-    isClearable: true
+    isClearable: true,
   }
 
   return (
     <>
       <Text>
-        Initially load the async react select with a promise. we use the
-        defaultValue prop to load any options already submitted. This should be
-        part of the original GraphQL query. It must be in the form {'{'} value:
-        '2', label: 'Avison Young' {'}'}
+        Initially load the async react select with a promise. we use the defaultValue prop to load
+        any options already submitted. This should be part of the original GraphQL query. It must be
+        in the form {'{'} value: '2', label: 'Avison Young' {'}'}
       </Text>
 
       <Text>
-        Customers will never lose their options, but can change or remove the
-        default value, they will return the account ID to get the Users/
+        Customers will never lose their options, but can change or remove the default value, they
+        will return the account ID to get the Users/
         <br />
-        Default Customer, Click X on customer it should unload default and
-        options
+        Default Customer, Click X on customer it should unload default and options
         <br />
         It does not matter if the user changes their option
       </Text>
@@ -230,9 +214,7 @@ export const Chained = () => {
           />
         </FormLabel>
 
-        {errors.reactSelect && (
-          <FormError message={errors.reactSelect.message} />
-        )}
+        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 
         {data && (
           <>
@@ -303,24 +285,22 @@ export const ChainedNoDefault = () => {
     control,
     defaultOptions: true,
     errors: errors,
-    isClearable: true
+    isClearable: true,
   }
 
   return (
     <>
       <Text>
-        Initially load the async react select with a promise. we use the
-        defaultValue prop to load any options already submitted. This should be
-        part of the original GraphQL query. It must be in the form {'{'} value:
-        '2', label: 'Avison Young' {'}'}
+        Initially load the async react select with a promise. we use the defaultValue prop to load
+        any options already submitted. This should be part of the original GraphQL query. It must be
+        in the form {'{'} value: '2', label: 'Avison Young' {'}'}
       </Text>
 
       <Text>
-        Customers will never lose their options, but can change or remove the
-        default value, they will return the account ID to get the Users/
+        Customers will never lose their options, but can change or remove the default value, they
+        will return the account ID to get the Users/
         <br />
-        Default Customer, Click X on customer it should unload default and
-        options
+        Default Customer, Click X on customer it should unload default and options
         <br />
         It does not matter if the user changes their option
       </Text>
@@ -344,9 +324,7 @@ export const ChainedNoDefault = () => {
           />
         </FormLabel>
 
-        {errors.reactSelect && (
-          <FormError message={errors.reactSelect.message} />
-        )}
+        {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 
         {data && (
           <>

@@ -26,7 +26,7 @@ export const Badge = ({
   shape,
   size,
   style,
-  to
+  to,
 }) => {
   return (
     <StyledBadge
@@ -36,7 +36,8 @@ export const Badge = ({
       itemProp="keywords"
       shape={shape}
       size={size}
-      style={style}>
+      style={style}
+    >
       {icon && <StyledIcon icon={icon} prefix={iconPrefix} />}
       {content || children}
     </StyledBadge>
@@ -49,8 +50,7 @@ const StyledBadge = styled.a`
   border: ${({ context, theme }) =>
     context !== 'white' ? 'none' : '1px solid ' + theme.COLOUR.dark};
   border-radius: ${({ shape, theme }) => theme.BADGE.BORDER_RADIUS[shape]};
-  color: ${({ theme, context }) =>
-    context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black};
+  color: ${({ theme, context }) => (context !== 'white' ? theme.COLOUR.white : theme.COLOUR.black)};
   display: inline-block;
   line-height: 1;
   margin: 0 0.5em 0.5em 0;

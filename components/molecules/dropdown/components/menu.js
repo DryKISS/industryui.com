@@ -13,23 +13,14 @@ import styled, { css } from 'styled-components'
 import { elementTypes, DropdownItem } from '../../../'
 import { THEME_POSITION } from '../../../theme/constants/position'
 
-export const DropdownMenu = ({
-  closeDropdown,
-  elementType,
-  items,
-  onItemClick,
-  position
-}) => {
+export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, position }) => {
   const handleClick = (item) => {
     onItemClick && onItemClick(item)
     closeDropdown()
   }
 
   return (
-    <StyledDropdownMenu
-      elementType={elementType}
-      className="dropdown--menu"
-      position={position}>
+    <StyledDropdownMenu elementType={elementType} className="dropdown--menu" position={position}>
       <TooltipRectangle position={position} />
       <TooltipRectangle position={position} border />
       {items.map((item) => (
@@ -72,8 +63,7 @@ const StyledDropdownMenu = styled.div`
     `}
   ${({ elementType }) => {
     return (
-      (elementType === elementTypes.Colour ||
-        elementType === elementTypes.Icon) &&
+      (elementType === elementTypes.Colour || elementType === elementTypes.Icon) &&
       css`
         box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
         display: grid;
@@ -90,8 +80,7 @@ const size = '0.875rem'
 
 const TooltipRectangle = styled.div`
   ${({ border }) => css`
-    border-color: transparent transparent
-      ${border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)'};
+    border-color: transparent transparent ${border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)'};
   `}
   border-image: initial;
   border-style: solid;
@@ -139,6 +128,6 @@ DropdownMenu.propTypes = {
     THEME_POSITION.Top,
     THEME_POSITION.Right,
     THEME_POSITION.Bottom,
-    THEME_POSITION.Left
-  ])
+    THEME_POSITION.Left,
+  ]),
 }

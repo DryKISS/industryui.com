@@ -43,7 +43,7 @@ export const Intercom = memo(({ appID }) => {
 
     window.intercomSettings = {
       app_id: appID,
-      custom_launcher_selector: '#openIntercom'
+      custom_launcher_selector: '#openIntercom',
     }
 
     if (window.Intercom) {
@@ -62,5 +62,5 @@ export const Intercom = memo(({ appID }) => {
 })
 
 Intercom.propTypes = {
-  appID: string.isRequired
+  appID: string.isRequired,
 }

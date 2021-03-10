@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Email Change'
+  title: 'Organisms/Email Change',
 }
 
 export const Main = (args) => {

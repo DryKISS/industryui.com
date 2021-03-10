@@ -16,39 +16,37 @@ export default {
   args: {
     meta: {
       description: 'Description',
-      title: 'Meta'
+      title: 'Meta',
     },
     pageHeading: {
       heading: 'Heading',
-      strapline: 'Strapline'
-    }
+      strapline: 'Strapline',
+    },
   },
   argTypes: {
-    padding: SizeControl()
+    padding: SizeControl(),
   },
   component: Page,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Layouts/Page'
+  title: 'Layouts/Page',
 }
 
 export const main = (args) => (
   <Page {...args}>
     <Text>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+      been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+      galley of type and scrambled it to make a type specimen book. It has survived not only five
+      centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
+      was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+      passages, and more recently with desktop publishing software like Aldus PageMaker including
+      versions of Lorem Ipsum.
     </Text>
   </Page>
 )

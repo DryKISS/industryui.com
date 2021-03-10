@@ -10,13 +10,7 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  Adornment,
-  arrayOfValues,
-  InputDecorationTypes,
-  Space,
-  Text
-} from '../../'
+import { Adornment, arrayOfValues, InputDecorationTypes, Space, Text } from '../../'
 import { THEME_COLOUR } from '../../theme/variables/colour'
 import { THEME_SIZE } from '../../theme/constants/size'
 
@@ -27,7 +21,7 @@ const colourPlate = {
   disabled: THEME_COLOUR.dark,
   readOnly: THEME_COLOUR.grey,
   success: THEME_COLOUR.formSuccess,
-  warning: THEME_COLOUR.gold40
+  warning: THEME_COLOUR.gold40,
 }
 
 const inputThemeColourPlate = {
@@ -37,13 +31,13 @@ const inputThemeColourPlate = {
   disabled: 'dark',
   readOnly: 'grey',
   success: 'formSuccess',
-  warning: 'gold40'
+  warning: 'gold40',
 }
 
 export const InputTypes = {
   NUMBER: 'number',
   TEXT: 'text',
-  PASSWORD: 'password'
+  PASSWORD: 'password',
 }
 
 const colourProvider = (theme, decoration) => {
@@ -68,10 +62,7 @@ export const Input = ({
   ...props
 }) => {
   return (
-    <Wrapper
-      theme={props.theme}
-      decoration={decoration}
-      readOnly={props.readOnly}>
+    <Wrapper theme={props.theme} decoration={decoration} readOnly={props.readOnly}>
       {label && (
         <>
           <Space marginBottom="xs">
@@ -89,15 +80,11 @@ export const Input = ({
 
           <StyledInput
             adornments={adornments}
-            disabled={
-              props.disabled || decoration === InputDecorationTypes.DISABLED
-            }
+            disabled={props.disabled || decoration === InputDecorationTypes.DISABLED}
             message={message}
             name={name}
             placeholder={placeholder}
-            readOnly={
-              props.readOnly || decoration === InputDecorationTypes.READONLY
-            }
+            readOnly={props.readOnly || decoration === InputDecorationTypes.READONLY}
             ref={register}
             size={size}
             type={type}
@@ -105,9 +92,7 @@ export const Input = ({
             {...props}
           />
 
-          {adornments?.endAdornment && (
-            <Adornment size={size}>{adornments.endAdornment}</Adornment>
-          )}
+          {adornments?.endAdornment && <Adornment size={size}>{adornments.endAdornment}</Adornment>}
         </InputWrapper>
       </Space>
       {message && <StyledMessage>{message}</StyledMessage>}
@@ -184,7 +169,7 @@ const withAdornmentStyles = css`
 const StyledInput = styled.input.attrs((props) => ({
   'aria-label': props.name,
   autoComplete: 'off',
-  autoFocus: false
+  autoFocus: false,
 }))`
   border: 1px solid;
   border-left-width: ${({ required, adornments }) =>
@@ -242,18 +227,18 @@ const Wrapper = styled.div`
 Input.propTypes = {
   adornments: shape({
     startAdornment: node,
-    endAdornment: node
+    endAdornment: node,
   }),
   errors: object.isRequired,
   label: string,
   name: string.isRequired,
   placeholder: string,
   register: func.isRequired,
-  type: oneOf(arrayOfValues(InputTypes))
+  type: oneOf(arrayOfValues(InputTypes)),
 }
 
 Input.defaultProps = {
   decoration: 'default',
   type: InputTypes.TEXT,
-  size: THEME_SIZE.MD
+  size: THEME_SIZE.MD,
 }

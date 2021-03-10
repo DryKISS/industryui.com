@@ -30,7 +30,7 @@ export const Space = ({
   paddingTop,
   paddingRight,
   paddingBottom,
-  paddingLeft
+  paddingLeft,
 }) => {
   return (
     <StyledSpace
@@ -48,7 +48,8 @@ export const Space = ({
       paddingTop={paddingTop}
       paddingRight={paddingRight}
       paddingBottom={paddingBottom}
-      paddingLeft={paddingLeft}>
+      paddingLeft={paddingLeft}
+    >
       {content || children}
     </StyledSpace>
   )
@@ -71,7 +72,7 @@ const StyledSpace = styled.div`
     paddingRight,
     paddingTop,
     paddingX,
-    paddingY
+    paddingY,
   }) =>
     spaceStyler([
       { k: 'margin', v: margin },
@@ -87,27 +88,27 @@ const StyledSpace = styled.div`
       ...(marginY
         ? [
             { k: 'margin-top', v: marginY },
-            { k: 'margin-bottom', v: marginY }
+            { k: 'margin-bottom', v: marginY },
           ]
         : []),
       ...(marginX
         ? [
             { k: 'margin-left', v: marginX },
-            { k: 'margin-right', v: marginX }
+            { k: 'margin-right', v: marginX },
           ]
         : []),
       ...(paddingY
         ? [
             { k: 'padding-top', v: paddingY },
-            { k: 'padding-bottom', v: paddingY }
+            { k: 'padding-bottom', v: paddingY },
           ]
         : []),
       ...(paddingX
         ? [
             { k: 'padding-left', v: paddingX },
-            { k: 'padding-right', v: paddingX }
+            { k: 'padding-right', v: paddingX },
           ]
-        : [])
+        : []),
     ])}
 `
 
@@ -127,5 +128,5 @@ Space.propTypes = {
   paddingTop: oneOf(Object.values(THEME_SIZE)),
   paddingRight: oneOf(Object.values(THEME_SIZE)),
   paddingBottom: oneOf(Object.values(THEME_SIZE)),
-  paddingLeft: oneOf(Object.values(THEME_SIZE))
+  paddingLeft: oneOf(Object.values(THEME_SIZE)),
 }

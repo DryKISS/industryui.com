@@ -37,52 +37,52 @@ export default {
     lineWidth: 2,
     pointSize: 10,
     showLegend: true,
-    stacked: true
+    stacked: true,
   },
   argTypes: {
     areaOpacity: {
       name: 'Area Opacity',
-      control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 }
+      control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 },
     },
     colorScheme: {
       name: 'Colour Scheme',
       control: {
         type: 'select',
-        options: Object.keys(colorSchemes)
-      }
+        options: Object.keys(colorSchemes),
+      },
     },
     curve: {
       control: {
         type: 'select',
-        options: lineCurvePropKeys
-      }
+        options: lineCurvePropKeys,
+      },
     },
     enableSlices: {
       name: 'Enable Slices',
       control: {
         type: 'select',
-        options: ['x', 'y', false]
-      }
+        options: ['x', 'y', false],
+      },
     },
     isInteractive: { name: 'isInteractive (tooltip)' },
     lineWidth: {
       name: 'line Width',
-      control: { type: 'range', min: 1, max: 10, step: 1 }
+      control: { type: 'range', min: 1, max: 10, step: 1 },
     },
     pointSize: {
       name: 'point Size',
-      control: { type: 'range', min: 0.0, max: 10, step: 1 }
-    }
+      control: { type: 'range', min: 0.0, max: 10, step: 1 },
+    },
   },
   title: 'Molecules/Charts/Nivo/Line',
   component: LineChart,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const BaseComponent = (props) => {

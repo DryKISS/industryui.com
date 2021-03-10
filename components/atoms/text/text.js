@@ -15,21 +15,9 @@ import { themeDisplay } from '../../theme/utils/display'
 // Props
 import { propTypes, defaultProps } from './props'
 
-export const Text = ({
-  align,
-  children,
-  className,
-  content,
-  context,
-  size,
-  weight
-}) => {
+export const Text = ({ align, children, className, content, context, size, weight }) => {
   return (
-    <StyledText
-      align={align}
-      className={className}
-      context={context}
-      size={size}>
+    <StyledText align={align} className={className} context={context} size={size}>
       {content || children}
     </StyledText>
   )

@@ -27,22 +27,22 @@ export default {
     variant: BarConfig.VARIANT.OVERLAY,
     backdrop: false,
     width: 15,
-    toggle: true
+    toggle: true,
   },
   component: Bar,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Bar'
+  title: 'Organisms/Bar',
 }
 
 const BaseComponent = (args) => {
   const defaultProps = {
-    ...args
+    ...args,
   }
 
   return (
@@ -52,15 +52,7 @@ const BaseComponent = (args) => {
           {barMock.map(({ Component, divider, icon, name, to }, index) => {
             return (
               <ListItem key={index}>
-                {divider ? (
-                  <Divider size="sm" />
-                ) : Component ? (
-                  <Component />
-                ) : to ? (
-                  name
-                ) : (
-                  name
-                )}
+                {divider ? <Divider size="sm" /> : Component ? <Component /> : to ? name : name}
               </ListItem>
             )
           })}
@@ -82,10 +74,10 @@ main.argTypes = {
   minSize: {
     control: {
       type: ControlTypes.Select,
-      options: ['5rem', '10rem', '12rem']
-    }
+      options: ['5rem', '10rem', '12rem'],
+    },
   },
   width: {
-    control: { type: ControlTypes.Range, min: 10, max: 30, step: 1 }
-  }
+    control: { type: ControlTypes.Range, min: 10, max: 30, step: 1 },
+  },
 }

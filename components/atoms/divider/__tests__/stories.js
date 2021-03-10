@@ -21,21 +21,21 @@ export default {
     context: defaultProps.context,
     size: defaultProps.size,
     thickness: defaultProps.thickness,
-    dashed: false
+    dashed: false,
   },
   argTypes: {
     context: ContextControl(),
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: Divider,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Divider'
+  title: 'Atoms/Divider',
 }
 
 const BaseComponent = (props) => {

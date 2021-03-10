@@ -20,7 +20,7 @@ import {
   ImageLocation,
   ImageLocationFormElement,
   randomFloat,
-  RawIcons
+  RawIcons,
 } from '../../../'
 import Readme from '../README.md'
 // Data
@@ -31,48 +31,41 @@ export default {
     customIcon: null,
     initialCoordinates: {
       x: 42,
-      y: 41
+      y: 41,
     },
     animation: 'none',
     markerColour: '#ff0000',
-    withInitialCoordinates: false
+    withInitialCoordinates: false,
   },
   argTypes: {
     customIcon: {
-      control: { type: 'select', options: Object.keys(RawIcons) }
+      control: { type: 'select', options: Object.keys(RawIcons) },
     },
     animation: {
-      control: { type: 'select', options: ['blinker', 'none'] }
+      control: { type: 'select', options: ['blinker', 'none'] },
     },
-    markerColour: { control: { type: 'color' } }
+    markerColour: { control: { type: 'color' } },
   },
   title: 'Molecules/ImageLocation',
   component: ImageLocation,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const BaseComponent = (props = {}) => {
-  const {
-    args,
-    item,
-    initialZoomLevel,
-    markers,
-    maxZoomLevel,
-    onMarkerClick
-  } = props
+  const { args, item, initialZoomLevel, markers, maxZoomLevel, onMarkerClick } = props
 
   const defaultProps = {
     coordinatesChange: (coordinates) => {
       console.info('Coordinates', coordinates)
     },
     ...(args.withInitialCoordinates && {
-      initialCoordinates: args.initialCoordinates
+      initialCoordinates: args.initialCoordinates,
     }),
     item: item ?? Item,
     customIcon: args.customIcon,
@@ -80,7 +73,7 @@ const BaseComponent = (props = {}) => {
     ...(initialZoomLevel && { initialZoomLevel }),
     ...(maxZoomLevel && { maxZoomLevel }),
     ...(markers && { markers }),
-    ...(onMarkerClick && { onMarkerClick })
+    ...(onMarkerClick && { onMarkerClick }),
   }
 
   const markerStyles = {
@@ -88,16 +81,10 @@ const BaseComponent = (props = {}) => {
     borderRadius: '50%',
     color: args.markerColour,
     height: '20px',
-    width: '20px'
+    width: '20px',
   }
 
-  return (
-    <ImageLocation
-      autoCloseMarkerPopup
-      markerStyles={markerStyles}
-      {...defaultProps}
-    />
-  )
+  return <ImageLocation autoCloseMarkerPopup markerStyles={markerStyles} {...defaultProps} />
 }
 
 export const main = (args) => <BaseComponent args={args} />
@@ -108,14 +95,14 @@ export const withMarkers = (args) => (
         icon: 'circle',
         x: 50,
         y: 50,
-        colour: 'red'
+        colour: 'red',
       },
       {
         icon: 'bell',
         x: 50,
         y: 10,
-        colour: 'blue'
-      }
+        colour: 'blue',
+      },
     ]}
     args={args}
   />
@@ -131,7 +118,7 @@ export const withSvgAsMainImage = (args) => {
       popupComponent: <div>icon {i}</div>,
       x: randomFloat({ minimum: 0, maximum: 100 }),
       y: randomFloat({ minimum: 0, maximum: 100 }),
-      colour: 'magenta'
+      colour: 'magenta',
     })
   }
   return (
@@ -147,11 +134,11 @@ export const withSvgAsMainImage = (args) => {
 }
 export const UsedInForm = () => {
   const schema = object().shape({
-    imageLocationData: object().required()
+    imageLocationData: object().required(),
   })
 
   const { control, errors, handleSubmit, setValue } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onFormSubmit = (data) => {
@@ -160,12 +147,7 @@ export const UsedInForm = () => {
 
   return (
     <Form handleSubmit={handleSubmit((data) => onFormSubmit(data))}>
-      <ImageLocationFormElement
-        item={Item}
-        control={control}
-        errors={errors}
-        setValue={setValue}
-      />
+      <ImageLocationFormElement item={Item} control={control} errors={errors} setValue={setValue} />
       {errors.imageLocationData && (
         <Alert
           content={

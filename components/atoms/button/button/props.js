@@ -3,17 +3,7 @@
  */
 
 // React
-import {
-  bool,
-  func,
-  node,
-  number,
-  object,
-  objectOf,
-  oneOf,
-  oneOfType,
-  string
-} from 'prop-types'
+import { bool, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
 import { DIMENSION_PROP_TYPES } from '../../../theme/utils/dimension'
@@ -43,7 +33,7 @@ export const propTypes = {
   type: oneOf(['button', 'reset', 'submit']),
   ...DIMENSION_PROP_TYPES,
   ...DISPLAY_PROP_TYPES,
-  ...SPACER_PROP_TYPES
+  ...SPACER_PROP_TYPES,
 }
 
 export const defaultProps = {
@@ -51,5 +41,5 @@ export const defaultProps = {
   disabled: false,
   shadow: false,
   size: 'md',
-  type: 'button'
+  type: 'button',
 }

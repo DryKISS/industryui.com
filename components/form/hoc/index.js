@@ -32,13 +32,14 @@ export const FieldHOC = ({
         ...(props.min && { min: props.min }),
         ...(props.maxLength && { maxLength: props.maxLength }),
         ...(props.minLength && { minLength: props.minLength }),
-        ...(props.regExp && { pattern: new RegExp(props.regExp) })
+        ...(props.regExp && { pattern: new RegExp(props.regExp) }),
       })}
       style={{
         display: !show ? 'none' : undefined,
-        ...props.style
+        ...props.style,
       }}
-      {...props}>
+      {...props}
+    >
       {children}
     </Component>
 
@@ -58,5 +59,5 @@ FieldHOC.defaultProps = {
   errors: {},
   register: () => {},
   show: true,
-  showError: false
+  showError: false,
 }

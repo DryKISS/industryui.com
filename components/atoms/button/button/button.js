@@ -47,24 +47,13 @@ export const Button = forwardRef(
         textContext={textContext}
         ref={ref}
         role="button"
-        {...props}>
-        {startIcon && (
-          <Icon
-            icon={startIcon}
-            {...startIconProps}
-            prefix={startIconProps?.prefix}
-          />
-        )}
+        {...props}
+      >
+        {startIcon && <Icon icon={startIcon} {...startIconProps} prefix={startIconProps?.prefix} />}
 
         {text && <StyledContent>{text}</StyledContent>}
 
-        {endIcon && (
-          <Icon
-            icon={endIcon}
-            {...endIconProps}
-            prefix={endIconProps?.prefix}
-          />
-        )}
+        {endIcon && <Icon icon={endIcon} {...endIconProps} prefix={endIconProps?.prefix} />}
       </StyledButton>
     )
   }
@@ -143,10 +132,8 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: ${({ context, theme: { COLOUR } }) =>
-      shadeLinearRgb(-0.1, COLOUR[context])};
-    border-color: ${({ context, theme: { COLOUR } }) =>
-      shadeLinearRgb(-0.12, COLOUR[context])};
+    background-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.1, COLOUR[context])};
+    border-color: ${({ context, theme: { COLOUR } }) => shadeLinearRgb(-0.12, COLOUR[context])};
     color: ${({ theme: { COLOUR } }) => COLOUR.white};
   }
 
@@ -155,8 +142,7 @@ const StyledButton = styled.button`
   ${(props) =>
     props.shadow &&
     css`
-      box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.12),
-        0px 10px 24px 0px rgba(0, 0, 0, 0.12),
+      box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.12), 0px 10px 24px 0px rgba(0, 0, 0, 0.12),
         0px 10px 24px 0px rgba(0, 0, 0, 0.12);
     `}
 

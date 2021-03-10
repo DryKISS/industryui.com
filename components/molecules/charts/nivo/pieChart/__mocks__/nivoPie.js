@@ -2,54 +2,54 @@ export const Data = [
   {
     id: 'make',
     label: 'make',
-    value: 154
+    value: 154,
   },
   {
     id: 'go',
     label: 'go',
-    value: 318
+    value: 318,
   },
   {
     id: 'javascript',
     label: 'javascript',
-    value: 382
+    value: 382,
   },
   {
     id: 'rust',
     label: 'rust',
-    value: 461
+    value: 461,
   },
   {
     id: 'c',
     label: 'c',
-    value: 242
-  }
+    value: 242,
+  },
 ]
 
 export const Data2 = [
   {
     id: 'Apple',
     label: 'revenue (millions)',
-    value: 100.4
+    value: 100.4,
   },
   {
     id: 'Samsung',
     label: 'revenue (millions)',
-    value: 50.3
+    value: 50.3,
   },
   {
     id: 'Google',
     label: 'revenue (millions)',
-    value: 300.3
+    value: 300.3,
   },
   {
     id: 'Mozzila',
     label: 'revenue (millions)',
-    value: 75.1
+    value: 75.1,
   },
   {
     id: 'Alibaba',
     label: 'revenue (millions)',
-    value: 99.1
-  }
+    value: 99.1,
+  },
 ]

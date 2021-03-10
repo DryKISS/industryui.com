@@ -4,16 +4,7 @@
 
 // React
 import React, { Fragment } from 'react'
-import {
-  arrayOf,
-  bool,
-  func,
-  number,
-  object,
-  oneOfType,
-  shape,
-  string
-} from 'prop-types'
+import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -32,11 +23,7 @@ export const Footer = ({ columns, fixed }) => {
   const renderColumns = () => {
     return columns.map((column, index) => {
       return (
-        <Column
-          align={column.align}
-          key={index}
-          offset={column.offset}
-          {...column.size}>
+        <Column align={column.align} key={index} offset={column.offset} {...column.size}>
           {Object.entries(column).map(([key, value], i) => {
             switch (key) {
               case 'header':
@@ -67,17 +54,11 @@ export const Footer = ({ columns, fixed }) => {
 
   const renderLinks = ({ align, border, context, direction, items }, index) => {
     return (
-      <StyledList
-        align={align}
-        direction={direction}
-        key={`${items[0]}${index}`}
-        unstyled>
+      <StyledList align={align} direction={direction} key={`${items[0]}${index}`} unstyled>
         {items.map(({ icon, iconPrefix, id, name, to }) => (
           <StyledListItem key={id}>
             <Link border={border} context={context} to={to} passHref>
-              {icon && (
-                <StyledIcon context="primary" icon={icon} prefix={iconPrefix} />
-              )}
+              {icon && <StyledIcon context="primary" icon={icon} prefix={iconPrefix} />}
               {name}
             </Link>
           </StyledListItem>
@@ -91,10 +72,7 @@ export const Footer = ({ columns, fixed }) => {
       {items?.map(({ content, icon }, i) => (
         <Fragment key={i}>
           {icon && <StyledIcon context="primary" icon={icon} />}
-          <StyledText
-            align={align}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <StyledText align={align} dangerouslySetInnerHTML={{ __html: content }} />
         </Fragment>
       ))}
     </Fragment>
@@ -158,7 +136,7 @@ Footer.propTypes = {
     shape({
       header: shape({
         align: string,
-        content: string
+        content: string,
       }),
       formatter: func,
       links: shape({
@@ -168,28 +146,28 @@ Footer.propTypes = {
             id: string,
             icon: string,
             name: string,
-            to: oneOfType([object, string])
+            to: oneOfType([object, string]),
           })
-        )
+        ),
       }),
       offset: shape({
         sm: number,
         md: number,
         lg: number,
-        xl: number
+        xl: number,
       }),
       size: shape({
         sm: number,
         md: number,
         lg: number,
-        xl: number
+        xl: number,
       }),
-      style: object
+      style: object,
     })
   ).isRequired,
-  fixed: bool
+  fixed: bool,
 }
 
 Footer.defaultProps = {
-  fixed: false
+  fixed: false,
 }

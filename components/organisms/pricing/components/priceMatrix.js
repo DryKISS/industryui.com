@@ -45,10 +45,7 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
         {features.map((item, index) => {
           return (
             <FeatureNameColumn key={index} odd={index % 2 !== 0}>
-              <MatrixText
-                content={item}
-                size={priceLayoutSizes(layout).featuresTextSize}
-              />
+              <MatrixText content={item} size={priceLayoutSizes(layout).featuresTextSize} />
             </FeatureNameColumn>
           )
         })}
@@ -59,15 +56,13 @@ export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
             key={index}
             show={layout.includes(LAYOUTS.DESKTOP) || selectedPlan === index}
             flex={!layout.includes(LAYOUTS.DESKTOP)}
-            layout={layout}>
+            layout={layout}
+          >
             {features.map((feature, idx) => {
               return (
                 <FeatureCheckColumn odd={idx % 2 !== 0} key={idx}>
                   {featureExist(item, feature) ? (
-                    <StyledCheckedIcon
-                      size={18}
-                      recommended={item.recommended}
-                    />
+                    <StyledCheckedIcon size={18} recommended={item.recommended} />
                   ) : (
                     ''
                   )}
@@ -98,8 +93,7 @@ const MatrixText = styled(Text)`
 
 const FeatureCheckColumn = styled.div`
   align-items: center;
-  background-color: ${({ theme, odd }) =>
-    odd ? theme.COLOUR.light : theme.COLOUR.white};
+  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};
   display: flex;
   justify-content: center;
   margin: 1px 0;
@@ -108,8 +102,7 @@ const FeatureCheckColumn = styled.div`
 
 const FeatureNameColumn = styled.div`
   align-items: center;
-  background-color: ${({ theme, odd }) =>
-    odd ? theme.COLOUR.light : theme.COLOUR.white};
+  background-color: ${({ theme, odd }) => (odd ? theme.COLOUR.light : theme.COLOUR.white)};
   border: 1px solid ${({ theme }) => theme.COLOUR.dark};
   display: flex;
   margin: 1px 0;

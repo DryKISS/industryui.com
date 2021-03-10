@@ -20,7 +20,7 @@ import {
   FormField,
   Link,
   Text,
-  UserContext
+  UserContext,
 } from '../../'
 
 // Style
@@ -29,14 +29,13 @@ import styled from 'styled-components'
 const CHECKBOX_TERMS = [
   {
     id: 'terms',
-    label:
-      'I confirm that I have read and agree to the Terms of Service and Privacy Policy.'
+    label: 'I confirm that I have read and agree to the Terms of Service and Privacy Policy.',
   },
   {
     id: 'marketing',
     label: `I would like to receive, occasional news and exclusive offers from via email. I can opt
-      out of receiving these at any time in my account settings.`
-  }
+      out of receiving these at any time in my account settings.`,
+  },
 ]
 
 export const Register = ({
@@ -54,7 +53,7 @@ export const Register = ({
   showPlaceholder,
   submit,
   terms,
-  yearBirthday
+  yearBirthday,
 }) => {
   const renderBirthday = () => (
     <>
@@ -66,15 +65,13 @@ export const Register = ({
         year={yearBirthday}
       />
 
-      <Text>
-        To sign up, you must be 18 or older. Other users will not see this.
-      </Text>
+      <Text>To sign up, you must be 18 or older. Other users will not see this.</Text>
     </>
   )
 
   const { registerContext } = useContext(UserContext)
   const { errors, register, formState, handleSubmit } = useForm({
-    mode: 'onChange'
+    mode: 'onChange',
   })
 
   const [error, setError] = useState(errorSubmit)
@@ -110,7 +107,7 @@ export const Register = ({
 
   const defaultOptions = {
     errors: errors,
-    register: register
+    register: register,
   }
 
   return (
@@ -163,9 +160,7 @@ export const Register = ({
 
       {birthday && renderBirthday()}
 
-      {passwordError && (
-        <Alert content={passwordError.message} context="warning" />
-      )}
+      {passwordError && <Alert content={passwordError.message} context="warning" />}
 
       <CheckboxField {...defaultOptions} data={CHECKBOX_TERMS} stacked />
 
@@ -205,10 +200,10 @@ Register.propTypes = {
   showPlaceholder: bool,
   submit: func.isRequired,
   terms: bool,
-  yearBirthday: any
+  yearBirthday: any,
 }
 
 Register.defaultProps = {
   birthday: false,
-  pathLogin: '/account/login'
+  pathLogin: '/account/login',
 }

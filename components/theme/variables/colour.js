@@ -20,5 +20,5 @@ export const THEME_COLOUR = {
   female: 'rgb(248, 139, 157)',
   male: 'rgb(142, 206, 253)',
 
-  transparent: 'transparent'
+  transparent: 'transparent',
 }

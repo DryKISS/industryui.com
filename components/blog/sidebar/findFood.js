@@ -33,7 +33,7 @@ import {
   InputGroup,
   InputGroupAddon,
   Link,
-  validatorPostCode
+  validatorPostCode,
 } from '../../'
 
 import { BlogSection } from './components'
@@ -44,17 +44,15 @@ import styled from 'styled-components'
 const schema = object().shape({
   postCode: string()
     .required()
-    .test(
-      'is-valid',
-      "We couldn't recognise that postcode - check and try again.",
-      (value) => validatorPostCode(value)
-    )
+    .test('is-valid', "We couldn't recognise that postcode - check and try again.", (value) =>
+      validatorPostCode(value)
+    ),
 })
 
 export const BlogFindFood = ({ colour }) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema),
-    mode: 'onSubmit'
+    mode: 'onSubmit',
   })
   const [msg, setMsg] = useState(false)
 
@@ -101,9 +99,7 @@ export const BlogFindFood = ({ colour }) => {
                 />
               </InputGroupAddon>
 
-              {errors.postCode && (
-                <FormError message={errors.postCode.message} />
-              )}
+              {errors.postCode && <FormError message={errors.postCode.message} />}
               {msg && <div style={{ color: '#fff' }}>{msg}</div>}
             </InputGroup>
           </FormLabel>
@@ -120,8 +116,7 @@ export const BlogFindFood = ({ colour }) => {
 }
 
 const StyledContainer = styled.div`
-  background-color: ${(props) =>
-    props.colour === 'beetroot' ? '#e2004f' : '#4e0064'};
+  background-color: ${(props) => (props.colour === 'beetroot' ? '#e2004f' : '#4e0064')};
   color: #fff;
   line-height: 22px;
   margin: 0 -10px;
@@ -149,9 +144,9 @@ const StyledA = styled.span`
 `
 
 BlogFindFood.propTypes = {
-  colour: oneOf(['beetroot', 'aubergine'])
+  colour: oneOf(['beetroot', 'aubergine']),
 }
 
 BlogFindFood.defaultProps = {
-  colour: 'beetroot'
+  colour: 'beetroot',
 }

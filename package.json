@@ -34,7 +34,7 @@
     "start": "start-storybook -s ./static -p 9000 --quiet -c .storybook",
     "serve": "npx http-server storybook-static",
     "test": "npx eslint . --ext .js",
-    "test-fix": "npx eslint . --ext .js --fix",
+    "test:fix": "npx eslint . --ext .js --fix",
     "clean": "rm -rf ./esm",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
     "build": "npm run clean && BABEL_ENV=esm babel components --out-dir esm  --source-maps false",

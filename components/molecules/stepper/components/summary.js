@@ -45,5 +45,5 @@ const StyledValue = styled.span`
 
 StepperSummary.propTypes = {
   className: string,
-  summary: array.isRequired
+  summary: array.isRequired,
 }

@@ -16,11 +16,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/RandomColor'
+  title: 'Utils/RandomColor',
 }
 
 export const Main = () => {
@@ -31,7 +31,8 @@ export const Main = () => {
       onClick={() => {
         setCounter(Counter + 1)
       }}
-      style={{ backgroundColor: RandomColor() }}>
+      style={{ backgroundColor: RandomColor() }}
+    >
       click on this area to visualize new render
     </ColorWrapper>
   )

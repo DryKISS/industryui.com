@@ -16,12 +16,7 @@ import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { Container } from './container'
 import { Bar } from './bar'
 
-export const PageProgressBar = ({
-  context,
-  isAnimating,
-  instanceKey,
-  router
-}) => {
+export const PageProgressBar = ({ context, isAnimating, instanceKey, router }) => {
   const [isRouteChanging, setIsRouteChanging] = useState(false)
   const [loadingKey, setLoadingKey] = useState(null)
 
@@ -43,18 +38,10 @@ export const PageProgressBar = ({
   }, [])
 
   return (
-    <NProgress
-      isAnimating={isRouteChanging || isAnimating}
-      key={loadingKey || instanceKey}>
+    <NProgress isAnimating={isRouteChanging || isAnimating} key={loadingKey || instanceKey}>
       {({ animationDuration, isFinished, progress }) => (
-        <Container
-          animationDuration={animationDuration}
-          isFinished={isFinished}>
-          <Bar
-            animationDuration={animationDuration}
-            context={context}
-            progress={progress}
-          />
+        <Container animationDuration={animationDuration} isFinished={isFinished}>
+          <Bar animationDuration={animationDuration} context={context} progress={progress} />
         </Container>
       )}
     </NProgress>
@@ -65,11 +52,11 @@ PageProgressBar.propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
   isAnimating: bool,
   instanceKey: string,
-  router: object
+  router: object,
 }
 
 PageProgressBar.defaultProps = {
   context: 'info',
   isAnimating: false,
-  instanceKey: null
+  instanceKey: null,
 }

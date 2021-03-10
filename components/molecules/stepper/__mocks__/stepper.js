@@ -6,12 +6,12 @@ export const Data = {
     {
       id: 1,
       label: 'Job raised',
-      date: '10 Nov 2019 11:40'
+      date: '10 Nov 2019 11:40',
     },
     {
       id: 2,
       label: 'Job offered',
-      date: '10 Nov 2019 11:45'
+      date: '10 Nov 2019 11:45',
     },
     {
       id: 3,
@@ -21,29 +21,29 @@ export const Data = {
         {
           id: 1,
           active: true,
-          data: 'Accepted by HomeRepairs Ltd'
-        }
-      ]
+          data: 'Accepted by HomeRepairs Ltd',
+        },
+      ],
     },
     {
       id: 4,
       label: 'In progress',
-      date: '10 Nov 2019 12:10'
+      date: '10 Nov 2019 12:10',
     },
     {
       id: 5,
       label: 'Complete',
-      date: '10 Nov 2019 12:31'
+      date: '10 Nov 2019 12:31',
     },
     {
       id: 6,
       label: 'Report sent',
-      date: '10 Nov 2019 12:35'
+      date: '10 Nov 2019 12:35',
     },
     {
       id: 7,
       label: 'Invoice sent',
-      date: '10 Nov 2019 13:05'
+      date: '10 Nov 2019 13:05',
     },
     {
       id: 8,
@@ -56,9 +56,9 @@ export const Data = {
           content: 'Mark customer paid',
           context: 'secondary',
           handleClick: () => {},
-          type: 'button'
-        }
-      ]
+          type: 'button',
+        },
+      ],
     },
     {
       id: 9,
@@ -71,9 +71,9 @@ export const Data = {
           content: 'Mark supplier paid',
           context: 'secondary',
           handleClick: () => {},
-          type: 'button'
-        }
-      ]
+          type: 'button',
+        },
+      ],
     },
     {
       id: 10,
@@ -85,9 +85,9 @@ export const Data = {
           content: 'Close job manually',
           context: 'warning',
           handleClick: () => {},
-          type: 'button'
-        }
-      ]
+          type: 'button',
+        },
+      ],
     },
     {
       id: 11,
@@ -100,23 +100,23 @@ export const Data = {
           content: 'Close job manually',
           context: 'warning',
           handleClick: () => {},
-          type: 'button'
-        }
-      ]
-    }
+          type: 'button',
+        },
+      ],
+    },
   ],
   summary: [
     {
       label: 'Start time',
-      value: '11:40'
+      value: '11:40',
     },
     {
       label: 'Scheduled end time',
-      value: '13:00'
+      value: '13:00',
     },
     {
       label: 'Actual end time',
-      value: '12:31'
-    }
-  ]
+      value: '12:31',
+    },
+  ],
 }

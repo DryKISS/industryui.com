@@ -34,15 +34,10 @@ export class GeoCoder {
       return response.data
     }
 
-    this.log(
-      `${response.statusText}.\nServer returned status code ${response.statusText}`,
-      true
-    )
+    this.log(`${response.statusText}.\nServer returned status code ${response.statusText}`, true)
 
     return Promise.reject(
-      new Error(
-        `${response.statusText}.\nServer returned status code ${response.statusText}`
-      )
+      new Error(`${response.statusText}.\nServer returned status code ${response.statusText}`)
     )
   }
 
@@ -69,13 +64,13 @@ export class GeoCoder {
     }
 
     const {
-      results: [result]
+      results: [result],
     } = await this.handleUrl(url)
 
     const {
       geometry: {
-        location: { lat, lng }
-      }
+        location: { lat, lng },
+      },
     } = result
 
     const coordinates = { lat, lng }

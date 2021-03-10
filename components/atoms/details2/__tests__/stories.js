@@ -18,7 +18,7 @@ import {
   Icon,
   MessageNames,
   Row,
-  Text
+  Text,
 } from '../../../'
 
 import { THEME_CONTEXT } from '../../../theme/constants/context'
@@ -48,20 +48,20 @@ export default {
     open: true,
     title: 'Details 2',
     uniqueId: '1',
-    unmountContentOnClose: false
+    unmountContentOnClose: false,
   },
   argTypes: {
-    context: ContextControl()
+    context: ContextControl(),
   },
   component: Details2,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Details2'
+  title: 'Atoms/Details2',
 }
 
 export const main = (args) => {
@@ -106,9 +106,10 @@ export const communication = (args) => {
                 DetailsCommunicationService.send({
                   name: MessageNames.DetailsComponent.SET_OPEN,
                   id: 'danger_Details',
-                  payload: true
+                  payload: true,
                 })
-              }}>
+              }}
+            >
               Open red Details
             </Button>
             <p>wdsfsadfgsafgd</p>
@@ -143,9 +144,10 @@ export const communication = (args) => {
                 DetailsCommunicationService.send({
                   name: MessageNames.DetailsComponent.SET_OPEN,
                   id: 'primary_Details',
-                  payload: true
+                  payload: true,
                 })
-              }}>
+              }}
+            >
               Open primary Details
             </Button>
             <p>wdsfsadfgsafgd</p>
@@ -175,9 +177,10 @@ export const communication = (args) => {
                   DetailsCommunicationService.send({
                     name: MessageNames.DetailsComponent.SET_OPEN,
                     id: 'success_Details',
-                    payload: false
+                    payload: false,
                   })
-                }}>
+                }}
+              >
                 close success Details
               </Button>
             }
@@ -210,9 +213,10 @@ export const communication = (args) => {
                   DetailsCommunicationService.send({
                     name: MessageNames.DetailsComponent.SET_OPEN,
                     id: 'danger_Details',
-                    payload: true
+                    payload: true,
                   })
-                }}>
+                }}
+              >
                 open danger Details
               </Button>
             }

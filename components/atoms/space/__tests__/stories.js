@@ -14,7 +14,7 @@ import { THEME_SIZE } from '../../../theme/constants/size'
 
 const control = {
   type: ControlTypes.Select,
-  options: arrayOfValues(THEME_SIZE)
+  options: arrayOfValues(THEME_SIZE),
 }
 
 export default {
@@ -32,68 +32,68 @@ export default {
     paddingRight: 'sm',
     paddingTop: 'sm',
     paddingX: 'sm',
-    paddingY: 'sm'
+    paddingY: 'sm',
   },
   argTypes: {
     margin: {
       name: 'Margin',
-      control
+      control,
     },
     marginBottom: {
       name: 'Margin Bottom',
-      control
+      control,
     },
     marginLeft: {
       name: 'Margin Left',
-      control
+      control,
     },
     marginRight: {
       name: 'Margin Right',
-      control
+      control,
     },
     marginTop: {
       name: 'Margin Top',
-      control
+      control,
     },
     marginX: {
       name: 'Margin X',
-      control
+      control,
     },
     marginY: {
       name: 'Margin Y',
-      control
+      control,
     },
     padding: {
       name: 'Padding',
-      control
+      control,
     },
     paddingBottom: {
       name: 'Padding Bottom',
-      control
+      control,
     },
     paddingLeft: {
       name: 'Padding Left',
-      control
+      control,
     },
     paddingRight: {
       name: 'Padding Right',
-      control
+      control,
     },
     paddingTop: {
       name: 'Padding Top',
-      control
+      control,
     },
     paddingX: {
       name: 'Padding X',
-      control
+      control,
     },
     paddingY: {
       name: 'Padding Y',
-      control
-    }
+      control,
+    },
   },
   component: Space,
-  title: 'Atoms/Space'
+  title: 'Atoms/Space',
 }
 
 export const main = (args) => {

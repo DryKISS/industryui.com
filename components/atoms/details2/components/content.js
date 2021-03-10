@@ -16,18 +16,16 @@ export const Details2Content = ({
   fitParentHeight,
   isOpen,
   maxHeight,
-  mounted
+  mounted,
 }) => {
   return (
     <Wrapper
       animationDuration={animationTime}
       fitParentHeight={fitParentHeight}
       maxHeight={maxHeight}
-      isOpen={isOpen}>
-      <Content
-        fitParentHeight={fitParentHeight}
-        isOpen={isOpen}
-        ref={contentRef}>
+      isOpen={isOpen}
+    >
+      <Content fitParentHeight={fitParentHeight} isOpen={isOpen} ref={contentRef}>
         {mounted && children}
       </Content>
     </Wrapper>
@@ -43,8 +41,7 @@ const Wrapper = styled.div`
     css`
       height: ${!isOpen ? '0px' : 'calc(100% - 3.5rem)'};
     `}
-  transition-duration: ${({ animationDuration }) =>
-    (animationDuration ?? 300) + 'ms'};
+  transition-duration: ${({ animationDuration }) => (animationDuration ?? 300) + 'ms'};
   transition-property: max-height;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 `
@@ -65,10 +62,10 @@ Details2Content.propTypes = {
   fitParentHeight: bool,
   isOpen: bool,
   maxHeight: number,
-  mounted: bool
+  mounted: bool,
 }
 
 Details2Content.defaultProps = {
   animationTime: 100,
-  isOpen: false
+  isOpen: false,
 }

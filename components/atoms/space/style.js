@@ -16,7 +16,7 @@ const sizes = {
   lgSize: '1.5rem',
   xlSize: '2rem',
   xxlSize: '2.5rem',
-  xxxlSize: '3rem'
+  xxxlSize: '3rem',
 }
 
 export const spaceStyler = (properties) => {

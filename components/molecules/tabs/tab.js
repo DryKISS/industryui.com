@@ -23,7 +23,7 @@ export const Tab = ({
   indicatorSize,
   label,
   onClick,
-  scrollToActiveTab
+  scrollToActiveTab,
 }) => {
   const tabRef = useRef(null)
   const labelSlug = slugify(label)
@@ -33,7 +33,7 @@ export const Tab = ({
     if (scrollToActiveTab && tabRef.current) {
       tabRef.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'end'
+        block: 'end',
       })
     }
   }, [isActive])
@@ -61,7 +61,8 @@ export const Tab = ({
       indicatorSize={indicatorSize}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
-      gap={gap}>
+      gap={gap}
+    >
       {label}
     </StyledTab>
   )
@@ -71,8 +72,7 @@ const StyledTab = styled.li`
   ${({ context, theme, gap }) => css`
     background-color: ${theme.TABS.colour};
     border-left: 1px solid ${theme.TABS.borderColour};
-    border-bottom: 1px solid
-      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+    border-bottom: 1px solid ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     border-top: 1px solid ${theme.TABS.borderColour};
     color: ${theme.TABS.tabTextColour};
     ${gap !== 0 &&
@@ -144,10 +144,10 @@ Tab.propTypes = {
   index: number,
   label: string.isRequired,
   onClick: oneOfType([bool, func]).isRequired,
-  scrollToActiveTab: bool
+  scrollToActiveTab: bool,
 }
 
 Tab.defaultProps = {
   context: false,
-  scrollToActiveTab: true
+  scrollToActiveTab: true,
 }

@@ -6,12 +6,12 @@ export const Dashboard = {
     {
       id: 'navDashboard',
       name: 'Dashboard',
-      to: '/'
+      to: '/',
     },
     {
       id: 'navIssue',
       name: 'Report Issue',
-      to: '/'
-    }
-  ]
+      to: '/',
+    },
+  ],
 }

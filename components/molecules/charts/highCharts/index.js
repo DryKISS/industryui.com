@@ -59,17 +59,10 @@ export const HighChart = ({
 HighChart.prototypes = {
   allowChartUpdate: bool,
   callback: func,
-  constructorType: oneOf([
-    'chart',
-    'stockChart',
-    'mapChart',
-    'ganttChart',
-    undefined,
-    null
-  ]),
+  constructorType: oneOf(['chart', 'stockChart', 'mapChart', 'ganttChart', undefined, null]),
   containerProps: any,
   highcharts: any,
   immutable: bool,
   options: any.isRequired,
-  updateArgs: arrayOf(bool)
+  updateArgs: arrayOf(bool),
 }

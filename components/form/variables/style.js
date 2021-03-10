@@ -16,7 +16,7 @@ export const formStyle = ({
   Required,
   size,
   textAlign,
-  theme
+  theme,
 }) => {
   return css`
     background-clip: padding-box;
@@ -63,14 +63,12 @@ export const formStyle = ({
     css`
       background: ${theme.COLOUR.grey};
       cursor: not-allowed;
-      border-color: ${({ theme }) =>
-        theme ? theme.COLOUR.dark : theme.COLOUR.light};
+      border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : theme.COLOUR.light)};
     `}
 
     ${readOnly &&
     css`
-      background-color: ${({ theme }) =>
-        theme ? theme.COLOUR.light : 'rgb(241,241,241)'};
+      background-color: ${({ theme }) => (theme ? theme.COLOUR.light : 'rgb(241,241,241)')};
       border-color: ${({ theme }) => (theme ? theme.COLOUR.dark : '#cccccc')};
       border-width: 1px;
       padding: 0.5rem;

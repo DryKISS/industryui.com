@@ -16,17 +16,17 @@ export default {
     grabbable: true,
     grabWalkSpeed: 25,
     indicatorSize: 1,
-    scrollToActiveTab: true
+    scrollToActiveTab: true,
   },
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const renderTab = (index, activeTab) => (
@@ -35,9 +35,7 @@ const renderTab = (index, activeTab) => (
   </div>
 )
 
-const BaseComponent = ({ children, ...props }) => (
-  <Tabs {...props}>{children}</Tabs>
-)
+const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</Tabs>
 
 export const main = (args) => (
   <BaseComponent {...args}>

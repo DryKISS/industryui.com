@@ -12,14 +12,7 @@ import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 export const Container = ({ children, className, fluid, style }) => {
-  return (
-    <StyledGrid
-      children={children}
-      className={className}
-      fluid={fluid}
-      style={style}
-    />
-  )
+  return <StyledGrid children={children} className={className} fluid={fluid} style={style} />
 }
 
 const StyledGrid = styled.div`
@@ -58,10 +51,10 @@ Container.propTypes = {
   children: node.isRequired,
   className: string,
   fluid: bool,
-  style: objectOf(oneOfType([number, string]))
+  style: objectOf(oneOfType([number, string])),
 }
 
 Container.defaultProps = {
   fluid: false,
-  style: {}
+  style: {},
 }

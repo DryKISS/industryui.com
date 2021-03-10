@@ -26,18 +26,13 @@ import {
   MessagingSubscriber,
   PaperPlaneIcon,
   ReplyContainer,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../../'
 
 // Style
 import styled from 'styled-components'
 
-export const MessagingSend = ({
-  audienceItems,
-  maxLength,
-  mentions,
-  onSubmit
-}) => {
+export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])
@@ -55,8 +50,8 @@ export const MessagingSend = ({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
         action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: files
-      }
+        data: files,
+      },
     })
   }
 
@@ -79,7 +74,7 @@ export const MessagingSend = ({
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: (e) => onActionRecieved(e),
-    subscriber: MessagingSubscriber
+    subscriber: MessagingSubscriber,
   })
 
   const submit = () => {
@@ -89,7 +84,7 @@ export const MessagingSend = ({
       audience: audience.id,
       message: Message,
       ...(voiceMessage && { voice: voiceMessage }),
-      ...(replyMessage && { replyTo: replyMessage })
+      ...(replyMessage && { replyTo: replyMessage }),
     }
 
     onSubmit(data)
@@ -105,8 +100,7 @@ export const MessagingSend = ({
     let disabled = false
     if (
       attachments.length === 0 &&
-      (Message === {} ||
-        (Message.blocks && !Message.blocks[0].text && voiceMessage === null))
+      (Message === {} || (Message.blocks && !Message.blocks[0].text && voiceMessage === null))
     ) {
       disabled = true
     }
@@ -124,9 +118,7 @@ export const MessagingSend = ({
     <>
       <StyledContainer audience={audience}>
         {replyMessage && (
-          <ReplyContainer
-            message={replyMessage}
-            onClose={() => setreplyMessage(null)}>
+          <ReplyContainer message={replyMessage} onClose={() => setreplyMessage(null)}>
             {replyMessage.id}
           </ReplyContainer>
         )}
@@ -136,7 +128,8 @@ export const MessagingSend = ({
             <StyledDropDown
               items={audienceItems}
               onChange={(item) => setAudience(item)}
-              position="top">
+              position="top"
+            >
               {audience.name}
             </StyledDropDown>
           )}
@@ -145,12 +138,7 @@ export const MessagingSend = ({
               <EmojiSuggestions />
               <EmojiSelect />
             </EmojiSelectWrapper>
-            <StyledIcon
-              fixedWidth={false}
-              icon="paperclip"
-              onClick={openFileDialog}
-              size="lg"
-            />
+            <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
           </StyledElements>
 
           {voiceMessage && (
@@ -180,7 +168,8 @@ export const MessagingSend = ({
                 disabled={isSendDisabled()}
                 noPadding
                 onClick={submit}
-                size="xs">
+                size="xs"
+              >
                 <PaperPlaneIcon hoverColour />
               </Button>
             )}
@@ -228,8 +217,7 @@ const StyledElements = styled.div`
 `
 
 const StyledContainer = styled.div`
-  background-color: ${({ theme: { MESSAGING } }) =>
-    MESSAGING.inputSectionBackground};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #c0c0c0;
   box-sizing: border-box;
@@ -276,10 +264,10 @@ const StyledIcon = styled(Icon)`
 MessagingSend.propTypes = {
   audienceItems: array,
   onSubmit: func.isRequired,
-  maxLength: number
+  maxLength: number,
 }
 
 MessagingSend.defaultProps = {
   audienceItems: [],
-  maxLength: 320
+  maxLength: 320,
 }
