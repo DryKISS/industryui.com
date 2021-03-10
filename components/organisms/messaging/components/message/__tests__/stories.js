@@ -17,19 +17,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Messaging/Message'
+  title: 'Organisms/Messaging/Message',
 }
 
 export const main = () => (
-  <Message
-    config={{}}
-    message={message}
-    prevType="out"
-    time="12:00"
-    type="in"
-  />
+  <Message config={{}} message={message} prevType="out" time="12:00" type="in" />
 )

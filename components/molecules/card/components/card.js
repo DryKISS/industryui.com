@@ -39,7 +39,7 @@ export const Card = ({
   style,
   title,
   titleNoWrap,
-  to
+  to,
 }) => {
   const linked = () => {
     return (
@@ -58,18 +58,13 @@ export const Card = ({
         deck={deck}
         rounded={rounded}
         shadow={shadow}
-        style={style}>
+        style={style}
+      >
         {close && <Close click={close} />}
 
         {image && <CardImage alt={alt} src={image} />}
 
-        {header && (
-          <CardHeader
-            align={headerAlign}
-            content={header}
-            context={headerContext}
-          />
-        )}
+        {header && <CardHeader align={headerAlign} content={header} context={headerContext} />}
 
         {icon && <StyledIcon icon={icon} size="4x" />}
 
@@ -103,12 +98,9 @@ const StyledCard = styled.div`
   border: ${({ bordered }) => bordered && '1px solid rgba(0, 0, 0, .125)'};
   border-radius: ${({ rounded }) => rounded && '0.25rem'};
   box-shadow: ${({ shadow }) =>
-    shadow &&
-    '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
+    shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
   color: ${({ context, theme }) =>
-    context === 'light' || context === 'white'
-      ? theme.COLOUR.dark
-      : theme.COLOUR.white};
+    context === 'light' || context === 'white' ? theme.COLOUR.dark : theme.COLOUR.white};
   display: flex;
   flex-direction: column;
   font-size: inherit;

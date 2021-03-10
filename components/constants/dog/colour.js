@@ -5,18 +5,18 @@ export const DOG_COLOUR = [
   {
     disabled: true,
     text: 'Select colour',
-    value: ''
+    value: '',
   },
   {
     text: 'Black',
-    value: 'black'
+    value: 'black',
   },
   {
     text: 'Brown',
-    value: 'brown'
+    value: 'brown',
   },
   {
     text: 'Chocolate',
-    value: 'chocolate'
-  }
+    value: 'chocolate',
+  },
 ]

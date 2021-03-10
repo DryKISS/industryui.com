@@ -14,8 +14,7 @@ import styled, { css } from 'styled-components'
 export const OffCanvasDiv = styled.div`
   background-color: #fff;
   border-left: ${({ show }) => (show ? 'none' : '1px solid #cecece')};
-  box-shadow: ${({ show }) =>
-    show ? '-5px 0px 38px rgba(0, 0, 0, 0.15)' : 'none'};
+  box-shadow: ${({ show }) => (show ? '-5px 0px 38px rgba(0, 0, 0, 0.15)' : 'none')};
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
@@ -74,5 +73,5 @@ export const OffCanvasDiv = styled.div`
 OffCanvasDiv.propTypes = {
   height: string,
   show: bool,
-  width: string
+  width: string,
 }

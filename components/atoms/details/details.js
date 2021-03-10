@@ -35,9 +35,7 @@ export const Details = ({
             size="sm"
           />
         )}
-        {SummaryActionsComponent && (
-          <ActionsWrapper>{SummaryActionsComponent}</ActionsWrapper>
-        )}
+        {SummaryActionsComponent && <ActionsWrapper>{SummaryActionsComponent}</ActionsWrapper>}
         {Toolbar && <Toolbar />}
       </StyledSummary>
 

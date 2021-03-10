@@ -32,7 +32,7 @@ export const Table = memo(
     rows,
     setSort,
     sort,
-    striped
+    striped,
   }) => {
     const tableSpan = tableColumnCount(columns)
     const [containerHeight, setcContainerHeight] = useState(null)
@@ -48,16 +48,10 @@ export const Table = memo(
       return () => {}
     }, [rowLength])
     return (
-      <StyledWrapper
-        fullHeight={fullHeight}
-        isLoading={loading}
-        border={border}>
+      <StyledWrapper fullHeight={fullHeight} isLoading={loading} border={border}>
         <TableLoading colsLength={tableSpan} show={loading} />
 
-        <StyledResponsive
-          ref={tableRef}
-          minHeight={containerHeight}
-          responsive={responsive}>
+        <StyledResponsive ref={tableRef} minHeight={containerHeight} responsive={responsive}>
           <TableContent
             align={align}
             caption={caption}
@@ -93,8 +87,7 @@ export const Table = memo(
 
 const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.TABLE.background};
-  ${({ fullHeight, isLoading }) =>
-    (fullHeight || isLoading !== undefined) && 'height: 100%;'}
+  ${({ fullHeight, isLoading }) => (fullHeight || isLoading !== undefined) && 'height: 100%;'}
   position: relative;
   width: 100%;
   ${({ isLoading }) =>
@@ -141,7 +134,7 @@ Table.propTypes = {
   paginationProps: shape({
     currentPage: number,
     onPageChange: func,
-    perPage: number
+    perPage: number,
   }),
   responsive: bool,
   rowClick: func,
@@ -149,9 +142,9 @@ Table.propTypes = {
   setSort: func,
   sort: shape({
     item: string,
-    order: string
+    order: string,
   }),
-  striped: bool
+  striped: bool,
 }
 
 Table.defaultProps = {
@@ -166,5 +159,5 @@ Table.defaultProps = {
   pagination: false,
   paginationProps: {},
   responsive: true,
-  striped: true
+  striped: true,
 }

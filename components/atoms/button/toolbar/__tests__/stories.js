@@ -17,43 +17,31 @@ import Readme from '../README.md'
 export default {
   args: {
     align: THEME_ALIGN.Start,
-    size: THEME_SIZE.MD
+    size: THEME_SIZE.MD,
   },
   argTypes: {
     align: AlignControl(),
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: ButtonToolbar,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Button/Toolbar'
+  title: 'Atoms/Button/Toolbar',
 }
 
 const Children = ({ size }) => {
   return (
     <>
-      <Button
-        as="a"
-        data-tip="Button"
-        context="primary"
-        key={1}
-        onClick={() => {}}
-        size={size}>
+      <Button as="a" data-tip="Button" context="primary" key={1} onClick={() => {}} size={size}>
         <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
       </Button>
 
-      <Button
-        as="a"
-        data-tip="Button"
-        context="warning"
-        key={2}
-        onClick={() => {}}
-        size={size}>
+      <Button as="a" data-tip="Button" context="warning" key={2} onClick={() => {}} size={size}>
         <Icon icon="trash" prefix="fas" style={{ pointerEvents: 'none' }} />
       </Button>
     </>

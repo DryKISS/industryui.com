@@ -24,7 +24,7 @@ export const CardBody = ({
   ctaTitle,
   showCta,
   title,
-  titleNoWrap
+  titleNoWrap,
 }) => {
   return (
     <StyledBody className={className} center={center}>
@@ -37,9 +37,7 @@ export const CardBody = ({
       {(children || showCta) && (
         <StyledContent context={context}>
           {children}
-          {showCta && (
-            <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />
-          )}
+          {showCta && <CardCTA func={ctaFunc} link={ctaLink} title={ctaTitle} />}
         </StyledContent>
       )}
     </StyledBody>
@@ -82,10 +80,10 @@ CardBody.propTypes = {
   ctaTitle: string,
   showCta: bool,
   title: string,
-  titleNoWrap: bool
+  titleNoWrap: bool,
 }
 
 CardBody.defaultProps = {
   context: 'primary',
-  showCta: false
+  showCta: false,
 }

@@ -10,7 +10,7 @@ import { useTimer } from '../../'
 
 export const SimpleTime = ({ autoStart, endTime, startTime }) => {
   const {
-    time: { seconds, minutes, hours, days }
+    time: { seconds, minutes, hours, days },
   } = useTimer({ autoStart, endTime, startTime })
 
   return `${days}:${hours}:${minutes}:${seconds}`
@@ -19,5 +19,5 @@ export const SimpleTime = ({ autoStart, endTime, startTime }) => {
 SimpleTime.propTypes = {
   autoStart: bool,
   startTime: oneOfType([number, string]),
-  endTime: oneOfType([number, string])
+  endTime: oneOfType([number, string]),
 }

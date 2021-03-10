@@ -3,16 +3,7 @@
  */
 
 // React
-import {
-  any,
-  func,
-  number,
-  string,
-  bool,
-  oneOfType,
-  node,
-  oneOf
-} from 'prop-types'
+import { any, func, number, string, bool, oneOfType, node, oneOf } from 'prop-types'
 
 // UI
 import { THEME_CONTEXT } from '../../../theme/constants/context'
@@ -29,7 +20,7 @@ export const PaginationPropTypes = {
   pageCount: number,
   prevLabel: oneOfType([string, node]),
   showNextAndPrev: bool,
-  size: oneOf(Object.values(THEME_SIZE))
+  size: oneOf(Object.values(THEME_SIZE)),
 }
 
 export const PaginationDefaultProps = {
@@ -39,5 +30,5 @@ export const PaginationDefaultProps = {
   nextLabel: 'Next',
   onPageChange: () => {},
   pageCount: 1,
-  prevLabel: 'Previous'
+  prevLabel: 'Previous',
 }

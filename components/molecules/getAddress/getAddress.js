@@ -10,19 +10,16 @@ import { func, object, oneOf, number, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  Button,
-  Dropdown,
-  FormError,
-  FormField,
-  FormLabel,
-  GetAddressService,
-  InputGroupAddon,
-  Shimmer,
-  ConfigContext,
-  validatorPostCode
-} from '../../'
-
+import { Button } from '../../atoms/button/button/button'
+import { ConfigContext } from '../../services/config/context'
+import { Dropdown } from '../dropdown/components/dropdown'
+import { FormError } from '../../form/error/error'
+import { FormField } from '../../form/field/index'
+import { FormLabel } from '../../form/label/label'
+import { GetAddressService } from '../../services/getAddress/index'
+import { InputGroupAddon } from '../../form/inputGroup/addon'
+import { Shimmer } from '../../atoms/shimmer/shimmer'
+import { validatorPostCode } from '../../utils/validator/postCode/postCode'
 import { THEME_SIZE } from '../../theme/constants/size'
 
 export const GetAddress = ({
@@ -34,7 +31,7 @@ export const GetAddress = ({
   setValue,
   size,
   throttle,
-  validator
+  validator,
 }) => {
   const { GetAddressConfig } = useContext(ConfigContext)
   const [Errors, setErrors] = useState(errors ?? { [name]: null })
@@ -73,7 +70,7 @@ export const GetAddress = ({
       postCode: InputValueRef.current,
       callback: onApiCall,
       callThrottle: throttle ?? 500,
-      validator: validator ?? validatorPostCode
+      validator: validator ?? validatorPostCode,
     })
   }
 
@@ -93,18 +90,11 @@ export const GetAddress = ({
           size={size}
         />
         <InputGroupAddon addonType="append">
-          <Button
-            onClick={handleSearchClick}
-            content="Search"
-            context="primary"
-            size="sm"
-          />
+          <Button onClick={handleSearchClick} content="Search" context="primary" size="sm" />
         </InputGroupAddon>
       </InputWrapper>
       {(errors[name] || Errors[name]) && (
-        <FormError
-          message={errors[name] ? errors[name].message : Errors[name].message}
-        />
+        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
       )}
       {IsLoading && (
         <LoadingWrapper size={size}>
@@ -164,9 +154,9 @@ GetAddress.propTypes = {
   setValue: func.isRequired,
   size: oneOf(['sm', 'md', 'lg']),
   throttle: number,
-  validator: func
+  validator: func,
 }
 
 GetAddress.defaultProps = {
-  size: 'lg'
+  size: 'lg',
 }

@@ -17,7 +17,7 @@ import { LinkPluginComponent } from '../../../'
 
 export const linkifyPlugin = createLinkifyPlugin({
   target: '_blank',
-  component: (props) => <LinkPluginComponent {...props} />
+  component: (props) => <LinkPluginComponent {...props} />,
 })
 
 // Plugins configuration
@@ -28,9 +28,4 @@ export const MentionSuggestions = mentionPlugin.MentionSuggestions
 export const EmojiSuggestions = emojiPlugin.EmojiSuggestions
 export const EmojiSelect = emojiPlugin.EmojiSelect
 export const MessagingEditor = Editor
-export const messagingPlugins = [
-  emojiPlugin,
-  hashtagPlugin,
-  mentionPlugin,
-  linkifyPlugin
-]
+export const messagingPlugins = [emojiPlugin, hashtagPlugin, mentionPlugin, linkifyPlugin]

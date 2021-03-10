@@ -62,11 +62,11 @@ CheckboxField.propTypes = {
   data: array.isRequired,
   errors: object,
   legend: string,
-  stacked: bool
+  stacked: bool,
 }
 
 CheckboxField.defaultProps = {
   data: [],
   errors: {},
-  stacked: false
+  stacked: false,
 }

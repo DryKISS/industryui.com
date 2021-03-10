@@ -27,7 +27,7 @@ export const Hero = ({
   strapline,
   textblock,
   title,
-  width
+  width,
 }) => {
   const renderLeft = () => {
     return (
@@ -45,16 +45,15 @@ export const Hero = ({
       background={background}
       backgroundSize={backgroundSize}
       className={className}
-      height={height}>
+      height={height}
+    >
       {children && children}
 
       {!children && (
         <Container>
           <Row>
             {title && renderLeft()}
-            {image && (
-              <HeroImage alt={alt} align={align} image={image} width={width} />
-            )}
+            {image && <HeroImage alt={alt} align={align} image={image} width={width} />}
           </Row>
         </Container>
       )}
@@ -63,8 +62,7 @@ export const Hero = ({
 }
 
 const StyledHero = styled.header`
-  background-image: ${({ background }) =>
-    background ? `url(${background})` : 'none'};
+  background-image: ${({ background }) => (background ? `url(${background})` : 'none')};
   background-position: center;
   background-size: ${({ backgroundSize }) => backgroundSize};
   height: ${({ height }) => height};
@@ -106,11 +104,11 @@ Hero.propTypes = {
   image: string,
   strapline: oneOfType([object, string]),
   title: string,
-  width: number
+  width: number,
 }
 
 Hero.defaultProps = {
   align: 'flex-end',
   backgroundSize: 'cover',
-  style: {}
+  style: {},
 }

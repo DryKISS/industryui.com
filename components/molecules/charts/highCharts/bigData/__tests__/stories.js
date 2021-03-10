@@ -22,21 +22,21 @@ export default {
     tooltipTitle: 'data',
     violationMin: 24.5,
     violationMax: 26.5,
-    withViolationLimits: true
+    withViolationLimits: true,
   },
   argTypes: {
     violationMin: { control: { type: 'range', min: 0, max: 100, step: 0.5 } },
-    violationMax: { control: { type: 'range', min: 0, max: 100, step: 0.5 } }
+    violationMax: { control: { type: 'range', min: 0, max: 100, step: 0.5 } },
   },
   title: 'Molecules/Charts/highCharts/BigData',
   component: HighChart,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const BaseComponent = (props) => {
@@ -52,11 +52,11 @@ const BaseComponent = (props) => {
     chart: {},
 
     title: {
-      text: props.args.titleText
+      text: props.args.titleText,
     },
 
     exporting: {
-      enabled: props.args.enableExport
+      enabled: props.args.enableExport,
     },
     series: [
       {
@@ -65,16 +65,16 @@ const BaseComponent = (props) => {
           return {
             x: Date.parse(item.x),
             y: Number(item.y),
-            marker: { fillColor: violationCheck({ y: item.y }) }
+            marker: { fillColor: violationCheck({ y: item.y }) },
           }
         }),
         marker: {
           enabled: true,
           lineWidth: 1,
-          lineColor: null
-        }
-      }
-    ]
+          lineColor: null,
+        },
+      },
+    ],
   }
 
   return (

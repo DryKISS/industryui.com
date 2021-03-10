@@ -10,9 +10,7 @@ import styled from 'styled-components'
 
 export const Tail = styled.span`
   background-image: ${({ type }) =>
-    type === 'in'
-      ? "url('/messaging/tail-incoming.svg')"
-      : "url('/messaging/tail-outgoing.svg')"};
+    type === 'in' ? "url('/messaging/tail-incoming.svg')" : "url('/messaging/tail-outgoing.svg')"};
   background-repeat: no-repeat;
   bottom: 8px;
   height: 16px;
@@ -22,5 +20,5 @@ export const Tail = styled.span`
 `
 
 Tail.propTypes = {
-  type: oneOf(['in', 'out']).isRequired
+  type: oneOf(['in', 'out']).isRequired,
 }

@@ -62,7 +62,7 @@ import {
   FridgeIcon,
   FuseBoxIcon,
   SprinkleIcon,
-  WashingMachineIcon
+  WashingMachineIcon,
 } from './components'
 
 export const RawIcons = {
@@ -129,5 +129,5 @@ export const RawIcons = {
   fridge: FridgeIcon,
   fuseBox: FuseBoxIcon,
   sprinkle: SprinkleIcon,
-  washingMachine: WashingMachineIcon
+  washingMachine: WashingMachineIcon,
 }

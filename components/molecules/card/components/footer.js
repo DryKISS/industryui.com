@@ -22,9 +22,7 @@ const StyledFooter = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0 0 0.25rem 0.25rem;
   color: ${({ context, theme }) =>
-    context === 'light' || context === 'white'
-      ? theme.COLOUR.dark
-      : theme.COLOUR.white};
+    context === 'light' || context === 'white' ? theme.COLOUR.dark : theme.COLOUR.white};
   display: flex;
   justify-content: center;
   margin-top: auto;
@@ -35,9 +33,9 @@ const StyledFooter = styled.div`
 
 CardFooter.propTypes = {
   context: oneOf(Object.values(THEME_CONTEXT)),
-  children: node
+  children: node,
 }
 
 CardFooter.defaultProps = {
-  context: 'light'
+  context: 'light',
 }

@@ -12,16 +12,7 @@ import { Link, MEDIA_QUERY } from '../../../../'
 // Style
 import styled from 'styled-components'
 
-export const NavLink = ({
-  active,
-  closeMenu,
-  id,
-  name,
-  onClick,
-  to,
-  type,
-  visible
-}) => {
+export const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visible }) => {
   const handleClick = () => {
     visible && closeMenu()
     onClick && onClick()
@@ -64,9 +55,9 @@ NavLink.propTypes = {
   onClick: func,
   to: string.isRequired,
   type: string.isRequired,
-  visible: bool
+  visible: bool,
 }
 
 NavLink.defaultProps = {
-  visible: false
+  visible: false,
 }

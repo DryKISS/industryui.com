@@ -14,31 +14,28 @@ export default {
     coordinatesArray: [
       { lat: 51.47, lng: -0.0035 },
       { lat: 52.47, lng: -0.0045 },
-      { lat: 12.47, lng: -1.5 }
+      { lat: 12.47, lng: -1.5 },
     ],
     additionalLat: 12.2,
-    additionalLng: 13.1
+    additionalLng: 13.1,
   },
   argTypes: {
     additionalLat: { name: 'Additional Lat' },
     additionalLng: { name: 'Additional Lng' },
-    coordinatesArray: { name: 'Coordinates Array' }
+    coordinatesArray: { name: 'Coordinates Array' },
   },
   title: 'Utils/AverageGeolocation',
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 export const AverageGeolocation = (args) => {
-  const locations = [
-    ...args.coordinatesArray,
-    { lat: args.additionalLat, lng: args.additionalLng }
-  ]
+  const locations = [...args.coordinatesArray, { lat: args.additionalLat, lng: args.additionalLng }]
   return (
     <>
       <Space>

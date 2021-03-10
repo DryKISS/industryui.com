@@ -18,7 +18,7 @@ import {
   MessagingActions,
   MessagingSubscriber,
   Preview,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../../'
 
 export const FullPreview = () => {
@@ -41,10 +41,7 @@ export const FullPreview = () => {
   }
 
   useEffect(() => {
-    if (
-      previewWrapperRef.current &&
-      files.current[selectedFileIndex]?.type.includes('pdf')
-    ) {
+    if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
       setTimeout(() => {
         const height = previewWrapperRef.current.offsetHeight
         setMaxDocHeight(height)
@@ -58,13 +55,7 @@ export const FullPreview = () => {
   const onAction = (payload) => {
     switch (payload.action) {
       case MessagingActions.SET_FULL_PREVIEW_FILES: {
-        const {
-          avatar,
-          from,
-          time,
-          files: attachments,
-          selectedIndex
-        } = payload.data
+        const { avatar, from, time, files: attachments, selectedIndex } = payload.data
 
         files.current = Array.from(attachments)
         senderData.current = { avatar, from, time }
@@ -79,7 +70,7 @@ export const FullPreview = () => {
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: onAction,
-    subscriber: MessagingSubscriber
+    subscriber: MessagingSubscriber,
   })
 
   const handleHide = () => {
@@ -133,12 +124,10 @@ export const FullPreview = () => {
             onClick={handleMainPreviewClick}
             ref={previewWrapperRef}
             maxDocHeight={maxDocHeight}
-            visible={files.current.length > 0}>
+            visible={files.current.length > 0}
+          >
             <ChevronWrapper>
-              <ChevronIcon
-                size={36}
-                onClick={(e) => handleArrowClick(e, 'left')}
-              />
+              <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} />
             </ChevronWrapper>
 
             <Preview
@@ -148,10 +137,7 @@ export const FullPreview = () => {
             />
 
             <ChevronWrapper right>
-              <ChevronIcon
-                size={36}
-                onClick={(e) => handleArrowClick(e, 'right')}
-              />
+              <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} />
             </ChevronWrapper>
           </SelectedFilePreviewContainer>
         )}
@@ -160,14 +146,8 @@ export const FullPreview = () => {
           {selectedFileIndex !== null ? (
             files.current.map((item, index) => {
               return (
-                <BottomPreviewContainer
-                  key={index}
-                  selected={selectedFileIndex === index}>
-                  <Preview
-                    onClick={(e) => onFileClick(e, index)}
-                    file={item}
-                    small
-                  />
+                <BottomPreviewContainer key={index} selected={selectedFileIndex === index}>
+                  <Preview onClick={(e) => onFileClick(e, index)} file={item} small />
                 </BottomPreviewContainer>
               )
             })
@@ -197,10 +177,7 @@ export const FullPreview = () => {
                   <Actions>
                     <DownloadIcon
                       onClick={() =>
-                        handleDownloadClick(
-                          files.current[selectedFileIndex].src,
-                          fileName
-                        )
+                        handleDownloadClick(files.current[selectedFileIndex].src, fileName)
                       }
                       colour="#c1c1c1"
                     />

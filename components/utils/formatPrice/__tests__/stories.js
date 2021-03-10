@@ -11,16 +11,16 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    price: 123456789
+    price: 123456789,
   },
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/formatPrice'
+  title: 'Utils/formatPrice',
 }
 
 export const FormatPrice = (args) => {

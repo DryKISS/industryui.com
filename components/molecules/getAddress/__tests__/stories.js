@@ -24,7 +24,7 @@ export default {
     size: 'lg',
     label: 'PostalCode',
     placeholder: 'enter postal code here ...',
-    throttle: 0
+    throttle: 0,
   },
   argTypes: {
     errors: { control: { disable: true } },
@@ -32,30 +32,30 @@ export default {
     register: { control: { disable: true } },
     setValue: { control: { disable: true } },
     size: {
-      control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] }
+      control: { type: ControlTypes.Select, options: ['sm', 'md', 'lg'] },
     },
-    validator: { control: { disable: true } }
+    validator: { control: { disable: true } },
   },
   title: 'Molecules/Get Address',
   component: GetAddress,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const elementName = 'postCode'
 
 const schema = object().shape({
-  [elementName]: string().required('This Field Is Required')
+  [elementName]: string().required('This Field Is Required'),
 })
 
 export const Main = (args) => {
   const { errors, handleSubmit, register, setValue } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {

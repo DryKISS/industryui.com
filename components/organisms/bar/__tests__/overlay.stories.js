@@ -15,17 +15,17 @@ export default {
     open: true,
     placement: 'left',
     variant: 'overlay',
-    width: 15
+    width: 15,
   },
   component: BarOverlay,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Bar/Overlay'
+  title: 'Organisms/Bar/Overlay',
 }
 
 export const overlay = (args) => {

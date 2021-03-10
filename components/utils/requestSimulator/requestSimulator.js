@@ -2,10 +2,7 @@
  * Mimics a request to server
  */
 
-export async function requestSimulator(
-  responseType = 'success',
-  timeout = 1000
-) {
+export async function requestSimulator(responseType = 'success', timeout = 1000) {
   return await new Promise((resolve, reject) => {
     setTimeout(() => {
       if (responseType === 'success') {

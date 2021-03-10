@@ -19,7 +19,7 @@ export const Details2Actions = ({
   title,
   endActionComponent,
   startActionComponent,
-  toolbar
+  toolbar,
 }) => {
   // const animationtime = disableAnimation ? 0 : animationDuration
   // const [isOpen, setisOpen] = useState(open)
@@ -64,8 +64,7 @@ export const Details2Actions = ({
   return (
     <ActionsWrapper>
       <StartActionComponentWrapper>
-        {startActionComponent}{' '}
-        {(toolbar || endActionComponent) && <ActionsDivider />}
+        {startActionComponent} {(toolbar || endActionComponent) && <ActionsDivider />}
       </StartActionComponentWrapper>
 
       <ToolbarWrapper>
@@ -107,5 +106,5 @@ Details2Actions.propTypes = {
   handleOpenClose: func.isRequired,
   iconComponent: node,
   isOpen: bool,
-  title: string.isRequired
+  title: string.isRequired,
 }

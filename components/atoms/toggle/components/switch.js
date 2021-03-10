@@ -16,7 +16,8 @@ export const Switch = ({ context, disabled, handleToggle, size, toggled }) => {
       disabled={disabled}
       onClick={handleToggle}
       size={size}
-      toggled={toggled}>
+      toggled={toggled}
+    >
       <StyledSwitch size={size} toggled={toggled} />
     </StyledSwitchContainer>
   )
@@ -101,5 +102,5 @@ const StyledSwitch = styled.span`
 Switch.propTypes = {
   handleToggle: func,
   size: oneOf(['sm', 'md', 'lg']),
-  toggled: bool
+  toggled: bool,
 }

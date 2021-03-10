@@ -5,34 +5,34 @@ export const DOG_GROUP = [
   {
     disabled: true,
     text: 'Filter by group',
-    value: ''
+    value: '',
   },
   {
     text: 'Gundogs',
-    value: 'Gundog'
+    value: 'Gundog',
   },
   {
     text: 'Hounds',
-    value: 'Hound'
+    value: 'Hound',
   },
   {
     text: 'Pastoral',
-    value: 'Pastoral'
+    value: 'Pastoral',
   },
   {
     text: 'Terriers',
-    value: 'Terrier'
+    value: 'Terrier',
   },
   {
     text: 'Toys',
-    value: 'Toy'
+    value: 'Toy',
   },
   {
     text: 'Working',
-    value: 'Working'
+    value: 'Working',
   },
   {
     text: 'Utility',
-    value: 'Utility'
-  }
+    value: 'Utility',
+  },
 ]

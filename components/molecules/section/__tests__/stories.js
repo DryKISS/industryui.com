@@ -11,17 +11,17 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    heading: 'Section Heading'
+    heading: 'Section Heading',
   },
   component: Section,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Section'
+  title: 'Molecules/Section',
 }
 
 export const main = (args) => <Section {...args} />

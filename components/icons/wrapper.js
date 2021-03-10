@@ -78,7 +78,8 @@ export const IconWrapper = ({
       size={size}
       translate={translate}
       xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+      {...props}
+    >
       {children}
     </StyledSvg>
   )
@@ -86,7 +87,7 @@ export const IconWrapper = ({
 
 const states = {
   DEFAULT: 'default',
-  HOVER: 'hover'
+  HOVER: 'hover',
 }
 
 const setColour = (state, props) => {
@@ -96,11 +97,9 @@ const setColour = (state, props) => {
     disabled,
     disabledColour,
     hoverColour,
-    theme: { ICONS, THEME_COLOUR }
+    theme: { ICONS, THEME_COLOUR },
   } = props
-  const defaultColour = context
-    ? THEME_COLOUR.context
-    : colour || ICONS.defaultIconColour
+  const defaultColour = context ? THEME_COLOUR.context : colour || ICONS.defaultIconColour
   if (state === states.DEFAULT) {
     return disabled && disabledColour
       ? disabledColour

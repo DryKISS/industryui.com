@@ -7,17 +7,11 @@ import styled, { css } from 'styled-components'
 // UI
 import { Close, Preview, Space, Text } from '../../../../'
 
-export const MessagingDragHover = ({
-  files,
-  handleRemoveFile,
-  isOpen,
-  onClose,
-  onSubmit
-}) => {
+export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   const [selectedFile, setselectedFile] = useState(null)
   const [documentInfo, setDocumentInfo] = useState({
     name: null,
-    pagesNumber: 0
+    pagesNumber: 0,
   })
 
   const resetDocInfo = () => {
@@ -67,9 +61,7 @@ export const MessagingDragHover = ({
               <DocumentName>{documentInfo.name}</DocumentName>
             </DocumentNameWrapper>
             <DucumentPagesNumber>
-              {`${documentInfo.pagesNumber} Page${
-                documentInfo.pagesNumber > 1 ? 's' : ''
-              }`}
+              {`${documentInfo.pagesNumber} Page${documentInfo.pagesNumber > 1 ? 's' : ''}`}
             </DucumentPagesNumber>
           </DocumentInfoWrapper>
         )}
@@ -87,16 +79,9 @@ export const MessagingDragHover = ({
               return (
                 <BottomPreviewContainer key={index}>
                   <RemoveContainer>
-                    <Close
-                      click={() => handleRemoveClick(index)}
-                      context="white"
-                    />
+                    <Close click={() => handleRemoveClick(index)} context="white" />
                   </RemoveContainer>
-                  <Preview
-                    onClick={() => onFileClick(item)}
-                    file={item}
-                    small
-                  />
+                  <Preview onClick={() => onFileClick(item)} file={item} small />
                 </BottomPreviewContainer>
               )
             })}
@@ -224,8 +209,7 @@ const Head = styled.div`
   display: flex;
   height: 3rem;
   padding: 0 1.25rem;
-  background-color: ${({ theme: { MESSAGING } }) =>
-    MESSAGING.dropableHeaderBackground};
+  background-color: ${({ theme: { MESSAGING } }) => MESSAGING.dropableHeaderBackground};
 `
 const Wrapper = styled.div`
   height: calc(100% - 5.3rem);

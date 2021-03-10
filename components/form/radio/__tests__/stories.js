@@ -18,17 +18,17 @@ import { RADIO_GENDER } from '../__mocks__/radio'
 export default {
   args: {
     legend: 'Gender?',
-    stacked: false
+    stacked: false,
   },
   component: RadioField,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Radio'
+  title: 'Form/Radio',
 }
 
 const BaseComponent = (props = {}) => {
@@ -40,7 +40,7 @@ const BaseComponent = (props = {}) => {
     name: 'radio',
     register: register,
 
-    ...props
+    ...props,
   }
 
   return (

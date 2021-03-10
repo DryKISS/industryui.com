@@ -10,23 +10,23 @@ import { Image, TableActions, TableLink, Text } from '../../../'
 
 export const columns = [
   {
-    text: 'ID'
+    text: 'ID',
   },
   {
-    text: 'Company'
+    text: 'Company',
   },
   {
-    text: 'URL'
+    text: 'URL',
   },
   {
-    hidden: true
+    hidden: true,
   },
   {
-    hidden: true
+    hidden: true,
   },
   {
-    text: 'Actions'
-  }
+    text: 'Actions',
+  },
 ]
 
 export const rows = {
@@ -37,7 +37,7 @@ export const rows = {
       url: 'https://drykiss.com',
       logo: 'https://drykiss.com/static/logo/drykiss.svg',
       itemCount: 5,
-      actions: ''
+      actions: '',
     },
     {
       id: '10002',
@@ -45,33 +45,31 @@ export const rows = {
       url: 'https://triangle-solutions.com',
       logo: 'https://drykiss.com/static/logo/drykiss.svg',
       itemCount: 3,
-      actions: ''
-    }
-  ]
+      actions: '',
+    },
+  ],
 }
 
 export const noCols = [
   {
     key: 'Name',
-    value: 'Micheal Jordan'
+    value: 'Micheal Jordan',
   },
   {
     key: 'Name',
-    value: 'Fred Joans'
+    value: 'Fred Joans',
   },
   {
     key: 'Name',
-    value: 'Peter Good'
-  }
+    value: 'Peter Good',
+  },
 ]
 
-const renderImage = ({ row }) => (
-  <Image alt="Logo" style={{ width: '50%' }} src={row.logo} />
-)
+const renderImage = ({ row }) => <Image alt="Logo" style={{ width: '50%' }} src={row.logo} />
 
 export const columnsActions = [
   {
-    text: 'ID'
+    text: 'ID',
   },
   {
     bottomCell: (
@@ -81,18 +79,18 @@ export const columnsActions = [
     ),
     sortable: true,
     sortName: 'company',
-    text: 'Company'
+    text: 'Company',
   },
   {
     formatter: TableLink('/', 'url', 'company'),
-    text: 'URL'
+    text: 'URL',
   },
   {
     formatter: renderImage,
-    text: 'Logo'
+    text: 'Logo',
   },
   {
-    hidden: true
+    hidden: true,
   },
   {
     formatter: TableActions,
@@ -104,18 +102,18 @@ export const columnsActions = [
         to: '/manage',
         tooltip: 'Edit',
         numberOverlay: 'itemCount',
-        onClick: () => console.log('edit', row)
+        onClick: () => console.log('edit', row),
       },
       {
         content: 'Delete',
         context: 'danger',
         icon: ['fas', 'trash'],
         to: '/delete',
-        tooltip: 'Delete'
-      }
+        tooltip: 'Delete',
+      },
     ],
-    text: 'Actions'
-  }
+    text: 'Actions',
+  },
 ]
 
 export const rowsContext = {
@@ -127,7 +125,7 @@ export const rowsContext = {
       url: 'https://drykiss.com',
       itemCount: 5,
       logo: '',
-      actions: ''
+      actions: '',
     },
     {
       context: 'secondary',
@@ -136,7 +134,7 @@ export const rowsContext = {
       url: 'https://triangle-solutions.com',
       itemCount: 5,
       logo: '',
-      actions: ''
+      actions: '',
     },
     {
       context: 'info',
@@ -145,7 +143,7 @@ export const rowsContext = {
       url: 'https://drykiss.com',
       itemCount: 5,
       logo: '',
-      actions: ''
+      actions: '',
     },
     {
       context: 'success',
@@ -154,7 +152,7 @@ export const rowsContext = {
       url: 'https://drykiss.com',
       itemCount: 5,
       logo: '',
-      actions: ''
+      actions: '',
     },
     {
       context: 'warning',
@@ -163,7 +161,7 @@ export const rowsContext = {
       url: 'https://drykiss.com',
       itemCount: 5,
       logo: '',
-      actions: ''
+      actions: '',
     },
     {
       context: 'danger',
@@ -172,7 +170,7 @@ export const rowsContext = {
       url: 'https://drykiss.com',
       itemCount: 5,
       logo: '',
-      actions: ''
-    }
-  ]
+      actions: '',
+    },
+  ],
 }

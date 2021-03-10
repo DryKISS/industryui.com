@@ -19,10 +19,7 @@ import { THEME_CONTEXT } from '../../../../theme/constants/context'
 import styled from 'styled-components'
 
 export const TableActionsButton = forwardRef(
-  (
-    { context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to },
-    ref
-  ) => {
+  ({ context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to }, ref) => {
     const handleClick = (path) => (e) => {
       e.preventDefault()
       e.stopPropagation()
@@ -31,9 +28,7 @@ export const TableActionsButton = forwardRef(
 
     const iconArray = Array.isArray(icon)
     const overlay = row[numberOverlay] || overlayCustom
-    const click = onClick
-      ? (e) => onClick(e, row)
-      : handleClick(`${to}?id=${row.id}`)
+    const click = onClick ? (e) => onClick(e, row) : handleClick(`${to}?id=${row.id}`)
 
     return (
       <StyledButton
@@ -42,10 +37,9 @@ export const TableActionsButton = forwardRef(
         context={context}
         onClick={click}
         ref={ref}
-        size="sm">
-        {overlay && (
-          <TableActionsOverlay children={overlay} context={context} />
-        )}
+        size="sm"
+      >
+        {overlay && <TableActionsOverlay children={overlay} context={context} />}
 
         <StyledIcon
           icon={icon ? (iconArray ? icon[1] : icon) : null}
@@ -74,5 +68,5 @@ TableActionsButton.propTypes = {
   onClick: func,
   overlayCustom: string,
   row: object.isRequired,
-  to: string
+  to: string,
 }

@@ -21,26 +21,26 @@ import Readme from '../README.md'
 
 export default {
   argTypes: {
-    buttonContext: ContextControl()
+    buttonContext: ContextControl(),
   },
   component: InputStepper,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/InputStepper'
+  title: 'Form/InputStepper',
 }
 
 const schema = object().shape({
-  inputStepper: number().min(0, 'Should be greater than 0').required()
+  inputStepper: number().min(0, 'Should be greater than 0').required(),
 })
 
 export const Main = (args) => {
   const { control, errors, handleSubmit } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {
@@ -52,10 +52,10 @@ export const Main = (args) => {
     errors,
     inputProps: {
       min: 0,
-      max: 10
+      max: 10,
     },
     name: 'inputStepper',
-    ...args
+    ...args,
   }
 
   return (

@@ -17,15 +17,9 @@ import { ImageLocation, ImageLocationProps } from '../../../'
 
 const elementName = 'imageLocationData'
 
-export const ImageLocationFormElement = ({
-  control,
-  errors,
-  setValue,
-  ...props
-}) => {
+export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
   return (
-    <ControllerWrapper
-      className={`${errors && errors[elementName] && 'hasError'}`}>
+    <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
       <Controller
         as={ImageLocation}
         control={control}
@@ -56,5 +50,5 @@ const ControllerWrapper = styled.div`
 ImageLocationFormElement.propTypes = {
   ...ImageLocationProps,
   setValue: func.isRequired,
-  control: object.isRequired
+  control: object.isRequired,
 }

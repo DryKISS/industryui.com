@@ -20,26 +20,26 @@ export default {
   args: {
     label: 'Currency input',
     name: 'expense',
-    vat: 'Incl VAT'
+    vat: 'Incl VAT',
   },
   component: CurrencyInput,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Field/Currency'
+  title: 'Form/Field/Currency',
 }
 
 const schema = object().shape({
-  expense: string().required()
+  expense: string().required(),
 })
 
 const BaseComponent = (args) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {}
@@ -47,7 +47,7 @@ const BaseComponent = (args) => {
   const defaultProps = {
     errors: errors,
     register: register,
-    ...args
+    ...args,
   }
 
   return (

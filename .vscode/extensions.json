@@ -3,9 +3,8 @@
     "editorconfig.editorconfig",
     "eriklynd.json-tools",
     "attilabuti.vscode-mjml",
-    "numso.prettier-standard-vscode",
-    "chenxsan.vscode-standardjs",
     "jpoissonnier.vscode-styled-components",
-    "CoenraadS.bracket-pair-colorizer"
+    "CoenraadS.bracket-pair-colorizer",
+    "dbaeumer.vscode-eslint"
   ]
 }

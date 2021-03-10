@@ -15,8 +15,8 @@ const events = [
   {
     start: moment(),
     end: moment().add(1, 'days').toDate(),
-    title: 'Sprint planning'
-  }
+    title: 'Sprint planning',
+  },
 ]
 
 export const BigCalendar = () => {

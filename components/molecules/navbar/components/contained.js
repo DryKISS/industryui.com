@@ -26,5 +26,5 @@ const StyledContainer = styled(Container)`
 `
 
 Contained.propTypes = {
-  content: node.isRequired
+  content: node.isRequired,
 }

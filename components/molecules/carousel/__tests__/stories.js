@@ -13,13 +13,7 @@ import { CarouselDefaultProps } from '../components/props'
 import styled from 'styled-components'
 
 // UI
-import {
-  Button,
-  Carousel,
-  CarouselSlide,
-  Image,
-  ReactHolderJs
-} from '../../../'
+import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
 import { CarouselSampleSlide } from '../components/sample'
 
 import Readme from '../README.md'
@@ -30,13 +24,13 @@ export default {
   argTypes: {
     navContext: ContextControl(),
     navPosition: {
-      control: { type: 'select', options: ['top', 'middle', 'bottom'] }
+      control: { type: 'select', options: ['top', 'middle', 'bottom'] },
     },
     autoplayInterval: { name: 'autoplay Interval(ms)' },
     gap: {
       name: 'gap between elements(px)',
-      control: { type: 'range', min: 1, max: 200 }
-    }
+      control: { type: 'range', min: 1, max: 200 },
+    },
   },
 
   title: 'Molecules/Carousel',
@@ -44,23 +38,16 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const SampleSlide = ({ title = 'Sample Slide' }) => (
   <CarouselSampleSlide
     text={title}
-    node={
-      <ReactHolderJs
-        src="./img/test1.jpg"
-        width={900}
-        height={300}
-        usePlaceholder
-      />
-    }
+    node={<ReactHolderJs src="./img/test1.jpg" width={900} height={300} usePlaceholder />}
   />
 )
 
@@ -73,9 +60,9 @@ const BaseComponent = (props) => {
       1200: 3,
       1400: 8,
       1600: 10,
-      4000: 12
+      4000: 12,
     },
-    ...props
+    ...props,
   }
   return <Carousel {...defaultProps} />
 }
@@ -95,19 +82,12 @@ export const withArray = (args) => (
       {
         context: 'light',
         img: vizla,
-        text: 'Sample text from Array Carousel'
+        text: 'Sample text from Array Carousel',
       },
       {
-        node: (
-          <ReactHolderJs
-            src="./img/test1.jpg"
-            width={900}
-            height={300}
-            usePlaceholder
-          />
-        ),
-        text: 'Another text from Array Carousel'
-      }
+        node: <ReactHolderJs src="./img/test1.jpg" width={900} height={300} usePlaceholder />,
+        text: 'Another text from Array Carousel',
+      },
     ]}
   />
 )
@@ -122,19 +102,12 @@ export const withCustomNav = (args) => (
       {
         context: 'light',
         img: vizla,
-        text: 'Sample text from Array Carousel'
+        text: 'Sample text from Array Carousel',
       },
       {
-        node: (
-          <ReactHolderJs
-            src="./img/test1.jpg"
-            width={900}
-            height={300}
-            usePlaceholder
-          />
-        ),
-        text: 'Another text from Array Carousel'
-      }
+        node: <ReactHolderJs src="./img/test1.jpg" width={900} height={300} usePlaceholder />,
+        text: 'Another text from Array Carousel',
+      },
     ]}
   />
 )
@@ -177,9 +150,7 @@ export const withHTMLImageTag = (args) => (
 
 export const withJustText = (args) => (
   <BaseComponent {...args}>
-    <CarouselSlide style={{ width: '100%', height: '300px' }}>
-      this is text div
-    </CarouselSlide>
+    <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
 
     <SampleSlide />
   </BaseComponent>

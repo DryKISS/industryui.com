@@ -22,11 +22,11 @@ DropzoneField.propTypes = {
   disabled: bool,
   errors: object,
   multiple: bool,
-  name: string
+  name: string,
 }
 
 DropzoneField.defaultProps = {
   disabled: false,
   name: 'dropzone',
-  multiple: false
+  multiple: false,
 }

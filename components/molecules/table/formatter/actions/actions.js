@@ -4,17 +4,7 @@
 
 // React
 import React from 'react'
-import {
-  array,
-  arrayOf,
-  bool,
-  func,
-  object,
-  oneOf,
-  oneOfType,
-  shape,
-  string
-} from 'prop-types'
+import { array, arrayOf, bool, func, object, oneOf, oneOfType, shape, string } from 'prop-types'
 
 // UI
 import { ButtonToolbar } from '../../../../atoms/button/toolbar/toolbar'
@@ -33,16 +23,7 @@ export const TableActions = ({ align, row, data }) => {
     <ButtonToolbar align={align}>
       {dataArray.map(
         (
-          {
-            context,
-            disabled,
-            icon,
-            numberOverlay,
-            onClick,
-            overlayCustom,
-            to,
-            tooltip
-          },
+          { context, disabled, icon, numberOverlay, onClick, overlayCustom, to, tooltip },
           index
         ) => {
           return (
@@ -77,12 +58,12 @@ TableActions.propTypes = {
       onClick: func,
       overlayCustom: string,
       to: string,
-      tooltip: string
+      tooltip: string,
     })
   ).isRequired,
-  row: object.isRequired
+  row: object.isRequired,
 }
 
 TableActions.defaultProps = {
-  align: 'flex-start'
+  align: 'flex-start',
 }

@@ -7,5 +7,5 @@ import { createContext } from 'react'
 
 export const InternationalisationContext = createContext({
   locale: 'es',
-  setLocale: () => null
+  setLocale: () => null,
 })

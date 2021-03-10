@@ -17,7 +17,7 @@ import {
   Icon,
   InternationalisationContext,
   Space,
-  useTranslation
+  useTranslation,
 } from '../../../'
 
 import { THEME_COLOUR_LIST } from '../../../theme/constants/colourList'
@@ -28,23 +28,23 @@ export default {
   args: {
     caret: true,
     children: 'Dropdown',
-    position: 'bottom'
+    position: 'bottom',
   },
   argTypes: {
     control: {
       type: 'select',
-      options: ['top', 'bottom']
-    }
+      options: ['top', 'bottom'],
+    },
   },
   component: Dropdown,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Dropdown'
+  title: 'Molecules/Dropdown',
 }
 
 const BaseComponent = (props) => {
@@ -59,7 +59,7 @@ const BaseComponent = (props) => {
     items: Items,
     onChange: onChange,
 
-    ...props
+    ...props,
   }
 
   return <Dropdown {...defaultProps} />
@@ -122,7 +122,8 @@ export const ColourPicker = (args) => {
         onChange={(e) => {
           changeColor(e)
         }}
-        elementType={elementTypes.Colour}>
+        elementType={elementTypes.Colour}
+      >
         Select a colour
       </BaseComponent>
     </>
@@ -132,7 +133,7 @@ export const ColourPicker = (args) => {
 export const IconPicker = (args) => {
   const [selectedIcon, setSelectedIcon] = useState({
     icon: 'cloud',
-    prefix: 'fas'
+    prefix: 'fas',
   })
 
   const changeIcon = (icon) => {
@@ -150,7 +151,8 @@ export const IconPicker = (args) => {
         onChange={(e) => {
           changeIcon(e)
         }}
-        elementType={elementTypes.Icon}>
+        elementType={elementTypes.Icon}
+      >
         Select an icon
       </BaseComponent>
     </>

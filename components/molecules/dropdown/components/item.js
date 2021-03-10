@@ -33,11 +33,7 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
     case elementTypes.List:
       return (
         <StyledDropdownItem divider={item.divider}>
-          {item.divider ? (
-            <StyledDivider />
-          ) : (
-            renderItem(item, closeDropdown, onClick)
-          )}
+          {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
         </StyledDropdownItem>
       )
 
@@ -131,5 +127,5 @@ DropdownItem.propTypes = {
   children: node,
   closeDropdown: func,
   item: object,
-  onClick: func
+  onClick: func,
 }

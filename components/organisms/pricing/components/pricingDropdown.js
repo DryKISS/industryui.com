@@ -11,11 +11,7 @@ import styled, { css } from 'styled-components'
 // UI
 import { ClickAwayListener, Icon, Text } from '../../../'
 
-export const PricingDropdown = ({
-  onPlanChange,
-  pricingInfo,
-  selectedPlan
-}) => {
+export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
   const [IsOpen, setIsOpen] = useState(false)
 
   const selected = pricingInfo[selectedPlan]
@@ -51,7 +47,8 @@ export const PricingDropdown = ({
             <PriceElement
               key={index}
               isLast={index === pricingInfo.length - 1}
-              onClick={() => handlePlanClick(index)}>
+              onClick={() => handlePlanClick(index)}
+            >
               <div>
                 <StyledElementTitle
                   content={item.title}
@@ -67,17 +64,9 @@ export const PricingDropdown = ({
 
               <PriceAndDropIconWrapper>
                 {item.recommended && (
-                  <StyledRecomendedText
-                    content="Recommend by IUI"
-                    context="gold40"
-                    size="xs"
-                  />
+                  <StyledRecomendedText content="Recommend by IUI" context="gold40" size="xs" />
                 )}
-                <StyledPrice
-                  content={item.price}
-                  size="lg"
-                  context="deepBlue"
-                />
+                <StyledPrice content={item.price} size="lg" context="deepBlue" />
               </PriceAndDropIconWrapper>
             </PriceElement>
           )
@@ -133,7 +122,7 @@ const PlansWrapper = styled(ClickAwayListener)`
 `
 
 const StyledDownIcon = styled(Icon).attrs((props) => ({
-  color: props.theme.COLOUR.deepBlue
+  color: props.theme.COLOUR.deepBlue,
 }))``
 
 const StyledPrice = styled(Text)`

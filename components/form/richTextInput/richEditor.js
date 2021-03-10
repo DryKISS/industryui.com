@@ -2,12 +2,7 @@
 import React, { useRef } from 'react'
 import { object, string } from 'prop-types'
 
-import {
-  ContentState,
-  convertFromHTML,
-  convertToRaw,
-  EditorState
-} from 'draft-js'
+import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js'
 import { Controller } from 'react-hook-form'
 import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
@@ -24,7 +19,7 @@ export const RichTextInput = ({ control, errors, initialValue, name }) => {
 
   const defaultValue = {
     editorState: content,
-    html: initialValue ?? ''
+    html: initialValue ?? '',
   }
 
   const onEditorStateChange = (editorState, onChange) => {
@@ -64,5 +59,5 @@ RichTextInput.propTypes = {
   control: object.isRequired,
   errors: object.isRequired,
   name: string.isRequired,
-  initialValue: string
+  initialValue: string,
 }

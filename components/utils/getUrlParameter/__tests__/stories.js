@@ -13,19 +13,17 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/GetUrlParameters'
+  title: 'Utils/GetUrlParameters',
 }
 
 export const Main = () => {
   return (
     <>
-      <Text>
-        url: http://drykiss.com/?id=utils-geturlparameters--get-url-parameter
-      </Text>
+      <Text>url: http://drykiss.com/?id=utils-geturlparameters--get-url-parameter</Text>
 
       <Text>id parameter: {JSON.stringify(getUrlParameter('id'))}</Text>
     </>

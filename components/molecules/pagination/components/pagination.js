@@ -55,12 +55,10 @@ export const Pagination = ({
   const currentChunk = pagesArray[currentChunkIndex]
   const nextChunk = pagesArray[currentChunkIndex + 1]
   const showPrevDots = currentChunkIndex > 0
-  const showNextDots =
-    pagesArray.length > 1 && currentChunkIndex + 1 < pagesArray.length
+  const showNextDots = pagesArray.length > 1 && currentChunkIndex + 1 < pagesArray.length
 
   const showPrevButton = showNextAndPrev && pageCount > 5 && currentPage > 1
-  const showNextButton =
-    showNextAndPrev && pageCount > 5 && currentPage < pageCount
+  const showNextButton = showNextAndPrev && pageCount > 5 && currentPage < pageCount
 
   const renderContent = () => (
     <>
@@ -121,11 +119,7 @@ export const Pagination = ({
     return null
   }
 
-  return (
-    <StyledPagination aria-label="Pagination">
-      {children || renderContent()}
-    </StyledPagination>
-  )
+  return <StyledPagination aria-label="Pagination">{children || renderContent()}</StyledPagination>
 }
 
 const StyledPagination = styled.ul`

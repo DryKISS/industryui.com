@@ -22,8 +22,7 @@ export const CardHeader = ({ content, context, align }) => {
 }
 
 const StyledHeader = styled.h2`
-  background-color: ${({ context, theme }) =>
-    shadeLinearRgb(0.8, theme.COLOUR[context])};
+  background-color: ${({ context, theme }) => shadeLinearRgb(0.8, theme.COLOUR[context])};
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   color: ${({ context, theme }) => theme.COLOUR[context]};
   font-size: 1.25rem;
@@ -35,9 +34,9 @@ const StyledHeader = styled.h2`
 CardHeader.propTypes = {
   content: string.isRequired,
   context: oneOf(Object.values(THEME_CONTEXT)),
-  align: oneOf(['center', 'right', 'left'])
+  align: oneOf(['center', 'right', 'left']),
 }
 
 CardHeader.defaultProps = {
-  align: 'center'
+  align: 'center',
 }

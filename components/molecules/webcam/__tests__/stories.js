@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Webcam'
+  title: 'Molecules/Webcam',
 }
 
 export const main = (args) => <Webcam {...args} />

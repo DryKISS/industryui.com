@@ -9,14 +9,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import {
-  Button,
-  Form,
-  FormField,
-  FormLabel,
-  Text,
-  validatorPostCode
-} from '../../../../'
+import { Button, Form, FormField, FormLabel, Text, validatorPostCode } from '../../../../'
 
 import Readme from '../README.md'
 
@@ -25,11 +18,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/Validator/PostCode'
+  title: 'Utils/Validator/PostCode',
 }
 
 export const Main = () => {

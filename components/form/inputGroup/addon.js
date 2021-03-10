@@ -22,7 +22,7 @@ export const InputGroupAddon = ({
   error,
   size,
   text,
-  theme
+  theme,
 }) => {
   return (
     <StyledInputGroupAddon
@@ -49,15 +49,10 @@ const StyledInputGroupAddon = styled.div`
   ${({ text }) =>
     text &&
     css`
-      background-color: ${({ theme, error }) =>
-        error ? theme.COLOUR.danger : theme.COLOUR.grey};
-      border: 1px solid
-        ${({ theme, error }) =>
-          error ? theme.COLOUR.danger : theme.COLOUR.grey80};
-      border-radius: ${({ theme }) =>
-        theme.FORM_ELEMENTS_STYLES.inputBorderRadius};
-      color: ${({ theme, error }) =>
-        error ? theme.COLOUR.light : theme.COLOUR.dark};
+      background-color: ${({ theme: { COLOUR }, error }) => (error ? COLOUR.danger : COLOUR.grey)};
+      border: 1px solid ${({ heme: { COLOUR }, error }) => (error ? COLOUR.danger : COLOUR.grey80)};
+      border-radius: ${({ theme }) => theme.FORM_ELEMENTS_STYLES.inputBorderRadius};
+      color: ${({ theme, error }) => (error ? theme.COLOUR.light : theme.COLOUR.dark)};
       display: flex;
       font-size: 0.75rem;
       font-weight: 400;
@@ -100,10 +95,10 @@ InputGroupAddon.propTypes = {
   className: any,
   children: node,
   context: oneOf(Object.values(THEME_CONTEXT)),
-  text: bool
+  text: bool,
 }
 
 InputGroupAddon.defaultProps = {
   addonType: 'append',
-  context: 'light'
+  context: 'light',
 }

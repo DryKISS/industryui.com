@@ -54,5 +54,5 @@ const StyleLink = styled(StyledLink)`
 `
 
 TableLink.propTypes = {
-  row: object.isRequired
+  row: object.isRequired,
 }

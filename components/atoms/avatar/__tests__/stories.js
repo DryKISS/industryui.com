@@ -27,23 +27,23 @@ export default {
     style: '',
     withAction: false,
     withImage: false,
-    withGravatar: false
+    withGravatar: false,
   },
   argTypes: {
     actionClick: { action: 'clicked' },
     context: ContextControl(),
     click: { action: 'clicked' },
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: Avatar,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Avatar'
+  title: 'Atoms/Avatar',
 }
 
 export const main = (args) => {
@@ -53,9 +53,7 @@ export const main = (args) => {
     context: args.context,
     gmail: args.withGravatar ? args.gmail : '',
     size: args.size,
-    src: args.withImage
-      ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg'
-      : ''
+    src: args.withImage ? 'http://lorempixel.com/output/animals-q-c-50-50-10.jpg' : '',
   }
 
   return <Avatar {...props} />

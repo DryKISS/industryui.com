@@ -9,42 +9,42 @@ module.exports = {
   plugins: [
     '@babel/plugin-transform-runtime',
     '@babel/plugin-proposal-class-properties',
-    'babel-plugin-add-react-displayname'
+    'babel-plugin-add-react-displayname',
   ],
   env: {
     test: {
       presets: [
         [
-          '@babel/preset-env'
+          '@babel/preset-env',
           // {
           //   targets: {
           //     node: 'current'
           //   }
           // }
         ],
-        '@babel/preset-react'
+        '@babel/preset-react',
       ],
-      plugins: ['require-context-hook']
+      plugins: ['require-context-hook'],
     },
     esm: {
       presets: [
         [
           '@babel/preset-env',
           {
-            modules: false
+            modules: false,
             // targets: {
             //   node: 'current'
             // }
-          }
-        ]
+          },
+        ],
       ],
       plugins: [
         [
           '@babel/plugin-transform-runtime',
           {
-            useESModules: true
-          }
-        ]
+            useESModules: true,
+          },
+        ],
         // [
         //   'styled-components',
         //   {
@@ -57,7 +57,7 @@ module.exports = {
         //   }
         // ]
       ],
-      ignore: ['**/__tests__', '**/__mocks__', '**/Storyshots.test.js']
-    }
-  }
+      ignore: ['**/__tests__', '**/__mocks__', '**/Storyshots.test.js'],
+    },
+  },
 }

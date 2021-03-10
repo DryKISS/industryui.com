@@ -18,12 +18,9 @@ export const Toggler = ({ handleMenuClick, visible }) => {
     <StyledToggler
       aria-expanded={visible ? 'false' : 'true'}
       aria-label="Toggle navigation"
-      onClick={handleMenuClick}>
-      {!visible ? (
-        <Icon icon="bars" prefix="fas" />
-      ) : (
-        <Icon icon="times" prefix="fas" />
-      )}
+      onClick={handleMenuClick}
+    >
+      {!visible ? <Icon icon="bars" prefix="fas" /> : <Icon icon="times" prefix="fas" />}
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )
@@ -48,9 +45,9 @@ const StyledText = styled.span`
 
 Toggler.propTypes = {
   handleMenuClick: func.isRequired,
-  visible: bool
+  visible: bool,
 }
 
 Toggler.defaultProps = {
-  visible: true
+  visible: true,
 }

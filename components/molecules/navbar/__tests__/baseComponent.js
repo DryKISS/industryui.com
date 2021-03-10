@@ -6,11 +6,12 @@
 import React, { useContext } from 'react'
 
 // UI
-import { ConfigContext, Navbar } from '../../../'
+import { ConfigContext } from '../../../services/config/context'
+import { Navbar } from '../../navbar/components/navbar'
 import { Dashboard } from '../__mocks__/navbar'
 
 export const options = {
-  component: Navbar
+  component: Navbar,
 }
 
 export const BaseComponent = (props = {}) => {
@@ -21,7 +22,7 @@ export const BaseComponent = (props = {}) => {
     contained: props.contained || false,
     showMenu: props.showMenu || true,
     widgets: Dashboard,
-    ...props
+    ...props,
   }
 
   return <Navbar {...defaultProps} />

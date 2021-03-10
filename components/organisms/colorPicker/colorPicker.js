@@ -7,12 +7,7 @@ import React from 'react'
 import { string, func } from 'prop-types'
 
 // React Color
-import {
-  SketchPicker,
-  CirclePicker,
-  TwitterPicker,
-  GithubPicker
-} from 'react-color'
+import { SketchPicker, CirclePicker, TwitterPicker, GithubPicker } from 'react-color'
 
 export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
   switch (type) {
@@ -31,11 +26,11 @@ export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
 
 ColorPicker.defaultProps = {
   type: 'github',
-  width: '214px'
+  width: '214px',
 }
 
 ColorPicker.propTypes = {
   type: string,
   onChangeComplete: func.isRequired,
-  width: string
+  width: string,
 }

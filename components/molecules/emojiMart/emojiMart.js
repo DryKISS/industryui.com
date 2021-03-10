@@ -10,13 +10,7 @@ import { bool, func, string } from 'prop-types'
 // Emoji Mart
 import { Picker } from 'emoji-mart'
 
-export const EmojiMart = ({
-  closeOnClickOut,
-  handleSelect,
-  handleOpenPicker,
-  open,
-  style
-}) => {
+export const EmojiMart = ({ closeOnClickOut, handleSelect, handleOpenPicker, open, style }) => {
   const node = useRef()
 
   const handleClickAway = (e) => {
@@ -60,7 +54,7 @@ export const EmojiMart = ({
           border: 'initial',
           borderRadius: 'initial',
           width: '100%',
-          ...style
+          ...style,
         }}
         title="Pick your emoji..."
         ref={node}
@@ -74,10 +68,10 @@ EmojiMart.propTypes = {
   handleOpenPicker: func.isRequired,
   handleSelect: func.isRequired,
   open: bool,
-  style: string
+  style: string,
 }
 
 EmojiMart.defaultProps = {
   closeOnClickOut: true,
-  open: false
+  open: false,
 }

@@ -31,27 +31,27 @@ export default {
     title: 'Header',
     transitionDuration: 300,
     variant: 'extended',
-    width: 40
+    width: 40,
   },
   argTypes: {
     context: ContextControl(),
     overlayOpacity: {
-      control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 }
+      control: { type: 'range', min: 0.0, max: 1.0, step: 0.1 },
     },
     placement: {
-      control: { type: 'select', options: ['bottom', 'left', 'right', 'top'] }
+      control: { type: 'select', options: ['bottom', 'left', 'right', 'top'] },
     },
     variant: { control: { type: 'select', options: ['extended', 'normal'] } },
-    width: { name: 'Width(%)' }
+    width: { name: 'Width(%)' },
   },
   title: 'Molecules/OffCanvas',
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const BaseComponent = (props) => {
@@ -62,7 +62,7 @@ const BaseComponent = (props) => {
   const handleClick = () => {
     offCanvas.show({
       ...props,
-      content: <OffCanvasForm register={register} />
+      content: <OffCanvasForm register={register} />,
     })
   }
 

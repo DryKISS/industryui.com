@@ -5,12 +5,7 @@ import React, { useRef, useState } from 'react'
 import { Editor, EditorState, RichUtils } from 'draft-js'
 
 // Config
-import {
-  BlockStyleControls,
-  InlineStyleControls,
-  getBlockStyle,
-  styleMap
-} from './config'
+import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from './config'
 
 export const IUIRich = () => {
   const [editorState, seteditorState] = useState(EditorState.createEmpty())
@@ -46,14 +41,8 @@ export const IUIRich = () => {
 
   return (
     <div onClick={focus}>
-      <BlockStyleControls
-        editorState={editorState}
-        onToggle={toggleBlockType}
-      />
-      <InlineStyleControls
-        editorState={editorState}
-        onToggle={toggleInlineStyle}
-      />
+      <BlockStyleControls editorState={editorState} onToggle={toggleBlockType} />
+      <InlineStyleControls editorState={editorState} onToggle={toggleInlineStyle} />
       <Editor
         blockStyleFn={getBlockStyle}
         customStyleMap={styleMap}

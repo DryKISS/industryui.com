@@ -4,15 +4,7 @@
 
 // React
 import React, { useState } from 'react'
-import {
-  func,
-  object,
-  objectOf,
-  number,
-  oneOf,
-  oneOfType,
-  string
-} from 'prop-types'
+import { func, object, objectOf, number, oneOf, oneOfType, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -25,16 +17,7 @@ import { Close, shadeLinearRgb } from '../../../'
 import { THEME_CONTEXT } from '../../../theme/constants/context'
 import { themeBackground } from '../../../theme/utils/background'
 
-export const Alert = ({
-  className,
-  close,
-  content,
-  context,
-  header,
-  icon,
-  iconPrefix,
-  style
-}) => {
+export const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
   const [visible, setVisible] = useState(true)
 
   const handleClose = () => {
@@ -45,29 +28,13 @@ export const Alert = ({
   return (
     visible && (
       <StyledAlert className={className} context={context} style={style}>
-        {close && (
-          <StyledClose
-            click={handleClose}
-            context="white"
-            header={header}
-            icon="times"
-          />
-        )}
+        {close && <StyledClose click={handleClose} context="white" header={header} icon="times" />}
 
         {header && (
-          <AlertHeader
-            context={context}
-            header={header}
-            icon={icon}
-            iconPrefix={iconPrefix}
-          />
+          <AlertHeader context={context} header={header} icon={icon} iconPrefix={iconPrefix} />
         )}
 
-        <AlertContent
-          content={content}
-          icon={header ? null : icon}
-          iconPrefix={iconPrefix}
-        />
+        <AlertContent content={content} icon={header ? null : icon} iconPrefix={iconPrefix} />
       </StyledAlert>
     )
   )
@@ -95,9 +62,9 @@ Alert.propTypes = {
   header: string,
   icon: string,
   iconPrefix: string,
-  style: objectOf(oneOfType([number, string]))
+  style: objectOf(oneOfType([number, string])),
 }
 
 Alert.defaultProps = {
-  context: 'primary'
+  context: 'primary',
 }

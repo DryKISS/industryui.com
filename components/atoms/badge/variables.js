@@ -4,7 +4,7 @@
 export const BADGE = {
   BORDER_RADIUS: {
     round: '5rem',
-    square: '0.25rem'
+    square: '0.25rem',
   },
   FONT_SIZE: {
     xxs: '0.625rem',
@@ -14,7 +14,7 @@ export const BADGE = {
     lg: '1.25rem',
     xl: '1.5rem',
     xxl: '2rem',
-    xxxl: '3rem'
+    xxxl: '3rem',
   },
   PADDING: {
     xxs: '0 0.5rem',
@@ -24,10 +24,10 @@ export const BADGE = {
     lg: '0.5rem 0.75rem',
     xl: '0.625rem 1rem',
     xxl: '0.75rem 1rem',
-    xxxl: '0.875rem 1.5rem'
+    xxxl: '0.875rem 1.5rem',
   },
   SHAPE: {
     ROUND: 'round',
-    SQUARE: 'square'
-  }
+    SQUARE: 'square',
+  },
 }

@@ -17,20 +17,20 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    size: 'md'
+    size: 'md',
   },
   argTypes: {
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: InputGroup,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/InputGroup'
+  title: 'Form/InputGroup',
 }
 
 const BaseComponent = (props = {}) => {
@@ -40,14 +40,7 @@ const BaseComponent = (props = {}) => {
 const Input = () => {
   const { register, errors } = useForm()
 
-  return (
-    <FormField
-      errors={errors}
-      name="id"
-      placeholder="Search..."
-      register={register}
-    />
-  )
+  return <FormField errors={errors} name="id" placeholder="Search..." register={register} />
 }
 
 export const prependButton = (args) => {

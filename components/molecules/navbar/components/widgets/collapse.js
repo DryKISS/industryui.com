@@ -16,10 +16,8 @@ export const NavCollapse = styled.div`
   flex-grow: 1;
   display: ${(props) => (props.visible ? 'block' : 'none')};
   position: ${({ theme }) => theme.NAVBAR.positionCollapse};
-  right: ${({ theme }) =>
-    theme.NAVBAR.positionCollapse === 'fixed' ? '0' : 'inherit'};
-  margin: ${({ theme }) =>
-    theme.NAVBAR.positionCollapse === 'fixed' ? '2.5rem 2rem' : 'inherit'};
+  right: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '0' : 'inherit')};
+  margin: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '2.5rem 2rem' : 'inherit')};
   ${MEDIA_QUERY.desktop`
     border: none;
     display: flex;
@@ -30,5 +28,5 @@ export const NavCollapse = styled.div`
 `
 
 NavCollapse.propTypes = {
-  visible: bool.isRequired
+  visible: bool.isRequired,
 }

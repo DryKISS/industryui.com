@@ -11,10 +11,7 @@ import styled from 'styled-components'
 
 export const ButtonToolbar = ({ align, children }) => {
   return (
-    <StyledToolbar
-      align={align}
-      aria-label="Toolbar with button groups"
-      role="toolbar">
+    <StyledToolbar align={align} aria-label="Toolbar with button groups" role="toolbar">
       <StyledGroup role="group" aria-label="First group">
         {children}
       </StyledGroup>
@@ -61,9 +58,9 @@ const StyledGroup = styled.div`
 
 ButtonToolbar.propTypes = {
   align: string,
-  children: node.isRequired
+  children: node.isRequired,
 }
 
 ButtonToolbar.defaultProps = {
-  align: 'center'
+  align: 'center',
 }

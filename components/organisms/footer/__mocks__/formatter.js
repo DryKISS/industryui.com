@@ -6,7 +6,9 @@
 import React, { Fragment } from 'react'
 
 // UI
-import { Image, List, ListItem } from '../../../'
+import { Image } from '../../../atoms/image/image'
+import { List } from '../../../atoms/list/components/list'
+import { ListItem } from '../../../atoms/list/components/listItem'
 
 const renderColumn = (index) => (
   <Fragment key={index}>
@@ -22,63 +24,78 @@ const renderColumn = (index) => (
 
 export const FORMATTER = [
   {
-    size: { md: 8, lg: 6 },
-    offset: { md: 4, lg: 0 },
-    formatter: renderColumn
+    size: {
+      md: 8,
+      lg: 6,
+    },
+    offset: {
+      md: 4,
+      lg: 0,
+    },
+    formatter: renderColumn,
   },
   {
-    size: { md: 4, lg: 2 },
+    size: {
+      md: 4,
+      lg: 2,
+    },
     header: {
-      content: 'About'
+      content: 'About',
     },
     links: {
       items: [
         {
           id: 'footerHowItWorks',
           name: 'How it Works',
-          to: '/how-it-works'
+          to: '/how-it-works',
         },
         {
           id: 'footerBlog',
           name: 'Blog',
-          to: '/pet-tails'
-        }
-      ]
-    }
+          to: '/pet-tails',
+        },
+      ],
+    },
   },
   {
-    size: { md: 4, lg: 2 },
+    size: {
+      md: 4,
+      lg: 2,
+    },
     header: {
-      content: 'Discover'
+      content: 'Discover',
     },
     links: {
       items: [
         {
           id: 'footerSignUp',
           name: 'Sign Up',
-          to: '/sign-up'
+          to: '/sign-up',
         },
         {
           id: 'footerProducts',
           name: 'Products',
-          to: '/products'
-        }
-      ]
-    }
+          to: '/products',
+        },
+      ],
+    },
   },
   {
-    size: { md: 4, lg: 2 },
+    size: {
+      md: 4,
+      lg: 2,
+    },
     header: {
-      content: 'Contact'
+      content: 'Contact',
     },
     links: {
       items: [
         {
           id: 'footerContact',
           name: 'Contact',
-          to: '/contact'
-        }
-      ]
-    }
-  }
+          to: '/contact',
+        },
+      ],
+    },
+  },
 ]

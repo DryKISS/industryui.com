@@ -61,7 +61,7 @@ export const args = {
   previousYearButtonLabel: 'Previous Year',
   timeCaption: 'Time',
   timeInputLabel: 'Time',
-  todayButton: ''
+  todayButton: '',
 }
 
 export const argTypes = {
@@ -73,14 +73,14 @@ export const argTypes = {
         'MMMM d, yyyy h:mm aa',
         'dd-M-yyyy hh:mm:ss',
         'dd MMMM yyyy',
-        'd MMM yyyy'
-      ]
-    }
+        'd MMM yyyy',
+      ],
+    },
   },
   dropdownMode: {
     control: {
       type: 'select',
-      options: ['scroll', 'select']
-    }
-  }
+      options: ['scroll', 'select'],
+    },
+  },
 }

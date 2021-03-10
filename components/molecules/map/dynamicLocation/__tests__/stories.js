@@ -14,10 +14,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 export const main = () => {
@@ -29,7 +29,8 @@ export const main = () => {
       apiKey="AIzaSyBUzxbbHVhHG57UyGYrTG47eIQ8qF-yiuM"
       defaultCenter={coventGardenCoordinates}
       width="400px"
-      zoom={13.5}>
+      zoom={13.5}
+    >
       <Marker position={coventGardenCoordinates} />
       <Marker position={westminsterAbbeyCoordinates} />
     </DynamicLocation>

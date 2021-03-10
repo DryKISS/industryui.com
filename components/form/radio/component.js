@@ -19,9 +19,9 @@ const StyledInput = styled.input`
 `
 
 RadioComponent.propTypes = {
-  disabled: bool
+  disabled: bool,
 }
 
 RadioComponent.defaultProps = {
-  stacked: false
+  stacked: false,
 }

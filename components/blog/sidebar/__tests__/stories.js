@@ -17,19 +17,13 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Blog/Sidebar'
+  title: 'Blog/Sidebar',
 }
 
 export const main = (args) => (
-  <BlogSidebar
-    articles={Articles}
-    config={Blog}
-    facebook={Facebook}
-    findFood
-    {...args}
-  />
+  <BlogSidebar articles={Articles} config={Blog} facebook={Facebook} findFood {...args} />
 )

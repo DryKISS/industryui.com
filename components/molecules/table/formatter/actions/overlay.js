@@ -30,5 +30,5 @@ export const TableActionsOverlay = styled.span`
 
 TableActionsOverlay.propTypes = {
   background: oneOf(Object.values(THEME_CONTEXT)),
-  children: oneOfType([number, string]).isRequired
+  children: oneOfType([number, string]).isRequired,
 }

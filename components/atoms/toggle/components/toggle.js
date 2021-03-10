@@ -13,13 +13,7 @@ import styled from 'styled-components'
 import { Switch } from '../../../'
 import { THEME_CONTEXT } from '../../../theme/constants/context'
 
-export const Toggle = ({
-  context,
-  disabled,
-  onToggle,
-  size,
-  toggled: initial
-}) => {
+export const Toggle = ({ context, disabled, onToggle, size, toggled: initial }) => {
   const [toggled, setToggled] = useState(initial)
   useEffect(() => {
     setToggled(initial)
@@ -53,11 +47,11 @@ Toggle.propTypes = {
   disabled: bool,
   onToggle: func,
   size: oneOf(['sm', 'md', 'lg']),
-  toggled: bool
+  toggled: bool,
 }
 
 Toggle.defaultProps = {
   context: 'success',
   size: 'md',
-  toggled: false
+  toggled: false,
 }

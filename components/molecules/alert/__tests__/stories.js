@@ -17,23 +17,23 @@ export default {
     content: 'Content',
     header: 'Header',
     icon: 'bars',
-    iconPrefix: 'fas'
+    iconPrefix: 'fas',
   },
   argTypes: {
     context: ContextControl(),
     close: {
-      action: 'clicked'
-    }
+      action: 'clicked',
+    },
   },
   component: Alert,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Alert'
+  title: 'Molecules/Alert',
 }
 
 export const main = (args) => <Alert {...args} />

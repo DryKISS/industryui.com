@@ -4,5 +4,5 @@
  */
 export const ICON_PULL = {
   left: 'left',
-  right: 'right'
+  right: 'right',
 }

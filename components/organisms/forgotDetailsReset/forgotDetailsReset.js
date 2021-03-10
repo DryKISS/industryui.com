@@ -15,40 +15,25 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ForgotDetailsResetSchema } from './schema'
 
 // UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormLabel,
-  Link,
-  PageHeading
-} from '../../'
+import { Alert, Button, FormField, Form, FormLabel, Link, PageHeading } from '../../'
 
 // Style
 import styled from 'styled-components'
 
 export const ForgotDetailsReset = ({ pathLogIn, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(ForgotDetailsResetSchema)
+    resolver: yupResolver(ForgotDetailsResetSchema),
   })
 
   return (
     <>
       <PageHeading center heading="Set New Password" divider={false} />
 
-      {errors?.password?.message && (
-        <Alert content={errors.password.message} context="warning" />
-      )}
+      {errors?.password?.message && <Alert content={errors.password.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(submit)}>
         <FormLabel label="Password">
-          <FormField
-            errors={errors}
-            name="password"
-            register={register}
-            type="password"
-          />
+          <FormField errors={errors} name="password" register={register} type="password" />
         </FormLabel>
 
         <Button block content="Submit" size="lg" type="submit" />
@@ -68,9 +53,9 @@ const StyledLink = styled.span`
 
 ForgotDetailsReset.propTypes = {
   pathLogIn: string,
-  submit: func
+  submit: func,
 }
 
 ForgotDetailsReset.defaultProps = {
-  pathLogIn: '/account/sign-in'
+  pathLogIn: '/account/sign-in',
 }

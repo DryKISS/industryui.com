@@ -69,5 +69,5 @@ NavNotification.propTypes = {
   closeMenu: func,
   to: string.isRequired,
   type: object,
-  visible: bool
+  visible: bool,
 }

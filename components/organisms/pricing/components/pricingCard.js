@@ -40,12 +40,7 @@ export const PricingCard = ({ data, layout, onCardSelect }) => {
       <FlexSpacer />
       <Fee align="center" content={price} recommended={recommended} size="xl" />
       <AddButtonWrapper onClick={() => onCardSelect(data)}>
-        <AddToCartText
-          align="center"
-          content="Add To Cart"
-          recommended={recommended}
-          size="sm"
-        />
+        <AddToCartText align="center" content="Add To Cart" recommended={recommended} size="sm" />
       </AddButtonWrapper>
     </Wrapper>
   )
@@ -63,9 +58,7 @@ const StyledCheckIcon = styled(CheckedIcon)`
 
 const AddToCartText = styled(Text)`
   color: ${({ theme: { PRICING }, recommended }) =>
-    recommended
-      ? PRICING.recommendedAddToCartTextColour
-      : PRICING.addToCartTextColour};
+    recommended ? PRICING.recommendedAddToCartTextColour : PRICING.addToCartTextColour};
   font-weight: 700;
 `
 
@@ -81,13 +74,9 @@ const FlexSpacer = styled.div`
 const Fee = styled(Text)`
   border-bottom: 1px solid
     ${({ theme: { PRICING }, recommended }) =>
-      recommended
-        ? PRICING.recommendedCardPriceTextColour
-        : PRICING.cardPriceTextColour};
+      recommended ? PRICING.recommendedCardPriceTextColour : PRICING.cardPriceTextColour};
   color: ${({ theme: { PRICING }, recommended }) =>
-    recommended
-      ? PRICING.recommendedCardPriceTextColour
-      : PRICING.cardPriceTextColour};
+    recommended ? PRICING.recommendedCardPriceTextColour : PRICING.cardPriceTextColour};
   font-weight: 700;
   line-height: 1rem;
   padding-bottom: 1.25rem;
@@ -109,10 +98,8 @@ const ChecklistWrapper = styled.div`
 
 const Title = styled.p`
   border-bottom: 1px solid
-    ${({ theme, recommended }) =>
-      recommended ? theme.COLOUR.white : theme.COLOUR.dark};
-  color: ${({ theme, recommended }) =>
-    recommended ? theme.COLOUR.white : theme.COLOUR.dark};
+    ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.dark)};
+  color: ${({ theme, recommended }) => (recommended ? theme.COLOUR.white : theme.COLOUR.dark)};
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
@@ -124,8 +111,7 @@ const Wrapper = styled.div`
   background-color: ${({ theme: { PRICING }, recommended }) =>
     recommended ? PRICING.recommendedCardBackground : PRICING.cardBackground};
 
-  border: ${({ theme, recommended }) =>
-    recommended ? 'none' : `1px solid ${theme.COLOUR.dark}`};
+  border: ${({ theme, recommended }) => (recommended ? 'none' : `1px solid ${theme.COLOUR.dark}`)};
   border-radius: 1rem;
 
   box-shadow: ${({ theme, recommended }) =>

@@ -14,18 +14,12 @@ import { COUNTRY } from '../../constants'
 
 export const SelectCountryField = ({ errors, name, register, ...props }) => {
   return (
-    <SelectField
-      errors={errors}
-      name={name}
-      options={COUNTRY}
-      register={register}
-      {...props}
-    />
+    <SelectField errors={errors} name={name} options={COUNTRY} register={register} {...props} />
   )
 }
 
 SelectCountryField.propTypes = {
   errors: object.isRequired,
   name: string.isRequired,
-  register: func.isRequired
+  register: func.isRequired,
 }

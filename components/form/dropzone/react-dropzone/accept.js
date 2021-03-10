@@ -16,9 +16,9 @@ export const Accept = ({ accept }) => {
 }
 
 Accept.propTypes = {
-  accept: string.isRequired
+  accept: string.isRequired,
 }
 
 Accept.defaultProps = {
-  accept: 'image/jpeg,image/png'
+  accept: 'image/jpeg,image/png',
 }

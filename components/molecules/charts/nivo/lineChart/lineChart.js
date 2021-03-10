@@ -30,8 +30,8 @@ export const LineChart = withTheme(({ theme, ...props }) => {
       pointLabelYOffset,
       useMesh,
       xScale,
-      yScale
-    }
+      yScale,
+    },
   } = theme
 
   const {
@@ -50,7 +50,7 @@ export const LineChart = withTheme(({ theme, ...props }) => {
     lineWidth,
     pointSize = LINECHART.pointSize,
     showLegend,
-    tooltip = LineDefaultProps.tooltip
+    tooltip = LineDefaultProps.tooltip,
   } = props
 
   return (
@@ -95,10 +95,10 @@ LineChart.propTypes = Object.assign({}, LinePropTypes, {
   bottomLegend: string,
   colorScheme: oneOf(Object.keys(colorSchemes)),
   leftLegend: string,
-  showLegend: bool
+  showLegend: bool,
 })
 
 LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
   colorScheme: 'nivo',
-  showLegend: false
+  showLegend: false,
 })

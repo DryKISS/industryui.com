@@ -16,25 +16,25 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    value: 'Response Type'
+    value: 'Response Type',
   },
   argTypes: {
     value: {
       control: {
         type: 'select',
-        options: ['Response Type', 'success', 'failure', 'GROUP-ID1']
-      }
-    }
+        options: ['Response Type', 'success', 'failure', 'GROUP-ID1'],
+      },
+    },
   },
   component: Login,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Login'
+  title: 'Organisms/Login',
 }
 
 const BaseComponent = (props = {}) => {
@@ -52,7 +52,7 @@ const BaseComponent = (props = {}) => {
 
   const defaultProps = {
     submit: submit,
-    ...props
+    ...props,
   }
 
   return (
@@ -77,7 +77,7 @@ export const WithHttpRequest = (args) => {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState({
     type: '',
-    message: ''
+    message: '',
   })
 
   const { value } = args
@@ -89,13 +89,13 @@ export const WithHttpRequest = (args) => {
       .then((res) => {
         setResult({
           type: 'success',
-          message: res.message
+          message: res.message,
         })
       })
       .catch((e) => {
         setResult({
           type: 'danger',
-          message: e.message
+          message: e.message,
         })
       })
       .finally(() => setLoading(false))
@@ -103,12 +103,7 @@ export const WithHttpRequest = (args) => {
 
   return (
     <>
-      <Login
-        change={change}
-        email={form.email}
-        submit={submit}
-        password={form.password}
-      />
+      <Login change={change} email={form.email} submit={submit} password={form.password} />
       {loading}
       {result}
     </>

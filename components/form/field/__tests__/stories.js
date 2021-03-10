@@ -19,22 +19,22 @@ import Readme from '../README.md'
 export default {
   args: {
     placeholder: 'Email...',
-    readOnly: false
+    readOnly: false,
   },
   argTypes: {
     readOnly: {
-      name: 'Read Only'
-    }
+      name: 'Read Only',
+    },
   },
   component: FormField,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Field'
+  title: 'Form/Field',
 }
 
 const schema = object().shape({
@@ -45,12 +45,12 @@ const schema = object().shape({
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
       'Must contain 8 characters, with at least ine uppercase, number and special character'
-    )
+    ),
 })
 
 const BaseComponent = (props = {}) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {}
@@ -58,7 +58,7 @@ const BaseComponent = (props = {}) => {
   const defaultProps = {
     errors: errors,
     register: register,
-    ...props
+    ...props,
   }
 
   return (

@@ -5,7 +5,7 @@ const key = {
   exitFullscreen: 3,
   fullscreenchange: 4,
   fullscreenerror: 5,
-  fullscreen: 6
+  fullscreen: 6,
 }
 
 const webkit = [
@@ -15,7 +15,7 @@ const webkit = [
   'webkitExitFullscreen',
   'webkitfullscreenchange',
   'webkitfullscreenerror',
-  '-webkit-full-screen'
+  '-webkit-full-screen',
 ]
 
 const moz = [
@@ -25,7 +25,7 @@ const moz = [
   'mozCancelFullScreen',
   'mozfullscreenchange',
   'mozfullscreenerror',
-  '-moz-full-screen'
+  '-moz-full-screen',
 ]
 
 const ms = [
@@ -35,14 +35,12 @@ const ms = [
   'msExitFullscreen',
   'MSFullscreenChange',
   'MSFullscreenError',
-  '-ms-fullscreen'
+  '-ms-fullscreen',
 ]
 
 // so it doesn't throw error if no window or document is present
 const document =
-  typeof window !== 'undefined' && typeof window.document !== 'undefined'
-    ? window.document
-    : {}
+  typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {}
 
 const vendor =
   ('fullscreenEnabled' in document && Object.keys(key)) ||
@@ -53,8 +51,7 @@ const vendor =
 
 export const fullScreen = {
   requestFullscreen: (element) => element[vendor[key.requestFullscreen]](),
-  requestFullscreenFunction: (element) =>
-    element[vendor[key.requestFullscreen]],
+  requestFullscreenFunction: (element) => element[vendor[key.requestFullscreen]],
   get exitFullscreen() {
     return document[vendor[key.exitFullscreen]].bind(document)
   },
@@ -77,16 +74,12 @@ export const fullScreen = {
     return document[`on${vendor[key.fullscreenchange]}`.toLowerCase()]
   },
   set onfullscreenchange(handler) {
-    return (document[
-      `on${vendor[key.fullscreenchange]}`.toLowerCase()
-    ] = handler)
+    return (document[`on${vendor[key.fullscreenchange]}`.toLowerCase()] = handler)
   },
   get onfullscreenerror() {
     return document[`on${vendor[key.fullscreenerror]}`.toLowerCase()]
   },
   set onfullscreenerror(handler) {
-    return (document[
-      `on${vendor[key.fullscreenerror]}`.toLowerCase()
-    ] = handler)
-  }
+    return (document[`on${vendor[key.fullscreenerror]}`.toLowerCase()] = handler)
+  },
 }

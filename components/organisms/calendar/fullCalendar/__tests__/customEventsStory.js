@@ -16,18 +16,13 @@ import {
   Form,
   FormLabel,
   FormField,
-  CheckboxField
+  CheckboxField,
 } from '../../../../'
 
 import { BaseComponent } from './stories'
 
 // Data
-import {
-  colorEvent,
-  assetType,
-  displayEventOptions,
-  checkBoxOptions
-} from '../__mocks__/events'
+import { colorEvent, assetType, displayEventOptions, checkBoxOptions } from '../__mocks__/events'
 
 export const CustomEventsStory = () => {
   const [events, setEvents] = useState([])
@@ -39,7 +34,7 @@ export const CustomEventsStory = () => {
     disabled: false,
     errors: errors,
     register: register,
-    showError: true
+    showError: true,
   }
 
   // Pending add the tooltip
@@ -58,8 +53,8 @@ export const CustomEventsStory = () => {
       borderColor: data.borderColor,
       textColor: data.textColor,
       extendedProps: {
-        assetType: data.assetType
-      }
+        assetType: data.assetType,
+      },
     }
 
     setEvents([...events, fullEvent])
@@ -70,44 +65,23 @@ export const CustomEventsStory = () => {
     return (
       <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormLabel label="Title">
-          <FormField
-            name="title"
-            errors={errors}
-            placeholder="Event title"
-            register={register}
-          />
+          <FormField name="title" errors={errors} placeholder="Event title" register={register} />
         </FormLabel>
 
         <FormLabel label="All day">
-          <CheckboxField
-            data={checkBoxOptions}
-            name="all day"
-            {...defaultProps}
-          />
+          <CheckboxField data={checkBoxOptions} name="all day" {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="Background Color">
-          <SelectField
-            name="backgroundColor"
-            options={colorEvent}
-            {...defaultProps}
-          />
+          <SelectField name="backgroundColor" options={colorEvent} {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="Text color">
-          <SelectField
-            name="textColor"
-            options={colorEvent}
-            {...defaultProps}
-          />
+          <SelectField name="textColor" options={colorEvent} {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="Border Color">
-          <SelectField
-            name="borderColor"
-            options={colorEvent}
-            {...defaultProps}
-          />
+          <SelectField name="borderColor" options={colorEvent} {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="Url">
@@ -120,29 +94,15 @@ export const CustomEventsStory = () => {
         </FormLabel>
 
         <FormLabel label="Display Event Options">
-          <SelectField
-            name="displayEventOptions"
-            options={displayEventOptions}
-            {...defaultProps}
-          />
+          <SelectField name="displayEventOptions" options={displayEventOptions} {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="overlap">
-          <CheckboxField
-            data={checkBoxOptions}
-            name="overlap"
-            ref={register}
-            {...defaultProps}
-          />
+          <CheckboxField data={checkBoxOptions} name="overlap" ref={register} {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="draggable">
-          <CheckboxField
-            data={checkBoxOptions}
-            name="editable"
-            ref={register}
-            {...defaultProps}
-          />
+          <CheckboxField data={checkBoxOptions} name="editable" ref={register} {...defaultProps} />
         </FormLabel>
 
         <FormLabel label="Asset Type">
@@ -175,11 +135,7 @@ export const CustomEventsStory = () => {
         </OffCanvas>
       )}
 
-      <BaseComponent
-        events={events}
-        eventClick={handleEventClick}
-        dateClick={handleDateClick}
-      />
+      <BaseComponent events={events} eventClick={handleEventClick} dateClick={handleDateClick} />
     </>
   )
 }

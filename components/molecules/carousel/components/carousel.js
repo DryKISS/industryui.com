@@ -35,15 +35,13 @@ export const Carousel = ({
   showNavs,
   showPagination,
   slides,
-  width
+  width,
 }) => {
   let dataSource = slides || children
 
   dataSource = revert(dataSource)
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(
-    (slides || children).length - 1
-  )
+  const [currentImageIndex, setCurrentImageIndex] = useState((slides || children).length - 1)
   const [NumberOfItems, setNumberOfItems] = useState(
     typeof numberOfItems === 'number' ? numberOfItems : 1
   )
@@ -125,7 +123,7 @@ export const Carousel = ({
           icon={rightNavIcon}
           position={navPosition}
         />
-      )
+      ),
     }
     if (leftNavComponent) {
       components.left = (
@@ -136,10 +134,7 @@ export const Carousel = ({
     }
     if (rightNavComponent) {
       components.right = (
-        <NavWrapper
-          componentPosition={navPosition}
-          endNav
-          onClick={previousSlide}>
+        <NavWrapper componentPosition={navPosition} endNav onClick={previousSlide}>
           {rightNavComponent}
         </NavWrapper>
       )
@@ -162,27 +157,20 @@ export const Carousel = ({
             <ItemWrapper
               gap={gap}
               width={`calc(${100 / NumberOfItems}% - ${gap}px)`}
-              transform={`translateX(calc(${
-                currentImageIndex - index
-              } * calc(100% + ${gap}px)))`}
-              key={'slide' + index}>
+              transform={`translateX(calc(${currentImageIndex - index} * calc(100% + ${gap}px)))`}
+              key={'slide' + index}
+            >
               {slides ? <CarouselSampleSlide {...item} /> : dataSource[index]}
             </ItemWrapper>
           )
         })}
 
-        {hasNavigation &&
-          showPagination &&
-          paginationPosition === 'inside' &&
-          renderPagination()}
+        {hasNavigation && showPagination && paginationPosition === 'inside' && renderPagination()}
 
         {hasNavigation && showNavs && navComponents().right}
       </Wrapper>
 
-      {hasNavigation &&
-        showPagination &&
-        paginationPosition === 'outside' &&
-        renderPagination()}
+      {hasNavigation && showPagination && paginationPosition === 'outside' && renderPagination()}
     </>
   )
 }

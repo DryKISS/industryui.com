@@ -25,5 +25,5 @@ MetaDublin.propTypes = {
   author: string.isRequired,
   description: string.isRequired,
   locale: string.isRequired,
-  title: string.isRequired
+  title: string.isRequired,
 }

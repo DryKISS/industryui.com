@@ -14,7 +14,7 @@ export const LayoutGrid = ({ children }) => {
 }
 
 LayoutGrid.propTypes = {
-  children: node.isRequired
+  children: node.isRequired,
 }
 
 LayoutGrid.defaultProps = {}

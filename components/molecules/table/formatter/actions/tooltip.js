@@ -15,5 +15,5 @@ export const TableActionsTooltip = ({ children, tooltip }) => (
 
 TableActionsTooltip.propTypes = {
   children: node.isRequired,
-  tooltip: string.isRequired
+  tooltip: string.isRequired,
 }

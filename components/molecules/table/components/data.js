@@ -16,5 +16,5 @@ export const TableData = memo(styled.td`
 `)
 
 TableData.propTypes = {
-  align: oneOfType([string, bool])
+  align: oneOfType([string, bool]),
 }

@@ -19,5 +19,5 @@ const StyledColumns = styled.div`
 `
 
 CardColumns.propTypes = {
-  childern: node.isRequired
+  childern: node.isRequired,
 }

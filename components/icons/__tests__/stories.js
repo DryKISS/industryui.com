@@ -73,7 +73,7 @@ import {
   FuseBoxIcon,
   SprinkleIcon,
   WashingMachineIcon,
-  ThermometerIcon
+  ThermometerIcon,
 } from '../index'
 
 import Readme from '../README.md'
@@ -84,16 +84,16 @@ export default {
     disabled: false,
     onClick: false,
     size: '22',
-    hoverColour: 'false'
+    hoverColour: 'false',
   },
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Icons/AllIcons'
+  title: 'Icons/AllIcons',
 }
 
 export const main = (props) => {

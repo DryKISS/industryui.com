@@ -4,19 +4,10 @@
 
 // React
 import React from 'react'
-import { any, bool, object, oneOf, shape } from 'prop-types'
+import { any, object, oneOf } from 'prop-types'
 
 // UI
-import {
-  BlogCategory,
-  BlogTags,
-  Button,
-  Card,
-  CardImage,
-  Divider,
-  Link,
-  slugify
-} from '../../'
+import { BlogCategory, BlogTags, Button, Card, CardImage, Divider, Link, slugify } from '../../'
 import { CardBody } from '../../molecules/card/components/body'
 import { Heading } from '../../atoms/heading/heading'
 
@@ -31,30 +22,19 @@ export const BlogCard = ({ article, config, link, type }) => {
 
   const articleLink = {
     as: article?.linkAs || `${config.path}/${categorySlug}/${articleSlug}`,
-    href: article?.linkHref || `${config.path}/[categoryId]/[articleId]`
+    href: article?.linkHref || `${config.path}/[categoryId]/[articleId]`,
   }
 
   return (
-    <article
-      role="article"
-      itemProp="blogPost"
-      itemScope
-      itemType="http://schema.org/BlogPosting">
+    <article role="article" itemProp="blogPost" itemScope itemType="http://schema.org/BlogPosting">
       <Card shadow>
         <Link to={articleLink} {...link}>
-          <CardImage
-            alt={heading}
-            src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`}
-          />
+          <CardImage alt={heading} src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`} />
         </Link>
 
         <StyledCardBody type={type}>
           {type === 'normal' && category && (
-            <BlogCategory
-              config={config}
-              link={{ to: category, ...link }}
-              type={type}
-            />
+            <BlogCategory config={config} link={{ to: category, ...link }} type={type} />
           )}
 
           <StyledContent type={type}>
@@ -76,18 +56,11 @@ export const BlogCard = ({ article, config, link, type }) => {
               <Divider size="sm" />
 
               {author && (
-                <BlogCategory
-                  author
-                  link={{ to: author, ...link }}
-                  config={config}
-                  type={type}
-                />
+                <BlogCategory author link={{ to: author, ...link }} config={config} type={type} />
               )}
 
               {article.readtime && (
-                <StyledReadTime>
-                  {article.readtime}min read time.
-                </StyledReadTime>
+                <StyledReadTime>{article.readtime}min read time.</StyledReadTime>
               )}
             </>
           )}
@@ -194,12 +167,9 @@ const StyledReadTime = styled.p`
 BlogCard.propTypes = {
   article: any.isRequired,
   config: object.isRequired,
-  link: shape({
-    prefetch: bool
-  }),
-  type: oneOf(['hero', 'normal'])
+  type: oneOf(['hero', 'normal']),
 }
 
 BlogCard.defaultProps = {
-  type: 'normal'
+  type: 'normal',
 }

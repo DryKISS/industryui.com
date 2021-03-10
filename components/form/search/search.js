@@ -18,7 +18,7 @@ export const Search = ({
   prependSearchIcon,
   prefix,
   register,
-  type
+  type,
 }) => {
   return (
     <InputGroup>
@@ -44,12 +44,7 @@ export const Search = ({
 
       {appendSearchButton && (
         <InputGroupAddon addonType="append">
-          <Button
-            content={label || 'Search'}
-            context="dark"
-            size="sm"
-            type="submit"
-          />
+          <Button content={label || 'Search'} context="dark" size="sm" type="submit" />
         </InputGroupAddon>
       )}
     </InputGroup>
@@ -64,12 +59,12 @@ Search.propTypes = {
   placeholder: string,
   prependSearchIcon: bool,
   register: func.isRequired,
-  type: oneOf(['search', 'text'])
+  type: oneOf(['search', 'text']),
 }
 
 Search.defaultProps = {
   appendSearchButton: false,
   appendSearchIcon: false,
   prependSearchIcon: false,
-  type: 'search'
+  type: 'search',
 }

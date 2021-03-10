@@ -15,29 +15,29 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    size: THEME_SIZE.LG
+    size: THEME_SIZE.LG,
   },
   argTypes: {
     size: {
-      control: { options: Object.values(THEME_SIZE), type: ControlTypes.Select }
+      control: { options: Object.values(THEME_SIZE), type: ControlTypes.Select },
     },
-    separator: { control: null }
+    separator: { control: null },
   },
   component: Breadcrumb,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Molecules/Breadcrumb'
+  title: 'Molecules/Breadcrumb',
 }
 
 const breadcrumbs = [
   {
     to: '/',
-    title: 'Home'
+    title: 'Home',
   },
   {
     icon: <Icon icon="smile" prefix="fas" />,
@@ -46,17 +46,17 @@ const breadcrumbs = [
       href: {
         pathname: '/blog/category',
         query: {
-          category: 'asdasdsadasd'
-        }
-      }
+          category: 'asdasdsadasd',
+        },
+      },
     },
-    title: 'DryKISS'
+    title: 'DryKISS',
   },
   {
     icon: <Icon icon="images" prefix="fas" />,
     to: '/rrrr',
-    title: 'Current Page'
-  }
+    title: 'Current Page',
+  },
 ]
 
 const separator = '\\'

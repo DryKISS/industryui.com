@@ -49,5 +49,5 @@ jobs:
       - name: Build 🚀
         run: npm run build
 
-      - name: Snapshot Tests 📷
-        run: npm run test:snapshot
+      # - name: Snapshot Tests 📷
+      #   run: npm run test:snapshot

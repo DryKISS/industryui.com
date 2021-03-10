@@ -5,23 +5,23 @@ export const COLOURS = [
   {
     disabled: true,
     text: 'Please choose',
-    value: ''
+    value: '',
   },
   {
     text: 'Red',
-    value: 'red'
+    value: 'red',
   },
   {
     text: 'Green',
-    value: 'green'
+    value: 'green',
   },
   {
     text: 'Blue',
-    value: 'blue'
+    value: 'blue',
   },
   {
     text: 'Olive (disabled)',
     value: 'olive',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]

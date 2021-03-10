@@ -16,35 +16,33 @@ import { LdsSpinner, PageLoading, Theme } from '../../../'
 import styled from 'styled-components'
 
 const CalendarWrapper = dynamic(() => import('./calendarWrapper'), {
-  ssr: false
+  ssr: false,
 })
 
-export const Calendar = forwardRef(
-  ({ defaultEventColor, showTooltip, ...props }, ref) => {
-    const { CALENDAR } = Theme
-    const [loading, setLoading] = useState(false)
+export const Calendar = forwardRef(({ defaultEventColor, showTooltip, ...props }, ref) => {
+  const { CALENDAR } = Theme
+  const [loading, setLoading] = useState(false)
 
-    return (
-      <Wrapper>
-        {props.hasLoading && loading && (
-          <PageLoading
-            indicator={<LdsSpinner color="#000" size={50} />}
-            opacity={0.7}
-            position="absolute"
-          />
-        )}
-
-        <CalendarWrapper
-          {...props}
-          header={props.header || CALENDAR.header}
-          events={props.events}
-          forwardedRef={ref}
-          loading={setLoading}
+  return (
+    <Wrapper>
+      {props.hasLoading && loading && (
+        <PageLoading
+          indicator={<LdsSpinner color="#000" size={50} />}
+          opacity={0.7}
+          position="absolute"
         />
-      </Wrapper>
-    )
-  }
-)
+      )}
+
+      <CalendarWrapper
+        {...props}
+        header={props.header || CALENDAR.header}
+        events={props.events}
+        forwardedRef={ref}
+        loading={setLoading}
+      />
+    </Wrapper>
+  )
+})
 
 const Wrapper = styled.div`
   position: relative;
@@ -66,10 +64,10 @@ const Wrapper = styled.div`
 
 Calendar.propTypes = {
   defaultEventColor: string,
-  showTooltip: bool
+  showTooltip: bool,
 }
 
 Calendar.defaultProps = {
   defaultEventColor: 'primary',
-  showTooltip: false
+  showTooltip: false,
 }

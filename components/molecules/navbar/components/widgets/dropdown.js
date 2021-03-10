@@ -13,20 +13,10 @@ import { Dropdown } from '../../../dropdown'
 // Style
 import styled from 'styled-components'
 
-export const NavDropdown = ({
-  closeMenu,
-  icon,
-  name,
-  position,
-  prefix,
-  type
-}) => {
+export const NavDropdown = ({ closeMenu, icon, name, position, prefix, type }) => {
   return (
     <StyledContainer>
-      <StyledDropdown
-        items={type.items}
-        onChange={closeMenu}
-        position={position}>
+      <StyledDropdown items={type.items} onChange={closeMenu} position={position}>
         {icon && <Icon aria-hidden="true" icon={icon} prefix={prefix} />}
         <StyledContent>{name}</StyledContent>
       </StyledDropdown>
@@ -102,10 +92,10 @@ NavDropdown.propTypes = {
   name: string.isRequired,
   position: string,
   prefix: string,
-  type: object.isRequired
+  type: object.isRequired,
 }
 
 NavDropdown.defaultProps = {
   position: 'left',
-  prefix: 'fas'
+  prefix: 'fas',
 }

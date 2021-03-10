@@ -29,20 +29,14 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
     [files]
   )
 
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     accept: accept,
     disabled: disabled,
     multiple: multiple,
     onDrop: (acceptedFiles) => {
       const accepted = acceptedFiles.map((file) =>
         Object.assign(file, {
-          preview: URL.createObjectURL(file)
+          preview: URL.createObjectURL(file),
         })
       )
 
@@ -51,7 +45,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
       if (onChange) {
         onChange(accepted)
       }
-    }
+    },
   })
 
   const removeFile = (file) => {
@@ -85,7 +79,8 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
         dragAccept={isDragAccept}
         dragReject={isDragReject}
         disabled={disabled}
-        {...getRootProps()}>
+        {...getRootProps()}
+      >
         <input {...getInputProps()} />
 
         {isDragAccept && <Text>Accepted</Text>}
@@ -97,11 +92,7 @@ export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
           <>
             <Text>Drop, or click to select</Text>
             {accept && <Accept accept={accept} />}
-            {multiple ? (
-              <Text>Accepts multiple files</Text>
-            ) : (
-              <Text>Single file only</Text>
-            )}
+            {multiple ? <Text>Accepts multiple files</Text> : <Text>Single file only</Text>}
           </>
         )}
       </StyledContainer>
@@ -138,11 +129,11 @@ const StyledContainer = styled.div`
 Dropzone.propTypes = {
   accept: string,
   disabled: bool,
-  multiple: bool
+  multiple: bool,
 }
 
 Dropzone.defaultProps = {
   accept: 'image/*',
   disabled: false,
-  multiple: true
+  multiple: true,
 }

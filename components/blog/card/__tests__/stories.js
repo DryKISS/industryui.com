@@ -17,18 +17,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Blog/Card'
+  title: 'Blog/Card',
 }
 
-export const main = (args) => (
-  <BlogCard
-    article={Articles[0]}
-    config={Blog}
-    link={{ prefetch: false }}
-    {...args}
-  />
-)
+export const main = (args) => <BlogCard article={Articles[0]} config={Blog} {...args} />

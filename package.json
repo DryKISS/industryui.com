@@ -1,6 +1,6 @@
 {
   "name": "@drykiss/industry-ui",
-  "version": "1.14.2",
+  "version": "1.14.20",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
@@ -34,7 +34,7 @@
     "start": "start-storybook -s ./static -p 9000 --quiet -c .storybook",
     "serve": "npx http-server storybook-static",
     "test": "npx eslint . --ext .js",
-    "test-fix": "npx eslint . --ext .js --fix",
+    "test:fix": "npx eslint . --ext .js --fix",
     "clean": "rm -rf ./esm",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-static",
     "build": "npm run clean && BABEL_ENV=esm babel components --out-dir esm  --source-maps false",
@@ -58,11 +58,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.9",
-    "@draft-js-plugins/editor": "^4.1.0",
-    "@draft-js-plugins/emoji": "^4.2.0",
-    "@draft-js-plugins/hashtag": "^4.1.0",
-    "@draft-js-plugins/linkify": "^4.1.0",
-    "@draft-js-plugins/mention": "^4.2.0",
+    "@draft-js-plugins/editor": "4.1.0",
+    "@draft-js-plugins/emoji": "4.2.0",
+    "@draft-js-plugins/hashtag": "4.1.0",
+    "@draft-js-plugins/linkify": "4.1.0",
+    "@draft-js-plugins/mention": "4.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",

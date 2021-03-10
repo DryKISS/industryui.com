@@ -6,14 +6,14 @@ const breakpoints = {
   sm: 576,
   md: 768,
   lg: 1024,
-  xl: 1200
+  xl: 1200,
 }
 
 const containerWidths = {
   sm: 576,
   md: 768,
   lg: 1008,
-  xl: 1152
+  xl: 1152,
 }
 
 const gridColumns = 12
@@ -32,5 +32,5 @@ export const GRID = {
   gutterWidth,
   gridColumns,
   radius,
-  space
+  space,
 }

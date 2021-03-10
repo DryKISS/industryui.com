@@ -14,20 +14,20 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    context: 'primary'
+    context: 'primary',
   },
   argTypes: {
-    context: ContextControl()
+    context: ContextControl(),
   },
   component: Tooltip,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Tooltip'
+  title: 'Atoms/Tooltip',
 }
 
 const SampleTooltip = () => (
@@ -40,7 +40,7 @@ const SampleTooltip = () => (
 const BaseComponent = (props) => {
   const defaultProps = {
     content: 'Hovered',
-    ...props
+    ...props,
   }
 
   return (
@@ -51,6 +51,4 @@ const BaseComponent = (props) => {
 }
 
 export const main = (args) => <BaseComponent {...args} />
-export const withJsx = (args) => (
-  <BaseComponent {...args} content={<SampleTooltip />} />
-)
+export const withJsx = (args) => <BaseComponent {...args} content={<SampleTooltip />} />

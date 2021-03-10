@@ -45,7 +45,7 @@ export const BlogArchive = ({ articles, config, total }) => {
         return {
           badge: k,
           name: counts[k],
-          to: `archive/${k}`
+          to: `archive/${k}`,
         }
       })
       .reverse()
@@ -63,9 +63,9 @@ export const BlogArchive = ({ articles, config, total }) => {
 BlogArchive.propTypes = {
   articles: array.isRequired,
   config: object.isRequired,
-  total: number
+  total: number,
 }
 
 BlogArchive.defaultProps = {
-  total: 5
+  total: 5,
 }

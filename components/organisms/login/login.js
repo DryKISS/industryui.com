@@ -25,7 +25,7 @@ import {
   PageHeading,
   Space,
   Text,
-  UserContext
+  UserContext,
 } from '../../'
 
 // Style
@@ -44,10 +44,10 @@ export const Login = ({
   remember,
   showLabel,
   showPassword,
-  showPlaceholder
+  showPlaceholder,
 }) => {
   const { errors, formState, register, handleSubmit } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const [error, setError] = useState(false)
@@ -65,7 +65,7 @@ export const Login = ({
 
   const defaultOptions = {
     errors: errors,
-    register: register
+    register: register,
   }
   const handleTogglePassword = () => {
     console.log(showPass)
@@ -157,7 +157,7 @@ Login.propTypes = {
   showLabel: bool,
   showPassword: bool,
   showPlaceholder: bool,
-  showTitle: bool
+  showTitle: bool,
 }
 
 Login.defaultProps = {
@@ -170,5 +170,5 @@ Login.defaultProps = {
   showLabel: true,
   showPassword: true,
   showPlaceholder: false,
-  showTitle: true
+  showTitle: true,
 }

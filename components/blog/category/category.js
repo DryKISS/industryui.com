@@ -12,14 +12,7 @@ import styled from 'styled-components'
 // UI
 import { Link, slugify } from '../../'
 
-export const BlogCategory = ({
-  author,
-  config,
-  className,
-  link,
-  style,
-  to
-}) => {
+export const BlogCategory = ({ author, config, className, link, style, to }) => {
   const path = slugify(to ?? link.to)
 
   return (
@@ -29,15 +22,14 @@ export const BlogCategory = ({
         to={{
           as: `${config.path}/${path}`,
           href: {
-            pathname: author
-              ? `${config.path}/author`
-              : `${config.path}/category`,
+            pathname: author ? `${config.path}/author` : `${config.path}/category`,
             query: {
               author: path,
-              category: path
-            }
-          }
-        }}>
+              category: path,
+            },
+          },
+        }}
+      >
         {path.toUpperCase().replace('-', ' ')}
       </Link>
     </StyledCategory>
@@ -59,7 +51,6 @@ BlogCategory.propTypes = {
   style: any,
   to: shape({
     passHref: bool,
-    prefetch: bool,
-    to: oneOfType([object, string]).isRequired
-  })
+    to: oneOfType([object, string]).isRequired,
+  }),
 }

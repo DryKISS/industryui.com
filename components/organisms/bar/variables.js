@@ -12,5 +12,5 @@ export const BAR = {
   linkHover: 'rgba(0, 0, 0, 0.75)',
   minSize: '6rem',
   transitionTiming: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  transitionDuration: '0.3s'
+  transitionDuration: '0.3s',
 }

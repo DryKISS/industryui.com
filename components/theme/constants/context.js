@@ -21,5 +21,5 @@ export const THEME_CONTEXT = {
   FEMALE: 'female',
 
   TRANSPARENT: 'transparent',
-  INITIAL: 'initial'
+  INITIAL: 'initial',
 }

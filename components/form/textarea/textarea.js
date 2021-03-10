@@ -30,7 +30,7 @@ export const TextareaField = ({
   size,
   spellCheck,
   tabIndex,
-  wrap
+  wrap,
 }) => {
   return (
     <FieldHOC
@@ -91,12 +91,12 @@ TextareaField.propTypes = {
   size: oneOf(Object.values(THEME_SIZE)),
   spellCheck: bool,
   tabIndex: number,
-  wrap: oneOf(['soft', 'hard'])
+  wrap: oneOf(['soft', 'hard']),
 }
 
 TextareaField.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
   rows: 5,
-  size: 'md'
+  size: 'md',
 }

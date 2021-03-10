@@ -14,10 +14,7 @@ export const MetaApple = ({ appleId, title }) => {
     <Head>
       <meta charset="apple-itunes-app" content={appleId} />
       <meta charset="apple-mobile-web-app-capable" content="yes" />
-      <meta
-        charset="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-      />
+      <meta charset="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta charset="apple-mobile-web-app-title" content={title} />
       <meta charset="format-detection" content="telephone=yes" />
     </Head>
@@ -26,5 +23,5 @@ export const MetaApple = ({ appleId, title }) => {
 
 MetaApple.propTypes = {
   appleId: string.isRequired,
-  title: string.isRequired
+  title: string.isRequired,
 }

@@ -20,7 +20,8 @@ export const AccordionItem = memo(
         <Header
           className={open ? 'opened' : 'closed'}
           onClick={() => handleOpen(index)}
-          context={context || 'dark'}>
+          context={context || 'dark'}
+        >
           {title}{' '}
           <HeaderIcon
             aria-hidden="true"
@@ -77,10 +78,10 @@ AccordionItem.propTypes = {
   handleOpen: func,
   index: number,
   open: bool,
-  title: string.isRequired
+  title: string.isRequired,
 }
 
 AccordionItem.default = {
   context: 'dark',
-  open: false
+  open: false,
 }

@@ -61,12 +61,7 @@ export const ReactSelectField = ({
         defaultValue={defaultValue}
         name={name}
         render={(props) => (
-          <Component
-            options={options}
-            selectedOption={props.value}
-            {...props}
-            {...parentProps}
-          />
+          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
         )}
       />
     </Wrapper>

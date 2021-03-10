@@ -13,11 +13,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/Debounce'
+  title: 'Utils/Debounce',
 }
 
 export const Main = () => {
@@ -30,9 +30,7 @@ export const Main = () => {
   return (
     <>
       <Text>{counter}</Text>
-      <Button onClick={() => debounce(handleClick, 1000)}>
-        inc. with debounce{' '}
-      </Button>
+      <Button onClick={() => debounce(handleClick, 1000)}>inc. with debounce </Button>
     </>
   )
 }

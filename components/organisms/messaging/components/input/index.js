@@ -20,7 +20,7 @@ import {
   MessagingEditor,
   messagingPlugins,
   MessagingSubscriber,
-  useComponentCommunication
+  useComponentCommunication,
 } from '../../../../'
 
 import { formStyle } from '../../../../form/variables/style'
@@ -29,9 +29,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
   const [suggestions, setSuggestions] = useState(mentions ?? [])
 
   // Draft-JS editor configuration
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  )
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
   const editor = useRef(null)
 
   // Check editor text for mentions
@@ -67,13 +65,11 @@ export const MessagingInput = ({ mentions, onChange }) => {
   useComponentCommunication({
     messageName: MessageNames.Messaging.MESSAGING_ACTION,
     onRecieve: onActionRecieved,
-    subscriber: MessagingSubscriber
+    subscriber: MessagingSubscriber,
   })
 
   return (
-    <Wrapper
-      onClick={() => focusEditor()}
-      topMultiplier={suggestions?.length ?? 0}>
+    <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
       {mentions && (
         <MentionSuggestions
           onAddMention={onAddMention}

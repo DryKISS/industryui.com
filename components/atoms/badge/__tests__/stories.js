@@ -6,11 +6,7 @@
 import React from 'react'
 
 // Storybook
-import {
-  ControlTypes,
-  ContextControl,
-  SizeControl
-} from '../../../../.storybook/decorators'
+import { ControlTypes, ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
 import { Badge, THEME_CONTEXT, THEME_SIZE } from '../../../'
@@ -23,27 +19,27 @@ export default {
     icon: false,
     shape: 'square',
     size: THEME_SIZE.MD,
-    to: false
+    to: false,
   },
   argTypes: {
     context: ContextControl(),
     shape: {
       control: {
         type: ControlTypes.Select,
-        options: ['square', 'round']
-      }
+        options: ['square', 'round'],
+      },
     },
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: Badge,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Badge'
+  title: 'Atoms/Badge',
 }
 
 export const main = (args) => {

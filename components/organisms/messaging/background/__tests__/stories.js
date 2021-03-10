@@ -14,7 +14,7 @@ import Readme from '../README.md'
 
 const options = {
   DryKISS: '/messaging/background.png',
-  WhatsApp: '/messaging/whatsapp.png'
+  WhatsApp: '/messaging/whatsapp.png',
 }
 
 const Height = (story) => {
@@ -27,20 +27,20 @@ export default {
       name: 'Path',
       control: {
         options: arrayOfValues(options),
-        type: ControlTypes.Select
-      }
-    }
+        type: ControlTypes.Select,
+      },
+    },
   },
   component: MessageBackground,
   decorators: [Height],
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Messaging/Background'
+  title: 'Organisms/Messaging/Background',
 }
 
 export const Main = (args) => <MessageBackground {...args} />

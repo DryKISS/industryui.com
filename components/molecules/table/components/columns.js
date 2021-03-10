@@ -22,29 +22,22 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
         if (hasSort && sort.order === 'desc') {
           setSort({
             item: null,
-            order: null
+            order: null,
           })
         } else {
           setSort({
             item: sortName,
-            order: hasSort ? 'desc' : 'asc'
+            order: hasSort ? 'desc' : 'asc',
           })
         }
       }
     }
 
     return (
-      <TableHead
-        align={align}
-        key={index}
-        onClick={handleSort}
-        sortable={sortable}>
+      <TableHead align={align} key={index} onClick={handleSort} sortable={sortable}>
         {text}
         {sortable && hasSort && (
-          <Icon
-            icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'}
-            prefix="fas"
-          />
+          <Icon icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'} prefix="fas" />
         )}
       </TableHead>
     )
@@ -53,12 +46,7 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
 export const TableColumns = memo(({ align, columns, setSort, sort }) => (
   <thead>
     <tr>
-      <RenderColumns
-        align={align}
-        columns={columns}
-        setSort={setSort}
-        sort={sort}
-      />
+      <RenderColumns align={align} columns={columns} setSort={setSort} sort={sort} />
     </tr>
   </thead>
 ))
@@ -69,12 +57,12 @@ TableColumns.propTypes = {
   setSort: func,
   sort: shape({
     item: string,
-    order: string
-  })
+    order: string,
+  }),
 }
 
 TableColumns.defaultProps = {
   align: false,
   columns: [],
-  sort: {}
+  sort: {},
 }

@@ -16,11 +16,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Utils/ResizeDetetor'
+  title: 'Utils/ResizeDetetor',
 }
 
 export const Main = () => {
@@ -31,10 +31,7 @@ export const Main = () => {
       <p>height:{Dimentions.height}px</p>
       <p>width:{Dimentions.width}px</p>
 
-      <ResizeDetector
-        style={{ position: 'absolute' }}
-        onResize={setDimentions}
-      />
+      <ResizeDetector style={{ position: 'absolute' }} onResize={setDimentions} />
 
       <p>resize the container from corner</p>
     </ElementsWrapper>

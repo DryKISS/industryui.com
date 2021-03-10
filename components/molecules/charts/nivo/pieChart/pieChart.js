@@ -29,8 +29,8 @@ export const PieChart = withTheme(({ theme, ...props }) => {
       radialLabelsTextColor,
       radialLabelsLinkColor,
       slicesLabelsSkipAngle,
-      slicesLabelsTextColor
-    }
+      slicesLabelsTextColor,
+    },
   } = theme
 
   const {
@@ -50,7 +50,7 @@ export const PieChart = withTheme(({ theme, ...props }) => {
     radialLabelsLinkOffset = PIECHART.radialLabelsLinkOffset,
     showLegend,
     sortByValue,
-    tooltip = PieDefaultProps.tooltip
+    tooltip = PieDefaultProps.tooltip,
   } = props
 
   return (
@@ -92,10 +92,10 @@ PieChart.displayName = 'PieChart'
 
 PieChart.propTypes = Object.assign({}, PiePropTypes, {
   colorScheme: oneOf(Object.keys(colorSchemes)),
-  showLegend: bool
+  showLegend: bool,
 })
 
 PieChart.defaultProps = Object.assign({}, PieDefaultProps, {
   colorScheme: 'nivo',
-  showLegend: false
+  showLegend: false,
 })

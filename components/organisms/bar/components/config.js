@@ -6,10 +6,10 @@ export const BarConfig = {
     BOTTOM: 'bottom',
     LEFT: 'left',
     RIGHT: 'right',
-    TOP: 'top'
+    TOP: 'top',
   },
   VARIANT: {
     OVERLAY: 'overlay',
-    PUSH: 'push'
-  }
+    PUSH: 'push',
+  },
 }

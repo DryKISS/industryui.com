@@ -18,20 +18,20 @@ export default {
     type: {
       control: {
         type: 'select',
-        options: ['circle', 'sketch', 'github', 'twitter']
-      }
+        options: ['circle', 'sketch', 'github', 'twitter'],
+      },
     },
-    width: { control: { type: 'range', min: 100, max: 400 } }
+    width: { control: { type: 'range', min: 100, max: 400 } },
   },
   title: 'Organisms/Color Picker',
   components: ColorPicker,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
-  }
+        component: Readme,
+      },
+    },
+  },
 }
 
 const BaseComponent = ({ onChangeComplete, ...props }) => {
@@ -45,7 +45,7 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
     color: assetIconColor,
     onChangeComplete: changeColor,
     width: props.width + 'px',
-    ...props
+    ...props,
   }
 
   return (

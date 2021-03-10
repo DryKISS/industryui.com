@@ -4,10 +4,10 @@
 export const Customers = [
   {
     label: 'Avison Young',
-    value: '2'
+    value: '2',
   },
   {
     label: 'Housing Ltd',
-    value: '3'
-  }
+    value: '3',
+  },
 ]

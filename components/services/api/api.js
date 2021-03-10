@@ -9,7 +9,7 @@ import { useContext } from 'react'
 import axios from 'axios'
 
 // UI
-import { ConfigContext } from '../'
+import { ConfigContext } from '../config/context'
 
 export const Api = () => {
   const { apiConfig } = useContext(ConfigContext)

@@ -14,11 +14,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Organisms/Big Calendar'
+  title: 'Organisms/Big Calendar',
 }
 
 export const main = (args) => <BigCalendar {...args} />

@@ -17,7 +17,7 @@ import {
   PricingCard,
   PricingDropdown,
   ResizeDetector,
-  Text
+  Text,
 } from '../../../'
 
 export const Pricing = ({ pricingInfo, onPlanSelect }) => {
@@ -96,16 +96,8 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
                   {pricingInfo[SelectedPlan].checkList.map((item, index) => {
                     return (
                       <ListItem key={index}>
-                        <Icon
-                          color="rgb(69, 186, 190)"
-                          icon="check"
-                          prefix="fas"
-                        />
-                        <StyledFeature
-                          content={item.title}
-                          context="dark"
-                          size="sm"
-                        />
+                        <Icon color="rgb(69, 186, 190)" icon="check" prefix="fas" />
+                        <StyledFeature content={item.title} context="dark" size="sm" />
                       </ListItem>
                     )
                   })}
@@ -116,7 +108,8 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
                     block
                     context="deepBlue"
                     onClick={() => handlePlanSelect(pricingInfo[SelectedPlan])}
-                    outline>
+                    outline
+                  >
                     Add To Cart
                   </StyledButton>
                 </AddToCartWrapper>
@@ -126,11 +119,7 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
         </>
       </PricesWrapper>
 
-      <PriceMatrix
-        pricingInfo={pricingInfo}
-        layout={Layout}
-        selectedPlan={SelectedPlan}
-      />
+      <PriceMatrix pricingInfo={pricingInfo} layout={Layout} selectedPlan={SelectedPlan} />
     </Wrapper>
   )
 }

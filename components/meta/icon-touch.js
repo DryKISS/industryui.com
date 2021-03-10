@@ -51,15 +51,11 @@ export const MetaTouch = ({ verification }) => {
       />
       <meta name="msapplication-TileColor" content="#222222" />
 
-      <link
-        rel="icon"
-        href="images/touch/chrome-touch-icon-192x192.png"
-        sizes="192x192"
-      />
+      <link rel="icon" href="images/touch/chrome-touch-icon-192x192.png" sizes="192x192" />
     </Head>
   )
 }
 
 MetaTouch.propTypes = {
-  verification: string.isRequired
+  verification: string.isRequired,
 }

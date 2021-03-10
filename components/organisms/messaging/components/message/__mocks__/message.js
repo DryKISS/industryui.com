@@ -8,5 +8,5 @@ export const message = {
   pictureId: null,
   statusText: 'delivered',
   time: 'Mon 4 Nov 2019 12:00',
-  type: 'in'
+  type: 'in',
 }

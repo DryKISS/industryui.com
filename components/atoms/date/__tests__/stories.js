@@ -15,20 +15,20 @@ import Readme from '../README.md'
 export default {
   args: {
     date: '24 Feb 2020 08:36',
-    size: 'md'
+    size: 'md',
   },
   argTypes: {
-    size: SizeControl()
+    size: SizeControl(),
   },
   component: Date,
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Atoms/Date'
+  title: 'Atoms/Date',
 }
 
 export const main = (args) => <Date {...args} />

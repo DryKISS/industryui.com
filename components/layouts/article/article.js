@@ -15,7 +15,7 @@ import {
   Column,
   Container,
   // MetaHead,
-  Row
+  Row,
 } from '../../'
 
 // import { BlogSidebar } from './components'

@@ -6,11 +6,7 @@
 import React from 'react'
 
 // Storybook
-import {
-  CleverlyTheme,
-  CleverlyAdminTheme,
-  DryKISSTheme
-} from '../../../../.storybook/themes'
+import { CleverlyTheme, CleverlyAdminTheme, DryKISSTheme } from '../../../../.storybook/themes'
 
 // UI
 import { BaseComponent, options } from './baseComponent'
@@ -27,11 +23,11 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  ...options
+  ...options,
 }
 
 export const Cleverly = () => (

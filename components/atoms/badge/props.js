@@ -19,11 +19,11 @@ export const propTypes = {
   shape: oneOf(['round', 'square']),
   size: oneOf(Object.values(THEME_SIZE)),
   style: object,
-  to: string
+  to: string,
 }
 
 export const defaultProps = {
   context: 'primary',
   shape: 'square',
-  size: 'md'
+  size: 'md',
 }

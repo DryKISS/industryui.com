@@ -54,8 +54,9 @@ export const OffCanvasProvider = ({ children }) => {
     <OffCanvasContext.Provider
       value={{
         show: handleShow,
-        close: handleClose
-      }}>
+        close: handleClose,
+      }}
+    >
       {children}
 
       <OffCanvas
@@ -73,7 +74,8 @@ export const OffCanvasProvider = ({ children }) => {
         toggleShow={handleClose}
         transitionDuration={DURATION}
         variant={data?.variant}
-        width={options?.width}>
+        width={options?.width}
+      >
         {dataManager.map((d, i) => (
           <StyledWrapper key={i} show={i + 1 === dataManager.length}>
             {d.content}

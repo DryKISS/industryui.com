@@ -20,14 +20,7 @@ import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 
 // UI
-import {
-  Button,
-  DatePickerCalendar,
-  Divider,
-  Form,
-  FormError,
-  Text
-} from '../../../../'
+import { Button, DatePickerCalendar, Divider, Form, FormError, Text } from '../../../../'
 
 import Readme from '../README.md'
 import { args, argTypes } from './controls'
@@ -39,20 +32,20 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: Readme
-      }
-    }
+        component: Readme,
+      },
+    },
   },
-  title: 'Form/Date Picker/Calendar'
+  title: 'Form/Date Picker/Calendar',
 }
 
 const schema = object().shape({
-  expiryAt: string().required()
+  expiryAt: string().required(),
 })
 
 const BaseComponent = (props = {}) => {
   const { control, errors, getValues, handleSubmit } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const onSubmit = (data) => {}
@@ -62,7 +55,7 @@ const BaseComponent = (props = {}) => {
     errors: errors,
     locale: enGB,
     name: 'expiryAt',
-    ...props
+    ...props,
   }
 
   const value = getValues()?.expiryAt?.toString()
@@ -120,7 +113,7 @@ export const workingHours = (args) => {
     new Date(2020, 10, 27),
     new Date(2020, 11, 24),
     new Date(2020, 11, 17),
-    new Date(2020, 11, 10)
+    new Date(2020, 11, 10),
   ]
 
   const stringifyArray = (arr) => arr.map((item) => item.toString())
@@ -142,7 +135,7 @@ export const workingHours = (args) => {
           setHours(setMinutes(new Date(), 0), 17),
           setHours(setMinutes(new Date(), 30), 18),
           setHours(setMinutes(new Date(), 30), 19),
-          setHours(setMinutes(new Date(), 30), 17)
+          setHours(setMinutes(new Date(), 30), 17),
         ]}
         filterDate={isWeekday}
         highlightDates={freeDays}
@@ -150,7 +143,8 @@ export const workingHours = (args) => {
         minTime={setHours(setMinutes(new Date(), 30), 9)}
         placeholderText="Select your appointment"
         renderDayContents={renderDayContents}
-        showTimeSelect>
+        showTimeSelect
+      >
         <Text>*50% Discount</Text>
       </BaseComponent>
     </>

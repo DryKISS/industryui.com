@@ -23,6 +23,6 @@ export const ADDRESS_DATA = {
     'Flat 8, Effingham Court, 90 Cavendish Road, , , London, ',
     'Flat 9, Effingham Court, 90 Cavendish Road, , , London, ',
     'Flat A, 108 Cavendish Road, , , , London, ',
-    'Flat B-C, 108 Cavendish Road, , , , London, '
-  ]
+    'Flat B-C, 108 Cavendish Road, , , , London, ',
+  ],
 }

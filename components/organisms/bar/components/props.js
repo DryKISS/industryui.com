@@ -16,12 +16,12 @@ export const BarPropTypes = {
   placement: oneOf(Object.values(BarConfig.PLACEMENT)),
   toggle: bool,
   variant: oneOf(['push', 'overlay']),
-  width: number
+  width: number,
 }
 
 export const BarDefaultProps = {
   placement: 'left',
   variant: 'overlay',
   width: 10,
-  toggle: true
+  toggle: true,
 }

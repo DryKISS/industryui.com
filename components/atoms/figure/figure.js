@@ -4,15 +4,7 @@
 
 // React
 import React from 'react'
-import {
-  any,
-  bool,
-  node,
-  number,
-  objectOf,
-  oneOfType,
-  string
-} from 'prop-types'
+import { any, bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -63,11 +55,11 @@ Figure.propTypes = {
   children: node,
   className: any,
   slant: bool,
-  style: objectOf(oneOfType([number, string]))
+  style: objectOf(oneOfType([number, string])),
 }
 
 Figure.defaultProps = {
-  slant: false
+  slant: false,
 }
 
 Figure.Caption = FigureCaption

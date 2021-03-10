@@ -22,30 +22,30 @@ export default {
     galley of type and scrambled it to make a type specimen book. It has survived not only five
     centuries`,
     context: THEME_CONTEXT.DARK,
-    size: THEME_SIZE.MD
+    size: THEME_SIZE.MD,
   },
   argTypes: {
     align: {
       control: {
         type: ControlTypes.Select,
-        options: Object.values(THEME_ALIGN)
-      }
+        options: Object.values(THEME_ALIGN),
+      },
     },
     context: {
       control: {
         type: ControlTypes.Select,
-        options: Object.values(THEME_CONTEXT)
-      }
+        options: Object.values(THEME_CONTEXT),
+      },
     },
     size: {
       control: {
         type: ControlTypes.Select,
-        options: Object.values(THEME_SIZE)
-      }
-    }
+        options: Object.values(THEME_SIZE),
+      },
+    },
   },
   component: Text,
-  title: 'Atoms/Text'
+  title: 'Atoms/Text',
 }
 
 export const main = (args) => {

@@ -37,9 +37,7 @@ export const OffCanvas = (props) => {
     }
   }, [props.show])
 
-  return mounted
-    ? createPortal(<OffCanvasComponent {...props} />, container)
-    : null
+  return mounted ? createPortal(<OffCanvasComponent {...props} />, container) : null
 }
 
 OffCanvas.propTypes = {
@@ -57,7 +55,7 @@ OffCanvas.propTypes = {
   toggleShow: func.isRequired,
   transitionDuration: number,
   variant: string,
-  width: string
+  width: string,
 }
 
 OffCanvas.defaultProps = {
@@ -69,5 +67,5 @@ OffCanvas.defaultProps = {
   submit: true,
   transitionDuration: 300,
   variant: 'extended',
-  width: '30vw'
+  width: '30vw',
 }

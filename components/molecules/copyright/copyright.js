@@ -6,12 +6,19 @@
 import React, { memo, useContext } from 'react'
 import { array, bool, oneOf, shape, string } from 'prop-types'
 
-// UI
-import { Column, ConfigContext, Container, Icon, Link, Row } from '../../'
-import { THEME_CONTEXT } from '../../theme/constants/context'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { Column } from '../../atoms/grid/components/Column'
+import { ConfigContext } from '../../services/config/context'
+import { Container } from '../../atoms/grid/components/Container'
+import { Icon } from '../../atoms/icon/icon/icon'
+import { Link } from '../../atoms/link/link'
+import { Row } from '../../atoms/grid/components/Row'
+
+// Constant
+import { THEME_CONTEXT } from '../../theme/constants/context'
 
 const year = new Date().getFullYear()
 
@@ -35,9 +42,7 @@ export const Copyright = memo(({ fixed, icon, links }) => {
             {year} — {Brand.name}
           </Column>
 
-          {links.length > 0 && (
-            <StyledColumn md={9}>{renderLinks()}</StyledColumn>
-          )}
+          {links.length > 0 && <StyledColumn md={9}>{renderLinks()}</StyledColumn>}
         </StyledRow>
       </StyledContainer>
     </StyledCopyright>
@@ -90,9 +95,9 @@ Copyright.propTypes = {
   icon: shape({
     context: oneOf(Object.values(THEME_CONTEXT)),
     icon: string,
-    prefix: string
+    prefix: string,
   }),
-  links: array
+  links: array,
 }
 
 Copyright.defaultProps = {
@@ -100,7 +105,7 @@ Copyright.defaultProps = {
   icon: {
     context: 'primary',
     icon: 'copyright',
-    prefix: 'fas'
+    prefix: 'fas',
   },
-  links: []
+  links: [],
 }

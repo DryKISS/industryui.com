@@ -15,11 +15,7 @@ import styled, { css } from 'styled-components'
 
 export const BarToggle = ({ barWidth, onClick, open, placement }) => {
   return (
-    <OpenButton
-      onClick={onClick}
-      open={open}
-      placement={placement}
-      place={barWidth}>
+    <OpenButton onClick={onClick} open={open} placement={placement} place={barWidth}>
       <ChevronRightIcon />
     </OpenButton>
   )
@@ -50,8 +46,7 @@ const OpenButton = styled.div`
   }}
 
   ${({ placement, open, place }) =>
-    (placement === BarConfig.PLACEMENT.LEFT ||
-      placement === BarConfig.PLACEMENT.RIGHT) &&
+    (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
     css`
       background-color:${({ theme }) => theme.BAR.background};
       border-top-${placement}-radius: 0;
@@ -65,9 +60,9 @@ const OpenButton = styled.div`
 BarToggle.propTypes = {
   onClick: func.isRequired,
   open: bool.isRequired,
-  placement: string
+  placement: string,
 }
 
 BarToggle.defaultProps = {
-  placement: 'left'
+  placement: 'left',
 }

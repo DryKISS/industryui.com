@@ -12,7 +12,7 @@ export const NotificationsProvider = ({ children, user }) => {
   const items = useNotifications(
     'messages',
     {
-      active: true
+      active: true,
     },
     25
   )
@@ -21,8 +21,9 @@ export const NotificationsProvider = ({ children, user }) => {
     <NotificationsContext.Provider
       value={{
         items,
-        user
-      }}>
+        user,
+      }}
+    >
       {children}
     </NotificationsContext.Provider>
   )

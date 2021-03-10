@@ -15,11 +15,7 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
     <>
       {facebook && (
         <BlogSection heading="Facebook">
-          <FacebookPagePlugin
-            appId={facebook.appId}
-            to={facebook.appPath}
-            width={349}
-          />
+          <FacebookPagePlugin appId={facebook.appId} to={facebook.appPath} width={349} />
         </BlogSection>
       )}
 
@@ -48,10 +44,10 @@ export const BlogSocial = ({ facebook, instagram, twitter }) => {
 BlogSocial.propTypes = {
   facebook: object,
   instagram: bool,
-  twitter: bool
+  twitter: bool,
 }
 
 BlogSocial.defaultProps = {
   instagram: false,
-  twitter: false
+  twitter: false,
 }

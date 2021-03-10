@@ -23,7 +23,7 @@ import { PageHeading } from '../../molecules/pageHeading/pageHeading'
 
 export const PasswordChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   })
 
   const [error] = useState(false)
@@ -31,7 +31,7 @@ export const PasswordChange = ({ showPlaceholder, submit }) => {
   const defaultOptions = {
     errors: errors,
     register: register,
-    type: 'password'
+    type: 'password',
   }
 
   return (
@@ -80,9 +80,9 @@ export const PasswordChange = ({ showPlaceholder, submit }) => {
 
 PasswordChange.propTypes = {
   showPlaceholder: bool,
-  submit: func.isRequired
+  submit: func.isRequired,
 }
 
 PasswordChange.defaultProps = {
-  showPlaceholder: false
+  showPlaceholder: false,
 }

@@ -16,5 +16,5 @@ export const PRICING = {
   recommendedCardBackground: THEME_COLOUR.deepBlue,
   recommendedCardCheckedIconColour: THEME_COLOUR.warning,
   recommendedCardPriceTextColour: THEME_COLOUR.white,
-  recommendedCardPropertiesTextColour: THEME_COLOUR.white
+  recommendedCardPropertiesTextColour: THEME_COLOUR.white,
 }

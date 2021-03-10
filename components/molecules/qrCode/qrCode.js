@@ -60,5 +60,5 @@ const StyledQRContainer = styled.div`
 
 QrCode.propTypes = {
   assetId: number.isRequired,
-  path: string.isRequired
+  path: string.isRequired,
 }
