@@ -15,6 +15,7 @@ import styled from 'styled-components'
 export const TableContent = ({
   align,
   caption,
+  changeSelectedRowBackground,
   className,
   columns,
   hover,
@@ -53,6 +54,7 @@ export const TableContent = ({
             align={align}
             bottomCells={bottomCells}
             columns={columns}
+            changeSelectedRowBackground={changeSelectedRowBackground}
             hover={hover}
             rowClick={rowClick}
             rows={rows}
@@ -81,6 +83,7 @@ TableContent.propTypes = {
   align: oneOfType([string, bool]),
   caption: string,
   className: string,
+  changeSelectedRowBackground: bool,
   columns: array,
   hover: bool,
   loading: bool,
@@ -98,6 +101,7 @@ TableContent.propTypes = {
 
 TableContent.defaultProps = {
   align: false,
+  changeSelectedRowBackground: false,
   columns: [],
   hover: true,
   loading: false,

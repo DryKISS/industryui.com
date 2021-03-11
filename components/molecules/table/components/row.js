@@ -39,7 +39,7 @@ export const TableRow = memo(styled.tr`
       }
     `}
   ${({ selected, theme }) =>
-    selected &&
+    selected === true &&
     css`
       background-color: ${theme.TABLE.selectedRowBackground} !important;
     `}
