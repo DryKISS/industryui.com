@@ -12,7 +12,6 @@ import { tableColumnCount } from '../utils/columnCount'
 
 // Style
 import styled, { css } from 'styled-components'
-import { boolean } from 'yup'
 
 export const Table = memo(
   ({
@@ -123,7 +122,7 @@ const StyledResponsive = styled.div`
 
 Table.propTypes = {
   align: oneOfType([string, bool]),
-  border: boolean,
+  border: bool,
   caption: string,
   className: string,
   columns: array,

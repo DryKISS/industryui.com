@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { memo, useState } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
 // UI
@@ -21,7 +21,7 @@ export const TableRows = memo(({ align, columns, hover, rowClick, rows, striped 
   const clickable = typeof rowClick === 'function'
 
   return rows.map((row, index) => {
-    const context = row.context
+    const context = useRef(row.context)
     delete row.context
 
     if (row.hidden) {
@@ -29,10 +29,9 @@ export const TableRows = memo(({ align, columns, hover, rowClick, rows, striped 
     } else {
       delete row.hidden
     }
-
     return (
       <TableRow
-        context={context}
+        context={context.current}
         data-item={JSON.stringify(row)}
         hover={hover}
         key={index}
