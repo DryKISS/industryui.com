@@ -16,7 +16,9 @@ export const TableRows = memo(
       e.preventDefault()
       const row = e.currentTarget.getAttribute('data-item')
       rowClick(JSON.parse(row))
-      setSelectedIndex(index)
+      if (changeSelectedRowBackground) {
+        setSelectedIndex(index)
+      }
     }
 
     const clickable = typeof rowClick === 'function'
