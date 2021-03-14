@@ -11,7 +11,8 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    text: 'Imagine there is no heaven'
+    camelized: 'createdAt',
+    decamelized: 'Imagine there is no heaven'
   },
   parameters: {
     docs: {
@@ -23,11 +24,20 @@ export default {
   title: 'Utils/CamelCase'
 }
 
-export const CamelCase = (args) => {
+export const Camelize = (args) => {
   return (
     <>
-      <Text>original: {args.text}</Text>
-      <Text>camel cased: {camelCase(args.text)} </Text>
+      <Text>Original: {args.decamelized}</Text>
+      <Text>Camelized: {camelCase.camelize(args.decamelized)} </Text>
+    </>
+  )
+}
+
+export const Decamelize = (args) => {
+  return (
+    <>
+      <Text>Original: {args.camelized}</Text>
+      <Text>Decamelized: {camelCase.decamelize(args.camelized)} </Text>
     </>
   )
 }
