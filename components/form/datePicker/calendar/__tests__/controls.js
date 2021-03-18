@@ -1,8 +1,6 @@
 /**
- * Form - DatePicker - Calendar - Controls
+ * Components - Form - DatePicker - Calendar - Controls
  */
-
-// Storybook
 
 export const args = {
   // Boolean
@@ -32,7 +30,7 @@ export const args = {
   startOpen: false,
   useWeekdaysShort: false,
   withPortal: false,
-  shouldCloseOnSelect: false,
+  shouldCloseOnSelect: true,
   showTimeInput: false,
   showMonthYearPicker: false,
   showQuarterYearPicker: false,

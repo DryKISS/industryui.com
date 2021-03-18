@@ -18,7 +18,7 @@ import {
   string
 } from 'prop-types'
 
-export const DatePickerCalendarPropTypes = {
+export const propTypes = {
   adjustDateOnChange: bool,
   allowSameDay: bool,
   ariaLabelledBy: string,

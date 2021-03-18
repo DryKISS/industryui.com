@@ -1,5 +1,5 @@
 /**
- * Form - DatePicker - Calendar - Stories
+ * Components - Form - DatePicker - Calendar - Stories
  */
 
 // React
@@ -20,8 +20,7 @@ import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 
 // UI
-import { Button, DatePickerCalendar, Divider, Form, FormError, Text } from '../../../../'
-
+import { Button, DatePickerCalendar, Divider, Form, FormError, Space, Text } from '../../../../'
 import Readme from '../README.md'
 import { args, argTypes } from './controls'
 
@@ -44,15 +43,27 @@ const schema = object().shape({
 })
 
 const BaseComponent = (props = {}) => {
-  const { control, errors, getValues, handleSubmit } = useForm({
+  const { control, errors, getValues, handleSubmit, watch } = useForm({
+    mode: 'onTouched',
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data) => {}
+  // mode: onChange | onBlur | onSubmit | onTouched | all = 'onSubmit'
+
+  const watchPicker = watch('expiryAt', '')
+
+  const onSubmit = (form) => {
+    console.log(form)
+  }
+
+  const handleOnChange = (date) => {
+    console.log('Date:', date)
+  }
 
   const defaultProps = {
     control: control,
     errors: errors,
+    handleOnChange: handleOnChange,
     locale: enGB,
     name: 'expiryAt',
     ...props
@@ -63,14 +74,23 @@ const BaseComponent = (props = {}) => {
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <DatePickerCalendar {...defaultProps} />
+      <FormError message={errors?.expiryAt?.message || ''} />
+
+      <Divider size="sm" />
+      <Button content="Submit" size="sm" type="submit" />
+
+      <Space />
+
+      <Text>
+        If a watch is added getValues will also return based on the re-render from the Watch. Using
+        a different mode can also return validation quicker and getValues without a watch. onTouched
+        is a good one for this.
+      </Text>
 
       <Divider size="sm" />
 
-      <Button content="Submit" size="sm" type="submit" />
-
-      <Text>{value}</Text>
-
-      <FormError message={errors?.expiryAt?.message || ''} />
+      <Text>GetValue: {value}</Text>
+      <Text>Watch: {watchPicker && watchPicker.toString()}</Text>
     </Form>
   )
 }

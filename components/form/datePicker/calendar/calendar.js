@@ -1,49 +1,54 @@
 /**
- * Form - DatePicker - Calendar
+ * Components - Form - DatePicker - Calendar
  */
 
 // React
 import React from 'react'
 
 // Date Picker
-import ReactDatePicker from 'react-datepicker'
+import DatePicker from 'react-datepicker'
 
 // React Hook Form
 import { Controller } from 'react-hook-form'
 
-// UI
-import { StyledInput } from '../../../'
-
-// Props
-import { DatePickerCalendarPropTypes } from './props'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import { StyledInput } from '../../field/input'
+import { propTypes } from './props'
 
 export const DatePickerCalendar = ({
   control,
   defaultValue,
   errors,
   name,
+  handleOnChange,
   placeholder,
   ...parentProps
 }) => {
   return (
     <StyleSpan>
       <Controller
-        render={(props) => (
-          <ReactDatePicker
-            customInput={<StyledInput errors={errors[name]} />}
-            selected={props.value}
-            {...props}
-            {...parentProps}
-            placeholderText={placeholder ?? 'Click to select time'}
-            wrapperClassName="datePicker"
-          />
-        )}
         control={control}
         defaultValue={defaultValue}
         name={name}
+        render={({ onChange, onBlur, value, name, ref }) => (
+          <>
+            <DatePicker
+              customInput={<StyledInput errors={errors[name]} />}
+              onBlur={onBlur}
+              onChange={(date) => {
+                onChange(date)
+                handleOnChange && handleOnChange(date)
+              }}
+              placeholderText={placeholder ?? 'Click to select time'}
+              selected={value}
+              wrapperClassName="datePicker"
+              {...parentProps}
+            />
+          </>
+        )}
       />
     </StyleSpan>
   )
@@ -55,7 +60,7 @@ const StyleSpan = styled.span`
   }
 `
 
-DatePickerCalendar.propTypes = DatePickerCalendarPropTypes
+DatePickerCalendar.propTypes = propTypes
 
 DatePickerCalendar.defaultProps = {
   autoFocus: false,
