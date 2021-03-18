@@ -35,6 +35,7 @@ export const propTypes = {
   dayClassName: func,
   disabled: bool,
   disabledKeyboardNavigation: bool,
+  disableInitialDateBackground: bool,
   dropdownMode: oneOf(['scroll', 'select']),
   endDate: instanceOf(Date),
   excludeDates: array,

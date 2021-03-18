@@ -9,6 +9,7 @@ export const args = {
   autoFocus: false,
   disabled: false,
   disabledKeyboardNavigation: false,
+  disableInitialDateBackground: false,
   fixedHeight: false,
   inline: false,
   isClearable: false,
@@ -63,6 +64,9 @@ export const args = {
 }
 
 export const argTypes = {
+  disableInitialDateBackground: {
+    control: { type: 'boolean' }
+  },
   dateFormat: {
     control: {
       type: 'select',
