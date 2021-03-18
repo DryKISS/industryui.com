@@ -12,7 +12,7 @@ import DatePicker from 'react-datepicker'
 import { Controller } from 'react-hook-form'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
 import { StyledInput } from '../../field/input'
@@ -21,6 +21,7 @@ import { propTypes } from './props'
 export const DatePickerCalendar = ({
   control,
   defaultValue,
+  disableInitialDateBackground,
   errors,
   name,
   handleOnChange,
@@ -28,7 +29,7 @@ export const DatePickerCalendar = ({
   ...parentProps
 }) => {
   return (
-    <StyleSpan>
+    <StyleSpan disableInitialDateBackground={disableInitialDateBackground}>
       <Controller
         control={control}
         defaultValue={defaultValue}
@@ -58,6 +59,15 @@ const StyleSpan = styled.span`
   .datePicker {
     width: 100%;
   }
+  ${({ disableInitialDateBackground }) =>
+    disableInitialDateBackground &&
+    css`
+      .react-datepicker__day--keyboard-selected {
+        background-color: transparent;
+        color: black;
+        font-weight: 500;
+      }
+    `}
 `
 
 DatePickerCalendar.propTypes = propTypes
@@ -66,6 +76,7 @@ DatePickerCalendar.defaultProps = {
   autoFocus: false,
   dateFormat: 'd MMM yyyy',
   dropdownMode: 'scroll',
+  disableInitialDateBackground: false,
   isClearable: true,
   minDate: new Date(),
   name: 'expiryAt',
