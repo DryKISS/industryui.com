@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Dropdown
+ * Components - Molecules - Dropdown - Components - Dropdown
  */
 
 // React
@@ -10,7 +10,8 @@ import { array, bool, func, node, oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { DropdownMenu, Icon } from '../../../'
+import { DropdownMenu } from './menu'
+import { Icon } from '../../../atoms/icon/icon/icon'
 import { THEME_POSITION } from '../../../theme/constants/position'
 
 export const elementTypes = {
@@ -21,23 +22,28 @@ export const elementTypes = {
 
 export const Dropdown = ({
   caret,
-  className,
   children,
+  className,
+  defaultOpen,
   elementType,
   items,
   onChange,
-  defaultOpen,
   position
 }) => {
   const [open, setOpen] = useState(defaultOpen)
-
   const node = useRef()
 
-  const handleClickAway = (event) => {
-    if (node.current.contains(event.target)) {
+  const handleClickAway = (e) => {
+    if (node.current.contains(e.target)) {
       return
     }
+
     setOpen(false)
+  }
+
+  const handleClick = (e) => {
+    e.stopPropagation()
+    setOpen(!open)
   }
 
   useEffect(() => {
@@ -46,6 +52,7 @@ export const Dropdown = ({
     } else {
       document.removeEventListener('mousedown', handleClickAway)
     }
+
     return () => {
       document.removeEventListener('mousedown', handleClickAway)
     }
@@ -55,7 +62,7 @@ export const Dropdown = ({
     <StyledDropdown className={className} ref={node}>
       <StyledToggle
         className={`${open ? 'dropdown--active' : ''} dropdown--toggle`}
-        onClick={() => setOpen(!open)}
+        onClick={handleClick}
       >
         {children}
 
@@ -64,7 +71,6 @@ export const Dropdown = ({
             aria-hidden="true"
             className="dropdown--caret"
             icon={position === THEME_POSITION.Top ? 'caret-up' : 'caret-down'}
-            prefix="fas"
           />
         )}
 
@@ -99,6 +105,7 @@ Dropdown.propTypes = {
   caret: bool,
   children: node,
   className: string,
+  defaultOpen: bool,
   elementType: oneOf([elementTypes.Colour, elementTypes.Icon, elementTypes.List]),
   items: array.isRequired,
   onChange: func,
@@ -107,5 +114,6 @@ Dropdown.propTypes = {
 
 Dropdown.defaultProps = {
   caret: true,
+  defaultOpen: false,
   position: 'left'
 }

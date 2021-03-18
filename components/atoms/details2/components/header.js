@@ -10,6 +10,7 @@ import { bool, func, node, number, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
+import { Details2Actions } from './actions'
 import { Details2Icon } from './icon'
 import { Text } from '../../text/text'
 import { THEME_SIZE } from '../../../theme/constants/size'
@@ -23,7 +24,8 @@ export const Details2Header = ({
   headerContext,
   iconComponent,
   isOpen,
-  title
+  title,
+  toolbar
 }) => {
   return (
     <Header context={headerContext} onClick={handleOpenClose}>
@@ -38,6 +40,7 @@ export const Details2Header = ({
 
         <Text size={THEME_SIZE.MD} context={context} content={title} />
       </Content>
+      <Details2Actions toolbar={toolbar} />
     </Header>
   )
 }

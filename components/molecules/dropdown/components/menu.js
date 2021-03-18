@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Dropdown - Menu
+ * Components - Molecules - Dropdown - Compnents - Menu
  */
 
 // React
@@ -10,12 +10,14 @@ import { array, func, oneOf } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { elementTypes, DropdownItem } from '../../../'
+import { elementTypes } from './dropdown'
+import { DropdownItem } from './item'
 import { THEME_POSITION } from '../../../theme/constants/position'
 
 export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, position }) => {
-  const handleClick = (item) => {
+  const handleClick = (e, item) => {
     onItemClick && onItemClick(item)
+    item.onClick && item.onClick(e, item)
     closeDropdown()
   }
 
@@ -23,13 +25,14 @@ export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, p
     <StyledDropdownMenu elementType={elementType} className="dropdown--menu" position={position}>
       <TooltipRectangle position={position} />
       <TooltipRectangle position={position} border />
+
       {items.map((item) => (
         <DropdownItem
           closeDropdown={closeDropdown}
           elementType={elementType}
           item={item}
           key={item.id}
-          onClick={() => handleClick(item)}
+          onClick={(e) => handleClick(e, item)}
         />
       ))}
     </StyledDropdownMenu>
@@ -38,9 +41,7 @@ export const DropdownMenu = ({ closeDropdown, elementType, items, onItemClick, p
 
 const StyledDropdownMenu = styled.div`
   background: #fff;
-  ${({ theme }) => css`
-    border: 1px solid ${theme.DROPDOWN.BORDER_COLOUR};
-  `}
+  border: 1px solid ${({ theme }) => theme.DROPDOWN.borderColour};
   border-radius: 0.25rem;
   left: 0;
   margin-top: 1px;
@@ -79,8 +80,9 @@ const dist = '0.625rem'
 const size = '0.875rem'
 
 const TooltipRectangle = styled.div`
-  ${({ border }) => css`
-    border-color: transparent transparent ${border ? 'rgb(255, 255, 255)' : 'rgb(103,103,103)'};
+  ${({ border, theme }) => css`
+    border-color: transparent transparent
+      ${border ? 'rgb(255, 255, 255)' : theme.DROPDOWN.borderColour};
   `}
   border-image: initial;
   border-style: solid;

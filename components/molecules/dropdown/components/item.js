@@ -1,5 +1,5 @@
 /**
- * Dropdown - Item
+ * Components - Molecules - Dropdown - Compnents - Item
  */
 
 // React
@@ -10,7 +10,10 @@ import { func, object, node } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { elementTypes, Icon, Link } from '../../../'
+import { Divider } from '../../../atoms/divider/divider'
+import { elementTypes } from './dropdown'
+import { Icon } from '../../../atoms/icon/icon/icon'
+import { Link } from '../../../atoms/link/link'
 
 const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
   const item = () => (
@@ -33,7 +36,7 @@ export const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
     case elementTypes.List:
       return (
         <StyledDropdownItem divider={item.divider}>
-          {item.divider ? <StyledDivider /> : renderItem(item, closeDropdown, onClick)}
+          {item.divider ? <Divider size="sm" /> : renderItem(item, closeDropdown, onClick)}
         </StyledDropdownItem>
       )
 
@@ -106,19 +109,12 @@ const StyledDropdownItem = styled.div`
     `}
 `
 
-const StyledDivider = styled.div`
-  border-top: 1px solid #33475b;
-  height: 0;
-  margin: 0.5rem;
-  overflow: hidden;
-`
-
 const StyledLink = styled.span`
   color: ${({ theme }) => theme.COLOUR.primary};
   display: block;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem 1rem;
   &:hover {
-    background-color: #f8f9fa;
+    background-color: ${({ theme }) => theme.COLOUR.light};
     color: inherit;
   }
 `

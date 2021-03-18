@@ -3,17 +3,19 @@
  */
 
 // React
+import React, { useEffect, useState } from 'react'
+import { oneOf } from 'prop-types'
+
+// Next
 import dynamic from 'next/dynamic'
 
-import { oneOf } from 'prop-types'
-import React, { useEffect, useState } from 'react'
+// UI
 import { propTypes } from './props'
 import { RawIcons } from './rawIcons'
 
-// UI
-
 export const LazyIcon = ({ iconName, ...props }) => {
   const [LoadedIcon, setLoadedIcon] = useState(null)
+
   const loadModule = async () => {
     if (LoadedIcon === null) {
       const Icon = await dynamic(() => import(`./components/${iconName}`))

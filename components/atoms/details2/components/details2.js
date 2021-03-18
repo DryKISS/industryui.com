@@ -14,7 +14,7 @@ import {
   useComponentCommunication
 } from '../../../'
 
-import { Details2PropTypes, Details2DefaultProps } from '../props'
+import { propTypes, defaultProps } from '../props'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -96,6 +96,7 @@ export const Details2 = ({
         isOpen={isOpen}
         title={title}
         titleContext={titleContext}
+        toolbar={toolbar}
       />
 
       {children && (
@@ -116,6 +117,7 @@ export const Details2 = ({
 const Wrapper = styled.div`
   background: ${({ theme }) => theme.DETAILS2.wrapper.background};
   border-bottom: 2px solid ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
+  box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
   transition: height 0.3 cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
 
@@ -129,5 +131,5 @@ const Wrapper = styled.div`
   }}
 `
 
-Details2.propTypes = Details2PropTypes
-Details2.defaultProps = Details2DefaultProps
+Details2.propTypes = propTypes
+Details2.defaultProps = defaultProps

@@ -1,0 +1,20 @@
+{
+  "presets": ["next/babel", "@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    [
+      "styled-components",
+      {
+        "root": ["./"],
+        "alias": {
+          "api": "./api",
+          "config": "./config",
+          "decorators": "./.storybook/decorators",
+          "root": "./",
+          "storybook": "./.storybook",
+          "themes": "./.storybook/themes"
+        }
+      }
+    ]
+  ]
+}

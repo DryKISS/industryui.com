@@ -11,6 +11,7 @@ import { SizeControl } from '../../../../../.storybook/decorators/size'
 
 // UI
 import { Button } from '../../button/button'
+import { Space } from '../../../space/space'
 import { THEME_CONTEXT } from '../../../../theme/constants/context'
 import { THEME_SIZE } from '../../../../theme/constants/size'
 import Readme from '../README.md'
@@ -19,15 +20,15 @@ export default {
   args: {
     block: false,
     center: false,
-    content: 'Button text',
+    content: 'Medium',
     context: THEME_CONTEXT.PRIMARY,
     dashed: false,
     disabled: false,
-    endIcon: 'user',
+    endIcon: null,
     outline: false,
     shadow: false,
     size: THEME_SIZE.MD,
-    startIcon: 'user'
+    startIcon: null
   },
   argTypes: {
     context: ContextControl(),
@@ -45,5 +46,17 @@ export default {
 }
 
 export const main = (args) => {
-  return <Button {...args} />
+  return (
+    <>
+      <Button {...args} content="Extra Small" size="xs" />
+      <Space />
+      <Button {...args} content="Small" size="sm" />
+      <Space />
+      <Button {...args} />
+      <Space />
+      <Button {...args} content="Large" size="lg" />
+      <Space />
+      <Button {...args} content={null} startIcon="user" size="sm" />
+    </>
+  )
 }

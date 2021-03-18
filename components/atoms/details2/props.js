@@ -8,7 +8,7 @@ import { bool, node, number, object, oneOf, string } from 'prop-types'
 // UI
 import { THEME_CONTEXT } from '../../theme/constants/context'
 
-export const Details2PropTypes = {
+export const propTypes = {
   animationDuration: number,
   children: node,
   content: node,
@@ -22,17 +22,17 @@ export const Details2PropTypes = {
   startActionComponent: node,
   style: object,
   title: string.isRequired,
-  toolbar: node,
+  Toolbar: node,
   uniqueId: string,
   unmountContentOnClose: bool
 }
 
-export const Details2DefaultProps = {
+export const defaultProps = {
   animationDuration: 100,
   context: 'primary',
   disableAnimation: false,
   fitParentHeight: false,
-  iconComponent: false,
+  iconComponent: null,
   open: false,
   unmountContentOnClose: false
 }

@@ -81,12 +81,13 @@ const StyledButton = styled.button`
   color: ${({ textContext, theme: { COLOUR } }) => COLOUR[textContext]};
   cursor: pointer;
   display: ${({ block, centre }) => (centre || block ? 'flex' : 'inline-flex')};
-  font-size: 14px;
-  height: 3rem;
+  font-size: 1rem;
+  height: 2.5rem;
   justify-content: center;
   line-height: 100%;
   outline: none;
   overflow: visible;
+  padding: ${({ theme }) => theme.SPACING(4, 4)};
   text-decoration: none;
   text-transform: none;
   user-select: none;
@@ -94,6 +95,7 @@ const StyledButton = styled.button`
   white-space: nowrap;
   margin: ${({ centre }) => (centre ? 'auto' : 0)};
   width: ${({ block }) => (block ? '100%' : 'initial')};
+
   ${({ disabled }) =>
     disabled &&
     css`
@@ -105,25 +107,25 @@ const StyledButton = styled.button`
   ${({ size, theme }) =>
     size === 'xs' &&
     css`
-      font-size: 12px;
-      padding: ${theme.SPACING(1, 2)};
-      height: 24px;
+      font-size: 0.75rem;
+      padding: ${theme.SPACING(2, 2)};
+      height: 1.5rem;
     `}
 
   ${({ size }) =>
     size === 'sm' &&
     css`
-      font-size: 12px;
-      padding: ${({ theme }) => theme.SPACING(2, 4)};
-      height: 32px;
+      font-size: 0.75rem;
+      padding: ${({ theme }) => theme.SPACING(3, 3)};
+      height: 2rem;
     `}
 
   ${({ size }) =>
     size === 'lg' &&
     css`
-      font-size: 16px;
-      padding: ${({ theme }) => theme.SPACING(4, 8)};
-      height: 56px;
+      font-size: 1rem;
+      padding: ${({ theme }) => theme.SPACING(5, 5)};
+      height: 3rem;
     `}
 
   /* If two buttons are next to each other */

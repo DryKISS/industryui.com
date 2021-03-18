@@ -34,6 +34,12 @@ const StyledGroup = styled.div`
     color: white;
   }
 
+  &:last-child > div:last-of-type button {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-right: 0;
+  }
+
   a:not(:last-child),
   button:not(:last-child) {
     border-bottom-right-radius: 0;
@@ -43,13 +49,15 @@ const StyledGroup = styled.div`
 
   a:not(:first-child),
   button:not(:first-child),
-  a:not(:first-child) button {
+  a:not(:first-child) button,
+  div:not(:first-child) button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: 0;
   }
 
-  a:not(:last-child) button {
+  a:not(:last-child) button,
+  div:not(:last-child) button {
     border-bottom-right-radius: 0;
     border-right: 1px solid ${({ theme: { COLOUR } }) => COLOUR.light};
     border-top-right-radius: 0;

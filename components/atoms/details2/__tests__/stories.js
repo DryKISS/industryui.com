@@ -3,38 +3,114 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Storybook
 import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import {
-  Button,
-  ButtonToolbar,
-  Column,
-  Details2,
-  DetailsCommunicationService,
-  Icon,
-  MessageNames,
-  Row,
-  Text
-} from '../../../'
+import { Button } from '../../button/button/button'
+import { ButtonToolbar } from '../../button/toolbar/toolbar'
+import { Dropdown } from '../../../molecules/dropdown/components/dropdown'
+import { Icon } from '../../icon/icon/icon'
+
+import { Column } from '../../../atoms/grid/components/Column'
+import { Details2 } from '../../../atoms/details2/components/details2'
+import { DetailsCommunicationService } from '../../../services/componentCommunication/index'
+import { MessageNames } from '../../../services/componentCommunication/messageNames'
+import { Row } from '../../../atoms/grid/components/Row'
+import { Text } from '../../../atoms/text/text'
 
 import { THEME_CONTEXT } from '../../../theme/constants/context'
-
 import Readme from '../README.md'
 
-const Content = () => {
+const Toolbar = () => {
+  const [table, setTable] = useState(true)
+
+  const handleEditClick = (e) => {
+    e.stopPropagation()
+    console.info('handleEditClick', e)
+  }
+
+  const handleViewToggle = (e) => {
+    e.stopPropagation()
+    setTable(!table)
+    console.info('handleViewToggle', e)
+  }
+
+  const handleDropdownClick = (item) => {
+    console.info('handleDropdownClick', item)
+  }
+
+  const dropdownItems = [
+    {
+      id: 'delete',
+      name: (
+        <>
+          <Icon context="danger" icon="trash" /> Delete
+        </>
+      ),
+      onClick: handleDropdownClick
+    },
+    {
+      id: 'calendar',
+      name: 'Calendar',
+      onClick: handleViewToggle
+    },
+    {
+      id: 'logout-divider',
+      divider: true
+    },
+    {
+      id: 'logout',
+      name: 'Logout'
+    }
+  ]
+
   return (
-    <>
-      <Text>Text</Text>
-      <Text>Text</Text>
-      <Text>Text</Text>
-      <Text>Text</Text>
-      <Text>Text</Text>
-      <Text>Text</Text>
-    </>
+    <ButtonToolbar>
+      <Button context="info" content="Edit" onClick={handleEditClick} size="sm" />
+
+      <Button
+        context="secondary"
+        onClick={handleEditClick}
+        size="sm"
+        startIcon={'file-csv'}
+        startIconProps={{ size: 'lg' }}
+      />
+
+      <Button
+        context="secondary"
+        onClick={handleEditClick}
+        size="sm"
+        startIcon={'file-pdf'}
+        startIconProps={{ size: 'lg' }}
+      />
+
+      <Button
+        context="secondary"
+        onClick={handleViewToggle}
+        size="sm"
+        startIcon={table ? 'table' : 'calendar-alt'}
+        startIconProps={{ size: 'lg' }}
+      />
+
+      <Dropdown
+        onChange={(item) => {
+          handleDropdownClick(item)
+        }}
+        caret={false}
+        items={dropdownItems}
+        position="right"
+      >
+        <Button
+          context="white"
+          startIconProps={{ colour: 'dark', iui: true }}
+          size="sm"
+          startIcon="verticalThreeDots"
+        />
+      </Dropdown>
+    </ButtonToolbar>
   )
 }
 
@@ -44,9 +120,10 @@ export default {
     disableAnimation: false,
     context: THEME_CONTEXT.PRIMARY,
     fitParentHeight: false,
-    iconComponent: <Icon fixedWidth={false} icon="images" />,
+    iconComponent: null,
     open: true,
     title: 'Details 2',
+    toolbar: <Toolbar />,
     uniqueId: '1',
     unmountContentOnClose: false
   },
@@ -67,27 +144,17 @@ export default {
 export const main = (args) => {
   return (
     <Details2 {...args}>
-      <Content />
-    </Details2>
-  )
-}
-
-export const caret = (args) => {
-  return (
-    <Details2 {...args} iconComponent={null}>
-      <Content />
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
+      <Text>Text</Text>
     </Details2>
   )
 }
 
 export const communication = (args) => {
-  const toolbar = (
-    <ButtonToolbar>
-      <Button size="xs">button1</Button>
-      <Button size="xs">button2</Button>
-    </ButtonToolbar>
-  )
-
   const startActionComponent = <Button>button</Button>
   const endActionComponent = <Button>lastButton</Button>
 
@@ -128,7 +195,7 @@ export const communication = (args) => {
         startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
         title="first details component"
-        toolbar={toolbar}
+        toolbar={<Toolbar />}
         uniqueId="primary_Details"
         unmountContentOnClose
       />
@@ -156,12 +223,12 @@ export const communication = (args) => {
         }
         context="danger"
         endActionComponent={endActionComponent}
-        iconComponent={<Icon icon="images" prefix="fas" />}
+        iconComponent={<Icon icon="images" />}
         open
         startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
         title="second details component"
-        toolbar={toolbar}
+        toolbar={<Toolbar />}
         uniqueId="danger_Details"
       />
 
