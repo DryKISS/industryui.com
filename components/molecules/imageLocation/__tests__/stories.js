@@ -1,5 +1,5 @@
 /**
- * Components - Molecules  Image Location
+ * Components - Molecules - Image Location
  */
 
 // React
@@ -111,7 +111,9 @@ export const withSvgAsMainImage = (args) => {
   const handleMarkerClick = (markerData) => {
     console.log(markerData)
   }
+
   const markers = []
+
   for (let i = 0; i <= 1000; i++) {
     markers.push({
       icon: 'circle',
@@ -121,6 +123,7 @@ export const withSvgAsMainImage = (args) => {
       colour: 'magenta'
     })
   }
+
   return (
     <BaseComponent
       item={SvgTest}

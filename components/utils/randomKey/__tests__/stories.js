@@ -2,8 +2,11 @@
  * Random Key
  */
 
+// React
+import React from 'react'
+
 // UI
-import React, { RandomKey } from '../../../'
+import { RandomKey } from '../../../'
 import Readme from '../README.md'
 
 // Style

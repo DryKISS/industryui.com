@@ -1,5 +1,5 @@
 /**
- * Components - Atoms - Icon - Icon - Icon
+ * Components - Atoms - Icon
  */
 
 // React
@@ -12,10 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 // UI
+import { LazyIcon } from '../../../icons/lazyIcon'
 import { SPACER } from '../../../theme/utils/spacer'
-
 import { themeDisplay } from '../../../theme/utils/display'
-import { LazyIcon } from '../../../icons/index'
 
 // Props
 import { propTypes, defaultProps } from './props'

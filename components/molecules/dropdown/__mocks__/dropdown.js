@@ -1,5 +1,5 @@
 /**
- * Dropdown - Mocks
+ * Components - Molecules - Dropdown - Mocks
  */
 
 export const Icons = [

@@ -9,6 +9,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
+import { Text } from '../../atoms/text/text'
+
 import {
   ArrowDownIcon,
   BellIcon,
@@ -80,7 +82,7 @@ import Readme from '../README.md'
 
 export default {
   args: {
-    colour: '#999999',
+    colour: '#999',
     disabled: false,
     onClick: false,
     size: '22',
@@ -133,7 +135,10 @@ export const main = (props) => {
       <CheckCircleIcon {...props} />
       <OctagonIcon {...props} />
       <SearchIcon {...props} />
+
+      <Text content="Menu Bar" />
       <MenuBarsIcon {...props} />
+
       <TriangleIcon {...props} />
       <MapMarkerIcon {...props} />
       <PaperPlaneIcon {...props} />
@@ -150,11 +155,19 @@ export const main = (props) => {
       <PlusIcon {...props} />
       <CheckedIcon {...props} />
       <StarIcon {...props} />
+
+      <Text content="List" />
       <ListIcon {...props} />
+
       <MicIcon {...props} />
       <UploadIcon {...props} />
+
+      <Text content="Vertical Three Dots" />
       <VerticalThreeDotsIcon {...props} />
+
+      <Text content="Exclamation Circle" />
       <ExclamationCircleIcon {...props} />
+
       <ThermometerIcon {...props} />
       <SensorIcon {...props} />
       <SmokeDetectorIcon {...props} />
