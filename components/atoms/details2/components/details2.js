@@ -74,7 +74,6 @@ export const Details2 = ({
         window.requestAnimationFrame(() => {
           if (contentRef.current) {
             if (contentHeight !== contentRef.current.offsetHeight) {
-              console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
               setcontentHeight(() => contentRef.current.offsetHeight)
             }
           }
