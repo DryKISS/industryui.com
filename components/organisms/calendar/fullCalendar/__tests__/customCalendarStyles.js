@@ -1,5 +1,5 @@
 /**
- * Full Calendar - Custom Calendar styles
+ * Components - Organisms - Full Calendar - Custom Calendar styles
  */
 
 // React

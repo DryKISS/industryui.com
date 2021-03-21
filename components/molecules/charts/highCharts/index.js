@@ -7,23 +7,27 @@ import React from 'react'
 import { any, arrayOf, bool, func, oneOf } from 'prop-types'
 
 // Highcharts
-import HighStockcharts from 'highcharts/highstock'
 import Highcharts from 'highcharts'
-import HighMapcharts from 'highcharts/highmaps'
-import HighGanttcharts from 'highcharts/highcharts-gantt'
 import HighchartsReact from 'highcharts-react-official'
+import HighchartsHeatmap from 'highcharts/modules/heatmap'
+import HighGanttcharts from 'highcharts/highcharts-gantt'
+import HighMapcharts from 'highcharts/highmaps'
+import HighStockcharts from 'highcharts/highstock'
 
 const getChartType = (constructorType) => {
   let chart
   switch (constructorType) {
-    case 'stockChart':
-      chart = HighStockcharts
+    case 'ganttChart':
+      chart = HighGanttcharts
+      break
+    case 'heatmap':
+      chart = HighchartsHeatmap
       break
     case 'mapChart':
       chart = HighMapcharts
       break
-    case 'ganttChart':
-      chart = HighGanttcharts
+    case 'stockChart':
+      chart = HighStockcharts
       break
     default:
       chart = Highcharts
@@ -56,10 +60,19 @@ export const HighChart = ({
     />
   )
 }
+
 HighChart.prototypes = {
   allowChartUpdate: bool,
   callback: func,
-  constructorType: oneOf(['chart', 'stockChart', 'mapChart', 'ganttChart', undefined, null]),
+  constructorType: oneOf([
+    'chart',
+    'ganttChart',
+    'heatmap',
+    'mapChart',
+    'stockChart',
+    undefined,
+    null
+  ]),
   containerProps: any,
   highcharts: any,
   immutable: bool,

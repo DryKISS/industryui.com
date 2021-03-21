@@ -1,9 +1,19 @@
 /**
- * Full Calendar - Events
+ * Components - Organisms - Full Calendar - Events
  */
 
 // Moment
 import moment from 'moment'
+
+export const AvailableViews = [
+  'dayGridMonth',
+  'dayGridWeek',
+  'dayGridDay',
+  'dayGrid',
+  'timeGridWeek',
+  'timeGridDay',
+  'timeGrid'
+]
 
 export const Events = [
   {
@@ -52,16 +62,6 @@ export const Events = [
     start: moment().date(23).format(),
     end: moment().date(24).format()
   }
-]
-
-export const AvailableViews = [
-  'dayGridMonth',
-  'dayGridWeek',
-  'dayGridDay',
-  'dayGrid',
-  'timeGridWeek',
-  'timeGridDay',
-  'timeGrid'
 ]
 
 export const assetType = [

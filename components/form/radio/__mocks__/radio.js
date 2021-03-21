@@ -1,3 +1,6 @@
+/**
+ * Components - Form - Radio - Mocks
+ */
 export const RADIO_GENDER = (genderToggle = 'no') => [
   {
     id: 'no',

@@ -6,7 +6,9 @@
 import React from 'react'
 
 // UI
-import { FormError, Space, Text } from '../../'
+import { FormError } from '../error/error'
+import { Space } from '../../atoms/space/space'
+import { Text } from '../../atoms/text/text'
 import { THEME_SIZE } from '../../theme/constants/size'
 
 export const FieldHOC = ({

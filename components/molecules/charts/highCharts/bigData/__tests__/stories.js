@@ -28,7 +28,6 @@ export default {
     violationMin: { control: { type: 'range', min: 0, max: 100, step: 0.5 } },
     violationMax: { control: { type: 'range', min: 0, max: 100, step: 0.5 } }
   },
-  title: 'Molecules/Charts/highCharts/BigData',
   component: HighChart,
   parameters: {
     docs: {
@@ -36,7 +35,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Charts/High Charts/BigData'
 }
 
 const BaseComponent = (props) => {

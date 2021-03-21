@@ -23,7 +23,7 @@ export default {
       }
     }
   },
-  title: 'Molecules/Charts/highCharts/line'
+  title: 'Molecules/Charts/High Charts/line'
 }
 
 const BaseComponent = (props) => {

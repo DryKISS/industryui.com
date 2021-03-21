@@ -5,30 +5,39 @@
 // UI
 import { Container, RouterWrap, Wrapper } from './decorators'
 
-
-// CSS
-import '@fullcalendar/core/main.min.css'
+// Full Calendar
+import '@fullcalendar/common/main.min.css'
 import '@fullcalendar/daygrid/main.min.css'
 import '@fullcalendar/list/main.min.css'
+import '@fullcalendar/resource-timeline/main.min.css'
 import '@fullcalendar/timegrid/main.min.css'
 
+// Font awesome
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
+// Cropper
 import 'cropperjs/dist/cropper.min.css'
 
+// Draft JS
 import 'draft-js/dist/Draft.css'
 import '@draft-js-plugins/mention/lib/plugin.css'
 import '@draft-js-plugins/hashtag/lib/plugin.css'
 import '@draft-js-plugins/emoji/lib/plugin.css'
-
-import 'emoji-mart/css/emoji-mart.css'
-
-import 'react-big-calendar/lib/css/react-big-calendar.css'
-import 'react-datepicker/dist/react-datepicker.min.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
+// Emoji Mart
+import 'emoji-mart/css/emoji-mart.css'
+
+// Bog Calendar
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+
+// Datepicker
+import 'react-datepicker/dist/react-datepicker.min.css'
+
+// Tippy
 import 'tippy.js/dist/tippy.css'
 
+// Leaflet
 import 'leaflet/dist/leaflet.css'
 
  // Free Solid / FAS
@@ -43,6 +52,7 @@ import 'leaflet/dist/leaflet.css'
   faChevronUp,
   faCircle,
   faCloud,
+  faClipboardCheck,
   faCommentDots,
   faCopy,
   faCopyright,
@@ -82,6 +92,7 @@ library.add(
   faChevronDown,
   faChevronUp,
   faCircle,
+  faClipboardCheck,
   faCloud,
   faCommentDots,
   faCopy,
