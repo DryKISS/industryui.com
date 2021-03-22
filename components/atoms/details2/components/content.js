@@ -9,11 +9,14 @@ import { bool, node, number, object } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
+import { RawResizeDetector } from '../../../'
+
 export const Details2Content = ({
   animationTime,
   children,
   contentRef,
   fitParentHeight,
+  onContentSizeChanged,
   isOpen,
   maxHeight,
   mounted
@@ -26,12 +29,13 @@ export const Details2Content = ({
       isOpen={isOpen}
     >
       <Content fitParentHeight={fitParentHeight} isOpen={isOpen} ref={contentRef}>
-        {mounted && children}
+        {mounted && (
+          <RawResizeDetector onResize={onContentSizeChanged}>{children}</RawResizeDetector>
+        )}
       </Content>
     </Wrapper>
   )
 }
-
 const Wrapper = styled.div`
   max-height: ${({ fitParentHeight, maxHeight, isOpen }) =>
     fitParentHeight ? 'unset' : isOpen ? maxHeight + 'px' : '0px'};
