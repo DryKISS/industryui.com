@@ -18,7 +18,7 @@ import { propTypes, defaultProps } from '../props'
 
 // Style
 import styled, { css } from 'styled-components'
-
+let callTimeout
 export const Details2 = ({
   animationDuration,
   children,
@@ -59,16 +59,27 @@ export const Details2 = ({
 
     setTimeout(
       () => {
-        window &&
-          window.requestAnimationFrame(() => {
-            contentRef.current && setcontentHeight(() => contentRef.current.offsetHeight)
-          })
+        resetSize()
       },
       !isOpen ? animationTime ?? 300 : 0
     )
 
     return () => {}
-  }, [contentRef.current, isOpen])
+  }, [contentRef.current])
+
+  const resetSize = () => {
+    clearTimeout(callTimeout)
+    callTimeout = setTimeout(() => {
+      window &&
+        window.requestAnimationFrame(() => {
+          if (contentRef.current) {
+            if (contentHeight !== contentRef.current.offsetHeight) {
+              setcontentHeight(() => contentRef.current.offsetHeight)
+            }
+          }
+        })
+    }, 100)
+  }
 
   const handleEventRecieve = (e) => {
     setisOpen(e)
@@ -104,6 +115,7 @@ export const Details2 = ({
           animationTime={animationTime}
           children={children}
           contentRef={contentRef}
+          onContentSizeChanged={resetSize}
           fitParentHeight={fitParentHeight}
           isOpen={isOpen}
           maxHeight={contentHeight}

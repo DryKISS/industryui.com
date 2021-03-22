@@ -16,7 +16,8 @@ export const ResizeDetector = withResizeDetector(
         window.requestAnimationFrame(() => onResize({ height, width }))
       return <ResizeDetectorWrapper style={style} />
     },
-    ({ width: prevWidth }, { width: nextWidth }) => prevWidth === nextWidth
+    ({ width: prevWidth, height: prevHeight }, { width: nextWidth, height: nextHeight }) =>
+      prevWidth === nextWidth && prevHeight === nextHeight
   )
 )
 
