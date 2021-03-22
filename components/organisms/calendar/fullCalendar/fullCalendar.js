@@ -10,7 +10,7 @@ import React, { forwardRef, useState } from 'react'
 import { bool, string } from 'prop-types'
 
 // Style
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
 // UI
 import { LdsSpinner } from '../../../molecules/pageLoading/components/ldsSpinner'
@@ -23,7 +23,7 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
   const [loading, setLoading] = useState(false)
 
   return (
-    <>
+    <Wrapper>
       {props.hasLoading && loading && <PageLoading indicator={<LdsSpinner />} />}
 
       <CalendarWrapper
@@ -34,9 +34,19 @@ export const Calendar = forwardRef(({ ...props }, ref) => {
         header={props.header || CALENDAR.header}
         loading={setLoading}
       />
-    </>
+    </Wrapper>
   )
 })
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  @media (max-width: 700px) {
+    .fc-header-toolbar {
+      flex-direction: column;
+    }
+  }
+`
 
 Calendar.propTypes = {
   defaultEventColor: string,
@@ -47,13 +57,3 @@ Calendar.defaultProps = {
   defaultEventColor: 'primary',
   showTooltip: false
 }
-
-// const Wrapper = styled.div`
-//   position: relative;
-//   width: 100%;
-//   @media (max-width: 700px) {
-//     .fc-header-toolbar {
-//       flex-direction: column;
-//     }
-//   }
-// `

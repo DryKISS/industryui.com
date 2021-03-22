@@ -22,7 +22,7 @@ export const propTypes = {
   startActionComponent: node,
   style: object,
   title: string.isRequired,
-  Toolbar: node,
+  toolbar: node,
   uniqueId: string,
   unmountContentOnClose: bool
 }

@@ -20,11 +20,10 @@ export const CalendarWrapper = (props) => {
         dayGridPlugin: import('@fullcalendar/daygrid'),
         interactionPlugin: import('@fullcalendar/interaction'),
         listPlugin: import('@fullcalendar/list'),
-        resourceTimelinePlugin: import('@fullcalendar/resource-timeline'),
+        // resourceTimelinePlugin: import('@fullcalendar/resource-timeline'),
         timeGridPlugin: import('@fullcalendar/timegrid')
       }),
       render: (props, { calendar: Calendar, ...plugins }) => {
-        console.log(plugins, Object.values(plugins))
         return <Calendar plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
       },
       ssr: false
@@ -41,5 +40,5 @@ export const CalendarWrapper = (props) => {
     return <FullCalendar {...props} />
   }
 
-  return showCalendar(props)
+  return <div>{showCalendar(props)}</div>
 }

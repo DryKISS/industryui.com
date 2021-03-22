@@ -28,5 +28,5 @@ const Toolbar = styled.div`
 `
 
 Details2Actions.propTypes = {
-  toolbar: node.isRequired
+  toolbar: node
 }
