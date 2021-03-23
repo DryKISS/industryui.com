@@ -3,18 +3,19 @@
  */
 
 // React
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 // UI
-import { Calendar, Theme } from '../../../../'
+import { Calendar } from '../../../../'
+// import { Theme } from '../../../../'
 import Readme from '../README.md'
 
 // Data
-import { Events, AvailableViews } from '../__mocks__/events'
+// import { Events, AvailableViews } from '../__mocks__/events'
 
 // Stories
-import { CustomCalendarStyles } from './customCalendarStyles'
-import { CustomEventsStory } from './customEventsStory'
+// import { CustomCalendarStyles } from './customCalendarStyles'
+// import { CustomEventsStory } from './customEventsStory'
 
 export default {
   // args: {
@@ -104,11 +105,11 @@ export const ResourceTimeline = (args) => {
       // dayHeaders={false}
       // editable={true}
       scrollTime="milliseconds"
-      // headerToolbar={{
-      //   center: 'title',
-      //   left: 'today prevYear,prev,next,nextYear',
-      // right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth resourceTimelineYear'
-      // }}
+      headerToolbar={{
+        center: 'title',
+        left: 'today prevYear,prev,next,nextYear',
+        right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth resourceTimelineYear'
+      }}
       initialView="resourceTimelineYear"
       // events={'https://fullcalendar.io/demo-events.json?single-day&for-resource-timeline'}
       events={[
