@@ -5,6 +5,9 @@
 // React
 import React, { useEffect, useRef, useState } from 'react'
 
+// Style
+import styled, { css } from 'styled-components'
+
 // UI
 import {
   DetailsSubscriber,
@@ -16,21 +19,18 @@ import {
 
 import { propTypes, defaultProps } from '../props'
 
-// Style
-import styled, { css } from 'styled-components'
 let callTimeout
+
 export const Details2 = ({
   animationDuration,
   children,
   contentStyle,
   context,
   disableAnimation,
-  endActionComponent,
   fitParentHeight,
   headerContext,
   iconComponent,
   open,
-  startActionComponent,
   style,
   title,
   titleContext,

@@ -75,6 +75,7 @@ export const TableContent = ({
 
 const StyledTable = styled.table`
   border-collapse: collapse;
+  color: ${({ theme }) => theme.TABLE.color};
   font-size: ${({ theme }) => theme.TABLE.fontSize};
   width: 100%;
 `

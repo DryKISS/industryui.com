@@ -9,7 +9,7 @@ import { bool, node, number, object } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-import { RawResizeDetector } from '../../../'
+// import { RawResizeDetector } from '../../../'
 
 export const Details2Content = ({
   animationTime,
@@ -29,9 +29,10 @@ export const Details2Content = ({
       isOpen={isOpen}
     >
       <Content fitParentHeight={fitParentHeight} isOpen={isOpen} ref={contentRef}>
-        {mounted && (
+        {mounted && children}
+        {/* {mounted && (
           <RawResizeDetector onResize={onContentSizeChanged}>{children}</RawResizeDetector>
-        )}
+        )} */}
       </Content>
     </Wrapper>
   )

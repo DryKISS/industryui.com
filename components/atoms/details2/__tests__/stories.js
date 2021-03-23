@@ -13,12 +13,14 @@ import { Button } from '../../button/button/button'
 import { ButtonToolbar } from '../../button/toolbar/toolbar'
 import { Dropdown } from '../../../molecules/dropdown/components/dropdown'
 import { Icon } from '../../icon/icon/icon'
-
 import { Column } from '../../../atoms/grid/components/Column'
 import { Details2 } from '../../../atoms/details2/components/details2'
 import { DetailsCommunicationService } from '../../../services/componentCommunication/index'
 import { MessageNames } from '../../../services/componentCommunication/messageNames'
 import { Row } from '../../../atoms/grid/components/Row'
+import { Table } from '../../../molecules/table/components/wrapper'
+import { TableActions } from '../../../molecules/table/formatter/actions/actions'
+import { TableLink } from '../../../molecules/table/formatter/link'
 import { Text } from '../../../atoms/text/text'
 
 import { THEME_CONTEXT } from '../../../theme/constants/context'
@@ -142,6 +144,63 @@ export default {
 }
 
 export const main = (args) => {
+  const columnsActions = [
+    {
+      text: 'ID'
+    },
+    {
+      sortable: true,
+      sortName: 'company',
+      text: 'Company'
+    },
+    {
+      formatter: TableLink('/', 'url', 'company'),
+      text: 'URL'
+    },
+    {
+      hidden: true
+    },
+    {
+      formatter: TableActions,
+      formatterData: (row) => [
+        {
+          content: 'Edit',
+          context: 'primary',
+          icon: ['fas', 'edit'],
+          to: '/manage',
+          tooltip: 'Edit',
+          numberOverlay: 'itemCount',
+          onClick: () => console.log('edit', row)
+        },
+        {
+          content: 'Delete',
+          context: 'danger',
+          icon: ['fas', 'trash'],
+          to: '/delete',
+          tooltip: 'Delete'
+        }
+      ],
+      text: 'Actions'
+    }
+  ]
+
+  const rows = [
+    {
+      id: '10001',
+      company: 'DryKISS Ltd',
+      url: 'https://drykiss.com',
+      itemCount: 5,
+      actions: ''
+    },
+    {
+      id: '10002',
+      company: 'Triangle Solutions Ltd',
+      url: 'https://triangle-solutions.com',
+      itemCount: 3,
+      actions: ''
+    }
+  ]
+
   return (
     <Details2 {...args}>
       <Text>Text</Text>
@@ -150,14 +209,12 @@ export const main = (args) => {
       <Text>Text</Text>
       <Text>Text</Text>
       <Text>Text</Text>
+      <Table columns={columnsActions} rows={rows} />
     </Details2>
   )
 }
 
 export const communication = (args) => {
-  const startActionComponent = <Button>button</Button>
-  const endActionComponent = <Button>lastButton</Button>
-
   return (
     <>
       <Details2
@@ -190,9 +247,7 @@ export const communication = (args) => {
           </>
         }
         context="primary"
-        endActionComponent={endActionComponent}
         open={false}
-        startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
         title="first details component"
         toolbar={<Toolbar />}
@@ -222,10 +277,8 @@ export const communication = (args) => {
           </>
         }
         context="danger"
-        endActionComponent={endActionComponent}
         iconComponent={<Icon icon="images" />}
         open
-        startActionComponent={startActionComponent}
         style={{ marginBottom: '2rem' }}
         title="second details component"
         toolbar={<Toolbar />}
@@ -237,20 +290,6 @@ export const communication = (args) => {
           <Details2
             context="warning"
             open={false}
-            startActionComponent={
-              <Button
-                size="sm"
-                onClick={() => {
-                  DetailsCommunicationService.send({
-                    name: MessageNames.DetailsComponent.SET_OPEN,
-                    id: 'success_Details',
-                    payload: false
-                  })
-                }}
-              >
-                close success Details
-              </Button>
-            }
             title="third details component"
             uniqueId="warning_Details"
           />
@@ -273,20 +312,6 @@ export const communication = (args) => {
             context="success"
             disableAnimation
             open={false}
-            startActionComponent={
-              <Button
-                size="sm"
-                onClick={() => {
-                  DetailsCommunicationService.send({
-                    name: MessageNames.DetailsComponent.SET_OPEN,
-                    id: 'danger_Details',
-                    payload: true
-                  })
-                }}
-              >
-                open danger Details
-              </Button>
-            }
             title="forth details component"
             uniqueId="success_Details"
           />
