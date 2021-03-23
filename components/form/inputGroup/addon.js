@@ -49,8 +49,8 @@ const StyledInputGroupAddon = styled.div`
   ${({ theme: { COLOUR, FORM_ELEMENTS_STYLES }, error, text }) =>
     text &&
     css`
-      background-color: ${error ? COLOUR.danger : COLOUR.grey};
-      border: 1px solid ${error ? COLOUR.danger : COLOUR.grey80};
+      background-color: ${error ? COLOUR.danger : COLOUR.light};
+      border: 1px solid ${error ? COLOUR.danger : COLOUR.dark};
       border-radius: ${FORM_ELEMENTS_STYLES.inputBorderRadius};
       color: ${error ? COLOUR.light : COLOUR.dark};
       display: flex;
@@ -58,7 +58,7 @@ const StyledInputGroupAddon = styled.div`
       font-weight: 400;
       line-height: 1;
       margin-bottom: 0;
-      padding: 0.375rem 1.25rem;
+      padding: 0.375rem 1rem;
       text-align: center;
       transition: background-color 0.15s linear;
       white-space: nowrap;

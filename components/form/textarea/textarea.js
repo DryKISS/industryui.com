@@ -10,7 +10,7 @@ import { any, bool, func, number, object, oneOf, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC } from '../hoc'
+import { FieldHOC } from '../hoc/index'
 import { formErrorStyle, formStyle } from '../variables/style'
 import { THEME_SIZE } from '../../theme/constants/size'
 

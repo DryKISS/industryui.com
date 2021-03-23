@@ -1,5 +1,5 @@
 /**
- * Calendar
+ * Components - Organsims - Calendar
  */
 export * from './bigCalendar/bigCalendar'
-export * from './fullCalendar'
+export * from './fullCalendar/fullCalendar'

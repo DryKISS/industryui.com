@@ -24,7 +24,6 @@ export default {
     useUTC: true
   },
   argTypes: {},
-  title: 'Molecules/Charts/highCharts/Liveline',
   component: HighChart,
   parameters: {
     docs: {
@@ -32,7 +31,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Charts/High Charts/Liveline'
 }
 
 const BaseComponent = (props) => {

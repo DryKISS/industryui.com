@@ -1,18 +1,18 @@
 /**
- * Radio
+ * Components - Form - Radio
  */
 
 // React
 import React from 'react'
 import { array, bool, string } from 'prop-types'
 
+// Style
+import styled, { css } from 'styled-components'
+
 // UI
 import { FieldHOC } from '../hoc'
 import { RadioComponent } from './component'
 import { formErrorStyle } from '../variables/style'
-
-// Style
-import styled, { css } from 'styled-components'
 
 export const RadioField = ({ data, errors, legend, stacked, ...props }) => {
   return (
@@ -37,6 +37,7 @@ export const RadioField = ({ data, errors, legend, stacked, ...props }) => {
 
 const StyledFieldset = styled.fieldset`
   border-radius: 0.25rem;
+  color: ${({ theme }) => theme.COLOUR.dark};
   ${({ error }) =>
     error &&
     css`

@@ -10,7 +10,7 @@ import { array, bool, object, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC } from '../hoc'
+import { FieldHOC } from '../hoc/index'
 import { CheckboxComponent } from './component'
 import { formErrorStyle } from '../variables/style'
 
@@ -38,6 +38,7 @@ export const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
 
 const StyledFieldset = styled.fieldset`
   border-radius: 0.25rem;
+  color: ${({ theme }) => theme.COLOUR.dark};
   ${({ error }) =>
     error &&
     css`

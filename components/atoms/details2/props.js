@@ -15,14 +15,12 @@ export const propTypes = {
   contentStyle: object,
   context: oneOf(Object.values(THEME_CONTEXT)),
   disableAnimation: bool,
-  endActionComponent: node,
   fitParentHeight: bool,
   iconComponent: node,
   open: bool,
-  startActionComponent: node,
   style: object,
   title: string.isRequired,
-  Toolbar: node,
+  toolbar: node,
   uniqueId: string,
   unmountContentOnClose: bool
 }

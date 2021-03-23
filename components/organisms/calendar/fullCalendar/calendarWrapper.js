@@ -18,13 +18,14 @@ export const CalendarWrapper = (props) => {
       modules: () => ({
         calendar: import('@fullcalendar/react'),
         dayGridPlugin: import('@fullcalendar/daygrid'),
-        timeGridPlugin: import('@fullcalendar/timegrid'),
         interactionPlugin: import('@fullcalendar/interaction'),
-        listPlugin: import('@fullcalendar/list')
+        listPlugin: import('@fullcalendar/list'),
+        // resourceTimelinePlugin: import('@fullcalendar/resource-timeline'),
+        timeGridPlugin: import('@fullcalendar/timegrid')
       }),
-      render: (props, { calendar: Calendar, ...plugins }) => (
-        <Calendar plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
-      ),
+      render: (props, { calendar: Calendar, ...plugins }) => {
+        return <Calendar plugins={Object.values(plugins)} ref={props.forwardedRef} {...props} />
+      },
       ssr: false
     })
 
@@ -32,7 +33,9 @@ export const CalendarWrapper = (props) => {
   }, [])
 
   const showCalendar = (props) => {
-    if (!calendarLoaded) return <div>Loading ...</div>
+    if (!calendarLoaded) {
+      return <div>Loading ...</div>
+    }
 
     return <FullCalendar {...props} />
   }
