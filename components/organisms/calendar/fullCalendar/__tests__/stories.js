@@ -101,7 +101,7 @@ export const ResourceTimeline = (args) => {
       // aspectRatio={1.5}
       timeZone="UTC"
       height="300"
-      // dateClick={dateClick}
+      dateClick={dateClick}
       // dayHeaders={false}
       // editable={true}
       scrollTime="milliseconds"
