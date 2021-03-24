@@ -13,6 +13,7 @@ export const NAVBAR = {
   padding: '0 1rem',
   paddingTablet: '0 1rem',
   paddingDesktop: '0 3rem',
+  breakpoint: 'desktop',
 
   // Borders
   borderTopColor: THEME_COLOUR.primary,

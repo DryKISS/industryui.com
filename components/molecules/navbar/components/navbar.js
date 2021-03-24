@@ -84,9 +84,14 @@ const StyledOverlay = styled.div`
   transition-duration: 0.2s;
   width: ${({ theme }) => theme.NAVBAR.widthOverlay};
   z-index: 199;
-  ${MEDIA_QUERY.desktop`
-    display: none;
-  `}
+
+  ${({ theme }) => {
+    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
+
+    return breakpoint`
+      display: none;
+    `
+  }}
 `
 
 Navbar.propTypes = {

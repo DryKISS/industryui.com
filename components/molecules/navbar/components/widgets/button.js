@@ -33,20 +33,24 @@ const StyledLink = styled(Link)`
 `
 
 const StyledButton = styled(Button)`
-  ${MEDIA_QUERY_MAX.desktop`
+  ${({ theme }) => {
+    const breakpoint = MEDIA_QUERY_MAX[theme.NAVBAR.breakpoint]
+
+    return breakpoint`
     background: none;
     border: none;
-    color: ${({ theme }) => theme.NAVBAR.colourActive};
+    color: ${theme.NAVBAR.colourActive};
     cursor: pointer;
     font-size: 0.8125rem;
     padding: 1rem 0.75rem;
     width: 100%;
 
     &:hover {
-      color: ${({ theme }) => theme.COLOUR.primary};
+      color: ${theme.COLOUR.primary};
       background: none;
     }
-  `}
+    `
+  }}
 `
 
 NavButton.propTypes = {

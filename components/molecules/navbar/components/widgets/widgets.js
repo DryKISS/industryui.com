@@ -80,13 +80,18 @@ const StyledList = styled.ul`
   margin: 0;
   padding: 0;
   text-align: center;
-  ${MEDIA_QUERY.desktop`
-    background-color: initial;
-    flex-direction: row;
-    flex: 1;
-    justify-content: ${({ direction }) => (direction === 'left' ? 'flex-start' : 'flex-end')};
-    text-align: left;
-  `}
+
+  ${({ direction, theme }) => {
+    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
+
+    return breakpoint`
+      background-color: initial;
+      flex-direction: row;
+      flex: 1;
+      justify-content: ${direction === 'left' ? 'flex-start' : 'flex-end'};
+      text-align: left;
+    `
+  }}
 `
 
 const StyledListItem = styled.li`
@@ -104,13 +109,18 @@ const StyledListItem = styled.li`
         margin-left: 0;
       }
     `}
-  ${MEDIA_QUERY.desktop`
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: ${({ theme }) => theme.NAVBAR.justifyContentDesktopListItem};
-    margin-bottom: ${({ theme }) => theme.NAVBAR.marginBottomDesktopListItem};
-  `}
+
+  ${({ theme }) => {
+    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
+
+    return breakpoint`
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: ${theme.NAVBAR.justifyContentDesktopListItem};
+      margin-bottom: ${theme.NAVBAR.marginBottomDesktopListItem};
+    `
+  }}
 `
 
 NavWidgets.propTypes = {
