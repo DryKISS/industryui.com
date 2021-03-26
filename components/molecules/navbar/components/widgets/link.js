@@ -40,16 +40,12 @@ const StyledLink = styled.span`
     color: ${({ theme }) => theme.NAVBAR.colourHover};
   } */
 
-  ${({ theme }) => {
-    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
-
-    return breakpoint`
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
       color: ${theme.NAVBAR.colourDefaultDesktop};
       // &:hover {
       //   color: ${theme.NAVBAR.colourHoverDesktop};
       // }
-    `
-  }}
+    `}
 `
 
 NavLink.propTypes = {

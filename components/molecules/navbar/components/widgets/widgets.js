@@ -81,17 +81,13 @@ const StyledList = styled.ul`
   padding: 0;
   text-align: center;
 
-  ${({ direction, theme }) => {
-    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
-
-    return breakpoint`
+  ${({ direction, theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
       background-color: initial;
       flex-direction: row;
       flex: 1;
       justify-content: ${direction === 'left' ? 'flex-start' : 'flex-end'};
       text-align: left;
-    `
-  }}
+    `}
 `
 
 const StyledListItem = styled.li`
@@ -110,17 +106,13 @@ const StyledListItem = styled.li`
       }
     `}
 
-  ${({ theme }) => {
-    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
-
-    return breakpoint`
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
       border: none;
       display: flex;
       flex-direction: column;
       justify-content: ${theme.NAVBAR.justifyContentDesktopListItem};
       margin-bottom: ${theme.NAVBAR.marginBottomDesktopListItem};
-    `
-  }}
+    `}
 `
 
 NavWidgets.propTypes = {

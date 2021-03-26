@@ -35,13 +35,9 @@ const StyledToggler = styled.a`
     color: ${({ theme }) => theme.NAVBAR.colourHoverToggler};
   }
 
-  ${({ theme }) => {
-    const breakpoint = MEDIA_QUERY[theme.NAVBAR.breakpoint]
-
-    return breakpoint`
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
       display: none;
-    `
-  }}
+    `}
 `
 
 const StyledText = styled.span`

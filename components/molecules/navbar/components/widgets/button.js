@@ -33,10 +33,7 @@ const StyledLink = styled(Link)`
 `
 
 const StyledButton = styled(Button)`
-  ${({ theme }) => {
-    const breakpoint = MEDIA_QUERY_MAX[theme.NAVBAR.breakpoint]
-
-    return breakpoint`
+  ${({ theme }) => MEDIA_QUERY_MAX[theme.NAVBAR.breakpoint]`
     background: none;
     border: none;
     color: ${theme.NAVBAR.colourActive};
@@ -49,8 +46,7 @@ const StyledButton = styled(Button)`
       color: ${theme.COLOUR.primary};
       background: none;
     }
-    `
-  }}
+    `}
 `
 
 NavButton.propTypes = {
