@@ -34,9 +34,10 @@ const StyledToggler = styled.a`
   &:hover {
     color: ${({ theme }) => theme.NAVBAR.colourHoverToggler};
   }
-  ${MEDIA_QUERY.desktop`
-    display: none;
-  `}
+
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
+      display: none;
+    `}
 `
 
 const StyledText = styled.span`

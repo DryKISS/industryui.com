@@ -20,7 +20,7 @@ export const BaseComponent = (props = {}) => {
   const defaultProps = {
     brand: props.brand || Brand.logo,
     contained: props.contained || false,
-    showMenu: props.showMenu || true,
+    showMenu: props.showMenu || false,
     widgets: Dashboard,
     ...props
   }

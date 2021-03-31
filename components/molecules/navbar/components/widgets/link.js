@@ -39,12 +39,13 @@ const StyledLink = styled.span`
   /* &:hover {
     color: ${({ theme }) => theme.NAVBAR.colourHover};
   } */
-  ${MEDIA_QUERY.desktop`
-    color: ${({ theme }) => theme.NAVBAR.colourDefaultDesktop};
-    // &:hover {
-    //   color: ${({ theme }) => theme.NAVBAR.colourHoverDesktop};
-    // }
-  `}
+
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
+      color: ${theme.NAVBAR.colourDefaultDesktop};
+      // &:hover {
+      //   color: ${theme.NAVBAR.colourHoverDesktop};
+      // }
+    `}
 `
 
 NavLink.propTypes = {
