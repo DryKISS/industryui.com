@@ -6,8 +6,8 @@
 import { any, number, oneOf } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../theme/constants/context'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_CONTEXT from '../../constants/context'
+import THEME_SIZE from '../../constants/size'
 
 export const propTypes = {
   className: any,

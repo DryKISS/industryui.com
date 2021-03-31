@@ -6,7 +6,7 @@
 import React, { useContext } from 'react'
 
 // UI
-import { ConfigContext } from '../../../services/config/context'
+import ConfigContext from '../../../services/config/context'
 import { Navbar } from '../../navbar/components/navbar'
 import { Dashboard } from '../__mocks__/navbar'
 

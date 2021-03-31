@@ -11,7 +11,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import { Button } from '../../atoms/button/button/button'
-import { ConfigContext } from '../../services/config/context'
+import ConfigContext from '../../services/config/context'
 import { Dropdown } from '../dropdown/components/dropdown'
 import { FormError } from '../../form/error/error'
 import { FormField } from '../../form/field/index'

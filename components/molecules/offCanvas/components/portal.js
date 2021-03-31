@@ -8,10 +8,10 @@ import { createPortal } from 'react-dom'
 import { any, bool, func, number, oneOf, string } from 'prop-types'
 
 // UI
-import { OffCanvasComponent } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import OffCanvasComponent from './offCanvas'
+import THEME_CONTEXT from '../../../constants/context'
 
-export const OffCanvas = (props) => {
+const OffCanvas = (props) => {
   const [mounted, setMounted] = useState(false)
 
   let container = document.body
@@ -69,3 +69,5 @@ OffCanvas.defaultProps = {
   variant: 'extended',
   width: '30vw'
 }
+
+export default OffCanvas

@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaMobile = ({ verification }) => {
+const MetaMobile = ({ verification }) => {
   return (
     <Head>
       <meta
@@ -24,3 +24,5 @@ export const MetaMobile = ({ verification }) => {
 MetaMobile.propTypes = {
   verification: string.isRequired
 }
+
+export default MetaMobile

@@ -1,7 +1,7 @@
 /**
  * Dog Groups
  */
-export const DOG_GROUP = [
+const DOG_GROUP = [
   {
     disabled: true,
     text: 'Filter by group',
@@ -36,3 +36,5 @@ export const DOG_GROUP = [
     value: 'Utility'
   }
 ]
+
+export default DOG_GROUP

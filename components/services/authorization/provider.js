@@ -9,11 +9,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import Router, { useRouter } from 'next/router'
 
 // UI
-import { AuthorizationContext } from '../authorization/context'
-import { ConfigContext } from '../config/context'
-import { UserContext } from '../authentication/context'
+import AuthorizationContext from './context'
+import ConfigContext from '../config/context'
+import UserContext from '../authentication/context'
 
-export const AuthorizationProvider = ({ children }) => {
+const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const { user } = useContext(UserContext)
   const router = useRouter()
@@ -99,3 +99,5 @@ export const AuthorizationProvider = ({ children }) => {
     )
   )
 }
+
+export default AuthorizationProvider

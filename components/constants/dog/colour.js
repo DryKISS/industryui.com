@@ -1,7 +1,7 @@
 /**
  * Colour
  */
-export const DOG_COLOUR = [
+const DOG_COLOUR = [
   {
     disabled: true,
     text: 'Select colour',
@@ -20,3 +20,5 @@ export const DOG_COLOUR = [
     value: 'chocolate'
   }
 ]
+
+export default DOG_COLOUR

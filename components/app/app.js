@@ -25,17 +25,17 @@ import TagManager from 'react-gtm-module'
 import { ThemeProvider } from 'styled-components'
 
 // UI
-import { AuthorizationProvider } from '../services/authorization/provider'
-import { ConfigProvider } from '../services/config/provider'
-import { InternationalisationProvider } from '../services/internationalisation/provider'
-import { NotificationsProvider } from '../services/notifications/provider'
-import { OffCanvasProvider } from '../services/offCanvas/provider'
-import { PageProgressBar } from '../molecules/pageProgressBar/components/pageProgressBar'
-import { Theme } from '../theme/variables/index'
-import { ThemeStyle } from '../theme/global/style'
-import { UserProvider } from '../services/authentication/provider'
+import AuthorizationProvider from '../services/authorization/provider'
+import ConfigProvider from '../services/config/provider'
+// import { InternationalisationProvider } from '../services/internationalisation/provider'
+import NotificationsProvider from '../services/notifications/provider'
+// import OffCanvasProvider from '../services/offCanvas/provider'
+// import { PageProgressBar } from '../molecules/pageProgressBar/components/pageProgressBar'
+import Theme from '../theme/theme'
+// import ThemeStyle from '../theme/global/style'
+import UserProvider from '../services/authentication/provider'
 
-export class MyApp extends App {
+export default class MyApp extends App {
   static propTypes = {
     apolloClient: object,
     Component: func.isRequired,
@@ -66,23 +66,21 @@ export class MyApp extends App {
   }
 
   elements() {
-    const { offCanvas, user } = this.props
+    // const { offCanvas, user } = this.props
+    const { user } = this.props
 
     return (
       <>
-        <ThemeStyle />
+        {/* <ThemeStyle /> */}
         {user && (
           <UserProvider>
             <AuthorizationProvider>
-              <InternationalisationProvider>
-                <NotificationsProvider>
-                  {offCanvas ? (
-                    <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
-                  ) : (
-                    this.layout()
-                  )}
-                </NotificationsProvider>
-              </InternationalisationProvider>
+              {/* <InternationalisationProvider> */}
+              <NotificationsProvider>
+                {/* {offCanvas ? <OffCanvasProvider children={this.layout()} /> : this.layout()} */}
+                {this.layout()}
+              </NotificationsProvider>
+              {/* </InternationalisationProvider> */}
             </AuthorizationProvider>
           </UserProvider>
         )}
@@ -109,11 +107,12 @@ export class MyApp extends App {
   }
 
   layout() {
-    const { Component, Layout, pageProps, pageProgressBar, router } = this.props
+    // const { Component, Layout, pageProps, pageProgressBar, router } = this.props
+    const { Component, Layout, pageProps } = this.props
 
     return (
       <Layout>
-        {pageProgressBar && <PageProgressBar router={router} />}
+        {/* {pageProgressBar && <PageProgressBar router={router} />} */}
         <Component {...pageProps} />
       </Layout>
     )

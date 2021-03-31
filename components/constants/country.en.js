@@ -1,7 +1,7 @@
 /**
  * Country
  */
-export const COUNTRY = [
+const COUNTRY = [
   {
     disabled: true,
     text: 'Select country',
@@ -1004,3 +1004,5 @@ export const COUNTRY = [
     text: 'Zimbabwe'
   }
 ]
+
+export default COUNTRY

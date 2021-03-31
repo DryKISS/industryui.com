@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: ['standard', 'standard-react', 'prettier', 'prettier/react', 'prettier-standard'],
+  extends: ['standard', 'standard-react', 'prettier'],
   env: {
     browser: true,
     es6: true,
@@ -11,7 +11,7 @@ module.exports = {
       version: '17.0.1'
     }
   },
-  plugins: ['react', 'react-hooks'],
+  plugins: ['react', 'react-hooks', 'prettier'],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
@@ -28,7 +28,7 @@ module.exports = {
       'error',
       {
         // Ignore SVGs d=
-        ignorePattern: 'd="([\\s\\S]*?)"|data:image',
+        ignorePattern: 'd="([\\s\\S]*?)"|data:image|^export [^,]+ from',
         code: 100,
         tabWidth: 2
       }

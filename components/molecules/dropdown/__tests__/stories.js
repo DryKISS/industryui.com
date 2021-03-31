@@ -20,7 +20,7 @@ import {
   useTranslation
 } from '../../../'
 
-import { THEME_COLOUR_LIST } from '../../../theme/constants/colourList'
+import THEME_COLOUR_LIST from '../../../constants/colourList'
 import { Icons, Items, Language } from '../__mocks__/dropdown'
 import Readme from '../README.md'
 

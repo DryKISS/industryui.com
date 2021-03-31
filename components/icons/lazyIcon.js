@@ -13,7 +13,7 @@ import dynamic from 'next/dynamic'
 import { propTypes } from './props'
 import { RawIcons } from './rawIcons'
 
-export const LazyIcon = ({ iconName, ...props }) => {
+const LazyIcon = ({ iconName, ...props }) => {
   const [LoadedIcon, setLoadedIcon] = useState(null)
 
   const loadModule = async () => {
@@ -35,3 +35,5 @@ LazyIcon.propTypes = {
   iconName: oneOf(Object.keys(RawIcons)),
   ...propTypes
 }
+
+export default LazyIcon

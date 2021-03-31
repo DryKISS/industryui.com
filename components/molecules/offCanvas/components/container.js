@@ -5,11 +5,11 @@
 // React
 import { bool, string } from 'prop-types'
 
-// UI
-import { MEDIA_QUERY } from '../../../'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import { MEDIA_QUERY } from '../../../utils/mediaQuery'
 
 export const OffCanvasDiv = styled.div`
   background-color: #fff;

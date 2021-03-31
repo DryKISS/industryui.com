@@ -11,7 +11,7 @@ import { bool, node, number, objectOf, oneOfType, string } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Container = ({ children, className, fluid, style }) => {
+const Container = ({ children, className, fluid, style }) => {
   return <StyledGrid children={children} className={className} fluid={fluid} style={style} />
 }
 
@@ -58,3 +58,5 @@ Container.defaultProps = {
   fluid: false,
   style: {}
 }
+
+export default Container

@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaDublin = ({ author, description, locale, title }) => {
+const MetaDublin = ({ author, description, locale, title }) => {
   return (
     <Head>
       <meta name="dcterms.title" content={title} />
@@ -27,3 +27,5 @@ MetaDublin.propTypes = {
   locale: string.isRequired,
   title: string.isRequired
 }
+
+export default MetaDublin

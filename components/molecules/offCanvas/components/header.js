@@ -6,13 +6,23 @@
 import React from 'react'
 import { bool, func, oneOf, string } from 'prop-types'
 
-// UI
-import { Avatar, Button, Close, Column, Divider, Heading, Icon, Row, Text } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-
 // Style
 import styled from 'styled-components'
+
+// Polished
 import { lighten } from 'polished'
+
+// UI
+import Avatar from '../../../atoms/avatar/avatar'
+import { Button } from '../../../atoms/button/button/button'
+import { Close } from '../../../atoms/close/close'
+import { Column } from '../../../atoms/grid/components/Column'
+import { Divider } from '../../../atoms/divider/divider'
+import { Heading } from '../../../atoms/heading/heading'
+import { Icon } from '../../../atoms/icon/icon/icon'
+import { Row } from '../../../atoms/grid/components/Row'
+import { Text } from '../../../atoms/text/text'
+import THEME_CONTEXT from '../../../constants/context'
 
 export const OffCanvasHeader = ({
   context,

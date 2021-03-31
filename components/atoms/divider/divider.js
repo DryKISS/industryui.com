@@ -6,14 +6,15 @@
 import styled, { css } from 'styled-components'
 
 // UI
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 import { propTypes, defaultProps } from './props'
 
-export const Divider = styled.hr`
+const Divider = styled.hr`
   border: none;
-  height: ${({ dashed, thickness }) => (dashed ? 2 : thickness)}px;
   flex-shrink: 0;
+  height: ${({ dashed, thickness }) => (dashed ? 2 : thickness)}px;
   width: 100%;
+
   ${({ context, dashed, theme, vertical }) => {
     return css`
       background-image: linear-gradient(
@@ -77,3 +78,5 @@ export const Divider = styled.hr`
 
 Divider.propTypes = propTypes
 Divider.defaultProps = defaultProps
+
+export default Divider

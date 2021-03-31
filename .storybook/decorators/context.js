@@ -8,7 +8,7 @@ import React from 'react'
 // UI
 import { arrayOfValues } from '../../components'
 import { ControlTypes } from './'
-import { THEME_CONTEXT } from '../../components/theme/constants/context'
+import THEME_CONTEXT from '../../components/constants/context'
 
 export const ContextControl = () => {
   return {

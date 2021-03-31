@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaTouch = ({ verification }) => {
+const MetaTouch = ({ verification }) => {
   return (
     <Head>
       <link
@@ -59,3 +59,5 @@ export const MetaTouch = ({ verification }) => {
 MetaTouch.propTypes = {
   verification: string.isRequired
 }
+
+export default MetaTouch

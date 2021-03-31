@@ -5,6 +5,8 @@
 // Tippy.js
 import tooltip from 'tippy.js'
 
-export const useTooltip = () => {
+const useTooltip = () => {
   return { tooltip }
 }
+
+export default useTooltip

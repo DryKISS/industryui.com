@@ -14,9 +14,10 @@ import {
   InternationalisationProvider,
   OffCanvasProvider,
   Theme,
-  ThemeStyle,
   UserProvider
 } from '../../components'
+
+import ThemeStyle from '../../components/theme/global/style'
 
 // Config
 import { Config } from '../../config'

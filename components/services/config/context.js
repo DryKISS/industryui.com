@@ -5,4 +5,5 @@
 // React
 import { createContext } from 'react'
 
-export const ConfigContext = createContext()
+const ConfigContext = createContext()
+export default ConfigContext

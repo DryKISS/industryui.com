@@ -6,7 +6,7 @@
 import { useLayoutEffect } from 'react'
 
 // Hook
-export function useTheme(theme) {
+const useTheme = (theme) => {
   useLayoutEffect(
     () => {
       // Iterate through each value in theme object
@@ -18,3 +18,5 @@ export function useTheme(theme) {
     [theme] // Only call again if theme object reference changes
   )
 }
+
+export default useTheme

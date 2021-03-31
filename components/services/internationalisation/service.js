@@ -9,7 +9,7 @@
 import { useContext } from 'react'
 
 // UI
-import { ConfigContext } from '../config/context'
+import ConfigContext from '../config/context'
 
 export const isLocale = ({ locales, tested }) => {
   return locales.some((locale) => locale === tested)

@@ -10,7 +10,7 @@ import { any, bool, node, oneOf, oneOfType, shape, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { ConfigContext } from '../../services/config/context'
+import ConfigContext from '../../services/config/context'
 import { Container } from '../../atoms/grid/components/Container'
 import { MetaHead } from '../../meta/head'
 import { PageHeading } from '../../molecules/pageHeading/pageHeading'

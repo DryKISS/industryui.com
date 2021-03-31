@@ -6,11 +6,11 @@
 import { bool, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { DIMENSION_PROP_TYPES } from '../../../theme/utils/dimension'
-import { DISPLAY_PROP_TYPES } from '../../../theme/utils/display'
-import { SPACER_PROP_TYPES } from '../../../theme/utils/spacer'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { THEME_SIZE } from '../../../theme/constants/size'
+import { DIMENSION_PROP_TYPES } from '../../../utils/dimension'
+import DISPLAY_PROP_TYPES from '../../../utils/display/props'
+import SPACER_PROP_TYPES from '../../../utils/spacer/props'
+import THEME_CONTEXT from '../../../constants/context'
+import THEME_SIZE from '../../../constants/size'
 
 export const propTypes = {
   block: bool,

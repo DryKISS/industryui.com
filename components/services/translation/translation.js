@@ -9,7 +9,7 @@ import { useContext } from 'react'
 import axios from 'axios'
 
 // Config
-import { ConfigContext } from '../../services/config/context'
+import ConfigContext from '../../services/config/context'
 
 const Translate = async (text, from = 'es', to = 'en') => {
   const { RapidApi } = useContext(ConfigContext)

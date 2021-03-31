@@ -1,7 +1,7 @@
 /**
  * Components - Atoms - Text - Variables
  */
-export const TEXT = {
+const TEXT = {
   FONT_SIZE: {
     xxs: '0.625rem',
     xs: '0.75rem',
@@ -23,3 +23,5 @@ export const TEXT = {
     xxxl: '4.5rem'
   }
 }
+
+export default TEXT

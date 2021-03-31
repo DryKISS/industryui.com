@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaGoogle = ({ verification }) => {
+const MetaGoogle = ({ verification }) => {
   return (
     <Head>
       <meta name="google-site-verification" content={verification} />
@@ -20,3 +20,5 @@ export const MetaGoogle = ({ verification }) => {
 MetaGoogle.propTypes = {
   verification: string.isRequired
 }
+
+export default MetaGoogle

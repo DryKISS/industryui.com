@@ -9,7 +9,7 @@ import { object, string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaHead = ({ canonical, brand, meta }) => {
+const MetaHead = ({ canonical, brand, meta }) => {
   const { description, path, title } = meta
 
   return (
@@ -36,3 +36,5 @@ MetaHead.propTypes = {
   brand: string.isRequired,
   meta: object.isRequired
 }
+
+export default MetaHead

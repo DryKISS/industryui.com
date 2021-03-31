@@ -6,12 +6,11 @@
 import React, { useContext } from 'react'
 
 // UI
-import { Bootstrap } from '../../../'
-import { ConfigContext } from '../../../services/config/context'
+import { Bootstrap } from '../bootstrap'
+import ConfigContext from '../../../services/config/context'
 import { Navbar } from '../../../molecules/navbar/components/navbar'
 import { Page } from '../../../layouts/page/page'
 import { Text } from '../../../atoms/text/text'
-
 import Readme from '../README.md'
 
 // Copyright

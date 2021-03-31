@@ -19,7 +19,7 @@ import { List } from '../../atoms/list/components/list'
 import { ListItem } from '../../atoms/list/components/listItem'
 import { Row } from '../../atoms/grid/components/Row'
 
-export const Footer = ({ columns, fixed }) => {
+const Footer = ({ columns, fixed }) => {
   const renderColumns = () => {
     return columns.map((column, index) => {
       return (
@@ -171,3 +171,5 @@ Footer.propTypes = {
 Footer.defaultProps = {
   fixed: false
 }
+
+export default Footer

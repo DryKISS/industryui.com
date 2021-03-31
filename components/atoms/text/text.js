@@ -9,13 +9,14 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { SPACER, MEDIA_QUERY } from '../../'
-import { themeDisplay } from '../../theme/utils/display'
+// import MEDIA_QUERY from '../../utils/mediaQuery'
+// import SPACER from '../../utils/spacer'
+// import themeDisplay from '../../utils/display'
 
 // Props
 import { propTypes, defaultProps } from './props'
 
-export const Text = ({ align, children, className, content, context, size, weight }) => {
+const Text = ({ align, children, className, content, context, size, weight }) => {
   return (
     <StyledText align={align} className={className} context={context} size={size}>
       {content || children}
@@ -35,43 +36,6 @@ const StyledText = styled.p`
     line-height: ${theme.TEXT.LINE_HEIGHT[size] ?? '1rem'};
   `}
 
-  ${({ size }) =>
-    size === 'xxl' &&
-    css`
-      ${MEDIA_QUERY.phone`
-        font-size: 2rem;
-      `}
-      ${MEDIA_QUERY.tablet`
-        font-size: 3rem;
-      `}
-      ${MEDIA_QUERY.desktop`
-        font-size: 4rem;
-      `}
-      ${MEDIA_QUERY.giant`
-        font-size: 5rem;
-      `}
-    `}
-  ${({ size }) =>
-    size === 'xxxl' &&
-    css`
-      ${MEDIA_QUERY.phone`
-        font-size: 5rem;
-      `}
-      ${MEDIA_QUERY.tablet`
-        font-size: 6rem;
-      `}
-      ${MEDIA_QUERY.desktop`
-        font-size: 7rem;
-      `}
-      ${MEDIA_QUERY.giant`
-        font-size: 8rem;
-      `}
-    `}
-
-  ${(theme) => themeDisplay(theme)}
-  ${(theme) => SPACER(theme)}
-
-
   ${({ weight }) =>
     weight &&
     css`
@@ -89,3 +53,5 @@ const StyledText = styled.p`
 
 Text.propTypes = propTypes
 Text.defaultProps = defaultProps
+
+export default Text

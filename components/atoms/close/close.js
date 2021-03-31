@@ -6,13 +6,13 @@
 import React from 'react'
 import { any, func, oneOf, string } from 'prop-types'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import { Button } from '../../atoms/button'
 import { Icon } from '../../'
 import { THEME_CONTEXT } from '../../theme/constants/context'
-
-// Style
-import styled from 'styled-components'
 
 export const Close = ({ className, click, context, icon, prefix }) => {
   return (

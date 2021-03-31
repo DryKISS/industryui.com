@@ -10,10 +10,10 @@
 import { useContext } from 'react'
 
 // UI
-import { ConfigContext } from '../../services/config/context'
+import ConfigContext from '../../services/config/context'
 import { InternationalisationContext } from '../../services/internationalisation/context'
 
-export const useTranslation = () => {
+const useTranslation = () => {
   const { defaultLocale, Translations } = useContext(ConfigContext)
   const { locale } = useContext(InternationalisationContext)
 
@@ -31,3 +31,5 @@ export const useTranslation = () => {
     locale
   }
 }
+
+export default useTranslation

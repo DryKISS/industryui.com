@@ -5,9 +5,11 @@
 // React
 import React from 'react'
 
-// Context
-import { ConfigContext } from '../config/context'
+// UI
+import ConfigContext from './context'
 
-export const ConfigProvider = (props) => {
+const ConfigProvider = (props) => {
   return <ConfigContext.Provider value={props.config} {...props} />
 }
+
+export default ConfigProvider

@@ -1,7 +1,6 @@
 /**
  * Use Script
- * This hook makes it easy to dynamically load an external script and know when
- * its loaded.
+ * This hook makes it easy to dynamically load an external script and know when its loaded.
  *
  * @see https://usehooks.com/
  */
@@ -9,30 +8,10 @@
 // React
 import { useState, useEffect } from 'react'
 
-// // Usage
-// function App () {
-//   const [loaded, error] = useScript(
-//     'https://pm28k14qlj.codesandbox.io/test-external-script.js'
-//   )
-
-//   return (
-//     <div>
-//       <div>
-//         Script loaded: <b>{loaded.toString()}</b>
-//       </div>
-//       {loaded && !error && (
-//         <div>
-//           Script function call response: <b>{TEST_SCRIPT.start()}</b>
-//         </div>
-//       )}
-//     </div>
-//   )
-// }
-
 // Hook
 const cachedScripts = []
 
-export function useScript(src) {
+const useScript = (src) => {
   // Keeping track of script loaded and error state
   const [state, setState] = useState({
     loaded: false,
@@ -94,3 +73,5 @@ export function useScript(src) {
 
   return [state.loaded, state.error]
 }
+
+export default useScript

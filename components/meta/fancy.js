@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaFancy = ({ category }) => {
+const MetaFancy = ({ category }) => {
   return (
     <Head>
       <meta property="fancy:category" content={category} />
@@ -20,3 +20,5 @@ export const MetaFancy = ({ category }) => {
 MetaFancy.propTypes = {
   category: string.isRequired
 }
+
+export default MetaFancy

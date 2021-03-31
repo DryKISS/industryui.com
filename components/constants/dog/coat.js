@@ -1,7 +1,7 @@
 /**
  * Dog Coats
  */
-export const DOG_COAT = [
+const DOG_COAT = [
   {
     disabled: true,
     text: 'Select coat type',
@@ -52,3 +52,5 @@ export const DOG_COAT = [
     value: 'other'
   }
 ]
+
+export default DOG_COAT

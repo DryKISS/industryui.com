@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaFacebook = ({ appId, brand, description, image, locale, title, type, url }) => {
+const MetaFacebook = ({ appId, brand, description, image, locale, title, type, url }) => {
   return (
     <Head>
       <meta content={title} property="og:title" />
@@ -35,3 +35,5 @@ MetaFacebook.propTypes = {
   locale: string.isRequired,
   title: string.isRequired
 }
+
+export default MetaFacebook

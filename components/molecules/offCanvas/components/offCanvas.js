@@ -7,11 +7,13 @@ import React, { useState, useEffect } from 'react'
 import { bool, func, node, number, oneOf, string } from 'prop-types'
 
 // UI
-import { OffCanvasDiv, OffCanvasHeader, OffCanvasContent, OffCanvasOverlay } from '../../../'
+import { OffCanvasDiv } from './container'
+import { OffCanvasHeader } from './header'
+import { OffCanvasContent } from './content'
+import { OffCanvasOverlay } from './overlay'
+import THEME_CONTEXT from '../../../constants/context'
 
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-
-export const OffCanvasComponent = ({
+const OffCanvasComponent = ({
   children,
   closeOnOverlayClick,
   context,
@@ -110,3 +112,5 @@ OffCanvasComponent.defaultProps = {
   transitionDuration: 300,
   width: '30vw'
 }
+
+export default OffCanvasComponent

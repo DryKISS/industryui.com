@@ -6,9 +6,10 @@
 import React from 'react'
 
 // UI
-import { NotificationsContext, useNotifications } from '../../'
+import NotificationsContext from './context'
+import useNotifications from '../../services/notifications/useNotifications'
 
-export const NotificationsProvider = ({ children, user }) => {
+const NotificationsProvider = ({ children, user }) => {
   const items = useNotifications(
     'messages',
     {
@@ -28,3 +29,5 @@ export const NotificationsProvider = ({ children, user }) => {
     </NotificationsContext.Provider>
   )
 }
+
+export default NotificationsProvider

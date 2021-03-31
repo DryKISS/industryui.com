@@ -6,7 +6,9 @@
 import React from 'react'
 
 // UI
-import { Button, ButtonToolbar, useTimer } from '../../../'
+import { Button } from '../../../atoms/button/button/button'
+import { ButtonToolbar } from '../../../atoms/button/toolbar/toolbar'
+import { useTimer } from '../useTimer'
 import Readme from '../README.md'
 
 export default {

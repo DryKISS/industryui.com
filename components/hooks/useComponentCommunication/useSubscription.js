@@ -9,19 +9,14 @@ import { array, func, instanceOf, string } from 'prop-types'
 // RXJS
 import { Subject } from 'rxjs'
 
-export const useComponentCommunication = ({
-  dependencies,
-  id,
-  messageName,
-  onRecieve,
-  subscriber
-}) => {
+const useComponentCommunication = ({ dependencies, id, messageName, onRecieve, subscriber }) => {
   useEffect(() => {
     const Subscription = subscriber.subscribe((message) => {
       if (message.name === messageName && (!id || id === message.id)) {
         onRecieve(message.payload)
       }
     })
+
     return () => {
       Subscription.unsubscribe()
     }
@@ -35,3 +30,5 @@ useComponentCommunication.propTypes = {
   onRecieve: func.isRequired,
   subscriber: instanceOf(Subject).isRequired
 }
+
+export default useComponentCommunication

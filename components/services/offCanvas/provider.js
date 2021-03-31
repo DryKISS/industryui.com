@@ -9,11 +9,12 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { getLast, getFirst, OffCanvas, OffCanvasContext } from '../../'
+import OffCanvas from '../../molecules/offCanvas/components/portal'
+import OffCanvasContext from './context'
 
 const DURATION = 300
 
-export const OffCanvasProvider = ({ children }) => {
+const OffCanvasProvider = ({ children }) => {
   const [dataManager, setDataManager] = useState([])
   const [visibilityManager, setVisibilityManager] = useState([])
 
@@ -45,10 +46,10 @@ export const OffCanvasProvider = ({ children }) => {
   }
 
   // Get width and placement from first item
-  const options = getFirst(dataManager)
+  const options = dataManager[0]
 
   // Get title and content from last item
-  const data = getLast(dataManager)
+  const data = dataManager[dataManager.length - 1]
 
   return (
     <OffCanvasContext.Provider
@@ -89,3 +90,5 @@ export const OffCanvasProvider = ({ children }) => {
 const StyledWrapper = styled.div`
   ${({ show }) => !show && 'display:none'}
 `
+
+export default OffCanvasProvider

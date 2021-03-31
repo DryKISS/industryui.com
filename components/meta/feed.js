@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaFeed = ({ title }) => {
+const MetaFeed = ({ title }) => {
   return (
     <Head>
       <link rel="alternate" type="application/atom+xml" href="feed.xml" title={title} />
@@ -21,3 +21,5 @@ export const MetaFeed = ({ title }) => {
 MetaFeed.propTypes = {
   title: string.isRequired
 }
+
+export default MetaFeed

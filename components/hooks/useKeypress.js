@@ -5,7 +5,7 @@
 // React
 import { useState, useEffect } from 'react'
 
-export function useKeyPress(targetKey) {
+const useKeyPress = (targetKey) => {
   // State for keeping track of whether key is pressed
   const [keyPressed, setKeyPressed] = useState(false)
 
@@ -36,3 +36,5 @@ export function useKeyPress(targetKey) {
 
   return keyPressed
 }
+
+export default useKeyPress

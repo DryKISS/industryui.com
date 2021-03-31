@@ -9,7 +9,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // UI
-import { ConfigContext } from '../config/context'
+import ConfigContext from '../config/context'
 import { InternationalisationContext } from './context'
 import { isLocale } from '../../services/internationalisation/service'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
