@@ -31,6 +31,7 @@ export const TableRows = memo(
       } else {
         delete row.hidden
       }
+
       return (
         <TableRow
           context={context}

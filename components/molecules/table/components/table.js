@@ -6,11 +6,11 @@
 import React from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
-// UI
-import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
 
 export const TableContent = ({
   align,
@@ -28,47 +28,63 @@ export const TableContent = ({
   striped,
   tableSpan
 }) => {
-  const bottomCells = { data: [], hasData: false }
-  columns.forEach((element) => {
-    if (element.bottomCell) {
+  const bottomCells = {
+    data: [],
+    hasData: false
+  }
+
+  columns.forEach((row) => {
+    if (row.hidden) {
+      return null
+    }
+
+    if (row.bottomCell) {
       bottomCells.hasData = true
-      bottomCells.data.push(element)
+      bottomCells.data.push(row)
     } else {
       bottomCells.data.push(null)
     }
   })
+
   return (
     <StyledTable className={className}>
-      {caption !== '' && <TableCaption>{caption}</TableCaption>}
       {columns && <TableColumns align={align} columns={columns} setSort={setSort} sort={sort} />}
+      {caption !== '' && <TableCaption>{caption}</TableCaption>}
 
-      <tbody>
-        {noData && !loading && !rows.length ? (
+      {noData && !loading && !rows.length ? (
+        <tbody>
           <TableRow>
             <TableData align="center" colSpan={tableSpan}>
               No data available
             </TableData>
           </TableRow>
-        ) : (
-          <TableRows
-            align={align}
-            bottomCells={bottomCells}
-            columns={columns}
-            changeSelectedRowBackground={changeSelectedRowBackground}
-            hover={hover}
-            rowClick={rowClick}
-            rows={rows}
-            striped={striped}
-          />
-        )}
-        {bottomCells?.hasData && (
-          <TableRow>
-            {bottomCells.data.map((cell, j) => (
-              <TableData key={`bottom${j}`}>{cell ? cell.bottomCell : ''}</TableData>
-            ))}
-          </TableRow>
-        )}
-      </tbody>
+        </tbody>
+      ) : (
+        <>
+          <tbody>
+            <TableRows
+              align={align}
+              bottomCells={bottomCells}
+              columns={columns}
+              changeSelectedRowBackground={changeSelectedRowBackground}
+              hover={hover}
+              rowClick={rowClick}
+              rows={rows}
+              striped={striped}
+            />
+          </tbody>
+
+          {bottomCells?.hasData && (
+            <tfoot>
+              <TableRow>
+                {bottomCells.data.map((cell, j) => (
+                  <TableData key={`bottom${j}`}>{cell ? cell.bottomCell : ''}</TableData>
+                ))}
+              </TableRow>
+            </tfoot>
+          )}
+        </>
+      )}
     </StyledTable>
   )
 }

@@ -12,6 +12,8 @@ export const rows = {
   data: [
     {
       id: '10001',
+      testHidden1: 'hidden',
+      testHidden2: 'hidden',
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com',
       logo: 'https://drykiss.com/static/logo/drykiss.svg',
@@ -20,6 +22,8 @@ export const rows = {
     },
     {
       id: '10002',
+      testHidden1: 'hidden',
+      testHidden2: 'hidden',
       company: 'Triangle Solutions Ltd',
       url: 'https://triangle-solutions.com',
       logo: 'https://drykiss.com/static/logo/drykiss.svg',
@@ -51,6 +55,12 @@ export const columnsActions = [
     text: 'ID'
   },
   {
+    hidden: true
+  },
+  {
+    hidden: true
+  },
+  {
     bottomCell: (
       <Text bold context="danger">
         bottom Cell
@@ -65,6 +75,11 @@ export const columnsActions = [
     text: 'URL'
   },
   {
+    bottomCell: (
+      <Text bold context="danger">
+        bottom Cell
+      </Text>
+    ),
     formatter: renderImage,
     text: 'Logo'
   },
