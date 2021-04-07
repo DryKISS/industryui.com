@@ -12,13 +12,15 @@ import { THEME_CONTEXT } from '../../../../theme/constants/context'
 import { TableActionsTooltip } from './tooltip'
 import { TableActionsButton } from './button'
 
-export const TableActions = ({ align, row, data }) => {
+export const TableActions = ({ align, data, row }) => {
   let dataArray
+
   if (typeof data === 'function') {
     dataArray = data()(row)
   } else {
     dataArray = data
   }
+
   return (
     <ButtonToolbar align={align}>
       {dataArray.map(
@@ -47,7 +49,7 @@ export const TableActions = ({ align, row, data }) => {
 }
 
 TableActions.propTypes = {
-  align: oneOfType([string, bool]),
+  align: string,
   data: arrayOf(
     shape({
       content: string,
