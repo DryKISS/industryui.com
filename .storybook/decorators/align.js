@@ -9,7 +9,8 @@ import React from 'react'
 import { ControlTypes } from './'
 
 // UI
-import { arrayOfValues, THEME_ALIGN } from '../../components'
+import { arrayOfValues } from '../../components/utils/arrayOfValues/index'
+import THEME_ALIGN from '../../components/constants/align'
 
 export const AlignControl = () => {
   return {

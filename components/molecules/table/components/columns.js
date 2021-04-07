@@ -7,7 +7,8 @@ import React, { memo } from 'react'
 import { array, bool, func, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { Icon, TableHead } from '../../../'
+import Icon from '../../../atoms/icon/icon/icon'
+import TableHead from './head'
 
 const RenderColumns = ({ align, columns, setSort, sort }) =>
   columns.map(({ hidden, sortable, sortName = '', text }, index) => {
@@ -43,7 +44,7 @@ const RenderColumns = ({ align, columns, setSort, sort }) =>
     )
   })
 
-export const TableColumns = memo(({ align, columns, setSort, sort }) => (
+const TableColumns = memo(({ align, columns, setSort, sort }) => (
   <thead>
     <tr>
       <RenderColumns align={align} columns={columns} setSort={setSort} sort={sort} />
@@ -66,3 +67,5 @@ TableColumns.defaultProps = {
   columns: [],
   sort: {}
 }
+
+export default TableColumns

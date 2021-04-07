@@ -36,7 +36,7 @@ const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
     case dropdownTypes.List:
       return (
         <StyledDropdownItem divider={item.divider}>
-          {item.divider ? <Divider size="sm" /> : renderItem(item, closeDropdown, onClick)}
+          {item.divider ? <Divider size="xxs" /> : renderItem(item, closeDropdown, onClick)}
         </StyledDropdownItem>
       )
 

@@ -13,25 +13,25 @@ import TYPOGRAPHY from '../constants/typography'
 // import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
 // import { COPYRIGHT } from '../../molecules/copyright/variables'
 // import { DETAILS2 } from '../../atoms/details2/variables'
-// import { DROPDOWN } from '../../molecules/dropdown/variables'
+import DROPDOWN from '../molecules/dropdown/variables'
 // import { FOOTER } from '../../organisms/footer/variables'
 // import { FORM_ELEMENTS_STYLES } from '../../form/variables/variables'
-// import { GRID } from '../../atoms/grid/variables'
-// import { HEADINGS } from '../../atoms/heading/variables'
+import GRID from '../atoms/grid/variables'
+import HEADINGS from '../atoms/heading/variables'
 // import { ICONS } from '../../icons/variables'
-// import { LINK } from '../../atoms/link/variables'
+import LINK from '../atoms/link/variables'
 // import { LOGIN } from '../../organisms/login/variables'
 // import { MESSAGING } from '../../organisms/messaging/variables'
-// import { NAVBAR } from '../../molecules/navbar/variables'
+import NAVBAR from '../molecules/navbar/variables'
 // import { PAGE } from '../../layouts/page/variables'
 // import { PRICING } from '../../organisms/pricing/variables'
 // import { PROGRESS, PROGRESSBAR } from '../../atoms/progress/variables'
 // import { SELECT } from '../../form/reactSelect/variables'
 // import { SIDEBAR } from '../../molecules/sidebar/variables'
-// import { SPACING } from '../utils/spacer'
+import SPACING from '../utils/spacer/spacing'
 // import { STEPPER } from '../../molecules/stepper/variables'
-// import { TABLE } from '../../molecules/table/variables'
-// import { TABS } from '../../molecules/tabs/variables'
+import TABLE from '../molecules/table/variables'
+import TABS from '../molecules/tabs/variables'
 import TEXT from '../atoms/text/variables'
 // import { VOICE_RECORDER } from '../../molecules/voiceRecorder/variables'
 
@@ -49,17 +49,17 @@ const Theme = {
   COLOUR,
   // COPYRIGHT,
   // DETAILS2,
-  // DROPDOWN,
+  DROPDOWN,
   // FOOTER,
   // FORM_ELEMENTS_STYLES,
-  // GRID,
-  // HEADINGS,
+  GRID,
+  HEADINGS,
   // ICONS,
   // LINECHART,
-  // LINK,
+  LINK,
   // LOGIN,
   // MESSAGING,
-  // NAVBAR,
+  NAVBAR,
   // PAGE,
   // PRICING,
   // PIECHART,
@@ -67,10 +67,10 @@ const Theme = {
   // PROGRESSBAR,
   // SELECT,
   // SIDEBAR,
-  // SPACING,
+  SPACING,
   // STEPPER,
-  // TABLE,
-  // TABS,
+  TABLE,
+  TABS,
   TEXT,
   TYPOGRAPHY
   // VOICE_RECORDER

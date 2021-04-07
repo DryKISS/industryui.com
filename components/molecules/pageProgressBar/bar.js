@@ -6,10 +6,10 @@
 import React from 'react'
 import { number, string } from 'prop-types'
 
-// Styled Components
+// Style
 import styled from 'styled-components'
 
-export const Bar = ({ animationDuration, context, progress }) => (
+const Bar = ({ animationDuration, context, progress }) => (
   <StyledBar
     context={context}
     style={{
@@ -34,3 +34,5 @@ const StyledBar = styled.div`
   width: 100%;
   z-index: 1031;
 `
+
+export default Bar

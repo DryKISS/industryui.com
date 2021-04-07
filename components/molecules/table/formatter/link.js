@@ -9,13 +9,13 @@ import { object } from 'prop-types'
 // Next
 import Router from 'next/router'
 
-// UI
-import { StyledLink } from '../../../'
-
 // Style
 import styled from 'styled-components'
 
-export const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
+// UI
+import { StyledLink } from '../../../atoms/link/link'
+
+const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
   let useLink = false
   useLink = row[dynamicUrl] || path
 
@@ -56,3 +56,5 @@ const StyleLink = styled(StyledLink)`
 TableLink.propTypes = {
   row: object.isRequired
 }
+
+export default TableLink

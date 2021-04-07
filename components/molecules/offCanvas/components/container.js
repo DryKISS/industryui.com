@@ -9,7 +9,7 @@ import { bool, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { MEDIA_QUERY } from '../../../utils/mediaQuery'
+import MEDIA_QUERY from '../../../utils/mediaQuery/query'
 
 export const OffCanvasDiv = styled.div`
   background-color: #fff;

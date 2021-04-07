@@ -9,7 +9,7 @@ import { node, number, objectOf, oneOf, oneOfType, string, bool } from 'prop-typ
 // Style
 import styled, { css } from 'styled-components'
 
-export const Row = ({ align, children, className, justify, noGutter, noWrap, style }) => {
+const Row = ({ align, children, className, justify, noGutter, noWrap, style }) => {
   return (
     <StyledRow
       align={align}
@@ -76,3 +76,5 @@ Row.defaultProps = {
   style: {},
   noWrap: false
 }
+
+export default Row

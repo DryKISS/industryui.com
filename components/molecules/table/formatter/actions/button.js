@@ -9,16 +9,16 @@ import { array, bool, func, object, oneOf, oneOfType, string } from 'prop-types'
 // Next
 import Router from 'next/router'
 
-// UI
-import { Button } from '../../../../atoms/button/button/button'
-import { Icon } from '../../../../atoms/icon/icon/icon'
-import { TableActionsOverlay } from './overlay'
-import { THEME_CONTEXT } from '../../../../theme/constants/context'
-
 // Style
 import styled from 'styled-components'
 
-export const TableActionsButton = forwardRef(
+// UI
+import Button from '../../../../atoms/button/button/button'
+import Icon from '../../../../atoms/icon/icon/icon'
+import TableActionsOverlay from './overlay'
+import THEME_CONTEXT from '../../../../constants/context'
+
+const TableActionsButton = forwardRef(
   ({ context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to }, ref) => {
     const handleClick = (path) => (e) => {
       e.preventDefault()
@@ -70,3 +70,5 @@ TableActionsButton.propTypes = {
   row: object.isRequired,
   to: string
 }
+
+export default TableActionsButton

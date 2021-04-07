@@ -18,14 +18,15 @@ const NavCollapse = styled.div`
   margin: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '2.5rem 2rem' : 'inherit')};
   position: ${({ theme }) => theme.NAVBAR.positionCollapse};
   right: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '0' : 'inherit')};
+  margin: ${({ theme }) => (theme.NAVBAR.positionCollapse === 'fixed' ? '2.5rem 2rem' : 'inherit')};
 
-  ${MEDIA_QUERY.desktop`
-    border: none;
-    display: flex;
-    flex-basis: auto;
-    margin: inherit;
-    position: static;
-  `}
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
+      border: none;
+      display: flex;
+      flex-basis: auto;
+      position: static;
+      margin: inherit;
+    `}
 `
 
 NavCollapse.propTypes = {

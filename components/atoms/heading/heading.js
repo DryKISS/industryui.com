@@ -10,10 +10,10 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { themeColour } from '../../theme/utils/colour'
+import { themeColour } from '../../utils/colour'
 import { propTypes, defaultProps } from './props'
 
-export const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {
+const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {
   return (
     <StyledHeading
       as={tag}
@@ -59,3 +59,5 @@ const StyledHeading = styled.span`
 
 Heading.propTypes = propTypes
 Heading.defaultProps = defaultProps
+
+export default Heading

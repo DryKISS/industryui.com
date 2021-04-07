@@ -43,28 +43,32 @@ const Divider = styled.hr`
       case THEME_SIZE.XXS:
         margin = '0.25rem'
         break
-      case THEME_SIZE.SM:
+      case THEME_SIZE.XS:
         margin = '0.5rem'
+        break
+      case THEME_SIZE.SM:
+        margin = '0.75rem'
         break
       case THEME_SIZE.MD:
         margin = '1rem'
         break
       case THEME_SIZE.LG:
-        margin = '2rem'
+        margin = '1.5rem'
         break
       case THEME_SIZE.XL:
-        margin = '3rem'
+        margin = '2rem'
         break
       case THEME_SIZE.XXL:
-        margin = '4rem'
+        margin = '3rem'
         break
       case THEME_SIZE.XXXL:
-        margin = '8rem'
+        margin = '4rem'
         break
 
       default:
         break
     }
+
     return vertical ? '0 ' + margin : margin + ' 0'
   }};
 

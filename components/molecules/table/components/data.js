@@ -9,7 +9,7 @@ import { bool, oneOfType, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const TableData = memo(styled.td`
+const TableData = memo(styled.td`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => align && 'center'};
@@ -18,3 +18,5 @@ export const TableData = memo(styled.td`
 TableData.propTypes = {
   align: oneOfType([string, bool])
 }
+
+export default TableData

@@ -6,13 +6,17 @@
 import React from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
-// UI
-import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
-
 // Style
 import styled from 'styled-components'
 
-export const TableContent = ({
+// UI
+import TableCaption from './caption'
+import TableColumns from './columns'
+import TableData from './data'
+import TableRow from './row'
+import TableRows from './rows'
+
+const TableContent = ({
   align,
   caption,
   changeSelectedRowBackground,
@@ -110,3 +114,5 @@ TableContent.defaultProps = {
   sort: {},
   striped: true
 }
+
+export default TableContent

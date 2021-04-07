@@ -6,7 +6,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 // UI
-import MEDIA_QUERY from '../../utils/mediaQuery'
+import MEDIA_QUERY from '../../utils/mediaQuery/query'
 
 const ThemeStyle = createGlobalStyle`
   .text-center {

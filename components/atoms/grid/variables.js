@@ -25,7 +25,7 @@ const space = [0, 4, 8, 16, 32, 64, 128]
 
 const radius = 4
 
-export const GRID = {
+const GRID = {
   breakpoints,
   containerWidths,
   defaultScreenClass,
@@ -34,3 +34,5 @@ export const GRID = {
   radius,
   space
 }
+
+export default GRID

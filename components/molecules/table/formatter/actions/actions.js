@@ -7,12 +7,12 @@ import React from 'react'
 import { array, arrayOf, bool, func, object, oneOf, oneOfType, shape, string } from 'prop-types'
 
 // UI
-import { ButtonToolbar } from '../../../../atoms/button/toolbar/toolbar'
-import { THEME_CONTEXT } from '../../../../theme/constants/context'
-import { TableActionsTooltip } from './tooltip'
-import { TableActionsButton } from './button'
+import ButtonToolbar from '../../../../atoms/button/toolbar/toolbar'
+import THEME_CONTEXT from '../../../../constants/context'
+import TableActionsTooltip from './tooltip'
+import TableActionsButton from './button'
 
-export const TableActions = ({ align, row, data }) => {
+const TableActions = ({ align, row, data }) => {
   let dataArray
   if (typeof data === 'function') {
     dataArray = data()(row)
@@ -67,3 +67,5 @@ TableActions.propTypes = {
 TableActions.defaultProps = {
   align: 'flex-start'
 }
+
+export default TableActions

@@ -7,8 +7,8 @@ import React, { useContext } from 'react'
 
 // UI
 import ConfigContext from '../../../services/config/context'
-import { Navbar } from '../../navbar/components/navbar'
-import { Dashboard } from '../__mocks__/navbar'
+import Navbar from '../../navbar/navbar'
+import Dashboard from '../__mocks__/dashboard'
 
 export const options = {
   component: Navbar
@@ -20,7 +20,7 @@ export const BaseComponent = (props = {}) => {
   const defaultProps = {
     brand: props.brand || Brand.logo,
     contained: props.contained || false,
-    showMenu: props.showMenu || true,
+    showMenu: props.showMenu || false,
     widgets: Dashboard,
     ...props
   }

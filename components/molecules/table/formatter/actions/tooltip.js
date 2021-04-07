@@ -7,9 +7,9 @@ import React from 'react'
 import { node, string } from 'prop-types'
 
 // UI
-import { Tooltip } from '../../../../'
+import Tooltip from '../../../../atoms/tooltip/tooltip'
 
-export const TableActionsTooltip = ({ children, tooltip }) => (
+const TableActionsTooltip = ({ children, tooltip }) => (
   <Tooltip content={tooltip}>{children}</Tooltip>
 )
 
@@ -17,3 +17,5 @@ TableActionsTooltip.propTypes = {
   children: node.isRequired,
   tooltip: string.isRequired
 }
+
+export default TableActionsTooltip

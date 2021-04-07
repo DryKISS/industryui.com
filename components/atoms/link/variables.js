@@ -3,10 +3,12 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
-export const LINK = {
+const LINK = {
   active: THEME_COLOUR.secondary,
   colour: THEME_COLOUR.primary,
   visited: THEME_COLOUR.secondary
 }
+
+export default LINK

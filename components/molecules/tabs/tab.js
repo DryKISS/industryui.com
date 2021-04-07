@@ -6,13 +6,13 @@
 import React, { useEffect, useRef } from 'react'
 import { bool, func, number, object, oneOfType, string } from 'prop-types'
 
-// UI
-import { slugify } from '../../../'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const Tab = ({
+// UI
+import slugify from '../../utils/slugify/slugify'
+
+const Tab = ({
   activeTab,
   childClick,
   context,
@@ -151,3 +151,5 @@ Tab.defaultProps = {
   context: false,
   scrollToActiveTab: true
 }
+
+export default Tab

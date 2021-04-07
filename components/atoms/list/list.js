@@ -9,7 +9,7 @@ import { bool, node, object, string } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const List = ({ border, children, className, flush, inline, group, style, unstyled }) => {
+const List = ({ border, children, className, flush, inline, group, style, unstyled }) => {
   const renderListItems = () =>
     React.Children.map(children, (child) =>
       React.cloneElement(child, {
@@ -74,3 +74,5 @@ List.defaultProps = {
   group: false,
   unstyled: false
 }
+
+export default List

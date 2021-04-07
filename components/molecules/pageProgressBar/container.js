@@ -6,7 +6,7 @@
 import React from 'react'
 import { bool, node, number } from 'prop-types'
 
-export const Container = ({ children, isFinished, animationDuration }) => (
+const Container = ({ children, isFinished, animationDuration }) => (
   <div
     style={{
       opacity: isFinished ? 0 : 1,
@@ -23,3 +23,5 @@ Container.propTypes = {
   children: node.isRequired,
   isFinished: bool.isRequired
 }
+
+export default Container

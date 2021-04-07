@@ -9,7 +9,7 @@ import { any, number, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const PageLoading = ({ children, dataCy, indicator, ...props }) => {
+const PageLoading = ({ children, dataCy, indicator, ...props }) => {
   return (
     <StyledLoading data-cy={dataCy} {...props}>
       {indicator || children}
@@ -48,3 +48,5 @@ PageLoading.defaultProps = {
   opacity: 1,
   position: 'fixed'
 }
+
+export default PageLoading

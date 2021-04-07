@@ -6,14 +6,16 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
-// UI
-import { TableContent, TableLoading, TablePagination } from '../../../'
-import { tableColumnCount } from '../utils/columnCount'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const Table = memo(
+// UI
+import TableContent from './table'
+import TableLoading from './loading'
+import TablePagination from './pagination'
+import tableColumnCount from '../utils/columnCount'
+
+const Table = memo(
   ({
     align,
     border,
@@ -160,3 +162,5 @@ Table.defaultProps = {
   responsive: true,
   striped: true
 }
+
+export default Table

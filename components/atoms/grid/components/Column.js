@@ -9,7 +9,7 @@ import { any, number, objectOf, oneOfType, string, shape } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Column = ({ children, className, columnRef, style, sm, md, lg, xl, offset }) => {
+const Column = ({ children, className, columnRef, style, sm, md, lg, xl, offset }) => {
   sm = sm !== undefined ? sm : 0
   md = md !== undefined ? md : sm
   lg = lg !== undefined ? lg : md
@@ -92,3 +92,5 @@ Column.defaultProps = {
   style: {},
   debug: false
 }
+
+export default Column

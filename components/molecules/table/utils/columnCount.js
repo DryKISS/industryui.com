@@ -2,4 +2,6 @@
  * Components - Molecules - Table - Utils
  */
 
-export const tableColumnCount = (columns) => columns.filter((c) => !c.hidden).length
+const tableColumnCount = (columns) => columns.filter((c) => !c.hidden).length
+
+export default tableColumnCount

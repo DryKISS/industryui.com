@@ -10,10 +10,9 @@ import { BaseComponent, options } from './baseComponent'
 import Readme from '../README.md'
 
 // Data
-import { Default } from '../__mocks__/navbar'
+import DEFAULT from '../__mocks__/navigation'
 
 export default {
-  title: 'Molecules/Navbar',
   parameters: {
     docs: {
       description: {
@@ -21,7 +20,8 @@ export default {
       }
     }
   },
+  title: 'Molecules/Navbar',
   ...options
 }
 
-export const navbar = () => <BaseComponent widgets={Default} />
+export const navbar = () => <BaseComponent widgets={DEFAULT} />

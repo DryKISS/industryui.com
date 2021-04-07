@@ -10,9 +10,9 @@ import { bool, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { themeBackground } from '../../../theme/utils/background'
+import { themeBackground } from '../../../utils/background'
 
-export const TableRow = memo(styled.tr`
+const TableRow = memo(styled.tr`
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
 
   ${({ context, striped, theme }) =>
@@ -51,3 +51,5 @@ TableRow.propTypes = {
   pointer: bool,
   striped: bool
 }
+
+export default TableRow

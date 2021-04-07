@@ -1,4 +1,0 @@
-/**
- * Config
- */
-export * from './config'

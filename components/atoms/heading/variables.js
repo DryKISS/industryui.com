@@ -1,7 +1,7 @@
 /**
  * Theme - Variables - Headings
  */
-export const HEADINGS = {
+const HEADINGS = {
   h1: {
     fontSize: '2rem',
     lineHeight: '1.25',
@@ -34,3 +34,5 @@ export const HEADINGS = {
     textTransform: 'uppercase'
   }
 }
+
+export default HEADINGS

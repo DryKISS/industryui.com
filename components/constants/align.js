@@ -1,5 +1,5 @@
 /**
- * Components - Theme - Constants - Align
+ * Components - Constants - Align
  */
 const THEME_ALIGN = {
   Start: 'flex-start',

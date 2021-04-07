@@ -7,9 +7,10 @@ import React, { memo, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
 // UI
-import { TableData, TableRow } from '../../../'
+import TableData from './data'
+import TableRow from './row'
 
-export const TableRows = memo(
+const TableRows = memo(
   ({ align, changeSelectedRowBackground, columns, hover, rowClick, rows, striped }) => {
     const [selectedIndex, setSelectedIndex] = useState(null)
     const handleClick = (e, index) => {
@@ -92,3 +93,5 @@ TableRows.defaultProps = {
   hover: true,
   striped: true
 }
+
+export default TableRows

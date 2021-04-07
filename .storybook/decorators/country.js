@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { COUNTRY } from '../../components'
+import COUNTRY from '../../components/constants/country.en'
 
 export const CountryControl = () => {
   COUNTRY.shift()

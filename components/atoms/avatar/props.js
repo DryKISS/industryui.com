@@ -7,7 +7,7 @@ import { any, func, node, number, objectOf, oneOf, oneOfType, string } from 'pro
 
 // UI
 import THEME_CONTEXT from '../../constants/context'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
 export const propTypes = {
   action: node,

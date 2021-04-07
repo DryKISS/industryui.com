@@ -10,13 +10,11 @@ import { bool, object, oneOf, string } from 'prop-types'
 import { NProgress } from '@tanem/react-nprogress'
 
 // UI
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import Container from './container'
+import Bar from './bar'
+import THEME_CONTEXT from '../../constants/context'
 
-// Components
-import { Container } from './container'
-import { Bar } from './bar'
-
-export const PageProgressBar = ({ context, isAnimating, instanceKey, router }) => {
+const PageProgressBar = ({ context, isAnimating, instanceKey, router }) => {
   const [isRouteChanging, setIsRouteChanging] = useState(false)
   const [loadingKey, setLoadingKey] = useState(null)
 
@@ -60,3 +58,5 @@ PageProgressBar.defaultProps = {
   isAnimating: false,
   instanceKey: null
 }
+
+export default PageProgressBar

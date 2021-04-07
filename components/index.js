@@ -21,6 +21,9 @@ export { default as THEME_SIZE } from './constants/size'
 export { default as THEME_SIZE_ARRAY } from './constants/sizeArray'
 export { default as THEME_TYPOGRAPHY } from './constants/typography'
 
+// Utils
+export { default as slugify } from './utils/slugify/slugify'
+
 // Hooks
 export { default as useAxios } from './hooks/useAxios'
 export { default as useGeoCoder } from './hooks/useGeoCoder'
@@ -49,6 +52,11 @@ export { default as Theme } from './theme/theme'
 // Atoms
 export { default as Address } from './atoms/address/address'
 export { default as Button } from './atoms/button/button/button'
+export { default as ButtonToolbar } from './atoms/button/toolbar/toolbar'
+export { default as Container } from './atoms/grid/components/Container'
+export { default as Icon } from './atoms/icon/icon/icon'
+export { default as Link } from './atoms/link/link'
+export { default as Space } from './atoms/space/space'
 export { default as Text } from './atoms/text/text'
 
 // Layouts
@@ -56,6 +64,9 @@ export { default as Bootstrap } from './layouts/bootstrap/bootstrap'
 
 // Molecules
 export { default as Navbar } from './molecules/navbar/navbar'
+export { default as PageHeading } from './molecules/pageHeading/pageHeading'
+export { default as Table } from './molecules/table/components/wrapper'
+export { default as Tabs } from './molecules/tabs/tabs'
 
 // Components
 // export * from './atoms'

@@ -6,7 +6,7 @@
 import { css } from 'styled-components'
 
 // UI
-import { MEDIA_QUERY } from '../../'
+import MEDIA_QUERY from '../../utils/mediaQuery/query'
 
 const sizes = {
   xxsSize: '0.25rem',
@@ -19,7 +19,7 @@ const sizes = {
   xxxlSize: '3rem'
 }
 
-export const spaceStyler = (properties) => {
+const spaceStyler = (properties) => {
   let stl = ''
   let counter = 0
 
@@ -45,3 +45,5 @@ export const spaceStyler = (properties) => {
     ${stl}
   `
 }
+
+export default spaceStyler

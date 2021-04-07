@@ -6,13 +6,13 @@
 import React from 'react'
 import { bool, node, string } from 'prop-types'
 
-// UI
-import { Icon } from '../../icon'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const ListItem = ({ border, children, className, flush, group, icon, prefix, style }) => (
+// UI
+import Icon from '../icon/icon/icon'
+
+const ListItem = ({ border, children, className, flush, group, icon, prefix, style }) => (
   <StyledItem border={border} className={className} flush={flush} group={group} style={style}>
     {icon && <StyledIcon aria-hidden="true" icon={icon} prefix={prefix} size="2x" />}
     {children}
@@ -63,3 +63,5 @@ ListItem.propTypes = {
   icon: string,
   prefix: string
 }
+
+export default ListItem

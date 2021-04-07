@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Sidebar as SidebarUI } from '../components'
+import { Sidebar as SidebarUI } from '../components/molecules/sidebar/sidebar'
 
 export const apiConfig = {}
 export const jwtConfig = {}

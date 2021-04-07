@@ -37,13 +37,16 @@ const StyledLink = styled.span`
   flex: 1;
   justify-content: center;
   padding: ${({ theme }) => theme.NAVBAR.paddingLink};
+  /* &:hover {
+    color: ${({ theme }) => theme.NAVBAR.colourHover};
+  } */
 
-  ${MEDIA_QUERY.desktop`
-    color: ${({ theme }) => theme.NAVBAR.colourDefaultDesktop};
-    // &:hover {
-    //   color: ${({ theme }) => theme.NAVBAR.colourHoverDesktop};
-    // }
-  `}
+  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
+      color: ${theme.NAVBAR.colourDefaultDesktop};
+      // &:hover {
+      //   color: ${theme.NAVBAR.colourHoverDesktop};
+      // }
+    `}
 `
 
 NavLink.propTypes = {

@@ -5,17 +5,17 @@
 // React
 import React from 'react'
 
-// Style
-import styled from 'styled-components'
-
 // Lodash
 import chunk from 'lodash/chunk'
 
-// UI
-import { PaginationItem } from './'
-import { PaginationPropTypes, PaginationDefaultProps } from './props'
+// Style
+import styled from 'styled-components'
 
-export const Pagination = ({
+// UI
+import PaginationItem from './item'
+import { propTypes, defaultProps } from './props'
+
+const Pagination = ({
   breakCount,
   children,
   context,
@@ -129,5 +129,7 @@ const StyledPagination = styled.ul`
   margin: 0 auto;
 `
 
-Pagination.propTypes = PaginationPropTypes
-Pagination.defaultProps = PaginationDefaultProps
+Pagination.propTypes = propTypes
+Pagination.defaultProps = defaultProps
+
+export default Pagination

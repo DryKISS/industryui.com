@@ -1,4 +1,0 @@
-/**
- * List
- */
-export * from './components'

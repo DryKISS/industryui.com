@@ -6,14 +6,14 @@
 import React, { memo } from 'react'
 import { bool, any, func, string } from 'prop-types'
 
-// UI
-import { Button } from '../../../atoms/button/button/button'
-import { themeFontSize } from '../../../theme/utils/fontSize'
-
 // Style
 import styled from 'styled-components'
 
-export const PaginationItem = memo(({ active, context, disabled, label, onClick, size }) => {
+// UI
+import Button from '../../atoms/button/button/button'
+import themeFontSize from '../../utils/fontSize'
+
+const PaginationItem = memo(({ active, context, disabled, label, onClick, size }) => {
   return (
     <StyledLi>
       <StyledButton
@@ -75,3 +75,5 @@ PaginationItem.defaultProps = {
   context: 'secondary',
   size: 'md'
 }
+
+export default PaginationItem

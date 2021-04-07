@@ -12,9 +12,9 @@ import { useRouter } from 'next/router'
 import ConfigContext from '../config/context'
 import { InternationalisationContext } from './context'
 import { isLocale } from '../../services/internationalisation/service'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
-export const InternationalisationProvider = ({ locale, children }) => {
+const InternationalisationProvider = ({ locale, children }) => {
   const { locales } = useContext(ConfigContext)
   const [getStoredLocale, setStoredLocale] = useLocalStorage('locale')
 
@@ -41,3 +41,5 @@ export const InternationalisationProvider = ({ locale, children }) => {
     </InternationalisationContext.Provider>
   )
 }
+
+export default InternationalisationProvider

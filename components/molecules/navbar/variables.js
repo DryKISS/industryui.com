@@ -5,7 +5,7 @@
 // UI
 import THEME_COLOUR from '../../constants/colour'
 
-export const NAVBAR = {
+const NAVBAR = {
   // Navbar
   background: THEME_COLOUR.white,
   colourActive: THEME_COLOUR.dark,
@@ -13,6 +13,7 @@ export const NAVBAR = {
   padding: '0 1rem',
   paddingTablet: '0 1rem',
   paddingDesktop: '0 3rem',
+  breakpoint: 'desktop',
 
   // Borders
   borderTopColor: THEME_COLOUR.primary,
@@ -53,3 +54,5 @@ export const NAVBAR = {
   justifyContentDesktopListItem: 'center',
   marginBottomDesktopListItem: 'inherit'
 }
+
+export default NAVBAR
