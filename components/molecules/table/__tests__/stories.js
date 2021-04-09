@@ -23,7 +23,7 @@ export default {
     hover: true,
     loading: false,
     pagination: true,
-    perPage: 10,
+    // perPage: 10,
     responsive: true,
     striped: true
   },
@@ -45,7 +45,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const [currentPage, setCurrentPage] = useState(1)
-
+  const [pageSize, setPageSize] = useState(1)
   const [sort, setSort] = useState({
     item: 'company',
     order: 'asc'
@@ -54,7 +54,9 @@ const BaseComponent = (props = {}) => {
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
-
+  const handlePageSizeChange = (pageSize) => {
+    setPageSize(pageSize)
+  }
   const data = [
     ...rows.data,
     ...rows.data,
@@ -84,14 +86,14 @@ const BaseComponent = (props = {}) => {
     ...rows.data
   ]
 
-  const pageSlice = data.slice((currentPage - 1) * props.perPage, currentPage * props.perPage)
-
+  const pageSlice = data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
   const defaultProps = {
     paginationProps: {
       currentPage: currentPage,
       onPageChange: handlePageChange,
-      pageCount: Math.ceil(data.length / props.perPage),
-      perPage: props.perPage
+      onPageSizeChange: handlePageSizeChange,
+      pageCount: Math.ceil(data.length / pageSize),
+      perPage: pageSize
     },
     rows: props.rows || pageSlice,
     setSort: setSort,
