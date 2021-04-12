@@ -36,7 +36,7 @@ export const TablePagination = memo(
 
     return (
       <Row>
-        <StyledDiv width="70%">
+        <StyledDivision width={paginationSize ? '70%' : '100%'}>
           <Pagination
             currentPage={currentPage}
             onPageChange={handlePagination}
@@ -44,21 +44,21 @@ export const TablePagination = memo(
             showNextAndPrev
             size="sm"
           />
-        </StyledDiv>
+        </StyledDivision>
         {paginationSize && (
-          <StyledDiv width="30%" paddingRight={30}>
+          <StyledDivision width="30%" paddingRight={30}>
             <Select
               onChange={pagineSizeChangeHandler}
               options={Items}
               defaultValue={perPage && Items.find((size) => size.value === perPage)}
             />
-          </StyledDiv>
+          </StyledDivision>
         )}
       </Row>
     )
   }
 )
-const StyledDiv = ({ width, paddingRight, children }) => {
+const StyledDivision = ({ width, paddingRight, children }) => {
   const StyledWrapper = styled.div`
     width: ${width};
     padding-right: ${paddingRight}px;
