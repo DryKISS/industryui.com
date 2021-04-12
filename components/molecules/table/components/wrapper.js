@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef } from 'react'
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 
 // UI
@@ -25,8 +25,8 @@ export const Table = memo(
     loading,
     noData,
     pagination,
-
-    paginationProps: { currentPage, onPageChange, onPageSizeChange, pageCount, perPage = 10 },
+    paginationSize,
+    paginationProps: { currentPage, onPageChange, onPageSizeChange, pageCount, perPage = 50 },
     responsive,
     rowClick,
     rows,
@@ -35,7 +35,6 @@ export const Table = memo(
     striped
   }) => {
     const tableSpan = tableColumnCount(columns)
-    const [containerHeight, setcContainerHeight] = useState(null)
     const tableRef = useRef(null)
     const tableReady = useRef(false)
     const rowLength = rows.length > 0
@@ -43,7 +42,6 @@ export const Table = memo(
       const table = tableRef.current
       if (table && loading !== true && tableReady.current === false) {
         tableReady.current = true
-        setcContainerHeight(table.clientHeight)
       }
       return () => {}
     }, [rowLength])
@@ -51,7 +49,7 @@ export const Table = memo(
       <StyledWrapper fullHeight={fullHeight} isLoading={loading} border={border}>
         <TableLoading colsLength={tableSpan} show={loading} />
 
-        <StyledResponsive ref={tableRef} minHeight={containerHeight} responsive={responsive}>
+        <StyledResponsive ref={tableRef} responsive={responsive}>
           <TableContent
             align={align}
             caption={caption}
@@ -75,6 +73,7 @@ export const Table = memo(
           <TablePagination
             currentPage={currentPage}
             handlePagination={onPageChange}
+            paginationSize={paginationSize}
             handlePaginationSize={onPageSizeChange}
             pageCount={pageCount}
             perPage={perPage}
@@ -114,11 +113,6 @@ const StyledResponsive = styled.div`
       display: block;
       overflow-x: auto;
       width: 100%;
-    `}
-  ${({ minHeight }) =>
-    minHeight &&
-    css`
-      min-height: ${minHeight}px;
     `}
 `
 

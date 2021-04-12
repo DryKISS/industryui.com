@@ -8,32 +8,50 @@ import { array, func, number } from 'prop-types'
 
 // UI
 import { Pagination } from '../../../'
-
+import { Row } from '../../../atoms/'
 import Select from 'react-select'
 
+const Items = [
+  { label: '25', value: 25 },
+  { label: '50', value: 50 },
+  { label: '100', value: 100 },
+  { label: 'All', value: Infinity }
+]
 export const TablePagination = memo(
-  ({ currentPage, handlePagination, handlePaginationSize, pageCount, perPage, rows }) => {
-    const Items = [
-      { label: '25', value: 25 },
-      { label: '50', value: 50 },
-      { label: '75', value: 75 },
-      { label: '100', value: 100 }
-    ]
+  ({
+    currentPage,
+    handlePagination,
+    handlePaginationSize,
+    paginationSize,
+    pageCount,
+    perPage,
+    rows
+  }) => {
     const pagineSizeChangeHandler = (size) => {
       handlePaginationSize(size.value)
     }
 
     return (
-      <>
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={handlePagination}
-          pageCount={pageCount}
-          showNextAndPrev
-          size="sm"
-        />
-        <Select onChange={pagineSizeChangeHandler} options={Items} />
-      </>
+      <Row>
+        <div style={{ width: '70%' }}>
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={handlePagination}
+            pageCount={pageCount}
+            showNextAndPrev
+            size="sm"
+          />
+        </div>
+        {paginationSize && (
+          <div style={{ width: '30%' }}>
+            <Select
+              onChange={pagineSizeChangeHandler}
+              options={Items}
+              defaultValue={perPage && Items.find((size) => size.value === perPage)}
+            />
+          </div>
+        )}
+      </Row>
     )
   }
 )
@@ -49,5 +67,5 @@ TablePagination.propTypes = {
 
 TablePagination.defaultProps = {
   currentPage: 1,
-  perPage: 10
+  perPage: 50
 }
