@@ -11,6 +11,9 @@ import { Pagination } from '../../../'
 import { Row } from '../../../atoms/'
 import Select from 'react-select'
 
+// Style
+import styled from 'styled-components'
+
 const Items = [
   { label: '25', value: 25 },
   { label: '50', value: 50 },
@@ -33,7 +36,7 @@ export const TablePagination = memo(
 
     return (
       <Row>
-        <div style={{ width: '70%' }}>
+        <StyledDiv width="70%">
           <Pagination
             currentPage={currentPage}
             onPageChange={handlePagination}
@@ -41,21 +44,28 @@ export const TablePagination = memo(
             showNextAndPrev
             size="sm"
           />
-        </div>
+        </StyledDiv>
         {paginationSize && (
-          <div style={{ width: '30%' }}>
+          <StyledDiv width="30%" paddingRight={30}>
             <Select
               onChange={pagineSizeChangeHandler}
               options={Items}
               defaultValue={perPage && Items.find((size) => size.value === perPage)}
             />
-          </div>
+          </StyledDiv>
         )}
       </Row>
     )
   }
 )
-
+const StyledDiv = ({ width, paddingRight, children }) => {
+  const StyledWrapper = styled.div`
+    width: ${width};
+    padding-right: ${paddingRight}px;
+    padding-bottom: 5px;
+  `
+  return <StyledWrapper>{children}</StyledWrapper>
+}
 TablePagination.propTypes = {
   currentPage: number,
   handlePagination: func,
