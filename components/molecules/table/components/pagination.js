@@ -31,6 +31,7 @@ export const TablePagination = memo(
     rows
   }) => {
     const pagineSizeChangeHandler = (size) => {
+      window.localStorage.setItem('pageSize', JSON.stringify(size))
       handlePaginationSize(size.value)
     }
 
