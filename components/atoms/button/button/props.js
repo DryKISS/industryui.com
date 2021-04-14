@@ -23,6 +23,7 @@ export const propTypes = {
   disabled: bool,
   endIcon: string,
   endIconProps: object,
+  itemCount: number,
   onClick: func,
   outline: bool,
   shadow: bool,
