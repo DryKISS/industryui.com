@@ -12,10 +12,12 @@ import { TableData, TableRow } from '../../../'
 export const TableRows = memo(
   ({ align, changeSelectedRowBackground, columns, hover, rowClick, rows, striped }) => {
     const [selectedIndex, setSelectedIndex] = useState(null)
+
     const handleClick = (e, index) => {
       e.preventDefault()
       const row = e.currentTarget.getAttribute('data-item')
       rowClick(JSON.parse(row))
+
       if (changeSelectedRowBackground) {
         setSelectedIndex(index)
       }
