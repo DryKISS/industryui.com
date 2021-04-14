@@ -14,6 +14,7 @@ import { Button } from '../../button/button'
 import { Space } from '../../../space/space'
 import { THEME_CONTEXT } from '../../../../theme/constants/context'
 import { THEME_SIZE } from '../../../../theme/constants/size'
+import { Text } from '../../../text/text'
 import Readme from '../README.md'
 
 export default {
@@ -25,6 +26,7 @@ export default {
     dashed: false,
     disabled: false,
     endIcon: null,
+    itemCount: false,
     outline: false,
     shadow: false,
     size: THEME_SIZE.MD,
@@ -48,15 +50,28 @@ export default {
 export const main = (args) => {
   return (
     <>
+      <Text content="Extra small" />
       <Button {...args} content="Extra Small" size="xs" />
       <Space />
+
+      <Text content="Small" />
       <Button {...args} content="Small" size="sm" />
       <Space />
+
+      <Text content="Medium" />
       <Button {...args} />
       <Space />
+
+      <Text content="Large" />
       <Button {...args} content="Large" size="lg" />
       <Space />
+
+      <Text content="Icon" />
       <Button {...args} content={null} startIcon="user" size="sm" />
+      <Space />
+
+      <Text content="With Overlay" />
+      <Button {...args} content={null} itemCount={5} startIcon="user" />
     </>
   )
 }

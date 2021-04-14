@@ -15,6 +15,7 @@ import { SPACER } from '../../../theme/utils/spacer'
 import { themeBackground } from '../../../theme/utils/background'
 import { themeDimension } from '../../../theme/utils/dimension'
 import { themeDisplay } from '../../../theme/utils/display'
+import ButtonItemCount from './itemCount'
 
 // Props
 import { propTypes, defaultProps } from './props'
@@ -22,16 +23,26 @@ import { propTypes, defaultProps } from './props'
 export const Button = forwardRef(
   (
     {
+      block,
+      centre,
       children,
+      className,
       content,
       context,
+      dashed,
+      disabled,
       endIcon,
       endIconProps,
+      itemCount,
+      onClick,
       noPadding,
       outline,
+      shadow,
       startIcon,
       startIconProps,
-      ...props
+      size,
+      style,
+      type
     },
     ref
   ) => {
@@ -41,19 +52,28 @@ export const Button = forwardRef(
 
     return (
       <StyledButton
+        block={block}
+        centre={centre}
+        className={className}
         context={context}
+        dashed={dashed}
+        disabled={disabled}
         noPadding={noPadding}
+        onClick={onClick}
         outline={outline}
-        textContext={textContext}
         ref={ref}
         role="button"
-        {...props}
+        shadow={shadow}
+        size={size}
+        style={style}
+        textContext={textContext}
       >
         {startIcon && <Icon icon={startIcon} {...startIconProps} prefix={startIconProps?.prefix} />}
 
         {text && <StyledContent>{text}</StyledContent>}
 
         {endIcon && <Icon icon={endIcon} {...endIconProps} prefix={endIconProps?.prefix} />}
+        {itemCount && <ButtonItemCount children={itemCount} context={context} />}
       </StyledButton>
     )
   }
@@ -88,6 +108,7 @@ const StyledButton = styled.button`
   outline: none;
   overflow: visible;
   padding: ${({ theme }) => theme.SPACING(4, 4)};
+  position: relative;
   text-decoration: none;
   text-transform: none;
   user-select: none;
@@ -141,8 +162,8 @@ const StyledButton = styled.button`
 
   transition: all 0.1s ease-in-out;
 
-  ${(props) =>
-    props.shadow &&
+  ${({ shadow }) =>
+    shadow &&
     css`
       box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.12), 0px 10px 24px 0px rgba(0, 0, 0, 0.12),
         0px 10px 24px 0px rgba(0, 0, 0, 0.12);

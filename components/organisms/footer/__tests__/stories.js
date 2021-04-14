@@ -1,5 +1,5 @@
 /**
- * Footer
+ * Components - Organisms - Footer - Story
  */
 
 // React

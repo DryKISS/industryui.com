@@ -1,5 +1,5 @@
 /**
- * Footer - Mocks - Portal
+ * Components - Organisms - Footer - Mocks - Portal
  */
 export const PORTAL = [
   {

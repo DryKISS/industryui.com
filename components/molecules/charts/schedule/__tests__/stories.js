@@ -22,9 +22,11 @@ export default {
   title: 'Molecules/Charts/Schedule'
 }
 
-const handleClick = ({ e, row }) => {
+const handleClick = ({ e, month, row }) => {
   e.stopPropagation()
-  console.log('Cell Click', row)
+  console.log('Month', month)
+  console.log('Row', row)
+  console.log('Cell CLick', e)
 }
 
 const handleRowClick = (row) => {
