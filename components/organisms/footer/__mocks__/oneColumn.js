@@ -1,5 +1,5 @@
 /**
- * Footer - Mocks - One Column
+ * Components - Organisms - Footer - Mocks - One Column
  */
 export const ONE_COLUMN = [
   {
