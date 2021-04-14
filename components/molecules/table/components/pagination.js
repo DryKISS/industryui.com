@@ -4,40 +4,20 @@
 
 // React
 import React, { memo } from 'react'
-import { array, func, number } from 'prop-types'
+import { func, number, oneOfType, string } from 'prop-types'
 
 // UI
-import { Pagination } from '../../../'
-import { Row } from '../../../atoms/'
-import Select from 'react-select'
+import { Column } from '../../../atoms/grid/components/Column'
+import { Pagination } from '../../pagination/components/pagination'
 
-// Style
-import styled from 'styled-components'
+import { Row } from '../../../atoms/grid/components/Row'
+import TablePaginationSize from './paginationSize'
 
-const Items = [
-  { label: '25', value: 25 },
-  { label: '50', value: 50 },
-  { label: '100', value: 100 },
-  { label: 'All', value: Infinity }
-]
 export const TablePagination = memo(
-  ({
-    currentPage,
-    handlePagination,
-    handlePaginationSize,
-    paginationSize,
-    pageCount,
-    perPage,
-    rows
-  }) => {
-    const pagineSizeChangeHandler = (size) => {
-      window.localStorage.setItem('pageSize', JSON.stringify(size))
-      handlePaginationSize(size.value)
-    }
-
+  ({ currentPage, handlePagination, handlePaginationSize, paginationSize, pageCount, perPage }) => {
     return (
       <Row>
-        <StyledDivision width={paginationSize ? '70%' : '100%'}>
+        <Column sm={12} md={10}>
           <Pagination
             currentPage={currentPage}
             onPageChange={handlePagination}
@@ -45,35 +25,24 @@ export const TablePagination = memo(
             showNextAndPrev
             size="sm"
           />
-        </StyledDivision>
+        </Column>
+
         {paginationSize && (
-          <StyledDivision width="30%" paddingRight={30}>
-            <Select
-              onChange={pagineSizeChangeHandler}
-              options={Items}
-              defaultValue={perPage && Items.find((size) => size.value === perPage)}
-            />
-          </StyledDivision>
+          <Column sm={12} md={2}>
+            <TablePaginationSize handlePaginationSize={handlePaginationSize} perPage={perPage} />
+          </Column>
         )}
       </Row>
     )
   }
 )
-const StyledDivision = ({ width, paddingRight, children }) => {
-  const StyledWrapper = styled.div`
-    width: ${width};
-    padding-right: ${paddingRight}px;
-    padding-bottom: 5px;
-  `
-  return <StyledWrapper>{children}</StyledWrapper>
-}
+
 TablePagination.propTypes = {
   currentPage: number,
   handlePagination: func,
   handlePaginationSize: func,
   pageCount: number,
-  perPage: number,
-  rows: array.isRequired
+  perPage: oneOfType([number, string])
 }
 
 TablePagination.defaultProps = {

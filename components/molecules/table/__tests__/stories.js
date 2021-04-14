@@ -47,6 +47,7 @@ export default {
 const BaseComponent = (props = {}) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [pageSize, setPageSize] = useState(props.perPage)
+
   const [sort, setSort] = useState({
     item: 'company',
     order: 'asc'
@@ -85,8 +86,11 @@ const BaseComponent = (props = {}) => {
     ...rows.data,
     ...rows.data
   ]
+
   pageSize === Infinity && setPageSize(data.length)
+
   const pageSlice = data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+
   const defaultProps = {
     paginationProps: {
       currentPage: currentPage,
