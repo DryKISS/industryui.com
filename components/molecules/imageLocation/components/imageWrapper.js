@@ -99,8 +99,8 @@ export const ImageWrapper = ({
     markersArray.current = markers.map((item, i) => {
       let { colour, context, icon, iui, popupComponent, x, y } = item
 
-      x = (x * imageHeight) / 100
-      y = (y * imageWidth) / 100
+      const tmpX = imageHeight - (y * imageHeight) / 100
+      const tmpY = (x * imageWidth) / 100
 
       if (iui !== false) {
         iui = true
@@ -134,7 +134,7 @@ export const ImageWrapper = ({
             }
           }}
           key={i}
-          position={[x, y]}
+          position={[tmpX, tmpY]}
           icon={leafletIcon}
         >
           {popupComponent && (

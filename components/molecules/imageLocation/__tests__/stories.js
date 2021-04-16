@@ -94,13 +94,13 @@ export const withMarkers = (args) => (
       {
         icon: 'circle',
         x: 50,
-        y: 50,
+        y: 12,
         colour: 'red'
       },
       {
         icon: 'bell',
-        x: 50,
-        y: 10,
+        x: 30,
+        y: 50,
         colour: 'blue'
       }
     ]}
