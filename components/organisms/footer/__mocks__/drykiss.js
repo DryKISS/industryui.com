@@ -1,5 +1,5 @@
 /**
- * Footer - Mocks - DryKISS
+ * Components - Organisms - Footer - Mocks - DryKISS
  */
 export const DRYKISS = [
   {

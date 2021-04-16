@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Table - Formatter - Actions - Overlay
+ * Components - Atoms - Button - Item Count
  */
 
 // React
@@ -9,9 +9,9 @@ import { number, oneOf, oneOfType, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { THEME_CONTEXT } from '../../../../theme/constants/context'
+import { THEME_CONTEXT } from '../../../theme/constants/context'
 
-export const TableActionsOverlay = styled.span`
+const ButtonItemCount = styled.span`
   background: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
   border: 1px solid white;
   border-radius: 50%;
@@ -28,7 +28,9 @@ export const TableActionsOverlay = styled.span`
   z-index: 1;
 `
 
-TableActionsOverlay.propTypes = {
+ButtonItemCount.propTypes = {
   background: oneOf(Object.values(THEME_CONTEXT)),
   children: oneOfType([number, string]).isRequired
 }
+
+export default ButtonItemCount

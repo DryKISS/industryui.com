@@ -23,7 +23,8 @@ export default {
     hover: true,
     loading: false,
     pagination: true,
-    perPage: 10,
+    paginationSize: true,
+    perPage: 50,
     responsive: true,
     striped: true
   },
@@ -45,6 +46,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(props.perPage)
 
   const [sort, setSort] = useState({
     item: 'company',
@@ -54,6 +56,7 @@ const BaseComponent = (props = {}) => {
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
+  const handlePageSizeChange = (perPage) => setPageSize(perPage)
 
   const data = [
     ...rows.data,
@@ -84,14 +87,17 @@ const BaseComponent = (props = {}) => {
     ...rows.data
   ]
 
-  const pageSlice = data.slice((currentPage - 1) * props.perPage, currentPage * props.perPage)
+  pageSize === Infinity && setPageSize(data.length)
+
+  const pageSlice = data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   const defaultProps = {
     paginationProps: {
       currentPage: currentPage,
       onPageChange: handlePageChange,
-      pageCount: Math.ceil(data.length / props.perPage),
-      perPage: props.perPage
+      onPageSizeChange: handlePageSizeChange,
+      pageCount: Math.ceil(data.length / pageSize),
+      perPage: pageSize
     },
     rows: props.rows || pageSlice,
     setSort: setSort,

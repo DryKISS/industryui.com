@@ -1,5 +1,5 @@
 /**
- * Footer - Mocks - Formatter
+ * Components - Organisms - Footer - Mocks - Formatter
  */
 
 // React

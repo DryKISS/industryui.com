@@ -9,14 +9,13 @@ import { array, bool, func, object, oneOf, oneOfType, string } from 'prop-types'
 // Next
 import Router from 'next/router'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import { Button } from '../../../../atoms/button/button/button'
 import { Icon } from '../../../../atoms/icon/icon/icon'
-import { TableActionsOverlay } from './overlay'
 import { THEME_CONTEXT } from '../../../../theme/constants/context'
-
-// Style
-import styled from 'styled-components'
 
 export const TableActionsButton = forwardRef(
   ({ context, disabled, icon, numberOverlay, onClick, overlayCustom, row, to }, ref) => {
@@ -33,14 +32,13 @@ export const TableActionsButton = forwardRef(
     return (
       <StyledButton
         forwardedAs="a"
-        disabled={disabled}
         context={context}
+        disabled={disabled}
+        itemCount={overlay}
         onClick={click}
         ref={ref}
         size="sm"
       >
-        {overlay && <TableActionsOverlay children={overlay} context={context} />}
-
         <StyledIcon
           icon={icon ? (iconArray ? icon[1] : icon) : null}
           prefix={icon && iconArray && icon[0]}

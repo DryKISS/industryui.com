@@ -9,11 +9,11 @@ import { object } from 'prop-types'
 // Next
 import Router from 'next/router'
 
-// UI
-import { StyledLink } from '../../../'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import { StyledLink } from '../../../'
 
 export const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
   let useLink = false

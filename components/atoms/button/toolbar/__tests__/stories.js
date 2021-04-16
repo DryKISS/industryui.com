@@ -69,7 +69,15 @@ const Children = ({ size }) => {
         />
       </Dropdown>
 
-      <Button as="a" data-tip="Button" context="primary" key={1} onClick={() => {}} size={size}>
+      <Button
+        as="a"
+        data-tip="Button"
+        context="primary"
+        key={1}
+        itemCount={5}
+        onClick={() => {}}
+        size={size}
+      >
         <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
       </Button>
 
