@@ -8,7 +8,7 @@ import React from 'react'
 // Draft JS
 import Editor from '@draft-js-plugins/editor'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
-import createMentionPlugin from '@draft-js-plugins/mention'
+import createMentionPlugin from 'draft-js-mention-plugin'
 import createLinkifyPlugin from '@draft-js-plugins/linkify'
 
 // UI

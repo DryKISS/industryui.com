@@ -34,7 +34,7 @@ import { MessageTo } from './to'
 import { MenuIcon } from './menuIcon'
 import { Loadingspinner } from './loadingSpinner'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
-import createMentionPlugin from '@draft-js-plugins/mention'
+import createMentionPlugin from 'draft-js-mention-plugin'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
 
 // Style
