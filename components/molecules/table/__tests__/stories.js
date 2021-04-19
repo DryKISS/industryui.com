@@ -56,7 +56,10 @@ const BaseComponent = (props = {}) => {
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
-  const handlePageSizeChange = (perPage) => setPageSize(perPage)
+
+  const handlePageSizeChange = (perPage) => {
+    setPageSize(perPage)
+  }
 
   const data = [
     ...rows.data,

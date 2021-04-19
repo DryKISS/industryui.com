@@ -44,7 +44,7 @@ export const defaultProps = {
   noData: true,
   pagination: false,
   paginationProps: {},
-  paginationSize: 50,
+  paginationSize: true,
   responsive: true,
   striped: true
 }
