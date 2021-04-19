@@ -7,7 +7,7 @@ import React, { useState, useRef } from 'react'
 
 // Draft JS
 import { EditorState } from 'draft-js'
-import { defaultSuggestionsFilter } from '@draft-js-plugins/mention'
+import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
 
 // Style
 import styled from 'styled-components'
@@ -74,6 +74,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
         <MentionSuggestions
           onAddMention={onAddMention}
           onSearchChange={onSearchChange}
+          onOpenChange={() => {}}
           suggestions={suggestions}
         />
       )}

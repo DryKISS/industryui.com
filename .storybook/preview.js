@@ -20,7 +20,7 @@ import 'cropperjs/dist/cropper.min.css'
 
 // Draft JS
 import 'draft-js/dist/Draft.css'
-import '@draft-js-plugins/mention/lib/plugin.css'
+import 'draft-js-mention-plugin/lib/plugin.css'
 import '@draft-js-plugins/hashtag/lib/plugin.css'
 import '@draft-js-plugins/emoji/lib/plugin.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
