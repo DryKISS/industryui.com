@@ -119,6 +119,7 @@
     "react-resize-detector": "^5.2.0",
     "react-select": "^4.0.2",
     "react-virtualized": "^9.22.2",
+    "rxjs": "^6.6.7",
     "styled-components": "^5.2.1",
     "yup": "^0.32.8"
   },
