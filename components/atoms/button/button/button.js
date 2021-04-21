@@ -33,6 +33,7 @@ export const Button = forwardRef(
       disabled,
       endIcon,
       endIconProps,
+      form,
       itemCount,
       onClick,
       noPadding,
@@ -58,6 +59,7 @@ export const Button = forwardRef(
         context={context}
         dashed={dashed}
         disabled={disabled}
+        form={form}
         noPadding={noPadding}
         onClick={onClick}
         outline={outline}
