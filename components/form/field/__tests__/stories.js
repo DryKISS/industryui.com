@@ -44,7 +44,7 @@ const schema = object().shape({
     .min(8, 'Password is too short - should be 8 chars minimum.')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-      'Must contain 8 characters, with at least ine uppercase, number and special character'
+      'Must contain 8 characters, with at least one uppercase letter, number and special character'
     )
 })
 
