@@ -16,11 +16,11 @@ import { lighten } from 'polished'
 import Avatar from '../../../atoms/avatar/avatar'
 import Button from '../../../atoms/button/button/button'
 import Close from '../../../atoms/close/close'
-import Column from '../../../atoms/grid/components/Column'
+import Column from '../../../atoms/grid/Column'
 import Divider from '../../../atoms/divider/divider'
 import Heading from '../../../atoms/heading/heading'
 import Icon from '../../../atoms/icon/icon/icon'
-import Row from '../../../atoms/grid/components/Row'
+import Row from '../../../atoms/grid/Row'
 import Text from '../../../atoms/text/text'
 import THEME_CONTEXT from '../../../constants/context'
 
@@ -37,7 +37,7 @@ export const OffCanvasHeader = ({
     <StyledHeader context={context} data-cy="offCanvasHeader" variant={variant}>
       <Row align="center">
         <Column sm={8}>
-          <Icon context={variant === 'extended' ? 'white' : context} icon="expand" prefix="fas" />
+          <Icon context={variant === 'extended' ? 'white' : context} icon="expand" />
           <StyledHeading content={title} context={context} tag="h4" variant={variant} />
         </Column>
 

@@ -86,14 +86,14 @@ export const button = (args) => (
 
 export const icon = (args) => (
   <BaseComponent {...args}>
-    <Icon context="info" icon="user" prefix="fas" />
+    <Icon context="info" icon="user" />
   </BaseComponent>
 )
 
 export const iconButton = (args) => (
   <BaseComponent {...args} caret={false}>
     <Button context="white">
-      <Icon context="info" icon="user" prefix="fas" />
+      <Icon context="info" icon="user" />
     </Button>
   </BaseComponent>
 )

@@ -38,7 +38,7 @@ export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => 
 
       <PriceAndDropIconWrapper>
         <StyledPrice content={selected.price} size="lg" context="deepBlue" />
-        <StyledDownIcon icon="caret-down" prefix="fas" />
+        <StyledDownIcon icon="caret-down" />
       </PriceAndDropIconWrapper>
 
       <PlansWrapper open={IsOpen}>

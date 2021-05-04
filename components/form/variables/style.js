@@ -6,7 +6,7 @@
 import { css } from 'styled-components'
 
 // UI
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
 export const formStyle = ({
   disabled,

@@ -3,7 +3,9 @@
  */
 
 // UI
-import { Container, RouterWrap, Wrapper } from './decorators'
+import Container from './decorators/container'
+import RouterWrap from './decorators/router'
+import  Wrapper from './decorators/wrapper'
 
 // Full Calendar
 import '@fullcalendar/common/main.min.css'
@@ -20,7 +22,7 @@ import 'cropperjs/dist/cropper.min.css'
 
 // Draft JS
 import 'draft-js/dist/Draft.css'
-import '@draft-js-plugins/mention/lib/plugin.css'
+import 'draft-js-mention-plugin/lib/plugin.css'
 import '@draft-js-plugins/hashtag/lib/plugin.css'
 import '@draft-js-plugins/emoji/lib/plugin.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
@@ -70,6 +72,7 @@ import 'leaflet/dist/leaflet.css'
   faSearch,
   faShieldAlt,
   faSmile,
+  faSort,
   faStopwatch,
   faTable,
   faTimes,
@@ -112,6 +115,7 @@ library.add(
   faShieldAlt,
   faSmile,
   faSmile,
+  faSort,
   faStopwatch,
   faTable,
   faTimes,

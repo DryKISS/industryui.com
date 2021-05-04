@@ -1,5 +1,5 @@
 /**
- * Footer - Mocks
+ * Components - Organisms - Footer - Mocks
  */
 export * from './drykiss'
 export * from './formatter'

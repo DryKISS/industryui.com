@@ -40,7 +40,7 @@ const breadcrumbs = [
     title: 'Home'
   },
   {
-    icon: <Icon icon="smile" prefix="fas" />,
+    icon: <Icon icon="smile" />,
     to: {
       as: '/blog/asdasdasd',
       href: {
@@ -53,7 +53,7 @@ const breadcrumbs = [
     title: 'DryKISS'
   },
   {
-    icon: <Icon icon="images" prefix="fas" />,
+    icon: <Icon icon="images" />,
     to: '/rrrr',
     title: 'Current Page'
   }

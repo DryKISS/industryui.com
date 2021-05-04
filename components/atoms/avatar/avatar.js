@@ -12,13 +12,13 @@ import gravatar from 'gravatar'
 import styled, { css } from 'styled-components'
 
 // UI
-import getAcronym from '../../utils/getAcronym/index'
-import Image from '../../atoms/image/image'
+import getAcronym from '../../utils/getAcronym/getAcronym'
+import Image from '..//image/image'
 import themeFontSize from '../../utils/fontSize'
 import THEME_SIZE from '../../constants/size'
 
 // Props
-import { propTypes, defaultProps } from './props'
+import { propTypes, defaultProps } from './components/props'
 
 const Avatar = ({
   action,

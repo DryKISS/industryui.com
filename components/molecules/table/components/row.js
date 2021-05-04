@@ -7,7 +7,7 @@ import { memo } from 'react'
 import { bool, string } from 'prop-types'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
 import { themeBackground } from '../../../utils/background'
@@ -18,7 +18,7 @@ const TableRow = memo(styled.tr`
   ${({ context, striped, theme }) =>
     !context &&
     striped &&
-    css`
+    `
       :nth-child(odd) {
         background-color: ${theme.COLOUR.light};
       }
@@ -26,21 +26,22 @@ const TableRow = memo(styled.tr`
 
   ${(props) =>
     props.context &&
-    css`
+    `
       ${themeBackground(props)}
       color: white;
     `}
 
   ${({ hover }) =>
     hover &&
-    css`
+    `
       :hover {
         background-color: #eee;
       }
     `}
+
   ${({ selected, theme }) =>
     selected === true &&
-    css`
+    `
       background-color: ${theme.TABLE.selectedRowBackground} !important;
     `}
 `)

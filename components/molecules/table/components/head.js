@@ -14,12 +14,12 @@ const TableHead = memo(styled.th`
   border-top: 1px solid ${({ theme }) => theme.COLOUR.dark};
   padding: ${({ theme }) => theme.TABLE.padding};
   text-align: ${({ align }) => (align ? 'center' : 'left')};
-  ${({ sortable }) => sortable && 'cursor: pointer'}
+  ${({ sortName }) => sortName && 'cursor: pointer'}
 `)
 
 TableHead.propTypes = {
   align: oneOfType([string, bool]),
-  sortable: bool
+  sortName: string
 }
 
 export default TableHead

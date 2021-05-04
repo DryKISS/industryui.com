@@ -96,7 +96,7 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
                   {pricingInfo[SelectedPlan].checkList.map((item, index) => {
                     return (
                       <ListItem key={index}>
-                        <Icon color="rgb(69, 186, 190)" icon="check" prefix="fas" />
+                        <Icon color="rgb(69, 186, 190)" icon="check" />
                         <StyledFeature content={item.title} context="dark" size="sm" />
                       </ListItem>
                     )

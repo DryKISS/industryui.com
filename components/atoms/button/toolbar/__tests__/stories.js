@@ -69,12 +69,20 @@ const Children = ({ size }) => {
         />
       </Dropdown>
 
-      <Button as="a" data-tip="Button" context="primary" key={1} onClick={() => {}} size={size}>
-        <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
+      <Button
+        as="a"
+        data-tip="Button"
+        context="primary"
+        key={1}
+        itemCount={5}
+        onClick={() => {}}
+        size={size}
+      >
+        <Icon icon="user" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Button as="a" data-tip="Button" context="primary" key={1} onClick={() => {}} size={size}>
-        <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
+        <Icon icon="user" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Dropdown caret={false} items={dropdownItems} position="bottom">
@@ -87,7 +95,7 @@ const Children = ({ size }) => {
       </Dropdown>
 
       <Button as="a" data-tip="Button" context="warning" key={2} onClick={() => {}} size={size}>
-        <Icon icon="trash" prefix="fas" style={{ pointerEvents: 'none' }} />
+        <Icon icon="trash" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Dropdown caret={false} items={dropdownItems} position="bottom">

@@ -10,10 +10,10 @@ import { string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Space } from '../../'
-import { THEME_SIZE } from '../../theme/constants/size'
+import Space from '../../atoms/space/space'
+import THEME_SIZE from '../../constants/size'
 
-export const FormError = ({ message, colour, ...props }) => {
+const FormError = ({ message, colour, ...props }) => {
   return (
     <Space marginTop={THEME_SIZE.XS}>
       <StyledSmall color={colour}>{message}</StyledSmall>
@@ -21,7 +21,7 @@ export const FormError = ({ message, colour, ...props }) => {
   )
 }
 
-export const StyledSmall = styled.small`
+const StyledSmall = styled.small`
   color: ${({ theme, colour }) => colour ?? theme.COLOUR.danger};
   display: block;
   font-size: 0.625rem;
@@ -33,3 +33,5 @@ FormError.propTypes = {
   message: string.isRequired,
   colour: string
 }
+
+export default FormError

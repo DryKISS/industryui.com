@@ -6,23 +6,30 @@
 import React from 'react'
 
 // UI
-import { Image, TableActions, TableLink, Text } from '../../../'
+import Image from '../../../atoms/image/image'
+import TableActions from '../components/formatter/actions/actions'
+import TableLink from '../components/formatter/link'
+import Text from '../../../atoms/text/text'
 
 export const rows = {
   data: [
     {
       id: '10001',
+      testHidden1: 'hidden',
+      testHidden2: 'hidden',
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com',
-      logo: 'https://drykiss.com/static/logo/drykiss.svg',
+      logo: 'https://drykiss.com/images/logo/drykiss-white.svg',
       itemCount: 5,
       actions: ''
     },
     {
       id: '10002',
+      testHidden1: 'hidden',
+      testHidden2: 'hidden',
       company: 'Triangle Solutions Ltd',
       url: 'https://triangle-solutions.com',
-      logo: 'https://drykiss.com/static/logo/drykiss.svg',
+      logo: 'https://drykiss.com/images/logo/drykiss-white.svg',
       itemCount: 3,
       actions: ''
     }
@@ -48,7 +55,14 @@ const renderImage = ({ row }) => <Image alt="Logo" style={{ width: '50%' }} src=
 
 export const columnsActions = [
   {
+    sortName: 'id',
     text: 'ID'
+  },
+  {
+    hidden: true
+  },
+  {
+    hidden: true
   },
   {
     bottomCell: (
@@ -56,7 +70,6 @@ export const columnsActions = [
         bottom Cell
       </Text>
     ),
-    sortable: true,
     sortName: 'company',
     text: 'Company'
   },
@@ -65,6 +78,11 @@ export const columnsActions = [
     text: 'URL'
   },
   {
+    bottomCell: (
+      <Text bold context="danger">
+        bottom Cell
+      </Text>
+    ),
     formatter: renderImage,
     text: 'Logo'
   },

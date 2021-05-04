@@ -10,6 +10,7 @@ import styled, { css, useTheme } from 'styled-components'
 
 // UI
 import Icon from '../../../atoms/icon/icon/icon'
+import ButtonItemCount from './components/itemCount'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
 import SPACER from '../../../utils/spacer/spacer'
 import { themeBackground } from '../../../utils/background'
@@ -17,21 +18,32 @@ import { themeDimension } from '../../../utils/dimension'
 import themeDisplay from '../../../utils/display/display'
 
 // Props
-import { propTypes, defaultProps } from './props'
+import { propTypes, defaultProps } from './components/props'
 
 const Button = forwardRef(
   (
     {
+      block,
+      centre,
       children,
+      className,
       content,
       context,
+      dashed,
+      disabled,
       endIcon,
       endIconProps,
+      form,
+      itemCount,
+      onClick,
       noPadding,
       outline,
+      shadow,
       startIcon,
       startIconProps,
-      ...props
+      size,
+      style,
+      type
     },
     ref
   ) => {
@@ -41,19 +53,29 @@ const Button = forwardRef(
 
     return (
       <StyledButton
+        block={block}
+        centre={centre}
+        className={className}
         context={context}
+        dashed={dashed}
+        disabled={disabled}
+        form={form}
         noPadding={noPadding}
+        onClick={onClick}
         outline={outline}
-        textContext={textContext}
         ref={ref}
         role="button"
-        {...props}
+        shadow={shadow}
+        size={size}
+        style={style}
+        textContext={textContext}
       >
         {startIcon && <Icon icon={startIcon} {...startIconProps} prefix={startIconProps?.prefix} />}
 
         {text && <StyledContent>{text}</StyledContent>}
 
         {endIcon && <Icon icon={endIcon} {...endIconProps} prefix={endIconProps?.prefix} />}
+        {itemCount && <ButtonItemCount children={itemCount} context={context} />}
       </StyledButton>
     )
   }
@@ -88,6 +110,7 @@ const StyledButton = styled.button`
   outline: none;
   overflow: visible;
   padding: ${({ theme }) => theme.SPACING(4, 4)};
+  position: relative;
   text-decoration: none;
   text-transform: none;
   user-select: none;
@@ -141,8 +164,8 @@ const StyledButton = styled.button`
 
   transition: all 0.1s ease-in-out;
 
-  ${(props) =>
-    props.shadow &&
+  ${({ shadow }) =>
+    shadow &&
     css`
       box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.12), 0px 10px 24px 0px rgba(0, 0, 0, 0.12),
         0px 10px 24px 0px rgba(0, 0, 0, 0.12);

@@ -145,7 +145,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             <AudioWrapper preview>
               <MessagingAudioPlayer src={URL.createObjectURL(voiceMessage)} />
               <DeleteIconWrapper onClick={handleDeleteVoiceClick}>
-                <Icon context="danger" icon="trash" prefix="fas" size="lg" />
+                <Icon context="danger" icon="trash" size="lg" />
               </DeleteIconWrapper>
             </AudioWrapper>
           )}

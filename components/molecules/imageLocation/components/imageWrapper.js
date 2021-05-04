@@ -96,11 +96,12 @@ export const ImageWrapper = ({
 
     imageWidth = image.clientWidth
     imageHeight = image.clientHeight
+
     markersArray.current = markers.map((item, i) => {
       let { colour, context, icon, iui, popupComponent, x, y } = item
 
-      x = (x * imageHeight) / 100
-      y = (y * imageWidth) / 100
+      const tmpX = imageHeight - (y * imageHeight) / 100
+      const tmpY = (x * imageWidth) / 100
 
       if (iui !== false) {
         iui = true
@@ -134,7 +135,7 @@ export const ImageWrapper = ({
             }
           }}
           key={i}
-          position={[x, y]}
+          position={[tmpX, tmpY]}
           icon={leafletIcon}
         >
           {popupComponent && (
@@ -208,10 +209,12 @@ const Wrapper = styled.div`
     left: 0;
   }
 `
+
 const HiddenMapImage = styled(Image)`
   opacity: 0;
   pointer-events: none;
 `
+
 const StyledImageWrapper = styled.div`
   display: inline-block;
   position: relative;

@@ -1,6 +1,8 @@
 /**
  * Components - Form - Variables
  */
-export const FORM_ELEMENTS_STYLES = {
+const FORM_ELEMENTS_STYLES = {
   inputBorderRadius: '.25rem'
 }
+
+export default FORM_ELEMENTS_STYLES

@@ -54,9 +54,9 @@ export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) =>
                 <StyledSeperator size={size}>
                   {customSeparator ??
                     (separator && separator === 'chevron' ? (
-                      <StyledIcon icon="chevron-right" prefix="fas" />
+                      <StyledIcon icon="chevron-right" />
                     ) : separator && separator === 'slash' ? (
-                      <StyledIcon icon="slash" prefix="fas" />
+                      <StyledIcon icon="slash" />
                     ) : (
                       separator || '\\'
                     ))}

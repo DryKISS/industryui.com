@@ -7,7 +7,7 @@ import COLOUR from '../constants/colour'
 import TYPOGRAPHY from '../constants/typography'
 
 // Components
-// import { AVATAR } from '../../atoms/avatar/variables'
+// import { AVATAR } from '../../atoms/avatar/components/variables'
 // import { BADGE } from '../../atoms/badge/variables'
 // import { BAR } from '../../organisms/bar/variables'
 // import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
@@ -15,8 +15,8 @@ import TYPOGRAPHY from '../constants/typography'
 // import { DETAILS2 } from '../../atoms/details2/variables'
 import DROPDOWN from '../molecules/dropdown/variables'
 // import { FOOTER } from '../../organisms/footer/variables'
-// import { FORM_ELEMENTS_STYLES } from '../../form/variables/variables'
-import GRID from '../atoms/grid/variables'
+import FORM_ELEMENTS_STYLES from '../form/variables/variables'
+import GRID from '../atoms/grid/components/variables'
 import HEADINGS from '../atoms/heading/variables'
 // import { ICONS } from '../../icons/variables'
 import LINK from '../atoms/link/variables'
@@ -30,7 +30,7 @@ import NAVBAR from '../molecules/navbar/variables'
 // import { SIDEBAR } from '../../molecules/sidebar/variables'
 import SPACING from '../utils/spacer/spacing'
 // import { STEPPER } from '../../molecules/stepper/variables'
-import TABLE from '../molecules/table/variables'
+import TABLE from '../molecules/table/components/variables'
 import TABS from '../molecules/tabs/variables'
 import TEXT from '../atoms/text/variables'
 // import { VOICE_RECORDER } from '../../molecules/voiceRecorder/variables'
@@ -51,7 +51,7 @@ const Theme = {
   // DETAILS2,
   DROPDOWN,
   // FOOTER,
-  // FORM_ELEMENTS_STYLES,
+  FORM_ELEMENTS_STYLES,
   GRID,
   HEADINGS,
   // ICONS,

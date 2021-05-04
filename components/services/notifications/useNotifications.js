@@ -11,8 +11,7 @@
  */
 
 // Apollo
-import { useSubscription } from '@apollo/client'
-import gql from 'graphql-tag'
+import { gql, useSubscription } from '@apollo/client'
 
 const useNotifications = (url, params = {}, seconds = 60) => {
   // const [data, setData] = useState({ messages: [] })

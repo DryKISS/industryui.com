@@ -19,7 +19,7 @@ import ThemeStyle from '../../components/theme/global/style'
 // Config
 import { Config } from '../../config/config'
 
-export const Container = Story => {
+const Container = Story => {
   return (
     <ThemeProvider theme={Theme}>
       <ConfigProvider config={Config}>
@@ -35,3 +35,5 @@ export const Container = Story => {
     </ThemeProvider>
   )
 }
+
+export default Container

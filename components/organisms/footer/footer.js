@@ -1,5 +1,5 @@
 /**
- * Footer
+ * Components - Organisms - Footer
  */
 
 // React
@@ -7,7 +7,7 @@ import React, { Fragment } from 'react'
 import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'prop-types'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
 import { Column } from '../../atoms/grid/components/Column'
@@ -88,16 +88,17 @@ const Footer = ({ columns, fixed }) => {
 }
 
 const StyledFooter = styled.div`
-  border-top: 2px solid ${({ theme }) => theme.COLOUR.primary};
-  font-size: 0.875rem;
-  ${({ theme: { FOOTER } }) => css`
-    background: ${FOOTER.background};
-    color: ${FOOTER.colour};
+  ${({ theme }) => `
+    background: ${theme.FOOTER.background};
+    border-top: 2px solid ${theme.COLOUR.primary};
+    color: ${theme.FOOTER.colour};
+    font-size: ${theme.FOOTER.fontSize};
+    padding-top: ${theme.FOOTER.paddingTop};
   `}
-  padding-top: 2rem;
+
   ${({ fixed }) =>
     fixed &&
-    css`
+    `
       bottom: 0;
       position: fixed;
       left: 0;
@@ -107,7 +108,10 @@ const StyledFooter = styled.div`
 `
 
 const StyledHeading = styled(Heading)`
-  text-align: ${({ align }) => align};
+  ${({ align, theme }) => `
+    margin: ${theme.FOOTER.headerMargin};
+    text-align: ${align};
+  `}
 `
 
 const StyledList = styled(List)`
@@ -118,8 +122,12 @@ const StyledList = styled(List)`
 `
 
 const StyledListItem = styled(ListItem)`
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.25rem;
   padding-right: 1rem;
+
+  &:last-child {
+    margin-bottom: 1rem;
+  }
 `
 
 const StyledIcon = styled(Icon)`
@@ -127,7 +135,6 @@ const StyledIcon = styled(Icon)`
 `
 
 const StyledText = styled.p`
-  margin: 0 0 1rem;
   text-align: ${({ align }) => align};
 `
 

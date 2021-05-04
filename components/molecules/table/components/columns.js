@@ -10,35 +10,35 @@ import { array, bool, func, oneOfType, shape, string } from 'prop-types'
 import Icon from '../../../atoms/icon/icon/icon'
 import TableHead from './head'
 
+const handleSort = ({ hasSort, sort, setSort, sortName }) => {
+  setSort({
+    item: sortName,
+    order: sort.order === 'asc' ? 'desc' : 'asc'
+  })
+}
+
 const RenderColumns = ({ align, columns, setSort, sort }) =>
-  columns.map(({ hidden, sortable, sortName = '', text }, index) => {
+  columns.map(({ hidden, sortName, text }, index) => {
     if (hidden) {
       return false
     }
 
-    const hasSort = sort.item === sortName
-
-    const handleSort = () => {
-      if (sortable) {
-        if (hasSort && sort.order === 'desc') {
-          setSort({
-            item: null,
-            order: null
-          })
-        } else {
-          setSort({
-            item: sortName,
-            order: hasSort ? 'desc' : 'asc'
-          })
-        }
-      }
-    }
+    const hasSort = sort?.item === sortName
 
     return (
-      <TableHead align={align} key={index} onClick={handleSort} sortable={sortable}>
+      <TableHead
+        align={align}
+        key={index}
+        onClick={() => sortName && handleSort({ hasSort, sort, setSort, sortName })}
+        sortName={sort && sortName}
+      >
         {text}
-        {sortable && hasSort && (
-          <Icon icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'} prefix="fas" />
+
+        {sort && sortName && (
+          <>
+            {hasSort && <Icon icon={sort.order === 'asc' ? 'caret-down' : 'caret-up'} />}
+            {!hasSort && <Icon icon="sort" />}
+          </>
         )}
       </TableHead>
     )
@@ -54,7 +54,7 @@ const TableColumns = memo(({ align, columns, setSort, sort }) => (
 
 TableColumns.propTypes = {
   align: oneOfType([string, bool]),
-  columns: array,
+  columns: array.isRequired,
   setSort: func,
   sort: shape({
     item: string,
@@ -63,9 +63,7 @@ TableColumns.propTypes = {
 }
 
 TableColumns.defaultProps = {
-  align: false,
-  columns: [],
-  sort: {}
+  align: false
 }
 
 export default TableColumns

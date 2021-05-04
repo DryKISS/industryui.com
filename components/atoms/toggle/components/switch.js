@@ -14,7 +14,7 @@ export const Switch = ({ context, disabled, handleToggle, size, toggled }) => {
     <StyledSwitchContainer
       context={context}
       disabled={disabled}
-      onClick={handleToggle}
+      onClick={disabled !== true ? handleToggle : () => {}}
       size={size}
       toggled={toggled}
     >

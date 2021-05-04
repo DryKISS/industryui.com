@@ -46,7 +46,6 @@ export const StepperItem = ({ item }) => {
             color={STEPPER.colourCheckmark}
             fixedWidth={false}
             icon="check"
-            prefix="fas"
           />
         )}
       </StyledIconContainer>

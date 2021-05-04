@@ -13,10 +13,12 @@ import TableRow from './row'
 const TableRows = memo(
   ({ align, changeSelectedRowBackground, columns, hover, rowClick, rows, striped }) => {
     const [selectedIndex, setSelectedIndex] = useState(null)
+
     const handleClick = (e, index) => {
       e.preventDefault()
       const row = e.currentTarget.getAttribute('data-item')
       rowClick(JSON.parse(row))
+
       if (changeSelectedRowBackground) {
         setSelectedIndex(index)
       }
@@ -25,16 +27,9 @@ const TableRows = memo(
     const clickable = typeof rowClick === 'function'
 
     return rows.map((row, index) => {
-      const context = row.context
-
-      if (row.hidden) {
-        return null
-      } else {
-        delete row.hidden
-      }
       return (
         <TableRow
-          context={context}
+          context={row.context}
           data-item={JSON.stringify(row)}
           hover={hover}
           key={index}
@@ -46,11 +41,12 @@ const TableRows = memo(
           {Object.entries(row).map(([key, value], index) => {
             const length = columns.length
             const column = columns[index]
-            const formatterData = column?.formatterData
+
             if (length && column.hidden) {
               return null
             }
 
+            const formatterData = column?.formatterData
             const renderValue = typeof value === 'function' ? value() : value
 
             return (
@@ -89,7 +85,6 @@ TableRows.propTypes = {
 
 TableRows.defaultProps = {
   align: false,
-  columns: [],
   hover: true,
   striped: true
 }

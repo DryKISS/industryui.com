@@ -12,19 +12,20 @@ import styled from 'styled-components'
 // UI
 import { formatPrice } from '../../../utils/formatPrice/index'
 import { Icon } from '../../../atoms/icon/icon/icon'
+import { Pagination } from '../../../molecules/pagination/components/pagination'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
 import { Table } from '../../../molecules/table/components/wrapper'
 import { Text } from '../../../atoms/text/text'
 import { Tooltip } from '../../../atoms/tooltip/tooltip'
 
-const FormatCell = (handleClick, month, row) => {
+const formatCell = (handleClick, month, row) => {
   return row[month][0] || row[month] ? (
     row[month][2] ? (
       <Tooltip content={row[month][2]}>
         <Wrapper
           context={row[month][1] ? row[month][1] : 'light'}
           count={row[month][0] || row[month]}
-          onClick={(e) => (row[month][0] > 0 || row[month] > 0) && handleClick({ e, row })}
+          onClick={(e) => (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row })}
         >
           {row[month][0] ? row[month][0] : row[month]}
         </Wrapper>
@@ -33,7 +34,7 @@ const FormatCell = (handleClick, month, row) => {
       <Wrapper
         context={row[month][1] ? row[month][1] : 'light'}
         count={row[month][0] || row[month]}
-        onClick={(e) => (row[month][0] > 0 || row[month] > 0) && handleClick({ e, row })}
+        onClick={(e) => (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row })}
       >
         {row[month][0] ? row[month][0] : row[month]}
       </Wrapper>
@@ -43,7 +44,7 @@ const FormatCell = (handleClick, month, row) => {
   )
 }
 
-const FormatTask = ({ row }) => {
+const formatTask = ({ row }) => {
   return (
     <>
       <Text size="sm">
@@ -61,7 +62,7 @@ export const columns = (handleClick) => [
     hidden: true
   },
   {
-    formatter: FormatTask,
+    formatter: formatTask,
     text: '2021'
   },
   {
@@ -77,58 +78,67 @@ export const columns = (handleClick) => [
     hidden: true
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'jan', row),
+    formatter: ({ row }) => formatCell(handleClick, 'jan', row),
     text: 'Jan'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'feb', row),
+    formatter: ({ row }) => formatCell(handleClick, 'feb', row),
     text: 'Feb'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'mar', row),
+    formatter: ({ row }) => formatCell(handleClick, 'mar', row),
     text: 'Mar'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'apr', row),
+    formatter: ({ row }) => formatCell(handleClick, 'apr', row),
     text: 'Apr'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'may', row),
+    formatter: ({ row }) => formatCell(handleClick, 'may', row),
     text: 'May'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'jun', row),
+    formatter: ({ row }) => formatCell(handleClick, 'jun', row),
     text: 'Jun'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'jul', row),
+    formatter: ({ row }) => formatCell(handleClick, 'jul', row),
     text: 'Jul'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'aug', row),
+    formatter: ({ row }) => formatCell(handleClick, 'aug', row),
     text: 'Aug'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'sep', row),
+    formatter: ({ row }) => formatCell(handleClick, 'sep', row),
     text: 'Sep'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'oct', row),
+    formatter: ({ row }) => formatCell(handleClick, 'oct', row),
     text: 'Oct'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'nov', row),
+    formatter: ({ row }) => formatCell(handleClick, 'nov', row),
     text: 'Nov'
   },
   {
-    formatter: ({ row }) => FormatCell(handleClick, 'dec', row),
+    formatter: ({ row }) => formatCell(handleClick, 'dec', row),
     text: 'Dec'
   }
 ]
 
+// breakCount: 5,
+// pageCount: 10,
+// context: 'primary',
+// size: 'md',
+// showNextAndPrev: false
+
 export const Schedule = ({ data, handleClick, handleRowClick }) => {
   return (
-    <Table align="center" columns={columns(handleClick)} rowClick={handleRowClick} rows={data} />
+    <>
+      <Pagination pageCount="10">HERE</Pagination>
+      <Table align="center" columns={columns(handleClick)} rowClick={handleRowClick} rows={data} />
+    </>
   )
 }
 

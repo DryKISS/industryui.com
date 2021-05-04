@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // UI
-import OffCanvas from '../../molecules/offCanvas/components/portal'
+import OffCanvas from '../../molecules/offCanvas/offCanvas'
 import OffCanvasContext from './context'
 
 const DURATION = 300

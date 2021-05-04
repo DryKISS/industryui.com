@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { TableActions } from '../formatter/actions/actions'
+import TableActions from '../components/formatter/actions/actions'
 import Readme from '../README.md'
 
 export default {
@@ -18,7 +18,7 @@ export default {
       }
     }
   },
-  title: 'Molecules/Table/Actions'
+  title: 'Molecules/Table'
 }
 
 const data = [
@@ -75,4 +75,4 @@ const row = {
   actions: ''
 }
 
-export const tableAction = (args) => <TableActions {...args} data={data} row={row} />
+export const Actions = (args) => <TableActions {...args} align="flex-start" data={data} row={row} />

@@ -20,7 +20,7 @@ const Toggler = ({ handleMenuClick, visible }) => {
       aria-label="Toggle navigation"
       onClick={handleMenuClick}
     >
-      {!visible ? <Icon icon="bars" prefix="fas" /> : <Icon icon="times" prefix="fas" />}
+      {!visible ? <Icon icon="bars" /> : <Icon icon="times" />}
       <StyledText>Menu</StyledText>
     </StyledToggler>
   )
