@@ -6,7 +6,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// Styled Components
+// Style
 import styled, { ThemeProvider } from 'styled-components'
 
 // UI

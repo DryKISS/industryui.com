@@ -24,13 +24,13 @@ export default {
 
 const handleClick = ({ e, month, row }) => {
   e.stopPropagation()
-  console.log('Month', month)
-  console.log('Row', row)
-  console.log('Cell CLick', e)
+  console.info('Month', month)
+  console.info('Row', row)
+  console.info('Cell CLick', e)
 }
 
 const handleRowClick = (row) => {
-  console.log('Row Click', row)
+  console.info('Row Click', row)
 }
 
 export const main = (args) => (

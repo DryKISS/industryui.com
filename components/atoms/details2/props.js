@@ -29,7 +29,7 @@ export const defaultProps = {
   animationDuration: 100,
   context: 'primary',
   disableAnimation: false,
-  fitParentHeight: false,
+  fitParentHeight: true,
   iconComponent: null,
   open: false,
   unmountContentOnClose: false

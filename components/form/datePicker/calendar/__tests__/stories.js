@@ -53,11 +53,11 @@ const BaseComponent = (props = {}) => {
   const watchPicker = watch('expiryAt', '')
 
   const onSubmit = (form) => {
-    console.log(form)
+    console.info(form)
   }
 
   const handleOnChange = (date) => {
-    console.log('Date:', date)
+    console.info('Date:', date)
   }
 
   const defaultProps = {
