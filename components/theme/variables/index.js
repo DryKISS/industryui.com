@@ -10,7 +10,6 @@ import { THEME_TYPOGRAPHY as TYPOGRAPHY } from './typography'
 import { AVATAR } from '../../atoms/avatar/variables'
 import { BADGE } from '../../atoms/badge/variables'
 import { BAR } from '../../organisms/bar/variables'
-import { CALENDAR } from '../../organisms/calendar/fullCalendar/variables'
 import { COPYRIGHT } from '../../molecules/copyright/variables'
 import { DETAILS2 } from '../../atoms/details2/variables'
 import { DROPDOWN } from '../../molecules/dropdown/variables'
@@ -45,7 +44,6 @@ export const Theme = {
   BADGE,
   BAR,
   BARCHART,
-  CALENDAR,
   COLOUR,
   COPYRIGHT,
   DETAILS2,
