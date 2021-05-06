@@ -3,22 +3,17 @@
  */
 
 // React
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 // Storybook
 import Details from '../../../../../.storybook/decorators/details'
 
 // UI
 import { Calendar } from '../fullCalendar'
-// import { Theme } from '../../../../'
 import Readme from '../README.md'
 
 // Data
 import { Events } from '../__mocks__/events'
-
-// Stories
-// import { CustomCalendarStyles } from './customCalendarStyles'
-// import { CustomEventsStory } from './customEventsStory'
 
 export default {
   args: {
