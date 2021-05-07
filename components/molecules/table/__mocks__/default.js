@@ -99,7 +99,7 @@ export const columnsActions = [
         to: '/manage',
         tooltip: 'Edit',
         numberOverlay: 'itemCount',
-        onClick: () => console.log('edit', row)
+        onClick: () => console.info('edit', row)
       },
       {
         content: 'Delete',

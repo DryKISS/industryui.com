@@ -111,7 +111,7 @@ export const withMarkers = (args) => (
 )
 export const withSvgAsMainImage = (args) => {
   const handleMarkerClick = (markerData) => {
-    console.log(markerData)
+    console.info(markerData)
   }
 
   const markers = []

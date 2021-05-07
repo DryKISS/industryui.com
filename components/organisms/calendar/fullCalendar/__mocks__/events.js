@@ -5,16 +5,6 @@
 // Moment
 import moment from 'moment'
 
-export const AvailableViews = [
-  'dayGridMonth',
-  'dayGridWeek',
-  'dayGridDay',
-  'dayGrid',
-  'timeGridWeek',
-  'timeGridDay',
-  'timeGrid'
-]
-
 export const Events = [
   {
     allDay: true,
@@ -31,6 +21,22 @@ export const Events = [
     description: 'Event starting at a specific time',
     date: moment().date(7).hour(14).minute(30).format(),
     title: 'Event 2'
+  },
+  {
+    context: 'danger',
+    daysOfWeek: [2],
+    description: 'Recurring event, once per week, all day',
+    endRecur: moment().date(30).format('YYYY-MM-DD'),
+    startRecur: moment().date(5).format('YYYY-MM-DD'),
+    title: 'PPM: Boiler Check'
+  },
+  {
+    context: 'danger',
+    daysOfWeek: [2],
+    description: 'Recurring event, once per week, all day',
+    endRecur: moment().date(30).format('YYYY-MM-DD'),
+    startRecur: moment().date(5).format('YYYY-MM-DD'),
+    title: 'PPM: Boiler Check'
   },
   {
     context: 'danger',

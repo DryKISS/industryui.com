@@ -69,6 +69,7 @@ const Button = forwardRef(
         size={size}
         style={style}
         textContext={textContext}
+        type={type}
       >
         {startIcon && <Icon icon={startIcon} {...startIconProps} prefix={startIconProps?.prefix} />}
 
