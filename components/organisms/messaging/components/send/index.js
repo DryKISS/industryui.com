@@ -134,11 +134,11 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             </StyledDropDown>
           )}
           <StyledElements>
+            <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
             <EmojiSelectWrapper>
-              <EmojiSuggestions />
+              <EmojiSuggestions open />
               <EmojiSelect />
             </EmojiSelectWrapper>
-            <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
           </StyledElements>
 
           {voiceMessage && (
@@ -187,22 +187,22 @@ const DeleteIconWrapper = styled.div`
 `
 
 const EmojiSelectWrapper = styled.div`
-  [class*='emojiSelectPopover_'] {
+  .ejr02pv {
     top: -400px;
     left: -10px;
   }
-  [class*='emojiSuggestions'] {
+  .esyutjr {
     top: -350px !important;
   }
-  [class*='draftJsEmojiPlugin__emojiSelectButton_'] {
+  .e8k2yoa {
     background-color: transparent !important;
     border: none;
     color: ${({ theme: { MESSAGING } }) => MESSAGING.inputIconsColour};
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     height: unset;
     margin-top: -5px;
-    margin-right: 3px;
+    margin-right: 5px;
     &:hover {
       color: ${({ theme: { MESSAGING } }) => MESSAGING.inpotIconsHoverColour};
     }
@@ -254,7 +254,8 @@ const StyledWrapper = styled.div`
 
 const StyledIcon = styled(Icon)`
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 0.2rem;
+  margin-top: 3px;
   color: ${({ theme: { MESSAGING } }) => MESSAGING.inputIconsColour};
   &:hover {
     color: ${({ theme: { MESSAGING } }) => MESSAGING.inpotIconsHoverColour};

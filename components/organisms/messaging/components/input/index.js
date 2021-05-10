@@ -74,7 +74,6 @@ export const MessagingInput = ({ mentions, onChange }) => {
         <MentionSuggestions
           onAddMention={onAddMention}
           onSearchChange={onSearchChange}
-          onOpenChange={() => {}}
           suggestions={suggestions}
         />
       )}
@@ -83,7 +82,7 @@ export const MessagingInput = ({ mentions, onChange }) => {
         editorState={editorState}
         onChange={handleChange}
         plugins={messagingPlugins}
-        placeholder="Type here..."
+        placeholder="Type your message here..."
         ref={editor}
       />
     </Wrapper>
@@ -95,7 +94,8 @@ const Wrapper = styled.div`
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;
   }
   ${(props) => formStyle(props)}
-  font-size:${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
+  border-color:${({ theme: { MESSAGING } }) => MESSAGING.inputBorderColour};
+  font-size: ${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
   width: calc(100% - 8rem);
   max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
   overflow-y: auto;

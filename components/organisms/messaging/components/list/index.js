@@ -47,7 +47,6 @@ export const MessageList = memo(
     const [Messages, setMessages] = useState(initialMessages)
 
     const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
-
     for (let i = 0; i < Messages.length; i++) {
       if (i !== 0) {
         const current = new Date(Messages[i].time)

@@ -76,17 +76,6 @@ export const Main = (args) => {
   }
 
   const defaultProps = {
-    audienceItems: [
-      { name: 'All', id: 'all' },
-      { name: 'Internal', id: 'internal' },
-      { name: 'Customer Only', id: 'customer' },
-      { name: 'Supplier Only', id: 'supplier' },
-      { name: 'Customer & Supplier', id: 'customer-supplier' }
-    ],
-    mentions,
-    messages,
-    onSearch: handleSearch,
-    onFilter: handleFilter,
     ...args
   }
   const mimicRecieve = () => {
@@ -136,7 +125,6 @@ export const Main = (args) => {
       })
     }, 100)
   }
-
   return (
     <>
       <MessagingContainer
@@ -144,6 +132,17 @@ export const Main = (args) => {
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}
         onMessageSubmit={onSubmit}
+        messages={messages}
+        audienceItems={[
+          { name: 'All', id: 'all' },
+          { name: 'Internal', id: 'internal' },
+          { name: 'Customer Only', id: 'customer' },
+          { name: 'Supplier Only', id: 'supplier' },
+          { name: 'Customer & Supplier', id: 'customer-supplier' }
+        ]}
+        mentions={mentions}
+        onSearch={handleSearch}
+        onFilter={handleFilter}
         messagesContainerHeight={550}
       />
       <Button onClick={mimicRecieve}>mimic message recieve</Button>
