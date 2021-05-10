@@ -57,10 +57,6 @@
     "commitMessage": "Deploy Storybook"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "@apollo/client": "3.3.16",
->>>>>>> develop
     "@draft-js-plugins/editor": "4.1.0",
     "@draft-js-plugins/emoji": "4.2.0",
     "@draft-js-plugins/hashtag": "4.1.0",

@@ -5,14 +5,14 @@
 // React
 import React from 'react'
 
-// UI
-import { Button } from '../../atoms'
-import { DetailsPropTypes, DetailsDefaultProps } from './props'
-
 // Style
 import styled from 'styled-components'
 
-export const Details = ({
+// UI
+import Button from '../button/button/button'
+import { propTypes, defaultProps } from './props'
+
+const Details = ({
   children,
   context,
   dataSet,
@@ -74,5 +74,7 @@ const StyledBody = styled.div`
   padding: 0 1rem 1rem;
 `
 
-Details.propTypes = DetailsPropTypes
-Details.defaultProps = DetailsDefaultProps
+Details.propTypes = propTypes
+Details.defaultProps = defaultProps
+
+export default Details

@@ -14,7 +14,7 @@ import SPACER from '../../utils/spacer/spacer'
 import themeDisplay from '../../utils/display/display'
 
 // Props
-import { propTypes, defaultProps } from './props'
+import { propTypes, defaultProps } from './components/props'
 
 const Text = ({ align, children, className, content, context, size, weight }) => {
   return (

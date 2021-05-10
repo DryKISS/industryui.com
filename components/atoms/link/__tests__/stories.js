@@ -6,11 +6,12 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators'
-import { action } from '@storybook/addon-actions'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 
 // UI
-import { Button, Divider, Link } from '../../../'
+import Button from '../../button/button/button'
+import Divider from '../../divider/divider'
+import Link from '../link'
 import Readme from '../README.md'
 
 export default {

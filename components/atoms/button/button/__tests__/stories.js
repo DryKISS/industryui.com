@@ -10,11 +10,11 @@ import { ContextControl } from '../../../../../.storybook/decorators/context'
 import { SizeControl } from '../../../../../.storybook/decorators/size'
 
 // UI
-import { Button } from '../../button/button'
-import { Space } from '../../../space/space'
-import { THEME_CONTEXT } from '../../../../theme/constants/context'
-import { THEME_SIZE } from '../../../../theme/constants/size'
-import { Text } from '../../../text/text'
+import Button from '../button'
+import Space from '../../../space/space'
+import THEME_CONTEXT from '../../../../theme/constants/context'
+import THEME_SIZE from '../../../../theme/constants/size'
+import Text from '../../../text/text'
 import Readme from '../README.md'
 
 export default {

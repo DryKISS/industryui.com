@@ -9,9 +9,9 @@ import { oneOf } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { THEME_SIZE } from '../../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
-export const Progress = styled.div`
+const Progress = styled.div`
   background-color: ${({
     theme,
     theme: {
@@ -48,3 +48,5 @@ Progress.propTypes = {
 Progress.defaultProps = {
   size: 'md'
 }
+
+export default Progress

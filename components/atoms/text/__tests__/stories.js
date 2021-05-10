@@ -6,13 +6,13 @@
 import React from 'react'
 
 // Stroybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
-import { Text } from '../text'
-import { THEME_ALIGN } from '../../../theme/constants/align'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { THEME_SIZE } from '../../../theme/constants/size'
+import Text from '../text'
+import THEME_ALIGN from '../../../constants/align'
+import THEME_CONTEXT from '../../../constants/context'
+import THEME_SIZE from '../../../constants/size'
 
 export default {
   args: {

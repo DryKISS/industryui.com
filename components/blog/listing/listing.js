@@ -53,7 +53,6 @@ export const BlogListing = ({ articles, author, category, config, tag }) => {
 
   return (
     <Row>
-      here
       {_find().map((article, index) => (
         <Column key={index} md={6}>
           <BlogCard article={article} config={config} />

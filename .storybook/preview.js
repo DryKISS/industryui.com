@@ -11,7 +11,6 @@ import  Wrapper from './decorators/wrapper'
 import '@fullcalendar/common/main.min.css'
 import '@fullcalendar/daygrid/main.min.css'
 import '@fullcalendar/list/main.min.css'
-import '@fullcalendar/resource-timeline/main.min.css'
 import '@fullcalendar/timegrid/main.min.css'
 
 // Font awesome

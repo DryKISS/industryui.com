@@ -6,10 +6,12 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 
 // UI
-import { Button, ButtonToolbar, Details } from '../../../'
+import Button from '../../button/button/button'
+import ButtonToolbar from '../../button/toolbar/toolbar'
+import Details from '../details'
 import Readme from '../README.md'
 
 export default {

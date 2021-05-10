@@ -9,7 +9,7 @@ import { node } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Details2Actions = ({ toolbar }) => {
+const Details2Actions = ({ toolbar }) => {
   return (
     <Wrapper>
       <Toolbar>{toolbar}</Toolbar>
@@ -30,3 +30,5 @@ const Toolbar = styled.div`
 Details2Actions.propTypes = {
   toolbar: node
 }
+
+export default Details2Actions

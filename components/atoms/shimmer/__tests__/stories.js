@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Shimmer } from '../shimmer'
+import Shimmer from '../shimmer'
 import Readme from '../README.md'
 
 export default {

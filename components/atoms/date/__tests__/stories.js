@@ -6,10 +6,10 @@
 import React from 'react'
 
 // Storybook
-import { SizeControl } from '../../../../.storybook/decorators'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // UI
-import { Date } from '../date'
+import Date from '../date'
 import Readme from '../README.md'
 
 export default {

@@ -7,10 +7,10 @@ import React from 'react'
 import { number, string, bool, oneOf } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { ProgressBarDiv } from '../../../'
+import THEME_CONTEXT from '../../../constants/context'
+import ProgressBarDiv from './progressBarDiv'
 
-export const ProgressBar = (props) => {
+const ProgressBar = (props) => {
   return (
     <ProgressBarDiv
       aria-valuenow={props.now}
@@ -42,3 +42,5 @@ ProgressBar.defaultProps = {
   now: 0,
   striped: false
 }
+
+export default ProgressBar

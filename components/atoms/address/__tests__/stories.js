@@ -6,10 +6,10 @@
 import React from 'react'
 
 // Storybook
-import { CountryControl } from '../../../../.storybook/decorators'
+import { CountryControl } from '../../../../.storybook/decorators/country'
 
 // UI
-import { Address } from '../address'
+import Address from '../address'
 import Readme from '../README.md'
 
 export default {

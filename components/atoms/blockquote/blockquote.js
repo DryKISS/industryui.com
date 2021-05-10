@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Blockquote = ({ footer, text }) => {
+const Blockquote = ({ footer, text }) => {
   return (
     <StyledBlockquote>
       <StyledText>{text}</StyledText>
@@ -43,3 +43,5 @@ Blockquote.propTypes = {
   footer: string,
   text: string.isRequired
 }
+
+export default Blockquote

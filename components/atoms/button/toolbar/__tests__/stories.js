@@ -6,13 +6,17 @@
 import React from 'react'
 
 // Storybook
-import { AlignControl, SizeControl } from '../../../../../.storybook/decorators'
+import { AlignControl } from '../../../../../.storybook/decorators/align'
+import { SizeControl } from '../../../../../.storybook/decorators/size'
 
 // UI
-import { Button, ButtonToolbar, Icon } from '../../../../'
-import { Dropdown } from '../../../../molecules/dropdown/components/dropdown'
-import { THEME_ALIGN } from '../../../../theme/constants/align'
-import { THEME_SIZE } from '../../../../theme/constants/size'
+import { Button } from '../../button/button'
+import { ButtonToolbar } from '../toolbar'
+import { Icon } from '../../../icon/icon/icon'
+
+import Dropdown from '../../../../molecules/dropdown/dropdown'
+import THEME_ALIGN from '../../../../constants/align'
+import THEME_SIZE from '../../../../constants/size'
 import Readme from '../README.md'
 
 export default {

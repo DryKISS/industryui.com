@@ -6,7 +6,7 @@
 import { bool, node, number, object, oneOf, string } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import THEME_CONTEXT from '../../../constants/context'
 
 export const propTypes = {
   animationDuration: number,

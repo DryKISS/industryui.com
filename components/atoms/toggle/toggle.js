@@ -10,10 +10,10 @@ import { bool, func, oneOf } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Switch } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import Switch from './components/switch'
+import THEME_CONTEXT from '../../constants/context'
 
-export const Toggle = ({ context, disabled, onToggle, size, toggled: initial }) => {
+const Toggle = ({ context, disabled, onToggle, size, toggled: initial }) => {
   const [toggled, setToggled] = useState(initial)
   useEffect(() => {
     setToggled(initial)
@@ -55,3 +55,5 @@ Toggle.defaultProps = {
   size: 'md',
   toggled: false
 }
+
+export default Toggle

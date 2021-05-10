@@ -5,5 +5,8 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./"
   },
-  "include": ["components/**/*", ".storybook/themes/**/*"]
+  "exclude": [
+    "node_modules",
+    "esm"
+  ]
 }

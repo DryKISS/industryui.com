@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Blockquote } from '../blockquote'
+import Blockquote from '../blockquote'
 import Readme from '../README.md'
 
 export default {

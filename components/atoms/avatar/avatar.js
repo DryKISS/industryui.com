@@ -13,7 +13,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import getAcronym from '../../utils/getAcronym/getAcronym'
-import Image from '..//image/image'
+import Image from '../image/image'
 import themeFontSize from '../../utils/fontSize'
 import THEME_SIZE from '../../constants/size'
 

@@ -9,19 +9,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  DetailsSubscriber,
-  Details2Header,
-  Details2Content,
-  MessageNames,
-  useComponentCommunication
-} from '../../../'
-
-import { propTypes, defaultProps } from '../props'
+import { DetailsSubscriber } from '../../services/componentCommunication/componentCommunication'
+import { Details2Header } from './components/header'
+import { Details2Content } from './components/content'
+import { MessageNames } from '../../services/componentCommunication/messageNames'
+import { useComponentCommunication } from '../../hooks/useComponentCommunication/useSubscription'
+import { propTypes, defaultProps } from '../components/props'
 
 let callTimeout
 
-export const Details2 = ({
+const Details2 = ({
   animationDuration,
   children,
   contentStyle,
@@ -145,3 +142,5 @@ const Wrapper = styled.div`
 
 Details2.propTypes = propTypes
 Details2.defaultProps = defaultProps
+
+export default Details2

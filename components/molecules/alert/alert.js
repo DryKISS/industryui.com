@@ -10,12 +10,12 @@ import { func, object, objectOf, number, oneOf, oneOfType, string } from 'prop-t
 import styled from 'styled-components'
 
 // UI
-import { AlertContent } from './content'
-import { AlertHeader } from './header'
+import { AlertContent } from './components/content'
+import { AlertHeader } from './components/header'
 
 import { Close, shadeLinearRgb } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { themeBackground } from '../../../theme/utils/background'
+import THEME_CONTEXT from '../../constants/context'
+import themeBackground from '../../utils/background'
 
 export const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
   const [visible, setVisible] = useState(true)

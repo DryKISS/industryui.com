@@ -17,7 +17,7 @@ import { validatorUri } from '../../utils/validator/uri'
 import THEME_CONTEXT from '../../constants/context'
 
 // Props
-import { defaultProps, propTypes } from './props'
+import { defaultProps, propTypes } from './components/props'
 
 const Link = ({
   border,

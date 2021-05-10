@@ -10,9 +10,9 @@ import { oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
-export const Date = ({ date, size }) => {
+const Date = ({ date, size }) => {
   return (
     <StyledTime dateTime={date} itemProp="datePublished" pubdate="pubdate" size={size}>
       {date}
@@ -36,3 +36,5 @@ Date.propTypes = {
 Date.defaultProps = {
   size: 'md'
 }
+
+export default Date

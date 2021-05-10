@@ -6,10 +6,15 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes, ContextControl, SizeControl } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
+import { ContextControl } from '../../../../.storybook/decorators/context'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // UI
-import { Badge, THEME_CONTEXT, THEME_SIZE } from '../../../'
+import Badge from '../badge'
+import THEME_CONTEXT from '../../../constants/context'
+import THEME_SIZE from '../../../constants/size'
+
 import Readme from '../README.md'
 
 export default {

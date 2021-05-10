@@ -6,9 +6,9 @@
 import { any, bool, func, node, object, oneOf, string } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import THEME_CONTEXT from '../../constants/context'
 
-export const DetailsPropTypes = {
+export const propTypes = {
   children: node.isRequired,
   context: oneOf(Object.values(THEME_CONTEXT)),
   dataSet: object,
@@ -19,7 +19,7 @@ export const DetailsPropTypes = {
   Toolbar: func
 }
 
-export const DetailsDefaultProps = {
+export const defaultProps = {
   context: 'primary',
   dataSet: { 'data-cy': 'details' },
   open: false

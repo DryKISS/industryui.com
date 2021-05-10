@@ -6,10 +6,10 @@
 import { bool, node, oneOf, string } from 'prop-types'
 
 // UI
-import DISPLAY_PROP_TYPES from '../../utils/display/props'
-import SPACER_PROP_TYPES from '../../utils/spacer/props'
-import THEME_CONTEXT from '../../constants/context'
-import THEME_SIZE from '../../constants/size'
+import DISPLAY_PROP_TYPES from '../../../utils/display/props'
+import SPACER_PROP_TYPES from '../../../utils/spacer/props'
+import THEME_CONTEXT from '../../../constants/context'
+import THEME_SIZE from '../../../constants/size'
 
 export const propTypes = {
   align: string,

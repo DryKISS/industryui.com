@@ -9,7 +9,7 @@ import { bool, func, oneOf } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const Switch = ({ context, disabled, handleToggle, size, toggled }) => {
+const Switch = ({ context, disabled, handleToggle, size, toggled }) => {
   return (
     <StyledSwitchContainer
       context={context}
@@ -104,3 +104,5 @@ Switch.propTypes = {
   size: oneOf(['sm', 'md', 'lg']),
   toggled: bool
 }
+
+export default Switch

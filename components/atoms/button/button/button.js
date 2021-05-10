@@ -13,7 +13,7 @@ import Icon from '../../../atoms/icon/icon/icon'
 import ButtonItemCount from './components/itemCount'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
 import SPACER from '../../../utils/spacer/spacer'
-import { themeBackground } from '../../../utils/background'
+import themeBackground from '../../../utils/background'
 import { themeDimension } from '../../../utils/dimension'
 import themeDisplay from '../../../utils/display/display'
 
