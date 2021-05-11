@@ -65,7 +65,7 @@ export { default as Bootstrap } from './layouts/bootstrap/bootstrap'
 // Molecules
 export { default as Navbar } from './molecules/navbar/navbar'
 export { default as PageHeading } from './molecules/pageHeading/pageHeading'
-export { default as Table } from './molecules/table/components/wrapper'
+export { default as Table } from './molecules/table/components/table'
 export { default as Tabs } from './molecules/tabs/tabs'
 
 // Components
