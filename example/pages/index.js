@@ -3,7 +3,6 @@
  */
 
 // UI
-import { Page } from '../components/common/page/page'
 
 const PageIndex = () => {
   const meta = {
@@ -14,14 +13,9 @@ const PageIndex = () => {
   }
 
   return (
-    <Page
-      heroHeading="We do MVPs"
-      heroImage="/images/home/hero.png"
-      heroSubHeading="Supercharge your startup and launch your application. Validate your idea."
-      meta={meta}
-    >
-
-    </Page>
+    <div>
+test
+    </div>
   )
 }
 

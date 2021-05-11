@@ -31,7 +31,7 @@ const PageApp = (props) => {
         />
       </Head>
 
-      <MyApp config={Config} Layout={Layout} pageProgressBar theme={Theme} {...props} />
+      <MyApp config={Config} Layout={{}} pageProgressBar theme={Theme} {...props} />
     </>
   )
 }

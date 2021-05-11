@@ -40,9 +40,9 @@
     "build": "npm run clean && cross-env BABEL_ENV=esm babel components --out-dir esm  --source-maps false",
     "build-storybook": "build-storybook --quiet -s ./static",
     "pack": "npm run build && npm pack",
-    "prepare":"npm run build && node copyToExample && npm run clean && cd example",
-    "example:analyze": "npm run prepare && cross-env ANALYZE=true npm run build && npm run analyze",
-    "example:dev": "npm run prepare && npm run start",
+    "prepare":"npm run build && node copyToExample && npm run clean",
+    "example:analyze": "npm run prepare  && cd example && cross-env ANALYZE=true npm run build && npm run analyze",
+    "example:dev": "npm run prepare  && cd example && npm run start",
     "test:snapshot": "cross-env ENVIRONMENT=test jest",
     "test:snapshot:update": "cross-env ENVIRONMENT=test jest --updateSnapshot"
   },
