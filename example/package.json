@@ -20,7 +20,9 @@
   },
   "dependencies": {
     "@drykiss/industry-ui": "1.14.10",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3"
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@next/bundle-analyzer": "^10.2.0",
+    "next-compose-plugins": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",

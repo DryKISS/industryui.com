@@ -13,6 +13,7 @@ service-account.json
 
 # Node
 node_modules
+example/node_modules
 node_modules_
 npm-debug.log
 npm-debug.log*
