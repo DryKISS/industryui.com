@@ -3,12 +3,6 @@
  */
 
 // UI
-import { Space } from '@drykiss/industry-ui'
-import { HomeClients } from '../components/home/clients'
-import { HomeMiddleHero } from '../components/home/middleHero'
-import { HomeOurMethodology } from '../components/home/ourMethodology'
-import { HomeOurWorks } from '../components/home/ourWorks'
-import { HomeWhoWeAre } from '../components/home/whoWeAre'
 import { Page } from '../components/common/page/page'
 
 const PageIndex = () => {
@@ -26,18 +20,7 @@ const PageIndex = () => {
       heroSubHeading="Supercharge your startup and launch your application. Validate your idea."
       meta={meta}
     >
-      <HomeWhoWeAre />
-      <Space marginBottom="xxxl" />
 
-      <HomeOurMethodology />
-
-      <HomeMiddleHero />
-      <Space marginBottom="xxxl" />
-
-      <HomeOurWorks />
-      <Space marginBottom="xxxl" />
-
-      <HomeClients />
     </Page>
   )
 }

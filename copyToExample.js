@@ -1,6 +1,6 @@
 const fse = require('fs-extra')
 
-const srcDir = `esm`
+const srcDir = `esm/`
 const destDir = `example/node_modules/@drykiss/industry-ui`
 
 // To copy a folder or file
