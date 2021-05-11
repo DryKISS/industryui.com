@@ -136,7 +136,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           <StyledElements>
             <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
             <EmojiSelectWrapper>
-              <EmojiSuggestions open />
+              <EmojiSuggestions  />
               <EmojiSelect />
             </EmojiSelectWrapper>
           </StyledElements>

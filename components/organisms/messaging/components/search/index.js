@@ -10,7 +10,7 @@ import { func, string } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Column, Form, Row, Search, SelectField } from '../../../..'
+import { Column, Form, Row, Search, SelectField, Space } from '../../../..'
 
 // Style
 import styled from 'styled-components'
@@ -43,11 +43,11 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   return (
     <StyledContainer>
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <Row>
+        <StyledRow>
           <Column md={6}>
             <StyledSearch {...defaultOptions} prependSearchIcon placeholder={placeholder} />
           </Column>
-
+          <StyledSpace mb={1} />
           <Column md={6}>
             <StyledSelect
               {...defaultOptions}
@@ -56,12 +56,25 @@ export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
               options={Items}
             />
           </Column>
-        </Row>
+        </StyledRow>
       </Form>
     </StyledContainer>
   )
 }
-
+const StyledSpace = styled(Space)`
+  width: 100%;
+`
+const StyledRow = styled(Row)`
+  ${StyledSpace} {
+    display: none;
+  }
+  /* MD Medium devices (tablets, 768px and up) */
+  @media (max-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
+    ${StyledSpace} {
+      display: block;
+    }
+  }
+`
 const StyledContainer = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.headerBackground};
   border-top: 1px solid #c0c0c0;
@@ -73,7 +86,6 @@ const StyledSearch = styled(Search)`
 `
 
 const StyledSelect = styled(SelectField)`
-  width: 75%;
   label {
     margin: 0;
   }
