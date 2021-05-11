@@ -14,8 +14,7 @@ const PageIndex = () => {
 
   return (
     <div>
-test
-    </div>
+     </div>
   )
 }
 

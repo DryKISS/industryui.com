@@ -7,13 +7,8 @@ import Head from 'next/head'
 
 // UI
 import { MyApp } from '@drykiss/industry-ui'
-import Layout from '../layouts/index'
 import { Config } from '../config/config'
 import { Theme } from '../config/theme'
-
-// UI
-import '../config/icons'
-
 
 const PageApp = (props) => {
   return (
