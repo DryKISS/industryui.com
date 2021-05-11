@@ -96,7 +96,6 @@ const Wrapper = styled.div`
   ${(props) => formStyle(props)}
   border-color:${({ theme: { MESSAGING } }) => MESSAGING.inputBorderColour};
   font-size: ${({ theme: { MESSAGING } }) => MESSAGING.inputFontSize};
-  width: calc(100% - 8rem);
   max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
   overflow-y: auto;
 `

@@ -136,7 +136,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
           <StyledElements>
             <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
             <EmojiSelectWrapper>
-              <EmojiSuggestions  />
+              <EmojiSuggestions />
               <EmojiSelect />
             </EmojiSelectWrapper>
           </StyledElements>
@@ -159,7 +159,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
             style={{ display: 'none' }}
             type="file"
           />
-          <StyledElements>
+          <SendActionsWrapper>
             {isSendDisabled() ? (
               <VoiceRecorder onVoiceRecord={handleVoiceRecord} />
             ) : (
@@ -173,7 +173,7 @@ export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) 
                 <PaperPlaneIcon hoverColour />
               </Button>
             )}
-          </StyledElements>
+          </SendActionsWrapper>
         </StyledWrapper>
       </StyledContainer>
     </>
@@ -215,7 +215,9 @@ const StyledElements = styled.div`
   place-content: space-evenly;
   width: 4rem;
 `
-
+const SendActionsWrapper = styled(StyledElements)`
+  width: 3rem;
+`
 const StyledContainer = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
   border-bottom: 1px solid #c0c0c0;
