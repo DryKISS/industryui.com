@@ -8,7 +8,9 @@ import React from 'react'
 import { bool, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { Button, Divider, Link } from '../../'
+import { Button } from '../../atoms/button/button/button'
+import { Divider } from '../../atoms/divider/divider'
+import { Link } from '../../atoms/link/link'
 
 export const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
   return (
