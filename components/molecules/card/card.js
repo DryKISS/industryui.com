@@ -6,7 +6,12 @@
 import React from 'react'
 
 // UI
-import { Close, Icon, Link, MEDIA_QUERY } from '../../../'
+// import { Close, Icon, Link, MEDIA_QUERY } from '../../../'
+import { Close } from '../../atoms/close/close'
+import { Icon } from '../../atoms/icon/icon/icon'
+import { Link } from '../../atoms/link/link'
+import { MEDIA_QUERY } from '../../utils/mediaQuery/query'
+
 import { CardBody, CardFooter, CardHeader, CardImage } from './'
 import { CardPropTypes, CardDefaultProps } from './props'
 
