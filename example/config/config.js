@@ -1,6 +1,12 @@
 /**
  * Config
  */
+
+export const apiConfig = {}
+export const jwtConfig = {}
+export const AccessPages = {}
+export const AccessRules = {}
+
 const Canonical = require('./canonical')
 export { Canonical }
 
@@ -9,47 +15,45 @@ export const Blog = {
 }
 
 export const Brand = {
-  logo: '/images/logo/drykiss-white.svg',
-  name: 'DryKISS Ltd'
+  logo: '/images/logos/maitai.png',
+  name: 'MaiTai'
 }
 
 export const Facebook = {
-  appId: 285418984933747,
-  appPath: 'https//www.facebook.com/drykissltd',
+  appId: '',
+  appPath: '',
   domain: Canonical,
-  hashTag: 'DryKISS'
+  hashTag: 'MaiTai'
 }
 
 export const Google = {
-  analytics: 'UA-49976138-1',
-  adsense: 'ca-pub-4390370568784157',
+  analytics: '',
+  adsense: '',
   apiKey: '',
-  verification: 'KV07s1r94b_CG89V9Tuh7a5FYEv4kG8-WbLMGLCOIjw'
+  verification: ''
 }
 
-export const HubSpot = {
-  id: 6190637,
-  contactFormId: '3a36aae9-8343-45f6-9268-15acd39190fe'
+export const Sidebar = {}
+
+// Internationalisation
+export const defaultLocale = 'en'
+export const locales = ['en']
+
+export const languageNames = {
+  en: 'English',
+  es: 'Spanish'
 }
 
-export const Mailchimp = {
-  username: 'drykiss',
-  dc: 'us7',
-  u: '4862895059f8ff67d43123d97',
-  id: '9ea724a203'
-}
-
-export const Pinterest = {
-  verify: '18cdcea1be80cd72ded2e50bb5d21050'
-}
+export const Translations = {}
 
 export const Config = {
   Blog,
   Brand,
   Canonical,
+  defaultLocale,
   Facebook,
   Google,
-  HubSpot,
-  Mailchimp,
-  Pinterest
+  languageNames,
+  locales,
+  Translations
 }

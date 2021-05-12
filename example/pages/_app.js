@@ -1,34 +1,19 @@
 /**
  * App
  */
-
-// Next
-import Head from 'next/head'
-
 // UI
 import { MyApp } from '@drykiss/industry-ui'
-import { Config } from '../config/config'
-import { Theme } from '../config/theme'
 
-const PageApp = (props) => {
-  return (
-    <>
-      <Head>
-        <meta
-          content="https://drykiss.com/images/social/drykiss-facebook.jpg"
-          key="og:image"
-          property="og:image"
-        />
+// Layout
+import Layout from 'layouts'
 
-        <meta
-          name="twitter:image"
-          content="https://drykiss.com/images/social/drykiss-facebook.jpg"
-        />
-      </Head>
+// Config
+import { Config, Theme } from 'config'
 
-      <MyApp config={Config} Layout={{}} pageProgressBar theme={Theme} {...props} />
-    </>
-  )
-}
+import 'config/icons'
+
+const PageApp = (props) => (
+  <MyApp config={Config} Layout={Layout} pageProgressBar theme={Theme} {...props} />
+)
 
 export default PageApp

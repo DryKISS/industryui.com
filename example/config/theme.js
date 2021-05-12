@@ -1,121 +1,125 @@
 /**
- * DryKiss Theme
- *
+ * Theme - MaiTai
  */
 
-const fonts = {
-  openSans: "'Open Sans'"
-}
-
-export const COLOUR = {
-  drykiss_lightBlue: '#00D2D2',
-  drykiss_darkPink: '#FF6E91',
-
-  active: '#000000',
-  visited: '#00D2D2',
-
-  white: '#ffffff',
-  black: '#000000',
-
-  dark: 'rgb(92, 111, 127)',
+const COLOUR = {
+  dark: 'rgb(0, 55, 83)',
   light: 'rgb(236, 240, 243)',
-  gray90: '#1A1A1A',
 
-  primary: '#289BC3',
-  secondary: '#FF6E91',
-  success: 'rgb(54, 197, 58)',
-  info: 'rgb(148, 148, 126)',
-  warning: 'rgb(222, 127, 40)',
-  danger: 'rgb(212, 81, 81)',
+  white: '#fff',
+  black: 'rgb(0, 0, 0)',
+  gray: '#333333',
 
-  help: 'rgb(255, 203, 68)',
-
-  male: 'rgb(142, 206, 253)',
-  female: 'rgb(248, 139, 157)',
-
-  transparent: 'transparent'
+  primary: '#5da7e5',
+  secondary: 'rgb(210,50,81)',
+  success: 'rgb(0, 180, 60)',
+  info: 'rgb(249, 156, 35)',
+  warning: 'rgb(230, 8, 17)',
+  danger: 'rgb(232, 9, 94)',
+  transparentInfo: 'rgba(241,165,33,.75)',
+  help: 'rgb(255, 222, 3)'
 }
 
-export const HEADINGS = {
-  h1: {
-    fontFamily: fonts.openSans,
-    fontSize: '3rem',
-    lineHeight: '1.25',
-    textTransform: 'initial'
-  },
-  h2: {
-    fontFamily: fonts.openSans,
-    fontSize: '2.25rem',
-    lineHeight: '1',
-    textTransform: 'initial'
-  },
-  h3: {
-    fontFamily: fonts.openSans,
-    fontSize: '1.875rem',
-    lineHeight: '1',
-    textTransform: 'initial'
-  },
-  h4: {
-    fontFamily: fonts.openSans,
-    fontSize: '1.5rem',
-    lineHeight: '1.75',
-    textTransform: 'initial'
-  },
-  h5: {
-    fontFamily: fonts.openSans,
-    fontSize: '1.25rem',
-    lineHeight: '1.5',
-    textTransform: 'initial'
-  },
-  h6: {
-    fontFamily: fonts.openSans,
-    fontSize: '1.125rem',
-    lineHeight: '1.5',
-    textTransform: 'initial'
-  }
+const COPYRIGHT = {
+  background: COLOUR.gray,
+  colour: COLOUR.white
+}
+
+const FOOTER = {
+  background: COLOUR.black,
+  colour: COLOUR.white
 }
 
 const NAVBAR = {
   // Navbar
-  background: COLOUR.gray90,
-  borderTopWidth: '0.125rem',
-  borderTopColor: COLOUR.primary,
+  background: COLOUR.white,
+  borderTopWidth: '0',
+  padding: '0 1rem',
+  paddingTablet: '0 1rem',
+  paddingDesktop: '0',
 
   // Overlay
-  backgroundOverlay: COLOUR.gray90,
+  backgroundOverlay: COLOUR.primary,
+  widthOverlay: '220px',
 
   // Toggler
-  colourToggler: COLOUR.white,
-  colourHoverToggler: COLOUR.white,
+  colourToggler: COLOUR.black,
+  fontSizeToggler: '0.875',
+  paddingToggler: '0.25rem 0',
+  colourHoverToggler: COLOUR.black,
+
+  // Collapse
+  positionCollapse: 'fixed',
 
   // Link
-  colourDefault: COLOUR.light,
-  colourDefaultDesktop: COLOUR.light,
+  paddingLink: '0.5rem',
+  colourDefault: COLOUR.black,
+  colourHover: COLOUR.primary,
+  colourDefaultDesktop: COLOUR.black,
+  colourHoverDesktop: COLOUR.primary,
+
+  // List
+  fontSizeList: '16px',
 
   // ListItem
-  backgroundHoverListItem: COLOUR.dark
+  borderTopListItem: 'none',
+  backgroundListItem: COLOUR.transparent,
+  justifyContentDesktopListItem: 'flex-start',
+  marginBottomDesktopListItem: 'none',
+  backgroundHoverListItem: COLOUR.transparent,
+  borderBottomHoverListItem: 'none'
 }
 
-const PAGE = {
-  marginTop: '-1rem',
-  backGroundColour: COLOUR.white
+const fonts = {
+  gillLight: "'Gill Sans MT Light'",
+  gillBold: "'Gill Sans MT'",
+  sansSerif: 'sans-serif'
+}
+
+export const HEADINGS = {
+  h1: {
+    fontFamily: fonts.gillBold,
+    fontSize: '3rem',
+    lineHeight: '1.25',
+    textTransform: 'uppercase'
+  },
+  h2: {
+    fontFamily: fonts.gillBold,
+    fontSize: '2.25rem',
+    lineHeight: '1',
+    textTransform: 'uppercase'
+  },
+  h3: {
+    fontFamily: fonts.gillBold,
+    fontSize: '1.875rem',
+    lineHeight: '1',
+    textTransform: 'uppercase'
+  },
+  h4: {
+    fontFamily: fonts.gillBold,
+    fontSize: '1.5rem',
+    lineHeight: '1.75',
+    textTransform: 'uppercase'
+  },
+  h5: {
+    fontFamily: fonts.gillBold,
+    fontSize: '1.25rem',
+    lineHeight: '1.5',
+    textTransform: 'uppercase'
+  },
+  h6: {
+    fontFamily: fonts.gillBold,
+    fontSize: '1.125rem',
+    lineHeight: '1.5',
+    textTransform: 'uppercase'
+  }
 }
 
 const TYPOGRAPHY = {
-  font: fonts.openSans,
+  font: fonts.gillLight,
   fontFamilies: fonts,
   fontColour: COLOUR.black,
   fontSizeBase: '1rem'
-}
-
-const FOOTER = {
-  background: '#1A1A1A',
-  colour: COLOUR.white
-}
-
-const COPYRIGHT = {
-  background: '#1A1A1A',
-  colour: COLOUR.white
 }
 
 export const Theme = {
@@ -124,6 +128,5 @@ export const Theme = {
   FOOTER,
   HEADINGS,
   NAVBAR,
-  PAGE,
   TYPOGRAPHY
 }

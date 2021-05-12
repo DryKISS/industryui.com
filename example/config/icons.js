@@ -1,30 +1,33 @@
-/**
- * Font awesome
- */
-
-// Brands - FAB
+// Font awesome
 import {
-  faFacebookSquare,
-  faGithub,
-  faLinkedin,
-  faPinterestSquare,
-  faTwitterSquare
+  faBars,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
+  faCopyright,
+  faEnvelope,
+  faExternalLinkAlt,
+  faMapMarker,
+  faPhone
+} from '@fortawesome/free-solid-svg-icons'
+
+import {
+  faFacebookSquare as fabFacebookSquare,
+  faGooglePlusSquare as fabGooglePlusSquare
 } from '@fortawesome/free-brands-svg-icons'
 
-// Free Solid - FAS
-import { faBars, faCopyright, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
-
-// Library
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(
-  faFacebookSquare,
-  faGithub,
-  faLinkedin,
-  faPinterestSquare,
-  faTwitterSquare,
   faBars,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
   faCopyright,
   faEnvelope,
-  faPhone
+  faExternalLinkAlt,
+  faMapMarker,
+  faPhone,
+  fabFacebookSquare,
+  fabGooglePlusSquare
 )

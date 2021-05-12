@@ -19,11 +19,7 @@
     "node": "^14"
   },
   "dependencies": {
-    "@drykiss/industry-ui": "1.11.0",
-    "next": "^10.0.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "styled-components": "^5.2.0"
+    "@drykiss/industry-ui": "1.14.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",

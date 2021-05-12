@@ -1,32 +1,39 @@
-# Next #
-########
+# Next
 .next
 out
 
-# Composer #
-############
+# Environment
+.env
+.env*.local
+old
+
+# Node
+node_modules
+npm-debug.log
+dist
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+/coverage
+cypress/videos
+cypress/screenshots
+
+# Composer
 vendor
 
-# Bower #
-#########
+# Bower
 bower_components
 
-# GIT #
-#######
+# GIT
 !.gitkeep
 
-# IDE #
-#######
+# IDE
 *.sublime-*
+.history
 
-# Cordova #
-###########
-hooks
-platforms
-plugins
-
-# Compiled source #
-###################
+# Compiled source
 *.com
 *.class
 *.dll
@@ -34,8 +41,7 @@ plugins
 *.o
 *.so
 
-# Packages #
-############
+# Packages
 # It's better to unpack these files and commit the raw source git has its own built in compression methods
 *.7z
 *.dmg
@@ -46,14 +52,12 @@ plugins
 *.tar
 *.zip
 
-# Logs and databases #
-######################
+# Logs and databases
 *.log
 *.sql
 *.sqlite
 
-# OS generated files #
-######################
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -61,17 +65,3 @@ plugins
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Node #
-########
-node_modules/
-npm-debug.log
-dist
-
-# Coverage #
-############
-coverage
-
-# ENV #
-############
-.env
