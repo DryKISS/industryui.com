@@ -5,13 +5,35 @@
 // React
 import { node } from 'prop-types'
 
-// Components
-import { Layout } from 'components'
+// Next
+import Head from 'next/head'
 
-const MainLayout = ({ children }) => <Layout>{children}</Layout>
+// UI
+import { Bootstrap } from '@drykiss/industry-ui'
 
-MainLayout.propTypes = {
+// Config
+import { Brand } from '../config/config'
+import { Copyright } from '../config/copyright'
+
+const Layout = ({ children }) => {
+  return (
+    <Bootstrap
+      brand={Brand.name}
+      brandLogo={Brand.logo}
+      children={children}
+      copyright={Copyright}
+    >
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
+      </Head>
+
+      {children}
+    </Bootstrap>
+  )
+}
+
+Layout.propTypes = {
   children: node.isRequired
 }
 
-export default MainLayout
+export default Layout

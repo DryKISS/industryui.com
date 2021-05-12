@@ -2,14 +2,6 @@
  * Config
  */
 
-export const apiConfig = {}
-export const jwtConfig = {}
-export const AccessPages = {}
-export const AccessRules = {}
-
-const Canonical = require('./canonical')
-export { Canonical }
-
 export const Blog = {
   path: '/blog'
 }
@@ -18,6 +10,9 @@ export const Brand = {
   logo: '/images/logos/maitai.png',
   name: 'MaiTai'
 }
+
+const Canonical = require('./canonical')
+export { Canonical }
 
 export const Facebook = {
   appId: '',
@@ -33,27 +28,10 @@ export const Google = {
   verification: ''
 }
 
-export const Sidebar = {}
-
-// Internationalisation
-export const defaultLocale = 'en'
-export const locales = ['en']
-
-export const languageNames = {
-  en: 'English',
-  es: 'Spanish'
-}
-
-export const Translations = {}
-
 export const Config = {
   Blog,
   Brand,
   Canonical,
-  defaultLocale,
   Facebook,
-  Google,
-  languageNames,
-  locales,
-  Translations
+  Google
 }

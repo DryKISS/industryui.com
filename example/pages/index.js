@@ -3,11 +3,7 @@
  */
 
 const PageIndex = () => {
-  return (
-    <>
-      <div>test</div>
-    </>
-  )
+  return <div>testwdwd</div>
 }
 
 export default PageIndex

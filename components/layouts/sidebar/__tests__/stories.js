@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { Navbar, SidebarLayout } from '../../../'
+import Navbar from '../../../molecules/navbar/navbar'
+import SidebarLayout from '../sidebar'
 import Readme from '../README.md'
 
 export default {

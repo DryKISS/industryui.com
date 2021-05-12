@@ -10,17 +10,14 @@ import React from 'react'
 // import { BRAND } from 'config'
 
 // UI
-import {
-  Article,
-  Column,
-  Container,
-  // MetaHead,
-  Row
-} from '../../'
+import Article from '../../templates/article/article'
+import Column from '../../atoms/grid/Column'
+import Container from '../../atoms/grid/Container'
+import Row from '../../atoms/grid/Row'
 
 // import { BlogSidebar } from './components'
 
-export const ArticleLayout = ({ children, frontMatter }) => {
+const ArticleLayout = ({ children, frontMatter }) => {
   // const meta = {
   //   canonical: `blog/${frontMatter.slug}`,
   //   description: frontMatter.description,
@@ -43,3 +40,5 @@ export const ArticleLayout = ({ children, frontMatter }) => {
     </Container>
   )
 }
+
+export default ArticleLayout

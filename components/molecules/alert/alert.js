@@ -17,7 +17,7 @@ import { Close, shadeLinearRgb } from '../../../'
 import THEME_CONTEXT from '../../constants/context'
 import themeBackground from '../../utils/background'
 
-export const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
+const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
   const [visible, setVisible] = useState(true)
 
   const handleClose = () => {
@@ -68,3 +68,5 @@ Alert.propTypes = {
 Alert.defaultProps = {
   context: 'primary'
 }
+
+export default Alert

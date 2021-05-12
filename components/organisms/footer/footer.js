@@ -10,14 +10,14 @@ import { arrayOf, bool, func, number, object, oneOfType, shape, string } from 'p
 import styled from 'styled-components'
 
 // UI
-import { Column } from '../../atoms/grid/components/Column'
-import { Container } from '../../atoms/grid/components/Container'
-import { Heading } from '../../atoms/heading/heading'
-import { Icon } from '../../atoms/icon/icon/icon'
-import { Link } from '../../atoms/link/link'
-import { List } from '../../atoms/list/components/list'
-import { ListItem } from '../../atoms/list/components/listItem'
-import { Row } from '../../atoms/grid/components/Row'
+import Column from '../../atoms/grid/components/Column'
+import Container from '../../atoms/grid/components/Container'
+import Heading from '../../atoms/heading/heading'
+import Icon from '../../atoms/icon/icon/icon'
+import Link from '../../atoms/link/link'
+import List from '../../atoms/list/components/list'
+import ListItem from '../../atoms/list/components/listItem'
+import Row from '../../atoms/grid/components/Row'
 
 const Footer = ({ columns, fixed }) => {
   const renderColumns = () => {
