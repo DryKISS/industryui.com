@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { Accordion, AccordionItem } from '../../../'
+import Accordion from '../accordion'
+import AccordionItem from '../components/accordionItem'
 import Readme from '../README.md'
 import { Data } from '../__mocks__/accordion'
 
