@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": [
+    "components/**/*",
+    "config/**/*",
+    "constant/**/*",
+    "layouts/**/*",
+    "pages/**/*",
+    "utils/**/*"
+  ]
+}

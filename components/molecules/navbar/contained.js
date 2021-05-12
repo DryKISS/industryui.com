@@ -11,7 +11,7 @@ import { node } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import Container from '../../atoms/grid/components/Container'
+import Container from '../../atoms/grid/Container'
 
 const Contained = ({ content }) => {
   return <StyledContainer>{content()}</StyledContainer>

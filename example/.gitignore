@@ -1,29 +1,24 @@
-# Storybook
-storybook-static
-esm
+# Next
+.next
+out
 
 # Environment
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-drykiss-industry-ui*
-service-account.json
+.env*.local
+old
 
 # Node
 node_modules
-example/node_modules
-node_modules_
 npm-debug.log
+dist
 npm-debug.log*
-stats.html
+yarn-debug.log*
+yarn-error.log*
 
 # Testing
-coverage
+/coverage
 cypress/videos
 cypress/screenshots
-.cache
 
 # Composer
 vendor
@@ -37,11 +32,6 @@ bower_components
 # IDE
 *.sublime-*
 .history
-
-# Cordova
-# hooks
-platforms
-plugins
 
 # Compiled source
 *.com
