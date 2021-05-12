@@ -7,7 +7,7 @@ import React from 'react'
 import { oneOf, node } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import THEME_CONTEXT from '../../../constants/context'
 
 // Style
 import styled from 'styled-components'

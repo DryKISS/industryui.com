@@ -10,7 +10,7 @@ import { array, node, object, string, bool } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { AccordionItem } from './components/accordionItem'
+import AccordionItem from './components/accordionItem'
 
 const renderItem = ({ body, context, title }, index, current, handleCurrent) => {
   return (

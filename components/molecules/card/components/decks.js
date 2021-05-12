@@ -8,7 +8,7 @@ import React from 'react'
 import { node } from 'prop-types'
 
 // UI
-import { MEDIA_QUERY } from '../../../'
+import MEDIA_QUERY from '../../../utils/mediaQuery/query'
 
 // Style
 import styled from 'styled-components'

@@ -6,13 +6,15 @@
 import React from 'react'
 
 // UI
-// import { Close, Icon, Link, MEDIA_QUERY } from '../../../'
-import { Close } from '../../atoms/close/close'
-import { Icon } from '../../atoms/icon/icon/icon'
-import { Link } from '../../atoms/link/link'
-import { MEDIA_QUERY } from '../../utils/mediaQuery/query'
+import Close from '../../atoms/close/close'
+import Icon from '../../atoms/icon/icon/icon'
+import Link from '../../atoms/link/link'
+import MEDIA_QUERY from '../../utils/mediaQuery/query'
 
-import { CardBody, CardFooter, CardHeader, CardImage } from './'
+import CardBody from './components/body'
+import CardFooter from './components/footer'
+import CardHeader from './components/header'
+import CardImage from './components/image'
 import { CardPropTypes, CardDefaultProps } from './props'
 
 // Style

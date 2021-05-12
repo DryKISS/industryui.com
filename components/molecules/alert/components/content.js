@@ -10,9 +10,9 @@ import { object, oneOfType, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Icon } from '../../../atoms/icon/icon/icon'
+import Icon from '../../../atoms/icon/icon/icon'
 
-export const AlertContent = ({ content, icon, iconPrefix }) => (
+const AlertContent = ({ content, icon, iconPrefix }) => (
   <StyledAlertContent>
     {icon && <Icon aria-hidden="true" context="help" icon={icon} prefix={iconPrefix} />}
     {content}
@@ -28,3 +28,4 @@ AlertContent.propTypes = {
   icon: string,
   iconPrefix: string
 }
+export default AlertContent

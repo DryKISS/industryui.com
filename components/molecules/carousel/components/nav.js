@@ -8,7 +8,7 @@ import { func, oneOf, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
-import { Icon } from '../../..'
+import Icon from '../../../atoms/icon/icon/icon'
 
 export const Carouselnav = ({ clickFunction, context, direction, icon, position }) => (
   <StyledContainer direction={direction} onClick={clickFunction}>
