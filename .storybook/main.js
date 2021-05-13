@@ -10,11 +10,11 @@
 //   ]
 // }
 
-const molecules = '../components/molecules/'
+const molecules = '../components/layouts/bootstrap/**'
 
 module.exports = {
   stories: [
-    `${molecules}table/__tests__/stories.js`
+    `${molecules}/__tests__/stories.js`
   ],
   addons: [
     {

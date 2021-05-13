@@ -7,9 +7,9 @@ import React from 'react'
 import { node } from 'prop-types'
 
 // UI
-import { LayoutGridWrapper } from './wrapper'
+import LayoutGridWrapper from './wrapper'
 
-export const LayoutGrid = ({ children }) => {
+const LayoutGrid = ({ children }) => {
   return <LayoutGridWrapper>{children}</LayoutGridWrapper>
 }
 
@@ -18,3 +18,5 @@ LayoutGrid.propTypes = {
 }
 
 LayoutGrid.defaultProps = {}
+
+export default LayoutGrid
