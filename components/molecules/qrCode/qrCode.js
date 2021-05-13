@@ -13,9 +13,9 @@ import QRCode from 'qrcode.react'
 import styled from 'styled-components'
 
 // UI
-import { Details } from '../../atoms/details/details'
+import Details from '../../atoms/details/details'
 
-export const QrCode = ({ assetId, path }) => {
+const QrCode = ({ assetId, path }) => {
   const downloadQR = () => {
     const canvas = document.querySelector(`#qr${assetId} > canvas`)
     const pngUrl = canvas.toDataURL()
@@ -62,3 +62,4 @@ QrCode.propTypes = {
   assetId: number.isRequired,
   path: string.isRequired
 }
+export default QrCode

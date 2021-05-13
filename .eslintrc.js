@@ -22,7 +22,7 @@ module.exports = {
   rules: {
     'prettier/prettier': [
       1,
-      { printWidth: 100, semi: false, singleQuote: true, trailingComma: 'none' }
+      { printWidth: 100, semi: false, singleQuote: true, trailingComma: 'none', endOfLine: 'auto' }
     ],
     'max-len': [
       'error',

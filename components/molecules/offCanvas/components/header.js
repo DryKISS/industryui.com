@@ -24,7 +24,7 @@ import Row from '../../../atoms/grid/Row'
 import Text from '../../../atoms/text/text'
 import THEME_CONTEXT from '../../../constants/context'
 
-export const OffCanvasHeader = ({
+const OffCanvasHeader = ({
   context,
   hasAvatar,
   headerContent,
@@ -142,3 +142,4 @@ OffCanvasHeader.defaultProps = {
   submit: true,
   variant: 'extended'
 }
+export default OffCanvasHeader

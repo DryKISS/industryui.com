@@ -8,7 +8,7 @@ import { bool, number, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const OffCanvasOverlay = styled.div`
+const OffCanvasOverlay = styled.div`
   background-color: rgba(0, 0, 0, ${({ opacity, show }) => (show ? opacity : 0)});
   height: 100vh;
   left: 0;
@@ -32,3 +32,4 @@ OffCanvasOverlay.defaultProps = {
   duration: 300,
   opacity: 0.3
 }
+export default OffCanvasOverlay

@@ -9,7 +9,7 @@ import React from 'react'
 import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Rating } from '../rating'
+import Rating from '../rating'
 import Readme from '../README.md'
 
 export default {

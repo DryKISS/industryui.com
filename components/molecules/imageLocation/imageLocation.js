@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { ImageWrapper } from '../../'
+import ImageWrapper from './components/imageWrapper'
 import { ImageLocationProps } from './props'
 
 export const ImageLocation = ({
