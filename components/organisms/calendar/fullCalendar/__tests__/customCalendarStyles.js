@@ -12,11 +12,16 @@ import moment from 'moment'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { OffCanvas, Button, Form, FormLabel, FormField, SelectField } from '../../../../'
+import OffCanvas from '../../../../molecules/offCanvas/offCanvas'
+import Button from '../../../../atoms/button/button/button'
+import Form from '../../../../form/form/form'
+import FormLabel from '../../../../form/label/label'
+import FormField from '../../../../form/field/input'
+import SelectField from '../../../../form/select/select'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
 
-export const CustomCalendarStyles = () => {
+const CustomCalendarStyles = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false)
   const { errors, handleSubmit, register } = useForm()
   const [calendarStyles, setCalendarStyles] = useState({})
@@ -96,3 +101,4 @@ export const Events = [
     title: 'PPM: Boiler Check'
   }
 ]
+export default CustomCalendarStyles

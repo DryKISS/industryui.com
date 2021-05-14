@@ -12,7 +12,8 @@ import { DraftJs } from '../draftJs'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, Form } from '../../../../'
+import Button from '../../../../atoms/button/button/button'
+import Form from '../../../../form/form/form'
 import Readme from '../README.md'
 
 export default {

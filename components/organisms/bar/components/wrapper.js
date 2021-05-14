@@ -9,9 +9,9 @@ import { bool, node, number, oneOf, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { BarConfig } from './config'
+import BarConfig from './config'
 
-export const BarWrapper = styled.aside`
+const BarWrapper = styled.aside`
   background-color: ${({ theme }) => theme.BAR.background};
   display: flex;
   flex-direction: column;
@@ -78,3 +78,4 @@ BarWrapper.defaultProps = {
   variant: 'overlay',
   width: 10
 }
+export default BarWrapper

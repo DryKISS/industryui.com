@@ -14,12 +14,17 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ForgotDetailsSchema } from './schema'
 
 // UI
-import { Button, Form, FormField, FormLabel, Link, PageHeading } from '../../'
+import Button from '../../atoms/button/button/button'
+import Form from '../../form/form/form'
+import FormField from '../../form/field/input'
+import FormLabel from '../../form/label/label'
+import Link from '../../atoms/link/link'
+import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 // Style
 import styled from 'styled-components'
 
-export const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
+const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(ForgotDetailsSchema)
   })
@@ -68,3 +73,4 @@ ForgotDetails.defaultProps = {
   pathLogIn: '/account/sign-in',
   showPlaceholder: false
 }
+export default ForgotDetails

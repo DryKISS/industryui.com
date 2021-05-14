@@ -10,7 +10,9 @@ import ReactDOM from 'react-dom'
 import styled, { ThemeProvider } from 'styled-components'
 
 // UI
-import { BACKGROUND, Text, Theme, Tooltip } from '../../../'
+import { BACKGROUND, Theme } from '../../../'
+import Text from '../../../../atoms/text/text'
+import Tooltip from '../../../../atoms/tooltip/tooltip'
 
 const EventContent = ({
   defaultEventColor,

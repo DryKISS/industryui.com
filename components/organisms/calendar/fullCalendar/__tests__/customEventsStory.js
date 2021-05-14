@@ -9,22 +9,21 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import {
-  OffCanvas,
-  Button,
-  SelectField,
-  Form,
-  FormLabel,
-  FormField,
-  CheckboxField
-} from '../../../../'
+
+import OffCanvas from '../../../../molecules/offCanvas/offCanvas'
+import Button from '../../../../atoms/button/button/button'
+import Form from '../../../../form/form/form'
+import FormLabel from '../../../../form/label/label'
+import FormField from '../../../../form/field/input'
+import SelectField from '../../../../form/select/select'
+import CheckboxField from '../../../../form/checkbox/checkbox'
 
 import { BaseComponent } from './stories'
 
 // Data
 import { colorEvent, assetType, displayEventOptions, checkBoxOptions } from '../__mocks__/events'
 
-export const CustomEventsStory = () => {
+const CustomEventsStory = () => {
   const [events, setEvents] = useState([])
   const [showOffCanvas, setShowOffCanvas] = useState(false)
   const { errors, handleSubmit, register } = useForm()
@@ -139,3 +138,4 @@ export const CustomEventsStory = () => {
     </>
   )
 }
+export default CustomEventsStory

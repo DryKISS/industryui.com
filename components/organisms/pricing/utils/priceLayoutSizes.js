@@ -3,7 +3,7 @@
  */
 import { LAYOUTS } from '../../../'
 
-export const priceLayoutSizes = (layout) => {
+const priceLayoutSizes = (layout) => {
   switch (layout) {
     case LAYOUTS.DESKTOP:
       return {
@@ -31,3 +31,4 @@ export const priceLayoutSizes = (layout) => {
       }
   }
 }
+export default priceLayoutSizes

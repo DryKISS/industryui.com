@@ -1,7 +1,8 @@
-export const LAYOUTS = {
+const LAYOUTS = {
   DESKTOP: 'DESKTOP',
   MEDDESKTOP: 'MEDDESKTOP',
   LARGEDESKTOP: 'LARGEDESKTOP',
   MOBILE: 'MOBILE',
   TABLET: 'TABLET'
 }
+export default LAYOUTS

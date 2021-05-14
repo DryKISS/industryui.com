@@ -10,18 +10,17 @@ import { any, bool, func, string } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import {
-  Alert,
-  Button,
-  CheckboxField,
-  DatePickerInput,
-  Form,
-  FormLabel,
-  FormField,
-  Link,
-  Text,
-  UserContext
-} from '../../'
+
+import Alert from '../../molecules/alert/alert'
+import Text from '../../..__tests__/atoms/text/text'
+import CheckboxField from '../../form/checkbox/checkbox'
+import DatePickerInput from '../../form/datePicker/input/datePickerInput'
+import UserContext from '../../services/authentication/context'
+import Button from '../../atoms/button/button/button'
+import Form from '../../form/form/form'
+import FormField from '../../form/field/input'
+import FormLabel from '../../form/label/label'
+import Link from '../../atoms/link/link'
 
 // Style
 import styled from 'styled-components'
@@ -38,7 +37,7 @@ const CHECKBOX_TERMS = [
   }
 ]
 
-export const Register = ({
+const Register = ({
   birthday,
   dayBirthday,
   email,
@@ -207,3 +206,4 @@ Register.defaultProps = {
   birthday: false,
   pathLogin: '/account/login'
 }
+export default Register

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Footer } from '../footer'
+import Footer from '../footer'
 import Readme from '../README.md'
 
 // Data

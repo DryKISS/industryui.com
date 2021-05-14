@@ -6,7 +6,9 @@
 import React, { useState } from 'react'
 
 // UI
-import { Alert, EmailChange, requestSimulator } from '../../../'
+import Alert from '../../../molecules/alert/alert'
+import EmailChange from '../emailChange'
+import requestSimulator from '../../../utils/requestSimulator/requestSimulator'
 import Readme from '../README.md'
 
 export default {

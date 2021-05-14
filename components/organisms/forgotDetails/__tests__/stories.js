@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { ForgotDetails } from '../../../'
+import ForgotDetails from '../forgotDetails'
 import Readme from '../README.md'
 
 export default {

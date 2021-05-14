@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic'
 
 let FullCalendar
 
-export const CalendarWrapper = (props) => {
+const CalendarWrapper = (props) => {
   useEffect(() => {
     FullCalendar = dynamic({
       modules: () => ({
@@ -31,3 +31,4 @@ export const CalendarWrapper = (props) => {
 
   return !props.loading && <FullCalendar {...props} />
 }
+export default CalendarWrapper

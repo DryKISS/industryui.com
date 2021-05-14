@@ -6,12 +6,12 @@
 import { bool, func, number, oneOf } from 'prop-types'
 
 // UI
-import { BarConfig } from './config'
+import BarConfig from './config'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const BarOverlay = styled.div`
+const BarOverlay = styled.div`
   transition: ${({ theme: { BAR }, placement }) => css`
     opacity ${BAR.transitionDuration}
     ${BAR.transitionTiming},
@@ -58,3 +58,4 @@ BarOverlay.defaultProps = {
   variant: 'overlay',
   width: 10
 }
+export default BarOverlay

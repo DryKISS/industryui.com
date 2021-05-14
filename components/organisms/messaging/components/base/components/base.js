@@ -7,27 +7,28 @@ import React, { useRef, useState } from 'react'
 import { any, string } from 'prop-types'
 
 // UI
+
+import Avatar from '../../../../../atoms/avatar/avatar'
+import { AudioWrapper } from '../../audioPlayer/wrapper'
+import Card from '../../../../../molecules/card/card'
+import Column from '../../../../../atoms/grid/Column'
+import Dropdown from '../../../../../molecules/dropdown/dropdown'
+import { hashtagPlugin } from '../../../draftPlugins/hashtag/index'
+import Icon from '../../../../../atoms/icon/icon/icon'
+import Image from '../../../../../atoms/image/image'
+import { linkifyPlugin } from '../../../draftPlugins/components/link'
+import { MentionComponent } from '../../../draftPlugins/components/mention'
 import {
-  Avatar,
-  AudioWrapper,
-  Card,
-  Column,
-  Dropdown,
-  hashtagPlugin,
-  Icon,
-  Image,
-  linkifyPlugin,
-  MentionComponent,
   MessageNames,
-  MessagingActions,
-  MessagingAudioPlayer,
-  MessagingCommunicationService,
-  MessagingEditor,
-  Preview,
-  ReplyContainer,
-  Row,
-  TranslationService
-} from '../../../../../'
+  MessagingActions
+} from '../../../../../services/componentCommunication/messageNames'
+import MessagingAudioPlayer from '../../../components/audioPlayer/index'
+import { MessagingCommunicationService } from '../../../../../services/componentCommunication/componentCommunication'
+import MessagingEditor from '../../../draftPlugins/index'
+import Preview from '../../../../../molecules/preview/preview'
+import ReplyContainer from '../../reply/index'
+import Row from '../../../../../atoms/grid/Row'
+import TranslationService from ''
 
 import { MessageIcon } from './icon'
 import { MessageTo } from './to'

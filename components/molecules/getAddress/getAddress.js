@@ -10,7 +10,7 @@ import { func, object, oneOf, number, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import Button from '../../atoms/button/button'
+import Button from '../../atoms/button/button/button'
 import ConfigContext from '../../services/config/context'
 import Dropdown from '../dropdown/dropdown'
 import FormError from '../../form/error/error'
