@@ -69,4 +69,5 @@ Alert.propTypes = {
 Alert.defaultProps = {
   context: 'primary'
 }
+
 export default Alert
