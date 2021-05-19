@@ -14,7 +14,7 @@ import { array, bool, func, node, object } from 'prop-types'
 const Bootstrap = ({ children, copyright, footer, fixed, icon, Navigation }) => {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
 
       {children}
 

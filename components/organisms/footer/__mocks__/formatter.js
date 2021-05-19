@@ -6,9 +6,9 @@
 import React, { Fragment } from 'react'
 
 // UI
-import { Image } from '../../../atoms/image/image'
-import { List } from '../../../atoms/list/components/list'
-import { ListItem } from '../../../atoms/list/components/listItem'
+import Image from '../../../atoms/image/image'
+import List from '../../../atoms/list/list'
+import ListItem from '../../../atoms/list/listItem'
 
 const renderColumn = (index) => (
   <Fragment key={index}>

@@ -8,7 +8,7 @@ import { node } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const LayoutGridWrapper = styled.div`
+const LayoutGridWrapper = styled.div`
   display: grid;
   grid: 1fr / auto 1fr 0;
   height: 100%;
@@ -21,3 +21,5 @@ LayoutGridWrapper.propTypes = {
 }
 
 LayoutGridWrapper.defaultProps = {}
+
+export default LayoutGridWrapper

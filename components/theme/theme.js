@@ -23,7 +23,7 @@ import LINK from '../atoms/link/components/variables'
 // import { LOGIN } from '../../organisms/login/variables'
 // import { MESSAGING } from '../../organisms/messaging/variables'
 import NAVBAR from '../molecules/navbar/variables'
-// import { PAGE } from '../../layouts/page/variables'
+import PAGE from '../layouts/page/variables'
 // import { PRICING } from '../../organisms/pricing/variables'
 // import { PROGRESS, PROGRESSBAR } from '../../atoms/progress/variables'
 // import { SELECT } from '../../form/reactSelect/variables'
@@ -60,7 +60,7 @@ const Theme = {
   // LOGIN,
   // MESSAGING,
   NAVBAR,
-  // PAGE,
+  PAGE,
   // PRICING,
   // PIECHART,
   // PROGRESS,

@@ -7,13 +7,17 @@
 import React from 'react'
 import { object, string } from 'prop-types'
 
-// UI
-import { BlogCategory, BlogDetails, Breadcrumb, Heading, Image } from '../../'
-
 // Style
 import styled from 'styled-components'
 
-export const Article = ({ article, className, config, facebook, style }) => {
+// UI
+import { BlogCategory } from '../../blog/category/category'
+import { BlogDetails } from '../../blog/details/details'
+import { Breadcrumb } from '../../molecules/breadcrumb/breadcrumb'
+import Heading from '../../atoms/heading/heading'
+import Image from '../../atoms/image/image'
+
+const Article = ({ article, className, config, facebook, style }) => {
   return (
     <StyledArticle
       className={className}
@@ -75,3 +79,5 @@ Article.propTypes = {
   facebook: object,
   style: object
 }
+
+export default Article

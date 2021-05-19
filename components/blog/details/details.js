@@ -12,9 +12,7 @@ import styled from 'styled-components'
 // UI
 import { BlogCategory } from '../category/category'
 import { BlogReadTime } from '../readTime/readTime'
-
 import { BlogTags, Divider, FacebookShareButton, Icon, List, ListItem, slugify } from '../../'
-
 import { Date } from '../../atoms/date/date'
 
 export const BlogDetails = ({ article, config, facebook }) => {

@@ -1,19 +1,22 @@
 /**
  * App
  */
+
 // UI
 import { MyApp } from '@drykiss/industry-ui'
 
 // Layout
-import Layout from 'layouts'
+import Layout from '../layouts/index'
 
 // Config
-import { Config, Theme } from 'config'
+import { Config } from '../config/config'
+import { Theme } from '../config/theme'
 
-import 'config/icons'
+// Icons
+import '../config/icons'
 
 const PageApp = (props) => (
-  <MyApp config={Config} Layout={Layout} pageProgressBar theme={Theme} {...props} />
+  <MyApp config={Config} Layout={Layout} theme={Theme} {...props} />
 )
 
 export default PageApp
