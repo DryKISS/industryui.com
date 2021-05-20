@@ -332,3 +332,4 @@ const Wrapper = styled.div`
       pointer-events: initial;
     `}
 `
+export default FullPreview

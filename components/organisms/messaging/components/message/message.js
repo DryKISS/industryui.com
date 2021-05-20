@@ -21,7 +21,7 @@ import {
 import { ReplyIcon } from './replyIcon'
 import { ShareIcon } from './shareIcon'
 
-export const Message = memo(
+const Message = memo(
   ({ config, message, prevType, type, ...props }) => {
     const avatar = message.avatar ? (
       <Avatar size="xxs" src={message.avatar} />
@@ -179,3 +179,4 @@ Message.propTypes = {
   message: object.isRequired,
   prevType: string.isRequired
 }
+export default Message

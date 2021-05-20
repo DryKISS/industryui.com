@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { MessagingSend } from '../index'
+import MessagingSend from '../messagingSend'
 import Readme from '../README.md'
 import { mentions } from '../../../container/__mocks__/mentions'
 

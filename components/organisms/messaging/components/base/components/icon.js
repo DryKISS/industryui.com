@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import { Icon } from '../../../../../atoms/icon/icon/icon'
 import { ICON_PREFIX } from '../../../../../atoms/icon/constants/prefix'
 
-export const MessageIcon = ({ icon, prefix }) => {
+const MessageIcon = ({ icon, prefix }) => {
   let useIcon = ''
 
   switch (icon) {
@@ -46,3 +46,4 @@ MessageIcon.propTypes = {
 MessageIcon.defaultProps = {
   prefix: 'fas'
 }
+export default MessageIcon

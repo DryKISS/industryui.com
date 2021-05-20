@@ -24,7 +24,7 @@ import {
 } from '../../../../../services/componentCommunication/messageNames'
 import MessagingAudioPlayer from '../../../components/audioPlayer/index'
 import { MessagingCommunicationService } from '../../../../../services/componentCommunication/componentCommunication'
-import MessagingEditor from '../../../draftPlugins/index'
+import { MessagingEditor } from '../../../draftPlugins/index'
 import Preview from '../../../../../molecules/preview/preview'
 import ReplyContainer from '../../reply/index'
 import Row from '../../../../../atoms/grid/Row'

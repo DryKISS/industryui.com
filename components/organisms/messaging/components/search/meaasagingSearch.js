@@ -22,7 +22,7 @@ const Items = [
   { text: 'Notification', value: 'notification' }
 ]
 
-export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
+const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   const { errors, handleSubmit, register } = useForm({
     mode: 'onChange'
   })
@@ -88,3 +88,4 @@ MessagingSearch.propTypes = {
 MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 }
+export default MessagingSearch

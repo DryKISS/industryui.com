@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components'
 // UI
 import { Close, Preview, Space, Text } from '../../../../'
 
-export const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
+const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   const [selectedFile, setselectedFile] = useState(null)
   const [documentInfo, setDocumentInfo] = useState({
     name: null,
@@ -225,3 +225,4 @@ const Wrapper = styled.div`
       transform: translateY(0%);
     `}
 `
+export default MessagingDragHover

@@ -12,7 +12,7 @@ import { Image } from '../../../../../'
 // Style
 import styled from 'styled-components'
 
-export const MessageTo = ({ to }) => {
+const MessageTo = ({ to }) => {
   let icon = ''
 
   switch (to) {
@@ -41,3 +41,4 @@ const StyledImage = styled(Image)`
 MessageTo.propTypes = {
   to: string.isRequired
 }
+export default MessageTo

@@ -39,7 +39,7 @@ const renderMessage = ({ index, parent, key, style }, messages, cache, config) =
 
 const cacheConfig = { fixedWidth: true, defaultHeight: 50 }
 
-export const MessageList = memo(
+const MessageList = memo(
   ({ initialMessages, onMessageRecieved, config }) => {
     const listRef = useRef(null)
     const widthRef = useRef(null)
@@ -153,3 +153,4 @@ const MessageContainer = styled.div`
 MessageList.propTypes = {
   initialMessages: array.isRequired
 }
+export default MessageList

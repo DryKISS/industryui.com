@@ -19,7 +19,7 @@ const RHAP_UI = {
   VOLUME: 'VOLUME'
 }
 
-export const MessagingAudioPlayer = ({ inMessage, src }) => {
+const MessagingAudioPlayer = ({ inMessage, src }) => {
   const [playerLoaded, setPlayerLoaded] = useState(false)
 
   useEffect(() => {
@@ -65,3 +65,4 @@ const Spacer = styled.div`
 `
 
 const Slash = styled.div``
+export default MessagingAudioPlayer

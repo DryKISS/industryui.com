@@ -21,7 +21,7 @@ const handleMentionClick = (mentionProps) => {
   })
 }
 
-export const MentionComponent = ({ mentionProps }) => {
+const MentionComponent = ({ mentionProps }) => {
   return (
     <StyledMention
       className={mentionProps.className}
@@ -35,3 +35,4 @@ export const MentionComponent = ({ mentionProps }) => {
 const StyledMention = styled.span`
   color: ${({ theme: { MESSAGING } }) => MESSAGING.mentionColour};
 `
+export default MentionComponent

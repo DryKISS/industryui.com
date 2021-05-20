@@ -100,3 +100,4 @@ const Wrapper = styled.div`
   max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
   overflow-y: auto;
 `
+export default MessagingInput

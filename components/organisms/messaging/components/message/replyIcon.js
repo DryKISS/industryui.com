@@ -4,7 +4,7 @@ import React from 'react'
 // Style
 import styled, { css } from 'styled-components'
 
-export const ReplyIcon = ({ context }) => {
+const ReplyIcon = ({ context }) => {
   return (
     <StyledSvg
       width="16"
@@ -27,3 +27,4 @@ const StyledSvg = styled.svg`
       }
     `}
 `
+export default ReplyIcon

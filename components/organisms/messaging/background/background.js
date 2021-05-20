@@ -8,7 +8,7 @@ import { string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const MessageBackground = styled.div`
+const MessageBackground = styled.div`
   background-image: url(${({ path }) => path});
   height: 100%;
   opacity: 0.6;
@@ -24,3 +24,4 @@ MessageBackground.propTypes = {
 MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 }
+export default MessageBackground

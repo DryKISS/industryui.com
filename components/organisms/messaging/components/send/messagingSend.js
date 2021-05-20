@@ -32,7 +32,7 @@ import {
 // Style
 import styled from 'styled-components'
 
-export const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
+ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])
@@ -271,3 +271,4 @@ MessagingSend.defaultProps = {
   audienceItems: [],
   maxLength: 320
 }
+export default MessagingSend

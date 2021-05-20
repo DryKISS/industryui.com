@@ -7,7 +7,7 @@ import { useDropzone } from 'react-dropzone'
 // Style
 import styled from 'styled-components'
 
-export const DragAndDropable = ({ children, onFileDrop, onHover, onLeave }) => {
+const DragAndDropable = ({ children, onFileDrop, onHover, onLeave }) => {
   const onDragEnter = () => {
     onHover()
   }
@@ -46,3 +46,4 @@ const Container = styled.div`
     }
   }
 `
+export default DragAndDropable

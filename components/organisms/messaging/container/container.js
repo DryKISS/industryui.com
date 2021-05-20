@@ -24,7 +24,7 @@ import {
 // Style
 import styled from 'styled-components'
 
-export const MessagingContainer = ({
+ const MessagingContainer = ({
   audienceItems,
   className,
   forwardForMessages,
@@ -222,3 +222,4 @@ MessagingContainer.propTypes = {
   onMessageSubmit: func.isRequired,
   style: object
 }
+export default MessagingContainer
