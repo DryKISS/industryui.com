@@ -9,31 +9,31 @@ import { any, string } from 'prop-types'
 // UI
 
 import Avatar from '../../../../../atoms/avatar/avatar'
-import { AudioWrapper } from '../../audioPlayer/wrapper'
+import AudioWrapper from '../../audioPlayer/wrapper'
 import Card from '../../../../../molecules/card/card'
 import Column from '../../../../../atoms/grid/Column'
 import Dropdown from '../../../../../molecules/dropdown/dropdown'
 import { hashtagPlugin } from '../../../draftPlugins/hashtag/index'
 import Icon from '../../../../../atoms/icon/icon/icon'
 import Image from '../../../../../atoms/image/image'
-import { linkifyPlugin } from '../../../draftPlugins/components/link'
-import { MentionComponent } from '../../../draftPlugins/components/mention'
+import linkifyPlugin from '../../../draftPlugins/components/linkPluginComponent'
+import MentionComponent from '../../../draftPlugins/components/mentionComponent'
 import {
   MessageNames,
   MessagingActions
 } from '../../../../../services/componentCommunication/messageNames'
-import MessagingAudioPlayer from '../../../components/audioPlayer/index'
+import MessagingAudioPlayer from '../../../components/audioPlayer/audioPlayer'
 import { MessagingCommunicationService } from '../../../../../services/componentCommunication/componentCommunication'
 import { MessagingEditor } from '../../../draftPlugins/index'
 import Preview from '../../../../../molecules/preview/preview'
-import ReplyContainer from '../../reply/index'
+import ReplyContainer from '../../replyContainer/replyContainer'
 import Row from '../../../../../atoms/grid/Row'
 import TranslationService from ''
 
-import { MessageIcon } from './icon'
-import { MessageTo } from './to'
-import { MenuIcon } from './menuIcon'
-import { Loadingspinner } from './loadingSpinner'
+import MessageIcon from './messageIcon'
+import MessageTo from './MessageTo'
+import MenuIcon from './menuIcon'
+import Loadingspinner from './loadingSpinner'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
@@ -47,7 +47,7 @@ const mentionPlugin = createMentionPlugin({
 
 const emojiPlugin = createEmojiPlugin()
 
-export const MessageBase = ({
+const MessageBase = ({
   attachments,
   avatar,
   content,
@@ -414,3 +414,4 @@ MessageBase.propTypes = {
   time: string,
   type: string
 }
+export default MessageBase

@@ -14,15 +14,13 @@ import styled from 'styled-components'
 
 // UI
 import {
-  MentionSuggestions,
   MessageNames,
-  MessagingActions,
-  MessagingEditor,
-  messagingPlugins,
-  MessagingSubscriber,
-  useComponentCommunication
-} from '../../../../'
+  MessagingActions
+} from '../../../../services/componentCommunication/messageNames'
+import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
+import { useComponentCommunication } from '../../../../hooks/useComponentCommunication/useSubscription'
 
+import { MentionSuggestions, MessagingEditor, messagingPlugins } from '../../draftPlugins/index'
 import { formStyle } from '../../../../form/variables/style'
 
 export const MessagingInput = ({ mentions, onChange }) => {

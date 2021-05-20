@@ -8,7 +8,11 @@ import styled, { css } from 'styled-components'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 
 // UI
-import { Close, Divider, MessagingEditor, ReplyIcon } from '../../../../'
+
+import Close from '../../../../atoms/close/close'
+import Divider from '../../../../atoms/divider/divider'
+import ReplyIcon from '../message/replyIcon'
+import { MessagingEditor } from '../../draftPlugins/index'
 
 const ReplyContainer = ({ message, onClose, inMessage }) => {
   const [editorState, setEditorState] = useState(

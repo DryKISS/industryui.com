@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+import Close from '../../../../atoms/close/close'
+import Text from '../../../../atoms/text/text'
+import Space from '../../../../atoms/space/space'
+import Preview from '../../../../molecules/preview/preview'
 
 // UI
-import { Close, Preview, Space, Text } from '../../../../'
-
 const MessagingDragHover = ({ files, handleRemoveFile, isOpen, onClose, onSubmit }) => {
   const [selectedFile, setselectedFile] = useState(null)
   const [documentInfo, setDocumentInfo] = useState({

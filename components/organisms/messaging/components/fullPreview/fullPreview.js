@@ -9,19 +9,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  ChevronIcon,
-  CrossIcon,
-  DownloadIcon,
-  downloadFile,
-  MessageNames,
-  MessagingActions,
-  MessagingSubscriber,
-  Preview,
-  useComponentCommunication
-} from '../../../../'
 
-export const FullPreview = () => {
+import ChevronIcon from '../../../../icons/components/chevron'
+import CrossIcon from '../../../../icons/components/cross'
+import DownloadIcon from '../../../../icons/components/download'
+import Preview from '../../../../molecules/preview/preview'
+import downloadFile from '../../../../utils/fileDownload/fileDownload'
+import {
+  MessageNames,
+  MessagingActions
+} from '../../../../services/componentCommunication/messageNames'
+import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
+import { useComponentCommunication } from '../../../../hooks/useComponentCommunication/useSubscription'
+
+const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
   const [maxDocHeight, setMaxDocHeight] = useState(null)
   const files = useRef()

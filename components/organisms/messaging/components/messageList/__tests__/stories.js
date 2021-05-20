@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { MessageList } from '../index'
+import MessageList from '../messageList'
 import Readme from '../README.md'
 
 // Data
