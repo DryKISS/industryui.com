@@ -18,11 +18,11 @@ import Icon from '../../../../../atoms/icon/icon/icon'
 import Image from '../../../../../atoms/image/image'
 import linkifyPlugin from '../../../draftPlugins/components/linkPluginComponent'
 import MentionComponent from '../../../draftPlugins/components/mentionComponent'
+import MessagingAudioPlayer from '../../../components/audioPlayer/audioPlayer'
 import {
   MessageNames,
   MessagingActions
 } from '../../../../../services/componentCommunication/messageNames'
-import MessagingAudioPlayer from '../../../components/audioPlayer/audioPlayer'
 import { MessagingCommunicationService } from '../../../../../services/componentCommunication/componentCommunication'
 import { MessagingEditor } from '../../../draftPlugins/index'
 import Preview from '../../../../../molecules/preview/preview'

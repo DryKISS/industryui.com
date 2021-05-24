@@ -9,7 +9,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { MessagingActions, MessagingCommunicationService, MessageNames } from '../../../../'
+import {
+  MessageNames,
+  MessagingActions
+} from '../../../../services/componentCommunication/messageNames'
+import { MessagingCommunicationService } from '../../../../services/componentCommunication/componentCommunication'
 
 const handleMentionClick = (mentionProps) => {
   MessagingCommunicationService.send({

@@ -10,29 +10,33 @@ import { array, func, number } from 'prop-types'
 import { convertToRaw } from 'draft-js'
 
 // UI
+
+import AudioWrapper from '../audioPlayer/wrapper'
+import Button from '../../../../atoms/button/button/button'
+import Dropdown from '../../../../molecules/dropdown/dropdown'
+import { EmojiSelect, EmojiSuggestions } from '../../draftPlugins'
+import Icon from '../../../../atoms/icon/icon/icon'
+import VoiceRecorder from '../../../../molecules/voiceRecorder/voiceRecorder'
+import MessagingInput from '../../components/input/input'
+import MessagingAudioPlayer from '../../components/audioPlayer/audioPlayer'
+
+import PaperPlaneIcon from '../../../../icons/components/paperPlane'
+import ReplyContainer from '../../components/replyContainer/replyContainer'
 import {
-  AudioWrapper,
-  Button,
-  Dropdown,
-  EmojiSelect,
-  EmojiSuggestions,
-  Icon,
-  VoiceRecorder,
-  MessagingInput,
-  MessagingAudioPlayer,
   MessageNames,
-  MessagingActions,
+  MessagingActions
+} from '../../../../services/componentCommunication/messageNames'
+import {
   MessagingCommunicationService,
-  MessagingSubscriber,
-  PaperPlaneIcon,
-  ReplyContainer,
-  useComponentCommunication
-} from '../../../../'
+  MessagingSubscriber
+} from '../../../../services/componentCommunication/componentCommunication'
+
+import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 // Style
 import styled from 'styled-components'
 
- const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
+const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])

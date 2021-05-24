@@ -93,3 +93,4 @@ FacebookPagePlugin.defaultProps = {
   tabs: 'timeline,messages,events',
   width: 340
 }
+export default FacebookPagePlugin

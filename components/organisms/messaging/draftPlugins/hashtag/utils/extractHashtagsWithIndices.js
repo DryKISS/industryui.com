@@ -1,6 +1,6 @@
 import regexes from './hashtagRegex'
 
-export const extractHashtagsWithIndices = (text) => {
+ const extractHashtagsWithIndices = (text) => {
   if (!text || !text.match(regexes.hashSigns)) {
     return []
   }
@@ -21,3 +21,4 @@ export const extractHashtagsWithIndices = (text) => {
   text.replace(regexes.validHashtag, replacer)
   return tags
 }
+export default extractHashtagsWithIndices
