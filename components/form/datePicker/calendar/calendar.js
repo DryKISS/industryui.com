@@ -85,3 +85,4 @@ DatePickerCalendar.defaultProps = {
   timeIntervals: 30,
   todayButton: 'Today'
 }
+export default DatePickerCalendar

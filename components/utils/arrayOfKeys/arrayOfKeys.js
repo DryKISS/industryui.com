@@ -5,3 +5,4 @@ export const arrayOfKeys = (obj) => {
   }
   return arr
 }
+export default arrayOfKeys

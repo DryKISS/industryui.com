@@ -10,3 +10,4 @@ export const arrayOfValues = (obj) => {
 
   return arr
 }
+export default arrayOfValues

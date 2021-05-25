@@ -6,7 +6,9 @@
 import React from 'react'
 
 // UI
-import { capitalize, Text } from '../../../'
+import Text from '../../../atoms/text/text'
+
+import capitalize from '../capitalize'
 import Readme from '../README.md'
 
 export default {

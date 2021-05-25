@@ -36,3 +36,4 @@ export const averageGeolocation = (coords) => {
     lng: (centralLongitude * 180) / Math.PI
   }
 }
+export default averageGeolocation
