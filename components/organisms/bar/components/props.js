@@ -6,7 +6,7 @@
 import { bool, node, number, oneOf, string } from 'prop-types'
 
 // UI
-import { BarConfig } from '../components/config'
+import BarConfig from './config'
 
 export const BarPropTypes = {
   backdrop: bool,

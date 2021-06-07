@@ -14,7 +14,14 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { EmailChangeSchema as schema } from './schema'
 
 // UI
-import { Alert, Button, FormField, Form, FormLabel, PageHeading, Space, Text } from '../../'
+import Alert from '../../molecules/alert/alert'
+import Button from '../../atoms/button/button/button'
+import FormField from '../../form/field/input'
+import Form from '../../form/form/form'
+import FormLabel from '../../form/label/label'
+import PageHeading from '../../molecules/pageHeading/pageHeading'
+import Space from '../../atoms/space/space'
+import Text from '../../atoms/text/text'
 
 export const EmailChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register } = useForm({
