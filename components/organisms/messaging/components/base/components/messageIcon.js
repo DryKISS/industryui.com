@@ -10,8 +10,8 @@ import { oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import  Icon from '../../../../../atoms/icon/icon/icon'
-import { ICON_PREFIX } from '../../../../../atoms/icon/constants/prefix'
+import Icon from '../../../../../atoms/icon/icon/icon'
+import ICON_PREFIX from '../../../../../atoms/icon/constants/prefix'
 
 const MessageIcon = ({ icon, prefix }) => {
   let useIcon = ''
