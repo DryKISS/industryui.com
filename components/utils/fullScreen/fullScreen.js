@@ -83,3 +83,4 @@ export const fullScreen = {
     return (document[`on${vendor[key.fullscreenerror]}`.toLowerCase()] = handler)
   }
 }
+export default fullScreen

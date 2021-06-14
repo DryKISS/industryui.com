@@ -6,8 +6,8 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 
 // UI
-import { viewPort } from '../viewPort'
-import { Text } from '../../../atoms/text/text'
+import  viewPort  from '../viewPort'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {

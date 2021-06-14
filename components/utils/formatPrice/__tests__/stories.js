@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { formatPrice, Text } from '../../../'
+import formatPrice from '../formatPrice'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {

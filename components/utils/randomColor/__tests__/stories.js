@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 
 // UI
-import { RandomColor } from '../../../'
+import RandomColor from '../randomColor'
 import Readme from '../README.md'
 
 // Style

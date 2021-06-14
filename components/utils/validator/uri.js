@@ -6,3 +6,4 @@ export const validatorUri = (uri) => {
 
   return regExp.test(uri)
 }
+export default validatorUri

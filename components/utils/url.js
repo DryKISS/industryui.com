@@ -8,3 +8,4 @@ export const historyPush = (query) => {
 
   window.history.pushState({ path: url }, '', url)
 }
+export default historyPush

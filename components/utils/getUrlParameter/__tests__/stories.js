@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { getUrlParameter, Text } from '../../../'
+import getUrlParameter from '../getUrlParameter'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {
