@@ -48,16 +48,18 @@ export const MessageList = memo(
 
     const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
 
-    for (let i = 0; i < Messages.length; i++) {
-      if (i !== 0) {
-        const current = new Date(Messages[i].time)
-        const previous = new Date(Messages[i - 1].time)
-        const diff = DateDiff.inDays(previous, current)
-        if (diff > 0) {
+    if (Messages) {
+      for (let i = 0; i < Messages.length; i++) {
+        if (i !== 0) {
+          const current = new Date(Messages[i].time)
+          const previous = new Date(Messages[i - 1].time)
+          const diff = DateDiff.inDays(previous, current)
+          if (diff > 0) {
+            Messages[i].headerTime = Messages[i].time.slice(0, 14)
+          }
+        } else {
           Messages[i].headerTime = Messages[i].time.slice(0, 14)
         }
-      } else {
-        Messages[i].headerTime = Messages[i].time.slice(0, 14)
       }
     }
     const scrollToBottom = () => {
@@ -85,7 +87,7 @@ export const MessageList = memo(
     useEffect(() => {
       scrollToBottom()
       return () => {}
-    }, [Messages.length])
+    }, [Messages?.length])
 
     const onAction = (payload) => {
       switch (payload.action) {
@@ -103,7 +105,7 @@ export const MessageList = memo(
     }
 
     useComponentCommunication({
-      dependencies: [Messages.length],
+      dependencies: [Messages?.length],
       messageName: MessageNames.Messaging.MESSAGING_ACTION,
       onRecieve: onAction,
       subscriber: MessagingSubscriber
