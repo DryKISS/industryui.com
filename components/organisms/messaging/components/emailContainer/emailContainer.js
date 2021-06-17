@@ -20,12 +20,12 @@ const EmailContainer = ({ email, header }) => {
     <TopContainer>
       {av}
       <TextsWrapper nm>
-        <p>
+        <TwoPartText>
           <ContactName>Forwarded:</ContactName>
-        </p>
-        <p>
+        </TwoPartText>
+        <TwoPartText>
           <EmailValue> {email.forwardedFrom.name}</EmailValue>
-        </p>
+        </TwoPartText>
       </TextsWrapper>
     </TopContainer>
   )
@@ -34,14 +34,14 @@ const EmailContainer = ({ email, header }) => {
       {top}
       <EmailShortDescContainer>
         <TextsWrapper>
-          <p>
+          <TwoPartText>
             <ContactName>Contacts Name:</ContactName>
             <ContactNameValue bold>{email.from.name}</ContactNameValue>
-          </p>
-          <p>
+          </TwoPartText>
+          <TwoPartText>
             <ContactName> Email:</ContactName>
             <EmailValue> {email.from.emailAddress}</EmailValue>
-          </p>
+          </TwoPartText>
         </TextsWrapper>
         <ExpandButtonWrapper onClick={handleExpandClick}>
           <VerticalThreeDotsIcon colour="#aaaaaa" />
@@ -60,6 +60,7 @@ const EmailContainer = ({ email, header }) => {
     </EmailBriefContainer>
   )
 }
+const TwoPartText = styled.p``
 const HeadContainer = styled.div`
   display: flex;
   span {
@@ -142,13 +143,13 @@ const ExpandButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e6e6e6;
+  background-color:${({ theme }) => theme.MESSAGING.expandedEmailButtonColour ?? '#e6e6e6'};
   width: 23px;
   padding-left: 0;
   cursor: pointer;
 `
 const ContentText = styled.p`
   font-size: 14px;
-  color: #333333;
+  color: ${({ theme }) => theme.MESSAGING.expandedEmailTextColour ?? '#333333'};
 `
 export default EmailContainer
