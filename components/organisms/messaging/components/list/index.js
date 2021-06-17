@@ -129,10 +129,10 @@ export const MessageList = memo(
               height={height}
               overscanRowCount={10}
               ref={listRef}
-              rowCount={Messages.length}
+              rowCount={Messages?.length ?? 0}
               rowHeight={cache.rowHeight}
               rowRenderer={(e) => renderMessage(e, Messages, cache, config)}
-              scrollToIndex={Messages.length - 1}
+              scrollToIndex={Messages?.length ? Messages.length - 1 : 0}
               width={width}
             />
           )

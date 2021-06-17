@@ -21,26 +21,26 @@ const EmailContainer = ({ email, header }) => {
       {av}
       <TextsWrapper nm>
         <p>
-          <NameText>Forwarded:</NameText>
+          <ContactName>Forwarded:</ContactName>
         </p>
         <p>
-          <ValueText> {email.forwardedFrom.name}</ValueText>
+          <EmailValue> {email.forwardedFrom.name}</EmailValue>
         </p>
       </TextsWrapper>
     </TopContainer>
   )
   return (
-    <>
+    <EmailBriefContainer>
       {top}
       <EmailShortDescContainer>
         <TextsWrapper>
           <p>
-            <NameText>Contacts Name:</NameText>
-            <ValueText bold>{email.from.name}</ValueText>
+            <ContactName>Contacts Name:</ContactName>
+            <ContactNameValue bold>{email.from.name}</ContactNameValue>
           </p>
           <p>
-            <NameText> Email:</NameText>
-            <ValueText> {email.from.emailAddress}</ValueText>
+            <ContactName> Email:</ContactName>
+            <EmailValue> {email.from.emailAddress}</EmailValue>
           </p>
         </TextsWrapper>
         <ExpandButtonWrapper onClick={handleExpandClick}>
@@ -57,7 +57,7 @@ const EmailContainer = ({ email, header }) => {
           })}
         </ExpandedContentContainer>
       </Modal>
-    </>
+    </EmailBriefContainer>
   )
 }
 const HeadContainer = styled.div`
@@ -70,11 +70,16 @@ const HeadContainer = styled.div`
     width: unset;
   }
 `
+const EmailBriefContainer = styled.div`
+  background: ${({ theme }) => theme.MESSAGING.shortEmailPreviewBackground ?? 'transparent'};
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+`
 const TopContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 `
 
 const EmailShortDescContainer = styled.div`
@@ -102,8 +107,19 @@ const NameText = styled.span`
   font-weight: 700;
   color: #666666;
 `
+
+const ContactName = styled(NameText)`
+  color: ${({ theme }) => theme.MESSAGING.emailContactNameColour ?? '#666666'};
+`
+const ContactNameValue = styled(ValueText)`
+  color: ${({ theme }) => theme.MESSAGING.emailContactNameValueColour ?? '#3333ff'};
+`
+const EmailValue = styled(ValueText)`
+  color: ${({ theme }) => theme.MESSAGING.emailValueColour ?? '#2392dc'};
+`
+
 const ExpandedContentContainer = styled.div`
-  background: white;
+  background: ${({ theme }) => theme.MESSAGING.expandedEmailBackground ?? 'white'};
   border-radius: 8px;
   width: 80vw;
   max-width: 680px;
