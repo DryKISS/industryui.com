@@ -65,7 +65,7 @@ export const MessageList = memo(
     const scrollToBottom = () => {
       window &&
         window.requestAnimationFrame(() => {
-          listRef.current && listRef.current.scrollToRow(Messages.length)
+          listRef.current && Messages && listRef.current.scrollToRow(Messages.length)
         })
     }
 
@@ -80,7 +80,7 @@ export const MessageList = memo(
       window &&
         window.requestAnimationFrame(() => {
           setcache(() => new CellMeasurerCache(cacheConfig))
-          listRef.current && listRef.current.scrollToRow(Messages.length)
+          listRef.current && Messages && listRef.current.scrollToRow(Messages.length)
         })
     }
 
