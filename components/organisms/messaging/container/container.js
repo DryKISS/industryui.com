@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
@@ -46,7 +46,10 @@ export const MessagingContainer = ({
     ...(menuForMessages && { hasMenu: true }),
     ...(replyForMessages && { hasReply: true })
   }
-
+  useEffect(() => {
+    sethasMessage(true)
+    return () => {}
+  }, [messages?.length])
   const [Files, setFiles] = useState([])
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)

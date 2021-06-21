@@ -98,7 +98,10 @@ export const messages = [
     email: {
       from: {
         name: 'John Smith',
-        emailAddress: 'Jsmith@Smith.com'
+        emailAddress: 'Jsmith@Smith.com',
+        date: 'Tue, 15 Marc 2021 20:34',
+        subject:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore'
       },
       forwardedFrom: {
         name: 'Cleverly <support@cleverly.com>',
@@ -138,7 +141,10 @@ export const messages = [
     email: {
       from: {
         name: 'John Smith',
-        emailAddress: 'Jsmith@Smith.com'
+        emailAddress: 'Jsmith@Smith.com',
+        date: 'Tue, 15 Marc 2021 20:34',
+        subject:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore'
       },
       forwardedFrom: {
         name: 'Cleverly <support@cleverly.com>',

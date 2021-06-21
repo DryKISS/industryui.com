@@ -48,5 +48,7 @@ export const MESSAGING = {
   sentMessageBackground: THEME_COLOUR.neutral2,
   shortEmailPreviewBackground: null,
   timerColour: THEME_COLOUR.info,
+  tooltipBackground: null,
+
   translatorTextColour: THEME_COLOUR.primary
 }

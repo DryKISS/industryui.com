@@ -105,7 +105,7 @@ Modal.propTypes = {
    */
   closeOnBackgroundClick: bool,
   /**
-   * Whether to remove children from dom when unmounted
+   * Whether to remove children from dom when unmounted, default is [true]
    */
   removeChildrenWhenUnmounted: bool,
 
@@ -119,7 +119,7 @@ Modal.defaultProps = {
   onClose: null,
   showCloseIcon: true,
   closeOnBackgroundClick: true,
-  removeChildrenWhenUnmounted: false
+  removeChildrenWhenUnmounted: true
 }
 
 export default Modal

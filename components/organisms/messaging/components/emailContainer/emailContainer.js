@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import VerticalThreeDotsIcon from '../../../../icons/components/verticalThreeDots'
 import Avatar from '../../../../atoms/avatar/avatar'
+import Tooltip from '../tooltip/tooltip'
 const EmailContainer = ({ email, header }) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleClose = () => {
@@ -29,13 +30,29 @@ const EmailContainer = ({ email, header }) => {
       </TextsWrapper>
     </TopContainer>
   )
+  const tooltipContent = (
+    <TextsWrapper>
+      <ContactName as="p">from:</ContactName>
+      <ContactName as={StyledP} light>
+        {email.from.name} <EmailValue> {'<' + email.from.emailAddress + '>'}</EmailValue>
+      </ContactName>
+      <ContactName as="p">Date:</ContactName>
+      <ContactName as={StyledP} light>
+        {email.from.date}
+      </ContactName>
+      <ContactName as="p">Subject:</ContactName>
+      <ContactName as="div" light>
+        {email.from.subject}
+      </ContactName>
+    </TextsWrapper>
+  )
   return (
     <EmailBriefContainer>
       {top}
       <EmailShortDescContainer>
         <TextsWrapper>
           <TwoPartText>
-            <ContactName>Contacts Name:</ContactName>
+            <ContactName>Contact's Name:</ContactName>
             <ContactNameValue bold>{email.from.name}</ContactNameValue>
           </TwoPartText>
           <TwoPartText>
@@ -43,9 +60,11 @@ const EmailContainer = ({ email, header }) => {
             <EmailValue> {email.from.emailAddress}</EmailValue>
           </TwoPartText>
         </TextsWrapper>
-        <ExpandButtonWrapper onClick={handleExpandClick}>
-          <VerticalThreeDotsIcon colour="#aaaaaa" />
-        </ExpandButtonWrapper>
+        <Tooltip content={tooltipContent} direction="left">
+          <ExpandButtonWrapper onClick={handleExpandClick}>
+            <VerticalThreeDotsIcon colour="#aaaaaa" />
+          </ExpandButtonWrapper>
+        </Tooltip>
       </EmailShortDescContainer>
 
       <Modal open={isOpen} onClose={handleClose} removeChildrenWhenUnmounted>
@@ -60,6 +79,9 @@ const EmailContainer = ({ email, header }) => {
     </EmailBriefContainer>
   )
 }
+const StyledP = styled.p`
+  margin-bottom: 0.75rem !important;
+`
 const TwoPartText = styled.p``
 const HeadContainer = styled.div`
   display: flex;
@@ -107,10 +129,15 @@ const NameText = styled.span`
   font-size: 10px;
   font-weight: 700;
   color: #666666;
+  max-width: 13rem;
+  min-width: 13rem;
+  margin: 0;
+  white-space: break-spaces;
 `
 
 const ContactName = styled(NameText)`
   color: ${({ theme }) => theme.MESSAGING.emailContactNameColour ?? '#666666'};
+  ${({ light }) => light && `font-weight:400 !important;`}
 `
 const ContactNameValue = styled(ValueText)`
   color: ${({ theme }) => theme.MESSAGING.emailContactNameValueColour ?? '#3333ff'};
@@ -143,7 +170,7 @@ const ExpandButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:${({ theme }) => theme.MESSAGING.expandedEmailButtonColour ?? '#e6e6e6'};
+  background-color: ${({ theme }) => theme.MESSAGING.expandedEmailButtonColour ?? '#e6e6e6'};
   width: 23px;
   padding-left: 0;
   cursor: pointer;
