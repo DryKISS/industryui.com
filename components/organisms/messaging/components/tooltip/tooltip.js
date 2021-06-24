@@ -76,7 +76,6 @@ const ContentWrapper = styled.div`
     width: 0;
   }*/
 
-  /* Absolute positioning */
   ${({ top }) =>
     top &&
     css`
