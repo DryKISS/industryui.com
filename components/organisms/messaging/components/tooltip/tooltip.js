@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Tooltip = ({ delay, content, direction, children }) => {
   let timeout
@@ -20,12 +20,18 @@ const Tooltip = ({ delay, content, direction, children }) => {
     setShow(() => false)
     setActive(() => false)
   }
-
+  const dir = direction || 'top'
   return (
     <StyledWrapper onMouseEnter={showTip} onMouseLeave={hideTip}>
       {children}
       {active && (
-        <ContentWrapper show={show} className={`${direction || 'top'}`}>
+        <ContentWrapper
+          show={show}
+          top={dir === 'top'}
+          left={dir === 'left'}
+          right={dir === 'right'}
+          bottom={dir === 'bottom'}
+        >
           {content}
         </ContentWrapper>
       )}
@@ -71,52 +77,51 @@ const ContentWrapper = styled.div`
   }*/
 
   /* Absolute positioning */
-  &.top {
-    top: calc(var(--tooltip-margin) * -1);
-  }
-  /* CSS border triangles */
-  &.top::before {
-    border-top-color: var(--tooltip-background-color);
-    top: 100%;
-  }
+  ${({ top }) =>
+    top &&
+    css`
+      top: calc(var(--tooltip-margin) * -1);
+      &::before {
+        border-top-color: var(--tooltip-background-color);
+        top: 100%;
+      }
+    `}
+  ${({ bottom }) =>
+    bottom &&
+    css`
+      bottom: calc(var(--tooltip-margin) * -1);
+      &::before {
+        bottom: 100%;
+        border-bottom-color: var(--tooltip-background-color);
+      }
+    `}
+  ${({ right }) =>
+    right &&
+    css`
+      left: calc(100% + var(--tooltip-margin));
+      top: 50%;
+      transform: translateX(0) translateY(-50%);
+      &::before {
+        border-right-color: var(--tooltip-background-color);
+        left: calc(var(--tooltip-arrow-size) * -1);
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+      }
+    `}
 
-  /* Absolute positioning */
-  &.right {
-    left: calc(100% + var(--tooltip-margin));
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-  }
-  /* CSS border triangles */
-  &.right::before {
-    border-right-color: var(--tooltip-background-color);
-    left: calc(var(--tooltip-arrow-size) * -1);
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-  }
-
-  /* Absolute positioning */
-  &.bottom {
-    bottom: calc(var(--tooltip-margin) * -1);
-  }
-  /* CSS border triangles */
-  &.bottom::before {
-    bottom: 100%;
-    border-bottom-color: var(--tooltip-background-color);
-  }
-
-  /* Absolute positioning */
-  &.left {
-    left: auto;
-    right: calc(100% + var(--tooltip-margin));
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-  }
-  /* CSS border triangles */
-  &.left::before {
-    border-left-color: var(--tooltip-background-color);
-    left: auto;
-    right: calc(var(--tooltip-arrow-size) * -2);
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-  }
+  ${({ left }) =>
+    left &&
+    css`
+      left: auto;
+      right: calc(100% + var(--tooltip-margin));
+      top: 50%;
+      transform: translateX(0) translateY(-50%);
+      &::before {
+        border-left-color: var(--tooltip-background-color);
+        left: auto;
+        right: calc(var(--tooltip-arrow-size) * -2);
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+      }
+    `}
 `
