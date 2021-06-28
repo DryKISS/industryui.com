@@ -6,15 +6,15 @@
 import React, { useState } from 'react'
 
 // UI
-import { BarOverlay } from './overlay'
-import { BarToggle } from './toggle'
-import { BarWrapper } from './wrapper'
+import BarOverlay from './overlay'
+import BarToggle from './toggle'
+import BarWrapper from './wrapper'
 import { BarPropTypes, BarDefaultProps } from './props'
 
 // Style
 import styled from 'styled-components'
 
-export const Bar = ({ children, minSize, open, placement, toggle, backdrop, variant, width }) => {
+const Bar = ({ children, minSize, open, placement, toggle, backdrop, variant, width }) => {
   const [IsOpen, setIsOpen] = useState(open ?? true)
 
   const toggleOpen = () => {
@@ -55,3 +55,4 @@ const StyledContent = styled.div`
 
 Bar.propTypes = BarPropTypes
 Bar.defaultProps = BarDefaultProps
+export default Bar

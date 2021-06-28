@@ -9,8 +9,11 @@ import React from 'react'
 import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Bar, Divider, List, ListItem } from '../../../'
-import { BarConfig } from '../components/config'
+import Bar from '../bar'
+import Divider from '../../../atoms/divider/divider'
+import List from '../../../atoms/list/list'
+import ListItem from '../../../atoms/list/listItem'
+import BarConfig from '../components/config'
 import Readme from '../README.md'
 
 // Data

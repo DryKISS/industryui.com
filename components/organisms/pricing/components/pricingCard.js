@@ -9,11 +9,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { CheckedIcon } from '../../../icons/components/checked'
-import { priceLayoutSizes } from '../utils/index'
-import { Text } from '../../../atoms/text/text'
+import CheckedIcon from '../../../icons/components/checked'
+import priceLayoutSizes from '../utils/priceLayoutSizes'
+import Text from '../../../atoms/text/text'
 
-export const PricingCard = ({ data, layout, onCardSelect }) => {
+const PricingCard = ({ data, layout, onCardSelect }) => {
   const { checkList, recommended, price } = data
 
   return (
@@ -125,3 +125,4 @@ const Wrapper = styled.div`
   padding: 1.375rem;
   padding-bottom: 0.75rem;
 `
+export default PricingCard

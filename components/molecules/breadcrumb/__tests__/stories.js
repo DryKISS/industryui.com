@@ -9,7 +9,9 @@ import React from 'react'
 import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Breadcrumb, Icon } from '../../../'
+import Breadcrumb from '../breadcrumb'
+import Icon from '../../../atoms/icon/icon/icon'
+
 import { THEME_SIZE } from '../../../theme/constants/size'
 import Readme from '../README.md'
 

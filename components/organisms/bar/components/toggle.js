@@ -7,13 +7,13 @@ import React from 'react'
 import { bool, func, string } from 'prop-types'
 
 // UI
-import { ChevronRightIcon } from '../../../'
-import { BarConfig } from './config'
+import ChevronRightIcon from '../../../icons/components/chevronRight'
+import BarConfig from './config'
 
 // Style
 import styled, { css } from 'styled-components'
 
-export const BarToggle = ({ barWidth, onClick, open, placement }) => {
+const BarToggle = ({ barWidth, onClick, open, placement }) => {
   return (
     <OpenButton onClick={onClick} open={open} placement={placement} place={barWidth}>
       <ChevronRightIcon />
@@ -66,3 +66,4 @@ BarToggle.propTypes = {
 BarToggle.defaultProps = {
   placement: 'left'
 }
+export default BarToggle

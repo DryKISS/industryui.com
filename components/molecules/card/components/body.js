@@ -14,7 +14,7 @@ import { CardCTA } from './cta'
 // Style
 import styled from 'styled-components'
 
-export const CardBody = ({
+const CardBody = ({
   center,
   children,
   className,
@@ -87,3 +87,5 @@ CardBody.defaultProps = {
   context: 'primary',
   showCta: false
 }
+
+export default CardBody

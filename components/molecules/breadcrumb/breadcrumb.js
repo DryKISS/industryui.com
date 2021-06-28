@@ -10,9 +10,9 @@ import { array, node, oneOf, oneOfType, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Icon } from '../../atoms/icon/icon/icon'
-import { Link } from '../../atoms/link/link'
-import { THEME_SIZE } from '../../theme/constants/size'
+import Icon from '../../atoms/icon/icon/icon'
+import Link from '../../atoms/link/link'
+import THEME_SIZE from '../../constants/size'
 
 export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
   return (

@@ -9,7 +9,7 @@ import React from 'react'
 import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { PageProgressBar } from '../../../'
+import PageProgressBar from '../pageProgressBar'
 
 export default {
   args: { context: 'primary' },

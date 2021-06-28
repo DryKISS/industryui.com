@@ -10,10 +10,11 @@ import { oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Icon, shadeLinearRgb } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import { shadeLinearRgb } from '../../../utils/colour/colour'
+import Icon from '../../../atoms/icon/icon/icon'
+import THEME_CONTEXT from '../../../constants/context'
 
-export const AlertHeader = ({ context, header, icon, iconPrefix }) => (
+ const AlertHeader = ({ context, header, icon, iconPrefix }) => (
   <StyledHeader context={context}>
     {icon && <Icon aria-hidden="true" context="help" icon={icon} prefix={iconPrefix} />} {header}
   </StyledHeader>
@@ -35,3 +36,4 @@ AlertHeader.propTypes = {
   icon: string,
   iconPrefix: string
 }
+export default AlertHeader

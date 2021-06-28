@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const ClusterIcon = ({ cluster }) => {
+const ClusterIcon = ({ cluster }) => {
   return <StyledClusterMarker>{cluster.getChildCount()}</StyledClusterMarker>
 }
 const StyledClusterMarker = styled.div`
@@ -14,3 +14,4 @@ const StyledClusterMarker = styled.div`
   justify-content: center;
   width: 2rem;
 `
+export default ClusterIcon

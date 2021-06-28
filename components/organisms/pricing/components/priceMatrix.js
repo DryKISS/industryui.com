@@ -10,12 +10,12 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { CheckedIcon } from '../../../icons/components/checked'
-import { LAYOUTS } from './constants'
-import { priceLayoutSizes } from '../utils/index'
-import { Text } from '../../../atoms/text/text'
+import CheckedIcon from '../../../icons/components/checked'
+import LAYOUTS from './constants'
+import priceLayoutSizes from '../utils/priceLayoutSizes'
+import Text from '../../../atoms/text/text'
 
-export const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
+const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {
   const pure = {}
   const features = []
   pricingInfo.forEach((item) => {
@@ -132,3 +132,4 @@ const PriceMatrixWrapper = styled.div`
   display: flex;
   width: 100%;
 `
+export default PriceMatrix

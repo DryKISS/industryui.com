@@ -14,26 +14,25 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginSchema as schema } from './schema'
 
 // UI
-import {
-  Alert,
-  Button,
-  FormField,
-  Form,
-  FormError,
-  FormLabel,
-  Link,
-  PageHeading,
-  Space,
-  Text,
-  UserContext
-} from '../../'
+
+import FormError from '../../form/error/error'
+import Space from '../../atoms/space/space'
+import Text from '../../atoms/text/text'
+import UserContext from '../../services/authentication/context'
+import Alert from '../../molecules/alert/alert'
+import Button from '../../atoms/button/button/button'
+import Form from '../../form/form/form'
+import FormField from '../../form/field/input'
+import FormLabel from '../../form/label/label'
+import Link from '../../atoms/link/link'
+import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 // Style
 import styled from 'styled-components'
 
 const ErrMessage = (message) => <FormError message={message} />
 
-export const Login = ({
+const Login = ({
   blockSubmitButton,
   forgotPassword,
   heading,
@@ -174,3 +173,4 @@ Login.defaultProps = {
   showPlaceholder: false,
   showTitle: true
 }
+export default Login

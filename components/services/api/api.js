@@ -11,7 +11,7 @@ import axios from 'axios'
 // UI
 import ConfigContext from '../config/context'
 
-export const Api = () => {
+ const Api = () => {
   const { apiConfig } = useContext(ConfigContext)
 
   return {
@@ -52,3 +52,4 @@ export const Api = () => {
     }
   }
 }
+export default Api

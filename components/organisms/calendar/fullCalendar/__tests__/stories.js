@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import Details from '../../../../../.storybook/decorators/details'
 
 // UI
-import { Calendar } from '../fullCalendar'
+import Calendar from '../fullCalendar'
 import Readme from '../README.md'
 
 // Data

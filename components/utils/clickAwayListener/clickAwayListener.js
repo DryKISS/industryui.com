@@ -1,6 +1,6 @@
 import { createElement, useEffect, useRef } from 'react'
 
-export const ClickAwayListener = ({
+const ClickAwayListener = ({
   as = 'div',
   onClickAway,
   mouseEvent = 'click',
@@ -29,3 +29,4 @@ export const ClickAwayListener = ({
 
   return createElement(as, { ref: node, ...props })
 }
+export default ClickAwayListener

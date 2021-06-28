@@ -9,7 +9,7 @@ import React from 'react'
 import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Alert } from '../components/alert'
+import Alert from '../alert'
 import Readme from '../README.md'
 
 export default {

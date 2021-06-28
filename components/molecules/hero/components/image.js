@@ -8,7 +8,9 @@ import React from 'react'
 import { number, string } from 'prop-types'
 
 // UI
-import { Column, Image } from '../../../'
+// import { Column, Image } from '../../../'
+import Column from '../../../atoms/grid/Column'
+import Image from '../../../atoms/image/image'
 
 // Style
 import styled from 'styled-components'

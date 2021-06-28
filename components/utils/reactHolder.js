@@ -9,7 +9,7 @@ import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { string, bool, object } from 'prop-types'
 
-export const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
+const ReactHolderJs = ({ src, width, height, usePlaceholder }) => {
   useEffect(() => {
     init()
   }, [src, usePlaceholder])
@@ -60,3 +60,4 @@ ReactHolderJs.defaultProps = {
   },
   usePlaceholder: false
 }
+export default ReactHolderJs

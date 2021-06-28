@@ -52,7 +52,7 @@ const source = (file) => {
   return file.src ?? URL.createObjectURL(file)
 }
 
-export const Preview = memo(
+const Preview = memo(
   ({
     contain,
     dim,
@@ -242,3 +242,4 @@ const PlaceHolder = styled.div`
   display: flex;
   flex-direction: column;
 `
+export default Preview

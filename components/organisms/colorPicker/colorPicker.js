@@ -9,7 +9,7 @@ import { string, func } from 'prop-types'
 // React Color
 import { SketchPicker, CirclePicker, TwitterPicker, GithubPicker } from 'react-color'
 
-export const ColorPicker = ({ type, onChangeComplete, ...props }) => {
+const ColorPicker = ({ type, onChangeComplete, ...props }) => {
   switch (type) {
     case 'circle':
       return <CirclePicker onChangeComplete={onChangeComplete} {...props} />
@@ -34,3 +34,4 @@ ColorPicker.propTypes = {
   onChangeComplete: func.isRequired,
   width: string
 }
+export default ColorPicker

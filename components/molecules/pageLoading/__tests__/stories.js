@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { PageLoading, LdsSpinner } from '../../../'
+import PageLoading from '../pageLoading'
+import LdsSpinner from '../ldsSpinner'
 
 export default {
   component: PageLoading,

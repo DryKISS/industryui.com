@@ -17,8 +17,8 @@ import {
 } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { PaginationPropTypes } from '../../pagination/components/props'
+import THEME_CONTEXT from '../../../constants/context'
+import { propTypes } from '../../pagination/props'
 
 export const CarouselPropTypes = {
   navContext: oneOf(Object.values(THEME_CONTEXT)),
@@ -30,7 +30,7 @@ export const CarouselPropTypes = {
   leftNavComponent: any,
   leftNavIcon: string,
   numberOfItems: oneOfType([object, number]),
-  paginationProps: shape(PaginationPropTypes),
+  paginationProps: shape(propTypes),
   paginationPosition: oneOf(['inside', 'outside']),
   rightNavIcon: string,
   rightNavComponent: any,

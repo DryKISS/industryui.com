@@ -11,8 +11,11 @@ import { renderToString } from 'react-dom/server'
 import styled from 'styled-components'
 
 // UI
-import { RawIcons, Image, ImageMarker } from '../../../'
-import { ClusterIcon } from './clusterIcon'
+// import { RawIcons, Image, ImageMarker } from '../../../'
+import RawIcons from '../../../icons/rawIcons'
+import Image from '../../../atoms/image/image'
+import ImageMarker from './imageMarker'
+import ClusterIcon from './clusterIcon'
 
 let imageHeight = 0
 let imageWidth = 0

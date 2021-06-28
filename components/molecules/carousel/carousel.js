@@ -9,9 +9,13 @@ import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Carouselnav } from './nav'
-import { CarouselSampleSlide } from './sample'
-import { Icon, Pagination, revert, ResizeDetector } from '../../../'
+import Carouselnav from './components/nav'
+import CarouselSampleSlide from './components/sample'
+import Icon from '../../atoms/icon/icon/icon'
+import Pagination from '../../molecules/pagination/pagination'
+import { revert } from '../../utils/revert'
+import { ResizeDetector } from '../../utils/resizeDetector/resizeDetector'
+
 import { CarouselDefaultProps, CarouselPropTypes } from './props'
 
 let interval

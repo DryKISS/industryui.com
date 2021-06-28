@@ -12,7 +12,7 @@ import styled from 'styled-components'
 // UI
 import themeBackground from '../../utils/background'
 
-export const Rating = ({ className, context, value, size }) => {
+const Rating = ({ className, context, value, size }) => {
   const rating = []
   for (let i = 0; i < size; i++) {
     rating.push(
@@ -39,6 +39,7 @@ Rating.propTypes = {
   value: number.isRequired,
   size: number
 }
+export default Rating
 
 Rating.defaultProps = {
   context: 'primary',

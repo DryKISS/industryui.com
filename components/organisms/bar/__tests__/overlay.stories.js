@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BarOverlay } from '../components/overlay'
+import BarOverlay from '../components/overlay'
 import Readme from '../README.md'
 
 export default {

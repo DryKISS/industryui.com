@@ -9,8 +9,9 @@ import React from 'react'
 import { ContextControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Card, Column } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import Card from '../card'
+import Column from '../../../atoms/grid/Column'
+import THEME_CONTEXT from '../../../constants/context'
 import Readme from '../README.md'
 
 export default {

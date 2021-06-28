@@ -6,7 +6,11 @@
 import React, { useState } from 'react'
 
 // UI
-import { Alert, PasswordChange, requestSimulator } from '../../../'
+import PasswordChange from '../passwordChange'
+
+import Alert from '../../molecules/alert/alert'
+import requestSimulator from '../../../utils/requestSimulator/requestSimulator'
+
 import Readme from '../README.md'
 
 export default {

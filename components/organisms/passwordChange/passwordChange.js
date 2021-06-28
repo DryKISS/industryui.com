@@ -14,14 +14,15 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { PasswordChangeSchema as schema } from './schema'
 
 // UI
-import { Alert } from '../../molecules/alert/components/alert'
-import { Button } from '../../atoms/button/button/button'
-import { Form } from '../../form/form/form'
-import { FormField } from '../../form/field/input'
-import { FormLabel } from '../../form/label/label'
-import { PageHeading } from '../../molecules/pageHeading/pageHeading'
 
-export const PasswordChange = ({ showPlaceholder, submit }) => {
+import Alert from '../../molecules/alert/alert'
+import Button from '../../atoms/button/button/button'
+import Form from '../../form/form/form'
+import FormField from '../../form/field/input'
+import FormLabel from '../../form/label/label'
+import PageHeading from '../../molecules/pageHeading/pageHeading'
+
+const PasswordChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register, watch } = useForm({
     resolver: yupResolver(schema)
   })
@@ -86,3 +87,4 @@ PasswordChange.propTypes = {
 PasswordChange.defaultProps = {
   showPlaceholder: false
 }
+export default PasswordChange

@@ -10,10 +10,11 @@ import { func, object, objectOf, number, oneOf, oneOfType, string } from 'prop-t
 import styled from 'styled-components'
 
 // UI
-import { AlertContent } from './components/content'
-import { AlertHeader } from './components/header'
+import AlertContent from './components/content'
+import AlertHeader from './components/header'
 
-import { Close, shadeLinearRgb } from '../../../'
+import Close from '../../atoms/close/close'
+import { shadeLinearRgb } from '../../utils/colour/colour'
 import THEME_CONTEXT from '../../constants/context'
 import themeBackground from '../../utils/background'
 

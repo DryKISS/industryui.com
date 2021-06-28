@@ -7,10 +7,10 @@ import React, { useState, useEffect } from 'react'
 import { bool, func, node, number, oneOf, string } from 'prop-types'
 
 // UI
-import { OffCanvasDiv } from './container'
-import { OffCanvasHeader } from './header'
-import { OffCanvasContent } from './content'
-import { OffCanvasOverlay } from './overlay'
+import OffCanvasDiv from './container'
+import OffCanvasHeader from './header'
+import OffCanvasContent from './content'
+import OffCanvasOverlay from './overlay'
 import THEME_CONTEXT from '../../../constants/context'
 
 const OffCanvasComponent = ({

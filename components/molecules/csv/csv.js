@@ -10,7 +10,7 @@ import React from 'react'
 import { func, object } from 'prop-types'
 
 // UI
-import { FormField } from '../../'
+import FormField from '../../form/field/input'
 
 // Papa parse
 import PapaParse from 'papaparse'

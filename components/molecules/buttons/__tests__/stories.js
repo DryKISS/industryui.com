@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Buttons } from '../../../'
+import Buttons from '../buttons'
 import Readme from '../README.md'
 
 export default {

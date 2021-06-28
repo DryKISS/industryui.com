@@ -10,10 +10,12 @@ import { node, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { CarouselSlide } from './slide'
-import { Image, Text } from '../../../'
+import CarouselSlide from './slide'
+// import { Image, Text } from '../../../'
+import Image from '../../../atoms/image/image'
+import Text from '../../../atoms/text/text'
 
-export const CarouselSampleSlide = ({ context, img, node, text }) => {
+const CarouselSampleSlide = ({ context, img, node, text }) => {
   if (!img && !text) return null
 
   return (
@@ -41,3 +43,4 @@ CarouselSampleSlide.propTypes = {
 CarouselSampleSlide.defaultProps = {
   context: 'dark'
 }
+export default CarouselSampleSlide
