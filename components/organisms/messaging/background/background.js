@@ -24,4 +24,5 @@ MessageBackground.propTypes = {
 MessageBackground.defaultProps = {
   path: '/messaging/background.png'
 }
+
 export default MessageBackground

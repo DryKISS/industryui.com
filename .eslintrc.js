@@ -28,7 +28,7 @@ module.exports = {
       'error',
       {
         // Ignore SVGs d=
-        ignorePattern: 'd="([\\s\\S]*?)"|data:image|^export [^,]+ from',
+        ignorePattern: 'd="([\\s\\S]*?)"|data:image|^export [^,]+ from|^import [^,]+ from',
         code: 100,
         tabWidth: 2
       }
