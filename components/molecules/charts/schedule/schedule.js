@@ -136,7 +136,7 @@ export const columns = (handleClick) => [
 export const Schedule = ({ data, handleClick, handleRowClick }) => {
   return (
     <>
-      <Pagination pageCount="10">HERE</Pagination>
+      <Pagination pageCount="10" />
       <Table align="center" columns={columns(handleClick)} rowClick={handleRowClick} rows={data} />
     </>
   )
