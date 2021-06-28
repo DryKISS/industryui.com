@@ -95,3 +95,4 @@ const StyledAvatar = styled.div`
 
 Avatar.propTypes = propTypes
 Avatar.defaultProps = defaultProps
+export default Avatar

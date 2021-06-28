@@ -47,7 +47,9 @@ export const MessagingContainer = ({
     ...(replyForMessages && { hasReply: true })
   }
   const [Files, setFiles] = useState([])
+
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
+
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
 
   const onHover = () => {
@@ -55,9 +57,11 @@ export const MessagingContainer = ({
       setIsDragHoverOpen(true)
     }
   }
+
   const onLeave = () => {
     setIsDragHoverOpen(false)
   }
+
   const onDrop = (e) => {
     setFiles(e)
     MessagingCommunicationService.send({
@@ -68,6 +72,7 @@ export const MessagingContainer = ({
       }
     })
   }
+
   const closeHoverPopup = () => {
     setFiles((files) => [])
     setIsDragHoverOpen(false)
@@ -87,7 +92,9 @@ export const MessagingContainer = ({
       closeHoverPopup()
       return
     }
+
     setFiles(newFiles)
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
@@ -118,12 +125,15 @@ export const MessagingContainer = ({
       case MessagingActions.HASHTAG_CLICKED:
         onHashtagClick(payload.data)
         break
+
       case MessagingActions.MENTION_CLICKED:
         onMentionClick(payload.data)
         break
+
       case MessagingActions.EDIT_MESSAGE:
         console.info(payload.data)
         break
+
       case MessagingActions.DELETE_MESSAGE:
         console.info(payload.data)
         break
@@ -156,6 +166,7 @@ export const MessagingContainer = ({
         data: []
       }
     })
+
     setIsDragHoverOpen(() => false)
     setTimeout(() => {
       setFiles((files) => [])

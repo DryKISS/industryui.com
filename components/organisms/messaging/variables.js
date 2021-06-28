@@ -10,9 +10,15 @@ export const MESSAGING = {
   audioAndVolumeProgressColour: THEME_COLOUR.info,
   audioControllersColour: THEME_COLOUR.primary,
   containerBackground: THEME_COLOUR.grey,
+  emailContactNameColour: null,
+  emailContactNameValueColour: null,
+  expandedEmailTextColour: null,
   dateBadgeBackground: THEME_COLOUR.white,
   dateDividerColour: THEME_COLOUR.black,
   dropableHeaderBackground: THEME_COLOUR.drykiss_lightBlue,
+  emailValueColour: null,
+  expandedEmailBackground: null,
+  expandedEmailButtonColour: null,
   forwardAndReplyIconsColour: THEME_COLOUR.dark,
   fromTextColour: THEME_COLOUR.dark,
   hashtagColour: THEME_COLOUR.secondary,
@@ -41,6 +47,9 @@ export const MESSAGING = {
   scrollBarColour: THEME_COLOUR.watterBlue,
   scrollThumbColour: THEME_COLOUR.blackGrey,
   sentMessageBackground: THEME_COLOUR.neutral2,
+  shortEmailPreviewBackground: null,
   timerColour: THEME_COLOUR.info,
+  tooltipBackground: null,
+
   translatorTextColour: THEME_COLOUR.primary
 }

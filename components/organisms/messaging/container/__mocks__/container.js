@@ -14,6 +14,7 @@ export const messages = [
     content: `Hiya we are expecting a PPM scheduled maintenance check on our LED lightbulbs
     throughout the third floor of XYZ Company offices today. Would appreciate a timely response on \
     this so we can sort out security.`,
+
     reply: 'Re: 5397 — PPM',
     icon: 'email',
     id: 0,
@@ -25,6 +26,7 @@ export const messages = [
     type: 'in',
     more: false
   },
+
   {
     avatar: 'https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg',
     content: `Hola, este es un mensaje que agrega "Leer más" en el que esperamos una revisión de
@@ -81,6 +83,7 @@ export const messages = [
   {
     content: 'Arrived on site.',
     icon: 'notification',
+
     id: 5,
     from: 'System message',
     to: 'customer-supplier',
@@ -92,6 +95,25 @@ export const messages = [
   {
     content: 'Mike can you let us know that the contractor is through security?',
     reply: 'Re: 5397 — PPM',
+    email: {
+      from: {
+        name: 'John Smith',
+        emailAddress: 'Jsmith@Smith.com',
+        date: 'Tue, 15 Marc 2021 20:34',
+        subject:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore'
+      },
+      forwardedFrom: {
+        name: 'Cleverly <support@cleverly.com>',
+        avatar: 'https://randomuser.me/api/portraits/men/36.jpg'
+      },
+      content: [
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
+
+        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ',
+        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  '
+      ]
+    },
     icon: 'email',
     id: 6,
     from: 'Cleverly <support@cleverly.com>',
@@ -116,6 +138,25 @@ export const messages = [
         type: 'image'
       }
     ],
+    email: {
+      from: {
+        name: 'John Smith',
+        emailAddress: 'Jsmith@Smith.com',
+        date: 'Tue, 15 Marc 2021 20:34',
+        subject:
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore'
+      },
+      forwardedFrom: {
+        name: 'Cleverly <support@cleverly.com>',
+        avatar: 'https://randomuser.me/api/portraits/men/36.jpg'
+      },
+      content: [
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
+
+        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ',
+        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  '
+      ]
+    },
     content: 'Trabajo completado.',
     icon: 'notification',
     id: 7,

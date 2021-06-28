@@ -3,16 +3,19 @@
  */
 
 // React
-import { useContext } from 'react'
+// import { useContext } from 'react'
 
 // Axios
 import axios from 'axios'
 
 // Config
-import { ConfigContext } from '../../services/config/context'
+// import { ConfigContext } from '../../services/config/context'
 
 const Translate = async (text, from = 'es', to = 'en') => {
-  const { RapidApi } = useContext(ConfigContext)
+  // const { RapidApi } = useContext(ConfigContext)
+  const RapidApi = {
+    apiKey: '1882a05a31mshaf0342eab29f980p18a203jsna9807a52e188'
+  }
 
   try {
     const { data } = await axios.post(

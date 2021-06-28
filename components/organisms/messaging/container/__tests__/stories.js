@@ -106,7 +106,6 @@ export const Main = (args) => {
       id: Math.floor(Math.random() * 1000),
       issueId: 1,
       pictureId: null,
-
       statusText: 'status from server',
       time: 'ddd D MMM YYYY HH:mm',
       to: 'all',

@@ -47,22 +47,26 @@ export const MessageList = memo(
     const [Messages, setMessages] = useState(initialMessages)
 
     const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
-    for (let i = 0; i < Messages.length; i++) {
-      if (i !== 0) {
-        const current = new Date(Messages[i].time)
-        const previous = new Date(Messages[i - 1].time)
-        const diff = DateDiff.inDays(previous, current)
-        if (diff > 0) {
+
+    if (Messages) {
+      for (let i = 0; i < Messages.length; i++) {
+        if (i !== 0) {
+          const current = new Date(Messages[i].time)
+          const previous = new Date(Messages[i - 1].time)
+          const diff = DateDiff.inDays(previous, current)
+          if (diff > 0) {
+            Messages[i].headerTime = Messages[i].time.slice(0, 14)
+          }
+        } else {
           Messages[i].headerTime = Messages[i].time.slice(0, 14)
         }
-      } else {
-        Messages[i].headerTime = Messages[i].time.slice(0, 14)
       }
     }
+
     const scrollToBottom = () => {
       window &&
         window.requestAnimationFrame(() => {
-          listRef.current && listRef.current.scrollToRow(Messages.length)
+          listRef.current && Messages && listRef.current.scrollToRow(Messages.length)
         })
     }
 
@@ -77,14 +81,14 @@ export const MessageList = memo(
       window &&
         window.requestAnimationFrame(() => {
           setcache(() => new CellMeasurerCache(cacheConfig))
-          listRef.current && listRef.current.scrollToRow(Messages.length)
+          listRef.current && Messages && listRef.current.scrollToRow(Messages.length)
         })
     }
 
     useEffect(() => {
       scrollToBottom()
       return () => {}
-    }, [Messages.length])
+    }, [Messages?.length])
 
     const onAction = (payload) => {
       switch (payload.action) {
@@ -102,7 +106,7 @@ export const MessageList = memo(
     }
 
     useComponentCommunication({
-      dependencies: [Messages.length],
+      dependencies: [Messages?.length],
       messageName: MessageNames.Messaging.MESSAGING_ACTION,
       onRecieve: onAction,
       subscriber: MessagingSubscriber
@@ -126,10 +130,10 @@ export const MessageList = memo(
               height={height}
               overscanRowCount={10}
               ref={listRef}
-              rowCount={Messages.length}
+              rowCount={Messages?.length ?? 0}
               rowHeight={cache.rowHeight}
               rowRenderer={(e) => renderMessage(e, Messages, cache, config)}
-              scrollToIndex={Messages.length - 1}
+              scrollToIndex={Messages?.length ? Messages.length - 1 : 0}
               width={width}
             />
           )
