@@ -9,20 +9,34 @@ import { func, string } from 'prop-types'
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
-// UI
-import SelectField from '../../../../form/select/select'
-import Search from '../../../../form/search/search'
-import Row from '../../../../atoms/grid/Row'
-import Column from '../../../../atoms/grid/Column'
-import Form from '../../../../form/form/form'
 // Style
 import styled from 'styled-components'
 
+// UI
+import Column from '../../../../atoms/grid/Column'
+import Form from '../../../../form/form/form'
+import Row from '../../../../atoms/grid/Row'
+import Search from '../../../../form/search/search'
+import SelectField from '../../../../form/select/select'
+import Space from '../../../../atoms/space/space'
+
 const Items = [
-  { text: 'All', value: 'all' },
-  { text: 'Email', value: 'email' },
-  { text: 'Comment', value: 'comment' },
-  { text: 'Notification', value: 'notification' }
+  {
+    text: 'All',
+    value: 'all'
+  },
+  {
+    text: 'Email',
+    value: 'email'
+  },
+  {
+    text: 'Comment',
+    value: 'comment'
+  },
+  {
+    text: 'Notification',
+    value: 'notification'
+  }
 ]
 
 const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
@@ -46,10 +60,12 @@ const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   return (
     <StyledContainer>
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <Row>
+        <StyledRow>
           <Column md={6}>
             <StyledSearch {...defaultOptions} prependSearchIcon placeholder={placeholder} />
           </Column>
+
+          <StyledSpace mb={1} />
 
           <Column md={6}>
             <StyledSelect
@@ -59,11 +75,27 @@ const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
               options={Items}
             />
           </Column>
-        </Row>
+        </StyledRow>
       </Form>
     </StyledContainer>
   )
 }
+
+const StyledSpace = styled(Space)`
+  width: 100%;
+`
+
+const StyledRow = styled(Row)`
+  ${StyledSpace} {
+    display: none;
+  }
+  /* MD Medium devices (tablets, 768px and up) */
+  @media (max-width: ${({ theme }) => theme.GRID.breakpoints.md}px) {
+    ${StyledSpace} {
+      display: block;
+    }
+  }
+`
 
 const StyledContainer = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.headerBackground};
@@ -76,7 +108,6 @@ const StyledSearch = styled(Search)`
 `
 
 const StyledSelect = styled(SelectField)`
-  width: 75%;
   label {
     margin: 0;
   }
@@ -91,4 +122,5 @@ MessagingSearch.propTypes = {
 MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 }
+
 export default MessagingSearch

@@ -151,7 +151,7 @@ Login.propTypes = {
   blockSubmitButton: bool,
   forgotPassword: bool,
   heading: string,
-  submit: func.isRequired,
+  submit: func,
   pathForgot: string,
   pathSignUp: oneOfType([object, string]),
   remember: string,

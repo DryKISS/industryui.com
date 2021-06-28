@@ -82,7 +82,7 @@ Calendar.propTypes = {
   expandRows: bool,
   eventClick: func,
   eventContent: func,
-  events: array,
+  events: oneOfType([array, func]),
   hasLoading: bool,
   headerToolbar: object,
   height: oneOfType([number, string]),

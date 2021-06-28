@@ -41,6 +41,8 @@ import createEmojiPlugin from '@draft-js-plugins/emoji'
 // Style
 import styled, { css } from 'styled-components'
 
+import EmailContainer from '../../emailContainer/emailContainer'
+
 const mentionPlugin = createMentionPlugin({
   mentionComponent: (mentionProps) => <MentionComponent mentionProps={mentionProps} />
 })
@@ -51,6 +53,7 @@ const MessageBase = ({
   attachments,
   avatar,
   content,
+  email,
   from,
   hasMenu,
   hasText,
@@ -76,9 +79,10 @@ const MessageBase = ({
 
   const [showingTranslation, setShowingTranslation] = useState(false)
   const [loadingTranslation, setloadingTranslation] = useState(false)
+  const [translationError, setTranslationError] = useState(false)
   const translated = useRef(null)
-
   const toggleTranslation = async () => {
+    setTranslationError(false)
     if (!showingTranslation) {
       if (!translated.current) {
         setloadingTranslation(true)
@@ -90,11 +94,17 @@ const MessageBase = ({
         } else {
           plainText = content
         }
-        const { response } = await TranslationService.Translate(plainText)
-        translated.current = EditorState.createWithContent(ContentState.createFromText(response))
-        setEditorState(translated.current)
-        setShowingTranslation(true)
-        setloadingTranslation(false)
+        try {
+          const { response } = await TranslationService.Translate(plainText)
+          translated.current = EditorState.createWithContent(ContentState.createFromText(response))
+          setEditorState(translated.current)
+          setShowingTranslation(true)
+          setloadingTranslation(false)
+        } catch (e) {
+          setTranslationError(true)
+          setShowingTranslation(false)
+          setloadingTranslation(false)
+        }
       } else {
         setEditorState(translated.current)
         setShowingTranslation(true)
@@ -166,33 +176,60 @@ const MessageBase = ({
       }
     })
   }
+  const renderAttachments = (attachments) => {
+    const elements = []
+    Array.from(attachments).forEach((item, index) => {
+      if (index < 4) {
+        elements.push(
+          <SingleAttachment key={index} onClick={() => handleFileClick(attachments, index)}>
+            {attachments.length > 4 && index === 3 && (
+              <OverlayForAdditionalMessages>+{attachments.length - 4}</OverlayForAdditionalMessages>
+            )}
 
+            <Preview
+              dim={attachments.length > 4 && index === 3}
+              imageStyles={{
+                minHeight: '10rem',
+                height: '10rem',
+                objectFit: 'cover'
+              }}
+              file={item}
+              message
+            />
+          </SingleAttachment>
+        )
+      }
+    })
+    return elements
+  }
+  const header = (
+    <StyledHead type={type}>
+      <StyledHeadText type={type}>
+        {from} <Dot />
+        {time.split(' ')[time.split(' ').length - 1]}
+      </StyledHeadText>
+
+      {hasMenu && (
+        <MenuWrapper>
+          <Dropdown
+            caret={false}
+            items={[
+              { name: 'Star Message', id: 'star' },
+              { name: 'Edit Message', id: 'edit' },
+              { name: 'Delete Message', id: 'delete' }
+            ]}
+            position="bottom"
+            onChange={(item) => dropDownAction(item)}
+          >
+            <MenuIcon />
+          </Dropdown>
+        </MenuWrapper>
+      )}
+    </StyledHead>
+  )
   return (
     <MessageWrapper type={type} hovered={hovered}>
-      <StyledHead type={type}>
-        <StyledHeadText type={type}>
-          {from} <Dot />
-          {time.split(' ')[time.split(' ').length - 1]}
-        </StyledHeadText>
-
-        {hasMenu && (
-          <MenuWrapper>
-            <Dropdown
-              caret={false}
-              items={[
-                { name: 'Star Message', id: 'star' },
-                { name: 'Edit Message', id: 'edit' },
-                { name: 'Delete Message', id: 'delete' }
-              ]}
-              position="bottom"
-              onChange={(item) => dropDownAction(item)}
-            >
-              <MenuIcon />
-            </Dropdown>
-          </MenuWrapper>
-        )}
-      </StyledHead>
-
+      {header}
       <StyledCard type={type}>
         <Row>
           <Column
@@ -208,7 +245,6 @@ const MessageBase = ({
             <StyledReply>{reply}</StyledReply>
           </Column>
         </Row>
-
         <Row>
           {pictureId && (
             <Column sm={2}>
@@ -224,7 +260,7 @@ const MessageBase = ({
                   <MessagingAudioPlayer src={voice} inMessage />
                 </AudioWrapper>
               )}
-
+              {email && <EmailContainer email={email} header={header} />}
               {hasText && (
                 <MessagingEditor
                   plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
@@ -245,38 +281,17 @@ const MessageBase = ({
 
         {type === 'in' && hasText && (
           <TranslatorWrapper onClick={toggleTranslation}>
-            {showingTranslation ? 'See Original' : 'See Translation'}
+            {translationError
+              ? 'Translation Error'
+              : showingTranslation
+              ? 'See Original'
+              : 'See Translation'}
             {loadingTranslation && <Loadingspinner />}
           </TranslatorWrapper>
         )}
 
         {attachments && attachments.length > 0 && (
-          <AttachmentsContainer>
-            {Array.from(attachments).forEach((item, index) => {
-              if (index < 4) {
-                return (
-                  <SingleAttachment key={index} onClick={() => handleFileClick(attachments, index)}>
-                    {attachments.length > 4 && index === 3 && (
-                      <OverlayForAdditionalMessages>
-                        +{attachments.length - 4}
-                      </OverlayForAdditionalMessages>
-                    )}
-
-                    <Preview
-                      dim={attachments.length > 4 && index === 3}
-                      imageStyles={{
-                        minHeight: '10rem',
-                        height: '10rem',
-                        objectFit: 'cover'
-                      }}
-                      file={item}
-                      message
-                    />
-                  </SingleAttachment>
-                )
-              }
-            })}
-          </AttachmentsContainer>
+          <AttachmentsContainer>{renderAttachments(attachments)}</AttachmentsContainer>
         )}
       </StyledCard>
     </MessageWrapper>

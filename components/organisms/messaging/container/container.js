@@ -51,9 +51,10 @@ const MessagingContainer = ({
     ...(menuForMessages && { hasMenu: true }),
     ...(replyForMessages && { hasReply: true })
   }
-
   const [Files, setFiles] = useState([])
+
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
+
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
 
   const onHover = () => {
@@ -61,9 +62,11 @@ const MessagingContainer = ({
       setIsDragHoverOpen(true)
     }
   }
+
   const onLeave = () => {
     setIsDragHoverOpen(false)
   }
+
   const onDrop = (e) => {
     setFiles(e)
     MessagingCommunicationService.send({
@@ -74,6 +77,7 @@ const MessagingContainer = ({
       }
     })
   }
+
   const closeHoverPopup = () => {
     setFiles((files) => [])
     setIsDragHoverOpen(false)
@@ -93,7 +97,9 @@ const MessagingContainer = ({
       closeHoverPopup()
       return
     }
+
     setFiles(newFiles)
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
@@ -124,12 +130,15 @@ const MessagingContainer = ({
       case MessagingActions.HASHTAG_CLICKED:
         onHashtagClick(payload.data)
         break
+
       case MessagingActions.MENTION_CLICKED:
         onMentionClick(payload.data)
         break
+
       case MessagingActions.EDIT_MESSAGE:
         console.info(payload.data)
         break
+
       case MessagingActions.DELETE_MESSAGE:
         console.info(payload.data)
         break
@@ -162,6 +171,7 @@ const MessagingContainer = ({
         data: []
       }
     })
+
     setIsDragHoverOpen(() => false)
     setTimeout(() => {
       setFiles((files) => [])
@@ -179,11 +189,13 @@ const MessagingContainer = ({
           className={className}
           style={style}
         >
-          <MessageList
-            config={messagesConfig}
-            initialMessages={messages}
-            onMessageRecieved={handleMessageRecieved}
-          />
+          {hasMessage && (
+            <MessageList
+              config={messagesConfig}
+              initialMessages={messages}
+              onMessageRecieved={handleMessageRecieved}
+            />
+          )}
         </StyledContainer>
         <MessagingSend
           audienceItems={audienceItems}
