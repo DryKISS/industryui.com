@@ -10,3 +10,4 @@ export const formatPrice = (amount, currency = 'GBP') => {
 
   return numberFormat.format(amount)
 }
+export default formatPrice

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { RandomKey } from '../../../'
+import RandomKey from '../randomKey'
 import Readme from '../README.md'
 
 // Style

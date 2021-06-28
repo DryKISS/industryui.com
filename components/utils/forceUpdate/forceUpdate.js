@@ -10,3 +10,4 @@ export const useForceUpdate = () => {
   const forceUpdate = () => setValue((value) => ++value) // update the state to force render
   return [forceUpdate, value]
 }
+export default useForceUpdate

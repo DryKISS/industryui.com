@@ -5,3 +5,4 @@ export const revert = (dataSource) => {
   }
   return ret
 }
+export default revert

@@ -10,8 +10,11 @@ import { func, string } from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Column, Form, Row, Search, SelectField } from '../../../..'
-
+import SelectField from '../../../../form/select/select'
+import Search from '../../../../form/search/search'
+import Row from '../../../../atoms/grid/Row'
+import Column from '../../../../atoms/grid/Column'
+import Form from '../../../../form/form/form'
 // Style
 import styled from 'styled-components'
 
@@ -22,7 +25,7 @@ const Items = [
   { text: 'Notification', value: 'notification' }
 ]
 
-export const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
+const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
   const { errors, handleSubmit, register } = useForm({
     mode: 'onChange'
   })
@@ -88,3 +91,4 @@ MessagingSearch.propTypes = {
 MessagingSearch.defaultProps = {
   placeholder: 'Search...'
 }
+export default MessagingSearch

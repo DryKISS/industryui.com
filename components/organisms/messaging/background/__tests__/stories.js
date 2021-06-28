@@ -9,7 +9,7 @@ import React from 'react'
 import { ControlTypes } from '../../../../../.storybook/decorators'
 
 // UI
-import { MessageBackground } from '../background'
+import MessageBackground from '../background'
 import Readme from '../README.md'
 
 const options = {

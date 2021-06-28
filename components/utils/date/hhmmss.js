@@ -19,3 +19,4 @@ export const toHHMMSS = ({ sec, hasSecond, hasMinute, hasHour }) => {
     (hasSecond ? seconds : '')
   )
 }
+export default toHHMMSS

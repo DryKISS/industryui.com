@@ -11,9 +11,9 @@ import { object, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { BlogCategory } from '../../blog/category/category'
-import { BlogDetails } from '../../blog/details/details'
-import { Breadcrumb } from '../../molecules/breadcrumb/breadcrumb'
+import BlogCategory from '../../blog/category/category'
+import BlogDetails from '../../blog/details/details'
+import Breadcrumb from '../../molecules/breadcrumb/breadcrumb'
 import Heading from '../../atoms/heading/heading'
 import Image from '../../atoms/image/image'
 

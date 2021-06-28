@@ -9,15 +9,14 @@ import { array } from 'prop-types'
 // React Virtualised
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
 
-// UI
+import DateDiff from '../../../../utils/date/diff'
+
 import {
-  DateDiff,
-  Message,
   MessageNames,
-  MessagingSubscriber,
-  MessagingActions,
-  useComponentCommunication
-} from '../../../../'
+  MessagingActions
+} from '../../../../services/componentCommunication/messageNames'
+import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
+import { useComponentCommunication } from '../../../../hooks/useComponentCommunication/useSubscription'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -39,7 +38,7 @@ const renderMessage = ({ index, parent, key, style }, messages, cache, config) =
 
 const cacheConfig = { fixedWidth: true, defaultHeight: 50 }
 
-export const MessageList = memo(
+const MessageList = memo(
   ({ initialMessages, onMessageRecieved, config }) => {
     const listRef = useRef(null)
     const widthRef = useRef(null)
@@ -153,3 +152,4 @@ const MessageContainer = styled.div`
 MessageList.propTypes = {
   initialMessages: array.isRequired
 }
+export default MessageList

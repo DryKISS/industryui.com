@@ -7,12 +7,12 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // UI
-import { Image } from '../../../../../'
+import Image from '../../../../../atoms/image/image'
 
 // Style
 import styled from 'styled-components'
 
-export const MessageTo = ({ to }) => {
+const MessageTo = ({ to }) => {
   let icon = ''
 
   switch (to) {
@@ -41,3 +41,4 @@ const StyledImage = styled(Image)`
 MessageTo.propTypes = {
   to: string.isRequired
 }
+export default MessageTo

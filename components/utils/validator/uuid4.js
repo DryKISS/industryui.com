@@ -6,3 +6,4 @@ export const validatorUuid4 = (uuid) => {
 
   return regExp.test(uuid)
 }
+export default validatorUuid4

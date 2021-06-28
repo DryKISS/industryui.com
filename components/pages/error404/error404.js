@@ -6,10 +6,10 @@
 import React from 'react'
 
 // Layout
-import { Page } from '../../layouts/page/page'
-import { Text } from '../../atoms/text/text'
+import Page from '../../layouts/page/page'
+import Text from '../../atoms/text/text'
 
-export const Error404 = () => {
+const Error404 = () => {
   const meta = {
     description: `
       DryKISS is a full service internet and mobile digital production house.
@@ -29,3 +29,4 @@ export const Error404 = () => {
     </Page>
   )
 }
+export default Error404

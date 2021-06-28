@@ -8,10 +8,11 @@ import React from 'react'
 // Style
 import styled from 'styled-components'
 
-export const LinkPluginComponent = (props) => {
+const LinkPluginComponent = (props) => {
   return <StyledA {...props} onClick={() => {}} />
 }
 
 const StyledA = styled.a`
   color: ${({ theme: { MESSAGING } }) => MESSAGING.linkColour};
 `
+export default LinkPluginComponent

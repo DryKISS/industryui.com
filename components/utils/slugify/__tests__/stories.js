@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 
 // UI
-import { slugify } from '../../../'
+import slugify from '../slugify'
 import Readme from '../README.md'
 
 export default {

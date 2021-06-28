@@ -15,7 +15,7 @@ export const RawResizeDetector = withResizeDetector(
     return <ResizeDetectorWrapper style={style}>{children}</ResizeDetectorWrapper>
   }
 )
-
+export default RawResizeDetector
 const ResizeDetectorWrapper = styled.div`
   height: 100%;
   left: 0;

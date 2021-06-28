@@ -38,3 +38,4 @@ TwitterTimeline.defaultProps = {
   options: {},
   onLoad: () => {}
 }
+export default TwitterTimeline

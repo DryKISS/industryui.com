@@ -7,7 +7,9 @@ import React from 'react'
 
 // UI
 import Readme from '../README.md'
-import { objectWithoutProperties, Space, Text } from '../../../'
+import objectWithoutProperties from '../objWithoutProperties'
+import Text from '../../../atoms/text/text'
+import Space from '../../../atoms/space/space'
 
 export default {
   parameters: {

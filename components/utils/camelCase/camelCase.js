@@ -13,3 +13,4 @@ export const camelCase = {
       .replace(/\s+/g, ''),
   decamelize: (str) => str.split(/(?=[A-Z])/).join(' ')
 }
+export default camelCase

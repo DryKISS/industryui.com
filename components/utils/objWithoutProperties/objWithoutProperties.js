@@ -18,3 +18,4 @@ export const objectWithoutProperties = (obj, keys) => {
 
   return target
 }
+export default objectWithoutProperties

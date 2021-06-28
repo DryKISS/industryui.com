@@ -9,7 +9,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { MessagingActions, MessagingCommunicationService, MessageNames } from '../../../../'
+import {
+  MessageNames,
+  MessagingActions
+} from '../../../../services/componentCommunication/messageNames'
+import { MessagingCommunicationService } from '../../../../services/componentCommunication/componentCommunication'
 
 const handleMentionClick = (mentionProps) => {
   MessagingCommunicationService.send({
@@ -21,7 +25,7 @@ const handleMentionClick = (mentionProps) => {
   })
 }
 
-export const MentionComponent = ({ mentionProps }) => {
+const MentionComponent = ({ mentionProps }) => {
   return (
     <StyledMention
       className={mentionProps.className}
@@ -35,3 +39,4 @@ export const MentionComponent = ({ mentionProps }) => {
 const StyledMention = styled.span`
   color: ${({ theme: { MESSAGING } }) => MESSAGING.mentionColour};
 `
+export default MentionComponent
