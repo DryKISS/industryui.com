@@ -27,5 +27,3 @@ export const LazyIcon = ({ iconName, ...props }) => {
 
   return LoadedIcon ? <LoadedIcon {...props} /> : <></>
 }
-
-// LazyIcon.propTypes = lazyIconPropTypes

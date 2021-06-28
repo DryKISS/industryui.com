@@ -15,6 +15,7 @@ export const propTypes = {
   onClick: func,
   size: oneOfType([number, string])
 }
+
 export const lazyIconPropTypes = {
   iconName: oneOf(iconNameList),
   ...propTypes
