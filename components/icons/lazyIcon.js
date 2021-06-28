@@ -4,14 +4,11 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { oneOf } from 'prop-types'
 
 // Next
 import dynamic from 'next/dynamic'
 
 // UI
-import { propTypes } from './props'
-import { RawIcons } from './rawIcons'
 
 export const LazyIcon = ({ iconName, ...props }) => {
   const [LoadedIcon, setLoadedIcon] = useState(null)
@@ -29,9 +26,4 @@ export const LazyIcon = ({ iconName, ...props }) => {
   }, [])
 
   return LoadedIcon ? <LoadedIcon {...props} /> : <></>
-}
-
-LazyIcon.propTypes = {
-  iconName: oneOf(Object.keys(RawIcons)),
-  ...propTypes
 }

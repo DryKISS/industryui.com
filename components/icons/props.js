@@ -1,9 +1,10 @@
 /**
  * Components - Icons - Props
  */
+import { iconNameList } from './rawIcons'
 
 // React
-import { bool, func, number, oneOfType, string } from 'prop-types'
+import { bool, func, number, oneOf, oneOfType, string } from 'prop-types'
 
 export const propTypes = {
   colour: string,
@@ -13,4 +14,9 @@ export const propTypes = {
   hoverColour: oneOfType([bool, string]),
   onClick: func,
   size: oneOfType([number, string])
+}
+
+export const lazyIconPropTypes = {
+  iconName: oneOf(iconNameList),
+  ...propTypes
 }

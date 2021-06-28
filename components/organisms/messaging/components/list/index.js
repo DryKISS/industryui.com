@@ -62,6 +62,7 @@ export const MessageList = memo(
         }
       }
     }
+
     const scrollToBottom = () => {
       window &&
         window.requestAnimationFrame(() => {

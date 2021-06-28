@@ -28,7 +28,6 @@ import { ThemeProvider } from 'styled-components'
 import { AuthorizationProvider } from '../services/authorization/provider'
 import { ConfigProvider } from '../services/config/provider'
 import { InternationalisationProvider } from '../services/internationalisation/provider'
-import { NotificationsProvider } from '../services/notifications/provider'
 import { OffCanvasProvider } from '../services/offCanvas/provider'
 import { PageProgressBar } from '../molecules/pageProgressBar/components/pageProgressBar'
 import { Theme } from '../theme/variables/index'
@@ -75,13 +74,7 @@ export class MyApp extends App {
           <UserProvider>
             <AuthorizationProvider>
               <InternationalisationProvider>
-                <NotificationsProvider>
-                  {offCanvas ? (
-                    <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
-                  ) : (
-                    this.layout()
-                  )}
-                </NotificationsProvider>
+                {offCanvas ? <OffCanvasProvider>{this.layout()}</OffCanvasProvider> : this.layout()}
               </InternationalisationProvider>
             </AuthorizationProvider>
           </UserProvider>

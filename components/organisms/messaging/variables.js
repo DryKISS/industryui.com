@@ -24,6 +24,7 @@ export const MESSAGING = {
   hashtagColour: THEME_COLOUR.secondary,
   headerBackground: THEME_COLOUR.light,
   inputFontSize: '1rem',
+  inputBorderColour: THEME_COLOUR.light,
   inputIconsColour: THEME_COLOUR.blackGrey,
   inpotIconsHoverColour: THEME_COLOUR.info,
   inputSectionBackground: THEME_COLOUR.light,

@@ -46,7 +46,6 @@ export const MessagingContainer = ({
     ...(menuForMessages && { hasMenu: true }),
     ...(replyForMessages && { hasReply: true })
   }
-
   const [Files, setFiles] = useState([])
 
   const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
@@ -185,11 +184,13 @@ export const MessagingContainer = ({
           className={className}
           style={style}
         >
-          <MessageList
-            config={messagesConfig}
-            initialMessages={messages}
-            onMessageRecieved={handleMessageRecieved}
-          />
+          {hasMessage && (
+            <MessageList
+              config={messagesConfig}
+              initialMessages={messages}
+              onMessageRecieved={handleMessageRecieved}
+            />
+          )}
         </StyledContainer>
         <MessagingSend
           audienceItems={audienceItems}
