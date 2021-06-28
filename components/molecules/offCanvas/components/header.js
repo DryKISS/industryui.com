@@ -6,15 +6,25 @@
 import React from 'react'
 import { bool, func, oneOf, string } from 'prop-types'
 
-// UI
-import { Avatar, Button, Close, Column, Divider, Heading, Icon, Row, Text } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-
 // Style
 import styled from 'styled-components'
+
+// Polished
 import { lighten } from 'polished'
 
-export const OffCanvasHeader = ({
+// UI
+import Avatar from '../../../atoms/avatar/avatar'
+import Button from '../../../atoms/button/button/button'
+import Close from '../../../atoms/close/close'
+import Column from '../../../atoms/grid/Column'
+import Divider from '../../../atoms/divider/divider'
+import Heading from '../../../atoms/heading/heading'
+import Icon from '../../../atoms/icon/icon/icon'
+import Row from '../../../atoms/grid/Row'
+import Text from '../../../atoms/text/text'
+import THEME_CONTEXT from '../../../constants/context'
+
+const OffCanvasHeader = ({
   context,
   hasAvatar,
   headerContent,
@@ -27,7 +37,7 @@ export const OffCanvasHeader = ({
     <StyledHeader context={context} data-cy="offCanvasHeader" variant={variant}>
       <Row align="center">
         <Column sm={8}>
-          <Icon context={variant === 'extended' ? 'white' : context} icon="expand" prefix="fas" />
+          <Icon context={variant === 'extended' ? 'white' : context} icon="expand" />
           <StyledHeading content={title} context={context} tag="h4" variant={variant} />
         </Column>
 
@@ -132,3 +142,4 @@ OffCanvasHeader.defaultProps = {
   submit: true,
   variant: 'extended'
 }
+export default OffCanvasHeader

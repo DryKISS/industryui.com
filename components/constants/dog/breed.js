@@ -1,7 +1,7 @@
 /**
  * Dog Breeds
  */
-export const DOG_BREED = [
+const DOG_BREED = [
   {
     disabled: true,
     text: 'Select breed',
@@ -1120,3 +1120,5 @@ export const DOG_BREED = [
     value: 'yorkshire-terrier'
   }
 ]
+
+export default DOG_BREED

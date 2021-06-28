@@ -7,10 +7,9 @@ import React, { memo } from 'react'
 import { func, number, oneOfType, string } from 'prop-types'
 
 // UI
-import { Column } from '../../../atoms/grid/components/Column'
-import { Pagination } from '../../pagination/components/pagination'
-
-import { Row } from '../../../atoms/grid/components/Row'
+import Column from '../../../atoms/grid/Column'
+import Pagination from '../../pagination/pagination'
+import Row from '../../../atoms/grid/Row'
 import TablePaginationSize from './paginationSize'
 
 export const TablePagination = memo(
@@ -49,3 +48,5 @@ TablePagination.defaultProps = {
   currentPage: 1,
   perPage: 50
 }
+
+export default TablePagination

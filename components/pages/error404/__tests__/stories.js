@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Error404 } from '../../../'
+import Error404 from '../error404'
 import Readme from '../README.md'
 
 export default {

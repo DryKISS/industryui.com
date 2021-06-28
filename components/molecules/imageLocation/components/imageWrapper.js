@@ -11,8 +11,11 @@ import { renderToString } from 'react-dom/server'
 import styled from 'styled-components'
 
 // UI
-import { RawIcons, Image, ImageMarker } from '../../../'
-import { ClusterIcon } from './clusterIcon'
+// import { RawIcons, Image, ImageMarker } from '../../../'
+import RawIcons from '../../../icons/rawIcons'
+import Image from '../../../atoms/image/image'
+import ImageMarker from './imageMarker'
+import ClusterIcon from './clusterIcon'
 
 let imageHeight = 0
 let imageWidth = 0
@@ -96,6 +99,7 @@ export const ImageWrapper = ({
 
     imageWidth = image.clientWidth
     imageHeight = image.clientHeight
+
     markersArray.current = markers.map((item, i) => {
       let { colour, context, icon, iui, popupComponent, x, y } = item
 
@@ -208,10 +212,12 @@ const Wrapper = styled.div`
     left: 0;
   }
 `
+
 const HiddenMapImage = styled(Image)`
   opacity: 0;
   pointer-events: none;
 `
+
 const StyledImageWrapper = styled.div`
   display: inline-block;
   position: relative;

@@ -7,13 +7,15 @@ import React from 'react'
 import { func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Alert, formatRelativeTime, Link } from '../../'
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import Alert from '../alert/alert'
+import { formatRelativeTime } from '../../utils/formatDate'
+import Link from '../../atoms/link/link'
+import THEME_CONTEXT from '../../constants/context'
 
 // Style
 import styled from 'styled-components'
 
-export const Notification = ({ close, content, context, date, icon, link, title }) => {
+const Notification = ({ close, content, context, date, icon, link, title }) => {
   let body = (
     <>
       <StyledNotificationBody>{content}</StyledNotificationBody>
@@ -65,3 +67,4 @@ Notification.propTypes = {
   link: string,
   title: string
 }
+export default Notification

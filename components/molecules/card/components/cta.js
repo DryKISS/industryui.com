@@ -7,10 +7,12 @@ import React from 'react'
 import { func, string } from 'prop-types'
 
 // UI
-import { Button, Link } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Link from '../../../atoms/link/link'
+
 import styled from 'styled-components'
 
-export const CardCTA = ({ func, link, title }) => {
+const CardCTA = ({ func, link, title }) => {
   const CtaButton = (props) => <StyledButton content={title} context="secondary" {...props} />
 
   return link ? (
@@ -36,3 +38,4 @@ CardCTA.propTypes = {
 CardCTA.defaultProps = {
   title: 'Read more'
 }
+export default CardCTA

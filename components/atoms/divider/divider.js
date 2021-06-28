@@ -6,14 +6,15 @@
 import styled, { css } from 'styled-components'
 
 // UI
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 import { propTypes, defaultProps } from './props'
 
-export const Divider = styled.hr`
+const Divider = styled.hr`
   border: none;
-  height: ${({ dashed, thickness }) => (dashed ? 2 : thickness)}px;
   flex-shrink: 0;
+  height: ${({ dashed, thickness }) => (dashed ? 2 : thickness)}px;
   width: 100%;
+
   ${({ context, dashed, theme, vertical }) => {
     return css`
       background-image: linear-gradient(
@@ -42,28 +43,32 @@ export const Divider = styled.hr`
       case THEME_SIZE.XXS:
         margin = '0.25rem'
         break
-      case THEME_SIZE.SM:
+      case THEME_SIZE.XS:
         margin = '0.5rem'
+        break
+      case THEME_SIZE.SM:
+        margin = '0.75rem'
         break
       case THEME_SIZE.MD:
         margin = '1rem'
         break
       case THEME_SIZE.LG:
-        margin = '2rem'
+        margin = '1.5rem'
         break
       case THEME_SIZE.XL:
-        margin = '3rem'
+        margin = '2rem'
         break
       case THEME_SIZE.XXL:
-        margin = '4rem'
+        margin = '3rem'
         break
       case THEME_SIZE.XXXL:
-        margin = '8rem'
+        margin = '4rem'
         break
 
       default:
         break
     }
+
     return vertical ? '0 ' + margin : margin + ' 0'
   }};
 
@@ -77,3 +82,5 @@ export const Divider = styled.hr`
 
 Divider.propTypes = propTypes
 Divider.defaultProps = defaultProps
+
+export default Divider

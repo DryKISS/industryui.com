@@ -7,9 +7,9 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // UI
-import { Text } from '../../'
+import Text from '../text/text'
 
-export const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
+const Address = ({ county, country, line1, line2, line3, postcode, town }) => (
   <address>
     <Text>{line1}</Text>
     {line2 && <Text>{line2}</Text>}
@@ -30,3 +30,5 @@ Address.propTypes = {
   postcode: string.isRequired,
   town: string
 }
+
+export default Address

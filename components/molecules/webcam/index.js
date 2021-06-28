@@ -1,4 +1,0 @@
-/**
- * Webcam
- */
-export * from './components'

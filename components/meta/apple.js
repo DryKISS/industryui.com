@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaApple = ({ appleId, title }) => {
+const MetaApple = ({ appleId, title }) => {
   return (
     <Head>
       <meta charset="apple-itunes-app" content={appleId} />
@@ -25,3 +25,5 @@ MetaApple.propTypes = {
   appleId: string.isRequired,
   title: string.isRequired
 }
+
+export default MetaApple

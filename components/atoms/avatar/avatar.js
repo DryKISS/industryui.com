@@ -12,14 +12,15 @@ import gravatar from 'gravatar'
 import styled, { css } from 'styled-components'
 
 // UI
-import { getAcronym, Image } from '../../'
-import { themeFontSize } from '../../theme/utils/fontSize'
-import { THEME_SIZE } from '../../theme/constants/size'
+import getAcronym from '../../utils/getAcronym/getAcronym'
+import Image from '../image/image'
+import themeFontSize from '../../utils/fontSize'
+import THEME_SIZE from '../../constants/size'
 
 // Props
-import { propTypes, defaultProps } from './props'
+import { propTypes, defaultProps } from './components/props'
 
-export const Avatar = ({
+const Avatar = ({
   action,
   actionClick,
   children,
@@ -95,4 +96,5 @@ const StyledAvatar = styled.div`
 
 Avatar.propTypes = propTypes
 Avatar.defaultProps = defaultProps
+
 export default Avatar

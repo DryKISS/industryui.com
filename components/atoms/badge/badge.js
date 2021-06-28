@@ -9,14 +9,14 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Icon } from '../icon/icon/icon'
-import { themeBackground } from '../../theme/utils/background'
-import { themeFontSize } from '../../theme/utils/fontSize'
+import Icon from '../icon/icon/icon'
+import themeBackground from '../../utils/background'
+import themeFontSize from '../../utils/fontSize'
 
 // Props
-import { defaultProps, propTypes } from './props'
+import { defaultProps, propTypes } from './components/props'
 
-export const Badge = ({
+const Badge = ({
   children,
   className,
   content,
@@ -83,3 +83,5 @@ const StyledIcon = styled(Icon)`
 
 Badge.propTypes = propTypes
 Badge.defaultProps = defaultProps
+
+export default Badge

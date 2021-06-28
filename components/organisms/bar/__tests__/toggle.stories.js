@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BarToggle } from '../components/toggle'
+import BarToggle from '../components/toggle'
 import Readme from '../README.md'
 
 export default {

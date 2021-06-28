@@ -6,4 +6,5 @@
 // React
 import { createContext } from 'react'
 
-export const AuthorizationContext = createContext()
+const AuthorizationContext = createContext()
+export default AuthorizationContext

@@ -4,10 +4,19 @@
 
 // React
 import React from 'react'
+import { node, object } from 'prop-types'
 
-// Context
-import { ConfigContext } from '../config/context'
+// UI
+import ConfigContext from './context'
 
-export const ConfigProvider = (props) => {
-  return <ConfigContext.Provider value={props.config} {...props} />
+const ConfigProvider = ({ children, config }) => {
+  return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
 }
+
+
+ConfigProvider.propTypes = {
+  children: node.isRequired,
+  config: object.isRequired
+}
+
+export default ConfigProvider

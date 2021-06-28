@@ -6,14 +6,15 @@
 import React from 'react'
 import { any, bool, element, oneOf, string } from 'prop-types'
 
-// UI
-import { Divider, Heading } from '../../'
-import { THEME_CONTEXT } from '../../theme/constants/context'
-
 // Style
 import styled from 'styled-components'
 
-export const PageHeading = ({
+// UI
+import Divider from '../../atoms/divider/divider'
+import Heading from '../../atoms/heading/heading'
+import THEME_CONTEXT from '../../constants/context'
+
+const PageHeading = ({
   center,
   children,
   context,
@@ -83,3 +84,5 @@ PageHeading.defaultProps = {
   helpContent: '',
   strapline: ''
 }
+
+export default PageHeading

@@ -10,15 +10,15 @@ import { any, bool, node, oneOf, oneOfType, shape, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { ConfigContext } from '../../services/config/context'
-import { Container } from '../../atoms/grid/components/Container'
-import { MetaHead } from '../../meta/head'
-import { PageHeading } from '../../molecules/pageHeading/pageHeading'
-import { Space } from '../../atoms/space/space'
-import { THEME_CONTEXT } from '../../theme/constants/context'
-import { THEME_SIZE } from '../../theme/constants/size'
+import ConfigContext from '../../services/config/context'
+import Container from '../../atoms/grid/Container'
+import MetaHead from '../../meta/head'
+import PageHeading from '../../molecules/pageHeading/pageHeading'
+import Space from '../../atoms/space/space'
+import THEME_CONTEXT from '../../constants/context'
+import THEME_SIZE from '../../constants/size'
 
-export const Page = ({ children, fluid, meta, padding, pageHeading }) => {
+const Page = ({ children, fluid, meta, padding, pageHeading }) => {
   const { Brand, Canonical } = useContext(ConfigContext)
 
   return (
@@ -65,3 +65,5 @@ Page.defaultProps = {
   fluid: false,
   padding: 'md'
 }
+
+export default Page

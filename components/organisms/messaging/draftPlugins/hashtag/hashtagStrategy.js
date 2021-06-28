@@ -1,4 +1,4 @@
-import { extractHashtagsWithIndices } from './utils'
+import extractHashtagsWithIndices from './utils/extractHashtagsWithIndices'
 
 export default (contentBlock, callback) => {
   const text = contentBlock.getText()

@@ -1,7 +1,7 @@
 // React
 import React from 'react'
 
-export const MenuIcon = (props) => {
+const MenuIcon = (props) => {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -13,3 +13,4 @@ export const MenuIcon = (props) => {
     </svg>
   )
 }
+export default MenuIcon

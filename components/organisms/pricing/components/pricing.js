@@ -9,18 +9,17 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  Button,
-  Icon,
-  LAYOUTS,
-  PriceMatrix,
-  PricingCard,
-  PricingDropdown,
-  ResizeDetector,
-  Text
-} from '../../../'
 
-export const Pricing = ({ pricingInfo, onPlanSelect }) => {
+import Button from '../../../atoms/button/button/button'
+import Icon from '../../../atoms/icon/icon/icon'
+import LAYOUTS from '../components/constants'
+import PriceMatrix from '../components/priceMatrix'
+import PricingCard from '../components/pricingCard'
+import PricingDropdown from '../components/pricingDropdown'
+import ResizeDetector from '../../../utils/resizeDetector/resizeDetector'
+import Text from '../../../atoms/text/text'
+
+const Pricing = ({ pricingInfo, onPlanSelect }) => {
   const WrapperRef = useRef(null)
 
   useEffect(() => {
@@ -96,7 +95,7 @@ export const Pricing = ({ pricingInfo, onPlanSelect }) => {
                   {pricingInfo[SelectedPlan].checkList.map((item, index) => {
                     return (
                       <ListItem key={index}>
-                        <Icon color="rgb(69, 186, 190)" icon="check" prefix="fas" />
+                        <Icon color="rgb(69, 186, 190)" icon="check" />
                         <StyledFeature content={item.title} context="dark" size="sm" />
                       </ListItem>
                     )
@@ -173,3 +172,4 @@ const PricesWrapper = styled.div`
   position: relative;
   width: 100%;
 `
+export default Pricing

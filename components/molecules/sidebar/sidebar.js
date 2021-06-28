@@ -6,11 +6,16 @@
 import React from 'react'
 import { array, string } from 'prop-types'
 
-// UI
-import { Divider, Image, Icon, Link, List, ListItem } from '../../'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import Divider from '../../atoms/divider/divider'
+import Image from '../../atoms/image/image'
+import Icon from '../../atoms/icon/icon/icon'
+import Link from '../../atoms/link/link'
+import List from '../../atoms/list/list'
+import ListItem from '../../atoms/list/listItem'
 
 export const Sidebar = ({ brand, data }) => {
   const link = (icon, name, to) => {

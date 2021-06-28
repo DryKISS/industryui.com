@@ -9,9 +9,9 @@ import { useEffect, useState } from 'react'
 import moment from 'moment'
 
 // UI
-import { useInterval } from '../useInterval'
+import useInterval from '../useInterval'
 
-export function useTimer({ autoStart = true, interval = 1000, startTime, endTime } = {}) {
+const useTimer = ({ autoStart = true, interval = 1000, startTime, endTime } = {}) => {
   const getTime = () => {
     let diff = 0
     const now = endTime ? moment(endTime) : moment()
@@ -55,3 +55,5 @@ export function useTimer({ autoStart = true, interval = 1000, startTime, endTime
 
   return { time: getFormattedTime(), start, stop }
 }
+
+export default useTimer

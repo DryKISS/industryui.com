@@ -59,3 +59,4 @@ FacebookShareButton.defaultProps = {
   layout: 'button',
   size: 'large'
 }
+export default FacebookShareButton

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { TableActions } from '../formatter/actions/actions'
+import TableActions from '../components/formatter/actions/actions'
 import Readme from '../README.md'
 
 export default {

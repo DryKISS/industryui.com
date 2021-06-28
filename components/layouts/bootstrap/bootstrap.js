@@ -8,19 +8,18 @@ import React from 'react'
 import { array, bool, func, node, object } from 'prop-types'
 
 // UI
-import { Copyright } from '../../molecules/copyright/copyright'
-import { Footer } from '../../organisms/footer/footer'
+// import Copyright from '../../molecules/copyright/copyright'
+// import Footer from '../../organisms/footer/footer'
 
-export const Bootstrap = ({ children, copyright, footer, fixed, icon, Navigation }) => {
+const Bootstrap = ({ children, copyright, footer, fixed, icon, Navigation }) => {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
 
       {children}
 
-      {footer && <Footer columns={footer} fixed={fixed} />}
-
-      {copyright && <Copyright icon={icon} links={copyright} />}
+      {/* {footer && <Footer columns={footer} fixed={fixed} />}
+      {copyright && <Copyright icon={icon} links={copyright} />} */}
     </>
   )
 }
@@ -37,3 +36,5 @@ Bootstrap.propTypes = {
 Bootstrap.defaultProps = {
   fixed: false
 }
+
+export default Bootstrap

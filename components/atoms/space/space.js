@@ -10,10 +10,10 @@ import { node, oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { THEME_SIZE } from '../../theme/constants/size'
-import { spaceStyler } from './style'
+import THEME_SIZE from '../../constants/size'
+import spaceStyler from './style'
 
-export const Space = ({
+const Space = ({
   children,
   className,
   content,
@@ -130,3 +130,5 @@ Space.propTypes = {
   paddingBottom: oneOf(Object.values(THEME_SIZE)),
   paddingLeft: oneOf(Object.values(THEME_SIZE))
 }
+
+export default Space

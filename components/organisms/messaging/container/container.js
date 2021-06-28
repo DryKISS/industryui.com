@@ -7,24 +7,29 @@ import React, { useState } from 'react'
 import { array, func, number, object, string } from 'prop-types'
 
 // UI
+
+import DragAndDropable from '../components/dndable/dndable'
+import FullPreview from '../components/fullPreview/fullPreview'
+import MessageList from '../components/messageList/messageList'
+import MessagingDragHover from '../components/dragHover/dragHover'
+import MessagingSearch from '../components/search/meaasagingSearch'
+import MessagingSend from '../components/send/messagingSend'
+
 import {
-  DragAndDropable,
-  FullPreview,
-  MessageList,
-  MessagingDragHover,
-  MessagingSearch,
-  MessagingSend,
   MessageNames,
-  MessagingActions,
+  MessagingActions
+} from '../../../services/componentCommunication/messageNames'
+import {
   MessagingCommunicationService,
-  MessagingSubscriber,
-  useComponentCommunication
-} from '../../../'
+  MessagingSubscriber
+} from '../../../services/componentCommunication/componentCommunication'
+
+import useComponentCommunication from '../../../hooks/useComponentCommunication/useSubscription'
 
 // Style
 import styled from 'styled-components'
 
-export const MessagingContainer = ({
+const MessagingContainer = ({
   audienceItems,
   className,
   forwardForMessages,
@@ -234,3 +239,4 @@ MessagingContainer.propTypes = {
   onMessageSubmit: func.isRequired,
   style: object
 }
+export default MessagingContainer

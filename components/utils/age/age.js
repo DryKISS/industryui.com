@@ -11,3 +11,4 @@ export const age = (birthDate) => {
 
   return differenceInYears(new Date(), birthDate)
 }
+export default age

@@ -3,9 +3,9 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
-export const NAVBAR = {
+const NAVBAR = {
   // Navbar
   background: THEME_COLOUR.white,
   colourActive: THEME_COLOUR.dark,
@@ -54,3 +54,5 @@ export const NAVBAR = {
   justifyContentDesktopListItem: 'center',
   marginBottomDesktopListItem: 'inherit'
 }
+
+export default NAVBAR

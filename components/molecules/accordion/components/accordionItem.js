@@ -7,13 +7,13 @@ import React, { memo } from 'react'
 import { bool, oneOf, string, func, number } from 'prop-types'
 
 // UI
-import { Icon } from '../../../atoms/icon'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import Icon from '../../../atoms/icon/icon/icon'
+import THEME_CONTEXT from '../../../constants/context'
 
 // Styled
 import styled from 'styled-components'
 
-export const AccordionItem = memo(
+const AccordionItem = memo(
   ({ children, className, context, handleOpen, index, open, title }) => {
     return (
       <StyledAccordionItem className={className}>
@@ -85,3 +85,4 @@ AccordionItem.default = {
   context: 'dark',
   open: false
 }
+export default AccordionItem

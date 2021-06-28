@@ -5,7 +5,7 @@
 // React
 import { useRef } from 'react'
 
-export const useRenderCount = (componentName) => {
+const useRenderCount = (componentName) => {
   const renderCounter = useRef(1)
 
   console.info(
@@ -13,3 +13,5 @@ export const useRenderCount = (componentName) => {
     renderCounter.current === 2 ? 'time' : 'times'
   )
 }
+
+export default useRenderCount

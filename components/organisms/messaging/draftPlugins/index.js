@@ -12,8 +12,8 @@ import createMentionPlugin from 'draft-js-mention-plugin'
 import createLinkifyPlugin from '@draft-js-plugins/linkify'
 
 // UI
-import { createHashtagPlugin } from './hashtag'
-import { LinkPluginComponent } from '../../../'
+import createHashtagPlugin from './hashtag/createHashtagPlugin'
+import LinkPluginComponent from './components/linkPluginComponent'
 
 export const linkifyPlugin = createLinkifyPlugin({
   target: '_blank',

@@ -5,22 +5,22 @@
 // React
 import React, { useState, useRef } from 'react'
 
+// Style
+import styled from 'styled-components'
+
 // Storybook
 import { Wrapper } from '../../../../.storybook/decorators'
 
 // UI
+import Button from '../../../atoms/button//button/button'
 import {
-  Button,
   CommunicationService,
-  MessageNames,
-  RandomColor,
-  Subscriber,
-  Text,
-  useComponentCommunication
-} from '../../../'
-
-// Style
-import styled from 'styled-components'
+  Subscriber
+} from '../../../services/componentCommunication/componentCommunication'
+import MessageNames from '../../../services/componentCommunication/messageNames'
+import RandomColor from '../../../utils/randomColor/index'
+import Text from '../../../atoms/text/text'
+import useComponentCommunication from '../useSubscription'
 
 export default {
   decorators: [Wrapper],

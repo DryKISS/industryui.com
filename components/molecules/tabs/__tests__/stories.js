@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { Space, Tabs } from '../../../'
+import Space from '../../../atoms/space/space'
+import Tabs from '../tabs'
 import Readme from '../README.md'
 
 export default {
@@ -18,7 +19,6 @@ export default {
     indicatorSize: 1,
     scrollToActiveTab: true
   },
-  title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
     docs: {
@@ -26,7 +26,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Tabs'
 }
 
 const renderTab = (index, activeTab) => (

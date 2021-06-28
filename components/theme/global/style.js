@@ -6,9 +6,9 @@
 import { createGlobalStyle } from 'styled-components'
 
 // UI
-import { MEDIA_QUERY } from '../../utils/mediaQueries'
+import MEDIA_QUERY from '../../utils/mediaQuery/query'
 
-export const ThemeStyle = createGlobalStyle`
+const ThemeStyle = createGlobalStyle`
   .text-center {
     text-align: center;
   }
@@ -196,3 +196,5 @@ export const ThemeStyle = createGlobalStyle`
     display: none;
   }
   `
+
+export default ThemeStyle

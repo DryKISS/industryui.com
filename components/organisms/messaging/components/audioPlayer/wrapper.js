@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const AudioWrapper = styled.div`
+const AudioWrapper = styled.div`
   min-height: 3rem;
   width: 100%;
   ${({ hidden }) =>
@@ -275,3 +275,4 @@ export const AudioWrapper = styled.div`
     outline: 0;
   }
 `
+export default AudioWrapper

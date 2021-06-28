@@ -6,10 +6,11 @@
 import React from 'react'
 
 // Decorator
-import { ControlTypes } from './'
+import { ControlTypes } from './controlTypes'
 
 // UI
-import { arrayOfValues, THEME_ALIGN } from '../../components'
+import { arrayOfValues } from '../../components/utils/arrayOfValues/index'
+import THEME_ALIGN from '../../components/constants/align'
 
 export const AlignControl = () => {
   return {

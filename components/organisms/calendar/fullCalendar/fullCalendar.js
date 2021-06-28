@@ -10,11 +10,11 @@ import { array, bool, func, number, object, oneOfType, string } from 'prop-types
 import styled from 'styled-components'
 
 // UI
-import { LdsSpinner } from '../../../molecules/pageLoading/components/ldsSpinner'
-import { PageLoading } from '../../../molecules/pageLoading/components/pageLoading'
-import { CalendarWrapper } from './components/calendarWrapper'
+import LdsSpinner from '../../../molecules/pageLoading/components/ldsSpinner'
+import PageLoading from '../../../molecules/pageLoading/components/pageLoading'
+import CalendarWrapper from './components/calendarWrapper'
 
-export const Calendar = ({
+const Calendar = ({
   businessHours,
   buttonIcons,
   dateClick,
@@ -113,3 +113,4 @@ Calendar.defaultProps = {
   selectable: false,
   weekNumbers: false
 }
+export default Calendar

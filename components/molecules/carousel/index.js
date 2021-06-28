@@ -1,4 +1,0 @@
-/**
- * Carousel
- */
-export * from './components'

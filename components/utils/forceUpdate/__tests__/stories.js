@@ -6,7 +6,9 @@
 import React from 'react'
 
 // UI
-import { Button, RandomColor, useForceUpdate } from '../../../'
+import useForceUpdate from '../forceUpdate'
+import Button from '../../../atoms/button/button/button'
+import RandomColor from '../../randomColor/randomColor'
 import Readme from '../README.md'
 
 export default {

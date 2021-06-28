@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { LayoutGrid } from '../../../'
+import LayoutGrid from '../grid'
 import Readme from '../README.md'
 
 export default {

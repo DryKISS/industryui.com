@@ -12,7 +12,7 @@ import { Icon } from '../icon/icon'
 export const IconStacked = ({ icon, prefix }) => {
   return (
     <span className="fa-stack fa-1x" style={{ pointerEvents: 'none' }}>
-      <Icon className="fa-stack-2x" color="#eaf0f6" fixedWidth={false} icon="circle" prefix="fas" />
+      <Icon className="fa-stack-2x" color="#eaf0f6" fixedWidth={false} icon="circle" />
 
       <Icon
         className="fa-stack-1x"

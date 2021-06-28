@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 
 // UI
-import { Table } from '../components/wrapper'
+import Table from '../table'
 import Readme from '../README.md'
 
 // Data
@@ -116,9 +116,11 @@ const BaseComponent = (props = {}) => {
 }
 
 export const main = (args) => <BaseComponent {...args} columns={columnsActions} />
+
 export const context = (args) => (
   <BaseComponent {...args} columns={columns} pagination={false} rows={dataContext} />
 )
+
 export const loadingWithoutData = (args) => <BaseComponent {...args} rows={[]} loading />
 
 export const showNoData = (args) => <BaseComponent {...args} rows={[]} />

@@ -7,7 +7,7 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // UI
-import { Image } from '../../../'
+import Image from '../../../atoms/image/image'
 
 // Style
 import styled from 'styled-components'

@@ -8,13 +8,13 @@ import React, { useContext } from 'react'
 import { array, func, node, string } from 'prop-types'
 
 // UI
-import { Bootstrap } from '../../layouts/bootstrap/bootstrap'
-import { ConfigContext } from '../../services/config/context'
-import { Container } from '../../atoms/grid/components/Container'
-import { Column } from '../../atoms/grid/components/Column'
-import { Row } from '../../atoms/grid/components/Row'
+import Bootstrap from '../../layouts/bootstrap/bootstrap'
+import ConfigContext from '../../services/config/context'
+import Container from '../../atoms/grid/components/Container'
+import Column from '../../atoms/grid/components/Column'
+import Row from '../../atoms/grid/components/Row'
 
-export const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
+const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
   const { Sidebar } = useContext(ConfigContext)
 
   return (
@@ -41,3 +41,5 @@ SidebarLayout.propTypes = {
   footer: array,
   Navigation: func
 }
+
+export default SidebarLayout

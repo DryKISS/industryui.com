@@ -9,7 +9,9 @@ import React from 'react'
 import { ControlTypes } from '../../../../.storybook/decorators'
 
 // UI
-import { Breadcrumb, Icon } from '../../../'
+import Breadcrumb from '../breadcrumb'
+import Icon from '../../../atoms/icon/icon/icon'
+
 import { THEME_SIZE } from '../../../theme/constants/size'
 import Readme from '../README.md'
 
@@ -40,7 +42,7 @@ const breadcrumbs = [
     title: 'Home'
   },
   {
-    icon: <Icon icon="smile" prefix="fas" />,
+    icon: <Icon icon="smile" />,
     to: {
       as: '/blog/asdasdasd',
       href: {
@@ -53,7 +55,7 @@ const breadcrumbs = [
     title: 'DryKISS'
   },
   {
-    icon: <Icon icon="images" prefix="fas" />,
+    icon: <Icon icon="images" />,
     to: '/rrrr',
     title: 'Current Page'
   }

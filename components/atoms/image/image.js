@@ -8,7 +8,7 @@ import { any, bool, func, number, objectOf, oneOfType, string } from 'prop-types
 // Style
 import styled, { css } from 'styled-components'
 
-export const Image = styled.img.attrs((props) => ({
+const Image = styled.img.attrs((props) => ({
   itemProp: 'contentUrl'
 }))`
   ${({ cover }) =>
@@ -69,3 +69,5 @@ Image.defaultProps = {
   roundedCircle: false,
   thumbnail: false
 }
+
+export default Image

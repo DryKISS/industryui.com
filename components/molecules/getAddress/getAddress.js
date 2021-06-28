@@ -10,17 +10,17 @@ import { func, object, oneOf, number, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Button } from '../../atoms/button/button/button'
-import { ConfigContext } from '../../services/config/context'
-import { Dropdown } from '../dropdown/components/dropdown'
-import { FormError } from '../../form/error/error'
-import { FormField } from '../../form/field/index'
-import { FormLabel } from '../../form/label/label'
-import { GetAddressService } from '../../services/getAddress/index'
-import { InputGroupAddon } from '../../form/inputGroup/addon'
-import { Shimmer } from '../../atoms/shimmer/shimmer'
-import { validatorPostCode } from '../../utils/validator/postCode/postCode'
-import { THEME_SIZE } from '../../theme/constants/size'
+import Button from '../../atoms/button/button/button'
+import ConfigContext from '../../services/config/context'
+import Dropdown from '../dropdown/dropdown'
+import FormError from '../../form/error/error'
+import FormField from '../../form/field/input'
+import FormLabel from '../../form/label/label'
+import { GetAddressService } from '../../services/getAddress'
+import InputGroupAddon from '../../form/inputGroup/addon'
+import Shimmer from '../../atoms/shimmer/shimmer'
+import validatorPostCode from '../../utils/validator/postCode/postCode'
+import THEME_SIZE from '../../constants/size'
 
 export const GetAddress = ({
   errors,

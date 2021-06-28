@@ -149,7 +149,6 @@ export const main = (args) => {
       text: 'ID'
     },
     {
-      sortable: true,
       sortName: 'company',
       text: 'Company'
     },

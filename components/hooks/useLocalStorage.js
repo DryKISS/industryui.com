@@ -5,7 +5,7 @@
 // React
 import { useState } from 'react'
 
-export const useLocalStorage = (key, initialValue) => {
+const useLocalStorage = (key, initialValue) => {
   const parse = (item) => {
     let a = item
 
@@ -51,3 +51,5 @@ export const useLocalStorage = (key, initialValue) => {
 
   return [storedValue, setValue]
 }
+
+export default useLocalStorage

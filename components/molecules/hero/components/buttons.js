@@ -7,12 +7,14 @@ import React from 'react'
 import { array } from 'prop-types'
 
 // UI
-import { Button, Link } from '../../../'
+// import { Button, Link } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Link from '../../../atoms/link/link'
 
 // Style
 import styled from 'styled-components'
 
-export const HeroButtons = ({ buttons }) => {
+const HeroButtons = ({ buttons }) => {
   return buttons.map(({ content, context, to }, index) => (
     <StyledLink border={false} to={to} key={index}>
       <StyledButton content={content} context={context} size="lg" />
@@ -31,3 +33,5 @@ const StyledLink = styled(Link)`
 HeroButtons.propTypes = {
   buttons: array
 }
+
+export default HeroButtons

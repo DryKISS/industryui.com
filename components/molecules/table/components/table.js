@@ -10,9 +10,13 @@ import { array, bool, func, number, oneOfType, shape, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { TableCaption, TableColumns, TableData, TableRow, TableRows } from '../../../'
+import TableCaption from './caption'
+import TableColumns from './columns'
+import TableData from './data'
+import TableRow from './row'
+import TableRows from './rows'
 
-export const TableContent = ({
+const TableContent = ({
   align,
   caption,
   changeSelectedRowBackground,
@@ -123,6 +127,7 @@ TableContent.defaultProps = {
   hover: true,
   loading: false,
   noData: true,
-  sort: {},
   striped: true
 }
+
+export default TableContent

@@ -9,18 +9,18 @@ import React, { forwardRef } from 'react'
 import styled, { css, useTheme } from 'styled-components'
 
 // UI
-import { Icon } from '../../../atoms/icon/icon/icon'
+import Icon from '../../../atoms/icon/icon/icon'
+import ButtonItemCount from './components/itemCount'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
-import { SPACER } from '../../../theme/utils/spacer'
-import { themeBackground } from '../../../theme/utils/background'
-import { themeDimension } from '../../../theme/utils/dimension'
-import { themeDisplay } from '../../../theme/utils/display'
-import ButtonItemCount from './itemCount'
+import SPACER from '../../../utils/spacer/spacer'
+import themeBackground from '../../../utils/background'
+import { themeDimension } from '../../../utils/dimension'
+import themeDisplay from '../../../utils/display/display'
 
 // Props
-import { propTypes, defaultProps } from './props'
+import { propTypes, defaultProps } from './components/props'
 
-export const Button = forwardRef(
+const Button = forwardRef(
   (
     {
       block,
@@ -195,3 +195,5 @@ const StyledContent = styled.div`
 
 Button.propTypes = propTypes
 Button.defaultProps = defaultProps
+
+export default Button

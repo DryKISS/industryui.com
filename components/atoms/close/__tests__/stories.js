@@ -6,10 +6,11 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl, IconPrefixControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
+import { IconPrefixControl } from '../../../../.storybook/decorators/fontawesome'
 
 // UI
-import { Close } from '../close'
+import Close from '../close'
 import Readme from '../README.md'
 
 export default {

@@ -7,8 +7,8 @@ import React, { memo, useEffect } from 'react'
 import { number, oneOfType, string } from 'prop-types'
 
 // UI
-import { SelectField } from '../../../form/select/select'
-import { useLocalStorage } from '../../../hooks/useLocalStorage'
+import SelectField from '../../../form/select/select'
+import useLocalStorage from '../../../hooks/useLocalStorage'
 
 const Items = [
   {

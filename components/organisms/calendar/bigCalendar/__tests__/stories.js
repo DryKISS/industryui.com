@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BigCalendar } from '../bigCalendar'
+import BigCalendar from '../bigCalendar'
 import Readme from '../README.md'
 
 export default {

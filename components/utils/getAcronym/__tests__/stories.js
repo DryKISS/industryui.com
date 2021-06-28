@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { getAcronym, Text } from '../../../'
+import getAcronym from '../getAcronym'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {

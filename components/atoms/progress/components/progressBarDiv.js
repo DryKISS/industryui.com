@@ -9,7 +9,7 @@ import { number, string, bool } from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import { themeBackground } from '../../../theme/utils/background'
+import themeBackground from '../../../utils/background'
 
 const ProgressBarStripesAnimation = keyframes`
   0% {
@@ -20,7 +20,7 @@ const ProgressBarStripesAnimation = keyframes`
   }
 `
 
-export const ProgressBarDiv = styled.div`
+const ProgressBarDiv = styled.div`
   ${(props) => themeBackground(props)}
   animation: ${({ animated }) =>
     animated
@@ -64,3 +64,5 @@ ProgressBarDiv.propTypes = {
   striped: bool,
   transition: string
 }
+
+export default ProgressBarDiv

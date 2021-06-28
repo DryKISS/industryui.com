@@ -9,8 +9,12 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, Form, FormField, FormLabel, Text, validatorPostCode } from '../../../../'
-
+import { validatorPostCode } from '../postCode'
+import Button from '../../../../atoms/button/button/button'
+import Text from '../../../../atoms/text/text'
+import Form from '../../../../form/form/form'
+import FormField from '../../../../form/field/input'
+import FormLabel from '../../../../form/label/label'
 import Readme from '../README.md'
 
 export default {

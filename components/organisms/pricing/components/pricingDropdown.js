@@ -9,9 +9,12 @@ import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { ClickAwayListener, Icon, Text } from '../../../'
+import ClickAwayListener from '../../../utils/clickAwayListener/clickAwayListener'
 
-export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
+import Text from '../../..__tests__/atoms/text/text'
+import Icon from '../../../atoms/icon/icon/icon'
+
+const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
   const [IsOpen, setIsOpen] = useState(false)
 
   const selected = pricingInfo[selectedPlan]
@@ -38,7 +41,7 @@ export const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => 
 
       <PriceAndDropIconWrapper>
         <StyledPrice content={selected.price} size="lg" context="deepBlue" />
-        <StyledDownIcon icon="caret-down" prefix="fas" />
+        <StyledDownIcon icon="caret-down" />
       </PriceAndDropIconWrapper>
 
       <PlansWrapper open={IsOpen}>
@@ -152,3 +155,4 @@ const Wrapper = styled(ClickAwayListener)`
   position: relative;
   width: 100%;
 `
+export default PricingDropdown

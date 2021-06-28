@@ -1,4 +1,0 @@
-/**
- * Social
- */
-export * from './facebook'

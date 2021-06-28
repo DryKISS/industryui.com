@@ -9,7 +9,8 @@ import React, { useState } from 'react'
 import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
 
 // UI
-import { Icon, Pagination } from '../../../'
+import Icon from '../../../atoms/icon/icon/icon'
+import Pagination from '../pagination'
 import Readme from '../README.md'
 
 export default {

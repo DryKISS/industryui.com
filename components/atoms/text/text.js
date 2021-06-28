@@ -9,13 +9,14 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { SPACER, MEDIA_QUERY } from '../../'
-import { themeDisplay } from '../../theme/utils/display'
+import MEDIA_QUERY from '../../utils/mediaQuery/query'
+import SPACER from '../../utils/spacer/spacer'
+import themeDisplay from '../../utils/display/display'
 
 // Props
-import { propTypes, defaultProps } from './props'
+import { propTypes, defaultProps } from './components/props'
 
-export const Text = ({ align, children, className, content, context, size, weight }) => {
+const Text = ({ align, children, className, content, context, size, weight }) => {
   return (
     <StyledText align={align} className={className} context={context} size={size}>
       {content || children}
@@ -71,7 +72,6 @@ const StyledText = styled.p`
   ${(theme) => themeDisplay(theme)}
   ${(theme) => SPACER(theme)}
 
-
   ${({ weight }) =>
     weight &&
     css`
@@ -89,3 +89,5 @@ const StyledText = styled.p`
 
 Text.propTypes = propTypes
 Text.defaultProps = defaultProps
+
+export default Text

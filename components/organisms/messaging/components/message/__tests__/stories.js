@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Message } from '../index'
+import Message from '../message'
 import Readme from '../README.md'
 
 // Data

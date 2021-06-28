@@ -7,9 +7,10 @@ import React, { memo } from 'react'
 import { bool, number } from 'prop-types'
 
 // UI
-import { LdsSpinner, PageLoading } from '../../../'
+import LdsSpinner from '../../../molecules/pageLoading/ldsSpinner'
+import PageLoading from '../../../molecules/pageLoading/pageLoading'
 
-export const TableLoading = memo(({ colsLength, show }) => {
+const TableLoading = memo(({ colsLength, show }) => {
   if (!show) {
     return null
   }
@@ -21,3 +22,5 @@ TableLoading.propTypes = {
   colsLength: number,
   show: bool
 }
+
+export default TableLoading

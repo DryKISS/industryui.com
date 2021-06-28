@@ -13,8 +13,12 @@ import { CarouselDefaultProps } from '../components/props'
 import styled from 'styled-components'
 
 // UI
-import { Button, Carousel, CarouselSlide, Image, ReactHolderJs } from '../../../'
-import { CarouselSampleSlide } from '../components/sample'
+import Button from '../../../atoms/button/button/button'
+import Carousel from '../carousel'
+import Image from '../../../atoms/image/image'
+import ReactHolderJs from '../../../utils/reactHolder'
+import CarouselSlide from '../components/slide'
+import CarouselSampleSlide from '../components/sample'
 
 import Readme from '../README.md'
 import vizla from '../../../../static/card/vizla.jpg'

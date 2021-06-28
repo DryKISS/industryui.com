@@ -1,7 +1,7 @@
 /**
  * Gender
  */
-export const GENDER = [
+const GENDER = [
   {
     disabled: true,
     text: 'Select gender',
@@ -16,3 +16,5 @@ export const GENDER = [
     value: 'female'
   }
 ]
+
+export default GENDER

@@ -14,12 +14,12 @@ import styled from 'styled-components'
 // UI
 import { shadeLinearRgb } from '../../utils/colour/colour'
 import { validatorUri } from '../../utils/validator/uri'
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import THEME_CONTEXT from '../../constants/context'
 
 // Props
-import { defaultProps, propTypes } from './props'
+import { defaultProps, propTypes } from './components/props'
 
-export const Link = ({
+const Link = ({
   border,
   children,
   className,
@@ -105,3 +105,5 @@ export const StyledLink = styled.a`
 
 Link.propTypes = propTypes
 Link.defaultProps = defaultProps
+
+export default Link

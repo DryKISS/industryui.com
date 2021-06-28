@@ -6,7 +6,11 @@
 import React, { useState } from 'react'
 
 // UI
-import { Button, requestSimulator, Space, Text } from '../../../'
+import requestSimulator from '../requestSimulator'
+import Button from '../../../atoms/button/button/button'
+import Space from '../../../atoms/space/space'
+import Text from '../../../atoms/text/text'
+
 import Readme from '../README.md'
 
 export default {

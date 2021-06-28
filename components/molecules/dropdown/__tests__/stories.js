@@ -20,7 +20,7 @@ import {
   useTranslation
 } from '../../../'
 
-import { THEME_COLOUR_LIST } from '../../../theme/constants/colourList'
+import THEME_COLOUR_LIST from '../../../constants/colourList'
 import { Icons, Items, Language } from '../__mocks__/dropdown'
 import Readme from '../README.md'
 
@@ -86,14 +86,14 @@ export const button = (args) => (
 
 export const icon = (args) => (
   <BaseComponent {...args}>
-    <Icon context="info" icon="user" prefix="fas" />
+    <Icon context="info" icon="user" />
   </BaseComponent>
 )
 
 export const iconButton = (args) => (
   <BaseComponent {...args} caret={false}>
     <Button context="white">
-      <Icon context="info" icon="user" prefix="fas" />
+      <Icon context="info" icon="user" />
     </Button>
   </BaseComponent>
 )

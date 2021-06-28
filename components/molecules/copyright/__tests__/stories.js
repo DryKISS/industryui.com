@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Copyright } from '../copyright'
+import Copyright from '../copyright'
 import Readme from '../README.md'
 
 // Data

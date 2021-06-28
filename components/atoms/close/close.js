@@ -6,15 +6,15 @@
 import React from 'react'
 import { any, func, oneOf, string } from 'prop-types'
 
-// UI
-import { Button } from '../../atoms/button'
-import { Icon } from '../../'
-import { THEME_CONTEXT } from '../../theme/constants/context'
-
 // Style
 import styled from 'styled-components'
 
-export const Close = ({ className, click, context, icon, prefix }) => {
+// UI
+import Button from '../../atoms/button/button/button'
+import Icon from '../../atoms/icon/icon/icon'
+import THEME_CONTEXT from '../../constants/context'
+
+const Close = ({ className, click, context, icon, prefix }) => {
   return (
     <StyledButton className={className} context={context} onClick={click}>
       <Icon aria-hidden="true" context={context} icon={icon} prefix={prefix} />
@@ -57,3 +57,5 @@ Close.defaultProps = {
   icon: 'times-circle',
   prefix: 'fas'
 }
+
+export default Close

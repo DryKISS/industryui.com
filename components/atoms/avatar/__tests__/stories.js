@@ -6,10 +6,13 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // UI
-import { Avatar, THEME_CONTEXT, THEME_SIZE } from '../../../'
+import Avatar from '../avatar'
+import THEME_CONTEXT from '../../../constants/context'
+import THEME_SIZE from '../../../constants/size'
 import Readme from '../README.md'
 
 export default {

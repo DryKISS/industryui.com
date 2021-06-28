@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaFavicon = ({ verification }) => {
+const MetaFavicon = ({ verification }) => {
   return (
     <Head>
       <link rel="icon" href="/favicon.ico" type="image/ico" />
@@ -20,3 +20,5 @@ export const MetaFavicon = ({ verification }) => {
 MetaFavicon.propTypes = {
   verification: string.isRequired
 }
+
+export default MetaFavicon

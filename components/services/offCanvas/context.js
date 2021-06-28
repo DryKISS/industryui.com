@@ -5,4 +5,5 @@
 // React
 import { createContext } from 'react'
 
-export const OffCanvasContext = createContext()
+const OffCanvasContext = createContext()
+export default OffCanvasContext

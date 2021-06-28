@@ -6,13 +6,17 @@
 import React from 'react'
 
 // Storybook
-import { AlignControl, SizeControl } from '../../../../../.storybook/decorators'
+import { AlignControl } from '../../../../../.storybook/decorators/align'
+import { SizeControl } from '../../../../../.storybook/decorators/size'
 
 // UI
-import { Button, ButtonToolbar, Icon } from '../../../../'
-import { Dropdown } from '../../../../molecules/dropdown/components/dropdown'
-import { THEME_ALIGN } from '../../../../theme/constants/align'
-import { THEME_SIZE } from '../../../../theme/constants/size'
+import { Button } from '../../button/button'
+import { ButtonToolbar } from '../toolbar'
+import { Icon } from '../../../icon/icon/icon'
+
+import Dropdown from '../../../../molecules/dropdown/dropdown'
+import THEME_ALIGN from '../../../../constants/align'
+import THEME_SIZE from '../../../../constants/size'
 import Readme from '../README.md'
 
 export default {
@@ -78,11 +82,11 @@ const Children = ({ size }) => {
         onClick={() => {}}
         size={size}
       >
-        <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
+        <Icon icon="user" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Button as="a" data-tip="Button" context="primary" key={1} onClick={() => {}} size={size}>
-        <Icon icon="user" prefix="fas" style={{ pointerEvents: 'none' }} />
+        <Icon icon="user" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Dropdown caret={false} items={dropdownItems} position="bottom">
@@ -95,7 +99,7 @@ const Children = ({ size }) => {
       </Dropdown>
 
       <Button as="a" data-tip="Button" context="warning" key={2} onClick={() => {}} size={size}>
-        <Icon icon="trash" prefix="fas" style={{ pointerEvents: 'none' }} />
+        <Icon icon="trash" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Dropdown caret={false} items={dropdownItems} position="bottom">

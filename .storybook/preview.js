@@ -3,7 +3,9 @@
  */
 
 // UI
-import { Container, RouterWrap, Wrapper } from './decorators'
+import Container from './decorators/container'
+import RouterWrap from './decorators/router'
+import  Wrapper from './decorators/wrapper'
 
 // Full Calendar
 import '@fullcalendar/common/main.min.css'
@@ -69,6 +71,7 @@ import 'leaflet/dist/leaflet.css'
   faSearch,
   faShieldAlt,
   faSmile,
+  faSort,
   faStopwatch,
   faTable,
   faTimes,
@@ -111,6 +114,7 @@ library.add(
   faShieldAlt,
   faSmile,
   faSmile,
+  faSort,
   faStopwatch,
   faTable,
   faTimes,

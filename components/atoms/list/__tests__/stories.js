@@ -1,12 +1,13 @@
 /**
- * LIST
+ * List
  */
 
 // React
 import React from 'react'
 
 // UI
-import { List, ListItem } from '../index'
+import List from '../list'
+import ListItem from '../listItem'
 import Readme from '../README.md'
 
 export default {

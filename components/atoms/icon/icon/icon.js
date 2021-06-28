@@ -12,14 +12,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 // UI
-import { LazyIcon } from '../../../icons/lazyIcon'
-import { SPACER } from '../../../theme/utils/spacer'
-import { themeDisplay } from '../../../theme/utils/display'
+import LazyIcon from '../../../icons/lazyIcon'
+import SPACER from '../../../utils/spacer/spacer'
+import themeDisplay from '../../../utils/display/display'
 
 // Props
 import { propTypes, defaultProps } from './props'
 
-export const Icon = ({ icon, iui, prefix, ...props }) => {
+const Icon = ({ icon, iui, prefix, ...props }) => {
   if (iui) {
     return <LazyIcon iconName={icon} {...props} />
   }
@@ -35,3 +35,5 @@ const StyledIcon = styled(FontAwesomeIcon)`
 
 Icon.propTypes = propTypes
 Icon.defaultProps = defaultProps
+
+export default Icon

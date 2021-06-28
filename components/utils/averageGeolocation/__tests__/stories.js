@@ -6,7 +6,9 @@
 import React from 'react'
 
 // UI
-import { averageGeolocation, Text, Space } from '../../../'
+import averageGeolocation from '../averageGeolocation'
+import Text from '../../../atoms/text/text'
+import Space from '../../../atoms/space/space'
 import Readme from '../README.md'
 
 export default {

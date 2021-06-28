@@ -6,10 +6,14 @@
 import React, { useState } from 'react'
 
 // Storybook
-import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/controlTypes'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // UI
-import { Button, Progress, ProgressBar, Space } from '../../../'
+import Button from '../../button/button/button'
+import Progress from '../progress'
+import ProgressBar from '../components/progressBar'
+import Space from '../../space/space'
 import Readme from '../README.md'
 
 export default {

@@ -6,11 +6,13 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
-import { arrayOfValues, Space, Text } from '../../../'
-import { THEME_SIZE } from '../../../theme/constants/size'
+import { arrayOfValues } from '../../../utils/arrayOfValues/arrayOfValues'
+import Space from '../space'
+import Text from '../../text/text'
+import THEME_SIZE from '../../../constants/size'
 
 const control = {
   type: ControlTypes.Select,

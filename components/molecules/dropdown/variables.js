@@ -3,8 +3,10 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
-export const DROPDOWN = {
+const DROPDOWN = {
   borderColour: THEME_COLOUR.dark
 }
+
+export default DROPDOWN

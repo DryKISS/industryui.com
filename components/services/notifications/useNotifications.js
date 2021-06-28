@@ -1,5 +1,5 @@
 /**
- * Services - Hooks  - useNotifications
+ * Services - Notifications - useNotifications
  *
  * id - integer, primary key, unique, default: nextval('"Notification_id_seq1"'::regclass)
  * status - character varying, nullable
@@ -11,10 +11,9 @@
  */
 
 // Apollo
-import { useSubscription } from '@apollo/client'
-import gql from 'graphql-tag'
+import { gql, useSubscription } from '@apollo/client'
 
-export const useNotifications = (url, params = {}, seconds = 60) => {
+const useNotifications = (url, params = {}, seconds = 60) => {
   // const [data, setData] = useState({ messages: [] })
 
   // if (!url) {
@@ -64,3 +63,5 @@ export const useNotifications = (url, params = {}, seconds = 60) => {
   // return { data, fetchNotifications }
   return items
 }
+
+export default useNotifications

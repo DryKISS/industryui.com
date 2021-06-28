@@ -6,7 +6,7 @@
 import React from 'react'
 import { string } from 'prop-types'
 
-export const Core = ({ author, canonical, description, title }) => {
+const MetaCore = ({ author, canonical, description, title }) => {
   return (
     <>
       <title className="next-head">
@@ -23,13 +23,15 @@ export const Core = ({ author, canonical, description, title }) => {
   )
 }
 
-Core.propTypes = {
+MetaCore.propTypes = {
   author: string,
   canonical: string.isRequired,
   description: string.isRequired,
   title: string.isRequired
 }
 
-Core.defaultProps = {
+MetaCore.defaultProps = {
   author: 'DryKISS'
 }
+
+export default MetaCore

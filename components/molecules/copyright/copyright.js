@@ -10,19 +10,19 @@ import { array, bool, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Column } from '../../atoms/grid/components/Column'
-import { ConfigContext } from '../../services/config/context'
-import { Container } from '../../atoms/grid/components/Container'
-import { Icon } from '../../atoms/icon/icon/icon'
-import { Link } from '../../atoms/link/link'
-import { Row } from '../../atoms/grid/components/Row'
+import Column from '../../atoms/grid/Column'
+import ConfigContext from '../../services/config/context'
+import Container from '../../atoms/grid/Container'
+import Icon from '../../atoms/icon/icon/icon'
+import Link from '../../atoms/link/link'
+import Row from '../../atoms/grid/Row'
 
 // Constant
 import { THEME_CONTEXT } from '../../theme/constants/context'
 
 const year = new Date().getFullYear()
 
-export const Copyright = memo(({ fixed, icon, links }) => {
+const Copyright = memo(({ fixed, icon, links }) => {
   const { Brand } = useContext(ConfigContext)
 
   const renderLinks = () => {
@@ -109,3 +109,5 @@ Copyright.defaultProps = {
   },
   links: []
 }
+
+export default Copyright

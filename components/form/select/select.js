@@ -13,11 +13,11 @@ import _range from 'lodash/range'
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC } from '../hoc/index'
+import FieldHOC from '../hoc/hoc'
 import { formErrorStyle, formStyle } from '../variables/style'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
-export const SelectField = forwardRef(
+const SelectField = forwardRef(
   (
     {
       data,
@@ -138,3 +138,5 @@ SelectField.defaultProps = {
   range: [],
   showError: false
 }
+
+export default SelectField

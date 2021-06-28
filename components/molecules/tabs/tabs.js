@@ -9,14 +9,14 @@ import { array, bool, number, object, oneOfType, string } from 'prop-types'
 // Next
 import Router, { useRouter } from 'next/router'
 
-// UI
-import { slugify } from '../../../'
-import { Tab } from './tab'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
+// UI
+import slugify from '../../utils/slugify/slugify'
+import Tab from './tab'
+
+const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   const slider = el
   let clickTime
   let isDown = false
@@ -55,14 +55,14 @@ export const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   })
 }
 
-export const TabContent = ({ activeTab, children }) => {
+const TabContent = ({ activeTab, children }) => {
   return children[activeTab.index].props.children
 }
 
 // Active
 let active = ''
 
-export const Tabs = ({
+const Tabs = ({
   centerTabs,
   children,
   className,
@@ -225,3 +225,5 @@ Tabs.defaultProps = {
   indicatorSize: 1,
   scrollToActiveTab: true
 }
+
+export default Tabs

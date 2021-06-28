@@ -8,7 +8,7 @@ import React from 'react'
 // Next
 import { RouterContext } from 'next/dist/next-server/lib/router-context'
 
-export const RouterWrap = Story => {
+const RouterWrap = Story => {
   return (
     <RouterContext.Provider
       value={{
@@ -21,3 +21,6 @@ export const RouterWrap = Story => {
     </RouterContext.Provider>
   )
 }
+
+
+export default RouterWrap

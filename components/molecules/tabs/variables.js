@@ -3,9 +3,9 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
-export const TABS = {
+const TABS = {
   activeColour: THEME_COLOUR.white,
   tabTextColour: THEME_COLOUR.dark,
   activeTabTextColour: THEME_COLOUR.dark,
@@ -15,3 +15,5 @@ export const TABS = {
   disabledTHEME_Colour: '#eee',
   hoverColour: '#dee2e6'
 }
+
+export default TABS

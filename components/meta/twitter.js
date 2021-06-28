@@ -9,7 +9,7 @@ import { string } from 'prop-types'
 // Next
 import Head from 'next/head'
 
-export const MetaTwitter = ({ account, description, image, title, url }) => {
+const MetaTwitter = ({ account, description, image, title, url }) => {
   return (
     <Head>
       <meta name="twitter:site" content={account} />
@@ -29,3 +29,5 @@ export const MetaTwitter = ({ account, description, image, title, url }) => {
 MetaTwitter.propTypes = {
   account: string.isRequired
 }
+
+export default MetaTwitter

@@ -9,7 +9,7 @@ import React from 'react'
 import { ControlTypes } from '../../../../../.storybook/decorators'
 
 // UI
-import { arrayOfValues, MessageBackground } from '../../../../'
+import MessageBackground from '../background'
 import Readme from '../README.md'
 
 const options = {
@@ -26,7 +26,7 @@ export default {
     path: {
       name: 'Path',
       control: {
-        options: arrayOfValues(options),
+        options: Object.values(options),
         type: ControlTypes.Select
       }
     }

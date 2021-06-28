@@ -65,7 +65,6 @@ const main = (args) => {
           >
             <Icon
               icon="graduation-cap"
-              prefix="fas"
               size="sm"
               fixedWidth
               context="success"
@@ -94,14 +93,14 @@ const main = (args) => {
             }}
           />
           <StyledBox>
-            <Icon icon="images" prefix="fas" size="lg" context="primary" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="secondary" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="black" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="success" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="info" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="warning" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="danger" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" context="help" pull="left" />
+            <Icon icon="images" size="lg" context="primary" pull="left" />
+            <Icon icon="images" size="lg" context="secondary" pull="left" />
+            <Icon icon="images" size="lg" context="black" pull="left" />
+            <Icon icon="images" size="lg" context="success" pull="left" />
+            <Icon icon="images" size="lg" context="info" pull="left" />
+            <Icon icon="images" size="lg" context="warning" pull="left" />
+            <Icon icon="images" size="lg" context="danger" pull="left" />
+            <Icon icon="images" size="lg" context="help" pull="left" />
           </StyledBox>
           <StyledNote
             style={{
@@ -112,7 +111,6 @@ const main = (args) => {
           >
             <Icon
               icon="graduation-cap"
-              prefix="fas"
               size="sm"
               fixedWidth
               context="success"
@@ -135,12 +133,12 @@ const main = (args) => {
             }}
           />
           <StyledBox>
-            <Icon icon="images" prefix="fas" size="5x" pull="left" />
-            <Icon icon="images" prefix="fas" size="4x" pull="left" />
-            <Icon icon="images" prefix="fas" size="3x" pull="left" />
-            <Icon icon="images" prefix="fas" size="2x" pull="left" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" />
-            <Icon icon="images" prefix="fas" size="sm" pull="left" />
+            <Icon icon="images" size="5x" pull="left" />
+            <Icon icon="images" size="4x" pull="left" />
+            <Icon icon="images" size="3x" pull="left" />
+            <Icon icon="images" size="2x" pull="left" />
+            <Icon icon="images" size="lg" pull="left" />
+            <Icon icon="images" size="sm" pull="left" />
           </StyledBox>
           <StyledNote
             style={{
@@ -151,7 +149,6 @@ const main = (args) => {
           >
             <Icon
               icon="graduation-cap"
-              prefix="fas"
               size="sm"
               fixedWidth
               context="success"
@@ -174,17 +171,17 @@ const main = (args) => {
             }}
           />
           <StyledBox>
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="grow-6" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="shrink-6" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="up-6" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="down-6" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="flip-v" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="flip-h" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="flip-v flip-h" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="rotate-22" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="rotate--45" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="rotate--90" />
-            <Icon icon="images" prefix="fas" size="lg" pull="left" transform="rotate--270" />
+            <Icon icon="images" size="lg" pull="left" transform="grow-6" />
+            <Icon icon="images" size="lg" pull="left" transform="shrink-6" />
+            <Icon icon="images" size="lg" pull="left" transform="up-6" />
+            <Icon icon="images" size="lg" pull="left" transform="down-6" />
+            <Icon icon="images" size="lg" pull="left" transform="flip-v" />
+            <Icon icon="images" size="lg" pull="left" transform="flip-h" />
+            <Icon icon="images" size="lg" pull="left" transform="flip-v flip-h" />
+            <Icon icon="images" size="lg" pull="left" transform="rotate-22" />
+            <Icon icon="images" size="lg" pull="left" transform="rotate--45" />
+            <Icon icon="images" size="lg" pull="left" transform="rotate--90" />
+            <Icon icon="images" size="lg" pull="left" transform="rotate--270" />
           </StyledBox>
           <StyledNote
             style={{
@@ -195,7 +192,6 @@ const main = (args) => {
           >
             <Icon
               icon="graduation-cap"
-              prefix="fas"
               size="sm"
               fixedWidth
               context="success"
@@ -218,7 +214,7 @@ const main = (args) => {
             }}
           />
           <StyledBox>
-            <Icon icon="images" prefix="fas" size="5x" pull="left" style={{ color: 'Tomato' }} />
+            <Icon icon="images" size="5x" pull="left" style={{ color: 'Tomato' }} />
           </StyledBox>
           <StyledNote
             style={{
@@ -229,7 +225,6 @@ const main = (args) => {
           >
             <Icon
               icon="graduation-cap"
-              prefix="fas"
               size="sm"
               fixedWidth
               context="success"
@@ -296,7 +291,7 @@ const transformIcon = (args) => (
         }}
       />
       <StyledBody>
-        <Icon icon="images" prefix="fas" size="3x" transform={args.transform} />
+        <Icon icon="images" size="3x" transform={args.transform} />
         <StyledNote
           style={{
             background: blendLinearRgb(0.2, 'rgba(64, 64, 64)', 'rgba(54, 197, 58, 0.08)'),
@@ -306,7 +301,6 @@ const transformIcon = (args) => (
         >
           <Icon
             icon="graduation-cap"
-            prefix="fas"
             size="sm"
             fixedWidth
             context="success"
@@ -335,7 +329,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="grow-6" />
+        <Icon icon="images" size="3x" transform="grow-6" />
       </StyledBody>
     </StyledCard>
 
@@ -347,7 +341,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="shrink-6" />
+        <Icon icon="images" size="3x" transform="shrink-6" />
       </StyledBody>
     </StyledCard>
 
@@ -359,7 +353,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="up-6" />
+        <Icon icon="images" size="3x" transform="up-6" />
       </StyledBody>
     </StyledCard>
 
@@ -371,7 +365,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="down-6" />
+        <Icon icon="images" size="3x" transform="down-6" />
       </StyledBody>
     </StyledCard>
 
@@ -383,7 +377,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="flip-v" />
+        <Icon icon="images" size="3x" transform="flip-v" />
       </StyledBody>
     </StyledCard>
 
@@ -395,7 +389,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="flip-h" />
+        <Icon icon="images" size="3x" transform="flip-h" />
       </StyledBody>
     </StyledCard>
 
@@ -407,7 +401,7 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" transform="flip-v flip-h" />
+        <Icon icon="images" size="3x" transform="flip-v flip-h" />
       </StyledBody>
     </StyledCard>
 
@@ -419,10 +413,10 @@ const transformIcon = (args) => (
             color: blendLinearRgb(0.2, 'rgba(0, 0, 0', 'rgba(0, 71, 255, 0.88)')
           }}
         />
-        <Icon icon="images" prefix="fas" size="3x" pull="left" transform="rotate-22" />
-        <Icon icon="images" prefix="fas" size="3x" pull="left" transform="rotate--45" />
-        <Icon icon="images" prefix="fas" size="3x" pull="left" transform="rotate--90" />
-        <Icon icon="images" prefix="fas" size="3x" pull="left" transform="rotate--270" />
+        <Icon icon="images" size="3x" pull="left" transform="rotate-22" />
+        <Icon icon="images" size="3x" pull="left" transform="rotate--45" />
+        <Icon icon="images" size="3x" pull="left" transform="rotate--90" />
+        <Icon icon="images" size="3x" pull="left" transform="rotate--270" />
       </StyledBody>
     </StyledCard>
   </>
@@ -447,15 +441,13 @@ export const layers = (args) => (
       <StyledBody>
         <span className="fa-layers fa-fw" style={{ fontSize: '4rem' }}>
           <Icon
-            prefix="fas"
             icon="cloud"
             color="rgb(221,221,221,.7)"
             transform="left-2 rotate--14 shrink-5 down-2"
             style={{ fontSize: '3rem', color: 'rgb(221,221,221,.7)' }}
           />
-          <Icon prefix="fas" icon="cloud" color="rgb(0,204,188,.1)" />
+          <Icon icon="cloud" color="rgb(0,204,188,.1)" />
           <Icon
-            prefix="fas"
             icon="shield-alt"
             transform="right-9 rotate-20 grow-2 down-1"
             style={{
@@ -463,7 +455,6 @@ export const layers = (args) => (
             }}
           />
           <Icon
-            prefix="fas"
             icon="cloud"
             transform="down-8"
             style={{
@@ -481,7 +472,6 @@ export const layers = (args) => (
         >
           <Icon
             icon="graduation-cap"
-            prefix="fas"
             size="sm"
             fixedWidth
             context="success"
@@ -505,15 +495,13 @@ export const layers = (args) => (
         />
         <span className="fa-layers fa-fw" style={{ fontSize: '4rem' }}>
           <Icon
-            prefix="fas"
             icon="cloud"
             color="rgb(221,221,221,.7)"
             transform="left-2 rotate--14 shrink-5 down-2"
             style={{ fontSize: '3rem', color: 'rgb(221,221,221,.7)' }}
           />
-          <Icon prefix="fas" icon="cloud" color="rgb(0,204,188,.1)" />
+          <Icon icon="cloud" color="rgb(0,204,188,.1)" />
           <Icon
-            prefix="fas"
             icon="shield-alt"
             transform="right-9 rotate-20 grow-2 down-1"
             style={{
@@ -521,7 +509,6 @@ export const layers = (args) => (
             }}
           />
           <Icon
-            prefix="fas"
             icon="cloud"
             transform="down-8"
             style={{

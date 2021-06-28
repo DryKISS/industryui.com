@@ -12,3 +12,4 @@ export const viewPort = (source) => {
 
   return null
 }
+export default viewPort

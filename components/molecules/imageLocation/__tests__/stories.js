@@ -13,16 +13,17 @@ import { object } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import {
-  Alert,
-  Button,
-  Form,
-  ImageLocation,
-  ImageLocationFormElement,
-  randomFloat,
-  RawIcons
-} from '../../../'
+
+import Alert from '../../alert/alert'
+import Button from '../.././../atoms/button/button/button'
+import Form from '../../../form/form/form'
+import ImageLocation from '../imageLocation'
+import ImageLocationFormElement from '../components/imageLocationFormElement'
+import randomFloat from '../../../utils/randomFloat'
+import RawIcons from '../../../icons/rawIcons'
+
 import Readme from '../README.md'
+
 // Data
 import { Item, SvgTest } from '../__mocks__/itemFloor'
 

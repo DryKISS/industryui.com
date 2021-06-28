@@ -1,120 +1,8 @@
 /**
  * Navbar - Mocks - Navigation
  */
-export const Default = {
+const DEFAULT = {
   right: [
-    {
-      id: 'navDropdown',
-      name: 'User',
-      type: {
-        as: 'dropdown',
-        items: [
-          {
-            id: 'settings',
-            name: 'Settings',
-            to: '/'
-          },
-          {
-            id: 'profile',
-            name: 'Profile',
-            to: '/'
-          },
-          {
-            id: 'logout-divider',
-            divider: true
-          },
-          {
-            id: 'logout',
-            name: 'Logout',
-            to: '/'
-          }
-        ]
-      }
-    },
-    {
-      id: 'navDropdown',
-      name: 'User',
-      type: {
-        as: 'dropdown',
-        items: [
-          {
-            id: 'settings',
-            name: 'Settings',
-            to: '/'
-          },
-          {
-            id: 'profile',
-            name: 'Profile',
-            to: '/'
-          },
-          {
-            id: 'logout-divider',
-            divider: true
-          },
-          {
-            id: 'logout',
-            name: 'Logout',
-            to: '/'
-          }
-        ]
-      }
-    },
-    {
-      id: 'navDropdown',
-      name: 'User',
-      type: {
-        as: 'dropdown',
-        items: [
-          {
-            id: 'settings',
-            name: 'Settings',
-            to: '/'
-          },
-          {
-            id: 'profile',
-            name: 'Profile',
-            to: '/'
-          },
-          {
-            id: 'logout-divider',
-            divider: true
-          },
-          {
-            id: 'logout',
-            name: 'Logout',
-            to: '/'
-          }
-        ]
-      }
-    },
-    {
-      id: 'navDropdown',
-      name: 'User',
-      type: {
-        as: 'dropdown',
-        items: [
-          {
-            id: 'settings',
-            name: 'Settings',
-            to: '/'
-          },
-          {
-            id: 'profile',
-            name: 'Profile',
-            to: '/'
-          },
-          {
-            id: 'logout-divider',
-            divider: true
-          },
-          {
-            id: 'logout',
-            name: 'Logout',
-            to: '/'
-          }
-        ]
-      }
-    },
     {
       id: 'navDropdown',
       name: 'User',
@@ -229,3 +117,5 @@ export const Buttons = {
     }
   ]
 }
+
+export default DEFAULT

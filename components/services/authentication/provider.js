@@ -18,11 +18,11 @@ import Router from 'next/router'
 import axios from 'axios'
 
 // UI
-import { ConfigContext } from '../config/context'
+import ConfigContext from '../config/context'
 import { decodeToken, validateToken } from '../../utils/auth'
-import { UserContext } from '../authentication/context'
+import UserContext from '../authentication/context'
 
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null)
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -199,3 +199,5 @@ export const UserProvider = ({ children }) => {
     )
   )
 }
+
+export default UserProvider

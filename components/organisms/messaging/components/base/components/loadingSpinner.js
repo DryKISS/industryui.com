@@ -5,7 +5,7 @@
 // Style
 import styled from 'styled-components'
 
-export const Loadingspinner = styled.div`
+const Loadingspinner = styled.div`
   border: 2px solid rgba(0, 168, 232, 0.1);
   border-top-color: ${({ theme: { MESSAGING } }) => MESSAGING.translatorTextColour};
   border-radius: 100%;
@@ -22,3 +22,4 @@ export const Loadingspinner = styled.div`
     }
   }
 `
+export default Loadingspinner

@@ -19,7 +19,7 @@ const events = [
   }
 ]
 
-export const BigCalendar = () => {
+const BigCalendar = () => {
   const localizer = momentLocalizer(moment)
 
   return (
@@ -33,3 +33,4 @@ export const BigCalendar = () => {
     />
   )
 }
+export default BigCalendar

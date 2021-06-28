@@ -9,19 +9,17 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
 // UI
-import {
-  ConfigProvider,
-  InternationalisationProvider,
-  OffCanvasProvider,
-  Theme,
-  ThemeStyle,
-  UserProvider
-} from '../../components'
+import ConfigProvider from '../../components/services/config/provider'
+import InternationalisationProvider from '../../components/services/internationalisation/provider'
+import OffCanvasProvider from '../../components/services/offCanvas/provider'
+import Theme from '../../components/theme/theme'
+import UserProvider from '../../components/services/authentication/provider'
+import ThemeStyle from '../../components/theme/global/style'
 
 // Config
-import { Config } from '../../config'
+import { Config } from '../../config/config'
 
-export const Container = Story => {
+const Container = Story => {
   return (
     <ThemeProvider theme={Theme}>
       <ConfigProvider config={Config}>
@@ -37,3 +35,5 @@ export const Container = Story => {
     </ThemeProvider>
   )
 }
+
+export default Container
