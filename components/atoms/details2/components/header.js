@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import Details2Actions from './actions'
 import Details2Icon from './icon'
 import Text from '../../text/text'
-import THEME_SIZE from '../../../theme/constants/size'
+import THEME_SIZE from '../../../constants/size'
 
 const Details2Header = ({
   animationTime,

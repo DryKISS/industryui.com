@@ -7,12 +7,13 @@ import React from 'react'
 import { array, func, oneOfType, string } from 'prop-types'
 
 // UI
-import { StepperItem, StepperSummary } from '../../../'
+import StepperItem from './components/stepperItem'
+import StepperSummary from './components/summary'
 
 // Style
 import styled from 'styled-components'
 
-export const Stepper = ({ className, items, summary }) => {
+const Stepper = ({ className, items, summary }) => {
   return (
     <StyledStepper>
       <ul>
@@ -38,3 +39,4 @@ Stepper.propTypes = {
   items: oneOfType([array, func]).isRequired,
   summary: oneOfType([array, func])
 }
+export default Stepper

@@ -14,7 +14,7 @@ import styled, { keyframes } from 'styled-components'
 
 // UI
 import ImageLocation from '../imageLocation'
-import propTypes from './props'
+import propTypes from '../props'
 
 const elementName = 'imageLocationData'
 

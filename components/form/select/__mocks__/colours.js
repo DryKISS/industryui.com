@@ -1,7 +1,7 @@
 /**
  * Constant - Expenses types
  */
-export const COLOURS = [
+const COLOURS = [
   {
     disabled: true,
     text: 'Please choose',
@@ -25,3 +25,4 @@ export const COLOURS = [
     disabled: true
   }
 ]
+export default COLOURS

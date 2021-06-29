@@ -7,12 +7,15 @@ import React from 'react'
 import { object } from 'prop-types'
 
 // UI
-import { Button, Divider, Icon, STEPPER } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Divider from '../../../atoms/divider/divider'
+import Icon from '../../../atoms/icon/icon/icon'
+import STEPPER from '../../../molecules/stepper/stepper'
 
 // Style
 import styled from 'styled-components'
 
-export const StepperItem = ({ item }) => {
+const StepperItem = ({ item }) => {
   const renderContent = (content) =>
     content.map(
       ({ id, active, data }) =>
@@ -113,3 +116,5 @@ const StyledInfo = styled.span`
 StyledStepperItem.propTypes = {
   item: object
 }
+
+export default StepperItem

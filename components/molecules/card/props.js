@@ -6,7 +6,7 @@
 import { any, bool, func, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import THEME_CONTEXT from '../../../constants/context'
+import THEME_CONTEXT from '../../constants/context'
 
 export const CardPropTypes = {
   alt: string,

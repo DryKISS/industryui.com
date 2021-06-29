@@ -13,9 +13,9 @@ import TextBlock from '../components/textBlock'
 import Readme from '../README.md'
 
 // Resources
-import Jack from '../__resources__/hero-jack-russell.jpg'
-import Puppies from '../__resources__/hero-centered.jpg'
-import Custom from '../__resources__/hero-vector.png'
+// import Jack from '../__resources__/hero-jack-russell.jpg'
+// import Puppies from '../__resources__/hero-centered.jpg'
+// import Custom from '../__resources__/hero-vector.png'
 
 const Buttons = [
   {

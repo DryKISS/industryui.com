@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import arrayOfValues from '../../components/utils/arrayOfValues/index'
+import arrayOfValues from '../../components/utils/arrayOfValues/arrayOfValues'
 import { ControlTypes } from './controlTypes'
 import THEME_CONTEXT from '../../components/constants/context'
 

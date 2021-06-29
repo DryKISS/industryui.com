@@ -1,7 +1,7 @@
 /**
  * Components - Organisms - Footer - Mocks - Portal
  */
-export const PORTAL = [
+const PORTAL = [
   {
     size: { sm: 12, md: 6 },
     text: {
@@ -44,3 +44,4 @@ export const PORTAL = [
     }
   }
 ]
+export default PORTAL

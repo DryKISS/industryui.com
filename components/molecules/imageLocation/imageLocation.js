@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 // UI
 import ImageWrapper from './components/imageWrapper'
-import { ImageLocationProps } from './props'
+import ImageLocationProps from './props'
 
 const ImageLocation = ({
   autoCloseMarkerPopup,

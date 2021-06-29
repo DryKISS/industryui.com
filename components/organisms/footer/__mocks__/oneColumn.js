@@ -1,7 +1,7 @@
 /**
  * Components - Organisms - Footer - Mocks - One Column
  */
-export const ONE_COLUMN = [
+const ONE_COLUMN = [
   {
     size: { md: 1 },
     header: {
@@ -183,3 +183,4 @@ export const ONE_COLUMN = [
     }
   }
 ]
+export default ONE_COLUMN

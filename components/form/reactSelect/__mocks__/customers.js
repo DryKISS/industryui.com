@@ -1,7 +1,7 @@
 /**
  * Form - React Select - Customers
  */
-export const Customers = [
+const Customers = [
   {
     label: 'Avison Young',
     value: '2'
@@ -11,3 +11,4 @@ export const Customers = [
     value: '3'
   }
 ]
+export default Customers

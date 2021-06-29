@@ -10,7 +10,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import ClickAwayListener from '../../../utils/clickAwayListener/clickAwayListener'
-import Text from '../../..__tests__/atoms/text/text'
+import Text from '../../../atoms/text/text'
 import Icon from '../../../atoms/icon/icon/icon'
 
 const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
