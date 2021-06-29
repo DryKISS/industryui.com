@@ -8,21 +8,20 @@
 import React from 'react'
 import { array, bool, object } from 'prop-types'
 
-import {
-  BlogArchive,
-  BlogAuthor,
-  BlogFindFood,
-  BlogMedia,
-  BlogPromo,
-  BlogRecent,
-  BlogSocial,
-  BlogTagCloud
-} from '../../'
-
 // Style
 import styled from 'styled-components'
 
-export const BlogSidebar = ({ articles, config, facebook, findFood, media, promo, tags }) => {
+// UI
+import BlogArchive from './archive'
+import BlogAuthor from './author'
+import BlogFindFood from './findFood'
+import BlogMedia from './media'
+import BlogPromo from './promo'
+import BlogRecent from './recent'
+import BlogSocial from './social'
+import BlogTagCloud from './tag-cloud'
+
+const BlogSidebar = ({ articles, config, facebook, findFood, media, promo, tags }) => {
   return (
     <StyledAside>
       {findFood && <BlogFindFood />}
@@ -63,3 +62,5 @@ BlogSidebar.propTypes = {
 BlogSidebar.defaultProps = {
   findFood: false
 }
+
+export default BlogSidebar

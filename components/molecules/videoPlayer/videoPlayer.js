@@ -10,9 +10,12 @@ import { any, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { PlayCircleIcon, fullScreen, FullScreenIcon, ResizeDetector } from '../../'
+import PlayCircleIcon from '../../icons/components/playCircle'
+import fullScreen from '../../utils/fullScreen/fullScreen'
+import FullScreenIcon from '../../icons/components/fullScreen'
+import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 
-export const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
+const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [width, setWidth] = useState(0)
   const videoRef = useRef()
@@ -113,3 +116,5 @@ VideoPlayer.prototypes = {
   videoProps: any,
   videoType: string
 }
+
+export default VideoPlayer

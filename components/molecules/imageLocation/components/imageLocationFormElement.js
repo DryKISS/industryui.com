@@ -14,11 +14,11 @@ import styled, { keyframes } from 'styled-components'
 
 // UI
 import ImageLocation from '../imageLocation'
-import ImageLocationProps from './props'
+import propTypes from './props'
 
 const elementName = 'imageLocationData'
 
-export const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
+const ImageLocationFormElement = ({ control, errors, setValue, ...props }) => {
   return (
     <ControllerWrapper className={`${errors && errors[elementName] && 'hasError'}`}>
       <Controller
@@ -36,20 +36,24 @@ export const ImageLocationFormElement = ({ control, errors, setValue, ...props }
 
 const imageAllert = keyframes`
   from {
-filter: invert(0);
+    filter: invert(0);
   }
   to {
-filter: invert(1);
+    filter: invert(1);
   }
 `
+
 const ControllerWrapper = styled.div`
   &.hasError {
     box-shadow: 0 0 4px red;
     animation: ${imageAllert} 0.2s linear 2;
   }
 `
+
 ImageLocationFormElement.propTypes = {
-  ...ImageLocationProps,
+  ...propTypes,
   setValue: func.isRequired,
   control: object.isRequired
 }
+
+export default ImageLocationFormElement

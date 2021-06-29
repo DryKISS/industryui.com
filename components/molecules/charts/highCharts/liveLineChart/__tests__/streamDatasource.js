@@ -1,11 +1,14 @@
 /**
  * Components - Molecules - Charts - High Charts - Live line chart - Stream datascources
  */
-import { LiveChartMessageService, MessageNames } from '../../../../../'
+
+// UI
+import { LiveChartMessageService } from '../../../../../services/componentCommunication/componentCommunication'
+import { MessageNames } from '../../../../../services/componentCommunication/messageNames'
 
 let interval
 
-export const LiveHighChartTestStreamDataSource = {
+const LiveHighChartTestStreamDataSource = {
   start: () => {
     interval = setInterval(function () {
       const x = new Date().getTime() // current time
@@ -22,3 +25,5 @@ export const LiveHighChartTestStreamDataSource = {
     window.clearInterval(interval)
   }
 }
+
+export default LiveHighChartTestStreamDataSource

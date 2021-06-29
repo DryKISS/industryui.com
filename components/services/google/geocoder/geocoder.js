@@ -5,7 +5,7 @@
 // Axios
 import axios from 'axios'
 
-export class GeoCoder {
+export default class GeoCoder {
   constructor({ apiKey, debug = false, language, region }) {
     this.apiKey = apiKey
     this.debug = debug

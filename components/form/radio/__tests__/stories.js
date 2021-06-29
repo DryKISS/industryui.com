@@ -9,7 +9,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, Form, RadioField } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Form from '../../form/form'
+import RadioField from '../radio'
 import Readme from '../README.md'
 
 // Data

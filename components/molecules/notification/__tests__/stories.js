@@ -7,7 +7,7 @@ import React from 'react'
 
 // Storybook
 import { action } from '@storybook/addon-actions'
-import { ContextControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 
 // UI
 import Notification from '../notification'

@@ -9,13 +9,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Close, Text, MicIcon, toHHMMSS } from '../../'
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import Close from '../../atoms/close/close'
+import Text from '../../atoms/text/text'
+import MicIcon from '../../icons/components/mic'
+import toHHMMSS from '../../utils/date/hhmmss'
+import THEME_COLOUR from '../../constants/colour'
 
 let AudioRecorder
 let mpegEncoder
 
-export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
+const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
   const [timer, setTimer] = useState(0)
   const recorder = useRef()
@@ -194,3 +197,5 @@ const OverLay = styled.div`
     width: ${isRecording ? 'calc(100% - 8rem)' : '0px'};
   `}
 `
+
+export default VoiceRecorder

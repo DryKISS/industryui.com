@@ -9,7 +9,7 @@ import { bool } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const RadioComponent = forwardRef(({ disabled, ...props }, ref) => {
+const RadioComponent = forwardRef(({ disabled, ...props }, ref) => {
   return <StyledInput disabled={disabled} type="radio" ref={ref} {...props} />
 })
 
@@ -25,3 +25,5 @@ RadioComponent.propTypes = {
 RadioComponent.defaultProps = {
   stacked: false
 }
+
+export default RadioComponent

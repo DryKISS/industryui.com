@@ -10,11 +10,11 @@ import { any, bool, func, number, object, oneOf, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC } from '../hoc/index'
+import FieldHOC from '../hoc/hoc'
 import { formErrorStyle, formStyle } from '../variables/style'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
-export const TextareaField = ({
+const TextareaField = ({
   autoFocus,
   className,
   cols,
@@ -100,3 +100,5 @@ TextareaField.defaultProps = {
   rows: 5,
   size: 'md'
 }
+
+export default TextareaField

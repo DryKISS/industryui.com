@@ -6,16 +6,19 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../../.storybook/decorators/controlTypes'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { arrayOfValues, blendLinearRgb, Card, Heading, Icon } from '../../../../'
-
-import { THEME_CONTEXT } from '../../../../theme/constants/context'
-import { THEME_SIZE } from '../../../../theme/constants/size'
+import arrayOfValues from '../../../../utils/arrayOfValues/arrayOfValues'
+import { blendLinearRgb } from '../../../../utils/colour/colour'
+import Card from '../../../../molecules/card/card'
+import Heading from '../../../heading/heading'
+import Icon from '../icon'
+import THEME_CONTEXT from '../../../../constants/context'
+import THEME_SIZE from '../../../../constants/size'
 import Readme from '../README.md'
 
 export default {

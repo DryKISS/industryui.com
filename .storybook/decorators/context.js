@@ -6,8 +6,8 @@
 import React from 'react'
 
 // UI
-import { arrayOfValues } from '../../components/utils/arrayOfValues/index'
-import { ControlTypes } from './'
+import arrayOfValues from '../../components/utils/arrayOfValues/index'
+import { ControlTypes } from './controlTypes'
 import THEME_CONTEXT from '../../components/constants/context'
 
 export const ContextControl = () => {

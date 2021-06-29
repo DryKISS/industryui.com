@@ -13,7 +13,10 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, FormField, FormLabel } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Form from '../../form/form'
+import FormField from '../input'
+import FormLabel from '../../label/label'
 import Readme from '../README.md'
 
 export default {

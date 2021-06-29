@@ -49,7 +49,7 @@ const vendor =
   (ms[0] in document && ms) ||
   []
 
-export const fullScreen = {
+const fullScreen = {
   requestFullscreen: (element) => element[vendor[key.requestFullscreen]](),
   requestFullscreenFunction: (element) => element[vendor[key.requestFullscreen]],
   get exitFullscreen() {
@@ -83,4 +83,5 @@ export const fullScreen = {
     return (document[`on${vendor[key.fullscreenerror]}`.toLowerCase()] = handler)
   }
 }
+
 export default fullScreen

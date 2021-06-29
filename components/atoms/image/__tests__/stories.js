@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Image } from '../image'
+import Image from '../image'
 import Readme from '../README.md'
 
 export default {

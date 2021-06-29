@@ -3,7 +3,7 @@
  * @param {Array<{lat:number,lng:number}>} coords
  */
 
-export const averageGeolocation = (coords) => {
+const averageGeolocation = (coords) => {
   if (coords.length === 1) {
     return coords[0]
   }
@@ -36,4 +36,5 @@ export const averageGeolocation = (coords) => {
     lng: (centralLongitude * 180) / Math.PI
   }
 }
+
 export default averageGeolocation

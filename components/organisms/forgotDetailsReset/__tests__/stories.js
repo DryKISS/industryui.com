@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import  ForgotDetailsReset  from '../forgotDetailsReset'
+import ForgotDetailsReset from '../forgotDetailsReset'
 import Readme from '../README.md'
 
 export default {

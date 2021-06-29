@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const FuseBoxIcon = (props) => {
+const FuseBoxIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={64}>
       <path d="m15 36h2v4h-2z" />
@@ -43,6 +43,6 @@ export const FuseBoxIcon = (props) => {
   )
 }
 
-export default FuseBoxIcon
-
 FuseBoxIcon.propTypes = propTypes
+
+export default FuseBoxIcon

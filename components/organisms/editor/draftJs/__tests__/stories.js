@@ -6,7 +6,7 @@
 import React from 'react'
 
 // DraftJS
-import { DraftJs } from '../draftJs'
+import DraftJs from '../draftJs'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'

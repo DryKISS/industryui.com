@@ -16,6 +16,7 @@ export const BLOCK_TYPES = [
   { label: 'OL', style: 'ordered-list-item' },
   { label: 'Code Block', style: 'code-block' }
 ]
+
 export const INLINE_STYLES = [
   { label: 'Bold', style: 'BOLD' },
   { label: 'Italic', style: 'ITALIC' },
@@ -61,6 +62,7 @@ export const InlineStyleControls = (props) => {
     </div>
   )
 }
+
 export const styleMap = {
   CODE: {
     backgroundColor: 'rgba(0, 0, 0, 0.05)',
@@ -69,6 +71,7 @@ export const styleMap = {
     padding: 2
   }
 }
+
 export const getBlockStyle = (block) => {
   switch (block.getType()) {
     case 'blockquote':
@@ -77,6 +80,7 @@ export const getBlockStyle = (block) => {
       return null
   }
 }
+
 const StyleButton = ({ active, label, onToggle, style }) => {
   const handleToggle = (e) => {
     e.preventDefault()
@@ -89,6 +93,7 @@ const StyleButton = ({ active, label, onToggle, style }) => {
     </StyledRichButton>
   )
 }
+
 const StyledRichButton = styled.span`
   cursor: pointer;
   margin: 0 0.5rem;

@@ -6,13 +6,13 @@
 import React from 'react'
 import { oneOf, node } from 'prop-types'
 
-// UI
-import THEME_CONTEXT from '../../../constants/context'
-
 // Style
 import styled from 'styled-components'
 
-export const CardFooter = ({ children, context }) => {
+// UI
+import THEME_CONTEXT from '../../../constants/context'
+
+const CardFooter = ({ children, context }) => {
   return <StyledFooter context={context}>{children}</StyledFooter>
 }
 
@@ -39,3 +39,5 @@ CardFooter.propTypes = {
 CardFooter.defaultProps = {
   context: 'light'
 }
+
+export default CardFooter

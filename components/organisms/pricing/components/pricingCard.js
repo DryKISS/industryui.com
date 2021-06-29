@@ -125,4 +125,5 @@ const Wrapper = styled.div`
   padding: 1.375rem;
   padding-bottom: 0.75rem;
 `
+
 export default PricingCard

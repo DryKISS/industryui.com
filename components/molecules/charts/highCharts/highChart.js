@@ -36,7 +36,7 @@ const getChartType = (constructorType) => {
   return chart
 }
 
-export const HighChart = ({
+const HighChart = ({
   allowChartUpdate,
   callback,
   constructorType,
@@ -79,3 +79,5 @@ HighChart.prototypes = {
   options: any.isRequired,
   updateArgs: arrayOf(bool)
 }
+
+export default HighChart

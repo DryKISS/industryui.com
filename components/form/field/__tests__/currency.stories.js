@@ -13,7 +13,10 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, CurrencyInput, InputGroupAddon } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Form from '../../form/form'
+import CurrencyInput from '../../field/currencyInput'
+import InputGroupAddon from '../../inputGroup/addon'
 import Readme from '../README.md'
 
 export default {

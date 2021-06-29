@@ -6,13 +6,13 @@
 import React from 'react'
 import { bool, func, node, oneOf, string } from 'prop-types'
 
-// UI
-import { Heading } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
-import { CardCTA } from './cta'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import CardCTA from './cta'
+import Heading from '../../../atoms/heading/heading'
+import THEME_CONTEXT from '../../../constants/context'
 
 const CardBody = ({
   center,

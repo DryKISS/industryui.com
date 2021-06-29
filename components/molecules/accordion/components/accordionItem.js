@@ -6,12 +6,12 @@
 import React, { memo } from 'react'
 import { bool, oneOf, string, func, number } from 'prop-types'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import Icon from '../../../atoms/icon/icon/icon'
 import THEME_CONTEXT from '../../../constants/context'
-
-// Styled
-import styled from 'styled-components'
 
 const AccordionItem = memo(
   ({ children, className, context, handleOpen, index, open, title }) => {
@@ -85,4 +85,5 @@ AccordionItem.default = {
   context: 'dark',
   open: false
 }
+
 export default AccordionItem

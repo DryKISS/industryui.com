@@ -65,4 +65,5 @@ function myBlockStyleFn(contentBlock) {
     return undefined
   }
 }
+
 export default DraftJs

@@ -9,12 +9,12 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 
 // UI
-import { InputStepperComponent } from './component'
+import InputStepperComponent from './component'
 
 // Props
 import { defaultProps, propTypes } from './props'
 
-export const InputStepper = ({ control, defaultValue, name, ...props }) => {
+const InputStepper = ({ control, defaultValue, name, ...props }) => {
   return (
     <Controller
       as={<InputStepperComponent name={name} {...props} />}
@@ -27,3 +27,5 @@ export const InputStepper = ({ control, defaultValue, name, ...props }) => {
 
 InputStepper.propTypes = propTypes
 InputStepper.defaultProps = defaultProps
+
+export default InputStepper

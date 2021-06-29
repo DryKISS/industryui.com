@@ -1,7 +1,7 @@
 /**
  * Components - Utils - Date - Difference
  */
- const DateDiff = {
+const DateDiff = {
   inDays: (d1, d2) => {
     const t2 = d2.getTime()
     const t1 = d1.getTime()
@@ -29,4 +29,5 @@
     return d2.getFullYear() - d1.getFullYear()
   }
 }
+
 export default DateDiff

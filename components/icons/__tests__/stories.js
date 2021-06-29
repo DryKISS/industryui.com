@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { Text } from '../../atoms/text/text'
+import Text from '../../atoms/text/text'
 
 import {
   ArrowDownIcon,

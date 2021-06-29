@@ -10,15 +10,17 @@ import { bool, string } from 'prop-types'
 // React Dropzone
 import { useDropzone } from 'react-dropzone'
 
-// UI
-import { Column, Row, Text } from '../../../'
-import { Accept } from './accept'
-import { DropzonePreview } from './preview'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const Dropzone = ({ accept, disabled, multiple, onChange }) => {
+// UI
+import Column from '../../../atoms/grid/Column'
+import Row from '../../../atoms/grid/Row'
+import Text from '../../../atoms/text/text'
+import Accept from './accept'
+import DropzonePreview from './preview'
+
+const Dropzone = ({ accept, disabled, multiple, onChange }) => {
   const [files, setFiles] = useState([])
 
   useEffect(
@@ -137,3 +139,5 @@ Dropzone.defaultProps = {
   disabled: false,
   multiple: true
 }
+
+export default Dropzone

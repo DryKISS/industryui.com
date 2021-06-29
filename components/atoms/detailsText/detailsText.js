@@ -7,10 +7,10 @@ import React from 'react'
 import { node, oneOfType, string } from 'prop-types'
 
 // UI
-import { Space } from '../space/space'
-import { Text } from '../text/text'
+import Space from '../space/space'
+import Text from '../text/text'
 
-export const DetailsText = ({ content, text }) => {
+const DetailsText = ({ content, text }) => {
   return (
     <>
       <Space marginBottom="sm" />
@@ -24,3 +24,5 @@ DetailsText.propTypes = {
   content: string.isRequired,
   text: oneOfType([node, string]).isRequired
 }
+
+export default DetailsText

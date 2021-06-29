@@ -6,13 +6,17 @@
 import React from 'react'
 
 // Storybook
-import { SizeControl } from '../../../../.storybook/decorators'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, FormField, Icon, InputGroup, InputGroupAddon } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import FormField from '../../field/input'
+import Icon from '../../../atoms/icon/icon/icon'
+import InputGroup from '../group'
+import InputGroupAddon from '../addon'
 import Readme from '../README.md'
 
 export default {

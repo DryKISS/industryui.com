@@ -23,7 +23,7 @@ import PageHeading from '../../molecules/pageHeading/pageHeading'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
 
-export const EmailChange = ({ showPlaceholder, submit }) => {
+const EmailChange = ({ showPlaceholder, submit }) => {
   const { errors, formState, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
@@ -77,3 +77,5 @@ EmailChange.propTypes = {
 EmailChange.defaultProps = {
   showPlaceholder: false
 }
+
+export default EmailChange

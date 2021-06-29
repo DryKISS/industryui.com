@@ -8,4 +8,4 @@ const themeBackground = ({ context, outline, theme }) => {
   };`
 }
 
- export default themeBackground
+export default themeBackground

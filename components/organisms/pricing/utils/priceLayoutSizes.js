@@ -1,7 +1,9 @@
 /**
  * Components - Organisms - Pricing - Utils
  */
-import { LAYOUTS } from '../../../'
+
+// UI
+import LAYOUTS from '../components/constants'
 
 const priceLayoutSizes = (layout) => {
   switch (layout) {
@@ -31,4 +33,5 @@ const priceLayoutSizes = (layout) => {
       }
   }
 }
+
 export default priceLayoutSizes

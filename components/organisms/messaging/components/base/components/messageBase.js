@@ -6,8 +6,10 @@
 import React, { useRef, useState } from 'react'
 import { any, string } from 'prop-types'
 
-// UI
+// Style
+import styled, { css } from 'styled-components'
 
+// UI
 import Avatar from '../../../../../atoms/avatar/avatar'
 import AudioWrapper from '../../audioPlayer/wrapper'
 import Card from '../../../../../molecules/card/card'
@@ -37,10 +39,6 @@ import Loadingspinner from './loadingSpinner'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
-
-// Style
-import styled, { css } from 'styled-components'
-
 import EmailContainer from '../../emailContainer/emailContainer'
 
 const mentionPlugin = createMentionPlugin({

@@ -8,9 +8,12 @@ import { bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
-import { Space, Text } from '../../'
 
-export const FormLabel = ({ children, id, label, show, size }) => {
+// UI
+import Space from '../../atoms/space/space'
+import Text from '../../atoms/text/text'
+
+const FormLabel = ({ children, id, label, show, size }) => {
   return (
     <StyledLabel hasChild={children} htmlFor={id} show={show}>
       <Space marginBottom="xs">
@@ -39,3 +42,5 @@ FormLabel.propTypes = {
 FormLabel.defaultProps = {
   show: true
 }
+
+export default FormLabel

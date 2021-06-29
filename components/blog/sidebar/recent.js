@@ -12,10 +12,11 @@ import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
-import { formatIntDateShort } from '../../'
-import { BlogList, BlogSection } from './components'
+import { formatIntDateShort } from '../../utils/formatDate'
+import BlogList from './components/list'
+import BlogSection from './components/section'
 
-export const BlogRecent = ({ articles, config, total }) => {
+const BlogRecent = ({ articles, config, total }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -55,3 +56,5 @@ BlogRecent.propTypes = {
 BlogRecent.defaultProps = {
   total: 5
 }
+
+export default BlogRecent

@@ -1,7 +1,7 @@
 /**
  * Converts an image URL to Data URL (Base64) using Canvas
  */
-export const convertImgUrlToDataURLviaCanvas = (url) => {
+const convertImgUrlToDataURLviaCanvas = (url) => {
   return new Promise(function (resolve, reject) {
     const img = new window.Image()
 
@@ -30,3 +30,5 @@ export const convertImgUrlToDataURLviaCanvas = (url) => {
     img.src = url
   })
 }
+
+export default convertImgUrlToDataURLviaCanvas

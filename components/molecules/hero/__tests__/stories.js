@@ -6,8 +6,10 @@
 import React from 'react'
 
 // UI
-import { Heading, Hero, Image } from '../../../'
-import { TextBlock } from '../components/textBlock'
+import Heading from '../../../atoms/heading/heading'
+import Hero from '../hero'
+import Image from '../../../atoms/image/image'
+import TextBlock from '../components/textBlock'
 import Readme from '../README.md'
 
 // Resources

@@ -7,8 +7,7 @@ import React from 'react'
 
 // UI
 import Text from '../../../atoms/text/text'
-
-import camelCase  from '../camelCase'
+import camelCase from '../camelCase'
 import Readme from '../README.md'
 
 export default {

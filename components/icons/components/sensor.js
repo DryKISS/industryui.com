@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const SensorIcon = (props) => {
+const SensorIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <path d="m437.066 74.981c-5.857-5.858-15.355-5.858-21.213 0s-5.858 15.355 0 21.213c42.656 42.655 66.147 99.409 66.147 159.806s-23.491 117.151-66.147 159.806c-5.858 5.857-5.858 15.355 0 21.213 5.868 5.868 15.365 5.848 21.213 0 48.322-48.321 74.934-112.608 74.934-181.019s-26.612-132.698-74.934-181.019z" />
@@ -18,6 +18,6 @@ export const SensorIcon = (props) => {
   )
 }
 
-export default SensorIcon
-
 SensorIcon.propTypes = propTypes
+
+export default SensorIcon

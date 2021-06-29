@@ -9,15 +9,15 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { Button } from '../../atoms/button/button/button'
-import { InputGroup } from '../inputGroup/group'
-import { InputGroupAddon } from '../inputGroup/addon'
-import { FormField } from '../field/input'
+import Button from '../../atoms/button/button/button'
+import InputGroup from '../inputGroup/group'
+import InputGroupAddon from '../inputGroup/addon'
+import FormField from '../field/input'
 
 // Props
 import { defaultProps, propTypes } from './props'
 
-export const InputStepperComponent = forwardRef(
+const InputStepperComponent = forwardRef(
   (
     {
       buttonContext,
@@ -111,3 +111,5 @@ const StyledFormField = styled(FormField)`
 
 InputStepperComponent.propTypes = propTypes
 InputStepperComponent.defaultProps = defaultProps
+
+export default InputStepperComponent

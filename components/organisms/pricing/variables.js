@@ -1,7 +1,7 @@
 /**
  * Components - Organsims - Pricing - Variables
  */
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
 export const PRICING = {
   addToCartTextColour: THEME_COLOUR.deepBlue,

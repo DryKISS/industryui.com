@@ -9,7 +9,7 @@ import { bool, node, number } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const Details2Icon = ({ animationTime, iconComponent, isOpen }) => {
+const Details2Icon = ({ animationTime, iconComponent, isOpen }) => {
   return (
     <OpenCloseWrapper isOpen={isOpen} animationTime={animationTime}>
       {iconComponent ?? <CaretRight />}
@@ -45,3 +45,5 @@ Details2Icon.defaultProps = {
   animationTime: 100,
   isOpen: false
 }
+
+export default Details2Icon

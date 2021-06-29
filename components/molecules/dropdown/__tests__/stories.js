@@ -9,17 +9,14 @@ import React, { useContext, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  elementTypes,
-  Icon,
-  InternationalisationContext,
-  Space,
-  useTranslation
-} from '../../../'
-
+import Avatar from '../../../atoms/avatar/avatar'
+import Button from '../../../atoms/button/button/button'
+import Dropdown from '../dropdown'
+import elementTypes from '../types'
+import Icon from '../../../atoms/icon/icon/icon'
+import InternationalisationContext from '../../../services/internationalisation/context'
+import Space from '../../../atoms/space/space'
+import useTranslation from '../../../hooks/useTranslation/translation'
 import THEME_COLOUR_LIST from '../../../constants/colourList'
 import { Icons, Items, Language } from '../__mocks__/dropdown'
 import Readme from '../README.md'

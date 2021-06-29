@@ -1,6 +1,7 @@
+// React
 import { bool, func, shape, string, number, object } from 'prop-types'
 
-export const ImageLocationProps = {
+const propTypes = {
   className: string,
   coordinatesChange: func.isRequired,
   initialCoordinates: shape({
@@ -16,3 +17,5 @@ export const ImageLocationProps = {
   show: bool,
   style: object
 }
+
+export default propTypes

@@ -13,7 +13,11 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, DatePickerInput, Divider, Form, Text } from '../../../../'
+import Button from '../../../../atoms/button/button/button'
+import DatePickerInput from '../datePickerInput'
+import Divider from '../../../../atoms/divider/divider'
+import Form from '../../../form/form'
+import Text from '../../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {

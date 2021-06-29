@@ -10,12 +10,18 @@ import { object } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { BlogCategory } from '../category/category'
-import { BlogReadTime } from '../readTime/readTime'
-import { BlogTags, Divider, FacebookShareButton, Icon, List, ListItem, slugify } from '../../'
-import { Date } from '../../atoms/date/date'
+import BlogCategory from '../category/category'
+import BlogReadTime from '../readTime/readTime'
+import BlogTags from '../tags/tags'
+import Divider from '../../atoms/divider/divider'
+import FacebookShareButton from '../../social/facebook/pagePlugin'
+import Icon from '../../atoms/icon/icon/icon'
+import List from '../../atoms/list/list'
+import ListItem from '../../atoms/list/listItem'
+import slugify from '../../utils/slugify/slugify'
+import Date from '../../atoms/date/date'
 
-export const BlogDetails = ({ article, config, facebook }) => {
+const BlogDetails = ({ article, config, facebook }) => {
   return (
     <StyledArticleDetails>
       <Divider size="sm" />
@@ -97,3 +103,5 @@ BlogDetails.propTypes = {
   config: object.isRequired,
   facebook: object
 }
+
+export default BlogDetails

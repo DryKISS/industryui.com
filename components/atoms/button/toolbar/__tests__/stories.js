@@ -10,11 +10,10 @@ import { AlignControl } from '../../../../../.storybook/decorators/align'
 import { SizeControl } from '../../../../../.storybook/decorators/size'
 
 // UI
-import { Button } from '../../button/button'
-import { ButtonToolbar } from '../toolbar'
-import { Icon } from '../../../icon/icon/icon'
-
+import Button from '../../button/button'
+import ButtonToolbar from '../toolbar'
 import Dropdown from '../../../../molecules/dropdown/dropdown'
+import Icon from '../../../icon/icon/icon'
 import THEME_ALIGN from '../../../../constants/align'
 import THEME_SIZE from '../../../../constants/size'
 import Readme from '../README.md'

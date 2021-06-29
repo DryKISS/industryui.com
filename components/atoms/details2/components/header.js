@@ -15,7 +15,7 @@ import Details2Icon from './icon'
 import Text from '../../text/text'
 import THEME_SIZE from '../../../theme/constants/size'
 
-export const Details2Header = ({
+const Details2Header = ({
   animationTime,
   children,
   content,
@@ -76,3 +76,5 @@ Details2Header.defaultProps = {
   context: 'dark',
   isOpen: false
 }
+
+export default Details2Header

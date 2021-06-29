@@ -8,11 +8,12 @@ import React from 'react'
 // Nivo
 import { colorSchemes } from '@nivo/colors'
 
-// Styled Components
+// Style
 import styled from 'styled-components'
 
 // UI
-import { BarChart, objectWithoutProperties } from '../../../../../'
+import { BarChart } from '../barChart'
+import objectWithoutProperties from '../../../../../utils/objWithoutProperties/objWithoutProperties'
 import Readme from '../README.md'
 
 // Mocks

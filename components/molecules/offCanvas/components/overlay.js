@@ -32,4 +32,5 @@ OffCanvasOverlay.defaultProps = {
   duration: 300,
   opacity: 0.3
 }
+
 export default OffCanvasOverlay

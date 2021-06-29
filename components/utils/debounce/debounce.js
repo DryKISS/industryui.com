@@ -2,7 +2,7 @@
  * Debounce
  */
 
-export function debounce(callback, wait, immediate = false) {
+function debounce(callback, wait, immediate = false) {
   let timeout = null
 
   return function () {
@@ -17,3 +17,5 @@ export function debounce(callback, wait, immediate = false) {
     }
   }
 }
+
+export default debounce

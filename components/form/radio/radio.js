@@ -10,11 +10,11 @@ import { array, bool, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC } from '../hoc'
-import { RadioComponent } from './component'
+import FieldHOC from '../hoc/hoc'
+import RadioComponent from './component'
 import { formErrorStyle } from '../variables/style'
 
-export const RadioField = ({ data, errors, legend, stacked, ...props }) => {
+const RadioField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <StyledLegend error={errors[props.name]}>{legend}</StyledLegend>}
@@ -76,3 +76,5 @@ RadioField.defaultProps = {
   data: [],
   stacked: false
 }
+
+export default RadioField

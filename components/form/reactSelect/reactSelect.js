@@ -18,12 +18,12 @@ import styled, { css } from 'styled-components'
 // UI
 import { defaultStyles } from './styles'
 import { formErrorStyle, formStyle } from '../variables/style'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
 // Props
 import { defaultProps, propTypes } from './props'
 
-export const ReactSelectField = ({
+const ReactSelectField = ({
   async,
   cacheOptions,
   control,
@@ -124,3 +124,5 @@ const Wrapper = styled.div`
 
 ReactSelectField.propTypes = propTypes
 ReactSelectField.defaultProps = defaultProps(defaultStyles)
+
+export default ReactSelectField

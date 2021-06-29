@@ -11,10 +11,11 @@ import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
-import { formatIntDateYear } from '../../'
-import { BlogList, BlogSection } from './components'
+import { formatIntDateYear } from '../../utils/formatDate'
+import BlogList from './components/list'
+import BlogSection from './components/section'
 
-export const BlogArchive = ({ articles, config, total }) => {
+const BlogArchive = ({ articles, config, total }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -69,3 +70,5 @@ BlogArchive.propTypes = {
 BlogArchive.defaultProps = {
   total: 5
 }
+
+export default BlogArchive

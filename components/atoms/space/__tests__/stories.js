@@ -9,7 +9,7 @@ import React from 'react'
 import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
-import { arrayOfValues } from '../../../utils/arrayOfValues/arrayOfValues'
+import arrayOfValues from '../../../utils/arrayOfValues/arrayOfValues'
 import Space from '../space'
 import Text from '../../text/text'
 import THEME_SIZE from '../../../constants/size'

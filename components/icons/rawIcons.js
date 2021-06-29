@@ -65,7 +65,7 @@ import {
   WashingMachineIcon
 } from './components'
 
-export const RawIcons = {
+const RawIcons = {
   airConditioner: AirConditionerIcon,
   arrowDown: ArrowDownIcon,
   bell: BellIcon,
@@ -198,3 +198,5 @@ export const iconNameList = [
   'sprinkle',
   'washingMachine'
 ]
+
+export default RawIcons

@@ -16,10 +16,10 @@ import { array, number } from 'prop-types'
 // import countBy from 'lodash/countBy'
 
 // UI
-import { slugify } from '../../'
-import { BlogSection } from './components'
+import slugify from '../../utils/slugify/slugify'
+import BlogSection from './components/section'
 
-export const BlogTagCloud = ({ articles, total }) => {
+const BlogTagCloud = ({ articles, total }) => {
   const [cloud, setCloud] = useState([])
 
   useEffect(() => {
@@ -87,3 +87,5 @@ BlogTagCloud.propTypes = {
 BlogTagCloud.defaultProps = {
   total: 5
 }
+
+export default BlogTagCloud

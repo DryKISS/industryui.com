@@ -6,13 +6,16 @@
 import React, { Fragment } from 'react'
 import { array, bool, object } from 'prop-types'
 
-// UI
-import { Badge, Link, slugify, Truncate } from '../../../'
-
 // Style
 import styled from 'styled-components'
 
-export const BlogList = ({ author, config, list }) => {
+// UI
+import Badge from '../../../atoms/badge/badge'
+import Link from '../../../atoms/link/link'
+import slugify from '../../../utils/slugify/slugify'
+import { Truncate } from '../../../utils/truncate'
+
+const BlogList = ({ author, config, list }) => {
   return (
     <StyledDl>
       {list.map(({ badge, category = '', name, to }, index) => (
@@ -83,3 +86,5 @@ BlogList.propTypes = {
 BlogList.defaultProps = {
   author: false
 }
+
+export default BlogList

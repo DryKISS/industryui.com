@@ -6,9 +6,9 @@
 import React from 'react'
 
 // UI
-import { Text } from '../../../../atoms/text/text'
+import Text from '../../../../atoms/text/text'
 
-export const SCHEDULE = [
+const SCHEDULE = [
   {
     id: 1,
     task: 'Bolier Inspection',
@@ -98,3 +98,5 @@ export const SCHEDULE = [
     dec: 3
   }
 ]
+
+export default SCHEDULE

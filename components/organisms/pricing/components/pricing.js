@@ -9,7 +9,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-
 import Button from '../../../atoms/button/button/button'
 import Icon from '../../../atoms/icon/icon/icon'
 import LAYOUTS from '../components/constants'
@@ -172,4 +171,5 @@ const PricesWrapper = styled.div`
   position: relative;
   width: 100%;
 `
+
 export default Pricing

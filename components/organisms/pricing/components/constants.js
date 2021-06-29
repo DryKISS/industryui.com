@@ -5,4 +5,5 @@ const LAYOUTS = {
   MOBILE: 'MOBILE',
   TABLET: 'TABLET'
 }
+
 export default LAYOUTS

@@ -7,13 +7,14 @@
 import React from 'react'
 import { node, string } from 'prop-types'
 
-// UI
-import { Divider, Heading } from '../../../'
-
 // Style
 import styled from 'styled-components'
 
-export const BlogSection = ({ children, heading }) => (
+// UI
+import Divider from '../../../atoms/divider/divider'
+import Heading from '../../../atoms/heading/heading'
+
+const BlogSection = ({ children, heading }) => (
   <StyledSection>
     {heading && (
       <>
@@ -39,3 +40,5 @@ BlogSection.propTypes = {
   children: node.isRequired,
   heading: string
 }
+
+export default BlogSection

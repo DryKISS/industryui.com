@@ -3,7 +3,7 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
 export const VOICE_RECORDER = {
   iconsColour: THEME_COLOUR.dark,

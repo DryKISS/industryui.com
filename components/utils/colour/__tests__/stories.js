@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
 import { blendLinearRgb, shadeLinearRgb } from '../colour'

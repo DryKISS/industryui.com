@@ -13,14 +13,13 @@ import Carouselnav from './components/nav'
 import CarouselSampleSlide from './components/sample'
 import Icon from '../../atoms/icon/icon/icon'
 import Pagination from '../../molecules/pagination/pagination'
-import { revert } from '../../utils/revert'
-import { ResizeDetector } from '../../utils/resizeDetector/resizeDetector'
-
-import { CarouselDefaultProps, CarouselPropTypes } from './props'
+import revert from '../../utils/revert'
+import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
+import { CarouselDefaultProps, CarouselPropTypes } from './components/props'
 
 let interval
 
-export const Carousel = ({
+const Carousel = ({
   navContext,
   navPosition,
   autoplay,
@@ -226,5 +225,6 @@ const PaginationWrapper = styled.div`
 `
 
 Carousel.defaultProps = CarouselDefaultProps
-
 Carousel.propTypes = CarouselPropTypes
+
+export default Carousel

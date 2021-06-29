@@ -5,15 +5,15 @@
 // React
 import React from 'react'
 
+// Style
+import styled from 'styled-components'
+
 // UI
-import { HighChart } from '../../../'
+import HighChart from '../../HighChart'
 import Readme from '../README.md'
 
 // Data
 import { BigDataDataSource } from './initialDataSource'
-
-// Styled Components
-import styled from 'styled-components'
 
 export default {
   args: {

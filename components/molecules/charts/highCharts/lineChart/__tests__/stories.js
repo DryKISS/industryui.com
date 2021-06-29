@@ -5,12 +5,12 @@
 // React
 import React from 'react'
 
-// UI
-import { HighChart } from '../../../'
-import Readme from '../README.md'
-
-// Styled Components
+// Style
 import styled from 'styled-components'
+
+// UI
+import HighChart from '../../HighChart'
+import Readme from '../README.md'
 
 export default {
   args: {},

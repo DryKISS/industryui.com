@@ -9,17 +9,14 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import {
-  Button,
-  Column,
-  Form,
-  FormField,
-  FormLabel,
-  GeoCoder,
-  Row,
-  useGeoCoder
-} from '../../../../'
-
+import Button from '../../../../atoms/button/button/button'
+import Column from '../../../../atoms/grid/Column'
+import Form from '../../../../form/form/form'
+import FormField from '../../../../form/field/input'
+import FormLabel from '../../../../form/label/label'
+import GeoCoder from '../geocoder'
+import Row from '../../../../atoms/grid/Row'
+import useGeoCoder from '../../../../hooks/useGeoCoder'
 import Readme from '../README.md'
 
 export default {

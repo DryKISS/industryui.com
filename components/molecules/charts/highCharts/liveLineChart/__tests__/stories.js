@@ -5,16 +5,18 @@
 // React
 import React, { useEffect, useRef } from 'react'
 
+// Style
+import styled from 'styled-components'
+
 // UI
-import { HighChart, LiveChartSubscriber, MessageNames } from '../../../../../'
+import HighChart from '../../HighChart'
+import { LiveChartSubscriber } from '../../../../../services/componentCommunication/componentCommunication'
+import { MessageNames } from '../../../../../services/componentCommunication/messageNames'
 import Readme from '../README.md'
 
 // Data
-import { LiveChartInitialTestDataSource } from './initialDataSource'
-import { LiveHighChartTestStreamDataSource } from './streamDatasource'
-
-// Styled Components
-import styled from 'styled-components'
+import LiveChartInitialTestDataSource from './initialDataSource'
+import LiveHighChartTestStreamDataSource from './streamDatasource'
 
 export default {
   args: {

@@ -8,12 +8,13 @@ import React from 'react'
 // Storybook
 import { CleverlyTheme, CleverlyAdminTheme, DryKISSTheme } from '../../../../.storybook/themes'
 
-// UI
-import { BaseComponent, options } from './baseComponent'
-import Readme from '../README.md'
-
 // Style
 import { ThemeProvider } from 'styled-components'
+
+// UI
+import BaseComponent from './baseComponent'
+import OPTIONS from './options'
+import Readme from '../README.md'
 
 // Data
 import { Default } from '../__mocks__/navbar'
@@ -27,7 +28,7 @@ export default {
       }
     }
   },
-  ...options
+  ...OPTIONS
 }
 
 export const Cleverly = () => (

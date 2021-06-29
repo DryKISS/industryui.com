@@ -12,7 +12,7 @@ import styled, { css, keyframes } from 'styled-components'
 // UI
 import Icon from '../../../atoms/icon/icon/icon'
 
-export const ImageMarker = ({ coordinates, customIcon, styles }) => {
+const ImageMarker = ({ coordinates, customIcon, styles }) => {
   if (customIcon) {
     return (
       <CustomIconWrapper {...{ coordinates, styles }}>
@@ -101,3 +101,5 @@ ImageMarker.defaultProps = {
     width: '20px'
   }
 }
+
+export default ImageMarker

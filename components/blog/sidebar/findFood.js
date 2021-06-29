@@ -22,24 +22,21 @@ import { useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-// UI
-import {
-  Button,
-  FormError,
-  Form,
-  FormField,
-  FormLabel,
-  Icon,
-  InputGroup,
-  InputGroupAddon,
-  Link,
-  validatorPostCode
-} from '../../'
-
-import { BlogSection } from './components'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import BlogSection from './components/section'
+import Button from '../../atoms/button/button/button'
+import FormError from '../../form/error/error'
+import Form from '../../form/form/form'
+import FormField from '../../form/field/input'
+import FormLabel from '../../form/label/label'
+import Icon from '../../atoms/icon/icon/icon'
+import InputGroup from '../../form/inputGroup/group'
+import InputGroupAddon from '../../form/inputGroup/addon'
+import Link from '../../atoms/link/link'
+import { validatorPostCode } from '../../utils/validator/postCode/postCode'
 
 const schema = object().shape({
   postCode: string()
@@ -49,7 +46,7 @@ const schema = object().shape({
     )
 })
 
-export const BlogFindFood = ({ colour }) => {
+const BlogFindFood = ({ colour }) => {
   const { errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema),
     mode: 'onSubmit'
@@ -150,3 +147,5 @@ BlogFindFood.propTypes = {
 BlogFindFood.defaultProps = {
   colour: 'beetroot'
 }
+
+export default BlogFindFood

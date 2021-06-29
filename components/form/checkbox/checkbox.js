@@ -14,7 +14,7 @@ import { FieldHOC } from '../hoc/index'
 import { CheckboxComponent } from './component'
 import { formErrorStyle } from '../variables/style'
 
-export const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
+const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <legend>{legend}</legend>}
@@ -71,3 +71,5 @@ CheckboxField.defaultProps = {
   errors: {},
   stacked: false
 }
+
+export default CheckboxField

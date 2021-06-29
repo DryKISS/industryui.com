@@ -6,13 +6,13 @@
 import React from 'react'
 import { string } from 'prop-types'
 
-// UI
-import Image from '../../../atoms/image/image'
-
 // Style
 import styled from 'styled-components'
 
-export const CardImage = ({ alt, header, src }) => {
+// UI
+import Image from '../../../atoms/image/image'
+
+const CardImage = ({ alt, header, src }) => {
   return (
     <StyledContainer>
       <StyledImage alt={alt} fluid={false} imageClasses="rounded" src={src}>
@@ -44,3 +44,5 @@ CardImage.propTypes = {
   alt: string.isRequired,
   src: string.isRequired
 }
+
+export default CardImage

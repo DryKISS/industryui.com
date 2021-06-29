@@ -1,10 +1,12 @@
 /**
  * Components - Icons - Props
  */
-import { iconNameList } from './rawIcons'
 
 // React
 import { bool, func, number, oneOf, oneOfType, string } from 'prop-types'
+
+// UI
+import { iconNameList } from './rawIcons'
 
 export const propTypes = {
   colour: string,

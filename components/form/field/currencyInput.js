@@ -7,9 +7,12 @@ import React from 'react'
 import { bool, func, number, object, oneOfType, node, string } from 'prop-types'
 
 // UI
-import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
+import FormField from './input'
+import FormLabel from '../label/label'
+import InputGroup from '../inputGroup/group'
+import InputGroupAddon from '../inputGroup/addon'
 
-export const CurrencyInput = ({
+const CurrencyInput = ({
   children,
   currencySymbol,
   errors,
@@ -78,3 +81,5 @@ CurrencyInput.defaultProps = {
   size: 'md',
   vat: 'Incl VAT'
 }
+
+export default CurrencyInput

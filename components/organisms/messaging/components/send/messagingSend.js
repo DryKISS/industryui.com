@@ -9,8 +9,10 @@ import { array, func, number } from 'prop-types'
 // DraftJS
 import { convertToRaw } from 'draft-js'
 
-// UI
+// Style
+import styled from 'styled-components'
 
+// UI
 import AudioWrapper from '../audioPlayer/wrapper'
 import Button from '../../../../atoms/button/button/button'
 import Dropdown from '../../../../molecules/dropdown/dropdown'
@@ -19,7 +21,6 @@ import Icon from '../../../../atoms/icon/icon/icon'
 import VoiceRecorder from '../../../../molecules/voiceRecorder/voiceRecorder'
 import MessagingInput from '../../components/input/input'
 import MessagingAudioPlayer from '../../components/audioPlayer/audioPlayer'
-
 import PaperPlaneIcon from '../../../../icons/components/paperPlane'
 import ReplyContainer from '../../components/replyContainer/replyContainer'
 import {
@@ -32,9 +33,6 @@ import {
 } from '../../../../services/componentCommunication/componentCommunication'
 
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
-
-// Style
-import styled from 'styled-components'
 
 const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   // const [open, setOpen] = useState(false)

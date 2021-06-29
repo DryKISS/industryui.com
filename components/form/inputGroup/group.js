@@ -10,7 +10,7 @@ import { bool, string } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-export const InputGroup = ({ children, error, fullWidth, size, theme }) => {
+const InputGroup = ({ children, error, fullWidth, size, theme }) => {
   return (
     <StyledInputGroup
       children={children}
@@ -73,3 +73,5 @@ InputGroup.defaultProps = {
   fullWidth: true,
   size: 'md'
 }
+
+export default InputGroup

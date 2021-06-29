@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { BaseComponent, options } from './baseComponent'
+import BaseComponent from './baseComponent'
+import OPTIONS from './options'
 import Readme from '../README.md'
 
 // Data
@@ -21,7 +22,7 @@ export default {
       }
     }
   },
-  ...options
+  ...OPTIONS
 }
 
 export const contained = () => <BaseComponent contained widgets={Default} />

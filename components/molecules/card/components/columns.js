@@ -21,4 +21,5 @@ const StyledColumns = styled.div`
 CardColumns.propTypes = {
   childern: node.isRequired
 }
+
 export default CardColumns

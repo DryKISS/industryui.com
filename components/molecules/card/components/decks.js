@@ -7,13 +7,13 @@
 import React from 'react'
 import { node } from 'prop-types'
 
-// UI
-import MEDIA_QUERY from '../../../utils/mediaQuery/query'
-
 // Style
 import styled from 'styled-components'
 
-export const CardDecks = ({ children }) => {
+// UI
+import MEDIA_QUERY from '../../../utils/mediaQuery/query'
+
+const CardDecks = ({ children }) => {
   return <StyledDecks>{children}</StyledDecks>
 }
 
@@ -30,3 +30,5 @@ const StyledDecks = styled.div`
 CardDecks.propTypes = {
   children: node.isRequired
 }
+
+export default CardDecks

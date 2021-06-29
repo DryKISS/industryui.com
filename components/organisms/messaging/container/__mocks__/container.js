@@ -101,17 +101,16 @@ export const messages = [
         emailAddress: 'Jsmith@Smith.com',
         date: 'Tue, 15 Marc 2021 20:34',
         subject:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore'
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo'
       },
       forwardedFrom: {
         name: 'Cleverly <support@cleverly.com>',
         avatar: 'https://randomuser.me/api/portraits/men/36.jpg'
       },
       content: [
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
-
-        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ',
-        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  '
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod',
+        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis',
+        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat'
       ]
     },
     icon: 'email',
@@ -144,17 +143,16 @@ export const messages = [
         emailAddress: 'Jsmith@Smith.com',
         date: 'Tue, 15 Marc 2021 20:34',
         subject:
-          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore'
+          'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod'
       },
       forwardedFrom: {
         name: 'Cleverly <support@cleverly.com>',
         avatar: 'https://randomuser.me/api/portraits/men/36.jpg'
       },
       content: [
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
-
-        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ',
-        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.  '
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod',
+        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis',
+        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat'
       ]
     },
     content: 'Trabajo completado.',

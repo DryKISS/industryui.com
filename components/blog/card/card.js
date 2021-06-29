@@ -6,15 +6,22 @@
 import React from 'react'
 import { any, object, oneOf } from 'prop-types'
 
-// UI
-import { BlogCategory, BlogTags, Button, Card, CardImage, Divider, Link, slugify } from '../../'
-import { CardBody } from '../../molecules/card/components/body'
-import { Heading } from '../../atoms/heading/heading'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const BlogCard = ({ article, config, link, type }) => {
+// UI
+import BlogCategory from '../category/category'
+import BlogTags from '../tags/tags'
+import Button from '../../atoms/button/button/button'
+import Card from '../../molecules/card/card'
+import CardBody from '../../molecules/card/components/body'
+import CardImage from '../../molecules/card/components/image'
+import Divider from '../../atoms/divider/divider'
+import Heading from '../../atoms/heading/heading'
+import Link from '../../atoms/link/link'
+import slugify from '../../utils/slugify/slugify'
+
+const BlogCard = ({ article, config, link, type }) => {
   const { author, category, excerpt, heading, slug } = article
 
   const articleSlug = article ? slugify(slug) : null
@@ -173,3 +180,5 @@ BlogCard.propTypes = {
 BlogCard.defaultProps = {
   type: 'normal'
 }
+
+export default BlogCard

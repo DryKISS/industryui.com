@@ -10,13 +10,13 @@ import { array, func } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { formatPrice } from '../../../utils/formatPrice/index'
-import { Icon } from '../../../atoms/icon/icon/icon'
-import { Pagination } from '../../../molecules/pagination/components/pagination'
+import formatPrice from '../../../utils/formatPrice/formatPrice'
+import Icon from '../../../atoms/icon/icon/icon'
+import Pagination from '../../../molecules/pagination/pagination'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
-import { Table } from '../../../molecules/table/components/wrapper'
-import { Text } from '../../../atoms/text/text'
-import { Tooltip } from '../../../atoms/tooltip/tooltip'
+import Table from '../../../molecules/table/table'
+import Text from '../../../atoms/text/text'
+import Tooltip from '../../../atoms/tooltip/tooltip'
 
 const formatCell = (handleClick, month, row) => {
   return row[month][0] || row[month] ? (
@@ -127,13 +127,7 @@ export const columns = (handleClick) => [
   }
 ]
 
-// breakCount: 5,
-// pageCount: 10,
-// context: 'primary',
-// size: 'md',
-// showNextAndPrev: false
-
-export const Schedule = ({ data, handleClick, handleRowClick }) => {
+const Schedule = ({ data, handleClick, handleRowClick }) => {
   return (
     <>
       <Pagination pageCount="10" />
@@ -165,3 +159,5 @@ Schedule.propTypes = {
   handleClick: func,
   handleRowClick: func
 }
+
+export default Schedule

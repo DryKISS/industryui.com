@@ -10,9 +10,13 @@ import { func, node, object, oneOf, shape, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Adornment, arrayOfValues, InputDecorationTypes, Space, Text } from '../../'
-import { THEME_COLOUR } from '../../theme/variables/colour'
-import { THEME_SIZE } from '../../theme/constants/size'
+import Adornment from './adornment'
+import arrayOfValues from '../../utils/arrayOfValues/arrayOfValues'
+import InputDecorationTypes from './decorationTypes'
+import Space from '../../atoms/space/space'
+import Text from '../../atoms/text/text'
+import THEME_COLOUR from '../../constants/colour'
+import THEME_SIZE from '../../constants/size'
 
 const colourPlate = {
   dark: THEME_COLOUR.darkText,
@@ -34,12 +38,6 @@ const inputThemeColourPlate = {
   warning: 'gold40'
 }
 
-export const InputTypes = {
-  NUMBER: 'number',
-  TEXT: 'text',
-  PASSWORD: 'password'
-}
-
 const colourProvider = (theme, decoration) => {
   if (theme?.COLOUR) {
     return theme.COLOUR[inputThemeColourPlate[decoration]]
@@ -48,7 +46,7 @@ const colourProvider = (theme, decoration) => {
   }
 }
 
-export const Input = ({
+const Input = ({
   adornments,
   decoration,
   errors,
@@ -242,3 +240,5 @@ Input.defaultProps = {
   type: InputTypes.TEXT,
   size: THEME_SIZE.MD
 }
+
+export default Input

@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const OvenIcon = (props) => {
+const OvenIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={64}>
       <path d="m59 2h-54a3 3 0 0 0 -3 3v50.091a2.959 2.959 0 0 0 3 2.909h3v3a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-3h36v3a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-3h3a2.959 2.959 0 0 0 3-2.909v-50.091a3 3 0 0 0 -3-3zm-47 58h-2v-2h2zm42 0h-2v-2h2zm6-4.909a.959.959 0 0 1 -1 .909h-54a.959.959 0 0 1 -1-.909v-39.091h56zm0-41.091h-56v-9a1 1 0 0 1 1-1h54a1 1 0 0 1 1 1z" />
@@ -23,6 +23,6 @@ export const OvenIcon = (props) => {
   )
 }
 
-export default OvenIcon
-
 OvenIcon.propTypes = propTypes
+
+export default OvenIcon

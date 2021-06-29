@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const SprinkleIcon = (props) => {
+const SprinkleIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <path d="m255.957 405.446c-5.522 0-10 4.477-10 10s4.478 10 10 10h.058c5.522 0 9.971-4.477 9.971-10s-4.507-10-10.029-10z" />
@@ -28,6 +28,6 @@ export const SprinkleIcon = (props) => {
   )
 }
 
-export default SprinkleIcon
-
 SprinkleIcon.propTypes = propTypes
+
+export default SprinkleIcon

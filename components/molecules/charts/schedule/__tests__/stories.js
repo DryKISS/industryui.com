@@ -6,9 +6,9 @@
 import React from 'react'
 
 // UI
-import { Schedule } from '../schedule'
+import Schedule from '../schedule'
 import Readme from '../README.md'
-import { SCHEDULE } from '../__mocks__/scheduleMock'
+import SCHEDULE from '../__mocks__/scheduleMock'
 
 export default {
   component: Schedule,

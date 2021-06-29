@@ -2,7 +2,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const ListIcon = (props) => {
+const ListIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={24}>
       <path d="M7.37842 4.53333H21V6.66666H7.37842V4.53333Z" />
@@ -15,6 +15,6 @@ export const ListIcon = (props) => {
   )
 }
 
-export default ListIcon
-
 ListIcon.propTypes = propTypes
+
+export default ListIcon

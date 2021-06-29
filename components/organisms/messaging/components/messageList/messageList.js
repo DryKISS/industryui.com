@@ -9,17 +9,17 @@ import { array } from 'prop-types'
 // React Virtualised
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized'
 
-import DateDiff from '../../../../utils/date/diff'
+// Style
+import styled, { css } from 'styled-components'
 
+// UI
+import DateDiff from '../../../../utils/date/diff'
 import {
   MessageNames,
   MessagingActions
 } from '../../../../services/componentCommunication/messageNames'
 import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
-import { useComponentCommunication } from '../../../../hooks/useComponentCommunication/useSubscription'
-
-// Style
-import styled, { css } from 'styled-components'
+import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {
   return (

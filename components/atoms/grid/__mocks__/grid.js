@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Column } from '../../../'
+import Column from '../Column'
 
 export const colStyle = {
   border: '1px gray solid'

@@ -1,4 +1,4 @@
-export const toHHMMSS = ({ sec, hasSecond, hasMinute, hasHour }) => {
+const toHHMMSS = ({ sec, hasSecond, hasMinute, hasHour }) => {
   const secNum = parseInt(sec, 10) // don't forget the second param
   let hours = Math.floor(secNum / 3600)
   let minutes = Math.floor((secNum - hours * 3600) / 60)
@@ -19,4 +19,5 @@ export const toHHMMSS = ({ sec, hasSecond, hasMinute, hasHour }) => {
     (hasSecond ? seconds : '')
   )
 }
+
 export default toHHMMSS

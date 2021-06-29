@@ -10,9 +10,10 @@ import { any, bool, object, oneOfType, shape, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { Link, slugify } from '../../'
+import Link from '../../atoms/link/link'
+import slugify from '../../utils/slugify/slugify'
 
-export const BlogCategory = ({ author, config, className, link, style, to }) => {
+const BlogCategory = ({ author, config, className, link, style, to }) => {
   const path = slugify(to ?? link.to)
 
   return (
@@ -54,3 +55,5 @@ BlogCategory.propTypes = {
     to: oneOfType([object, string]).isRequired
   })
 }
+
+export default BlogCategory

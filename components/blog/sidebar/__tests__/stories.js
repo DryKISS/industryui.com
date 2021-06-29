@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BlogSidebar } from '../sidebar'
+import BlogSidebar from '../sidebar'
 import Readme from '../README.md'
 
 // Data

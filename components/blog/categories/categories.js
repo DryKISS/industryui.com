@@ -10,13 +10,18 @@
 import React, { Fragment } from 'react'
 import { any, object } from 'prop-types'
 
-// UI
-import { BlogCard, Column, Heading, Link, Row, slugify } from '../../'
-
 // Style
 import styled from 'styled-components'
 
-export const BlogCategories = ({ articles, config }) => {
+// UI
+import BlogCard from '../card/card'
+import Column from '../../atoms/grid/Column'
+import Heading from '../../atoms/heading/heading'
+import Link from '../../atoms/link/link'
+import Row from '../../atoms/grid/Row'
+import slugify from '../../utils/slugify/slugify'
+
+const BlogCategories = ({ articles, config }) => {
   const _uniqueCategories = () => {
     const uniqueCategories = [...new Set(articles.map((article) => article.category))]
     return uniqueCategories
@@ -82,3 +87,5 @@ BlogCategories.propTypes = {
   articles: any.isRequired,
   config: object.isRequired
 }
+
+export default BlogCategories

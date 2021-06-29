@@ -20,7 +20,7 @@ import {
   MessagingActions
 } from '../../../../services/componentCommunication/messageNames'
 import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
-import { useComponentCommunication } from '../../../../hooks/useComponentCommunication/useSubscription'
+import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)

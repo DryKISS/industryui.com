@@ -9,9 +9,10 @@ import { bool, node, number, object } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
+// UI
 // import { RawResizeDetector } from '../../../'
 
-export const Details2Content = ({
+const Details2Content = ({
   animationTime,
   children,
   contentRef,
@@ -74,3 +75,5 @@ Details2Content.defaultProps = {
   animationTime: 100,
   isOpen: false
 }
+
+export default Details2Content
