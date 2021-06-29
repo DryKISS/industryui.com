@@ -12,7 +12,7 @@ import createMentionPlugin from 'draft-js-mention-plugin'
 import createLinkifyPlugin from '@draft-js-plugins/linkify'
 
 // UI
-import createHashtagPlugin from './hashtag/createHashtagPlugin'
+import createHashtagPlugin from './hashtag/hashtagPlugin'
 import LinkPluginComponent from './components/linkPluginComponent'
 
 export const linkifyPlugin = createLinkifyPlugin({
