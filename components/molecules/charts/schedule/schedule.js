@@ -127,11 +127,36 @@ export const columns = (handleClick) => [
   }
 ]
 
-const Schedule = ({ data, handleClick, handleRowClick }) => {
+export const Schedule = ({
+  data,
+  handleClick,
+  handleRowClick,
+  onYearChange,
+  currentYear,
+  yearRange
+}) => {
   return (
     <>
-      <Pagination pageCount="10" />
-      <Table align="center" columns={columns(handleClick)} rowClick={handleRowClick} rows={data} />
+      <Table
+        align="center"
+        columns={columns(handleClick)}
+        hover={false}
+        rowClick={handleRowClick}
+        rows={data}
+      />
+      {yearRange && (
+        <>
+          <Space marginTop="sm">
+            <Pagination
+              pageCount={yearRange.length}
+              pageRange={yearRange}
+              currentPage={currentYear}
+              onPageChange={onYearChange}
+              context={'primary'}
+            ></Pagination>
+          </Space>
+        </>
+      )}
     </>
   )
 }
