@@ -134,7 +134,6 @@ export const main = (props) => {
       <OctagonIcon {...props} />
       <SearchIcon {...props} />
 
-      <Text content="Menu Bar" />
       <MenuBarsIcon {...props} />
 
       <TriangleIcon {...props} />
@@ -154,16 +153,13 @@ export const main = (props) => {
       <CheckedIcon {...props} />
       <StarIcon {...props} />
 
-      <Text content="List" />
       <ListIcon {...props} />
 
       <MicIcon {...props} />
       <UploadIcon {...props} />
 
-      <Text content="Vertical Three Dots" />
       <VerticalThreeDotsIcon {...props} />
 
-      <Text content="Exclamation Circle" />
       <ExclamationCircleIcon {...props} />
 
       <ThermometerIcon {...props} />

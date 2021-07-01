@@ -10,7 +10,7 @@ import TYPOGRAPHY from '../constants/typography'
 import AVATAR from '../atoms/avatar/components/variables'
 import BADGE from '../atoms/badge/components/variables'
 import BAR from '../organisms/bar/variables'
-// import  CALENDAR  from '../organisms/calendar/bi'
+import  CALENDAR  from '../organisms/calendar/fullCalendar/components/variables'
 import COPYRIGHT from '../molecules/copyright/variables'
 import DETAILS2 from '../atoms/details2/components/variables'
 import DROPDOWN from '../molecules/dropdown/variables'
@@ -45,7 +45,7 @@ const Theme = {
   BADGE,
   BAR,
   BARCHART,
-  // CALENDAR,
+  CALENDAR,
   COLOUR,
   COPYRIGHT,
   DETAILS2,
