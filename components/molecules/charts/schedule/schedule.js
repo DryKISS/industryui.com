@@ -173,7 +173,7 @@ const Wrapper = styled.div`
   justify-content: center;
   text-shadow: 1px 2px 2px #bbb;
   width: 3rem;
-
+  margin: auto;
   &:hover {
     background-color: ${({ context, count, theme: { COLOUR } }) =>
       count > 0 && shadeLinearRgb(-0.1, COLOUR[context])};

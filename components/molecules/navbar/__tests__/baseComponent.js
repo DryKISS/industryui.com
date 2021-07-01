@@ -8,6 +8,7 @@ import React, { useContext } from 'react'
 // UI
 import ConfigContext from '../../../services/config/context'
 import DASHBOARD from '../__mocks__/dashboard'
+import Navbar from '../navbar'
 
 const BaseComponent = (props = {}) => {
   const { Brand } = useContext(ConfigContext)
