@@ -13,9 +13,9 @@ const AudioWrapper = styled.div`
     css`
       background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
       display: flex;
-      left: 4rem;
+      left: 3.5rem;
       position: absolute;
-      width: calc(100% - 8rem);
+      width: calc(100% - 6rem);
       z-index: 2;
     `}
 .rhap_container {
