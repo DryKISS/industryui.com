@@ -12,7 +12,6 @@ import styled from 'styled-components'
 // UI
 import formatPrice from '../../../utils/formatPrice/formatPrice'
 import Icon from '../../../atoms/icon/icon/icon'
-import Pagination from '../../../molecules/pagination/pagination'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
 import Table from '../../../molecules/table/table'
 import Text from '../../../atoms/text/text'

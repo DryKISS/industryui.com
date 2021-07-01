@@ -22,4 +22,4 @@ export default {
   title: 'App'
 }
 
-export const main = (args) => <App Component={() => <Text>Here</Text>} Layout={<Text>Here</Text>} />
+// export const main = (args) => <App Component={() => <Text>Here</Text>} Layout={<Text>Here</Text>} />
