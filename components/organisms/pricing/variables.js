@@ -3,7 +3,7 @@
  */
 import THEME_COLOUR from '../../constants/colour'
 
-export const PRICING = {
+ const PRICING = {
   addToCartTextColour: THEME_COLOUR.deepBlue,
   cardBackground: THEME_COLOUR.watterBlue,
   cardCheckedIconColour: THEME_COLOUR.male,
@@ -18,3 +18,4 @@ export const PRICING = {
   recommendedCardPriceTextColour: THEME_COLOUR.white,
   recommendedCardPropertiesTextColour: THEME_COLOUR.white
 }
+export default PRICING

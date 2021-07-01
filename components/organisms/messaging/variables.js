@@ -3,9 +3,9 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import  THEME_COLOUR  from '../../constants/colour'
 
-export const MESSAGING = {
+ const MESSAGING = {
   avatarBackground: THEME_COLOUR.primary,
   audioAndVolumeProgressColour: THEME_COLOUR.info,
   audioControllersColour: THEME_COLOUR.primary,
@@ -50,6 +50,6 @@ export const MESSAGING = {
   shortEmailPreviewBackground: null,
   timerColour: THEME_COLOUR.info,
   tooltipBackground: null,
-
   translatorTextColour: THEME_COLOUR.primary
 }
+export default MESSAGING

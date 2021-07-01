@@ -5,6 +5,7 @@
 // UI
 import THEME_COLOUR from '../../constants/colour'
 
-export const LOGIN = {
+ const LOGIN = {
   background: THEME_COLOUR.white
 }
+export default LOGIN

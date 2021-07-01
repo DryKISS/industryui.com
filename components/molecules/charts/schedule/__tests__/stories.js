@@ -3,7 +3,7 @@
  */
 
 // React
-import React from 'react'
+import React,{useState} from 'react'
 
 // UI
 import Schedule from '../schedule'
@@ -36,3 +36,22 @@ const handleRowClick = (row) => {
 export const main = (args) => (
   <Schedule {...args} data={SCHEDULE} handleClick={handleClick} handleRowClick={handleRowClick} />
 )
+
+export const withPagination = (args) => {
+  const [currentYear, setCurrentYear] = useState(2021)
+  const handleYearChange = (page) => {
+    setCurrentYear(page)
+  }
+
+  return (
+    <Schedule
+      {...args}
+      data={SCHEDULE}
+      handleClick={handleClick}
+      handleRowClick={handleRowClick}
+      onYearChange={handleYearChange}
+      currentYear={currentYear}
+      yearRange={[2020, 2021, 2022]}
+    />
+  )
+}

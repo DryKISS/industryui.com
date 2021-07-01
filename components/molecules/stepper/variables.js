@@ -3,9 +3,10 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import  THEME_COLOUR  from '../../constants/colour'
 
-export const STEPPER = {
+ const STEPPER = {
   colour: THEME_COLOUR.primary,
   colourCheckmark: THEME_COLOUR.success
 }
+export default STEPPER
