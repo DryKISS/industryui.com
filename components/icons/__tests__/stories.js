@@ -152,16 +152,11 @@ export const main = (props) => {
       <PlusIcon {...props} />
       <CheckedIcon {...props} />
       <StarIcon {...props} />
-
       <ListIcon {...props} />
-
       <MicIcon {...props} />
       <UploadIcon {...props} />
-
       <VerticalThreeDotsIcon {...props} />
-
       <ExclamationCircleIcon {...props} />
-
       <ThermometerIcon {...props} />
       <SensorIcon {...props} />
       <SmokeDetectorIcon {...props} />
