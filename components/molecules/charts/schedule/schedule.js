@@ -17,6 +17,7 @@ import { shadeLinearRgb } from '../../../utils/colour/colour'
 import Table from '../../../molecules/table/table'
 import Text from '../../../atoms/text/text'
 import Tooltip from '../../../atoms/tooltip/tooltip'
+import Pagination from '../../../molecules/pagination/pagination'
 
 const formatCell = (handleClick, month, row) => {
   return row[month][0] || row[month] ? (
