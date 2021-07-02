@@ -5,7 +5,7 @@
 // UI
 import THEME_COLOUR from '../../constants/colour'
 
- const VOICE_RECORDER = {
+const VOICE_RECORDER = {
   iconsColour: THEME_COLOUR.dark,
   iconsHoverColour: THEME_COLOUR.info,
   loadingStateColour: THEME_COLOUR.dark,

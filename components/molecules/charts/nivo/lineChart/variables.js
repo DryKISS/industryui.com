@@ -6,11 +6,11 @@
 import { shortDate } from '../../../../utils/dateFns/date'
 
 // UI
-import  THEME_COLOUR  from '../../../../constants/colour'
+import THEME_COLOUR from '../../../../constants/colour'
 
 let lastValue = null
 
- const LINECHART = {
+const LINECHART = {
   axisBottom: function () {
     return {
       axisTop: null,

@@ -45,9 +45,10 @@ const Pagination = ({
   }
 
   const pagesArray = chunk(
-    pageRange ||  Array(pageCount)
-      .fill(0)
-      .map((p, i) => i + 1),
+    pageRange ||
+      Array(pageCount)
+        .fill(0)
+        .map((p, i) => i + 1),
     breakCount
   )
 

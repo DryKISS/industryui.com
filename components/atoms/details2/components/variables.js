@@ -5,7 +5,7 @@
 // UI
 import THEME_COLOUR from '../../../constants/colour'
 
- const DETAILS2 = {
+const DETAILS2 = {
   header: {
     background: THEME_COLOUR.light
   },

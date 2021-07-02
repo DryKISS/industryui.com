@@ -5,7 +5,7 @@
 // UI
 import THEME_COLOUR from '../../constants/colour'
 
- const FOOTER = {
+const FOOTER = {
   background: THEME_COLOUR.white,
   colour: THEME_COLOUR.black,
   fontSize: '0.875rem',

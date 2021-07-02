@@ -3,9 +3,9 @@
  */
 
 // UI
-import  THEME_COLOUR  from '../../constants/colour'
+import THEME_COLOUR from '../../constants/colour'
 
- const COPYRIGHT = {
+const COPYRIGHT = {
   background: THEME_COLOUR.white,
   colour: THEME_COLOUR.black
 }

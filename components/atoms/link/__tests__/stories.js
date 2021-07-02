@@ -39,7 +39,7 @@ export default {
 
 const BaseComponent = (props = {}) => {
   const defaultProps = {
-    onClick:()=> console.log('clicked'),
+    onClick: () => console.log('clicked'),
     ...props
   }
 

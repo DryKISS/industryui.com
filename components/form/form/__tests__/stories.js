@@ -45,7 +45,7 @@ import Readme from '../README.md'
 // Data
 import enGB from 'date-fns/locale/en-GB'
 import { RADIO_GENDER } from '../../radio/__mocks__/radio'
-import  Options  from '../../reactSelect/__mocks__/options'
+import Options from '../../reactSelect/__mocks__/options'
 import COLOURS from '../../select/__mocks__/colours'
 
 export default {

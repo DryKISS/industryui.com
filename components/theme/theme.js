@@ -10,7 +10,7 @@ import TYPOGRAPHY from '../constants/typography'
 import AVATAR from '../atoms/avatar/components/variables'
 import BADGE from '../atoms/badge/components/variables'
 import BAR from '../organisms/bar/variables'
-import  CALENDAR  from '../organisms/calendar/fullCalendar/components/variables'
+import CALENDAR from '../organisms/calendar/fullCalendar/components/variables'
 import COPYRIGHT from '../molecules/copyright/variables'
 import DETAILS2 from '../atoms/details2/components/variables'
 import DROPDOWN from '../molecules/dropdown/variables'
@@ -36,9 +36,9 @@ import TEXT from '../atoms/text/components/variables'
 import VOICE_RECORDER from '../molecules/voiceRecorder/variables'
 
 // Nivo
-import  BARCHART  from '../molecules/charts/nivo/responsiveBar/variables'
-import  LINECHART  from '../molecules/charts/nivo/lineChart/variables'
-import  PIECHART  from '../molecules/charts/nivo/pieChart/variables'
+import BARCHART from '../molecules/charts/nivo/responsiveBar/variables'
+import LINECHART from '../molecules/charts/nivo/lineChart/variables'
+import PIECHART from '../molecules/charts/nivo/pieChart/variables'
 
 const Theme = {
   AVATAR,

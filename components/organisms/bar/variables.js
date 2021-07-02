@@ -3,9 +3,9 @@
  */
 
 // II
-import  THEME_COLOUR  from '../../constants/colour'
+import THEME_COLOUR from '../../constants/colour'
 
- const BAR = {
+const BAR = {
   background: THEME_COLOUR.dark,
   highlight: THEME_COLOUR.primary,
   linkColour: THEME_COLOUR.light,

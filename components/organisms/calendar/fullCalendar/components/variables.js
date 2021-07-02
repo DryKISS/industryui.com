@@ -2,7 +2,7 @@
  * Components - Organisms - Calendar - Full Calendar - Variables
  */
 
- const CALENDAR = {
+const CALENDAR = {
   header: {
     left: 'prev,next today',
     center: 'title',

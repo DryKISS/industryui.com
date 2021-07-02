@@ -7,7 +7,7 @@ import THEME_COLOUR from '../../../../constants/colour'
 
 const legendTranslateX = 110
 
- const BARCHART = {
+const BARCHART = {
   animate: false,
   colors: THEME_COLOUR,
   margin: function () {

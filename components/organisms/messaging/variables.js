@@ -3,9 +3,9 @@
  */
 
 // UI
-import  THEME_COLOUR  from '../../constants/colour'
+import THEME_COLOUR from '../../constants/colour'
 
- const MESSAGING = {
+const MESSAGING = {
   avatarBackground: THEME_COLOUR.primary,
   audioAndVolumeProgressColour: THEME_COLOUR.info,
   audioControllersColour: THEME_COLOUR.primary,

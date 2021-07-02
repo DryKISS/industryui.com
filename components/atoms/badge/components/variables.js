@@ -1,7 +1,7 @@
 /**
  * Components - Atoms - Badge - Variables
  */
- const BADGE = {
+const BADGE = {
   BORDER_RADIUS: {
     round: '5rem',
     square: '0.25rem'

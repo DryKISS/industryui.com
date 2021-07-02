@@ -3,9 +3,9 @@
  */
 
 // UI
-import  THEME_COLOUR  from '../../../../constants/colour'
+import THEME_COLOUR from '../../../../constants/colour'
 
- const PIECHART = {
+const PIECHART = {
   animate: true,
   borderColor: { from: 'color', modifiers: [['darker', 0.2]] },
   borderWidth: 1,

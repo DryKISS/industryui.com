@@ -3,7 +3,7 @@
  */
 import THEME_COLOUR from '../../constants/colour'
 
- const PRICING = {
+const PRICING = {
   addToCartTextColour: THEME_COLOUR.deepBlue,
   cardBackground: THEME_COLOUR.watterBlue,
   cardCheckedIconColour: THEME_COLOUR.male,
