@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components'
 const AudioWrapper = styled.div`
   min-height: 3rem;
   width: 100%;
+
   ${({ hidden }) =>
     hidden === true &&
     css`
       display: none;
     `}
+
   ${({ preview }) =>
     preview &&
     css`
@@ -18,6 +20,7 @@ const AudioWrapper = styled.div`
       width: calc(100% - 6rem);
       z-index: 2;
     `}
+
 .rhap_container {
     box-sizing: border-box;
     display: flex;
@@ -26,9 +29,11 @@ const AudioWrapper = styled.div`
     font-family: inherit;
     width: 100%;
   }
+
   .rhap_container:focus:not(:focus-visible) {
     outline: 0;
   }
+
   .rhap_container svg {
     vertical-align: initial;
   }

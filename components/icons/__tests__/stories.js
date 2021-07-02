@@ -9,8 +9,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import Text from '../../atoms/text/text'
-
 import AirConditionerIcon from '../components/airConditioner'
 import ArrowDownIcon from '../components/arrowDown'
 import BellIcon from '../components/bell'
@@ -133,9 +131,7 @@ export const main = (props) => {
       <CheckCircleIcon {...props} />
       <OctagonIcon {...props} />
       <SearchIcon {...props} />
-
       <MenuBarsIcon {...props} />
-
       <TriangleIcon {...props} />
       <MapMarkerIcon {...props} />
       <PaperPlaneIcon {...props} />
