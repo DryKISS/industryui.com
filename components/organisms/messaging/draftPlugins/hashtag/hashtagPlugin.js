@@ -3,7 +3,7 @@ import React from 'react'
 
 import Hashtag from './Hashtag'
 import hashtagStrategy from './hashtagStrategy'
-const createHashtagPlugin = (config = {}) => {
+const hashtagPlugin = (config = {}) => {
   const DecoratedHashtag = (props) => <Hashtag {...props} />
   return {
     decorators: [
@@ -14,4 +14,4 @@ const createHashtagPlugin = (config = {}) => {
     ]
   }
 }
-export default createHashtagPlugin
+export default hashtagPlugin

@@ -9,7 +9,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 // UI
-import HighChart from '../../HighChart'
+import HighChart from '../../highChart'
 import { LiveChartSubscriber } from '../../../../../services/componentCommunication/componentCommunication'
 import { MessageNames } from '../../../../../services/componentCommunication/messageNames'
 import Readme from '../README.md'

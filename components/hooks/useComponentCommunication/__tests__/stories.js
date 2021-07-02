@@ -18,7 +18,7 @@ import {
   Subscriber
 } from '../../../services/componentCommunication/componentCommunication'
 import { MessageNames } from '../../../services/componentCommunication/messageNames'
-import RandomColor from '../../../utils/randomColor/index'
+import RandomColor from '../../../utils/randomColor/randomColor'
 import Text from '../../../atoms/text/text'
 import useComponentCommunication from '../useSubscription'
 

@@ -9,12 +9,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import DetailsSubscriber from '../../services/componentCommunication/componentCommunication'
+import { DetailsSubscriber } from '../../services/componentCommunication/componentCommunication'
 import Details2Header from './components/header'
 import Details2Content from './components/content'
-import MessageNames from '../../services/componentCommunication/messageNames'
+import { MessageNames } from '../../services/componentCommunication/messageNames'
 import useComponentCommunication from '../../hooks/useComponentCommunication/useSubscription'
-import { propTypes, defaultProps } from '../components/props'
+import { propTypes, defaultProps } from './components/props'
 
 let callTimeout
 

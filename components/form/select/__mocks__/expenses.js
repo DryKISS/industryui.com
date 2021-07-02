@@ -1,7 +1,7 @@
 /**
  * Constant - Expenses types
  */
-export const EXPENSES = [
+const EXPENSES = [
   {
     disabled: true,
     text: 'Select expense type',
@@ -317,3 +317,4 @@ export const EXPENSES = [
     ]
   }
 ]
+export default EXPENSES

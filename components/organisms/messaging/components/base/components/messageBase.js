@@ -15,7 +15,7 @@ import AudioWrapper from '../../audioPlayer/wrapper'
 import Card from '../../../../../molecules/card/card'
 import Column from '../../../../../atoms/grid/Column'
 import Dropdown from '../../../../../molecules/dropdown/dropdown'
-import { hashtagPlugin } from '../../../draftPlugins/hashtag/index'
+import hashtagPlugin from '../../../draftPlugins/hashtag/hashtagPlugin'
 import Icon from '../../../../../atoms/icon/icon/icon'
 import Image from '../../../../../atoms/image/image'
 import linkifyPlugin from '../../../draftPlugins/components/linkPluginComponent'
@@ -30,10 +30,10 @@ import { MessagingEditor } from '../../../draftPlugins/index'
 import Preview from '../../../../../molecules/preview/preview'
 import ReplyContainer from '../../replyContainer/replyContainer'
 import Row from '../../../../../atoms/grid/Row'
-import TranslationService from ''
+import TranslationService from '../../../../../services/translation/translation'
 
 import MessageIcon from './messageIcon'
-import MessageTo from './MessageTo'
+import MessageTo from './messageTo'
 import MenuIcon from './menuIcon'
 import Loadingspinner from './loadingSpinner'
 import { EditorState, ContentState, convertFromRaw } from 'draft-js'
@@ -93,7 +93,7 @@ const MessageBase = ({
           plainText = content
         }
         try {
-          const { response } = await TranslationService.Translate(plainText)
+          const { response } = await TranslationService(plainText)
           translated.current = EditorState.createWithContent(ContentState.createFromText(response))
           setEditorState(translated.current)
           setShowingTranslation(true)

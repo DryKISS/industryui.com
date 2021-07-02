@@ -1,7 +1,7 @@
 /**
  * Components - Organisms - Footer - Mocks - DryKISS
  */
-export const DRYKISS = [
+const DRYKISS = [
   {
     header: {
       content: 'About',
@@ -117,3 +117,4 @@ export const DRYKISS = [
     }
   }
 ]
+export default DRYKISS

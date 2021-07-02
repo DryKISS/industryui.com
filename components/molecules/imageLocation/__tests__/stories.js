@@ -19,7 +19,7 @@ import Form from '../../../form/form/form'
 import ImageLocation from '../imageLocation'
 import ImageLocationFormElement from '../components/imageLocationFormElement'
 import randomFloat from '../../../utils/randomFloat'
-import RawIcons from '../../../icons/rawIcons'
+import { iconNameList } from '../../../icons/rawIcons'
 import Readme from '../README.md'
 
 // Data
@@ -38,7 +38,7 @@ export default {
   },
   argTypes: {
     customIcon: {
-      control: { type: 'select', options: Object.keys(RawIcons) }
+      control: { type: 'select', options: iconNameList }
     },
     animation: {
       control: { type: 'select', options: ['blinker', 'none'] }

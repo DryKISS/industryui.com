@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import HighChart from '../../HighChart'
+import HighChart from '../../highChart'
 import Readme from '../README.md'
 
 // Data

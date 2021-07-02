@@ -24,6 +24,7 @@ const Pagination = ({
   nextLabel,
   onPageChange,
   pageCount,
+  pageRange,
   prevLabel,
   showNextAndPrev,
   size,
@@ -44,7 +45,7 @@ const Pagination = ({
   }
 
   const pagesArray = chunk(
-    Array(pageCount)
+    pageRange ||  Array(pageCount)
       .fill(0)
       .map((p, i) => i + 1),
     breakCount

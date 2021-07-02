@@ -11,7 +11,7 @@ import OPTIONS from './options'
 import Readme from '../README.md'
 
 // Data
-import { Default } from '../__mocks__/navbar'
+import DEFAULT from '../__mocks__/navigation'
 
 export default {
   title: 'Molecules/Navbar/Contained',
@@ -25,4 +25,4 @@ export default {
   ...OPTIONS
 }
 
-export const contained = () => <BaseComponent contained widgets={Default} />
+export const contained = () => <BaseComponent contained widgets={DEFAULT} />

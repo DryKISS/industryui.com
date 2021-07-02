@@ -13,7 +13,7 @@ const LazyIcon = ({ iconName, ...props }) => {
 
   const loadModule = async () => {
     if (LoadedIcon === null) {
-      const Icon = await dynamic(() => import(`./components/${iconName}`))
+      const Icon = await dynamic(() => import(`./components/${iconName || props.icon}`))
       setLoadedIcon(Icon)
     }
   }

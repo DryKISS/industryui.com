@@ -17,7 +17,7 @@ import Readme from '../README.md'
 import { Copyright } from '../../../molecules/copyright/__mocks__/copyright'
 
 // Footer
-import { FORMATTER } from '../../../organisms/footer/__mocks__/footer'
+import FORMATTER from '../../../organisms/footer/__mocks__/formatter'
 
 // Navbar
 import DEFAULT from '../../../molecules/navbar/__mocks__/navigation'

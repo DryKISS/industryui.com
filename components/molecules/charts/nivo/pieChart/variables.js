@@ -3,9 +3,9 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../../../theme/variables/colour'
+import  THEME_COLOUR  from '../../../../constants/colour'
 
-export const PIECHART = {
+ const PIECHART = {
   animate: true,
   borderColor: { from: 'color', modifiers: [['darker', 0.2]] },
   borderWidth: 1,
@@ -54,3 +54,4 @@ export const PIECHART = {
   slicesLabelsTextColor: THEME_COLOUR.dark,
   startAngle: -180
 }
+export default PIECHART

@@ -10,8 +10,8 @@ import { array, bool, func, number, object, oneOfType, string } from 'prop-types
 import styled from 'styled-components'
 
 // UI
-import LdsSpinner from '../../../molecules/pageLoading/components/ldsSpinner'
-import PageLoading from '../../../molecules/pageLoading/components/pageLoading'
+import LdsSpinner from '../../../molecules/pageLoading/ldsSpinner'
+import PageLoading from '../../../molecules/pageLoading/pageLoading'
 import CalendarWrapper from './components/calendarWrapper'
 
 const Calendar = ({

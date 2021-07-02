@@ -10,7 +10,6 @@ import { bool, node, number, object } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-// import { RawResizeDetector } from '../../../'
 
 const Details2Content = ({
   animationTime,

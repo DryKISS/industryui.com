@@ -18,7 +18,7 @@ import Link from '../../atoms/link/link'
 import Row from '../../atoms/grid/Row'
 
 // Constant
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import THEME_CONTEXT from '../../constants/context'
 
 const year = new Date().getFullYear()
 

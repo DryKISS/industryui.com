@@ -14,6 +14,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import DateDiff from '../../../../utils/date/diff'
+import Message from '../message/message'
 import {
   MessageNames,
   MessagingActions

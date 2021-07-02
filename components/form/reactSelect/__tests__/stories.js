@@ -24,7 +24,9 @@ import usePrevious from '../../../hooks/usePrevious'
 import Readme from '../README.md'
 
 // Data
-import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
+import { UsersAvison, UsersHousing } from '../__mocks__/users'
+import Customers from '../__mocks__/customers'
+import Options from '../__mocks__/options'
 
 export default {
   args: {

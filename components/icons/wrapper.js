@@ -99,7 +99,9 @@ const setColour = (state, props) => {
     hoverColour,
     theme: { ICONS, THEME_COLOUR }
   } = props
+
   const defaultColour = context ? THEME_COLOUR.context : colour || ICONS.defaultIconColour
+
   if (state === states.DEFAULT) {
     return disabled && disabledColour
       ? disabledColour
@@ -139,7 +141,9 @@ const StyledSvg = styled.svg`
 
   path {
     transition: fill 0.2s ease;
+
     fill: ${(props) => setColour(states.DEFAULT, props)};
+
     ${({ scale, translate }) => {
       return (
         scale &&
@@ -149,11 +153,13 @@ const StyledSvg = styled.svg`
       )
     }}
   }
+
   &:hover {
     path {
       fill: ${(props) => setColour(states.HOVER, props)};
     }
   }
+
   ${({ onClick, disabled }) =>
     onClick &&
     !disabled &&
