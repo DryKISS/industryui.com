@@ -33,6 +33,7 @@ import STEPPER from '../molecules/stepper/variables'
 import TABLE from '../molecules/table/components/variables'
 import TABS from '../molecules/tabs/variables'
 import TEXT from '../atoms/text/components/variables'
+import TILE from '../molecules/tile/components/variables'
 import VOICE_RECORDER from '../molecules/voiceRecorder/variables'
 
 // Nivo
@@ -61,8 +62,8 @@ const Theme = {
   MESSAGING,
   NAVBAR,
   PAGE,
-  PRICING,
   PIECHART,
+  PRICING,
   PROGRESS,
   PROGRESSBAR,
   SELECT,
@@ -72,6 +73,7 @@ const Theme = {
   TABLE,
   TABS,
   TEXT,
+  TILE,
   TYPOGRAPHY,
   VOICE_RECORDER
 }
