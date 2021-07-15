@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { bool, string, node, object } from 'prop-types'
+import { bool, node, object, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import Link from '../../atoms/link/link'
 import TileBody from './components/body'
 
-const Tile = ({ className, context, to, title, body, rounded, colourConfig, size }) => {
+const Tile = ({ body, className, colourConfig, context, rounded, size, title, to }) => {
   let selectedColour = context
 
   if (colourConfig) {
@@ -40,13 +40,13 @@ const Tile = ({ className, context, to, title, body, rounded, colourConfig, size
   const tile = () => {
     return (
       <StyledTile
-        className={className}
         bgColour={selectedColour}
+        className={className}
         context={context}
         rounded={rounded}
         size={size}
       >
-        {(title || body) && <TileBody children={body} title={title} size={size} />}
+        {(title || body) && <TileBody children={body} size={size} title={title} />}
       </StyledTile>
     )
   }
@@ -59,9 +59,9 @@ const StyledTile = styled.div`
   }};
   box-shadow: ${({ shadow }) =>
     shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
-  color: ${({ theme }) => theme.COLOUR.white};
   background-clip: border-box;
   border-radius: ${({ rounded }) => rounded && '0.25rem'};
+  color: ${({ theme }) => theme.COLOUR.white};
   display: flex;
   flex-direction: column;
   margin: 0;

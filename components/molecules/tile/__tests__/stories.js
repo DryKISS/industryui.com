@@ -10,16 +10,16 @@ import { ContextControl } from '../../../../.storybook/decorators/context'
 import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // UI
-import Tile from '../tile'
 import Column from '../../../atoms/grid/Column'
 import Readme from '../README.md'
+import Tile from '../tile'
 
 export default {
   args: {
     body: '25',
-    title: 'Reactive Job',
+    colourConfig: { 10: 'success', 20: 'warning', 25: 'danger' },
     rounded: true,
-    colourConfig: { 10: 'success', 20: 'warning', 25: 'danger' }
+    title: 'Reactive Job'
   },
   argTypes: {
     context: ContextControl(),
