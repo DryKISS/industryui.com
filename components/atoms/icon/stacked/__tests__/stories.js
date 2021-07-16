@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { IconStacked } from '../stacked'
+import IconStacked from '../stacked'
 import Readme from '../README.md'
 
 export default {

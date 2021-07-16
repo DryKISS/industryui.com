@@ -20,7 +20,13 @@ import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
 
 // UI
-import { Button, DatePickerCalendar, Divider, Form, FormError, Space, Text } from '../../../../'
+import Button from '../../../../atoms/button/button/button'
+import DatePickerCalendar from '../calendar'
+import Divider from '../../../../atoms/divider/divider'
+import Form from '../../../form/form'
+import FormError from '../../../error/error'
+import Space from '../../../../atoms/space/space'
+import Text from '../../../../atoms/text/text'
 import Readme from '../README.md'
 import { args, argTypes } from './controls'
 

@@ -10,9 +10,9 @@ import { bool, object, string } from 'prop-types'
 import { Controller } from 'react-hook-form'
 
 // UI
-import { Dropzone } from './react-dropzone'
+import Dropzone from './react-dropzone/dropzone'
 
-export const DropzoneField = ({ control, name, ...props }) => {
+const DropzoneField = ({ control, name, ...props }) => {
   return <Controller as={Dropzone} control={control} name={name} {...props} />
 }
 
@@ -30,3 +30,5 @@ DropzoneField.defaultProps = {
   name: 'dropzone',
   multiple: false
 }
+
+export default DropzoneField

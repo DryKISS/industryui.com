@@ -6,15 +6,10 @@
 import React from 'react'
 
 // UI
-import { Icon, Webcam } from '../../../'
+import Icon from '../../icons/lazyIcon'
+import Webcam from './webcam'
 
-export const Design = ({
-  handleReset,
-  handleScreenshot,
-  refProp,
-  screenshot,
-  videoConstraints
-}) => (
+const Design = ({ handleReset, handleScreenshot, refProp, screenshot, videoConstraints }) => (
   <>
     <div
       className="text-center"
@@ -63,3 +58,4 @@ export const Design = ({
     </div>
   </>
 )
+export default Design

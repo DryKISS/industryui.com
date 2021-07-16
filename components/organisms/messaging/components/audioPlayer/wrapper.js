@@ -3,21 +3,24 @@ import styled, { css } from 'styled-components'
 const AudioWrapper = styled.div`
   min-height: 3rem;
   width: 100%;
+
   ${({ hidden }) =>
     hidden === true &&
     css`
       display: none;
     `}
+
   ${({ preview }) =>
     preview &&
     css`
       background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
       display: flex;
-      left: 4rem;
+      left: 3.5rem;
       position: absolute;
-      width: calc(100% - 8rem);
+      width: calc(100% - 6rem);
       z-index: 2;
     `}
+
 .rhap_container {
     box-sizing: border-box;
     display: flex;
@@ -26,9 +29,11 @@ const AudioWrapper = styled.div`
     font-family: inherit;
     width: 100%;
   }
+
   .rhap_container:focus:not(:focus-visible) {
     outline: 0;
   }
+
   .rhap_container svg {
     vertical-align: initial;
   }

@@ -14,6 +14,9 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ForgotDetailsResetSchema } from './schema'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import Alert from '../../molecules/alert/alert'
 import Button from '../../atoms/button/button/button'
@@ -22,9 +25,6 @@ import FormField from '../../form/field/input'
 import FormLabel from '../../form/label/label'
 import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
-
-// Style
-import styled from 'styled-components'
 
 const ForgotDetailsReset = ({ pathLogIn, submit }) => {
   const { errors, handleSubmit, register } = useForm({

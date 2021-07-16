@@ -7,14 +7,15 @@
 import React from 'react'
 import { number, string, objectOf, oneOfType } from 'prop-types'
 
-// UI
-import { CardBody, MEDIA_QUERY } from '../../../'
-import { Card } from '../../../molecules/card'
-
 // Style
 import styled, { css } from 'styled-components'
 
-export const TextBlock = ({ children, offset, position }) => (
+// UI
+import Card from '../../card/card'
+import CardBody from '../../card/components/body'
+import MEDIA_QUERY from '../../../utils/mediaQuery/query'
+
+const TextBlock = ({ children, offset, position }) => (
   <StyledCard rounded={false} position={position}>
     <CardBody children={children} />
   </StyledCard>
@@ -61,3 +62,5 @@ const StyledCard = styled(Card)`
 TextBlock.propTypes = {
   offset: objectOf(oneOfType([number, string]))
 }
+
+export default TextBlock

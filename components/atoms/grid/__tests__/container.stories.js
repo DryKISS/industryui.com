@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Container } from '../components/Container'
+import Container from '../Container'
 import Readme from '../README.md'
 
 const debug = {

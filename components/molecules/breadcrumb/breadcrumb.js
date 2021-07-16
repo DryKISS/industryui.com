@@ -14,7 +14,7 @@ import Icon from '../../atoms/icon/icon/icon'
 import Link from '../../atoms/link/link'
 import THEME_SIZE from '../../constants/size'
 
-export const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
+const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
   return (
     <nav aria-label="breadcrumb">
       <StyledOl itemScope="" itemType="http://schema.org/BreadcrumbList">
@@ -137,7 +137,7 @@ const StyledIconWrapper = styled.span`
 
 const StyledIcon = styled(Icon).attrs((props) => ({
   color: props.theme.dark
-}))``
+}))
 
 const StyledSeperator = styled.span`
   color: ${({ theme }) => theme.COLOUR.dark};
@@ -171,3 +171,5 @@ Breadcrumb.propTypes = {
   separator: oneOfType([oneOf(['chevron', 'slash']), string]),
   size: oneOf(Object.values(THEME_SIZE))
 }
+
+export default Breadcrumb

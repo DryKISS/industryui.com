@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { FormError } from '../error'
+import FormError from '../error'
 import Readme from '../README.md'
 
 export default {

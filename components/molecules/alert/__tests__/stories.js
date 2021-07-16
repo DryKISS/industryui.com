@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 
 // UI
 import Alert from '../alert'

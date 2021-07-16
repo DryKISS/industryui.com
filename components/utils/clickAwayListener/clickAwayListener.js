@@ -29,4 +29,5 @@ const ClickAwayListener = ({
 
   return createElement(as, { ref: node, ...props })
 }
+
 export default ClickAwayListener

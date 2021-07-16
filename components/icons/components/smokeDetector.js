@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const SmokeDetectorIcon = (props) => {
+const SmokeDetectorIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={128}>
       <path d="m103.808 4.75h-79.616a1.75 1.75 0 0 0 -1.75 1.75v17.692a1.75 1.75 0 0 0 1.75 1.75h3.43l2.1 9.569a7.8 7.8 0 0 0 5.71 5.865v5.934c0 14.039 10.147 21.77 28.57 21.77s28.57-7.731 28.57-21.77v-5.934a7.791 7.791 0 0 0 5.709-5.861l2.1-9.573h3.43a1.75 1.75 0 0 0 1.75-1.75v-17.692a1.75 1.75 0 0 0 -1.753-1.75zm-39.808 60.83c-11.437 0-25.07-3.17-25.07-18.27v-5.7h8.72v7.515a1.75 1.75 0 0 0 3.5 0v-7.515h6.233v7.515a1.75 1.75 0 0 0 3.5 0v-7.515h6.234v7.515a1.75 1.75 0 0 0 3.5 0v-7.515h6.233v7.515a1.75 1.75 0 0 0 3.5 0v-7.515h8.72v5.7c0 15.1-13.633 18.27-25.07 18.27zm30.86-30.811a4.217 4.217 0 0 1 -4.15 3.341h-53.42a4.216 4.216 0 0 1 -4.15-3.345l-1.934-8.823h65.588zm7.2-12.327h-3.037c-.025 0-.05 0-.075 0h-69.892c-.027 0-.054 0-.082 0h-3.032v-14.192h76.116z" />
@@ -17,6 +17,6 @@ export const SmokeDetectorIcon = (props) => {
   )
 }
 
-export default SmokeDetectorIcon
-
 SmokeDetectorIcon.propTypes = propTypes
+
+export default SmokeDetectorIcon

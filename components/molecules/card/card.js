@@ -5,22 +5,21 @@
 // React
 import React from 'react'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import Close from '../../atoms/close/close'
 import Icon from '../../atoms/icon/icon/icon'
 import Link from '../../atoms/link/link'
 import MEDIA_QUERY from '../../utils/mediaQuery/query'
-
 import CardBody from './components/body'
 import CardFooter from './components/footer'
 import CardHeader from './components/header'
 import CardImage from './components/image'
 import { CardPropTypes, CardDefaultProps } from './props'
 
-// Style
-import styled from 'styled-components'
-
-export const Card = ({
+const Card = ({
   alt,
   body,
   bordered,
@@ -134,3 +133,5 @@ const StyledIcon = styled(Icon)`
 
 Card.propTypes = CardPropTypes
 Card.defaultProps = CardDefaultProps
+
+export default Card

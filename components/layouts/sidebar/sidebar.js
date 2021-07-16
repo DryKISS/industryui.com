@@ -10,9 +10,9 @@ import { array, func, node, string } from 'prop-types'
 // UI
 import Bootstrap from '../../layouts/bootstrap/bootstrap'
 import ConfigContext from '../../services/config/context'
-import Container from '../../atoms/grid/components/Container'
-import Column from '../../atoms/grid/components/Column'
-import Row from '../../atoms/grid/components/Row'
+import Container from '../../atoms/grid/Container'
+import Column from '../../atoms/grid/Column'
+import Row from '../../atoms/grid/Row'
 
 const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
   const { Sidebar } = useContext(ConfigContext)

@@ -12,8 +12,8 @@ import { SizeControl } from '../../../../../.storybook/decorators/size'
 // UI
 import Button from '../button'
 import Space from '../../../space/space'
-import THEME_CONTEXT from '../../../../theme/constants/context'
-import THEME_SIZE from '../../../../theme/constants/size'
+import THEME_CONTEXT from '../../../../constants/context'
+import THEME_SIZE from '../../../../constants/size'
 import Text from '../../../text/text'
 import Readme from '../README.md'
 

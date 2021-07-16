@@ -9,7 +9,7 @@
 import React from 'react'
 import { string } from 'prop-types'
 
-export const Accept = ({ accept }) => {
+const Accept = ({ accept }) => {
   const files = accept.replace(/,/g, ' and ')
 
   return <em>(Only {files} will be accepted)</em>
@@ -22,3 +22,5 @@ Accept.propTypes = {
 Accept.defaultProps = {
   accept: 'image/jpeg,image/png'
 }
+
+export default Accept

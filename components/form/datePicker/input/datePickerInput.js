@@ -7,13 +7,15 @@ import React from 'react'
 import { bool, func, number, object, string } from 'prop-types'
 
 // UI
-import { Column, Row, SelectField } from '../../../'
-import { Space } from '../../../atoms/space/space'
+import Column from '../../../atoms/grid/Column'
+import Row from '../../../atoms/grid/Row'
+import SelectField from '../../select/select'
+import Space from '../../../atoms/space/space'
 
 // Data
 import { DAYS, MONTHS } from './constants/dates'
 
-export const DatePickerInput = ({
+const DatePickerInput = ({
   data,
   errors,
   index,
@@ -107,3 +109,5 @@ DatePickerInput.defaultProps = {
   yearEnd: 2020,
   yearStart: 1920
 }
+
+export default DatePickerInput

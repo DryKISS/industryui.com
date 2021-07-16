@@ -9,7 +9,7 @@ import { func, node, object } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
- const CarouselSlide = ({ children, onClick, style }) => {
+const CarouselSlide = ({ children, onClick, style }) => {
   return (
     <StyledSlide onClick={onClick} style={style}>
       {children}
@@ -33,4 +33,5 @@ CarouselSlide.propTypes = {
   onClick: func,
   style: object
 }
+
 export default CarouselSlide

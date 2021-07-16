@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { IUIRich } from '../index'
+import IUIRich from '../iuiRich'
 import Readme from '../README.md'
 
 export default {

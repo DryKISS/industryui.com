@@ -9,7 +9,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const DishwasherIcon = (props) => {
+const DishwasherIcon = (props) => {
   return (
     <IconWrapper name="iconDishwasher" {...props} mainSize={480}>
       <path d="M472,0H8C3.582,0,0,3.582,0,8v432c0,4.418,3.582,8,8,8h24v24c0,4.418,3.582,8,8,8h400c4.418,0,8-3.582,8-8v-24h24c4.418,0,8-3.582,8-8V8C480,3.582,476.418,0,472,0z M432,464H48v-16h384V464z M464,432H16V16h448V432z" />
@@ -23,6 +23,6 @@ export const DishwasherIcon = (props) => {
   )
 }
 
-export default DishwasherIcon
-
 DishwasherIcon.propTypes = propTypes
+
+export default DishwasherIcon

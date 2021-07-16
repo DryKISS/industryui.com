@@ -9,15 +9,17 @@ import React from 'react'
 import { colorSchemes } from '@nivo/colors'
 import { lineCurvePropKeys } from '@nivo/core'
 
+// Style
+import styled from 'styled-components'
+
 // UI
-import { LineChart, objectWithoutProperties } from '../../../../../'
+import { LineChart } from '../lineChart'
+import objectWithoutProperties from '../../../../../utils/objWithoutProperties/objWithoutProperties'
 import Readme from '../README.md'
 
 // Mocks
-import { Big, Line } from '../__mocks__'
-
-// Styled Components
-import styled from 'styled-components'
+import { Big } from '../__mocks__/big'
+import { Line } from '../__mocks__/line'
 
 export default {
   args: {

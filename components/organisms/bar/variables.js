@@ -3,9 +3,9 @@
  */
 
 // II
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
-export const BAR = {
+const BAR = {
   background: THEME_COLOUR.dark,
   highlight: THEME_COLOUR.primary,
   linkColour: THEME_COLOUR.light,
@@ -14,3 +14,4 @@ export const BAR = {
   transitionTiming: 'cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDuration: '0.3s'
 }
+export default BAR

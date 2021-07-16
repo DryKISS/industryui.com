@@ -2,9 +2,7 @@
  * Utils - Camel Case
  */
 
-// Utils
-
-export const camelCase = {
+const camelCase = {
   camelize: (str) =>
     str
       .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
@@ -13,4 +11,5 @@ export const camelCase = {
       .replace(/\s+/g, ''),
   decamelize: (str) => str.split(/(?=[A-Z])/).join(' ')
 }
+
 export default camelCase

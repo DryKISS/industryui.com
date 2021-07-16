@@ -8,6 +8,8 @@ import { func, oneOf, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
 import Icon from '../../../atoms/icon/icon/icon'
 
 const Carouselnav = ({ clickFunction, context, direction, icon, position }) => (
@@ -67,4 +69,5 @@ Carouselnav.propTypes = {
   icon: string.isRequired,
   position: string.isRequired
 }
+
 export default Carouselnav

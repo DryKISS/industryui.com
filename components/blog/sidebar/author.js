@@ -8,10 +8,11 @@ import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
-import { slugify } from '../../'
-import { BlogList, BlogSection } from './components'
+import slugify from '../../utils/slugify/slugify'
+import BlogList from './components/list'
+import BlogSection from './components/section'
 
-export const BlogAuthor = ({ articles, config, total }) => {
+const BlogAuthor = ({ articles, config, total }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -68,3 +69,5 @@ BlogAuthor.propTypes = {
 BlogAuthor.defaultProps = {
   total: 5
 }
+
+export default BlogAuthor

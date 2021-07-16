@@ -15,10 +15,10 @@ import { Controller } from 'react-hook-form'
 import styled, { css } from 'styled-components'
 
 // UI
-import { StyledInput } from '../../field/input'
+import StyledInput from '../../field/input'
 import { propTypes } from './props'
 
-export const DatePickerCalendar = ({
+const DatePickerCalendar = ({
   control,
   defaultValue,
   disableInitialDateBackground,
@@ -85,4 +85,5 @@ DatePickerCalendar.defaultProps = {
   timeIntervals: 30,
   todayButton: 'Today'
 }
+
 export default DatePickerCalendar

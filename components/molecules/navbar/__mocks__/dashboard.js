@@ -1,7 +1,7 @@
 /**
  * Navbar - Mocks - Dashboard
  */
-export const Dashboard = {
+const DASHBOARD = {
   right: [
     {
       id: 'navDashboard',
@@ -15,3 +15,5 @@ export const Dashboard = {
     }
   ]
 }
+
+export default DASHBOARD

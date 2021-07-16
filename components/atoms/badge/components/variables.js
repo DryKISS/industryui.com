@@ -1,7 +1,7 @@
 /**
  * Components - Atoms - Badge - Variables
  */
-export const BADGE = {
+const BADGE = {
   BORDER_RADIUS: {
     round: '5rem',
     square: '0.25rem'
@@ -31,3 +31,4 @@ export const BADGE = {
     SQUARE: 'square'
   }
 }
+export default BADGE

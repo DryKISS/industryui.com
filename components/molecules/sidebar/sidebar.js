@@ -17,7 +17,7 @@ import Link from '../../atoms/link/link'
 import List from '../../atoms/list/list'
 import ListItem from '../../atoms/list/listItem'
 
-export const Sidebar = ({ brand, data }) => {
+const Sidebar = ({ brand, data }) => {
   const link = (icon, name, to) => {
     const iconArray = Array.isArray(icon)
 
@@ -117,3 +117,5 @@ Sidebar.propTypes = {
   brand: string,
   data: array.isRequired
 }
+
+export default Sidebar

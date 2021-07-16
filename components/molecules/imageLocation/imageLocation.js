@@ -10,9 +10,9 @@ import styled from 'styled-components'
 
 // UI
 import ImageWrapper from './components/imageWrapper'
-import { ImageLocationProps } from './props'
+import ImageLocationProps from './props'
 
-export const ImageLocation = ({
+const ImageLocation = ({
   autoCloseMarkerPopup,
   coordinatesChange,
   customIcon,
@@ -63,3 +63,5 @@ ImageLocation.propTypes = ImageLocationProps
 ImageLocation.defaultProps = {
   show: true
 }
+
+export default ImageLocation

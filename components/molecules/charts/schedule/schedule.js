@@ -10,13 +10,14 @@ import { array, func } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { formatPrice } from '../../../utils/formatPrice/index'
-import { Icon } from '../../../atoms/icon/icon/icon'
-import { Pagination } from '../../../molecules/pagination/components/pagination'
+import formatPrice from '../../../utils/formatPrice/formatPrice'
+import Icon from '../../../atoms/icon/icon/icon'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
-import { Table } from '../../../molecules/table/components/wrapper'
-import { Text } from '../../../atoms/text/text'
-import { Tooltip } from '../../../atoms/tooltip/tooltip'
+import Space from '../../../atoms/space/space'
+import Table from '../../../molecules/table/table'
+import Text from '../../../atoms/text/text'
+import Tooltip from '../../../atoms/tooltip/tooltip'
+import Pagination from '../../../molecules/pagination/pagination'
 
 const formatCell = (handleClick, month, row) => {
   return row[month][0] || row[month] ? (
@@ -127,17 +128,36 @@ export const columns = (handleClick) => [
   }
 ]
 
-// breakCount: 5,
-// pageCount: 10,
-// context: 'primary',
-// size: 'md',
-// showNextAndPrev: false
-
-export const Schedule = ({ data, handleClick, handleRowClick }) => {
+export const Schedule = ({
+  data,
+  handleClick,
+  handleRowClick,
+  onYearChange,
+  currentYear,
+  yearRange
+}) => {
   return (
     <>
-      <Pagination pageCount="10" />
-      <Table align="center" columns={columns(handleClick)} rowClick={handleRowClick} rows={data} />
+      <Table
+        align="center"
+        columns={columns(handleClick)}
+        hover={false}
+        rowClick={handleRowClick}
+        rows={data}
+      />
+      {yearRange && (
+        <>
+          <Space marginTop="sm">
+            <Pagination
+              pageCount={yearRange.length}
+              pageRange={yearRange}
+              currentPage={currentYear}
+              onPageChange={onYearChange}
+              context={'primary'}
+            ></Pagination>
+          </Space>
+        </>
+      )}
     </>
   )
 }
@@ -153,7 +173,7 @@ const Wrapper = styled.div`
   justify-content: center;
   text-shadow: 1px 2px 2px #bbb;
   width: 3rem;
-
+  margin: auto;
   &:hover {
     background-color: ${({ context, count, theme: { COLOUR } }) =>
       count > 0 && shadeLinearRgb(-0.1, COLOUR[context])};
@@ -165,3 +185,5 @@ Schedule.propTypes = {
   handleClick: func,
   handleRowClick: func
 }
+
+export default Schedule

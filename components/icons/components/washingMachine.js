@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const WashingMachineIcon = (props) => {
+const WashingMachineIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <path d="m468.352 140.211c4.142 0 7.5-3.357 7.5-7.5v-83.823c0-26.957-21.932-48.888-48.888-48.888h-341.889c-26.956 0-48.887 21.931-48.887 48.888v414.262c0 26.957 21.931 48.889 48.888 48.889h341.889c26.957 0 48.888-21.932 48.888-48.889v-298.477c0-4.143-3.358-7.5-7.5-7.5s-7.5 3.357-7.5 7.5v217.162h-66.704c-4.142 0-7.5 3.357-7.5 7.5s3.358 7.5 7.5 7.5h66.704v65.972h-409.665v-65.972h66.704c4.142 0 7.5-3.357 7.5-7.5s-3.358-7.5-7.5-7.5h-66.704v-272.126h37.216c4.142 0 7.5-3.357 7.5-7.5s-3.358-7.5-7.5-7.5h-37.216v-45.821c0-18.686 15.202-33.888 33.887-33.888h341.889c18.686 0 33.888 15.202 33.888 33.888v45.821h-340.486c-4.142 0-7.5 3.357-7.5 7.5s3.358 7.5 7.5 7.5h340.485v23.002c.001 4.143 3.358 7.5 7.501 7.5zm-41.388 356.828h-341.889c-13.439 0-25.076-7.864-30.551-19.232h402.991c-5.475 11.368-17.112 19.232-30.551 19.232z" />
@@ -21,6 +21,5 @@ export const WashingMachineIcon = (props) => {
   )
 }
 
-export default WashingMachineIcon
-
 WashingMachineIcon.propTypes = propTypes
+export default WashingMachineIcon

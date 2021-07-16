@@ -13,7 +13,11 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Divider, FormError, Form, Search, Text } from '../../../'
+import Divider from '../../../atoms/divider/divider'
+import FormError from '../../error/error'
+import Form from '../../form/form'
+import Search from '../../search/search'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {

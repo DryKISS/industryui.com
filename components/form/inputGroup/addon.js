@@ -11,19 +11,10 @@ import { any, bool, node, oneOf } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // Context
-import { THEME_CONTEXT } from '../../theme/constants/context'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_CONTEXT from '../../constants/context'
+import THEME_SIZE from '../../constants/size'
 
-export const InputGroupAddon = ({
-  addonType,
-  className,
-  children,
-  context,
-  error,
-  size,
-  text,
-  theme
-}) => {
+const InputGroupAddon = ({ addonType, className, children, context, error, size, text, theme }) => {
   return (
     <StyledInputGroupAddon
       addonType={addonType}
@@ -102,3 +93,5 @@ InputGroupAddon.defaultProps = {
   addonType: 'append',
   context: 'light'
 }
+
+export default InputGroupAddon

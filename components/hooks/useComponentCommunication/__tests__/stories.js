@@ -9,7 +9,7 @@ import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 
 // Storybook
-import { Wrapper } from '../../../../.storybook/decorators'
+import Wrapper from '../../../../.storybook/decorators/wrapper'
 
 // UI
 import Button from '../../../atoms/button//button/button'
@@ -17,8 +17,8 @@ import {
   CommunicationService,
   Subscriber
 } from '../../../services/componentCommunication/componentCommunication'
-import MessageNames from '../../../services/componentCommunication/messageNames'
-import RandomColor from '../../../utils/randomColor/index'
+import { MessageNames } from '../../../services/componentCommunication/messageNames'
+import RandomColor from '../../../utils/randomColor/randomColor'
 import Text from '../../../atoms/text/text'
 import useComponentCommunication from '../useSubscription'
 

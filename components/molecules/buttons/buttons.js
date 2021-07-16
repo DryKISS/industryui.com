@@ -12,7 +12,7 @@ import Button from '../../atoms/button/button/button'
 import Divider from '../../atoms/divider/divider'
 import Link from '../../atoms/link/link'
 
-export const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
+const Buttons = ({ back, backText, next, nextDisabled, nextText, pathBack, pathNext }) => {
   return (
     <>
       <Divider size="sm" />
@@ -62,3 +62,5 @@ Buttons.defaultProps = {
   backText: 'Back',
   nextText: 'Next'
 }
+
+export default Buttons

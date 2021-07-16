@@ -10,11 +10,11 @@ import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'p
 import styled, { css } from 'styled-components'
 
 // UI
-import { FieldHOC } from '../hoc'
+import FieldHOC from '../hoc/hoc'
 import { formStyle, formErrorStyle } from '../variables/style'
-import { THEME_SIZE } from '../../theme/constants/size'
+import THEME_SIZE from '../../constants/size'
 
-export const FormField = ({
+const FormField = ({
   disabled,
   errors,
   helperMessage,
@@ -117,3 +117,5 @@ FormField.defaultProps = {
   readOnly: false,
   type: 'text'
 }
+
+export default FormField

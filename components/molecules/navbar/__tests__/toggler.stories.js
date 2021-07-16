@@ -6,8 +6,8 @@
 import React from 'react'
 
 // UI
-import { Toggler } from '../../../'
-import { BaseComponent } from './baseComponent'
+import Toggler from '../toggler'
+import BaseComponent from './baseComponent'
 import Readme from '../README.md'
 
 export default {

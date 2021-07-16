@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 // UI
 import PasswordChange from '../passwordChange'
 
-import Alert from '../../molecules/alert/alert'
+import Alert from '../../../molecules/alert/alert'
 import requestSimulator from '../../../utils/requestSimulator/requestSimulator'
 
 import Readme from '../README.md'

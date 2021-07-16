@@ -7,9 +7,12 @@ import React from 'react'
 import { bool, func, object, oneOfType, string } from 'prop-types'
 
 // UI
-import { FormField, FormLabel, InputGroup, InputGroupAddon } from '../../'
+import FormField from './input'
+import FormLabel from '../label/label'
+import InputGroup from '../inputGroup/group'
+import InputGroupAddon from '../inputGroup/addon'
 
-export const PercentInput = ({ errors, label, name, register, show, symbol }) => {
+const PercentInput = ({ errors, label, name, register, show, symbol }) => {
   return (
     <FormLabel show={show} label={label}>
       <InputGroup>
@@ -35,3 +38,5 @@ PercentInput.defaultProps = {
   show: true,
   symbol: '%'
 }
+
+export default PercentInput

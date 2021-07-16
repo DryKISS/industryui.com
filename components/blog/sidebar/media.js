@@ -8,9 +8,10 @@ import React from 'react'
 import { array, object } from 'prop-types'
 
 // UI
-import { BlogList, BlogSection } from './components'
+import BlogList from './components/list'
+import BlogSection from './components/section'
 
-export const BlogMedia = ({ config, media }) => {
+const BlogMedia = ({ config, media }) => {
   return (
     <BlogSection heading="Media">
       <BlogList config={config} list={media} />
@@ -22,3 +23,5 @@ BlogMedia.propTypes = {
   config: object.isRequired,
   media: array.isRequired
 }
+
+export default BlogMedia

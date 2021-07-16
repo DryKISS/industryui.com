@@ -10,8 +10,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import ClickAwayListener from '../../../utils/clickAwayListener/clickAwayListener'
-
-import Text from '../../..__tests__/atoms/text/text'
+import Text from '../../../atoms/text/text'
 import Icon from '../../../atoms/icon/icon/icon'
 
 const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
@@ -22,6 +21,7 @@ const PricingDropdown = ({ onPlanChange, pricingInfo, selectedPlan }) => {
   const handleClickAway = () => {
     setIsOpen(false)
   }
+
   const handleClickOnWrapper = () => {
     setIsOpen(true)
   }
@@ -126,7 +126,7 @@ const PlansWrapper = styled(ClickAwayListener)`
 
 const StyledDownIcon = styled(Icon).attrs((props) => ({
   color: props.theme.COLOUR.deepBlue
-}))``
+}))
 
 const StyledPrice = styled(Text)`
   font-weight: 600;
@@ -155,4 +155,5 @@ const Wrapper = styled(ClickAwayListener)`
   position: relative;
   width: 100%;
 `
+
 export default PricingDropdown

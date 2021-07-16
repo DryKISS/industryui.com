@@ -7,10 +7,10 @@ import React from 'react'
 import { bool, object } from 'prop-types'
 
 // UI
-import { FacebookPagePlugin } from '../../'
-import { BlogSection } from './components'
+import { FacebookPagePlugin } from '../../social/facebook/pagePlugin'
+import BlogSection from './components/section'
 
-export const BlogSocial = ({ facebook, instagram, twitter }) => {
+const BlogSocial = ({ facebook, instagram, twitter }) => {
   return (
     <>
       {facebook && (
@@ -51,3 +51,5 @@ BlogSocial.defaultProps = {
   instagram: false,
   twitter: false
 }
+
+export default BlogSocial

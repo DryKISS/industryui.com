@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import { BaseComponent, options } from './baseComponent'
+import BaseComponent from './baseComponent'
+import OPTIONS from './options'
 import Readme from '../README.md'
 
 // Data
@@ -21,7 +22,7 @@ export default {
     }
   },
   title: 'Molecules/Navbar',
-  ...options
+  ...OPTIONS
 }
 
 export const navbar = () => <BaseComponent widgets={DEFAULT} />

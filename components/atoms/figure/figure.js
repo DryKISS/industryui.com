@@ -10,8 +10,8 @@ import { any, bool, node, number, objectOf, oneOfType, string } from 'prop-types
 import styled from 'styled-components'
 
 // UI
-import { FigureCaption } from './caption'
-import { FigureImage } from './image'
+import FigureCaption from './caption'
+import FigureImage from './image'
 
 const Figure = ({ children, className, slant, style }) => {
   return (
@@ -65,4 +65,4 @@ Figure.defaultProps = {
 Figure.Caption = FigureCaption
 Figure.Image = FigureImage
 
-export { Figure }
+export default Figure

@@ -13,10 +13,15 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, FormLabel, SelectField, SelectCountryField, Text } from '../../../'
-
+import Button from '../../../atoms/button/button/button'
+import Form from '../../form/form'
+import FormLabel from '../../label/label'
+import SelectField from '../../select/select'
+import SelectCountryField from '../../select/country'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
-import { COLOURS, EXPENSES } from '../__mocks__/select'
+import COLOURS from '../__mocks__/colours'
+import EXPENSES from '../__mocks__/expenses'
 
 export default {
   title: 'Form/Select',

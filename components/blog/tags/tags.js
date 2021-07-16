@@ -11,7 +11,8 @@ import React from 'react'
 import { any, array } from 'prop-types'
 
 // UI
-import { Badge, slugify } from '../../'
+import Badge from '../../atoms/badge/badge'
+import slugify from '../../utils/slugify/slugify'
 
 const TagMap = ({ className, style, tags }) => {
   tags.map((tag, index) => slugify(tag))
@@ -29,7 +30,7 @@ const TagMap = ({ className, style, tags }) => {
   ))
 }
 
-export const BlogTags = ({ className, style, tags }) => {
+const BlogTags = ({ className, style, tags }) => {
   return <TagMap className={className} style={style} tags={tags} />
 }
 
@@ -38,3 +39,5 @@ BlogTags.propTypes = {
   style: any,
   tags: array.isRequired
 }
+
+export default BlogTags

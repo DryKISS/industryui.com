@@ -15,9 +15,11 @@ import React from 'react'
 import { any, number, object } from 'prop-types'
 
 // UI
-import { BlogCard, Column, Row } from '../../'
+import BlogCard from '../card/card'
+import Column from '../../atoms/grid/Column'
+import Row from '../../atoms/grid/Row'
 
-export const BlogHero = ({ articles, config, number }) => {
+const BlogHero = ({ articles, config, number }) => {
   const _find = () => {
     return articles.find((article) => article.hero === true)
   }
@@ -44,3 +46,5 @@ BlogHero.propTypes = {
 BlogHero.defaultProps = {
   number: 1
 }
+
+export default BlogHero

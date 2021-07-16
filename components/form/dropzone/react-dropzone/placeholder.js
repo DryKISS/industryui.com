@@ -6,7 +6,7 @@
 // React
 import React from 'react'
 
-export const DropzonePlaceholder = ({ file, handleRemove, index }) => {
+const DropzonePlaceholder = ({ file, handleRemove, index }) => {
   return (
     <div className="Dropzone-placeholder">
       <svg width="33%" viewBox="0 0 512 512" fill="#ecf0f3">
@@ -15,3 +15,5 @@ export const DropzonePlaceholder = ({ file, handleRemove, index }) => {
     </div>
   )
 }
+
+export default DropzonePlaceholder

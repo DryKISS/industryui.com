@@ -1,6 +1,7 @@
+// Axios
 import Axios from 'axios'
 
-export const FileDownloader = (data, filename) => {
+const FileDownloader = (data, filename) => {
   if (window) {
     const blobData = [data]
     const blob = new window.Blob(blobData, { type: 'application/octet-stream' })
@@ -36,6 +37,7 @@ export const FileDownloader = (data, filename) => {
     }
   }
 }
+
 const downloadFile = ({ url, filename }) => {
   Axios.get(url, {
     responseType: 'blob'
@@ -43,4 +45,5 @@ const downloadFile = ({ url, filename }) => {
     FileDownloader(res.data, filename)
   })
 }
+
 export default downloadFile

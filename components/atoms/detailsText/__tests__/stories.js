@@ -6,8 +6,8 @@
 import React from 'react'
 
 // UI
-import { DetailsText } from '../detailsText'
-import { Link } from '../../../atoms/link/link'
+import DetailsText from '../detailsText'
+import Link from '../../../atoms/link/link'
 import Readme from '../README.md'
 
 export default {

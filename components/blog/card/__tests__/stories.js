@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BlogCard } from '../card'
+import BlogCard from '../card'
 import Readme from '../README.md'
 
 // Data

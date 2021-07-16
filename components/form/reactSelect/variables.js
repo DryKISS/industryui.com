@@ -1,7 +1,7 @@
 /**
  * Form - React Select - Variables
  */
-export const SELECT = {
+const SELECT = {
   DEFAULT_COLOUR: 'rgb(102, 102, 102)',
   FONT_SIZE: {
     xxs: '0.75rem',
@@ -15,3 +15,4 @@ export const SELECT = {
   },
   MENU_BORDER_COLOUR: 'rgb(204, 204, 204)'
 }
+export default SELECT

@@ -10,7 +10,7 @@ import { node } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const CardGroups = ({ childern }) => {
+const CardGroups = ({ childern }) => {
   return <StyledGroups>{childern}</StyledGroups>
 }
 
@@ -21,3 +21,5 @@ const StyledGroups = styled.div`
 CardGroups.propTypes = {
   childern: node.isRequired
 }
+
+export default CardGroups

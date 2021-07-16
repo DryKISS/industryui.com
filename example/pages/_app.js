@@ -15,8 +15,6 @@ import { Theme } from '../config/theme'
 // Icons
 import '../config/icons'
 
-const PageApp = (props) => (
-  <MyApp config={Config} Layout={Layout} theme={Theme} {...props} />
-)
+const PageApp = (props) => <MyApp config={Config} Layout={Layout} theme={Theme} {...props} />
 
 export default PageApp

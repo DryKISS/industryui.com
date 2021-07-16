@@ -6,9 +6,9 @@
 import { bool, number, oneOfType, string } from 'prop-types'
 
 // UI
-import { useTimer } from '../../'
+import useTimer from '../../hooks/useTimer/useTimer'
 
-export const SimpleTime = ({ autoStart, endTime, startTime }) => {
+const SimpleTime = ({ autoStart, endTime, startTime }) => {
   const {
     time: { seconds, minutes, hours, days }
   } = useTimer({ autoStart, endTime, startTime })
@@ -21,3 +21,5 @@ SimpleTime.propTypes = {
   startTime: oneOfType([number, string]),
   endTime: oneOfType([number, string])
 }
+
+export default SimpleTime

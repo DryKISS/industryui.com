@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const ClusterIcon = ({ cluster }) => {
   return <StyledClusterMarker>{cluster.getChildCount()}</StyledClusterMarker>
 }
+
 const StyledClusterMarker = styled.div`
   align-items: center;
   background-color: red;
@@ -14,4 +15,5 @@ const StyledClusterMarker = styled.div`
   justify-content: center;
   width: 2rem;
 `
+
 export default ClusterIcon

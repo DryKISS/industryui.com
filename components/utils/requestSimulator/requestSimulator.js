@@ -13,4 +13,5 @@ async function requestSimulator(responseType = 'success', timeout = 1000) {
     }, timeout)
   })
 }
+
 export default requestSimulator

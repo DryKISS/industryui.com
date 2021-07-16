@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { SimpleTime } from '../../../'
+import SimpleTime from '../simpleTime'
 import Readme from '../README.md'
 
 export default {

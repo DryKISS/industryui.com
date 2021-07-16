@@ -10,7 +10,10 @@ import Footer from '../footer'
 import Readme from '../README.md'
 
 // Data
-import { DRYKISS, FORMATTER, ONE_COLUMN, PORTAL } from '../__mocks__/footer'
+import PORTAL from '../__mocks__/portal'
+import DRYKISS from '../__mocks__/drykiss'
+import FORMATTER from '../__mocks__/formatter'
+import ONE_COLUMN from '../__mocks__/oneColumn'
 
 export default {
   args: {

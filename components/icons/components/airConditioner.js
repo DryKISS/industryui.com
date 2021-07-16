@@ -9,7 +9,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const AirConditionerIcon = (props) => {
+const AirConditionerIcon = (props) => {
   return (
     <IconWrapper name="iconAirConditioner" {...props} mainSize={60}>
       <path d="m11 10.67c.5522847 0 1-.4477153 1-1v-5.67c0-1.1045695.8954305-2 2-2h3v4c0 2.209139 1.790861 4 4 4h28c2.209139 0 4-1.790861 4-4v-4h3c1.1045695 0 2 .8954305 2 2v17c0 1.1045695-.8954305 2-2 2h-3.142c-.4545933-1.7606851-2.0395884-2.9931852-3.858-3h-15.34c-.5522847 0-1 .4477153-1 1s.4477153 1 1 1h15.34c1.1045695 0 2 .8954305 2 2v2h-16.02c-.5522847 0-1 .4477153-1 1s.4477153 1 1 1h16.02c1.1045695 0 2-.8954305 2-2v-1h3c2.209139 0 4-1.790861 4-4v-17c0-2.209139-1.790861-4-4-4h-42c-2.209139 0-4 1.790861-4 4v5.67c0 .5522847.4477153 1 1 1zm40-8.67v4c0 1.1045695-.8954305 2-2 2h-28c-1.1045695 0-2-.8954305-2-2v-4z" />
@@ -23,5 +23,7 @@ export const AirConditionerIcon = (props) => {
     </IconWrapper>
   )
 }
-export default AirConditionerIcon
+
 AirConditionerIcon.propTypes = propTypes
+
+export default AirConditionerIcon

@@ -6,11 +6,12 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
-import { arrayOfValues, Heading } from '../../../'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import arrayOfValues from '../../../utils/arrayOfValues/arrayOfValues'
+import Heading from '../heading'
+import THEME_CONTEXT from '../../../constants/context'
 import Readme from '../README.md'
 
 export default {

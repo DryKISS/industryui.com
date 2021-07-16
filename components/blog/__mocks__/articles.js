@@ -1,5 +1,5 @@
 /**
- * Blog - Articles
+ * Components - Blog - Articles
  */
 export const Articles = [
   {

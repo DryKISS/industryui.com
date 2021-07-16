@@ -2340,6 +2340,86 @@ exports[`Storyshots Molecules/Carousel With Pagination 1`] = `
 />
 `;
 
+exports[`Storyshots Molecules/Charts/High Charts/BigData Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/High Charts/Heat Map Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/High Charts/Liveline Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/High Charts/line Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Molecules/Charts/Nivo/Bar Custom Axis 1`] = `
 .c0 {
   padding: 1rem;
@@ -2541,6 +2621,46 @@ exports[`Storyshots Molecules/Charts/Nivo/Pie Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/Charts/Nivo/Pie Other Data Pie 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/Schedule Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Charts/Schedule With Pagination 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -3100,6 +3220,26 @@ exports[`Storyshots Molecules/Map/StaticLocation Westminster Abbey 1`] = `
 />
 `;
 
+exports[`Storyshots Molecules/Modal Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
 exports[`Storyshots Molecules/Navbar Navbar 1`] = `
 .c0 {
   padding: 1rem;
@@ -3561,6 +3701,26 @@ exports[`Storyshots Molecules/SimpleTime Main 1`] = `
 `;
 
 exports[`Storyshots Molecules/Stepper Main 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Molecules/Table Actions 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;
@@ -4661,6 +4821,46 @@ exports[`Storyshots Utils/AverageGeolocation Average Geolocation 1`] = `
 `;
 
 exports[`Storyshots Utils/CamelCase Camel Case 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Utils/CamelCase Camelize 1`] = `
+.c0 {
+  padding: 1rem;
+  position: relative;
+}
+
+@media (min-width:62em) {
+
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "background": "rgba(0,6,51, 0.04",
+    }
+  }
+/>
+`;
+
+exports[`Storyshots Utils/CamelCase Decamelize 1`] = `
 .c0 {
   padding: 1rem;
   position: relative;

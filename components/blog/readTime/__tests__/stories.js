@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BlogReadTime } from '../readTime'
+import BlogReadTime from '../readTime'
 import Readme from '../README.md'
 
 export default {

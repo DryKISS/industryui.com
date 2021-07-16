@@ -1,15 +1,22 @@
+/**
+ * Components - Form - Rich Editor
+ */
+
 // React
 import React, { useRef } from 'react'
 import { object, string } from 'prop-types'
 
+// Draft JS
 import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js'
 import { Controller } from 'react-hook-form'
 import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
 
-// UI
+// Style
 import styled, { css } from 'styled-components'
-import { COMMON_INPUT_STYLES, ERROR_STYLE } from '../../'
+
+// UI
+import { formStyle, formErrorStyle } from '../variables/style'
 
 export const RichTextInput = ({ control, errors, initialValue, name }) => {
   const editor = useRef(null)
@@ -47,11 +54,11 @@ export const RichTextInput = ({ control, errors, initialValue, name }) => {
 }
 
 const Wrapper = styled.div`
-  ${(props) => COMMON_INPUT_STYLES(props)}
+  ${(props) => formStyle(props)}
   ${({ errors }) =>
     errors &&
     css`
-      ${(props) => ERROR_STYLE(props)}
+      ${(props) => formErrorStyle(props)}
     `}
 `
 

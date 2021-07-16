@@ -22,7 +22,7 @@ const renderColumn = (index) => (
   </Fragment>
 )
 
-export const FORMATTER = [
+const FORMATTER = [
   {
     size: {
       md: 8,
@@ -99,3 +99,4 @@ export const FORMATTER = [
     }
   }
 ]
+export default FORMATTER

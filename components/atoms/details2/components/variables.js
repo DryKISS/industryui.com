@@ -5,7 +5,7 @@
 // UI
 import THEME_COLOUR from '../../../constants/colour'
 
-export const DETAILS2 = {
+const DETAILS2 = {
   header: {
     background: THEME_COLOUR.light
   },
@@ -13,3 +13,4 @@ export const DETAILS2 = {
     background: THEME_COLOUR.white
   }
 }
+export default DETAILS2

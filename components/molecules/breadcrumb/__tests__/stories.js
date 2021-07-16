@@ -6,13 +6,12 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
 import Breadcrumb from '../breadcrumb'
 import Icon from '../../../atoms/icon/icon/icon'
-
-import { THEME_SIZE } from '../../../theme/constants/size'
+import THEME_SIZE from '../../../constants/size'
 import Readme from '../README.md'
 
 export default {

@@ -7,10 +7,10 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // UI
-import { Image } from '../../'
-import { BlogSection } from './components'
+import Image from '../../atoms/image/image'
+import BlogSection from './components/section'
 
-export const BlogPromo = ({ src, to }) => {
+const BlogPromo = ({ src, to }) => {
   return (
     <BlogSection heading="Promo">
       <Image alt="Image" src={src} />
@@ -22,3 +22,5 @@ BlogPromo.propTypes = {
   src: string.isRequired,
   to: string.isRequired
 }
+
+export default BlogPromo

@@ -1,3 +1,7 @@
+/**
+ * Components - Form - Rich Text Editor
+ */
+
 // Next
 import dynamic from 'next/dynamic'
 

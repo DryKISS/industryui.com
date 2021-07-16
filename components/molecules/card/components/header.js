@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import { shadeLinearRgb } from '../../../utils/colour/colour'
 import { THEME_CONTEXT } from '../../../constants/context'
 
-export const CardHeader = ({ content, context, align }) => {
+const CardHeader = ({ content, context, align }) => {
   return (
     <StyledHeader align={align} context={context}>
       {content}
@@ -40,3 +40,5 @@ CardHeader.propTypes = {
 CardHeader.defaultProps = {
   align: 'center'
 }
+
+export default CardHeader

@@ -7,15 +7,14 @@
 import React from 'react'
 import { number, string } from 'prop-types'
 
-// UI
-// import { Column, Image } from '../../../'
-import Column from '../../../atoms/grid/Column'
-import Image from '../../../atoms/image/image'
-
 // Style
 import styled from 'styled-components'
 
-export const HeroImage = ({ alt, align, image, width }) => (
+// UI
+import Column from '../../../atoms/grid/Column'
+import Image from '../../../atoms/image/image'
+
+const HeroImage = ({ alt, align, image, width }) => (
   <StyledColumn align={align} md={6}>
     <StyledImageContainer>
       <StyledImage alt={alt} src={image} width={width} />
@@ -43,3 +42,5 @@ HeroImage.propTypes = {
   image: string,
   width: number
 }
+
+export default HeroImage

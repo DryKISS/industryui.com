@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators/controlTypes'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // UI

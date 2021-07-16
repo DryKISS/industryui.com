@@ -7,12 +7,13 @@
 import React from 'react'
 import { any, bool, node, string } from 'prop-types'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import Container from '../../atoms/grid/Column'
 import Heading from '../../atoms/heading/heading'
 import Row from '../../atoms/grid/Row'
-// Style
-import styled from 'styled-components'
 
 const Section = ({ children, className, heading, row, style }) => (
   <StyleSection>

@@ -3,9 +3,10 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import THEME_COLOUR from '../../constants/colour'
 
-export const COPYRIGHT = {
+const COPYRIGHT = {
   background: THEME_COLOUR.white,
   colour: THEME_COLOUR.black
 }
+export default COPYRIGHT

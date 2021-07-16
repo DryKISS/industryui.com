@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 // UI
 import { shadeLinearRgb } from '../../utils/colour/colour'
-import { validatorUri } from '../../utils/validator/uri'
+import validatorUri from '../../utils/validator/uri'
 import THEME_CONTEXT from '../../constants/context'
 
 // Props

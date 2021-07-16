@@ -6,9 +6,9 @@
 import React, { useState } from 'react'
 
 // UI
-import BarOverlay from './overlay'
-import BarToggle from './toggle'
-import BarWrapper from './wrapper'
+import BarOverlay from './components/overlay'
+import BarToggle from './components/toggle'
+import BarWrapper from './components/wrapper'
 import { BarPropTypes, BarDefaultProps } from './props'
 
 // Style

@@ -9,7 +9,7 @@ import React, { memo } from 'react'
 import { withResizeDetector } from 'react-resize-detector'
 import styled from 'styled-components'
 
-export const RawResizeDetector = withResizeDetector(
+const RawResizeDetector = withResizeDetector(
   memo(
     ({ height, onResize, style, width }) => {
       typeof window !== 'undefined' &&
@@ -20,7 +20,7 @@ export const RawResizeDetector = withResizeDetector(
       prevWidth === nextWidth && prevHeight === nextHeight
   )
 )
-export default RawResizeDetector
+
 const ResizeDetectorWrapper = styled.div`
   height: 100%;
   left: 0;
@@ -29,3 +29,5 @@ const ResizeDetectorWrapper = styled.div`
   top: 0;
   width: 100%;
 `
+
+export default RawResizeDetector

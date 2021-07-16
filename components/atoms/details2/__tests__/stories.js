@@ -6,24 +6,23 @@
 import React, { useState } from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 
 // UI
-import { Button } from '../../button/button/button'
-import { ButtonToolbar } from '../../button/toolbar/toolbar'
-import { Dropdown } from '../../../molecules/dropdown/components/dropdown'
-import { Icon } from '../../icon/icon/icon'
-import { Column } from '../../../atoms/grid/components/Column'
-import { Details2 } from '../../../atoms/details2/components/details2'
-import { DetailsCommunicationService } from '../../../services/componentCommunication/index'
+import Button from '../../button/button/button'
+import ButtonToolbar from '../../button/toolbar/toolbar'
+import Dropdown from '../../../molecules/dropdown/dropdown'
+import Icon from '../../icon/icon/icon'
+import Column from '../../../atoms/grid/Column'
+import Details2 from '../../../atoms/details2/details2'
+import { DetailsCommunicationService } from '../../../services/componentCommunication/componentCommunication'
 import { MessageNames } from '../../../services/componentCommunication/messageNames'
-import { Row } from '../../../atoms/grid/components/Row'
-import { Table } from '../../../molecules/table/components/wrapper'
-import { TableActions } from '../../../molecules/table/formatter/actions/actions'
-import { TableLink } from '../../../molecules/table/formatter/link'
-import { Text } from '../../../atoms/text/text'
-
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import Row from '../../../atoms/grid/Row'
+import Table from '../../../molecules/table/components/table'
+import TableActions from '../../../molecules/table/components/formatter/actions/actions'
+import TableLink from '../../../molecules/table/components/formatter/link'
+import Text from '../../../atoms/text/text'
+import THEME_CONTEXT from '../../../constants/context'
 import Readme from '../README.md'
 
 const Toolbar = () => {

@@ -9,4 +9,5 @@ export const ICON_PREFIX = {
   Duotone: 'fad',
   Brands: 'fab'
 }
+
 export default ICON_PREFIX

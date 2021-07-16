@@ -60,4 +60,5 @@ ReactHolderJs.defaultProps = {
   },
   usePlaceholder: false
 }
+
 export default ReactHolderJs

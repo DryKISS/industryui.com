@@ -1,7 +1,7 @@
 /**
  * Components - Utils - Object Without Properties
  */
-export const objectWithoutProperties = (obj, keys) => {
+const objectWithoutProperties = (obj, keys) => {
   const target = {}
 
   for (const i in obj) {
@@ -18,4 +18,5 @@ export const objectWithoutProperties = (obj, keys) => {
 
   return target
 }
+
 export default objectWithoutProperties

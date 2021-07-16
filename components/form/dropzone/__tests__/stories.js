@@ -9,7 +9,11 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { Button, DropzoneField, Form, FormError, FormLabel } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import DropzoneField from '../dropzoneField'
+import Form from '../../form/form'
+import FormError from '../../error/error'
+import FormLabel from '../../label/label'
 import Readme from '../README.md'
 
 export default {

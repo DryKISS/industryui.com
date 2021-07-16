@@ -13,21 +13,20 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import {
-  Button,
-  Divider,
-  Form,
-  FormError,
-  FormLabel,
-  ReactSelectField,
-  Text,
-  usePrevious
-} from '../../../'
-
+import Button from '../../../atoms/button/button/button'
+import Divider from '../../../atoms/divider/divider'
+import Form from '../../form/form'
+import FormError from '../../error/error'
+import FormLabel from '../../label/label'
+import ReactSelectField from '../reactSelect'
+import Text from '../../../atoms/text/text'
+import usePrevious from '../../../hooks/usePrevious'
 import Readme from '../README.md'
 
 // Data
-import { Customers, Options, UsersAvison, UsersHousing } from '../__mocks__/reactSelect'
+import { UsersAvison, UsersHousing } from '../__mocks__/users'
+import Customers from '../__mocks__/customers'
+import Options from '../__mocks__/options'
 
 export default {
   args: {

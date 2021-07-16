@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Dropzone } from '../dropzone'
+import Dropzone from '../dropzone'
 import Readme from '../README.md'
 
 export default {

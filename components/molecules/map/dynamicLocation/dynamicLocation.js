@@ -39,7 +39,7 @@ const DynamicLocationHOC = (Component) => {
   }
 }
 
-export const DynamicLocation = DynamicLocationHOC(
+const DynamicLocation = DynamicLocationHOC(
   withScriptjs(
     withGoogleMap((props) => {
       return props.defaultCenter.lat && props.defaultCenter.lng ? (
@@ -80,3 +80,5 @@ MarkerClusterer.propTypes = GoogleMarkerClusterer.propTypes
 
 export const InfoWindow = GoogleInfoWindow
 InfoWindow.propTypes = GoogleInfoWindow.propTypes
+
+export default DynamicLocation

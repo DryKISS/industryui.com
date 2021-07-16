@@ -11,7 +11,6 @@ import styled from 'styled-components'
 
 // UI
 import CarouselSlide from './slide'
-// import { Image, Text } from '../../../'
 import Image from '../../../atoms/image/image'
 import Text from '../../../atoms/text/text'
 
@@ -43,4 +42,5 @@ CarouselSampleSlide.propTypes = {
 CarouselSampleSlide.defaultProps = {
   context: 'dark'
 }
+
 export default CarouselSampleSlide

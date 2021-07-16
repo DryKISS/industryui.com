@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Webcam } from '../components/webcam'
+import Webcam from '../webcam'
 import Readme from '../README.md'
 
 export default {

@@ -6,13 +6,15 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl, SizeControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import { Divider, Text } from '../../../'
+import Divider from '../divider'
+import Text from '../../text/text'
 import Readme from '../README.md'
 import { defaultProps } from '../props'
 

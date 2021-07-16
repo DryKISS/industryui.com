@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 // UI
 import ConfigContext from '../config/context'
-import { InternationalisationContext } from './context'
+import InternationalisationContext from './context'
 import { isLocale } from '../../services/internationalisation/service'
 import useLocalStorage from '../../hooks/useLocalStorage'
 

@@ -9,7 +9,7 @@ import { bool } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-export const CheckboxComponent = forwardRef(({ disabled, ...props }, ref) => {
+const CheckboxComponent = forwardRef(({ disabled, ...props }, ref) => {
   return <StyledCheckbox disabled={disabled} ref={ref} type="checkbox" {...props} />
 })
 
@@ -25,3 +25,4 @@ CheckboxComponent.propTypes = {
 CheckboxComponent.defaultProps = {
   stacked: false
 }
+export default CheckboxComponent

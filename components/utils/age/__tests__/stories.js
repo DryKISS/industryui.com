@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -15,14 +15,12 @@ import { useForm } from 'react-hook-form'
 import enGB from 'date-fns/locale/en-GB'
 
 // UI
-
 import age from '../age'
 import Button from '../../../atoms/button/button/button'
 import DatePickerCalendar from '../../../form/datePicker/calendar/calendar'
 import Divider from '../../../atoms/divider/divider'
 import Form from '../../../form/form/form'
 import Text from '../../../atoms/text/text'
-
 import Readme from '../README.md'
 
 export default {

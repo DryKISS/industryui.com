@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 import { CarouselDefaultProps } from '../components/props'
 
 // Style
@@ -19,7 +19,6 @@ import Image from '../../../atoms/image/image'
 import ReactHolderJs from '../../../utils/reactHolder'
 import CarouselSlide from '../components/slide'
 import CarouselSampleSlide from '../components/sample'
-
 import Readme from '../README.md'
 import vizla from '../../../../static/card/vizla.jpg'
 

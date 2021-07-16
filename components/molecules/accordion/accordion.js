@@ -62,7 +62,7 @@ const Body = ({ children, data, closeOthersOnOpen }) => {
   return map
 }
 
-export const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
+const Accordion = ({ children, className, data, style, closeOthersOnOpen }) => {
   return (
     <StyledAccordion className={className} style={style}>
       <Body children={children} data={data} closeOthersOnOpen={closeOthersOnOpen} />
@@ -82,3 +82,5 @@ Accordion.propTypes = {
   data: array,
   style: object
 }
+
+export default Accordion

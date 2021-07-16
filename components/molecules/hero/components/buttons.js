@@ -6,13 +6,12 @@
 import React from 'react'
 import { array } from 'prop-types'
 
-// UI
-// import { Button, Link } from '../../../'
-import Button from '../../../atoms/button/button/button'
-import Link from '../../../atoms/link/link'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import Button from '../../../atoms/button/button/button'
+import Link from '../../../atoms/link/link'
 
 const HeroButtons = ({ buttons }) => {
   return buttons.map(({ content, context, to }, index) => (

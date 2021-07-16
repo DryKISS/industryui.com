@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { FormLabel } from '../label'
+import FormLabel from '../label'
 import Readme from '../README.md'
 
 export default {

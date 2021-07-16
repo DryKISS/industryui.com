@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { VoiceRecorder } from '../voiceRecorder'
+import VoiceRecorder from '../voiceRecorder'
 import Readme from '../README.md'
 
 export default {

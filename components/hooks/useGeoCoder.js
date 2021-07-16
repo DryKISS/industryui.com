@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 
 // Services
-import { GeoCoder } from '../services/google/geocoder/geocoder'
+import GeoCoder from '../services/google/geocoder/geocoder'
 
 const useGeoCoder = ({ address, apiKey, city, language, region }) => {
   const [coordinates, setCoordinates] = useState({ lat: '', lng: '' })

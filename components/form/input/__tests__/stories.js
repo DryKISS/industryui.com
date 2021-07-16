@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators'
+import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -16,19 +16,16 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import {
-  arrayOfValues,
-  Button,
-  Column,
-  Form,
-  Input,
-  InputTypes,
-  InputDecorationTypes,
-  Row,
-  Space
-} from '../../../'
-
-import { THEME_SIZE } from '../../../theme/constants/size'
+import arrayOfValues from '../../../utils/arrayOfValues/arrayOfValues'
+import Button from '../../../atoms/button/button/button'
+import Column from '../../../atoms/grid/Column'
+import Form from '../../../form/form/form'
+import Input from '../input'
+import InputTypes from '../types'
+import InputDecorationTypes from '../decorationTypes'
+import Row from '../../../atoms/grid/Row'
+import Space from '../../../atoms/space/space'
+import THEME_SIZE from '../../../constants/size'
 import Readme from '../README.md'
 
 export default {

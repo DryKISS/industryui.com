@@ -5,7 +5,9 @@
 // React
 import { createContext } from 'react'
 
-export const InternationalisationContext = createContext({
+const InternationalisationContext = createContext({
   locale: 'es',
   setLocale: () => null
 })
+
+export default InternationalisationContext

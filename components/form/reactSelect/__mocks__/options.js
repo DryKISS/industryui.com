@@ -1,7 +1,7 @@
 /**
  * Form - React Select - Options
  */
-export const Options = [
+const Options = [
   {
     label: 'Ocean',
     value: 'ocean'
@@ -44,3 +44,4 @@ export const Options = [
     value: 'silver'
   }
 ]
+export default Options

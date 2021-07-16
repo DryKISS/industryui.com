@@ -6,17 +6,20 @@
 import React from 'react'
 
 // Storybook
-import { CleverlyTheme, CleverlyAdminTheme, DryKISSTheme } from '../../../../.storybook/themes'
-
-// UI
-import { BaseComponent, options } from './baseComponent'
-import Readme from '../README.md'
+import { CleverlyTheme } from '../../../../.storybook/themes/cleverly'
+import { CleverlyAdminTheme } from '../../../../.storybook/themes/cleverlyAdmin'
+import { DryKISSTheme } from '../../../../.storybook/themes/drykiss'
 
 // Style
 import { ThemeProvider } from 'styled-components'
 
+// UI
+import BaseComponent from './baseComponent'
+import OPTIONS from './options'
+import Readme from '../README.md'
+
 // Data
-import { Default } from '../__mocks__/navbar'
+import DEFAULT from '../__mocks__/navigation'
 
 export default {
   title: 'Molecules/Navbar/Theme',
@@ -27,23 +30,23 @@ export default {
       }
     }
   },
-  ...options
+  ...OPTIONS
 }
 
 export const Cleverly = () => (
   <ThemeProvider theme={CleverlyTheme}>
-    <BaseComponent widgets={Default} />
+    <BaseComponent widgets={DEFAULT} />
   </ThemeProvider>
 )
 
 export const CleverlyAdmin = () => (
   <ThemeProvider theme={CleverlyAdminTheme}>
-    <BaseComponent widgets={Default} />
+    <BaseComponent widgets={DEFAULT} />
   </ThemeProvider>
 )
 
 export const Drykiss = () => (
   <ThemeProvider theme={DryKISSTheme}>
-    <BaseComponent widgets={Default} />
+    <BaseComponent widgets={DEFAULT} />
   </ThemeProvider>
 )

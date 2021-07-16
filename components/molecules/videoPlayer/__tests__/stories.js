@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { VideoPlayer } from '../videoPlayer'
+import VideoPlayer from '../videoPlayer'
 import Readme from '../README.md'
 
 // Data

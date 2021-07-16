@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { Design } from './design'
+import Design from './design'
 
 // Style
 import { withTheme } from 'styled-components'
@@ -271,7 +271,7 @@ const Webcam = withTheme(
 
 Webcam.Design = Design
 
-export { Webcam }
+export default Webcam
 
 // const constrainStringType = PropTypes.oneOfType([
 //   PropTypes.string,

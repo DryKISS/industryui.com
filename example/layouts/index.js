@@ -17,12 +17,7 @@ import { Copyright } from '../config/copyright'
 
 const Layout = ({ children }) => {
   return (
-    <Bootstrap
-      brand={Brand.name}
-      brandLogo={Brand.logo}
-      children={children}
-      copyright={Copyright}
-    >
+    <Bootstrap brand={Brand.name} brandLogo={Brand.logo} children={children} copyright={Copyright}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
       </Head>

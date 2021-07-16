@@ -7,11 +7,11 @@ const fs = require('fs-extra')
 const Canonical = require('../config/canonical')
 const getPages = require('../config/pages')
 
-function formatDateStandard (date) {
-  var d = new Date(date)
-  var month = '' + (d.getMonth() + 1)
-  var day = '' + d.getDate()
-  var year = d.getFullYear()
+function formatDateStandard(date) {
+  const d = new Date(date)
+  let month = '' + (d.getMonth() + 1)
+  let day = '' + d.getDate()
+  const year = d.getFullYear()
 
   if (month.length < 2) month = '0' + month
   if (day.length < 2) day = '0' + day
@@ -44,7 +44,7 @@ const today = formatDateStandard(new Date())
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${Object.keys(pages)
-    .map(path => {
+    .map((path) => {
       return `<url>
     <loc>${Canonical}${path}</loc>
     <lastmod>${

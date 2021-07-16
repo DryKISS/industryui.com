@@ -8,14 +8,12 @@ import React, { useEffect, useState } from 'react'
 // Next
 import dynamic from 'next/dynamic'
 
-// UI
-
 const LazyIcon = ({ iconName, ...props }) => {
   const [LoadedIcon, setLoadedIcon] = useState(null)
 
   const loadModule = async () => {
     if (LoadedIcon === null) {
-      const Icon = await dynamic(() => import(`./components/${iconName}`))
+      const Icon = await dynamic(() => import(`./components/${iconName || props.icon}`))
       setLoadedIcon(Icon)
     }
   }
@@ -26,11 +24,6 @@ const LazyIcon = ({ iconName, ...props }) => {
   }, [])
 
   return LoadedIcon ? <LoadedIcon {...props} /> : <></>
-}
-
-LazyIcon.propTypes = {
-  iconName: oneOf(Object.keys(RawIcons)),
-  ...propTypes
 }
 
 export default LazyIcon

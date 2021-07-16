@@ -10,7 +10,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import { HighChart } from '../../index'
+import HighChart from '../../highChart'
 import Readme from '../README.md'
 
 export default {

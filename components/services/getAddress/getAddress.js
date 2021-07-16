@@ -45,7 +45,7 @@ const fixAddresses = (addresses) => {
     })
 }
 
-export const GetAddressService = { fixAddresses, getAddresses, getAddressesApi }
+const GetAddressService = { fixAddresses, getAddresses, getAddressesApi }
 
 getAddresses.propTypes = {
   callback: func.isRequired,
@@ -53,3 +53,5 @@ getAddresses.propTypes = {
   postCode: string.isRequired,
   validator: func.isRequired
 }
+
+export default GetAddressService

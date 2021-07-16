@@ -1,5 +1,5 @@
 /**
- * Search
+ * Components - Form - Search
  */
 
 // React
@@ -7,9 +7,13 @@ import React from 'react'
 import { bool, func, object, string, oneOf } from 'prop-types'
 
 // UI
-import { Button, FormField, Icon, InputGroup, InputGroupAddon } from '../../'
+import Button from '../../atoms/button/button/button'
+import FormField from '../field/input'
+import Icon from '../../atoms/icon/icon/icon'
+import InputGroup from '../inputGroup/group'
+import InputGroupAddon from '../inputGroup/addon'
 
-export const Search = ({
+const Search = ({
   appendSearchButton,
   appendSearchIcon,
   errors,
@@ -68,3 +72,5 @@ Search.defaultProps = {
   prependSearchIcon: false,
   type: 'search'
 }
+
+export default Search

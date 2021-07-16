@@ -6,12 +6,12 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators'
+import { ContextControl } from '../../../../.storybook/decorators/context'
 
 // UI
-import { Figure } from '../figure'
+import Figure from '../figure'
 import Readme from '../README.md'
-import { THEME_CONTEXT } from '../../../theme/constants/context'
+import THEME_CONTEXT from '../../../constants/context'
 
 export default {
   args: {

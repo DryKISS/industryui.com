@@ -9,9 +9,9 @@ import { any, node, number, objectOf, oneOfType, string, oneOf } from 'prop-type
 import styled from 'styled-components'
 
 // UI
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import THEME_CONTEXT from '../../constants/context'
 
-export const FigureCaption = styled.figcaption`
+const FigureCaption = styled.figcaption`
   color: ${({ context, theme }) => theme.COLOUR[context]};
   background-color: ${({ bgContext, theme }) => theme.COLOUR[bgContext]};
   border-radius: 0 0 0.25rem 0.25rem;
@@ -32,3 +32,5 @@ FigureCaption.defaultProps = {
   bgContext: THEME_CONTEXT.DARK,
   context: THEME_CONTEXT.WHITE
 }
+
+export default FigureCaption

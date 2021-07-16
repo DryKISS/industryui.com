@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const Adornment = styled.div`
+const Adornment = styled.div`
   align-items: center;
   border: 1px solid;
   display: flex;
@@ -18,3 +18,5 @@ export const Adornment = styled.div`
           border-top-right-radius: '0.25rem';
         `}
 `
+
+export default Adornment

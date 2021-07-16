@@ -13,12 +13,7 @@ import styled from 'styled-components'
 import DropdownMenu from './menu'
 import Icon from '../../atoms/icon/icon/icon'
 import THEME_POSITION from '../../constants/position'
-
-export const elementTypes = {
-  Colour: 'colour',
-  List: 'list',
-  Icon: 'icon'
-}
+import elementTypes from './types'
 
 const Dropdown = ({
   caret,

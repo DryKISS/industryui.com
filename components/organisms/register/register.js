@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form'
 // UI
 
 import Alert from '../../molecules/alert/alert'
-import Text from '../../..__tests__/atoms/text/text'
+import Text from '../../atoms/text/text'
 import CheckboxField from '../../form/checkbox/checkbox'
 import DatePickerInput from '../../form/datePicker/input/datePickerInput'
 import UserContext from '../../services/authentication/context'

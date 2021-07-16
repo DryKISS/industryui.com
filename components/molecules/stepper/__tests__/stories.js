@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Stepper } from '../components/stepper'
+import Stepper from '../stepper'
 import Readme from '../README.md'
 
 // Data

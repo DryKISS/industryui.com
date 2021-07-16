@@ -3,11 +3,11 @@
  */
 
 // UI
-import { THEME_COLOUR } from '../../../../theme/variables/colour'
+import THEME_COLOUR from '../../../../constants/colour'
 
 const legendTranslateX = 110
 
-export const BARCHART = {
+const BARCHART = {
   animate: false,
   colors: THEME_COLOUR,
   margin: function () {
@@ -73,3 +73,4 @@ export const BARCHART = {
     }
   ]
 }
+export default BARCHART

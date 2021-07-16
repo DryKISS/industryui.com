@@ -2,7 +2,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const BoilerIcon = (props) => {
+const BoilerIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <path d="m313.235 131.961c0-31.632-25.737-57.366-57.372-57.366s-57.372 25.734-57.372 57.366 25.737 57.366 57.372 57.366 57.372-25.734 57.372-57.366zm-99.743 0c0-23.361 19.008-42.366 42.372-42.366s42.372 19.005 42.372 42.366-19.008 42.366-42.372 42.366-42.372-19.005-42.372-42.366z" />
@@ -15,6 +15,6 @@ export const BoilerIcon = (props) => {
   )
 }
 
-export default BoilerIcon
-
 BoilerIcon.propTypes = propTypes
+
+export default BoilerIcon

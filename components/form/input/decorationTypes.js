@@ -1,4 +1,4 @@
-export const InputDecorationTypes = {
+const InputDecorationTypes = {
   DEFAULT: 'default',
   DISABLED: 'disabled',
   DANGER: 'danger',
@@ -6,3 +6,5 @@ export const InputDecorationTypes = {
   SUCCESS: 'success',
   WARNING: 'warning'
 }
+
+export default InputDecorationTypes

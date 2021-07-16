@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { SizeControl } from '../../../../.storybook/decorators'
+import { SizeControl } from '../../../../.storybook/decorators/size'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -16,7 +16,10 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Button, Form, FormLabel, TextareaField } from '../../../'
+import Button from '../../../atoms/button/button/button'
+import Form from '../../form/form'
+import FormLabel from '../../label/label'
+import TextareaField from '../textarea'
 import Readme from '../README.md'
 
 export default {

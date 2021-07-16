@@ -17,10 +17,10 @@ import Readme from '../README.md'
 import { Copyright } from '../../../molecules/copyright/__mocks__/copyright'
 
 // Footer
-import { FORMATTER } from '../../../organisms/footer/__mocks__/footer'
+import FORMATTER from '../../../organisms/footer/__mocks__/formatter'
 
 // Navbar
-import { Default } from '../../../molecules/navbar/__mocks__/navigation'
+import DEFAULT from '../../../molecules/navbar/__mocks__/navigation'
 
 export default {
   component: Bootstrap,
@@ -42,7 +42,7 @@ export const Main = (args) => {
       {...args}
       copyright={Copyright}
       footer={FORMATTER}
-      Navigation={() => <Navbar brand={Brand.logo} links={Default} />}
+      Navigation={() => <Navbar brand={Brand.logo} links={DEFAULT} />}
     >
       <Page
         meta={{

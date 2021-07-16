@@ -15,10 +15,12 @@ import { any, string, object } from 'prop-types'
 import _filter from 'lodash/filter'
 
 // UI
-import { BlogCard } from '../card/card'
-import { Column, Row, slugify } from '../../'
+import BlogCard from '../card/card'
+import Column from '../../atoms/grid/Column'
+import Row from '../../atoms/grid/Row'
+import slugify from '../../utils/slugify/slugify'
 
-export const BlogListing = ({ articles, author, category, config, tag }) => {
+const BlogListing = ({ articles, author, category, config, tag }) => {
   const _findTag = (articles) => {
     return _filter(articles, { tags: [tag] })
   }
@@ -69,3 +71,5 @@ BlogListing.propTypes = {
   config: object,
   tag: string
 }
+
+export default BlogListing

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { BlogTags } from '../tags'
+import BlogTags from '../tags'
 import Readme from '../README.md'
 
 // Data

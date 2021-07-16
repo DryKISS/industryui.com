@@ -7,7 +7,7 @@ import { Editor, EditorState, RichUtils } from 'draft-js'
 // Config
 import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from './config'
 
-export const IUIRich = () => {
+const IUIRich = () => {
   const [editorState, seteditorState] = useState(EditorState.createEmpty())
   const ref = useRef(null)
 
@@ -57,3 +57,5 @@ export const IUIRich = () => {
     </div>
   )
 }
+
+export default IUIRich

@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const CoffeeMachineIcon = (props) => {
+const CoffeeMachineIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <g id="outline">
@@ -16,6 +16,6 @@ export const CoffeeMachineIcon = (props) => {
   )
 }
 
-export default CoffeeMachineIcon
-
 CoffeeMachineIcon.propTypes = propTypes
+
+export default CoffeeMachineIcon

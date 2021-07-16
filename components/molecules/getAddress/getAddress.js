@@ -16,13 +16,13 @@ import Dropdown from '../dropdown/dropdown'
 import FormError from '../../form/error/error'
 import FormField from '../../form/field/input'
 import FormLabel from '../../form/label/label'
-import { GetAddressService } from '../../services/getAddress'
+import GetAddressService from '../../services/getAddress/getAddress'
 import InputGroupAddon from '../../form/inputGroup/addon'
 import Shimmer from '../../atoms/shimmer/shimmer'
-import validatorPostCode from '../../utils/validator/postCode/postCode'
+import { validatorPostCode } from '../../utils/validator/postCode/postCode'
 import THEME_SIZE from '../../constants/size'
 
-export const GetAddress = ({
+const GetAddress = ({
   errors,
   label,
   name,
@@ -160,3 +160,5 @@ GetAddress.propTypes = {
 GetAddress.defaultProps = {
   size: 'lg'
 }
+
+export default GetAddress

@@ -9,13 +9,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import { Close, Text, MicIcon, toHHMMSS } from '../../'
-import { THEME_COLOUR } from '../../theme/variables/colour'
+import Close from '../../atoms/close/close'
+import Text from '../../atoms/text/text'
+import MicIcon from '../../icons/components/mic'
+import toHHMMSS from '../../utils/date/hhmmss'
+import THEME_COLOUR from '../../constants/colour'
 
 let AudioRecorder
 let mpegEncoder
 
-export const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
+const VoiceRecorder = ({ onVoiceRecord, overlayStyle }) => {
   const [recorderLoaded, setRecorderLoaded] = useState(false)
   const [timer, setTimer] = useState(0)
   const recorder = useRef()
@@ -179,7 +182,7 @@ const OverLay = styled.div`
   background-color: ${({ theme: { VOICE_RECORDER } }) => VOICE_RECORDER.overlayBackground};
   display: flex;
   height: 45px;
-  left: 4rem;
+  left: 3rem;
   overflow: hidden;
   position: absolute;
   top: -2px;
@@ -191,6 +194,8 @@ const OverLay = styled.div`
     opacity: ${isRecording ? '1' : '0'};
     padding-left: ${isRecording ? '1rem' : '0rem'};
     padding-right: ${isRecording ? '1rem' : '0rem'};
-    width: ${isRecording ? 'calc(100% - 8rem)' : '0px'};
+    width: ${isRecording ? 'calc(100% - 5rem)' : '0px'};
   `}
 `
+
+export default VoiceRecorder

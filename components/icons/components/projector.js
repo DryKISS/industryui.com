@@ -4,7 +4,7 @@ import React from 'react'
 import { propTypes } from '../props'
 import { IconWrapper } from '../wrapper'
 
-export const ProjectorIcon = (props) => {
+const ProjectorIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={512}>
       <path d="M456,132h-8v-16c0-4.418-3.582-8-8-8h-48c-4.418,0-8,3.582-8,8v16h-16v-16c0-4.418-3.582-8-8-8h-48c-4.418,0-8,3.582-8,8v16H24c-13.255,0-24,10.745-24,24v160c0,13.255,10.745,24,24,24h16v32h80v-32h240v32h80v-32h16c13.255,0,24-10.745,24-24V156C480,142.745,469.255,132,456,132z M400,124h32v8h-32V124z M320,124h32v8h-32V124z M104,356H56v-16h48V356z M424,356h-48v-16h48V356z M464,316c0,4.418-3.582,8-8,8H24c-4.418,0-8-3.582-8-8V156c0-4.418,3.582-8,8-8h432c4.418,0,8,3.582,8,8V316z" />
@@ -20,6 +20,6 @@ export const ProjectorIcon = (props) => {
   )
 }
 
-export default ProjectorIcon
-
 ProjectorIcon.propTypes = propTypes
+
+export default ProjectorIcon

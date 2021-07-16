@@ -6,7 +6,7 @@
 import { bool, func, object, oneOf, oneOfType, number, string } from 'prop-types'
 
 // UI
-import { THEME_CONTEXT } from '../../theme/constants/context'
+import THEME_CONTEXT from '../../constants/context'
 
 export const propTypes = {
   buttonContext: oneOf(Object.values(THEME_CONTEXT)),

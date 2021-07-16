@@ -11,16 +11,15 @@ import { renderToString } from 'react-dom/server'
 import styled from 'styled-components'
 
 // UI
-// import { RawIcons, Image, ImageMarker } from '../../../'
-import RawIcons from '../../../icons/rawIcons'
 import Image from '../../../atoms/image/image'
 import ImageMarker from './imageMarker'
 import ClusterIcon from './clusterIcon'
+import RawIcons from '../../../icons/rawIcons'
 
 let imageHeight = 0
 let imageWidth = 0
 
-export const ImageWrapper = ({
+const ImageWrapper = ({
   autoCloseMarkerPopup,
   coordinates,
   customIcon,
@@ -232,3 +231,5 @@ ImageWrapper.propTypes = {
   item: object.isRequired,
   setCoordinates: func.isRequired
 }
+
+export default ImageWrapper

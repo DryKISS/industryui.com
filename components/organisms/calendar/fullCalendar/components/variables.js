@@ -2,10 +2,11 @@
  * Components - Organisms - Calendar - Full Calendar - Variables
  */
 
-export const CALENDAR = {
+const CALENDAR = {
   header: {
     left: 'prev,next today',
     center: 'title',
     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
   }
 }
+export default CALENDAR

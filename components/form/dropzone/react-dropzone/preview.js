@@ -7,13 +7,14 @@
 import React from 'react'
 import { any, func } from 'prop-types'
 
-// UI
-import { Close, Image } from '../../../'
-
 // Style
 import styled from 'styled-components'
 
-export const DropzonePreview = ({ file, handleRemove, index }) => {
+// UI
+import Close from '../../../atoms/close/close'
+import Image from '../../../atoms/image//image'
+
+const DropzonePreview = ({ file, handleRemove, index }) => {
   return (
     <StyledPreview>
       <Close click={handleRemove} />
@@ -33,3 +34,5 @@ DropzonePreview.propTypes = {
   handleRemove: func.isRequired,
   index: any.isRequired
 }
+
+export default DropzonePreview

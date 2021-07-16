@@ -5,11 +5,11 @@
 // React
 import React from 'react'
 
-import { DynamicLocation, Marker } from '../../../'
+// UI
+import DynamicLocation, { Marker } from '../dynamicLocation'
 import Readme from '../README.md'
 
 export default {
-  title: 'Molecules/Map/DynamicLocation',
   component: DynamicLocation,
   parameters: {
     docs: {
@@ -17,7 +17,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Map/DynamicLocation'
 }
 
 export const main = () => {

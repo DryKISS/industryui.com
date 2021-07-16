@@ -14,7 +14,7 @@ import PageLoading from '../../molecules/pageLoading/pageLoading'
 import Space from '../../atoms/space/space'
 import THEME_CONTEXT from '../../constants/context'
 
-export const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
+const Dashboard = ({ children, meta, pageHeading, resultAlert, View }) => {
   const { context, message } = resultAlert
 
   const defaultMeta = {
@@ -70,3 +70,5 @@ Dashboard.defaultProps = {
     message: ''
   }
 }
+
+export default Dashboard

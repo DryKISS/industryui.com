@@ -1,4 +1,4 @@
-export const LiveChartInitialTestDataSource = (function () {
+const LiveChartInitialTestDataSource = (function () {
   // generate an array of random data
   const data = []
   const time = new Date().getTime()
@@ -9,3 +9,5 @@ export const LiveChartInitialTestDataSource = (function () {
   }
   return data
 })()
+
+export default LiveChartInitialTestDataSource

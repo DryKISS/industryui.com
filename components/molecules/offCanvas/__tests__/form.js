@@ -13,9 +13,11 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import { Form, FormField, FormLabel } from '../../../'
+import Form from '../../../form/form/form'
+import FormField from '../../../form/field/input'
+import FormLabel from '../../../form/label/label'
 
-export const OffCanvasForm = ({ onSubmit }) => {
+const OffCanvasForm = ({ onSubmit }) => {
   const schema = object().shape({
     name: string().required(),
     surname: string().required(),
@@ -82,3 +84,5 @@ export const OffCanvasForm = ({ onSubmit }) => {
     </Form>
   )
 }
+
+export default OffCanvasForm

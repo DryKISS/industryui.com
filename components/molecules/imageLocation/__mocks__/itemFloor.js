@@ -1,6 +1,8 @@
 /**
  * Molecules - Image Locaiton - Mocks
  */
+
+// UI
 import groundFloorImage from '../../../../static/imageLocation/ground-floor.png'
 import svgTest from './test.svg'
 
@@ -9,6 +11,7 @@ export const Item = {
   name: 'Ground Floor',
   value: 1
 }
+
 export const SvgTest = {
   filename: svgTest,
   name: 'test',

@@ -7,9 +7,9 @@ import React from 'react'
 import { string } from 'prop-types'
 
 // UI
-import { Icon } from '../icon/icon'
+import Icon from '../icon/icon'
 
-export const IconStacked = ({ icon, prefix }) => {
+const IconStacked = ({ icon, prefix }) => {
   return (
     <span className="fa-stack fa-1x" style={{ pointerEvents: 'none' }}>
       <Icon className="fa-stack-2x" color="#eaf0f6" fixedWidth={false} icon="circle" />
@@ -33,3 +33,5 @@ IconStacked.propTypes = {
 IconStacked.defaultProps = {
   prefix: 'fas'
 }
+
+export default IconStacked

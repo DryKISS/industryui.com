@@ -6,7 +6,6 @@
 import React from 'react'
 
 // Style
-
 import styled, { css } from 'styled-components'
 
 // UI
@@ -132,4 +131,5 @@ const PriceMatrixWrapper = styled.div`
   display: flex;
   width: 100%;
 `
+
 export default PriceMatrix

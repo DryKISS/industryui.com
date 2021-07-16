@@ -6,7 +6,9 @@
 import React from 'react'
 
 // UI
-import { Container, Row } from '../index'
+import Container from '../Container'
+import Row from '../Row'
+
 import Readme from '../README.md'
 import { StyledColumn } from '../__mocks__/grid'
 

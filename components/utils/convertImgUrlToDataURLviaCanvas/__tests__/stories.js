@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 // UI
-import { convertImgUrlToDataURLviaCanvas } from '../index'
+import convertImgUrlToDataURLviaCanvas from '../convertImgUrlToDataURLviaCanvas'
 import Readme from '../README.md'
 
 export default {

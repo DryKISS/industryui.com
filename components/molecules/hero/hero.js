@@ -6,16 +6,19 @@
 import React from 'react'
 import { any, array, number, object, oneOfType, string } from 'prop-types'
 
-// UI
-import { Container, Column, Heading, MEDIA_QUERY, Row } from '../../'
-// import { HeroButtons, HeroImage } from './components'
-import HeroButtons from './components/buttons'
-import HeroImage from './components/image'
-
 // Style
 import styled from 'styled-components'
 
-export const Hero = ({
+// UI
+import Container from '../../atoms/grid/Container'
+import Column from '../../atoms/grid/Column'
+import Heading from '../../atoms/heading/heading'
+import MEDIA_QUERY from '../../utils/mediaQuery/query'
+import Row from '../../atoms/grid/Row'
+import HeroButtons from './components/buttons'
+import HeroImage from './components/image'
+
+const Hero = ({
   alt,
   align,
   background,
@@ -114,3 +117,5 @@ Hero.defaultProps = {
   backgroundSize: 'cover',
   style: {}
 }
+
+export default Hero
