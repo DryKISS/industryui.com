@@ -55,11 +55,8 @@ const StyledContent = styled.div`
 TileBody.propTypes = {
   children: node,
   className: string,
+  size: string,
   title: string
-}
-
-TileBody.defaultProps = {
-  context: 'primary'
 }
 
 export default TileBody

@@ -14,7 +14,7 @@ import Link from '../../atoms/link/link'
 import TileBody from './components/body'
 
 const Tile = ({ body, className, colourConfig, context, rounded, size, title, to }) => {
-  let selectedColour = context
+  let selectedColour = 'success'
 
   if (colourConfig) {
     const ParsIntBody = parseInt(body)
@@ -55,7 +55,7 @@ const Tile = ({ body, className, colourConfig, context, rounded, size, title, to
 
 const StyledTile = styled.div`
   background-color: ${({ theme, bgColour, context }) => {
-    return bgColour ? theme.COLOUR[bgColour] ?? bgColour : theme.COLOUR[context] ?? context
+    return context ? theme.COLOUR[context] ?? context : theme.COLOUR[bgColour] ?? bgColour
   }};
   box-shadow: ${({ shadow }) =>
     shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
@@ -86,7 +86,6 @@ Tile.propTypes = {
 export default Tile
 
 Tile.defaultProps = {
-  context: 'warning',
   rounded: false,
   size: 'sm'
 }
