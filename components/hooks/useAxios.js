@@ -12,8 +12,10 @@ import axios from 'axios'
 import ConfigContext from '../services/config/context'
 
 const useAxios = (url, params, initialValue) => {
-  const { apiConfig } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
   const [data, setData] = useState({ ...initialValue, isLoading: true })
+
+  const { apiConfig } = config
 
   useEffect(() => {
     const bearerToken = window.localStorage.getItem('bearerToken')

@@ -12,7 +12,9 @@ import axios from 'axios'
 import ConfigContext from '../config/context'
 
  const Api = () => {
-  const { apiConfig } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { apiConfig } = config
 
   return {
     init: () => {

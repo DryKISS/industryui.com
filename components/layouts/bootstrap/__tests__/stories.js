@@ -35,7 +35,9 @@ export default {
 }
 
 export const Main = (args) => {
-  const { Brand } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { Brand } = config
 
   return (
     <Bootstrap

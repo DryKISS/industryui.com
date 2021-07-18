@@ -15,7 +15,9 @@ import Column from '../../atoms/grid/Column'
 import Row from '../../atoms/grid/Row'
 
 const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
-  const { Sidebar } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { Sidebar } = config
 
   return (
     <Container fluid>

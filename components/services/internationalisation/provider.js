@@ -15,8 +15,10 @@ import { isLocale } from '../../services/internationalisation/service'
 import useLocalStorage from '../../hooks/useLocalStorage'
 
 const InternationalisationProvider = ({ locale, children }) => {
-  const { locales } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
   const [getStoredLocale, setStoredLocale] = useLocalStorage('locale')
+
+  const { locales } = config
 
   const router = useRouter()
   const [localeState, setLocaleState] = useState({ locale: locale })

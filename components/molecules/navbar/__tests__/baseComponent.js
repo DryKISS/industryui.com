@@ -11,7 +11,9 @@ import DASHBOARD from '../__mocks__/dashboard'
 import Navbar from '../navbar'
 
 const BaseComponent = (props = {}) => {
-  const { Brand } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { Brand } = config
 
   const defaultProps = {
     brand: props.brand || Brand.logo,
