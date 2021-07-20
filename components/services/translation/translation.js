@@ -12,7 +12,7 @@ import axios from 'axios'
 // import ConfigContext from '../../services/config/context'
 
 const Translate = async (text, from = 'es', to = 'en') => {
-  // const { RapidApi } = useContext(ConfigContext)
+  // const { config: { RapidApi } } = useContext(ConfigContext)
 
   const RapidApi = {
     apiKey: '1882a05a31mshaf0342eab29f980p18a203jsna9807a52e188'

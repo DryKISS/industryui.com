@@ -16,7 +16,9 @@ export const isLocale = ({ locales, tested }) => {
 }
 
 export const GetInitialLocale = () => {
-  const { defaultLocale } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { defaultLocale } = config
 
   const localSetting = window.localStorage.getItem('locale')
 

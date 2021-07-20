@@ -33,10 +33,12 @@ const GetAddress = ({
   throttle,
   validator
 }) => {
-  const { GetAddressConfig } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
   const [Errors, setErrors] = useState(errors ?? { [name]: null })
   const [IsLoading, setIsLoading] = useState(false)
   const [Addresses, setAddresses] = useState([])
+
+  const { GetAddressConfig } = config
 
   const ref = useRef(null)
 

@@ -19,7 +19,9 @@ import THEME_CONTEXT from '../../constants/context'
 import THEME_SIZE from '../../constants/size'
 
 const Page = ({ children, fluid, meta, padding, pageHeading }) => {
-  const { Brand, Canonical } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { Brand, Canonical } = config
 
   return (
     <StyledPage>

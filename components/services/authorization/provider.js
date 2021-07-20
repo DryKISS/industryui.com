@@ -15,10 +15,11 @@ import UserContext from '../authentication/context'
 
 const AuthorizationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
+  const { config } = useContext(ConfigContext)
   const { user } = useContext(UserContext)
   const router = useRouter()
 
-  const { AccessPages, AccessRules } = useContext(ConfigContext)
+  const { AccessPages, AccessRules } = config
 
   const permissions = user && user.role ? AccessRules[user.role] : []
 

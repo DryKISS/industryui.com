@@ -27,7 +27,9 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  const { apiConfig, jwtConfig } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { apiConfig, jwtConfig } = config
 
   useEffect(() => {
     const bearerToken = window.localStorage.getItem('bearerToken')

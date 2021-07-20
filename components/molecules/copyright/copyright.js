@@ -23,7 +23,9 @@ import THEME_CONTEXT from '../../constants/context'
 const year = new Date().getFullYear()
 
 const Copyright = memo(({ fixed, icon, links }) => {
-  const { Brand } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
+
+  const { Brand } = config
 
   const renderLinks = () => {
     return links.map(({ name, to }, index) => (
