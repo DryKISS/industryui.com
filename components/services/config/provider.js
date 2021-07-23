@@ -3,14 +3,16 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 import { node, object } from 'prop-types'
 
 // UI
 import ConfigContext from './context'
 
-const ConfigProvider = ({ children, config }) => {
-  return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
+const ConfigProvider = ({ children, config: initial }) => {
+  const [config, setConfig] = useState(initial)
+
+  return <ConfigContext.Provider value={{config, setConfig}}>{children}</ConfigContext.Provider>
 }
 
 

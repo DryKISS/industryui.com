@@ -14,8 +14,10 @@ import ConfigContext from '../../services/config/context'
 import InternationalisationContext from '../../services/internationalisation/context'
 
 const useTranslation = () => {
-  const { defaultLocale, Translations } = useContext(ConfigContext)
+  const { config } = useContext(ConfigContext)
   const { locale } = useContext(InternationalisationContext)
+
+  const { defaultLocale, Translations } = config
 
   const t = (key) => {
     if (!Translations[locale][key]) {

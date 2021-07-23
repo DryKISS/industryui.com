@@ -16,7 +16,7 @@ import Tile from '../tile'
 
 export default {
   args: {
-    body: '10',
+    body: '25',
     colourConfig: { 10: 'success', 20: 'warning', 25: 'danger' },
     loading: false,
     rounded: true,
