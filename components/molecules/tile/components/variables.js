@@ -13,14 +13,14 @@ const TILE = {
     xxxl: '2.25rem'
   },
   FONT_SIZE_BODY: {
-    xxs: '1rem',
-    xs: '1.125rem',
-    sm: '1.25rem',
-    md: '1.5rem',
-    lg: '1.75rem',
-    xl: '2rem',
-    xxl: '2.25rem',
-    xxxl: '2.5rem'
+    xxs: '1.25rem',
+    xs: '1.5rem',
+    sm: '1.75rem',
+    md: '2rem',
+    lg: '2.25rem',
+    xl: '2.5rem',
+    xxl: '2.75rem',
+    xxxl: '3rem'
   },
   PADDING: {
     xxs: '0.5rem',

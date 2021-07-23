@@ -16,8 +16,9 @@ import Tile from '../tile'
 
 export default {
   args: {
-    body: '25',
+    body: '10',
     colourConfig: { 10: 'success', 20: 'warning', 25: 'danger' },
+    loading: false,
     rounded: true,
     title: 'Reactive Job'
   },
