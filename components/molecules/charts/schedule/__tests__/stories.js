@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 // UI
 import Schedule from '../schedule'
 import Readme from '../README.md'
-import SCHEDULE from '../__mocks__/scheduleMock'
+import SCHEDULES from '../__mocks__/scheduleMock'
 
 export default {
   component: Schedule,
@@ -22,8 +22,9 @@ export default {
   title: 'Molecules/Charts/Schedule'
 }
 
-const handleClick = ({ e, month, row }) => {
+const handleClick = ({ e, month, row }, additionalData) => {
   e.stopPropagation()
+  console.log(additionalData)
   console.info('Month', month)
   console.info('Row', row)
   console.info('Cell CLick', e)
@@ -34,19 +35,24 @@ const handleRowClick = (row) => {
 }
 
 export const main = (args) => (
-  <Schedule {...args} data={SCHEDULE} handleClick={handleClick} handleRowClick={handleRowClick} />
+  <Schedule
+    {...args}
+    data={SCHEDULES[0]}
+    handleClick={handleClick}
+    handleRowClick={handleRowClick}
+  />
 )
 
-export const usePagination = (args) => {
+export const WithPagination = (args) => {
   const [currentYear, setCurrentYear] = useState(2021)
   const handleYearChange = (page) => {
     setCurrentYear(page)
   }
-
+  const years = [2020, 2021, 2022]
   return (
     <Schedule
       {...args}
-      data={SCHEDULE}
+      data={SCHEDULES[years.indexOf(currentYear)]}
       handleClick={handleClick}
       handleRowClick={handleRowClick}
       onYearChange={handleYearChange}
