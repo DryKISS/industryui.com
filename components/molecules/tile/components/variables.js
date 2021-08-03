@@ -22,6 +22,16 @@ const TILE = {
     xxl: '2.25rem',
     xxxl: '2.5rem'
   },
+  FONT_SIZE_DESCRIPTION: {
+    xxs: '0.75rem',
+    xs: '1rem',
+    sm: '1.125rem',
+    md: '1.25rem',
+    lg: '1.5rem',
+    xl: '1.75rem',
+    xxl: '2rem',
+    xxxl: '2.25rem'
+  },
   PADDING: {
     xxs: '0.5rem',
     xs: '0.75rem',

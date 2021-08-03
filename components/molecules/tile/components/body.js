@@ -12,7 +12,7 @@ import styled from 'styled-components'
 // UI
 import Heading from '../../../atoms/heading/heading'
 
-const TileBody = ({ children, className, size, title }) => {
+const TileBody = ({ children, className, description, size, title }) => {
   return (
     <StyledBody className={className}>
       {title && (
@@ -21,7 +21,8 @@ const TileBody = ({ children, className, size, title }) => {
         </StyledWrapper>
       )}
 
-      {<StyledContent size={size}>{children}</StyledContent>}
+      <StyledContent size={size}>{children}</StyledContent>
+      {description && <StyledDescription size={size}>{description}</StyledDescription>}
     </StyledBody>
   )
 }
@@ -51,10 +52,17 @@ const StyledContent = styled.div`
     return theme.TILE.FONT_SIZE_BODY[size]
   }};
 `
+const StyledDescription = styled.div`
+  display: flex;
+  font-size: ${({ size, theme }) => {
+    return theme.TILE.FONT_SIZE_DESCRIPTION[size]
+  }};
+`
 
 TileBody.propTypes = {
   children: node,
   className: string,
+  description: string,
   size: string,
   title: string
 }
