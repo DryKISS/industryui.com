@@ -28,6 +28,7 @@ const Tile = ({
 
   if (colourConfig) {
     const ParsIntBody = parseInt(body)
+
     for (const key in colourConfig) {
       const ParsIntKey = parseInt(key)
       if (ParsIntBody <= ParsIntKey) {
@@ -62,6 +63,7 @@ const Tile = ({
       </StyledTile>
     )
   }
+
   return to ? linked() : tile()
 }
 
@@ -96,9 +98,11 @@ Tile.propTypes = {
   size: string,
   title: string
 }
-export default Tile
 
 Tile.defaultProps = {
+  loading: false,
   rounded: false,
   size: 'sm'
 }
+
+export default Tile

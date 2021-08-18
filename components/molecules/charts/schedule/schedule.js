@@ -19,14 +19,16 @@ import Text from '../../../atoms/text/text'
 import Tooltip from '../../../atoms/tooltip/tooltip'
 import Pagination from '../../../molecules/pagination/pagination'
 
-const formatCell = (handleClick, month, row) => {
+const formatCell = (handleClick, month, row, otherData) => {
   return row[month][0] || row[month] ? (
     row[month][2] ? (
       <Tooltip content={row[month][2]}>
         <Wrapper
           context={row[month][1] ? row[month][1] : 'light'}
           count={row[month][0] || row[month]}
-          onClick={(e) => (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row })}
+          onClick={(e) =>
+            (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row }, otherData)
+          }
         >
           {row[month][0] ? row[month][0] : row[month]}
         </Wrapper>
@@ -35,7 +37,9 @@ const formatCell = (handleClick, month, row) => {
       <Wrapper
         context={row[month][1] ? row[month][1] : 'light'}
         count={row[month][0] || row[month]}
-        onClick={(e) => (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row })}
+        onClick={(e) =>
+          (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row }, otherData)
+        }
       >
         {row[month][0] ? row[month][0] : row[month]}
       </Wrapper>
@@ -58,7 +62,7 @@ const formatTask = ({ row }) => {
   )
 }
 
-export const columns = (handleClick) => [
+export const columns = (handleClick, currentYear) => [
   {
     hidden: true
   },
@@ -79,51 +83,51 @@ export const columns = (handleClick) => [
     hidden: true
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'jan', row),
+    formatter: ({ row }) => formatCell(handleClick, 'jan', row, { month: 1, year: currentYear }),
     text: 'Jan'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'feb', row),
+    formatter: ({ row }) => formatCell(handleClick, 'feb', row, { month: 2, year: currentYear }),
     text: 'Feb'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'mar', row),
+    formatter: ({ row }) => formatCell(handleClick, 'mar', row, { month: 3, year: currentYear }),
     text: 'Mar'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'apr', row),
+    formatter: ({ row }) => formatCell(handleClick, 'apr', row, { month: 4, year: currentYear }),
     text: 'Apr'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'may', row),
+    formatter: ({ row }) => formatCell(handleClick, 'may', row, { month: 5, year: currentYear }),
     text: 'May'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'jun', row),
+    formatter: ({ row }) => formatCell(handleClick, 'jun', row, { month: 6, year: currentYear }),
     text: 'Jun'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'jul', row),
+    formatter: ({ row }) => formatCell(handleClick, 'jul', row, { month: 7, year: currentYear }),
     text: 'Jul'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'aug', row),
+    formatter: ({ row }) => formatCell(handleClick, 'aug', row, { month: 8, year: currentYear }),
     text: 'Aug'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'sep', row),
+    formatter: ({ row }) => formatCell(handleClick, 'sep', row, { month: 9, year: currentYear }),
     text: 'Sep'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'oct', row),
+    formatter: ({ row }) => formatCell(handleClick, 'oct', row, { mmonth: 10, year: currentYear }),
     text: 'Oct'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'nov', row),
+    formatter: ({ row }) => formatCell(handleClick, 'nov', row, { mmonth: 11, year: currentYear }),
     text: 'Nov'
   },
   {
-    formatter: ({ row }) => formatCell(handleClick, 'dec', row),
+    formatter: ({ row }) => formatCell(handleClick, 'dec', row, { mmonth: 12, year: currentYear }),
     text: 'Dec'
   }
 ]
@@ -140,7 +144,7 @@ export const Schedule = ({
     <>
       <Table
         align="center"
-        columns={columns(handleClick)}
+        columns={columns(handleClick, currentYear)}
         hover={false}
         rowClick={handleRowClick}
         rows={data}

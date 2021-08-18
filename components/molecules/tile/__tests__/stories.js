@@ -18,6 +18,7 @@ export default {
   args: {
     body: '25',
     colourConfig: { 10: 'success', 20: 'warning', 25: 'danger' },
+    loading: false,
     rounded: true,
     title: 'Reactive Job'
   },
