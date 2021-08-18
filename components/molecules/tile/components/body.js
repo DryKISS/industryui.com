@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import Heading from '../../../atoms/heading/heading'
 import Loading from './loading'
 
-const TileBody = ({ children, className, size, title, loading }) => {
+const TileBody = ({ children, className, description, size, title }) => {
   return (
     <StyledBody className={className} loading={loading}>
       {loading ? (
@@ -26,9 +26,8 @@ const TileBody = ({ children, className, size, title, loading }) => {
             </StyledWrapper>
           )}
 
-          {<StyledContent size={size}>{children}</StyledContent>}
-        </>
-      )}
+      <StyledContent size={size}>{children}</StyledContent>
+      {description && <StyledDescription size={size}>{description}</StyledDescription>}
     </StyledBody>
   )
 }
@@ -36,6 +35,7 @@ const TileBody = ({ children, className, size, title, loading }) => {
 const StyledWrapper = styled.div`
   display: flex;
 `
+
 const StyledBody = styled.div`
   display: flex;
   justify-content: center;
@@ -60,9 +60,17 @@ const StyledContent = styled.div`
   }};
 `
 
+const StyledDescription = styled.div`
+  display: flex;
+  font-size: ${({ size, theme }) => {
+    return theme.TILE.FONT_SIZE_DESCRIPTION[size]
+  }};
+`
+
 TileBody.propTypes = {
   children: node,
   className: string,
+  description: string,
   size: string,
   title: string
 }

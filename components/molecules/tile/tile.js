@@ -13,11 +13,22 @@ import styled from 'styled-components'
 import Link from '../../atoms/link/link'
 import TileBody from './components/body'
 
-const Tile = ({ body, className, colourConfig, context, loading, rounded, size, title, to }) => {
+const Tile = ({
+  body,
+  className,
+  colourConfig,
+  context,
+  description,
+  rounded,
+  size,
+  title,
+  to
+}) => {
   let selectedColour = 'success'
 
   if (colourConfig) {
     const ParsIntBody = parseInt(body)
+
     for (const key in colourConfig) {
       const ParsIntKey = parseInt(key)
       if (ParsIntBody <= ParsIntKey) {
@@ -47,11 +58,12 @@ const Tile = ({ body, className, colourConfig, context, loading, rounded, size, 
         size={size}
       >
         {(title || body) && (
-          <TileBody children={body} size={size} title={title} loading={loading} />
+          <TileBody children={body} description={description} size={size} title={title} />
         )}
       </StyledTile>
     )
   }
+
   return to ? linked() : tile()
 }
 
@@ -81,15 +93,16 @@ Tile.propTypes = {
   className: string,
   colourConfig: object,
   context: string,
-  loading: bool,
+  description: string,
   rounded: bool,
   size: string,
   title: string
 }
-export default Tile
 
 Tile.defaultProps = {
   loading: false,
   rounded: false,
   size: 'sm'
 }
+
+export default Tile
