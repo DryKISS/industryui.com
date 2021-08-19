@@ -10,7 +10,8 @@ import BlogCard from '../card'
 import Readme from '../README.md'
 
 // Data
-import { Articles, Blog } from '../../__mocks__/articles'
+import Articles from '../../__mocks__/articles'
+import Blog from '../../__mocks__/blog'
 
 export default {
   component: BlogCard,

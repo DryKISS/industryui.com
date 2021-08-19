@@ -8,9 +8,6 @@
 // React
 import React, { useContext, useEffect, useState } from 'react'
 
-// Bcrypt
-import bcrypt from 'bcryptjs'
-
 // Next
 import Router from 'next/router'
 
@@ -19,7 +16,9 @@ import axios from 'axios'
 
 // UI
 import ConfigContext from '../config/context'
-import { decodeToken, validateToken } from '../../utils/auth'
+import decodeToken from '../../utils/auth/decodeToken'
+import hashPassword from '../../utils/auth/hashPassword'
+import validateToken from '../../utils/auth/validateToken'
 import UserContext from '../authentication/context'
 
 const UserProvider = ({ children }) => {
@@ -167,10 +166,6 @@ const UserProvider = ({ children }) => {
 
     setAccessToken(null)
     setUser(null)
-  }
-
-  const hashPassword = (password) => {
-    return bcrypt.hashSync(password, 10)
   }
 
   // TODO - remove after converting all pages to new user roles

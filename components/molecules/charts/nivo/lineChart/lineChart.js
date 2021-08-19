@@ -13,7 +13,7 @@ import { colorSchemes } from '@nivo/colors'
 // Style
 import { withTheme } from 'styled-components'
 
-export const LineChart = withTheme(({ theme, ...props }) => {
+const LineChart = withTheme(({ theme, ...props }) => {
   const {
     LINECHART,
     LINECHART: {
@@ -102,3 +102,5 @@ LineChart.defaultProps = Object.assign({}, LineDefaultProps, {
   colorScheme: 'nivo',
   showLegend: false
 })
+
+export default LineChart

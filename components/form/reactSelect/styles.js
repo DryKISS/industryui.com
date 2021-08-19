@@ -5,7 +5,7 @@
 // UI
 import THEME_COLOUR from '../../constants/colour'
 
-export const defaultStyles = {
+const defaultStyles = {
   container: (base, state) => {
     return { ...base, margin: '0' }
   },
@@ -60,3 +60,5 @@ export const defaultStyles = {
     }
   }
 }
+
+export default defaultStyles

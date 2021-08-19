@@ -9,8 +9,8 @@ import { number, string } from 'prop-types'
 // Style
 import styled, { css, keyframes } from 'styled-components'
 
-// Utils
-import { shadeColor } from '../../utils/colour/colour'
+// UI
+import shadeColor from '../../utils/colour/shadeColor'
 
 const Shimmer = ({ duration, height, hexColour, width }) => {
   return <StyledShimmer duration={duration} height={height} hexColour={hexColour} width={width} />

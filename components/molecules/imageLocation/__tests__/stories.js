@@ -18,7 +18,7 @@ import Button from '../.././../atoms/button/button/button'
 import Form from '../../../form/form/form'
 import ImageLocation from '../imageLocation'
 import ImageLocationFormElement from '../components/imageLocationFormElement'
-import randomFloat from '../../../utils/randomFloat'
+import randomFloat from '../../../utils/randomFloat/randomFloat'
 import { iconNameList } from '../../../icons/rawIcons'
 import Readme from '../README.md'
 

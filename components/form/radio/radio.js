@@ -12,7 +12,7 @@ import styled, { css } from 'styled-components'
 // UI
 import FieldHOC from '../hoc/hoc'
 import RadioComponent from './component'
-import { formErrorStyle } from '../variables/style'
+import formErrorStyle from '../variables/formErrorStyle'
 
 const RadioField = ({ data, errors, legend, stacked, ...props }) => {
   return (

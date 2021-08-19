@@ -2,7 +2,7 @@
  * Icon — Constants — Size
  * Provides a list of the sizes of FontAwesome Icons
  */
-export const ICON_SIZE = {
+const ICON_SIZE = {
   ExtraSmall: 'xs',
   Small: 'sm',
   Large: 'lg',
@@ -16,3 +16,5 @@ export const ICON_SIZE = {
   x9: '9x',
   x10: '10x'
 }
+
+export default ICON_SIZE

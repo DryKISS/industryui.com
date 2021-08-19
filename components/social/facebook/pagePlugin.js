@@ -12,7 +12,7 @@ import { bool, number, string } from 'prop-types'
 
 const p = 'https://www.facebook.com/plugins/page.php'
 
-export const FacebookPagePlugin = ({
+const FacebookPagePlugin = ({
   appId,
   iFrame,
   adaptContainerWidth,
@@ -93,4 +93,5 @@ FacebookPagePlugin.defaultProps = {
   tabs: 'timeline,messages,events',
   width: 340
 }
+
 export default FacebookPagePlugin

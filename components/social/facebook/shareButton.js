@@ -8,7 +8,7 @@ import { bool, number, oneOf, string } from 'prop-types'
 
 const p = 'https://www.facebook.com/plugins/share_button.php'
 
-export const FacebookShareButton = ({ appId, hashTag, iFrame, layout, size, to }) => {
+const FacebookShareButton = ({ appId, hashTag, iFrame, layout, size, to }) => {
   return (
     <>
       {iFrame && (
@@ -59,4 +59,5 @@ FacebookShareButton.defaultProps = {
   layout: 'button',
   size: 'large'
 }
+
 export default FacebookShareButton

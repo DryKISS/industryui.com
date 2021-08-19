@@ -17,7 +17,7 @@ const findWithRegex = (regex, contentBlock, callback) => {
   }
 }
 
-export const generateDecorator = (highlightTerm) => {
+const generateDecorator = (highlightTerm) => {
   const regex = new RegExp(highlightTerm, 'g')
   return new CompositeDecorator([
     {
@@ -30,3 +30,5 @@ export const generateDecorator = (highlightTerm) => {
     }
   ])
 }
+
+export default generateDecorator

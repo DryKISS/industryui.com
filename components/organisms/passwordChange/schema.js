@@ -5,7 +5,7 @@
 // Yup
 import { object, ref, string } from 'yup'
 
-export const PasswordChangeSchema = object().shape({
+const PasswordChangeSchema = object().shape({
   passwordOld: string()
     .required('Please Enter a password')
     .min(8, 'Password is too short - should be 8 chars minimum.')
@@ -24,3 +24,5 @@ export const PasswordChangeSchema = object().shape({
     .required()
     .oneOf([ref('password'), null], 'Passwords must match')
 })
+
+export default PasswordChangeSchema

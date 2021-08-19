@@ -5,7 +5,7 @@
 // Yup
 import { object, string } from 'yup'
 
-export const LoginSchema = object().shape({
+const LoginSchema = object().shape({
   email: string().email().required(),
   password: string()
     .required('Please Enter a password')
@@ -15,3 +15,5 @@ export const LoginSchema = object().shape({
       'Must contain 8 characters, with at least one uppercase letter, number and special character'
     )
 })
+
+export default LoginSchema

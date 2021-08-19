@@ -12,7 +12,7 @@ import { colorSchemes } from '@nivo/colors'
 import styled from 'styled-components'
 
 // UI
-import { BarChart } from '../barChart'
+import BarChart from '../barChart'
 import objectWithoutProperties from '../../../../../utils/objWithoutProperties/objWithoutProperties'
 import Readme from '../README.md'
 

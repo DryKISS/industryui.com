@@ -8,8 +8,8 @@ import React from 'react'
 // Style
 import styled from 'styled-components'
 
-//UI
-import { blendLinearRgb } from '../../components/utils/colour/colour'
+// UI
+import blendLinearRgb from '../../components/utils/colour/blendLinearRgb'
 
 const Wrapper = Story => {
   return (

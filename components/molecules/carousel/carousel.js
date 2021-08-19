@@ -13,7 +13,7 @@ import Carouselnav from './components/nav'
 import CarouselSampleSlide from './components/sample'
 import Icon from '../../atoms/icon/icon/icon'
 import Pagination from '../../molecules/pagination/pagination'
-import revert from '../../utils/revert'
+import revert from '../../utils/revert/revert'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import { CarouselDefaultProps, CarouselPropTypes } from './components/props'
 

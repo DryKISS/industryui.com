@@ -10,8 +10,8 @@ import styled, { css } from 'styled-components'
 
 // UI
 import Icon from '../icon/icon/icon'
-import themeBackground from '../../utils/background'
-import themeFontSize from '../../utils/fontSize'
+import themeBackground from '../../utils/background/background'
+import themeFontSize from '../../utils/fontSize/fontSize'
 
 // Props
 import { defaultProps, propTypes } from './components/props'

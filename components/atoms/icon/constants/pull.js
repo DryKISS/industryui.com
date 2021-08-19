@@ -2,7 +2,9 @@
  * Icon — Constants — Pull
  * Provides a list of the pulls of FontAwesome Icons
  */
-export const ICON_PULL = {
+const ICON_PULL = {
   left: 'left',
   right: 'right'
 }
+
+export default ICON_PULL

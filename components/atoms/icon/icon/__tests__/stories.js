@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 // UI
 import arrayOfValues from '../../../../utils/arrayOfValues/arrayOfValues'
-import { blendLinearRgb } from '../../../../utils/colour/colour'
+import blendLinearRgb from '../../../../utils/colour/blendLinearRgb'
 import Card from '../../../../molecules/card/card'
 import Heading from '../../../heading/heading'
 import Icon from '../icon'

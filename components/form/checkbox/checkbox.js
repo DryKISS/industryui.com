@@ -12,9 +12,9 @@ import styled, { css } from 'styled-components'
 // UI
 import FieldHOC from '../hoc/hoc'
 import CheckboxComponent from './component'
-import { formErrorStyle } from '../variables/style'
+import formErrorStyle from '../variables/formErrorStyle'
 
-const CheckboxField = ({ data, errors, legend, stacked, ...props }) => {
+const Checkbox = ({ data, errors, legend, stacked, ...props }) => {
   return (
     <StyledFieldset error={errors[props.name]}>
       {legend && <legend>{legend}</legend>}
@@ -59,17 +59,17 @@ const StyledLabel = styled.label`
     `}
 `
 
-CheckboxField.propTypes = {
+Checkbox.propTypes = {
   data: array.isRequired,
   errors: object,
   legend: string,
   stacked: bool
 }
 
-CheckboxField.defaultProps = {
+Checkbox.defaultProps = {
   data: [],
   errors: {},
   stacked: false
 }
 
-export default CheckboxField
+export default Checkbox

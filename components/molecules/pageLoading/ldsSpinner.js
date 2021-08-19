@@ -54,7 +54,7 @@ const LdsSpinnerWrapper = styled.div`
   }
 `
 
-export const LdsSpinner = (props) => {
+const LdsSpinner = (props) => {
   return (
     <LdsSpinnerWrapper {...props} spinner={SPINNER}>
       {SPINNER.map((s, i) => (

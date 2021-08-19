@@ -11,10 +11,10 @@ import styled, { css, useTheme } from 'styled-components'
 // UI
 import Icon from '../../../atoms/icon/icon/icon'
 import ButtonItemCount from './components/itemCount'
-import { shadeLinearRgb } from '../../../utils/colour/colour'
+import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
 import SPACER from '../../../utils/spacer/spacer'
-import themeBackground from '../../../utils/background'
-import { themeDimension } from '../../../utils/dimension'
+import themeBackground from '../../../utils/background/background'
+import themeDimension from '../../../utils/dimension/dimension'
 import themeDisplay from '../../../utils/display/display'
 
 // Props

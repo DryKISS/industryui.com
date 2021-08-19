@@ -12,11 +12,10 @@ import styled from 'styled-components'
 // UI
 import AlertContent from './components/content'
 import AlertHeader from './components/header'
-
 import Close from '../../atoms/close/close'
-import { shadeLinearRgb } from '../../utils/colour/colour'
+import shadeLinearRgb from '../../utils/colour/shadeLinearRgb'
 import THEME_CONTEXT from '../../constants/context'
-import themeBackground from '../../utils/background'
+import themeBackground from '../../utils/background/background'
 
 const Alert = ({ className, close, content, context, header, icon, iconPrefix, style }) => {
   const [visible, setVisible] = useState(true)

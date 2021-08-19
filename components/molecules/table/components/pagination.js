@@ -12,7 +12,7 @@ import Pagination from '../../pagination/pagination'
 import Row from '../../../atoms/grid/Row'
 import TablePaginationSize from './paginationSize'
 
-export const TablePagination = memo(
+const TablePagination = memo(
   ({ currentPage, handlePagination, handlePaginationSize, paginationSize, pageCount, perPage }) => {
     return (
       <Row>

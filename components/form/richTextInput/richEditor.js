@@ -16,9 +16,10 @@ import draftToHtml from 'draftjs-to-html'
 import styled, { css } from 'styled-components'
 
 // UI
-import { formStyle, formErrorStyle } from '../variables/style'
+import formErrorStyle from '../variables/formErrorStyle'
+import formStyle from '../variables/formStyle'
 
-export const RichTextInput = ({ control, errors, initialValue, name }) => {
+const RichTextInput = ({ control, errors, initialValue, name }) => {
   const editor = useRef(null)
   const content = EditorState.createWithContent(
     ContentState.createFromBlockArray(convertFromHTML(initialValue ?? ''))
@@ -68,3 +69,5 @@ RichTextInput.propTypes = {
   name: string.isRequired,
   initialValue: string
 }
+
+export default RichTextInput

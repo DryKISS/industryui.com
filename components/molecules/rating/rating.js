@@ -10,7 +10,7 @@ import { number, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import themeBackground from '../../utils/background'
+import themeBackground from '../../utils/background/background'
 
 const Rating = ({ className, context, value, size }) => {
   const rating = []

@@ -13,7 +13,8 @@ import SelectField from '../../select/select'
 import Space from '../../../atoms/space/space'
 
 // Data
-import { DAYS, MONTHS } from './constants/dates'
+import DAYS from './constants/days'
+import MONTHS from './constants/months'
 
 const DatePickerInput = ({
   data,
@@ -56,14 +57,7 @@ const DatePickerInput = ({
               {...defaultOptions}
               data={{ 'data-index': index, 'data-name': 'month' }}
               name={`month${name}`}
-              options={[
-                // {
-                //   disabled: true,
-                //   text: placeHolder ?? 'Select month',
-                //   value: ''
-                // },
-                ...MONTHS
-              ]}
+              options={[...MONTHS]}
             />
           </Column>
         )}

@@ -1,7 +1,7 @@
 /**
  * Components - Theme - Constants - Context
  */
-export const THEME_CONTEXT = {
+const THEME_CONTEXT = {
   WHITE: 'white',
   BLACK: 'black',
 

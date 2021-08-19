@@ -13,13 +13,13 @@ import { lineCurvePropKeys } from '@nivo/core'
 import styled from 'styled-components'
 
 // UI
-import { LineChart } from '../lineChart'
+import LineChart from '../lineChart'
 import objectWithoutProperties from '../../../../../utils/objWithoutProperties/objWithoutProperties'
 import Readme from '../README.md'
 
 // Mocks
-import { Big } from '../__mocks__/big'
-import { Line } from '../__mocks__/line'
+import Big from '../__mocks__/big'
+import Line from '../__mocks__/line'
 
 export default {
   args: {

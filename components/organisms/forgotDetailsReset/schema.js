@@ -5,7 +5,7 @@
 // Yup
 import { object, string } from 'yup'
 
-export const ForgotDetailsResetSchema = object().shape({
+const ForgotDetailsResetSchema = object().shape({
   password: string()
     .required('Please Enter a password')
     .min(8, 'Password is too short - should be 8 chars minimum.')
@@ -14,3 +14,5 @@ export const ForgotDetailsResetSchema = object().shape({
       'Must contain 8 characters, with at least one uppercase letter, number and special character'
     )
 })
+
+export default ForgotDetailsResetSchema

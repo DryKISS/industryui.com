@@ -10,7 +10,7 @@ import { array, number, node, object, oneOf, string } from 'prop-types'
 // Services
 import { StaticMap } from '../../../services/google/static/map'
 
-export const StaticLocation = ({
+const StaticLocation = ({
   apiKey,
   center,
   channel,
@@ -103,3 +103,5 @@ StaticLocation.defaultProps = {
   size: '400x200',
   zoom: 15
 }
+
+export default StaticLocation

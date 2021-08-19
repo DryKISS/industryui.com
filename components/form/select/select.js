@@ -14,7 +14,8 @@ import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import { formErrorStyle, formStyle } from '../variables/style'
+import formErrorStyle from '../variables/formErrorStyle'
+import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
 const SelectField = forwardRef(

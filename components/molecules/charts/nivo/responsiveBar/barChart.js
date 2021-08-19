@@ -79,7 +79,7 @@ BarPropTypes.getLabelTextColor = func
 BarPropTypes.getLabelLinkColor = func
 BarPropTypes.getTooltipLabel = func
 
-export const BarChart = withTheme(BarComponent)
+const BarChart = withTheme(BarComponent)
 
 BarChart.displayName = 'BarChart'
 
@@ -94,3 +94,5 @@ BarChart.defaultProps = Object.assign({}, BarDefaultProps, {
   colorScheme: 'nivo',
   showLegend: false
 })
+
+export default BarChart

@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
-import { formatIntDateShort } from '../../utils/formatDate'
+import formatIntDateShort from '../../utils/date/formatIntDateShort'
 import BlogList from './components/list'
 import BlogSection from './components/section'
 

@@ -9,7 +9,8 @@ import React from 'react'
 import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
 // UI
-import { blendLinearRgb, shadeLinearRgb } from '../colour'
+import blendLinearRgb from '../blendLinearRgb'
+import shadeLinearRgb from '../shadeLinearRgb'
 import Readme from '../README.md'
 
 export default {

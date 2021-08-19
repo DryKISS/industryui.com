@@ -1,4 +1,4 @@
-export const ADDRESS_DATA = {
+const ADDRESS_DATA = {
   latitude: 51.41832,
   longitude: -0.173543,
   addresses: [
@@ -26,3 +26,5 @@ export const ADDRESS_DATA = {
     'Flat B-C, 108 Cavendish Road, , , , London, '
   ]
 }
+
+export default ADDRESS_DATA

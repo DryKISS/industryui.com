@@ -1,7 +1,7 @@
 /**
  * Components - Utils - Date - Difference
  */
-const DateDiff = {
+const dateDiff = {
   inDays: (d1, d2) => {
     const t2 = d2.getTime()
     const t1 = d1.getTime()
@@ -30,4 +30,4 @@ const DateDiff = {
   }
 }
 
-export default DateDiff
+export default dateDiff

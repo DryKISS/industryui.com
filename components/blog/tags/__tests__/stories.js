@@ -10,7 +10,7 @@ import BlogTags from '../tags'
 import Readme from '../README.md'
 
 // Data
-import { Articles } from '../../__mocks__/articles'
+import Articles from '../../__mocks__/articles'
 
 export default {
   component: BlogTags,

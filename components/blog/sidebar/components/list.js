@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import Badge from '../../../atoms/badge/badge'
 import Link from '../../../atoms/link/link'
 import slugify from '../../../utils/slugify/slugify'
-import { Truncate } from '../../../utils/truncate'
+import Truncate from '../../../utils/truncate/truncate'
 
 const BlogList = ({ author, config, list }) => {
   return (

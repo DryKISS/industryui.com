@@ -12,7 +12,7 @@ import NextLink from 'next/link'
 import styled from 'styled-components'
 
 // UI
-import { shadeLinearRgb } from '../../utils/colour/colour'
+import shadeLinearRgb from '../../utils/colour/shadeLinearRgb'
 import validatorUri from '../../utils/validator/uri'
 import THEME_CONTEXT from '../../constants/context'
 
@@ -62,7 +62,7 @@ const Link = ({
   )
 }
 
-export const StyledLink = styled.a`
+const StyledLink = styled.a`
   background-color: transparent;
   border-bottom: ${({ border, context, theme }) =>
     border && `2px solid ${shadeLinearRgb(0.88, theme.COLOUR[context] || theme.LINK.colour)}`};

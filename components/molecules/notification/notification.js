@@ -8,7 +8,7 @@ import { func, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
 import Alert from '../alert/alert'
-import { formatRelativeTime } from '../../utils/formatDate'
+import formatRelativeTime from '../../utils/date/formatRelativeTime'
 import Link from '../../atoms/link/link'
 import THEME_CONTEXT from '../../constants/context'
 

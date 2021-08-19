@@ -3,7 +3,7 @@
  */
 
 // Date fns
-import { shortDate } from '../../../../utils/dateFns/date'
+import shortDate from '../../../../utils/dateFns/shortDate'
 
 // UI
 import THEME_COLOUR from '../../../../constants/colour'

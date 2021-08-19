@@ -25,4 +25,5 @@ CheckboxComponent.propTypes = {
 CheckboxComponent.defaultProps = {
   stacked: false
 }
+
 export default CheckboxComponent

@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import Tippy from '@tippyjs/react'
 
 // UI
-import themeBackground from '../../utils/background'
+import themeBackground from '../../utils/background/background'
 import { defaultProps, propTypes } from './components/props'
 
 const Tooltip = styled(Tippy)`

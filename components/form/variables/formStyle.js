@@ -6,18 +6,9 @@
 import { css } from 'styled-components'
 
 // UI
-import THEME_SIZE from '../../constants/size'
+import formFontStyle from './formFontStyle'
 
-export const formStyle = ({
-  disabled,
-  errors,
-  isTyping,
-  readOnly,
-  Required,
-  size,
-  textAlign,
-  theme
-}) => {
+const formStyle = ({ disabled, errors, isTyping, readOnly, Required, size, textAlign, theme }) => {
   return css`
     background-clip: padding-box;
     background-color: ${theme.COLOUR.white};
@@ -27,7 +18,7 @@ export const formStyle = ({
     color: ${theme.COLOUR.dark};
     display: block;
 
-    ${formfontSize(size)}
+    ${formFontStyle(size)}
     ${Required &&
     css`
       border-right-width: 0.25rem;
@@ -81,41 +72,4 @@ export const formStyle = ({
   `
 }
 
-export const formErrorStyle = ({ theme, isTyping, withAddon }) => {
-  return css`
-    border-color: ${theme.COLOUR.danger};
-    border-image: initial;
-    border-style: solid;
-    border-left-width: ${!withAddon && '0.25rem'};
-    &:hover {
-      border-color: ${!isTyping && theme.COLOUR.danger};
-    }
-    &:focus {
-      border-color: ${theme.COLOUR.danger};
-    }
-
-    ${isTyping === true &&
-    css`
-      box-shadow: 0px 0px 4px ${theme.COLOUR.danger};
-    `}
-  `
-}
-
-export const formfontSize = (size) => {
-  switch (size) {
-    case THEME_SIZE.SM:
-      return css`
-        font-size: 0.625rem;
-      `
-    case THEME_SIZE.MD:
-      return css`
-        font-size: 1rem;
-      `
-    case THEME_SIZE.LG:
-      return css``
-    default:
-      return css`
-        font-size: 1rem;
-      `
-  }
-}
+export default formStyle

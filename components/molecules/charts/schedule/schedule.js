@@ -12,7 +12,7 @@ import styled from 'styled-components'
 // UI
 import formatPrice from '../../../utils/formatPrice/formatPrice'
 import Icon from '../../../atoms/icon/icon/icon'
-import { shadeLinearRgb } from '../../../utils/colour/colour'
+import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
 import Space from '../../../atoms/space/space'
 import Table from '../../../molecules/table/table'
 import Text from '../../../atoms/text/text'
@@ -62,7 +62,7 @@ const formatTask = ({ row }) => {
   )
 }
 
-export const columns = (handleClick, currentYear) => [
+const columns = (handleClick, currentYear) => [
   {
     hidden: true
   },
@@ -132,14 +132,7 @@ export const columns = (handleClick, currentYear) => [
   }
 ]
 
-export const Schedule = ({
-  data,
-  handleClick,
-  handleRowClick,
-  onYearChange,
-  currentYear,
-  yearRange
-}) => {
+const Schedule = ({ data, handleClick, handleRowClick, onYearChange, currentYear, yearRange }) => {
   return (
     <>
       <Table

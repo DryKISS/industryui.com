@@ -1,7 +1,7 @@
 /**
  * Components - Molecules - Charts - Nivo - Mocks - Big Data
  */
-export const Big = [
+const Big = [
   {
     id: 'Temp',
     data: [
@@ -1672,3 +1672,5 @@ export const Big = [
     ]
   }
 ]
+
+export default Big

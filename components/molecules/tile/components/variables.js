@@ -1,6 +1,7 @@
 /**
  * Tile - variables
  */
+
 const TILE = {
   FONT_SIZE_TITLE: {
     xxs: '0.75rem',
@@ -53,4 +54,5 @@ const TILE = {
     xxxl: '400px'
   }
 }
+
 export default TILE

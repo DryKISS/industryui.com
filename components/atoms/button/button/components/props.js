@@ -6,7 +6,7 @@
 import { bool, func, node, number, object, objectOf, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import { DIMENSION_PROP_TYPES } from '../../../../utils/dimension'
+import DIMENSION_PROP_TYPES from '../../../../utils/dimension/dimensionProps'
 import DISPLAY_PROP_TYPES from '../../../../utils/display/props'
 import SPACER_PROP_TYPES from '../../../../utils/spacer/props'
 import THEME_CONTEXT from '../../../../constants/context'

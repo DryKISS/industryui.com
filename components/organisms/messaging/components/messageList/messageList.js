@@ -13,7 +13,7 @@ import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtuali
 import styled, { css } from 'styled-components'
 
 // UI
-import DateDiff from '../../../../utils/date/diff'
+import dateDiff from '../../../../utils/date/diff'
 import Message from '../message/message'
 import {
   MessageNames,
@@ -53,7 +53,7 @@ const MessageList = memo(
         if (i !== 0) {
           const current = new Date(Messages[i].time)
           const previous = new Date(Messages[i - 1].time)
-          const diff = DateDiff.inDays(previous, current)
+          const diff = dateDiff.inDays(previous, current)
           if (diff > 0) {
             Messages[i].headerTime = Messages[i].time.slice(0, 14)
           }
@@ -143,6 +143,7 @@ const MessageList = memo(
   },
   () => true
 )
+
 const MessageContainer = styled.div`
   ${({ type }) =>
     type === 'in'
@@ -153,7 +154,9 @@ const MessageContainer = styled.div`
           padding-left: 0.5rem;
         `}
 `
+
 MessageList.propTypes = {
   initialMessages: array.isRequired
 }
+
 export default MessageList

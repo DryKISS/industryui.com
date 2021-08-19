@@ -2,10 +2,7 @@
  * Components - Theme - Utils - Dimension
  */
 
-// React
-import { bool } from 'prop-types'
-
-export const themeDimension = ({ h100, w100, h100vh, w100vw }) => {
+const themeDimension = ({ h100, w100, h100vh, w100vw }) => {
   let temp = ''
 
   if (h100) {
@@ -27,9 +24,4 @@ export const themeDimension = ({ h100, w100, h100vh, w100vw }) => {
   return temp
 }
 
-export const DIMENSION_PROP_TYPES = {
-  h100: bool,
-  w100: bool,
-  h100vh: bool,
-  w100vw: bool
-}
+export default themeDimension

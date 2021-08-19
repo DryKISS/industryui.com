@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react'
 import { array, number, object } from 'prop-types'
 
 // UI
-import { formatIntDateYear } from '../../utils/formatDate'
+import formatIntDateYear from '../../utils/date/formatIntDateYear'
 import BlogList from './components/list'
 import BlogSection from './components/section'
 

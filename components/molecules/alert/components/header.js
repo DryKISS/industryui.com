@@ -10,7 +10,7 @@ import { oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { shadeLinearRgb } from '../../../utils/colour/colour'
+import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
 import Icon from '../../../atoms/icon/icon/icon'
 import THEME_CONTEXT from '../../../constants/context'
 

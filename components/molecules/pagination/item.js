@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 // UI
 import Button from '../../atoms/button/button/button'
-import themeFontSize from '../../utils/fontSize'
+import themeFontSize from '../../utils/fontSize/fontSize'
 
 const PaginationItem = memo(({ active, context, disabled, label, onClick, size }) => {
   return (

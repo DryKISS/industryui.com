@@ -10,7 +10,7 @@ import { Controller } from 'react-hook-form'
 
 // Draft JS
 import { Editor, EditorState, RichUtils } from 'draft-js'
-import { BlockType } from './constants'
+import BlockType from './constants'
 
 const DraftJs = ({ control, name, setValue }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())

@@ -1,7 +1,7 @@
 /**
  * Components - Blog - Articles
  */
-export const Articles = [
+const Articles = [
   {
     author: 'Ian Warner',
     category: 'Tech',
@@ -52,13 +52,4 @@ export const Articles = [
   }
 ]
 
-export const Blog = {
-  path: '/blog'
-}
-
-export const Facebook = {
-  appId: 285418984933747,
-  appPath: 'https//www.facebook.com/drykissltd',
-  domain: 'https://industryui.com',
-  hashTag: 'DryKISS'
-}
+export default Articles

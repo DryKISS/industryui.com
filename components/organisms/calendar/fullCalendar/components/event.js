@@ -31,7 +31,7 @@ const EventContent = ({
   return showTooltip ? <Tooltip content={tooltip || description}>{content}</Tooltip> : content
 }
 
-export const renderEvent = ({ defaultEventColor, event, el, showTooltip, view }) => {
+const renderEvent = ({ defaultEventColor, event, el, showTooltip, view }) => {
   const eventDiv = document.createElement('div')
   const classes = Array.from(el.classList)
   eventDiv.classList.add(...classes)
@@ -52,3 +52,5 @@ const StyledEvent = styled.div`
   color: white;
   border-radius: 4px;
 `
+
+export default renderEvent

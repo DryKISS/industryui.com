@@ -13,22 +13,26 @@ import styled from 'styled-components'
 import Heading from '../../../atoms/heading/heading'
 import Loading from './loading'
 
-const TileBody = ({ children, className, description, size, title }) => {
+const TileBody = ({ children, className, description, loading, size, title }) => {
   return (
-    <StyledBody className={className} loading={loading}>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          {title && (
-            <StyledWrapper>
-              <StyledTitle content={title} size={size} tag="h2" />
-            </StyledWrapper>
-          )}
+    <>
+      <StyledBody className={className} loading={loading}>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {title && (
+              <StyledWrapper>
+                <StyledTitle content={title} size={size} tag="h2" />
+              </StyledWrapper>
+            )}
 
-      <StyledContent size={size}>{children}</StyledContent>
-      {description && <StyledDescription size={size}>{description}</StyledDescription>}
-    </StyledBody>
+            <StyledContent size={size}>{children}</StyledContent>
+            {description && <StyledDescription size={size}>{description}</StyledDescription>}
+          </>
+        )}
+      </StyledBody>
+    </>
   )
 }
 
@@ -37,11 +41,11 @@ const StyledWrapper = styled.div`
 `
 
 const StyledBody = styled.div`
-  display: flex;
-  justify-content: center;
   align-items: ${({ loading }) => loading && 'center'};
+  display: flex;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: center;
 `
 
 const StyledTitle = styled(Heading)`

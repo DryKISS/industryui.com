@@ -10,8 +10,8 @@ import { oneOf, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import { shadeLinearRgb } from '../../../utils/colour/colour'
-import { THEME_CONTEXT } from '../../../constants/context'
+import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
+import THEME_CONTEXT from '../../../constants/context'
 
 const CardHeader = ({ content, context, align }) => {
   return (

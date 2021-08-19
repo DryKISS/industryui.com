@@ -9,7 +9,7 @@ import { number, string, bool } from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 
 // UI
-import themeBackground from '../../../utils/background'
+import themeBackground from '../../../utils/background/background'
 
 const ProgressBarStripesAnimation = keyframes`
   0% {

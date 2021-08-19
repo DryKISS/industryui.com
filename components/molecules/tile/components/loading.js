@@ -26,6 +26,7 @@ const StyledWrapper = styled.div`
   top: 0;
   width: 100%;
 `
+
 const StyleBody = styled.div`
   border: 2px solid rgba(51, 51, 51, 0.5);
   border-top-color: #fff;
@@ -43,4 +44,5 @@ const StyleBody = styled.div`
     }
   }
 `
+
 export default Loading

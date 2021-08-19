@@ -22,7 +22,7 @@ import useComponentCommunication from '../../../../hooks/useComponentCommunicati
 import { MentionSuggestions, MessagingEditor, messagingPlugins } from '../../draftPlugins/index'
 import { formStyle } from '../../../../form/variables/style'
 
-export const MessagingInput = ({ mentions, onChange }) => {
+const MessagingInput = ({ mentions, onChange }) => {
   const [suggestions, setSuggestions] = useState(mentions ?? [])
 
   // Draft-JS editor configuration
@@ -96,4 +96,5 @@ const Wrapper = styled.div`
   max-height: ${({ theme: { MESSAGING } }) => MESSAGING.maxInputHeight};
   overflow-y: auto;
 `
+
 export default MessagingInput

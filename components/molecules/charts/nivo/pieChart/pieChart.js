@@ -13,7 +13,7 @@ import { colorSchemes } from '@nivo/colors'
 // Style
 import { withTheme } from 'styled-components'
 
-export const PieChart = withTheme(({ theme, ...props }) => {
+const PieChart = withTheme(({ theme, ...props }) => {
   const {
     PIECHART,
     PIECHART: {
@@ -99,3 +99,5 @@ PieChart.defaultProps = Object.assign({}, PieDefaultProps, {
   colorScheme: 'nivo',
   showLegend: false
 })
+
+export default PieChart

@@ -11,7 +11,8 @@ import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import { formStyle, formErrorStyle } from '../variables/style'
+import formStyle from '../variables/formStyle'
+import formErrorStyle from '../variables/formErrorStyle'
 import THEME_SIZE from '../../constants/size'
 
 const FormField = ({
@@ -56,7 +57,7 @@ const FormField = ({
   )
 }
 
-export const StyledInput = styled.input.attrs((props) => ({
+const StyledInput = styled.input.attrs((props) => ({
   autoComplete: 'off',
   autoFocus: false
 }))`

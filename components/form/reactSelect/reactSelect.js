@@ -17,7 +17,8 @@ import styled, { css } from 'styled-components'
 
 // UI
 import { defaultStyles } from './styles'
-import { formErrorStyle, formStyle } from '../variables/style'
+import formErrorStyle from '../variables/formErrorStyle'
+import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
 // Props

@@ -1,6 +1,6 @@
 // Did is the example to apply into the blockTypes, when we implement the whole solutionn
 // We will have it in this format
-export const BlockType = {
+const BlockType = {
   HEADER_ONE: 'header-one',
   HEADER_THREE: 'header-three',
   HEADER_FOUR: 'header-four',
@@ -10,3 +10,5 @@ export const BlockType = {
   FIGURE: 'atomic',
   LI: 'unordered-list-item'
 }
+
+export default BlockType

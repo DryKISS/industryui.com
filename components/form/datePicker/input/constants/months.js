@@ -1,7 +1,7 @@
 /**
  * Date Picker - Input
  */
-export const MONTHS = [
+const MONTHS = [
   {
     disabled: true,
     text: 'Select month',
@@ -57,11 +57,4 @@ export const MONTHS = [
   }
 ]
 
-// Days
-const days = [{ disabled: true, text: 'Select day', value: '' }]
-
-for (let d = 1; d <= 31; d++) {
-  days.push({ text: d, value: d })
-}
-
-export const DAYS = days
+export default MONTHS

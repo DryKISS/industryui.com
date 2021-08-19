@@ -1,7 +1,7 @@
 /**
  * Components - Molecules - Charts - Nivo - Mocks - Data
  */
-export const Line = [
+const Line = [
   {
     id: 'japan',
     color: 'hsl(207, 70%, 50%)',
@@ -273,3 +273,5 @@ export const Line = [
     ]
   }
 ]
+
+export default Line

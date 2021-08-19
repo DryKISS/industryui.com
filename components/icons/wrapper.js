@@ -8,7 +8,7 @@ import React from 'react'
 // Style
 import styled, { css } from 'styled-components'
 
-export const IconWrapper = ({
+const IconWrapper = ({
   children,
   colour,
   disabled,
@@ -167,3 +167,5 @@ const StyledSvg = styled.svg`
       cursor: pointer;
     `}
 `
+
+export default IconWrapper
