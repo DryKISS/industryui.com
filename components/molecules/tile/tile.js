@@ -19,6 +19,7 @@ const Tile = ({
   colourConfig,
   context,
   description,
+  loading,
   rounded,
   size,
   title,
@@ -58,7 +59,13 @@ const Tile = ({
         size={size}
       >
         {(title || body) && (
-          <TileBody children={body} description={description} size={size} title={title} />
+          <TileBody
+            children={body}
+            description={description}
+            loading={loading}
+            size={size}
+            title={title}
+          />
         )}
       </StyledTile>
     )
@@ -94,6 +101,7 @@ Tile.propTypes = {
   colourConfig: object,
   context: string,
   description: string,
+  loading: bool,
   rounded: bool,
   size: string,
   title: string

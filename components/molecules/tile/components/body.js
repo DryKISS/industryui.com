@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { node, string } from 'prop-types'
+import { bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import Heading from '../../../atoms/heading/heading'
 import Loading from './loading'
 
-const TileBody = ({ children, className, description, size, title }) => {
+const TileBody = ({ children, className, description, loading, size, title }) => {
   return (
     <StyledBody className={className} loading={loading}>
       {loading ? (
@@ -26,8 +26,10 @@ const TileBody = ({ children, className, description, size, title }) => {
             </StyledWrapper>
           )}
 
-      <StyledContent size={size}>{children}</StyledContent>
-      {description && <StyledDescription size={size}>{description}</StyledDescription>}
+          <StyledContent size={size}>{children}</StyledContent>
+          {description && <StyledDescription size={size}>{description}</StyledDescription>}
+        </>
+      )}
     </StyledBody>
   )
 }
@@ -71,6 +73,7 @@ TileBody.propTypes = {
   children: node,
   className: string,
   description: string,
+  loading: bool,
   size: string,
   title: string
 }
