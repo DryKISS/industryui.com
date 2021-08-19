@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { node, string } from 'prop-types'
+import { bool, node, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -15,24 +15,22 @@ import Loading from './loading'
 
 const TileBody = ({ children, className, description, loading, size, title }) => {
   return (
-    <>
-      <StyledBody className={className} loading={loading}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            {title && (
-              <StyledWrapper>
-                <StyledTitle content={title} size={size} tag="h2" />
-              </StyledWrapper>
-            )}
+    <StyledBody className={className} loading={loading}>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {title && (
+            <StyledWrapper>
+              <StyledTitle content={title} size={size} tag="h2" />
+            </StyledWrapper>
+          )}
 
-            <StyledContent size={size}>{children}</StyledContent>
-            {description && <StyledDescription size={size}>{description}</StyledDescription>}
-          </>
-        )}
-      </StyledBody>
-    </>
+          <StyledContent size={size}>{children}</StyledContent>
+          {description && <StyledDescription size={size}>{description}</StyledDescription>}
+        </>
+      )}
+    </StyledBody>
   )
 }
 
@@ -75,6 +73,7 @@ TileBody.propTypes = {
   children: node,
   className: string,
   description: string,
+  loading: bool,
   size: string,
   title: string
 }
