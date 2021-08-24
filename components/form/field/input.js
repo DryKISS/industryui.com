@@ -6,14 +6,10 @@
 import React, { useState } from 'react'
 import { arrayOf, bool, func, number, object, oneOf, oneOfType, string } from 'prop-types'
 
-// Style
-import styled, { css } from 'styled-components'
-
 // UI
 import FieldHOC from '../hoc/hoc'
-import formStyle from '../variables/formStyle'
-import formErrorStyle from '../variables/formErrorStyle'
 import THEME_SIZE from '../../constants/size'
+import StyledInput from './style'
 
 const FormField = ({
   disabled,
@@ -56,40 +52,6 @@ const FormField = ({
     />
   )
 }
-
-const StyledInput = styled.input.attrs((props) => ({
-  autoComplete: 'off',
-  autoFocus: false
-}))`
-  ${(props) => formStyle(props)}
-
-  ${({ errors }) =>
-    errors &&
-    css`
-      ${(props) => formErrorStyle(props)}
-    `}
-
-    ${({ size }) => {
-    switch (size) {
-      case THEME_SIZE.SM:
-        return css`
-          height: 1.5rem;
-        `
-      case THEME_SIZE.MD:
-        return css`
-          height: 1.875rem;
-        `
-      case THEME_SIZE.LG:
-        return css`
-          height: 2.25rem;
-        `
-      default:
-        return css`
-          height: 2.25rem;
-        `
-    }
-  }}
-`
 
 FormField.propTypes = {
   accept: string,

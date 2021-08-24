@@ -14,7 +14,7 @@ import BlogCategory from '../category/category'
 import BlogReadTime from '../readTime/readTime'
 import BlogTags from '../tags/tags'
 import Divider from '../../atoms/divider/divider'
-import FacebookShareButton from '../../social/facebook/pagePlugin'
+import FacebookShareButton from '../../social/facebook/shareButton'
 import Icon from '../../atoms/icon/icon/icon'
 import List from '../../atoms/list/list'
 import ListItem from '../../atoms/list/listItem'
@@ -34,7 +34,7 @@ const BlogDetails = ({ article, config, facebook }) => {
 
         <ListItem style={{ marginRight: '1rem' }}>
           <StyledIcon context="dark" icon="user" />
-          <BlogCategory author config={config} to={article.author} />
+          <BlogCategory author config={config} link={{ to: article.author }} />
         </ListItem>
 
         <ListItem style={{ marginRight: '1rem' }}>

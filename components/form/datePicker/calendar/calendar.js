@@ -15,8 +15,8 @@ import { Controller } from 'react-hook-form'
 import styled, { css } from 'styled-components'
 
 // UI
-import StyledInput from '../../field/input'
-import { propTypes } from './props'
+import StyledInput from '../../field/style'
+import propTypes from './props'
 
 const DatePickerCalendar = ({
   control,
@@ -35,20 +35,18 @@ const DatePickerCalendar = ({
         defaultValue={defaultValue}
         name={name}
         render={({ onChange, onBlur, value, name, ref }) => (
-          <>
-            <DatePicker
-              customInput={<StyledInput errors={errors[name]} />}
-              onBlur={onBlur}
-              onChange={(date) => {
-                onChange(date)
-                handleOnChange && handleOnChange(date)
-              }}
-              placeholderText={placeholder ?? 'Click to select time'}
-              selected={value}
-              wrapperClassName="datePicker"
-              {...parentProps}
-            />
-          </>
+          <DatePicker
+            customInput={<StyledInput errors={errors[name]} />}
+            onBlur={onBlur}
+            onChange={(date) => {
+              onChange(date)
+              handleOnChange && handleOnChange(date)
+            }}
+            placeholderText={placeholder ?? 'Click to select time'}
+            selected={value}
+            wrapperClassName="datePicker"
+            {...parentProps}
+          />
         )}
       />
     </StyleSpan>

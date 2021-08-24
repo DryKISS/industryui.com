@@ -1,5 +1,5 @@
 import React from 'react'
-import { propTypes } from '../props'
+import propTypes from '../props'
 import IconWrapper from '../wrapper'
 
 const CrossIcon = (props) => {

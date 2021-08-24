@@ -36,7 +36,7 @@ const BlogCard = ({ article, config, link, type }) => {
     <article role="article" itemProp="blogPost" itemScope itemType="http://schema.org/BlogPosting">
       <Card shadow>
         <Link to={articleLink} {...link}>
-          <CardImage alt={heading} src={article?.image || `/static/blog/${slug}/hero.jpg?v=1.00`} />
+          <CardImage alt={heading} src={article?.image || `blog/${slug}/hero.jpg?v=1.00`} />
         </Link>
 
         <StyledCardBody type={type}>

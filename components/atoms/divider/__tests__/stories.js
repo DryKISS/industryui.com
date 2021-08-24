@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators/context'
-import { SizeControl } from '../../../../.storybook/decorators/size'
+import ContextControl from '../../../../.storybook/decorators/context'
+import SizeControl from '../../../../.storybook/decorators/size'
 
 // Style
 import styled from 'styled-components'

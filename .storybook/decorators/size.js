@@ -8,7 +8,7 @@ import arrayOfValues from '../../components/utils/arrayOfValues/arrayOfValues'
 import ControlTypes from './controlTypes'
 import THEME_SIZE  from '../../components/constants/size'
 
-export const SizeControl = () => {
+const SizeControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
@@ -16,3 +16,4 @@ export const SizeControl = () => {
     }
   }
 }
+export default SizeControl

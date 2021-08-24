@@ -42,9 +42,9 @@ export const Main = (args) => {
   const handleDateClick = (arg) => {
     if (window.confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
       const event = {
-        title: 'New Event',
+        allDay: arg.allDay,
         start: arg.date,
-        allDay: arg.allDay
+        title: 'New Event'
       }
 
       setEvents([...events, event])

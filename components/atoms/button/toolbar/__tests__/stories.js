@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import { AlignControl } from '../../../../../.storybook/decorators/align'
-import { SizeControl } from '../../../../../.storybook/decorators/size'
+import AlignControl from '../../../../../.storybook/decorators/align'
+import SizeControl from '../../../../../.storybook/decorators/size'
 
 // UI
 import Button from '../../button/button'
@@ -66,9 +66,9 @@ const Children = ({ size }) => {
       <Dropdown caret={false} items={dropdownItems} position="bottom">
         <Button
           context="primary"
-          startIconProps={{ colour: 'white', iui: true, size: 16 }}
           size={size}
           startIcon="verticalThreeDots"
+          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
         />
       </Dropdown>
 
@@ -76,7 +76,6 @@ const Children = ({ size }) => {
         as="a"
         data-tip="Button"
         context="primary"
-        key={1}
         itemCount={5}
         onClick={() => {}}
         size={size}
@@ -84,29 +83,29 @@ const Children = ({ size }) => {
         <Icon icon="user" style={{ pointerEvents: 'none' }} />
       </Button>
 
-      <Button as="a" data-tip="Button" context="primary" key={1} onClick={() => {}} size={size}>
+      <Button as="a" data-tip="Button" context="primary" onClick={() => {}} size={size}>
         <Icon icon="user" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Dropdown caret={false} items={dropdownItems} position="bottom">
         <Button
           context="primary"
-          startIconProps={{ colour: 'white', iui: true, size: 16 }}
           size={size}
           startIcon="verticalThreeDots"
+          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
         />
       </Dropdown>
 
-      <Button as="a" data-tip="Button" context="warning" key={2} onClick={() => {}} size={size}>
+      <Button as="a" data-tip="Button" context="warning" onClick={() => {}} size={size}>
         <Icon icon="trash" style={{ pointerEvents: 'none' }} />
       </Button>
 
       <Dropdown caret={false} items={dropdownItems} position="bottom">
         <Button
           context="primary"
-          startIconProps={{ colour: 'white', iui: true, size: 16 }}
           size={size}
           startIcon="verticalThreeDots"
+          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
         />
       </Dropdown>
     </>

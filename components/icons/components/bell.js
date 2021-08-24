@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { propTypes } from '../props'
+import propTypes from '../props'
 import IconWrapper from '../wrapper'
 
 const BellIcon = (props) => {

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/context'
 import { CarouselDefaultProps } from '../components/props'
 
 // Style

@@ -18,7 +18,7 @@ import {
   string
 } from 'prop-types'
 
-export const propTypes = {
+const propTypes = {
   adjustDateOnChange: bool,
   allowSameDay: bool,
   ariaLabelledBy: string,
@@ -131,3 +131,5 @@ export const propTypes = {
   onMonthMouseLeave: func,
   showPopperArrow: bool
 }
+
+export default propTypes

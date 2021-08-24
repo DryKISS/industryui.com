@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { CountryControl } from '../../../../.storybook/decorators/country'
+import CountryControl from '../../../../.storybook/decorators/country'
 
 // UI
 import Address from '../address'

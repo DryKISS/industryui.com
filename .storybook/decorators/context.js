@@ -10,7 +10,7 @@ import arrayOfValues from '../../components/utils/arrayOfValues/arrayOfValues'
 import ControlTypes from './controlTypes'
 import THEME_CONTEXT from '../../components/constants/context'
 
-export const ContextControl = () => {
+const ContextControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
@@ -18,3 +18,5 @@ export const ContextControl = () => {
     }
   }
 }
+
+export default ContextControl

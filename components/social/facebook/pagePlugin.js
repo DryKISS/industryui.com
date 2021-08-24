@@ -25,9 +25,9 @@ const FacebookPagePlugin = ({
   to,
   width
 }) => {
-  const url = `${p}?href=${to}&tabs=${tabs}&width=${width}&height=${height}
-    &small_header=${smallHeader} &adapt_container_width=${adaptContainerWidth}
-    &hide_cover=${hideCover}&show_facepile=${showFacepile}&appId=${appId}`
+  let url = `${p}?href=${to}&tabs=${tabs}&width=${width}&height=${height}&appId=${appId}`
+  url += `&small_header=${smallHeader}&adapt_container_width=${adaptContainerWidth}`
+  url += `&hide_cover=${hideCover}&show_facepile=${showFacepile}`
 
   return (
     <>

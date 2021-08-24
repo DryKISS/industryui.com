@@ -15,11 +15,11 @@ const FacebookShareButton = ({ appId, hashTag, iFrame, layout, size, to }) => {
         <iframe
           allow="encrypted-media"
           frameBorder="0"
-          height="29"
+          height={29}
           scrolling="no"
           src={`${p}?href=${to}&layout=${layout}&size=${size}&appId=${appId}&width=104&height=30`}
           style={{ border: 'none', overflow: 'hidden' }}
-          width="104"
+          width={104}
         />
       )}
 

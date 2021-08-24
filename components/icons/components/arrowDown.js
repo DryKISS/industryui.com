@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { propTypes } from '../props'
+import propTypes from '../props'
 
 // UI
 import IconWrapper from '../wrapper'

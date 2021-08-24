@@ -12,7 +12,7 @@ import ControlTypes from './controlTypes'
 import arrayOfValues from '../../components/utils/arrayOfValues/arrayOfValues'
 import THEME_ALIGN from '../../components/constants/align'
 
-export const AlignControl = () => {
+const AlignControl = () => {
   return {
     control: {
       type: ControlTypes.Select,
@@ -20,3 +20,5 @@ export const AlignControl = () => {
     }
   }
 }
+
+export default AlignControl

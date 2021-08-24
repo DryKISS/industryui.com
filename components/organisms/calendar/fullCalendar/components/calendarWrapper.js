@@ -11,6 +11,8 @@ import dynamic from 'next/dynamic'
 let FullCalendar
 
 const CalendarWrapper = (props) => {
+  console.log(props)
+
   useEffect(() => {
     FullCalendar = dynamic({
       modules: () => ({

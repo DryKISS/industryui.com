@@ -3,12 +3,12 @@
  */
 
 // React
-import { bool, func, number, oneOf, oneOfType, string } from 'prop-types'
+import { bool, func, number, oneOfType, string } from 'prop-types'
 
 // UI
-import { iconNameList } from './rawIcons'
+// import { iconNameList } from './rawIcons'
 
-export const propTypes = {
+const propTypes = {
   colour: string,
   disabled: bool,
   disabledColour: string,
@@ -18,7 +18,9 @@ export const propTypes = {
   size: oneOfType([number, string])
 }
 
-export const lazyIconPropTypes = {
-  iconName: oneOf(iconNameList),
-  ...propTypes
-}
+// export const lazyIconPropTypes = {
+//   iconName: oneOf(iconNameList),
+//   ...propTypes
+// }
+
+export default propTypes

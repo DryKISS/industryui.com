@@ -24,7 +24,7 @@ export const propTypes = {
   endIcon: string,
   endIconProps: object,
   form: string,
-  itemCount: number,
+  itemCount: oneOfType([bool, number, string]),
   onClick: func,
   outline: bool,
   shadow: bool,
@@ -41,6 +41,7 @@ export const propTypes = {
 export const defaultProps = {
   context: 'primary',
   disabled: false,
+  itemCount: false,
   shadow: false,
   size: 'md',
   type: 'button'

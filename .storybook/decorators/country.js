@@ -8,7 +8,7 @@ import React from 'react'
 // UI
 import COUNTRY from '../../components/constants/country.en'
 
-export const CountryControl = () => {
+const CountryControl = () => {
   COUNTRY.shift()
 
   const array = COUNTRY.map(({ text }) => text)
@@ -20,3 +20,5 @@ export const CountryControl = () => {
     }
   }
 }
+
+export default CountryControl

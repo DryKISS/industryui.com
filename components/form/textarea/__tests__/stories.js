@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { SizeControl } from '../../../../.storybook/decorators/size'
+import SizeControl from '../../../../.storybook/decorators/size'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -25,7 +25,7 @@ import Readme from '../README.md'
 export default {
   args: {
     name: 'textarea',
-    rows: 1
+    rows: 5
   },
   argTypes: {
     size: SizeControl()

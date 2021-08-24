@@ -104,7 +104,7 @@ const BlogFindFood = ({ colour }) => {
 
         <Link to={`https://${domain}`} passHref target="_blank">
           <StyledA>
-            Deliveroo <Icon icon="external-link" />
+            Deliveroo <Icon icon="external-link-alt" />
           </StyledA>
         </Link>
       </StyledContainer>

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/context'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -42,7 +42,7 @@ const schema = object().shape({
 })
 
 export const Main = (args) => {
-  const { control, errors, handleSubmit } = useForm({
+  const { control, errors, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -58,6 +58,7 @@ export const Main = (args) => {
       max: 10
     },
     name: 'inputStepper',
+    register,
     ...args
   }
 

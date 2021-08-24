@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../../.storybook/decorators/context'
-import { SizeControl } from '../../../../../.storybook/decorators/size'
+import ContextControl from '../../../../../.storybook/decorators/context'
+import SizeControl from '../../../../../.storybook/decorators/size'
 
 // UI
 import Button from '../button'

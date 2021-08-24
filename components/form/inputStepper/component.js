@@ -28,6 +28,7 @@ const InputStepperComponent = forwardRef(
       inputProps,
       onChange,
       name,
+      register,
       style,
       value,
       valueAlign
@@ -76,9 +77,10 @@ const InputStepperComponent = forwardRef(
           errors={errors}
           name={name}
           onChange={handleChange}
-          value={value}
+          register={register}
           textAlign={valueAlign}
           type="number"
+          value={value}
         />
 
         <InputGroupAddon addonType="append">

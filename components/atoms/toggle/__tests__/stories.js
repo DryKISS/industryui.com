@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ContextControl } from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/context'
 import ControlTypes from '../../../../.storybook/decorators/controlTypes'
 
 // UI
@@ -37,5 +37,5 @@ export default {
 }
 
 export const main = (args) => (
-  <Toggle context={args.context} disabled={args.disabled} onToggle={'toggled'} size={args.size} />
+  <Toggle context={args.context} disabled={args.disabled} size={args.size} />
 )
