@@ -6,20 +6,12 @@
 import React from 'react'
 import { bool, func, string } from 'prop-types'
 
-// UI
-import ChevronRightIcon from '../../../icons/components/chevronRight'
-import BarConfig from './config'
-
 // Style
 import styled, { css } from 'styled-components'
 
-const BarToggle = ({ barWidth, onClick, open, placement }) => {
-  return (
-    <OpenButton onClick={onClick} open={open} placement={placement} place={barWidth}>
-      <ChevronRightIcon />
-    </OpenButton>
-  )
-}
+// UI
+import ChevronRightIcon from '../../../icons/components/chevronRight'
+import BarConfig from './config'
 
 const OpenButton = styled.div`
   align-items: center;
@@ -57,6 +49,14 @@ const OpenButton = styled.div`
     `}
 `
 
+const BarToggle = ({ barWidth, onClick, open, placement }) => {
+  return (
+    <OpenButton onClick={onClick} open={open} placement={placement} place={barWidth}>
+      <ChevronRightIcon />
+    </OpenButton>
+  )
+}
+
 BarToggle.propTypes = {
   onClick: func.isRequired,
   open: bool.isRequired,
@@ -66,4 +66,5 @@ BarToggle.propTypes = {
 BarToggle.defaultProps = {
   placement: 'left'
 }
+
 export default BarToggle

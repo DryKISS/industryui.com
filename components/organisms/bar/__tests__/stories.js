@@ -5,6 +5,9 @@
 // React
 import React from 'react'
 
+// Style
+import styled from 'styled-components'
+
 // Storybook
 import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
 
@@ -17,10 +20,7 @@ import BarConfig from '../components/config'
 import Readme from '../README.md'
 
 // Data
-import { barMock } from '../__mocks__/barMock'
-
-// Style
-import styled from 'styled-components'
+import barMock from '../__mocks__/barMock'
 
 export default {
   args: {

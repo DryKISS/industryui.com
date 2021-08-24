@@ -65,4 +65,5 @@ ForgotDetailsReset.propTypes = {
 ForgotDetailsReset.defaultProps = {
   pathLogIn: '/account/sign-in'
 }
+
 export default ForgotDetailsReset

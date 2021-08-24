@@ -8,7 +8,7 @@ import { bool, node, number, oneOf, string } from 'prop-types'
 // UI
 import BarConfig from './components/config'
 
-export const BarPropTypes = {
+const propTypes = {
   backdrop: bool,
   children: node,
   minSize: string,
@@ -19,9 +19,4 @@ export const BarPropTypes = {
   width: number
 }
 
-export const BarDefaultProps = {
-  placement: 'left',
-  variant: 'overlay',
-  width: 10,
-  toggle: true
-}
+export default propTypes

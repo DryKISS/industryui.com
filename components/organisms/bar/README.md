@@ -6,9 +6,9 @@ Flexible bar component that can be used on any axis that is expandable and fixab
 [MUI Drawer](https://material-ui.com/components/drawers/#drawer)<br />
 [Evegreen Slidesheet](https://evergreen.segment.com/components/side-sheet)
 
-      <SideSheet
-        isShown={state.isShown}
-        onCloseComplete={() => setState({ isShown: false })}
-      >
-        <Paragraph margin={40}>Basic Example</Paragraph>
-      </SideSheet>
+<SideSheet
+  isShown={state.isShown}
+  onCloseComplete={() => setState({ isShown: false })}
+>
+  <Paragraph margin={40}>Basic Example</Paragraph>
+</SideSheet>

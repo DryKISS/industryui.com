@@ -113,18 +113,47 @@ export { default as Table } from './molecules/table/components/table'
 export { default as Tabs } from './molecules/tabs/tabs'
 
 // Organisms
+export { default as Bar } from './organisms/bar/bar'
+export { default as BigCalendar } from './organisms/calendar/bigCalendar/bigCalendar'
+export { default as Calendar } from './organisms/calendar/fullCalendar/fullCalendar'
+export { default as ColorPicker } from './organisms/colourPicker/colourPicker'
+export { default as DraftJs } from './organisms/editor/draftJs'
+export { default as EmailChange } from './organisms/emailChange/emailChange'
+export { default as Footer } from './organisms/footer/footer'
+export { default as ForgotDetails } from './organisms/forgotDetails/forgotDetails'
+export { default as ForgotDetailsReset } from './organisms/forgotDetailsReset/forgotDetailsReset'
+export { default as Login } from './organisms/login/login'
+export { default as MessagingContainer } from './organisms/messaging/messaging'
+export { default as PasswordChange } from './organisms/passwordChange/passwordChange'
+export { default as Pricing } from './organisms/pricing/pricing'
+export { default as Register } from './organisms/register/register'
 
 // Pages
+export { default as Error404 } from './organisms/error404/error404'
 
 // Social
 
 // Templates
+export { default as Article } from './organisms/article/article'
 
 // Blog
 // export * from './blog'
 
 // Services
-// export * from './services'
+export { default as Article } from './services/api/api'
+
+// export * from './api/api'
+// export * from './authentication'
+// export * from './authorization'
+// export * from './componentCommunication'
+// export * from './componentCommunication/messageNames'
+// export * from './config'
+// export * from './getAddress'
+// export * from './google'
+// export * from './internationalisation'
+// export * from './notifications'
+// export * from './offCanvas'
+// export * from './translation/translation'
 
 // App
 export { default as MyApp } from './app/app'

@@ -12,4 +12,5 @@ const FOOTER = {
   headerMargin: '0 0 0.5rem 0',
   paddingTop: '2rem'
 }
+
 export default FOOTER

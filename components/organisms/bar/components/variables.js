@@ -2,7 +2,7 @@
  * Components - Organisms - Bar - Variables
  */
 
-// II
+// UI
 import THEME_COLOUR from '../../constants/colour'
 
 const BAR = {
@@ -14,4 +14,5 @@ const BAR = {
   transitionTiming: 'cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDuration: '0.3s'
 }
+
 export default BAR

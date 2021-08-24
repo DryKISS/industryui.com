@@ -113,4 +113,5 @@ Calendar.defaultProps = {
   selectable: false,
   weekNumbers: false
 }
+
 export default Calendar

@@ -14,7 +14,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { PasswordChangeSchema as schema } from './schema'
 
 // UI
-
 import Alert from '../../molecules/alert/alert'
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
@@ -87,4 +86,5 @@ PasswordChange.propTypes = {
 PasswordChange.defaultProps = {
   showPlaceholder: false
 }
+
 export default PasswordChange

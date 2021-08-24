@@ -52,4 +52,5 @@ const MESSAGING = {
   tooltipBackground: null,
   translatorTextColour: THEME_COLOUR.primary
 }
+
 export default MESSAGING

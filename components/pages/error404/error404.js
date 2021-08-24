@@ -29,4 +29,5 @@ const Error404 = () => {
     </Page>
   )
 }
+
 export default Error404

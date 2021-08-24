@@ -5,11 +5,11 @@
 // React
 import { bool, func, number, oneOf } from 'prop-types'
 
-// UI
-import BarConfig from './config'
-
 // Style
 import styled, { css } from 'styled-components'
+
+// UI
+import BarConfig from './config'
 
 const BarOverlay = styled.div`
   transition: ${({ theme: { BAR }, placement }) => css`
@@ -58,4 +58,5 @@ BarOverlay.defaultProps = {
   variant: 'overlay',
   width: 10
 }
+
 export default BarOverlay

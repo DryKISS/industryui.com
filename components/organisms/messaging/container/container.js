@@ -214,6 +214,7 @@ const MessagingContainer = ({
     </>
   )
 }
+
 const StyledContainer = styled.div`
   background-color: ${({ theme: { MESSAGING } }) => MESSAGING.containerBackground};
   height: ${({ messagesContainerHeight }) =>
@@ -239,4 +240,5 @@ MessagingContainer.propTypes = {
   onMessageSubmit: func.isRequired,
   style: object
 }
+
 export default MessagingContainer

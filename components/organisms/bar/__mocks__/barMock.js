@@ -2,7 +2,7 @@
  * Components - Organisms - Bar - Mocks
  */
 
-export const barMock = [
+const barMock = [
   {
     name: 'Dashboard',
     to: '/dashboard'
@@ -31,3 +31,5 @@ export const barMock = [
     to: '/dashboard/notifications'
   }
 ]
+
+export default barMock

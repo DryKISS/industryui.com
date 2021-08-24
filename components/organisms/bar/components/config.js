@@ -1,6 +1,7 @@
 /**
  * Components - Organisms - Bar - Components - Config
  */
+
 const BarConfig = {
   PLACEMENT: {
     BOTTOM: 'bottom',
@@ -13,4 +14,5 @@ const BarConfig = {
     PUSH: 'push'
   }
 }
+
 export default BarConfig

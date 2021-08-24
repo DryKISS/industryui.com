@@ -34,4 +34,5 @@ ColorPicker.propTypes = {
   onChangeComplete: func.isRequired,
   width: string
 }
+
 export default ColorPicker

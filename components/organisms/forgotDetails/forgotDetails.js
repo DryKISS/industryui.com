@@ -13,6 +13,9 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ForgotDetailsSchema } from './schema'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
@@ -20,9 +23,6 @@ import FormField from '../../form/field/input'
 import FormLabel from '../../form/label/label'
 import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
-
-// Style
-import styled from 'styled-components'
 
 const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
   const { errors, handleSubmit, register } = useForm({
@@ -73,4 +73,5 @@ ForgotDetails.defaultProps = {
   pathLogIn: '/account/sign-in',
   showPlaceholder: false
 }
+
 export default ForgotDetails

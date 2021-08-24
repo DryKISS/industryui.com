@@ -78,4 +78,5 @@ BarWrapper.defaultProps = {
   variant: 'overlay',
   width: 10
 }
+
 export default BarWrapper

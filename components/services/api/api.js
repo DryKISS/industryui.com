@@ -54,4 +54,5 @@ import ConfigContext from '../config/context'
     }
   }
 }
+
 export default Api
