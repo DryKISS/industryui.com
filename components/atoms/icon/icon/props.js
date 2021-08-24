@@ -9,9 +9,9 @@ import { any, bool, number, object, array, objectOf, oneOf, oneOfType, string } 
 import DISPLAY_PROP_TYPES from '../../../utils/display/props'
 import SPACER_PROP_TYPES from '../../../utils/spacer/props'
 import THEME_CONTEXT from '../../../constants/context'
-import { ICON_PULL } from '../constants/pull'
-import { ICON_PREFIX } from '../constants/prefix'
-import { ICON_SIZE } from '../constants/size'
+import ICON_PULL from '../constants/pull'
+import ICON_PREFIX from '../constants/prefix'
+import ICON_SIZE from '../constants/size'
 
 export const propTypes = {
   border: bool,

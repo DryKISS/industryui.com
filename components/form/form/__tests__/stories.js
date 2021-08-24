@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Decorators
-import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controlTypes'
 
 // React Hook Form
 import { Controller, useForm } from 'react-hook-form'

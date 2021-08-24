@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 
 // Yup
 import { yupResolver } from '@hookform/resolvers/yup'
-import { ForgotDetailsSchema } from './schema'
+import schema from './schema'
 
 // Style
 import styled from 'styled-components'
@@ -26,7 +26,7 @@ import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(ForgotDetailsSchema)
+    resolver: yupResolver(schema)
   })
 
   const defaultOptions = {

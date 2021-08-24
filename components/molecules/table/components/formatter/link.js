@@ -13,7 +13,7 @@ import Router from 'next/router'
 import styled from 'styled-components'
 
 // UI
-import { StyledLink } from '../../../../atoms/link/link'
+import StyledLink from '../../../../atoms/link/components/style'
 
 const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
   let useLink = false

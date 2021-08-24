@@ -1,6 +1,8 @@
 /**
  * Components - Icons - Variables
  */
+
+// UI
 import THEME_COLOUR from '../constants/colour'
 
 const ICONS = {
@@ -8,4 +10,5 @@ const ICONS = {
   disabledIconColour: THEME_COLOUR.grey,
   hoverIconColour: THEME_COLOUR.info
 }
+
 export default ICONS

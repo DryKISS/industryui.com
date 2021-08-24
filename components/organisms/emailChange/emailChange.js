@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 
 // Yup
 import { yupResolver } from '@hookform/resolvers/yup'
-import { EmailChangeSchema as schema } from './schema'
+import schema from './schema'
 
 // UI
 import Alert from '../../molecules/alert/alert'

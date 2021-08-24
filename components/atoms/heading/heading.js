@@ -10,7 +10,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import themeColour from '../../utils/colour/themeColour'
+import themeColour from '../../utils/colour/colour'
 import { propTypes, defaultProps } from './props'
 
 const Heading = ({ className, content, context, noMargin, noWrap, style, tag }) => {

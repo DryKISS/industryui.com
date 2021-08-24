@@ -1,7 +1,7 @@
 /**
  * Stroybook - Control Types
  */
-export const ControlTypes = {
+const ControlTypes = {
   Array: 'array',
   Boolean: 'boolean',
   Color: 'color',
@@ -17,3 +17,5 @@ export const ControlTypes = {
   Select: 'select',
   Text: 'text'
 }
+
+export default ControlTypes

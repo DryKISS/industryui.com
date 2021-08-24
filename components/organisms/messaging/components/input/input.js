@@ -20,7 +20,7 @@ import {
 import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 import { MentionSuggestions, MessagingEditor, messagingPlugins } from '../../draftPlugins/index'
-import { formStyle } from '../../../../form/variables/style'
+import formStyle from '../../../../form/variables/formStyle'
 
 const MessagingInput = ({ mentions, onChange }) => {
   const [suggestions, setSuggestions] = useState(mentions ?? [])

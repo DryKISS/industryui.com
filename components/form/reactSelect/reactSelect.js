@@ -16,7 +16,7 @@ import { Controller } from 'react-hook-form'
 import styled, { css } from 'styled-components'
 
 // UI
-import { defaultStyles } from './styles'
+import defaultStyles from './styles'
 import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'

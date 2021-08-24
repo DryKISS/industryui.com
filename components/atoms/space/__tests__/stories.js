@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controlTypes'
 
 // UI
 import arrayOfValues from '../../../utils/arrayOfValues/arrayOfValues'

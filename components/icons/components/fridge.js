@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { propTypes } from '../props'
-import { IconWrapper } from '../wrapper'
+import IconWrapper from '../wrapper'
 
 const FridgeIcon = (props) => {
   return (

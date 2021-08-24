@@ -7,7 +7,7 @@ import React from 'react'
 
 // UI
 import { propTypes } from '../props'
-import { IconWrapper } from '../wrapper'
+import IconWrapper from '../wrapper'
 
 const VerticalThreeDotsIcon = (props) => (
   <IconWrapper name="iconVerticalThreeDotsIcon" {...props} mainSize={22}>

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Decorator
-import { ControlTypes } from './controlTypes'
+import ControlTypes from './controlTypes'
 
 // UI
 import arrayOfValues from '../../components/utils/arrayOfValues/arrayOfValues'

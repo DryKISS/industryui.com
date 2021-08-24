@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Stroybook
-import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controlTypes'
 
 // UI
 import Text from '../text'

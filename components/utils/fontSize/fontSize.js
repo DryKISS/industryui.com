@@ -3,7 +3,7 @@
  */
 
 // Utils
-import THEME_SIZE from '../constants/size'
+import THEME_SIZE from '../../constants/size'
 
 const themeFontSize = ({ size, theme }) => {
   const fontSize = size && Object.values(THEME_SIZE).indexOf(size)

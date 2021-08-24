@@ -7,7 +7,7 @@ import React from 'react'
 import { bool, object } from 'prop-types'
 
 // UI
-import { FacebookPagePlugin } from '../../social/facebook/pagePlugin'
+import FacebookPagePlugin from '../../social/facebook/pagePlugin'
 import BlogSection from './components/section'
 
 const BlogSocial = ({ facebook, instagram, twitter }) => {

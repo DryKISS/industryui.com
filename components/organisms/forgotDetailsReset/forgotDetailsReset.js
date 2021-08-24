@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form'
 
 // Yup
 import { yupResolver } from '@hookform/resolvers/yup'
-import { ForgotDetailsResetSchema } from './schema'
+import schema from './schema'
 
 // Style
 import styled from 'styled-components'
@@ -28,7 +28,7 @@ import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 const ForgotDetailsReset = ({ pathLogIn, submit }) => {
   const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(ForgotDetailsResetSchema)
+    resolver: yupResolver(schema)
   })
 
   return (

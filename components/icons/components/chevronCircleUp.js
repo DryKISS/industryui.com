@@ -2,7 +2,7 @@ import React from 'react'
 
 // UI
 import { propTypes } from '../props'
-import { IconWrapper } from '../wrapper'
+import IconWrapper from '../wrapper'
 
 const ChevronCircleUpIcon = (props) => (
   <IconWrapper {...props} mainSize={18}>

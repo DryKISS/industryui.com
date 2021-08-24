@@ -7,7 +7,7 @@ import React from 'react'
 import { propTypes } from '../props'
 
 // UI
-import { IconWrapper } from '../wrapper'
+import IconWrapper from '../wrapper'
 
 const ArrowDownIcon = (props) => {
   return (

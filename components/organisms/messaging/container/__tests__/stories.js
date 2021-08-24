@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 // UI
 
 import Button from '../../../../atoms/button/button/button'
-import { filterByKey, filterByString } from '../../../../utils/mockHelpers'
+import { filterByKey, filterByString } from '../../../../utils/mockHelpers/mockHelpers'
 import MessagingContainer from '../../container/container'
 
 import {

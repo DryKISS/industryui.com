@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { EmojiMart } from '../emojiMart'
+import EmojiMart from '../emojiMart'
 import Readme from '../README.md'
 
 export default {

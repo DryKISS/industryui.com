@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import { ControlTypes } from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controlTypes'
 import { ContextControl } from '../../../../.storybook/decorators/context'
 import { SizeControl } from '../../../../.storybook/decorators/size'
 

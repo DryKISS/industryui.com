@@ -10,7 +10,7 @@ import BlogCategory from '../category'
 import Readme from '../README.md'
 
 // Data
-import { Blog } from '../../__mocks__/articles'
+import Blog from '../../__mocks__/articles'
 
 export default {
   component: BlogCategory,

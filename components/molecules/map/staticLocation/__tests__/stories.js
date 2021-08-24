@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Hero
-import { StaticLocation } from '../staticLocation'
+import StaticLocation from '../staticLocation'
 import Readme from '../README.md'
 
 export default {
