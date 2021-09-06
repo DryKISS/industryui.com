@@ -35,7 +35,7 @@ const TableLink =
     const item = row[value]
 
     return useLink ? (
-      item !== '-' ? (
+      item !== '-' || row[key] ? (
         <StyleLink border={false} href={getPath()} onClick={handleClick}>
           {item}
         </StyleLink>
