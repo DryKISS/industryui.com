@@ -10,7 +10,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import CheckedIcon from '../../../icons/components/checked'
-import priceLayoutSizes from '../utils/priceLayoutSizes'
+import priceLayoutSizes from './utils/priceLayoutSizes'
 import Text from '../../../atoms/text/text'
 
 const PricingCard = ({ data, layout, onCardSelect }) => {

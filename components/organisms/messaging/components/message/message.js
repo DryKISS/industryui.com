@@ -12,12 +12,9 @@ import styled, { css } from 'styled-components'
 // UI
 import Avatar from '../../../../atoms/avatar/avatar'
 import MessageBase from '../../components/base/components/messageBase'
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../../services/componentCommunication/messageNames'
-import { MessagingCommunicationService } from '../../../../services/componentCommunication/componentCommunication'
-
+import MessageNames from '../../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import ReplyIcon from './replyIcon'
 import ShareIcon from './shareIcon'
 

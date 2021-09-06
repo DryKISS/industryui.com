@@ -36,13 +36,13 @@ import Icon from '../../atoms/icon/icon/icon'
 import InputGroup from '../../form/inputGroup/group'
 import InputGroupAddon from '../../form/inputGroup/addon'
 import Link from '../../atoms/link/link'
-import { validatorPostCode } from '../../utils/validator/postCode/postCode'
+import postCodeValidate from '../../utils/validator/postCode/validate'
 
 const schema = object().shape({
   postCode: string()
     .required()
     .test('is-valid', "We couldn't recognise that postcode - check and try again.", (value) =>
-      validatorPostCode(value)
+      postCodeValidate(value)
     )
 })
 

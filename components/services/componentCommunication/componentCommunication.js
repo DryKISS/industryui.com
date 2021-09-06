@@ -19,13 +19,6 @@ export const LiveChartMessageService = {
   }
 }
 
-export const MessagingSubscriber = new Subject()
-export const MessagingCommunicationService = {
-  send: (msg) => {
-    MessagingSubscriber.next(msg)
-  }
-}
-
 export const DetailsSubscriber = new Subject()
 export const DetailsCommunicationService = {
   send: (msg) => {

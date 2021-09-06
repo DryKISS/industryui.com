@@ -9,14 +9,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import Icon from '../../../atoms/icon/icon/icon'
-import LAYOUTS from '../components/constants'
-import PriceMatrix from '../components/priceMatrix'
-import PricingCard from '../components/pricingCard'
-import PricingDropdown from '../components/pricingDropdown'
-import ResizeDetector from '../../../utils/resizeDetector/resizeDetector'
-import Text from '../../../atoms/text/text'
+import Button from '../../atoms/button/button/button'
+import Icon from '../../atoms/icon/icon/icon'
+import LAYOUTS from './components/constants'
+import PriceMatrix from './components/priceMatrix'
+import PricingCard from './components/pricingCard'
+import PricingDropdown from './components/pricingDropdown'
+import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
+import Text from '../../atoms/text/text'
 
 const Pricing = ({ pricingInfo, onPlanSelect }) => {
   const WrapperRef = useRef(null)

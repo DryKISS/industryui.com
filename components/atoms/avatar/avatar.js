@@ -48,7 +48,7 @@ const StyledAction = styled.div`
   bottom: 0;
   color: #fff;
   cursor: pointer;
-  font-size: ${({ theme }) => theme.TYPOGRAPHY.fontSizeBase};
+  font-size: ${({ theme }) => theme.THEME_TYPOGRAPHY.fontSizeBase};
   left: 0;
   padding: 4px;
   position: absolute;
@@ -77,7 +77,7 @@ const StyledAvatar = styled.div`
 
   ${({ size, theme }) => {
     const sizeIndex = size && Object.values(THEME_SIZE).indexOf(size)
-    const dimension = theme.TYPOGRAPHY.fontSizes[sizeIndex] + 24
+    const dimension = theme.THEME_TYPOGRAPHY.fontSizes[sizeIndex] + 24
 
     return css`
       height: ${dimension}px;

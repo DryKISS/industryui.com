@@ -6,8 +6,8 @@
 import React from 'react'
 
 // UI
-import { pricingInfo } from '../__mocks__/pricing_mock_data'
-import Pricing from '../components/pricing'
+import pricingInfo from '../__mocks__/pricing_mock_data'
+import Pricing from '../pricing'
 import Readme from '../README.md'
 
 const handlePlanSelect = (e) => {

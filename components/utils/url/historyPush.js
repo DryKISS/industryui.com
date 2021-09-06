@@ -1,5 +1,5 @@
 /**
- * Components - Utils - URL
+ * Components - Utils - URL - History Push
  */
 
 const historyPush = (query) => {

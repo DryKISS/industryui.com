@@ -19,7 +19,7 @@ import FormLabel from '../../form/label/label'
 import GetAddressService from '../../services/getAddress/getAddress'
 import InputGroupAddon from '../../form/inputGroup/addon'
 import Shimmer from '../../atoms/shimmer/shimmer'
-import { validatorPostCode } from '../../utils/validator/postCode/postCode'
+import postCodeValidate from '../../utils/validator/postCode/validate'
 import THEME_SIZE from '../../constants/size'
 
 const GetAddress = ({
@@ -72,7 +72,7 @@ const GetAddress = ({
       postCode: InputValueRef.current,
       callback: onApiCall,
       callThrottle: throttle ?? 500,
-      validator: validator ?? validatorPostCode
+      validator: validator ?? postCodeValidate
     })
   }
 

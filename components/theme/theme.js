@@ -4,7 +4,7 @@
 
 // Theme
 import COLOUR from '../constants/colour'
-import TYPOGRAPHY from '../constants/typography'
+import THEME_TYPOGRAPHY from '../constants/typography'
 
 // Components
 import AVATAR from '../atoms/avatar/components/variables'
@@ -24,7 +24,7 @@ import LOGIN from '../organisms/login/variables'
 import MESSAGING from '../organisms/messaging/variables'
 import NAVBAR from '../molecules/navbar/variables'
 import PAGE from '../layouts/page/variables'
-import PRICING from '../organisms/pricing/variables'
+import PRICING from '../organisms/pricing/components/variables'
 import PROGRESS from '../atoms/progress/components/progressVariables'
 import PROGRESSBAR from '../atoms/progress/components/progressBarVariables'
 import SELECT from '../form/reactSelect/variables'
@@ -75,7 +75,7 @@ const Theme = {
   TABS,
   TEXT,
   TILE,
-  TYPOGRAPHY,
+  THEME_TYPOGRAPHY,
   VOICE_RECORDER
 }
 

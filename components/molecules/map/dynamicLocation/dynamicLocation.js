@@ -11,45 +11,30 @@ import { array, node, string } from 'prop-types'
 import {
   GoogleMap,
   InfoWindow as GoogleInfoWindow,
-  Marker as GoogleMarker,
   withGoogleMap,
   withScriptjs
 } from 'react-google-maps'
-
-/* eslint-disable */
-import { MarkerClusterer as GoogleMarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
 const DynamicLocationHOC = (Component) => {
   return (props) => {
     // concat the apiKey
     const googleMapURL = `${props.googleMapURL}&key=${props.apiKey}`
+
     const containerElement = props.containerElement || (
-      <div
-        style={{ height: props.containerHeight, width: props.containerWidth }}
-      />
+      <div style={{ height: props.containerHeight, width: props.containerWidth }} />
     )
 
-    return (
-      <Component
-        {...props}
-        containerElement={containerElement}
-        googleMapURL={googleMapURL}
-      />
-    )
+    return <Component {...props} containerElement={containerElement} googleMapURL={googleMapURL} />
   }
 }
 
 const DynamicLocation = DynamicLocationHOC(
   withScriptjs(
     withGoogleMap((props) => {
-      return props.defaultCenter.lat && props.defaultCenter.lng ? (
-        <GoogleMap {...props} />
-      ) : null
+      return props.defaultCenter.lat && props.defaultCenter.lng ? <GoogleMap {...props} /> : null
     })
   )
 )
-
-DynamicLocation.displayName = 'DynamicLocation'
 
 DynamicLocation.propTypes = {
   apiKey: string.isRequired,
@@ -71,14 +56,5 @@ DynamicLocation.defaultProps = {
   mapElement: <div style={{ height: '100%' }} />,
   zoom: 15
 }
-
-export const Marker = GoogleMarker
-Marker.propTypes = GoogleMarker.propTypes
-
-export const MarkerClusterer = GoogleMarkerClusterer
-MarkerClusterer.propTypes = GoogleMarkerClusterer.propTypes
-
-export const InfoWindow = GoogleInfoWindow
-InfoWindow.propTypes = GoogleInfoWindow.propTypes
 
 export default DynamicLocation

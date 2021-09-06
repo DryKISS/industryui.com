@@ -6,7 +6,8 @@
 import React from 'react'
 
 // UI
-import DynamicLocation, { Marker } from '../dynamicLocation'
+import DynamicLocation from '../dynamicLocation'
+import Marker from '../marker'
 import Readme from '../README.md'
 
 export default {

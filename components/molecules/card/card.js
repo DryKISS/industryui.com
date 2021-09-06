@@ -17,7 +17,8 @@ import CardBody from './components/body'
 import CardFooter from './components/footer'
 import CardHeader from './components/header'
 import CardImage from './components/image'
-import { CardPropTypes, CardDefaultProps } from './props'
+import CardDefaultProps from './components/props/defaultProps'
+import CardPropTypes from './components/props/propTypes'
 
 const Card = ({
   alt,

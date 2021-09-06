@@ -2,7 +2,7 @@
  * Theme - Cleverly Admin
  */
 
-const TYPOGRAPHY = {
+const THEME_TYPOGRAPHY = {
   font: '"Archivo", sans-serif',
   fontSizeBase: '1rem;',
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72, 96]
@@ -98,5 +98,5 @@ export const CleverlyAdminTheme = {
   FOOTER,
   LINK,
   NAVBAR,
-  TYPOGRAPHY
+  THEME_TYPOGRAPHY
 }

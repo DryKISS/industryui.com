@@ -17,7 +17,7 @@ export default {
   args: {
     align: false,
     border: true,
-    caption: 'Caption goes here',
+    caption: '',
     className: '',
     fullHeight: false,
     hover: true,

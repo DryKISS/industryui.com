@@ -1,6 +1,6 @@
 {
   "name": "@drykiss/industry-ui",
-  "version": "1.14.13",
+  "version": "2.0.3",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
@@ -40,7 +40,7 @@
     "build": "npm run clean && cross-env BABEL_ENV=esm babel components --out-dir esm  --source-maps false",
     "build-storybook": "build-storybook --quiet -s ./static",
     "pack": "npm run build && npm pack",
-    "prepare": "npm run build && node ./scripts/copyToExample && npm run clean",
+    "XXprepare": "npm run build && node ./scripts/copyToExample && npm run clean",
     "example:analyze": "npm run prepare && cd example && cross-env ANALYZE=true npm run build",
     "example:dev": "npm run prepare && cd example && npm run start",
     "test:snapshot": "cross-env ENVIRONMENT=test jest",
@@ -59,7 +59,7 @@
     ]
   },
   "engines": {
-    "node": "14"
+    "node": "^14"
   },
   "husky": {
     "hooks": {

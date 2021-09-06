@@ -6,28 +6,21 @@
 import React, { useState } from 'react'
 import { array, func, number, object, string } from 'prop-types'
 
-// UI
+// Style
+import styled from 'styled-components'
 
+// UI
 import DragAndDropable from '../components/dndable/dndable'
 import FullPreview from '../components/fullPreview/fullPreview'
 import MessageList from '../components/messageList/messageList'
 import MessagingDragHover from '../components/dragHover/dragHover'
 import MessagingSearch from '../components/search/meaasagingSearch'
 import MessagingSend from '../components/send/messagingSend'
-
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../services/componentCommunication/messageNames'
-import {
-  MessagingCommunicationService,
-  MessagingSubscriber
-} from '../../../services/componentCommunication/componentCommunication'
-
+import MessageNames from '../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../services/componentCommunication/messagingActions'
+import MessagingCommunicationService from '../../../services/componentCommunication/messaging/service'
+import MessagingSubscriber from '../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../hooks/useComponentCommunication/useSubscription'
-
-// Style
-import styled from 'styled-components'
 
 const MessagingContainer = ({
   audienceItems,

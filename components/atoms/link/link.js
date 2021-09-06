@@ -9,7 +9,7 @@ import React from 'react'
 import NextLink from 'next/link'
 
 // UI
-import validatorUri from '../../utils/validator/uri'
+import validatorUri from '../../utils/validator/uri/uri'
 import StyledLink from './components/style'
 
 // Props

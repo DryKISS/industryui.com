@@ -1,4 +1,4 @@
-export const pricingInfo = [
+const pricingInfo = [
   {
     checkList: [
       { title: 'Lorem ipsum ' },
@@ -37,3 +37,5 @@ export const pricingInfo = [
     title: 'Package Three'
   }
 ]
+
+export default pricingInfo

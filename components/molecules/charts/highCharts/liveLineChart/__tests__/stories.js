@@ -11,7 +11,7 @@ import styled from 'styled-components'
 // UI
 import HighChart from '../../highChart'
 import { LiveChartSubscriber } from '../../../../../services/componentCommunication/componentCommunication'
-import { MessageNames } from '../../../../../services/componentCommunication/messageNames'
+import MessageNames from '../../../../../services/componentCommunication/messageNames'
 import Readme from '../README.md'
 
 // Data

@@ -107,7 +107,7 @@ const PAGE = {
   backGroundColour: COLOUR.white
 }
 
-const TYPOGRAPHY = {
+const THEME_TYPOGRAPHY = {
   fontColour: COLOUR.black,
   fontSizeBase: '1rem'
 }
@@ -117,5 +117,5 @@ export const DryKISSTheme = {
   HEADINGS,
   NAVBAR,
   PAGE,
-  TYPOGRAPHY
+  THEME_TYPOGRAPHY
 }

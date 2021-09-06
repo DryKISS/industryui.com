@@ -21,17 +21,14 @@ import Image from '../../../../../atoms/image/image'
 import linkifyPlugin from '../../../draftPlugins/components/linkPluginComponent'
 import MentionComponent from '../../../draftPlugins/components/mentionComponent'
 import MessagingAudioPlayer from '../../../components/audioPlayer/audioPlayer'
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../../../services/componentCommunication/messageNames'
-import { MessagingCommunicationService } from '../../../../../services/componentCommunication/componentCommunication'
+import MessageNames from '../../../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../../../services/componentCommunication/messagingActions'
+import MessagingCommunicationService from '../../../../../services/componentCommunication/messaging/service'
 import { MessagingEditor } from '../../../draftPlugins/index'
 import Preview from '../../../../../molecules/preview/preview'
 import ReplyContainer from '../../replyContainer/replyContainer'
 import Row from '../../../../../atoms/grid/Row'
 import TranslationService from '../../../../../services/translation/translation'
-
 import MessageIcon from './messageIcon'
 import MessageTo from './messageTo'
 import MenuIcon from './menuIcon'

@@ -4,7 +4,7 @@
 
 // UI
 import { LiveChartMessageService } from '../../../../../services/componentCommunication/componentCommunication'
-import { MessageNames } from '../../../../../services/componentCommunication/messageNames'
+import MessageNames from '../../../../../services/componentCommunication/messageNames'
 
 let interval
 

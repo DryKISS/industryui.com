@@ -122,6 +122,7 @@ TableContent.propTypes = {
 
 TableContent.defaultProps = {
   align: false,
+  caption: '',
   changeSelectedRowBackground: false,
   columns: [],
   hover: true,

@@ -3,12 +3,9 @@
  */
 
 // UI
-
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../../../services/componentCommunication/messageNames'
-import { MessagingCommunicationService } from '../../../../../services/componentCommunication/componentCommunication'
+import MessageNames from '../../../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../../../services/componentCommunication/messagingActions'
+import MessagingCommunicationService from '../../../../../services/componentCommunication/messaging/service'
 
 const handleHashtagClick = (hashtag) => {
   MessagingCommunicationService.send({

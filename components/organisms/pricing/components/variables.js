@@ -1,7 +1,7 @@
 /**
  * Components - Organsims - Pricing - Variables
  */
-import THEME_COLOUR from '../../constants/colour'
+import THEME_COLOUR from '../../../constants/colour'
 
 const PRICING = {
   addToCartTextColour: THEME_COLOUR.deepBlue,
@@ -18,4 +18,5 @@ const PRICING = {
   recommendedCardPriceTextColour: THEME_COLOUR.white,
   recommendedCardPropertiesTextColour: THEME_COLOUR.white
 }
+
 export default PRICING

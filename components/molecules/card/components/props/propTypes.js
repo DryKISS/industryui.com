@@ -6,9 +6,9 @@
 import { any, bool, func, node, object, oneOf, oneOfType, string } from 'prop-types'
 
 // UI
-import THEME_CONTEXT from '../../constants/context'
+import THEME_CONTEXT from '../../../../constants/context'
 
-export const CardPropTypes = {
+const CardPropTypes = {
   alt: string,
   body: node,
   bordered: bool,
@@ -38,13 +38,4 @@ export const CardPropTypes = {
   titleNoWrap: bool
 }
 
-export const CardDefaultProps = {
-  bordered: false,
-  context: 'white',
-  footerContext: THEME_CONTEXT.LIGHT,
-  headerContext: THEME_CONTEXT.DARK,
-  role: 'article',
-  rounded: true,
-  shadow: false,
-  titleNoWrap: false
-}
+export default CardPropTypes

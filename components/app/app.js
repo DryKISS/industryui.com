@@ -9,12 +9,13 @@ import { any, bool, func, object, oneOfType } from 'prop-types'
 
 // Next
 import App from 'next/app'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
 // Google Tag Manager
 // import TagManager from 'react-gtm-module'
 
 // UI
+import AppApollo from './apollo'
 import AppLayout from './layout'
 import AppTheme from './theme'
 import AuthorizationProvider from '../services/authorization/provider'
@@ -24,7 +25,8 @@ import NotificationsProvider from '../services/notifications/provider'
 import OffCanvasProvider from '../services/offCanvas/provider'
 import ThemeStyle from '../theme/global/style'
 import UserProvider from '../services/authentication/provider'
-const AppApollo = dynamic(() => import('./apollo'))
+
+// const AppApollo = dynamic(() => import('./apollo'))
 
 export default class MyApp extends App {
   static propTypes = {
@@ -83,31 +85,6 @@ export default class MyApp extends App {
       (props) => (user ? <NotificationsProvider children={props.children} /> : props.children),
       (props) => (offCanvas ? <OffCanvasProvider children={props.children} /> : props.children)
     ])
-
-    // elements() {
-    //   const { offCanvas, user } = this.props
-
-    //   return (
-    //     <>
-    //       <ThemeStyle />
-    //       {user && (
-    //         <UserProvider>
-    //           <AuthorizationProvider>
-    //               <NotificationsProvider>
-    //                 {offCanvas ? (
-    //                   <OffCanvasProvider>{this.layout()}</OffCanvasProvider>
-    //                 ) : (
-    //                   this.layout()
-    //                 )}
-    //               </NotificationsProvider>
-    //           </AuthorizationProvider>
-    //         </UserProvider>
-    //       )}
-
-    //       {!user && this.layout()}
-    //     </>
-    //   )
-    // }
 
     return (
       <AppTheme theme={theme}>

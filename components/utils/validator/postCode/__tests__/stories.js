@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 // UI
-import { validatorPostCode } from '../postCode'
+import postCodeValidate from '../validate'
 import Button from '../../../../atoms/button/button/button'
 import Text from '../../../../atoms/text/text'
 import Form from '../../../../form/form/form'
@@ -18,7 +18,7 @@ import FormLabel from '../../../../form/label/label'
 import Readme from '../README.md'
 
 export default {
-  component: validatorPostCode,
+  component: postCodeValidate,
   parameters: {
     docs: {
       description: {
@@ -34,7 +34,7 @@ export const Main = () => {
   const [valid, setValid] = useState('')
 
   const onSubmit = (data) => {
-    const valid = validatorPostCode(data.postCode)
+    const valid = postCodeValidate(data.postCode)
     setValid(valid)
   }
 

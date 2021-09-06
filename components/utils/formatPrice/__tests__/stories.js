@@ -1,5 +1,5 @@
 /**
- * Format Price
+ * Components - Utils - Format Price
  */
 
 // React

@@ -36,6 +36,7 @@ export const propTypes = {
 export const defaultProps = {
   align: false,
   border: true,
+  caption: '',
   className: 'Table',
   fullHeight: false,
   hover: true,

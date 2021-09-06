@@ -18,7 +18,7 @@ import Theme from '../theme/theme'
 const AppTheme = ({ children, theme: initial }) => {
   const [theme, setTheme] = useState(initial)
 
-  return <ThemeProvider theme={{ setTheme, theme: merge(Theme, theme) }}>{children}</ThemeProvider>
+  return <ThemeProvider theme={{ setTheme, ...merge(Theme, theme) }}>{children}</ThemeProvider>
 }
 
 AppTheme.propTypes = {

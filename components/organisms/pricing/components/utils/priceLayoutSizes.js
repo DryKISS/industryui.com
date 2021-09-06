@@ -3,7 +3,7 @@
  */
 
 // UI
-import LAYOUTS from '../components/constants'
+import LAYOUTS from '../constants'
 
 const priceLayoutSizes = (layout) => {
   switch (layout) {

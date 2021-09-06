@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // UI
-import ColorPicker from '../colorPicker'
+import ColourPicker from '../colourPicker'
 import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
@@ -25,7 +25,7 @@ export default {
     width: { control: { type: 'range', min: 100, max: 400 } }
   },
   title: 'Organisms/Color Picker',
-  components: ColorPicker,
+  components: ColourPicker,
   parameters: {
     docs: {
       description: {
@@ -53,7 +53,7 @@ const BaseComponent = ({ onChangeComplete, ...props }) => {
     <>
       <Text>Color Selected</Text>
       <StyledBackgroundColor assetIconColor={assetIconColor} />
-      <ColorPicker {...defaultProps} />
+      <ColourPicker {...defaultProps} />
     </>
   )
 }

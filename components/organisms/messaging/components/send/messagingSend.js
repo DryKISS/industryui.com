@@ -23,15 +23,10 @@ import MessagingInput from '../../components/input/input'
 import MessagingAudioPlayer from '../../components/audioPlayer/audioPlayer'
 import PaperPlaneIcon from '../../../../icons/components/paperPlane'
 import ReplyContainer from '../../components/replyContainer/replyContainer'
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../../services/componentCommunication/messageNames'
-import {
-  MessagingCommunicationService,
-  MessagingSubscriber
-} from '../../../../services/componentCommunication/componentCommunication'
-
+import MessageNames from '../../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
+import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {

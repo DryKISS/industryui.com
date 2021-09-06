@@ -38,8 +38,14 @@ const Table = memo(
     sort,
     striped
   }) => {
-    const { currentPage, onPageChange, onPageSizeChange, pageCount, perPage = 50 } =
-      paginationProps ?? {}
+    const {
+      currentPage,
+      onPageChange,
+      onPageSizeChange,
+      pageCount,
+      perPage = 50
+    } = paginationProps ?? {}
+
     const tableSpan = columns && tableColumnCount(columns)
     const tableRef = useRef(null)
     const tableReady = useRef(false)

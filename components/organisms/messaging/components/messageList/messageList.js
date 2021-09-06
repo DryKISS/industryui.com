@@ -15,11 +15,9 @@ import styled, { css } from 'styled-components'
 // UI
 import dateDiff from '../../../../utils/date/diff'
 import Message from '../message/message'
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../../services/componentCommunication/messageNames'
-import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
+import MessageNames from '../../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const renderMessage = ({ index, parent, key, style }, messages, cache, config) => {

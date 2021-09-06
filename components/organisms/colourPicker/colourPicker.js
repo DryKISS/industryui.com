@@ -1,5 +1,5 @@
 /**
- * Organisms - Color picker
+ * Organisms - Colour picker
  */
 
 // React
@@ -9,7 +9,7 @@ import { string, func } from 'prop-types'
 // React Color
 import { SketchPicker, CirclePicker, TwitterPicker, GithubPicker } from 'react-color'
 
-const ColorPicker = ({ type, onChangeComplete, ...props }) => {
+const ColourPicker = ({ type, onChangeComplete, ...props }) => {
   switch (type) {
     case 'circle':
       return <CirclePicker onChangeComplete={onChangeComplete} {...props} />
@@ -24,15 +24,15 @@ const ColorPicker = ({ type, onChangeComplete, ...props }) => {
   }
 }
 
-ColorPicker.defaultProps = {
+ColourPicker.defaultProps = {
   type: 'github',
   width: '214px'
 }
 
-ColorPicker.propTypes = {
+ColourPicker.propTypes = {
   type: string,
   onChangeComplete: func.isRequired,
   width: string
 }
 
-export default ColorPicker
+export default ColourPicker

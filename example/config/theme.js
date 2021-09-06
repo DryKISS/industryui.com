@@ -115,7 +115,7 @@ export const HEADINGS = {
   }
 }
 
-const TYPOGRAPHY = {
+const THEME_TYPOGRAPHY = {
   font: fonts.gillLight,
   fontFamilies: fonts,
   fontColour: COLOUR.black,
@@ -128,5 +128,5 @@ export const Theme = {
   FOOTER,
   HEADINGS,
   NAVBAR,
-  TYPOGRAPHY
+  THEME_TYPOGRAPHY
 }

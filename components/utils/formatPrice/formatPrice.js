@@ -1,5 +1,5 @@
 /**
- * Format Price
+ * Components - Utils - Format Price
  */
 const formatPrice = (amount, currency = 'GBP') => {
   const numberFormat = new Intl.NumberFormat(['en-GB'], {

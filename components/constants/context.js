@@ -1,6 +1,7 @@
 /**
  * Components - Theme - Constants - Context
  */
+
 const THEME_CONTEXT = {
   WHITE: 'white',
   BLACK: 'black',

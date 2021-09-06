@@ -11,7 +11,7 @@ import styled, { css } from 'styled-components'
 // UI
 import CheckedIcon from '../../../icons/components/checked'
 import LAYOUTS from './constants'
-import priceLayoutSizes from '../utils/priceLayoutSizes'
+import priceLayoutSizes from './utils/priceLayoutSizes'
 import Text from '../../../atoms/text/text'
 
 const PriceMatrix = ({ layout, pricingInfo, selectedPlan }) => {

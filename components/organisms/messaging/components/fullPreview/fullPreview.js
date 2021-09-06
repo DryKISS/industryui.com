@@ -9,17 +9,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-
 import ChevronIcon from '../../../../icons/components/chevron'
 import CrossIcon from '../../../../icons/components/cross'
 import DownloadIcon from '../../../../icons/components/download'
 import Preview from '../../../../molecules/preview/preview'
 import downloadFile from '../../../../utils/fileDownload/fileDownload'
-import {
-  MessageNames,
-  MessagingActions
-} from '../../../../services/componentCommunication/messageNames'
-import { MessagingSubscriber } from '../../../../services/componentCommunication/componentCommunication'
+import MessageNames from '../../../../services/componentCommunication/messageNames'
+import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const FullPreview = () => {
@@ -33,9 +30,10 @@ const FullPreview = () => {
 
   if (selectedFileIndex !== null) {
     if (files.current[selectedFileIndex]?.src) {
-      fileName = files.current[selectedFileIndex].src.split('/')[
-        files.current[selectedFileIndex].src.split('/').length - 1
-      ]
+      fileName =
+        files.current[selectedFileIndex].src.split('/')[
+          files.current[selectedFileIndex].src.split('/').length - 1
+        ]
     } else {
       fileName = 'localFile'
     }
