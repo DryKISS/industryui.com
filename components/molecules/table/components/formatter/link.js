@@ -15,37 +15,35 @@ import styled from 'styled-components'
 // UI
 import StyledLink from '../../../../atoms/link/components/style'
 
-const TableLink =
-  (path, key, value, dynamicUrl) =>
-  ({ row }) => {
-    let useLink = false
-    useLink = row[dynamicUrl] || path
+const TableLink = (path, key, value, dynamicUrl) => ({ row }) => {
+  let useLink = false
+  useLink = row[dynamicUrl] || path
 
-    const getPath = () => {
-      const url = row[dynamicUrl] || path
-      return `${url}?id=${row[key]}`
-    }
-
-    const handleClick = (e) => {
-      e.preventDefault()
-      e.stopPropagation()
-      Router.push(getPath())
-    }
-
-    const item = row[value]
-
-    return useLink ? (
-      item !== '-' ? (
-        <StyleLink border={false} href={getPath()} onClick={handleClick}>
-          {item}
-        </StyleLink>
-      ) : (
-        '-'
-      )
-    ) : (
-      item
-    )
+  const getPath = () => {
+    const url = row[dynamicUrl] || path
+    return `${url}?id=${row[key]}`
   }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    Router.push(getPath())
+  }
+
+  const item = row[value]
+
+  return useLink ? (
+    item !== '-' || row[key] ? (
+      <StyleLink border={false} href={getPath()} onClick={handleClick}>
+        {item}
+      </StyleLink>
+    ) : (
+      '-'
+    )
+  ) : (
+    item
+  )
+}
 
 const StyleLink = styled(StyledLink)`
   &:hover {
