@@ -14,7 +14,6 @@ import Heading from '../../../atoms/heading/heading'
 import LdsSpinner from '../../pageLoading/ldsSpinner'
 
 const TileBody = ({ children, className, description, loading, size, title }) => {
-  console.log(loading)
   return (
     <StyledBody className={className} loading={loading}>
       {loading ? (

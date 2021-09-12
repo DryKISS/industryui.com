@@ -13,17 +13,7 @@ module.exports = {
   ],
   env: {
     test: {
-      presets: [
-        [
-          '@babel/preset-env'
-          // {
-          //   targets: {
-          //     node: 'current'
-          //   }
-          // }
-        ],
-        '@babel/preset-react'
-      ],
+      presets: [['@babel/preset-env'], '@babel/preset-react'],
       plugins: ['require-context-hook']
     },
     esm: {
@@ -32,9 +22,6 @@ module.exports = {
           '@babel/preset-env',
           {
             modules: false
-            // targets: {
-            //   node: 'current'
-            // }
           }
         ]
       ],
@@ -45,17 +32,6 @@ module.exports = {
             useESModules: true
           }
         ]
-        // [
-        //   'styled-components',
-        //   {
-        //     // displayName: true,
-        //     // minify: true,
-        //     // namespace: 'cleverly',
-        //     // pure: true,
-        //     ssr: true
-        //     // transpileTemplateLiterals: true
-        //   }
-        // ]
       ],
       ignore: ['**/__tests__', '**/__mocks__', '**/Storyshots.test.js']
     }

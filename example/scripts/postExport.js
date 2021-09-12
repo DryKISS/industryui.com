@@ -23,11 +23,11 @@ const directory = 'out'
 
 // NoJekyll
 fs.writeFileSync(`${directory}/.nojekyll`, '')
-console.log('- No Jekyll created')
+console.info('- No Jekyll created')
 
 // CNAME
 fs.writeFileSync(`${directory}/CNAME`, Canonical.replace(/(^\w+:|^)\/\//, ''))
-console.log('- CNAME created')
+console.info('- CNAME created')
 
 // Robots
 const robotsText = `User-agent: *
@@ -35,7 +35,7 @@ Sitemap: ${Canonical}/sitemap.xml
 Disallow: `
 
 fs.writeFileSync(`${directory}/robots.txt`, robotsText)
-console.log('- Robots.txt created')
+console.info('- Robots.txt created')
 
 // Sitemap
 const pages = getPages()
@@ -56,4 +56,4 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>`
 
 fs.writeFileSync(`${directory}/sitemap.xml`, sitemapXml)
-console.log('- Sitemap.xml saved!\n')
+console.info('- Sitemap.xml saved!\n')

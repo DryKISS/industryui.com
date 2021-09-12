@@ -56,16 +56,6 @@ const BlogDetails = ({ article, config, facebook }) => {
           iFrame
           to={`${facebook.domain}${config.path}/${slugify(article.category)}/${article.slug}`}
         />
-
-        {/* Twitter */}
-        {/* <StyledShareLink href='javascript:'>
-          <Icon icon='twitter-square' prefix='fab' />
-        </StyledShareLink> */}
-
-        {/* Pinterest */}
-        {/* <StyledShareLink href='javascript:;'>
-          <Icon icon='pinterest-square' prefix='fab' />
-        </StyledShareLink> */}
       </StyledShare>
 
       <Divider size="sm" />
@@ -89,14 +79,6 @@ const StyledShare = styled.div`
 const StyledShareText = styled.span`
   margin-right: 1rem;
 `
-
-// const StyledShareLink = styled.a`
-//   color: #00ccbc;
-//   font-size: 2rem;
-//   line-height: 1rem;
-//   margin-right: .5rem;
-//   text-decoration: none;
-// `
 
 BlogDetails.propTypes = {
   article: object.isRequired,
