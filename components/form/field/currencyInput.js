@@ -78,7 +78,6 @@ CurrencyInput.defaultProps = {
   currencySymbol: '£',
   min: 0,
   show: true,
-  size: 'md',
   vat: 'Incl VAT'
 }
 

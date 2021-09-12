@@ -3,34 +3,17 @@
  */
 
 // React
-import React, { useEffect } from 'react'
+import React from 'react'
 
-// Next
-import dynamic from 'next/dynamic'
+// Full Calendar
+import Calendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import listPlugin from '@fullcalendar/list'
+import timeGridPlugin from '@fullcalendar/timegrid'
 
-let FullCalendar
+const CalendarWrapper = (props) => (
+  <Calendar plugins={[dayGridPlugin, interactionPlugin, listPlugin, timeGridPlugin]} {...props} />
+)
 
-const CalendarWrapper = (props) => {
-  console.log(props)
-
-  useEffect(() => {
-    FullCalendar = dynamic({
-      modules: () => ({
-        calendar: import('@fullcalendar/react'),
-        dayGridPlugin: import('@fullcalendar/daygrid'),
-        interactionPlugin: import('@fullcalendar/interaction'),
-        listPlugin: import('@fullcalendar/list'),
-        timeGridPlugin: import('@fullcalendar/timegrid')
-      }),
-      render: (props, { calendar: Calendar, ...plugins }) => {
-        return <Calendar plugins={Object.values(plugins)} {...props} />
-      },
-      ssr: false
-    })
-
-    props.setLoading(false)
-  }, [props.loading])
-
-  return !props.loading && <FullCalendar {...props} />
-}
 export default CalendarWrapper

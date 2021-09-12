@@ -1,5 +1,5 @@
 /**
- * Form - Field
+ * Form - Field - Currency
  */
 
 // React

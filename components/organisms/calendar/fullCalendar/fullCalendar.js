@@ -3,8 +3,11 @@
  */
 
 // React
-import React, { useState } from 'react'
+import React from 'react'
 import { array, bool, func, number, object, oneOfType, string } from 'prop-types'
+
+// Next
+import dynamic from 'next/dynamic'
 
 // Style
 import styled from 'styled-components'
@@ -12,7 +15,11 @@ import styled from 'styled-components'
 // UI
 import LdsSpinner from '../../../molecules/pageLoading/ldsSpinner'
 import PageLoading from '../../../molecules/pageLoading/pageLoading'
-import CalendarWrapper from './components/calendarWrapper'
+
+const CalendarWrapper = dynamic(() => import('./components/calendarWrapper'), {
+  ssr: false,
+  loading: () => <PageLoading indicator={<LdsSpinner />} />
+})
 
 const Calendar = ({
   businessHours,
@@ -34,12 +41,8 @@ const Calendar = ({
   selectable,
   weekNumbers
 }) => {
-  const [loading, setLoading] = useState(true)
-
   return (
     <Wrapper>
-      {hasLoading && loading && <PageLoading indicator={<LdsSpinner />} />}
-
       <CalendarWrapper
         businessHours={businessHours}
         buttonIcons={buttonIcons}
@@ -54,8 +57,6 @@ const Calendar = ({
         headerToolbar={headerToolbar}
         initialDate={initialDate}
         initialView={initialView}
-        loading={loading}
-        setLoading={setLoading}
         navLinks={navLinks}
         nowIndicator={nowIndicator}
         selectable={selectable}

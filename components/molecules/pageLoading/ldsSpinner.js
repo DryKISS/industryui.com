@@ -4,36 +4,42 @@
 
 // React
 import React from 'react'
-import { number, string } from 'prop-types'
+import { number, oneOf } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
+
+// UI
+import THEME_CONTEXT from '../../constants/context'
 
 const SPINNER = Array(12).fill('')
 
 const LdsSpinnerWrapper = styled.div`
   display: inline-block;
+  height: ${({ size }) => size}px;
   position: relative;
   width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
+
   div {
-    transform-origin: ${({ size }) => size / 2}px ${({ size }) => size / 2}px;
     animation: lds-spinner 1.2s linear infinite;
+    transform-origin: ${({ size }) => size / 2}px ${({ size }) => size / 2}px;
+
     ::after {
+      background: ${({ context }) => context};
+      border-radius: ${({ size }) => size / 4}%;
       content: ' ';
       display: block;
+      height: ${({ size }) => size / 4 - 2}px;
+      left: ${({ size }) => size / 2 - 3}px;
       position: absolute;
       top: ${({ size }) => size / 10 - 5}px;
-      left: ${({ size }) => size / 2 - 3}px;
       width: ${({ size }) => size / 10 - 2}px;
-      height: ${({ size }) => size / 4 - 2}px;
-      border-radius: ${({ size }) => size / 4}%;
-      background: ${({ color }) => color};
     }
   }
 
   ${({ spinner }) => {
     let temp = ''
+
     spinner.forEach((s, i) => {
       temp += `
         div:nth-child(${i + 1}) {
@@ -42,8 +48,10 @@ const LdsSpinnerWrapper = styled.div`
         }
       `
     })
+
     return temp
   }}
+
   @keyframes lds-spinner {
     0% {
       opacity: 1;
@@ -66,12 +74,12 @@ const LdsSpinner = (props) => {
 
 LdsSpinner.propTypes = {
   size: number,
-  color: string
+  context: oneOf(Object.values(THEME_CONTEXT))
 }
 
 LdsSpinner.defaultProps = {
-  size: 80,
-  color: '#333'
+  context: 'white',
+  size: 56
 }
 
 export default LdsSpinner

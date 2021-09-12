@@ -177,6 +177,7 @@ export { default as TableActions } from './molecules/table/components/formatter/
 export { default as TableLink } from './molecules/table/components/formatter/link'
 export { default as TableLoading } from './molecules/table/components/loading'
 export { default as Tabs } from './molecules/tabs/tabs'
+export { default as Tile } from './molecules/tile/tile'
 export { default as VideoPlayer } from './molecules/videoPlayer/videoPlayer'
 export { default as VoiceRecorder } from './molecules/voiceRecorder/voiceRecorder'
 

@@ -7,12 +7,6 @@ import Container from './decorators/container'
 import RouterWrap from './decorators/router'
 import  Wrapper from './decorators/wrapper'
 
-// Full Calendar
-import '@fullcalendar/common/main.min.css'
-import '@fullcalendar/daygrid/main.min.css'
-import '@fullcalendar/list/main.min.css'
-import '@fullcalendar/timegrid/main.min.css'
-
 // Font awesome
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
@@ -50,6 +44,8 @@ import 'leaflet/dist/leaflet.css'
   faCaretUp,
   faCheck,
   faChevronDown,
+  faChevronLeft,
+  faChevronRight,
   faChevronUp,
   faCircle,
   faCloud,
@@ -93,6 +89,8 @@ library.add(
   faCaretUp,
   faCheck,
   faChevronDown,
+  faChevronLeft,
+  faChevronRight,
   faChevronUp,
   faCircle,
   faClipboardCheck,

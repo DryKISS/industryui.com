@@ -11,13 +11,14 @@ import styled from 'styled-components'
 
 // UI
 import Heading from '../../../atoms/heading/heading'
-import Loading from './loading'
+import LdsSpinner from '../../pageLoading/ldsSpinner'
 
 const TileBody = ({ children, className, description, loading, size, title }) => {
+  console.log(loading)
   return (
     <StyledBody className={className} loading={loading}>
       {loading ? (
-        <Loading />
+        <LdsSpinner />
       ) : (
         <>
           {title && (

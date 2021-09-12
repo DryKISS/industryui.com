@@ -17,7 +17,11 @@ import Tile from '../tile'
 export default {
   args: {
     body: '25',
-    colourConfig: { 10: 'success', 20: 'warning', 25: 'danger' },
+    colourConfig: {
+      10: 'success',
+      20: 'warning',
+      25: 'danger'
+    },
     loading: false,
     rounded: true,
     title: 'Reactive Job'
@@ -26,7 +30,6 @@ export default {
     context: ContextControl(),
     size: SizeControl()
   },
-  title: 'Molecules/Tile',
   component: Tile,
   decorators: [(story) => <Column md={4}>{story()}</Column>],
   parameters: {
@@ -35,7 +38,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Molecules/Tile'
 }
 
 const BaseComponent = (props = {}) => {

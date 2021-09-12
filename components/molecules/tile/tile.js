@@ -32,6 +32,7 @@ const Tile = ({
 
     for (const key in colourConfig) {
       const ParsIntKey = parseInt(key)
+
       if (ParsIntBody <= ParsIntKey) {
         selectedColour = colourConfig[key]
         break
@@ -78,8 +79,7 @@ const StyledTile = styled.div`
   background-color: ${({ theme, bgColour, context }) => {
     return context ? theme.COLOUR[context] ?? context : theme.COLOUR[bgColour] ?? bgColour
   }};
-  box-shadow: ${({ shadow }) =>
-    shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
+  box-shadow: ${({ shadow }) => shadow && 'rgba(45, 62, 80, 0.12) 0 1px 5px 0'};
   background-clip: border-box;
   border-radius: ${({ rounded }) => rounded && '0.25rem'};
   color: ${({ theme }) => theme.COLOUR.white};
