@@ -76,7 +76,7 @@ DatePickerCalendar.defaultProps = {
   dropdownMode: 'scroll',
   disableInitialDateBackground: false,
   isClearable: true,
-  minDate: new Date(),
+  minDate: null,
   name: 'expiryAt',
   shouldCloseOnSelect: true,
   showTimeSelect: false,
