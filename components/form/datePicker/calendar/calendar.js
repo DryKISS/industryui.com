@@ -15,7 +15,7 @@ import { Controller } from 'react-hook-form'
 import styled, { css } from 'styled-components'
 
 // UI
-import StyledInput from '../../field/style'
+import StyledInput from '../../input/components/style'
 import propTypes from './props'
 
 const DatePickerCalendar = ({

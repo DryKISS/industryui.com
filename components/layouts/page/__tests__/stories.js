@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import SizeControl from '../../../../.storybook/decorators/size'
+import SizeControl from '../../../../.storybook/decorators/controls/size'
 
 // UI
 import Page from '../page'

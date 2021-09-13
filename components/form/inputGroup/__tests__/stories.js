@@ -6,14 +6,14 @@
 import React from 'react'
 
 // Storybook
-import SizeControl from '../../../../.storybook/decorators/size'
+import SizeControl from '../../../../.storybook/decorators/controls/size'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
 // UI
 import Button from '../../../atoms/button/button/button'
-import FormField from '../../field/input'
+import Input from '../../input/input'
 import Icon from '../../../atoms/icon/icon/icon'
 import InputGroup from '../group'
 import InputGroupAddon from '../addon'
@@ -41,10 +41,10 @@ const BaseComponent = (props = {}) => {
   return <InputGroup {...props} />
 }
 
-const Input = () => {
+const RenderInput = () => {
   const { register, errors } = useForm()
 
-  return <FormField errors={errors} name="id" placeholder="Search..." register={register} />
+  return <Input errors={errors} name="id" placeholder="Search..." register={register} />
 }
 
 export const prependButton = (args) => {
@@ -54,7 +54,7 @@ export const prependButton = (args) => {
         <Button content="Search" type="submit" size="sm" />
       </InputGroupAddon>
 
-      <Input />
+      <RenderInput />
     </BaseComponent>
   )
 }
@@ -66,7 +66,7 @@ export const prependIcon = (args) => {
         <Icon icon="search" />
       </InputGroupAddon>
 
-      <Input />
+      <RenderInput />
     </BaseComponent>
   )
 }
@@ -74,7 +74,7 @@ export const prependIcon = (args) => {
 export const appendButton = (args) => {
   return (
     <BaseComponent {...args}>
-      <Input />
+      <RenderInput />
 
       <InputGroupAddon addonType="append">
         <Button content="Search" type="submit" size="sm" />
@@ -86,7 +86,7 @@ export const appendButton = (args) => {
 export const appendIcon = (args) => {
   return (
     <BaseComponent {...args}>
-      <Input />
+      <RenderInput />
 
       <InputGroupAddon addonType="append" text>
         <Icon icon="search" />

@@ -9,7 +9,7 @@ import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 
 // Storybook
-import Wrapper from '../../../../.storybook/decorators/wrapper'
+import Wrapper from '../../../../.storybook/decorators/wrapper/wrapper'
 
 // UI
 import Button from '../../../atoms/button//button/button'

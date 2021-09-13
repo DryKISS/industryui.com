@@ -15,8 +15,8 @@ import { useForm } from 'react-hook-form'
 import OffCanvas from '../../../../molecules/offCanvas/offCanvas'
 import Button from '../../../../atoms/button/button/button'
 import Form from '../../../../form/form/form'
-import FormLabel from '../../../../form/label/label'
-import FormField from '../../../../form/field/input'
+import Label from '../../../../form/label/label'
+import Input from '../../../../form/input/input'
 import SelectField from '../../../../form/select/select'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
@@ -47,19 +47,19 @@ const CustomCalendarStyles = () => {
   const CalendarStyleForm = () => {
     return (
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label="Height">
-          <FormField
+        <Label label="Height">
+          <Input
             type="number"
             name="height"
             errors={errors}
             placeholder="Introduce the calendar height"
             register={register}
           />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Default event color">
+        <Label label="Default event color">
           <SelectField name="eventColor" options={colorEvent} {...defaultProps} />
-        </FormLabel>
+        </Label>
 
         <Button content="Submit" type="submit" />
       </Form>

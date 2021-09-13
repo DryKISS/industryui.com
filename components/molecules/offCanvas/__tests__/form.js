@@ -14,8 +14,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import Form from '../../../form/form/form'
-import FormField from '../../../form/field/input'
-import FormLabel from '../../../form/label/label'
+import Input from '../../../form/input/input'
+import Label from '../../../form/label/label'
 
 const OffCanvasForm = ({ onSubmit }) => {
   const schema = object().shape({
@@ -40,47 +40,42 @@ const OffCanvasForm = ({ onSubmit }) => {
 
   return (
     <Form id="offCanvasForm" handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label="Name">
-        <FormField {...defaultOptions} name="name" placeholder="Alfred" />
-      </FormLabel>
+      <Label label="Name">
+        <Input {...defaultOptions} name="name" placeholder="Alfred" />
+      </Label>
 
-      <FormLabel label="Surname">
-        <FormField {...defaultOptions} name="surname" placeholder="Lavanne" />
-      </FormLabel>
+      <Label label="Surname">
+        <Input {...defaultOptions} name="surname" placeholder="Lavanne" />
+      </Label>
 
-      <FormLabel label="Favourite colour">
-        <FormField {...defaultOptions} name="color" placeholder="Red" />
-      </FormLabel>
+      <Label label="Favourite colour">
+        <Input {...defaultOptions} name="color" placeholder="Red" />
+      </Label>
 
-      <FormLabel label="Brand">
-        <FormField {...defaultOptions} name="brand" placeholder="Apple" />
-      </FormLabel>
+      <Label label="Brand">
+        <Input {...defaultOptions} name="brand" placeholder="Apple" />
+      </Label>
 
-      <FormLabel label="Preferences">
-        <FormField {...defaultOptions} name="preferences" placeholder="Two" />
-      </FormLabel>
+      <Label label="Preferences">
+        <Input {...defaultOptions} name="preferences" placeholder="Two" />
+      </Label>
 
-      <FormLabel label="Suggestions">
-        <FormField {...defaultOptions} name="suggestions" placeholder="One" />
-      </FormLabel>
+      <Label label="Suggestions">
+        <Input {...defaultOptions} name="suggestions" placeholder="One" />
+      </Label>
 
-      <FormLabel label="Email">
-        <FormField
-          {...defaultOptions}
-          name="email"
-          placeholder="Enter email address"
-          type="email"
-        />
-      </FormLabel>
+      <Label label="Email">
+        <Input {...defaultOptions} name="email" placeholder="Enter email address" type="email" />
+      </Label>
 
-      <FormLabel label="Password">
-        <FormField
+      <Label label="Password">
+        <Input
           {...defaultOptions}
           name="password"
           placeholder="Enter your password"
           type="password"
         />
-      </FormLabel>
+      </Label>
     </Form>
   )
 }

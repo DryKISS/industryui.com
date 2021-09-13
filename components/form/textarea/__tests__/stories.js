@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import SizeControl from '../../../../.storybook/decorators/size'
+import SizeControl from '../../../../.storybook/decorators/controls/size'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -18,7 +18,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 // UI
 import Button from '../../../atoms/button/button/button'
 import Form from '../../form/form'
-import FormLabel from '../../label/label'
+import Label from '../../label/label'
 import TextareaField from '../textarea'
 import Readme from '../README.md'
 
@@ -62,9 +62,9 @@ export const Main = (args) => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label="Description">
+      <Label label="Description">
         <TextareaField {...defaultProps} />
-      </FormLabel>
+      </Label>
 
       <Button content="Submit" type="submit" />
     </Form>

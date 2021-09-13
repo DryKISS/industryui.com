@@ -37,7 +37,6 @@ const ImageWrapper = ({
     return Leaflet.L.divIcon({
       html: renderToString(<ClusterIcon cluster={cluster} />),
       className: 'marker-cluster'
-      // iconSize: L.point(38, 38, true)
     })
   }
 

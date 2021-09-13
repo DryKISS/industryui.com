@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
+import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
 
 // UI
 import Toggle from '../toggle'

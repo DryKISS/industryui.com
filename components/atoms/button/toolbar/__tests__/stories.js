@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import AlignControl from '../../../../../.storybook/decorators/align'
-import SizeControl from '../../../../../.storybook/decorators/size'
+import AlignControl from '../../../../../.storybook/decorators/controls/align'
+import SizeControl from '../../../../../.storybook/decorators/controls/size'
 
 // UI
 import Button from '../../button/button'

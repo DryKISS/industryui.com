@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
 
-const FormLabel = ({ children, id, label, show, size }) => {
+const Label = ({ children, id, label, show, size }) => {
   return (
     <StyledLabel hasChild={children} htmlFor={id} show={show}>
       <Space marginBottom="xs">
@@ -32,15 +32,15 @@ const StyledLabel = styled.label`
   }
 `
 
-FormLabel.propTypes = {
+Label.propTypes = {
   children: node,
   id: string,
   label: string,
   show: bool
 }
 
-FormLabel.defaultProps = {
+Label.defaultProps = {
   show: true
 }
 
-export default FormLabel
+export default Label

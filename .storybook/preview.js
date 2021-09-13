@@ -3,9 +3,9 @@
  */
 
 // UI
-import Container from './decorators/container'
-import RouterWrap from './decorators/router'
-import  Wrapper from './decorators/wrapper'
+import ContainerWrapper from './decorators/wrapper/container'
+import RouterWrapper from './decorators/wrapper/router'
+import Wrapper from './decorators/wrapper/wrapper'
 
 // Font awesome
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -129,4 +129,4 @@ const actionWithPromise = () => {
   return new Promise((_, reject) => reject())
 }
 
-export const decorators = [RouterWrap, Container, Wrapper]
+export const decorators = [RouterWrapper, ContainerWrapper, Wrapper]

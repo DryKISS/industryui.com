@@ -1,76 +1,39 @@
 /**
- * Form - Field
+ * Form - Checkbox
  */
 
 // React
 import React from 'react'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Storybook
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
 
 // Yup
 import { object, string } from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import CheckboxField from '../checkbox'
-import Form from '../../form/form'
+import Checkbox from '../checkbox'
 import Readme from '../README.md'
-
-const data = [
-  {
-    id: 'check',
-    label: 'Yes',
-    value: 'check'
-  },
-  {
-    id: 'checked',
-    label: 'No',
-    value: 'checked'
-  }
-]
-
-export default {
-  args: {
-    legend: 'Do you like Industry-UI?',
-    stacked: false
-  },
-  title: 'Form/Checkbox',
-  component: CheckboxField,
-  parameters: {
-    docs: {
-      description: {
-        component: Readme
-      }
-    }
-  }
-}
+import DATA from '../__mocks__/checkbox'
 
 const schema = object().shape({
   checkbox: string().required()
 })
 
-const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
-  })
-
-  const onSubmit = (data) => {}
-
-  const defaultProps = {
-    errors: errors,
-    name: 'checkbox',
-    register: register,
-    ...props
-  }
-
-  return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <CheckboxField {...defaultProps} data={data} />
-      <Button content="Submit" type="submit" />
-    </Form>
-  )
+export default {
+  component: Checkbox,
+  decorators: [FormWrapper],
+  parameters: {
+    docs: {
+      description: {
+        component: Readme
+      }
+    },
+    schema: schema
+  },
+  title: 'Form/Checkbox'
 }
 
-export const main = (args) => <BaseComponent {...args} />
+export const Main = (args, { params: { formState, register } }) => (
+  <Checkbox {...args} errors={formState.errors} data={DATA} name="checkbox" register={register} />
+)

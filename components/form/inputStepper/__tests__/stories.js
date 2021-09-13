@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -18,7 +18,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 // UI
 import Button from '../../../atoms/button/button/button'
 import Form from '../../form/form'
-import FormLabel from '../../label/label'
+import Label from '../../label/label'
 import InputStepper from '../inputStepper'
 import Readme from '../README.md'
 
@@ -64,9 +64,9 @@ export const Main = (args) => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label="Quantity">
+      <Label label="Quantity">
         <InputStepper {...defaultProps} />
-      </FormLabel>
+      </Label>
 
       <Button content="Submit" type="submit" />
     </Form>

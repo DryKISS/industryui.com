@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Decorators
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
 
 // React Hook Form
 import { Controller, useForm } from 'react-hook-form'
@@ -17,20 +17,20 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
 import Button from '../../../atoms/button/button/button'
-import CheckboxField from '../../checkbox/checkbox'
+import Checkbox from '../../checkbox/checkbox'
 import Column from '../../../atoms/grid/Column'
-import CurrencyInput from '../../field/currencyInput'
+import CurrencyInput from '../../currency/currencyInput'
 import DatePickerCalendar from '../../datePicker/calendar/calendar'
 import Divider from '../../../atoms/divider/divider'
 import Dropzone from '../../dropzone/react-dropzone/dropzone'
 import FormError from '../../error/error'
-import FormField from '../../field/input'
+import Input from '../../input/input'
 import Form from '../../form/form'
-import FormLabel from '../../label/label'
+import Label from '../../label/label'
 import Heading from '../../../atoms/heading/heading'
 import InputGroup from '../../inputGroup/group'
 import InputGroupAddon from '../../inputGroup/addon'
-import PercentInput from '../../field/percentInput'
+import PercentInput from '../../percent/percentInput'
 import RadioField from '../../radio/radio'
 import ReactSelectField from '../../reactSelect/reactSelect'
 import Row from '../../../atoms/grid/Row'
@@ -121,67 +121,67 @@ const All = ({ ...args }) => {
 
       <Row style={{ background: rowBackground }}>
         <Column md={colMd}>
-          <FormLabel size="md" label="Name">
-            <FormField {...defaultProps} name="name" />
+          <Label size="md" label="Name">
+            <Input {...defaultProps} name="name" />
             {errors.name && ErrMessage(errors.name.message)}
-          </FormLabel>
+          </Label>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel size="md" label="Email">
-            <FormField
+          <Label size="md" label="Email">
+            <Input
               {...defaultProps}
               helperMessage={"We'll never share your email with anyone else."}
               name="email"
               placeholder="Enter Email"
             />
             {errors.email && ErrMessage(errors.email.message)}
-          </FormLabel>
+          </Label>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label="Disabled">
-            <FormField {...defaultProps} disabled name="disabled" />
+          <Label label="Disabled">
+            <Input {...defaultProps} disabled name="disabled" />
             {errors.disabled && ErrMessage(errors.disabled.message)}
-          </FormLabel>
+          </Label>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label="Readonly">
-            <FormField
+          <Label label="Readonly">
+            <Input
               {...defaultProps}
               defaultValue="Readonly with defaultValue"
               name="readonly"
               readOnly
             />
             {errors.readonly && ErrMessage(errors.readonly.message)}
-          </FormLabel>
+          </Label>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label="Datepicker">
+          <Label label="Datepicker">
             <DatePickerCalendar
               {...defaultProps}
               control={control}
               locale={enGB}
               name="datepicker"
             />
-          </FormLabel>
+          </Label>
         </Column>
 
         <Column md={colMd}>
-          <FormLabel label="React Select">
+          <Label label="React Select">
             <ReactSelectField
               {...defaultProps}
               control={control}
               name="reactSelect"
               options={Options}
             />
-          </FormLabel>
+          </Label>
         </Column>
 
         <Column md={12}>
-          <FormLabel children="" label="Dropzone" />
+          <Label children="" label="Dropzone" />
           <Controller
             {...defaultProps}
             render={() => <Dropzone multiple={false} />}
@@ -193,41 +193,36 @@ const All = ({ ...args }) => {
 
       <Divider size="md" />
 
-      <FormLabel label="Input Group">
+      <Label label="Input Group">
         <InputGroup>
-          <FormField {...defaultProps} name="id" placeholder="Search..." />
+          <Input {...defaultProps} name="id" placeholder="Search..." />
 
           <InputGroupAddon addonType="append">
             <Button content="Search" type="submit" size="sm" />
           </InputGroupAddon>
         </InputGroup>
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Search">
+      <Label label="Search">
         <Search {...defaultProps} />
-      </FormLabel>
+      </Label>
 
       <CurrencyInput {...defaultProps} name="amount" label="Currency input" />
       <PercentInput {...defaultProps} name="amount" label="Percent input" />
 
-      <FormLabel label="Input">
-        <FormField {...defaultProps} name="input" />
-      </FormLabel>
+      <Label label="Input">
+        <Input {...defaultProps} name="input" />
+      </Label>
 
-      <FormLabel label="Textarea">
+      <Label label="Textarea">
         <TextareaField {...defaultProps} name="textarea" rows={2} />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Select">
+      <Label label="Select">
         <SelectField {...defaultProps} options={COLOURS} name="select" />
-      </FormLabel>
+      </Label>
 
-      <CheckboxField
-        {...defaultProps}
-        data={checkbox}
-        legend={args.checkboxLegend}
-        name="checkbox"
-      />
+      <Checkbox {...defaultProps} data={checkbox} legend={args.checkboxLegend} name="checkbox" />
 
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend="Gender?" name="radio" />
 

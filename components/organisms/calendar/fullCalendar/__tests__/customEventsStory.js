@@ -13,10 +13,10 @@ import { useForm } from 'react-hook-form'
 import OffCanvas from '../../../../molecules/offCanvas/offCanvas'
 import Button from '../../../../atoms/button/button/button'
 import Form from '../../../../form/form/form'
-import FormLabel from '../../../../form/label/label'
-import FormField from '../../../../form/field/input'
+import Label from '../../../../form/label/label'
+import Input from '../../../../form/input/input'
 import SelectField from '../../../../form/select/select'
-import CheckboxField from '../../../../form/checkbox/checkbox'
+import Checkbox from '../../../../form/checkbox/checkbox'
 
 import { BaseComponent } from './stories'
 
@@ -45,7 +45,6 @@ const CustomEventsStory = () => {
       end: calendarArg.dateStr,
       title: data.title,
       url: data.url,
-      // classNames: ['calendarClass', 'calendarClass'],
       editable: !!data.editable,
       overlap: !!data.overlap,
       backgroundColor: data.backgroundColor,
@@ -63,50 +62,50 @@ const CustomEventsStory = () => {
   const CustomEventForm = () => {
     return (
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label="Title">
-          <FormField name="title" errors={errors} placeholder="Event title" register={register} />
-        </FormLabel>
+        <Label label="Title">
+          <Input name="title" errors={errors} placeholder="Event title" register={register} />
+        </Label>
 
-        <FormLabel label="All day">
-          <CheckboxField data={checkBoxOptions} name="all day" {...defaultProps} />
-        </FormLabel>
+        <Label label="All day">
+          <Checkbox data={checkBoxOptions} name="all day" {...defaultProps} />
+        </Label>
 
-        <FormLabel label="Background Color">
+        <Label label="Background Color">
           <SelectField name="backgroundColor" options={colorEvent} {...defaultProps} />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Text color">
+        <Label label="Text color">
           <SelectField name="textColor" options={colorEvent} {...defaultProps} />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Border Color">
+        <Label label="Border Color">
           <SelectField name="borderColor" options={colorEvent} {...defaultProps} />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Url">
-          <FormField
+        <Label label="Url">
+          <Input
             name="url"
             placeholder="https://myevent.com"
             register={register}
             {...defaultProps}
           />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Display Event Options">
+        <Label label="Display Event Options">
           <SelectField name="displayEventOptions" options={displayEventOptions} {...defaultProps} />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="overlap">
-          <CheckboxField data={checkBoxOptions} name="overlap" ref={register} {...defaultProps} />
-        </FormLabel>
+        <Label label="overlap">
+          <Checkbox data={checkBoxOptions} name="overlap" ref={register} {...defaultProps} />
+        </Label>
 
-        <FormLabel label="draggable">
-          <CheckboxField data={checkBoxOptions} name="editable" ref={register} {...defaultProps} />
-        </FormLabel>
+        <Label label="draggable">
+          <Checkbox data={checkBoxOptions} name="editable" ref={register} {...defaultProps} />
+        </Label>
 
-        <FormLabel label="Asset Type">
+        <Label label="Asset Type">
           <SelectField name="assetType" options={assetType} {...defaultProps} />
-        </FormLabel>
+        </Label>
 
         <Button content="Submit" type="submit" />
       </Form>

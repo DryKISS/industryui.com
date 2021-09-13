@@ -1,138 +1,86 @@
 /**
- * Components - Form - Input - Story
+ * Form - Field
  */
 
 // React
 import React from 'react'
 
 // Storybook
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
-
-// React Hook Form
-import { useForm } from 'react-hook-form'
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
+import SizeControl from '../../../../.storybook/decorators/controls/size'
 
 // Yup
 import { object, string } from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import arrayOfValues from '../../../utils/arrayOfValues/arrayOfValues'
-import Button from '../../../atoms/button/button/button'
-import Column from '../../../atoms/grid/Column'
-import Form from '../../../form/form/form'
 import Input from '../input'
-import InputTypes from '../types'
-import InputDecorationTypes from '../decorationTypes'
-import Row from '../../../atoms/grid/Row'
-import Space from '../../../atoms/space/space'
-import THEME_SIZE from '../../../constants/size'
+import Label from '../../label/label'
 import Readme from '../README.md'
 
+const schema = object().shape({
+  email: string().required('Please Enter a valid email').email()
+})
+
 export default {
+  argTypes: {
+    size: SizeControl()
+  },
   component: Input,
+  decorators: [FormWrapper],
   parameters: {
     docs: {
       description: {
         component: Readme
       }
-    }
+    },
+    schema: schema
   },
   title: 'Form/Input'
 }
 
-const InputElement = (args) => {
-  const schema = object().shape({
-    email: string().required('Please Enter an email').email()
-  })
+// const BaseComponent = (props = {}) => {
+//   const { errors, handleSubmit, register } = useForm({
+//     resolver: yupResolver(schema)
+//   })
 
-  const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
-  })
+//   const onSubmit = (data) => {}
 
-  const onSubmit = (data) => {
-    console.info(data)
-  }
+//   const defaultProps = {
+//     errors: errors,
+//     register: register,
+//     ...props
+//   }
 
+//   return (
+//     <Form handleSubmit={handleSubmit(onSubmit)}>
+//       <Label label="Email">
+//         <Input {...defaultProps} name="email" />
+//       </Label>
+
+//       <Label label="Password">
+//         <Input {...defaultProps} name="password" type="password" />
+//       </Label>
+
+//       <Button content="Submit" type="submit" />
+//     </Form>
+//   )
+// }
+
+// export const main = (args, { params: { register, errors } }) => {
+//   console.log(register)
+//   console.log(errors)
+
+//   return (
+//     <Label label="Email">
+//       <Input {...args} errors={errors} register={register} name="email" />
+//     </Label>
+//   )
+// }
+
+export const main = (args, { params: { formState, register } }) => {
   return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <Row>
-        <Column md={6}>
-          <Input
-            decoration={errors?.email ? InputDecorationTypes.DANGER : args.decoration}
-            adornments={{
-              ...(args.WithStartAdornment && { startAdornment: <>S</> }),
-              ...(args.WithEndAdornment && { endAdornment: <>E</> })
-            }}
-            label="Label"
-            type={args.inputType}
-            message={errors?.email?.message ? errors.email.message : args.messageText}
-            errors={errors}
-            name="email"
-            register={register}
-            placeholder="Placeholder"
-            size={args.size}
-          />
-
-          <Space />
-
-          <Button type="submit">submit</Button>
-        </Column>
-      </Row>
-    </Form>
+    <Label label="Email">
+      <Input {...args} errors={formState.errors} name="email" register={register} />
+    </Label>
   )
-}
-
-export const InputTemplate = InputElement.bind({})
-
-InputTemplate.args = {
-  decoration: InputDecorationTypes.DEFAULT,
-  inputType: InputTypes.TEXT,
-  messageText: '',
-  size: THEME_SIZE.MD,
-  WithStartAdornment: false,
-  WithEndAdornment: false
-}
-
-InputTemplate.argTypes = {
-  decoration: {
-    name: 'Decoration',
-    control: {
-      type: ControlTypes.Select,
-      options: arrayOfValues(InputDecorationTypes)
-    }
-  },
-
-  inputType: {
-    name: 'Input Type',
-    control: {
-      type: ControlTypes.Select,
-      options: arrayOfValues(InputTypes)
-    }
-  },
-
-  messageText: {
-    name: 'Message Text'
-  },
-
-  size: {
-    name: 'Size',
-    control: {
-      type: ControlTypes.Select,
-      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
-    }
-  },
-
-  WithStartAdornment: {
-    name: 'with Start Adornment',
-    control: {
-      type: ControlTypes.Boolean
-    }
-  },
-
-  WithEndAdornment: {
-    name: 'with End Adornment',
-    control: {
-      type: ControlTypes.Boolean
-    }
-  }
 }

@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 
 // Storybook
-import Details from '../../../../../.storybook/decorators/details'
+import DetailsWrapper from '../../../../../.storybook/decorators/wrapper/details'
 
 // UI
 import Calendar from '../fullCalendar'
@@ -25,7 +25,7 @@ export default {
     nowIndicator: false
   },
   components: Calendar,
-  decorators: [Details],
+  decorators: [DetailsWrapper],
   parameters: {
     docs: {
       description: {

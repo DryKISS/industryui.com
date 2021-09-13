@@ -17,8 +17,8 @@ import schema from './schema'
 import Alert from '../../molecules/alert/alert'
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 const PasswordChange = ({ showPlaceholder, submit }) => {
@@ -41,30 +41,30 @@ const PasswordChange = ({ showPlaceholder, submit }) => {
       {error && <Alert content={error.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label="Old password">
-          <FormField
+        <Label label="Old password">
+          <Input
             {...defaultOptions}
             name="passwordOld"
             placeholder={showPlaceholder ? 'Old Password' : ''}
           />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="New password">
-          <FormField
+        <Label label="New password">
+          <Input
             {...defaultOptions}
             name="password"
             placeholder={showPlaceholder ? 'New Password' : ''}
           />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Confirm password">
-          <FormField
+        <Label label="Confirm password">
+          <Input
             {...defaultOptions}
             name="passwordConfirm"
             placeholder={showPlaceholder ? 'Confirm Password' : ''}
             validate={(v) => v === watch('password')}
           />
-        </FormLabel>
+        </Label>
 
         <Button
           block

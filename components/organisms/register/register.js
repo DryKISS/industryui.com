@@ -13,13 +13,13 @@ import { useForm } from 'react-hook-form'
 
 import Alert from '../../molecules/alert/alert'
 import Text from '../../atoms/text/text'
-import CheckboxField from '../../form/checkbox/checkbox'
+import Checkbox from '../../form/checkbox/checkbox'
 import DatePickerInput from '../../form/datePicker/input/datePickerInput'
 import UserContext from '../../services/authentication/context'
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import Link from '../../atoms/link/link'
 
 // Style
@@ -113,55 +113,51 @@ const Register = ({
     <Form handleSubmit={handleSubmit(onSubmit)}>
       {error && <Alert content={error.message} context="warning" />}
 
-      <FormLabel label="First name">
-        <FormField
+      <Label label="First name">
+        <Input
           {...defaultOptions}
           autoFocus
           name="nameFirst"
           placeholder={showPlaceholder ? 'Tommy' : ''}
         />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Last name">
-        <FormField
-          {...defaultOptions}
-          name="nameLast"
-          placeholder={showPlaceholder ? 'Ryder' : ''}
-        />
-      </FormLabel>
+      <Label label="Last name">
+        <Input {...defaultOptions} name="nameLast" placeholder={showPlaceholder ? 'Ryder' : ''} />
+      </Label>
 
-      <FormLabel label="Email">
-        <FormField
+      <Label label="Email">
+        <Input
           {...defaultOptions}
           autoFocus
           name="email"
           placeholder={showPlaceholder ? 'Email' : ''}
         />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Password">
-        <FormField
+      <Label label="Password">
+        <Input
           {...defaultOptions}
           name="password"
           placeholder={showPlaceholder ? 'Password' : ''}
           type="password"
         />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Repeat Password">
-        <FormField
+      <Label label="Repeat Password">
+        <Input
           {...defaultOptions}
           name="repeatPassword"
           placeholder={showPlaceholder ? 'Password' : ''}
           type="password"
         />
-      </FormLabel>
+      </Label>
 
       {birthday && renderBirthday()}
 
       {passwordError && <Alert content={passwordError.message} context="warning" />}
 
-      <CheckboxField {...defaultOptions} data={CHECKBOX_TERMS} stacked />
+      <Checkbox {...defaultOptions} data={CHECKBOX_TERMS} stacked />
 
       <Button
         align="right"

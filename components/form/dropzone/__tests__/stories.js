@@ -5,59 +5,36 @@
 // React
 import React from 'react'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Storybook
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
+
+// Yup
+import { object, string } from 'yup'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import DropzoneField from '../dropzoneField'
-import Form from '../../form/form'
-import FormError from '../../error/error'
-import FormLabel from '../../label/label'
+import DropzoneController from '../controller'
 import Readme from '../README.md'
 
+const schema = object().shape({
+  dropzone: string().required()
+})
+
 export default {
-  args: {
-    disabled: false,
-    multiple: false
-  },
-  component: DropzoneField,
+  component: DropzoneController,
+  decorators: [FormWrapper],
   parameters: {
     docs: {
       description: {
         component: Readme
       }
-    }
+    },
+    schema: schema
   },
   title: 'Form/Dropzone'
 }
 
-const BaseComponent = (props = {}) => {
-  const { control, errors, handleSubmit } = useForm()
-
-  const onSubmit = (data) => {
-    console.info('data: ', data)
-  }
-
-  const defaultProps = {
-    accept: 'image/*',
-    control,
-    errors: errors,
-    ...props
-  }
-
+export const Main = (args, { params: { control, formState } }) => {
   return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label="Dropzone" />
-      <DropzoneField {...defaultProps} />
-
-      {errors.dropzone && <FormError message={errors.dropzone.message} />}
-
-      <Button content="Submit" secondary type="submit" />
-    </Form>
+    <DropzoneController {...args} accept="image/*" control={control} errors={formState.errors} />
   )
-}
-
-export const Single = (args) => {
-  return <BaseComponent {...args} />
 }

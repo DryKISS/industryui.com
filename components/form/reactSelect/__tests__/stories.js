@@ -17,7 +17,7 @@ import Button from '../../../atoms/button/button/button'
 import Divider from '../../../atoms/divider/divider'
 import Form from '../../form/form'
 import FormError from '../../error/error'
-import FormLabel from '../../label/label'
+import Label from '../../label/label'
 import ReactSelectField from '../reactSelect'
 import Text from '../../../atoms/text/text'
 import usePrevious from '../../../hooks/usePrevious'
@@ -89,9 +89,9 @@ const BaseComponent = memo(
 
     return (
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label="React Select">
+        <Label label="React Select">
           <ReactSelectField {...defaultProps} />
-        </FormLabel>
+        </Label>
 
         {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
         <Divider size="sm" />
@@ -195,23 +195,23 @@ export const Chained = () => {
       </Text>
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label="Customers">
+        <Label label="Customers">
           <ReactSelectField
             defaultValue={Customers[0]}
             loadOptions={CustomerOptions}
             name="customer"
             {...defaultProps}
           />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Users">
+        <Label label="Users">
           <ReactSelectField
             defaultValue={user}
             loadOptions={UserOptions}
             name="user"
             {...defaultProps}
           />
-        </FormLabel>
+        </Label>
 
         {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 
@@ -305,23 +305,23 @@ export const ChainedNoDefault = () => {
       </Text>
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label="Customers">
+        <Label label="Customers">
           <ReactSelectField
             defaultValue={null}
             loadOptions={CustomerOptions}
             name="customer"
             {...defaultProps}
           />
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Users">
+        <Label label="Users">
           <ReactSelectField
             defaultValue={user}
             loadOptions={UserOptions}
             name="user"
             {...defaultProps}
           />
-        </FormLabel>
+        </Label>
 
         {errors.reactSelect && <FormError message={errors.reactSelect.message} />}
 

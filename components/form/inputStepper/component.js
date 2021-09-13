@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import Button from '../../atoms/button/button/button'
 import InputGroup from '../inputGroup/group'
 import InputGroupAddon from '../inputGroup/addon'
-import FormField from '../field/input'
+import Input from '../input/input'
 
 // Props
 import { defaultProps, propTypes } from './props'
@@ -97,7 +97,7 @@ const InputStepperComponent = forwardRef(
   }
 )
 
-const StyledFormField = styled(FormField)`
+const StyledFormField = styled(Input)`
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

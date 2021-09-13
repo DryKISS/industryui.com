@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import ControlTypes from './controlTypes'
+import ControlTypes from './controls/controlTypes'
 import arrayOfValues from '../../components/utils/arrayOfValues/arrayOfValues'
 import ICON_PULL from '../../components/atoms/icon/constants/pull'
 import ICON_PREFIX from '../../components/atoms/icon/constants/prefix'

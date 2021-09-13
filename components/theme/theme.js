@@ -12,7 +12,7 @@ import BADGE from '../atoms/badge/components/variables'
 import BAR from '../organisms/bar/components/variables'
 import CALENDAR from '../organisms/calendar/fullCalendar/components/variables'
 import COPYRIGHT from '../molecules/copyright/variables'
-import DETAILS2 from '../atoms/details2/components/variables'
+import DETAILS from '../atoms/details/components/variables'
 import DROPDOWN from '../molecules/dropdown/variables'
 import FOOTER from '../organisms/footer/variables'
 import FORM_ELEMENTS_STYLES from '../form/variables/variables'
@@ -27,6 +27,7 @@ import PAGE from '../layouts/page/variables'
 import PRICING from '../organisms/pricing/components/variables'
 import PROGRESS from '../atoms/progress/components/progressVariables'
 import PROGRESSBAR from '../atoms/progress/components/progressBarVariables'
+import SCHEDULE from '../organisms/charts/scheduleChart/variables'
 import SELECT from '../form/reactSelect/variables'
 import SIDEBAR from '../molecules/sidebar/variables'
 import SPACING from '../utils/spacer/spacing'
@@ -37,36 +38,29 @@ import TEXT from '../atoms/text/components/variables'
 import TILE from '../molecules/tile/components/variables'
 import VOICE_RECORDER from '../molecules/voiceRecorder/variables'
 
-// Nivo
-import BARCHART from '../molecules/charts/nivo/responsiveBar/variables'
-import LINECHART from '../molecules/charts/nivo/lineChart/variables'
-import PIECHART from '../molecules/charts/nivo/pieChart/variables'
-
 const Theme = {
   AVATAR,
   BADGE,
   BAR,
-  BARCHART,
   CALENDAR,
   COLOUR,
   COPYRIGHT,
-  DETAILS2,
+  DETAILS,
   DROPDOWN,
   FOOTER,
   FORM_ELEMENTS_STYLES,
   GRID,
   HEADINGS,
   ICONS,
-  LINECHART,
   LINK,
   LOGIN,
   MESSAGING,
   NAVBAR,
   PAGE,
   PRICING,
-  PIECHART,
   PROGRESS,
   PROGRESSBAR,
+  SCHEDULE,
   SELECT,
   SIDEBAR,
   SPACING,

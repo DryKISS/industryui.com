@@ -1,77 +1,143 @@
 /**
- * Components - Details
+ * Components - Atoms - Details
  */
 
 // React
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
-import Button from '../button/button/button'
-import { propTypes, defaultProps } from './props'
+import { DetailsSubscriber } from '../../services/componentCommunication/componentCommunication'
+import DetailsHeader from './components/header'
+import DetailsContent from './components/content'
+import MessageNames from '../../services/componentCommunication/messageNames'
+import useComponentCommunication from '../../hooks/useComponentCommunication/useSubscription'
+import { propTypes, defaultProps } from './components/props'
+
+let callTimeout
 
 const Details = ({
+  animationDuration,
   children,
+  contentStyle,
   context,
-  dataSet,
+  disableAnimation,
+  fitParentHeight,
+  headerContext,
+  iconComponent,
   open,
-  summary,
-  SummaryActionsComponent,
   style,
-  Toolbar,
-  ...props
+  title,
+  titleContext,
+  toolbar,
+  uniqueId,
+  unmountContentOnClose
 }) => {
-  return (
-    <StyledDetails context={context} open={open} {...dataSet}>
-      <StyledSummary>
-        {summary}
-        {props.button && (
-          <StyledButton
-            content={props.button || 'Add New'}
-            context="secondary"
-            onClick={props.handleClick}
-            size="sm"
-          />
-        )}
-        {SummaryActionsComponent && <ActionsWrapper>{SummaryActionsComponent}</ActionsWrapper>}
-        {Toolbar && <Toolbar />}
-      </StyledSummary>
+  const animationTime = disableAnimation ? 0 : animationDuration
+  const [isOpen, setisOpen] = useState(open)
+  const [mounted, setMounted] = useState(unmountContentOnClose ? open : true)
+  const [contentHeight, setcontentHeight] = useState(0)
 
-      <StyledBody style={style}>{children}</StyledBody>
-    </StyledDetails>
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    if (unmountContentOnClose) {
+      isOpen
+        ? setMounted(() => true)
+        : setTimeout(() => {
+            window &&
+              window.requestAnimationFrame(() => {
+                setMounted(() => false)
+              })
+          }, animationTime ?? 300)
+    }
+
+    setTimeout(
+      () => {
+        resetSize()
+      },
+      !isOpen ? animationTime ?? 300 : 0
+    )
+
+    return () => {}
+  }, [contentRef.current])
+
+  const resetSize = () => {
+    clearTimeout(callTimeout)
+    callTimeout = setTimeout(() => {
+      window &&
+        window.requestAnimationFrame(() => {
+          if (contentRef.current) {
+            if (contentHeight !== contentRef.current.offsetHeight) {
+              setcontentHeight(() => contentRef.current.offsetHeight)
+            }
+          }
+        })
+    }, 100)
+  }
+
+  const handleEventRecieve = (e) => {
+    setisOpen(e)
+  }
+
+  useComponentCommunication({
+    id: uniqueId,
+    messageName: MessageNames.DetailsComponent.SET_OPEN,
+    onRecieve: (e) => handleEventRecieve(e),
+    subscriber: DetailsSubscriber
+  })
+
+  const handleOpenClose = () => {
+    setisOpen((isOpen) => !isOpen)
+  }
+
+  return (
+    <Wrapper context={context} style={style} fitParentHeight={fitParentHeight} open={isOpen}>
+      <DetailsHeader
+        animationtime={animationTime}
+        children={children}
+        headerContext={headerContext}
+        handleOpenClose={handleOpenClose}
+        iconComponent={iconComponent}
+        isOpen={isOpen}
+        title={title}
+        titleContext={titleContext}
+        toolbar={toolbar}
+      />
+
+      {children && (
+        <DetailsContent
+          animationTime={animationTime}
+          children={children}
+          contentRef={contentRef}
+          onContentSizeChanged={resetSize}
+          fitParentHeight={fitParentHeight}
+          isOpen={isOpen}
+          maxHeight={contentHeight}
+          mounted={mounted}
+        />
+      )}
+    </Wrapper>
   )
 }
 
-const ActionsWrapper = styled.div`
-  float: right;
-  width: fit-content;
-`
-
-const StyledDetails = styled.details`
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-bottom: 1px solid ${({ context, theme }) => theme.COLOUR[context]};
+const Wrapper = styled.div`
+  background: ${({ theme }) => theme.DETAILS.wrapper.background};
+  border-bottom: 2px solid ${({ theme, context }) => (context ? theme.COLOUR[context] : 'white')};
   box-shadow: rgba(45, 62, 80, 0.12) 0 1px 5px 0;
-  margin-bottom: 0.5rem;
-`
+  transition: height 0.3 cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
 
-const StyledSummary = styled.summary`
-  cursor: pointer;
-  font-weight: bold;
-  outline: none;
-  padding: 1rem;
-  position: relative;
-`
-
-const StyledButton = styled(Button)`
-  float: right;
-`
-
-const StyledBody = styled.div`
-  font-size: 1rem;
-  padding: 0 1rem 1rem;
+  ${({ fitParentHeight, open }) => {
+    return (
+      fitParentHeight &&
+      css`
+        height: ${!open ? '3.6rem' : '100%'};
+      `
+    )
+  }}
 `
 
 Details.propTypes = propTypes

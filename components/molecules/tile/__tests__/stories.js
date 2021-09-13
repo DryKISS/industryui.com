@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
-import SizeControl from '../../../../.storybook/decorators/size'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
+import SizeControl from '../../../../.storybook/decorators/controls/size'
 
 // UI
 import Column from '../../../atoms/grid/Column'

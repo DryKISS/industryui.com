@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 const Form = ({ children, className, handleSubmit, id, style }) => {
   return (
-    <StyledForm className={className} id={id} onSubmit={handleSubmit} style={style}>
+    <StyledForm className={className} id={id} onSubmit={handleSubmit} style={style} noValidate>
       {children}
     </StyledForm>
   )

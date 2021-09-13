@@ -15,7 +15,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 // UI
 import Button from '../../../atoms/button/button/button'
 import Form from '../../form/form'
-import FormLabel from '../../label/label'
+import Label from '../../label/label'
 import SelectField from '../../select/select'
 import SelectCountryField from '../../select/country'
 import Text from '../../../atoms/text/text'
@@ -61,10 +61,10 @@ const BaseComponent = (props = {}) => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <FormLabel label="Select">
+      <Label label="Select">
         {!props.country && <SelectField {...defaultProps} />}
         {props.country && <SelectCountryField {...defaultProps} />}
-      </FormLabel>
+      </Label>
 
       <Button content="Submit" type="submit" />
 

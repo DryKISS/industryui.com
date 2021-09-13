@@ -14,8 +14,8 @@ import Button from '../../atoms/button/button/button'
 import ConfigContext from '../../services/config/context'
 import Dropdown from '../dropdown/dropdown'
 import FormError from '../../form/error/error'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import GetAddressService from '../../services/getAddress/getAddress'
 import InputGroupAddon from '../../form/inputGroup/addon'
 import Shimmer from '../../atoms/shimmer/shimmer'
@@ -81,9 +81,9 @@ const GetAddress = ({
   }
 
   return (
-    <FormLabel label={label}>
+    <Label label={label}>
       <InputWrapper>
-        <FormField
+        <Input
           errors={errors[name] ? errors : Errors}
           name={name}
           onChange={(e) => handleInputChange(e.target.value)}
@@ -107,7 +107,7 @@ const GetAddress = ({
       <Dropdown caret={false} items={Addresses} onChange={handleAddressSelect}>
         <div ref={ref} />
       </Dropdown>
-    </FormLabel>
+    </Label>
   )
 }
 

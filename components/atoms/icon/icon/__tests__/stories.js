@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ControlTypes from '../../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../../.storybook/decorators/controls/controlTypes'
 
 // Style
 import styled from 'styled-components'

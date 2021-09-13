@@ -1,6 +1,7 @@
 /**
  * Components - Theme - Constants - Size
  */
+
 const THEME_SIZE = {
   XXS: 'xxs',
   XS: 'xs',

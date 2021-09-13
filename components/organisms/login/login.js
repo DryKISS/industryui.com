@@ -13,8 +13,10 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import schema from './schema'
 
-// UI
+// Style
+import styled from 'styled-components'
 
+// UI
 import FormError from '../../form/error/error'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
@@ -22,13 +24,10 @@ import UserContext from '../../services/authentication/context'
 import Alert from '../../molecules/alert/alert'
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
-
-// Style
-import styled from 'styled-components'
 
 const ErrMessage = (message) => <FormError message={message} />
 
@@ -77,25 +76,25 @@ const Login = ({
       {error && <Alert content={error.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(onSubmit)}>
-        <FormLabel label="Email">
-          <FormField
+        <Label label="Email">
+          <Input
             {...defaultOptions}
             autoFocus
             name="email"
             placeholder={showPlaceholder ? 'Email' : ''}
           />
           {errors.email && ErrMessage(errors.email.message)}
-        </FormLabel>
+        </Label>
 
-        <FormLabel label="Password">
-          <FormField
+        <Label label="Password">
+          <Input
             {...defaultOptions}
             name="password"
             placeholder={showPlaceholder ? 'Password' : ''}
             type={showPass ? 'text' : 'password'}
           />
           {errors.password && ErrMessage(errors.password.message)}
-        </FormLabel>
+        </Label>
 
         {showPassword && (
           <ShowPassWrapper onClick={handleTogglePassword}>
@@ -121,6 +120,7 @@ const Login = ({
           <Text align="center">
             <Link to={pathForgot}>Forgot password?</Link>
           </Text>
+
           <Space marginBottom="md" />
         </>
       )}
@@ -173,4 +173,5 @@ Login.defaultProps = {
   showPlaceholder: false,
   showTitle: true
 }
+
 export default Login

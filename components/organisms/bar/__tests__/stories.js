@@ -9,7 +9,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Storybook
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
 
 // UI
 import Bar from '../bar'
