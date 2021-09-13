@@ -46,7 +46,7 @@ const MessagingContainer = ({
   }
   const [Files, setFiles] = useState([])
 
-  const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
+  const [hasMessage, setHasMessage] = useState(messages && messages.length > 0)
 
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
 
@@ -114,7 +114,7 @@ const MessagingContainer = ({
 
   const handleMessageRecieved = () => {
     if (hasMessage === false) {
-      sethasMessage(true)
+      setHasMessage(true)
     }
   }
 
@@ -182,13 +182,11 @@ const MessagingContainer = ({
           className={className}
           style={style}
         >
-          {hasMessage && (
-            <MessageList
-              config={messagesConfig}
-              initialMessages={messages}
-              onMessageRecieved={handleMessageRecieved}
-            />
-          )}
+          <MessageList
+            config={messagesConfig}
+            initialMessages={messages}
+            onMessageRecieved={handleMessageRecieved}
+          />
         </StyledContainer>
         <MessagingSend
           audienceItems={audienceItems}
