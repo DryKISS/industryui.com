@@ -128,7 +128,6 @@ const MessagingContainer = ({
         onMentionClick(payload.data)
         break
 
-
       case MessagingActions.EDIT_MESSAGE:
         console.info(payload.data)
         break
@@ -174,7 +173,7 @@ const MessagingContainer = ({
 
   return (
     <>
-       <FullPreview />
+      <FullPreview />
       <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
         <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
@@ -183,13 +182,11 @@ const MessagingContainer = ({
           className={className}
           style={style}
         >
-
-            <MessageList
-              config={messagesConfig}
-              initialMessages={messages}
-              onMessageRecieved={handleMessageRecieved}
-            />
-
+          <MessageList
+            config={messagesConfig}
+            initialMessages={messages}
+            onMessageRecieved={handleMessageRecieved}
+          />
         </StyledContainer>
         <MessagingSend
           audienceItems={audienceItems}
