@@ -46,7 +46,7 @@ const MessagingContainer = ({
   }
   const [Files, setFiles] = useState([])
 
-  const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
+  const [hasMessage, setHasMessage] = useState(messages && messages.length > 0)
 
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
 
@@ -114,7 +114,7 @@ const MessagingContainer = ({
 
   const handleMessageRecieved = () => {
     if (hasMessage === false) {
-      sethasMessage(true)
+      setHasMessage(true)
     }
   }
 
@@ -127,6 +127,7 @@ const MessagingContainer = ({
       case MessagingActions.MENTION_CLICKED:
         onMentionClick(payload.data)
         break
+
 
       case MessagingActions.EDIT_MESSAGE:
         console.info(payload.data)
@@ -173,7 +174,7 @@ const MessagingContainer = ({
 
   return (
     <>
-      <FullPreview />
+       <FullPreview />
       <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
         <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 
@@ -182,13 +183,13 @@ const MessagingContainer = ({
           className={className}
           style={style}
         >
-          {hasMessage && (
+
             <MessageList
               config={messagesConfig}
               initialMessages={messages}
               onMessageRecieved={handleMessageRecieved}
             />
-          )}
+
         </StyledContainer>
         <MessagingSend
           audienceItems={audienceItems}
