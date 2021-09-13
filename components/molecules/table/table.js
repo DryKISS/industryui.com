@@ -15,7 +15,8 @@ import TablePagination from './components/pagination'
 import tableColumnCount from './components/utils/columnCount'
 
 // Props
-import { defaultProps, propTypes } from './components/props'
+import defaultProps from './components/props/defaultProps'
+import propTypes from './components/props/propTypes'
 
 const Table = memo(
   ({
