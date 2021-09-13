@@ -9,7 +9,7 @@ import React, { memo, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 // UI
-import TableContent from './components/table'
+import TableContent from './components/content'
 import TableLoading from './components/loading'
 import TablePagination from './components/pagination'
 import tableColumnCount from './components/utils/columnCount'
