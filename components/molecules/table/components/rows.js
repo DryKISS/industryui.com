@@ -27,6 +27,12 @@ const TableRows = memo(
     const clickable = typeof rowClick === 'function'
 
     return rows.map((row, index) => {
+      if (row.hidden) {
+        return null
+      } else {
+        delete row.hidden
+      }
+
       return (
         <TableRow
           context={row.context}
