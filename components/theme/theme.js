@@ -22,7 +22,7 @@ import ICONS from '../icons/variables'
 import LINK from '../atoms/link/components/variables'
 import LOGIN from '../organisms/login/variables'
 import MESSAGING from '../organisms/messaging/variables'
-import NAVBAR from '../molecules/navbar/variables'
+import NAVBAR from '../molecules/navbar/components/variables'
 import PAGE from '../layouts/page/variables'
 import PRICING from '../organisms/pricing/components/variables'
 import PROGRESS from '../atoms/progress/components/progressVariables'
@@ -30,7 +30,7 @@ import PROGRESSBAR from '../atoms/progress/components/progressBarVariables'
 import SELECT from '../form/reactSelect/variables'
 import SIDEBAR from '../molecules/sidebar/variables'
 import SPACING from '../utils/spacer/spacing'
-import STEPPER from '../molecules/stepper/variables'
+import STEPPER from '../molecules/stepper/components/variables'
 import TABLE from '../molecules/table/components/variables'
 import TABS from '../molecules/tabs/variables'
 import TEXT from '../atoms/text/components/variables'
@@ -38,15 +38,12 @@ import TILE from '../molecules/tile/components/variables'
 import VOICE_RECORDER from '../molecules/voiceRecorder/variables'
 
 // Nivo
-import BARCHART from '../molecules/charts/nivo/responsiveBar/variables'
-import LINECHART from '../molecules/charts/nivo/lineChart/variables'
 import PIECHART from '../molecules/charts/nivo/pieChart/variables'
 
 const Theme = {
   AVATAR,
   BADGE,
   BAR,
-  BARCHART,
   CALENDAR,
   COLOUR,
   COPYRIGHT,
@@ -57,7 +54,6 @@ const Theme = {
   GRID,
   HEADINGS,
   ICONS,
-  LINECHART,
   LINK,
   LOGIN,
   MESSAGING,

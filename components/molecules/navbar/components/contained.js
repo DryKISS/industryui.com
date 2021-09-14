@@ -4,20 +4,15 @@
  */
 
 // React
-import React from 'react'
 import { node } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import Container from '../../atoms/grid/Container'
+import Container from '../../../atoms/grid/Container'
 
-const Contained = ({ content }) => {
-  return <StyledContainer>{content()}</StyledContainer>
-}
-
-const StyledContainer = styled(Container)`
+const Contained = styled(Container)`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -26,7 +21,7 @@ const StyledContainer = styled(Container)`
 `
 
 Contained.propTypes = {
-  content: node.isRequired
+  children: node.isRequired
 }
 
 export default Contained

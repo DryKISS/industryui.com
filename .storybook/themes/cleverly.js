@@ -83,49 +83,63 @@ const COLOUR = {
 const NAVBAR = {
   // Navbar
   background: COLOUR.dark,
-  colourActive: COLOUR.white,
   height: '4rem',
   padding: '0 1rem',
   paddingTablet: '0 1rem',
   paddingDesktop: '0 3rem',
+  breakpoint: 'desktop',
 
   // Borders
   borderTopColor: COLOUR.primary,
   borderTopWidth: '0.25rem',
   borderTopStyle: 'solid',
+  borderBottom: `2px solid ${COLOUR.warning}`,
 
-  // Overlay
-  backgroundOverlay: COLOUR.dark,
-  heightOverlay: '100%',
-  positionOverlay: 'fixed',
-  widthOverlay: '100%',
-
-  // Toggler
-  colourToggler: COLOUR.white,
-  fontSizeToggler: '0.875',
-  paddingToggler: '1.25rem 0 1.25rem 1rem',
-  colourHoverToggler: COLOUR.primary,
+  // Caret
+  caretColour: COLOUR.secondary,
+  caretColourHover: COLOUR.secondary,
 
   // Collapse
-  positionCollapse: 'static',
+  collapsePosition: 'static',
+
+  // Dropdown
+  dropdownActive: COLOUR.dark,
+  dropdownBackground: COLOUR.dark,
+  dropdownBackgroundHover: 'rgb(37, 51, 66)',
+  dropdownColour: COLOUR.white,
+  dropdownColourHover: COLOUR.primary,
 
   // Link
   paddingLink: '1rem 0.75rem',
+  colourActive: COLOUR.white,
   colourDefault: COLOUR.white,
   colourHover: COLOUR.primary,
   colourDefaultDesktop: COLOUR.white,
   colourHoverDesktop: COLOUR.primary,
 
   // List
-  fontSizeList: '0.875rem',
+  listBackground: COLOUR.dark,
+  listFontSize: '0.875rem',
 
   // ListItem
-  borderTopListItem: '1px solid #33475b',
-  backgroundListItem: 'transparent',
-  backgroundHoverListItem: 'rgb(37, 51, 66)',
-  borderBottomHoverListItem: 'none',
-  justifyContentDesktopListItem: 'center',
-  marginBottomDesktopListItem: 'inherit'
+  listItemBorderTop: '1px solid #33475b',
+  listItemBackground: 'transparent',
+  listItemBackgroundHover: 'rgb(37, 51, 66)',
+  listItemBorderBottomHover: 'none',
+  listItemJustifyContentDesktop: 'center',
+  listItemMarginBottomDesktop: 'inherit',
+
+  // Overlay
+  overlayBackground: COLOUR.dark,
+  overlayHeight: '100%',
+  overlayPosition: 'fixed',
+  overlayWidth: '100%',
+
+  // Toggler
+  togglerColour: COLOUR.white,
+  togglerSize: '0.875',
+  togglerPadding: '1.25rem 0 1.25rem 1rem',
+  togglerHover: COLOUR.primary
 }
 
 const COPYRIGHT = {
@@ -148,7 +162,7 @@ const LINK = {
   height: '8rem'
 }
 
-export const CleverlyTheme = {
+const CleverlyTheme = {
   BUTTON,
   COLOUR,
   COPYRIGHT,
@@ -159,3 +173,5 @@ export const CleverlyTheme = {
   PAGE,
   THEME_TYPOGRAPHY
 }
+
+export default CleverlyTheme

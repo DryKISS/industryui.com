@@ -4,17 +4,21 @@
 
 // React
 import React, { useState } from 'react'
-import { bool, object, objectOf, oneOfType, number, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import Brand from './brand'
-import Contained from './contained'
+import Brand from './components/brand'
+import Contained from './components/contained'
 import MEDIA_QUERY from '../../utils/mediaQuery/query'
-import Toggler from './toggler'
+import Toggler from './components/toggler'
 import NavWidgets from './widgets/widgets'
+import Overlay from './components/overlay'
+
+// Props
+import defaultProps from './components/props/defaultProps'
+import propTypes from './components/props/propTypes'
 
 const Navbar = ({ brand, contained, type, style, showMenu, widgets }) => {
   const [visible, setVisible] = useState(showMenu)
@@ -46,10 +50,16 @@ const Navbar = ({ brand, contained, type, style, showMenu, widgets }) => {
   return (
     <>
       <StyledNav style={style}>
-        {contained ? <Contained content={Content} /> : <Content />}
+        {contained ? (
+          <Contained>
+            <Content />
+          </Contained>
+        ) : (
+          <Content />
+        )}
       </StyledNav>
 
-      <StyledOverlay hidden={!visible} />
+      <Overlay hidden={!visible} />
     </>
   )
 }
@@ -75,37 +85,7 @@ const StyledNav = styled.nav`
   `}
 `
 
-const StyledOverlay = styled.div`
-  background: ${({ theme }) => theme.NAVBAR.backgroundOverlay};
-  bottom: 0;
-  cursor: pointer;
-  height: ${({ theme }) => theme.NAVBAR.heightOverlay};
-  position: ${({ theme }) => theme.NAVBAR.positionOverlay};
-  right: 0;
-  top: 0;
-  transition-property: width;
-  transition-duration: 0.2s;
-  width: ${({ theme }) => theme.NAVBAR.widthOverlay};
-  z-index: 199;
-
-  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
-      display: none;
-    `}
-`
-
-Navbar.propTypes = {
-  brand: string,
-  contained: bool,
-  showMenu: bool,
-  style: objectOf(oneOfType([number, string])),
-  type: string,
-  widgets: object
-}
-
-Navbar.defaultProps = {
-  brand: '',
-  contained: false,
-  showMenu: false
-}
+Navbar.propTypes = propTypes
+Navbar.defaultProps = defaultProps
 
 export default Navbar

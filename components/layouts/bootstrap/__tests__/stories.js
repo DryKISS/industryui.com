@@ -20,7 +20,7 @@ import { Copyright } from '../../../molecules/copyright/__mocks__/copyright'
 import FORMATTER from '../../../organisms/footer/__mocks__/formatter'
 
 // Navbar
-import DEFAULT from '../../../molecules/navbar/__mocks__/navigation'
+import DEFAULT from '../../../molecules/navbar/__mocks__/navbar'
 
 export default {
   component: Bootstrap,

@@ -1,17 +1,17 @@
 /**
- * Stepper
+ * Components - Molecules - Stepper
  */
 
 // React
 import React from 'react'
 import { array, func, oneOfType, string } from 'prop-types'
 
-// UI
-import StepperItem from './components/stepperItem'
-import StepperSummary from './components/summary'
-
 // Style
 import styled from 'styled-components'
+
+// UI
+import StepperItem from './components/item'
+import StepperSummary from './components/summary'
 
 const Stepper = ({ className, items, summary }) => {
   return (
@@ -39,4 +39,5 @@ Stepper.propTypes = {
   items: oneOfType([array, func]).isRequired,
   summary: oneOfType([array, func])
 }
+
 export default Stepper
