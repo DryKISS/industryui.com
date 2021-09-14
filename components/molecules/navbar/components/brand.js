@@ -11,8 +11,8 @@ import { string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-import Image from '../../atoms/image/image'
-import Link from '../../atoms/link/link'
+import Image from '../../../atoms/image/image'
+import Link from '../../../atoms/link/link'
 
 const Brand = ({ brand }) => {
   return (

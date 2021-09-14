@@ -54,4 +54,5 @@ const PIECHART = {
   slicesLabelsTextColor: THEME_COLOUR.dark,
   startAngle: -180
 }
+
 export default PIECHART
