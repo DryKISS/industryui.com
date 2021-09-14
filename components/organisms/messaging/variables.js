@@ -15,7 +15,7 @@ const MESSAGING = {
   expandedEmailTextColour: null,
   dateBadgeBackground: THEME_COLOUR.white,
   dateDividerColour: THEME_COLOUR.black,
-  dropableHeaderBackground: THEME_COLOUR.drykiss_lightBlue,
+  dropableHeaderBackground: THEME_COLOUR.primary,
   emailValueColour: null,
   expandedEmailBackground: null,
   expandedEmailButtonColour: null,

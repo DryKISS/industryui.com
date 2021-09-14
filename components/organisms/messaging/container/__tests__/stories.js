@@ -119,7 +119,7 @@ export const Main = (args) => {
           data: [msg]
         }
       })
-    }, 100)
+    }, 5000)
   }
   return (
     <>
@@ -141,7 +141,7 @@ export const Main = (args) => {
         onFilter={handleFilter}
         messagesContainerHeight={550}
       />
-      <Button onClick={mimicRecieve}>mimic message recieve</Button>
+      <Button onClick={mimicRecieve}>mimic message receive</Button>
     </>
   )
 }

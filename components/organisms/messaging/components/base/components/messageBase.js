@@ -55,6 +55,7 @@ const MessageBase = ({
   hovered,
   icon,
   id,
+  isSending,
   more,
   pictureId,
   prevType,
@@ -226,6 +227,11 @@ const MessageBase = ({
     <MessageWrapper type={type} hovered={hovered}>
       {header}
       <StyledCard type={type}>
+        {isSending && (
+          <IsSendingWrapper>
+            <Loadingspinner size={20} />
+          </IsSendingWrapper>
+        )}
         <Row>
           <Column
             sm={6}
@@ -292,6 +298,18 @@ const MessageBase = ({
     </MessageWrapper>
   )
 }
+
+const IsSendingWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const OverlayForAdditionalMessages = styled.div`
   align-items: center;
@@ -374,6 +392,7 @@ const StyledCard = styled(Card)`
   border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
   padding: 1.25rem 1rem;
+  position: relative;
 `
 
 const StyledContent = styled.div`
