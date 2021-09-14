@@ -152,6 +152,15 @@ const MessagingContainer = ({
 
   const handleSubmit = (messageToSend) => {
     onMessageSubmit(messageToSend)
+
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.IS_SENDING_MESSAGE,
+        data: messageToSend
+      }
+    })
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.CLEAR_INPUT }

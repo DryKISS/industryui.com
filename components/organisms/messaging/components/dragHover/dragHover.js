@@ -216,7 +216,7 @@ const Head = styled.div`
 const Wrapper = styled.div`
   height: calc(100% - 5.3rem);
   position: absolute;
-  top: 0;
+  top: 2px;
   transform: translateY(calc(100% + 5.3rem));
   width: 100%;
 

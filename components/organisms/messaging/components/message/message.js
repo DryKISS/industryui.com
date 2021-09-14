@@ -19,7 +19,7 @@ import ReplyIcon from './replyIcon'
 import ShareIcon from './shareIcon'
 
 const Message = memo(
-  ({ config, message, prevType, type, ...props }) => {
+  ({ config, message, prevType, type, isSending, ...props }) => {
     const avatar = message.avatar ? (
       <Avatar size="xxs" src={message.avatar} />
     ) : (
@@ -88,6 +88,7 @@ const Message = memo(
         {type === 'in' && sideActions}
         <MessageBase
           hovered={hovered}
+          isSending={isSending}
           prevType={prevType}
           hasText={hasText()}
           hasMenu={config.hasMenu}
