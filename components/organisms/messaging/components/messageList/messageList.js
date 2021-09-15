@@ -98,7 +98,6 @@ const MessageList = memo(
         ...(payload.voice && { voice: URL.createObjectURL(payload.voice) }),
         ...(payload.replyTo && { replyTo: payload.replyTo })
       }
-
       const newMessagesArray = [...Messages, msg]
       setMessages(() => [...newMessagesArray])
     }

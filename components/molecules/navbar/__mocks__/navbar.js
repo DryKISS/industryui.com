@@ -4,6 +4,14 @@
 const DEFAULT = {
   right: [
     {
+      id: 'navIcon',
+      to: '/',
+      type: {
+        as: 'icon',
+        icon: 'bell'
+      }
+    },
+    {
       id: 'navDropdown',
       name: 'User',
       type: {
@@ -40,6 +48,14 @@ const DEFAULT = {
       id: 'navNav1',
       name: 'Contact',
       to: '/'
+    },
+    {
+      id: 'navIcon1',
+      to: '/',
+      type: {
+        as: 'icon',
+        icon: 'bell'
+      }
     },
     {
       id: 'navButtonSmall',

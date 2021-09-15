@@ -1,19 +1,18 @@
 /**
- * Stepper
+ * Components - Molecules - Stepper - Item
  */
 
 // React
 import React from 'react'
 import { object } from 'prop-types'
 
+// Style
+import styled from 'styled-components'
+
 // UI
 import Button from '../../../atoms/button/button/button'
 import Divider from '../../../atoms/divider/divider'
 import Icon from '../../../atoms/icon/icon/icon'
-import STEPPER from '../../../molecules/stepper/stepper'
-
-// Style
-import styled from 'styled-components'
 
 const StepperItem = ({ item }) => {
   const renderContent = (content) =>
@@ -43,14 +42,7 @@ const StepperItem = ({ item }) => {
   return (
     <StyledStepperItem>
       <StyledIconContainer active={item.date}>
-        {item.date && (
-          <Icon
-            aria-hidden="true"
-            color={STEPPER.colourCheckmark}
-            fixedWidth={false}
-            icon="check"
-          />
-        )}
+        {item.date && <StyledIcon aria-hidden="true" fixedWidth={false} icon="check" />}
       </StyledIconContainer>
 
       <StyledLabel active={item.date}>{item.label}</StyledLabel>
@@ -92,6 +84,10 @@ const StyledIconContainer = styled.div`
   position: absolute;
   top: 0;
   width: 1.5rem;
+`
+
+const StyledIcon = styled(Icon)`
+  color: ${({ theme }) => theme.STEPPER.colourCheckmark};
 `
 
 const StyledContent = styled.ul`

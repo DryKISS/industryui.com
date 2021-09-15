@@ -45,7 +45,7 @@ const StyledButton = styled(Button)`
     width: 100%;
 
     &:hover {
-      color: ${theme.COLOUR.primary};
+      color: ${theme.NAVBAR.colourHover};
       background: none;
     }
     `}
