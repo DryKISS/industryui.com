@@ -15,7 +15,7 @@ import DownloadIcon from '../../../../icons/components/download'
 import Preview from '../../../../molecules/preview/preview'
 import downloadFile from '../../../../utils/fileDownload/fileDownload'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 

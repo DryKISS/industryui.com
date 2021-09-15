@@ -16,7 +16,7 @@ import styled, { css } from 'styled-components'
 import dateDiff from '../../../../utils/date/diff'
 import Message from '../message/message'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
@@ -69,10 +69,12 @@ const MessageList = memo(
     }
 
     const onRecieve = (payload) => {
-      // setSendingMessage(() => null)
       const tmpMessages = Messages.filter((message) => message.isSending !== true)
+
       setMessages(tmpMessages)
+
       const newMessagesArray = [...tmpMessages, ...payload]
+
       setMessages(() => [...newMessagesArray])
 
       scrollToBottom()
@@ -96,14 +98,12 @@ const MessageList = memo(
         ...(payload.voice && { voice: URL.createObjectURL(payload.voice) }),
         ...(payload.replyTo && { replyTo: payload.replyTo })
       }
-      // setSendingMessage(payload)
+
       const newMessagesArray = [...Messages, msg]
       setMessages(() => [...newMessagesArray])
     }
 
     const onRenewMessages = (messages) => {
-      // setSendingMessage(() => null)
-
       setMessages(() => [...messages])
       window &&
         window.requestAnimationFrame(() => {

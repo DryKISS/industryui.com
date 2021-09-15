@@ -17,12 +17,12 @@ import MessagingDragHover from '../components/dragHover/dragHover'
 import MessagingSearch from '../components/search/meaasagingSearch'
 import MessagingSend from '../components/send/messagingSend'
 import MessageNames from '../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../services/componentCommunication/messaging/service'
 import MessagingSubscriber from '../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../hooks/useComponentCommunication/useSubscription'
 
-const MessagingContainer = ({
+const Messaging = ({
   audienceItems,
   className,
   forwardForMessages,
@@ -230,7 +230,7 @@ const StyledContainer = styled.div`
   }
 `
 
-MessagingContainer.propTypes = {
+Messaging.propTypes = {
   audienceItems: array,
   className: string,
   messages: array.isRequired,
@@ -241,4 +241,4 @@ MessagingContainer.propTypes = {
   style: object
 }
 
-export default MessagingContainer
+export default Messaging
