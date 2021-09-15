@@ -161,7 +161,7 @@ export { default as MarkerClusterer } from './molecules/map/dynamicLocation/clus
 export { default as InfoWindow } from './molecules/map/dynamicLocation/infoWindow'
 export { default as StaticLocation } from './molecules/map/staticLocation/staticLocation'
 export { default as Navbar } from './molecules/navbar/navbar'
-export { default as PieChart } from './molecules/charts/nivo/piechart/pieChart'
+export { default as PieChart } from './molecules/charts/nivo/pieChart/pieChart'
 export { default as Notification } from './molecules/notification/notification'
 export { default as OffCanvas } from './molecules/offCanvas/offCanvas'
 export { default as PageHeading } from './molecules/pageHeading/pageHeading'
