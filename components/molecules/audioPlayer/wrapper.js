@@ -13,7 +13,7 @@ const AudioWrapper = styled.div`
   ${({ preview }) =>
     preview &&
     css`
-      background-color: ${({ theme: { MESSAGING } }) => MESSAGING.inputSectionBackground};
+      background-color: ${({ theme: { AUDIO_PLAYER } }) => AUDIO_PLAYER.backgroundColour};
       display: flex;
       left: 3.5rem;
       position: absolute;
@@ -122,7 +122,7 @@ const AudioWrapper = styled.div`
     height: 100%;
     position: absolute;
     z-index: 2;
-    background-color: ${({ theme: { MESSAGING } }) => MESSAGING.audioAndVolumeProgressColour};
+    background-color: ${({ theme: { AUDIO_PLAYER } }) => AUDIO_PLAYER.audioAndVolumeProgressColour};
     border-radius: 2px;
   }
 
@@ -146,7 +146,7 @@ const AudioWrapper = styled.div`
     height: 10px;
     margin-left: -3px;
     top: -3px;
-    background: ${({ theme: { MESSAGING } }) => MESSAGING.audioAndVolumeProgressColour};
+    background: ${({ theme: { AUDIO_PLAYER } }) => AUDIO_PLAYER.audioAndVolumeProgressColour};
     border-radius: 50px;
   }
 
@@ -235,7 +235,7 @@ const AudioWrapper = styled.div`
     margin-left: -5px;
     left: 0;
     top: -3px;
-    background: ${({ theme: { MESSAGING } }) => MESSAGING.audioAndVolumeProgressColour};
+    background: ${({ theme: { AUDIO_PLAYER } }) => AUDIO_PLAYER.audioAndVolumeProgressColour};
     opacity: 0.9;
     border-radius: 50px;
     cursor: pointer;
@@ -248,7 +248,7 @@ const AudioWrapper = styled.div`
     height: 100%;
     position: absolute;
     z-index: 2;
-    background-color: ${({ theme: { MESSAGING } }) => MESSAGING.audioAndVolumeProgressColour};
+    background-color: ${({ theme: { AUDIO_PLAYER } }) => AUDIO_PLAYER.audioAndVolumeProgressColour};
     border-radius: 2px;
   }
 
@@ -264,7 +264,7 @@ const AudioWrapper = styled.div`
   .rhap_button-clear[aria-label='Pause'] {
     svg {
       path {
-        fill: ${({ theme: { MESSAGING } }) => MESSAGING.audioControllersColour};
+        fill: ${({ theme: { AUDIO_PLAYER } }) => AUDIO_PLAYER.audioControllersColour};
       }
     }
   }

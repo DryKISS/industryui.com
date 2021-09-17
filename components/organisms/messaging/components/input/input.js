@@ -13,11 +13,21 @@ import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
 import styled from 'styled-components'
 
 // UI
+
 import MessageNames from '../../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+
+import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
+
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
+
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
-import { MentionSuggestions, MessagingEditor, messagingPlugins } from '../../draftPlugins/index'
+
+import {
+  MentionSuggestions,
+  MessagingEditor,
+  messagingPlugins
+} from '../../../../organisms/editor/draftJs/plugins/index'
+
 import formStyle from '../../../../form/variables/formStyle'
 
 const MessagingInput = ({ mentions, onChange }) => {

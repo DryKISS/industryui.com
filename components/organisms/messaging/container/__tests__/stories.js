@@ -9,9 +9,9 @@ import React, { useState } from 'react'
 
 import Button from '../../../../atoms/button/button/button'
 import { filterByKey, filterByString } from '../../../../utils/mockHelpers/mockHelpers'
-import MessagingContainer from '../../container/container'
+import Messaging from '../../container/container'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import Readme from '../README.md'
 
@@ -25,7 +25,7 @@ export default {
     maxLength: 320,
     style: {}
   },
-  component: MessagingContainer,
+  component: Messaging,
   parameters: {
     docs: {
       description: {
@@ -123,7 +123,7 @@ export const Main = (args) => {
   }
   return (
     <>
-      <MessagingContainer
+      <Messaging
         {...defaultProps}
         onHashtagClick={onHashtagClick}
         onMentionClick={onMentionClick}

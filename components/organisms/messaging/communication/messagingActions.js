@@ -1,5 +1,5 @@
 /**
- * Components - Services - Component Communication - Message Actions
+ * Components - Organisms - Messaging - Message Actions
  */
 
 const MessagingActions = {

@@ -7,8 +7,6 @@ import THEME_COLOUR from '../../constants/colour'
 
 const MESSAGING = {
   avatarBackground: THEME_COLOUR.primary,
-  audioAndVolumeProgressColour: THEME_COLOUR.info,
-  audioControllersColour: THEME_COLOUR.primary,
   containerBackground: THEME_COLOUR.grey,
   emailContactNameColour: null,
   emailContactNameValueColour: null,
@@ -21,14 +19,12 @@ const MESSAGING = {
   expandedEmailButtonColour: null,
   forwardAndReplyIconsColour: THEME_COLOUR.dark,
   fromTextColour: THEME_COLOUR.dark,
-  hashtagColour: THEME_COLOUR.secondary,
   headerBackground: THEME_COLOUR.light,
   inputFontSize: '1rem',
   inputBorderColour: THEME_COLOUR.light,
   inputIconsColour: THEME_COLOUR.blackGrey,
   inpotIconsHoverColour: THEME_COLOUR.info,
   inputSectionBackground: THEME_COLOUR.light,
-  linkColour: THEME_COLOUR.primary,
   maxInputHeight: '6rem',
   mentionColour: THEME_COLOUR.dark,
   messageBorderColour: THEME_COLOUR.grey80,

@@ -8,12 +8,14 @@ import THEME_TYPOGRAPHY from '../constants/typography'
 
 // Components
 import AVATAR from '../atoms/avatar/components/variables'
+import AUDIO_PLAYER from '../molecules/audioPlayer/variables'
 import BADGE from '../atoms/badge/components/variables'
 import BAR from '../organisms/bar/components/variables'
 import CALENDAR from '../organisms/calendar/fullCalendar/components/variables'
 import COPYRIGHT from '../molecules/copyright/variables'
 import DETAILS2 from '../atoms/details2/components/variables'
 import DROPDOWN from '../molecules/dropdown/variables'
+import EDITOR from '../organisms/editor/variables'
 import FOOTER from '../organisms/footer/variables'
 import FORM_ELEMENTS_STYLES from '../form/variables/variables'
 import GRID from '../atoms/grid/components/variables'
@@ -41,6 +43,7 @@ import VOICE_RECORDER from '../molecules/voiceRecorder/variables'
 import PIECHART from '../molecules/charts/nivo/pieChart/variables'
 
 const Theme = {
+  AUDIO_PLAYER,
   AVATAR,
   BADGE,
   BAR,
@@ -49,6 +52,7 @@ const Theme = {
   COPYRIGHT,
   DETAILS2,
   DROPDOWN,
+  EDITOR,
   FOOTER,
   FORM_ELEMENTS_STYLES,
   GRID,
