@@ -12,58 +12,109 @@ import styled from 'styled-components'
 // UI
 import Button from '../../../atoms/button/button/button'
 import Divider from '../../../atoms/divider/divider'
-import Icon from '../../../atoms/icon/icon/icon'
+import CheckedCircle from './icons/checkedCircle'
+import ActiveCircle from './icons/activeCircle'
+import DottedCircle from './icons/dottedCircle'
+import PlayCircleIcon from '../../../icons/components/playCircle'
+import CircleQuestionIcon from '../../../icons/components/circleQuestion'
+import FullScreenIcon from '../../../icons/components/fullScreen'
 
-const StepperItem = ({ item }) => {
-  const renderContent = (content) =>
-    content.map(
-      ({ id, active, data }) =>
-        active && <li key={id}>{typeof data === 'function' ? data() : data}</li>
-    )
+const renderContent = (content) =>
+  content.map(({ id, data }) => (
+    <StyledContentWrapper key={id}>
+      {typeof data === 'function' ? data() : data}
+    </StyledContentWrapper>
+  ))
 
-  const renderActions = (actions) =>
-    actions.map(
-      ({ id, active, content, context, data, handleClick, to, type }) =>
-        active && (
-          <li key={id}>
-            {type === 'button' && (
-              <Button
-                onClick={handleClick}
-                content={content}
-                context={context}
-                size="xs"
-                {...data}
-              />
-            )}
-          </li>
-        )
-    )
-
+const renderActions = (actions) =>
+  actions.map(
+    ({ id, active, content, context, data, handleClick, to, type }) =>
+      active && (
+        <li key={id}>
+          {type === 'button' && (
+            <Button onClick={handleClick} content={content} context={context} size="xs" {...data} />
+          )}
+        </li>
+      )
+  )
+const renderLabelIcon = (labelIcon) => {
+  switch (labelIcon) {
+    case 'video':
+      return <PlayCircleIcon />
+    case 'quiz':
+      return <CircleQuestionIcon />
+    case 'fullscreen':
+      return <FullScreenIcon />
+    default:
+      return <CircleQuestionIcon />
+  }
+}
+const StepperItem = ({ item, maxWidth }) => {
   return (
-    <StyledStepperItem>
-      <StyledIconContainer active={item.date}>
-        {item.date && <StyledIcon aria-hidden="true" fixedWidth={false} icon="check" />}
-      </StyledIconContainer>
+    <StyledStepperItem active={item.active !== false}>
+      <ShowInRow>
+        <ShowInColumn>
+          <MainContent maxWidth={maxWidth}>
+            <StyledIconContainer>
+              {!item.date && item.active !== true ? (
+                <DottedCircle active={item.active !== false} />
+              ) : item.date ? (
+                <CheckedCircle />
+              ) : (
+                <ActiveCircle />
+              )}
+            </StyledIconContainer>
 
-      <StyledLabel active={item.date}>{item.label}</StyledLabel>
-
-      {(item.date || item.info) && <StyledInfo>{item.date || item.info}</StyledInfo>}
-
-      {item.content && item.content.length > 0 && (
-        <StyledContent>{renderContent(item.content)}</StyledContent>
-      )}
-
-      {item.actions && item.actions.length > 0 && (
-        <StyledContent>{renderActions(item.actions)}</StyledContent>
-      )}
-
+            <StyledLabelWrapper active={item.date}>
+              {item.labelIcon && renderLabelIcon(item.labelIcon)}
+              <StyledLabel>{item.label}</StyledLabel>{' '}
+              {item.date && <StyledDate>{item.date}</StyledDate>}
+            </StyledLabelWrapper>
+            {item.info && <StyledInfo>{item.info}</StyledInfo>}
+            {item.content && item.content.length > 0 && (
+              <StyledContent>{renderContent(item.content)}</StyledContent>
+            )}
+          </MainContent>
+          {item.active && item.actions
+            ? item.actions &&
+              item.active &&
+              item.actions.length > 0 && (
+                <StyledContent>{renderActions(item.actions)}</StyledContent>
+              )
+            : item.active && item.bottomBar}
+        </ShowInColumn>
+        {item.active && item.toolBar}
+      </ShowInRow>
       {item.label !== 'Closed' && <Divider size="sm" />}
     </StyledStepperItem>
   )
 }
+const ShowInColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const MainContent = styled.div`
+  max-width: ${({ maxWidth }) => maxWidth ?? '400px'};
+`
+const ShowInRow = styled.div`
+  display: flex;
+`
+const StyledContentWrapper = styled.li`
+  color: ${({ theme }) => theme.STEPPER.colourContent};
+  font-size: 0.75rem;
+  line-height: 0.825rem;
+`
 
+const StyledInfo = styled.p`
+  color: ${({ theme }) => theme.STEPPER.colourInfo};
+  font-size: 12px;
+  font-style: italic;
+  margin: 0;
+  padding: 0.25rem;
+`
 const StyledStepperItem = styled.li`
-  border-left: 3px solid ${({ theme }) => theme.STEPPER.colour};
+  border-left: 3px solid
+    ${({ theme, active }) => (!active ? theme.STEPPER.colourInaActive : theme.STEPPER.colour)};
   padding: 0 1rem 1px;
   position: relative;
   &:last-child {
@@ -75,7 +126,6 @@ const StyledStepperItem = styled.li`
 const StyledIconContainer = styled.div`
   align-items: center;
   background: ${({ active, theme }) => (active ? theme.STEPPER.colour : '#fff')};
-  border: 3px solid ${({ theme }) => theme.STEPPER.colour};
   border-radius: 50%;
   display: flex;
   height: 1.5rem;
@@ -84,10 +134,6 @@ const StyledIconContainer = styled.div`
   position: absolute;
   top: 0;
   width: 1.5rem;
-`
-
-const StyledIcon = styled(Icon)`
-  color: ${({ theme }) => theme.STEPPER.colourCheckmark};
 `
 
 const StyledContent = styled.ul`
@@ -100,13 +146,20 @@ const StyledContent = styled.ul`
   }
 `
 
+const StyledLabelWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 0.25rem;
+`
 const StyledLabel = styled.span`
   color: ${({ active, theme }) => (active ? theme.COLOUR.black : theme.COLOUR.dark)};
-  margin: 0 0.5rem;
 `
 
-const StyledInfo = styled.span`
+const StyledDate = styled.span`
+  color: ${({ theme }) => theme.STEPPER.colourDate};
   font-size: 0.75rem;
+  font-weight: 700;
 `
 
 StyledStepperItem.propTypes = {
