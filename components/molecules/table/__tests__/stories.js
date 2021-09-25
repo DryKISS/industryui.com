@@ -23,7 +23,7 @@ export default {
     hover: true,
     loading: false,
     pagination: true,
-    paginationSize: true,
+    paginationSize: false,
     perPage: 50,
     responsive: true,
     striped: true

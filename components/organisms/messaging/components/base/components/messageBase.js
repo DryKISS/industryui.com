@@ -11,20 +11,20 @@ import styled, { css } from 'styled-components'
 
 // UI
 import Avatar from '../../../../../atoms/avatar/avatar'
-import AudioWrapper from '../../audioPlayer/wrapper'
+import AudioWrapper from '../../../../../molecules/audioPlayer/wrapper'
 import Card from '../../../../../molecules/card/card'
 import Column from '../../../../../atoms/grid/Column'
 import Dropdown from '../../../../../molecules/dropdown/dropdown'
-import hashtagPlugin from '../../../draftPlugins/hashtag/hashtagPlugin'
+import hashtagPlugin from '../../../../../organisms/editor/draftJs/plugins/hashtag/hashtagPlugin'
 import Icon from '../../../../../atoms/icon/icon/icon'
 import Image from '../../../../../atoms/image/image'
-import linkifyPlugin from '../../../draftPlugins/components/linkPluginComponent'
-import MentionComponent from '../../../draftPlugins/components/mentionComponent'
-import MessagingAudioPlayer from '../../../components/audioPlayer/audioPlayer'
+import linkifyPlugin from '../../../../../organisms/editor/draftJs/plugins/components/linkPluginComponent'
+import MentionComponent from '../../mention/mentionComponent'
+import MessagingAudioPlayer from '../../../../../molecules/audioPlayer/audioPlayer'
 import MessageNames from '../../../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../../../services/componentCommunication/messaging/service'
-import { MessagingEditor } from '../../../draftPlugins/index'
+import { MessagingEditor } from '../../../../../organisms/editor/draftJs/plugins/index'
 import Preview from '../../../../../molecules/preview/preview'
 import ReplyContainer from '../../replyContainer/replyContainer'
 import Row from '../../../../../atoms/grid/Row'
@@ -55,6 +55,7 @@ const MessageBase = ({
   hovered,
   icon,
   id,
+  isSending,
   more,
   pictureId,
   prevType,
@@ -186,6 +187,7 @@ const MessageBase = ({
               imageStyles={{
                 minHeight: '10rem',
                 height: '10rem',
+                borderRadius: '6px',
                 objectFit: 'cover'
               }}
               file={item}
@@ -226,6 +228,11 @@ const MessageBase = ({
     <MessageWrapper type={type} hovered={hovered}>
       {header}
       <StyledCard type={type}>
+        {isSending && (
+          <IsSendingWrapper>
+            <Loadingspinner size={20} />
+          </IsSendingWrapper>
+        )}
         <Row>
           <Column
             sm={6}
@@ -292,6 +299,18 @@ const MessageBase = ({
     </MessageWrapper>
   )
 }
+
+const IsSendingWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const OverlayForAdditionalMessages = styled.div`
   align-items: center;
@@ -374,6 +393,7 @@ const StyledCard = styled(Card)`
   border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
   margin-bottom: 0.5rem;
   padding: 1.25rem 1rem;
+  position: relative;
 `
 
 const StyledContent = styled.div`

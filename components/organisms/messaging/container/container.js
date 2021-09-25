@@ -17,12 +17,12 @@ import MessagingDragHover from '../components/dragHover/dragHover'
 import MessagingSearch from '../components/search/meaasagingSearch'
 import MessagingSend from '../components/send/messagingSend'
 import MessageNames from '../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../services/componentCommunication/messaging/service'
 import MessagingSubscriber from '../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../hooks/useComponentCommunication/useSubscription'
 
-const MessagingContainer = ({
+const Messaging = ({
   audienceItems,
   className,
   forwardForMessages,
@@ -46,7 +46,7 @@ const MessagingContainer = ({
   }
   const [Files, setFiles] = useState([])
 
-  const [hasMessage, sethasMessage] = useState(messages && messages.length > 0)
+  const [hasMessage, setHasMessage] = useState(messages && messages.length > 0)
 
   const [IsDragHoverOpen, setIsDragHoverOpen] = useState(false)
 
@@ -114,7 +114,7 @@ const MessagingContainer = ({
 
   const handleMessageRecieved = () => {
     if (hasMessage === false) {
-      sethasMessage(true)
+      setHasMessage(true)
     }
   }
 
@@ -152,6 +152,15 @@ const MessagingContainer = ({
 
   const handleSubmit = (messageToSend) => {
     onMessageSubmit(messageToSend)
+
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.IS_SENDING_MESSAGE,
+        data: messageToSend
+      }
+    })
+
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: { action: MessagingActions.CLEAR_INPUT }
@@ -182,13 +191,11 @@ const MessagingContainer = ({
           className={className}
           style={style}
         >
-          {hasMessage && (
-            <MessageList
-              config={messagesConfig}
-              initialMessages={messages}
-              onMessageRecieved={handleMessageRecieved}
-            />
-          )}
+          <MessageList
+            config={messagesConfig}
+            initialMessages={messages}
+            onMessageRecieved={handleMessageRecieved}
+          />
         </StyledContainer>
         <MessagingSend
           audienceItems={audienceItems}
@@ -223,7 +230,7 @@ const StyledContainer = styled.div`
   }
 `
 
-MessagingContainer.propTypes = {
+Messaging.propTypes = {
   audienceItems: array,
   className: string,
   messages: array.isRequired,
@@ -234,4 +241,4 @@ MessagingContainer.propTypes = {
   style: object
 }
 
-export default MessagingContainer
+export default Messaging

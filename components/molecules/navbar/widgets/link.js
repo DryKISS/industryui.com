@@ -11,7 +11,6 @@ import styled from 'styled-components'
 
 // UI
 import Link from '../../../atoms/link/link'
-import MEDIA_QUERY from '../../../utils/mediaQuery/query'
 
 const NavLink = ({ active, closeMenu, id, name, onClick, to, type, visible }) => {
   const handleClick = () => {
@@ -37,16 +36,10 @@ const StyledLink = styled.span`
   flex: 1;
   justify-content: center;
   padding: ${({ theme }) => theme.NAVBAR.paddingLink};
-  /* &:hover {
-    color: ${({ theme }) => theme.NAVBAR.colourHover};
-  } */
 
-  ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
-      color: ${theme.NAVBAR.colourDefaultDesktop};
-      // &:hover {
-      //   color: ${theme.NAVBAR.colourHoverDesktop};
-      // }
-    `}
+  &:hover {
+    color: ${({ theme }) => theme.NAVBAR.colourHover};
+  }
 `
 
 NavLink.propTypes = {

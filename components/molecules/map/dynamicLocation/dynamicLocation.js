@@ -8,12 +8,7 @@ import React from 'react'
 import { array, node, string } from 'prop-types'
 
 // React Google Maps
-import {
-  GoogleMap,
-  InfoWindow as GoogleInfoWindow,
-  withGoogleMap,
-  withScriptjs
-} from 'react-google-maps'
+import { GoogleMap, withGoogleMap, withScriptjs } from 'react-google-maps'
 
 const DynamicLocationHOC = (Component) => {
   return (props) => {

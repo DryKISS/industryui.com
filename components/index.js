@@ -158,6 +158,7 @@ export { default as MarkerClusterer } from './molecules/map/dynamicLocation/clus
 export { default as InfoWindow } from './molecules/map/dynamicLocation/infoWindow'
 export { default as StaticLocation } from './molecules/map/staticLocation/staticLocation'
 export { default as Navbar } from './molecules/navbar/navbar'
+export { default as PieChart } from './molecules/charts/nivo/pieChart/pieChart'
 export { default as Notification } from './molecules/notification/notification'
 export { default as OffCanvas } from './molecules/offCanvas/offCanvas'
 export { default as PageHeading } from './molecules/pageHeading/pageHeading'
@@ -169,7 +170,7 @@ export { default as Preview } from './molecules/preview/preview'
 export { default as Qrcode } from './molecules/qrcode'
 export { default as Section } from './molecules/section/section'
 export { default as Stepper } from './molecules/stepper/stepper'
-export { default as Table } from './molecules/table/components/table'
+export { default as Table } from './molecules/table/table'
 export { default as TableActions } from './molecules/table/components/formatter/actions/actions'
 export { default as TableLink } from './molecules/table/components/formatter/link'
 export { default as TableLoading } from './molecules/table/components/loading'
@@ -190,7 +191,8 @@ export { default as Footer } from './organisms/footer/footer'
 export { default as ForgotDetails } from './organisms/forgotDetails/forgotDetails'
 export { default as ForgotDetailsReset } from './organisms/forgotDetailsReset/forgotDetailsReset'
 export { default as Login } from './organisms/login/login'
-export { default as MessagingContainer } from './organisms/messaging/container/container'
+export { default as Messaging } from './organisms/messaging/container/container'
+export { default as MessagingActions } from './organisms/messaging/communication/messagingActions'
 export { default as PasswordChange } from './organisms/passwordChange/passwordChange'
 export { default as Pricing } from './organisms/pricing/pricing'
 export { default as Register } from './organisms/register/register'
@@ -198,8 +200,6 @@ export { default as Schedule } from './organisms/charts/scheduleChart/scheduleCh
 
 // Pages
 export { default as Error404 } from './pages/error404/error404'
-
-// Social
 
 // Templates
 export { default as Article } from './templates/article/article'
@@ -225,7 +225,6 @@ export { default as NotificationsContext } from './services/notifications/contex
 export { default as NotificationsProvider } from './services/notifications/provider'
 export { default as MessagingCommunicationService } from './services/componentCommunication/messaging/service'
 export { default as MessageNames } from './services/componentCommunication/messageNames'
-export { default as MessagingActions } from './services/componentCommunication/messagingActions'
 export { default as OffCanvasContext } from './services/offCanvas/context'
 export { default as OffCanvasProvider } from './services/offCanvas/provider'
 export { default as UserContext } from './services/authentication/context'

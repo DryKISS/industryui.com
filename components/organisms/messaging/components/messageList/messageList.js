@@ -16,7 +16,7 @@ import styled, { css } from 'styled-components'
 import dateDiff from '../../../../utils/date/diff'
 import Message from '../message/message'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
-import MessagingActions from '../../../../services/componentCommunication/messagingActions'
+import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
@@ -25,6 +25,7 @@ const renderMessage = ({ index, parent, key, style }, messages, cache, config) =
     <CellMeasurer cache={cache} key={index} parent={parent} columnIndex={0} rowIndex={index}>
       <MessageContainer type={messages[index].type} style={style}>
         <Message
+          isSending={messages[index].isSending}
           config={config}
           message={messages[index]}
           prevType={messages[index].type}
@@ -43,7 +44,6 @@ const MessageList = memo(
     const widthRef = useRef(null)
     const heightRef = useRef(null)
     const [Messages, setMessages] = useState(initialMessages)
-
     const [cache, setcache] = useState(new CellMeasurerCache(cacheConfig))
 
     if (Messages) {
@@ -69,9 +69,37 @@ const MessageList = memo(
     }
 
     const onRecieve = (payload) => {
-      const newMessagesArray = [...Messages, ...payload]
+      const tmpMessages = Messages.filter((message) => message.isSending !== true)
+
+      setMessages(tmpMessages)
+
+      const newMessagesArray = [...tmpMessages, ...payload]
+
       setMessages(() => [...newMessagesArray])
+
       scrollToBottom()
+    }
+    const onSendingNewMessage = (payload) => {
+      const msg = {
+        // attachments can be an array of files or array of type {src:string}
+        isSending: true,
+        attachments: payload.attachments || [],
+        content: payload.message,
+        createdAt: 'YYYY-MM-DD HH:mm',
+        from: 'me',
+        icon: 'comment',
+        id: Math.floor(Math.random() * 1000),
+        issueId: 1,
+        pictureId: null,
+        statusText: 'status from server',
+        time: 'sending...',
+        to: 'all',
+        type: 'out',
+        ...(payload.voice && { voice: URL.createObjectURL(payload.voice) }),
+        ...(payload.replyTo && { replyTo: payload.replyTo })
+      }
+      const newMessagesArray = [...Messages, msg]
+      setMessages(() => [...newMessagesArray])
     }
 
     const onRenewMessages = (messages) => {
@@ -95,6 +123,9 @@ const MessageList = memo(
           break
         case MessagingActions.RENEW_MESSAGES:
           onRenewMessages(payload.data)
+          break
+        case MessagingActions.IS_SENDING_MESSAGE:
+          onSendingNewMessage(payload.data)
           break
 
         default:

@@ -1,5 +1,5 @@
 /**
- * Stepper
+ * Components - Molecules - Stepper - Story
  */
 
 // React

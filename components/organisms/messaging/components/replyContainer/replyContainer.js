@@ -12,7 +12,7 @@ import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import Close from '../../../../atoms/close/close'
 import Divider from '../../../../atoms/divider/divider'
 import ReplyIcon from '../message/replyIcon'
-import { MessagingEditor } from '../../draftPlugins/index'
+import { MessagingEditor } from '../../../../organisms/editor/draftJs/plugins/index'
 
 const ReplyContainer = ({ message, onClose, inMessage }) => {
   const [editorState, setEditorState] = useState(

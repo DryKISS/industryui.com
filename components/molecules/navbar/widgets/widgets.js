@@ -70,31 +70,31 @@ const NavWidgets = ({ brand, closeMenu, type, visible, widgets }) => {
 }
 
 const StyledList = styled.ul`
-  background-color: ${({ theme }) => theme.NAVBAR.backgroundList};
+  background-color: ${({ theme }) => theme.NAVBAR.listBackground};
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.NAVBAR.fontSizeList};
+  font-size: ${({ theme }) => theme.NAVBAR.listFontSize};
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: center;
 
   ${({ direction, theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
-      background-color: initial;
-      flex-direction: row;
-      flex: 1;
-      justify-content: ${direction === 'left' ? 'flex-start' : 'flex-end'};
-      text-align: left;
-    `}
+    background-color: initial;
+    flex-direction: row;
+    flex: 1;
+    justify-content: ${direction === 'left' ? 'flex-start' : 'flex-end'};
+    text-align: left;
+  `}
 `
 
 const StyledListItem = styled.li`
   position: relative;
-  border-top: ${({ theme }) => theme.NAVBAR.borderTopListItem};
-  background-color: ${({ theme }) => theme.NAVBAR.backgroundListItem};
+  border-top: ${({ theme }) => theme.NAVBAR.listItemBorderTop};
+  background-color: ${({ theme }) => theme.NAVBAR.listItemBackground};
   &:hover {
-    background-color: ${({ theme }) => theme.NAVBAR.backgroundHoverListItem};
-    border-bottom: ${({ theme }) => theme.NAVBAR.borderBottomHoverListItem};
+    background-color: ${({ theme }) => theme.NAVBAR.listItemBackgroundHover};
+    border-bottom: ${({ theme }) => theme.NAVBAR.listItemBorderBottomHover};
   }
   ${(props) =>
     !props.brand &&
@@ -105,12 +105,12 @@ const StyledListItem = styled.li`
     `}
 
   ${({ theme }) => MEDIA_QUERY[theme.NAVBAR.breakpoint]`
-      border: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: ${theme.NAVBAR.justifyContentDesktopListItem};
-      margin-bottom: ${theme.NAVBAR.marginBottomDesktopListItem};
-    `}
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: ${theme.NAVBAR.listItemJustifyContentDesktop};
+    margin-bottom: ${theme.NAVBAR.listItemMarginBottomDesktop};
+  `}
 `
 
 NavWidgets.propTypes = {
