@@ -1,3 +1,8 @@
+/**
+ * Components - Molecules - Modal - Use Toggle
+ */
+
+// React
 import { useState, useCallback } from 'react'
 
 const useToggle = (initial) => {

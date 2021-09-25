@@ -12,7 +12,7 @@ import Readme from '../README.md'
 export default {
   args: {
     alt: 'DryKISS',
-    src: 'http://via.placeholder.com/350x150'
+    src: 'https://via.placeholder.com/360x203'
   },
   component: Image,
   parameters: {

@@ -1,8 +1,64 @@
+/**
+ * Components - Molecules - Modal
+ */
+
+// React
 import React from 'react'
 import ReactDOM from 'react-dom'
-import styled from 'styled-components'
 import { node, func, bool } from 'prop-types'
+
+// Style
+import styled from 'styled-components'
+
+// UI
 import CloseIcon from '../../icons/components/cross'
+
+const Modal = ({
+  open,
+  showCloseIcon,
+  closeOnBackgroundClick,
+  removeChildrenWhenUnmounted,
+  onClose,
+  children
+}) => {
+  const closeIcon = showCloseIcon ? (
+    <IconContainer onClick={onClose}>
+      <CloseIcon colour="white" />
+    </IconContainer>
+  ) : (
+    <></>
+  )
+
+  const handleBgClick = (event) => {
+    event.preventDefault()
+
+    if (event.target === event.currentTarget) {
+      closeOnBackgroundClick && onClose()
+    }
+  }
+
+  const childs = () => {
+    if (removeChildrenWhenUnmounted) {
+      if (open) {
+        return children
+      }
+      return <></>
+    }
+
+    return children
+  }
+
+  const modalMarkup = (
+    <ModalBackground open={open} onClick={handleBgClick}>
+      <ModalWrapper>
+        {closeIcon}
+        {childs()}
+      </ModalWrapper>
+    </ModalBackground>
+  )
+
+  return ReactDOM.createPortal(modalMarkup, document.body)
+}
 
 const ModalBackground = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -42,77 +98,13 @@ const IconContainer = styled.div`
   z-index: 1;
 `
 
-const Modal = ({
-  open,
-  showCloseIcon,
-  closeOnBackgroundClick,
-  removeChildrenWhenUnmounted,
-  onClose,
-  children
-}) => {
-  const closeIcon = showCloseIcon ? (
-    <IconContainer onClick={onClose}>
-      <CloseIcon colour="white" />
-    </IconContainer>
-  ) : (
-    <></>
-  )
-
-  const handleBgClick = (event) => {
-    event.preventDefault()
-    if (event.target === event.currentTarget) {
-      closeOnBackgroundClick && onClose()
-    }
-  }
-  const childs = () => {
-    if (removeChildrenWhenUnmounted) {
-      if (open) {
-        return children
-      }
-      return <></>
-    }
-    return children
-  }
-
-  const modalMarkup = (
-    <ModalBackground open={open} onClick={handleBgClick}>
-      <ModalWrapper>
-        {closeIcon}
-        {childs()}
-      </ModalWrapper>
-    </ModalBackground>
-  )
-
-  return ReactDOM.createPortal(modalMarkup, document.body)
-}
-
 Modal.propTypes = {
-  /**
-   * Child nodes
-   */
   children: node.isRequired,
-  /**
-   * Close handler for modal button
-   */
-  onClose: func,
-
-  /**
-   * Whether to show a close icon
-   */
-  showCloseIcon: bool,
-  /**
-   * Whether to close on backgroundClick
-   */
   closeOnBackgroundClick: bool,
-  /**
-   * Whether to remove children from dom when unmounted, default is [true]
-   */
-  removeChildrenWhenUnmounted: bool,
-
-  /**
-   * Is modal Open?
-   */
-  open: bool
+  onClose: func,
+  open: bool,
+  showCloseIcon: bool,
+  removeChildrenWhenUnmounted: bool
 }
 
 Modal.defaultProps = {

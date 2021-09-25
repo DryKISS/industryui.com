@@ -25,6 +25,7 @@ const Message = memo(
     ) : (
       <Avatar size="xxs" content={message.from[0]} />
     )
+
     const handleReplyClick = () => {
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
@@ -36,14 +37,17 @@ const Message = memo(
     }
 
     const [hovered, sethovered] = useState(false)
+
     const sideActions = (
       <SideActionsWrapper>
         <AvatarWrapper>{avatar}</AvatarWrapper>
+
         {config.hasReply && (
           <IconWrapper onClick={handleReplyClick} title="reply">
             <ReplyIcon />
           </IconWrapper>
         )}
+
         {config.hasForward && (
           <IconWrapper title="share">
             <ShareIcon />
@@ -51,6 +55,7 @@ const Message = memo(
         )}
       </SideActionsWrapper>
     )
+
     const hasText = () => {
       let plainText = ''
       if (message.content.blocks) {
@@ -65,12 +70,15 @@ const Message = memo(
       }
       return false
     }
+
     const handleMouseOver = () => {
       config.hasMenu && sethovered(true)
     }
+
     const handleMouseLeave = () => {
       config.hasMenu && sethovered(false)
     }
+
     return (
       <RowWrapper
         hasTimeHeader={message.headerTime}
@@ -101,6 +109,7 @@ const Message = memo(
   },
   () => true
 )
+
 const TimeHeader = styled.div`
   position: absolute;
   margin-top: -0.1rem;
@@ -165,6 +174,7 @@ const RowWrapper = styled.div`
       margin-top: 1rem;
     `}
 `
+
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;
   margin-bottom: 0.5rem;
@@ -173,8 +183,10 @@ const AvatarWrapper = styled.div`
     background: ${({ theme: { MESSAGING } }) => MESSAGING.avatarBackground};
   }
 `
+
 Message.propTypes = {
   message: object.isRequired,
   prevType: string.isRequired
 }
+
 export default Message

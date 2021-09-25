@@ -19,7 +19,7 @@ export const rows = {
       testHidden2: 'hidden',
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com',
-      logo: 'https://drykiss.com/images/logo/drykiss-white.svg',
+      logo: 'https://via.placeholder.com/200x20',
       itemCount: 5,
       actions: ''
     },
@@ -29,7 +29,7 @@ export const rows = {
       testHidden2: 'hidden',
       company: 'Triangle Solutions Ltd',
       url: 'https://triangle-solutions.com',
-      logo: 'https://drykiss.com/images/logo/drykiss-white.svg',
+      logo: 'https://via.placeholder.com/200x20',
       itemCount: 3,
       actions: ''
     }

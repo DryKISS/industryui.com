@@ -13,11 +13,13 @@ import styled from 'styled-components'
 import StepperItem from './components/item'
 import StepperSummary from './components/summary'
 
-const Stepper = ({ className, items, summary }) => {
+const Stepper = ({ className, items, summary, maxWidth = '300px' }) => {
   return (
     <StyledStepper>
       <ul>
-        {items.map((item) => item.active !== false && <StepperItem item={item} key={item.id} />)}
+        {items.map((item) => (
+          <StepperItem item={item} key={item.id} maxWidth={maxWidth} />
+        ))}
       </ul>
 
       {summary && <StepperSummary summary={summary} />}
@@ -26,6 +28,7 @@ const Stepper = ({ className, items, summary }) => {
 }
 
 const StyledStepper = styled.div`
+  background-color: ${({ theme }) => theme.STEPPER.colourBackground};
   display: inline-block;
   > ul {
     list-style: none;
@@ -36,6 +39,7 @@ const StyledStepper = styled.div`
 
 Stepper.propTypes = {
   className: string,
+  maxWidth: string,
   items: oneOfType([array, func]).isRequired,
   summary: oneOfType([array, func])
 }

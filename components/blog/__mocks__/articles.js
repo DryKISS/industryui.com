@@ -1,6 +1,15 @@
 /**
- * Components - Blog - Articles
+ * Components - Blog - Mocks - Articles
  */
+
+// React
+import React from 'react'
+
+// UI
+import Holder from '../../utils/holder/holder'
+
+console.log(`https://${(<Holder string />)}`)
+
 const Articles = [
   {
     author: 'Ian Warner',
@@ -11,6 +20,7 @@ const Articles = [
     excerpt: 'Static Site development',
     heading: 'Static Site development',
     hero: true,
+    image: `https://via.placeholder.com/360x203`,
     published: true,
     readtime: 2,
     slug: 'static-site-development',
@@ -27,6 +37,7 @@ const Articles = [
     excerpt: 'Static Site development',
     heading: 'Static Site development',
     hero: true,
+    image: `https://via.placeholder.com/360x203`,
     published: true,
     readtime: 2,
     slug: 'static-site-development',
@@ -43,6 +54,7 @@ const Articles = [
     excerpt: 'Static Site development',
     heading: 'truncated header truncated header truncated header truncated header truncated header',
     hero: true,
+    image: `https://via.placeholder.com/360x203`,
     published: true,
     readtime: 2,
     slug: 'static-site-development',

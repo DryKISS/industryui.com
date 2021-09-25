@@ -70,7 +70,6 @@ const row = {
   id: '10001',
   company: 'DryKISS Ltd',
   url: 'https://drykiss.com',
-  logo: 'https://drykiss.com/static/logo/drykiss.svg',
   itemCount: 5,
   actions: ''
 }
