@@ -12,7 +12,7 @@ import ListItem from '../../../atoms/list/listItem'
 
 const renderColumn = (index) => (
   <Fragment key={index}>
-    <Image alt="Tailwise" src="/drykiss.svg" />
+    <Image alt="DryKISS" src="https://via.placeholder.com/250x30" />
 
     <List unstyled>
       <ListItem>Strapline</ListItem>

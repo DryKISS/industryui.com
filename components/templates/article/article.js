@@ -28,10 +28,7 @@ const Article = ({ article, className, config, facebook, style }) => {
       style={style}
     >
       <header>
-        <StyledImage
-          alt={article.heading}
-          src={article.image || `/static/blog/${article.slug}/hero.jpg`}
-        />
+        <StyledImage alt={article.heading} src={article.image} />
 
         {article.category && (
           <Breadcrumb category={article.category} page={article.title} path={article.category} />

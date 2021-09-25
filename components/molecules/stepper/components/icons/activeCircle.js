@@ -1,22 +1,38 @@
+/**
+ * Components - Molecules - Stepper - Icon - Active Circle
+ */
+
+// React
+import React from 'react'
+import { number } from 'prop-types'
+
+// Style
 import styled from 'styled-components'
-/* eslint-disable react/react-in-jsx-scope */
-const ActiveCircle = ({ size = 24 }) => {
+
+const ActiveCircle = ({ size }) => {
   return (
-    <StyledSvg
-      width={`${size}`}
+    <svg
+      fill="none"
       height={`${size}`}
       viewBox={`0 0 ${size} ${size}`}
-      fill="none"
+      width={`${size}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <StyledCircle cx="12" cy="12" r="11" strokeWidth="2" />
-    </StyledSvg>
+    </svg>
   )
 }
 
-const StyledSvg = styled.svg``
 const StyledCircle = styled.circle`
   stroke: ${({ theme }) => theme.STEPPER.colour};
 `
+
+ActiveCircle.propTypes = {
+  size: number
+}
+
+ActiveCircle.defaultProps = {
+  size: 24
+}
 
 export default ActiveCircle

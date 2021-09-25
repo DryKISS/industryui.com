@@ -4,7 +4,7 @@
 
 // React
 import React from 'react'
-import { func, object, node } from 'prop-types'
+import { func, object, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -120,8 +120,8 @@ const StyledLink = styled.span`
 `
 
 DropdownItem.propTypes = {
-  children: node,
   closeDropdown: func,
+  elementType: string,
   item: object,
   onClick: func
 }

@@ -1,6 +1,7 @@
 /**
  * Messaging/Message
  */
+
 export const message = {
   content: 'Test Message',
   icon: 'email',

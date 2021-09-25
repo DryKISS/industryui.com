@@ -1,29 +1,48 @@
+/**
+ * Components - Molecules - Stepper - Icon - Dotted Circle
+ */
+
+// React
+import React from 'react'
+import { number } from 'prop-types'
+
+// Style
 import styled from 'styled-components'
-/* eslint-disable react/react-in-jsx-scope */
-const DottedCircle = ({ size = 24, active = true }) => {
+import { bool } from 'yup'
+
+const DottedCircle = ({ size, active }) => {
   return (
-    <StyledSvg
-      width={`${size}`}
+    <svg
+      fill="none"
       height={`${size}`}
       viewBox={`0 0 ${size} ${size}`}
-      fill="none"
+      width={`${size}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <StyledCircle
+        active={active}
         cx="12"
         cy="12"
         r="10.5"
-        active={active}
         strokeWidth="3"
         strokeDasharray="4 4"
       />
-    </StyledSvg>
+    </svg>
   )
 }
 
-const StyledSvg = styled.svg``
 const StyledCircle = styled.circle`
   stroke: ${({ theme, active }) => (active ? theme.STEPPER.colour : theme.STEPPER.colourInActive)};
 `
+
+DottedCircle.propTypes = {
+  active: bool,
+  size: number
+}
+
+DottedCircle.defaultProps = {
+  active: true,
+  size: 24
+}
 
 export default DottedCircle

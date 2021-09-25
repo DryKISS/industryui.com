@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Variables - Stepper
+ * Components - Molecules - Stepper - Variables
  */
 
 // UI

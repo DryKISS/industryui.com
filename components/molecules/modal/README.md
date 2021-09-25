@@ -1,1 +1,1 @@
-DK-modal
+Modal

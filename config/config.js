@@ -15,7 +15,7 @@ export const AccessPages = {}
 export const AccessRules = {}
 
 export const Brand = {
-  logo: 'drykiss.svg',
+  logo: 'https://via.placeholder.com/200x20',
   name: 'IndustryUI'
 }
 
@@ -95,7 +95,7 @@ const sidebarData = [
 ]
 
 export const Sidebar = () => (
-  <SidebarUI brand="/drykiss.svg" data={sidebarData} />
+  <SidebarUI brand="https://via.placeholder.com/200x50" data={sidebarData} />
 )
 
 export const Config = {

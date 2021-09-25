@@ -4,20 +4,20 @@
 
 // React
 import React from 'react'
-import { object } from 'prop-types'
+import { object, string } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import Divider from '../../../atoms/divider/divider'
-import CheckedCircle from './icons/checkedCircle'
 import ActiveCircle from './icons/activeCircle'
-import DottedCircle from './icons/dottedCircle'
-import PlayCircleIcon from '../../../icons/components/playCircle'
+import Button from '../../../atoms/button/button/button'
 import CircleQuestionIcon from '../../../icons/components/circleQuestion'
+import CheckedCircle from './icons/checkedCircle'
+import Divider from '../../../atoms/divider/divider'
+import DottedCircle from './icons/dottedCircle'
 import FullScreenIcon from '../../../icons/components/fullScreen'
+import PlayCircleIcon from '../../../icons/components/playCircle'
 
 const renderContent = (content) =>
   content.map(({ id, data }) => (
@@ -37,6 +37,7 @@ const renderActions = (actions) =>
         </li>
       )
   )
+
 const renderLabelIcon = (labelIcon) => {
   switch (labelIcon) {
     case 'video':
@@ -49,6 +50,7 @@ const renderLabelIcon = (labelIcon) => {
       return <CircleQuestionIcon />
   }
 }
+
 const StepperItem = ({ item, maxWidth }) => {
   return (
     <StyledStepperItem active={item.active !== false}>
@@ -70,11 +72,13 @@ const StepperItem = ({ item, maxWidth }) => {
               <StyledLabel>{item.label}</StyledLabel>{' '}
               {item.date && <StyledDate>{item.date}</StyledDate>}
             </StyledLabelWrapper>
+
             {item.info && <StyledInfo>{item.info}</StyledInfo>}
             {item.content && item.content.length > 0 && (
               <StyledContent>{renderContent(item.content)}</StyledContent>
             )}
           </MainContent>
+
           {item.active && item.actions
             ? item.actions &&
               item.active &&
@@ -83,8 +87,10 @@ const StepperItem = ({ item, maxWidth }) => {
               )
             : item.active && item.bottomBar}
         </ShowInColumn>
+
         {item.active && item.toolBar}
       </ShowInRow>
+
       {item.label !== 'Closed' && <Divider size="sm" />}
     </StyledStepperItem>
   )
@@ -93,12 +99,15 @@ const ShowInColumn = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const MainContent = styled.div`
   max-width: ${({ maxWidth }) => maxWidth ?? '400px'};
 `
+
 const ShowInRow = styled.div`
   display: flex;
 `
+
 const StyledContentWrapper = styled.li`
   color: ${({ theme }) => theme.STEPPER.colourContent};
   font-size: 0.75rem;
@@ -112,6 +121,7 @@ const StyledInfo = styled.p`
   margin: 0;
   padding: 0.25rem;
 `
+
 const StyledStepperItem = styled.li`
   border-left: 3px solid
     ${({ theme, active }) => (!active ? theme.STEPPER.colourInaActive : theme.STEPPER.colour)};
@@ -163,7 +173,8 @@ const StyledDate = styled.span`
 `
 
 StyledStepperItem.propTypes = {
-  item: object
+  item: object,
+  maxWidth: string
 }
 
 export default StepperItem

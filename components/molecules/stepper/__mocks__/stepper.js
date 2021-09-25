@@ -1,7 +1,11 @@
 /**
- * Items
+ * Components - Molecules - Stepper - Mock
  */
+
+// React
 import React, { useState } from 'react'
+
+// UI
 import Button from '../../../atoms/button/button/button'
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
 

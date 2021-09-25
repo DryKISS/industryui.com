@@ -15,12 +15,10 @@ import styled from 'styled-components'
 // UI
 import Button from '../../../atoms/button/button/button'
 import Carousel from '../carousel'
-import Image from '../../../atoms/image/image'
-import ReactHolderJs from '../../../utils/holder/reactHolder'
+import Holder from '../../../utils/holder/holder'
 import CarouselSlide from '../components/slide'
 import CarouselSampleSlide from '../components/sample'
 import Readme from '../README.md'
-import vizla from '../../../../static/card/vizla.jpg'
 
 export default {
   args: CarouselDefaultProps,
@@ -48,10 +46,7 @@ export default {
 }
 
 const SampleSlide = ({ title = 'Sample Slide' }) => (
-  <CarouselSampleSlide
-    text={title}
-    node={<ReactHolderJs src="./img/test1.jpg" width={900} height={300} usePlaceholder />}
-  />
+  <CarouselSampleSlide text={title} node={<Holder width={900} height={300} />} />
 )
 
 const BaseComponent = (props) => {
@@ -73,7 +68,6 @@ const BaseComponent = (props) => {
 export const main = (args) => (
   <BaseComponent {...args}>
     <SampleSlide />
-
     <SampleSlide title="Another Slide" />
   </BaseComponent>
 )
@@ -84,11 +78,11 @@ export const withArray = (args) => (
     slides={[
       {
         context: 'light',
-        img: vizla,
+        img: <Holder width={900} height={300} />,
         text: 'Sample text from Array Carousel'
       },
       {
-        node: <ReactHolderJs src="./img/test1.jpg" width={900} height={300} usePlaceholder />,
+        node: <Holder width={900} height={300} />,
         text: 'Another text from Array Carousel'
       }
     ]}
@@ -104,11 +98,11 @@ export const withCustomNav = (args) => (
     slides={[
       {
         context: 'light',
-        img: vizla,
+        img: <Holder width={900} height={300} />,
         text: 'Sample text from Array Carousel'
       },
       {
-        node: <ReactHolderJs src="./img/test1.jpg" width={900} height={300} usePlaceholder />,
+        node: <Holder width={900} height={300} />,
         text: 'Another text from Array Carousel'
       }
     ]}
@@ -118,9 +112,7 @@ export const withCustomNav = (args) => (
 export const withPagination = (args) => (
   <BaseComponent {...args}>
     <SampleSlide title="1" />
-
     <SampleSlide title="2" />
-
     <SampleSlide title="3" />
     <SampleSlide title="4" />
     <SampleSlide title="5" />
@@ -133,7 +125,7 @@ export const withImageComponent = (args) => (
   <BaseComponent {...args}>
     <CarouselSlide>
       <TextLabel>With Image Component</TextLabel>
-      <Image src={vizla} />
+      <Holder width={900} height={300} />
     </CarouselSlide>
 
     <SampleSlide />
@@ -144,7 +136,7 @@ export const withHTMLImageTag = (args) => (
   <BaseComponent {...args}>
     <CarouselSlide>
       <TextLabel>With HTML Image Tag</TextLabel>
-      <img src={vizla} />
+      <Holder width={900} height={300} />
     </CarouselSlide>
 
     <SampleSlide />
@@ -154,7 +146,6 @@ export const withHTMLImageTag = (args) => (
 export const withJustText = (args) => (
   <BaseComponent {...args}>
     <CarouselSlide style={{ width: '100%', height: '300px' }}>this is text div</CarouselSlide>
-
     <SampleSlide />
   </BaseComponent>
 )

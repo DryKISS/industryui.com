@@ -1,13 +1,21 @@
+/**
+ * Components - Molecules - Stepper - Icon - Active Circle
+ */
+
+// React
+import React from 'react'
+import { number } from 'prop-types'
+
+// Style
 import styled from 'styled-components'
 
-/* eslint-disable react/react-in-jsx-scope */
-const CheckedCircle = ({ size = 24 }) => {
+const CheckedCircle = ({ size }) => {
   return (
     <svg
-      width={`${size}`}
+      fill="none"
       height={`${size}`}
       viewBox={`0 0 ${size} ${size}`}
-      fill="none"
+      width={`${size}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <StyledCircle cx="12" cy="12" r="12" />
@@ -16,11 +24,20 @@ const CheckedCircle = ({ size = 24 }) => {
   )
 }
 
-const StyledPath = styled.path`
-  fill: ${({ theme }) => theme.STEPPER.colourCheckMark};
-`
 const StyledCircle = styled.circle`
   fill: ${({ theme }) => theme.STEPPER.colour};
 `
+
+const StyledPath = styled.path`
+  fill: ${({ theme }) => theme.STEPPER.colourCheckMark};
+`
+
+CheckedCircle.propTypes = {
+  size: number
+}
+
+CheckedCircle.defaultProps = {
+  size: 24
+}
 
 export default CheckedCircle

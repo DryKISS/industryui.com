@@ -24,6 +24,6 @@ export default {
   title: 'Organisms/Messaging/Message'
 }
 
-export const main = () => (
-  <Message config={{}} message={message} prevType="out" time="12:00" type="in" />
+export const main = (args) => (
+  <Message {...args} config={{}} message={message} prevType="out" time="12:00" type="in" />
 )

@@ -30,7 +30,7 @@ const article = {
   excerpt: 'Static Site development',
   heading: 'Static Site development',
   hero: true,
-  image: 'placeholder.svg',
+  image: 'https://via.placeholder.com/750x422',
   published: true,
   readtime: 2,
   slug: 'static-site-development',
