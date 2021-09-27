@@ -4,11 +4,10 @@
 
 // React
 import React from 'react'
+import { bool } from 'yup'
 import { number } from 'prop-types'
-
 // Style
 import styled from 'styled-components'
-import { bool } from 'yup'
 
 const DottedCircle = ({ size, active }) => {
   return (
@@ -32,7 +31,8 @@ const DottedCircle = ({ size, active }) => {
 }
 
 const StyledCircle = styled.circle`
-  stroke: ${({ theme, active }) => (active ? theme.STEPPER.colour : theme.STEPPER.colourInActive)};
+  stroke: ${({ theme, deactivated }) =>
+    deactivated ? theme.STEPPER.colour : theme.STEPPER.colourDeactivated};
 `
 
 DottedCircle.propTypes = {

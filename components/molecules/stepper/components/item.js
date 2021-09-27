@@ -2,29 +2,31 @@
  * Components - Molecules - Stepper - Item
  */
 
-// React
-import React from 'react'
 import { object, string } from 'prop-types'
-
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
 import ActiveCircle from './icons/activeCircle'
 import Button from '../../../atoms/button/button/button'
-import CircleQuestionIcon from '../../../icons/components/circleQuestion'
 import CheckedCircle from './icons/checkedCircle'
+import CircleQuestionIcon from '../../../icons/components/circleQuestion'
 import Divider from '../../../atoms/divider/divider'
 import DottedCircle from './icons/dottedCircle'
 import FullScreenIcon from '../../../icons/components/fullScreen'
 import PlayCircleIcon from '../../../icons/components/playCircle'
+// React
+import React from 'react'
 
 const renderContent = (content) =>
-  content.map(({ id, data }) => (
-    <StyledContentWrapper key={id}>
-      {typeof data === 'function' ? data() : data}
-    </StyledContentWrapper>
-  ))
+  content.map(
+    ({ id, data, active }) =>
+      active && (
+        <StyledContentWrapper key={id}>
+          {typeof data === 'function' ? data() : data}
+        </StyledContentWrapper>
+      )
+  )
 
 const renderActions = (actions) =>
   actions.map(
@@ -53,13 +55,13 @@ const renderLabelIcon = (labelIcon) => {
 
 const StepperItem = ({ item, maxWidth }) => {
   return (
-    <StyledStepperItem active={item.active !== false}>
+    <StyledStepperItem active={item.active !== false} deactivated={item.deactivated}>
       <ShowInRow>
         <ShowInColumn>
           <MainContent maxWidth={maxWidth}>
             <StyledIconContainer>
-              {!item.date && item.active !== true ? (
-                <DottedCircle active={item.active !== false} />
+              {!item.date && item.deactivated === true ? (
+                <DottedCircle active={false} />
               ) : item.date ? (
                 <CheckedCircle />
               ) : (
@@ -124,7 +126,9 @@ const StyledInfo = styled.p`
 
 const StyledStepperItem = styled.li`
   border-left: 3px solid
-    ${({ theme, active }) => (!active ? theme.STEPPER.colourInaActive : theme.STEPPER.colour)};
+    ${({ theme, deactivated }) =>
+      deactivated ? theme.STEPPER.colourDeactivated : theme.STEPPER.colour};
+
   padding: 0 1rem 1px;
   position: relative;
   &:last-child {
