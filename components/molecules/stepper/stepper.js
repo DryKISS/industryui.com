@@ -2,15 +2,16 @@
  * Components - Molecules - Stepper
  */
 
-import { array, func, oneOfType, string } from 'prop-types'
-
 // React
 import React from 'react'
+import { array, func, oneOfType, string } from 'prop-types'
+
+// Style
+import styled from 'styled-components'
+
 // UI
 import StepperItem from './components/item'
 import StepperSummary from './components/summary'
-// Style
-import styled from 'styled-components'
 
 const Stepper = ({ className, items, summary, maxWidth = '300px' }) => {
   return (

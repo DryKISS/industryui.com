@@ -4,8 +4,8 @@
 
 // React
 import React from 'react'
-import { bool } from 'yup'
-import { number } from 'prop-types'
+import { bool, number } from 'prop-types'
+
 // Style
 import styled from 'styled-components'
 
