@@ -3,8 +3,6 @@
  */
 
 import { object, string } from 'prop-types'
-// Style
-import styled, { css } from 'styled-components'
 
 // UI
 import ActiveCircle from './icons/activeCircle'
@@ -17,6 +15,8 @@ import FullScreenIcon from '../../../icons/components/fullScreen'
 import PlayCircleIcon from '../../../icons/components/playCircle'
 // React
 import React from 'react'
+// Style
+import styled from 'styled-components'
 
 const renderContent = (content) =>
   content.map(
