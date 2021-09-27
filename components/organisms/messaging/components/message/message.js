@@ -5,7 +5,6 @@
 // React
 import React, { memo, useState } from 'react'
 import { object, string } from 'prop-types'
-
 // Style
 import styled, { css } from 'styled-components'
 
@@ -42,13 +41,13 @@ const Message = memo(
       <SideActionsWrapper>
         <AvatarWrapper>{avatar}</AvatarWrapper>
 
-        {config.hasReply && (
+        {config?.hasReply && (
           <IconWrapper onClick={handleReplyClick} title="reply">
             <ReplyIcon />
           </IconWrapper>
         )}
 
-        {config.hasForward && (
+        {config?.hasForward && (
           <IconWrapper title="share">
             <ShareIcon />
           </IconWrapper>
@@ -72,11 +71,11 @@ const Message = memo(
     }
 
     const handleMouseOver = () => {
-      config.hasMenu && sethovered(true)
+      config?.hasMenu && sethovered(true)
     }
 
     const handleMouseLeave = () => {
-      config.hasMenu && sethovered(false)
+      config?.hasMenu && sethovered(false)
     }
 
     return (
@@ -99,7 +98,7 @@ const Message = memo(
           isSending={isSending}
           prevType={prevType}
           hasText={hasText()}
-          hasMenu={config.hasMenu}
+          hasMenu={config?.hasMenu}
           {...message}
           {...props}
         />

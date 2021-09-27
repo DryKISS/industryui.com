@@ -9,7 +9,7 @@ const STEPPER = {
   colour: THEME_COLOUR.primary,
   colourBackground: THEME_COLOUR.white,
   colourCheckMark: THEME_COLOUR.white,
-  colourInActive: THEME_COLOUR.dark,
+  colourDeactivated: THEME_COLOUR.dark,
   colourDate: '#CCCCCC',
   colourInfo: '#999999',
   colourContent: '#666666'

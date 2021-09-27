@@ -17,9 +17,10 @@ const Stepper = ({ className, items, summary, maxWidth = '300px' }) => {
   return (
     <StyledStepper>
       <ul>
-        {items.map((item) => (
-          <StepperItem item={item} key={item.id} maxWidth={maxWidth} />
-        ))}
+        {items.map(
+          (item) =>
+            item.active !== false && <StepperItem item={item} key={item.id} maxWidth={maxWidth} />
+        )}
       </ul>
 
       {summary && <StepperSummary summary={summary} />}
