@@ -161,7 +161,6 @@ const ThemeStyle = createGlobalStyle`
     vertical-align: baseline;
   }
 
-  [type="checkbox"],
   [type="radio"] {
     box-sizing: border-box;
     padding: 0;

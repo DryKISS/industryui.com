@@ -2,5 +2,5 @@ In some contexts like the Fixtures Grid, checking a checkbox should update the c
 
 ## Links
 
-[Bootstrap](http://getbootstrap.com/docs/4.4/components/forms/#checkboxes-and-radios)
-[Semantic UI](https://react.semantic-ui.com/elements/checkbox)
+- [Bootstrap](https://getbootstrap.com/docs/5.0/forms/checks-radios/)
+- [Semantic UI](https://react.semantic-ui.com/modules/checkbox/)

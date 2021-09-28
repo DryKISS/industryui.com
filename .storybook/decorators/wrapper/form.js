@@ -12,11 +12,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import Form from '../../../components/form/form/form'
 import Button from '../../../components/atoms/button/button/button'
+import Divider from '../../../components/atoms/divider/divider'
+import Form from '../../../components/form/form/form'
+
 
 const FormWrapper = (Story, props) => {
-  const { control, formState, handleSubmit, register, watch } = useForm({
+  const { formState, handleSubmit, register } = useForm({
     resolver: yupResolver(props.parameters.schema)
   })
 
@@ -24,7 +26,10 @@ const FormWrapper = (Story, props) => {
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
-      <Story params={{control, formState, register}} />
+      <Story params={{formState, register}} />
+
+      <Divider />
+
       <Button content="Submit" type="submit" />
     </Form>
   )

@@ -11,9 +11,11 @@ const formErrorStyle = ({ theme, isTyping, withAddon }) => {
     border-image: initial;
     border-style: solid;
     border-left-width: ${!withAddon && '0.25rem'};
+
     &:hover {
       border-color: ${!isTyping && theme.COLOUR.danger};
     }
+
     &:focus {
       border-color: ${theme.COLOUR.danger};
     }

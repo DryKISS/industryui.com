@@ -4,86 +4,134 @@
 
 // React
 import React from 'react'
-import { array, bool, object, string } from 'prop-types'
+import { bool, func, object, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import formErrorStyle from '../variables/formErrorStyle'
-import Legend from '../legend/legend'
 
-const Checkbox = ({ data, errors, legend, name, required, showError, stacked }) => {
+const Checkbox = ({ disabled, errors, inline, label, name, register, showError, value }) => {
   return (
-    <StyledFieldset errors={errors[name]}>
-      {legend && <Legend>{legend}</Legend>}
+    <StyledLabel inline={inline}>
+      {label}
 
-      {data.map(({ disabled, label, ...data }) => (
-        <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
-          <FieldHOC
-            component={StyledCheckbox}
-            disabled={disabled}
-            errors={errors[name]}
-            id={data.id}
-            name={name}
-            showError={showError}
-            type="checkbox"
-            {...data}
-          />
-          {label}
-        </StyledLabel>
-      ))}
-    </StyledFieldset>
+      <FieldHOC
+        component={StyledCheckbox}
+        disabled={disabled}
+        errors={errors[name]}
+        name={name}
+        showError={showError}
+        register={register}
+        type="checkbox"
+        value={value}
+      />
+
+      <StyledCheck errors={errors[name]} />
+    </StyledLabel>
   )
 }
 
-const StyledFieldset = styled.fieldset`
-  border-radius: 0.25rem;
-  color: ${({ theme }) => theme.COLOUR.dark};
+const StyledLabel = styled.label`
+  cursor: pointer;
+  display: block;
+  padding-left: 2rem;
+  position: relative;
+  user-select: none;
+
+  input[disabled] ~ span {
+    filter: none;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  ${({ inline }) =>
+    inline &&
+    css`
+      display: inline-block;
+      margin-right: 1rem;
+    `}
+`
+
+const StyledCheck = styled.span`
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.25em;
+  height: 1.5em;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1.5em;
+
+  &:invalid {
+    border-color: #dc3545;
+  }
+
+  &:active {
+    filter: brightness(90%);
+  }
+
+  &:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+    outline: 0;
+  }
+
+  &:after {
+    border: solid #fff;
+    border-width: 0 0.25rem 0.25rem 0;
+    content: '';
+    display: none;
+    height: 0.75rem;
+    left: 0.5rem;
+    position: absolute;
+    top: 0.25rem;
+    transform: rotate(45deg);
+    width: 0.5rem;
+  }
 
   ${({ errors }) =>
     errors &&
     css`
-      ${(props) => formErrorStyle(props)}
+      border-color: red;
       padding: 0.5rem;
     `}
 `
 
-const StyledLabel = styled.label`
-  cursor: pointer;
-  margin-right: 1.25rem;
-  position: relative;
-
-  ${({ stacked }) =>
-    stacked &&
-    css`
-      display: block;
-      margin: 0.5rem 0;
-    `}
-`
-
 const StyledCheckbox = styled.input`
-  cursor: pointer;
-  margin-right: 0.5rem;
+  position: absolute;
+  height: 0;
+  opacity: 0;
+  overflow: visible;
+  width: 0;
+
+  &:checked ~ span {
+    background-color: #0d6efd;
+    border-radius: 0.25em;
+    border-color: #0d6efd;
+  }
+
+  &:checked ~ span:after {
+    display: block;
+  }
 `
 
 Checkbox.propTypes = {
-  data: array,
   disabled: bool,
-  errors: object,
-  legend: string,
+  errors: object.isRequired,
+  inline: bool,
+  label: string,
   name: string.isRequired,
-  required: bool,
-  showError: bool,
-  stacked: bool
+  register: func.isRequired,
+  showError: bool
 }
 
 Checkbox.defaultProps = {
-  data: [],
+  disabled: false,
   errors: {},
-  showError: false,
-  stacked: false
+  inline: false,
+  showError: true
 }
 
 export default Checkbox

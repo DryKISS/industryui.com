@@ -30,10 +30,9 @@ const FieldHOC = ({
   showError,
   size,
   type,
-  validate
+  validate,
+  value
 }) => {
-  console.log('Errors', errors?.message, name)
-
   return (
     <>
       <Component
@@ -54,11 +53,7 @@ const FieldHOC = ({
         placeholder={placeholder}
         size={size}
         type={type}
-        // style={{
-        //   display: !show ? 'none' : undefined,
-        //   ...props.style
-        // }}
-        // {...props}
+        value={value}
       >
         {children}
       </Component>

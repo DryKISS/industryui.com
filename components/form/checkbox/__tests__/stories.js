@@ -9,15 +9,16 @@ import React from 'react'
 import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
 
 // Yup
-import { object, string } from 'yup'
+import { array, bool, object } from 'yup'
 
 // UI
 import Checkbox from '../checkbox'
 import Readme from '../README.md'
-import DATA from '../__mocks__/checkbox'
 
 const schema = object().shape({
-  checkbox: string().required()
+  checkbox: bool().oneOf([true], 'Accept checkbox'),
+  checked: bool().oneOf([true], 'Accept checkbox'),
+  pet: array().min(1)
 })
 
 export default {
@@ -34,6 +35,74 @@ export default {
   title: 'Form/Checkbox'
 }
 
-export const Main = (args, { params: { formState, register } }) => (
-  <Checkbox {...args} errors={formState.errors} data={DATA} name="checkbox" register={register} />
-)
+export const Main = (args, { params: { formState, register } }) => {
+  return (
+    <Checkbox {...args} errors={formState.errors} label="Yes" name="checkbox" register={register} />
+  )
+}
+
+export const Stacked = (args, { params: { formState, register } }) => {
+  return (
+    <>
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        label="Yes"
+        name="checkbox"
+        register={register}
+      />
+
+      <Checkbox {...args} errors={formState.errors} label="No" name="checked" register={register} />
+    </>
+  )
+}
+
+export const Inline = (args, { params: { formState, register } }) => {
+  return (
+    <>
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="Yes"
+        name="checkbox"
+        register={register}
+      />
+
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="No"
+        name="checked"
+        register={register}
+      />
+    </>
+  )
+}
+
+export const Grouped = (args, { params: { formState, register } }) => {
+  return (
+    <>
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="Cat"
+        name="pet"
+        register={register}
+        value="cat"
+      />
+
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="Dog"
+        name="pet"
+        register={register}
+        value="dog"
+      />
+    </>
+  )
+}

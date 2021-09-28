@@ -19,7 +19,7 @@ const StyledInput = styled.input`
       ${(props) => formErrorStyle(props)}
     `}
 
-    ${({ size }) => {
+  ${({ size }) => {
     switch (size) {
       case THEME_SIZE.SM:
         return css`
