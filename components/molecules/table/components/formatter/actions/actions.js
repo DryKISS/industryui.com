@@ -12,7 +12,7 @@ import THEME_CONTEXT from '../../../../../constants/context'
 import TableActionsTooltip from './tooltip'
 import TableActionsButton from './button'
 
-const TableActions = ({ align, row, data }) => {
+const TableActions = ({ align, data, row }) => {
   let dataArray
 
   if (typeof data === 'function') {

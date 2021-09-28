@@ -41,7 +41,6 @@ bower_components
 # Cordova
 # hooks
 platforms
-plugins
 
 # Compiled source
 *.com

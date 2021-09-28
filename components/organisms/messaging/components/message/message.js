@@ -5,7 +5,6 @@
 // React
 import React, { memo, useState } from 'react'
 import { object, string } from 'prop-types'
-
 // Style
 import styled, { css } from 'styled-components'
 
@@ -25,6 +24,7 @@ const Message = memo(
     ) : (
       <Avatar size="xxs" content={message.from[0]} />
     )
+
     const handleReplyClick = () => {
       MessagingCommunicationService.send({
         name: MessageNames.Messaging.MESSAGING_ACTION,
@@ -36,21 +36,25 @@ const Message = memo(
     }
 
     const [hovered, sethovered] = useState(false)
+
     const sideActions = (
       <SideActionsWrapper>
         <AvatarWrapper>{avatar}</AvatarWrapper>
-        {config.hasReply && (
+
+        {config?.hasReply && (
           <IconWrapper onClick={handleReplyClick} title="reply">
             <ReplyIcon />
           </IconWrapper>
         )}
-        {config.hasForward && (
+
+        {config?.hasForward && (
           <IconWrapper title="share">
             <ShareIcon />
           </IconWrapper>
         )}
       </SideActionsWrapper>
     )
+
     const hasText = () => {
       let plainText = ''
       if (message.content.blocks) {
@@ -65,12 +69,15 @@ const Message = memo(
       }
       return false
     }
+
     const handleMouseOver = () => {
-      config.hasMenu && sethovered(true)
+      config?.hasMenu && sethovered(true)
     }
+
     const handleMouseLeave = () => {
-      config.hasMenu && sethovered(false)
+      config?.hasMenu && sethovered(false)
     }
+
     return (
       <RowWrapper
         hasTimeHeader={message.headerTime}
@@ -91,7 +98,7 @@ const Message = memo(
           isSending={isSending}
           prevType={prevType}
           hasText={hasText()}
-          hasMenu={config.hasMenu}
+          hasMenu={config?.hasMenu}
           {...message}
           {...props}
         />
@@ -101,6 +108,7 @@ const Message = memo(
   },
   () => true
 )
+
 const TimeHeader = styled.div`
   position: absolute;
   margin-top: -0.1rem;
@@ -165,6 +173,7 @@ const RowWrapper = styled.div`
       margin-top: 1rem;
     `}
 `
+
 const AvatarWrapper = styled.div`
   margin: 0 0.5rem;
   margin-bottom: 0.5rem;
@@ -173,8 +182,10 @@ const AvatarWrapper = styled.div`
     background: ${({ theme: { MESSAGING } }) => MESSAGING.avatarBackground};
   }
 `
+
 Message.propTypes = {
   message: object.isRequired,
   prevType: string.isRequired
 }
+
 export default Message

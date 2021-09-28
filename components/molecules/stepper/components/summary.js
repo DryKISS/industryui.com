@@ -1,5 +1,5 @@
 /**
- * Stepper Summary
+ * Components - Molecules - Stepper - Summary
  */
 
 // React
@@ -47,4 +47,5 @@ StepperSummary.propTypes = {
   className: string,
   summary: array.isRequired
 }
+
 export default StepperSummary

@@ -35,7 +35,7 @@ export default {
 
 export const main = (args) => (
   <Figure>
-    <Figure.Image src="/placeholder.svg" itemprop="contentUrl" />
+    <Figure.Image src="https://via.placeholder.com/750x422" itemprop="contentUrl" />
     <Figure.Caption {...args}>
       DryKISS - Don't repeat yourself, Keep It Simple Stupid
     </Figure.Caption>
