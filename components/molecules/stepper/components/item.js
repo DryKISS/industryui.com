@@ -82,9 +82,8 @@ const StepperItem = ({ item, maxWidth }) => {
             )}
           </MainContent>
 
-          {item.active && item.actions
+          {item.actions
             ? item.actions &&
-              item.active &&
               item.actions.length > 0 && (
                 <StyledContent>{renderActions(item.actions)}</StyledContent>
               )
@@ -98,7 +97,6 @@ const StepperItem = ({ item, maxWidth }) => {
     </StyledStepperItem>
   )
 }
-
 const ShowInColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -168,7 +166,6 @@ const StyledLabelWrapper = styled.div`
   gap: 0.5rem;
   margin: 0 0.25rem;
 `
-
 const StyledLabel = styled.span`
   color: ${({ active, theme }) => (active ? theme.COLOUR.black : theme.COLOUR.dark)};
 `
