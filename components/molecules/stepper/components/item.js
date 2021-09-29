@@ -2,7 +2,12 @@
  * Components - Molecules - Stepper - Item
  */
 
+// React
+import React from 'react'
 import { object, string } from 'prop-types'
+
+// Style
+import styled from 'styled-components'
 
 // UI
 import ActiveCircle from './icons/activeCircle'
@@ -13,10 +18,6 @@ import Divider from '../../../atoms/divider/divider'
 import DottedCircle from './icons/dottedCircle'
 import FullScreenIcon from '../../../icons/components/fullScreen'
 import PlayCircleIcon from '../../../icons/components/playCircle'
-// React
-import React from 'react'
-// Style
-import styled from 'styled-components'
 
 const renderContent = (content) =>
   content.map(
