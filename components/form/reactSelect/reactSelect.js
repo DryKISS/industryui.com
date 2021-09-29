@@ -1,9 +1,9 @@
 /**
- * Form - React Select
+ * Components - Form - React Select
  */
 
 // React
-import React, { forwardRef } from 'react'
+import React from 'react'
 
 // React Select
 import Select from 'react-select'
@@ -16,21 +16,20 @@ import { Controller } from 'react-hook-form'
 import styled, { css } from 'styled-components'
 
 // UI
-import defaultStyles from './styles'
+import defaultStyles from './components/styles'
 import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
 // Props
-import { defaultProps, propTypes } from './props'
+import { defaultProps, propTypes } from './components/props'
 
-const ReactSelectField = ({
+const ReactSelect = ({
   async,
   cacheOptions,
   control,
   defaultOptions,
   defaultValue,
-  error,
   errors,
   loadOptions,
   name,
@@ -39,24 +38,23 @@ const ReactSelectField = ({
   size,
   ...parentProps
 }) => {
-  const Component = forwardRef((data, ref) => {
+  const Component = (data) => {
     if (async) {
       return (
         <AsyncSelect
           cacheOptions={cacheOptions}
           defaultOptions={defaultOptions}
           loadOptions={loadOptions}
-          ref={ref}
           {...data}
         />
       )
     } else {
-      return <Select ref={ref} {...data} />
+      return <Select {...data} />
     }
-  })
+  }
 
   return (
-    <Wrapper size={size} error={error || errors[name]}>
+    <Wrapper size={size} errors={errors[name]}>
       <Controller
         control={control}
         defaultValue={defaultValue}
@@ -64,6 +62,18 @@ const ReactSelectField = ({
         render={(props) => (
           <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
         )}
+
+        // render={({ field: { onChange, onBlur, value, name, ref } }) => (
+        //   <Component
+        //     options={options}
+        //     selectedOption={value}
+        //     // onBlur={onBlur}
+        //     // onChange={(value) => {
+        //     //   onChange(value)
+        //     // }}
+        //     {...parentProps}
+        //   />
+        // )}
       />
     </Wrapper>
   )
@@ -75,6 +85,7 @@ const Wrapper = styled.div`
     display:flex;
     padding: 0;
     color: ${({ theme }) => theme.COLOUR.dark};
+
     ${({ size }) => {
       switch (size) {
         case THEME_SIZE.SM:
@@ -97,8 +108,8 @@ const Wrapper = styled.div`
     }}
   }
 
-  ${({ error }) =>
-    error &&
+  ${({ errors }) =>
+    errors &&
     css`
       ._,
       & > div:first-of-type > div:first-of-type {
@@ -123,7 +134,7 @@ const Wrapper = styled.div`
   }
 `
 
-ReactSelectField.propTypes = propTypes
-ReactSelectField.defaultProps = defaultProps(defaultStyles)
+ReactSelect.propTypes = propTypes
+ReactSelect.defaultProps = defaultProps(defaultStyles)
 
-export default ReactSelectField
+export default ReactSelect

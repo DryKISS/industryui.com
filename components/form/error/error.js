@@ -6,32 +6,22 @@
 import React from 'react'
 import { string } from 'prop-types'
 
-// Style
-import styled from 'styled-components'
-
 // UI
 import Space from '../../atoms/space/space'
-import THEME_SIZE from '../../constants/size'
+import Text from '../../atoms/text/text'
 
-const FormError = ({ message, colour, ...props }) => {
+const Error = ({ message }) => {
   return (
-    <Space marginTop={THEME_SIZE.XS}>
-      <StyledSmall color={colour}>{message}</StyledSmall>
+    <Space marginTop="xs">
+      <Text context="danger" size="xs">
+        {message}
+      </Text>
     </Space>
   )
 }
 
-const StyledSmall = styled.small`
-  color: ${({ theme, colour }) => colour ?? theme.COLOUR.danger};
-  display: block;
-  font-size: 0.625rem;
-  font-weight: 400;
-  width: 100%;
-`
-
-FormError.propTypes = {
-  message: string.isRequired,
-  colour: string
+Error.propTypes = {
+  message: string.isRequired
 }
 
-export default FormError
+export default Error

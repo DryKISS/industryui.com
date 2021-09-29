@@ -1,5 +1,5 @@
 /**
- * Form - Currency
+ * Compnents - Form - Currency
  */
 
 // React
@@ -13,8 +13,9 @@ import { object, string } from 'yup'
 
 // UI
 import Button from '../../../atoms/button/button/button'
-import CurrencyInput from '../../currency/currencyInput'
+import Currency from '../../currency/currency'
 import InputGroupAddon from '../../inputGroup/addon'
+import Label from '../../label/label'
 import Readme from '../README.md'
 
 const schema = object().shape({
@@ -23,11 +24,10 @@ const schema = object().shape({
 
 export default {
   args: {
-    label: 'Currency input',
-    name: 'expense',
-    vat: 'Incl VAT'
+    label: 'Currency',
+    name: 'expense'
   },
-  component: CurrencyInput,
+  component: Currency,
   decorators: [FormWrapper],
   parameters: {
     docs: {
@@ -41,13 +41,17 @@ export default {
 }
 
 export const Main = (args, { params: { formState, register } }) => (
-  <>
-    <CurrencyInput {...args} errors={formState.errors} register={register} />
+  <Label label="Currency">
+    <Currency {...args} errors={formState.errors} register={register} />
+  </Label>
+)
 
-    <CurrencyInput {...args} errors={formState.errors} register={register}>
+export const WithButton = (args, { params: { formState, register } }) => (
+  <Label label="Currency">
+    <Currency {...args} errors={formState.errors} register={register} size="lg">
       <InputGroupAddon addonType="append">
         <Button content="Submit" type="submit" size="sm" />
       </InputGroupAddon>
-    </CurrencyInput>
-  </>
+    </Currency>
+  </Label>
 )

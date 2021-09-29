@@ -15,7 +15,7 @@ import Button from '../../../../atoms/button/button/button'
 import Form from '../../../../form/form/form'
 import Label from '../../../../form/label/label'
 import Input from '../../../../form/input/input'
-import SelectField from '../../../../form/select/select'
+import Select from '../../../../form/select/select'
 import Checkbox from '../../../../form/checkbox/checkbox'
 
 import { BaseComponent } from './stories'
@@ -71,15 +71,15 @@ const CustomEventsStory = () => {
         </Label>
 
         <Label label="Background Color">
-          <SelectField name="backgroundColor" options={colorEvent} {...defaultProps} />
+          <Select name="backgroundColor" options={colorEvent} {...defaultProps} />
         </Label>
 
         <Label label="Text color">
-          <SelectField name="textColor" options={colorEvent} {...defaultProps} />
+          <Select name="textColor" options={colorEvent} {...defaultProps} />
         </Label>
 
         <Label label="Border Color">
-          <SelectField name="borderColor" options={colorEvent} {...defaultProps} />
+          <Select name="borderColor" options={colorEvent} {...defaultProps} />
         </Label>
 
         <Label label="Url">
@@ -92,7 +92,7 @@ const CustomEventsStory = () => {
         </Label>
 
         <Label label="Display Event Options">
-          <SelectField name="displayEventOptions" options={displayEventOptions} {...defaultProps} />
+          <Select name="displayEventOptions" options={displayEventOptions} {...defaultProps} />
         </Label>
 
         <Label label="overlap">
@@ -104,7 +104,7 @@ const CustomEventsStory = () => {
         </Label>
 
         <Label label="Asset Type">
-          <SelectField name="assetType" options={assetType} {...defaultProps} />
+          <Select name="assetType" options={assetType} {...defaultProps} />
         </Label>
 
         <Button content="Submit" type="submit" />

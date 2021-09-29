@@ -1,5 +1,5 @@
 /**
- * Constant - Expenses types
+ * Components - Form - Mocks - Expenses
  */
 const EXPENSES = [
   {

@@ -3,7 +3,7 @@
  */
 
 // UI
-import THEME_COLOUR from '../../constants/colour'
+import THEME_COLOUR from '../../../constants/colour'
 
 const defaultStyles = {
   container: (base, state) => {

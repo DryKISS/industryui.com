@@ -6,16 +6,21 @@
 import React from 'react'
 
 // UI
-import FormError from '../error/error'
+import Error from '../error/error'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
-import THEME_SIZE from '../../constants/size'
 
 const FieldHOC = ({
   autoComplete,
+  autoFocus,
   component: Component,
   errors,
   children,
+  className,
+  cols,
+  data,
+  defaultValue,
+  dir,
   disabled,
   helperMessage,
   id,
@@ -25,48 +30,59 @@ const FieldHOC = ({
   minLength,
   name,
   placeholder,
+  readOnly,
   regExp,
   register,
+  rows,
   showError,
   size,
+  spellcheck,
+  style,
+  tabIndex,
   type,
   validate,
-  value
+  value,
+  wrap
 }) => {
   return (
     <>
       <Component
         aria-label={name}
         autoComplete={autoComplete}
-        errors={errors?.message}
+        autoFocus={autoFocus}
+        className={className}
+        cols={cols}
+        {...data}
+        defaultValue={defaultValue}
+        dir={dir}
         disabled={disabled}
+        errors={errors.message}
         id={id}
         key={name}
-        {...register(name, {
-          validate: validate,
-          ...(max && { max: max }),
-          ...(min && { min: min }),
-          ...(maxLength && { maxLength: maxLength }),
-          ...(minLength && { minLength: minLength }),
-          ...(regExp && { pattern: new RegExp(regExp) })
-        })}
+        {...register(name)}
         placeholder={placeholder}
+        readOnly={readOnly}
+        rows={rows}
         size={size}
+        spellcheck={spellcheck}
+        style={style}
+        tabIndex={tabIndex}
         type={type}
         value={value}
+        wrap={wrap}
       >
         {children}
       </Component>
 
       {helperMessage && (
-        <Space marginTop={THEME_SIZE.SM} marginBottom={THEME_SIZE.XS}>
-          <Text size={THEME_SIZE.XS} context="default">
+        <Space marginTop="sm" marginBottom="xs">
+          <Text size="xs" context="default">
             {helperMessage}
           </Text>
         </Space>
       )}
 
-      {showError && <FormError message={errors?.message || ''} />}
+      {showError && <Error message={errors?.message || ''} />}
     </>
   )
 }

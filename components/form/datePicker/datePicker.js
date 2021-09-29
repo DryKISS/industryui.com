@@ -1,12 +1,12 @@
 /**
- * Components - Form - DatePicker - Calendar
+ * Components - Form - DatePicker
  */
 
 // React
 import React from 'react'
 
 // Date Picker
-import DatePicker from 'react-datepicker'
+import ReactDatePicker from 'react-datepicker'
 
 // React Hook Form
 import { Controller } from 'react-hook-form'
@@ -15,10 +15,10 @@ import { Controller } from 'react-hook-form'
 import styled, { css } from 'styled-components'
 
 // UI
-import StyledInput from '../../input/components/style'
-import propTypes from './props'
+import StyledInput from '../input/components/style'
+import propTypes from './components/propTypes'
 
-const DatePickerCalendar = ({
+const DatePicker = ({
   control,
   defaultValue,
   disableInitialDateBackground,
@@ -34,15 +34,15 @@ const DatePickerCalendar = ({
         control={control}
         defaultValue={defaultValue}
         name={name}
-        render={({ onChange, onBlur, value, name, ref }) => (
-          <DatePicker
+        render={({ field: { onChange, onBlur, value, name, ref } }) => (
+          <ReactDatePicker
             customInput={<StyledInput errors={errors[name]} />}
             onBlur={onBlur}
             onChange={(date) => {
               onChange(date)
               handleOnChange && handleOnChange(date)
             }}
-            placeholderText={placeholder ?? 'Click to select time'}
+            placeholderText={placeholder}
             selected={value}
             wrapperClassName="datePicker"
             {...parentProps}
@@ -57,6 +57,7 @@ const StyleSpan = styled.span`
   .datePicker {
     width: 100%;
   }
+
   ${({ disableInitialDateBackground }) =>
     disableInitialDateBackground &&
     css`
@@ -68,9 +69,9 @@ const StyleSpan = styled.span`
     `}
 `
 
-DatePickerCalendar.propTypes = propTypes
+DatePicker.propTypes = propTypes
 
-DatePickerCalendar.defaultProps = {
+DatePicker.defaultProps = {
   autoFocus: false,
   dateFormat: 'd MMM yyyy',
   dropdownMode: 'scroll',
@@ -78,10 +79,11 @@ DatePickerCalendar.defaultProps = {
   isClearable: true,
   minDate: null,
   name: 'expiryAt',
+  placeholder: 'Click to select time',
   shouldCloseOnSelect: true,
   showTimeSelect: false,
   timeIntervals: 30,
   todayButton: 'Today'
 }
 
-export default DatePickerCalendar
+export default DatePicker

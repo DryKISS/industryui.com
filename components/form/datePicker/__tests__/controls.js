@@ -1,5 +1,5 @@
 /**
- * Components - Form - DatePicker - Calendar - Controls
+ * Components - Form - DatePicker - Controls
  */
 
 export const args = {

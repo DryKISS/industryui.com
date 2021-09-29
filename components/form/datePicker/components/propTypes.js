@@ -1,5 +1,5 @@
 /**
- * Form - DatePicker - Calendar - Properties
+ * Components - Form - DatePicker - Properties
  */
 
 // React

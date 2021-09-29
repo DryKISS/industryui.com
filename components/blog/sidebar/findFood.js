@@ -28,7 +28,7 @@ import styled from 'styled-components'
 // UI
 import BlogSection from './components/section'
 import Button from '../../atoms/button/button/button'
-import FormError from '../../form/error/error'
+import Error from '../../form/error/error'
 import Form from '../../form/form/form'
 import Input from '../../form/input/input'
 import Label from '../../form/label/label'
@@ -96,7 +96,7 @@ const BlogFindFood = ({ colour }) => {
                 />
               </InputGroupAddon>
 
-              {errors.postCode && <FormError message={errors.postCode.message} />}
+              {errors.postCode && <Error message={errors.postCode.message} />}
               {msg && <div style={{ color: '#fff' }}>{msg}</div>}
             </InputGroup>
           </Label>

@@ -9,10 +9,10 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
 // UI
-import Button from '../../atoms/button/button/button'
-import InputGroup from '../inputGroup/group'
-import InputGroupAddon from '../inputGroup/addon'
-import Input from '../input/input'
+import Button from '../../../atoms/button/button/button'
+import InputGroup from '../../inputGroup/group'
+import InputGroupAddon from '../../inputGroup/addon'
+import Input from '../../input/input'
 
 // Props
 import { defaultProps, propTypes } from './props'

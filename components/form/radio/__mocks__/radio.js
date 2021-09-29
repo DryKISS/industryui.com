@@ -1,7 +1,8 @@
 /**
  * Components - Form - Radio - Mocks
  */
-export const RADIO_GENDER = (genderToggle = 'no') => [
+
+const RADIO_GENDER = (genderToggle = 'no') => [
   {
     id: 'no',
     label: 'No preference',
@@ -18,3 +19,5 @@ export const RADIO_GENDER = (genderToggle = 'no') => [
     value: 'female'
   }
 ]
+
+export default RADIO_GENDER

@@ -1,6 +1,5 @@
 /**
  * Dropzone
- * Allows a user to Upload multiple images
  */
 
 // React
@@ -14,13 +13,13 @@ import { useDropzone } from 'react-dropzone'
 import styled, { css } from 'styled-components'
 
 // UI
-import Column from '../../../atoms/grid/Column'
-import Row from '../../../atoms/grid/Row'
-import Text from '../../../atoms/text/text'
-import Accept from './accept'
-import DropzonePreview from './preview'
+import Accept from './components/accept'
+import Column from '../../atoms/grid/Column'
+import DropzonePreview from './components/preview'
+import Row from '../../atoms/grid/Row'
+import Text from '../../atoms/text/text'
 
-const Dropzone = ({ accept, disabled, multiple, onChange }) => {
+const Dropzone = ({ accept, disabled, errors, multiple, onChange }) => {
   const [files, setFiles] = useState([])
 
   useEffect(
@@ -81,6 +80,7 @@ const Dropzone = ({ accept, disabled, multiple, onChange }) => {
         dragAccept={isDragAccept}
         dragReject={isDragReject}
         disabled={disabled}
+        errors={errors}
         {...getRootProps()}
       >
         <input {...getInputProps()} />
@@ -120,6 +120,13 @@ const StyledContainer = styled.div`
   text-align: center;
   transition: border 0.24s ease-in-out;
   width: 100%;
+
+  ${({ errors }) =>
+    errors &&
+    css`
+      border-color: ${({ theme }) => theme.COLOUR.danger};
+    `}
+
   ${({ disabled }) =>
     disabled &&
     css`

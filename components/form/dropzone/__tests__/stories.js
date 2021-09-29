@@ -1,18 +1,19 @@
 /**
- * React Select
+ * Components - Form - Dropzone
  */
 
 // React
 import React from 'react'
 
 // Storybook
-import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
+import FormWrapperControl from '../../../../.storybook/decorators/wrapper/formControl'
 
 // Yup
 import { object, string } from 'yup'
 
 // UI
 import DropzoneController from '../controller'
+import Error from '../../error/error'
 import Readme from '../README.md'
 
 const schema = object().shape({
@@ -21,7 +22,7 @@ const schema = object().shape({
 
 export default {
   component: DropzoneController,
-  decorators: [FormWrapper],
+  decorators: [FormWrapperControl],
   parameters: {
     docs: {
       description: {
@@ -34,7 +35,23 @@ export default {
 }
 
 export const Main = (args, { params: { control, formState } }) => {
+  console.log(formState.errors)
+
+  const onChange = (change) => {
+    console.info('Changed', change)
+  }
+
   return (
-    <DropzoneController {...args} accept="image/*" control={control} errors={formState.errors} />
+    <>
+      <DropzoneController
+        {...args}
+        accept="image/*"
+        control={control}
+        errors={formState.errors}
+        multiple={true}
+        onChange={onChange}
+      />
+      <Error message={formState.errors?.dropzone?.message || ''} />
+    </>
   )
 }

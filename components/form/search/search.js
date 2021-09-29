@@ -25,7 +25,7 @@ const Search = ({
   type
 }) => {
   return (
-    <InputGroup>
+    <InputGroup >
       {prependSearchIcon && (
         <InputGroupAddon addonType="prepend" text>
           <Icon size="sm" icon="search" prefix={prefix} />
@@ -37,6 +37,7 @@ const Search = ({
         name="query"
         placeholder={placeholder}
         register={register}
+        size="lg"
         type={type}
       />
 

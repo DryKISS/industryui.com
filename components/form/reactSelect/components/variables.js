@@ -1,6 +1,7 @@
 /**
  * Form - React Select - Variables
  */
+
 const SELECT = {
   DEFAULT_COLOUR: 'rgb(102, 102, 102)',
   FONT_SIZE: {

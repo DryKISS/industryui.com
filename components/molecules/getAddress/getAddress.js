@@ -13,7 +13,7 @@ import styled, { css } from 'styled-components'
 import Button from '../../atoms/button/button/button'
 import ConfigContext from '../../services/config/context'
 import Dropdown from '../dropdown/dropdown'
-import FormError from '../../form/error/error'
+import Error from '../../form/error/error'
 import Input from '../../form/input/input'
 import Label from '../../form/label/label'
 import GetAddressService from '../../services/getAddress/getAddress'
@@ -95,9 +95,11 @@ const GetAddress = ({
           <Button onClick={handleSearchClick} content="Search" context="primary" size="sm" />
         </InputGroupAddon>
       </InputWrapper>
+
       {(errors[name] || Errors[name]) && (
-        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
+        <Error message={errors[name] ? errors[name].message : Errors[name].message} />
       )}
+
       {IsLoading && (
         <LoadingWrapper size={size}>
           <Shimmer duration={500} />

@@ -5,9 +5,6 @@
 // React
 import React from 'react'
 
-// Storybook
-import CountryControl from '../../../../.storybook/decorators/controls/country'
-
 // UI
 import Address from '../address'
 import Readme from '../README.md'
@@ -21,9 +18,6 @@ export default {
     line3: 'Bermondsey',
     postcode: 'W1 2N',
     town: 'London'
-  },
-  argTypes: {
-    country: CountryControl
   },
   component: Address,
   parameters: {

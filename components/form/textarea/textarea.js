@@ -15,7 +15,7 @@ import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
-const TextareaField = ({
+const Textarea = ({
   autoFocus,
   className,
   cols,
@@ -76,7 +76,7 @@ const StyledTextarea = styled.textarea`
     padding: 0.5rem 0.725rem;
 `
 
-TextareaField.propTypes = {
+Textarea.propTypes = {
   autoFocus: bool,
   className: any,
   cols: number,
@@ -95,11 +95,11 @@ TextareaField.propTypes = {
   wrap: oneOf(['soft', 'hard'])
 }
 
-TextareaField.defaultProps = {
+Textarea.defaultProps = {
   autoFocus: false,
   dir: 'ltr',
   rows: 5,
   size: 'md'
 }
 
-export default TextareaField
+export default Textarea

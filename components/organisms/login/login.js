@@ -17,7 +17,7 @@ import schema from './schema'
 import styled from 'styled-components'
 
 // UI
-import FormError from '../../form/error/error'
+import Error from '../../form/error/error'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
 import UserContext from '../../services/authentication/context'
@@ -29,7 +29,7 @@ import Label from '../../form/label/label'
 import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
 
-const ErrMessage = (message) => <FormError message={message} />
+const ErrMessage = (message) => <Error message={message} />
 
 const Login = ({
   blockSubmitButton,

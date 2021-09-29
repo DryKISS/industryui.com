@@ -1,79 +1,61 @@
 /**
- * Select
+ * Components - Form - Select - Story
  */
 
 // React
 import React from 'react'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Storybook
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
 
 // Yup
 import { object, string } from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import Form from '../../form/form'
-import Label from '../../label/label'
-import SelectField from '../../select/select'
-import SelectCountryField from '../../select/country'
-import Text from '../../../atoms/text/text'
+import Select from '../../select/select'
 import Readme from '../README.md'
-import COLOURS from '../__mocks__/colours'
 import EXPENSES from '../__mocks__/expenses'
 
+const schema = object().shape({
+  select: string().required()
+})
+
 export default {
-  title: 'Form/Select',
-  component: SelectField,
+  component: Select,
+  decorators: [FormWrapper],
   parameters: {
     docs: {
       description: {
         component: Readme
       }
-    }
-  }
+    },
+    schema: schema
+  },
+  title: 'Form/Select'
 }
 
-const BaseComponent = (props = {}) => {
-  const schema = object().shape({
-    select: string().required()
-  })
-
-  const { errors, getValues, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
-  })
-
-  const onSubmit = (data) => {}
-
-  const defaultProps = {
-    data: { name: 'fred' },
-    defaultValue: '',
-    disabled: false,
-    errors: errors,
-    name: 'select',
-    placeholder: 'Range',
-    range: [],
-    register: register,
-    showError: true,
-    ...props
-  }
-
+export const Main = (args, { params: { formState, register } }) => {
   return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <Label label="Select">
-        {!props.country && <SelectField {...defaultProps} />}
-        {props.country && <SelectCountryField {...defaultProps} />}
-      </Label>
-
-      <Button content="Submit" type="submit" />
-
-      {getValues() && <Text>{getValues().select}</Text>}
-    </Form>
+    <Select
+      {...args}
+      data={{ name: 'fred' }}
+      errors={formState.errors}
+      name="select"
+      options={EXPENSES}
+      register={register}
+    />
   )
 }
 
-export const main = () => <BaseComponent options={COLOURS} />
-export const optionGroups = () => <BaseComponent options={EXPENSES} />
-export const country = () => <BaseComponent country />
-export const range = () => <BaseComponent range={[20, 0]} />
+export const Range = (args, { params: { formState, register } }) => {
+  return (
+    <Select
+      {...args}
+      errors={formState.errors}
+      name="select"
+      placeholder="Range"
+      range={[20, 0]}
+      register={register}
+    />
+  )
+}

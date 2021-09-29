@@ -19,11 +19,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Button from '../../../atoms/button/button/button'
 import Checkbox from '../../checkbox/checkbox'
 import Column from '../../../atoms/grid/Column'
-import CurrencyInput from '../../currency/currencyInput'
-import DatePickerCalendar from '../../datePicker/calendar/calendar'
+import Currency from '../../currency/currency'
+import DatePicker from '../../datePicker/datePicker'
 import Divider from '../../../atoms/divider/divider'
-import Dropzone from '../../dropzone/react-dropzone/dropzone'
-import FormError from '../../error/error'
+import Dropzone from '../../dropzone/dropzone'
+import Error from '../../error/error'
 import Input from '../../input/input'
 import Form from '../../form/form'
 import Label from '../../label/label'
@@ -31,25 +31,24 @@ import Heading from '../../../atoms/heading/heading'
 import InputGroup from '../../inputGroup/group'
 import InputGroupAddon from '../../inputGroup/addon'
 import PercentInput from '../../percent/percentInput'
-import RadioField from '../../radio/radio'
-import ReactSelectField from '../../reactSelect/reactSelect'
+import Radio from '../../radio/radio'
+import ReactSelect from '../../reactSelect/reactSelect'
 import Row from '../../../atoms/grid/Row'
 import Search from '../../search/search'
-import SelectField from '../../select/select'
+import Select from '../../select/select'
 import Space from '../../../atoms/space/space'
 import Text from '../../../atoms/text/text'
-import TextareaField from '../../textarea/textarea'
+import Textarea from '../../textarea/textarea'
 import THEME_SIZE from '../../../constants/size'
 import Readme from '../README.md'
 
 // Data
 import enGB from 'date-fns/locale/en-GB'
-import { RADIO_GENDER } from '../../radio/__mocks__/radio'
+import RADIO_GENDER from '../../radio/__mocks__/radio'
 import Options from '../../reactSelect/__mocks__/options'
-import COLOURS from '../../select/__mocks__/colours'
+import EXPENSES from '../../select/__mocks__/expenses'
 
 export default {
-  title: 'Form',
   component: Form,
   parameters: {
     docs: {
@@ -57,7 +56,8 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Form/Form'
 }
 
 const schema = object().shape({
@@ -89,8 +89,8 @@ const checkbox = [
   }
 ]
 
-const All = ({ ...args }) => {
-  const { control, errors, handleSubmit, register } = useForm({
+export const All = () => {
+  const { control, formState, handleSubmit, register } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -98,16 +98,14 @@ const All = ({ ...args }) => {
     console.info(data)
   }
 
-  const colMd = args.ColumnWidth
-  const rowBackground = args.backgroundColour
-
   const defaultProps = {
-    errors: errors,
-    register: register,
-    size: args.size
+    control,
+    errors: formState.errors,
+    register,
+    size: 'lg'
   }
 
-  const ErrMessage = (message) => <FormError message={message} />
+  const ErrMessage = (message) => <Error message={message} />
 
   return (
     <Form handleSubmit={handleSubmit(onSubmit)}>
@@ -115,19 +113,21 @@ const All = ({ ...args }) => {
 
       <Space />
 
-      <Text>{args.formTitle}</Text>
+      <Text>
+        Grid can be used to layout a form, we do not need to repeat rows as the columns will wrap.
+      </Text>
 
       <Space />
 
-      <Row style={{ background: rowBackground }}>
-        <Column md={colMd}>
+      <Row>
+        <Column md={6}>
           <Label size="md" label="Name">
             <Input {...defaultProps} name="name" />
-            {errors.name && ErrMessage(errors.name.message)}
+            {formState.errors.name && ErrMessage(formState.errors.name.message)}
           </Label>
         </Column>
 
-        <Column md={colMd}>
+        <Column md={6}>
           <Label size="md" label="Email">
             <Input
               {...defaultProps}
@@ -135,18 +135,18 @@ const All = ({ ...args }) => {
               name="email"
               placeholder="Enter Email"
             />
-            {errors.email && ErrMessage(errors.email.message)}
+            {formState.errors.email && ErrMessage(formState.errors.email.message)}
           </Label>
         </Column>
 
-        <Column md={colMd}>
+        <Column md={6}>
           <Label label="Disabled">
             <Input {...defaultProps} disabled name="disabled" />
-            {errors.disabled && ErrMessage(errors.disabled.message)}
+            {formState.errors.disabled && ErrMessage(formState.errors.disabled.message)}
           </Label>
         </Column>
 
-        <Column md={colMd}>
+        <Column md={6}>
           <Label label="Readonly">
             <Input
               {...defaultProps}
@@ -154,29 +154,19 @@ const All = ({ ...args }) => {
               name="readonly"
               readOnly
             />
-            {errors.readonly && ErrMessage(errors.readonly.message)}
+            {formState.errors.readonly && ErrMessage(formState.errors.readonly.message)}
           </Label>
         </Column>
 
-        <Column md={colMd}>
+        <Column md={6}>
           <Label label="Datepicker">
-            <DatePickerCalendar
-              {...defaultProps}
-              control={control}
-              locale={enGB}
-              name="datepicker"
-            />
+            <DatePicker {...defaultProps} control={control} locale={enGB} name="datepicker" />
           </Label>
         </Column>
 
-        <Column md={colMd}>
+        <Column md={6}>
           <Label label="React Select">
-            <ReactSelectField
-              {...defaultProps}
-              control={control}
-              name="reactSelect"
-              options={Options}
-            />
+            <ReactSelect {...defaultProps} control={control} name="reactSelect" options={Options} />
           </Label>
         </Column>
 
@@ -207,7 +197,7 @@ const All = ({ ...args }) => {
         <Search {...defaultProps} />
       </Label>
 
-      <CurrencyInput {...defaultProps} name="amount" label="Currency input" />
+      <Currency {...defaultProps} name="amount" label="Currency input" />
       <PercentInput {...defaultProps} name="amount" label="Percent input" />
 
       <Label label="Input">
@@ -215,58 +205,19 @@ const All = ({ ...args }) => {
       </Label>
 
       <Label label="Textarea">
-        <TextareaField {...defaultProps} name="textarea" rows={2} />
+        <Textarea {...defaultProps} name="textarea" rows={2} />
       </Label>
 
       <Label label="Select">
-        <SelectField {...defaultProps} options={COLOURS} name="select" />
+        <Select {...defaultProps} options={EXPENSES} name="select" />
       </Label>
 
-      <Checkbox {...defaultProps} data={checkbox} legend={args.checkboxLegend} name="checkbox" />
+      <Checkbox {...defaultProps} label="Yes" name="checkbox" />
+      <Checkbox {...defaultProps} label="No" name="checked" />
 
-      <RadioField {...defaultProps} data={RADIO_GENDER()} legend="Gender?" name="radio" />
+      <Radio {...defaultProps} data={RADIO_GENDER()} legend="Gender?" name="radio" />
 
       <Button content="Submit" type="submit" />
     </Form>
   )
-}
-
-export const AllInputsTemplate = All.bind({})
-
-AllInputsTemplate.args = {
-  formTitle:
-    'Grid can be used to layout a form, we do not need to repeat rows as the columns will wrap.',
-  backgroundColour: '#F5F5F7',
-  ColumnWidth: 6,
-  datePickerValue: '',
-  checkboxLegend: 'Checkbox Legend',
-  size: 'lg'
-}
-
-AllInputsTemplate.argTypes = {
-  children: {
-    control: {
-      type: null
-    }
-  },
-  datePickerValue: {
-    name: 'Date Picker Value',
-    control: { type: ControlTypes.Date }
-  },
-  backgroundColour: { name: 'Background Colour', control: ControlTypes.Color },
-  formTitle: {
-    name: 'Form Tilte'
-  },
-  ColumnWidth: {
-    name: 'col md',
-    control: { type: ControlTypes.Range, min: 2, max: 12 }
-  },
-
-  size: {
-    name: 'Input Size',
-    control: {
-      type: ControlTypes.Select,
-      options: [THEME_SIZE.SM, THEME_SIZE.MD, THEME_SIZE.LG]
-    }
-  }
 }

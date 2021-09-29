@@ -5,28 +5,28 @@
 // React
 import React from 'react'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Storybook
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
 
 // Yup
 import { object, string } from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
-import Divider from '../../../atoms/divider/divider'
-import FormError from '../../error/error'
-import Form from '../../form/form'
+import Error from '../../error/error'
 import Search from '../../search/search'
-import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
+
+const schema = object().shape({
+  query: string().required()
+})
 
 export default {
   args: {
-    appendSearchButton: false,
+    appendSearchButton: true,
     appendSearchIcon: false,
     label: 'Go',
     placeholder: 'Search...',
-    prependSearchIcon: false,
+    prependSearchIcon: true,
     type: 'search'
   },
   argTypes: {
@@ -37,56 +37,25 @@ export default {
       }
     }
   },
-  title: 'Form/Search',
+
   component: Search,
+  decorators: [FormWrapper],
   parameters: {
     docs: {
       description: {
         component: Readme
       }
-    }
-  }
+    },
+    schema: schema
+  },
+  title: 'Form/Search'
 }
 
-const BaseComponent = (props = {}) => {
-  const schema = object().shape({
-    query: string().required()
-  })
-
-  const { errors, getValues, handleSubmit, register } = useForm({
-    defaultValues: {
-      query: props.value
-    },
-    resolver: yupResolver(schema)
-  })
-
-  const onSubmit = (data) => {
-    console.info(data)
-  }
-
-  const value = getValues()?.query?.toString()
-
-  const defaultProps = {
-    errors: errors,
-    register: register,
-    ...props
-  }
-
+export const Main = (args, { params: { formState, register } }) => {
   return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <Search {...defaultProps} />
-
-      <Divider size="sm" />
-      <Text>Search:</Text>
-      <Text>{value}</Text>
-
-      <FormError message={errors?.expiryAt?.message || ''} />
-    </Form>
+    <>
+      <Search {...args} errors={formState.errors} register={register} />
+      <Error message={formState.errors.query?.message || ''} />
+    </>
   )
 }
-
-export const main = (args) => <BaseComponent {...args} />
-export const defaultValue = (args) => <BaseComponent {...args} value="XYZ" />
-export const customLabel = (args) => <BaseComponent appendSearchButton {...args} label="Go" />
-export const prependedIcon = (args) => <BaseComponent {...args} prependSearchIcon />
-export const appendedIcon = (args) => <BaseComponent {...args} appendSearchIcon />

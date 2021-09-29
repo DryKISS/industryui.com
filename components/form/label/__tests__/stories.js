@@ -1,5 +1,5 @@
 /**
- * Form - Label
+ * Components - Form - Label
  */
 
 // React
@@ -10,6 +10,9 @@ import Label from '../label'
 import Readme from '../README.md'
 
 export default {
+  args: {
+    label: 'Test Label'
+  },
   component: Label,
   parameters: {
     docs: {
@@ -20,16 +23,5 @@ export default {
   },
   title: 'Form/Label'
 }
-
-// const BaseComponent = (props = {}) => {
-//   const defaultProps = {
-//     children: '',
-//     id: '',
-//     label: 'Label',
-//     ...props
-//   }
-
-//   return <Label {...defaultProps} />
-// }
 
 export const main = (args) => <Label {...args} />

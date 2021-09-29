@@ -11,22 +11,24 @@ import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import RadioComponent from './component'
 import formErrorStyle from '../variables/formErrorStyle'
 
-const RadioField = ({ data, errors, legend, stacked, ...props }) => {
+const Radio = ({ data, errors, legend, name, register, showError, stacked }) => {
   return (
-    <StyledFieldset error={errors[props.name]}>
-      {legend && <StyledLegend error={errors[props.name]}>{legend}</StyledLegend>}
+    <StyledFieldset error={errors[name]}>
+      {legend && <StyledLegend error={errors[name]}>{legend}</StyledLegend>}
+
       {data.map(({ disabled, label, ...data }) => (
         <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
           <FieldHOC
-            component={RadioComponent}
+            component={StyledInput}
             disabled={disabled}
-            errors={errors[props.name]}
-            showError={false}
+            errors={errors[name]}
+            name={name}
+            register={register}
+            showError={showError}
+            type="radio"
             {...data}
-            {...props}
           />
           {label}
         </StyledLabel>
@@ -66,15 +68,20 @@ const StyledLabel = styled.label`
     `}
 `
 
-RadioField.propTypes = {
+const StyledInput = styled.input`
+  cursor: pointer;
+  margin-right: 0.5rem;
+`
+
+Radio.propTypes = {
   data: array.isRequired,
   legend: string,
   stacked: bool
 }
 
-RadioField.defaultProps = {
+Radio.defaultProps = {
   data: [],
   stacked: false
 }
 
-export default RadioField
+export default Radio

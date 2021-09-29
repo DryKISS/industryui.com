@@ -1,6 +1,5 @@
 /**
  * Components - Form - Input Group - Addon
- * Allows the element to be positioned
  */
 
 // React
@@ -10,7 +9,7 @@ import { any, bool, node, oneOf } from 'prop-types'
 // Style
 import styled, { css } from 'styled-components'
 
-// Context
+// UI
 import THEME_CONTEXT from '../../constants/context'
 import THEME_SIZE from '../../constants/size'
 

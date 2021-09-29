@@ -19,6 +19,6 @@ locale: enGB
 
 ## Links
 
-[React Datepicker](https://reactdatepicker.com/)<br />
-[React Hook Form Controlled](https://codesandbox.io/s/react-hook-form-and-react-date-picker-wrapped-at-controller-2zz2z)<br />
-[date-fns](https://date-fns.org/)<br />
+- [React Datepicker](https://reactdatepicker.com/)<br />
+- [React Hook Form Controlled](https://codesandbox.io/s/react-hook-form-and-react-date-picker-wrapped-at-controller-2zz2z)<br />
+- [date-fns](https://date-fns.org/)<br />

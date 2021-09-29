@@ -17,7 +17,7 @@ import Button from '../../../../atoms/button/button/button'
 import Form from '../../../../form/form/form'
 import Label from '../../../../form/label/label'
 import Input from '../../../../form/input/input'
-import SelectField from '../../../../form/select/select'
+import Select from '../../../../form/select/select'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
 
@@ -58,7 +58,7 @@ const CustomCalendarStyles = () => {
         </Label>
 
         <Label label="Default event color">
-          <SelectField name="eventColor" options={colorEvent} {...defaultProps} />
+          <Select name="eventColor" options={colorEvent} {...defaultProps} />
         </Label>
 
         <Button content="Submit" type="submit" />

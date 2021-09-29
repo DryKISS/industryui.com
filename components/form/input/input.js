@@ -18,6 +18,7 @@ const Input = ({
   disabled,
   errors,
   helperMessage,
+  min,
   name,
   placeholder,
   readOnly,
@@ -49,13 +50,16 @@ const Input = ({
       errors={errors[name]}
       isTyping={isTyping}
       key={name}
+      min={min}
       name={name}
       placeholder={placeholder}
       readOnly={readOnly}
       register={register}
       showError={showError}
       size={size}
+      style={style}
       textAlign={textAlign}
+      type={type}
     />
   )
 }
@@ -83,7 +87,7 @@ Input.defaultProps = {
   autoFocus: false,
   disabled: false,
   readOnly: false,
-  showError: true,
+  showError: false,
   size: 'md',
   type: 'text'
 }
