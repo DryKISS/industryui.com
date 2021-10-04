@@ -53,18 +53,18 @@ export const Main = (args) => {
 
   return (
     <>
-      <Space>
-        <Progress size={args.size}>
-          <ProgressBar
-            animated={args.animated}
-            context={args.context}
-            now={Percent}
-            striped={args.striped}
-          >
-            {Percent}%
-          </ProgressBar>
-        </Progress>
-      </Space>
+      <Progress size={args.size}>
+        <ProgressBar
+          animated={args.animated}
+          context={args.context}
+          now={Percent}
+          striped={args.striped}
+        >
+          {Percent}%
+        </ProgressBar>
+      </Progress>
+
+      <Space />
 
       <Button size="sm" onClick={handleClick}>
         Increase
