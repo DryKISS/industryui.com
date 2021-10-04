@@ -5,9 +5,6 @@
 // React
 import React from 'react'
 
-// Decorators
-import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
-
 // React Hook Form
 import { Controller, useForm } from 'react-hook-form'
 
@@ -39,12 +36,10 @@ import Select from '../../select/select'
 import Space from '../../../atoms/space/space'
 import Text from '../../../atoms/text/text'
 import Textarea from '../../textarea/textarea'
-import THEME_SIZE from '../../../constants/size'
 import Readme from '../README.md'
 
 // Data
 import enGB from 'date-fns/locale/en-GB'
-import RADIO_GENDER from '../../radio/__mocks__/radio'
 import Options from '../../reactSelect/__mocks__/options'
 import EXPENSES from '../../select/__mocks__/expenses'
 
@@ -75,19 +70,6 @@ const schema = object().shape({
   select: string().required(),
   readonly: string()
 })
-
-const checkbox = [
-  {
-    id: 'check',
-    label: 'Yes',
-    value: 'check'
-  },
-  {
-    id: 'checked',
-    label: 'No',
-    value: 'checked'
-  }
-]
 
 export const All = () => {
   const { control, formState, handleSubmit, register } = useForm({
@@ -215,7 +197,7 @@ export const All = () => {
       <Checkbox {...defaultProps} label="Yes" name="checkbox" />
       <Checkbox {...defaultProps} label="No" name="checked" />
 
-      <Radio {...defaultProps} data={RADIO_GENDER()} legend="Gender?" name="radio" />
+      <Radio {...defaultProps} legend="Gender?" name="radio" />
 
       <Button content="Submit" type="submit" />
     </Form>

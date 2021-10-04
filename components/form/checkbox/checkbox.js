@@ -124,12 +124,12 @@ Checkbox.propTypes = {
   label: string,
   name: string.isRequired,
   register: func.isRequired,
-  showError: bool
+  showError: bool,
+  value: string
 }
 
 Checkbox.defaultProps = {
   disabled: false,
-  errors: {},
   inline: false,
   showError: true
 }

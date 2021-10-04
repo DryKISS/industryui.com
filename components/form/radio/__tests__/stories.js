@@ -15,18 +15,12 @@ import { object, string } from 'yup'
 import Radio from '../radio'
 import Readme from '../README.md'
 
-// Data
-import RADIO_GENDER from '../__mocks__/radio'
-
 const schema = object().shape({
-  radio: string().required()
+  yes: string().required(),
+  no: string().required()
 })
 
 export default {
-  args: {
-    legend: 'Gender?',
-    stacked: false
-  },
   component: Radio,
   decorators: [FormWrapper],
   parameters: {
@@ -42,12 +36,9 @@ export default {
 
 export const Main = (args, { params: { formState, register } }) => {
   return (
-    <Radio
-      {...args}
-      data={RADIO_GENDER()}
-      errors={formState.errors}
-      name="radio"
-      register={register}
-    />
+    <>
+      <Radio {...args} errors={formState.errors} label="Yes" name="yes" register={register} />
+      <Radio {...args} errors={formState.errors} label="No" name="no" register={register} />
+    </>
   )
 }
