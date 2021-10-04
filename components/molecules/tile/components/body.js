@@ -1,5 +1,5 @@
 /**
- * Tile - Body
+ * Components - Molecules - Tile - Body
  */
 
 // React
@@ -56,7 +56,6 @@ const StyledContent = styled.div`
   align-self: center;
   display: flex;
   flex-grow: 1;
-  font-weight: 700;
   font-size: ${({ size, theme }) => {
     return theme.TILE.FONT_SIZE_BODY[size]
   }};
