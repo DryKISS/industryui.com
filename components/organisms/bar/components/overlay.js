@@ -24,7 +24,7 @@ const BarOverlay = styled.div`
     variant === BarConfig.VARIANT.OVERLAY &&
     (placement === BarConfig.PLACEMENT.LEFT || placement === BarConfig.PLACEMENT.RIGHT) &&
     css`
-      width: calc(100%);
+      width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       opacity: 1;
