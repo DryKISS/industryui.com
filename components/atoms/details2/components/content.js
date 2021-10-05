@@ -40,7 +40,7 @@ const Details2Content = ({
 const Wrapper = styled.div`
   max-height: ${({ fitParentHeight, maxHeight, isOpen }) =>
     fitParentHeight ? 'unset' : isOpen ? maxHeight + 'px' : '0px'};
-  overflow: hidden;
+  overflow: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   ${({ fitParentHeight, isOpen }) =>
     fitParentHeight &&
     css`
