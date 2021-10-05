@@ -2,7 +2,7 @@
  * Components - Organisms - Bar - Mocks
  */
 
-const barMock = [
+const DATA = [
   {
     name: 'Dashboard',
     to: '/dashboard'
@@ -32,4 +32,4 @@ const barMock = [
   }
 ]
 
-export default barMock
+export default DATA
