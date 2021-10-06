@@ -15,10 +15,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Button from '../../../components/atoms/button/button/button'
 import Divider from '../../../components/atoms/divider/divider'
 import Form from '../../../components/form/form/form'
-
+import Text from '../../../components/atoms/text/text'
 
 const FormWrapper = (Story, props) => {
-  const { formState, handleSubmit, register } = useForm({
+  const { formState, getValues, handleSubmit, register } = useForm({
     resolver: yupResolver(props.parameters.schema)
   })
 
@@ -31,6 +31,8 @@ const FormWrapper = (Story, props) => {
       <Divider />
 
       <Button content="Submit" type="submit" />
+
+      <Divider />
     </Form>
   )
 }

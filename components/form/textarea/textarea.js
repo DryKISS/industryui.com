@@ -7,11 +7,10 @@ import React from 'react'
 import { any, bool, func, number, object, oneOf, string } from 'prop-types'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
@@ -61,19 +60,7 @@ const StyledTextarea = styled.textarea`
 
   direction: ${({ dir }) => dir};
   display: block;
-  line-height: 1.25rem;
-  ${({ errors }) =>
-    errors &&
-    css`
-      ${(props) => formErrorStyle(props)}
-    `}
-
-  ${({ size }) =>
-    size === THEME_SIZE.SM &&
-    css`
-      font-size: 0.625rem;
-    `}
-    padding: 0.5rem 0.725rem;
+  padding: 0.5rem 0.725rem;
 `
 
 Textarea.propTypes = {

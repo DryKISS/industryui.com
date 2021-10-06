@@ -26,7 +26,9 @@ const Label = ({ children, label, size }) => {
 }
 
 const StyledLabel = styled.label`
-  display: 'block';
+  display: block;
+  margin-bottom: 1rem;
+
   .react-datepicker-wrapper {
     width: 100%;
   }

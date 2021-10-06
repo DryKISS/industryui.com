@@ -7,17 +7,12 @@ import styled, { css } from 'styled-components'
 
 // UI
 import formStyle from '../../variables/formStyle'
-import formErrorStyle from '../../variables/formErrorStyle'
 import THEME_SIZE from '../../../constants/size'
 
 const StyledInput = styled.input`
-  ${(props) => formStyle(props)}
+  overflow: visible;
 
-  ${({ errors }) =>
-    errors &&
-    css`
-      ${(props) => formErrorStyle(props)}
-    `}
+  ${(props) => formStyle(props)}
 
   ${({ size }) => {
     switch (size) {

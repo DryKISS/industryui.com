@@ -13,10 +13,9 @@ import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
-import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 
 const RichTextInput = ({ control, errors, initialValue, name }) => {
@@ -56,11 +55,6 @@ const RichTextInput = ({ control, errors, initialValue, name }) => {
 
 const Wrapper = styled.div`
   ${(props) => formStyle(props)}
-  ${({ errors }) =>
-    errors &&
-    css`
-      ${(props) => formErrorStyle(props)}
-    `}
 `
 
 RichTextInput.propTypes = {

@@ -11,10 +11,11 @@ import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
+import formStyle from '../variables/formStyle'
 
-const Radio = ({ disabled, errors, label, name, register, showError, value }) => {
+const Radio = ({ disabled, errors, inline, label, name, register, showError, value }) => {
   return (
-    <StyledLabel>
+    <StyledLabel inline={inline}>
       {label}
 
       <FieldHOC
@@ -33,27 +34,12 @@ const Radio = ({ disabled, errors, label, name, register, showError, value }) =>
   )
 }
 
-// const StyledLabel = styled.label`
-//   cursor: pointer;
-//   margin-right: 1.25rem;
-//   position: relative;
-//   ${({ stacked }) =>
-//     stacked &&
-//     css`
-//       display: block;
-//       margin: 0.5rem 0;
-//     `}
-// `
-
-// const StyledRadio = styled.input`
-//   cursor: pointer;
-//   margin-right: 0.5rem;
-// `
-
 const StyledLabel = styled.label`
+  box-sizing: border-box;
   cursor: pointer;
   display: block;
-  padding-left: 2rem;
+  line-height: 2.25rem;
+  padding-left: 3rem;
   position: relative;
   user-select: none;
 
@@ -61,10 +47,6 @@ const StyledLabel = styled.label`
     filter: none;
     opacity: 0.5;
     pointer-events: none;
-  }
-
-  &:hover input ~ span {
-    background-color: #ccc;
   }
 
   ${({ inline }) =>
@@ -77,81 +59,48 @@ const StyledLabel = styled.label`
 
 const StyledRadio = styled.input`
   cursor: pointer;
-  height: 0;
   opacity: 0;
   position: absolute;
-  width: 0;
 
   &:checked ~ span {
     background-color: #0d6efd;
-    /* border-radius: 50%;
-    border-color: #0d6efd; */
   }
 
   &:checked ~ span:after {
     display: block;
   }
+
+  ~ span:after {
+    background: #fff;
+    border-radius: 50%;
+    height: 1rem;
+    left: 9px;
+    top: 9px;
+    width: 1rem;
+  }
 `
 
 const StyledCheck = styled.span`
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  ${(props) => formStyle(props)}
+
   border-radius: 50%;
-  height: 1.5em;
+  height: 2.25rem;
   left: 0;
   position: absolute;
   top: 0;
-  width: 1.5em;
-
-  &:invalid {
-    border-color: #dc3545;
-  }
-
-  &:active {
-    filter: brightness(90%);
-  }
-
-  &:focus {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-    outline: 0;
-  }
+  width: 2.25rem;
 
   &:after {
     content: '';
-    position: absolute;
     display: none;
-
-    /* top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white; */
-
-    /* border: solid #fff;
-    border-width: 0 0.25rem 0.25rem 0;
-    content: '';
-    display: none;
-    height: 0.75rem;
-    left: 0.5rem;
     position: absolute;
-    top: 0.25rem;
-    transform: rotate(45deg);
-    width: 0.5rem; */
   }
-
-  ${({ errors }) =>
-    errors &&
-    css`
-      border-color: red;
-      padding: 0.5rem;
-    `}
 `
 
 Radio.propTypes = {
   disabled: bool,
   errors: object.isRequired,
+  inline: bool,
   label: string,
   name: string.isRequired,
   register: func.isRequired,

@@ -9,7 +9,7 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 // Yup
-import { number, object, string } from 'yup'
+import { bool, number, object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 // UI
@@ -18,16 +18,17 @@ import Checkbox from '../../checkbox/checkbox'
 import Column from '../../../atoms/grid/Column'
 import Currency from '../../currency/currency'
 import DatePicker from '../../datePicker/datePicker'
-import Divider from '../../../atoms/divider/divider'
-import Dropzone from '../../dropzone/dropzone'
+import DropzoneController from '../../dropzone/controller'
 import Error from '../../error/error'
 import Input from '../../input/input'
+import Fieldset from '../../feildset/fieldset'
 import Form from '../../form/form'
 import Label from '../../label/label'
+import Legend from '../../legend/legend'
 import Heading from '../../../atoms/heading/heading'
 import InputGroup from '../../inputGroup/group'
 import InputGroupAddon from '../../inputGroup/addon'
-import PercentInput from '../../percent/percentInput'
+import Percent from '../../percent/percent'
 import Radio from '../../radio/radio'
 import ReactSelect from '../../reactSelect/reactSelect'
 import Row from '../../../atoms/grid/Row'
@@ -56,8 +57,10 @@ export default {
 }
 
 const schema = object().shape({
-  amount: number().required(),
-  checkbox: string().required(),
+  currency: number().required(),
+  percent: number().required(),
+  checkbox: bool().oneOf([true], 'Accept checkbox'),
+  checked: bool().oneOf([true], 'Accept checkbox'),
   radio: string().required(),
   disabled: string(),
   email: string().required('Please Enter an email').email(),
@@ -148,56 +151,86 @@ export const All = () => {
 
         <Column md={6}>
           <Label label="React Select">
-            <ReactSelect {...defaultProps} control={control} name="reactSelect" options={Options} />
+            <ReactSelect
+              {...defaultProps}
+              control={control}
+              isMulti
+              name="reactSelect"
+              options={Options}
+            />
           </Label>
         </Column>
 
         <Column md={12}>
-          <Label children="" label="Dropzone" />
-          <Controller
-            {...defaultProps}
-            render={() => <Dropzone multiple={false} />}
-            control={control}
-            name="dropzone"
-          />
+          <Label label="Dropzone">
+            <DropzoneController {...defaultProps} />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Input Group">
+            <InputGroup>
+              <Input {...defaultProps} name="id" placeholder="Search..." />
+
+              <InputGroupAddon addonType="append">
+                <Button content="Search" type="submit" size="sm" />
+              </InputGroupAddon>
+            </InputGroup>
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Search">
+            <Search {...defaultProps} />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Currency">
+            <Currency {...defaultProps} name="currency" label="Currency input" />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Percent">
+            <Percent {...defaultProps} name="percent" label="Percent input" />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Fieldset>
+            <Legend>Checkboxes</Legend>
+            <Checkbox {...defaultProps} inline label="Yes" name="checkbox" />
+            <Checkbox {...defaultProps} inline label="No" name="checked" />
+          </Fieldset>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Input">
+            <Input {...defaultProps} name="input" />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Textarea">
+            <Textarea {...defaultProps} name="textarea" rows={1} />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Label label="Select">
+            <Select {...defaultProps} options={EXPENSES} name="select" />
+          </Label>
+        </Column>
+
+        <Column md={6}>
+          <Fieldset>
+            <Legend>Radio Buttons</Legend>
+            <Radio {...defaultProps} inline label="Yes" name="radio" value="yes" />
+            <Radio {...defaultProps} inline label="No" name="radio" value="no" />
+          </Fieldset>
         </Column>
       </Row>
-
-      <Divider size="md" />
-
-      <Label label="Input Group">
-        <InputGroup>
-          <Input {...defaultProps} name="id" placeholder="Search..." />
-
-          <InputGroupAddon addonType="append">
-            <Button content="Search" type="submit" size="sm" />
-          </InputGroupAddon>
-        </InputGroup>
-      </Label>
-
-      <Label label="Search">
-        <Search {...defaultProps} />
-      </Label>
-
-      <Currency {...defaultProps} name="amount" label="Currency input" />
-      <PercentInput {...defaultProps} name="amount" label="Percent input" />
-
-      <Label label="Input">
-        <Input {...defaultProps} name="input" />
-      </Label>
-
-      <Label label="Textarea">
-        <Textarea {...defaultProps} name="textarea" rows={2} />
-      </Label>
-
-      <Label label="Select">
-        <Select {...defaultProps} options={EXPENSES} name="select" />
-      </Label>
-
-      <Checkbox {...defaultProps} label="Yes" name="checkbox" />
-      <Checkbox {...defaultProps} label="No" name="checked" />
-
-      <Radio {...defaultProps} legend="Gender?" name="radio" />
 
       <Button content="Submit" type="submit" />
     </Form>

@@ -17,7 +17,6 @@ import styled, { css } from 'styled-components'
 
 // UI
 import defaultStyles from './components/styles'
-import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
@@ -82,9 +81,10 @@ const ReactSelect = ({
 const Wrapper = styled.div`
   & > div:first-of-type > div:first-of-type {
     ${(props) => formStyle(props)}
-    display:flex;
-    padding: 0;
+
+    display: flex;
     color: ${({ theme }) => theme.COLOUR.dark};
+    padding: 0;
 
     ${({ size }) => {
       switch (size) {
@@ -107,15 +107,6 @@ const Wrapper = styled.div`
       }
     }}
   }
-
-  ${({ errors }) =>
-    errors &&
-    css`
-      ._,
-      & > div:first-of-type > div:first-of-type {
-        ${(props) => formErrorStyle(props)}
-      }
-    `}
 
   div[class$='menu'] {
     box-shadow: none;

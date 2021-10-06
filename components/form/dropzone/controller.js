@@ -34,9 +34,9 @@ const DropzoneController = ({ control, errors, name, ...props }) => {
 
 DropzoneController.propTypes = {
   accept: string,
-  control: object,
+  control: object.isRequired,
   disabled: bool,
-  errors: object,
+  errors: object.isRequired,
   multiple: bool,
   name: string
 }

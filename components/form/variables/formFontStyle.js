@@ -14,12 +14,15 @@ const formFontStyle = (size) => {
       return css`
         font-size: 0.625rem;
       `
+
     case THEME_SIZE.MD:
       return css`
         font-size: 1rem;
       `
+
     case THEME_SIZE.LG:
       return css``
+
     default:
       return css`
         font-size: 1rem;

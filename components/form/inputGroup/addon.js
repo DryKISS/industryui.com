@@ -40,7 +40,7 @@ const StyledInputGroupAddon = styled.div`
     text &&
     css`
       background-color: ${error ? COLOUR.danger : COLOUR.light};
-      border: 1px solid ${error ? COLOUR.danger : COLOUR.dark};
+      border: 1px solid ${error ? COLOUR.danger : COLOUR.light};
       border-radius: ${FORM_ELEMENTS_STYLES.inputBorderRadius};
       color: ${error ? COLOUR.light : COLOUR.dark};
       display: flex;
@@ -53,6 +53,7 @@ const StyledInputGroupAddon = styled.div`
       transition: background-color 0.15s linear;
       white-space: nowrap;
     `}
+
   ${({ size }) =>
     size === THEME_SIZE.SM &&
     css`

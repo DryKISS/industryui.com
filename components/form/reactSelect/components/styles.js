@@ -1,40 +1,47 @@
 /**
- * Form - React Select - Default Styles
+ * Components - Form - React Select - Default Styles
  */
+
+// Polished
+import { transparentize } from 'polished'
 
 // UI
 import THEME_COLOUR from '../../../constants/colour'
 
 const defaultStyles = {
   container: (base, state) => {
-    return { ...base, margin: '0' }
-  },
-
-  control: (base, state) => {
     return {
       ...base,
-      backgroundColor: '#fff',
-      borderColor: THEME_COLOUR.dark,
+      boxShadow: state.isFocused ? '0 0 0 0.25rem rgb(13 110 253 / 25%)' : 'none',
       borderRadius: '0.25rem',
-      color: THEME_COLOUR.dark,
-      fontSize: '1rem',
-      height: '3rem',
-      lineHeight: 1.5,
-      padding: '0'
+      margin: 0
     }
   },
 
-  menu: (base, state) => {
+  control: (base) => {
     return {
       ...base,
-      borderColor: THEME_COLOUR.dark,
-      boxShadow: '0 0 0 0.2rem rgba(0, 123, 255, 0.25)',
+      backgroundColor: '#fff',
+      borderColor: THEME_COLOUR.light,
+      borderRadius: '0.25rem',
+      color: THEME_COLOUR.dark,
+      height: '3rem',
+      lineHeight: 1.5,
+      padding: 0,
+      boxShadow: 'none'
+    }
+  },
+
+  menu: (base) => {
+    return {
+      ...base,
+      borderColor: THEME_COLOUR.light,
       color: THEME_COLOUR.dark
     }
   },
 
   multiValue: (base, state) => {
-    return state.data.isFixed ? { ...base, backgroundColor: 'gray' } : base
+    return state.data.isFixed ? { ...base, backgroundColor: 'grey' } : base
   },
 
   multiValueLabel: (base, state) => {
@@ -47,16 +54,17 @@ const defaultStyles = {
     return state.data.isFixed ? { ...base, display: 'none' } : base
   },
 
-  placeholder: (base, state) => {
+  placeholder: (base) => {
     return {
-      color: '#003753'
+      ...base,
+      color: transparentize(0.5, THEME_COLOUR.dark)
     }
   },
 
-  singleValue: (base, state) => {
+  singleValue: (base) => {
     return {
       ...base,
-      color: '#003753'
+      color: THEME_COLOUR.dark
     }
   }
 }

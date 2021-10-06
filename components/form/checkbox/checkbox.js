@@ -11,6 +11,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
+import formStyle from '../variables/formStyle'
 
 const Checkbox = ({ disabled, errors, inline, label, name, register, showError, value }) => {
   return (
@@ -34,9 +35,11 @@ const Checkbox = ({ disabled, errors, inline, label, name, register, showError, 
 }
 
 const StyledLabel = styled.label`
+  box-sizing: border-box;
   cursor: pointer;
   display: block;
-  padding-left: 2rem;
+  line-height: 2.25rem;
+  padding-left: 3rem;
   position: relative;
   user-select: none;
 
@@ -54,66 +57,44 @@ const StyledLabel = styled.label`
     `}
 `
 
-const StyledCheck = styled.span`
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 0.25em;
-  height: 1.5em;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1.5em;
-
-  &:invalid {
-    border-color: #dc3545;
-  }
-
-  &:active {
-    filter: brightness(90%);
-  }
-
-  &:focus {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-    outline: 0;
-  }
-
-  &:after {
-    border: solid #fff;
-    border-width: 0 0.25rem 0.25rem 0;
-    content: '';
-    display: none;
-    height: 0.75rem;
-    left: 0.5rem;
-    position: absolute;
-    top: 0.25rem;
-    transform: rotate(45deg);
-    width: 0.5rem;
-  }
-
-  ${({ errors }) =>
-    errors &&
-    css`
-      border-color: red;
-      padding: 0.5rem;
-    `}
-`
-
 const StyledCheckbox = styled.input`
-  position: absolute;
-  height: 0;
+  cursor: pointer;
   opacity: 0;
-  overflow: visible;
-  width: 0;
+  position: absolute;
 
   &:checked ~ span {
     background-color: #0d6efd;
-    border-radius: 0.25em;
-    border-color: #0d6efd;
   }
 
   &:checked ~ span:after {
     display: block;
+  }
+
+  ~ span:after {
+    border: solid #fff;
+    border-width: 0 0.25rem 0.25rem 0;
+    height: 1rem;
+    left: 0.75rem;
+    position: absolute;
+    top: 0.5rem;
+    transform: rotate(45deg);
+    width: 0.5rem;
+  }
+`
+
+const StyledCheck = styled.span`
+  ${(props) => formStyle(props)}
+
+  height: 2.25rem;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 2.25rem;
+
+  &:after {
+    content: '';
+    display: none;
+    position: absolute;
   }
 `
 

@@ -105,7 +105,7 @@ const Dropzone = ({ accept, disabled, errors, multiple, onChange }) => {
 }
 
 const StyledContainer = styled.div`
-  background-color: ${({ theme }) => theme.COLOUR.light};
+  background-color: ${({ theme }) => theme.COLOUR.white};
   border-color: ${({ dragAccept, dragReject, theme: { COLOUR } }) =>
     (dragReject && COLOUR.danger) || (dragAccept && COLOUR.success)};
   border-radius: 0.25rem;

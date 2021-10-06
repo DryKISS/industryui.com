@@ -14,7 +14,6 @@ import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import formErrorStyle from '../variables/formErrorStyle'
 import formStyle from '../variables/formStyle'
 import THEME_SIZE from '../../constants/size'
 
@@ -67,8 +66,6 @@ const Select = ({
     })
   }
 
-  console.log({ ...data })
-
   return (
     <FieldHOC
       component={StyledSelect}
@@ -88,6 +85,8 @@ const Select = ({
 }
 
 const StyledSelect = styled.select`
+  text-transform: none;
+
   ${(props) => formStyle(props)}
 
   ${({ size }) => {
@@ -111,12 +110,6 @@ const StyledSelect = styled.select`
         `
     }
   }}
-
-  ${({ errors }) =>
-    errors &&
-    css`
-      ${(props) => formErrorStyle(props)}
-    `}
 `
 
 Select.propTypes = {

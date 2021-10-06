@@ -25,7 +25,7 @@ const Search = ({
   type
 }) => {
   return (
-    <InputGroup >
+    <InputGroup>
       {prependSearchIcon && (
         <InputGroupAddon addonType="prepend" text>
           <Icon size="sm" icon="search" prefix={prefix} />
@@ -55,6 +55,10 @@ const Search = ({
     </InputGroup>
   )
 }
+
+// [type="search"] {
+//   outline-offset: -2px;
+// }
 
 Search.propTypes = {
   appendSearchButton: bool,

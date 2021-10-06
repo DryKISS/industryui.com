@@ -37,12 +37,6 @@ export default {
 
 export const Main = (args, { params: { formState, register } }) => {
   return (
-    <Checkbox {...args} errors={formState.errors} label="Yes" name="checkbox" register={register} />
-  )
-}
-
-export const Stacked = (args, { params: { formState, register } }) => {
-  return (
     <>
       <Checkbox
         {...args}
