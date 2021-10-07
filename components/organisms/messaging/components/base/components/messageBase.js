@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { any, string } from 'prop-types'
 
 // Style
@@ -72,6 +72,15 @@ const MessageBase = ({
       content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
     )
   )
+
+  useEffect(() => {
+    setEditorState(
+      EditorState.createWithContent(
+        content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
+      )
+    )
+    return () => {}
+  }, [content])
 
   const [showingTranslation, setShowingTranslation] = useState(false)
   const [loadingTranslation, setloadingTranslation] = useState(false)
