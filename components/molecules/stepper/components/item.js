@@ -99,14 +99,14 @@ const StepperItem = ({ item, maxWidth }) => {
   )
 }
 const Highlight = styled.div`
-  position: absolute;
+  background-color: ${({ theme, colour }) => colour ?? theme.STEPPER.highlightedItemColour};
+  border-radius: 0.375rem;
+  bottom: 1.25rem;
   left: -0.75rem;
+  pointer-events: none;
+  position: absolute;
   right: -0.5rem;
   top: -0.5rem;
-  bottom: 1.25rem;
-  border-radius: 0.375rem;
-  pointer-events: none;
-  background-color: ${({ theme, colour }) => colour ?? theme.STEPPER.highlightedItemColour};
 `
 const ShowInColumn = styled.div`
   display: flex;
