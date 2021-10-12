@@ -86,7 +86,9 @@ const formatTask = ({ row }) => {
   )
 }
 
-const columns = (handleClick, currentYear, mode = DATE_TYPE.MONTH) => {
+const columns = (handleClick, options) => {
+  const { currentYear, mode = DATE_TYPE.MONTH } = options
+
   const result = [
     {
       hidden: true
@@ -129,7 +131,7 @@ const isActiveMenu = (currentMode, mode) => {
 const ScheduleToolbar = ({ mode, setMode }) => {
   return (
     <Row justify={'end'}>
-      <ButtonWrapper>
+      <Space marginRight="sm" marginBottom="sm">
         <ButtonToolbar {...args}>
           <Button
             content="Year"
@@ -156,7 +158,7 @@ const ScheduleToolbar = ({ mode, setMode }) => {
             onClick={() => setMode(DATE_TYPE.DAY)}
           />
         </ButtonToolbar>
-      </ButtonWrapper>
+      </Space>
     </Row>
   )
 }
@@ -181,7 +183,7 @@ const Schedule = ({
       {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
       <Table
         align="center"
-        columns={columns(handleClick, currentYear, mode)}
+        columns={columns(handleClick, { currentYear, mode })}
         hover={false}
         rowClick={handleRowClick}
         rows={handleFetchData(mode)}
@@ -202,11 +204,6 @@ const Schedule = ({
     </>
   )
 }
-
-const ButtonWrapper = styled.div`
-  margin-right: 15px;
-  margin-bottom: 10px;
-`
 
 const Wrapper = styled.div`
   align-items: center;
