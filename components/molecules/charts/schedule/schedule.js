@@ -150,13 +150,13 @@ const ScheduleToolbar = ({ mode, setMode }) => {
 }
 
 const Schedule = ({
-  handleFetchData,
+  currentYear,
   data,
+  handleFetchData,
   handleClick,
   handleRowClick,
   initialMode,
   onYearChange,
-  currentYear,
   yearRange
 }) => {
   const [mode, setMode] = useState(initialMode)
