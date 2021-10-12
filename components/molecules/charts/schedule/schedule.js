@@ -25,15 +25,17 @@ import Pagination from '../../../molecules/pagination/pagination'
 import Row from '../../../atoms/grid/Row'
 
 const DATE_TYPE = {
+  YEAR: 'year',
   MONTH: 'month',
   WEEK: 'week',
   DAY: 'day'
 }
 
 const columnPattern = {
-  month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  month: ['Week1', 'Week2', 'Week3', 'Week4'],
   week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri'],
-  day: [...Array(31).keys()]
+  day: [...Array(12).keys()]
 }
 
 const args = {
@@ -107,11 +109,15 @@ const columns = (handleClick, currentYear, mode = DATE_TYPE.MONTH) => {
     }
   ]
   columnPattern[mode].forEach((item, i) => {
-    const text = mode === DATE_TYPE.DAY ? item + 1 : item.toLowerCase()
+    const text = mode === DATE_TYPE.DAY ? item + 1 : item
+
     result.push({
       formatter: ({ row }) =>
-        formatCell(handleClick, text, row, { month: i + 1, year: currentYear }),
-      text: text
+        formatCell(handleClick, String(text).toLowerCase(), row, {
+          month: i + 1,
+          year: currentYear
+        }),
+      text: mode === DATE_TYPE.DAY ? `${text}hr` : text
     })
   })
   return result
@@ -125,6 +131,12 @@ const ScheduleToolbar = ({ mode, setMode }) => {
     <Row justify={'end'}>
       <ButtonWrapper>
         <ButtonToolbar {...args}>
+          <Button
+            content="Year"
+            size="sm"
+            context={isActiveMenu(DATE_TYPE.YEAR, mode)}
+            onClick={() => setMode(DATE_TYPE.YEAR)}
+          />
           <Button
             content="Month"
             size="sm"
@@ -162,7 +174,7 @@ const Schedule = ({
   const [mode, setMode] = useState(initialMode)
 
   if (!Object.values(DATE_TYPE).includes(initialMode))
-    throw new Error('initialMode can be one of day, week or month values')
+    throw new Error('initialMode can be one of day, week, month or year values')
 
   return (
     <>

@@ -38,7 +38,7 @@ export const main = (args) => (
   <Schedule
     {...args}
     handleFetchData={(mode) => MAIN_SCHEDULES[mode]}
-    initialMode="month"
+    initialMode="year"
     handleClick={handleClick}
     handleRowClick={handleRowClick}
   />
@@ -54,7 +54,7 @@ export const WithPagination = (args) => {
     <Schedule
       {...args}
       handleClick={handleClick}
-      initialMode="month"
+      initialMode="year"
       handleFetchData={() => SCHEDULES[years.indexOf(currentYear)]}
       handleRowClick={handleRowClick}
       onYearChange={handleYearChange}
