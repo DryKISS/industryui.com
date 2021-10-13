@@ -19,6 +19,7 @@ export default {
     border: true,
     caption: '',
     className: '',
+    dragableRows: true,
     fullHeight: false,
     hover: true,
     loading: false,
@@ -61,34 +62,7 @@ const BaseComponent = (props = {}) => {
     setPageSize(perPage)
   }
 
-  const data = [
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data
-  ]
+  const data = [...rows.data]
 
   pageSize === Infinity && setPageSize(data.length)
 

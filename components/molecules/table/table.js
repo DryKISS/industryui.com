@@ -25,6 +25,7 @@ const Table = memo(
     caption,
     className,
     columns,
+    dragableRows,
     fullHeight,
     hover,
     loading,
@@ -68,21 +69,24 @@ const Table = memo(
 
         <StyledResponsive ref={tableRef} responsive={responsive}>
           <TableContent
-            align={align}
-            caption={caption}
-            columns={columns}
-            className={className}
-            currentPage={currentPage}
-            hover={hover}
-            loading={loading}
-            pagination={pagination}
-            perPage={perPage}
-            rowClick={rowClick}
-            rows={rows}
-            sort={sort}
-            setSort={setSort}
-            striped={striped}
-            tableSpan={tableSpan}
+            {...{
+              align,
+              caption,
+              columns,
+              className,
+              currentPage,
+              dragableRows,
+              hover,
+              loading,
+              pagination,
+              perPage,
+              rowClick,
+              rows,
+              sort,
+              setSort,
+              striped,
+              tableSpan
+            }}
           />
         </StyledResponsive>
 

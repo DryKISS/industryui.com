@@ -22,6 +22,7 @@ const TableContent = ({
   changeSelectedRowBackground,
   className,
   columns,
+  dragableRows,
   hover,
   loading,
   noData,
@@ -67,14 +68,17 @@ const TableContent = ({
         <>
           <tbody>
             <TableRows
-              align={align}
-              bottomCells={bottomCells}
-              columns={columns}
-              changeSelectedRowBackground={changeSelectedRowBackground}
-              hover={hover}
-              rowClick={rowClick}
-              rows={rows}
-              striped={striped}
+              {...{
+                align,
+                bottomCells,
+                columns,
+                changeSelectedRowBackground,
+                dragableRows,
+                hover,
+                rowClick,
+                rows,
+                striped
+              }}
             />
           </tbody>
 
