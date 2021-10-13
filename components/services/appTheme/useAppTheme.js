@@ -8,7 +8,7 @@ import { useContext } from 'react'
 // UI
 import AppThemeContext from './context'
 
-export const useAppTheme = () => {
+const useAppTheme = () => {
   const appTheme = useContext(AppThemeContext)
 
   if (!appTheme) {
@@ -17,3 +17,5 @@ export const useAppTheme = () => {
 
   return appTheme
 }
+
+export default useAppTheme

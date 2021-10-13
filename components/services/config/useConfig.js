@@ -8,7 +8,7 @@ import { useContext } from 'react'
 // UI
 import ConfigContext from './context'
 
-export const useConfig = () => {
+const useConfig = () => {
   const config = useContext(ConfigContext)
 
   if (!config) {
@@ -17,3 +17,5 @@ export const useConfig = () => {
 
   return config
 }
+
+export default useConfig

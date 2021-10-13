@@ -8,7 +8,7 @@ import { useContext } from 'react'
 // UI
 import OffCanvasContext from './context'
 
-export const useOffCanvas = () => {
+const useOffCanvas = () => {
   const offCanvas = useContext(OffCanvasContext)
 
   if (!offCanvas) {
@@ -17,3 +17,5 @@ export const useOffCanvas = () => {
 
   return offCanvas
 }
+
+export default useOffCanvas
