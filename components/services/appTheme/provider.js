@@ -24,12 +24,11 @@ const AppThemeProvider = ({ children, theme: initial }) => {
   }, [theme])
 
   return (
-    <AppThemeContext.Provider value={{setTheme, theme: mergedTheme}}>
+    <AppThemeContext.Provider value={{ setTheme, theme: mergedTheme }}>
       <ThemeProvider theme={mergedTheme}>{children}</ThemeProvider>
     </AppThemeContext.Provider>
   )
 }
-
 
 AppThemeProvider.propTypes = {
   children: node.isRequired,
