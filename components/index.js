@@ -233,6 +233,7 @@ export { default as MessagingCommunicationService } from './services/componentCo
 export { default as MessageNames } from './services/componentCommunication/messageNames'
 export { default as OffCanvasContext } from './services/offCanvas/context'
 export { default as OffCanvasProvider } from './services/offCanvas/provider'
+export { default as useOffCanvas } from './services/offCanvas/useOffCanvas'
 export { default as UserContext } from './services/authentication/context'
 export { default as UserProvider } from './services/authentication/provider'
 
