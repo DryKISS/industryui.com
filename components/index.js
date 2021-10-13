@@ -226,6 +226,7 @@ export { default as AuthorizationContext } from './services/authorization/contex
 export { default as AuthorizationProvider } from './services/authorization/provider'
 export { default as ConfigContext } from './services/config/context'
 export { default as ConfigProvider } from './services/config/provider'
+export { default as useConfig } from './services/config/useConfig'
 export { default as NotificationsContext } from './services/notifications/context'
 export { default as NotificationsProvider } from './services/notifications/provider'
 export { default as MessagingCommunicationService } from './services/componentCommunication/messaging/service'
