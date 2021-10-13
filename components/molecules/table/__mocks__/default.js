@@ -20,7 +20,7 @@ export const rows = {
       company: 'DryKISS Ltd',
       url: 'https://drykiss.com',
       logo: 'https://via.placeholder.com/200x20',
-      itemCount: 5,
+      itemCount: 2,
       actions: ''
     },
     {

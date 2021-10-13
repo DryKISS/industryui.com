@@ -13,8 +13,8 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import update from 'immutability-helper'
 
-const Wrapper = ({ children, dragableRows }) => {
-  return dragableRows ? (
+const Wrapper = ({ children, draggableRows }) => {
+  return draggableRows ? (
     <DndProvider backend={HTML5Backend}>{children}</DndProvider>
   ) : (
     <>{children}</>
@@ -26,7 +26,7 @@ const TableRows = memo(
     align,
     changeSelectedRowBackground,
     columns,
-    dragableRows,
+    draggableRows,
     hover,
     rowClick,
     rows,
@@ -63,7 +63,7 @@ const TableRows = memo(
     )
 
     return (
-      <Wrapper {...{ dragableRows }}>
+      <Wrapper {...{ draggableRows }}>
         {rowsState.map((row, index) => {
           if (row.hidden) {
             return null
@@ -75,7 +75,7 @@ const TableRows = memo(
             <TableRow
               context={row.context}
               data-item={JSON.stringify(row)}
-              dragableRows={dragableRows}
+              draggableRows={draggableRows}
               hover={hover}
               key={row.id}
               id={row.id}

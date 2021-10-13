@@ -19,7 +19,7 @@ export default {
     border: true,
     caption: '',
     className: '',
-    dragableRows: true,
+    draggableRows: true,
     fullHeight: false,
     hover: true,
     loading: false,

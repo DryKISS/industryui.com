@@ -16,8 +16,8 @@ const ItemTypes = {
   CARD: 'card'
 }
 
-const DragableStyledTableRow = (props) => {
-  const { id, index, moveRow, dragableRows, ...rest } = props
+const DraggableStyledTableRow = (props) => {
+  const { id, index, moveRow, draggableRows, ...rest } = props
   const ref = useRef(null)
 
   const [{ handlerId }, drop] = useDrop({
@@ -77,15 +77,13 @@ const DragableStyledTableRow = (props) => {
   })
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
-   return <StyledTableRow {...rest} opacity={opacity} ref={ref} data-handler-id={handlerId} />
+  return <StyledTableRow {...rest} opacity={opacity} ref={ref} data-handler-id={handlerId} />
 }
 
-const TableRow = memo(
-  (props) => {
-    const { id, index, moveRow, dragableRows, ...rest } = props
-    return dragableRows ? <DragableStyledTableRow {...props} /> : <StyledTableRow {...rest} />
-  },
-)
+const TableRow = memo((props) => {
+  const { id, index, moveRow, draggableRows, ...rest } = props
+  return draggableRows ? <DraggableStyledTableRow {...props} /> : <StyledTableRow {...rest} />
+})
 
 const StyledTableRow = styled.tr`
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'initial')};
