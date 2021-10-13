@@ -64,7 +64,7 @@ const TableRows = memo(
 
     return (
       <Wrapper {...{ dragableRows }}>
-        {rows.map((row, index) => {
+        {rowsState.map((row, index) => {
           if (row.hidden) {
             return null
           } else {

@@ -77,8 +77,7 @@ const DragableStyledTableRow = (props) => {
   })
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
-	console.log(id)
-  return <StyledTableRow {...rest} opacity={opacity} ref={ref} data-handler-id={handlerId} />
+   return <StyledTableRow {...rest} opacity={opacity} ref={ref} data-handler-id={handlerId} />
 }
 
 const TableRow = memo(
@@ -86,7 +85,6 @@ const TableRow = memo(
     const { id, index, moveRow, dragableRows, ...rest } = props
     return dragableRows ? <DragableStyledTableRow {...props} /> : <StyledTableRow {...rest} />
   },
-  () => true
 )
 
 const StyledTableRow = styled.tr`
