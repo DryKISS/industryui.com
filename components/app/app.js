@@ -17,7 +17,7 @@ import App from 'next/app'
 // UI
 import AppApollo from './apollo'
 import AppLayout from './layout'
-import AppTheme from './theme'
+import AppThemeProvider from '../services/appTheme/provider'
 import AuthorizationProvider from '../services/authorization/provider'
 import compose from './compose'
 import ConfigProvider from '../services/config/provider'
@@ -87,7 +87,7 @@ export default class MyApp extends App {
     ])
 
     return (
-      <AppTheme theme={theme}>
+      <AppThemeProvider theme={theme}>
         <ConfigProvider config={config}>
           <ThemeStyle />
           <SuperProvider>
@@ -100,7 +100,7 @@ export default class MyApp extends App {
             />
           </SuperProvider>
         </ConfigProvider>
-      </AppTheme>
+      </AppThemeProvider>
     )
   }
 }

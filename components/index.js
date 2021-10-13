@@ -219,6 +219,9 @@ export { default as BlogTags } from './blog/tags/tags'
 
 // Services
 export { default as api } from './services/api/api'
+export { default as AppThemeContext } from './services/appTheme/context'
+export { default as AppThemeProvider } from './services/appTheme/provider'
+export { default as useAppTheme } from './services/appTheme/useAppTheme'
 export { default as AuthorizationContext } from './services/authorization/context'
 export { default as AuthorizationProvider } from './services/authorization/provider'
 export { default as ConfigContext } from './services/config/context'
@@ -234,6 +237,5 @@ export { default as UserProvider } from './services/authentication/provider'
 
 // App
 export { default as MyApp } from './app/app'
-export { default as AppTheme } from './app/theme'
 export { default as AppLayout } from './app/layout'
 export { default as AppApollo } from './app/apollo'
