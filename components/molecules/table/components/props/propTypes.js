@@ -11,9 +11,11 @@ const propTypes = {
   caption: string,
   className: string,
   columns: array,
+  draggableRows: bool,
   fullHeight: bool,
   hover: bool,
   loading: bool,
+  onRowOrderChange: func,
   pagination: bool,
   paginationProps: shape({
     currentPage: number,

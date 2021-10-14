@@ -19,7 +19,7 @@ export default {
     border: true,
     caption: '',
     className: '',
-    draggableRows: true,
+    draggableRows: false,
     fullHeight: false,
     hover: true,
     loading: false,
@@ -69,6 +69,9 @@ const BaseComponent = (props = {}) => {
   const pageSlice = data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   const defaultProps = {
+    onRowOrderChange: (e) => {
+      console.log(e)
+    },
     paginationProps: {
       currentPage: currentPage,
       onPageChange: handlePageChange,

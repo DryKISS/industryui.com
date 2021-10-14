@@ -26,6 +26,7 @@ const TableContent = ({
   hover,
   loading,
   noData,
+  onRowOrderChange,
   rowClick,
   rows,
   sort,
@@ -75,6 +76,7 @@ const TableContent = ({
                 changeSelectedRowBackground,
                 draggableRows,
                 hover,
+                onRowOrderChange,
                 rowClick,
                 rows,
                 striped

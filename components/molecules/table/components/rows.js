@@ -28,6 +28,7 @@ const TableRows = memo(
     columns,
     draggableRows,
     hover,
+    onRowOrderChange,
     rowClick,
     rows,
     striped
@@ -50,14 +51,14 @@ const TableRows = memo(
     const moveRow = useCallback(
       (dragIndex, hoverIndex) => {
         const dragRow = rowsState[dragIndex]
-        setRowsState(
-          update(rowsState, {
-            $splice: [
-              [dragIndex, 1],
-              [hoverIndex, 0, dragRow]
-            ]
-          })
-        )
+        const newRowsOrder = update(rowsState, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragRow]
+          ]
+        })
+        onRowOrderChange(newRowsOrder)
+        setRowsState(newRowsOrder)
       },
       [rowsState]
     )
