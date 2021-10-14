@@ -7,8 +7,10 @@ import React, { memo, useCallback, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
 // UI
+import styled from 'styled-components'
 import TableData from './data'
 import TableRow from './row'
+import VerticalThreeDotsIcon from '../../../icons/components/verticalThreeDots'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import update from 'immutability-helper'
@@ -88,10 +90,10 @@ const TableRows = memo(
               striped={striped}
             >
               {Object.entries(row).map(([key, value], index) => {
-                const length = columns.length
+                const columnsLength = columns.length
                 const column = columns[index]
 
-                if (length && column.hidden) {
+                if (columnsLength && column.hidden) {
                   return null
                 }
 
@@ -100,7 +102,8 @@ const TableRows = memo(
 
                 return (
                   <TableData align={align} key={index}>
-                    {length > 0 && column.formatter ? (
+                    {draggableRows && index === 0 && <StyledDragHandle />}
+                    {columnsLength > 0 && column.formatter ? (
                       typeof formatterData === 'function' ? (
                         column.formatter({
                           row,
@@ -124,6 +127,10 @@ const TableRows = memo(
     )
   }
 )
+const StyledDragHandle = styled(VerticalThreeDotsIcon)`
+  margin-top: 2px;
+  margin-bottom: -5px;
+`
 
 TableRows.propTypes = {
   align: oneOfType([string, bool]),
