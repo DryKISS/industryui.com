@@ -25,7 +25,7 @@ const LdsSpinnerWrapper = styled.div`
     transform-origin: ${({ size }) => size / 2}px ${({ size }) => size / 2}px;
 
     ::after {
-      background: ${({ context }) => context};
+      background: ${({ context, theme: { COLOUR } }) => COLOUR[context]};
       border-radius: ${({ size }) => size / 4}%;
       content: ' ';
       display: block;
@@ -78,7 +78,7 @@ LdsSpinner.propTypes = {
 }
 
 LdsSpinner.defaultProps = {
-  context: 'white',
+  context: 'dark',
   size: 56
 }
 
