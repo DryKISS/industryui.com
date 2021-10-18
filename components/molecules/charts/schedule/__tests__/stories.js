@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 // UI
 import Schedule from '../schedule'
 import Readme from '../README.md'
-import SCHEDULES from '../__mocks__/scheduleMock'
+import { MAIN_SCHEDULES, SCHEDULES } from '../__mocks__/scheduleMock'
 
 export default {
   component: Schedule,
@@ -37,7 +37,8 @@ const handleRowClick = (row) => {
 export const main = (args) => (
   <Schedule
     {...args}
-    data={SCHEDULES[0]}
+    handleFetchData={(mode) => MAIN_SCHEDULES[mode]}
+    initialMode="year"
     handleClick={handleClick}
     handleRowClick={handleRowClick}
   />
@@ -52,8 +53,9 @@ export const WithPagination = (args) => {
   return (
     <Schedule
       {...args}
-      data={SCHEDULES[years.indexOf(currentYear)]}
       handleClick={handleClick}
+      initialMode="year"
+      handleFetchData={() => SCHEDULES[years.indexOf(currentYear)]}
       handleRowClick={handleRowClick}
       onYearChange={handleYearChange}
       currentYear={currentYear}

@@ -3,21 +3,45 @@
  */
 
 // React
-import React from 'react'
-import { array, func } from 'prop-types'
+import React, { useState } from 'react'
+import { array, func, oneOf } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
 // UI
+import Button from '../../../atoms/button/button/button'
+import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
 import formatPrice from '../../../utils/formatPrice/formatPrice'
 import Icon from '../../../atoms/icon/icon/icon'
 import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
 import Space from '../../../atoms/space/space'
 import Table from '../../../molecules/table/table'
 import Text from '../../../atoms/text/text'
+import THEME_ALIGN from '../../../constants/align'
 import Tooltip from '../../../atoms/tooltip/tooltip'
+import THEME_SIZE from '../../../constants/size'
 import Pagination from '../../../molecules/pagination/pagination'
+import Row from '../../../atoms/grid/Row'
+
+const DATE_TYPE = {
+  YEAR: 'year',
+  MONTH: 'month',
+  WEEK: 'week',
+  DAY: 'day'
+}
+
+const columnPattern = {
+  year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  month: ['Week1', 'Week2', 'Week3', 'Week4'],
+  week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri'],
+  day: [...Array(12).keys()]
+}
+
+const args = {
+  align: THEME_ALIGN.Start,
+  size: THEME_SIZE.MD
+}
 
 const formatCell = (handleClick, month, row, otherData) => {
   return row[month][0] || row[month] ? (
@@ -62,85 +86,107 @@ const formatTask = ({ row }) => {
   )
 }
 
-const columns = (handleClick, currentYear) => [
-  {
-    hidden: true
-  },
-  {
-    formatter: formatTask,
-    text: '2021'
-  },
-  {
-    hidden: true
-  },
-  {
-    text: 'Count'
-  },
-  {
-    hidden: true
-  },
-  {
-    hidden: true
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'jan', row, { month: 1, year: currentYear }),
-    text: 'Jan'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'feb', row, { month: 2, year: currentYear }),
-    text: 'Feb'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'mar', row, { month: 3, year: currentYear }),
-    text: 'Mar'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'apr', row, { month: 4, year: currentYear }),
-    text: 'Apr'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'may', row, { month: 5, year: currentYear }),
-    text: 'May'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'jun', row, { month: 6, year: currentYear }),
-    text: 'Jun'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'jul', row, { month: 7, year: currentYear }),
-    text: 'Jul'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'aug', row, { month: 8, year: currentYear }),
-    text: 'Aug'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'sep', row, { month: 9, year: currentYear }),
-    text: 'Sep'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'oct', row, { mmonth: 10, year: currentYear }),
-    text: 'Oct'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'nov', row, { mmonth: 11, year: currentYear }),
-    text: 'Nov'
-  },
-  {
-    formatter: ({ row }) => formatCell(handleClick, 'dec', row, { mmonth: 12, year: currentYear }),
-    text: 'Dec'
-  }
-]
+const columns = (handleClick, options) => {
+  const { currentYear, mode = DATE_TYPE.MONTH } = options
 
-const Schedule = ({ data, handleClick, handleRowClick, onYearChange, currentYear, yearRange }) => {
+  const result = [
+    {
+      hidden: true
+    },
+    {
+      formatter: formatTask,
+      text: '2021'
+    },
+    {
+      hidden: true
+    },
+    {
+      text: 'Count'
+    },
+    {
+      hidden: true
+    },
+    {
+      hidden: true
+    }
+  ]
+  columnPattern[mode].forEach((item, i) => {
+    const text = mode === DATE_TYPE.DAY ? item + 1 : item
+
+    result.push({
+      formatter: ({ row }) =>
+        formatCell(handleClick, String(text).toLowerCase(), row, {
+          month: i + 1,
+          year: currentYear
+        }),
+      text: mode === DATE_TYPE.DAY ? `${text}hr` : text
+    })
+  })
+  return result
+}
+const isActiveMenu = (currentMode, mode) => {
+  return currentMode === mode ? 'primary' : 'secondary'
+}
+
+const ScheduleToolbar = ({ mode, setMode }) => {
+  return (
+    <Row justify={'end'}>
+      <Space marginRight="sm" marginBottom="sm">
+        <ButtonToolbar {...args}>
+          <Button
+            content="Year"
+            size="sm"
+            context={isActiveMenu(DATE_TYPE.YEAR, mode)}
+            onClick={() => setMode(DATE_TYPE.YEAR)}
+          />
+          <Button
+            content="Month"
+            size="sm"
+            context={isActiveMenu(DATE_TYPE.MONTH, mode)}
+            onClick={() => setMode(DATE_TYPE.MONTH)}
+          />
+          <Button
+            content="Week"
+            size="sm"
+            context={isActiveMenu(DATE_TYPE.WEEK, mode)}
+            onClick={() => setMode(DATE_TYPE.WEEK)}
+          />
+          <Button
+            content="Day"
+            size="sm"
+            context={isActiveMenu(DATE_TYPE.DAY, mode)}
+            onClick={() => setMode(DATE_TYPE.DAY)}
+          />
+        </ButtonToolbar>
+      </Space>
+    </Row>
+  )
+}
+
+const Schedule = ({
+  currentYear,
+  data,
+  handleFetchData,
+  handleClick,
+  handleRowClick,
+  initialMode,
+  onYearChange,
+  yearRange
+}) => {
+  const [mode, setMode] = useState(initialMode)
+
+  if (!Object.values(DATE_TYPE).includes(initialMode))
+    throw new Error('initialMode can be one of day, week, month or year values')
+
   return (
     <>
+      {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
       <Table
         align="center"
-        columns={columns(handleClick, currentYear)}
+        columns={columns(handleClick, { currentYear, mode })}
         hover={false}
         rowClick={handleRowClick}
-        rows={data}
+        rows={handleFetchData(mode)}
       />
       {yearRange && (
         <>
@@ -178,6 +224,8 @@ const Wrapper = styled.div`
 `
 
 Schedule.propTypes = {
+  initialMode: oneOf(Object.values(DATE_TYPE)),
+  handleFetchData: func,
   data: array.isRequired,
   handleClick: func,
   handleRowClick: func
