@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { memo, useCallback, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
 // UI
@@ -50,6 +50,12 @@ const TableRows = memo(
     const clickable = typeof rowClick === 'function'
 
     const [rowsState, setRowsState] = useState(rows)
+
+    useEffect(() => {
+      setRowsState(rows)
+      return () => {}
+    }, [rows, rows.length])
+
     const moveRow = useCallback(
       (dragIndex, hoverIndex) => {
         const dragRow = rowsState[dragIndex]
