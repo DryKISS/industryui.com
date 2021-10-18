@@ -14,7 +14,7 @@ import StepperItem from './components/item'
 import StepperSummary from './components/summary'
 
 const Stepper = ({ className, items, summary, maxWidth = '400px' }) => {
-   return (
+  return (
     <StyledStepper>
       <ul>
         {items.map(

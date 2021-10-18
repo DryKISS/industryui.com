@@ -123,7 +123,7 @@ export const Data = {
       date: null,
       active: true,
       highlighted: true,
-      highlightColour:'rgba(255,0,255,0.1)',
+      highlightColour: 'rgba(255,0,255,0.1)',
       info: '5 min video',
       content: [
         {
