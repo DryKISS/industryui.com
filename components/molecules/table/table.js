@@ -36,7 +36,7 @@ const Table = memo(
     paginationProps,
     responsive,
     rowClick,
-    rows,
+    rows = [],
     setSort,
     sort,
     striped

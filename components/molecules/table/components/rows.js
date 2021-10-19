@@ -32,7 +32,7 @@ const TableRows = memo(
     hover,
     onRowOrderChange,
     rowClick,
-    rows,
+    rows = [],
     striped
   }) => {
     const [selectedIndex, setSelectedIndex] = useState(null)
@@ -52,7 +52,7 @@ const TableRows = memo(
     const [rowsState, setRowsState] = useState(rows)
 
     useEffect(() => {
-      setRowsState(rows)
+      setRowsState([...rows])
       return () => {}
     }, [rows, rows.length])
 
@@ -73,7 +73,7 @@ const TableRows = memo(
 
     return (
       <Wrapper {...{ draggableRows }}>
-        {rowsState.map((row, index) => {
+        {(rows?.length > 0 ? rows : rowsState).map((row, index) => {
           if (row.hidden) {
             return null
           } else {
