@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Table - Wrapper
+ * Components - Molecules - Table
  */
 
 // React
@@ -36,7 +36,7 @@ const Table = memo(
     paginationProps,
     responsive,
     rowClick,
-    rows = [],
+    rows,
     setSort,
     sort,
     striped

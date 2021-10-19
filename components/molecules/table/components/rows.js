@@ -6,14 +6,20 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
-// UI
+// React DND
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
+// Immutability
+import update from 'immutability-helper'
+
+// Style
 import styled from 'styled-components'
+
+// UI
 import TableData from './data'
 import TableRow from './row'
 import VerticalThreeDotsIcon from '../../../icons/components/verticalThreeDots'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import update from 'immutability-helper'
 
 const Wrapper = ({ children, draggableRows }) => {
   return draggableRows ? (
@@ -32,7 +38,7 @@ const TableRows = memo(
     hover,
     onRowOrderChange,
     rowClick,
-    rows = [],
+    rows,
     striped
   }) => {
     const [selectedIndex, setSelectedIndex] = useState(null)
@@ -133,9 +139,10 @@ const TableRows = memo(
     )
   }
 )
+
 const StyledDragHandle = styled(VerticalThreeDotsIcon)`
-  margin-top: 2px;
   margin-bottom: -5px;
+  margin-top: 2px;
 `
 
 TableRows.propTypes = {
