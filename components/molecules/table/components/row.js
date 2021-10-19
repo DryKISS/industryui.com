@@ -1,11 +1,14 @@
 /**
- * Components - Molecules - Row
+ * Components - Molecules - Table - Row
  */
 
 // React
 import React, { memo, useRef } from 'react'
 import { bool, string } from 'prop-types'
+
+// React DND
 import { useDrag, useDrop } from 'react-dnd'
+
 // Style
 import styled, { css } from 'styled-components'
 

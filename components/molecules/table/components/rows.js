@@ -6,14 +6,20 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import { array, bool, func, oneOfType, string } from 'prop-types'
 
-// UI
+// React DND
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
+// Immutability
+import update from 'immutability-helper'
+
+// Style
 import styled from 'styled-components'
+
+// UI
 import TableData from './data'
 import TableRow from './row'
 import VerticalThreeDotsIcon from '../../../icons/components/verticalThreeDots'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import update from 'immutability-helper'
 
 const Wrapper = ({ children, draggableRows }) => {
   return draggableRows ? (
@@ -52,7 +58,7 @@ const TableRows = memo(
     const [rowsState, setRowsState] = useState(rows)
 
     useEffect(() => {
-      setRowsState(rows)
+      setRowsState([...rows])
       return () => {}
     }, [rows, rows.length])
 
@@ -73,7 +79,7 @@ const TableRows = memo(
 
     return (
       <Wrapper {...{ draggableRows }}>
-        {rowsState.map((row, index) => {
+        {(rows?.length > 0 ? rows : rowsState).map((row, index) => {
           if (row.hidden) {
             return null
           } else {
@@ -133,9 +139,10 @@ const TableRows = memo(
     )
   }
 )
+
 const StyledDragHandle = styled(VerticalThreeDotsIcon)`
-  margin-top: 2px;
   margin-bottom: -5px;
+  margin-top: 2px;
 `
 
 TableRows.propTypes = {
