@@ -3,24 +3,34 @@ import React from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
+import DoubleQuoteIcon from '../../icons/components/doubleQuote'
+import UnderlineIcon from '../../icons/components/underline'
+import CodeBlockIcon from '../../icons/components/codeBlock'
+
+const StyledHTag = styled.span`
+  color: ${({ theme }) => theme.RICH_TEXT_EDITOR.formatButtonsColour};
+  font-weight: bold;
+  font-size: ${({ size = 1 }) => `${size}rem`};
+`
 
 export const BLOCK_TYPES = [
-  { label: 'H1', style: 'header-one' },
-  { label: 'H2', style: 'header-two' },
-  { label: 'H3', style: 'header-three' },
-  { label: 'H4', style: 'header-four' },
-  { label: 'H5', style: 'header-five' },
-  { label: 'H6', style: 'header-six' },
-  { label: 'Blockquote', style: 'blockquote' },
-  { label: 'UL', style: 'unordered-list-item' },
-  { label: 'OL', style: 'ordered-list-item' },
-  { label: 'Code Block', style: 'code-block' }
+  { label: <StyledHTag size={2}>H1</StyledHTag>, style: 'header-one' },
+  { label: <StyledHTag size={1.75}>H2</StyledHTag>, style: 'header-two' },
+  { label: <StyledHTag size={1.5}>H3</StyledHTag>, style: 'header-three' },
+  { label: <StyledHTag size={1.25}>H4</StyledHTag>, style: 'header-four' },
+  { label: <StyledHTag size={1.1}>H5</StyledHTag>, style: 'header-five' },
+  { label: <StyledHTag size={1}>H6</StyledHTag>, style: 'header-six' },
+
+  { label: <DoubleQuoteIcon />, style: 'blockquote' },
+  { label: <StyledHTag size={1}>UL</StyledHTag>, style: 'unordered-list-item' },
+  { label: <StyledHTag size={1}>OL</StyledHTag>, style: 'ordered-list-item' },
+  { label: <CodeBlockIcon />, style: 'code-block' }
 ]
 
 export const INLINE_STYLES = [
-  { label: 'Bold', style: 'BOLD' },
-  { label: 'Italic', style: 'ITALIC' },
-  { label: 'Underline', style: 'UNDERLINE' }
+  { label: <StyledHTag size={1}>Bold</StyledHTag>, style: 'BOLD' },
+  { label: <StyledHTag size={1}>Italic</StyledHTag>, style: 'ITALIC' },
+  { label: <UnderlineIcon />, style: 'UNDERLINE' }
 ]
 
 export const BlockStyleControls = (props) => {
@@ -50,9 +60,9 @@ export const InlineStyleControls = (props) => {
   const currentStyle = props.editorState.getCurrentInlineStyle()
   return (
     <div className="RichEditor-controls">
-      {INLINE_STYLES.map((type) => (
+      {INLINE_STYLES.map((type, index) => (
         <StyleButton
-          key={type.label}
+          key={index}
           active={currentStyle.has(type.style)}
           label={type.label}
           onToggle={props.onToggle}
@@ -65,10 +75,10 @@ export const InlineStyleControls = (props) => {
 
 export const styleMap = {
   CODE: {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
-    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+    backgroundColor: 'white',
+    fontFamily: '"Open Sans", sans-serif, "Menlo", "Consolas", monospace',
     fontSize: 16,
-    padding: 2
+    padding: 1
   }
 }
 
@@ -96,10 +106,16 @@ const StyleButton = ({ active, label, onToggle, style }) => {
 
 const StyledRichButton = styled.span`
   cursor: pointer;
-  margin: 0 0.5rem;
+
+  padding: 0 0.5rem;
+  display: inline-block;
   ${({ active }) =>
     active &&
     css`
-      color: red;
+      background: ${({ theme }) => theme.RICH_TEXT_EDITOR.selectedButtonBackgroundColour};
+      border-radius: 6px;
+      span {
+        color: ${({ theme }) => theme.RICH_TEXT_EDITOR.selectedButtonColour};
+      }
     `}
 `

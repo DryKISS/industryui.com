@@ -6,6 +6,7 @@ import { Editor, EditorState, RichUtils } from 'draft-js'
 
 // Config
 import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from './config'
+import styled from 'styled-components'
 
 const IUIRich = () => {
   const [editorState, seteditorState] = useState(EditorState.createEmpty())
@@ -40,7 +41,7 @@ const IUIRich = () => {
   }
 
   return (
-    <div onClick={focus}>
+    <EditorWrapper onClick={focus}>
       <BlockStyleControls editorState={editorState} onToggle={toggleBlockType} />
       <InlineStyleControls editorState={editorState} onToggle={toggleInlineStyle} />
       <Editor
@@ -50,12 +51,25 @@ const IUIRich = () => {
         handleKeyCommand={onKeyCommand}
         onChange={handleChange}
         onTab={handleTab}
-        placeholder="write here..."
         ref={ref}
         spellCheck
       />
-    </div>
+    </EditorWrapper>
   )
 }
-
+const EditorWrapper = styled.div`
+  div.DraftEditor-root {
+    min-height: 200px;
+    padding: 0.5rem 1rem;
+  }
+  div.DraftEditor-editorContainer,
+  div.public-DraftEditor-content {
+    height: 100%;
+  }
+  .DraftEditor-root {
+    background: white;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
+`
 export default IUIRich

@@ -29,6 +29,7 @@ import PAGE from '../layouts/page/variables'
 import PRICING from '../organisms/pricing/components/variables'
 import PROGRESS from '../atoms/progress/components/progressVariables'
 import PROGRESSBAR from '../atoms/progress/components/progressBarVariables'
+import RICH_TEXT_EDITOR from '../form/iuiRich/variables'
 import SELECT from '../form/reactSelect/variables'
 import SIDEBAR from '../molecules/sidebar/variables'
 import SPACING from '../utils/spacer/spacing'
@@ -67,6 +68,7 @@ const Theme = {
   PIECHART,
   PROGRESS,
   PROGRESSBAR,
+  RICH_TEXT_EDITOR,
   SELECT,
   SIDEBAR,
   SPACING,
