@@ -3,8 +3,8 @@
  */
 
 // React
-import React, { useState } from 'react'
-import { array, func, oneOf } from 'prop-types'
+import React, { useState, memo } from 'react'
+import { func, oneOf } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
@@ -12,6 +12,7 @@ import styled from 'styled-components'
 // UI
 import Button from '../../../atoms/button/button/button'
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
+import { ColumnPagination } from './helper'
 import formatPrice from '../../../utils/formatPrice/formatPrice'
 import Icon from '../../../atoms/icon/icon/icon'
 import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
@@ -87,15 +88,14 @@ const formatTask = ({ row }) => {
 }
 
 const columns = (handleClick, options) => {
-  const { currentYear, mode = DATE_TYPE.MONTH } = options
-
+  const { currentYear, mode = DATE_TYPE.MONTH, setCurrentDate, currentDate } = options
   const result = [
     {
       hidden: true
     },
     {
       formatter: formatTask,
-      text: '2021'
+      text: <ColumnPagination {...{ setCurrentDate, mode, currentDate }} />
     },
     {
       hidden: true
@@ -110,12 +110,13 @@ const columns = (handleClick, options) => {
       hidden: true
     }
   ]
+
   columnPattern[mode].forEach((item, i) => {
     const text = mode === DATE_TYPE.DAY ? item + 1 : item
-
+    const key = String(text).toLowerCase()
     result.push({
       formatter: ({ row }) =>
-        formatCell(handleClick, String(text).toLowerCase(), row, {
+        formatCell((e) => handleClick(e, key), key, row, {
           month: i + 1,
           year: currentYear
         }),
@@ -124,9 +125,8 @@ const columns = (handleClick, options) => {
   })
   return result
 }
-const isActiveMenu = (currentMode, mode) => {
-  return currentMode === mode ? 'primary' : 'secondary'
-}
+
+const isActiveMenu = (currentMode, mode) => (currentMode === mode ? 'primary' : 'secondary')
 
 const ScheduleToolbar = ({ mode, setMode }) => {
   return (
@@ -163,47 +163,52 @@ const ScheduleToolbar = ({ mode, setMode }) => {
   )
 }
 
-const Schedule = ({
-  currentYear,
-  data,
-  handleFetchData,
-  handleClick,
-  handleRowClick,
-  initialMode,
-  onYearChange,
-  yearRange
-}) => {
-  const [mode, setMode] = useState(initialMode)
+const Schedule = memo(
+  ({
+    currentYear,
+    handleFetchData,
+    handleClick,
+    handleRowClick,
+    initialMode,
+    onYearChange,
+    yearRange
+  }) => {
+    const [mode, setMode] = useState(initialMode)
+    const [currentDate, setCurrentDate] = useState(new Date())
 
-  if (!Object.values(DATE_TYPE).includes(initialMode))
-    throw new Error('initialMode can be one of day, week, month or year values')
+    if (!Object.values(DATE_TYPE).includes(initialMode))
+      throw new Error('initialMode can be one of day, week, month or year values')
 
-  return (
-    <>
-      {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
-      <Table
-        align="center"
-        columns={columns(handleClick, { currentYear, mode })}
-        hover={false}
-        rowClick={handleRowClick}
-        rows={handleFetchData(mode)}
-      />
-      {yearRange && (
-        <>
-          <Space marginTop="sm">
-            <Pagination
-              pageCount={yearRange.length}
-              pageRange={yearRange}
-              currentPage={currentYear}
-              onPageChange={onYearChange}
-              context={'primary'}
-            ></Pagination>
-          </Space>
-        </>
-      )}
-    </>
-  )
-}
+    const dataSource = handleFetchData(mode, currentDate)
+
+    return (
+      <>
+        {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
+        <Table
+          align="center"
+          columns={columns(handleClick, { currentYear, mode, setCurrentDate, currentDate })}
+          hover={false}
+          rowClick={handleRowClick}
+          rows={dataSource}
+        />
+        {yearRange && (
+          <>
+            <Space marginTop="sm">
+              <Pagination
+                pageCount={yearRange.length}
+                pageRange={yearRange}
+                currentPage={currentYear}
+                onPageChange={onYearChange}
+                context={'primary'}
+              ></Pagination>
+            </Space>
+          </>
+        )}
+      </>
+    )
+  },
+  () => true
+)
 
 const Wrapper = styled.div`
   align-items: center;
@@ -226,7 +231,6 @@ const Wrapper = styled.div`
 Schedule.propTypes = {
   initialMode: oneOf(Object.values(DATE_TYPE)),
   handleFetchData: func,
-  data: array.isRequired,
   handleClick: func,
   handleRowClick: func
 }

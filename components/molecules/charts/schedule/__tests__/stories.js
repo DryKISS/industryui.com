@@ -21,28 +21,31 @@ export default {
   },
   title: 'Molecules/Charts/Schedule'
 }
+const handleClick = (e, column) => {
+  console.log('handleClick')
 
-const handleClick = ({ e, month, row }, additionalData) => {
-  e.stopPropagation()
-  console.log(additionalData)
-  console.info('Month', month)
-  console.info('Row', row)
-  console.info('Cell CLick', e)
+  console.log('column', column)
+  // console.log(additionalData)
+  // console.info('Month', month)
+  // console.info('Row', row)
+  // console.info('Cell CLick', e)
 }
 
 const handleRowClick = (row) => {
   console.info('Row Click', row)
 }
 
-export const main = (args) => (
-  <Schedule
-    {...args}
-    handleFetchData={(mode) => MAIN_SCHEDULES[mode]}
-    initialMode="year"
-    handleClick={handleClick}
-    handleRowClick={handleRowClick}
-  />
-)
+export const Main = (args) => {
+  return (
+    <Schedule
+      {...args}
+      handleFetchData={(mode, date) => MAIN_SCHEDULES[mode]}
+      initialMode="year"
+      handleClick={handleClick}
+      handleRowClick={handleRowClick}
+    />
+  )
+}
 
 export const WithPagination = (args) => {
   const [currentYear, setCurrentYear] = useState(2021)
@@ -53,7 +56,6 @@ export const WithPagination = (args) => {
   return (
     <Schedule
       {...args}
-      handleClick={handleClick}
       initialMode="year"
       handleFetchData={() => SCHEDULES[years.indexOf(currentYear)]}
       handleRowClick={handleRowClick}
