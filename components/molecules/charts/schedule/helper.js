@@ -23,42 +23,43 @@ const args = {
 }
 
 const calculateCurrent = (currentDate, mode, status = 'current') => {
+  const pCurrentDate = Date.parse(currentDate)
   switch (mode) {
     case 'year':
       if (status === 'current') {
-        return format(currentDate, 'y')
+        return format(pCurrentDate, 'y')
       } else if (status === 'next') {
-        return addYears(currentDate, 1)
+        return addYears(pCurrentDate, 1)
       } else if (status === 'prev') {
-        return subYears(currentDate, 1)
+        return subYears(pCurrentDate, 1)
       }
       break
     case 'month':
       if (status === 'current') {
-        return format(currentDate, 'MMMM')
+        return format(pCurrentDate, 'MMMM')
       } else if (status === 'next') {
-        return addMonths(currentDate, 1)
+        return addMonths(pCurrentDate, 1)
       } else if (status === 'prev') {
-        return subMonths(currentDate, 1)
+        return subMonths(pCurrentDate, 1)
       }
       break
     case 'week':
       if (status === 'current') {
-        const formatDate = daysToWeeks(format(new Date(currentDate), 'd')) + 1
-        return `${formatDate}th Week Of ${format(currentDate, 'MMMM')}`
+        const formatDate = daysToWeeks(format(new Date(pCurrentDate), 'd')) + 1
+        return `${formatDate}th Week Of ${format(pCurrentDate, 'MMMM')}`
       } else if (status === 'next') {
-        return addWeeks(currentDate, 1)
+        return addWeeks(pCurrentDate, 1)
       } else if (status === 'prev') {
-        return subWeeks(currentDate, 1)
+        return subWeeks(pCurrentDate, 1)
       }
       break
     case 'day':
       if (status === 'current') {
-        return `${format(currentDate, 'd')}  ${format(currentDate, 'MMMM')}`
+        return `${format(pCurrentDate, 'd')}  ${format(pCurrentDate, 'MMMM')}`
       } else if (status === 'next') {
-        return addDays(currentDate, 1)
+        return addDays(pCurrentDate, 1)
       } else if (status === 'prev') {
-        return subDays(currentDate, 1)
+        return subDays(pCurrentDate, 1)
       }
   }
 }
@@ -66,7 +67,7 @@ const calculateCurrent = (currentDate, mode, status = 'current') => {
 const handleChangeDate = (setCurrentDate, options) => {
   const { currentDate, mode, status } = options
   const current = calculateCurrent(currentDate, mode, status)
-  setCurrentDate(current)
+  setCurrentDate(current.toISOString())
 }
 
 export const ColumnPagination = ({ setCurrentDate, mode, currentDate }) => {

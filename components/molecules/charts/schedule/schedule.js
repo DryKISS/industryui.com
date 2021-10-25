@@ -3,9 +3,8 @@
  */
 
 // React
-import React, { useState, memo } from 'react'
-import { func, oneOf } from 'prop-types'
-
+import React, { useEffect, useState } from 'react'
+import { array, func, oneOf } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
@@ -45,7 +44,7 @@ const args = {
 }
 
 const formatCell = (handleClick, month, row, otherData) => {
-  return row[month][0] || row[month] ? (
+  return row[month] && row[month][0] ? (
     row[month][2] ? (
       <Tooltip content={row[month][2]}>
         <Wrapper
@@ -123,6 +122,7 @@ const columns = (handleClick, options) => {
       text: mode === DATE_TYPE.DAY ? `${text}hr` : text
     })
   })
+
   return result
 }
 
@@ -163,52 +163,59 @@ const ScheduleToolbar = ({ mode, setMode }) => {
   )
 }
 
-const Schedule = memo(
-  ({
-    currentYear,
-    handleFetchData,
-    handleClick,
-    handleRowClick,
-    initialMode,
-    onYearChange,
-    yearRange
-  }) => {
-    const [mode, setMode] = useState(initialMode)
-    const [currentDate, setCurrentDate] = useState(new Date())
+const Schedule = ({
+  currentYear,
+  handleFetchData,
+  handleClick,
+  handleRowClick,
+  initialData,
+  initialMode,
+  onYearChange,
+  yearRange
+}) => {
+  const [mode, setMode] = useState('year')
+  const [currentDate, setCurrentDate] = useState(new Date().toISOString())
+  const [dataSource, setDataSource] = useState([])
 
-    if (!Object.values(DATE_TYPE).includes(initialMode))
-      throw new Error('initialMode can be one of day, week, month or year values')
+  useEffect(async () => {
+    const arr = [...(await handleFetchData(mode, currentDate))]
+    setDataSource(arr)
+  }, [])
 
-    const dataSource = handleFetchData(mode, currentDate)
+  useEffect(async () => {
+    const arr = [...(await handleFetchData(mode, currentDate))]
+    setDataSource(arr)
+  }, [mode, currentDate])
 
-    return (
-      <>
-        {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
-        <Table
-          align="center"
-          columns={columns(handleClick, { currentYear, mode, setCurrentDate, currentDate })}
-          hover={false}
-          rowClick={handleRowClick}
-          rows={dataSource}
-        />
-        {yearRange && (
-          <>
-            <Space marginTop="sm">
-              <Pagination
-                pageCount={yearRange.length}
-                pageRange={yearRange}
-                currentPage={currentYear}
-                onPageChange={onYearChange}
-                context={'primary'}
-              ></Pagination>
-            </Space>
-          </>
-        )}
-      </>
-    )
-  },
-  () => true
-)
+  if (!Object.values(DATE_TYPE).includes(initialMode))
+    throw new Error('initialMode can be one of day, week, month or year values')
+
+  return (
+    <>
+      {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
+      <Table
+        align="center"
+        columns={columns(handleClick, { currentYear, mode, setCurrentDate, currentDate })}
+        hover={false}
+        rowClick={handleRowClick}
+        rows={dataSource?.length > 0 ? dataSource : initialData || []}
+      />
+      {yearRange && (
+        <>
+          <Space marginTop="sm">
+            <Pagination
+              pageCount={yearRange.length}
+              pageRange={yearRange}
+              currentPage={currentYear}
+              onPageChange={onYearChange}
+              context={'primary'}
+            ></Pagination>
+          </Space>
+        </>
+      )}
+    </>
+  )
+}
 
 const Wrapper = styled.div`
   align-items: center;
@@ -230,6 +237,7 @@ const Wrapper = styled.div`
 
 Schedule.propTypes = {
   initialMode: oneOf(Object.values(DATE_TYPE)),
+  initialData: array,
   handleFetchData: func,
   handleClick: func,
   handleRowClick: func
