@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 // UI
 import Schedule from '../schedule'
 import Readme from '../README.md'
-import { MAIN_SCHEDULES, SCHEDULES } from '../__mocks__/scheduleMock'
+import { SCHEDULES, EXTERNAL_SCHEDULE_DATA } from '../__mocks__/scheduleMock'
 
 export default {
   component: Schedule,
@@ -25,10 +25,6 @@ const handleClick = (e, column) => {
   console.log('handleClick')
 
   console.log('column', column)
-  // console.log(additionalData)
-  // console.info('Month', month)
-  // console.info('Row', row)
-  // console.info('Cell CLick', e)
 }
 
 const handleRowClick = (row) => {
@@ -39,8 +35,19 @@ export const Main = (args) => {
   return (
     <Schedule
       {...args}
-      handleFetchData={(mode, date) => MAIN_SCHEDULES[mode]}
-      initialMode="year"
+      handleFetchData={(mode, date) => EXTERNAL_SCHEDULE_DATA}
+      initialData={EXTERNAL_SCHEDULE_DATA}
+      initialMode="week"
+      hiddenColumn={{
+        id: ' ',
+        costCustomer: ' ',
+        costSupplier: ' ',
+        serviceName: ' ',
+        compliance: ' ',
+        jobs: []
+      }}
+      events={'jobs'}
+      flag={'rag'}
       handleClick={handleClick}
       handleRowClick={handleRowClick}
     />
@@ -57,6 +64,18 @@ export const WithPagination = (args) => {
     <Schedule
       {...args}
       initialMode="year"
+      initialData={EXTERNAL_SCHEDULE_DATA}
+      initialMode="year"
+      hiddenColumn={{
+        id: ' ',
+        costCustomer: ' ',
+        costSupplier: ' ',
+        serviceName: ' ',
+        compliance: ' ',
+        jobs: []
+      }}
+      events={'jobs'}
+      flag={'rag'}
       handleFetchData={() => SCHEDULES[years.indexOf(currentYear)]}
       handleRowClick={handleRowClick}
       onYearChange={handleYearChange}

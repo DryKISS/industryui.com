@@ -583,3 +583,80 @@ export const MAIN_SCHEDULES = {
     }
   ]
 }
+
+export const EXTERNAL_SCHEDULE_DATA = [
+  {
+    id: 131,
+    compliance: false,
+    serviceName: 'External Lighting',
+    costCustomer: 200,
+    costSupplier: 150,
+    jobs: []
+  },
+  {
+    id: 136,
+    compliance: true,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    costCustomer: 100,
+    costSupplier: 80,
+    jobs: [
+      { id: 3076, rag: null, timingStart: '2021-10-12T00:00:00+00:00', __typename: 'Job' },
+      { id: 3077, rag: null, timingStart: '2021-07-05T00:00:00+00:00', __typename: 'Job' },
+      { id: 3078, rag: null, timingStart: '2021-08-26T00:00:00+00:00', __typename: 'Job' }
+    ]
+  },
+  {
+    id: 137,
+    costCustomer: 100,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    compliance: true,
+    costSupplier: 80,
+    jobs: [
+      { id: 2968, rag: null, timingStart: '2021-10-22T00:00:00+00:00', __typename: 'Job' },
+      { id: 2969, rag: null, timingStart: '2021-10-01T00:00:00+00:00', __typename: 'Job' },
+      { id: 2970, rag: null, timingStart: '2021-07-06T00:00:00+00:00', __typename: 'Job' },
+      { id: 2971, rag: null, timingStart: '2021-07-15T00:00:00+00:00', __typename: 'Job' },
+      { id: 2972, rag: null, timingStart: '2021-10-20T00:00:00+00:00', __typename: 'Job' },
+      { id: 2973, rag: null, timingStart: '2021-10-08T00:00:00+00:00', __typename: 'Job' }
+    ]
+  },
+  {
+    id: 139,
+    compliance: false,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    costCustomer: 100,
+    costSupplier: 110,
+    jobs: []
+  },
+  {
+    id: 148,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    costCustomer: 100,
+    costSupplier: 80,
+    jobs: []
+  },
+  {
+    id: 150,
+    compliance: false,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    costCustomer: null,
+    costSupplier: null,
+    jobs: []
+  },
+  {
+    id: 151,
+    compliance: false,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    costCustomer: 120,
+    costSupplier: 90,
+    jobs: [{ id: 3086, rag: null, timingStart: '2021-10-01T00:00:00+00:00', __typename: 'Job' }]
+  },
+  {
+    id: 161,
+    compliance: false,
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    costCustomer: 150,
+    costSupplier: 140,
+    jobs: [{ id: 3188, rag: null, timingStart: '2021-10-21T00:00:00+00:00', __typename: 'Job' }]
+  }
+]
