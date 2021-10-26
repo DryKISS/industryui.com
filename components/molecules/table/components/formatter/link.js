@@ -35,12 +35,12 @@ const TableLink =
     const item = row[value]
 
     return useLink ? (
-      item !== '-' || row[key] ? (
+      item !== '-' && row[key] ? (
         <StyleLink border={false} href={getPath()} onClick={handleClick}>
           {item}
         </StyleLink>
       ) : (
-        '-'
+        row[value] || '-'
       )
     ) : (
       item
