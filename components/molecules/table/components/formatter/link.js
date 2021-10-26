@@ -14,7 +14,6 @@ import styled from 'styled-components'
 
 // UI
 import StyledLink from '../../../../atoms/link/components/style'
-
 const TableLink =
   (path, key, value, dynamicUrl) =>
   ({ row }) => {
@@ -33,14 +32,15 @@ const TableLink =
     }
 
     const item = row[value]
+    const id = row[key]
 
     return useLink ? (
-      item !== '-' && row[key] ? (
+      item !== '-' && id ? (
         <StyleLink border={false} href={getPath()} onClick={handleClick}>
           {item}
         </StyleLink>
       ) : (
-        row[value] || '-'
+        item || '-'
       )
     ) : (
       item
