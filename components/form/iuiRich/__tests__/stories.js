@@ -19,8 +19,8 @@ export default {
 }
 
 export const IUIRichEditor = () => {
-	const handleRichInputChange=(e)=>{
-		console.log(e)
-	}
+  const handleRichInputChange = (e) => {
+    console.log(e)
+  }
   return <IUIRich onChange={handleRichInputChange} />
 }

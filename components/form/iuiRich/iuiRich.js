@@ -8,7 +8,7 @@ import { convertToRaw, Editor, EditorState, RichUtils } from 'draft-js'
 import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from './config'
 import styled from 'styled-components'
 
-const IUIRich = ({minHeight='200px',onChange}) => {
+const IUIRich = ({ minHeight = '200px', onChange }) => {
   const [editorState, seteditorState] = useState(EditorState.createEmpty())
   const ref = useRef(null)
 
@@ -16,16 +16,14 @@ const IUIRich = ({minHeight='200px',onChange}) => {
     ref.current.focus()
   }
 
-  const handleChange = (EditorState)=>{
-	let	plainText
+  const handleChange = (EditorState) => {
+    const plainText = EditorState.getCurrentContent().getPlainText('\u0001')
+    const contentState = editorState.getCurrentContent()
+    const jsonState = convertToRaw(contentState)
 
-		plainText =EditorState.getCurrentContent().getPlainText('\u0001')
-    const contentState = editorState.getCurrentContent();
-   let jsonState= convertToRaw(contentState);
-
-		onChange({rawText:plainText,state:jsonState})
-	return	seteditorState(EditorState)
-	}
+    onChange({ rawText: plainText, state: jsonState })
+    return seteditorState(EditorState)
+  }
 
   const onKeyCommand = (command) => {
     const newState = RichUtils.handleKeyCommand(editorState, command)
@@ -50,7 +48,7 @@ const IUIRich = ({minHeight='200px',onChange}) => {
   }
 
   return (
-    <EditorWrapper onClick={focus} minHeight={minHeight} >
+    <EditorWrapper onClick={focus} minHeight={minHeight}>
       <BlockStyleControls editorState={editorState} onToggle={toggleBlockType} />
       <InlineStyleControls editorState={editorState} onToggle={toggleInlineStyle} />
       <Editor
@@ -68,7 +66,7 @@ const IUIRich = ({minHeight='200px',onChange}) => {
 }
 const EditorWrapper = styled.div`
   div.DraftEditor-root {
-    min-height:${({minHeight})=>minHeight};
+    min-height: ${({ minHeight }) => minHeight};
     padding: 0.5rem 1rem;
   }
   div.DraftEditor-editorContainer,

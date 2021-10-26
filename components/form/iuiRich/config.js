@@ -9,13 +9,13 @@ import CodeBlockIcon from '../../icons/components/codeBlock'
 
 const StyledHTag = styled.span`
   color: ${({ theme }) => theme.RICH_TEXT_EDITOR.formatButtonsColour};
-  font-weight:${({bold})=>bold?'700':'600'};
+  font-weight: ${({ bold }) => (bold ? '700' : '600')};
   font-size: ${({ size = 1 }) => `${size}rem`};
-	font-style:${({italic})=>italic &&'italic'};
+  font-style: ${({ italic }) => italic && 'italic'};
 `
-const StyledUnderline=styled(UnderlineIcon)`
-    margin-top: 0px;
-    margin-bottom: -5px;
+const StyledUnderline = styled(UnderlineIcon)`
+  margin-top: 0px;
+  margin-bottom: -5px;
 `
 
 export const BLOCK_TYPES = [
@@ -33,9 +33,23 @@ export const BLOCK_TYPES = [
 ]
 
 export const INLINE_STYLES = [
-  { label: <StyledHTag bold size={1}>B</StyledHTag>, style: 'BOLD' },
-  { label: <StyledHTag size={1} italic>I</StyledHTag>, style: 'ITALIC' },
-  { label: <StyledUnderline  />, style: 'UNDERLINE' }
+  {
+    label: (
+      <StyledHTag bold size={1}>
+        B
+      </StyledHTag>
+    ),
+    style: 'BOLD'
+  },
+  {
+    label: (
+      <StyledHTag size={1} italic>
+        I
+      </StyledHTag>
+    ),
+    style: 'ITALIC'
+  },
+  { label: <StyledUnderline />, style: 'UNDERLINE' }
 ]
 
 export const BlockStyleControls = (props) => {
@@ -109,23 +123,23 @@ const StyleButton = ({ active, label, onToggle, style }) => {
   )
 }
 
-const ControllWrapper=styled.div`
-    display: flex;
-    align-items: center;
+const ControllWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const StyledRichButton = styled.span`
   cursor: pointer;
-border-width: 1px;
-border-color: transparent;
-border-style: solid;
-margin-right: 4px;
+  border-width: 1px;
+  border-color: transparent;
+  border-style: solid;
+  margin-right: 4px;
   padding: 0 0.5rem;
   display: inline-block;
   ${({ active }) =>
     active &&
     css`
-			border-color:  ${({ theme }) =>theme.RICH_TEXT_EDITOR.selectedButtonBorderColor};
+      border-color: ${({ theme }) => theme.RICH_TEXT_EDITOR.selectedButtonBorderColor};
       background: ${({ theme }) => theme.RICH_TEXT_EDITOR.selectedButtonBackgroundColour};
       border-radius: 6px;
       span {
