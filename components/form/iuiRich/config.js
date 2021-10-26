@@ -9,8 +9,13 @@ import CodeBlockIcon from '../../icons/components/codeBlock'
 
 const StyledHTag = styled.span`
   color: ${({ theme }) => theme.RICH_TEXT_EDITOR.formatButtonsColour};
-  font-weight: bold;
+  font-weight:${({bold})=>bold?'700':'600'};
   font-size: ${({ size = 1 }) => `${size}rem`};
+	font-style:${({italic})=>italic &&'italic'};
+`
+const StyledUnderline=styled(UnderlineIcon)`
+    margin-top: 0px;
+    margin-bottom: -5px;
 `
 
 export const BLOCK_TYPES = [
@@ -28,9 +33,9 @@ export const BLOCK_TYPES = [
 ]
 
 export const INLINE_STYLES = [
-  { label: <StyledHTag size={1}>Bold</StyledHTag>, style: 'BOLD' },
-  { label: <StyledHTag size={1}>Italic</StyledHTag>, style: 'ITALIC' },
-  { label: <UnderlineIcon />, style: 'UNDERLINE' }
+  { label: <StyledHTag bold size={1}>B</StyledHTag>, style: 'BOLD' },
+  { label: <StyledHTag size={1} italic>I</StyledHTag>, style: 'ITALIC' },
+  { label: <StyledUnderline  />, style: 'UNDERLINE' }
 ]
 
 export const BlockStyleControls = (props) => {
