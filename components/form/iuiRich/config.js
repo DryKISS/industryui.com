@@ -42,24 +42,24 @@ export const BlockStyleControls = (props) => {
     .getType()
 
   return (
-    <div className="RichEditor-controls">
+    <ControllWrapper>
       {BLOCK_TYPES.map((type) => (
         <StyleButton
-          key={type.label}
+          key={type.style}
           active={type.style === blockType}
           label={type.label}
           onToggle={props.onToggle}
           style={type.style}
         />
       ))}
-    </div>
+    </ControllWrapper>
   )
 }
 
 export const InlineStyleControls = (props) => {
   const currentStyle = props.editorState.getCurrentInlineStyle()
   return (
-    <div className="RichEditor-controls">
+    <ControllWrapper>
       {INLINE_STYLES.map((type, index) => (
         <StyleButton
           key={index}
@@ -69,7 +69,7 @@ export const InlineStyleControls = (props) => {
           style={type.style}
         />
       ))}
-    </div>
+    </ControllWrapper>
   )
 }
 
@@ -104,14 +104,23 @@ const StyleButton = ({ active, label, onToggle, style }) => {
   )
 }
 
+const ControllWrapper=styled.div`
+    display: flex;
+    align-items: center;
+`
+
 const StyledRichButton = styled.span`
   cursor: pointer;
-
+border-width: 1px;
+border-color: transparent;
+border-style: solid;
+margin-right: 4px;
   padding: 0 0.5rem;
   display: inline-block;
   ${({ active }) =>
     active &&
     css`
+			border-color:  ${({ theme }) =>theme.RICH_TEXT_EDITOR.selectedButtonBorderColor};
       background: ${({ theme }) => theme.RICH_TEXT_EDITOR.selectedButtonBackgroundColour};
       border-radius: 6px;
       span {
