@@ -2,661 +2,253 @@
  * Components - Molecules - Charts - Schedule - Mocks
  */
 
-// React
-import React from 'react'
-
-// UI
-import Text from '../../../../atoms/text/text'
-
-export const SCHEDULES = [
-  [
-    {
-      id: 1,
-      task: 'some Inspection',
-      compliance: true,
-      count: 1,
-      costCustomer: 150,
-      costSupplier: 125,
-      jan: 0,
-      feb: 0,
-      mar: 0,
-      apr: 0,
-      may: 0,
-      jun: [1, 'warning', 'Compliance documents required'],
-      jul: [5, 'danger', 'not done'],
-      aug: 0,
-      sep: 0,
-      oct: 0,
-      nov: 0,
-      dec: 0
-    },
-    {
-      id: 2,
-      task: 'Window Removal',
-      compliance: false,
-      count: 12,
-      costCustomer: 75,
-      costSupplier: 50,
-      jan: [1, 'danger', 'Supplier late'],
-      feb: [1, 'success', 'No issues'],
-      mar: [4, 'warning', 'Document pending'],
-      apr: [1],
-      may: [1],
-      jun: [1],
-      jul: [1],
-      aug: [1],
-      sep: [1],
-      oct: [1],
-      nov: [1],
-      dec: [1]
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 24,
-      costCustomer: 100,
-      costSupplier: 50,
-      jan: [2, 'success', 'No issues'],
-      feb: [
-        2,
-        'danger',
-        <Text context="white" size="xs">
-          2 jobs
-          <br />1 completed
-          <br />1 past due
-        </Text>
-      ],
-      mar: [2, 'success', 'No issues'],
-      apr: 2,
-      may: 2,
-      jun: 2,
-      jul: 2,
-      aug: 2,
-      sep: 2,
-      oct: 2,
-      nov: 2,
-      dec: 2
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 37,
-      costCustomer: 325,
-      costSupplier: 225,
-      jan: 3,
-      feb: 3,
-      mar: 3,
-      apr: 2,
-      may: 3,
-      jun: 4,
-      jul: 3,
-      aug: 3,
-      sep: 3,
-      oct: 3,
-      nov: 3,
-      dec: 3
-    }
-  ],
-  [
-    {
-      id: 1,
-      task: 'Bolier Inspection',
-      compliance: true,
-      count: 1,
-      costCustomer: 150,
-      costSupplier: 125,
-      jan: 0,
-      feb: 1,
-      mar: 0,
-      apr: 1,
-      may: 0,
-      jun: [1, 'danger', 'Compliance documents'],
-      jul: [3, 'success', 'all done'],
-      aug: 0,
-      sep: 0,
-      oct: 0,
-      nov: 1,
-      dec: 0
-    },
-    {
-      id: 2,
-      task: 'Window Cleaning',
-      compliance: false,
-      count: 12,
-      costCustomer: 75,
-      costSupplier: 50,
-      jan: [1, 'danger', 'Supplier late'],
-      feb: [1, 'success', 'No issues'],
-      mar: [1, 'warning', 'Document pending'],
-      apr: [1],
-      may: [1],
-      jun: [4],
-      jul: [1],
-      aug: [2],
-      sep: [1],
-      oct: [1],
-      nov: [1],
-      dec: [1]
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 24,
-      costCustomer: 100,
-      costSupplier: 50,
-      jan: [2, 'success', 'No issues'],
-      feb: [
-        2,
-        'danger',
-        <Text context="white" size="xs">
-          2 jobs
-          <br />1 completed
-          <br />1 past due
-        </Text>
-      ],
-      mar: [2, 'success', 'No issues'],
-      apr: 2,
-      may: 2,
-      jun: 2,
-      jul: 2,
-      aug: 2,
-      sep: 2,
-      oct: 2,
-      nov: 2,
-      dec: 2
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 37,
-      costCustomer: 325,
-      costSupplier: 225,
-      jan: 3,
-      feb: 3,
-      mar: 3,
-      apr: 2,
-      may: 3,
-      jun: 4,
-      jul: 3,
-      aug: 3,
-      sep: 3,
-      oct: 6,
-      nov: 7,
-      dec: 3
-    }
-  ],
-  [
-    {
-      id: 1,
-      task: 'Bolier Inspection',
-      compliance: true,
-      count: 1,
-      costCustomer: 150,
-      costSupplier: 125,
-      jan: 0,
-      feb: 1,
-      mar: 0,
-      apr: 1,
-      may: 0,
-      jun: [1, 'danger', 'Compliance documents'],
-      jul: [3, 'success', 'all done'],
-      aug: 0,
-      sep: 0,
-      oct: 0,
-      nov: 1,
-      dec: 0
-    },
-    {
-      id: 2,
-      task: 'Window Cleaning',
-      compliance: false,
-      count: 12,
-      costCustomer: 75,
-      costSupplier: 50,
-      jan: [1, 'danger', 'Supplier late'],
-      feb: [1, 'success', 'No issues'],
-      mar: [1],
-      apr: [1, 'warning', 'Document pending'],
-      may: [1],
-      jun: [4],
-      jul: [1],
-      aug: [2],
-      sep: [1],
-      oct: [1],
-      nov: [1],
-      dec: [1]
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 24,
-      costCustomer: 100,
-      costSupplier: 50,
-      jan: [2, 'success', 'No issues'],
-      feb: [
-        2,
-        'danger',
-        <Text context="white" size="xs">
-          2 jobs
-          <br />1 completed
-          <br />1 past due
-        </Text>
-      ],
-      mar: [2, 'success', 'No issues'],
-      apr: 2,
-      may: 2,
-      jun: 2,
-      jul: 2,
-      aug: 2,
-      sep: 2,
-      oct: 2,
-      nov: 2,
-      dec: 2
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 37,
-      costCustomer: 325,
-      costSupplier: 225,
-      jan: 3,
-      feb: 3,
-      mar: 3,
-      apr: 2,
-      may: 3,
-      jun: 4,
-      jul: 3,
-      aug: 3,
-      sep: 3,
-      oct: 6,
-      nov: 7,
-      dec: 3
-    }
-  ]
-]
-
-export const MAIN_SCHEDULES = {
-  year: [
-    {
-      id: 1,
-      task: 'some Inspection',
-      compliance: true,
-      count: 6,
-      costCustomer: 150,
-      costSupplier: 125,
-      jan: 0,
-      feb: 0,
-      mar: 0,
-      apr: 0,
-      may: 0,
-      jun: [1, 'warning', 'Compliance documents required'],
-      jul: [5, 'danger', 'not done'],
-      aug: 0,
-      sep: 0,
-      oct: 0,
-      nov: 0,
-      dec: 0
-    },
-    {
-      id: 2,
-      task: 'Window Removal',
-      compliance: false,
-      count: 15,
-      costCustomer: 75,
-      costSupplier: 50,
-      jan: [1, 'danger', 'Supplier late'],
-      feb: [1, 'success', 'No issues'],
-      mar: [4, 'warning', 'Document pending'],
-      apr: [1],
-      may: [1],
-      jun: [1],
-      jul: [1],
-      aug: [1],
-      sep: [1],
-      oct: [1],
-      nov: [1],
-      dec: [1]
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 24,
-      costCustomer: 100,
-      costSupplier: 50,
-      jan: [2, 'success', 'No issues'],
-      feb: [
-        2,
-        'danger',
-        <Text context="white" size="xs">
-          2 jobs
-          <br />1 completed
-          <br />1 past due
-        </Text>
-      ],
-      mar: [2, 'success', 'No issues'],
-      apr: 2,
-      may: 2,
-      jun: 2,
-      jul: 2,
-      aug: 2,
-      sep: 2,
-      oct: 2,
-      nov: 2,
-      dec: 2
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 36,
-      costCustomer: 325,
-      costSupplier: 225,
-      jan: 3,
-      feb: 3,
-      mar: 3,
-      apr: 2,
-      may: 3,
-      jun: 4,
-      jul: 3,
-      aug: 3,
-      sep: 3,
-      oct: 3,
-      nov: 3,
-      dec: 3
-    }
-  ],
-  month: [
-    {
-      id: 1,
-      task: 'some Inspection',
-      compliance: true,
-      count: 6,
-      costCustomer: 150,
-      costSupplier: 125,
-      week1: [1, 'warning', 'Compliance documents required'],
-      week2: 0,
-      week3: 0,
-      week4: [5, 'danger', 'not done']
-    },
-    {
-      id: 2,
-      task: 'Window Removal',
-      compliance: false,
-      count: 10,
-      costCustomer: 75,
-      costSupplier: 50,
-      week1: [1, 'warning', 'Compliance documents required'],
-      week2: [4, 'warning', 'Document pending'],
-      week3: 0,
-      week4: [5, 'danger', 'not done']
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 14,
-      costCustomer: 100,
-      costSupplier: 50,
-      week1: 5,
-      week2: [4, 'warning', 'Document pending'],
-      week3: 0,
-      week4: [5, 'danger', 'not done']
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 15,
-      costCustomer: 325,
-      costSupplier: 225,
-      week1: 5,
-      week2: 5,
-      week3: 0,
-      week4: [5, 'danger', 'not done']
-    }
-  ],
-  week: [
-    {
-      id: 1,
-      task: 'some Inspection',
-      compliance: true,
-      count: 6,
-      costCustomer: 150,
-      costSupplier: 125,
-      sat: 0,
-      sun: 0,
-      mon: 0,
-      tue: 0,
-      wed: 0,
-      thur: [1, 'warning', 'Compliance documents required'],
-      fri: [5, 'danger', 'not done']
-    },
-    {
-      id: 2,
-      task: 'Window Removal',
-      compliance: false,
-      count: 10,
-      costCustomer: 75,
-      costSupplier: 50,
-      sat: [1, 'danger', 'Supplier late'],
-      sun: [1, 'success', 'No issues'],
-      mon: [4, 'warning', 'Document pending'],
-      tue: [1],
-      wed: [1],
-      thur: [1],
-      fri: [1]
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 14,
-      costCustomer: 100,
-      costSupplier: 50,
-      sat: [2, 'success', 'No issues'],
-      sun: [
-        2,
-        'danger',
-        <Text context="white" size="xs">
-          2 jobs
-          <br />1 completed
-          <br />1 past due
-        </Text>
-      ],
-      mon: [2, 'success', 'No issues'],
-      tue: 2,
-      wed: 2,
-      thur: 2,
-      fri: 2
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 19,
-      costCustomer: 325,
-      costSupplier: 225,
-      sat: 3,
-      sun: 3,
-      mon: 3,
-      tue: 2,
-      wed: 1,
-      thur: 3,
-      fri: 4
-    }
-  ],
-  day: [
-    {
-      id: 1,
-      task: 'some Inspection',
-      compliance: true,
-      count: 6,
-      costCustomer: 150,
-      costSupplier: 125,
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-      5: 0,
-      6: [1, 'warning', 'Compliance documents required'],
-      7: [5, 'danger', 'not done'],
-      8: 0,
-      9: 0,
-      10: 0,
-      11: 0,
-      12: 0
-    },
-    {
-      id: 2,
-      task: 'Window Removal',
-      compliance: false,
-      count: 10,
-      costCustomer: 75,
-      costSupplier: 50,
-      1: [1, 'danger', 'Supplier late'],
-      2: [1, 'success', 'No issues'],
-      3: [4, 'warning', 'Document pending'],
-      4: [1],
-      5: [1],
-      6: [1],
-      7: [1],
-      8: 0,
-      9: 0,
-      10: 0,
-      11: 0,
-      12: 0
-    },
-    {
-      id: 3,
-      task: 'Desk Cleaning',
-      compliance: false,
-      count: 14,
-      costCustomer: 100,
-      costSupplier: 50,
-      1: [2, 'success', 'No issues'],
-      2: [
-        2,
-        'danger',
-        <Text context="white" size="xs">
-          2 jobs
-          <br />1 completed
-          <br />1 past due
-        </Text>
-      ],
-      3: [2, 'success', 'No issues'],
-      4: 2,
-      5: 2,
-      6: 2,
-      7: 2,
-      8: 0,
-      9: 0,
-      10: 0,
-      11: 0,
-      12: 0
-    },
-    {
-      id: 4,
-      task: 'Totals',
-      compliance: false,
-      count: 19,
-      costCustomer: 325,
-      costSupplier: 225,
-      1: 3,
-      2: 3,
-      3: 3,
-      4: 2,
-      5: 1,
-      6: 3,
-      7: 4,
-      8: 0,
-      9: 0,
-      10: 0,
-      11: 0,
-      12: 0
-    }
-  ]
-}
-
 export const EXTERNAL_SCHEDULE_DATA = [
   {
-    id: 131,
-    compliance: false,
-    serviceName: 'External Lighting',
+    __typename: 'JobSchedule',
     costCustomer: 200,
     costSupplier: 150,
-    jobs: []
+    frequency: 'DTSTART:20210505T000000Z\nRRULE:FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=11',
+    id: 131,
+    jobs: [],
+    serviceName: 'External Lighting',
+    shortDescriptionName: 'AA Thermo Sensor P1',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 19
+      }
+    }
   },
   {
+    __typename: 'JobSchedule',
+    costCustomer: 100,
+    costSupplier: 80,
+    frequency:
+      'DTSTART:20210522T000000Z\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYMONTHDAY=1;UNTIL=20210821T193000Z',
     id: 136,
-    compliance: true,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
-    costCustomer: 100,
-    costSupplier: 80,
     jobs: [
-      { id: 3076, rag: null, timingStart: '2021-10-12T00:00:00+00:00', __typename: 'Job' },
-      { id: 3077, rag: null, timingStart: '2021-07-05T00:00:00+00:00', __typename: 'Job' },
-      { id: 3078, rag: null, timingStart: '2021-08-26T00:00:00+00:00', __typename: 'Job' }
-    ]
+      {
+        __typename: 'Job',
+        id: 3076,
+        rag: null,
+        timingStart: '2021-06-01T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 3077,
+        rag: null,
+        timingStart: '2021-07-01T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 3078,
+        rag: null,
+        timingStart: '2021-08-01T00:00:00+00:00'
+      }
+    ],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'Aerial Main',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 6
+      }
+    }
   },
   {
+    __typename: 'JobSchedule',
+    costCustomer: 100,
+    costSupplier: 80,
+    frequency: 'DTSTART:20210524T000000Z\nRRULE:FREQ=WEEKLY;INTERVAL=1;BYDAY=TU;COUNT=10',
     id: 137,
-    costCustomer: 100,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
-    compliance: true,
-    costSupplier: 80,
     jobs: [
-      { id: 2968, rag: null, timingStart: '2021-10-22T00:00:00+00:00', __typename: 'Job' },
-      { id: 2969, rag: null, timingStart: '2021-10-01T00:00:00+00:00', __typename: 'Job' },
-      { id: 2970, rag: null, timingStart: '2021-07-06T00:00:00+00:00', __typename: 'Job' },
-      { id: 2971, rag: null, timingStart: '2021-07-15T00:00:00+00:00', __typename: 'Job' },
-      { id: 2972, rag: null, timingStart: '2021-10-20T00:00:00+00:00', __typename: 'Job' },
-      { id: 2973, rag: null, timingStart: '2021-10-08T00:00:00+00:00', __typename: 'Job' }
-    ]
+      {
+        __typename: 'Job',
+        id: 2964,
+        rag: null,
+        timingStart: '2021-05-25T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2965,
+        rag: null,
+        timingStart: '2021-06-01T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2966,
+        rag: null,
+        timingStart: '2021-06-08T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2967,
+        rag: null,
+        timingStart: '2021-06-15T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2968,
+        rag: null,
+        timingStart: '2021-06-22T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2969,
+        rag: null,
+        timingStart: '2021-06-29T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2970,
+        rag: null,
+        timingStart: '2021-07-06T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2971,
+        rag: null,
+        timingStart: '2021-07-13T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2972,
+        rag: null,
+        timingStart: '2021-07-20T00:00:00+00:00'
+      },
+      {
+        __typename: 'Job',
+        id: 2973,
+        rag: null,
+        timingStart: '2021-07-27T00:00:00+00:00'
+      }
+    ],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'Air conditioning not working',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 10
+      }
+    }
   },
   {
-    id: 139,
-    compliance: false,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    __typename: 'JobSchedule',
     costCustomer: 100,
     costSupplier: 110,
-    jobs: []
+    frequency: 'DTSTART:20210624T000000Z\nRRULE:FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1',
+    id: 139,
+    jobs: [],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'AA Thermo P2',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 1
+      }
+    }
   },
   {
-    id: 148,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    __typename: 'JobSchedule',
     costCustomer: 100,
     costSupplier: 80,
-    jobs: []
+    frequency: 'DTSTART:20210922T000000Z\nRRULE:FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1',
+    id: 148,
+    jobs: [],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'AA Thermo P2',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 0
+      }
+    }
   },
   {
-    id: 150,
-    compliance: false,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    __typename: 'JobSchedule',
     costCustomer: null,
     costSupplier: null,
-    jobs: []
+    frequency: 'DTSTART:20210923T000000Z\nRRULE:FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1;COUNT=1',
+    id: 150,
+    jobs: [],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'AA Thermo P2',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 0
+      }
+    }
   },
   {
-    id: 151,
-    compliance: false,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    __typename: 'JobSchedule',
     costCustomer: 120,
     costSupplier: 90,
-    jobs: [{ id: 3086, rag: null, timingStart: '2021-10-01T00:00:00+00:00', __typename: 'Job' }]
+    frequency: 'DTSTART:20210929T000000Z\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYMONTHDAY=1;COUNT=12',
+    id: 151,
+    jobs: [
+      {
+        __typename: 'Job',
+        id: 3086,
+        rag: null,
+        timingStart: '2021-10-01T00:00:00+00:00'
+      }
+    ],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'AA Thermo P2',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 12
+      }
+    }
   },
   {
-    id: 161,
-    compliance: false,
-    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    __typename: 'JobSchedule',
     costCustomer: 150,
     costSupplier: 140,
-    jobs: [{ id: 3188, rag: null, timingStart: '2021-10-21T00:00:00+00:00', __typename: 'Job' }]
+    frequency: 'DTSTART:20211021T000000Z\nRRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=4',
+    id: 161,
+    jobs: [
+      {
+        __typename: 'Job',
+        id: 3188,
+        rag: null,
+        timingStart: '2021-10-21T00:00:00+00:00'
+      }
+    ],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'AA Thermo P2',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 4
+      }
+    }
+  },
+  {
+    __typename: 'JobSchedule',
+    costCustomer: 250,
+    costSupplier: 220,
+    frequency: 'DTSTART:20211026T000000Z\nRRULE:FREQ=MONTHLY;INTERVAL=1;BYMONTHDAY=1;COUNT=3',
+    id: 163,
+    jobs: [],
+    serviceName: 'Air Conditioning - Maintenance (Specialist)',
+    shortDescriptionName: 'AA Thermo P2',
+    totalJobs: {
+      __typename: 'Job_aggregate',
+      aggregate: {
+        __typename: 'Job_aggregate_fields',
+        count: 3
+      }
+    }
   }
 ]

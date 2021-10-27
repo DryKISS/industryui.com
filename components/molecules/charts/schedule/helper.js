@@ -7,18 +7,18 @@ import {
   addWeeks,
   daysToWeeks,
   format,
+  getWeek,
+  getDate,
   subDays,
   subMonths,
   subYears,
-  subWeeks,
-  getWeek,
-  getDate
+  subWeeks
 } from 'date-fns'
-import Row from '../../../atoms/grid/Row'
-
+// UI
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
 import Button from '../../../atoms/button/button/button'
-
+import Row from '../../../atoms/grid/Row'
+// Constant
 import THEME_ALIGN from '../../../constants/align'
 import THEME_SIZE from '../../../constants/size'
 
@@ -41,7 +41,7 @@ const calculateCurrent = (currentDate, mode, status = 'current') => {
       break
     case 'month':
       if (status === 'current') {
-        return format(pCurrentDate, 'MMMM')
+        return `${format(pCurrentDate, 'MMMM')} Of ${format(pCurrentDate, 'y')}`
       } else if (status === 'next') {
         return addMonths(pCurrentDate, 1)
       } else if (status === 'prev') {
@@ -51,7 +51,7 @@ const calculateCurrent = (currentDate, mode, status = 'current') => {
     case 'week':
       if (status === 'current') {
         const formatDate = daysToWeeks(format(new Date(pCurrentDate), 'd')) + 1
-        return `${formatDate}th Week Of ${format(pCurrentDate, 'MMMM')}`
+        return `${formatDate} Week Of ${format(pCurrentDate, 'MMMM')} ${format(pCurrentDate, 'y')}`
       } else if (status === 'next') {
         return addWeeks(pCurrentDate, 1)
       } else if (status === 'prev') {
@@ -60,7 +60,10 @@ const calculateCurrent = (currentDate, mode, status = 'current') => {
       break
     case 'day':
       if (status === 'current') {
-        return `${format(pCurrentDate, 'd')}  ${format(pCurrentDate, 'MMMM')}`
+        return `${format(pCurrentDate, 'd')}  ${format(pCurrentDate, 'MMMM')}  ${format(
+          pCurrentDate,
+          'y'
+        )}`
       } else if (status === 'next') {
         return addDays(pCurrentDate, 1)
       } else if (status === 'prev') {
@@ -74,29 +77,6 @@ const handleChangeDate = (setCurrentDate, options) => {
   const current = calculateCurrent(currentDate, mode, status)
   setCurrentDate(current.toISOString())
 }
-
-export const ColumnPagination = ({ setCurrentDate, mode, currentDate }) => {
-  const current = calculateCurrent(currentDate, mode, 'current')
-  return (
-    <Row justify={'center'}>
-      <ButtonToolbar {...args}>
-        <Button
-          onClick={() => handleChangeDate(setCurrentDate, { currentDate, mode, status: 'prev' })}
-        >
-          &lt;
-        </Button>
-        <Button>{current}</Button>
-        <Button
-          onClick={() => handleChangeDate(setCurrentDate, { currentDate, mode, status: 'next' })}
-        >
-          &gt;
-        </Button>
-      </ButtonToolbar>
-    </Row>
-  )
-}
-
-// Generate Column Helpers
 
 const generateDate = (type, arr) => {
   switch (type) {
@@ -141,39 +121,139 @@ const generateDate = (type, arr) => {
   }
 }
 
-export const filterDateCriteria = (type, job) => {
+const groupByDateCriteria = (type, timingStart) => {
   switch (type) {
     case 'day':
-      return getDate(new Date(job.timingStart)) === getDate(new Date())
+      return format(new Date(timingStart), 'h').toLowerCase()
     case 'week':
-      return getWeek(new Date(job.timingStart)) === getWeek(new Date())
+      return format(new Date(timingStart), 'E..EEE').toLowerCase()
     case 'month':
-      return new Date(job.timingStart).getMonth() === new Date().getMonth()
+      return `week${daysToWeeks(format(new Date(timingStart), 'd')) + 1}`
     case 'year':
-      return new Date(job.timingStart).getFullYear() === new Date().getFullYear()
+      return format(new Date(timingStart), 'LLL').toLowerCase()
   }
 }
 
-const groupByDateCriteria = (type, job) => {
+// calculate last line of table as total
+const calculateTotalRows = (result, events, title) => {
+  const calTotal = result.pop()
+  calTotal[title] = 'Total'
+  const isNumber = (value) => /^[-]?\d+$/.test(value)
+  result.forEach((item) => {
+    ;(Object.keys(item) || []).forEach((i) => {
+      if (i !== events) {
+        if (Array.isArray(calTotal[i])) {
+          calTotal[i] = calTotal[i][0]
+        }
+
+        if (isNumber(item[i])) calTotal[i] = (calTotal[i] || 0) + Number(item[i])
+        else if (Array.isArray(item[i])) calTotal[i] = (calTotal[i] || 0) + Number(item[i][0])
+      }
+    })
+  })
+  Object.keys(calTotal).forEach((k) => {
+    if (isNumber(calTotal[k])) {
+      calTotal[k] = calTotal[k].toString()
+    }
+  })
+  result.push(calTotal)
+}
+
+const prepareRag = (items, flag) => {
+  if (!items.find((item) => item[flag])) {
+    return null
+  }
+
+  return items.find((item) => item[flag] === 'danger') ? 'danger' : 'success'
+}
+
+const failCount = (Items, flag) => {
+  const count = Items.filter((item) => item[flag] === 'danger').length
+  return count ? `${count} Failed items` : ''
+}
+
+export const prepareHiddenColumn = (hiddenColumn) => {
+  const result = {}
+  hiddenColumn.forEach((item) => {
+    result[item] = true
+  })
+  return result
+}
+
+export const ColumnPagination = ({ setCurrentDate, mode, currentDate }) => {
+  const current = calculateCurrent(currentDate, mode, 'current')
+  return (
+    <Row justify={'center'}>
+      <ButtonToolbar {...args}>
+        <Button
+          onClick={() => handleChangeDate(setCurrentDate, { currentDate, mode, status: 'prev' })}
+        >
+          &lt;
+        </Button>
+        <Button>{current}</Button>
+        <Button
+          onClick={() => handleChangeDate(setCurrentDate, { currentDate, mode, status: 'next' })}
+        >
+          &gt;
+        </Button>
+      </ButtonToolbar>
+    </Row>
+  )
+}
+
+export const filterDateCriteria = (type, timingStart) => {
   switch (type) {
     case 'day':
-      return format(new Date(job.timingStart), 'h').toLowerCase()
+      return getDate(new Date(timingStart)) === getDate(new Date())
     case 'week':
-      return format(new Date(job.timingStart), 'E..EEE').toLowerCase()
+      return getWeek(new Date(timingStart)) === getWeek(new Date())
     case 'month':
-      return `week${daysToWeeks(format(new Date(job.timingStart), 'd')) + 1}`
+      return new Date(timingStart).getMonth() === new Date().getMonth()
     case 'year':
-      return format(new Date(job.timingStart), 'LLL').toLowerCase()
+      return new Date(timingStart).getFullYear() === new Date().getFullYear()
   }
 }
 
-export const prepareResult = (type = 'year', dataSource, events, gColumn) => {
+export const generateFilterDate = (status, date) => {
+  switch (status) {
+    case 'year':
+      return {
+        startDate: subYears(new Date(date), 1).toISOString(),
+        endDate: new Date(date).toISOString()
+      }
+    case 'month':
+      return {
+        startDate: subMonths(new Date(date), 1).toISOString(),
+        endDate: new Date(date).toISOString()
+      }
+    case 'week':
+      return {
+        startDate: subWeeks(new Date(date), 1).toISOString(),
+        endDate: new Date(date).toISOString()
+      }
+    case 'day':
+      return {
+        startDate: subDays(new Date(date), 1).toISOString(),
+        endDate: new Date(date).toISOString()
+      }
+  }
+}
+
+export const prepareScheduleRows = (mode = 'year', options) => {
   let arr = []
-  const result =
-    dataSource.map((item) => {
-      const currentMonthJobs = (item[events] || []).filter((job) => filterDateCriteria(type, job))
 
-      gColumn.forEach((i, index) => {
+  const { currentDataSource, events, generateColumn, eventTimeSplitting, flag, title } = options
+
+  if (!currentDataSource.length) return []
+  const result =
+    currentDataSource.map((item) => {
+      // filter events base on current date-time(day, week, month, year)
+      const currentDateTime = (item[events] || []).filter((item) =>
+        filterDateCriteria(mode, item[eventTimeSplitting])
+      )
+      // get the generated column as a pattern and create rows base object
+      // to assign to table
+      generateColumn.forEach((i, index) => {
         let key = ''
         if (typeof i?.text === 'string') {
           key = camelCase(i?.text)
@@ -183,16 +263,18 @@ export const prepareResult = (type = 'year', dataSource, events, gColumn) => {
         arr[`${key}`] = item[key] ? item[key] : null
       })
 
-      arr.count = currentMonthJobs?.length || 0
-      arr = generateDate(type, arr)
+      arr.count = currentDateTime?.length || 0
+      arr = generateDate(mode, arr)
 
-      const groupedJobs = groupBy(currentMonthJobs, (job) => groupByDateCriteria(type, job))
+      const groupedJobs = groupBy(currentDateTime, (i) =>
+        groupByDateCriteria(mode, i[eventTimeSplitting])
+      )
 
       Object.keys(groupedJobs).forEach((item) => {
         groupedJobs[item] = [
           groupedJobs[item]?.length || 0,
-          prepareRag(groupedJobs[item]),
-          failCount(groupedJobs[item])
+          prepareRag(groupedJobs[item], flag),
+          failCount(groupedJobs[item], flag)
         ]
       })
 
@@ -201,41 +283,7 @@ export const prepareResult = (type = 'year', dataSource, events, gColumn) => {
     }) || []
 
   if (result.length > 0) {
-    // const calTotal = { task: 'Total', compliance: false }
-    const calTotal = result.pop()
-    calTotal.serviceName = 'Total'
-    const isNumber = (value) => /^[-]?\d+$/.test(value)
-    result.forEach((item) => {
-      ;(Object.keys(item) || []).forEach((i) => {
-        if (i !== events) {
-          if (Array.isArray(calTotal[i])) {
-            calTotal[i] = calTotal[i][0]
-          }
-
-          if (isNumber(item[i])) calTotal[i] = (calTotal[i] || 0) + Number(item[i])
-          else if (Array.isArray(item[i])) calTotal[i] = (calTotal[i] || 0) + Number(item[i][0])
-        }
-      })
-    })
-    Object.keys(calTotal).forEach((k) => {
-      if (isNumber(calTotal[k])) {
-        calTotal[k] = calTotal[k].toString()
-      }
-    })
-    result.push(calTotal)
+    calculateTotalRows(result, events, title)
   }
   return result
-}
-
-export const prepareRag = (jobs) => {
-  if (!jobs.find((job) => job.rag)) {
-    return null
-  }
-
-  return jobs.find((job) => job.rag === 'danger') ? 'danger' : 'success'
-}
-
-const failCount = (jobs) => {
-  const count = jobs.filter((job) => job.rag === 'danger').length
-  return count ? `${count} Failed jobs` : ''
 }

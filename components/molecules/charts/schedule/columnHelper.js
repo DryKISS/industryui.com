@@ -1,23 +1,18 @@
 import React from 'react'
+import styled from 'styled-components'
+// UI
 import Button from '../../../atoms/button/button/button'
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
 import Row from '../../../atoms/grid/Row'
 import Space from '../../../atoms/space/space'
-
-import { ColumnPagination } from './helper'
-import formatPrice from '../../../utils/formatPrice/formatPrice'
-import Icon from '../../../atoms/icon/icon/icon'
 import Tooltip from '../../../atoms/tooltip/tooltip'
-import Text from '../../../atoms/text/text'
 
 // Style
-import styled from 'styled-components'
-
 import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
-
 import THEME_ALIGN from '../../../constants/align'
-
 import THEME_SIZE from '../../../constants/size'
+
+import { ColumnPagination } from './helper'
 
 const columnPattern = {
   year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -63,39 +58,26 @@ const formatCell = (handleClick, month, row, otherData) => {
   )
 }
 
-const formatTask = ({ row }) => {
-  return (
-    <>
-      <Text size="sm">
-        {row.compliance && <Icon context="info" icon="clipboard-check" />}
-        {row.serviceName}
-      </Text>
-      {row.costCustomer && <Text size="xs">Customer: {formatPrice(row.costCustomer)}</Text>}
-      {row.costSupplier && <Text size="xs">Supplier: {formatPrice(row.costSupplier)}</Text>}
-    </>
-  )
-}
-
 export const columns = (handleClick, options) => {
   const {
-    currentYear,
     mode = DATE_TYPE.MONTH,
     setCurrentDate,
     currentDate,
     hiddenColumn,
-    currentDataSource
+    currentDataSource,
+    onTitleFormatter
   } = options
+  if (!currentDataSource.length) return []
 
-  const sampleData = currentDataSource?.pop() || []
-  if (sampleData.length > 0) return []
+  const data = currentDataSource[0]
   const result = []
 
-  Object.keys(sampleData).forEach((item) => {
-    if (hiddenColumn && hiddenColumn[item]) result.push({ text: item, hidden: true })
+  Object.keys(data).forEach((item) => {
+    if (hiddenColumn[item]) result.push({ text: item, hidden: true })
   })
 
   result.push({
-    formatter: formatTask,
+    formatter: onTitleFormatter,
     text: <ColumnPagination {...{ setCurrentDate, mode, currentDate }} />
   })
 
@@ -109,8 +91,7 @@ export const columns = (handleClick, options) => {
     result.push({
       formatter: ({ row }) =>
         formatCell((e) => handleClick(e, key), key, row, {
-          month: i + 1,
-          year: currentYear
+          month: i + 1
         }),
       text
     })

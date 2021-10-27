@@ -8,8 +8,10 @@ import React, { useState } from 'react'
 // UI
 import Schedule from '../schedule'
 import Readme from '../README.md'
-import { SCHEDULES, EXTERNAL_SCHEDULE_DATA } from '../__mocks__/scheduleMock'
-
+import { EXTERNAL_SCHEDULE_DATA } from '../__mocks__/scheduleMock'
+import formatPrice from '../../../../utils/formatPrice/formatPrice'
+import Icon from '../../../../atoms/icon/icon/icon'
+import Text from '../../../../atoms/text/text'
 export default {
   component: Schedule,
   parameters: {
@@ -35,19 +37,24 @@ export const Main = (args) => {
   return (
     <Schedule
       {...args}
-      handleFetchData={(mode, date) => EXTERNAL_SCHEDULE_DATA}
+      handleFetchData={({ startDate, endDate }) => EXTERNAL_SCHEDULE_DATA}
       initialData={EXTERNAL_SCHEDULE_DATA}
-      initialMode="week"
-      hiddenColumn={{
-        id: ' ',
-        costCustomer: ' ',
-        costSupplier: ' ',
-        serviceName: ' ',
-        compliance: ' ',
-        jobs: []
-      }}
+      initialMode="year"
+      hiddenColumn={['id', 'costCustomer', 'costSupplier', 'serviceName', 'compliance', 'jobs']}
       events={'jobs'}
       flag={'rag'}
+      title="serviceName"
+      onTitleFormatter={({ row }) => (
+        <>
+          <Text size="sm">
+            {row.compliance && <Icon context="info" icon="clipboard-check" />}
+            {row.serviceName}
+          </Text>
+          {row.costCustomer && <Text size="xs">Customer: {formatPrice(row.costCustomer)}</Text>}
+          {row.costSupplier && <Text size="xs">Supplier: {formatPrice(row.costSupplier)}</Text>}
+        </>
+      )}
+      eventTimeSplitting={'timingStart'}
       handleClick={handleClick}
       handleRowClick={handleRowClick}
     />
@@ -59,24 +66,27 @@ export const WithPagination = (args) => {
   const handleYearChange = (page) => {
     setCurrentYear(page)
   }
-  const years = [2020, 2021, 2022]
   return (
     <Schedule
       {...args}
-      initialMode="year"
+      handleFetchData={({ startDate, endDate }) => EXTERNAL_SCHEDULE_DATA}
       initialData={EXTERNAL_SCHEDULE_DATA}
       initialMode="year"
-      hiddenColumn={{
-        id: ' ',
-        costCustomer: ' ',
-        costSupplier: ' ',
-        serviceName: ' ',
-        compliance: ' ',
-        jobs: []
-      }}
+      hiddenColumn={['id', 'costCustomer', 'costSupplier', 'serviceName', 'compliance', 'jobs']}
       events={'jobs'}
       flag={'rag'}
-      handleFetchData={() => SCHEDULES[years.indexOf(currentYear)]}
+      title="serviceName"
+      onTitleFormatter={({ row }) => (
+        <>
+          <Text size="sm">
+            {row.compliance && <Icon context="info" icon="clipboard-check" />}
+            {row.serviceName}
+          </Text>
+          {row.costCustomer && <Text size="xs">Customer: {formatPrice(row.costCustomer)}</Text>}
+          {row.costSupplier && <Text size="xs">Supplier: {formatPrice(row.costSupplier)}</Text>}
+        </>
+      )}
+      eventTimeSplitting={'timingStart'}
       handleRowClick={handleRowClick}
       onYearChange={handleYearChange}
       currentYear={currentYear}
