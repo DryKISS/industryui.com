@@ -54,14 +54,16 @@ export const INLINE_STYLES = [
 
 export const BlockStyleControls = (props) => {
   const { editorState } = props
+
   const selection = editorState.getSelection()
+
   const blockType = editorState
     .getCurrentContent()
     .getBlockForKey(selection.getStartKey())
     .getType()
 
   return (
-    <ControllWrapper>
+    <ControlWrapper>
       {BLOCK_TYPES.map((type) => (
         <StyleButton
           key={type.style}
@@ -71,14 +73,14 @@ export const BlockStyleControls = (props) => {
           style={type.style}
         />
       ))}
-    </ControllWrapper>
+    </ControlWrapper>
   )
 }
 
 export const InlineStyleControls = (props) => {
   const currentStyle = props.editorState.getCurrentInlineStyle()
   return (
-    <ControllWrapper>
+    <ControlWrapper>
       {INLINE_STYLES.map((type, index) => (
         <StyleButton
           key={index}
@@ -88,7 +90,7 @@ export const InlineStyleControls = (props) => {
           style={type.style}
         />
       ))}
-    </ControllWrapper>
+    </ControlWrapper>
   )
 }
 
@@ -123,7 +125,7 @@ const StyleButton = ({ active, label, onToggle, style }) => {
   )
 }
 
-const ControllWrapper = styled.div`
+const ControlWrapper = styled.div`
   display: flex;
   align-items: center;
 `

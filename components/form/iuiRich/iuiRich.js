@@ -9,7 +9,7 @@ import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from
 import styled from 'styled-components'
 
 const IUIRich = ({ minHeight = '200px', onChange }) => {
-  const [editorState, seteditorState] = useState(EditorState.createEmpty())
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const ref = useRef(null)
 
   const focus = () => {
@@ -22,7 +22,7 @@ const IUIRich = ({ minHeight = '200px', onChange }) => {
     const jsonState = convertToRaw(contentState)
 
     onChange({ rawText: plainText, state: jsonState })
-    return seteditorState(EditorState)
+    return setEditorState(EditorState)
   }
 
   const onKeyCommand = (command) => {
