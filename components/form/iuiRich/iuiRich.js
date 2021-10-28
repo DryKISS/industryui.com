@@ -18,7 +18,9 @@ const IUIRich = ({ minHeight = '200px', onChange }) => {
 
   const handleChange = (EditorState) => {
     const plainText = EditorState.getCurrentContent().getPlainText('\u0001')
+
     const contentState = editorState.getCurrentContent()
+
     const jsonState = convertToRaw(contentState)
 
     onChange({ rawText: plainText, state: jsonState })
