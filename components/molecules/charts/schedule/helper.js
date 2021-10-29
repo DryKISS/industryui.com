@@ -1,18 +1,26 @@
 import React from 'react'
 import { camelCase, groupBy } from 'lodash'
 import {
-  addDays,
   addYears,
   addMonths,
   addWeeks,
+  addDays,
+  subWeeks,
+  subDays,
+  subYears,
+  subMonths,
   daysToWeeks,
   format,
   getWeek,
   getDate,
-  subDays,
-  subMonths,
-  subYears,
-  subWeeks
+  startOfYear,
+  endOfYear,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  startOfDay,
+  endOfDay
 } from 'date-fns'
 // UI
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
@@ -217,24 +225,25 @@ export const filterDateCriteria = (type, timingStart) => {
 export const generateFilterDate = (status, date) => {
   switch (status) {
     case 'year':
+      // should do calculation
       return {
-        startDate: subYears(new Date(date), 1).toISOString(),
-        endDate: new Date(date).toISOString()
+        startDate: startOfYear(new Date(date)).toISOString(),
+        endDate: endOfYear(new Date(date)).toISOString()
       }
     case 'month':
       return {
-        startDate: subMonths(new Date(date), 1).toISOString(),
-        endDate: new Date(date).toISOString()
+        startDate: startOfMonth(new Date(date)).toISOString(),
+        endDate: endOfMonth(new Date(date)).toISOString()
       }
     case 'week':
       return {
-        startDate: subWeeks(new Date(date), 1).toISOString(),
-        endDate: new Date(date).toISOString()
+        startDate: startOfWeek(new Date(date)).toISOString(),
+        endDate: endOfWeek(new Date(date)).toISOString()
       }
     case 'day':
       return {
-        startDate: subDays(new Date(date), 1).toISOString(),
-        endDate: new Date(date).toISOString()
+        startDate: startOfDay(new Date(date)).toISOString(),
+        endDate: endOfDay(new Date(date)).toISOString()
       }
   }
 }
@@ -278,8 +287,7 @@ export const prepareScheduleRows = (mode = 'year', options) => {
         ]
       })
 
-      const re = { ...arr, ...groupedJobs }
-      return re
+      return { ...arr, ...groupedJobs }
     }) || []
 
   if (result.length > 0) {
