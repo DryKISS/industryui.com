@@ -31,6 +31,7 @@ import CoffeeMachineIcon from '../components/coffeeMachine'
 import CrossIcon from '../components/cross'
 import DeleteIcon from '../components/delete'
 import DesktopIcon from '../components/desktop'
+import DoubleQuoteIcon from '../components/doubleQuote'
 import DownloadIcon from '../components/download'
 import EditIcon from '../components/edit'
 import ExclamationCircleIcon from '../components/exclamationCircle'
@@ -73,6 +74,7 @@ import FreezerIcon from '../components/freezer'
 import FridgeIcon from '../components/fridge'
 import FuseBoxIcon from '../components/fuseBox'
 import WashingMachineIcon from '../components/washingMachine'
+import UnderlineIcon from '../components/underline'
 
 import Readme from '../README.md'
 
@@ -121,6 +123,7 @@ export const main = (props) => {
       <ChevronIcon {...props} />
       <CrossIcon {...props} />
       <FlagIcon {...props} />
+      <DoubleQuoteIcon {...props} />
       <FilePdfIcon {...props} />
       <GroupIcon {...props} />
       <ImageIcon {...props} />
@@ -174,6 +177,7 @@ export const main = (props) => {
       <FridgeIcon {...props} />
       <FuseBoxIcon {...props} />
       <SprinkleIcon {...props} />
+      <UnderlineIcon {...props} />
       <WashingMachineIcon {...props} />
     </Wrapper>
   )
