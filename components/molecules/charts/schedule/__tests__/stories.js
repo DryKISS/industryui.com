@@ -37,8 +37,8 @@ export const Main = (args) => {
   return (
     <Schedule
       {...args}
-      handleFetchData={({ startDate, endDate }) => EXTERNAL_SCHEDULE_DATA}
-      initialData={EXTERNAL_SCHEDULE_DATA}
+      dataSource={EXTERNAL_SCHEDULE_DATA}
+      handleFetchData={({ startDate, endDate }) => console.log('hello', startDate, endDate)}
       initialMode="year"
       hiddenColumn={['id', 'costCustomer', 'costSupplier', 'serviceName', 'compliance', 'jobs']}
       events={'jobs'}

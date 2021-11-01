@@ -23,11 +23,11 @@ const DATE_TYPE = {
 
 const Schedule = ({
   currentYear,
+  dataSource,
   events,
   eventTimeSplitting,
   flag,
   hiddenColumn,
-  initialData,
   initialMode,
   title,
   yearRange,
@@ -39,40 +39,38 @@ const Schedule = ({
 }) => {
   const [mode, setMode] = useState('year')
   const [currentDate, setCurrentDate] = useState(new Date().toISOString())
-  const [dataSource, setDataSource] = useState([])
 
   useEffect(async () => {
     const filterDate = generateFilterDate(mode, currentDate)
-    const arr = [...(await handleFetchData({ ...filterDate }))]
-    setDataSource(arr)
+    await handleFetchData({ ...filterDate }, mode)
   }, [])
 
   useEffect(async () => {
     const filterDate = generateFilterDate(mode, currentDate)
-    const arr = [...(await handleFetchData({ ...filterDate }))]
-    setDataSource(arr)
+    await handleFetchData({ ...filterDate }, mode)
   }, [mode, currentDate])
 
   if (!Object.values(DATE_TYPE).includes(initialMode))
     throw new Error('initialMode can be one of day, week, month or year values')
 
-  const currentDataSource = dataSource?.length > 0 ? dataSource : initialData || []
+  const currentDataSource = dataSource?.length > 0 ? dataSource : []
 
   const generateColumn = columns(handleClick, {
-    mode,
-    setCurrentDate,
     currentDate,
+    currentDataSource,
     events,
     hiddenColumn: prepareHiddenColumn(hiddenColumn),
-    currentDataSource,
+    setCurrentDate,
+    mode,
     onTitleFormatter
   })
 
   const prepareData = prepareScheduleRows(mode, {
     currentDataSource,
+    currentDate,
     events,
-    generateColumn,
     eventTimeSplitting,
+    generateColumn,
     flag,
     title
   })
@@ -109,7 +107,7 @@ Schedule.propTypes = {
   eventTimeSplitting: string,
   flag: string,
   initialMode: oneOf(Object.values(DATE_TYPE)),
-  initialData: array,
+  dataSource: array,
   title: string,
   handleFetchData: func,
   handleClick: func,

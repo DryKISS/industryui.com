@@ -94,7 +94,7 @@ const generateDate = (type, arr) => {
       }
       return arr
     case 'week': {
-      const week = ['sat', 'sun', 'mon', 'tue', 'wed', 'thur', 'fri']
+      const week = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri']
       week.forEach((item) => {
         arr[item] = 0
       })
@@ -134,7 +134,7 @@ const groupByDateCriteria = (type, timingStart) => {
     case 'day':
       return format(new Date(timingStart), 'h').toLowerCase()
     case 'week':
-      return format(new Date(timingStart), 'E..EEE').toLowerCase()
+      return format(new Date(timingStart), 'iii').toLowerCase()
     case 'month':
       return `week${daysToWeeks(format(new Date(timingStart), 'd')) + 1}`
     case 'year':
@@ -225,7 +225,6 @@ export const filterDateCriteria = (type, timingStart) => {
 export const generateFilterDate = (status, date) => {
   switch (status) {
     case 'year':
-      // should do calculation
       return {
         startDate: startOfYear(new Date(date)).toISOString(),
         endDate: endOfYear(new Date(date)).toISOString()
@@ -251,15 +250,19 @@ export const generateFilterDate = (status, date) => {
 export const prepareScheduleRows = (mode = 'year', options) => {
   let arr = []
 
-  const { currentDataSource, events, generateColumn, eventTimeSplitting, flag, title } = options
+  const {
+    currentDataSource,
 
+    events,
+    generateColumn,
+    eventTimeSplitting,
+    flag,
+    title
+  } = options
   if (!currentDataSource.length) return []
   const result =
     currentDataSource.map((item) => {
-      // filter events base on current date-time(day, week, month, year)
-      const currentDateTime = (item[events] || []).filter((item) =>
-        filterDateCriteria(mode, item[eventTimeSplitting])
-      )
+      const currentDateTime = item[events] || []
       // get the generated column as a pattern and create rows base object
       // to assign to table
       generateColumn.forEach((i, index) => {

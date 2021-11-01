@@ -8,7 +8,6 @@ import Space from '../../../atoms/space/space'
 import Tooltip from '../../../atoms/tooltip/tooltip'
 
 // Style
-import shadeLinearRgb from '../../../utils/colour/shadeLinearRgb'
 import THEME_ALIGN from '../../../constants/align'
 import THEME_SIZE from '../../../constants/size'
 
@@ -17,7 +16,7 @@ import { ColumnPagination } from './helper'
 const columnPattern = {
   year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   month: ['Week1', 'Week2', 'Week3', 'Week4'],
-  week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri'],
+  week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
   day: [...Array(12).keys()]
 }
 
@@ -154,8 +153,4 @@ const Wrapper = styled.div`
   text-shadow: 1px 2px 2px #bbb;
   width: 3rem;
   margin: auto;
-  &:hover {
-    background-color: ${({ context, count, theme: { COLOUR } }) =>
-      count > 0 && shadeLinearRgb(-0.1, COLOUR[context])};
-  }
 `
