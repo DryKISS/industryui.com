@@ -23,8 +23,8 @@ export default {
   },
   title: 'Molecules/Charts/Schedule'
 }
-const handleClick = (e, column) => {
-  console.log('handleClick')
+const handleClick = (e, column, key) => {
+  console.log('handleClick', key)
 
   console.log('column', column)
 }

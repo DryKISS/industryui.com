@@ -5,22 +5,22 @@ import {
   addMonths,
   addWeeks,
   addDays,
-  subWeeks,
-  subDays,
-  subYears,
-  subMonths,
   daysToWeeks,
   format,
   getWeek,
   getDate,
-  startOfYear,
   endOfYear,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
   endOfWeek,
+  endOfMonth,
+  endOfDay,
+  startOfMonth,
+  startOfWeek,
   startOfDay,
-  endOfDay
+  startOfYear,
+  subWeeks,
+  subDays,
+  subYears,
+  subMonths
 } from 'date-fns'
 // UI
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
@@ -250,15 +250,7 @@ export const generateFilterDate = (status, date) => {
 export const prepareScheduleRows = (mode = 'year', options) => {
   let arr = []
 
-  const {
-    currentDataSource,
-
-    events,
-    generateColumn,
-    eventTimeSplitting,
-    flag,
-    title
-  } = options
+  const { currentDataSource, events, generateColumn, eventTimeSplitting, flag, title } = options
   if (!currentDataSource.length) return []
   const result =
     currentDataSource.map((item) => {

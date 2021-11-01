@@ -1,3 +1,4 @@
+import { setMonth, setWeek, setDay } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components'
 // UI
@@ -83,15 +84,36 @@ export const columns = (handleClick, options) => {
   result.push({
     text: 'Count'
   })
-
+  const calculateCurrentDate = (mode, key) => {
+    switch (mode) {
+      case 'year': {
+        return setMonth(
+          new Date(currentDate),
+          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key) + 1
+        ).toISOString()
+      }
+      case 'month':
+      case 'week':
+        return setWeek(
+          new Date(currentDate),
+          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key) + 1
+        ).toISOString()
+      case 'day':
+        return setDay(
+          new Date(currentDate),
+          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key) + 1
+        ).toISOString()
+    }
+  }
   columnPattern[mode].forEach((item, i) => {
     const text = mode === DATE_TYPE.DAY ? item + 1 : item
     const key = String(text).toLowerCase()
     result.push({
-      formatter: ({ row }) =>
-        formatCell((e) => handleClick(e, key), key, row, {
+      formatter: ({ row }) => {
+        return formatCell((e) => handleClick(e, key, calculateCurrentDate(mode, key)), key, row, {
           month: i + 1
-        }),
+        })
+      },
       text
     })
   })
