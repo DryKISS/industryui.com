@@ -1,4 +1,12 @@
-import { setMonth, setWeek, setDay } from 'date-fns'
+import {
+  setMonth,
+  endOfMonth,
+  startOfMonth,
+  startOfWeek,
+  endOfWeek,
+  startOfDay,
+  endOfDay
+} from 'date-fns'
 import React from 'react'
 import styled from 'styled-components'
 // UI
@@ -84,27 +92,32 @@ export const columns = (handleClick, options) => {
   result.push({
     text: 'Count'
   })
+
   const calculateCurrentDate = (mode, key) => {
     switch (mode) {
-      case 'year': {
-        return setMonth(
-          new Date(currentDate),
-          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key) + 1
-        ).toISOString()
-      }
       case 'month':
-      case 'week':
-        return setWeek(
+      case 'year': {
+        const year = setMonth(
           new Date(currentDate),
-          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key) + 1
-        ).toISOString()
-      case 'day':
-        return setDay(
-          new Date(currentDate),
-          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key) + 1
-        ).toISOString()
+          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key)
+        )
+        return { startDate: startOfMonth(year), endDate: endOfMonth(year) }
+      }
+      case 'week': {
+        return {
+          startDate: startOfWeek(new Date(currentDate)),
+          endDate: endOfWeek(new Date(currentDate))
+        }
+      }
+      case 'day': {
+        return {
+          startDate: startOfDay(new Date(currentDate)),
+          endDate: endOfDay(new Date(currentDate))
+        }
+      }
     }
   }
+
   columnPattern[mode].forEach((item, i) => {
     const text = mode === DATE_TYPE.DAY ? item + 1 : item
     const key = String(text).toLowerCase()
