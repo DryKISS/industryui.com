@@ -44,9 +44,9 @@ const Tile = ({
 
   const linked = () => {
     return (
-      <Link border={false} passHref to={to}>
+      <StyledLink border={false} passHref to={to}>
         {tile()}
-      </Link>
+      </StyledLink>
     )
   }
 
@@ -75,17 +75,25 @@ const Tile = ({
   return to ? linked() : tile()
 }
 
+const StyledLink = styled(Link)`
+  &:hover {
+    opacity: ${({ to }) => (to ? '0.8' : '1')};
+  }
+`
+
 const StyledTile = styled.div`
   background-color: ${({ theme, bgColour, context }) => {
     return context ? theme.COLOUR[context] ?? context : theme.COLOUR[bgColour] ?? bgColour
   }};
-  box-shadow: ${({ shadow }) => shadow && 'rgba(45, 62, 80, 0.12) 0 1px 5px 0'};
+  box-shadow: 0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08);
   background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: ${({ rounded }) => rounded && '0.25rem'};
   color: ${({ theme }) => theme.COLOUR.white};
   display: flex;
   flex-direction: column;
   margin: 0;
+  margin-bottom: 1rem;
   min-height: ${({ theme, size }) => theme.TILE.MIN_HEIGHT[size]};
   min-width: 0;
   overflow: hidden;

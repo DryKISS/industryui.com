@@ -3,14 +3,14 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // UI
 import Message from '../message'
 import Readme from '../README.md'
 
 // Data
-import { message } from '../__mocks__/message'
+import { singleMessage } from '../__mocks__/message'
 
 export default {
   component: Message,
@@ -24,6 +24,17 @@ export default {
   title: 'Organisms/Messaging/Message'
 }
 
-export const main = (args) => (
-  <Message {...args} config={{}} message={message} prevType="out" time="12:00" type="in" />
-)
+export const Main = (args) => {
+  const [message, setMessage] = useState(singleMessage)
+  const handleInputChange = (e) => {
+    const tmp = { ...message }
+    tmp.content = e.target.value
+    setMessage({ ...tmp })
+  }
+  return (
+    <>
+      <input type="text" onChange={handleInputChange} />
+      <Message {...args} config={{}} message={message} prevType="out" time="12:00" type="in" />
+    </>
+  )
+}

@@ -71,9 +71,8 @@ const EmailContainer = ({ email, header }) => {
         <ExpandedContentContainer>
           <HeadContainer> {header}</HeadContainer>
           {top}
-          {email.content.map((text, index) => {
-            return <ContentText key={'content' + index}>{text}</ContentText>
-          })}
+
+          <ContentText dangerouslySetInnerHTML={{ __html: email.content }} />
         </ExpandedContentContainer>
       </Modal>
     </EmailBriefContainer>
@@ -175,7 +174,7 @@ const ExpandButtonWrapper = styled.div`
   padding-left: 0;
   cursor: pointer;
 `
-const ContentText = styled.p`
+const ContentText = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.MESSAGING.expandedEmailTextColour ?? '#333333'};
 `

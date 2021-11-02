@@ -1,6 +1,6 @@
 {
   "name": "@drykiss/industry-ui",
-  "version": "2.1.5",
+  "version": "2.1.11",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
@@ -103,6 +103,7 @@
     "highcharts": "9.2.2",
     "highcharts-react-official": "3.0.0",
     "holderjs": "2.9.9",
+    "immutability-helper": "^3.1.1",
     "jsonwebtoken": "8.5.1",
     "leaflet": "1.7.1",
     "lodash": "4.17.21",
@@ -117,6 +118,8 @@
     "react-datepicker": "4.2.1",
     "react-draft-wysiwyg": "1.14.7",
     "react-dropzone": "11.3.4",
+    "react-dnd": "^14.0.4",
+    "react-dnd-html5-backend": "^14.0.2",
     "react-google-maps": "9.4.5",
     "react-gtm-module": "2.0.11",
     "react-h5-audio-player": "3.7.1",

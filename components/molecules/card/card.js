@@ -105,7 +105,7 @@ const StyledCard = styled.div`
   border: ${({ bordered }) => bordered && '1px solid rgba(0, 0, 0, .125)'};
   border-radius: ${({ rounded }) => rounded && '0.25rem'};
   box-shadow: ${({ shadow }) =>
-    shadow && '0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08)'};
+    shadow && '0 8px 10px rgba(24, 37, 50, 0.1), 0 0 1px rgba(24, 37, 50, 0.08)'};
   color: ${({ context, theme }) =>
     context === 'light' || context === 'white' ? theme.COLOUR.dark : theme.COLOUR.white};
   display: flex;

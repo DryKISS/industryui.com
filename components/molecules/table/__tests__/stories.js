@@ -19,6 +19,7 @@ export default {
     border: true,
     caption: '',
     className: '',
+    draggableRows: false,
     fullHeight: false,
     hover: true,
     loading: false,
@@ -61,40 +62,16 @@ const BaseComponent = (props = {}) => {
     setPageSize(perPage)
   }
 
-  const data = [
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data,
-    ...rows.data
-  ]
+  const data = [...rows.data]
 
   pageSize === Infinity && setPageSize(data.length)
 
   const pageSlice = data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
   const defaultProps = {
+    onRowOrderChange: (e) => {
+      console.log(e)
+    },
     paginationProps: {
       currentPage: currentPage,
       onPageChange: handlePageChange,

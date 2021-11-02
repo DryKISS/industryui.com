@@ -1,17 +1,17 @@
 /**
- * Sidebar
+ * Components - Layouts - Sidebar - Story
  */
 
 // React
 import React from 'react'
 
 // UI
-import Navbar from '../../../molecules/navbar/navbar'
+import BarLayout from '../bar'
 import SidebarLayout from '../sidebar'
 import Readme from '../README.md'
+import { COPYRIGHT, FOOTER, NAVIGATION } from '../__mocks__/sidebar'
 
 export default {
-  title: 'Layouts/Sidebar',
   component: SidebarLayout,
   parameters: {
     docs: {
@@ -19,65 +19,18 @@ export default {
         component: Readme
       }
     }
-  }
+  },
+  title: 'Layouts/Sidebar'
 }
 
-const Copyright = [
-  {
-    name: 'Terms and conditions',
-    to: '/policies/terms-conditions'
-  },
-
-  {
-    name: 'Privacy policy',
-    to: '/policies/privacy-policy'
-  },
-
-  {
-    name: 'Site map',
-    to: '/policies/site-map'
-  }
-]
-
-const Footer = [
-  {
-    size: { sm: 6, md: 3 },
-    header: 'About',
-    text: '<p>About</p>'
-  },
-  {
-    size: { sm: 6, md: 3 },
-    header: 'Site Links',
-    text: '<p>Links</p>'
-  },
-  {
-    size: { sm: 6, md: 3 },
-    header: 'Who we Help',
-    text: '<p>Help</p>'
-  },
-  {
-    size: { sm: 6, md: 3 },
-    header: 'Contact',
-    text: '<p>Contact</p>'
-  }
-]
-
-const Navigation = () => {
-  const Default = {
-    right: [
-      {
-        id: 'navHome',
-        name: 'Home',
-        to: '/'
-      }
-    ]
-  }
-
-  return <Navbar links={Default} />
-}
-
-export const main = () => (
-  <SidebarLayout brand="DryKISS" copyright={Copyright} footer={Footer} Navigation={Navigation}>
+export const Main = () => (
+  <SidebarLayout brand="DryKISS" copyright={COPYRIGHT} footer={FOOTER} Navigation={NAVIGATION}>
     <>HERE</>
   </SidebarLayout>
+)
+
+export const Bar = () => (
+  <BarLayout brand="DryKISS" copyright={COPYRIGHT} footer={FOOTER} Navigation={NAVIGATION}>
+    <>HERE</>
+  </BarLayout>
 )

@@ -31,6 +31,7 @@ import PROGRESS from '../atoms/progress/components/progressVariables'
 import PROGRESSBAR from '../atoms/progress/components/progressBarVariables'
 import SCHEDULE from '../organisms/charts/scheduleChart/variables'
 import SELECT from '../form/reactSelect/components/variables'
+import RICH_TEXT_EDITOR from '../form/iuiRich/variables'
 import SIDEBAR from '../molecules/sidebar/variables'
 import SPACING from '../utils/spacer/spacing'
 import STEPPER from '../molecules/stepper/components/variables'
@@ -65,6 +66,7 @@ const Theme = {
   PROGRESS,
   PROGRESSBAR,
   SCHEDULE,
+  RICH_TEXT_EDITOR,
   SELECT,
   SIDEBAR,
   SPACING,

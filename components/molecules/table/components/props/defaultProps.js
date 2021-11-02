@@ -7,6 +7,7 @@ const defaultProps = {
   border: true,
   caption: '',
   className: 'Table',
+  draggableRows: false,
   fullHeight: false,
   hover: true,
   loading: undefined,
