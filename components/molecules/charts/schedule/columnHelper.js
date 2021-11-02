@@ -1,11 +1,12 @@
 import {
-  setMonth,
   endOfMonth,
+  endOfDay,
+  endOfWeek,
   startOfMonth,
   startOfWeek,
-  endOfWeek,
   startOfDay,
-  endOfDay
+  setMonth,
+  setDay
 } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components'
@@ -95,13 +96,20 @@ export const columns = (handleClick, options) => {
 
   const calculateCurrentDate = (mode, key) => {
     switch (mode) {
-      case 'month':
       case 'year': {
         const year = setMonth(
           new Date(currentDate),
           columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key)
         )
         return { startDate: startOfMonth(year), endDate: endOfMonth(year) }
+      }
+      case 'month': {
+        const getWeekNumber = key[key.length - 1]
+        const day = setDay(new Date(currentDate), getWeekNumber * 7 - 1)
+        return {
+          startDate: startOfWeek(new Date(day)),
+          endDate: endOfWeek(new Date(day))
+        }
       }
       case 'week': {
         return {
