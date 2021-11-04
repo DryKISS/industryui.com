@@ -7,7 +7,7 @@ import React from 'react'
 
 // UI
 import Space from '../../../atoms/space/space'
-import Tabs from '../tabs'
+import { Tabs, TabItem } from '../tabs'
 import Readme from '../README.md'
 
 export default {
@@ -38,43 +38,53 @@ const renderTab = (index, activeTab) => (
 
 const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</Tabs>
 
-export const main = (args) => (
+export const main = (args) => {
+  return (
+    <BaseComponent {...args}>
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1">
+        Tab 1 Content
+      </TabItem>
+      <TabItem disabled label="Disabled">
+        Tab 2 Disabled
+      </TabItem>
+      <TabItem active label="Tab 3">
+        Tab 3
+      </TabItem>
+      <TabItem context="danger" label="Tab 4">
+        Tab 4
+      </TabItem>
+    </BaseComponent>
+  )
+}
+
+export const single = (args) => (
   <BaseComponent {...args}>
-    <div data={{ 'data-cy': 'tab1' }} label="Tab 1">
-      Tab 1 Content
-    </div>
-    <div disabled label="Disabled">
-      Tab 2 Disabled
-    </div>
-    <div active label="Tab 3">
-      Tab 3
-    </div>
-    <div context="danger" label="Tab 4">
-      Tab 4
-    </div>
+    <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1">
+      Content first
+    </TabItem>
   </BaseComponent>
 )
 
 export const change = (args) => {
   const renderTabContent = (tab) => {
     return (
-      <>
+      <TabItem>
         HERE
         <Space />
         THERE
         {tab}
-      </>
+      </TabItem>
     )
   }
 
   return (
     <BaseComponent {...args} handleChange={false}>
-      <div active label="Tab 1">
+      <TabItem active label="Tab 1">
         Tab 1 Content
-      </div>
-      <div label="Disabled">Tab 2 Disabled</div>
-      <div label="Tab 3">{renderTabContent('customerVat')}</div>
-      <div label="Tab 4">Tab 4</div>
+      </TabItem>
+      <TabItem label="Disabled">Tab 2 Disabled</TabItem>
+      <TabItem label="Tab 3">{renderTabContent('customerVat')}</TabItem>
+      <TabItem label="Tab 4">Tab 4</TabItem>
     </BaseComponent>
   )
 }

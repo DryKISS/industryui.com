@@ -55,14 +55,12 @@ const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   })
 }
 
-const TabContent = ({ activeTab, children }) => {
-  return children[activeTab.index].props.children
-}
+export const TabItem = ({ children }) => children
 
 // Active
 let active = ''
 
-const Tabs = ({
+export const Tabs = ({
   centerTabs,
   children,
   className,
@@ -131,6 +129,11 @@ const Tabs = ({
       shallow: true
     })
   }
+  const renderItems = (activeTab) =>
+    React.Children.map(children, (child, index) => {
+      const { children: item } = children[index]?.props
+      return activeTab.index === index && <div>{item}</div>
+    })
 
   return (
     <>
@@ -156,8 +159,7 @@ const Tabs = ({
           )
         })}
       </StyledTabs>
-
-      <TabContent activeTab={activeTab} children={children} />
+      {renderItems(activeTab)}
     </>
   )
 }
@@ -225,5 +227,3 @@ Tabs.defaultProps = {
   indicatorSize: 1,
   scrollToActiveTab: true
 }
-
-export default Tabs
