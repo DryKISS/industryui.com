@@ -1,22 +1,36 @@
-import Modal from '../../../../molecules/modal/modal'
+/**
+ * Components - Organisms - Messaging - Email Container
+ */
+
+// React
 import React, { useState } from 'react'
+
+// Style
 import styled from 'styled-components'
-import VerticalThreeDotsIcon from '../../../../icons/components/verticalThreeDots'
+
+// UI
 import Avatar from '../../../../atoms/avatar/avatar'
+import Modal from '../../../../molecules/modal/modal'
 import Tooltip from '../tooltip/tooltip'
+import VerticalThreeDotsIcon from '../../../../icons/components/verticalThreeDots'
+
 const EmailContainer = ({ email, header }) => {
   const [isOpen, setIsOpen] = useState(false)
+
   const handleClose = () => {
     setIsOpen(false)
   }
+
   const handleExpandClick = () => {
     setIsOpen(true)
   }
+
   const av = email.forwardedFrom?.avatar ? (
-    <Avatar size="xxs" src={email.forwardedFrom.avatar} />
+    <Avatar size="xs" src={email.forwardedFrom.avatar} />
   ) : (
-    <Avatar size="xxs" content={email.forwardedFrom.name[0]} />
+    <Avatar size="xs" content={email.forwardedFrom.name[0]} />
   )
+
   const top = email.forwardedFrom && (
     <TopContainer>
       {av}

@@ -36,39 +36,6 @@ const StyledText = styled.p`
     line-height: ${theme.TEXT.LINE_HEIGHT[size] ?? '1rem'};
   `}
 
-  ${({ size }) =>
-    size === 'xxl' &&
-    css`
-      ${MEDIA_QUERY.phone`
-        font-size: 2rem;
-      `}
-      ${MEDIA_QUERY.tablet`
-        font-size: 3rem;
-      `}
-      ${MEDIA_QUERY.desktop`
-        font-size: 4rem;
-      `}
-      ${MEDIA_QUERY.giant`
-        font-size: 5rem;
-      `}
-    `}
-  ${({ size }) =>
-    size === 'xxxl' &&
-    css`
-      ${MEDIA_QUERY.phone`
-        font-size: 5rem;
-      `}
-      ${MEDIA_QUERY.tablet`
-        font-size: 6rem;
-      `}
-      ${MEDIA_QUERY.desktop`
-        font-size: 7rem;
-      `}
-      ${MEDIA_QUERY.giant`
-        font-size: 8rem;
-      `}
-    `}
-
   ${(theme) => themeDisplay(theme)}
   ${(theme) => SPACER(theme)}
 

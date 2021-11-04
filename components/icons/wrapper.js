@@ -25,12 +25,6 @@ const IconWrapper = ({
     let tmpSize = 22
 
     switch (size) {
-      case 'xxxs':
-        tmpSize = 8
-        break
-      case 'xxs':
-        tmpSize = 12
-        break
       case 'xs':
         tmpSize = 16
         break
@@ -45,12 +39,6 @@ const IconWrapper = ({
         break
       case 'xl':
         tmpSize = 36
-        break
-      case 'xxl':
-        tmpSize = 40
-        break
-      case 'xxxl':
-        tmpSize = 48
         break
       default:
         tmpSize = 22

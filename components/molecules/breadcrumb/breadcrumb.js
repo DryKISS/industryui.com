@@ -18,7 +18,6 @@ const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
   return (
     <nav aria-label="breadcrumb">
       <StyledOl itemScope="" itemType="http://schema.org/BreadcrumbList">
-        {/* Home link - always static and routes to / */}
         {breadcrumbs.map((item, index) => {
           return (
             <StyledLi
@@ -72,11 +71,6 @@ const Breadcrumb = ({ breadcrumbs, customSeparator, separator, size }) => {
 
 const sizedStyles = (size) => {
   switch (size) {
-    case THEME_SIZE.XXS:
-      return css`
-        font-size: 0.625rem;
-        padding: 0 0.25rem;
-      `
     case THEME_SIZE.XS:
       return css`
         font-size: 0.75rem;
@@ -86,11 +80,6 @@ const sizedStyles = (size) => {
       return css`
         font-size: 0.875rem;
         padding: 0 0.25rem;
-      `
-    case THEME_SIZE.MD:
-      return css`
-        font-size: 1rem;
-        padding: 0 0.375rem;
       `
     case THEME_SIZE.LG:
       return css`
@@ -102,19 +91,9 @@ const sizedStyles = (size) => {
         font-size: 1.5rem;
         padding: 0 0.375rem;
       `
-    case THEME_SIZE.XXL:
-      return css`
-        font-size: 2rem;
-        padding: 0 0.5rem;
-      `
-    case THEME_SIZE.XXXL:
-      return css`
-        font-size: 3rem;
-        padding: 0 0.5rem;
-      `
     default:
       return css`
-        font-size: 1.25rem;
+        font-size: 1rem;
         padding: 0 0.375rem;
       `
   }
