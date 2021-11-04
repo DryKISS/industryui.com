@@ -173,8 +173,7 @@ export { default as VoiceRecorder } from './molecules/voiceRecorder/voiceRecorde
 
 // Organisms
 export { default as Bar } from './organisms/bar/bar'
-export { default as BigCalendar } from './organisms/calendar/bigCalendar/bigCalendar'
-export { default as Calendar } from './organisms/calendar/fullCalendar/fullCalendar'
+export { default as Calendar } from './organisms/calendar/Calendar'
 export { default as ColourPicker } from './organisms/colourPicker/colourPicker'
 export { default as DraftJs } from './organisms/editor/draftJs/draftJs'
 export { default as EmailChange } from './organisms/emailChange/emailChange'

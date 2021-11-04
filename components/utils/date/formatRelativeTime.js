@@ -2,11 +2,10 @@
  * Format date
  */
 
-// Moment
-import moment from 'moment'
+import { formatDistanceToNow } from 'date-fns'
 
 const formatRelativeTime = (date) => {
-  return moment(date).fromNow()
+  return formatDistanceToNow(new Date(date))
 }
 
 export default formatRelativeTime

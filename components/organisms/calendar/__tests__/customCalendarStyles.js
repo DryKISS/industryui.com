@@ -4,22 +4,20 @@
 
 // React
 import React, { useState } from 'react'
-
-// Moment
-import moment from 'moment'
+import { format, set, setDate } from 'date-fns'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
 // UI
-import OffCanvas from '../../../../molecules/offCanvas/offCanvas'
-import Button from '../../../../atoms/button/button/button'
-import Form from '../../../../form/form/form'
-import Label from '../../../../form/label/label'
-import Input from '../../../../form/input/input'
-import Select from '../../../../form/select/select'
+import Button from '../../../atoms/button/button/button'
 import { BaseComponent } from './stories'
 import { colorEvent } from '../__mocks__/events'
+import Form from '../../../form/form/form'
+import Input from '../../../form/input/input'
+import Label from '../../../form/label/label'
+import OffCanvas from '../../../molecules/offCanvas/offCanvas'
+import Select from '../../../form/select/select'
 
 const CustomCalendarStyles = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false)
@@ -83,21 +81,21 @@ const CustomCalendarStyles = () => {
 
 export const Events = [
   {
-    date: moment().date(2).format('YYYY-MM-DD'),
+    date: format(setDate(new Date(), 2), 'yyyy-MM-dd'),
     description: 'All day event',
     title: 'Event 1',
     tooltip: 'All day event tooltip'
   },
   {
     description: 'Event starting at a specific time',
-    date: moment().date(7).hour(14).minute(30).format(),
+    date: set(new Date(), { date: 7, hours: 14, minutes: 30 }).toISOString(),
     title: 'Event 2'
   },
   {
     daysOfWeek: [2],
     description: 'Recurring event, once per week, all day',
-    endRecur: moment().date(30).format('YYYY-MM-DD'),
-    startRecur: moment().date(5).format('YYYY-MM-DD'),
+    endRecur: format(setDate(new Date(), 30), 'yyyy-MM-dd'),
+    startRecur: format(setDate(new Date(), 5), 'yyyy-MM-dd'),
     title: 'PPM: Boiler Check'
   }
 ]

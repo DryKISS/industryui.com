@@ -1,5 +1,5 @@
 /**
- * Components - Organisms - Calendar - Full Calendar
+ * Components - Organisms - Calendar
  */
 
 // React
@@ -13,8 +13,8 @@ import dynamic from 'next/dynamic'
 import styled from 'styled-components'
 
 // UI
-import LdsSpinner from '../../../molecules/pageLoading/ldsSpinner'
-import PageLoading from '../../../molecules/pageLoading/pageLoading'
+import LdsSpinner from '../../molecules/pageLoading/ldsSpinner'
+import PageLoading from '../../molecules/pageLoading/pageLoading'
 
 const CalendarWrapper = dynamic(() => import('./components/calendarWrapper'), {
   ssr: false,
