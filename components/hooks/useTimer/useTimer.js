@@ -51,10 +51,10 @@ const useTimer = ({ autoStart = true, interval = 1000, startTime, endTime } = {}
   const getFormattedTime = () => {
     return {
       days: format(time, 'EEEE'),
-      seconds: getSeconds(time),
-      minutes: getMinutes(time),
       hours: getHours(time),
-      exactHours: millisecondsToHours(time).toFixed(2)
+      exactHours: millisecondsToHours(time).toFixed(2),
+      minutes: getMinutes(time),
+      seconds: getSeconds(time)
     }
   }
 
