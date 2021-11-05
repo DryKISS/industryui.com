@@ -4,6 +4,7 @@
 
 // React
 import React, { useEffect, useRef } from 'react'
+import Icon from '../../atoms/icon/icon/icon'
 import { bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // Style
@@ -15,6 +16,9 @@ import slugify from '../../utils/slugify/slugify'
 const Tab = ({
   activeTab,
   childClick,
+  children,
+  child,
+  icon,
   context,
   data,
   disabled,
@@ -23,7 +27,9 @@ const Tab = ({
   indicatorSize,
   label,
   onClick,
-  scrollToActiveTab
+  onRemove,
+  scrollToActiveTab,
+  setActiveTab
 }) => {
   const tabRef = useRef(null)
   const labelSlug = slugify(label)
@@ -63,7 +69,9 @@ const Tab = ({
       ref={isActive && scrollToActiveTab ? tabRef : null}
       gap={gap}
     >
-      {label}
+      <Icon icon={icon} />
+      <span>{label}</span>
+      <Icon icon="times" onClick={() => onRemove(index)} />
     </StyledTab>
   )
 }

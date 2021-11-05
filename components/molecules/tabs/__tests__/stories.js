@@ -41,17 +41,34 @@ const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</T
 export const main = (args) => {
   return (
     <BaseComponent {...args}>
-      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1">
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user">
         Tab 1 Content
       </TabItem>
-      <TabItem disabled label="Disabled">
+      <TabItem disabled label="Disabled" icon={'coffee'}>
         Tab 2 Disabled
       </TabItem>
-      <TabItem active label="Tab 3">
+      <TabItem active label="Tab 3" icon="check">
         Tab 3
       </TabItem>
-      <TabItem context="danger" label="Tab 4">
+      <TabItem context="danger" label="Tab 4" icon="trash">
         Tab 4
+      </TabItem>
+    </BaseComponent>
+  )
+}
+
+export const dynamicTab = (args) => {
+  const initialPanes = [
+    { label: 'Tab 22', content: <div>Some component</div>, key: '1' },
+    { label: 'Tab 55', content: 'Content of Tab 155', key: '1' }
+  ]
+  return (
+    <BaseComponent {...args} initialPanes={initialPanes}>
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user" active>
+        Tab 1 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" icon="user">
+        Tab 333 Content
       </TabItem>
     </BaseComponent>
   )

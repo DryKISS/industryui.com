@@ -64,9 +64,11 @@ export const Tabs = ({
   centerTabs,
   children,
   className,
+  defaultComponent,
   indicatorSize,
   gap,
   grabbable,
+  initialPanes,
   grabWalkSpeed,
   grabTimeout,
   handleChange,
@@ -75,6 +77,9 @@ export const Tabs = ({
 }) => {
   const router = useRouter()
   const wrapperRef = createRef()
+  const [chilrenss, setChild] = useState(
+    !Array.isArray(children) ? React.Children.toArray(children) : children
+  )
 
   useEffect(() => {
     if (grabbable) {
@@ -82,13 +87,9 @@ export const Tabs = ({
     }
   }, [])
 
-  if (!Array.isArray(children)) {
-    children = React.Children.toArray(children)
-  }
-
   // Find active in children if more than one tab or make first active
-  if (children.length > 1) {
-    children.forEach((child, index) => {
+  if (chilrenss.length > 1) {
+    chilrenss.forEach((child, index) => {
       if (child.props.active === true) {
         active = {
           index: index,
@@ -99,7 +100,7 @@ export const Tabs = ({
   } else {
     active = {
       index: 0,
-      label: slugify(children[0].props.label)
+      label: slugify(chilrenss[0].props.label)
     }
   }
 
@@ -119,8 +120,9 @@ export const Tabs = ({
   }
 
   const handleRoute = (tab) => {
-    const query = router.query
-    delete query.tab
+    const query = router.query || {}
+
+    delete query?.tab
     query.tab = tab
 
     Router.push({
@@ -129,12 +131,32 @@ export const Tabs = ({
       shallow: true
     })
   }
-  const renderItems = (activeTab) =>
-    React.Children.map(children, (child, index) => {
-      const { children: item } = children[index]?.props
+  const renderItems = () => {
+    return React.Children.map(chilrenss, (child, index) => {
+      const { children: item } = chilrenss[index]?.props
       return activeTab.index === index && <div>{item}</div>
     })
+  }
 
+  const handleAdd = () => {
+    const nextChild = parseInt(activeTab.index) + 1
+    const data = (
+      <TabItem label={'tab' + nextChild} active={true}>
+        {'tab' + nextChild}
+      </TabItem>
+    )
+    const result = [...chilrenss, data]
+
+    setChild(result)
+    setActiveTab({ index: nextChild, label: 'tab' + nextChild })
+  }
+  const handleRemove = (index) => {
+    if (chilrenss.length > 1) {
+      chilrenss.splice(index, 1)
+      setChild(chilrenss)
+      setActiveTab({ index: index - 1 })
+    }
+  }
   return (
     <>
       <StyledTabs
@@ -144,22 +166,27 @@ export const Tabs = ({
         grabbable={grabbable}
         ref={wrapperRef}
       >
-        {children.map(({ props }, index) => {
+        {chilrenss.map(({ props, child, ...rest }, index) => {
           return (
             <Tab
+              child={rest}
               activeTab={activeTab}
               index={index}
+              setActiveTab={setActiveTab}
               key={props.label}
               onClick={!props.disabled && onClickTabItem}
               scrollToActiveTab={scrollToActiveTab}
               gap={gap}
               indicatorSize={indicatorSize}
+              onRemove={handleRemove}
               {...props}
             />
           )
         })}
+        <button onClick={handleAdd}>Add</button>
       </StyledTabs>
-      {renderItems(activeTab)}
+
+      {renderItems()}
     </>
   )
 }
@@ -214,6 +241,7 @@ Tabs.propTypes = {
   grabTimeout: number,
   handleChange: bool,
   indicatorSize: number,
+  icon: string,
   scrollToActiveTab: bool
 }
 
