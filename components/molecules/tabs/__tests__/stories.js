@@ -58,12 +58,8 @@ export const main = (args) => {
 }
 
 export const dynamicTab = (args) => {
-  const initialPanes = [
-    { label: 'Tab 22', content: <div>Some component</div>, key: '1' },
-    { label: 'Tab 55', content: 'Content of Tab 155', key: '1' }
-  ]
   return (
-    <BaseComponent {...args} initialPanes={initialPanes}>
+    <BaseComponent {...args} prefix="Tab" DefaultComponent={() => <div>Hello this is Default</div>}>
       <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user" active>
         Tab 1 Content
       </TabItem>

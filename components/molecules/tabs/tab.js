@@ -22,6 +22,7 @@ const Tab = ({
   context,
   data,
   disabled,
+  DefaultComponent,
   gap,
   index,
   indicatorSize,
@@ -71,7 +72,7 @@ const Tab = ({
     >
       <Icon icon={icon} />
       <span>{label}</span>
-      <Icon icon="times" onClick={() => onRemove(index)} />
+      {DefaultComponent && <Icon icon="times" onClick={() => onRemove(index)} />}
     </StyledTab>
   )
 }

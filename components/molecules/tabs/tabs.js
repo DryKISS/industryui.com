@@ -64,16 +64,16 @@ export const Tabs = ({
   centerTabs,
   children,
   className,
-  defaultComponent,
+  DefaultComponent,
   indicatorSize,
   gap,
   grabbable,
-  initialPanes,
   grabWalkSpeed,
   grabTimeout,
   handleChange,
   onTabChange,
-  scrollToActiveTab
+  scrollToActiveTab,
+  prefix
 }) => {
   const router = useRouter()
   const wrapperRef = createRef()
@@ -131,10 +131,12 @@ export const Tabs = ({
       shallow: true
     })
   }
-  const renderItems = () => {
+  const renderItems = (DefaultComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
       const { children: item } = tabPanes[index]?.props
-      return activeTab.index === index && <div>{item}</div>
+      return (
+        activeTab.index === index && <div>{DefaultComponent ? <DefaultComponent /> : item}</div>
+      )
     })
   }
 
@@ -168,6 +170,8 @@ export const Tabs = ({
         {tabPanes.map(({ props, child, ...rest }, index) => {
           return (
             <Tab
+              DefaultComponent={DefaultComponent}
+              prefix={prefix}
               child={rest}
               activeTab={activeTab}
               index={index}
@@ -182,12 +186,14 @@ export const Tabs = ({
             />
           )
         })}
-        <Button onClick={handleAdd} context="dark">
-          Add
-        </Button>
+        {DefaultComponent && (
+          <Button onClick={handleAdd} context="dark">
+            Add
+          </Button>
+        )}
       </StyledTabs>
 
-      {renderItems()}
+      {renderItems(DefaultComponent)}
     </>
   )
 }
