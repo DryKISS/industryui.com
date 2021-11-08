@@ -5,7 +5,7 @@
 // React
 import React, { createRef, useEffect, useState } from 'react'
 import { array, bool, number, object, oneOfType, string } from 'prop-types'
-
+import Button from '../../atoms/button/button/button'
 // Next
 import Router, { useRouter } from 'next/router'
 
@@ -77,7 +77,7 @@ export const Tabs = ({
 }) => {
   const router = useRouter()
   const wrapperRef = createRef()
-  const [chilrenss, setChild] = useState(
+  const [tabPanes, setTabPane] = useState(
     !Array.isArray(children) ? React.Children.toArray(children) : children
   )
 
@@ -88,8 +88,8 @@ export const Tabs = ({
   }, [])
 
   // Find active in children if more than one tab or make first active
-  if (chilrenss.length > 1) {
-    chilrenss.forEach((child, index) => {
+  if (tabPanes.length > 1) {
+    tabPanes.forEach((child, index) => {
       if (child.props.active === true) {
         active = {
           index: index,
@@ -100,7 +100,7 @@ export const Tabs = ({
   } else {
     active = {
       index: 0,
-      label: slugify(chilrenss[0].props.label)
+      label: slugify(tabPanes[0].props.label)
     }
   }
 
@@ -132,8 +132,8 @@ export const Tabs = ({
     })
   }
   const renderItems = () => {
-    return React.Children.map(chilrenss, (child, index) => {
-      const { children: item } = chilrenss[index]?.props
+    return React.Children.map(tabPanes, (child, index) => {
+      const { children: item } = tabPanes[index]?.props
       return activeTab.index === index && <div>{item}</div>
     })
   }
@@ -145,15 +145,14 @@ export const Tabs = ({
         {'tab' + nextChild}
       </TabItem>
     )
-    const result = [...chilrenss, data]
+    const result = [...tabPanes, data]
 
-    setChild(result)
+    setTabPane(result)
     setActiveTab({ index: nextChild, label: 'tab' + nextChild })
   }
   const handleRemove = (index) => {
-    if (chilrenss.length > 1) {
-      chilrenss.splice(index, 1)
-      setChild(chilrenss)
+    if (tabPanes.length > 1) {
+      setTabPane(tabPanes.filter((_, i) => i !== index))
       setActiveTab({ index: index - 1 })
     }
   }
@@ -166,7 +165,7 @@ export const Tabs = ({
         grabbable={grabbable}
         ref={wrapperRef}
       >
-        {chilrenss.map(({ props, child, ...rest }, index) => {
+        {tabPanes.map(({ props, child, ...rest }, index) => {
           return (
             <Tab
               child={rest}
@@ -183,7 +182,9 @@ export const Tabs = ({
             />
           )
         })}
-        <button onClick={handleAdd}>Add</button>
+        <Button onClick={handleAdd} context="dark">
+          Add
+        </Button>
       </StyledTabs>
 
       {renderItems()}
