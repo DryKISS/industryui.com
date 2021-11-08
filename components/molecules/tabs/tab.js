@@ -15,10 +15,15 @@ import slugify from '../../utils/slugify/slugify'
 
 const Tab = ({
   activeTab,
+  activeBackground,
+  activeBorders,
+  activeContext,
+  background,
+  borders,
   childClick,
   children,
-  child,
-  icon,
+  leftTabIcon,
+  rightTabIcon,
   context,
   data,
   disabled,
@@ -29,8 +34,7 @@ const Tab = ({
   label,
   onClick,
   onRemove,
-  scrollToActiveTab,
-  setActiveTab
+  scrollToActiveTab
 }) => {
   const tabRef = useRef(null)
   const labelSlug = slugify(label)
@@ -64,37 +68,57 @@ const Tab = ({
       active={isActive}
       context={context}
       {...data}
+      activeBackground={activeBackground}
+      activeBorders={activeBorders}
+      borders={borders}
+      background={background}
       disabled={disabled}
       indicatorSize={indicatorSize}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
       gap={gap}
     >
-      <Icon icon={icon} />
+      <Icon icon={leftTabIcon} />
       <span>{label}</span>
-      {DefaultComponent && <Icon icon="times" onClick={() => onRemove(index)} />}
+      {DefaultComponent && <Icon icon={rightTabIcon} onClick={() => onRemove(index)} />}
     </StyledTab>
   )
 }
 
 const StyledTab = styled.li`
-  ${({ context, theme, gap }) => css`
-    background-color: ${theme.TABS.colour};
-    border-left: 1px solid ${theme.TABS.borderColour};
-    border-bottom: 1px solid ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
-    border-top: 1px solid ${theme.TABS.borderColour};
+  ${({ borders, context, theme, gap, background }) => css`
+    background-color: ${background || theme.TABS.colour};
+    border-left: ${borders?.left || '0'}px solid
+      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+    border-bottom: ${borders?.bottom || '0'}px solid
+      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+    border-top: ${borders?.top || '0'}px solid
+      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     color: ${theme.TABS.tabTextColour};
     ${gap !== 0 &&
     css`
-      border-right: 1px solid ${theme.TABS.borderColour};
+      border-right: ${borders.right || '0'}px solid
+        ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     `}
   `}
 
-  ${({ active, context, indicatorSize, theme }) =>
+  ${({ active, activeBorders, activeContext, activeBackground, context, indicatorSize, theme }) =>
     active &&
     css`
-      background-color: ${theme.TABS.activeColour};
-      border-bottom: ${indicatorSize}px solid ${theme.COLOUR.primary};
+      background-color: ${activeBackground || theme.TABS.activeColour};
+
+      border-top: ${activeBorders?.top}px solid
+        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+
+      border-right: ${activeBorders?.right}px solid
+        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+
+      border-bottom: ${activeBorders?.bottom || indicatorSize}px solid
+        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+
+      border-left: ${activeBorders?.left}px solid
+        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+
       color: ${theme.TABS.activeTabTextColour};
     `}
 
@@ -145,6 +169,7 @@ const StyledTab = styled.li`
 `
 
 Tab.propTypes = {
+  background: string,
   activeTab: string.isRequired,
   childClick: func,
   context: oneOfType([bool, string]),

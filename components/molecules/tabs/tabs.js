@@ -61,6 +61,12 @@ export const TabItem = ({ children }) => children
 let active = ''
 
 export const Tabs = ({
+  activeBackground,
+  activeBorders,
+  activeContext,
+  background,
+  borders,
+  context,
   centerTabs,
   children,
   className,
@@ -70,6 +76,7 @@ export const Tabs = ({
   grabbable,
   grabWalkSpeed,
   grabTimeout,
+  rightTabIcon,
   handleChange,
   onTabChange,
   scrollToActiveTab,
@@ -80,12 +87,6 @@ export const Tabs = ({
   const [tabPanes, setTabPane] = useState(
     !Array.isArray(children) ? React.Children.toArray(children) : children
   )
-
-  useEffect(() => {
-    if (grabbable) {
-      handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
-    }
-  }, [])
 
   // Find active in children if more than one tab or make first active
   if (tabPanes.length > 1) {
@@ -105,6 +106,12 @@ export const Tabs = ({
   }
 
   const [activeTab, setActiveTab] = useState(active)
+
+  useEffect(() => {
+    if (grabbable) {
+      handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
+    }
+  }, [])
 
   const onClickTabItem = ({ index, label }) => {
     const tab = slugify(label)
@@ -133,31 +140,41 @@ export const Tabs = ({
   }
   const renderItems = (DefaultComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
+      const currentLabel = slugify(child?.props?.label)
       const { children: item } = tabPanes[index]?.props
       return (
-        activeTab.index === index && <div>{DefaultComponent ? <DefaultComponent /> : item}</div>
+        activeTab.label === currentLabel && (
+          <div>{DefaultComponent ? <DefaultComponent /> : item}</div>
+        )
       )
     })
   }
 
   const handleAdd = () => {
-    const nextChild = parseInt(activeTab.index) + 1
+    const nextChild = parseInt(activeTab.index) + 10
+    const newTabTitle = `Tab  ${nextChild}`
     const data = (
-      <TabItem label={'tab' + nextChild} active={true}>
-        {'tab' + nextChild}
+      <TabItem label={newTabTitle} active={true} rightTabIcon={rightTabIcon}>
+        {newTabTitle}
       </TabItem>
     )
-    const result = [...tabPanes, data]
 
-    setTabPane(result)
-    setActiveTab({ index: nextChild, label: 'tab' + nextChild })
+    setTabPane([...tabPanes, data])
+    setActiveTab({ index: nextChild, label: slugify(newTabTitle) })
   }
   const handleRemove = (index) => {
     if (tabPanes.length > 1) {
+      const newIndex = index - 1
+      setActiveTab(
+        Object.assign(activeTab, {
+          index: newIndex < 0 ? 0 : newIndex,
+          label: slugify(tabPanes[newIndex]?.props?.label)
+        })
+      )
       setTabPane(tabPanes.filter((_, i) => i !== index))
-      setActiveTab({ index: index - 1 })
     }
   }
+
   return (
     <>
       <StyledTabs
@@ -165,17 +182,24 @@ export const Tabs = ({
         className={className}
         gap={gap}
         grabbable={grabbable}
+        activeBorders={activeBorders}
+        borders={borders}
         ref={wrapperRef}
       >
-        {tabPanes.map(({ props, child, ...rest }, index) => {
+        {tabPanes.map(({ props }, index) => {
           return (
             <Tab
+              activeBackground={activeBackground}
+              activeBorders={activeBorders}
+              activeContext={activeContext}
+              rightTabIcon={rightTabIcon}
+              borders={borders}
+              background={background}
+              context={context}
               DefaultComponent={DefaultComponent}
               prefix={prefix}
-              child={rest}
               activeTab={activeTab}
               index={index}
-              setActiveTab={setActiveTab}
               key={props.label}
               onClick={!props.disabled && onClickTabItem}
               scrollToActiveTab={scrollToActiveTab}
@@ -239,6 +263,11 @@ const StyledTabs = styled.ol`
 `
 
 Tabs.propTypes = {
+  activeBackground: string,
+  activeBorders: object,
+  activeContext: string,
+  background: string,
+  borders: object,
   centerTabs: bool,
   children: oneOfType([array, object]).isRequired,
   className: string,
@@ -253,6 +282,8 @@ Tabs.propTypes = {
 }
 
 Tabs.defaultProps = {
+  activeBackground: undefined,
+  background: undefined,
   centerTabs: false,
   gap: 0,
   grabbable: true,

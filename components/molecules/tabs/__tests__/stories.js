@@ -59,7 +59,7 @@ export const main = (args) => {
 
 export const dynamicTab = (args) => {
   return (
-    <BaseComponent {...args} prefix="Tab" DefaultComponent={() => <div>Hello this is Default</div>}>
+    <BaseComponent {...args} DefaultComponent={() => <div>Hello this is Default</div>}>
       <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user" active>
         Tab 1 Content
       </TabItem>
@@ -70,6 +70,28 @@ export const dynamicTab = (args) => {
   )
 }
 
+export const myDesign = (args) => {
+  return (
+    <BaseComponent
+      {...args}
+      gap={2}
+      context="borderColour"
+      activeContext={'borderColour'}
+      rightTabIcon="times"
+      borders={{ top: 1, left: 1, right: 1, bottom: 1 }}
+      activeBorders={{ top: 1, left: 1, right: 1, bottom: 2 }}
+      DefaultComponent={() => <div>sss</div>}
+      handleChange={false}
+    >
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user" active>
+        Tab 1 Contentsssss
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+    </BaseComponent>
+  )
+}
 export const single = (args) => (
   <BaseComponent {...args}>
     <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1">
