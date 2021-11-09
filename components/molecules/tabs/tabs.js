@@ -5,7 +5,7 @@
 // React
 import React, { createRef, useEffect, useState } from 'react'
 import { array, bool, number, object, oneOfType, string } from 'prop-types'
-import Button from '../../atoms/button/button/button'
+
 // Next
 import Router, { useRouter } from 'next/router'
 
@@ -15,6 +15,8 @@ import styled, { css } from 'styled-components'
 // UI
 import slugify from '../../utils/slugify/slugify'
 import Tab from './tab'
+import Button from '../../atoms/button/button/button'
+import Icon from '../../atoms/icon/icon/icon'
 
 const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   const slider = el
@@ -70,8 +72,10 @@ export const Tabs = ({
   centerTabs,
   children,
   className,
-  DefaultComponent,
+  defaultContentComponent,
+  component,
   indicatorSize,
+  isVertical,
   gap,
   grabbable,
   grabWalkSpeed,
@@ -79,11 +83,11 @@ export const Tabs = ({
   rightTabIcon,
   handleChange,
   onTabChange,
-  scrollToActiveTab,
-  prefix
+  scrollToActiveTab
 }) => {
   const router = useRouter()
   const wrapperRef = createRef()
+  const [overflow, setOverflow] = useState(false)
   const [tabPanes, setTabPane] = useState(
     !Array.isArray(children) ? React.Children.toArray(children) : children
   )
@@ -138,13 +142,14 @@ export const Tabs = ({
       shallow: true
     })
   }
-  const renderItems = (DefaultComponent) => {
+
+  const renderTabContent = (defaultContentComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
       const currentLabel = slugify(child?.props?.label)
       const { children: item } = tabPanes[index]?.props
       return (
         activeTab.label === currentLabel && (
-          <div>{DefaultComponent ? <DefaultComponent /> : item}</div>
+          <>{defaultContentComponent ? defaultContentComponent() : item}</>
         )
       )
     })
@@ -174,13 +179,29 @@ export const Tabs = ({
       setTabPane(tabPanes.filter((_, i) => i !== index))
     }
   }
+  useEffect(() => {
+    const { current = {} } = wrapperRef
+    setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
+  }, [wrapperRef])
+
+  const handleScrollBack = () => {
+    const { current = {} } = wrapperRef
+    current.scrollLeft = current?.scrollLeft - 1000
+  }
+
+  const handleScrollForward = () => {
+    const { current = {} } = wrapperRef
+    current.scrollLeft = current?.scrollLeft + 1000
+  }
 
   return (
-    <>
+    <StyledWrapper isVertical={isVertical}>
+      {overflow && <Button onClick={handleScrollBack}>&lt;</Button>}
       <StyledTabs
         centerTabs={centerTabs}
         className={className}
         gap={gap}
+        isVertical={isVertical}
         grabbable={grabbable}
         activeBorders={activeBorders}
         borders={borders}
@@ -196,8 +217,7 @@ export const Tabs = ({
               borders={borders}
               background={background}
               context={context}
-              DefaultComponent={DefaultComponent}
-              prefix={prefix}
+              defaultContentComponent={defaultContentComponent}
               activeTab={activeTab}
               index={index}
               key={props.label}
@@ -210,22 +230,48 @@ export const Tabs = ({
             />
           )
         })}
-        {DefaultComponent && (
-          <Button onClick={handleAdd} context="dark">
-            Add
-          </Button>
-        )}
       </StyledTabs>
-
-      {renderItems(DefaultComponent)}
-    </>
+      {overflow && <Button onClick={handleScrollForward}>&gt;</Button>}
+      {defaultContentComponent && (
+        <Button context="light" onClick={handleAdd}>
+          <Icon icon="plus" iui />
+        </Button>
+      )}
+      <StyledContent isVertical={isVertical}>
+        {renderTabContent(defaultContentComponent)}
+      </StyledContent>
+    </StyledWrapper>
   )
 }
 
+const StyledContent = styled.div`
+  ${({ isVertical }) =>
+    isVertical &&
+    css`
+      flex: 11;
+    `}
+`
+
+const StyledWrapper = styled.div`
+  ${({ isVertical }) =>
+    isVertical &&
+    css`
+      display: flex;
+      overflow-y: scroll;
+      justify-content: space-between;
+    `}
+`
+
 const StyledTabs = styled.ol`
-  align-items: flex-end;
   border-bottom: 1px solid ${({ theme }) => theme.TABS.borderColour};
   display: flex;
+  ${({ isVertical }) =>
+    isVertical &&
+    css`
+      flex-direction: column;
+      flex: 1;
+    `}
+
   ${({ gap }) =>
     gap !== 0 &&
     css`

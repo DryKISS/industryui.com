@@ -59,11 +59,69 @@ export const main = (args) => {
 
 export const dynamicTab = (args) => {
   return (
-    <BaseComponent {...args} DefaultComponent={() => <div>Hello this is Default</div>}>
+    <BaseComponent
+      {...args}
+      rightTabIcon="times"
+      defaultContentComponent={() => <div>Hello this is Default</div>}
+    >
       <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user" active>
         Tab 1 Content
       </TabItem>
       <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" icon="user">
+        Tab 333 Content
+      </TabItem>
+    </BaseComponent>
+  )
+}
+
+export const verticalTab = (args) => {
+  return (
+    <BaseComponent {...args} isVertical={true} rightTabIcon="times">
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user" active>
+        Tab 1 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 2" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 3" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 4" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 5" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+    </BaseComponent>
+  )
+}
+
+export const tabComponent = (args) => {
+  return (
+    <BaseComponent
+      rightTabIcon="times"
+      {...args}
+      defaultContentComponent={() => <div>defaultContentComponent</div>}
+    >
+      <TabItem
+        data={{ 'data-cy': 'tab1' }}
+        label="Tab 1"
+        renderTab={() => <div>My Tab 1</div>}
+        leftTabIcon="user"
+        active
+      >
+        Tab 1 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 2" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 3" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 4" leftTabIcon="user">
+        Tab 333 Content
+      </TabItem>
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 5" leftTabIcon="user">
         Tab 333 Content
       </TabItem>
     </BaseComponent>
@@ -80,7 +138,7 @@ export const myDesign = (args) => {
       rightTabIcon="times"
       borders={{ top: 1, left: 1, right: 1, bottom: 1 }}
       activeBorders={{ top: 1, left: 1, right: 1, bottom: 2 }}
-      DefaultComponent={() => <div>sss</div>}
+      defaultContentComponent={() => <div>sss</div>}
       handleChange={false}
     >
       <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user" active>

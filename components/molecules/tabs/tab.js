@@ -27,7 +27,8 @@ const Tab = ({
   context,
   data,
   disabled,
-  DefaultComponent,
+  defaultContentComponent,
+  renderTab,
   gap,
   index,
   indicatorSize,
@@ -79,8 +80,8 @@ const Tab = ({
       gap={gap}
     >
       <Icon icon={leftTabIcon} />
-      <span>{label}</span>
-      {DefaultComponent && <Icon icon={rightTabIcon} onClick={() => onRemove(index)} />}
+      <div>{renderTab ? renderTab() : label}</div>
+      {defaultContentComponent && <Icon icon={rightTabIcon} onClick={() => onRemove(index)} />}
     </StyledTab>
   )
 }
@@ -107,16 +108,16 @@ const StyledTab = styled.li`
     css`
       background-color: ${activeBackground || theme.TABS.activeColour};
 
-      border-top: ${activeBorders?.top}px solid
+      border-top: ${activeBorders?.top || '0'}px solid
         ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
 
-      border-right: ${activeBorders?.right}px solid
+      border-right: ${activeBorders?.right || '0'}px solid
         ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
 
-      border-bottom: ${activeBorders?.bottom || indicatorSize}px solid
+      border-bottom: ${activeBorders?.bottom || indicatorSize || '0'}px solid
         ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
 
-      border-left: ${activeBorders?.left}px solid
+      border-left: ${activeBorders?.left || '0'}px solid
         ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
 
       color: ${theme.TABS.activeTabTextColour};
@@ -166,6 +167,19 @@ const StyledTab = styled.li`
   list-style: none;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+
+  > svg {
+    flex: 1;
+    display: block;
+    align-self: center;
+    margin-bottom: 5px;
+  }
+
+  > div {
+    flex: 2;
+  }
 `
 
 Tab.propTypes = {
