@@ -15,9 +15,9 @@ import styled, { css } from 'styled-components'
 // UI
 import slugify from '../../utils/slugify/slugify'
 import Tab from './tab'
+import Dropdown from '../../molecules/dropdown/dropdown'
 import Button from '../../atoms/button/button/button'
 import Icon from '../../atoms/icon/icon/icon'
-
 const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   const slider = el
   let clickTime
@@ -63,10 +63,8 @@ export const TabItem = ({ children }) => children
 let active = ''
 
 export const Tabs = ({
-  activeBackground,
   activeBorders,
   activeContext,
-  background,
   borders,
   context,
   centerTabs,
@@ -83,6 +81,7 @@ export const Tabs = ({
   rightTabIcon,
   handleChange,
   onTabChange,
+  size,
   scrollToActiveTab
 }) => {
   const router = useRouter()
@@ -91,7 +90,6 @@ export const Tabs = ({
   const [tabPanes, setTabPane] = useState(
     !Array.isArray(children) ? React.Children.toArray(children) : children
   )
-
   // Find active in children if more than one tab or make first active
   if (tabPanes.length > 1) {
     tabPanes.forEach((child, index) => {
@@ -186,65 +184,104 @@ export const Tabs = ({
 
   const handleScrollBack = () => {
     const { current = {} } = wrapperRef
-    current.scrollLeft = current?.scrollLeft - 1000
+    current.scrollLeft = current?.scrollLeft - 500
   }
 
   const handleScrollForward = () => {
     const { current = {} } = wrapperRef
-    current.scrollLeft = current?.scrollLeft + 1000
+    current.scrollLeft = current?.scrollLeft + 500
   }
 
   return (
-    <StyledWrapper isVertical={isVertical}>
-      {overflow && <Button onClick={handleScrollBack}>&lt;</Button>}
-      <StyledTabs
-        centerTabs={centerTabs}
-        className={className}
-        gap={gap}
-        isVertical={isVertical}
-        grabbable={grabbable}
-        activeBorders={activeBorders}
-        borders={borders}
-        ref={wrapperRef}
-      >
-        {tabPanes.map(({ props }, index) => {
-          return (
-            <Tab
-              activeBackground={activeBackground}
-              activeBorders={activeBorders}
-              activeContext={activeContext}
-              rightTabIcon={rightTabIcon}
-              borders={borders}
-              background={background}
-              context={context}
-              defaultContentComponent={defaultContentComponent}
-              activeTab={activeTab}
-              index={index}
-              key={props.label}
-              onClick={!props.disabled && onClickTabItem}
-              scrollToActiveTab={scrollToActiveTab}
-              gap={gap}
-              indicatorSize={indicatorSize}
-              onRemove={handleRemove}
-              {...props}
+    <MainStyledWrapper isVertical={isVertical}>
+      <StyledWrapper isVertical={isVertical}>
+        {overflow && (
+          <Button size={size} outline context="secondary" onClick={handleScrollBack}>
+            &lt;
+          </Button>
+        )}
+        <StyledTabs
+          centerTabs={centerTabs}
+          className={className}
+          gap={gap}
+          isVertical={isVertical}
+          grabbable={grabbable}
+          activeBorders={activeBorders}
+          borders={borders}
+          ref={wrapperRef}
+        >
+          {tabPanes.map(({ props }, index) => {
+            return (
+              <Tab
+                activeBorders={activeBorders}
+                activeContext={activeContext}
+                rightTabIcon={rightTabIcon}
+                borders={borders}
+                context={context}
+                defaultContentComponent={defaultContentComponent}
+                activeTab={activeTab}
+                index={index}
+                key={props.label}
+                onClick={!props.disabled && onClickTabItem}
+                size={size}
+                scrollToActiveTab={scrollToActiveTab}
+                gap={gap}
+                indicatorSize={indicatorSize}
+                onRemove={handleRemove}
+                {...props}
+              />
+            )
+          })}
+        </StyledTabs>
+        {overflow && (
+          <Button outline size={size} context="secondary" onClick={handleScrollForward}>
+            &gt;
+          </Button>
+        )}
+        {overflow && (
+          <Dropdown
+            caret={false}
+            position="right"
+            onChange={({ id, name }) => setActiveTab({ index: id, label: slugify(name) })}
+            items={tabPanes.map(({ props }, index) => ({
+              id: index,
+              name: props.label
+            }))}
+          >
+            <Button
+              startIcon="chevronDown"
+              size={size}
+              startIconProps={{ colour: 'white', iui: true, size: size }}
+              context="secondary"
+              onClick={handleScrollForward}
             />
-          )
-        })}
-      </StyledTabs>
-      {overflow && <Button onClick={handleScrollForward}>&gt;</Button>}
-      {defaultContentComponent && (
-        <Button context="light" onClick={handleAdd}>
-          <Icon icon="plus" iui />
-        </Button>
-      )}
+          </Dropdown>
+        )}
+        {defaultContentComponent && !isVertical && (
+          <Button size={size} context="light" onClick={handleAdd} size={size}>
+            <Icon icon="plus" iui />
+          </Button>
+        )}
+      </StyledWrapper>
       <StyledContent isVertical={isVertical}>
         {renderTabContent(defaultContentComponent)}
       </StyledContent>
-    </StyledWrapper>
+    </MainStyledWrapper>
   )
 }
-
+const MainStyledWrapper = styled.div`
+  ${({ isVertical }) =>
+    isVertical &&
+    css`
+      display: flex;
+      flex: 1;
+      overflow-y: scroll;
+      justify-content: space-between;
+    `}
+`
 const StyledContent = styled.div`
+  display: block;
+
   ${({ isVertical }) =>
     isVertical &&
     css`
@@ -253,16 +290,11 @@ const StyledContent = styled.div`
 `
 
 const StyledWrapper = styled.div`
-  ${({ isVertical }) =>
-    isVertical &&
-    css`
-      display: flex;
-      overflow-y: scroll;
-      justify-content: space-between;
-    `}
+  display: flex;
 `
 
 const StyledTabs = styled.ol`
+  scroll-behavior: smooth;
   border-bottom: 1px solid ${({ theme }) => theme.TABS.borderColour};
   display: flex;
   ${({ isVertical }) =>
@@ -309,10 +341,8 @@ const StyledTabs = styled.ol`
 `
 
 Tabs.propTypes = {
-  activeBackground: string,
   activeBorders: object,
   activeContext: string,
-  background: string,
   borders: object,
   centerTabs: bool,
   children: oneOfType([array, object]).isRequired,
@@ -324,12 +354,12 @@ Tabs.propTypes = {
   handleChange: bool,
   indicatorSize: number,
   icon: string,
-  scrollToActiveTab: bool
+  size: string,
+  scrollToActiveTab: bool,
+  rightTabIcon: string
 }
 
 Tabs.defaultProps = {
-  activeBackground: undefined,
-  background: undefined,
   centerTabs: false,
   gap: 0,
   grabbable: true,
@@ -337,5 +367,7 @@ Tabs.defaultProps = {
   grabTimeout: 100,
   handleChange: true,
   indicatorSize: 1,
-  scrollToActiveTab: true
+  size: 'md',
+  scrollToActiveTab: true,
+  rightTabIcon: 'times-circle'
 }

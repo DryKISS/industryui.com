@@ -31,9 +31,14 @@ export default {
 }
 
 const renderTab = (index, activeTab) => (
-  <div active={index === activeTab} key={index} label={`Tab ${index + 1}`}>
+  <TabItem
+    borders={{ top: 2, left: 2, bottom: 2, right: 2 }}
+    active={index === activeTab}
+    key={index}
+    label={`Tab ${index + 1}`}
+  >
     {`Tab ${index + 1} Content`}
-  </div>
+  </TabItem>
 )
 
 const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</Tabs>
@@ -57,11 +62,31 @@ export const main = (args) => {
   )
 }
 
+export const tabSize = (args) => {
+  return (
+    <BaseComponent {...args} size="lg">
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user">
+        Tab 1 Content
+      </TabItem>
+      <TabItem disabled label="Disabled" icon={'coffee'}>
+        Tab 2 Disabled
+      </TabItem>
+      <TabItem active label="Tab 3" icon="check">
+        Tab 3
+      </TabItem>
+      <TabItem context="danger" label="Tab 4" icon="trash">
+        Tab 4
+      </TabItem>
+    </BaseComponent>
+  )
+}
+
 export const dynamicTab = (args) => {
   return (
     <BaseComponent
       {...args}
-      rightTabIcon="times"
+      size="lg"
+      rightTabIcon="times-circle"
       defaultContentComponent={() => <div>Hello this is Default</div>}
     >
       <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user" active>
@@ -76,7 +101,12 @@ export const dynamicTab = (args) => {
 
 export const verticalTab = (args) => {
   return (
-    <BaseComponent {...args} isVertical={true} rightTabIcon="times">
+    <BaseComponent
+      {...args}
+      isVertical={true}
+      rightTabIcon="times"
+      borders={{ left: 1, right: 1, bottom: 1, top: 1 }}
+    >
       <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user" active>
         Tab 1 Content
       </TabItem>
@@ -96,10 +126,10 @@ export const verticalTab = (args) => {
   )
 }
 
-export const tabComponent = (args) => {
+export const renderTabComponent = (args) => {
   return (
     <BaseComponent
-      rightTabIcon="times"
+      rightTabIcon="times-circle"
       {...args}
       defaultContentComponent={() => <div>defaultContentComponent</div>}
     >
@@ -128,14 +158,14 @@ export const tabComponent = (args) => {
   )
 }
 
-export const myDesign = (args) => {
+export const customBorder = (args) => {
   return (
     <BaseComponent
       {...args}
       gap={2}
       context="borderColour"
       activeContext={'borderColour'}
-      rightTabIcon="times"
+      rightTabIcon="times-circle"
       borders={{ top: 1, left: 1, right: 1, bottom: 1 }}
       activeBorders={{ top: 1, left: 1, right: 1, bottom: 2 }}
       defaultContentComponent={() => <div>sss</div>}
@@ -184,7 +214,7 @@ export const change = (args) => {
 
 export const initialScrollToActiveTab = (args) => (
   <BaseComponent {...args}>
-    {Array(25)
+    {Array(100)
       .fill('')
       .map((_, idx) => renderTab(idx, 23))}
   </BaseComponent>

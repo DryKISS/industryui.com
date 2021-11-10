@@ -12,7 +12,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import slugify from '../../utils/slugify/slugify'
-
+import THEME_SIZE from '../../constants/size'
 const Tab = ({
   activeTab,
   activeBackground,
@@ -35,6 +35,7 @@ const Tab = ({
   label,
   onClick,
   onRemove,
+  size,
   scrollToActiveTab
 }) => {
   const tabRef = useRef(null)
@@ -69,15 +70,14 @@ const Tab = ({
       active={isActive}
       context={context}
       {...data}
-      activeBackground={activeBackground}
       activeBorders={activeBorders}
       borders={borders}
-      background={background}
       disabled={disabled}
       indicatorSize={indicatorSize}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
       gap={gap}
+      size={size}
     >
       <Icon icon={leftTabIcon} />
       <div>{renderTab ? renderTab() : label}</div>
@@ -85,10 +85,28 @@ const Tab = ({
     </StyledTab>
   )
 }
-
+const renderTabSize = (size) => {
+  switch (size) {
+    case THEME_SIZE.LG:
+      return css`
+        height: 48px !important;
+        padding: 13px 16px 13px 16px !important; ;
+      `
+    case THEME_SIZE.MD:
+      return css`
+        height: 38px !important;
+        padding: 8px 16px 8px 16px !important; ;
+      `
+    case THEME_SIZE.SM:
+      return css`
+        height: 32px !important;
+        padding: 5px 16px 5px 16px !important; ;
+      `
+  }
+}
 const StyledTab = styled.li`
-  ${({ borders, context, theme, gap, background }) => css`
-    background-color: ${background || theme.TABS.colour};
+  ${({ borders, context, gap, size, theme }) => css`
+    background-color: ${theme.TABS.colour};
     border-left: ${borders?.left || '0'}px solid
       ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
     border-bottom: ${borders?.bottom || '0'}px solid
@@ -103,10 +121,12 @@ const StyledTab = styled.li`
     `}
   `}
 
-  ${({ active, activeBorders, activeContext, activeBackground, context, indicatorSize, theme }) =>
+  ${({ size }) => renderTabSize(size)}
+
+  ${({ active, activeBorders, activeContext, context, indicatorSize, theme }) =>
     active &&
     css`
-      background-color: ${activeBackground || theme.TABS.activeColour};
+      background-color: ${theme.TABS.activeColour};
 
       border-top: ${activeBorders?.top || '0'}px solid
         ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
@@ -174,7 +194,6 @@ const StyledTab = styled.li`
     flex: 1;
     display: block;
     align-self: center;
-    margin-bottom: 5px;
   }
 
   > div {
@@ -183,8 +202,8 @@ const StyledTab = styled.li`
 `
 
 Tab.propTypes = {
-  background: string,
   activeTab: string.isRequired,
+  borders: object,
   childClick: func,
   context: oneOfType([bool, string]),
   data: object,
@@ -192,10 +211,12 @@ Tab.propTypes = {
   index: number,
   label: string.isRequired,
   onClick: oneOfType([bool, func]).isRequired,
-  scrollToActiveTab: bool
+  scrollToActiveTab: bool,
+  rightTabIcon: string
 }
 
 Tab.defaultProps = {
+  borders: {},
   context: false,
   scrollToActiveTab: true
 }
