@@ -143,10 +143,9 @@ export const Tabs = ({
 
   const renderTabContent = (defaultContentComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
-      const currentLabel = slugify(child?.props?.label)
       const { children: item } = tabPanes[index]?.props
       return (
-        activeTab.label === currentLabel && (
+        activeTab.index === index && (
           <>{defaultContentComponent ? defaultContentComponent() : item}</>
         )
       )
@@ -154,8 +153,8 @@ export const Tabs = ({
   }
 
   const handleAdd = () => {
-    const nextChild = parseInt(activeTab.index) + 10
-    const newTabTitle = `Tab  ${nextChild}`
+    const nextChild = tabPanes.length
+    const newTabTitle = 'New Tab'
     const data = (
       <TabItem label={newTabTitle} active={true} rightTabIcon={rightTabIcon}>
         {newTabTitle}
@@ -167,10 +166,10 @@ export const Tabs = ({
   }
   const handleRemove = (index) => {
     if (tabPanes.length > 1) {
-      const newIndex = index - 1
+      const newIndex = tabPanes.length - 2 < 0 ? 0 : tabPanes.length - 2
       setActiveTab(
         Object.assign(activeTab, {
-          index: newIndex < 0 ? 0 : newIndex,
+          index: newIndex,
           label: slugify(tabPanes[newIndex]?.props?.label)
         })
       )

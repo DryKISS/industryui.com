@@ -40,7 +40,7 @@ const Tab = ({
 }) => {
   const tabRef = useRef(null)
   const labelSlug = slugify(label)
-  const isActive = activeTab.label === labelSlug
+  const isActive = activeTab.index === index
 
   useEffect(() => {
     if (scrollToActiveTab && tabRef.current) {
@@ -197,7 +197,8 @@ const StyledTab = styled.li`
   }
 
   > div {
-    flex: 2;
+    flex: 3;
+    padding: 0px 5px;
   }
 `
 

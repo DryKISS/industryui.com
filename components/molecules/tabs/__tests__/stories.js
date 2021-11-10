@@ -8,6 +8,8 @@ import React from 'react'
 // UI
 import Space from '../../../atoms/space/space'
 import { Tabs, TabItem } from '../tabs'
+import Icon from '../../../atoms/icon/icon/icon'
+import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 export default {
@@ -85,7 +87,7 @@ export const dynamicTab = (args) => {
   return (
     <BaseComponent
       {...args}
-      size="md"
+      size="lg"
       rightTabIcon="times-circle"
       defaultContentComponent={() => <div>Hello this is Default</div>}
     >
@@ -140,7 +142,7 @@ export const renderTabComponent = (args) => {
         leftTabIcon="user"
         active
       >
-        Tab 1 Content
+        <div>Hello</div>
       </TabItem>
       <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 2" leftTabIcon="user">
         Tab 333 Content
@@ -166,8 +168,8 @@ export const customBorder = (args) => {
       context="borderColour"
       activeContext={'borderColour'}
       rightTabIcon="times-circle"
-      borders={{ top: 1, left: 1, right: 1, bottom: 1 }}
-      activeBorders={{ top: 1, left: 1, right: 1, bottom: 2 }}
+      borders={{ top: 2, left: 2, right: 1, bottom: 4 }}
+      activeBorders={{ top: 4, left: 1, right: 1, bottom: 2 }}
       defaultContentComponent={() => <div>sss</div>}
       handleChange={false}
     >
@@ -177,13 +179,17 @@ export const customBorder = (args) => {
       <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" leftTabIcon="user">
         Tab 333 Content
       </TabItem>
+      <TabItem context="danger" label="Tab 4">
+        <Icon icon="user" />
+        <Text>Tab 4</Text>
+      </TabItem>
     </BaseComponent>
   )
 }
 export const single = (args) => (
   <BaseComponent {...args}>
     <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1">
-      Content first
+      <div>Hello</div>
     </TabItem>
   </BaseComponent>
 )
@@ -213,7 +219,7 @@ export const change = (args) => {
 }
 
 export const initialScrollToActiveTab = (args) => (
-  <BaseComponent {...args}>
+  <BaseComponent {...args} size="sm">
     {Array(100)
       .fill('')
       .map((_, idx) => renderTab(idx, 23))}
