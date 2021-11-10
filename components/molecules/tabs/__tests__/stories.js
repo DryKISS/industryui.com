@@ -46,16 +46,16 @@ const BaseComponent = ({ children, ...props }) => <Tabs {...props}>{children}</T
 export const main = (args) => {
   return (
     <BaseComponent {...args}>
-      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user">
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user">
         Tab 1 Content
       </TabItem>
-      <TabItem disabled label="Disabled" icon={'coffee'}>
+      <TabItem disabled label="Disabled" leftTabIcon={'coffee'}>
         Tab 2 Disabled
       </TabItem>
-      <TabItem active label="Tab 3" icon="check">
+      <TabItem active label="Tab 3" leftTabIcon="check">
         Tab 3
       </TabItem>
-      <TabItem context="danger" label="Tab 4" icon="trash">
+      <TabItem context="danger" label="Tab 4" leftTabIcon="trash">
         Tab 4
       </TabItem>
     </BaseComponent>
@@ -64,17 +64,17 @@ export const main = (args) => {
 
 export const tabSize = (args) => {
   return (
-    <BaseComponent {...args} size="lg">
-      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user">
+    <BaseComponent {...args} size="md">
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user">
         Tab 1 Content
       </TabItem>
-      <TabItem disabled label="Disabled" icon={'coffee'}>
+      <TabItem disabled label="Disabled" leftTabIcon={'coffee'}>
         Tab 2 Disabled
       </TabItem>
-      <TabItem active label="Tab 3" icon="check">
+      <TabItem active label="Tab 3" leftTabIcon="check">
         Tab 3
       </TabItem>
-      <TabItem context="danger" label="Tab 4" icon="trash">
+      <TabItem context="danger" label="Tab 4" leftTabIcon="trash">
         Tab 4
       </TabItem>
     </BaseComponent>
@@ -85,14 +85,14 @@ export const dynamicTab = (args) => {
   return (
     <BaseComponent
       {...args}
-      size="lg"
+      size="md"
       rightTabIcon="times-circle"
       defaultContentComponent={() => <div>Hello this is Default</div>}
     >
-      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" icon="user" active>
+      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user" active>
         Tab 1 Content
       </TabItem>
-      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" icon="user">
+      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" leftTabIcon="user">
         Tab 333 Content
       </TabItem>
     </BaseComponent>
