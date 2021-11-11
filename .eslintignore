@@ -7,6 +7,5 @@ storybook-static
 
 .cache
 .github
-.jest
 .storybook
 .vscode

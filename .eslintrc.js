@@ -3,8 +3,7 @@ module.exports = {
   extends: ['standard', 'standard-react', 'prettier'],
   env: {
     browser: true,
-    es6: true,
-    jest: true
+    es6: true
   },
   settings: {
     react: {

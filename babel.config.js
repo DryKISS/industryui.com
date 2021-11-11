@@ -33,7 +33,7 @@ module.exports = {
           }
         ]
       ],
-      ignore: ['**/__tests__', '**/__mocks__', '**/Storyshots.test.js']
+      ignore: ['**/__tests__', '**/__mocks__']
     }
   }
 }
