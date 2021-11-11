@@ -61,7 +61,6 @@ export { default as getUserFromToken } from './utils/auth/getUserFromToken'
 export { default as hashPassword } from './utils/auth/hashPassword'
 export { default as historyPush } from './utils/url/historyPush'
 export { default as postCodeParse } from './utils/validator/postCode/parse'
-export { default as shortDate } from './utils/dateFns/shortDate'
 export { default as slugify } from './utils/slugify/slugify'
 export { default as validatePassword } from './utils/auth/validatePassword'
 export { default as validateToken } from './utils/auth/validateToken'
@@ -173,8 +172,7 @@ export { default as VoiceRecorder } from './molecules/voiceRecorder/voiceRecorde
 
 // Organisms
 export { default as Bar } from './organisms/bar/bar'
-export { default as BigCalendar } from './organisms/calendar/bigCalendar/bigCalendar'
-export { default as Calendar } from './organisms/calendar/fullCalendar/fullCalendar'
+export { default as Calendar } from './organisms/calendar/Calendar'
 export { default as ColourPicker } from './organisms/colourPicker/colourPicker'
 export { default as DraftJs } from './organisms/editor/draftJs/draftJs'
 export { default as EmailChange } from './organisms/emailChange/emailChange'
