@@ -4,21 +4,24 @@
 
 // React
 import React, { useEffect, useState } from 'react'
-import { array, func, string, oneOf } from 'prop-types'
+import { array, func, oneOf, string } from 'prop-types'
 
 // UI
+import Pagination from '../../../molecules/pagination/pagination'
+import ScheduleToolbar from './helper/scheduleToolbar'
 import Space from '../../../atoms/space/space'
 import Table from '../../../molecules/table/table'
-import Pagination from '../../../molecules/pagination/pagination'
 
-import { columns, ScheduleToolbar } from './columnHelper'
-import { prepareHiddenColumn, prepareScheduleRows, generateFilterDate } from './helper'
+import columns from './helper/columns'
+import generateFilterDate from './helper/generateFilterDate'
+import prepareHiddenColumn from './helper/prepareHiddenColumn'
+import prepareScheduleRows from './helper/prepareScheduleRows'
 
 const DATE_TYPE = {
-  YEAR: 'year',
+  DAY: 'day',
   MONTH: 'month',
-  WEEK: 'week',
-  DAY: 'day'
+  YEAR: 'year',
+  WEEK: 'week'
 }
 
 const Schedule = ({
@@ -26,16 +29,16 @@ const Schedule = ({
   dataSource,
   events,
   eventTimeSplitting,
-  flag,
-  hiddenColumn,
   initialMode,
-  title,
-  yearRange,
-  onYearChange,
-  onTitleFormatter,
+  hiddenColumn,
   handleFetchData,
   handleClick,
-  handleRowClick
+  handleRowClick,
+  flag,
+  onYearChange,
+  onTitleFormatter,
+  title,
+  yearRange
 }) => {
   const [mode, setMode] = useState('year')
   const [currentDate, setCurrentDate] = useState(new Date().toISOString())
@@ -60,9 +63,9 @@ const Schedule = ({
     currentDataSource,
     events,
     hiddenColumn: prepareHiddenColumn(hiddenColumn),
-    setCurrentDate,
     mode,
-    onTitleFormatter
+    onTitleFormatter,
+    setCurrentDate
   })
 
   const prepareData = prepareScheduleRows(mode, {
@@ -70,8 +73,8 @@ const Schedule = ({
     currentDate,
     events,
     eventTimeSplitting,
-    generateColumn,
     flag,
+    generateColumn,
     title
   })
 
@@ -103,16 +106,16 @@ const Schedule = ({
 }
 
 Schedule.propTypes = {
+  dataSource: array,
   events: string,
   eventTimeSplitting: string,
   flag: string,
-  initialMode: oneOf(Object.values(DATE_TYPE)),
-  dataSource: array,
-  title: string,
   handleFetchData: func,
   handleClick: func,
   handleRowClick: func,
-  hiddenColumn: array
+  hiddenColumn: array,
+  initialMode: oneOf(Object.values(DATE_TYPE)),
+  title: string
 }
 
 export default Schedule

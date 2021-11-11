@@ -1,3 +1,10 @@
+/**
+ * Column
+ */
+
+// React
+import React from 'react'
+import styled from 'styled-components'
 import {
   endOfMonth,
   endOfDay,
@@ -8,33 +15,22 @@ import {
   setMonth,
   setDay
 } from 'date-fns'
-import React from 'react'
-import styled from 'styled-components'
-// UI
-import Button from '../../../atoms/button/button/button'
-import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
-import Row from '../../../atoms/grid/Row'
-import Space from '../../../atoms/space/space'
-import Tooltip from '../../../atoms/tooltip/tooltip'
-
-// Style
-import THEME_ALIGN from '../../../constants/align'
-import THEME_SIZE from '../../../constants/size'
-
-import { ColumnPagination } from './helper'
-
-const columnPattern = {
-  year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  month: ['Week1', 'Week2', 'Week3', 'Week4'],
-  week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-  day: [...Array(12).keys()]
-}
+// IUI
+import ColumnPagination from './columnPagination'
+import Tooltip from '../../../../atoms/tooltip/tooltip'
 
 const DATE_TYPE = {
-  YEAR: 'year',
+  DAY: 'day',
   MONTH: 'month',
-  WEEK: 'week',
-  DAY: 'day'
+  YEAR: 'year',
+  WEEK: 'week'
+}
+
+const columnPattern = {
+  day: [...Array(12).keys()],
+  month: ['Week1', 'Week2', 'Week3', 'Week4'],
+  year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 }
 
 const formatCell = (handleClick, month, row, otherData) => {
@@ -67,7 +63,7 @@ const formatCell = (handleClick, month, row, otherData) => {
   )
 }
 
-export const columns = (handleClick, options) => {
+export default (handleClick, options) => {
   const {
     mode = DATE_TYPE.MONTH,
     setCurrentDate,
@@ -140,48 +136,6 @@ export const columns = (handleClick, options) => {
   })
 
   return result
-}
-
-const args = {
-  align: THEME_ALIGN.Start,
-  size: THEME_SIZE.MD
-}
-
-const isActiveMenu = (currentMode, mode) => (currentMode === mode ? 'primary' : 'secondary')
-
-export const ScheduleToolbar = ({ mode, setMode }) => {
-  return (
-    <Row justify={'end'}>
-      <Space marginRight="sm" marginBottom="sm">
-        <ButtonToolbar {...args}>
-          <Button
-            content="Year"
-            size="sm"
-            context={isActiveMenu(DATE_TYPE.YEAR, mode)}
-            onClick={() => setMode(DATE_TYPE.YEAR)}
-          />
-          <Button
-            content="Month"
-            size="sm"
-            context={isActiveMenu(DATE_TYPE.MONTH, mode)}
-            onClick={() => setMode(DATE_TYPE.MONTH)}
-          />
-          <Button
-            content="Week"
-            size="sm"
-            context={isActiveMenu(DATE_TYPE.WEEK, mode)}
-            onClick={() => setMode(DATE_TYPE.WEEK)}
-          />
-          <Button
-            content="Day"
-            size="sm"
-            context={isActiveMenu(DATE_TYPE.DAY, mode)}
-            onClick={() => setMode(DATE_TYPE.DAY)}
-          />
-        </ButtonToolbar>
-      </Space>
-    </Row>
-  )
 }
 
 const Wrapper = styled.div`
