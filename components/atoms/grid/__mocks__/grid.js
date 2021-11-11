@@ -8,12 +8,14 @@ import React from 'react'
 // UI
 import Column from '../Column'
 
-export const colStyle = {
+const colStyle = {
   border: '1px gray solid'
 }
 
-export const StyledColumn = (props) => (
+const StyledColumn = (props) => (
   <Column {...props} style={colStyle}>
     {props.children}
   </Column>
 )
+
+export default StyledColumn

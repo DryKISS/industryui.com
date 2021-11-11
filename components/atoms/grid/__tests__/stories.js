@@ -10,7 +10,7 @@ import Container from '../Container'
 import Row from '../Row'
 
 import Readme from '../README.md'
-import { StyledColumn } from '../__mocks__/grid'
+import StyledColumn from '../__mocks__/grid'
 
 export default {
   parameters: {

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // UI
-import { Container as Component } from '../Container'
+import Component from '../Container'
 import Readme from '../README.md'
 
 export default {

@@ -6,9 +6,9 @@
 import React from 'react'
 
 // UI
-import { Row as Component } from '../Row'
+import Component from '../Row'
 import Readme from '../README.md'
-import { StyledColumn } from '../__mocks__/grid'
+import StyledColumn from '../__mocks__/grid'
 
 export default {
   component: Component,
