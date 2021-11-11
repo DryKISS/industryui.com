@@ -1,5 +1,5 @@
 /**
- * Atoms - Grid - Mocks
+ * Components - Atoms - Grid - Mocks
  */
 
 // React

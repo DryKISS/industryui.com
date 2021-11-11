@@ -1,5 +1,5 @@
 /**
- * Atoms - Grid - Container - Story
+ * Components - Atoms - Grid - Container - Story
  */
 
 // React
@@ -8,10 +8,6 @@ import React from 'react'
 // UI
 import Container from '../Container'
 import Readme from '../README.md'
-
-const debug = {
-  border: '1px solid black'
-}
 
 export default {
   component: Container,
@@ -25,8 +21,13 @@ export default {
   title: 'Atoms/Grid/Container'
 }
 
-export const container = (args) => (
-  <Container {...args} style={debug}>
+export const Main = (args) => (
+  <Container
+    {...args}
+    style={{
+      border: '1px solid black'
+    }}
+  >
     Container
   </Container>
 )
