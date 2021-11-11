@@ -1,7 +1,6 @@
 /**
- * Schedule Toolbar
+ * Components - Molecules - Charts - Schedule - Helper - Schedule Toolbar
  */
-
 // React
 import React from 'react'
 
@@ -14,13 +13,7 @@ import Button from '../../../../atoms/button/button/button'
 import ButtonToolbar from '../../../../atoms/button/toolbar/toolbar'
 import Row from '../../../../atoms/grid/Row'
 import Space from '../../../../atoms/space/space'
-
-const DATE_TYPE = {
-  YEAR: 'year',
-  MONTH: 'month',
-  WEEK: 'week',
-  DAY: 'day'
-}
+import DATE_TYPE from '../../../../constants/dateType'
 
 const args = {
   align: THEME_ALIGN.Start,

@@ -1,3 +1,8 @@
+/**
+ * Components - Molecules - Charts - Schedule - Helper - Filter Date Criteria
+ */
+
+// Date FNS
 import { getWeek, getDate } from 'date-fns'
 
 export default (type, timingStart) => {

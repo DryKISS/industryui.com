@@ -6,23 +6,18 @@
 import React, { useEffect, useState } from 'react'
 import { array, func, oneOf, string } from 'prop-types'
 
+// Constant
+import DATE_TYPE from '../../../constants/dateType'
+
 // UI
 import Pagination from '../../../molecules/pagination/pagination'
 import ScheduleToolbar from './helper/scheduleToolbar'
 import Space from '../../../atoms/space/space'
 import Table from '../../../molecules/table/table'
-
 import columns from './helper/columns'
 import generateFilterDate from './helper/generateFilterDate'
 import prepareHiddenColumn from './helper/prepareHiddenColumn'
 import prepareScheduleRows from './helper/prepareScheduleRows'
-
-const DATE_TYPE = {
-  DAY: 'day',
-  MONTH: 'month',
-  YEAR: 'year',
-  WEEK: 'week'
-}
 
 const Schedule = ({
   currentYear,

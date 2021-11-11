@@ -1,7 +1,14 @@
-import { groupBy } from 'lodash'
-import { daysToWeeks, format } from 'date-fns'
+/**
+ * Components - Molecules - Charts - Schedule - Helper - Prepare Schedule Rows
+ */
 
+// Lodash
+import { groupBy } from 'lodash'
+// Date FNS
+import { daysToWeeks, format } from 'date-fns'
+// UI
 import camelCase from '../../../../utils/camelCase/camelCase'
+
 const generateDate = (type, arr) => {
   switch (type) {
     case 'day':

@@ -1,10 +1,14 @@
 /**
- * Column
+ * Components - Molecules - Charts - Schedule - Helper - Columns
  */
 
 // React
 import React from 'react'
+
+// Style
 import styled from 'styled-components'
+
+// Date FNS
 import {
   endOfMonth,
   endOfDay,
@@ -15,48 +19,39 @@ import {
   setMonth,
   setDay
 } from 'date-fns'
-// IUI
+
+// UI
 import ColumnPagination from './columnPagination'
 import Tooltip from '../../../../atoms/tooltip/tooltip'
+import DATE_TYPE from '../../../../constants/dateType'
 
-const DATE_TYPE = {
-  DAY: 'day',
-  MONTH: 'month',
-  YEAR: 'year',
-  WEEK: 'week'
-}
-
-const columnPattern = {
+const COLUMN_PATTERN = {
   day: [...Array(12).keys()],
   month: ['Week1', 'Week2', 'Week3', 'Week4'],
   year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 }
 
+const CellWrapper = ({ month, row, handleClick, otherData }) => (
+  <Wrapper
+    context={row[month][1] ? row[month][1] : 'light'}
+    count={row[month][0] || row[month]}
+    onClick={(e) =>
+      (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row }, otherData)
+    }
+  >
+    {row[month][0] ? row[month][0] : row[month]}
+  </Wrapper>
+)
+
 const formatCell = (handleClick, month, row, otherData) => {
   return row[month] && row[month][0] ? (
     row[month][2] ? (
       <Tooltip content={row[month][2]}>
-        <Wrapper
-          context={row[month][1] ? row[month][1] : 'light'}
-          count={row[month][0] || row[month]}
-          onClick={(e) =>
-            (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row }, otherData)
-          }
-        >
-          {row[month][0] ? row[month][0] : row[month]}
-        </Wrapper>
+        <CellWrapper {...{ row, month, otherData, handleClick }} />
       </Tooltip>
     ) : (
-      <Wrapper
-        context={row[month][1] ? row[month][1] : 'light'}
-        count={row[month][0] || row[month]}
-        onClick={(e) =>
-          (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row }, otherData)
-        }
-      >
-        {row[month][0] ? row[month][0] : row[month]}
-      </Wrapper>
+      <CellWrapper {...{ row, month, otherData, handleClick }} />
     )
   ) : (
     '0'
@@ -72,7 +67,10 @@ export default (handleClick, options) => {
     currentDataSource,
     onTitleFormatter
   } = options
-  if (!currentDataSource.length) return []
+
+  if (!currentDataSource.length) {
+    return []
+  }
 
   const data = currentDataSource[0]
   const result = []
@@ -95,7 +93,7 @@ export default (handleClick, options) => {
       case 'year': {
         const year = setMonth(
           new Date(currentDate),
-          columnPattern[mode].findIndex((i) => i.toString().toLowerCase() === key)
+          COLUMN_PATTERN[mode].findIndex((i) => i.toString().toLowerCase() === key)
         )
         return { startDate: startOfMonth(year), endDate: endOfMonth(year) }
       }
@@ -122,7 +120,7 @@ export default (handleClick, options) => {
     }
   }
 
-  columnPattern[mode].forEach((item, i) => {
+  COLUMN_PATTERN[mode].forEach((item, i) => {
     const text = mode === DATE_TYPE.DAY ? item + 1 : item
     const key = String(text).toLowerCase()
     result.push({

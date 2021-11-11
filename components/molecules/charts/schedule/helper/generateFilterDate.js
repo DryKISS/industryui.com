@@ -1,3 +1,8 @@
+/**
+ * Components - Molecules - Charts - Schedule - Helper - Generate Filter Date
+ */
+
+// Date FNS
 import {
   endOfYear,
   endOfWeek,

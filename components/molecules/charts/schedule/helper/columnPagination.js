@@ -1,5 +1,5 @@
 /**
- * Column Pagination
+ * Components - Molecules - Charts - Schedule - Helper - Column Pagination
  */
 
 // React
