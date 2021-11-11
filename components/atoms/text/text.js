@@ -9,7 +9,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import MEDIA_QUERY from '../../utils/mediaQuery/query'
 import SPACER from '../../utils/spacer/spacer'
 import themeDisplay from '../../utils/display/display'
 

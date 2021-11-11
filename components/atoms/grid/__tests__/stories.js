@@ -23,7 +23,7 @@ export default {
   title: 'Atoms/Grid'
 }
 
-export const main = () => (
+export const Main = () => (
   <Container>
     <Row>
       <StyledColumn>11</StyledColumn>
@@ -40,7 +40,7 @@ export const main = () => (
   </Container>
 )
 
-export const scaledColumns = () => (
+export const ScaledColumns = () => (
   <Container>
     <Row>
       <StyledColumn md={3} lg={6} xl={9}>
@@ -53,7 +53,7 @@ export const scaledColumns = () => (
   </Container>
 )
 
-export const offsets = () => (
+export const Offsets = () => (
   <Container>
     <Row>
       <StyledColumn md={4}>md=4</StyledColumn>

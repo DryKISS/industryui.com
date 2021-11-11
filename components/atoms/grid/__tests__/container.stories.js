@@ -6,11 +6,11 @@
 import React from 'react'
 
 // UI
-import Container from '../Container'
+import { Container as Component } from '../Container'
 import Readme from '../README.md'
 
 export default {
-  component: Container,
+  component: Component,
   parameters: {
     docs: {
       description: {
@@ -18,10 +18,10 @@ export default {
       }
     }
   },
-  title: 'Atoms/Grid/Container'
+  title: 'Atoms/Grid'
 }
 
-export const Main = (args) => (
+export const Container = (args) => (
   <Container
     {...args}
     style={{

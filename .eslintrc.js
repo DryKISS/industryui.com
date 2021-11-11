@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: ['standard', 'standard-react', 'prettier'],
+  extends: ['prettier-standard'],
   env: {
     browser: true,
     es6: true
@@ -21,14 +21,19 @@ module.exports = {
   rules: {
     'prettier/prettier': [
       1,
-      { printWidth: 100, semi: false, singleQuote: true, trailingComma: 'none', endOfLine: 'auto' }
+      {
+        endOfLine: 'auto',
+        printWidth: 100,
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }
     ],
     'max-len': [
       'error',
       {
-        // Ignore SVGs d=
-        ignorePattern: 'd="([\\s\\S]*?)"|data:image|^export [^,]+ from|^import [^,]+ from',
         code: 100,
+        ignorePattern: 'd="([\\s\\S]*?)"|data:image|^export [^,]+ from|^import [^,]+ from',
         tabWidth: 2
       }
     ],
