@@ -90,14 +90,14 @@ export const dynamicTab = (args) => {
       size="lg"
       rightTabIcon="times-circle"
       defaultContentComponent={() => <div>Hello this is Default</div>}
-    >
-      <TabItem data={{ 'data-cy': 'tab1' }} label="Tab 1" leftTabIcon="user" active>
-        Tab 1 Content
-      </TabItem>
-      <TabItem data={{ 'data-cy': 'tab33' }} label="Tab 122" leftTabIcon="user">
-        Tab 333 Content
-      </TabItem>
-    </BaseComponent>
+      initialTabs={[
+        {
+          label: 'Tab 1',
+          options: { leftTabIcon: 'user', active: true, component: () => <div>Content 1</div> }
+        },
+        { label: 'Tab 2', options: { leftTabIcon: 'user', component: () => <div>Content 2</div> } }
+      ]}
+    />
   )
 }
 

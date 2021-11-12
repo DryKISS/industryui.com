@@ -11,8 +11,9 @@ import { bool, func, number, object, oneOfType, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import slugify from '../../utils/slugify/slugify'
+
 import THEME_SIZE from '../../constants/size'
+
 const Tab = ({
   activeTab,
   activeBackground,
@@ -30,7 +31,9 @@ const Tab = ({
   defaultContentComponent,
   renderTab,
   gap,
+  key,
   index,
+  tabKey,
   indicatorSize,
   label,
   onClick,
@@ -39,8 +42,8 @@ const Tab = ({
   scrollToActiveTab
 }) => {
   const tabRef = useRef(null)
-  const labelSlug = slugify(label)
-  const isActive = activeTab.index === index
+
+  const isActive = activeTab.key === tabKey
 
   useEffect(() => {
     if (scrollToActiveTab && tabRef.current) {
@@ -56,13 +59,13 @@ const Tab = ({
       return
     }
 
-    onClick && onClick({ index: index, label: labelSlug })
+    onClick && onClick({ key: tabKey, label })
     childClick && childClick()
   }
 
   // If no data then default to Cypress ID
   if (!data) {
-    data = { 'data-cy': `${labelSlug}Tab` }
+    data = { 'data-cy': `${label}Tab` }
   }
 
   return (
@@ -81,7 +84,7 @@ const Tab = ({
     >
       <Icon icon={leftTabIcon} />
       <div>{renderTab ? renderTab() : label}</div>
-      {defaultContentComponent && <Icon icon={rightTabIcon} onClick={() => onRemove(index)} />}
+      {defaultContentComponent && <Icon icon={rightTabIcon} onClick={(e) => onRemove(e, index)} />}
     </StyledTab>
   )
 }

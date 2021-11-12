@@ -13,11 +13,27 @@ import Router, { useRouter } from 'next/router'
 import styled, { css } from 'styled-components'
 
 // UI
-import slugify from '../../utils/slugify/slugify'
 import Tab from './tab'
+
 import Dropdown from '../../molecules/dropdown/dropdown'
 import Button from '../../atoms/button/button/button'
 import Icon from '../../atoms/icon/icon/icon'
+
+const uniqueid = () => {
+  // always start with a letter (for DOM friendliness)
+  let idstr = String.fromCharCode(Math.floor(Math.random() * 25 + 65))
+  do {
+    // between numbers and characters (48 is 0 and 90 is Z (42-48 = 90)
+    const ascicode = Math.floor(Math.random() * 42 + 48)
+    if (ascicode < 58 || ascicode > 64) {
+      // exclude all chars between : (58) and @ (64)
+      idstr += String.fromCharCode(ascicode)
+    }
+  } while (idstr.length < 32)
+
+  return idstr
+}
+
 const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
   const slider = el
   let clickTime
@@ -59,6 +75,21 @@ const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
 
 export const TabItem = ({ children }) => children
 
+const initializeTab = (initialTabs, children) => {
+  if (initialTabs?.length > 0) {
+    return initialTabs.map((item) => (
+      <TabItem key={uniqueid()} label={item.label} {...item.options} />
+    ))
+  } else {
+    // should review
+    return React.Children.toArray(children).map(children, (child) =>
+      React.cloneElement(child, {
+        key: uniqueid()
+      })
+    )
+  }
+}
+
 // Active
 let active = ''
 
@@ -74,6 +105,7 @@ export const Tabs = ({
   component,
   indicatorSize,
   isVertical,
+  initialTabs,
   gap,
   grabbable,
   grabWalkSpeed,
@@ -86,24 +118,36 @@ export const Tabs = ({
 }) => {
   const router = useRouter()
   const wrapperRef = createRef()
+
   const [overflow, setOverflow] = useState(false)
-  const [tabPanes, setTabPane] = useState(
-    !Array.isArray(children) ? React.Children.toArray(children) : children
-  )
+  const [tabPanes, setTabPane] = useState(initializeTab(initialTabs, children))
+
+  useEffect(() => {
+    if (grabbable) {
+      handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
+    }
+  }, [])
+
+  if (!Array.isArray(children)) {
+    children = React.Children.toArray(children)
+  }
+
   // Find active in children if more than one tab or make first active
-  if (tabPanes.length > 1) {
-    tabPanes.forEach((child, index) => {
-      if (child.props.active === true) {
-        active = {
-          index: index,
-          label: slugify(child.props.label)
+  if (tabPanes?.length) {
+    if (tabPanes.length > 1) {
+      tabPanes.forEach((child) => {
+        if (child.props.active === true) {
+          active = {
+            key: child.key,
+            label: child.props.label
+          }
         }
+      })
+    } else {
+      active = {
+        key: tabPanes[0].key,
+        label: tabPanes[0].props.label
       }
-    })
-  } else {
-    active = {
-      index: 0,
-      label: slugify(tabPanes[0].props.label)
     }
   }
 
@@ -115,16 +159,16 @@ export const Tabs = ({
     }
   }, [])
 
-  const onClickTabItem = ({ index, label }) => {
-    const tab = slugify(label)
-    setActiveTab({ index: index, label: tab })
+  // Review it
+  const onClickTabItem = ({ key, label }) => {
+    setActiveTab({ key, label })
 
     if (handleChange) {
-      handleRoute(tab)
+      handleRoute(label)
     }
 
     if (onTabChange) {
-      onTabChange(tab)
+      onTabChange(label)
     }
   }
 
@@ -141,41 +185,59 @@ export const Tabs = ({
     })
   }
 
+  useEffect(() => {
+    const { current = {} } = wrapperRef
+    setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
+  }, [wrapperRef])
+
+  const renderDefaultComponent = (current) => {
+    if (current?.props?.component) {
+      return current.props.component()
+    } else {
+      return defaultContentComponent()
+    }
+  }
   const renderTabContent = (defaultContentComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
       const { children: item } = tabPanes[index]?.props
       return (
-        activeTab.index === index && (
-          <>{defaultContentComponent ? defaultContentComponent() : item}</>
+        activeTab.key === tabPanes[index].key && (
+          <>{defaultContentComponent ? renderDefaultComponent(tabPanes[index]) : item}</>
         )
       )
     })
   }
 
   const handleAdd = () => {
-    const nextChild = tabPanes.length
-    const newTabTitle = 'New Tab'
+    const nextChild = uniqueid()
+    const newTabTitle = `Tab ${tabPanes.length + 1}`
     const data = (
-      <TabItem label={newTabTitle} active={true} rightTabIcon={rightTabIcon}>
+      <TabItem label={newTabTitle} key={nextChild} active={true} rightTabIcon={rightTabIcon}>
         {newTabTitle}
       </TabItem>
     )
 
     setTabPane([...tabPanes, data])
-    setActiveTab({ index: nextChild, label: slugify(newTabTitle) })
+    setActiveTab({ key: nextChild, label: newTabTitle })
   }
-  const handleRemove = (index) => {
+
+  const handleRemove = (e, index) => {
+    e.stopPropagation()
     if (tabPanes.length > 1) {
-      const newIndex = tabPanes.length - 2 < 0 ? 0 : tabPanes.length - 2
+      let newIndex = tabPanes.length - 1
+      if (index === newIndex) newIndex = newIndex - 1 < 0 ? 0 : newIndex - 1
+
       setActiveTab(
         Object.assign(activeTab, {
-          index: newIndex,
-          label: slugify(tabPanes[newIndex]?.props?.label)
+          key: tabPanes[newIndex]?.key,
+          label: tabPanes[newIndex]?.props?.label
         })
       )
+
       setTabPane(tabPanes.filter((_, i) => i !== index))
     }
   }
+
   useEffect(() => {
     const { current = {} } = wrapperRef
     setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
@@ -190,7 +252,7 @@ export const Tabs = ({
     const { current = {} } = wrapperRef
     current.scrollLeft = current?.scrollLeft + 500
   }
-
+  console.log('tabPanes', tabPanes)
   return (
     <MainStyledWrapper isVertical={isVertical}>
       <StyledWrapper isVertical={isVertical}>
@@ -209,28 +271,33 @@ export const Tabs = ({
           borders={borders}
           ref={wrapperRef}
         >
-          {tabPanes.map(({ props }, index) => {
-            return (
-              <Tab
-                activeBorders={activeBorders}
-                activeContext={activeContext}
-                rightTabIcon={rightTabIcon}
-                borders={borders}
-                context={context}
-                defaultContentComponent={defaultContentComponent}
-                activeTab={activeTab}
-                index={index}
-                key={props.label}
-                onClick={!props.disabled && onClickTabItem}
-                size={size}
-                scrollToActiveTab={scrollToActiveTab}
-                gap={gap}
-                indicatorSize={indicatorSize}
-                onRemove={handleRemove}
-                {...props}
-              />
-            )
-          })}
+          {tabPanes.length &&
+            tabPanes?.map(({ key, props, ...rest }, index) => {
+              console.log('rest', rest)
+              console.log('key', key)
+              return (
+                <Tab
+                  activeBorders={activeBorders}
+                  activeContext={activeContext}
+                  rightTabIcon={rightTabIcon}
+                  borders={borders}
+                  context={context}
+                  defaultContentComponent={defaultContentComponent}
+                  activeTab={activeTab}
+                  tabKey={key}
+                  index={index}
+                  key={key}
+                  // key={props.label}
+                  onClick={!props.disabled && onClickTabItem}
+                  size={size}
+                  scrollToActiveTab={scrollToActiveTab}
+                  gap={gap}
+                  indicatorSize={indicatorSize}
+                  onRemove={handleRemove}
+                  {...props}
+                />
+              )
+            })}
         </StyledTabs>
         {overflow && (
           <Button outline size={size} context="secondary" onClick={handleScrollForward}>
@@ -241,7 +308,7 @@ export const Tabs = ({
           <Dropdown
             caret={false}
             position="right"
-            onChange={({ id, name }) => setActiveTab({ index: id, label: slugify(name) })}
+            onChange={({ id, name }) => setActiveTab({ index: id, label: name })}
             items={tabPanes.map(({ props }, index) => ({
               id: index,
               name: props.label
@@ -263,7 +330,7 @@ export const Tabs = ({
         )}
       </StyledWrapper>
       <StyledContent isVertical={isVertical}>
-        {renderTabContent(defaultContentComponent)}
+        {tabPanes.length && renderTabContent(defaultContentComponent)}
       </StyledContent>
     </MainStyledWrapper>
   )
