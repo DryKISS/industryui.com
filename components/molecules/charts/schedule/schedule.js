@@ -63,13 +63,14 @@ const Schedule = ({
     setCurrentDate
   })
 
-  const prepareData = prepareScheduleRows(mode, {
+  const prepareData = prepareScheduleRows({
     currentDataSource,
     currentDate,
     events,
     eventTimeSplitting,
     flag,
     generateColumn,
+    mode,
     title
   })
 

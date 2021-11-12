@@ -1,5 +1,5 @@
 /**
- * DATE TYPE
+ * Component - Constant -  DATE TYPE
  */
 
 const DATE_TYPE = {

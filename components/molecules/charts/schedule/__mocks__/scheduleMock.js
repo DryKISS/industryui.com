@@ -28,7 +28,9 @@ export const EXTERNAL_SCHEDULE_DATA = [
     jobs: [
       { id: 3076, rag: null, timingStart: '2021-06-01T00:00:00+00:00', __typename: 'Job' },
       { id: 3077, rag: null, timingStart: '2021-07-01T00:00:00+00:00', __typename: 'Job' },
-      { id: 3078, rag: null, timingStart: '2021-08-01T00:00:00+00:00', __typename: 'Job' }
+      { id: 3078, rag: null, timingStart: '2021-08-01T00:00:00+00:00', __typename: 'Job' },
+      { id: 3077, rag: null, timingStart: '2021-10-28T00:00:00+00:00', __typename: 'Job' },
+      { id: 3078, rag: null, timingStart: '2021-10-30T00:00:00+00:00', __typename: 'Job' }
     ],
     totalJobs: {
       aggregate: { count: 6, __typename: 'Job_aggregate_fields' },

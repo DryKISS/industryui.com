@@ -1,11 +1,15 @@
 /**
  * Components - Molecules - Charts - Schedule - Helper - Prepare Schedule Rows
  */
+// React
+import { array, string } from 'prop-types'
 
 // Lodash
 import { groupBy } from 'lodash'
+
 // Date FNS
 import { daysToWeeks, format } from 'date-fns'
+
 // UI
 import camelCase from '../../../../utils/camelCase/camelCase'
 
@@ -24,7 +28,7 @@ const generateDate = (type, arr) => {
       return arr
     }
     case 'month': {
-      for (const key of Array(4).keys()) {
+      for (const key of Array(5).keys()) {
         arr[`week${key + 1}`] = 0
       }
       return arr
@@ -103,10 +107,17 @@ const failCount = (Items, flag) => {
   return count ? `${count} Failed items` : ''
 }
 
-export default (mode = 'year', options) => {
+const prepareScheduleRows = ({
+  currentDataSource,
+  events,
+  eventTimeSplitting,
+  generateColumn,
+  flag,
+  mode,
+  title
+}) => {
   let arr = []
 
-  const { currentDataSource, events, generateColumn, eventTimeSplitting, flag, title } = options
   if (!currentDataSource.length) return []
   const result =
     currentDataSource.map((item) => {
@@ -146,3 +157,25 @@ export default (mode = 'year', options) => {
   }
   return result
 }
+
+prepareScheduleRows.propTypes = {
+  currentDataSource: array.isRequired,
+  events: string.isRequired,
+  eventTimeSplitting: string.isRequired,
+  generateColumn: array.isRequired,
+  flag: string,
+  mode: string.isRequired,
+  title: string
+}
+
+prepareScheduleRows.defaultProps = {
+  currentDataSource: [],
+  events: '',
+  eventTimeSplitting: '',
+  generateColumn: [],
+  flag: '',
+  mode: 'year',
+  title: ''
+}
+
+export default prepareScheduleRows

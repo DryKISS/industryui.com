@@ -27,7 +27,7 @@ import DATE_TYPE from '../../../../constants/dateType'
 
 const COLUMN_PATTERN = {
   day: [...Array(12).keys()],
-  month: ['Week1', 'Week2', 'Week3', 'Week4'],
+  month: ['Week1', 'Week2', 'Week3', 'Week4', 'Week5'],
   year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 }

@@ -2,6 +2,9 @@
  * Components - Molecules - Charts - Schedule - Helper - Generate Filter Date
  */
 
+// React
+import { string } from 'prop-types'
+
 // Date FNS
 import {
   endOfYear,
@@ -14,13 +17,8 @@ import {
   startOfYear
 } from 'date-fns'
 
-export default (status, date) => {
+const generateFilterDate = (status, date) => {
   switch (status) {
-    case 'year':
-      return {
-        startDate: startOfYear(new Date(date)).toISOString(),
-        endDate: endOfYear(new Date(date)).toISOString()
-      }
     case 'month':
       return {
         startDate: startOfMonth(new Date(date)).toISOString(),
@@ -36,5 +34,23 @@ export default (status, date) => {
         startDate: startOfDay(new Date(date)).toISOString(),
         endDate: endOfDay(new Date(date)).toISOString()
       }
+    // since we get year as default, no need to have year switch
+    default:
+      return {
+        startDate: startOfYear(new Date(date)).toISOString(),
+        endDate: endOfYear(new Date(date)).toISOString()
+      }
   }
 }
+
+generateFilterDate.propTypes = {
+  status: string.isRequired,
+  date: string.isRequired
+}
+
+generateFilterDate.defaultProps = {
+  status: 'year',
+  date: new Date().toISOString()
+}
+
+export default generateFilterDate

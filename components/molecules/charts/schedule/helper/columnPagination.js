@@ -31,70 +31,85 @@ const args = {
   size: THEME_SIZE.MD
 }
 
-const calculateCurrent = (currentDate, mode, status = 'current') => {
+const calculateCurrent = ({ currentDate, mode, status = 'current' }) => {
   const pCurrentDate = Date.parse(currentDate)
   switch (mode) {
-    case 'year':
-      if (status === 'current') {
-        return format(pCurrentDate, 'y')
-      } else if (status === 'next') {
-        return addYears(pCurrentDate, 1)
-      } else if (status === 'prev') {
-        return subYears(pCurrentDate, 1)
-      }
-      break
     case 'month':
-      if (status === 'current') {
-        return `${format(pCurrentDate, 'MMMM')} Of ${format(pCurrentDate, 'y')}`
-      } else if (status === 'next') {
-        return addMonths(pCurrentDate, 1)
-      } else if (status === 'prev') {
-        return subMonths(pCurrentDate, 1)
+      switch (status) {
+        case 'next':
+          return addMonths(pCurrentDate, 1)
+        case 'prev':
+          return subMonths(pCurrentDate, 1)
+        // since current is default, current case has no benefit
+        default:
+          return `${format(pCurrentDate, 'MMMM')} Of ${format(pCurrentDate, 'y')}`
       }
-      break
+
     case 'week':
-      if (status === 'current') {
-        const formatDate = daysToWeeks(format(new Date(pCurrentDate), 'd')) + 1
-        return `${formatDate} Week Of ${format(pCurrentDate, 'MMMM')} ${format(pCurrentDate, 'y')}`
-      } else if (status === 'next') {
-        return addWeeks(pCurrentDate, 1)
-      } else if (status === 'prev') {
-        return subWeeks(pCurrentDate, 1)
+      switch (status) {
+        case 'next':
+          return addWeeks(pCurrentDate, 1)
+        case 'prev':
+          return subWeeks(pCurrentDate, 1)
+        // since current is default, current case has no benefit
+        default: {
+          const formatDate = daysToWeeks(format(new Date(pCurrentDate), 'd')) + 1
+          return `${formatDate} Week Of ${format(pCurrentDate, 'MMMM')} ${format(
+            pCurrentDate,
+            'y'
+          )}`
+        }
       }
-      break
     case 'day':
-      if (status === 'current') {
-        return `${format(pCurrentDate, 'd')}  ${format(pCurrentDate, 'MMMM')}  ${format(
-          pCurrentDate,
-          'y'
-        )}`
-      } else if (status === 'next') {
-        return addDays(pCurrentDate, 1)
-      } else if (status === 'prev') {
-        return subDays(pCurrentDate, 1)
+      switch (status) {
+        case 'next':
+          return addDays(pCurrentDate, 1)
+        case 'prev':
+          return subDays(pCurrentDate, 1)
+        // since current is default, current case has no benefit
+        default: {
+          return `${format(pCurrentDate, 'd')}  ${format(pCurrentDate, 'MMMM')}  ${format(
+            pCurrentDate,
+            'y'
+          )}`
+        }
+      }
+    // since we get year as default, no need to have year switch
+    default:
+      switch (status) {
+        case 'next':
+          return addYears(pCurrentDate, 1)
+        case 'prev':
+          return subYears(pCurrentDate, 1)
+        // since current is default, current case has no benefit
+        default: {
+          return format(pCurrentDate, 'y')
+        }
       }
   }
 }
 
-const handleChangeDate = (setCurrentDate, options) => {
-  const { currentDate, mode, status } = options
-  const current = calculateCurrent(currentDate, mode, status)
+const handleChangeDate = ({ currentDate, mode, setCurrentDate, status }) => {
+  const current = calculateCurrent({ currentDate, mode, status })
   setCurrentDate(current.toISOString())
 }
 
-export default ({ setCurrentDate, mode, currentDate }) => {
-  const current = calculateCurrent(currentDate, mode, 'current')
+export default ({ currentDate, mode, setCurrentDate }) => {
+  const current = calculateCurrent({ currentDate, mode, status: 'current' })
+
   return (
     <Row justify={'center'}>
       <ButtonToolbar {...args}>
         <Button
-          onClick={() => handleChangeDate(setCurrentDate, { currentDate, mode, status: 'prev' })}
+          onClick={() => handleChangeDate({ currentDate, mode, setCurrentDate, status: 'prev' })}
         >
           &lt;
         </Button>
+
         <Button>{current}</Button>
+
         <Button
-          onClick={() => handleChangeDate(setCurrentDate, { currentDate, mode, status: 'next' })}
+          onClick={() => handleChangeDate({ currentDate, mode, setCurrentDate, status: 'next' })}
         >
           &gt;
         </Button>
