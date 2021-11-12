@@ -24,6 +24,8 @@ const Brand = ({ brand }) => {
 
 const StyledLink = styled(Link)`
   display: flex;
+  height: 100%;
+  padding: 0.5rem;
 `
 
 Brand.propTypes = {

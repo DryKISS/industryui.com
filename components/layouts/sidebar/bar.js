@@ -1,31 +1,33 @@
 /**
- * Components - Layout - Sidebar
+ * Components - Layout - Bar
  */
 
 // React
-import React, { useContext } from 'react'
+import React from 'react'
 import { array, func, node, string } from 'prop-types'
 
 // UI
+import Bar from '../../organisms/bar/bar'
 import Bootstrap from '../../layouts/bootstrap/bootstrap'
-import ConfigContext from '../../services/config/context'
 import Container from '../../atoms/grid/Container'
 import Column from '../../atoms/grid/Column'
+import List from '../../atoms/list/list'
+import ListItem from '../../atoms/list/listItem'
 import Row from '../../atoms/grid/Row'
 
-const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
-  const { config } = useContext(ConfigContext)
-
-  const { Sidebar } = config
-
+const BarLayout = ({ brand, children, copyright, footer, Navigation }) => {
   return (
     <Container fluid>
       <Row>
         <Column md={2}>
-          <Sidebar />
+          <Bar variant="overlay">
+            <List group>
+              <ListItem>HERE</ListItem>
+            </List>
+          </Bar>
         </Column>
 
-        <Column md={10} style={{ padding: 0 }}>
+        <Column md={10}>
           <Bootstrap brand={brand} copyright={copyright} footer={footer} Navigation={Navigation}>
             {children}
           </Bootstrap>
@@ -35,7 +37,7 @@ const SidebarLayout = ({ brand, children, copyright, footer, Navigation }) => {
   )
 }
 
-SidebarLayout.propTypes = {
+BarLayout.propTypes = {
   brand: string,
   children: node.isRequired,
   copyright: array,
@@ -43,4 +45,4 @@ SidebarLayout.propTypes = {
   Navigation: func
 }
 
-export default SidebarLayout
+export default BarLayout

@@ -1,12 +1,9 @@
 /**
- * Components - Organisms - Bar
+ * Components - Organisms - Bar - Story
  */
 
 // React
 import React from 'react'
-
-// Style
-import styled from 'styled-components'
 
 // Storybook
 import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
@@ -20,17 +17,28 @@ import BarConfig from '../components/config'
 import Readme from '../README.md'
 
 // Data
-import barMock from '../__mocks__/barMock'
+import DATA from '../__mocks__/bar'
 
 export default {
   args: {
+    backdrop: false,
     minSize: '5rem',
     open: true,
     placement: BarConfig.PLACEMENT.LEFT,
+    toggle: true,
     variant: BarConfig.VARIANT.OVERLAY,
-    backdrop: false,
-    width: 15,
-    toggle: true
+    width: 15
+  },
+  argTypes: {
+    minSize: {
+      control: {
+        type: ControlTypes.Select,
+        options: ['5rem', '10rem', '12rem']
+      }
+    },
+    width: {
+      control: { type: ControlTypes.Range, min: 10, max: 30, step: 1 }
+    }
   },
   component: Bar,
   parameters: {
@@ -43,44 +51,18 @@ export default {
   title: 'Organisms/Bar'
 }
 
-const BaseComponent = (args) => {
-  const defaultProps = {
-    ...args
-  }
-
+export const Main = (args) => {
   return (
-    <StyledWrapper>
-      <Bar {...defaultProps}>
-        <List group>
-          {barMock.map(({ Component, divider, icon, name, to }, index) => {
-            return (
-              <ListItem key={index}>
-                {divider ? <Divider size="sm" /> : Component ? <Component /> : to ? name : name}
-              </ListItem>
-            )
-          })}
-        </List>
-      </Bar>
-    </StyledWrapper>
+    <Bar {...args}>
+      <List group>
+        {DATA.map(({ Component, divider, icon, name, to }, index) => {
+          return (
+            <ListItem icon={icon} key={index}>
+              {divider ? <Divider size="xs" /> : Component ? <Component /> : to ? name : name}
+            </ListItem>
+          )
+        })}
+      </List>
+    </Bar>
   )
-}
-
-export const main = (args) => {
-  return <BaseComponent {...args} />
-}
-
-const StyledWrapper = styled.div`
-  height: 40rem;
-`
-
-main.argTypes = {
-  minSize: {
-    control: {
-      type: ControlTypes.Select,
-      options: ['5rem', '10rem', '12rem']
-    }
-  },
-  width: {
-    control: { type: ControlTypes.Range, min: 10, max: 30, step: 1 }
-  }
 }

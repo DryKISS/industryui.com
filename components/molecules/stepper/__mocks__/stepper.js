@@ -122,6 +122,8 @@ export const Data = {
       label: 'Customer paid',
       date: null,
       active: true,
+      highlighted: true,
+      highlightColour: 'rgba(255,0,255,0.1)',
       info: '5 min video',
       content: [
         {

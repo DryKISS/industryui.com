@@ -23,11 +23,13 @@ const OpenButton = styled.div`
   transition-property: left, opacity, right, width, transition;
   transition-timing-function: ${({ theme }) => theme.BAR.transitionTiming};
   z-index: 10;
+
   svg {
     right: 0.2rem;
     position: absolute;
     transition: transform ${({ theme }) => theme.BAR.transitionDuration} ease;
   }
+
   ${({ open }) => {
     return css`
       svg,

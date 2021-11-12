@@ -19,7 +19,6 @@ export default {
       }
     }
   },
-  subcomponents: { ListItem },
   title: 'Atoms/List'
 }
 
@@ -27,6 +26,6 @@ export const main = (args) => (
   <List {...args}>
     <ListItem>Item1</ListItem>
     <ListItem>Item2</ListItem>
-    <ListItem>Item3</ListItem>
+    <ListItem icon="bell">Item3</ListItem>
   </List>
 )

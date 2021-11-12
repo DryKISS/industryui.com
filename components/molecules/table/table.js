@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Table - Wrapper
+ * Components - Molecules - Table
  */
 
 // React
@@ -25,10 +25,12 @@ const Table = memo(
     caption,
     className,
     columns,
+    draggableRows,
     fullHeight,
     hover,
     loading,
     noData,
+    onRowOrderChange,
     pagination,
     paginationSize,
     paginationProps,
@@ -68,21 +70,25 @@ const Table = memo(
 
         <StyledResponsive ref={tableRef} responsive={responsive}>
           <TableContent
-            align={align}
-            caption={caption}
-            columns={columns}
-            className={className}
-            currentPage={currentPage}
-            hover={hover}
-            loading={loading}
-            pagination={pagination}
-            perPage={perPage}
-            rowClick={rowClick}
-            rows={rows}
-            sort={sort}
-            setSort={setSort}
-            striped={striped}
-            tableSpan={tableSpan}
+            {...{
+              align,
+              caption,
+              columns,
+              className,
+              currentPage,
+              draggableRows,
+              hover,
+              loading,
+              onRowOrderChange,
+              pagination,
+              perPage,
+              rowClick,
+              rows,
+              sort,
+              setSort,
+              striped,
+              tableSpan
+            }}
           />
         </StyledResponsive>
 
