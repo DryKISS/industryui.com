@@ -76,17 +76,15 @@ const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
 export const TabItem = ({ children }) => children
 
 const initializeTab = (initialTabs, children) => {
-  if (initialTabs?.length > 0) {
-    return initialTabs.map((item) => (
-      <TabItem key={uniqueid()} label={item.label} {...item.options} />
+  if (initialTabs) {
+    return children.map(({ props }) => (
+      <TabItem key={uniqueid()} label={props.label} {...props}>
+        <> {props?.children}</>
+      </TabItem>
     ))
   } else {
-    // should review
-    return React.Children.toArray(children).map(children, (child) =>
-      React.cloneElement(child, {
-        key: uniqueid()
-      })
-    )
+    const result = React.Children.toArray(children)
+    return result.map((item) => ({ ...item, key: uniqueid() }))
   }
 }
 
@@ -95,9 +93,11 @@ let active = ''
 
 export const Tabs = ({
   activeBorders,
-  activeContext,
+  activeBorderContext,
+  activeBackgroundContext,
+  backgroundContext,
   borders,
-  context,
+  borderContext,
   centerTabs,
   children,
   className,
@@ -105,7 +105,6 @@ export const Tabs = ({
   component,
   indicatorSize,
   isVertical,
-  initialTabs,
   gap,
   grabbable,
   grabWalkSpeed,
@@ -120,7 +119,7 @@ export const Tabs = ({
   const wrapperRef = createRef()
 
   const [overflow, setOverflow] = useState(false)
-  const [tabPanes, setTabPane] = useState(initializeTab(initialTabs, children))
+  const [tabPanes, setTabPane] = useState(initializeTab(defaultContentComponent, children))
 
   useEffect(() => {
     if (grabbable) {
@@ -159,6 +158,11 @@ export const Tabs = ({
     }
   }, [])
 
+  useEffect(() => {
+    const { current = {} } = wrapperRef
+    setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
+  }, [wrapperRef])
+
   // Review it
   const onClickTabItem = ({ key, label }) => {
     setActiveTab({ key, label })
@@ -185,18 +189,14 @@ export const Tabs = ({
     })
   }
 
-  useEffect(() => {
-    const { current = {} } = wrapperRef
-    setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
-  }, [wrapperRef])
-
   const renderDefaultComponent = (current) => {
-    if (current?.props?.component) {
-      return current.props.component()
-    } else {
+    if (typeof current?.props?.children !== 'object') {
       return defaultContentComponent()
+    } else {
+      return current.props.children
     }
   }
+
   const renderTabContent = (defaultContentComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
       const { children: item } = tabPanes[index]?.props
@@ -238,11 +238,6 @@ export const Tabs = ({
     }
   }
 
-  useEffect(() => {
-    const { current = {} } = wrapperRef
-    setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
-  }, [wrapperRef])
-
   const handleScrollBack = () => {
     const { current = {} } = wrapperRef
     current.scrollLeft = current?.scrollLeft - 500
@@ -252,7 +247,7 @@ export const Tabs = ({
     const { current = {} } = wrapperRef
     current.scrollLeft = current?.scrollLeft + 500
   }
-  console.log('tabPanes', tabPanes)
+
   return (
     <MainStyledWrapper isVertical={isVertical}>
       <StyledWrapper isVertical={isVertical}>
@@ -267,27 +262,25 @@ export const Tabs = ({
           gap={gap}
           isVertical={isVertical}
           grabbable={grabbable}
-          activeBorders={activeBorders}
           borders={borders}
           ref={wrapperRef}
         >
           {tabPanes.length &&
-            tabPanes?.map(({ key, props, ...rest }, index) => {
-              console.log('rest', rest)
-              console.log('key', key)
+            tabPanes?.map(({ key, props }, index) => {
               return (
                 <Tab
                   activeBorders={activeBorders}
-                  activeContext={activeContext}
+                  activeBorderContext={activeBorderContext}
+                  activeBackgroundContext={activeBackgroundContext}
+                  backgroundContext={backgroundContext}
+                  borderContext={borderContext}
                   rightTabIcon={rightTabIcon}
                   borders={borders}
-                  context={context}
                   defaultContentComponent={defaultContentComponent}
                   activeTab={activeTab}
                   tabKey={key}
                   index={index}
                   key={key}
-                  // key={props.label}
                   onClick={!props.disabled && onClickTabItem}
                   size={size}
                   scrollToActiveTab={scrollToActiveTab}
@@ -308,9 +301,9 @@ export const Tabs = ({
           <Dropdown
             caret={false}
             position="right"
-            onChange={({ id, name }) => setActiveTab({ index: id, label: name })}
-            items={tabPanes.map(({ props }, index) => ({
-              id: index,
+            onChange={({ id, name }) => setActiveTab({ key: id, label: name })}
+            items={tabPanes.map(({ props, key }, index) => ({
+              id: key,
               name: props.label
             }))}
           >
@@ -319,7 +312,6 @@ export const Tabs = ({
               size={size}
               startIconProps={{ colour: 'white', iui: true, size: size }}
               context="secondary"
-              onClick={handleScrollForward}
             />
           </Dropdown>
         )}

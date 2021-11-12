@@ -16,11 +16,12 @@ import THEME_SIZE from '../../constants/size'
 
 const Tab = ({
   activeTab,
-  activeBackground,
   activeBorders,
-  activeContext,
-  background,
+  activeBorderContext,
+  activeBackgroundContext,
+  backgroundContext,
   borders,
+  borderContext,
   childClick,
   children,
   leftTabIcon,
@@ -74,7 +75,11 @@ const Tab = ({
       context={context}
       {...data}
       activeBorders={activeBorders}
+      activeBorderContext={activeBorderContext}
+      activeBackgroundContext={activeBackgroundContext}
+      borderContext={borderContext}
       borders={borders}
+      backgroundContext={backgroundContext}
       disabled={disabled}
       indicatorSize={indicatorSize}
       onClick={handleClick}
@@ -108,40 +113,50 @@ const renderTabSize = (size) => {
   }
 }
 const StyledTab = styled.li`
-  ${({ borders, context, gap, size, theme }) => css`
-    background-color: ${theme.TABS.colour};
+  ${({ backgroundContext, borders, borderContext, gap, size, theme }) => css`
+    background-color: ${backgroundContext ? theme.COLOUR[backgroundContext] : theme.TABS.colour};
     border-left: ${borders?.left || '0'}px solid
-      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+      ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
     border-bottom: ${borders?.bottom || '0'}px solid
-      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+      ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
     border-top: ${borders?.top || '0'}px solid
-      ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+      ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
     color: ${theme.TABS.tabTextColour};
     ${gap !== 0 &&
     css`
       border-right: ${borders.right || '0'}px solid
-        ${context ? theme.COLOUR[context] : theme.TABS.borderColour};
+        ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
     `}
   `}
 
   ${({ size }) => renderTabSize(size)}
 
-  ${({ active, activeBorders, activeContext, context, indicatorSize, theme }) =>
+  ${({
+    active,
+    activeBorders,
+    activeBorderContext,
+    activeBackgroundContext,
+    context,
+    indicatorSize,
+    theme
+  }) =>
     active &&
     css`
-      background-color: ${theme.TABS.activeColour};
+      background-color: ${activeBackgroundContext
+        ? theme.COLOUR[activeBackgroundContext]
+        : theme.TABS.activeColour};
 
       border-top: ${activeBorders?.top || '0'}px solid
-        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+        ${activeBorderContext ? theme.COLOUR[activeBorderContext] : theme.TABS.borderColour};
 
       border-right: ${activeBorders?.right || '0'}px solid
-        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+        ${activeBorderContext ? theme.COLOUR[activeBorderContext] : theme.TABS.borderColour};
 
       border-bottom: ${activeBorders?.bottom || indicatorSize || '0'}px solid
-        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+        ${activeBorderContext ? theme.COLOUR[activeBorderContext] : theme.TABS.borderColour};
 
       border-left: ${activeBorders?.left || '0'}px solid
-        ${activeContext ? theme.COLOUR[activeContext] : theme.TABS.borderColour};
+        ${activeBorderContext ? theme.COLOUR[activeBorderContext] : theme.TABS.borderColour};
 
       color: ${theme.TABS.activeTabTextColour};
     `}
@@ -197,6 +212,9 @@ const StyledTab = styled.li`
     flex: 1;
     display: block;
     align-self: center;
+    &:nth-child(1) {
+      margin-right: 5px;
+    }
   }
 
   > div {

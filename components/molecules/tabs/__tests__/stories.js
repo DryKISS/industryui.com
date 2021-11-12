@@ -90,14 +90,14 @@ export const dynamicTab = (args) => {
       size="lg"
       rightTabIcon="times-circle"
       defaultContentComponent={() => <div>Hello this is Default</div>}
-      initialTabs={[
-        {
-          label: 'Tab 1',
-          options: { leftTabIcon: 'user', active: true, component: () => <div>Content 1</div> }
-        },
-        { label: 'Tab 2', options: { leftTabIcon: 'user', component: () => <div>Content 2</div> } }
-      ]}
-    />
+    >
+      <TabItem active label="Tab 1" leftTabIcon="check" active={true}>
+        <div> Some Component Content 1</div>
+      </TabItem>
+      <TabItem active label="Tab 2" leftTabIcon="check">
+        <div> Some Component Content 2</div>
+      </TabItem>
+    </BaseComponent>
   )
 }
 
@@ -165,8 +165,10 @@ export const customBorder = (args) => {
     <BaseComponent
       {...args}
       gap={2}
-      context="borderColour"
-      activeContext={'borderColour'}
+      activeBorderContext="warning"
+      activeBackgroundContext="female"
+      backgroundContext="primary"
+      borderContext="warning"
       rightTabIcon="times-circle"
       borders={{ top: 2, left: 2, right: 1, bottom: 4 }}
       activeBorders={{ top: 4, left: 1, right: 1, bottom: 2 }}
