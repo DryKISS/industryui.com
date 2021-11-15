@@ -57,6 +57,7 @@ const renderLabelIcon = (labelIcon) => {
 const StepperItem = ({ item, maxWidth }) => {
   return (
     <StyledStepperItem active={item.active !== false} deactivated={item.deactivated}>
+      {item.highlighted && <Highlight colour={item.highlightColour} />}
       <ShowInRow>
         <ShowInColumn>
           <MainContent maxWidth={maxWidth}>
@@ -76,7 +77,7 @@ const StepperItem = ({ item, maxWidth }) => {
               {item.date && <StyledDate>{item.date}</StyledDate>}
             </StyledLabelWrapper>
 
-            {item.info && <StyledInfo>{item.info}</StyledInfo>}
+            {item.info && !item.date && <StyledInfo>{item.info}</StyledInfo>}
             {item.content && item.content.length > 0 && (
               <StyledContent>{renderContent(item.content)}</StyledContent>
             )}
@@ -97,6 +98,16 @@ const StepperItem = ({ item, maxWidth }) => {
     </StyledStepperItem>
   )
 }
+const Highlight = styled.div`
+  background-color: ${({ theme, colour }) => colour ?? theme.STEPPER.highlightedItemColour};
+  border-radius: 0.375rem;
+  bottom: 1.25rem;
+  left: -0.75rem;
+  pointer-events: none;
+  position: absolute;
+  right: -0.5rem;
+  top: -0.5rem;
+`
 const ShowInColumn = styled.div`
   display: flex;
   flex-direction: column;

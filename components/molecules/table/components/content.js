@@ -22,9 +22,11 @@ const TableContent = ({
   changeSelectedRowBackground,
   className,
   columns,
+  draggableRows,
   hover,
   loading,
   noData,
+  onRowOrderChange,
   rowClick,
   rows,
   sort,
@@ -67,14 +69,18 @@ const TableContent = ({
         <>
           <tbody>
             <TableRows
-              align={align}
-              bottomCells={bottomCells}
-              columns={columns}
-              changeSelectedRowBackground={changeSelectedRowBackground}
-              hover={hover}
-              rowClick={rowClick}
-              rows={rows}
-              striped={striped}
+              {...{
+                align,
+                bottomCells,
+                columns,
+                changeSelectedRowBackground,
+                draggableRows,
+                hover,
+                onRowOrderChange,
+                rowClick,
+                rows,
+                striped
+              }}
             />
           </tbody>
 

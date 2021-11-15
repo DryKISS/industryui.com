@@ -2,20 +2,30 @@
 import React, { useRef, useState } from 'react'
 
 // Draft JS
-import { Editor, EditorState, RichUtils } from 'draft-js'
+import { convertToRaw, Editor, EditorState, RichUtils } from 'draft-js'
 
 // Config
 import { BlockStyleControls, InlineStyleControls, getBlockStyle, styleMap } from './config'
+import styled from 'styled-components'
 
-const IUIRich = () => {
-  const [editorState, seteditorState] = useState(EditorState.createEmpty())
+const IUIRich = ({ minHeight = '200px', onChange }) => {
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const ref = useRef(null)
 
   const focus = () => {
     ref.current.focus()
   }
 
-  const handleChange = (EditorState) => seteditorState(EditorState)
+  const handleChange = (EditorState) => {
+    const plainText = EditorState.getCurrentContent().getPlainText('\u0001')
+
+    const contentState = editorState.getCurrentContent()
+
+    const jsonState = convertToRaw(contentState)
+
+    onChange({ rawText: plainText, state: jsonState })
+    return setEditorState(EditorState)
+  }
 
   const onKeyCommand = (command) => {
     const newState = RichUtils.handleKeyCommand(editorState, command)
@@ -40,7 +50,7 @@ const IUIRich = () => {
   }
 
   return (
-    <div onClick={focus}>
+    <EditorWrapper onClick={focus} minHeight={minHeight}>
       <BlockStyleControls editorState={editorState} onToggle={toggleBlockType} />
       <InlineStyleControls editorState={editorState} onToggle={toggleInlineStyle} />
       <Editor
@@ -50,12 +60,25 @@ const IUIRich = () => {
         handleKeyCommand={onKeyCommand}
         onChange={handleChange}
         onTab={handleTab}
-        placeholder="write here..."
         ref={ref}
         spellCheck
       />
-    </div>
+    </EditorWrapper>
   )
 }
-
+const EditorWrapper = styled.div`
+  div.DraftEditor-root {
+    min-height: ${({ minHeight }) => minHeight};
+    padding: 0.5rem 1rem;
+  }
+  div.DraftEditor-editorContainer,
+  div.public-DraftEditor-content {
+    height: 100%;
+  }
+  .DraftEditor-root {
+    background: white;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
+`
 export default IUIRich
