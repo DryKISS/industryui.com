@@ -1,5 +1,5 @@
 /**
- * Gender
+ * Components - Constants - Gender
  */
 const GENDER = [
   {

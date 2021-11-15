@@ -1,5 +1,5 @@
 /**
- * Country
+ * Components - Constants - Country
  */
 const COUNTRY = [
   {
