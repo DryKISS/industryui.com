@@ -149,11 +149,10 @@ export const messages = [
         name: 'Cleverly <support@cleverly.com>',
         avatar: 'https://randomuser.me/api/portraits/men/36.jpg'
       },
-      content: [
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod',
-        'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis',
-        'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat'
-      ]
+      content: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+       sed diam nonummy nibh euismod
+        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat`
     },
     content: 'Trabajo completado.',
     icon: 'notification',

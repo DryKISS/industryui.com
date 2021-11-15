@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import StepperItem from './components/item'
 import StepperSummary from './components/summary'
 
-const Stepper = ({ className, items, summary, maxWidth = '300px' }) => {
+const Stepper = ({ className, items, summary, maxWidth = '400px' }) => {
   return (
     <StyledStepper>
       <ul>

@@ -1,12 +1,12 @@
 /**
- * Tile - variables
+ * Components - Molecules - Tile - Variables
  */
 
 const TILE = {
   FONT_SIZE_TITLE: {
     xs: '1rem',
-    sm: '1.125rem',
-    md: '1.25rem',
+    sm: '1rem',
+    md: '1rem',
     lg: '1.5rem',
     xl: '1.75rem'
   },
@@ -19,8 +19,8 @@ const TILE = {
   },
   FONT_SIZE_DESCRIPTION: {
     xs: '1rem',
-    sm: '1.125rem',
-    md: '1.25rem',
+    sm: '1rem',
+    md: '1rem',
     lg: '1.5rem',
     xl: '1.75rem'
   },

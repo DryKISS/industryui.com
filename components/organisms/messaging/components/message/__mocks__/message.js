@@ -2,8 +2,8 @@
  * Messaging/Message
  */
 
-export const message = {
-  content: 'Test Message',
+export const singleMessage = {
+  content: 'Test Message...',
   icon: 'email',
   from: 'Mike <mike@xyz.com>',
   pictureId: null,

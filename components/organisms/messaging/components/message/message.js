@@ -65,7 +65,7 @@ const Message = memo(
       } else {
         plainText = message.content
       }
-      if (plainText.length > 1) {
+      if (plainText.length > 0) {
         return true
       }
       return false
@@ -78,7 +78,6 @@ const Message = memo(
     const handleMouseLeave = () => {
       config?.hasMenu && sethovered(false)
     }
-
     return (
       <RowWrapper
         hasTimeHeader={message.headerTime}
@@ -107,7 +106,9 @@ const Message = memo(
       </RowWrapper>
     )
   },
-  () => true
+  (prevProps, nextProps) => {
+    return prevProps.message.content === nextProps.message.content
+  }
 )
 
 const TimeHeader = styled.div`
