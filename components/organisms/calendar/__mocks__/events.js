@@ -2,56 +2,54 @@
  * Components - Organisms - Full Calendar - Events
  */
 
-// Moment
-import moment from 'moment'
-
+import { format, set, setDate } from 'date-fns'
 export const Events = [
   {
     allDay: true,
     backgroundColor: 'purple',
     context: 'warning',
-    date: moment().date(2).format('YYYY-MM-DD'),
+    date: format(setDate(new Date(), 5), 'yyyy-MM-dd'),
     description: 'All day event',
-    title: 'Event 1',
+    title: 'Event 2',
     tooltip: 'All day event tooltip'
   },
   {
     context: 'secondary',
     backgroundColor: 'yellow',
     description: 'Event starting at a specific time',
-    date: moment().date(7).hour(14).minute(30).format(),
-    title: 'Event 2'
+    date: set(new Date(), { date: 7, hours: 14, minutes: 30 }).toISOString(),
+    title: 'Event 12'
   },
   {
     context: 'danger',
     daysOfWeek: [2],
     description: 'Recurring event, once per week, all day',
-    endRecur: moment().date(30).format('YYYY-MM-DD'),
-    startRecur: moment().date(5).format('YYYY-MM-DD'),
+    endRecur: format(setDate(new Date(), 30), 'yyyy-MM-dd'),
+    startRecur: format(setDate(new Date(), 5), 'yyyy-MM-dd'),
     title: 'PPM: Boiler Check'
   },
   {
     context: 'danger',
     daysOfWeek: [2],
     description: 'Recurring event, once per week, all day',
-    endRecur: moment().date(30).format('YYYY-MM-DD'),
-    startRecur: moment().date(5).format('YYYY-MM-DD'),
+    endRecur: format(setDate(new Date(), 30), 'yyyy-MM-dd'),
+    startRecur: format(setDate(new Date(), 5), 'yyyy-MM-dd'),
     title: 'PPM: Boiler Check'
   },
   {
     context: 'danger',
     daysOfWeek: [2],
     description: 'Recurring event, once per week, all day',
-    endRecur: moment().date(30).format('YYYY-MM-DD'),
-    startRecur: moment().date(5).format('YYYY-MM-DD'),
+    endRecur: format(setDate(new Date(), 30), 'yyyy-MM-dd'),
+    startRecur: format(setDate(new Date(), 5), 'yyyy-MM-dd'),
     title: 'PPM: Boiler Check'
   },
   {
     daysOfWeek: [4],
     description: 'Once per week, all day',
-    endRecur: moment().date(18).format('YYYY-MM-DD'),
+    endRecur: format(setDate(new Date(), 18), 'yyyy-MM-dd'),
     endTime: '10:45',
-    startRecur: moment().date(3).format('YYYY-MM-DD'),
+    startRecur: format(setDate(new Date(), 3), 'yyyy-MM-dd'),
     startTime: '10:15',
     title: 'Recurring Event'
   },
@@ -59,14 +57,14 @@ export const Events = [
     className: 'text-right',
     description: 'Event with start and end date',
     title: 'Event 3',
-    start: moment().date(18).hour(12).minute(0).format(),
-    end: moment().date(18).hour(13).minute(30).format()
+    start: set(new Date(), { date: 18, hours: 12, minutes: 0 }).toISOString(),
+    end: set(new Date(), { date: 18, hours: 13, minutes: 30 }).toISOString()
   },
   {
     description: 'Multi-day event',
     title: 'Event 4',
-    start: moment().date(23).format(),
-    end: moment().date(24).format()
+    start: setDate(new Date(), 23).toDateString(),
+    end: setDate(new Date(), 24).toDateString()
   }
 ]
 

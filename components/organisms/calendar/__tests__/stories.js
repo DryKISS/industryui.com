@@ -6,10 +6,9 @@
 import React, { useState } from 'react'
 
 // Storybook
-import DetailsWrapper from '../../../../../.storybook/decorators/wrapper/details'
-
+import DetailsWrapper from '../../../../.storybook/decorators/wrapper/details'
 // UI
-import Calendar from '../fullCalendar'
+import Calendar from '../Calendar'
 import Readme from '../README.md'
 
 // Data
@@ -33,7 +32,7 @@ export default {
       }
     }
   },
-  title: 'Organisms/Full Calendar'
+  title: 'Organisms/Calendar'
 }
 
 export const Main = (args) => {
