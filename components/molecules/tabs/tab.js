@@ -11,8 +11,8 @@ import { bool, func, number, object, oneOfType, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-
 import THEME_SIZE from '../../constants/size'
+import slugify from '../../utils/slugify/slugify'
 
 const Tab = ({
   activeTab,
@@ -22,25 +22,23 @@ const Tab = ({
   backgroundContext,
   borders,
   borderContext,
-  childClick,
-  children,
-  leftTabIcon,
-  rightTabIcon,
   context,
+  childClick,
   data,
   disabled,
   defaultContentComponent,
-  renderTab,
   gap,
-  key,
-  index,
-  tabKey,
   indicatorSize,
+  index,
+  leftTabIcon,
   label,
   onClick,
   onRemove,
+  rightTabIcon,
+  renderTab,
   size,
-  scrollToActiveTab
+  scrollToActiveTab,
+  tabKey
 }) => {
   const tabRef = useRef(null)
 
@@ -66,7 +64,7 @@ const Tab = ({
 
   // If no data then default to Cypress ID
   if (!data) {
-    data = { 'data-cy': `${label}Tab` }
+    data = { 'data-cy': `${slugify(label + index)}Tab` }
   }
 
   return (
@@ -82,9 +80,9 @@ const Tab = ({
       backgroundContext={backgroundContext}
       disabled={disabled}
       indicatorSize={indicatorSize}
+      gap={gap}
       onClick={handleClick}
       ref={isActive && scrollToActiveTab ? tabRef : null}
-      gap={gap}
       size={size}
     >
       <Icon icon={leftTabIcon} />
@@ -100,15 +98,16 @@ const renderTabSize = (size) => {
         height: 48px !important;
         padding: 13px 16px 13px 16px !important; ;
       `
-    case THEME_SIZE.MD:
-      return css`
-        height: 38px !important;
-        padding: 8px 16px 8px 16px !important; ;
-      `
     case THEME_SIZE.SM:
       return css`
         height: 32px !important;
         padding: 5px 16px 5px 16px !important; ;
+      `
+    // since MD is default size
+    default:
+      return css`
+        height: 38px !important;
+        padding: 8px 16px 8px 16px !important; ;
       `
   }
 }
@@ -224,22 +223,36 @@ const StyledTab = styled.li`
 `
 
 Tab.propTypes = {
+  activeBackgroundContext: string,
   activeTab: string.isRequired,
+  activeBorders: object,
+  activeBorderContext: string,
+  backgroundContext: string,
   borders: object,
+  borderContext: string,
   childClick: func,
   context: oneOfType([bool, string]),
   data: object,
+  defaultContentComponent: func,
   disabled: bool,
+  gap: number,
   index: number,
+  indicatorSize: number,
   label: string.isRequired,
+  leftTabIcon: string,
   onClick: oneOfType([bool, func]).isRequired,
+  onRemove: func,
+  rightTabIcon: string,
+  renderTab: func,
+  size: string,
   scrollToActiveTab: bool,
-  rightTabIcon: string
+  tabKey: string
 }
 
 Tab.defaultProps = {
   borders: {},
   context: false,
+  label: 'New Tab',
   scrollToActiveTab: true
 }
 

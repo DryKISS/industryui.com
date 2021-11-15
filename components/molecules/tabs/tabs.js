@@ -4,7 +4,7 @@
 
 // React
 import React, { createRef, useEffect, useState } from 'react'
-import { array, bool, number, object, oneOfType, string } from 'prop-types'
+import { array, bool, func, number, object, oneOfType, string } from 'prop-types'
 
 // Next
 import Router, { useRouter } from 'next/router'
@@ -13,28 +13,13 @@ import Router, { useRouter } from 'next/router'
 import styled, { css } from 'styled-components'
 
 // UI
-import Tab from './tab'
-
-import Dropdown from '../../molecules/dropdown/dropdown'
 import Button from '../../atoms/button/button/button'
+import Dropdown from '../../molecules/dropdown/dropdown'
 import Icon from '../../atoms/icon/icon/icon'
+import Tab from './tab'
+import uniqueId from '../../utils/uniqueId/uniqueId'
 
-const uniqueid = () => {
-  // always start with a letter (for DOM friendliness)
-  let idstr = String.fromCharCode(Math.floor(Math.random() * 25 + 65))
-  do {
-    // between numbers and characters (48 is 0 and 90 is Z (42-48 = 90)
-    const ascicode = Math.floor(Math.random() * 42 + 48)
-    if (ascicode < 58 || ascicode > 64) {
-      // exclude all chars between : (58) and @ (64)
-      idstr += String.fromCharCode(ascicode)
-    }
-  } while (idstr.length < 32)
-
-  return idstr
-}
-
-const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
+const handleScroll = ({ el, grabWalkSpeed, grabTimeout }) => {
   const slider = el
   let clickTime
   let isDown = false
@@ -65,8 +50,10 @@ const handleScroll = (el, grabWalkSpeed, grabTimeout) => {
     if (isScrolling || (isDown && e.timeStamp - clickTime > grabTimeout)) {
       e.preventDefault()
       slider.classList.add('active')
+
       const x = e.pageX - slider.offsetLeft
       const walk = x - startX
+
       isScrolling = true
       slider.scrollLeft = sl - walk + grabWalkSpeed
     }
@@ -78,13 +65,12 @@ export const TabItem = ({ children }) => children
 const initializeTab = (initialTabs, children) => {
   if (initialTabs) {
     return children.map(({ props }) => (
-      <TabItem key={uniqueid()} label={props.label} {...props}>
+      <TabItem key={uniqueId()} label={props.label} {...props}>
         <> {props?.children}</>
       </TabItem>
     ))
   } else {
-    const result = React.Children.toArray(children)
-    return result.map((item) => ({ ...item, key: uniqueid() }))
+    return React.Children.toArray(children).map((item) => ({ ...item, key: uniqueId() }))
   }
 }
 
@@ -102,15 +88,14 @@ export const Tabs = ({
   children,
   className,
   defaultContentComponent,
-  component,
   indicatorSize,
   isVertical,
+  handleChange,
   gap,
   grabbable,
   grabWalkSpeed,
   grabTimeout,
   rightTabIcon,
-  handleChange,
   onTabChange,
   size,
   scrollToActiveTab
@@ -123,7 +108,7 @@ export const Tabs = ({
 
   useEffect(() => {
     if (grabbable) {
-      handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
+      handleScroll({ el: wrapperRef.current, grabWalkSpeed, grabTimeout })
     }
   }, [])
 
@@ -154,13 +139,13 @@ export const Tabs = ({
 
   useEffect(() => {
     if (grabbable) {
-      handleScroll(wrapperRef.current, grabWalkSpeed, grabTimeout)
+      handleScroll({ el: wrapperRef.current, grabWalkSpeed, grabTimeout })
     }
   }, [])
 
   useEffect(() => {
     const { current = {} } = wrapperRef
-    setTimeout(() => setOverflow(current?.scrollWidth > current?.offsetWidth), 100)
+    setOverflow(current?.scrollWidth > current?.offsetWidth)
   }, [wrapperRef])
 
   // Review it
@@ -209,8 +194,8 @@ export const Tabs = ({
   }
 
   const handleAdd = () => {
-    const nextChild = uniqueid()
-    const newTabTitle = `Tab ${tabPanes.length + 1}`
+    const nextChild = uniqueId()
+    const newTabTitle = 'New Tab'
     const data = (
       <TabItem label={newTabTitle} key={nextChild} active={true} rightTabIcon={rightTabIcon}>
         {newTabTitle}
@@ -225,6 +210,7 @@ export const Tabs = ({
     e.stopPropagation()
     if (tabPanes.length > 1) {
       let newIndex = tabPanes.length - 1
+
       if (index === newIndex) newIndex = newIndex - 1 < 0 ? 0 : newIndex - 1
 
       setActiveTab(
@@ -257,36 +243,36 @@ export const Tabs = ({
           </Button>
         )}
         <StyledTabs
+          borders={borders}
           centerTabs={centerTabs}
           className={className}
-          gap={gap}
           isVertical={isVertical}
+          gap={gap}
           grabbable={grabbable}
-          borders={borders}
           ref={wrapperRef}
         >
           {tabPanes.length &&
             tabPanes?.map(({ key, props }, index) => {
               return (
                 <Tab
+                  activeTab={activeTab}
                   activeBorders={activeBorders}
                   activeBorderContext={activeBorderContext}
                   activeBackgroundContext={activeBackgroundContext}
                   backgroundContext={backgroundContext}
-                  borderContext={borderContext}
-                  rightTabIcon={rightTabIcon}
                   borders={borders}
+                  borderContext={borderContext}
                   defaultContentComponent={defaultContentComponent}
-                  activeTab={activeTab}
-                  tabKey={key}
+                  gap={gap}
                   index={index}
+                  indicatorSize={indicatorSize}
                   key={key}
                   onClick={!props.disabled && onClickTabItem}
+                  onRemove={handleRemove}
                   size={size}
                   scrollToActiveTab={scrollToActiveTab}
-                  gap={gap}
-                  indicatorSize={indicatorSize}
-                  onRemove={handleRemove}
+                  rightTabIcon={rightTabIcon}
+                  tabKey={key}
                   {...props}
                 />
               )
@@ -400,11 +386,16 @@ const StyledTabs = styled.ol`
 
 Tabs.propTypes = {
   activeBorders: object,
+  activeBorderContext: string,
+  activeBackgroundContext: string,
   activeContext: string,
+  backgroundContext: string,
   borders: object,
+  borderContext: string,
   centerTabs: bool,
   children: oneOfType([array, object]).isRequired,
   className: string,
+  defaultContentComponent: string,
   gap: number,
   grabbable: bool,
   grabWalkSpeed: number,
@@ -412,9 +403,11 @@ Tabs.propTypes = {
   handleChange: bool,
   indicatorSize: number,
   icon: string,
+  isVertical: bool,
   size: string,
   scrollToActiveTab: bool,
-  rightTabIcon: string
+  rightTabIcon: string,
+  onTabChange: func
 }
 
 Tabs.defaultProps = {
