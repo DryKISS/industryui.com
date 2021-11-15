@@ -10,7 +10,7 @@ import Copyright from '../copyright'
 import Readme from '../README.md'
 
 // Data
-import { Copyright as Data } from '../__mocks__/copyright'
+import Data from '../__mocks__/copyright'
 
 export default {
   args: {

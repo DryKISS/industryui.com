@@ -6,7 +6,7 @@
 import React from 'react'
 
 // React Hook Form
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 // Yup
 import { bool, number, object, string } from 'yup'

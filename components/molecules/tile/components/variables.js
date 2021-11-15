@@ -4,54 +4,39 @@
 
 const TILE = {
   FONT_SIZE_TITLE: {
-    xxs: '0.75rem',
     xs: '1rem',
     sm: '1rem',
     md: '1rem',
     lg: '1.5rem',
-    xl: '1.5rem',
-    xxl: '2rem',
-    xxxl: '2rem'
+    xl: '1.75rem'
   },
   FONT_SIZE_BODY: {
-    xxs: '2rem',
-    xs: '2.5rem',
-    sm: '3rem',
-    md: '3.5rem',
-    lg: '4rem',
-    xl: '4.5rem',
-    xxl: '5rem',
-    xxxl: '5.5rem'
+    xs: '1.5rem',
+    sm: '1.75rem',
+    md: '2rem',
+    lg: '2.25rem',
+    xl: '2.5rem'
   },
   FONT_SIZE_DESCRIPTION: {
-    xxs: '0.75rem',
     xs: '1rem',
     sm: '1rem',
     md: '1rem',
     lg: '1.5rem',
-    xl: '1.5rem',
-    xxl: '2rem',
-    xxxl: '2rem'
+    xl: '1.75rem'
   },
   PADDING: {
-    xxs: '1rem',
-    xs: '1rem',
+    xs: '0.75rem',
     sm: '1rem',
-    md: '1rem',
-    lg: '1.5rem',
-    xl: '1.5rem',
-    xxl: '2rem',
-    xxxl: '2rem'
+    md: '1.5rem',
+    lg: '2rem',
+    xl: '2.25rem'
   },
   MIN_HEIGHT: {
-    xxs: '50px',
     xs: '75px',
     sm: '100px',
-    md: '125px',
-    lg: '200px',
-    xl: '250px',
-    xxl: '300px',
-    xxxl: '350px'
+    md: '150px',
+    lg: '250px',
+    xl: '300px'
   }
 }
 

@@ -66,17 +66,6 @@ const formStyle = ({
       box-shadow: 0px 0px 4px ${theme.COLOUR.secondary};
     `}
 
-    // React Select
-    /* ${({ errors }) =>
-      errors &&
-      css`
-        ._,
-        & > div:first-of-type > div:first-of-type {
-          ${(props) => formErrorStyle(props)}
-        }
-      `}
-     */
-
     ${errors &&
     css`
       border-color: ${theme.COLOUR.danger};
