@@ -16,8 +16,8 @@ import camelCase from '../../../../utils/camelCase/camelCase'
 const generateDate = (type, arr) => {
   switch (type) {
     case 'day':
-      for (const key of Array(12).keys()) {
-        arr[key + 1] = 0
+      for (const key of Array(24).keys()) {
+        arr[key] = 0
       }
       return arr
     case 'week': {
@@ -59,13 +59,13 @@ const generateDate = (type, arr) => {
 const groupByDateCriteria = (type, timingStart) => {
   switch (type) {
     case 'day':
-      return format(new Date(timingStart), 'h').toLowerCase()
+      return format(timingStart, 'H').toLowerCase()
     case 'week':
-      return format(new Date(timingStart), 'iii').toLowerCase()
+      return format(timingStart, 'iii').toLowerCase()
     case 'month':
-      return `week${daysToWeeks(format(new Date(timingStart), 'd')) + 1}`
-    case 'year':
-      return format(new Date(timingStart), 'LLL').toLowerCase()
+      return `week${daysToWeeks(format(timingStart, 'd')) + 1}`
+    default:
+      return format(timingStart, 'LLL').toLowerCase()
   }
 }
 
@@ -138,7 +138,7 @@ const prepareScheduleRows = ({
       arr = generateDate(mode, arr)
 
       const groupedJobs = groupBy(currentDateTime, (i) =>
-        groupByDateCriteria(mode, i[eventTimeSplitting])
+        groupByDateCriteria(mode, new Date(i[eventTimeSplitting]))
       )
 
       Object.keys(groupedJobs).forEach((item) => {

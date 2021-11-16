@@ -10,14 +10,18 @@ import styled from 'styled-components'
 
 // Date FNS
 import {
+  addWeeks,
+  addDays,
   endOfMonth,
-  endOfDay,
   endOfWeek,
+  endOfDay,
+  endOfHour,
   startOfMonth,
   startOfWeek,
-  startOfDay,
   setMonth,
-  setDay
+  startOfHour,
+  startOfDay,
+  setHours
 } from 'date-fns'
 
 // UI
@@ -26,7 +30,7 @@ import Tooltip from '../../../../atoms/tooltip/tooltip'
 import DATE_TYPE from '../../../../constants/dateType'
 
 const COLUMN_PATTERN = {
-  day: [...Array(12).keys()],
+  day: [...Array(24).keys()],
   month: ['Week1', 'Week2', 'Week3', 'Week4', 'Week5'],
   year: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
@@ -60,12 +64,12 @@ const formatCell = (handleClick, month, row, otherData) => {
 
 export default (handleClick, options) => {
   const {
-    mode = DATE_TYPE.MONTH,
-    setCurrentDate,
     currentDate,
-    hiddenColumn,
     currentDataSource,
-    onTitleFormatter
+    hiddenColumn,
+    mode = DATE_TYPE.MONTH,
+    onTitleFormatter,
+    setCurrentDate
   } = options
 
   if (!currentDataSource.length) {
@@ -98,30 +102,37 @@ export default (handleClick, options) => {
         return { startDate: startOfMonth(year), endDate: endOfMonth(year) }
       }
       case 'month': {
-        const getWeekNumber = key[key.length - 1]
-        const day = setDay(new Date(currentDate), getWeekNumber * 7 - 1)
+        const result = parseInt(key[key.length - 1], 10)
+        let calMonth = startOfMonth(new Date(currentDate))
+        if (result > 1) calMonth = addWeeks(calMonth, result - 1)
         return {
-          startDate: startOfWeek(new Date(day)),
-          endDate: endOfWeek(new Date(day))
+          startDate: startOfWeek(calMonth),
+          endDate: endOfWeek(calMonth)
         }
       }
       case 'week': {
+        const week = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+        const countDate = addDays(
+          startOfWeek(new Date(currentDate)),
+          week.findIndex((i) => i === key) + 1
+        )
         return {
-          startDate: startOfWeek(new Date(currentDate)),
-          endDate: endOfWeek(new Date(currentDate))
+          startDate: startOfDay(countDate),
+          endDate: endOfDay(countDate)
         }
       }
       case 'day': {
+        const calHour = setHours(new Date(currentDate), key)
         return {
-          startDate: startOfDay(new Date(currentDate)),
-          endDate: endOfDay(new Date(currentDate))
+          startDate: startOfHour(calHour),
+          endDate: endOfHour(calHour)
         }
       }
     }
   }
 
   COLUMN_PATTERN[mode].forEach((item, i) => {
-    const text = mode === DATE_TYPE.DAY ? item + 1 : item
+    const text = mode === DATE_TYPE.DAY ? item : item
     const key = String(text).toLowerCase()
     result.push({
       formatter: ({ row }) => {
