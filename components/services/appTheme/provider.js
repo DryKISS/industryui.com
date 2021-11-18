@@ -18,11 +18,13 @@ import Theme from '../../theme/theme'
 
 const AppThemeProvider = ({ children, theme: initial }) => {
   const [theme, setTheme] = useState(initial)
+  console.log('theme', theme)
 
   const mergedTheme = useMemo(() => {
     return merge(Theme, theme)
   }, [theme])
-
+  console.log('IUI mergedTheme', mergedTheme)
+  console.log('IUI theme', theme)
   return (
     <AppThemeContext.Provider value={{ setTheme, theme: mergedTheme }}>
       <ThemeProvider theme={mergedTheme}>{children}</ThemeProvider>
