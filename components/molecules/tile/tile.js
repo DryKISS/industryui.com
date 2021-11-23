@@ -83,9 +83,6 @@ const StyledLink = styled(Link)`
 
 const StyledTile = styled.div`
   background-color: ${({ theme, bgColour, context }) => {
-    console.log('theme.COLOUR', theme.COLOUR)
-    console.log('bgColour', bgColour)
-    console.log('theme.COLOUR[bgColour]', theme.COLOUR[bgColour])
     return context ? theme.COLOUR[context] ?? context : theme.COLOUR[bgColour] ?? bgColour
   }};
   box-shadow: 0px 8px 10px rgba(24, 37, 50, 0.1), 0px 0px 1px rgba(24, 37, 50, 0.08);

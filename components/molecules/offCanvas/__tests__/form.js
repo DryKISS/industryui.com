@@ -29,7 +29,11 @@ const OffCanvasForm = ({ onSubmit }) => {
     password: string().required()
   })
 
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema)
   })
 

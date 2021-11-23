@@ -44,7 +44,11 @@ const Login = ({
   showPassword,
   showPlaceholder
 }) => {
-  const { errors, formState, register, handleSubmit } = useForm({
+  const {
+    formState: { errors = {}, isSubmitting },
+    register,
+    handleSubmit
+  } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -109,7 +113,7 @@ const Login = ({
           block={blockSubmitButton}
           content="Log in"
           context="primary"
-          disabled={formState.isSubmitting}
+          disabled={isSubmitting}
           size="lg"
           type="submit"
         />

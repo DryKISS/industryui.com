@@ -66,7 +66,6 @@ const schema = object().shape({
   email: string().required('Please Enter an email').email(),
   input: string().required(),
   name: string().required(),
-  reactSelect: string().required(),
   rich: string().required(),
   datepicker: string().required(),
   textarea: string().required(),
