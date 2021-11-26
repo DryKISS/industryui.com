@@ -12,7 +12,7 @@ import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
 import { object, string } from 'yup'
 
 // UI
-import Fieldset from '../../feildset/fieldset'
+import Fieldset from '../../fieldset/fieldset'
 import Legend from '../../legend/legend'
 import Radio from '../radio'
 import Readme from '../README.md'

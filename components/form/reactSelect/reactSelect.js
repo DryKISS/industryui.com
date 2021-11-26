@@ -61,8 +61,8 @@ const ReactSelect = ({
         render={({ field: { onChange, ...props } }) => (
           <Component
             options={options}
-            selectedOption={props.value}
             onChange={onChange}
+            selectedOption={props.value}
             {...props}
             {...parentProps}
           />
