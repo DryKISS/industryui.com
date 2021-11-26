@@ -81,6 +81,7 @@ const Schedule = ({
         align="center"
         columns={generateColumn}
         hover={false}
+        fullHeight={true}
         rowClick={handleRowClick}
         rows={prepareData}
       />
