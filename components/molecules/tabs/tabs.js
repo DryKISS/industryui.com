@@ -18,6 +18,7 @@ import Dropdown from '../../molecules/dropdown/dropdown'
 import Icon from '../../atoms/icon/icon/icon'
 import Tab from './tab'
 import uniqueId from '../../utils/uniqueId/uniqueId'
+import slugify from '../../utils/slugify/slugify'
 
 const handleScroll = ({ el, grabWalkSpeed, grabTimeout }) => {
   const slider = el
@@ -153,11 +154,11 @@ export const Tabs = ({
     setActiveTab({ key, label })
 
     if (handleChange) {
-      handleRoute(label)
+      handleRoute(slugify(label))
     }
 
     if (onTabChange) {
-      onTabChange(label)
+      onTabChange(slugify(label))
     }
   }
 
@@ -184,9 +185,15 @@ export const Tabs = ({
 
   const renderTabContent = (defaultContentComponent) => {
     return React.Children.map(tabPanes, (child, index) => {
-      const { children: item } = tabPanes[index]?.props
+      const { children: item, label } = tabPanes[index]?.props
+
+      const isDynamicTab = !!defaultContentComponent
+      const renderCondition = () =>
+        isDynamicTab
+          ? activeTab.key === tabPanes[index].key
+          : slugify(label) === slugify(activeTab.label)
       return (
-        activeTab.key === tabPanes[index].key && (
+        renderCondition() && (
           <>{defaultContentComponent ? renderDefaultComponent(tabPanes[index]) : item}</>
         )
       )
