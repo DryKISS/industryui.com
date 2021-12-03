@@ -48,7 +48,11 @@ const Register = ({
   terms
 }) => {
   const { registerContext } = useContext(UserContext)
-  const { errors, register, formState, handleSubmit } = useForm({
+  const {
+    formState: { errors = {}, isValid },
+    register,
+    handleSubmit
+  } = useForm({
     mode: 'onChange'
   })
 
@@ -139,7 +143,7 @@ const Register = ({
         align="right"
         content="Sign up"
         context="primary"
-        disabled={!formState.isValid}
+        disabled={!isValid}
         size="lg"
         type="submit"
       />

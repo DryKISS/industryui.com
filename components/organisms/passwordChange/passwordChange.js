@@ -22,7 +22,12 @@ import Label from '../../form/label/label'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 const PasswordChange = ({ showPlaceholder, submit }) => {
-  const { errors, formState, handleSubmit, register, watch } = useForm({
+  const {
+    formState: { errors = {}, isSubmitting = false },
+    handleSubmit,
+    register,
+    watch
+  } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -66,13 +71,7 @@ const PasswordChange = ({ showPlaceholder, submit }) => {
           />
         </Label>
 
-        <Button
-          block
-          content="Submit"
-          context="primary"
-          disabled={formState.isSubmitting}
-          type="submit"
-        />
+        <Button block content="Submit" context="primary" disabled={isSubmitting} type="submit" />
       </Form>
     </>
   )

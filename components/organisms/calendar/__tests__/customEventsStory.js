@@ -26,7 +26,11 @@ import { colorEvent, assetType, displayEventOptions, checkBoxOptions } from '../
 const CustomEventsStory = () => {
   const [events, setEvents] = useState([])
   const [showOffCanvas, setShowOffCanvas] = useState(false)
-  const { errors, handleSubmit, register } = useForm()
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm()
   const [calendarArg, setCalendarArg] = useState()
 
   const defaultProps = {

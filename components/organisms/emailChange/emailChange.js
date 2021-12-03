@@ -24,7 +24,11 @@ import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
 
 const EmailChange = ({ showPlaceholder, submit }) => {
-  const { errors, formState, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {}, isSubmitting = false },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -51,13 +55,7 @@ const EmailChange = ({ showPlaceholder, submit }) => {
           />
         </Label>
 
-        <Button
-          block
-          content="Submit"
-          context="primary"
-          disabled={formState.isSubmitting}
-          type="submit"
-        />
+        <Button block content="Submit" context="primary" disabled={isSubmitting} type="submit" />
 
         <Space />
 
