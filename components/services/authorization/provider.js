@@ -38,7 +38,13 @@ const AuthorizationProvider = ({ children }) => {
         setIsLoading(false)
       } else {
         // Not authorized, redirect to /403 page
-        Router.push('/403')
+
+        if (!user) {
+          const url = document.URL
+          Router.push({ pathname: '/account/sign-in', query: `redirect=${url}`, shallow: true })
+        } else {
+          Router.push('/403')
+        }
       }
     } else {
       setIsLoading(false)

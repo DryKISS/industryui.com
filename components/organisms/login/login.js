@@ -26,6 +26,7 @@ import FormField from '../../form/field/input'
 import FormLabel from '../../form/label/label'
 import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
+import Router, { useRouter } from 'next/router'
 
 // Style
 import styled from 'styled-components'
@@ -52,10 +53,18 @@ const Login = ({
   const [error, setError] = useState(false)
   const [showPass, setShowPass] = useState(false)
   const { signIn } = useContext(UserContext)
-
+  const {
+    query: { redirect = '' }
+  } = useRouter()
   const onSubmit = ({ email, password }) => {
     if (!submit) {
-      signIn('email', email, password, (error) => error && setError(error))
+      signIn('email', email, password, (error) => error && setError(error)).then(() => {
+        if (redirect) {
+          Router.push(redirect)
+        } else {
+          Router.push('/dashboard')
+        }
+      })
     } else {
       submit()
     }
