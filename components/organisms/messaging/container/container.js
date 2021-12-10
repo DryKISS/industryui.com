@@ -182,7 +182,7 @@ const Messaging = ({
 
   return (
     <>
-      <FullPreview />
+      <FullPreview isAddFile />
       <DragAndDropable onFileDrop={onDrop} onHover={onHover} onLeave={onLeave}>
         <MessagingSearch onFilter={onFilter} onSearch={onSearch} />
 

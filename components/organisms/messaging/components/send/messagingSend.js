@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { array, func, number } from 'prop-types'
 
 // DraftJS
@@ -27,6 +27,7 @@ import MessageNames from '../../../../services/componentCommunication/messageNam
 import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
+// import FullPreview from '../../../../organisms/messaging/components/fullPreview/fullPreview'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
@@ -35,22 +36,32 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
   const [attachments, setAttachments] = useState([])
   const [voiceMessage, setVoiceMessage] = useState(null)
   const [audience, setAudience] = useState(audienceItems[0] || '')
-  const fileInputRef = useRef()
+  // const fileInputRef = useRef()
 
   const openFileDialog = () => {
-    fileInputRef.current.click()
-  }
-
-  const handleFilesChange = (e) => {
-    const { files } = e.target
+    // fileInputRef.current.click()
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
-        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: files
+        action: MessagingActions.SET_FULL_PREVIEW_FILES,
+        data: {
+          files: [],
+          selectedIndex: 0
+        }
       }
     })
   }
+
+  // const handleFilesChange = (e) => {
+  //   const { files } = e.target
+  //   MessagingCommunicationService.send({
+  //     name: MessageNames.Messaging.MESSAGING_ACTION,
+  //     payload: {
+  //       action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+  //       data: files
+  //     }
+  //   })
+  // }
 
   const [replyMessage, setreplyMessage] = useState(null)
 
@@ -59,6 +70,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
         break
+
       case MessagingActions.REPLY_MESSAGE:
         setreplyMessage(payload.data)
         break
@@ -113,6 +125,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
 
   return (
     <>
+      {/* <FullPreview isAddFile /> */}
       <StyledContainer audience={audience}>
         {replyMessage && (
           <ReplyContainer message={replyMessage} onClose={() => setreplyMessage(null)}>
@@ -130,6 +143,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
               {audience.name}
             </StyledDropDown>
           )}
+
           <StyledElements>
             <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
             <EmojiSelectWrapper>
@@ -148,14 +162,13 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
           )}
 
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
-
-          <input
+          {/* <input
             multiple
             onChange={handleFilesChange}
             ref={fileInputRef}
             style={{ display: 'none' }}
             type="file"
-          />
+          /> */}
           <SendActionsWrapper>
             {isSendDisabled() ? (
               <VoiceRecorder onVoiceRecord={handleVoiceRecord} />

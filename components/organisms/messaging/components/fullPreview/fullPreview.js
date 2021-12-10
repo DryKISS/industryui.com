@@ -9,18 +9,21 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import ChevronIcon from '../../../../icons/components/chevron'
+
 import CrossIcon from '../../../../icons/components/cross'
 import DownloadIcon from '../../../../icons/components/download'
-import Preview from '../../../../molecules/preview/preview'
 import downloadFile from '../../../../utils/fileDownload/fileDownload'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
 import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
+import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
+import BottomPreview from './helpers/bottomPreview'
+import SliderPreview from './helpers/sliderPreview'
 
-const FullPreview = () => {
+const FullPreview = ({ isAddFile }) => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
+  const [preElement, setPrevElement] = useState([])
   const [maxDocHeight, setMaxDocHeight] = useState(null)
   const files = useRef()
   const senderData = useRef()
@@ -38,7 +41,19 @@ const FullPreview = () => {
       fileName = 'localFile'
     }
   }
+  useEffect(() => {
+    if (isAddFile) {
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: {
+          action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+          data: preElement
+        }
+      })
 
+      // onSubmitAttachment(preElement)
+    }
+  }, [preElement.length])
   useEffect(() => {
     if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
       setTimeout(() => {
@@ -52,17 +67,11 @@ const FullPreview = () => {
   }, [selectedFileIndex])
 
   const onAction = (payload) => {
-    switch (payload.action) {
-      case MessagingActions.SET_FULL_PREVIEW_FILES: {
-        const { avatar, from, time, files: attachments, selectedIndex } = payload.data
-
-        files.current = Array.from(attachments)
-        senderData.current = { avatar, from, time }
-        setSelectedFileIndex(selectedIndex)
-        break
-      }
-      default:
-        break
+    if (payload.action === MessagingActions.SET_FULL_PREVIEW_FILES) {
+      const { avatar, from, time, files: attachments, selectedIndex } = payload.data
+      files.current = Array.from(attachments)
+      senderData.current = { avatar, from, time }
+      setSelectedFileIndex(selectedIndex)
     }
   }
 
@@ -76,80 +85,36 @@ const FullPreview = () => {
     setSelectedFileIndex(null)
   }
 
-  const onFileClick = (e, index) => {
-    e.stopPropagation()
-    setSelectedFileIndex(index)
-  }
-
-  const handleArrowClick = (e, direction) => {
-    e.stopPropagation()
-    switch (direction) {
-      case 'right':
-        if (selectedFileIndex === files.current.length - 1) {
-          setSelectedFileIndex(0)
-          return
-        }
-        setSelectedFileIndex((index) => index + 1)
-        break
-
-      case 'left':
-        if (selectedFileIndex === 0) {
-          setSelectedFileIndex(files.current.length - 1)
-          return
-        }
-        setSelectedFileIndex((index) => index - 1)
-        break
-
-      default:
-        break
-    }
-  }
-
-  const handleMainPreviewClick = (e) => {
-    e.stopPropagation()
-  }
-
   const handleDownloadClick = (url, filename) => downloadFile({ url, filename })
 
+  const sliderData = isAddFile ? preElement : files.current
+
   return (
-    <Wrapper onClick={handleHide} visible={selectedFileIndex !== null}>
+    <Wrapper visible={selectedFileIndex !== null}>
       <CrossWrapper onClick={handleHide}>
         <CrossIcon colour="white" />
       </CrossWrapper>
 
       <ContentWrapper>
-        {selectedFileIndex !== null && (
-          <SelectedFilePreviewContainer
-            onClick={handleMainPreviewClick}
-            ref={previewWrapperRef}
+        {selectedFileIndex !== null && sliderData.length > 0 && (
+          <SliderPreview
+            previewWrapperRef={previewWrapperRef}
             maxDocHeight={maxDocHeight}
-            visible={files.current.length > 0}
-          >
-            <ChevronWrapper>
-              <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} />
-            </ChevronWrapper>
-
-            <Preview
-              file={files.current[selectedFileIndex]}
-              contain
-              zoomable={files.current[selectedFileIndex].type.includes('image')}
-            />
-
-            <ChevronWrapper right>
-              <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} />
-            </ChevronWrapper>
-          </SelectedFilePreviewContainer>
+            data={sliderData}
+            selectedFileIndex={selectedFileIndex}
+            setSelectedFileIndex={setSelectedFileIndex}
+          />
         )}
 
         <PreviewsWrapper>
           {selectedFileIndex !== null ? (
-            files.current.map((item, index) => {
-              return (
-                <BottomPreviewContainer key={index} selected={selectedFileIndex === index}>
-                  <Preview onClick={(e) => onFileClick(e, index)} file={item} small />
-                </BottomPreviewContainer>
-              )
-            })
+            <BottomPreview
+              data={sliderData}
+              isAddFile={isAddFile}
+              selectedFileIndex={selectedFileIndex}
+              setSelectedFileIndex={setSelectedFileIndex}
+              setPrevElement={setPrevElement}
+            />
           ) : (
             <></>
           )}
@@ -167,16 +132,14 @@ const FullPreview = () => {
                 </InfoWrapper>
               </SenderInfoWrapper>
 
-              <NumbersWrapper>
-                {`${selectedFileIndex + 1} of ${files.current.length}`}
-              </NumbersWrapper>
+              <NumbersWrapper>{`${selectedFileIndex + 1} of ${sliderData.length}`}</NumbersWrapper>
 
               {selectedFileIndex !== null && (
                 <ActionsWrapper onClick={(e) => e.stopPropagation()}>
                   <Actions>
                     <DownloadIcon
                       onClick={() =>
-                        handleDownloadClick(files.current[selectedFileIndex].src, fileName)
+                        handleDownloadClick(sliderData[selectedFileIndex]?.src, fileName)
                       }
                       colour="#c1c1c1"
                     />
@@ -191,20 +154,6 @@ const FullPreview = () => {
   )
 }
 
-const ChevronWrapper = styled.div`
-  left: 0.5rem;
-  position: absolute;
-  top: 40%;
-  z-index: 1;
-  ${({ right }) =>
-    right &&
-    css`
-      left: unset;
-      right: 0.5rem;
-      transform: rotate(180deg);
-    `}
-`
-
 const CrossWrapper = styled.div`
   cursor: pointer;
   background: rgba(0, 0, 0, 0.3);
@@ -218,7 +167,9 @@ const CrossWrapper = styled.div`
 `
 
 const Actions = styled.div``
+
 const ActionsWrapper = styled.div``
+
 const NumbersWrapper = styled.div`
   color: ${({ theme }) => theme.COLOUR.white};
   flex: 1;
@@ -257,50 +208,11 @@ const BottomContainer = styled.div`
   width: 95%;
 `
 
-const SelectedFilePreviewContainer = styled.div`
-  border-radius: 9px;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  max-height: 78%;
-  overflow: hidden;
-  padding-top: 1rem;
-  img {
-    max-height: 100%;
-    max-width: 100%;
-    width: unset;
-  }
-
-  ${({ maxDocHeight }) =>
-    maxDocHeight &&
-    css`
-      .react-pdf__Page__canvas {
-        width: unset !important;
-        height: ${maxDocHeight}px !important;
-      }
-    `}
-`
-
 const PreviewsWrapper = styled.div`
   bottom: 10%;
   margin: 0 5% 5%;
   width: 90%;
   display: flex;
-`
-
-const BottomPreviewContainer = styled.div`
-  border: 2px solid ${({ theme }) => theme.COLOUR.blackGrey};
-  box-sizing: content-box;
-  margin: 0 0.25rem;
-  position: relative;
-  width: 4rem;
-  transition-property: border-color;
-  transition-duration: 0.3s;
-  ${({ selected }) =>
-    selected &&
-    css`
-      border: 2px solid ${({ theme }) => theme.COLOUR.info};
-    `}
 `
 
 const ContentWrapper = styled.div`
@@ -318,6 +230,7 @@ const Wrapper = styled.div`
   left: 0;
   right: 0;
   top: 0;
+  height: 95%;
   position: absolute;
   z-index: 2;
   opacity: 0;
@@ -331,5 +244,23 @@ const Wrapper = styled.div`
       pointer-events: initial;
     `}
 `
+
+// const BottomPreviewExtraContainer = styled.div`
+//   overflow: hidden;
+//   border: 2px solid ${({ theme }) => theme.COLOUR.blackGrey};
+//   box-sizing: content-box;
+//   object-fit: contain;
+//   margin: 0 0.25rem;
+//   position: relative;
+//   width: 90px;
+//   height: 90px;
+//   transition-property: border-color;
+//   transition-duration: 0.3s;
+//   ${({ selected }) =>
+//     selected &&
+//     css`
+//       border: 2px solid ${({ theme }) => theme.COLOUR.info};
+//     `}
+// `
 
 export default FullPreview
