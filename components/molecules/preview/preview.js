@@ -147,7 +147,7 @@ const Preview = memo(
           <PdfWrapper onClick={onClick} small={small} message={message}>
             {pdfLoader.Document && (
               <>
-                <pdfLoader.Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
+                <pdfLoader.Document file={src} onLoadSuccess={onDocumentLoadSuccess} size="A4">
                   <pdfLoader.Page pageNumber={1} />
                 </pdfLoader.Document>
               </>
@@ -186,15 +186,15 @@ const Preview = memo(
 
 const PreviewImage = styled.img`
   width: 100%;
+
   ${({ onClick }) =>
     onClick &&
     css`
       cursor: pointer;
     `}
   ${({ contain }) =>
-    contain &&
     css`
-      object-fit: contain;
+      object-fit: ${contain ? 'contain' : 'cover'};
     `}
   ${({ dim }) =>
     dim &&

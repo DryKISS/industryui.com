@@ -52,7 +52,7 @@ export default ({
       <Preview
         contain
         file={data[selectedFileIndex]}
-        zoomable={data[selectedFileIndex]?.type?.includes('image')}
+        // zoomable={data[selectedFileIndex]?.type?.includes('image')}
       />
 
       <ChevronWrapper right>
@@ -67,9 +67,11 @@ const SelectedFilePreviewContainer = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
-  max-height: 78%;
+  max-height: 80%;
   overflow: hidden;
   padding-top: 1rem;
+  margin-top: 20%;
+
   img {
     max-height: 100%;
     max-width: 100%;

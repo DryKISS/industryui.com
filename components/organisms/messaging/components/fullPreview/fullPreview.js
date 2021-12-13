@@ -20,27 +20,30 @@ import useComponentCommunication from '../../../../hooks/useComponentCommunicati
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import BottomPreview from './helpers/bottomPreview'
 import SliderPreview from './helpers/sliderPreview'
+// import { filter } from 'lodash'
 
-const FullPreview = ({ isAddFile }) => {
+const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
+  const [isAddFile, setAddingFile] = useState(false)
   const [preElement, setPrevElement] = useState([])
   const [maxDocHeight, setMaxDocHeight] = useState(null)
-  const files = useRef()
+  // const files = useRef()
   const senderData = useRef()
   const previewWrapperRef = useRef()
 
   let fileName
 
   if (selectedFileIndex !== null) {
-    if (files.current[selectedFileIndex]?.src) {
+    if (preElement[selectedFileIndex]?.src) {
       fileName =
-        files.current[selectedFileIndex].src.split('/')[
-          files.current[selectedFileIndex].src.split('/').length - 1
+        preElement[selectedFileIndex].src.split('/')[
+          preElement[selectedFileIndex].src.split('/').length - 1
         ]
     } else {
       fileName = 'localFile'
     }
   }
+
   useEffect(() => {
     if (isAddFile) {
       MessagingCommunicationService.send({
@@ -50,12 +53,10 @@ const FullPreview = ({ isAddFile }) => {
           data: preElement
         }
       })
-
-      // onSubmitAttachment(preElement)
     }
   }, [preElement.length])
   useEffect(() => {
-    if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
+    if (previewWrapperRef.current && preElement[selectedFileIndex]?.type === 'pdf') {
       setTimeout(() => {
         const height = previewWrapperRef.current.offsetHeight
         setMaxDocHeight(height)
@@ -68,8 +69,30 @@ const FullPreview = ({ isAddFile }) => {
 
   const onAction = (payload) => {
     if (payload.action === MessagingActions.SET_FULL_PREVIEW_FILES) {
-      const { avatar, from, time, files: attachments, selectedIndex } = payload.data
-      files.current = Array.from(attachments)
+      const {
+        avatar,
+        isClearData,
+        isAdding,
+        isPreview,
+        from,
+        time,
+        files: attachments,
+        selectedIndex
+      } = payload.data
+
+      if (isClearData) {
+        if (isClearData) {
+          handleClearAllData()
+        }
+        return handleHide()
+      } else if (isAdding) {
+        setAddingFile(true)
+      } else if (isPreview) {
+        setAddingFile(false)
+      }
+
+      setPrevElement([...attachments])
+      // files.current = Array.from(attachments)
       senderData.current = { avatar, from, time }
       setSelectedFileIndex(selectedIndex)
     }
@@ -81,13 +104,19 @@ const FullPreview = ({ isAddFile }) => {
     subscriber: MessagingSubscriber
   })
 
+  // clear component preview data when message is sent
+  const handleClearAllData = () => {
+    setPrevElement([])
+    setSelectedFileIndex(0)
+  }
+
   const handleHide = () => {
     setSelectedFileIndex(null)
   }
 
   const handleDownloadClick = (url, filename) => downloadFile({ url, filename })
 
-  const sliderData = isAddFile ? preElement : files.current
+  // const sliderData = isAddFile ? preElement : files.current
 
   return (
     <Wrapper visible={selectedFileIndex !== null}>
@@ -96,20 +125,21 @@ const FullPreview = ({ isAddFile }) => {
       </CrossWrapper>
 
       <ContentWrapper>
-        {selectedFileIndex !== null && sliderData.length > 0 && (
-          <SliderPreview
-            previewWrapperRef={previewWrapperRef}
-            maxDocHeight={maxDocHeight}
-            data={sliderData}
-            selectedFileIndex={selectedFileIndex}
-            setSelectedFileIndex={setSelectedFileIndex}
-          />
-        )}
+        <SliderContent previewWrapperRef={previewWrapperRef}>
+          {selectedFileIndex !== null && preElement.length > 0 && (
+            <SliderPreview
+              maxDocHeight={maxDocHeight}
+              data={preElement}
+              selectedFileIndex={selectedFileIndex}
+              setSelectedFileIndex={setSelectedFileIndex}
+            />
+          )}
+        </SliderContent>
 
         <PreviewsWrapper>
           {selectedFileIndex !== null ? (
             <BottomPreview
-              data={sliderData}
+              data={preElement}
               isAddFile={isAddFile}
               selectedFileIndex={selectedFileIndex}
               setSelectedFileIndex={setSelectedFileIndex}
@@ -132,14 +162,14 @@ const FullPreview = ({ isAddFile }) => {
                 </InfoWrapper>
               </SenderInfoWrapper>
 
-              <NumbersWrapper>{`${selectedFileIndex + 1} of ${sliderData.length}`}</NumbersWrapper>
+              <NumbersWrapper>{`${selectedFileIndex + 1} of ${preElement.length}`}</NumbersWrapper>
 
               {selectedFileIndex !== null && (
                 <ActionsWrapper onClick={(e) => e.stopPropagation()}>
                   <Actions>
                     <DownloadIcon
                       onClick={() =>
-                        handleDownloadClick(sliderData[selectedFileIndex]?.src, fileName)
+                        handleDownloadClick(preElement[selectedFileIndex]?.src, fileName)
                       }
                       colour="#c1c1c1"
                     />
@@ -211,7 +241,7 @@ const BottomContainer = styled.div`
 const PreviewsWrapper = styled.div`
   bottom: 10%;
   margin: 0 5% 5%;
-  width: 90%;
+  width: 100%;
   display: flex;
 `
 
@@ -236,6 +266,8 @@ const Wrapper = styled.div`
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s;
+  width: 600px;
+  overflow: hidden;
 
   ${({ visible }) =>
     visible &&
@@ -244,23 +276,7 @@ const Wrapper = styled.div`
       pointer-events: initial;
     `}
 `
-
-// const BottomPreviewExtraContainer = styled.div`
-//   overflow: hidden;
-//   border: 2px solid ${({ theme }) => theme.COLOUR.blackGrey};
-//   box-sizing: content-box;
-//   object-fit: contain;
-//   margin: 0 0.25rem;
-//   position: relative;
-//   width: 90px;
-//   height: 90px;
-//   transition-property: border-color;
-//   transition-duration: 0.3s;
-//   ${({ selected }) =>
-//     selected &&
-//     css`
-//       border: 2px solid ${({ theme }) => theme.COLOUR.info};
-//     `}
-// `
-
+const SliderContent = styled.div`
+  min-height: 70%;
+`
 export default FullPreview

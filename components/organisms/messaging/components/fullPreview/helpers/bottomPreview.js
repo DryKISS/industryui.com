@@ -7,7 +7,9 @@ import React, { useRef } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
-import CrossIcon from '../../../../../icons/components/cross'
+import PlusIcon from '../../../../../icons/components/plus'
+import CloseIcon from '../../../../../icons/components/close'
+
 // UI
 import Preview from '../../../../../molecules/preview/preview'
 
@@ -30,9 +32,12 @@ export default ({ data, isAddFile, selectedFileIndex, setSelectedFileIndex, setP
         return (
           <BottomPreviewItem key={index} selected={selectedFileIndex === index}>
             {isAddFile && (
-              <button onClick={() => onRemoveItem(index)}>
-                <CrossIcon colour="white" />
-              </button>
+              <RemoveElement
+                onClick={() => onRemoveItem(index)}
+                selected={selectedFileIndex === index}
+              >
+                <CloseIcon colour="white" />
+              </RemoveElement>
             )}
             <Preview onClick={(e) => onFileClick(e, index)} file={item} small />
           </BottomPreviewItem>
@@ -40,20 +45,25 @@ export default ({ data, isAddFile, selectedFileIndex, setSelectedFileIndex, setP
       })}
 
       {isAddFile && (
-        <input
-          multiple
-          ref={uploadFile}
-          type="file"
-          name="myFile"
-          accept=".pdf, image/*"
-          onChange={(myData) => {
-            const components = data
-            Array.from(myData?.target?.files).forEach((item, index) => {
-              components.push(item)
-            })
-            setPrevElement([...components])
-          }}
-        />
+        <AddingFile onClick={() => uploadFile.current.click()}>
+          <PlusIcon colour="white" />
+          <p>Adding File</p>
+          <input
+            style={{ display: 'none' }}
+            multiple
+            ref={uploadFile}
+            type="file"
+            name="myFile"
+            accept=".pdf, image/*"
+            onChange={(myData) => {
+              const components = data
+              Array.from(myData?.target?.files).forEach((item, index) => {
+                components.push(item)
+              })
+              setPrevElement([...components])
+            }}
+          />
+        </AddingFile>
       )}
     </BottomPreviewContainer>
   )
@@ -67,12 +77,40 @@ const BottomPreviewContainer = styled.div`
   width: 100%;
   transition-property: border-color;
   transition-duration: 0.3s;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  height: 120px;
+  padding-right: 100px;
+  overflow: scroll;
 `
+const AddingFile = styled.div`
+  margin-left: 10px;
+  height: 90px;
+  width: 90px;
+  flex: 0 0 90px;
+  white-space: nowrap;
+  background-color: #2392dc;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+  padding-top: 15px;
+  margin-top: 10px;
 
+  p {
+    margin: 0px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+`
 const BottomPreviewItem = styled.div`
   height: 90px;
   width: 90px;
-
+  flex: 0 0 90px;
+  margin-top: 12px !important;
+  white-space: nowrap;
+  position: relative;
+  margin: 0px 8px;
   img {
     width: 100%;
     height: 100%;
@@ -83,6 +121,30 @@ const BottomPreviewItem = styled.div`
   ${({ selected }) =>
     selected &&
     css`
-      border: 2px solid ${({ theme }) => theme.COLOUR.info};
+      border: 4px solid ${({ theme }) => theme.COLOUR.info};
     `}
+`
+const RemoveElement = styled.button`
+  ${({ selected }) =>
+    selected
+      ? css`
+          background-color: #2392dc;
+          border-radius: 50%;
+          position: absolute;
+          top: -15px;
+          right: -12px;
+          width: 28px;
+          border: none;
+          z-index: 1;
+          svg {
+            padding: 0px;
+            margin-top: 2px;
+            position: relative;
+            right: 3px;
+            top: 0.5px;
+          }
+        `
+      : css`
+          display: none;
+        `}
 `

@@ -46,6 +46,9 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
         data: {
           files: [],
+          isAdding: true,
+          isPreview: false,
+          isClearData: false,
           selectedIndex: 0
         }
       }
@@ -96,6 +99,20 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
       ...(replyMessage && { replyTo: replyMessage })
     }
 
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.SET_FULL_PREVIEW_FILES,
+        data: {
+          files: null,
+          isAdding: false,
+          isPreview: false,
+          isClearData: true,
+          selectedIndex: 0
+        }
+      }
+    })
+
     onSubmit(data)
     setVoiceMessage(null)
     setreplyMessage(null)
@@ -125,7 +142,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
 
   return (
     <>
-      {/* <FullPreview isAddFile /> */}
+      {/* <FullPreview /> */}
       <StyledContainer audience={audience}>
         {replyMessage && (
           <ReplyContainer message={replyMessage} onClose={() => setreplyMessage(null)}>
@@ -162,13 +179,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
           )}
 
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
-          {/* <input
-            multiple
-            onChange={handleFilesChange}
-            ref={fileInputRef}
-            style={{ display: 'none' }}
-            type="file"
-          /> */}
+
           <SendActionsWrapper>
             {isSendDisabled() ? (
               <VoiceRecorder onVoiceRecord={handleVoiceRecord} />
