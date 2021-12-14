@@ -68,6 +68,30 @@ export const NewMain = () => {
     {
       src: 'https://d1hk88326p7ilp.cloudfront.net/documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
       type: 'pdf'
+    },
+    {
+      src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+      type: 'image'
+    },
+    {
+      src: 'https://i.ytimg.com/vi/xjmzca8uqlE/maxresdefault.jpg',
+      type: 'image'
+    },
+    {
+      src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+      type: 'image'
+    },
+    {
+      src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+      type: 'image'
+    },
+    {
+      src: 'https://i.ytimg.com/vi/xjmzca8uqlE/maxresdefault.jpg',
+      type: 'image'
+    },
+    {
+      src: 'https://static.spin.com/files/2020/06/GettyImages-836649120-1592866985.jpg',
+      type: 'image'
     }
   ]
 
@@ -90,8 +114,8 @@ export const NewMain = () => {
         data: {
           files: images,
           selectedIndex: 0,
-          isAdding: false,
-          isPreview: true,
+          isAdding: true,
+          isPreview: false,
           isClearData: false
         }
       }
@@ -131,7 +155,7 @@ export const NewMain = () => {
   }
 
   return (
-    <>
+    <div style={{ height: 2200 }}>
       <FullPreview />
       <button
         type="button"
@@ -154,6 +178,6 @@ export const NewMain = () => {
       <button type="button" onClick={handleClearClick}>
         Clear Data
       </button>
-    </>
+    </div>
   )
 }

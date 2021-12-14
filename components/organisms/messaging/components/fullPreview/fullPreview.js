@@ -27,6 +27,7 @@ const FullPreview = () => {
   const [isAddFile, setAddingFile] = useState(false)
   const [preElement, setPrevElement] = useState([])
   const [maxDocHeight, setMaxDocHeight] = useState(null)
+  const [scrollThumbnail, setScrollThumbnail] = useState(0)
   // const files = useRef()
   const senderData = useRef()
   const previewWrapperRef = useRef()
@@ -55,6 +56,7 @@ const FullPreview = () => {
       })
     }
   }, [preElement.length])
+
   useEffect(() => {
     if (previewWrapperRef.current && preElement[selectedFileIndex]?.type === 'pdf') {
       setTimeout(() => {
@@ -116,6 +118,10 @@ const FullPreview = () => {
 
   const handleDownloadClick = (url, filename) => downloadFile({ url, filename })
 
+  const handleScrollThumbnail = (status) => {
+    setScrollThumbnail(status === 'right' ? scrollThumbnail + 50 : scrollThumbnail - 50)
+  }
+
   // const sliderData = isAddFile ? preElement : files.current
 
   return (
@@ -132,6 +138,7 @@ const FullPreview = () => {
               data={preElement}
               selectedFileIndex={selectedFileIndex}
               setSelectedFileIndex={setSelectedFileIndex}
+              onScroll={handleScrollThumbnail}
             />
           )}
         </SliderContent>
@@ -140,6 +147,7 @@ const FullPreview = () => {
           {selectedFileIndex !== null ? (
             <BottomPreview
               data={preElement}
+              scrollThumbnail={scrollThumbnail}
               isAddFile={isAddFile}
               selectedFileIndex={selectedFileIndex}
               setSelectedFileIndex={setSelectedFileIndex}
@@ -241,8 +249,9 @@ const BottomContainer = styled.div`
 const PreviewsWrapper = styled.div`
   bottom: 10%;
   margin: 0 5% 5%;
-  width: 100%;
+  width: 90%;
   display: flex;
+  overflow: hidden;
 `
 
 const ContentWrapper = styled.div`
@@ -255,19 +264,19 @@ const ContentWrapper = styled.div`
 `
 
 const Wrapper = styled.div`
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(51, 51, 51, 0.8);
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
-  height: 95%;
   position: absolute;
   z-index: 2;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s;
-  width: 600px;
-  overflow: hidden;
+  overscroll-behavior: contain;
+  width: 700px;
+  height: 900px;
 
   ${({ visible }) =>
     visible &&
@@ -278,5 +287,6 @@ const Wrapper = styled.div`
 `
 const SliderContent = styled.div`
   min-height: 70%;
+  max-height: 70%;
 `
 export default FullPreview

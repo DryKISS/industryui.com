@@ -12,7 +12,8 @@ export default ({
   selectedFileIndex,
   setSelectedFileIndex,
   previewWrapperRef,
-  maxDocHeight
+  maxDocHeight,
+  onScroll
 }) => {
   const handleArrowClick = (e, direction) => {
     e.stopPropagation()
@@ -22,6 +23,7 @@ export default ({
           setSelectedFileIndex(0)
           return
         }
+        onScroll('right')
         setSelectedFileIndex((index) => index + 1)
         break
 
@@ -30,6 +32,7 @@ export default ({
           setSelectedFileIndex(data.length - 1)
           return
         }
+        onScroll('left')
         setSelectedFileIndex((index) => index - 1)
         break
 
@@ -48,12 +51,15 @@ export default ({
       <ChevronWrapper>
         <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} />
       </ChevronWrapper>
-
-      <Preview
-        contain
-        file={data[selectedFileIndex]}
-        // zoomable={data[selectedFileIndex]?.type?.includes('image')}
-      />
+      {data.length > 0 ? (
+        <Preview
+          contain
+          file={data[selectedFileIndex]}
+          // zoomable={data[selectedFileIndex]?.type?.includes('image')}
+        />
+      ) : (
+        <div>No Data</div>
+      )}
 
       <ChevronWrapper right>
         <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} />
@@ -71,6 +77,8 @@ const SelectedFilePreviewContainer = styled.div`
   overflow: hidden;
   padding-top: 1rem;
   margin-top: 20%;
+  margin-left: 50px;
+  margin-right: 50px;
 
   img {
     max-height: 100%;
@@ -90,7 +98,7 @@ const SelectedFilePreviewContainer = styled.div`
 const ChevronWrapper = styled.div`
   left: 0.5rem;
   position: absolute;
-  top: 40%;
+  top: 35%;
   z-index: 1;
   ${({ right }) =>
     right &&

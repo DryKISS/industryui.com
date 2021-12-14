@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef } from 'react'
+import React, { createRef, useRef, useEffect } from 'react'
 
 // Style
 import styled, { css } from 'styled-components'
@@ -13,24 +13,46 @@ import CloseIcon from '../../../../../icons/components/close'
 // UI
 import Preview from '../../../../../molecules/preview/preview'
 
-export default ({ data, isAddFile, selectedFileIndex, setSelectedFileIndex, setPrevElement }) => {
+export default ({
+  data,
+  isAddFile,
+  scrollThumbnail,
+  selectedFileIndex,
+  setSelectedFileIndex,
+  setPrevElement
+}) => {
   const uploadFile = useRef(null)
+  let wrapperRef = createRef()
 
   const onFileClick = (e, index) => {
     e.stopPropagation()
     setSelectedFileIndex(index)
   }
 
+  useEffect(() => {
+    if (wrapperRef.scrollIntoView) {
+      wrapperRef.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'end' })
+    }
+  }, [wrapperRef])
+
   const onRemoveItem = (index) => {
     setPrevElement(data.filter((_, i) => i !== index))
     setSelectedFileIndex(index - 1 < 0 ? 0 : index - 1)
   }
-
+  console.log('wrapperRef', wrapperRef)
   return (
     <BottomPreviewContainer>
       {data.map((item, index) => {
         return (
-          <BottomPreviewItem key={index} selected={selectedFileIndex === index}>
+          <BottomPreviewItem
+            key={index}
+            selected={selectedFileIndex === index}
+            ref={(ref) => {
+              if (selectedFileIndex === index) {
+                wrapperRef = ref
+              }
+            }}
+          >
             {isAddFile && (
               <RemoveElement
                 onClick={() => onRemoveItem(index)}
@@ -82,6 +104,9 @@ const BottomPreviewContainer = styled.div`
   height: 120px;
   padding-right: 100px;
   overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 const AddingFile = styled.div`
   margin-left: 10px;
@@ -111,6 +136,7 @@ const BottomPreviewItem = styled.div`
   white-space: nowrap;
   position: relative;
   margin: 0px 8px;
+
   img {
     width: 100%;
     height: 100%;
