@@ -49,20 +49,18 @@ export default ({
       visible={data.length > 0}
     >
       <ChevronWrapper>
-        <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} />
+        <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} colour="#666666" />
       </ChevronWrapper>
-      {data.length > 0 ? (
+      {data.length > 0 && (
         <Preview
           contain
           file={data[selectedFileIndex]}
           // zoomable={data[selectedFileIndex]?.type?.includes('image')}
         />
-      ) : (
-        <div>No Data</div>
       )}
 
       <ChevronWrapper right>
-        <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} />
+        <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} colour="#666666" />
       </ChevronWrapper>
     </SelectedFilePreviewContainer>
   )
@@ -76,9 +74,10 @@ const SelectedFilePreviewContainer = styled.div`
   max-height: 80%;
   overflow: hidden;
   padding-top: 1rem;
-  margin-top: 20%;
-  margin-left: 50px;
+  margin-top: 14%;
+  margin-left: 105px;
   margin-right: 50px;
+  width: 370px;
 
   img {
     max-height: 100%;
@@ -98,8 +97,9 @@ const SelectedFilePreviewContainer = styled.div`
 const ChevronWrapper = styled.div`
   left: 0.5rem;
   position: absolute;
-  top: 35%;
+  top: 27%;
   z-index: 1;
+
   ${({ right }) =>
     right &&
     css`

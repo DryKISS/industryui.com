@@ -95,16 +95,16 @@ export const NewMain = () => {
     }
   ]
 
-  // const pdf = [
-  //   {
-  //     src: 'https://cleverly-staging-media.s3.eu-west-2.amazonaws.com/documents/5786fad4-6c63-4e43-b127-c74c7819401c.xlsx',
-  //     type: 'pdf'
-  //   },
-  //   {
-  //     src: 'https://cleverly-staging-media.s3.eu-west-2.amazonaws.com/documents/9a4a9954-5450-44d5-9412-9addc297c2ae.xlsx',
-  //     type: 'pdf'
-  //   }
-  // ]
+  const pdf = [
+    {
+      src: 'https://d1hk88326p7ilp.cloudfront.net/documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
+      type: 'pdf'
+    },
+    {
+      src: 'https://d1hk88326p7ilp.cloudfront.net/documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
+      type: 'pdf'
+    }
+  ]
 
   const handleClick = () => {
     MessagingCommunicationService.send({
@@ -112,10 +112,10 @@ export const NewMain = () => {
       payload: {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
         data: {
-          files: images,
+          files: pdf,
           selectedIndex: 0,
-          isAdding: true,
-          isPreview: false,
+          isAdding: false,
+          isPreview: true,
           isClearData: false
         }
       }
@@ -128,7 +128,7 @@ export const NewMain = () => {
       payload: {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
         data: {
-          files: null,
+          files: [],
           selectedIndex: 0,
           isAdding: true,
           isPreview: false,

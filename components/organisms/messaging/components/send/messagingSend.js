@@ -53,6 +53,11 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
         }
       }
     })
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }
 
   // const handleFilesChange = (e) => {

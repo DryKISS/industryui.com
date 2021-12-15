@@ -104,6 +104,8 @@ const BottomPreviewContainer = styled.div`
   height: 120px;
   padding-right: 100px;
   overflow: scroll;
+  border-top: 2px solid #cccccc;
+  padding-top: 10px;
   ::-webkit-scrollbar {
     display: none;
   }

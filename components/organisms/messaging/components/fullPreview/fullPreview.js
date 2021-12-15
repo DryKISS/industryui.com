@@ -10,7 +10,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 
-import CrossIcon from '../../../../icons/components/cross'
+import CloseIcon from '../../../../icons/components/close'
 import DownloadIcon from '../../../../icons/components/download'
 import downloadFile from '../../../../utils/fileDownload/fileDownload'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
@@ -20,7 +20,6 @@ import useComponentCommunication from '../../../../hooks/useComponentCommunicati
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import BottomPreview from './helpers/bottomPreview'
 import SliderPreview from './helpers/sliderPreview'
-// import { filter } from 'lodash'
 
 const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
@@ -28,8 +27,8 @@ const FullPreview = () => {
   const [preElement, setPrevElement] = useState([])
   const [maxDocHeight, setMaxDocHeight] = useState(null)
   const [scrollThumbnail, setScrollThumbnail] = useState(0)
-  // const files = useRef()
-  const senderData = useRef()
+
+  const senderData = useRef(false)
   const previewWrapperRef = useRef()
 
   let fileName
@@ -95,7 +94,7 @@ const FullPreview = () => {
 
       setPrevElement([...attachments])
       // files.current = Array.from(attachments)
-      senderData.current = { avatar, from, time }
+      if (isPreview) senderData.current = { avatar, from, time }
       setSelectedFileIndex(selectedIndex)
     }
   }
@@ -122,17 +121,18 @@ const FullPreview = () => {
     setScrollThumbnail(status === 'right' ? scrollThumbnail + 50 : scrollThumbnail - 50)
   }
 
-  // const sliderData = isAddFile ? preElement : files.current
-
   return (
-    <Wrapper visible={selectedFileIndex !== null}>
-      <CrossWrapper onClick={handleHide}>
-        <CrossIcon colour="white" />
-      </CrossWrapper>
+    <Wrapper visible={selectedFileIndex !== null} isSenderData={!!senderData.current}>
+      <Title>
+        <p>Preview of Files</p>
+        <CrossWrapper onClick={handleHide}>
+          <CloseIcon colour="white" />
+        </CrossWrapper>
+      </Title>
 
       <ContentWrapper>
         <SliderContent previewWrapperRef={previewWrapperRef}>
-          {selectedFileIndex !== null && preElement.length > 0 && (
+          {selectedFileIndex !== null && preElement.length > 0 ? (
             <SliderPreview
               maxDocHeight={maxDocHeight}
               data={preElement}
@@ -140,6 +140,8 @@ const FullPreview = () => {
               setSelectedFileIndex={setSelectedFileIndex}
               onScroll={handleScrollThumbnail}
             />
+          ) : (
+            <NoData>No Data</NoData>
           )}
         </SliderContent>
 
@@ -159,32 +161,38 @@ const FullPreview = () => {
         </PreviewsWrapper>
 
         <BottomContainer>
-          {senderData.current && (
-            <>
+          {senderData.current ? (
+            <MetaData>
               <SenderInfoWrapper>
-                <AvatarWrapper>{senderData.current.avatar}</AvatarWrapper>
+                <AvatarWrapper>{senderData?.current?.avatar || ''}</AvatarWrapper>
 
                 <InfoWrapper>
-                  <From>{senderData.current.from}</From>
-                  <SentDate>{senderData.current.time}</SentDate>
+                  <From>{senderData?.current?.from || 'Adam <admin@cleverly.works'}</From>
+                  <SentDate>{senderData?.current?.time || '15 Dec 2021 12:16'}</SentDate>
                 </InfoWrapper>
               </SenderInfoWrapper>
 
-              <NumbersWrapper>{`${selectedFileIndex + 1} of ${preElement.length}`}</NumbersWrapper>
+              <SenderInfo>
+                <NumbersWrapper>{`${selectedFileIndex + 1} of ${
+                  preElement.length
+                }`}</NumbersWrapper>
 
-              {selectedFileIndex !== null && (
-                <ActionsWrapper onClick={(e) => e.stopPropagation()}>
-                  <Actions>
-                    <DownloadIcon
-                      onClick={() =>
-                        handleDownloadClick(preElement[selectedFileIndex]?.src, fileName)
-                      }
-                      colour="#c1c1c1"
-                    />
-                  </Actions>
-                </ActionsWrapper>
-              )}
-            </>
+                {selectedFileIndex !== null && (
+                  <ActionsWrapper onClick={(e) => e.stopPropagation()}>
+                    <Actions>
+                      <DownloadIcon
+                        onClick={() =>
+                          handleDownloadClick(preElement[selectedFileIndex]?.src, fileName)
+                        }
+                        colour="dark"
+                      />
+                    </Actions>
+                  </ActionsWrapper>
+                )}
+              </SenderInfo>
+            </MetaData>
+          ) : (
+            <NumbersWrapper>{`${selectedFileIndex + 1} of ${preElement.length}`}</NumbersWrapper>
           )}
         </BottomContainer>
       </ContentWrapper>
@@ -192,9 +200,25 @@ const FullPreview = () => {
   )
 }
 
+const MetaData = styled.div``
+
+const SenderInfo = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
+const Title = styled.div`
+  display: flex;
+  background-color: #cccccc;
+  p {
+    color: #333333;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+`
 const CrossWrapper = styled.div`
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.3);
+  background: #666666;
   border-radius: 5rem;
   display: flex;
   position: absolute;
@@ -209,19 +233,23 @@ const Actions = styled.div``
 const ActionsWrapper = styled.div``
 
 const NumbersWrapper = styled.div`
-  color: ${({ theme }) => theme.COLOUR.white};
-  flex: 1;
-  padding-left: 25%;
+  color: ${({ theme }) => theme.COLOUR.dark};
+  font-weight: bold;
+  padding-right: 10px;
+  text-align: ${({ isSenderData }) => (isSenderData ? 'none' : 'center')};
 `
 
 const AvatarWrapper = styled.div`
+  width: 40px;
   margin-right: 1rem;
 `
 
-const InfoWrapper = styled.div``
+const InfoWrapper = styled.div`
+  color: #000000;
+`
 
 const From = styled.p`
-  color: ${({ theme }) => theme.COLOUR.white};
+  color: ${({ theme }) => theme.COLOUR.dark};
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
@@ -229,7 +257,7 @@ const From = styled.p`
 `
 
 const SentDate = styled.p`
-  color: ${({ theme }) => theme.COLOUR.white};
+  color: ${({ theme }) => theme.COLOUR.dark};
   font-size: 0.75rem;
   margin: 0;
 `
@@ -241,7 +269,6 @@ const SenderInfoWrapper = styled.div`
 
 const BottomContainer = styled.div`
   align-items: center;
-  display: flex;
   margin: 0 0.5rem 1rem 0.5rem;
   width: 95%;
 `
@@ -264,7 +291,7 @@ const ContentWrapper = styled.div`
 `
 
 const Wrapper = styled.div`
-  background: rgba(51, 51, 51, 0.8);
+  background: #e6e6e6;
   bottom: 0;
   left: 0;
   right: 0;
@@ -275,8 +302,8 @@ const Wrapper = styled.div`
   pointer-events: none;
   transition: opacity 0.5s;
   overscroll-behavior: contain;
-  width: 700px;
-  height: 900px;
+  max-height: ${({ isSenderData }) => (isSenderData ? '800px' : '700px')};
+  border-radius: 8px;
 
   ${({ visible }) =>
     visible &&
@@ -286,7 +313,20 @@ const Wrapper = styled.div`
     `}
 `
 const SliderContent = styled.div`
-  min-height: 70%;
+  min-height: 55%;
   max-height: 70%;
 `
+
+const NoData = styled.div`
+  height: 3rem;
+  margin-bottom: 0.5rem;
+  color: gray;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+`
+
 export default FullPreview

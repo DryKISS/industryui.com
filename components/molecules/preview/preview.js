@@ -147,8 +147,12 @@ const Preview = memo(
           <PdfWrapper onClick={onClick} small={small} message={message}>
             {pdfLoader.Document && (
               <>
-                <pdfLoader.Document file={src} onLoadSuccess={onDocumentLoadSuccess} size="A4">
-                  <pdfLoader.Page pageNumber={1} />
+                <pdfLoader.Document
+                  file={src}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  style={{ backgroundColor: 'tomato', width: 100 }}
+                >
+                  <pdfLoader.Page pageNumber={1} size="ID1" height={300} width={300} scale={1.5} />
                 </pdfLoader.Document>
               </>
             )}
@@ -204,6 +208,7 @@ const PreviewImage = styled.img`
 `
 
 const PdfWrapper = styled.div`
+  height: 300px;
   ${({ onClick }) =>
     onClick &&
     css`
@@ -211,10 +216,11 @@ const PdfWrapper = styled.div`
     `}
   ${({ small, message }) => {
     if (message || small) {
-      const size = small ? '4rem' : '10rem'
+      const size = small ? '5.1rem' : '10rem'
       return css`
         width: 100%;
         height: ${size};
+
         overflow: hidden;
         .react-pdf__Page__canvas,
         .react-pdf__Page__textContent {
