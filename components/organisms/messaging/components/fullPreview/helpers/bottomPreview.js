@@ -6,9 +6,9 @@
 import React, { createRef, useRef, useEffect } from 'react'
 
 // Style
+import CloseIcon from '../../../../../icons/components/close'
 import styled, { css } from 'styled-components'
 import PlusIcon from '../../../../../icons/components/plus'
-import CloseIcon from '../../../../../icons/components/close'
 
 // UI
 import Preview from '../../../../../molecules/preview/preview'
@@ -39,7 +39,7 @@ export default ({
     setPrevElement(data.filter((_, i) => i !== index))
     setSelectedFileIndex(index - 1 < 0 ? 0 : index - 1)
   }
-  console.log('wrapperRef', wrapperRef)
+
   return (
     <BottomPreviewContainer>
       {data.map((item, index) => {
@@ -71,12 +71,12 @@ export default ({
           <PlusIcon colour="white" />
           <p>Adding File</p>
           <input
-            style={{ display: 'none' }}
-            multiple
-            ref={uploadFile}
-            type="file"
-            name="myFile"
             accept=".pdf, image/*"
+            multiple
+            name="myFile"
+            ref={uploadFile}
+            style={{ display: 'none' }}
+            type="file"
             onChange={(myData) => {
               const components = data
               Array.from(myData?.target?.files).forEach((item, index) => {

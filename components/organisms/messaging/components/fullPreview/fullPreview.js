@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-
+import BottomPreview from './helpers/bottomPreview'
 import CloseIcon from '../../../../icons/components/close'
 import DownloadIcon from '../../../../icons/components/download'
 import downloadFile from '../../../../utils/fileDownload/fileDownload'
@@ -18,7 +18,7 @@ import MessagingActions from '../../../../organisms/messaging/communication/mess
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
-import BottomPreview from './helpers/bottomPreview'
+
 import SliderPreview from './helpers/sliderPreview'
 
 const FullPreview = () => {
@@ -72,12 +72,12 @@ const FullPreview = () => {
     if (payload.action === MessagingActions.SET_FULL_PREVIEW_FILES) {
       const {
         avatar,
+        from,
+        files: attachments,
         isClearData,
         isAdding,
         isPreview,
-        from,
         time,
-        files: attachments,
         selectedIndex
       } = payload.data
 
@@ -93,7 +93,6 @@ const FullPreview = () => {
       }
 
       setPrevElement([...attachments])
-      // files.current = Array.from(attachments)
       if (isPreview) senderData.current = { avatar, from, time }
       setSelectedFileIndex(selectedIndex)
     }
@@ -164,11 +163,11 @@ const FullPreview = () => {
           {senderData.current ? (
             <MetaData>
               <SenderInfoWrapper>
-                <AvatarWrapper>{senderData?.current?.avatar || ''}</AvatarWrapper>
+                <AvatarWrapper>{senderData?.current?.avatar}</AvatarWrapper>
 
                 <InfoWrapper>
-                  <From>{senderData?.current?.from || 'Adam <admin@cleverly.works'}</From>
-                  <SentDate>{senderData?.current?.time || '15 Dec 2021 12:16'}</SentDate>
+                  <From>{senderData?.current?.from}</From>
+                  <SentDate>{senderData?.current?.time}</SentDate>
                 </InfoWrapper>
               </SenderInfoWrapper>
 

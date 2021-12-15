@@ -6,11 +6,10 @@
 import React from 'react'
 
 // UI
+import FullPreview from '../../fullPreview/fullPreview'
 import MessagingSend from '../messagingSend'
 import Readme from '../README.md'
 import { mentions } from '../../../container/__mocks__/mentions'
-// import Preview from '../../../../../molecules/preview/preview'
-import FullPreview from '../../fullPreview/fullPreview'
 
 import MessageNames from '../../../../../services/componentCommunication/messageNames'
 import MessagingActions from '../../../../../organisms/messaging/communication/messagingActions'
@@ -112,7 +111,7 @@ export const NewMain = () => {
       payload: {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
         data: {
-          files: pdf,
+          files: pdf || images,
           selectedIndex: 0,
           isAdding: false,
           isPreview: true,

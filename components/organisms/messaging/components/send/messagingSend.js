@@ -27,19 +27,16 @@ import MessageNames from '../../../../services/componentCommunication/messageNam
 import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
-// import FullPreview from '../../../../organisms/messaging/components/fullPreview/fullPreview'
+
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
-  // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])
   const [voiceMessage, setVoiceMessage] = useState(null)
   const [audience, setAudience] = useState(audienceItems[0] || '')
-  // const fileInputRef = useRef()
 
   const openFileDialog = () => {
-    // fileInputRef.current.click()
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
@@ -59,17 +56,6 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
       behavior: 'smooth'
     })
   }
-
-  // const handleFilesChange = (e) => {
-  //   const { files } = e.target
-  //   MessagingCommunicationService.send({
-  //     name: MessageNames.Messaging.MESSAGING_ACTION,
-  //     payload: {
-  //       action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-  //       data: files
-  //     }
-  //   })
-  // }
 
   const [replyMessage, setreplyMessage] = useState(null)
 
@@ -147,7 +133,6 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
 
   return (
     <>
-      {/* <FullPreview /> */}
       <StyledContainer audience={audience}>
         {replyMessage && (
           <ReplyContainer message={replyMessage} onClose={() => setreplyMessage(null)}>

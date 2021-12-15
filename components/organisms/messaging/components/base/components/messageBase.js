@@ -172,13 +172,13 @@ const MessageBase = ({
       payload: {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
         data: {
-          files,
-          isAdding: false,
-          isPreview: true,
-          isClearData: false,
-          selectedIndex: index,
           avatar: av,
+          files,
           from,
+          isAdding: false,
+          isClearData: false,
+          isPreview: true,
+          selectedIndex: index,
           time
         }
       }
