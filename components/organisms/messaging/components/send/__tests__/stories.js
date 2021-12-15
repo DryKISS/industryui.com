@@ -65,7 +65,9 @@ export const NewMain = () => {
       type: 'image'
     },
     {
-      src: 'https://d1hk88326p7ilp.cloudfront.net/documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
+      src:
+        'https://d1hk88326p7ilp.cloudfront.net/' +
+        'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
       type: 'pdf'
     },
     {
@@ -96,11 +98,15 @@ export const NewMain = () => {
 
   const pdf = [
     {
-      src: 'https://d1hk88326p7ilp.cloudfront.net/documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
+      src:
+        'https://d1hk88326p7ilp.cloudfront.net/' +
+        'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
       type: 'pdf'
     },
     {
-      src: 'https://d1hk88326p7ilp.cloudfront.net/documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
+      src:
+        'https://d1hk88326p7ilp.cloudfront.net/' +
+        'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
       type: 'pdf'
     }
   ]
