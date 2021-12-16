@@ -4,7 +4,7 @@ import fullScreen from '../../../utils/fullScreen/fullScreen'
 const useControlPlayer = (videoRef, played) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [width, setWidth] = useState(0)
-
+  const [subtitle, setSubtitle] = useState('en')
   const handlePlayPause = () => {
     isPlaying === false ? videoRef.current.play() : videoRef.current.pause()
     setIsPlaying((state) => !state)
@@ -28,14 +28,19 @@ const useControlPlayer = (videoRef, played) => {
       setWidth(width)
     }
   }
+  const handleSubtitle = (e) => {
+    setSubtitle(e?.target?.value)
+  }
   return {
     handlePlayPause,
     handlePaused,
     handlePlayed,
     handleFullScreen,
     handleResize,
+    handleSubtitle,
     isPlaying,
-    width
+    width,
+    subtitle
   }
 }
 

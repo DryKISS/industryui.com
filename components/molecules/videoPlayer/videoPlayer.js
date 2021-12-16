@@ -15,7 +15,7 @@ import FullScreenIcon from '../../icons/components/fullScreen'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import useControlPlayer from './helpers/useControlPlayer'
 
-const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
+const VideoPlayer = ({ src, poster, className, videoProps, videoType, subtitles }) => {
   const videoRef = useRef()
   const played = useRef(false)
 
@@ -25,25 +25,47 @@ const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
     handlePlayed,
     handleFullScreen,
     handleResize,
+    handleSubtitle,
     isPlaying,
-    width
+    width,
+    subtitle
   } = useControlPlayer(videoRef, played)
 
   const iconSize = width ? width / 6 : 40
 
-  return (
-    <VideoPlayerWrapper className={className}>
-      <ResizeDetector onResize={handleResize} />
+  const videoSubtitle = () => {
+    const track = (subtitles || []).find(({ srcLang }) => srcLang === subtitle)
+    if (track) {
+      return <track {...track} default></track>
+    } else {
+      return null
+    }
+  }
 
-      <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
-        <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
-        <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
-      </Overlay>
-      <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
-        <source src={src} type={videoType || 'video/mp4'} />
-        Your browser does not support the video tag.
-      </Video>
-    </VideoPlayerWrapper>
+  return (
+    <>
+      <VideoPlayerWrapper className={className}>
+        <ResizeDetector onResize={handleResize} />
+
+        <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
+          <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
+          <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
+        </Overlay>
+        <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
+          <source src={src} type={videoType || 'video/mp4'} />
+          {videoSubtitle()}
+          Your browser does not support the video tag.
+        </Video>
+      </VideoPlayerWrapper>
+      <div>
+        <label for="cars">Choose Subtitle:</label>
+        <select onChange={handleSubtitle} name="subtitle" id="subtitle">
+          <option value="en">English</option>
+          <option value="ja">Japan</option>
+          <option value="de">Germany</option>
+        </select>
+      </div>
+    </>
   )
 }
 
