@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { any, string } from 'prop-types'
 
 // Style
@@ -11,39 +11,23 @@ import styled, { css } from 'styled-components'
 
 // UI
 import PlayCircleIcon from '../../icons/components/playCircle'
-import fullScreen from '../../utils/fullScreen/fullScreen'
 import FullScreenIcon from '../../icons/components/fullScreen'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
+import useControlPlayer from './helpers/useControlPlayer'
 
 const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [width, setWidth] = useState(0)
   const videoRef = useRef()
   const played = useRef(false)
 
-  const handlePlayPause = () => {
-    isPlaying === false ? videoRef.current.play() : videoRef.current.pause()
-    setIsPlaying((state) => !state)
-  }
-
-  const handlePaused = () => {
-    setIsPlaying(false)
-  }
-
-  const handlePlayed = () => (played.current = true)
-
-  const handleFullScreen = () => {
-    videoRef.current.play()
-    setIsPlaying(true)
-    fullScreen.requestFullscreen(videoRef.current)
-  }
-
-  const handleResize = ({ width }) => {
-    if (videoRef.current) {
-      const width = videoRef.current.clientWidth
-      setWidth(width)
-    }
-  }
+  const {
+    handlePlayPause,
+    handlePaused,
+    handlePlayed,
+    handleFullScreen,
+    handleResize,
+    isPlaying,
+    width
+  } = useControlPlayer(videoRef, played)
 
   const iconSize = width ? width / 6 : 40
 
@@ -55,7 +39,6 @@ const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
         <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
         <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
       </Overlay>
-
       <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
         <source src={src} type={videoType || 'video/mp4'} />
         Your browser does not support the video tag.
