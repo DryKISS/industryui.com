@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { any, string } from 'prop-types'
 
 // Style
@@ -14,11 +14,14 @@ import PlayCircleIcon from '../../icons/components/playCircle'
 import FullScreenIcon from '../../icons/components/fullScreen'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import useControlPlayer from './helpers/useControlPlayer'
-
-const VideoPlayer = ({ src, poster, className, videoProps, videoType, subtitles }) => {
+// TODO: Important: all useState Must refactor to useReducer
+const VideoPlayer = ({ className, configs }) => {
+  const { videos = [] } = configs
   const videoRef = useRef()
   const played = useRef(false)
-
+  const [favorite, setFavorite] = useState(false)
+  const [videoState, setVideoState] = useState(videos[0])
+  const [current, setCurrent] = useState(0)
   const {
     handlePlayPause,
     handlePaused,
@@ -26,19 +29,51 @@ const VideoPlayer = ({ src, poster, className, videoProps, videoType, subtitles 
     handleFullScreen,
     handleResize,
     handleSubtitle,
+    handleVideoProgress,
+    handleVideoSpeed,
+    handleSetVolume,
+    handleSkip,
+    volume,
     isPlaying,
     width,
-    subtitle
+    subtitle,
+    progress,
+    speed,
+    handleOnTimeUpdate,
+    isMuted,
+    toggleMute
   } = useControlPlayer(videoRef, played)
 
+  const { subtitles = [], poster = '', src = '', videoType } = videoState
   const iconSize = width ? width / 6 : 40
 
   const videoSubtitle = () => {
-    const track = (subtitles || []).find(({ srcLang }) => srcLang === subtitle)
+    const track = (subtitles || []).find(({ srcLang = 'en' }) => srcLang === subtitle)
     if (track) {
       return <track {...track} default></track>
-    } else {
-      return null
+    }
+    return null
+  }
+
+  const handleNext = (videoLength) => {
+    const currentState = current + 1
+    if (currentState < videoLength) {
+      setVideoState(videos[currentState])
+      setCurrent(currentState)
+      videoRef.current.pause()
+      videoRef.current.src = videos[currentState]?.src
+      videoRef.current.play()
+    }
+  }
+
+  const handlePrev = () => {
+    const currentState = current - 1
+    if (currentState >= 0) {
+      setVideoState(videos[currentState])
+      setCurrent(currentState)
+      videoRef.current.pause()
+      videoRef.current.src = videos[currentState]?.src
+      videoRef.current.play()
     }
   }
 
@@ -51,12 +86,25 @@ const VideoPlayer = ({ src, poster, className, videoProps, videoType, subtitles 
           <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
           <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
         </Overlay>
-        <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
+        <Video
+          ref={videoRef}
+          seekable
+          onPause={handlePaused}
+          onPlay={handlePlayed}
+          onTimeUpdate={handleOnTimeUpdate}
+        >
           <source src={src} type={videoType || 'video/mp4'} />
           {videoSubtitle()}
           Your browser does not support the video tag.
         </Video>
       </VideoPlayerWrapper>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value={progress}
+        onChange={(e) => handleVideoProgress(e)}
+      />
       <div>
         <label for="cars">Choose Subtitle:</label>
         <select onChange={handleSubtitle} name="subtitle" id="subtitle">
@@ -64,6 +112,41 @@ const VideoPlayer = ({ src, poster, className, videoProps, videoType, subtitles 
           <option value="ja">Japan</option>
           <option value="de">Germany</option>
         </select>
+      </div>
+
+      <div>
+        <select className="velocity" value={speed} onChange={(e) => handleVideoSpeed(e)}>
+          <option value="0.50">0.50x</option>
+          <option value="1">1x</option>
+          <option value="1.25">1.25x</option>
+          <option value="2">2x</option>
+          <option value="5">5x</option>
+        </select>
+      </div>
+      <div>
+        <button className="mute-btn" onClick={toggleMute}>
+          {!isMuted ? 'Not Muted' : 'Muted'}
+        </button>
+      </div>
+      <div>
+        <button onClick={handlePlayPause}>{!isPlaying ? 'Play' : 'Pause'}</button>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" value={volume} onChange={handleSetVolume} />
+        <span>{volume}</span>
+      </div>
+      <div>
+        <button onClick={() => handleSkip('backward')}>10 back</button>
+        <button onClick={() => handleSkip('forward')}>10 forward</button>
+      </div>
+      <div>
+        <button onClick={() => handleNext(videos.length)}>Next Video</button>
+        <button onClick={() => handlePrev(videos.length)}>Previous Video</button>
+      </div>
+      <div>
+        <button onClick={() => setFavorite(!favorite)}>
+          {favorite ? 'Favorite' : 'Not Favorite'}
+        </button>
       </div>
     </>
   )

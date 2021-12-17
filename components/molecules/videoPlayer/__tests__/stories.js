@@ -26,6 +26,13 @@ const subtitles = [
   { label: 'English', kind: 'subtitles', srcLang: 'en', src: '/video/subtitles_en.vtt' },
   { label: 'japanese', kind: 'subtitles', srcLang: 'ja', src: '/video/subtitles_ja.vtt' }
 ]
-export const main = (args) => (
-  <VideoPlayer {...args} subtitles={subtitles} src="/video/video.mp4" poster="/video/poster.png" />
+export const main = () => (
+  <VideoPlayer
+    configs={{
+      videos: [
+        { subtitles, poster: '/video/poster.png', src: '/video/video.mp4' },
+        { subtitles, poster: '/video/poster.png', src: '/video/EgarVideo.mp4' }
+      ]
+    }}
+  />
 )
