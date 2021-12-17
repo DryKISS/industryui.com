@@ -10,11 +10,16 @@ import { any, string } from 'prop-types'
 import styled, { css } from 'styled-components'
 
 // UI
-import PlayCircleIcon from '../../icons/components/playCircle'
+// import PlayCircleIcon from '../../icons/components/playCircle'
 import FullScreenIcon from '../../icons/components/fullScreen'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import useControlPlayer from './helpers/useControlPlayer'
-// TODO: Important: all useState Must refactor to useReducer
+
+const STATUS = {
+  forward: 'forward',
+  backward: 'backward'
+}
+
 const VideoPlayer = ({ className, configs }) => {
   const { videos = [] } = configs
   const videoRef = useRef()
@@ -24,8 +29,6 @@ const VideoPlayer = ({ className, configs }) => {
   const [current, setCurrent] = useState(0)
   const {
     handlePlayPause,
-    handlePaused,
-    handlePlayed,
     handleFullScreen,
     handleResize,
     handleSubtitle,
@@ -41,7 +44,8 @@ const VideoPlayer = ({ className, configs }) => {
     speed,
     handleOnTimeUpdate,
     isMuted,
-    toggleMute
+    toggleMute,
+    reducerTest
   } = useControlPlayer(videoRef, played)
 
   const { subtitles = [], poster = '', src = '', videoType } = videoState
@@ -83,16 +87,10 @@ const VideoPlayer = ({ className, configs }) => {
         <ResizeDetector onResize={handleResize} />
 
         <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
-          <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
+          {/* <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} /> */}
           <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
         </Overlay>
-        <Video
-          ref={videoRef}
-          seekable
-          onPause={handlePaused}
-          onPlay={handlePlayed}
-          onTimeUpdate={handleOnTimeUpdate}
-        >
+        <Video ref={videoRef} seekable onTimeUpdate={handleOnTimeUpdate}>
           <source src={src} type={videoType || 'video/mp4'} />
           {videoSubtitle()}
           Your browser does not support the video tag.
@@ -136,8 +134,8 @@ const VideoPlayer = ({ className, configs }) => {
         <span>{volume}</span>
       </div>
       <div>
-        <button onClick={() => handleSkip('backward')}>10 back</button>
-        <button onClick={() => handleSkip('forward')}>10 forward</button>
+        <button onClick={() => handleSkip(STATUS.backward)}>10 back</button>
+        <button onClick={() => handleSkip(STATUS.forward)}>10 forward</button>
       </div>
       <div>
         <button onClick={() => handleNext(videos.length)}>Next Video</button>
@@ -147,6 +145,9 @@ const VideoPlayer = ({ className, configs }) => {
         <button onClick={() => setFavorite(!favorite)}>
           {favorite ? 'Favorite' : 'Not Favorite'}
         </button>
+      </div>
+      <div>
+        <button onClick={reducerTest}>Crazy rerender</button>
       </div>
     </>
   )

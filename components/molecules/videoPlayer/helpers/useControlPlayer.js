@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import fullScreen from '../../../utils/fullScreen/fullScreen'
+import useReducer from './useReducer'
+import actionType from './actions'
 
 const useControlPlayer = (videoRef, played) => {
-  const [currentVideo, setCurrentVideo] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [width, setWidth] = useState(0)
-  const [subtitle, setSubtitle] = useState('en')
-  const [speed, setSpeed] = useState(1)
-  const [isMuted, setIsMuted] = useState(false)
-  const [volume, setVolume] = useState(100)
+  const { currentState, setState } = useReducer()
+  const { progress, isMuted, isPlaying } = currentState
 
   const handleSkip = (status) => {
     const manualChange = Number(progress)
@@ -22,73 +18,67 @@ const useControlPlayer = (videoRef, played) => {
     }
     const calculate = (videoRef.current.duration / 100) * manualChange
     videoRef.current.currentTime = calculate + v
-    setProgress(manualChange)
+    setState(actionType.progress, manualChange)
   }
 
   const handleSetVolume = (e) => {
     const volume = Number(e?.target?.value)
     videoRef.current.volume = volume / 100
-    setVolume(volume)
+    setState(actionType.volume, volume)
   }
 
   const handleOnTimeUpdate = () => {
     const progress = (videoRef.current.currentTime / videoRef.current.duration) * 100
-    setProgress(progress)
+    setState(actionType.progress, progress)
   }
 
-  const handlePlayPause = () => setIsPlaying((state) => !state)
-
-  const handlePaused = () => {
-    setIsPlaying(false)
+  const handlePlayPause = () => {
+    setState(actionType.isPlaying)
   }
-
-  const handlePlayed = () => (played.current = true)
 
   const handleFullScreen = () => {
     videoRef.current.play()
-    setIsPlaying(true)
+    setState(actionType.isPlaying, true)
     fullScreen.requestFullscreen(videoRef.current)
   }
 
   const handleResize = ({ width }) => {
     if (videoRef.current) {
       const width = videoRef.current.clientWidth
-      setWidth(width)
+      setState(actionType.width, width)
     }
   }
 
-  const handleSubtitle = (e) => {
-    setSubtitle(e?.target?.value)
+  const handleSubtitle = ({ target = {} }) => {
+    setState(actionType.subtitle, target?.value)
   }
 
-  const handleVideoProgress = (event) => {
-    const manualChange = Number(event.target.value)
+  const handleVideoProgress = ({ target = {} }) => {
+    const manualChange = Number(target?.value)
     videoRef.current.currentTime = (videoRef.current.duration / 100) * manualChange
-    setProgress(manualChange)
+    setState(actionType.progress, manualChange)
   }
 
-  const handleVideoSpeed = (event) => {
-    const speed = Number(event.target.value)
+  const handleVideoSpeed = ({ target = {} }) => {
+    const speed = Number(target?.value)
     videoRef.current.playbackRate = speed
-    setSpeed(speed)
+    setState(actionType.speed, speed)
   }
 
   useEffect(() => {
     isMuted ? (videoRef.current.muted = true) : (videoRef.current.muted = false)
-  }, [isMuted, videoRef])
+  }, [isMuted])
 
   useEffect(() => {
     isPlaying ? videoRef.current.play() : videoRef.current.pause()
-  }, [isPlaying, videoRef])
+  }, [isPlaying])
 
   const toggleMute = () => {
-    setIsMuted(!isMuted)
+    setState(actionType.isMuted)
   }
 
   return {
     handlePlayPause,
-    handlePaused,
-    handlePlayed,
     handleFullScreen,
     handleResize,
     handleSubtitle,
@@ -98,15 +88,7 @@ const useControlPlayer = (videoRef, played) => {
     handleSetVolume,
     toggleMute,
     handleSkip,
-    volume,
-    isPlaying,
-    width,
-    subtitle,
-    progress,
-    setProgress,
-    speed,
-    isMuted,
-    currentVideo
+    ...currentState
   }
 }
 
