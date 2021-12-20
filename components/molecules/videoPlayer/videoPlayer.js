@@ -7,11 +7,19 @@ import React, { useRef, useState } from 'react'
 import { any, string } from 'prop-types'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
-// import PlayCircleIcon from '../../icons/components/playCircle'
+import ForwardPlayIcon from '../../icons/components/forwardPlay'
+import BackwardPlayIcon from '../../icons/components/backwardPlay'
+import PlayCircleIcon from '../../icons/components/playCircle'
+import PauseCircleIcon from '../../icons/components/pauseCircle'
 import FullScreenIcon from '../../icons/components/fullScreen'
+import SettingIcon from '../../icons/components/setting'
+import StepForwardIcon from '../../icons/components/stepForward'
+import StepBackwardIcon from '../../icons/components/stepBackward'
+import SubtitleIcon from '../../icons/components/subtitle'
+import VolumeIcon from '../../icons/components/volume'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import useControlPlayer from './helpers/useControlPlayer'
 
@@ -32,24 +40,25 @@ const VideoPlayer = ({ className, configs }) => {
     handleFullScreen,
     handleResize,
     handleSubtitle,
+    handleShowSubtitle,
     handleVideoProgress,
     handleVideoSpeed,
     handleSetVolume,
     handleSkip,
     volume,
     isPlaying,
-    width,
+    // width,
     subtitle,
+    isSubtitle,
     progress,
     speed,
     handleOnTimeUpdate,
     isMuted,
-    toggleMute,
-    reducerTest
+    toggleMute
   } = useControlPlayer(videoRef, played)
-
+  console.log('isSubtitle', isSubtitle)
   const { subtitles = [], poster = '', src = '', videoType } = videoState
-  const iconSize = width ? width / 6 : 40
+  // const iconSize = width ? width / 6 : 40
 
   const videoSubtitle = () => {
     const track = (subtitles || []).find(({ srcLang = 'en' }) => srcLang === subtitle)
@@ -81,28 +90,73 @@ const VideoPlayer = ({ className, configs }) => {
     }
   }
 
+  const Volume = ({ volume, onChange }) => {
+    return (
+      <VolumeWrapper>
+        <input type="range" min="0" max="100" value={volume} onChange={onChange} />
+        <ButtonHOC onClick={console.log}>
+          <VolumeIcon colour="white" />
+        </ButtonHOC>
+      </VolumeWrapper>
+    )
+  }
+
   return (
     <>
       <VideoPlayerWrapper className={className}>
         <ResizeDetector onResize={handleResize} />
 
-        <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
-          {/* <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} /> */}
-          <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
-        </Overlay>
         <Video ref={videoRef} seekable onTimeUpdate={handleOnTimeUpdate}>
           <source src={src} type={videoType || 'video/mp4'} />
-          {videoSubtitle()}
+          {isSubtitle && videoSubtitle()}
           Your browser does not support the video tag.
         </Video>
+        <ControlOverlayWrapper>
+          <MainControlWrapper>
+            <ButtonHOC onClick={handlePlayPause}>
+              {!isPlaying ? <PlayCircleIcon colour="white" /> : <PauseCircleIcon colour="white" />}
+            </ButtonHOC>
+            <ButtonHOC onClick={() => handleSkip(STATUS.backward)}>
+              <BackwardPlayIcon colour="white" />
+            </ButtonHOC>
+            <ButtonHOC onClick={() => handleSkip(STATUS.forward)}>
+              <ForwardPlayIcon colour="white" />
+            </ButtonHOC>
+
+            <ButtonHOC onClick={() => handlePrev(videos.length)}>
+              <StepBackwardIcon colour="white" />
+            </ButtonHOC>
+            <ButtonHOC onClick={() => handleNext(videos.length)}>
+              <StepForwardIcon colour="white" />
+            </ButtonHOC>
+            <TimelineWrapper>
+              <span>1222 : 13 : 22</span>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={progress}
+                onChange={(e) => handleVideoProgress(e)}
+              />
+              <span>1222 : 13 : 22</span>
+            </TimelineWrapper>
+          </MainControlWrapper>
+          <SettingWrapper>
+            <ButtonHOC onClick={handleShowSubtitle}>
+              <SubtitleIcon colour={isSubtitle ? 'white' : '#999999'} />
+            </ButtonHOC>
+            <Volume volume={volume} onChange={handleSetVolume} />
+            <ButtonHOC onClick={console.log}>
+              <SettingIcon colour="white" />
+            </ButtonHOC>
+
+            <ButtonHOC onClick={handleFullScreen}>
+              <FullScreenIcon colour="white" />
+            </ButtonHOC>
+          </SettingWrapper>
+        </ControlOverlayWrapper>
       </VideoPlayerWrapper>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={progress}
-        onChange={(e) => handleVideoProgress(e)}
-      />
+
       <div>
         <label for="cars">Choose Subtitle:</label>
         <select onChange={handleSubtitle} name="subtitle" id="subtitle">
@@ -126,61 +180,79 @@ const VideoPlayer = ({ className, configs }) => {
           {!isMuted ? 'Not Muted' : 'Muted'}
         </button>
       </div>
+      <div></div>
       <div>
-        <button onClick={handlePlayPause}>{!isPlaying ? 'Play' : 'Pause'}</button>
-      </div>
-      <div>
-        <input type="range" min="0" max="100" value={volume} onChange={handleSetVolume} />
         <span>{volume}</span>
       </div>
-      <div>
-        <button onClick={() => handleSkip(STATUS.backward)}>10 back</button>
-        <button onClick={() => handleSkip(STATUS.forward)}>10 forward</button>
-      </div>
-      <div>
-        <button onClick={() => handleNext(videos.length)}>Next Video</button>
-        <button onClick={() => handlePrev(videos.length)}>Previous Video</button>
-      </div>
+      <div></div>
+      <div></div>
       <div>
         <button onClick={() => setFavorite(!favorite)}>
           {favorite ? 'Favorite' : 'Not Favorite'}
         </button>
       </div>
-      <div>
-        <button onClick={reducerTest}>Crazy rerender</button>
-      </div>
     </>
   )
 }
-
-const Overlay = styled.div`
-  align-items: center;
-  background: rgba(0, 0, 0, 0.3);
-  background-image: ${({ poster }) =>
-    poster && ` linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${poster})`};
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0.5rem;
-  bottom: 7px;
+const VolumeWrapper = styled.div`
+  position: relative;
+  top: 10px;
+  input[type='range'] {
+    position: absolute;
+    top: -75px;
+    left: -45px;
+    transform: rotate(270deg);
+  }
+`
+const TimelineWrapper = styled.div`
   display: flex;
-  gap: ${({ gap }) => gap + 'px'};
-  justify-content: center;
-  left: 0;
-  overflow: hidden;
+  width: 100%;
+
+  span {
+    color: #ffffff;
+    padding: 10px;
+    font-weight: bold;
+    word-spacing: 0px;
+    white-space: nowrap;
+  }
+
+  input {
+    width: 70%;
+  }
+`
+
+const ButtonHOC = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0px 10px;
+`
+
+const MainControlWrapper = styled.div`
+  display: flex;
+  flex: 5;
+`
+
+const SettingWrapper = styled.div`
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+`
+
+const ControlOverlayWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 50px;
   position: absolute;
-  right: 0;
-  top: 0;
-  transition: opacity 0.3s ease;
+  bottom: 7px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  left: 0;
+  background-color: rgba(102, 102, 102, 0.5);
   z-index: 1;
-  ${({ show }) =>
-    show
-      ? css`
-          opacity: 1;
-        `
-      : css`
-          opacity: 0;
-          pointer-events: none;
-        `}
+  padding-top: 5px;
+  padding-left: 15px;
 `
 
 const VideoPlayerWrapper = styled.div`
@@ -196,6 +268,11 @@ const Video = styled.video`
   height: 100%;
   outline: none;
   width: 100%;
+
+  &::cue {
+    position: relative;
+    top: -100px;
+  }
 `
 
 VideoPlayer.prototypes = {

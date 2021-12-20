@@ -52,6 +52,7 @@ const useControlPlayer = (videoRef, played) => {
   const handleSubtitle = ({ target = {} }) => {
     setState(actionType.subtitle, target?.value)
   }
+  const handleShowSubtitle = () => setState(actionType.isSubtitle)
 
   const handleVideoProgress = ({ target = {} }) => {
     const manualChange = Number(target?.value)
@@ -82,6 +83,7 @@ const useControlPlayer = (videoRef, played) => {
     handleFullScreen,
     handleResize,
     handleSubtitle,
+    handleShowSubtitle,
     handleOnTimeUpdate,
     handleVideoProgress,
     handleVideoSpeed,

@@ -6,6 +6,7 @@ const initVideoState = {
   progress: 0,
   width: 0,
   subtitle: 'en',
+  isSubtitle: true,
   speed: 1,
   isMuted: false,
   volume: 100,
@@ -27,6 +28,9 @@ const reducer = (state, action) => {
 
     case actions.width:
       return { ...state, width: action.payload }
+
+    case actions.isSubtitle:
+      return { ...state, isSubtitle: !state.isSubtitle }
 
     case actions.subtitle:
       return { ...state, subtitle: action.payload }

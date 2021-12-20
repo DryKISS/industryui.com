@@ -4,6 +4,7 @@ export default {
   progress: 'PROGRESS',
   width: 'WIDTH',
   subtitle: 'SUBTITLE',
+  isSubtitle: 'IS_SUBTITLE',
   speed: 'SPEED',
   isMuted: 'IS_MUTED',
   volume: 'VOLUME',
