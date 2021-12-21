@@ -58,11 +58,13 @@ const Login = ({
   } = useRouter()
   const onSubmit = ({ email, password }) => {
     if (!submit) {
-      signIn('email', email, password, (error) => error && setError(error)).then(() => {
-        if (redirect) {
-          Router.push(redirect)
-        } else {
-          Router.push('/dashboard')
+      signIn('email', email, password, (error) => error && setError(error)).then((result) => {
+        if (!Object.keys(error)?.length) {
+          if (redirect) {
+            Router.push(redirect)
+          } else {
+            Router.push('/dashboard')
+          }
         }
       })
     } else {

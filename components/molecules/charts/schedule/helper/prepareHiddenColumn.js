@@ -6,9 +6,7 @@
 import { array } from 'prop-types'
 
 const prepareHiddenColumn = (hiddenColumn) => {
-  const result = {}
-
-  hiddenColumn.forEach((item) => {
+  const result = (hiddenColumn || []).forEach((item) => {
     result[item] = true
   })
 
