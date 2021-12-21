@@ -12,4 +12,4 @@ should be the full mimetypes strings, e.g. image/jpeg
 
 [Accept](https://github.com/react-dropzone/react-dropzone/tree/master/examples/accept)
 
-**Important**: Use `DropzoneField` component outside of `FormLabel` component.
+**Important**: Use `DropzoneField` component outside of `Label` component.

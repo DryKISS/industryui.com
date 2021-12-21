@@ -58,8 +58,14 @@ const ReactSelect = ({
         control={control}
         defaultValue={defaultValue}
         name={name}
-        render={(props) => (
-          <Component options={options} selectedOption={props.value} {...props} {...parentProps} />
+        render={({ field: { onChange, ...props } }) => (
+          <Component
+            options={options}
+            onChange={onChange}
+            selectedOption={props.value}
+            {...props}
+            {...parentProps}
+          />
         )}
 
         // render={({ field: { onChange, onBlur, value, name, ref } }) => (

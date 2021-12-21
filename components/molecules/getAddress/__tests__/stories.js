@@ -57,7 +57,12 @@ const schema = object().shape({
 })
 
 export const Main = (args) => {
-  const { errors, handleSubmit, register, setValue } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register,
+    setValue
+  } = useForm({
     resolver: yupResolver(schema)
   })
 

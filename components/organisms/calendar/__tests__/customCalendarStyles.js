@@ -21,7 +21,11 @@ import Select from '../../../form/select/select'
 
 const CustomCalendarStyles = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false)
-  const { errors, handleSubmit, register } = useForm()
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm()
   const [calendarStyles, setCalendarStyles] = useState({})
 
   const defaultProps = {

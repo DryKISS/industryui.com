@@ -44,7 +44,11 @@ export default {
 }
 
 export const Main = (args) => {
-  const { control, errors, handleSubmit } = useForm()
+  const {
+    control,
+    formState: { errors = {} },
+    handleSubmit
+  } = useForm()
 
   const defaultProps = {
     control: control,

@@ -21,7 +21,7 @@ import DatePicker from '../../datePicker/datePicker'
 import DropzoneController from '../../dropzone/controller'
 import Error from '../../error/error'
 import Input from '../../input/input'
-import Fieldset from '../../feildset/fieldset'
+import Fieldset from '../../fieldset/fieldset'
 import Form from '../../form/form'
 import Label from '../../label/label'
 import Legend from '../../legend/legend'
@@ -66,7 +66,6 @@ const schema = object().shape({
   email: string().required('Please Enter an email').email(),
   input: string().required(),
   name: string().required(),
-  reactSelect: string().required(),
   rich: string().required(),
   datepicker: string().required(),
   textarea: string().required(),

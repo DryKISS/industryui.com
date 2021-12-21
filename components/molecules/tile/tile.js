@@ -104,6 +104,7 @@ const StyledTile = styled.div`
 `
 
 Tile.propTypes = {
+  bgColour: string,
   body: node,
   className: string,
   colourConfig: object,
@@ -116,6 +117,7 @@ Tile.propTypes = {
 }
 
 Tile.defaultProps = {
+  bgColour: null,
   loading: false,
   rounded: false,
   size: 'sm'

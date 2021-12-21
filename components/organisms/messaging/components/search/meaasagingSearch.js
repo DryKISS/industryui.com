@@ -40,7 +40,11 @@ const Items = [
 ]
 
 const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     mode: 'onChange'
   })
 

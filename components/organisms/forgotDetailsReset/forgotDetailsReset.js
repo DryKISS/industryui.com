@@ -27,7 +27,11 @@ import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 const ForgotDetailsReset = ({ pathLogIn, submit }) => {
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema)
   })
 

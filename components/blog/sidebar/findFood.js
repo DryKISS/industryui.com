@@ -47,7 +47,11 @@ const schema = object().shape({
 })
 
 const BlogFindFood = ({ colour }) => {
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema),
     mode: 'onSubmit'
   })
