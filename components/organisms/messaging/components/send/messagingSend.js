@@ -3,7 +3,7 @@
  */
 
 // React
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { array, func, number } from 'prop-types'
 
 // DraftJS
@@ -27,28 +27,33 @@ import MessageNames from '../../../../services/componentCommunication/messageNam
 import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
+
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
 
 const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
-  // const [open, setOpen] = useState(false)
   const [Message, setMessage] = useState({})
   const [attachments, setAttachments] = useState([])
   const [voiceMessage, setVoiceMessage] = useState(null)
   const [audience, setAudience] = useState(audienceItems[0] || '')
-  const fileInputRef = useRef()
 
   const openFileDialog = () => {
-    fileInputRef.current.click()
-  }
-
-  const handleFilesChange = (e) => {
-    const { files } = e.target
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,
       payload: {
-        action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
-        data: files
+        action: MessagingActions.SET_FULL_PREVIEW_FILES,
+        data: {
+          files: [],
+          isAdding: true,
+          isPreview: false,
+          isClearData: false,
+          selectedIndex: 0
+        }
       }
+    })
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
     })
   }
 
@@ -59,6 +64,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
         break
+
       case MessagingActions.REPLY_MESSAGE:
         setreplyMessage(payload.data)
         break
@@ -83,6 +89,20 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
       ...(voiceMessage && { voice: voiceMessage }),
       ...(replyMessage && { replyTo: replyMessage })
     }
+
+    MessagingCommunicationService.send({
+      name: MessageNames.Messaging.MESSAGING_ACTION,
+      payload: {
+        action: MessagingActions.SET_FULL_PREVIEW_FILES,
+        data: {
+          files: null,
+          isAdding: false,
+          isPreview: false,
+          isClearData: true,
+          selectedIndex: 0
+        }
+      }
+    })
 
     onSubmit(data)
     setVoiceMessage(null)
@@ -130,6 +150,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
               {audience.name}
             </StyledDropDown>
           )}
+
           <StyledElements>
             <StyledIcon fixedWidth={false} icon="paperclip" onClick={openFileDialog} size="lg" />
             <EmojiSelectWrapper>
@@ -149,14 +170,6 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
 
           <MessagingInput mentions={mentions} onChange={handleInputChange} />
 
-          <input
-            multiple
-            onChange={handleFilesChange}
-            ref={fileInputRef}
-            style={{ display: 'none' }}
-            type="file"
-            accept=".pdf,image/*"
-          />
           <SendActionsWrapper>
             {isSendDisabled() ? (
               <VoiceRecorder onVoiceRecord={handleVoiceRecord} />

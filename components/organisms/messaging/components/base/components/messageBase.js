@@ -172,15 +172,19 @@ const MessageBase = ({
       payload: {
         action: MessagingActions.SET_FULL_PREVIEW_FILES,
         data: {
-          files,
-          selectedIndex: index,
           avatar: av,
+          files,
           from,
+          isAdding: false,
+          isClearData: false,
+          isPreview: true,
+          selectedIndex: index,
           time
         }
       }
     })
   }
+
   const renderAttachments = (attachments) => {
     const elements = []
     Array.from(attachments).forEach((item, index) => {
