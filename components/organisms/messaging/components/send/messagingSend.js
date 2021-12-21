@@ -155,6 +155,7 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
             ref={fileInputRef}
             style={{ display: 'none' }}
             type="file"
+            accept=".pdf,image/*"
           />
           <SendActionsWrapper>
             {isSendDisabled() ? (
