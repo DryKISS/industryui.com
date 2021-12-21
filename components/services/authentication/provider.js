@@ -68,6 +68,7 @@ const UserProvider = ({ children }) => {
       token = data.token
       const tokenData = decodeToken(token)
       user = tokenData.user
+      callback(data)
     } catch (err) {
       const { error } = err.response.data
       callback(new Error(error))
