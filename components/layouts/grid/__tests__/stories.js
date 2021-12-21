@@ -1,5 +1,5 @@
 /**
- * Layouts - Grid - Story
+ * Components - Layouts - Grid - Story
  */
 
 // React

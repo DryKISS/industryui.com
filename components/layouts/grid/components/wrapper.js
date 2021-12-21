@@ -1,5 +1,5 @@
 /**
- * Components - Layouts - LayoutGrid
+ * Components - Layouts - Grid - Wrapper
  */
 
 // React
@@ -23,3 +23,9 @@ LayoutGridWrapper.propTypes = {
 LayoutGridWrapper.defaultProps = {}
 
 export default LayoutGridWrapper
+
+// .app-ui {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
+//   grid-gap: 16px;
+// }

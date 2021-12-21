@@ -1,5 +1,5 @@
 /**
- * Components - Layouts - LayoutGrid
+ * Components - Layouts - Grid
  */
 
 // React
@@ -7,7 +7,7 @@ import React from 'react'
 import { node } from 'prop-types'
 
 // UI
-import LayoutGridWrapper from './wrapper'
+import LayoutGridWrapper from './components/wrapper'
 
 const LayoutGrid = ({ children }) => {
   return <LayoutGridWrapper>{children}</LayoutGridWrapper>
