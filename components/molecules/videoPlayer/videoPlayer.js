@@ -91,10 +91,11 @@ const VideoPlayer = ({ className, configs }) => {
   }
 
   const Volume = ({ volume, onChange }) => {
+    const [isShow, setIsShow] = useState(false)
     return (
       <VolumeWrapper>
-        <input type="range" min="0" max="100" value={volume} onChange={onChange} />
-        <ButtonHOC onClick={console.log}>
+        {isShow && <input type="range" min="0" max="100" value={volume} onChange={onChange} />}
+        <ButtonHOC onClick={() => setIsShow(!isShow)}>
           <VolumeIcon colour="white" />
         </ButtonHOC>
       </VolumeWrapper>
@@ -145,7 +146,7 @@ const VideoPlayer = ({ className, configs }) => {
             <ButtonHOC onClick={handleShowSubtitle}>
               <SubtitleIcon colour={isSubtitle ? 'white' : '#999999'} />
             </ButtonHOC>
-            <Volume volume={volume} onChange={handleSetVolume} />
+            {Volume({ volume, onChange: handleSetVolume })}
             <ButtonHOC onClick={console.log}>
               <SettingIcon colour="white" />
             </ButtonHOC>
