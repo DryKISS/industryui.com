@@ -9,30 +9,35 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import ChevronIcon from '../../../../icons/components/chevron'
-import CrossIcon from '../../../../icons/components/cross'
+import BottomPreview from './helpers/bottomPreview'
+import CloseIcon from '../../../../icons/components/close'
 import DownloadIcon from '../../../../icons/components/download'
-import Preview from '../../../../molecules/preview/preview'
 import downloadFile from '../../../../utils/fileDownload/fileDownload'
 import MessageNames from '../../../../services/componentCommunication/messageNames'
 import MessagingActions from '../../../../organisms/messaging/communication/messagingActions'
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
+import MessagingCommunicationService from '../../../../services/componentCommunication/messaging/service'
+
+import SliderPreview from './helpers/sliderPreview'
 
 const FullPreview = () => {
   const [selectedFileIndex, setSelectedFileIndex] = useState(null)
+  const [isAddFile, setAddingFile] = useState(false)
+  const [preElement, setPrevElement] = useState([])
   const [maxDocHeight, setMaxDocHeight] = useState(null)
-  const files = useRef()
-  const senderData = useRef()
+  const [scrollThumbnail, setScrollThumbnail] = useState(0)
+
+  const senderData = useRef(false)
   const previewWrapperRef = useRef()
 
   let fileName
 
   if (selectedFileIndex !== null) {
-    if (files.current[selectedFileIndex]?.src) {
+    if (preElement[selectedFileIndex]?.src) {
       fileName =
-        files.current[selectedFileIndex].src.split('/')[
-          files.current[selectedFileIndex].src.split('/').length - 1
+        preElement[selectedFileIndex].src.split('/')[
+          preElement[selectedFileIndex].src.split('/').length - 1
         ]
     } else {
       fileName = 'localFile'
@@ -40,7 +45,19 @@ const FullPreview = () => {
   }
 
   useEffect(() => {
-    if (previewWrapperRef.current && files.current[selectedFileIndex]?.type.includes('pdf')) {
+    if (isAddFile) {
+      MessagingCommunicationService.send({
+        name: MessageNames.Messaging.MESSAGING_ACTION,
+        payload: {
+          action: MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE,
+          data: preElement
+        }
+      })
+    }
+  }, [preElement.length])
+
+  useEffect(() => {
+    if (previewWrapperRef.current && preElement[selectedFileIndex]?.type === 'pdf') {
       setTimeout(() => {
         const height = previewWrapperRef.current.offsetHeight
         setMaxDocHeight(height)
@@ -52,17 +69,32 @@ const FullPreview = () => {
   }, [selectedFileIndex])
 
   const onAction = (payload) => {
-    switch (payload.action) {
-      case MessagingActions.SET_FULL_PREVIEW_FILES: {
-        const { avatar, from, time, files: attachments, selectedIndex } = payload.data
+    if (payload.action === MessagingActions.SET_FULL_PREVIEW_FILES) {
+      const {
+        avatar,
+        from,
+        files: attachments,
+        isClearData,
+        isAdding,
+        isPreview,
+        time,
+        selectedIndex
+      } = payload.data
 
-        files.current = Array.from(attachments)
-        senderData.current = { avatar, from, time }
-        setSelectedFileIndex(selectedIndex)
-        break
+      if (isClearData) {
+        if (isClearData) {
+          handleClearAllData()
+        }
+        return handleHide()
+      } else if (isAdding) {
+        setAddingFile(true)
+      } else if (isPreview) {
+        setAddingFile(false)
       }
-      default:
-        break
+
+      setPrevElement([...attachments])
+      if (isPreview) senderData.current = { avatar, from, time }
+      setSelectedFileIndex(selectedIndex)
     }
   }
 
@@ -72,118 +104,94 @@ const FullPreview = () => {
     subscriber: MessagingSubscriber
   })
 
+  // clear component preview data when message is sent
+  const handleClearAllData = () => {
+    setPrevElement([])
+    setSelectedFileIndex(0)
+  }
+
   const handleHide = () => {
     setSelectedFileIndex(null)
   }
 
-  const onFileClick = (e, index) => {
-    e.stopPropagation()
-    setSelectedFileIndex(index)
-  }
-
-  const handleArrowClick = (e, direction) => {
-    e.stopPropagation()
-    switch (direction) {
-      case 'right':
-        if (selectedFileIndex === files.current.length - 1) {
-          setSelectedFileIndex(0)
-          return
-        }
-        setSelectedFileIndex((index) => index + 1)
-        break
-
-      case 'left':
-        if (selectedFileIndex === 0) {
-          setSelectedFileIndex(files.current.length - 1)
-          return
-        }
-        setSelectedFileIndex((index) => index - 1)
-        break
-
-      default:
-        break
-    }
-  }
-
-  const handleMainPreviewClick = (e) => {
-    e.stopPropagation()
-  }
-
   const handleDownloadClick = (url, filename) => downloadFile({ url, filename })
 
+  const handleScrollThumbnail = (status) => {
+    setScrollThumbnail(status === 'right' ? scrollThumbnail + 50 : scrollThumbnail - 50)
+  }
+
   return (
-    <Wrapper onClick={handleHide} visible={selectedFileIndex !== null}>
-      <CrossWrapper onClick={handleHide}>
-        <CrossIcon colour="white" />
-      </CrossWrapper>
+    <Wrapper visible={selectedFileIndex !== null} isSenderData={!!senderData.current}>
+      <Title>
+        <p>Preview of Files</p>
+        <CrossWrapper onClick={handleHide}>
+          <CloseIcon colour="white" />
+        </CrossWrapper>
+      </Title>
 
       <ContentWrapper>
-        {selectedFileIndex !== null && (
-          <SelectedFilePreviewContainer
-            onClick={handleMainPreviewClick}
-            ref={previewWrapperRef}
-            maxDocHeight={maxDocHeight}
-            visible={files.current.length > 0}
-          >
-            <ChevronWrapper>
-              <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} />
-            </ChevronWrapper>
-
-            <Preview
-              file={files.current[selectedFileIndex]}
-              contain
-              zoomable={files.current[selectedFileIndex].type.includes('image')}
+        <SliderContent previewWrapperRef={previewWrapperRef}>
+          {selectedFileIndex !== null && preElement.length > 0 ? (
+            <SliderPreview
+              maxDocHeight={maxDocHeight}
+              data={preElement}
+              selectedFileIndex={selectedFileIndex}
+              setSelectedFileIndex={setSelectedFileIndex}
+              onScroll={handleScrollThumbnail}
             />
-
-            <ChevronWrapper right>
-              <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} />
-            </ChevronWrapper>
-          </SelectedFilePreviewContainer>
-        )}
+          ) : (
+            <NoData>No Data</NoData>
+          )}
+        </SliderContent>
 
         <PreviewsWrapper>
           {selectedFileIndex !== null ? (
-            files.current.map((item, index) => {
-              return (
-                <BottomPreviewContainer key={index} selected={selectedFileIndex === index}>
-                  <Preview onClick={(e) => onFileClick(e, index)} file={item} small />
-                </BottomPreviewContainer>
-              )
-            })
+            <BottomPreview
+              data={preElement}
+              scrollThumbnail={scrollThumbnail}
+              isAddFile={isAddFile}
+              selectedFileIndex={selectedFileIndex}
+              setSelectedFileIndex={setSelectedFileIndex}
+              setPrevElement={setPrevElement}
+            />
           ) : (
             <></>
           )}
         </PreviewsWrapper>
 
         <BottomContainer>
-          {senderData.current && (
-            <>
+          {senderData.current ? (
+            <MetaData>
               <SenderInfoWrapper>
-                <AvatarWrapper>{senderData.current.avatar}</AvatarWrapper>
+                <AvatarWrapper>{senderData?.current?.avatar}</AvatarWrapper>
 
                 <InfoWrapper>
-                  <From>{senderData.current.from}</From>
-                  <SentDate>{senderData.current.time}</SentDate>
+                  <From>{senderData?.current?.from}</From>
+                  <SentDate>{senderData?.current?.time}</SentDate>
                 </InfoWrapper>
               </SenderInfoWrapper>
 
-              <NumbersWrapper>
-                {`${selectedFileIndex + 1} of ${files.current.length}`}
-              </NumbersWrapper>
+              <SenderInfo>
+                <NumbersWrapper>{`${selectedFileIndex + 1} of ${
+                  preElement.length
+                }`}</NumbersWrapper>
 
-              {selectedFileIndex !== null && (
-                <ActionsWrapper onClick={(e) => e.stopPropagation()}>
-                  <Actions>
-                    <DownloadIcon
-                      onClick={() =>
-                        handleDownloadClick(files.current[selectedFileIndex].src, fileName)
-                      }
-                      colour="#c1c1c1"
-                    />
-                  </Actions>
-                </ActionsWrapper>
-              )}
-            </>
+                {selectedFileIndex !== null && (
+                  <ActionsWrapper onClick={(e) => e.stopPropagation()}>
+                    <Actions>
+                      <DownloadIcon
+                        onClick={() =>
+                          handleDownloadClick(preElement[selectedFileIndex]?.src, fileName)
+                        }
+                        colour="dark"
+                      />
+                    </Actions>
+                  </ActionsWrapper>
+                )}
+              </SenderInfo>
+            </MetaData>
+          ) : (
+            <NumbersWrapper>{`${selectedFileIndex + 1} of ${preElement.length}`}</NumbersWrapper>
           )}
         </BottomContainer>
       </ContentWrapper>
@@ -191,23 +199,25 @@ const FullPreview = () => {
   )
 }
 
-const ChevronWrapper = styled.div`
-  left: 0.5rem;
-  position: absolute;
-  top: 40%;
-  z-index: 1;
-  ${({ right }) =>
-    right &&
-    css`
-      left: unset;
-      right: 0.5rem;
-      transform: rotate(180deg);
-    `}
+const MetaData = styled.div``
+
+const SenderInfo = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `
 
+const Title = styled.div`
+  display: flex;
+  background-color: #cccccc;
+  p {
+    color: #333333;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+`
 const CrossWrapper = styled.div`
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.3);
+  background: #666666;
   border-radius: 5rem;
   display: flex;
   position: absolute;
@@ -218,21 +228,27 @@ const CrossWrapper = styled.div`
 `
 
 const Actions = styled.div``
+
 const ActionsWrapper = styled.div``
+
 const NumbersWrapper = styled.div`
-  color: ${({ theme }) => theme.COLOUR.white};
-  flex: 1;
-  padding-left: 25%;
+  color: ${({ theme }) => theme.COLOUR.dark};
+  font-weight: bold;
+  padding-right: 10px;
+  text-align: ${({ isSenderData }) => (isSenderData ? 'none' : 'center')};
 `
 
 const AvatarWrapper = styled.div`
+  width: 40px;
   margin-right: 1rem;
 `
 
-const InfoWrapper = styled.div``
+const InfoWrapper = styled.div`
+  color: #000000;
+`
 
 const From = styled.p`
-  color: ${({ theme }) => theme.COLOUR.white};
+  color: ${({ theme }) => theme.COLOUR.dark};
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
@@ -240,7 +256,7 @@ const From = styled.p`
 `
 
 const SentDate = styled.p`
-  color: ${({ theme }) => theme.COLOUR.white};
+  color: ${({ theme }) => theme.COLOUR.dark};
   font-size: 0.75rem;
   margin: 0;
 `
@@ -252,33 +268,8 @@ const SenderInfoWrapper = styled.div`
 
 const BottomContainer = styled.div`
   align-items: center;
-  display: flex;
   margin: 0 0.5rem 1rem 0.5rem;
   width: 95%;
-`
-
-const SelectedFilePreviewContainer = styled.div`
-  border-radius: 9px;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  max-height: 78%;
-  overflow: hidden;
-  padding-top: 1rem;
-  img {
-    max-height: 100%;
-    max-width: 100%;
-    width: unset;
-  }
-
-  ${({ maxDocHeight }) =>
-    maxDocHeight &&
-    css`
-      .react-pdf__Page__canvas {
-        width: unset !important;
-        height: ${maxDocHeight}px !important;
-      }
-    `}
 `
 
 const PreviewsWrapper = styled.div`
@@ -286,21 +277,7 @@ const PreviewsWrapper = styled.div`
   margin: 0 5% 5%;
   width: 90%;
   display: flex;
-`
-
-const BottomPreviewContainer = styled.div`
-  border: 2px solid ${({ theme }) => theme.COLOUR.blackGrey};
-  box-sizing: content-box;
-  margin: 0 0.25rem;
-  position: relative;
-  width: 4rem;
-  transition-property: border-color;
-  transition-duration: 0.3s;
-  ${({ selected }) =>
-    selected &&
-    css`
-      border: 2px solid ${({ theme }) => theme.COLOUR.info};
-    `}
+  overflow: hidden;
 `
 
 const ContentWrapper = styled.div`
@@ -313,7 +290,7 @@ const ContentWrapper = styled.div`
 `
 
 const Wrapper = styled.div`
-  background: rgba(0, 0, 0, 0.9);
+  background: #e6e6e6;
   bottom: 0;
   left: 0;
   right: 0;
@@ -323,6 +300,9 @@ const Wrapper = styled.div`
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s;
+  overscroll-behavior: contain;
+  max-height: ${({ isSenderData }) => (isSenderData ? '800px' : '700px')};
+  border-radius: 8px;
 
   ${({ visible }) =>
     visible &&
@@ -330,6 +310,22 @@ const Wrapper = styled.div`
       opacity: 1;
       pointer-events: initial;
     `}
+`
+const SliderContent = styled.div`
+  min-height: 55%;
+  max-height: 70%;
+`
+
+const NoData = styled.div`
+  height: 3rem;
+  margin-bottom: 0.5rem;
+  color: gray;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
 `
 
 export default FullPreview

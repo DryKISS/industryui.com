@@ -102,10 +102,10 @@ const TableRows = memo(
               striped={striped}
             >
               {Object.entries(row).map(([key, value], index) => {
-                const columnsLength = columns.length
+                const columnsLength = columns?.length
                 const column = columns[index]
 
-                if (columnsLength && column.hidden) {
+                if (columnsLength && column?.hidden) {
                   return null
                 }
 
@@ -115,16 +115,16 @@ const TableRows = memo(
                 return (
                   <TableData align={align} key={index}>
                     {draggableRows && index === 0 && <StyledDragHandle />}
-                    {columnsLength > 0 && column.formatter ? (
+                    {columnsLength > 0 && column?.formatter ? (
                       typeof formatterData === 'function' ? (
-                        column.formatter({
+                        column?.formatter({
                           row,
                           data: (row) => formatterData
                         })
                       ) : (
-                        column.formatter({ row, data: formatterData })
+                        column?.formatter({ row, data: formatterData })
                       )
-                    ) : value && value.__html ? (
+                    ) : value && value?.__html ? (
                       <span dangerouslySetInnerHTML={value} />
                     ) : (
                       renderValue

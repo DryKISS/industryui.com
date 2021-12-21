@@ -1,6 +1,6 @@
 {
   "name": "@drykiss/industry-ui",
-  "version": "3.0.0-alpha",
+  "version": "3.0.0-alpha.1",
   "description": "DryKISS React components library for NextJS",
   "author": "The IndustryUI Authors (https://github.com/DryKISS/industryui.com/graphs/contributors)",
   "contributors": [
@@ -121,7 +121,7 @@
     "react-hook-form": "7.15.3",
     "react-leaflet": "3.1.0",
     "react-leaflet-markercluster": "3.0.0-rc1",
-    "react-pdf": "5.3.2",
+    "react-pdf": "5.6.0",
     "react-resize-detector": "6.7.6",
     "react-select": "4.3.1",
     "react-virtualized": "9.22.3",
