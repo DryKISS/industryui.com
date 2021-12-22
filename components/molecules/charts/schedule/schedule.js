@@ -58,8 +58,8 @@ const Schedule = ({
     dataSource,
     eventTimeSplitting,
     events,
-    hiddenColumn,
     flag,
+    hiddenColumn,
     title
   })
 

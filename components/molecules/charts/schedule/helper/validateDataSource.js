@@ -31,8 +31,8 @@ const validateDataSource = ({
   dataSource,
   eventTimeSplitting,
   events,
-  hiddenColumn,
   flag,
+  hiddenColumn,
   title
 }) => {
   const errors = []
