@@ -18,6 +18,7 @@ import columns from './helper/columns'
 import generateFilterDate from './helper/generateFilterDate'
 import prepareHiddenColumn from './helper/prepareHiddenColumn'
 import prepareScheduleRows from './helper/prepareScheduleRows'
+import validateDataSource from './helper/validateDataSource'
 
 const Schedule = ({
   currentYear,
@@ -52,6 +53,17 @@ const Schedule = ({
     throw new Error('initialMode can be one of day, week, month or year values')
 
   const currentDataSource = dataSource?.length > 0 ? dataSource : []
+
+  const isDataValid = validateDataSource({
+    dataSource,
+    eventTimeSplitting,
+    events,
+    flag,
+    hiddenColumn,
+    title
+  })
+
+  if (!isDataValid.isValid) throw new Error(JSON.stringify(isDataValid.errors))
 
   const generateColumn = columns(handleClick, {
     currentDate,

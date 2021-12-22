@@ -6,11 +6,17 @@
 import { array } from 'prop-types'
 
 const prepareHiddenColumn = (hiddenColumn) => {
-  const result = (hiddenColumn || []).forEach((item) => {
-    result[item] = true
-  })
+  if (hiddenColumn.length) {
+    const result = {}
 
-  return result
+    hiddenColumn.forEach((item) => {
+      result[item] = true
+    })
+
+    return result
+  } else {
+    return {}
+  }
 }
 
 prepareHiddenColumn.propTypes = {
