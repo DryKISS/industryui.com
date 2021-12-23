@@ -60,8 +60,8 @@ const useControlPlayer = (videoRef, played) => {
     setState(actionType.progress, manualChange)
   }
 
-  const handleVideoSpeed = ({ target = {} }) => {
-    const speed = Number(target?.value)
+  const handleVideoSpeed = (currentSpeed) => {
+    const speed = Number(currentSpeed)
     videoRef.current.playbackRate = speed
     setState(actionType.speed, speed)
   }

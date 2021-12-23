@@ -28,6 +28,7 @@ const subtitles = [
 ]
 export const main = () => (
   <VideoPlayer
+    onFavorite={console.log}
     configs={{
       videos: [
         { subtitles, poster: '/video/poster.png', src: '/video/video.mp4' },
