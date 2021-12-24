@@ -22,6 +22,9 @@ const VideoTitleWrapper = styled.div`
   background: rgba(81, 81, 81, 0.5);
   display: flex;
   justify-content: space-between;
+  @media (max-width: 400px) {
+    display: none;
+  }
 `
 
 const Title = styled.div`

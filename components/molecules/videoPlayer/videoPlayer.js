@@ -10,18 +10,12 @@ import { any, string } from 'prop-types'
 import styled from 'styled-components'
 
 // UI
-
-import FullScreenIcon from '../../icons/components/fullScreen'
-import SettingIcon from '../../icons/components/setting'
-import ButtonHOC from './components/ButtonHOC'
-import SubtitleIcon from '../../icons/components/subtitle'
-
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import useControlPlayer from './helpers/useControlPlayer'
-import Volume from './components/volume'
 import VideoTitle from './components/videoTitle'
 import SettingControlBox from './components/settingControlBox'
-import MainControlBox from './components/mainControlBox'
+import videoSubtitle from './helpers/videoSubtitle'
+import VideoControl from './components/videoControl'
 
 const VideoPlayer = ({ className, configs, onFavorite }) => {
   const { videos = [] } = configs
@@ -53,14 +47,6 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
 
   const { title, description, subtitles = [], src = '', videoType } = videoState
 
-  const videoSubtitle = () => {
-    const track = (subtitles || []).find(({ srcLang = 'en' }) => srcLang === subtitle)
-    if (track) {
-      return <track {...track} default></track>
-    }
-    return null
-  }
-
   const track = videoRef?.current?.children[1]?.track
 
   // setFavorite
@@ -86,63 +72,33 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
         </SubtitleText>
         <Video ref={videoRef} seekable onTimeUpdate={handleOnTimeUpdate}>
           <source src={src} type={videoType || 'video/mp4'} />
-          {isSubtitle && videoSubtitle()}
+          {isSubtitle && videoSubtitle({ subtitle, subtitles })}
           Your browser does not support the video tag.
         </Video>
 
-        <ControlOverlayWrapper>
-          <MainControlBox
-            {...{
-              handlePlayPause,
-              handleSkip,
-              setVideoState,
-              handleVideoProgress,
-              isPlaying,
-              progress,
-              videoRef,
-              videos
-            }}
-          />
-          <SettingWrapper>
-            <ButtonHOC onClick={handleShowSubtitle}>
-              <SubtitleIcon colour={isSubtitle ? 'white' : '#999999'} />
-            </ButtonHOC>
-            <Volume {...{ isShowSetting, volume, onChange: handleSetVolume }} />
-            <ButtonHOC onClick={() => setShowSetting(!isShowSetting)}>
-              <SettingIcon colour="white" />
-            </ButtonHOC>
-
-            <ButtonHOC onClick={handleFullScreen}>
-              <FullScreenIcon colour="white" />
-            </ButtonHOC>
-          </SettingWrapper>
-        </ControlOverlayWrapper>
+        <VideoControl
+          {...{
+            handlePlayPause,
+            handleSkip,
+            setVideoState,
+            handleVideoProgress,
+            isPlaying,
+            progress,
+            videoRef,
+            videos,
+            handleShowSubtitle,
+            isSubtitle,
+            isShowSetting,
+            handleSetVolume,
+            volume,
+            setShowSetting,
+            handleFullScreen
+          }}
+        />
       </VideoPlayerWrapper>
     </>
   )
 }
-
-const SettingWrapper = styled.div`
-  flex: 2;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
-`
-
-const ControlOverlayWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  bottom: 7px;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  left: 0;
-  background-color: rgba(102, 102, 102, 0.5);
-  z-index: 1;
-  padding-top: 5px;
-  padding-left: 15px;
-`
 
 const VideoPlayerWrapper = styled.div`
   border-radius: 0.5rem;
@@ -168,7 +124,9 @@ const SubtitleText = styled.div`
   position: absolute;
   bottom: 90px;
   left: 10%;
-
+  @media (max-width: 450px) {
+    display: none;
+  }
   div {
     background-color: rgba(102, 102, 102, 0.5);
     color: #ffffff;

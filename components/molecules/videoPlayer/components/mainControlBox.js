@@ -103,7 +103,9 @@ const MainControlWrapper = styled.div`
 const TimelineWrapper = styled.div`
   display: flex;
   width: 100%;
-
+  @media (max-width: 700px) {
+    display: none;
+  }
   span {
     color: #ffffff;
     padding: 10px;
