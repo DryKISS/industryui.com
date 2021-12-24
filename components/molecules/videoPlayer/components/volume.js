@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import VolumeIcon from '../../../icons/components/volume'
-
+import ButtonHOC from './ButtonHOC'
 const Volume = ({ isShowSetting, volume, onChange }) => {
   const [isShow, setIsShow] = useState(false)
 
@@ -17,13 +17,6 @@ const Volume = ({ isShowSetting, volume, onChange }) => {
     </VolumeWrapper>
   )
 }
-
-const ButtonHOC = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0px 10px;
-`
 
 const VolumeWrapper = styled.div`
   position: relative;

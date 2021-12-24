@@ -1,7 +1,7 @@
 // Style
 import styled from 'styled-components'
 import StarIcon from '../../../icons/components/star'
-
+import ButtonHOC from './ButtonHOC'
 const VideoTitle = ({ title, description, favorite, setFavorite }) => (
   <VideoTitleWrapper>
     <Title>
@@ -34,12 +34,5 @@ const Title = styled.div`
     margin-top: 3px;
   }
 `
-// TODO: separate component
-const ButtonHOC = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0px 10px;
-  z-index: 1000;
-`
+
 export default VideoTitle

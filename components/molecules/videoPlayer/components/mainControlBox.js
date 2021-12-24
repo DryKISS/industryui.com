@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import styled from 'styled-components'
 import toHHMMSS from '../../../utils/date/hhmmss'
-
+import ButtonHOC from './ButtonHOC'
 import StepForwardIcon from '../../../icons/components/stepForward'
 import StepBackwardIcon from '../../../icons/components/stepBackward'
 import ForwardPlayIcon from '../../../icons/components/forwardPlay'
@@ -115,13 +115,6 @@ const TimelineWrapper = styled.div`
   input {
     width: 70%;
   }
-`
-
-const ButtonHOC = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0px 10px;
 `
 
 export default MainControlBox

@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 import FullScreenIcon from '../../icons/components/fullScreen'
 import SettingIcon from '../../icons/components/setting'
-
+import ButtonHOC from './components/ButtonHOC'
 import SubtitleIcon from '../../icons/components/subtitle'
 
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
@@ -121,14 +121,6 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
     </>
   )
 }
-
-const ButtonHOC = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0px 10px;
-  z-index: 1000;
-`
 
 const SettingWrapper = styled.div`
   flex: 2;
