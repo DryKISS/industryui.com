@@ -1,8 +1,12 @@
+/**
+ * Components - Icons - step Backward Icon
+ */
+
 import React from 'react'
 import propTypes from '../props'
 import IconWrapper from '../wrapper'
 
-const PauseCircleIcon = (props) => {
+const StepForwardIcon = (props) => {
   return (
     <IconWrapper {...props} mainSize={20}>
       <path
@@ -13,6 +17,6 @@ const PauseCircleIcon = (props) => {
   )
 }
 
-PauseCircleIcon.propTypes = propTypes
+StepForwardIcon.propTypes = propTypes
 
-export default PauseCircleIcon
+export default StepForwardIcon

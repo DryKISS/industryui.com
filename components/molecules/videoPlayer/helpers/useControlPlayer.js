@@ -1,3 +1,7 @@
+/**
+ * Components - Molecules - Video Player - Helper - useControlPlayer
+ */
+
 // React
 import { useEffect } from 'react'
 

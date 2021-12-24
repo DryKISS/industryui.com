@@ -1,3 +1,7 @@
+/**
+ * Components - Icons - Volume Icon
+ */
+
 import React from 'react'
 import propTypes from '../props'
 import IconWrapper from '../wrapper'
