@@ -1,9 +1,18 @@
-import styled from 'styled-components'
+/**
+ * Components - Molecules - Video Player - Component -  Volume
+ */
+
+// React
 import { useState } from 'react'
 
-import VolumeIcon from '../../../icons/components/volume'
+// Styled
+import styled from 'styled-components'
+
+// UI
 import ButtonHOC from './ButtonHOC'
-const Volume = ({ isShowSetting, volume, onChange }) => {
+import VolumeIcon from '../../../icons/components/volume'
+
+const Volume = ({ isShowSetting, onChange, volume }) => {
   const [isShow, setIsShow] = useState(false)
 
   return (

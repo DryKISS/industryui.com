@@ -1,28 +1,36 @@
-import { useState } from 'react'
+/**
+ * Components - Molecules - Video Player - Component -  Main Control Box
+ */
 
+// React
+import { useState } from 'react'
+// Style
 import styled from 'styled-components'
-import toHHMMSS from '../../../utils/date/hhmmss'
+
+// UI
 import ButtonHOC from './ButtonHOC'
-import StepForwardIcon from '../../../icons/components/stepForward'
-import StepBackwardIcon from '../../../icons/components/stepBackward'
-import ForwardPlayIcon from '../../../icons/components/forwardPlay'
 import BackwardPlayIcon from '../../../icons/components/backwardPlay'
+import ForwardPlayIcon from '../../../icons/components/forwardPlay'
 import PlayCircleIcon from '../../../icons/components/playCircle'
 import PauseCircleIcon from '../../../icons/components/pauseCircle'
+import StepForwardIcon from '../../../icons/components/stepForward'
+import StepBackwardIcon from '../../../icons/components/stepBackward'
+import toHHMMSS from '../../../utils/date/hhmmss'
+
 const STATUS = {
-  forward: 'forward',
-  backward: 'backward'
+  backward: 'backward',
+  forward: 'forward'
 }
 
 const MainControlBox = ({
   handlePlayPause,
-  isPlaying,
-  handleSkip,
-  setVideoState,
   handleVideoProgress,
+  handleSkip,
+  isPlaying,
+  progress,
+  setVideoState,
   videoRef,
-  videos,
-  progress
+  videos
 }) => {
   const [current, setCurrent] = useState(0)
 
@@ -69,10 +77,10 @@ const MainControlBox = ({
       <TimelineWrapper>
         <span>
           {toHHMMSS({
-            sec: videoRef?.current?.currentTime,
             hasSecond: true,
             hasHour: true,
-            hasMinute: true
+            hasMinute: true,
+            sec: videoRef?.current?.currentTime
           })}
         </span>
         <input

@@ -1,23 +1,28 @@
+// React
 import { useEffect } from 'react'
+
+// UI
 import fullScreen from '../../../utils/fullScreen/fullScreen'
+
+// Helper
 import useReducer from './useReducer'
 import actionType from './actions'
 
-const useControlPlayer = (videoRef, played) => {
+const useControlPlayer = (videoRef) => {
   const { currentState, setState } = useReducer()
   const { progress, isMuted, isPlaying } = currentState
 
   const handleSkip = (status) => {
     const manualChange = Number(progress)
-    let v = 10
+    let defaultSkip = 10
 
     if (status === 'forward') {
-      v = 10
+      defaultSkip = 10
     } else {
-      v = -10
+      defaultSkip = -10
     }
     const calculate = (videoRef.current.duration / 100) * manualChange
-    videoRef.current.currentTime = calculate + v
+    videoRef.current.currentTime = calculate + defaultSkip
     setState(actionType.progress, manualChange)
   }
 
@@ -52,16 +57,21 @@ const useControlPlayer = (videoRef, played) => {
   const handleSubtitle = ({ target = {} }) => {
     setState(actionType.subtitle, target?.value)
   }
-  const handleShowSubtitle = () => setState(actionType.isSubtitle)
+
+  const handleShowSubtitle = () => {
+    setState(actionType.isSubtitle)
+  }
 
   const handleVideoProgress = ({ target = {} }) => {
     const manualChange = Number(target?.value)
+
     videoRef.current.currentTime = (videoRef.current.duration / 100) * manualChange
     setState(actionType.progress, manualChange)
   }
 
   const handleVideoSpeed = (currentSpeed) => {
     const speed = Number(currentSpeed)
+
     videoRef.current.playbackRate = speed
     setState(actionType.speed, speed)
   }
@@ -74,10 +84,6 @@ const useControlPlayer = (videoRef, played) => {
     isPlaying ? videoRef.current.play() : videoRef.current.pause()
   }, [isPlaying])
 
-  const toggleMute = () => {
-    setState(actionType.isMuted)
-  }
-
   return {
     handlePlayPause,
     handleFullScreen,
@@ -88,7 +94,6 @@ const useControlPlayer = (videoRef, played) => {
     handleVideoProgress,
     handleVideoSpeed,
     handleSetVolume,
-    toggleMute,
     handleSkip,
     ...currentState
   }

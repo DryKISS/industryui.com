@@ -1,8 +1,14 @@
+/**
+ * Components - Molecules - Video Player - Component -  Video Title
+ */
+
 // Style
 import styled from 'styled-components'
-import StarIcon from '../../../icons/components/star'
+
+// UI
 import ButtonHOC from './ButtonHOC'
-const VideoTitle = ({ title, description, favorite, setFavorite }) => (
+import StarIcon from '../../../icons/components/star'
+const VideoTitle = ({ description, favorite, title, setFavorite }) => (
   <VideoTitleWrapper>
     <Title>
       <h3>{title}</h3>

@@ -1,14 +1,22 @@
+/**
+ * Components - Molecules - Video Player - Component -  Setting Control Box
+ */
+
+// Styled
 import styled from 'styled-components'
-import Row from '../../../atoms/grid/Row'
+
+// UI
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
 import Button from '../../../atoms/button/button/button'
-import THEME_SIZE from '../../../constants/size'
+import Row from '../../../atoms/grid/Row'
 import Space from '../../../atoms/space/space'
+import THEME_SIZE from '../../../constants/size'
+
 const args = {
-  size: THEME_SIZE.MD,
   colour: 'white',
   borderRadius: '5px',
-  border: '1px solid #ffffff'
+  border: '1px solid #ffffff',
+  size: THEME_SIZE.MD
 }
 
 const QualityToolbar = ({ quality = '1024' }) => {
@@ -34,7 +42,7 @@ const QualityToolbar = ({ quality = '1024' }) => {
   )
 }
 
-const SpeedToolbar = ({ speed, handleVideoSpeed }) => {
+const SpeedToolbar = ({ handleVideoSpeed, speed }) => {
   const isActive = (current) => (speed === current ? 'white' : 'transparent')
 
   return (
@@ -76,7 +84,7 @@ const SpeedToolbar = ({ speed, handleVideoSpeed }) => {
     </Row>
   )
 }
-const SettingControlBox = ({ speed, handleSubtitle, handleVideoSpeed }) => (
+const SettingControlBox = ({ handleSubtitle, handleVideoSpeed, speed }) => (
   <SettingControlBoxWrapper>
     <h2>Settings</h2>
     <h3>Quality</h3>

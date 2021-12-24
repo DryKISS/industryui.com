@@ -1,14 +1,19 @@
-export default {
+/**
+ * Components - Molecules - Video Player - Helper -  Action
+ */
+
+const actionTypes = {
   currentVideo: 'CURRENT_VIDEO',
-  isPlaying: 'IS_PLAYING',
-  progress: 'PROGRESS',
-  width: 'WIDTH',
-  subtitle: 'SUBTITLE',
-  isSubtitle: 'IS_SUBTITLE',
-  speed: 'SPEED',
-  isMuted: 'IS_MUTED',
-  volume: 'VOLUME',
+  current: 'CURRENT',
   favorite: 'FAVORITE',
+  isPlaying: 'IS_PLAYING',
+  isSubtitle: 'IS_SUBTITLE',
+  progress: 'PROGRESS',
+  subtitle: 'SUBTITLE',
+  speed: 'SPEED',
+  volume: 'VOLUME',
   videoState: 'VIDEO_STATE',
-  current: 'CURRENT'
+  width: 'WIDTH'
 }
+
+export default actionTypes

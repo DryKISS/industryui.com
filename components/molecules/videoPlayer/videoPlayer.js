@@ -11,19 +11,21 @@ import styled from 'styled-components'
 
 // UI
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
-import useControlPlayer from './helpers/useControlPlayer'
-import VideoTitle from './components/videoTitle'
 import SettingControlBox from './components/settingControlBox'
+import VideoTitle from './components/videoTitle'
 import videoSubtitle from './helpers/videoSubtitle'
 import VideoControl from './components/videoControl'
 
+// helper
+import useControlPlayer from './helpers/useControlPlayer'
+
 const VideoPlayer = ({ className, configs, onFavorite }) => {
   const { videos = [] } = configs
+
   const videoRef = useRef()
-  const played = useRef(false)
+
   const [favorite, setFavorite] = useState(false)
   const [videoState, setVideoState] = useState(videos[0])
-
   const [isShowSetting, setShowSetting] = useState(false)
 
   const {
@@ -35,17 +37,17 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
     handleVideoProgress,
     handleVideoSpeed,
     handleSetVolume,
+    handleOnTimeUpdate,
     handleSkip,
-    volume,
     isPlaying,
-    subtitle,
     isSubtitle,
     progress,
+    subtitle,
     speed,
-    handleOnTimeUpdate
-  } = useControlPlayer(videoRef, played)
+    volume
+  } = useControlPlayer(videoRef)
 
-  const { title, description, subtitles = [], src = '', videoType } = videoState
+  const { description, subtitles = [], src = '', title, videoType } = videoState
 
   const track = videoRef?.current?.children[1]?.track
 
@@ -56,7 +58,7 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
     <>
       <VideoPlayerWrapper className={className}>
         <ResizeDetector onResize={handleResize} />
-        <VideoTitle {...{ title, description, favorite, setFavorite }} />
+        <VideoTitle {...{ description, favorite, setFavorite, title }} />
 
         {isShowSetting && (
           <SettingControlBox
@@ -80,19 +82,19 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
           {...{
             handlePlayPause,
             handleSkip,
-            setVideoState,
-            handleVideoProgress,
-            isPlaying,
-            progress,
-            videoRef,
-            videos,
             handleShowSubtitle,
+            handleVideoProgress,
+            handleSetVolume,
+            handleFullScreen,
+            isPlaying,
             isSubtitle,
             isShowSetting,
-            handleSetVolume,
-            volume,
+            progress,
+            setVideoState,
             setShowSetting,
-            handleFullScreen
+            videoRef,
+            videos,
+            volume
           }}
         />
       </VideoPlayerWrapper>

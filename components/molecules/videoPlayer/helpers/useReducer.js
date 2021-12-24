@@ -1,5 +1,13 @@
+/**
+ * Components - Molecules - Video Player - Helper -  useReducer
+ */
+
+// React
 import { useReducer } from 'react'
+
+// Helper
 import actions from './actions'
+
 const initVideoState = {
   currentVideo: 0,
   isPlaying: false,
@@ -8,7 +16,6 @@ const initVideoState = {
   subtitle: 'en',
   isSubtitle: true,
   speed: 1,
-  isMuted: false,
   volume: 100,
   favorite: false,
   videoState: {},
@@ -37,9 +44,6 @@ const reducer = (state, action) => {
 
     case actions.speed:
       return { ...state, speed: action.payload }
-
-    case actions.isMuted:
-      return { ...state, isMuted: !state.isMuted }
 
     case actions.volume:
       return { ...state, volume: action.payload }

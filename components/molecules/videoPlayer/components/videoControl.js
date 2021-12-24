@@ -1,39 +1,44 @@
+/**
+ * Components - Molecules - Video Player - Component -  Video Control
+ */
+
 // Style
 import styled from 'styled-components'
 
-import FullScreenIcon from '../../../icons/components/fullScreen'
-import SettingIcon from '../../../icons/components/setting'
+// UI
 import ButtonHOC from './ButtonHOC'
+import FullScreenIcon from '../../../icons/components/fullScreen'
+import MainControlBox from './mainControlBox'
+import SettingIcon from '../../../icons/components/setting'
 import SubtitleIcon from '../../../icons/components/subtitle'
 import Volume from './volume'
-import MainControlBox from './mainControlBox'
 
 const VideoControl = ({
   handlePlayPause,
   handleSkip,
-  setVideoState,
-  handleVideoProgress,
-  isPlaying,
-  progress,
-  videoRef,
-  videos,
   handleShowSubtitle,
+  handleFullScreen,
+  handleVideoProgress,
+  handleSetVolume,
+  isPlaying,
   isSubtitle,
   isShowSetting,
-  handleSetVolume,
-  volume,
+  progress,
+  setVideoState,
   setShowSetting,
-  handleFullScreen
+  videoRef,
+  videos,
+  volume
 }) => (
   <ControlOverlayWrapper>
     <MainControlBox
       {...{
         handlePlayPause,
         handleSkip,
-        setVideoState,
         handleVideoProgress,
         isPlaying,
         progress,
+        setVideoState,
         videoRef,
         videos
       }}
@@ -42,7 +47,7 @@ const VideoControl = ({
       <ButtonHOC onClick={handleShowSubtitle}>
         <SubtitleIcon colour={isSubtitle ? 'white' : '#999999'} />
       </ButtonHOC>
-      <Volume {...{ isShowSetting, volume, onChange: handleSetVolume }} />
+      <Volume {...{ isShowSetting, onChange: handleSetVolume, volume }} />
       <ButtonHOC onClick={() => setShowSetting(!isShowSetting)}>
         <SettingIcon colour="white" />
       </ButtonHOC>

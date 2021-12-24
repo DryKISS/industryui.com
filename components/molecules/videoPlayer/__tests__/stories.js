@@ -21,31 +21,33 @@ export default {
   },
   title: 'Molecules/VideoPlayer'
 }
+
 const subtitles = [
-  { label: 'Germany', kind: 'subtitles', srcLang: 'de', src: '/video/subtitles_de.vtt' },
-  { label: 'English', kind: 'subtitles', srcLang: 'en', src: '/video/subtitles_en.vtt' },
-  { label: 'japanese', kind: 'subtitles', srcLang: 'ja', src: '/video/subtitles_ja.vtt' }
+  { kind: 'subtitles', label: 'Germany', srcLang: 'de', src: '/video/subtitles_de.vtt' },
+  { kind: 'subtitles', label: 'English', srcLang: 'en', src: '/video/subtitles_en.vtt' },
+  { kind: 'subtitles', label: 'japanese', srcLang: 'ja', src: '/video/subtitles_ja.vtt' }
 ]
+
 export const main = () => (
   <VideoPlayer
-    onFavorite={console.log}
     configs={{
       videos: [
         {
-          subtitles,
+          description: 'Singer',
           poster: '/video/poster.png',
+          subtitles,
           src: '/video/video.mp4',
-          title: 'Music Festival',
-          description: 'Singer'
+          title: 'Music Festival'
         },
         {
-          subtitles,
+          description: 'Kyle Simpson',
           poster: '/video/poster.png',
+          subtitles,
           src: '/video/EgarVideo.mp4',
-          title: 'Javascript Tutorial',
-          description: 'Kyle Simpson'
+          title: 'Javascript Tutorial'
         }
       ]
     }}
+    onFavorite={console.log}
   />
 )

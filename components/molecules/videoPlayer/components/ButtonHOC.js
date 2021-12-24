@@ -1,3 +1,7 @@
+/**
+ * Components - Molecules - Video Player - Component -  Button HOC
+ */
+
 // Style
 import styled from 'styled-components'
 
