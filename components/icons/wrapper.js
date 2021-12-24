@@ -16,6 +16,7 @@ const IconWrapper = ({
   hoverColour,
   onClick,
   size,
+  stroke,
   translate,
   ...props
 }) => {
@@ -64,6 +65,7 @@ const IconWrapper = ({
       onClick={onClick}
       scale={scale}
       size={size}
+      stroke={stroke}
       translate={translate}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -129,7 +131,7 @@ const StyledSvg = styled.svg`
 
   path {
     transition: fill 0.2s ease;
-
+    stroke: ${({ stroke }) => stroke};
     fill: ${(props) => setColour(states.DEFAULT, props)};
 
     ${({ scale, translate }) => {

@@ -1,26 +1,33 @@
 import styled from 'styled-components'
 import Row from '../../../atoms/grid/Row'
-import Space from '../../../atoms/space/space'
 import ButtonToolbar from '../../../atoms/button/toolbar/toolbar'
 import Button from '../../../atoms/button/button/button'
 import THEME_SIZE from '../../../constants/size'
-
+import Space from '../../../atoms/space/space'
 const args = {
   size: THEME_SIZE.MD,
-  colour: 'white'
+  colour: 'white',
+  borderRadius: '5px',
+  border: '1px solid #ffffff'
 }
 
 const QualityToolbar = ({ quality = '1024' }) => {
   const isActive = (current) => (quality === current ? 'white' : 'transparent')
   return (
     <Row justify={'center'}>
-      <Space marginRight="sm" marginBottom="sm">
+      <Space marginTop="sm">
         <ButtonToolbar {...args}>
-          <Button content="1024" size="sm" context={isActive('1024')} onClick={() => []} />
-          <Button content="760" size="sm" context={isActive('760')} onClick={() => []} />
-          <Button content="480" size="sm" context={isActive('480')} onClick={() => []} />
-          <Button content="320" size="sm" context={isActive('320')} onClick={() => []} />
-          <Button content="128" size="sm" context={isActive('128')} onClick={() => []} />
+          <Button
+            context={'black'}
+            content="1024dp"
+            size="sm"
+            context={isActive('1024')}
+            onClick={() => []}
+          />
+          <Button content="760dp" size="sm" context={isActive('760')} onClick={() => []} />
+          <Button content="480dp" size="sm" context={isActive('480')} onClick={() => []} />
+          <Button content="320dp" size="sm" context={isActive('320')} onClick={() => []} />
+          <Button content="128dp" size="sm" context={isActive('128')} onClick={() => []} />
         </ButtonToolbar>
       </Space>
     </Row>
@@ -31,24 +38,41 @@ const SpeedToolbar = ({ speed, handleVideoSpeed }) => {
   const isActive = (current) => (speed === current ? 'white' : 'transparent')
 
   return (
-    <Row justify={'center'}>
-      <ButtonToolbar {...args}>
-        <Button
-          content="0.50x"
-          size="sm"
-          context={isActive(0.5)}
-          onClick={() => handleVideoSpeed(0.5)}
-        />
-        <Button content="1x" size="sm" context={isActive(1)} onClick={() => handleVideoSpeed(1)} />
-        <Button
-          content="1.25x"
-          size="sm"
-          context={isActive(1.25)}
-          onClick={() => handleVideoSpeed(1.25)}
-        />
-        <Button content="2x" size="sm" context={isActive(2)} onClick={() => handleVideoSpeed(2)} />
-        <Button content="5x" size="sm" context={isActive(5)} onClick={() => handleVideoSpeed(5)} />
-      </ButtonToolbar>
+    <Row justify={'left'}>
+      <Space marginTop="sm" marginLeft="md">
+        <ButtonToolbar {...args}>
+          <Button
+            content="0.50x"
+            size="sm"
+            context={isActive(0.5)}
+            onClick={() => handleVideoSpeed(0.5)}
+          />
+          <Button
+            content="1x"
+            size="sm"
+            context={isActive(1)}
+            onClick={() => handleVideoSpeed(1)}
+          />
+          <Button
+            content="1.25x"
+            size="sm"
+            context={isActive(1.25)}
+            onClick={() => handleVideoSpeed(1.25)}
+          />
+          <Button
+            content="2x"
+            size="sm"
+            context={isActive(2)}
+            onClick={() => handleVideoSpeed(2)}
+          />
+          <Button
+            content="5x"
+            size="sm"
+            context={isActive(5)}
+            onClick={() => handleVideoSpeed(5)}
+          />
+        </ButtonToolbar>
+      </Space>
     </Row>
   )
 }
@@ -78,6 +102,12 @@ const SettingControlBox = ({ speed, handleSubtitle, handleVideoSpeed }) => (
 const ChooseSubtitle = styled.div`
   > div {
     display: flex;
+    justify-content: space-between;
+    select {
+      width: 119px;
+      height: 24px;
+      margin-top: 16px;
+    }
   }
 `
 const SettingControlBoxWrapper = styled.div`

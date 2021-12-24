@@ -15,10 +15,11 @@ import FullScreenIcon from '../../icons/components/fullScreen'
 import SettingIcon from '../../icons/components/setting'
 
 import SubtitleIcon from '../../icons/components/subtitle'
+
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
 import useControlPlayer from './helpers/useControlPlayer'
 import Volume from './components/volume'
-
+import VideoTitle from './components/videoTitle'
 import SettingControlBox from './components/settingControlBox'
 import MainControlBox from './components/mainControlBox'
 
@@ -28,7 +29,7 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
   const played = useRef(false)
   const [favorite, setFavorite] = useState(false)
   const [videoState, setVideoState] = useState(videos[0])
-  const [current, setCurrent] = useState(0)
+
   const [isShowSetting, setShowSetting] = useState(false)
 
   const {
@@ -50,7 +51,7 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
     handleOnTimeUpdate
   } = useControlPlayer(videoRef, played)
 
-  const { subtitles = [], src = '', videoType } = videoState
+  const { title, description, subtitles = [], src = '', videoType } = videoState
 
   const videoSubtitle = () => {
     const track = (subtitles || []).find(({ srcLang = 'en' }) => srcLang === subtitle)
@@ -58,28 +59,6 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
       return <track {...track} default></track>
     }
     return null
-  }
-
-  const handleNext = (videoLength) => {
-    const currentState = current + 1
-    if (currentState < videoLength) {
-      setVideoState(videos[currentState])
-      setCurrent(currentState)
-      videoRef.current.pause()
-      videoRef.current.src = videos[currentState]?.src
-      videoRef.current.play()
-    }
-  }
-
-  const handlePrev = () => {
-    const currentState = current - 1
-    if (currentState >= 0) {
-      setVideoState(videos[currentState])
-      setCurrent(currentState)
-      videoRef.current.pause()
-      videoRef.current.src = videos[currentState]?.src
-      videoRef.current.play()
-    }
   }
 
   const track = videoRef?.current?.children[1]?.track
@@ -91,6 +70,8 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
     <>
       <VideoPlayerWrapper className={className}>
         <ResizeDetector onResize={handleResize} />
+        <VideoTitle {...{ title, description, favorite, setFavorite }} />
+
         {isShowSetting && (
           <SettingControlBox
             speed={speed}
@@ -114,8 +95,7 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
             {...{
               handlePlayPause,
               handleSkip,
-              handlePrev,
-              handleNext,
+              setVideoState,
               handleVideoProgress,
               isPlaying,
               progress,
@@ -138,12 +118,6 @@ const VideoPlayer = ({ className, configs, onFavorite }) => {
           </SettingWrapper>
         </ControlOverlayWrapper>
       </VideoPlayerWrapper>
-
-      <div>
-        <button onClick={() => setFavorite(!favorite)}>
-          {favorite ? 'Favorite' : 'Not Favorite'}
-        </button>
-      </div>
     </>
   )
 }
@@ -153,6 +127,7 @@ const ButtonHOC = styled.button`
   border: none;
   cursor: pointer;
   padding: 0px 10px;
+  z-index: 1000;
 `
 
 const SettingWrapper = styled.div`

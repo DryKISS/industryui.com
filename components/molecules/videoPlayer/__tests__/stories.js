@@ -31,8 +31,20 @@ export const main = () => (
     onFavorite={console.log}
     configs={{
       videos: [
-        { subtitles, poster: '/video/poster.png', src: '/video/video.mp4' },
-        { subtitles, poster: '/video/poster.png', src: '/video/EgarVideo.mp4' }
+        {
+          subtitles,
+          poster: '/video/poster.png',
+          src: '/video/video.mp4',
+          title: 'Music Festival',
+          description: 'Singer'
+        },
+        {
+          subtitles,
+          poster: '/video/poster.png',
+          src: '/video/EgarVideo.mp4',
+          title: 'Javascript Tutorial',
+          description: 'Kyle Simpson'
+        }
       ]
     }}
   />
