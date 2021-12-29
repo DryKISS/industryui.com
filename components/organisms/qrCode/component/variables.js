@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Qrcode - Variables
+ * Components - Organisms - Qrcode - Variables
  */
 
 // UI

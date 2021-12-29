@@ -1,5 +1,5 @@
 /**
- * Components - Molecules  - Qrcode
+ * Components - Organisms  - Qrcode
  */
 
 // React
