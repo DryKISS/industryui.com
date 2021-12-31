@@ -4,50 +4,50 @@
 const EXPENSES = [
   {
     disabled: true,
-    text: 'Select expense type',
+    label: 'Select expense type',
     value: ''
   },
   {
     group: 'General Administrative Expenses',
     items: [
       {
-        text: 'Telephone',
+        label: 'Telephone',
         value: 'TELEPHONE'
       },
       {
-        text: 'Internet',
+        label: 'Internet',
         value: 'INTERNET'
       },
       {
-        text: 'Employers Liability Insurance',
+        label: 'Employers Liability Insurance',
         value: 'EMPLOYERS_LIABILITY_INSURANCE'
       },
       {
-        text: 'Computer Consumables',
+        label: 'Computer Consumables',
         value: 'COMPUTER_CONSUMABLES'
       },
       {
-        text: 'Printing, Postage and Stationery',
+        label: 'Printing, Postage and Stationery',
         value: 'PRINTING_POSTAGE_STATIONERY'
       },
       {
-        text: 'Hire of Equipment',
+        label: 'Hire of Equipment',
         value: 'HIRE_OF_EQUIPMENT'
       },
       {
-        text: 'Professional Subscriptions',
+        label: 'Professional Subscriptions',
         value: 'PROFESSIONAL_SUBSCRIPTIONS'
       },
       {
-        text: 'General Insurance',
+        label: 'General Insurance',
         value: 'GENERAL_INSURANCE'
       },
       {
-        text: 'Software',
+        label: 'Software',
         value: 'SOFTWARE'
       },
       {
-        text: 'Web Hosting/Cloud Services',
+        label: 'Web Hosting/Cloud Services',
         value: 'WEB_HOSTING_CLOUD_SERVICES'
       }
     ]
@@ -56,27 +56,27 @@ const EXPENSES = [
     group: 'Travel and Subsistence',
     items: [
       {
-        text: 'Public Transport',
+        label: 'Public Transport',
         value: 'PUBLIC_TRANSPORT'
       },
       {
-        text: 'Subsistence (not entertaining)',
+        label: 'Subsistence (not entertaining)',
         value: 'SUBSISTENCE'
       },
       {
-        text: 'Parking and Tolls',
+        label: 'Parking and Tolls',
         value: 'PARKING_AND_TOLLS'
       },
       {
-        text: 'Vehicle Rental',
+        label: 'Vehicle Rental',
         value: 'VEHICLE_RENTALS'
       },
       {
-        text: 'UK Accommodation',
+        label: 'UK Accommodation',
         value: 'UK_ACCOMMODATION'
       },
       {
-        text: 'Overseas Travel',
+        label: 'Overseas Travel',
         value: 'OVERSEAS_TRAVEL'
       }
     ]
@@ -85,23 +85,23 @@ const EXPENSES = [
     group: 'Advertising, Promotion and Entertainment',
     items: [
       {
-        text: 'Advertising',
+        label: 'Advertising',
         value: 'ADVERTISING'
       },
       {
-        text: 'Promotion',
+        label: 'Promotion',
         value: 'PROMOTION'
       },
       {
-        text: 'Entertaining',
+        label: 'Entertaining',
         value: 'ENTERTAINING'
       },
       {
-        text: 'Gifts',
+        label: 'Gifts',
         value: 'GIFTS'
       },
       {
-        text: 'Event Hosting',
+        label: 'Event Hosting',
         value: 'EVENT_HOSTING'
       }
     ]
@@ -110,27 +110,27 @@ const EXPENSES = [
     group: 'Premises Costs',
     items: [
       {
-        text: 'Rent',
+        label: 'Rent',
         value: 'RENT'
       },
       {
-        text: 'Rates',
+        label: 'Rates',
         value: 'RATES'
       },
       {
-        text: 'Insurance',
+        label: 'Insurance',
         value: 'INSURANCE'
       },
       {
-        text: 'Utilities',
+        label: 'Utilities',
         value: 'UTILITIES'
       },
       {
-        text: 'Cleaning',
+        label: 'Cleaning',
         value: 'CLEANING'
       },
       {
-        text: 'Use of Own Premises',
+        label: 'Use of Own Premises',
         value: 'USE_OF_OWN_PREMISES'
       }
     ]
@@ -139,31 +139,31 @@ const EXPENSES = [
     group: 'Motor Expenses',
     items: [
       {
-        text: 'Mileage Allowance',
+        label: 'Mileage Allowance',
         value: 'MILEAGE_ALLOWANCE'
       },
       {
-        text: 'Motor Vehicle Running Costs',
+        label: 'Motor Vehicle Running Costs',
         value: 'MOTOR_VEHICLE_RUNNING_COSTS'
       },
       {
-        text: 'Company Van Running Costs',
+        label: 'Company Van Running Costs',
         value: 'COMPANY_VAN_RUNNING_COSTS'
       },
       {
-        text: 'Company Motorcycle Running Costs',
+        label: 'Company Motorcycle Running Costs',
         value: 'COMPANY_MOTORCYCLE_RUNNING_COSTS'
       },
       {
-        text: 'Company Bicycle Running Costs',
+        label: 'Company Bicycle Running Costs',
         value: 'COMPANY_BICYCLE_RUNNING_COSTS'
       },
       {
-        text: 'Fuel',
+        label: 'Fuel',
         value: 'FUEL'
       },
       {
-        text: 'Vehicle Licence',
+        label: 'Vehicle Licence',
         value: 'VEHICLE_LICENCE'
       }
     ]
@@ -172,19 +172,19 @@ const EXPENSES = [
     group: 'Fixed Asset',
     items: [
       {
-        text: 'Fixtures and Fittings Cost',
+        label: 'Fixtures and Fittings Cost',
         value: 'FIXTURES_AND_FITTINGS_COST'
       },
       {
-        text: 'Equipment Cost',
+        label: 'Equipment Cost',
         value: 'EQUIPMENT_COST'
       },
       {
-        text: 'Motor Vehicles Cost',
+        label: 'Motor Vehicles Cost',
         value: 'MOTOR_VEHICLES_COST'
       },
       {
-        text: 'Intangibles Cost',
+        label: 'Intangibles Cost',
         value: 'INTANGIBLES_COST'
       }
     ]
@@ -193,11 +193,11 @@ const EXPENSES = [
     group: 'Repairs and Renewals',
     items: [
       {
-        text: 'Maintenance',
+        label: 'Maintenance',
         value: 'MAINTENANCE'
       },
       {
-        text: 'Low Value Equipment',
+        label: 'Low Value Equipment',
         value: 'EQUIPMENT'
       }
     ]
@@ -206,27 +206,27 @@ const EXPENSES = [
     group: 'Legal and Professional Costs',
     items: [
       {
-        text: 'Legal Fees',
+        label: 'Legal Fees',
         value: 'LEGAL_FEES'
       },
       {
-        text: 'Accountancy',
+        label: 'Accountancy',
         value: 'ACCOUNTANCY'
       },
       {
-        text: 'Accountancy - Self Assessment/References',
+        label: 'Accountancy - Self Assessment/References',
         value: 'ACCOUNTANCY_SELF_ASSESSMENT'
       },
       {
-        text: 'Company Formation Costs',
+        label: 'Company Formation Costs',
         value: 'COMPANY_FORMATION_COSTS'
       },
       {
-        text: 'Beneficiary/Trust Payments',
+        label: 'Beneficiary/Trust Payments',
         value: 'BENEFICIARY_TRUST_PAYMENTS'
       },
       {
-        text: 'Confirmation Statement',
+        label: 'Confirmation Statement',
         value: 'ANNUAL_RETURN'
       }
     ]
@@ -235,19 +235,19 @@ const EXPENSES = [
     group: 'Finance',
     items: [
       {
-        text: 'Bank Charges',
+        label: 'Bank Charges',
         value: 'BANK_CHARGES'
       },
       {
-        text: 'Bank Interest',
+        label: 'Bank Interest',
         value: 'BANK_INTEREST'
       },
       {
-        text: 'Alternative Finance Payments',
+        label: 'Alternative Finance Payments',
         value: 'ALTERNATIVE_FINANCE_PAYMENTS'
       },
       {
-        text: 'Other Finance Charges',
+        label: 'Other Finance Charges',
         value: 'OTHER_FINANCE_CHARGES'
       }
     ]
@@ -256,7 +256,7 @@ const EXPENSES = [
     group: 'Penalties',
     items: [
       {
-        text: 'Late Tax Payment Penalties',
+        label: 'Late Tax Payment Penalties',
         value: 'LATE_TAX_PAYMENT_PENALTIES'
       }
     ]
@@ -265,31 +265,31 @@ const EXPENSES = [
     group: 'Employee Costs',
     items: [
       {
-        text: 'Staff Training',
+        label: 'Staff Training',
         value: 'STAFF_TRAINING'
       },
       {
-        text: 'Staff Welfare',
+        label: 'Staff Welfare',
         value: 'STAFF_WELFARE'
       },
       {
-        text: 'Pension Scheme Contributions',
+        label: 'Pension Scheme Contributions',
         value: 'PENSION_SCHEME_CONTRIBUTIONS'
       },
       {
-        text: 'Medical Insurance Contributions',
+        label: 'Medical Insurance Contributions',
         value: 'MEDICAL_INSURANCE_CONTRIBUTIONS'
       },
       {
-        text: 'Subcontractor Costs',
+        label: 'Subcontractor Costs',
         value: 'SUBCONTRACTOR_COSTS'
       },
       {
-        text: 'Childcare Voucher Admin Fees',
+        label: 'Childcare Voucher Admin Fees',
         value: 'CHILDCARE_VOUCHER_ADMIN_FEES'
       },
       {
-        text: 'Staff Benefits and Expenses',
+        label: 'Staff Benefits and Expenses',
         value: 'STAFF_BENEFITS_EXPENSES'
       }
     ]
@@ -298,11 +298,11 @@ const EXPENSES = [
     group: 'Cost of Sales',
     items: [
       {
-        text: 'Purchases and Materials',
+        label: 'Purchases and Materials',
         value: 'PURCHASES_AND_MATERIALS'
       },
       {
-        text: 'Other Direct Costs',
+        label: 'Other Direct Costs',
         value: 'OTHER_DIRECT_COSTS'
       }
     ]
@@ -311,7 +311,7 @@ const EXPENSES = [
     group: 'Donations',
     items: [
       {
-        text: 'Charitable Donations',
+        label: 'Charitable Donations',
         value: 'CHARITABLE_DONATIONS'
       }
     ]

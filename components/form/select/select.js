@@ -6,9 +6,6 @@
 import React from 'react'
 import { array, bool, func, object, string } from 'prop-types'
 
-// Lodash
-import _range from 'lodash/range'
-
 // Style
 import styled, { css } from 'styled-components'
 
@@ -37,13 +34,13 @@ const Select = ({
       </option>
     ]
 
-    _range(range[1], range[0]).map((i) =>
+    for (let key = range[1]; key < range[0]; key++) {
       options.push(
-        <option key={`range${i}`} value={i}>
-          {i}
+        <option key={`range${key}`} value={key}>
+          {key}
         </option>
       )
-    )
+    }
 
     return options
   }
@@ -53,7 +50,7 @@ const Select = ({
       options = items
     }
 
-    return options.map(({ disabled, group, items, text, value }) => {
+    return options.map(({ disabled, group, items, label, value }) => {
       if (group) {
         return (
           <optgroup key={`option${group}`} label={group}>
@@ -62,7 +59,7 @@ const Select = ({
         )
       }
 
-      return <option children={text} disabled={disabled} key={`option${value}`} value={value} />
+      return <option children={label} disabled={disabled} key={`option${value}`} value={value} />
     })
   }
 
