@@ -187,7 +187,7 @@ export { default as Messaging } from './organisms/messaging/container/container'
 export { default as MessagingActions } from './organisms/messaging/communication/messagingActions'
 export { default as PasswordChange } from './organisms/passwordChange/passwordChange'
 export { default as Pricing } from './organisms/pricing/pricing'
-export { default as Qrcode } from './organisms/qrCode/qrCode'
+export { default as Qrcode } from './organisms/qrCode/qrcode'
 export { default as Register } from './organisms/register/register'
 export { default as Schedule } from './organisms/charts/scheduleChart/scheduleChart'
 
