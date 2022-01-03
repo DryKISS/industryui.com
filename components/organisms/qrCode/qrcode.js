@@ -12,22 +12,22 @@ import QRCode from 'qrcode.react'
 // Style
 import styled from 'styled-components'
 
-const Qrcode = ({ assetId, includeMargin, level, path, renderAs, size }) => {
-  const downloadQR = () => {
-    console.log('HERE')
-    const canvas = document.querySelector(`#qr${assetId} > canvas`)
-    const pngUrl = canvas.toDataURL()
+export const downloadQR = (assetId) => {
+  console.log('HERE')
+  const canvas = document.querySelector(`#qr${assetId} > canvas`)
+  const pngUrl = canvas.toDataURL()
 
-    const downloadLink = document.createElement('a')
-    downloadLink.href = pngUrl
-    downloadLink.download = `${assetId}.png`
-    document.body.appendChild(downloadLink)
-    downloadLink.click()
-    document.body.removeChild(downloadLink)
-  }
+  const downloadLink = document.createElement('a')
+  downloadLink.href = pngUrl
+  downloadLink.download = `${assetId}.png`
+  document.body.appendChild(downloadLink)
+  downloadLink.click()
+  document.body.removeChild(downloadLink)
+}
 
+export const Qrcode = ({ assetId, includeMargin, level, path, renderAs, size }) => {
   return (
-    <StyledQRContainer id={`qr${assetId}`} onClick={downloadQR}>
+    <StyledQRContainer id={`qr${assetId}`} onClick={() => downloadQR(assetId)}>
       <QRCode
         bgColor="#ffffff"
         fgColor="#000000"
@@ -69,5 +69,3 @@ Qrcode.defaultProps = {
   renderAs: 'canvas',
   size: 256
 }
-
-export default Qrcode
