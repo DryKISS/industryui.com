@@ -25,7 +25,8 @@ import useComponentCommunication from '../../../../hooks/useComponentCommunicati
 import {
   MentionSuggestions,
   MessagingEditor,
-  messagingPlugins
+  messagingPlugins,
+  EditorToolbar
 } from '../../../../organisms/editor/draftJs/plugins/index'
 
 import formStyle from '../../../../form/variables/formStyle'
@@ -90,6 +91,7 @@ const MessagingInput = ({ mentions, onChange }) => {
         placeholder="Type your message here..."
         ref={editor}
       />
+      <EditorToolbar />
     </Wrapper>
   )
 }

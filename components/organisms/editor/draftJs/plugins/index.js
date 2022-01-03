@@ -10,11 +10,13 @@ import Editor from '@draft-js-plugins/editor'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createLinkifyPlugin from '@draft-js-plugins/linkify'
+import createToolbarPlugin from '@draft-js-plugins/static-toolbar'
 
 // UI
 import createHashtagPlugin from './hashtag/hashtagPlugin'
 import LinkPluginComponent from './components/linkPluginComponent'
-
+const staticToolbarPlugin = createToolbarPlugin()
+const { Toolbar } = staticToolbarPlugin
 export const linkifyPlugin = createLinkifyPlugin({
   target: '_blank',
   component: (props) => <LinkPluginComponent {...props} />
@@ -28,4 +30,11 @@ export const MentionSuggestions = mentionPlugin.MentionSuggestions
 export const EmojiSuggestions = emojiPlugin.EmojiSuggestions
 export const EmojiSelect = emojiPlugin.EmojiSelect
 export const MessagingEditor = Editor
-export const messagingPlugins = [emojiPlugin, hashtagPlugin, mentionPlugin, linkifyPlugin]
+export const EditorToolbar = Toolbar
+export const messagingPlugins = [
+  emojiPlugin,
+  hashtagPlugin,
+  mentionPlugin,
+  linkifyPlugin,
+  staticToolbarPlugin
+]
