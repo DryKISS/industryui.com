@@ -8,7 +8,8 @@ import React from 'react'
 // UI
 import Button from '../../../atoms/button/button/button'
 import Details from '../../../atoms/details/details'
-import { Qrcode, downloadQR } from '../qrcode'
+import Qrcode from '../qrcode'
+import downloadQR from '../../../utils/downloadQR/downloadQR'
 import Readme from '../README.md'
 
 export default {
