@@ -75,27 +75,33 @@ const MessagingInput = ({ mentions, onChange }) => {
   })
 
   return (
-    <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
-      {mentions && (
-        <MentionSuggestions
-          onAddMention={onAddMention}
-          onSearchChange={onSearchChange}
-          suggestions={suggestions}
-        />
-      )}
-
-      <MessagingEditor
-        editorState={editorState}
-        onChange={handleChange}
-        plugins={messagingPlugins}
-        placeholder="Type your message here..."
-        ref={editor}
-      />
+    <StyledWrapper>
       <EditorToolbar />
-    </Wrapper>
+      <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
+        {mentions && (
+          <MentionSuggestions
+            onAddMention={onAddMention}
+            onSearchChange={onSearchChange}
+            suggestions={suggestions}
+          />
+        )}
+
+        <MessagingEditor
+          editorState={editorState}
+          onChange={handleChange}
+          plugins={messagingPlugins}
+          placeholder="Type your message here..."
+          ref={editor}
+        />
+      </Wrapper>
+    </StyledWrapper>
   )
 }
-
+const StyledWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`
 const Wrapper = styled.div`
   [class*='mentionSuggestions'] {
     top: ${({ topMultiplier }) => '-' + topMultiplier * 35 + 'px'} !important;

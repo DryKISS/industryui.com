@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "@apollo/client": "3.4.11",
+    "@draft-js-plugins/buttons": "^4.1.1",
     "@draft-js-plugins/editor": "4.1.0",
     "@draft-js-plugins/emoji": "4.5.5",
     "@draft-js-plugins/hashtag": "4.2.1",
