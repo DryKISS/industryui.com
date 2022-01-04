@@ -14,12 +14,13 @@ const THEME_COLOUR = {
   info: 'rgb(25, 129, 255)',
   warning: 'rgb(250, 207, 56)',
   danger: 'rgb(255, 51, 51)',
-
+  grey80: '#E6E6E6',
   help: 'rgb(255, 203, 68)',
 
   female: 'rgb(248, 139, 157)',
   male: 'rgb(142, 206, 253)',
-
+  neutral: '#FAFAFA',
+  neutral2: '#E6E6FF',
   transparent: 'transparent'
 }
 

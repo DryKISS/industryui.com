@@ -25,6 +25,7 @@ import MessageNames from '../../../../../services/componentCommunication/message
 import MessagingActions from '../../../../../organisms/messaging/communication/messagingActions'
 import MessagingCommunicationService from '../../../../../services/componentCommunication/messaging/service'
 import { MessagingEditor } from '../../../../../organisms/editor/draftJs/plugins/index'
+import createLinkPlugin from '@draft-js-plugins/anchor'
 import Preview from '../../../../../molecules/preview/preview'
 import ReplyContainer from '../../replyContainer/replyContainer'
 import Row from '../../../../../atoms/grid/Row'
@@ -37,12 +38,12 @@ import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
 import EmailContainer from '../../emailContainer/emailContainer'
-
 const mentionPlugin = createMentionPlugin({
   mentionComponent: (mentionProps) => <MentionComponent mentionProps={mentionProps} />
 })
 
 const emojiPlugin = createEmojiPlugin()
+const linkPlugin = createLinkPlugin()
 
 const MessageBase = ({
   attachments,
@@ -212,6 +213,7 @@ const MessageBase = ({
     })
     return elements
   }
+
   const header = (
     <StyledHead type={type}>
       <StyledHeadText type={type}>
@@ -219,8 +221,8 @@ const MessageBase = ({
         {time.split(' ')[time.split(' ').length - 1]}
       </StyledHeadText>
 
-      {hasMenu && (
-        <MenuWrapper>
+      {!hasMenu && (
+        <MenuWrapper type={type}>
           <Dropdown
             caret={false}
             items={[
@@ -237,6 +239,7 @@ const MessageBase = ({
       )}
     </StyledHead>
   )
+
   return (
     <MessageWrapper type={type} hovered={hovered}>
       {header}
@@ -246,6 +249,7 @@ const MessageBase = ({
             <Loadingspinner size={20} />
           </IsSendingWrapper>
         )}
+
         <Row>
           <Column
             sm={6}
@@ -276,9 +280,10 @@ const MessageBase = ({
                 </AudioWrapper>
               )}
               {email && <EmailContainer email={email} header={header} />}
+
               {hasText && (
                 <MessagingEditor
-                  plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin]}
+                  plugins={[emojiPlugin, hashtagPlugin, linkifyPlugin, mentionPlugin, linkPlugin]}
                   onChange={(e) => setEditorState(e)}
                   editorState={editorState}
                   readOnly
@@ -293,7 +298,6 @@ const MessageBase = ({
             </Column>
           )}
         </Row>
-
         {type === 'in' && hasText && (
           <TranslatorWrapper onClick={toggleTranslation}>
             {translationError
@@ -304,7 +308,6 @@ const MessageBase = ({
             {loadingTranslation && <Loadingspinner />}
           </TranslatorWrapper>
         )}
-
         {attachments && attachments.length > 0 && (
           <AttachmentsContainer>{renderAttachments(attachments)}</AttachmentsContainer>
         )}
@@ -362,9 +365,17 @@ const MenuWrapper = styled.div`
   display: flex;
   margin-top: -1rem;
   margin-bottom: -1rem;
-  opacity: 0;
-  pointer-events: none;
   transition: opacity 0.3s;
+  position: relative;
+  &::before {
+    content: '';
+    width: 3px;
+    height: 23px;
+    background-color: #cccccc;
+    position: absolute;
+    left: ${({ type }) => (type === 'out' ? '24px' : '5px')};
+    top: 4px;
+  }
 `
 
 const SingleAttachment = styled.div`
@@ -381,14 +392,9 @@ const AttachmentsContainer = styled.div`
 `
 
 const MessageWrapper = styled.div`
-  flex: 1;
   margin-top: 1.5rem;
-  max-width: 80%;
-  ${({ type }) =>
-    type === 'out' &&
-    css`
-      margin-left: 20%;
-    `}
+  width: ${({ type }) => (type === 'out' ? '100%' : '100%')};
+
   ${({ hovered }) =>
     hovered &&
     css`
@@ -396,7 +402,7 @@ const MessageWrapper = styled.div`
         opacity: 1;
         pointer-events: inherit;
       }
-    `}
+    `};
 `
 
 const StyledCard = styled(Card)`
@@ -404,6 +410,10 @@ const StyledCard = styled(Card)`
     type === 'in' ? MESSAGING.receivedMessageBackground : MESSAGING.sentMessageBackground};
   border: 1px solid ${({ theme: { MESSAGING } }) => MESSAGING.messageBorderColour};
   border-radius: ${({ type }) => (type === 'out' ? '1rem 0 1rem 1rem' : '0 1rem 1rem 1rem')};
+  width: ${({ type }) => (type === 'out' ? '100%' : '40%')};
+  @media (max-width: 1024px) {
+    width: 100% !important;
+  }
   margin-bottom: 0.5rem;
   padding: 1.25rem 1rem;
   position: relative;
@@ -429,16 +439,20 @@ const StyledHead = styled.span`
   position: absolute;
   text-align: right;
   top: 0.25rem;
+
   ${({ type }) =>
     type === 'out'
       ? css`
           flex-direction: row-reverse;
           right: 3.25rem;
-          width: 73%;
+          width: 90%;
         `
       : css`
           left: 3.25rem;
-          width: 80%;
+          width: 38%;
+          @media only screen and (min-width: 320px) and (max-width: 1250px) {
+            width: 93%;
+          }
         `}
 `
 

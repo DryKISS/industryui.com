@@ -6,7 +6,7 @@
 import React, { useState, useRef } from 'react'
 
 // Draft JS
-import { EditorState } from 'draft-js'
+import { EditorState, ContentState } from 'draft-js'
 import { defaultSuggestionsFilter } from 'draft-js-mention-plugin'
 
 // Style
@@ -21,6 +21,7 @@ import MessagingActions from '../../../../organisms/messaging/communication/mess
 import MessagingSubscriber from '../../../../services/componentCommunication/messaging/subscriber'
 
 import useComponentCommunication from '../../../../hooks/useComponentCommunication/useSubscription'
+import EditMessage from './EditMessage'
 
 import {
   MentionSuggestions,
@@ -36,6 +37,7 @@ const MessagingInput = ({ mentions, onChange }) => {
 
   // Draft-JS editor configuration
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
+  const [editData, setEditData] = useState(false)
   const editor = useRef(null)
 
   // Check editor text for mentions
@@ -62,7 +64,12 @@ const MessagingInput = ({ mentions, onChange }) => {
       case MessagingActions.CLEAR_INPUT:
         setEditorState(EditorState.createEmpty())
         break
-
+      case MessagingActions.EDIT_MESSAGE:
+        setEditorState(
+          EditorState.createWithContent(ContentState.createFromText(payload?.data?.content))
+        )
+        setEditData(payload.data)
+        break
       default:
         break
     }
@@ -76,7 +83,7 @@ const MessagingInput = ({ mentions, onChange }) => {
 
   return (
     <StyledWrapper>
-      <EditorToolbar />
+      {editData && <EditMessage {...{ setEditData, editData }} />}
       <Wrapper onClick={() => focusEditor()} topMultiplier={suggestions?.length ?? 0}>
         {mentions && (
           <MentionSuggestions
@@ -94,9 +101,11 @@ const MessagingInput = ({ mentions, onChange }) => {
           ref={editor}
         />
       </Wrapper>
+      <EditorToolbar />
     </StyledWrapper>
   )
 }
+
 const StyledWrapper = styled.div`
   width: 100%;
   display: flex;

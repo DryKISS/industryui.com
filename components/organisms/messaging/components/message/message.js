@@ -83,6 +83,7 @@ const Message = memo(
         hasTimeHeader={message.headerTime}
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
+        type={type}
       >
         {message.headerTime && (
           <TimeHeader>
@@ -93,6 +94,7 @@ const Message = memo(
           </TimeHeader>
         )}
         {type === 'in' && sideActions}
+
         <MessageBase
           hovered={hovered}
           isSending={isSending}
@@ -169,6 +171,12 @@ const SideActionsWrapper = styled.div`
 const RowWrapper = styled.div`
   display: flex;
   position: relative;
+  ${({ type }) =>
+    type === 'out' &&
+    css`
+      float: right;
+    `}
+
   ${({ hasTimeHeader }) =>
     hasTimeHeader &&
     css`

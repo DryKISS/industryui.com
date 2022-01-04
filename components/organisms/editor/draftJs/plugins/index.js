@@ -10,6 +10,7 @@ import Editor from '@draft-js-plugins/editor'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createLinkifyPlugin from '@draft-js-plugins/linkify'
+import createLinkPlugin from '@draft-js-plugins/anchor'
 import createToolbarPlugin from '@draft-js-plugins/static-toolbar'
 import {
   ItalicButton,
@@ -32,7 +33,8 @@ export const linkifyPlugin = createLinkifyPlugin({
   target: '_blank',
   component: (props) => <LinkPluginComponent {...props} />
 })
-
+const linkPlugin = createLinkPlugin()
+const { LinkButton } = linkPlugin
 // Plugins configuration
 export const mentionPlugin = createMentionPlugin()
 export const hashtagPlugin = createHashtagPlugin()
@@ -53,6 +55,7 @@ export const EditorToolbar = () => (
         <OrderedListButton {...externalProps} />
         <BlockquoteButton {...externalProps} />
         <CodeBlockButton {...externalProps} />
+        <LinkButton {...externalProps} />
       </ToolbarWrapper>
     )}
   </Toolbar>
@@ -65,5 +68,6 @@ export const messagingPlugins = [
   hashtagPlugin,
   mentionPlugin,
   linkifyPlugin,
-  staticToolbarPlugin
+  staticToolbarPlugin,
+  linkPlugin
 ]
