@@ -88,7 +88,14 @@ const Schedule = ({
 
   return (
     <>
-      {!yearRange && <ScheduleToolbar mode={mode} setMode={setMode} />}
+      {!yearRange && (
+        <ScheduleToolbar
+          mode={mode}
+          setMode={setMode}
+          setCurrentDate={setCurrentDate}
+          currentDate={currentDate}
+        />
+      )}
       <Table
         align="center"
         columns={generateColumn}
