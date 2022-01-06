@@ -3,14 +3,13 @@
  */
 
 // React
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { any, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
-import Avatar from '../../../../../atoms/avatar/avatar'
 import AudioWrapper from '../../../../../molecules/audioPlayer/wrapper'
 import Card from '../../../../../molecules/card/card'
 import Column from '../../../../../atoms/grid/Column'
@@ -26,10 +25,8 @@ import MessagingActions from '../../../../../organisms/messaging/communication/m
 import MessagingCommunicationService from '../../../../../services/componentCommunication/messaging/service'
 import { MessagingEditor } from '../../../../../organisms/editor/draftJs/plugins/index'
 import createLinkPlugin from '@draft-js-plugins/anchor'
-import Preview from '../../../../../molecules/preview/preview'
 import ReplyContainer from '../../replyContainer/replyContainer'
 import Row from '../../../../../atoms/grid/Row'
-import TranslationService from '../../../../../services/translation/translation'
 import MessageIcon from './messageIcon'
 import MessageTo from './messageTo'
 import MenuIcon from './menuIcon'
@@ -38,6 +35,8 @@ import { EditorState, ContentState, convertFromRaw } from 'draft-js'
 import createMentionPlugin from 'draft-js-mention-plugin'
 import createEmojiPlugin from '@draft-js-plugins/emoji'
 import EmailContainer from '../../emailContainer/emailContainer'
+import Attachments from './attachments'
+import Translator from './translator'
 const mentionPlugin = createMentionPlugin({
   mentionComponent: (mentionProps) => <MentionComponent mentionProps={mentionProps} />
 })
@@ -83,47 +82,6 @@ const MessageBase = ({
     return () => {}
   }, [content])
 
-  const [showingTranslation, setShowingTranslation] = useState(false)
-  const [loadingTranslation, setloadingTranslation] = useState(false)
-  const [translationError, setTranslationError] = useState(false)
-  const translated = useRef(null)
-  const toggleTranslation = async () => {
-    setTranslationError(false)
-    if (!showingTranslation) {
-      if (!translated.current) {
-        setloadingTranslation(true)
-        let plainText
-        if (content.blocks) {
-          plainText = content.blocks
-            .map((block) => (!block.text.trim() && '\n') || block.text)
-            .join('\n')
-        } else {
-          plainText = content
-        }
-        try {
-          const { response } = await TranslationService(plainText)
-          translated.current = EditorState.createWithContent(ContentState.createFromText(response))
-          setEditorState(translated.current)
-          setShowingTranslation(true)
-          setloadingTranslation(false)
-        } catch (e) {
-          setTranslationError(true)
-          setShowingTranslation(false)
-          setloadingTranslation(false)
-        }
-      } else {
-        setEditorState(translated.current)
-        setShowingTranslation(true)
-      }
-    } else {
-      setEditorState(
-        EditorState.createWithContent(
-          content.blocks ? convertFromRaw(content) : ContentState.createFromText(content)
-        )
-      )
-      setShowingTranslation(false)
-    }
-  }
   const dropDownAction = (item) => {
     let action = ''
     switch (item.id) {
@@ -163,55 +121,6 @@ const MessageBase = ({
         }
       }
     })
-  }
-
-  const handleFileClick = (files, index) => {
-    const av = avatar ? <Avatar size="xs" src={avatar} /> : <Avatar size="xs" content={from[0]} />
-
-    MessagingCommunicationService.send({
-      name: MessageNames.Messaging.MESSAGING_ACTION,
-      payload: {
-        action: MessagingActions.SET_FULL_PREVIEW_FILES,
-        data: {
-          avatar: av,
-          files,
-          from,
-          isAdding: false,
-          isClearData: false,
-          isPreview: true,
-          selectedIndex: index,
-          time
-        }
-      }
-    })
-  }
-
-  const renderAttachments = (attachments) => {
-    const elements = []
-    Array.from(attachments).forEach((item, index) => {
-      if (index < 4) {
-        elements.push(
-          <SingleAttachment key={index} onClick={() => handleFileClick(attachments, index)}>
-            {attachments.length > 4 && index === 3 && (
-              <OverlayForAdditionalMessages>+{attachments.length - 4}</OverlayForAdditionalMessages>
-            )}
-
-            <Preview
-              dim={attachments.length > 4 && index === 3}
-              imageStyles={{
-                minHeight: '10rem',
-                height: '10rem',
-                borderRadius: '6px',
-                objectFit: 'cover'
-              }}
-              file={item}
-              message
-            />
-          </SingleAttachment>
-        )
-      }
-    })
-    return elements
   }
 
   const header = (
@@ -298,18 +207,10 @@ const MessageBase = ({
             </Column>
           )}
         </Row>
-        {type === 'in' && hasText && (
-          <TranslatorWrapper onClick={toggleTranslation}>
-            {translationError
-              ? 'Translation Error'
-              : showingTranslation
-              ? 'See Original'
-              : 'See Translation'}
-            {loadingTranslation && <Loadingspinner />}
-          </TranslatorWrapper>
-        )}
+        {type === 'in' && hasText && <Translator {...{ content, setEditorState }} />}
+
         {attachments && attachments.length > 0 && (
-          <AttachmentsContainer>{renderAttachments(attachments)}</AttachmentsContainer>
+          <Attachments {...{ attachments, avatar, content, from, time, setEditorState }} />
         )}
       </StyledCard>
     </MessageWrapper>
@@ -328,18 +229,6 @@ const IsSendingWrapper = styled.div`
   justify-content: center;
 `
 
-const OverlayForAdditionalMessages = styled.div`
-  align-items: center;
-  color: white;
-  display: flex;
-  height: 40%;
-  font-size: 5rem;
-  position: absolute;
-  justify-content: center;
-  width: 40%;
-  z-index: 1;
-`
-
 const StyledHeadText = styled.div`
   display: flex;
   align-items: center;
@@ -348,16 +237,6 @@ const StyledHeadText = styled.div`
     css`
       flex-direction: row-reverse;
     `}
-`
-
-const TranslatorWrapper = styled.div`
-  align-items: center;
-  color: ${({ theme: { MESSAGING } }) => MESSAGING.translatorTextColour};
-  cursor: pointer;
-  display: flex;
-  font-size: 0.625rem;
-  font-weight: 600;
-  width: fit-content;
 `
 
 const MenuWrapper = styled.div`
@@ -376,19 +255,6 @@ const MenuWrapper = styled.div`
     left: ${({ type }) => (type === 'out' ? '24px' : '5px')};
     top: 4px;
   }
-`
-
-const SingleAttachment = styled.div`
-  cursor: pointer;
-  overflow: hidden;
-  max-width: calc(90% - 0.5rem);
-`
-
-const AttachmentsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 49% 49%;
-  grid-row: auto auto;
-  grid-row-gap: 1rem;
 `
 
 const MessageWrapper = styled.div`
