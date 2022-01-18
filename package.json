@@ -123,7 +123,7 @@
     "react-datepicker": "^4.5.0",
     "react-dnd": "^14.0.4",
     "react-dnd-html5-backend": "^14.0.2",
-    "react-draft-wysiwyg": "1.14.6",
+    "react-draft-wysiwyg": "1.13.2",
     "react-dropzone": "11.2.0",
     "react-google-maps": "9.4.5",
     "react-gtm-module": "2.0.11",

@@ -40,6 +40,7 @@ import Space from '../../../atoms/space/space'
 import Text from '../../../atoms/text/text'
 import TextareaField from '../../textarea/textarea'
 import THEME_SIZE from '../../../constants/size'
+import RichTextInput from '../../richTextInput/richEditor'
 import Readme from '../README.md'
 
 // Data
@@ -230,7 +231,12 @@ const All = ({ ...args }) => {
       />
 
       <RadioField {...defaultProps} data={RADIO_GENDER()} legend="Gender?" name="radio" />
-
+      <Row>
+        <Column md={12}>
+          <RichTextInput {...defaultProps} control={control} name="rich" />
+        </Column>
+      </Row>
+      <Space />
       <Button content="Submit" type="submit" />
     </Form>
   )

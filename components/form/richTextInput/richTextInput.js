@@ -9,4 +9,4 @@ const RichTextInput = dynamic(() => import('./richEditor').then((mod) => mod.Ric
   ssr: false
 })
 
-export { RichTextInput }
+export default RichTextInput
