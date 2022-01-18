@@ -2,7 +2,7 @@
  * Components - Molecules - Charts - Schedule - Mocks
  */
 
- export const EXTERNAL_SCHEDULE_DATA = [
+export const EXTERNAL_SCHEDULE_DATA = [
   {
     id: 131,
     shortDescriptionName: 'AA Thermo Sensor P1',
