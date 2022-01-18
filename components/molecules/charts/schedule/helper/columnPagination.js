@@ -7,14 +7,15 @@ import React from 'react'
 import {
   addYears,
   addMonths,
-  addWeeks,
   addDays,
   daysToWeeks,
+  endOfMonth,
   format,
-  subWeeks,
+  getMonth,
   subDays,
   subYears,
-  subMonths
+  subMonths,
+  startOfMonth
 } from 'date-fns'
 
 // Constant
@@ -40,20 +41,30 @@ const calculateCurrent = ({ currentDate, mode, status = 'current' }) => {
           return addMonths(pCurrentDate, 1)
         case 'prev':
           return subMonths(pCurrentDate, 1)
-        // since current is default, current case has no benefit
+
         default:
           return `${format(pCurrentDate, 'MMMM')} Of ${format(pCurrentDate, 'y')}`
       }
 
     case 'week':
       switch (status) {
-        case 'next':
-          return addWeeks(pCurrentDate, 1)
-        case 'prev':
-          return subWeeks(pCurrentDate, 1)
-        // since current is default, current case has no benefit
+        case 'next': {
+          const calNext = addDays(pCurrentDate, 7)
+          if (getMonth(calNext) === getMonth(pCurrentDate) + 1) {
+            return startOfMonth(calNext)
+          }
+          return calNext
+        }
+        case 'prev': {
+          const calPrev = subDays(pCurrentDate, 7)
+          if (getMonth(calPrev) === getMonth(pCurrentDate) - 1) {
+            return endOfMonth(calPrev)
+          }
+          return calPrev
+        }
         default: {
-          const formatDate = daysToWeeks(format(new Date(pCurrentDate), 'd')) + 1
+          const formatDate = daysToWeeks(+format(new Date(pCurrentDate), 'd')) + 1
+
           return `${formatDate} Week Of ${format(pCurrentDate, 'MMMM')} ${format(
             pCurrentDate,
             'y'
@@ -66,7 +77,7 @@ const calculateCurrent = ({ currentDate, mode, status = 'current' }) => {
           return addDays(pCurrentDate, 1)
         case 'prev':
           return subDays(pCurrentDate, 1)
-        // since current is default, current case has no benefit
+
         default: {
           return `${format(pCurrentDate, 'd')}  ${format(pCurrentDate, 'MMMM')}  ${format(
             pCurrentDate,
@@ -81,7 +92,7 @@ const calculateCurrent = ({ currentDate, mode, status = 'current' }) => {
           return addYears(pCurrentDate, 1)
         case 'prev':
           return subYears(pCurrentDate, 1)
-        // since current is default, current case has no benefit
+
         default: {
           return format(pCurrentDate, 'y')
         }

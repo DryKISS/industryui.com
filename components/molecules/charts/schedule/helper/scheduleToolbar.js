@@ -16,6 +16,8 @@ import Row from '../../../../atoms/grid/Row'
 import Space from '../../../../atoms/space/space'
 import DATE_TYPE from '../../../../constants/dateType'
 
+// Date-FNS
+import { startOfMonth } from 'date-fns'
 const args = {
   align: THEME_ALIGN.Start,
   size: THEME_SIZE.MD
@@ -23,7 +25,11 @@ const args = {
 
 const isActiveMenu = (currentMode, mode) => (currentMode === mode ? 'primary' : 'secondary')
 
-export default ({ mode, setMode }) => {
+export default ({ currentDate, mode, setMode, setCurrentDate }) => {
+  const handleClickWeek = () => {
+    setMode(DATE_TYPE.WEEK)
+    setCurrentDate(startOfMonth(new Date(currentDate)))
+  }
   return (
     <Row justify={'end'}>
       <Space marginRight="sm" marginBottom="sm">
@@ -44,7 +50,7 @@ export default ({ mode, setMode }) => {
             content="Week"
             size="sm"
             context={isActiveMenu(DATE_TYPE.WEEK, mode)}
-            onClick={() => setMode(DATE_TYPE.WEEK)}
+            onClick={handleClickWeek}
           />
           <Button
             content="Day"
