@@ -7,92 +7,100 @@ import React, { useRef, useState } from 'react'
 import { any, string } from 'prop-types'
 
 // Style
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 // UI
-import PlayCircleIcon from '../../icons/components/playCircle'
-import fullScreen from '../../utils/fullScreen/fullScreen'
-import FullScreenIcon from '../../icons/components/fullScreen'
 import ResizeDetector from '../../utils/resizeDetector/resizeDetector'
+import SettingControlBox from './components/settingControlBox'
+import VideoTitle from './components/videoTitle'
+import videoSubtitle from './helpers/videoSubtitle'
+import VideoControl from './components/videoControl'
 
-const VideoPlayer = ({ src, poster, className, videoProps, videoType }) => {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [width, setWidth] = useState(0)
+// helper
+import useControlPlayer from './helpers/useControlPlayer'
+
+const VideoPlayer = ({ className, configs, onFavorite }) => {
+  const { videos = [] } = configs
+
   const videoRef = useRef()
-  const played = useRef(false)
 
-  const handlePlayPause = () => {
-    isPlaying === false ? videoRef.current.play() : videoRef.current.pause()
-    setIsPlaying((state) => !state)
-  }
+  const [favorite, setFavorite] = useState(false)
+  const [videoState, setVideoState] = useState(videos[0])
+  const [isShowSetting, setShowSetting] = useState(false)
 
-  const handlePaused = () => {
-    setIsPlaying(false)
-  }
+  const {
+    handlePlayPause,
+    handleFullScreen,
+    handleResize,
+    handleSubtitle,
+    handleShowSubtitle,
+    handleVideoProgress,
+    handleVideoSpeed,
+    handleSetVolume,
+    handleOnTimeUpdate,
+    handleSkip,
+    isPlaying,
+    isSubtitle,
+    progress,
+    subtitle,
+    speed,
+    volume
+  } = useControlPlayer(videoRef)
 
-  const handlePlayed = () => (played.current = true)
+  const { description, subtitles = [], src = '', title, videoType } = videoState
 
-  const handleFullScreen = () => {
-    videoRef.current.play()
-    setIsPlaying(true)
-    fullScreen.requestFullscreen(videoRef.current)
-  }
+  const track = videoRef?.current?.children[1]?.track
 
-  const handleResize = ({ width }) => {
-    if (videoRef.current) {
-      const width = videoRef.current.clientWidth
-      setWidth(width)
-    }
-  }
-
-  const iconSize = width ? width / 6 : 40
+  // setFavorite
+  onFavorite && onFavorite(favorite)
 
   return (
-    <VideoPlayerWrapper className={className}>
-      <ResizeDetector onResize={handleResize} />
+    <>
+      <VideoPlayerWrapper className={className}>
+        <ResizeDetector onResize={handleResize} />
+        <VideoTitle {...{ description, favorite, setFavorite, title }} />
 
-      <Overlay show={!isPlaying} poster={played.current ? null : poster} gap={iconSize / 3}>
-        <PlayCircleIcon size={iconSize} hoverColour onClick={handlePlayPause} />
-        <FullScreenIcon size={iconSize} hoverColour onClick={handleFullScreen} />
-      </Overlay>
+        {isShowSetting && (
+          <SettingControlBox
+            speed={speed}
+            handleSubtitle={handleSubtitle}
+            handleVideoSpeed={handleVideoSpeed}
+          />
+        )}
+        <SubtitleText>
+          {!!track?.activeCues?.length && track.activeCues[0].text && (
+            <div>{track.activeCues[0].text}</div>
+          )}
+        </SubtitleText>
+        <Video ref={videoRef} seekable onTimeUpdate={handleOnTimeUpdate}>
+          <source src={src} type={videoType || 'video/mp4'} />
+          {isSubtitle && videoSubtitle({ subtitle, subtitles })}
+          Your browser does not support the video tag.
+        </Video>
 
-      <Video ref={videoRef} controls onPause={handlePaused} onPlay={handlePlayed} {...videoProps}>
-        <source src={src} type={videoType || 'video/mp4'} />
-        Your browser does not support the video tag.
-      </Video>
-    </VideoPlayerWrapper>
+        <VideoControl
+          {...{
+            handlePlayPause,
+            handleSkip,
+            handleShowSubtitle,
+            handleVideoProgress,
+            handleSetVolume,
+            handleFullScreen,
+            isPlaying,
+            isSubtitle,
+            isShowSetting,
+            progress,
+            setVideoState,
+            setShowSetting,
+            videoRef,
+            videos,
+            volume
+          }}
+        />
+      </VideoPlayerWrapper>
+    </>
   )
 }
-
-const Overlay = styled.div`
-  align-items: center;
-  background: rgba(0, 0, 0, 0.3);
-  background-image: ${({ poster }) =>
-    poster && ` linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${poster})`};
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0.5rem;
-  bottom: 7px;
-  display: flex;
-  gap: ${({ gap }) => gap + 'px'};
-  justify-content: center;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-  ${({ show }) =>
-    show
-      ? css`
-          opacity: 1;
-        `
-      : css`
-          opacity: 0;
-          pointer-events: none;
-        `}
-`
 
 const VideoPlayerWrapper = styled.div`
   border-radius: 0.5rem;
@@ -107,8 +115,28 @@ const Video = styled.video`
   height: 100%;
   outline: none;
   width: 100%;
+
+  &::cue {
+    color: transparent;
+    background-color: transparent;
+  }
 `
 
+const SubtitleText = styled.div`
+  position: absolute;
+  bottom: 90px;
+  left: 10%;
+  @media (max-width: 450px) {
+    display: none;
+  }
+  div {
+    background-color: rgba(102, 102, 102, 0.5);
+    color: #ffffff;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 8px;
+  }
+`
 VideoPlayer.prototypes = {
   className: string,
   poster: string,

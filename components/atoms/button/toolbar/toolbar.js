@@ -9,9 +9,15 @@ import { node, string } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-const ButtonToolbar = ({ align, children }) => {
+const ButtonToolbar = ({ align, children, border, borderRadius }) => {
   return (
-    <StyledToolbar align={align} aria-label="Toolbar with button groups" role="toolbar">
+    <StyledToolbar
+      align={align}
+      aria-label="Toolbar with button groups"
+      role="toolbar"
+      border={border}
+      borderRadius={borderRadius}
+    >
       <StyledGroup role="group" aria-label="First group">
         {children}
       </StyledGroup>
@@ -23,6 +29,8 @@ const StyledToolbar = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: ${({ align }) => align};
+  border: ${({ border }) => border || 'none'};
+  border-radius: ${({ borderRadius }) => borderRadius || 0};
 `
 
 const StyledGroup = styled.div`

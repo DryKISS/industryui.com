@@ -22,6 +22,32 @@ export default {
   title: 'Molecules/VideoPlayer'
 }
 
-export const main = (args) => (
-  <VideoPlayer {...args} src="/video/video.mp4" poster="/video/poster.png" />
+const subtitles = [
+  { kind: 'subtitles', label: 'Germany', srcLang: 'de', src: '/video/subtitles_de.vtt' },
+  { kind: 'subtitles', label: 'English', srcLang: 'en', src: '/video/subtitles_en.vtt' },
+  { kind: 'subtitles', label: 'japanese', srcLang: 'ja', src: '/video/subtitles_ja.vtt' }
+]
+
+export const main = () => (
+  <VideoPlayer
+    configs={{
+      videos: [
+        {
+          description: 'Singer',
+          poster: '/video/poster.png',
+          subtitles,
+          src: '/video/video.mp4',
+          title: 'Music Festival'
+        },
+        {
+          description: 'Kyle Simpson',
+          poster: '/video/poster.png',
+          subtitles,
+          src: '/video/EgarVideo.mp4',
+          title: 'Javascript Tutorial'
+        }
+      ]
+    }}
+    onFavorite={console.log}
+  />
 )
