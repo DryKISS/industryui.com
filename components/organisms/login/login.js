@@ -56,16 +56,19 @@ const Login = ({
   const [error, setError] = useState(false)
   const [showPass, setShowPass] = useState(false)
   const { signIn } = useContext(UserContext)
-  const {
-    query: { redirect = '' }
-  } = useRouter()
+  const { query } = useRouter()
   const onSubmit = ({ email, password }) => {
+    const { redirect = '' } = query
     if (!submit) {
-      signIn('email', email, password, (error) => error && setError(error)).then(() => {
-        if (redirect) {
-          Router.push(redirect)
-        } else {
-          Router.push('/dashboard')
+      signIn('email', email, password, (data) => {
+        if (data?.message) {
+          setError(data)
+        } else if (data?.success) {
+          if (redirect) {
+            Router.push(redirect)
+          } else {
+            Router.push('/dashboard')
+          }
         }
       })
     } else {
