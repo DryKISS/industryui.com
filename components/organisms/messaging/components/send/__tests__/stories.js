@@ -108,6 +108,12 @@ export const NewMain = () => {
         'https://d1hk88326p7ilp.cloudfront.net/' +
         'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
       type: 'pdf'
+    },
+    {
+      src:
+        'https://d1hk88326p7ilp.cloudfront.net/' +
+        'documents/5786fad4-6c63-4e43-b127-c74c7819401c.xlsx',
+      type: 'csv'
     }
   ]
 
