@@ -72,6 +72,7 @@ const groupByDateCriteria = (type, timingStart) => {
 // calculate last line of table as total
 const calculateTotalRows = (result, events, title) => {
   const calTotal = result.pop()
+  const temp = { ...calTotal }
   calTotal[title] = 'Total'
   const isNumber = (value) => /^[-]?\d+$/.test(value)
   result.forEach((item) => {
@@ -91,6 +92,7 @@ const calculateTotalRows = (result, events, title) => {
       calTotal[k] = calTotal[k].toString()
     }
   })
+  result.push(temp)
   result.push(calTotal)
 }
 
@@ -137,9 +139,9 @@ const prepareScheduleRows = ({
       arr.count = currentDateTime?.length || 0
       arr = generateDate(mode, arr)
 
-      const groupedJobs = groupBy(currentDateTime, (i) =>
-        groupByDateCriteria(mode, new Date(i[eventTimeSplitting]))
-      )
+      const groupedJobs = groupBy(currentDateTime, (i) => {
+        return groupByDateCriteria(mode, new Date(i[eventTimeSplitting]))
+      })
 
       Object.keys(groupedJobs).forEach((item) => {
         groupedJobs[item] = [
@@ -155,6 +157,7 @@ const prepareScheduleRows = ({
   if (result.length > 0) {
     calculateTotalRows(result, events, title)
   }
+
   return result
 }
 
