@@ -36,17 +36,21 @@ const COLUMN_PATTERN = {
   week: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 }
 
-const CellWrapper = ({ month, row, handleClick, otherData }) => (
-  <Wrapper
-    context={row[month][1] ? row[month][1] : 'light'}
-    count={row[month][0] || row[month]}
-    onClick={(e) =>
-      (row[month][0] > 0 || row[month] > 0) && handleClick({ e, month, row }, otherData)
-    }
-  >
-    {row[month][0] ? row[month][0] : row[month]}
-  </Wrapper>
-)
+const CellWrapper = ({ month, row, handleClick, otherData }) => {
+  const numMonth = Array.isArray(row[month]) ? row[month] : parseInt(row[month], 10)
+
+  return (
+    <Wrapper
+      context={numMonth[1] ? numMonth[1] : 'light'}
+      count={numMonth[0] || numMonth}
+      onClick={(e) =>
+        (numMonth[0] > 0 || numMonth > 0) && handleClick({ e, month, row }, otherData)
+      }
+    >
+      {numMonth[0] ? numMonth[0] : numMonth}
+    </Wrapper>
+  )
+}
 
 const formatCell = (handleClick, month, row, otherData) => {
   return row[month] && row[month][0] ? (
@@ -88,7 +92,12 @@ export default (handleClick, options) => {
     text: <ColumnPagination {...{ setCurrentDate, mode, currentDate }} />
   })
 
+  const countFormatter = ({ row }) => {
+    return <>{row.count}</>
+  }
+
   result.push({
+    formatter: countFormatter,
     text: 'Count'
   })
 
@@ -134,6 +143,7 @@ export default (handleClick, options) => {
   COLUMN_PATTERN[mode].forEach((item, i) => {
     const text = mode === DATE_TYPE.DAY ? item : item
     const key = String(text).toLowerCase()
+
     result.push({
       formatter: ({ row }) => {
         return formatCell((e) => handleClick(e, key, calculateCurrentDate(mode, key)), key, row, {
