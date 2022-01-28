@@ -188,9 +188,9 @@ const StyledContent = styled.div`
     margin-left: ${({ theme }) => theme.SPACING(2)};
   }
 
-  :not(:last-child) {
+  /* :not(:last-child) {
     margin-right: ${({ theme }) => theme.SPACING(2)};
-  }
+  } */
 `
 
 Button.propTypes = propTypes

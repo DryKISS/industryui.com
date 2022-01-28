@@ -51,6 +51,7 @@ const StyledDropdownMenu = styled.div`
   top: 100%;
   z-index: 2;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+
   ${({ position }) =>
     position &&
     css`
@@ -62,6 +63,7 @@ const StyledDropdownMenu = styled.div`
         top: unset;
       `}
     `}
+
   ${({ elementType }) => {
     return (
       (elementType === dropdownTypes.Colour || elementType === dropdownTypes.Icon) &&
@@ -84,6 +86,7 @@ const TooltipRectangle = styled.div`
     border-color: transparent transparent
       ${border ? 'rgb(255, 255, 255)' : theme.DROPDOWN.borderColour};
   `}
+
   border-image: initial;
   border-style: solid;
   border-width: 0.438rem;

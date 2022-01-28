@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: ['prettier-standard'],
+  extends: ['prettier'],
   env: {
     browser: true,
     es6: true

@@ -76,6 +76,7 @@ const StyledIconItem = styled.div`
 const StyledColourItem = styled.div`
   height: 2em;
   width: 2rem;
+
   ${({ colour, theme }) =>
     css`
       background-color: ${colour};
@@ -83,6 +84,7 @@ const StyledColourItem = styled.div`
         border: 1px solid ${theme.COLOUR.white};
       }
     `}
+
   ${({ colour, theme }) => {
     const size = '0.5rem'
     return (
@@ -102,6 +104,7 @@ const StyledColourItem = styled.div`
 const StyledDropdownItem = styled.div`
   line-height: 1.5;
   white-space: nowrap;
+
   ${({ divider }) =>
     divider &&
     css`
@@ -113,6 +116,7 @@ const StyledLink = styled.span`
   color: ${({ theme }) => theme.COLOUR.primary};
   display: block;
   padding: 0.25rem 1rem;
+
   &:hover {
     background-color: ${({ theme }) => theme.COLOUR.light};
     color: inherit;

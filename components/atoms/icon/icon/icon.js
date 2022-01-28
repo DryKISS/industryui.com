@@ -5,7 +5,7 @@
 // React
 import React from 'react'
 
-// FontAwesome
+// Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // Style
@@ -19,12 +19,12 @@ import themeDisplay from '../../../utils/display/display'
 // Props
 import { propTypes, defaultProps } from './props'
 
-const Icon = ({ icon, iui, prefix, ...props }) => {
+const Icon = ({ fixedWidth, icon, iui, prefix, ...props }) => {
   if (iui) {
     return <LazyIcon iconName={icon} {...props} />
   }
 
-  return <StyledIcon icon={[prefix, icon]} {...props} />
+  return <StyledIcon fixedWidth={fixedWidth} icon={[prefix, icon]} {...props} />
 }
 
 const StyledIcon = styled(FontAwesomeIcon)`

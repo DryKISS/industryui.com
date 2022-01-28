@@ -53,32 +53,20 @@ const ReactSelect = ({
   }
 
   return (
-    <Wrapper size={size} errors={errors[name]}>
+    <Wrapper errors={errors[name]} size={size}>
       <Controller
         control={control}
         defaultValue={defaultValue}
         name={name}
-        render={({ field: { onChange, ...props } }) => (
+        render={({ field: { onChange, value, ...props } }) => (
           <Component
             options={options}
             onChange={onChange}
-            selectedOption={props.value}
+            selectedOption={value}
             {...props}
             {...parentProps}
           />
         )}
-
-        // render={({ field: { onChange, onBlur, value, name, ref } }) => (
-        //   <Component
-        //     options={options}
-        //     selectedOption={value}
-        //     // onBlur={onBlur}
-        //     // onChange={(value) => {
-        //     //   onChange(value)
-        //     // }}
-        //     {...parentProps}
-        //   />
-        // )}
       />
     </Wrapper>
   )

@@ -21,39 +21,34 @@ const IconWrapper = ({
   ...props
 }) => {
   const { mainSize } = props
+  let tmpSize = ''
 
   if (typeof size === 'string') {
-    let tmpSize = 22
-
     switch (size) {
       case 'xs':
-        tmpSize = 16
+        tmpSize = 12
         break
       case 'sm':
-        tmpSize = 20
-        break
-      case 'md':
-        tmpSize = 24
+        tmpSize = 16
         break
       case 'lg':
-        tmpSize = 32
+        tmpSize = 24
         break
       case 'xl':
-        tmpSize = 36
+        tmpSize = 32
         break
       default:
-        tmpSize = 22
+        tmpSize = 20
         break
     }
-    size = tmpSize
   } else {
-    size = size || 22
+    tmpSize = size || 20
   }
 
   let scale = 1
 
-  if (mainSize && size !== mainSize) {
-    scale = Number(size / mainSize)
+  if (mainSize && tmpSize !== mainSize) {
+    scale = Number(tmpSize / mainSize)
   }
 
   return (
@@ -64,7 +59,7 @@ const IconWrapper = ({
       hoverColour={hoverColour}
       onClick={onClick}
       scale={scale}
-      size={size}
+      size={tmpSize}
       stroke={stroke}
       translate={translate}
       xmlns="http://www.w3.org/2000/svg"
@@ -130,9 +125,9 @@ const StyledSvg = styled.svg`
   }}
 
   path {
-    transition: fill 0.2s ease;
-    stroke: ${({ stroke }) => stroke};
     fill: ${(props) => setColour(states.DEFAULT, props)};
+    stroke: ${({ stroke }) => stroke};
+    transition: fill 0.2s ease;
 
     ${({ scale, translate }) => {
       return (

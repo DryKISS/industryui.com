@@ -68,7 +68,7 @@ const Children = ({ size }) => {
           context="primary"
           size={size}
           startIcon="verticalThreeDots"
-          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
+          startIconProps={{ colour: 'white', iui: true, size: size }}
         />
       </Dropdown>
 
@@ -92,7 +92,7 @@ const Children = ({ size }) => {
           context="primary"
           size={size}
           startIcon="verticalThreeDots"
-          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
+          startIconProps={{ colour: 'white', iui: true, size: size }}
         />
       </Dropdown>
 
@@ -105,7 +105,7 @@ const Children = ({ size }) => {
           context="primary"
           size={size}
           startIcon="verticalThreeDots"
-          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
+          startIconProps={{ colour: 'white', iui: true, size: size }}
         />
       </Dropdown>
     </>

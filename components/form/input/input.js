@@ -79,7 +79,7 @@ Input.propTypes = {
   size: oneOf(Object.values(THEME_SIZE)),
   style: object,
   textAlign: oneOf(['left', 'rigth', 'center']),
-  type: oneOf(['email', 'number', 'text'])
+  type: oneOf(['email', 'number', 'search', 'text'])
 }
 
 Input.defaultProps = {
