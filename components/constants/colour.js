@@ -17,9 +17,6 @@ const THEME_COLOUR = {
 
   help: 'rgb(255, 203, 68)',
 
-  female: 'rgb(248, 139, 157)',
-  male: 'rgb(142, 206, 253)',
-
   transparent: 'transparent'
 }
 

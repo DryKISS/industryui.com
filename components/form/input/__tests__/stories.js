@@ -67,9 +67,6 @@ export default {
 // }
 
 // export const main = (args, { params: { register, errors } }) => {
-//   console.log(register)
-//   console.log(errors)
-
 //   return (
 //     <Label label="Email">
 //       <Input {...args} errors={errors} register={register} name="email" />

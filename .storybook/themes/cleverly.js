@@ -74,9 +74,6 @@ const COLOUR = {
 
   help: 'rgb(255, 222, 3)',
 
-  male: 'rgb(142, 206, 253)',
-  female: 'rgb(248, 139, 157)',
-
   transparent: 'transparent'
 }
 

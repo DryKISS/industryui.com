@@ -1,0 +1,1 @@
+Avatar stack for grouping avatars

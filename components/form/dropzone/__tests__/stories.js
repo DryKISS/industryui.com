@@ -35,8 +35,6 @@ export default {
 }
 
 export const Main = (args, { params: { control, formState } }) => {
-  console.log(formState.errors)
-
   const onChange = (change) => {
     console.info('Changed', change)
   }

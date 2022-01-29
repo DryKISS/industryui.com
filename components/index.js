@@ -75,6 +75,7 @@ export { default as LazyIcon } from './icons/lazyIcon'
 // Atoms
 export { default as Address } from './atoms/address/address'
 export { default as Avatar } from './atoms/avatar/avatar'
+export { default as AvatarStack } from './atoms/avatar/components/avatarStack'
 export { default as Badge } from './atoms/badge/badge'
 export { default as Blockquote } from './atoms/blockquote/blockquote'
 export { default as Button } from './atoms/button/button/button'

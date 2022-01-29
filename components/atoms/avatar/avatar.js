@@ -12,8 +12,9 @@ import gravatar from 'gravatar'
 import styled, { css } from 'styled-components'
 
 // UI
-import getAcronym from '../../utils/getAcronym/getAcronym'
+import Icon from '../icon/icon/icon'
 import Image from '../image/image'
+import getAcronym from '../../utils/getAcronym/getAcronym'
 import themeFontSize from '../../utils/fontSize/fontSize'
 import THEME_SIZE from '../../constants/size'
 
@@ -22,23 +23,31 @@ import { propTypes, defaultProps } from './components/props'
 
 const Avatar = ({
   action,
-  actionClick,
+  alt,
   children,
   className,
   click,
   content,
   context,
-  gmail,
+  email,
+  icon,
+  iconProps,
+  radius,
   size,
   src,
-  style
+  style,
+  text
 }) => {
-  const avatarSrc = src || (gmail && gravatar.url(gmail, { d: 'identicon' }))
+  const avatarSrc = src || (email && gravatar.url(email, { d: 'identicon' }))
 
   return (
     <StyledAvatar className={className} context={context} onClick={click} size={size} style={style}>
-      {children || (avatarSrc && <Image alt="Avatar" src={avatarSrc} />) || getAcronym(content)}
-      {action && <StyledAction onClick={actionClick}>{action}</StyledAction>}
+      {children ||
+        (avatarSrc && <Image alt={`${alt || 'Avatar'}`} src={avatarSrc} />) ||
+        (content ? getAcronym(content) : '') ||
+        text}
+      {action && <StyledAction>{action}</StyledAction>}
+      {icon && <Icon icon={icon} {...iconProps} prefix={iconProps?.prefix} />}
     </StyledAvatar>
   )
 }

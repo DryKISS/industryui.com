@@ -1,13 +1,13 @@
 /**
- * Components - Atoms - Avatar - Variables
+ * Components - Atoms - Avatar Stack - Variables
  */
 
 // UI
 import THEME_COLOUR from '../../../constants/colour'
 
-const AVATAR = {
+const AVATAR_STACK = {
   background: THEME_COLOUR.primary,
   colour: THEME_COLOUR.black
 }
 
-export default AVATAR
+export default AVATAR_STACK

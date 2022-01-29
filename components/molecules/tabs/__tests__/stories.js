@@ -166,7 +166,7 @@ export const customBorder = (args) => {
       {...args}
       gap={2}
       activeBorderContext="warning"
-      activeBackgroundContext="female"
+      activeBackgroundContext="info"
       backgroundContext="primary"
       borderContext="warning"
       rightTabIcon="times-circle"
