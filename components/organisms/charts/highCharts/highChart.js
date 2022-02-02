@@ -61,7 +61,7 @@ const HighChart = ({
   )
 }
 
-HighChart.prototypes = {
+HighChart.propTypes = {
   allowChartUpdate: bool,
   callback: func,
   constructorType: oneOf([

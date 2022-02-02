@@ -137,7 +137,8 @@ const SubtitleText = styled.div`
     border-radius: 8px;
   }
 `
-VideoPlayer.prototypes = {
+
+VideoPlayer.propTypes = {
   className: string,
   poster: string,
   src: string.isRequired,

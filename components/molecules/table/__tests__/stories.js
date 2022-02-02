@@ -6,6 +6,7 @@
 import React, { useState } from 'react'
 
 // UI
+import Details from '../../../atoms/details/details'
 import Table from '../table'
 import Readme from '../README.md'
 
@@ -92,7 +93,11 @@ const BaseComponent = (props = {}) => {
   return <Table {...defaultProps} />
 }
 
-export const main = (args) => <BaseComponent {...args} columns={columnsActions} />
+export const main = (args) => (
+  <Details context="help" open title="Table">
+    <BaseComponent {...args} columns={columnsActions} />
+  </Details>
+)
 
 export const context = (args) => (
   <BaseComponent {...args} columns={columns} pagination={false} rows={dataContext} />
