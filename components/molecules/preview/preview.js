@@ -8,7 +8,7 @@ import React, { memo, useEffect, useState, useRef } from 'react'
 // UI
 import styled, { css } from 'styled-components'
 import Cropper from 'react-cropper'
-
+import CSVPreview from './csvPreview'
 const imageFormats = ['.jpg', '.jpeg', '.png']
 
 const isImage = (src) => {
@@ -165,6 +165,12 @@ const Preview = memo(
       return imagePreview()
     } else if (checkFileType(file, 'pdf')) {
       return pdfPreview()
+    } else if (checkFileType(file, 'csv')) {
+      return small ? (
+        <CSVPreviewWrapper onClick={onClick}>Click me</CSVPreviewWrapper>
+      ) : (
+        <CSVPreview file={src} />
+      )
     } else {
       return (
         <PlaceHolder>
@@ -241,6 +247,14 @@ const FilePlaceHolder = styled.div`
   height: 3rem;
   margin-bottom: 0.5rem;
   width: 3rem;
+`
+
+const CSVPreviewWrapper = styled.div`
+  ${({ onClick }) =>
+    onClick &&
+    css`
+      cursor: pointer;
+    `}
 `
 
 const PlaceHolder = styled.div`
