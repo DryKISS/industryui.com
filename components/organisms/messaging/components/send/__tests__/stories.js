@@ -103,11 +103,17 @@ export const NewMain = () => {
         'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
       type: 'pdf'
     },
+    // {
+    //   src:
+    //     'https://d1hk88326p7ilp.cloudfront.net/' +
+    //     'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
+    //   type: 'pdf'
+    // },
     {
       src:
-        'https://d1hk88326p7ilp.cloudfront.net/' +
-        'documents/8fc686b3-df98-45e7-a69e-6e5892e0e476.pdf',
-      type: 'pdf'
+        'https://cleverly-staging-media.s3.eu-west-2.amazonaws.com/' +
+        'documents/4536ce26-de60-499e-8ea7-77caf4262595.csv',
+      type: 'csv'
     }
   ]
 
@@ -175,6 +181,7 @@ export const NewMain = () => {
       >
         Click me
       </button>
+
       <br />
       <button type="button" onClick={handleHideClick}>
         Hide me
