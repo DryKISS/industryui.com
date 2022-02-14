@@ -12,7 +12,7 @@ import useDownloadCSVFile from './useDownloadCSVFile'
 // Style
 import styled from 'styled-components'
 
-const CSVPreview = ({ file, ...rest }) => {
+const CSVPreview = ({ file }) => {
   const downloadedCSV = useDownloadCSVFile(file)
 
   const generateTableColumn = () => {
