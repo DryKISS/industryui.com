@@ -3,9 +3,9 @@
  */
 
 // React
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 
-import {func, object } from 'prop-types'
+import { func, object } from 'prop-types'
 
 // UI
 import Icon from '../../../atoms/icon/icon/icon'
@@ -14,17 +14,16 @@ import Tree from '../tree'
 // Style
 import styled from 'styled-components'
 
-const TreeNode = ({ node,  onClick }) => {
-  const [childVisible, setChildVisiblity] = useState(false);
+const TreeNode = ({ node, onClick }) => {
+  const [childVisible, setChildVisiblity] = useState(false)
 
-  const hasChild = node.children ? true : false;
+  const hasChild = node.children ? true : false
 
   const onNodeClick = () => {
-    if(hasChild){
-    setChildVisiblity(!childVisible);
-    }
-    else{
-      onClick(node);
+    if (hasChild) {
+      setChildVisiblity(!childVisible)
+    } else {
+      onClick(node)
     }
   }
 
@@ -32,7 +31,7 @@ const TreeNode = ({ node,  onClick }) => {
     <StyledLi>
       <StylesContainer onClick={onNodeClick}>
         {hasChild && (
-            <StyledIcon prefix='fa' icon={`${childVisible ? 'angle-down' : 'angle-right'}`} />
+          <StyledIcon prefix="fa" icon={`${childVisible ? 'angle-down' : 'angle-right'}`} />
         )}
 
         <StyledLabel>
@@ -42,35 +41,33 @@ const TreeNode = ({ node,  onClick }) => {
       </StylesContainer>
 
       {hasChild && childVisible && (
-          <StyledUl>
-            <Tree data={node.children} onClick={onClick} />
-          </StyledUl>
+        <StyledUl>
+          <Tree data={node.children} onClick={onClick} />
+        </StyledUl>
       )}
     </StyledLi>
-  );
-};
+  )
+}
 
 const StyledLi = styled.li`
-list-style: none;
+  list-style: none;
 `
 
 const StylesContainer = styled.div`
-display: flex;
+  display: flex;
 `
 const StyledIcon = styled(Icon)`
-cursor: pointer;
+  cursor: pointer;
 `
 
 const StyledLabel = styled.div`
-cursor:pointer ;
+  cursor: pointer;
 `
 
 const StyledUl = styled.ul`
-display: flex ;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `
-
-
 
 TreeNode.propTypes = {
   node: object,

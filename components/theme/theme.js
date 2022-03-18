@@ -25,6 +25,7 @@ import LINK from '../atoms/link/components/variables'
 import LOGIN from '../organisms/login/variables'
 import MESSAGING from '../organisms/messaging/variables'
 import NAVBAR from '../molecules/navbar/components/variables'
+// import FLOAT_NAVBAR from '../molecules/floatNavbar/components/variables'
 import PAGE from '../layouts/page/variables'
 import PRICING from '../organisms/pricing/components/variables'
 import PROGRESS from '../atoms/progress/components/progressVariables'
@@ -61,6 +62,7 @@ const Theme = {
   LOGIN,
   MESSAGING,
   NAVBAR,
+  // FLOAT_NAVBAR,
   PAGE,
   PRICING,
   PROGRESS,

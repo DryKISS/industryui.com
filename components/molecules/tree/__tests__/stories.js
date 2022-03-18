@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
 
 // UI
 import Readme from '../README.md'
@@ -17,11 +17,11 @@ import { treeData } from '../__mocks__/default'
 
 export default {
   args: {
-    data: treeData ,
+    data: treeData,
     onClick: (node) => alert(JSON.stringify(node))
   },
   argTypes: {
-    context: ContextControl() ,
+    context: ContextControl()
   },
   component: Tree,
   parameters: {
@@ -35,7 +35,5 @@ export default {
 }
 
 export const Main = (args) => {
-  return (
-    <Tree {...args} />
-  );
+  return <Tree {...args} />
 }
