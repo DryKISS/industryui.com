@@ -37,6 +37,8 @@ import 'leaflet/dist/leaflet.css'
 
  // Free Solid / FAS
  import {
+  faAngleRight,
+  faAngleDown,
   faBars,
   faBell,
   faCalendarAlt,
@@ -83,6 +85,8 @@ import 'leaflet/dist/leaflet.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(
+  faAngleRight,
+  faAngleDown,
   faBars,
   faBell,
   faCalendarAlt,
