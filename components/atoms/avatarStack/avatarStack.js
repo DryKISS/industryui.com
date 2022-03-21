@@ -15,7 +15,7 @@ import themeFontSize from '../../utils/fontSize/fontSize'
 import THEME_SIZE from '../../constants/size'
 
 // Props
-import { propTypes, defaultProps } from './components/props'
+import { propTypes } from './components/props'
 
 const AvatarStack = ({ children, className, limit, style }) => {
   let childs = children
@@ -51,6 +51,5 @@ const StyledStack = styled.div`
 `
 
 AvatarStack.propTypes = propTypes
-AvatarStack.defaultProps = defaultProps
 
 export default AvatarStack
