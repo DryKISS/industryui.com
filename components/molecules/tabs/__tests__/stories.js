@@ -88,6 +88,7 @@ export const dynamicTab = (args) => {
     <BaseComponent
       {...args}
       size="lg"
+      centerTabs
       rightTabIcon="times-circle"
       defaultContentComponent={() => <div>Hello this is Default</div>}
     >
@@ -105,7 +106,8 @@ export const verticalTab = (args) => {
   return (
     <BaseComponent
       {...args}
-      isVertical={true}
+      isVertical
+      centerTabs
       rightTabIcon="times"
       borders={{ left: 1, right: 1, bottom: 1, top: 1 }}
     >
