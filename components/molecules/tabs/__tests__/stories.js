@@ -19,7 +19,8 @@ export default {
     grabbable: true,
     grabWalkSpeed: 25,
     indicatorSize: 1,
-    scrollToActiveTab: true
+    scrollToActiveTab: true,
+    activeContext: 'blue'
   },
   component: Tabs,
   parameters: {
@@ -215,7 +216,9 @@ export const change = (args) => {
       <TabItem active label="Tab 1">
         Tab 1 Content
       </TabItem>
-      <TabItem label="Disabled">Tab 2 Disabled</TabItem>
+      <TabItem disabled label="Disabled">
+        Tab 2 Disabled
+      </TabItem>
       <TabItem label="Tab 3">{renderTabContent('customerVat')}</TabItem>
       <TabItem label="Tab 4">Tab 4</TabItem>
     </BaseComponent>

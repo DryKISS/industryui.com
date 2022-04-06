@@ -82,6 +82,7 @@ export const Tabs = ({
   activeBorders,
   activeBorderContext,
   activeBackgroundContext,
+  activeContext,
   backgroundContext,
   borders,
   borderContext,
@@ -259,10 +260,11 @@ export const Tabs = ({
           ref={wrapperRef}
         >
           {tabPanes.length &&
-            tabPanes?.map(({ key, props }, index) => {
+            tabPanes?.map(({ key, props, ...rest }, index) => {
               return (
                 <Tab
                   activeTab={activeTab}
+                  activeContext={activeContext}
                   activeBorders={activeBorders}
                   activeBorderContext={activeBorderContext}
                   activeBackgroundContext={activeBackgroundContext}

@@ -16,6 +16,7 @@ import slugify from '../../utils/slugify/slugify'
 
 const Tab = ({
   activeTab,
+  activeContext,
   activeBorders,
   activeBorderContext,
   activeBackgroundContext,
@@ -41,7 +42,6 @@ const Tab = ({
   tabKey
 }) => {
   const tabRef = useRef(null)
-
   const isActive = activeTab.key === tabKey
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const Tab = ({
     <StyledTab
       active={isActive}
       context={context}
+      activeContext={activeContext}
       {...data}
       activeBorders={activeBorders}
       activeBorderContext={activeBorderContext}
@@ -112,7 +113,7 @@ const renderTabSize = (size) => {
   }
 }
 const StyledTab = styled.li`
-  ${({ backgroundContext, borders, borderContext, gap, size, theme }) => css`
+  ${({ active, activeContext, backgroundContext, borders, borderContext, gap, size, theme }) => css`
     background-color: ${backgroundContext ? theme.COLOUR[backgroundContext] : theme.TABS.colour};
     border-left: ${borders?.left || '0'}px solid
       ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
@@ -120,7 +121,9 @@ const StyledTab = styled.li`
       ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
     border-top: ${borders?.top || '0'}px solid
       ${borderContext ? theme.COLOUR[borderContext] : theme.TABS.borderColour};
-    color: ${theme.TABS.tabTextColour};
+    > div {
+      color: ${active ? activeContext : theme.TABS.tabTextColour};
+    }
     ${gap !== 0 &&
     css`
       border-right: ${borders.right || '0'}px solid
