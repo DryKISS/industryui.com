@@ -6,11 +6,11 @@ const data = [
     submenus: [
       {
         title: 'All Products',
-        href: '#'
+        href: 'www.aae.com'
       },
       {
         title: 'All Products2',
-        href: '#'
+        href: 'www.aae.com'
       },
       {
         title: 'Accessories',
@@ -34,15 +34,15 @@ const data = [
     main: true,
     submenus: [
       {
-        title: 'All Products',
+        title: 'Furniture Products',
         href: '#'
       },
       {
-        title: 'Another Products3',
+        title: 'Some Pro3',
         href: '#'
       },
       {
-        title: 'Accessories',
+        title: 'Assories',
         href: '#',
         submenus: [
           {

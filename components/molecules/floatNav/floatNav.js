@@ -6,65 +6,39 @@
 import React, { useState } from 'react'
 // Style
 import styled from 'styled-components'
+import arrowDown from '../../icons/components/arrowDown'
+import Close from '../../icons/components/close'
+import MenuBars from '../../icons/components/menuBars'
+// Helper
+import generateMenu from './helpers/generateMenu'
 
-const FloatNav = ({ data }) => {
+const FloatNav = ({ data, icon }) => {
   const [isShowMenu, setShowMenu] = useState(false)
   return (
-    <Wrapper>
-      <MainMenu data={data} isShowMenu={isShowMenu} />
-      <button onClick={() => setShowMenu(!isShowMenu)}>Icon</button>
+    <Wrapper arrowDown={arrowDown}>
+      <MainMenu data={data} isShowMenu={isShowMenu} setShowMenu={setShowMenu} />
+
+      <button onClick={() => setShowMenu(!isShowMenu)}>
+        <MenuBars size="lg" />
+      </button>
     </Wrapper>
   )
 }
-var indent = 3
 
-function generateMenu(container, menu) {
-  if (!menu || !menu.length) return
-  const ul = document.createElement('ul')
-  let counter = -1
-  for (const { title, submenus, href, main } of menu) {
-    counter += 1
-    const li = document.createElement('li')
-    li.textContent = title
-    li.className = main ? 'leaf main' : 'leaf'
-    li.style.left = `${counter * 10}%`
+const MainMenu = ({ data, isShowMenu, setShowMenu }) => {
+  if (isShowMenu) generateMenu(document.querySelector('.mainMenu'), data, arrowDown)
 
-    if (href !== '#') {
-      const a = document.createElement('a')
-      a.href = href
-      li.textContent = ''
-      li.appendChild(a)
-      a.textContent = title
-    }
-
-    if (submenus) {
-      li.className = li.className + ' submenu'
-      generateMenu(li, submenus, true)
-      li.addEventListener('click', (e) => {
-        if (e.target !== e.currentTarget) return
-
-        for (let i = 0; i < e.target.children.length; i++) {
-          if (e.currentTarget.className.lastIndexOf('main') !== -1) {
-            // remove all main true
-            const mainChild = document.querySelector('.mainMenu').children
-
-            for (let item = 0; item < mainChild[0].children.length; item++) {
-              mainChild[0].children[item].children[0].classList.remove('expand')
-            }
-          }
-          e.target.children[i].classList.toggle('expand')
-        }
-      })
-    }
-    ul.appendChild(li)
-  }
-  container.appendChild(ul)
-}
-
-const MainMenu = ({ data, isShowMenu }) => {
-  if (isShowMenu) generateMenu(document.querySelector('.mainMenu'), data)
-
-  return <MainWrapper className="mainMenu" isShowMenu={isShowMenu} />
+  return (
+    <MainWrapper className="mainMenu" isShowMenu={isShowMenu}>
+      <div className="header-box">
+        <button className="btn-close" onClick={() => setShowMenu(false)}>
+          <Close size="lg" colour="white" />
+        </button>
+        <button className="singIn">Sing in</button>
+      </div>
+      <h3>Website Menu</h3>
+    </MainWrapper>
+  )
 }
 const Wrapper = styled.div`
   .expand {
@@ -72,9 +46,21 @@ const Wrapper = styled.div`
   }
 
   .main {
+    margin-top: 100px;
+
     ul {
       display: none;
     }
+  }
+  .submenu {
+    background: url('/menu/vector.svg') no-repeat right center;
+  }
+  h3 {
+    text-align: center;
+    margin-top: 45px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
   }
 `
 const MainWrapper = styled.div`
@@ -88,13 +74,21 @@ const MainWrapper = styled.div`
   left: 0px;
   height: 0px;
   z-index: 100;
-
+  overflow: hidden;
+  .active {
+    color: red;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-position: under;
+  }
   li {
     color: #ffffff;
     font-weight: bold;
     &:hover {
       color: red;
       text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-position: under;
     }
     a {
       color: #ffffff;
@@ -110,20 +104,21 @@ const MainWrapper = styled.div`
   li {
     width: 180px;
     text-align: center;
+    cursor: pointer;
   }
   > ul {
     width: 100%;
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: 110px;
     display: flex;
 
     > li {
       & > ul {
         width: 100%;
         position: absolute;
-        top: 100px;
-        left: 0px;
+        top: 200px;
+        left: 45px;
         > li {
           position: absolute;
 
@@ -134,11 +129,33 @@ const MainWrapper = styled.div`
             width: 100vw;
             li {
               position: absolute;
-              left: 210%;
             }
           }
         }
       }
+    }
+  }
+  .header-box {
+    margin-top: 30px;
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    button {
+      background: none;
+      border: none;
+      display: block;
+      cursor: pointer;
+    }
+    .btn-close {
+      width: 60px;
+      height: 60px;
+    }
+    .singIn {
+      display: block;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
     }
   }
 `
