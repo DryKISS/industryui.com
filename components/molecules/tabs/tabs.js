@@ -82,6 +82,7 @@ export const Tabs = ({
   activeBorders,
   activeBorderContext,
   activeBackgroundContext,
+  activeContext,
   backgroundContext,
   borders,
   borderContext,
@@ -259,10 +260,11 @@ export const Tabs = ({
           ref={wrapperRef}
         >
           {tabPanes.length &&
-            tabPanes?.map(({ key, props }, index) => {
+            tabPanes?.map(({ key, props, ...rest }, index) => {
               return (
                 <Tab
                   activeTab={activeTab}
+                  activeContext={activeContext}
                   activeBorders={activeBorders}
                   activeBorderContext={activeBorderContext}
                   activeBackgroundContext={activeBackgroundContext}
@@ -361,11 +363,19 @@ const StyledTabs = styled.ol`
       gap: ${gap}px;
     `}
 
-  ${({ centerTabs }) =>
-    centerTabs &&
-    css`
-      justify-content: center;
-    `}
+  ${({ isVertical, centerTabs }) => {
+    if (!isVertical && centerTabs)
+      return css`
+        justify-content: center;
+        width: 100%;
+      `
+
+    if (isVertical && centerTabs)
+      return css`
+        justify-content: center;
+        height: 100%;
+      `
+  }}
 
   margin: 0 0 1rem 0;
   padding-left: 0;
@@ -373,6 +383,7 @@ const StyledTabs = styled.ol`
   user-select: none;
   white-space: nowrap;
   -ms-overflow-style: none;
+
   &&::-webkit-scrollbar {
     display: none;
   }
