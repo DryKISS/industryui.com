@@ -63,8 +63,11 @@ const MessagingSend = ({ audienceItems, maxLength, mentions, onSubmit }) => {
     switch (payload.action) {
       case MessagingActions.SET_ATTACHMENTS_TO_NEW_MESSAGE:
         setAttachments(payload.data)
+        setAudience(audienceItems[0] || '')
         break
-
+      case MessagingActions.NEW_MESSAGES:
+        setAudience(audienceItems[0] || '')
+        break
       case MessagingActions.REPLY_MESSAGE:
         setreplyMessage(payload.data)
         break

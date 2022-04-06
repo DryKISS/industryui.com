@@ -28,7 +28,7 @@ const FullPreview = () => {
   const [maxDocHeight, setMaxDocHeight] = useState(null)
   const [scrollThumbnail, setScrollThumbnail] = useState(0)
 
-  const senderData = useRef(false)
+  const senderData = useRef(null)
   const previewWrapperRef = useRef()
 
   let fileName
@@ -133,6 +133,7 @@ const FullPreview = () => {
         <SliderContent previewWrapperRef={previewWrapperRef}>
           {selectedFileIndex !== null && preElement.length > 0 ? (
             <SliderPreview
+              isSlider
               maxDocHeight={maxDocHeight}
               data={preElement}
               selectedFileIndex={selectedFileIndex}
@@ -226,6 +227,13 @@ const CrossWrapper = styled.div`
   top: 1rem;
   z-index: 1;
 `
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-height: 90%;
+  overflow: hidden;
+`
 
 const Actions = styled.div``
 
@@ -274,19 +282,10 @@ const BottomContainer = styled.div`
 
 const PreviewsWrapper = styled.div`
   bottom: 10%;
-  margin: 0 5% 5%;
+  margin: 5% 5% 5%;
   width: 90%;
   display: flex;
-  overflow: hidden;
-`
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: relative;
-  width: 100%;
-  gap: 1rem;
+  height: 120px;
 `
 
 const Wrapper = styled.div`

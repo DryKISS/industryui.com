@@ -13,7 +13,8 @@ export default ({
   setSelectedFileIndex,
   previewWrapperRef,
   maxDocHeight,
-  onScroll
+  onScroll,
+  isSlider
 }) => {
   const handleArrowClick = (e, direction) => {
     e.stopPropagation()
@@ -51,13 +52,8 @@ export default ({
       <ChevronWrapper>
         <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'left')} colour="#666666" />
       </ChevronWrapper>
-      {data.length > 0 && (
-        <Preview
-          contain
-          file={data[selectedFileIndex]}
-          // zoomable={data[selectedFileIndex]?.type?.includes('image')}
-        />
-      )}
+
+      {data.length > 0 && <Preview contain file={data[selectedFileIndex]} />}
 
       <ChevronWrapper right>
         <ChevronIcon size={36} onClick={(e) => handleArrowClick(e, 'right')} colour="#666666" />
@@ -71,19 +67,9 @@ const SelectedFilePreviewContainer = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
-  max-height: 80%;
   overflow: hidden;
   padding-top: 1rem;
-  margin-top: 14%;
-  margin-left: 105px;
-  margin-right: 50px;
-  width: 370px;
-
-  img {
-    max-height: 100%;
-    max-width: 100%;
-    width: unset;
-  }
+  margin: 10px auto;
 
   ${({ maxDocHeight }) =>
     maxDocHeight &&
