@@ -18,36 +18,59 @@ const handleMenuClick = (e) => {
     li.classList.toggle('active')
   }
 }
+const Item = ({ title, submenus, href, main }) => {
+  let className = main ? 'leaf main' : 'leaf'
+  if (submenus) className += ' submenu'
+  return (
+    <div className={className} onClick={handleMenuClick}>
+      {href ? <a href={href}>{title}</a> : title}
+    </div>
+  )
+}
 
-const generateMenu = (container, menu, arrowDown) => {
+const generateMenu = (menu, arrowDown) => {
   if (!menu || !menu.length) return
-  const ul = document.createElement('ul')
+  // const ul = document.createElement('ul')
+  let Ul = []
+  debugger
   let counter = -1
+  const Lis = []
   for (const { title, submenus, href, main } of menu) {
     counter += 1
-    const li = document.createElement('li')
-    li.textContent = title
-    li.className = main ? 'leaf main' : 'leaf'
-    li.style.left = `${counter * 11}%`
+    // Generate li component
+    // const li = document.createElement('li')
+    const Li = React.createElement('li', { title, submenus, href, main }, <Item />)
+    Lis.push(Li)
+    // li.textContent = title
+    // li.className = main ? 'leaf main' : 'leaf'
+    // li.style.left = `${counter * 11}%`
 
-    if (href !== '#') {
-      const a = document.createElement('a')
-      a.href = href
-      li.textContent = ''
-      li.appendChild(a)
-      a.textContent = title
-    }
+    // if (href !== '#') {
+    //   const a = document.createElement('a')
+    //   a.href = href
+    //   li.textContent = ''
+    //   li.appendChild(a)
+    //   a.textContent = title
+    // }
 
     if (submenus) {
-      li.className = li.className + ' submenu'
+      // li.className = li.className + ' submenu'
 
-      generateMenu(li, submenus, true)
+      generateMenu(submenus, true)
 
-      li.addEventListener('click', handleMenuClick)
+      // li.addEventListener('click', handleMenuClick)
     }
-    ul.appendChild(li)
+
+    // ul.appendChild(li)
+    Ul = React.createElement(
+      'ul',
+      {},
+      Lis.map((i) => i)
+    )
   }
-  container.appendChild(ul)
+
+  // container.appendChild(ul)
+  return React.createElement('div', {}, Ul)
 }
 
 export default generateMenu

@@ -26,7 +26,10 @@ const FloatNav = ({ data, icon }) => {
 }
 
 const MainMenu = ({ data, isShowMenu, setShowMenu }) => {
-  if (isShowMenu) generateMenu(document.querySelector('.mainMenu'), data, arrowDown)
+  let Data = () => []
+  if (isShowMenu) {
+    Data = () => console.log('Data :>> ', Data)
+  }
 
   return (
     <MainWrapper className="mainMenu" isShowMenu={isShowMenu}>
@@ -37,6 +40,9 @@ const MainMenu = ({ data, isShowMenu, setShowMenu }) => {
         <button className="singIn">Sing in</button>
       </div>
       <h3>Website Menu</h3>
+
+      {/* {isShowMenu && generateMenu(data, arrowDown)} */}
+      {isShowMenu && generateMenu(data, arrowDown)}
     </MainWrapper>
   )
 }
