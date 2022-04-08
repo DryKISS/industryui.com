@@ -5,11 +5,13 @@
 // React
 import React from 'react'
 
-// Mock
-// import data from '../__mock__/floatNav'
+// UI
 import FloatNav from '../floatNav'
+
+// Mock
 import Readme from '../README.md'
 import data from '../__mock__/floatNav'
+
 export default {
   component: FloatNav,
   args: {

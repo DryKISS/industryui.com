@@ -1,81 +1,86 @@
-const data = [
+/**
+ * Components - Molecules - Mock Data Float Navbar
+ */
+
+export default [
   {
-    title: 'Our Story',
-    href: '#',
-    main: true,
-    submenus: [
+    title: 'Home',
+    href: 'http://www.google.com'
+  },
+  {
+    title: 'Services'
+  },
+  {
+    title: 'Home'
+  },
+  {
+    title: 'Services'
+  },
+  {
+    title: 'About',
+    submenu: [
       {
-        title: 'All Products',
-        href: 'www.aae.com'
-      },
-      {
-        title: 'All Products2',
-        href: 'www.aae.com'
-      },
-      {
-        title: 'Accessories',
-        href: '#',
-        submenus: [
+        title: 'Company',
+        submenu: [
           {
-            title: 'Boxes',
-            href: 'www.aae.com'
+            title: 'Mission'
           },
           {
-            title: 'Candle Holders',
-            href: 'www.aae.com'
+            title: 'Services'
+          },
+          {
+            title: 'Product'
+          },
+          {
+            title: 'Mission'
+          },
+          {
+            title: 'Services'
+          },
+          {
+            title: 'Product',
+            submenu: [
+              {
+                title: 'Mission'
+              },
+              {
+                title: 'Services'
+              },
+              {
+                title: 'Product'
+              },
+              {
+                title: 'Mission'
+              },
+              {
+                title: 'Services'
+              },
+              {
+                title: 'Product'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Our values',
+        submenu: [
+          {
+            title: 'Who we'
+          },
+          {
+            title: 'Our values',
+            submenu: [
+              {
+                title: 'Who are'
+              },
+              {
+                title: "Who's?"
+              }
+            ]
           }
         ]
       }
     ]
-  },
-  {
-    title: 'Furniture Range',
-    href: '#',
-    main: true,
-    submenus: [
-      {
-        title: 'Furniture Products',
-        href: '#'
-      },
-      {
-        title: 'Some Pro3',
-        href: '#'
-      },
-      {
-        title: 'Assories',
-        href: '#',
-        submenus: [
-          {
-            title: 'Some Boxes',
-            href: 'www.aae.com'
-          },
-          {
-            title: 'Some Candle Holders',
-            href: 'www.aae.com'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: 'Online Catalouges',
-    href: 'www.gaa.com',
-    main: true
-  },
-  {
-    title: 'Online Catalouges',
-    href: 'www.gaa.com',
-    main: true
-  },
-  {
-    title: 'Eco-Consciousness',
-    href: 'www.ba.com',
-    main: true
-  },
-  {
-    title: 'Contact Us',
-    href: 'www.gooaa.com',
-    main: true
   }
 ]
-export default data
