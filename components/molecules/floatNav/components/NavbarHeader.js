@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import styled from 'styled-components'
 import { func } from 'prop-types'
 

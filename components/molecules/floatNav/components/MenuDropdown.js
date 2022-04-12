@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { array, bool, number } from 'prop-types'
 
 // UI

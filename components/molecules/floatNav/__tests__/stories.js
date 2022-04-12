@@ -15,7 +15,9 @@ import data from '../__mock__/floatNav'
 export default {
   component: FloatNav,
   args: {
-    data
+    data,
+    position: 'absolute',
+    context: 'white'
   },
   parameters: {
     docs: {

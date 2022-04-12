@@ -17,8 +17,8 @@ import MenuBars from '../../../icons/components/menuBars'
 import Navbar from './Navbar'
 import NavbarHeader from './NavbarHeader'
 
-const MainMenu = ({ data, isShowMenu, onSignIn, setShowMenu }) => (
-  <MainWrapper isShowMenu={isShowMenu}>
+const MainMenu = ({ data, isShowMenu, onSignIn, setShowMenu, position }) => (
+  <MainWrapper isShowMenu={isShowMenu} position={position}>
     <Container>
       <NavbarHeader setShowMenu={setShowMenu} onSignIn={onSignIn} />
       <HeadingWrapper content="Website Menu" tag="h1" />
@@ -30,15 +30,34 @@ const MainMenu = ({ data, isShowMenu, onSignIn, setShowMenu }) => (
 const HeadingWrapper = styled(Heading)`
   text-align: center;
   margin-top: 65px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.COLOUR.white};
 `
 
 const MainWrapper = styled.div`
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
   display: ${({ isShowMenu }) => (isShowMenu ? 'block' : 'none')};
   width: 100%;
   height: 100vh !important;
   background: rgba(0, 0, 0, 0.9);
-  position: absolute;
+  position: ${({ position }) => position};
   top: 0px;
   left: 0px;
   height: 0px;

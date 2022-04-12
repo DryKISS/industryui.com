@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { array, number } from 'prop-types'
 
@@ -75,7 +76,7 @@ const ButtonWrapper = styled.button`
   text-underline-offset: 2px;
 
   &:hover {
-    color: #ef1c24;
+    color: ${({ theme }) => theme.COLOUR.primary};
     text-decoration: underline;
   }
 `
@@ -103,7 +104,7 @@ const Link = styled.a`
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    color: #ef1c24;
+    color: ${({ theme }) => theme.COLOUR.primary};
     text-decoration: underline;
   }
 `
@@ -113,13 +114,13 @@ const Wrapper = styled.li`
   font-size: 24px;
   font-weight: bold;
   margin: 10px 20px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.COLOUR.white};
   text-decoration-thickness: 2px;
   text-underline-position: under;
   text-underline-offset: 2px;
 
   .isActive {
-    color: #ef1c24;
+    color: ${({ theme }) => theme.COLOUR.primary};
     text-decoration: underline;
   }
   & a {

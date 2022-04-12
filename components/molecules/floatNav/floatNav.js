@@ -14,14 +14,20 @@ import MenuBars from '../../icons/components/menuBars'
 import Button from '../../atoms/button/button/button'
 import MainMenu from './components/MainMenu'
 
-const FloatNav = ({ data, Icon, onSignIn }) => {
+const FloatNav = ({ context, data, Icon, onSignIn, position }) => {
   const [isShowMenu, setShowMenu] = useState(false)
 
   return (
     <>
-      <MainMenu data={data} isShowMenu={isShowMenu} onSignIn={onSignIn} setShowMenu={setShowMenu} />
+      <MainMenu
+        position={position}
+        data={data}
+        isShowMenu={isShowMenu}
+        onSignIn={onSignIn}
+        setShowMenu={setShowMenu}
+      />
       <Button context="transparent" onClick={() => setShowMenu(!isShowMenu)}>
-        {!Icon ? <MenuBars size="lg" /> : Icon}
+        {!Icon ? <MenuBars size="lg" colour={context} /> : Icon}
       </Button>
     </>
   )
