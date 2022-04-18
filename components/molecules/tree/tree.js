@@ -24,6 +24,13 @@ const Tree = ({ data, onClick }) => {
 }
 
 const StyledUl = styled.ul`
+  margin: 0px;
+  padding: 0px;
+  ul {
+    margin: 0px;
+    padding-left: 10px;
+  }
+
   display: flex;
   flex-direction: column;
 `
