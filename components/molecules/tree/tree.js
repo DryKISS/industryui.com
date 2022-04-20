@@ -28,7 +28,7 @@ const StyledUl = styled.ul`
   padding: 0px;
   ul {
     margin: 0px;
-    padding-left: 10px;
+    padding-left: 15px;
   }
 
   display: flex;

@@ -19,6 +19,7 @@ const Expand = ({ childVisible }) => {
 
 const StyledWrapper = styled.div`
   padding-top: 6px;
+  padding-right: 5px;
   cursor: pointer;
 `
 Expand.propTypes = { childVisible: bool }

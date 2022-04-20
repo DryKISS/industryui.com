@@ -35,6 +35,7 @@ const TreeNode = ({ node, onClick }) => {
         <StyledLabel>
           <Icon icon={node.icon}> </Icon>
           {node.label}
+          {hasChild && <span>{`  (${node?.children?.length || 0})`}</span>}
         </StyledLabel>
       </StylesContainer>
 
