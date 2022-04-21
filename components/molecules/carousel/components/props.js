@@ -3,6 +3,7 @@
  */
 
 // React
+import React from 'react'
 import {
   any,
   arrayOf,
@@ -47,6 +48,15 @@ export const CarouselPropTypes = {
   width: string
 }
 
+// Sample use of custom Pagination
+const CustomPagination = ({ size, active, label, onClick }) => {
+  return (
+    <>
+      <button onClick={onClick}>{active ? 'active' : label}</button>
+    </>
+  )
+}
+
 export const CarouselDefaultProps = {
   navContext: THEME_CONTEXT.BLACK,
   navPosition: 'middle',
@@ -58,5 +68,8 @@ export const CarouselDefaultProps = {
   paginationPosition: 'outside',
   rightNavIcon: 'chevron-right',
   showNavs: true,
-  showPagination: false
+  showPagination: false,
+  paginationProps: {
+    CustomPagination
+  }
 }
