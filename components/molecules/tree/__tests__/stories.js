@@ -18,7 +18,7 @@ import { treeData } from '../__mocks__/default'
 export default {
   args: {
     data: treeData,
-    onClick: (node) => alert(JSON.stringify(node))
+    onClick: (node) => console.log(JSON.stringify(node))
   },
   argTypes: {
     context: ContextControl()
