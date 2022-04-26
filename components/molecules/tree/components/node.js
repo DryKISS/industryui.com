@@ -36,6 +36,7 @@ const TreeNode = ({ node, label, onClick }) => {
           <Icon icon={node.icon}> </Icon>
           {node.label}
           {hasChild && <span>{`  (${node?.children?.length || 0})`}</span>}
+          {!hasChild && !childVisible && <span>{` (${node.count || 0})`}</span>}
         </StyledLabel>
       </StylesContainer>
 
@@ -63,7 +64,7 @@ const StyledLi = styled.li`
         height: 10px;
         left: -15px;
         top: 17px;
-        background-color: ${({ theme }) => theme.COLOUR.gray};
+        background-color: ${({ theme }) => theme.COLOUR.lightGray};
         border-radius: 50% 50%;
       }
     `}

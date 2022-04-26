@@ -8,6 +8,7 @@ const THEME_COLOUR = {
   help: 'rgb(255, 203, 68)',
   gray: 'rgb(63, 81, 90)',
   light: 'rgb(242, 242, 242)',
+  lightGray: '#C4C4C4',
   primary: 'rgb(51, 51, 255)',
   secondary: 'rgb(6, 121, 216)',
   success: 'rgb(89, 217, 143)',
