@@ -13,9 +13,9 @@ import Tree from '../tree'
 import Expand from './Expand'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const TreeNode = ({ node, onClick }) => {
+const TreeNode = ({ node, label, onClick }) => {
   const [childVisible, setChildVisiblity] = useState(false)
 
   const hasChild = node.children ? true : false
@@ -23,13 +23,13 @@ const TreeNode = ({ node, onClick }) => {
   const onNodeClick = () => {
     if (hasChild) {
       setChildVisiblity(!childVisible)
-    } else {
-      onClick(node)
     }
+
+    onClick(node, label)
   }
 
   return (
-    <StyledLi>
+    <StyledLi hasChild={hasChild}>
       <StylesContainer onClick={onNodeClick}>
         {hasChild && <Expand childVisible={childVisible} />}
         <StyledLabel>
@@ -41,7 +41,7 @@ const TreeNode = ({ node, onClick }) => {
 
       {hasChild && childVisible && (
         <StyledUl>
-          <Tree data={node.children} onClick={onClick} />
+          <Tree data={node.children} label={node.label} onClick={onClick} />
         </StyledUl>
       )}
     </StyledLi>
@@ -50,6 +50,23 @@ const TreeNode = ({ node, onClick }) => {
 
 const StyledLi = styled.li`
   list-style: none;
+  padding-top: 10px;
+  position: relative;
+
+  ${({ hasChild }) =>
+    !hasChild &&
+    css`
+      &:before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        left: -15px;
+        top: 17px;
+        background-color: ${({ theme }) => theme.COLOUR.gray};
+        border-radius: 50% 50%;
+      }
+    `}
 `
 
 const StylesContainer = styled.div`
@@ -66,6 +83,7 @@ const StyledLabel = styled.div`
 const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
+  margin-top: -10px !important;
 `
 
 TreeNode.propTypes = {

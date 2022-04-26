@@ -121,6 +121,22 @@ export const withPagination = (args) => (
   </BaseComponent>
 )
 
+// Sample use of custom Pagination
+const CustomPagination = ({ size, active, label, onClick }) => {
+  return (
+    <Button context={active ? 'info' : 'primary'} onClick={onClick}>
+      {label}
+    </Button>
+  )
+}
+
+export const customPagination = (args) => (
+  <BaseComponent {...{ ...args, showPagination: true, paginationProps: { CustomPagination } }}>
+    <SampleSlide />
+    <SampleSlide />
+  </BaseComponent>
+)
+
 export const withImageComponent = (args) => (
   <BaseComponent {...args}>
     <CarouselSlide>

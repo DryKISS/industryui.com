@@ -12,12 +12,11 @@ import TreeNode from './components/node'
 // Style
 import styled from 'styled-components'
 
-const Tree = ({ data, onClick }) => {
-  console.log('onClick', onClick)
+const Tree = ({ data, label, onClick }) => {
   return (
     <StyledUl>
       {data.map((tree) => (
-        <TreeNode node={tree} onClick={onClick} />
+        <TreeNode node={tree} label={label} onClick={onClick} />
       ))}
     </StyledUl>
   )
