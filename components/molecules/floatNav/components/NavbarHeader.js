@@ -17,9 +17,11 @@ const NavbarHeader = ({ onSignIn, setShowMenu }) => (
     <Button context="transparent" content={null} onClick={() => setShowMenu(false)}>
       <Close colour="white" size="lg" />
     </Button>
-    <Button context="transparent" onClick={onSignIn} size="lg">
-      <b>Sign in</b>
-    </Button>
+    {onSignIn && (
+      <Button context="transparent" onClick={onSignIn} size="lg">
+        <b>Sign in</b>
+      </Button>
+    )}
   </Wrapper>
 )
 
