@@ -13,11 +13,12 @@ import Readme from '../README.md'
 import Tree from '../tree'
 
 // Data
-import { treeData } from '../__mocks__/default'
+import data from '../__mocks__/tree'
 
 export default {
   args: {
-    data: treeData,
+    data,
+    activeCategory: 'Images',
     onClick: (node) => console.log(JSON.stringify(node))
   },
   argTypes: {

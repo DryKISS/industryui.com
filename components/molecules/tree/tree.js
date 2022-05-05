@@ -1,42 +1,28 @@
 /**
- * Tree
+ * Components - Molecules - TreeTwo
  */
 
 // React
-import React from 'react'
-import { func, object } from 'prop-types'
-
-// UI
-import TreeNode from './components/node'
+import React, { useState } from 'react'
+import { array, func } from 'prop-types'
 
 // Style
 import styled from 'styled-components'
 
-const Tree = ({ data, label, onClick }) => {
-  return (
-    <StyledUl>
-      {data.map((tree) => (
-        <TreeNode node={tree} label={label} onClick={onClick} />
-      ))}
-    </StyledUl>
-  )
-}
+// UI
+import MainTree from './components/tree'
 
-const StyledUl = styled.ul`
-  margin: 0px;
-  padding: 0px;
-  ul {
-    margin: 0px;
-    padding-left: 15px;
-  }
-
-  display: flex;
-  flex-direction: column;
-`
+const Tree = ({ data, mainItemActive, subItemActive, onClick }) => (
+  <MainTree
+    data={data}
+    mainItemActive={mainItemActive}
+    subItemActive={subItemActive}
+    onClick={(data) => console.log('data :>> ', data)}
+  />
+)
 
 Tree.propTypes = {
-  data: object,
-  onClick: func
+  data: array.isRequired
 }
 
 export default Tree
