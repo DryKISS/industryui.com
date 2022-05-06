@@ -146,7 +146,7 @@ const Title = styled.strong`
     border-radius: 50% 50%;
   }
   &:hover {
-    color: ${({ theme, activeContext }) => activeContext || theme.COLOUR.primary};
+    color: ${({ theme }) => theme.COLOUR.primary};
   }
 `
 
