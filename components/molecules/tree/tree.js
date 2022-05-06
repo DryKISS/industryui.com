@@ -1,28 +1,30 @@
 /**
- * Components - Molecules - TreeTwo
+ * Components - Molecules - Components - Tree
  */
 
 // React
-import React, { useState } from 'react'
-import { array, func } from 'prop-types'
-
-// Style
+import React from 'react'
 import styled from 'styled-components'
 
 // UI
-import MainTree from './components/tree'
+import TreeItem from './components/treeItem'
 
-const Tree = ({ data, mainItemActive, subItemActive, onClick }) => (
-  <MainTree
-    data={data}
-    mainItemActive={mainItemActive}
-    subItemActive={subItemActive}
-    onClick={(data) => console.log('data :>> ', data)}
-  />
+const Tree = ({ data, ...args }) => (
+  <Wrapper className="tree-component">
+    {data.map((item, index) => {
+      const depthLevel = 0
+      return <TreeItem depthLevel={depthLevel} items={item} key={index} {...args} />
+    })}
+  </Wrapper>
 )
 
-Tree.propTypes = {
-  data: array.isRequired
-}
-
+const Wrapper = styled.ul`
+  margin-top: 80px;
+  list-style: none;
+  z-index: 100;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+`
 export default Tree

@@ -33,7 +33,7 @@ const SubTree = ({ child, depthLevel, isSubTree, onClick, subItemActive, parent 
 
 const Wrapper = styled.ul`
   z-index: 9999;
-  padding: 0.5rem 0;
+  padding: 0;
   list-style: none;
   display: none;
 

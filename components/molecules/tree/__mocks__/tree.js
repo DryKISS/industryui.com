@@ -4,45 +4,80 @@
 
 export default [
   {
-    title: 'Home',
-    key: 'home',
-    href: 'http://www.google.com',
+    title: 'Accessories',
+    key: 'accessories',
     child: [
       {
-        title: 'Who are',
-        key: 'who-are',
-        count: 20
-      },
-      {
-        title: "Who's?",
-        key: 'who-s',
-        count: 5
-      }
-    ]
-  },
-  {
-    title: 'Services',
-    key: 'services',
-    child: [
-      {
-        title: 'Who are',
-        key: 'who-s',
-        count: 5
-      },
-      {
-        title: "Who's?",
-        key: 'who-ss',
+        title: 'Boxes',
+        key: 'boxes',
         count: 3
+      },
+      {
+        title: 'Candle Holders',
+        key: 'candle-holders',
+        count: 2
+      },
+      {
+        title: 'Kitchen',
+        key: 'kitchen',
+        count: 4
+      },
+      {
+        title: 'Mirrors',
+        key: 'mirrors',
+        count: 2
+      },
+      {
+        title: 'Pillows',
+        key: 'pillows',
+        count: 2
+      },
+      {
+        title: 'Pillows',
+        key: 'pillows',
+        count: 5
+      },
+      {
+        title: 'Trays',
+        key: 'trays',
+        count: 2
       }
     ]
   },
   {
-    title: 'About',
-    key: 'about',
+    title: 'Bookshelves',
+    key: 'bookshelves',
     child: [
       {
-        title: 'Company',
-        key: 'company'
+        title: 'Boxes (3)',
+        key: 'boxes',
+        count: 3
+      },
+      {
+        title: 'Candle Holders',
+        key: 'candle-holders',
+        count: 2
+      },
+      {
+        title: 'Kitchen',
+        key: 'kitchen',
+        count: 4
+      }
+    ]
+  },
+  {
+    title: 'Munkebo',
+    key: 'munkebo',
+    child: [
+      {
+        title: 'Kitchen',
+        key: 'kitchen',
+        count: 4
+      },
+      {
+        title: 'Mirrors',
+        key: 'mirrors',
+        count: 2
       }
     ]
   }

@@ -13,11 +13,11 @@ import SquareMinus from '../../../icons/components/minusSquare'
 // Style
 import styled from 'styled-components'
 
-const TreeTitle = ({ isSubTreeOpen, title, submenu }) => {
+const TreeTitle = ({ isSubTreeOpen, title, child }) => {
   return (
     <StyledWrapper>
       {isSubTreeOpen ? <SquareMinus /> : <SquarePlus />}
-      <span>{`${title} ${submenu?.length > 0 ? `(${submenu?.length})` : ''}`}</span>
+      <span>{`${title} ${child?.length > 0 ? `(${child?.length})` : ''}`}</span>
     </StyledWrapper>
   )
 }
@@ -25,7 +25,7 @@ const TreeTitle = ({ isSubTreeOpen, title, submenu }) => {
 const StyledWrapper = styled.div`
   span {
     position: relative;
-    top: -5px;
+    top: -8px;
   }
 `
 TreeTitle.propTypes = { isSubTreeOpen: bool }

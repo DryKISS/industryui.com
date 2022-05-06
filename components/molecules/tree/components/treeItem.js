@@ -91,11 +91,12 @@ const TreeItem = ({ data, depthLevel, items, mainItemActive, onClick, subItemAct
 }
 
 const Wrapper = styled.li`
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
-  color: ${({ theme }) => theme.COLOUR.black};
+  color: ${({ theme }) => theme.COLOUR.lightGray};
   margin-left: ${({ depthLevel }) => (depthLevel === 0 ? '0px' : '50px')};
   margin-top: ${({ depthLevel }) => (depthLevel === 0 ? '15px' : '0px')};
+  margin-bottom: ${({ depthLevel }) => (depthLevel === 0 ? '0px' : '10px')};
 
   .activeItem,
   .subActive {
@@ -140,7 +141,7 @@ const Title = styled.strong`
     width: 10px;
     height: 10px;
     left: -15px;
-    top: 15px;
+    top: 5px;
     background-color: ${({ theme }) => theme.COLOUR.lightGray};
     border-radius: 50% 50%;
   }
