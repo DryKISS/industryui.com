@@ -49,7 +49,7 @@ export default [
     key: 'bookshelves',
     child: [
       {
-        title: 'Boxes (3)',
+        title: 'Boxes',
         key: 'boxes',
         count: 3
       },

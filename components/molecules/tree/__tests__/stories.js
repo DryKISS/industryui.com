@@ -18,7 +18,8 @@ import data from '../__mocks__/tree'
 export default {
   args: {
     data,
-    activeCategory: 'Images',
+    mainItemActive: 'bookshelves',
+    subItemActive: 'boxes',
     onClick: (node) => console.log(JSON.stringify(node))
   },
   argTypes: {
