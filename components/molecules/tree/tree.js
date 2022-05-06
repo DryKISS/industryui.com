@@ -1,42 +1,30 @@
 /**
- * Tree
+ * Components - Molecules - Components - Tree
  */
 
 // React
 import React from 'react'
-import { func, object } from 'prop-types'
-
-// UI
-import TreeNode from './components/node'
-
-// Style
 import styled from 'styled-components'
 
-const Tree = ({ data, label, onClick }) => {
-  return (
-    <StyledUl>
-      {data.map((tree) => (
-        <TreeNode node={tree} label={label} onClick={onClick} />
-      ))}
-    </StyledUl>
-  )
-}
+// UI
+import TreeItem from './components/treeItem'
 
-const StyledUl = styled.ul`
-  margin: 0px;
+const Tree = ({ data, ...args }) => (
+  <Wrapper className="tree-component">
+    {data.map((item, index) => {
+      const depthLevel = 0
+      return <TreeItem depthLevel={depthLevel} items={item} key={index} {...args} />
+    })}
+  </Wrapper>
+)
+
+const Wrapper = styled.ul`
+  margin-top: 80px;
+  list-style: none;
+  z-index: 100;
   padding: 0px;
-  ul {
-    margin: 0px;
-    padding-left: 15px;
-  }
-
-  display: flex;
-  flex-direction: column;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
 `
-
-Tree.propTypes = {
-  data: object,
-  onClick: func
-}
-
 export default Tree
