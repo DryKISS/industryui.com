@@ -83,7 +83,7 @@ const TreeItem = ({ data, depthLevel, items, mainItemActive, onClick, subItemAct
         >
           <span id={items?.key} className={`${isSubTitleActive ? 'subActive ' : ''}`}>{`${
             items.title
-          } ${items.count > 0 && `(${items.count})`}`}</span>
+          } ${items.count > 0 ? `(${items.count})` : '(0)'}`}</span>
         </Title>
       )}
     </Wrapper>

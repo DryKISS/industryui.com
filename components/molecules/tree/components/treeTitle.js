@@ -17,7 +17,7 @@ const TreeTitle = ({ isSubTreeOpen, title, child }) => {
   return (
     <StyledWrapper>
       {isSubTreeOpen ? <SquareMinus /> : <SquarePlus />}
-      <span>{`${title} ${child?.length > 0 ? `(${child?.length})` : ''}`}</span>
+      <span>{`${title} ${child?.length > 0 ? `(${child?.length})` : '(0)'}`}</span>
     </StyledWrapper>
   )
 }
