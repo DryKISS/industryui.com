@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 `
 
 NavbarHeader.propTypes = {
-  onSignIn: func.isRequired,
+  onSignIn: func,
   setShowMenu: func.isRequired
 }
 

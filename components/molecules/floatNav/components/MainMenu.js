@@ -67,7 +67,7 @@ const MainWrapper = styled.div`
 MainMenu.propTypes = {
   data: array.isRequired,
   isShowMenu: bool.isRequired,
-  onSignIn: func.isRequired,
+  onSignIn: func,
   setShowMenu: func.isRequired
 }
 
