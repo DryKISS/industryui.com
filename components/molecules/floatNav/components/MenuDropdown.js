@@ -42,10 +42,20 @@ const DropdownWrapper = styled.ul`
 
   &.show {
     display: flex;
+    flex-wrap: wrap;
+    a,
+    button {
+      font-size: 20px !important;
+      font-weight: 600;
+    }
   }
 
   .dropdown-submenu {
-    left: -8px;
+    left: 5px;
+    a {
+      font-size: 16px !important;
+      font-weight: 600;
+    }
   }
 `
 
