@@ -112,7 +112,7 @@ const Link = styled.a`
 const Wrapper = styled.li`
   display: flex;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   margin: 10px 20px;
   color: ${({ theme }) => theme.COLOUR.white};
   text-decoration-thickness: 2px;
@@ -126,6 +126,7 @@ const Wrapper = styled.li`
   & a {
     text-align: left;
     padding: 0.7rem 1rem;
+    white-space: nowrap;
   }
 `
 

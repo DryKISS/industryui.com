@@ -4,83 +4,66 @@
 
 export default [
   {
-    title: 'Home',
-    href: 'http://www.google.com'
-  },
-  {
-    title: 'Services'
-  },
-  {
-    title: 'Home'
-  },
-  {
-    title: 'Services'
-  },
-  {
-    title: 'About',
+    title: 'Our Story',
+    href: '/about',
     submenu: [
       {
-        title: 'Company',
-        submenu: [
-          {
-            title: 'Mission'
-          },
-          {
-            title: 'Services'
-          },
-          {
-            title: 'Product'
-          },
-          {
-            title: 'Mission'
-          },
-          {
-            title: 'Services'
-          },
-          {
-            title: 'Product',
-            submenu: [
-              {
-                title: 'Mission'
-              },
-              {
-                title: 'Services'
-              },
-              {
-                title: 'Product'
-              },
-              {
-                title: 'Mission'
-              },
-              {
-                title: 'Services'
-              },
-              {
-                title: 'Product'
-              }
-            ]
-          }
-        ]
+        title: 'Our Story',
+        href: '/about'
       },
       {
-        title: 'Our values',
+        title: 'Furniture Range',
+        href: '/category'
+      },
+      {
+        title: 'Online Catalouges',
+        href: '/eco-consciousness'
+      },
+      {
+        title: 'Eco Consciousness',
+        href: '/eco-consciousness'
+      },
+      {
+        title: 'Contact Us',
         submenu: [
           {
-            title: 'Who we'
+            title: 'Our Story',
+            href: '/about'
           },
           {
-            title: 'Our values',
-            submenu: [
-              {
-                title: 'Who are'
-              },
-              {
-                title: "Who's?"
-              }
-            ]
+            title: 'Furniture Range',
+            href: '/category'
+          },
+          {
+            title: 'Online Catalogues',
+            href: '/catalogues'
+          },
+          {
+            title: 'Eco Consciousness',
+            href: '/eco-consciousness'
+          },
+          {
+            title: 'Contact Us',
+            href: '/contact-us'
           }
         ]
       }
     ]
+  },
+  {
+    title: 'Furniture Range',
+    href: '/category'
+  },
+  {
+    title: 'Online Catalouges',
+    href: '/eco-consciousness'
+  },
+  {
+    title: 'Eco Consciousness',
+    href: '/eco-consciousness'
+  },
+  {
+    title: 'Contact Us',
+    href: '/contact-us'
   }
 ]
