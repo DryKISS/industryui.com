@@ -24,5 +24,12 @@ const NavbarWrapper = styled.ul`
   list-style: none;
   z-index: 100;
   position: absolute;
+  top: 130px;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: static;
+    margin-top: 10px;
+  }
 `
 export default Navbar

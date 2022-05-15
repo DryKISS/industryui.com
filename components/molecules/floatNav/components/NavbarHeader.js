@@ -26,9 +26,8 @@ const NavbarHeader = ({ onSignIn, setShowMenu }) => (
 )
 
 const Wrapper = styled.div`
-  margin-top: 30px;
   width: 90%;
-  margin: 30px auto;
+  margin: 35px auto;
   display: flex;
   justify-content: space-between;
 `
