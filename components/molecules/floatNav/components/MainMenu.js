@@ -11,26 +11,36 @@ import styled from 'styled-components'
 
 // UI
 import Close from '../../../icons/components/close'
-import Container from '../../../atoms/grid/Container'
 import Heading from '../../../atoms/heading/heading'
 import MenuBars from '../../../icons/components/menuBars'
 import Navbar from './Navbar'
 import NavbarHeader from './NavbarHeader'
 
-const MainMenu = ({ data, isShowMenu, onSignIn, setShowMenu, position }) => (
-  <MainWrapper isShowMenu={isShowMenu} position={position}>
-    <Container>
-      <NavbarHeader setShowMenu={setShowMenu} onSignIn={onSignIn} />
-      <HeadingWrapper content="Website Menu" tag="h1" />
-      <Navbar data={data} />
-    </Container>
-  </MainWrapper>
-)
+const MainMenu = ({ data, isShowMenu, onSignIn, position, setShowMenu }) => {
+  return (
+    <MainWrapper isShowMenu={isShowMenu} position={position}>
+      <Container>
+        <NavbarHeader setShowMenu={setShowMenu} onSignIn={onSignIn} />
+        <HeadingWrapper content="Menu" tag="h1" />
+        <Navbar data={data} />
+      </Container>
+    </MainWrapper>
+  )
+}
 
-const HeadingWrapper = styled(Heading)`
-  text-align: center;
-  margin-top: 65px;
-  color: ${({ theme }) => theme.COLOUR.white};
+const Container = styled.div`
+  width: 90%;
+  margin: 0px auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    overflow-y: scroll;
+  }
 `
 
 const MainWrapper = styled.div`
@@ -42,6 +52,7 @@ const MainWrapper = styled.div`
       opacity: 1;
     }
   }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -62,6 +73,16 @@ const MainWrapper = styled.div`
   left: 0px;
   height: 0px;
   z-index: 100;
+`
+
+const HeadingWrapper = styled(Heading)`
+  text-align: center;
+  margin-top: 0px;
+  color: ${({ theme }) => theme.COLOUR.white};
+
+  @media (max-width: 768px) {
+    margin-left: -114px;
+  }
 `
 
 MainMenu.propTypes = {

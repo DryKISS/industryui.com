@@ -44,15 +44,6 @@ const Tab = ({
   const tabRef = useRef(null)
   const isActive = activeTab.key === tabKey
 
-  useEffect(() => {
-    if (scrollToActiveTab && tabRef.current) {
-      tabRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-      })
-    }
-  }, [isActive])
-
   const handleClick = (e) => {
     if (isActive) {
       return

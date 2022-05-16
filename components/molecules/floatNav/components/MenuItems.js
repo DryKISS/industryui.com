@@ -70,7 +70,7 @@ const ButtonWrapper = styled.button`
   white-space: nowrap;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
-  text-decoration: underline;
+  margin: 0px 10px;
   text-decoration-thickness: 2px;
   text-underline-position: under;
   text-underline-offset: 2px;
@@ -79,20 +79,41 @@ const ButtonWrapper = styled.button`
     color: ${({ theme }) => theme.COLOUR.primary};
     text-decoration: underline;
   }
+
+  @media (max-width: 1280px) {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    text-align: left;
+    padding-left: 10px;
+  }
 `
 
 const Arrow = styled.span`
   &:after {
     content: '';
     position: relative;
-    top: -4px;
+    top: -1px;
     left: 4px;
     border: solid;
-    border-width: 0 3px 3px 0;
+    border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+    border-width: 0 3px 3px 0;
+
+    @media (max-width: 1024px) {
+      font-size: 14px;
+      border-width: 0 2px 2px 0;
+    }
   }
 `
 
@@ -107,17 +128,35 @@ const Link = styled.a`
     color: ${({ theme }) => theme.COLOUR.primary};
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    padding: 0px;
+    padding-left: 28px;
+  }
 `
 
 const Wrapper = styled.li`
   display: flex;
   font-size: 24px;
   font-weight: 700;
-  margin: 10px 20px;
+  justify-content: space-between;
   color: ${({ theme }) => theme.COLOUR.white};
   text-decoration-thickness: 2px;
   text-underline-position: under;
   text-underline-offset: 2px;
+
+  @media (max-width: 1280px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    font-size: 24px;
+  }
 
   .isActive {
     color: ${({ theme }) => theme.COLOUR.primary};
