@@ -8,6 +8,7 @@ import React, { memo, useEffect, useState, useRef } from 'react'
 // UI
 import styled, { css } from 'styled-components'
 import Cropper from 'react-cropper'
+import CSVPreview from './csvPreview'
 
 const imageFormats = ['.jpg', '.jpeg', '.png']
 
@@ -165,6 +166,12 @@ const Preview = memo(
       return imagePreview()
     } else if (checkFileType(file, 'pdf')) {
       return pdfPreview()
+    } else if (checkFileType(file, 'csv')) {
+      return small ? (
+        <CSVPreviewWrapper onClick={onClick}>CSV</CSVPreviewWrapper>
+      ) : (
+        <CSVPreview file={src} />
+      )
     } else {
       return (
         <PlaceHolder>
@@ -189,8 +196,6 @@ const Preview = memo(
 )
 
 const PreviewImage = styled.img`
-  width: 100%;
-
   ${({ onClick }) =>
     onClick &&
     css`
@@ -199,6 +204,9 @@ const PreviewImage = styled.img`
   ${({ contain }) =>
     css`
       object-fit: ${contain ? 'contain' : 'cover'};
+      max-width: ${contain ? '50%' : '85px'} !important;
+      max-height: ${contain ? '50%' : '85px'} !important;
+      min-height: ${contain ? '400px' : '85px'} !important;
     `}
   ${({ dim }) =>
     dim &&
@@ -208,7 +216,7 @@ const PreviewImage = styled.img`
 `
 
 const PdfWrapper = styled.div`
-  height: 300px;
+  max-height: 300px;
   ${({ onClick }) =>
     onClick &&
     css`
@@ -241,6 +249,20 @@ const FilePlaceHolder = styled.div`
   height: 3rem;
   margin-bottom: 0.5rem;
   width: 3rem;
+`
+
+const CSVPreviewWrapper = styled.div`
+  background-color: #ffffff;
+  height: 82px;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  ${({ onClick }) =>
+    onClick &&
+    css`
+      cursor: pointer;
+    `};
 `
 
 const PlaceHolder = styled.div`
