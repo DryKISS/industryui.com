@@ -16,27 +16,27 @@ const MenuDropdown = ({ dropdown, depthLevel, submenus }) => {
   depthLevel = depthLevel + 1
   // TODO: Find a ways to handle it without adding classes
   const [scroll, setScroll] = useState(0)
-  const refTest = useRef(null)
-  const [width, setWidth] = useState(refTest?.current && refTest?.current?.scrollWidth)
+  const ref = useRef(null)
+  const [width, setWidth] = useState(ref?.current && ref?.current?.scrollWidth)
 
   const dropdownClass = depthLevel > 1 ? 'dropdown-submenu' : ''
 
   useEffect(() => {
     if (scroll > 0) {
-      refTest.current.scrollLeft = scroll
+      ref.current.scrollLeft = scroll
     }
 
     if (scroll < 100) {
-      refTest.current.scrollLeft = 0
+      ref.current.scrollLeft = 0
     }
 
-    if (scroll > Math.abs(refTest?.current?.offsetWidth - 450)) {
-      setScroll(refTest?.current?.offsetWidth - 450)
+    if (scroll > Math.abs(ref?.current?.offsetWidth - 450)) {
+      setScroll(ref?.current?.offsetWidth - 450)
     }
   }, [scroll])
 
   useEffect(() => {
-    setWidth(refTest.current?.scrollWidth)
+    setWidth(ref.current?.scrollWidth)
   }, [dropdown])
 
   return (
@@ -46,12 +46,12 @@ const MenuDropdown = ({ dropdown, depthLevel, submenus }) => {
     >
       <Wrapper isDropdown={depthLevel > 1}>
         {scroll >= 100 && <Arrow onClick={() => setScroll(scroll - 100)} />}
-        <Content ref={refTest}>
+        <Content ref={ref}>
           {submenus.map((submenu, index) => (
             <MenuItems depthLevel={depthLevel} items={submenu} key={index} />
           ))}
         </Content>
-        {width > refTest?.current?.offsetWidth && (
+        {width > ref?.current?.offsetWidth && (
           <Arrow right onClick={() => setScroll(scroll + 100)} />
         )}
       </Wrapper>

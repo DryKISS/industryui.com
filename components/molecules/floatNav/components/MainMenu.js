@@ -16,7 +16,7 @@ import MenuBars from '../../../icons/components/menuBars'
 import Navbar from './Navbar'
 import NavbarHeader from './NavbarHeader'
 
-const MainMenu = ({ data, isShowMenu, onSignIn, setShowMenu, position }) => {
+const MainMenu = ({ data, isShowMenu, onSignIn, position, setShowMenu }) => {
   return (
     <MainWrapper isShowMenu={isShowMenu} position={position}>
       <Container>
