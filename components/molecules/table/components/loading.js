@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Loading
+ * Components - Molecules - Table - Loading
  */
 
 // React

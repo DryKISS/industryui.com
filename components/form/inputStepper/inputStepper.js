@@ -5,22 +5,24 @@
 // React
 import React from 'react'
 
-// RHF
+// React Hook Form
 import { Controller } from 'react-hook-form'
 
 // UI
-import InputStepperComponent from './component'
+import InputStepperComponent from './components/component'
 
 // Props
-import { defaultProps, propTypes } from './props'
+import { defaultProps, propTypes } from './components/props'
 
 const InputStepper = ({ control, defaultValue, name, ...props }) => {
   return (
     <Controller
-      as={<InputStepperComponent name={name} {...props} />}
       control={control}
       defaultValue={defaultValue}
       name={name}
+      render={({ field: { onChange, onBlur, value, name, ref } }) => (
+        <InputStepperComponent name={name} {...props} />
+      )}
     />
   )
 }

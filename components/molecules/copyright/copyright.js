@@ -1,5 +1,5 @@
 /**
- * Copyright
+ * Components - Molecules - Copyright
  */
 
 // React

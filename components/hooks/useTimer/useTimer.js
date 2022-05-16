@@ -4,9 +4,14 @@
 
 // React
 import { useEffect, useState } from 'react'
-
-// Moment
-import moment from 'moment'
+import {
+  differenceInMilliseconds,
+  getMinutes,
+  getHours,
+  getSeconds,
+  format,
+  millisecondsToHours
+} from 'date-fns'
 
 // UI
 import useInterval from '../useInterval'
@@ -14,9 +19,9 @@ import useInterval from '../useInterval'
 const useTimer = ({ autoStart = true, interval = 1000, startTime, endTime } = {}) => {
   const getTime = () => {
     let diff = 0
-    const now = endTime ? moment(endTime) : moment()
+    const now = endTime ? new Date(endTime) : new Date()
     if (typeof startTime === 'string') {
-      diff = now.diff() - moment(startTime).diff()
+      diff = differenceInMilliseconds(now, new Date(startTime))
     }
     return diff > -1 ? diff : 0
   }
@@ -44,12 +49,12 @@ const useTimer = ({ autoStart = true, interval = 1000, startTime, endTime } = {}
   }, [])
 
   const getFormattedTime = () => {
-    const temp = moment.duration(time)
     return {
-      seconds: temp.seconds().toString().padStart(2, '0'),
-      minutes: temp.minutes().toString().padStart(2, '0'),
-      hours: parseInt(temp.asHours(), 10),
-      exactHours: temp.asHours().toFixed(2)
+      days: format(time, 'EEEE'),
+      hours: getHours(time),
+      exactHours: millisecondsToHours(time).toFixed(2),
+      minutes: getMinutes(time),
+      seconds: getSeconds(time)
     }
   }
 

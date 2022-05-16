@@ -1,4 +1,4 @@
-Select component
+Select
 
 ## Links
 

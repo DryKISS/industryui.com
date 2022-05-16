@@ -13,9 +13,9 @@ import styled, { css } from 'styled-components'
 import Button from '../../atoms/button/button/button'
 import ConfigContext from '../../services/config/context'
 import Dropdown from '../dropdown/dropdown'
-import FormError from '../../form/error/error'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Error from '../../form/error/error'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import GetAddressService from '../../services/getAddress/getAddress'
 import InputGroupAddon from '../../form/inputGroup/addon'
 import Shimmer from '../../atoms/shimmer/shimmer'
@@ -81,9 +81,9 @@ const GetAddress = ({
   }
 
   return (
-    <FormLabel label={label}>
+    <Label label={label}>
       <InputWrapper>
-        <FormField
+        <Input
           errors={errors[name] ? errors : Errors}
           name={name}
           onChange={(e) => handleInputChange(e.target.value)}
@@ -95,9 +95,11 @@ const GetAddress = ({
           <Button onClick={handleSearchClick} content="Search" context="primary" size="sm" />
         </InputGroupAddon>
       </InputWrapper>
+
       {(errors[name] || Errors[name]) && (
-        <FormError message={errors[name] ? errors[name].message : Errors[name].message} />
+        <Error message={errors[name] ? errors[name].message : Errors[name].message} />
       )}
+
       {IsLoading && (
         <LoadingWrapper size={size}>
           <Shimmer duration={500} />
@@ -107,7 +109,7 @@ const GetAddress = ({
       <Dropdown caret={false} items={Addresses} onChange={handleAddressSelect}>
         <div ref={ref} />
       </Dropdown>
-    </FormLabel>
+    </Label>
   )
 }
 

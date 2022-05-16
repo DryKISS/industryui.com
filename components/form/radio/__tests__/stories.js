@@ -5,52 +5,59 @@
 // React
 import React from 'react'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Storybook
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
+
+// Yup
+import { object, string } from 'yup'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import Form from '../../form/form'
-import RadioField from '../radio'
+import Fieldset from '../../fieldset/fieldset'
+import Legend from '../../legend/legend'
+import Radio from '../radio'
 import Readme from '../README.md'
 
-// Data
-import { RADIO_GENDER } from '../__mocks__/radio'
+const schema = object().shape({
+  decission: string().required()
+})
 
 export default {
-  args: {
-    legend: 'Gender?',
-    stacked: false
-  },
-  component: RadioField,
+  component: Radio,
+  decorators: [FormWrapper],
   parameters: {
     docs: {
       description: {
         component: Readme
       }
-    }
+    },
+    schema: schema
   },
   title: 'Form/Radio'
 }
 
-const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm()
-  const onSubmit = (data) => {}
-
-  const defaultProps = {
-    errors: errors,
-    name: 'radio',
-    register: register,
-
-    ...props
-  }
-
+export const Main = (args, { params: { formState, register } }) => {
   return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <RadioField {...defaultProps} data={RADIO_GENDER()} />
-      <Button content="Submit" type="submit" />
-    </Form>
+    <>
+      <Fieldset>
+        <Legend>Legend</Legend>
+        <Radio
+          {...args}
+          errors={formState.errors}
+          label="Yes"
+          name="decission"
+          register={register}
+          value="yes"
+        />
+
+        <Radio
+          {...args}
+          errors={formState.errors}
+          label="No"
+          name="decission"
+          register={register}
+          value="no"
+        />
+      </Fieldset>
+    </>
   )
 }
-
-export const main = (args) => <BaseComponent {...args} />

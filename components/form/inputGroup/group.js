@@ -1,6 +1,5 @@
 /**
  * Components - Form - Input Group - Group
- * Wraps the Input so we can append or prepend another element
  */
 
 // React
@@ -50,6 +49,7 @@ const StyledInputGroup = styled.div`
       border-bottom-right-radius: 0;
     }
   }
+
   ${({ error, theme }) =>
     error &&
     theme &&

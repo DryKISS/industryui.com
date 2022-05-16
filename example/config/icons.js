@@ -1,5 +1,7 @@
 // Font awesome
 import {
+  fas,
+  faPlus,
   faBars,
   faChevronLeft,
   faChevronRight,
@@ -8,7 +10,7 @@ import {
   faEnvelope,
   faExternalLinkAlt,
   faMapMarker,
-  faPhone
+  faPhone,
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -28,6 +30,7 @@ library.add(
   faExternalLinkAlt,
   faMapMarker,
   faPhone,
+  faPlus,
   fabFacebookSquare,
   fabGooglePlusSquare
 )

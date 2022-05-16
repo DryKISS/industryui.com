@@ -10,7 +10,7 @@ import React from 'react'
 import { func, object } from 'prop-types'
 
 // UI
-import FormField from '../../form/field/input'
+import Input from '../../form/input/input'
 
 // Papa parse
 import PapaParse from 'papaparse'
@@ -35,13 +35,7 @@ const CSVReader = ({ onError, onFileLoaded, parserOptions }) => {
   }
 
   return (
-    <FormField
-      accept=".csv, text/csv"
-      id="inputId"
-      label="CSV Upload"
-      onChange={change}
-      type="file"
-    />
+    <Input accept=".csv, text/csv" id="inputId" label="CSV Upload" onChange={change} type="file" />
   )
 }
 

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
 import { CarouselDefaultProps } from '../components/props'
 
 // Style
@@ -118,6 +118,22 @@ export const withPagination = (args) => (
     <SampleSlide title="5" />
     <SampleSlide title="6" />
     <SampleSlide title="7" />
+  </BaseComponent>
+)
+
+// Sample use of custom Pagination
+const CustomPagination = ({ size, active, label, onClick }) => {
+  return (
+    <Button context={active ? 'info' : 'primary'} onClick={onClick}>
+      {label}
+    </Button>
+  )
+}
+
+export const customPagination = (args) => (
+  <BaseComponent {...{ ...args, showPagination: true, paginationProps: { CustomPagination } }}>
+    <SampleSlide />
+    <SampleSlide />
   </BaseComponent>
 )
 

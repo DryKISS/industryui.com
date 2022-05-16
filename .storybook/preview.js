@@ -3,9 +3,9 @@
  */
 
 // UI
-import Container from './decorators/container'
-import RouterWrap from './decorators/router'
-import  Wrapper from './decorators/wrapper'
+import ContainerWrapper from './decorators/wrapper/container'
+import RouterWrapper from './decorators/wrapper/router'
+import Wrapper from './decorators/wrapper/wrapper'
 
 // Font awesome
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -37,6 +37,8 @@ import 'leaflet/dist/leaflet.css'
 
  // Free Solid / FAS
  import {
+  faAngleRight,
+  faAngleDown,
   faBars,
   faBell,
   faCalendarAlt,
@@ -65,6 +67,7 @@ import 'leaflet/dist/leaflet.css'
   faGraduationCap,
   faImages,
   faPaperclip,
+  faPlay,
   faSearch,
   faShieldAlt,
   faSmile,
@@ -82,6 +85,8 @@ import 'leaflet/dist/leaflet.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 library.add(
+  faAngleRight,
+  faAngleDown,
   faBars,
   faBell,
   faCalendarAlt,
@@ -110,6 +115,7 @@ library.add(
   faGraduationCap,
   faImages,
   faPaperclip,
+  faPlay,
   faSearch,
   faShieldAlt,
   faSmile,
@@ -129,4 +135,4 @@ const actionWithPromise = () => {
   return new Promise((_, reject) => reject())
 }
 
-export const decorators = [RouterWrap, Container, Wrapper]
+export const decorators = [RouterWrapper, ContainerWrapper, Wrapper]

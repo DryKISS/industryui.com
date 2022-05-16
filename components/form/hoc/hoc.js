@@ -6,62 +6,92 @@
 import React from 'react'
 
 // UI
-import FormError from '../error/error'
+import Error from '../error/error'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
-import THEME_SIZE from '../../constants/size'
 
 const FieldHOC = ({
+  autoComplete,
+  autoFocus,
   component: Component,
   errors,
   children,
+  className,
+  cols,
+  data,
+  defaultValue,
+  dir,
+  disabled,
   helperMessage,
+  id,
+  max,
+  min,
+  maxLength,
+  minLength,
+  name,
+  placeholder,
+  readOnly,
+  regExp,
   register,
-  show,
+  rows,
   showError,
+  size,
+  spellcheck,
+  style,
+  tabIndex,
+  type,
   validate,
-  ...props
-}) => (
-  <>
-    <Component
-      aria-label={props.name}
-      errors={errors?.message}
-      key={props.name}
-      name={props.name}
-      ref={register({
-        validate: validate,
-        ...(props.max && { max: props.max }),
-        ...(props.min && { min: props.min }),
-        ...(props.maxLength && { maxLength: props.maxLength }),
-        ...(props.minLength && { minLength: props.minLength }),
-        ...(props.regExp && { pattern: new RegExp(props.regExp) })
-      })}
-      style={{
-        display: !show ? 'none' : undefined,
-        ...props.style
-      }}
-      {...props}
-    >
-      {children}
-    </Component>
+  value,
+  wrap
+}) => {
+  return (
+    <>
+      <Component
+        aria-label={name}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
+        className={className}
+        cols={cols}
+        {...data}
+        defaultValue={defaultValue}
+        dir={dir}
+        disabled={disabled}
+        errors={errors.message}
+        id={id}
+        key={name}
+        {...register(name)}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        rows={rows}
+        size={size}
+        spellcheck={spellcheck}
+        style={style}
+        tabIndex={tabIndex}
+        type={type}
+        value={value}
+        wrap={wrap}
+      >
+        {children}
+      </Component>
 
-    {helperMessage && (
-      <Space marginTop={THEME_SIZE.SM} marginBottom={THEME_SIZE.XS}>
-        <Text size={THEME_SIZE.XS} context="default">
-          {helperMessage}
-        </Text>
-      </Space>
-    )}
+      {helperMessage && (
+        <Space marginTop="sm" marginBottom="xs">
+          <Text size="xs">
+            {helperMessage}
+          </Text>
+        </Space>
+      )}
 
-    {showError && <FormError message={errors?.message || ''} />}
-  </>
-)
+      {showError && <Error message={errors?.message || ''} />}
+    </>
+  )
+}
 
 FieldHOC.defaultProps = {
   errors: {},
+  helperMessage: false,
   register: () => {},
-  show: true,
-  showError: false
+  showError: true
 }
 
 export default FieldHOC

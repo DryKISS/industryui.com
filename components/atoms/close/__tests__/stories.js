@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
 import { IconPrefixControl } from '../../../../.storybook/decorators/fontawesome'
 
 // UI

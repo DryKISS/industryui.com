@@ -12,8 +12,8 @@ import { useForm } from 'react-hook-form'
 import Button from '../../../../atoms/button/button/button'
 import Column from '../../../../atoms/grid/Column'
 import Form from '../../../../form/form/form'
-import FormField from '../../../../form/field/input'
-import FormLabel from '../../../../form/label/label'
+import Input from '../../../../form/input/input'
+import Label from '../../../../form/label/label'
 import GeoCoder from '../geocoder'
 import Row from '../../../../atoms/grid/Row'
 import useGeoCoder from '../../../../hooks/useGeoCoder'
@@ -77,21 +77,21 @@ export const Main = () => {
     <Row>
       <Column md={8}>
         <Form handleSubmit={handleSubmit(submitForm)}>
-          <FormLabel label="Address">
-            <FormField register={register} label="Address" name="address" />
-          </FormLabel>
+          <Label label="Address">
+            <Input register={register} label="Address" name="address" />
+          </Label>
 
-          <FormLabel label="Address">
-            <FormField register={register} label="City" name="city" />
-          </FormLabel>
+          <Label label="Address">
+            <Input register={register} label="City" name="city" />
+          </Label>
 
-          <FormLabel label="Address">
-            <FormField register={register} label="Region" name="region" />
-          </FormLabel>
+          <Label label="Address">
+            <Input register={register} label="Region" name="region" />
+          </Label>
 
-          <FormLabel label="Address">
-            <FormField register={register} label="Language" name="language" />
-          </FormLabel>
+          <Label label="Address">
+            <Input register={register} label="Language" name="language" />
+          </Label>
           <Button centre secondary type="submit">
             Get Coordinates
           </Button>

@@ -2,7 +2,7 @@
   "recommendations": [
     "eriklynd.json-tools",
     "attilabuti.vscode-mjml",
-    "jpoissonnier.vscode-styled-components",
+    "styled-components.vscode-styled-components",
     "CoenraadS.bracket-pair-colorizer",
     "dbaeumer.vscode-eslint"
   ]

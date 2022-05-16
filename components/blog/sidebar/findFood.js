@@ -28,10 +28,10 @@ import styled from 'styled-components'
 // UI
 import BlogSection from './components/section'
 import Button from '../../atoms/button/button/button'
-import FormError from '../../form/error/error'
+import Error from '../../form/error/error'
 import Form from '../../form/form/form'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import Icon from '../../atoms/icon/icon/icon'
 import InputGroup from '../../form/inputGroup/group'
 import InputGroupAddon from '../../form/inputGroup/addon'
@@ -47,7 +47,11 @@ const schema = object().shape({
 })
 
 const BlogFindFood = ({ colour }) => {
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema),
     mode: 'onSubmit'
   })
@@ -56,8 +60,8 @@ const BlogFindFood = ({ colour }) => {
   const url = 'https://chat.drykiss.com/api/httpsDeliverooRestaurants'
   const domain = 'deliveroo.co.uk'
 
+  // Fetch restaurant service
   const submit = (data) => {
-    // Fetch restaurant service
     window
       .fetch(`${url}/${domain}/${data.postCode}`)
       .then((response) => {
@@ -79,9 +83,9 @@ const BlogFindFood = ({ colour }) => {
     <BlogSection>
       <StyledContainer colour={colour}>
         <StyledForm handleSubmit={handleSubmit(submit)}>
-          <FormLabel text="Your favourite restaurants, delivered.">
+          <Label text="Your favourite restaurants, delivered.">
             <InputGroup>
-              <FormField
+              <Input
                 errors={errors}
                 register={register}
                 name="postCode"
@@ -96,10 +100,10 @@ const BlogFindFood = ({ colour }) => {
                 />
               </InputGroupAddon>
 
-              {errors.postCode && <FormError message={errors.postCode.message} />}
+              {errors.postCode && <Error message={errors.postCode.message} />}
               {msg && <div style={{ color: '#fff' }}>{msg}</div>}
             </InputGroup>
-          </FormLabel>
+          </Label>
         </StyledForm>
 
         <Link to={`https://${domain}`} passHref target="_blank">

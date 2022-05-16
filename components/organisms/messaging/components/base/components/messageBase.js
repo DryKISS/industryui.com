@@ -165,7 +165,7 @@ const MessageBase = ({
   }
 
   const handleFileClick = (files, index) => {
-    const av = avatar ? <Avatar size="xxs" src={avatar} /> : <Avatar size="xxs" content={from[0]} />
+    const av = avatar ? <Avatar size="xs" src={avatar} /> : <Avatar size="xs" content={from[0]} />
 
     MessagingCommunicationService.send({
       name: MessageNames.Messaging.MESSAGING_ACTION,

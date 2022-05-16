@@ -6,11 +6,11 @@
 import React from 'react'
 
 // UI
-import FormError from '../error'
+import Error from '../error'
 import Readme from '../README.md'
 
 export default {
-  component: FormError,
+  component: Error,
   parameters: {
     docs: {
       description: {
@@ -27,5 +27,5 @@ export const main = (args) => {
     ...args
   }
 
-  return <FormError {...defaultProps} />
+  return <Error {...defaultProps} />
 }

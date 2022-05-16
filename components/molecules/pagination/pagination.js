@@ -20,6 +20,7 @@ const Pagination = ({
   children,
   context,
   currentPage,
+  CustomPagination,
   hideWhenOnlyOnePage,
   nextLabel,
   onPageChange,
@@ -84,7 +85,16 @@ const Pagination = ({
       )}
 
       {currentChunk.map((p) => {
-        return (
+        return CustomPagination ? (
+          <CustomPagination
+            active={p === currentPage}
+            context={context}
+            key={p}
+            label={p}
+            onClick={() => handleChange(p)}
+            size={size}
+          />
+        ) : (
           <PaginationItem
             active={p === currentPage}
             context={context}

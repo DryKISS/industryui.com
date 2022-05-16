@@ -17,7 +17,7 @@ import Column from '../../../../atoms/grid/Column'
 import Form from '../../../../form/form/form'
 import Row from '../../../../atoms/grid/Row'
 import Search from '../../../../form/search/search'
-import SelectField from '../../../../form/select/select'
+import Select from '../../../../form/select/select'
 import Space from '../../../../atoms/space/space'
 
 const Items = [
@@ -40,7 +40,11 @@ const Items = [
 ]
 
 const MessagingSearch = ({ onFilter, onSearch, placeholder }) => {
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     mode: 'onChange'
   })
 
@@ -107,7 +111,7 @@ const StyledSearch = styled(Search)`
   width: 75%;
 `
 
-const StyledSelect = styled(SelectField)`
+const StyledSelect = styled(Select)`
   label {
     margin: 0;
   }

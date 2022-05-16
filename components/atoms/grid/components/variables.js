@@ -1,5 +1,5 @@
 /**
- * Atoms - Grid - Variables
+ * Components - Atoms - Grid - Variables
  */
 const breakpoints = {
   xs: 0,

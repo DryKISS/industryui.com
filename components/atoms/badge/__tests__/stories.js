@@ -6,9 +6,9 @@
 import React from 'react'
 
 // Storybook
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
-import ContextControl from '../../../../.storybook/decorators/context'
-import SizeControl from '../../../../.storybook/decorators/size'
+import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
+import SizeControl from '../../../../.storybook/decorators/controls/size'
 
 // UI
 import Badge from '../badge'

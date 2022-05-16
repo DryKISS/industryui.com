@@ -10,8 +10,8 @@ import { node } from 'prop-types'
 // Style
 import styled from 'styled-components'
 
-const CardColumns = ({ childern }) => {
-  return <StyledColumns>{childern}</StyledColumns>
+const CardColumns = ({ children }) => {
+  return <StyledColumns>{children}</StyledColumns>
 }
 
 const StyledColumns = styled.div`
@@ -19,7 +19,7 @@ const StyledColumns = styled.div`
 `
 
 CardColumns.propTypes = {
-  childern: node.isRequired
+  children: node.isRequired
 }
 
 export default CardColumns

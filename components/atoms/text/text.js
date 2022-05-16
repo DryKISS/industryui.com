@@ -9,7 +9,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 // UI
-import MEDIA_QUERY from '../../utils/mediaQuery/query'
 import SPACER from '../../utils/spacer/spacer'
 import themeDisplay from '../../utils/display/display'
 
@@ -35,39 +34,6 @@ const StyledText = styled.p`
     font-size: ${theme.TEXT.FONT_SIZE[size] ?? '1rem'};
     line-height: ${theme.TEXT.LINE_HEIGHT[size] ?? '1rem'};
   `}
-
-  ${({ size }) =>
-    size === 'xxl' &&
-    css`
-      ${MEDIA_QUERY.phone`
-        font-size: 2rem;
-      `}
-      ${MEDIA_QUERY.tablet`
-        font-size: 3rem;
-      `}
-      ${MEDIA_QUERY.desktop`
-        font-size: 4rem;
-      `}
-      ${MEDIA_QUERY.giant`
-        font-size: 5rem;
-      `}
-    `}
-  ${({ size }) =>
-    size === 'xxxl' &&
-    css`
-      ${MEDIA_QUERY.phone`
-        font-size: 5rem;
-      `}
-      ${MEDIA_QUERY.tablet`
-        font-size: 6rem;
-      `}
-      ${MEDIA_QUERY.desktop`
-        font-size: 7rem;
-      `}
-      ${MEDIA_QUERY.giant`
-        font-size: 8rem;
-      `}
-    `}
 
   ${(theme) => themeDisplay(theme)}
   ${(theme) => SPACER(theme)}

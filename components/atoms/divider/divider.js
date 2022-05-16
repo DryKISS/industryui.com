@@ -40,9 +40,6 @@ const Divider = styled.hr`
     let margin = '1rem'
 
     switch (size) {
-      case THEME_SIZE.XXS:
-        margin = '0.25rem'
-        break
       case THEME_SIZE.XS:
         margin = '0.5rem'
         break
@@ -58,13 +55,6 @@ const Divider = styled.hr`
       case THEME_SIZE.XL:
         margin = '2rem'
         break
-      case THEME_SIZE.XXL:
-        margin = '3rem'
-        break
-      case THEME_SIZE.XXXL:
-        margin = '4rem'
-        break
-
       default:
         break
     }

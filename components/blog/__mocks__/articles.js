@@ -8,8 +8,6 @@ import React from 'react'
 // UI
 import Holder from '../../utils/holder/holder'
 
-console.log(`https://${(<Holder string />)}`)
-
 const Articles = [
   {
     author: 'Ian Warner',

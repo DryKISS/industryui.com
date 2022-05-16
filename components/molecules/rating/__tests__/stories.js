@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Stroybook
-import ContextControl from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
 
 // UI
 import Rating from '../rating'

@@ -18,9 +18,6 @@ const THEME_CONTEXT = {
 
   HELP: 'help',
 
-  MALE: 'male',
-  FEMALE: 'female',
-
   TRANSPARENT: 'transparent',
   INITIAL: 'initial'
 }

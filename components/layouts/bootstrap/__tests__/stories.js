@@ -14,7 +14,7 @@ import Text from '../../../atoms/text/text'
 import Readme from '../README.md'
 
 // Copyright
-import { Copyright } from '../../../molecules/copyright/__mocks__/copyright'
+import Copyright from '../../../molecules/copyright/__mocks__/copyright'
 
 // Footer
 import FORMATTER from '../../../organisms/footer/__mocks__/formatter'

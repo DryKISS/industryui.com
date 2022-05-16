@@ -7,7 +7,7 @@ import React, { memo, useEffect } from 'react'
 import { number, oneOfType, string } from 'prop-types'
 
 // UI
-import SelectField from '../../../form/select/select'
+import Select from '../../../form/select/select'
 import useLocalStorage from '../../../hooks/useLocalStorage'
 
 const Items = [
@@ -48,7 +48,7 @@ const TablePaginationSize = memo(({ handlePaginationSize, perPage }) => {
   }
 
   return (
-    <SelectField
+    <Select
       name="pageSize"
       errors={{}}
       defaultValue={getPageSize ? getPageSize.pageSize : `${def}`}

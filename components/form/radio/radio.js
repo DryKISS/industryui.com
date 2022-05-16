@@ -4,77 +4,114 @@
 
 // React
 import React from 'react'
-import { array, bool, string } from 'prop-types'
+import { bool, func, object, string } from 'prop-types'
 
 // Style
 import styled, { css } from 'styled-components'
 
 // UI
 import FieldHOC from '../hoc/hoc'
-import RadioComponent from './component'
-import formErrorStyle from '../variables/formErrorStyle'
+import formStyle from '../variables/formStyle'
 
-const RadioField = ({ data, errors, legend, stacked, ...props }) => {
+const Radio = ({ disabled, errors, inline, label, name, register, showError, value }) => {
   return (
-    <StyledFieldset error={errors[props.name]}>
-      {legend && <StyledLegend error={errors[props.name]}>{legend}</StyledLegend>}
-      {data.map(({ disabled, label, ...data }) => (
-        <StyledLabel htmlFor={data.id} key={data.id} stacked={stacked}>
-          <FieldHOC
-            component={RadioComponent}
-            disabled={disabled}
-            errors={errors[props.name]}
-            showError={false}
-            {...data}
-            {...props}
-          />
-          {label}
-        </StyledLabel>
-      ))}
-    </StyledFieldset>
+    <StyledLabel inline={inline}>
+      {label}
+
+      <FieldHOC
+        component={StyledRadio}
+        disabled={disabled}
+        errors={errors[name]}
+        name={name}
+        register={register}
+        showError={showError}
+        type="radio"
+        value={value}
+      />
+
+      <StyledCheck errors={errors[name]} />
+    </StyledLabel>
   )
 }
 
-const StyledFieldset = styled.fieldset`
-  border-radius: 0.25rem;
-  color: ${({ theme }) => theme.COLOUR.dark};
-  ${({ error }) =>
-    error &&
-    css`
-      ${(props) => formErrorStyle(props)}
-      padding: 0.5rem;
-    `}
-`
-
-const StyledLegend = styled.legend`
-  ${({ error }) =>
-    error &&
-    css`
-      padding: 0 0.5rem;
-    `}
-`
-
 const StyledLabel = styled.label`
+  box-sizing: border-box;
   cursor: pointer;
-  margin-right: 1.25rem;
+  display: block;
+  line-height: 2.25rem;
+  padding-left: 3rem;
   position: relative;
-  ${({ stacked }) =>
-    stacked &&
+  user-select: none;
+
+  input[disabled] ~ span {
+    filter: none;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  ${({ inline }) =>
+    inline &&
     css`
-      display: block;
-      margin: 0.5rem 0;
+      display: inline-block;
+      margin-right: 1rem;
     `}
 `
 
-RadioField.propTypes = {
-  data: array.isRequired,
-  legend: string,
-  stacked: bool
+const StyledRadio = styled.input`
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+
+  &:checked ~ span {
+    background-color: #0d6efd;
+  }
+
+  &:checked ~ span:after {
+    display: block;
+  }
+
+  ~ span:after {
+    background: #fff;
+    border-radius: 50%;
+    height: 1rem;
+    left: 9px;
+    top: 9px;
+    width: 1rem;
+  }
+`
+
+const StyledCheck = styled.span`
+  ${(props) => formStyle(props)}
+
+  border-radius: 50%;
+  height: 2.25rem;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 2.25rem;
+
+  &:after {
+    content: '';
+    display: none;
+    position: absolute;
+  }
+`
+
+Radio.propTypes = {
+  disabled: bool,
+  errors: object.isRequired,
+  inline: bool,
+  label: string,
+  name: string.isRequired,
+  register: func.isRequired,
+  showError: bool,
+  value: string
 }
 
-RadioField.defaultProps = {
-  data: [],
-  stacked: false
+Radio.defaultProps = {
+  disabled: false,
+  inline: false,
+  showError: true
 }
 
-export default RadioField
+export default Radio

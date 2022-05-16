@@ -9,7 +9,7 @@ const priceLayoutSizes = (layout) => {
   switch (layout) {
     case LAYOUTS.DESKTOP:
       return {
-        featuresTextSize: 'xxs',
+        featuresTextSize: 'xs',
         priceCardHeight: '20rem',
         priceCardWidth: '12.75rem'
       }
@@ -27,7 +27,7 @@ const priceLayoutSizes = (layout) => {
       }
     default:
       return {
-        featuresTextSize: 'xxs',
+        featuresTextSize: 'xs',
         priceCardHeight: '20rem',
         priceCardWidth: '12.75rem'
       }

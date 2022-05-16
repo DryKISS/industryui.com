@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -17,7 +17,7 @@ import enGB from 'date-fns/locale/en-GB'
 // UI
 import age from '../age'
 import Button from '../../../atoms/button/button/button'
-import DatePickerCalendar from '../../../form/datePicker/calendar/calendar'
+import DatePicker from '../../../form/datePicker/datePicker'
 import Divider from '../../../atoms/divider/divider'
 import Form from '../../../form/form/form'
 import Text from '../../../atoms/text/text'
@@ -44,7 +44,11 @@ export default {
 }
 
 export const Main = (args) => {
-  const { control, errors, handleSubmit } = useForm()
+  const {
+    control,
+    formState: { errors = {} },
+    handleSubmit
+  } = useForm()
 
   const defaultProps = {
     control: control,
@@ -62,7 +66,7 @@ export const Main = (args) => {
     <Form handleSubmit={handleSubmit(onSubmit)}>
       <Text>Age: {age(birthDate)}</Text>
 
-      <DatePickerCalendar {...defaultProps} />
+      <DatePicker {...defaultProps} />
 
       <Divider size="sm" />
 

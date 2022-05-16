@@ -6,7 +6,7 @@
 import React, { useContext } from 'react'
 
 // Storybook
-import ContextControl from '../../../../.storybook/decorators/context'
+import ContextControl from '../../../../.storybook/decorators/controls/context'
 
 // UI
 import Button from '../../../atoms/button/button/button'

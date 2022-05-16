@@ -1,1 +1,1 @@
-Label component
+Label

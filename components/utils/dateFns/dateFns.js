@@ -5,8 +5,8 @@
 // Date FNS
 import { format } from 'date-fns'
 
-const dateFns = (string) => {
-  return format(new Date(string), 'LLL d, H:mm')
+const dateFns = (string, { strFormat = 'LLL d, H:mm' }) => {
+  return !isNaN(Date.parse(string)) ? format(new Date(string), strFormat) : string
 }
 
 export default dateFns

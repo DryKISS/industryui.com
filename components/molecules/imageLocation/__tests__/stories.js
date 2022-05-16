@@ -139,7 +139,12 @@ export const UsedInForm = () => {
     imageLocationData: object().required()
   })
 
-  const { control, errors, handleSubmit, setValue } = useForm({
+  const {
+    control,
+    formState: { errors = {} },
+    handleSubmit,
+    setValue
+  } = useForm({
     resolver: yupResolver(schema)
   })
 

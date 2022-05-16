@@ -16,15 +16,19 @@ import schema from './schema'
 // UI
 import Alert from '../../molecules/alert/alert'
 import Button from '../../atoms/button/button/button'
-import FormField from '../../form/field/input'
+import Input from '../../form/input/input'
 import Form from '../../form/form/form'
-import FormLabel from '../../form/label/label'
+import Label from '../../form/label/label'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
 import Space from '../../atoms/space/space'
 import Text from '../../atoms/text/text'
 
 const EmailChange = ({ showPlaceholder, submit }) => {
-  const { errors, formState, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {}, isSubmitting = false },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -42,22 +46,16 @@ const EmailChange = ({ showPlaceholder, submit }) => {
       {error && <Alert content={error.message} context="warning" />}
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label="Email">
-          <FormField
+        <Label label="Email">
+          <Input
             {...defaultOptions}
             autoFocus
             name="email"
             placeholder={showPlaceholder && 'Email'}
           />
-        </FormLabel>
+        </Label>
 
-        <Button
-          block
-          content="Submit"
-          context="primary"
-          disabled={formState.isSubmitting}
-          type="submit"
-        />
+        <Button block content="Submit" context="primary" disabled={isSubmitting} type="submit" />
 
         <Space />
 

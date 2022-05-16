@@ -1,76 +1,102 @@
 /**
- * Form - Field
+ * Form - Checkbox
  */
 
 // React
 import React from 'react'
 
-// React Hook Form
-import { useForm } from 'react-hook-form'
+// Storybook
+import FormWrapper from '../../../../.storybook/decorators/wrapper/form'
 
 // Yup
-import { object, string } from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { array, bool, object } from 'yup'
 
 // UI
-import Button from '../../../atoms/button/button/button'
-import CheckboxField from '../checkbox'
-import Form from '../../form/form'
+import Checkbox from '../checkbox'
 import Readme from '../README.md'
 
-const data = [
-  {
-    id: 'check',
-    label: 'Yes',
-    value: 'check'
-  },
-  {
-    id: 'checked',
-    label: 'No',
-    value: 'checked'
-  }
-]
+const schema = object().shape({
+  checkbox: bool().oneOf([true], 'Accept checkbox'),
+  checked: bool().oneOf([true], 'Accept checkbox'),
+  pet: array().min(1)
+})
 
 export default {
-  args: {
-    legend: 'Do you like Industry-UI?',
-    stacked: false
-  },
-  title: 'Form/Checkbox',
-  component: CheckboxField,
+  component: Checkbox,
+  decorators: [FormWrapper],
   parameters: {
     docs: {
       description: {
         component: Readme
       }
-    }
-  }
+    },
+    schema: schema
+  },
+  title: 'Form/Checkbox'
 }
 
-const schema = object().shape({
-  checkbox: string().required()
-})
-
-const BaseComponent = (props = {}) => {
-  const { errors, handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
-  })
-
-  const onSubmit = (data) => {}
-
-  const defaultProps = {
-    errors: errors,
-    name: 'checkbox',
-    register: register,
-    ...props
-  }
-
+export const Main = (args, { params: { formState, register } }) => {
   return (
-    <Form handleSubmit={handleSubmit(onSubmit)}>
-      <CheckboxField {...defaultProps} data={data} />
-      <Button content="Submit" type="submit" />
-    </Form>
+    <>
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        label="Yes"
+        name="checkbox"
+        register={register}
+      />
+
+      <Checkbox {...args} errors={formState.errors} label="No" name="checked" register={register} />
+    </>
   )
 }
 
-export const main = (args) => <BaseComponent {...args} />
+export const Inline = (args, { params: { formState, register } }) => {
+  return (
+    <>
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="Yes"
+        name="checkbox"
+        register={register}
+      />
+
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="No"
+        name="checked"
+        register={register}
+      />
+    </>
+  )
+}
+
+export const Grouped = (args, { params: { formState, register } }) => {
+  return (
+    <>
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="Cat"
+        name="pet"
+        register={register}
+        value="cat"
+      />
+
+      <Checkbox
+        {...args}
+        errors={formState.errors}
+        inline
+        label="Dog"
+        name="pet"
+        register={register}
+        value="dog"
+      />
+    </>
+  )
+}

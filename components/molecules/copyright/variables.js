@@ -9,4 +9,5 @@ const COPYRIGHT = {
   background: THEME_COLOUR.white,
   colour: THEME_COLOUR.black
 }
+
 export default COPYRIGHT

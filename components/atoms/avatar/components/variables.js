@@ -1,5 +1,5 @@
 /**
- * Avatar - Variables
+ * Components - Atoms - Avatar - Variables
  */
 
 // UI
@@ -9,4 +9,5 @@ const AVATAR = {
   background: THEME_COLOUR.primary,
   colour: THEME_COLOUR.black
 }
+
 export default AVATAR

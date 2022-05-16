@@ -8,7 +8,7 @@ import { bool, func, object, string, oneOf } from 'prop-types'
 
 // UI
 import Button from '../../atoms/button/button/button'
-import FormField from '../field/input'
+import Input from '../input/input'
 import Icon from '../../atoms/icon/icon/icon'
 import InputGroup from '../inputGroup/group'
 import InputGroupAddon from '../inputGroup/addon'
@@ -32,11 +32,12 @@ const Search = ({
         </InputGroupAddon>
       )}
 
-      <FormField
+      <Input
         errors={errors}
         name="query"
         placeholder={placeholder}
         register={register}
+        size="lg"
         type={type}
       />
 
@@ -54,6 +55,10 @@ const Search = ({
     </InputGroup>
   )
 }
+
+// [type="search"] {
+//   outline-offset: -2px;
+// }
 
 Search.propTypes = {
   appendSearchButton: bool,

@@ -6,7 +6,7 @@
 import React from 'react'
 
 // Storybook
-import ControlTypes from '../../../../.storybook/decorators/controlTypes'
+import ControlTypes from '../../../../.storybook/decorators/controls/controlTypes'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
@@ -57,7 +57,12 @@ const schema = object().shape({
 })
 
 export const Main = (args) => {
-  const { errors, handleSubmit, register, setValue } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register,
+    setValue
+  } = useForm({
     resolver: yupResolver(schema)
   })
 

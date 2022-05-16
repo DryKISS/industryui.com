@@ -75,8 +75,7 @@ const ThemeStyle = createGlobalStyle`
     text-decoration: underline dotted;
   }
 
-  b,
-  strong {
+  b, strong {
     font-weight: bolder;
   }
 
@@ -106,10 +105,6 @@ const ThemeStyle = createGlobalStyle`
     top: -0.5em;
   }
 
-  img {
-    border-style: none;
-  }
-
   input,
   optgroup,
   select,textarea {
@@ -117,14 +112,6 @@ const ThemeStyle = createGlobalStyle`
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
-  }
-
-  input {
-    overflow: visible;
-  }
-
-  select {
-    text-transform: none;
   }
 
   button::-moz-focus-inner,
@@ -142,29 +129,8 @@ const ThemeStyle = createGlobalStyle`
     outline: 1px dotted ButtonText;
   }
 
-  fieldset {
-    border: 0;
-    margin-bottom: 1rem;
-    padding: 0.5rem 0 0;
-  }
-
-  legend {
-    box-sizing: border-box;
-    color: inherit;
-    display: table;
-    max-width: 100%;
-    padding: 0;
-    white-space: normal;
-  }
-
   progress {
     vertical-align: baseline;
-  }
-
-  [type="checkbox"],
-  [type="radio"] {
-    box-sizing: border-box;
-    padding: 0;
   }
 
   [type="number"]::-webkit-inner-spin-button,
@@ -172,16 +138,8 @@ const ThemeStyle = createGlobalStyle`
     height: auto;
   }
 
-  [type="search"] {
-    outline-offset: -2px;
-  }
-
   ::-webkit-file-upload-button {
     font: inherit;
-  }
-
-  details {
-    display: block;
   }
 
   summary {

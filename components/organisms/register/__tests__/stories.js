@@ -6,11 +6,9 @@
 import React, { useState } from 'react'
 
 // UI
-
 import Alert from '../../../molecules/alert/alert'
 import requestSimulator from '../../../utils/requestSimulator/requestSimulator'
 import Register from '../register'
-
 import Readme from '../README.md'
 
 export default {
@@ -39,12 +37,9 @@ export const Main = (args) => {
   }
 
   const defaultProps = {
-    birthday: false,
-    dayBirthday: 1,
     email: 'ian.warner@drykiss.com',
     errorSubmit: false,
     marketing: false,
-    monthBirthday: 10,
     nameFirst: 'Ian',
     nameLast: 'Warner',
     password: 'test',
@@ -53,7 +48,6 @@ export const Main = (args) => {
     showPlaceholder: true,
     submit: submit,
     terms: false,
-    yearBirthday: '2020',
     ...args
   }
 

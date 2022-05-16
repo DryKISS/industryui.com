@@ -5,6 +5,7 @@
 // React
 import React, { memo, useState } from 'react'
 import { object, string } from 'prop-types'
+
 // Style
 import styled, { css } from 'styled-components'
 
@@ -20,9 +21,9 @@ import ShareIcon from './shareIcon'
 const Message = memo(
   ({ config, message, prevType, type, isSending, ...props }) => {
     const avatar = message.avatar ? (
-      <Avatar size="xxs" src={message.avatar} />
+      <Avatar size="xs" src={message.avatar} />
     ) : (
-      <Avatar size="xxs" content={message.from[0]} />
+      <Avatar size="xs" content={message.from[0]} />
     )
 
     const handleReplyClick = () => {

@@ -1,5 +1,5 @@
 /**
- * Components - Molecules - Head
+ * Components - Molecules - Table - Head
  */
 
 // React

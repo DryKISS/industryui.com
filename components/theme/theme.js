@@ -11,9 +11,9 @@ import AVATAR from '../atoms/avatar/components/variables'
 import AUDIO_PLAYER from '../molecules/audioPlayer/variables'
 import BADGE from '../atoms/badge/components/variables'
 import BAR from '../organisms/bar/components/variables'
-import CALENDAR from '../organisms/calendar/fullCalendar/components/variables'
+import CALENDAR from '../organisms/calendar/components/variables'
 import COPYRIGHT from '../molecules/copyright/variables'
-import DETAILS2 from '../atoms/details2/components/variables'
+import DETAILS from '../atoms/details/components/variables'
 import DROPDOWN from '../molecules/dropdown/variables'
 import EDITOR from '../organisms/editor/variables'
 import FOOTER from '../organisms/footer/variables'
@@ -30,7 +30,8 @@ import PRICING from '../organisms/pricing/components/variables'
 import PROGRESS from '../atoms/progress/components/progressVariables'
 import PROGRESSBAR from '../atoms/progress/components/progressBarVariables'
 import RICH_TEXT_EDITOR from '../form/iuiRich/variables'
-import SELECT from '../form/reactSelect/variables'
+import SCHEDULE from '../organisms/charts/scheduleChart/variables'
+import SELECT from '../form/reactSelect/components/variables'
 import SIDEBAR from '../molecules/sidebar/variables'
 import SPACING from '../utils/spacer/spacing'
 import STEPPER from '../molecules/stepper/components/variables'
@@ -40,9 +41,6 @@ import TEXT from '../atoms/text/components/variables'
 import TILE from '../molecules/tile/components/variables'
 import VOICE_RECORDER from '../molecules/voiceRecorder/variables'
 
-// Nivo
-import PIECHART from '../molecules/charts/nivo/pieChart/variables'
-
 const Theme = {
   AUDIO_PLAYER,
   AVATAR,
@@ -51,7 +49,7 @@ const Theme = {
   CALENDAR,
   COLOUR,
   COPYRIGHT,
-  DETAILS2,
+  DETAILS,
   DROPDOWN,
   EDITOR,
   FOOTER,
@@ -65,9 +63,9 @@ const Theme = {
   NAVBAR,
   PAGE,
   PRICING,
-  PIECHART,
   PROGRESS,
   PROGRESSBAR,
+  SCHEDULE,
   RICH_TEXT_EDITOR,
   SELECT,
   SIDEBAR,

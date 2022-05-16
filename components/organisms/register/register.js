@@ -4,26 +4,23 @@
 
 // React
 import React, { useContext, useState, useEffect } from 'react'
-import { any, bool, func, string } from 'prop-types'
+import { bool, func, string } from 'prop-types'
 
 // React Hook Form
 import { useForm } from 'react-hook-form'
 
-// UI
+// Style
+import styled from 'styled-components'
 
+// UI
 import Alert from '../../molecules/alert/alert'
-import Text from '../../atoms/text/text'
-import CheckboxField from '../../form/checkbox/checkbox'
-import DatePickerInput from '../../form/datePicker/input/datePickerInput'
+import Checkbox from '../../form/checkbox/checkbox'
 import UserContext from '../../services/authentication/context'
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import Link from '../../atoms/link/link'
-
-// Style
-import styled from 'styled-components'
 
 const CHECKBOX_TERMS = [
   {
@@ -38,11 +35,8 @@ const CHECKBOX_TERMS = [
 ]
 
 const Register = ({
-  birthday,
-  dayBirthday,
   email,
   errorSubmit,
-  monthBirthday,
   marketing,
   nameFirst,
   nameLast,
@@ -51,25 +45,14 @@ const Register = ({
   repeatPassword,
   showPlaceholder,
   submit,
-  terms,
-  yearBirthday
+  terms
 }) => {
-  const renderBirthday = () => (
-    <>
-      <DatePickerInput
-        day={dayBirthday}
-        id="Birthday"
-        label="Birthdate"
-        month={monthBirthday}
-        year={yearBirthday}
-      />
-
-      <Text>To sign up, you must be 18 or older. Other users will not see this.</Text>
-    </>
-  )
-
   const { registerContext } = useContext(UserContext)
-  const { errors, register, formState, handleSubmit } = useForm({
+  const {
+    formState: { errors = {}, isValid },
+    register,
+    handleSubmit
+  } = useForm({
     mode: 'onChange'
   })
 
@@ -96,7 +79,6 @@ const Register = ({
         email,
         password,
         marketing,
-        birthday,
         (error) => error && setError(error)
       )
     } else {
@@ -113,61 +95,55 @@ const Register = ({
     <Form handleSubmit={handleSubmit(onSubmit)}>
       {error && <Alert content={error.message} context="warning" />}
 
-      <FormLabel label="First name">
-        <FormField
+      <Label label="First name">
+        <Input
           {...defaultOptions}
           autoFocus
           name="nameFirst"
           placeholder={showPlaceholder ? 'Tommy' : ''}
         />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Last name">
-        <FormField
-          {...defaultOptions}
-          name="nameLast"
-          placeholder={showPlaceholder ? 'Ryder' : ''}
-        />
-      </FormLabel>
+      <Label label="Last name">
+        <Input {...defaultOptions} name="nameLast" placeholder={showPlaceholder ? 'Ryder' : ''} />
+      </Label>
 
-      <FormLabel label="Email">
-        <FormField
+      <Label label="Email">
+        <Input
           {...defaultOptions}
           autoFocus
           name="email"
           placeholder={showPlaceholder ? 'Email' : ''}
         />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Password">
-        <FormField
+      <Label label="Password">
+        <Input
           {...defaultOptions}
           name="password"
           placeholder={showPlaceholder ? 'Password' : ''}
           type="password"
         />
-      </FormLabel>
+      </Label>
 
-      <FormLabel label="Repeat Password">
-        <FormField
+      <Label label="Repeat Password">
+        <Input
           {...defaultOptions}
           name="repeatPassword"
           placeholder={showPlaceholder ? 'Password' : ''}
           type="password"
         />
-      </FormLabel>
-
-      {birthday && renderBirthday()}
+      </Label>
 
       {passwordError && <Alert content={passwordError.message} context="warning" />}
 
-      <CheckboxField {...defaultOptions} data={CHECKBOX_TERMS} stacked />
+      <Checkbox {...defaultOptions} data={CHECKBOX_TERMS} stacked />
 
       <Button
         align="right"
         content="Sign up"
         context="primary"
-        disabled={!formState.isValid}
+        disabled={!isValid}
         size="lg"
         type="submit"
       />
@@ -185,12 +161,9 @@ const StyledLink = styled.div`
 `
 
 Register.propTypes = {
-  birthday: bool,
-  dayBirthday: any,
   email: string,
   errorSubmit: bool,
   marketing: bool,
-  monthBirthday: any,
   nameFirst: string,
   nameLast: string,
   password: string,
@@ -198,12 +171,11 @@ Register.propTypes = {
   repeatPassword: string,
   showPlaceholder: bool,
   submit: func.isRequired,
-  terms: bool,
-  yearBirthday: any
+  terms: bool
 }
 
 Register.defaultProps = {
-  birthday: false,
   pathLogin: '/account/login'
 }
+
 export default Register

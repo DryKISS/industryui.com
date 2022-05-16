@@ -6,8 +6,8 @@
 import React from 'react'
 
 // Storybook
-import AlignControl from '../../../../../.storybook/decorators/align'
-import SizeControl from '../../../../../.storybook/decorators/size'
+import AlignControl from '../../../../../.storybook/decorators/controls/align'
+import SizeControl from '../../../../../.storybook/decorators/controls/size'
 
 // UI
 import Button from '../../button/button'
@@ -68,7 +68,7 @@ const Children = ({ size }) => {
           context="primary"
           size={size}
           startIcon="verticalThreeDots"
-          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
+          startIconProps={{ colour: 'white', iui: true, size: size }}
         />
       </Dropdown>
 
@@ -92,7 +92,7 @@ const Children = ({ size }) => {
           context="primary"
           size={size}
           startIcon="verticalThreeDots"
-          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
+          startIconProps={{ colour: 'white', iui: true, size: size }}
         />
       </Dropdown>
 
@@ -105,7 +105,7 @@ const Children = ({ size }) => {
           context="primary"
           size={size}
           startIcon="verticalThreeDots"
-          startIconProps={{ colour: 'white', iui: true, size: 'lg' }}
+          startIconProps={{ colour: 'white', iui: true, size: size }}
         />
       </Dropdown>
     </>

@@ -1,7 +1,8 @@
 /**
- * Copyright
+ * Components - Molecules - Copyright - Mock
  */
-export const Copyright = [
+
+const Copyright = [
   {
     name: 'Terms and conditions',
     to: '/policies/terms-conditions'
@@ -15,3 +16,5 @@ export const Copyright = [
     to: '/policies/site-map'
   }
 ]
+
+export default Copyright

@@ -11,6 +11,8 @@ import styled, { css } from 'styled-components'
 const Image = styled.img.attrs((props) => ({
   itemProp: 'contentUrl'
 }))`
+  border-style: none;
+
   ${({ cover }) =>
     cover &&
     css`

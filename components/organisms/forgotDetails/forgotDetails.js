@@ -19,13 +19,17 @@ import styled from 'styled-components'
 // UI
 import Button from '../../atoms/button/button/button'
 import Form from '../../form/form/form'
-import FormField from '../../form/field/input'
-import FormLabel from '../../form/label/label'
+import Input from '../../form/input/input'
+import Label from '../../form/label/label'
 import Link from '../../atoms/link/link'
 import PageHeading from '../../molecules/pageHeading/pageHeading'
 
 const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
-  const { errors, handleSubmit, register } = useForm({
+  const {
+    formState: { errors = {} },
+    handleSubmit,
+    register
+  } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -39,14 +43,14 @@ const ForgotDetails = ({ pathLogIn, showPlaceholder, submit }) => {
       <PageHeading center divider={false} heading="Forgot Details" />
 
       <Form handleSubmit={handleSubmit(submit)}>
-        <FormLabel label="Email">
-          <FormField
+        <Label label="Email">
+          <Input
             {...defaultOptions}
             autoFocus
             name="email"
             placeholder={showPlaceholder ? 'Email' : ''}
           />
-        </FormLabel>
+        </Label>
 
         <Button block content="Send reset link" size="lg" type="submit" />
 
