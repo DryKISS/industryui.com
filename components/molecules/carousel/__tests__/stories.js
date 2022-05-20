@@ -3,7 +3,7 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Storybook
 import ContextControl from '../../../../.storybook/decorators/controls/context'
@@ -48,29 +48,46 @@ export default {
 const SampleSlide = ({ title = 'Sample Slide' }) => (
   <CarouselSampleSlide text={title} node={<Holder width={900} height={300} />} />
 )
+const Slide = () => (
+  <div>
+    <p>Slide One</p>
 
+    <br />
+
+    <p>Slide One</p>
+  </div>
+)
 const BaseComponent = (props) => {
+  const [currentPage, setCurrentPage] = useState(2 - 1)
+
+  const slideData = ['three', 'four', 'three', 'four']
+
+  console.log('currentPage :>> ', currentPage)
   const defaultProps = {
     height: '300px',
     width: '900px',
-    numberOfItems: {
-      600: 1,
-      1200: 3,
-      1400: 8,
-      1600: 10,
-      4000: 12
-    },
-    ...props
+    numberOfItems: 1,
+    showNavs: false,
+    showPagination: true,
+    defaultSlide: currentPage,
+    slides: (slideData || []).map((item) => ({
+      node: <Slide {...item} />,
+      text: ' '
+    })),
+    paginationProps: {
+      onPageChange: (index) => {
+        setCurrentPage(index)
+        console.log('index :>> ', 2 - index)
+      },
+      currentPage
+    }
+    // ...props
   }
+
   return <Carousel {...defaultProps} />
 }
 
-export const main = (args) => (
-  <BaseComponent {...args}>
-    <SampleSlide />
-    <SampleSlide title="Another Slide" />
-  </BaseComponent>
-)
+export const main = (args) => <BaseComponent />
 
 export const withArray = (args) => (
   <BaseComponent

@@ -25,6 +25,7 @@ const Carousel = ({
   autoplay,
   autoplayInterval,
   children,
+  defaultSlide,
   fullWidth,
   gap,
   height,
@@ -63,6 +64,10 @@ const Carousel = ({
   }
 
   useEffect(() => {
+    setCurrentImageIndex(dataSource.length - defaultSlide)
+  }, [defaultSlide])
+
+  useEffect(() => {
     if (autoplay === true) {
       interval = setInterval(() => {
         nextSlide()
@@ -92,9 +97,9 @@ const Carousel = ({
       <Pagination
         currentPage={dataSource.length - currentImageIndex}
         nextLabel={<Icon icon="chevron-right" />}
-        onPageChange={(page) => {
-          setCurrentImageIndex(dataSource.length - page)
-        }}
+        // onPageChange={(page) => {
+        //   setCurrentImageIndex(dataSource.length - page)
+        // }}
         pageCount={dataSource.length}
         prevLabel={<Icon icon="chevron-left" />}
         showNextAndPrev
