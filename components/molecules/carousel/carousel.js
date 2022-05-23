@@ -25,6 +25,7 @@ const Carousel = ({
   autoplay,
   autoplayInterval,
   children,
+  defaultSlide,
   fullWidth,
   gap,
   height,
@@ -61,6 +62,10 @@ const Carousel = ({
       setNumberOfItems(10)
     }
   }
+
+  useEffect(() => {
+    setCurrentImageIndex(dataSource.length - defaultSlide)
+  }, [defaultSlide])
 
   useEffect(() => {
     if (autoplay === true) {

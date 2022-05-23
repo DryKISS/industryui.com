@@ -76,9 +76,7 @@ const FieldHOC = ({
 
       {helperMessage && (
         <Space marginTop="sm" marginBottom="xs">
-          <Text size="xs">
-            {helperMessage}
-          </Text>
+          <Text size="xs">{helperMessage}</Text>
         </Space>
       )}
 

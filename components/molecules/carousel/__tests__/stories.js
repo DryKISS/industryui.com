@@ -3,7 +3,7 @@
  */
 
 // React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Storybook
 import ContextControl from '../../../../.storybook/decorators/controls/context'
@@ -71,6 +71,42 @@ export const main = (args) => (
     <SampleSlide title="Another Slide" />
   </BaseComponent>
 )
+
+export const WithCustomPagination = () => {
+  const slideData = ['One', 'Two', 'Three', 'Four']
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const Slide = () => (
+    <div>
+      <p>Top</p>
+
+      <br />
+
+      <p>Bottom</p>
+    </div>
+  )
+
+  const defaultProps = {
+    height: '300px',
+    width: '900px',
+    numberOfItems: 1,
+    showNavs: false,
+    showPagination: true,
+    defaultSlide: currentPage,
+    slides: (slideData || []).map((item) => ({
+      node: <Slide {...item} />,
+      text: ' '
+    })),
+    paginationProps: {
+      onPageChange: (index) => {
+        setCurrentPage(index)
+      },
+      currentPage
+    }
+  }
+
+  return <Carousel {...defaultProps} />
+}
 
 export const withArray = (args) => (
   <BaseComponent
