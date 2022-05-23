@@ -97,9 +97,9 @@ const Carousel = ({
       <Pagination
         currentPage={dataSource.length - currentImageIndex}
         nextLabel={<Icon icon="chevron-right" />}
-        // onPageChange={(page) => {
-        //   setCurrentImageIndex(dataSource.length - page)
-        // }}
+        onPageChange={(page) => {
+          setCurrentImageIndex(dataSource.length - page)
+        }}
         pageCount={dataSource.length}
         prevLabel={<Icon icon="chevron-left" />}
         showNextAndPrev

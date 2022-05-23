@@ -48,21 +48,45 @@ export default {
 const SampleSlide = ({ title = 'Sample Slide' }) => (
   <CarouselSampleSlide text={title} node={<Holder width={900} height={300} />} />
 )
-const Slide = () => (
-  <div>
-    <p>Slide One</p>
 
-    <br />
-
-    <p>Slide One</p>
-  </div>
-)
 const BaseComponent = (props) => {
-  const [currentPage, setCurrentPage] = useState(2 - 1)
+  const defaultProps = {
+    height: '300px',
+    width: '900px',
+    numberOfItems: {
+      600: 1,
+      1200: 3,
+      1400: 8,
+      1600: 10,
+      4000: 12
+    },
+    ...props
+  }
+  return <Carousel {...defaultProps} />
+}
 
-  const slideData = ['three', 'four', 'three', 'four']
+export const main = (args) => (
+  <BaseComponent {...args}>
+    <SampleSlide />
+    <SampleSlide title="Another Slide" />
+  </BaseComponent>
+)
 
-  console.log('currentPage :>> ', currentPage)
+export const WithCustomPagination = () => {
+  const [currentPage, setCurrentPage] = useState(4 - 1)
+
+  const Slide = () => (
+    <div>
+      <p>Top</p>
+
+      <br />
+
+      <p>Bottom</p>
+    </div>
+  )
+
+  const slideData = ['One', 'Two', 'Three', 'Four']
+
   const defaultProps = {
     height: '300px',
     width: '900px',
@@ -81,13 +105,10 @@ const BaseComponent = (props) => {
       },
       currentPage
     }
-    // ...props
   }
 
   return <Carousel {...defaultProps} />
 }
-
-export const main = (args) => <BaseComponent />
 
 export const withArray = (args) => (
   <BaseComponent
