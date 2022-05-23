@@ -73,7 +73,8 @@ export const main = (args) => (
 )
 
 export const WithCustomPagination = () => {
-  const [currentPage, setCurrentPage] = useState(4 - 1)
+  const slideData = ['One', 'Two', 'Three', 'Four']
+  const [currentPage, setCurrentPage] = useState(1)
 
   const Slide = () => (
     <div>
@@ -84,8 +85,6 @@ export const WithCustomPagination = () => {
       <p>Bottom</p>
     </div>
   )
-
-  const slideData = ['One', 'Two', 'Three', 'Four']
 
   const defaultProps = {
     height: '300px',
@@ -101,7 +100,6 @@ export const WithCustomPagination = () => {
     paginationProps: {
       onPageChange: (index) => {
         setCurrentPage(index)
-        console.log('index :>> ', 2 - index)
       },
       currentPage
     }
