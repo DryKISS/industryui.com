@@ -14,7 +14,8 @@ import Data from '../__mocks__/copyright'
 
 export default {
   args: {
-    links: Data
+    links: Data,
+    marginRight: '10px'
   },
   component: Copyright,
   parameters: {

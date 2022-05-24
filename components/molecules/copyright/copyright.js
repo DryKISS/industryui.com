@@ -22,7 +22,7 @@ import THEME_CONTEXT from '../../constants/context'
 
 const year = new Date().getFullYear()
 
-const Copyright = memo(({ fixed, icon, links }) => {
+const Copyright = memo(({ fixed, icon, links, marginRight }) => {
   const { config } = useContext(ConfigContext)
 
   const { Brand } = config
@@ -30,7 +30,7 @@ const Copyright = memo(({ fixed, icon, links }) => {
   const renderLinks = () => {
     return links.map(({ name, to }, index) => (
       <Link key={index} passHref to={to}>
-        <StyledLink>{name}</StyledLink>
+        <StyledLink marginRight={marginRight}>{name}</StyledLink>
       </Link>
     ))
   }
@@ -89,7 +89,7 @@ const StyledIcon = styled(Icon)`
 `
 
 const StyledLink = styled.span`
-  margin-right: 1.5rem;
+  margin-right: ${({ marginRight }) => marginRight || '1.5rem'};
 `
 
 Copyright.propTypes = {
