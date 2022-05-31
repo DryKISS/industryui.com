@@ -15,15 +15,16 @@ import dropdownTypes from './types'
 import Icon from '../../atoms/icon/icon/icon'
 import Link from '../../atoms/link/link'
 
-const renderItem = ({ id, name, to }, closeDropdown, onClick) => {
+const renderItem = ({ id, name, to, locale }, closeDropdown, onClick) => {
+  debugger
   const item = () => (
-    <StyledLink className="dropdown--link" id={id} onClick={onClick}>
+    <StyledLink className="dropdown--link" id={id} onClick={onClick} locale={locale}>
       {name}
     </StyledLink>
   )
 
   return to ? (
-    <Link border={false} passHref to={to}>
+    <Link border={false} passHref to={to} locale={locale}>
       {item()}
     </Link>
   ) : (

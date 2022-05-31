@@ -12,7 +12,7 @@ import Button from '../../../atoms/button/button/button'
 // Style
 import styled, { css } from 'styled-components'
 
-const MenuDropdown = ({ dropdown, depthLevel, submenus }) => {
+const MenuDropdown = ({ dropdown, depthLevel, submenus, setShowMenu }) => {
   depthLevel = depthLevel + 1
   // TODO: Find a ways to handle it without adding classes
   const [scroll, setScroll] = useState(0)
@@ -48,7 +48,12 @@ const MenuDropdown = ({ dropdown, depthLevel, submenus }) => {
         {scroll >= 100 && <Arrow onClick={() => setScroll(scroll - 100)} />}
         <Content ref={ref}>
           {submenus.map((submenu, index) => (
-            <MenuItems depthLevel={depthLevel} items={submenu} key={index} />
+            <MenuItems
+              depthLevel={depthLevel}
+              items={submenu}
+              key={index}
+              setShowMenu={setShowMenu}
+            />
           ))}
         </Content>
         {width > ref?.current?.offsetWidth && (

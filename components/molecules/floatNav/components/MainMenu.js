@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { array, bool, func } from 'prop-types'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // UI
 import Close from '../../../icons/components/close'
@@ -22,7 +22,7 @@ const MainMenu = ({ data, isShowMenu, onSignIn, position, setShowMenu }) => {
       <Container>
         <NavbarHeader setShowMenu={setShowMenu} onSignIn={onSignIn} />
         <HeadingWrapper content="Menu" tag="h1" />
-        <Navbar data={data} />
+        <Navbar data={data} setShowMenu={setShowMenu} />
       </Container>
     </MainWrapper>
   )
@@ -44,27 +44,19 @@ const Container = styled.div`
 `
 
 const MainWrapper = styled.div`
-  @-webkit-keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  ${({ isShowMenu }) =>
+    isShowMenu
+      ? css`
+          visibility: visible;
+          opacity: 1;
+          transition: visibility 0s linear 0s, opacity 500ms;
+        `
+      : css`
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s linear 500ms, opacity 500ms;
+        `}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-  display: ${({ isShowMenu }) => (isShowMenu ? 'block' : 'none')};
   width: 100%;
   height: 100vh !important;
   background: rgba(0, 0, 0, 0.9);

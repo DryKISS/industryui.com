@@ -28,8 +28,8 @@ const Copyright = memo(({ fixed, icon, links, marginRight }) => {
   const { Brand } = config
 
   const renderLinks = () => {
-    return links.map(({ name, to }, index) => (
-      <Link key={index} passHref to={to}>
+    return links.map(({ name, to, locale }, index) => (
+      <Link key={index} passHref to={to} locale={locale}>
         <StyledLink marginRight={marginRight}>{name}</StyledLink>
       </Link>
     ))

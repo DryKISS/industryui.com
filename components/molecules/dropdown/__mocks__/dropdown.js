@@ -121,11 +121,13 @@ export const Language = [
   {
     id: 'en',
     name: 'English',
-    to: '/en'
+    to: '/',
+    locale: 'en'
   },
   {
     id: 'es',
+    locale: 'es',
     name: 'Spanish',
-    to: '/es'
+    to: '/'
   }
 ]
