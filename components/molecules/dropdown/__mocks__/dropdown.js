@@ -2,6 +2,9 @@
  * Components - Molecules - Dropdown - Mocks
  */
 
+// UI
+import Icon from '../../../atoms/icon/icon/icon'
+
 export const Icons = [
   {
     id: 1,
@@ -122,12 +125,14 @@ export const Language = [
     id: 'en',
     name: 'English',
     to: '/',
-    locale: 'en'
+    locale: 'en',
+    icon: 'flag'
   },
   {
     id: 'es',
     locale: 'es',
     name: 'Spanish',
-    to: '/'
+    to: '/',
+    IconComponent: () => <Icon fixedWidth={false} icon="user" context="info" />
   }
 ]

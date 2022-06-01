@@ -15,13 +15,22 @@ import dropdownTypes from './types'
 import Icon from '../../atoms/icon/icon/icon'
 import Link from '../../atoms/link/link'
 
-const renderItem = ({ id, name, to, locale }, closeDropdown, onClick) => {
-  debugger
-  const item = () => (
-    <StyledLink className="dropdown--link" id={id} onClick={onClick} locale={locale}>
-      {name}
-    </StyledLink>
-  )
+const renderItem = (
+  { id, icon, iconContext, IconComponent, locale, name, prefix, to },
+  closeDropdown,
+  onClick
+) => {
+  const item = () => {
+    return (
+      <StyledLink className="dropdown--link" id={id} onClick={onClick} locale={locale}>
+        {icon && !IconComponent && (
+          <Icon fixedWidth={false} icon={icon} prefix={prefix} context={iconContext} />
+        )}
+        {!icon && IconComponent && <IconComponent />}
+        {name}
+      </StyledLink>
+    )
+  }
 
   return to ? (
     <Link border={false} passHref to={to} locale={locale}>
@@ -33,6 +42,7 @@ const renderItem = ({ id, name, to, locale }, closeDropdown, onClick) => {
 }
 
 const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
+  console.log('elementType', elementType)
   switch (elementType) {
     case dropdownTypes.List:
       return (
@@ -117,7 +127,9 @@ const StyledLink = styled.span`
   color: ${({ theme }) => theme.COLOUR.primary};
   display: block;
   padding: 0.25rem 1rem;
-
+  svg {
+    margin-right: 10px;
+  }
   &:hover {
     background-color: ${({ theme }) => theme.COLOUR.light};
     color: inherit;
