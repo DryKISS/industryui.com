@@ -123,16 +123,16 @@ export const Items = [
 export const Language = [
   {
     id: 'en',
-    name: 'English',
-    to: '/',
+    icon: 'flag',
     locale: 'en',
-    icon: 'flag'
+    name: 'English',
+    to: '/'
   },
   {
     id: 'es',
+    IconComponent: () => <Icon fixedWidth={false} icon="user" context="info" />,
     locale: 'es',
     name: 'Spanish',
-    to: '/',
-    IconComponent: () => <Icon fixedWidth={false} icon="user" context="info" />
+    to: '/'
   }
 ]
