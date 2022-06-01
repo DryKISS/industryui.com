@@ -42,7 +42,6 @@ const renderItem = (
 }
 
 const DropdownItem = ({ closeDropdown, elementType, item, onClick }) => {
-  console.log('elementType', elementType)
   switch (elementType) {
     case dropdownTypes.List:
       return (

@@ -138,7 +138,6 @@ const LinkWrapper = styled(Link)`
 
   &:hover {
     color: ${({ theme }) => theme.COLOUR.primary};
-    /* text-decoration: underline; */
   }
 
   @media (max-width: 768px) {
