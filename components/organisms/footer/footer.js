@@ -55,9 +55,9 @@ const Footer = ({ columns, fixed }) => {
   const renderLinks = ({ align, border, context, direction, items }, index) => {
     return (
       <StyledList align={align} direction={direction} key={`${items[0]}${index}`} unstyled>
-        {items.map(({ icon, iconPrefix, id, name, to }) => (
+        {items.map(({ icon, iconPrefix, id, name, to, locale }) => (
           <StyledListItem key={id}>
-            <Link border={border} context={context} to={to} passHref>
+            <Link border={border} context={context} to={to} passHref locale={locale}>
               {icon && <StyledIcon context="primary" icon={icon} prefix={iconPrefix} />}
               {name}
             </Link>

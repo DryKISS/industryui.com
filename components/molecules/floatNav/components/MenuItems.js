@@ -7,16 +7,21 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { array, number } from 'prop-types'
 
+// Next
+import { useRouter } from 'next/router'
+
 // UI
 import Button from '../../../atoms/button/button/button'
+import Link from '../../../atoms/link/link'
 import MenuDropdown from './MenuDropdown'
 
 // Style
 import styled from 'styled-components'
 
-const MenuItems = ({ depthLevel, items }) => {
+const MenuItems = ({ depthLevel, items, setShowMenu }) => {
   const [dropdown, setDropdown] = useState(false)
 
+  const { locale } = useRouter()
   let ref = useRef()
 
   useEffect(() => {
@@ -51,10 +56,17 @@ const MenuItems = ({ depthLevel, items }) => {
           >
             {items.title} <Arrow />
           </ButtonWrapper>
-          <MenuDropdown depthLevel={depthLevel} dropdown={dropdown} submenus={items.submenu} />
+          <MenuDropdown
+            depthLevel={depthLevel}
+            dropdown={dropdown}
+            submenus={items.submenu}
+            setShowMenu={setShowMenu}
+          />
         </>
       ) : (
-        <Link href={items.href || '#'}>{items.title}</Link>
+        <LinkWrapper locale={locale} to={items.href || '#'} onClick={() => setShowMenu(false)}>
+          {items.title}
+        </LinkWrapper>
       )}
     </Wrapper>
   )
@@ -71,9 +83,9 @@ const ButtonWrapper = styled.button`
   transition: all 0.3s ease-in-out;
   font-weight: bold;
   margin: 0px 10px;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 3px;
   text-underline-position: under;
-  text-underline-offset: 2px;
+  text-underline-offset: 14px;
 
   &:hover {
     color: ${({ theme }) => theme.COLOUR.primary};
@@ -117,7 +129,7 @@ const Arrow = styled.span`
   }
 `
 
-const Link = styled.a`
+const LinkWrapper = styled(Link)`
   display: block;
   font-size: inherit;
   color: inherit;
@@ -126,7 +138,6 @@ const Link = styled.a`
 
   &:hover {
     color: ${({ theme }) => theme.COLOUR.primary};
-    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
@@ -160,7 +171,7 @@ const Wrapper = styled.li`
 
   .isActive {
     color: ${({ theme }) => theme.COLOUR.primary};
-    text-decoration: underline;
+    text-decoration: underline !important;
   }
   & a {
     text-align: left;

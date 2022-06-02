@@ -9,11 +9,13 @@ import styled from 'styled-components'
 // UI
 import MenuItems from './MenuItems'
 
-const Navbar = ({ data }) => (
+const Navbar = ({ data, setShowMenu }) => (
   <NavbarWrapper>
     {data.map((menu, index) => {
       const depthLevel = 0
-      return <MenuItems depthLevel={depthLevel} items={menu} key={index} />
+      return (
+        <MenuItems depthLevel={depthLevel} items={menu} key={index} setShowMenu={setShowMenu} />
+      )
     })}
   </NavbarWrapper>
 )

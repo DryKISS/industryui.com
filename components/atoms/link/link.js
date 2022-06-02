@@ -21,6 +21,7 @@ const Link = ({
   className,
   context,
   fullWidth,
+  locale,
   onClick,
   passHref,
   replace,
@@ -40,6 +41,7 @@ const Link = ({
         fullWidth={fullWidth}
         onClick={onClick}
         target={target}
+        locale={locale}
       >
         {children}
       </StyledLink>
@@ -52,6 +54,7 @@ const Link = ({
       fullWidth={fullWidth}
       href={to}
       target={target}
+      locale={locale}
     >
       {children}
     </StyledLink>
