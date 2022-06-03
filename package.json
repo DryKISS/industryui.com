@@ -106,7 +106,6 @@
     "papaparse": "5.3.1",
     "polished": "4.1.4",
     "qrcode.react": "1.0.1",
-    "react": "^18.1.0",
     "react-big-calendar": "0.38.6",
     "react-color": "2.19.3",
     "react-cropper": "2.1.8",
@@ -160,7 +159,9 @@
     "lint-staged": "12.3.2",
     "path": "0.12.7",
     "prettier": "2.5.1",
-    "react-test-renderer": "17.0.2"
+    "react": "^18.1.0",
+    "react-test-renderer": "17.0.2",
+    "react-dom": "^18.1.0"
   },
   "peerDependencies": {
     "react": "17.x",
