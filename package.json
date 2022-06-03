@@ -106,12 +106,14 @@
     "papaparse": "5.3.1",
     "polished": "4.1.4",
     "qrcode.react": "1.0.1",
+    "react": "^18.1.0",
     "react-big-calendar": "0.38.6",
     "react-color": "2.19.3",
     "react-cropper": "2.1.8",
     "react-datepicker": "4.6.0",
     "react-dnd": "14.0.5",
     "react-dnd-html5-backend": "14.1.0",
+    "react-dom": "^18.1.0",
     "react-draft-wysiwyg": "1.14.7",
     "react-dropzone": "11.5.1",
     "react-google-maps": "9.4.5",
@@ -158,8 +160,6 @@
     "lint-staged": "12.3.2",
     "path": "0.12.7",
     "prettier": "2.5.1",
-    "react": "18.1.0",
-    "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2"
   },
   "peerDependencies": {
