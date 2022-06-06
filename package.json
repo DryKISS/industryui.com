@@ -112,7 +112,6 @@
     "react-datepicker": "4.6.0",
     "react-dnd": "14.0.5",
     "react-dnd-html5-backend": "14.1.0",
-    "react-dom": "^18.1.0",
     "react-draft-wysiwyg": "1.14.7",
     "react-dropzone": "11.5.1",
     "react-google-maps": "9.4.5",
