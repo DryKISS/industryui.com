@@ -13,8 +13,9 @@ import MenuBars from '../../icons/components/menuBars'
 // UI
 import Button from '../../atoms/button/button/button'
 import MainMenu from './components/MainMenu'
-
-const FloatNav = ({ context, data, Icon, onSignIn, position }) => {
+import Text from '../../atoms/text/text'
+import Space from '../../atoms/space/space'
+const FloatNav = ({ context, data, Icon, onSignIn, position, menuLabel, menuContext }) => {
   const [isShowMenu, setShowMenu] = useState(false)
 
   return (
@@ -27,12 +28,22 @@ const FloatNav = ({ context, data, Icon, onSignIn, position }) => {
         setShowMenu={setShowMenu}
       />
       <Button context="transparent" onClick={() => setShowMenu(!isShowMenu)}>
-        {!Icon ? <MenuBars size="lg" colour={context} /> : Icon}
+        <Wrapper>
+          {!Icon ? <MenuBars size="lg" colour={context} /> : Icon}
+          {menuLabel && (
+            <Space marginLeft="md">
+              <Text context={menuContext}>{menuLabel}</Text>
+            </Space>
+          )}
+        </Wrapper>
       </Button>
     </>
   )
 }
 
+const Wrapper = styled.div`
+  display: flex;
+`
 FloatNav.propTypes = {
   data: array.isRequired,
   Icon: func,

@@ -17,7 +17,9 @@ export default {
   args: {
     data,
     position: 'absolute',
-    context: 'white'
+    context: 'white',
+    menuLabel: 'Menu',
+    menuContext: 'primary'
   },
   parameters: {
     docs: {
