@@ -13,9 +13,10 @@ import MenuBars from '../../icons/components/menuBars'
 // UI
 import Button from '../../atoms/button/button/button'
 import MainMenu from './components/MainMenu'
-import Text from '../../atoms/text/text'
 import Space from '../../atoms/space/space'
-const FloatNav = ({ context, data, Icon, onSignIn, position, menuLabel, menuContext }) => {
+import Text from '../../atoms/text/text'
+
+const FloatNav = ({ context, data, Icon, menuLabel, menuContext, onSignIn, position }) => {
   const [isShowMenu, setShowMenu] = useState(false)
 
   return (
