@@ -8,7 +8,7 @@ import { array, bool, func, number, string } from 'prop-types'
 
 // UI
 import TreeItem from './treeItem'
-
+import Space from '../../../atoms/space/space'
 // Style
 import styled, { css } from 'styled-components'
 
@@ -18,14 +18,16 @@ const SubTree = ({ child, depthLevel, isSubTree, onClick, subItemActive, parent 
   return (
     <Wrapper className={`${isSubTree ? 'show' : ''}`}>
       {child.map((childItem, index) => (
-        <TreeItem
-          parent={parent}
-          depthLevel={depthLevel}
-          items={childItem}
-          key={index}
-          onClick={onClick}
-          subItemActive={subItemActive}
-        />
+        <Space marginBottom="md">
+          <TreeItem
+            parent={parent}
+            depthLevel={depthLevel}
+            items={childItem}
+            key={index}
+            onClick={onClick}
+            subItemActive={subItemActive}
+          />
+        </Space>
       ))}
     </Wrapper>
   )

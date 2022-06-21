@@ -92,6 +92,7 @@ export const Tabs = ({
   defaultContentComponent,
   indicatorSize,
   isVertical,
+  isTabControl,
   handleChange,
   gap,
   grabbable,
@@ -245,7 +246,7 @@ export const Tabs = ({
   return (
     <MainStyledWrapper isVertical={isVertical}>
       <StyledWrapper isVertical={isVertical}>
-        {overflow && (
+        {isTabControl && overflow && (
           <Button size={size} outline context="secondary" onClick={handleScrollBack}>
             &lt;
           </Button>
@@ -287,12 +288,12 @@ export const Tabs = ({
               )
             })}
         </StyledTabs>
-        {overflow && (
+        {isTabControl && overflow && (
           <Button outline size={size} context="secondary" onClick={handleScrollForward}>
             &gt;
           </Button>
         )}
-        {overflow && (
+        {isTabControl && overflow && (
           <Dropdown
             caret={false}
             position="right"
@@ -310,7 +311,7 @@ export const Tabs = ({
             />
           </Dropdown>
         )}
-        {defaultContentComponent && !isVertical && (
+        {isTabControl && defaultContentComponent && !isVertical && (
           <Button size={size} context="light" onClick={handleAdd} size={size}>
             <Icon icon="plus" iui />
           </Button>
@@ -422,6 +423,7 @@ Tabs.propTypes = {
   indicatorSize: number,
   icon: string,
   isVertical: bool,
+  isTabControl: bool,
   size: string,
   scrollToActiveTab: bool,
   rightTabIcon: string,
@@ -436,6 +438,7 @@ Tabs.defaultProps = {
   grabTimeout: 100,
   handleChange: true,
   indicatorSize: 1,
+  isTabControl: true,
   size: 'md',
   scrollToActiveTab: true,
   rightTabIcon: 'times-circle'

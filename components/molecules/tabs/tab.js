@@ -230,6 +230,7 @@ Tab.propTypes = {
   defaultContentComponent: func,
   disabled: bool,
   gap: number,
+  isTabControl: bool,
   index: number,
   indicatorSize: number,
   label: string.isRequired,
@@ -246,6 +247,7 @@ Tab.propTypes = {
 Tab.defaultProps = {
   borders: {},
   context: false,
+  isTabControl: true,
   label: 'New Tab',
   scrollToActiveTab: true
 }

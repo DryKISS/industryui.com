@@ -11,6 +11,7 @@ import styled, { css } from 'styled-components'
 
 // UI
 import Close from '../../../icons/components/close'
+import Container from '../../../atoms/grid/Container'
 import Heading from '../../../atoms/heading/heading'
 import MenuBars from '../../../icons/components/menuBars'
 import Navbar from './Navbar'
@@ -19,17 +20,16 @@ import NavbarHeader from './NavbarHeader'
 const MainMenu = ({ data, isShowMenu, onSignIn, position, setShowMenu }) => {
   return (
     <MainWrapper isShowMenu={isShowMenu} position={position}>
-      <Container>
+      <ContainerWrapper>
         <NavbarHeader setShowMenu={setShowMenu} onSignIn={onSignIn} />
         <HeadingWrapper content="Menu" tag="h1" />
         <Navbar data={data} setShowMenu={setShowMenu} />
-      </Container>
+      </ContainerWrapper>
     </MainWrapper>
   )
 }
 
-const Container = styled.div`
-  width: 90%;
+const ContainerWrapper = styled(Container)`
   margin: 0px auto;
   height: 100vh;
   display: flex;

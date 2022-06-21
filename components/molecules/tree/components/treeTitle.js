@@ -11,7 +11,7 @@ import SquarePlus from '../../../icons/components/plusSquare'
 import SquareMinus from '../../../icons/components/minusSquare'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const TreeTitle = ({ isSubTreeOpen, title, child }) => {
   return (
