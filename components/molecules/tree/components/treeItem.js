@@ -12,7 +12,7 @@ import SubTree from './subTree'
 import TreeTitle from './treeTitle'
 
 // Style
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const TreeItem = ({ data, depthLevel, items, mainItemActive, onClick, subItemActive, parent }) => {
   const [isSubTree, setSubTree] = useState(items?.key === mainItemActive)
@@ -26,13 +26,16 @@ const TreeItem = ({ data, depthLevel, items, mainItemActive, onClick, subItemAct
         setSubTree(!isSubTree)
       }
     }
-
-    document.querySelector('.tree-component').addEventListener('click', handler)
-    document.querySelector('.tree-component').addEventListener('touchstart', handler)
-
+    const element = document.querySelector('.tree-component')
+    if (element) {
+      element.addEventListener('click', handler)
+      element.addEventListener('touchstart', handler)
+    }
     return () => {
-      document.querySelector('.tree-component').addEventListener('click', handler)
-      document.querySelector('.tree-component').addEventListener('touchstart', handler)
+      if (element) {
+        element.addEventListener('click', handler)
+        element.addEventListener('touchstart', handler)
+      }
     }
   }, [isSubTree])
 
@@ -41,7 +44,12 @@ const TreeItem = ({ data, depthLevel, items, mainItemActive, onClick, subItemAct
   }
 
   return (
-    <Wrapper ref={ref} onClick={() => onClickItem(items)} depthLevel={depthLevel}>
+    <Wrapper
+      ref={ref}
+      onClick={() => onClickItem(items)}
+      depthLevel={depthLevel}
+      isChild={!!items?.child?.length}
+    >
       {items.child ? (
         <>
           <Button
@@ -98,6 +106,12 @@ const Wrapper = styled.li`
   margin-top: ${({ depthLevel }) => (depthLevel === 0 ? '15px' : '0px')};
   margin-bottom: ${({ depthLevel }) => (depthLevel === 0 ? '0px' : '10px')};
 
+  ${({ depthLevel, isChild }) =>
+    !isChild &&
+    depthLevel === 0 &&
+    css`
+      margin-left: 22px;
+    `};
   .activeItem,
   .subActive {
     color: ${({ theme }) => theme.COLOUR.primary};

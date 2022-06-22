@@ -62,6 +62,11 @@ export default [
         title: 'Kitchen',
         key: 'kitchen',
         count: 4
+      },
+      {
+        title: 'Kitchen',
+        key: 'kitchen',
+        count: 0
       }
     ]
   },
@@ -80,5 +85,17 @@ export default [
         count: 2
       }
     ]
+  },
+  {
+    title: 'Boxes',
+    key: 'boxes'
+  },
+  {
+    title: 'Candle Holders',
+    key: 'candle-holders'
+  },
+  {
+    title: 'Kitchen',
+    key: 'kitchen'
   }
 ]
