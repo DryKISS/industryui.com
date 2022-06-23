@@ -6,14 +6,16 @@ const breakpoints = {
   sm: 576,
   md: 768,
   lg: 1024,
-  xl: 1200
+  xl: 1200,
+  xxl: 1600
 }
 
 const containerWidths = {
-  sm: 576,
-  md: 768,
-  lg: 1008,
-  xl: 1152
+  sm: 544,
+  md: 720,
+  lg: 1012,
+  xl: 1144,
+  xxl: 1540
 }
 
 const gridColumns = 12
