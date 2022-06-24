@@ -35,8 +35,12 @@ const Container = styled.div`
         max-width: ${({ theme }) => theme.GRID.containerWidths.lg}px;
       }
 
-      @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xl}px) {
+      @media (min-width: ${({ theme }) =>   theme.GRID.breakpoints.xl}px) {
         max-width: ${({ theme }) => theme.GRID.containerWidths.xl}px;
+      }
+
+      @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xxl}px) {
+        max-width: ${({ theme }) => theme.GRID.containerWidths.xxl}px;
       }
     `}
 `

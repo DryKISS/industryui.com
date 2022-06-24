@@ -69,6 +69,13 @@ const StyledColumn = styled.div`
     margin-left: ${({ off }) => ((100 / 12) * off.xl).toFixed(5)}%;
     max-width: ${({ size }) => (100 / (12 / size.xl)).toFixed(5)}%;
   }
+
+  /* XXL Extra large devices (large desktops, 1600px and up) */
+  @media (min-width: ${({ theme }) => theme.GRID.breakpoints.xxl}px) {
+    flex: 0 0 ${({ size }) => (100 / (12 / size.xxl)).toFixed(5)}%;
+    margin-left: ${({ off }) => ((100 / 12) * off.xxl).toFixed(5)}%;
+    max-width: ${({ size }) => (100 / (12 / size.xxl)).toFixed(5)}%;
+  }
 `
 
 Column.propTypes = {
